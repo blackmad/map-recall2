@@ -1044,5 +1044,102 @@
       "sourceUrl": "https://www.pulitzeramsterdam.com/en/about-us/",
       "reason": "Source principal hotel entrance Prinsengracht323 on surveyed frontage; retained genuine hotel OSM identity."
     }
+  },
+  {
+    "modelId": "de-gooyer",
+    "landmarkId": "extract_landmarks_33057057",
+    "osmId": "n33057057",
+    "name": "De Gooyer",
+    "coordinates": [
+      4.9261523,
+      52.3667975
+    ],
+    "description": "De Gooyer is the Netherlands’ tallest wooden windmill. Its octagonal grain mill was built around 1725 and moved here in 1814 after a barracks obstructed its wind. It stands on the raised square brick base of a former city water mill. The gallery is 17.8 metres above ground and the sails span 26.6 metres. Brouwerij ’t IJ occupies the separate former bathhouse next door.",
+    "sourceUrl": "https://stadsherstel.nl/monumenten/funenkade-5-molen-de-gooyer/",
+    "additionalSources": [
+      "https://www.molens.nl/ontdek-molens/alle-molens/de-gooyer-te-amsterdam",
+      "https://monumentenregister.cultureelerfgoed.nl/monumenten/1107"
+    ],
+    "locationNote": "Exterior viewing destination. Geographic pin uses genuine mapped mill node n33057057; route finish uses public Funenkade pedestrian/footway junction n1450614806 north of the mill, not its inaccessible interior. Confirm chosen destination and failure behavior in live route.",
+    "destinationCoordinates": [
+      4.9261089,
+      52.3669
+    ],
+    "destinationEvidence": {
+      "sourceUrl": "https://www.openstreetmap.org/way/146834049",
+      "cachedSource": "models/de-gooyer/files/osm-map.xml",
+      "wayIds": [
+        "w146834049",
+        "w136179600"
+      ],
+      "nodeId": "n1450614806",
+      "tags": "highway=pedestrian meets highway=footway; name=Funenkade",
+      "status": "Source-supported public outdoor approach; not represented as an indoor mill entrance"
+    },
+    "center": [
+      52.3667975,
+      4.9261523
+    ],
+    "destinationOverride": {
+      "center": [
+        52.3669,
+        4.9261089
+      ],
+      "sourceUrl": "https://stadsherstel.nl/monumenten/funenkade-5-molen-de-gooyer/",
+      "reason": "Source-backed public exterior viewing point."
+    }
+  },
+  {
+    "id": "extract_landmarks_2781756860",
+    "name": "Former Nieuw Dakota",
+    "osmId": "n2781756860",
+    "osmType": "node",
+    "coordinates": [
+      4.8920341,
+      52.4004374
+    ],
+    "destinationCoordinates": [
+      4.89194,
+      52.400438
+    ],
+    "website": "https://www.nieuwdakota.com/",
+    "description": "Nieuw Dakota was an independent exhibition space for contemporary art on the NDSM wharf. Founded in 2009, it presented experimental exhibitions and performances for fifteen years. Its owner says the venue closed to the public in January 2025 while exploring a restart; this destination marks the former venue’s exterior.",
+    "facts": [
+      {
+        "text": "The organization says Nieuw Dakota is currently not accessible to the public and closed its public doors from January 2025.",
+        "source": "https://www.nieuwdakota.com/nl/steun-ons/"
+      },
+      {
+        "text": "Founded in 2009, Nieuw Dakota offered experimental exhibitions, performances, tours and educational activities on the NDSM wharf.",
+        "source": "https://www.nieuwdakota.com/nl/over/"
+      }
+    ],
+    "identityNotes": {
+      "bagPand": "0363100012064117",
+      "osmBuilding": "w280620202",
+      "osmPOI": "n2781756860",
+      "canonicalPOI": "extract_landmarks_2781756860",
+      "sharedMappedPlace": "n2781756856",
+      "sharedVBO": "0363010011872205",
+      "relationship": "41B former Nieuw Dakota shares one current physical Pand with41A mappedVous Etes Ici. Current photo has Beautiful Distress House paint on northern gable; active tenant identity not inferred from old OSM label or paint. Preserve both separate physical fronts and entrances. No duplicate physical asset or invented compound destination."
+    },
+    "preserveExistingFacts": true,
+    "destinationReason": "West public street by former Nieuw Dakota door, not inside private warehouse; route-check necessary. Explicit requested former venue, not advertised as open museum.",
+    "integrationState": "Genuine mapped shop-art node absent current landmark extract. Promote same identity with honest former/closure card. Retain mapped41A place and separate door; no second asset or invented host destination.",
+    "modelId": "nieuw-dakota",
+    "landmarkId": "extract_landmarks_2781756860",
+    "sourceUrl": "https://www.nieuwdakota.com/nl/over/",
+    "center": [
+      52.4004374,
+      4.8920341
+    ],
+    "destinationOverride": {
+      "center": [
+        52.400438,
+        4.89194
+      ],
+      "sourceUrl": "https://www.nieuwdakota.com/nl/over/",
+      "reason": "West public street by former Nieuw Dakota door, not inside private warehouse; route-check necessary. Explicit requested former venue, not advertised as open museum."
+    }
   }
 ]

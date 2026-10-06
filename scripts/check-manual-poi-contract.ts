@@ -14,7 +14,7 @@ const landmarks = buildLandmarks(features, (lat, lng) => ({ x: lng, y: lat }));
 assert.equal(new Set(features.map(feature => feature.id)).size, features.length, 'POI IDs are unique');
 for (const model of MANUAL_LANDMARKS) {
   const destinations = features.filter(feature => feature.modelId === model.id);
-  assert.equal(destinations.length, model.destinationLandmarkIds?.length ?? (model.id === 'muziekgebouw-bimhuis' ? 2 : 1), `${model.id}: genuine destinations, no facade alias duplicates`);
+  assert.equal(destinations.length, model.destinationLandmarkIds?.length ?? (model.landmarkId ? (model.id === 'muziekgebouw-bimhuis' ? 2 : 1) : 0), `${model.id}: genuine destinations, no facade alias duplicates`);
   for (const poi of destinations) {
     assert.ok(poi.center?.every(Number.isFinite), `${model.id}: geographic pin`);
     assert.ok(poi.manualPoi && (poi.prominenceScore ?? 0) >= 220, `${model.id}: pin/label eligibility`);

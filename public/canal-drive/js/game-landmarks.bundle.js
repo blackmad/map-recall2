@@ -7815,6 +7815,82 @@ Map source: ${osmUrl(places[i][0])}`);
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free flat-color connected historic canal houses. Native currentBAG exteriors; original shells constructed from clipped survey roof-plane regions, four preserved sourcecourts, independently authored street elevations/windows/entries/plinths/crowns. Modern2016black entrance; diverse tuit/hals/klok/lijst family mixture; Saxenburg four-bay sandstonefront with attiek; Jansz corner/Reestraat row. Tinycarvedrelief and joinery spacing photo-guided; retiredaddress fuzzyfallbacks rejected. No downloadedmesh or photo pixels."
       }
+    },
+    {
+      id: "de-gooyer",
+      name: "De Gooyer",
+      landmarkId: "extract_landmarks_33057057",
+      modelUrl: "./models/de-gooyer.glb",
+      suppressOsmIds: [
+        "w269052487",
+        "NL.IMBAG.Pand.0363100012169758"
+      ],
+      spatialSuppression: false,
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      footprint: {
+        centre: [
+          4.926172908055607,
+          52.36680769280531
+        ],
+        headingDegrees: 84.8,
+        lengthMetres: 10.97,
+        widthMetres: 11.05
+      },
+      surveyed: {
+        anchor: [
+          4.926172908055607,
+          52.36680769280531
+        ],
+        northOffsetDegrees: -5.2,
+        source: "Current in-use BAG0363100012169758 rectangle, official Funenkade5 VBO0363010000641344. Author +X bearing84.8deg from BAG long edges. Gallery17.8m and sailspan26.6m from owner. Tower/cap heights photo-calibrated approximation; cap and stationary sails are a representative rotational state."
+      },
+      attribution: {
+        title: "De Gooyer",
+        author: "Map Recall",
+        sourceUrl: "https://stadsherstel.nl/monumenten/funenkade-5-molen-de-gooyer/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native-scale square brick base, thatched octagons, open gallery, rounded cap, old-Dutch lattice sails; no imported meshes or photo pixels."
+      }
+    },
+    {
+      id: "nieuw-dakota",
+      name: "Former Nieuw Dakota",
+      landmarkId: "extract_landmarks_2781756860",
+      modelUrl: "./models/nieuw-dakota.glb",
+      suppressOsmIds: [
+        "w280620202",
+        "NL.IMBAG.Pand.0363100012064117"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.89215,
+          52.4004
+        ],
+        headingDegrees: 90,
+        lengthMetres: 26.52,
+        widthMetres: 47.54
+      },
+      surveyed: {
+        anchor: [
+          4.89215,
+          52.4004
+        ],
+        northOffsetDegrees: 0,
+        source: "Exact BAG shared host incl narrow south extension and AHN5 roof rings; municipal2024/2025photos"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 90,
+      attribution: {
+        title: "Former Nieuw Dakota shared warehouse",
+        author: "Map Recall",
+        sourceUrl: "https://www.nieuwdakota.com/nl/over/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free reconstruction of measured twin-gabled host, pale metal corrugation, blue front and green glazing; preserves northern tenant front and low extension. No copied source pixels or meshes; painted name words omitted."
+      }
     }
   ];
 
@@ -10313,6 +10389,1481 @@ Map source: ${osmUrl(places[i][0])}`);
     ...hospital_footprints_default.sites.map((s) => ({ id: s.id, name: s.id === "olvg-west" ? "OLVG West" : "OLVG Oost", landmarkId: s.id, modelUrl: `./models/${s.id}.glb`, suppressOsmIds: s.buildings.filter((f) => f.properties.building !== "construction").flatMap((f) => [f.id, ...f.properties["ref:bag"] ? [`NL.IMBAG.Pand.${f.properties["ref:bag"]}`] : []]), spatialSuppression: false, groundAltitudeMetres: 0, facingOffsetDegrees: 0, surveyed: { anchor: s.id === "olvg-west" ? [4.8397, 52.37115] : [4.9153, 52.3582], northOffsetDegrees: 0, source: "OSM building rings; local east/south metres" }, attribution: ownAttribution(s.id === "olvg-west" ? "OLVG West" : "OLVG Oost", "https://www.olvg.nl/over-olvg/") }))
   ];
 
+  // public/canal-drive/ordinary-buildings-data/catalogue.json
+  var catalogue_default = {
+    version: 1,
+    models: [
+      {
+        id: "ordinary-0363100012242125",
+        buildingId: "NL.IMBAG.Pand.0363100012242125",
+        name: "Simple gray metal industrial shed",
+        anchor: [
+          4.788693,
+          52.394305
+        ],
+        cameraBearing: 1.109596432550859,
+        footprint: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [
+                4.788421,
+                52.394573
+              ],
+              [
+                4.788421,
+                52.394591
+              ],
+              [
+                4.788368,
+                52.394591
+              ],
+              [
+                4.788368,
+                52.394573
+              ],
+              [
+                4.788085,
+                52.394573
+              ],
+              [
+                4.788085,
+                52.394447
+              ],
+              [
+                4.788087,
+                52.394019
+              ],
+              [
+                4.789301,
+                52.394021
+              ],
+              [
+                4.789298,
+                52.394575
+              ],
+              [
+                4.788421,
+                52.394573
+              ]
+            ]
+          ]
+        },
+        height: 14.307202339172363,
+        modelUrl: "./models/ordinary-buildings/0363100012242125.glb",
+        bounds: {
+          min: [
+            -41.319515228271484,
+            0,
+            -31.855520248413086
+          ],
+          max: [
+            41.319515228271484,
+            14.307202339172363,
+            31.855520248413086
+          ]
+        },
+        triangles: 678,
+        bytes: 162728,
+        materials: 2,
+        hash: "565d60ca36f881907407f903b52b0d440e3e24c36bc4eff35a6e3dea9debfa8f",
+        referenceImages: [
+          "./ordinary-buildings-data/references/0363100012242125/reference-0363100012242125-2025-recording_2025-07-01_04-12-51_02405.jpg",
+          "./ordinary-buildings-data/references/0363100012242125/reference-0363100012242125-2025-recording_2025-07-01_04-12-51_02391.jpg",
+          "./ordinary-buildings-data/references/0363100012242125/reference-0363100012242125-2024-recording_2024-09-18_07-45-49_01251.jpg"
+        ],
+        sourcePack: "experiments/ordinary-ten/west/0363100012242125",
+        traits: [
+          "Large native rectangular metal industrial shed, flat roof edge: overwhelmingly blank pale-gray northern facade and darker gray east facade. Preserve vertical fine corrugation; do not apply domestic window grid.",
+          "Full-resolution north-centered photo has straight horizontal top; NE-corner image apparent peak is perspective convergence of horizontal perimeter edges, not a pitched ridge.",
+          "West end has two upper rows of narrow rectangular office windows, about 0.9\u20131.2 m wide by 1.8\u20132.1 m tall, above dark covered loading/vehicle bays one storey (about 3.5\u20134 m) high. Native west face edges 4/5.",
+          "Thin pale lower curb and very restrained roof perimeter trim; use neutral gray roof surface inferred from edge material, record it as approximate where top itself unseen.",
+          "External round tank and neighboring delivery/service building lie outside exact polygon. Dark west loading recess is local industrial frontage, with no evidence for a public through-passage or surveyed court; do not invent a traversable underpass."
+        ],
+        simplifications: [
+          "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained."
+        ],
+        sourceTiming: {
+          sourceRequestStartedAt: "2026-10-06T19:23:13+00:00",
+          recipeCompletedAt: "2026-10-06T19:28:44.675454+00:00",
+          sourceAndReviewElapsedSeconds: 332,
+          scope: "Shared bounded acquisition/cropping/visual review for eight candidates; excludes initial local selection time and root modeling/game acceptance."
+        },
+        heightEvidence: "Official fitted roof plane vertices minus b3_h_maaiveld; dominant regions clipped to native footprint, eaves and local roof slopes retained. Equipment planes below0.8% footprint area omitted.",
+        facadeRecipe: {
+          levels: 1,
+          kind: "corrugated",
+          bayPitchMetres: 2.2,
+          groupWidthMetres: 1.1,
+          groupHeightMetres: 2,
+          panes: 1,
+          groundExceptionalBandHeightMetres: 4,
+          corrugationPitchMetres: 0.4,
+          corrugationColor: "#909895",
+          edges: {
+            "4": {
+              kind: "industrial-office",
+              levels: 2,
+              firstSillMetres: 5,
+              floorPitchMetres: 3,
+              doors: [
+                {
+                  kind: "loading",
+                  pitchMetres: 7,
+                  widthMetres: 5,
+                  heightMetres: 3.7
+                }
+              ]
+            },
+            "5": {
+              kind: "industrial-office",
+              levels: 2,
+              firstSillMetres: 5,
+              floorPitchMetres: 3,
+              doors: [
+                {
+                  kind: "loading",
+                  pitchMetres: 7,
+                  widthMetres: 5,
+                  heightMetres: 3.7
+                }
+              ]
+            }
+          }
+        },
+        official3D: {
+          summaryPath: "experiments/3dbag-screen/0363100012242125/geometry-summary.json",
+          groundNAP: 1.3380000591278076,
+          rectangleFill: 0.971,
+          courtyardArea: 0,
+          dominantRoofPlaneCount: 1
+        },
+        generationMilliseconds: 43,
+        reviewState: "Reviewed standard exterior; documented source dates and unseen-side approximations apply.",
+        sourceUrls: [
+          "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012242125",
+          "https://data.amsterdam.nl/data/geozoek?center=52.394305,4.788693&lagen=pano-pano2025bi"
+        ],
+        sourceCommit: "9ed72ffa39b0107d1a60c6efea88f7169b87c591"
+      },
+      {
+        id: "ordinary-0363100012074248",
+        buildingId: "NL.IMBAG.Pand.0363100012074248",
+        name: "Dark brick commercial block",
+        anchor: [
+          4.939452,
+          52.397391999999996
+        ],
+        cameraBearing: 213.35269921891947,
+        footprint: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [
+                4.939442,
+                52.397051
+              ],
+              [
+                4.939816,
+                52.397401
+              ],
+              [
+                4.939803,
+                52.397406
+              ],
+              [
+                4.939872,
+                52.397471
+              ],
+              [
+                4.939879,
+                52.397468
+              ],
+              [
+                4.940003,
+                52.397583
+              ],
+              [
+                4.93963,
+                52.397733
+              ],
+              [
+                4.939435,
+                52.397551
+              ],
+              [
+                4.939274,
+                52.397615
+              ],
+              [
+                4.938901,
+                52.397268
+              ],
+              [
+                4.939442,
+                52.397051
+              ]
+            ]
+          ]
+        },
+        height: 9.221973419189453,
+        modelUrl: "./models/ordinary-buildings/0363100012074248.glb",
+        bounds: {
+          min: [
+            -37.9761848449707,
+            0,
+            -37.97515106201172
+          ],
+          max: [
+            37.441917419433594,
+            9.221973419189453,
+            38.79574203491211
+          ]
+        },
+        triangles: 680,
+        bytes: 102140,
+        materials: 3,
+        hash: "6f1caa9ba460aac28ecec052231f4fdb6f22e8d4e6116e4429505b1be8be161f",
+        referenceImages: [
+          "./ordinary-buildings-data/references/0363100012074248/reference-0363100012074248-2025-0.jpg"
+        ],
+        sourcePack: "experiments/ordinary-ten/east/0363100012074248",
+        traits: [
+          "Low dark-brick commercial block with flat pale-edged roof.",
+          "Upper facade long horizontally grouped glazing beneath slim eave; small square windows on plainer wall runs.",
+          "A pale opaque projecting balcony/canopy band lies in front of upper glazing on reviewed street face.",
+          "Ground face mostly dark opaque wall/service entries; do not fill with evenly repeated housing windows.",
+          "2025 aerial confirms filled native roof plan and surface setback/equipment zones, open parking exterior."
+        ],
+        simplifications: [
+          "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained."
+        ],
+        sourceTiming: {
+          startedAt: "2026-10-06T19:22:00Z",
+          finishedAt: "2026-10-06T19:30:51.694861+00:00"
+        },
+        heightEvidence: "Official fitted roof plane vertices minus b3_h_maaiveld; dominant regions clipped to native footprint, eaves and local roof slopes retained. Equipment planes below0.8% footprint area omitted.",
+        facadeRecipe: {
+          kind: "sparse",
+          levels: 2,
+          bayPitchMetres: 4,
+          groupWidthMetres: 3.1,
+          groupHeightMetres: 1.6,
+          panes: 3,
+          floorPitchMetres: 4.3,
+          groundExceptionalBandHeightMetres: 3.2,
+          sillHeightMetres: 0.65,
+          edges: {
+            "9": {
+              kind: "commercial-upper",
+              canopy: {
+                bottomMetres: 4.425,
+                heightMetres: 0.75,
+                depthMetres: 1
+              },
+              firstSillMetres: 1,
+              floorPitchMetres: 4.2,
+              groupHeightMetres: 2.25
+            }
+          }
+        },
+        official3D: {
+          summaryPath: "experiments/3dbag-screen/0363100012074248/geometry-summary.json",
+          groundNAP: -3.609999895095825,
+          rectangleFill: 0.891,
+          courtyardArea: 0,
+          dominantRoofPlaneCount: 2
+        },
+        generationMilliseconds: 11,
+        reviewState: "Reviewed standard exterior; documented source dates and unseen-side approximations apply.",
+        sourceUrls: [
+          "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012074248",
+          "https://data.amsterdam.nl/data/geozoek?center=52.397391999999996,4.939452&lagen=pano-pano2025bi"
+        ],
+        sourceCommit: "9ed72ffa39b0107d1a60c6efea88f7169b87c591"
+      },
+      {
+        id: "ordinary-0363100012223044",
+        buildingId: "NL.IMBAG.Pand.0363100012223044",
+        name: "Gray factory hall with high narrow glazing",
+        anchor: [
+          4.939824,
+          52.385817
+        ],
+        cameraBearing: 17.370603278811984,
+        footprint: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [
+                4.939613,
+                52.386128
+              ],
+              [
+                4.939395,
+                52.385605
+              ],
+              [
+                4.940036,
+                52.385506
+              ],
+              [
+                4.940253,
+                52.386028
+              ],
+              [
+                4.939613,
+                52.386128
+              ]
+            ]
+          ]
+        },
+        height: 8.899999618530273,
+        modelUrl: "./models/ordinary-buildings/0363100012223044.glb",
+        bounds: {
+          min: [
+            -29.16507339477539,
+            0,
+            -34.63795852661133
+          ],
+          max: [
+            29.165075302124023,
+            8.899999618530273,
+            34.637969970703125
+          ]
+        },
+        triangles: 430,
+        bytes: 75480,
+        materials: 2,
+        hash: "ca5ce520e24899890c7df78111cc171b9216da6cffae19a42ab6706a49ca297a",
+        referenceImages: [
+          "./ordinary-buildings-data/references/0363100012223044/reference-0363100012223044-2017-0.jpg",
+          "./ordinary-buildings-data/references/0363100012223044/reference-0363100012223044-2017-1.jpg",
+          "./ordinary-buildings-data/references/0363100012223044/reference-0363100012223044-2017-2.jpg",
+          "./ordinary-buildings-data/references/0363100012223044/reference-0363100012223044-2017-3.jpg"
+        ],
+        sourcePack: "experiments/ordinary-ten/boxes/0363100012223044",
+        traits: [
+          "2017 clear north canal facade photos show gray metal cladding, repeated high narrow slit windows, muted blue loading doors and light vertical piers.",
+          "North face has sparse blue loading doors about3.5\xD74m plus a wider vertical glazed loading or stair assembly. The neighboring red brick wall and continuous roof glazing are outside this footprint.",
+          "2025 aerial and2023 AHN3DBAG support a solid rectangular hall with8\u20139m roof. A fresh230m panorama search found2021 context but no clear newer target facade. Preserve the2017 facade currentness gap and conditional acceptance.",
+          "Broad upper glazing and pale piers above two loading gates; regular shallow roof panel rhythm from2025 aerial."
+        ],
+        simplifications: [
+          "Only observed primary facades support pattern placement; other faces use neutral industrial material.",
+          "Door counts and dimensions are approximate visual estimates, not surveys.",
+          "Omit minor branding; do not invent building-name text.",
+          "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained.",
+          "Regular6\xD77 shallow roof panel grid approximates observed aerial rhythm; fitted patch noise omitted. Glazing/pier proportions are visual estimates from2017 facade."
+        ],
+        sourceTiming: null,
+        heightEvidence: "Source aerial and official dominant8.683m plane support8.7m hall; original regular shallow roof panel relief approximated at0.2m. Noisy fitted patch boundaries rejected after visual review.",
+        facadeRecipe: {
+          kind: "corrugated",
+          levels: 1,
+          corrugationPitchMetres: 0.3,
+          corrugationColor: "#909b96",
+          plinthHeightMetres: 0.6,
+          edges: {
+            "3": {
+              doors: [
+                {
+                  kind: "loading",
+                  xMetres: 13.211983350666854,
+                  widthMetres: 3.5,
+                  heightMetres: 4,
+                  color: "#394f62"
+                },
+                {
+                  kind: "loading",
+                  xMetres: 28.173966701333708,
+                  widthMetres: 3.5,
+                  heightMetres: 4,
+                  color: "#394f62"
+                }
+              ],
+              kind: "corrugated",
+              levels: 1,
+              firstSillMetres: 7.583,
+              groupWidthMetres: 0.65,
+              groupHeightMetres: 0.55,
+              groundGroupHeightMetres: 0.55,
+              bayPitchMetres: 5,
+              panes: 1,
+              sparseWindows: [
+                {
+                  xMetres: 1,
+                  sillMetres: 7.8,
+                  widthMetres: 42.5,
+                  heightMetres: 0.55,
+                  panes: 18
+                }
+              ],
+              glazedAssemblies: [
+                {
+                  xMetres: 12.7119833507,
+                  sillMetres: 4.15,
+                  widthMetres: 4.5,
+                  heightMetres: 4.1,
+                  panes: 2,
+                  crossbarMetres: 6.2,
+                  pierWidthMetres: 0.3
+                },
+                {
+                  xMetres: 27.6739667013,
+                  sillMetres: 4.15,
+                  widthMetres: 4.5,
+                  heightMetres: 4.1,
+                  panes: 2,
+                  crossbarMetres: 6.2,
+                  pierWidthMetres: 0.3
+                }
+              ]
+            }
+          }
+        },
+        official3D: {
+          summaryPath: "experiments/ordinary-ten/boxes/0363100012223044/3dbag-geometry-summary.json",
+          rectangleFill: 1,
+          courtyardArea: 0,
+          groundNAP: 0.949999988079071,
+          dominantRoofHeightMetres: 8.683,
+          dominantRoofPlaneCount: 26
+        },
+        generationMilliseconds: 23,
+        reviewState: "Reviewed standard exterior, conditional on2017 facade reference; newer clear facade still needed.",
+        sourceUrls: [
+          "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012223044",
+          "https://data.amsterdam.nl/data/geozoek?center=52.385817,4.939824&lagen=pano-pano2025bi"
+        ],
+        sourceCommit: "9ed72ffa39b0107d1a60c6efea88f7169b87c591"
+      },
+      {
+        id: "ordinary-0363100012123231",
+        buildingId: "NL.IMBAG.Pand.0363100012123231",
+        name: "Dark ribbed hall with red loading doors",
+        anchor: [
+          4.813311000000001,
+          52.400291499999994
+        ],
+        cameraBearing: 193.8162032703822,
+        footprint: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [
+                4.812852,
+                52.399752
+              ],
+              [
+                4.81377,
+                52.399753
+              ],
+              [
+                4.81377,
+                52.400831
+              ],
+              [
+                4.812852,
+                52.40083
+              ],
+              [
+                4.812852,
+                52.399752
+              ]
+            ]
+          ]
+        },
+        height: 9.832123756408691,
+        modelUrl: "./models/ordinary-buildings/0363100012123231.glb",
+        bounds: {
+          min: [
+            -31.19369888305664,
+            0,
+            -60.075138092041016
+          ],
+          max: [
+            31.19369888305664,
+            9.832123756408691,
+            60.075138092041016
+          ]
+        },
+        triangles: 1385,
+        bytes: 157384,
+        materials: 2,
+        hash: "e36863c9adc373d0f8d305b012eb530035d55db563ebb6575651fc2de903e228",
+        referenceImages: [
+          "./ordinary-buildings-data/references/0363100012123231/reference-0363100012123231-2025-0.jpg",
+          "./ordinary-buildings-data/references/0363100012123231/reference-0363100012123231-2025-1.jpg"
+        ],
+        sourcePack: "experiments/ordinary-ten/boxes/0363100012123231",
+        traits: [
+          "2025 south front views show charcoal green gray corrugated metal, a flat roof edge and low gray plinth.",
+          "Large muted red sectional loading doors about3.5\xD74m; occasional blue or dark personnel door. The portable blue cabin lies outside the installed footprint.",
+          "A truck obscures the second view. Visible wall is mostly blank metal. Preserve shallow fitted roof elevations9.21\u20139.53m and avoid an invented office grid."
+        ],
+        simplifications: [
+          "Only observed primary facades support pattern placement; other faces use neutral industrial material.",
+          "Door counts and dimensions are approximate visual estimates, not surveys.",
+          "Omit minor branding; do not invent building-name text.",
+          "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained."
+        ],
+        sourceTiming: null,
+        heightEvidence: "Official fitted roof plane vertices minus b3_h_maaiveld; dominant regions clipped to native footprint, eaves and local roof slopes retained. Equipment planes below0.8% footprint area omitted.",
+        facadeRecipe: {
+          kind: "corrugated",
+          levels: 1,
+          corrugationPitchMetres: 0.22,
+          corrugationColor: "#65706f",
+          plinthHeightMetres: 0.6,
+          edges: {
+            "0": {
+              doors: [
+                {
+                  kind: "loading",
+                  xMetres: 19.03383186809997,
+                  widthMetres: 3.5,
+                  heightMetres: 4,
+                  color: "#865753"
+                },
+                {
+                  kind: "loading",
+                  xMetres: 39.81766373619994,
+                  widthMetres: 3.5,
+                  heightMetres: 4,
+                  color: "#865753"
+                }
+              ]
+            }
+          }
+        },
+        official3D: {
+          summaryPath: "experiments/ordinary-ten/boxes/0363100012123231/3dbag-geometry-summary.json",
+          rectangleFill: 0.999,
+          courtyardArea: 0,
+          groundNAP: 1.2059999704360962,
+          dominantRoofHeightMetres: 9.411,
+          dominantRoofPlaneCount: 2
+        },
+        generationMilliseconds: 22,
+        reviewState: "Reviewed standard exterior; documented source dates and unseen-side approximations apply.",
+        sourceUrls: [
+          "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012123231",
+          "https://data.amsterdam.nl/data/geozoek?center=52.400291499999994,4.813311000000001&lagen=pano-pano2025bi"
+        ],
+        sourceCommit: "9ed72ffa39b0107d1a60c6efea88f7169b87c591"
+      },
+      {
+        id: "ordinary-0363100012183449",
+        buildingId: "NL.IMBAG.Pand.0363100012183449",
+        name: "Charcoal port warehouse behind containers",
+        anchor: [
+          4.814140999999999,
+          52.4036035
+        ],
+        cameraBearing: 221.6056697938902,
+        footprint: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [
+                4.813468,
+                52.40312
+              ],
+              [
+                4.815148,
+                52.403446
+              ],
+              [
+                4.814816,
+                52.404087
+              ],
+              [
+                4.813134,
+                52.403762
+              ],
+              [
+                4.813468,
+                52.40312
+              ]
+            ]
+          ]
+        },
+        height: 11.610169410705566,
+        modelUrl: "./models/ordinary-buildings/0363100012183449.glb",
+        bounds: {
+          min: [
+            -68.40837860107422,
+            0,
+            -53.84038162231445
+          ],
+          max: [
+            68.40838623046875,
+            11.610169410705566,
+            53.84037399291992
+          ]
+        },
+        triangles: 1496,
+        bytes: 177004,
+        materials: 2,
+        hash: "c3d3d9cac6fca3814408add09a2a3c769563b700e92373d7a5094bad4c206ed9",
+        referenceImages: [
+          "./ordinary-buildings-data/references/0363100012183449/reference-0363100012183449-2022-0.jpg",
+          "./ordinary-buildings-data/references/0363100012183449/reference-0363100012183449-2022-1.jpg",
+          "./ordinary-buildings-data/references/0363100012183449/reference-0363100012183449-2022-2.jpg",
+          "./ordinary-buildings-data/references/0363100012183449/reference-0363100012183449-2022-3.jpg"
+        ],
+        sourcePack: "experiments/ordinary-ten/boxes/0363100012183449",
+        traits: [
+          "2022 southwest context shows a simple charcoal corrugated metal rectangle with a straight roof edge.",
+          "Containers obscure ground frontage; one tall loading opening is visible near the western end. Keep containers, scaffold and cranes outside the building mass.",
+          "Use sparse loading doors only on observed south and west faces. Record the2022 image gap; fitted2023 AHN roof supports an11.2\u201311.46m hall."
+        ],
+        simplifications: [
+          "Only observed primary facades support pattern placement; other faces use neutral industrial material.",
+          "Door counts and dimensions are approximate visual estimates, not surveys.",
+          "Omit minor branding; do not invent building-name text.",
+          "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained."
+        ],
+        sourceTiming: null,
+        heightEvidence: "Official fitted roof plane vertices minus b3_h_maaiveld; dominant regions clipped to native footprint, eaves and local roof slopes retained. Equipment planes below0.8% footprint area omitted.",
+        facadeRecipe: {
+          kind: "corrugated",
+          levels: 1,
+          corrugationPitchMetres: 0.22,
+          corrugationColor: "#65706f",
+          plinthHeightMetres: 0.6,
+          edges: {
+            "0": {
+              doors: [
+                {
+                  kind: "loading",
+                  xMetres: 57.36541125852885,
+                  widthMetres: 5,
+                  heightMetres: 5,
+                  color: "#313534"
+                }
+              ]
+            },
+            "3": {
+              doors: [
+                {
+                  kind: "loading",
+                  xMetres: 34.99051031384674,
+                  widthMetres: 5,
+                  heightMetres: 5,
+                  color: "#313534"
+                }
+              ]
+            }
+          }
+        },
+        official3D: {
+          summaryPath: "experiments/ordinary-ten/boxes/0363100012183449/3dbag-geometry-summary.json",
+          rectangleFill: 0.999,
+          courtyardArea: 0,
+          groundNAP: 0.8410000205039978,
+          dominantRoofHeightMetres: 11.369,
+          dominantRoofPlaneCount: 2
+        },
+        generationMilliseconds: 27,
+        reviewState: "Reviewed standard exterior; documented source dates and unseen-side approximations apply.",
+        sourceUrls: [
+          "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012183449",
+          "https://data.amsterdam.nl/data/geozoek?center=52.4036035,4.814140999999999&lagen=pano-pano2025bi"
+        ],
+        sourceCommit: "9ed72ffa39b0107d1a60c6efea88f7169b87c591"
+      },
+      {
+        id: "ordinary-0363100012191215",
+        buildingId: "NL.IMBAG.Pand.0363100012191215",
+        name: "Pale gray warehouse beyond canal scrub",
+        anchor: [
+          4.78618,
+          52.401129999999995
+        ],
+        cameraBearing: 353.5377022200746,
+        footprint: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [
+                4.785516,
+                52.400858
+              ],
+              [
+                4.786846,
+                52.400859
+              ],
+              [
+                4.786844,
+                52.401402
+              ],
+              [
+                4.785514,
+                52.4014
+              ],
+              [
+                4.785516,
+                52.400858
+              ]
+            ]
+          ]
+        },
+        height: 14.428999900817871,
+        modelUrl: "./models/ordinary-buildings/0363100012191215.glb",
+        bounds: {
+          min: [
+            -45.25246810913086,
+            0,
+            -30.297039031982422
+          ],
+          max: [
+            45.25246810913086,
+            14.428999900817871,
+            30.297040939331055
+          ]
+        },
+        triangles: 1637,
+        bytes: 202324,
+        materials: 2,
+        hash: "1e3053f0ca6946e57d69cc3b2f997f7d247de319e43238e7925162e79e80e632",
+        referenceImages: [
+          "./ordinary-buildings-data/references/0363100012191215/reference-0363100012191215-2020-0.jpg",
+          "./ordinary-buildings-data/references/0363100012191215/reference-0363100012191215-2020-1.jpg",
+          "./ordinary-buildings-data/references/0363100012191215/reference-0363100012191215-2020-2.jpg",
+          "./ordinary-buildings-data/references/0363100012191215/reference-0363100012191215-2020-3.jpg"
+        ],
+        sourcePack: "experiments/ordinary-ten/boxes/0363100012191215",
+        traits: [
+          "2020 north canal context shows light gray vertical metal panels, dark vertical seams and a muted purple gray top band.",
+          "Scrub obscures lower frontage. There is no supported door or window count; maintain blank industrial walls.",
+          "The lower structure at the right lies outside the exact footprint and remains separate. Main fitted roof is13.6\u201313.86m, with small14.3m roof patches."
+        ],
+        simplifications: [
+          "Only observed primary facades support pattern placement; other faces use neutral industrial material.",
+          "Door counts and dimensions are approximate visual estimates, not surveys.",
+          "Omit minor branding; do not invent building-name text.",
+          "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained.",
+          "Upper muted purple-gray band contrast and width approximate; scrub-obscured lower facade remains conservative."
+        ],
+        sourceTiming: null,
+        heightEvidence: "Official fitted roof plane vertices minus b3_h_maaiveld; dominant regions clipped to native footprint, eaves and local roof slopes retained. Equipment planes below0.8% footprint area omitted.",
+        facadeRecipe: {
+          kind: "corrugated",
+          levels: 1,
+          corrugationPitchMetres: 0.25,
+          corrugationColor: "#909b96",
+          plinthHeightMetres: 0.6,
+          edges: {
+            "2": {
+              doors: [],
+              topBandColor: "#75717d",
+              topBandHeightMetres: 1.3,
+              panelSeamPitchMetres: 12
+            }
+          },
+          topBandHeightMetres: 1.2,
+          topBandColor: "#827d8b"
+        },
+        official3D: {
+          summaryPath: "experiments/ordinary-ten/boxes/0363100012191215/3dbag-geometry-summary.json",
+          rectangleFill: 1,
+          courtyardArea: 0,
+          groundNAP: 1.371000051498413,
+          dominantRoofHeightMetres: 13.854,
+          dominantRoofPlaneCount: 6
+        },
+        generationMilliseconds: 22,
+        reviewState: "Reviewed standard exterior; documented source dates and unseen-side approximations apply.",
+        sourceUrls: [
+          "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012191215",
+          "https://data.amsterdam.nl/data/geozoek?center=52.401129999999995,4.78618&lagen=pano-pano2025bi"
+        ],
+        sourceCommit: "9ed72ffa39b0107d1a60c6efea88f7169b87c591"
+      },
+      {
+        id: "ordinary-0363100012224669",
+        buildingId: "NL.IMBAG.Pand.0363100012224669",
+        name: "Dark metal warehouse with red delivery portals",
+        anchor: [
+          4.7617615,
+          52.4123705
+        ],
+        cameraBearing: 341.4372824937231,
+        footprint: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [
+                4.762121,
+                52.412883
+              ],
+              [
+                4.760986,
+                52.412663
+              ],
+              [
+                4.761403,
+                52.411858
+              ],
+              [
+                4.762537,
+                52.412078
+              ],
+              [
+                4.762121,
+                52.412883
+              ]
+            ]
+          ]
+        },
+        height: 10.386124610900879,
+        modelUrl: "./models/ordinary-buildings/0363100012224669.glb",
+        bounds: {
+          min: [
+            -52.675411224365234,
+            0,
+            -57.06865310668945
+          ],
+          max: [
+            52.675411224365234,
+            10.386124610900879,
+            57.06865310668945
+          ]
+        },
+        triangles: 1509,
+        bytes: 201488,
+        materials: 2,
+        hash: "a934d602de2914253e25c769fc6a0665a80e541e1f71211e5daaffbe856f7796",
+        referenceImages: [
+          "./ordinary-buildings-data/references/0363100012224669/reference-0363100012224669-2025-0.jpg",
+          "./ordinary-buildings-data/references/0363100012224669/reference-0363100012224669-2025-1.jpg",
+          "./ordinary-buildings-data/references/0363100012224669/reference-0363100012224669-2025-2.jpg"
+        ],
+        sourcePack: "experiments/ordinary-ten/boxes/0363100012224669",
+        traits: [
+          "2025 north panoramas show a dark charcoal metal hall with broad vertical panel joints and a low gray concrete plinth.",
+          "North front has muted red loading doors about4\xD74.5m and adjacent small pale personnel doors. Minor logos and tenant words may be omitted.",
+          "The low glazed neighboring structure and containers sit outside the exact rectangle. Fitted roof planes lie at9.95\u201310.15m; this is a shallow roof variation."
+        ],
+        simplifications: [
+          "Only observed primary facades support pattern placement; other faces use neutral industrial material.",
+          "Door counts and dimensions are approximate visual estimates, not surveys.",
+          "Omit minor branding; do not invent building-name text.",
+          "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained."
+        ],
+        sourceTiming: null,
+        heightEvidence: "Official fitted roof plane vertices minus b3_h_maaiveld; dominant regions clipped to native footprint, eaves and local roof slopes retained. Equipment planes below0.8% footprint area omitted.",
+        facadeRecipe: {
+          kind: "corrugated",
+          levels: 1,
+          corrugationPitchMetres: 0.2,
+          corrugationColor: "#65706f",
+          plinthHeightMetres: 0.6,
+          edges: {
+            "0": {
+              doors: [
+                {
+                  kind: "loading",
+                  xMetres: 18.21668590646236,
+                  widthMetres: 4,
+                  heightMetres: 4.5,
+                  color: "#8a4b50"
+                },
+                {
+                  kind: "loading",
+                  xMetres: 38.43337181292472,
+                  widthMetres: 4,
+                  heightMetres: 4.5,
+                  color: "#8a4b50"
+                },
+                {
+                  kind: "loading",
+                  xMetres: 58.65005771938708,
+                  widthMetres: 4,
+                  heightMetres: 4.5,
+                  color: "#8a4b50"
+                },
+                {
+                  xMetres: 9.434453423015766,
+                  widthMetres: 1,
+                  heightMetres: 2.1,
+                  color: "#b0b7b0"
+                },
+                {
+                  xMetres: 36.390034631632254,
+                  widthMetres: 1,
+                  heightMetres: 2.1,
+                  color: "#b0b7b0"
+                }
+              ],
+              panelSeamPitchMetres: 4.5
+            }
+          }
+        },
+        official3D: {
+          summaryPath: "experiments/ordinary-ten/boxes/0363100012224669/3dbag-geometry-summary.json",
+          rectangleFill: 0.999,
+          courtyardArea: 0,
+          groundNAP: 1.0770000219345093,
+          dominantRoofHeightMetres: 10.071,
+          dominantRoofPlaneCount: 2
+        },
+        generationMilliseconds: 26,
+        reviewState: "Reviewed standard exterior; documented source dates and unseen-side approximations apply.",
+        sourceUrls: [
+          "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012224669",
+          "https://data.amsterdam.nl/data/geozoek?center=52.4123705,4.7617615&lagen=pano-pano2025bi"
+        ],
+        sourceCommit: "9ed72ffa39b0107d1a60c6efea88f7169b87c591"
+      },
+      {
+        id: "ordinary-0363100012067126",
+        buildingId: "NL.IMBAG.Pand.0363100012067126",
+        name: "Pale corrugated shed with faded coral stripes",
+        anchor: [
+          4.7641575,
+          52.410713
+        ],
+        cameraBearing: 161.98867550171224,
+        footprint: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [
+                4.763517,
+                52.41106
+              ],
+              [
+                4.76396,
+                52.410204
+              ],
+              [
+                4.764798,
+                52.410366
+              ],
+              [
+                4.764356,
+                52.411222
+              ],
+              [
+                4.763517,
+                52.41106
+              ]
+            ]
+          ]
+        },
+        height: 16.322999954223633,
+        modelUrl: "./models/ordinary-buildings/0363100012067126.glb",
+        bounds: {
+          min: [
+            -43.510231018066406,
+            0,
+            -56.679039001464844
+          ],
+          max: [
+            43.51023483276367,
+            16.322999954223633,
+            56.679039001464844
+          ]
+        },
+        triangles: 1058,
+        bytes: 146696,
+        materials: 2,
+        hash: "c723bd505e06960dd1bb292222f9675168251e6667f6f0a046284cb0dc551ec2",
+        referenceImages: [
+          "./ordinary-buildings-data/references/0363100012067126/reference-0363100012067126-2025-0.jpg",
+          "./ordinary-buildings-data/references/0363100012067126/reference-0363100012067126-2025-1.jpg",
+          "./ordinary-buildings-data/references/0363100012067126/reference-0363100012067126-2025-2.jpg"
+        ],
+        sourcePack: "experiments/ordinary-ten/boxes/0363100012067126",
+        traits: [
+          "2025 south views confirm a pale gray green corrugated metal hall with a flat edge and no domestic glazing grid.",
+          "Observed south face has three broad faded salmon vertical stripes, about1.5m wide, and two dark personnel doors about1\xD72.1m.",
+          "Low gray aggregate plinth about0.6m high. Use restrained metal material on unseen faces; do not extrapolate decorative stripes."
+        ],
+        simplifications: [
+          "Only observed primary facades support pattern placement; other faces use neutral industrial material.",
+          "Door counts and dimensions are approximate visual estimates, not surveys.",
+          "Omit minor branding; do not invent building-name text.",
+          "Native rectangular gable preserves two fitted12.5degree roofplanes; tiny perimeter survey irregularities omitted.",
+          "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained."
+        ],
+        heightEvidence: "Official fitted roof plane vertices minus b3_h_maaiveld; dominant regions clipped to native footprint, eaves and local roof slopes retained. Equipment planes below0.8% footprint area omitted.",
+        facadeRecipe: {
+          kind: "corrugated",
+          levels: 1,
+          corrugationPitchMetres: 0.2,
+          corrugationColor: "#909b98",
+          plinthHeightMetres: 0.6,
+          edges: {
+            "1": {
+              stripes: [
+                {
+                  fraction: 0.2,
+                  widthMetres: 1.5,
+                  color: "#bb9090"
+                },
+                {
+                  fraction: 0.5,
+                  widthMetres: 1.5,
+                  color: "#bb9090"
+                },
+                {
+                  fraction: 0.8,
+                  widthMetres: 1.5,
+                  color: "#bb9090"
+                }
+              ],
+              doors: [
+                {
+                  xMetres: 16.71418564826386,
+                  widthMetres: 1,
+                  heightMetres: 2.1
+                },
+                {
+                  xMetres: 38.800788112041104,
+                  widthMetres: 1,
+                  heightMetres: 2.1
+                }
+              ]
+            }
+          }
+        },
+        official3D: {
+          summaryPath: "experiments/ordinary-ten/boxes/0363100012067126/3dbag-geometry-summary.json",
+          rectangleFill: 1,
+          courtyardArea: 0,
+          groundNAP: 1.11899995803833,
+          dominantRoofPlaneCount: 2
+        },
+        generationMilliseconds: 26,
+        reviewState: "Reviewed standard exterior; documented source dates and unseen-side approximations apply.",
+        sourceUrls: [
+          "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012067126",
+          "https://data.amsterdam.nl/data/geozoek?center=52.410713,4.7641575&lagen=pano-pano2025bi"
+        ],
+        sourceCommit: "9ed72ffa39b0107d1a60c6efea88f7169b87c591"
+      },
+      {
+        id: "ordinary-0363100012159282",
+        buildingId: "NL.IMBAG.Pand.0363100012159282",
+        name: "White metal industrial box with concrete lower wall",
+        anchor: [
+          4.7512865,
+          52.405080999999996
+        ],
+        cameraBearing: 282.8297665422222,
+        footprint: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [
+                4.751975,
+                52.405421
+              ],
+              [
+                4.750883,
+                52.405563
+              ],
+              [
+                4.750612,
+                52.404781
+              ],
+              [
+                4.750605,
+                52.404782
+              ],
+              [
+                4.750604,
+                52.404779
+              ],
+              [
+                4.750611,
+                52.404778
+              ],
+              [
+                4.750598,
+                52.404741
+              ],
+              [
+                4.751691,
+                52.404599
+              ],
+              [
+                4.751704,
+                52.404636
+              ],
+              [
+                4.751711,
+                52.404635
+              ],
+              [
+                4.751712,
+                52.404639
+              ],
+              [
+                4.751705,
+                52.40464
+              ],
+              [
+                4.751975,
+                52.405421
+              ]
+            ]
+          ]
+        },
+        height: 13.608752250671387,
+        modelUrl: "./models/ordinary-buildings/0363100012159282.glb",
+        bounds: {
+          min: [
+            -46.77606964111328,
+            0,
+            -53.67384338378906
+          ],
+          max: [
+            46.776084899902344,
+            13.608752250671387,
+            53.67384338378906
+          ]
+        },
+        triangles: 1182,
+        bytes: 197156,
+        materials: 2,
+        hash: "a39a8ad7058df126df507f97a767bb5b6561788be9877e15215f637e2df5c1be",
+        referenceImages: [
+          "./ordinary-buildings-data/references/0363100012159282/reference-0363100012159282-2025-0.jpg",
+          "./ordinary-buildings-data/references/0363100012159282/reference-0363100012159282-2025-1.jpg",
+          "./ordinary-buildings-data/references/0363100012159282/reference-0363100012159282-2025-2.jpg"
+        ],
+        sourcePack: "experiments/ordinary-ten/boxes/0363100012159282",
+        traits: [
+          "Clear2025 west views show the exact2159282 white corrugated metal box with a gray concrete lower wall about3m high.",
+          "Main wall is mostly blank white metal with horizontal panel joints and stronger vertical bay seams around4.5\u20135m apart. Sparse dark personnel doors about1\xD72.1m sit in the lower concrete strip.",
+          "No supported window grid or tall loading doors on photographed west face; preserve neighboring sister sheds separately."
+        ],
+        simplifications: [
+          "Unseen faces use restrained same industrial material, without invented doors or glazing.",
+          "Door count and panel spacing are visual estimates.",
+          "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained."
+        ],
+        sourceTiming: null,
+        heightEvidence: "Official fitted roof plane vertices minus b3_h_maaiveld; dominant regions clipped to native footprint, eaves and local roof slopes retained. Equipment planes below0.8% footprint area omitted.",
+        facadeRecipe: {
+          kind: "corrugated",
+          levels: 1,
+          corrugationPitchMetres: 0.25,
+          corrugationColor: "#c4ccc8",
+          plinthHeightMetres: 3,
+          plinthColor: "#a1a9a5",
+          horizontalJointPitchMetres: 1.2,
+          edges: {
+            "1": {
+              doors: [
+                {
+                  xMetres: 10.380593692053823,
+                  widthMetres: 1,
+                  heightMetres: 2.1,
+                  color: "#3d4544"
+                },
+                {
+                  xMetres: 40.03943281220761,
+                  widthMetres: 1,
+                  heightMetres: 2.1,
+                  color: "#3d4544"
+                }
+              ],
+              panelSeamPitchMetres: 4.5
+            },
+            "2": {
+              panelSeamPitchMetres: 4.5
+            },
+            "3": {
+              panelSeamPitchMetres: 4.5
+            },
+            "4": {
+              panelSeamPitchMetres: 4.5
+            },
+            "5": {
+              panelSeamPitchMetres: 4.5
+            }
+          }
+        },
+        official3D: {
+          summaryPath: "experiments/ordinary-ten/boxes/0363100012159282/3dbag-geometry-summary.json",
+          rectangleFill: 0.987,
+          courtyardArea: 0,
+          groundNAP: 0.4050000011920929,
+          dominantRoofHeightMetres: 12.963,
+          dominantRoofPlaneCount: 2
+        },
+        generationMilliseconds: 24,
+        reviewState: "Reviewed standard exterior; documented source dates and unseen-side approximations apply.",
+        sourceUrls: [
+          "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012159282",
+          "https://data.amsterdam.nl/data/geozoek?center=52.405080999999996,4.7512865&lagen=pano-pano2025bi"
+        ],
+        sourceCommit: "9ed72ffa39b0107d1a60c6efea88f7169b87c591"
+      },
+      {
+        id: "ordinary-0363100012238052",
+        buildingId: "NL.IMBAG.Pand.0363100012238052",
+        name: "Tall charcoal ribbed industrial box with low southwest strip",
+        anchor: [
+          4.937098000000001,
+          52.3134115
+        ],
+        cameraBearing: 145.9215859028709,
+        footprint: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [
+                4.938083,
+                52.313292
+              ],
+              [
+                4.938083,
+                52.313292
+              ],
+              [
+                4.938058,
+                52.31332
+              ],
+              [
+                4.938071,
+                52.313349
+              ],
+              [
+                4.938119,
+                52.313365
+              ],
+              [
+                4.938092,
+                52.313395
+              ],
+              [
+                4.938106,
+                52.313423
+              ],
+              [
+                4.938151,
+                52.313439
+              ],
+              [
+                4.938151,
+                52.313439
+              ],
+              [
+                4.937673,
+                52.313964
+              ],
+              [
+                4.937673,
+                52.313964
+              ],
+              [
+                4.937627,
+                52.313948
+              ],
+              [
+                4.937581,
+                52.313956
+              ],
+              [
+                4.937554,
+                52.313985
+              ],
+              [
+                4.937507,
+                52.31397
+              ],
+              [
+                4.93746,
+                52.313977
+              ],
+              [
+                4.937434,
+                52.314005
+              ],
+              [
+                4.937433,
+                52.314005
+              ],
+              [
+                4.936116,
+                52.313555
+              ],
+              [
+                4.936116,
+                52.313554
+              ],
+              [
+                4.936118,
+                52.313552
+              ],
+              [
+                4.936045,
+                52.313527
+              ],
+              [
+                4.936691,
+                52.312818
+              ],
+              [
+                4.936764,
+                52.312843
+              ],
+              [
+                4.936766,
+                52.312841
+              ],
+              [
+                4.936767,
+                52.312841
+              ],
+              [
+                4.938083,
+                52.313292
+              ]
+            ]
+          ]
+        },
+        height: 31.42022705078125,
+        modelUrl: "./models/ordinary-buildings/0363100012238052.glb",
+        bounds: {
+          min: [
+            -71.84332275390625,
+            0,
+            -66.0841293334961
+          ],
+          max: [
+            71.67719268798828,
+            31.42022705078125,
+            66.08412170410156
+          ]
+        },
+        triangles: 1796,
+        bytes: 325680,
+        materials: 2,
+        hash: "a8ef4d387120b97114b4645522aedf79782bbdacfb7d785c4bcd529d19eb36d8",
+        referenceImages: [
+          "./ordinary-buildings-data/references/0363100012238052/reference-0363100012238052-2025-0.jpg",
+          "./ordinary-buildings-data/references/0363100012238052/reference-0363100012238052-2025-1.jpg",
+          "./ordinary-buildings-data/references/0363100012238052/reference-0363100012238052-2025-2.jpg",
+          "./ordinary-buildings-data/references/0363100012238052/reference-0363100012238052-2025-3.jpg"
+        ],
+        sourcePack: "experiments/ordinary-ten/tall-boxes/0363100012238052",
+        traits: [
+          "One tall nearly rectangular volume, about31m high, no office window grid",
+          "Dense full-height vertical metal ribs from about5m base to eaves",
+          "Ground treatment differs by long side: SE charcoal doors/panels; NW pale concrete panels",
+          "Low5m strip separate from tall shell on SW short face",
+          "Small roof equipment does not define whole-building height"
+        ],
+        simplifications: [
+          "Four34mroofequipmenthousings omitted; they do not define occupied buildingheight.",
+          "Unobserved northeast and lowstripfaces conservatively carry plain darkbase and uppermetalassembly; no inventedglazing.",
+          "Source mainandlowstriproofplanes retained via nativeplanintersections.",
+          "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained."
+        ],
+        sourceTiming: {
+          checkedAt: "2026-10-06T19:54:30.522Z"
+        },
+        heightEvidence: "Official fitted roof plane vertices minus b3_h_maaiveld; dominant regions clipped to native footprint, eaves and local roof slopes retained. Equipment planes below0.8% footprint area omitted.",
+        facadeRecipe: {
+          kind: "corrugated",
+          levels: 1,
+          corrugationPitchMetres: 0.25,
+          corrugationColor: "#252c2f",
+          plinthHeightMetres: 5.4,
+          plinthColor: "#55575a",
+          edges: {
+            "8": {},
+            "17": {
+              plinthColor: "#c7ccc9",
+              panelSeamPitchMetres: 3.2,
+              panelSeamColor: "#8b9491",
+              baseVents: {
+                pitchMetres: 3.2,
+                sillMetres: 4.4,
+                widthMetres: 0.45,
+                heightMetres: 0.3
+              },
+              lintelBand: {
+                bottomMetres: 5,
+                heightMetres: 0.4,
+                color: "#303839"
+              }
+            },
+            "21": {},
+            "25": {
+              doors: [
+                {
+                  xMetres: 10,
+                  widthMetres: 2.5,
+                  heightMetres: 3.7,
+                  color: "#262b2c"
+                },
+                {
+                  xMetres: 45,
+                  widthMetres: 2.5,
+                  heightMetres: 3.7,
+                  color: "#262b2c"
+                },
+                {
+                  xMetres: 75,
+                  widthMetres: 2.5,
+                  heightMetres: 3.7,
+                  color: "#262b2c"
+                }
+              ]
+            }
+          }
+        },
+        official3D: {
+          summaryPath: "experiments/ordinary-ten/tall-boxes/0363100012238052/geometry-summary.json",
+          groundNAP: -3.1649999618530273,
+          annexHeightMetres: 5.27,
+          annexFootprintFraction: 0.048,
+          rectangleFill: 0.981,
+          courtyardArea: 0,
+          dominantRoofPlaneCount: 2
+        },
+        generationMilliseconds: 58,
+        reviewState: "Reviewed standard exterior; documented source dates and unseen-side approximations apply.",
+        sourceUrls: [
+          "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012238052",
+          "https://data.amsterdam.nl/data/geozoek?center=52.3134115,4.937098000000001&lagen=pano-pano2025bi"
+        ],
+        sourceCommit: "9ed72ffa39b0107d1a60c6efea88f7169b87c591"
+      }
+    ]
+  };
+
+  // src/canalRecall/landmarks/ordinaryModels.ts
+  var models = catalogue_default.models;
+  var ORDINARY_BUILDING_VERSIONS = Object.fromEntries(models.map((m) => [m.id, m.hash]));
+  var ORDINARY_BUILDINGS = models.map((m) => ({
+    id: m.id,
+    assetKind: "ordinary-building",
+    name: m.name,
+    landmarkId: "",
+    modelUrl: m.modelUrl,
+    suppressOsmIds: [m.buildingId, ...m.aliases ?? []],
+    spatialSuppression: false,
+    buildingFootprint: m.footprint,
+    heightMetres: m.height,
+    heightToleranceMetres: 0.5,
+    groundAltitudeMetres: 0,
+    facingOffsetDegrees: 0,
+    // Radius is used for visibility/loading only; suppression always uses exact IDs.
+    footprint: { centre: m.anchor, headingDegrees: 90, lengthMetres: m.bounds.max[0] - m.bounds.min[0], widthMetres: m.bounds.max[2] - m.bounds.min[2] },
+    surveyed: { anchor: m.anchor, northOffsetDegrees: 0, source: "Installed native footprint; source-specific facade and roof recipe. Heights/details retain documented approximations." },
+    attribution: { title: m.name, author: "Map Recall", sourceUrl: m.sourceUrls?.[0] ?? "https://data.amsterdam.nl/", licence: "Original project asset", licenceUrl: "./LICENSE", modifications: "Original procedural facade patterns and shallow geometry on native surveyed footprints. No reference-photo pixels or imported model geometry. See ordinary building recipe for source/height uncertainties." }
+  }));
+
   // src/canalRecall/landmarks/signatureModels.ts
   var EXPECTED_HEIGHTS = {
     "palace-on-the-dam": { metres: 55, tolerance: 1.5 }
@@ -10383,7 +11934,7 @@ Map source: ${osmUrl(places[i][0])}`);
       }
     };
   }
-  var SIGNATURE_MODELS = [...surveyedLandmarks_default.filter((entry) => !MANUAL_LANDMARKS.some((model) => model.id === entry.id)).map(specFromCatalogue), ...MANUAL_LANDMARKS];
+  var SIGNATURE_MODELS = [...surveyedLandmarks_default.filter((entry) => !MANUAL_LANDMARKS.some((model) => model.id === entry.id)).map(specFromCatalogue), ...MANUAL_LANDMARKS, ...ORDINARY_BUILDINGS];
 
   // src/canalRecall/game/manual-poi-data.json
   var manual_poi_data_default = [
@@ -11431,6 +12982,103 @@ Map source: ${osmUrl(places[i][0])}`);
         ],
         sourceUrl: "https://www.pulitzeramsterdam.com/en/about-us/",
         reason: "Source principal hotel entrance Prinsengracht323 on surveyed frontage; retained genuine hotel OSM identity."
+      }
+    },
+    {
+      modelId: "de-gooyer",
+      landmarkId: "extract_landmarks_33057057",
+      osmId: "n33057057",
+      name: "De Gooyer",
+      coordinates: [
+        4.9261523,
+        52.3667975
+      ],
+      description: "De Gooyer is the Netherlands\u2019 tallest wooden windmill. Its octagonal grain mill was built around 1725 and moved here in 1814 after a barracks obstructed its wind. It stands on the raised square brick base of a former city water mill. The gallery is 17.8 metres above ground and the sails span 26.6 metres. Brouwerij \u2019t IJ occupies the separate former bathhouse next door.",
+      sourceUrl: "https://stadsherstel.nl/monumenten/funenkade-5-molen-de-gooyer/",
+      additionalSources: [
+        "https://www.molens.nl/ontdek-molens/alle-molens/de-gooyer-te-amsterdam",
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/1107"
+      ],
+      locationNote: "Exterior viewing destination. Geographic pin uses genuine mapped mill node n33057057; route finish uses public Funenkade pedestrian/footway junction n1450614806 north of the mill, not its inaccessible interior. Confirm chosen destination and failure behavior in live route.",
+      destinationCoordinates: [
+        4.9261089,
+        52.3669
+      ],
+      destinationEvidence: {
+        sourceUrl: "https://www.openstreetmap.org/way/146834049",
+        cachedSource: "models/de-gooyer/files/osm-map.xml",
+        wayIds: [
+          "w146834049",
+          "w136179600"
+        ],
+        nodeId: "n1450614806",
+        tags: "highway=pedestrian meets highway=footway; name=Funenkade",
+        status: "Source-supported public outdoor approach; not represented as an indoor mill entrance"
+      },
+      center: [
+        52.3667975,
+        4.9261523
+      ],
+      destinationOverride: {
+        center: [
+          52.3669,
+          4.9261089
+        ],
+        sourceUrl: "https://stadsherstel.nl/monumenten/funenkade-5-molen-de-gooyer/",
+        reason: "Source-backed public exterior viewing point."
+      }
+    },
+    {
+      id: "extract_landmarks_2781756860",
+      name: "Former Nieuw Dakota",
+      osmId: "n2781756860",
+      osmType: "node",
+      coordinates: [
+        4.8920341,
+        52.4004374
+      ],
+      destinationCoordinates: [
+        4.89194,
+        52.400438
+      ],
+      website: "https://www.nieuwdakota.com/",
+      description: "Nieuw Dakota was an independent exhibition space for contemporary art on the NDSM wharf. Founded in 2009, it presented experimental exhibitions and performances for fifteen years. Its owner says the venue closed to the public in January 2025 while exploring a restart; this destination marks the former venue\u2019s exterior.",
+      facts: [
+        {
+          text: "The organization says Nieuw Dakota is currently not accessible to the public and closed its public doors from January 2025.",
+          source: "https://www.nieuwdakota.com/nl/steun-ons/"
+        },
+        {
+          text: "Founded in 2009, Nieuw Dakota offered experimental exhibitions, performances, tours and educational activities on the NDSM wharf.",
+          source: "https://www.nieuwdakota.com/nl/over/"
+        }
+      ],
+      identityNotes: {
+        bagPand: "0363100012064117",
+        osmBuilding: "w280620202",
+        osmPOI: "n2781756860",
+        canonicalPOI: "extract_landmarks_2781756860",
+        sharedMappedPlace: "n2781756856",
+        sharedVBO: "0363010011872205",
+        relationship: "41B former Nieuw Dakota shares one current physical Pand with41A mappedVous Etes Ici. Current photo has Beautiful Distress House paint on northern gable; active tenant identity not inferred from old OSM label or paint. Preserve both separate physical fronts and entrances. No duplicate physical asset or invented compound destination."
+      },
+      preserveExistingFacts: true,
+      destinationReason: "West public street by former Nieuw Dakota door, not inside private warehouse; route-check necessary. Explicit requested former venue, not advertised as open museum.",
+      integrationState: "Genuine mapped shop-art node absent current landmark extract. Promote same identity with honest former/closure card. Retain mapped41A place and separate door; no second asset or invented host destination.",
+      modelId: "nieuw-dakota",
+      landmarkId: "extract_landmarks_2781756860",
+      sourceUrl: "https://www.nieuwdakota.com/nl/over/",
+      center: [
+        52.4004374,
+        4.8920341
+      ],
+      destinationOverride: {
+        center: [
+          52.400438,
+          4.89194
+        ],
+        sourceUrl: "https://www.nieuwdakota.com/nl/over/",
+        reason: "West public street by former Nieuw Dakota door, not inside private warehouse; route-check necessary. Explicit requested former venue, not advertised as open museum."
       }
     }
   ];

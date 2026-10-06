@@ -1,0 +1,38 @@
+{
+  "id": "de-gooyer",
+  "name": "De Gooyer",
+  "landmarkId": "extract_landmarks_33057057",
+  "modelUrl": "./models/de-gooyer.glb",
+  "suppressOsmIds": [
+    "w269052487",
+    "NL.IMBAG.Pand.0363100012169758"
+  ],
+  "spatialSuppression": false,
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "footprint": {
+    "centre": [
+      4.926172908055607,
+      52.36680769280531
+    ],
+    "headingDegrees": 84.8,
+    "lengthMetres": 10.97,
+    "widthMetres": 11.05
+  },
+  "surveyed": {
+    "anchor": [
+      4.926172908055607,
+      52.36680769280531
+    ],
+    "northOffsetDegrees": -5.2,
+    "source": "Current in-use BAG0363100012169758 rectangle, official Funenkade5 VBO0363010000641344. Author +X bearing84.8deg from BAG long edges. Gallery17.8m and sailspan26.6m from owner. Tower/cap heights photo-calibrated approximation; cap and stationary sails are a representative rotational state."
+  },
+  "attribution": {
+    "title": "De Gooyer",
+    "author": "Map Recall",
+    "sourceUrl": "https://stadsherstel.nl/monumenten/funenkade-5-molen-de-gooyer/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native-scale square brick base, thatched octagons, open gallery, rounded cap, old-Dutch lattice sails; no imported meshes or photo pixels."
+  }
+}

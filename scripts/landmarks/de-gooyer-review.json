@@ -1,0 +1,176 @@
+{
+  "modelId": "de-gooyer",
+  "status": "accepted-source-gallery-native-runtime",
+  "referenceImages": [
+    "artifacts/landmarks/de-gooyer/references/current-photo.jpg",
+    "artifacts/landmarks/de-gooyer/references/elevation.jpg",
+    "artifacts/landmarks/de-gooyer/references/full-front.jpg",
+    "artifacts/landmarks/de-gooyer/references/context-2022.webp"
+  ],
+  "requiredReview": [
+    "Gallerydefault and four lowerrotations: two thatchedoctagons, gallery17.8m, whitebraces, roundedcap, exposedlattice sails.",
+    "Native live viewsboth canalsides; exact millreplacement and adjoiningbreweryBAG retained.",
+    "Selectablegenuine nodePOI destination and explicit routefailure contract; geographical visiblepin; actualpointer card."
+  ],
+  "limitations": [
+    "Tower/cap dimensions remain photo-calibrated approximations.",
+    "No visualacceptance until coordinatorgallery and livegame checks.",
+    "SketchUpHTTPshell cached; viewer/model geometry unavailable in webtool."
+  ],
+  "cpuCheck": {
+    "command": "node --import tsx scripts/check-de-gooyer-geometry.ts",
+    "status": "passed",
+    "triangles": 3880,
+    "maxHeight": 41.6018
+  },
+  "independentCpuPreflight": {
+    "reviewedOn": "2026-10-05",
+    "reviewer": "independent gooyer_dakota_preflight worker",
+    "scope": "Exact decoded-input GLB CPU z-buffer front/opposite source comparison only; gallery/game acceptance pending",
+    "sourceFilesInspected": [
+      "artifacts/landmarks/de-gooyer/references/full-front.jpg",
+      "artifacts/landmarks/de-gooyer/references/current-photo.jpg",
+      "artifacts/landmarks/de-gooyer/references/context-2022.webp",
+      "artifacts/landmarks/de-gooyer/references/elevation.jpg",
+      "artifacts/landmarks/de-gooyer/references/rce.html",
+      "artifacts/landmarks/de-gooyer/references/owner.html",
+      "artifacts/landmarks/de-gooyer/references/dhm.html",
+      "artifacts/landmarks/de-gooyer/references/manifest.json"
+    ],
+    "renderFilesInspected": [
+      "artifacts/landmark-offline-preview/de-gooyer-cpu-front.png",
+      "artifacts/landmark-offline-preview/de-gooyer-cpu-opposite.png"
+    ],
+    "findings": [
+      "Recognizable square masonry base, straight-sided lower octagon, tapered upper octagon, open stelling, white gallery braces and four porous lattice sails are present.",
+      "RCE monument 1107 explicitly supports the straight-sided under-gallery octagon; an initial visual concern about the short base flare was withdrawn after reading the cached description.",
+      "Rounded cap and green/white cheekboards are present, but boat-cap/apron geometry is simplified relative to the current close-up; low-angle native views must assess this.",
+      "Source context shows separate brewery; spec/check suppress only mill OSM/BAG identities and exclude brewery BAG 0363100012169757. Actual drawn neighbor retention remains unverified.",
+      "No invented identifying words were observed."
+    ],
+    "cpuGeometry": "PASS: 3880 triangles; gallery opening, first-hit windows/door, sail/gallery clearance and exact mill-only identities",
+    "result": "No concrete blocking source defect found in bounded CPU preflight; no visual acceptance granted",
+    "builderChanged": false,
+    "reexportRequired": false,
+    "unresolved": [
+      "Native low-angle gallery rotations, live placement/suppression, drawn brewery retention and destination/pin/pointer card acceptance require root review."
+    ]
+  },
+  "finishPreflight": {
+    "reviewedOn": "2026-10-06",
+    "reviewer": "Fresh finish_de_gooyer worker",
+    "sourceArchive": "models/de-gooyer at 9926aa1fba89e7758fc9e11d1b0dfde0fb4fc4aa",
+    "sourceFilesInspected": [
+      "current-photo.jpg",
+      "elevation.jpg",
+      "full-front.jpg",
+      "context-2022.webp",
+      "rce.html",
+      "osm-map.xml"
+    ],
+    "finding": "Original CPU apron was a plain rectangular panel; cached close-up supports a scalloped white lower edge and two relief brackets. Added bounded native geometry; preserved failed original CPU images. Lower octagon stays straight-sided per RCE. Rounded cap, white braces and porous sail lattice retained.",
+    "changedFiles": [
+      "de-gooyer-builder.ts",
+      "check-de-gooyer-geometry.ts",
+      "de-gooyer-poi.json",
+      "de-gooyer-footprints.json"
+    ],
+    "geometryCheck": {
+      "status": "passed",
+      "triangles": 4088,
+      "height": 41.60177993774414,
+      "risksChecked": [
+        "curved apron first-hit visibility",
+        "green cheek panel visibility around stock",
+        "white relief bracket visibility",
+        "open gallery",
+        "exposed windows",
+        "sail clearance",
+        "exact mill-only suppression"
+      ]
+    },
+    "cameraEvidence": "artifacts/landmarks/de-gooyer-finish-20261006/native-cameras.json",
+    "retainedNeighborEvidence": "artifacts/landmarks/de-gooyer-finish-20261006/retained-neighbors.json",
+    "pending": [
+      "Coordinator revised export and CPU inspection",
+      "Independent gallery/live recognition",
+      "Native drawn residency of six installed neighbors",
+      "Genuine destination route, geographic pin and actual pointer card"
+    ]
+  },
+  "independentFinalReview": {
+    "reviewedOn": "2026-10-06",
+    "reviewer": "independent review_dakota_pllek worker",
+    "scope": "Failure-seeking cached-source, final4088-triangle CPU check, five gallery views and actual native two-side/proof comparison",
+    "assetSha256": "2ba75a134a27a8e7719a9f6d74ae475bfcd944775b27f0da2e9c6710e83f5603",
+    "assetBytes": 67512,
+    "triangles": 4088,
+    "sourceImagesInspected": [
+      "artifacts/landmarks/de-gooyer/references/full-front.jpg",
+      "artifacts/landmarks/de-gooyer/references/current-photo.jpg",
+      "artifacts/landmarks/de-gooyer/references/context-2022.webp"
+    ],
+    "textSourcesInspected": [
+      "artifacts/landmarks/de-gooyer/references/rce.html"
+    ],
+    "galleryFilesInspected": [
+      "artifacts/landmark-release-check/de-gooyer-review/gallery.png",
+      "artifacts/landmark-release-check/de-gooyer-review/gallery-angle-0.png",
+      "artifacts/landmark-release-check/de-gooyer-review/gallery-angle-1.png",
+      "artifacts/landmark-release-check/de-gooyer-review/gallery-angle-2.png",
+      "artifacts/landmark-release-check/de-gooyer-review/gallery-angle-3.png"
+    ],
+    "nativeFilesInspected": [
+      "artifacts/landmark-release-check/de-gooyer-review/neutral-front.png",
+      "artifacts/landmark-release-check/de-gooyer-review/live-rear.png",
+      "artifacts/landmark-release-check/de-gooyer-review/placement-proof.json",
+      "artifacts/landmark-release-check/de-gooyer-review/physical-card-proof.json",
+      "artifacts/landmark-release-check/de-gooyer-review/performance-comparison.json"
+    ],
+    "findings": [
+      "Square masonry base, straight-sided lower octagon and tapered upper mill body agree with cached source and RCE1107 description.",
+      "Open ring gallery and pale braces remain recognizable; four porous lattice sails and differentiated green/white cap/apron assemblies stay physically separated.",
+      "Rounded cap and ornamental apron are coarse original photo-calibrated geometry, not an exact surveyed carving reconstruction; recognition survives all reviewed gallery angles.",
+      "Native two-side screenshots retain brewery and actual surrounding geometry without padded suppression; sail tips are cropped in close native framing but full gallery silhouette was reviewed.",
+      "Fixed chosen destination, geographic manual pin and physical pointer opening meaningful researched sourced card proven; final runtime fingerprint matches asset hash."
+    ],
+    "blockingSourceGeometryDefects": [],
+    "galleryAcceptance": true,
+    "nativeGameAcceptance": true,
+    "runtimeProof": {
+      "assetVersion": "2ba75a134a27a8e7",
+      "nativeScale": 1,
+      "exactMasksAndNoOldPyramids": true,
+      "sixNeighborsResidentDrawableNotHidden": true,
+      "destinationPinFixedFinishPhysicalCard": true
+    },
+    "performance": {
+      "p50Ms": 8.3,
+      "p95Ms": 9.2,
+      "repeatP95Ms": 9.3,
+      "hiddenP95Ms": 8.9,
+      "scope": "Headless same stationary scene custom-draw comparison only; no whole-game or touch pan pass"
+    },
+    "remainingLimitations": [
+      "Tower/cap dimensions and apron profile photo-calibrated approximations.",
+      "Current game-scene neutral screenshots crop top sail tips, so complete silhouette acceptance relies on all gallery rotations.",
+      "Stationary headless timing does not establish mobile/touch/pan performance."
+    ],
+    "verdict": "PASS bounded final landmark acceptance; no blocking defect found"
+  },
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "336ad5747f53149c41107f5fd05f01dd49ca87cc",
+    "path": "models/de-gooyer",
+    "validationPath": "models/de-gooyer/validation/final-20261006",
+    "status": "originals and final source/gallery/native/fallback review evidence verified, committed and pushed"
+  },
+  "visualAccepted": true,
+  "rootAcceptance": {
+    "routePinPhysicalCard": "Actual UI chosen finish/pin/physical sourced card passed",
+    "native": "scale1, no bias/broad suppression, exact masks, source-genuine neighbors resident/drawn",
+    "fallback": "Actual entry composer restored ordinary fallback on simulated asset unavailable then reloaded, neighbors retained",
+    "performance": "Bounded stationary draw-cost comparison; no whole-game/touch performance claim",
+    "artifactPath": "models/de-gooyer/validation/final-20261006"
+  }
+}
