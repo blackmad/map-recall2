@@ -14,6 +14,8 @@ Preserve the current visual quality and researched/gallery/live-game acceptance 
 
 Do not add painted building-name words for identification. Keep only source-supported real signage that is a defining architectural feature, fitted to its actual panel and wall plane. Use the game map label for the POI name.
 
+For source-supported real signs, match the observed lettering family, letter shapes, weight, proportions and spacing as closely as the native geometry allows. Use the actual panel and wall plane; record an approximate font match when the exact typeface is unknown. Do not replace distinctive signage with generic pixel lettering.
+
 Every modeled POI building must be integrated into all three game surfaces:
 1. A selectable POI route destination.
 2. A geographically correct map pin and label.

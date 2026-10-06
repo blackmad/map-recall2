@@ -187,6 +187,8 @@ export function buildLandmarks(
       prominenceScore: feature.prominenceScore || 0,
       wikipediaUrl: feature.wikipediaUrl || '',
       sourceUrl: feature.sourceUrl,
+      researchSourceUrl: feature.researchSourceUrl,
+      researchDetail: feature.researchDetail,
       buildingIds: feature.buildingIds,
       wikidata: feature.wikidata || '',
       wikipedia: feature.wikipedia || '',

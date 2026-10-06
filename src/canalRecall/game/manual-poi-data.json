@@ -784,5 +784,92 @@
       "reason": "Cabralstraat1 public entrance between source-observed twin towers on native surveyed west edge; avoid inaccessible school courtyard centroid."
     },
     "sourceUrl": "https://www.inmidwest.nl/cabralstraat-1-het-monument/"
+  },
+  {
+    "modelId": "nikolaas-myrakerk",
+    "landmarkId": "extract_landmarks_2003244540",
+    "name": "Heilige Nikolaas van Myrakerk",
+    "description": "The Tichelkerk was built in 1912 as the Capuchins’ Sint-Antoniuskerk and monastery. The Orthodox Nikolaas parish acquired the complex in 2004–2005. Its modest canal-side entrance leads into an open courtyard, while the long Romanesque church facade lines Tichelstraat. The former Capuchin church and monastery were largely built by the friars themselves; the complex became home to the Orthodox Nikolaas parish in 2005.",
+    "sourceUrl": "https://orthodox-amsterdam.nl/wie-wijzijn/",
+    "additionalSources": [
+      "https://amsterdamopdekaart.nl/1850-1940/Tichelstraat/Tichelkerk",
+      "https://www.raadvankerken.nl/nieuws/2012/08/100-jaar-tichelkerk/"
+    ]
+  },
+  {
+    "modelId": "naco-house",
+    "landmarkId": "extract_landmarks_1769455774",
+    "name": "NACO-house",
+    "funFact": "This timber shipping office was designed by G.F. la Croix in 1919. Its projecting pointed roof mixes Amsterdam School architecture with Indonesian influences. Moved to Zaandam in 2004 for the expansion of Centraal Station, it returned to Amsterdam on 13 December 2021 after restoration.",
+    "sourceUrl": "https://stadsherstel.nl/monumenten/de-ruijterkade-naco-huisje/",
+    "additionalSources": [
+      "https://monumentenregister.cultureelerfgoed.nl/monumenten/518409"
+    ]
+  },
+  {
+    "modelId": "jeruzalemkerk",
+    "landmarkId": "extract_landmarks_2017340658",
+    "name": "Jeruzalemkerk",
+    "funFact": "Ferdinand B. Jantzen designed this Amsterdam School church, opened in1929, as one ensemble with its attached corner apartments. The stepped cubic brick volumes and squat bell tower frame three entrances. Its stained-glass program moves from Creation to Paradise and the heavenly Jerusalem, and Jantzen designed the original interior fittings as well.",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/527155",
+    "additionalSources": [
+      "https://www.jeruzalem-kerk.nl/ons-gebouw/uniek-monument/"
+    ]
+  },
+  {
+    "modelId": "blauwe-theehuis",
+    "name": "Blauwe Theehuis",
+    "description": "The pavilion combines an eight-pointed ground-floor plan with a twelve-sided upper room, an open circular roof crown and a terrace carried by twelve blue steel columns. The Baanders brothers designed it in the Nieuwe Bouwen style; it opened in 1937 after the previous tea house burned down.",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/504760",
+    "center": [
+      52.358848,
+      4.87258
+    ],
+    "additionalSources": [
+      {
+        "title": "RCE monument 504760",
+        "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/504760"
+      },
+      {
+        "title": "Brouwerij ’t IJ — Blauwe Theehuis",
+        "url": "https://brouwerijhetij.nl/en/tasting-rooms/t-blauwe-theehuis"
+      }
+    ]
+  },
+  {
+    "modelId": "groot-melkhuis",
+    "name": "Groot Melkhuis",
+    "description": "This café began as a farm in 1874, selling fresh milk from cows grazing where Festina’s tennis courts now stand. Park maintenance was partly funded by its rent. The present house gained its surrounding ground-floor extensions in 1938.",
+    "sourceUrl": "https://grootmelkhuis.nl/historie/",
+    "center": [
+      52.3585441,
+      4.8684443
+    ],
+    "additionalSources": [
+      {
+        "title": "Groot Melkhuis history",
+        "url": "https://grootmelkhuis.nl/historie/"
+      }
+    ]
+  },
+  {
+    "modelId": "beest-het-lab",
+    "name": "Beest Boulders Het Lab",
+    "description": "Het Lab is a bouldering hall at Transformatorweg32 in a former industrial warehouse. Bouldering uses short climbing routes above landing mats, without ropes. The converted hall combines climbing walls, a training area and a cafe; its brick exterior, clerestory glazing and sawtooth factory roof retain the industrial character of Sloterdijk. Het Lab and the larger Beest Boulders Amsterdam are separate venues.",
+    "sourceUrl": "https://beestboulders.com/boulderen/het-lab-amsterdam/",
+    "center": [
+      52.392268,
+      4.8512397
+    ],
+    "additionalSources": [
+      {
+        "title": "Operator: Het Lab Amsterdam",
+        "url": "https://beestboulders.com/boulderen/het-lab-amsterdam/"
+      },
+      {
+        "title": "I amsterdam: Amsterdam bouldering venues",
+        "url": "https://www.iamsterdam.com/en/see-and-do/nature-and-active/climbing-and-bouldering-in-amsterdam"
+      }
+    ]
   }
 ]

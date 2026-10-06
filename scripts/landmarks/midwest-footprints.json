@@ -2534,5 +2534,88 @@
       "failure": "Paired south piers and recessed center groove; unsupported western red rectangular plinth flap.",
       "codeGeometryCheck": "Pass unexported,10147 triangles; gallery/export/native-scene acceptance pending."
     }
+  },
+  "realSignRepair": {
+    "date": "2026-10-06",
+    "status": "geometry-passed-awaiting-coordinator-gallery-live-review",
+    "sourceFiles": [
+      "models/midwest/files/ref-0.jpg",
+      "models/midwest/files/user-cabral-sign-20261006.png"
+    ],
+    "sourceAcquisition": "models/midwest/user-sign-acquisition.json",
+    "sourceArchiveCommit": "pending coordinator private source sync",
+    "observation": "Real pale uppercase MIDWEST lettering sits on two narrow dark horizontal supports in the brick fascia above the Cabral west glazed ladder. Ref-0 clearly shows broad heavy M/W, narrow I, curved open-counter D and a stylized stepped S. The older entrance.jpg lacks the contemporary sign; it is not evidence to omit the user-reported current assembly.",
+    "font": "Hand-authored original geometric/Art Deco block silhouettes; approximate observed width, weight, tracking and distinctive forms. Exact typeface is unidentified and is not claimed.",
+    "geometry": {
+      "westFacadeX": -20.47,
+      "westFacadeAngleRadians": -1.5707963267948966,
+      "centreZ": 1.25,
+      "baselineMetres": 7.49,
+      "letterHeightMetres": 0.49,
+      "overallWidthMetres": 4.05,
+      "normalOffsetMetres": 0.18,
+      "letterDepthMetres": 0.045,
+      "darkSupportWidthMetres": 4.38,
+      "supportDescription": "Two narrow dark rails supported by native brick fascia; no floating carrier board",
+      "colour": "Pale letters use established white material; source reads pale greenish white, exact colour uncertain under photographic lighting",
+      "westFasciaCapMetres": 8.88
+    },
+    "confidence": "High wording, architectural position and broad glyph character; approximate dimensions, colour and exact curves",
+    "checks": [
+      "All seven letters first-hit at interior stroke points",
+      "D counter open to brick backing",
+      "Exposed dark rail ends visible",
+      "Physical brick directly behind each stroke, normal relief bounded below 140mm",
+      "Glyph bounds fit native fascia above glazing and below coping",
+      "No east duplicate; original glazing, source-boundary probes, gardens, roofs and exact suppression retained",
+      "Source-relative upper/lower blank brick clearances about1.84/2.02 glyph heights, bounded against ref-0 approximate1.86/2.05",
+      "First-hit source-calibrated west cap8.88m and brick band8.80m"
+    ],
+    "trianglesAfter": 10483,
+    "retainedFailedReviews": [
+      "artifacts/landmark-continuation-20261006/midwest-first-export-independent-review/review.json",
+      "artifacts/landmark-continuation-20261006/midwest-post-primary-repair-independent-review/review.json"
+    ],
+    "fasciaCalibrationRepair": {
+      "failedAssetSha256": "e9cd3737c10b2f7f22db7b0b17df2772e1b3f2aafc530aba6e3f830193a3dea5",
+      "failedReview": "artifacts/landmark-continuation-20261006/midwest-sign-independent-review/review.json",
+      "failure": "Former7.43m fascia cap compressed source brick blank band and crowded sign above doorway; moving letters alone could not fix both clearances.",
+      "sourceLandmarks": {
+        "ref-0.jpg": {
+          "centralParapetPixelYApprox": 285,
+          "centralParapetSurveyHeightMetres": 13.21,
+          "curvedDoorHeadPixelYApprox": 589,
+          "curvedDoorHeadExistingApproxHeightMetres": 6.5,
+          "fasciaCapPixelYApprox": 481,
+          "glyphTopPixelYApprox": 522,
+          "glyphBottomPixelYApprox": 544,
+          "linearPhotoPlaneScalePixelsPerMetreApprox": 45.6,
+          "derivedFasciaCapMetresApprox": 8.87,
+          "derivedLetterTopMetresApprox": 7.97,
+          "derivedLetterBottomMetresApprox": 7.49
+        },
+        "entrance.jpg": {
+          "groundPixelYApprox": 1210,
+          "centralParapetPixelYApprox": 285,
+          "upperRedFasciaCapPixelYApprox": 590,
+          "windowHeadPixelYApprox": 751,
+          "linearGroundParapetCalibrationMetresApprox": {
+            "fasciaCap": 8.85,
+            "windowHead": 6.55
+          }
+        }
+      },
+      "method": "Bounded manual same-facade photo-space calibration using surveyed13.21m central terrace/parapet and existing photo-supported6.5m curved doorway head. Independently cross-checked with older full entrance photograph using visible ground and same parapet. Perspective, pixel choices, coping thickness and ground visibility introduce uncertainty; these are architectural approximate dimensions, not surveyed cap/glyph heights.",
+      "scope": "West fascia height only; keep actual native wall plane, existing west curved head6.5m, west ladder top6.45m, surveyed13.21m central terrace, east treatment and all other models.",
+      "acceptedModelRatios": {
+        "upperClearanceGlyphHeights": 1.84,
+        "lowerClearanceGlyphHeights": 2.02
+      },
+      "sourceRatiosApprox": {
+        "upperClearanceGlyphHeights": 1.86,
+        "lowerClearanceGlyphHeights": 2.05
+      },
+      "status": "full geometry checker passed; exact new export/source-gallery/native review pending"
+    }
   }
 }

@@ -29,8 +29,10 @@ export function mergeManualPoiFeatures(features: readonly LandmarkFeature[], cit
         routeCenter: (fallback?.routeDestination?.center as LandmarkFeature['routeCenter'] | undefined) ?? existing?.routeCenter,
         type: existing?.type || 'landmark',
         // A researched description can improve a generic mapped summary while preserving extract facts.
-        funFact: existing?.funFact || (fallback?.preferDescription || !existing?.wikipediaExtract ? fallback?.description : undefined),
-        sourceUrl: existing?.sourceUrl || fallback?.sourceUrl || model.attribution.sourceUrl,
+        funFact: existing?.funFact || fallback?.funFact || (fallback?.preferDescription || !existing?.wikipediaExtract ? fallback?.description : undefined),
+        sourceUrl: (!existing?.funFact && fallback?.funFact ? fallback?.sourceUrl : existing?.sourceUrl) || fallback?.sourceUrl || model.attribution.sourceUrl,
+        researchSourceUrl: fallback?.sourceUrl || existing?.researchSourceUrl,
+        researchDetail: fallback?.funFact || fallback?.description || existing?.researchDetail,
         manualPoi: true,
         modelId: model.id,
         buildingIds: [...new Set([...(existing?.buildingIds ?? []), ...(model.suppressOsmIds ?? [])])],

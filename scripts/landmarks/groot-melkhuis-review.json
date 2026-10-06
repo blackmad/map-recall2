@@ -1,0 +1,238 @@
+{
+  "id": "groot-melkhuis",
+  "status": "Current source/gallery and native game integration verified; performance followup retained",
+  "referenceImages": [
+    "artifacts/landmarks/groot-melkhuis/references/Copy-of-EmiroSmolders-GrootMelkhuis-0331-2.jpg",
+    "artifacts/landmarks/groot-melkhuis/references/Copy-of-EmiroSmolders-GMH-03599-scaled.jpg",
+    "artifacts/landmarks/groot-melkhuis/references/Copy-of-EmiroSmolders-GrootMelkhuis-06810.jpg"
+  ],
+  "criticalReview": [
+    "White upper house and shallow hip; long ground veranda with cream mullions/red trim/green awnings",
+    "Current exact BAG scope only; north Festina clubhouse and sheds retained",
+    "Pondside external terrace left open; no rectangular parcel mass",
+    "Geographic pin, selected route destination and physical correct card click"
+  ],
+  "uncertainties": [
+    "3DBAG roof surfaces are distorted by vegetation; envelope height and photo-backed clean hip used",
+    "Upper storey dimensions derived from surveyed roof boundaries/photo; not a measured architectural elevation",
+    "No building-specific monument designation claimed; RCE 504839 describes park landscape",
+    "Beeldbank JS shell only; drawings unavailable"
+  ],
+  "acceptance": {
+    "gallery": true,
+    "liveGame": true,
+    "poiContract": true,
+    "privateSourceArchiveCommit": "9926aa1fba89e7758fc9e11d1b0dfde0fb4fc4aa",
+    "privateSourceArchivePath": "models/groot-melkhuis/",
+    "scope": "Original native-scale house-style exterior; source-derived architectural recognition and exact replaced scope. Fine-detail/photo-ratio uncertainties retained; no new independent GPU performance claim."
+  },
+  "independentVisualReview": {
+    "reviewedOn": "2026-10-05",
+    "reviewer": "wine_native_front_diagnosis; independent of both model authors",
+    "status": "pass-scoped-recognition-after-repair",
+    "scope": "Latest saved gallery-angle0–3 plus native neutral-front/live-rear compared directly with original reference images. No GPU, export, source/model edits or git action by reviewer.",
+    "referenceImages": [
+      "artifacts/landmarks/groot-melkhuis/references/Copy-of-EmiroSmolders-GrootMelkhuis-0331-2.jpg",
+      "artifacts/landmarks/groot-melkhuis/references/Copy-of-EmiroSmolders-GMH-03599-scaled.jpg"
+    ],
+    "renderImages": [
+      "artifacts/groot-melkhuis-review/gallery-angle-0.png",
+      "artifacts/groot-melkhuis-review/gallery-angle-1.png",
+      "artifacts/groot-melkhuis-review/gallery-angle-2.png",
+      "artifacts/groot-melkhuis-review/gallery-angle-3.png",
+      "artifacts/groot-melkhuis-review/neutral-front.png",
+      "artifacts/groot-melkhuis-review/live-rear.png"
+    ],
+    "repairAcceptance": "Five upper long-facade sash openings now visibly present in gallery-angle0/2 and native neutral-front, matching owner0331-2 photograph; fifth opening remains exposed and correctly trimmed.",
+    "passed": [
+      "White upper house, shallow hip roof and chimneys over long glazed ground veranda match owner-photo composition.",
+      "Cream veranda mullions, red upper trim and long green awnings remain exposed in all four gallery rotations.",
+      "Native front/rear retain Festina clubhouse and separate adjacent buildings, park paths and pond edge.",
+      "No courtyard/parcel slab, roof fin or visibly buried principal glazing identified.",
+      "Five upper long-facade sash openings now visibly present in gallery-angle0/2 and native neutral-front, matching owner0331-2 photograph; fifth opening remains exposed and correctly trimmed."
+    ],
+    "minorDifferences": [
+      "Temporary outdoor umbrellas, furniture and separate neighboring structures remain outside this exact building model scope."
+    ],
+    "limits": [
+      "Saved live views are elevated game views; no dynamic camera-pan or route-start performance evidence reviewed here.",
+      "This independent result is visual recognition evidence, not final POI/source-archive/route acceptance.",
+      "Native rear tree partly obscures roof/window row; neutral-front and unobstructed gallery views establish five-window correction."
+    ],
+    "evidenceSha256": {
+      "artifacts/groot-melkhuis-review/gallery-angle-0.png": "a4017b2ef2949dd7f3af280ab96a0eb433085727424b807152081d42880a20fd",
+      "artifacts/groot-melkhuis-review/gallery-angle-1.png": "734fc84d0b96158a7b985e0765329c7485b84bafb514bf00318ed31122b12115",
+      "artifacts/groot-melkhuis-review/gallery-angle-2.png": "9f901e6a17a040122689e02df7af71468f101b2953ab160d24bcaf1a1df65268",
+      "artifacts/groot-melkhuis-review/gallery-angle-3.png": "c3f0c05e530598c2ba42802728b39224726e3fdd4fd9b6198dfb3207c5c956ae",
+      "artifacts/groot-melkhuis-review/neutral-front.png": "977c1a530683a2e154d96297e5fb31a54568ba09caa62627a45077f3c74eeec2",
+      "artifacts/groot-melkhuis-review/live-rear.png": "31c37b85d7d0213bb00fb67ed32cd66207ec9cdf6d45717f6d6197abda5a6c80"
+    }
+  },
+  "repairHistory": [
+    {
+      "date": "2026-10-05",
+      "findingAndRepair": "Independent review found four long-side upper windows contradicted five in current owner 0331-2 photo. Restored fifth right bay, preserving photographed three-left/two-right rhythm and wide middle blank bay.",
+      "visualStatus": "Coordinator regeneration/review pending"
+    }
+  ],
+  "independentVisualReviewHistory": [
+    {
+      "reviewedOn": "2026-10-05",
+      "reviewer": "climbing_venue_loop; independent of model author",
+      "status": "pass-scoped-recognition",
+      "scope": "Saved reference originals versus default/four lower-angle galleries and native neutral-front/live-rear screenshots. No GPU run by reviewer; physical route/click proofs remain coordinator responsibility.",
+      "referenceImages": [
+        "artifacts/landmarks/groot-melkhuis/references/Copy-of-EmiroSmolders-GrootMelkhuis-0331-2.jpg",
+        "artifacts/landmarks/groot-melkhuis/references/Copy-of-EmiroSmolders-GMH-03599-scaled.jpg",
+        "artifacts/landmarks/groot-melkhuis/references/Copy-of-EmiroSmolders-GrootMelkhuis-06810.jpg"
+      ],
+      "renderImages": [
+        "artifacts/groot-melkhuis-review/gallery.png",
+        "artifacts/groot-melkhuis-review/gallery-angle-0.png",
+        "artifacts/groot-melkhuis-review/gallery-angle-1.png",
+        "artifacts/groot-melkhuis-review/gallery-angle-2.png",
+        "artifacts/groot-melkhuis-review/gallery-angle-3.png",
+        "artifacts/groot-melkhuis-review/neutral-front.png",
+        "artifacts/groot-melkhuis-review/live-rear.png"
+      ],
+      "passed": [
+        "White upper house, shallow hip roof and chimneys over long glazed ground veranda match owner-photo composition.",
+        "Cream veranda mullions, red upper trim and long green awnings remain exposed in all four gallery rotations.",
+        "Native front/rear retain Festina clubhouse and separate adjacent buildings, park paths and pond edge.",
+        "No courtyard/parcel slab, roof fin or visibly buried principal glazing identified."
+      ],
+      "minorDifferences": [
+        "Owner principal photograph shows five upper long-facade openings; model shows four. Overall tall-window white-house rhythm and defining veranda/awning silhouette remain recognizable.",
+        "Temporary outdoor umbrellas, furniture and thatched separate neighboring structure are outside this exact building model scope."
+      ],
+      "limits": [
+        "Saved live views are elevated game views; no dynamic camera-pan or route-start performance evidence reviewed here.",
+        "This independent result is visual recognition evidence, not final POI/source-archive/route acceptance."
+      ]
+    }
+  ],
+  "repairAcceptanceEvidence": {
+    "status": "independent scoped visual pass",
+    "reviewer": "wine_native_front_diagnosis",
+    "correction": "Five upper long-facade sash openings now visibly present in gallery-angle0/2 and native neutral-front, matching owner0331-2 photograph; fifth opening remains exposed and correctly trimmed.",
+    "unresolvedRecognitionDefects": [],
+    "acceptanceScope": "Visual model recognition and saved native-context comparison; final route/source/archive/performance acceptance remains coordinator responsibility."
+  },
+  "coordinatorReview": {
+    "reviewedOn": "2026-10-05",
+    "reviewer": "root",
+    "status": "pass-scoped",
+    "evidenceDirectory": "artifacts/groot-melkhuis-review",
+    "runtimeEvidence": "Actual selected route destination, geographic pin, physical click sourced card, native scale 1 and retained resident drawable neighbors verified with review-manual-pois.mjs.",
+    "geometryEvidence": "scripts/check-groot-melkhuis-geometry.ts",
+    "independentReviewStatus": "pass-scoped-recognition-after-repair"
+  },
+  "sourceArchive": {
+    "commit": "5e4e6b6",
+    "path": "models/groot-melkhuis",
+    "priorSourcesCommit": "9926aa1"
+  },
+  "export": {
+    "sha256": "236cf1e655704a1903a2524e617979f1f746e502428eb83b572fef89b576dc09",
+    "bytes": 51768
+  },
+  "currentIndependentReview": "models/groot-melkhuis/validation/clean-release-20261006/independent-review.json",
+  "currentRuntime": {
+    "proof": {
+      "id": "groot-melkhuis",
+      "actualCamera": {
+        "center": [
+          4.868295,
+          52.3585254
+        ],
+        "zoom": 19,
+        "pitch": 55.00000000000001,
+        "bearing": 10,
+        "elevation": 0
+      },
+      "assetVersion": "236cf1e655704a19",
+      "scale": 1,
+      "bias": false,
+      "broad": false,
+      "pin": true,
+      "destination": true,
+      "source": "https://grootmelkhuis.nl/historie/",
+      "click": {
+        "x": 753.1801636898768,
+        "y": 500.58511891126767
+      },
+      "aliases": [
+        {
+          "id": "w57855717",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012166911",
+          "hidden": true
+        }
+      ],
+      "oldPyramidIds": [],
+      "neighbors": [
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012146952"
+          ],
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        }
+      ],
+      "features": 12781,
+      "buildings": 13891
+    },
+    "card": {
+      "notice": "extract_landmarks_291097138",
+      "source": "https://grootmelkhuis.nl/historie/",
+      "alpha": 1,
+      "drawn": true,
+      "active": "extract_landmarks_291097138"
+    },
+    "performance": {
+      "id": "groot-melkhuis",
+      "assetVersion": "236cf1e655704a19",
+      "samples": [
+        {
+          "label": "model-visible",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 83,
+          "p95Ms": 98.40000009536743
+        },
+        {
+          "label": "same-scene-model-hidden",
+          "visible": false,
+          "frames": 60,
+          "p50Ms": 78.7000002861023,
+          "p95Ms": 90.5
+        },
+        {
+          "label": "model-visible-repeat",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 83.30000019073486,
+          "p95Ms": 91.40000009536743
+        }
+      ],
+      "buildings": {
+        "kitVertices": 79185,
+        "chunks": 26,
+        "buildings": 13891,
+        "walls": 61949,
+        "quads": 215068,
+        "vertices": 1540727,
+        "geometryMB": 51.37913703918457,
+        "textureMB": 97.5,
+        "drawCalls": 5,
+        "triangles": 252307,
+        "buildMs": 6.5
+      },
+      "scope": "Headless Chromium same stationary scene; hidden model keeps existing replacement masks, isolating custom draw cost. No whole-game performance pass claimed."
+    },
+    "performanceAcceptance": "Stationary headless evidence only; no general smooth gameplay or physical touch performance acceptance."
+  }
+}
