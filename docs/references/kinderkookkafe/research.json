@@ -1,0 +1,47 @@
+{
+  "status": "draft awaiting root gallery/live acceptance",
+  "physicalScope": "Both contiguous historic sheds are authored together because their paired gable silhouette is defining. Genuine caf\u00e9 destination remains singular; neighboring caf\u00e9-independent tennis buildings and residential rows retained.",
+  "frontage": {
+    "cafeEdge": [
+      9,
+      0,
+      1
+    ],
+    "adjoiningShedEdge": [
+      3,
+      0
+    ],
+    "normal": "east/northeast onto mapped Kattenlaan; outward local [0.88197,-0.47130]. Northern gable uses full collinear9\u21920\u21921 chain."
+  },
+  "assertions": [
+    {
+      "feature": "Twin clay tiled saddle roofs, tuit gables, climbing corbel friezes, red/yellow brickwork",
+      "source": "Stadsherstel owner architectural description and photo-0/1",
+      "confidence": "high"
+    },
+    {
+      "feature": "Glass conservatory northern caf\u00e9 side",
+      "source": "Stadsherstel conversion narrative and photo-2/5; BAG extension and lower roof survey",
+      "confidence": "high"
+    }
+  ],
+  "limitations": [
+    "BAG registered build year 1992 differs from documented historic 1884\u201385; registry date is not used as historical construction date.",
+    "Common pavement datum -1.8 NAP is bounded between differing terrain medians; precise facade contact has not been panorama-calibrated.",
+    "Beeldbank bounded exact address/name search returned viewer shell; no catalogue image claimed inspected. Owner page provides original credited archives/current photos.",
+    "Separate statutory monument register description not resolved in bounded search; owner detailed architectural description inspected. Do not claim RCE register checked.",
+    "Fine brick motif, eye diameters, portal lintel/height and glazed pane counts approximated from photos. Rear facades partly inaccessible in saved photos.",
+    "GPU gallery/live, exact neighbor residency, destination/pin/card pointer click and performance checks reserved to coordinator."
+  ],
+  "sourceArchive": "../map-recall2-source-data/models/kinderkookkafe",
+  "sourceCommit": "b0b9cfa (original raw reference pack pushed; corrected research snapshot pending followup sync)",
+  "checks": {
+    "command": "node --import tsx scripts/check-kinderkookkafe-geometry.ts",
+    "triangles": 4978,
+    "roofProbes": 5,
+    "glazingProbes": 8,
+    "typecheck": "npx tsc --noEmit --pretty false: no errors",
+    "gpuAcceptance": "pending"
+  },
+  "preservedFailure": "artifacts/landmark-continuation-20261006/kinderkookkafe-review initial west-facing doorways and tiny slope flecks"
+}

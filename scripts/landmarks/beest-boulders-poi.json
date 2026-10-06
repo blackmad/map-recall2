@@ -1,0 +1,15 @@
+{
+  "modelId": "beest-boulders",
+  "landmarkId": "n8805218642",
+  "name": "Beest Boulders Amsterdam",
+  "lat": 52.3816671,
+  "lng": 4.8593849,
+  "category": "sport",
+  "sourceUrl": "https://beestboulders.com/beest-boulders-amsterdam/",
+  "description": "Beest Boulders Amsterdam occupies a converted industrial hall on Willem de Zwijgerlaan. Its broad curved roof and pale corrugated walls belong to a much longer shared factory complex. Bouldering uses short climbing routes over landing mats rather than ropes; the venue renews part of its routes weekly and also has a restaurant. This Amsterdam venue is separate from Het Lab on Transformatorweg.",
+  "sources": [
+    {"label":"Beest Boulders Amsterdam operator","url":"https://beestboulders.com/beest-boulders-amsterdam/"},
+    {"label":"I amsterdam: climbing and bouldering in Amsterdam","url":"https://www.iamsterdam.com/en/see-and-do/nature-and-active/climbing-and-bouldering-in-amsterdam"}
+  ],
+  "identityNote": "Reuse genuine mapped n8805218642 from click-poi-info.json. No duplicate requested destination. VBO0363010012080775 at338B belongs to BAG0363100012151240; model covers complete host, preserving other tenants. OSM point is inside venue; map pin/node identity should remain genuine. Roof and facade observations are geometric evidence, not claims about entire host occupancy."
+}

@@ -14,7 +14,7 @@
     "Exact modeled identities excluded; repeated tile identities, near-identical footprints and raised parts grouped.",
     "Ground-level courtyard buildings remain separate. Uncertain complex identities require manual research."
   ],
-  "candidateCount": 1858,
+  "candidateCount": 1855,
   "candidates": [
     {
       "id": "NL.IMBAG.Pand.0363100012207510",
@@ -8850,31 +8850,6 @@
         "state": "suggested",
         "reasons": [
           "Complex footprint"
-        ]
-      },
-      "priority": "low",
-      "status": "needs-identification-and-research",
-      "sourceUrl": "https://3dbag.nl/en/viewer"
-    },
-    {
-      "id": "NL.IMBAG.Pand.0363100012151240",
-      "name": null,
-      "footprintSquareMetres": 8807,
-      "heightMetres": 12.8,
-      "center": [
-        4.860188000000001,
-        52.3814275
-      ],
-      "aliases": [],
-      "raisedParts": false,
-      "roofShape": "flat",
-      "poiNames": [],
-      "fidelity": {
-        "treatment": "unreviewed",
-        "workflow": "standard-eligibility-review",
-        "state": "suggested",
-        "reasons": [
-          "Simple mapped massing; facade and recognition still need visual review"
         ]
       },
       "priority": "low",
@@ -17863,31 +17838,6 @@
       "center": [
         4.8356995000000005,
         52.3463265
-      ],
-      "aliases": [],
-      "raisedParts": false,
-      "roofShape": "",
-      "poiNames": [],
-      "fidelity": {
-        "treatment": "unreviewed",
-        "workflow": "recognition-review",
-        "state": "suggested",
-        "reasons": [
-          "Complex footprint"
-        ]
-      },
-      "priority": "low",
-      "status": "needs-identification-and-research",
-      "sourceUrl": "https://3dbag.nl/en/viewer"
-    },
-    {
-      "id": "NL.IMBAG.Pand.0363100012087748",
-      "name": null,
-      "footprintSquareMetres": 3536,
-      "heightMetres": 18.6,
-      "center": [
-        4.855969,
-        52.344418
       ],
       "aliases": [],
       "raisedParts": false,
@@ -45639,31 +45589,6 @@
       "priority": "low",
       "status": "needs-identification-and-research",
       "sourceUrl": "https://www.openstreetmap.org/way/1137703974"
-    },
-    {
-      "id": "NL.IMBAG.Pand.0363100012197426",
-      "name": null,
-      "footprintSquareMetres": 30,
-      "heightMetres": 37.1,
-      "center": [
-        4.857744,
-        52.3500765
-      ],
-      "aliases": [],
-      "raisedParts": false,
-      "roofShape": "",
-      "poiNames": [],
-      "fidelity": {
-        "treatment": "unreviewed",
-        "workflow": "standard-eligibility-review",
-        "state": "suggested",
-        "reasons": [
-          "Simple mapped massing; facade and recognition still need visual review"
-        ]
-      },
-      "priority": "low",
-      "status": "needs-identification-and-research",
-      "sourceUrl": "https://3dbag.nl/en/viewer"
     },
     {
       "id": "w749586951",

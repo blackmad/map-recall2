@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedOn": "2026-10-05",
+  "updatedOn": "2026-10-06",
   "primaryBuildingInventory": "./landmark-backlog.json",
   "agentMemory": "AGENTS.md (repository root)",
   "completionRequirements": [
@@ -390,18 +390,6 @@
       "status": "queued"
     },
     {
-      "id": "kinderkookkafe",
-      "task": "Kinderkookkafé",
-      "priority": "normal",
-      "status": "queued"
-    },
-    {
-      "id": "beest-boulders",
-      "task": "Beest Boulders Amsterdam",
-      "priority": "normal",
-      "status": "queued"
-    },
-    {
       "id": "het-lab",
       "task": "Beest Boulders Het Lab",
       "priority": "normal",
@@ -414,18 +402,6 @@
       "status": "scope-research",
       "nextAction": "Model the source-backed corrugated Noord industrial architecture: establish full shared-host/tenant scope or accurate additive venue components. Do not erase unrelated tenants with a Monk-only parent replacement. Shared-host complexity is a modeling task, not grounds to drop it.",
       "evidence": "../../scripts/landmarks/monk-amsterdam-review.json"
-    },
-    {
-      "id": "beta-boulders",
-      "task": "Beta Boulders",
-      "priority": "normal",
-      "status": "queued"
-    },
-    {
-      "id": "klimmuur-centraal",
-      "task": "Klimmuur Centraal",
-      "priority": "normal",
-      "status": "queued"
     },
     {
       "id": "mountain-network",
@@ -949,6 +925,50 @@
       "evidence": "../../docs/references/jan-evertsen-pilot/independent-review.json",
       "validation": "Shape-based hull classification, mapped pontoon/deck perimeter retention, source-only storey count and larger residential barge cabins/windows. All3083 extract records checked;3082classifiable,1degenerate;207classification changes. Mean195triangles. Independent representative CPU review passed.",
       "nextAction": "Review real gameplay canal rows and changed classifier cases against references; verify water placement, camera pans and performance. Preserve cinema/REM pending reviews as separate tasks."
+    },
+    {
+      "id": "kinderkookkafe",
+      "task": "Kinderkookkafé",
+      "priority": "normal",
+      "status": "verified",
+      "owner": "kinderkookkafe",
+      "nextAction": "Reviewed model checkpoint ready for publication; source and generated validation evidence pushed privately at04a87dc. Preserve recorded approximation and headless city performance limitations.",
+      "modelId": "kinderkookkafe",
+      "validation": "Corrected native paired-shed/conservatory GLB5170triangles/82704bytes. Source-facing eastern entrance chain and continuous brick frieze repaired after preserved independent failure. Root+independent corrected gallery/native views pass scoped recognition; actual route/pin/physical card/exact4masks/3retainedneighbors pass. Raw/corrected research private pack pushed30c5c22. Headless whole-scene performance measured120frames:102.7msmedian/121msp95 with16223buildings; no performant-scene claim. Clean release on26fb1299: current hash matches independently reviewed asset; default/four gallery angles, front/rear native views, actual destination/pin/physical card/exact suppression/resident neighbors verified. Model-visible/hidden/repeated timing recorded; whole headless city remains slow, no general performance pass claimed. Shared geometry/POI/lint and desktop route-start smoke pass.",
+      "evidence": "private:models/kinderkookkafe/validation/release-20261006/ @04a87dc"
+    },
+    {
+      "id": "beest-boulders",
+      "task": "Beest Boulders Amsterdam",
+      "priority": "normal",
+      "status": "verified",
+      "owner": "beest_boulders",
+      "nextAction": "Reviewed model checkpoint ready for publication; source and generated validation evidence pushed privately at04a87dc. Preserve recorded approximation and headless city performance limitations.",
+      "modelId": "beest-boulders",
+      "validation": "Finalsource-backedsharedhost17460triangles/253080bytes8b9723fingerprint. Independentfreshgallery/CPUstreetcorner/nativePASS after preserved fin/palette and generic-office failures. Broadprojectingbands/narrowrecessedglass/tallbase/verticalstair nowrecognized. Realchosenroute/pin/physicalcard/exactBAGmask/tworetainedneighborspass. Rawpack2c5702b pushed; correctionarchivefollowup next. Clean release on26fb1299: current hash matches independently reviewed asset; default/four gallery angles, front/rear native views, actual destination/pin/physical card/exact suppression/resident neighbors verified. Model-visible/hidden/repeated timing recorded; whole headless city remains slow, no general performance pass claimed. Shared geometry/POI/lint and desktop route-start smoke pass.",
+      "evidence": "private:models/beest-boulders/validation/release-20261006/ @04a87dc"
+    },
+    {
+      "id": "beta-boulders",
+      "task": "Beta Boulders",
+      "priority": "normal",
+      "status": "verified",
+      "owner": "vondelcs-worker-beta-boulders",
+      "nextAction": "Reviewed model checkpoint ready for publication; source and generated validation evidence pushed privately at04a87dc. Preserve recorded approximation and headless city performance limitations.",
+      "modelId": "beta-boulders",
+      "validation": "Repaired native northern garage11548triangles/150484bytes; confirmed eastStadionpleintramfront broadtwo glazinggroups/centralpier/darkrecessedportal. Root+independent freshgallery/nativepass. Actual chosenroutefinish/pin/physicalcard/exactBAGmask/tworetainedneighborspass. Failedgenericfacade preserved. Sourcecorrectedpack9bf3e9b pushed; sharedasset/POIcontract/lint/desktoproutesmoke pass. Clean release on26fb1299: current hash matches independently reviewed asset; default/four gallery angles, front/rear native views, actual destination/pin/physical card/exact suppression/resident neighbors verified. Model-visible/hidden/repeated timing recorded; whole headless city remains slow, no general performance pass claimed. Shared geometry/POI/lint and desktop route-start smoke pass.",
+      "evidence": "private:models/beta-boulders/validation/release-20261006/ @04a87dc"
+    },
+    {
+      "id": "klimmuur-centraal",
+      "task": "Klimmuur Centraal",
+      "priority": "normal",
+      "status": "verified",
+      "owner": "klimmuur_centraal",
+      "nextAction": "Reviewed model checkpoint ready for publication; source and generated validation evidence pushed privately at04a87dc. Preserve recorded approximation and headless city performance limitations.",
+      "modelId": "klimmuur-centraal",
+      "validation": "Corrected364triangle12980byte927147fingerprint. Root+independentfreshgallery/neutralnativePASSdarkcorrugatedwestupper/lightlower/wedge/closed2023shutter. Realroute/pin/physicalcard/exactBAG+w35048037 masks/HannekesBoomneighborpass. Initialbeigewestfailurepreserved; rawpack9bf3e9b pushed. Clean release on26fb1299: current hash matches independently reviewed asset; default/four gallery angles, front/rear native views, actual destination/pin/physical card/exact suppression/resident neighbors verified. Model-visible/hidden/repeated timing recorded; whole headless city remains slow, no general performance pass claimed. Shared geometry/POI/lint and desktop route-start smoke pass.",
+      "evidence": "private:models/klimmuur-centraal/validation/release-20261006/ @04a87dc"
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

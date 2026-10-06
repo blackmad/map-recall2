@@ -1,0 +1,38 @@
+{
+  "id": "klimmuur-centraal",
+  "name": "Klimmuur Centraal",
+  "landmarkId": "osm-node-2743587102",
+  "modelUrl": "./models/klimmuur-centraal.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012170819",
+    "w35048037"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.911646745330801,
+      52.37662105881722
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 33,
+    "widthMetres": 21
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.911646745330801,
+      52.37662105881722
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Native RD east/south; current BAG host and AHN5 roof planes, source-rounded roof reconstruction"
+  },
+  "attribution": {
+    "title": "Klimmuur Centraal Dijksgracht2",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.deklimmuur.nl/klimmen/klimmuur-centraal/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original house-style geometry; no photo textures or imported asset mesh. Only exact BAG host replaced."
+  }
+}

@@ -5861,5 +5861,157 @@
       "licenceUrl": "./LICENSE",
       "modifications": "Original texture-free flat-color architecture built at native surveyed BAG scope and scale1 with coherent footprint-clipped gable, hip and flattened-tent roofs calibrated to major AHN5 measurements, exposed arches and dormers, pale stone main gable, open polygonal corner turret and transparent courtyard frame. Thin ornament heights/spacing approximate from source photos. No neighboring rectangular suppression."
     }
+  },
+  {
+    "id": "kinderkookkafe",
+    "name": "Kinderkookkafé",
+    "landmarkId": "extract_landmarks_565545475",
+    "modelUrl": "./models/kinderkookkafe.glb",
+    "suppressOsmIds": [
+      "w276423157",
+      "w276423122",
+      "NL.IMBAG.Pand.0363100012158470",
+      "NL.IMBAG.Pand.0363100012165580"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.864856,
+        52.359184
+      ],
+      "headingDegrees": 90,
+      "lengthMetres": 23.2,
+      "widthMetres": 26.5
+    },
+    "surveyed": {
+      "anchor": [
+        4.864856,
+        52.359184
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Exact current BAG twin shed polygons plus AHN4/AHN5 3DBAG roof rings; source supported original facade details"
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Kinderkookkafé / paired Vondelpark manure sheds",
+      "author": "Map Recall",
+      "sourceUrl": "https://stadsherstel.nl/monumenten/vondelpark-6b/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native survey reconstruction. No reference pixels or downloaded meshes. Gable/entrance relief and pane divisions photographic approximations."
+    }
+  },
+  {
+    "id": "beta-boulders",
+    "name": "Beta Boulders",
+    "landmarkId": "osm-node-2815512499",
+    "modelUrl": "./models/beta-boulders.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012087748"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.85597144276366,
+        52.344404391103
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 64.6,
+      "widthMetres": 80.2
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.85597144276366,
+        52.344404391103
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Native RD east/south axes centeredRD118800/484187; PDOK VBO0363010012116375→Pand0363100012087748; AHN5roof envelope relativeNAP0.72. Genuine mapped leisure node2815512499 retained."
+    },
+    "attribution": {
+      "title": "Beta Boulders / The Garage north Citroen complex",
+      "author": "Map Recall",
+      "sourceUrl": "https://betaboulders.nl/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original native texture-free surveyed shared building and photo-guided curtain walls. No imported mesh/photo pixels. Exact BAG parent only; other tenants retained."
+    }
+  },
+  {
+    "id": "beest-boulders",
+    "name": "Beest Boulders Amsterdam",
+    "landmarkId": "n8805218642",
+    "modelUrl": "./models/beest-boulders.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012151240"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.8590257886306105,
+        52.382092992601216
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 222,
+      "widthMetres": 42
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.8590257886306105,
+        52.382092992601216
+      ],
+      "northOffsetDegrees": 0,
+      "source": "PDOK BAG0363100012151240 and AHN5 native roof regions; local coordinates baked into east/south world axes."
+    },
+    "attribution": {
+      "title": "Beest Boulders Amsterdam shared industrial host",
+      "author": "Map Recall",
+      "sourceUrl": "https://beestboulders.com/beest-boulders-amsterdam/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free interpretation of surveyed footprints and current municipal facade references; preserve full shared host and tenants."
+    }
+  },
+  {
+    "id": "klimmuur-centraal",
+    "name": "Klimmuur Centraal",
+    "landmarkId": "osm-node-2743587102",
+    "modelUrl": "./models/klimmuur-centraal.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012170819",
+      "w35048037"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.911646745330801,
+        52.37662105881722
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 33,
+      "widthMetres": 21
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.911646745330801,
+        52.37662105881722
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Native RD east/south; current BAG host and AHN5 roof planes, source-rounded roof reconstruction"
+    },
+    "attribution": {
+      "title": "Klimmuur Centraal Dijksgracht2",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.deklimmuur.nl/klimmen/klimmuur-centraal/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original house-style geometry; no photo textures or imported asset mesh. Only exact BAG host replaced."
+    }
   }
 ]

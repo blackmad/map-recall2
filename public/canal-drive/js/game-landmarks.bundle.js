@@ -6927,6 +6927,158 @@ Map source: ${osmUrl(places[i][0])}`);
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free flat-color architecture built at native surveyed BAG scope and scale1 with coherent footprint-clipped gable, hip and flattened-tent roofs calibrated to major AHN5 measurements, exposed arches and dormers, pale stone main gable, open polygonal corner turret and transparent courtyard frame. Thin ornament heights/spacing approximate from source photos. No neighboring rectangular suppression."
       }
+    },
+    {
+      id: "kinderkookkafe",
+      name: "Kinderkookkaf\xE9",
+      landmarkId: "extract_landmarks_565545475",
+      modelUrl: "./models/kinderkookkafe.glb",
+      suppressOsmIds: [
+        "w276423157",
+        "w276423122",
+        "NL.IMBAG.Pand.0363100012158470",
+        "NL.IMBAG.Pand.0363100012165580"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.864856,
+          52.359184
+        ],
+        headingDegrees: 90,
+        lengthMetres: 23.2,
+        widthMetres: 26.5
+      },
+      surveyed: {
+        anchor: [
+          4.864856,
+          52.359184
+        ],
+        northOffsetDegrees: 0,
+        source: "Exact current BAG twin shed polygons plus AHN4/AHN5 3DBAG roof rings; source supported original facade details"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 90,
+      attribution: {
+        title: "Kinderkookkaf\xE9 / paired Vondelpark manure sheds",
+        author: "Map Recall",
+        sourceUrl: "https://stadsherstel.nl/monumenten/vondelpark-6b/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native survey reconstruction. No reference pixels or downloaded meshes. Gable/entrance relief and pane divisions photographic approximations."
+      }
+    },
+    {
+      id: "beta-boulders",
+      name: "Beta Boulders",
+      landmarkId: "osm-node-2815512499",
+      modelUrl: "./models/beta-boulders.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012087748"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.85597144276366,
+          52.344404391103
+        ],
+        headingDegrees: 0,
+        lengthMetres: 64.6,
+        widthMetres: 80.2
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      surveyed: {
+        anchor: [
+          4.85597144276366,
+          52.344404391103
+        ],
+        northOffsetDegrees: 0,
+        source: "Native RD east/south axes centeredRD118800/484187; PDOK VBO0363010012116375\u2192Pand0363100012087748; AHN5roof envelope relativeNAP0.72. Genuine mapped leisure node2815512499 retained."
+      },
+      attribution: {
+        title: "Beta Boulders / The Garage north Citroen complex",
+        author: "Map Recall",
+        sourceUrl: "https://betaboulders.nl/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original native texture-free surveyed shared building and photo-guided curtain walls. No imported mesh/photo pixels. Exact BAG parent only; other tenants retained."
+      }
+    },
+    {
+      id: "beest-boulders",
+      name: "Beest Boulders Amsterdam",
+      landmarkId: "n8805218642",
+      modelUrl: "./models/beest-boulders.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012151240"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8590257886306105,
+          52.382092992601216
+        ],
+        headingDegrees: 0,
+        lengthMetres: 222,
+        widthMetres: 42
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      surveyed: {
+        anchor: [
+          4.8590257886306105,
+          52.382092992601216
+        ],
+        northOffsetDegrees: 0,
+        source: "PDOK BAG0363100012151240 and AHN5 native roof regions; local coordinates baked into east/south world axes."
+      },
+      attribution: {
+        title: "Beest Boulders Amsterdam shared industrial host",
+        author: "Map Recall",
+        sourceUrl: "https://beestboulders.com/beest-boulders-amsterdam/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free interpretation of surveyed footprints and current municipal facade references; preserve full shared host and tenants."
+      }
+    },
+    {
+      id: "klimmuur-centraal",
+      name: "Klimmuur Centraal",
+      landmarkId: "osm-node-2743587102",
+      modelUrl: "./models/klimmuur-centraal.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012170819",
+        "w35048037"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.911646745330801,
+          52.37662105881722
+        ],
+        headingDegrees: 0,
+        lengthMetres: 33,
+        widthMetres: 21
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      surveyed: {
+        anchor: [
+          4.911646745330801,
+          52.37662105881722
+        ],
+        northOffsetDegrees: 0,
+        source: "Native RD east/south; current BAG host and AHN5 roof planes, source-rounded roof reconstruction"
+      },
+      attribution: {
+        title: "Klimmuur Centraal Dijksgracht2",
+        author: "Map Recall",
+        sourceUrl: "https://www.deklimmuur.nl/klimmen/klimmuur-centraal/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original house-style geometry; no photo textures or imported asset mesh. Only exact BAG host replaced."
+      }
     }
   ];
 
@@ -10091,6 +10243,64 @@ Map source: ${osmUrl(places[i][0])}`);
           url: "https://press.mandarinoriental.com/amsterdam-rebranding/?lang=eng"
         }
       ]
+    },
+    {
+      modelId: "kinderkookkafe",
+      name: "Kinderkookkaf\xE9",
+      description: "Children cook and serve real meals in this caf\xE9, housed in one of the Vondelpark\u2019s former manure sheds. City engineer J.G. van Niftrik designed the paired brick sheds in the 1880s to replace open manure storage; their pointed gables and decorative brickwork give this practical park building an unusually rich silhouette. A glass conservatory was added during its conversion for the caf\xE9.",
+      sourceUrl: "https://stadsherstel.nl/monumenten/vondelpark-6b/",
+      center: [
+        52.3591999,
+        4.8647759
+      ],
+      preferDescription: true
+    },
+    {
+      modelId: "beta-boulders",
+      name: "Beta Boulders",
+      center: [
+        52.3441243,
+        4.855954
+      ],
+      sourceUrl: "https://betaboulders.nl/",
+      description: "Beta Boulders combines a climbing gym, fitness space, co-working area and caf\xE9 inside the northern former Citro\xEBn garage beside the Olympic Stadium. Jan Wils designed this maintenance garage separately from the older southern showroom. Its later transformation into The Garage restored the glass curtain wall and connected offices, restaurants and other shared uses along the original car ramp. Beta occupies part of this multi-tenant building.",
+      sourceLinks: [
+        {
+          title: "Beta Boulders: gym, workspace and caf\xE9",
+          url: "https://betaboulders.nl/"
+        },
+        {
+          title: "The Olympic tenant directory: Beta Boulders",
+          url: "https://theolympicamsterdam.nl/nl/single-company/beta-boulders"
+        },
+        {
+          title: "Rijnboutt: restoration of the northern Citro\xEBn building",
+          url: "https://rijnboutt.nl/actueel/nieuws/parool-het-citroengebouw-van-jan-wils-glorieert-weer/"
+        }
+      ],
+      preferDescription: true
+    },
+    {
+      modelId: "beest-boulders",
+      name: "Beest Boulders Amsterdam",
+      description: "Beest Boulders Amsterdam occupies a converted industrial hall on Willem de Zwijgerlaan. Its broad curved roof and pale corrugated walls belong to a much longer shared factory complex. Bouldering uses short climbing routes over landing mats rather than ropes; the venue renews part of its routes weekly and also has a restaurant. This Amsterdam venue is separate from Het Lab on Transformatorweg.",
+      sourceUrl: "https://beestboulders.com/beest-boulders-amsterdam/",
+      center: [
+        52.3816671,
+        4.8593849
+      ],
+      preferDescription: true
+    },
+    {
+      modelId: "klimmuur-centraal",
+      name: "Klimmuur Centraal",
+      description: "Klimmuur Centraal is the climbing hall on Dijksgracht beside Oosterdok. Its sharply sloping shell contains a hall over16metres tall. A folding steel-and-glass climbing wall lets the climbing activity face the waterfront terrace. The waterfront glass wall is itself climbable: its four folding elements carry holds and can slide aside. The architect used electromagnets to secure the doors while people climb.",
+      sourceUrl: "https://www.nationalestaalprijs.nl/project/klimwand",
+      center: [
+        52.3766271,
+        4.9115779
+      ],
+      preferDescription: true
     }
   ];
 

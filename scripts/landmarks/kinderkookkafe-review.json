@@ -1,0 +1,63 @@
+{
+  "modelId": "kinderkookkafe",
+  "status": "scoped-gallery-native-pass-performance-limit-publication-pending",
+  "export": {
+    "triangles": 5170,
+    "bytes": 82704,
+    "assetVersion": "2a100f055a7ab05f"
+  },
+  "sourceArchive": {
+    "privateCommit": "30c5c22",
+    "path": "models/kinderkookkafe/"
+  },
+  "runtimeEvidence": "artifacts/landmark-continuation-20261006/kinderkookkafe-review/",
+  "independentReview": "artifacts/landmark-continuation-20261006/kinderkookkafe-review/independent-corrected-native-review.json",
+  "failedEvidence": "artifacts/landmark-continuation-20261006/kinderkookkafe-west-front-failure/",
+  "repairs": [
+    "Photo-facing eastern gables use northern9→0→1/southern3→0; northern genuine cafe retained",
+    "Continuous inset stepped brick friezes replace isolated slope flecks"
+  ],
+  "passed": [
+    "Focused finite/roof/first-hit conservatory and genuine source-facing entrance probes",
+    "Shared asset and route/card/pin/source/identity contract",
+    "Root and independent corrected gallery+native source comparisons",
+    "Real chosen route finish, geographic pin, physical sourced-card pointer selection",
+    "Exact four masks; no retained replaced pyramids; three resident drawable nonhidden neighbors",
+    "Desktop setup route-start smoke passed42.1s; finalglobalTypeScript passed"
+  ],
+  "performance": {
+    "frames": 120,
+    "p50Ms": 102.69999980926514,
+    "p95Ms": 121,
+    "maxMs": 132.69999980926514,
+    "buildings": {
+      "kitVertices": 126510,
+      "chunks": 29,
+      "buildings": 16223,
+      "walls": 87626,
+      "quads": 392452,
+      "vertices": 2651773,
+      "geometryMB": 87.95840263366699,
+      "textureMB": 97,
+      "drawCalls": 29,
+      "triangles": 1056490,
+      "buildMs": 10.199999809265137
+    },
+    "camera": [
+      4.864856,
+      52.359184
+    ],
+    "measuredOn": "2026-10-06T05:49:10.763Z",
+    "scope": "Headless Chromium stationary live scene, no isolated model timing claim"
+  },
+  "limitations": [
+    "Headless whole-scene102.7ms median/121ms p95 is poor; no acceptable gameplay performance claim",
+    "Sidewall blind arch/spaarveld relief and layered dentils simplified",
+    "Approximate pavement datum and fine opening/frieze proportions",
+    "Beeldbank viewer shell and unresolved statutory register record honestly recorded",
+    "Source-facing low capture remains elevated due runtime pitch clamp60"
+  ],
+  "pending": [
+    "Finalscopedmodelcommit/pushafterreviewable sharedregistrationcheckpoint"
+  ]
+}

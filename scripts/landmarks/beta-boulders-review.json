@@ -1,0 +1,44 @@
+{
+  "id": "beta-boulders",
+  "status": "source-backed-facade-repaired-awaiting-repeat-visual-review",
+  "checks": {
+    "triangles": 11548,
+    "exposedGlassProbes": 155,
+    "actualPrincipalGroupSamples": 40,
+    "centralWhitePier": true,
+    "charcoalHeadAndJambs": true,
+    "portalGlazingRecessMetresMin": 0.45,
+    "finiteVertices": true,
+    "raisedRoofNormalsUpward": true
+  },
+  "failedEvidence": [
+    {
+      "stage": "initial native facade probe",
+      "failure": "wall5fraction0.13y2.2hitwhite: simplified0.6m boundary put pane inside actual shell",
+      "correction": "simplification0.08m retains facade articulation; actual clear-pane fractional probes pass",
+      "preservedInitialCheck": "/tmp/beta-check-before-failure.ts"
+    },
+    {
+      "stage": "initial broad facade probes",
+      "failure": "fraction0.31 fell on deliberately wide white pier",
+      "correction": "sample actual bay fractions0.25/0.5/0.75 per bay; intentional mullions separately classified"
+    },
+    {
+      "stage": "independent exact exported gallery/native comparison",
+      "evidence": "artifacts/landmark-continuation-20261006/beta-boulders-review/independent-review.json",
+      "assetVersion": "c2ae75f45b5680b3",
+      "failure": "Blocking recognition failures: missing dark ground entrance portal and uniform upper broad bays. All failed screenshots preserved.",
+      "repair": "Verified east street frontage; source-wide2glazing groups/centralpier clipped to native chain. Charcoal solid portal head/jambs with exposed glazing recessed. Reexport and independent repeat review pending."
+    }
+  ],
+  "pending": [
+    "root compressed asset export/budget",
+    "repeat independent source/render review from affected gallery/native tram-front views",
+    "source repair archive sync/commit"
+  ],
+  "references": {
+    "front.jpg": "https://architectenweb.nl/media/illustrations/2020/01/18624fad-7449-4214-89ed-7ae2558f1435_400.jpg",
+    "side.jpg": "https://architectenweb.nl/media/illustrations/2020/01/c56a1f56-5f6a-4d02-9d9c-8a970f7df6ba_400.jpg",
+    "roof.jpg": "https://architectenweb.nl/media/illustrations/2020/01/84b050f2-7f15-47d1-bf6f-965a7efa5d17_400.jpg"
+  }
+}

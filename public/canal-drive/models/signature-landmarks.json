@@ -10821,6 +10821,282 @@
       "triangles": 28331,
       "bytes": 312652,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "kinderkookkafe": {
+      "id": "kinderkookkafe",
+      "name": "Kinderkookkafé",
+      "landmarkId": "extract_landmarks_565545475",
+      "modelUrl": "./models/kinderkookkafe.glb",
+      "suppressOsmIds": [
+        "w276423157",
+        "w276423122",
+        "NL.IMBAG.Pand.0363100012158470",
+        "NL.IMBAG.Pand.0363100012165580"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.864856,
+          52.359184
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 23.2,
+        "widthMetres": 26.5
+      },
+      "surveyed": {
+        "anchor": [
+          4.864856,
+          52.359184
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Exact current BAG twin shed polygons plus AHN4/AHN5 3DBAG roof rings; source supported original facade details"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Kinderkookkafé / paired Vondelpark manure sheds",
+        "author": "Map Recall",
+        "sourceUrl": "https://stadsherstel.nl/monumenten/vondelpark-6b/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free native survey reconstruction. No reference pixels or downloaded meshes. Gable/entrance relief and pane divisions photographic approximations."
+      },
+      "bounds": {
+        "min": [
+          -11.85477066040039,
+          -5.1431179315386544e-8,
+          -13.713458061218262
+        ],
+        "max": [
+          11.4326753616333,
+          7.883792400360107,
+          12.790670394897461
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.864856,
+          52.359184
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 180,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 26.504128456115723,
+        "heightMetres": 7.883792451791287,
+        "depthMetres": 23.28744602203369,
+        "depthCoverage": 0.8787715480012713
+      },
+      "triangles": 5170,
+      "bytes": 82704,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "beta-boulders": {
+      "id": "beta-boulders",
+      "name": "Beta Boulders",
+      "landmarkId": "osm-node-2815512499",
+      "modelUrl": "./models/beta-boulders.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012087748"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.85597144276366,
+          52.344404391103
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 64.6,
+        "widthMetres": 80.2
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.85597144276366,
+          52.344404391103
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Native RD east/south axes centeredRD118800/484187; PDOK VBO0363010012116375→Pand0363100012087748; AHN5roof envelope relativeNAP0.72. Genuine mapped leisure node2815512499 retained."
+      },
+      "attribution": {
+        "title": "Beta Boulders / The Garage north Citroen complex",
+        "author": "Map Recall",
+        "sourceUrl": "https://betaboulders.nl/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original native texture-free surveyed shared building and photo-guided curtain walls. No imported mesh/photo pixels. Exact BAG parent only; other tenants retained."
+      },
+      "bounds": {
+        "min": [
+          -32.64948654174805,
+          2.670288097306184e-7,
+          -41.39065170288086
+        ],
+        "max": [
+          32.26690673828125,
+          18.889949798583984,
+          38.895111083984375
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.85597144276366,
+          52.344404391103
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 80.28576278686523,
+        "heightMetres": 18.889949531555175,
+        "depthMetres": 64.9163932800293,
+        "depthCoverage": 0.8094313376562257
+      },
+      "triangles": 11548,
+      "bytes": 150484,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "beest-boulders": {
+      "id": "beest-boulders",
+      "name": "Beest Boulders Amsterdam",
+      "landmarkId": "n8805218642",
+      "modelUrl": "./models/beest-boulders.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012151240"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8590257886306105,
+          52.382092992601216
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 222,
+        "widthMetres": 42
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.8590257886306105,
+          52.382092992601216
+        ],
+        "northOffsetDegrees": 0,
+        "source": "PDOK BAG0363100012151240 and AHN5 native roof regions; local coordinates baked into east/south world axes."
+      },
+      "attribution": {
+        "title": "Beest Boulders Amsterdam shared industrial host",
+        "author": "Map Recall",
+        "sourceUrl": "https://beestboulders.com/beest-boulders-amsterdam/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free interpretation of surveyed footprints and current municipal facade references; preserve full shared host and tenants."
+      },
+      "bounds": {
+        "min": [
+          -13.988957405090332,
+          -9.536743306171047e-8,
+          -14.615974426269531
+        ],
+        "max": [
+          171.28746032714844,
+          27.11688804626465,
+          164.7711181640625
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8590257886306105,
+          52.382092992601216
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 185.27641773223877,
+        "heightMetres": 27.11688814163208,
+        "depthMetres": 179.38709259033203,
+        "depthCoverage": 4.271121252150762
+      },
+      "triangles": 17460,
+      "bytes": 253080,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "klimmuur-centraal": {
+      "id": "klimmuur-centraal",
+      "name": "Klimmuur Centraal",
+      "landmarkId": "osm-node-2743587102",
+      "modelUrl": "./models/klimmuur-centraal.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012170819",
+        "w35048037"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.911646745330801,
+          52.37662105881722
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 33,
+        "widthMetres": 21
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.911646745330801,
+          52.37662105881722
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Native RD east/south; current BAG host and AHN5 roof planes, source-rounded roof reconstruction"
+      },
+      "attribution": {
+        "title": "Klimmuur Centraal Dijksgracht2",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.deklimmuur.nl/klimmen/klimmuur-centraal/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original house-style geometry; no photo textures or imported asset mesh. Only exact BAG host replaced."
+      },
+      "bounds": {
+        "min": [
+          -22.972003936767578,
+          -0.00047493790043517947,
+          -9.948567390441895
+        ],
+        "max": [
+          8.9888334274292,
+          16.06584930419922,
+          10.538084030151367
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.911646745330801,
+          52.37662105881722
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 31.960837364196777,
+        "heightMetres": 16.066324242099654,
+        "depthMetres": 20.48665142059326,
+        "depthCoverage": 0.9755548295520601
+      },
+      "triangles": 364,
+      "bytes": 12980,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

@@ -5,13 +5,18 @@
  * Skip with --no-verify when you must.
  */
 import { chmodSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { execFileSync } from 'node:child_process';
+import { join, resolve } from 'node:path';
 
-const hooksDir = join(process.cwd(), '.git', 'hooks');
 if (!existsSync(join(process.cwd(), '.git'))) {
-  console.log('install-git-hooks: no .git directory; skipping');
+  console.log('install-git-hooks: no Git checkout metadata; skipping');
   process.exit(0);
 }
+// Linked worktrees have a .git file. Let Git resolve their shared hooks
+// directory, including any configured core.hooksPath override.
+const hooksDir = resolve(process.cwd(), execFileSync('git', ['rev-parse', '--git-path', 'hooks'], {
+  encoding: 'utf8',
+}).trim());
 mkdirSync(hooksDir, { recursive: true });
 
 const hooks = {

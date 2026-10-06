@@ -4,6 +4,10 @@
  */
 import fs from 'node:fs';
 import {buildConservatorium} from './conservatorium-builder';
+import {buildKinderkookkafe} from './kinderkookkafe-builder';
+import {buildBetaBoulders} from './beta-boulders-builder';
+import {buildBeestBoulders} from './beest-boulders-builder';
+import {buildKlimmuurCentraal} from './klimmuur-centraal-builder';
 import {buildW139} from './w139-builder';
 import {refreshModelDates} from './model-dates';
 import path from 'node:path';
@@ -192,6 +196,10 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   else {
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
     if(id==='petruskerk')buildPetruskerk(w,d,helpers);
+    else if(id==='kinderkookkafe')buildKinderkookkafe(w,d,helpers);
+    else if(id==='beta-boulders')buildBetaBoulders(w,d,helpers);
+    else if(id==='beest-boulders')buildBeestBoulders(w,d,helpers);
+    else if(id==='klimmuur-centraal')buildKlimmuurCentraal(w,d,helpers);
     else if(id==='boomkerk')buildBoomkerk(w,d,helpers);
     else if(id==='sint-agneskerk')buildSintAgneskerk(w,d,helpers);
     else if(id==='oba-oosterdok')buildObaOosterdok(w,d,helpers);
