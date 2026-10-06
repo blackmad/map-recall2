@@ -24,6 +24,7 @@ var CanalRecallRoadProjection = (() => {
     ENDPOINT_SAMPLE_LIMIT: () => ENDPOINT_SAMPLE_LIMIT,
     METRES_PER_DEGREE_LAT: () => METRES_PER_DEGREE_LAT,
     PIXELS_PER_METER: () => PIXELS_PER_METER,
+    RoadSnapIndex: () => RoadSnapIndex,
     WORLD_ORIGIN: () => WORLD_ORIGIN,
     buildRoadSegments: () => buildRoadSegments,
     centringOffset: () => centringOffset,
@@ -42,6 +43,65 @@ var CanalRecallRoadProjection = (() => {
     tileXToLng: () => tileXToLng,
     tileYToLat: () => tileYToLat
   });
+
+  // src/canalRecall/osm/roadSnapIndex.ts
+  var distanceTo = (point, node) => Math.hypot(
+    Math.max(node.minX - point.x, 0, point.x - node.maxX),
+    Math.max(node.minY - point.y, 0, point.y - node.maxY)
+  );
+  var RoadSnapIndex = class {
+    root;
+    constructor(segments) {
+      const spans = [];
+      for (const segment of segments) for (let i = 1; i < segment.points.length; i++)
+        spans.push({ a: segment.points[i - 1], b: segment.points[i], order: spans.length });
+      const build = (items) => {
+        const node = { minX: Infinity, minY: Infinity, maxX: -Infinity, maxY: -Infinity };
+        for (const { a, b } of items) {
+          node.minX = Math.min(node.minX, a.x, b.x);
+          node.minY = Math.min(node.minY, a.y, b.y);
+          node.maxX = Math.max(node.maxX, a.x, b.x);
+          node.maxY = Math.max(node.maxY, a.y, b.y);
+        }
+        if (items.length <= 8) node.spans = items;
+        else {
+          const axis = node.maxX - node.minX >= node.maxY - node.minY ? "x" : "y";
+          items.sort((a, b) => a.a[axis] + a.b[axis] - (b.a[axis] + b.b[axis]));
+          const middle = Math.floor(items.length / 2);
+          node.left = build(items.slice(0, middle));
+          node.right = build(items.slice(middle));
+        }
+        return node;
+      };
+      if (spans.length) this.root = build(spans);
+    }
+    nearest(point) {
+      let best = null, order = Infinity;
+      const visit = (node) => {
+        if (best && distanceTo(point, node) > best.distance + 1e-8) return;
+        if (node.spans) {
+          for (const span of node.spans) {
+            const candidate = closestPointOnSegment(point, span.a, span.b);
+            if (!best || candidate.distance < best.distance || candidate.distance === best.distance && span.order < order) {
+              best = candidate;
+              order = span.order;
+            }
+          }
+        } else {
+          const a = node.left, b = node.right;
+          if (distanceTo(point, a) <= distanceTo(point, b)) {
+            visit(a);
+            visit(b);
+          } else {
+            visit(b);
+            visit(a);
+          }
+        }
+      };
+      if (this.root) visit(this.root);
+      return best;
+    }
+  };
 
   // src/canalRecall/routing/cycleTrack.ts
   var TRACK = /^(track|separate)$/;
@@ -187,11 +247,11 @@ var CanalRecallRoadProjection = (() => {
     }
     return { segments, offset };
   }
-  function snapToRoad(point, centre, offset, segments, maxSnapDistance) {
+  function snapToRoad(point, centre, offset, segments, maxSnapDistance, index) {
     const projected = projectToWorld(point, centre);
     const target = { x: projected.x + offset.x, y: projected.y + offset.y };
-    let best = null;
-    for (const segment of segments) {
+    let best = index?.nearest(target) ?? null;
+    if (!index) for (const segment of segments) {
       for (let i = 0; i < segment.points.length - 1; i++) {
         const candidate = closestPointOnSegment(target, segment.points[i], segment.points[i + 1]);
         if (!best || candidate.distance < best.distance) best = candidate;
