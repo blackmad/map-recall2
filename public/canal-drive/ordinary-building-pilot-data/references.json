@@ -1,0 +1,298 @@
+[
+  {
+    "id": "0363100012118320",
+    "target": [
+      4.92779,
+      52.3759
+    ],
+    "cameraTarget": [
+      4.92794,
+      52.37612
+    ],
+    "year": "2025",
+    "panorama": {
+      "_links": {
+        "self": {
+          "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_08-26-12_01557/"
+        },
+        "equirectangular_full": {
+          "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_08-26-12_01557/equirectangular/panorama_8000.jpg"
+        },
+        "equirectangular_medium": {
+          "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_08-26-12_01557/equirectangular/panorama_4000.jpg"
+        },
+        "equirectangular_small": {
+          "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_08-26-12_01557/equirectangular/panorama_2000.jpg"
+        },
+        "cubic_img_preview": {
+          "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_08-26-12_01557/cubic/preview.jpg"
+        },
+        "thumbnail": {
+          "href": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_08-26-12_01557/"
+        },
+        "adjacencies": {
+          "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_08-26-12_01557/adjacencies/"
+        }
+      },
+      "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_08-26-12_01557/cubic/",
+      "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_08-26-12_01557/cubic/{z}/{f}/{y}/{x}.jpg",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.927938759465151,
+          52.37606006773679,
+          0
+        ]
+      },
+      "pano_id": "recording_2025-06-16_08-26-12_01557",
+      "timestamp": "2025-06-16T08:52:31Z",
+      "filename": "recording_2025-06-16_08-26-12_01557.jpg",
+      "surface_type": "L",
+      "mission_distance": 5,
+      "mission_type": "bi",
+      "mission_year": "2025",
+      "tags": [
+        "mission-bi",
+        "mission-2025",
+        "mission-distance-5",
+        "surface-land"
+      ],
+      "roll": 0,
+      "pitch": 0,
+      "heading": 0
+    },
+    "file": "raw/recording_2025-06-16_08-26-12_01557.jpg",
+    "projection": {
+      "kind": "perspective",
+      "heading": 209.58344288404592,
+      "pitch": 23,
+      "horizontalFov": 90,
+      "width": 1000,
+      "height": 750,
+      "orientation": "world-aligned-north-at-centre",
+      "referenceImage": "reference-0363100012118320-2025.jpg"
+    }
+  },
+  {
+    "id": "0363100012118320",
+    "target": [
+      4.92779,
+      52.3759
+    ],
+    "cameraTarget": [
+      4.92794,
+      52.37612
+    ],
+    "year": "2020",
+    "panorama": {
+      "_links": {
+        "self": {
+          "href": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001667_pano_0000_001169/"
+        },
+        "equirectangular_full": {
+          "href": "https://t1.data.amsterdam.nl/panorama/2020/04/22/TMX7316010203-001667/pano_0000_001169/equirectangular/panorama_8000.jpg"
+        },
+        "equirectangular_medium": {
+          "href": "https://t1.data.amsterdam.nl/panorama/2020/04/22/TMX7316010203-001667/pano_0000_001169/equirectangular/panorama_4000.jpg"
+        },
+        "equirectangular_small": {
+          "href": "https://t1.data.amsterdam.nl/panorama/2020/04/22/TMX7316010203-001667/pano_0000_001169/equirectangular/panorama_2000.jpg"
+        },
+        "cubic_img_preview": {
+          "href": "https://t1.data.amsterdam.nl/panorama/2020/04/22/TMX7316010203-001667/pano_0000_001169/cubic/preview.jpg"
+        },
+        "thumbnail": {
+          "href": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001667_pano_0000_001169/"
+        },
+        "adjacencies": {
+          "href": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001667_pano_0000_001169/adjacencies/"
+        }
+      },
+      "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2020/04/22/TMX7316010203-001667/pano_0000_001169/cubic/",
+      "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2020/04/22/TMX7316010203-001667/pano_0000_001169/cubic/{z}/{f}/{y}/{x}.jpg",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.9279115917918,
+          52.376049165999,
+          46.6747220689431
+        ]
+      },
+      "pano_id": "TMX7316010203-001667_pano_0000_001169",
+      "timestamp": "2020-04-22T08:38:00.424110Z",
+      "filename": "pano_0000_001169.jpg",
+      "surface_type": "L",
+      "mission_distance": 5,
+      "mission_type": "bi",
+      "mission_year": "2020",
+      "tags": [
+        "mission-bi",
+        "mission-2020",
+        "surface-land",
+        "mission-distance-5"
+      ],
+      "roll": 1.87116396164839,
+      "pitch": -0.229633516722388,
+      "heading": 103.9202246987
+    },
+    "file": "raw/TMX7316010203-001667_pano_0000_001169.jpg",
+    "projection": {
+      "kind": "perspective",
+      "heading": 206.47018764718013,
+      "pitch": 23,
+      "horizontalFov": 90,
+      "width": 1000,
+      "height": 750,
+      "orientation": "world-aligned-north-at-centre",
+      "referenceImage": "reference-0363100012118320-2020.jpg"
+    }
+  },
+  {
+    "id": "0363100012139498",
+    "target": [
+      4.92638,
+      52.376
+    ],
+    "cameraTarget": [
+      4.92665,
+      52.37628
+    ],
+    "year": "2025",
+    "panorama": {
+      "_links": {
+        "self": {
+          "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_08-26-12_01547/"
+        },
+        "equirectangular_full": {
+          "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_08-26-12_01547/equirectangular/panorama_8000.jpg"
+        },
+        "equirectangular_medium": {
+          "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_08-26-12_01547/equirectangular/panorama_4000.jpg"
+        },
+        "equirectangular_small": {
+          "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_08-26-12_01547/equirectangular/panorama_2000.jpg"
+        },
+        "cubic_img_preview": {
+          "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_08-26-12_01547/cubic/preview.jpg"
+        },
+        "thumbnail": {
+          "href": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_08-26-12_01547/"
+        },
+        "adjacencies": {
+          "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_08-26-12_01547/adjacencies/"
+        }
+      },
+      "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_08-26-12_01547/cubic/",
+      "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_08-26-12_01547/cubic/{z}/{f}/{y}/{x}.jpg",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.9272326275983,
+          52.3761825793139,
+          0
+        ]
+      },
+      "pano_id": "recording_2025-06-16_08-26-12_01547",
+      "timestamp": "2025-06-16T08:52:21Z",
+      "filename": "recording_2025-06-16_08-26-12_01547.jpg",
+      "surface_type": "L",
+      "mission_distance": 5,
+      "mission_type": "bi",
+      "mission_year": "2025",
+      "tags": [
+        "mission-bi",
+        "mission-2025",
+        "mission-distance-5",
+        "surface-land"
+      ],
+      "roll": 0,
+      "pitch": 0,
+      "heading": 0
+    },
+    "file": "raw/recording_2025-06-16_08-26-12_01547.jpg",
+    "projection": {
+      "kind": "perspective",
+      "heading": 250.68161730055328,
+      "pitch": 23,
+      "horizontalFov": 90,
+      "width": 1000,
+      "height": 750,
+      "orientation": "world-aligned-north-at-centre",
+      "referenceImage": "reference-0363100012139498-2025.jpg"
+    }
+  },
+  {
+    "id": "0363100012139498",
+    "target": [
+      4.92638,
+      52.376
+    ],
+    "cameraTarget": [
+      4.92665,
+      52.37628
+    ],
+    "year": "2020",
+    "panorama": {
+      "_links": {
+        "self": {
+          "href": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001667_pano_0000_001178/"
+        },
+        "equirectangular_full": {
+          "href": "https://t1.data.amsterdam.nl/panorama/2020/04/22/TMX7316010203-001667/pano_0000_001178/equirectangular/panorama_8000.jpg"
+        },
+        "equirectangular_medium": {
+          "href": "https://t1.data.amsterdam.nl/panorama/2020/04/22/TMX7316010203-001667/pano_0000_001178/equirectangular/panorama_4000.jpg"
+        },
+        "equirectangular_small": {
+          "href": "https://t1.data.amsterdam.nl/panorama/2020/04/22/TMX7316010203-001667/pano_0000_001178/equirectangular/panorama_2000.jpg"
+        },
+        "cubic_img_preview": {
+          "href": "https://t1.data.amsterdam.nl/panorama/2020/04/22/TMX7316010203-001667/pano_0000_001178/cubic/preview.jpg"
+        },
+        "thumbnail": {
+          "href": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001667_pano_0000_001178/"
+        },
+        "adjacencies": {
+          "href": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001667_pano_0000_001178/adjacencies/"
+        }
+      },
+      "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2020/04/22/TMX7316010203-001667/pano_0000_001178/cubic/",
+      "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2020/04/22/TMX7316010203-001667/pano_0000_001178/cubic/{z}/{f}/{y}/{x}.jpg",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.92730142111272,
+          52.3761952107106,
+          46.5735746677965
+        ]
+      },
+      "pano_id": "TMX7316010203-001667_pano_0000_001178",
+      "timestamp": "2020-04-22T08:38:09.199080Z",
+      "filename": "pano_0000_001178.jpg",
+      "surface_type": "L",
+      "mission_distance": 5,
+      "mission_type": "bi",
+      "mission_year": "2020",
+      "tags": [
+        "mission-bi",
+        "mission-2020",
+        "surface-land",
+        "mission-distance-5"
+      ],
+      "roll": -0.89618088832802,
+      "pitch": -0.63816960994824,
+      "heading": 104.201349579345
+    },
+    "file": "raw/TMX7316010203-001667_pano_0000_001178.jpg",
+    "projection": {
+      "kind": "perspective",
+      "heading": 250.87220110075694,
+      "pitch": 23,
+      "horizontalFov": 90,
+      "width": 1000,
+      "height": 750,
+      "orientation": "world-aligned-north-at-centre",
+      "referenceImage": "reference-0363100012139498-2020.jpg"
+    }
+  }
+]

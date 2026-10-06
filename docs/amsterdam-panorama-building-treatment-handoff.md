@@ -2,13 +2,25 @@
 
 Handoff date: 2026-10-06. This document is self-contained and intended for two existing agents. Read the repository AGENTS.md and `docs/landmark-building-recipe.md` before implementation. Coordinate file ownership with the root agent; do not stage unrelated drafts or overwrite another agent's work.
 
+## Latest checkpoint: two demos now exist
+
+Root produced a two-building experimental viewer at `/canal-drive/ordinary-building-pilot.html`. Modern block: `0363100012139498`; warehouse: `0363100012118320`. Each offers a bare shell, a source-informed original procedural atlas and shallow geometry. Warehouse geometry opens the central upper gallery; modern geometry adds balcony slabs/cutout railings. Both can export draft GLBs. Root inspected close/wide views and checked desktop orbit, mobile zoom and exports; no runtime page errors.
+
+First saved history response was at 18:50:52 UTC, first demo page at 18:53:50, and two-building page controls at 18:56:07. Subsequent corrections, checks, archival and publication add time: these milestones are not complete accepted-building timings. Modern relief uses 888 triangles / 6 viewer calls; warehouse relief 216 / 12. FPS is not a game benchmark. Both have approximate facade counts/massing and unresolved rear appearance, and neither is installed or approved in the fidelity ledger.
+
+Source pack is pushed: private `blackmad/map-recall2-source-data`, commit `436605b`, `experiments/large-ordinary-fast-pass`. Original 2020/2025 panoramas, camera metadata, API records, licensing capture, native geometry and draft evidence are preserved/checksummed. The bounded history sample includes nine years, but pagination stopped at 500 records. In the warehouse example, a bright 2020 overhead streak is absent from the chosen 2025 view. The 2025 camera height is zero, not a usable surveyed altitude.
+
+See `docs/performance/2026-10-06/ordinary-building-pilot.md`, `src/canalRecall/ordinaryBuildingPilot/viewer.mjs`, and `scripts/ordinary-building-pilot/`. Acquisition/projection scripts take an explicit source-pack directory as their first argument. GDAL was unnecessary for these previews; installation remains untested. Historic age alone should not disqualify the warehouse: the user's correction explicitly asks us to consider its repetitive, largely box-like structure. Preserve the characteristic arches, cornice and open gallery.
+
+Agent A should continue the projection/view-selection evidence work. Agent B can improve/check these drafts rather than restarting scaffolding, but must verify actual scope/roof/open spaces before acceptance. The separate source trial below now reports a same-image municipal/project rectification comparison with no geometry-fidelity advantage established; camera-height/ground calibration remains unproven.
+
 ## User intent
 
 Large ordinary buildings occupy enough of the game landscape to deserve their own recognizable character. The user wants to test how quickly a per-building generator, original procedural texture/atlas or lightweight GLB can capture that character, instead of applying generic textures or doing a heavy bespoke rebuild for every building. Reuse installed surveyed geometry wherever it fits. Measure actual authoring speed and gameplay appearance/performance; no timing advantage has yet been demonstrated.
 
 The user also suggested Amsterdam Data's panorama viewer as a better source of clean facade references than our own rectified crops. Investigate that suggestion through actual image comparisons, not assumptions about which projection is superior.
 
-## Verified findings
+## Initial verified findings (see later source trial for updates)
 
 The supplied address page is:
 https://data.amsterdam.nl/adressen/0363200000126409?center=52.3790033%2C4.8922294&zoom=14
@@ -70,7 +82,7 @@ Confirmed policy in `roofMesh.exceptLandmarks`: generic facade decoration is ski
 
 Screenshot evidence: `/Users/blackmad/Code/map-recall2/artifacts/city-performance/2026-10-06/empty-walls/user.png` and `diagnosis.json`. Direct chat evidence, not a claimed Firestore feedback item.
 
-Root's isolated worktree is `/tmp/map-recall2-performance`. It currently contains uncommitted workflow changes in `docs/landmark-building-recipe.md` and `public/canal-drive/poi-work-queue.json` for the pilot and blank-wall report. They are not necessarily in your branch. Preserve/merge them with root coordination. No pilot building, new reference acquisition pack or visual acceptance has been completed by this investigation. This handoff itself does not claim either agent is active.
+Root's isolated worktree is `/tmp/map-recall2-performance`. It contains the demo and workflow changes in `docs/landmark-building-recipe.md` and `public/canal-drive/poi-work-queue.json` for the pilot and blank-wall report. Fetch the eventual public checkpoint; these files are not necessarily in your branch. Preserve/merge them with root coordination. Two demo drafts and the source acquisition pack now exist as described above; no visual/game acceptance has been completed. This handoff itself does not claim either agent is active.
 
 Recent performance release `ce00fece4de975c7f79c7b226f36c42e6e1ce5e4` was pushed/deployed and verified; do not undo its batched road setup, textured-window/door retention or culling behavior. The original root checkout contains unrelated dirty drafts: use an isolated worktree and explicit file staging.
 
