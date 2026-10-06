@@ -34,6 +34,9 @@ const root = new T.Group();
 scene.add(root);
 let current;
 let mode = "atlas";
+// Shared atlas coordinates keep balcony geometry aligned with the four normal
+// residential floors above the source-supported double-height ground bays.
+const modernRows = [280, 405, 530, 655];
 function facadeAtlas() {
   const canvas = document.createElement("canvas");
   canvas.width = 2048;
@@ -41,31 +44,27 @@ function facadeAtlas() {
   const c = canvas.getContext("2d");
   c.fillStyle = "#a49e91";
   c.fillRect(0, 0, 2048, 1024);
-  const top = 210, bottom = 930, brickEnd = 1620;
+  const top = 245, brickEnd = 1620;
   c.fillStyle = "#a26f55";
-  c.fillRect(brickEnd, top, 428, 814);
-  c.fillStyle = "#c1bcaa";
-  c.fillRect(0, bottom, brickEnd, 94);
-  c.fillStyle = "#515d5c";
-  c.fillRect(0, 24, 2048, top - 24);
-  c.strokeStyle = "#e4e3d8";
-  c.lineWidth = 10;
-  for (let x = 0; x <= 2048; x += 65) {
-    c.beginPath();
-    c.moveTo(x, 20);
-    c.lineTo(x, top);
-    c.stroke();
+  c.fillRect(brickEnd, top, 428, 1024 - top);
+  // Three glazed upper tiers: fine dark window frames sit within a wider pale
+  // structural grid. The 2020 and 2025 views both show this hierarchy.
+  c.fillStyle = "#566965";
+  c.fillRect(0, 18, 2048, top - 18);
+  c.fillStyle = "#849b96";
+  for (const y of [24, 100, 176]) for (let x = 8; x < 2048; x += 65) {
+    c.fillRect(x, y, 52, 56);
+    c.fillStyle = "#384c48";
+    c.fillRect(x + 24, y, 3, 56);
+    c.fillRect(x, y + 17, 52, 3);
+    c.fillStyle = "#849b96";
   }
-  for (const y of [20, 110, top]) {
-    c.beginPath();
-    c.moveTo(0, y);
-    c.lineTo(2048, y);
-    c.stroke();
-  }
+  c.fillStyle = "#e4e3d8";
+  for (let x = 0; x <= 2048; x += 408) c.fillRect(x, 16, 13, top - 16);
+  for (const y of [16, 87, 163, 239]) c.fillRect(0, y, 2048, 12);
   c.fillStyle = "#deded3";
   c.fillRect(0, top, 2048, 14);
-  for (let row = 0; row < 6; row++) {
-    const y = 243 + row * 114;
+  for (const y of modernRows) {
     for (let bay = 0; bay < 15; bay++) {
       const x = 35 + bay * 136;
       c.fillStyle = "#3e4643";
@@ -75,7 +74,7 @@ function facadeAtlas() {
       c.fillRect(x + 42, y + 5, 27, 70);
       c.fillStyle = "#445952";
       c.fillRect(x + 7, y + 27, 62, 4);
-      if (bay < 12 && row < 5) {
+      if (bay < 12) {
         c.fillStyle = "#767e78";
         c.fillRect(x - 5, y + 73, 87, 13);
         c.strokeStyle = "#3e4541";
@@ -84,17 +83,69 @@ function facadeAtlas() {
       }
     }
   }
-  c.fillStyle = "#3f514d";
-  for (const x of [90, 665, 1225, 1820]) {
-    c.fillRect(x, 931, 70, 93);
+  // Tall entrances occupy the whole lower two-storey zone. No generic window
+  // row crosses their transoms. Keep the same vertical bay rhythm as above.
+  for (let bay = 0; bay < 15; bay++) {
+    const x = 35 + bay * 136, y = 814;
+    c.fillStyle = "#3b4742";
+    c.fillRect(x, y, 76, 210);
+    c.fillStyle = "#657e74";
+    c.fillRect(x + 6, y + 7, 28, 80);
+    c.fillRect(x + 42, y + 7, 28, 80);
+    c.fillRect(x + 6, y + 96, 28, 107);
+    c.fillRect(x + 42, y + 96, 28, 107);
     c.fillStyle = "#a2aca5";
-    c.fillRect(x + 33, 935, 4, 85);
-    c.fillStyle = "#3f514d";
+    c.fillRect(x + 35, y + 4, 5, 204);
+    c.fillRect(x + 4, y + 88, 68, 6);
   }
   const texture2 = new T.CanvasTexture(canvas);
   texture2.colorSpace = T.SRGBColorSpace;
   texture2.anisotropy = renderer.capabilities.getMaxAnisotropy();
   return texture2;
+}
+// Segmental heads are part of each opening outline, rather than an arch painted
+// above a rectangular pane. Rise is measured downward from the crown in atlas px.
+function segmentalPath(c, x, y, w, h, rise) {
+  c.beginPath();
+  c.moveTo(x, y + h);
+  c.lineTo(x, y + rise);
+  c.quadraticCurveTo(x + w / 2, y - rise, x + w, y + rise);
+  c.lineTo(x + w, y + h);
+  c.closePath();
+}
+function archedWindow(c, x, y, w, h, rise) {
+  segmentalPath(c, x, y, w, h, rise);
+  c.fillStyle = "#45564f";
+  c.fill();
+  segmentalPath(c, x + 5, y + 5, w - 10, h - 11, rise - 2);
+  c.fillStyle = "#78908a";
+  c.fill();
+  c.save();
+  c.clip();
+  c.fillStyle = "#a1a896";
+  c.fillRect(x + w / 2 - 2, y, 4, h);
+  c.fillRect(x, y + h * 0.36, w, 3);
+  c.restore();
+}
+function brickArch(c, x, y, w, rise) {
+  c.beginPath();
+  c.moveTo(x, y + rise);
+  c.quadraticCurveTo(x + w / 2, y - rise, x + w, y + rise);
+  c.strokeStyle = "#a57751";
+  c.lineWidth = 14;
+  c.stroke();
+  // Restrained radial mortar joints make the curved band read as brickwork.
+  c.strokeStyle = "#8b704f";
+  c.lineWidth = 1.5;
+  for (let i = 1; i < 18; i++) {
+    const t = i / 18, px = x + w * t, py = y + rise * (1 - 4 * t * (1 - t));
+    const slope = (8 * rise * t - 4 * rise) / w;
+    const nx = -slope / Math.hypot(1, slope), ny = 1 / Math.hypot(1, slope);
+    c.beginPath();
+    c.moveTo(px - nx * 7, py - ny * 7);
+    c.lineTo(px + nx * 7, py + ny * 7);
+    c.stroke();
+  }
 }
 function warehouseAtlas() {
   const canvas = document.createElement("canvas");
@@ -124,22 +175,30 @@ function warehouseAtlas() {
   c.fillRect(0, 397, 2048, 15);
   for (let bay = 0; bay < 16; bay++) {
     const x = bay * 128 + 22, wide = bay % 2 === 0;
-    c.strokeStyle = "#a57751";
-    c.lineWidth = 14;
-    c.beginPath();
-    c.ellipse(x + 42, 450, 54, 29, 0, Math.PI, 2 * Math.PI);
-    c.stroke();
+    brickArch(c, x - 12, 444, 108, 20);
     for (let row = 0; row < 2; row++) {
       const y = 466 + row * 170;
-      c.fillStyle = "#45564f";
-      c.fillRect(x + (wide ? 0 : 23), y, wide ? 83 : 36, 123);
-      c.fillStyle = "#78908a";
-      c.fillRect(x + (wide ? 7 : 29), y + 8, wide ? 69 : 23, 100);
-      c.fillStyle = "#a1a896";
-      c.fillRect(x + 39, y + 6, 4, 108);
       if (wide) {
+        if (row === 0) archedWindow(c, x, y, 83, 123, 12);
+        else {
+          c.fillStyle = "#45564f";
+          c.fillRect(x, y, 83, 123);
+          c.fillStyle = "#78908a";
+          c.fillRect(x + 7, y + 8, 69, 100);
+          c.fillStyle = "#a1a896";
+          c.fillRect(x + 39, y + 6, 4, 108);
+        }
         c.fillStyle = "#626f68";
         c.fillRect(x - 2, y + 101, 87, 16);
+        c.strokeStyle = "#3d4d43";
+        c.lineWidth = 2;
+        for (let k = 0; k < 10; k++) c.strokeRect(x + k * 9, y + 86, 1, 29);
+      } else {
+        // The narrow pier groups contain two separately arched windows.
+        for (const offset of [2, 48]) {
+          brickArch(c, x + offset - 2, y - 2, 35, 8);
+          archedWindow(c, x + offset, y + 7, 31, 116, 7);
+        }
       }
     }
     c.fillStyle = "#354640";
@@ -184,7 +243,7 @@ function wallFaces(low = 0, high = height, selectedEdges = warehouse ? [5, 6] : 
 }
 function balconies() {
   const group = new T.Group(), a = points[0], b = points[1], delta = b.clone().sub(a), tangent = delta.clone().normalize(), outward = new T.Vector2(-tangent.y, tangent.x);
-  const slabs = new T.InstancedMesh(new T.BoxGeometry(2.8, 0.2, 1.1), new T.MeshStandardMaterial({ color: "#777d78", roughness: 1 }), 60);
+  const slabs = new T.InstancedMesh(new T.BoxGeometry(2.8, 0.2, 1.1), new T.MeshStandardMaterial({ color: "#777d78", roughness: 1 }), 48);
   const railCanvas = document.createElement("canvas");
   railCanvas.width = 128;
   railCanvas.height = 64;
@@ -195,11 +254,11 @@ function balconies() {
   for (let x = 0; x < 128; x += 16) ink.fillRect(x, 0, 3, 64);
   const railTexture = new T.CanvasTexture(railCanvas);
   railTexture.colorSpace = T.SRGBColorSpace;
-  const rails = new T.InstancedMesh(new T.PlaneGeometry(2.8, 0.9), new T.MeshStandardMaterial({ map: railTexture, alphaTest: 0.5, side: T.DoubleSide, roughness: 1 }), 60);
+  const rails = new T.InstancedMesh(new T.PlaneGeometry(2.8, 0.9), new T.MeshStandardMaterial({ map: railTexture, alphaTest: 0.5, side: T.DoubleSide, roughness: 1 }), 48);
   const dummy = new T.Object3D();
   let count = 0;
-  for (let row = 0; row < 5; row++) for (let bay = 3; bay < 15; bay++) {
-    const t = (bay + 0.5) / 15, c = a.clone().addScaledVector(delta, t), y = height * (1 - (243 + row * 114 + 83) / 1024), yaw = -Math.atan2(tangent.y, tangent.x);
+  for (const rowY of modernRows) for (let bay = 3; bay < 15; bay++) {
+    const t = (bay + 0.5) / 15, c = a.clone().addScaledVector(delta, t), y = height * (1 - (rowY + 83) / 1024), yaw = -Math.atan2(tangent.y, tangent.x);
     dummy.position.set(c.x + outward.x * 0.54, y, c.y + outward.y * 0.54);
     dummy.rotation.set(0, yaw, 0);
     dummy.updateMatrix();
