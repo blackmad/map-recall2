@@ -1,0 +1,15 @@
+{
+  "modelId": "ndsm-container-arch",
+  "landmarkId": "osm_w1304785589",
+  "name": "De Containerboog",
+  "longitude": 4.894597625,
+  "latitude": 52.401558625,
+  "description": "Nine shipping containers form this open arch on the NDSM shipyard. It began as a DGTL festival installation in 2018 and became a changing canvas for public art. Gabi Brunhoso\u2019s FIRESTARTER is the operator-listed artwork from 3 April 2026 to 3 April 2027, commissioned by Stichting NDSM-werf with DGTL. Earlier commissions include SEEYOUSIOE\u2019s EMPOWER (2024) and VAAF\u2019s The only way is up (2025).",
+  "sourceUrl": "https://www.ndsm.nl/en/magazine/de-verschillende-jasjes-van-de-icoontainerboog",
+  "additionalSources": [
+    "https://www.ndsm.nl/en/kunst/firestarter",
+    "https://www.ndsm.nl/en/kunst/the-only-way-is-up",
+    "https://www.ndsm.nl/magazine/interview-seeyousioe-over-hun-werk-empower"
+  ],
+  "identityNote": "Genuine OSM artwork way1304785589; no existing extract landmark found. Root must preserve this identity across route/pin/card; no aliases of NDSM-loods or STRAAT."
+}

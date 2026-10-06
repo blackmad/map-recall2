@@ -7601,6 +7601,51 @@ Map source: ${osmUrl(places[i][0])}`);
         brick: "#8a7159",
         gold: "#f4c400"
       }
+    },
+    {
+      id: "ndsm-container-arch",
+      name: "De Containerboog",
+      landmarkId: "osm_w1304785589",
+      modelUrl: "./models/ndsm-container-arch.glb",
+      suppressOsmIds: [
+        "w1304785589"
+      ],
+      spatialSuppression: false,
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      footprint: {
+        centre: [
+          4.894597625,
+          52.401558625
+        ],
+        headingDegrees: 127.737,
+        lengthMetres: 18.452,
+        widthMetres: 6.48
+      },
+      surveyed: {
+        anchor: [
+          4.894597625,
+          52.401558625
+        ],
+        northOffsetDegrees: 217.737,
+        source: "OSM w1304785589 area outline, current 2026 NDSM operator photographs. Local +X is long-axis bearing307.737 (same undirected footprint axis127.737)\xB0. Photo-derived square box ends2.44m, radius8.006m, depth6.48m, top10.446m; dimensions approximate, not ISO or engineering survey. Principal striped ends face local -Z (southwest)."
+      },
+      materialOverrides: {
+        frame: "#603075",
+        dark: "#24162c",
+        blue: "#51ddd0",
+        pink: "#ee0679",
+        gold: "#ffce0a",
+        ochre: "#fa9504"
+      },
+      attribution: {
+        title: "De Containerboog \u2014 FIRESTARTER (2026)",
+        author: "Map Recall",
+        sourceUrl: "https://www.ndsm.nl/en/kunst/firestarter",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original nine separate native-scale containers with open wedge spacers, open central passage and simplified original flat-colour FIRESTARTER-inspired turquoise/magenta/yellow motifs. No third-party pixels, meshes or identification text."
+      }
     }
   ];
 
@@ -11088,6 +11133,21 @@ Map source: ${osmUrl(places[i][0])}`);
       description: "Kesbeke\u2019s shop at Adolf van Nassaustraat 3 faces the family\u2019s pickle factory. Alongside its Amsterdam pickles and other preserved vegetables, the shop sells oils, cheeses and accompaniments for the table.",
       sourceUrl: "https://www.kesbeke.nl/ons-winkeltje/",
       preferDescription: true
+    },
+    {
+      modelId: "ndsm-container-arch",
+      landmarkId: "osm_w1304785589",
+      name: "De Containerboog",
+      longitude: 4.894597625,
+      latitude: 52.401558625,
+      description: "Nine shipping containers form this open arch on the NDSM shipyard. It began as a DGTL festival installation in 2018 and became a changing canvas for public art. Gabi Brunhoso\u2019s FIRESTARTER is the operator-listed artwork from 3 April 2026 to 3 April 2027, commissioned by Stichting NDSM-werf with DGTL. Earlier commissions include SEEYOUSIOE\u2019s EMPOWER (2024) and VAAF\u2019s The only way is up (2025).",
+      sourceUrl: "https://www.ndsm.nl/en/magazine/de-verschillende-jasjes-van-de-icoontainerboog",
+      additionalSources: [
+        "https://www.ndsm.nl/en/kunst/firestarter",
+        "https://www.ndsm.nl/en/kunst/the-only-way-is-up",
+        "https://www.ndsm.nl/magazine/interview-seeyousioe-over-hun-werk-empower"
+      ],
+      identityNote: "Genuine OSM artwork way1304785589; no existing extract landmark found. Root must preserve this identity across route/pin/card; no aliases of NDSM-loods or STRAAT."
     }
   ];
 

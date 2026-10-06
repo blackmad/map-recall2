@@ -1060,19 +1060,19 @@
       "id": "ndsm-container-arch",
       "task": "NDSM container arch / Icoontainerboog",
       "priority": "high",
-      "status": "current-source-and-native-identity-prepared",
+      "status": "visual-and-game-integration-verified-performance-followup",
       "requestedOn": "2026-10-06",
       "sourceUrls": [
         "https://www.ndsm.nl/en/magazine/de-verschillende-jasjes-van-de-icoontainerboog"
       ],
-      "owner": "ndsm_container_arch_sources",
+      "owner": "root",
       "parentTask": "ndsm-warehouse-complex",
-      "nextAction": "After draftbatchpublication, calibrate nine original raised-container volumes/supports/open wedges using current2026 FIRESTARTERphotos andgenuineOSMw1304785589. Height/boxdimensions remainphotoestimates; retain independent hall/Lasloods.",
+      "nextAction": "Publish independently reviewed final native-scale arch; photo-derived dimensions/artwork approximations retained, first facing/motif failures preserved. General hardware performance followup remains.",
       "sourceArchive": {
-        "commit": "6921162",
+        "commit": "f9fb11f",
         "path": "models/ndsm-container-arch"
       },
-      "evidence": "../../scripts/landmarks/ndsm-container-arch-research.json"
+      "evidence": "../../scripts/landmarks/ndsm-container-arch-review.json"
     },
     {
       "id": "midwest-real-entrance-sign",

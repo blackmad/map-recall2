@@ -12020,6 +12020,82 @@
       "triangles": 7606,
       "bytes": 64228,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "ndsm-container-arch": {
+      "id": "ndsm-container-arch",
+      "name": "De Containerboog",
+      "landmarkId": "osm_w1304785589",
+      "modelUrl": "./models/ndsm-container-arch.glb",
+      "suppressOsmIds": [
+        "w1304785589"
+      ],
+      "spatialSuppression": false,
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "footprint": {
+        "centre": [
+          4.894597625,
+          52.401558625
+        ],
+        "headingDegrees": 127.737,
+        "lengthMetres": 18.452,
+        "widthMetres": 6.48
+      },
+      "surveyed": {
+        "anchor": [
+          4.894597625,
+          52.401558625
+        ],
+        "northOffsetDegrees": 217.737,
+        "source": "OSM w1304785589 area outline, current 2026 NDSM operator photographs. Local +X is long-axis bearing307.737 (same undirected footprint axis127.737)°. Photo-derived square box ends2.44m, radius8.006m, depth6.48m, top10.446m; dimensions approximate, not ISO or engineering survey. Principal striped ends face local -Z (southwest)."
+      },
+      "materialOverrides": {
+        "frame": "#603075",
+        "dark": "#24162c",
+        "blue": "#51ddd0",
+        "pink": "#ee0679",
+        "gold": "#ffce0a",
+        "ochre": "#fa9504"
+      },
+      "attribution": {
+        "title": "De Containerboog — FIRESTARTER (2026)",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.ndsm.nl/en/kunst/firestarter",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original nine separate native-scale containers with open wedge spacers, open central passage and simplified original flat-colour FIRESTARTER-inspired turquoise/magenta/yellow motifs. No third-party pixels, meshes or identification text."
+      },
+      "bounds": {
+        "min": [
+          -9.277999877929688,
+          -0.042500048875808716,
+          -3.3259999752044678
+        ],
+        "max": [
+          9.277999877929688,
+          10.498000144958496,
+          3.30649995803833
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.894597625,
+          52.401558625
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 307.73699999999997,
+        "facadeBearingDegrees": 127.73699999999997,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 18.555999755859375,
+        "heightMetres": 10.540500193834305,
+        "depthMetres": 6.632499933242798,
+        "depthCoverage": 1.0235339403152466
+      },
+      "triangles": 16596,
+      "bytes": 240320,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
