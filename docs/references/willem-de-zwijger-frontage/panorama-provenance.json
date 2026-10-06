@@ -1,0 +1,38 @@
+[
+  {
+    "rawImage": "raw/panorama-00071.jpg",
+    "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_09_26_07_01_39_00071/equirectangular/panorama_8000.jpg",
+    "rawMetadata": "raw/panorama-00071.json",
+    "captureDate": "2025-09-26T07:04:36Z",
+    "imageSha256": "21ea42006728204de0c1a2a95369f4d4958e1c275345a735e9a369588753ef3a",
+    "processedImage": "processed/front-00071.jpg",
+    "transform": {
+      "module": "scripts/street-appearance/perspective.ts",
+      "headingDeg": 44,
+      "pitchDeg": 8,
+      "fovDeg": 110,
+      "width": 1800,
+      "height": 1000
+    },
+    "rights": "CCBY4.0GemeenteAmsterdam",
+    "limit": "Station76lowerfacepartlyoccludedbyparkedvans; do notinferhiddencompleteaperturesfromvehicleedges"
+  },
+  {
+    "rawImage": "raw/panorama-00076.jpg",
+    "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_09_26_07_01_39_00076/equirectangular/panorama_8000.jpg",
+    "rawMetadata": "raw/panorama-00076.json",
+    "captureDate": "2025-09-26T07:04:43Z",
+    "imageSha256": "a43e95bb2f0668890e803f6a3767dc53449efa5733cd72cf6d9b627243472c8e",
+    "processedImage": "processed/front-00076.jpg",
+    "transform": {
+      "module": "scripts/street-appearance/perspective.ts",
+      "headingDeg": 44,
+      "pitchDeg": 8,
+      "fovDeg": 110,
+      "width": 1800,
+      "height": 1000
+    },
+    "rights": "CCBY4.0GemeenteAmsterdam",
+    "limit": "Station76lowerfacepartlyoccludedbyparkedvans; do notinferhiddencompleteaperturesfromvehicleedges"
+  }
+]

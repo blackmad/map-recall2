@@ -1,0 +1,41 @@
+{
+  "id": "kesbeke-shop",
+  "name": "Kesbeke Zoet & Zuur winkel",
+  "landmarkId": "n9071288363",
+  "modelUrl": "./models/kesbeke-shop.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012120245"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.856803137299997,
+      52.38287567988049
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 13.054000000003725,
+    "widthMetres": 13.628000000026077
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.856803137299997,
+      52.38287567988049
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Native RD anchor118888/488467; AHN5 individual semantic roof planes, groundNAP0.4180000126361847; exact official BAG address/VBO/Pand relationship"
+  },
+  "attribution": {
+    "title": "Kesbeke shop and its residential BAG parent",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.kesbeke.nl/ons-winkeltje/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original native flat-color reconstruction with sharp original vector signage following actual walls; reference photos inform geometry only; no photo pixels or imported mesh."
+  },
+  "materialOverrides": {
+    "brick": "#8a7159",
+    "gold": "#f4c400"
+  }
+}

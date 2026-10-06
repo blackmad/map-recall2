@@ -5983,8 +5983,16 @@
       "sourceUrl": "https://beestboulders.com/beest-boulders-amsterdam/",
       "licence": "Original project asset",
       "licenceUrl": "./LICENSE",
-      "modifications": "Original texture-free interpretation of surveyed footprints and current municipal facade references; preserve full shared host and tenants."
-    }
+      "modifications": "Original native shared-host geometry with the source-observed complete western frontage and user-authorized real vector sign graphics. Reference photos guide geometry only. Preserve genuine Beest and Padel identities."
+    },
+    "relatedLandmarkIds": [
+      "n3974788355"
+    ],
+    "destinationLandmarkIds": [
+      "n8805218642",
+      "n3974788355"
+    ],
+    "preservePositionPrecision": true
   },
   {
     "id": "klimmuur-centraal",
@@ -6214,6 +6222,88 @@
       "licence": "Original project asset",
       "licenceUrl": "./LICENSE",
       "modifications": "Original texture-free native scale school reconstruction, surveyed stepped roofs, twin open-headed towers and facade rhythms from archived references."
+    }
+  },
+  {
+    "id": "kesbeke",
+    "name": "Kesbeke Fijne Tafelzuren",
+    "landmarkId": "w276264363",
+    "modelUrl": "./models/kesbeke.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012132306"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.857491067626641,
+        52.383076488700894
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 40.70900000000256,
+      "widthMetres": 65.0680000000284
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.857491067626641,
+        52.383076488700894
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Native RD anchor118935/488489; AHN5 individual semantic roof planes, groundNAP0.41499999165534973; exact official BAG address/VBO/Pand relationship"
+    },
+    "attribution": {
+      "title": "Kesbeke factory and office",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.kesbeke.nl/contact-keuze/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original native flat-color reconstruction with sharp original vector signage following actual walls; reference photos inform geometry only; no photo pixels or imported mesh."
+    },
+    "materialOverrides": {
+      "brick": "#8a7159",
+      "gold": "#f4c400"
+    }
+  },
+  {
+    "id": "kesbeke-shop",
+    "name": "Kesbeke Zoet & Zuur winkel",
+    "landmarkId": "n9071288363",
+    "modelUrl": "./models/kesbeke-shop.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012120245"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.856803137299997,
+        52.38287567988049
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 13.054000000003725,
+      "widthMetres": 13.628000000026077
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.856803137299997,
+        52.38287567988049
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Native RD anchor118888/488467; AHN5 individual semantic roof planes, groundNAP0.4180000126361847; exact official BAG address/VBO/Pand relationship"
+    },
+    "attribution": {
+      "title": "Kesbeke shop and its residential BAG parent",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.kesbeke.nl/ons-winkeltje/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original native flat-color reconstruction with sharp original vector signage following actual walls; reference photos inform geometry only; no photo pixels or imported mesh."
+    },
+    "materialOverrides": {
+      "brick": "#8a7159",
+      "gold": "#f4c400"
     }
   }
 ]

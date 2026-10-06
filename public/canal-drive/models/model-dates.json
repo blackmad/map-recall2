@@ -792,8 +792,8 @@
       "dateSource": "asset-update"
     },
     "beest-boulders": {
-      "updatedAt": "2026-10-06T06:24:28.099Z",
-      "version": "8b9723a7ad58ca43",
+      "updatedAt": "2026-10-06T13:15:28.867Z",
+      "version": "05d2fc34067b8fe3",
       "dateSource": "asset-update"
     },
     "klimmuur-centraal": {
@@ -824,6 +824,16 @@
     "midwest": {
       "updatedAt": "2026-10-06T10:31:27.831Z",
       "version": "4fff0ebe8e393e1b",
+      "dateSource": "asset-update"
+    },
+    "kesbeke-shop": {
+      "updatedAt": "2026-10-06T13:16:17.525Z",
+      "version": "1d1ff32df01de1c5",
+      "dateSource": "asset-update"
+    },
+    "kesbeke": {
+      "updatedAt": "2026-10-06T13:16:17.495Z",
+      "version": "e2acae9a946ddee1",
       "dateSource": "asset-update"
     }
   }

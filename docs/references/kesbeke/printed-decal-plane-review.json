@@ -1,0 +1,97 @@
+{
+  "status": "actual-geometry-plane-clearance-pass",
+  "data": {
+    "shop": {
+      "checks": [
+        {
+          "text": "Kesbeke",
+          "surface": "board-print",
+          "actualClearanceM": 0.0039997711209296405,
+          "actualDepthM": 2.396300518014982e-07,
+          "reversedTriangles": 0
+        },
+        {
+          "text": "zoet&zuur",
+          "surface": "board-print",
+          "actualClearanceM": 0.003999772233824306,
+          "actualDepthM": 2.3799841253335785e-07,
+          "reversedTriangles": 0
+        },
+        {
+          "text": "van moeder natuur",
+          "surface": "board-print",
+          "actualClearanceM": 0.003999771269527219,
+          "actualDepthM": 2.400748084774307e-07,
+          "reversedTriangles": 0
+        },
+        {
+          "text": "Kesbeke",
+          "surface": "glass-sticker",
+          "actualClearanceM": 0.003999797863555088,
+          "actualDepthM": 2.450763676442591e-07,
+          "reversedTriangles": 0
+        },
+        {
+          "text": "zoet&zuur",
+          "surface": "glass-sticker",
+          "actualClearanceM": 0.003999798937488919,
+          "actualDepthM": 2.440029671646471e-07,
+          "reversedTriangles": 0
+        },
+        {
+          "text": "van moeder natuur",
+          "surface": "glass-sticker",
+          "actualClearanceM": 0.003999796825385982,
+          "actualDepthM": 2.444839615201033e-07,
+          "reversedTriangles": 0
+        }
+      ],
+      "printedWords": 6,
+      "raisedWords": 0
+    },
+    "factory": {
+      "checks": [
+        {
+          "text": "Kesbeke",
+          "surface": "raised",
+          "actualDepthM": 0.03500191866155333
+        },
+        {
+          "text": "Kesbeke",
+          "surface": "raised",
+          "actualDepthM": 0.0350038089790452
+        },
+        {
+          "text": "Kesbeke",
+          "surface": "raised",
+          "actualDepthM": 0.03500382091746701
+        },
+        {
+          "text": "Kesbeke",
+          "surface": "raised",
+          "actualDepthM": 0.03500192635393162
+        },
+        {
+          "text": "Kesbeke",
+          "surface": "raised",
+          "actualDepthM": 0.03500190747450915
+        },
+        {
+          "text": "Kesbeke",
+          "surface": "raised",
+          "actualDepthM": 0.035001907545915145
+        }
+      ],
+      "printedWords": 0,
+      "raisedWords": 6
+    }
+  },
+  "limits": "Uncompressed generated mesh; decodedGLB/material/reference and scene review remain coordinator tasks.",
+  "releaseCheckpoint": {
+    "sourceRepository": "blackmad/map-recall2-source-data",
+    "sourceCommit": "2aa18011ae2c26568f9170517064a6561e075b30",
+    "sourcePath": "models/kesbeke/",
+    "userDiagnosticRenderApproval": "2026-10-06; commit/push explicitly authorized",
+    "actualGameplayReview": "pending; prior failure evidence preserved"
+  }
+}

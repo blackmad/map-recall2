@@ -1,0 +1,1368 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "jan_grouped_windows; builder author, technical measurements only",
+  "decision": "technical-attachment-and-budget-pass; architecture-gallery-live-acceptance-pending",
+  "reviewedAtUTC": "2026-10-06T10:07:45.813181+00:00",
+  "sourceIndex": "docs/references/willem-de-zwijger-frontage/research.json",
+  "reviewedSources": [
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/beest-boulders/processed/front-00071.jpg",
+      "sha256": "52fba8ec0b212dbaaa611adfc37023ce05abc9104458918eb9f552c803b029a0"
+    },
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/beest-boulders/processed/front-00076.jpg",
+      "sha256": "923792485d49a1dd5cb166c8bbc38242aef0bfbcb0361f59f70ba000cf8503ea"
+    },
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/beest-boulders/raw/user-streetview-may2024.png",
+      "sha256": "aa00907268c748ce5169dcc10410e41d76070164adce1593b2c1678e3a6f6e34"
+    }
+  ],
+  "scope": {
+    "nativeHost": "NL.IMBAG.Pand.0363100012151240",
+    "destinationIds": [
+      "n8805218642",
+      "n3974788355"
+    ],
+    "opposite329Retained": "0363100012112601",
+    "suppression": "Exact host only; no spatial suppression. Runtime neighbor retention not checked by CPU."
+  },
+  "production": {
+    "file": "/Users/blackmad/Code/map-recall2/public/canal-drive/models/beest-boulders.glb",
+    "sha256": "53e1cd73820ca28d31f2f663151855d0ff0ef24c545f3a8873c87dd66df50628",
+    "bytes": 314888,
+    "triangles": 24320,
+    "nonfinite": 0,
+    "bounds": {
+      "min": [
+        -13.988957405090332,
+        -0.0007119204383343458,
+        -14.620370864868164
+      ],
+      "max": [
+        171.28746032714844,
+        27.117599487304688,
+        164.7755126953125
+      ]
+    },
+    "materials": [
+      {
+        "hex": "#7d7871",
+        "triangles": 1659,
+        "unlit": false
+      },
+      {
+        "hex": "#4a525d",
+        "triangles": 235,
+        "unlit": false
+      },
+      {
+        "hex": "#efe9db",
+        "triangles": 7288,
+        "unlit": false
+      },
+      {
+        "hex": "#9daaa8",
+        "triangles": 4752,
+        "unlit": false
+      },
+      {
+        "hex": "#527787",
+        "triangles": 1500,
+        "unlit": false
+      },
+      {
+        "hex": "#303b43",
+        "triangles": 1988,
+        "unlit": false
+      },
+      {
+        "hex": "#d4d5d0",
+        "triangles": 2548,
+        "unlit": false
+      },
+      {
+        "hex": "#2ff4d7",
+        "triangles": 1744,
+        "unlit": true
+      },
+      {
+        "hex": "#ea5003",
+        "triangles": 128,
+        "unlit": true
+      },
+      {
+        "hex": "#f2eb03",
+        "triangles": 128,
+        "unlit": true
+      },
+      {
+        "hex": "#0537c6",
+        "triangles": 128,
+        "unlit": true
+      },
+      {
+        "hex": "#ea3f9d",
+        "triangles": 128,
+        "unlit": true
+      },
+      {
+        "hex": "#88b7a7",
+        "triangles": 243,
+        "unlit": true
+      },
+      {
+        "hex": "#f4f5f3",
+        "triangles": 1817,
+        "unlit": true
+      },
+      {
+        "hex": "#ce2537",
+        "triangles": 34,
+        "unlit": true
+      }
+    ]
+  },
+  "geometryChecks": {
+    "firstHitGlazingSamples": 84,
+    "glazingHits": 84,
+    "wingRecess": "Sampled production rear glazing localX approximately-19.74m, flat bay approximately-20.75m; over1m assembly contrast retained.",
+    "outsideRays": [
+      {
+        "x": -27,
+        "z": 25,
+        "hits": 0
+      },
+      {
+        "x": 26,
+        "z": 110,
+        "hits": 0
+      },
+      {
+        "x": 0,
+        "z": -5,
+        "hits": 0
+      },
+      {
+        "x": 0,
+        "z": 229,
+        "hits": 0
+      }
+    ],
+    "tolerance": "Meshopt quantization produces up to millimetre-scale native-coordinate differences; bounds minY-0.000712m is not a below-ground model defect."
+  },
+  "findings": [
+    {
+      "id": "buried-real-signs",
+      "decision": "fail",
+      "reason": "Current lower wing entrance glass crosses the source fascia and sits0.2625m in front of PADELNEXT/AKA; a frame crosses CrossFit by0.3075m. Decoded production front rays independently confirm25/30 Padel,30/30 CrossFit and30/30 AKA centroid samples are buried. BEEST has0/30 buried samples.",
+      "productionFirstHitMaterials": {
+        "PADELNEXT": {
+          "#527787": 23,
+          "#303b43": 2,
+          "#88b7a7": 5
+        },
+        "BEEST BOULDERS": {
+          "#f4f5f3": 25,
+          "#527787": 1,
+          "#d4d5d0": 2,
+          "#7d7871": 2
+        },
+        "CrossFit": {
+          "#527787": 28,
+          "#9daaa8": 2
+        },
+        "AKA": {
+          "#527787": 30
+        }
+      }
+    },
+    {
+      "id": "large-painted-emblem-clearance",
+      "decision": "technical-defect-source-paint-interpretation",
+      "reason": "Large hall vector emblem is planar but4.6–12.7cm above corrugated-wall backing; it reads as a floating sheet rather than actual painted mural. Conform original vector geometry to shallow corrugation backing or provide source-supported flush carrier. Small black-panel emblem clearance7–27mm remains a technical limitation for true sticker interpretation."
+    }
+  ],
+  "preservedFailure": {
+    "path": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/beest-boulders/processed/failed-fascia-occlusion",
+    "productionSha256": "53e1cd73820ca28d31f2f663151855d0ff0ef24c545f3a8873c87dd66df50628",
+    "files": [
+      "beest-boulders.glb",
+      "technical-decode.json"
+    ]
+  },
+  "uncertainties": [
+    "Source2025 lower apertures are partly hidden by vans/bikes; placement intervals are bounded interpretations, not measured elevations.",
+    "Canal-side office facade inferred from southwest assembly, not independently established by those photographs.",
+    "Beest/CrossFit font is approximate; official Padel SVG paths/colors are sourced.",
+    "Outside rays screen open-space geometry only, not installed neighboring footprint intersection or runtime suppression.",
+    "Root must inspect native-scale gallery/live source comparisons and actual POI destinations/cards/pins."
+  ],
+  "acceptance": "No architecture or game acceptance from this author review.",
+  "cycles": [
+    {
+      "schemaVersion": 1,
+      "reviewer": "jan_grouped_windows; builder author, technical measurements only",
+      "decision": "fail-production-sign-first-hit; no architectural acceptance",
+      "reviewedAtUTC": "2026-10-06T10:07:45.813181+00:00",
+      "sourceIndex": "docs/references/willem-de-zwijger-frontage/research.json",
+      "reviewedSources": [
+        {
+          "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/beest-boulders/processed/front-00071.jpg",
+          "sha256": "52fba8ec0b212dbaaa611adfc37023ce05abc9104458918eb9f552c803b029a0"
+        },
+        {
+          "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/beest-boulders/processed/front-00076.jpg",
+          "sha256": "923792485d49a1dd5cb166c8bbc38242aef0bfbcb0361f59f70ba000cf8503ea"
+        },
+        {
+          "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/beest-boulders/raw/user-streetview-may2024.png",
+          "sha256": "aa00907268c748ce5169dcc10410e41d76070164adce1593b2c1678e3a6f6e34"
+        }
+      ],
+      "scope": {
+        "nativeHost": "NL.IMBAG.Pand.0363100012151240",
+        "destinationIds": [
+          "n8805218642",
+          "n3974788355"
+        ],
+        "opposite329Retained": "0363100012112601",
+        "suppression": "Exact host only; no spatial suppression. Runtime neighbor retention not checked by CPU."
+      },
+      "production": {
+        "file": "/Users/blackmad/Code/map-recall2/public/canal-drive/models/beest-boulders.glb",
+        "sha256": "53e1cd73820ca28d31f2f663151855d0ff0ef24c545f3a8873c87dd66df50628",
+        "bytes": 314888,
+        "triangles": 24320,
+        "nonfinite": 0,
+        "bounds": {
+          "min": [
+            -13.988957405090332,
+            -0.0007119204383343458,
+            -14.620370864868164
+          ],
+          "max": [
+            171.28746032714844,
+            27.117599487304688,
+            164.7755126953125
+          ]
+        },
+        "materials": [
+          {
+            "hex": "#7d7871",
+            "triangles": 1659,
+            "unlit": false
+          },
+          {
+            "hex": "#4a525d",
+            "triangles": 235,
+            "unlit": false
+          },
+          {
+            "hex": "#efe9db",
+            "triangles": 7288,
+            "unlit": false
+          },
+          {
+            "hex": "#9daaa8",
+            "triangles": 4752,
+            "unlit": false
+          },
+          {
+            "hex": "#527787",
+            "triangles": 1500,
+            "unlit": false
+          },
+          {
+            "hex": "#303b43",
+            "triangles": 1988,
+            "unlit": false
+          },
+          {
+            "hex": "#d4d5d0",
+            "triangles": 2548,
+            "unlit": false
+          },
+          {
+            "hex": "#2ff4d7",
+            "triangles": 1744,
+            "unlit": true
+          },
+          {
+            "hex": "#ea5003",
+            "triangles": 128,
+            "unlit": true
+          },
+          {
+            "hex": "#f2eb03",
+            "triangles": 128,
+            "unlit": true
+          },
+          {
+            "hex": "#0537c6",
+            "triangles": 128,
+            "unlit": true
+          },
+          {
+            "hex": "#ea3f9d",
+            "triangles": 128,
+            "unlit": true
+          },
+          {
+            "hex": "#88b7a7",
+            "triangles": 243,
+            "unlit": true
+          },
+          {
+            "hex": "#f4f5f3",
+            "triangles": 1817,
+            "unlit": true
+          },
+          {
+            "hex": "#ce2537",
+            "triangles": 34,
+            "unlit": true
+          }
+        ]
+      },
+      "geometryChecks": {
+        "firstHitGlazingSamples": 84,
+        "glazingHits": 84,
+        "wingRecess": "Sampled production rear glazing localX approximately-19.74m, flat bay approximately-20.75m; over1m assembly contrast retained.",
+        "outsideRays": [
+          {
+            "x": -27,
+            "z": 25,
+            "hits": 0
+          },
+          {
+            "x": 26,
+            "z": 110,
+            "hits": 0
+          },
+          {
+            "x": 0,
+            "z": -5,
+            "hits": 0
+          },
+          {
+            "x": 0,
+            "z": 229,
+            "hits": 0
+          }
+        ],
+        "tolerance": "Meshopt quantization produces up to millimetre-scale native-coordinate differences; bounds minY-0.000712m is not a below-ground model defect."
+      },
+      "findings": [
+        {
+          "id": "buried-real-signs",
+          "decision": "fail",
+          "reason": "Current lower wing entrance glass crosses the source fascia and sits0.2625m in front of PADELNEXT/AKA; a frame crosses CrossFit by0.3075m. Decoded production front rays independently confirm25/30 Padel,30/30 CrossFit and30/30 AKA centroid samples are buried. BEEST has0/30 buried samples.",
+          "productionFirstHitMaterials": {
+            "PADELNEXT": {
+              "#527787": 23,
+              "#303b43": 2,
+              "#88b7a7": 5
+            },
+            "BEEST BOULDERS": {
+              "#f4f5f3": 25,
+              "#527787": 1,
+              "#d4d5d0": 2,
+              "#7d7871": 2
+            },
+            "CrossFit": {
+              "#527787": 28,
+              "#9daaa8": 2
+            },
+            "AKA": {
+              "#527787": 30
+            }
+          }
+        },
+        {
+          "id": "large-painted-emblem-clearance",
+          "decision": "technical-defect-source-paint-interpretation",
+          "reason": "Large hall vector emblem is planar but4.6–12.7cm above corrugated-wall backing; it reads as a floating sheet rather than actual painted mural. Conform original vector geometry to shallow corrugation backing or provide source-supported flush carrier. Small black-panel emblem clearance7–27mm remains a technical limitation for true sticker interpretation."
+        }
+      ],
+      "preservedFailure": {
+        "path": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/beest-boulders/processed/failed-fascia-occlusion",
+        "productionSha256": "53e1cd73820ca28d31f2f663151855d0ff0ef24c545f3a8873c87dd66df50628",
+        "files": [
+          "beest-boulders.glb",
+          "technical-decode.json"
+        ]
+      },
+      "uncertainties": [
+        "Source2025 lower apertures are partly hidden by vans/bikes; placement intervals are bounded interpretations, not measured elevations.",
+        "Canal-side office facade inferred from southwest assembly, not independently established by those photographs.",
+        "Beest/CrossFit font is approximate; official Padel SVG paths/colors are sourced.",
+        "Outside rays screen open-space geometry only, not installed neighboring footprint intersection or runtime suppression.",
+        "Root must inspect native-scale gallery/live source comparisons and actual POI destinations/cards/pins."
+      ],
+      "acceptance": "No architecture or game acceptance from this author review.",
+      "id": "rejected-production-fascia-occlusion",
+      "immutable": true
+    },
+    {
+      "id": "local-fascia-and-entrance-transom-repair",
+      "immutable": true,
+      "reviewedAtUTC": "2026-10-06T10:09:16.123962+00:00",
+      "scope": "Rebuilt source geometry only. Existing production remains rejected until root reexports.",
+      "builderSha256": "c3b1c453de6061ca2bb29372f33022a590db750cb589d88f9643b955e2b978ac",
+      "triangles": 24344,
+      "changes": [
+        "Tall hall entrance at native z57 now carries CrossFit/AKA on actual exposed glass with4mm clearance; door mullions finish below uninterrupted sign transom.",
+        "Padel lower storefront at z72 terminates below source fascia.",
+        "Padel/Beest use separate shallow local concrete fascia fields at Y3.46–4.15, with vector letters4mm proud. No full-wing opaque carrier introduced."
+      ],
+      "signChecks": [
+        {
+          "text": "PADELNEXT",
+          "sampleCount": 30,
+          "occludedSamples": 0,
+          "minimumBackingGapMetres": 0.00399698943526247,
+          "maximumBackingGapMetres": 0.004002464040035521
+        },
+        {
+          "text": "BEEST BOULDERS",
+          "sampleCount": 30,
+          "occludedSamples": 0,
+          "minimumBackingGapMetres": 0.00399721442831274,
+          "maximumBackingGapMetres": 0.004001669881745048
+        },
+        {
+          "text": "CrossFit",
+          "sampleCount": 30,
+          "occludedSamples": 0,
+          "minimumBackingGapMetres": 0.003998774637606324,
+          "maximumBackingGapMetres": 0.004000613573211144
+        },
+        {
+          "text": "AKA",
+          "sampleCount": 30,
+          "occludedSamples": 0,
+          "minimumBackingGapMetres": 0.003999228082607107,
+          "maximumBackingGapMetres": 0.00400125307055107
+        }
+      ],
+      "existingGeometryCheck": "Passed native bounds,84 fractional glazing samples, guard/rear-recess exposure and four outside-host rays.",
+      "openDefects": [
+        "Large hall emblem and small black-panel emblem attachment clearances remain as recorded in rejected-production technical findings."
+      ],
+      "productionChecks": "Pending root production re-export and decoding; source-builder samples must not be reported as repaired production checks."
+    },
+    {
+      "id": "conformed-vector-emblem-attachment-repair",
+      "immutable": true,
+      "reviewedAtUTC": "2026-10-06T10:11:38.506260+00:00",
+      "scope": "Source-builder geometry only; root production reexport pending.",
+      "builderSha256": "e3077fdb0d8721c2a8e55ddebeb7e76f1ddca70781b00eb6c5508bc29bdcdb12",
+      "triangles": 31318,
+      "method": "Clip original SVG filled triangles at actual cladding fold/strip boundaries. Map hall X to exposed native roof193 west wall or outward corrugation facet; map black-panel X to actual dark plane or horizontal strip. Both graphic surfaces4mm proud.",
+      "emblemChecks": [
+        {
+          "field": "hall corrugated paint",
+          "centroidSamples": 480,
+          "occludedCentroids": 0,
+          "centroidGapMetres": [
+            0.003996903832655064,
+            0.0040032462409463464
+          ],
+          "nearEdgeSamples": 4320,
+          "nearEdgeGapMetres": [
+            0.003995928475663185,
+            0.004004400812052236
+          ],
+          "edgeMethod": "Triangle edge points at20%,50%,80%, inset1% toward its centroid to avoid ambiguous rays exactly on discontinuous cladding boundaries.",
+          "unchangedSourceContours": "Original official SVG triangles clipped into surface strips; no contour/redrawn logo or solid board introduced."
+        },
+        {
+          "field": "black-panel printed emblem",
+          "centroidSamples": 480,
+          "occludedCentroids": 0,
+          "centroidGapMetres": [
+            0.003996731847746101,
+            0.004001806911440231
+          ],
+          "nearEdgeSamples": 4320,
+          "nearEdgeGapMetres": [
+            0.0039958102529946415,
+            0.0040027281679141935
+          ],
+          "edgeMethod": "Triangle edge points at20%,50%,80%, inset1% toward its centroid to avoid ambiguous rays exactly on discontinuous cladding boundaries.",
+          "unchangedSourceContours": "Original official SVG triangles clipped into surface strips; no contour/redrawn logo or solid board introduced."
+        }
+      ],
+      "letterChecks": [
+        {
+          "text": "PADELNEXT",
+          "samples": 30,
+          "occluded": 0,
+          "gapMetres": [
+            0.00399698943526247,
+            0.004002464040035521
+          ]
+        },
+        {
+          "text": "BEEST BOULDERS",
+          "samples": 30,
+          "occluded": 0,
+          "gapMetres": [
+            0.00399721442831274,
+            0.004001669881745048
+          ]
+        },
+        {
+          "text": "CrossFit",
+          "samples": 30,
+          "occluded": 0,
+          "gapMetres": [
+            0.003998774637606324,
+            0.004000613573211144
+          ]
+        },
+        {
+          "text": "AKA",
+          "samples": 30,
+          "occluded": 0,
+          "gapMetres": [
+            0.003999228082607107,
+            0.00400125307055107
+          ]
+        }
+      ],
+      "existingGeometryChecks": "84 fractional exposed glazing samples, four outside-host rays and native bounds passed. Recessed wing carrier stays open.",
+      "failedDiagnosticRetained": "Initial near-edge probe with0.01% inset gave ambiguous shared-boundary hits on111 hall samples. Repeated at1% inset to stay inside each clipped surface patch; all8640 hall/panel near-edge samples pass. Exact strip jumps remain physical cladding discontinuities rather than a continuous invented board.",
+      "acceptance": "No architecture/gallery/live acceptance and no repaired-production claim."
+    },
+    {
+      "id": "rejected-production-quantized-attachment",
+      "immutable": true,
+      "reviewedAtUTC": "2026-10-06T10:17:23.508308+00:00",
+      "decision": "fail-exact-production-attachment; no acceptance",
+      "production": {
+        "sha256": "15883c6105839d47674f032834935fe05b7f453f626fdc06e0cb22f49147ad77",
+        "bytes": 360096,
+        "triangles": 31318,
+        "nonfinite": 0,
+        "bounds": {
+          "min": [
+            -13.988957405090332,
+            -0.0007119204383343458,
+            -14.620370864868164
+          ],
+          "max": [
+            171.28746032714844,
+            27.117599487304688,
+            164.7755126953125
+          ]
+        },
+        "extensions": [
+          "EXT_meshopt_compression",
+          "KHR_materials_unlit",
+          "KHR_mesh_quantization"
+        ]
+      },
+      "sourceProbeWordChecks": [
+        {
+          "text": "PADELNEXT",
+          "samples": 30,
+          "buriedBeyond20mm": 0
+        },
+        {
+          "text": "BEEST BOULDERS",
+          "samples": 30,
+          "buriedBeyond20mm": 0
+        },
+        {
+          "text": "CrossFit",
+          "samples": 30,
+          "buriedBeyond20mm": 0
+        },
+        {
+          "text": "AKA",
+          "samples": 30,
+          "buriedBeyond20mm": 0
+        }
+      ],
+      "actualDecodedTriangleChecks": [
+        {
+          "hex": "#2ff4d7",
+          "triangles": 3400,
+          "samples": 80,
+          "backingGapMetres": [
+            -0.04174643009667398,
+            0.01043748758214498
+          ],
+          "samplesBehindBacking": 6,
+          "samplesWithEarlierFirstHit": 6
+        },
+        {
+          "hex": "#ea5003",
+          "triangles": 1514,
+          "samples": 80,
+          "backingGapMetres": [
+            -0.002961299969078429,
+            0.04753204845403261
+          ],
+          "samplesBehindBacking": 5,
+          "samplesWithEarlierFirstHit": 5
+        },
+        {
+          "hex": "#f2eb03",
+          "triangles": 1332,
+          "samples": 80,
+          "backingGapMetres": [
+            -0.0023593930135826086,
+            0.015656231373219143
+          ],
+          "samplesBehindBacking": 4,
+          "samplesWithEarlierFirstHit": 4
+        },
+        {
+          "hex": "#0537c6",
+          "triangles": 1588,
+          "samples": 80,
+          "backingGapMetres": [
+            -0.009741871702383234,
+            0.01565095102537077
+          ],
+          "samplesBehindBacking": 3,
+          "samplesWithEarlierFirstHit": 5
+        },
+        {
+          "hex": "#ea3f9d",
+          "triangles": 1396,
+          "samples": 80,
+          "backingGapMetres": [
+            -0.015878224655856962,
+            0.01565095102537077
+          ],
+          "samplesBehindBacking": 3,
+          "samplesWithEarlierFirstHit": 3
+        },
+        {
+          "hex": "#88b7a7",
+          "triangles": 243,
+          "samples": 80,
+          "backingGapMetres": [
+            -0.005128978541164925,
+            0.006011621802063868
+          ],
+          "samplesBehindBacking": 9,
+          "samplesWithEarlierFirstHit": 13
+        },
+        {
+          "hex": "#f4f5f3",
+          "triangles": 1817,
+          "samples": 80,
+          "backingGapMetres": [
+            -0.0011067222946947314,
+            0.009468567061716851
+          ],
+          "samplesBehindBacking": 1,
+          "samplesWithEarlierFirstHit": 12
+        },
+        {
+          "hex": "#ce2537",
+          "triangles": 34,
+          "samples": 34,
+          "backingGapMetres": [
+            0.0021694042248476264,
+            0.008944206304229999
+          ],
+          "samplesBehindBacking": 0,
+          "samplesWithEarlierFirstHit": 1
+        }
+      ],
+      "method": "For each actual decoded unlit primitive sample up to80 triangle centroids. Ray from centroid+outward0.1m toward non-unlit backing; negative gap means backing is in front of the graphic. Separate ray to all production meshes screens earlier first hits. Uses actual decoded quantized positions, not sourcebuilder positions.",
+      "glazingSamples": 84,
+      "glazingHits": 84,
+      "outsideRays": [
+        {
+          "x": -27,
+          "z": 25,
+          "hits": 0
+        },
+        {
+          "x": 26,
+          "z": 110,
+          "hits": 0
+        },
+        {
+          "x": 0,
+          "z": -5,
+          "hits": 0
+        },
+        {
+          "x": 0,
+          "z": 229,
+          "hits": 0
+        }
+      ],
+      "reason": "Sourcebuilder supports4mm clearance, but production position quantization shifts thin flat graphics behind carrier surfaces and across discontinuous cladding fold boundaries. Budget and source-location broad word visibility pass; exact decoded attachment does not.",
+      "requestedRepair": "Higher production position precision for this model, then re-decode exact attachment; retain sourced4mm offset.",
+      "archiveFiles": [
+        {
+          "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/beest-boulders/processed/failed-production-attachment-quantization/beest-boulders.glb",
+          "sha256": "15883c6105839d47674f032834935fe05b7f453f626fdc06e0cb22f49147ad77",
+          "bytes": 360096
+        },
+        {
+          "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/beest-boulders/processed/failed-production-attachment-quantization/beest-final-production-decode.json",
+          "sha256": "88a44757765b111c8a8fd561f76b84f8b354d6dba643247e5ac149ad056a1bb8",
+          "bytes": 1199421
+        },
+        {
+          "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/beest-boulders/processed/failed-production-attachment-quantization/willem-de-zwijger-frontage-builder.ts",
+          "sha256": "e3077fdb0d8721c2a8e55ddebeb7e76f1ddca70781b00eb6c5508bc29bdcdb12",
+          "bytes": 19772
+        },
+        {
+          "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/beest-boulders/processed/failed-production-attachment-quantization/beest-boulders-cpu-northeast.png",
+          "sha256": "3aa9aa9f10f2e34ea6f4863ff6b148ca16afe99f75b38418e46f0a100c1ec8a2",
+          "bytes": 19195
+        },
+        {
+          "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/beest-boulders/processed/failed-production-attachment-quantization/beest-boulders-cpu-frontage-close.png",
+          "sha256": "1fe146461438af88142fae02571536d428105f44ecdf0d481f5f4f4afca7ca90",
+          "bytes": 17781
+        },
+        {
+          "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/beest-boulders/processed/failed-production-attachment-quantization/beest-boulders-cpu-southwest.png",
+          "sha256": "226e0ac310287957c4636ea0cc404885bc81b77bb7ad7bb9f714694ad55fe5b1",
+          "bytes": 16318
+        }
+      ]
+    },
+    {
+      "id": "rejected-production-16bit-fold-attachment",
+      "immutable": true,
+      "reviewedAtUTC": "2026-10-06T10:19:16.976108+00:00",
+      "decision": "word-attachment-pass; emblem-fold-attachment-fail; no acceptance",
+      "production": {
+        "sha256": "6868046f0b9a699671e21c21b94f40532f4b7fe9f77c12b7aa4512532ef3bf6e",
+        "bytes": 359532,
+        "triangles": 31318,
+        "nonfinite": 0,
+        "bounds": {
+          "min": [
+            -13.988957405090332,
+            -0.0007119204383343458,
+            -14.614716529846191
+          ],
+          "max": [
+            171.28746032714844,
+            27.117599487304688,
+            164.76986694335938
+          ]
+        },
+        "extensions": [
+          "EXT_meshopt_compression",
+          "KHR_materials_unlit",
+          "KHR_mesh_quantization"
+        ]
+      },
+      "positionPrecisionBits": 16,
+      "actualDecodedAttachmentChecks": [
+        {
+          "hex": "#2ff4d7",
+          "centroidSamples": 80,
+          "centroidGapMetres": [
+            -0.016798375381863725,
+            0.00652122959390615
+          ],
+          "centroidsBehindBacking": 2,
+          "nearEdgeSamples": 720,
+          "nearEdgeGapMetres": [
+            -0.036686898375025104,
+            0.04841772507606218
+          ],
+          "nearEdgesBehindBacking": 24
+        },
+        {
+          "hex": "#ea5003",
+          "centroidSamples": 80,
+          "centroidGapMetres": [
+            0.0009890284785572523,
+            0.006257045372860939
+          ],
+          "centroidsBehindBacking": 0,
+          "nearEdgeSamples": 720,
+          "nearEdgeGapMetres": [
+            -0.04013704553609921,
+            0.0474151239241046
+          ],
+          "nearEdgesBehindBacking": 33
+        },
+        {
+          "hex": "#f2eb03",
+          "centroidSamples": 80,
+          "centroidGapMetres": [
+            0.0025185925223275285,
+            0.006389559913153639
+          ],
+          "centroidsBehindBacking": 0,
+          "nearEdgeSamples": 720,
+          "nearEdgeGapMetres": [
+            -0.04009218633752801,
+            0.007024668518555738
+          ],
+          "nearEdgesBehindBacking": 24
+        },
+        {
+          "hex": "#0537c6",
+          "centroidSamples": 80,
+          "centroidGapMetres": [
+            0.002815064244732296,
+            0.005835644434831602
+          ],
+          "centroidsBehindBacking": 0,
+          "nearEdgeSamples": 720,
+          "nearEdgeGapMetres": [
+            -0.03874620923795315,
+            0.006603756560123464
+          ],
+          "nearEdgesBehindBacking": 27
+        },
+        {
+          "hex": "#ea3f9d",
+          "centroidSamples": 80,
+          "centroidGapMetres": [
+            0.002481369665976438,
+            0.006385325853421345
+          ],
+          "centroidsBehindBacking": 0,
+          "nearEdgeSamples": 720,
+          "nearEdgeGapMetres": [
+            -0.03885772794536532,
+            0.006945549686685135
+          ],
+          "nearEdgesBehindBacking": 27
+        },
+        {
+          "hex": "#88b7a7",
+          "centroidSamples": 80,
+          "centroidGapMetres": [
+            0.0027396994324390134,
+            0.00459861457615976
+          ],
+          "centroidsBehindBacking": 0,
+          "nearEdgeSamples": 720,
+          "nearEdgeGapMetres": [
+            0.00216602502971798,
+            0.005263587010319745
+          ],
+          "nearEdgesBehindBacking": 0
+        },
+        {
+          "hex": "#f4f5f3",
+          "centroidSamples": 80,
+          "centroidGapMetres": [
+            0.00269676041692149,
+            0.005380709314901366
+          ],
+          "centroidsBehindBacking": 0,
+          "nearEdgeSamples": 720,
+          "nearEdgeGapMetres": [
+            0.0020576582648438035,
+            0.0058151909195937185
+          ],
+          "nearEdgesBehindBacking": 0
+        },
+        {
+          "hex": "#ce2537",
+          "centroidSamples": 34,
+          "centroidGapMetres": [
+            0.003176650932161698,
+            0.0048372267026202675
+          ],
+          "centroidsBehindBacking": 0,
+          "nearEdgeSamples": 306,
+          "nearEdgeGapMetres": [
+            0.0025522379546249196,
+            0.005564045810231497
+          ],
+          "nearEdgesBehindBacking": 0
+        }
+      ],
+      "method": "Sample actual decoded triangle centroids and20%,50%,80% edge points inset1% to triangle centroid. Cast toward exact decoded non-unlit structural backing. Negative gap greater than1mm identifies burial. No sourcepositions used for this check.",
+      "reason": "16-bit precision repairs the word fields, which have strictly positive2.06–5.82mm near-edge backing gaps. Thin emblem patches still move across discontinuous cladding boundaries: cyan two centroid samples and24–33 near-edge samples per logo color remain behind adjacent outward folds.",
+      "archivePath": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/beest-boulders/processed/failed-production-16bit-fold-attachment",
+      "requiredRepair": "Retain float32 POSITION for Beest production while keeping meshopt compression and supported normal/reorder optimizations. Then recheck exact decoded attachment."
+    },
+    {
+      "id": "float32-attachment-baseline-over-budget",
+      "immutable": true,
+      "reviewedAtUTC": "2026-10-06T10:23:36.383404+00:00",
+      "decision": "exact-decoded-attachment-pass; 500000-byte-budget-fail; no visual acceptance",
+      "production": {
+        "sha256": "d233723d9222aac55f58d0fc1b1b2a08afce7e4771126eeda7f62847bd20dfb6",
+        "bytes": 596932,
+        "triangles": 31318,
+        "nonfinite": 0,
+        "bounds": {
+          "min": [
+            -13.988957405090332,
+            -1.335144048653092e-07,
+            -14.615974426269531
+          ],
+          "max": [
+            171.28746032714844,
+            27.11688804626465,
+            164.7711181640625
+          ]
+        },
+        "extensions": [
+          "EXT_meshopt_compression",
+          "KHR_materials_unlit"
+        ]
+      },
+      "actualDecodedAttachmentChecks": [
+        {
+          "hex": "#2ff4d7",
+          "centroidSamples": 80,
+          "centroidGapMetres": [
+            0.003996583157293274,
+            0.004002992471994912
+          ],
+          "centroidsBehindBacking": 0,
+          "nearEdgeSamples": 720,
+          "nearEdgeGapMetres": [
+            0.003996456251018479,
+            0.004003795531971097
+          ],
+          "nearEdgesBehindBacking": 0,
+          "earlierFirstHits": 0
+        },
+        {
+          "hex": "#ea5003",
+          "centroidSamples": 80,
+          "centroidGapMetres": [
+            0.0039973054345237985,
+            0.00400241306642081
+          ],
+          "centroidsBehindBacking": 0,
+          "nearEdgeSamples": 720,
+          "nearEdgeGapMetres": [
+            0.003996527077381323,
+            0.004002413066435978
+          ],
+          "nearEdgesBehindBacking": 0,
+          "earlierFirstHits": 0
+        },
+        {
+          "hex": "#f2eb03",
+          "centroidSamples": 80,
+          "centroidGapMetres": [
+            0.003996870761489621,
+            0.00400241306642081
+          ],
+          "centroidsBehindBacking": 0,
+          "nearEdgeSamples": 720,
+          "nearEdgeGapMetres": [
+            0.003995920769780947,
+            0.004002413066435978
+          ],
+          "nearEdgesBehindBacking": 0,
+          "earlierFirstHits": 0
+        },
+        {
+          "hex": "#0537c6",
+          "centroidSamples": 80,
+          "centroidGapMetres": [
+            0.003997753682096886,
+            0.00400241306642081
+          ],
+          "centroidsBehindBacking": 0,
+          "nearEdgeSamples": 720,
+          "nearEdgeGapMetres": [
+            0.003996112905254756,
+            0.004004694012025162
+          ],
+          "nearEdgesBehindBacking": 0,
+          "earlierFirstHits": 0
+        },
+        {
+          "hex": "#ea3f9d",
+          "centroidSamples": 80,
+          "centroidGapMetres": [
+            0.003996397867001497,
+            0.00400241306642081
+          ],
+          "centroidsBehindBacking": 0,
+          "nearEdgeSamples": 720,
+          "nearEdgeGapMetres": [
+            0.003996165132500826,
+            0.004002578024390566
+          ],
+          "nearEdgesBehindBacking": 0,
+          "earlierFirstHits": 0
+        },
+        {
+          "hex": "#88b7a7",
+          "centroidSamples": 80,
+          "centroidGapMetres": [
+            0.003996629742467617,
+            0.004002464040042716
+          ],
+          "centroidsBehindBacking": 0,
+          "nearEdgeSamples": 720,
+          "nearEdgeGapMetres": [
+            0.003994990041522775,
+            0.0040033158216223885
+          ],
+          "nearEdgesBehindBacking": 0,
+          "earlierFirstHits": 0
+        },
+        {
+          "hex": "#f4f5f3",
+          "centroidSamples": 80,
+          "centroidGapMetres": [
+            0.003997214428319934,
+            0.004001383714718962
+          ],
+          "centroidsBehindBacking": 0,
+          "nearEdgeSamples": 720,
+          "nearEdgeGapMetres": [
+            0.003995986802650842,
+            0.004003195987875838
+          ],
+          "nearEdgesBehindBacking": 0,
+          "earlierFirstHits": 0
+        },
+        {
+          "hex": "#ce2537",
+          "centroidSamples": 34,
+          "centroidGapMetres": [
+            0.003999228082606721,
+            0.004001253070553129
+          ],
+          "centroidsBehindBacking": 0,
+          "nearEdgeSamples": 306,
+          "nearEdgeGapMetres": [
+            0.003998653365052771,
+            0.004001779323623306
+          ],
+          "nearEdgesBehindBacking": 0,
+          "earlierFirstHits": 0
+        }
+      ],
+      "aggregate": {
+        "centroids": 594,
+        "nearEdges": 5346,
+        "behindBacking": 0,
+        "globalGapMetres": [
+          0.003994990041522775,
+          0.004004694012025162
+        ]
+      },
+      "glazingSamples": 84,
+      "glazingHits": 84,
+      "outsideRays": [
+        {
+          "x": -27,
+          "z": 25,
+          "hits": 0
+        },
+        {
+          "x": 26,
+          "z": 110,
+          "hits": 0
+        },
+        {
+          "x": 0,
+          "z": -5,
+          "hits": 0
+        },
+        {
+          "x": 0,
+          "z": 229,
+          "hits": 0
+        }
+      ],
+      "archivePath": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/beest-boulders/processed/float32-attachment-baseline-over-budget",
+      "compressionNextStep": "Other worker owns precision-preserving compression. Preserve original float positions on painted/sticker graphics and exact structural backing; unrelated geometry may use quantization subject to renewed checks."
+    },
+    {
+      "id": "selective-precision-corrected-production-exhaustive",
+      "immutable": true,
+      "reviewedAtUTC": "2026-10-06T10:46:07.341365+00:00",
+      "decision": "technical-attachment-and-budget-pass; architecture-gallery-live-acceptance-pending",
+      "production": {
+        "sha256": "05d2fc34067b8fe3b3cae20b738f689e6cc71d34bc29410a7e50421e08961b9e",
+        "bytes": 443132,
+        "triangles": 31318,
+        "nonfinite": 0,
+        "bounds": {
+          "min": [
+            -13.988957405090332,
+            -0.0007119204383343458,
+            -14.615974426269531
+          ],
+          "max": [
+            171.28746032714844,
+            27.117599487304688,
+            164.76986694335938
+          ]
+        },
+        "extensions": [
+          "EXT_meshopt_compression",
+          "KHR_materials_unlit",
+          "KHR_mesh_quantization"
+        ]
+      },
+      "actualDecodedExhaustiveAttachmentChecks": [
+        {
+          "hex": "#2ff4d7",
+          "triangles": 3400,
+          "centroidSamples": 3400,
+          "centroidGapMetres": [
+            0.003996331567020894,
+            0.004003779497177312
+          ],
+          "nearEdgeSamples": 30600,
+          "nearEdgeGapMetres": [
+            0.003995156601793587,
+            0.0040045249396035015
+          ],
+          "behindBacking": 0,
+          "earlierFirstHits": 0,
+          "missingBacking": 0
+        },
+        {
+          "hex": "#ea5003",
+          "triangles": 1514,
+          "centroidSamples": 1514,
+          "centroidGapMetres": [
+            0.003996939027099869,
+            0.00400241306642081
+          ],
+          "nearEdgeSamples": 13626,
+          "nearEdgeGapMetres": [
+            0.003995762666715197,
+            0.0040027027410310945
+          ],
+          "behindBacking": 0,
+          "earlierFirstHits": 0,
+          "missingBacking": 0
+        },
+        {
+          "hex": "#f2eb03",
+          "triangles": 1332,
+          "centroidSamples": 1332,
+          "centroidGapMetres": [
+            0.00399644438747733,
+            0.00400241306642081
+          ],
+          "nearEdgeSamples": 11988,
+          "nearEdgeGapMetres": [
+            0.003995854728829948,
+            0.004002701394090813
+          ],
+          "behindBacking": 0,
+          "earlierFirstHits": 0,
+          "missingBacking": 0
+        },
+        {
+          "hex": "#0537c6",
+          "triangles": 1588,
+          "centroidSamples": 1588,
+          "centroidGapMetres": [
+            0.003996456288661937,
+            0.004003376076247067
+          ],
+          "nearEdgeSamples": 14292,
+          "nearEdgeGapMetres": [
+            0.003995882245512866,
+            0.004004711012785864
+          ],
+          "behindBacking": 0,
+          "earlierFirstHits": 0,
+          "missingBacking": 0
+        },
+        {
+          "hex": "#ea3f9d",
+          "triangles": 1396,
+          "centroidSamples": 1396,
+          "centroidGapMetres": [
+            0.003996397867001497,
+            0.004002656729178752
+          ],
+          "nearEdgeSamples": 12564,
+          "nearEdgeGapMetres": [
+            0.003995796450501646,
+            0.004002994441899069
+          ],
+          "behindBacking": 0,
+          "earlierFirstHits": 0,
+          "missingBacking": 0
+        },
+        {
+          "hex": "#88b7a7",
+          "triangles": 243,
+          "centroidSamples": 243,
+          "centroidGapMetres": [
+            0.003996130123225347,
+            0.004002464040042716
+          ],
+          "nearEdgeSamples": 2187,
+          "nearEdgeGapMetres": [
+            0.003994990041522775,
+            0.0040033158216223885
+          ],
+          "behindBacking": 0,
+          "earlierFirstHits": 0,
+          "missingBacking": 0
+        },
+        {
+          "hex": "#f4f5f3",
+          "triangles": 1817,
+          "centroidSamples": 1817,
+          "centroidGapMetres": [
+            0.003995486454193009,
+            0.004003347219983661
+          ],
+          "nearEdgeSamples": 16353,
+          "nearEdgeGapMetres": [
+            0.00399509654149488,
+            0.004003755880209098
+          ],
+          "behindBacking": 0,
+          "earlierFirstHits": 0,
+          "missingBacking": 0
+        },
+        {
+          "hex": "#ce2537",
+          "triangles": 34,
+          "centroidSamples": 34,
+          "centroidGapMetres": [
+            0.003999228082606721,
+            0.004001253070553129
+          ],
+          "nearEdgeSamples": 306,
+          "nearEdgeGapMetres": [
+            0.003998653365052771,
+            0.004001779323623306
+          ],
+          "behindBacking": 0,
+          "earlierFirstHits": 0,
+          "missingBacking": 0
+        }
+      ],
+      "aggregate": {
+        "allDecodedGraphicTriangleCentroids": 11324,
+        "nearEdgeSamples": 101916,
+        "behindBacking": 0,
+        "missingBacking": 0,
+        "earlierCentroidFirstHits": 0,
+        "globalGapMetres": [
+          0.003994990041522775,
+          0.004004711012785864
+        ]
+      },
+      "method": "Every decoded unlit graphic triangle centroid and9 near-edge points per triangle (20%,50%,80% along each edge, inset1% to centroid). Actual transformed production mesh positions and structural backing; all mesh correction-node transforms applied. Not sourcepositions.",
+      "glazingSamples": 84,
+      "glazingHits": 84,
+      "outsideRays": [
+        {
+          "x": -27,
+          "z": 25,
+          "hits": 0
+        },
+        {
+          "x": 26,
+          "z": 110,
+          "hits": 0
+        },
+        {
+          "x": 0,
+          "z": -5,
+          "hits": 0
+        },
+        {
+          "x": 0,
+          "z": 229,
+          "hits": 0
+        }
+      ],
+      "budget": {
+        "maximumBytes": 500000,
+        "maximumTriangles": 40000,
+        "pass": true
+      },
+      "runtimeExtensionSupport": {
+        "GLTFLoader": "Installed Three GLTFLoader implements EXT_meshopt_compression, KHR_mesh_quantization and KHR_materials_unlit.",
+        "runtimeWiring": "public/canal-drive/js/signature-landmarks-source.js configures loader.setMeshoptDecoder(MeshoptDecoder).",
+        "limitation": "Static wiring/decode evidence; actual browser/game load unmeasured by this worker."
+      },
+      "archivePath": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/beest-boulders/processed/selective-precision-corrected-production",
+      "archiveFiles": [
+        {
+          "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/beest-boulders/processed/selective-precision-corrected-production/beest-boulders.glb",
+          "sha256": "05d2fc34067b8fe3b3cae20b738f689e6cc71d34bc29410a7e50421e08961b9e",
+          "bytes": 443132
+        },
+        {
+          "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/beest-boulders/processed/selective-precision-corrected-production/willem-de-zwijger-frontage-builder.ts",
+          "sha256": "e3077fdb0d8721c2a8e55ddebeb7e76f1ddca70781b00eb6c5508bc29bdcdb12",
+          "bytes": 19772
+        },
+        {
+          "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/beest-boulders/processed/selective-precision-corrected-production/beest-boulders-cpu-northeast.png",
+          "sha256": "3aa9aa9f10f2e34ea6f4863ff6b148ca16afe99f75b38418e46f0a100c1ec8a2",
+          "bytes": 19195
+        },
+        {
+          "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/beest-boulders/processed/selective-precision-corrected-production/beest-boulders-cpu-frontage-close.png",
+          "sha256": "1fe146461438af88142fae02571536d428105f44ecdf0d481f5f4f4afca7ca90",
+          "bytes": 17781
+        },
+        {
+          "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/beest-boulders/processed/selective-precision-corrected-production/beest-boulders-cpu-southwest.png",
+          "sha256": "226e0ac310287957c4636ea0cc404885bc81b77bb7ad7bb9f714694ad55fe5b1",
+          "bytes": 16318
+        }
+      ],
+      "traceFile": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/beest-boulders/processed/selective-precision-corrected-production/technical-exhaustive-decode.json.gz",
+      "cpuViewsLimitation": "Copied root-provided CPU views for this corrected geometry family; image files do not contain production input SHA, so this technical record does not independently certify their exact export association. Root owns visual comparisons."
+    }
+  ],
+  "requiredNextChecks": [
+    "Root archive/source pack commit and push current repaired builder/production evidence before model commit; older e8e9fbb source commit predates these repairs.",
+    "Root source/render architectural review, native-scale gallery and live exact suppression/neighbor retention.",
+    "Actual route destination, map pin/label and meaningful researched card checks for both genuine Beest/Padel identities.",
+    "Keep source hidden ground apertures and inferred canal-side office uncertainty explicit."
+  ],
+  "currentProduction": {
+    "sha256": "05d2fc34067b8fe3b3cae20b738f689e6cc71d34bc29410a7e50421e08961b9e",
+    "bytes": 443132,
+    "triangles": 31318,
+    "nonfinite": 0,
+    "bounds": {
+      "min": [
+        -13.988957405090332,
+        -0.0007119204383343458,
+        -14.615974426269531
+      ],
+      "max": [
+        171.28746032714844,
+        27.117599487304688,
+        164.76986694335938
+      ]
+    },
+    "extensions": [
+      "EXT_meshopt_compression",
+      "KHR_materials_unlit",
+      "KHR_mesh_quantization"
+    ]
+  },
+  "releaseCheckpoint": {
+    "sourceRepository": "blackmad/map-recall2-source-data",
+    "sourceCommit": "2aa18011ae2c26568f9170517064a6561e075b30",
+    "sourcePath": "models/beest-boulders/",
+    "userDiagnosticRenderApproval": "2026-10-06; commit/push explicitly authorized",
+    "actualGameplayReview": "pending; prior failure evidence preserved"
+  }
+}

@@ -85,6 +85,8 @@
         prominenceScore: feature.prominenceScore || 0,
         wikipediaUrl: feature.wikipediaUrl || "",
         sourceUrl: feature.sourceUrl,
+        researchSourceUrl: feature.researchSourceUrl,
+        researchDetail: feature.researchDetail,
         buildingIds: feature.buildingIds,
         wikidata: feature.wikidata || "",
         wikipedia: feature.wikipedia || "",
@@ -7049,8 +7051,16 @@ Map source: ${osmUrl(places[i][0])}`);
         sourceUrl: "https://beestboulders.com/beest-boulders-amsterdam/",
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
-        modifications: "Original texture-free interpretation of surveyed footprints and current municipal facade references; preserve full shared host and tenants."
-      }
+        modifications: "Original native shared-host geometry with the source-observed complete western frontage and user-authorized real vector sign graphics. Reference photos guide geometry only. Preserve genuine Beest and Padel identities."
+      },
+      relatedLandmarkIds: [
+        "n3974788355"
+      ],
+      destinationLandmarkIds: [
+        "n8805218642",
+        "n3974788355"
+      ],
+      preservePositionPrecision: true
     },
     {
       id: "klimmuur-centraal",
@@ -7280,6 +7290,88 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native scale school reconstruction, surveyed stepped roofs, twin open-headed towers and facade rhythms from archived references."
+      }
+    },
+    {
+      id: "kesbeke",
+      name: "Kesbeke Fijne Tafelzuren",
+      landmarkId: "w276264363",
+      modelUrl: "./models/kesbeke.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012132306"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.857491067626641,
+          52.383076488700894
+        ],
+        headingDegrees: 0,
+        lengthMetres: 40.70900000000256,
+        widthMetres: 65.0680000000284
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      surveyed: {
+        anchor: [
+          4.857491067626641,
+          52.383076488700894
+        ],
+        northOffsetDegrees: 0,
+        source: "Native RD anchor118935/488489; AHN5 individual semantic roof planes, groundNAP0.41499999165534973; exact official BAG address/VBO/Pand relationship"
+      },
+      attribution: {
+        title: "Kesbeke factory and office",
+        author: "Map Recall",
+        sourceUrl: "https://www.kesbeke.nl/contact-keuze/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original native flat-color reconstruction with sharp original vector signage following actual walls; reference photos inform geometry only; no photo pixels or imported mesh."
+      },
+      materialOverrides: {
+        brick: "#8a7159",
+        gold: "#f4c400"
+      }
+    },
+    {
+      id: "kesbeke-shop",
+      name: "Kesbeke Zoet & Zuur winkel",
+      landmarkId: "n9071288363",
+      modelUrl: "./models/kesbeke-shop.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012120245"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.856803137299997,
+          52.38287567988049
+        ],
+        headingDegrees: 0,
+        lengthMetres: 13.054000000003725,
+        widthMetres: 13.628000000026077
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      surveyed: {
+        anchor: [
+          4.856803137299997,
+          52.38287567988049
+        ],
+        northOffsetDegrees: 0,
+        source: "Native RD anchor118888/488467; AHN5 individual semantic roof planes, groundNAP0.4180000126361847; exact official BAG address/VBO/Pand relationship"
+      },
+      attribution: {
+        title: "Kesbeke shop and its residential BAG parent",
+        author: "Map Recall",
+        sourceUrl: "https://www.kesbeke.nl/ons-winkeltje/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original native flat-color reconstruction with sharp original vector signage following actual walls; reference photos inform geometry only; no photo pixels or imported mesh."
+      },
+      materialOverrides: {
+        brick: "#8a7159",
+        gold: "#f4c400"
       }
     }
   ];
@@ -10491,7 +10583,20 @@ Map source: ${osmUrl(places[i][0])}`);
         52.3816671,
         4.8593849
       ],
-      preferDescription: true
+      preferDescription: true,
+      destinations: [
+        {
+          landmarkId: "n3974788355",
+          name: "Padel NEXT",
+          center: [
+            52.3817412,
+            4.8592628
+          ],
+          description: "Padel NEXT is the indoor padel venue at Willem de Zwijgerlaan 338C. Its Americano tournaments rotate partners and opponents, so participants play with and against one another rather than staying in a fixed pair.",
+          sourceUrl: "https://padelnext.nl/",
+          preferDescription: true
+        }
+      ]
     },
     {
       modelId: "klimmuur-centraal",
@@ -10638,6 +10743,36 @@ Map source: ${osmUrl(places[i][0])}`);
         reason: "Cabralstraat1 public entrance between source-observed twin towers on native surveyed west edge; avoid inaccessible school courtyard centroid."
       },
       sourceUrl: "https://www.inmidwest.nl/cabralstraat-1-het-monument/"
+    },
+    {
+      modelId: "kesbeke",
+      name: "Kesbeke Fijne Tafelzuren",
+      description: "This factory was designed by H. Tuininga in 1948 for machinery maker Joh. Moes & Zonen. Brick crosses and large yellow Kesbeke lettering distinguish the office from the low production halls. Kesbeke moved here in 1977 after starting in a Waterlooplein cellar.",
+      sourceUrl: "https://amsterdamopdekaart.nl/wederopbouw/Adolf_van_Nassaustraat/2",
+      preferDescription: true,
+      center: [
+        52.38287280299574,
+        4.857204443898143
+      ],
+      routeDestination: {
+        center: [
+          52.38287280299574,
+          4.857204443898143
+        ],
+        sourceUrl: "https://amsterdamopdekaart.nl/wederopbouw/Adolf_van_Nassaustraat/2",
+        note: "Public street immediately outside the source-observed west office entrance; RD118915.32/488466.48, one metre outward from surveyed facade."
+      }
+    },
+    {
+      modelId: "kesbeke-shop",
+      name: "Kesbeke Zoet & Zuur winkel",
+      center: [
+        52.3828246,
+        4.8567913
+      ],
+      description: "Kesbeke\u2019s shop at Adolf van Nassaustraat 3 faces the family\u2019s pickle factory. Alongside its Amsterdam pickles and other preserved vegetables, the shop sells oils, cheeses and accompaniments for the table.",
+      sourceUrl: "https://www.kesbeke.nl/ons-winkeltje/",
+      preferDescription: true
     }
   ];
 
@@ -10651,20 +10786,24 @@ Map source: ${osmUrl(places[i][0])}`);
       const anchor = model.surveyed?.anchor ?? model.footprint?.centre;
       if (!anchor) continue;
       const ids = [model.landmarkId, ...model.relatedLandmarkIds ?? []].filter(Boolean);
-      const destinations = model.id === "muziekgebouw-bimhuis" ? ids : ids.slice(0, 1);
+      const destinations = model.destinationLandmarkIds ?? (model.id === "muziekgebouw-bimhuis" ? ids : ids.slice(0, 1));
       for (const id of destinations) {
+        const venue = fallback?.destinations?.find((p) => p.landmarkId === id);
+        const specific = venue ?? fallback;
         const existing = merged.get(id);
         merged.set(id, {
           ...existing,
           id,
-          name: existing?.name || fallback?.name || model.name,
+          name: existing?.name || specific?.name || model.name,
           // Explicit sourced corrections fix mislabeled neighbors or use a public entrance.
-          center: fallback?.destinationOverride?.center ?? existing?.center ?? fallback?.center ?? [anchor[1], anchor[0]],
-          routeCenter: fallback?.routeDestination?.center ?? existing?.routeCenter,
+          center: specific?.destinationOverride?.center ?? existing?.center ?? specific?.center ?? [anchor[1], anchor[0]],
+          routeCenter: venue?.routeDestination?.center ?? (id === model.landmarkId ? fallback?.routeDestination?.center : void 0) ?? existing?.routeCenter,
           type: existing?.type || "landmark",
-          // A researched description can improve a generic mapped summary while preserving extract facts.
-          funFact: existing?.funFact || (fallback?.preferDescription || !existing?.wikipediaExtract ? fallback?.description : void 0),
-          sourceUrl: existing?.sourceUrl || fallback?.sourceUrl || model.attribution.sourceUrl,
+          // Opt-in researched descriptions can improve generic address summaries while retaining extract history.
+          funFact: existing?.funFact || specific?.funFact || (specific?.preferDescription || !existing?.wikipediaExtract ? specific?.description : void 0),
+          sourceUrl: (!existing?.funFact && specific?.funFact ? specific?.sourceUrl : existing?.sourceUrl) || specific?.sourceUrl || model.attribution.sourceUrl,
+          researchSourceUrl: specific?.sourceUrl || existing?.researchSourceUrl,
+          researchDetail: specific?.funFact || specific?.description || existing?.researchDetail,
           manualPoi: true,
           modelId: model.id,
           buildingIds: [.../* @__PURE__ */ new Set([...existing?.buildingIds ?? [], ...model.suppressOsmIds ?? []])],
@@ -10672,7 +10811,7 @@ Map source: ${osmUrl(places[i][0])}`);
         });
       }
       if (model.id !== "muziekgebouw-bimhuis") {
-        for (const alias of ids.slice(1)) merged.delete(alias);
+        for (const alias of ids.slice(1)) if (!destinations.includes(alias)) merged.delete(alias);
       }
     }
     return [...merged.values()];
@@ -11375,7 +11514,10 @@ Map source: ${osmUrl(places[i][0])}`);
       const panel = this._landmarkPanel;
       if (!lm || !panel) return false;
       const cards = window.CanalRecallCards;
-      const body = (lm.factTexts && lm.factTexts.length ? lm.factTexts.join("\n\n") : "") || lm.longDetail || lm.detail || cards.placeOnlyDetail(lm.type, this.currentNeighborhood, this._cityDisplayName());
+      const originalBody = (lm.factTexts && lm.factTexts.length ? lm.factTexts.join("\n\n") : "") || lm.longDetail || lm.detail || cards.placeOnlyDetail(lm.type, this.currentNeighborhood, this._cityDisplayName());
+      const body = lm.researchDetail && !originalBody.includes(lm.researchDetail) ? `${originalBody}
+
+${lm.researchDetail}` : originalBody;
       const badges = panel.querySelector("#landmark-panel-badges");
       badges.textContent = "";
       const pushBadge = (label, kind) => {
@@ -11409,6 +11551,20 @@ Map source: ${osmUrl(places[i][0])}`);
         link.removeAttribute("href");
         link.hidden = true;
       }
+      let research = panel.querySelector("#landmark-panel-research-source");
+      if (!research) {
+        research = document.createElement("a");
+        research.id = "landmark-panel-research-source";
+        research.target = "_blank";
+        research.rel = "noopener";
+        research.style.marginLeft = "12px";
+        link.insertAdjacentElement("afterend", research);
+      }
+      const researchUrl = lm.researchSourceUrl;
+      research.hidden = !researchUrl || researchUrl === (lm.wikipediaUrl || lm.sourceUrl);
+      if (researchUrl) research.href = researchUrl;
+      else research.removeAttribute("href");
+      research.textContent = "Research source \u2197";
       panel.querySelector("#landmark-panel-scroll").scrollTop = 0;
       this._toggleUtilityPanel(panel);
       return true;

@@ -14,7 +14,7 @@ const landmarks = buildLandmarks(features, (lat, lng) => ({ x: lng, y: lat }));
 assert.equal(new Set(features.map(feature => feature.id)).size, features.length, 'POI IDs are unique');
 for (const model of MANUAL_LANDMARKS) {
   const destinations = features.filter(feature => feature.modelId === model.id);
-  assert.equal(destinations.length, model.id === 'muziekgebouw-bimhuis' ? 2 : 1, `${model.id}: genuine destinations, no facade alias duplicates`);
+  assert.equal(destinations.length, model.destinationLandmarkIds?.length ?? (model.id === 'muziekgebouw-bimhuis' ? 2 : 1), `${model.id}: genuine destinations, no facade alias duplicates`);
   for (const poi of destinations) {
     assert.ok(poi.center?.every(Number.isFinite), `${model.id}: geographic pin`);
     assert.ok(poi.manualPoi && (poi.prominenceScore ?? 0) >= 220, `${model.id}: pin/label eligibility`);
@@ -43,6 +43,17 @@ for (const feature of features.filter(feature => feature.manualPoi && feature.id
   const original = raw.find(item => item.id === feature.id);
   if (original?.center) assert.deepEqual(feature.center, original.center, 'uncorrected existing destinations retain their coordinates');
 }
+const beestVenue = features.find(feature => feature.id === 'n8805218642');
+const padelVenue = features.find(feature => feature.id === 'n3974788355');
+assert.equal(beestVenue?.modelId, 'beest-boulders');
+assert.equal(padelVenue?.modelId, 'beest-boulders');
+assert.match(padelVenue?.name ?? '', /Padel NEXT/);
+assert.match(padelVenue?.funFact ?? '', /Americano/);
+assert.notDeepEqual(padelVenue?.center, beestVenue?.center, 'shared host preserves separate venue pins');
+assert.notEqual(padelVenue?.sourceUrl, beestVenue?.sourceUrl, 'shared host preserves independent cards');
+const kesbekeFact = JSON.parse(readFileSync('src/canalRecall/game/manual-poi-data.json', 'utf8')).find((fact: {modelId:string}) => fact.modelId === 'kesbeke');
+const kesbekeVenue = features.find(feature => feature.modelId === 'kesbeke');
+assert.deepEqual(kesbekeVenue?.routeCenter, kesbekeFact.routeDestination.center, 'factory destination uses its sourced public entrance');
 const store = createOverlayStore(defaultPreferences({ min: 0.2, max: 1.5, defaultZoom: 0.5 }));
 assert.equal(store.getState().destinationId, '', 'Surprise remains the default');
 const choice = { id: 'lm-frascati', name: 'Frascati', lat: 52.37, lng: 4.89 };

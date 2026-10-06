@@ -11005,12 +11005,20 @@
         "sourceUrl": "https://beestboulders.com/beest-boulders-amsterdam/",
         "licence": "Original project asset",
         "licenceUrl": "./LICENSE",
-        "modifications": "Original texture-free interpretation of surveyed footprints and current municipal facade references; preserve full shared host and tenants."
+        "modifications": "Original native shared-host geometry with the source-observed complete western frontage and user-authorized real vector sign graphics. Reference photos guide geometry only. Preserve genuine Beest and Padel identities."
       },
+      "relatedLandmarkIds": [
+        "n3974788355"
+      ],
+      "destinationLandmarkIds": [
+        "n8805218642",
+        "n3974788355"
+      ],
+      "preservePositionPrecision": true,
       "bounds": {
         "min": [
           -13.988957405090332,
-          -9.536743306171047e-8,
+          -1.335144048653092e-7,
           -14.615974426269531
         ],
         "max": [
@@ -11031,12 +11039,12 @@
       },
       "extent": {
         "widthMetres": 185.27641773223877,
-        "heightMetres": 27.11688814163208,
+        "heightMetres": 27.116888179779053,
         "depthMetres": 179.38709259033203,
         "depthCoverage": 4.271121252150762
       },
-      "triangles": 17460,
-      "bytes": 253080,
+      "triangles": 31318,
+      "bytes": 443132,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "klimmuur-centraal": {
@@ -11453,6 +11461,150 @@
       },
       "triangles": 10147,
       "bytes": 137412,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "kesbeke": {
+      "id": "kesbeke",
+      "name": "Kesbeke Fijne Tafelzuren",
+      "landmarkId": "w276264363",
+      "modelUrl": "./models/kesbeke.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012132306"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.857491067626641,
+          52.383076488700894
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 40.70900000000256,
+        "widthMetres": 65.0680000000284
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.857491067626641,
+          52.383076488700894
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Native RD anchor118935/488489; AHN5 individual semantic roof planes, groundNAP0.41499999165534973; exact official BAG address/VBO/Pand relationship"
+      },
+      "attribution": {
+        "title": "Kesbeke factory and office",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.kesbeke.nl/contact-keuze/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original native flat-color reconstruction with sharp original vector signage following actual walls; reference photos inform geometry only; no photo pixels or imported mesh."
+      },
+      "materialOverrides": {
+        "brick": "#8a7159",
+        "gold": "#f4c400"
+      },
+      "bounds": {
+        "min": [
+          -20.129928588867188,
+          -3.9601326307092677e-7,
+          -32.95650100708008
+        ],
+        "max": [
+          20.929311752319336,
+          12.6899995803833,
+          32.4680290222168
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.857491067626641,
+          52.383076488700894
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 65.42453002929688,
+        "heightMetres": 12.689999976396564,
+        "depthMetres": 41.05924034118652,
+        "depthCoverage": 0.6310204761352524
+      },
+      "triangles": 33350,
+      "bytes": 420980,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "kesbeke-shop": {
+      "id": "kesbeke-shop",
+      "name": "Kesbeke Zoet & Zuur winkel",
+      "landmarkId": "n9071288363",
+      "modelUrl": "./models/kesbeke-shop.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012120245"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.856803137299997,
+          52.38287567988049
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 13.054000000003725,
+        "widthMetres": 13.628000000026077
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.856803137299997,
+          52.38287567988049
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Native RD anchor118888/488467; AHN5 individual semantic roof planes, groundNAP0.4180000126361847; exact official BAG address/VBO/Pand relationship"
+      },
+      "attribution": {
+        "title": "Kesbeke shop and its residential BAG parent",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.kesbeke.nl/ons-winkeltje/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original native flat-color reconstruction with sharp original vector signage following actual walls; reference photos inform geometry only; no photo pixels or imported mesh."
+      },
+      "materialOverrides": {
+        "brick": "#8a7159",
+        "gold": "#f4c400"
+      },
+      "bounds": {
+        "min": [
+          -9.493687629699707,
+          -3.635883274455409e-7,
+          -2.817500114440918
+        ],
+        "max": [
+          4.987098693847656,
+          15.563225746154785,
+          10.810500144958496
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.856803137299997,
+          52.38287567988049
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 14.480786323547363,
+        "heightMetres": 15.563226109743113,
+        "depthMetres": 13.628000259399414,
+        "depthCoverage": 1.0000000190323846
+      },
+      "triangles": 7606,
+      "bytes": 64228,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }

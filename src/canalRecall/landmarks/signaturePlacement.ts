@@ -75,6 +75,8 @@ export interface SignatureModelSpec {
   /** Stable id for this placement, used in the manifest and in tests. */
   readonly id: string;
   readonly assetKind?: 'building' | 'memorial';
+  /** Source-supported per-model palette overrides; decals retain their original colors. */
+  readonly materialOverrides?: Readonly<Record<string, string>>;
   /** Human name, shown in the attribution panel. */
   readonly name: string;
   /** The landmark extract entry this model represents, so the existing card,
@@ -82,6 +84,10 @@ export interface SignatureModelSpec {
   readonly landmarkId: string;
   /** Other cards belonging to the same architectural complex. */
   readonly relatedLandmarkIds?: readonly string[];
+  /** Genuine independent venues hosted by this shared mesh. */
+  readonly destinationLandmarkIds?: readonly string[];
+  /** Keep graphics and their support positions exact while compressing ordinary geometry. */
+  readonly preservePositionPrecision?: boolean;
   /** Runtime GLB, relative to the Canal Recall page. */
   readonly modelUrl: string;
   /** Building identities: OSM `w`/`r` ids and, where needed, BAG pand ids.
