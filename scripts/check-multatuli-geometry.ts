@@ -1,5 +1,4 @@
 import assert from 'node:assert/strict';
-import fs from 'node:fs';
 import * as T from 'three';
 import {buildMultatuli} from './landmarks/multatuli-builder';
 import source from './landmarks/multatuli-footprints.json';
@@ -14,9 +13,18 @@ let triangles=0;for(const m of group.children as T.Mesh[]){const p=m.geometry.ge
 const bounds=new T.Box3().setFromObject(group);assert.ok(bounds.max.y>13.8&&bounds.max.y<14.6);assert.ok(bounds.max.x-bounds.min.x<5.4,'only one narrow house');assert.ok(bounds.max.z-bounds.min.z<14.4,'native depth plus actual stoop');
 for(const roof of roofs){const p=roof.geometry.getAttribute('position'),n=roof.geometry.getAttribute('normal');for(let i=0;i<p.count;i++)assert.ok(n.getY(i)>.1,'all roof planes upward '+JSON.stringify({i,n:n.getY(i),p:[p.getX(i),p.getY(i),p.getZ(i)]}));}
 // Source identity comes from actual VBO-to-Pand links, not nearby POI point proximity.
-const vbo=JSON.parse(fs.readFileSync('docs/references/multatuli/bag-addresses.json','utf8')).data.features;
+const vbo=source.bag.addressParentAssertions.records;
 const pand=source.building;
-assert.ok(vbo.every((f:any)=>f.properties['pand.href'].some((u:string)=>u.endsWith('/'+pand.id))));
+assert.ok(vbo.length>0,'official address-parent assertions are present');
+assert.deepEqual(vbo.map(f=>f.vboId).sort(),[...source.bag.vboIds].sort(),'every source VBO has an official parent assertion');
+assert.equal(source.bag.pandId,pand.properties.identificatie);
+for(const f of vbo){
+  assert.equal(f.pandId,source.bag.pandId);
+  assert.equal(f.street,'Korsjespoortsteeg');assert.equal(f.houseNumber,20);
+  assert.ok(f.mainAddressId,'official main address identity is retained');
+  assert.ok(f.pandHrefs.some(u=>u.endsWith('/'+pand.id)),'official VBO-to-Pand link');
+  assert.ok(pand.properties['verblijfsobject.href'].some(u=>u.endsWith('/'+f.vboFeatureId)),'official Pand-to-VBO reciprocal link');
+}
 assert.ok(!source.neighborsToRetain.some(id=>spec.suppressOsmIds.includes(id)));assert.equal(spec.spatialSuppression,false);
 const wall=(group.children[0] as T.Mesh).geometry.getAttribute('position');
 // Front native footprint vertices survive independent facade detailing.

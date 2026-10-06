@@ -139,9 +139,9 @@
   ],
   "coordinateConvention": "Exact current PDOK Pand GeoJSON longitude/latitude; local metres +X southeast along facade, +Z southwest to street, Y-up.",
   "sources": [
-    "docs/references/multatuli/bag-pand.json",
-    "docs/references/multatuli/bag-addresses.json",
-    "docs/references/multatuli/3dbag.json"
+    "../map-recall2-source-data/models/multatuli/files/bag-pand.json",
+    "../map-recall2-source-data/models/multatuli/files/bag-addresses.json",
+    "../map-recall2-source-data/models/multatuli/files/3dbag.json"
   ],
   "bag": {
     "pandId": "0363100012167937",
@@ -160,7 +160,39 @@
       66
     ],
     "footprintAreaSquareMetres": 52.84428678271171,
-    "relationship": "Both exact-address VBOs return pand.href ending75acd556-1fb8-5152-a34a-5c270040eee2, matching current Pand feature.id. VBO usable area is not footprint."
+    "relationship": "Both exact-address VBOs return pand.href ending75acd556-1fb8-5152-a34a-5c270040eee2, matching current Pand feature.id. VBO usable area is not footprint.",
+    "addressParentAssertions": {
+      "sourceUrl": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?bbox=4.89108,52.37744,4.89112,52.37748&limit=50&f=json",
+      "privateSourcePath": "models/multatuli/files/bag-addresses.json",
+      "sourceSha256": "5993667984ef4d6c63e5fba354a63a7c124fd049482a6d5d3efbfcae5956785e",
+      "derivation": "Minimal official address/VBO-to-Pand relationships extracted from cached PDOK response; Pand API UUID resolved to official Pand identifier in bag-pand.json.",
+      "records": [
+        {
+          "vboId": "0363010000710627",
+          "vboFeatureId": "ae58dd72-2ad6-5d85-825a-c7c946f6ebd5",
+          "mainAddressId": "0363200000171631",
+          "street": "Korsjespoortsteeg",
+          "houseNumber": 20,
+          "addition": "H",
+          "pandHrefs": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/75acd556-1fb8-5152-a34a-5c270040eee2"
+          ],
+          "pandId": "0363100012167937"
+        },
+        {
+          "vboId": "0363010000810073",
+          "vboFeatureId": "de425d2e-0e7e-50d7-a3e0-25953cd2edfa",
+          "mainAddressId": "0363200000439547",
+          "street": "Korsjespoortsteeg",
+          "houseNumber": 20,
+          "addition": "1",
+          "pandHrefs": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/75acd556-1fb8-5152-a34a-5c270040eee2"
+          ],
+          "pandId": "0363100012167937"
+        }
+      ]
+    }
   },
   "heightNotes": {
     "source": "3DBAG AHN5 2023 roof planes; source ground0.699m NAP deducted",
@@ -229,7 +261,7 @@
   },
   "photos": [
     {
-      "path": "docs/references/multatuli/facade-2022-1.jpg",
+      "path": "../map-recall2-source-data/models/multatuli/files/facade-2022-1.jpg",
       "url": "https://commons.wikimedia.org/wiki/File:2022_Korsjespoortsteeg_20,_Asd_(1).jpg",
       "date": "2022-03-19",
       "author": "Ceescamel",
@@ -245,7 +277,7 @@
       "confidence": "High for visible assemblies; metric spacing is inferred from native frontage."
     },
     {
-      "path": "docs/references/multatuli/facade-2022-2.jpg",
+      "path": "../map-recall2-source-data/models/multatuli/files/facade-2022-2.jpg",
       "url": "https://commons.wikimedia.org/wiki/File:2022_Korsjespoortsteeg_20,_Asd_(2).jpg",
       "date": "2022-03-19",
       "author": "Ceescamel",
