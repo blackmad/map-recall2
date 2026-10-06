@@ -796,9 +796,10 @@
       "id": "ndsm-warehouse-complex",
       "task": "NDSM shipyard and distinctive warehouse complex",
       "priority": "high",
-      "status": "queued",
+      "status": "loods-visual-game-integration-verified-wider-complex-pending",
       "requestedOn": "2026-10-05",
-      "nextAction": "Resolve current venue/site identities and surveyed building scope; archive original references; build source-backed house-style model with destination, pin/label and meaningful sourced card. Preserve separate tenants, neighboring structures and existing Faralda model."
+      "nextAction": "Publish scoped NDSMloods source-reviewedasset; retain separate Lasloods/STRAAT/Faralda/treehouse and wider shipyardtasks. Preserve three sourcevisualfailures, roof fituncertainties, and measuredslow headlessscene; general performance acceptance remains open.",
+      "evidence": "../../scripts/landmarks/ndsm-warehouse-complex-review.json"
     },
     {
       "id": "straat-museum",
