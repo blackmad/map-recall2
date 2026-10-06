@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Street generator checkpoints · Canal Recall</title>
+<style>
+:root{--bg:#ebe7dd;--ink:#303b43;--mut:#6d6a63;--line:#d4cfc3;--card:#f7f4ec;--link:#2f5d8a}
+*{box-sizing:border-box} [hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header,main{max-width:1080px;margin:auto;padding:24px}header{padding-bottom:4px}h1{font-size:26px;margin:0 0 8px}h2{font-size:21px;margin:0 0 8px}p{margin:0 0 12px;max-width:78ch}
+a{color:var(--link);text-underline-offset:3px}article{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:20px}
+.muted{color:var(--mut)}.badge{display:inline-block;border:1px solid var(--line);border-radius:20px;padding:3px 10px;font-size:12px;margin-bottom:12px;background:var(--bg)}
+.controls{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin:16px 0}label{display:flex;align-items:center;gap:7px}select{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:5px;padding:6px 9px}input[type=range]{width:min(240px,45vw);accent-color:var(--link)}
+.comparison{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:8px;background:var(--bg);--split:50%}
+figure{margin:0}.comparison img{width:100%;display:block}.before{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--split)) 0 0)}.before img{height:100%;object-fit:contain}
+figcaption{position:absolute;top:12px;background:var(--card);border:1px solid var(--line);padding:3px 9px;border-radius:5px;font-size:13px}.before figcaption{left:12px}.after figcaption{right:12px}
+.divider{position:absolute;left:var(--split);top:0;bottom:0;border-left:2px solid var(--link);pointer-events:none}
+.comparison.side{display:grid;grid-template-columns:1fr 1fr;gap:1px}.side figure{position:relative;clip-path:none}.side .before{inset:auto;order:0}.side .after{order:1}.side .before img{height:auto}.side .divider{display:none}
+.pending{padding:32px 20px;border:1px dashed var(--line);border-radius:8px;color:var(--mut)}.links{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px}.note{font-size:13px;margin-top:12px}
+.jan-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}.jan-pair img{display:block;width:100%;border:1px solid var(--line);border-radius:8px}.jan-pair figcaption{position:static;border:0;background:none;padding:5px 0}.jan-pair a{display:block}
+@media(max-width:600px){header,main{padding:16px}article{padding:16px}.comparison.side{grid-template-columns:1fr}.side figcaption{top:8px}.controls{gap:10px}h1{font-size:23px}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Street generator checkpoints</h1>
+  <p class="muted">Working previews of shared facade improvements. These checkpoints show progress; game views and heldout street comparisons determine whether a candidate is ready to expand.</p>
+</header>
+<main>
+  <article>
+    <span class="badge">Two-building pilot</span>
+    <h2>Jan Evertsenstraat</h2>
+    <p>The shared generator adds three rows of broad paired windows, projecting leaves, recessed entrances, a glass-block band and the continuous shop canopy.</p>
+    <p class="muted">The current material repair removes unwanted pale strips and fanlight patterns. Before shows the ordinary generator with this street profile disabled; after shows the two-building pilot. CPU previews only: transfer, gameplay and performance review remain pending.</p>
+    <p class="note muted">Independent review passes the material repair but finds that projecting window groups read weakly in these views. The upper blank masonry and stepped roof also need source-envelope review. Full facade acceptance remains withheld.</p>
+    <div class="jan-pair">
+      <figure><a href="demo-assets/jan-evertsen/before-front.png"><img src="demo-assets/jan-evertsen/before-front.png" alt="Before: ordinary generator on the two native Jan Evertsenstraat buildings" loading="lazy"></a><figcaption>Before · ordinary generator</figcaption></figure>
+      <figure><a href="demo-assets/jan-evertsen/after-front.png"><img src="demo-assets/jan-evertsen/after-front.png" alt="After: paired windows, recessed doors and continuous canopy on the two native buildings" loading="lazy"></a><figcaption>After · two-building pilot</figcaption></figure>
+    </div>
+    <p><a href="demo-assets/jan-evertsen/after-oblique.png">View the current oblique preview →</a></p>
+    <a href="jan-evertsen-pilot.html">Open the interactive pilot comparison →</a>
+  </article>
+  <article aria-labelledby="compound-title">
+    <span class="badge">Working candidate · no expansion accepted</span>
+    <h2 id="compound-title">Oudezijds Voorburgwal 87–89</h2>
+    <p>The candidate adds three broad main window axes beside a separate brick shaft, a connected white ground surround, basement lights and a block cornice. Its street eave and steep front roof are treated separately.</p>
+    <p class="muted">CPU previews of original game geometry. The first review caught unwanted pale strips in the glass and a fanlight mark on the door; the shown comparison includes those repairs. Roof joins now pass the geometry check. This is still a working candidate: street-row, live game and heldout review remain pending.</p>
+    <div class="controls">
+      <label for="view">View <select id="view"><option value="front">Front</option><option value="oblique">Oblique</option></select></label>
+      <label for="mode">Compare <select id="mode"><option value="slider">Before / after slider</option><option value="side">Side by side</option></select></label>
+      <label id="split-control" for="split">Before share <input id="split" type="range" min="0" max="100" value="50" disabled><output id="split-value" for="split">50%</output></label>
+    </div>
+    <p id="image-status" class="pending" role="status">Candidate images are being prepared. The comparison appears when both previews are available.</p>
+    <div id="comparison" class="comparison" hidden aria-label="Before and after compound frontage preview">
+      <figure id="after" class="after"><figcaption>After · candidate</figcaption></figure>
+      <figure id="before" class="before"><figcaption>Before</figcaption></figure>
+      <div class="divider" aria-hidden="true"></div>
+    </div>
+    <noscript><p class="pending">Enable JavaScript to load the preview comparison.</p></noscript>
+    <p class="note muted">The native building record dates to 1650; the monument description dates this office facade design to 1920. Facade proportions remain approximate.</p>
+    <div class="links">
+      <a href="https://api.data.amsterdam.nl/v1/monumenten/monumenten/3db98b0f-39b1-4851-9fc2-81df5ed3ad89?_format=json" target="_blank" rel="noopener">Official monument description ↗</a>
+      <a href="https://3dbag.nl/en/viewer?fid=NL.IMBAG.Pand.0363100012178298" target="_blank" rel="noopener">Surveyed building and roof ↗</a>
+    </div>
+  </article>
+</main>
+<script>
+const view=document.querySelector('#view'),mode=document.querySelector('#mode'),split=document.querySelector('#split');
+const comparison=document.querySelector('#comparison'),status=document.querySelector('#image-status');
+let request=0,ready=false;
+function updateControls(){
+  comparison.classList.toggle('side',mode.value==='side');
+  comparison.style.setProperty('--split',`${split.value}%`);
+  document.querySelector('#split-value').value=`${split.value}%`;
+  document.querySelector('#split-control').hidden=mode.value==='side';
+  split.disabled=!ready;
+}
+function loadImage(url,alt){return new Promise((resolve,reject)=>{
+  const img=new Image();img.alt=alt;img.onload=()=>resolve(img);img.onerror=reject;img.src=url;
+});}
+async function loadView(){
+  const token=++request,selected=view.value;ready=false;comparison.hidden=true;status.hidden=false;
+  status.textContent='Loading the preview pair…';updateControls();
+  try{
+    const [before,after]=await Promise.all(['before','after'].map(phase=>loadImage(`./demo-assets/compound-source/${phase}-${selected}.png`,`${phase==='before'?'Before':'Working candidate after'}: ${selected} view of the compound frontage`)));
+    if(token!==request)return;
+    for(const [id,img]of [['before',before],['after',after]]){
+      const figure=document.getElementById(id);figure.querySelector('img')?.remove();figure.prepend(img);
+    }
+    ready=true;comparison.hidden=false;status.hidden=true;updateControls();
+  }catch{
+    if(token!==request)return;
+    status.textContent='This preview pair is not available yet. The candidate is still being prepared; try the other view or reload after the next checkpoint.';
+  }
+}
+view.addEventListener('change',loadView);mode.addEventListener('change',updateControls);split.addEventListener('input',updateControls);
+loadView();
+</script>
+</body>
+</html>
