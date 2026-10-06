@@ -7646,6 +7646,84 @@ Map source: ${osmUrl(places[i][0])}`);
         licenceUrl: "./LICENSE",
         modifications: "Original nine separate native-scale containers with open wedge spacers, open central passage and simplified original flat-colour FIRESTARTER-inspired turquoise/magenta/yellow motifs. No third-party pixels, meshes or identification text."
       }
+    },
+    {
+      id: "wine-guildhall",
+      name: "Wine buyers\u2019 guildhall / Wijnkopersgildehuis",
+      landmarkId: "extract_landmarks_1958595244",
+      modelUrl: "./models/wine-guildhall.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012178460"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.898323421104812,
+          52.37197131788289
+        ],
+        headingDegrees: 90,
+        lengthMetres: 20.664916001602627,
+        widthMetres: 23.658623804187897
+      },
+      surveyed: {
+        anchor: [
+          4.898323421104812,
+          52.37197131788289
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG0363100012178460 native east/south metres; actual northeast Koestraat principal frontage0\u21921\u2192\u2026\u21929 (13.856m), confirmed open street against opposite BAG1634. Rear10\u219214 abuts BAG8212; partywall9\u219210 adjoins Koestraat8. AHN variable roof/courtyard retained."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "Wijnkopersgildehuis",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/3051",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free flat-colour house style; actual BAG holed plan and variable measured roof regions constrain newly generated geometry. Principal facade follows actual northeast13.856m street boundary0\u21929 with source-supported six sash groups, three reconstructed neck tops, sober block ornament and right-half1633 Saint Urbanus portal. Thin front masonry support stays on true perimeter. No neighboring buildings or source pixels/lettering/imported mesh. Superseded partywall9\u219210 and rear10\u219214 facade placements failed native acceptance."
+      }
+    },
+    {
+      id: "the-rock",
+      name: "The Rock",
+      landmarkId: "osm-way-52156815",
+      modelUrl: "./models/the-rock.glb",
+      suppressOsmIds: [
+        "w52156815",
+        "NL.IMBAG.Pand.0363100012114135"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.87011,
+          52.33761
+        ],
+        headingDegrees: 0,
+        lengthMetres: 54,
+        widthMetres: 49
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      surveyed: {
+        anchor: [
+          4.87011,
+          52.33761
+        ],
+        northOffsetDegrees: 0,
+        source: "BAG0363100012114135/OSMw52156815 native surveyed boundary and 3DBAG roof plans in RD east/south axes, scale1. RD/WGS84 angular correction <0.5degree; exact replacement identities only."
+      },
+      attribution: {
+        title: "The Rock / Erick van Egeraat",
+        author: "Map Recall",
+        sourceUrl: "https://therock-zuidas.nl/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free flat-color surveyed footprint shells, continuous articulated glass/aluminium curtain fields, clustered broad/slit glazing in deep layered stone frames and bounded surveyed roof heights; photo-guided dark charcoal/brown stone; no imported meshes or photo pixels."
+      },
+      materialOverrides: {
+        greyBrick: "#4b4a44"
+      }
     }
   ];
 
@@ -11148,6 +11226,54 @@ Map source: ${osmUrl(places[i][0])}`);
         "https://www.ndsm.nl/magazine/interview-seeyousioe-over-hun-werk-empower"
       ],
       identityNote: "Genuine OSM artwork way1304785589; no existing extract landmark found. Root must preserve this identity across route/pin/card; no aliases of NDSM-loods or STRAAT."
+    },
+    {
+      modelId: "wine-guildhall",
+      landmarkId: "extract_landmarks_1958595244",
+      name: "Wine buyers\u2019 guildhall",
+      description: "The triple neck-gabled front on Koestraat joins three houses that were combined in 1611. The wine buyers purchased the property in 1630 and divided it in 1633: the right half became their guildhall, with a hall behind it, while the other half remained a separate residence. Pieter de Keyser designed the stone entrance, whose pediment depicts Saint Urbanus, patron of vineyard workers. The present neck-shaped tops were reconstructed, and the interior arrangement changed during restoration. Purchases by wine merchant Jacobus Boelen in 1917\u20131918 helped inspire the founding of Vereniging Hendrick de Keyser.",
+      sourceUrl: "https://www.hendrickdekeyser.nl/de-huizen/wijnkopersgildehuis",
+      additionalSources: [
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/3051"
+      ]
+    },
+    {
+      modelId: "the-rock",
+      landmarkId: "osm-way-52156815",
+      name: "The Rock",
+      center: [
+        52.33746770593688,
+        4.8704548554961224
+      ],
+      sourceUrl: "https://therock-zuidas.nl/",
+      description: "Erick van Egeraat designed The Rock as a dramatic transition from a transparent glass base to a heavy natural-stone crown. Shifted volumes and irregular openings give the 90-metre office tower a different profile from every angle. The owner dates completion to 2009. A renovation began in late 2024, with entrances on Claude Debussylaan and the north side facing the future Brittenpassage at Amsterdam Zuid.",
+      sourceLinks: [
+        {
+          title: "The Rock: current building owner and architectural materials",
+          url: "https://therock-zuidas.nl/"
+        },
+        {
+          title: "City of Amsterdam Zuidas: tower design and renovation",
+          url: "https://zuidas.nl/construction-project/the-rock/"
+        },
+        {
+          title: "Owner brochure: ground-floor entrances (page 8)",
+          url: "https://therock-zuidas.nl/files/images/content/downloads/The%20Rock%20%20Amsterdam%20brochure.pdf"
+        },
+        {
+          title: "City of Amsterdam: renovation announced October 2024",
+          url: "https://zuidas.nl/blog/2024/10/07/the-rock-keert-zich-naar-de-toekomst/"
+        }
+      ],
+      pinNotes: "Approximate southeast street-contact point scaled from the owner\u2019s 2025 brochure ground-floor plan, page 8, using the surveyed BAG outline. Entrance symbol faces Claude Debussylaan; exact installed threshold and route reachability remain unverified. Not a surveyed door coordinate.",
+      destinationOverride: {
+        center: [
+          52.33746770593688,
+          4.8704548554961224
+        ],
+        sourceUrl: "https://therock-zuidas.nl/",
+        reason: "Approximate southeast street-contact point scaled from the owner\u2019s 2025 brochure ground-floor plan, page 8, using the surveyed BAG outline. Entrance symbol faces Claude Debussylaan; exact installed threshold and route reachability remain unverified. Not a surveyed door coordinate."
+      }
     }
   ];
 

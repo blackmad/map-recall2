@@ -1,0 +1,41 @@
+{
+  "id": "the-rock",
+  "name": "The Rock",
+  "landmarkId": "osm-way-52156815",
+  "modelUrl": "./models/the-rock.glb",
+  "suppressOsmIds": [
+    "w52156815",
+    "NL.IMBAG.Pand.0363100012114135"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.87011,
+      52.33761
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 54,
+    "widthMetres": 49
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.87011,
+      52.33761
+    ],
+    "northOffsetDegrees": 0,
+    "source": "BAG0363100012114135/OSMw52156815 native surveyed boundary and 3DBAG roof plans in RD east/south axes, scale1. RD/WGS84 angular correction <0.5degree; exact replacement identities only."
+  },
+  "attribution": {
+    "title": "The Rock / Erick van Egeraat",
+    "author": "Map Recall",
+    "sourceUrl": "https://therock-zuidas.nl/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-color surveyed footprint shells, continuous articulated glass/aluminium curtain fields, clustered broad/slit glazing in deep layered stone frames and bounded surveyed roof heights; photo-guided dark charcoal/brown stone; no imported meshes or photo pixels."
+  },
+  "materialOverrides": {
+    "greyBrick": "#4b4a44"
+  }
+}

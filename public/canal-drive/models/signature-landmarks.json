@@ -12096,6 +12096,146 @@
       "triangles": 16596,
       "bytes": 240320,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "wine-guildhall": {
+      "id": "wine-guildhall",
+      "name": "Wine buyers’ guildhall / Wijnkopersgildehuis",
+      "landmarkId": "extract_landmarks_1958595244",
+      "modelUrl": "./models/wine-guildhall.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012178460"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.898323421104812,
+          52.37197131788289
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 20.664916001602627,
+        "widthMetres": 23.658623804187897
+      },
+      "surveyed": {
+        "anchor": [
+          4.898323421104812,
+          52.37197131788289
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current BAG0363100012178460 native east/south metres; actual northeast Koestraat principal frontage0→1→…→9 (13.856m), confirmed open street against opposite BAG1634. Rear10→14 abuts BAG8212; partywall9→10 adjoins Koestraat8. AHN variable roof/courtyard retained."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "attribution": {
+        "title": "Wijnkopersgildehuis",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/3051",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free flat-colour house style; actual BAG holed plan and variable measured roof regions constrain newly generated geometry. Principal facade follows actual northeast13.856m street boundary0→9 with source-supported six sash groups, three reconstructed neck tops, sober block ornament and right-half1633 Saint Urbanus portal. Thin front masonry support stays on true perimeter. No neighboring buildings or source pixels/lettering/imported mesh. Superseded partywall9→10 and rear10→14 facade placements failed native acceptance."
+      },
+      "bounds": {
+        "min": [
+          -10.930304527282715,
+          -4.577636616431846e-7,
+          -8.641995429992676
+        ],
+        "max": [
+          9.808205604553223,
+          12.147563934326172,
+          15.255654335021973
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.898323421104812,
+          52.37197131788289
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 90,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 23.89764976501465,
+        "heightMetres": 12.147564392089834,
+        "depthMetres": 20.738510131835938,
+        "depthCoverage": 0.8765729699022029
+      },
+      "triangles": 8246,
+      "bytes": 126896,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "the-rock": {
+      "id": "the-rock",
+      "name": "The Rock",
+      "landmarkId": "osm-way-52156815",
+      "modelUrl": "./models/the-rock.glb",
+      "suppressOsmIds": [
+        "w52156815",
+        "NL.IMBAG.Pand.0363100012114135"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.87011,
+          52.33761
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 54,
+        "widthMetres": 49
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.87011,
+          52.33761
+        ],
+        "northOffsetDegrees": 0,
+        "source": "BAG0363100012114135/OSMw52156815 native surveyed boundary and 3DBAG roof plans in RD east/south axes, scale1. RD/WGS84 angular correction <0.5degree; exact replacement identities only."
+      },
+      "attribution": {
+        "title": "The Rock / Erick van Egeraat",
+        "author": "Map Recall",
+        "sourceUrl": "https://therock-zuidas.nl/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free flat-color surveyed footprint shells, continuous articulated glass/aluminium curtain fields, clustered broad/slit glazing in deep layered stone frames and bounded surveyed roof heights; photo-guided dark charcoal/brown stone; no imported meshes or photo pixels."
+      },
+      "materialOverrides": {
+        "greyBrick": "#4b4a44"
+      },
+      "bounds": {
+        "min": [
+          -24.60936737060547,
+          -2.3841858265427618e-8,
+          -25.287065505981445
+        ],
+        "max": [
+          23.74108123779297,
+          90.12000274658203,
+          27.972551345825195
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.87011,
+          52.33761
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 53.25961685180664,
+        "heightMetres": 90.1200027704239,
+        "depthMetres": 48.35044860839844,
+        "depthCoverage": 0.9867438491509886
+      },
+      "triangles": 22333,
+      "bytes": 288312,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

@@ -14,7 +14,7 @@
     "Exact modeled identities excluded; repeated tile identities, near-identical footprints and raised parts grouped.",
     "Ground-level courtyard buildings remain separate. Uncertain complex identities require manual research."
   ],
-  "candidateCount": 1852,
+  "candidateCount": 1850,
   "candidates": [
     {
       "id": "NL.IMBAG.Pand.0363100012207510",
@@ -4088,31 +4088,6 @@
         "state": "suggested",
         "reasons": [
           "Complex footprint"
-        ]
-      },
-      "priority": "low",
-      "status": "needs-identification-and-research",
-      "sourceUrl": "https://3dbag.nl/en/viewer"
-    },
-    {
-      "id": "NL.IMBAG.Pand.0363100012114135",
-      "name": null,
-      "footprintSquareMetres": 1980,
-      "heightMetres": 87.6,
-      "center": [
-        4.8701065,
-        52.337599499999996
-      ],
-      "aliases": [],
-      "raisedParts": false,
-      "roofShape": "flat",
-      "poiNames": [],
-      "fidelity": {
-        "treatment": "unreviewed",
-        "workflow": "recognition-review",
-        "state": "suggested",
-        "reasons": [
-          "Tall skyline building"
         ]
       },
       "priority": "low",
@@ -38625,31 +38600,6 @@
         "state": "suggested",
         "reasons": [
           "Courtyard/open-space geometry",
-          "Complex footprint"
-        ]
-      },
-      "priority": "low",
-      "status": "needs-identification-and-research",
-      "sourceUrl": "https://3dbag.nl/en/viewer"
-    },
-    {
-      "id": "NL.IMBAG.Pand.0363100012123591",
-      "name": null,
-      "footprintSquareMetres": 2917,
-      "heightMetres": 6.8,
-      "center": [
-        4.8513375,
-        52.392612
-      ],
-      "aliases": [],
-      "raisedParts": false,
-      "roofShape": "",
-      "poiNames": [],
-      "fidelity": {
-        "treatment": "unreviewed",
-        "workflow": "recognition-review",
-        "state": "suggested",
-        "reasons": [
           "Complex footprint"
         ]
       },
