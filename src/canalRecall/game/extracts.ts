@@ -12,6 +12,8 @@ export interface LandmarkFeature {
   name: string;
   type?: string;
   center?: LatLng;
+  /** Sourced public arrival/viewing point when it differs from the actual map pin. */
+  routeCenter?: LatLng;
   path?: LatLng[];
   paths?: LatLng[][];
   funFact?: string;

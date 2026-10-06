@@ -1,0 +1,282 @@
+{
+  "modelId": "keith-haring-mural",
+  "sourceRetrievedOn": "2026-10-06",
+  "bagId": "0363100012201630",
+  "bagProperties": {
+    "aantal_verblijfsobjecten": 3,
+    "bouwjaar": 1935,
+    "documentdatum": "2025-08-06",
+    "documentnummer": "SE2025031901167",
+    "gebruiksdoel": "industriefunctie,overige gebruiksfunctie",
+    "geconstateerd": "N",
+    "identificatie": "0363100012201630",
+    "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012201630",
+    "status": "Pand in gebruik",
+    "verblijfsobject.href": [
+      "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/32cedcb3-26eb-502a-a0d6-e110286e1d8a",
+      "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/f7de6cc5-6615-561d-99da-e300ea97cec0",
+      "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/cf6f896c-3f75-52e9-bc28-296cf38f40bf"
+    ]
+  },
+  "ring": [
+    [
+      4.864569894051466,
+      52.3805368180724
+    ],
+    [
+      4.864618908423076,
+      52.3804044027202
+    ],
+    [
+      4.864594567987651,
+      52.38040100579986
+    ],
+    [
+      4.864615570717482,
+      52.38034489832468
+    ],
+    [
+      4.864672623826244,
+      52.38035287952257
+    ],
+    [
+      4.864679392463844,
+      52.38033435875187
+    ],
+    [
+      4.864668234024717,
+      52.38033279957875
+    ],
+    [
+      4.864657199048441,
+      52.380336966122
+    ],
+    [
+      4.864653328022651,
+      52.380336427752916
+    ],
+    [
+      4.864637154937931,
+      52.38033416338227
+    ],
+    [
+      4.864625973091223,
+      52.380323373721545
+    ],
+    [
+      4.864630553109477,
+      52.38031110773045
+    ],
+    [
+      4.864648271551243,
+      52.380304373233834
+    ],
+    [
+      4.8646683156489985,
+      52.38030717597171
+    ],
+    [
+      4.864675402789926,
+      52.380313974991594
+    ],
+    [
+      4.864678174040719,
+      52.380314364703786
+    ],
+    [
+      4.864679170018222,
+      52.38031210419515
+    ],
+    [
+      4.864685385333216,
+      52.3803131202686
+    ],
+    [
+      4.864698705324515,
+      52.38027706641466
+    ],
+    [
+      4.864790044149398,
+      52.38028949495905
+    ],
+    [
+      4.864788996602291,
+      52.380292393368705
+    ],
+    [
+      4.864917295544425,
+      52.38031041344043
+    ],
+    [
+      4.865055831195802,
+      52.38032970083924
+    ],
+    [
+      4.8651842664459535,
+      52.38034738867652
+    ],
+    [
+      4.865185652281176,
+      52.38034444681618
+    ],
+    [
+      4.865277070297687,
+      52.380357657263765
+    ],
+    [
+      4.8652636234415185,
+      52.380393297186906
+    ],
+    [
+      4.865269751510033,
+      52.380394240943346
+    ],
+    [
+      4.8652688441014575,
+      52.380396465896396
+    ],
+    [
+      4.865270706295193,
+      52.380396725759994
+    ],
+    [
+      4.865281786451216,
+      52.38039246049406
+    ],
+    [
+      4.8653018453154715,
+      52.38039526318944
+    ],
+    [
+      4.865313129408461,
+      52.380406116150205
+    ],
+    [
+      4.86530831575219,
+      52.38041828227237
+    ],
+    [
+      4.865290714537624,
+      52.38042504434726
+    ],
+    [
+      4.8652706996136486,
+      52.38042225083143
+    ],
+    [
+      4.865263892037849,
+      52.380415399153584
+    ],
+    [
+      4.865252792196878,
+      52.38041384928171
+    ],
+    [
+      4.865172257761371,
+      52.38063015205601
+    ],
+    [
+      4.864599053396075,
+      52.3805500598333
+    ],
+    [
+      4.864602283680959,
+      52.380541409935006
+    ],
+    [
+      4.864569894051466,
+      52.3805368180724
+    ]
+  ],
+  "coordinateConvention": "Longitude/latitude source; native local x=east, z=south metres; Y-up.",
+  "references": [
+    {
+      "label": "Amsterdam municipality current mural history",
+      "url": "https://www.amsterdam.nl/stadsdelen/west/nieuws/fantasiebeest-keith-haring/",
+      "archiveFile": "municipality.html"
+    },
+    {
+      "label": "Koelhuis architectural history and1933 elevations",
+      "url": "https://amsterdamopdekaart.nl/1850-1940/Centrale_Groothandelsmarkt/Koelhuis",
+      "archiveFile": "architecture.html"
+    },
+    {
+      "label": "Current2023 west elevation, Alfvanbeem CC0 photograph",
+      "url": "https://commons.wikimedia.org/wiki/File:Keith_Haring_Muurschildering,_Amsterdam.jpg",
+      "archiveFile": "mural-2023.jpg"
+    },
+    {
+      "label": "Current official BAG Pand",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?f=json&identificatie=0363100012201630",
+      "archiveFile": "bag-host-current.json"
+    },
+    {
+      "label": "Genuine artwork OSM node",
+      "url": "https://www.openstreetmap.org/node/9021384965",
+      "archiveFile": "osm-node.json"
+    }
+  ],
+  "heightNotes": {
+    "mainRoof": {
+      "metres": 17.4,
+      "confidence": "photo-calibrated approximation",
+      "evidence": "2023 photo roof at upper edge of12m mural, platform at4.2m; whole-host installed survey maximum24.4m belongs to lift-tower tops."
+    },
+    "liftTowerTop": {
+      "metres": 24.4,
+      "confidence": "installed survey maximum calibrated to photograph"
+    },
+    "mural": {
+      "widthMetres": 15,
+      "heightMetres": 12,
+      "bottomMetres": 4.5,
+      "confidence": "12×15m documented; mounting height photo approximation"
+    }
+  },
+  "scope": "Only current Koelhuis Pand. Do not replace Centrale Markthal/neighbor0363100012202277. Excludes demolished northern1950 wing and old southern machine house/chimney.",
+  "neighborRetentionIds": [
+    "NL.IMBAG.Pand.0363100012202277"
+  ],
+  "archiveSearch": {
+    "address": "Centrale Groothandelsmarkt192-193",
+    "query": "Centrale Groothandelsmarkt192 Keith Haring",
+    "url": "https://archief.amsterdam/beeldbank/?q=Centrale%20Groothandelsmarkt%20192%20Keith%20Haring",
+    "accessState": "Downloaded viewer/search shell; not an inspected archive original.1933 elevation reproduced in architectural catalogue inspected; original archive scan unavailable.",
+    "drawing": "1933 Publieke Werken four elevations, Amsterdam op de kaart image20558, public-domain attribution; historical southern machine house has since gone."
+  },
+  "monument": {
+    "municipalId": "200954",
+    "designationYear": 2021,
+    "descriptionAccess": "Architectural catalogue description inspected; exact official register designation/description not yet retrieved. Do not call historic drawing current geometry."
+  },
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "1313b00",
+    "modelPath": "models/keith-haring-mural/",
+    "validationPath": "models/keith-haring-mural/validation/mural-20261006/"
+  },
+  "uncertainty": [
+    "Main roof and stair turret heights estimated against documented mural dimensions; installed24.4m maximum used only lift towers.",
+    "White stroke reconstruction simplifies paint drips and signature handwriting; continuous dog/fish creature, rider and Amsterdam crosses retained.",
+    "Public route destination should use documented Willem de Zwijgerlaan viewing point; artwork geographic pin stays genuine node."
+  ],
+  "facadeAssemblies": {
+    "northWall": {
+      "bagRingEdge": [
+        39,
+        38
+      ],
+      "source": "Current2023 Alfvanbeem photograph mural-2023.jpg, corroborated host-2021.webp",
+      "features": [
+        "Broad grey weathered lower/middle panel left of mural, marking removed northern wing",
+        "Sparse vertical boarded slots near facade edges and small upper wall apertures",
+        "Small dark beam-pocket openings along scar upper edge"
+      ],
+      "confidence": "Visible assemblies source-supported; exact panel height/aperture spacing photo-estimated",
+      "scope": "Wall treatment only, no reconstruction of demolished northern addition"
+    }
+  },
+  "materialNotes": {
+    "brick": "Source-guided scoped dark brown #564840; does not recolor other models."
+  }
+}

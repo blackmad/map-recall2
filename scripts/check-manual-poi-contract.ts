@@ -24,6 +24,10 @@ for (const model of MANUAL_LANDMARKS) {
     const card = landmarks.find(landmark => landmark.id === poi.id)!;
     assert.ok(isWorthACard(card) && card.detail, `${model.id}: card payload`);
     assert.deepEqual(card.buildingIds, poi.buildingIds, `${model.id}: exact building identity survives projection`);
+    if (poi.routeCenter) {
+      assert.ok(poi.routeCenter.every(Number.isFinite), `${model.id}: sourced route arrival`);
+      assert.deepEqual(card.lngLat, [poi.center![1], poi.center![0]], `${model.id}: public arrival must not move the artwork card/pin`);
+    }
     const original = raw.find(feature => feature.id === poi.id);
     if (original?.funFact) assert.equal(poi.funFact, original.funFact, `${model.id}: existing static trivia preserved`);
     if (original?.wikipediaExtract) assert.equal(poi.wikipediaExtract, original.wikipediaExtract, `${model.id}: existing description preserved`);

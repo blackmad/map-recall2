@@ -1,0 +1,58 @@
+{
+  "modelId": "keith-haring-mural",
+  "reviewedOn": "2026-10-06",
+  "stage": "accepted scoped native gallery and live-game review",
+  "geometryChecks": {
+    "command": "node --import tsx scripts/check-keith-haring-mural-geometry.ts",
+    "result": "passed",
+    "triangles": 5084,
+    "muralFirstHitSamples": 13,
+    "textures": 0,
+    "maximumHeightMetres": 24.4,
+    "checks": [
+      "finite native bounds",
+      "exact host-only suppression",
+      "west-facing actual BAG wall",
+      "paint first-hit visibility",
+      "outward paint normals",
+      "signature inside wall bounds"
+    ],
+    "northPanelFirstHitSamples": 3
+  },
+  "independentReview": {
+    "reviewer": "fresh scoped haring_review agent",
+    "references": [
+      "private files/mural-2023.jpg",
+      "private files/elevations-1933.webp"
+    ],
+    "resolved": [
+      "Reverse inward paint ribbon winding",
+      "Close 0.3m glazed lift-tower roof gap with cornice",
+      "Clip signature to actual west wall",
+      "Add horizontal loading canopy surface",
+      "Added current north-wall broad grey scar, sparse boarded openings and upper beam pockets after gallery reviewer detected missing assembly",
+      "Scope host material to dark brown after reference/render comparison",
+      "Show west-wall mural in default gallery without rotating geographic placement"
+    ],
+    "remaining": [
+      "Photo-calibrated main roof/stair heights and simplified weathering/small apertures remain recorded approximations."
+    ]
+  },
+  "requiredCoordinatorChecks": [
+    "Default gallery and four lower rotations against current reference",
+    "West-side live scene with visible mural",
+    "Opposite live view with neighbor retention",
+    "Actual building pointer selects meaningful sourced mural card",
+    "Actual artwork map pin and public viewpoint route finish remain separate",
+    "Desktop and touch route-start smoke"
+  ],
+  "accepted": true,
+  "assetVersion": "8a50d19e865f7a58",
+  "sourceArchiveCommit": "1313b00",
+  "validation": {
+    "gallery": "Default and four lower rotations inspected by root and independent reviewer; initial default-hidden mural and missing north panel fixed; failures preserved in source pack.",
+    "game": "Actual chosen route, separate public-view arrival and physical artwork pin, physical pointer sourced card, exact BAG-only suppression, retained resident drawable Markthal; both native sides reviewed.",
+    "performance": "Visible/hidden/repeat stationary desktop headless medians all16.7ms; no measurable change at sampling limit, no whole-city performance claim.",
+    "sourceArchive": "models/keith-haring-mural/validation/mural-20261006/ @1313b00"
+  }
+}

@@ -159,7 +159,7 @@ function build(spec) {
   const entry = {
     spec, article, updated, order: entries.length, view, canvas, ctx: canvas.getContext('2d'),
     scene, sun, camera: new T.PerspectiveCamera(32, 1, 1, 20000),
-    target: new T.Vector3(), distance: 200, theta: 0.55, phi: 1.02, ready: false,
+    target: new T.Vector3(), distance: 200, theta: spec.galleryView?.theta ?? 0.55, phi: spec.galleryView?.phi ?? 1.02, ready: false,
   };
   entries.push(entry);
   window.CanalFeedback.attach(article, {
