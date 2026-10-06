@@ -1,0 +1,283 @@
+{
+  "scope": "Exposed-training regular 85/99 body + left raised entry candidate on exact native row. CPU runtime geometry/production atlas diagnostic; no architectural, crown, transfer, browser/GPU or game acceptance",
+  "comparison": "Compound87/89 source envelope/profile held fixed both phases. Before85/99 ordinary fallback; after bounded source-approximation body only. Crown capability unresolved; no height/crown guessing",
+  "regularNative": [
+    {
+      "address": 85,
+      "id": "NL.IMBAG.Pand.0363100012178296",
+      "height": 16.23,
+      "constructionYear": 1746,
+      "frontageM": 5.060729691630072,
+      "rings": 1,
+      "recipe": {
+        "columns": 3,
+        "insetM": 0.35,
+        "frameWidthM": 0.075,
+        "recessDepthM": 0.16,
+        "doorPanels": {
+          "columns": 1,
+          "rows": 2
+        },
+        "upperRows": [
+          {
+            "bottomM": 6.4,
+            "heightM": 2.4,
+            "widthM": 1.05,
+            "paneColumns": 2,
+            "paneRows": 2
+          },
+          {
+            "bottomM": 9.5,
+            "heightM": 2,
+            "widthM": 1.05,
+            "paneColumns": 2,
+            "paneRows": 2
+          },
+          {
+            "bottomM": 12.2,
+            "heightM": 1.5,
+            "widthM": 1.05,
+            "paneColumns": 2,
+            "paneRows": 2
+          }
+        ],
+        "ground": {
+          "bottomM": 2.2,
+          "heightM": 3.6,
+          "widthM": 1.05,
+          "paneColumns": 2,
+          "paneRows": 3
+        },
+        "entrance": {
+          "leafHeightM": 2.6,
+          "stepCount": 8,
+          "treadM": 0.24,
+          "landingDepthM": 0.55,
+          "stairWidthM": 1.2,
+          "railHeightM": 0.85
+        },
+        "basement": {
+          "heightM": 2.2,
+          "access": {
+            "axisIndex": 2,
+            "bottomM": 0,
+            "heightM": 1.9,
+            "widthM": 0.9
+          },
+          "window": {
+            "bottomM": 0.35,
+            "heightM": 0.7,
+            "widthM": 0.75,
+            "paneColumns": 2,
+            "paneRows": 1,
+            "axisIndex": 1
+          }
+        }
+      }
+    },
+    {
+      "address": 99,
+      "id": "NL.IMBAG.Pand.0363100012178291",
+      "height": 18.53,
+      "constructionYear": null,
+      "frontageM": 7.583842619780269,
+      "rings": 2,
+      "recipe": {
+        "columns": 3,
+        "insetM": 0.55,
+        "frameWidthM": 0.085,
+        "recessDepthM": 0.18,
+        "doorPanels": {
+          "columns": 2,
+          "rows": 2
+        },
+        "upperRows": [
+          {
+            "bottomM": 7,
+            "heightM": 2.7,
+            "widthM": 1.5,
+            "paneColumns": 3,
+            "paneRows": 3
+          },
+          {
+            "bottomM": 10.5,
+            "heightM": 2.1,
+            "widthM": 1.5,
+            "paneColumns": 3,
+            "paneRows": 2
+          },
+          {
+            "bottomM": 13.3,
+            "heightM": 1.7,
+            "widthM": 1.5,
+            "paneColumns": 3,
+            "paneRows": 2
+          },
+          {
+            "bottomM": 15.7,
+            "heightM": 1.25,
+            "widthM": 1.5,
+            "paneColumns": 3,
+            "paneRows": 2
+          }
+        ],
+        "ground": {
+          "bottomM": 2.4,
+          "heightM": 4,
+          "widthM": 1.5,
+          "paneColumns": 3,
+          "paneRows": 4
+        },
+        "entrance": {
+          "leafHeightM": 2.6,
+          "stepCount": 9,
+          "treadM": 0.25,
+          "landingDepthM": 0.65,
+          "stairWidthM": 1.65,
+          "railHeightM": 0.9
+        },
+        "basement": {
+          "heightM": 2.4,
+          "access": {
+            "axisIndex": 2,
+            "bottomM": 0,
+            "heightM": 2.05,
+            "widthM": 1.4
+          },
+          "window": {
+            "bottomM": 0.2,
+            "heightM": 1.8,
+            "widthM": 1.25,
+            "paneColumns": 2,
+            "paneRows": 3,
+            "axisIndex": 1
+          }
+        }
+      }
+    }
+  ],
+  "sourcePhotos": [
+    {
+      "address": 85,
+      "captureDate": "2025-06-30",
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/oudezijds-east-next-south/processed/transfer-challenge-20261006/85-full-front.jpg",
+      "sha256": "19fdfcf5682ca839307a2b3aaab6358c46f7067039a1771232f98187f517c14e",
+      "attribution": "Gemeente Amsterdam",
+      "rights": "CC BY4.0 per archived municipal acquisition manifest",
+      "inspection": "This worker personally inspected exposed crop; source99is training, never fresh heldout",
+      "limits": "Perspective and partial lower occlusion prevent metric door/stair inference; crop does not verify rear topology."
+    },
+    {
+      "address": 99,
+      "captureDate": "2025-06-30",
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/oudezijds-east-next-south/processed/transfer-challenge-20261006/99-full-front.jpg",
+      "sha256": "731f68b56784fec317045a5fc1e20f0928ceb4d6369ed6b91558c021ffc4f4e5",
+      "attribution": "Gemeente Amsterdam",
+      "rights": "CC BY4.0 per archived municipal acquisition manifest",
+      "inspection": "This worker personally inspected exposed crop; source99is training, never fresh heldout",
+      "limits": "Perspective and partial lower occlusion prevent metric door/stair inference; crop does not verify rear topology."
+    }
+  ],
+  "sourceHashes": {
+    "docs/references/regular-canal-front-scope-20261006.json": "d70a5105bd49d8f1f5a035b303099b522752e3bddff3eb1f7652387ef1fa9ace",
+    "public/data/extracts/amsterdam/building-tiles/14/8414/5384.geojson.gz": "1989e17f71e01244ef6db88449dfc0ee86b567124dada97ced783cc31fba3ff4",
+    "public/data/extracts/amsterdam/building-facts/14/8414/5384.json.gz": "3b7df2ccc54bfde567aef0cef9039d6612d8a4e1052e2022d7dfbca9c5a0a8ed"
+  },
+  "ids": [
+    "NL.IMBAG.Pand.0363100012178291",
+    "NL.IMBAG.Pand.0363100012178232",
+    "NL.IMBAG.Pand.0363100012178233",
+    "NL.IMBAG.Pand.0363100012178296",
+    "NL.IMBAG.Pand.0363100012178298",
+    "NL.IMBAG.Pand.0363100012178299",
+    "NL.IMBAG.Pand.0363100012178300"
+  ],
+  "compoundScopedIds": [
+    "NL.IMBAG.Pand.0363100012178298"
+  ],
+  "controlCourtyardRings": 2,
+  "factualYear": 1650,
+  "nativeAggregateHeightM": 22.99,
+  "roofEnvelope": "Source piecewise wall tops and original surveyed roof surfaces; no whole-parent height replacement",
+  "bindingSha256": "68da4ff982e470a8191fad6e156cdc0e12b5232655e8158d63ca96d48c80c3e8",
+  "atlasColourSha256": "e3f63e77b04453b23e7a939754ff39e35de9363076476cce91c4d078807fe979",
+  "atlasMaskSha256": "f080426b2a7a01b283727b4dff3b99ff6c49e9155e961df840c89a39350b0e3f",
+  "atlasSize": 256,
+  "atlasLayers": 195,
+  "surveySourceSha256": "d414e590684c0398989ce054377b495e1c9d6819747708d6ed35ad3083df8d71",
+  "envelopeCandidateSha256": "5ed91547e1a8ce52dbf9bbc8992627f15fde7029a2691fcd109d256a36c03906",
+  "rendererSources": {
+    "src/canalRecall/threeBuildingMesh.ts": "495d37f3b6d21f72513c87b36b5aa21683a45aa0c084b199aff5a8ee53b346a8",
+    "src/canalRecall/threeBuildingFeatures.ts": "34238977296a25011afb6ecd595d20007371a9b30cfddcec70235bdd51dc32f9",
+    "src/canalRecall/compoundSourceCandidate.fixture.ts": "869d7c0e85e880142852cbc72343d3c2f54004a44c3286ccc24c8d2015e2a0d0",
+    "src/canalRecall/surveyedEnvelopeMeshBinding.ts": "3dcce7f6a2c85121b10873a322d6a10b1746970029d29f659ef8b0811e5b9187",
+    "src/canalRecall/regularCanalNative.fixture.ts": "512cc5c543d814f917500c06d0831eab732abeb4be33d3024432bc904a902d41",
+    "src/canalRecall/regularCanalFrontage.ts": "d1fa3c3bcdbaca3550f7ca4488db49d819dc19cac0e4ed9e733c1b9f1a3a892d",
+    "src/canalRecall/streetAppearance.ts": "0d5a618b70622fc3874989976b88e5fcea3ea942b4bf846305953083dbb07096",
+    "scripts/street-appearance/render-regular-canal-preflight.ts": "ec9ce3363aebfbd8739d973e3c493bae65c80bd18222a42dc9ad76848b1f5a9a"
+  },
+  "views": [
+    {
+      "phase": "before",
+      "view": "front",
+      "file": "artifacts/regular-canal-front/cycle-3-door-hardware/before-front.png",
+      "sha256": "3a4409207a0b6ae28ecab40b97e9edd5d2027f8aa383c9404d14b9b913961eba",
+      "triangles": 3958
+    },
+    {
+      "phase": "after",
+      "view": "front",
+      "file": "artifacts/regular-canal-front/cycle-3-door-hardware/after-front.png",
+      "sha256": "d7330e6fa9fe4bc0e5adb12de2c9cfb1ff28a640116e3a96a20162d991e32300",
+      "triangles": 6350
+    },
+    {
+      "phase": "before",
+      "view": "oblique",
+      "file": "artifacts/regular-canal-front/cycle-3-door-hardware/before-oblique.png",
+      "sha256": "49a2f4971ec588f7a0e9f57482dcc1ee2625ee12155562d3a1fce25ff5fc389f",
+      "triangles": 3958
+    },
+    {
+      "phase": "after",
+      "view": "oblique",
+      "file": "artifacts/regular-canal-front/cycle-3-door-hardware/after-oblique.png",
+      "sha256": "aa093ed4f2136dda9d01b69cbc85c3ae16a649667630bdc6992dee6b39ac0d11",
+      "triangles": 6350
+    },
+    {
+      "phase": "before",
+      "view": "near85",
+      "file": "artifacts/regular-canal-front/cycle-3-door-hardware/before-near85.png",
+      "sha256": "9005d58d66e0560785e7b18da52c9b63c6a0b96275b1eec142711c6e1759b491",
+      "triangles": 3958
+    },
+    {
+      "phase": "after",
+      "view": "near85",
+      "file": "artifacts/regular-canal-front/cycle-3-door-hardware/after-near85.png",
+      "sha256": "28276f05d1deded5a12bc7dd956f8c493487b108876cce42c404e87f6ee47a58",
+      "triangles": 6350
+    },
+    {
+      "phase": "before",
+      "view": "near99",
+      "file": "artifacts/regular-canal-front/cycle-3-door-hardware/before-near99.png",
+      "sha256": "a14797c64ddbf370f2a379cddf9d08aa0864185ea70206d10447dbf1a1c7b3e7",
+      "triangles": 3958
+    },
+    {
+      "phase": "after",
+      "view": "near99",
+      "file": "artifacts/regular-canal-front/cycle-3-door-hardware/after-near99.png",
+      "sha256": "36bb985291791b81768e6056464ed1997fcb94b78bc30b8b1bf7a910fbc26481",
+      "triangles": 6350
+    }
+  ],
+  "acceptance": "Independent bounded CPU body/door pass; crown mixture FAIL; freshheldout/game/GPU/pans pending; zero admissions",
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "21434484d4cf7f4b0a28da22b691a615611c586b",
+    "path": "streets/oudezijds-east-next-south/processed/regular-canal-generator-20261006/"
+  }
+}
