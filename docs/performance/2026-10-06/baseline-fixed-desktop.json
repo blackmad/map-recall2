@@ -1,0 +1,257 @@
+{
+  "label": "baseline-fixed",
+  "device": "desktop",
+  "bootMs": 7505,
+  "readyMs": 9251,
+  "initial": {
+    "rider": {
+      "x": -3154.226118054833,
+      "y": -6510.667693161642,
+      "angle": 2.086399529757466,
+      "color": "#FFD700",
+      "name": "PLAYER",
+      "vx": -0.0005282471789643827,
+      "vy": 0.0009320831318185872,
+      "speed": 0.0010713655056536842,
+      "angularVel": 0,
+      "width": 24,
+      "length": 56,
+      "maxSpeed": 351,
+      "accel": 168,
+      "brakeForce": 412.5,
+      "turnRate": 2.1025,
+      "gripFactor": 1,
+      "driftFactor": 0.12,
+      "drag": 0.0024,
+      "rollingResist": 0.12,
+      "liftOffBraking": 6.5,
+      "throttle": 0,
+      "brake": 0,
+      "steerInput": 0,
+      "handbrake": false,
+      "isDrifting": false,
+      "surfaceType": "asphalt",
+      "currentLap": 0,
+      "lapProgress": 3.710163509751396e-8,
+      "lastCheckpoint": 0,
+      "checkpointsHit": {},
+      "lapTimes": [],
+      "lapStartTime": 0,
+      "bestLap": null,
+      "finished": false,
+      "totalTime": 1.8166000000000018,
+      "raceProgress": 3.710163509751396e-8,
+      "distancePx": 0.002152612407178823,
+      "controlMode": "relative",
+      "camera": {
+        "x": -3186.2750366175264,
+        "y": -6454.117923328739,
+        "smoothing": 0.07,
+        "zoom": 0.65,
+        "minZoom": 0.1,
+        "maxZoom": 1.5,
+        "northUp": false,
+        "holdHeading": false,
+        "heldRotation": 3.6571958565523626,
+        "rotation": 3.6571958565523626,
+        "bearingOffset": 0,
+        "viewMode": "chase",
+        "panX": 0,
+        "panY": 0,
+        "detached": false,
+        "anchorX": 0,
+        "anchorY": 0,
+        "reducedMotion": false,
+        "_lookahead": 0.00008799949214072404,
+        "targetX": -3154.226118054833,
+        "targetY": -6510.667693161642,
+        "_followX": -3186.2750434094146,
+        "_followY": -6454.117911344572,
+        "introOverview": 0
+      },
+      "isBoat": false,
+      "_headingTarget": null,
+      "_cruiseFraction": null,
+      "_stickBraking": false,
+      "_stickHardSteer": false,
+      "_pivot": 0,
+      "_turnAroundHeld": false,
+      "_turnAroundArmed": false
+    },
+    "mapZoom": 18.37763428213502,
+    "cameraZoom": 0.65,
+    "minZoom": 0.1,
+    "maxZoom": 1.5,
+    "stats": {
+      "kitVertices": 242403,
+      "chunks": 28,
+      "buildings": 27379,
+      "walls": 144746,
+      "quads": 581330,
+      "vertices": 4732320,
+      "geometryMB": 156.42094802856445,
+      "textureMB": 97.5,
+      "drawCalls": 28,
+      "triangles": 1837471,
+      "buildMs": 1.200000286102295
+    },
+    "gpuTimer": true,
+    "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+    "pixelRatio": 1
+  },
+  "errors": [],
+  "stages": [
+    {
+      "stage": "street",
+      "zoom": 18.377634282135524,
+      "pitch": 48,
+      "center": [
+        4.8838761423112595,
+        52.37518689141868
+      ],
+      "rider": {
+        "x": -3154.2261109999645,
+        "y": -6510.667705609835
+      },
+      "stats": {
+        "kitVertices": 242403,
+        "chunks": 28,
+        "buildings": 27379,
+        "walls": 144746,
+        "quads": 581330,
+        "vertices": 4732320,
+        "geometryMB": 156.42094802856445,
+        "textureMB": 97.5,
+        "drawCalls": 28,
+        "triangles": 1837471,
+        "buildMs": 1.200000286102295
+      },
+      "resident": 21815,
+      "frameMedian": 16.69999999999891,
+      "frameP95": 16.799999999999272,
+      "renderMedian": 0.10000038146972656,
+      "gpuMedian": 1.53
+    },
+    {
+      "stage": "pan",
+      "zoom": 18.377606999770606,
+      "pitch": 48,
+      "center": [
+        4.87901449219907,
+        52.376022036214344
+      ],
+      "rider": {
+        "x": -3154.2261157692387,
+        "y": -6510.667697194531
+      },
+      "stats": {
+        "kitVertices": 242403,
+        "chunks": 28,
+        "buildings": 27379,
+        "walls": 144746,
+        "quads": 581330,
+        "vertices": 4732320,
+        "geometryMB": 156.42094802856445,
+        "textureMB": 97.5,
+        "drawCalls": 28,
+        "triangles": 1837471,
+        "buildMs": 1.200000286102295
+      },
+      "resident": 21815,
+      "frameMedian": 16.69999999999891,
+      "frameP95": 16.700000000000728,
+      "renderMedian": 0.09999990463256836,
+      "gpuMedian": 1.543541
+    },
+    {
+      "stage": "wide",
+      "zoom": 15.99999999991672,
+      "pitch": 48,
+      "center": [
+        4.8790144567476625,
+        52.376022042304264
+      ],
+      "rider": {
+        "x": -3154.225966317737,
+        "y": -6510.667960899156
+      },
+      "stats": {
+        "kitVertices": 242403,
+        "chunks": 28,
+        "buildings": 27379,
+        "walls": 144746,
+        "quads": 581330,
+        "vertices": 4732320,
+        "geometryMB": 156.42094802856445,
+        "textureMB": 97.5,
+        "drawCalls": 28,
+        "triangles": 1837471,
+        "buildMs": 1.200000286102295
+      },
+      "resident": 21815,
+      "frameMedian": 16.700000000000728,
+      "frameP95": 33.39999999999782,
+      "renderMedian": 0.09999990463256836,
+      "gpuMedian": 1.781874
+    },
+    {
+      "stage": "overview",
+      "zoom": 14.8,
+      "pitch": 48,
+      "center": [
+        4.879014456747656,
+        52.376022042304264
+      ],
+      "rider": {
+        "x": -3154.226221522918,
+        "y": -6510.667510593967
+      },
+      "stats": {
+        "kitVertices": 482940,
+        "chunks": 44,
+        "buildings": 51468,
+        "walls": 253155,
+        "quads": 965817,
+        "vertices": 7006561,
+        "geometryMB": 232.70749855041504,
+        "textureMB": 97.5,
+        "drawCalls": 44,
+        "triangles": 2817889,
+        "buildMs": 0.4999995231628418
+      },
+      "resident": 45313,
+      "frameMedian": 16.69999999999709,
+      "frameP95": 16.700000000000728,
+      "renderMedian": 0.19999980926513672,
+      "gpuMedian": 2.581541
+    }
+  ],
+  "calls": {
+    "setFeatures": {
+      "count": 9,
+      "totalMs": 722.0000004768372,
+      "p95Ms": 230.5,
+      "maxMs": 230.5
+    },
+    "contextFor": {
+      "count": 129,
+      "totalMs": 621.1000008583069,
+      "p95Ms": 17.300000190734863,
+      "maxMs": 29.5
+    },
+    "rebuild": {
+      "count": 76,
+      "totalMs": 548.7999987602234,
+      "p95Ms": 34.40000009536743,
+      "maxMs": 109.40000009536743
+    },
+    "install": {
+      "count": 60,
+      "totalMs": 206.10000133514404,
+      "p95Ms": 11.300000190734863,
+      "maxMs": 13.299999713897705
+    }
+  },
+  "workerPosts": 42,
+  "longTasks": 15
+}

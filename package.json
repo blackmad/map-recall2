@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build:building-overview": "node --import tsx scripts/build-building-overview.ts",
+    "test:building-context": "node --import tsx --test src/canalRecall/buildingContextIndex.test.ts",
     "test:building-lod": "node --import tsx scripts/check-building-lod.ts",
     "build:canal-car": "esbuild src/canalRecall/carRoadGuard.ts --bundle --format=iife --global-name=CanalRecallCar --outfile=public/canal-drive/js/car-road-guard.bundle.js --minify",
     "build:rendering-spike": "esbuild src/canalRecall/renderingSpike.ts --bundle --format=iife --outfile=public/canal-drive/js/rendering-spike.bundle.js",

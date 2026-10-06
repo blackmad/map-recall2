@@ -75,6 +75,14 @@
       "nextAction": "Start with failed De Wallen transfer diagnosis and a bounded source-rich canal row; evaluate rhythm and authoring throughput before scaling to every canal house. Preserve ordinary and modern exceptions. Raw sources belong in the new private source archive under its forthcoming instructions."
     },
     {
+      "id": "city-context-and-camera-performance",
+      "task": "Reduce city tile-update stalls and off-camera rendering; verify zoomed-out and stationary pan views",
+      "priority": "high",
+      "status": "verified",
+      "owner": "root",
+      "validation": "Fixed Anne Frank–Rijksmuseum route: desktop context CPU621→147ms, tile update peak231→76ms; touch context105→40ms. Overview building draws44→27 and triangles2.82M→2.65M. Same-scene culling preserves visible pixels; actual mouse/touch pan retains windows/doors/roofs away from stationary rider. Street, zoom16, actual minimum and diagnostic14.8 reviewed. TypeScript, exact neighbor-index regressions, real-tile LOD and desktop route/shell ownership checks passed. Report:docs/performance/2026-10-06/README.md. GPU/startup timing remains variable, resident memory unchanged; physical phone performance and broader startup stalls remain open."
+    },
+    {
       "id": "initial-overview-mobile-lod",
       "task": "Reduce startup city pop-in and mobile rendering cost",
       "priority": "urgent",
