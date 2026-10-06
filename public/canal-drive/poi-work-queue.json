@@ -315,7 +315,15 @@
       "id": "the-rock",
       "task": "The Rock",
       "priority": "normal",
-      "status": "queued"
+      "status": "verified-current-native-model",
+      "verifiedOn": "2026-10-06",
+      "assetVersion": "c42ec5e34493fc8b",
+      "evidence": "Private models/the-rock/validation/current-main-release-20261006; current gallery/source/native route-pin-card, exact suppression, retained neighbors, fallback unavailable/loaded and stationary draw-cost capture.",
+      "limits": "General desktop/touch gameplay camera-pan performance not established; preserved as shared follow-up.",
+      "sourceArchive": {
+        "commit": "dd7bf70c00c59533abe5c7e8b376c63867aa8a6e",
+        "path": "models/the-rock"
+      }
     },
     {
       "id": "symphony",
@@ -1240,6 +1248,20 @@
       },
       "nextAction": "Resolve official address/VBO/BAG/OSM parents of highlighted complex from user screenshot; verify REC A involvement and keep CREA distinct unless source proves shared scope. Preserve canal under De Brug, raised connections and actual courtyards; reuse genuine campus POI identity rather than moving a generic University of Amsterdam destination. Then full source/geometry/gallery/native route-pin-card acceptance.",
       "evidence": "Private original user-campus-request-20261006.png and operator pages under models/uva-roeterseiland"
+    },
+    {
+      "id": "wine-guildhall",
+      "task": "Wine Buyers Guildhall",
+      "priority": "normal",
+      "status": "verified-current-native-model",
+      "verifiedOn": "2026-10-06",
+      "assetVersion": "1e475780392acc9f",
+      "evidence": "Private models/wine-guildhall/validation/current-main-release-20261006; current gallery/source/native route-pin-card, exact suppression, retained neighbors, fallback unavailable/loaded and stationary draw-cost capture.",
+      "limits": "General desktop/touch gameplay camera-pan performance not established; preserved as shared follow-up.",
+      "sourceArchive": {
+        "commit": "dd7bf70c00c59533abe5c7e8b376c63867aa8a6e",
+        "path": "models/wine-guildhall"
+      }
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

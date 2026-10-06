@@ -1,0 +1,218 @@
+{
+  "id": "the-rock",
+  "researchedOn": "2026-10-06",
+  "identity": {
+    "osm": "w52156815",
+    "bag": "0363100012114135",
+    "vbo": "0363010001167631",
+    "address": "Claude Debussylaan80-134,Amsterdam",
+    "architect": "Erick van Egeraat",
+    "sourceConstructionYear": 2009,
+    "BAGConstructionYear": 2009,
+    "existingExtractMatch": false
+  },
+  "sourceArchive": {
+    "modelPath": "models/the-rock",
+    "localPath": "../map-recall2-source-data/models/the-rock",
+    "commit": "cdb1ba3",
+    "newInputsCommit": "cdb1ba3 (root reports publication)"
+  },
+  "assertions": [
+    {
+      "feature": "three material zones and shifted volumes",
+      "sourceUrl": "https://therock-zuidas.nl/",
+      "buildingPart": "entire tower",
+      "confidence": "high",
+      "evidence": "Owner describes transparent lower part, stone upper part and connecting printed/transparent glass and aluminium."
+    },
+    {
+      "feature": "irregular darkstone crown, staggered rectangular/slit glazing and deep frame recesses",
+      "sourceUrl": "https://zuidas.nl/construction-project/the-rock/",
+      "buildingPart": "main tower upper facades",
+      "referenceImages": [
+        "municipal-exterior.jpg",
+        "municipal-south.jpg",
+        "municipal-detail.jpg"
+      ],
+      "confidence": "high for overall rhythm; approximate individual pane count"
+    },
+    {
+      "feature": "height tiers",
+      "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012114135",
+      "confidence": "survey",
+      "evidence": "Ground0.132NAP; terrace30.19NAP, wing62.56NAP, mainroof87.70NAP; bounded higher roof surfaces89.18/90.23NAP. Owner nominal90m not whole-footprint extrusion."
+    },
+    {
+      "feature": "dense clustered broad/slit crown glazing within dark layered stone, with curtain panels continuing up to unequal frame bottoms",
+      "buildingPart": "principal crown screens and glazing beneath stepped stone bottoms",
+      "referenceImages": [
+        "municipal-exterior.jpg",
+        "municipal-south.jpg",
+        "facade-contractor-02.jpg",
+        "facade-contractor-03.jpg"
+      ],
+      "sourceUrl": "https://scheldebouw.permasteelisagroup.com/project-detail?project=2017",
+      "confidence": "high for assembly and continuity; photo-guided approximate per-pane counts, widths and dark charcoal/brown #4b4a44 flat material"
+    },
+    {
+      "feature": "windowed outer crown portions and heavy horizontal framing around recessed screens",
+      "buildingPart": "broad outer corners and principal crown inset frame groups",
+      "referenceImages": [
+        "municipal-exterior.jpg",
+        "municipal-south.jpg",
+        "facade-contractor-02.jpg",
+        "facade-contractor-03.jpg"
+      ],
+      "sourceUrl": "https://zuidas.nl/construction-project/the-rock/",
+      "confidence": "high for windowed broad outer portions and strongly layered top/bottom frame composition; approximate 0.30m corner return, 0.75m opening clearance, 1.3–1.6m major frame beam heights, 1.7m bottom beams and face assignment; no measured facade section"
+    }
+  ],
+  "archiveSearch": {
+    "url": "https://archief.amsterdam/beeldbank/?q=Claude%20Debussylaan%2080",
+    "accessState": "bounded address query downloaded; viewer shell only, no inspected photograph result",
+    "historicMonumentRegister": "not applicable to contemporary2009 office tower; no monument designation asserted",
+    "bouwdossiers": "no drawing acquired; source-specific exact pane counts remain approximate"
+  },
+  "uncertainties": [
+    "No archival drawing inspected.",
+    "RD axes currently approximated as east/south within0.5degree; integration may calibrate exact northOffset.",
+    "Interior atrium not visible externally through texture-free opaque glass; no invented external courtyard.",
+    "Macro frame depths are photo-guided: outer projection 0.18–0.22m, stone insets 1.05–1.30m, glass fissures recessed 2.4m; not measured depths.",
+    "Owner brochure page 8 supports approximate southeast/northeast entrances on the eastern boundary; actual threshold/canopy elevation and installed state remain unverified.",
+    "Deep oblique channel traces and crown-face assignment remain source-photo approximations; fresh export/gallery comparison must judge recognition.",
+    "Municipality announced a renovation starting mid-October 2024 lasting roughly one year; completion is not established by the cached article. Owner dates original completion to 2009, municipal article says delivered in 2010."
+  ],
+  "references": [
+    "https://therock-zuidas.nl/",
+    "https://zuidas.nl/construction-project/the-rock/"
+  ],
+  "rawSourceFiles": [
+    {
+      "path": "../map-recall2-source-data/models/the-rock/files/3dbag.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012114135",
+      "sha256": "12a7520b10903af5c6c98b0785ee31934b37cea422b41a637cc450d8eaff8548"
+    },
+    {
+      "path": "../map-recall2-source-data/models/the-rock/files/address.json",
+      "url": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Claude%20Debussylaan%2080%20Amsterdam&rows=3",
+      "sha256": "176fd9576ba36c203c96e95768eed7bf565f10b9670abcfe52046691966b2551"
+    },
+    {
+      "path": "../map-recall2-source-data/models/the-rock/files/bag.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?f=json&bbox=4.8697,52.3371,4.8710,52.3381&limit=100",
+      "sha256": "8dad8f03bb376a6a74da04b2593ac9550be3441ae23e93955e271c8f2dd44568"
+    },
+    {
+      "path": "../map-recall2-source-data/models/the-rock/files/brochure.pdf",
+      "url": "https://therock-zuidas.nl/files/images/content/downloads/The%20Rock%20%20Amsterdam%20brochure.pdf",
+      "sha256": "fec09b28f9a6c63679142f1339019f7e60e1dca215c7638bc9138c52daa71195"
+    },
+    {
+      "path": "../map-recall2-source-data/models/the-rock/files/municipal-detail.jpg",
+      "url": "https://zuidas.nl/wp-content/uploads/2021/09/The-Rock.jpg",
+      "sha256": "3ffd8f10df059514d65415cfb5e1e0bf0a586461d886d15bb88db946fb74d5bb"
+    },
+    {
+      "path": "../map-recall2-source-data/models/the-rock/files/municipal-exterior.jpg",
+      "url": "https://zuidas.nl/wp-content/uploads/2021/09/20230126-the-rock-1800x1200.jpg",
+      "sha256": "e15821b6f58e12789dd61182f1389733334f4a5dc960e340b8f0ecee2990712a"
+    },
+    {
+      "path": "../map-recall2-source-data/models/the-rock/files/municipal-south.jpg",
+      "url": "https://zuidas.nl/wp-content/uploads/2021/09/the-rock_IMG6682_D-website.jpg",
+      "sha256": "1ffe99d0471674d7d45e05e092ffbc4ddcbe8f8c7856551094a7973c1f69e0dc"
+    },
+    {
+      "path": "../map-recall2-source-data/models/the-rock/files/osm-map.xml",
+      "url": "https://www.openstreetmap.org/api/0.6/map?bbox=4.8697,52.3373,4.87055,52.3379",
+      "sha256": "c4c2cd6e887287c243721b8f0191bc76c4ee4b6975b2f1d1caa0181b596a8082"
+    },
+    {
+      "path": "../map-recall2-source-data/models/the-rock/files/owner-context.webp",
+      "url": "https://therock-zuidas.nl/assets/images/8/content1-fb0f1a01.webp",
+      "sha256": "f063ff003a529915a0f6aae35921196f9e445bb7c1fdadcc94738ffac9873087"
+    },
+    {
+      "path": "../map-recall2-source-data/models/the-rock/files/owner-exterior.jpg",
+      "url": "https://therock-zuidas.nl/assets/images/0/slide1-3ca032be.jpg",
+      "sha256": "3f952bdaad33f56c1e5d41e976b9e15bb3919cc691914e6e7dcc82c524f10154"
+    },
+    {
+      "path": "../map-recall2-source-data/models/the-rock/files/owner-outside.webp",
+      "url": "https://therock-zuidas.nl/assets/images/e/slide1-dc1c0df1.webp",
+      "sha256": "f0bacf7896cc88d671eea8e91b2c4a4e83c8ec1f37f95ab7a1db509d7e31fa25"
+    },
+    {
+      "path": "../map-recall2-source-data/models/the-rock/files/owner-side.jpg",
+      "url": "https://therock-zuidas.nl/assets/images/b/content1-8c8fd378.jpg",
+      "sha256": "7460b4f5af901f14ca8c5a0b92fa8c682dca5c829eddcfe974542f7b64515f53"
+    },
+    {
+      "path": "../map-recall2-source-data/models/the-rock/files/vbo.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/4c21e8c8-7597-58f4-9de1-424800fda790",
+      "sha256": "62ac83ab279d988b6fa6131071594203b06b785b62681893948f0d86d68d394a"
+    },
+    {
+      "path": "../map-recall2-source-data/models/the-rock/webpages/archdaily.html",
+      "url": "https://www.archdaily.com/183612/the-rock-erick-van-egeraat",
+      "sha256": "eb98a3cf3221ae121e88205d998cc9778534b4a09a4be1a5727461ee317af435"
+    },
+    {
+      "path": "../map-recall2-source-data/models/the-rock/webpages/beeldbank.html",
+      "url": "https://archief.amsterdam/beeldbank/?q=Claude%20Debussylaan%2080",
+      "sha256": "ea308a007fb654717e5a151c7c5c214ff3da628f39beca59824a6e2b2aa4e994"
+    },
+    {
+      "path": "../map-recall2-source-data/models/the-rock/webpages/facade-contractor.html",
+      "url": "https://scheldebouw.permasteelisagroup.com/project-detail?project=2017",
+      "sha256": "ae2b12fe9bb6afb092dcd662eddc1f6487aabe0c08fd826424ee2c92efa2a279"
+    },
+    {
+      "path": "../map-recall2-source-data/models/the-rock/webpages/owner.html",
+      "url": "https://therock-zuidas.nl/",
+      "sha256": "bf02d26ce22502c97181a43e1361329f32bfeb61472a4903a12c10af2cb3ffbc"
+    },
+    {
+      "path": "../map-recall2-source-data/models/the-rock/webpages/zuidas.html",
+      "url": "https://zuidas.nl/construction-project/the-rock/",
+      "sha256": "a0d476d171692ceade08cf4ddf2ab3fde54f0f61de58e05efef62aed62a567fb"
+    },
+    {
+      "path": "../map-recall2-source-data/models/the-rock/files/facade-contractor-02.jpg",
+      "url": "https://www.permasteelisagroup.com/wp-content/uploads/2025/07/EEA-Mahler-The-Rock-Amsterdam_02.jpg",
+      "sha256": "466231868f2660b354e11e606a1e6ce0a31f35f5c105534febd4faa8f1763936"
+    },
+    {
+      "path": "../map-recall2-source-data/models/the-rock/files/facade-contractor-03.jpg",
+      "url": "https://www.permasteelisagroup.com/wp-content/uploads/2025/07/EEA-Mahler-The-Rock-Amsterdam_03.jpg",
+      "sha256": "8d48ad8f0ecb28f023d2d8f5afe2d4e932e95dfd90ae66609b206b018c9f928c"
+    },
+    {
+      "path": "../map-recall2-source-data/models/the-rock/webpages/renovation-2024.html",
+      "url": "https://zuidas.nl/blog/2024/10/07/the-rock-keert-zich-naar-de-toekomst/",
+      "sha256": "5f22700c8a90c416ba65d6738031885e32351355281703ee8b89fa1a4aba2330"
+    }
+  ],
+  "visualRepair20261006": {
+    "trigger": "Independent first-export VISUALFAIL d9af403745763e9bf733d713ba5d2c2d5c15876c1d65b12f61584fe75d53c6cd",
+    "evidence": "artifacts/landmark-continuation-20261006/the-rock-first-export-independent-review/review.md",
+    "newPrimaryPhotos": [
+      "facade-contractor-02.jpg",
+      "facade-contractor-03.jpg"
+    ],
+    "sourcePhotoDate": "undated photos;2025URL upload date does not establish capture date",
+    "assertions": [
+      "Deep diagonal/zigzag glass divisions and unequal heavyframes differ inprojection/recess depth.",
+      "Long pale metallic/printed-glass fields continue towards ground.",
+      "Owner2025brochure page8 locates entrances near easternfacade corners; pin previously approximate atwrongedge."
+    ],
+    "geometry": "Outerstone within0.22m of measuredring; inset stone1.05–1.30m, glassfissures2.4m; faceassignment approximate from context, depths/diagonal dimensions unmeasured.",
+    "remaining": "Current installedNEcanopy anddoor elevations unverified; freshvisualreview pending.",
+    "readinessCheckedOn": "2026-10-06",
+    "authoredGeometry": "Third unexported authored repair: PASS 22333 triangles; 2952 fractional crown-pane hits (east693/south720/north891/west648), including former blank end-region hits east351/south567/north162/west549; 837 upper-curtain hits; 7 deep channels/5 diagonal traces; 106 lower pale-panel hits; 225 upward roof faces; 0 sampled occlusions; native bounds unchanged.",
+    "secondFailureSha256": "496a1aeaead575ccdf6688c056f08f2a4cebda34c1ead506c635fa002c62041f",
+    "secondFailureReview": "/tmp/map-recall2-reviewed-landmarks-20261006/artifacts/landmark-continuation-20261006/the-rock-repaired-independent-review.md",
+    "thirdFailureSha256": "6c4094efce24a4e6695eeea3df6c1df9e3ffa2b8e6949a5865938a84e50ea76b",
+    "thirdFailureReview": "/tmp/map-recall2-reviewed-landmarks-20261006/artifacts/landmark-continuation-20261006/the-rock-second-repaired-independent-review.md"
+  }
+}

@@ -1,0 +1,489 @@
+{
+  "modelId": "wine-guildhall",
+  "status": "verified-current-export-scoped",
+  "referenceViews": [
+    "owner-facade.jpg (portal close-up)",
+    "owner-detail.jpg (current facade contextual)",
+    "facade.jpg (2012 facade)",
+    "rce-front-1994.jpg (triple tops and portal)"
+  ],
+  "criticalTraits": [
+    "triple reconstructed neck gables with cream shoulders/pediments",
+    "tall pale sash windows in broad redbrick front",
+    "diamond/block ornament and iron ties",
+    "sculptural arched1633 stone entrance",
+    "red pitched/flat mixed measured roof regions",
+    "current small internal courtyard hole"
+  ],
+  "scope": {
+    "bagIds": [
+      "NL.IMBAG.Pand.0363100012178460"
+    ],
+    "preserveNeighbors": [
+      "Koestraat8 BAG8459",
+      "Koestraat14 BAG8461",
+      "rear abuttingBAG8212",
+      "oppositeKoestraatBAG1634"
+    ],
+    "suppression": "exact BAG-only, spatial false; OSM API HTTP406 gap, no guessedway"
+  },
+  "geometryChecks": {
+    "passed": true,
+    "triangles": 8246,
+    "surveyPlaneMaxResidualMetres": 0.00103736,
+    "roofInteriorProbes": 122,
+    "firstHitWindows": true,
+    "firstHitPortalDoor": true,
+    "openCourtyard": true,
+    "rearSideFirstHitWindows": true,
+    "sourceBackedLowerFacadeAsymmetry": true,
+    "allFourOfficialNeighbors": true,
+    "facadeNeighborVertexProbes": 10275,
+    "id": "wine-guildhall",
+    "bounds": [
+      20.738510131835938,
+      12.147564392089834,
+      23.89764976501465
+    ],
+    "maxResidual": 0.0010373560317074038,
+    "roofProbes": 122,
+    "portalCurvatureProbes": 6,
+    "fractionalPaneProbes": 240,
+    "exposedWindows": true,
+    "facadeNeighbourProbes": 14583,
+    "streetFrontWidth": 13.855551734992725
+  },
+  "pending": [
+    "Broader desktop/touch stationary-rider camera-pan performance assessment remains separate; current evidence is stationary headless only."
+  ],
+  "limits": [
+    "Front window and ornament dimensions photographic approximations; sculptural relief simplified",
+    "No drawing inspected; Beeldbank bounded address search returned JavaScript viewer shell",
+    "Rear window divisions are simplified; survey roof constrains currentoutline/massing",
+    "RCE catalogue page directcapture got403 body; webtool catalogue text read and originalimage downloaded"
+  ],
+  "checksRun": [
+    "npx tsx scripts/check-wine-guildhall-geometry.ts (actualNEfront withfourretainedneighbors passed)",
+    "prior whole-repo lint evidence retained in withdrawnRearStreetCorrection; no fresh whole-repo lint run by scopedworker"
+  ],
+  "specPath": "scripts/landmarks/wine-guildhall-spec.json",
+  "neighbors": [
+    [
+      "NL.IMBAG.Pand.0363100012178459"
+    ],
+    [
+      "NL.IMBAG.Pand.0363100012178461"
+    ],
+    [
+      "NL.IMBAG.Pand.0363100012178212"
+    ],
+    [
+      "NL.IMBAG.Pand.0363100012171634"
+    ]
+  ],
+  "neighborEvidence": [
+    {
+      "address": "Koestraat 8",
+      "bagId": "0363100012178459",
+      "sourcePath": "artifacts/landmarks/wine-guildhall/references/neighbor-8-pand.json",
+      "method": "Official PDOK address -> current VBO -> linked Pand; usable area not used as footprint."
+    },
+    {
+      "address": "Koestraat 14",
+      "bagId": "0363100012178461",
+      "sourcePath": "artifacts/landmarks/wine-guildhall/references/neighbor-14-pand.json",
+      "method": "Official PDOK address -> current VBO -> linked Pand; usable area not used as footprint."
+    }
+  ],
+  "bearing": 118,
+  "oppositeBearing": 298,
+  "zoom": 21.0,
+  "oppositeZoom": 19.1,
+  "pitch": 60,
+  "runtimeChecksRequired": {
+    "finishCanonicalId": "extract_landmarks_1958595244",
+    "physicalPointerCard": true,
+    "geographicPin": true,
+    "scale": 1,
+    "spatialSuppression": false,
+    "exactMaskAliases": [
+      "NL.IMBAG.Pand.0363100012178460"
+    ],
+    "fallbackRestoreOnDisable": true,
+    "independentPyramidalRoofMask": true,
+    "neighborsResidentDrawableNotHidden": true
+  },
+  "independentVisualReviewHistory": [
+    {
+      "status": "fail-requires-portal-asymmetry-correction",
+      "reviewedOn": "2026-10-05",
+      "reviewer": "independent-static-review",
+      "scope": "Saved gallery default/four rotations and available neutral/live front screenshots; no GPU session run by reviewer.",
+      "referenceImages": [
+        "/Users/blackmad/Code/map-recall2-source-data/models/wine-guildhall/files/facade.jpg",
+        "/Users/blackmad/Code/map-recall2-source-data/models/wine-guildhall/files/owner-detail.jpg",
+        "/Users/blackmad/Code/map-recall2-source-data/models/wine-guildhall/files/owner-facade.jpg",
+        "/Users/blackmad/Code/map-recall2-source-data/models/wine-guildhall/files/rce-front-1994.jpg"
+      ],
+      "passed": [
+        "Three linked neck tops/cream shoulders and pediments, tall two-level pale sash groups, diamonds/ties and rusticated arched sculptural portal match the principal historic facade at house-style resolution.",
+        "Gallery rear/side rotations show supported red pitched roof massing without obvious floating trim/window assemblies."
+      ],
+      "failures": [
+        {
+          "severity": "blocking",
+          "feature": "principal-front entrance asymmetry",
+          "evidence": [
+            "artifacts/wine-guildhall-review/failed-first-pass/gallery-angle-2.png",
+            "/Users/blackmad/Code/map-recall2-source-data/models/wine-guildhall/files/facade.jpg",
+            "/Users/blackmad/Code/map-recall2-source-data/models/wine-guildhall/files/rce-front-1994.jpg",
+            "scripts/landmarks/wine-guildhall-footprints.json:principalFront.photoReading"
+          ],
+          "observation": "Gallery principal front places portal left of center with two groundfloor sash windows to its left and four to right. Source current/historic views and recorded principalFront.photoReading place portal on right half, with two sash windows to its right. Correct portal plus asymmetric lower window rhythm together, then compare fresh native front view."
+        }
+      ],
+      "limitations": [
+        "Small current internal courtyard cannot be confidently inspected in available low-angle screenshots; CPU openCourtyard evidence requires a high native view for visual acceptance.",
+        "Available live front bearing shows roof/rear rather than readable principal Koestraat facade; needs fresh principal native view.",
+        "No independent performance observation."
+      ]
+    },
+    {
+      "status": "gallery-pass-live-facade-occlusion-hold",
+      "reviewedOn": "2026-10-05",
+      "reviewer": "independent-static-review",
+      "scope": "Fresh four gallery rotations after failed-first-pass fixes. Root GPU captures; reviewer static source comparison.",
+      "evidence": [
+        "artifacts/wine-guildhall-review/gallery-angle-0.png",
+        "artifacts/wine-guildhall-review/gallery-angle-1.png",
+        "artifacts/wine-guildhall-review/gallery-angle-2.png",
+        "artifacts/wine-guildhall-review/gallery-angle-3.png"
+      ],
+      "passed": [
+        "Principal front portal now on right half with four lower sash windows left and two right, matching source photos.",
+        "Triple neck gables, pale sash rhythm, sparse diamonds/ties and sculptural stone portal remain recognizable."
+      ],
+      "failures": [],
+      "preservedFailureEvidence": "artifacts/wine-guildhall-review/failed-first-pass/",
+      "limitations": [
+        "Native principal facade/opposite scene visual review pending.",
+        "No independent performance observation.",
+        "Coordinator reports native ordinary front row obscures custom principal gables/portal; live acceptance held pending suppression/context diagnosis and fresh clear principal view. Gallery pass does not override this failure."
+      ],
+      "supersededReason": "Gallery recognition did not establish street placement; coordinator diagnosed assemblies on party wall9→10. Acceptance withdrawn for that orientation; new review covers corrected street chain10→14."
+    },
+    {
+      "status": "corrected-street-front-gallery-pass-native-pending",
+      "reviewedOn": "2026-10-05",
+      "reviewer": "independent-static-review",
+      "scope": "Current corrected 13.427m street-chain facade; independently inspected default/four saved gallery rotations against actual current/historic principal photos. Native scene not yet accepted.",
+      "evidence": [
+        "artifacts/wine-guildhall-review/gallery-angle-0.png",
+        "artifacts/wine-guildhall-review/gallery-angle-1.png",
+        "artifacts/wine-guildhall-review/gallery-angle-2.png",
+        "artifacts/wine-guildhall-review/gallery-angle-3.png"
+      ],
+      "referenceImages": [
+        "artifacts/landmarks/wine-guildhall/references/facade.jpg",
+        "artifacts/landmarks/wine-guildhall/references/owner-detail.jpg",
+        "artifacts/landmarks/wine-guildhall/references/owner-facade.jpg",
+        "artifacts/landmarks/wine-guildhall/references/rce-front-1994.jpg"
+      ],
+      "passed": [
+        "Principal facade now in gallery-angle-3 visibly follows shallow real jog; pale sash assemblies and portal remain attached to brick across the changed frontage.",
+        "Three recognizable neck tops with cream shoulders/pediments, tall six-position two-level sash rhythm, sober diamonds/ties, cellar openings and rusticated sculptural portal preserved.",
+        "Right-half portal keeps four lower sash windows left/two right, matching photographed entrance asymmetry.",
+        "Rotations show retained red surveyed roof mass supported; party walls now undecorated without observable floating former party-wall glazing."
+      ],
+      "failures": [],
+      "preservedFailureEvidence": [
+        "artifacts/wine-guildhall-review/failed-first-pass/",
+        "artifacts/wine-guildhall-review/failed-neighbor-view.png"
+      ],
+      "limitations": [
+        "Native principal facade with actual resident neighbors remains required; alias-format diagnostics must resolve before acceptance.",
+        "Small courtyard not directly readable in current low rotations; roof/open-space CPU checks support but do not replace scene comparison.",
+        "No independent performance observation."
+      ]
+    },
+    {
+      "reviewedOn": "2026-10-05",
+      "reviewer": "climbing_venue_loop; not Wine author",
+      "status": "hold-live-front-evidence-unresolved",
+      "scope": "Owner facade/portal originals and RCE1994 reference against new saved street-front0–4. No GPU session.",
+      "renderImages": [
+        "artifacts/wine-guildhall-review/street-front-0.png",
+        "artifacts/wine-guildhall-review/street-front-1.png",
+        "artifacts/wine-guildhall-review/street-front-2.png",
+        "artifacts/wine-guildhall-review/street-front-3.png",
+        "artifacts/wine-guildhall-review/street-front-4.png"
+      ],
+      "referenceImages": [
+        "artifacts/landmarks/wine-guildhall/references/owner-detail.jpg",
+        "artifacts/landmarks/wine-guildhall/references/owner-facade.jpg",
+        "artifacts/landmarks/wine-guildhall/references/rce-front-1994.jpg"
+      ],
+      "findings": [
+        "All five purported street-front views are elevated/overhead shots, with ordinary adjacent building roofs blocking the landmark facade.",
+        "Small fragments of three cream-trimmed gables are visible, but the1633 arched portal and six sash rhythm are not exposed.",
+        "Source photographs establish a narrow real street-side approach with visible sculptural portal. Current screenshots do not establish that rendered facade orientation/visibility matches it.",
+        "These screenshots display an unrelated KoninginEmma card; use separate physical-card proof for card acceptance rather than these views."
+      ],
+      "requiredEvidence": "Source-informed actual Koestraat facade boundary/azimuth, then a game view inside that street approach showing lower portal and sash rhythm with neighboring buildings retained. Distinguish camera-side error from orientation/suppression error before changing mesh.",
+      "acceptance": false
+    }
+  ],
+  "independentVisualReview": {
+    "reviewedOn": "2026-10-05",
+    "reviewer": "climbing_venue_loop; not Wine author",
+    "status": "hold-live-front-evidence-unresolved",
+    "scope": "Owner facade/portal originals and RCE1994 reference against new saved street-front0–4. No GPU session.",
+    "renderImages": [
+      "artifacts/wine-guildhall-review/street-front-0.png",
+      "artifacts/wine-guildhall-review/street-front-1.png",
+      "artifacts/wine-guildhall-review/street-front-2.png",
+      "artifacts/wine-guildhall-review/street-front-3.png",
+      "artifacts/wine-guildhall-review/street-front-4.png"
+    ],
+    "referenceImages": [
+      "artifacts/landmarks/wine-guildhall/references/owner-detail.jpg",
+      "artifacts/landmarks/wine-guildhall/references/owner-facade.jpg",
+      "artifacts/landmarks/wine-guildhall/references/rce-front-1994.jpg"
+    ],
+    "findings": [
+      "All five purported street-front views are elevated/overhead shots, with ordinary adjacent building roofs blocking the landmark facade.",
+      "Small fragments of three cream-trimmed gables are visible, but the1633 arched portal and six sash rhythm are not exposed.",
+      "Source photographs establish a narrow real street-side approach with visible sculptural portal. Current screenshots do not establish that rendered facade orientation/visibility matches it.",
+      "These screenshots display an unrelated KoninginEmma card; use separate physical-card proof for card acceptance rather than these views."
+    ],
+    "requiredEvidence": "Source-informed actual Koestraat facade boundary/azimuth, then a game view inside that street approach showing lower portal and sash rhythm with neighboring buildings retained. Distinguish camera-side error from orientation/suppression error before changing mesh.",
+    "acceptance": false
+  },
+  "portalAsymmetryCorrection": {
+    "status": "CPU corrected; fresh independent visual comparison pending",
+    "change": "Mirror portal and entire lower sash/cellar-opening row together: four windows left, two right; portal moves to authored x+2.62. Upper rows/gables/roof retained.",
+    "sourceReference": "artifacts/landmarks/wine-guildhall/references/rce-front-1994.jpg",
+    "crossCheckReference": "artifacts/landmarks/wine-guildhall/references/facade.jpg",
+    "regressionCheck": "Independent first-hit ray scan recovers six actual exposed lower pane meshes and asserts source-backed four-left/two-right counts; previous portal position must expose glazing.",
+    "failedEvidencePreserved": true
+  },
+  "cameraCenter": [
+    4.89837769546953,
+    52.372016735440326
+  ],
+  "cameraCorrection": "PreviousSW cameras were aimed toward a facade wrongly authored onrearboundary; actualNEstreet scopecorrected. Rootnative/independentreviewmustshow source-facingprincipal portal andsashes withallrealneighborsretained.",
+  "streetFrontCorrection": {
+    "status": "actual-northeast-front CPU passed; root export/gallery/native independent acceptance pending",
+    "failedEvidencePreserved": true,
+    "priorFailures": [
+      "18.55m partywall9→10 againstKoestraat8",
+      "13.427m rearboundary10→14 againstBAG8212; allstreet-front0–4 retained"
+    ],
+    "sourceProof": "Current BAG northeast0→9 opens onto4.53m Koestraat corridor against1634. Actual official8212 rear boundary shares rear13vertex and segment13→14; side8/14 alone cannot establish front/back. Original RCE1994 and current facade photos inspected to retain principal recognition, dimensions bound by real Pand.",
+    "frontageMetres": 13.855551734992725,
+    "sourceChain": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "changes": "Move principal assemblies to actualNEfront; preserve surveyed roofplanes/openhole. Six pale sash groups, three necktops, right1633portal4left/2right retained. Common outward projection normal avoids spurious turns across tinytrue boundarynotches; points and thin backing follow every actualboundaryedge. Backingendpoint mitres/insets retain true adjacent scope.",
+    "suggestedPrincipalBearing": 209.2258693486847,
+    "nativeStreetMidpoint": [
+      4.89837769546953,
+      52.372016735440326
+    ],
+    "nativeStreetCamera": [
+      4.898399247327863,
+      52.37204042012597
+    ],
+    "regressionChecks": [
+      "all4 officialneighbors8/14/8212/1634 included asretained20m prisms",
+      "upper/lower/atticglazing andportal firsthit",
+      "source-supported4left/2right lower sash count",
+      "upperfullscene backing andlowerexplicitmasonry support within.2m",
+      "all10275facade/backing verticesoutside4officialneighbors",
+      "3mstreet approachoutsideallneighbors; opposite1634at5m; rear13→14inside8212",
+      "partywallundecorated; openhole; unchanged122roofprobes"
+    ],
+    "cpuEvidence": {
+      "triangles": 5614,
+      "frontageMetres": 13.855551734992725,
+      "facadeNeighborVertexProbes": 10275,
+      "roofVertexMaxResidualMetres": 0.0010373560317074038,
+      "firstHitAndBackingWithRetainedNeighbors": true,
+      "openCourtyard": true,
+      "export": "pending root"
+    }
+  },
+  "withdrawnRearStreetCorrection": {
+    "status": "FAILED NATIVE:10→14 is rear boundary abutting8212; wrong front acceptance withdrawn",
+    "failure": "Preserved street-front0–4 show ordinary8212 blocking authored facade. Four-neighbor scope audit proves actual Koestraat is northeast0→9, not southwest10→14.",
+    "sourceProof": "Current parent official chain10→11→12→13→14 and captured official neighbor8/14 Pand geometry, independent installed tile proof by root.",
+    "frontageMetres": 13.42740877511413,
+    "changes": "Move/scale principal assemblies to13.427m current southwest street chain including0.82m jog; undecorated party sides, courtyard-only rear windows, six sash groups/three neck tops and right portal4left/2right retained.",
+    "failedReviewsPreserved": true,
+    "suggestedPrincipalBearing": 32,
+    "suggestedOppositeBearing": 212,
+    "regressionChecks": [
+      "actual13.427m streetchain fromcurrentPand, partywall proof againstofficialneighbor8",
+      "front/attic first-hitglazing plusimmediatebrickbacking",
+      "all principalfacade/backing vertices outsideofficialneighbors8/14",
+      "first-hitprincipalpanes withboth20m highneighborfootprints retained",
+      "source-backedfourleft/tworight lower opening asymmetry",
+      "undecoratedpartywall andopeninternalcourtyard"
+    ],
+    "cpuEvidence": {
+      "triangles": 5564,
+      "glbBytes": 93776,
+      "frontageMetres": 13.427408775114127,
+      "facadeNeighborVertexProbes": 10125,
+      "roofVertexMaxResidualMetres": 0.001037356,
+      "firstHitAndBackingWithRetainedNeighbors": true,
+      "oldPartyWallUndecorated": true
+    },
+    "lint": "Whole repo lint blocked by unrelated canalFrontageGroups.test.ts117/118 procedural look typing; no Wine TypeScript errors."
+  },
+  "currentVisualAcceptance": {
+    "status": "held pending actualNEfront export/gallery/native independent review",
+    "failedEvidence": "artifacts/wine-guildhall-review/failed-first-pass andstreet-front0–4; previouspartywall/rearfront reviews preserved",
+    "requiredEvidence": "Rootnative camera insideKoestraat corridor atNEsourcefront, sourcedportal/sash/gable reading plus retainedneighbors; gallery alonecannotacceptplacement."
+  },
+  "frontageJogPaneRepair": {
+    "reviewedOn": "2026-10-06",
+    "status": "CPU corrected; root export and fresh gallery/native independent review required",
+    "cause": "Lower pane spanning native shallow frontage jog had only two horizontal endpoints; it bridged the source boundary and three fractional rays hit brick although centre rays passed. Small reverse projections at notch corners also selected an inward segment.",
+    "repair": "Subdivide rectangular facade detail at native projected chain breaks; choose exterior envelope where survey segments overlap in common-tangent projection. Recover continuous aperture intervals rather than count subdivision meshes.",
+    "authoredTriangles": 6910,
+    "fractionalPaneProbes": 240,
+    "failuresAfter": 0,
+    "failedEvidence": "artifacts/landmark-continuation-20261006/wine-next-review/failed-unsplit-pane-report.json",
+    "installedGLBSha256BeforeExport": "bd3c23362fa2cbe4c975357a9fba460ee869626848f685ff95e705904b81b59e",
+    "installedTrianglesBeforeExport": 5614,
+    "scope": "No browser/export/catalogue/queue changes. No acceptance claim."
+  },
+  "portalCanopyCurvatureRepair": {
+    "reviewedOn": "2026-10-06",
+    "status": "authored CPU corrected; root fresh export/source/gallery/native independent review required",
+    "sourceOriginal": "/tmp/map-recall2-source-publish-20261006c/models/wine-guildhall/files/owner-detail.jpg",
+    "sourceCommit": "4817c07",
+    "failedEvidence": "/tmp/map-recall2-reviewed-landmarks-20261006/artifacts/landmark-release-check/wine-guildhall-review/neutral-front.png",
+    "priorRootExport": "993bfb prefix reported by coordinator; 6910 triangles/113132 bytes; native neighbors/pin/physical card/exact mask passed for that mesh, overall visual acceptance held for triangular canopy failure",
+    "sourceObservation": "Portal upper wings are a curved broken segmental fronton surrounding a scroll-edged central Urbanus oval, rather than straight triangular stone planes.",
+    "repair": "Replace both straight wings with original curved recessed tympana and projecting curved cornice; add four bounded upper/lower cartouche-edge scrolls. Doorway arch, six sashes, four-left/two-right order, frontage jog repair, survey roof/court and exact neighboring scope retained.",
+    "approximation": "Quadratic curve controls and relief thickness are photographic house-style approximations. No measured drawing/hidden canopy structure inferred. Urbanus figure remains simplified original relief.",
+    "geometryChecks": {
+      "passed": true,
+      "triangles": 8246,
+      "portalCurvatureProbes": 6,
+      "fractionalPaneProbes": 240,
+      "roofSupportProbes": 122,
+      "facadeNeighborVertexProbes": 14583,
+      "maxRoofResidualMetres": 0.0010373560317074038,
+      "doorFirstHit": true,
+      "openCourt": true,
+      "allFourOfficialNeighborsRetained": true
+    },
+    "requiredFreshEvidence": [
+      "Root export and fresh asset fingerprint recorded separately from authored builder hash",
+      "Close low native source comparison: bowed canopy wings, interrupted central cartouche and edge curls readable on true wall plane",
+      "Fresh default/higher and four low gallery rotations, source comparison by independent reviewer",
+      "Affected native street view repeated with all four neighbors, card/pin and exact mask retained"
+    ],
+    "acceptance": false,
+    "priorRootExportSha256": "993bfb0171ef02d779c7ae017f2fb2043f1e79ae4dd1340e847568f848130d24",
+    "authoredBuilderSha256": "ed119e52f943ab8167477bd4744d7cedeb9fef1bcf6fa2b0e97b19fd002cf447"
+  },
+  "currentReleaseReview": {
+    "assetVersion": "1e475780392acc9f",
+    "exportTriangles": 8246,
+    "rootVisualReview": "PASS current five-angle gallery and two native game views against private primary photos. Wine source-facing portal and open courtyard preserved; Rock supplemental zoom17.5 opposite native views expose entire crown and height.",
+    "nativeRuntime": {
+      "routeFinishAndDestination": true,
+      "geographicPin": true,
+      "physicalSourcedCard": true,
+      "nativeScale": 1,
+      "depthBias": false,
+      "spatialSuppression": false,
+      "exactMasks": [
+        {
+          "id": "NL.IMBAG.Pand.0363100012178460",
+          "hidden": true
+        }
+      ],
+      "retainedNeighbors": [
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012178459"
+          ],
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        },
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012178461"
+          ],
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        },
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012178212"
+          ],
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        },
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012171634"
+          ],
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        }
+      ]
+    },
+    "performance": {
+      "scope": "Headless Chromium same stationary scene; hidden model keeps existing replacement masks, isolating custom draw cost. No whole-game performance pass claimed.",
+      "samples": [
+        {
+          "label": "model-visible",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 8.200000286102295,
+          "p95Ms": 9.599999904632568
+        },
+        {
+          "label": "same-scene-model-hidden",
+          "visible": false,
+          "frames": 60,
+          "p50Ms": 8.300000190734863,
+          "p95Ms": 9.5
+        },
+        {
+          "label": "model-visible-repeat",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 8.300000190734863,
+          "p95Ms": 10.099999904632568
+        }
+      ]
+    },
+    "fallback": "PASS actual current game entry unavailable/loaded: resident base geometry returns, loaded target exact masks restore, source-derived neighbors remain drawable and unhidden. Streamed host refresh fix covered by actual-class VM regression; unrelated independent roof entries not present for these targets."
+  },
+  "sourceArchive": {
+    "commit": "dd7bf70c00c59533abe5c7e8b376c63867aa8a6e",
+    "modelPath": "models/wine-guildhall",
+    "validationPath": "models/wine-guildhall/validation/current-main-release-20261006",
+    "scope": "Original cached/raw sources, explicit access gaps, authored snapshots, prior failure reports, current final GLB/gallery/native/courtyard/independent and fallback evidence; general gameplay performance not claimed."
+  }
+}

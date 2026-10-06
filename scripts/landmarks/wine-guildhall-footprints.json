@@ -1,0 +1,1321 @@
+{
+  "id": "wine-guildhall",
+  "anchor": [
+    4.898323421104812,
+    52.37197131788289
+  ],
+  "bagId": "NL.IMBAG.Pand.0363100012178460",
+  "groundNap": 0.613,
+  "ring": [
+    [
+      4.89846665194159,
+      52.37198613554467
+    ],
+    [
+      4.898379700268374,
+      52.37201603821528
+    ],
+    [
+      4.898380658091967,
+      52.372017066768144
+    ],
+    [
+      4.898378344058951,
+      52.37201784813311
+    ],
+    [
+      4.898379940233561,
+      52.37201958036249
+    ],
+    [
+      4.8983479395245455,
+      52.3720305840157
+    ],
+    [
+      4.898346357935298,
+      52.372028860833815
+    ],
+    [
+      4.898344058584619,
+      52.37202964225874
+    ],
+    [
+      4.8983431152470605,
+      52.372028631740804
+    ],
+    [
+      4.89828873899747,
+      52.37204733533598
+    ],
+    [
+      4.898162597371088,
+      52.371898535217106
+    ],
+    [
+      4.89821762850243,
+      52.37188035567124
+    ],
+    [
+      4.898245996486837,
+      52.37187119750716
+    ],
+    [
+      4.898240327161945,
+      52.37186464901986
+    ],
+    [
+      4.898329262166429,
+      52.371833307619276
+    ]
+  ],
+  "holes": [
+    [
+      [
+        4.8982928566760435,
+        52.37188158306854
+      ],
+      [
+        4.898270163639106,
+        52.37188878738206
+      ],
+      [
+        4.898323884578339,
+        52.37195217480713
+      ],
+      [
+        4.898346577639056,
+        52.371944970483426
+      ]
+    ]
+  ],
+  "localRing": [
+    [
+      9.734611803289036,
+      -1.6379443329915944
+    ],
+    [
+      3.8249850536258996,
+      -4.943385542403149
+    ],
+    [
+      3.890083052510252,
+      -5.0570817762096
+    ],
+    [
+      3.7328109621121404,
+      -5.143453859705431
+    ],
+    [
+      3.8412941668611946,
+      -5.334934495216288
+    ],
+    [
+      1.666382069017986,
+      -6.55127832065034
+    ],
+    [
+      1.5588901510806337,
+      -6.360797795454971
+    ],
+    [
+      1.4026159382823136,
+      -6.447176506442389
+    ],
+    [
+      1.3385024754553838,
+      -6.335473853993818
+    ],
+    [
+      -2.357151986861347,
+      -8.402969264524955
+    ],
+    [
+      -10.930304198313593,
+      8.045395875570591
+    ],
+    [
+      -7.190141026979178,
+      10.054962875895654
+    ],
+    [
+      -5.262125230554199,
+      11.06730633285494
+    ],
+    [
+      -5.647438046243782,
+      11.791176118895805
+    ],
+    [
+      0.3969848158721532,
+      15.255654539662942
+    ]
+  ],
+  "localHoles": [
+    [
+      [
+        -2.077296033053977,
+        9.919286377737961
+      ],
+      [
+        -3.6196168781658735,
+        9.122921561338586
+      ],
+      [
+        0.031499745229750735,
+        2.1160755946218046
+      ],
+      [
+        1.5738222064830751,
+        2.912441536548016
+      ]
+    ]
+  ],
+  "surveyRoofPolygons": [
+    [
+      [
+        [
+          -4.118564398754212,
+          11.55800144958496,
+          -0.5881817027325553
+        ],
+        [
+          -3.9380789193582637,
+          11.557001449584961,
+          -0.905327235921618
+        ],
+        [
+          -0.3194837697509949,
+          11.524001449584961,
+          -7.263198645108417
+        ],
+        [
+          -2.357151986861347,
+          7.861001449584961,
+          -8.402969264524955
+        ],
+        [
+          -6.034887967845457,
+          8.357001449584962,
+          -1.347261344004096
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          -6.143511562664779,
+          12.052001449584962,
+          5.007901588136008
+        ],
+        [
+          -3.135791579819893,
+          12.14700144958496,
+          -0.47953595289541795
+        ],
+        [
+          -3.716721990362393,
+          11.140001449584961,
+          -0.7875937585605186
+        ],
+        [
+          -3.9380789193582637,
+          10.755001449584961,
+          -0.905327235921618
+        ],
+        [
+          -4.118564398754212,
+          10.741001449584962,
+          -0.5881817027325553
+        ],
+        [
+          -6.034887967845457,
+          7.601001449584961,
+          -1.347261344004096
+        ],
+        [
+          -9.925404579132948,
+          7.743001449584961,
+          6.118207748969695
+        ],
+        [
+          -9.725045341713328,
+          8.09600144958496,
+          6.2301209998206275
+        ],
+        [
+          -9.532696711412282,
+          8.43300144958496,
+          6.338114064264175
+        ],
+        [
+          -9.326764579860583,
+          8.536001449584962,
+          6.0943164806433
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          -0.352676154896441,
+          7.2610014495849615,
+          -1.9994067454763353
+        ],
+        [
+          -0.5961026141301341,
+          7.723001449584961,
+          -2.1338816844361475
+        ],
+        [
+          -1.7327142742380053,
+          9.114001449584961,
+          -1.82223732663644
+        ],
+        [
+          -1.9678069986953184,
+          9.523001449584962,
+          -1.9051061061409769
+        ],
+        [
+          0.7083686532637812,
+          9.56400144958496,
+          -6.687909324472656
+        ],
+        [
+          -0.3194837697509949,
+          11.524001449584961,
+          -7.263198645108417
+        ],
+        [
+          -3.9380789193582637,
+          11.557001449584961,
+          -0.905327235921618
+        ],
+        [
+          -3.716721990362393,
+          11.140001449584961,
+          -0.7875937585605186
+        ],
+        [
+          -3.135791579819893,
+          10.047001449584961,
+          -0.47953595289541795
+        ],
+        [
+          -1.642401440887242,
+          7.23500144958496,
+          0.3121901118603887
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          3.7711677040408276,
+          11.61500144958496,
+          -5.374203670978801
+        ],
+        [
+          2.316335317169825,
+          11.511001449584962,
+          -2.8320004838700186
+        ],
+        [
+          2.4163063021202826,
+          11.34600144958496,
+          -2.806840746799253
+        ],
+        [
+          2.534740355185196,
+          10.710001449584961,
+          -2.2661778956225476
+        ],
+        [
+          3.782427265812304,
+          9.533001449584962,
+          -2.9759675482974046
+        ],
+        [
+          4.671505716282411,
+          9.54500144958496,
+          -4.470201949868624
+        ],
+        [
+          3.8249850536258996,
+          11.16600144958496,
+          -4.943385542403149
+        ],
+        [
+          3.890083052510252,
+          11.171001449584962,
+          -5.0570817762096
+        ],
+        [
+          3.7328109621121404,
+          11.47100144958496,
+          -5.143453859705431
+        ],
+        [
+          3.8412941668611946,
+          11.479001449584961,
+          -5.334934495216288
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          -5.124735395402637,
+          8.09900144958496,
+          8.809148922616572
+        ],
+        [
+          -9.532696711412282,
+          8.09600144958496,
+          6.338114064264175
+        ],
+        [
+          -9.725045341713328,
+          8.09600144958496,
+          6.2301209998206275
+        ],
+        [
+          -9.925404579132948,
+          8.095001449584961,
+          6.118207748969695
+        ],
+        [
+          -10.930304198313593,
+          8.448001449584961,
+          8.045395875570591
+        ],
+        [
+          -7.190141026979178,
+          8.438001449584961,
+          10.054962875895654
+        ],
+        [
+          -5.5345457874691775,
+          8.431001449584961,
+          10.925078362905367
+        ],
+        [
+          -4.876941087502071,
+          8.210001449584961,
+          9.735414730130287
+        ],
+        [
+          -5.039736896192203,
+          8.137001449584961,
+          9.128485414356362
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          -3.548650477193504,
+          5.682001449584961,
+          9.433410808147329
+        ],
+        [
+          -2.927032432448547,
+          4.813001449584961,
+          9.560378166579966
+        ],
+        [
+          -2.8855087262656043,
+          4.803001449584961,
+          9.50247622863941
+        ],
+        [
+          -3.6196168781658735,
+          5.99100144958496,
+          9.122921561338586
+        ],
+        [
+          -0.0561943175541539,
+          6.34000144958496,
+          2.282579182640063
+        ],
+        [
+          -0.6582310422085661,
+          7.224001449584961,
+          2.0998438992860713
+        ],
+        [
+          -0.7822337364780503,
+          7.405001449584962,
+          2.0629235951388125
+        ],
+        [
+          -0.7339403872084084,
+          8.238001449584962,
+          0.7948918214424339
+        ],
+        [
+          -1.0444386661432639,
+          8.74300144958496,
+          0.6300687902958657
+        ],
+        [
+          -1.6788815852837722,
+          9.716001449584962,
+          0.3780061764335585
+        ],
+        [
+          -1.642401440887242,
+          9.716001449584962,
+          0.3121901118603887
+        ],
+        [
+          -3.135791579819893,
+          12.14700144958496,
+          -0.47953595289541795
+        ],
+        [
+          -6.143511562664779,
+          12.052001449584962,
+          5.007901588136008
+        ],
+        [
+          -5.124735395402637,
+          8.09900144958496,
+          8.809148922616572
+        ],
+        [
+          -5.039736896192203,
+          7.767001449584962,
+          9.128485414356362
+        ],
+        [
+          -4.59201244152195,
+          7.1410014495849605,
+          9.219860958676946
+        ],
+        [
+          -4.307090468606868,
+          7.147001449584961,
+          8.703313747598571
+        ],
+        [
+          -3.56773958518314,
+          5.720001449584961,
+          9.414662490571715
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          1.5247093207870173,
+          9.530001449584962,
+          -2.715412621603548
+        ],
+        [
+          1.2491091267340853,
+          9.534001449584961,
+          -3.179513979939088
+        ],
+        [
+          2.7673679342051343,
+          9.557001449584961,
+          -5.934752617765895
+        ],
+        [
+          1.666382069017986,
+          9.563001449584961,
+          -6.55127832065034
+        ],
+        [
+          1.5588901510806337,
+          9.56100144958496,
+          -6.360797795454971
+        ],
+        [
+          1.4026159382823136,
+          9.562001449584962,
+          -6.447176506442389
+        ],
+        [
+          1.3385024754553838,
+          9.56100144958496,
+          -6.335473853993818
+        ],
+        [
+          0.7083686532637812,
+          9.56400144958496,
+          -6.687909324472656
+        ],
+        [
+          -1.9678069986953184,
+          9.523001449584962,
+          -1.9051061061409769
+        ],
+        [
+          -1.7327142742380053,
+          9.52200144958496,
+          -1.82223732663644
+        ],
+        [
+          -0.5961026141301341,
+          9.52500144958496,
+          -2.1338816844361475
+        ],
+        [
+          -0.352676154896441,
+          9.524001449584961,
+          -1.9994067454763353
+        ],
+        [
+          1.9543824006736537,
+          9.51300144958496,
+          -0.7223540933240713
+        ],
+        [
+          2.1901498440455485,
+          9.51300144958496,
+          -0.6871777125024892
+        ],
+        [
+          3.0663158370016603,
+          9.507001449584962,
+          0.03716232854699797
+        ],
+        [
+          4.142192776688209,
+          9.50000144958496,
+          0.9250827476414258
+        ],
+        [
+          6.503801422305727,
+          9.537001449584961,
+          -3.445289200634676
+        ],
+        [
+          4.671505716282411,
+          9.54500144958496,
+          -4.470201949868624
+        ],
+        [
+          3.782427265812304,
+          9.533001449584962,
+          -2.9759675482974046
+        ],
+        [
+          2.534740355185196,
+          9.527001449584962,
+          -2.2661778956225476
+        ],
+        [
+          2.4163063021202826,
+          9.531001449584961,
+          -2.806840746799253
+        ],
+        [
+          2.316335317169825,
+          9.531001449584961,
+          -2.8320004838700186
+        ],
+        [
+          2.124397216370137,
+          9.53200144958496,
+          -2.879393194735087
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          1.2491091267340853,
+          9.534001449584961,
+          -3.179513979939088
+        ],
+        [
+          1.5247093207870173,
+          10.366001449584962,
+          -2.715412621603548
+        ],
+        [
+          2.124397216370137,
+          11.168001449584962,
+          -2.879393194735087
+        ],
+        [
+          2.316335317169825,
+          11.511001449584962,
+          -2.8320004838700186
+        ],
+        [
+          3.7711677040408276,
+          11.61500144958496,
+          -5.374203670978801
+        ],
+        [
+          2.7673679342051343,
+          9.557001449584961,
+          -5.934752617765895
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          -0.0561943175541539,
+          7.22500144958496,
+          2.282579182640063
+        ],
+        [
+          0.031499745229750735,
+          7.227001449584961,
+          2.1160755946218046
+        ],
+        [
+          1.521739877229673,
+          7.22800144958496,
+          2.8849732394735383
+        ],
+        [
+          3.0663158370016603,
+          7.2610014495849615,
+          0.03716232854699797
+        ],
+        [
+          2.1901498440455485,
+          7.26300144958496,
+          -0.6871777125024892
+        ],
+        [
+          1.9543824006736537,
+          7.262001449584961,
+          -0.7223540933240713
+        ],
+        [
+          -0.352676154896441,
+          7.2610014495849615,
+          -1.9994067454763353
+        ],
+        [
+          -1.642401440887242,
+          7.23500144958496,
+          0.3121901118603887
+        ],
+        [
+          -1.6788815852837722,
+          7.2340014495849605,
+          0.3780061764335585
+        ],
+        [
+          -1.0444386661432639,
+          7.23500144958496,
+          0.6300687902958657
+        ],
+        [
+          -0.7339403872084084,
+          7.23500144958496,
+          0.7948918214424339
+        ],
+        [
+          -0.7822337364780503,
+          7.224001449584961,
+          2.0629235951388125
+        ],
+        [
+          -0.6582310422085661,
+          7.224001449584961,
+          2.0998438992860713
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          -0.15137461865054266,
+          2.8710014495849605,
+          11.211813214247854
+        ],
+        [
+          -1.2968864694452695,
+          2.6780014495849604,
+          10.50418507027814
+        ],
+        [
+          -2.4673320020559255,
+          2.2890014495849607,
+          10.240819661446352
+        ],
+        [
+          -3.2789522745064503,
+          2.0180014495849607,
+          10.057505233664017
+        ],
+        [
+          -4.8369063988238095,
+          0.42700144958496056,
+          12.255658299589811
+        ],
+        [
+          -1.53165427504601,
+          1.0450014495849607,
+          14.150917459695336
+        ],
+        [
+          -1.1067320621612875,
+          1.3030014495849607,
+          13.970227130576944
+        ],
+        [
+          -1.4499031023948585,
+          1.3320014495849606,
+          13.549300240227495
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          -1.1067320621612875,
+          3.0490014495849604,
+          13.970227130576944
+        ],
+        [
+          -1.53165427504601,
+          3.0420014495849608,
+          14.150917459695336
+        ],
+        [
+          0.3969848158721532,
+          3.078001449584961,
+          15.255654539662942
+        ],
+        [
+          1.9241652103227889,
+          3.1020014495849604,
+          12.492407600888669
+        ],
+        [
+          -0.15137461865054266,
+          3.0630014495849607,
+          11.211813214247854
+        ],
+        [
+          -1.4499031023948585,
+          3.0430014495849607,
+          13.549300240227495
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          -0.15137461865054266,
+          11.235001449584962,
+          11.211813214247854
+        ],
+        [
+          7.637839800496319,
+          11.664001449584962,
+          -2.811101311215225
+        ],
+        [
+          6.503801422305727,
+          9.537001449584961,
+          -3.445289200634676
+        ],
+        [
+          4.142192776688209,
+          9.50000144958496,
+          0.9250827476414258
+        ],
+        [
+          3.0663158370016603,
+          7.2610014495849615,
+          0.03716232854699797
+        ],
+        [
+          1.521739877229673,
+          7.22800144958496,
+          2.8849732394735383
+        ],
+        [
+          1.5738222064830751,
+          7.323001449584961,
+          2.912441536548016
+        ],
+        [
+          -2.077296033053977,
+          7.457001449584961,
+          9.919286377737961
+        ],
+        [
+          -2.245545274755919,
+          7.14800144958496,
+          9.832988203575894
+        ],
+        [
+          -2.4673320020559255,
+          7.143001449584961,
+          10.240819661446352
+        ],
+        [
+          -1.2968864694452695,
+          9.036001449584962,
+          10.50418507027814
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          -2.927032432448547,
+          5.69600144958496,
+          9.560378166579966
+        ],
+        [
+          -3.548650477193504,
+          5.7180014495849605,
+          9.433410808147329
+        ],
+        [
+          -3.56773958518314,
+          5.720001449584961,
+          9.414662490571715
+        ],
+        [
+          -4.307090468606868,
+          5.784001449584961,
+          8.703313747598571
+        ],
+        [
+          -4.59201244152195,
+          5.755001449584961,
+          9.219860958676946
+        ],
+        [
+          -5.039736896192203,
+          5.77000144958496,
+          9.128485414356362
+        ],
+        [
+          -4.876941087502071,
+          5.726001449584961,
+          9.735414730130287
+        ],
+        [
+          -5.5345457874691775,
+          5.659001449584961,
+          10.925078362905367
+        ],
+        [
+          -5.262125230554199,
+          5.643001449584961,
+          11.06730633285494
+        ],
+        [
+          -5.647438046243782,
+          5.602001449584961,
+          11.791176118895805
+        ],
+        [
+          -4.8369063988238095,
+          5.554001449584961,
+          12.255658299589811
+        ],
+        [
+          -3.2789522745064503,
+          5.67000144958496,
+          10.057505233664017
+        ],
+        [
+          -2.4673320020559255,
+          5.640001449584961,
+          10.240819661446352
+        ],
+        [
+          -2.245545274755919,
+          5.663001449584961,
+          9.832988203575894
+        ],
+        [
+          -2.8855087262656043,
+          5.69900144958496,
+          9.50247622863941
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          -9.532696711412282,
+          8.09600144958496,
+          6.338114064264175
+        ],
+        [
+          -5.124735395402637,
+          8.09900144958496,
+          8.809148922616572
+        ],
+        [
+          -6.143511562664779,
+          12.052001449584962,
+          5.007901588136008
+        ],
+        [
+          -9.326764579860583,
+          8.536001449584962,
+          6.0943164806433
+        ]
+      ]
+    ],
+    [
+      [
+        [
+          7.637839800496319,
+          11.664001449584962,
+          -2.811101311215225
+        ],
+        [
+          -0.15137461865054266,
+          11.235001449584962,
+          11.211813214247854
+        ],
+        [
+          1.9241652103227889,
+          7.037001449584961,
+          12.492407600888669
+        ],
+        [
+          9.734611803289036,
+          7.52900144958496,
+          -1.6379443329915944
+        ]
+      ]
+    ]
+  ],
+  "sourceUrls": [
+    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012178460",
+    "https://monumentenregister.cultureelerfgoed.nl/monumenten/3051",
+    "https://www.hendrickdekeyser.nl/de-huizen/wijnkopersgildehuis"
+  ],
+  "references": [
+    {
+      "path": "artifacts/landmarks/wine-guildhall/references/manifest.json"
+    }
+  ],
+  "heightNotes": "AHN5 2023. Ground NAP0.613; variable measured roof, not whole-building maximum. Roof polygons are survey reference constraints; generated roof planes are newly fit/triangulated, no imported mesh.",
+  "currentStatus": "Pand in gebruik",
+  "bagYear": 1611,
+  "frontEdgeIndices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "preserveNeighbors": [
+    "Koestraat 8",
+    "Koestraat 14"
+  ],
+  "assertions": [
+    {
+      "part": "front",
+      "feature": "three reconstructed neck-shaped tops and sober block ornament",
+      "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/3051",
+      "passage": "Voorgevel met sobere blokjesversiering en drie gereconstrueerde halsvormige toppen.",
+      "confidence": "high"
+    },
+    {
+      "part": "portal",
+      "feature": "1633 entrance by Pieter de Keyser; Saint Urbanus in pediment",
+      "source": "https://www.hendrickdekeyser.nl/de-huizen/wijnkopersgildehuis",
+      "confidence": "high"
+    },
+    {
+      "part": "1633 principal-front entrance",
+      "feature": "curved broken segmental fronton with projecting rounded cornice and scroll-edged central oval Urbanus cartouche",
+      "source": "https://www.hendrickdekeyser.nl/de-huizen/wijnkopersgildehuis",
+      "referenceOriginal": "/tmp/map-recall2-source-publish-20261006c/models/wine-guildhall/files/owner-detail.jpg",
+      "privateSourceCommit": "4817c07",
+      "observation": "Owner close-up shows two curved canopy wings rising inward around an interrupted central oval; upper/lower cartouche edge curls visible. Prior straight triangular wings were a source/render failure.",
+      "confidence": "high for curvature and broken central arrangement; approximate native curve control points, 0.17m cornice projection depth and 0.025m scroll tube radius; no drawing dimension inspected"
+    }
+  ],
+  "archiveSearch": {
+    "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=Koestraat%2010",
+    "query": "Koestraat 10",
+    "access": "200 JS viewer shell; no catalogue/photo/drawing from this search inspected",
+    "bouwdossiers": "No unresolved detail forced expanded dossier search; historic front dimensions approximate from current survey/photo. No drawing inspected."
+  },
+  "rawSources": [
+    {
+      "path": "artifacts/landmarks/wine-guildhall/references/owner.html",
+      "url": "https://www.hendrickdekeyser.nl/de-huizen/wijnkopersgildehuis"
+    },
+    {
+      "path": "artifacts/landmarks/wine-guildhall/references/rce.html",
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/3051"
+    },
+    {
+      "path": "artifacts/landmarks/wine-guildhall/references/commons.html",
+      "url": "https://commons.wikimedia.org/wiki/File:Wijnkopersgildehuis.jpg"
+    },
+    {
+      "path": "artifacts/landmarks/wine-guildhall/references/facade.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/60/Wijnkopersgildehuis.jpg"
+    },
+    {
+      "path": "artifacts/landmarks/wine-guildhall/references/owner-facade.jpg",
+      "url": "https://www.hendrickdekeyser.nl/sites/hdk_hdekeyser/files/styles/keyvisual_shield_500x533/public/Amsterdam-Koestraat-10-12_2.JPG?itok=PB0QF8YJ"
+    },
+    {
+      "path": "artifacts/landmarks/wine-guildhall/references/owner-detail.jpg",
+      "url": "https://www.hendrickdekeyser.nl/sites/hdk_hdekeyser/files/styles/gallery_image_large_x600/public/wijnkopers-1_2.jpg?itok=2YC0Ct1s"
+    },
+    {
+      "path": "artifacts/landmarks/wine-guildhall/references/beeldbank.html",
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=Koestraat%2010"
+    },
+    {
+      "path": "artifacts/landmarks/wine-guildhall/references/3dbag.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012178460"
+    },
+    {
+      "path": "artifacts/landmarks/wine-guildhall/references/rce-photo-page.html",
+      "url": "https://commons.wikimedia.org/wiki/File:Exterieur_VOORGEVEL,_OVERZICHT_-_Amsterdam_-_20298769_-_RCE.jpg"
+    },
+    {
+      "path": "artifacts/landmarks/wine-guildhall/references/rce-front-1994.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/8/89/Exterieur_VOORGEVEL%2C_OVERZICHT_-_Amsterdam_-_20298769_-_RCE.jpg"
+    },
+    {
+      "url": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Koestraat+8+Amsterdam&fq=type%3Aadres&rows=3",
+      "rawPath": "artifacts/landmarks/wine-guildhall/references/neighbor-8.json",
+      "status": 200,
+      "retrievedAt": "2026-10-05T16:10:44.351672+00:00",
+      "sha256": "3118db7170f7fb5ff78fa0348b3bb8b15400cc7cc9fceb8dfbedba063793c72b",
+      "rights": "PDOK open data",
+      "accessState": "downloaded-raw-response"
+    },
+    {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?identificatie=0363010000665090&f=json",
+      "rawPath": "artifacts/landmarks/wine-guildhall/references/neighbor-14-vbo.json",
+      "status": 200,
+      "retrievedAt": "2026-10-05T16:11:02.652868+00:00",
+      "sha256": "f315bb225b82b8fb03d2cb8817d553292f0f99866216c43107d588dd8ed7d6b1",
+      "rights": "PDOK open data",
+      "accessState": "downloaded-raw-response"
+    },
+    {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/8d411b7d-b7cc-5639-9ae9-5f52cedff523",
+      "rawPath": "artifacts/landmarks/wine-guildhall/references/neighbor-14-pand.json",
+      "status": 200,
+      "retrievedAt": "2026-10-05T16:11:16.139973+00:00",
+      "sha256": "96fc1195fc60fc5784cff1f6abf07c21f9c69a463eb9d1d5c7af52d8fa6efee3",
+      "rights": "PDOK open data",
+      "accessState": "downloaded-raw-response"
+    },
+    {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?identificatie=0363010000708667&f=json",
+      "rawPath": "artifacts/landmarks/wine-guildhall/references/neighbor-8-vbo.json",
+      "status": 200,
+      "retrievedAt": "2026-10-05T16:11:02.589047+00:00",
+      "sha256": "ffa2ead27890e4f9efd6243b70316e4f2aafc5c8134b7227a5b7ad0754d5fcdf",
+      "rights": "PDOK open data",
+      "accessState": "downloaded-raw-response"
+    },
+    {
+      "url": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Koestraat+14+Amsterdam&fq=type%3Aadres&rows=3",
+      "rawPath": "artifacts/landmarks/wine-guildhall/references/neighbor-14.json",
+      "status": 200,
+      "retrievedAt": "2026-10-05T16:10:44.521706+00:00",
+      "sha256": "2b665cae6b03ef2fb6b45d70d95540cb44307a9cb95ca5610eb57fabcefedd6e",
+      "rights": "PDOK open data",
+      "accessState": "downloaded-raw-response"
+    },
+    {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/e4d217c1-13da-5cb0-9d72-40f92417b457",
+      "rawPath": "artifacts/landmarks/wine-guildhall/references/neighbor-8-pand.json",
+      "status": 200,
+      "retrievedAt": "2026-10-05T16:11:16.070254+00:00",
+      "sha256": "925c56c4f6e2ab2ee38251f6260f067ae62e51a419732912e392f0ed8e5731b9",
+      "rights": "PDOK open data",
+      "accessState": "downloaded-raw-response"
+    },
+    {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012178212&f=json",
+      "retrievedAt": "2026-10-05T19:01:27.191779+00:00",
+      "sha256": "22b4c78dab9b3df14cac65feb56ceadb833491925f62f90484c30813c41cadfd",
+      "accessState": "downloaded-raw-response",
+      "rights": "PDOK open data",
+      "archiveState": "pending root source-pack sync",
+      "rawPath": "artifacts/landmarks/wine-guildhall/references/diagnostic-abutting-8212-pand-original.json"
+    },
+    {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012171634&f=json",
+      "retrievedAt": "2026-10-05T19:03:40.192833+00:00",
+      "sha256": "7b73272a0dcccd497a76d57a266a0dae0a0ca7889857f989cd9413147e69b8f0",
+      "rights": "PDOK open data",
+      "accessState": "downloaded-raw-response",
+      "rawPath": "artifacts/landmarks/wine-guildhall/references/diagnostic-opposite-1634-pand-original.json"
+    }
+  ],
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "modelPath": "models/wine-guildhall",
+    "commit": "pending coordinator source sync"
+  },
+  "principalFront": {
+    "edgeIndices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "widthMetres": 13.855551734992725,
+    "centreLocal": [
+      3.688729908213845,
+      -5.020456798758275
+    ],
+    "outwardNormal": [
+      0.4882537383515398,
+      -0.8727017170750532
+    ],
+    "authorAngleRadians": 2.6315050066975543,
+    "galleryCameraSuggestion": [
+      12.47729719854156,
+      12,
+      -20.729087706109233
+    ],
+    "photoReading": "Three linked neck tops; pale sash groups; portal on right half when viewed from Koestraat.",
+    "lowerOpeningPattern": {
+      "leftOfPortal": 4,
+      "rightOfPortal": 2,
+      "portalHalf": "right",
+      "source": "artifacts/landmarks/wine-guildhall/references/rce-front-1994.jpg",
+      "crossCheck": "artifacts/landmarks/wine-guildhall/references/facade.jpg",
+      "confidence": "high for ordering/count; photographic positions approximate",
+      "orientation": "Street front viewed from northeast Koestraat; increasing authored x follows southeast to northwest, camera right."
+    },
+    "geometryProof": "Actual northeast0\u21921\u2192\u2026\u21929 boundary opens to Koestraat with installed opposite BAG1634 at4.527m; southwest10\u219214 abuts actual rear BAG8212. Side BAG8459/8461 establish party walls only, not front versus rear.",
+    "thinPrincipalBacking": "Photo-supported7.75m thin principal masonry strip on actual northeast perimeter; retain variable surveyed rear roof and courtyard.",
+    "status": "Actual northeast street placement proven by root native station for pre-canopy-repair GLB; authored jog panes and curved segmental portal CPU verified. Root fresh export/gallery/native independent acceptance pending.",
+    "failedEvidence": "artifacts/wine-guildhall-review/street-front-0.png through street-front-4.png; native-front-diagnosis.json",
+    "sourceReference": "artifacts/landmarks/wine-guildhall/references/rce-front-1994.jpg",
+    "currentCrossCheck": "artifacts/landmarks/wine-guildhall/references/facade.jpg",
+    "nativeStreetMidpoint": [
+      4.89837769546953,
+      52.372016735440326
+    ],
+    "nativeStreetCamera": [
+      4.898399247327863,
+      52.37204042012597
+    ],
+    "nativeLookBearingDegrees": 209.2258693486847
+  },
+  "retainedNeighbors": [
+    {
+      "address": "Koestraat 8",
+      "bagId": "0363100012178459",
+      "osmId": null,
+      "source": "artifacts/landmarks/wine-guildhall/references/neighbor-8-pand.json"
+    },
+    {
+      "address": "Koestraat 14",
+      "bagId": "0363100012178461",
+      "osmId": null,
+      "source": "artifacts/landmarks/wine-guildhall/references/neighbor-14-pand.json"
+    },
+    {
+      "address": "rear abutting building",
+      "bagId": "0363100012178212",
+      "source": "artifacts/landmarks/wine-guildhall/references/diagnostic-abutting-8212-pand-original.json"
+    },
+    {
+      "address": "opposite Koestraat row",
+      "bagId": "0363100012171634",
+      "source": "artifacts/landmarks/wine-guildhall/references/diagnostic-opposite-1634-pand-original.json"
+    }
+  ],
+  "withdrawnPrincipalFront": {
+    "edgeIndices": [
+      9,
+      10
+    ],
+    "widthMetres": 18.548521629031217,
+    "centreLocal": [
+      -6.6437280925874695,
+      -0.1787866944771821
+    ],
+    "outwardNormal": [
+      -0.8867749931267508,
+      -0.4622013755551266
+    ],
+    "authorAngleRadians": -2.0512723750150004,
+    "galleryCameraSuggestion": [
+      -28.376799780056025,
+      12,
+      -14.79044401776405
+    ],
+    "photoReading": "Three linked neck tops; pale sash groups; portal on right half when viewed from Koestraat.",
+    "lowerOpeningPattern": {
+      "leftOfPortal": 4,
+      "rightOfPortal": 2,
+      "portalHalf": "right",
+      "source": "artifacts/landmarks/wine-guildhall/references/rce-front-1994.jpg",
+      "crossCheck": "artifacts/landmarks/wine-guildhall/references/facade.jpg",
+      "confidence": "high for ordering/count; photographic positions approximate",
+      "orientation": "Street front as viewed from southwest Koestraat; increasing authored x follows current frontage northwest to southeast."
+    },
+    "status": "Wrong front:9\u219210 is party wall against current Koestraat8 BAG8459; visual acceptance withdrawn",
+    "failedEvidence": "artifacts/wine-guildhall-review/failed-first-pass/ and native party-wall diagnostic"
+  },
+  "withdrawnRearFront": {
+    "edgeIndices": [
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "widthMetres": 13.42740877511413,
+    "centreLocal": [
+      -5.2666596912207195,
+      11.650525207616766
+    ],
+    "outwardNormal": [
+      -0.5369806479307893,
+      0.8435945612365159
+    ],
+    "authorAngleRadians": -0.5668538645651431,
+    "galleryCameraSuggestion": [
+      -17.183380733785256,
+      12,
+      26.99502595956851
+    ],
+    "photoReading": "Three linked neck tops; pale sash groups; portal on right half when viewed from Koestraat.",
+    "lowerOpeningPattern": {
+      "leftOfPortal": 4,
+      "rightOfPortal": 2,
+      "portalHalf": "right",
+      "source": "artifacts/landmarks/wine-guildhall/references/rce-front-1994.jpg",
+      "crossCheck": "artifacts/landmarks/wine-guildhall/references/facade.jpg",
+      "confidence": "high for ordering/count; photographic positions approximate",
+      "orientation": "Street front viewed from northeast Koestraat; increasing authored x follows southeast to northwest, camera right."
+    },
+    "geometryProof": "Official current BAG parent boundary10\u219211\u219212\u219213\u219214 faces Koestraat to southwest. Official neighbor8 Pand8459 occupies outward half-plane of long9\u219210 side at20/50/80% probes, establishing that side as party wall; neighbor14 Pand8461 adjoins opposite end. Actual street chain retains oblique first bay group and0.82m jog. Frontage13.427m is endpoint projected width, not18.55m longest-side heuristic.",
+    "thinPrincipalBacking": "Photo-supported7.75m thin front masonry closure confined to source chain; 3DBAG low rear roof near14 remains low. Distinguish architectural front plane from whole-building roof height.",
+    "status": "Failed native placement: southwest10\u219214 is rear boundary abutting BAG8212; gallery-only acceptance withdrawn",
+    "failedEvidence": "artifacts/wine-guildhall-review/street-front-0.png through street-front-4.png; native-front-diagnosis.json"
+  }
+}

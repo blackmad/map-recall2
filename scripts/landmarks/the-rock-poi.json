@@ -1,0 +1,30 @@
+{
+  "modelId": "the-rock",
+  "landmarkId": "osm-way-52156815",
+  "name": "The Rock",
+  "center": [
+    52.33746770593688,
+    4.8704548554961224
+  ],
+  "sourceUrl": "https://therock-zuidas.nl/",
+  "description": "Erick van Egeraat designed The Rock as a dramatic transition from a transparent glass base to a heavy natural-stone crown. Shifted volumes and irregular openings give the 90-metre office tower a different profile from every angle. The owner dates completion to 2009. A renovation began in late 2024, with entrances on Claude Debussylaan and the north side facing the future Brittenpassage at Amsterdam Zuid.",
+  "sourceLinks": [
+    {
+      "title": "The Rock: current building owner and architectural materials",
+      "url": "https://therock-zuidas.nl/"
+    },
+    {
+      "title": "City of Amsterdam Zuidas: tower design and renovation",
+      "url": "https://zuidas.nl/construction-project/the-rock/"
+    },
+    {
+      "title": "Owner brochure: ground-floor entrances (page 8)",
+      "url": "https://therock-zuidas.nl/files/images/content/downloads/The%20Rock%20%20Amsterdam%20brochure.pdf"
+    },
+    {
+      "title": "City of Amsterdam: renovation announced October 2024",
+      "url": "https://zuidas.nl/blog/2024/10/07/the-rock-keert-zich-naar-de-toekomst/"
+    }
+  ],
+  "pinNotes": "Approximate southeast street-contact point scaled from the owner’s 2025 brochure ground-floor plan, page 8, using the surveyed BAG outline. Entrance symbol faces Claude Debussylaan; exact installed threshold and route reachability remain unverified. Not a surveyed door coordinate."
+}

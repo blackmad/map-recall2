@@ -1,0 +1,302 @@
+{
+  "id": "the-rock",
+  "status": "verified-current-export-scoped",
+  "authoredGeometry": "Third unexported authored repair: PASS 22333 triangles; 2952 fractional crown-pane hits (east693/south720/north891/west648), including former blank end-region hits east351/south567/north162/west549; 837 upper-curtain hits; 7 deep channels/5 diagonal traces; 106 lower pale-panel hits; 225 upward roof faces; 0 sampled occlusions; native bounds unchanged. Fresh decoded/gallery/native acceptance pending.",
+  "failedEvidence": [
+    "artifacts/the-rock/first-hit-failed-initial.json:426 pane occlusions from variabledepth and narrowcorner apertures; preserved before corrective change",
+    "artifacts/the-rock/decoded-roof-failure-audit.json: GLBSHA4a0be50d2ca9dc8f37e0345aef5eaeadd849e1ed4ddea946b126e897421144c1; source-rounded wing roof triangle0.000444m² became decodeddownward0.004399m². Genuine winding failure, retained.",
+    "artifacts/landmark-continuation-20261006/the-rock-first-export-independent-review: VISUALFAIL d9af4037... shallowregularcrown/lowertealgrid; remains rejected.",
+    "/tmp/map-recall2-reviewed-landmarks-20261006/artifacts/landmark-continuation-20261006/the-rock-repaired-independent-review.md: independent VISUAL FAIL on SHA 496a1aeaead575ccdf6688c056f08f2a4cebda34c1ead506c635fa002c62041f, 13641 triangles/186096 bytes: sparse tiny crown apertures in blank slabs; unarticulated teal belt; pale stone; insufficient layered frames. Immutable failure retained by root.",
+    "/tmp/map-recall2-reviewed-landmarks-20261006/artifacts/landmark-continuation-20261006/the-rock-second-repaired-independent-review.md: localized independent VISUAL FAIL on SHA 6c4094efce24a4e6695eeea3df6c1df9e3ffa2b8e6949a5865938a84e50ea76b (20529 triangles,265672 bytes). Broad crown windows, articulated belt and dark color resolved; blank outer uprights and weak heavy horizontal frame composition remained. Root preserves exact failed scope."
+  ],
+  "correctiveChange": "Earlier uniform 0.65m stone-depth repair addressed pane occlusion only and was subsequently rejected visually. Current authored repair replaces that uniform screen with photo-guided macro frames and deep channels; no visual acceptance yet.",
+  "referenceImages": [
+    "../map-recall2-source-data/models/the-rock/files/municipal-exterior.jpg",
+    "../map-recall2-source-data/models/the-rock/files/municipal-south.jpg",
+    "../map-recall2-source-data/models/the-rock/files/municipal-detail.jpg"
+  ],
+  "pending": [
+    "Broader desktop/touch stationary-rider camera-pan performance assessment remains separate; current evidence is stationary headless only.",
+    "SE source-plan public entrance override verified in actual chosen route; current threshold/canopy elevations and exact renovation completion not independently surveyed."
+  ],
+  "tsc": "PASS npx tsc --noEmit, third authored repair readiness, 2026-10-06.",
+  "simplifications": [
+    "Heavy stone frames divided by reference-visible exposed glass fissures; crack width/trace simplified to bounded stepped bay.",
+    "Individual aperture count, narrowprintedglass strips and stonepanel depth photo-guided approximations."
+  ],
+  "roofCorrection": {
+    "scope": "roof triangulation only; surveyed shell rings unchanged",
+    "method": "Remove redundant points within2mm of adjacent ring segment, using segment projection in[0,1].",
+    "authoredEvidence": "artifacts/the-rock/authored-after-roof-cleanup.json",
+    "decodedEvidence": "PASS artifacts/the-rock/decoded-after-roof-cleanup.json and decoded-roof-correction-audit.json; GLBSHAd9af403745763e9bf733d713ba5d2c2d5c15876c1d65b12f61584fe75d53c6cd; no downward decoded slate roof faces"
+  },
+  "decodedGeometry": "PASS current c42ec5e34493fc8b97091bdbda0f0b9c558e0e3adba842381a9178f6c58dffc0: 22333tri, finite native bounds, upward roofs and fractional first-hit crown/lower facade probes. Earlier d9/496/6c failures remain recorded.",
+  "checkerCorrection": "Use accessor.getElement() to decode normalized quantized POSITION values before transforming to world coordinates; raw getArray() integer values caused false bounds failure. Bounds assert unchanged.",
+  "sourceArchive": {
+    "commit": "dd7bf70c00c59533abe5c7e8b376c63867aa8a6e",
+    "modelPath": "models/the-rock",
+    "validationPath": "models/the-rock/validation/current-main-release-20261006",
+    "scope": "Original cached/raw sources, explicit access gaps, authored snapshots, prior failure reports, current final GLB/gallery/native/courtyard/independent and fallback evidence; general gameplay performance not claimed."
+  },
+  "rootFirstGalleryReview": {
+    "status": "FAIL independentreview; corrected draft requires freshimmutable review",
+    "evidence": "artifacts/landmark-continuation-20261006/the-rock-first-export-current-gallery",
+    "concern": "Municipal south and exterior originals show deep zigzag fissures and projecting stone panels; current crown may read too regular and shallow."
+  },
+  "macroFrameRepair": {
+    "status": "authoredpass; freshdecodedexport/visualreview pending",
+    "geometry": "Deepdiagonal glasschannels, outerframes/inset screens, unequalheavybottom beams, longpale groundwardsfacade fields and plan-locatedentrances",
+    "check": "Run node --import tsx scripts/check-the-rock-geometry.ts --authored: PASS 13641 triangles, 1107 crown-pane samples, 7 deep channels, 5 diagonal traces, 106 first-hit exposed lower pale panels, unequal beam bottom heights 48.6/52.2/57.6/59.4/61.2/62.6/66m, 225 upward faces, zero occlusions.",
+    "failedRepairEvidence": [
+      "artifacts/the-rock/macro-frame-first-hit-failed.json",
+      "artifacts/the-rock/macro-frame-first-hit-detail-2.json",
+      "artifacts/the-rock/macro-frame-first-hit-detail-3.json",
+      "artifacts/the-rock/macro-frame-first-hit-detail-4.json"
+    ],
+    "correctiveChanges": "Clearcorner-buriedpanes; stopmullions overcrown; curtain tops followstoneframe bottoms; retain2.8m cornerclearance fordeepreturns.",
+    "checkerScope": "Diagonal traces compare top and bottom channel centre coordinates (over 0.3m horizontal displacement), rather than counting broad vertical glass strips."
+  },
+  "rootSourceArchiveHandoff": {
+    "checkedOn": "2026-10-06",
+    "publishedPackCompared": "/tmp/map-recall2-source-publish-20261006c/models/the-rock",
+    "localInputRoot": "/Users/blackmad/Code/map-recall2-source-data/models/the-rock",
+    "missingPublishedInputs": [
+      {
+        "path": "files/facade-contractor-02.jpg",
+        "url": "https://www.permasteelisagroup.com/wp-content/uploads/2025/07/EEA-Mahler-The-Rock-Amsterdam_02.jpg",
+        "retrievedAt": "2026-10-06T10:37:41.222211+00:00",
+        "sha256": "466231868f2660b354e11e606a1e6ce0a31f35f5c105534febd4faa8f1763936",
+        "bytes": 3368864,
+        "accessState": "original HTTP response downloaded after bounded retry",
+        "rights": "Courtesy Erick van Egeraat Architects; ©Christian Richters; private reference only",
+        "raw": true
+      },
+      {
+        "path": "files/facade-contractor-03.jpg",
+        "url": "https://www.permasteelisagroup.com/wp-content/uploads/2025/07/EEA-Mahler-The-Rock-Amsterdam_03.jpg",
+        "retrievedAt": "2026-10-06T10:37:41.558934+00:00",
+        "sha256": "8d48ad8f0ecb28f023d2d8f5afe2d4e932e95dfd90ae66609b206b018c9f928c",
+        "bytes": 2808460,
+        "accessState": "original HTTP response downloaded after bounded retry",
+        "rights": "Courtesy Erick van Egeraat Architects; ©Christian Richters; private reference only",
+        "raw": true
+      },
+      {
+        "path": "webpages/renovation-2024.html",
+        "url": "https://zuidas.nl/blog/2024/10/07/the-rock-keert-zich-naar-de-toekomst/",
+        "retrievedAt": "2026-10-06T10:37:40.705629+00:00",
+        "sha256": "5f22700c8a90c416ba65d6738031885e32351355281703ee8b89fa1a4aba2330",
+        "bytes": 70678,
+        "accessState": "original HTTP response downloaded after bounded retry",
+        "rights": "CityofAmsterdam/Zuidas copyright; private reference only",
+        "raw": true
+      },
+      {
+        "path": "processed/brochure-page7.png",
+        "derivedFrom": "files/brochure.pdf",
+        "page": 7,
+        "sha256": "8ee4ce7532b7d3d8c1f535078c098223b76baa7c02cb04ecbcaccc994b14042d",
+        "bytes": 1252325,
+        "raw": false,
+        "accessState": "local PDF page rendering; original PDF retained"
+      },
+      {
+        "path": "processed/brochure-page8.png",
+        "derivedFrom": "files/brochure.pdf",
+        "page": 8,
+        "sha256": "2e079ef85f632376d142cdaab4f036ba765b6698a9f01a5fdd1639c44f62274f",
+        "bytes": 426983,
+        "raw": false,
+        "accessState": "local PDF page rendering; original PDF retained"
+      }
+    ],
+    "instruction": "Root must copy these exact verified bytes and manifest records (preserving raw/processed distinction) into the source publishing checkout; verify and commit/push before recording source commit or committing repaired model. Original brochure.pdf already exists in published pack with the same recorded hash. Do not claim local sibling inputs are already published."
+  },
+  "rootReviewPlan": {
+    "status": "pending; authored CPU pass is not acceptance",
+    "export": "Root exports the-rock once, rebuilds signature/game/route bundles, records repaired GLB SHA256, runs checker against exact repaired GLB, shared asset/POI/type checks. Preserve rejected d9af4037 GLB/evidence.",
+    "gallery": "Fresh immutable SHA/default high/four low angles against cached municipal exterior/south and contractor02/03. Compare previously blank broad uprights in angles0/3 specifically, and heavy horizontal members/overhang shadow boundaries against municipal south. Independent reviewer receives localized failed 6c4094ef report and preserves the resolved dense-screen/belt/color findings. Actual native/POI/performance gates remain unchanged.",
+    "nativeGame": "Native-scale street/arrival views from southeast and opposite station side after current tile residency. Verify exact w52156815/BAG0363100012114135 suppression, other ordinary roof layers, retained FOZ w108894128 and CubeHouse w1382370278 plus BAG0363100012109184; replacement-disabled/load-failure restores fallback.",
+    "poi": "Synchronize shared genuine osm-way-52156815 destination/card/pin to scoped POI center [52.33746770593688,4.8704548554961224]. Actually select destination from fixed home/GPS origin, verify route/finish remains The Rock or clearly fails, geographic label visible, physical pointer click returns useful sourced card. No duplicate alias POI.",
+    "performance": "Record actual game render/load performance and desktop/touch pan away from stationary rider with surrounding windows/doors retained.",
+    "entranceUncertainty": "Brochure page 8 supports plan-scaled east-boundary southeast arrival; current canopy and exact door elevations remain unverified. Preserve uncertainty; do not assert inspected current elevation or completion.",
+    "scopedInputHashes": {
+      "scripts/landmarks/the-rock-builder.ts": "7677d8aa27a966f077a5b2f81ec89f82d8220cbeabb6e4f7ed4f53127dcbbc4d",
+      "scripts/check-the-rock-geometry.ts": "98aeb0fbaab7e0b59629db03d8357a9fc1c59ae0d756d74791095f1bcef6111f",
+      "scripts/landmarks/the-rock-footprints.json": "774c81d3cee34370cf5489030419095bfe843c9403c08b1134c61a70e8d66d8b",
+      "scripts/landmarks/the-rock-spec.json": "30e2abcb1b6e119277735f1200df9b04ccb2a06b8808dafd61603598cfb2b99c",
+      "scripts/landmarks/the-rock-poi.json": "0bf269117656dfc2ee8c300f4b8c30622997751dc6754072aac062aea33c6b38"
+    }
+  },
+  "secondRepair": {
+    "status": "authored geometry passes; fresh immutable export/gallery/independent/native acceptance pending",
+    "triggerSha256": "496a1aeaead575ccdf6688c056f08f2a4cebda34c1ead506c635fa002c62041f",
+    "failedReview": "/tmp/map-recall2-reviewed-landmarks-20261006/artifacts/landmark-continuation-20261006/the-rock-repaired-independent-review.md",
+    "sourceInputs": [
+      "models/the-rock/files/municipal-exterior.jpg",
+      "models/the-rock/files/municipal-south.jpg",
+      "models/the-rock/files/facade-contractor-02.jpg",
+      "models/the-rock/files/facade-contractor-03.jpg"
+    ],
+    "changes": [
+      "Fit broad and horizontal slit aperture groups independently beside deep channel edges, instead of replacing whole unsafe bays with blank stone.",
+      "Preserve dense pane fields across nearly straight survey-edge joins; only true corner returns own deep side walls. Carry corner clearance around short collinear fragments.",
+      "Carry narrow pale fields, exposed clear glazing, vertical mullions and transoms from 48.6m to each face-specific 48.6–66m crown bottom.",
+      "Add raised horizontal stone strata with separate dark underside surfaces, clipped to channel boundaries.",
+      "Source-guided per-model dark charcoal/brown greyBrick override #4b4a44; approximate material match under unchanged gallery lighting."
+    ],
+    "authoredFailureHistory": [
+      {
+        "triangles": 21841,
+        "failedSamples": 379,
+        "reason": "New near-corner panes intersected deep returns; preserved summary before collinear join correction."
+      },
+      {
+        "triangles": 20319,
+        "failedSamples": 21,
+        "reason": "Short nearly straight survey segments inherited a corner return; propagated true-corner clearance."
+      },
+      {
+        "triangles": 20199,
+        "failedSamples": 12,
+        "reason": "Upper curtain fractional probes found nine return and three mullion intersections; clear-glass rectangles fitted within actual unobstructed fields."
+      }
+    ],
+    "remaining": [
+      "Source individual window counts, cardinal photo assignment and macro depths remain approximate.",
+      "Actual recognition of denser grouped glazing, layered stone and transition continuity requires fresh four-angle/source comparison and independent review.",
+      "Native geometry/neighbor/fallback/route/pin/card/performance acceptance remains with root."
+    ]
+  },
+  "thirdRepair": {
+    "status": "authored geometry passes; fresh immutable export/reference/independent/native reviews pending",
+    "triggerSha256": "6c4094efce24a4e6695eeea3df6c1df9e3ffa2b8e6949a5865938a84e50ea76b",
+    "failedReview": "/tmp/map-recall2-reviewed-landmarks-20261006/artifacts/landmark-continuation-20261006/the-rock-second-repaired-independent-review.md",
+    "resolvedAtTrigger": [
+      "Broad crown screen aperture size/density",
+      "Articulated glass/pale belt beneath stepped crown",
+      "Dark gray/brown stone contrast",
+      "Long lower pale strips"
+    ],
+    "remainingCriticalTraitsAtTrigger": [
+      "Broad outer crown portions should be windowed and horizontally layered, not unsupported blank full-height piers",
+      "Principal inset screens require source-visible large horizontal frame/overhang composition"
+    ],
+    "boundedChanges": [
+      "Narrow true exterior corner return to 0.30m behind its stone plane; keep 2.4m fissure reveals intact.",
+      "Reduce exterior corner aperture clearance to 0.75m, preserving propagated clearance across nearly straight short surveyed segments. Glazing now spans the previously blank broad end portions.",
+      "Add two large source-guided horizontal members bounding each principal west/south inset-screen group, with 1.3–1.6m vertical beam depth and downward-facing underside returning to inset screen. Fit nearby apertures around beams.",
+      "Strengthen unequal crown-bottom members from 1.35m to 1.70m and fit lowest openings above them.",
+      "Preserve current palette, dense screens, articulated belt, source-native rings/roof planes, deep channels and lower strips."
+    ],
+    "authoredEvidence": "Third unexported authored repair: PASS 22333 triangles; 2952 fractional crown-pane hits (east693/south720/north891/west648), including former blank end-region hits east351/south567/north162/west549; 837 upper-curtain hits; 7 deep channels/5 diagonal traces; 106 lower pale-panel hits; 225 upward roof faces; 0 sampled occlusions; native bounds unchanged.",
+    "uncertainty": [
+      "High confidence that photographed broad outer/corner crown portions are windowed and layered; precise return thickness is not measured.",
+      "Municipal south supports heavy top/bottom framing and overhang shadow boundaries; heights/projection depths and west/south face assignment remain approximate from photo context.",
+      "No new facade/section drawing was obtained. Existing private source photos cdb1ba3 used; no new raw archive input required.",
+      "Geometry counts/area prove authored existence and sampled exposure only; fresh gallery must judge major beam silhouettes and whether narrowed corner returns restore source composition."
+    ],
+    "scope": "builder/check/research/review only; no shared registration, export, browser or Git changes"
+  },
+  "currentReleaseReview": {
+    "assetVersion": "c42ec5e34493fc8b",
+    "exportTriangles": 22333,
+    "rootVisualReview": "PASS current five-angle gallery and two native game views against private primary photos. Wine source-facing portal and open courtyard preserved; Rock supplemental zoom17.5 opposite native views expose entire crown and height.",
+    "nativeRuntime": {
+      "routeFinishAndDestination": true,
+      "geographicPin": true,
+      "physicalSourcedCard": true,
+      "nativeScale": 1,
+      "depthBias": false,
+      "spatialSuppression": false,
+      "exactMasks": [
+        {
+          "id": "w52156815",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012114135",
+          "hidden": true
+        }
+      ],
+      "retainedNeighbors": [
+        {
+          "ids": [
+            "w1001115819"
+          ],
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        },
+        {
+          "ids": [
+            "w1001115820"
+          ],
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        },
+        {
+          "ids": [
+            "w1001115821"
+          ],
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        },
+        {
+          "ids": [
+            "w1001115822"
+          ],
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        },
+        {
+          "ids": [
+            "w1382370278"
+          ],
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        },
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012109184"
+          ],
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        }
+      ]
+    },
+    "performance": {
+      "scope": "Headless Chromium same stationary scene; hidden model keeps existing replacement masks, isolating custom draw cost. No whole-game performance pass claimed.",
+      "samples": [
+        {
+          "label": "model-visible",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 8.300000190734863,
+          "p95Ms": 9.200000286102295
+        },
+        {
+          "label": "same-scene-model-hidden",
+          "visible": false,
+          "frames": 60,
+          "p50Ms": 8.300000190734863,
+          "p95Ms": 9.099999904632568
+        },
+        {
+          "label": "model-visible-repeat",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 8.300000190734863,
+          "p95Ms": 9.099999904632568
+        }
+      ]
+    },
+    "fallback": "PASS actual current game entry unavailable/loaded: resident base geometry returns, loaded target exact masks restore, source-derived neighbors remain drawable and unhidden. Streamed host refresh fix covered by actual-class VM regression; unrelated independent roof entries not present for these targets."
+  },
+  "neighborIdentityCorrection": "FOZ outlinew108894128 replaced by source r13425744 membersw1001115819/5820/5821/5822. CubeHousew1382370278 (ref:bag0363100012571974) retained separately from eastBAG0363100012109184; previously grouped eastBAG was not an alias."
+}
