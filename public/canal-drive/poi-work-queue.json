@@ -1045,6 +1045,40 @@
       "evidence": "../../scripts/landmarks/midwest-review.json"
     },
     {
+      "id": "artis-animal-easter-egg",
+      "task": "Place Katamari animal models and original Katamari-style miniatures at mapped ARTIS animal locations",
+      "priority": "normal",
+      "status": "style-revision-verified-scoped",
+      "requestedOn": "2026-10-06",
+      "scope": "39 representatives at 33 named OSM animal points; 11 imported models plus 28 original representations. Focus on larger and distinctive animals, with seven small extras retired on user request. Mapped locations retained.",
+      "demo": "./artis-animals.html",
+      "manifest": "./models/artis-animals/index.json",
+      "validation": "39 animals at 33 mapped locations; 11 Katamari imports and 28 revised originals. Decoded GLB/checksum checks and desktop/touch-emulated live game + gallery checks pass. Retired seven small extras. Flat jaguar rosettes and more angular silhouettes visually reviewed against imported lion. Asset total 661,176 bytes; no startup animal requests away from ARTIS. Download recovery, city hiding and cached return verified. Headless timing recorded; physical phone performance remains unclaimed.",
+      "evidence": "../../docs/references/artis-animals-review.json",
+      "sourcePack": {
+        "repository": "blackmad/map-recall2-source-data",
+        "commit": "33b38f0",
+        "path": "models/artis-animals"
+      },
+      "reviewNotes": "Preserved failed-offset-touch-lemurs.png and failed-offset-review.json: a nearby touch camera target placed the tiny lemur outside the narrow viewport. Exact mapped-point camera review passes. Existing trees/buildings correctly occlude animals; no enlargement or x-ray rendering. Preserved occluded-penguin-camera.png: initial phone camera sat behind the neighboring roof; opposite open-side review shows the animal with normal depth occlusion.",
+      "userStyleRevision20261006": {
+        "request": "Make generated animals more Katamari-like; fix jaguar spots; do not model every tiny rodent.",
+        "implementation": "Broad faceted silhouettes, reduced ears, small flat painted eyes, a distinct low jaguar body and flush irregular rosettes on sides/back/head instead of raised bead dots.",
+        "retired": [
+          "Lapwing",
+          "Meerkat",
+          "Asian small-clawed otter",
+          "Patagonian mara",
+          "Crested screamer",
+          "Indian crested porcupine",
+          "Little egret"
+        ],
+        "previousRejectedGallery": "../../artifacts/artis-animals/rejected-round-originals.png",
+        "detailReview": "../../artifacts/artis-animals/jaguar-rosettes.png",
+        "status": "implemented-and-reviewed"
+      }
+    },
+    {
       "id": "kesbeke-factory-and-shop",
       "task": "Model Kesbeke factory and separate shop with high-quality source-supported facade decals",
       "priority": "high",
