@@ -1,0 +1,335 @@
+{
+  "modelId": "pulitzer-amsterdam",
+  "triangles": 38151,
+  "bounds": [
+    [
+      -43.76511764526367,
+      -0.727760910987854,
+      -45.686737060546875
+    ],
+    [
+      46.85699462890625,
+      21.688905715942383,
+      33.59239959716797
+    ]
+  ],
+  "roofRegions": 172,
+  "downwardRoofFaces": 0,
+  "numericalRoofFaces": 0,
+  "maxSourcePlaneResidual": 0.00159,
+  "paneSamples": 2808,
+  "joinerySamples": 0,
+  "paneFailures": [
+    {
+      "id": "jansz-corner-keizersgracht:0-2",
+      "u": 0.18,
+      "v": 0.15,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:0-2",
+      "u": 0.32,
+      "v": 0.15,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:0-2",
+      "u": 0.68,
+      "v": 0.15,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:0-2",
+      "u": 0.82,
+      "v": 0.15,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:0-3",
+      "u": 0.18,
+      "v": 0.15,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:0-3",
+      "u": 0.32,
+      "v": 0.15,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:0-3",
+      "u": 0.68,
+      "v": 0.15,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:0-3",
+      "u": 0.82,
+      "v": 0.15,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:0-4",
+      "u": 0.18,
+      "v": 0.15,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:0-4",
+      "u": 0.32,
+      "v": 0.15,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:0-4",
+      "u": 0.68,
+      "v": 0.15,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-0",
+      "u": 0.18,
+      "v": 0.15,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-0",
+      "u": 0.18,
+      "v": 0.48,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-0",
+      "u": 0.18,
+      "v": 0.82,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-0",
+      "u": 0.32,
+      "v": 0.15,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-0",
+      "u": 0.32,
+      "v": 0.48,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-0",
+      "u": 0.32,
+      "v": 0.82,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-0",
+      "u": 0.68,
+      "v": 0.15,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-0",
+      "u": 0.68,
+      "v": 0.48,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-0",
+      "u": 0.68,
+      "v": 0.82,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-0",
+      "u": 0.82,
+      "v": 0.15,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-0",
+      "u": 0.82,
+      "v": 0.48,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-0",
+      "u": 0.82,
+      "v": 0.82,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-1.9968411805343402",
+      "u": 0.18,
+      "v": 0.15,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-1.9968411805343402",
+      "u": 0.18,
+      "v": 0.48,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-1.9968411805343402",
+      "u": 0.18,
+      "v": 0.82,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-1.9968411805343402",
+      "u": 0.32,
+      "v": 0.15,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-1.9968411805343402",
+      "u": 0.32,
+      "v": 0.48,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-1.9968411805343402",
+      "u": 0.32,
+      "v": 0.82,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-1.9968411805343402",
+      "u": 0.68,
+      "v": 0.15,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-1.9968411805343402",
+      "u": 0.68,
+      "v": 0.48,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-1.9968411805343402",
+      "u": 0.68,
+      "v": 0.82,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-1.9968411805343402",
+      "u": 0.82,
+      "v": 0.15,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-1.9968411805343402",
+      "u": 0.82,
+      "v": 0.48,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-1.9968411805343402",
+      "u": 0.82,
+      "v": 0.82,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-3.9936823610686814",
+      "u": 0.18,
+      "v": 0.15,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-3.9936823610686814",
+      "u": 0.18,
+      "v": 0.48,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-3.9936823610686814",
+      "u": 0.18,
+      "v": 0.82,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-3.9936823610686814",
+      "u": 0.32,
+      "v": 0.15,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-3.9936823610686814",
+      "u": 0.32,
+      "v": 0.48,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-3.9936823610686814",
+      "u": 0.32,
+      "v": 0.82,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-3.9936823610686814",
+      "u": 0.68,
+      "v": 0.15,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-3.9936823610686814",
+      "u": 0.68,
+      "v": 0.48,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    },
+    {
+      "id": "jansz-corner-keizersgracht:souterrain-3.9936823610686814",
+      "u": 0.68,
+      "v": 0.82,
+      "hit": "pulitzer-shell:11",
+      "colour": "brick"
+    }
+  ],
+  "courtProbes": 4,
+  "courtFailures": [],
+  "limitations": "Draft geometry preflight only; compressed export, gallery and live-game acceptance remain coordinator checks."
+}

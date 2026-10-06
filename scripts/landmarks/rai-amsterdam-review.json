@@ -1,0 +1,75 @@
+{
+  "status": "reviewed scoped model; source archive pushed; publication verification pending",
+  "predecessorAsset": "03ce1921",
+  "failedEvidence": "artifacts/landmark-release-check/rai-roof-scope-repair/before03ce1921/source-failure-review.md",
+  "scope": "Full native BAG0363100012093905 parent remains modeled. Distinct1961 Europacomplex,1963 Westhal,1969 Amstelhal scope; Elicium and Signaal remain separate physical parents.",
+  "sourceCritic": {
+    "agent": "rai_final_current_visual_review",
+    "verdict": "Static source agreement for exact full five hall/strip rings; municipal page106/108 and current archived aerial; no positive-area intersection with six retained genuine IDs",
+    "limits": "Scoped original1961 Europacomplex/Zuidhal,1963 Westhal,1969 Amstelhal,Elicium,Signaal only; larger campus pending. Approximate joinery/panels/wing heights/current Signaal LEDs."
+  },
+  "geometry": {
+    "hall2And3": "Exact source12m flat shells/roofs replacing10.5m parent sections",
+    "amstelhal": "Exact full three original OSM polygons; exposed glass to12m eaves and source3m gable rise; repeated bays approximate,1969 scope explicit",
+    "extension": "Only83.93689576m² actual five-source-ring discrepancy outsideBAG; no padding",
+    "partition": "Zero gap, excess or positive-area shell overlap; underlying parent conserved",
+    "cpu": "9368tri; first-hit lower/upper/barrel/strip glazing; upward supported roofs; open native notches;12m namedhall envelopes; complete projectingend rays pass"
+  },
+  "aliasesAddedForRootReview": [
+    "w807090339",
+    "w807204806",
+    "w807204801",
+    "w807204802",
+    "w807204803"
+  ],
+  "unresolved": [
+    "Wing heights and repetitive glazing/panel details remain bounded source-guided approximations; current Signaal LED panel arrangement unresolved.",
+    "Whole RAI campus including Congress Centre/Hollandcomplex/Amtrium remains pending.",
+    "Root owns source archival/push, runtime route/pin/card/fallback final checks and commit; stationary performance does not establish touch/pan/whole-game performance."
+  ],
+  "sources": [
+    "https://openresearch.amsterdam/image/2024/11/18/van_rai_complex_naar_rai_district.pdf",
+    "Private originalrai-current-osm-map.xml; currentPDOKaerial; auditnative-zone-overlap.json"
+  ],
+  "assetSha256": "de6b20d6761ca79ddfe34d2e56a7d2e51f080341f635e3e56064b92990049678",
+  "reviewedAt": "2026-10-06T19:48:18.973733+00:00",
+  "compoundRuntime": {
+    "proof": "artifacts/landmark-release-check/rai-compound-runtime-proof.json",
+    "result": "actual8m flat fallback in4looks×2coarse/detail combinations; source entire outside footprint retained",
+    "sourceMetadataGap": "installed round/roofHeight8 not original OSM assertions; no actual bad round roof renderer proved"
+  },
+  "independentCurrentExport": {
+    "gallery": "four fresh lower rotations inspected; no gross silhouette/roof/massing failure",
+    "wideNative": "neutral-front/live-rear inspected; identified prior brown w807204806 block absent, corrected flat roof fields visible",
+    "placement": "current fingerprint/scale1;17exact masks hidden;6source-genuine neighbors resident/drawable",
+    "limits": "Visual geometry accepted for exact current SHA only; root owns source publication, route/card/fallback checks and final release. Whole-game/touch performance not established by stationary samples.",
+    "sourceClose": {
+      "east": "exposed gridded curtain wall matches sourced east-face family",
+      "west": "seven exposed glazed horizontal slots within metal face match sourced west-face family",
+      "hallsRoof": "flat roof/bands coherent, old brown slab absent",
+      "undercroft": "Corrected low source station[-14,6,70]→[-14,1,24] shows distinct ground glass, elevated concourse glazing, diagonal supports and open gaps. Initial pitch-clamped failure preserved.",
+      "oblique": "Rounded silver ribbon profile, curtain-wall office and open stacked Signaal read coherently against architect photo/section."
+    }
+  },
+  "visualAccepted": true,
+  "rootAcceptance": {
+    "date": "2026-10-06",
+    "routePinCard": "Actual chosen route finish, native pin, physical pointer selection and sourced rendered info card passed.",
+    "nativePlacement": "Scale1, no depth bias or broad suppression; exact aliases hidden; all recorded genuine neighbors resident and drawable.",
+    "fallback": "Simulated target GLB unavailable/restored through actual runtime entry composer; ordinary fallback and neighbor retention passed.",
+    "courtsOrUndercroft": "Four distinct Pulitzer courts rendered and downward rays clear; RAI current undercroft exposes lower glass, diagonal supports and open ground gaps.",
+    "performance": "Headless stationary same-scene draw-cost comparison only; p95 visible/repeat RAI9.5/9.4ms, Pulitzer9.1/9.0ms. Whole-game/touch performance not claimed.",
+    "evidence": "models/rai-amsterdam/validation/final-20261006",
+    "sourceCommit": "4666520097c468923ba7e34899d8cfc3d27d1092"
+  },
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "4666520097c468923ba7e34899d8cfc3d27d1092",
+    "path": "models/rai-amsterdam",
+    "validationPath": "models/rai-amsterdam/validation/final-20261006",
+    "originals": "Scoped strict checksum/length verification passed; access gaps and failed source attempts preserved."
+  },
+  "rootAcceptancePending": [
+    "Verify exact deployed model fingerprints after Hosting succeeds."
+  ]
+}

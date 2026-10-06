@@ -1,0 +1,38 @@
+{
+  "id": "pulitzer-amsterdam",
+  "name": "Pulitzer Amsterdam",
+  "landmarkId": "osm-node-331630133",
+  "modelUrl": "./models/pulitzer-amsterdam.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012169022",
+    "NL.IMBAG.Pand.0363100012169021"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.8839,
+      52.3727
+    ],
+    "headingDegrees": 266.4,
+    "lengthMetres": 88.3,
+    "widthMetres": 79.3
+  },
+  "surveyed": {
+    "anchor": [
+      4.8839,
+      52.3727
+    ],
+    "northOffsetDegrees": -0.398848,
+    "source": "Current PDOK BAG0363100012169022 and0363100012169021 at native RD metres; RD grid-east bearing89.601152deg. AHN4/3DBAG2020 individually surveyed roofregions, four courtyardholes; no parcel slab or importedmesh."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "Pulitzer Amsterdam",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.pulitzeramsterdam.com/nl/over-het-hotel/onze-geschiedenis/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-color connected historic canal houses. Native currentBAG exteriors; original shells constructed from clipped survey roof-plane regions, four preserved sourcecourts, independently authored street elevations/windows/entries/plinths/crowns. Modern2016black entrance; diverse tuit/hals/klok/lijst family mixture; Saxenburg four-bay sandstonefront with attiek; Jansz corner/Reestraat row. Tinycarvedrelief and joinery spacing photo-guided; retiredaddress fuzzyfallbacks rejected. No downloadedmesh or photo pixels."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "modelId": "pulitzer-amsterdam",
+  "landmarkId": "osm-node-331630133",
+  "name": "Pulitzer Amsterdam",
+  "osmId": "n331630133",
+  "wikidata": "Q4500456",
+  "center": [
+    52.37282921590418,
+    4.883288222258304
+  ],
+  "lngLat": [
+    4.883288222258304,
+    52.37282921590418
+  ],
+  "buildingIds": [
+    "NL.IMBAG.Pand.0363100012169022",
+    "NL.IMBAG.Pand.0363100012169021"
+  ],
+  "description": "Peter Pulitzer began turning canal houses into a hotel in1970. Today Pulitzer links25 historic houses around quiet gardens between the Prinsengracht and Keizersgracht. Its street fronts retain their individual identities, including the sandstone Saxenburg house and former warehouses; the black Prinsengracht entrance dates from the2016renovation.",
+  "sourceUrl": "https://www.pulitzeramsterdam.com/nl/over-het-hotel/onze-geschiedenis/",
+  "sourceUrls": [
+    "https://www.pulitzeramsterdam.com/nl/over-het-hotel/onze-geschiedenis/",
+    "https://www.pulitzeramsterdam.com/media/tj3ixoce/floorplan-capacity-chart-2024.pdf",
+    "https://www.amsterdamsebinnenstad.nl/binnenstad/277/kindertekening-pulitzer.php",
+    "https://amsterdam-monumentenstad.nl/database/grachtenboek_objecten.php?id=128"
+  ],
+  "destinationPinSource": "Source-address Prinsengracht323 publicentrance positioned on the current surveyed principal front-edge midpoint, rather than the indoor hotelPOI node or the inaccessible compound centroid.",
+  "preserveDistinctDestination": "Jansz/PulitzersBar share existing hotelmesh; do not manufacture destinations for housealiases or secondarymeshparts."
+}

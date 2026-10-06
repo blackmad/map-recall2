@@ -1,0 +1,343 @@
+{
+  "modelId": "pulitzer-amsterdam",
+  "reviewedOn": "2026-10-06",
+  "status": "reviewed scoped model; source archive pushed; publication verification pending",
+  "visualAccepted": true,
+  "ownedDeliverables": [
+    "scripts/landmarks/pulitzer-amsterdam-footprints.json",
+    "scripts/landmarks/pulitzer-amsterdam-geometry-review.json",
+    "scripts/landmarks/pulitzer-amsterdam-review.json",
+    "scripts/landmarks/review-pulitzer-amsterdam.mjs",
+    "docs/landmarks/pulitzer-amsterdam-integration-handoff.md"
+  ],
+  "identity": {
+    "landmarkId": "osm-node-331630133",
+    "osmId": "n331630133",
+    "wikidata": "Q4500456",
+    "proof": "private models/pulitzer-amsterdam/files/osm-pulitzer.json: genuine hotel node at [lat52.3728089,lon4.8834291], name Pulitzer, Prinsengracht323",
+    "publicExtractPresentAtPreflight": false,
+    "publicBacklogPresentAtPreflight": false,
+    "integrationAction": "Integrate this genuine identity once; do not add hotel aliases, bar aliases or separate mesh destinations. Preserve any existing facts encountered during coordinator integration.",
+    "destinationCenterLatLng": [
+      52.37282921590418,
+      4.883288222258304
+    ],
+    "destinationSource": "Prinsengracht323 source address/VBO0363010012106317 -> current Pand0363100012169022; authored front-edge midpoint, not indoor OSM point. Reachability untested."
+  },
+  "placement": {
+    "anchorLngLat": [
+      4.8839,
+      52.3727
+    ],
+    "anchorRD": [
+      120724.9867925103,
+      487321.664408206
+    ],
+    "northOffsetDegrees": -0.398848,
+    "effectiveModelRotationDegrees": 89.601152,
+    "facadeBearingDegrees": 266.4,
+    "scale": 1,
+    "groundAltitudeMetres": 0,
+    "surveyGroundDatumMetres": 0.438,
+    "note": "RD east/south authored metres; Y up. Survey datum already rebased into mesh; avoid adding0.438 again. Descriptive footprint dimensions do not fit or rescale surveyed geometry."
+  },
+  "suppression": {
+    "ids": [
+      "NL.IMBAG.Pand.0363100012169022",
+      "NL.IMBAG.Pand.0363100012169021"
+    ],
+    "spatialSuppression": false,
+    "installedTile": "public/data/extracts/amsterdam/building-tiles/14/8414/5384.geojson.gz",
+    "allPresentInInstalledTile": true,
+    "runtimeVerified": false,
+    "required": "Hide exact IDs in ordinary shells and independent pyramidal roofs after GLB loads; load failure/disabled model restores both."
+  },
+  "neighbors": [
+    {
+      "id": "NL.IMBAG.Pand.0363100012174140",
+      "mappedAddressContext": "Prinsengracht 311A–H",
+      "relationship": "north-west retained side neighbor",
+      "installedTilePresent": true,
+      "sourceRelationship": "Cached neighbors-bag.json geometry + OSM address points contained in exterior ring; mapped address context is corroboration, not official VBO-parent proof."
+    },
+    {
+      "id": "NL.IMBAG.Pand.0363100012169365",
+      "mappedAddressContext": "Keizersgracht 220 / Moeder Godskerk",
+      "relationship": "north-east retained side neighbor",
+      "installedTilePresent": true,
+      "sourceRelationship": "Cached neighbors-bag.json geometry + OSM address points contained in exterior ring; mapped address context is corroboration, not official VBO-parent proof."
+    },
+    {
+      "id": "NL.IMBAG.Pand.0363100012173672",
+      "mappedAddressContext": "Prinsengracht 333",
+      "relationship": "south-west retained corner neighbor",
+      "installedTilePresent": true,
+      "sourceRelationship": "Cached neighbors-bag.json geometry + OSM address points contained in exterior ring; mapped address context is corroboration, not official VBO-parent proof."
+    },
+    {
+      "id": "NL.IMBAG.Pand.0363100012173673",
+      "mappedAddressContext": "Reestraat 28/30",
+      "relationship": "south retained row adjoining rear limits",
+      "installedTilePresent": true,
+      "sourceRelationship": "Cached neighbors-bag.json geometry + OSM address points contained in exterior ring; mapped address context is corroboration, not official VBO-parent proof."
+    },
+    {
+      "id": "NL.IMBAG.Pand.0363100012173677",
+      "mappedAddressContext": "Reestraat 26",
+      "relationship": "south retained row adjoining rear limits",
+      "installedTilePresent": true,
+      "sourceRelationship": "Cached neighbors-bag.json geometry + OSM address points contained in exterior ring; mapped address context is corroboration, not official VBO-parent proof."
+    },
+    {
+      "id": "NL.IMBAG.Pand.0363100012173676",
+      "mappedAddressContext": "Reestraat 24",
+      "relationship": "south retained row adjoining rear limits",
+      "installedTilePresent": true,
+      "sourceRelationship": "Cached neighbors-bag.json geometry + OSM address points contained in exterior ring; mapped address context is corroboration, not official VBO-parent proof."
+    },
+    {
+      "id": "NL.IMBAG.Pand.0363100012173675",
+      "mappedAddressContext": "Reestraat 22",
+      "relationship": "south retained row adjoining rear limits",
+      "installedTilePresent": true,
+      "sourceRelationship": "Cached neighbors-bag.json geometry + OSM address points contained in exterior ring; mapped address context is corroboration, not official VBO-parent proof."
+    },
+    {
+      "id": "NL.IMBAG.Pand.0363100012173681",
+      "mappedAddressContext": "Reestraat 18",
+      "relationship": "south retained row; existing author harness",
+      "installedTilePresent": true,
+      "sourceRelationship": "Cached neighbors-bag.json geometry + OSM address points contained in exterior ring; mapped address context is corroboration, not official VBO-parent proof."
+    },
+    {
+      "id": "NL.IMBAG.Pand.0363100012173680",
+      "mappedAddressContext": "Reestraat 16",
+      "relationship": "south retained row adjoining rear limits",
+      "installedTilePresent": true,
+      "sourceRelationship": "Cached neighbors-bag.json geometry + OSM address points contained in exterior ring; mapped address context is corroboration, not official VBO-parent proof."
+    },
+    {
+      "id": "NL.IMBAG.Pand.0363100012173679",
+      "mappedAddressContext": "Reestraat 14",
+      "relationship": "south retained row within 1m boundary screen",
+      "installedTilePresent": true,
+      "sourceRelationship": "Cached neighbors-bag.json geometry + OSM address points contained in exterior ring; mapped address context is corroboration, not official VBO-parent proof."
+    },
+    {
+      "id": "NL.IMBAG.Pand.0363100012173678",
+      "mappedAddressContext": "Reestraat 12",
+      "relationship": "south retained row within 1m boundary screen",
+      "installedTilePresent": true,
+      "sourceRelationship": "Cached neighbors-bag.json geometry + OSM address points contained in exterior ring; mapped address context is corroboration, not official VBO-parent proof."
+    },
+    {
+      "id": "NL.IMBAG.Pand.0363100012173682",
+      "mappedAddressContext": "Reestraat 10",
+      "relationship": "west neighbor of modeled Reestraat 8",
+      "installedTilePresent": true,
+      "sourceRelationship": "Cached neighbors-bag.json geometry + OSM address points contained in exterior ring; mapped address context is corroboration, not official VBO-parent proof."
+    }
+  ],
+  "neighborCoverageGap": "Harness now covers all twelve cached retained identities. Resident/hidden flags remain acquisition clues only; actual drawn neighbors and independent roofs require root screenshots.",
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "4666520097c468923ba7e34899d8cfc3d27d1092",
+    "path": "models/pulitzer-amsterdam",
+    "validationPath": "models/pulitzer-amsterdam/validation/final-20261006",
+    "originals": "Scoped strict checksum/length verification passed; access gaps and failed source attempts preserved."
+  },
+  "geometry": {
+    "modelId": "pulitzer-amsterdam",
+    "triangles": 39178,
+    "bounds": [
+      [
+        -43.76511764526367,
+        -0.00500003807246685,
+        -45.686737060546875
+      ],
+      [
+        46.85699462890625,
+        21.688905715942383,
+        33.863746643066406
+      ]
+    ],
+    "roofRegions": 172,
+    "downwardRoofFaces": 0,
+    "numericalRoofFaces": 0,
+    "maxSourcePlaneResidual": 0.00159,
+    "paneSamples": 8640,
+    "joinerySamples": 0,
+    "paneFailures": [],
+    "sourceColumnSamples": 150,
+    "sourceColumnFailures": [],
+    "sourceDoorwaySamples": 6,
+    "courtProbes": 4,
+    "courtFailures": [],
+    "sourceGardenSamples": 30,
+    "sourceGardenFailures": [],
+    "limitations": "Draft geometry preflight only; compressed export, gallery and live-game acceptance remain coordinator checks. Conservatory localized topologically on existing Pand9022 west edge of main central garden; glass dimensions/bay count approximate, roof unchanged. Court1/3/4 window coverage remains unresolved; open-space rays do not certify courtyard facades."
+  },
+  "preservedFailure": {
+    "path": "scripts/landmarks/pulitzer-amsterdam-geometry-failed-before-porch.json",
+    "paneFailures": 44,
+    "description": "Prior Jansz lower glazing hit shell; prior below-datum roof minY-0.72776. Evidence retained."
+  },
+  "sourceLimits": [
+    "3DBAG source qualityindicator false and LoD2 validity102: low plane-fit residual only establishes fit, not survey truth.",
+    "Surface914 of Pand9022:3.0763m² source plane[1.0264678,-2.905139,-82.87761] retained; below-datum classification replaced with explicitly approximate horizontal3.65m return. SourceResidual0.0006 describes original fit, not reconstructed accuracy.",
+    "Four source courtyard voids preserved; three absent from broad current BAG hole representation; cross-check operator2024 ground plan in root review.",
+    "Bounded BeeldbankPrinsengracht323 search retained HTTP search/viewer shell only; no inspected municipal archival image or permit drawing. Bouwdossier/2016entry and connector roof sheets still unacquired.",
+    "Reestraat4 lacks dedicated photograph; context/register/survey-derived approximation must remain explicit.",
+    "Cornice heights, ornament counts, basement/stair dimensions and courtyard opening rhythm are original photo-guided abstractions, not measured survey/window facts.",
+    "Current photo/register conflict qualification for Prinsengracht327/331 is recorded; root must assess observed current crown families."
+  ],
+  "checkerLimits": [
+    "Checker samples authored street panes at six horizontal/five vertical fractions; opaque door leaves skipped. Court glazing is not in pulitzerPanes.",
+    "Single ray per court establishes probe clearance only, not full courtyard shape.",
+    "DoubleSide ray material and authored geometry winding checks do not certify compressed GLB winding, support, exported materials or visibility against city neighbors.",
+    "No explicit interior roof-to-wall support residual checker; encoded export still needs focused support inspection.",
+    "39,178 authored/current export triangles; currentGLB 492356B, below40,000tri/500,000B; textures0. No budget loosening."
+  ],
+  "rootAcceptancePending": [
+    "Verify exact deployed model fingerprints after Hosting succeeds."
+  ],
+  "currentReleaseReadiness": {
+    "inputGlbSha256": "46da427f4defad481b49338bc5d94e66f4d0d61217335a6fdbff23f1e5163e9b",
+    "bytes": 492356,
+    "decodedTriangles": 39178,
+    "decodedTextures": 0,
+    "builderSha256": "1e01173c65e888a2105e89a0ca9831ffa505858325e5b733fe0f48b45118fc92",
+    "cpuImages": "artifacts/pulitzer-release-readiness-20261006/pulitzer-amsterdam-cpu-{prinsengracht,keizersgracht}.png",
+    "cpuComparison": "Exact current decoded mesh preserves paired 323 upper columns and source-specific Keizersgracht234 entry; mixed front-width/crown/material assembly identifiable in isolated CPU views. Detailed lower-tier/court/native neighbor/game acceptance remains pending.",
+    "priorGalleryFingerprint": "979f6a974946be5f3ac9a9048d0e38a9518b78075fb140574cee9aef0c0beaab",
+    "priorGalleryTransfer": "Old5008 acceptance explicitly rejected; fresh46da default/fourrotations/native captures independently inspected.",
+    "nativeCameras": "footprints.referencePack.nativeReviewCameras: seven principal/full/lower frontage cameras, four sourcecourt centers, approximate surface914 close station.",
+    "criticalAssemblies": [
+      {
+        "part": "Prinsengracht323",
+        "source": "files/monumentenstad-current-entrance.jpg",
+        "assertion": "Two unbarred black-trim upper columns on three tiers above broad black glazed doorway, dark simple triangular crown; camera-side/source current photos checked.",
+        "confidence": "Observed; exact metric dimensions approximate."
+      },
+      {
+        "part": "Keizersgracht234",
+        "source": "files/keizer234-verified-facade.jpg; RCE2540 cached body",
+        "assertion": "Three-bay red hals front, north/right arched lower doorway; tall windows in other lower bays.",
+        "confidence": "Observed current photo; RCE establishes hals/Empire doorway and main-floor carved frames, not counts/dimensions."
+      },
+      {
+        "part": "Saxenburg224",
+        "source": "files/keizersgracht224-facade.jpg; RCE3567 cached body",
+        "assertion": "Pale four-bay facade, decorated attic/triglyph cornice/console and raised approach; ornament abstracted.",
+        "confidence": "Current source/photo and explicit cached register description."
+      },
+      {
+        "part": "Garden/courts",
+        "source": "files/operator-court-260623_garden025_web.jpg; files/operator-court-pulitzer-garden-17.jpg; files/operator-floorplan-2024.pdf",
+        "assertion": "Current conservatory has broad black-framed glazing and white walls; garden open circulation. Exact mapped court association and court1/3/4 openings unknown.",
+        "confidence": "Observed assembly; no exact mapped layout or uninspected drawing claimed."
+      }
+    ],
+    "geometryEdits": "128 triangles of bounded source-guided black-frame garden glazing and white wall on existing region60 edge; surveyed roof/scope/fourvoids retained."
+  },
+  "gardenConservatoryRepair": {
+    "reviewedOn": "2026-10-06",
+    "status": "current46da-gallery-and-source-native-visual-pass",
+    "sourceAlignment": "artifacts/landmark-release-check/pulitzer-garden-repair/source-alignment.json",
+    "sourceBoundary": {
+      "bagPand": "NL.IMBAG.Pand.0363100012169022",
+      "roofRegion": 60,
+      "a": [
+        -9.76971,
+        -15.52505
+      ],
+      "b": [
+        -10.29871,
+        -6.70605
+      ]
+    },
+    "independentLocalization": "Reviewer accepts west-side main-central-garden boundary north of axial connector, above Prinsengracht323 lobby. Not a numbered court attribution. No mirror transfer to region164.",
+    "assembly": "Broad black-framed glazing with white upper/base wall, 7 approximate bays, surveyed roof retained. 128 additional triangles.",
+    "baselineFingerprint": "5008f2492175edaba607ec2e0f71bfdd3169fabf9c941e56f8631f5c84dca80b",
+    "preservedFailedEvidence": "artifacts/landmark-release-check/pulitzer-garden-repair/before-independent-failed-review.json",
+    "visualAccepted": true,
+    "currentGlbSha256": "46da427f4defad481b49338bc5d94e66f4d0d61217335a6fdbff23f1e5163e9b"
+  },
+  "independentCurrentSourceNativeReview": {
+    "modelId": "pulitzer-amsterdam",
+    "reviewedOn": "2026-10-06",
+    "reviewer": "independent-final-source-native-review",
+    "glbSha256": "46da427f4defad481b49338bc5d94e66f4d0d61217335a6fdbff23f1e5163e9b",
+    "status": "independent-source-native-visual-pass-with-recorded-source-limits",
+    "visualAccepted": true,
+    "acceptedFindings": [
+      "323 exposes paired unbarred upper windows and broad black lower glazing; triangular crown confirmed gallery/current source",
+      "234 right lower arched entry and remaining three-bay red facade rhythm visible, tree occludes center/left",
+      "224 pale four-bay front and raised approach visible; attic/cornice abstraction judged from gallery",
+      "All four numbered native court voids visibly open; court2 has approximate joinery; no exact current court1/3/4 window layouts asserted",
+      "Gallery four rotations preserve narrow mixed canal-front crowns and surveyed irregular roof/open garden massing"
+    ],
+    "qualifications": [
+      "Conservatory association is topological source-guided west main-garden inference, not numbered court2",
+      "Bay count/width/glass roof exact form unresolved; bounded wall repair only",
+      "Current source photo supersedes incompatible historic323 entry view",
+      "Roof regions derive low-quality3DBAG; plane fidelity alone is not source certainty"
+    ],
+    "acceptanceScope": "Current46da source/native facade, roof/open-space plausibility and bounded garden repair only; root owns route/pin/card/suppression/performance/full release signoff.",
+    "preservedFailedEvidence": [
+      {
+        "part": "garden-conservatory",
+        "evidence": "failed-initial-framing-garden-conservatory.png",
+        "finding": "Source-facing live capture is blank brown wall with ordinary small pane; broad black-frame/white-wall assembly not visible. Diagnose framing/parent visibility before acceptance."
+      },
+      {
+        "part": "Reestraat2/8 and approximate roof return",
+        "finding": "Live captures are extreme ordinary textured-wall closeups; do not establish authored assembly or roof support."
+      }
+    ],
+    "resolvedFindings": [
+      "Initial failed garden/Reestraat/roof framing came from map maxZoom22 camera clamp; root increased review-only camera limit28 and supplied clear elevated views without changing mesh.",
+      "garden-conservatory.png and garden-wide.png expose broad black-frame glazing and upper/base white wall across existing source boundary. No buried glazing remains visible in this assembly.",
+      "Reestraat2/8 lower and clear-upper views expose tall lower shop glazing, three upper bays and source-guided dark/red hals crowns; nearby textured buildings remain drawn.",
+      "roof-return-clear.png shows small explicitly approximate return adjoining open source hole without opaque court plate;3.65m is approximation, not measured roof truth."
+    ],
+    "unresolvedFailures": [],
+    "evidence": [
+      "source-close/prinsengracht-323-full.png",
+      "source-close/prinsengracht-323-lower.png",
+      "source-close/keizersgracht-234-full.png",
+      "source-close/keizersgracht-234-lower.png",
+      "source-close/keizersgracht-224-full.png",
+      "source-close/reestraat-8-clear-upper.png",
+      "source-close/reestraat-2-clear-upper.png",
+      "source-close/reestraat-8-lower.png",
+      "source-close/reestraat-2-lower.png",
+      "source-close/garden-conservatory.png",
+      "source-close/garden-wide.png",
+      "source-close/roof-return-clear.png",
+      "source-close/court-1.png",
+      "source-close/court-2.png",
+      "source-close/court-3.png",
+      "source-close/court-4.png"
+    ],
+    "sourceFiles": [
+      "monumentenstad-current-entrance.jpg",
+      "keizer234-verified-facade.jpg",
+      "operator-current-context.jpg",
+      "operator-court-pulitzer-garden-17.jpg",
+      "operator-court-260623_garden025_web.jpg",
+      "reestraat8-facade.jpg",
+      "reestraat2-facade.jpg"
+    ]
+  },
+  "rootAcceptance": {
+    "date": "2026-10-06",
+    "routePinCard": "Actual chosen route finish, native pin, physical pointer selection and sourced rendered info card passed.",
+    "nativePlacement": "Scale1, no depth bias or broad suppression; exact aliases hidden; all recorded genuine neighbors resident and drawable.",
+    "fallback": "Simulated target GLB unavailable/restored through actual runtime entry composer; ordinary fallback and neighbor retention passed.",
+    "courtsOrUndercroft": "Four distinct Pulitzer courts rendered and downward rays clear; RAI current undercroft exposes lower glass, diagonal supports and open ground gaps.",
+    "performance": "Headless stationary same-scene draw-cost comparison only; p95 visible/repeat RAI9.5/9.4ms, Pulitzer9.1/9.0ms. Whole-game/touch performance not claimed.",
+    "evidence": "models/pulitzer-amsterdam/validation/final-20261006",
+    "sourceCommit": "4666520097c468923ba7e34899d8cfc3d27d1092"
+  }
+}

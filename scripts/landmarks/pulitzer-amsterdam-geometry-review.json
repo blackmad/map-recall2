@@ -1,0 +1,31 @@
+{
+  "modelId": "pulitzer-amsterdam",
+  "triangles": 39178,
+  "bounds": [
+    [
+      -43.76511764526367,
+      -0.00500003807246685,
+      -45.686737060546875
+    ],
+    [
+      46.85699462890625,
+      21.688905715942383,
+      33.863746643066406
+    ]
+  ],
+  "roofRegions": 172,
+  "downwardRoofFaces": 0,
+  "numericalRoofFaces": 0,
+  "maxSourcePlaneResidual": 0.00159,
+  "paneSamples": 8640,
+  "joinerySamples": 0,
+  "paneFailures": [],
+  "sourceColumnSamples": 150,
+  "sourceColumnFailures": [],
+  "sourceDoorwaySamples": 6,
+  "courtProbes": 4,
+  "courtFailures": [],
+  "sourceGardenSamples": 30,
+  "sourceGardenFailures": [],
+  "limitations": "Draft geometry preflight only; compressed export, gallery and live-game acceptance remain coordinator checks. Conservatory localized topologically on existing Pand9022 west edge of main central garden; glass dimensions/bay count approximate, roof unchanged. Court1/3/4 window coverage remains unresolved; open-space rays do not certify courtyard facades."
+}
