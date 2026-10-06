@@ -1,0 +1,15 @@
+{
+  "segments": 72330,
+  "points": 946,
+  "indexMs": 411.357125,
+  "oldMs": 2148.416958,
+  "newMs": 6.886167000000114,
+  "graphBeforeMs": 1739.953375,
+  "graphAfterMs": 1406.731041,
+  "nodes": 109771,
+  "connectorsBefore": 418177,
+  "connectorsAfter": 81543,
+  "exactSnapResults": true,
+  "exactGraphTopology": true,
+  "sameConnectorCoverage": true
+}

@@ -1,0 +1,198 @@
+{
+  "id": "naco-house",
+  "status": "Current source/gallery and native game integration verified; performance followup retained",
+  "date": "2026-10-05",
+  "geometryCheck": "node --import tsx scripts/check-naco-house-geometry.ts",
+  "triangles": 3448,
+  "cpuChecks": {
+    "finiteBounds": true,
+    "openWestPassage": true,
+    "fiveConcreteSupports": true,
+    "upwardRoofWinding": true,
+    "roofOwnsTop": true,
+    "firstHitGlazingBothSidesAndEnds": true,
+    "exactSuppressionNoNeighbor": true
+  },
+  "rootReviewRequired": [
+    "Higher native gallery and four lower-angle rotations against owner restored/departure/return photos and drawing",
+    "Live north/water and south/land views, neighbors and no ground-floor occlusion",
+    "Actual selected route finish, public-entrance pin and pointer click useful sourced card",
+    "Private source archive commit/sync before public model commit"
+  ],
+  "criticalReferenceCaveat": "Departure and return photos show roof awaiting orange tiles; operator prose explicitly states final restoration added orange roof tiles. Do not copy dark temporary roof into asset. Current Commons 2022 original photo unavailable HTTP403. Use operator restoration narrative with existing archived originals; dated owner restored photo confirms dark siding/white trim.",
+  "knownApproximations": [
+    "Window grouping/photo-scaled pane divisions, exact decorative flame motifs simplified",
+    "Piers and floor heights inferred from reference, ground floor east-strip interior inaccessible",
+    "Roof crest uses measured AHN cap with sampled curvature; flagmast estimated",
+    "Main upper room simplifies minor BAG end returns; no dock/pontoon slab included"
+  ],
+  "specPath": "scripts/landmarks/naco-house-spec.json",
+  "neighbors": [
+    [
+      "NL.IMBAG.Pand.0363100012181960"
+    ]
+  ],
+  "zoom": 19.2,
+  "bearing": 282.5,
+  "oppositeBearing": 102.5,
+  "independentVisualReview": {
+    "status": "gallery-and-native-live-visual-pass",
+    "reviewedOn": "2026-10-05",
+    "reviewer": "independent-static-review",
+    "scope": "Four saved gallery rotations against owner original restored/return/placement photos and drawing plus cached restoration prose. Fresh current native neutral-front and live-rear inspected independently.",
+    "evidence": [
+      "artifacts/naco-house-review/gallery-angle-0.png",
+      "artifacts/naco-house-review/gallery-angle-1.png",
+      "artifacts/naco-house-review/gallery-angle-2.png",
+      "artifacts/naco-house-review/gallery-angle-3.png",
+      "artifacts/naco-house-review/neutral-front.png",
+      "artifacts/naco-house-review/live-rear.png"
+    ],
+    "referenceImages": [
+      "artifacts/landmarks/naco-house/references/restored.jpg",
+      "artifacts/landmarks/naco-house/references/return.jpg",
+      "artifacts/landmarks/naco-house/references/drawing.jpg",
+      "artifacts/landmarks/naco-house/references/owner-placement.jpg"
+    ],
+    "passed": [
+      "Five tapering exposed concrete supports and narrow opposite ground strip preserve half-open ground-floor character.",
+      "Dark horizontal siding, white grouped glazing and saw ornaments, projecting landward gable/mast and waterward hip provide recognizable composition.",
+      "Orange roof matches owner.html restoration narrative after return; dark transport roof not copied.",
+      "Native opposite long-side views show grouped white glazing, dark siding and orange roof in current moved waterfront placement.",
+      "Five piers and open west passage clearly visible in native live-rear; narrow opposite ground strip remains on other side."
+    ],
+    "failures": [],
+    "limitations": [
+      "Diagonal/V gable boarding simplified to horizontal; ornament and window divisions remain approximate.",
+      "No independent performance observation.",
+      "This independent static review accepts visual geometry/scene integration only; source archival, performance and overall completion remain coordinator checks."
+    ]
+  },
+  "neighborScopeNote": "Nearby bus shelter w1060147929 source geometry retained by exact masks but not shipped ordinary-building layer: not used as false resident proof. Actual nearest drawn De Ruijterkade row BAG0363100012181960 at ~96m is checked; official response cached before acceptance.",
+  "cameraCorrection": "Prior native view obscured main front or used nonresident context; preserve failed images/evidence and re-review conventional closer principal views.",
+  "acceptance": {
+    "gallery": true,
+    "liveGame": true,
+    "poiContract": true,
+    "privateSourceArchiveCommit": "9926aa1fba89e7758fc9e11d1b0dfde0fb4fc4aa",
+    "privateSourceArchivePath": "models/naco-house/",
+    "scope": "Original native-scale house-style exterior; source-derived architectural recognition and exact replaced scope. Fine-detail/photo-ratio uncertainties retained; no new independent GPU performance claim."
+  },
+  "coordinatorReview": {
+    "reviewedOn": "2026-10-05",
+    "reviewer": "root",
+    "status": "pass-scoped",
+    "evidenceDirectory": "artifacts/naco-house-review",
+    "runtimeEvidence": "Actual selected route destination, geographic pin, physical click sourced card, native scale 1 and retained resident drawable neighbors verified with review-manual-pois.mjs.",
+    "geometryEvidence": "scripts/check-naco-house-geometry.ts",
+    "independentReviewStatus": "gallery-and-native-live-visual-pass"
+  },
+  "sourceArchive": {
+    "commit": "5e4e6b6",
+    "path": "models/naco-house",
+    "priorSourcesCommit": "9926aa1"
+  },
+  "export": {
+    "sha256": "df4445c3f6b327bb4581003019fd3488554d4d013f66ca400bc7cad2c2abfdb2",
+    "bytes": 53428
+  },
+  "currentIndependentReview": "models/naco-house/validation/clean-release-20261006/independent-review.json",
+  "currentRuntime": {
+    "proof": {
+      "id": "naco-house",
+      "actualCamera": {
+        "center": [
+          4.905443,
+          52.3786995
+        ],
+        "zoom": 19.2,
+        "pitch": 55.00000000000001,
+        "bearing": -77.5,
+        "elevation": 0
+      },
+      "assetVersion": "df4445c3f6b327bb",
+      "scale": 1,
+      "bias": false,
+      "broad": false,
+      "pin": true,
+      "destination": true,
+      "source": "https://stadsherstel.nl/monumenten/de-ruijterkade-naco-huisje/",
+      "click": {
+        "x": 741.5529601361274,
+        "y": 496.323060781234
+      },
+      "aliases": [
+        {
+          "id": "w1535749695",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012570001",
+          "hidden": true
+        }
+      ],
+      "oldPyramidIds": [],
+      "neighbors": [
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012181960"
+          ],
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        }
+      ],
+      "features": 8951,
+      "buildings": 13103
+    },
+    "card": {
+      "notice": "extract_landmarks_1769455774",
+      "source": "https://stadsherstel.nl/monumenten/de-ruijterkade-naco-huisje/",
+      "alpha": 1,
+      "drawn": true,
+      "active": "extract_landmarks_1769455774"
+    },
+    "performance": {
+      "id": "naco-house",
+      "assetVersion": "df4445c3f6b327bb",
+      "samples": [
+        {
+          "label": "model-visible",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 32.90000009536743,
+          "p95Ms": 36.80000019073486
+        },
+        {
+          "label": "same-scene-model-hidden",
+          "visible": false,
+          "frames": 60,
+          "p50Ms": 34.59999990463257,
+          "p95Ms": 40
+        },
+        {
+          "label": "model-visible-repeat",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 33.40000009536743,
+          "p95Ms": 37.700000286102295
+        }
+      ],
+      "buildings": {
+        "kitVertices": 74697,
+        "chunks": 25,
+        "buildings": 13103,
+        "walls": 58847,
+        "quads": 274473,
+        "vertices": 2447054,
+        "geometryMB": 80.531982421875,
+        "textureMB": 97.5,
+        "drawCalls": 5,
+        "triangles": 122205,
+        "buildMs": 30
+      },
+      "scope": "Headless Chromium same stationary scene; hidden model keeps existing replacement masks, isolating custom draw cost. No whole-game performance pass claimed."
+    },
+    "performanceAcceptance": "Stationary headless evidence only; no general smooth gameplay or physical touch performance acceptance."
+  }
+}

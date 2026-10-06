@@ -19,8 +19,19 @@ if (!SURFACE || !GRAPH) {
   throw new Error('road-network.js needs road-surface.bundle.js and road-graph.bundle.js');
 }
 
+const routingSegmentsOf = segments => segments.map((segment, segmentIndex) => ({
+  points: segment.points,
+  width: segment.width || 0,
+  metadata: { segmentIndex, name: segment.name || '', wayId: segment.wayId || '' },
+}));
+
 class RoadNetwork {
-  constructor(segments, startPoint, finishPoint, tiles) {
+  static prepareRoutingGraph(segments, cancelled) {
+    return GRAPH.buildRoadGraphAsync(routingSegmentsOf(segments),
+      { mergeSize: 18, junctionStitchRadius: JUNCTION_STITCH_RADIUS }, { cancelled });
+  }
+
+  constructor(segments, startPoint, finishPoint, tiles, routingGraph = null) {
     this.isOpenTrack = true;
     this.segments = segments; // [{points, width, type, normals, leftBound, rightBound}]
     this.tiles = tiles || []; // [{img, gameX, gameY, gameW, gameH}]
@@ -29,6 +40,7 @@ class RoadNetwork {
     this.roadIndex = null;
     this.numCheckpoints = 10;
     this._frameCache = new Map();
+    this._graphCache = routingGraph;
     this._routeMastery = {};
     this._homeBias = null;
     this._preferredCorridorName = null;
@@ -304,11 +316,7 @@ class RoadNetwork {
   _routingGraph() {
     if (this._graphCache) return this._graphCache;
     this._graphCache = GRAPH.buildRoadGraph(
-      this.segments.map((segment, segmentIndex) => ({
-        points: segment.points,
-        width: segment.width || 0,
-        metadata: { segmentIndex, name: segment.name || '', wayId: segment.wayId || '' },
-      })),
+      routingSegmentsOf(this.segments),
       { mergeSize: 18, junctionStitchRadius: JUNCTION_STITCH_RADIUS }
     );
     return this._graphCache;

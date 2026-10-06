@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build:building-overview": "node --import tsx scripts/build-building-overview.ts",
+    "test:city-startup": "node --import tsx --test src/canalRecall/chunkBuildQueue.test.ts src/canalRecall/osm/roadSnapIndex.test.ts src/canalRecall/routing/roadGraphAsync.test.ts && node --import tsx scripts/check-building-look-transition.ts",
     "test:building-context": "node --import tsx --test src/canalRecall/buildingContextIndex.test.ts",
     "test:building-lod": "node --import tsx scripts/check-building-lod.ts",
     "build:canal-car": "esbuild src/canalRecall/carRoadGuard.ts --bundle --format=iife --global-name=CanalRecallCar --outfile=public/canal-drive/js/car-road-guard.bundle.js --minify",

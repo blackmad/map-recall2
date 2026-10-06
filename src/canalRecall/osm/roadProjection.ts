@@ -18,6 +18,9 @@
  * offset or it lands hundreds of metres from the road it belongs to.
  */
 
+import { RoadSnapIndex } from './roadSnapIndex.ts';
+export { RoadSnapIndex };
+
 import { hasSeparatedCycleTrack } from '../routing/cycleTrack.ts';
 import { isBicycleRestricted } from '../routing/bikeAccess.ts';
 
@@ -242,12 +245,13 @@ export function snapToRoad(
   offset: WorldPoint,
   segments: Array<{ points: WorldPoint[] }>,
   maxSnapDistance: number | false,
+  index?: RoadSnapIndex,
 ): (WorldPoint & { snapDistance: number }) | null {
   const projected = projectToWorld(point, centre);
   const target = { x: projected.x + offset.x, y: projected.y + offset.y };
 
-  let best: (WorldPoint & { distance: number }) | null = null;
-  for (const segment of segments) {
+  let best: (WorldPoint & { distance: number }) | null = index?.nearest(target) ?? null;
+  if (!index) for (const segment of segments) {
     for (let i = 0; i < segment.points.length - 1; i++) {
       const candidate = closestPointOnSegment(target, segment.points[i], segment.points[i + 1]);
       if (!best || candidate.distance < best.distance) best = candidate;

@@ -75,6 +75,14 @@
       "nextAction": "Start with failed De Wallen transfer diagnosis and a bounded source-rich canal row; evaluate rhythm and authoring throughput before scaling to every canal house. Preserve ordinary and modern exceptions. Raw sources belong in the new private source archive under its forthcoming instructions."
     },
     {
+      "id": "startup-stalls-and-smooth-zoom-fade",
+      "task": "Reduce startup blocking work and remove the stippled zoom-out fade",
+      "priority": "high",
+      "status": "verified",
+      "owner": "root",
+      "validation": "Kit/houseboat builds use a coalesced, backpressured worker queue; four-look geometry byte matches. Exact nearest-road indexing and duplicate-junction removal preserve snap results, graph topology and unique surface coverage. Routing construction yields in8ms batches and respects cancelled loading tokens. Desktop largest startup task1614→470ms and main chunk build93→14ms. Smooth depth-correct fade ends at15.4, before measured phone minimum; desktop/touch stationary pans, min zoom and overview retain facades without stippling. TypeScript, startup/route/loading cancellation, road/surface/LOD and stale look regressions passed. Report:docs/performance/2026-10-06/stalls-and-fade.md. Total startup time remains variable; shorter setup stalls remain. Rejected two-pass phone-minimum evidence retained."
+    },
+    {
       "id": "city-context-and-camera-performance",
       "task": "Reduce city tile-update stalls and off-camera rendering; verify zoomed-out and stationary pan views",
       "priority": "high",
@@ -379,13 +387,17 @@
       "id": "blauwe-theehuis",
       "task": "Blauwe Theehuis",
       "priority": "normal",
-      "status": "queued"
+      "status": "visual-and-game-integration-verified-performance-followup",
+      "evidence": "../../scripts/landmarks/blauwe-theehuis-review.json",
+      "nextAction": "Publish current source/nativegallery/game-reviewedasset; retain source-detail limitations and measured headless performance followup. Sources/independent/current evidence privately archived."
     },
     {
       "id": "groot-melkhuis",
       "task": "Groot Melkhuis",
       "priority": "normal",
-      "status": "queued"
+      "status": "visual-and-game-integration-verified-performance-followup",
+      "evidence": "../../scripts/landmarks/groot-melkhuis-review.json",
+      "nextAction": "Publish current source/nativegallery/game-reviewedasset; retain source-detail limitations and measured headless performance followup. Sources/independent/current evidence privately archived."
     },
     {
       "id": "vondelcs",
@@ -1043,6 +1055,76 @@
       "nextAction": "Publish reviewed scale-one MidWestasset. Preserved both initialsourcevisualfailures; generalhardwareperformance followup remains. Currentnative route/pin/physicalcard/masks andfourneighbors verified.",
       "owner": "midwest_source_and_build",
       "evidence": "../../scripts/landmarks/midwest-review.json"
+    },
+    {
+      "id": "ndsm-container-arch",
+      "task": "NDSM container arch / Icoontainerboog",
+      "priority": "high",
+      "status": "current-source-and-native-identity-prepared",
+      "requestedOn": "2026-10-06",
+      "sourceUrls": [
+        "https://www.ndsm.nl/en/magazine/de-verschillende-jasjes-van-de-icoontainerboog"
+      ],
+      "owner": "ndsm_container_arch_sources",
+      "parentTask": "ndsm-warehouse-complex",
+      "nextAction": "After draftbatchpublication, calibrate nine original raised-container volumes/supports/open wedges using current2026 FIRESTARTERphotos andgenuineOSMw1304785589. Height/boxdimensions remainphotoestimates; retain independent hall/Lasloods.",
+      "sourceArchive": {
+        "commit": "6921162",
+        "path": "models/ndsm-container-arch"
+      },
+      "evidence": "../../scripts/landmarks/ndsm-container-arch-research.json"
+    },
+    {
+      "id": "midwest-real-entrance-sign",
+      "task": "MidWest real Cabral entrance sign and source-matched lettering",
+      "priority": "high",
+      "status": "visual-and-game-integration-verified-performance-followup",
+      "requestedOn": "2026-10-06",
+      "modelIds": [
+        "midwest"
+      ],
+      "sourceArchive": {
+        "commit": "f2a910a",
+        "path": "models/midwest"
+      },
+      "nextAction": "Publish real source-shaped letters and corrected fascia. Preserve first spacing failure, approximate font/calibration and general performance limits.",
+      "evidence": "../../scripts/landmarks/midwest-review.json"
+    },
+    {
+      "id": "beest-het-lab",
+      "task": "Beest Boulders Het Lab",
+      "priority": "high",
+      "requestedOn": "2026-10-05",
+      "status": "visual-and-game-integration-verified-performance-followup",
+      "evidence": "../../scripts/landmarks/beest-het-lab-review.json",
+      "nextAction": "Publish current source/nativegallery/game-reviewedasset; retain source-detail limitations and measured headless performance followup. Sources/independent/current evidence privately archived."
+    },
+    {
+      "id": "jeruzalemkerk",
+      "task": "Jeruzalemkerk",
+      "priority": "high",
+      "requestedOn": "2026-10-05",
+      "status": "visual-and-game-integration-verified-performance-followup",
+      "evidence": "../../scripts/landmarks/jeruzalemkerk-review.json",
+      "nextAction": "Publish current source/nativegallery/game-reviewedasset; retain source-detail limitations and measured headless performance followup. Sources/independent/current evidence privately archived."
+    },
+    {
+      "id": "naco-house",
+      "task": "NACO-house",
+      "priority": "high",
+      "requestedOn": "2026-10-05",
+      "status": "visual-and-game-integration-verified-performance-followup",
+      "evidence": "../../scripts/landmarks/naco-house-review.json",
+      "nextAction": "Publish current source/nativegallery/game-reviewedasset; retain source-detail limitations and measured headless performance followup. Sources/independent/current evidence privately archived."
+    },
+    {
+      "id": "nikolaas-myrakerk",
+      "task": "Heilige Nikolaas van Myrakerk",
+      "priority": "high",
+      "requestedOn": "2026-10-05",
+      "status": "visual-and-game-integration-verified-performance-followup",
+      "evidence": "../../scripts/landmarks/nikolaas-myrakerk-review.json",
+      "nextAction": "Publish current source/nativegallery/game-reviewedasset; retain source-detail limitations and measured headless performance followup. Sources/independent/current evidence privately archived."
     },
     {
       "id": "artis-animal-easter-egg",

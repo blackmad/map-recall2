@@ -367,7 +367,7 @@
       "dateSource": "git-history"
     },
     "jeruzalemkerk": {
-      "updatedAt": "2026-10-05T16:56:09.416Z",
+      "updatedAt": "2026-10-06T11:39:49.126Z",
       "version": "202fbee82e35d0c0",
       "dateSource": "asset-update"
     },
@@ -467,7 +467,7 @@
       "dateSource": "git-history"
     },
     "naco-house": {
-      "updatedAt": "2026-10-05T16:23:53.459Z",
+      "updatedAt": "2026-10-06T11:39:49.126Z",
       "version": "df4445c3f6b327bb",
       "dateSource": "asset-update"
     },
@@ -492,7 +492,7 @@
       "dateSource": "git-history"
     },
     "nikolaas-myrakerk": {
-      "updatedAt": "2026-10-05T16:23:53.443Z",
+      "updatedAt": "2026-10-06T11:39:49.126Z",
       "version": "c1750d621307d40f",
       "dateSource": "asset-update"
     },
@@ -822,8 +822,23 @@
       "dateSource": "asset-update"
     },
     "midwest": {
-      "updatedAt": "2026-10-06T10:31:27.831Z",
-      "version": "4fff0ebe8e393e1b",
+      "updatedAt": "2026-10-06T11:39:49.126Z",
+      "version": "0cf4c0abc070d609",
+      "dateSource": "asset-update"
+    },
+    "beest-het-lab": {
+      "updatedAt": "2026-10-06T10:41:24.593Z",
+      "version": "ec32672c79476dd7",
+      "dateSource": "asset-update"
+    },
+    "blauwe-theehuis": {
+      "updatedAt": "2026-10-06T10:41:24.578Z",
+      "version": "88d7c482fb829252",
+      "dateSource": "asset-update"
+    },
+    "groot-melkhuis": {
+      "updatedAt": "2026-10-06T10:41:24.587Z",
+      "version": "236cf1e655704a19",
       "dateSource": "asset-update"
     },
     "kesbeke-shop": {

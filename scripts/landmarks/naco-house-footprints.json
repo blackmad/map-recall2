@@ -1,0 +1,377 @@
+{
+  "id": "naco-house",
+  "canonicalPoiId": "extract_landmarks_1769455774",
+  "bag": {
+    "type": "Feature",
+    "id": "pand.d84d77cb-3dcd-4ff4-930a-564b985f9e40",
+    "properties": {
+      "identificatie": "0363100012570001",
+      "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012570001",
+      "bouwjaar": 2022,
+      "status": "Pand in gebruik",
+      "gebruiksdoel": "kantoorfunctie",
+      "oppervlakte_min": 240,
+      "oppervlakte_max": 240,
+      "aantal_verblijfsobjecten": 1
+    },
+    "bbox": [
+      4.905358796411994,
+      52.3786009243915,
+      4.905526519945119,
+      52.37879229610305
+    ],
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.905526519945119,
+            52.37877710159099
+          ],
+          [
+            4.905509650889101,
+            52.37877928889718
+          ],
+          [
+            4.905510748986826,
+            52.378782304243735
+          ],
+          [
+            4.905437223130524,
+            52.37879229610305
+          ],
+          [
+            4.905436054147489,
+            52.37878904678717
+          ],
+          [
+            4.9054191845942725,
+            52.37879127901699
+          ],
+          [
+            4.905358796411994,
+            52.37862482375591
+          ],
+          [
+            4.905375651316772,
+            52.37862258248756
+          ],
+          [
+            4.905374454533761,
+            52.37861918925459
+          ],
+          [
+            4.905407139173102,
+            52.3786009243915
+          ],
+          [
+            4.905448093891927,
+            52.37860953942917
+          ],
+          [
+            4.905449262480599,
+            52.37861282469427
+          ],
+          [
+            4.905465984912146,
+            52.37861060983734
+          ],
+          [
+            4.905526519945119,
+            52.37877710159099
+          ]
+        ]
+      ]
+    }
+  },
+  "osm": {
+    "id": "w1535749695",
+    "tags": {
+      "building": "office",
+      "building:levels": "2",
+      "heritage": "2",
+      "heritage:operator": "rce",
+      "historic": "yes",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Steiger_7%2C_scheepvaartkantoor%2C_Amsterdam_01.jpg",
+      "name": "NACO-huisje",
+      "name:en": "NACO-house",
+      "name:nl": "NACO-huisje",
+      "panoramax": "8f7cfc78-494a-4cd9-aae0-e5fff473fd01",
+      "ref:bag": "0363100012570001",
+      "ref:rce": "518409",
+      "roof:levels": "0",
+      "roof:shape": "gabled",
+      "source": "BAG",
+      "source:date": "2026-07-06",
+      "start_date": "2022",
+      "wikidata": "Q17291508",
+      "wikimedia_commons": "Category:Steiger 7 (Amsterdam)",
+      "wikipedia": "nl:Kantoor van Koppe's Scheepsagentuur"
+    },
+    "polygon": [
+      [
+        4.9053597,
+        52.3786247
+      ],
+      [
+        4.90542,
+        52.3787912
+      ],
+      [
+        4.9054369,
+        52.378789
+      ],
+      [
+        4.9054381,
+        52.3787922
+      ],
+      [
+        4.9054746,
+        52.3787871
+      ],
+      [
+        4.9055116,
+        52.3787822
+      ],
+      [
+        4.9055105,
+        52.3787792
+      ],
+      [
+        4.9055274,
+        52.378777
+      ],
+      [
+        4.9054668,
+        52.3786105
+      ],
+      [
+        4.9054501,
+        52.3786127
+      ],
+      [
+        4.905449,
+        52.3786094
+      ],
+      [
+        4.905408,
+        52.3786008
+      ],
+      [
+        4.9053753,
+        52.3786191
+      ],
+      [
+        4.9053765,
+        52.3786225
+      ],
+      [
+        4.9053597,
+        52.3786247
+      ]
+    ]
+  },
+  "mainLocalRing": [
+    [
+      3.69,
+      -9.601
+    ],
+    [
+      2.5185,
+      -9.5896
+    ],
+    [
+      2.5194,
+      -9.9312
+    ],
+    [
+      -2.5976,
+      -9.9311
+    ],
+    [
+      -2.5976,
+      -9.5632
+    ],
+    [
+      -3.7702,
+      -9.5567
+    ],
+    [
+      -3.8052,
+      9.2953
+    ],
+    [
+      -2.6333,
+      9.2899
+    ],
+    [
+      -2.6318,
+      9.6737
+    ],
+    [
+      -0.0272,
+      11.1657
+    ],
+    [
+      2.4846,
+      9.6351
+    ],
+    [
+      2.4838,
+      9.2633
+    ],
+    [
+      3.6462,
+      9.2571
+    ],
+    [
+      3.69,
+      -9.601
+    ]
+  ],
+  "coordinateConvention": "Local X eastward short dimension, Z southward long dimension; rotate 12.466 degrees clockwise from east/south",
+  "anchor": [
+    4.905443,
+    52.3786995
+  ],
+  "retainedNeighborIds": [
+    "w1060147929"
+  ],
+  "sources": [
+    {
+      "url": "https://stadsherstel.nl/monumenten/de-ruijterkade-naco-huisje/",
+      "cached": "artifacts/landmarks/naco-house/references/owner.html",
+      "role": "Current-owner restored timber/windows, relocation and restoration narrative",
+      "rights": "Stadsherstel copyright; reference only"
+    },
+    {
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518409",
+      "cached": "artifacts/landmarks/naco-house/references/rce.html",
+      "role": "Architectural register original description"
+    },
+    {
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=De%20Ruijterkade%2099%20NACO",
+      "cached": "artifacts/landmarks/naco-house/references/archive.html",
+      "role": "Bounded address/name search",
+      "access": "HTML viewer shell; no digitized sheet inspected"
+    },
+    {
+      "url": "https://amsterdamopdekaart.nl/1850-1940/De_Ruijterkade/Naco-huisje",
+      "cached": "artifacts/landmarks/naco-house/references/context.html",
+      "role": "Archive-linked context historical/current location"
+    },
+    {
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012570001",
+      "cached": "artifacts/landmarks/naco-house/references/3dbag.json",
+      "retrievedOn": "2026-10-05",
+      "sha256": "22b33014eafe4dbe4f491a2e41d17f9dfda8bfdaf116858fc1924703e13298dc",
+      "rights": "ODbL OSM / CC0 BAG+3DBAG; Stadsherstel photos/drawing copyright reference-only as applicable"
+    },
+    {
+      "url": "https://stadsherstel.nl/wp-content/uploads/2020/05/NACO-Huisje_nieuwe-letters.jpg",
+      "cached": "artifacts/landmarks/naco-house/references/restored.jpg",
+      "retrievedOn": "2026-10-05",
+      "sha256": "e2a8bf3f01b1afe7d51576e00cc37caaac12bfc2e0bac96fa4c415eb2fdf37a9",
+      "rights": "ODbL OSM / CC0 BAG+3DBAG; Stadsherstel photos/drawing copyright reference-only as applicable"
+    },
+    {
+      "url": "https://stadsherstel.nl/wp-content/uploads/2020/05/naco-huisje_01-20211213-naco-huisje-bij-vertrek-uit-zaandam-jan-reinier-van-der-vliet.jpg",
+      "cached": "artifacts/landmarks/naco-house/references/departure.jpg",
+      "retrievedOn": "2026-10-05",
+      "sha256": "fc9b34fef967cd1f90d69b5e78ce6c207742ebdf4b5fa7c14c40275f80d848a0",
+      "rights": "ODbL OSM / CC0 BAG+3DBAG; Stadsherstel photos/drawing copyright reference-only as applicable"
+    },
+    {
+      "url": "https://stadsherstel.nl/wp-content/uploads/2020/05/naco-huisje_13-20211213-naco-huisje-jan-reinier-van-der-vliet-3376.jpg",
+      "cached": "artifacts/landmarks/naco-house/references/return.jpg",
+      "retrievedOn": "2026-10-05",
+      "sha256": "84e6027d928df4ce8530b8cafc9503cc5d5c95e7f86a406b1dd700b6d148e218",
+      "rights": "ODbL OSM / CC0 BAG+3DBAG; Stadsherstel photos/drawing copyright reference-only as applicable"
+    },
+    {
+      "url": "https://stadsherstel.nl/wp-content/uploads/2020/05/naco-huisje_18-20211213-naco-huisje-opplaatsing-bij-cs-3546-jan-reinier-van-der-vliet.jpg",
+      "cached": "artifacts/landmarks/naco-house/references/owner-placement.jpg",
+      "retrievedOn": "2026-10-05",
+      "sha256": "28aa47893e04d3439016dd93df49194ab9c4ac04767bf545c55b5124abbd7e7b",
+      "rights": "ODbL OSM / CC0 BAG+3DBAG; Stadsherstel photos/drawing copyright reference-only as applicable"
+    },
+    {
+      "url": "https://stadsherstel.nl/wp-content/uploads/2020/06/tekening-naco-huisje-verbeterd-800x540.jpg",
+      "cached": "artifacts/landmarks/naco-house/references/drawing.jpg",
+      "retrievedOn": "2026-10-05",
+      "sha256": "be0742baca5e3b6e9c2d9889bf6a65b74f7b94a31a9387315f4fb43c11ac105e",
+      "rights": "ODbL OSM / CC0 BAG+3DBAG; Stadsherstel photos/drawing copyright reference-only as applicable"
+    },
+    {
+      "url": "https://www.openstreetmap.org/api/0.6/map?bbox=4.9049,52.3783,4.9060,52.3790",
+      "cached": "artifacts/landmarks/naco-house/references/osm.xml",
+      "retrievedOn": "2026-10-05",
+      "sha256": "265162c4dd08127a83dbc3d492984ca6ed4d8ff6f16733bd293e2372908cd8ec",
+      "rights": "ODbL OSM / CC0 BAG+3DBAG; Stadsherstel photos/drawing copyright reference-only as applicable"
+    },
+    {
+      "url": "https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&typeNames=bag:pand&outputFormat=application/json&srsName=EPSG:4326&bbox=52.3785,4.9053,52.3789,4.9056,EPSG:4326",
+      "cached": "artifacts/landmarks/naco-house/references/bag-current.json",
+      "retrievedOn": "2026-10-05",
+      "sha256": "256ee2a8fdf4da0d0f0a1e90cda5b4c8a479535d56ef198d02a2f67d6b8db4da",
+      "rights": "ODbL OSM / CC0 BAG+3DBAG; Stadsherstel photos/drawing copyright reference-only as applicable"
+    },
+    {
+      "url": "https://stadsherstel.nl/nieuws/terugblik-op-onze-restauratieprojecten-van-2022/",
+      "cached": "artifacts/landmarks/naco-house/references/restoration-2022.html",
+      "retrievedOn": "2026-10-05",
+      "sha256": "539d753df25b187f59d89dc2dd2c982b15602b9edc56856fdd7ba344ac9a44f4",
+      "rights": "ODbL OSM / CC0 BAG+3DBAG; Stadsherstel photos/drawing copyright reference-only as applicable"
+    },
+    {
+      "url": "https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&typeNames=bag:pand&outputFormat=application/json&srsName=EPSG:4326&bbox=4.9053,52.3785,4.9056,52.3789,EPSG:4326",
+      "cached": "artifacts/landmarks/naco-house/references/bag-local.json",
+      "access": "Empty response from mistaken EPSG4326 axis order; superseded by bag-current.json correct lat/lon bbox."
+    }
+  ],
+  "sourceArchive": {
+    "path": "models/naco-house",
+    "commit": null,
+    "status": "raw cached inputs ready for root archival sync before model commit"
+  },
+  "heightNotes": {
+    "source": "3DBAG AHN5 2023; terrain 0.879 NAP; fitted low eaves 7.778-7.919 NAP, ridge 11.260 NAP",
+    "floorMetres": 3.15,
+    "eavesMetres": 7.05,
+    "ridgeMetres": 10.38,
+    "support": "Concrete piers five west from RCE and source drawing; dimensions inferred photograph/drawing; east narrow ground-floor strip from RCE",
+    "bagYear": "2022 current registration; historic construction 1919",
+    "area": "3DBAG 147.06 square metres ground footprint; BAG 240 VBO usable area is separate"
+  },
+  "architecturalAssertions": [
+    {
+      "source": "RCE 518409",
+      "part": "Ground floor",
+      "assertion": "Half-open ground floor, west five tapering posts with projecting heads, east narrow volume",
+      "confidence": "high"
+    },
+    {
+      "source": "RCE 518409 / Stadsherstel owner photos",
+      "part": "roof",
+      "assertion": "Landward leaning projecting pointed gable, waterward hipped end; restored orange tiles",
+      "confidence": "high"
+    },
+    {
+      "source": "RCE 518409",
+      "part": "timber facade",
+      "assertion": "Horizontal boards, V boards in leaning gable, irregular windows some divided/diamond, flame saw ornaments and flag mast",
+      "confidence": "high"
+    }
+  ],
+  "accessGaps": [
+    "Beeldbank bounded address/name viewer shell cached, no original archive drawing accessed; owner drawing cached instead",
+    "Bouwdossiers: no sheet obtained; current reconstruction and measured AHN roof sufficient for this scoped draft",
+    "Commons current February2022 original HTTP403; cannot claim inspected/downloaded"
+  ],
+  "approximations": [
+    "Window grouping/photo-scaled pane divisions, exact decorative flame motifs simplified",
+    "Piers and floor heights inferred from reference, ground floor east-strip interior inaccessible",
+    "Roof crest uses measured AHN cap with sampled curvature; flagmast estimated",
+    "Main upper room simplifies minor BAG end returns; no dock/pontoon slab included"
+  ]
+}

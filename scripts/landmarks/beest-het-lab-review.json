@@ -1,0 +1,282 @@
+{
+  "id": "beest-het-lab",
+  "status": "Current source/gallery and native game integration verified; performance followup retained",
+  "sourceFiles": [
+    {
+      "path": "artifacts/landmarks/beest-het-lab/references/panorama-index.json",
+      "sha256": "8ab90fa47c19afd02f116987e2571bf7ce3c46919ddd314887f1255bee17d57e",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes"
+    },
+    {
+      "path": "artifacts/landmarks/beest-het-lab/references/pdok-address.json",
+      "sha256": "1c1d5504965d197c3ed62d979c5895b0d35f044879b1c20c441ff32b6d2e6605",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes"
+    },
+    {
+      "path": "artifacts/landmarks/beest-het-lab/references/bag-vbo.json",
+      "sha256": "bf32a7e17545552b19d7146a911a1b9cac76553f8bd946dd4e0291704bb6630e",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes"
+    },
+    {
+      "path": "artifacts/landmarks/beest-het-lab/references/panorama-0-metadata.json",
+      "sha256": "53b2d6046df05cd610b2b51848b7173e4d3d16052475eb2604c6550519c2d7f0",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes"
+    },
+    {
+      "path": "artifacts/landmarks/beest-het-lab/references/panorama-side-metadata.json",
+      "sha256": "48fab386549970846d309316782c5c35b119654c68e93edb22e44ccdea41b1f4",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes"
+    },
+    {
+      "path": "artifacts/landmarks/beest-het-lab/references/beeldbank.html",
+      "sha256": "ea308a007fb654717e5a151c7c5c214ff3da628f39beca59824a6e2b2aa4e994",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes"
+    },
+    {
+      "path": "artifacts/landmarks/beest-het-lab/references/3dbag.json",
+      "sha256": "b4a704376fe47861c09e72bf87336de5ddba5a59a9a2100eee661eaec9e9a188",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes"
+    },
+    {
+      "path": "artifacts/landmarks/beest-het-lab/references/panorama-1.jpg",
+      "sha256": "7f52c0f5cc5faa4ca992c49fbb7a3932452b801b820faea895b29bbb575628ef",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes"
+    },
+    {
+      "path": "artifacts/landmarks/beest-het-lab/references/panorama-0.jpg",
+      "sha256": "9b3ae252ec0f3dff38b2f0e7b2e9a12831e63095c7ee977bfb886f31d6f36613",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes"
+    },
+    {
+      "path": "artifacts/landmarks/beest-het-lab/references/bag-bbox.json",
+      "sha256": "bfd84eb83deb34366f69e3b453414fde3de72cd3123eed91611e08d2815a6c6f",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes"
+    },
+    {
+      "path": "artifacts/landmarks/beest-het-lab/references/panorama-side.jpg",
+      "sha256": "276abf1a4366cbb356a9c3538814cff73874719afbda88be30d25683a1411caa",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes"
+    },
+    {
+      "path": "artifacts/landmarks/beest-het-lab/references/panorama-1-metadata.json",
+      "sha256": "c7d731d47876cb23bd57f83c1a4dbdb5a1a7fd28725ca988cb51e04e89822613",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes"
+    },
+    {
+      "path": "artifacts/landmarks/beest-het-lab/references/panorama-index-current.json",
+      "sha256": "a57743e874267e3001f772bfdddbf2e0ccae2d7071823bb23f8ca7a7cc664b45",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes"
+    },
+    {
+      "path": "artifacts/landmarks/beest-het-lab/references/operator-tunnelpark-2021.pdf",
+      "sha256": "925d2dbba70b6cf20578428c7f70e0405ecaba6ef2d5cdb155bcacc713c3748e",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes"
+    }
+  ],
+  "sourceUrls": [
+    "https://beestboulders.com/boulderen/het-lab-amsterdam/",
+    "https://archief.amsterdam/beeldbank/?q=Transformatorweg%2032",
+    "https://api.data.amsterdam.nl/panorama/panoramas/",
+    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012123591"
+  ],
+  "sourcesAccessGaps": [
+    "Operator website403; bounded owner fetch attempted both hostnames. I amsterdam page403 via raw request, browser search text available, original not captured.",
+    "Beeldbank is JavaScript shell, no facade photographs inspected there. Municipal July2025 original panorama supplies current facade evidence."
+  ],
+  "recognitionCriteria": [
+    "Brown industrial brickfront with horizontal upper clerestory",
+    "Raised glazed office with broad white fascia",
+    "Multiple warehouse sawteeth visible in top/context gallery views",
+    "Tall central roller shutter and smaller glazed front door",
+    "East neighboring physical building remains drawn; no parcel slab suppression",
+    "Specifically compare right third of raised office glazing: source-derived sloping end may occlude it. Failedx4CPU probe preserved."
+  ],
+  "checks": {
+    "cpuGeometry": "rerun pending after raised-office frontage repair",
+    "gallery": "pending coordinator",
+    "liveGame": "pending coordinator",
+    "poiDestinationPinCard": "pending coordinator"
+  },
+  "identity": {
+    "bagPand": "0363100012123591",
+    "bagVbo": "0363010011117364",
+    "extractFeature": null,
+    "requestIdentity": "requested-het-lab",
+    "aliasRequest": "Beest Boulders Het Lab",
+    "retainedNeighbor": "NL.IMBAG.Pand.0363100012151118"
+  },
+  "limitations": [
+    "Exact floor heights and small facade panes inferred from municipal photograph; no permit elevation available.",
+    "Two VBOs share this physically self-contained warehouse; neither is an unrelated adjacent Pand.",
+    "No invented painted words; observed lettering omitted at this model scale.",
+    "Entrance destination pin is south roadside public approach; coordinator must route-check it."
+  ],
+  "sourceArchive": {
+    "commit": "5e4e6b6",
+    "path": "models/beest-het-lab",
+    "priorSourcesCommit": "9926aa1"
+  },
+  "failedEvidence": [
+    {
+      "probe": "front raised office x4,y7.1",
+      "result": "greyBrick first hit atz33.743,not glass",
+      "interpretation": "Survey south-east sloping office end closes this bay. Central office x-8,-3,0 passes. Gallery reviewer must determine if source wedge occludes too much of glazed raised office; no visual acceptance.",
+      "resolution": "July2025 municipal front shows continuous raised-office glazing. Added bounded0.55m source-photo fascia/frame projection to expose actual right third over AHN fitted end wedge. Allx−8,−3,0,4 officefirsthit probes now required. Failed evidence retained."
+    }
+  ],
+  "independentVisualReview": {
+    "reviewedBy": "vondelpark_venue_loop (independent, not author)",
+    "reviewedOn": "2026-10-05",
+    "status": "gallery-and-scoped-native-visual-pass",
+    "evidence": [
+      "artifacts/landmarks/beest-het-lab/references/panorama-1.jpg",
+      "artifacts/beest-het-lab-review/gallery.png",
+      "artifacts/beest-het-lab-review/gallery-angle-0.png",
+      "artifacts/beest-het-lab-review/gallery-angle-1.png",
+      "artifacts/beest-het-lab-review/gallery-angle-2.png",
+      "artifacts/beest-het-lab-review/gallery-angle-3.png",
+      "artifacts/beest-het-lab-review/neutral-front.png",
+      "artifacts/beest-het-lab-review/live-rear.png"
+    ],
+    "findings": [
+      "Municipal July2025 front and current four-angle gallery agree on brown brick warehouse, horizontal front clerestory, large roller shutter and raised glazed office with broad white fascia.",
+      "Corrected right third of raised southern office reads as exposed continuous glazing rather than a closed opaque bay in current front gallery. Earlier failed x4 CPU evidence remains in failedEvidence.",
+      "Gallery roof surfaces show consistent repeated industrial sawteeth without obvious fins or floating caps. Front panorama does not independently establish every sawtooth glazing division.",
+      "Direct native neutral-front inspection shows exposed continuous raised-office glazing, brown brick and roller shutter, with adjacent east building retained. Live rear shows repeated warehouse sawteeth and surrounding buildings; no observed parcel-fill defect."
+    ],
+    "limitations": [
+      "Rear camera foreground building obscures lowest rear facade; roof pane divisions remain outside front-source comparison.",
+      "No performance measurement independently observed."
+    ]
+  },
+  "acceptance": {
+    "gallery": true,
+    "liveGame": true,
+    "poiContract": true,
+    "privateSourceArchiveCommit": "9926aa1fba89e7758fc9e11d1b0dfde0fb4fc4aa",
+    "privateSourceArchivePath": "models/beest-het-lab/",
+    "scope": "Original native-scale house-style exterior; source-derived architectural recognition and exact replaced scope. Fine-detail/photo-ratio uncertainties retained; no new independent GPU performance claim."
+  },
+  "coordinatorReview": {
+    "reviewedOn": "2026-10-05",
+    "reviewer": "root",
+    "status": "pass-scoped",
+    "evidenceDirectory": "artifacts/beest-het-lab-review",
+    "runtimeEvidence": "Actual selected route destination, geographic pin, physical click sourced card, native scale 1 and retained resident drawable neighbors verified with review-manual-pois.mjs.",
+    "geometryEvidence": "scripts/check-beest-het-lab-geometry.ts",
+    "independentReviewStatus": "gallery-and-scoped-native-visual-pass"
+  },
+  "export": {
+    "sha256": "ec32672c79476dd7c930174a24dff8a11bbc916b6cd707729b5daca8f3ffc893",
+    "bytes": 35800
+  },
+  "currentIndependentReview": "models/beest-het-lab/validation/clean-release-20261006/independent-review.json",
+  "currentRuntime": {
+    "proof": {
+      "id": "beest-het-lab",
+      "actualCamera": {
+        "center": [
+          4.85133,
+          52.39261
+        ],
+        "zoom": 18.8,
+        "pitch": 55.00000000000001,
+        "bearing": 0,
+        "elevation": 0
+      },
+      "assetVersion": "ec32672c79476dd7",
+      "scale": 1,
+      "bias": false,
+      "broad": false,
+      "pin": true,
+      "destination": true,
+      "source": "https://beestboulders.com/boulderen/het-lab-amsterdam/",
+      "click": {
+        "x": 765.8639195292225,
+        "y": 496.10689688676445
+      },
+      "aliases": [
+        {
+          "id": "NL.IMBAG.Pand.0363100012123591",
+          "hidden": true
+        }
+      ],
+      "oldPyramidIds": [],
+      "neighbors": [
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012151118"
+          ],
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        }
+      ],
+      "features": 5974,
+      "buildings": 7661
+    },
+    "card": {
+      "notice": "requested-het-lab",
+      "source": "https://beestboulders.com/boulderen/het-lab-amsterdam/",
+      "alpha": 1,
+      "drawn": true,
+      "active": "requested-het-lab"
+    },
+    "performance": {
+      "id": "beest-het-lab",
+      "assetVersion": "ec32672c79476dd7",
+      "samples": [
+        {
+          "label": "model-visible",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 48,
+          "p95Ms": 61.59999990463257
+        },
+        {
+          "label": "same-scene-model-hidden",
+          "visible": false,
+          "frames": 60,
+          "p50Ms": 35.89999961853027,
+          "p95Ms": 55.59999990463257
+        },
+        {
+          "label": "model-visible-repeat",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 46.80000019073486,
+          "p95Ms": 56.40000009536743
+        }
+      ],
+      "buildings": {
+        "kitVertices": 59691,
+        "chunks": 26,
+        "buildings": 7661,
+        "walls": 43825,
+        "quads": 200452,
+        "vertices": 1390607,
+        "geometryMB": 46.04998970031738,
+        "textureMB": 97.5,
+        "drawCalls": 2,
+        "triangles": 46943,
+        "buildMs": 6.299999237060547
+      },
+      "scope": "Headless Chromium same stationary scene; hidden model keeps existing replacement masks, isolating custom draw cost. No whole-game performance pass claimed."
+    },
+    "performanceAcceptance": "Stationary headless evidence only; no general smooth gameplay or physical touch performance acceptance."
+  }
+}

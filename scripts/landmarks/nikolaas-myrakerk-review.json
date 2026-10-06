@@ -1,0 +1,270 @@
+{
+  "id": "nikolaas-myrakerk",
+  "status": "Current source/gallery and native game integration verified; performance followup retained",
+  "referenceImages": [
+    "artifacts/landmarks/nikolaas-myrakerk/references/tichelstraat.jpg",
+    "artifacts/landmarks/nikolaas-myrakerk/references/Tichelkerk_in_de_Lijnbaansgracht_foto_1.jpg"
+  ],
+  "cpuChecks": {
+    "finiteNativeGeometry": true,
+    "upwardBoundedRoofPlanes": true,
+    "stableAllRingPlaneFit": true,
+    "firstHitStreetGlazing": true,
+    "openCanalForecourt": true,
+    "triangles": 8924
+  },
+  "pending": [
+    "Native gallery default and four lower rotations against both photographs",
+    "Live-game Tichelstraat and canal views; exact replacement suppression and adjacent46 retention",
+    "Destination, visible pin and physical click of useful card",
+    "Private raw source archive sync/commit before model commit"
+  ],
+  "limitations": [
+    "Lantern/cross and chimney approximate photo proportions",
+    "2017 exterior photos; current 2023 AHN5 scope/heights. No detailed permit drawing inspected.",
+    "Municipal full register request 404; architecture catalogue read and archived; no claim of official architectural prose extraction."
+  ],
+  "specPath": "scripts/landmarks/nikolaas-myrakerk-spec.json",
+  "neighbors": [
+    [
+      "w266556814",
+      "NL.IMBAG.Pand.0363100012173180"
+    ]
+  ],
+  "neighborEvidence": [
+    {
+      "address": "Lijnbaansgracht 46",
+      "bagId": "0363100012173180",
+      "sourcePath": "artifacts/landmarks/nikolaas-myrakerk/references/neighbor-46-pand.json",
+      "method": "Official PDOK address -> current VBO -> linked Pand; usable area not used as footprint."
+    }
+  ],
+  "bearing": 282,
+  "oppositeBearing": 102,
+  "zoom": 19.7,
+  "oppositeZoom": 18.4,
+  "pitch": 45,
+  "runtimeChecksRequired": {
+    "finishCanonicalId": "extract_landmarks_2003244540",
+    "physicalPointerCard": true,
+    "geographicPin": true,
+    "scale": 1,
+    "spatialSuppression": false,
+    "exactMaskAliases": [
+      "w266555973",
+      "NL.IMBAG.Pand.0363100012169397"
+    ],
+    "fallbackRestoreOnDisable": true,
+    "independentPyramidalRoofMask": true,
+    "neighborsResidentDrawableNotHidden": true
+  },
+  "independentVisualReviewHistory": [
+    {
+      "status": "fail-requires-facade-attachment-and-entrance-correction",
+      "reviewedOn": "2026-10-05",
+      "reviewer": "independent-static-review",
+      "scope": "Saved gallery default/four rotations and available neutral/live front screenshots; no GPU session run by reviewer.",
+      "referenceImages": [
+        "artifacts/landmarks/nikolaas-myrakerk/references/tichelstraat.jpg",
+        "artifacts/landmarks/nikolaas-myrakerk/references/Tichelkerk_in_de_Lijnbaansgracht_foto_1.jpg"
+      ],
+      "passed": [
+        "Steep slate nave roof/open lantern and six lower round-headed triple groups provide recognizable church composition.",
+        "Canal forecourt remains open in gallery-angle-3; surrounding live buildings remain visible in neutral-front."
+      ],
+      "failures": [
+        {
+          "severity": "blocking",
+          "feature": "rectangular facade glazing attachment",
+          "evidence": [
+            "artifacts/nikolaas-myrakerk-review/failed-first-pass/gallery-angle-0.png",
+            "artifacts/nikolaas-myrakerk-review/failed-first-pass/gallery-angle-1.png",
+            "artifacts/nikolaas-myrakerk-review/failed-first-pass/gallery-angle-2.png",
+            "artifacts/nikolaas-myrakerk-review/failed-first-pass/gallery-angle-3.png"
+          ],
+          "observation": "Two left upper rectangular bays float entirely outside brick in angle 0; left clerestory opening floats in angle 1; opposite angles show detached rear faces. Rectangular domestic/clerestory facade assemblies must attach to actual installed shell, including full opening widths. CPU firstHitStreetGlazing did not catch this."
+        },
+        {
+          "severity": "blocking",
+          "feature": "Tichelstraat end entrance bay",
+          "evidence": [
+            "artifacts/nikolaas-myrakerk-review/failed-first-pass/gallery-angle-1.png",
+            "artifacts/landmarks/nikolaas-myrakerk/references/tichelstraat.jpg"
+          ],
+          "observation": "Source shows a lower small doorway and large round oculus in a separate end bay at the lantern end, before the triple groups. Render has only repeating triples and builder has no lower doorway/oculus assembly. Add source-supported end assembly while retaining neighboring house."
+        }
+      ],
+      "limitations": [
+        "No independent performance observation; native opposite view not yet inspected.",
+        "Individual decorative details may remain simplified, but detached glazing and missing characteristic entrance are not palette/proportion limitations."
+      ]
+    }
+  ],
+  "independentVisualReview": {
+    "status": "gallery-and-native-live-visual-pass",
+    "reviewedOn": "2026-10-05",
+    "reviewer": "independent-static-review",
+    "scope": "Fresh four gallery rotations after failed-first-pass fixes. Root GPU captures; reviewer static source comparison. Fresh current native neutral-front and live-rear inspected independently.",
+    "evidence": [
+      "artifacts/nikolaas-myrakerk-review/gallery-angle-0.png",
+      "artifacts/nikolaas-myrakerk-review/gallery-angle-1.png",
+      "artifacts/nikolaas-myrakerk-review/gallery-angle-2.png",
+      "artifacts/nikolaas-myrakerk-review/gallery-angle-3.png",
+      "artifacts/nikolaas-myrakerk-review/neutral-front.png",
+      "artifacts/nikolaas-myrakerk-review/live-rear.png"
+    ],
+    "passed": [
+      "All rectangular windows visible in four rotations now have brick backing; former floating assemblies eliminated.",
+      "Lantern-end Tichelstraat doorway and round light now visible before six triple bays.",
+      "Native Tichelstraat view shows roof, open lantern, attached clerestory panes and exposed lower triple groups/entrance oculus; foreground opposite row partially occludes ground level as expected in narrow street.",
+      "Native canal view preserves open white forecourt between church and domestic wing, boundary/gate and visible ordinary neighbors; no detached panes seen."
+    ],
+    "failures": [],
+    "preservedFailureEvidence": "artifacts/nikolaas-myrakerk-review/failed-first-pass/",
+    "limitations": [
+      "No independent performance observation.",
+      "This independent static review accepts visual geometry/scene integration only; source archival, performance and overall completion remain coordinator checks."
+    ]
+  },
+  "coordinatorCorrection": {
+    "date": "2026-10-05",
+    "status": "CPU-ready-awaiting-new-visual-review",
+    "changes": [
+      "Upper monastery windows follow actual surveyed roof12 wall edges rather than low parcel boundary",
+      "Clerestory panels projected onto actual surveyed nave backing",
+      "Source northern Tichelstraat doorway and round light restored"
+    ],
+    "checks": "245 backing probes and first-hit exposure for every window family; original near-facade forecourt probe retains structural test, all-geometry probe moved1m further into same open forecourt to avoid legitimate projecting sill"
+  },
+  "cameraCenter": [
+    4.88061,
+    52.37907
+  ],
+  "cameraCorrection": "Prior native view obscured main front or used nonresident context; preserve failed images/evidence and re-review conventional closer principal views.",
+  "acceptance": {
+    "gallery": true,
+    "liveGame": true,
+    "poiContract": true,
+    "privateSourceArchiveCommit": "9926aa1fba89e7758fc9e11d1b0dfde0fb4fc4aa",
+    "privateSourceArchivePath": "models/nikolaas-myrakerk/",
+    "scope": "Original native-scale house-style exterior; source-derived architectural recognition and exact replaced scope. Fine-detail/photo-ratio uncertainties retained; no new independent GPU performance claim."
+  },
+  "coordinatorReview": {
+    "reviewedOn": "2026-10-05",
+    "reviewer": "root",
+    "status": "pass-scoped",
+    "evidenceDirectory": "artifacts/nikolaas-myrakerk-review",
+    "runtimeEvidence": "Actual selected route destination, geographic pin, physical click sourced card, native scale 1 and retained resident drawable neighbors verified with review-manual-pois.mjs.",
+    "geometryEvidence": "scripts/check-nikolaas-myrakerk-geometry.ts",
+    "independentReviewStatus": "gallery-and-native-live-visual-pass"
+  },
+  "sourceArchive": {
+    "commit": "5e4e6b6",
+    "path": "models/nikolaas-myrakerk",
+    "priorSourcesCommit": "9926aa1"
+  },
+  "export": {
+    "sha256": "c1750d621307d40f958d4a37f0fbba4ca315a8234103c978cc979e7c81a7a492",
+    "bytes": 126712
+  },
+  "currentIndependentReview": "models/nikolaas-myrakerk/validation/clean-release-20261006/independent-review.json",
+  "currentRuntime": {
+    "proof": {
+      "id": "nikolaas-myrakerk",
+      "actualCamera": {
+        "center": [
+          4.88061,
+          52.37907
+        ],
+        "zoom": 19.7,
+        "pitch": 45,
+        "bearing": -77.99999999999999,
+        "elevation": 0
+      },
+      "assetVersion": "c1750d621307d40f",
+      "scale": 1,
+      "bias": false,
+      "broad": false,
+      "pin": true,
+      "destination": true,
+      "source": "https://orthodox-amsterdam.nl/wie-wijzijn/",
+      "click": {
+        "x": 756.6921983721011,
+        "y": 514.4812745714156
+      },
+      "aliases": [
+        {
+          "id": "w266555973",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012169397",
+          "hidden": true
+        }
+      ],
+      "oldPyramidIds": [],
+      "neighbors": [
+        {
+          "ids": [
+            "w266556814",
+            "NL.IMBAG.Pand.0363100012173180"
+          ],
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        }
+      ],
+      "features": 11608,
+      "buildings": 16526
+    },
+    "card": {
+      "notice": "extract_landmarks_2003244540",
+      "source": "https://orthodox-amsterdam.nl/wie-wijzijn/",
+      "alpha": 1,
+      "drawn": true,
+      "active": "extract_landmarks_2003244540"
+    },
+    "performance": {
+      "id": "nikolaas-myrakerk",
+      "assetVersion": "c1750d621307d40f",
+      "samples": [
+        {
+          "label": "model-visible",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 66,
+          "p95Ms": 69.30000019073486
+        },
+        {
+          "label": "same-scene-model-hidden",
+          "visible": false,
+          "frames": 60,
+          "p50Ms": 70.5,
+          "p95Ms": 75.19999980926514
+        },
+        {
+          "label": "model-visible-repeat",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 75.90000009536743,
+          "p95Ms": 87.80000019073486
+        }
+      ],
+      "buildings": {
+        "kitVertices": 184434,
+        "chunks": 25,
+        "buildings": 16526,
+        "walls": 93542,
+        "quads": 425361,
+        "vertices": 3471300,
+        "geometryMB": 114.46551132202148,
+        "textureMB": 97.5,
+        "drawCalls": 7,
+        "triangles": 639836,
+        "buildMs": 0.9000000953674316
+      },
+      "scope": "Headless Chromium same stationary scene; hidden model keeps existing replacement masks, isolating custom draw cost. No whole-game performance pass claimed."
+    },
+    "performanceAcceptance": "Stationary headless evidence only; no general smooth gameplay or physical touch performance acceptance."
+  }
+}
