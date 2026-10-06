@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "builder": "scripts/ordinary-buildings/build.ts",
+  "command": "node --import tsx scripts/ordinary-buildings/build.ts",
+  "checkCommand": "node --import tsx scripts/ordinary-buildings/check.ts",
+  "sourceRootOverride": "ORDINARY_SOURCE_ROOT",
+  "sourceArchiveState": "Private source archive pushed/verified9ed72ffa39b0107d1a60c6efea88f7169b87c591",
+  "sourceObservation": "Cached municipal panorama perspective crops inspected by builder; root owns independent comparisons against source crops and aerials.",
+  "textureProvenance": "Original SVG rectangular facade graphics rasterized by sharp. No source-image pixels copied into GLB textures.",
+  "coordinateSystem": "Native surveyed polygon and courtyard holes; scale 1; local east/south metres, glTF Y up; source candidate bbox-centre anchor.",
+  "acceptance": "Ten standard source-limited exteriors reviewed independently and by root; actual desktop/touch game integration passed. Dated/unseen facade approximations retained.",
+  "failedChecks": [],
+  "checks": {
+    "finiteAttributes": true,
+    "uvBoundsZeroToOne": true,
+    "upwardRoofNormals": true,
+    "materialCountAtMostThree": true,
+    "targetedTypescriptCompile": true,
+    "surveyedLowAnnexRetained": true,
+    "tallEquipmentMaximumExcluded": true
+  },
+  "previousBatch": {
+    "state": "rejected",
+    "evidencePath": "/tmp/ordinary-ten-failed-20261006",
+    "reason": "Official 3DBAG geometry screen disproved simple-box eligibility for most first-pass candidates: open courtyards and major height wings absent from 2D installed tiles. No first-pass asset accepted."
+  },
+  "roofAssembly": "Main fitted RoofSurface polygons retriangulated, clipped against native installed footprint triangles and lifted by surveyed plane equations. Interior region boundaries close roof-height steps; dark low cap covers tiny source/native perimeter disagreements below roof planes. Source equipment patches below0.8% footprint omitted, and tall2238052 has explicit32m exclusion ceiling for34m equipment.",
+  "report": "docs/performance/2026-10-06/ordinary-buildings-ten-handoff.md"
+}

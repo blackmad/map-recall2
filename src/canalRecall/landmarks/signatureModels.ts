@@ -19,6 +19,7 @@
 
 import surveyedCatalogue from './surveyedLandmarks.json';
 import { MANUAL_LANDMARKS } from './manualModels';
+import { ORDINARY_BUILDINGS } from './ordinaryModels';
 import type { LngLat, OrientedFootprint, SignatureModelSpec } from './signaturePlacement';
 
 interface SurveyedCatalogueEntry {
@@ -127,7 +128,7 @@ function specFromCatalogue(entry: SurveyedCatalogueEntry): SignatureModelSpec {
 }
 
 export const SIGNATURE_MODELS: readonly SignatureModelSpec[] =
-  [...(surveyedCatalogue as SurveyedCatalogueEntry[]).filter(entry => !MANUAL_LANDMARKS.some(model => model.id === entry.id)).map(specFromCatalogue), ...MANUAL_LANDMARKS];
+  [...(surveyedCatalogue as SurveyedCatalogueEntry[]).filter(entry => !MANUAL_LANDMARKS.some(model => model.id === entry.id)).map(specFromCatalogue), ...MANUAL_LANDMARKS, ...ORDINARY_BUILDINGS];
 
 /** Looks up a spec by id. */
 export function signatureModel(id: string): SignatureModelSpec | undefined {

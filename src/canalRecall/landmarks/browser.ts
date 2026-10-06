@@ -38,4 +38,9 @@ export { basemapBuildingFilter, encodeBasemapBuildingId } from '../buildingStyle
 export {rdProjectionBasis,rdProjectedSurvey} from './rdProjectionBasis';
 
 export { MANUAL_LANDMARKS } from './manualModels';
-export {default as MODEL_ASSET_VERSIONS} from './modelAssetVersions.json';
+import modelVersions from './modelAssetVersions.json';
+import { ORDINARY_BUILDINGS, ORDINARY_BUILDING_VERSIONS } from './ordinaryModels';
+import { MANUAL_LANDMARKS as manualModels } from './manualModels';
+export { ORDINARY_BUILDINGS };
+export const GAME_BUILDING_MODELS = [...manualModels, ...ORDINARY_BUILDINGS];
+export const MODEL_ASSET_VERSIONS = { ...modelVersions, ...ORDINARY_BUILDING_VERSIONS };

@@ -103,7 +103,8 @@ export class SignatureLandmarks {
       if (depth < -1 || depth > 1 || result && depth >= result.depth) continue;
       result = { id: entry.spec.suppressOsmIds?.[0] || entry.spec.landmarkId,
         landmarkId: entry.spec.landmarkId, name: entry.spec.name,
-        lngLat: entry.placement.anchor, depth, featureTarget: null };
+        lngLat: entry.placement.anchor, depth, featureTarget: null,
+        ...(entry.spec.buildingFootprint ? { footprint: entry.spec.buildingFootprint, height: entry.spec.heightMetres } : {}) };
     }
     return result;
   }

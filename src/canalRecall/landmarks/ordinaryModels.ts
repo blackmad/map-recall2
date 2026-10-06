@@ -1,0 +1,23 @@
+/** Source-reviewed ordinary shells use the same lazy loading/fallback as landmarks.
+ * Their visual models do not create route destinations or trivia identities. */
+import catalogue from '../../../public/canal-drive/ordinary-buildings-data/catalogue.json';
+import type { SignatureModelSpec } from './signaturePlacement';
+
+type Entry = {
+  id: string; buildingId: string; name: string; anchor: [number, number];
+  footprint: { type: 'Polygon' | 'MultiPolygon'; coordinates: unknown };
+  height: number; modelUrl: string; hash: string; sourceUrls?: string[];
+  bounds: { min: number[]; max: number[] }; aliases?: string[];
+};
+const models = (catalogue as unknown as { models: Entry[] }).models;
+export const ORDINARY_BUILDING_VERSIONS: Readonly<Record<string, string>> = Object.fromEntries(models.map(m => [m.id, m.hash]));
+export const ORDINARY_BUILDINGS: readonly SignatureModelSpec[] = models.map(m => ({
+  id: m.id, assetKind: 'ordinary-building', name: m.name, landmarkId: '',
+  modelUrl: m.modelUrl, suppressOsmIds: [m.buildingId, ...(m.aliases ?? [])],
+  spatialSuppression: false, buildingFootprint: m.footprint, heightMetres: m.height,
+  heightToleranceMetres: .5, groundAltitudeMetres: 0, facingOffsetDegrees: 0,
+  // Radius is used for visibility/loading only; suppression always uses exact IDs.
+  footprint: { centre: m.anchor, headingDegrees: 90, lengthMetres: m.bounds.max[0] - m.bounds.min[0], widthMetres: m.bounds.max[2] - m.bounds.min[2] },
+  surveyed: { anchor: m.anchor, northOffsetDegrees: 0, source: 'Installed native footprint; source-specific facade and roof recipe. Heights/details retain documented approximations.' },
+  attribution: { title: m.name, author: 'Map Recall', sourceUrl: m.sourceUrls?.[0] ?? 'https://data.amsterdam.nl/', licence: 'Original project asset', licenceUrl: './LICENSE', modifications: 'Original procedural facade patterns and shallow geometry on native surveyed footprints. No reference-photo pixels or imported model geometry. See ordinary building recipe for source/height uncertainties.' },
+}));
