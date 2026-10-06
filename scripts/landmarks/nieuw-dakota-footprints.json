@@ -1,0 +1,655 @@
+{
+  "id": "nieuw-dakota",
+  "anchor": [
+    4.89215,
+    52.4004
+  ],
+  "groundNAP": 1.0700000524520874,
+  "coordinateConvention": "metres east x/south z,Y-up,native scale1 and bearing0",
+  "bag": {
+    "type": "Feature",
+    "id": "pand.4da66e7b-84c1-446d-b929-df4b5c49fdff",
+    "properties": {
+      "identificatie": "0363100012064117",
+      "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012064117",
+      "bouwjaar": 1989,
+      "status": "Pand in gebruik",
+      "gebruiksdoel": "industriefunctie",
+      "oppervlakte_min": 331,
+      "oppervlakte_max": 337,
+      "aantal_verblijfsobjecten": 2
+    },
+    "bbox": [
+      4.891948616462095,
+      52.40015512009363,
+      4.892338203353921,
+      52.40058454862583
+    ],
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.892338203353921,
+            52.40054494218625
+          ],
+          [
+            4.89206035327278,
+            52.40058249124929
+          ],
+          [
+            4.892046461526198,
+            52.400584365542855
+          ],
+          [
+            4.892045107664797,
+            52.40058454862583
+          ],
+          [
+            4.892015590264756,
+            52.40050280814813
+          ],
+          [
+            4.892003005057221,
+            52.40046796424148
+          ],
+          [
+            4.891996192384391,
+            52.40044908860366
+          ],
+          [
+            4.891995152131179,
+            52.40044619022298
+          ],
+          [
+            4.891948616462095,
+            52.400313454401704
+          ],
+          [
+            4.892116854507002,
+            52.40029138276748
+          ],
+          [
+            4.892077186571165,
+            52.400171258442676
+          ],
+          [
+            4.8922006307079435,
+            52.40015512009363
+          ],
+          [
+            4.892240014800284,
+            52.40027305918465
+          ],
+          [
+            4.89228948679977,
+            52.400410031365084
+          ],
+          [
+            4.892338203353921,
+            52.40054494218625
+          ]
+        ]
+      ]
+    }
+  },
+  "vbos": [
+    {
+      "type": "Feature",
+      "id": "verblijfsobject.66bc359e-aef6-411b-93fa-071516509a53",
+      "properties": {
+        "identificatie": "0363010011872205",
+        "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0363010011872205",
+        "oppervlakte": 331,
+        "status": "Verblijfsobject in gebruik",
+        "gebruiksdoel": "industriefunctie",
+        "openbare_ruimte": "ms. van Riemsdijkweg",
+        "huisnummer": 41,
+        "huisletter": "A",
+        "toevoeging": "",
+        "postcode": "1033RC",
+        "woonplaats": "Amsterdam",
+        "bouwjaar": 1989,
+        "pandidentificatie": "0363100012064117",
+        "pandstatus": "Pand in gebruik"
+      },
+      "bbox": [
+        4.892061903097849,
+        52.400509517775106,
+        4.892061903097849,
+        52.400509517775106
+      ],
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.892061903097849,
+          52.400509517775106
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "verblijfsobject.2c13efd1-f6d0-41e5-89e6-865c5b24def5",
+      "properties": {
+        "identificatie": "0363010011872206",
+        "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0363010011872206",
+        "oppervlakte": 337,
+        "status": "Verblijfsobject in gebruik",
+        "gebruiksdoel": "industriefunctie",
+        "openbare_ruimte": "ms. van Riemsdijkweg",
+        "huisnummer": 41,
+        "huisletter": "B",
+        "toevoeging": "",
+        "postcode": "1033RC",
+        "woonplaats": "Amsterdam",
+        "bouwjaar": 1989,
+        "pandidentificatie": "0363100012064117",
+        "pandstatus": "Pand in gebruik"
+      },
+      "bbox": [
+        4.89203332038471,
+        52.40043749688768,
+        4.89203332038471,
+        52.40043749688768
+      ],
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.89203332038471,
+          52.40043749688768
+        ]
+      }
+    }
+  ],
+  "roofPlanes": [
+    {
+      "semantic": {
+        "b3_azimut": 192.9287872314453,
+        "b3_h_dak_50p": 7.474642753601074,
+        "b3_h_dak_70p": 8.409196853637695,
+        "b3_h_dak_max": 9.805767059326172,
+        "b3_h_dak_min": 4.9107465744018555,
+        "b3_hellingshoek": 29.81946563720703,
+        "type": "RoofSurface"
+      },
+      "rings": [
+        [
+          [
+            6.029291997714795,
+            3.7125030603408824,
+            14.721360607365455
+          ],
+          [
+            6.165435883759551,
+            4.104503060340883,
+            14.054792629612791
+          ],
+          [
+            7.84311497753443,
+            8.569503060340882,
+            6.4977839740758725
+          ],
+          [
+            -12.023013968819498,
+            8.542503060340882,
+            2.148271430363309
+          ],
+          [
+            -13.62561064089152,
+            4.1515030603408825,
+            9.589530512565432
+          ],
+          [
+            -2.1987204354031338,
+            4.202503060340883,
+            12.030304274965147
+          ],
+          [
+            -2.3947043215679806,
+            3.6355030603408824,
+            12.993341259425648
+          ]
+        ]
+      ]
+    },
+    {
+      "semantic": {
+        "b3_azimut": 12.875505447387695,
+        "b3_h_dak_50p": 7.316424369812012,
+        "b3_h_dak_70p": 8.218216896057129,
+        "b3_h_dak_max": 9.87568473815918,
+        "b3_h_dak_min": 5.045679092407227,
+        "b3_hellingshoek": 30.03618812561035,
+        "type": "RoofSurface"
+      },
+      "rings": [
+        [
+          [
+            -7.038881074429565,
+            4.148503060340882,
+            -20.369439774301696
+          ],
+          [
+            -8.62970348453082,
+            8.643503060340883,
+            -12.810036791731108
+          ],
+          [
+            11.160692945705959,
+            8.641503060340883,
+            -8.452047569249572
+          ],
+          [
+            12.83546167005088,
+            4.1435030603408824,
+            -15.999099398113685
+          ]
+        ]
+      ]
+    },
+    {
+      "semantic": {
+        "b3_azimut": 192.85507202148438,
+        "b3_h_dak_50p": 7.632184982299805,
+        "b3_h_dak_70p": 8.522394180297852,
+        "b3_h_dak_max": 9.87568473815918,
+        "b3_h_dak_min": 5.334035396575928,
+        "b3_hellingshoek": 29.91159439086914,
+        "type": "RoofSurface"
+      },
+      "rings": [
+        [
+          [
+            -10.231184790274478,
+            4.1435030603408824,
+            -5.204859850941261
+          ],
+          [
+            9.484958670204936,
+            4.163503060340883,
+            -0.9010144966998723
+          ],
+          [
+            11.160692945705959,
+            8.641503060340883,
+            -8.452047569249572
+          ],
+          [
+            -8.62970348453082,
+            8.643503060340883,
+            -12.810036791731108
+          ]
+        ]
+      ]
+    },
+    {
+      "semantic": {
+        "b3_azimut": 12.66359806060791,
+        "b3_h_dak_50p": 7.27194881439209,
+        "b3_h_dak_70p": 8.152276039123535,
+        "b3_h_dak_max": 9.805767059326172,
+        "b3_h_dak_min": 5.099327564239502,
+        "b3_hellingshoek": 30.016847610473633,
+        "type": "RoofSurface"
+      },
+      "rings": [
+        [
+          [
+            7.84311497753443,
+            8.569503060340882,
+            6.4977839740758725
+          ],
+          [
+            9.484958670204936,
+            4.163503060340883,
+            -0.9010144966998723
+          ],
+          [
+            -10.231184790274478,
+            4.1435030603408824,
+            -5.204859850941261
+          ],
+          [
+            -10.429080317547484,
+            4.1435030603408824,
+            -5.2472272714160795
+          ],
+          [
+            -10.464872515167366,
+            4.242503060340883,
+            -5.082063464045916
+          ],
+          [
+            -12.023013968819498,
+            8.542503060340882,
+            2.148271430363309
+          ]
+        ]
+      ]
+    },
+    {
+      "semantic": {
+        "b3_azimut": 307.32110595703125,
+        "b3_h_dak_50p": 6.851990699768066,
+        "b3_h_dak_70p": 6.887078762054443,
+        "b3_h_dak_max": 6.991748809814453,
+        "b3_h_dak_min": 6.712147235870361,
+        "b3_hellingshoek": 1.236222505569458,
+        "type": "RoofSurface"
+      },
+      "rings": [
+        [
+          [
+            -4.485643692398326,
+            5.740503060340883,
+            23.297200106527498
+          ],
+          [
+            -4.893988294277683,
+            5.759503060340882,
+            25.308826360698475
+          ],
+          [
+            3.4914494355263987,
+            5.927503060340882,
+            27.09273939174409
+          ],
+          [
+            6.029291997714795,
+            5.810503060340882,
+            14.721360607365455
+          ],
+          [
+            -2.3947043215679806,
+            5.642503060340882,
+            12.993341259425648
+          ],
+          [
+            -4.164161679177553,
+            5.725503060340882,
+            21.71634844354344
+          ],
+          [
+            -4.028585872834835,
+            5.729503060340883,
+            21.839613187053573
+          ],
+          [
+            -4.363575528807874,
+            5.744503060340882,
+            23.488114443382102
+          ]
+        ]
+      ]
+    }
+  ],
+  "retainedNeighbors": [
+    {
+      "type": "Feature",
+      "id": "pand.6e23106b-3805-44f7-8f9d-d45e7c308195",
+      "properties": {
+        "identificatie": "0363100012103365",
+        "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012103365",
+        "bouwjaar": 1998,
+        "status": "Pand in gebruik",
+        "gebruiksdoel": "industriefunctie",
+        "oppervlakte_min": 309,
+        "oppervlakte_max": 309,
+        "aantal_verblijfsobjecten": 1
+      },
+      "bbox": [
+        4.8922006307079435,
+        52.40014346692989,
+        4.892331065493224,
+        52.40027305918465
+      ],
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.892331065493224,
+              52.400261683649326
+            ],
+            [
+              4.892240014800284,
+              52.40027305918465
+            ],
+            [
+              4.8922006307079435,
+              52.40015512009363
+            ],
+            [
+              4.892289759418857,
+              52.40014346692989
+            ],
+            [
+              4.892331065493224,
+              52.400261683649326
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pand.e4246f99-4c32-4409-bce3-4a8e55717861",
+      "properties": {
+        "identificatie": "0363100012114718",
+        "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012114718",
+        "bouwjaar": 1948,
+        "status": "Pand in gebruik",
+        "gebruiksdoel": "industriefunctie",
+        "oppervlakte_min": 291,
+        "oppervlakte_max": 291,
+        "aantal_verblijfsobjecten": 1
+      },
+      "bbox": [
+        4.891828602804708,
+        52.399951928115236,
+        4.892006373069512,
+        52.40016631380136
+      ],
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8918983776328,
+              52.40016631380136
+            ],
+            [
+              4.891884127048949,
+              52.400125360282324
+            ],
+            [
+              4.891873648766992,
+              52.4000952796496
+            ],
+            [
+              4.891864096004566,
+              52.40006784526308
+            ],
+            [
+              4.891860721674095,
+              52.400058178387226
+            ],
+            [
+              4.891828602804708,
+              52.39996604620502
+            ],
+            [
+              4.891933402618347,
+              52.399952346728284
+            ],
+            [
+              4.8919364635320814,
+              52.399951928115236
+            ],
+            [
+              4.891957565349156,
+              52.400012242767886
+            ],
+            [
+              4.891960170787183,
+              52.40001971343311
+            ],
+            [
+              4.892006373069512,
+              52.40015201645665
+            ],
+            [
+              4.8918983776328,
+              52.40016631380136
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pand.8b80fc5f-e1c5-4dc3-8ff2-bbe962d89fe6",
+      "properties": {
+        "identificatie": "0363100012138886",
+        "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012138886",
+        "bouwjaar": 1992,
+        "status": "Pand in gebruik",
+        "gebruiksdoel": "industriefunctie",
+        "oppervlakte_min": 285,
+        "oppervlakte_max": 285,
+        "aantal_verblijfsobjecten": 1
+      },
+      "bbox": [
+        4.892298438911365,
+        52.40036790193286,
+        4.892634009485236,
+        52.40053972940545
+      ],
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.892629687380972,
+              52.40048906958438
+            ],
+            [
+              4.892634009485236,
+              52.40050072667014
+            ],
+            [
+              4.892563021217964,
+              52.400510244862296
+            ],
+            [
+              4.892534604610302,
+              52.400514116749605
+            ],
+            [
+              4.89234682794197,
+              52.40053972940545
+            ],
+            [
+              4.892298438911365,
+              52.40040706687556
+            ],
+            [
+              4.892578322532085,
+              52.400368878633266
+            ],
+            [
+              4.8925854892053104,
+              52.40036790193286
+            ],
+            [
+              4.8925897378217105,
+              52.400379558713816
+            ],
+            [
+              4.892608942825116,
+              52.40043218984552
+            ],
+            [
+              4.892615344503015,
+              52.40044973355526
+            ],
+            [
+              4.892629687380972,
+              52.40048906958438
+            ]
+          ]
+        ]
+      }
+    }
+  ],
+  "identity": {
+    "bagPand": "0363100012064117",
+    "osmBuilding": "w280620202",
+    "osmPOI": "n2781756860",
+    "canonicalPOI": "extract_landmarks_2781756860",
+    "sharedMappedPlace": "n2781756856",
+    "sharedVBO": "0363010011872205",
+    "relationship": "41B former Nieuw Dakota shares one current physical Pand with41A mappedVous Etes Ici. Current photo has Beautiful Distress House paint on northern gable; active tenant identity not inferred from old OSM label or paint. Preserve both separate physical fronts and entrances. No duplicate physical asset or invented compound destination."
+  },
+  "sourceUrls": [
+    "https://www.nieuwdakota.com/nl/over/",
+    "https://www.nieuwdakota.com/nl/steun-ons/",
+    "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=ms.%20van%20Riemsdijkweg%2041B%20Amsterdam&fq=type:adres",
+    "https://archief.amsterdam/beeldbank/?q=ms.%20van%20Riemsdijkweg%2041%20Nieuw%20Dakota",
+    "https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application/json&srsName=EPSG:4326&bbox=52.3999,4.8912,52.4011,4.8930,urn:ogc:def:crs:EPSG::4326&typeNames=bag:pand",
+    "https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application/json&srsName=EPSG:4326&bbox=52.3999,4.8912,52.4011,4.8930,urn:ogc:def:crs:EPSG::4326&typeNames=bag:verblijfsobject",
+    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012064117",
+    "https://api.data.amsterdam.nl/panorama/panoramas/?bbox=4.8915,52.4001,4.8927,52.4008&page_size=100&timestamp_after=2024-01-01",
+    "https://api.openstreetmap.org/api/0.6/map?bbox=4.8914,52.4000,4.8927,52.4009",
+    "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-16_08-34-03_00131/",
+    "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-16_08-34-03_00131/equirectangular/panorama_4000.jpg",
+    "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-23_07-33-22_01617/",
+    "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-10-23_07-33-22_01617/equirectangular/panorama_4000.jpg",
+    "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-10-23_07-33-22_01622/equirectangular/panorama_4000.jpg",
+    "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-23_07-33-22_01622/"
+  ],
+  "architecturalAssertions": [
+    {
+      "source": "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-10-23_07-33-22_01622/equirectangular/panorama_4000.jpg",
+      "date": "2024-10-23",
+      "confidence": "high",
+      "part": "west principalfronts",
+      "assertion": "Two parallel gabled warehouse fronts: southern NieuwDakota deepblue withgreen-framed door/upperwindows; northern pale corrugatedfront withgreen windowbank and blue/gray geometric cube painting; separateentrydoors."
+    },
+    {
+      "source": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-16_08-34-03_00131/equirectangular/panorama_4000.jpg",
+      "date": "2025-09-16",
+      "confidence": "high",
+      "part": "south/context",
+      "assertion": "Pale corrugatedmetal sidewalls androof; narrow extension behind southgable; site/fencedneighbor remainopen."
+    },
+    {
+      "source": "https://www.nieuwdakota.com/nl/steun-ons/",
+      "date": "current retrieved2026-10-05",
+      "confidence": "high",
+      "part": "venue status",
+      "assertion": "Public doors closedJanuary2025 while organization exploresrestart; currentlynotpubliclyaccessible."
+    }
+  ],
+  "heightNotes": {
+    "roof": "AHN5 current mainridgelines8.5–8.64m relative; eaves4.1m; narrow flat/lowpitch extension5.6–5.9m, not a third maingable despite fitted b3_n_nok3.",
+    "source": "Original3DBAG relative rings preserved, independently triangulated; equipmentmax isnotwholebuildingheight."
+  },
+  "accessGaps": [
+    "Bounded address/name Beeldbank search returns saved JavaScript shell; no archival image inspected.",
+    "No monument description inspected for this BAG-registered1989 industrialPand; no heritage feature inference.",
+    "Fine pane/corrugation divisions estimated frommunicipalphotos."
+  ],
+  "openSpaces": [
+    "West public street retained; no courtyard/parcel fill.",
+    "East fencedparking/neighbor and north separatebrickwarehouse retained.",
+    "Exact current host footprintextension retained, not padded rectangle."
+  ],
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "336ad5747f53149c41107f5fd05f01dd49ca87cc",
+    "path": "models/nieuw-dakota",
+    "validationPath": "models/nieuw-dakota/validation/final-20261006",
+    "status": "originals and final source/gallery/native/fallback review evidence verified, committed and pushed"
+  }
+}

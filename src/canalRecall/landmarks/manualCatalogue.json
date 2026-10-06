@@ -6747,5 +6747,81 @@
       "licenceUrl": "./LICENSE",
       "modifications": "Original texture-free flat-color connected historic canal houses. Native currentBAG exteriors; original shells constructed from clipped survey roof-plane regions, four preserved sourcecourts, independently authored street elevations/windows/entries/plinths/crowns. Modern2016black entrance; diverse tuit/hals/klok/lijst family mixture; Saxenburg four-bay sandstonefront with attiek; Jansz corner/Reestraat row. Tinycarvedrelief and joinery spacing photo-guided; retiredaddress fuzzyfallbacks rejected. No downloadedmesh or photo pixels."
     }
+  },
+  {
+    "id": "de-gooyer",
+    "name": "De Gooyer",
+    "landmarkId": "extract_landmarks_33057057",
+    "modelUrl": "./models/de-gooyer.glb",
+    "suppressOsmIds": [
+      "w269052487",
+      "NL.IMBAG.Pand.0363100012169758"
+    ],
+    "spatialSuppression": false,
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "footprint": {
+      "centre": [
+        4.926172908055607,
+        52.36680769280531
+      ],
+      "headingDegrees": 84.8,
+      "lengthMetres": 10.97,
+      "widthMetres": 11.05
+    },
+    "surveyed": {
+      "anchor": [
+        4.926172908055607,
+        52.36680769280531
+      ],
+      "northOffsetDegrees": -5.2,
+      "source": "Current in-use BAG0363100012169758 rectangle, official Funenkade5 VBO0363010000641344. Author +X bearing84.8deg from BAG long edges. Gallery17.8m and sailspan26.6m from owner. Tower/cap heights photo-calibrated approximation; cap and stationary sails are a representative rotational state."
+    },
+    "attribution": {
+      "title": "De Gooyer",
+      "author": "Map Recall",
+      "sourceUrl": "https://stadsherstel.nl/monumenten/funenkade-5-molen-de-gooyer/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native-scale square brick base, thatched octagons, open gallery, rounded cap, old-Dutch lattice sails; no imported meshes or photo pixels."
+    }
+  },
+  {
+    "id": "nieuw-dakota",
+    "name": "Former Nieuw Dakota",
+    "landmarkId": "extract_landmarks_2781756860",
+    "modelUrl": "./models/nieuw-dakota.glb",
+    "suppressOsmIds": [
+      "w280620202",
+      "NL.IMBAG.Pand.0363100012064117"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.89215,
+        52.4004
+      ],
+      "headingDegrees": 90,
+      "lengthMetres": 26.52,
+      "widthMetres": 47.54
+    },
+    "surveyed": {
+      "anchor": [
+        4.89215,
+        52.4004
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Exact BAG shared host incl narrow south extension and AHN5 roof rings; municipal2024/2025photos"
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Former Nieuw Dakota shared warehouse",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.nieuwdakota.com/nl/over/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction of measured twin-gabled host, pale metal corrugation, blue front and green glazing; preserves northern tenant front and low extension. No copied source pixels or meshes; painted name words omitted."
+    }
   }
 ]

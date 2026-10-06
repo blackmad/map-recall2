@@ -1,0 +1,38 @@
+{
+  "id": "nieuw-dakota",
+  "name": "Former Nieuw Dakota",
+  "landmarkId": "extract_landmarks_2781756860",
+  "modelUrl": "./models/nieuw-dakota.glb",
+  "suppressOsmIds": [
+    "w280620202",
+    "NL.IMBAG.Pand.0363100012064117"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.89215,
+      52.4004
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 26.52,
+    "widthMetres": 47.54
+  },
+  "surveyed": {
+    "anchor": [
+      4.89215,
+      52.4004
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Exact BAG shared host incl narrow south extension and AHN5 roof rings; municipal2024/2025photos"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 90,
+  "attribution": {
+    "title": "Former Nieuw Dakota shared warehouse",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.nieuwdakota.com/nl/over/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free reconstruction of measured twin-gabled host, pale metal corrugation, blue front and green glazing; preserves northern tenant front and low extension. No copied source pixels or meshes; painted name words omitted."
+  }
+}

@@ -1,0 +1,278 @@
+{
+  "anchor": [
+    4.926172908055607,
+    52.36680769280531
+  ],
+  "authorHeadingDegrees": 84.8,
+  "ground": 0,
+  "parent": {
+    "bagId": "NL.IMBAG.Pand.0363100012169758",
+    "osmId": "w269052487",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.92626056953206,
+            52.36685221768604
+          ],
+          [
+            4.926200336532136,
+            52.36685556926663
+          ],
+          [
+            4.926099718069225,
+            52.366861163257695
+          ],
+          [
+            4.926085246579154,
+            52.36676316792458
+          ],
+          [
+            4.9260850961012395,
+            52.36676210678985
+          ],
+          [
+            4.92624027646333,
+            52.36675348069211
+          ],
+          [
+            4.9262459618894905,
+            52.36675316129458
+          ],
+          [
+            4.92626056953206,
+            52.36685221768604
+          ]
+        ]
+      ]
+    },
+    "bagProperties": {
+      "aantal_verblijfsobjecten": 1,
+      "bouwjaar": 1725,
+      "documentdatum": "2023-09-21",
+      "documentnummer": "GV00007167_AC00AC",
+      "gebruiksdoel": "woonfunctie",
+      "geconstateerd": "N",
+      "identificatie": "0363100012169758",
+      "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012169758",
+      "status": "Pand in gebruik",
+      "verblijfsobject.href": [
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/abe811c5-0ef8-5dae-b50a-d9ceef92b48f"
+      ]
+    }
+  },
+  "poiIdentity": "n33057057",
+  "addressIdentity": {
+    "vbo": "0363010000641344",
+    "nummeraanduiding": "0363200000103544",
+    "address": "Funenkade 5"
+  },
+  "mustRetain": [
+    {
+      "bagId": "NL.IMBAG.Pand.0363100012169757",
+      "name": "Brouwerij ’t IJ / former bathhouse",
+      "reason": "Separate physical neighbor and venue; not in mill suppression"
+    },
+    {
+      "bagId": "NL.IMBAG.Pand.0363100012169759",
+      "name": "Separate neighboring building",
+      "reason": "Current neighboring BAG outline, not mill"
+    }
+  ],
+  "dimensions": {
+    "baseWidthMetres": 10.97,
+    "baseDepthMetres": 11.05,
+    "baseHeightMetres": 7,
+    "galleryHeightMetres": 17.8,
+    "sailSpanMetres": 26.6,
+    "capBaseMetres": 28.15,
+    "hubMetres": 28.7,
+    "capTopMetres": 30.2,
+    "galleryRadiusMetres": 7.45
+  },
+  "heightNotes": [
+    "DHM describes ca7m masonry understructure; owner gives17.8m gallery and26.6m sailspan.26.6m is not total building height.",
+    "Cap base28.15m, hub28.7m and galleryradius7.45m are proportions estimated from owner2020photo and elevation, NOT measured AHN maxima. Stationary15degree sail pose spans42m max elevation.",
+    "Representative sailplane slopes forwardbelowhub (~13.5degrees), so lowest sail clears gallery; cap rotation and shaft slope are photo-calibrated approximations."
+  ],
+  "architecturalAssertions": [
+    {
+      "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1107",
+      "part": "base and two octagons",
+      "date": "register28April1970;retrieved2026-10-05",
+      "confidence": "high",
+      "passage": "Hoge vierkante bakstenen voet (in vorm XVIIIc ?, met oorspronkelijke gevelsteen) waarop met rietgedekte achtkante stellingmolen, het gedeelte onder de stelling recht opgaande."
+    },
+    {
+      "source": "https://stadsherstel.nl/monumenten/funenkade-5-molen-de-gooyer/",
+      "part": "gallery and sail cross",
+      "confidence": "high",
+      "passage": "De vlucht van de molen bedraagt 26,6 meter. En de stelling heeft een hoogte van 17,8 m."
+    },
+    {
+      "source": "https://www.molens.nl/ontdek-molens/alle-molens/de-gooyer-te-amsterdam",
+      "part": "square base",
+      "confidence": "high",
+      "passage": "ca. 7 m. hoge vierkante stenen onderbouw"
+    },
+    {
+      "source": "https://www.molendatabase.nl/molens/ten-bruggencate-nr-00699",
+      "part": "currentcapandhub",
+      "date": "PietGlasbergen19September2022",
+      "confidence": "high",
+      "assertion": "Darkgreen capcheekboards in whiteframing; eightpointgoldstar on greenhubface; blackstocks and whitelattice. Currenttapered grey-brownthatched tower confirmed in2012context photograph, with separatemasonrybase and brewery."
+    },
+    {
+      "source": "https://www.molendatabase.nl/molens/ten-bruggencate-nr-00699",
+      "sourceArchivePath": "models/de-gooyer/files/context-2022.webp",
+      "part": "cap cheekboard and lower apron",
+      "date": "2022-09-19",
+      "confidence": "high for profile; dimensions approximate",
+      "assertion": "The white-edged cheekboard has a curved scalloped lower border and two white relief brackets. Temporary exposed yellow wood on the right does not establish a permanent paint scheme."
+    }
+  ],
+  "references": [
+    {
+      "url": "https://stadsherstel.nl/monumenten/funenkade-5-molen-de-gooyer/",
+      "path": "artifacts/landmarks/de-gooyer/references/owner.html",
+      "status": 200,
+      "sha256": "55664273027d410682c9fcb21f046697c1ef196365c998067e25593baa7b3ecf",
+      "retrievedAt": "2026-10-05",
+      "rights": "Source copyright; reference only, no photo pixels in asset"
+    },
+    {
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1107",
+      "path": "artifacts/landmarks/de-gooyer/references/rce.html",
+      "status": 200,
+      "sha256": "5155748092b4a78aefd31908ec88a428fa65e432557b740d2e4175bd66b1a861",
+      "retrievedAt": "2026-10-05",
+      "rights": "Source copyright; reference only, no photo pixels in asset"
+    },
+    {
+      "url": "https://www.molens.nl/ontdek-molens/alle-molens/de-gooyer-te-amsterdam",
+      "path": "artifacts/landmarks/de-gooyer/references/dhm.html",
+      "status": 200,
+      "sha256": "a46128b085abdc54fa57e246aed1ea59db3af4a30399d66de703ac4c3b13f76a",
+      "retrievedAt": "2026-10-05",
+      "rights": "Source copyright; reference only, no photo pixels in asset"
+    },
+    {
+      "url": "https://www.molendatabase.nl/molens/ten-bruggencate-nr-00699",
+      "path": "artifacts/landmarks/de-gooyer/references/database.html",
+      "status": 200,
+      "sha256": "c4a7b894a5eecab833720e850a3576d234c92de220ab754f38a5b22f6ed24f25",
+      "retrievedAt": "2026-10-05",
+      "rights": "Source copyright; reference only, no photo pixels in asset"
+    },
+    {
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=Funenkade%205",
+      "path": "artifacts/landmarks/de-gooyer/references/beeldbank.html",
+      "status": 200,
+      "sha256": "f60ef929d710714ed950d7455887cc960a5a7e7b48477afb52f533197b1407d0",
+      "retrievedAt": "2026-10-05",
+      "rights": "Source copyright; reference only, no photo pixels in asset"
+    },
+    {
+      "url": "https://stadsherstel.nl/wp-content/uploads/2020/05/tekening-funenkade-5-molen-de-gooyer-verbeterd-350x800.jpg",
+      "path": "artifacts/landmarks/de-gooyer/references/elevation.jpg",
+      "status": 200,
+      "sha256": "c062d43e3c25dc60e4ae8732148d12e0207ecd5e697a454c6c5112aa23e0b781",
+      "retrievedAt": "2026-10-05",
+      "rights": "Source copyright; reference only, no photo pixels in asset"
+    },
+    {
+      "url": "https://stadsherstel.nl/wp-content/uploads/2020/05/4-molen-de-gooyer-2020.jpg",
+      "path": "artifacts/landmarks/de-gooyer/references/current-photo.jpg",
+      "status": 200,
+      "sha256": "c7dc31a4a4c4afd8a5942f1dea7c7040fc65c9b1a0eebd349a6355a0486bd74a",
+      "retrievedAt": "2026-10-05",
+      "rights": "Source copyright; reference only, no photo pixels in asset"
+    },
+    {
+      "path": "artifacts/landmarks/de-gooyer/references/bag-nearby.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?bbox=4.9258,52.3664,4.9268,52.3672&f=json",
+      "retrievedAt": "2026-10-05",
+      "accessState": "HTTP200 raworiginal",
+      "sha256": "91f70997efd6c29a3cdfc26ad188bd417b4750bbf799267d3ff897958fa31f15",
+      "rights": "Source copyright; raw reference only, no copied meshes or pixels"
+    },
+    {
+      "path": "artifacts/landmarks/de-gooyer/references/bag-vbo.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/abe811c5-0ef8-5dae-b50a-d9ceef92b48f",
+      "retrievedAt": "2026-10-05",
+      "accessState": "HTTP200 raworiginal",
+      "sha256": "ae839bcabfac52dafab2fb3dd20560d4923816a564223d44e3cc016988562019",
+      "rights": "Source copyright; raw reference only, no copied meshes or pixels"
+    },
+    {
+      "path": "artifacts/landmarks/de-gooyer/references/osm-map.xml",
+      "url": "https://www.openstreetmap.org/api/0.6/map?bbox=4.9259,52.3666,4.9265,52.3670",
+      "retrievedAt": "2026-10-05",
+      "accessState": "HTTP200 raworiginal",
+      "sha256": "ab209ff1692078ccbfc55a1ecbb9d4cb89b2199272ec861dd85e12786ab6574d",
+      "rights": "Source copyright; raw reference only, no copied meshes or pixels"
+    },
+    {
+      "path": "artifacts/landmarks/de-gooyer/references/sketchup.html",
+      "url": "https://3dwarehouse.sketchup.com/model/ba985eba9ad259b9f912bad2283ae4f5/Molen-de-Gooyer-Amsterdam?hl=de",
+      "retrievedAt": "2026-10-05",
+      "accessState": "HTTP200 raworiginal; SketchUpshell only, no viewer geometry inspected",
+      "sha256": "ca1f980d11f0466ccf1fed778410ff78c8439cc0c678eb2598376c37905ea7c4",
+      "rights": "Source copyright; raw reference only, no copied meshes or pixels"
+    },
+    {
+      "url": "https://www.molendatabase.nl/files/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6NDExNjksInB1ciI6ImJsb2JfaWQifX0=--31d8265b1f881049ac8524eb29c44fe90173801c/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fbGltaXQiOlsxMTAwLG51bGxdfSwicHVyIjoidmFyaWF0aW9uIn19--8d3983cecbd440e5a4f1d1b18486ee05f5c1ccab/626-degooijer-1.jpg",
+      "path": "artifacts/landmarks/de-gooyer/references/full-front.jpg",
+      "sourcePage": "https://www.molendatabase.nl/molens/ten-bruggencate-nr-00699",
+      "retrievedAt": "2026-10-05",
+      "sha256": "d66337734fae9a9ddd32844e6a09b9df5d7b3c5a35eafc711293ba0f83f77da3",
+      "rights": "Attributedreferencephotoonly;nocopypixels",
+      "attribution": "J.vanHertum25March2012"
+    },
+    {
+      "url": "https://www.molendatabase.nl/files/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6NDExNzUsInB1ciI6ImJsb2JfaWQifX0=--5493b2f9e75a90bb93df8b3d04c91e63b7365437/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJ3ZWJwIiwicmVzaXplX3RvX2xpbWl0IjpbMTEwMCxudWxsXX0sInB1ciI6InZhcmlhdGlvbiJ9fQ==--86f764b02f0bdc654874ca1d7e9404500fea0d0f/636_7.webp",
+      "path": "artifacts/landmarks/de-gooyer/references/context-2022.webp",
+      "sourcePage": "https://www.molendatabase.nl/molens/ten-bruggencate-nr-00699",
+      "retrievedAt": "2026-10-05",
+      "sha256": "f1601c8f125c4402c7a454b0b357b4c9f4675f9f97a90e78a67303781ad2060b",
+      "rights": "Attributedreferencephotoonly;nocopypixels",
+      "attribution": "PietGlasbergen19September2022"
+    }
+  ],
+  "archiveSearch": {
+    "beeldbankUrl": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=Funenkade%205",
+    "accessState": "HTTP200 cached search shell; no separately inspected catalogue image. Owner explicitly credits JacobOlie1896 historical photo. Current2020photo and ownerlineelevation inspected; historical shape not assumed current.",
+    "bouwdossiers": "Not needed for initial silhouette: source-critical dimensions and assemblies resolved via owner/DHM/RCE. No drawings requested/downloaded."
+  },
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "336ad5747f53149c41107f5fd05f01dd49ca87cc",
+    "path": "models/de-gooyer",
+    "validationPath": "models/de-gooyer/validation/final-20261006",
+    "status": "originals and final source/gallery/native/fallback review evidence verified, committed and pushed"
+  },
+  "sourceAccessGaps": [
+    {
+      "url": "https://overpass-api.de/api/interpreter",
+      "state": "HTTP406 firstquery; laterKumialternate timeout. Replaced by successfully downloaded rawOSMmapAPI XML, not normalizedfakeoriginal."
+    },
+    {
+      "url": "https://3dwarehouse.sketchup.com/model/ba985eba9ad259b9f912bad2283ae4f5/Molen-de-Gooyer-Amsterdam?hl=de",
+      "state": "Webtool inaccessible; HTTP200 JSshell downloaded viaurllib. No modeldownload nor viewergeometry inspection."
+    }
+  ],
+  "publicApproach": {
+    "coordinate": [
+      4.9261089,
+      52.3669
+    ],
+    "osmNode": "n1450614806",
+    "ways": [
+      "w146834049",
+      "w136179600"
+    ],
+    "source": "models/de-gooyer/files/osm-map.xml",
+    "purpose": "Outdoor public Funenkade route finish; mill node retained for geographic pin"
+  }
+}

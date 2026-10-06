@@ -1,0 +1,38 @@
+{
+  "id": "extract_landmarks_2781756860",
+  "name": "Former Nieuw Dakota",
+  "osmId": "n2781756860",
+  "osmType": "node",
+  "coordinates": [
+    4.8920341,
+    52.4004374
+  ],
+  "destinationCoordinates": [
+    4.89194,
+    52.400438
+  ],
+  "website": "https://www.nieuwdakota.com/",
+  "description": "Nieuw Dakota was an independent exhibition space for contemporary art on the NDSM wharf. Founded in 2009, it presented experimental exhibitions and performances for fifteen years. Its owner says the venue closed to the public in January 2025 while exploring a restart; this destination marks the former venue\u2019s exterior.",
+  "facts": [
+    {
+      "text": "The organization says Nieuw Dakota is currently not accessible to the public and closed its public doors from January 2025.",
+      "source": "https://www.nieuwdakota.com/nl/steun-ons/"
+    },
+    {
+      "text": "Founded in 2009, Nieuw Dakota offered experimental exhibitions, performances, tours and educational activities on the NDSM wharf.",
+      "source": "https://www.nieuwdakota.com/nl/over/"
+    }
+  ],
+  "identityNotes": {
+    "bagPand": "0363100012064117",
+    "osmBuilding": "w280620202",
+    "osmPOI": "n2781756860",
+    "canonicalPOI": "extract_landmarks_2781756860",
+    "sharedMappedPlace": "n2781756856",
+    "sharedVBO": "0363010011872205",
+    "relationship": "41B former Nieuw Dakota shares one current physical Pand with41A mappedVous Etes Ici. Current photo has Beautiful Distress House paint on northern gable; active tenant identity not inferred from old OSM label or paint. Preserve both separate physical fronts and entrances. No duplicate physical asset or invented compound destination."
+  },
+  "preserveExistingFacts": true,
+  "destinationReason": "West public street by former Nieuw Dakota door, not inside private warehouse; route-check necessary. Explicit requested former venue, not advertised as open museum.",
+  "integrationState": "Genuine mapped shop-art node absent current landmark extract. Promote same identity with honest former/closure card. Retain mapped41A place and separate door; no second asset or invented host destination."
+}

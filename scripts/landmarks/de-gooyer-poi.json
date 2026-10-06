@@ -1,0 +1,32 @@
+{
+  "modelId": "de-gooyer",
+  "landmarkId": "extract_landmarks_33057057",
+  "osmId": "n33057057",
+  "name": "De Gooyer",
+  "coordinates": [
+    4.9261523,
+    52.3667975
+  ],
+  "description": "De Gooyer is the Netherlands\u2019 tallest wooden windmill. Its octagonal grain mill was built around 1725 and moved here in 1814 after a barracks obstructed its wind. It stands on the raised square brick base of a former city water mill. The gallery is 17.8 metres above ground and the sails span 26.6 metres. Brouwerij \u2019t IJ occupies the separate former bathhouse next door.",
+  "sourceUrl": "https://stadsherstel.nl/monumenten/funenkade-5-molen-de-gooyer/",
+  "additionalSources": [
+    "https://www.molens.nl/ontdek-molens/alle-molens/de-gooyer-te-amsterdam",
+    "https://monumentenregister.cultureelerfgoed.nl/monumenten/1107"
+  ],
+  "locationNote": "Exterior viewing destination. Geographic pin uses genuine mapped mill node n33057057; route finish uses public Funenkade pedestrian/footway junction n1450614806 north of the mill, not its inaccessible interior. Confirm chosen destination and failure behavior in live route.",
+  "destinationCoordinates": [
+    4.9261089,
+    52.3669
+  ],
+  "destinationEvidence": {
+    "sourceUrl": "https://www.openstreetmap.org/way/146834049",
+    "cachedSource": "models/de-gooyer/files/osm-map.xml",
+    "wayIds": [
+      "w146834049",
+      "w136179600"
+    ],
+    "nodeId": "n1450614806",
+    "tags": "highway=pedestrian meets highway=footway; name=Funenkade",
+    "status": "Source-supported public outdoor approach; not represented as an indoor mill entrance"
+  }
+}

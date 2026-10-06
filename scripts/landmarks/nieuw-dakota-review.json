@@ -1,0 +1,284 @@
+{
+  "id": "nieuw-dakota",
+  "status": "accepted-source-gallery-native-runtime",
+  "sourceFiles": [
+    {
+      "path": "artifacts/landmarks/nieuw-dakota/references/panorama-rear.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-10-23_07-33-22_01617/equirectangular/panorama_4000.jpg",
+      "sha256": "24cb4ee4f5141a1af49b3df821101894831581475275c485e7778c11c9fe6e6b",
+      "retrievedOn": "2026-10-05",
+      "access": "OriginalHTTPbytes",
+      "rights": "Municipalphoto researchreference only; do not use pixelsinasset"
+    },
+    {
+      "path": "artifacts/landmarks/nieuw-dakota/references/panorama-index.raw",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?bbox=4.8915,52.4001,4.8927,52.4008&page_size=100&timestamp_after=2024-01-01",
+      "sha256": "ba6b09a329e17f0f11b58904dbc4c3d4089173fbbce7fd59c10d9e53aefbb66d",
+      "retrievedOn": "2026-10-05",
+      "access": "OriginalHTTPbytes",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/nieuw-dakota/references/beeldbank.raw",
+      "url": "https://archief.amsterdam/beeldbank/?q=ms.%20van%20Riemsdijkweg%2041%20Nieuw%20Dakota",
+      "sha256": "517a6fc9353af159c0830f1ea3237017e4a32e6c96e15d48b3015ef565face72",
+      "retrievedOn": "2026-10-05",
+      "access": "OriginalHTTPbytes",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/nieuw-dakota/references/panorama-front.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-16_08-34-03_00131/equirectangular/panorama_4000.jpg",
+      "sha256": "5ffeada25d969228ca247aecac50189b7ca9b23386f1492b05065af0920bbfa9",
+      "retrievedOn": "2026-10-05",
+      "access": "OriginalHTTPbytes",
+      "rights": "Municipalphoto researchreference only; do not use pixelsinasset"
+    },
+    {
+      "path": "artifacts/landmarks/nieuw-dakota/references/panorama-front-metadata.raw",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-16_08-34-03_00131/",
+      "sha256": "87f628a9c3b1873a486924217e535d5d11f6c9137118cda73e7c1d9528b8ee44",
+      "retrievedOn": "2026-10-05",
+      "access": "OriginalHTTPbytes",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/nieuw-dakota/references/bag-pand.raw",
+      "url": "https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application/json&srsName=EPSG:4326&bbox=52.3999,4.8912,52.4011,4.8930,urn:ogc:def:crs:EPSG::4326&typeNames=bag:pand",
+      "sha256": "30b8060a4381c4d589fbfb381733ebea1a052dcc59bbbf31facbf456c3461952",
+      "retrievedOn": "2026-10-05",
+      "access": "OriginalHTTPbytes",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/nieuw-dakota/references/survey.raw",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012064117",
+      "sha256": "54a3936c4dd9bbf8f99b07997fe323b46a0855195ca7714d93092fa3cff87e34",
+      "retrievedOn": "2026-10-05",
+      "access": "OriginalHTTPbytes",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/nieuw-dakota/references/panorama-rear-metadata.raw",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-23_07-33-22_01617/",
+      "sha256": "d3642f1e38aeb8a673690d79db40f09e292f833d44aa48a636933ed4fc0da4d3",
+      "retrievedOn": "2026-10-05",
+      "access": "OriginalHTTPbytes",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/nieuw-dakota/references/bag-address.raw",
+      "url": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=ms.%20van%20Riemsdijkweg%2041B%20Amsterdam&fq=type:adres",
+      "sha256": "b6d47c6c53db346910937b3d519ec002021b6104851b11519c7db6673be5be34",
+      "retrievedOn": "2026-10-05",
+      "access": "OriginalHTTPbytes",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/nieuw-dakota/references/roof-planes.processed.json",
+      "url": null,
+      "sha256": "5ccb67c2c4f57ad128e62097a8c012d733982792d291c8201d7a4b42f4f3ecc2",
+      "retrievedOn": "2026-10-05",
+      "access": "Processedcoordinateextraction",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/nieuw-dakota/references/osm-map.raw",
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=4.8914,52.4000,4.8927,52.4009",
+      "sha256": "d71c965a09d6ae5a75ea34e281ad1f1cbcca99acf98c6ea8c1bfbfc8133afbde",
+      "retrievedOn": "2026-10-05",
+      "access": "OriginalHTTPbytes",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/nieuw-dakota/references/bag-verblijfsobject.raw",
+      "url": "https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application/json&srsName=EPSG:4326&bbox=52.3999,4.8912,52.4011,4.8930,urn:ogc:def:crs:EPSG::4326&typeNames=bag:verblijfsobject",
+      "sha256": "e3c64d4de95d2d0b139a5d1b675f717fb5c63c376055e62c40bb665b9cd76080",
+      "retrievedOn": "2026-10-05",
+      "access": "OriginalHTTPbytes",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/nieuw-dakota/references/operator-closure.raw",
+      "url": "https://www.nieuwdakota.com/nl/steun-ons/",
+      "sha256": "3d498c200e4431b8775714c7e07d885420e4f5385fa4fc5e42f8b9e8870d39ec",
+      "retrievedOn": "2026-10-05",
+      "access": "OriginalHTTPbytes",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/nieuw-dakota/references/panorama-side-metadata.raw",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-23_07-33-22_01622/",
+      "sha256": "5ef0cdd77d28d8dda795ec80ed211d1173fa07457cfbc996d6a03d0a8552e6e6",
+      "retrievedOn": "2026-10-05",
+      "access": "OriginalHTTPbytes",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/nieuw-dakota/references/panorama-side.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-10-23_07-33-22_01622/equirectangular/panorama_4000.jpg",
+      "sha256": "a44e48e1fd804463c2ad870fe64d145d1f58ce561e0884fb1839cff515e6dd9b",
+      "retrievedOn": "2026-10-05",
+      "access": "OriginalHTTPbytes",
+      "rights": "Municipalphoto researchreference only; do not use pixelsinasset"
+    },
+    {
+      "path": "artifacts/landmarks/nieuw-dakota/references/operator-about.raw",
+      "url": "https://www.nieuwdakota.com/nl/over/",
+      "sha256": "a9bc0d700974db3e56948c51e17749329bdd5de463d60ab0a7d468c2bbdfbf7c",
+      "retrievedOn": "2026-10-05",
+      "access": "OriginalHTTPbytes",
+      "rights": "See source terms"
+    }
+  ],
+  "sourceUrls": [
+    "https://www.nieuwdakota.com/nl/over/",
+    "https://www.nieuwdakota.com/nl/steun-ons/",
+    "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=ms.%20van%20Riemsdijkweg%2041B%20Amsterdam&fq=type:adres",
+    "https://archief.amsterdam/beeldbank/?q=ms.%20van%20Riemsdijkweg%2041%20Nieuw%20Dakota",
+    "https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application/json&srsName=EPSG:4326&bbox=52.3999,4.8912,52.4011,4.8930,urn:ogc:def:crs:EPSG::4326&typeNames=bag:pand",
+    "https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application/json&srsName=EPSG:4326&bbox=52.3999,4.8912,52.4011,4.8930,urn:ogc:def:crs:EPSG::4326&typeNames=bag:verblijfsobject",
+    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012064117",
+    "https://api.data.amsterdam.nl/panorama/panoramas/?bbox=4.8915,52.4001,4.8927,52.4008&page_size=100&timestamp_after=2024-01-01",
+    "https://api.openstreetmap.org/api/0.6/map?bbox=4.8914,52.4000,4.8927,52.4009",
+    "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-16_08-34-03_00131/",
+    "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-16_08-34-03_00131/equirectangular/panorama_4000.jpg",
+    "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-23_07-33-22_01617/",
+    "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-10-23_07-33-22_01617/equirectangular/panorama_4000.jpg",
+    "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-10-23_07-33-22_01622/equirectangular/panorama_4000.jpg",
+    "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-23_07-33-22_01622/"
+  ],
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "336ad5747f53149c41107f5fd05f01dd49ca87cc",
+    "path": "models/nieuw-dakota",
+    "validationPath": "models/nieuw-dakota/validation/final-20261006",
+    "status": "originals and final source/gallery/native/fallback review evidence verified, committed and pushed"
+  },
+  "recognitionCriteria": [
+    "Twin adjacent west gable fronts; south blue and north pale painted cube patterns",
+    "Green-framed south glass door and upper window group; separate north door/window bank",
+    "Pale corrugated walls and metal gable roofs at native8.6m crest/4.1m eaves",
+    "Narrow south flat/lowpitch extension5.6–5.9m retained",
+    "Distinct physical neighbor brick warehouse/fenced yard/public west street preserved",
+    "Card states former venue closed to public January2025; mapped41A place not erased"
+  ],
+  "checks": {
+    "cpuGeometry": "PASS4619triangles,5upward roof probes,4first-hit window/door probes,open street/yard",
+    "typescript": "npm run lint PASS2026-10-05",
+    "gallery": "PASS independent five final browser views compared with municipal references",
+    "nativeGame": "PASS independent actual both-side screenshots and placement/suppression/drawn-neighbor proofs",
+    "destinationPinCard": "PASS actual chosen finish/manual pin/physical pointer sourced card"
+  },
+  "limitations": [
+    "Fine corrugation and pane spacing inferred from actual municipal photos.",
+    "Translucent roof sheet bank positions/widths are photographic estimates on measured slopes; no permit/aerial individual sheet survey.",
+    "Northern painted cube motif rendered as restrained original flat geometry; photographed tenant words omitted. Current northern facade reads Beautiful Distress House; old OSM Vous Etes Ici label not proof of current active operator.",
+    "No monument description/permit elevation inspected; no heritage history invented.",
+    "South street-adjacent door position photographic estimate; map network approach pending actual route/click audit.",
+    "Venue closed to public; root should preserve explicit historical request while avoiding implication of open venue."
+  ],
+  "independentCpuPreflight": {
+    "reviewedOn": "2026-10-05",
+    "reviewer": "independent gooyer_dakota_preflight worker",
+    "scope": "Exact decoded-input GLB CPU z-buffer front/opposite source comparison only; gallery/game acceptance pending",
+    "sourceFilesInspected": [
+      "artifacts/landmarks/nieuw-dakota/references/panorama-front.jpg",
+      "artifacts/landmarks/nieuw-dakota/references/panorama-side.jpg",
+      "artifacts/landmarks/nieuw-dakota/references/panorama-rear.jpg"
+    ],
+    "renderFilesInspected": [
+      "artifacts/landmark-offline-preview/nieuw-dakota-cpu-front.png",
+      "artifacts/landmark-offline-preview/nieuw-dakota-cpu-opposite.png"
+    ],
+    "findings": [
+      "Measured twin gables, pale corrugated sides, blue southern front, separate exposed green-framed door/window banks and lower extension are present.",
+      "The CPU image named opposite shows the public west tenant frontage; the image named front shows the rear/side. Filenames are not facade identity evidence.",
+      "Source side panorama shows northern cube mural and both tenant fronts; coarse original cube geometry preserves the pattern without photo pixels or invented identifying words.",
+      "Roof sheet strips are visible in source context but their exact positions remain photographic estimates; no floating sheets or opaque wall cap were observed.",
+      "Municipal context shows a distinct brick warehouse and fenced yard; native drawn-neighbor retention remains unverified."
+    ],
+    "cpuGeometry": "PASS: 4619 triangles; 5 upward roof probes, 24 supported light-sheet faces, 4 first-hit door/window probes and open street/yard",
+    "result": "No concrete blocking source defect found in bounded CPU preflight; no visual acceptance granted",
+    "builderChanged": false,
+    "reexportRequired": false,
+    "unresolved": [
+      "Native low-angle gallery rotations, live placement/suppression, drawn brick warehouse/fenced-yard retention and destination/pin/pointer card acceptance require root review."
+    ]
+  },
+  "independentFinalReview": {
+    "reviewedOn": "2026-10-06",
+    "reviewer": "independent review_dakota_pllek worker",
+    "scope": "Failure-seeking cached-source/final-hash CPU, five gallery views, native both-side views, pointer-card/route/pin/exact suppression/drawn neighbor proof review",
+    "assetSha256": "1579cea94e829e387c482fc3cb48b4a590c4dcaf640fddbfcb59f4818e3a7b5a",
+    "assetBytes": 74492,
+    "triangles": 4619,
+    "sourceImagesInspected": [
+      "/Users/blackmad/Code/map-recall2/artifacts/landmarks/nieuw-dakota/references/panorama-front.jpg",
+      "/Users/blackmad/Code/map-recall2/artifacts/landmarks/nieuw-dakota/references/panorama-side.jpg",
+      "/Users/blackmad/Code/map-recall2/artifacts/landmarks/nieuw-dakota/references/panorama-rear.jpg"
+    ],
+    "cpuRendersInspected": [
+      "artifacts/landmark-release-check/independent-dakota-pllek/nieuw-dakota-cpu-front.png",
+      "artifacts/landmark-release-check/independent-dakota-pllek/nieuw-dakota-cpu-opposite.png"
+    ],
+    "findings": [
+      "Twin measured west gables and full narrow low extension remain in the final asset; source-supported blue south tenant front and separate northern pale front are distinct.",
+      "Green south and north window/door groups are exposed; photographed tenant/name words are omitted, with source-based northern cube motif approximated in original geometry.",
+      "Metal slopes and source-supported roof-light strips are bounded and upward; no roof caps, unsupported fins or detached glazing observed in final CPU opposite/front.",
+      "Street and yard probes pass. Native brick warehouse and yard retention remain a live-scene requirement.",
+      "All five browser gallery views preserve attached glazing and supported twin roofs without observed roof fins/caps.",
+      "Live opposite view clearly exposes blue/pale public fronts and green windows; native rear view retains distinct drawn neighboring buildings and open gap/yard.",
+      "Runtime asset fingerprint matches final full hash; selected former venue finish stays fixed, geographic pin exists and physical click opens sourced researched card."
+    ],
+    "blockingSourceGeometryDefects": [],
+    "galleryAcceptance": true,
+    "nativeGameAcceptance": true,
+    "verdict": "PASS bounded final landmark acceptance; no blocking defect found",
+    "galleryFilesInspected": [
+      "artifacts/landmark-release-check/nieuw-dakota-review/gallery.png",
+      "artifacts/landmark-release-check/nieuw-dakota-review/gallery-angle-0.png",
+      "artifacts/landmark-release-check/nieuw-dakota-review/gallery-angle-1.png",
+      "artifacts/landmark-release-check/nieuw-dakota-review/gallery-angle-2.png",
+      "artifacts/landmark-release-check/nieuw-dakota-review/gallery-angle-3.png"
+    ],
+    "nativeFilesInspected": [
+      "artifacts/landmark-release-check/nieuw-dakota-review/before-pointer-check.png",
+      "artifacts/landmark-release-check/nieuw-dakota-review/live-front.png",
+      "artifacts/landmark-release-check/nieuw-dakota-review/neutral-front.png",
+      "artifacts/landmark-release-check/nieuw-dakota-review/live-rear.png",
+      "artifacts/landmark-release-check/nieuw-dakota-review/placement-proof.json",
+      "artifacts/landmark-release-check/nieuw-dakota-review/physical-card-proof.json",
+      "artifacts/landmark-release-check/nieuw-dakota-review/performance-comparison.json"
+    ],
+    "runtimeProof": {
+      "assetVersion": "1579cea94e829e38",
+      "nativeScale": 1,
+      "destinationPinAndActualChosenFinish": true,
+      "physicalPointerSourcedCard": true,
+      "exactReplacementMasksAndNoOldPyramids": true,
+      "allThreeNeighborsResidentDrawableNotHidden": true
+    },
+    "performance": {
+      "p50Ms": 8.3,
+      "p95Ms": 9.1,
+      "hiddenP50Ms": 8.3,
+      "hiddenP95Ms": 9,
+      "scope": "Headless same stationary scene custom-draw comparison only; no whole-game or touch pan performance pass"
+    },
+    "remainingLimitations": [
+      "Fine corrugation/pane divisions and roof-light sheet placement estimated from dated municipal photos.",
+      "Northern cube motif coarse original approximation; photographed tenant/name words omitted.",
+      "No permit elevation/heritage source inspected.",
+      "Stationary headless performance evidence does not establish mobile/touch/pan performance."
+    ]
+  },
+  "visualAccepted": true,
+  "rootAcceptance": {
+    "routePinPhysicalCard": "Actual UI chosen finish/pin/physical sourced card passed",
+    "native": "scale1, no bias/broad suppression, exact masks, source-genuine neighbors resident/drawn",
+    "fallback": "Actual entry composer restored ordinary fallback on simulated asset unavailable then reloaded, neighbors retained",
+    "performance": "Bounded stationary draw-cost comparison; no whole-game/touch performance claim",
+    "artifactPath": "models/nieuw-dakota/validation/final-20261006"
+  }
+}
