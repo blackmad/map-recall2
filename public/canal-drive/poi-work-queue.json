@@ -75,6 +75,23 @@
       "nextAction": "Start with failed De Wallen transfer diagnosis and a bounded source-rich canal row; evaluate rhythm and authoring throughput before scaling to every canal house. Preserve ordinary and modern exceptions. Raw sources belong in the new private source archive under its forthcoming instructions."
     },
     {
+      "id": "native-geometry-ordinary-building-treatment",
+      "task": "Pilot fast building-specific treatments for large ordinary buildings",
+      "priority": "high",
+      "status": "demo-ready-integration-unaccepted",
+      "owner": "root",
+      "notes": "User direction 2026-10-06: big ordinary buildings need their own character, with speed emphasized. Two source-informed drafts on existing footprints now compare original procedural facade atlases and shallow geometry: modern block BAG0363100012139498 and warehouse BAG0363100012118320. Sources include 2020/2025 municipal captures; bounded history sample contains nine years. Root reviewed close/wide demo views and GLB export. Height/roof/upper-wing divisions and rear appearance remain unverified; no standard fidelity approval, live-game integration or frame-performance acceptance. Do not exclude a repetitive warehouse just because historic: recognition-critical arches/cornice/open upper gallery must survive. Report:docs/performance/2026-10-06/ordinary-building-pilot.md.",
+      "evidence": "ordinary-building-pilot.html"
+    },
+    {
+      "id": "empty-landmark-fallback-walls",
+      "task": "Investigate the user's screenshot of large brown/tan buildings without windows or doors",
+      "priority": "urgent",
+      "status": "planned",
+      "owner": "root",
+      "notes": "User evidence:artifacts/city-performance/2026-10-06/empty-walls/user.png. Confirmed code rule:roofMesh.exceptLandmarks bypasses generic facades for landmark IDs except dated pre1945 buildings <=26m; missing facade metadata becomes bare walls. Suspected overbroad fallback; exact screenshot location/identities still unconfirmed. Street/landmark and zoom/pan context requested. Preserve source-supported blind walls and church assemblies; do not globally add house-window grids to landmark bodies. Performance release ce00fece is deployed/verified; renderer policy predates it."
+    },
+    {
       "id": "batched-road-projection-and-surface-setup",
       "task": "Remove the remaining 200–470ms road/surface startup pauses",
       "priority": "high",
