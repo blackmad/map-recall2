@@ -401,5 +401,48 @@
     }
   ],
   "independentReviewer": "canopy_rollout_review",
-  "reviewerDecision": "Accept prioritized discovery corridor; reject blanket both-side or neighborhood transfer. Current-source and defining-assembly gaps remain gates."
+  "reviewerDecision": "Accept prioritized discovery corridor; reject blanket both-side or neighborhood transfer. Current-source and defining-assembly gaps remain gates.",
+  "amsterdamSourceWorkflow": {
+    "suggestedByUser": "https://archief.amsterdam/beeldbank/",
+    "beelbank": {
+      "use": "Original dated facade, canopy, window-group and entrance photographs; compare historical condition with latest municipal panorama.",
+      "existingReusableAcquisition": "scripts/canalhouse-recipes/research-beeldbank-photos.py discovers public viewer media service; cached service record confirms earlier three catalogue/original-photo retrievals. Do not rerun unrelated houses.",
+      "boundedQuery": "Jan Evertsenstraat; rows=5; page=1",
+      "accessState": "2026-10-06 bounded service query failed DNS in current shell; viewer unavailable via web tool. No new records or photos inspected."
+    },
+    "panorama": {
+      "api": "https://api.data.amsterdam.nl/panorama/panoramas/",
+      "existingReusableAcquisition": "scripts/street-appearance/acquire.ts and scripts/street-appearance/observe-row.ts",
+      "use": "Latest timestamp plus current source photos on both street sides; retain original image/camera/processed-crop distinction."
+    },
+    "bag": {
+      "documentation": "https://api.data.amsterdam.nl/v1/docs/datasets/bag%40v1.html",
+      "use": "Resolve address to VBO and Pand via official relationships; no nearby-place substitute.",
+      "access": "Official public/no-auth documentation inspected; pilot request failed DNS."
+    },
+    "pointCloud": {
+      "documentation": "https://api.data.amsterdam.nl/v1/mvt/puntenwolk/v2",
+      "use": "2024/2025 metadata can guide bounded facade/roof survey where photographic dimensions remain unresolved; not a whole-building equipment height."
+    },
+    "acquisitionAttempts": [
+      {
+        "id": "beeldbank-jan-evertsen",
+        "accessState": "request failed; no source evidence acquired",
+        "errorType": "URLError",
+        "reason": "[Errno 8] nodename nor servname provided, or not known"
+      },
+      {
+        "id": "panorama-pilot",
+        "accessState": "request failed; no source evidence acquired",
+        "errorType": "URLError",
+        "reason": "[Errno 8] nodename nor servname provided, or not known"
+      },
+      {
+        "id": "bag-pilot",
+        "accessState": "request failed; no source evidence acquired",
+        "errorType": "URLError",
+        "reason": "[Errno 8] nodename nor servname provided, or not known"
+      }
+    ]
+  }
 }
