@@ -1,0 +1,38 @@
+{
+  "id": "midwest",
+  "name": "MidWest",
+  "landmarkId": "w119042875",
+  "modelUrl": "./models/midwest.glb",
+  "suppressOsmIds": [
+    "w119042875",
+    "NL.IMBAG.Pand.0363100012081251"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.85495,
+      52.369735
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 45,
+    "widthMetres": 27
+  },
+  "surveyed": {
+    "anchor": [
+      4.85495,
+      52.369735
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Native BAG/3DBAG stepped terraces baked east/south metres; 2023 AHN5 roof evidence"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "MidWest",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.inmidwest.nl/cabralstraat-1-het-monument/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native scale school reconstruction, surveyed stepped roofs, twin open-headed towers and facade rhythms from archived references."
+  }
+}

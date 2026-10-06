@@ -1,0 +1,179 @@
+{
+  "modelId": "midwest",
+  "status": "Source/gallery and native game integration accepted; performance followup retained",
+  "cpu": "Passed 2026-10-06: 6803 triangles; all fifteen classroom panes sampled at four fractions; nineteen courtyard panes; entry ladder and door; four open-space rays; upward owned roofs; native bounds; exact identities.",
+  "sourceReferenceFiles": [
+    "files/entrance.jpg",
+    "files/ref-0.jpg",
+    "files/ref-2.jpg",
+    "files/ref-3.jpg",
+    "files/ref-6.jpg",
+    "files/ref-7.jpg",
+    "files/ref-8.jpg",
+    "files/ref-9.jpg",
+    "files/ref-10.jpg",
+    "files/ref-11.jpg",
+    "files/ref-12.webp",
+    "files/ref-13.webp",
+    "files/ref-14.webp",
+    "files/context-0.jpg",
+    "files/context-1.jpg",
+    "files/context-2.jpg",
+    "files/context-3.jpg",
+    "files/context-4.jpg",
+    "files/context-5.jpg"
+  ],
+  "requiredViews": [
+    "native gallery higher and four low rotations",
+    "western Cabral principal end vs entrance.jpg/ref-0.jpg/ref-14.webp",
+    "south classroom five-bay three-tier wall vs context-2.jpg",
+    "north corridor/gym/stair recesses vs ref-6.jpg/context-3.jpg",
+    "native live game entry and courtyard preservation",
+    "exact replaced BAG/OSM identity and neighboring housing retention",
+    "route destination/map label/meaningful info card"
+  ],
+  "risks": [
+    "Front-end corner radii and doorway curves photo approximations require visual recognition review",
+    "Tower placement and heights surveyed, but tower rectangular open heads simplified",
+    "Generic9pane classroom subdivision matches register; modern reduced pane patterns reflected photographs and accepted simplification pending visual review",
+    "Roof part6 vertical fitting artefact converted to frontal wall silhouette rather than sloped plate",
+    "Entrance pin needs root route connectivity confirmation"
+  ],
+  "acceptance": {
+    "gallery": "not run",
+    "independent": "not run",
+    "game": "not run",
+    "poiContract": "not integrated"
+  },
+  "sourceArchive": {
+    "commit": "678a8f4"
+  },
+  "currentIndependentReview": "models/midwest/validation/clean-release-20261006/independent/review.json",
+  "export": {
+    "sha256": "4fff0ebe8e393e1bbada16460aecaff01413dacc6e288283afd3630d6bc33992",
+    "triangles": 10147,
+    "bytes": 137412
+  },
+  "runtime": {
+    "proof": {
+      "id": "midwest",
+      "actualCamera": {
+        "center": [
+          4.85495,
+          52.369735
+        ],
+        "zoom": 19.2,
+        "pitch": 60,
+        "bearing": -90,
+        "elevation": 0
+      },
+      "assetVersion": "4fff0ebe8e393e1b",
+      "scale": 1,
+      "bias": false,
+      "broad": false,
+      "pin": true,
+      "destination": true,
+      "source": "https://www.inmidwest.nl/cabralstraat-1-het-monument/",
+      "click": {
+        "x": 752.7908152514124,
+        "y": 227.9646018691991
+      },
+      "aliases": [
+        {
+          "id": "w119042875",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012081251",
+          "hidden": true
+        }
+      ],
+      "oldPyramidIds": [],
+      "neighbors": [
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012142520"
+          ],
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        },
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012141200"
+          ],
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        },
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012118594"
+          ],
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        },
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012212723"
+          ],
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        }
+      ],
+      "features": 22432,
+      "buildings": 25619
+    },
+    "card": {
+      "notice": "w119042875",
+      "source": "https://www.inmidwest.nl/cabralstraat-1-het-monument/",
+      "alpha": 1,
+      "drawn": true,
+      "active": "w119042875"
+    },
+    "performance": {
+      "id": "midwest",
+      "assetVersion": "4fff0ebe8e393e1b",
+      "samples": [
+        {
+          "label": "model-visible",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 69.90000009536743,
+          "p95Ms": 110.59999990463257
+        },
+        {
+          "label": "same-scene-model-hidden",
+          "visible": false,
+          "frames": 60,
+          "p50Ms": 60.09999990463257,
+          "p95Ms": 66
+        },
+        {
+          "label": "model-visible-repeat",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 69.59999990463257,
+          "p95Ms": 98.39999961853027
+        }
+      ],
+      "buildings": {
+        "kitVertices": 318156,
+        "chunks": 34,
+        "buildings": 32022,
+        "walls": 158367,
+        "quads": 577164,
+        "vertices": 3720261,
+        "geometryMB": 124.22198295593262,
+        "textureMB": 97.5,
+        "drawCalls": 7,
+        "triangles": 457511,
+        "buildMs": 2.6999998092651367
+      },
+      "scope": "Headless Chromium same stationary scene; hidden model keeps existing replacement masks, isolating custom draw cost. No whole-game performance pass claimed."
+    },
+    "performanceAcceptance": "No general smooth gameplay pass; headlessmedians69.9/60.1/69.6ms with existingreplacementmasksretained."
+  }
+}

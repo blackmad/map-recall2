@@ -22,6 +22,7 @@ import {MeshoptEncoder} from 'meshoptimizer';
 await MeshoptEncoder.ready;
 import {buildCulturalLandmark} from './cultural-builders';
 import {buildRemEiland} from './rem-eiland-builder';
+import {buildMidwest} from './midwest-builder';
 import {buildValley} from './valley-builder';
 import {buildNdsmWarehouseComplex} from './ndsm-warehouse-complex-builder';
 import {openTopPrism, upwardRoofPlane} from './house-geometry';
@@ -293,6 +294,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(['brakke-grond','frascati','boom-chicago'].includes(id))buildNesRozentheaterLandmark(id,w,d,helpers);
     else if(['foam','huis-marseille','ons-lieve-heer-op-solder'].includes(id))buildCanalMuseumLandmark(id,w,d,helpers);
     else if(id==='rem-eiland')buildRemEiland(w,d,helpers);
+    else if(id==='midwest')buildMidwest(w,d,helpers);
     else if(id==='valley')buildValley(w,d,helpers);
     else if(id==='ndsm-warehouse-complex')buildNdsmWarehouseComplex(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);

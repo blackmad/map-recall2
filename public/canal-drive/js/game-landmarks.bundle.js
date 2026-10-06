@@ -7243,6 +7243,44 @@ Map source: ${osmUrl(places[i][0])}`);
         licenceUrl: "./LICENSE",
         modifications: "Original flat-color native shipbuilding warehouse; survey-derived six-bay rooflights, high transverse mallenzolder and low attached halls. Brick/steel grid, tall glazed groups and blue doors, physical open entry. Independent shipyard buildings and existing Faralda/Treehouse retained; no downloaded mesh or photo pixels."
       }
+    },
+    {
+      id: "midwest",
+      name: "MidWest",
+      landmarkId: "w119042875",
+      modelUrl: "./models/midwest.glb",
+      suppressOsmIds: [
+        "w119042875",
+        "NL.IMBAG.Pand.0363100012081251"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.85495,
+          52.369735
+        ],
+        headingDegrees: 90,
+        lengthMetres: 45,
+        widthMetres: 27
+      },
+      surveyed: {
+        anchor: [
+          4.85495,
+          52.369735
+        ],
+        northOffsetDegrees: 0,
+        source: "Native BAG/3DBAG stepped terraces baked east/south metres; 2023 AHN5 roof evidence"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "MidWest",
+        author: "Map Recall",
+        sourceUrl: "https://www.inmidwest.nl/cabralstraat-1-het-monument/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native scale school reconstruction, surveyed stepped roofs, twin open-headed towers and facade rhythms from archived references."
+      }
     }
   ];
 
@@ -10575,6 +10613,31 @@ Map source: ${osmUrl(places[i][0])}`);
       modelId: "ndsm-warehouse-complex",
       sourceUrl: "https://www.ndsmloods.nl/bezoek/ndsm-loods/",
       preferDescription: true
+    },
+    {
+      name: "MidWest",
+      landmarkId: "w119042875",
+      description: "This Amsterdam School building was designed in 1924 as two primary schools sharing a gymnasium. Its classroom windows face the inner gardens, while sculptural almost blind ends address the streets; two slender towers mark the Cabralstraat entrance. The former gym is now a neighborhood canteen, retaining its gym floor, rings and climbing equipment. MidWest began using the building in 2012 and bought it in 2016, restoring historic details and turning its playgrounds into gardens that store rainwater.",
+      funFact: "The former gym is now a neighborhood canteen, retaining its gym floor, rings and climbing equipment. MidWest began using the building in 2012 and bought it in 2016, restoring historic details and turning its playgrounds into gardens that store rainwater.",
+      sourceUrls: [
+        "https://www.inmidwest.nl/cabralstraat-1-het-monument/",
+        "https://www.inmidwest.nl/contact/",
+        "https://items.amsterdamse-school.nl/details/objects/630"
+      ],
+      modelId: "midwest",
+      center: [
+        52.36966835140684,
+        4.854636936174082
+      ],
+      destinationOverride: {
+        center: [
+          52.36966835140684,
+          4.854636936174082
+        ],
+        sourceUrl: "https://www.inmidwest.nl/contact/",
+        reason: "Cabralstraat1 public entrance between source-observed twin towers on native surveyed west edge; avoid inaccessible school courtyard centroid."
+      },
+      sourceUrl: "https://www.inmidwest.nl/cabralstraat-1-het-monument/"
     }
   ];
 

@@ -11385,6 +11385,75 @@
       "triangles": 12804,
       "bytes": 168548,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "midwest": {
+      "id": "midwest",
+      "name": "MidWest",
+      "landmarkId": "w119042875",
+      "modelUrl": "./models/midwest.glb",
+      "suppressOsmIds": [
+        "w119042875",
+        "NL.IMBAG.Pand.0363100012081251"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.85495,
+          52.369735
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 45,
+        "widthMetres": 27
+      },
+      "surveyed": {
+        "anchor": [
+          4.85495,
+          52.369735
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Native BAG/3DBAG stepped terraces baked east/south metres; 2023 AHN5 roof evidence"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "attribution": {
+        "title": "MidWest",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.inmidwest.nl/cabralstraat-1-het-monument/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free native scale school reconstruction, surveyed stepped roofs, twin open-headed towers and facade rhythms from archived references."
+      },
+      "bounds": {
+        "min": [
+          -21.330352783203125,
+          -9.155273232863692e-7,
+          -15.095333099365234
+        ],
+        "max": [
+          21.66287612915039,
+          22.899002075195312,
+          14.519546508789062
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.85495,
+          52.369735
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 90,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 42.993228912353516,
+        "heightMetres": 22.899002990722636,
+        "depthMetres": 29.614879608154297,
+        "depthCoverage": 1.0968473928946036
+      },
+      "triangles": 10147,
+      "bytes": 137412,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

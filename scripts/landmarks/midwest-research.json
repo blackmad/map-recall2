@@ -1,0 +1,138 @@
+{
+  "modelId": "midwest",
+  "researchedOn": "2026-10-06",
+  "status": "built-pending-visual-review",
+  "sourceArchive": {
+    "path": "models/midwest",
+    "manifest": "worker-acquisition.json",
+    "commit": null,
+    "state": "Raw original bytes archived privately; coordinator must verify, commit and push before model commit."
+  },
+  "references": [
+    {
+      "url": "https://www.inmidwest.nl/cabralstraat-1-het-monument/",
+      "kind": "operator architectural description",
+      "access": "Original HTML archived files/operator.html and read in full",
+      "date": "description 2005/2021; page dated 2019",
+      "confidence": "high for explicit features; medium for current arrangement"
+    },
+    {
+      "url": "https://erfgoedregister.amsterdam.nl/monument/2d0d009f-719a-4aac-b35d-c0c8e979ab8e/",
+      "kind": "municipal register",
+      "access": "Earlier verified text retained; original current retrieval failed TLS certificate mismatch; two bounded attempts recorded",
+      "rights": "Not established"
+    },
+    {
+      "url": "https://www.inmidwest.nl/contact/",
+      "kind": "current operator/address",
+      "access": "Read web-tool text; original HTML missing"
+    },
+    {
+      "url": "https://archief.amsterdam/beeldbank/?query=Cabralstraat%201",
+      "kind": "bounded address Beeldbank search",
+      "access": "Original address search viewer shell archived; no catalogue originals available from bounded query",
+      "additionalBoundedSearch": "site:archief.amsterdam exact Cabralstraat 1 returned no results",
+      "archiveHint": "Operator cites archive 24752; not independently inspected"
+    },
+    {
+      "url": "https://items.amsterdamse-school.nl/details/objects/630",
+      "kind": "Het Schip/Wendingen photo catalogue",
+      "access": "Original HTML and 24 original response photographs archived; principal facade, north corridor, south classroom and details visually inspected",
+      "dates": "2015-2019 exterior views catalogued",
+      "rights": "Per-image rights unresolved"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Front_entrance_on_the_side_(30030739895).jpg",
+      "kind": "principal entrance photo catalogue",
+      "access": "Original full-resolution JPEG downloaded privately and visually inspected",
+      "date": "2016-09-11",
+      "author": "Bobo Boom",
+      "license": "CC BY 2.0",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Front_entrance_on_the_side_%2830030739895%29.jpg",
+      "reportedSha1": "5b06daecc89c3c845bb5c6e07489ee8f4c80f03f"
+    },
+    {
+      "url": "https://roofwatcher.nl/projecten/midwest-amsterdam/",
+      "kind": "roof contractor",
+      "access": "Original HTML and roof/current/1928 photographs archived and inspected",
+      "note": "Current roof membrane and panels corroborated; stated roof contract area is not Pand footprint"
+    }
+  ],
+  "architecturalAssertions": [
+    {
+      "source": "operator architectural description",
+      "part": "main body",
+      "assertion": "Three levels with flat roofs. Level-dependent E/C outlines; two historic schools joined through the central gym.",
+      "confidence": "high"
+    },
+    {
+      "source": "operator architectural description",
+      "part": "street ends",
+      "assertion": "Mostly blind sculptural ends, two slender rectangular towers at the Cabral-facing end. Yellow brick body with red brick plinth and door frame. Curved convex/concave entrance walls and ladder glazing above the doors.",
+      "confidence": "high"
+    },
+    {
+      "source": "operator architectural description",
+      "part": "south courtyard elevation",
+      "assertion": "Five classroom bays with windows over three tiers; subdivided upper panes. Corners include curved masonry.",
+      "confidence": "high"
+    },
+    {
+      "source": "operator architectural description",
+      "part": "north courtyard elevation",
+      "assertion": "Seven varied bays; projecting gym and stair volumes, recessed toilet windows and upper corridor glazing. Stepped setbacks need separate storey geometry.",
+      "confidence": "high"
+    },
+    {
+      "source": "municipal register",
+      "part": "complex",
+      "assertion": "Expressive brick street ends and enclosed court-facing frontage; Amsterdam School interiors. Municipal monument 200681, build period 1924.",
+      "confidence": "high"
+    }
+  ],
+  "requiredBeforeBuilder": [],
+  "acceptance": {
+    "geometry": "Passed 2026-10-06: 6803 triangles; all fifteen classroom panes sampled at four fractions; nineteen courtyard panes; entry ladder and door; four open-space rays; upward owned roofs; native bounds; exact identities.",
+    "gallery": "pending",
+    "independentReview": "pending",
+    "gameScene": "pending",
+    "threeSurfacePoiContract": "pending coordinator integration"
+  },
+  "originalAcquisitionManifest": "../map-recall2-source-data/models/midwest/worker-acquisition.json",
+  "inspectedPhotos": [
+    "files/entrance.jpg",
+    "files/ref-0.jpg",
+    "files/ref-2.jpg",
+    "files/ref-3.jpg",
+    "files/ref-6.jpg",
+    "files/ref-7.jpg",
+    "files/ref-8.jpg",
+    "files/ref-9.jpg",
+    "files/ref-10.jpg",
+    "files/ref-11.jpg",
+    "files/ref-12.webp",
+    "files/ref-13.webp",
+    "files/ref-14.webp",
+    "files/context-0.jpg",
+    "files/context-1.jpg",
+    "files/context-2.jpg",
+    "files/context-3.jpg",
+    "files/context-4.jpg",
+    "files/context-5.jpg"
+  ],
+  "sourceResolution": {
+    "description": "Operator original HTML downloaded and read in full; useful architectural description copied from monument research. Register original current host certificate mismatch after two attempts; earlier verified description retained.",
+    "beeldbank": "One bounded exact Cabralstraat1 query original HTML archived; viewer shell, no image/drawing inspected.",
+    "bouwdossiers": "Not acquired; source stepped terraces and facade/roof photos resolve bounded build without unsupported drawings.",
+    "heights": "3DBAG AHN5 2023 original API archived. Main roof 14.95m, corridor13.21, stairs8.64, gym5.49, twin towers22.9m above pavement; fitted main max not treated as equipment whole building.",
+    "currentState": "Roof contractor2025 photos compared with2016 entrance and2015-2019 catalogue; doors restored2018 and roof solar panels current.",
+    "rights": "Commons entrance CC BY2.0 Bobo Boom; Wendingen photographers Marcel Westhoff/Annemarieke Verheij and contractor photos rights unresolved, reference only."
+  },
+  "remainingUncertainty": [
+    "Register original TLS access gap",
+    "Exact facade curve radii are photo-guided approximations; gallery comparison required",
+    "Entrance geolocation requires coordinator game route check",
+    "Survey roof branch6 is steep front-edge fitting artefact flattened to15m rather than an unsupported sloped roof",
+    "Private archive not yet committed/pushed"
+  ]
+}
