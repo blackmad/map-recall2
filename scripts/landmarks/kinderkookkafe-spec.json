@@ -1,0 +1,40 @@
+{
+  "id": "kinderkookkafe",
+  "name": "Kinderkookkaf\u00e9",
+  "landmarkId": "extract_landmarks_565545475",
+  "modelUrl": "./models/kinderkookkafe.glb",
+  "suppressOsmIds": [
+    "w276423157",
+    "w276423122",
+    "NL.IMBAG.Pand.0363100012158470",
+    "NL.IMBAG.Pand.0363100012165580"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.864856,
+      52.359184
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 23.2,
+    "widthMetres": 26.5
+  },
+  "surveyed": {
+    "anchor": [
+      4.864856,
+      52.359184
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Exact current BAG twin shed polygons plus AHN4/AHN5 3DBAG roof rings; source supported original facade details"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 90,
+  "attribution": {
+    "title": "Kinderkookkaf\u00e9 / paired Vondelpark manure sheds",
+    "author": "Map Recall",
+    "sourceUrl": "https://stadsherstel.nl/monumenten/vondelpark-6b/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native survey reconstruction. No reference pixels or downloaded meshes. Gable/entrance relief and pane divisions photographic approximations."
+  }
+}

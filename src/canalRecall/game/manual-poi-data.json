@@ -591,5 +591,63 @@
         "url": "https://press.mandarinoriental.com/amsterdam-rebranding/?lang=eng"
       }
     ]
+  },
+  {
+    "modelId": "kinderkookkafe",
+    "name": "Kinderkookkafé",
+    "description": "Children cook and serve real meals in this café, housed in one of the Vondelpark’s former manure sheds. City engineer J.G. van Niftrik designed the paired brick sheds in the 1880s to replace open manure storage; their pointed gables and decorative brickwork give this practical park building an unusually rich silhouette. A glass conservatory was added during its conversion for the café.",
+    "sourceUrl": "https://stadsherstel.nl/monumenten/vondelpark-6b/",
+    "center": [
+      52.3591999,
+      4.8647759
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "beta-boulders",
+    "name": "Beta Boulders",
+    "center": [
+      52.3441243,
+      4.855954
+    ],
+    "sourceUrl": "https://betaboulders.nl/",
+    "description": "Beta Boulders combines a climbing gym, fitness space, co-working area and café inside the northern former Citroën garage beside the Olympic Stadium. Jan Wils designed this maintenance garage separately from the older southern showroom. Its later transformation into The Garage restored the glass curtain wall and connected offices, restaurants and other shared uses along the original car ramp. Beta occupies part of this multi-tenant building.",
+    "sourceLinks": [
+      {
+        "title": "Beta Boulders: gym, workspace and café",
+        "url": "https://betaboulders.nl/"
+      },
+      {
+        "title": "The Olympic tenant directory: Beta Boulders",
+        "url": "https://theolympicamsterdam.nl/nl/single-company/beta-boulders"
+      },
+      {
+        "title": "Rijnboutt: restoration of the northern Citroën building",
+        "url": "https://rijnboutt.nl/actueel/nieuws/parool-het-citroengebouw-van-jan-wils-glorieert-weer/"
+      }
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "beest-boulders",
+    "name": "Beest Boulders Amsterdam",
+    "description": "Beest Boulders Amsterdam occupies a converted industrial hall on Willem de Zwijgerlaan. Its broad curved roof and pale corrugated walls belong to a much longer shared factory complex. Bouldering uses short climbing routes over landing mats rather than ropes; the venue renews part of its routes weekly and also has a restaurant. This Amsterdam venue is separate from Het Lab on Transformatorweg.",
+    "sourceUrl": "https://beestboulders.com/beest-boulders-amsterdam/",
+    "center": [
+      52.3816671,
+      4.8593849
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "klimmuur-centraal",
+    "name": "Klimmuur Centraal",
+    "description": "Klimmuur Centraal is the climbing hall on Dijksgracht beside Oosterdok. Its sharply sloping shell contains a hall over16metres tall. A folding steel-and-glass climbing wall lets the climbing activity face the waterfront terrace. The waterfront glass wall is itself climbable: its four folding elements carry holds and can slide aside. The architect used electromagnets to secure the doors while people climb.",
+    "sourceUrl": "https://www.nationalestaalprijs.nl/project/klimwand",
+    "center": [
+      52.3766271,
+      4.9115779
+    ],
+    "preferDescription": true
   }
 ]

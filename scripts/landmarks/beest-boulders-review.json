@@ -1,0 +1,112 @@
+{
+  "id": "beest-boulders",
+  "status": "south-composition-repaired-awaiting-independent-gallery-review",
+  "sourceArchive": {
+    "path": "models/beest-boulders/",
+    "commit": "2c5702b",
+    "repairFollowup": "Updatedbuilder/footprints/check/review source sync pendingroot; rawphotos unchanged private2c5702b."
+  },
+  "evidence": {
+    "westFacade": "models/beest-boulders/raw/entrance-0.jpg",
+    "northernContext": "models/beest-boulders/raw/current-0.jpg",
+    "southFacade": "models/beest-boulders/raw/south-0.jpg",
+    "roof": "models/beest-boulders/raw/aerial.jpg"
+  },
+  "architecturalAssertions": [
+    {
+      "part": "north70m shed",
+      "trait": "broad curved roof; pale vertical corrugated upper walls, brick base, sparse tall glazed apertures and coloured circular emblem",
+      "source": "2025-09-26 municipal panorama",
+      "confidence": "high family/material; approximate aperture spacing and sinusoidal curvature"
+    },
+    {
+      "part": "central workshop",
+      "trait": "repeated sawtooth slope roofs with photovoltaic fields; white structural frontage, upper glass bands",
+      "source": "current aerial +2022 municipal south context +AHN5roof regions",
+      "confidence": "high roof layout, medium facade simplification"
+    },
+    {
+      "part": "south shared office",
+      "trait": "tall stepped block, horizontal glass/spandrel rhythm, lower extension",
+      "source": "2022 municipal south panorama +3DBAG roof188/196",
+      "confidence": "high general height/scope; medium simplified facade"
+    }
+  ],
+  "geometry": {
+    "check": "scripts/check-beest-boulders-geometry.ts",
+    "triangles": 17460,
+    "result": "passed",
+    "checks": [
+      "finite native bounds",
+      "fractional exposed door/tall pane glazing",
+      "fractional central workshop pane glazing away from modeled mullions",
+      "upward surveyed roof and solar normals",
+      "exterior street/canal/neighbor open rays",
+      "exact BAG and genuine node identity",
+      "Scoped builder/check TypeScript compile passed",
+      "south upper fractional first-hit narrow panes and broad spandrels",
+      "south bandprojection ahead ofglass by>0.30m",
+      "full-heightstairglazing clear ofopaque basepanel/ribbon overlays",
+      "lowerwing narrow ribbons",
+      "Actual183 upperterraceface fractional first-hit glazing"
+    ]
+  },
+  "failedEvidence": [
+    {
+      "check": "ground pane ray at v41.3",
+      "finding": "generic structural pier occluded modeled door edge",
+      "fix": "suppress structural piers where documented aperture assemblies intersect; same probe passes"
+    },
+    {
+      "check": "exact exported GLB CPUfront SHA54deb201e57db3a89c9379d066204bc21d01a363840452dfad71d6f15052995f",
+      "finding": "pale southern host and unsupported diagonal upper-terrace fin from AHNsurface183 disagree with2022 facade reference",
+      "evidence": "artifacts/landmark-offline-preview/beest-boulders-before-south-repair-front.png",
+      "fix": "restore grey-brown shared palette wall; retain183 native footprint but flatten to contiguous roof196 datum24.286m, add photo-supported upper south-facing glazing. Reexport/review pending. ExactreexportSHA7693ae... comparison confirms finremoved and southcolor/glazing improved."
+    },
+    {
+      "check": "independent exact lower gallery/source comparison of7693ae003d791dd54f1e4c3f49d17c7d4dc4029817fca9cac7e7ccd6cb081592",
+      "finding": "South office generic equal-height grids from pavement to roof omit broad projecting spandrels/narrow recessed upper windows and tall structural base",
+      "evidence": "artifacts/landmark-continuation-20261006/beest-boulders-review/gallery-angle-0.png;gallery-angle-3.png;neutral-front.png;independent-review.json",
+      "fix": "Perimeter-based officeEdge assemblies fromroof188/196, tall8.3mstructural/shopfrontbase, fullheightweststairglass, narrowupperglass and physically projecting broadbands; exact export/gallery re-review pending"
+    },
+    {
+      "check": "exact intermediate composition export7c66a9b6a21eacf22517cff3ad8ce15147bc4cb23da5c51b4b696f2e07cc3d9a",
+      "finding": "lowstreetCPU showed blank upperterracebecause actual exposed roof183 shell stood in front of196-decorated face; band/glass tiers also too near-equal",
+      "evidence": "artifacts/landmark-offline-preview/beest-boulders-office-intermediate-blank-terrace.png",
+      "fix": "Decorate actual183 exposed front footprint edges with upper assembly; new fractionalfirsthit exposedglazing probe passes. Broaden band2.2m and narrow glass1.1m within existing tier+roofdatums. Exact8b9723... lowstreet view confirms183 glazing exposed; failed intermediate image preserved."
+    }
+  ],
+  "pending": [
+    "Root current export/content fingerprint",
+    "Native gallery higher view and four lower rotations against raw references",
+    "Independent failure-seeking reference/render comparison",
+    "Live game correct footprint/suppression and neighbors",
+    "Route chosen n8805218642, visible map pin, physical click useful sourced card",
+    "Private source commit/sync before public model commit"
+  ],
+  "limitations": [
+    "Exact barrel radius and most aperture spacing are bounded photo-guided approximations.",
+    "Facade south current available2022; do not claim2025 confirmation.",
+    "Shared130VBO host is fully retained; do not present whole host as climbing venue.",
+    "No historic monument/drawing inspection claimed.",
+    "South roundedcorner is approximated by surveyed native edgechain; equipmentreturns remain plainer than occupied facades. Westband/core layout and shopfront proportion now source-specific; exacttier elevations are boundedphoto reconstruction."
+  ],
+  "export": {
+    "sha256": "8b9723a7ad58ca43076deab7004035ba5e87e48603a7866c7f7be306775e1e02",
+    "triangles": 17460,
+    "bytes": 253080
+  },
+  "cpuComparison": {
+    "views": [
+      "artifacts/landmark-offline-preview/beest-boulders-cpu-front.png",
+      "artifacts/landmark-offline-preview/beest-boulders-cpu-opposite.png",
+      "artifacts/landmark-offline-preview/beest-boulders-cpu-office-street-corner.png"
+    ],
+    "sourceComparisons": [
+      "models/beest-boulders/raw/south-0.jpg",
+      "models/beest-boulders/raw/south-1.jpg"
+    ],
+    "finding": "Exact decoded repairedoffice retains broad grey-brown band assembly, narrow recessed horizontalglazing, tallstructuralshopfrontbase, verticalweststairglazing and steppednativeheights. Source183 terraceface panes now exposed. Localized rooftop equipment/return walls remain plainer; exact roundedcorner form simplified to surveyedboundary. Workerjudgment: composition recognizably improved; independent galleryreview still decides acceptance.",
+    "status": "worker sourcecomparison improved; independent GPU pending"
+  }
+}

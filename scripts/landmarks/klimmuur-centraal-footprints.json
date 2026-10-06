@@ -1,0 +1,297 @@
+{
+  "id": "klimmuur-centraal",
+  "anchor": [
+    4.911646745330801,
+    52.37662105881722
+  ],
+  "anchorRD": [
+    122617.38272916668,
+    487745.17286111106
+  ],
+  "groundNAP": 0.6539999842643738,
+  "bagId": "0363100012170819",
+  "osmWayId": 35048037,
+  "poiNodeId": 2743587102,
+  "building": {
+    "type": "Feature",
+    "properties": {
+      "aantal_verblijfsobjecten": 1,
+      "bouwjaar": 2005,
+      "documentdatum": "2023-09-21",
+      "documentnummer": "GV00007167_AC00AC",
+      "gebruiksdoel": "sportfunctie",
+      "geconstateerd": "N",
+      "identificatie": "0363100012170819",
+      "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012170819",
+      "status": "Pand in gebruik",
+      "verblijfsobject.href": [
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/136a7471-d820-5ca8-aa43-0e02559e90d0"
+      ]
+    },
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.911720538742897,
+            52.376599705092886
+          ],
+          [
+            4.911760642884754,
+            52.376604054383556
+          ],
+          [
+            4.911751428620011,
+            52.376634782252914
+          ],
+          [
+            4.911739752478251,
+            52.376633504057594
+          ],
+          [
+            4.911736821562023,
+            52.37664388205972
+          ],
+          [
+            4.911778446349176,
+            52.37664885760065
+          ],
+          [
+            4.911776654740028,
+            52.37665433289881
+          ],
+          [
+            4.911769731931449,
+            52.37667542617719
+          ],
+          [
+            4.911700227854801,
+            52.376668244553905
+          ],
+          [
+            4.9116886153531665,
+            52.376710341204145
+          ],
+          [
+            4.911684258495638,
+            52.37670989229934
+          ],
+          [
+            4.911310949095024,
+            52.37667132738061
+          ],
+          [
+            4.911303702363808,
+            52.37667057924167
+          ],
+          [
+            4.911346578506464,
+            52.37652470157005
+          ],
+          [
+            4.9113538251181525,
+            52.37652545869366
+          ],
+          [
+            4.911392757340072,
+            52.37652952478157
+          ],
+          [
+            4.911730884519269,
+            52.3765648024928
+          ],
+          [
+            4.911720538742897,
+            52.376599705092886
+          ]
+        ]
+      ]
+    },
+    "id": "76a2d88d-c518-5aa0-8eaa-5586bcd235e7"
+  },
+  "roofs": [
+    {
+      "surface": 3,
+      "rings": [
+        [
+          [
+            -17.7311666666792,
+            -6.5778888889472,
+            16.041502396106722
+          ],
+          [
+            -22.97216666667373,
+            -5.728888888901565,
+            -0.0004976038932773541
+          ],
+          [
+            -23.32116666667571,
+            -5.67288888891926,
+            -1.0684976038932774
+          ],
+          [
+            -20.509166666670353,
+            10.57711111108074,
+            -0.7444976038932773
+          ],
+          [
+            -20.26516666667885,
+            10.538111111090984,
+            -0.0004976038932773541
+          ],
+          [
+            -15.021166666672798,
+            9.679111111094244,
+            16.053502396106722
+          ]
+        ]
+      ]
+    },
+    {
+      "surface": 4,
+      "rings": [
+        [
+          [
+            6.497833333327435,
+            -5.692888888937887,
+            5.0165023961067225
+          ],
+          [
+            6.617833333322778,
+            -2.5958888889290392,
+            4.959502396106723
+          ],
+          [
+            8.988833333321963,
+            -3.0438888889038935,
+            4.987502396106723
+          ],
+          [
+            8.415833333318005,
+            -6.003888888924848,
+            5.038502396106723
+          ]
+        ]
+      ]
+    },
+    {
+      "surface": 5,
+      "rings": [
+        [
+          [
+            6.617833333322778,
+            -2.5958888889290392,
+            8.284502396106722
+          ],
+          [
+            6.497833333327435,
+            -5.692888888937887,
+            8.152502396106723
+          ],
+          [
+            3.6768333333311602,
+            -5.235888888943009,
+            9.101502396106723
+          ],
+          [
+            2.9178333333256887,
+            -9.92388888890855,
+            9.091502396106723
+          ],
+          [
+            -17.7311666666792,
+            -6.5778888889472,
+            16.041502396106722
+          ],
+          [
+            -15.021166666672798,
+            9.679111111094244,
+            16.053502396106722
+          ],
+          [
+            5.688833333319053,
+            6.287111111101694,
+            9.080502396106723
+          ],
+          [
+            5.00983333332988,
+            2.399111111066304,
+            9.087502396106723
+          ],
+          [
+            7.744833333330462,
+            1.9331111111096106,
+            8.166502396106722
+          ],
+          [
+            7.139833333319984,
+            -1.4888888889108784,
+            8.175502396106722
+          ],
+          [
+            6.342833333328599,
+            -1.3528888889122754,
+            8.443502396106723
+          ],
+          [
+            6.151833333322429,
+            -2.508888888929505,
+            8.442502396106724
+          ]
+        ]
+      ]
+    }
+  ],
+  "sourceUrls": [
+    "https://www.deklimmuur.nl/klimmen/klimmuur-centraal/",
+    "https://www.nationalestaalprijs.nl/project/klimwand",
+    "https://commons.wikimedia.org/wiki/File:2023_Dijksgracht,_Asd-Klimmuur_centraal.jpg",
+    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012170819"
+  ],
+  "sourceDate": "2026-10-06",
+  "scope": "Only Dijksgracht2 current BAG parent; VBO0363010001173286 sportfunctie458m² usable floor area. Hannekes Boom BAG0363100012238899, adjoining bridge/railway and separate IJtunnel ventilation shafts are retained, never included. No courts in current surveyed footprint.",
+  "heightNotes": "AHN5(2023) groundNAP0.654; wedge crown16.04m above terrain. Steep western fitted surface extends below ground; clipped at pavement0 rather than copied as negative-height fins. Main wedge descends east to about8.2m. Annexe roof5.0m.",
+  "archiveSearch": {
+    "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=Dijksgracht%202",
+    "state": "HTTP200 JS archive viewer shell; no inspected archive photo/drawing. Modern BAG2005 shell; no historic monument assertion."
+  },
+  "architecturalAssertions": [
+    {
+      "feature": "wedge silhouette with steep west inclined plane, east-descending long roof and corrugated warm pale upper/silver lower walls",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2023_Dijksgracht,_Asd-Klimmuur_centraal.jpg",
+      "date": "2023-01-21",
+      "confidence": "high; current photo and AHN5 corroborate"
+    },
+    {
+      "feature": "four folding glass doors, 5113mm total width and4864mm height",
+      "sourceUrl": "https://www.nationalestaalprijs.nl/project/klimwand",
+      "date": "2016-02-03 drawing +2018 current project photos",
+      "confidence": "high dimensions from source design, 2023 photo shutter closed; no historic lettering copied"
+    }
+  ],
+  "privateSourceArchive": {
+    "commit": "bb6074e",
+    "path": "models/klimmuur-centraal/",
+    "repository": "blackmad/map-recall2-source-data"
+  },
+  "installedIdentityEvidence": {
+    "tile": "public/data/extracts/amsterdam/building-tiles/14/8415/5383.geojson.gz",
+    "installedId": "NL.IMBAG.Pand.0363100012170819",
+    "mappedOsmAlias": "w35048037",
+    "note": "Current installed tile uses exact BAGid,height13.56,minHeight0. OSM sourceway35048037 is sameBAG. Bare35048037 not installed alias; removed."
+  },
+  "westEndCorrection": {
+    "reference": "models/klimmuur-centraal/raw/front.jpg",
+    "sourceDate": "2023-01-21",
+    "finding": "Independent source/render comparison found beige smooth westupperplane contradicted dark weatheredcorrugatedcladding.",
+    "repair": "Dark grey-brownupperplane and shallow.32mphoto-guidedribpitch, originalsilverlowerplane retained. Fineweathering/repairpatches approximate/omitted.",
+    "failedEvidence": "artifacts/landmark-continuation-20261006/klimmuur-centraal-before-second-repair/"
+  },
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "modelPath": "models/klimmuur-centraal/",
+    "commit": "04a87dc",
+    "manifest": "models/klimmuur-centraal/manifest.json",
+    "validationPath": "models/klimmuur-centraal/validation/release-20261006/"
+  }
+}

@@ -1,0 +1,482 @@
+{
+  "id": "kinderkookkafe",
+  "anchor": [
+    4.864856,
+    52.359184
+  ],
+  "groundDatumNAP": -1.8,
+  "groundDatumNotes": "Bounded common pavement approximation between -2.011 café AHN terrain and -1.554 adjoining shed; roof planes retain survey NAP minus this common datum.",
+  "parts": [
+    {
+      "id": "0363100012158470",
+      "bag": {
+        "type": "Feature",
+        "id": "pand.4bf2e497-7ff9-4ccd-a916-bb65d41ab383",
+        "properties": {
+          "identificatie": "0363100012158470",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012158470",
+          "bouwjaar": 1992,
+          "status": "Pand in gebruik",
+          "gebruiksdoel": "bijeenkomstfunctie",
+          "oppervlakte_min": 369,
+          "oppervlakte_max": 369,
+          "aantal_verblijfsobjecten": 1
+        },
+        "bbox": [
+          4.864683146521104,
+          52.35913810425289,
+          4.86496306242356,
+          52.3593071206777
+        ],
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.864916572219207,
+                52.359252948688365
+              ],
+              [
+                4.864902851382491,
+                52.359268733564456
+              ],
+              [
+                4.86489955006585,
+                52.35926734387745
+              ],
+              [
+                4.864860164938085,
+                52.3593071206777
+              ],
+              [
+                4.864687607065879,
+                52.35925180373451
+              ],
+              [
+                4.864683146521104,
+                52.35925037297512
+              ],
+              [
+                4.864719261714312,
+                52.35920904490005
+              ],
+              [
+                4.864714055496806,
+                52.35920735919464
+              ],
+              [
+                4.864774178356114,
+                52.35913810425289
+              ],
+              [
+                4.86496306242356,
+                52.359199451953806
+              ],
+              [
+                4.864916572219207,
+                52.359252948688365
+              ]
+            ]
+          ]
+        }
+      },
+      "ring": [
+        [
+          4.117952175437983,
+          -7.621588011957954
+        ],
+        [
+          3.1851524506616378,
+          -9.366448215019858
+        ],
+        [
+          2.9607151719977662,
+          -9.212832213238755
+        ],
+        [
+          0.28314986758651395,
+          -13.60975971287644
+        ],
+        [
+          -11.44805421464491,
+          -7.495024812697011
+        ],
+        [
+          -11.751300658336145,
+          -7.336868669718086
+        ],
+        [
+          -9.296039147676751,
+          -2.7684632514113616
+        ],
+        [
+          -9.649979534624718,
+          -2.582125375790838
+        ],
+        [
+          -5.562576719932667,
+          5.073315885183831
+        ],
+        [
+          7.2785502294005955,
+          -1.7080589738417018
+        ]
+      ],
+      "roofs": [
+        {
+          "rings": [
+            [
+              [
+                0.32665128585124154,
+                2.2320006027221675,
+                -13.585296776667377
+              ],
+              [
+                -11.707838814845369,
+                2.2210006027221674,
+                -7.312378778987068
+              ],
+              [
+                -9.438729296179796,
+                2.760000602722168,
+                -3.090367334555708
+              ],
+              [
+                -3.4647672309150543,
+                2.7590006027221676,
+                -6.276688786697946
+              ],
+              [
+                -3.177692384411446,
+                2.6730006027221673,
+                -7.290137653959334
+              ],
+              [
+                2.3830485581480185,
+                2.6770006027221678,
+                -10.208220913016817
+              ]
+            ]
+          ]
+        },
+        {
+          "rings": [
+            [
+              [
+                -7.468747426395936,
+                7.379000602722168,
+                1.4457525915106828
+              ],
+              [
+                5.395734268444983,
+                7.401000602722167,
+                -5.287141518575567
+              ],
+              [
+                3.228645643619789,
+                3.6280006027221674,
+                -9.341989078740198
+              ],
+              [
+                3.0042075139309588,
+                3.654000602722167,
+                -9.188372560143563
+              ],
+              [
+                2.3830485581480185,
+                2.6770006027221678,
+                -10.208220913016817
+              ],
+              [
+                -3.177692384411446,
+                2.6730006027221673,
+                -7.290137653959334
+              ],
+              [
+                -3.4647672309150543,
+                3.2990006027221677,
+                -6.276688786697946
+              ],
+              [
+                -9.438729296179796,
+                3.3330006027221675,
+                -3.090367334555708
+              ],
+              [
+                -9.252594482221978,
+                3.6550006027221675,
+                -2.7449695642474126
+              ],
+              [
+                -9.607533995839258,
+                3.6550006027221675,
+                -2.558623729824774
+              ]
+            ]
+          ]
+        },
+        {
+          "rings": [
+            [
+              [
+                -5.519142800071881,
+                3.7590006027221676,
+                5.097799261525751
+              ],
+              [
+                7.321021514861113,
+                3.8280006027221676,
+                -1.6845907268830729
+              ],
+              [
+                5.395734268444983,
+                7.401000602722167,
+                -5.287141518575567
+              ],
+              [
+                -7.468747426395936,
+                7.379000602722168,
+                1.4457525915106828
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "0363100012165580",
+      "bag": {
+        "type": "Feature",
+        "id": "pand.2e7e3038-eb72-404e-bc31-b598434030b1",
+        "properties": {
+          "identificatie": "0363100012165580",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012165580",
+          "bouwjaar": 1992,
+          "status": "Pand in gebruik",
+          "gebruiksdoel": "kantoorfunctie",
+          "oppervlakte_min": 145,
+          "oppervlakte_max": 145,
+          "aantal_verblijfsobjecten": 1
+        },
+        "bbox": [
+          4.864774178356114,
+          52.35906884927925,
+          4.865023258596974,
+          52.359199451953806
+        ],
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.86496306242356,
+                52.359199451953806
+              ],
+              [
+                4.864774178356114,
+                52.35913810425289
+              ],
+              [
+                4.86483430102731,
+                52.35906884927925
+              ],
+              [
+                4.865023258596974,
+                52.3591301702465
+              ],
+              [
+                4.86496306242356,
+                52.359199451953806
+              ]
+            ]
+          ]
+        }
+      },
+      "ring": [
+        [
+          7.2785502294005955,
+          -1.7080589738417018
+        ],
+        [
+          -5.562576719932667,
+          5.073315885183831
+        ],
+        [
+          -1.475186693862096,
+          12.728760671971457
+        ],
+        [
+          11.370937242885752,
+          5.950340951594342
+        ]
+      ],
+      "roofs": [
+        {
+          "rings": [
+            [
+              [
+                7.321021514861113,
+                3.882000602722167,
+                -1.6845907268830729
+              ],
+              [
+                -5.519142800071881,
+                3.9020006027221674,
+                5.097799261525751
+              ],
+              [
+                -3.6170995020418326,
+                7.388000602722167,
+                8.65977892880423
+              ],
+              [
+                9.236189752320195,
+                7.389000602722167,
+                1.899156793562753
+              ]
+            ]
+          ]
+        },
+        {
+          "rings": [
+            [
+              [
+                11.41439692113572,
+                3.5910006027221675,
+                5.974790897511468
+              ],
+              [
+                9.236189752320195,
+                7.389000602722167,
+                1.899156793562753
+              ],
+              [
+                -3.6170995020418326,
+                7.388000602722167,
+                8.65977892880423
+              ],
+              [
+                -1.4317695361859677,
+                3.5750006027221675,
+                12.753239466877204
+              ]
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "retainedBagIds": [
+    "0363100012115387",
+    "0363100012096509",
+    "0363100012240922"
+  ],
+  "sources": [
+    {
+      "file": "files/stadsherstel.html",
+      "url": "https://stadsherstel.nl/monumenten/vondelpark-6b/",
+      "sha256": "5e9a88dbbcd4132f15e0552957250c98898d1fdcb3ad184ab1e476fe9c109ee8",
+      "retrieved": "2026-10-06",
+      "access": "raw HTTP bytes"
+    },
+    {
+      "file": "files/operator.html",
+      "url": "https://www.kinderkookkafe.nl/concepten/homepage/",
+      "sha256": "aa5927cf4ff3673691c94ce4ef948ec14e2070e31b04daf2e39f1be3258d5446",
+      "retrieved": "2026-10-06",
+      "access": "raw HTTP bytes"
+    },
+    {
+      "file": "files/beeldbank.html",
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=Vondelpark%206B%20Kinderkookkafe",
+      "sha256": "ea308a007fb654717e5a151c7c5c214ff3da628f39beca59824a6e2b2aa4e994",
+      "retrieved": "2026-10-06",
+      "access": "raw HTTP bytes"
+    },
+    {
+      "file": "files/bag-address.json",
+      "url": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Vondelpark%206B%20Amsterdam&fq=type:adres",
+      "access": "HTTP Error 502: Bad Gateway"
+    },
+    {
+      "file": "files/bag.json",
+      "url": "https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&typeNames=bag:pand&outputFormat=application/json&srsName=EPSG:4326&bbox=52.3588,4.8644,52.3596,4.8653,EPSG:4326",
+      "sha256": "9074f360251af4d9f0e431614324050eb69dc795d4b493a69e0381d6e422879e",
+      "retrieved": "2026-10-06",
+      "access": "raw HTTP bytes"
+    },
+    {
+      "file": "files/osm.xml",
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=4.8644,52.3588,4.8653,52.3596",
+      "sha256": "348eddec8782ef8a7c104671ffec0985cad853bc0bdca6bbb4dd29a5b9c1a7d9",
+      "retrieved": "2026-10-06",
+      "access": "raw HTTP bytes"
+    },
+    {
+      "file": "files/photo-0.jpg",
+      "url": "https://stadsherstel.nl/wp-content/uploads/2020/07/1-Nieuw-kinderkookkafe.jpg",
+      "sha256": "9cbe5aa18eabbd1dec29b0d995de14eb80f8f49918ebd9b20a9ee6468f04e4dc",
+      "role": "original photo/drawing",
+      "rights": "Stadsherstel/credited photographer; reference only"
+    },
+    {
+      "file": "files/photo-1.jpg",
+      "url": "https://stadsherstel.nl/wp-content/uploads/2020/07/4-Na-restauratie.jpg",
+      "sha256": "65ae6601ae42b400d322c53278aa5cccfd229d70475e07926f4f4f4f469006d4",
+      "role": "original photo/drawing",
+      "rights": "Stadsherstel/credited photographer; reference only"
+    },
+    {
+      "file": "files/photo-2.jpg",
+      "url": "https://stadsherstel.nl/wp-content/uploads/2020/07/6-Realisatie-uitbouw.jpg",
+      "sha256": "f1f229147700d567ffc3401eea1889990db203af754108b644f4fb799b0ca012",
+      "role": "original photo/drawing",
+      "rights": "Stadsherstel/credited photographer; reference only"
+    },
+    {
+      "file": "files/photo-3.jpg",
+      "url": "https://stadsherstel.nl/wp-content/uploads/2020/07/6b-Maken-van-gaten-in-de-gevel.jpg",
+      "sha256": "397036b181e94ac82e9dc723c56fc6ba5189fac8e903941825e8d59c142e786c",
+      "role": "original photo/drawing",
+      "rights": "Stadsherstel/credited photographer; reference only"
+    },
+    {
+      "file": "files/photo-4.jpg",
+      "url": "https://stadsherstel.nl/wp-content/uploads/2020/07/6c-3-gaten-in-de-gevel-tbv-de-aanbouw.jpg",
+      "sha256": "62d31a05ec8530a564e2f57a2c8a58637746b25cb8eafb7131c2a352780aa690",
+      "role": "original photo/drawing",
+      "rights": "Stadsherstel/credited photographer; reference only"
+    },
+    {
+      "file": "files/photo-5.jpg",
+      "url": "https://stadsherstel.nl/wp-content/uploads/2020/07/7-Kinderkookkafe-uitbouw.jpg",
+      "sha256": "d53c6bee4e3563c8f380de6a23c8ebfd83cbe9fde3fdc6bc857bd36ec5c0a7bc",
+      "role": "original photo/drawing",
+      "rights": "Stadsherstel/credited photographer; reference only"
+    },
+    {
+      "file": "files/3dbag-0363100012158470.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012158470",
+      "sha256": "7728900897602f1c030834aec11275f0eda7591f535e252c70d77630eeeb9a6f",
+      "role": "raw survey"
+    },
+    {
+      "file": "files/3dbag-0363100012165580.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165580",
+      "sha256": "866e1d2512a65da2ebff609cec052fb1d1da76fb36bdb484db4144c2cca07b9c",
+      "role": "raw survey"
+    }
+  ],
+  "privateSourceArchive": {
+    "commit": "bb6074e",
+    "path": "models/kinderkookkafe/",
+    "repository": "blackmad/map-recall2-source-data"
+  },
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "modelPath": "models/kinderkookkafe/",
+    "commit": "04a87dc",
+    "manifest": "models/kinderkookkafe/manifest.json",
+    "validationPath": "models/kinderkookkafe/validation/release-20261006/"
+  }
+}

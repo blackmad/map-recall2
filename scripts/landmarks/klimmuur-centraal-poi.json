@@ -1,0 +1,16 @@
+{
+  "id": "osm-node-2743587102",
+  "name": "Klimmuur Centraal",
+  "center": [
+    52.3766271,
+    4.9115779
+  ],
+  "website": "https://www.deklimmuur.nl/klimmen/klimmuur-centraal/",
+  "description": "Klimmuur Centraal is the climbing hall on Dijksgracht beside Oosterdok. Its sharply sloping shell contains a hall over 16 metres tall. A folding steel-and-glass climbing wall connects the climbing activity with the waterfront terrace.",
+  "funFact": "The waterfront glass wall is itself climbable: its four folding elements carry holds and can slide aside. The architect used electromagnets to secure the doors while people climb.",
+  "sourceUrls": [
+    "https://www.deklimmuur.nl/klimmen/klimmuur-centraal/",
+    "https://www.nationalestaalprijs.nl/project/klimwand"
+  ],
+  "identityNote": "Genuine mapped leisure=sports_centre sport=climbing OSM node 2743587102, alias Klimmuur Amsterdam. Absent from curated extract; root must add one selectable destination, geographic pin and useful card. Node is inside exact host; verify route reachability and public entrance before acceptance."
+}
