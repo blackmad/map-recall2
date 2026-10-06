@@ -1,0 +1,58 @@
+{
+  "scope": "Primary source-proportion candidate on unchanged native87/89 footprint; actual photo atlas and source LoD2.2 roof envelope; CPU diagnostic only, no gameplay/GPU/heldout acceptance",
+  "ids": [
+    "NL.IMBAG.Pand.0363100012178298"
+  ],
+  "factualYear": 1650,
+  "nativeAggregateHeightM": 22.99,
+  "roofEnvelope": "Source piecewise wall tops and original surveyed roof surfaces; no whole-parent height replacement",
+  "bindingSha256": "68da4ff982e470a8191fad6e156cdc0e12b5232655e8158d63ca96d48c80c3e8",
+  "atlasColourSha256": "ccb9951494c947732952a26b86e62d480782c8e857929135f1b4409dd3ca3369",
+  "atlasMaskSha256": "f080426b2a7a01b283727b4dff3b99ff6c49e9155e961df840c89a39350b0e3f",
+  "atlasSize": 256,
+  "atlasLayers": 195,
+  "surveySourceSha256": "d414e590684c0398989ce054377b495e1c9d6819747708d6ed35ad3083df8d71",
+  "envelopeCandidateSha256": "5ed91547e1a8ce52dbf9bbc8992627f15fde7029a2691fcd109d256a36c03906",
+  "rendererSources": {
+    "src/canalRecall/threeBuildingMesh.ts": "83347be64386738f8869e45555351aedf51efe778e1647421c33d26607df1344",
+    "src/canalRecall/threeBuildingFeatures.ts": "34238977296a25011afb6ecd595d20007371a9b30cfddcec70235bdd51dc32f9",
+    "src/canalRecall/compoundSourceCandidate.fixture.ts": "869d7c0e85e880142852cbc72343d3c2f54004a44c3286ccc24c8d2015e2a0d0",
+    "src/canalRecall/surveyedEnvelopeMeshBinding.ts": "3dcce7f6a2c85121b10873a322d6a10b1746970029d29f659ef8b0811e5b9187"
+  },
+  "views": [
+    {
+      "phase": "before",
+      "view": "front",
+      "file": "artifacts/street-appearance/compound-native/source-envelope-cycle-3/before-front.png",
+      "sha256": "380b76bc3ef6a7b1d4b81a01af679a534e77fed783195558343f874d977b38a6",
+      "triangles": 251
+    },
+    {
+      "phase": "after",
+      "view": "front",
+      "file": "artifacts/street-appearance/compound-native/source-envelope-cycle-3/after-front.png",
+      "sha256": "49ea0787d07d4e35473a091d8d726f37289fd6e3081bad6cf3dc33a8bbbf2f6e",
+      "triangles": 2453
+    },
+    {
+      "phase": "before",
+      "view": "oblique",
+      "file": "artifacts/street-appearance/compound-native/source-envelope-cycle-3/before-oblique.png",
+      "sha256": "1fb5a24a5d397c7e8020d37405c94f4635bacccff81287059a95888ddbca25c1",
+      "triangles": 251
+    },
+    {
+      "phase": "after",
+      "view": "oblique",
+      "file": "artifacts/street-appearance/compound-native/source-envelope-cycle-3/after-oblique.png",
+      "sha256": "d042c096c7a7feb0280c9385a82bd7d142c46712c4e32e3fe0b9b2caef611b39",
+      "triangles": 2453
+    }
+  ],
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "228575192070e7ab64e96991c106e7929d6cbe61",
+    "path": "streets/oudezijds-east-next-south/processed/compound-generator-20261006/frozen-primary-cycle3/",
+    "status": "primary diagnostic passed; no transfer or game acceptance"
+  }
+}

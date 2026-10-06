@@ -1,0 +1,105 @@
+{
+  "scope": "CPU exact geometry and production photo atlas, first-hit zbuffer; no browser, scene/GPU or heldout acceptance",
+  "comparison": "Before is ordinary profile-off generator; after is current production catalogue with material repair. This does not reproduce pre-repair failed materials; those remain in material-audit-20261006.",
+  "revision": "24fbf8cad9701025",
+  "ids": [
+    "NL.IMBAG.Pand.0363100012118917",
+    "NL.IMBAG.Pand.0363100012096187"
+  ],
+  "nativeFacts": [
+    {
+      "id": "NL.IMBAG.Pand.0363100012096187",
+      "constructionYear": 1925,
+      "height": 14.43
+    },
+    {
+      "id": "NL.IMBAG.Pand.0363100012118917",
+      "constructionYear": 1925,
+      "height": 16.5
+    }
+  ],
+  "provenance": {
+    "catalogue": {
+      "path": "public/data/street-appearance/profiles.json",
+      "sha256": "4d59a6465c2c22ad9905e5e31dcb3c279aa9dbe61471d06116016ee5f4f9116b",
+      "revision": "24fbf8cad9701025",
+      "profileId": "jan-evertsen-canopy-candidate-native-pair",
+      "profileRevision": "current-source-ground-portico-pilot-v5"
+    },
+    "sourceHashes": {
+      "tile": "a99197c84e90cd689f5c38eaac5e4842b1964886708789f4af4f6b522da01d6d",
+      "facts": "abe259b4e6e77a2dab0c852669eef4560bad1805bf03e501e10d55d93522c262"
+    },
+    "sourceEvidence": [
+      {
+        "id": "user-streetview-shop-canopy",
+        "kind": "user-reference",
+        "sha256": "0bcad915f2d04fd581aee5a1685ef9edd58d29309c664d105b034af79c8f4ac4",
+        "inference": "agent-visual-review",
+        "quality": 0.8,
+        "notes": "User crop shows long rigid dark rounded canopy edge and pale fascia below masonry. Candidate identity/address unconfirmed; upper facade and roof cropped. No visual acceptance; approximate street axis."
+      },
+      {
+        "id": "jan-evertsen-current-124-126-20250926",
+        "kind": "municipal-panorama",
+        "captureDate": "2025-09-26T09:08:16Z",
+        "panoramaId": "2025_09_26_08_31_34_00859",
+        "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_09_26_08_31_34_00859/equirectangular/panorama_4000.jpg",
+        "sha256": "e37ead2377de9a228a19d46188e658eb9eaf68a85ded4eb31157e5b279593846",
+        "inference": "agent-visual-review",
+        "quality": 0.9,
+        "notes": "2025 source supports continuous canopy and shallow glass-block band. Official BAG resolves exact124/126. Band dimensions procedural approximate; upper projecting window groups and recessed portico remain capability gaps. Shared private source pack streets/jan-evertsen-canopy-rollout-20261006/."
+      }
+    ],
+    "codeHashes": {
+      "scripts/street-appearance/render-interwar-preflight.ts": "89ca8d9bd118d19fcd3094c3194b3267b548f171c9e84fff945d3dc767fdfcab",
+      "scripts/jan-evertsen-pilot/runtime-materials.ts": "810ccd1c50d8d58527b05b50aa76864ee95cfd6a1abefef186cc76e009740e79",
+      "src/canalRecall/threeBuildingMesh.ts": "68bae54972aee6e9d591a24f862fd4be339e874c520886c3a8a562e0fce2de0c",
+      "src/canalRecall/threeBuildingFeatures.ts": "34238977296a25011afb6ecd595d20007371a9b30cfddcec70235bdd51dc32f9",
+      "src/canalRecall/threeBuildingsBrowser.ts": "2786ac63222d6fce4758a1284c0d24a0251c977fcd34410b8df42ff33921244e",
+      "src/canalRecall/bayTextures.ts": "aa1c81f31f8f77f51299204016fde76b1e67df2975a0c5a169746c026f43fb6d"
+    },
+    "atlas": {
+      "size": 256,
+      "layers": 195,
+      "colourSha256": "e3f63e77b04453b23e7a939754ff39e35de9363076476cce91c4d078807fe979",
+      "maskSha256": "f080426b2a7a01b283727b4dff3b99ff6c49e9155e961df840c89a39350b0e3f"
+    }
+  },
+  "views": [
+    {
+      "phase": "before",
+      "view": "front",
+      "file": "artifacts/jan-evertsen-pilot/material-repair-cycle-20261006/cpu/before-front.png",
+      "sha256": "2fb613b45ee1fde48c40dda98852e9327e85fdcdd91b809212cc63110898fb8e",
+      "triangles": 626
+    },
+    {
+      "phase": "after",
+      "view": "front",
+      "file": "artifacts/jan-evertsen-pilot/material-repair-cycle-20261006/cpu/after-front.png",
+      "sha256": "d98a8e1da899a2f48784308927003c0df17fa8cc8c1c92cd39e9de779e0db8e1",
+      "triangles": 1120
+    },
+    {
+      "phase": "before",
+      "view": "oblique",
+      "file": "artifacts/jan-evertsen-pilot/material-repair-cycle-20261006/cpu/before-oblique.png",
+      "sha256": "44836625616b6a74aefbb73695f38ca05be97282ad735f468be170307ef31fdd",
+      "triangles": 626
+    },
+    {
+      "phase": "after",
+      "view": "oblique",
+      "file": "artifacts/jan-evertsen-pilot/material-repair-cycle-20261006/cpu/after-oblique.png",
+      "sha256": "26bb6138024013d41d3e69956e69bff57c828884c7c2cb23ec34c2856efe144b",
+      "triangles": 1120
+    }
+  ],
+  "acceptance": "Independent bounded material pass; full facade withheld for projection/source-envelope/game/transfer/GPU review",
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "03f59c9b2f944f8ef0f116ad4f58c9a76beb36da",
+    "path": "streets/jan-evertsen-canopy-rollout-20261006/processed/material-repair-cycle-20261006/"
+  }
+}
