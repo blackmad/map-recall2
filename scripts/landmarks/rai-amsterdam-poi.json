@@ -1,0 +1,27 @@
+{
+  "id": "n2817982961",
+  "name": "RAI Amsterdam",
+  "description": "The RAI exhibition complex opened at Europaplein in 1961. Alexander Bodon’s Europahal and Het Signaal are protected as a national monument. The Westhal followed in 1963 and Amstelhal in 1969; those additions share the present campus but have distinct construction periods. Benthem Crouwel’s Elicium, added in 2009, links the halls above an open ground-level circulation area.",
+  "sources": [
+    {
+      "title": "RAI contact and public address",
+      "url": "https://www.rai.nl/contact"
+    },
+    {
+      "title": "Benthem Crouwel — RAI Elicium",
+      "url": "https://www.benthemcrouwel.com/projects/rai-elicium"
+    },
+    {
+      "title": "National monument532206 — Europahal and Het Signaal",
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/pdf/532206"
+    },
+    {
+      "title": "Amsterdam municipal RAI construction history — page106",
+      "url": "https://openresearch.amsterdam/image/2024/11/18/van_rai_complex_naar_rai_district.pdf"
+    }
+  ],
+  "identityNote": "Main exhibition/convention complex; keep existing RAI Theater extract_landmarks_1535858213 separate. Main-complex main public entrance coordinate must be audited by coordinator before integration.",
+  "landmarkId": "n2817982961",
+  "modelId": "rai-amsterdam",
+  "sourceUrl": "https://www.rai.nl/contact"
+}

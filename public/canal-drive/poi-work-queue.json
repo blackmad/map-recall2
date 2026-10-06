@@ -19,7 +19,8 @@
   "notes": [
     "Gashouder, Ketelhuis, Vondelpark open-air theater and bandstand already have original models.",
     "Preserve previous requests when adding tasks. Existing completed landmark inventory is generated separately.",
-    "Background ordinary city geometry is not automatically a researched POI. Candidate backlog is separate from completed POIs."
+    "Background ordinary city geometry is not automatically a researched POI. Candidate backlog is separate from completed POIs.",
+    "2026-10-06: User requested a break after the current RAI/Pulitzer set. Pause continuous landmark assignment after this reviewed checkpoint; preserve UvA and Viñoly drafts and earlier requested tasks."
   ],
   "tasks": [
     {
@@ -272,7 +273,16 @@
       "id": "rai",
       "task": "RAI Amsterdam complex",
       "priority": "normal",
-      "status": "queued"
+      "status": "completed-scoped",
+      "completedOn": "2026-10-06",
+      "modelId": "rai-amsterdam",
+      "sourceArchive": {
+        "repository": "blackmad/map-recall2-source-data",
+        "commit": "4666520097c468923ba7e34899d8cfc3d27d1092",
+        "path": "models/rai-amsterdam"
+      },
+      "validation": "Current native-scale export independently source/gallery/live reviewed; chosen destination/pin/physical sourced card, exact masks and resident neighbors, fallback and bounded stationary draw-cost comparison pass. Failed earlier geometry/camera evidence preserved.",
+      "nextAction": "Broader RAI campus remains queued; source metadata and detailed bay approximations recorded. User requested a break after this batch."
     },
     {
       "id": "amstel-hotel",
@@ -921,9 +931,17 @@
       "id": "pulitzer-amsterdam",
       "task": "Pulitzer Amsterdam hotel — original house-style landmark model",
       "priority": "high",
-      "status": "queued",
+      "status": "completed",
       "requestedOn": "2026-10-05",
-      "nextAction": "Research the connected historic canal houses and hotel courtyards; identify exact participating buildings and preserve individual rooflines, courts and neighboring houses. Archive original reference sources; integrate destination, pin/label and meaningful sourced card, then review gallery and native game placement."
+      "nextAction": "Completed connected source scope with four open courts and bounded garden glazing; exact court window layouts and bay measurements remain source-qualified approximations.",
+      "completedOn": "2026-10-06",
+      "modelId": "pulitzer-amsterdam",
+      "sourceArchive": {
+        "repository": "blackmad/map-recall2-source-data",
+        "commit": "4666520097c468923ba7e34899d8cfc3d27d1092",
+        "path": "models/pulitzer-amsterdam"
+      },
+      "validation": "Current native-scale export independently source/gallery/live reviewed; chosen destination/pin/physical sourced card, exact masks and resident neighbors, fallback and bounded stationary draw-cost comparison pass. Failed earlier geometry/camera evidence preserved."
     },
     {
       "id": "w139",

@@ -12236,6 +12236,159 @@
       "triangles": 22333,
       "bytes": 288312,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "rai-amsterdam": {
+      "id": "rai-amsterdam",
+      "name": "RAI Amsterdam",
+      "landmarkId": "n2817982961",
+      "modelUrl": "./models/rai-amsterdam.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012093034",
+        "w806950194",
+        "w806950195",
+        "w806950196",
+        "w806950197",
+        "w43783760",
+        "NL.IMBAG.Pand.0363100012093905",
+        "w277270903",
+        "w461439852",
+        "NL.IMBAG.Pand.0363100012218586",
+        "w277270901",
+        "w1238963818",
+        "w807090339",
+        "w807204806",
+        "w807204801",
+        "w807204802",
+        "w807204803"
+      ],
+      "footprint": {
+        "centre": [
+          4.88998,
+          52.341315
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 332.1,
+        "widthMetres": 358
+      },
+      "spatialSuppression": false,
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.88998,
+          52.341315
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Independent Elicium BAG0363100012093034, current PDOK perimeter, installed OSM raised hall/tower parts, AHN5 2023 ground0.982NAP and tower47.672NAP. Native east/south; original rounded profile from architect section.; combined native Europacomplex parent0363100012093905 and independent Signaal0363100012218586. Bounded2026 OSM original map resolves genuine mainvenue node2817982961; architectural parts still under review. Scope repair: named1963 Westhal/hall2 and1961 Zuidhal/hall3 exact OSM source12m envelopes; named1969 Amstelhal full three surveyed glazed/gabled strips height15m/roof3m approximation. Independent source critic agreed physical ownership; actual current-hash game acceptance pending."
+      },
+      "attribution": {
+        "title": "RAI Elicium, Europacomplex, Westhal, Amstelhal and Het Signaal",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.benthemcrouwel.com/projects/rai-elicium",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original native flat-color texture-free Elicium, Europacomplex barrel and surrounding halls,1963 Westhal,1969 Amstelhal and Signaal. Source-supported exact named hall/strip outlines; OSM heights and repeated glazing approximate. Full RAI coverage including separate Amtrium/Hollandcomplex/Congress Centre pending. Broad partially owned compoundw807090334 remains unsuppressed."
+      },
+      "bounds": {
+        "min": [
+          -269.9435119628906,
+          -0.12414064258337021,
+          -305.1234436035156
+        ],
+        "max": [
+          62.51533126831055,
+          51,
+          52.763919830322266
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.88998,
+          52.341315
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 90,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 357.8873634338379,
+        "heightMetres": 51.12414064258337,
+        "depthMetres": 332.4588432312012,
+        "depthCoverage": 0.9286559866793329
+      },
+      "triangles": 18564,
+      "bytes": 229480,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "pulitzer-amsterdam": {
+      "id": "pulitzer-amsterdam",
+      "name": "Pulitzer Amsterdam",
+      "landmarkId": "osm-node-331630133",
+      "modelUrl": "./models/pulitzer-amsterdam.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012169022",
+        "NL.IMBAG.Pand.0363100012169021"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8839,
+          52.3727
+        ],
+        "headingDegrees": 266.4,
+        "lengthMetres": 88.3,
+        "widthMetres": 79.3
+      },
+      "surveyed": {
+        "anchor": [
+          4.8839,
+          52.3727
+        ],
+        "northOffsetDegrees": -0.398848,
+        "source": "Current PDOK BAG0363100012169022 and0363100012169021 at native RD metres; RD grid-east bearing89.601152deg. AHN4/3DBAG2020 individually surveyed roofregions, four courtyardholes; no parcel slab or importedmesh."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "attribution": {
+        "title": "Pulitzer Amsterdam",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.pulitzeramsterdam.com/nl/over-het-hotel/onze-geschiedenis/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free flat-color connected historic canal houses. Native currentBAG exteriors; original shells constructed from clipped survey roof-plane regions, four preserved sourcecourts, independently authored street elevations/windows/entries/plinths/crowns. Modern2016black entrance; diverse tuit/hals/klok/lijst family mixture; Saxenburg four-bay sandstonefront with attiek; Jansz corner/Reestraat row. Tinycarvedrelief and joinery spacing photo-guided; retiredaddress fuzzyfallbacks rejected. No downloadedmesh or photo pixels."
+      },
+      "bounds": {
+        "min": [
+          -43.76511764526367,
+          -0.00500003807246685,
+          -45.686737060546875
+        ],
+        "max": [
+          46.85699462890625,
+          21.688905715942383,
+          33.863746643066406
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8839,
+          52.3727
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 89.60115200000001,
+        "facadeBearingDegrees": 266.4,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 90.62211227416992,
+        "heightMetres": 21.69390575401485,
+        "depthMetres": 79.55048370361328,
+        "depthCoverage": 1.0031586847870528
+      },
+      "triangles": 39178,
+      "bytes": 492356,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

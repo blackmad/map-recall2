@@ -7724,6 +7724,97 @@ Map source: ${osmUrl(places[i][0])}`);
       materialOverrides: {
         greyBrick: "#4b4a44"
       }
+    },
+    {
+      id: "rai-amsterdam",
+      name: "RAI Amsterdam",
+      landmarkId: "n2817982961",
+      modelUrl: "./models/rai-amsterdam.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012093034",
+        "w806950194",
+        "w806950195",
+        "w806950196",
+        "w806950197",
+        "w43783760",
+        "NL.IMBAG.Pand.0363100012093905",
+        "w277270903",
+        "w461439852",
+        "NL.IMBAG.Pand.0363100012218586",
+        "w277270901",
+        "w1238963818",
+        "w807090339",
+        "w807204806",
+        "w807204801",
+        "w807204802",
+        "w807204803"
+      ],
+      footprint: {
+        centre: [
+          4.88998,
+          52.341315
+        ],
+        headingDegrees: 90,
+        lengthMetres: 332.1,
+        widthMetres: 358
+      },
+      spatialSuppression: false,
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      surveyed: {
+        anchor: [
+          4.88998,
+          52.341315
+        ],
+        northOffsetDegrees: 0,
+        source: "Independent Elicium BAG0363100012093034, current PDOK perimeter, installed OSM raised hall/tower parts, AHN5 2023 ground0.982NAP and tower47.672NAP. Native east/south; original rounded profile from architect section.; combined native Europacomplex parent0363100012093905 and independent Signaal0363100012218586. Bounded2026 OSM original map resolves genuine mainvenue node2817982961; architectural parts still under review. Scope repair: named1963 Westhal/hall2 and1961 Zuidhal/hall3 exact OSM source12m envelopes; named1969 Amstelhal full three surveyed glazed/gabled strips height15m/roof3m approximation. Independent source critic agreed physical ownership; actual current-hash game acceptance pending."
+      },
+      attribution: {
+        title: "RAI Elicium, Europacomplex, Westhal, Amstelhal and Het Signaal",
+        author: "Map Recall",
+        sourceUrl: "https://www.benthemcrouwel.com/projects/rai-elicium",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original native flat-color texture-free Elicium, Europacomplex barrel and surrounding halls,1963 Westhal,1969 Amstelhal and Signaal. Source-supported exact named hall/strip outlines; OSM heights and repeated glazing approximate. Full RAI coverage including separate Amtrium/Hollandcomplex/Congress Centre pending. Broad partially owned compoundw807090334 remains unsuppressed."
+      }
+    },
+    {
+      id: "pulitzer-amsterdam",
+      name: "Pulitzer Amsterdam",
+      landmarkId: "osm-node-331630133",
+      modelUrl: "./models/pulitzer-amsterdam.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012169022",
+        "NL.IMBAG.Pand.0363100012169021"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8839,
+          52.3727
+        ],
+        headingDegrees: 266.4,
+        lengthMetres: 88.3,
+        widthMetres: 79.3
+      },
+      surveyed: {
+        anchor: [
+          4.8839,
+          52.3727
+        ],
+        northOffsetDegrees: -0.398848,
+        source: "Current PDOK BAG0363100012169022 and0363100012169021 at native RD metres; RD grid-east bearing89.601152deg. AHN4/3DBAG2020 individually surveyed roofregions, four courtyardholes; no parcel slab or importedmesh."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "Pulitzer Amsterdam",
+        author: "Map Recall",
+        sourceUrl: "https://www.pulitzeramsterdam.com/nl/over-het-hotel/onze-geschiedenis/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free flat-color connected historic canal houses. Native currentBAG exteriors; original shells constructed from clipped survey roof-plane regions, four preserved sourcecourts, independently authored street elevations/windows/entries/plinths/crowns. Modern2016black entrance; diverse tuit/hals/klok/lijst family mixture; Saxenburg four-bay sandstonefront with attiek; Jansz corner/Reestraat row. Tinycarvedrelief and joinery spacing photo-guided; retiredaddress fuzzyfallbacks rejected. No downloadedmesh or photo pixels."
+      }
     }
   ];
 
@@ -11273,6 +11364,73 @@ Map source: ${osmUrl(places[i][0])}`);
         ],
         sourceUrl: "https://therock-zuidas.nl/",
         reason: "Approximate southeast street-contact point scaled from the owner\u2019s 2025 brochure ground-floor plan, page 8, using the surveyed BAG outline. Entrance symbol faces Claude Debussylaan; exact installed threshold and route reachability remain unverified. Not a surveyed door coordinate."
+      }
+    },
+    {
+      id: "n2817982961",
+      name: "RAI Amsterdam",
+      description: "The RAI exhibition complex opened at Europaplein in 1961. Alexander Bodon\u2019s Europahal and Het Signaal are protected as a national monument. The Westhal followed in 1963 and Amstelhal in 1969; those additions share the present campus but have distinct construction periods. Benthem Crouwel\u2019s Elicium, added in 2009, links the halls above an open ground-level circulation area.",
+      sources: [
+        {
+          title: "RAI contact and public address",
+          url: "https://www.rai.nl/contact"
+        },
+        {
+          title: "Benthem Crouwel \u2014 RAI Elicium",
+          url: "https://www.benthemcrouwel.com/projects/rai-elicium"
+        },
+        {
+          title: "National monument 532206 \u2014 Europahal and Het Signaal",
+          url: "https://monumentenregister.cultureelerfgoed.nl/monumenten/pdf/532206"
+        },
+        {
+          title: "Amsterdam municipal RAI construction history \u2014 page 106",
+          url: "https://openresearch.amsterdam/image/2024/11/18/van_rai_complex_naar_rai_district.pdf"
+        }
+      ],
+      identityNote: "Genuine OSM main exhibition-centre n2817982961; distinct RAI Theater retained. Scoped modeled compound includes source-labeled Westhal1963 and Amstelhal1969, not the entire campus.",
+      modelId: "rai-amsterdam",
+      sourceUrl: "https://www.rai.nl/contact",
+      center: [
+        52.3412264,
+        4.8899065
+      ]
+    },
+    {
+      modelId: "pulitzer-amsterdam",
+      landmarkId: "osm-node-331630133",
+      name: "Pulitzer Amsterdam",
+      osmId: "n331630133",
+      wikidata: "Q4500456",
+      center: [
+        52.37282921590418,
+        4.883288222258304
+      ],
+      lngLat: [
+        4.883288222258304,
+        52.37282921590418
+      ],
+      buildingIds: [
+        "NL.IMBAG.Pand.0363100012169022",
+        "NL.IMBAG.Pand.0363100012169021"
+      ],
+      description: "Peter Pulitzer began turning canal houses into a hotel in 1970. Today Pulitzer links 25 historic houses around gardens between the Prinsengracht and Keizersgracht. Its street fronts retain their individual identities, including the sandstone Saxenburg house and former warehouses; the black Prinsengracht entrance dates from the 2016 renovation.",
+      sourceUrl: "https://www.pulitzeramsterdam.com/nl/over-het-hotel/onze-geschiedenis/",
+      sourceUrls: [
+        "https://www.pulitzeramsterdam.com/nl/over-het-hotel/onze-geschiedenis/",
+        "https://www.pulitzeramsterdam.com/media/tj3ixoce/floorplan-capacity-chart-2024.pdf",
+        "https://www.amsterdamsebinnenstad.nl/binnenstad/277/kindertekening-pulitzer.php",
+        "https://amsterdam-monumentenstad.nl/database/grachtenboek_objecten.php?id=128"
+      ],
+      destinationPinSource: "Source-address Prinsengracht323 publicentrance positioned on the current surveyed principal front-edge midpoint, rather than the indoor hotelPOI node or the inaccessible compound centroid.",
+      preserveDistinctDestination: "Jansz/PulitzersBar share existing hotelmesh; do not manufacture destinations for housealiases or secondarymeshparts.",
+      destinationOverride: {
+        center: [
+          52.37282921590418,
+          4.883288222258304
+        ],
+        sourceUrl: "https://www.pulitzeramsterdam.com/en/about-us/",
+        reason: "Source principal hotel entrance Prinsengracht323 on surveyed frontage; retained genuine hotel OSM identity."
       }
     }
   ];

@@ -977,5 +977,72 @@
       "sourceUrl": "https://therock-zuidas.nl/",
       "reason": "Approximate southeast street-contact point scaled from the owner’s 2025 brochure ground-floor plan, page 8, using the surveyed BAG outline. Entrance symbol faces Claude Debussylaan; exact installed threshold and route reachability remain unverified. Not a surveyed door coordinate."
     }
+  },
+  {
+    "id": "n2817982961",
+    "name": "RAI Amsterdam",
+    "description": "The RAI exhibition complex opened at Europaplein in 1961. Alexander Bodon’s Europahal and Het Signaal are protected as a national monument. The Westhal followed in 1963 and Amstelhal in 1969; those additions share the present campus but have distinct construction periods. Benthem Crouwel’s Elicium, added in 2009, links the halls above an open ground-level circulation area.",
+    "sources": [
+      {
+        "title": "RAI contact and public address",
+        "url": "https://www.rai.nl/contact"
+      },
+      {
+        "title": "Benthem Crouwel — RAI Elicium",
+        "url": "https://www.benthemcrouwel.com/projects/rai-elicium"
+      },
+      {
+        "title": "National monument 532206 — Europahal and Het Signaal",
+        "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/pdf/532206"
+      },
+      {
+        "title": "Amsterdam municipal RAI construction history — page 106",
+        "url": "https://openresearch.amsterdam/image/2024/11/18/van_rai_complex_naar_rai_district.pdf"
+      }
+    ],
+    "identityNote": "Genuine OSM main exhibition-centre n2817982961; distinct RAI Theater retained. Scoped modeled compound includes source-labeled Westhal1963 and Amstelhal1969, not the entire campus.",
+    "modelId": "rai-amsterdam",
+    "sourceUrl": "https://www.rai.nl/contact",
+    "center": [
+      52.3412264,
+      4.8899065
+    ]
+  },
+  {
+    "modelId": "pulitzer-amsterdam",
+    "landmarkId": "osm-node-331630133",
+    "name": "Pulitzer Amsterdam",
+    "osmId": "n331630133",
+    "wikidata": "Q4500456",
+    "center": [
+      52.37282921590418,
+      4.883288222258304
+    ],
+    "lngLat": [
+      4.883288222258304,
+      52.37282921590418
+    ],
+    "buildingIds": [
+      "NL.IMBAG.Pand.0363100012169022",
+      "NL.IMBAG.Pand.0363100012169021"
+    ],
+    "description": "Peter Pulitzer began turning canal houses into a hotel in 1970. Today Pulitzer links 25 historic houses around gardens between the Prinsengracht and Keizersgracht. Its street fronts retain their individual identities, including the sandstone Saxenburg house and former warehouses; the black Prinsengracht entrance dates from the 2016 renovation.",
+    "sourceUrl": "https://www.pulitzeramsterdam.com/nl/over-het-hotel/onze-geschiedenis/",
+    "sourceUrls": [
+      "https://www.pulitzeramsterdam.com/nl/over-het-hotel/onze-geschiedenis/",
+      "https://www.pulitzeramsterdam.com/media/tj3ixoce/floorplan-capacity-chart-2024.pdf",
+      "https://www.amsterdamsebinnenstad.nl/binnenstad/277/kindertekening-pulitzer.php",
+      "https://amsterdam-monumentenstad.nl/database/grachtenboek_objecten.php?id=128"
+    ],
+    "destinationPinSource": "Source-address Prinsengracht323 publicentrance positioned on the current surveyed principal front-edge midpoint, rather than the indoor hotelPOI node or the inaccessible compound centroid.",
+    "preserveDistinctDestination": "Jansz/PulitzersBar share existing hotelmesh; do not manufacture destinations for housealiases or secondarymeshparts.",
+    "destinationOverride": {
+      "center": [
+        52.37282921590418,
+        4.883288222258304
+      ],
+      "sourceUrl": "https://www.pulitzeramsterdam.com/en/about-us/",
+      "reason": "Source principal hotel entrance Prinsengracht323 on surveyed frontage; retained genuine hotel OSM identity."
+    }
   }
 ]

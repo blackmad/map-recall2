@@ -1,0 +1,834 @@
+{
+  "id": "rai-amsterdam",
+  "phase": "Elicium only; full RAI request remains pending",
+  "bagId": "0363100012093034",
+  "anchor": [
+    4.88998,
+    52.341315
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.890496483243732,
+          52.341527341089325
+        ],
+        [
+          4.889895333897293,
+          52.341558422270204
+        ],
+        [
+          4.88981044896061,
+          52.34156193035414
+        ],
+        [
+          4.889638818065769,
+          52.34157132925946
+        ],
+        [
+          4.889521279725745,
+          52.341577764700986
+        ],
+        [
+          4.889456156578789,
+          52.341104150799026
+        ],
+        [
+          4.889573088036391,
+          52.34109807238418
+        ],
+        [
+          4.88974532845042,
+          52.341089116540196
+        ],
+        [
+          4.889829811607674,
+          52.341084717029396
+        ],
+        [
+          4.890430721708954,
+          52.34105346442592
+        ],
+        [
+          4.890496483243732,
+          52.341527341089325
+        ]
+      ]
+    ]
+  },
+  "parts": [
+    {
+      "type": "Feature",
+      "id": "w806950194",
+      "properties": {
+        "osmId": "w806950194",
+        "name": "",
+        "colour": "#5a81a0",
+        "roofColour": "#d3c2b0",
+        "material": "glass",
+        "roofMaterial": "concrete",
+        "roofShape": "",
+        "height": 4,
+        "minHeight": 0,
+        "roofHeight": 0,
+        "isPart": true
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.8896156,
+                52.341118
+              ],
+              [
+                4.8898347,
+                52.3411062
+              ],
+              [
+                4.8899374,
+                52.3411009
+              ],
+              [
+                4.8899377,
+                52.3411035
+              ],
+              [
+                4.8899611,
+                52.3412761
+              ],
+              [
+                4.8899472,
+                52.3412769
+              ],
+              [
+                4.8899505,
+                52.3413015
+              ],
+              [
+                4.8899557,
+                52.341304
+              ],
+              [
+                4.8899602,
+                52.341307
+              ],
+              [
+                4.8899629,
+                52.3413102
+              ],
+              [
+                4.8899648,
+                52.3413142
+              ],
+              [
+                4.8899644,
+                52.3413184
+              ],
+              [
+                4.8899628,
+                52.3413224
+              ],
+              [
+                4.8899591,
+                52.3413262
+              ],
+              [
+                4.8899542,
+                52.3413289
+              ],
+              [
+                4.8899578,
+                52.3413555
+              ],
+              [
+                4.8899718,
+                52.3413548
+              ],
+              [
+                4.8899838,
+                52.341443
+              ],
+              [
+                4.8899929,
+                52.3415105
+              ],
+              [
+                4.8899956,
+                52.3415306
+              ],
+              [
+                4.8898938,
+                52.3415358
+              ],
+              [
+                4.8898081,
+                52.3415401
+              ],
+              [
+                4.8896745,
+                52.3415469
+              ],
+              [
+                4.8896682,
+                52.3415009
+              ],
+              [
+                4.8896505,
+                52.3413721
+              ],
+              [
+                4.8896673,
+                52.3413712
+              ],
+              [
+                4.8896638,
+                52.3413452
+              ],
+              [
+                4.8896582,
+                52.3413428
+              ],
+              [
+                4.8896537,
+                52.3413394
+              ],
+              [
+                4.8896507,
+                52.3413358
+              ],
+              [
+                4.8896493,
+                52.3413314
+              ],
+              [
+                4.8896494,
+                52.3413274
+              ],
+              [
+                4.8896517,
+                52.3413233
+              ],
+              [
+                4.8896553,
+                52.3413198
+              ],
+              [
+                4.8896599,
+                52.3413168
+              ],
+              [
+                4.8896565,
+                52.341292
+              ],
+              [
+                4.8896396,
+                52.3412928
+              ],
+              [
+                4.8896217,
+                52.3411623
+              ],
+              [
+                4.8896156,
+                52.341118
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "w806950195",
+      "properties": {
+        "osmId": "w806950195",
+        "name": "",
+        "colour": "#5a81a0",
+        "roofColour": "#6f717e",
+        "material": "glass",
+        "roofMaterial": "tar_paper",
+        "roofShape": "",
+        "height": 19,
+        "minHeight": 9,
+        "roofSource": "aerial",
+        "roofHeight": 0,
+        "isPart": true
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.8894568,
+                52.3411039
+              ],
+              [
+                4.8896125,
+                52.3410959
+              ],
+              [
+                4.8897575,
+                52.3410885
+              ],
+              [
+                4.8898093,
+                52.3410858
+              ],
+              [
+                4.8898744,
+                52.3415593
+              ],
+              [
+                4.8898225,
+                52.341562
+              ],
+              [
+                4.8896776,
+                52.3415694
+              ],
+              [
+                4.8895218,
+                52.3415774
+              ],
+              [
+                4.8894653,
+                52.3411703
+              ],
+              [
+                4.8894636,
+                52.3411579
+              ],
+              [
+                4.8894568,
+                52.3411039
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "w806950196",
+      "properties": {
+        "osmId": "w806950196",
+        "name": "",
+        "colour": "#5a81a0",
+        "roofColour": "#626777",
+        "material": "glass",
+        "roofMaterial": "concrete:tiles",
+        "roofShape": "",
+        "height": 15,
+        "minHeight": 4,
+        "roofSource": "aerial",
+        "roofHeight": 0,
+        "isPart": true
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.8897575,
+                52.3410885
+              ],
+              [
+                4.8898093,
+                52.3410858
+              ],
+              [
+                4.8898318,
+                52.3410847
+              ],
+              [
+                4.8904317,
+                52.3410539
+              ],
+              [
+                4.8904968,
+                52.3415274
+              ],
+              [
+                4.8898968,
+                52.3415582
+              ],
+              [
+                4.8898744,
+                52.3415593
+              ],
+              [
+                4.8898225,
+                52.341562
+              ],
+              [
+                4.8897575,
+                52.3410885
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "w806950197",
+      "properties": {
+        "osmId": "w806950197",
+        "name": "",
+        "colour": "#5a81a0",
+        "roofColour": "#727480",
+        "material": "glass",
+        "roofMaterial": "tar_paper",
+        "roofShape": "",
+        "height": 46,
+        "minHeight": 0,
+        "roofSource": "aerial",
+        "roofHeight": 0,
+        "isPart": true
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.8896125,
+                52.3410959
+              ],
+              [
+                4.8897575,
+                52.3410885
+              ],
+              [
+                4.8898093,
+                52.3410858
+              ],
+              [
+                4.8898318,
+                52.3410847
+              ],
+              [
+                4.8898347,
+                52.3411062
+              ],
+              [
+                4.8898938,
+                52.3415358
+              ],
+              [
+                4.8898968,
+                52.3415582
+              ],
+              [
+                4.8898744,
+                52.3415593
+              ],
+              [
+                4.8898225,
+                52.341562
+              ],
+              [
+                4.8896776,
+                52.3415694
+              ],
+              [
+                4.8896745,
+                52.3415469
+              ],
+              [
+                4.8896682,
+                52.3415009
+              ],
+              [
+                4.8896505,
+                52.3413721
+              ],
+              [
+                4.8896449,
+                52.3413318
+              ],
+              [
+                4.8896396,
+                52.3412928
+              ],
+              [
+                4.8896217,
+                52.3411623
+              ],
+              [
+                4.8896156,
+                52.341118
+              ],
+              [
+                4.8896125,
+                52.3410959
+              ]
+            ]
+          ]
+        ]
+      }
+    }
+  ],
+  "heightNotes": {
+    "groundNAP": 0.9819999933242798,
+    "maxRoofNAP": 47.672000885009766,
+    "surveyDate": 2023,
+    "bodyHeight": 46.69,
+    "warning": "Tower maximum applies only to tower; low halls 15/19m. OSM parts plus architect section guide open ground floor; BAG outline is not ground occupancy."
+  },
+  "references": [
+    "https://www.benthemcrouwel.com/projects/rai-elicium",
+    "https://monumentenregister.cultureelerfgoed.nl/monumenten/pdf/532206",
+    "https://openresearch.amsterdam/image/2024/11/18/van_rai_complex_naar_rai_district.pdf",
+    "https://www.rai.nl/contact",
+    "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=Europaplein%20RAI",
+    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012093034"
+  ],
+  "rawSourceArchive": "../map-recall2-source-data/models/rai-amsterdam/files/raw",
+  "deferred": [
+    "Europahal with north/east/south wings: shared BAG0363100012093905 must be authored together before parent suppression",
+    "Het Signaal advertising structure requires separate native footprint/height evidence",
+    "Hollandcomplex, Amstelhal, Congress Centre, Amtrium, parking garage: retained native buildings"
+  ],
+  "accessNotes": {
+    "beeldbank": "Bounded exact Europaplein RAI search archived; JS shell only, no standalone photograph inspected",
+    "rce": "532206 description inspected; covers Europahal/constructive feet/Signaal, not Elicium",
+    "bouwdossiers": "No digitized permit drawing acquired; architect original section independently archived",
+    "osmWholeParent": {
+      "state": "Retries pending; neither failure establishes permanent unavailability",
+      "attemptDate": "2026-10-06",
+      "attempts": [
+        "overpass-api GET406",
+        "overpass.kumi POST timeout30s",
+        "overpass-api POST504"
+      ],
+      "query": "way[ref:bag=0363100012093034]; out tags geom;",
+      "installedParts": "Four exact installed volume identities retained; BAG whole-parent identity known"
+    }
+  },
+  "assertions": [
+    {
+      "part": "Elicium",
+      "source": "https://www.benthemcrouwel.com/projects/rai-elicium",
+      "feature": "Rounded silver continuous section linking raised halls and office tower; narrow profile ends glazed, east office long face broad curtain wall, opposite west office long face silver metal with narrow horizontal glazing slots; open slanting-column base",
+      "confidence": "high material/facade distinction from original architect opposite photos; local face orientation cross-checked using Europahal east context and native mapped parts"
+    },
+    {
+      "part": "Europahal",
+      "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/pdf/532206",
+      "feature": "Register scope includes Europahal, constructive foot bokkerijen and Het Signaal",
+      "confidence": "explicit register description"
+    },
+    {
+      "part": "Elicium office east long face",
+      "source": "https://cms.benthemcrouwel.com/dynamic/images/Rai-landsc.jpg",
+      "feature": "Broad office wall visibly blue curtain glazing with fine horizontal/vertical mullions; replacing it with silver opaque stripes fails the photo comparison. Rounded top shoulder and silver contour belong to the ribbon, not a tan masonry wall.",
+      "date": "architect project completed 2009; photograph date unspecified",
+      "confidence": "direct inspected photo; mullion spacing is bounded simplification rather than measured pane schedule"
+    },
+    {
+      "part": "Elicium office west long face",
+      "source": [
+        "https://cms.benthemcrouwel.com/dynamic/images/510_N22_a4.jpg",
+        "https://cms.benthemcrouwel.com/dynamic/images/nieuwecombi.jpg"
+      ],
+      "feature": "Opposite broad office side is silver/perforated cladding with narrow horizontal glazed slots. This distinction is visible in night and daylight views; Europahal blue arch to the north locates the opposite side. Do not transfer full glass to both long sides.",
+      "date": "architect project completed 2009; photograph dates unspecified",
+      "confidence": "direct inspected opposite-context and detail photographs; perforations omitted in texture-free house style"
+    },
+    {
+      "part": "Elicium ground and raised glazed concourse",
+      "source": [
+        "https://cms.benthemcrouwel.com/dynamic/images/Rai-landsc.jpg",
+        "https://cms.benthemcrouwel.com/dynamic/images/510_drawing_Elicium_N9_a4.jpg",
+        "Private original2026-10-06 OSM response rai-current-osm-map.xml, ways806950194/806950196"
+      ],
+      "feature": "Distinct notched ground glass0\u20134m frompart194; separate transparent raised concourse atpart196min4m, beneath the ribbon. Public circulation remains open outside thegroundpart below the raised deck. Sourceheight15m belongs to mappedpart196 wholevolume and does not establish the glazing-band ceiling.",
+      "confidence": "Mappedplan/source4m datum explicit; separateupper glazing and openbase directly observed in originalphoto/section. Bandceiling7.7m is retained section approximation."
+    }
+  ],
+  "originalSources": [
+    {
+      "file": "elicium-architect.html",
+      "url": "https://www.benthemcrouwel.com/projects/rai-elicium",
+      "retrievedAt": "2026-10-06T06:33:35Z",
+      "httpStatus": 200,
+      "sha256": "7cd047872e77725ec99b97b580d21186dbbb4c0ca820754b3bcb00639f8735db",
+      "bytes": 24563,
+      "reuse": "source-specific rights; reference only",
+      "privatePath": "/Users/blackmad/Code/map-recall2-source-data/models/rai-amsterdam/files/raw/elicium-architect.html"
+    },
+    {
+      "file": "rce532206.pdf",
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/pdf/532206",
+      "retrievedAt": "2026-10-06T06:33:35Z",
+      "httpStatus": 200,
+      "sha256": "62ae8f42f4b7dcfae6135768c86e7ffd01c765d20ed94ca20c14668170785005",
+      "bytes": 65212,
+      "reuse": "source-specific rights; reference only",
+      "privatePath": "/Users/blackmad/Code/map-recall2-source-data/models/rai-amsterdam/files/raw/rce532206.pdf"
+    },
+    {
+      "file": "amsterdam-rai-district.pdf",
+      "url": "https://openresearch.amsterdam/image/2024/11/18/van_rai_complex_naar_rai_district.pdf",
+      "retrievedAt": "2026-10-06T06:33:37Z",
+      "httpStatus": 200,
+      "sha256": "f06f0438daf3106b694b14969c9a1354677cbe2d6a4e0697379bc2ef16ffb18c",
+      "bytes": 12664954,
+      "reuse": "source-specific rights; reference only",
+      "privatePath": "/Users/blackmad/Code/map-recall2-source-data/models/rai-amsterdam/files/raw/amsterdam-rai-district.pdf"
+    },
+    {
+      "file": "beeldbank-address.html",
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=Europaplein%20RAI",
+      "retrievedAt": "2026-10-06T06:33:37Z",
+      "httpStatus": 200,
+      "sha256": "2c58f828ae2064223924ea0091b054f9491af3a922ebc52697104024f3ba5f04",
+      "bytes": 12357,
+      "reuse": "source-specific rights; reference only",
+      "privatePath": "/Users/blackmad/Code/map-recall2-source-data/models/rai-amsterdam/files/raw/beeldbank-address.html"
+    },
+    {
+      "file": "rai-contact.html",
+      "url": "https://www.rai.nl/contact",
+      "retrievedAt": "2026-10-06T06:33:37Z",
+      "httpStatus": 200,
+      "sha256": "8bb9c5cdd8871259eb483210b0ff1e372b8d2325f426c79b5c1f73f96d7259ca",
+      "bytes": 162112,
+      "reuse": "source-specific rights; reference only",
+      "privatePath": "/Users/blackmad/Code/map-recall2-source-data/models/rai-amsterdam/files/raw/rai-contact.html"
+    },
+    {
+      "file": "rai-hall5.html",
+      "url": "https://www.rai.nl/en/neighbourhood-news/hall-5-expansion-underway-at-rai-amsterdam",
+      "retrievedAt": "2026-10-06T06:33:38Z",
+      "httpStatus": 200,
+      "sha256": "caa8a21b9c7bc31885371d518560c5e56a07bc18b9274748edb3c8ad2362b08f",
+      "bytes": 191473,
+      "reuse": "source-specific rights; reference only",
+      "privatePath": "/Users/blackmad/Code/map-recall2-source-data/models/rai-amsterdam/files/raw/rai-hall5.html"
+    },
+    {
+      "file": "nieuwecombi.jpg",
+      "url": "https://cms.benthemcrouwel.com/dynamic/images/nieuwecombi.jpg",
+      "retrievedAt": "2026-10-06T06:36:39.612299+00:00",
+      "bytes": 572713,
+      "sha256": "4a00fb5f404b7502a0e26c9f370fb16cb8052c0a3d8485bef45d138006e44baa",
+      "reuse": "Reference only; source-specific rights",
+      "privatePath": "/Users/blackmad/Code/map-recall2-source-data/models/rai-amsterdam/files/raw/nieuwecombi.jpg"
+    },
+    {
+      "file": "Rai-landsc.jpg",
+      "url": "https://cms.benthemcrouwel.com/dynamic/images/Rai-landsc.jpg",
+      "retrievedAt": "2026-10-06T06:36:39.612816+00:00",
+      "bytes": 1907674,
+      "sha256": "a93d17440201d013a4267492ce873c81435bb4a953651628998cf6ca1060803b",
+      "reuse": "Reference only; source-specific rights",
+      "privatePath": "/Users/blackmad/Code/map-recall2-source-data/models/rai-amsterdam/files/raw/Rai-landsc.jpg"
+    },
+    {
+      "file": "510_N19_a4.jpg",
+      "url": "https://cms.benthemcrouwel.com/dynamic/images/510_N19_a4.jpg",
+      "retrievedAt": "2026-10-06T06:36:39.613560+00:00",
+      "bytes": 2023480,
+      "sha256": "16ea63bff915ac59c2873ae450e24e7f94cb40594a74218cdd9af1fffe0ff3c2",
+      "reuse": "Reference only; source-specific rights",
+      "privatePath": "/Users/blackmad/Code/map-recall2-source-data/models/rai-amsterdam/files/raw/510_N19_a4.jpg"
+    },
+    {
+      "file": "510_drawing_Elicium_N9_a4.jpg",
+      "url": "https://cms.benthemcrouwel.com/dynamic/images/510_drawing_Elicium_N9_a4.jpg",
+      "retrievedAt": "2026-10-06T06:36:39.614345+00:00",
+      "bytes": 187696,
+      "sha256": "9354ba2d06d13bfc7eee74380b7893d88707d89bd25525c07b8d11e7ed5cc401",
+      "reuse": "Reference only; source-specific rights",
+      "privatePath": "/Users/blackmad/Code/map-recall2-source-data/models/rai-amsterdam/files/raw/510_drawing_Elicium_N9_a4.jpg"
+    },
+    {
+      "file": "510_N10_a4.jpg",
+      "url": "https://cms.benthemcrouwel.com/dynamic/images/510_N10_a4.jpg",
+      "retrievedAt": "2026-10-06T06:36:39.614439+00:00",
+      "bytes": 1820931,
+      "sha256": "64363f18929bbb321e3c9d3cfaae9f7f9157da162ee376df075ebd2a0700d82f",
+      "reuse": "Reference only; source-specific rights",
+      "privatePath": "/Users/blackmad/Code/map-recall2-source-data/models/rai-amsterdam/files/raw/510_N10_a4.jpg"
+    },
+    {
+      "file": "bag-native-raw.json",
+      "url": "https://service.pdok.nl/lv/bag/wfs/v2_0",
+      "retrievedAt": "2026-10-06T06:36:39.615086+00:00",
+      "bytes": 45712,
+      "sha256": "505b47c6fae2d66b4ef91a4dcc21775cbecdf16bdd9d2d6c0085777dca9fa0f7",
+      "reuse": "Reference only; source-specific rights",
+      "privatePath": "/Users/blackmad/Code/map-recall2-source-data/models/rai-amsterdam/files/raw/bag-native-raw.json"
+    },
+    {
+      "file": "installed-elicium-parts-snapshot.json",
+      "url": "local installed extract",
+      "retrievedAt": "2026-10-06T06:36:39.615121+00:00",
+      "bytes": 8116,
+      "sha256": "e6e7da884f9a39c2a8628e855504951587206530b6547e9ab010fc944e23b03f",
+      "reuse": "Reference only; source-specific rights",
+      "privatePath": "/Users/blackmad/Code/map-recall2-source-data/models/rai-amsterdam/files/raw/installed-elicium-parts-snapshot.json"
+    },
+    {
+      "file": "510_N22_a4.jpg",
+      "url": "https://cms.benthemcrouwel.com/dynamic/images/510_N22_a4.jpg",
+      "retrievedAt": "2026-10-06T06:36:39.615142+00:00",
+      "bytes": 967497,
+      "sha256": "a089852119e9252a46af3ca82bd0ced988402fb8bf9633c92e9d96408a208a9b",
+      "reuse": "Reference only; source-specific rights",
+      "privatePath": "/Users/blackmad/Code/map-recall2-source-data/models/rai-amsterdam/files/raw/510_N22_a4.jpg"
+    },
+    {
+      "file": "elicium-3dbag-raw.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012093034",
+      "retrievedAt": "2026-10-06T06:36:39.615500+00:00",
+      "bytes": 9248,
+      "sha256": "0c2fd63203bd76ae956e4579e3d25d5274b296509ce8bb1e34d48f061c88a83a",
+      "reuse": "Reference only; source-specific rights",
+      "privatePath": "/Users/blackmad/Code/map-recall2-source-data/models/rai-amsterdam/files/raw/elicium-3dbag-raw.json"
+    }
+  ],
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "modelPath": "models/rai-amsterdam/",
+    "manifest": "models/rai-amsterdam/manifest.json",
+    "commit": "f2146fc",
+    "pendingUpdate": "2026 OSM identity audit and combined Europahal source pack require coordinator private commit before public model publication."
+  },
+  "identityAudit": {
+    "source": "Private files/raw/rai-current-osm-map.xml original OSM HTTP2026-10-06",
+    "mainVenue": "n2817982961",
+    "mainVenueCoordinates": [
+      52.3412264,
+      4.8899065
+    ],
+    "elicium": "w43783760",
+    "europacomplex": "w277270903",
+    "signaal": [
+      "w277270901",
+      "w1238963818"
+    ],
+    "separateTheater": "extract_landmarks_1535858213",
+    "pending": "Europacomplex mapped part subassemblies and exact OSM part containment/suppression; genuine main entrance/card/runtime acceptance."
+  },
+  "facadeRepair20261006": {
+    "priorFailure": {
+      "evidence": "artifacts/landmark-continuation-20261006/rai-west-repair-independent-review/elicium-low-front.png",
+      "state": "failed reference/render comparison; preserved by coordinator",
+      "material": "stone #cfc2a6 produced warm tan ribbon",
+      "assembly": "both office long faces were opaque silver/tan shell with dark painted strips; east broad curtain wall absent",
+      "oldPassingChecks": "end-only glazing probes did not inspect the office long sides"
+    },
+    "sourcesInspected": [
+      "Rai-landsc.jpg",
+      "510_N22_a4.jpg",
+      "nieuwecombi.jpg",
+      "510_N19_a4.jpg",
+      "510_N10_a4.jpg",
+      "510_drawing_Elicium_N9_a4.jpg",
+      "installed-elicium-parts-snapshot.json",
+      "rai-current-osm-map.xml"
+    ],
+    "repair": "East office opaque wall removed; broad blue glass face and exposed thin dark mullions added. West strips now genuine glass with metal frame/joints. Neutral shared concrete #d4d5d0 owns silver ribbon, rims and elevated slab. Curved ribbon, heights, raised halls and open column base retained.",
+    "geometryEvidence": {
+      "eastLongFaceFractionalGlassProbes": 66,
+      "westSlotFractionalGlassProbes": 33,
+      "upwardProfileRoofProbes": 24,
+      "triangles": 9196,
+      "check": "scripts/check-rai-amsterdam-geometry.ts",
+      "state": "Authored geometry check passes; compressed export/gallery/live/independent review still required.",
+      "nativeBoundaryVertices": 2294,
+      "nativeGroundFirstHits": 63,
+      "nativeEndFirstHits": 24,
+      "nativeRoofProbes": 561,
+      "nativeConcourseFirstHits": 24,
+      "nativeOpenBaseProbes": 80
+    },
+    "nativeSurvey": {
+      "source": "w806950197 mapped office part; archived installed snapshot and original current OSM response",
+      "localTransform": "metres east and south of anchor [4.88998,52.341315], inverse builder rotation +0.0837 rad",
+      "boundsXZ": [
+        -22.87,
+        -7.9,
+        -26.51,
+        26.4
+      ],
+      "widthMetres": 14.97,
+      "depthMetres": 52.91,
+      "retainedApproximation": "Office section now follows source x [-22.87,-7.90], width14.97m; the earlier approximately2.6m west registration defect was corrected. Office depth remains rounded52.8m versus source52.91m; photo-guided shoulder curves are not measured corner profiles."
+    },
+    "uncertainties": [
+      "Facade mullion/slot spacing simplified from photographs; no measured curtain-wall fabrication drawing acquired.",
+      "Metal perforations omitted; house-style original geometry has no photo pixels or imported meshes.",
+      "Office west displacement is corrected. Native parent/ground plan repair now uses actual surveyed polygons; curved vertical section, mullion schedule, support-column locations and source min-height interpretation still require reference/render review."
+    ]
+  },
+  "officeAlignmentCorrection": {
+    "source": "Current surveyed office partw806950197 projected into original section frame; worker recordednative localbounds",
+    "xBounds": [
+      -22.87,
+      -7.9
+    ],
+    "width": 14.97,
+    "treatment": "Corrected original office-section west displacement together with curved transitions, glazing faces and grids; outerhall/nativeanchor unchanged.",
+    "priorEvidence": "artifacts/landmark-continuation-20261006/rai-elicium-office-alignment-before",
+    "status": "Source x alignment is independently reviewed in rai-elicium-current-independent-review. Native shell/ground follow-up is authored; compressed/gallery/live review remains pending."
+  },
+  "nativeShellCorrection20261006": {
+    "source": "Saved BAG parent polygon, installed OSM part194, and original2026-10-06 OSM response rai-current-osm-map.xml in private raw source pack; source values cross-checked against original way tags.",
+    "frame": "metres east/south of anchor; inverse builder rotation+0.0837rad;111320m/degree with longitude cos(latitude)",
+    "parentBoundsXZ": [
+      -33.540445130516055,
+      33.027735243402766,
+      -26.54031263711996,
+      26.449444527164466
+    ],
+    "groundBoundsXZ": [
+      -22.863514786568786,
+      -0.8946089692407757,
+      -24.00527124756347,
+      23.992395963420428
+    ],
+    "repair": "Actual parent polygon owns raised slab and ribbon plan. Each original section surface is clipped against triangulated native plan, and glazing/trim follows the actual end perimeter. Ground glass/roof uses all sourcepart194 vertices including the curved recesses; no bounding-box rescale. Unsupported external2m walkway omitted and retained ordinary context continues beyond the native parent.",
+    "heightInterpretation": {
+      "ground": "Original OSMpart194 explicitly height4m, min0. Native notched ground glass shell and roof use0\u20134m; old7.8m ground rectangle removed. Separate part196 elevated concourse handles observed upper glazing. Public undercroft outsidepart194 remains open below4m except slender support columns.",
+      "ribbon": "Architect photo/section continuous curved raised ribbon retains approximate underside8m, west hall18.5m, east hall17.7m and AHN tower46.69m. Mapped parts195 min9/height19 and196 min4/height15 are overlapping simplified part volumes, not asserted full facade occupancy. The4m ground source and open raised base are preserved; the low-hall curved section is photo-guided, not an exact3D part reconstruction.",
+      "office": "Mappedpart197 min0 does not justify filling the entire tower footprint to ground; actual separate ground part and reference-supported public undercroft control ground occupancy.",
+      "concourse": {
+        "sourcePart": "w806950196",
+        "sourceMinHeight": 4,
+        "sourcePartHeight": 15,
+        "authoredBand": [
+          4,
+          7.7
+        ],
+        "assembly": "Separate source-native open-top glazing shell, fine vertical frame rhythm and upward floor plane. Its surveyed footprint is used directly; unlike parent bounding box it excludes the west cantilever. Original mapped part edge may exceed BAGparent east edge by about2cm due survey/extract rounding. Parent raised slab owns upper cap; no independent opaque roof at15m inferred from mapped part maximum.",
+        "photo": "Original Rai-landsc.jpg shows transparent concourse immediately above raised circulation deck and below silver ribbon; architect section confirms raised deck/open sloping-column base. Upper band ceiling7.7m follows existing bounded original section, not a measured fabrication elevation."
+      }
+    },
+    "approximation": "Surveyed plan vertices and sourceground4m height and mappedpart196min4m are native inputs. Curved vertical section is an original bounded interpretation of architect drawing/current photographs; exact corner wrapping, pane schedule and support beam positions are not claimed surveyed. Office long faces retain52.8m rounded depth versus52.91m source. Raised concourse exactsourcepart196 perimeter has up to2cm BAGparent discrepancy retained as source rounding. Ribbon rim/mullions project35\u2013140mm outside surveyed wall plane as architectural relief; no opaque padded footprint.",
+    "firstHitChecks": {
+      "nativeVerticesInsideSource": 2294,
+      "groundGlassOrBoundedMullionThenGlass": 63,
+      "endGlassOrBoundedMullionThenGlass": 24,
+      "nativeGridUpwardRoofs": 561,
+      "sourceSlabAndGroundRoofExtremaToleranceMetres": 0.002,
+      "firstHitWallToleranceMetres": 0.015,
+      "glassFrameTreatment": "Explicit slimframe first hit accepted only when glass follows within0.15m ground/concourse or0.2m ribbon; masonry cannot be skipped. Public undercroft grid outsidegroundpart may encounter frame supports only below the4m raised datum.",
+      "raisedConcourseSourceGlassFirstHits": 24,
+      "openPublicUndercroftOutsideGroundPart": 80
+    },
+    "priorFailures": [
+      "artifacts/landmark-continuation-20261006/rai-elicium-office-alignment-before",
+      "artifacts/landmark-continuation-20261006/rai-elicium-current-independent-review"
+    ],
+    "status": "Authoredsource geometry repaired and focused checks pass. Coordinator export, native-scale gallery/reference comparison, independent review and actual game/suppression/performance acceptance pending."
+  }
+}

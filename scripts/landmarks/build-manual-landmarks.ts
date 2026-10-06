@@ -1,3 +1,5 @@
+import {buildRaiAmsterdamComplex} from './rai-amsterdam-complex-builder';
+import {buildPulitzerAmsterdam} from './pulitzer-amsterdam-builder';
 import {buildTheRock} from './the-rock-builder';
 import {buildWineGuildhall} from './wine-guildhall-builder';
 import {buildNikolaasMyrakerk} from './nikolaas-myrakerk-builder';
@@ -363,6 +365,8 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(['foam','huis-marseille','ons-lieve-heer-op-solder'].includes(id))buildCanalMuseumLandmark(id,w,d,helpers);
     else if(id==='rem-eiland')buildRemEiland(w,d,helpers);
     else if(id==='midwest')buildMidwest(w,d,helpers);
+    else if(id==='rai-amsterdam')buildRaiAmsterdamComplex(w,d,helpers);
+    else if(id==='pulitzer-amsterdam')buildPulitzerAmsterdam(w,d,helpers);
     else if(id==='the-rock')buildTheRock(w,d,helpers);
     else if(id==='wine-guildhall')buildWineGuildhall(w,d,helpers);
     else if(id==='ndsm-container-arch')buildNdsmContainerArch(w,d,helpers);

@@ -14,7 +14,7 @@
     "Exact modeled identities excluded; repeated tile identities, near-identical footprints and raised parts grouped.",
     "Ground-level courtyard buildings remain separate. Uncertain complex identities require manual research."
   ],
-  "candidateCount": 1850,
+  "candidateCount": 1845,
   "candidates": [
     {
       "id": "NL.IMBAG.Pand.0363100012207510",
@@ -2827,31 +2827,6 @@
       "priority": "low",
       "status": "needs-identification-and-research",
       "sourceUrl": "https://www.openstreetmap.org/way/282331251"
-    },
-    {
-      "id": "w461439852",
-      "name": null,
-      "footprintSquareMetres": 13314,
-      "heightMetres": 16,
-      "center": [
-        4.888841749999999,
-        52.342869449999995
-      ],
-      "aliases": [],
-      "raisedParts": false,
-      "roofShape": "round",
-      "poiNames": [],
-      "fidelity": {
-        "treatment": "unreviewed",
-        "workflow": "recognition-review",
-        "state": "suggested",
-        "reasons": [
-          "Unusual mapped roof: round"
-        ]
-      },
-      "priority": "low",
-      "status": "needs-identification-and-research",
-      "sourceUrl": "https://www.openstreetmap.org/way/461439852"
     },
     {
       "id": "NL.IMBAG.Pand.0363100012075926",
@@ -21339,32 +21314,6 @@
       "sourceUrl": "https://3dbag.nl/en/viewer"
     },
     {
-      "id": "NL.IMBAG.Pand.0363100012169022",
-      "name": null,
-      "footprintSquareMetres": 3363,
-      "heightMetres": 16.3,
-      "center": [
-        4.88391895,
-        52.37275415
-      ],
-      "aliases": [],
-      "raisedParts": false,
-      "roofShape": "",
-      "poiNames": [],
-      "fidelity": {
-        "treatment": "unreviewed",
-        "workflow": "recognition-review",
-        "state": "suggested",
-        "reasons": [
-          "Courtyard/open-space geometry",
-          "Complex footprint"
-        ]
-      },
-      "priority": "low",
-      "status": "needs-identification-and-research",
-      "sourceUrl": "https://3dbag.nl/en/viewer"
-    },
-    {
       "id": "NL.IMBAG.Pand.0363100012250554",
       "name": null,
       "footprintSquareMetres": 3923,
@@ -23403,31 +23352,6 @@
       "priority": "low",
       "status": "needs-identification-and-research",
       "sourceUrl": "https://3dbag.nl/en/viewer"
-    },
-    {
-      "id": "w807204806",
-      "name": null,
-      "footprintSquareMetres": 4197,
-      "heightMetres": 12,
-      "center": [
-        4.88910665,
-        52.34228505
-      ],
-      "aliases": [],
-      "raisedParts": false,
-      "roofShape": "",
-      "poiNames": [],
-      "fidelity": {
-        "treatment": "unreviewed",
-        "workflow": "standard-eligibility-review",
-        "state": "suggested",
-        "reasons": [
-          "Simple mapped massing; facade and recognition still need visual review"
-        ]
-      },
-      "priority": "low",
-      "status": "needs-identification-and-research",
-      "sourceUrl": "https://www.openstreetmap.org/way/807204806"
     },
     {
       "id": "NL.IMBAG.Pand.0363100012225307",
@@ -27285,31 +27209,6 @@
       "sourceUrl": "https://3dbag.nl/en/viewer"
     },
     {
-      "id": "w807090339",
-      "name": null,
-      "footprintSquareMetres": 3481,
-      "heightMetres": 12,
-      "center": [
-        4.8876890500000005,
-        52.342357
-      ],
-      "aliases": [],
-      "raisedParts": false,
-      "roofShape": "",
-      "poiNames": [],
-      "fidelity": {
-        "treatment": "unreviewed",
-        "workflow": "standard-eligibility-review",
-        "state": "suggested",
-        "reasons": [
-          "Simple mapped massing; facade and recognition still need visual review"
-        ]
-      },
-      "priority": "low",
-      "status": "needs-identification-and-research",
-      "sourceUrl": "https://www.openstreetmap.org/way/807090339"
-    },
-    {
       "id": "NL.IMBAG.Pand.0363100012091929",
       "name": null,
       "footprintSquareMetres": 2762,
@@ -29942,31 +29841,6 @@
       "priority": "low",
       "status": "needs-identification-and-research",
       "sourceUrl": "https://3dbag.nl/en/viewer"
-    },
-    {
-      "id": "w806950197",
-      "name": null,
-      "footprintSquareMetres": 791,
-      "heightMetres": 46,
-      "center": [
-        4.88975465,
-        52.341327050000004
-      ],
-      "aliases": [],
-      "raisedParts": false,
-      "roofShape": "",
-      "poiNames": [],
-      "fidelity": {
-        "treatment": "unreviewed",
-        "workflow": "recognition-review",
-        "state": "suggested",
-        "reasons": [
-          "Complex footprint"
-        ]
-      },
-      "priority": "low",
-      "status": "needs-identification-and-research",
-      "sourceUrl": "https://www.openstreetmap.org/way/806950197"
     },
     {
       "id": "NL.IMBAG.Pand.0363100012096179",
