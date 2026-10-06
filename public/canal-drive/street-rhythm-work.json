@@ -1217,5 +1217,17 @@
       "completion": "accepted-observed-row",
       "learnedFrom": null
     }
-  ]
+  ],
+  "janEvertsenCanopyRolloutDiscovery": {
+    "plan": "docs/references/jan-evertsen-pilot/rollout-plan.json",
+    "status": "prioritized-source-discovery",
+    "newRuntimeAdmissions": 0,
+    "priorityGroups": [
+      "Jan Evertsenstraat 94–140",
+      "Jan Evertsenstraat 68–92",
+      "Jan Evertsenstraat 91–123",
+      "Jan Evertsenstraat 59–89"
+    ],
+    "withheld": "All new identities; Mercatorplein arcades and neighborhood-wide transfer excluded."
+  }
 }
