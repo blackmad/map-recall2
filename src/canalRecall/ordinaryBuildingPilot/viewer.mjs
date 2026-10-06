@@ -89,7 +89,8 @@ function facadeAtlas() {
     const x = 35 + bay * 136, y = 814;
     c.fillStyle = "#3b4742";
     c.fillRect(x, y, 76, 210);
-    c.fillStyle = "#657e74";
+    const screened = bay >= 12 ? bay !== 13 : bay % 4 === 1;
+    c.fillStyle = screened ? "#303d35" : "#657e74";
     c.fillRect(x + 6, y + 7, 28, 80);
     c.fillRect(x + 42, y + 7, 28, 80);
     c.fillRect(x + 6, y + 96, 28, 107);
@@ -97,6 +98,14 @@ function facadeAtlas() {
     c.fillStyle = "#a2aca5";
     c.fillRect(x + 35, y + 4, 5, 204);
     c.fillRect(x + 4, y + 88, 68, 6);
+    if (screened) {
+      // Dark louvred/security screens are visible beside glazed entrances in
+      // the 2025 reference, especially on the brick end's ground frontage.
+      c.fillStyle = "#52604c";
+      for (let sy = y + 10; sy < 1020; sy += 8) c.fillRect(x + 6, sy, 64, 2);
+      c.fillStyle = "#252f29";
+      for (let sx = x + 12; sx < x + 70; sx += 10) c.fillRect(sx, y + 7, 2, 196);
+    }
   }
   const texture2 = new T.CanvasTexture(canvas);
   texture2.colorSpace = T.SRGBColorSpace;
@@ -127,12 +136,12 @@ function archedWindow(c, x, y, w, h, rise) {
   c.fillRect(x, y + h * 0.36, w, 3);
   c.restore();
 }
-function brickArch(c, x, y, w, rise) {
+function brickArch(c, x, y, w, rise, band = 14) {
   c.beginPath();
   c.moveTo(x, y + rise);
   c.quadraticCurveTo(x + w / 2, y - rise, x + w, y + rise);
   c.strokeStyle = "#a57751";
-  c.lineWidth = 14;
+  c.lineWidth = band;
   c.stroke();
   // Restrained radial mortar joints make the curved band read as brickwork.
   c.strokeStyle = "#8b704f";
@@ -142,8 +151,8 @@ function brickArch(c, x, y, w, rise) {
     const slope = (8 * rise * t - 4 * rise) / w;
     const nx = -slope / Math.hypot(1, slope), ny = 1 / Math.hypot(1, slope);
     c.beginPath();
-    c.moveTo(px - nx * 7, py - ny * 7);
-    c.lineTo(px + nx * 7, py + ny * 7);
+    c.moveTo(px - nx * band / 2, py - ny * band / 2);
+    c.lineTo(px + nx * band / 2, py + ny * band / 2);
     c.stroke();
   }
 }
@@ -175,7 +184,9 @@ function warehouseAtlas() {
   c.fillRect(0, 397, 2048, 15);
   for (let bay = 0; bay < 16; bay++) {
     const x = bay * 128 + 22, wide = bay % 2 === 0;
-    brickArch(c, x - 12, 444, 108, 20);
+    // A broad relieving arch belongs to the whole pier-to-pier bay, including
+    // the paired-window bays. Small opening crowns sit distinctly below it.
+    brickArch(c, bay * 128 + 3, 433, 122, 24);
     for (let row = 0; row < 2; row++) {
       const y = 466 + row * 170;
       if (wide) {
@@ -196,15 +207,24 @@ function warehouseAtlas() {
       } else {
         // The narrow pier groups contain two separately arched windows.
         for (const offset of [2, 48]) {
-          brickArch(c, x + offset - 2, y - 2, 35, 8);
+          brickArch(c, x + offset - 2, y - 2, 35, 8, 5);
           archedWindow(c, x + offset, y + 7, 31, 116, 7);
         }
       }
     }
-    c.fillStyle = "#354640";
+    const screened = bay % 4 === 3;
+    c.fillStyle = screened ? "#283b32" : "#354640";
     c.fillRect(x + 1, 826, 80, 127);
     c.fillStyle = "#91a69d";
     c.fillRect(x + 38, 833, 4, 111);
+    if (screened) {
+      c.fillStyle = "#516251";
+      for (let gx = x + 5; gx < x + 79; gx += 7) c.fillRect(gx, 830, 2, 118);
+    } else {
+      c.fillStyle = "#617c70";
+      c.fillRect(x + 7, 833, 27, 109);
+      c.fillRect(x + 47, 833, 27, 109);
+    }
   }
   c.fillStyle = "#b4ae98";
   c.fillRect(0, 954, 2048, 14);
