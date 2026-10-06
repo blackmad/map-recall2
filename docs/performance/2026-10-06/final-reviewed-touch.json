@@ -1,0 +1,289 @@
+{
+  "cullingAB": [],
+  "label": "final-reviewed",
+  "device": "touch",
+  "bootMs": 5214,
+  "readyMs": 5945,
+  "initial": {
+    "rider": {
+      "x": -3154.226146673561,
+      "y": -6510.667642664389,
+      "angle": 2.086399529757466,
+      "color": "#FFD700",
+      "name": "PLAYER",
+      "vx": 0.0005254387236637607,
+      "vy": -0.0009271276603718522,
+      "speed": -0.0010656695317742674,
+      "angularVel": 0,
+      "width": 24,
+      "length": 56,
+      "maxSpeed": 351,
+      "accel": 168,
+      "brakeForce": 412.5,
+      "turnRate": 2.1025,
+      "gripFactor": 1,
+      "driftFactor": 0.12,
+      "drag": 0.0024,
+      "rollingResist": 0.12,
+      "liftOffBraking": 6.5,
+      "throttle": 0,
+      "brake": 0,
+      "steerInput": 0,
+      "handbrake": false,
+      "isDrifting": false,
+      "surfaceType": "asphalt",
+      "currentLap": 0,
+      "lapProgress": 4.621197557952428e-8,
+      "lastCheckpoint": 0,
+      "checkpointsHit": {},
+      "lapTimes": [],
+      "lapStartTime": 0,
+      "bestLap": null,
+      "finished": false,
+      "totalTime": 0.8000000000000004,
+      "raceProgress": 4.621197557952428e-8,
+      "distancePx": 0.0010976094947175749,
+      "controlMode": "relative",
+      "camera": {
+        "x": -3186.2750585639837,
+        "y": -6454.117884604595,
+        "smoothing": 0.07,
+        "zoom": 0.65,
+        "minZoom": 0.1,
+        "maxZoom": 1.5,
+        "northUp": false,
+        "holdHeading": false,
+        "heldRotation": 3.6571958565523626,
+        "rotation": 3.6571958565523626,
+        "bearingOffset": 0,
+        "viewMode": "chase",
+        "panX": 0,
+        "panY": 0,
+        "detached": false,
+        "anchorX": 0,
+        "anchorY": 0,
+        "reducedMotion": false,
+        "_lookahead": 0.00008012574956873558,
+        "targetX": -3154.226146673561,
+        "targetY": -6510.667642664389,
+        "_followX": -3186.275068145917,
+        "_followY": -6454.11786769744,
+        "introOverview": 0
+      },
+      "isBoat": false,
+      "_headingTarget": null,
+      "_cruiseFraction": null,
+      "_stickBraking": false,
+      "_stickHardSteer": false,
+      "_pivot": 0,
+      "_turnAroundHeld": false,
+      "_turnAroundArmed": false
+    },
+    "mapZoom": 18.207709280696495,
+    "cameraZoom": 0.65,
+    "minZoom": 0.1,
+    "maxZoom": 1.5,
+    "stats": {
+      "kitVertices": 184434,
+      "chunks": 25,
+      "buildings": 14115,
+      "walls": 76984,
+      "quads": 369908,
+      "vertices": 2433457,
+      "geometryMB": 80.5931339263916,
+      "textureMB": 24.375,
+      "drawCalls": 12,
+      "triangles": 766279,
+      "buildMs": 0.9000000953674316
+    },
+    "gpuTimer": true,
+    "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+    "pixelRatio": 1.5
+  },
+  "errors": [],
+  "stages": [
+    {
+      "stage": "street",
+      "zoom": 18.207709280698026,
+      "pitch": 48,
+      "center": [
+        4.883876142174431,
+        52.37518689127126
+      ],
+      "rider": {
+        "x": -3154.2261449334724,
+        "y": -6510.667645734746
+      },
+      "stats": {
+        "kitVertices": 184434,
+        "chunks": 25,
+        "buildings": 14115,
+        "walls": 76984,
+        "quads": 369908,
+        "vertices": 2433457,
+        "geometryMB": 80.5931339263916,
+        "textureMB": 24.375,
+        "drawCalls": 12,
+        "triangles": 766279,
+        "buildMs": 0.9000000953674316
+      },
+      "resident": 11608,
+      "frameMedian": 16.699999999999818,
+      "frameP95": 16.700000000000728,
+      "renderMedian": 0.09999990463256836,
+      "gpuMedian": 2.166458
+    },
+    {
+      "stage": "pan",
+      "zoom": 18.207681998134102,
+      "pitch": 48,
+      "center": [
+        4.879014456668194,
+        52.37602204215863
+      ],
+      "rider": {
+        "x": -3154.2258252810907,
+        "y": -6510.668209755922
+      },
+      "stats": {
+        "kitVertices": 242403,
+        "chunks": 28,
+        "buildings": 24368,
+        "walls": 125692,
+        "quads": 516608,
+        "vertices": 3424394,
+        "geometryMB": 113.80835723876953,
+        "textureMB": 24.375,
+        "drawCalls": 8,
+        "triangles": 1072484,
+        "buildMs": 1.3000001907348633
+      },
+      "resident": 21815,
+      "frameMedian": 16.69999999999891,
+      "frameP95": 16.700000000000728,
+      "renderMedian": 0.09999990463256836,
+      "gpuMedian": 2.326874
+    },
+    {
+      "stage": "wide",
+      "zoom": 15.999999999999826,
+      "pitch": 48,
+      "center": [
+        4.879014456620142,
+        52.37602204216689
+      ],
+      "rider": {
+        "x": -3154.2259465897782,
+        "y": -6510.667995708809
+      },
+      "stats": {
+        "kitVertices": 242403,
+        "chunks": 28,
+        "buildings": 24368,
+        "walls": 125692,
+        "quads": 516608,
+        "vertices": 3424394,
+        "geometryMB": 113.80835723876953,
+        "textureMB": 24.375,
+        "drawCalls": 13,
+        "triangles": 1207324,
+        "buildMs": 1.3000001907348633
+      },
+      "resident": 21815,
+      "frameMedian": 16.69999999999891,
+      "frameP95": 16.700000000000728,
+      "renderMedian": 0.09999990463256836,
+      "gpuMedian": 3.384541
+    },
+    {
+      "stage": "minimum",
+      "zoom": 15.507242279992742,
+      "pitch": 48,
+      "center": [
+        4.879014456620142,
+        52.37602204216689
+      ],
+      "rider": {
+        "x": -3154.2258340801027,
+        "y": -6510.668194230215
+      },
+      "stats": {
+        "kitVertices": 242403,
+        "chunks": 28,
+        "buildings": 24368,
+        "walls": 125692,
+        "quads": 516608,
+        "vertices": 3424394,
+        "geometryMB": 113.80835723876953,
+        "textureMB": 24.375,
+        "drawCalls": 13,
+        "triangles": 1207324,
+        "buildMs": 1.3000001907348633
+      },
+      "resident": 21815,
+      "frameMedian": 16.700000000000728,
+      "frameP95": 16.799999999999272,
+      "renderMedian": 0.09999990463256836,
+      "gpuMedian": 3.502124
+    },
+    {
+      "stage": "overview",
+      "zoom": 14.8,
+      "pitch": 48,
+      "center": [
+        4.879014456620142,
+        52.37602204216689
+      ],
+      "rider": {
+        "x": -3154.225947301069,
+        "y": -6510.667994453748
+      },
+      "stats": {
+        "kitVertices": 242403,
+        "chunks": 28,
+        "buildings": 24368,
+        "walls": 125692,
+        "quads": 516608,
+        "vertices": 3424394,
+        "geometryMB": 113.80835723876953,
+        "textureMB": 24.375,
+        "drawCalls": 17,
+        "triangles": 1263350,
+        "buildMs": 1.3000001907348633
+      },
+      "resident": 21815,
+      "frameMedian": 16.700000000000728,
+      "frameP95": 16.700000000000728,
+      "renderMedian": 0.09999990463256836,
+      "gpuMedian": 3.833875
+    }
+  ],
+  "calls": {
+    "setFeatures": {
+      "count": 6,
+      "totalMs": 106,
+      "p95Ms": 32.40000009536743,
+      "maxMs": 32.40000009536743
+    },
+    "contextFor": {
+      "count": 47,
+      "totalMs": 53.19999980926514,
+      "p95Ms": 7.400000095367432,
+      "maxMs": 8
+    },
+    "rebuild": {
+      "count": 40,
+      "totalMs": 296.5999994277954,
+      "p95Ms": 48,
+      "maxMs": 48.09999990463257
+    },
+    "install": {
+      "count": 35,
+      "totalMs": 103.30000066757202,
+      "p95Ms": 12.5,
+      "maxMs": 12.599999904632568
+    }
+  },
+  "workerPosts": 27,
+  "longTasks": 10
+}

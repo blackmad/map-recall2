@@ -32,6 +32,7 @@ import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
 import { validateStreetAppearanceCatalog, type StreetAppearanceCatalog, type StreetAppearanceProfile } from './streetAppearance.js';
 import { PROCEDURAL_RECIPE_LAYER_OFFSET } from './streetFacadeRendering.js';
 import { buildingProjectionScale } from './buildingProjectionScale.js';
+import { BuildingContextIndex } from './buildingContextIndex.js';
 
 type MapLike = { getCanvas(): HTMLCanvasElement; triggerRepaint(): void; getZoom(): number };
 type MaplibreLike = { MercatorCoordinate: { fromLngLat(lngLat: [number, number], altitude: number): { x: number; y: number; z: number; meterInMercatorCoordinateUnits(): number } } };
@@ -284,6 +285,7 @@ export class ThreeBuildings {
   private boatIds: ReadonlySet<string> = new Set();
   private boats: readonly Houseboat[] = [];
   private lastFeatures: readonly Feature[] = [];
+  private contextIndex?: BuildingContextIndex<Feature>;
   private detailTiles = new Set<string>();
   private installedDetailIds = new Set<string>();
   private readonly detailZoom = typeof window !== 'undefined' && window.matchMedia?.('(pointer: coarse)').matches ? 17 : DETAIL_ZOOM;
@@ -450,6 +452,7 @@ export class ThreeBuildings {
 
   /** The resident building set from the tile streamer; rebuilds only chunks whose features changed. */
   setFeatures(features: readonly Feature[]): void {
+    if (features !== this.lastFeatures) this.contextIndex = new BuildingContextIndex(features, f => this.boundsFor(f));
     const groups = new Map<string, Feature[]>();
     const kitParts: Feature[] = [];
     for (const feature of features) {
@@ -484,8 +487,12 @@ export class ThreeBuildings {
     const same = (a: readonly Feature[] | undefined, b: readonly Feature[]) => !!a && a.length === b.length && a.every((f, i) => f === b[i]);
     for (const key of [...this.chunks.keys(), ...this.inflight.keys()]) if (!groups.has(key)) { this.dropChunk(key); this.inflight.delete(key); this.inflightOptions.delete(key); this.gens.set(key, (this.gens.get(key) ?? 0) + 1); }
     for(const key of this.contextGroups.keys()) if(!groups.has(key)) this.contextGroups.delete(key);
+    const contexts = new Map<string, Feature[]>();
     for (const [key, list] of groups) {
-      const context=key===KIT_KEY||key.startsWith(BOAT_PREFIX)?[]:this.contextFor(list),previousContext=this.contextGroups.get(key);
+      const contextKey = key.startsWith(EXTRAS_PREFIX) ? `near:${key.slice(EXTRAS_PREFIX.length)}` : key;
+      let context = contexts.get(contextKey);
+      if (!context) { context = key === KIT_KEY || key.startsWith(BOAT_PREFIX) ? [] : this.contextFor(list); contexts.set(contextKey, context); }
+      const previousContext=this.contextGroups.get(key);
       this.contextGroups.set(key,context);
       const flying = this.inflight.get(key);
       if (same(previousContext,context) && (flying ? same(flying, list) : same(this.chunks.get(key)?.source, list))) continue;
@@ -664,8 +671,8 @@ export class ThreeBuildings {
     return !!latest && latest.length === source.length && latest.every((f, i) => f === source[i]);
   }
 
-  private readonly footprintBounds = new WeakMap<Feature, number[]>();
-  private boundsFor(f:Feature):number[]{
+  private readonly footprintBounds = new WeakMap<Feature, [number, number, number, number]>();
+  private boundsFor(f:Feature):[number, number, number, number]{
     let box=this.footprintBounds.get(f);if(box)return box;
     const points=asPolygons(f.geometry).flat(2);
     box=[Infinity,Infinity,-Infinity,-Infinity];
@@ -675,16 +682,10 @@ export class ThreeBuildings {
   // Include overlapping footprints in adjacent detail/tile batches as context,
   // without drawing them twice. Picking retains the same installed context.
   private contextFor(source:readonly Feature[]):Feature[]{
-    const ids=new Set(source.map(f=>String(f.properties.id))),boxes=source.map(f=>this.boundsFor(f));
-    const box=[Infinity,Infinity,-Infinity,-Infinity];
-    for(const b of boxes){box[0]=Math.min(box[0],b[0]);box[1]=Math.min(box[1],b[1]);box[2]=Math.max(box[2],b[2]);box[3]=Math.max(box[3],b[3]);}
-    const pad=.00000005;
-    return this.lastFeatures.filter(f=>{
-      const id=String(f.properties.id);if(ids.has(id)||KIT_HIDE_SET.has(id)||this.boatIds.has(id))return false;
-      const b=this.boundsFor(f);
-      if(b[2]<box[0]-pad||b[0]>box[2]+pad||b[3]<box[1]-pad||b[1]>box[3]+pad)return false;
-      return boxes.some(o=>b[2]>=o[0]-pad&&b[0]<=o[2]+pad&&b[3]>=o[1]-pad&&b[1]<=o[3]+pad);
-    });
+    const ids=new Set(source.map(f=>String(f.properties.id)));
+    return this.contextIndex?.neighbors(source, f => {
+      const id=String(f.properties.id);return ids.has(id)||KIT_HIDE_SET.has(id)||this.boatIds.has(id);
+    }) ?? [];
   }
   private rebuild(key: string, source: Feature[]): void {
     if (!this.THREE || this.look !== this.requestedLook || !this.currentSource(key, source)) return;
@@ -773,7 +774,9 @@ export class ThreeBuildings {
     mesh.userData.installedContextFeatures = options?.contextFeatures;
     mesh.userData.installedProfiles = options?.profiles;
     mesh.userData.appearanceRevision = options?.appearanceRevision;
-    mesh.frustumCulled = false;
+    // The pre-upload bounding sphere survives CPU buffer disposal. Keep
+    // resident shells intact while skipping chunks outside the map camera.
+    mesh.frustumCulled = true;
     const entry = { source, mesh, info: infoOf(chunk), ranges: new Map(chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }])) };
     this.chunks.set(key, entry);
     this.scene.add(mesh);
