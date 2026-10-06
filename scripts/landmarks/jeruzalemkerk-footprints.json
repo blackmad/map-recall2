@@ -1,0 +1,1399 @@
+{
+  "id": "jeruzalemkerk",
+  "canonicalId": "extract_landmarks_2017340658",
+  "anchor": [
+    4.85196,
+    52.371445
+  ],
+  "authorAngleRadians": 0.265,
+  "coordinateConvention": "Native metres; surveyed RD transformed into east/south then facade axes. +Z south front. Original reconstructed geometry; survey surfaces retained as evidence only.",
+  "parts": [
+    {
+      "name": "church",
+      "bagId": "0363100012120412",
+      "status": "Pand in gebruik",
+      "registeredOriginalYear": 1929,
+      "use": "bijeenkomstfunctie",
+      "polygon": [
+        [
+          [
+            4.8520839638262485,
+            52.371539971994466
+          ],
+          [
+            4.852049674395437,
+            52.371534055877255
+          ],
+          [
+            4.852038515769739,
+            52.37155829030431
+          ],
+          [
+            4.85202452161743,
+            52.371555872263755
+          ],
+          [
+            4.852023254821551,
+            52.37155863476043
+          ],
+          [
+            4.852014393500079,
+            52.371561632561075
+          ],
+          [
+            4.851987123161567,
+            52.371556925546365
+          ],
+          [
+            4.851982222472487,
+            52.37156756284832
+          ],
+          [
+            4.851833972073523,
+            52.371541978595786
+          ],
+          [
+            4.851838872795295,
+            52.37153134129997
+          ],
+          [
+            4.8517906771578545,
+            52.37152302541649
+          ],
+          [
+            4.851804836640299,
+            52.371492279485295
+          ],
+          [
+            4.851770957656508,
+            52.371486428057224
+          ],
+          [
+            4.851822223751789,
+            52.37137539170497
+          ],
+          [
+            4.851844101371482,
+            52.371379175600964
+          ],
+          [
+            4.851868030621258,
+            52.37132733467975
+          ],
+          [
+            4.8519111994715125,
+            52.37133481891019
+          ],
+          [
+            4.851920909368051,
+            52.37131382251728
+          ],
+          [
+            4.851937482481287,
+            52.371316683640885
+          ],
+          [
+            4.852085892835971,
+            52.37134234039192
+          ],
+          [
+            4.852102465970585,
+            52.37134520149242
+          ],
+          [
+            4.852092711019095,
+            52.37136628757359
+          ],
+          [
+            4.8521363342589305,
+            52.371373845677155
+          ],
+          [
+            4.852112706768615,
+            52.37142504089796
+          ],
+          [
+            4.852135229200642,
+            52.371428935506884
+          ],
+          [
+            4.8520839638262485,
+            52.371539971994466
+          ]
+        ]
+      ],
+      "localRings": [
+        [
+          [
+            10.9739,
+            -7.90632
+          ],
+          [
+            8.5477,
+            -7.90057
+          ],
+          [
+            8.54121,
+            -10.70206
+          ],
+          [
+            7.55092,
+            -10.69933
+          ],
+          [
+            7.55052,
+            -11.01858
+          ],
+          [
+            7.05903,
+            -11.50219
+          ],
+          [
+            5.12942,
+            -11.4974
+          ],
+          [
+            5.12639,
+            -12.72712
+          ],
+          [
+            -5.36347,
+            -12.70162
+          ],
+          [
+            -5.36044,
+            -11.4719
+          ],
+          [
+            -8.77061,
+            -11.46377
+          ],
+          [
+            -8.76221,
+            -7.9095
+          ],
+          [
+            -11.15955,
+            -7.90317
+          ],
+          [
+            -11.12068,
+            4.93517
+          ],
+          [
+            -9.57241,
+            4.93051
+          ],
+          [
+            -9.55464,
+            10.92439
+          ],
+          [
+            -6.49907,
+            10.91329
+          ],
+          [
+            -6.49068,
+            13.34124
+          ],
+          [
+            -5.31797,
+            13.33828
+          ],
+          [
+            5.18459,
+            13.30794
+          ],
+          [
+            6.3573,
+            13.30498
+          ],
+          [
+            6.34864,
+            10.86659
+          ],
+          [
+            9.43622,
+            10.85589
+          ],
+          [
+            9.4189,
+            4.93673
+          ],
+          [
+            11.01277,
+            4.93201
+          ]
+        ]
+      ],
+      "surveyRoofPlanes": [
+        {
+          "rings": [
+            [
+              [
+                -9.56941,
+                7.945,
+                5.20716
+              ],
+              [
+                -9.55148,
+                8.026,
+                10.91407
+              ],
+              [
+                -6.68175,
+                7.804,
+                10.90434
+              ],
+              [
+                -6.71664,
+                7.719,
+                4.75971
+              ]
+            ]
+          ]
+        },
+        {
+          "rings": [
+            [
+              [
+                8.55022,
+                17.303,
+                -8.00017
+              ],
+              [
+                8.54411,
+                14.539,
+                -10.71142
+              ],
+              [
+                8.12637,
+                14.568,
+                -10.7108
+              ],
+              [
+                7.12899,
+                16.43,
+                -8.94851
+              ]
+            ]
+          ]
+        },
+        {
+          "rings": [
+            [
+              [
+                6.67736,
+                9.866,
+                4.7504
+              ],
+              [
+                9.29286,
+                9.918,
+                4.77633
+              ],
+              [
+                9.25996,
+                9.921,
+                5.46267
+              ],
+              [
+                9.42332,
+                9.925,
+                5.43343
+              ],
+              [
+                9.4211,
+                9.922,
+                4.92614
+              ],
+              [
+                11.01498,
+                9.953,
+                4.92143
+              ],
+              [
+                10.9768,
+                9.879,
+                -7.91568
+              ],
+              [
+                8.5499,
+                9.831,
+                -7.91115
+              ],
+              [
+                8.55022,
+                9.831,
+                -8.00017
+              ],
+              [
+                7.12899,
+                9.797,
+                -8.94851
+              ],
+              [
+                6.61774,
+                9.792,
+                -8.0459
+              ]
+            ]
+          ]
+        },
+        {
+          "rings": [
+            [
+              [
+                -11.00665,
+                9.955,
+                4.92488
+              ],
+              [
+                -10.90807,
+                9.954,
+                4.92055
+              ],
+              [
+                -9.57021,
+                9.928,
+                4.91993
+              ],
+              [
+                -9.56941,
+                9.929,
+                5.20716
+              ],
+              [
+                -6.71664,
+                9.873,
+                4.75971
+              ],
+              [
+                -6.78931,
+                9.822,
+                -8.17173
+              ],
+              [
+                -11.15557,
+                9.908,
+                -7.46979
+              ],
+              [
+                -11.11777,
+                9.958,
+                4.92581
+              ]
+            ]
+          ]
+        },
+        {
+          "rings": [
+            [
+              [
+                3.0132,
+                5.046,
+                -11.69329
+              ],
+              [
+                -0.18114,
+                4.903,
+                -12.54153
+              ],
+              [
+                -0.14601,
+                5.313,
+                -10.11668
+              ],
+              [
+                5.28379,
+                5.301,
+                -10.17873
+              ]
+            ]
+          ]
+        },
+        {
+          "rings": [
+            [
+              [
+                -0.14601,
+                15.361,
+                -10.11668
+              ],
+              [
+                -6.80016,
+                12.264,
+                -10.04081
+              ],
+              [
+                -6.78931,
+                12.243,
+                -8.17173
+              ],
+              [
+                -6.71664,
+                12.1,
+                4.75971
+              ],
+              [
+                -6.68175,
+                12.032,
+                10.90434
+              ],
+              [
+                -6.49617,
+                12.118,
+                10.90393
+              ],
+              [
+                -6.49124,
+                12.1,
+                12.3901
+              ],
+              [
+                -4.01973,
+                13.257,
+                11.86612
+              ],
+              [
+                -2.47692,
+                13.967,
+                12.4734
+              ],
+              [
+                -2.17193,
+                14.121,
+                11.52518
+              ],
+              [
+                -1.73225,
+                14.326,
+                11.53156
+              ],
+              [
+                -1.92818,
+                14.245,
+                10.76446
+              ],
+              [
+                -1.52718,
+                14.449,
+                9.51591
+              ],
+              [
+                0.11785,
+                15.229,
+                8.41016
+              ]
+            ]
+          ]
+        },
+        {
+          "rings": [
+            [
+              [
+                0.11785,
+                15.229,
+                8.41016
+              ],
+              [
+                0.36252,
+                15.116,
+                8.24549
+              ],
+              [
+                1.06022,
+                14.793,
+                8.45037
+              ],
+              [
+                1.7699,
+                14.462,
+                11.78775
+              ],
+              [
+                1.95941,
+                14.374,
+                12.68158
+              ],
+              [
+                2.22273,
+                14.252,
+                11.86401
+              ],
+              [
+                3.12706,
+                13.834,
+                9.0548
+              ],
+              [
+                6.19307,
+                12.412,
+                9.95214
+              ],
+              [
+                6.70291,
+                12.176,
+                10.10086
+              ],
+              [
+                6.67736,
+                12.19,
+                4.7504
+              ],
+              [
+                6.61774,
+                12.224,
+                -8.0459
+              ],
+              [
+                7.12899,
+                11.988,
+                -8.94851
+              ],
+              [
+                5.28379,
+                12.843,
+                -10.17873
+              ],
+              [
+                -0.14601,
+                15.361,
+                -10.11668
+              ]
+            ]
+          ]
+        },
+        {
+          "rings": [
+            [
+              [
+                9.29286,
+                7.875,
+                4.77633
+              ],
+              [
+                6.67736,
+                7.735,
+                4.7504
+              ],
+              [
+                6.70291,
+                7.861,
+                10.10086
+              ],
+              [
+                6.70649,
+                7.878,
+                10.85513
+              ],
+              [
+                9.43913,
+                8.023,
+                10.84653
+              ],
+              [
+                9.42332,
+                7.897,
+                5.43343
+              ],
+              [
+                9.25996,
+                7.889,
+                5.46267
+              ]
+            ]
+          ]
+        },
+        {
+          "rings": [
+            [
+              [
+                3.81695,
+                4.384,
+                12.13294
+              ],
+              [
+                3.58936,
+                4.202,
+                12.83794
+              ],
+              [
+                3.59073,
+                4.119,
+                13.30251
+              ],
+              [
+                6.35924,
+                4.796,
+                13.29536
+              ],
+              [
+                6.35745,
+                4.927,
+                12.56127
+              ]
+            ]
+          ]
+        },
+        {
+          "rings": [
+            [
+              [
+                2.22273,
+                13.37,
+                11.86401
+              ],
+              [
+                3.58799,
+                13.05,
+                12.09463
+              ],
+              [
+                3.58936,
+                13.057,
+                12.83794
+              ],
+              [
+                3.81695,
+                12.996,
+                12.13294
+              ],
+              [
+                6.35745,
+                12.401,
+                12.56127
+              ],
+              [
+                6.35154,
+                12.384,
+                10.85724
+              ],
+              [
+                6.70649,
+                12.301,
+                10.85513
+              ],
+              [
+                6.70291,
+                12.294,
+                10.10086
+              ],
+              [
+                6.19307,
+                12.412,
+                9.95214
+              ],
+              [
+                3.12706,
+                13.127,
+                9.0548
+              ]
+            ]
+          ]
+        },
+        {
+          "rings": [
+            [
+              [
+                -6.80016,
+                3.526,
+                -10.04081
+              ],
+              [
+                -0.14601,
+                3.527,
+                -10.11668
+              ],
+              [
+                -0.18114,
+                3.48,
+                -12.54153
+              ],
+              [
+                3.0132,
+                3.498,
+                -11.69329
+              ],
+              [
+                5.28379,
+                3.528,
+                -10.17873
+              ],
+              [
+                7.12899,
+                3.552,
+                -8.94851
+              ],
+              [
+                8.12637,
+                3.519,
+                -10.7108
+              ],
+              [
+                7.55312,
+                3.518,
+                -10.70991
+              ],
+              [
+                7.55343,
+                3.512,
+                -11.02793
+              ],
+              [
+                7.06097,
+                3.503,
+                -11.5118
+              ],
+              [
+                5.13232,
+                3.502,
+                -11.50676
+              ],
+              [
+                5.12929,
+                3.479,
+                -12.73648
+              ],
+              [
+                -5.36056,
+                3.475,
+                -12.71098
+              ],
+              [
+                -5.35753,
+                3.499,
+                -11.48126
+              ],
+              [
+                -8.76744,
+                3.498,
+                -11.47409
+              ],
+              [
+                -8.76001,
+                3.566,
+                -7.92009
+              ],
+              [
+                -11.15735,
+                3.565,
+                -7.91375
+              ],
+              [
+                -11.15557,
+                3.573,
+                -7.46979
+              ],
+              [
+                -6.78931,
+                3.562,
+                -8.17173
+              ]
+            ]
+          ]
+        },
+        {
+          "rings": [
+            [
+              [
+                0.36252,
+                15.741,
+                8.24549
+              ],
+              [
+                0.11785,
+                15.737,
+                8.41016
+              ],
+              [
+                -1.52718,
+                15.71,
+                9.51591
+              ],
+              [
+                -1.92818,
+                15.696,
+                10.76446
+              ],
+              [
+                -1.73225,
+                15.692,
+                11.53156
+              ],
+              [
+                0.42544,
+                15.716,
+                11.56069
+              ],
+              [
+                1.7699,
+                15.73,
+                11.78775
+              ],
+              [
+                1.06022,
+                15.747,
+                8.45037
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "east-apartments",
+      "bagId": "0363100012133330",
+      "status": "Pand in gebruik",
+      "registeredOriginalYear": 1929,
+      "use": "woonfunctie",
+      "polygon": [
+        [
+          [
+            4.852176352391088,
+            52.37163524608002
+          ],
+          [
+            4.852174015117116,
+            52.37164032257689
+          ],
+          [
+            4.852032417149575,
+            52.371615883114494
+          ],
+          [
+            4.8520497879657505,
+            52.37157819516253
+          ],
+          [
+            4.852030855504596,
+            52.3715749279305
+          ],
+          [
+            4.852038515769739,
+            52.37155829030431
+          ],
+          [
+            4.852049674395437,
+            52.371534055877255
+          ],
+          [
+            4.8520839638262485,
+            52.371539971994466
+          ],
+          [
+            4.852124715486621,
+            52.371547004822226
+          ],
+          [
+            4.8521223632028745,
+            52.37155210821351
+          ],
+          [
+            4.852156286333482,
+            52.37155795974014
+          ],
+          [
+            4.852195865633232,
+            52.37156479850298
+          ],
+          [
+            4.852207866986107,
+            52.37156686598479
+          ],
+          [
+            4.852176352391088,
+            52.37163524608002
+          ]
+        ]
+      ],
+      "localRings": [
+        [
+          [
+            19.88573,
+            -16.42355
+          ],
+          [
+            19.88438,
+            -17.01039
+          ],
+          [
+            9.86515,
+            -16.98565
+          ],
+          [
+            9.8764,
+            -12.62861
+          ],
+          [
+            8.53678,
+            -12.62536
+          ],
+          [
+            8.54121,
+            -10.70206
+          ],
+          [
+            8.5477,
+            -7.90057
+          ],
+          [
+            10.9739,
+            -7.90632
+          ],
+          [
+            13.85739,
+            -7.91335
+          ],
+          [
+            13.85587,
+            -8.50335
+          ],
+          [
+            16.2561,
+            -8.5089
+          ],
+          [
+            19.05689,
+            -8.51662
+          ],
+          [
+            19.90597,
+            -8.51829
+          ]
+        ]
+      ],
+      "surveyRoofPlanes": [
+        {
+          "rings": [
+            [
+              [
+                13.85877,
+                16.373,
+                -8.51271
+              ],
+              [
+                19.90817,
+                16.436,
+                -8.52888
+              ],
+              [
+                19.88632,
+                16.33,
+                -17.02
+              ],
+              [
+                9.86832,
+                16.225,
+                -16.99597
+              ],
+              [
+                9.87956,
+                16.28,
+                -12.63893
+              ],
+              [
+                8.53995,
+                16.266,
+                -12.63568
+              ],
+              [
+                8.5499,
+                16.325,
+                -7.91115
+              ],
+              [
+                13.8603,
+                16.38,
+                -7.92271
+              ]
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "west-apartments",
+      "bagId": "0363100012144824",
+      "status": "Pand in gebruik",
+      "registeredOriginalYear": 1929,
+      "use": "bijeenkomstfunctie,woonfunctie",
+      "polygon": [
+        [
+          [
+            4.8517906771578545,
+            52.37152302541649
+          ],
+          [
+            4.851768917979114,
+            52.37157024745005
+          ],
+          [
+            4.8517499561755795,
+            52.37156698004032
+          ],
+          [
+            4.851608607642722,
+            52.37154259512354
+          ],
+          [
+            4.851609392118619,
+            52.371540864039055
+          ],
+          [
+            4.8516420912288085,
+            52.37146930779007
+          ],
+          [
+            4.8516541217878855,
+            52.371471384448114
+          ],
+          [
+            4.851693701040859,
+            52.37147821439152
+          ],
+          [
+            4.8517280196387285,
+            52.371484139731834
+          ],
+          [
+            4.851730206108323,
+            52.37147939510776
+          ],
+          [
+            4.851770957656508,
+            52.371486428057224
+          ],
+          [
+            4.851804836640299,
+            52.371492279485295
+          ],
+          [
+            4.8517906771578545,
+            52.37152302541649
+          ]
+        ]
+      ],
+      "localRings": [
+        [
+          [
+            -8.77061,
+            -11.46377
+          ],
+          [
+            -8.78428,
+            -16.92292
+          ],
+          [
+            -10.12583,
+            -16.92019
+          ],
+          [
+            -20.12707,
+            -16.89679
+          ],
+          [
+            -20.12744,
+            -16.69691
+          ],
+          [
+            -20.12463,
+            -8.42958
+          ],
+          [
+            -19.27336,
+            -8.4317
+          ],
+          [
+            -16.47283,
+            -8.43845
+          ],
+          [
+            -14.04444,
+            -8.44465
+          ],
+          [
+            -14.04305,
+            -7.89614
+          ],
+          [
+            -11.15955,
+            -7.90317
+          ],
+          [
+            -8.76221,
+            -7.9095
+          ]
+        ]
+      ],
+      "surveyRoofPlanes": [
+        {
+          "rings": [
+            [
+              [
+                -8.76571,
+                13.331,
+                -10.30068
+              ],
+              [
+                -8.78234,
+                13.168,
+                -16.93254
+              ],
+              [
+                -10.66608,
+                13.328,
+                -16.92878
+              ]
+            ]
+          ]
+        },
+        {
+          "rings": [
+            [
+              [
+                -10.66608,
+                16.258,
+                -16.92878
+              ],
+              [
+                -20.12417,
+                16.369,
+                -16.90615
+              ],
+              [
+                -20.12243,
+                16.445,
+                -8.44016
+              ],
+              [
+                -14.04127,
+                16.373,
+                -8.45497
+              ],
+              [
+                -14.04111,
+                16.378,
+                -7.90576
+              ],
+              [
+                -8.76001,
+                16.316,
+                -7.92009
+              ],
+              [
+                -8.76571,
+                16.295,
+                -10.30068
+              ]
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "heightNotes": {
+    "groundNAP": 0.565,
+    "main": "AHN5 roof observations 12.0\u201315.75m above local ground; photos and register show straight cubic parapets. Reconstruct central mass with flat exterior termination14.2m and shallow hidden roof, avoiding literal overfitted tower/roof slants.",
+    "sideBays": "Survey broad side terrace9.9m, front side entrance7.9m",
+    "apartments": "Survey roughly16.3m above common church ground, five layers",
+    "tower": "Photo-supported short stepped tower;18.0m approximate crest, not measured AHN maximum."
+  },
+  "sourceUrls": [
+    "https://monumentenregister.cultureelerfgoed.nl/monumenten/527155",
+    "https://www.jeruzalem-kerk.nl/ons-gebouw/uniek-monument/",
+    "https://www.jeruzalem-kerk.nl/wp-content/uploads/2022/02/DSC_0298-1536x1028.jpg",
+    "https://archief.amsterdam/beeldbank/?q=Jan%20Maijenstraat%2014",
+    "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?f=json&bbox=4.8514,52.3711,4.8525,52.3718&limit=100",
+    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012120412",
+    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012133330",
+    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012144824",
+    "https://items.amsterdamse-school.nl/details/objects/70",
+    "https://items.amsterdamse-school.nl/webapiimages/wwwopac.ashx?command=getcontent&server=images&value=2469%5CIMG_3146.jpg",
+    "https://items.amsterdamse-school.nl/webapiimages/wwwopac.ashx?command=getcontent&server=images&value=2469%5CJeruzalemkerk%20-%20Annemarieke%20Verheij%20%288%29.jpg",
+    "https://items.amsterdamse-school.nl/webapiimages/wwwopac.ashx?command=getcontent&server=images&value=2469%5CJeruzalemkerk%20-%20Annemarieke%20Verheij%20%2811%29.jpg"
+  ],
+  "rawSources": [
+    {
+      "file": "rce.html",
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/527155",
+      "retrievedOn": "2026-10-05",
+      "sha256": "9a70320e6ad885128d462000a31f4c0230f9bc820dad23d4de8287c02bebe517",
+      "status": "saved raw response",
+      "rights": "source terms; no source pixels in model",
+      "bytes": 35812,
+      "path": "artifacts/landmarks/jeruzalemkerk/references/rce.html",
+      "representation": "raw-http-response-body"
+    },
+    {
+      "file": "operator.html",
+      "url": "https://www.jeruzalem-kerk.nl/ons-gebouw/uniek-monument/",
+      "retrievedOn": "2026-10-05",
+      "sha256": "8de005e5caaa1d9cb0d892e96673e7fdb346a65e667cce9daf0c37666ed1ad01",
+      "status": "saved raw response",
+      "rights": "source terms; no source pixels in model",
+      "bytes": 46878,
+      "path": "artifacts/landmarks/jeruzalemkerk/references/operator.html",
+      "representation": "raw-http-response-body"
+    },
+    {
+      "file": "front.jpg",
+      "url": "https://www.jeruzalem-kerk.nl/wp-content/uploads/2022/02/DSC_0298-1536x1028.jpg",
+      "retrievedOn": "2026-10-05",
+      "sha256": "3fc4f4d8fe72e8bfa0daa3647a79aa5e1ca35af46e8f222edfaa054fc9e17388",
+      "status": "saved raw response",
+      "rights": "source terms; no source pixels in model",
+      "bytes": 396950,
+      "path": "artifacts/landmarks/jeruzalemkerk/references/front.jpg",
+      "representation": "raw-http-response-body"
+    },
+    {
+      "file": "beeldbank.html",
+      "url": "https://archief.amsterdam/beeldbank/?q=Jan%20Maijenstraat%2014",
+      "retrievedOn": "2026-10-05",
+      "sha256": "517a6fc9353af159c0830f1ea3237017e4a32e6c96e15d48b3015ef565face72",
+      "status": "saved raw response",
+      "rights": "source terms; no source pixels in model",
+      "bytes": 17923,
+      "path": "artifacts/landmarks/jeruzalemkerk/references/beeldbank.html",
+      "representation": "raw-http-response-body"
+    },
+    {
+      "file": "bag.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?f=json&bbox=4.8514,52.3711,4.8525,52.3718&limit=100",
+      "retrievedOn": "2026-10-05",
+      "sha256": "eb5eebf870415a8575b9e284285a29b748ae4592c5c36edac755ea9c35505c64",
+      "status": "saved raw response",
+      "rights": "source terms; no source pixels in model",
+      "bytes": 33167,
+      "path": "artifacts/landmarks/jeruzalemkerk/references/bag.json",
+      "representation": "raw-http-response-body"
+    },
+    {
+      "file": "0363100012120412.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012120412",
+      "retrievedOn": "2026-10-05",
+      "sha256": "0b8b482383f071be8f9025b11ecae84913b2fbc202371617f1dc670806057025",
+      "status": "raw API response",
+      "rights": "3DBAG CC BY 4.0",
+      "bytes": 17100,
+      "path": "artifacts/landmarks/jeruzalemkerk/references/0363100012120412.json",
+      "representation": "raw-http-response-body"
+    },
+    {
+      "file": "0363100012133330.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012133330",
+      "retrievedOn": "2026-10-05",
+      "sha256": "bff2cafa22d7cd7b66c2985c54b166765336f15de0bdad3ef997a1fb55bf72cb",
+      "status": "raw API response",
+      "rights": "3DBAG CC BY 4.0",
+      "bytes": 5300,
+      "path": "artifacts/landmarks/jeruzalemkerk/references/0363100012133330.json",
+      "representation": "raw-http-response-body"
+    },
+    {
+      "file": "0363100012144824.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012144824",
+      "retrievedOn": "2026-10-05",
+      "sha256": "2883f6534af2d00e58d34d37115bfa65ed6bb077cd4aa50296f513e54c13c535",
+      "status": "raw API response",
+      "rights": "3DBAG CC BY 4.0",
+      "bytes": 5868,
+      "path": "artifacts/landmarks/jeruzalemkerk/references/0363100012144824.json",
+      "representation": "raw-http-response-body"
+    },
+    {
+      "file": "platform.html",
+      "url": "https://items.amsterdamse-school.nl/details/objects/70",
+      "retrievedOn": "2026-10-05",
+      "status": "raw page saved",
+      "sha256": "15d62f340ef4af9085583347c4ccba3cb654150da13ae268e12b30687658fdf2",
+      "bytes": 62150,
+      "path": "artifacts/landmarks/jeruzalemkerk/references/platform.html",
+      "representation": "raw-http-response-body"
+    },
+    {
+      "file": "side9.jpg",
+      "url": "https://items.amsterdamse-school.nl/webapiimages/wwwopac.ashx?command=getcontent&server=images&value=2469%5CIMG_3146.jpg",
+      "retrievedOn": "2026-10-05",
+      "status": "raw photo saved",
+      "sha256": "d3a27c4d9ced4c881331d3313fc47149f161e3e00a1e8a3e2f37cb18de38b0a9",
+      "rights": "Historical publication; reuse rights unresolved; private research only",
+      "bytes": 222928,
+      "path": "artifacts/landmarks/jeruzalemkerk/references/side9.jpg",
+      "representation": "raw-http-response-body",
+      "photoDate": "ca1925",
+      "creator": "Plan West publication; architect F.B.Jantzen drawing"
+    },
+    {
+      "file": "side10.jpg",
+      "url": "https://items.amsterdamse-school.nl/webapiimages/wwwopac.ashx?command=getcontent&server=images&value=2469%5CJeruzalemkerk%20-%20Annemarieke%20Verheij%20%288%29.jpg",
+      "retrievedOn": "2026-10-05",
+      "status": "raw photo saved",
+      "sha256": "335ee14f01d6c23bfa0f0c0cbc89af8a889360c90c23b7b313cead281771438f",
+      "rights": "Copyright Verheijfotografie; private research only",
+      "bytes": 719846,
+      "path": "artifacts/landmarks/jeruzalemkerk/references/side10.jpg",
+      "representation": "raw-http-response-body",
+      "photoDate": "January2016",
+      "creator": "Annemarieke Verheij"
+    },
+    {
+      "file": "side11.jpg",
+      "url": "https://items.amsterdamse-school.nl/webapiimages/wwwopac.ashx?command=getcontent&server=images&value=2469%5CJeruzalemkerk%20-%20Annemarieke%20Verheij%20%2811%29.jpg",
+      "retrievedOn": "2026-10-05",
+      "status": "raw photo saved",
+      "sha256": "d2097cbc25c329d93c8af83b5a9cb8e93f262da78bb1fbcd41b1571abec31db3",
+      "rights": "Copyright Verheijfotografie; private research only",
+      "bytes": 690302,
+      "path": "artifacts/landmarks/jeruzalemkerk/references/side11.jpg",
+      "representation": "raw-http-response-body",
+      "photoDate": "January2016",
+      "creator": "Annemarieke Verheij"
+    }
+  ],
+  "preserveNeighbors": [
+    "0363100012075879",
+    "0363100012139123",
+    "school across Jan Maijenstraat"
+  ],
+  "accessGaps": [
+    {
+      "source": "Amsterdam Beeldbank exact Jan Maijenstraat14 search",
+      "state": "saved viewer shell; no identified catalogue image; bounded unsuccessful search"
+    },
+    {
+      "source": "Data Amsterdam Bouwdossiers1905\u20132010",
+      "state": "Bounded DataAmsterdam/address Bouwdossiers search; no digitized drawing inspected; current register/photos/survey used, archival dimensions unresolved."
+    }
+  ],
+  "assertions": [
+    {
+      "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/527155",
+      "part": "church exterior",
+      "features": [
+        "stepped cubic volumes with flat roof terminations",
+        "orange-red and dark brown brick; granite trim",
+        "three equal south entrance doors",
+        "three narrow tall central windows",
+        "short stepped bell tower with openings",
+        "seven tall side windows with projecting brick mullions",
+        "seven square lower side lights",
+        "five-storey attached corner housing"
+      ]
+    },
+    {
+      "source": "https://www.jeruzalem-kerk.nl/ons-gebouw/uniek-monument/",
+      "features": [
+        "opened1929",
+        "Ferdinand B. Jantzen",
+        "symmetrical design integrated with housing",
+        "stained glass depicts Creation, Paradise and heavenly Jerusalem"
+      ]
+    }
+  ],
+  "privateArchive": {
+    "modelPath": "models/jeruzalemkerk",
+    "commit": "pending coordinator archive sync/commit"
+  }
+}

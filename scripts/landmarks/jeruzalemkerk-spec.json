@@ -1,0 +1,39 @@
+{
+  "id": "jeruzalemkerk",
+  "name": "Jeruzalemkerk",
+  "landmarkId": "extract_landmarks_2017340658",
+  "modelUrl": "./models/jeruzalemkerk.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012120412",
+    "NL.IMBAG.Pand.0363100012133330",
+    "NL.IMBAG.Pand.0363100012144824"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.85196,
+      52.371445
+    ],
+    "headingDegrees": 15.18,
+    "lengthMetres": 43,
+    "widthMetres": 31
+  },
+  "surveyed": {
+    "anchor": [
+      4.85196,
+      52.371445
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG exact three parents: church and designed attached corner residences. Native east/south metres scale1; independent adjacent houses and opposite Jan Maijenschool retained."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "Jeruzalemkerk",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/527155",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original flat-color native surveyed church and corner residences, stepped cubic masses, projecting brick window piers, stained glazing, three entrances and squat open bell tower. No imported meshes/photo pixels; lettering omitted."
+  }
+}

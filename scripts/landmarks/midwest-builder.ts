@@ -75,7 +75,38 @@ export function buildMidwest(_w:number,_d:number,b:BuildingTools){
    }
    const sh=new T.Shape([...front,...front.slice().reverse().map(q=>new T.Vector2(q.x+.09,q.y))]);add(openTopPrism(sh,0,2.85),'brick');add(openTopPrism(sh,2.78,2.98),'stone');add(roof(sh,2.98),'stone');
   }else{box(x,0,centre,16.1,2.85,.09,'brick',a);box(x,2.78,centre,16.0,.20,.16,'stone',a);}
-  box(x,2.82,centre,7.3,4.65,.18,'brick',a);box(x,7.43,centre,7.5,.13,.23,'slate',a);
+  // West ref-0 fascia cap is about 108px above the curved head, relative to
+  // 306px between that head and the surveyed 13.21m central parapet: ~8.88m.
+  // The older full entrance.jpg independently supports ~8.85m, not the former
+  // compressed 7.43m band. East has no equivalent source calibration here.
+  const fasciaCap=x<0?8.88:7.43;
+  box(x,2.82,centre,7.3,fasciaCap+.04-2.82,.18,'brick',a);box(x,fasciaCap,centre,7.5,.13,.23,'slate',a);
+  if(x<0){
+   // Real Cabral sign, visible in ref-0.jpg and the user's 2026-10-06 photo.
+   // Original filled silhouettes approximate its wide, heavy geometric/Art Deco
+   // capitals (especially M/W and the stepped S); no identified font is claimed.
+   // Two dark attachment rails belong to the existing brick fascia, not a billboard.
+   const rail=off(x,centre,a,.13);for(const y of [7.57,7.79])box(rail[0],y,rail[1],4.38,.055,.07,'dark',a);
+   const paths:Record<string,number[][]>={
+    M:[[0,0],[.08,1],[.36,1],[.48,.48],[.60,1],[.88,1],[.96,0],[.67,0],[.63,.46],[.53,0],[.43,0],[.33,.46],[.29,0]],
+    I:[[0,0],[0,1],[.30,1],[.30,0]],
+    W:[[0,1],[.29,1],[.33,.54],[.43,1],[.53,1],[.63,.54],[.67,1],[.96,1],[.88,0],[.60,0],[.48,.52],[.36,0],[.08,0]],
+    E:[[0,0],[0,1],[.65,1],[.65,.77],[.29,.77],[.29,.62],[.56,.62],[.56,.39],[.29,.39],[.29,.23],[.65,.23],[.65,0]],
+    S:[[0,0],[0,.24],[.22,.24],[.34,.36],[.34,.75],[.59,1],[.80,1],[.80,.76],[.63,.76],[.59,.69],[.59,.28],[.31,0]],
+    T:[[.23,0],[.23,.77],[0,.77],[0,1],[.75,1],[.75,.77],[.52,.77],[.52,0]]
+   };
+   const widths:Record<string,number>={M:.96,I:.30,D:.79,W:.96,E:.65,S:.80,T:.75};
+   const word='MIDWEST',tracking=.15,total=[...word].reduce((sum,ch)=>sum+widths[ch],0)+tracking*6,scale=4.05/total;
+   let cursor=-2.025;for(const letter of word){let sh:T.Shape;
+    if(letter==='D'){
+     sh=new T.Shape();sh.moveTo(0,0);sh.lineTo(0,1);sh.lineTo(.32,1);sh.bezierCurveTo(.96,1,.96,0,.32,0);sh.closePath();
+     const hole=new T.Path();hole.moveTo(.19,.19);hole.lineTo(.32,.19);hole.bezierCurveTo(.69,.19,.69,.81,.32,.81);hole.lineTo(.19,.81);hole.closePath();sh.holes.push(hole);
+    }else sh=new T.Shape(paths[letter].map(([u,v])=>new T.Vector2(u,v)));
+    const g=new T.ExtrudeGeometry(sh,{depth:.045,bevelEnabled:false,curveSegments:8});g.scale(scale,.49,1);
+    const q=off(x,centre,a,.18,cursor);g.userData.midwestSign={letter,baseline:7.49,height:.49,offset:.18,depth:.045,source:'models/midwest/files/ref-0.jpg'};
+    add(g,'white',q[0],7.49,q[1],a);cursor+=(widths[letter]+tracking)*scale;
+   }
+  }
   let q=off(x,centre,a,.15);win(q[0],2.5,q[1],1.8,3.95,a,3,10);q=off(x,centre,a,.26);box(q[0],.03,q[1],1.76,2.45,.10,'bronze',a);let q2=off(q[0],q[1],a,.08);box(q2[0],.18,q2[1],.07,2.25,.06,'white',a);
   // Sinuous red masonry on both sides of the doorway, compressed photo-guided depth.
   for(const side of [-1,1]){const pts:number[][]=[];for(let i=0;i<=12;i++){const u=1.0+i*2.4/12,depth=.2+.52*Math.sin(i*Math.PI/12);const p=off(x,centre,a,depth,side*u);pts.push(p);}for(let i=12;i>=0;i--){const p=off(x,centre,a,.04,side*(1+i*2.4/12));pts.push(p);}const sh=new T.Shape(pts.map(p=>new T.Vector2(p[0],p[1])));add(openTopPrism(sh,0,6.5),'brick');add(roof(sh,6.5),'stone');}

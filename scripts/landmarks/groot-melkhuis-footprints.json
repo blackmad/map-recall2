@@ -1,0 +1,187 @@
+{
+  "id": "groot-melkhuis",
+  "anchor": [
+    4.868295,
+    52.3585254
+  ],
+  "bag": {
+    "type": "Feature",
+    "id": "pand.37dee9a9-b91e-4f9c-bc27-7c69032795ee",
+    "properties": {
+      "identificatie": "0363100012166911",
+      "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012166911",
+      "bouwjaar": 1949,
+      "status": "Pand in gebruik",
+      "gebruiksdoel": "bijeenkomstfunctie,woonfunctie",
+      "oppervlakte_min": 109,
+      "oppervlakte_max": 109,
+      "aantal_verblijfsobjecten": 1
+    },
+    "bbox": [
+      4.868106276000515,
+      52.35843470846493,
+      4.868497044001774,
+      52.3586155944448
+    ],
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.868210590526383,
+            52.35843470846493
+          ],
+          [
+            4.868441336596328,
+            52.3584627098
+          ],
+          [
+            4.8684390361909635,
+            52.35846987194296
+          ],
+          [
+            4.868497044001774,
+            52.35847670509457
+          ],
+          [
+            4.868453471100685,
+            52.35861506929938
+          ],
+          [
+            4.868395155591903,
+            52.358608171864645
+          ],
+          [
+            4.868392808085831,
+            52.3586155944448
+          ],
+          [
+            4.8681617161670205,
+            52.35858822963183
+          ],
+          [
+            4.868164063605134,
+            52.35858081604359
+          ],
+          [
+            4.868106276000515,
+            52.35857397470668
+          ],
+          [
+            4.868150195132499,
+            52.35843496502595
+          ],
+          [
+            4.868208290505859,
+            52.35844183465423
+          ],
+          [
+            4.868210590526383,
+            52.35843470846493
+          ]
+        ]
+      ]
+    }
+  },
+  "references": [
+    {
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/504839",
+      "cache": "artifacts/landmarks/groot-melkhuis/references/register.raw",
+      "access": "downloaded raw HTTP body"
+    },
+    {
+      "url": "https://grootmelkhuis.nl/",
+      "cache": "artifacts/landmarks/groot-melkhuis/references/operator.raw",
+      "access": "downloaded raw HTTP body"
+    },
+    {
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=Vondelpark%202",
+      "cache": "artifacts/landmarks/groot-melkhuis/references/beeldbank.raw",
+      "access": "downloaded raw HTTP body"
+    },
+    {
+      "url": "https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&typeNames=bag:pand&outputFormat=application/json&srsName=EPSG:4326&bbox=52.3583,4.8680,52.3588,4.8689,EPSG:4326",
+      "cache": "artifacts/landmarks/groot-melkhuis/references/bag-pand.raw",
+      "access": "downloaded raw HTTP body"
+    },
+    {
+      "url": "https://grootmelkhuis.nl/historie/",
+      "cache": "artifacts/landmarks/groot-melkhuis/references/history.raw",
+      "access": "downloaded raw HTTP body"
+    },
+    {
+      "url": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Vondelpark%202%20Amsterdam&fq=type:adres",
+      "cache": "artifacts/landmarks/groot-melkhuis/references/bag-address.raw",
+      "access": "downloaded raw HTTP body"
+    },
+    {
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012166911",
+      "cache": "artifacts/landmarks/groot-melkhuis/references/survey.raw",
+      "access": "downloaded raw HTTP body"
+    },
+    {
+      "url": "https://api.openstreetmap.org/api/0.6/node/291097138.json",
+      "cache": "artifacts/landmarks/groot-melkhuis/references/osm-poi.raw",
+      "access": "downloaded raw HTTP body"
+    },
+    {
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=4.86805,52.3584,4.86855,52.35865",
+      "cache": "artifacts/landmarks/groot-melkhuis/references/osm-map.raw.xml",
+      "access": "downloaded raw HTTP body"
+    },
+    {
+      "url": "https://grootmelkhuis.nl/wp-content/uploads/2025/02/Copy-of-EmiroSmolders-GMH-03599-scaled.jpg",
+      "cache": "artifacts/landmarks/groot-melkhuis/references/Copy-of-EmiroSmolders-GMH-03599-scaled.jpg",
+      "rights": "operator photo; reference only",
+      "role": "current principal/opposite/roof context"
+    },
+    {
+      "url": "https://grootmelkhuis.nl/wp-content/uploads/2025/02/Copy-of-EmiroSmolders-GrootMelkhuis-0331-2.jpg",
+      "cache": "artifacts/landmarks/groot-melkhuis/references/Copy-of-EmiroSmolders-GrootMelkhuis-0331-2.jpg",
+      "rights": "operator photo; reference only",
+      "role": "current principal/opposite/roof context"
+    },
+    {
+      "url": "https://grootmelkhuis.nl/wp-content/uploads/2025/02/Copy-of-EmiroSmolders-GrootMelkhuis-06810.jpg",
+      "cache": "artifacts/landmarks/groot-melkhuis/references/Copy-of-EmiroSmolders-GrootMelkhuis-06810.jpg",
+      "rights": "operator photo; reference only",
+      "role": "current principal/opposite/roof context"
+    }
+  ],
+  "identity": {
+    "genuinePoi": "n291097138",
+    "buildingOsm": "w57855717",
+    "bag": "0363100012166911",
+    "addressVbo": "0363010000857110"
+  },
+  "neighborKeep": [
+    "NL.IMBAG.Pand.0363100012146952",
+    "NL.IMBAG.Pand.0363100012184116"
+  ],
+  "scope": "Only current surveyed melkhuis house/veranda footprint. Festina thatched clubhouse north, sheds and pondside external terrace remain unmodeled and unsuppressed. No parcel suppression.",
+  "heightNotes": {
+    "groundNAP": -1.768,
+    "measuredRidgeRelative": 7.518,
+    "groundVerandaRoofRelative": 3.7,
+    "upperEavesRelative": 6.07,
+    "interpretation": "3DBAG AHN5 roof internal holes/planes distorted by occluding vegetation; clean four-sided hip and rectangular upper storey reconstructed from current operator photos using surveyed perimeter/height envelope. Do not import fitted irregular roof triangles."
+  },
+  "architecturalAssertions": [
+    {
+      "source": "operator historie",
+      "assertion": "1874 farm; 1899 Hamer expansion; current house expanded all sides in 1938"
+    },
+    {
+      "source": "operator current photos",
+      "assertion": "white upper storey, shallow hipped gray/brown roof, long wraparound glazed ground veranda, ochre cream mullions, burgundy trim and pale green retractable awnings"
+    },
+    {
+      "source": "RCE 504839",
+      "assertion": "This record describes the park landscape, NOT the caf\u00e9 building; no building monument ID asserted."
+    }
+  ],
+  "archiveAccess": {
+    "beeldbank": "bounded address/name search returned JS shell",
+    "bouwdossiers": "no drawings downloaded"
+  }
+}

@@ -1,0 +1,241 @@
+{
+  "id": "blauwe-theehuis",
+  "status": "Current source/gallery and native game integration verified; performance followup retained",
+  "referenceImages": [
+    "artifacts/landmarks/blauwe-theehuis/references/facade-2010.jpg",
+    "artifacts/landmarks/blauwe-theehuis/references/van-bovenaf.jpg",
+    "artifacts/landmarks/blauwe-theehuis/references/terras-in-de-zon.jpg"
+  ],
+  "cpuCheck": "node --import tsx scripts/check-blauwe-theehuis-geometry.ts",
+  "criticalReview": [
+    "Three tier saucer silhouette: wide first-floor terrace, smaller upper canopy, openwork crown",
+    "Blue columns/railings visibly exposed under white concrete circular terrace",
+    "Eight-point surveyed ground plan, dodecagon upper room with three grouped windows per side",
+    "No solid terrace cylinder or roof plate filling openwork crown",
+    "Exact BAG/OSM suppression; park paths and nearby scenery retained",
+    "Physical click sourced card; selected route destination and geographic pin"
+  ],
+  "uncertainties": [
+    "Stair azimuth northwest approximation; pond-side position needs root live/context confirmation",
+    "Vertical tier heights photo ratios; only overall AHN5 height surveyed",
+    "Current operator references show lower terrace, not clean complete modern facade. 2010 full facade supports permanent geometry; current repaint should be checked visually",
+    "Beeldbank returns viewer shell, drawings not inspected"
+  ],
+  "acceptance": {
+    "gallery": true,
+    "liveGame": true,
+    "poiContract": true,
+    "privateSourceArchiveCommit": "9926aa1fba89e7758fc9e11d1b0dfde0fb4fc4aa",
+    "privateSourceArchivePath": "models/blauwe-theehuis/",
+    "scope": "Original native-scale house-style exterior; source-derived architectural recognition and exact replaced scope. Fine-detail/photo-ratio uncertainties retained; no new independent GPU performance claim."
+  },
+  "independentVisualReview": {
+    "reviewedOn": "2026-10-05",
+    "reviewer": "wine_native_front_diagnosis; independent of both model authors",
+    "status": "pass-scoped-recognition-after-repair",
+    "scope": "Latest saved gallery-angle0–3 plus native neutral-front/live-rear compared directly with original reference images. No GPU, export, source/model edits or git action by reviewer.",
+    "referenceImages": [
+      "artifacts/landmarks/blauwe-theehuis/references/facade-2010.jpg",
+      "artifacts/landmarks/blauwe-theehuis/references/van-bovenaf.jpg",
+      "artifacts/landmarks/blauwe-theehuis/references/terras-in-de-zon.jpg"
+    ],
+    "renderImages": [
+      "artifacts/blauwe-theehuis-review/gallery-angle-0.png",
+      "artifacts/blauwe-theehuis-review/gallery-angle-1.png",
+      "artifacts/blauwe-theehuis-review/gallery-angle-2.png",
+      "artifacts/blauwe-theehuis-review/gallery-angle-3.png",
+      "artifacts/blauwe-theehuis-review/neutral-front.png",
+      "artifacts/blauwe-theehuis-review/live-rear.png"
+    ],
+    "repairAcceptance": "Blue upper crown edge now visible in all four gallery rotations and native views, matching facade-2010.jpg; cream underside/white supported disks retained.",
+    "passed": [
+      "Recognizable three-tier saucer silhouette: broad open terrace, smaller glazed polygon upper room, upper canopy/openwork crown.",
+      "Blue exposed columns and rails remain separate from white concrete disks; stairs visible in opposite rotations.",
+      "Gallery crown is open above underlying supported roof; no solid terrace cylinder; main roof/massing readable at all four rotations.",
+      "Native front/rear park-path, pond and tree context retained; no visual replacement artifact identified.",
+      "Blue upper crown edge now visible in all four gallery rotations and native views, matching facade-2010.jpg; cream underside/white supported disks retained."
+    ],
+    "minorDifferences": [
+      "Temporary terrace furniture, umbrellas and dense vegetation are simplified/outside exact building model scope."
+    ],
+    "limits": [
+      "Saved live views are elevated game views; no dynamic camera-pan or route-start performance evidence reviewed here.",
+      "This independent result is visual recognition evidence, not final POI/source-archive/route acceptance.",
+      "Native front/rear trees partly obscure lower facade and some terrace/crown supports; detailed assemblies are verified from unobstructed gallery rotations, while live views establish visible saucer silhouette and retained park context."
+    ],
+    "evidenceSha256": {
+      "artifacts/blauwe-theehuis-review/gallery-angle-0.png": "e49bd75a6c160232edc6d32b439dc478be816672e9e9608c93e8168446595150",
+      "artifacts/blauwe-theehuis-review/gallery-angle-1.png": "19c2abff37505961a6d8bcc61cb5a5c88918ea7c1c1a83e2c43a2ad00e7fc154",
+      "artifacts/blauwe-theehuis-review/gallery-angle-2.png": "5a65447b45a599516ee35437365df9d6a1537ce5cd636875c36db52a59030338",
+      "artifacts/blauwe-theehuis-review/gallery-angle-3.png": "6517b4f1bcbf3d793750659f59dcf65344ebf95d1b703d2e04886f4a9f0cb48e",
+      "artifacts/blauwe-theehuis-review/neutral-front.png": "b569539a343374d964075f41c82ab8eebc149063be90f2e48d829105cdc56fa2",
+      "artifacts/blauwe-theehuis-review/live-rear.png": "b415183188d83b70f557c388ac9ae7d14b8b7e9c81fc406d97dc746fa6187f17"
+    }
+  },
+  "repairHistory": [
+    {
+      "date": "2026-10-05",
+      "findingAndRepair": "Independent review found cream crown rim contradicted blue edge in cached 2010 facade. Changed crown perimeter to blue; current owner terrace-only originals do not show crown, so current paint remains unverified rather than asserted.",
+      "visualStatus": "Coordinator regeneration/review pending"
+    }
+  ],
+  "independentVisualReviewHistory": [
+    {
+      "reviewedOn": "2026-10-05",
+      "reviewer": "climbing_venue_loop; independent of model author",
+      "status": "pass-scoped-recognition",
+      "scope": "Saved reference originals versus default/four lower-angle galleries and native neutral-front/live-rear screenshots. No GPU run by reviewer; physical route/click proofs remain coordinator responsibility.",
+      "referenceImages": [
+        "artifacts/landmarks/blauwe-theehuis/references/facade-2010.jpg",
+        "artifacts/landmarks/blauwe-theehuis/references/van-bovenaf.jpg",
+        "artifacts/landmarks/blauwe-theehuis/references/terras-in-de-zon.jpg"
+      ],
+      "renderImages": [
+        "artifacts/blauwe-theehuis-review/gallery.png",
+        "artifacts/blauwe-theehuis-review/gallery-angle-0.png",
+        "artifacts/blauwe-theehuis-review/gallery-angle-1.png",
+        "artifacts/blauwe-theehuis-review/gallery-angle-2.png",
+        "artifacts/blauwe-theehuis-review/gallery-angle-3.png",
+        "artifacts/blauwe-theehuis-review/neutral-front.png",
+        "artifacts/blauwe-theehuis-review/live-rear.png"
+      ],
+      "passed": [
+        "Recognizable three-tier saucer silhouette: broad open terrace, smaller glazed polygon upper room, upper canopy/openwork crown.",
+        "Blue exposed columns and rails remain separate from white concrete disks; stairs visible in opposite rotations.",
+        "Gallery crown is open above underlying supported roof; no solid terrace cylinder; main roof/massing readable at all four rotations.",
+        "Native front/rear park-path, pond and tree context retained; no visual replacement artifact identified."
+      ],
+      "minorDifferences": [
+        "2010 facade reference has a blue upper crown edge; current model renders crown rim cream. This paint-detail discrepancy does not defeat saucer recognition; current repaint evidence remains limited."
+      ],
+      "limits": [
+        "Saved live views are elevated game views; no dynamic camera-pan or route-start performance evidence reviewed here.",
+        "This independent result is visual recognition evidence, not final POI/source-archive/route acceptance."
+      ]
+    }
+  ],
+  "repairAcceptanceEvidence": {
+    "status": "independent scoped visual pass",
+    "reviewer": "wine_native_front_diagnosis",
+    "correction": "Blue upper crown edge now visible in all four gallery rotations and native views, matching facade-2010.jpg; cream underside/white supported disks retained.",
+    "unresolvedRecognitionDefects": [],
+    "acceptanceScope": "Visual model recognition and saved native-context comparison; final route/source/archive/performance acceptance remains coordinator responsibility."
+  },
+  "coordinatorReview": {
+    "reviewedOn": "2026-10-05",
+    "reviewer": "root",
+    "status": "pass-scoped",
+    "evidenceDirectory": "artifacts/blauwe-theehuis-review",
+    "runtimeEvidence": "Actual selected route destination, geographic pin, physical click sourced card, native scale 1 and retained resident drawable neighbors verified with review-manual-pois.mjs.",
+    "geometryEvidence": "scripts/check-blauwe-theehuis-geometry.ts",
+    "independentReviewStatus": "pass-scoped-recognition-after-repair"
+  },
+  "sourceArchive": {
+    "commit": "5e4e6b6",
+    "path": "models/blauwe-theehuis",
+    "priorSourcesCommit": "9926aa1"
+  },
+  "export": {
+    "sha256": "88d7c482fb829252daa95b84ffc92f6ea6e88fd7a64dd4595cec14285c81afd4",
+    "bytes": 101164
+  },
+  "currentIndependentReview": "models/blauwe-theehuis/validation/clean-release-20261006/independent-review.json",
+  "currentRuntime": {
+    "proof": {
+      "id": "blauwe-theehuis",
+      "actualCamera": {
+        "center": [
+          4.87258,
+          52.358848
+        ],
+        "zoom": 19,
+        "pitch": 55.00000000000001,
+        "bearing": 180,
+        "elevation": 0
+      },
+      "assetVersion": "88d7c482fb829252",
+      "scale": 1,
+      "bias": false,
+      "broad": false,
+      "pin": true,
+      "destination": true,
+      "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/504760",
+      "click": {
+        "x": 749.2601019456818,
+        "y": 505.9246562187046
+      },
+      "aliases": [
+        {
+          "id": "w57862001",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012093476",
+          "hidden": true
+        }
+      ],
+      "oldPyramidIds": [],
+      "neighbors": [
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012146952"
+          ],
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        }
+      ],
+      "features": 16931,
+      "buildings": 21975
+    },
+    "card": {
+      "notice": "extract_landmarks_57862001",
+      "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/504760",
+      "alpha": 1,
+      "drawn": true,
+      "active": "extract_landmarks_57862001"
+    },
+    "performance": {
+      "id": "blauwe-theehuis",
+      "assetVersion": "88d7c482fb829252",
+      "samples": [
+        {
+          "label": "model-visible",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 122.69999980926514,
+          "p95Ms": 207.2999997138977
+        },
+        {
+          "label": "same-scene-model-hidden",
+          "visible": false,
+          "frames": 60,
+          "p50Ms": 91.80000019073486,
+          "p95Ms": 116.69999980926514
+        },
+        {
+          "label": "model-visible-repeat",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 120.5,
+          "p95Ms": 162.30000019073486
+        }
+      ],
+      "buildings": {
+        "kitVertices": 236739,
+        "chunks": 30,
+        "buildings": 21975,
+        "walls": 123467,
+        "quads": 525299,
+        "vertices": 3990978,
+        "geometryMB": 132.0091323852539,
+        "textureMB": 97.5,
+        "drawCalls": 7,
+        "triangles": 615696,
+        "buildMs": 6.199999809265137
+      },
+      "scope": "Headless Chromium same stationary scene; hidden model keeps existing replacement masks, isolating custom draw cost. No whole-game performance pass claimed."
+    },
+    "performanceAcceptance": "Stationary headless evidence only; no general smooth gameplay or physical touch performance acceptance."
+  }
+}

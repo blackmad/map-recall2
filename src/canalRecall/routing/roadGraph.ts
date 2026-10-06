@@ -165,10 +165,10 @@ type IndexedSpan = Readonly<{
 }>;
 
 /** Build the topology shared by every route query against one road network. */
-export function buildRoadGraph<TMetadata = unknown>(
+function* roadGraphStages<TMetadata>(
   segments: readonly RoadGraphSegment<TMetadata>[],
-  options: RoadGraphBuildOptions = {},
-): RoadGraph<TMetadata> {
+  options: RoadGraphBuildOptions,
+): Generator<void, RoadGraph<TMetadata>> {
   const mergeSize = options.mergeSize ?? DEFAULT_MERGE_SIZE;
   const junctionStitchRadius = options.junctionStitchRadius ?? DEFAULT_STITCH_RADIUS;
   const gridCellSize = options.gridCellSize ?? DEFAULT_GRID_CELL_SIZE;
@@ -275,7 +275,8 @@ export function buildRoadGraph<TMetadata = unknown>(
     }
   };
 
-  segments.forEach((segment, segmentIndex) => {
+  for (let segmentIndex = 0; segmentIndex < segments.length; segmentIndex++) {
+    const segment = segments[segmentIndex];
     for (let pointIndex = 1; pointIndex < segment.points.length; pointIndex++) {
       const a = segment.points[pointIndex - 1];
       const b = segment.points[pointIndex];
@@ -292,20 +293,24 @@ export function buildRoadGraph<TMetadata = unknown>(
       }
       addSpanToGrid({ a, b, segmentIndex }, segment.width ?? 0);
     }
-  });
+    if (segmentIndex % 32 === 0) yield;
+  }
 
   const spansNear = (point: RoadGraphPoint): IndexedSpan[] => {
     const gx = Math.floor(point.x / gridCellSize);
     const gy = Math.floor(point.y / gridCellSize);
-    const found: IndexedSpan[] = [];
+    // A long/wide span belongs to several cells. Stitch it once per endpoint;
+    // repeated projections added identical links and duplicate surface connectors.
+    const found = new Set<IndexedSpan>();
     for (let dx = -1; dx <= 1; dx++) {
-      for (let dy = -1; dy <= 1; dy++) found.push(...(spanGrid.get(`${gx + dx},${gy + dy}`) ?? []));
+      for (let dy = -1; dy <= 1; dy++) for (const span of spanGrid.get(`${gx + dx},${gy + dy}`) ?? []) found.add(span);
     }
-    return found;
+    return [...found];
   };
 
-  segments.forEach((segment, segmentIndex) => {
-    if (segment.points.length < 2) return;
+  for (let segmentIndex = 0; segmentIndex < segments.length; segmentIndex++) {
+    const segment = segments[segmentIndex];
+    if (segment.points.length < 2) continue;
     const endpoints = [segment.points[0], segment.points[segment.points.length - 1]];
     for (const endpoint of endpoints) {
       const from = nodes.get(keyFor(endpoint));
@@ -333,9 +338,37 @@ export function buildRoadGraph<TMetadata = unknown>(
         }
       }
     }
-  });
+    if (segmentIndex % 32 === 0) yield;
+  }
 
   return { nodes, allNodes: [...nodes.values()], connectors };
+}
+
+/** Synchronous callers and the responsive browser build share exactly the same topology. */
+export function buildRoadGraph<TMetadata = unknown>(
+  segments: readonly RoadGraphSegment<TMetadata>[], options: RoadGraphBuildOptions = {},
+): RoadGraph<TMetadata> {
+  const stages = roadGraphStages(segments, options);
+  let step = stages.next();
+  while (!step.done) step = stages.next();
+  return step.value;
+}
+
+export async function buildRoadGraphAsync<TMetadata = unknown>(
+  segments: readonly RoadGraphSegment<TMetadata>[], options: RoadGraphBuildOptions = {},
+  scheduling: { cancelled?: () => boolean; yieldToBrowser?: () => Promise<void> } = {},
+): Promise<RoadGraph<TMetadata>> {
+  const stages = roadGraphStages(segments, options);
+  const yieldToBrowser = scheduling.yieldToBrowser ?? (() => new Promise<void>(resolve => setTimeout(resolve, 0)));
+  while (true) {
+    const started = performance.now();
+    do {
+      if (scheduling.cancelled?.()) throw new DOMException('Route loading cancelled', 'AbortError');
+      const step = stages.next();
+      if (step.done) return step.value;
+    } while (performance.now() - started < 8);
+    await yieldToBrowser();
+  }
 }
 
 export function nearestRoadGraphNode<TMetadata>(

@@ -1,0 +1,58 @@
+[
+  {
+    "look": "photo",
+    "kind": "Kits",
+    "vertices": 299526,
+    "sha256": "25050e6fd4c1952d1186bb2073f848f9943b588cedda2cd0bbf5681c8ecaffe4",
+    "exactGeometry": true
+  },
+  {
+    "look": "photo",
+    "kind": "Boats",
+    "vertices": 54999,
+    "sha256": "e1356e0eadc334fcae5411f8820c1ca6a7b40e2c80ee3efc650238bf0e6d0868",
+    "exactGeometry": true
+  },
+  {
+    "look": "cartoon",
+    "kind": "Kits",
+    "vertices": 299526,
+    "sha256": "a89d36d17b4289a97067c6ce7117a7b9ddd88e055eada0ee3db85cab697c547d",
+    "exactGeometry": true
+  },
+  {
+    "look": "cartoon",
+    "kind": "Boats",
+    "vertices": 54999,
+    "sha256": "bb41bee9d8ac78dcb6545eed9d7a749ef8689b0d9c8fe64ac30fecf34e9f7131",
+    "exactGeometry": true
+  },
+  {
+    "look": "procedural",
+    "kind": "Kits",
+    "vertices": 299526,
+    "sha256": "88577d7cd75bf348aca3c52e0da3d7d1ec77e31e734c1b4fe1fd1ab38c4aa790",
+    "exactGeometry": true
+  },
+  {
+    "look": "procedural",
+    "kind": "Boats",
+    "vertices": 54999,
+    "sha256": "833045e8dc04389fdeb9d03059b5fbff1ac7507378b76bb7234bc26f0b2ee627",
+    "exactGeometry": true
+  },
+  {
+    "look": "untextured",
+    "kind": "Kits",
+    "vertices": 299526,
+    "sha256": "6471663a7dcc0b35f8b39857099426490403148c7a2224a9692ec008c3c1fb1b",
+    "exactGeometry": true
+  },
+  {
+    "look": "untextured",
+    "kind": "Boats",
+    "vertices": 54999,
+    "sha256": "833045e8dc04389fdeb9d03059b5fbff1ac7507378b76bb7234bc26f0b2ee627",
+    "exactGeometry": true
+  }
+]

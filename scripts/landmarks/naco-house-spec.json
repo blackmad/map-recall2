@@ -1,0 +1,38 @@
+{
+  "id": "naco-house",
+  "name": "NACO-house",
+  "landmarkId": "extract_landmarks_1769455774",
+  "modelUrl": "./models/naco-house.glb",
+  "suppressOsmIds": [
+    "w1535749695",
+    "NL.IMBAG.Pand.0363100012570001"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.905443,
+      52.3786995
+    ],
+    "headingDegrees": 102.4663266966,
+    "lengthMetres": 7.5,
+    "widthMetres": 19.3
+  },
+  "surveyed": {
+    "anchor": [
+      4.905443,
+      52.3786995
+    ],
+    "northOffsetDegrees": 12.4663266966,
+    "source": "Current BAG 0363100012570001 and OSM w1535749695 moved location beside bridge2274. Native local metre reconstruction; 3DBAG AHN5 2023 roof heights; RCE518409 and Stadsherstel references. Dock and nearby bus shelter omitted."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "NACO-house",
+    "author": "Map Recall",
+    "sourceUrl": "https://stadsherstel.nl/monumenten/de-ruijterkade-naco-huisje/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free timber office on five concrete supports, open ground-floor passage, orange curved-gable/hip roof, white glazing and sawtooth trims. No third-party pixels/meshes."
+  }
+}

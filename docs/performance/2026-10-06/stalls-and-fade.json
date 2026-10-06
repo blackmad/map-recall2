@@ -1,0 +1,302 @@
+{
+  "stalls-reference": {
+    "desktop": {
+      "bootMs": 6602,
+      "readyMs": 8711,
+      "startupMaxLongTaskMs": 1614,
+      "calls": {
+        "setFeatures": {
+          "count": 9,
+          "totalMs": 301.7000002861023,
+          "p95Ms": 76.80000019073486,
+          "maxMs": 76.80000019073486
+        },
+        "contextFor": {
+          "count": 105,
+          "totalMs": 153.7000012397766,
+          "p95Ms": 5.300000190734863,
+          "maxMs": 6.200000286102295
+        },
+        "rebuild": {
+          "count": 76,
+          "totalMs": 549.5999984741211,
+          "p95Ms": 39,
+          "maxMs": 92.69999980926514
+        },
+        "install": {
+          "count": 59,
+          "totalMs": 238.9000015258789,
+          "p95Ms": 12.799999713897705,
+          "maxMs": 14.200000286102295
+        }
+      },
+      "stages": [
+        {
+          "stage": "street",
+          "zoom": 18.377634282152428,
+          "frameMedian": 16.69999999999891,
+          "frameP95": 16.700000000000728,
+          "gpuFrameMedian": 3.358833,
+          "drawCalls": 15
+        },
+        {
+          "stage": "pan",
+          "zoom": 18.377606999773523,
+          "frameMedian": 16.69999999999891,
+          "frameP95": 16.700000000000728,
+          "gpuFrameMedian": 2.506708,
+          "drawCalls": 13
+        },
+        {
+          "stage": "wide",
+          "zoom": 15.999999999922561,
+          "frameMedian": 16.700000000000728,
+          "frameP95": 33.400000000001455,
+          "gpuFrameMedian": 3.110916,
+          "drawCalls": 19
+        },
+        {
+          "stage": "minimum",
+          "zoom": 15.677167281447437,
+          "frameMedian": 33.29999999999927,
+          "frameP95": 50,
+          "gpuFrameMedian": 3.270666,
+          "drawCalls": 19
+        },
+        {
+          "stage": "overview",
+          "zoom": 14.8,
+          "frameMedian": 16.700000000000728,
+          "frameP95": 16.700000000000728,
+          "gpuFrameMedian": 2.951125,
+          "drawCalls": 27
+        }
+      ],
+      "errors": []
+    },
+    "touch": {
+      "bootMs": 4366,
+      "readyMs": 6095,
+      "startupMaxLongTaskMs": 1436,
+      "calls": {
+        "setFeatures": {
+          "count": 5,
+          "totalMs": 82.90000009536743,
+          "p95Ms": 44.40000009536743,
+          "maxMs": 44.40000009536743
+        },
+        "contextFor": {
+          "count": 34,
+          "totalMs": 40.59999990463257,
+          "p95Ms": 7.300000190734863,
+          "maxMs": 7.900000095367432
+        },
+        "rebuild": {
+          "count": 34,
+          "totalMs": 282.69999980926514,
+          "p95Ms": 43.80000019073486,
+          "maxMs": 46.10000038146973
+        },
+        "install": {
+          "count": 34,
+          "totalMs": 98.7999997138977,
+          "p95Ms": 12.099999904632568,
+          "maxMs": 13
+        }
+      },
+      "stages": [
+        {
+          "stage": "street",
+          "zoom": 18.207709280719136,
+          "frameMedian": 16.699999999999818,
+          "frameP95": 16.700000000000728,
+          "gpuFrameMedian": 1.396083,
+          "drawCalls": 12
+        },
+        {
+          "stage": "pan",
+          "zoom": 18.207681998155508,
+          "frameMedian": 16.69999999999891,
+          "frameP95": 16.700000000000728,
+          "gpuFrameMedian": 1.658124,
+          "drawCalls": 8
+        },
+        {
+          "stage": "wide",
+          "zoom": 15.999999999999732,
+          "frameMedian": 16.69999999999891,
+          "frameP95": 16.799999999999272,
+          "gpuFrameMedian": 1.418374,
+          "drawCalls": 13
+        },
+        {
+          "stage": "minimum",
+          "zoom": 15.507242280013998,
+          "frameMedian": 16.700000000000728,
+          "frameP95": 16.700000000000728,
+          "gpuFrameMedian": 2.678624,
+          "drawCalls": 13
+        },
+        {
+          "stage": "overview",
+          "zoom": 14.8,
+          "frameMedian": 16.700000000000728,
+          "frameP95": 16.700000000000728,
+          "gpuFrameMedian": 2.957749,
+          "drawCalls": 17
+        }
+      ],
+      "errors": []
+    }
+  },
+  "stalls-accepted": {
+    "desktop": {
+      "bootMs": 6661,
+      "readyMs": 8697,
+      "startupMaxLongTaskMs": 470,
+      "calls": {
+        "setFeatures": {
+          "count": 9,
+          "totalMs": 364.40000104904175,
+          "p95Ms": 98.90000009536743,
+          "maxMs": 98.90000009536743
+        },
+        "contextFor": {
+          "count": 105,
+          "totalMs": 198.9000005722046,
+          "p95Ms": 7.200000286102295,
+          "maxMs": 8.199999809265137
+        },
+        "rebuild": {
+          "count": 51,
+          "totalMs": 162.50000047683716,
+          "p95Ms": 12.300000190734863,
+          "maxMs": 14.099999904632568
+        },
+        "install": {
+          "count": 51,
+          "totalMs": 228.69999933242798,
+          "p95Ms": 13.900000095367432,
+          "maxMs": 15.599999904632568
+        }
+      },
+      "stages": [
+        {
+          "stage": "street",
+          "zoom": 18.377634282146992,
+          "frameMedian": 16.69999999999891,
+          "frameP95": 16.700000000000728,
+          "gpuFrameMedian": 2.610291,
+          "drawCalls": 15
+        },
+        {
+          "stage": "pan",
+          "zoom": 18.377606999781968,
+          "frameMedian": 16.69999999999891,
+          "frameP95": 16.799999999999272,
+          "gpuFrameMedian": 2.844166,
+          "drawCalls": 13
+        },
+        {
+          "stage": "wide",
+          "zoom": 15.999999999910441,
+          "frameMedian": 33.29999999999927,
+          "frameP95": 33.400000000001455,
+          "gpuFrameMedian": 2.247791,
+          "drawCalls": 19
+        },
+        {
+          "stage": "minimum",
+          "zoom": 15.67716728144184,
+          "frameMedian": 33.30000000000291,
+          "frameP95": 66.70000000000073,
+          "gpuFrameMedian": 3.159624,
+          "drawCalls": 19
+        },
+        {
+          "stage": "overview",
+          "zoom": 14.800000000000002,
+          "frameMedian": 33.29999999999927,
+          "frameP95": 33.400000000001455,
+          "gpuFrameMedian": 6.1765,
+          "drawCalls": 54
+        }
+      ],
+      "errors": []
+    },
+    "touch": {
+      "bootMs": 5525,
+      "readyMs": 6570,
+      "startupMaxLongTaskMs": 435,
+      "calls": {
+        "setFeatures": {
+          "count": 5,
+          "totalMs": 76.2000002861023,
+          "p95Ms": 38.700000286102295,
+          "maxMs": 38.700000286102295
+        },
+        "contextFor": {
+          "count": 33,
+          "totalMs": 37.5,
+          "p95Ms": 5.599999904632568,
+          "maxMs": 6.699999809265137
+        },
+        "rebuild": {
+          "count": 35,
+          "totalMs": 84.30000019073486,
+          "p95Ms": 11.899999618530273,
+          "maxMs": 12.300000190734863
+        },
+        "install": {
+          "count": 35,
+          "totalMs": 106.29999828338623,
+          "p95Ms": 12.800000190734863,
+          "maxMs": 14.5
+        }
+      },
+      "stages": [
+        {
+          "stage": "street",
+          "zoom": 18.207709280695017,
+          "frameMedian": 16.69999999999891,
+          "frameP95": 16.799999999999272,
+          "gpuFrameMedian": 2.165291,
+          "drawCalls": 12
+        },
+        {
+          "stage": "pan",
+          "zoom": 18.207681998131182,
+          "frameMedian": 16.69999999999891,
+          "frameP95": 16.799999999999272,
+          "gpuFrameMedian": 2.143916,
+          "drawCalls": 8
+        },
+        {
+          "stage": "wide",
+          "zoom": 15.99999999999986,
+          "frameMedian": 16.69999999999891,
+          "frameP95": 16.799999999999272,
+          "gpuFrameMedian": 3.146458,
+          "drawCalls": 13
+        },
+        {
+          "stage": "minimum",
+          "zoom": 15.507242279989491,
+          "frameMedian": 16.700000000000728,
+          "frameP95": 16.700000000000728,
+          "gpuFrameMedian": 3.496041,
+          "drawCalls": 13
+        },
+        {
+          "stage": "overview",
+          "zoom": 14.8,
+          "frameMedian": 16.69999999999709,
+          "frameP95": 16.799999999999272,
+          "gpuFrameMedian": 4.362332,
+          "drawCalls": 34
+        }
+      ],
+      "errors": []
+    }
+  }
+}
