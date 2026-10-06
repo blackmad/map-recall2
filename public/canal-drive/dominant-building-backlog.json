@@ -14,7 +14,7 @@
     "Exact modeled identities excluded; repeated tile identities, near-identical footprints and raised parts grouped.",
     "Ground-level courtyard buildings remain separate. Uncertain complex identities require manual research."
   ],
-  "candidateCount": 1854,
+  "candidateCount": 1853,
   "candidates": [
     {
       "id": "NL.IMBAG.Pand.0363100012207510",
@@ -378,32 +378,6 @@
         "workflow": "recognition-review",
         "state": "suggested",
         "reasons": [
-          "Complex footprint"
-        ]
-      },
-      "priority": "low",
-      "status": "needs-identification-and-research",
-      "sourceUrl": "https://3dbag.nl/en/viewer"
-    },
-    {
-      "id": "NL.IMBAG.Pand.0363100012250045",
-      "name": null,
-      "footprintSquareMetres": 5992,
-      "heightMetres": 100.6,
-      "center": [
-        4.877515000000001,
-        52.337494500000005
-      ],
-      "aliases": [],
-      "raisedParts": false,
-      "roofShape": "",
-      "poiNames": [],
-      "fidelity": {
-        "treatment": "unreviewed",
-        "workflow": "recognition-review",
-        "state": "suggested",
-        "reasons": [
-          "Tall skyline building",
           "Complex footprint"
         ]
       },

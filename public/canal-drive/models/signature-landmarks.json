@@ -11247,6 +11247,75 @@
       "triangles": 5084,
       "bytes": 69676,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "valley": {
+      "id": "valley",
+      "name": "Valley",
+      "landmarkId": "osm_building_896762181",
+      "modelUrl": "./models/valley.glb",
+      "suppressOsmIds": [
+        "w896762181",
+        "NL.IMBAG.Pand.0363100012250045"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.877550164997548,
+          52.337557127430884
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 140,
+        "widthMetres": 54
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.877550164997548,
+          52.337557127430884
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Native RD east/south contours scale 1; BAG parent0363100012250045, OSMw896762181. Original reconstructed shells using current3DBAG near-horizontal roof outlines; glass outer envelope, stone terraced inner valley. Published north/middle/south100/67/81m heights; equipment maxima excluded."
+      },
+      "attribution": {
+        "title": "Valley Amsterdam",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.mvrdv.com/projects/233/valley-t",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free house-style reconstruction; surveyed tier contours and photo-guided stone/glass assemblies. No downloaded render mesh or photograph pixels."
+      },
+      "bounds": {
+        "min": [
+          -29.162111282348633,
+          -0.05000009387731552,
+          -62.569252014160156
+        ],
+        "max": [
+          24.240232467651367,
+          101.80812072753906,
+          77.12921142578125
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.877550164997548,
+          52.337557127430884
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 139.6984634399414,
+        "heightMetres": 101.85812082141638,
+        "depthMetres": 53.40234375,
+        "depthCoverage": 0.9889322916666666
+      },
+      "triangles": 35426,
+      "bytes": 409840,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

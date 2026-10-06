@@ -1,0 +1,81 @@
+{
+  "modelId": "valley",
+  "date": "2026-10-06T07:00:19.097606+00:00",
+  "status": "Authored repair prepared; root export/gallery/independent source review/game acceptance pending",
+  "sourceArchive": {
+    "commit": "f2146fc",
+    "path": "../map-recall2-source-data/models/valley"
+  },
+  "failedEvidencePreserved": [
+    "artifacts/landmark-continuation-20261006/valley-review/independent-review.json",
+    "artifacts/landmark-continuation-20261006/valley-repaired-review/independent-review.json",
+    "artifacts/landmark-continuation-20261006/valley-composition-repair/baseline-coverage-fail.txt"
+  ],
+  "referencesInspected": [
+    "photo1.jpg current whole-complex western/northern aerial; dense inhabited stone frontage and narrow return lights",
+    "photo24.jpg current public-valley view; broad projecting multi-pane rooms, darkrecessbalconies, single/twin lights and stoneplanter beds"
+  ],
+  "changes": [
+    "1.55..4.5m source-contour returns gain bounded single/twin lights instead of automatic blankwalls.",
+    "Six-level approximate source-group schedules vary widths, lightgroups, sills, recess/projection types.",
+    "Real aperture/recess/projectingroom assemblies extend to faces4.8..9m where face geometry supports them; adaptive width trimming preserves acute-angle clearances.",
+    "Lower-floor coverage is evaluated across multiple fractions before permitting a genuine cantilever.",
+    "Native source shells, podium/stair corridor, publicstairs, terrainzero, towerheights, externalcurtainwalls, terrace/planting remain."
+  ],
+  "cpuReview": {
+    "path": "artifacts/landmark-continuation-20261006/valley-composition-repair/",
+    "before": "valley-before-cpu-north-detail.png",
+    "after": "valley-cpu-north-detail.png",
+    "finding": "The paired authoredCPU view shows prior dominantblanknorth shafts replaced by exposed varied-widthsingle/twinlights; broad/roomgroups retain the rocky steppedcontour. Fulltower views show increasedfrontagecoverage. CPU unlitgeometricshade cannot establish glass/transparency, actualgallery/game shadows or source-recognitionacceptance.",
+    "limits": "Contour-derived sidefacets remain approximate and can read as stackedplanes; root independentreview must seek remaining overlyregularbands/cornerlights, broadrelief frequency and publicvalleycomposition."
+  },
+  "authoredChecks": {
+    "command": "node --import tsx scripts/check-valley-geometry.ts --draft",
+    "triangles": 35386,
+    "budgetTriangles": 40000,
+    "byteBudget": 500000,
+    "exportBytes": "Pending root export; budgets not loosened.",
+    "paneFractionSamples": 15256,
+    "realRecessGroups": 63,
+    "realUndercutGroups": 60,
+    "publicStairSamples": 120,
+    "sourceFaceSamples": 6830,
+    "sourceFaceFractionThreshold": 0.55,
+    "shortFacetFractionThreshold": 0.5,
+    "sourceFacingGroups": {
+      "north-rocky": {
+        "faces": 606,
+        "open": 1934,
+        "samples": 3030,
+        "shortOpen": 1465,
+        "shortSamples": 2455
+      },
+      "middle-rocky": {
+        "faces": 409,
+        "open": 1554,
+        "samples": 2045,
+        "shortOpen": 1079,
+        "shortSamples": 1490
+      },
+      "south-rocky": {
+        "faces": 351,
+        "open": 1291,
+        "samples": 1755,
+        "shortOpen": 918,
+        "shortSamples": 1330
+      }
+    },
+    "baselineIndependentCheck": "The identical source-derived inventory on preserved26534triangle builder fails: north507/3030overalland25/2455shortface; middle525/2045and23/1490; south423/1755and20/1330. Unlikepane-onlychecks,thiscriteriondetectstheactualmissingassemblyfailure.",
+    "firstAttemptFailuresCorrected": [
+      "66 pane fractions met adjacentglass across acutelyjoinedcontourfaces; bound lightwidth using neighboring-face clearance.",
+      "Two remaining corner-light fractions met a projectingroom return; restore0.9m cavity-to-neighborclearance while retaining adaptiveassemblywidths.",
+      "One shallowprojecting slab sample sat outside its actualextent because oldtestusedfixed0.75m; sample depth fractionoftheactualslab.",
+      "One underside crossed lower-floorroof nearthestep; cantilevereligibility now checks width/depthfractions,convertingoccupiedspace toarecess."
+    ]
+  },
+  "rootRemaining": [
+    "Export exactcurrentnativeGLB and checkcompressedbudget/winding/landing/fullgeometry.",
+    "Rebuildfingerprints/runtime and inspectfreshsource/galleryviews with independentreview; do notinferacceptancefromsourcecoveragepassing.",
+    "Verify actualgameselection/pin/card/publicapproach/suppression/neighborretention and performance."
+  ]
+}

@@ -7167,6 +7167,44 @@ Map source: ${osmUrl(places[i][0])}`);
         theta: -1.3,
         phi: 1.15
       }
+    },
+    {
+      id: "valley",
+      name: "Valley",
+      landmarkId: "osm_building_896762181",
+      modelUrl: "./models/valley.glb",
+      suppressOsmIds: [
+        "w896762181",
+        "NL.IMBAG.Pand.0363100012250045"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.877550164997548,
+          52.337557127430884
+        ],
+        headingDegrees: 0,
+        lengthMetres: 140,
+        widthMetres: 54
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      surveyed: {
+        anchor: [
+          4.877550164997548,
+          52.337557127430884
+        ],
+        northOffsetDegrees: 0,
+        source: "Native RD east/south contours scale 1; BAG parent0363100012250045, OSMw896762181. Original reconstructed shells using current3DBAG near-horizontal roof outlines; glass outer envelope, stone terraced inner valley. Published north/middle/south100/67/81m heights; equipment maxima excluded."
+      },
+      attribution: {
+        title: "Valley Amsterdam",
+        author: "Map Recall",
+        sourceUrl: "https://www.mvrdv.com/projects/233/valley-t",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free house-style reconstruction; surveyed tier contours and photo-guided stone/glass assemblies. No downloaded render mesh or photograph pixels."
+      }
     }
   ];
 
@@ -10453,6 +10491,29 @@ Map source: ${osmUrl(places[i][0])}`);
         ],
         sourceUrl: "https://nl.wikipedia.org/wiki/Muurschildering_van_Keith_Haring",
         reason: "Wikipedia explicitly identifies coordinate as public viewing spot, at Willem de Zwijgerlaan near Karel Doormanstraat. Preserve actual artwork pin at host."
+      }
+    },
+    {
+      modelId: "valley",
+      name: "Valley",
+      sourceUrl: "https://www.mvrdv.com/projects/233/valley-t",
+      description: "Valley is MVRDV\u2019s mixed-use Zuidas complex, opened in 2022. Three towers rise 67, 81 and 100 metres around an elevated public valley. Its smooth outer glass skin contrasts with jagged limestone apartments and cantilevered terraces planted by landscape designer Piet Oudolf.",
+      sourceUrls: [
+        "https://www.mvrdv.com/projects/233/valley-t",
+        "https://zuidas.nl/construction-project/valley/",
+        "https://valley.nl/en/contact/"
+      ],
+      center: [
+        52.3378633,
+        4.8772123
+      ],
+      destinationOverride: {
+        center: [
+          52.3378633,
+          4.8772123
+        ],
+        sourceUrl: "https://www.openstreetmap.org/way/1097646403",
+        reason: "Ground end of current access=yes northwestern public steps; original OSM incline=down node order and architect public-valley description."
       }
     }
   ];

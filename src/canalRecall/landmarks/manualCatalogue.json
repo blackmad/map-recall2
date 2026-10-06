@@ -6101,5 +6101,43 @@
       "theta": -1.3,
       "phi": 1.15
     }
+  },
+  {
+    "id": "valley",
+    "name": "Valley",
+    "landmarkId": "osm_building_896762181",
+    "modelUrl": "./models/valley.glb",
+    "suppressOsmIds": [
+      "w896762181",
+      "NL.IMBAG.Pand.0363100012250045"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.877550164997548,
+        52.337557127430884
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 140,
+      "widthMetres": 54
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.877550164997548,
+        52.337557127430884
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Native RD east/south contours scale 1; BAG parent0363100012250045, OSMw896762181. Original reconstructed shells using current3DBAG near-horizontal roof outlines; glass outer envelope, stone terraced inner valley. Published north/middle/south100/67/81m heights; equipment maxima excluded."
+    },
+    "attribution": {
+      "title": "Valley Amsterdam",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.mvrdv.com/projects/233/valley-t",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free house-style reconstruction; surveyed tier contours and photo-guided stone/glass assemblies. No downloaded render mesh or photograph pixels."
+    }
   }
 ]
