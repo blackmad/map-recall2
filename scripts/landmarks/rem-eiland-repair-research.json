@@ -1,0 +1,102 @@
+{
+  "modelId": "rem-eiland",
+  "reviewedOn": "2026-10-06",
+  "scope": "Bounded user-reported missing stairs and upright helipad H repair; preserve existing historical helipad massing pending a separate current-state reconstruction.",
+  "userEvidence": {
+    "originalPath": "/var/folders/tl/40rt5yw54v150s3k8shhw5y00000gn/T/codex-clipboard-CokDoH.png",
+    "preservedPath": "artifacts/landmarks/rem-eiland/references/user-reported-stairs-and-helipad-2026-10-05.png",
+    "observed": "One steep thirteen-step fragment descends from the lower platform, without landings, stringers or handrails. No upper roof access flight. H uses the vertical facade sign primitive."
+  },
+  "reusedSourcePack": "../map-recall2-source-data/models/rem-eiland",
+  "references": [
+    {
+      "url": "https://concreteamsterdam.nl/projects/rem-eiland/",
+      "sourceType": "architect primary project description",
+      "accessState": "Fresh original HTML response archived 2026-10-06; HTTP 200, 163781 bytes. Four exterior photos and one interior stair photo downloaded and inspected as served 1920 px JPEG derivatives. Raw upload endpoint returned a non-image text response; failed bytes preserved. Fresh captures are not the page version read on 2026-10-05.",
+      "assertions": [
+        "The exterior stair route winds along the northeast side, connects the decks and roof terrace, and changes direction during ascent.",
+        "The renovated building includes a new restaurant floor on the former helicopter platform."
+      ],
+      "historicalAccessState": "Indexed textual excerpt inspected through web search; direct web open returned 502 and shell download failed DNS. Original HTTP body and photos not downloaded.",
+      "sourceCaptureRecord": "../map-recall2-source-data/models/rem-eiland/repair-source-capture-2026-10-06.json",
+      "photoCaptureRecord": "../map-recall2-source-data/models/rem-eiland/repair-photo-captures-2026-10-06.json",
+      "freshAssertions": [
+        {
+          "buildingPart": "lower access",
+          "assertion": "Architect description states a steel footbridge first runs beneath the island before splitting to the lift and winding exterior stairs. Exterior photographs REM_overview7 and REM_overview2 show lower stairs meeting this raised bridge above water, not a flight down into water.",
+          "confidence": "high for arrangement; bridge datum/dimensions unknown"
+        },
+        {
+          "buildingPart": "stairs",
+          "assertion": "REM_overview2 exterior photo shows exposed flights, switchback landings, stringers and continuous guardrails. stairs.jpg is an interior restaurant stair and does not establish the exterior routing.",
+          "confidence": "high for assemblies; retained model routing approximate"
+        },
+        {
+          "buildingPart": "roof/current massing",
+          "assertion": "Fresh exterior photos show present added restaurant floor and roof terrace, consistent with the architect text; retained bare helipad is historical model massing, intentionally preserved only for the bounded reported repair.",
+          "confidence": "high; separate current-state reconstruction required"
+        }
+      ]
+    },
+    {
+      "url": "https://www.archdaily.com/337557/rem-island-concrete",
+      "sourceType": "architect-supplied project description published in 2013",
+      "accessState": "Parsed web text inspected; original HTTP body not downloaded. Gallery image links returned a loader GIF rather than the photographs; no photographs inspected.",
+      "assertions": [
+        "Existing stairs and landings were reused and made accessible. The lower deck has a perimeter bypass and the main exterior staircase reaches the roof terrace.",
+        "The present restaurant occupies the former helipad; bare helipad massing therefore needs a future current-state review."
+      ]
+    }
+  ],
+  "implementationDecisions": [
+    "Five continuous exposed stair flights with switchback landings, stringers and handrails replace the detached fragment. Lower-deck landing meets the exposed white deck outside the opaque red shell; upper flights terminate at retained roof.",
+    "The existing positive-X attachment side is retained; exact northeast alignment, widths, turn positions and tread counts have not been verified against a photograph or survey.",
+    "Three shallow white XZ-plane strips form a flat H above the existing helipad, centred on the disc.",
+    "A roof perimeter railing gap permits entry from the final landing.",
+    "A narrow raised steel approach bridge at the existing initial-landing height runs through the undercroft and turns onto the first landing without crossing its handrails. This removes the disconnected 1 m bottom barrier without inventing stairs into the water. The source supports the raised bridge arrangement, while 1 m local datum, native-edge endpoint and local routing remain approximate; shore/terrain connection outside the footprint remains unverified.",
+    "The dedicated builder is scripts/landmarks/rem-eiland-builder.ts exporting buildRemEiland(w,d,b). Cultural builder extraction leaves other landmarks untouched."
+  ],
+  "validation": {
+    "geometryCheck": "scripts/landmarks/check-rem-eiland-geometry.ts",
+    "status": "Dedicated-builder CPU checks pass: finite geometry, flat first-hit H strokes, exposed ascending stair surfaces, visible deck landing joins, raised bridge/initial landing walking-surface joins, body-height clearance along approach, roof railing gap and open undercroft.",
+    "trianglesExcludingExistingREMFacadeSign": 4144,
+    "visualAcceptance": "SCOPED REPAIR ACCEPTED: root and independent gallery/native front/rear game review confirm connected visible stairs/landings/rails, roof entry and flat H. Full current restaurant architecture, exact historic routing and external shore span remain deferred.",
+    "sourceArchiveState": "Private raw architect evidence and current OSM/BAG identity pushed before public model commit; independent native review and runtime evidence archived under models/rem-eiland/validation/current-20261006.",
+    "independentCPUReview": {
+      "reviewer": "cinema_repair_review",
+      "result": "Flat H, all five stair/landing joins, deck and roof landing heights, and roof access gap accepted at CPU geometry/render level.",
+      "residual": "Prior 1 m initial-landing discontinuity corrected with a source-supported raised undercroft bridge and CPU clear passage checks. Independent review of the new 2026-10-06 approach remains pending; shoreline contact beyond native edge unproven.",
+      "scope": "Source fidelity, current architecture, browser rendering and live-game acceptance remain pending.",
+      "historicalResidual": "Initial landing remains 1 m above ground without a connecting step or bridge; complete ground/dock access is unproven."
+    },
+    "failedEvidence": [
+      "Prior user screenshot preserved at original public artifact path and private source pack; coordinator owns new frZ4Qm.png and live old-mesh capture.",
+      "First approach iteration crossed its own negative-Z handrail at the turn; body-height rays failed and routing/rail opening corrected.",
+      "Direct first-tread entry crossed the sloped side handrail; approach was moved behind first tread to enter initial landing without crossing a rail.",
+      "Initial clean native check failed scale=0.8937675 because new stair bounds rescaled the legacy platform. Corrected with fixed native OSM centre/heading and scale1; failure preserved privately."
+    ],
+    "runtime": {
+      "assetVersion": "c1d915bb11c84795",
+      "scale": 1,
+      "spatialSuppression": false,
+      "suppressed": [
+        "w169906479",
+        "NL.IMBAG.Pand.0363100012238479"
+      ],
+      "retainedNeighbor": "w274005173",
+      "checks": "Actual selected REM route, visible pin, physical pointer selected sourced trivia card, exact installed masks, no old pyramidal roof, retained resident/drawable neighbor. Front/rear screenshots inspected by root.",
+      "evidence": "artifacts/landmark-release-check/rem-eiland-review",
+      "performanceMedianMs": [
+        96.8,
+        91.9,
+        95.4
+      ],
+      "performanceScope": "Same headless stationary scene: visible, hidden with masks preserved, visible repeat. Existing whole-scene slowness measured; no general game performance pass claimed."
+    }
+  },
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "e017b23",
+    "path": "models/rem-eiland"
+  }
+}

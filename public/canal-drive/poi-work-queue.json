@@ -1000,6 +1000,28 @@
       ],
       "validation": "Root and independent corrected source/gallery/live review accepted; actual route, map pin, physical sourced card, native scale, exact suppression and retained resident/drawn neighbor passed. Desktop stationary visible/hidden/repeat medians16.7ms; no broad city-performance claim.",
       "evidence": "private models/klimmuur-centraal/validation/signage-20261006/ @1313b00"
+    },
+    {
+      "id": "rem-eiland-stair-helipad-repair",
+      "task": "Repair REM-eiland upright helipad H and missing exterior stair flights",
+      "priority": "high",
+      "status": "verified-scoped",
+      "requestedOn": "2026-10-05",
+      "modelIds": [
+        "rem-eiland"
+      ],
+      "evidence": "../../scripts/landmarks/rem-eiland-repair-research.json",
+      "nextAction": "Publish repaired asset and current fingerprint via normal Hosting workflow; retain separate current restaurant reconstruction and external shore span task."
+    },
+    {
+      "id": "rem-eiland-current-restaurant-reconstruction",
+      "task": "Research and reconstruct current REM restaurant roof/decks/lift and verified approach",
+      "priority": "normal",
+      "status": "deferred-research-required",
+      "modelIds": [
+        "rem-eiland"
+      ],
+      "nextAction": "Use archived current architect photos to replace historical bare helipad massing; verify deck/lift/shore access dimensions. Do not treat the stair/H repair as full current architecture acceptance."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"
