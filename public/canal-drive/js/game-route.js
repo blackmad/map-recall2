@@ -1263,7 +1263,8 @@ class GameRouteRuntime {
         // Step 2: Build road segments
         this.loadingMessage = `Building ${profile.networkNounSingular} network...`;
         this.loadingProgress = 0.3;
-        segments = this.osmLoader.buildRoadSegments(ways, lat, lng);
+        segments = await this.osmLoader.buildRoadSegmentsAsync(ways, lat, lng, stale);
+        if (stale()) return;
 
         if (segments.length === 0) {
           this.loadingMessage = 'Could not build the canal network.';
@@ -1360,7 +1361,9 @@ class GameRouteRuntime {
         if (stale()) return;
         const routingGraph = await RoadNetwork.prepareRoutingGraph(segments, stale);
         if (stale()) return;
-        this.track = new RoadNetwork(segments, start, finish, [], routingGraph);
+        const surfaceIndex = await RoadNetwork.prepareSurfaceIndex(segments, routingGraph, stale);
+        if (stale()) return;
+        this.track = new RoadNetwork(segments, start, finish, [], routingGraph, surfaceIndex);
         this._loadedWorld = {
           cityId: this.cityId || 'amsterdam',
           travelMode: this.travelMode,

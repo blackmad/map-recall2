@@ -75,6 +75,14 @@
       "nextAction": "Start with failed De Wallen transfer diagnosis and a bounded source-rich canal row; evaluate rhythm and authoring throughput before scaling to every canal house. Preserve ordinary and modern exceptions. Raw sources belong in the new private source archive under its forthcoming instructions."
     },
     {
+      "id": "batched-road-projection-and-surface-setup",
+      "task": "Remove the remaining 200–470ms road/surface startup pauses",
+      "priority": "high",
+      "status": "verified",
+      "owner": "root",
+      "validation": "Projection, snap-index median partition and surface-grid setup yield on8ms budgets; projection/index publish atomically and cancelled loads preserve prior state. Real72330-segment fixture matches every projected segment,473 snaps and147133 surface-cell/span sequences. Desktop largest startup task447→176ms; touch-emulated388→160ms. Actual stationary pans/min zoom preserve textured facades and smooth fade. TypeScript, seven staged/queue/snap/graph tests, adapter cancellation, road/surface regressions and desktop route/restarted-loading checks pass. Report:docs/performance/2026-10-06/road-setup.md. Smaller setup/tile-arrival pauses remain; overall startup timing varies."
+    },
+    {
       "id": "startup-stalls-and-smooth-zoom-fade",
       "task": "Reduce startup blocking work and remove the stippled zoom-out fade",
       "priority": "high",

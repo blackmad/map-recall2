@@ -16,9 +16,19 @@ await page.addInitScript(()=>{
  const frame=t=>{p.frame=t;requestAnimationFrame(frame)};requestAnimationFrame(frame);
  new PerformanceObserver(list=>{for(const e of list.getEntries())p.longTasks.push({at:e.startTime,ms:e.duration,stage:p.stage})}).observe({type:'longtask',buffered:true});
  const post=Worker.prototype.postMessage;Worker.prototype.postMessage=function(data,...args){const t=performance.now();const r=post.call(this,data,...args);if(data?.key)p.posts.push({key:data.key,ms:performance.now()-t,features:data.features?.length,stage:p.stage});return r};
+ const wrapped=new Set();
+ const track=(owner,names,prefix)=>{if(!owner)return;for(const name of names){const key=`${prefix}.${name}`;if(wrapped.has(key)||typeof owner[name]!=='function')continue;wrapped.add(key);const original=owner[name];owner[name]=function(...args){const t=performance.now();try{return original.apply(this,args)}finally{(p.calls[key]??=[]).push({at:t,ms:performance.now()-t,stage:p.stage})}}}};
+ const setup=setInterval(()=>{
+  track(typeof OSMLoader==='undefined'?null:OSMLoader.prototype,['buildRoadSegments'],'loader');
+  const asyncTrack=(owner,name,key)=>{if(!owner||wrapped.has(key)||typeof owner[name]!=='function')return;wrapped.add(key);const fn=owner[name];owner[name]=async function(...args){const t=performance.now();try{return await fn.apply(this,args)}finally{(p.calls[key]??=[]).push({at:t,ms:performance.now()-t,stage:p.stage,asyncWallTime:true})}}};
+  asyncTrack(typeof OSMLoader==='undefined'?null:OSMLoader.prototype,'buildRoadSegmentsAsync','loader.projection.wall');
+  asyncTrack(typeof RoadNetwork==='undefined'?null:RoadNetwork,'prepareSurfaceIndex','roads.surface.wall');
+  track(typeof RoadNetwork==='undefined'?null:RoadNetwork.prototype,['_computeSegmentGeometry','_buildGrid','_computeBounds','_buildLabels','_computeEndpointAngles'],'roads');
+  track(window.canalRecallGame?.vectorMap,['setCycleTracks','setStreetFronts'],'map');
+ },10);
  const timer=setInterval(()=>{
   const Type=window.CanalRecallThreeBuildings?.ThreeBuildings;if(!Type)return;clearInterval(timer);
-  for(const name of ['setFeatures','contextFor','install','rebuild']){const fn=Type.prototype[name];Type.prototype[name]=function(...args){const t=performance.now();try{return fn.apply(this,args)}finally{(p.calls[name]??=[]).push({ms:performance.now()-t,stage:p.stage,key:typeof args[0]==='string'?args[0]:undefined})}}}
+  for(const name of ['setFeatures','contextFor','install','rebuild']){const fn=Type.prototype[name];Type.prototype[name]=function(...args){const t=performance.now();try{return fn.apply(this,args)}finally{(p.calls[name]??=[]).push({at:t,ms:performance.now()-t,stage:p.stage,key:typeof args[0]==='string'?args[0]:undefined})}}}
  },10);
 });
 try{

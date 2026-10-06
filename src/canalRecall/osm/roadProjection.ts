@@ -18,6 +18,8 @@
  * offset or it lands hundreds of metres from the road it belongs to.
  */
 
+import { finishBatchedBuild, type BuildScheduling } from '../buildScheduling.ts';
+
 import { RoadSnapIndex } from './roadSnapIndex.ts';
 export { RoadSnapIndex };
 
@@ -192,16 +194,18 @@ export interface BuildSegmentsOptions {
  * The offset comes back with the segments because the caller has to keep it:
  * it is the only thing that relates a later lat/lng to this world.
  */
-export function buildRoadSegments(
+function* roadSegmentStages(
   ways: OsmWay[],
   centre: LatLng,
   options: BuildSegmentsOptions,
-): { segments: RoadSegment[]; offset: WorldPoint } {
+): Generator<void, { segments: RoadSegment[]; offset: WorldPoint }> {
   const tolerance = options.simplificationToleranceDegrees
     * METRES_PER_DEGREE_LAT * PIXELS_PER_METER;
 
   const segments: RoadSegment[] = [];
-  for (const way of ways) {
+  for (let wayIndex = 0; wayIndex < ways.length; wayIndex++) {
+    if (wayIndex % 32 === 0) yield;
+    const way = ways[wayIndex];
     const points = way.nodes.map(node => projectToWorld(node, centre));
     if (points.length < 2) continue;
     const simplified = simplifyPath(points, tolerance);
@@ -221,13 +225,26 @@ export function buildRoadSegments(
   }
 
   const offset = centringOffset(segments);
-  for (const segment of segments) {
+  for (let i = 0; i < segments.length; i++) {
+    if (i % 32 === 0) yield;
+    const segment = segments[i];
     for (const point of segment.points) {
       point.x += offset.x;
       point.y += offset.y;
     }
   }
   return { segments, offset };
+}
+
+export function buildRoadSegments(ways: OsmWay[], centre: LatLng, options: BuildSegmentsOptions): { segments: RoadSegment[]; offset: WorldPoint } {
+  const stages = roadSegmentStages(ways, centre, options);
+  let step = stages.next();
+  while (!step.done) step = stages.next();
+  return step.value;
+}
+
+export async function buildRoadSegmentsAsync(ways: OsmWay[], centre: LatLng, options: BuildSegmentsOptions, scheduling: BuildScheduling = {}): Promise<{ segments: RoadSegment[]; offset: WorldPoint }> {
+  return finishBatchedBuild(roadSegmentStages(ways, centre, options), scheduling);
 }
 
 /**

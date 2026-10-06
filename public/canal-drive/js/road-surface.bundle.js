@@ -31,6 +31,7 @@ var CanalRecallRoadSurface = (() => {
     NAME_WIDTH_SLACK: () => NAME_WIDTH_SLACK,
     ROAD_GRID_CELL: () => ROAD_GRID_CELL,
     buildRoadSpatialIndex: () => buildRoadSpatialIndex,
+    buildRoadSpatialIndexAsync: () => buildRoadSpatialIndexAsync,
     classifySurface: () => classifySurface,
     connectedNamedSegments: () => connectedNamedSegments,
     contactsAt: () => contactsAt,
@@ -43,6 +44,22 @@ var CanalRecallRoadSurface = (() => {
     roadNameAt: () => roadNameAt,
     roadsNear: () => roadsNear
   });
+
+  // src/canalRecall/buildScheduling.ts
+  async function finishBatchedBuild(stages, scheduling = {}) {
+    const yieldToBrowser = scheduling.yieldToBrowser ?? (() => new Promise((resolve) => setTimeout(resolve, 0)));
+    while (true) {
+      const started = performance.now();
+      do {
+        if (scheduling.cancelled?.()) throw new DOMException("Route loading cancelled", "AbortError");
+        const step = stages.next();
+        if (step.done) return step.value;
+      } while (performance.now() - started < (scheduling.budgetMs ?? 8));
+      await yieldToBrowser();
+    }
+  }
+
+  // src/canalRecall/routing/roadSurface.ts
   var ROAD_GRID_CELL = 100;
   var CURB_INNER_MARGIN = 6;
   var CURB_OUTER_MARGIN = 2;
@@ -58,7 +75,7 @@ var CanalRecallRoadSurface = (() => {
     const cy = a.y + aby * t;
     return { x: cx, y: cy, dist: Math.hypot(px - cx, py - cy) };
   }
-  function buildRoadSpatialIndex(segments, cellSize = ROAD_GRID_CELL, connectors = []) {
+  function* roadSurfaceStages(segments, cellSize = ROAD_GRID_CELL, connectors = []) {
     const cells = /* @__PURE__ */ new Map();
     const add = (span) => {
       const { a, b, width } = span;
@@ -77,17 +94,29 @@ var CanalRecallRoadSurface = (() => {
       }
     };
     for (let segIdx = 0; segIdx < segments.length; segIdx++) {
+      if (segIdx % 32 === 0) yield;
       const segment = segments[segIdx];
       for (let ptIdx = 0; ptIdx < segment.points.length - 1; ptIdx++) {
         add({ a: segment.points[ptIdx], b: segment.points[ptIdx + 1], segIdx, ptIdx, width: segment.width });
       }
     }
-    for (const connector of connectors) {
+    for (let i = 0; i < connectors.length; i++) {
+      if (i % 64 === 0) yield;
+      const connector = connectors[i];
       const segment = segments[connector.segmentIndex];
       if (!segment) continue;
       add({ a: connector.a, b: connector.b, segIdx: connector.segmentIndex, ptIdx: -1, width: segment.width });
     }
     return { cellSize, cells };
+  }
+  function buildRoadSpatialIndex(segments, cellSize = ROAD_GRID_CELL, connectors = []) {
+    const stages = roadSurfaceStages(segments, cellSize, connectors);
+    let step = stages.next();
+    while (!step.done) step = stages.next();
+    return step.value;
+  }
+  async function buildRoadSpatialIndexAsync(segments, cellSize = ROAD_GRID_CELL, connectors = [], scheduling = {}) {
+    return finishBatchedBuild(roadSurfaceStages(segments, cellSize, connectors), scheduling);
   }
   function roadsNear(index, x, y, ring = 1) {
     const gx = Math.floor(x / index.cellSize);

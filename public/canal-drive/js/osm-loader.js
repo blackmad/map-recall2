@@ -308,6 +308,25 @@ class OSMLoader {
     return built.segments;
   }
 
+  async buildRoadSegmentsAsync(ways, centerLat, centerLng, cancelled) {
+    const scheduling = { cancelled };
+    const built = await PROJECT.buildRoadSegmentsAsync(ways, { lat: centerLat, lon: centerLng }, {
+      simplificationToleranceDegrees: SIMPLIFICATION_TOLERANCE,
+      roadWidths: ROAD_WIDTHS,
+      defaultRoadWidth: DEFAULT_ROAD_WIDTH,
+    }, scheduling);
+    const index = await PROJECT.RoadSnapIndex.create(built.segments, scheduling);
+    if (cancelled?.()) throw new DOMException('Route loading cancelled', 'AbortError');
+    // Publish the projection and its snap index together, after every stage completes.
+    this._lastCenterLat = centerLat;
+    this._lastCenterLng = centerLng;
+    this._lastOffsetX = built.offset.x;
+    this._lastOffsetY = built.offset.y;
+    this._roadSnapSegments = built.segments;
+    this._roadSnapIndex = index;
+    return built.segments;
+  }
+
   // Convert a lat/lng to the nearest road point in game coordinates
   latLngToGamePoint(lat, lng, centerLat, centerLng, segments, maxSnapDist = MAX_SNAP_DIST) {
     return PROJECT.snapToRoad(

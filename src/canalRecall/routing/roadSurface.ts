@@ -15,6 +15,8 @@
  * finding roads it should.
  */
 
+import { finishBatchedBuild, type BuildScheduling } from '../buildScheduling.ts';
+
 export interface RoadPoint { x: number; y: number }
 
 /** One OSM way as the game holds it: a centreline and a half-width. */
@@ -77,11 +79,11 @@ function closestPointOnSpan(px: number, py: number, a: RoadPoint, b: RoadPoint) 
  * far edge of a wide road still finds it from the cell it is standing in
  * rather than needing a wider query ring.
  */
-export function buildRoadSpatialIndex(
+function* roadSurfaceStages(
   segments: readonly RoadSegmentLike[],
   cellSize: number = ROAD_GRID_CELL,
   connectors: ReadonlyArray<Readonly<{ a: RoadPoint; b: RoadPoint; segmentIndex: number }>> = [],
-): RoadSpatialIndex {
+): Generator<void, RoadSpatialIndex> {
   const cells = new Map<string, RoadSpan[]>();
   const add = (span: RoadSpan) => {
     const { a, b, width } = span;
@@ -100,6 +102,7 @@ export function buildRoadSpatialIndex(
     }
   };
   for (let segIdx = 0; segIdx < segments.length; segIdx++) {
+    if (segIdx % 32 === 0) yield;
     const segment = segments[segIdx];
     for (let ptIdx = 0; ptIdx < segment.points.length - 1; ptIdx++) {
       add({ a: segment.points[ptIdx], b: segment.points[ptIdx + 1], segIdx, ptIdx, width: segment.width });
@@ -111,12 +114,25 @@ export function buildRoadSpatialIndex(
   // bridge way sat on the shoulder, pulled back toward the last vertex, with
   // the next street's corridor out of reach (bridge sweep, 2026-09-30). A
   // connector carries its way's index and width, and `ptIdx` -1.
-  for (const connector of connectors) {
+  for (let i = 0; i < connectors.length; i++) {
+    if (i % 64 === 0) yield;
+    const connector = connectors[i];
     const segment = segments[connector.segmentIndex];
     if (!segment) continue;
     add({ a: connector.a, b: connector.b, segIdx: connector.segmentIndex, ptIdx: -1, width: segment.width });
   }
   return { cellSize, cells };
+}
+
+export function buildRoadSpatialIndex(segments: readonly RoadSegmentLike[], cellSize = ROAD_GRID_CELL, connectors: ReadonlyArray<Readonly<{ a: RoadPoint; b: RoadPoint; segmentIndex: number }>> = []): RoadSpatialIndex {
+  const stages = roadSurfaceStages(segments, cellSize, connectors);
+  let step = stages.next();
+  while (!step.done) step = stages.next();
+  return step.value;
+}
+
+export async function buildRoadSpatialIndexAsync(segments: readonly RoadSegmentLike[], cellSize = ROAD_GRID_CELL, connectors: ReadonlyArray<Readonly<{ a: RoadPoint; b: RoadPoint; segmentIndex: number }>> = [], scheduling: BuildScheduling = {}): Promise<RoadSpatialIndex> {
+  return finishBatchedBuild(roadSurfaceStages(segments, cellSize, connectors), scheduling);
 }
 
 /** Spans in the (2·ring+1)² cell neighbourhood around a point. */
