@@ -10,7 +10,7 @@
     "scripts/landmarks/multatuli-poi.json",
     "scripts/landmarks/multatuli-review.json",
     "scripts/check-multatuli-geometry.ts",
-    "docs/references/multatuli/"
+    "../map-recall2-source-data/models/multatuli/"
   ],
   "cpuChecks": {
     "command": "node --import tsx scripts/check-multatuli-geometry.ts",
@@ -40,11 +40,11 @@
     "typescript": "npx tsc --noEmit --pretty false passed"
   },
   "sourceReferences": [
-    "docs/references/multatuli/facade-2022-1.jpg",
-    "docs/references/multatuli/facade-2022-2.jpg",
-    "docs/references/multatuli/bag-addresses.json",
-    "docs/references/multatuli/bag-pand.json",
-    "docs/references/multatuli/3dbag.json",
+    "../map-recall2-source-data/models/multatuli/files/facade-2022-1.jpg",
+    "../map-recall2-source-data/models/multatuli/files/facade-2022-2.jpg",
+    "../map-recall2-source-data/models/multatuli/files/bag-addresses.json",
+    "../map-recall2-source-data/models/multatuli/files/bag-pand.json",
+    "../map-recall2-source-data/models/multatuli/files/3dbag.json",
     "docs/references/next-batch-archive-research.json"
   ],
   "visualRecognitionChecklist": [
@@ -92,8 +92,8 @@
     "reviewer": "independent current-batch reviewer, follow-up close native front and rear roof installation review",
     "status": "accepted",
     "sourceEvidence": [
-      "docs/references/multatuli/facade-2022-1.jpg",
-      "docs/references/multatuli/facade-2022-2.jpg"
+      "../map-recall2-source-data/models/multatuli/files/facade-2022-1.jpg",
+      "../map-recall2-source-data/models/multatuli/files/facade-2022-2.jpg"
     ],
     "renderEvidence": [
       "artifacts/multatuli-review/gallery-angle-0.png",
@@ -181,8 +181,8 @@
       "reviewer": "independent current-batch reviewer",
       "status": "gallery-and-live-front-passed-live-rear-pending",
       "sourceEvidence": [
-        "docs/references/multatuli/facade-2022-1.jpg",
-        "docs/references/multatuli/facade-2022-2.jpg"
+        "../map-recall2-source-data/models/multatuli/files/facade-2022-1.jpg",
+        "../map-recall2-source-data/models/multatuli/files/facade-2022-2.jpg"
       ],
       "renderEvidence": [
         "artifacts/multatuli-review/gallery-angle-0.png",
@@ -220,8 +220,8 @@
       "reviewer": "independent current-batch reviewer, follow-up close native front and rear roof installation review",
       "status": "accepted",
       "sourceEvidence": [
-        "docs/references/multatuli/facade-2022-1.jpg",
-        "docs/references/multatuli/facade-2022-2.jpg"
+        "../map-recall2-source-data/models/multatuli/files/facade-2022-1.jpg",
+        "../map-recall2-source-data/models/multatuli/files/facade-2022-2.jpg"
       ],
       "renderEvidence": [
         "artifacts/multatuli-review/gallery-angle-0.png",
@@ -261,8 +261,8 @@
       "reviewer": "independent current-batch reviewer, follow-up close native front and rear roof installation review",
       "status": "front-gallery-passed-rear-live-pending",
       "sourceEvidence": [
-        "docs/references/multatuli/facade-2022-1.jpg",
-        "docs/references/multatuli/facade-2022-2.jpg"
+        "../map-recall2-source-data/models/multatuli/files/facade-2022-1.jpg",
+        "../map-recall2-source-data/models/multatuli/files/facade-2022-2.jpg"
       ],
       "renderEvidence": [
         "artifacts/multatuli-review/gallery-angle-0.png",

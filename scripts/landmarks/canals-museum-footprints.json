@@ -152,13 +152,13 @@
   "references": [
     {
       "url": "https://grachten.museum/adres-en-route/",
-      "image": "docs/references/canals-museum/current-facade.webp",
+      "image": "../map-recall2-source-data/models/canals-museum/files/current-facade.webp",
       "date": "2026 operator page asset",
       "use": "Current facade photo supports five bays, tall bel-etage, cream pilasters, basement and entrance; roof cutoff supplemented by context photo"
     },
     {
       "url": "https://commons.wikimedia.org/wiki/File:Herengracht_386.jpg",
-      "image": "docs/references/canals-museum/facade-roof.jpg",
+      "image": "../map-recall2-source-data/models/canals-museum/files/facade-roof.jpg",
       "date": "2010 Commons photo",
       "use": "Full roof/context: dark hipped roof, two side dormers, triangular pediment"
     }

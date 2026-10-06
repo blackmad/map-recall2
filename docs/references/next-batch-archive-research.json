@@ -53,7 +53,7 @@
         "originalUrl": "http://beeldbank.amsterdam.nl/afbeelding/1315BT900084",
         "mirrorPage": "https://commons.wikimedia.org/wiki/File:Herengracht380-382_bouwtekening_Salm.jpg",
         "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Herengracht380-382_bouwtekening_Salm.jpg",
-        "cachedImage": "docs/references/next-batch-archive/niod-salm-elevation-1888.jpg",
+        "cachedImage": "../map-recall2-source-data/models/niod/files/niod-salm-elevation-1888.jpg",
         "creator": "Abraham Salm",
         "drawingDate": "ca.1888 per Commons catalogue; date not independently confirmed on archive record",
         "reuseTerms": "Commons marks Salm artwork and faithful reproduction public domain; original archive terms not independently inspected.",
@@ -71,7 +71,7 @@
           "url": "https://openresearch.amsterdam/nl/page/151733/erfgoed-van-de-week-ambitieuze-techniek-op-de-herengracht",
           "type": "Municipal conservation research, 2022-04-28",
           "access": "Read text and visually inspected cached Paul Nieuwenhuizen 2016 facade photo.",
-          "cachedImage": "docs/references/next-batch-archive/niod-municipal-facade-2016.jpg",
+          "cachedImage": "../map-recall2-source-data/models/niod/files/niod-municipal-facade-2016.jpg",
           "imageUrl": "https://openresearch.amsterdam/image/2026/9/4/53_af_niod_pn_2-195989628.jpg%28mediaclass-landscape-large.93f1e343de01d1381fc159cb72e3b9e0ecdbfeae%29.jpg",
           "reuseTerms": "Facade photo explicitly All Rights Reserved; cached only as research reference, never asset texture.",
           "featuresResolved": [

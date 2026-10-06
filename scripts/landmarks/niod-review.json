@@ -7,8 +7,8 @@
     "rceBenefit": "Establishes sandstone material, French neo-Renaissance architecture, stoep railing and two lanterns without inventing dimensions."
   },
   "referenceImages": [
-    "docs/references/next-batch-archive/niod-municipal-facade-2016.jpg",
-    "docs/references/next-batch-archive/niod-salm-elevation-1888.jpg"
+    "../map-recall2-source-data/models/niod/files/niod-municipal-facade-2016.jpg",
+    "../map-recall2-source-data/models/niod/files/niod-salm-elevation-1888.jpg"
   ],
   "geometryChecks": {
     "passed": true,
@@ -70,8 +70,8 @@
     "reviewer": "independent current-batch worker",
     "status": "accepted",
     "sourceEvidence": [
-      "docs/references/next-batch-archive/niod-municipal-facade-2016.jpg",
-      "docs/references/next-batch-archive/niod-salm-elevation-1888.jpg"
+      "../map-recall2-source-data/models/niod/files/niod-municipal-facade-2016.jpg",
+      "../map-recall2-source-data/models/niod/files/niod-salm-elevation-1888.jpg"
     ],
     "renderEvidence": [
       "artifacts/niod-review/gallery.png",

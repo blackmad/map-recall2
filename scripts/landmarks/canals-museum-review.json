@@ -3,8 +3,8 @@
   "reviewedOn": "2026-10-04",
   "status": "accepted",
   "sourceImages": [
-    "docs/references/canals-museum/current-facade.webp",
-    "docs/references/canals-museum/facade-roof.jpg"
+    "../map-recall2-source-data/models/canals-museum/files/current-facade.webp",
+    "../map-recall2-source-data/models/canals-museum/files/facade-roof.jpg"
   ],
   "sourceAssertionsUsed": [
     {
@@ -82,8 +82,8 @@
     "reviewer": "independent current-batch worker",
     "status": "accepted",
     "sourceEvidence": [
-      "docs/references/canals-museum/current-facade.webp",
-      "docs/references/canals-museum/facade-roof.jpg"
+      "../map-recall2-source-data/models/canals-museum/files/current-facade.webp",
+      "../map-recall2-source-data/models/canals-museum/files/facade-roof.jpg"
     ],
     "renderEvidence": [
       "artifacts/canals-museum-review/gallery.png",
