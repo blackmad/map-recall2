@@ -156,6 +156,7 @@ class VectorBasemap {
         this._detailedBuildings.setEnabled(this._detailedBuildingsVisible);
       }
       const signature = window.CanalRecallSignature3D;
+      if (window.CanalRecallArtisAnimals) this._artisAnimals = new window.CanalRecallArtisAnimals.ArtisAnimals(this.map, maplibregl, this._extractPath);
       const manualModels = window.CanalRecallSignatureLandmarks?.MANUAL_LANDMARKS;
       if (signature?.SignatureLandmarks && manualModels) {
         this._signatureLandmarks = new signature.SignatureLandmarks(this.map, maplibregl, {
@@ -198,6 +199,7 @@ class VectorBasemap {
   setExtractRoot(path) {
     if (!path || path === this._extractPath) return;
     this._extractPath = path;
+    if (this._artisAnimals) this._artisAnimals.setExtractRoot(path);
     if (this._parkLandscape) this._parkLandscape.load(path);
     this._rawTrees = null;
     this._treeLoadSerial = (this._treeLoadSerial || 0) + 1;

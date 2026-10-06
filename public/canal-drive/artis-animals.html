@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ARTIS animal miniatures · Canal Recall</title>
+<style>
+body{margin:0;background:#e9e4d8;color:#393e40;font:14px system-ui}header{padding:24px 30px;background:#f7f3e9}h1{margin:0 0 8px;font-size:25px}p{margin:8px 0;line-height:1.5}a{color:#426b79}#grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;padding:20px}article{height:185px;position:relative;background:#f7f3e9;border-radius:8px;overflow:hidden}.view{height:135px}article p{margin:0 12px;font-size:13px}small{color:#727575}canvas{position:fixed;inset:0;pointer-events:none}#status{font-variant-numeric:tabular-nums}
+</style>
+<header><h1>A little Katamari in ARTIS</h1>
+<p>Game models and original chunky miniatures, placed at named OpenStreetMap animal locations. Sizes and headings are playful approximations.</p>
+<p><a href="./">Play Canal Recall</a> · <a href="https://katamari.andrew-boylan.com/">Katamari Object Library</a> · <a href="https://www.openstreetmap.org/way/4366723">ARTIS on OSM</a></p><p id="status">Loading animals…</p></header><div id="grid"></div>
+<script src="js/three.bundle.js"></script>
+<script>
+(async()=>{
+ const {THREE:T,GLTFLoader,MeshoptDecoder}=CanalRecallThree;
+ const renderer=new T.WebGLRenderer({antialias:true,alpha:true});renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.setClearColor(0,0);document.body.append(renderer.domElement);
+ const loader=new GLTFLoader();loader.setMeshoptDecoder(MeshoptDecoder);
+ const index=await (await fetch('models/artis-animals/index.json')).json(),entries=[],errors=[];
+ window.animalReview={index,entries,errors,done:false};
+ const grid=document.querySelector('#grid');
+ for(const spec of index.animals){
+  const card=document.createElement('article'),view=document.createElement('div');view.className='view';card.append(view);
+  const label=document.createElement('p');label.textContent=spec.name;card.append(label);
+  const sub=document.createElement('p'),small=document.createElement('small');small.textContent=spec.original?'Original miniature':spec.game;sub.append(small);card.append(sub);grid.append(card);
+  const scene=new T.Scene();scene.add(new T.HemisphereLight(0xffffff,0x625b53,2.1));const light=new T.DirectionalLight(0xfff1df,2);light.position.set(3,5,4);scene.add(light);
+  const camera=new T.PerspectiveCamera(32,1,.01,100);camera.position.set(3.3,2.1,4.7);camera.lookAt(0,.75,0);
+  const entry={spec,view,scene,camera};entries.push(entry);
+ }
+ await Promise.all(entries.map(async e=>{
+  try{
+   const gltf=await loader.loadAsync(`models/artis-animals/${e.spec.file}?asset=${e.spec.version}`),g=gltf.scene;
+   const b=new T.Box3().setFromObject(g),s=b.getSize(new T.Vector3()),c=b.getCenter(new T.Vector3()),scale=1.6/s.y;
+   g.scale.multiplyScalar(scale);g.position.set(-c.x*scale,-b.min.y*scale,-c.z*scale);e.scene.add(g);e.model=g;e.bounds=s.toArray();
+  }catch(err){errors.push(`${e.spec.name}: ${err.message}`);}
+ }));
+ function render(){
+  renderer.setSize(innerWidth,innerHeight);renderer.setScissorTest(false);renderer.clear();renderer.setScissorTest(true);
+  for(const e of entries){const b=e.view.getBoundingClientRect();if(b.bottom<0||b.top>innerHeight)continue;
+   renderer.setViewport(b.left,innerHeight-b.bottom,b.width,b.height);renderer.setScissor(b.left,innerHeight-b.bottom,b.width,b.height);e.camera.aspect=b.width/b.height;e.camera.updateProjectionMatrix();renderer.render(e.scene,e.camera);
+  }
+ }
+ addEventListener('resize',render);addEventListener('scroll',render);render();
+ document.querySelector('#status').textContent=`${entries.length-errors.length} animals · ${index.animals.filter(a=>a.original).length} original miniatures · ${new Set(index.animals.map(a=>a.osmId)).size} mapped locations${errors.length?' · '+errors.join('; '):''}`;
+ animalReview.done=true;
+})().catch(e=>document.querySelector('#status').textContent=e.message);
+</script>
+</html>
