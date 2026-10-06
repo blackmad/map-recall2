@@ -46,6 +46,98 @@ ING_CACHE_URLS = {
  'ing-archive-photo-2.jpg': 'https://images.memorix.nl/ams/thumb/640x480/759b9ad1-e067-6ace-7623-440952330fb8.jpg',
 }
 
+# Scoped runs report exact writes without scanning/rehashing unrelated archive objects.
+CHANGED_PATHS = set()
+ARCHIVE_ROOT = None
+
+def changed(path):
+    if ARCHIVE_ROOT is not None:
+        CHANGED_PATHS.add(str(path.relative_to(ARCHIVE_ROOT)))
+
+def write_text(path, text):
+    if path.exists() and path.read_text() == text:
+        return
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text)
+    changed(path)
+
+def merge_records(previous, current, key, prefer_previous=False):
+    records = {key(record): dict(record) for record in previous}
+    for record in current:
+        identity = key(record)
+        old = records.get(identity, {})
+        # A newly observed URL-only placeholder cannot erase an archived HTTP body.
+        if old.get('archiveObject') and not record.get('archiveObject'):
+            continue
+        records[identity] = {**record, **old} if prefer_previous else {**old, **record}
+    return list(records.values())
+
+def merge_manifest(previous, current):
+    merged = {**previous, **current}
+    merged['files'] = merge_records(previous.get('files', []), current['files'],
+                                   lambda f: (f.get('sourcePath'), f.get('sha256')), prefer_previous=True)
+    for field in ('webCaptures', 'renderedCaptures'):
+        merged[field] = merge_records(previous.get(field, []), current.get(field, []),
+                                      lambda c: (c.get('url'), c.get('sha256') if c.get('archiveObject') else None))
+        # Keep older body versions, but remove newly generated gaps for already archived URLs.
+        archived_urls = {c.get('url') for c in merged[field] if c.get('archiveObject')}
+        merged[field] = [c for c in merged[field] if c.get('archiveObject') or c.get('url') not in archived_urls]
+    merged['sourceUrls'] = set(previous.get('sourceUrls', [])) | current['sourceUrls']
+    archived_paths = {f.get('sourcePath') for f in merged['files']}
+    archived_paths.update(f.get('repositoryPath') for f in merged['files'])
+    merged['missingLocalFiles'] = merge_records(previous.get('missingLocalFiles', []), current['missingLocalFiles'],
+                                               lambda f: (f.get('path'), f.get('referencedBy')))
+    merged['missingLocalFiles'] = [f for f in merged['missingLocalFiles'] if f.get('path') not in archived_paths]
+    return merged
+
+def existing_manifest(dest, mid):
+    """Normalize selected direct-worker packs without discarding their original records."""
+    folder = dest / 'models' / mid
+    previous = load(folder / 'manifest.json') or {}
+    if not isinstance(previous, dict):
+        raise SystemExit('Unsupported selected manifest format: ' + str(folder))
+    previous = dict(previous)
+    records = list(previous.get('files', []))
+    research = load(folder / 'research-manifest.json')
+    if isinstance(research, list):
+        previous['privateResearchRecords'] = research
+        records.extend(research)
+    normalized, missing, bytes_copied = [], list(previous.get('missingLocalFiles', [])), 0
+    for record in records:
+        record = dict(record)
+        if record.get('archiveObject'):
+            normalized.append(record)
+            continue
+        relative = record.get('path')
+        if not relative:
+            raise SystemExit('Selected private file record lacks archiveObject/path: ' + mid)
+        source = (folder / relative).resolve()
+        if not source.is_relative_to(folder.resolve()):
+            raise SystemExit('Selected private source path escapes its pack: ' + relative)
+        if not source.is_file():
+            missing.append({**record, 'state': record.get('accessState', 'missing-private-source-file')})
+            continue
+        sha = digest(source)
+        if record.get('sha256') and record['sha256'] != sha:
+            raise SystemExit('Checksum failure: ' + str(source))
+        target = dest / 'objects/sha256' / sha[:2] / sha
+        if not target.exists():
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(source, target)
+            changed(target)
+            bytes_copied += source.stat().st_size
+        raw = record.get('raw') or 'original HTTP' in record.get('kind', '')
+        normalized.append({**record, 'sourcePath': str(source), 'originalFilename': source.name,
+                           'archiveObject': str(target.relative_to(dest)), 'sha256': sha, 'bytes': source.stat().st_size,
+                           'mediaType': mimetypes.guess_type(source.name)[0], 'category': 'preserved-private-worker-source',
+                           'representation': record.get('representation', 'raw-http-response-body' if raw else 'cached-source-bytes-worker-provenance-preserved'),
+                           'sourceUrls': record.get('sourceUrls', [record['url']] if record.get('url') else []),
+                           'readableArchivePath': str(source.relative_to(dest)), 'modelRelativePath': relative})
+    previous['files'] = normalized
+    previous['sourceUrls'] = sorted(set(previous.get('sourceUrls', [])) | {url for record in normalized for url in record.get('sourceUrls', [])})
+    previous['missingLocalFiles'] = missing
+    return previous, bytes_copied
+
 def walk(value):
     yield value
     if isinstance(value, dict):
@@ -97,6 +189,9 @@ def capture_url(request, dest, max_bytes):
     identity = hashlib.sha256(url.encode()).hexdigest()
     metadata_path = dest / 'captures' / (identity + '.json')
     old = load(metadata_path) if metadata_path.exists() else None
+    if old:
+        request = {**request, 'modelIds': sorted(set(old.get('modelIds', [])) | set(request['modelIds'])),
+                   'sourceRecords': sorted(set(old.get('sourceRecords', [])) | set(request['sourceRecords']))}
     if old and old.get('success') and (dest / old['archiveObject']).exists():
         return {**old, 'modelIds': request['modelIds'], 'sourceRecords': request['sourceRecords']}
     record = {**request, 'retrievedAt': datetime.now(timezone.utc).isoformat(), 'captureState': 'newly-captured-current-response-not-claimed-historically-read', 'rights': 'PRIVATE research only; upstream copyright/restrictions unchanged.', 'success': False}
@@ -123,6 +218,7 @@ def capture_url(request, dest, max_bytes):
         target.parent.mkdir(parents=True, exist_ok=True)
         if not target.exists():
             target.write_bytes(body)
+            changed(target)
         record.update(archiveObject=str(target.relative_to(dest)), sha256=sha, bytes=len(body), representation='raw-http-response-body', success=200 <= record['httpStatus'] < 300)
         if 'html' in record['contentType'].lower():
             text = body.decode('utf-8', errors='replace')
@@ -133,7 +229,7 @@ def capture_url(request, dest, max_bytes):
     except Exception as error:
         record['failure'] = str(error)[:250]
     metadata_path.parent.mkdir(parents=True, exist_ok=True)
-    metadata_path.write_text(json.dumps(record, ensure_ascii=False, indent=2) + '\n')
+    write_text(metadata_path, json.dumps(record, ensure_ascii=False, indent=2) + '\n')
     return record
 
 def digest(path):
@@ -153,10 +249,13 @@ def readable_copy(dest, folder, filename, object_path, sha):
         name = Path(clean)
         target = folder / (name.stem + '-' + sha[:12] + name.suffix)
     if not target.exists():
+        changed(target)
         try:
             os.link(object_path, target)
         except OSError:
             shutil.copyfile(object_path, target)
+    if not target.exists():
+        raise ValueError('Missing readable source: ' + str(target))
     if digest(target) != sha:
         raise ValueError('Readable source checksum mismatch: ' + str(target))
     return str(target.relative_to(dest))
@@ -200,13 +299,14 @@ try{
         target.parent.mkdir(parents=True, exist_ok=True)
         if not target.exists():
             shutil.copyfile(temporary, target)
+            changed(target)
         record.update(json.loads(run.stdout), archiveObject=str(target.relative_to(dest)), sha256=sha, bytes=temporary.stat().st_size, contentType='image/png', success=True)
         if record.get('httpStatus', 0) >= 400:
             record.update(success=False, failure='Rendered HTTP error page retained; not accepted as source content.')
         temporary.unlink()
     else:
         record['failure'] = 'Browser source capture failed; return code ' + str(run.returncode)
-    (dest / 'captures' / ('rendered-' + identity + '.json')).write_text(json.dumps(record, ensure_ascii=False, indent=2) + '\n')
+    write_text(dest / 'captures' / ('rendered-' + identity + '.json'), json.dumps(record, ensure_ascii=False, indent=2) + '\n')
     return record
 
 def main():
@@ -218,12 +318,16 @@ def main():
     parser.add_argument('--fetch-missing', action='store_true', help='Capture explicitly recorded source pages/images currently, never historical-read claim')
     parser.add_argument('--fetch-limit', type=int, help='Optional bound on requests for staged backfill')
     parser.add_argument('--http-max-bytes', type=int, default=90_000_000)
-    parser.add_argument('--verify', action='store_true', help='Also rehash every stored object after copying')
+    parser.add_argument('--only', action='append', default=[], help='Sync only canonical model IDs (comma-separated and repeatable); preserve existing private raw sources')
+    parser.add_argument('--verify', action='store_true', help='Verify stored objects referenced by this run; --only also verifies preserved selected private sources')
     args = parser.parse_args()
     repo, dest = args.repo.resolve(), args.destination.resolve()
     if repo == dest or repo in dest.parents:
         raise SystemExit('Destination must be outside the game repository (private source repository).')
-    dest.mkdir(parents=True, exist_ok=True)
+    started = time.monotonic()
+    selected_ids = {mid.strip() for group in args.only for mid in group.split(',') if mid.strip()}
+    if args.only and not selected_ids:
+        raise SystemExit('--only requires at least one canonical model ID.')
     output = subprocess.run(['node', '--import', 'tsx', '--input-type=module', '-e', "import {MANUAL_LANDMARKS} from './src/canalRecall/landmarks/manualModels.ts';process.stdout.write(JSON.stringify(MANUAL_LANDMARKS))"], cwd=repo, check=True, capture_output=True, text=True)
     models = {m['id']: m for m in json.loads(output.stdout)}
     catalogue_count = len(models)
@@ -237,6 +341,13 @@ def main():
         mid = root.parent.name
         if mid not in models and re.fullmatch(r'[a-z0-9-]+', mid):
             models[mid] = {'id': mid, 'name': mid, 'catalogueState': 'unregistered-research-only'}
+    unknown = selected_ids - models.keys()
+    if unknown:
+        raise SystemExit('Unknown model IDs: ' + ', '.join(sorted(unknown)))
+    dest.mkdir(parents=True, exist_ok=True)
+    global ARCHIVE_ROOT
+    CHANGED_PATHS.clear()
+    ARCHIVE_ROOT = dest if selected_ids else None
     keys = defaultdict(set)
     for mid, model in models.items():
         for key in [mid, model.get('landmarkId'), *model.get('relatedLandmarkIds', []), *model.get('suppressOsmIds', [])]:
@@ -285,6 +396,8 @@ def main():
     # never arbitrary whole-city datasets or unrelated user files.
     missing = defaultdict(list)
     for record, data in list(parsed.items()):
+        if selected_ids and not associations[record].intersection(selected_ids):
+            continue
         for value in walk(data):
             if not isinstance(value, str) or len(value) > 500 or '\n' in value:
                 continue
@@ -306,6 +419,8 @@ def main():
                     missing[mid].append({'path': value, 'referencedBy': str(record.relative_to(repo)), 'state': 'missing-local-cache'})
     # Bounded model-prefix glob only; excludes gallery/live screenshots and JS bundles.
     for prefix, owners in {**{mid: {mid} for mid in models}, **{key: mids for key, mids in groups.items()}, **{a: {m} for a, m in ALIASES.items() if m in models}}.items():
+        if selected_ids and not owners.intersection(selected_ids):
+            continue
         if not re.fullmatch(r'[a-z0-9-]+', prefix) or len(prefix) < 3:
             continue
         for path in Path('/tmp').glob(prefix + '-*'):
@@ -314,6 +429,8 @@ def main():
                 associations[path].update(owners)
                 parsed[path] = load(path) if path.suffix == '.json' else None
     for mid, names in IMPORTS.items():
+        if selected_ids and mid not in selected_ids:
+            continue
         for name in names:
             path = args.downloads / name
             if path.is_file():
@@ -321,13 +438,25 @@ def main():
                 associations[path].add(mid)
             else:
                 missing[mid].append({'path': str(path), 'state': 'missing-authorized-original-import'})
+    if selected_ids:
+        models = {mid: model for mid, model in models.items() if mid in selected_ids}
+        files = {path: category for path, category in files.items() if associations[path].intersection(selected_ids)}
+        for path in files:
+            associations[path].intersection_update(selected_ids)
     snapshot = subprocess.run(['git', 'rev-parse', 'HEAD'], cwd=repo, check=True, capture_output=True, text=True).stdout.strip()
     status = subprocess.run(['git', 'status', '--porcelain', '--untracked-files=all'], cwd=repo, check=True, capture_output=True, text=True).stdout.splitlines()
     dirty = {line[3:]: line[:2] for line in status}
     now = datetime.now(timezone.utc).isoformat()
     manifests = {mid: {'modelId': mid, 'modelName': model['name'], 'placementAndIdentitySnapshot': model, 'snapshotCommit': snapshot, 'archivedAt': now, 'rights': 'PRIVATE research archive only. Source copyright and restrictions remain. Asset original-project licence does not license its references.', 'files': [], 'sourceUrls': set(urls(model)), 'accessState': {'localInventory': 'cached-files-copied-or-explicitly-missing', 'webSources': 'URLs-only-unless-original-body-or-current-capture-confirmed', 'historicalReading': 'Assertions/access notes preserved in structured research; current capture does not retroactively verify reading'}, 'missingLocalFiles': missing[mid]} for mid, model in models.items()}
     manifests['_unassigned'] = {'modelId': '_unassigned', 'notes': 'Preserved research whose precise model ownership is unresolved; not silently omitted or falsely attributed.', 'files': [], 'sourceUrls': set(), 'missingLocalFiles': missing['_unassigned'], 'snapshotCommit': snapshot, 'archivedAt': now}
-    copied, total, oversized = {}, 0, []
+    if selected_ids:
+        manifests.pop('_unassigned')
+    previous_manifests, preserved_bytes = {}, 0
+    if selected_ids:
+        for mid in selected_ids:
+            previous_manifests[mid], count = existing_manifest(dest, mid)
+            preserved_bytes += count
+    copied, total, oversized = {}, preserved_bytes, []
     for path, category in sorted(files.items(), key=lambda pair: str(pair[0])):
         size = path.stat().st_size
         sha = digest(path)
@@ -337,6 +466,7 @@ def main():
         if not target.exists():
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(path, target)
+            changed(target)
             total += size
         if args.verify and digest(target) != sha:
             raise SystemExit('Checksum failure: ' + str(path))
@@ -373,8 +503,16 @@ def main():
             request = requests.setdefault(url, {'url': url, 'modelIds': set(), 'sourceRecords': set()})
             request['modelIds'].add(mid)
             request['sourceRecords'].add('runtime model attribution/source snapshot')
+    if selected_ids:
+        for mid in selected_ids:
+            previous = previous_manifests[mid]
+            cached_raw.update(c['url'] for c in previous.get('webCaptures', []) if c.get('archiveObject') and c.get('success') and (dest / c['archiveObject']).is_file())
+            for entry in previous.get('files', []):
+                if entry.get('representation') in {'raw-http-response-body', 'image-or-document-source-bytes'} and entry.get('archiveObject') and (dest / entry['archiveObject']).is_file():
+                    cached_raw.update(entry.get('sourceUrls', []))
     planned = [{**r, 'modelIds': sorted(r['modelIds']), 'sourceRecords': sorted(r['sourceRecords']), 'cacheState': 'known-original-body-already-archived' if u in cached_raw else 'raw-body-not-confirmed-in-current-local-inventory', 'captureEligible': '/binaries/' not in u and not re.search(r'\.(?:glb|gltf|skp|obj|zip)(?:[?#]|$)', u, re.I), 'captureScopeNote': 'Recorded source URL; imported-mesh binary variants require separate deliberate capture, not page/image backfill.' if '/binaries/' in u else 'Explicitly used source/reference URL; no crawling.'} for u, r in sorted(requests.items())]
-    (dest / 'capture-requests.json').write_text(json.dumps({'plannedAt': now, 'policy': 'Only explicitly recorded references/source URLs; no page-link crawling. Current capture is not proof of historical reading.', 'requests': planned}, ensure_ascii=False, indent=2) + '\n')
+    request_path = dest / ('runs/scoped-' + '-'.join(sorted(selected_ids)) + '-capture-requests.json' if selected_ids else 'capture-requests.json')
+    write_text(request_path, json.dumps({'plannedAt': now, 'policy': 'Only explicitly recorded references/source URLs; no page-link crawling. Current capture is not proof of historical reading.', 'requests': planned}, ensure_ascii=False, indent=2) + '\n')
     # Existing captures remain associated on a non-network rerun.
     selected = [r for r in planned if r['url'] not in cached_raw and r['captureEligible']]
     if args.fetch_limit is not None:
@@ -399,6 +537,10 @@ def main():
             raise SystemExit('Credential-bearing source screenshots are excluded.')
         screenshot_source(url, repo, dest)
     for mid, manifest in manifests.items():
+        if selected_ids:
+            previous = previous_manifests[mid]
+            manifest = merge_manifest(previous, manifest)
+            manifests[mid] = manifest
         manifest['sourceUrls'] = sorted(manifest['sourceUrls'])
         manifest['coverage'] = {'archivedLocalFiles': len(manifest['files']), 'sourceURLsRecorded': len(manifest['sourceUrls']), 'cachedImages': sum(f['mediaType'] is not None and f['mediaType'].startswith('image/') for f in manifest['files']), 'rawHttpBodies': sum(bool(c.get('archiveObject')) for c in manifest.get('webCaptures', [])), 'successfulRawHttpBodies': sum(bool(c.get('archiveObject')) and c.get('success', False) for c in manifest.get('webCaptures', [])), 'rawWebImages': sum(bool(c.get('archiveObject')) and c.get('success', False) and c.get('contentType', '').startswith('image/') for c in manifest.get('webCaptures', [])), 'limits': ['Local files and confirmed raw web captures are recorded separately; a URL alone does not mean the page or photo is cached. --fetch-missing optionally captures its current response.', 'Normalized footprints/research preserve assertions and embedded surveys but are not represented as original HTTP response bytes.', 'Absent cache files/access-restricted dossiers require separate follow-up; no completeness claim.']}
         folder = dest / 'models' / mid
@@ -421,6 +563,8 @@ def main():
                 rendered['readableArchivePath'] = readable_copy(dest, folder / 'webpages', capture_filename(rendered), dest / rendered['archiveObject'], rendered['sha256'])
                 rendered['modelRelativePath'] = str(Path(rendered['readableArchivePath']).relative_to(folder.relative_to(dest)))
                 manifest.setdefault('renderedCaptures', []).append(rendered)
+        if selected_ids:
+            manifest['renderedCaptures'] = merge_records([], manifest.get('renderedCaptures', []), lambda c: (c.get('url'), c.get('sha256')))
         lines = ['# ' + manifest.get('modelName', mid), '', 'PRIVATE research only. Original rights and restrictions remain; model asset licences do not license reference photos or pages.', '', 'Readable cached sources are in `files/`; actual captured HTTP bodies are in `webpages/`. The manifest distinguishes raw bytes, normalized research, current HTTP responses and optional derived screenshots.', '', '| File | Representation |', '| --- | --- |']
         for entry in manifest['files']:
             path = Path(entry['modelRelativePath'])
@@ -434,10 +578,49 @@ def main():
             path = capture.get('modelRelativePath')
             if path:
                 lines.append('| [' + Path(path).name + '](' + urllib.parse.quote(path) + ') | Derived browser screenshot; HTTP ' + str(capture.get('httpStatus', 'unknown')) + ' |')
-        (folder / 'README.md').write_text('\n'.join(lines) + '\n')
-        (folder / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
+        write_text(folder / 'README.md', '\n'.join(lines) + '\n')
+        write_text(folder / 'manifest.json', json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
     all_http = {c['url']: c for m in manifests.values() for c in m.get('webCaptures', []) if c.get('archiveObject')}
-    index = {'schemaVersion': 1, 'archivedAt': now, 'sourceRepository': str(repo), 'snapshotCommit': snapshot, 'catalogueModels': catalogue_count, 'manifestModelsIncludingPending': len(models), 'modelsWithLocalFiles': sum(bool(m['files']) for mid, m in manifests.items() if mid != '_unassigned'), 'sourceFiles': len(copied), 'uniqueObjects': len({v['sha256'] for v in copied.values()}), 'newObjectBytesCopied': total, 'oversizedObjectsRequiringLFS': oversized, 'unassignedFiles': len(manifests['_unassigned']['files']), 'modelManifests': {mid: 'models/' + mid + '/manifest.json' for mid in sorted(manifests)}, 'sourceFileInventory': copied, 'policy': 'PRIVATE research only. No source relicensing. Default local-copy mode; optional explicit-source HTTP capture and selected screenshots retain retrieval metadata. Preserve original bytes and paths. Shared content is deduplicated by SHA256.', 'workingTreeSnapshot': [line for line in status if line[3:] in {str(p.relative_to(repo)) for p in files if p.is_relative_to(repo)}], 'script': 'scripts/landmarks/archive-model-sources.py', 'captureRequests': len(planned), 'eligibleCaptureRequests': sum(r['captureEligible'] for r in planned), 'archiveScriptSha256': digest(Path(__file__)), 'capturesAttemptedThisRun': len(fetched), 'capturesSuccessfulThisRun': sum(r.get('success', False) for r in fetched), 'totalHTTPBodyCaptures': len(all_http), 'totalSuccessfulHTTPBodyCaptures': sum(c.get('success', False) for c in all_http.values()), 'confirmedLocalOriginalSourceURLs': len(cached_raw)}
+    index = {'schemaVersion': 1, 'archivedAt': now, 'sourceRepository': str(repo), 'snapshotCommit': snapshot, 'catalogueModels': catalogue_count, 'manifestModelsIncludingPending': len(models), 'modelsWithLocalFiles': sum(bool(m['files']) for mid, m in manifests.items() if mid != '_unassigned'), 'sourceFiles': len(copied), 'uniqueObjects': len({v['sha256'] for v in copied.values()}), 'newObjectBytesCopied': total, 'oversizedObjectsRequiringLFS': oversized, 'unassignedFiles': len(manifests.get('_unassigned', {}).get('files', [])), 'modelManifests': {mid: 'models/' + mid + '/manifest.json' for mid in sorted(manifests)}, 'sourceFileInventory': copied, 'policy': 'PRIVATE research only. No source relicensing. Default local-copy mode; optional explicit-source HTTP capture and selected screenshots retain retrieval metadata. Preserve original bytes and paths. Shared content is deduplicated by SHA256.', 'workingTreeSnapshot': [line for line in status if line[3:] in {str(p.relative_to(repo)) for p in files if p.is_relative_to(repo)}], 'script': 'scripts/landmarks/archive-model-sources.py', 'captureRequests': len(planned), 'eligibleCaptureRequests': sum(r['captureEligible'] for r in planned), 'archiveScriptSha256': digest(Path(__file__)), 'capturesAttemptedThisRun': len(fetched), 'capturesSuccessfulThisRun': sum(r.get('success', False) for r in fetched), 'totalHTTPBodyCaptures': len(all_http), 'totalSuccessfulHTTPBodyCaptures': sum(c.get('success', False) for c in all_http.values()), 'confirmedLocalOriginalSourceURLs': len(cached_raw)}
+    if selected_ids:
+        required = {str(request_path.relative_to(dest))}
+        verified = set()
+        for mid, manifest in manifests.items():
+            required.update({'models/' + mid + '/manifest.json', 'models/' + mid + '/README.md'})
+            for sidecar in ('research-manifest.json', 'acquisition-manifest.json'):
+                path = dest / 'models' / mid / sidecar
+                if path.is_file():
+                    required.add(str(path.relative_to(dest)))
+            for field in ('files', 'webCaptures', 'renderedCaptures'):
+                for record in manifest.get(field, []):
+                    if record.get('path'):
+                        original = dest / 'models' / mid / record['path']
+                        if original.is_file() and original.resolve().is_relative_to((dest / 'models' / mid).resolve()):
+                            required.add(str(original.relative_to(dest)))
+                    for key in ('archiveObject', 'readableArchivePath'):
+                        if record.get(key):
+                            required.add(record[key])
+                    if record.get('archiveObject'):
+                        obj = dest / record['archiveObject']
+                        if not obj.is_file():
+                            raise SystemExit('Missing selected archive object: ' + str(obj))
+                        if args.verify and record['archiveObject'] not in verified:
+                            if digest(obj) != record['sha256']:
+                                raise SystemExit('Checksum failure: ' + str(obj))
+                            verified.add(record['archiveObject'])
+            for request in planned:
+                for prefix in ('', 'rendered-'):
+                    path = dest / 'captures' / (prefix + hashlib.sha256(request['url'].encode()).hexdigest() + '.json')
+                    if path.exists():
+                        required.add(str(path.relative_to(dest)))
+        run_path = dest / 'runs' / ('scoped-' + '-'.join(sorted(selected_ids)) + '.json')
+        required.add(str(run_path.relative_to(dest)))
+        index.update(selectedModelIds=sorted(selected_ids), elapsedSeconds=round(time.monotonic() - started, 3),
+                     changedPaths=sorted(CHANGED_PATHS | {str(run_path.relative_to(dest))}),
+                     requiredPaths=sorted(required), objectsVerified=len(verified))
+        write_text(run_path, json.dumps(index, ensure_ascii=False, indent=2) + '\n')
+        print(json.dumps({k: index[k] for k in ('selectedModelIds', 'sourceFiles', 'uniqueObjects', 'newObjectBytesCopied', 'objectsVerified', 'elapsedSeconds', 'changedPaths', 'requiredPaths')}, indent=2))
+        return
     (dest / 'archive-index.json').write_text(json.dumps(index, ensure_ascii=False, indent=2) + '\n')
     # Managed section documents paths that were just materialized, preserving root prose.
     start, end = '<!-- BEGIN MODEL SOURCE DIRECTORY -->', '<!-- END MODEL SOURCE DIRECTORY -->'
