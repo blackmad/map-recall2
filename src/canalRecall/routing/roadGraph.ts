@@ -1,3 +1,4 @@
+import { finishBatchedBuild, type BuildScheduling } from '../buildScheduling.ts';
 export type RoadGraphPoint = Readonly<{ x: number; y: number }>;
 
 export type RoadGraphSegment<TMetadata = unknown> = Readonly<{
@@ -356,19 +357,9 @@ export function buildRoadGraph<TMetadata = unknown>(
 
 export async function buildRoadGraphAsync<TMetadata = unknown>(
   segments: readonly RoadGraphSegment<TMetadata>[], options: RoadGraphBuildOptions = {},
-  scheduling: { cancelled?: () => boolean; yieldToBrowser?: () => Promise<void> } = {},
+  scheduling: BuildScheduling = {},
 ): Promise<RoadGraph<TMetadata>> {
-  const stages = roadGraphStages(segments, options);
-  const yieldToBrowser = scheduling.yieldToBrowser ?? (() => new Promise<void>(resolve => setTimeout(resolve, 0)));
-  while (true) {
-    const started = performance.now();
-    do {
-      if (scheduling.cancelled?.()) throw new DOMException('Route loading cancelled', 'AbortError');
-      const step = stages.next();
-      if (step.done) return step.value;
-    } while (performance.now() - started < 8);
-    await yieldToBrowser();
-  }
+  return finishBatchedBuild(roadGraphStages(segments, options), scheduling);
 }
 
 export function nearestRoadGraphNode<TMetadata>(

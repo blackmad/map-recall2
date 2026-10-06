@@ -1,0 +1,350 @@
+{
+  "beforeDesktop": {
+    "label": "road-setup-reference",
+    "device": "desktop",
+    "bootMs": 6561,
+    "cityReadyMs": 8240,
+    "startupMaxLongTaskMs": 447,
+    "roadCalls": {
+      "map.setCycleTracks": {
+        "count": 1,
+        "totalMs": 2.5,
+        "p95Ms": 2.5,
+        "maxMs": 2.5
+      },
+      "map.setStreetFronts": {
+        "count": 1,
+        "totalMs": 51.40000009536743,
+        "p95Ms": 51.40000009536743,
+        "maxMs": 51.40000009536743
+      },
+      "loader.buildRoadSegments": {
+        "count": 1,
+        "totalMs": 339,
+        "p95Ms": 339,
+        "maxMs": 339
+      },
+      "roads._computeSegmentGeometry": {
+        "count": 1,
+        "totalMs": 23,
+        "p95Ms": 23,
+        "maxMs": 23
+      },
+      "roads._buildGrid": {
+        "count": 1,
+        "totalMs": 119.5,
+        "p95Ms": 119.5,
+        "maxMs": 119.5
+      },
+      "roads._computeBounds": {
+        "count": 1,
+        "totalMs": 4.699999809265137,
+        "p95Ms": 4.699999809265137,
+        "maxMs": 4.699999809265137
+      },
+      "roads._buildLabels": {
+        "count": 1,
+        "totalMs": 9.200000286102295,
+        "p95Ms": 9.200000286102295,
+        "maxMs": 9.200000286102295
+      },
+      "roads._computeEndpointAngles": {
+        "count": 1,
+        "totalMs": 0.5,
+        "p95Ms": 0.5,
+        "maxMs": 0.5
+      }
+    },
+    "stages": [
+      {
+        "stage": "street",
+        "zoom": 18.377634282140622,
+        "frameMedian": 16.69999999999891,
+        "frameP95": 16.700000000000728
+      },
+      {
+        "stage": "pan",
+        "zoom": 18.37760699976117,
+        "frameMedian": 16.69999999999891,
+        "frameP95": 16.799999999999272
+      },
+      {
+        "stage": "wide",
+        "zoom": 15.99999999992253,
+        "frameMedian": 16.700000000000728,
+        "frameP95": 33.399999999999636
+      },
+      {
+        "stage": "minimum",
+        "zoom": 15.677167281435084,
+        "frameMedian": 33.29999999999927,
+        "frameP95": 33.400000000001455
+      },
+      {
+        "stage": "overview",
+        "zoom": 14.8,
+        "frameMedian": 16.69999999999709,
+        "frameP95": 16.700000000000728
+      }
+    ],
+    "errors": []
+  },
+  "afterDesktop": {
+    "label": "road-setup-batched",
+    "device": "desktop",
+    "bootMs": 6132,
+    "cityReadyMs": 7773,
+    "startupMaxLongTaskMs": 176,
+    "roadCalls": {
+      "map.setCycleTracks": {
+        "count": 1,
+        "totalMs": 2.4000000953674316,
+        "p95Ms": 2.4000000953674316,
+        "maxMs": 2.4000000953674316
+      },
+      "map.setStreetFronts": {
+        "count": 1,
+        "totalMs": 0,
+        "p95Ms": 0,
+        "maxMs": 0
+      },
+      "roads._computeSegmentGeometry": {
+        "count": 1,
+        "totalMs": 23,
+        "p95Ms": 23,
+        "maxMs": 23
+      },
+      "roads._computeBounds": {
+        "count": 1,
+        "totalMs": 10,
+        "p95Ms": 10,
+        "maxMs": 10
+      },
+      "roads._buildLabels": {
+        "count": 1,
+        "totalMs": 10.800000190734863,
+        "p95Ms": 10.800000190734863,
+        "maxMs": 10.800000190734863
+      },
+      "roads._computeEndpointAngles": {
+        "count": 1,
+        "totalMs": 1,
+        "p95Ms": 1,
+        "maxMs": 1
+      }
+    },
+    "stages": [
+      {
+        "stage": "street",
+        "zoom": 18.37763428213686,
+        "frameMedian": 16.69999999999891,
+        "frameP95": 16.700000000000728
+      },
+      {
+        "stage": "pan",
+        "zoom": 18.37760699977162,
+        "frameMedian": 16.69999999999891,
+        "frameP95": 16.799999999999272
+      },
+      {
+        "stage": "wide",
+        "zoom": 15.99999999991672,
+        "frameMedian": 16.700000000000728,
+        "frameP95": 33.399999999999636
+      },
+      {
+        "stage": "minimum",
+        "zoom": 15.677167281431666,
+        "frameMedian": 33.29999999999927,
+        "frameP95": 33.400000000001455
+      },
+      {
+        "stage": "overview",
+        "zoom": 14.8,
+        "frameMedian": 16.700000000000728,
+        "frameP95": 16.700000000000728
+      }
+    ],
+    "errors": []
+  },
+  "beforeTouch": {
+    "label": "road-setup-reference",
+    "device": "touch",
+    "bootMs": 5066,
+    "cityReadyMs": 6059,
+    "startupMaxLongTaskMs": 388,
+    "roadCalls": {
+      "map.setCycleTracks": {
+        "count": 1,
+        "totalMs": 2.5,
+        "p95Ms": 2.5,
+        "maxMs": 2.5
+      },
+      "map.setStreetFronts": {
+        "count": 1,
+        "totalMs": 0.10000038146972656,
+        "p95Ms": 0.10000038146972656,
+        "maxMs": 0.10000038146972656
+      },
+      "loader.buildRoadSegments": {
+        "count": 1,
+        "totalMs": 344.3999996185303,
+        "p95Ms": 344.3999996185303,
+        "maxMs": 344.3999996185303
+      },
+      "roads._computeSegmentGeometry": {
+        "count": 1,
+        "totalMs": 20.800000190734863,
+        "p95Ms": 20.800000190734863,
+        "maxMs": 20.800000190734863
+      },
+      "roads._buildGrid": {
+        "count": 1,
+        "totalMs": 135.09999990463257,
+        "p95Ms": 135.09999990463257,
+        "maxMs": 135.09999990463257
+      },
+      "roads._computeBounds": {
+        "count": 1,
+        "totalMs": 4.200000286102295,
+        "p95Ms": 4.200000286102295,
+        "maxMs": 4.200000286102295
+      },
+      "roads._buildLabels": {
+        "count": 1,
+        "totalMs": 7.699999809265137,
+        "p95Ms": 7.699999809265137,
+        "maxMs": 7.699999809265137
+      },
+      "roads._computeEndpointAngles": {
+        "count": 1,
+        "totalMs": 0.5,
+        "p95Ms": 0.5,
+        "maxMs": 0.5
+      }
+    },
+    "stages": [
+      {
+        "stage": "street",
+        "zoom": 18.207709280699962,
+        "frameMedian": 16.699999999999818,
+        "frameP95": 16.700000000000728
+      },
+      {
+        "stage": "pan",
+        "zoom": 18.207681998136497,
+        "frameMedian": 16.69999999999891,
+        "frameP95": 16.799999999999272
+      },
+      {
+        "stage": "wide",
+        "zoom": 15.999999999999886,
+        "frameMedian": 16.69999999999891,
+        "frameP95": 16.799999999999272
+      },
+      {
+        "stage": "minimum",
+        "zoom": 15.507242279994886,
+        "frameMedian": 16.69999999999709,
+        "frameP95": 16.700000000000728
+      },
+      {
+        "stage": "overview",
+        "zoom": 14.800000000000002,
+        "frameMedian": 16.700000000000728,
+        "frameP95": 16.799999999999272
+      }
+    ],
+    "errors": []
+  },
+  "afterTouch": {
+    "label": "road-setup-accepted",
+    "device": "touch",
+    "bootMs": 5362,
+    "cityReadyMs": 6165,
+    "startupMaxLongTaskMs": 160,
+    "roadCalls": {
+      "map.setCycleTracks": {
+        "count": 1,
+        "totalMs": 8.400000095367432,
+        "p95Ms": 8.400000095367432,
+        "maxMs": 8.400000095367432
+      },
+      "map.setStreetFronts": {
+        "count": 1,
+        "totalMs": 0.09999990463256836,
+        "p95Ms": 0.09999990463256836,
+        "maxMs": 0.09999990463256836
+      },
+      "loader.projection.wall": {
+        "count": 1,
+        "totalMs": 729.7000002861023,
+        "p95Ms": 729.7000002861023,
+        "maxMs": 729.7000002861023
+      },
+      "roads.surface.wall": {
+        "count": 1,
+        "totalMs": 192.90000009536743,
+        "p95Ms": 192.90000009536743,
+        "maxMs": 192.90000009536743
+      },
+      "roads._computeSegmentGeometry": {
+        "count": 1,
+        "totalMs": 17,
+        "p95Ms": 17,
+        "maxMs": 17
+      },
+      "roads._computeBounds": {
+        "count": 1,
+        "totalMs": 3,
+        "p95Ms": 3,
+        "maxMs": 3
+      },
+      "roads._buildLabels": {
+        "count": 1,
+        "totalMs": 6.5,
+        "p95Ms": 6.5,
+        "maxMs": 6.5
+      },
+      "roads._computeEndpointAngles": {
+        "count": 1,
+        "totalMs": 0.40000009536743164,
+        "p95Ms": 0.40000009536743164,
+        "maxMs": 0.40000009536743164
+      }
+    },
+    "stages": [
+      {
+        "stage": "street",
+        "zoom": 18.20770928072568,
+        "frameMedian": 16.699999999999818,
+        "frameP95": 16.700000000000728
+      },
+      {
+        "stage": "pan",
+        "zoom": 18.207681998162112,
+        "frameMedian": 16.69999999999891,
+        "frameP95": 16.700000000000728
+      },
+      {
+        "stage": "wide",
+        "zoom": 15.999999999999849,
+        "frameMedian": 16.69999999999891,
+        "frameP95": 16.700000000000728
+      },
+      {
+        "stage": "minimum",
+        "zoom": 15.507242280020275,
+        "frameMedian": 16.700000000000728,
+        "frameP95": 16.799999999999272
+      },
+      {
+        "stage": "overview",
+        "zoom": 14.8,
+        "frameMedian": 16.69999999999709,
+        "frameP95": 16.799999999999272
+      }
+    ],
+    "errors": []
+  }
+}

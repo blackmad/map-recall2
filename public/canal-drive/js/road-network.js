@@ -31,13 +31,17 @@ class RoadNetwork {
       { mergeSize: 18, junctionStitchRadius: JUNCTION_STITCH_RADIUS }, { cancelled });
   }
 
-  constructor(segments, startPoint, finishPoint, tiles, routingGraph = null) {
+  static prepareSurfaceIndex(segments, routingGraph, cancelled) {
+    return SURFACE.buildRoadSpatialIndexAsync(segments, ROAD_GRID_CELL, routingGraph.connectors || [], { cancelled });
+  }
+
+  constructor(segments, startPoint, finishPoint, tiles, routingGraph = null, surfaceIndex = null) {
     this.isOpenTrack = true;
     this.segments = segments; // [{points, width, type, normals, leftBound, rightBound}]
     this.tiles = tiles || []; // [{img, gameX, gameY, gameW, gameH}]
     this.startPoint = { ...startPoint };
     this.finishPoint = { ...finishPoint };
-    this.roadIndex = null;
+    this.roadIndex = surfaceIndex;
     this.numCheckpoints = 10;
     this._frameCache = new Map();
     this._graphCache = routingGraph;
@@ -46,7 +50,7 @@ class RoadNetwork {
     this._preferredCorridorName = null;
 
     this._computeSegmentGeometry();
-    this._buildGrid();
+    if (!surfaceIndex) this._buildGrid();
     this._computeBounds();
     this._buildLabels();
 

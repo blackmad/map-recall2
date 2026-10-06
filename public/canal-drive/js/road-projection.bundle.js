@@ -27,6 +27,7 @@ var CanalRecallRoadProjection = (() => {
     RoadSnapIndex: () => RoadSnapIndex,
     WORLD_ORIGIN: () => WORLD_ORIGIN,
     buildRoadSegments: () => buildRoadSegments,
+    buildRoadSegmentsAsync: () => buildRoadSegmentsAsync,
     centringOffset: () => centringOffset,
     closestPointOnSegment: () => closestPointOnSegment,
     findStartFinish: () => findStartFinish,
@@ -44,36 +45,92 @@ var CanalRecallRoadProjection = (() => {
     tileYToLat: () => tileYToLat
   });
 
+  // src/canalRecall/buildScheduling.ts
+  async function finishBatchedBuild(stages, scheduling = {}) {
+    const yieldToBrowser = scheduling.yieldToBrowser ?? (() => new Promise((resolve) => setTimeout(resolve, 0)));
+    while (true) {
+      const started = performance.now();
+      do {
+        if (scheduling.cancelled?.()) throw new DOMException("Route loading cancelled", "AbortError");
+        const step = stages.next();
+        if (step.done) return step.value;
+      } while (performance.now() - started < (scheduling.budgetMs ?? 8));
+      await yieldToBrowser();
+    }
+  }
+
   // src/canalRecall/osm/roadSnapIndex.ts
   var distanceTo = (point, node) => Math.hypot(
     Math.max(node.minX - point.x, 0, point.x - node.maxX),
     Math.max(node.minY - point.y, 0, point.y - node.maxY)
   );
-  var RoadSnapIndex = class {
+  function* roadSnapStages(segments) {
+    const spans = [];
+    for (const segment of segments) for (let i = 1; i < segment.points.length; i++) {
+      spans.push({ a: segment.points[i - 1], b: segment.points[i], order: spans.length });
+      if (spans.length % 1024 === 0) yield;
+    }
+    function* partition(items, middle, axis) {
+      const coordinate = (span) => span.a[axis] + span.b[axis];
+      let left = 0, right = items.length - 1, steps = 0;
+      while (left < right) {
+        const pivot = coordinate(items[left + right >>> 1]);
+        let i = left, j = right;
+        while (i <= j) {
+          while (coordinate(items[i]) < pivot) {
+            i++;
+            if (++steps % 1024 === 0) yield;
+          }
+          while (coordinate(items[j]) > pivot) {
+            j--;
+            if (++steps % 1024 === 0) yield;
+          }
+          if (i <= j) {
+            [items[i], items[j]] = [items[j], items[i]];
+            i++;
+            j--;
+          }
+          if (++steps % 1024 === 0) yield;
+        }
+        if (middle <= j) right = j;
+        else if (middle >= i) left = i;
+        else break;
+        yield;
+      }
+    }
+    function* build(items) {
+      const node = { minX: Infinity, minY: Infinity, maxX: -Infinity, maxY: -Infinity };
+      for (let i = 0; i < items.length; i++) {
+        const { a, b } = items[i];
+        node.minX = Math.min(node.minX, a.x, b.x);
+        node.minY = Math.min(node.minY, a.y, b.y);
+        node.maxX = Math.max(node.maxX, a.x, b.x);
+        node.maxY = Math.max(node.maxY, a.y, b.y);
+        if (i % 1024 === 0) yield;
+      }
+      if (items.length <= 8) node.spans = items;
+      else {
+        const middle = Math.floor(items.length / 2);
+        yield* partition(items, middle, node.maxX - node.minX >= node.maxY - node.minY ? "x" : "y");
+        node.left = yield* build(items.slice(0, middle));
+        node.right = yield* build(items.slice(middle));
+      }
+      return node;
+    }
+    return spans.length ? yield* build(spans) : void 0;
+  }
+  var RoadSnapIndex = class _RoadSnapIndex {
     root;
     constructor(segments) {
-      const spans = [];
-      for (const segment of segments) for (let i = 1; i < segment.points.length; i++)
-        spans.push({ a: segment.points[i - 1], b: segment.points[i], order: spans.length });
-      const build = (items) => {
-        const node = { minX: Infinity, minY: Infinity, maxX: -Infinity, maxY: -Infinity };
-        for (const { a, b } of items) {
-          node.minX = Math.min(node.minX, a.x, b.x);
-          node.minY = Math.min(node.minY, a.y, b.y);
-          node.maxX = Math.max(node.maxX, a.x, b.x);
-          node.maxY = Math.max(node.maxY, a.y, b.y);
-        }
-        if (items.length <= 8) node.spans = items;
-        else {
-          const axis = node.maxX - node.minX >= node.maxY - node.minY ? "x" : "y";
-          items.sort((a, b) => a.a[axis] + a.b[axis] - (b.a[axis] + b.b[axis]));
-          const middle = Math.floor(items.length / 2);
-          node.left = build(items.slice(0, middle));
-          node.right = build(items.slice(middle));
-        }
-        return node;
-      };
-      if (spans.length) this.root = build(spans);
+      const stages = roadSnapStages(segments);
+      let step = stages.next();
+      while (!step.done) step = stages.next();
+      this.root = step.value;
+    }
+    static async create(segments, scheduling = {}) {
+      const index = new _RoadSnapIndex([]);
+      index.root = await finishBatchedBuild(roadSnapStages(segments), scheduling);
+      return index;
     }
     nearest(point) {
       let best = null, order = Infinity;
@@ -219,10 +276,12 @@ var CanalRecallRoadProjection = (() => {
       y: WORLD_ORIGIN.y - (bounds.minY + bounds.maxY) / 2
     };
   }
-  function buildRoadSegments(ways, centre, options) {
+  function* roadSegmentStages(ways, centre, options) {
     const tolerance = options.simplificationToleranceDegrees * METRES_PER_DEGREE_LAT * PIXELS_PER_METER;
     const segments = [];
-    for (const way of ways) {
+    for (let wayIndex = 0; wayIndex < ways.length; wayIndex++) {
+      if (wayIndex % 32 === 0) yield;
+      const way = ways[wayIndex];
       const points = way.nodes.map((node) => projectToWorld(node, centre));
       if (points.length < 2) continue;
       const simplified = simplifyPath(points, tolerance);
@@ -239,13 +298,24 @@ var CanalRecallRoadProjection = (() => {
       });
     }
     const offset = centringOffset(segments);
-    for (const segment of segments) {
+    for (let i = 0; i < segments.length; i++) {
+      if (i % 32 === 0) yield;
+      const segment = segments[i];
       for (const point of segment.points) {
         point.x += offset.x;
         point.y += offset.y;
       }
     }
     return { segments, offset };
+  }
+  function buildRoadSegments(ways, centre, options) {
+    const stages = roadSegmentStages(ways, centre, options);
+    let step = stages.next();
+    while (!step.done) step = stages.next();
+    return step.value;
+  }
+  async function buildRoadSegmentsAsync(ways, centre, options, scheduling = {}) {
+    return finishBatchedBuild(roadSegmentStages(ways, centre, options), scheduling);
   }
   function snapToRoad(point, centre, offset, segments, maxSnapDistance, index) {
     const projected = projectToWorld(point, centre);
