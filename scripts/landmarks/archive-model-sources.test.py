@@ -122,6 +122,65 @@ class ScopedArchiveTest(unittest.TestCase):
             self.run_archive('--only', 'fixture-alpha,unknown-model')
         self.assertEqual(before, {str(path): path.read_bytes() for path in self.dest.rglob('*') if path.is_file()})
 
+    def legacy_acquisition_pack(self):
+        # The Rock's direct worker manifest is a list, including failed requests
+        # without paths and derived PDF pages alongside downloaded originals.
+        folder = self.dest / 'models/fixture-alpha'
+        records = []
+        for relative, data, url, extra in (
+                ('files/brochure.pdf', b'original PDF bytes', 'https://example.test/brochure.pdf', {'raw': True}),
+                ('webpages/owner.html', b'original owner HTML', 'https://example.test/', {'raw': True}),
+                ('processed/brochure-page7.png', b'derived PDF page bytes', None,
+                 {'raw': False, 'derivedFrom': 'files/brochure.pdf', 'page': 7})):
+            source = folder / relative
+            source.parent.mkdir(parents=True, exist_ok=True)
+            source.write_bytes(data)
+            record = {'path': relative, 'sha256': hashlib.sha256(data).hexdigest(),
+                      'bytes': len(data), 'accessState': 'original HTTP response downloaded', **extra}
+            if url:
+                record.update({'url': url, 'retrievedAt': '2026-10-06T10:07:37.310412+00:00',
+                               'rights': 'Copyright respective owner/photographer; private research reference only'})
+            else:
+                record['accessState'] = 'local PDF page rendering; original PDF retained'
+            records.append(record)
+        records.append({'url': 'https://overpass.kumi.systems/api/interpreter',
+                        'retrievedAt': '2026-10-06', 'accessState': '30s timeout; bounded fallback successful OSM map API'})
+        self.save(folder / 'manifest.json', records)
+        return folder, records
+
+    def test_actual_legacy_acquisition_list_preserves_original_and_provenance(self):
+        folder, records = self.legacy_acquisition_pack()
+        original_manifest = (folder / 'manifest.json').read_bytes()
+        result, _ = self.run_archive('--only', 'fixture-alpha', '--verify')
+        manifest = json.loads((folder / 'manifest.json').read_text())
+        self.assertEqual((folder / 'original-worker-manifest.json').read_bytes(), original_manifest)
+        self.assertIn('models/fixture-alpha/original-worker-manifest.json', result['requiredPaths'])
+        self.assertEqual(manifest['privateAcquisitionRecords'], records)
+        self.assertEqual(manifest['privateSourceAccessRecords'], [records[-1]])
+        self.assertIn(records[-1]['url'], manifest['sourceUrls'])
+        for original in records[:-1]:
+            archived = next(f for f in manifest['files'] if f.get('path') == original['path'])
+            for key, value in original.items():
+                self.assertEqual(archived[key], value)
+            self.assertEqual(archive.digest(self.dest / archived['archiveObject']), original['sha256'])
+            self.assertIn('models/fixture-alpha/' + original['path'], result['requiredPaths'])
+            self.assertEqual(archived['representation'], 'raw-http-response-body' if original['raw'] else 'derived-source-rendering')
+        self.run_archive('--only', 'fixture-alpha', '--verify')
+        self.assertEqual((folder / 'original-worker-manifest.json').read_bytes(), original_manifest)
+        repeated = json.loads((folder / 'manifest.json').read_text())
+        self.assertEqual(repeated['privateAcquisitionRecords'], records)
+        self.assertEqual(repeated['privateSourceAccessRecords'], [records[-1]])
+
+    def test_legacy_claimed_original_checksum_and_missing_file_rejected(self):
+        folder, records = self.legacy_acquisition_pack()
+        source = folder / records[0]['path']
+        source.write_bytes(b'corrupted original')
+        with self.assertRaisesRegex(SystemExit, 'Checksum failure'):
+            self.run_archive('--only', 'fixture-alpha', '--verify')
+        source.unlink()
+        with self.assertRaisesRegex(SystemExit, 'Missing selected private original'):
+            self.run_archive('--only', 'fixture-alpha', '--verify')
+
     def test_repeatable_selection_and_default_full_mode(self):
         result, _ = self.run_archive('--only', 'fixture-alpha', '--only', 'fixture-beta,fixture-alpha', '--verify')
         self.assertEqual(result['selectedModelIds'], ['fixture-alpha', 'fixture-beta'])

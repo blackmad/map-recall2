@@ -93,7 +93,17 @@ def merge_manifest(previous, current):
 def existing_manifest(dest, mid):
     """Normalize selected direct-worker packs without discarding their original records."""
     folder = dest / 'models' / mid
-    previous = load(folder / 'manifest.json') or {}
+    manifest_path = folder / 'manifest.json'
+    previous = load(manifest_path)
+    worker_manifest_bytes = None
+    if isinstance(previous, list):
+        worker_manifest_bytes = manifest_path.read_bytes()
+        previous = {'privateAcquisitionRecords': previous, 'files': previous,
+                    'originalWorkerManifestPath': 'models/' + mid + '/original-worker-manifest.json'}
+    elif previous is None:
+        if manifest_path.exists():
+            raise SystemExit('Unreadable selected manifest: ' + str(manifest_path))
+        previous = {}
     if not isinstance(previous, dict):
         raise SystemExit('Unsupported selected manifest format: ' + str(folder))
     previous = dict(previous)
@@ -104,22 +114,31 @@ def existing_manifest(dest, mid):
         records.extend(research)
     normalized, missing, bytes_copied = [], list(previous.get('missingLocalFiles', [])), 0
     for record in records:
+        if not isinstance(record, dict):
+            raise SystemExit('Unsupported selected file record: ' + mid)
         record = dict(record)
         if record.get('archiveObject'):
             normalized.append(record)
             continue
         relative = record.get('path')
         if not relative:
+            if record.get('url') and record.get('accessState') and not any(record.get(k) for k in ('sha256', 'bytes', 'raw')):
+                previous.setdefault('privateSourceAccessRecords', []).append(record)
+                continue
             raise SystemExit('Selected private file record lacks archiveObject/path: ' + mid)
         source = (folder / relative).resolve()
         if not source.is_relative_to(folder.resolve()):
             raise SystemExit('Selected private source path escapes its pack: ' + relative)
         if not source.is_file():
+            if record.get('sha256') or record.get('raw'):
+                raise SystemExit('Missing selected private original: ' + str(source))
             missing.append({**record, 'state': record.get('accessState', 'missing-private-source-file')})
             continue
         sha = digest(source)
         if record.get('sha256') and record['sha256'] != sha:
             raise SystemExit('Checksum failure: ' + str(source))
+        if record.get('bytes') is not None and record['bytes'] != source.stat().st_size:
+            raise SystemExit('Byte count failure: ' + str(source))
         target = dest / 'objects/sha256' / sha[:2] / sha
         if not target.exists():
             target.parent.mkdir(parents=True, exist_ok=True)
@@ -130,12 +149,19 @@ def existing_manifest(dest, mid):
         normalized.append({**record, 'sourcePath': str(source), 'originalFilename': source.name,
                            'archiveObject': str(target.relative_to(dest)), 'sha256': sha, 'bytes': source.stat().st_size,
                            'mediaType': mimetypes.guess_type(source.name)[0], 'category': 'preserved-private-worker-source',
-                           'representation': record.get('representation', 'raw-http-response-body' if raw else 'cached-source-bytes-worker-provenance-preserved'),
+                           'representation': record.get('representation', 'raw-http-response-body' if raw else 'derived-source-rendering' if record.get('derivedFrom') else 'cached-source-bytes-worker-provenance-preserved'),
                            'sourceUrls': record.get('sourceUrls', [record['url']] if record.get('url') else []),
                            'readableArchivePath': str(source.relative_to(dest)), 'modelRelativePath': relative})
     previous['files'] = normalized
-    previous['sourceUrls'] = sorted(set(previous.get('sourceUrls', [])) | {url for record in normalized for url in record.get('sourceUrls', [])})
+    previous['sourceUrls'] = sorted(set(previous.get('sourceUrls', [])) | {url for record in normalized for url in record.get('sourceUrls', [])} | {record['url'] for record in previous.get('privateSourceAccessRecords', [])})
     previous['missingLocalFiles'] = missing
+    if worker_manifest_bytes is not None:
+        sidecar = folder / 'original-worker-manifest.json'
+        if sidecar.exists() and sidecar.read_bytes() != worker_manifest_bytes:
+            raise SystemExit('Conflicting original worker manifest: ' + str(sidecar))
+        if not sidecar.exists():
+            sidecar.write_bytes(worker_manifest_bytes)
+            changed(sidecar)
     return previous, bytes_copied
 
 def walk(value):
@@ -587,7 +613,7 @@ def main():
         verified = set()
         for mid, manifest in manifests.items():
             required.update({'models/' + mid + '/manifest.json', 'models/' + mid + '/README.md'})
-            for sidecar in ('research-manifest.json', 'acquisition-manifest.json'):
+            for sidecar in ('research-manifest.json', 'acquisition-manifest.json', 'original-worker-manifest.json'):
                 path = dest / 'models' / mid / sidecar
                 if path.is_file():
                     required.add(str(path.relative_to(dest)))
