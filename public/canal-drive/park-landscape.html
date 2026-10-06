@@ -38,4 +38,10 @@ map.on('load',()=>{
   setInterval(()=>{document.querySelector('#status').textContent=`${(trees.debugTrees||0).toLocaleString()} nearby trees · ${trees.debugTiles||0} tiles · ${trees.meshes.length} shared draws`;},500);
 });
 </script>
+<script>
+window.CanalFeedbackPage = () => ({ id: 'park-' + picker.value, label: parks[+picker.value][0], canvas: map.getCanvas(), map,
+  context: () => ({ center: map.getCenter().toArray(), zoom: map.getZoom(), pitch: map.getPitch(), bearing: map.getBearing(),
+    grounds: document.querySelector('#grounds').checked, trees: document.querySelector('#trees').checked }) });
+</script>
+<script src="js/feedback/browser.js"></script>
 </html>

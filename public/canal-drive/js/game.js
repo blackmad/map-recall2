@@ -337,6 +337,7 @@ class Game {
   }
 
   _update(dt) {
+    if (this._feedbackOpen) return;
     // A tap outside the d-pad means "restart" on the finish screen, but while
     // driving it used to press Enter on every touch of the map.
     this.input.setTapRestartEnabled(this.state !== GameState.RACING);

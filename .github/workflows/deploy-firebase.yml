@@ -70,7 +70,7 @@ jobs:
       - name: Deploy hosting targets
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/firebase-service-account.json
-        run: npx firebase-tools@15 deploy --only hosting --project map-recall2-blackmad --non-interactive
+        run: npx firebase-tools@15 deploy --only hosting,firestore:rules --project map-recall2-blackmad --non-interactive
       - name: Verify live revision on both sites
         run: |
           for site in edumap-blackmad canalrecall-blackmad; do

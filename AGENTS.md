@@ -50,3 +50,7 @@ Every landmark build must archive task-relevant raw sources per canonical model 
 For new landmark reference photos, use a bounded Amsterdam Beeldbank address/name search as a standard research step. Preserve original images and catalogue/page captures in the private source pack; record dates, rights and access gaps. Cross-check historical features against current photos and BAG/roof evidence.
 
 During the user-authorized continuous landmark queue run, keep progressing through batch checkpoints and assign the next bounded POIs while integration/review proceeds. Source archival and documentation support building work; they do not replace it. Do not end at each single-model checkpoint or imply workers are active when they are idle. Use fresh short-context workers and keep shared GPU/git mutations coordinated.
+
+## Submitted feedback
+
+When asked to review or fix feedback submitted from the game or image galleries, use `.agents/skills/canal-feedback/SKILL.md` and `npm run feedback:queue -- pull`. Read the full saved note, screenshot, image anchor, host and build context before claiming work. Preserve user evidence, claim with the note's Firestore update-time precondition, and resolve only after the relevant behavior/visual checks. Keep landmark and street tasks in their existing inventories as well; cloud feedback does not replace them.

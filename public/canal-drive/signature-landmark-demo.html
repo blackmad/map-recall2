@@ -168,5 +168,10 @@ for (const button of document.querySelectorAll('button[data-view]')) {
 }
 window.__focusLandmark = id => { picker.value = id; picker.dispatchEvent(new Event('change')); };
 </script>
+<script>
+window.CanalFeedbackPage = () => ({ id: picker.value || 'placement', label: picker.selectedOptions[0]?.textContent || document.title, canvas: map.getCanvas(), map,
+  context: () => ({ center: map.getCenter().toArray(), zoom: map.getZoom(), pitch: map.getPitch(), bearing: map.getBearing() }) });
+</script>
+<script src="js/feedback/browser.js"></script>
 </body>
 </html>
