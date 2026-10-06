@@ -11316,6 +11316,75 @@
       "triangles": 35426,
       "bytes": 409840,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "ndsm-warehouse-complex": {
+      "id": "ndsm-warehouse-complex",
+      "name": "NDSM-loods",
+      "landmarkId": "extract_landmarks_1741957518",
+      "modelUrl": "./models/ndsm-warehouse-complex.glb",
+      "suppressOsmIds": [
+        "w44824309",
+        "NL.IMBAG.Pand.0363100012062886"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.896426,
+          52.4013
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 205,
+        "widthMetres": 199
+      },
+      "surveyed": {
+        "anchor": [
+          4.896426,
+          52.4013
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current BAG Pand0363100012062886 and OSMw44824309;AHN5 native roof layout,2024 municipal facade evidence"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "attribution": {
+        "title": "NDSM Scheepsbouwloods",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/528251",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original flat-color native shipbuilding warehouse; survey-derived six-bay rooflights, high transverse mallenzolder and low attached halls. Brick/steel grid, tall glazed groups and blue doors, physical open entry. Independent shipyard buildings and existing Faralda/Treehouse retained; no downloaded mesh or photo pixels."
+      },
+      "bounds": {
+        "min": [
+          -102.4121322631836,
+          -4.5414762439577316e-7,
+          -99.01078033447266
+        ],
+        "max": [
+          102.43496704101562,
+          24.278945922851562,
+          99.47207641601562
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.896426,
+          52.4013
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 204.84709930419922,
+        "heightMetres": 24.278946376999187,
+        "depthMetres": 198.48285675048828,
+        "depthCoverage": 0.9974012902034587
+      },
+      "triangles": 12804,
+      "bytes": 168548,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

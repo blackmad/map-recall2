@@ -23,6 +23,7 @@ await MeshoptEncoder.ready;
 import {buildCulturalLandmark} from './cultural-builders';
 import {buildRemEiland} from './rem-eiland-builder';
 import {buildValley} from './valley-builder';
+import {buildNdsmWarehouseComplex} from './ndsm-warehouse-complex-builder';
 import {openTopPrism, upwardRoofPlane} from './house-geometry';
 import {fittedSignLayout} from './sign-layout';
 import {buildNieuweKerk} from './nieuwe-kerk-builder';
@@ -293,6 +294,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(['foam','huis-marseille','ons-lieve-heer-op-solder'].includes(id))buildCanalMuseumLandmark(id,w,d,helpers);
     else if(id==='rem-eiland')buildRemEiland(w,d,helpers);
     else if(id==='valley')buildValley(w,d,helpers);
+    else if(id==='ndsm-warehouse-complex')buildNdsmWarehouseComplex(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   manifest.models[id]=await save(id);

@@ -1,0 +1,19 @@
+{
+  "id": "extract_landmarks_1741957518",
+  "name": "NDSM-loods",
+  "type": "landmark",
+  "cityId": "amsterdam",
+  "center": [
+    52.401019,
+    4.895504
+  ],
+  "description": "The former NDSM shipbuilding warehouse contains a six-bay longitudinal hall and a transverse hall that once held the mould loft. Its riveted steel framework, roof lights and enormous blue doors survive from the shipyard. Today Stichting Kinetisch Noord manages it as a centre for art, design and crafts: the Kunststad contains around85 studios with more than250 makers. The outdoor shipyard has a separate operator, Stichting NDSM-werf.",
+  "funFact": "The warehouse was brought into use in1922\u20131923. Artists now build their own studio spaces inside the former steel-plate workshop.",
+  "sourceUrls": [
+    "https://monumentenregister.cultureelerfgoed.nl/monumenten/528251",
+    "https://www.ndsmloods.nl/bezoek/ndsm-loods/",
+    "https://www.ndsmloods.nl/english/"
+  ],
+  "website": "https://www.ndsmloods.nl/",
+  "identityNotes": "Genuine existing extract destination retained; Kunststad, NDSM Loods and Scheepsbouwloods are names for this shared physical hall, not duplicate destinations. Existing tenant identities should remain selectable where genuine."
+}

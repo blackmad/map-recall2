@@ -7205,6 +7205,44 @@ Map source: ${osmUrl(places[i][0])}`);
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free house-style reconstruction; surveyed tier contours and photo-guided stone/glass assemblies. No downloaded render mesh or photograph pixels."
       }
+    },
+    {
+      id: "ndsm-warehouse-complex",
+      name: "NDSM-loods",
+      landmarkId: "extract_landmarks_1741957518",
+      modelUrl: "./models/ndsm-warehouse-complex.glb",
+      suppressOsmIds: [
+        "w44824309",
+        "NL.IMBAG.Pand.0363100012062886"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.896426,
+          52.4013
+        ],
+        headingDegrees: 0,
+        lengthMetres: 205,
+        widthMetres: 199
+      },
+      surveyed: {
+        anchor: [
+          4.896426,
+          52.4013
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG Pand0363100012062886 and OSMw44824309;AHN5 native roof layout,2024 municipal facade evidence"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "NDSM Scheepsbouwloods",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/528251",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original flat-color native shipbuilding warehouse; survey-derived six-bay rooflights, high transverse mallenzolder and low attached halls. Brick/steel grid, tall glazed groups and blue doors, physical open entry. Independent shipyard buildings and existing Faralda/Treehouse retained; no downloaded mesh or photo pixels."
+      }
     }
   ];
 
@@ -10515,6 +10553,28 @@ Map source: ${osmUrl(places[i][0])}`);
         sourceUrl: "https://www.openstreetmap.org/way/1097646403",
         reason: "Ground end of current access=yes northwestern public steps; original OSM incline=down node order and architect public-valley description."
       }
+    },
+    {
+      id: "extract_landmarks_1741957518",
+      name: "NDSM-loods",
+      type: "landmark",
+      cityId: "amsterdam",
+      center: [
+        52.401019,
+        4.895504
+      ],
+      description: "The former NDSM shipbuilding warehouse contains a six-bay longitudinal hall and a transverse hall that once held the mould loft. Its riveted steel framework, roof lights and enormous blue doors survive from the shipyard. Today Stichting Kinetisch Noord manages it as a centre for art, design and crafts: the Kunststad contains around85 studios with more than250 makers. The outdoor shipyard has a separate operator, Stichting NDSM-werf.",
+      funFact: "The warehouse was brought into use in1922\u20131923. Artists now build their own studio spaces inside the former steel-plate workshop.",
+      sourceUrls: [
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/528251",
+        "https://www.ndsmloods.nl/bezoek/ndsm-loods/",
+        "https://www.ndsmloods.nl/english/"
+      ],
+      website: "https://www.ndsmloods.nl/",
+      identityNotes: "Genuine existing extract destination retained; Kunststad, NDSM Loods and Scheepsbouwloods are names for this shared physical hall, not duplicate destinations. Existing tenant identities should remain selectable where genuine.",
+      modelId: "ndsm-warehouse-complex",
+      sourceUrl: "https://www.ndsmloods.nl/bezoek/ndsm-loods/",
+      preferDescription: true
     }
   ];
 
@@ -10539,7 +10599,8 @@ Map source: ${osmUrl(places[i][0])}`);
           center: fallback?.destinationOverride?.center ?? existing?.center ?? fallback?.center ?? [anchor[1], anchor[0]],
           routeCenter: fallback?.routeDestination?.center ?? existing?.routeCenter,
           type: existing?.type || "landmark",
-          funFact: existing?.funFact || (!existing?.wikipediaExtract ? fallback?.description : void 0),
+          // A researched description can improve a generic mapped summary while preserving extract facts.
+          funFact: existing?.funFact || (fallback?.preferDescription || !existing?.wikipediaExtract ? fallback?.description : void 0),
           sourceUrl: existing?.sourceUrl || fallback?.sourceUrl || model.attribution.sourceUrl,
           manualPoi: true,
           modelId: model.id,

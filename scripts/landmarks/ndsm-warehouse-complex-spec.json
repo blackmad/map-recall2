@@ -1,0 +1,38 @@
+{
+  "id": "ndsm-warehouse-complex",
+  "name": "NDSM-loods",
+  "landmarkId": "extract_landmarks_1741957518",
+  "modelUrl": "./models/ndsm-warehouse-complex.glb",
+  "suppressOsmIds": [
+    "w44824309",
+    "NL.IMBAG.Pand.0363100012062886"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.896426,
+      52.4013
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 205,
+    "widthMetres": 199
+  },
+  "surveyed": {
+    "anchor": [
+      4.896426,
+      52.4013
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG Pand0363100012062886 and OSMw44824309;AHN5 native roof layout,2024 municipal facade evidence"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "NDSM Scheepsbouwloods",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/528251",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original flat-color native shipbuilding warehouse; survey-derived six-bay rooflights, high transverse mallenzolder and low attached halls. Brick/steel grid, tall glazed groups and blue doors, physical open entry. Independent shipyard buildings and existing Faralda/Treehouse retained; no downloaded mesh or photo pixels."
+  }
+}

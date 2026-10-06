@@ -1,0 +1,442 @@
+{
+  "id": "ndsm-warehouse-complex",
+  "status": "Scoped NDSMloods source/visual repairs and native game integration accepted; widerrequestedshipyardcomplex and generalperformance remain pending.",
+  "scope": "One actual shipbuilding hall with attached Pand wings; wider NDSM shipyard complex remains requested and pending",
+  "identity": {
+    "landmarkId": "extract_landmarks_1741957518",
+    "osmId": "w44824309",
+    "bagId": "0363100012062886",
+    "retainedNeighbors": [
+      "w717827611",
+      "NL.IMBAG.Pand.0363100012079735",
+      "w280620080",
+      "w280619702",
+      "w500238188",
+      "NL.IMBAG.Pand.0363100012249015"
+    ],
+    "existingAssetsRetained": [
+      "faralda",
+      "treehouse-ndsm",
+      "straat-museum"
+    ]
+  },
+  "checks": {
+    "finiteBounds": true,
+    "nativeScale": true,
+    "upwardRoofNormals": true,
+    "fractionalFirstHitGlazing": {
+      "passes": 414,
+      "sampleFractions": [
+        0.11,
+        0.37,
+        0.69,
+        0.91
+      ],
+      "heightFractions": [
+        0.23,
+        0.73
+      ],
+      "frameHitsExcluded": true
+    },
+    "physicalEntryClearance": {
+      "passes": 16,
+      "minimumDepthBeyondFacadeMetres": 5.8,
+      "mainSourceHeightMetres": 10.5
+    },
+    "outsideFootprintRays": true,
+    "triangles": 13366,
+    "sourceRoofPlaneCount": 80,
+    "glbBytes": "pending coordinator export",
+    "roofSupportAndCompressedWinding": "pending exported-mesh checks",
+    "gallery": "repaired draft pending; original independent review failed critically",
+    "liveGame": "pending",
+    "routePinCardPhysicalClick": "pending",
+    "sourceZoneAuthoredChecks": {
+      "upperGlazing": 72,
+      "lowWingMasonry": 12,
+      "mainPortal10_5mClearance": 16,
+      "mainPortalJambSupports": 6,
+      "parkedBlueLeaves": 12,
+      "decoded": "pending coordinator export/check",
+      "independentOfBuilderPaneProbes": true
+    }
+  },
+  "sourceArchive": {
+    "path": "models/ndsm-warehouse-complex",
+    "sourceChecksumVerification": 18,
+    "commit": "2a7e00c"
+  },
+  "referenceComparisons": [
+    {
+      "reference": "files/south-panorama.jpg",
+      "date": "2024-10-23",
+      "features": "tall narrow glass groups,brick steel-grid,south historic name band,projection",
+      "render": "pending"
+    },
+    {
+      "reference": "files/east-panorama.jpg",
+      "date": "2024-10-23",
+      "features": "low easternhall,multi-pane glass groups,retained neighboring raised structure",
+      "render": "pending"
+    },
+    {
+      "reference": "files/west-panorama.jpg",
+      "date": "2024-10-23",
+      "features": "high transverse end and longhall entry/blue doors",
+      "render": "pending"
+    },
+    {
+      "reference": "files/north.jpg",
+      "date": "architect2017 approximate",
+      "features": "pitched rooflight repetition/translucent grey panels",
+      "render": "pending"
+    },
+    {
+      "reference": "files/north-panorama.jpg",
+      "date": "2024-10-23",
+      "features": "high transverse mallenzolder facade: full-height narrow pane and blue panel groups; aperture heights now follow high local eave",
+      "render": "pending"
+    }
+  ],
+  "limitations": [
+    "Previous independent critical frontage/portal visual failures remain acceptance blockers until repaired draft reference/render and game re-review; no visual acceptance claimed.",
+    "Glazing/door frequency remains photo-guided approximation,not exact measured panes.",
+    "No interior Kunststad studio reconstruction;no fabricated painted building name or copied graffiti/photo pixels.",
+    "Beeldbank JS viewer shell,no inspected archives/drawings.",
+    "Full shipyard Smederij/Timmerwerkplaats/open rail/ramp/crane scope pending;do not close whole requested task as complete.",
+    "Panorama roof curvature unresolved; architect detail photos and RCE description provide no clear circular profile assertion. Native80roof planes unchanged."
+  ],
+  "previousIndependentFailure": {
+    "report": "artifacts/landmark-continuation-20261006/ndsm-warehouse-complex-independent-review/review.json",
+    "status": "failed-critical-facade-assemblies",
+    "glbSha256": "fdd7f5fc6e90bbc4aebbf35b546377d0d8a1f13599058e5d31582cc9f152f57c",
+    "preservedInputs": "artifacts/landmark-continuation-20261006/ndsm-warehouse-complex-before-frontage-repair",
+    "newSourceChecksRejectOldGLB": "decoded south source upper glazing u1.78 y8.2 first hit greyBrick",
+    "acceptance": "Not superseded by CPU pass; coordinator must inspect same four reference/render views and request independent failure-seeking re-review."
+  },
+  "repairs": [
+    "Split south chain at47.97m and north chain at20.32m shared survey roof-family vertices; use one-sided wall heights and local tall glazing assemblies.",
+    "Restore photo-supported high north glass and blue steel-screen groups while retaining the9m east wing.",
+    "Replace southwest main opening with true10.5m clearance and parked blue leaves; remove crossing sill/mid-beam/grid from portals. Secondary NW opening retained.",
+    "Add independent fractional source-zone upper-height, low-wing masonry and source-height portal/support/parked-leaf checks; allow decodedGLB checks and reject old failed asset."
+  ],
+  "supersededDraftReview": {
+    "id": "ndsm-warehouse-complex",
+    "status": "repaired-draft-authored-CPU-ready-previous-independent-failure-preserved-visual-game-pending",
+    "scope": "One actual shipbuilding hall with attached Pand wings; wider NDSM shipyard complex remains requested and pending",
+    "identity": {
+      "landmarkId": "extract_landmarks_1741957518",
+      "osmId": "w44824309",
+      "bagId": "0363100012062886",
+      "retainedNeighbors": [
+        "w717827611",
+        "NL.IMBAG.Pand.0363100012079735",
+        "w280620080",
+        "w280619702",
+        "w500238188",
+        "NL.IMBAG.Pand.0363100012249015"
+      ],
+      "existingAssetsRetained": [
+        "faralda",
+        "treehouse-ndsm",
+        "straat-museum"
+      ]
+    },
+    "checks": {
+      "finiteBounds": true,
+      "nativeScale": true,
+      "upwardRoofNormals": true,
+      "fractionalFirstHitGlazing": {
+        "passes": 414,
+        "sampleFractions": [
+          0.11,
+          0.37,
+          0.69,
+          0.91
+        ],
+        "heightFractions": [
+          0.23,
+          0.73
+        ],
+        "frameHitsExcluded": true
+      },
+      "physicalEntryClearance": {
+        "passes": 16,
+        "minimumDepthBeyondFacadeMetres": 5.8,
+        "mainSourceHeightMetres": 10.5
+      },
+      "outsideFootprintRays": true,
+      "triangles": 13366,
+      "sourceRoofPlaneCount": 80,
+      "glbBytes": "pending coordinator export",
+      "roofSupportAndCompressedWinding": "pending exported-mesh checks",
+      "gallery": "repaired draft pending; original independent review failed critically",
+      "liveGame": "pending",
+      "routePinCardPhysicalClick": "pending",
+      "sourceZoneAuthoredChecks": {
+        "upperGlazing": 72,
+        "lowWingMasonry": 12,
+        "mainPortal10_5mClearance": 16,
+        "mainPortalJambSupports": 6,
+        "parkedBlueLeaves": 12,
+        "decoded": "pending coordinator export/check",
+        "independentOfBuilderPaneProbes": true
+      }
+    },
+    "sourceArchive": {
+      "path": "models/ndsm-warehouse-complex",
+      "sourceChecksumVerification": 18,
+      "commit": "pending final clean evidence push"
+    },
+    "referenceComparisons": [
+      {
+        "reference": "files/south-panorama.jpg",
+        "date": "2024-10-23",
+        "features": "tall narrow glass groups,brick steel-grid,south historic name band,projection",
+        "render": "pending"
+      },
+      {
+        "reference": "files/east-panorama.jpg",
+        "date": "2024-10-23",
+        "features": "low easternhall,multi-pane glass groups,retained neighboring raised structure",
+        "render": "pending"
+      },
+      {
+        "reference": "files/west-panorama.jpg",
+        "date": "2024-10-23",
+        "features": "high transverse end and longhall entry/blue doors",
+        "render": "pending"
+      },
+      {
+        "reference": "files/north.jpg",
+        "date": "architect2017 approximate",
+        "features": "pitched rooflight repetition/translucent grey panels",
+        "render": "pending"
+      },
+      {
+        "reference": "files/north-panorama.jpg",
+        "date": "2024-10-23",
+        "features": "high transverse mallenzolder facade: full-height narrow pane and blue panel groups; aperture heights now follow high local eave",
+        "render": "pending"
+      }
+    ],
+    "limitations": [
+      "Previous independent critical frontage/portal visual failures remain acceptance blockers until repaired draft reference/render and game re-review; no visual acceptance claimed.",
+      "Glazing/door frequency remains photo-guided approximation,not exact measured panes.",
+      "No interior Kunststad studio reconstruction;no fabricated painted building name or copied graffiti/photo pixels.",
+      "Beeldbank JS viewer shell,no inspected archives/drawings.",
+      "Full shipyard Smederij/Timmerwerkplaats/open rail/ramp/crane scope pending;do not close whole requested task as complete.",
+      "Panorama roof curvature unresolved; architect detail photos and RCE description provide no clear circular profile assertion. Native80roof planes unchanged."
+    ],
+    "previousIndependentFailure": {
+      "report": "artifacts/landmark-continuation-20261006/ndsm-warehouse-complex-independent-review/review.json",
+      "status": "failed-critical-facade-assemblies",
+      "glbSha256": "fdd7f5fc6e90bbc4aebbf35b546377d0d8a1f13599058e5d31582cc9f152f57c",
+      "preservedInputs": "artifacts/landmark-continuation-20261006/ndsm-warehouse-complex-before-frontage-repair",
+      "newSourceChecksRejectOldGLB": "decoded south source upper glazing u1.78 y8.2 first hit greyBrick",
+      "acceptance": "Not superseded by CPU pass; coordinator must inspect same four reference/render views and request independent failure-seeking re-review."
+    },
+    "repairs": [
+      "Split south chain at47.97m and north chain at20.32m shared survey roof-family vertices; use one-sided wall heights and local tall glazing assemblies.",
+      "Restore photo-supported high north glass and blue steel-screen groups while retaining the9m east wing.",
+      "Replace southwest main opening with true10.5m clearance and parked blue leaves; remove crossing sill/mid-beam/grid from portals. Secondary NW opening retained.",
+      "Add independent fractional source-zone upper-height, low-wing masonry and source-height portal/support/parked-leaf checks; allow decodedGLB checks and reject old failed asset."
+    ]
+  },
+  "export": {
+    "sha256": "ebf02ab7f8d789dabf43735a5dc28104aa248ca5bfed7ceee70b280613c35c71",
+    "triangles": 12804,
+    "bytes": 168548
+  },
+  "currentIndependentReview": "models/ndsm-warehouse-complex/validation/clean-release-20261006/independent/final-clean-interface-repair.json",
+  "runtime": {
+    "exactScale": 1,
+    "suppressedIds": [
+      "w44824309",
+      "NL.IMBAG.Pand.0363100012062886"
+    ],
+    "sourceResolvedNeighborAliases": [
+      {
+        "osm": "w280620080",
+        "bag": "NL.IMBAG.Pand.0363100012238701"
+      },
+      {
+        "osm": "w280619702",
+        "bag": "NL.IMBAG.Pand.0363100012238702"
+      }
+    ],
+    "proof": {
+      "id": "ndsm-warehouse-complex",
+      "actualCamera": {
+        "center": [
+          4.896426,
+          52.4013
+        ],
+        "zoom": 17.7,
+        "pitch": 60,
+        "bearing": 45,
+        "elevation": 0
+      },
+      "assetVersion": "ebf02ab7f8d789da",
+      "scale": 1,
+      "bias": false,
+      "broad": false,
+      "pin": true,
+      "destination": true,
+      "source": "https://www.ndsmloods.nl/bezoek/ndsm-loods/",
+      "click": {
+        "x": 412.31938790128055,
+        "y": 635.6631060965217
+      },
+      "aliases": [
+        {
+          "id": "w44824309",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012062886",
+          "hidden": true
+        }
+      ],
+      "oldPyramidIds": [],
+      "neighbors": [
+        {
+          "ids": [
+            "w717827611",
+            "NL.IMBAG.Pand.0363100012079735"
+          ],
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        },
+        {
+          "ids": [
+            "w280620080",
+            "NL.IMBAG.Pand.0363100012238701"
+          ],
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        },
+        {
+          "ids": [
+            "w280619702",
+            "NL.IMBAG.Pand.0363100012238702"
+          ],
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        },
+        {
+          "ids": [
+            "w500238188",
+            "NL.IMBAG.Pand.0363100012249015"
+          ],
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        }
+      ],
+      "features": 26983,
+      "buildings": 31325
+    },
+    "card": {
+      "notice": "extract_landmarks_1741957518",
+      "source": "https://www.ndsmloods.nl/bezoek/ndsm-loods/",
+      "alpha": 1,
+      "drawn": true,
+      "active": "extract_landmarks_1741957518"
+    },
+    "performance": {
+      "id": "ndsm-warehouse-complex",
+      "assetVersion": "ebf02ab7f8d789da",
+      "samples": [
+        {
+          "label": "model-visible",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 61.80000019073486,
+          "p95Ms": 66.7999997138977
+        },
+        {
+          "label": "same-scene-model-hidden",
+          "visible": false,
+          "frames": 60,
+          "p50Ms": 63.09999990463257,
+          "p95Ms": 176.5
+        },
+        {
+          "label": "model-visible-repeat",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 68.19999980926514,
+          "p95Ms": 96.59999990463257
+        }
+      ],
+      "buildings": {
+        "kitVertices": 210540,
+        "chunks": 44,
+        "buildings": 31325,
+        "walls": 130832,
+        "quads": 537368,
+        "vertices": 3849561,
+        "geometryMB": 127.73000907897949,
+        "textureMB": 97.5,
+        "drawCalls": 8,
+        "triangles": 458271,
+        "buildMs": 20.90000009536743
+      },
+      "scope": "Headless Chromium same stationary scene; hidden model keeps existing replacement masks, isolating custom draw cost. No whole-game performance pass claimed."
+    },
+    "performanceAcceptance": "Headless stationary medians61.8/63.1/68.2ms. No smooth whole-game performance or hardware pan acceptance claimed.",
+    "previousPerformance": {
+      "id": "ndsm-warehouse-complex",
+      "assetVersion": "ebf02ab7f8d789da",
+      "samples": [
+        {
+          "label": "model-visible",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 107.5,
+          "p95Ms": 125.40000009536743
+        },
+        {
+          "label": "same-scene-model-hidden",
+          "visible": false,
+          "frames": 60,
+          "p50Ms": 92.90000009536743,
+          "p95Ms": 106.69999980926514
+        },
+        {
+          "label": "model-visible-repeat",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 107.09999990463257,
+          "p95Ms": 115
+        }
+      ],
+      "buildings": {
+        "kitVertices": 106434,
+        "chunks": 44,
+        "buildings": 28556,
+        "walls": 110152,
+        "quads": 500663,
+        "vertices": 3275189,
+        "geometryMB": 108.82750511169434,
+        "textureMB": 97.5,
+        "drawCalls": 44,
+        "triangles": 1321520,
+        "buildMs": 23.799999713897705
+      },
+      "scope": "Headless Chromium same stationary scene; hidden model keeps existing replacement masks, isolating custom draw cost. No whole-game performance pass claimed."
+    },
+    "rendererBase": "caedf982",
+    "updatedRendererReview": "models/ndsm-warehouse-complex/validation/renderer-caedf982-20261006/review.json"
+  },
+  "preservedFailures": [
+    "Original tallfacades classifiedwholelow and wrong7.2mportal",
+    "9cefdff9 projectingoffice highwall/glass absent; initialgallerypasswithdrawn",
+    "0fe8081f long easthalljointopen; fullnative shared-roofdatums auditedandclosed",
+    "Initialneighbor OSM IDs absent; explicitref:bag sourceauditrequired"
+  ]
+}
