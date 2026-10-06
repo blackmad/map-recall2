@@ -1,0 +1,547 @@
+{
+  "id": "blauwe-theehuis",
+  "anchor": [
+    4.87258,
+    52.358848
+  ],
+  "coordinateConvention": "source lon/lat; builder east +X, south +Z metres",
+  "bagId": "0363100012093476",
+  "bag": {
+    "type": "Feature",
+    "id": "pand.90bb4345-1233-4983-a3fc-d4e3ddd22ff8",
+    "properties": {
+      "identificatie": "0363100012093476",
+      "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012093476",
+      "bouwjaar": 1937,
+      "status": "Pand in gebruik",
+      "gebruiksdoel": "bijeenkomstfunctie",
+      "oppervlakte_min": 128,
+      "oppervlakte_max": 128,
+      "aantal_verblijfsobjecten": 1
+    },
+    "bbox": [
+      4.872509102407336,
+      52.358801974394694,
+      4.872649788707748,
+      52.35889535245777
+    ],
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.8726473495777025,
+            52.358872244322505
+          ],
+          [
+            4.872649222477312,
+            52.35887783384948
+          ],
+          [
+            4.872649788707748,
+            52.35887837557459
+          ],
+          [
+            4.872649589933951,
+            52.35888032505105
+          ],
+          [
+            4.872647037016663,
+            52.35888020610454
+          ],
+          [
+            4.8726377158524246,
+            52.35888142388322
+          ],
+          [
+            4.872627762546738,
+            52.35888271980381
+          ],
+          [
+            4.8726279056888036,
+            52.35888303499687
+          ],
+          [
+            4.872625961370793,
+            52.35888360176308
+          ],
+          [
+            4.872624021119045,
+            52.35888381802496
+          ],
+          [
+            4.872596165704788,
+            52.358892073547516
+          ],
+          [
+            4.872596411287779,
+            52.35889241614905
+          ],
+          [
+            4.872594537132235,
+            52.35889326183968
+          ],
+          [
+            4.8725921020645,
+            52.35889310745313
+          ],
+          [
+            4.8725921492300275,
+            52.358892838025845
+          ],
+          [
+            4.872561142963072,
+            52.35889177753276
+          ],
+          [
+            4.872559081732154,
+            52.35889229885103
+          ],
+          [
+            4.8725570132258,
+            52.35889218200792
+          ],
+          [
+            4.872537843793749,
+            52.35889449841878
+          ],
+          [
+            4.872537869814993,
+            52.358894786139636
+          ],
+          [
+            4.872535822741386,
+            52.35889535245777
+          ],
+          [
+            4.872533630465376,
+            52.35889451605688
+          ],
+          [
+            4.8725335146213,
+            52.35889311346545
+          ],
+          [
+            4.87253307403875,
+            52.35889312952596
+          ],
+          [
+            4.872529995190129,
+            52.35888140511478
+          ],
+          [
+            4.872529496621163,
+            52.35888135800906
+          ],
+          [
+            4.872528494815357,
+            52.358880400954
+          ],
+          [
+            4.872527951295366,
+            52.35887916727079
+          ],
+          [
+            4.872527524766378,
+            52.35887923731882
+          ],
+          [
+            4.872514261837706,
+            52.35886212992239
+          ],
+          [
+            4.872512161392812,
+            52.35886097036148
+          ],
+          [
+            4.872512531524818,
+            52.35885943506626
+          ],
+          [
+            4.8725120914640305,
+            52.3588594061902
+          ],
+          [
+            4.87251511605497,
+            52.35884038329717
+          ],
+          [
+            4.872514087707904,
+            52.35883918345751
+          ],
+          [
+            4.8725138673379105,
+            52.358837933203375
+          ],
+          [
+            4.872513426651616,
+            52.3588379582511
+          ],
+          [
+            4.872510377065906,
+            52.35882624295423
+          ],
+          [
+            4.872509102407336,
+            52.358824763423875
+          ],
+          [
+            4.872510319756006,
+            52.35882359132091
+          ],
+          [
+            4.87251306589668,
+            52.3588235043922
+          ],
+          [
+            4.872513039667063,
+            52.35882323464589
+          ],
+          [
+            4.872531722156187,
+            52.35882113182844
+          ],
+          [
+            4.872531886546307,
+            52.358820880886164
+          ],
+          [
+            4.872533699897892,
+            52.35882021468707
+          ],
+          [
+            4.872535946635774,
+            52.35882015255043
+          ],
+          [
+            4.87253592040602,
+            52.35881988280413
+          ],
+          [
+            4.872563877914125,
+            52.358811681665884
+          ],
+          [
+            4.872563645863894,
+            52.358811437988294
+          ],
+          [
+            4.872565768935699,
+            52.35881064730641
+          ],
+          [
+            4.872568125598055,
+            52.3588112327644
+          ],
+          [
+            4.872603053606119,
+            52.358801974394694
+          ],
+          [
+            4.872604680252847,
+            52.35880348241693
+          ],
+          [
+            4.872606917732604,
+            52.35880295287605
+          ],
+          [
+            4.8726220511512714,
+            52.3588094089276
+          ],
+          [
+            4.872624802608324,
+            52.35880886364447
+          ],
+          [
+            4.872626557323791,
+            52.358809455473185
+          ],
+          [
+            4.872626656510487,
+            52.358811028759256
+          ],
+          [
+            4.872626142220464,
+            52.35881107146306
+          ],
+          [
+            4.87263076239622,
+            52.35882280256985
+          ],
+          [
+            4.872631645831697,
+            52.35882383999936
+          ],
+          [
+            4.87263116588242,
+            52.35882471871251
+          ],
+          [
+            4.872631590638254,
+            52.35882480144803
+          ],
+          [
+            4.8726457746320815,
+            52.3588422363926
+          ],
+          [
+            4.872646231248578,
+            52.35884210356067
+          ],
+          [
+            4.872647700285569,
+            52.35884327835094
+          ],
+          [
+            4.87264661296684,
+            52.358844630775216
+          ],
+          [
+            4.872645115477874,
+            52.35886362435652
+          ],
+          [
+            4.872645569905134,
+            52.358863680257684
+          ],
+          [
+            4.872645819637216,
+            52.358864930639164
+          ],
+          [
+            4.8726453064719,
+            52.358866141754504
+          ],
+          [
+            4.8726473495777025,
+            52.358872244322505
+          ]
+        ]
+      ]
+    }
+  },
+  "terraceOsmId": "w57862001",
+  "terraceRing": [
+    [
+      4.8727332,
+      52.3588484
+    ],
+    [
+      4.8727311,
+      52.3588323
+    ],
+    [
+      4.8727226,
+      52.3588138
+    ],
+    [
+      4.8727051,
+      52.358794
+    ],
+    [
+      4.8726862,
+      52.3587807
+    ],
+    [
+      4.8726612,
+      52.3587691
+    ],
+    [
+      4.8726353,
+      52.3587614
+    ],
+    [
+      4.8726048,
+      52.3587565
+    ],
+    [
+      4.8725785,
+      52.3587556
+    ],
+    [
+      4.8725449,
+      52.3587585
+    ],
+    [
+      4.8725178,
+      52.3587646
+    ],
+    [
+      4.8724931,
+      52.3587737
+    ],
+    [
+      4.8724754,
+      52.3587832
+    ],
+    [
+      4.8724558,
+      52.3587983
+    ],
+    [
+      4.8724437,
+      52.3588125
+    ],
+    [
+      4.8724339,
+      52.3588341
+    ],
+    [
+      4.8724324,
+      52.3588504
+    ],
+    [
+      4.872436,
+      52.3588678
+    ],
+    [
+      4.8724471,
+      52.3588876
+    ],
+    [
+      4.8724605,
+      52.3589014
+    ],
+    [
+      4.8724833,
+      52.3589169
+    ],
+    [
+      4.8725112,
+      52.3589288
+    ],
+    [
+      4.8725378,
+      52.3589357
+    ],
+    [
+      4.8725633,
+      52.3589392
+    ],
+    [
+      4.8725896,
+      52.3589399
+    ],
+    [
+      4.8726155,
+      52.3589377
+    ],
+    [
+      4.872643,
+      52.3589322
+    ],
+    [
+      4.8726681,
+      52.3589236
+    ],
+    [
+      4.8726939,
+      52.35891
+    ],
+    [
+      4.8727083,
+      52.3588985
+    ],
+    [
+      4.8727229,
+      52.3588814
+    ],
+    [
+      4.8727303,
+      52.358866
+    ],
+    [
+      4.8727332,
+      52.3588484
+    ]
+  ],
+  "references": [
+    {
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/504760",
+      "cache": "artifacts/landmarks/blauwe-theehuis/references/register.raw",
+      "role": "architectural description; star plan, 12 columns, roof ring",
+      "access": "downloaded original HTTP body"
+    },
+    {
+      "url": "https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&typeNames=bag:pand&outputFormat=application/json&srsName=EPSG:4326&bbox=52.3586,4.8722,52.3592,4.8730,EPSG:4326",
+      "cache": "artifacts/landmarks/blauwe-theehuis/references/bag-pand.raw",
+      "role": "current registered core footprint"
+    },
+    {
+      "url": "https://api.openstreetmap.org/api/0.6/way/57862001/full.json",
+      "cache": "artifacts/landmarks/blauwe-theehuis/references/osm-way.raw.json",
+      "role": "circular terrace outline, genuine mapped caf\u00e9 identity"
+    },
+    {
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012093476",
+      "cache": "artifacts/landmarks/blauwe-theehuis/references/3dbag.raw.json",
+      "role": "AHN5 2023 roof; 6.438 NAP max minus -0.986 ground =7.424m overall; not detailed ring survey"
+    },
+    {
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=Vondelpark%205",
+      "cache": "artifacts/landmarks/blauwe-theehuis/references/beeldbank.raw",
+      "role": "bounded address search",
+      "access": "JavaScript viewer shell; no image inspected"
+    },
+    {
+      "url": "https://brouwerijhetij.nl/en/tasting-rooms/t-blauwe-theehuis",
+      "cache": "artifacts/landmarks/blauwe-theehuis/references/operator.raw",
+      "role": "current operator facts and terrace photos"
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Blauwe_Theehuis_1.jpg",
+      "cache": "artifacts/landmarks/blauwe-theehuis/references/facade-2010.jpg",
+      "role": "principal facade/context photo; compare roof geometry with current operator",
+      "author": "Jvhertum",
+      "date": "2010-06-28",
+      "rights": "public domain"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Blauwe_Theehuis_1.jpg",
+      "cache": "artifacts/landmarks/blauwe-theehuis/references/commons-page.raw",
+      "role": "photo catalogue rights/date"
+    },
+    {
+      "url": "https://img.imageboss.me/brouwerij-het-ij-assets/cdn/format%3Aauto/images/Proeflokalen/blauwe-theehuis/t-Blauwe-Theehuis-van-bovenaf.jpg",
+      "cache": "artifacts/landmarks/blauwe-theehuis/references/van-bovenaf.jpg",
+      "role": "current operator terrace/windscreens; image title van bovenaf is terrace view, not roof aerial",
+      "rights": "operator copyright; reference only"
+    },
+    {
+      "url": "https://img.imageboss.me/brouwerij-het-ij-assets/cdn/format%3Aauto/images/Proeflokalen/blauwe-theehuis/t-Blauwe-Theehuis-terras-in-de-zon.jpg",
+      "cache": "artifacts/landmarks/blauwe-theehuis/references/terras-in-de-zon.jpg",
+      "role": "current operator terrace/windscreens; image title van bovenaf is terrace view, not roof aerial",
+      "rights": "operator copyright; reference only"
+    }
+  ],
+  "heightNotes": {
+    "measuredOverall": 7.424,
+    "groundNAP": -0.986,
+    "firstTerrace": "3.4m approximate from photos",
+    "upperCanopy": "6.55m approximate from photos",
+    "crown": "openwork ring at 7.3m supported by RCE/current photos; AHN overall ceiling"
+  },
+  "scope": "Core exact BAG polygon; mapped OSM circle is open terrace, never extrude it into a solid building. Preserve park paths and vegetation outside outline. No neighboring building within 60m.",
+  "archive": {
+    "beeldbank": "JS shell only",
+    "bouwdossiers": "not downloaded; no invented inspected drawings"
+  },
+  "architecturalAssertions": [
+    {
+      "source": "RCE 504760",
+      "part": "ground core",
+      "assertion": "eight-point star"
+    },
+    {
+      "source": "RCE 504760",
+      "part": "upper terrace",
+      "assertion": "12 blue steel columns and balustrade"
+    },
+    {
+      "source": "RCE 504760",
+      "part": "upper pavilion",
+      "assertion": "12-sided upper storey; windows in groups of three; open concrete circular roof ring"
+    }
+  ]
+}

@@ -1,3 +1,9 @@
+import {buildNikolaasMyrakerk} from './nikolaas-myrakerk-builder';
+import {buildNacoHouse} from './naco-house-builder';
+import {buildJeruzalemkerk} from './jeruzalemkerk-builder';
+import {buildGrootMelkhuis} from './groot-melkhuis-builder';
+import {buildBlauweTheehuis} from './blauwe-theehuis-builder';
+import {buildBeestHetLab} from './beest-het-lab-builder';
 /** Original, texture-free landmark meshes. Run: npx tsx scripts/landmarks/build-manual-landmarks.ts
  * Flat palette shared with landmarkKits.ts; metres, glTF Y-up, facade toward +Z.
  * Reference photographs guide silhouette only; no downloaded meshes or pixels.
@@ -295,6 +301,12 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(['foam','huis-marseille','ons-lieve-heer-op-solder'].includes(id))buildCanalMuseumLandmark(id,w,d,helpers);
     else if(id==='rem-eiland')buildRemEiland(w,d,helpers);
     else if(id==='midwest')buildMidwest(w,d,helpers);
+    else if(id==='beest-het-lab')buildBeestHetLab(w,d,helpers);
+    else if(id==='blauwe-theehuis')buildBlauweTheehuis(w,d,helpers);
+    else if(id==='groot-melkhuis')buildGrootMelkhuis(w,d,helpers);
+    else if(id==='jeruzalemkerk')buildJeruzalemkerk(w,d,helpers);
+    else if(id==='naco-house')buildNacoHouse(w,d,helpers);
+    else if(id==='nikolaas-myrakerk')buildNikolaasMyrakerk(w,d,helpers);
     else if(id==='valley')buildValley(w,d,helpers);
     else if(id==='ndsm-warehouse-complex')buildNdsmWarehouseComplex(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);

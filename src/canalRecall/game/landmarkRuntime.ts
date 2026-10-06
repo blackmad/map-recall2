@@ -667,9 +667,11 @@ export class GameLandmarkRuntime {
     // One fact per paragraph when these are generated facts: the panel is
     // `pre-wrap`, and four unrelated sentences run together read as one
     // rambling one.
-    const body = (lm.factTexts && lm.factTexts.length ? lm.factTexts.join('\n\n') : '')
+    const originalBody = (lm.factTexts && lm.factTexts.length ? lm.factTexts.join('\n\n') : '')
       || lm.longDetail || lm.detail
       || cards.placeOnlyDetail(lm.type, this.currentNeighborhood, this._cityDisplayName());
+    const body = lm.researchDetail && !originalBody.includes(lm.researchDetail)
+      ? `${originalBody}\n\n${lm.researchDetail}` : originalBody;
 
     const badges = panel.querySelector('#landmark-panel-badges') as HTMLElement;
     badges.textContent = '';
@@ -709,6 +711,21 @@ export class GameLandmarkRuntime {
       link.removeAttribute('href');
       link.hidden = true;
     }
+
+    let research = panel.querySelector('#landmark-panel-research-source') as HTMLAnchorElement | null;
+    if (!research) {
+      research = document.createElement('a');
+      research.id = 'landmark-panel-research-source';
+      research.target = '_blank';
+      research.rel = 'noopener';
+      research.style.marginLeft = '12px';
+      link.insertAdjacentElement('afterend', research);
+    }
+    const researchUrl = lm.researchSourceUrl;
+    research.hidden = !researchUrl || researchUrl === (lm.wikipediaUrl || lm.sourceUrl);
+    if (researchUrl) research.href = researchUrl;
+    else research.removeAttribute('href');
+    research.textContent = 'Research source ↗';
 
     (panel.querySelector('#landmark-panel-scroll') as HTMLElement).scrollTop = 0;
     this._toggleUtilityPanel(panel);

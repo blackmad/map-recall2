@@ -1,0 +1,38 @@
+{
+  "id": "blauwe-theehuis",
+  "name": "Blauwe Theehuis",
+  "landmarkId": "extract_landmarks_57862001",
+  "modelUrl": "./models/blauwe-theehuis.glb",
+  "suppressOsmIds": [
+    "w57862001",
+    "NL.IMBAG.Pand.0363100012093476"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.87258,
+      52.358848
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 20.5,
+    "widthMetres": 20.5
+  },
+  "surveyed": {
+    "anchor": [
+      4.87258,
+      52.358848
+    ],
+    "northOffsetDegrees": 0,
+    "source": "BAG core/OSM open terrace; native east X south Z"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 90,
+  "attribution": {
+    "title": "Blauwe Theehuis",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/504760",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free geometry. Exact BAG ground core and OSM terrace; upper dodecagon/window partitions/vertical tiers estimated from register/photo ratios under surveyed overall height."
+  }
+}
