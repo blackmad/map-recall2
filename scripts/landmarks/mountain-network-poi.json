@@ -1,0 +1,26 @@
+{
+  "modelId": "mountain-network",
+  "landmarkId": "n2231887299",
+  "name": "Climbing Center Amsterdam (Mountain Network)",
+  "center": [
+    52.375078,
+    4.842064
+  ],
+  "sourceUrl": "https://www.climbingnetwork.nl/indoor/locatie/climbingcenter-amsterdam",
+  "description": "Climbing Center Amsterdam, formerly Mountain Network Amsterdam, occupies the pale corner tower of De Tribune at Erasmusgracht 297. Its operator lists 15-metre climbing walls, 200 m² of bouldering space and an outdoor toprope wall. The 2011 complex by Claus en Kaan combines housing and sport facilities. Dark steel-and-glass ribbons on the motorway side form a sound screen for Laan van Spartaan; the city side has light brick, balconies, rounded corners and stepped heights.",
+  "sourceLinks": [
+    {
+      "title": "Arcam: De Tribune architecture and sound-screen function",
+      "url": "https://arcam.nl/architectuur-gids/de-tribune/"
+    },
+    {
+      "title": "UBA builder: multifunctional complex and indoor climbing hall",
+      "url": "https://uba.nl/project/de-tribune/"
+    },
+    {
+      "title": "Current operator: Climbing Center Amsterdam venue and facilities",
+      "url": "https://www.climbingnetwork.nl/indoor/locatie/climbingcenter-amsterdam"
+    }
+  ],
+  "identityNote": "Canonical genuine current mapped node n2231887299 from click-poi-info.json. Fresh OSM v20(2026-03-11) and primary operator agree on Climbing Center Amsterdam/Erasmusgracht297/phone0881236835. Archived node history v19(2026-02-14) uses Mountain Network Amsterdam at the same coordinates,address and host. No separate automatic destination exists in landmarks/all extract. Promote/reuse n2231887299 once; preserve requested-mountain-network-amsterdam as queue alias only. Northern facade/public entrance inferred from archived2025 panorama and official BAG VBO/Pand join. Pin is1.5m outside surveyed principal north-edge midpoint; exact photographed door centre is approximate, runtime route validation pending."
+}

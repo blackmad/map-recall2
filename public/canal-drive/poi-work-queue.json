@@ -404,12 +404,6 @@
       "evidence": "../../scripts/landmarks/monk-amsterdam-review.json"
     },
     {
-      "id": "mountain-network",
-      "task": "Mountain Network Amsterdam",
-      "priority": "normal",
-      "status": "queued"
-    },
-    {
       "id": "klimhal-amsterdam",
       "task": "Klimhal Amsterdam",
       "priority": "normal",
@@ -969,6 +963,17 @@
       "modelId": "klimmuur-centraal",
       "validation": "Corrected364triangle12980byte927147fingerprint. Root+independentfreshgallery/neutralnativePASSdarkcorrugatedwestupper/lightlower/wedge/closed2023shutter. Realroute/pin/physicalcard/exactBAG+w35048037 masks/HannekesBoomneighborpass. Initialbeigewestfailurepreserved; rawpack9bf3e9b pushed. Clean release on26fb1299: current hash matches independently reviewed asset; default/four gallery angles, front/rear native views, actual destination/pin/physical card/exact suppression/resident neighbors verified. Model-visible/hidden/repeated timing recorded; whole headless city remains slow, no general performance pass claimed. Shared geometry/POI/lint and desktop route-start smoke pass.",
       "evidence": "private:models/klimmuur-centraal/validation/release-20261006/ @04a87dc"
+    },
+    {
+      "id": "mountain-network",
+      "task": "Mountain Network Amsterdam",
+      "priority": "normal",
+      "status": "verified",
+      "owner": "mountain_network",
+      "nextAction": "Publish reviewed scoped model checkpoint; preserve hall height and passage-axis approximation and measured slow headless-city limitations.",
+      "modelId": "mountain-network",
+      "validation": "Corrected9927tri104816B e816e9ae. Root+independent gallery/source recognition; actual selected route/pin/physical sourced card/native exact BAG mask/two drawn neighbors pass. Private source/evidence b189f00 pushed before model checkpoint. Performance evidence records153.6/147.4/156.3msvisible/hidden/repeat median; no whole-game performant-scene claim. Prior tower/balcony/tallhall/lowhall failures preserved.",
+      "evidence": "private models/mountain-network/validation/low-hall-20261006/ @b189f00"
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"
