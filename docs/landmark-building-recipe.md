@@ -140,3 +140,7 @@ For an approved standard building, use one cached facade/context reference, surv
 Keep the inexpensive shared geometry/identity checks and one gallery plus live-game visual comparison, including exact suppression and the adjacent building. Use the shared harness rather than writing a bespoke test/review script per ordinary block; add focused probes only for actual risks. A faster loop reduces researched/detail scope and repeated plumbing, not native placement or acceptance. If promoted to a POI, it still requires a genuine destination, map pin/label and meaningful sourced card. Anonymous background improvements do not automatically become trivia destinations.
 
 Track elapsed time for the first small batch to calibrate the faster loop before promising timing or token savings. Review records survive backlog regeneration, and the dashboard distinguishes suggestions, approved standard buildings and full landmark treatment.
+
+### Source-supported signage lettering
+
+For source-supported real signs, match the observed lettering family, letter shapes, weight, proportions and spacing as closely as the native geometry allows. Use the actual panel and wall plane; record an approximate font match when the exact typeface is unknown. Do not replace distinctive signage with generic pixel lettering.

@@ -1,0 +1,230 @@
+{
+  "id": "jeruzalemkerk",
+  "reviewedOn": "2026-10-05",
+  "status": "Current source/gallery and native game integration verified; performance followup retained",
+  "check": "node --import tsx scripts/check-jeruzalemkerk-geometry.ts",
+  "geometryResult": {
+    "triangles": 7196,
+    "boundsMetres": [
+      40.82999,
+      17.98,
+      37.33981
+    ],
+    "firstHitWindows": true,
+    "doorsExposed": true,
+    "openForecourt": true,
+    "towerLouverChambersOpen": true,
+    "upwardRoofs": 11
+  },
+  "referenceViews": [
+    "artifacts/landmarks/jeruzalemkerk/references/front.jpg",
+    "artifacts/landmarks/jeruzalemkerk/references/side10.jpg",
+    "artifacts/landmarks/jeruzalemkerk/references/side11.jpg",
+    "artifacts/landmarks/jeruzalemkerk/references/side9.jpg"
+  ],
+  "requiredCoordinatorChecks": [
+    "four lower gallery rotations and default view compared against reference facade",
+    "current live-game north/side and south/front views",
+    "neighbor school and independent residences drawn after load; exact3parent suppression and fallback",
+    "route selected destination actual finish + geographic pin label + physical click useful researched card",
+    "source pack private sync and commit before model commit"
+  ],
+  "recognitionTraits": [
+    "straight high brick facade; three equal south doors",
+    "three very narrow tall front lights with projecting brick piers",
+    "stepped squat bell tower with real openings",
+    "seven tall blue-dark stained side lights beneath projecting brick piers and seven square lower lights",
+    "low entrance side wings and taller five-storey rear corner apartments"
+  ],
+  "limitations": [
+    "Tower crest18m photo-estimated; source survey cannot resolve thin pier tops reliably",
+    "Flat cubic main exterior follows register and photos; retained source roof slope evidence is simplified into bounded flat masses, not imported geometry",
+    "Beeldbank viewer shell yielded no catalogue record; historical aerial drawing from primary Amsterdam School platform supports ensemble composition, current2016/operator photos govern facade",
+    "Raw source archiving/commit and browser acceptance pending coordinator"
+  ],
+  "visualAcceptance": false,
+  "specPath": "scripts/landmarks/jeruzalemkerk-spec.json",
+  "neighbors": [
+    [
+      "NL.IMBAG.Pand.0363100012075879"
+    ],
+    [
+      "NL.IMBAG.Pand.0363100012139123"
+    ]
+  ],
+  "zoom": 19.0,
+  "bearing": 15,
+  "pitch": 55,
+  "independentVisualReview": {
+    "reviewedOn": "2026-10-05",
+    "reviewer": "independent-vondelpark-worker (did not author either model)",
+    "scope": "Static inspection of actual saved source images, gallery default and four rotations, neutral-front and live-rear. No GPU launch. Runtime contracts logged PASS separately and are not visual evidence.",
+    "evidence": [
+      "artifacts/jeruzalemkerk-review/gallery.png",
+      "artifacts/jeruzalemkerk-review/gallery-angle-0.png",
+      "artifacts/jeruzalemkerk-review/gallery-angle-1.png",
+      "artifacts/jeruzalemkerk-review/gallery-angle-2.png",
+      "artifacts/jeruzalemkerk-review/gallery-angle-3.png",
+      "artifacts/jeruzalemkerk-review/neutral-front.png",
+      "artifacts/jeruzalemkerk-review/live-rear.png"
+    ],
+    "runtimeContractEvidence": "/tmp/wine-jeruzalem-native-review.log",
+    "performanceObserved": false,
+    "status": "scoped-church-gallery-and-native-visual-pass",
+    "passed": [
+      "Current source front and native neutral-front share a high straight brick front, narrow triple central lights, three equal ground doors, low stepped side wings and squat open bell crown; no buried source-defining assembly observed.",
+      "Gallery side rotations match source side10/side11 tall blue-dark lights behind projecting brick piers, seven square lower side lights and subordinate doors.",
+      "Rear gallery and live-rear retain two taller corner housing volumes with attached white-trimmed windows on exterior faces; neighboring ordinary row remains visible and unhidden. Historical side9 ensemble drawing supports integrated housing behind the church and open forecourt.",
+      "Gallery/native front keep the forecourt and lateral open strips free of solid model mass."
+    ],
+    "failures": [],
+    "limitations": [
+      "Blank short faces of rear apartment volumes are visible in front gallery. Available current source photographs principally establish the side exterior elevations; historical drawing supports ensemble scope but does not independently settle current pane divisions on every short/party-wall face. No contradictory source feature identified; those faces are not independently certified in detail.",
+      "Native screenshots are high views, so pane divisions and tower opening relief are judged primarily in four gallery rotations.",
+      "No independent performance evidence."
+    ],
+    "referenceImages": [
+      "artifacts/landmarks/jeruzalemkerk/references/front.jpg",
+      "artifacts/landmarks/jeruzalemkerk/references/side10.jpg",
+      "artifacts/landmarks/jeruzalemkerk/references/side11.jpg",
+      "artifacts/landmarks/jeruzalemkerk/references/side9.jpg"
+    ]
+  },
+  "acceptance": {
+    "gallery": true,
+    "liveGame": true,
+    "poiContract": true,
+    "privateSourceArchiveCommit": "9926aa1fba89e7758fc9e11d1b0dfde0fb4fc4aa",
+    "privateSourceArchivePath": "models/jeruzalemkerk/",
+    "scope": "Original native-scale house-style exterior; source-derived architectural recognition and exact replaced scope. Fine-detail/photo-ratio uncertainties retained; no new independent GPU performance claim."
+  },
+  "coordinatorReview": {
+    "reviewedOn": "2026-10-05",
+    "reviewer": "root",
+    "status": "pass-scoped",
+    "evidenceDirectory": "artifacts/jeruzalemkerk-review",
+    "runtimeEvidence": "Actual selected route destination, geographic pin, physical click sourced card, native scale 1 and retained resident drawable neighbors verified with review-manual-pois.mjs.",
+    "geometryEvidence": "scripts/check-jeruzalemkerk-geometry.ts",
+    "independentReviewStatus": "scoped-church-gallery-and-native-visual-pass"
+  },
+  "sourceArchive": {
+    "commit": "5e4e6b6",
+    "path": "models/jeruzalemkerk",
+    "priorSourcesCommit": "9926aa1"
+  },
+  "export": {
+    "sha256": "202fbee82e35d0c0b7b3e0b35fb788cef386f99aa51bc345116a40cd47a98ff9",
+    "bytes": 115364
+  },
+  "currentIndependentReview": "models/jeruzalemkerk/validation/clean-release-20261006/independent-review.json",
+  "currentRuntime": {
+    "proof": {
+      "id": "jeruzalemkerk",
+      "actualCamera": {
+        "center": [
+          4.85196,
+          52.371445
+        ],
+        "zoom": 19,
+        "pitch": 55.00000000000001,
+        "bearing": 15,
+        "elevation": 0
+      },
+      "assetVersion": "202fbee82e35d0c0",
+      "scale": 1,
+      "bias": false,
+      "broad": false,
+      "pin": true,
+      "destination": true,
+      "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/527155",
+      "click": {
+        "x": 756.4968442869629,
+        "y": 501.2416366002185
+      },
+      "aliases": [
+        {
+          "id": "NL.IMBAG.Pand.0363100012120412",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012133330",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012144824",
+          "hidden": true
+        }
+      ],
+      "oldPyramidIds": [],
+      "neighbors": [
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012075879"
+          ],
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        },
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012139123"
+          ],
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        }
+      ],
+      "features": 12717,
+      "buildings": 16697
+    },
+    "card": {
+      "notice": "extract_landmarks_2017340658",
+      "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/527155",
+      "alpha": 1,
+      "drawn": true,
+      "active": "extract_landmarks_2017340658"
+    },
+    "performance": {
+      "id": "jeruzalemkerk",
+      "assetVersion": "202fbee82e35d0c0",
+      "samples": [
+        {
+          "label": "model-visible",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 69.5,
+          "p95Ms": 97.69999980926514
+        },
+        {
+          "label": "same-scene-model-hidden",
+          "visible": false,
+          "frames": 60,
+          "p50Ms": 58,
+          "p95Ms": 90.90000009536743
+        },
+        {
+          "label": "model-visible-repeat",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 60.5,
+          "p95Ms": 74
+        }
+      ],
+      "buildings": {
+        "kitVertices": 71427,
+        "chunks": 26,
+        "buildings": 16697,
+        "walls": 76466,
+        "quads": 309652,
+        "vertices": 2836217,
+        "geometryMB": 93.50123405456543,
+        "textureMB": 97.5,
+        "drawCalls": 5,
+        "triangles": 126448,
+        "buildMs": 0.5999999046325684
+      },
+      "scope": "Headless Chromium same stationary scene; hidden model keeps existing replacement masks, isolating custom draw cost. No whole-game performance pass claimed."
+    },
+    "performanceAcceptance": "Stationary headless evidence only; no general smooth gameplay or physical touch performance acceptance."
+  }
+}

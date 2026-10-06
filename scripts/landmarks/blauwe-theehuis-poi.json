@@ -1,0 +1,24 @@
+{
+  "id": "extract_landmarks_57862001",
+  "name": "Blauwe Theehuis",
+  "center": [
+    52.358848,
+    4.87258
+  ],
+  "type": "landmark",
+  "cityId": "amsterdam",
+  "funFact": "The pavilion combines an eight-pointed ground-floor plan with a twelve-sided upper room, an open circular roof crown and a terrace carried by twelve blue steel columns. The Baanders brothers designed it in the Nieuwe Bouwen style; it opened in 1937 after the previous tea house burned down.",
+  "description": "A circular modernist tea pavilion in Vondelpark, now a Brouwerij \u2019t IJ caf\u00e9. Its upper floor originally housed the leaseholder.",
+  "sources": [
+    {
+      "title": "RCE monument 504760",
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/504760"
+    },
+    {
+      "title": "Brouwerij \u2019t IJ \u2014 Blauwe Theehuis",
+      "url": "https://brouwerijhetij.nl/en/tasting-rooms/t-blauwe-theehuis"
+    }
+  ],
+  "website": "https://brouwerijhetij.nl/en/tasting-rooms/t-blauwe-theehuis",
+  "sourceIdentity": "w57862001; existing click-poi-info caf\u00e9, missing from landmark extract. Root must add genuine derived extract identity once."
+}

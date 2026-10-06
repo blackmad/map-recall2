@@ -53,6 +53,8 @@ export interface LandmarkNotice {
   imageUrl?: string;
   wikipediaUrl?: string;
   sourceUrl?: string;
+  researchSourceUrl?: string;
+  researchDetail?: string;
   wikidata?: string;
   wikipedia?: string;
   extractLang?: string;
