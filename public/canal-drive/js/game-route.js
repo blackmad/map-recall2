@@ -1358,7 +1358,9 @@ class GameRouteRuntime {
         // Use a small delay to let the loading screen render
         await new Promise(r => setTimeout(r, 50));
         if (stale()) return;
-        this.track = new RoadNetwork(segments, start, finish, []);
+        const routingGraph = await RoadNetwork.prepareRoutingGraph(segments, stale);
+        if (stale()) return;
+        this.track = new RoadNetwork(segments, start, finish, [], routingGraph);
         this._loadedWorld = {
           cityId: this.cityId || 'amsterdam',
           travelMode: this.travelMode,

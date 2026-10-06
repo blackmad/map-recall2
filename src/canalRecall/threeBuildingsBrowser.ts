@@ -19,12 +19,11 @@ import { decorateRoof, exceptLandmarks as exceptLandmarksOf, fitRect, localOuter
 import { BAY_ENTRIES, BAY_LAYER_COUNT, bayLayer, bayLookFor, bayVariant } from './bayLook.js';
 import { paintGlassBlockCell } from './glassBlockTexture.js';
 import { bayTextures, type Look } from './bayTextures.js';
-import { KITS, KIT_HIDE_IDS, KIT_MODELLED_IDS, KIT_PART_IDS, decorateKitRoof, kitGeometry, type KitPartGeometry, type PartInput } from './landmarkKits.js';
-import { FRONT_LIST, FRONT_PART_IDS, decorateFront } from './landmarkFrontData.js';
-import { frontKitGeometry, lookHex } from './landmarkFronts.js';
+import { KIT_HIDE_IDS, KIT_MODELLED_IDS, KIT_PART_IDS, decorateKitRoof } from './landmarkKits.js';
+import { FRONT_PART_IDS, decorateFront } from './landmarkFrontData.js';
 import { decorateShopfront, setShopfronts } from './shopfronts.js';
-import { boatForLandmark, houseboatGeometry, houseboatsByTile, type Houseboat } from './houseboats.js';
-import { buildKitChunk, type Chunk } from './threeBuildingMesh.js';
+import { boatForLandmark, houseboatsByTile, type Houseboat } from './houseboats.js';
+import type { Chunk } from './threeBuildingMesh.js';
 import { FALLBACK_REACH_M, SegmentGrid, streetSegments } from './streetFronts.js';
 import { ORIGIN, ROOF_TONES, asPolygons, buildFeatureChunk, cellSetOf, type BuildingLook, type Feature } from './threeBuildingFeatures.js';
 export { ORIGIN, ROOF_TONES, type BuildingLook };
@@ -32,6 +31,8 @@ import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
 import { validateStreetAppearanceCatalog, type StreetAppearanceCatalog, type StreetAppearanceProfile } from './streetAppearance.js';
 import { PROCEDURAL_RECIPE_LAYER_OFFSET } from './streetFacadeRendering.js';
 import { buildingProjectionScale } from './buildingProjectionScale.js';
+import { buildSpecialKits, buildSpecialBoats } from './buildingSpecialChunks.js';
+import { ChunkBuildQueue } from './chunkBuildQueue.js';
 import { BuildingContextIndex } from './buildingContextIndex.js';
 
 type MapLike = { getCanvas(): HTMLCanvasElement; triggerRepaint(): void; getZoom(): number };
@@ -48,6 +49,8 @@ const COARSE_PREFIX = 'coarse:';
 const chunkMode = (key: string): 'walls' | 'extras' | 'coarse' => key.startsWith(EXTRAS_PREFIX) ? 'extras' : key.startsWith(COARSE_PREFIX) ? 'coarse' : 'walls';
 /** Facades show from this map zoom (the extrusion layer's own minzoom was 14). */
 export const MIN_ZOOM = 14;
+// Finish before the ordinary phone minimum zoom; reserve blending for the intro/overview.
+const CITY_FADE_RANGE = 1.4;
 
 export const VERTEX = /* glsl */ `
 in vec3 position;
@@ -88,16 +91,14 @@ in float vShade;
 flat in float vHighlight;
 out vec4 fragColor;
 void main() {
-  // Screen-door coverage keeps depth writes correct while the city emerges from the overview.
-  if (cityFade < 1.0 && fract(dot(floor(gl_FragCoord.xy), vec2(0.754877666, 0.569840296))) >= cityFade) discard;
-  if (vHighlight > 0.5) { fragColor = vec4(vec3(1.0, 0.824, 0.122) * vShade, 1.0); return; }
+  if (vHighlight > 0.5) { fragColor = vec4(vec3(1.0, 0.824, 0.122) * vShade, cityFade); return; }
   vec3 p = vec3(vUv, vLayer);
   vec3 c = texture(cells, p).rgb;
   vec2 m = texture(masks, p).rg;
   c *= mix(vec3(1.0), vTint, m.r) * mix(vec3(1.0), vAccent, m.g);
   if (flatColour > 0.5) c = vTint;
   float shade = bands > 0.5 ? floor(vShade * bands + 0.5) / bands : vShade;
-  fragColor = vec4(c * shade, 1.0);
+  fragColor = vec4(c * shade, cityFade);
 }`;
 
 const ROOF_LAYER_COUNT = 4;
@@ -253,6 +254,7 @@ export class ThreeBuildings {
   private THREE: any;
   private scene: any;
   private material: any;
+  private depthMaterial: any;
   private renderer: any;
   private camera: any;
   private readonly chunks = new Map<string, { source: Feature[]; mesh: any; info: ChunkInfo; ranges: Map<string, { start: number; count: number }> }>();
@@ -260,9 +262,11 @@ export class ThreeBuildings {
   private readonly hiddenBy = new Map<string, Set<string>>();
   private hidden = new Set<string>();
   private highlighted = new Set<string>();
-  private pending: Array<() => void> = [];
+  private readonly pending = new ChunkBuildQueue();
+  private workerBusy = false;
   private pumping = false;
   private lastBuildMs = 0;
+  private lastRenderInfo?: { calls: number; triangles: number };
   private transform: any = null;
 
   private look: BuildingLook;
@@ -382,7 +386,7 @@ export class ThreeBuildings {
     }
     this.inflight.clear();
     this.inflightOptions.clear();
-    this.pending = [];
+    this.pending.clear();
   }
 
   /** Update every resident/in-flight chunk atomically with respect to profile revision. */
@@ -395,7 +399,7 @@ export class ThreeBuildings {
     this.appearanceStreets = detached.streetFrontPaths?.length ? new SegmentGrid(streetSegments(detached.streetFrontPaths, ORIGIN)) : null;
     this.appearanceRevision = admitted.revision;
     this.invalidateBuilds();
-    for (const [key, source] of this.sourceGroups) this.pending.push(() => this.rebuild(key, source));
+    for (const [key, source] of this.sourceGroups) this.pending.push(key, () => this.rebuild(key, source));
     this.pump();
     this.map.triggerRepaint();
   }
@@ -428,7 +432,7 @@ export class ThreeBuildings {
     this.look = look;
     this.bindLookMaterial(look, set);
     this.ready = true;
-    for (const [key, source] of this.sourceGroups) this.pending.push(() => this.rebuild(key, source));
+    for (const [key, source] of this.sourceGroups) this.pending.push(key, () => this.rebuild(key, source));
     this.pump();
     this.map.triggerRepaint();
   }
@@ -496,7 +500,7 @@ export class ThreeBuildings {
       this.contextGroups.set(key,context);
       const flying = this.inflight.get(key);
       if (same(previousContext,context) && (flying ? same(flying, list) : same(this.chunks.get(key)?.source, list))) continue;
-      this.pending.push(() => this.rebuild(key, list));
+      this.pending.push(key, () => this.rebuild(key, list));
     }
     this.pump();
   }
@@ -532,7 +536,7 @@ export class ThreeBuildings {
     for (const { info } of this.chunks.values()) {
       buildings += info.buildingCount; walls += info.wallCount; quads += info.quadCount; vertices += info.vertexCount; bytes += info.bytes;
     }
-    const info = this.renderer?.info?.render;
+    const info = this.lastRenderInfo ?? this.renderer?.info?.render;
     return {
       kitVertices: this.chunks.get(KIT_KEY)?.info.vertexCount ?? 0, chunks: this.chunks.size, buildings, walls, quads, vertices,
       geometryMB: bytes / 1048576, textureMB: this.textureMB,
@@ -546,9 +550,11 @@ export class ThreeBuildings {
     this.invalidateBuilds();
     this.worker?.terminate();
     this.worker = undefined;
+    this.workerBusy = false;
     for (const key of [...this.chunks.keys()]) this.dropChunk(key);
     for (const material of new Set([this.material, ...this.materials.values()])) material?.dispose();
     this.materials.clear();
+    this.depthMaterial?.dispose();
     for (const set of this.textureSets.values()) void set.then(t => { t.colour.dispose(); t.mask.dispose(); });
   }
 
@@ -557,10 +563,10 @@ export class ThreeBuildings {
   private ready = false;
 
   private pump(): void {
-    if (this.pumping || !this.pending.length || !this.THREE || !this.ready) return;
+    if (this.pumping || this.workerBusy || !this.pending.length || !this.THREE || !this.ready) return;
     this.pumping = true;
-    // One chunk per task: a z14 tile is ~10-30 ms of layout and fill, so
-    // spreading them keeps a tile arrival from stalling a frame.
+    // One dispatch at a time keeps newer tile/look inputs in the coalesced
+    // queue rather than trapping obsolete jobs inside the worker.
     setTimeout(() => {
       this.pumping = false;
       const job = this.pending.shift();
@@ -571,23 +577,7 @@ export class ThreeBuildings {
 
   /** Landmark kits: build each kit from whichever of its OSM parts are resident. */
   private buildKits(source: Feature[], look: BuildingLook = this.look): Chunk {
-    const kx = 111_320 * Math.cos(ORIGIN.lat * Math.PI / 180), ky = 110_540;
-    const parts = new Map<string, PartInput>();
-    for (const f of source) {
-      const polygons = asPolygons(f.geometry), outer = polygons[0]?.[0];
-      if (!outer) continue;
-      const id = String(f.properties.id);
-      parts.set(id, { id, ring: outer.map(([lng, lat]) => [(lng - ORIGIN.lng) * kx, (lat - ORIGIN.lat) * ky] as [number, number]), minHeightM: Number(f.properties.minHeight) || 0, heightM: Number(f.properties.height) });
-    }
-    // Kits and fronts are authored in natural colours; each look recolours them like its neighbours.
-    const geometry: KitPartGeometry[] = KITS.flatMap(kit => kitGeometry(kit, parts)).map(g => ({ ...g, tris: g.tris.map(t => ({ ...t, hex: lookHex(t.hex, look) })) }));
-    for (const front of FRONT_LIST) {
-      if (!front.ids.some(id => parts.has(id))) continue;
-      const g = frontKitGeometry(front, ORIGIN, look), held = geometry.find(x => x.id === g.id);
-      // One range per id: a front shares its first carrier's range (a kit roof on the Beurs hall), so hiding the answer hides both.
-      if (held) held.tris.push(...g.tris); else geometry.push(g);
-    }
-    return buildKitChunk(geometry, this.kitLayers(look));
+    return buildSpecialKits(source, look, this.kitLayers(look));
   }
 
   /**
@@ -612,7 +602,7 @@ export class ThreeBuildings {
   setStreets(ways: ReadonlyArray<{ highway?: string; nodes?: ReadonlyArray<{ lat: number; lon: number }> }>): void {
     const segs = streetSegments(ways.map(w => ({ highway: w.highway, points: (w.nodes ?? []).map(n => [n.lon, n.lat] as const) })), ORIGIN);
     this.streets = segs.length ? new SegmentGrid(segs, 200) : null;
-    for (const [key, entry] of [...this.chunks]) if (key !== KIT_KEY && !key.startsWith(BOAT_PREFIX)) this.pending.push(() => this.rebuild(key, entry.source));
+    for (const [key, entry] of [...this.chunks]) if (key !== KIT_KEY && !key.startsWith(BOAT_PREFIX)) this.pending.push(key, () => this.rebuild(key, entry.source));
     this.pump();
   }
 
@@ -654,10 +644,7 @@ export class ThreeBuildings {
   }
 
   private buildBoats(tile: string): Chunk {
-    const look = this.look;
-    const geometry = (this.boatTiles.get(tile) ?? []).map(b => houseboatGeometry(b, ORIGIN)).filter((g): g is KitPartGeometry => !!g)
-      .map(g => ({ ...g, tris: g.tris.map(t => ({ ...t, hex: lookHex(t.hex, look) })) }));
-    return buildKitChunk(geometry, this.kitLayers());
+    return buildSpecialBoats(this.boatTiles.get(tile) ?? [], this.look, this.kitLayers());
   }
 
   private kitLayers(look: BuildingLook = this.look) {
@@ -689,12 +676,7 @@ export class ThreeBuildings {
   }
   private rebuild(key: string, source: Feature[]): void {
     if (!this.THREE || this.look !== this.requestedLook || !this.currentSource(key, source)) return;
-    if (key.startsWith(BOAT_PREFIX)) {
-      const t0 = performance.now(), chunk = this.buildBoats(key.slice(BOAT_PREFIX.length));
-      this.install(key, source, chunk, performance.now() - t0);
-      return;
-    }
-    const worker = key === KIT_KEY ? null : this.chunkWorker();
+    const worker = this.chunkWorker();
     const gen = (this.gens.get(key) ?? 0) + 1;
     this.gens.set(key, gen);
     if (worker) {
@@ -702,12 +684,16 @@ export class ThreeBuildings {
       this.inflight.set(key, source);
       const options = { look: this.look, streets: this.streetsFor(source), profiles: this.appearanceProfiles, contextFeatures: this.contextGroups.get(key) ?? this.contextFor(source), appearanceRevision: this.appearanceRevision };
       this.inflightOptions.set(key, options);
-      worker.postMessage({ key, gen, ...options, features: source, mode: chunkMode(key) });
+      this.workerBusy = true;
+      worker.postMessage({ key, gen, ...options, features: source, mode: chunkMode(key),
+        special: key === KIT_KEY ? 'kits' : key.startsWith(BOAT_PREFIX) ? 'boats' : undefined,
+        boats: key.startsWith(BOAT_PREFIX) ? this.boatTiles.get(key.slice(BOAT_PREFIX.length)) ?? [] : undefined,
+        layers: this.kitLayers() });
       return;
     }
     const t0 = performance.now();
     const options = { look: this.look, streets: this.streetsFor(source), profiles: this.appearanceProfiles, contextFeatures: this.contextGroups.get(key) ?? this.contextFor(source), appearanceRevision: this.appearanceRevision };
-    const chunk = key === KIT_KEY ? this.buildKits(source) : buildFeatureChunk(source, options.look, chunkMode(key), options.streets, options.profiles, options.contextFeatures);
+    const chunk = key === KIT_KEY ? this.buildKits(source) : key.startsWith(BOAT_PREFIX) ? this.buildBoats(key.slice(BOAT_PREFIX.length)) : buildFeatureChunk(source, options.look, chunkMode(key), options.streets, options.profiles, options.contextFeatures);
     this.install(key, source, chunk, performance.now() - t0, options);
   }
 
@@ -720,17 +706,19 @@ export class ThreeBuildings {
       const worker = new Worker(WORKER_URL);
       worker.onmessage = (event: MessageEvent<{ key: string; gen: number; chunk: Chunk; ms: number }>) => {
         const { key, gen, chunk, ms } = event.data, source = this.inflight.get(key);
-        if (this.gens.get(key) !== gen || !source) return;
+        this.workerBusy = false;
+        if (this.gens.get(key) !== gen || !source) { this.pump(); return; }
         const options = this.inflightOptions.get(key);
         this.inflight.delete(key);
         this.inflightOptions.delete(key);
         this.install(key, source, chunk, ms, options);
+        this.pump();
       };
       worker.onerror = (error) => {
         // Fall back to inline builds for good, and redo whatever was in flight.
         console.warn('three.js building worker failed; building chunks inline', error);
-        this.worker = null; worker.terminate();
-        for (const [key, source] of this.inflight) this.pending.push(() => this.rebuild(key, source));
+        this.worker = null; this.workerBusy = false; worker.terminate();
+        for (const [key, source] of this.inflight) this.pending.push(key, () => this.rebuild(key, source));
         this.inflight.clear();
         this.inflightOptions.clear();
         this.pump();
@@ -844,6 +832,11 @@ export class ThreeBuildings {
           glslVersion: THREE.GLSL3, vertexShader: VERTEX, fragmentShader: FRAGMENT,
           uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: owner.look === 'cartoon' ? 3 : 0 }, flatColour: { value: owner.look === 'untextured' ? 1 : 0 }, cityFade: { value: 1 } }, side: THREE.FrontSide,
         });
+        owner.depthMaterial = new THREE.RawShaderMaterial({
+          glslVersion: THREE.GLSL3, vertexShader: VERTEX,
+          fragmentShader: 'precision highp float; out vec4 fragColor; void main() { fragColor = vec4(0.0); }',
+          colorWrite: false, depthWrite: true, side: THREE.FrontSide,
+        });
         owner.materials.set(owner.look, owner.material);
         const initialLook = owner.requestedLook, token = ++owner.lookToken;
         void owner.texturesFor(cellSetOf(initialLook)).then(set => {
@@ -853,7 +846,7 @@ export class ThreeBuildings {
           owner.bindLookMaterial(initialLook, set);
           owner.ready = true;
           owner.invalidateBuilds();
-          for (const [key, source] of owner.sourceGroups) owner.pending.push(() => owner.rebuild(key, source));
+          for (const [key, source] of owner.sourceGroups) owner.pending.push(key, () => owner.rebuild(key, source));
           owner.pump();
           owner.map.triggerRepaint();
         });
@@ -863,11 +856,26 @@ export class ThreeBuildings {
       },
       render(_gl: WebGL2RenderingContext, args: any) {
         if (!owner.visible || !owner.ready || !owner.scene || !owner.chunks.size || owner.map.getZoom() < MIN_ZOOM) return;
-        const fade = Math.max(0, Math.min(1, (owner.map.getZoom() - MIN_ZOOM) / 1.6));
-        for (const material of owner.materials.values()) material.uniforms.cityFade.value = fade;
+        const fade = Math.max(0, Math.min(1, (owner.map.getZoom() - MIN_ZOOM) / CITY_FADE_RANGE));
+        for (const material of owner.materials.values()) {
+          material.uniforms.cityFade.value = fade;
+          material.transparent = fade < 1;
+          material.depthWrite = fade === 1;
+        }
         owner.camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(owner.transform);
         owner.renderer.resetState();
+        let depthCalls = 0, depthTriangles = 0;
+        if (fade < 1) {
+          // Populate only the nearest surfaces before blending. Without this,
+          // translucent roofs/walls show geometry behind them and chunk order leaks through.
+          owner.scene.overrideMaterial = owner.depthMaterial;
+          owner.renderer.render(owner.scene, owner.camera);
+          owner.scene.overrideMaterial = null;
+          depthCalls = owner.renderer.info.render.calls;
+          depthTriangles = owner.renderer.info.render.triangles;
+        }
         owner.renderer.render(owner.scene, owner.camera);
+        owner.lastRenderInfo = { calls: depthCalls + owner.renderer.info.render.calls, triangles: depthTriangles + owner.renderer.info.render.triangles };
       },
       onRemove() { owner.dispose(); },
     };

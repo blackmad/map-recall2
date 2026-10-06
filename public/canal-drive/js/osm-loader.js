@@ -303,6 +303,8 @@ class OSMLoader {
     });
     this._lastOffsetX = built.offset.x;
     this._lastOffsetY = built.offset.y;
+    this._roadSnapSegments = built.segments;
+    this._roadSnapIndex = new PROJECT.RoadSnapIndex(built.segments);
     return built.segments;
   }
 
@@ -310,7 +312,8 @@ class OSMLoader {
   latLngToGamePoint(lat, lng, centerLat, centerLng, segments, maxSnapDist = MAX_SNAP_DIST) {
     return PROJECT.snapToRoad(
       { lat, lon: lng }, { lat: centerLat, lon: centerLng },
-      { x: this._lastOffsetX, y: this._lastOffsetY }, segments, maxSnapDist);
+      { x: this._lastOffsetX, y: this._lastOffsetY }, segments, maxSnapDist,
+      segments === this._roadSnapSegments ? this._roadSnapIndex : undefined);
   }
 
   _closestOnSeg(px, py, a, b) {
