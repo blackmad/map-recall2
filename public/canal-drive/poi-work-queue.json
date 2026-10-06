@@ -1221,6 +1221,25 @@
         "date": "2026-10-06",
         "scope": "User approved diagnostic renders and explicitly authorized commit/push; not a declaration of actual gameplay completion."
       }
+    },
+    {
+      "id": "uva-roeterseiland",
+      "task": "UvA Roeterseiland campus — De Brug and REC B/C/D; verify REC A scope",
+      "priority": "high",
+      "status": "requested-identity-and-native-scope-review",
+      "requestedOn": "2026-10-06",
+      "requested": true,
+      "workflow": "full-landmark",
+      "sourceUrls": [
+        "https://www.uva.nl/locaties/roeterseiland/rec-b-c-d-ingang-b-c.html",
+        "https://www.uva.nl/locaties/roeterseiland/rec-b-c-d-ingang-d.html"
+      ],
+      "sourceArchive": {
+        "path": "models/uva-roeterseiland",
+        "commit": "93d26c6"
+      },
+      "nextAction": "Resolve official address/VBO/BAG/OSM parents of highlighted complex from user screenshot; verify REC A involvement and keep CREA distinct unless source proves shared scope. Preserve canal under De Brug, raised connections and actual courtyards; reuse genuine campus POI identity rather than moving a generic University of Amsterdam destination. Then full source/geometry/gallery/native route-pin-card acceptance.",
+      "evidence": "Private original user-campus-request-20261006.png and operator pages under models/uva-roeterseiland"
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"
