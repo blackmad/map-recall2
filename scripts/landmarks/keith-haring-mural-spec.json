@@ -1,0 +1,41 @@
+{
+  "id": "keith-haring-mural",
+  "name": "Muurschildering van Keith Haring",
+  "landmarkId": "n9021384965",
+  "modelUrl": "./models/keith-haring-mural.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012201630"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.86495,
+      52.38046
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 43,
+    "widthMetres": 41
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.86495,
+      52.38046
+    ],
+    "northOffsetDegrees": 0,
+    "source": "PDOK current BAG0363100012201630; east/south native axes, west-wall artwork node9021384965. Wikipedia coordinate denotes public viewing position, not host."
+  },
+  "attribution": {
+    "title": "Koelhuis and Keith Haring west-wall mural",
+    "author": "Map Recall; mural composition after Keith Haring (1986)",
+    "sourceUrl": "https://www.amsterdam.nl/stadsdelen/west/nieuws/fantasiebeest-keith-haring/",
+    "licence": "Original project geometry; underlying artwork by Keith Haring",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free surveyed building and hand-authored white stroke interpretation; no reference pixels or imported mesh."
+  },
+  "galleryView": {
+    "theta": -1.3,
+    "phi": 1.15
+  }
+}

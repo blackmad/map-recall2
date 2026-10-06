@@ -783,7 +783,7 @@ class GameRouteRuntime {
       const curatedModels = new Set(curated.map(poi => CanalRecallRoute.manualPoiForCuratedId(poi.id)).filter(Boolean));
       const extras = [];
       for (const feature of features) {
-        const centre = feature.center;
+        const centre = feature.routeCenter || feature.center;
         if (!centre || !feature.name) continue;
         if (feature.modelId && curatedModels.has(feature.modelId)) continue;
         // Completing a route must reveal something worth learning. The raw

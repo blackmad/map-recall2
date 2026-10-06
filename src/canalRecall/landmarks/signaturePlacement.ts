@@ -66,6 +66,8 @@ export interface SurveyedAnchor {
 /** A curated model, everything needed to fetch it, place it, credit it, and
  *  know which extruded footprint it is standing in for. */
 export interface SignatureModelSpec {
+  /** Initial gallery orbit in radians; independent of geographic model placement. */
+  readonly galleryView?: { readonly theta: number; readonly phi?: number };
   /** Set when the model is life-size and georeferenced. Its presence switches
    *  placement from "fit to the footprint" to "trust the survey", and tells
    *  the renderer to leave the mesh on its own origin instead of centring it. */

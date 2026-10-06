@@ -974,6 +974,32 @@
       "modelId": "mountain-network",
       "validation": "Corrected9927tri104816B e816e9ae. Root+independent gallery/source recognition; actual selected route/pin/physical sourced card/native exact BAG mask/two drawn neighbors pass. Private source/evidence b189f00 pushed before model checkpoint. Performance evidence records153.6/147.4/156.3msvisible/hidden/repeat median; no whole-game performant-scene claim. Prior tower/balcony/tallhall/lowhall failures preserved.",
       "evidence": "private models/mountain-network/validation/low-hall-20261006/ @b189f00"
+    },
+    {
+      "id": "keith-haring-mural",
+      "task": "Keith Haring mural on the correct Food Center host building and wall",
+      "priority": "high",
+      "status": "verified",
+      "requestedOn": "2026-10-06",
+      "sourceUrls": [
+        "https://nl.wikipedia.org/wiki/Muurschildering_van_Keith_Haring"
+      ],
+      "modelId": "keith-haring-mural",
+      "validation": "Root and independent corrected source/gallery/live review accepted; actual route, map pin, physical sourced card, native scale, exact suppression and retained resident/drawn neighbor passed. Desktop stationary visible/hidden/repeat medians16.7ms; no broad city-performance claim.",
+      "evidence": "private models/keith-haring-mural/validation/mural-20261006/ @1313b00"
+    },
+    {
+      "id": "klimmuur-centraal-real-signage",
+      "task": "Restore source-supported Klimmuur Centraal lettering on its real wall plane",
+      "priority": "high",
+      "status": "verified",
+      "requestedOn": "2026-10-06",
+      "modelId": "klimmuur-centraal",
+      "sourceUrls": [
+        "https://www.deklimmuur.nl/wp-content/uploads/2024/03/USPs_locatie.webp"
+      ],
+      "validation": "Root and independent corrected source/gallery/live review accepted; actual route, map pin, physical sourced card, native scale, exact suppression and retained resident/drawn neighbor passed. Desktop stationary visible/hidden/repeat medians16.7ms; no broad city-performance claim.",
+      "evidence": "private models/klimmuur-centraal/validation/signage-20261006/ @1313b00"
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

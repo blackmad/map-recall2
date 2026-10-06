@@ -797,13 +797,18 @@
       "dateSource": "asset-update"
     },
     "klimmuur-centraal": {
-      "updatedAt": "2026-10-06T06:24:28.107Z",
-      "version": "927147ca2d454a0d",
+      "updatedAt": "2026-10-06T07:57:51.485Z",
+      "version": "f8954acce2d6adc6",
       "dateSource": "asset-update"
     },
     "mountain-network": {
       "updatedAt": "2026-10-06T07:08:41.417Z",
       "version": "e816e9aece23222c",
+      "dateSource": "asset-update"
+    },
+    "keith-haring-mural": {
+      "updatedAt": "2026-10-06T08:06:43.794Z",
+      "version": "8a50d19e865f7a58",
       "dateSource": "asset-update"
     }
   }

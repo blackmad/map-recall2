@@ -7116,6 +7116,43 @@ Map source: ${osmUrl(places[i][0])}`);
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free house-style reconstruction of surveyed full host; no source photo pixels or third-party artistic mesh."
       }
+    },
+    {
+      id: "keith-haring-mural",
+      name: "Muurschildering van Keith Haring",
+      landmarkId: "n9021384965",
+      modelUrl: "./models/keith-haring-mural.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012201630"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.86495,
+          52.38046
+        ],
+        headingDegrees: 0,
+        lengthMetres: 43,
+        widthMetres: 41
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      surveyed: {
+        anchor: [
+          4.86495,
+          52.38046
+        ],
+        northOffsetDegrees: 0,
+        source: "PDOK current BAG0363100012201630; east/south native axes, west-wall artwork node9021384965. Wikipedia coordinate denotes public viewing position, not host."
+      },
+      attribution: {
+        title: "Koelhuis and Keith Haring west-wall mural",
+        author: "Map Recall; mural composition after Keith Haring (1986)",
+        sourceUrl: "https://www.amsterdam.nl/stadsdelen/west/nieuws/fantasiebeest-keith-haring/",
+        licence: "Original project geometry; underlying artwork by Keith Haring",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free surveyed building and hand-authored white stroke interpretation; no reference pixels or imported mesh."
+      }
     }
   ];
 
@@ -10357,6 +10394,52 @@ Map source: ${osmUrl(places[i][0])}`);
         sourceUrl: "https://www.climbingnetwork.nl/indoor/locatie/climbingcenter-amsterdam",
         reason: "Source-supported northern public entrance outside surveyed tower boundary; genuine mapped node identity retained."
       }
+    },
+    {
+      modelId: "keith-haring-mural",
+      landmarkId: "n9021384965",
+      name: "Muurschildering van Keith Haring",
+      lat: 52.3804742,
+      lng: 4.8645934,
+      category: "artwork",
+      sourceUrl: "https://www.amsterdam.nl/stadsdelen/west/nieuws/fantasiebeest-keith-haring/",
+      description: "Keith Haring painted this 15-by-12-metre fantasy animal and its rider on the west wall of the Koelhuis in 1986, during his Stedelijk Museum exhibition. The rider carries an Amsterdam St Andrew\u2019s cross. This mostly windowless 1935 cold-storage building later held museum collections. Metal cladding hid the work until 2018; restoration followed in 2020. It is on the former museum depot, north of the Centrale Markthal, and can be viewed across the water from Willem de Zwijgerlaan.",
+      sources: [
+        {
+          label: "Amsterdam municipality current mural history",
+          url: "https://www.amsterdam.nl/stadsdelen/west/nieuws/fantasiebeest-keith-haring/"
+        },
+        {
+          label: "Koelhuis architectural history and1933 elevations",
+          url: "https://amsterdamopdekaart.nl/1850-1940/Centrale_Groothandelsmarkt/Koelhuis"
+        },
+        {
+          label: "Current2023 west elevation, Alfvanbeem CC0 photograph",
+          url: "https://commons.wikimedia.org/wiki/File:Keith_Haring_Muurschildering,_Amsterdam.jpg"
+        }
+      ],
+      identityNote: "Genuine OSM artwork node9021384965, wikidataQ55372120. New researched artwork destination, separate from Centrale Markthal. Physical building click card must map replaced Pand to this artwork.",
+      center: [
+        52.3804742,
+        4.8645934
+      ],
+      artworkCenter: [
+        52.3804742,
+        4.8645934
+      ],
+      integrationNote: "Preserve center as actual mural node; use routeDestination.center only for public viewing arrival via routeCenter plumbing.",
+      additionalSources: [
+        "https://amsterdamopdekaart.nl/1850-1940/Centrale_Groothandelsmarkt/Koelhuis",
+        "https://commons.wikimedia.org/wiki/File:Keith_Haring_Muurschildering,_Amsterdam.jpg"
+      ],
+      routeDestination: {
+        center: [
+          52.3802778,
+          4.8619444
+        ],
+        sourceUrl: "https://nl.wikipedia.org/wiki/Muurschildering_van_Keith_Haring",
+        reason: "Wikipedia explicitly identifies coordinate as public viewing spot, at Willem de Zwijgerlaan near Karel Doormanstraat. Preserve actual artwork pin at host."
+      }
     }
   ];
 
@@ -10379,6 +10462,7 @@ Map source: ${osmUrl(places[i][0])}`);
           name: existing?.name || fallback?.name || model.name,
           // Explicit sourced corrections fix mislabeled neighbors or use a public entrance.
           center: fallback?.destinationOverride?.center ?? existing?.center ?? fallback?.center ?? [anchor[1], anchor[0]],
+          routeCenter: fallback?.routeDestination?.center ?? existing?.routeCenter,
           type: existing?.type || "landmark",
           funFact: existing?.funFact || (!existing?.wikipediaExtract ? fallback?.description : void 0),
           sourceUrl: existing?.sourceUrl || fallback?.sourceUrl || model.attribution.sourceUrl,
