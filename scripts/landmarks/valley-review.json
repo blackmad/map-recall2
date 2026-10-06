@@ -1,0 +1,274 @@
+{
+  "modelId": "valley",
+  "status": "Scoped visual recognition and actual game integration accepted by root and independent reviewer; whole-scene performance remains slow and unaccepted.",
+  "export": {
+    "file": "public/canal-drive/models/valley.glb",
+    "sha256": "e00596e88da882b0916ac63895b57344299c5f28e27fa0caee6ebc1dec52373f",
+    "triangles": 35426,
+    "bytes": 409840,
+    "generatedBy": "shared manual generator"
+  },
+  "checks": {
+    "command": "node --import tsx scripts/check-valley-geometry.ts",
+    "fractionalFirstHitPaneSamples": 11040,
+    "carvedValleyHeight": 22.5,
+    "independentTowerProbeHeights": [
+      100,
+      67,
+      81
+    ],
+    "nativeWidth": 53.4,
+    "nativeLength": 139.7,
+    "roofWinding": "all explicit original roof planes upward",
+    "typescript": "npm run lint -- --pretty false passed2026-10-06"
+  },
+  "cpuViews": [
+    "artifacts/landmark-offline-preview/valley-cpu-front.png",
+    "artifacts/landmark-offline-preview/valley-cpu-opposite.png"
+  ],
+  "preservedFailures": [
+    {
+      "failure": "Initial draft geometry overbudget102026tri/1229608bytes",
+      "evidence": [
+        "artifacts/landmark-next-batch/valley-overbudget-102026.glb",
+        "artifacts/landmark-offline-preview/valley-overbudget-front.png",
+        "artifacts/landmark-offline-preview/valley-overbudget-opposite.png"
+      ],
+      "resolution": "Contours simplified0.65m and repeated facade details use planes while main surveyed silhouette retained; final24396tri/266008bytes."
+    },
+    {
+      "failure": "Initial fractionalfirsthit pane at[-4.053,7.950,64.050] intercepted adjacentglass on short beveled stoneface",
+      "resolution": "No inferred stonewindows onedges<3.2m; rerun11040fractionalsamples passes."
+    },
+    {
+      "failure": "Initial fractionalfirsthit pane at[-19.711,27.950,-41.713] obscured by native approximate terraceplant",
+      "resolution": "Requireplantcentres>1.35m insidevalidterraceboundaries; rerun11040fractionalsamples passes."
+    },
+    {
+      "failure": "Independent9b002125 review failed inner apartment/balcony/cantilever assembly and public stepped/parapet valley recognition",
+      "evidence": [
+        "artifacts/landmark-continuation-20261006/valley-review/independent-review.json",
+        "artifacts/landmark-next-batch/valley-failed-9b002125.glb",
+        "artifacts/landmark-offline-preview/valley-failed-9b002125-front.png",
+        "artifacts/landmark-offline-preview/valley-failed-9b002125-opposite.png"
+      ],
+      "resolutionState": "Geometry repair authored; visual verdict remains fail until fresh independent review. Prior unequal-tower/nativeplan/material successes preserved."
+    },
+    {
+      "failure": "After assembly repair/export26534tri/292596bytes, old authored probe[-3,110,-26] returned nohit and failed before decoded checks",
+      "evidence": [
+        "artifacts/landmark-continuation-20261006/valley-review/stale-public-valley-probe-check.ts"
+      ],
+      "reason": "Recordedpublicapproachcorridor is4.8m wide while physicalstairs are3.4m. The old point[-3,-26] sits in clearance beside the now-carved staircase, outside the stair/landing footprint, so it no longer targets a roof. This is not evidence of a filled valley.",
+      "resolution": "Require the source-recorded upper public landing[3,-27,22.5] firsthit to have actualpubliclandinggeometry and expectedheight; independentlydecodecurrentGLB and require matching supportedupwardlanding. Existing120sourcecarvedstairsfirsthitsandcavity/undercutchecks retained. No acceptanceclaimmadefromcheckalone."
+    },
+    {
+      "failure": "Fullcheck reacheddecodedbudgetandidentified24396triartifactdraftwhilecurrentregisteredexport26534triwaspublic/canal-drive/models/valley.glb",
+      "resolution": "Defaultdecodedinputnowregisteredpublicmesh; optionalVALLEY_GLB_PATHfor intentionaldraftchecks. Exactauthored/decodedtrianglecomparisonretained; preservedold9b002125artifactunchanged."
+    }
+  ],
+  "pending": [
+    "Root reference/render review and independent failure-seeking reviewer",
+    "Native gallery five views and real gameplay from relevant sides",
+    "Exact BAG/OSM suppression and retainedadjacentABNAMRO/AFCbuilding visibility",
+    "Genuine selectable destination, reachable public entrance pin, physical sourcedcard selection",
+    "Currentbundle fingerprints and actualgame/performance evidence",
+    "Private source commit/push before publicmodelcommit"
+  ],
+  "limitations": [
+    "Originalfloorheightquantization and contourunion approximate exact photographed cantilever/apartment geometry; onlyprimarynorth/middle/southheight100/67/81m crowns claimed.",
+    "Beeldbank boundedname/addressrequest returned JSviewer shell; no relevant archivalrecord inspected. Modern2021building has nohistoricalmonumentregisterdescription."
+  ],
+  "repairChecks": {
+    "command": "node --import tsx scripts/check-valley-geometry.ts",
+    "authoredTriangles": 26534,
+    "firstHitPaneSamples": 5376,
+    "openRecessedBalconyGroups": 37,
+    "exposedCantileverUndersides": 18,
+    "publicStairSurfaceSamples": 120,
+    "status": "pass pre-export only; no replacementGLB/GPU/game acceptance",
+    "assemblyEvidence": "Primary MVRDV photo24 broad multi-pane groups and recessed balcony/cantilever undersides; photo1 public zigzag approach; photo24 substantial stone planted beds",
+    "boundedGeometry": "Selected long inner faces have real aperture holes,1.6m balcony recesses or2.25m projecting room/slab groups. Variable3–5 pane grouped glazing replaces nearuniformsmallwindow grid. Current surveyed outer envelope retained. Stair approach subtracts basement-derived lowerpolygons only inside recorded corridor; path adjusted within actual upper-level valley void. Exact apartment layout/landing/tread counts are approximate, not surveyed claims.",
+    "repairFailuresCorrected": [
+      "Initial proposed stair path crossed upper floor at native[-9.875,-31.125], first-hit26.7m; correctedwithinopen z-24..-27gap.",
+      "Initial lowerpodium/requestedstairs envelope buried approach; exact corridorcut exposesstairfirsthits.",
+      "Several broad/recess pane samples intercepted neighboringfacetglass/masonry; selected assemblies require>0.9m clearance from neighboring faces.",
+      "Initial projecting slabs overlapped lowerstorey roof; cantilevers retained only where lowerprofiledoesnotbury underside.",
+      "A publicupperplanter overlappedglazing; relocated/omitted thatbed and all5376fractional samples pass."
+    ],
+    "decodedCurrentExport": "26534tri/292596B; currentregisteredpublicGLBidentitymatchesauthoredgeometry; decodedpubliclanding22.5mupwardandfirsthitpassed"
+  },
+  "supersededAssemblyReview": {
+    "modelId": "valley",
+    "status": "independent previous9b002125 FAIL preserved; source-backed assembly repair code ready for root export and fresh reference/GPU review",
+    "export": {
+      "file": "public/canal-drive/models/valley.glb",
+      "sha256": "c7e37640c9bb654e3eb08d98c17101ca9f577bec8341c00acde5db8d87e685c6",
+      "triangles": 26534,
+      "bytes": 292596,
+      "generatedBy": "root sharedmanualgenerator"
+    },
+    "checks": {
+      "command": "node --import tsx scripts/check-valley-geometry.ts",
+      "fractionalFirstHitPaneSamples": 11040,
+      "carvedValleyHeight": 22.5,
+      "independentTowerProbeHeights": [
+        100,
+        67,
+        81
+      ],
+      "nativeWidth": 53.4,
+      "nativeLength": 139.7,
+      "roofWinding": "all explicit original roof planes upward",
+      "typescript": "npm run lint -- --pretty false passed2026-10-06"
+    },
+    "cpuViews": [
+      "artifacts/landmark-offline-preview/valley-cpu-front.png",
+      "artifacts/landmark-offline-preview/valley-cpu-opposite.png"
+    ],
+    "preservedFailures": [
+      {
+        "failure": "Initial draft geometry overbudget102026tri/1229608bytes",
+        "evidence": [
+          "artifacts/landmark-next-batch/valley-overbudget-102026.glb",
+          "artifacts/landmark-offline-preview/valley-overbudget-front.png",
+          "artifacts/landmark-offline-preview/valley-overbudget-opposite.png"
+        ],
+        "resolution": "Contours simplified0.65m and repeated facade details use planes while main surveyed silhouette retained; final24396tri/266008bytes."
+      },
+      {
+        "failure": "Initial fractionalfirsthit pane at[-4.053,7.950,64.050] intercepted adjacentglass on short beveled stoneface",
+        "resolution": "No inferred stonewindows onedges<3.2m; rerun11040fractionalsamples passes."
+      },
+      {
+        "failure": "Initial fractionalfirsthit pane at[-19.711,27.950,-41.713] obscured by native approximate terraceplant",
+        "resolution": "Requireplantcentres>1.35m insidevalidterraceboundaries; rerun11040fractionalsamples passes."
+      },
+      {
+        "failure": "Independent9b002125 review failed inner apartment/balcony/cantilever assembly and public stepped/parapet valley recognition",
+        "evidence": [
+          "artifacts/landmark-continuation-20261006/valley-review/independent-review.json",
+          "artifacts/landmark-next-batch/valley-failed-9b002125.glb",
+          "artifacts/landmark-offline-preview/valley-failed-9b002125-front.png",
+          "artifacts/landmark-offline-preview/valley-failed-9b002125-opposite.png"
+        ],
+        "resolutionState": "Geometry repair authored; visual verdict remains fail until fresh independent review. Prior unequal-tower/nativeplan/material successes preserved."
+      },
+      {
+        "failure": "After assembly repair/export26534tri/292596bytes, old authored probe[-3,110,-26] returned nohit and failed before decoded checks",
+        "evidence": [
+          "artifacts/landmark-continuation-20261006/valley-review/stale-public-valley-probe-check.ts"
+        ],
+        "reason": "Recordedpublicapproachcorridor is4.8m wide while physicalstairs are3.4m. The old point[-3,-26] sits in clearance beside the now-carved staircase, outside the stair/landing footprint, so it no longer targets a roof. This is not evidence of a filled valley.",
+        "resolution": "Require the source-recorded upper public landing[3,-27,22.5] firsthit to have actualpubliclandinggeometry and expectedheight; independentlydecodecurrentGLB and require matching supportedupwardlanding. Existing120sourcecarvedstairsfirsthitsandcavity/undercutchecks retained. No acceptanceclaimmadefromcheckalone."
+      },
+      {
+        "failure": "Fullcheck reacheddecodedbudgetandidentified24396triartifactdraftwhilecurrentregisteredexport26534triwaspublic/canal-drive/models/valley.glb",
+        "resolution": "Defaultdecodedinputnowregisteredpublicmesh; optionalVALLEY_GLB_PATHfor intentionaldraftchecks. Exactauthored/decodedtrianglecomparisonretained; preservedold9b002125artifactunchanged."
+      }
+    ],
+    "pending": [
+      "Root reference/render review and independent failure-seeking reviewer",
+      "Native gallery five views and real gameplay from relevant sides",
+      "Exact BAG/OSM suppression and retainedadjacentABNAMRO/AFCbuilding visibility",
+      "Genuine selectable destination, reachable public entrance pin, physical sourcedcard selection",
+      "Currentbundle fingerprints and actualgame/performance evidence",
+      "Private source commit/push before publicmodelcommit"
+    ],
+    "limitations": [
+      "Originalfloorheightquantization and contourunion approximate exact photographed cantilever/apartment geometry; onlyprimarynorth/middle/southheight100/67/81m crowns claimed.",
+      "Beeldbank boundedname/addressrequest returned JSviewer shell; no relevant archivalrecord inspected. Modern2021building has nohistoricalmonumentregisterdescription."
+    ],
+    "repairChecks": {
+      "command": "node --import tsx scripts/check-valley-geometry.ts",
+      "authoredTriangles": 26534,
+      "firstHitPaneSamples": 5376,
+      "openRecessedBalconyGroups": 37,
+      "exposedCantileverUndersides": 18,
+      "publicStairSurfaceSamples": 120,
+      "status": "pass pre-export only; no replacementGLB/GPU/game acceptance",
+      "assemblyEvidence": "Primary MVRDV photo24 broad multi-pane groups and recessed balcony/cantilever undersides; photo1 public zigzag approach; photo24 substantial stone planted beds",
+      "boundedGeometry": "Selected long inner faces have real aperture holes,1.6m balcony recesses or2.25m projecting room/slab groups. Variable3–5 pane grouped glazing replaces nearuniformsmallwindow grid. Current surveyed outer envelope retained. Stair approach subtracts basement-derived lowerpolygons only inside recorded corridor; path adjusted within actual upper-level valley void. Exact apartment layout/landing/tread counts are approximate, not surveyed claims.",
+      "repairFailuresCorrected": [
+        "Initial proposed stair path crossed upper floor at native[-9.875,-31.125], first-hit26.7m; correctedwithinopen z-24..-27gap.",
+        "Initial lowerpodium/requestedstairs envelope buried approach; exact corridorcut exposesstairfirsthits.",
+        "Several broad/recess pane samples intercepted neighboringfacetglass/masonry; selected assemblies require>0.9m clearance from neighboring faces.",
+        "Initial projecting slabs overlapped lowerstorey roof; cantilevers retained only where lowerprofiledoesnotbury underside.",
+        "A publicupperplanter overlappedglazing; relocated/omitted thatbed and all5376fractional samples pass."
+      ],
+      "decodedCurrentExport": "26534tri/292596B; currentregisteredpublicGLBidentitymatchesauthoredgeometry; decodedpubliclanding22.5mupwardandfirsthitpassed"
+    }
+  },
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "281a771",
+    "path": "models/valley/"
+  },
+  "currentIndependentReview": "artifacts/landmark-continuation-20261006/valley-stair-access-review/independent-review.json",
+  "currentRootRuntime": "artifacts/landmark-release-check/valley-review/",
+  "preservedReleaseFailure": {
+    "date": "2026-10-06",
+    "failure": "Clean route selector did not contain newly registered Valley because route-selection.bundle.js was not regenerated. Model gallery loaded; actual selected-route wait timed out. Rebuilt route-selection with new catalogue and reran full meaningful runtime check."
+  },
+  "runtimeReview": {
+    "status": "Clean actual route/card/pin/native masks/neighbors passed; root and independent current front/rear screenshots inspected.",
+    "assetSha256": "e00596e88da882b0916ac63895b57344299c5f28e27fa0caee6ebc1dec52373f",
+    "placement": "Native scale1, exact OSM/BAG mask only; retained west ABN parent parts geometrically proved and east neighbor retained.",
+    "publicEntrance": {
+      "center": [
+        52.3378633,
+        4.8772123
+      ],
+      "sourceUrl": "https://www.openstreetmap.org/way/1097646403",
+      "reason": "Ground end of current access=yes northwestern public steps; original OSM incline=down node order and architect public-valley description."
+    },
+    "performance": {
+      "id": "valley",
+      "assetVersion": "e00596e88da882b0",
+      "samples": [
+        {
+          "label": "model-visible",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 171.40000009536743,
+          "p95Ms": 193.90000009536743
+        },
+        {
+          "label": "same-scene-model-hidden",
+          "visible": false,
+          "frames": 60,
+          "p50Ms": 153.7000002861023,
+          "p95Ms": 170.30000019073486
+        },
+        {
+          "label": "model-visible-repeat",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 176.59999990463257,
+          "p95Ms": 214
+        }
+      ],
+      "buildings": {
+        "kitVertices": 137700,
+        "chunks": 29,
+        "buildings": 17759,
+        "walls": 91371,
+        "quads": 371725,
+        "vertices": 2636791,
+        "geometryMB": 87.54500770568848,
+        "textureMB": 97.5,
+        "drawCalls": 29,
+        "triangles": 1057822,
+        "buildMs": 0.3000001907348633
+      },
+      "scope": "Headless Chromium same stationary scene; hidden model keeps existing replacement masks, isolating custom draw cost. No whole-game performance pass claimed."
+    },
+    "acceptanceScope": "Recognizable source-derived three towers and terraced limestone/glass composition, public valley/stair assemblies and installed neighbor retention. Individual apartment spacing and authored photo-guided stair trace remain approximate; mapped public ground endpoint controls route arrival."
+  },
+  "currentIndependentCleanReview": "models/valley/validation/clean-release-20261006/independent/review.json",
+  "performanceAcceptance": {
+    "status": "NOT ACCEPTED as smooth whole-game performance",
+    "evidence": "Same-scene measured p50 visible171.4ms/hidden153.7ms/repeat176.6ms; whole headless scene is slow and model adds17.7–22.9ms median. No physical desktop/touch pan evidence obtained.",
+    "nextAction": "Retain exact mesh/visual acceptance; profile actual hardware game scene before a general performance-complete claim."
+  }
+}

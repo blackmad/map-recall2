@@ -1,0 +1,23 @@
+{
+  "modelId": "valley",
+  "name": "Valley",
+  "sourceUrl": "https://www.mvrdv.com/projects/233/valley-t",
+  "description": "Valley is MVRDV’s mixed-use Zuidas complex, opened in 2022. Three towers rise 67, 81 and 100 metres around an elevated public valley. Its smooth outer glass skin contrasts with jagged limestone apartments and cantilevered terraces planted by landscape designer Piet Oudolf.",
+  "sourceUrls": [
+    "https://www.mvrdv.com/projects/233/valley-t",
+    "https://zuidas.nl/construction-project/valley/",
+    "https://valley.nl/en/contact/"
+  ],
+  "center": [
+    52.3378633,
+    4.8772123
+  ],
+  "destinationOverride": {
+    "center": [
+      52.3378633,
+      4.8772123
+    ],
+    "sourceUrl": "https://www.openstreetmap.org/way/1097646403",
+    "reason": "Ground end of current access=yes northwestern public steps; original OSM incline=down node order and architect public-valley description."
+  }
+}

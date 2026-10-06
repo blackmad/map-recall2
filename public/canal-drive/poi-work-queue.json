@@ -277,7 +277,9 @@
       "id": "valley",
       "task": "Valley",
       "priority": "normal",
-      "status": "queued"
+      "status": "visual-and-game-integration-verified-performance-followup",
+      "evidence": "../../scripts/landmarks/valley-review.json",
+      "nextAction": "Publish source-reviewed native asset; retain sparse planting/approximate apartment/stair layout and slow headless performance evidence. Profile physical desktop/touch scene before general performance acceptance."
     },
     {
       "id": "vinoly",
