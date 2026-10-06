@@ -17,7 +17,11 @@ export interface ArchitecturalRecipe {
   openingGroup?: 'canal-two' | 'canal-three';
   groundAssembly?: 'tall-side-entry' | 'tall-commercial';
   /** Observed rigid shop canopy; opt-in for a source-registered street frontage only. */
-  shopCanopy?: { kind: 'continuous-rigid'; projectionM: number; fasciaHeightM: number; fasciaHex: string; edgeHex: string };
+  shopCanopy?: { kind: 'continuous-rigid'; projectionM: number; fasciaHeightM: number; fasciaHex: string; edgeHex: string;
+    /** Bounded source candidate relative to the shared ground-row datum; not a surveyed height. */
+    datumOffsetM?: number;
+    /** Observed shallow glass-block transom above the slab, never inferred for other fronts. */
+    glassBlockBand?: { heightM: number; cellM: number } };
   /** Procedural crown prior for an admitted source-visual frontage, not surveyed geometry. */
   crownShape?: 'neck' | 'plain' | 'bell' | 'cornice';
   crownWindows?: 'rectangular' | 'paired-oculi';
@@ -352,6 +356,8 @@ export function validateStreetAppearanceCatalog(value: unknown): StreetAppearanc
       if(r.shopCanopy!=null){
         const c=r.shopCanopy;
         if(c.kind!=='continuous-rigid'||r.family!=='masonry'||!['c19','school'].includes(r.period)||!Number.isFinite(c.projectionM)||c.projectionM<.3||c.projectionM>1.8||!Number.isFinite(c.fasciaHeightM)||c.fasciaHeightM<.12||c.fasciaHeightM>.4||![c.fasciaHex,c.edgeHex].every(hex=>/^#[a-f0-9]{6}$/i.test(hex)))throw Error('invalid source shop canopy');
+        if(c.datumOffsetM!=null&&(!Number.isFinite(c.datumOffsetM)||c.datumOffsetM<-.6||c.datumOffsetM>0))throw Error('invalid source shop canopy datum');
+        if(c.glassBlockBand!=null&&(!Number.isFinite(c.glassBlockBand.heightM)||c.glassBlockBand.heightM<.7||c.glassBlockBand.heightM>1||!Number.isFinite(c.glassBlockBand.cellM)||c.glassBlockBand.cellM<.16||c.glassBlockBand.cellM>.24))throw Error('invalid source shop canopy glass block band');
       }
       if(r.crownShape!=null&&(!['neck','plain','bell','cornice'].includes(r.crownShape)||!p.visualClass||r.family!=='masonry'||!['canal','c19'].includes(r.period)))throw Error('incompatible source crown prior');
       if(r.crownWindows!=null&&(!['rectangular','paired-oculi'].includes(r.crownWindows)||!p.visualClass||!r.crownShape))throw Error('incompatible source crown windows');

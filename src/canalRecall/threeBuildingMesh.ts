@@ -13,10 +13,11 @@
 
 import { sharedWallCuts, subtractWallCuts, subtractConvex, polygonArea, type Point2 } from './coplanarSurfaces.js';
 import { recipeBayOpenings, type Openings } from './facadeOpenings.js';
-import { streetWallBuilding, frontageLayoutScale, type StreetFacadeContext } from './streetFacadeRendering.js';
+import { streetWallBuilding, frontageLayoutScale, PROCEDURAL_RECIPE_LAYER_OFFSET, type StreetFacadeContext } from './streetFacadeRendering.js';
+import { BAY_LAYER_COUNT } from './bayLook.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
 import { streetCrown, type StreetCrownFront, type StreetCrownTri } from './streetCrown.js';
-import { CELL_VARIANTS, cellLayer } from './facadeCells.js';
+import { CELL_VARIANTS, CELL_LAYER_COUNT, cellLayer } from './facadeCells.js';
 import { edgeGroundPieces, edgeLayout, layoutRun } from './facadeLayout.js';
 import { FALLBACK_REACH_M, SegmentGrid, streetDistance } from './streetFronts.js';
 import { FACADE_CORNICE_M, type FacadeStyle } from './genericFacades.js';
@@ -201,7 +202,7 @@ function lidMesh(b: MeshBuilding, origin: Origin): LidMesh | null {
 }
 
 /** `lit`: lit signage (a chain's fascia and lettering), barely dimmed on a wall facing away from the sun. */
-type SignTri = { p: [number, number, number][]; hex: string; n: [number, number, number]; lit?: boolean };
+type SignTri = { p: [number, number, number][]; hex: string; n: [number, number, number]; lit?: boolean; texture?: 'glass-block'; uv?: [number,number][] };
 
 /** One flat quad (corners in order) as two triangles wound to face `n`. */
 function faceTris(q: [number, number, number][], n: [number, number, number], hex: string, out: SignTri[]) {
@@ -644,9 +645,10 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       // Signature storefront boxes: flat colour on the flat layer, shaded by facing.
       const shade = Math.max(t.lit ? 0.9 : 0.55, Math.min(1, 0.58 + 0.42 * Math.max(0, t.n[0] * -0.35 + t.n[1] * 0.5 + t.n[2] * 0.8)));
       const [sr, sg, sb] = parseHex(t.hex);
-      for (const q of t.p) {
+      for (const [qi,q] of t.p.entries()) {
         positions[v * 3] = q[0]; positions[v * 3 + 1] = q[1]; positions[v * 3 + 2] = q[2];
-        uvs[v * 2] = 0.5; uvs[v * 2 + 1] = 0.5; layers[v] = b.lid!.flatLayer;
+        uvs[v * 2] = t.uv?.[qi][0] ?? 0.5; uvs[v * 2 + 1] = t.uv?.[qi][1] ?? 0.5;
+        layers[v] = t.texture === 'glass-block' ? BAY_LAYER_COUNT + (b.streetAppearance?.look === 'procedural' ? PROCEDURAL_RECIPE_LAYER_OFFSET : PROCEDURAL_RECIPE_LAYER_OFFSET - CELL_LAYER_COUNT) : b.lid!.flatLayer;
         tints[v * 4] = sr; tints[v * 4 + 1] = sg; tints[v * 4 + 2] = sb; tints[v * 4 + 3] = shade * 255;
         accents[v * 4] = accents[v * 4 + 1] = accents[v * 4 + 2] = accents[v * 4 + 3] = 255;
         indices[ti++] = v; v++;

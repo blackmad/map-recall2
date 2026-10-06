@@ -1,0 +1,1017 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-10-06T06:30:35.853314+00:00",
+  "scope": "At most three searches, five records each: Jan Evertsenstraat then address 94 and 68 if broad query succeeds",
+  "discovery": {
+    "cachedRecord": "/Users/blackmad/Code/map-recall2-source-data/streets/canalhouse-recipes-pilot/processed/beeldbank-service-inspection.json",
+    "service": "official public Beeldbank viewer media endpoint; identifier extracted from cached viewer shell"
+  },
+  "accessState": "Three bounded catalogue queries and five useful historical originals+previews acquired and visually inspected; no pending requests",
+  "attempts": [
+    {
+      "label": "search: Jan Evertsenstraat",
+      "attempt": 1,
+      "time": "2026-10-06T06:20:04.947794+00:00",
+      "errorType": "URLError",
+      "reason": "[Errno 8] nodename nor servname provided, or not known",
+      "accessState": "request failed this attempt; transient failure possible"
+    },
+    {
+      "label": "search: Jan Evertsenstraat",
+      "attempt": 2,
+      "time": "2026-10-06T06:20:06.960175+00:00",
+      "errorType": "URLError",
+      "reason": "[Errno 8] nodename nor servname provided, or not known",
+      "accessState": "request failed this attempt; transient failure possible"
+    },
+    {
+      "label": "search: Jan Evertsenstraat",
+      "attempt": 3,
+      "time": "2026-10-06T06:20:11.965693+00:00",
+      "errorType": "URLError",
+      "reason": "[Errno 8] nodename nor servname provided, or not known",
+      "accessState": "request failed this attempt; transient failure possible"
+    },
+    {
+      "label": "search: Jan Evertsenstraat",
+      "attempt": 4,
+      "time": "2026-10-06T06:20:21.968233+00:00",
+      "errorType": "URLError",
+      "reason": "[Errno 8] nodename nor servname provided, or not known",
+      "accessState": "request failed this attempt; transient failure possible"
+    },
+    {
+      "label": "search: Jan Evertsenstraat",
+      "attempt": 1,
+      "time": "2026-10-06T06:20:26.382008+00:00",
+      "errorType": "RuntimeError",
+      "reason": "RuntimeError",
+      "accessState": "request failed this attempt; transient failure possible"
+    },
+    {
+      "label": "search: Jan Evertsenstraat",
+      "attempt": 2,
+      "time": "2026-10-06T06:20:28.397672+00:00",
+      "errorType": "RuntimeError",
+      "reason": "RuntimeError",
+      "accessState": "request failed this attempt; transient failure possible"
+    },
+    {
+      "label": "search: Jan Evertsenstraat",
+      "attempt": 3,
+      "time": "2026-10-06T06:20:33.413217+00:00",
+      "errorType": "RuntimeError",
+      "reason": "RuntimeError",
+      "accessState": "request failed this attempt; transient failure possible"
+    },
+    {
+      "label": "search: Jan Evertsenstraat",
+      "attempt": 4,
+      "time": "2026-10-06T06:20:43.424976+00:00",
+      "errorType": "RuntimeError",
+      "reason": "RuntimeError",
+      "accessState": "request failed this attempt; transient failure possible"
+    },
+    {
+      "label": "direct curl search Jan Evertsenstraat",
+      "attempts": 5,
+      "time": "2026-10-06T06:21:10.690406+00:00",
+      "errorType": "curl-exit-6",
+      "reason": "Could not resolve host: webservices.memorix.nl",
+      "accessState": "bounded direct-shell retry pass exhausted; transient failure possible"
+    }
+  ],
+  "sources": [
+    {
+      "label": "service-connectivity-no-query",
+      "url": "https://webservices.memorix.nl/mediabank/",
+      "rawPath": "artifacts/canopy-rollout/beeldbank/service-connectivity.txt",
+      "sha256": "595bd80819fd2c0fddde6d7036960c8c9ea9b4aa1a8cd197dc88bf7e87210317",
+      "bytes": 67,
+      "responseCode": 403,
+      "accessState": "Service answered application-level missing-key message once; this is connectivity evidence only, no photograph/catalogue acquired"
+    },
+    {
+      "label": "broad-query.json",
+      "rawPath": "artifacts/canopy-rollout/beeldbank/broad-query.json",
+      "sha256": "c800cf56a7e671b16778a03784352228d18b1c1cd35a247dafd69d01634620f6",
+      "bytes": 18351,
+      "registeredAt": "2026-10-06T06:29:35.182695+00:00",
+      "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+    },
+    {
+      "label": "query-94.json",
+      "rawPath": "artifacts/canopy-rollout/beeldbank/query-94.json",
+      "sha256": "a085821cf53e6b1b41a909cc5e297200b51a196a80e64a332ae44673630a20d2",
+      "bytes": 16512,
+      "registeredAt": "2026-10-06T06:29:35.182695+00:00",
+      "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+    },
+    {
+      "label": "query-68.json",
+      "rawPath": "artifacts/canopy-rollout/beeldbank/query-68.json",
+      "sha256": "5c77c980621525d2e43ac5bd7df951cd4992c8ddd343628eb9ab2ee1a4d9ee04",
+      "bytes": 15808,
+      "registeredAt": "2026-10-06T06:29:35.182695+00:00",
+      "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+    }
+  ],
+  "items": [
+    {
+      "id": "30d6b7d0-a822-cbb0-fe7c-5d6c676ff446",
+      "title": "Luchtfoto van de Jan Evertsenstraat en omgeving, gezien in oostelijke richting naar de nog aan te leggen Einsteinweg",
+      "description": "Op de voorgrond de Knijtijzerblokken in aanbouw, Jan Evertsenstraat 201-471, rechts daarvan de Jan Voermanstraat.",
+      "catalogueUrl": "https://archief.amsterdam/beeldbank/detail/30d6b7d0-a822-cbb0-fe7c-5d6c676ff446",
+      "date": "1960 ca.",
+      "rights": "Dijkstra, Roel",
+      "usageTerms": "Rechthebbende: Roel Dijkstra<br/><br/>Deze afbeelding is auteursrechtelijk beschermd en kan niet door het Stadsarchief Amsterdam worden geleverd. Wanneer u dit beeld wilt bestellen, kunt u contact opnemen met: Roel Dijkstra <a href=\"http://www.roeldijkstra.nl\">http://www.roeldijkstra.nl</a>",
+      "creator": [
+        "Aero-photo Nederland"
+      ],
+      "catalogueSource": {
+        "label": "broad-query.json",
+        "rawPath": "artifacts/canopy-rollout/beeldbank/broad-query.json",
+        "sha256": "c800cf56a7e671b16778a03784352228d18b1c1cd35a247dafd69d01634620f6",
+        "bytes": 18351,
+        "registeredAt": "2026-10-06T06:29:35.182695+00:00",
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+      },
+      "geographicMetadata": [
+        [
+          {
+            "field": "geografische_aanduiding.sk_geografische_naam",
+            "label": "Straat",
+            "value": "Jan Voermanstraat"
+          }
+        ],
+        [
+          {
+            "field": "geografische_aanduiding.sk_geografische_naam",
+            "label": "Straat",
+            "value": "Jan Evertsenstraat"
+          },
+          {
+            "field": "geografische_aanduiding.sk_geografische_nummers_from_to",
+            "label": "Huisnummer van / tot",
+            "value": "201 - 471"
+          }
+        ]
+      ],
+      "usefulForScope": false,
+      "inspectionState": "catalogue inspected; image not yet inspected",
+      "historicalLimit": "Dated historical photograph; compare current panorama before geometry admission.",
+      "scopeAssertion": "Catalogue address range only; no official Pand/footprint linkage."
+    },
+    {
+      "id": "27ef9b00-b031-432c-b73a-b8e090c13fd6",
+      "title": "Jan Evertsenstraat 201 t/m 403 (v.l.n.r.)",
+      "description": "De nummering begint achteraan bij viaduct 145P met erboven Einsteinweg (autoringweg West A10/E22)",
+      "catalogueUrl": "https://archief.amsterdam/beeldbank/detail/27ef9b00-b031-432c-b73a-b8e090c13fd6",
+      "date": "17 december 1992",
+      "rights": "Stadsarchief Amsterdam",
+      "usageTerms": "-",
+      "creator": [
+        "Alberts, Martin"
+      ],
+      "catalogueSource": {
+        "label": "broad-query.json",
+        "rawPath": "artifacts/canopy-rollout/beeldbank/broad-query.json",
+        "sha256": "c800cf56a7e671b16778a03784352228d18b1c1cd35a247dafd69d01634620f6",
+        "bytes": 18351,
+        "registeredAt": "2026-10-06T06:29:35.182695+00:00",
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+      },
+      "geographicMetadata": [
+        [
+          {
+            "field": "geografische_aanduiding.sk_geografische_naam",
+            "label": "Straat",
+            "value": "Jan Evertsenstraat"
+          },
+          {
+            "field": "geografische_aanduiding.sk_geografische_nummers_from_to",
+            "label": "Huisnummer van / tot",
+            "value": "201 - 403"
+          }
+        ]
+      ],
+      "usefulForScope": false,
+      "inspectionState": "catalogue inspected; image not yet inspected",
+      "historicalLimit": "Dated historical photograph; compare current panorama before geometry admission.",
+      "scopeAssertion": "Catalogue address range only; no official Pand/footprint linkage."
+    },
+    {
+      "id": "6fab7078-8527-11e4-b1c6-037456a763ec",
+      "title": "Jan Evertsenstraat 68 - 114 (v.r.n.l.) gezien richting Admiraal de Ruijterweg",
+      "description": "",
+      "catalogueUrl": "https://archief.amsterdam/beeldbank/detail/6fab7078-8527-11e4-b1c6-037456a763ec",
+      "date": "1989",
+      "rights": "Stadsarchief Amsterdam",
+      "usageTerms": "-",
+      "creator": [
+        "Gool, Han van"
+      ],
+      "catalogueSource": {
+        "label": "broad-query.json",
+        "rawPath": "artifacts/canopy-rollout/beeldbank/broad-query.json",
+        "sha256": "c800cf56a7e671b16778a03784352228d18b1c1cd35a247dafd69d01634620f6",
+        "bytes": 18351,
+        "registeredAt": "2026-10-06T06:29:35.182695+00:00",
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+      },
+      "geographicMetadata": [
+        [
+          {
+            "field": "geografische_aanduiding.sk_geografische_naam",
+            "label": "Straat",
+            "value": "Jan Evertsenstraat"
+          },
+          {
+            "field": "geografische_aanduiding.sk_geografische_nummers_from_to",
+            "label": "Huisnummer van / tot",
+            "value": "68 - 114"
+          }
+        ]
+      ],
+      "usefulForScope": true,
+      "inspectionState": "original and preview visually inspected; historical traits recorded; current comparison pending",
+      "historicalLimit": "Dated historical photograph; compare current panorama before geometry admission.",
+      "scopeAssertion": "Catalogue address range only; no official Pand/footprint linkage.",
+      "originalAvailable": true,
+      "originalDimensions": [
+        1064,
+        713
+      ],
+      "catalogueQuality": "Preview",
+      "originalSource": {
+        "rawPath": "artifacts/canopy-rollout/beeldbank/original-6fab7078-8527-11e4-b1c6-037456a763ec.bin",
+        "sha256": "0892093102008457a69eceb8a2544c4fb8441498a54844f6c519997f549f4b38",
+        "bytes": 175516,
+        "registeredAt": "2026-10-06T06:29:35.182695+00:00",
+        "accessState": "Actual bytes acquired by root; visual inspection pending"
+      },
+      "previewSource": {
+        "rawPath": "artifacts/canopy-rollout/beeldbank/preview-6fab7078-8527-11e4-b1c6-037456a763ec.jpg",
+        "sha256": "bcca57afadb130f82279a3e99b32b568d2ee9ea917c14ddcea1347b80a0a7ddf",
+        "bytes": 54243,
+        "registeredAt": "2026-10-06T06:29:35.182695+00:00",
+        "accessState": "Actual bytes acquired by root; visual inspection pending"
+      }
+    },
+    {
+      "id": "7597e032-f6e9-f1b0-e2d2-fe00f124307e",
+      "title": "Jan Evertsenstraat 91-135, links de Vespuccistraat 29-37 met de Vespuccimarkt",
+      "description": "Rechts in het verschiet de zijgevel van Jan Evertsenstraat 137 aan het Mercatorplein",
+      "catalogueUrl": "https://archief.amsterdam/beeldbank/detail/7597e032-f6e9-f1b0-e2d2-fe00f124307e",
+      "date": "1988",
+      "rights": "Stadsarchief Amsterdam",
+      "usageTerms": "-",
+      "creator": [
+        "Gool, Han van"
+      ],
+      "catalogueSource": {
+        "label": "broad-query.json",
+        "rawPath": "artifacts/canopy-rollout/beeldbank/broad-query.json",
+        "sha256": "c800cf56a7e671b16778a03784352228d18b1c1cd35a247dafd69d01634620f6",
+        "bytes": 18351,
+        "registeredAt": "2026-10-06T06:29:35.182695+00:00",
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+      },
+      "geographicMetadata": [
+        [
+          {
+            "field": "geografische_aanduiding.sk_geografische_naam",
+            "label": "Straat",
+            "value": "Vespuccistraat"
+          },
+          {
+            "field": "geografische_aanduiding.sk_geografische_nummers_from_to",
+            "label": "Huisnummer van / tot",
+            "value": "29 - 37"
+          }
+        ],
+        [
+          {
+            "field": "geografische_aanduiding.sk_geografische_naam",
+            "label": "Straat",
+            "value": "Jan Evertsenstraat"
+          },
+          {
+            "field": "geografische_aanduiding.sk_geografische_nummers_from_to",
+            "label": "Huisnummer van / tot",
+            "value": "91 - 137"
+          }
+        ]
+      ],
+      "usefulForScope": true,
+      "inspectionState": "original and preview visually inspected; historical traits recorded; current comparison pending",
+      "historicalLimit": "Dated historical photograph; compare current panorama before geometry admission.",
+      "scopeAssertion": "Catalogue address range only; no official Pand/footprint linkage.",
+      "originalAvailable": true,
+      "originalDimensions": [
+        4387,
+        4454
+      ],
+      "catalogueQuality": "Hoog",
+      "originalSource": {
+        "rawPath": "artifacts/canopy-rollout/beeldbank/original-7597e032-f6e9-f1b0-e2d2-fe00f124307e.bin",
+        "sha256": "b97af1556dacf1d906bd76995d5b56e30b2a9dc464e467f2f5b932819dbe5ee6",
+        "bytes": 3940826,
+        "registeredAt": "2026-10-06T06:29:35.182695+00:00",
+        "accessState": "Actual bytes acquired by root; visual inspection pending"
+      },
+      "previewSource": {
+        "rawPath": "artifacts/canopy-rollout/beeldbank/preview-7597e032-f6e9-f1b0-e2d2-fe00f124307e.jpg",
+        "sha256": "8157bf2de3e7c1dc13f3fe39b350df463ab0e0c7c9f683a815f48f1597fc4bf7",
+        "bytes": 39820,
+        "registeredAt": "2026-10-06T06:29:35.182695+00:00",
+        "accessState": "Actual bytes acquired by root; visual inspection pending"
+      }
+    },
+    {
+      "id": "5097e6db-3b9e-e37e-0bb8-2727236e1420",
+      "title": "Jan Evertsenstraat 9 (ged.) - 41",
+      "description": "Rechts Admiralengracht 170 - 178 v.r.n.l. Beide uit 1924-'25 van architectenbureau Z. Gulden en M. Geldmaker (plattegronden) en J.M. van der Mey (gevels)",
+      "catalogueUrl": "https://archief.amsterdam/beeldbank/detail/5097e6db-3b9e-e37e-0bb8-2727236e1420",
+      "date": "1990",
+      "rights": "Stadsarchief Amsterdam",
+      "usageTerms": "-",
+      "creator": null,
+      "catalogueSource": {
+        "label": "broad-query.json",
+        "rawPath": "artifacts/canopy-rollout/beeldbank/broad-query.json",
+        "sha256": "c800cf56a7e671b16778a03784352228d18b1c1cd35a247dafd69d01634620f6",
+        "bytes": 18351,
+        "registeredAt": "2026-10-06T06:29:35.182695+00:00",
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+      },
+      "geographicMetadata": [
+        [
+          {
+            "field": "geografische_aanduiding.sk_geografische_naam",
+            "label": "Straat",
+            "value": "Admiralengracht"
+          },
+          {
+            "field": "geografische_aanduiding.sk_geografische_nummers_from_to",
+            "label": "Huisnummer van / tot",
+            "value": "170 - 178"
+          }
+        ],
+        [
+          {
+            "field": "geografische_aanduiding.sk_geografische_naam",
+            "label": "Straat",
+            "value": "Jan Evertsenstraat"
+          },
+          {
+            "field": "geografische_aanduiding.sk_geografische_nummers_from_to",
+            "label": "Huisnummer van / tot",
+            "value": "9 - 41"
+          }
+        ]
+      ],
+      "usefulForScope": false,
+      "inspectionState": "catalogue inspected; image not yet inspected",
+      "historicalLimit": "Dated historical photograph; compare current panorama before geometry admission.",
+      "scopeAssertion": "Catalogue address range only; no official Pand/footprint linkage."
+    },
+    {
+      "id": "889f0144-585c-6cdf-a147-d1e3ef745265",
+      "title": "Jan Evertsenstraat 94-98 enz. (v.r.n.l.)",
+      "description": "Gezien in de richting van de Hoofdweg",
+      "catalogueUrl": "https://archief.amsterdam/beeldbank/detail/889f0144-585c-6cdf-a147-d1e3ef745265",
+      "date": "14 juli 1987",
+      "rights": "Stadsarchief Amsterdam",
+      "usageTerms": "-",
+      "creator": [
+        "Alberts, Martin"
+      ],
+      "catalogueSource": {
+        "label": "query-94.json",
+        "rawPath": "artifacts/canopy-rollout/beeldbank/query-94.json",
+        "sha256": "a085821cf53e6b1b41a909cc5e297200b51a196a80e64a332ae44673630a20d2",
+        "bytes": 16512,
+        "registeredAt": "2026-10-06T06:29:35.182695+00:00",
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+      },
+      "geographicMetadata": [
+        [
+          {
+            "field": "geografische_aanduiding.sk_geografische_naam",
+            "label": "Straat",
+            "value": "Jan Evertsenstraat"
+          },
+          {
+            "field": "geografische_aanduiding.sk_geografische_nummers_from_to",
+            "label": "Huisnummer van / tot",
+            "value": "94 - 98"
+          }
+        ]
+      ],
+      "usefulForScope": false,
+      "inspectionState": "catalogue inspected; image not yet inspected",
+      "historicalLimit": "Dated historical photograph; compare current panorama before geometry admission.",
+      "scopeAssertion": "Catalogue address range only; no official Pand/footprint linkage."
+    },
+    {
+      "id": "ad2f103f-571f-2a34-ffaa-909ba5a6c644",
+      "title": "Jan Evertsenstraat 94-96-98 enz. (v.r.n.l.)",
+      "description": "Gezien richting Mercatorplein en Hoofdweg",
+      "catalogueUrl": "https://archief.amsterdam/beeldbank/detail/ad2f103f-571f-2a34-ffaa-909ba5a6c644",
+      "date": "23 februari 1992",
+      "rights": "Stadsarchief Amsterdam",
+      "usageTerms": "-",
+      "creator": [
+        "Alberts, Martin"
+      ],
+      "catalogueSource": {
+        "label": "query-94.json",
+        "rawPath": "artifacts/canopy-rollout/beeldbank/query-94.json",
+        "sha256": "a085821cf53e6b1b41a909cc5e297200b51a196a80e64a332ae44673630a20d2",
+        "bytes": 16512,
+        "registeredAt": "2026-10-06T06:29:35.182695+00:00",
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+      },
+      "geographicMetadata": [
+        [
+          {
+            "field": "geografische_aanduiding.sk_geografische_naam",
+            "label": "Straat",
+            "value": "Jan Evertsenstraat"
+          },
+          {
+            "field": "geografische_aanduiding.sk_geografische_nummers_from_to",
+            "label": "Huisnummer van / tot",
+            "value": "94 - 98"
+          }
+        ]
+      ],
+      "usefulForScope": true,
+      "inspectionState": "original and preview visually inspected; historical traits recorded; current comparison pending",
+      "historicalLimit": "Dated historical photograph; compare current panorama before geometry admission.",
+      "scopeAssertion": "Catalogue address range only; no official Pand/footprint linkage.",
+      "originalAvailable": true,
+      "originalDimensions": [
+        2694,
+        1800
+      ],
+      "catalogueQuality": "Hoog",
+      "originalSource": {
+        "rawPath": "artifacts/canopy-rollout/beeldbank/original-ad2f103f-571f-2a34-ffaa-909ba5a6c644.bin",
+        "sha256": "8b40e5733bb84c32ae3b9a970a9c8dc761ed6d87db0ea816e58b128e360cc130",
+        "bytes": 1548693,
+        "registeredAt": "2026-10-06T06:29:35.182695+00:00",
+        "accessState": "Actual bytes acquired by root; visual inspection pending"
+      },
+      "previewSource": {
+        "rawPath": "artifacts/canopy-rollout/beeldbank/preview-ad2f103f-571f-2a34-ffaa-909ba5a6c644.jpg",
+        "sha256": "b6fb5793b165368c3b92df8e74ce7b67537ba65f19ed5b9a107383a726553591",
+        "bytes": 67612,
+        "registeredAt": "2026-10-06T06:29:35.182695+00:00",
+        "accessState": "Actual bytes acquired by root; visual inspection pending"
+      }
+    },
+    {
+      "id": "120d0200-e299-4e7c-3fe3-5fe53c090346",
+      "title": "Verbouwing het winkelhuis Jan Evertsenstraat 94 en Vespuccistraat 41-43 in opdracht van de heer J.B. Knijtijzen, N.V. De Nederlandsche Grondbriefbank",
+      "description": "Ontwerptekening met detail dwarsdoorsnede.",
+      "catalogueUrl": "https://archief.amsterdam/beeldbank/detail/120d0200-e299-4e7c-3fe3-5fe53c090346",
+      "date": "1939 t/m 1943",
+      "rights": "Auteursrechtvrij",
+      "usageTerms": "-",
+      "creator": null,
+      "catalogueSource": {
+        "label": "query-94.json",
+        "rawPath": "artifacts/canopy-rollout/beeldbank/query-94.json",
+        "sha256": "a085821cf53e6b1b41a909cc5e297200b51a196a80e64a332ae44673630a20d2",
+        "bytes": 16512,
+        "registeredAt": "2026-10-06T06:29:35.182695+00:00",
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+      },
+      "geographicMetadata": [
+        [
+          {
+            "field": "geografische_aanduiding.sk_geografische_naam",
+            "label": "Straat",
+            "value": "Vespuccistraat"
+          },
+          {
+            "field": "geografische_aanduiding.sk_geografische_nummers_from_to",
+            "label": "Huisnummer van / tot",
+            "value": "41 - 43"
+          }
+        ],
+        [
+          {
+            "field": "geografische_aanduiding.sk_geografische_naam",
+            "label": "Straat",
+            "value": "Jan Evertsenstraat"
+          },
+          {
+            "field": "geografische_aanduiding.sk_geografische_nummers_from_to",
+            "label": "Huisnummer van / tot",
+            "value": "94 - 94"
+          }
+        ]
+      ],
+      "usefulForScope": false,
+      "inspectionState": "catalogue inspected; image not yet inspected",
+      "historicalLimit": "Historic alteration drawing: design/permit evidence; not proof that proposed work was built.",
+      "scopeAssertion": "Catalogue address range only; no official Pand/footprint linkage."
+    },
+    {
+      "id": "9eafccb9-7ad2-db88-66ce-b98c681423e1",
+      "title": "Jan Evertsenstraat 92 (ged.) (rechts)- 96 (ged. links)",
+      "description": "Gezien naar Vespuccistraat",
+      "catalogueUrl": "https://archief.amsterdam/beeldbank/detail/9eafccb9-7ad2-db88-66ce-b98c681423e1",
+      "date": "14 juli 1987",
+      "rights": "Stadsarchief Amsterdam",
+      "usageTerms": "-",
+      "creator": [
+        "Alberts, Martin"
+      ],
+      "catalogueSource": {
+        "label": "query-94.json",
+        "rawPath": "artifacts/canopy-rollout/beeldbank/query-94.json",
+        "sha256": "a085821cf53e6b1b41a909cc5e297200b51a196a80e64a332ae44673630a20d2",
+        "bytes": 16512,
+        "registeredAt": "2026-10-06T06:29:35.182695+00:00",
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+      },
+      "geographicMetadata": [
+        [
+          {
+            "field": "geografische_aanduiding.sk_geografische_naam",
+            "label": "Straat",
+            "value": "Jan Evertsenstraat"
+          },
+          {
+            "field": "geografische_aanduiding.sk_geografische_nummers_from_to",
+            "label": "Huisnummer van / tot",
+            "value": "92 - 96"
+          }
+        ]
+      ],
+      "usefulForScope": false,
+      "inspectionState": "catalogue inspected; image not yet inspected",
+      "historicalLimit": "Dated historical photograph; compare current panorama before geometry admission.",
+      "scopeAssertion": "Catalogue address range only; no official Pand/footprint linkage."
+    },
+    {
+      "id": "c76f4ff2-ded9-5e1c-fadc-ba01d7c32fc9",
+      "title": "Verbouwing het winkelhuis Jan Evertsenstraat 94 en Vespuccistraat 41-43 in opdracht van de heer J.B. Knijtijzen, N.V. De Nederlandsche Grondbriefbank",
+      "description": "Ontwerptekening met voor- en zijaanzicht en plattegrond.",
+      "catalogueUrl": "https://archief.amsterdam/beeldbank/detail/c76f4ff2-ded9-5e1c-fadc-ba01d7c32fc9",
+      "date": "1939 t/m 1943",
+      "rights": "Auteursrechtvrij",
+      "usageTerms": "-",
+      "creator": null,
+      "catalogueSource": {
+        "label": "query-94.json",
+        "rawPath": "artifacts/canopy-rollout/beeldbank/query-94.json",
+        "sha256": "a085821cf53e6b1b41a909cc5e297200b51a196a80e64a332ae44673630a20d2",
+        "bytes": 16512,
+        "registeredAt": "2026-10-06T06:29:35.182695+00:00",
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+      },
+      "geographicMetadata": [
+        [
+          {
+            "field": "geografische_aanduiding.sk_geografische_naam",
+            "label": "Straat",
+            "value": "Vespuccistraat"
+          },
+          {
+            "field": "geografische_aanduiding.sk_geografische_nummers_from_to",
+            "label": "Huisnummer van / tot",
+            "value": "41 - 43"
+          }
+        ],
+        [
+          {
+            "field": "geografische_aanduiding.sk_geografische_naam",
+            "label": "Straat",
+            "value": "Jan Evertsenstraat"
+          },
+          {
+            "field": "geografische_aanduiding.sk_geografische_nummers_from_to",
+            "label": "Huisnummer van / tot",
+            "value": "94 - 94"
+          }
+        ]
+      ],
+      "usefulForScope": false,
+      "inspectionState": "catalogue inspected; image not yet inspected",
+      "historicalLimit": "Historic alteration drawing: design/permit evidence; not proof that proposed work was built.",
+      "scopeAssertion": "Catalogue address range only; no official Pand/footprint linkage."
+    },
+    {
+      "id": "8738f6f0-1d70-44d4-9390-78779734ae89",
+      "title": "Jan Evertsenstraat 68-70-72 enz. (v.r.n.l.)",
+      "description": "Rechts: Ingang Marco Polostraat",
+      "catalogueUrl": "https://archief.amsterdam/beeldbank/detail/8738f6f0-1d70-44d4-9390-78779734ae89",
+      "date": "23 februari 1992",
+      "rights": "Stadsarchief Amsterdam",
+      "usageTerms": "-",
+      "creator": [
+        "Alberts, Martin"
+      ],
+      "catalogueSource": {
+        "label": "query-68.json",
+        "rawPath": "artifacts/canopy-rollout/beeldbank/query-68.json",
+        "sha256": "5c77c980621525d2e43ac5bd7df951cd4992c8ddd343628eb9ab2ee1a4d9ee04",
+        "bytes": 15808,
+        "registeredAt": "2026-10-06T06:29:35.182695+00:00",
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+      },
+      "geographicMetadata": [
+        [
+          {
+            "field": "geografische_aanduiding.sk_geografische_naam",
+            "label": "Straat",
+            "value": "Jan Evertsenstraat"
+          },
+          {
+            "field": "geografische_aanduiding.sk_geografische_nummers_from_to",
+            "label": "Huisnummer van / tot",
+            "value": "68 - 72"
+          }
+        ]
+      ],
+      "usefulForScope": true,
+      "inspectionState": "original and preview visually inspected; historical traits recorded; current comparison pending",
+      "historicalLimit": "Dated historical photograph; compare current panorama before geometry admission.",
+      "scopeAssertion": "Catalogue address range only; no official Pand/footprint linkage.",
+      "originalAvailable": true,
+      "originalDimensions": [
+        1956,
+        1224
+      ],
+      "catalogueQuality": "Hoog",
+      "originalSource": {
+        "rawPath": "artifacts/canopy-rollout/beeldbank/original-8738f6f0-1d70-44d4-9390-78779734ae89.bin",
+        "sha256": "60e5304b4e2708c446024ed6f8838c5e33e588d06b867af48c429c5208c269b1",
+        "bytes": 799280,
+        "registeredAt": "2026-10-06T06:29:35.182695+00:00",
+        "accessState": "Actual bytes acquired by root; visual inspection pending"
+      },
+      "previewSource": {
+        "rawPath": "artifacts/canopy-rollout/beeldbank/preview-8738f6f0-1d70-44d4-9390-78779734ae89.jpg",
+        "sha256": "af530b01c8d30d2846139a6fb8ccc6f485c050f824ed3b6362f2065183515796",
+        "bytes": 67579,
+        "registeredAt": "2026-10-06T06:29:35.182695+00:00",
+        "accessState": "Actual bytes acquired by root; visual inspection pending"
+      }
+    },
+    {
+      "id": "6ce28497-8950-ebe5-ad4e-f6c56b6108a8",
+      "title": "Jan Evertsenstraat 68-80 (v.r.n.l.)",
+      "description": "Rechts: Marco Polostraat",
+      "catalogueUrl": "https://archief.amsterdam/beeldbank/detail/6ce28497-8950-ebe5-ad4e-f6c56b6108a8",
+      "date": "14 juli 1987",
+      "rights": "Stadsarchief Amsterdam",
+      "usageTerms": "-",
+      "creator": [
+        "Alberts, Martin"
+      ],
+      "catalogueSource": {
+        "label": "query-68.json",
+        "rawPath": "artifacts/canopy-rollout/beeldbank/query-68.json",
+        "sha256": "5c77c980621525d2e43ac5bd7df951cd4992c8ddd343628eb9ab2ee1a4d9ee04",
+        "bytes": 15808,
+        "registeredAt": "2026-10-06T06:29:35.182695+00:00",
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+      },
+      "geographicMetadata": [
+        [
+          {
+            "field": "geografische_aanduiding.sk_geografische_naam",
+            "label": "Straat",
+            "value": "Jan Evertsenstraat"
+          },
+          {
+            "field": "geografische_aanduiding.sk_geografische_nummers_from_to",
+            "label": "Huisnummer van / tot",
+            "value": "68 - 80"
+          }
+        ]
+      ],
+      "usefulForScope": false,
+      "inspectionState": "catalogue inspected; image not yet inspected",
+      "historicalLimit": "Dated historical photograph; compare current panorama before geometry admission.",
+      "scopeAssertion": "Catalogue address range only; no official Pand/footprint linkage."
+    },
+    {
+      "id": "43c5ea58-cd0a-5c1d-0714-51000525e30b",
+      "title": "Jan Evertsenstraat 68 - 92 v.r.n.l",
+      "description": "Etagewoningen en winkels uit 1925 - '27 van architect J.F. Staal. Links de ingang van de Vespuccistraat",
+      "catalogueUrl": "https://archief.amsterdam/beeldbank/detail/43c5ea58-cd0a-5c1d-0714-51000525e30b",
+      "date": "1990",
+      "rights": "Stadsarchief Amsterdam",
+      "usageTerms": "-",
+      "creator": null,
+      "catalogueSource": {
+        "label": "query-68.json",
+        "rawPath": "artifacts/canopy-rollout/beeldbank/query-68.json",
+        "sha256": "5c77c980621525d2e43ac5bd7df951cd4992c8ddd343628eb9ab2ee1a4d9ee04",
+        "bytes": 15808,
+        "registeredAt": "2026-10-06T06:29:35.182695+00:00",
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+      },
+      "geographicMetadata": [
+        [
+          {
+            "field": "geografische_aanduiding.sk_geografische_naam",
+            "label": "Straat",
+            "value": "Jan Evertsenstraat"
+          },
+          {
+            "field": "geografische_aanduiding.sk_geografische_nummers_from_to",
+            "label": "Huisnummer van / tot",
+            "value": "68 - 92"
+          }
+        ]
+      ],
+      "usefulForScope": true,
+      "inspectionState": "original and preview visually inspected; historical traits recorded; current comparison pending",
+      "historicalLimit": "Dated historical photograph; compare current panorama before geometry admission.",
+      "scopeAssertion": "Catalogue address range only; no official Pand/footprint linkage.",
+      "originalAvailable": true,
+      "originalDimensions": [
+        3674,
+        2446
+      ],
+      "catalogueQuality": "Hoog",
+      "originalSource": {
+        "rawPath": "artifacts/canopy-rollout/beeldbank/original-43c5ea58-cd0a-5c1d-0714-51000525e30b.bin",
+        "sha256": "1096a17fc1d3d73fa949637b8b5c2cf7d397e0039929b2ed2fdba3cdd328e505",
+        "bytes": 2213827,
+        "registeredAt": "2026-10-06T06:29:35.182695+00:00",
+        "accessState": "Actual bytes acquired by root; visual inspection pending"
+      },
+      "previewSource": {
+        "rawPath": "artifacts/canopy-rollout/beeldbank/preview-43c5ea58-cd0a-5c1d-0714-51000525e30b.jpg",
+        "sha256": "5d746550c41e87047c03a109c4ddac320b7ed44a194cbe966a309ee66c1d4dce",
+        "bytes": 58373,
+        "registeredAt": "2026-10-06T06:29:35.182695+00:00",
+        "accessState": "Actual bytes acquired by root; visual inspection pending"
+      }
+    },
+    {
+      "id": "f0c513a1-1af8-38c0-f776-01c621a75377",
+      "title": "Jan Evertsenstraat 72-70 en 68 (v.l.n.r.)",
+      "description": "Nr. 72 is keurslagerij Fa. Snijders, achteraan ingang Marco Polostraat",
+      "catalogueUrl": "https://archief.amsterdam/beeldbank/detail/f0c513a1-1af8-38c0-f776-01c621a75377",
+      "date": "23 februari 1992",
+      "rights": "Stadsarchief Amsterdam",
+      "usageTerms": "-",
+      "creator": [
+        "Alberts, Martin"
+      ],
+      "catalogueSource": {
+        "label": "query-68.json",
+        "rawPath": "artifacts/canopy-rollout/beeldbank/query-68.json",
+        "sha256": "5c77c980621525d2e43ac5bd7df951cd4992c8ddd343628eb9ab2ee1a4d9ee04",
+        "bytes": 15808,
+        "registeredAt": "2026-10-06T06:29:35.182695+00:00",
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+      },
+      "geographicMetadata": [
+        [
+          {
+            "field": "geografische_aanduiding.sk_geografische_naam",
+            "label": "Straat",
+            "value": "Jan Evertsenstraat"
+          },
+          {
+            "field": "geografische_aanduiding.sk_geografische_nummers_from_to",
+            "label": "Huisnummer van / tot",
+            "value": "68 - 72"
+          }
+        ]
+      ],
+      "usefulForScope": false,
+      "inspectionState": "catalogue inspected; image not yet inspected",
+      "historicalLimit": "Dated historical photograph; compare current panorama before geometry admission.",
+      "scopeAssertion": "Catalogue address range only; no official Pand/footprint linkage."
+    }
+  ],
+  "limitations": [
+    "Historical photographs do not prove current condition or proposal implementation.",
+    "No footprint or Pand identity assertions admitted from street-name search alone."
+  ],
+  "privateArchiveSync": {
+    "owner": "root",
+    "canonicalSourcePack": "blackmad/map-recall2-source-data:streets/jan-evertsen-canopy-rollout-20261006/",
+    "state": "root archival copy/commit in progress; local artifacts are temporary acquisition locations, not permanent source claims",
+    "sourceCommit": null
+  },
+  "catalogueAssertions": [
+    {
+      "sourceId": "6fab7078-8527-11e4-b1c6-037456a763ec",
+      "assertion": "1989 catalogue identifies north/even street row 68–114 viewed toward Admiraal de Ruijterweg.",
+      "confidence": "high for catalogue scope; visual traits pending"
+    },
+    {
+      "sourceId": "7597e032-f6e9-f1b0-e2d2-fe00f124307e",
+      "assertion": "1988 catalogue identifies opposite odd row 91–135 with Vespuccistraat 29–37 on left and 137 side facade in distance.",
+      "confidence": "high for catalogue scope; visual traits pending"
+    }
+  ],
+  "visualObservations": [
+    {
+      "sourceId": "7597e032-f6e9-f1b0-e2d2-fe00f124307e",
+      "date": "1988",
+      "scope": "Odd row catalogue91–135; Vespuccistraat corner visible foreground",
+      "inspected": [
+        "original",
+        "preview"
+      ],
+      "traits": [
+        {
+          "part": "canopy",
+          "assertion": "Pale narrow projecting horizontal fascia continues along shop row; butt divisions/signboards remain subordinate to a common shophead band.",
+          "confidence": "high"
+        },
+        {
+          "part": "shops",
+          "assertion": "Large glazed shop panes and entry breaks visible under canopy; parked vehicles, pedestrians and goods obscure exact door/portico positions.",
+          "confidence": "high for assembly presence; low for exact allocation"
+        },
+        {
+          "part": "upper facade",
+          "assertion": "Three upper storeys with pale multi-pane window groups; repeated narrower/recessed vertical bays alternate with broader groups. Foreground corner uses projecting wraparound window groups.",
+          "confidence": "high"
+        },
+        {
+          "part": "roof",
+          "assertion": "Main row has a long shallow/sloped visible upper silhouette and a raised corner end/central block. Do not replace observed silhouette with arbitrary flat caps or a single equipment maximum.",
+          "confidence": "medium; photograph angle limits roof depth"
+        },
+        {
+          "part": "balconies",
+          "assertion": "No repeated projecting balcony sequence visible on the long principal shop-facing row in this view; returned/neighbor frontage differs.",
+          "confidence": "medium; only photographed scope"
+        },
+        {
+          "part": "exclusions",
+          "assertion": "Foreground freestanding market stall awnings are separate from fixed building canopy; corner bay windows and side returns must not automatically transfer to straight-row generator.",
+          "confidence": "high"
+        }
+      ],
+      "limitations": [
+        "Historical photograph; no present survival assertion.",
+        "No surveyed canopy dimensions or official Pand identities.",
+        "Monochrome photograph does not establish material hues."
+      ]
+    },
+    {
+      "sourceId": "6fab7078-8527-11e4-b1c6-037456a763ec",
+      "date": "1989",
+      "scope": "Even row catalogue68–114 is right-hand street side; left opposite frontage serves context only",
+      "inspected": [
+        "original",
+        "preview"
+      ],
+      "traits": [
+        {
+          "part": "canopy",
+          "assertion": "Right-hand shops show projecting fascia and shop signage over display openings; long perspective/tree occlusion prevents tracing all terminations.",
+          "confidence": "medium"
+        },
+        {
+          "part": "upper facade",
+          "assertion": "Pale vertically arranged window groups contrast with dark masonry; repeated recessed/protruding vertical group changes appear along right row. Opposite side shows differently grouped wide panes.",
+          "confidence": "medium"
+        },
+        {
+          "part": "shops",
+          "assertion": "Street displays, parked cars and trees obscure exact panes and residential entrances; do not use this record alone to allocate doors/porticos.",
+          "confidence": "high"
+        }
+      ],
+      "limitations": [
+        "Historical photograph; no present survival assertion.",
+        "Native source only1064x713 and quality field Preview; small facade details unresolved.",
+        "Canopy roof/aperture surface not visible; no glazing-strip admission."
+      ]
+    },
+    {
+      "sourceId": "ad2f103f-571f-2a34-ffaa-909ba5a6c644",
+      "date": "23 februari1992",
+      "scope": "Catalogue94–96–98 etc; close oblique sidewalk view",
+      "inspected": [
+        "original",
+        "preview"
+      ],
+      "traits": [
+        {
+          "part": "canopy",
+          "assertion": "Deep projecting canopy has a pale vertical fascia, rounded darker top/front coping and dark gridded underside. A narrow light/open band is visible behind elevated shop signboards; photograph does not establish glass material or aperture dimensions.",
+          "confidence": "high for visible band/coping; low for glazing interpretation"
+        },
+        {
+          "part": "shop/sign assembly",
+          "assertion": "Large shop glazing under canopy and separate signs suspended below it; displays obscure some entrances. Elevated sign panels above canopy differ from hanging signs below it.",
+          "confidence": "high"
+        },
+        {
+          "part": "continuity",
+          "assertion": "Canopy fronts continue into distance with visible panel joints; near foreground front changes direction. No measured corner angle or exact Pand seam inferred.",
+          "confidence": "high"
+        }
+      ],
+      "limitations": [
+        "Historic1992 condition only.",
+        "No material hues from monochrome image.",
+        "Open/light band cannot prove a glazed canopy assembly."
+      ]
+    },
+    {
+      "sourceId": "8738f6f0-1d70-44d4-9390-78779734ae89",
+      "date": "23 februari1992",
+      "scope": "Catalogue68–70–72 etc; close view toward side-street junction",
+      "inspected": [
+        "original",
+        "preview"
+      ],
+      "traits": [
+        {
+          "part": "canopy",
+          "assertion": "Projecting rounded coping and broad segmented underside/front panels are clear. Adjacent shop canopy fronts have contrasting pale/dark photographic tones rather than a uniform historical paint value.",
+          "confidence": "high"
+        },
+        {
+          "part": "shop assembly",
+          "assertion": "Broad shop opening plus narrower separate entrance at right are visible behind security grille. Neighbor shop to left has glazed display panes. Entrance allocation cannot transfer wholesale across row.",
+          "confidence": "high"
+        },
+        {
+          "part": "boundary",
+          "assertion": "Street opening visible at right; current canopy crop shows a termination/returned frontage condition rather than an uninterrupted slab across side street.",
+          "confidence": "high"
+        },
+        {
+          "part": "signs",
+          "assertion": "Wide signboard sits above coping with separate shutter housing/upper dark shophead below canopy.",
+          "confidence": "high"
+        }
+      ],
+      "limitations": [
+        "Historic1992 condition only; security grille is temporal shop detail.",
+        "Canopy upper roof surface not visible."
+      ]
+    },
+    {
+      "sourceId": "43c5ea58-cd0a-5c1d-0714-51000525e30b",
+      "date": "1990",
+      "scope": "Even68–92 row; photograph has90-4-2 corner date imprint, catalogue year1990 retained as authority",
+      "inspected": [
+        "original",
+        "preview"
+      ],
+      "traits": [
+        {
+          "part": "street row",
+          "assertion": "Three repeated upper window storeys beneath tall brick upper/parapet masses; stepped projecting/recessed vertical assemblies alternate along row. Front corner and chimney towers differ from repeated central frontage.",
+          "confidence": "high"
+        },
+        {
+          "part": "windows",
+          "assertion": "Pale grouped mullioned windows vary between wide groups and narrower corner/bay arrangements; do not copy the opposing row layout.",
+          "confidence": "high"
+        },
+        {
+          "part": "shops",
+          "assertion": "Broad shop glazing is interrupted by pale piers/door breaks; a vertical narrow-pane/transom-like band sits above shop signs in portions of row. Exact material and current survival require current view.",
+          "confidence": "high for band presence; medium for pane interpretation"
+        },
+        {
+          "part": "canopy/awning",
+          "assertion": "Long shop-sign/fascia line recurs across the row. Foreground extended sloping fabric awning is a distinct shop fixture; do not turn all of its slope/depth into structural canopy geometry.",
+          "confidence": "high"
+        },
+        {
+          "part": "roof",
+          "assertion": "Brick upper masses/chimneys dominate silhouette; photo does not expose rear roof planes or establish equipment heights.",
+          "confidence": "high"
+        }
+      ],
+      "limitations": [
+        "Historic1990 condition only.",
+        "Trees/cars/poles obscure several ground openings.",
+        "Not surveyed dimensions or current Pand linkage."
+      ]
+    }
+  ],
+  "acquisitionRuntimeNote": "Worker sandbox DNS/network failures did not imply user internet or source outage. Root direct curl acquired the complete bounded pack successfully.",
+  "rawArchivePathPolicy": "Source records retain temporary acquisition rawPath/checksum until root confirms private-pack file mapping. Permanent source claims must cite canonicalSourcePack + source commit.",
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "a558154b43f6740a4f22d7c0947d730b7b12adc8",
+    "branch": "source/jan-evertsen-canopy-rollout-20261006",
+    "path": "streets/jan-evertsen-canopy-rollout-20261006/",
+    "accessState": "Original raw inputs and processed references committed and pushed; companion cache reproduction verified"
+  }
+}

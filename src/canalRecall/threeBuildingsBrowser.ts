@@ -17,6 +17,7 @@ import { ROOF_CELL_M, paintRoofLayers } from './roofCells.js';
 import { withMonumentGable } from './monumentGables.js';
 import { decorateRoof, exceptLandmarks as exceptLandmarksOf, fitRect, localOuterRing, planRoof, type RoofPlan } from './roofMesh.js';
 import { BAY_ENTRIES, BAY_LAYER_COUNT, bayLayer, bayLookFor, bayVariant } from './bayLook.js';
+import { paintGlassBlockCell } from './glassBlockTexture.js';
 import { bayTextures, type Look } from './bayTextures.js';
 import { KITS, KIT_HIDE_IDS, KIT_MODELLED_IDS, KIT_PART_IDS, decorateKitRoof, kitGeometry, type KitPartGeometry, type PartInput } from './landmarkKits.js';
 import { FRONT_LIST, FRONT_PART_IDS, decorateFront } from './landmarkFrontData.js';
@@ -177,7 +178,7 @@ export type ThreeBuildingStats = { kitVertices: number; chunks: number; building
 /** The game's colour and tint-mask texture arrays for a look (also used by the gallery pages). */
 export async function buildLookTextures(THREE: any, look: 'procedural' | Look, maxAnisotropy: number, size = CELL_PX): Promise<{ colour: any; mask: any }> {
   if (size !== CELL_PX && size !== CELL_PX / 2) throw new Error('Unsupported building texture size');
-  const layers = look === 'procedural' ? PROCEDURAL_RECIPE_LAYER_OFFSET + BAY_LAYER_COUNT : BAY_LAYER_COUNT + ROOF_LAYER_COUNT;
+  const layers = (look === 'procedural' ? PROCEDURAL_RECIPE_LAYER_OFFSET + BAY_LAYER_COUNT : BAY_LAYER_COUNT + ROOF_LAYER_COUNT) + 1;
   if (layers > 256) throw new Error('Building texture array exceeds byte layer indices');
   const px = size * size, colour = new Uint8Array(px * 4 * layers), mask = new Uint8Array(px * 2 * layers);
   let batchStart = performance.now();
@@ -208,6 +209,7 @@ export async function buildLookTextures(THREE: any, look: 'procedural' | Look, m
     }
   }
   const roofBase = look === 'procedural' ? CELL_LAYER_COUNT : BAY_LAYER_COUNT;
+  copyCell(paintGlassBlockCell(),layers - 1);
   for (const [i, cell] of paintRoofLayers(look === 'cartoon').entries()) { copyCell(cell, roofBase + i); await yieldBudget(); }
   let brick: CanvasImageSource = document.createElement('canvas');
   if (look === 'photo') {

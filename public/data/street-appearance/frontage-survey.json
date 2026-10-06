@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "875aa861aaf4b24b",
+  "revision": "e7fdc0dc8f0d223e",
   "origin": {
     "lng": 4.9,
     "lat": 52.37
@@ -38,15 +38,15 @@
     },
     {
       "file": "public/canal-drive/models/signature-landmarks.json",
-      "sha256": "559bab4a06d7e9d76335174f5d31cb45614b41094cad98cbac1551cd34928e46"
+      "sha256": "a8fa84b82fa48a2e675599255a30b0e37988abe620e7274ef6bfc61a6b2e2335"
     },
     {
       "file": "scripts/street-appearance/bake-frontages.ts",
-      "sha256": "dd511ccfb8250f99857f66925c3b49a41f12da7d0f2e0715e182a9d69787ace8"
+      "sha256": "6b75248d5bc633e977513a32007957264bdb4ef4d2e07a586be5a587eb53543b"
     },
     {
       "file": "src/canalRecall/streetAppearance.ts",
-      "sha256": "c2ff104f40140d26a4bc5627519391470642ffffd0477ab60006ba531e189e64"
+      "sha256": "0bdde69b8eb9d84f416c012b87515a648690cf0356e273a0f513b57a4a9ac07b"
     },
     {
       "file": "src/canalRecall/streetFacadeRendering.ts",
@@ -58,7 +58,7 @@
     },
     {
       "file": "src/canalRecall/threeBuildingMesh.ts",
-      "sha256": "795d8435ee9196d31a5a1be7eefa0be5073c04fd32947a2e77329bf73c037800"
+      "sha256": "89ec8af38c9c23a5c2a6264b1f4e911f9e3536432ff6f67d1ce4d8093ddac52a"
     },
     {
       "file": "src/canalRecall/genericFacades.ts",
@@ -70,7 +70,7 @@
     },
     {
       "file": "src/canalRecall/threeBuildingsBrowser.ts",
-      "sha256": "078996c7cc6bdd5748b743f28bc4071e809ba0453e3305ff5b953cca6b388fd0"
+      "sha256": "fe206970f2d221c0e33c1569a4aa9e54679a534d1760ecc1f065826ec5400c93"
     },
     {
       "file": "src/canalRecall/streetCrown.ts",
@@ -98,11 +98,15 @@
     },
     {
       "file": "src/canalRecall/facadeExtraCore.ts",
-      "sha256": "8ce11dabf68f3238b9ed2024adcbf51a04aec718afe4383455e25fd912ca8941"
+      "sha256": "596cea30dea2377b0cad7c23095737ca54174e81921a85840e34f9e64ffd6a48"
     },
     {
       "file": "src/canalRecall/shopCanopies.ts",
-      "sha256": "75cf74819859ef9563bc514e2a109e42636352f11973a87859a2937ab3bb26ee"
+      "sha256": "02a16f12af7ec719e848599ec21bc4c258bb5052a3e6617e88d808290af3b9b0"
+    },
+    {
+      "file": "src/canalRecall/glassBlockTexture.ts",
+      "sha256": "35260ff2694897b459cb287a3bd72fa978f049a4ae31e0bf2a6318577f6210af"
     },
     {
       "file": "src/canalRecall/facadeLayout.ts",

@@ -1220,7 +1220,7 @@
   ],
   "janEvertsenCanopyRolloutDiscovery": {
     "plan": "docs/references/jan-evertsen-pilot/rollout-plan.json",
-    "status": "prioritized-source-discovery",
+    "status": "official-inventory-complete-source-rows-reviewed",
     "newRuntimeAdmissions": 0,
     "priorityGroups": [
       "Jan Evertsenstraat 94–140",
@@ -1228,6 +1228,23 @@
       "Jan Evertsenstraat 91–123",
       "Jan Evertsenstraat 59–89"
     ],
-    "withheld": "All new identities; Mercatorplein arcades and neighborhood-wide transfer excluded."
+    "withheld": "All new identities; Mercatorplein arcades and neighborhood-wide transfer excluded.",
+    "physicalBuildingCount": 65,
+    "baseHouseNumberCount": 70,
+    "groups": {
+      "94-140": 24,
+      "68-92": 10,
+      "91-123": 16,
+      "59-89": 15
+    },
+    "sourceArchive": {
+      "repository": "blackmad/map-recall2-source-data",
+      "branch": "source/jan-evertsen-canopy-rollout-20261006",
+      "commit": "a558154b43f6740a4f22d7c0947d730b7b12adc8",
+      "path": "streets/jan-evertsen-canopy-rollout-20261006/"
+    },
+    "prototypeReview": "docs/references/jan-evertsen-pilot/glassband-review.json",
+    "failedEvidence": "Full facade comparison failed: stock narrow window groups, missing projecting erkers/recessed porticos, mismatched masonry and unsupported roof composition. Glass-band capability accepted narrowly; full profile and expansion withheld.",
+    "nextAction": "Build separate source-supported flat and projecting paired-window groups and recessed shop/residential entrance module; preserve fixed124/126 representatives,128 transition,122/119 heldouts before considering expanded identities."
   }
 }

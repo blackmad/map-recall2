@@ -63,7 +63,7 @@ for(const way of routing){
 }
 catalog.streetFrontPaths=streetPaths;
 const streets=streetSegments(streetPaths,ORIGIN);
-const admissionSources=[routingPath,'public/canal-drive/models/signature-landmarks.json','scripts/street-appearance/bake-frontages.ts',...['streetAppearance.ts','streetFacadeRendering.ts','threeBuildingFeatures.ts','threeBuildingMesh.ts','genericFacades.ts','streetFronts.ts','threeBuildingsBrowser.ts','streetCrown.ts','bayLook.ts','bayTextures.ts','facadeOrnaments.ts','facadeExtras.ts','facadeOpenings.ts','facadeExtraCore.ts','shopCanopies.ts','facadeLayout.ts'].map(name=>'src/canalRecall/'+name)];
+const admissionSources=[routingPath,'public/canal-drive/models/signature-landmarks.json','scripts/street-appearance/bake-frontages.ts',...['streetAppearance.ts','streetFacadeRendering.ts','threeBuildingFeatures.ts','threeBuildingMesh.ts','genericFacades.ts','streetFronts.ts','threeBuildingsBrowser.ts','streetCrown.ts','bayLook.ts','bayTextures.ts','facadeOrnaments.ts','facadeExtras.ts','facadeOpenings.ts','facadeExtraCore.ts','shopCanopies.ts','glassBlockTexture.ts','facadeLayout.ts'].map(name=>'src/canalRecall/'+name)];
 admissionSources.push('src/canalRecall/sourceVisualRoof.ts','src/canalRecall/roofMesh.ts');
 const admissionInputs=await Promise.all(admissionSources.map(async file=>({file,sha256:sha256(await fs.readFile(file))})));
 (globalThis as any).__streetAppearanceFrontageSurvey = fronts;

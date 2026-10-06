@@ -444,5 +444,12 @@
         "reason": "[Errno 8] nodename nor servname provided, or not known"
       }
     ]
+  },
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "a558154b43f6740a4f22d7c0947d730b7b12adc8",
+    "branch": "source/jan-evertsen-canopy-rollout-20261006",
+    "path": "streets/jan-evertsen-canopy-rollout-20261006/",
+    "accessState": "Original raw inputs and processed references committed and pushed; companion cache reproduction verified"
   }
 }
