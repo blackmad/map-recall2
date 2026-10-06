@@ -43,6 +43,38 @@ service cloud.firestore {
       allow read, create, update, delete: if owns(userId);
     }
 
+    // Browser feedback is private to its author. Queue workers use IAM via the
+    // CLI, so browsers cannot claim/resolve tasks or rewrite submitted evidence.
+    match /canalFeedback/{noteId} {
+      allow get: if request.auth != null && (!exists(/databases/$(database)/documents/canalFeedback/$(noteId)) || resource.data.ownerUid == request.auth.uid);
+      allow list: if request.auth != null && resource.data.ownerUid == request.auth.uid;
+      allow create: if request.auth != null
+        && request.auth.token.firebase.sign_in_provider == 'google.com'
+        && request.resource.data.keys().hasAll(['schemaVersion', 'ownerUid', 'text', 'target', 'context', 'environment', 'screenshot', 'status', 'createdAt', 'updatedAt', 'resolution'])
+        && request.resource.data.keys().hasOnly(['schemaVersion', 'ownerUid', 'text', 'target', 'context', 'environment', 'screenshot', 'status', 'createdAt', 'updatedAt', 'resolution'])
+        && request.resource.data.schemaVersion == 1
+        && request.resource.data.ownerUid == request.auth.uid
+        && request.resource.data.text is string
+        && request.resource.data.text.size() > 0 && request.resource.data.text.size() <= 12000
+        && request.resource.data.target is map
+        && request.resource.data.target.id is string && request.resource.data.target.id.size() <= 2048
+        && request.resource.data.target.label is string && request.resource.data.target.label.size() <= 500
+        && request.resource.data.target.imageUrl is string && request.resource.data.target.imageUrl.size() <= 4096
+        && (request.resource.data.target.anchor == null ||
+          (request.resource.data.target.anchor is map
+            && request.resource.data.target.anchor.x is number && request.resource.data.target.anchor.y is number
+            && request.resource.data.target.anchor.x >= 0 && request.resource.data.target.anchor.x <= 1
+            && request.resource.data.target.anchor.y >= 0 && request.resource.data.target.anchor.y <= 1))
+        && request.resource.data.context is map
+        && request.resource.data.environment is map
+        && request.resource.data.environment.host is string
+        && request.resource.data.environment.page is string
+        && request.resource.data.screenshot is string && request.resource.data.screenshot.size() <= 240000
+        && request.resource.data.status == 'open' && request.resource.data.resolution == ''
+        && request.resource.data.createdAt == request.time && request.resource.data.updatedAt == request.time;
+      allow update, delete: if false;
+    }
+
     match /{document=**} {
       allow read, write: if false;
     }

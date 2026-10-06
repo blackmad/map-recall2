@@ -38,6 +38,7 @@
   </select><span id="date-status" role="status"></span></div>
 </header>
 <main></main>
+<script src="./js/feedback/browser.js"></script>
 <script src="./js/three.bundle.js"></script>
 <script src="./js/signature-placement.bundle.js"></script>
 <script>
@@ -161,6 +162,11 @@ function build(spec) {
     target: new T.Vector3(), distance: 200, theta: 0.55, phi: 1.02, ready: false,
   };
   entries.push(entry);
+  window.CanalFeedback.attach(article, {
+    id: spec.id, label: spec.name || spec.id, canvas,
+    context: () => ({ modelUrl: spec.modelUrl, assetVersion: window.CanalRecallSignatureLandmarks.MODEL_ASSET_VERSIONS?.[spec.id] || null,
+      camera: { theta: entry.theta, phi: entry.phi, distance: entry.distance, target: entry.target.toArray() }, ready: entry.ready }),
+  });
 
   let last = null;
   canvas.addEventListener('pointerdown', (event) => {
