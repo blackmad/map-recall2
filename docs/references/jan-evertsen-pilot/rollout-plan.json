@@ -1,0 +1,405 @@
+{
+  "schemaVersion": 1,
+  "researchedOn": "2026-10-06",
+  "status": "prioritized-discovery-not-rollout-admission",
+  "discoveryCorridor": "Jan Evertsenstraat between Admiralengracht and Mercatorplein; profiles belong to observed street-side groups, not the whole neighborhood",
+  "decision": "First complete north even-side block/source inventory around existing pilot; use opposite odd side as an independently sourced transfer challenge. No additional identities installed.",
+  "groups": [
+    {
+      "id": "jan-evertsen-even-west",
+      "label": "Jan Evertsenstraat 94–140",
+      "priority": 1,
+      "side": "north-even",
+      "status": "current-source-and-official-identity-link-pending",
+      "source": "https://amsterdamopdekaart.nl/1850-1940/Jan_Evertsenstraat/94-140",
+      "notes": "Closest expansion discovery group to pilot; contemporary identity and source address relationship still unresolved.",
+      "installedNewBuildingIds": []
+    },
+    {
+      "id": "jan-evertsen-even-east",
+      "label": "Jan Evertsenstraat 68–92",
+      "priority": 2,
+      "side": "north-even",
+      "status": "current-source-and-official-identity-link-pending",
+      "source": "https://amsterdamopdekaart.nl/1850-1940/Jan_Evertsenstraat/68-92",
+      "notes": "Related Staal shop/apartment composition; split around John Franklinstraat gateway, exclude opening and returned residential sides.",
+      "installedNewBuildingIds": []
+    },
+    {
+      "id": "jan-evertsen-odd-west",
+      "label": "Jan Evertsenstraat 91–123",
+      "priority": 3,
+      "side": "south-odd",
+      "status": "current-source-and-official-identity-link-pending",
+      "source": "https://amsterdamopdekaart.nl/1850-1940/Jan_Evertsenstraat/91-123",
+      "notes": "Independent opposite-side transfer group. Freeze source samples before fitting; do not copy north upper-window or door arrangement.",
+      "installedNewBuildingIds": []
+    },
+    {
+      "id": "jan-evertsen-odd-east",
+      "label": "Jan Evertsenstraat 59–89",
+      "priority": 4,
+      "side": "south-odd",
+      "status": "current-source-and-official-identity-link-pending",
+      "source": "https://amsterdamopdekaart.nl/1850-1940/Jan_Evertsenstraat/59-89",
+      "notes": "Second opposite-side candidate; independent roof/window/shop composition review required.",
+      "installedNewBuildingIds": []
+    }
+  ],
+  "laterCandidates": [
+    {
+      "scope": "Jan Evertsenstraat 125–131 / Mercatorplein approaches",
+      "status": "boundary-review",
+      "source": "https://amsterdamopdekaart.nl/1850-1940/Jan_Evertsenstraat/125-131",
+      "reason": "Corner/approach to different monumental spatial system; not automatic canopy admission."
+    },
+    {
+      "scope": "Verified straight Mercatorplein canopy-backed shop sections",
+      "status": "different-profile-required",
+      "source": "https://www.archivolt.eu/nl/projecten/mercatorplein",
+      "reason": "Reuse slab primitive only after matching observed section; balconies, piers, recesses, arcades and gateway scope are different."
+    }
+  ],
+  "excludedAutomaticScopes": [
+    "All De Baarsjes residential streets",
+    "Hoofdweg",
+    "Jan van Galenstraat",
+    "Jan Evertsenstraat west beyond Mercatorplein",
+    "Side-street returns",
+    "Mercatorplein arcades/gates/towers"
+  ],
+  "criticalTraits": [
+    "Opaque continuous projecting canopy and rounded front edge on observed applicable run",
+    "Pale fascia and visible shop glazing under it",
+    "Source-specific shared ground datum; continuity across Pand boundaries",
+    "Separate residential entrance/portico and shop pane groups",
+    "Pale upper window groups and source roof-family composition",
+    "Canopy end conditions at side streets and gateways",
+    "Glazing strip or canopy aperture only where current source proves it"
+  ],
+  "capabilityGaps": [
+    "Current canopy has no glazed roof aperture or separately source-controlled glass-block band",
+    "Stock shop glazing does not encode actual pane/door/portico relationships",
+    "Fixed nominal school ground scale removes jitter but is not a surveyed row elevation datum",
+    "Only small-bend miter joints, not right-angle corner wrapping",
+    "Mercatorplein arcade columns, recessed frontage and open gateways need another assembly"
+  ],
+  "frozenExistingSamples": [
+    {
+      "role": "heldout-east-native-candidate",
+      "id": "NL.IMBAG.Pand.0363100012072380",
+      "properties": {
+        "id": "NL.IMBAG.Pand.0363100012072380",
+        "tier": 3,
+        "minHeight": 0,
+        "height": 16.54
+      },
+      "footprint": [
+        [
+          4.852206,
+          52.370637
+        ],
+        [
+          4.852122,
+          52.370622
+        ],
+        [
+          4.852175,
+          52.370506
+        ],
+        [
+          4.85226,
+          52.37052
+        ],
+        [
+          4.852206,
+          52.370637
+        ]
+      ],
+      "frontageVertices": [
+        [
+          4.852175,
+          52.370506
+        ],
+        [
+          4.85226,
+          52.37052
+        ]
+      ],
+      "referenceCamera": [
+        4.8520526,
+        52.3703986
+      ],
+      "sourceAdmission": "native geometry only; facade inference prohibited until source review"
+    },
+    {
+      "role": "transition-west-native-candidate",
+      "id": "NL.IMBAG.Pand.0363100012088014",
+      "properties": {
+        "id": "NL.IMBAG.Pand.0363100012088014",
+        "tier": 3,
+        "minHeight": 0,
+        "height": 16.53
+      },
+      "footprint": [
+        [
+          4.851938,
+          52.370623
+        ],
+        [
+          4.851853,
+          52.370609
+        ],
+        [
+          4.851921,
+          52.370462
+        ],
+        [
+          4.852006,
+          52.370476
+        ],
+        [
+          4.851938,
+          52.370623
+        ]
+      ],
+      "frontageVertices": [
+        [
+          4.851921,
+          52.370462
+        ],
+        [
+          4.852006,
+          52.370476
+        ]
+      ],
+      "referenceCamera": [
+        4.8520526,
+        52.3703986
+      ],
+      "sourceAdmission": "native geometry only; facade inference prohibited until source review"
+    },
+    {
+      "role": "representative-native-draft",
+      "id": "NL.IMBAG.Pand.0363100012096187",
+      "properties": {
+        "id": "NL.IMBAG.Pand.0363100012096187",
+        "tier": 3,
+        "minHeight": 0,
+        "height": 14.43
+      },
+      "footprint": [
+        [
+          4.852096,
+          52.370678
+        ],
+        [
+          4.852011,
+          52.370664
+        ],
+        [
+          4.852024,
+          52.370636
+        ],
+        [
+          4.852056,
+          52.370641
+        ],
+        [
+          4.852069,
+          52.370613
+        ],
+        [
+          4.852037,
+          52.370607
+        ],
+        [
+          4.85209,
+          52.370491
+        ],
+        [
+          4.852175,
+          52.370506
+        ],
+        [
+          4.852096,
+          52.370678
+        ]
+      ],
+      "frontageVertices": [
+        [
+          4.85209,
+          52.370491
+        ],
+        [
+          4.852175,
+          52.370506
+        ]
+      ],
+      "referenceCamera": [
+        4.8520526,
+        52.3703986
+      ],
+      "sourceAdmission": "native geometry only; facade inference prohibited until source review"
+    },
+    {
+      "role": "heldout-opposite-native-candidate",
+      "id": "NL.IMBAG.Pand.0363100012096804",
+      "properties": {
+        "id": "NL.IMBAG.Pand.0363100012096804",
+        "tier": 3,
+        "minHeight": 0,
+        "height": 16.51,
+        "roofShape": "flat"
+      },
+      "footprint": [
+        [
+          4.852383,
+          52.370261
+        ],
+        [
+          4.852298,
+          52.370247
+        ],
+        [
+          4.852352,
+          52.370128
+        ],
+        [
+          4.852437,
+          52.370143
+        ],
+        [
+          4.852383,
+          52.370261
+        ]
+      ],
+      "frontageVertices": [
+        [
+          4.852383,
+          52.370261
+        ],
+        [
+          4.852298,
+          52.370247
+        ]
+      ],
+      "referenceCamera": [
+        4.8520526,
+        52.3703986
+      ],
+      "sourceAdmission": "native geometry only; facade inference prohibited until source review"
+    },
+    {
+      "role": "representative-native-draft",
+      "id": "NL.IMBAG.Pand.0363100012118917",
+      "properties": {
+        "id": "NL.IMBAG.Pand.0363100012118917",
+        "tier": 3,
+        "minHeight": 0,
+        "height": 16.5
+      },
+      "footprint": [
+        [
+          4.852014,
+          52.370658
+        ],
+        [
+          4.851929,
+          52.370643
+        ],
+        [
+          4.852006,
+          52.370476
+        ],
+        [
+          4.85209,
+          52.370491
+        ],
+        [
+          4.852014,
+          52.370658
+        ]
+      ],
+      "frontageVertices": [
+        [
+          4.852006,
+          52.370476
+        ],
+        [
+          4.85209,
+          52.370491
+        ]
+      ],
+      "referenceCamera": [
+        4.8520526,
+        52.3703986
+      ],
+      "sourceAdmission": "native geometry only; facade inference prohibited until source review"
+    }
+  ],
+  "nextFixedSamples": [
+    {
+      "role": "new-transfer-heldout",
+      "scope": "One photographed odd-side group between Marco Polostraat and Mercatorplein",
+      "identity": "pending official address/VBO/Pand resolution before tuning"
+    },
+    {
+      "role": "boundary",
+      "scope": "John Franklinstraat gateway plus one current side-street corner",
+      "identity": "pending registration"
+    },
+    {
+      "role": "negative-control",
+      "scope": "Mercatorplein arcade frontage",
+      "identity": "pending registration; exclude slab-only treatment"
+    }
+  ],
+  "preservedFailures": [
+    "docs/references/jan-evertsen-pilot/runtime-review.json: original confounded comparison and canopy-height break",
+    "Shop opening fidelity / upper facade / roof and desktop-touch pan, streaming and full-scene GPU acceptance remain withheld"
+  ],
+  "admissionRequirements": [
+    "Current full-row photographs on each side and complete raw source archive",
+    "Official address/VBO/Pand links before installing exact identity list",
+    "Freeze transition/heldout identities and source crops before fitting",
+    "Improve missing defining shop/glazing/portico assembly instead of palette tuning",
+    "Root and independent reference/render inspection; failed heldouts block that transfer",
+    "Actual game photo/storybook/procedural views, desktop/touch stationary-rider camera pans and streaming/mode checks",
+    "Same-version profile-on/off full-scene performance measurement"
+  ],
+  "sources": [
+    {
+      "url": "https://www.amsterdam.nl/nieuws/achtergrond/huizen-kijken-amsterdam/",
+      "kind": "municipal-history",
+      "notes": "Confirms historic covered shopping street; not evidence for present surviving extent.",
+      "access": "Web text inspected; raw pack acquisition and current image inspection pending"
+    },
+    {
+      "url": "https://www.slideshare.net/slideshow/125-jan-evertsenstraatweb/16835278",
+      "kind": "architect-authored-study",
+      "notes": "21 February 2013. Distinguishes existing situation, completed pilot, and proposals; proposed lighting/signs/restoration must not be treated as observed.",
+      "access": "Web text inspected; raw pack acquisition and current image inspection pending"
+    },
+    {
+      "url": "https://cok.amsterdam.nl/wp-content/uploads/2024/06/23385-welstandsnotabijlagewcag.pdf",
+      "kind": "municipal-design-appendix",
+      "notes": "Search-index excerpt inspected; PDF fetch failed. Canopy/signage system corroboration, sign dimensions are not canopy dimensions.",
+      "access": "Web text inspected; raw pack acquisition and current image inspection pending"
+    },
+    {
+      "url": "https://arcam.nl/architectuur-gids/mercatorplein/",
+      "kind": "architecture-centre",
+      "notes": "Arcades, gateways/underpasses and towers distinguish Mercatorplein.",
+      "access": "Web text inspected; raw pack acquisition and current image inspection pending"
+    },
+    {
+      "url": "https://www.archivolt.eu/nl/projecten/mercatorplein",
+      "kind": "restoration-architect",
+      "notes": "West wall 1998–2000 work; confirms maintained access between shops and fine facade details.",
+      "access": "Web text inspected; raw pack acquisition and current image inspection pending"
+    }
+  ],
+  "independentReviewer": "canopy_rollout_review",
+  "reviewerDecision": "Accept prioritized discovery corridor; reject blanket both-side or neighborhood transfer. Current-source and defining-assembly gaps remain gates."
+}
