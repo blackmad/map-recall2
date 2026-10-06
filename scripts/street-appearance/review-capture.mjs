@@ -30,7 +30,9 @@ const views=option('views','gameplay,street').split(',');if(views.some(v=>!['gam
 const bundleNames=['three-buildings.bundle.js','three-buildings-worker.bundle.js','vector-map.js'];
 const hashes=async()=>Object.fromEntries(await Promise.all(bundleNames.map(async n=>[n,crypto.createHash('sha256').update(await fs.readFile(`public/canal-drive/js/${n}`)).digest('hex')])));
 const bundlePhase=option('bundle-phase',null);
-const catalogBytes=bundlePhase?null:await fs.readFile('public/data/street-appearance/profiles.json');
+let catalogBytes=bundlePhase?null:await fs.readFile('public/data/street-appearance/profiles.json');
+const excludeProfile=option('exclude-profile',null);
+if(catalogBytes&&excludeProfile){const filtered=JSON.parse(catalogBytes);filtered.profiles=filtered.profiles.filter(p=>p.id!==excludeProfile);filtered.revision+='-without-'+excludeProfile;catalogBytes=Buffer.from(JSON.stringify(filtered));}
 const catalog=catalogBytes?JSON.parse(catalogBytes):null;
 const catalogSha256=catalogBytes?crypto.createHash('sha256').update(catalogBytes).digest('hex'):null;
 if(catalogBytes)await fs.writeFile(path.join(output,'profiles.json'),catalogBytes);

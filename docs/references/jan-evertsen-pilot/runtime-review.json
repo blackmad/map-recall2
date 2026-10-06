@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-10-06",
+  "reviewer": "independent jan_runtime_review agent",
+  "decision": "Accepted narrow explicit two-identity procedural canopy runtime pilot: canopy band and retained textured panes demonstrated in actual street/gameplay views. Upper facade, source-address fidelity and neighborhood/production acceptance remain withheld.",
+  "scope": "Actual procedural photo-mode game scene for two explicitly scoped Pand identities; no isolated GLB substituted for gameplay evidence.",
+  "reference": {
+    "path": "/var/folders/tl/40rt5yw54v150s3k8shhw5y00000gn/T/codex-clipboard-6v6RcK.png",
+    "captureDate": "2017-04",
+    "limits": "Lower shop crop supports the projecting rigid dark rounded nose and pale fascia. Address-to-Pand relationship, full upper elevation and roof remain unconfirmed."
+  },
+  "evidence": [
+    "artifacts/jan-evertsen-pilot/game-before/overtoom-photo-street.png",
+    "artifacts/jan-evertsen-pilot/game-before/report.json",
+    "artifacts/jan-evertsen-pilot/game-after/overtoom-photo-street.png",
+    "artifacts/jan-evertsen-pilot/game-after/report.json",
+    "artifacts/jan-evertsen-pilot/game-after/profiles.json",
+    "src/canalRecall/streetAppearance.ts",
+    "src/canalRecall/shopCanopies.ts",
+    "artifacts/jan-evertsen-pilot/game-control/overtoom-photo-street.png",
+    "artifacts/jan-evertsen-pilot/game-control/report.json",
+    "artifacts/jan-evertsen-pilot/game-final/overtoom-photo-street.png",
+    "artifacts/jan-evertsen-pilot/game-final/overtoom-photo-gameplay.png",
+    "artifacts/jan-evertsen-pilot/game-final/report.json",
+    "artifacts/jan-evertsen-pilot/game-final/overtoom-storybook-street.png"
+  ],
+  "failuresAndLimits": [
+    {
+      "id": "confounded-before-after",
+      "severity": "blocks paired heldout and performance attribution",
+      "status": "historical failed comparison preserved; corrected for game-control versus game-after",
+      "finding": "Before uses empty profiles and different building/worker bundle hashes; after uses four profiles. Balconies and ornament treatment visibly change on several neighboring facades. This is not a same-version Jan-profile-on/off comparison.",
+      "requiredCorrection": "Capture the same immutable bundles and otherwise identical catalogue with only the Jan profile removed, then inspect the fixed transition/east/opposite heldout identities.",
+      "correctiveRecheck": "Control bundle hashes exactly match after, and all three non-Jan profile objects are identical. Control removes only Jan profile. Independent image inspection shows west transition, east neighbor and opposite foreground retained; changes confined to target pair."
+    },
+    {
+      "id": "pair-canopy-height-relationship",
+      "severity": "withholds whole source shop-row resemblance",
+      "status": "historical uncertainty preserved; bounded relationship corrected in final street view",
+      "finding": "The two target canopies follow their separately generated ground-floor levels, producing a visible height break in the oblique game view. The reference's defining band reads largely continuous across shop fronts. Exact source ownership is unresolved, and this high oblique camera cannot establish the pair's source-relative canopy relationship.",
+      "requiredCorrection": "Inspect a closer lower-angle gameplay view and retain this uncertainty unless supported group-level height evidence resolves it.",
+      "correctiveRecheck": "recipeLayoutScale now removes per-building ground jitter only for shopCanopy recipes. Inspected final street capture: dark nose/pale lower fascia follow a coherent continuous pair frontage line, without the prior generated height break. Exact source proportions remain unmeasured."
+    },
+    {
+      "id": "source-window-and-upper-rhythm",
+      "severity": "blocks whole facade/neighborhood acceptance",
+      "status": "open-source-gap",
+      "finding": "Ground glazing remains the existing broad shop texture; the reference has tall individually framed panes and doors with a distinct pale-framed central shop and dark-pier neighboring shop. The rendered upper windows remain tall repeated sash modules. The source crop provides too little upper elevation to validate their counts, grouping or roof mixture. Palette and canopy alone do not establish source resemblance."
+    },
+    {
+      "id": "production-evidence-incomplete",
+      "severity": "blocks complete-scoped status",
+      "status": "open",
+      "finding": "Final photo and storybook stationary street/gameplay captures reviewed, with consistent settled mode state and no race mismatches. No desktop/touch camera-pan or timer-query GPU evidence is present. Completed GL-finish timings are limited to the Three layer and quantized near zero; they do not certify full-scene GPU cost."
+    }
+  ],
+  "boundedPasses": [
+    {
+      "criterion": "Actual runtime canopy presence",
+      "decision": "pass for bounded rigid canopy assembly",
+      "reason": "Final street capture shows a coherent projecting dark band and narrow pale lower fascia across the two target fronts. Normal gameplay-distance capture shows it in the live row. Fine rounded-nose silhouette remains too small for strong shape matching."
+    },
+    {
+      "criterion": "Ordinary pane retention",
+      "decision": "pass in reviewed view",
+      "reason": "Textured upper windows and shop glazing remain exposed. The target fronts do not become blank solid extrusions. Surrounding facades also retain visible textured windows. This does not cover touch or pan regression."
+    },
+    {
+      "criterion": "Explicit identity and side admission",
+      "decision": "pass for the two intended identities in reviewed scene and eligibility code",
+      "reason": "After snapshot lists only NL.IMBAG.Pand.0363100012118917 and NL.IMBAG.Pand.0363100012096187 in buildingIds and baked frontages. spatialMatch rejects other identities before applying side/reach/facing gates. Canopy geometry requires streetSide and groundLevel. This supports narrow eligibility, not a complete live heldout audit. Same-bundle control/after views preserve west/east/opposite neighbors while changes occur on the two tan fronts only. No neighborhood style transfer is admitted."
+    },
+    {
+      "criterion": "Actual scene settled state",
+      "decision": "pass in capture",
+      "reason": "After reports photo requested/actual, zero pending/inflight/queued work, no race mismatches and no recorded browser errors."
+    },
+    {
+      "criterion": "Normal gameplay context",
+      "decision": "pass for viewed stationary scene",
+      "reason": "Final overtoom-photo-gameplay.png places the pair within the surrounding continuous street row; shop and upper textures remain visible throughout ordinary neighbors. No touch/pan acceptance inferred."
+    },
+    {
+      "criterion": "Photo/storybook settled mode consistency",
+      "decision": "pass for reviewed captures",
+      "reason": "Final storybook street retains dark/pale canopy and visible ordinary window/shop textures. Four final capture diagnostics agree with requested modes; recorded rapid-switch race has no mismatches."
+    }
+  ],
+  "performance": {
+    "before": {
+      "triangles": 830801,
+      "geometryMB": 71.4334888458252,
+      "drawCalls": 20,
+      "frameMedianMs": 16.7,
+      "frameP95Ms": 16.8,
+      "renderCpuMedianMs": 0.1,
+      "renderCpuP95Ms": 0.2
+    },
+    "after": {
+      "triangles": 722627,
+      "geometryMB": 61.21266746520996,
+      "drawCalls": 20,
+      "frameMedianMs": 16.7,
+      "frameP95Ms": 16.7,
+      "renderCpuMedianMs": 0.1,
+      "renderCpuP95Ms": 0.2
+    },
+    "assessment": "Original empty-profile baseline is preserved as failed attribution evidence. Corrected same-bundle control/after comparison shows no observed stationary frame regression and 120 fewer triangles; unchanged draw calls and timing. This is narrow runtime evidence, not isolated GPU-cost or full production acceptance.",
+    "controlledComparison": {
+      "controlTriangles": 722747,
+      "afterTriangles": 722627,
+      "triangleDelta": -120,
+      "controlGeometryMB": 61.22434043884277,
+      "afterGeometryMB": 61.21266746520996,
+      "drawCallsBoth": 20,
+      "frameMedianMsBoth": 16.7,
+      "frameP95MsBoth": 16.7,
+      "renderCpuMedianMsBoth": 0.1,
+      "renderCpuP95MsBoth": 0.2,
+      "limits": "Same frozen bundle hashes; three unchanged profiles; single stationary view. Final ground-jitter correction has different bundles and is not attributed this comparison."
+    }
+  },
+  "withheld": [
+    "Official address/source ownership",
+    "Full upper facade and roof composition",
+    "Source-like shop pane/door grouping and exact canopy proportions",
+    "Desktop/touch camera pans and streamed-tile transitions",
+    "Same-version profile-on/off full-scene GPU evidence",
+    "Neighborhood expansion or complete-scoped acceptance"
+  ],
+  "correctiveRecheck": {
+    "reviewedOn": "2026-10-06",
+    "finalGroundChange": "Inspected src/canalRecall/streetFacadeRendering.ts recipeLayoutScale: shopCanopy uses fixed nominal ground scale; other recipes retain existing narrow jitter.",
+    "liveScope": "Control/after and final street/gameplay images reviewed personally. Fixed west/east/opposite neighbors visually retained. Canopy acceptance is explicit pair only.",
+    "finalReport": "Final report inspected: frozen bundles, no source changes during capture, photo/storybook street and gameplay settled with zero pending/inflight, matching requested/actual modes, race mismatches empty, errors empty. Frame median ~16.7 ms, P95 ~16.8 ms; 722627 triangles."
+  }
+}

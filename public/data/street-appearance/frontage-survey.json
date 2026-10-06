@@ -1,11 +1,19 @@
 {
   "schemaVersion": 1,
-  "revision": "2b8597da5262de54",
+  "revision": "875aa861aaf4b24b",
   "origin": {
     "lng": 4.9,
     "lat": 52.37
   },
   "sources": [
+    {
+      "file": "public/data/extracts/amsterdam/building-tiles/14/8412/5384.geojson.gz",
+      "sha256": "a99197c84e90cd689f5c38eaac5e4842b1964886708789f4af4f6b522da01d6d"
+    },
+    {
+      "file": "public/data/extracts/amsterdam/building-facts/14/8412/5384.json.gz",
+      "sha256": "abe259b4e6e77a2dab0c852669eef4560bad1805bf03e501e10d55d93522c262"
+    },
     {
       "file": "public/data/extracts/amsterdam/building-tiles/14/8414/5384.geojson.gz",
       "sha256": "1989e17f71e01244ef6db88449dfc0ee86b567124dada97ced783cc31fba3ff4"
@@ -38,11 +46,11 @@
     },
     {
       "file": "src/canalRecall/streetAppearance.ts",
-      "sha256": "36d3ce5ea4570f403c16add8d233888b47ba4787cb9301ef6ef8b09b0d4533af"
+      "sha256": "c2ff104f40140d26a4bc5627519391470642ffffd0477ab60006ba531e189e64"
     },
     {
       "file": "src/canalRecall/streetFacadeRendering.ts",
-      "sha256": "befc8020c799b296f88125c643f3d73a2db725665a982bb0200b67fe8ca258ff"
+      "sha256": "be6d4eaa768a785b35430d30ae3bc74d6646a5654887c7d3304dd2f97eda075e"
     },
     {
       "file": "src/canalRecall/threeBuildingFeatures.ts",
@@ -109,12 +117,12 @@
       "sha256": "0fef5fc9ed458e65e06c949ada6a38dfa0396bfe0fa79828aac8409c57d48103"
     }
   ],
-  "streetFrontPathsSha256": "f1139d96ba35e3c0a83b5bbd048bb5a9f35583f3b99bd9f5d14db53fa89d67b2",
-  "streetSegments": 112,
+  "streetFrontPathsSha256": "41e1b1dc232ee2db6185b544919ba8620af73d0d8c11a16f06e18957dea61383",
+  "streetSegments": 126,
   "neighborHaloM": 25,
-  "features": 289,
-  "exposedRuns": 26,
-  "assignments": 25,
+  "features": 351,
+  "exposedRuns": 28,
+  "assignments": 27,
   "profiles": [
     {
       "id": "bethanienstraat-observed-historic-pair",
@@ -183,6 +191,44 @@
         "#c6baa3": 2,
         "#744a3d": 2,
         "#393b3e": 1
+      }
+    },
+    {
+      "id": "jan-evertsen-canopy-candidate-native-pair",
+      "frontages": [
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012096187",
+          "recipeIndex": 0,
+          "frontage": {
+            "start": [
+              4.852090009565,
+              52.370490979569
+            ],
+            "end": [
+              4.852174990435,
+              52.370506020431
+            ],
+            "widthM": 6.010429
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012118917",
+          "recipeIndex": 0,
+          "frontage": {
+            "start": [
+              4.852005971305,
+              52.370476061293
+            ],
+            "end": [
+              4.852090028695,
+              52.370490938707
+            ],
+            "widthM": 5.945129
+          }
+        }
+      ],
+      "palette": {
+        "#92775c": 2
       }
     },
     {

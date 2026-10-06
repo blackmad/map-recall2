@@ -44,6 +44,8 @@ export interface StreetAppearanceProfile {
   id: string; streetName: string; revision: string;
   /** Reviewed architectural appearance; never a replacement construction fact. */
   visualClass?: StreetAppearanceVisualClass;
+  /** Optional explicit identity scope; spatial, source and recipe admission still apply. */
+  buildingIds?: string[];
   /** Explicit official Pand links, independent of image registration or palette allocation. */
   registerCrowns?: Array<{buildingId:string;shape:'neck'|'plain'|'bell'|'cornice';windows?:'paired-oculi';sourceUrl:string;sourceSnapshotSha256:string}>;
   segment: readonly [StreetPoint, StreetPoint]; side: -1 | 1;
@@ -90,7 +92,8 @@ export function admittedStreetAppearanceVisualClass(profile: StreetAppearancePro
       typeof e.panoramaId === 'string' && !!e.panoramaId && typeof e.captureDate === 'string' && !!e.captureDate && Number.isFinite(Date.parse(e.captureDate)) &&
       municipalEvidenceUrl(e.url)));
 }
-function spatialMatch(profile: StreetAppearanceProfile, wall: StreetAppearanceWall, bounded = true) {
+function spatialMatch(profile: StreetAppearanceProfile, wall: StreetAppearanceWall, bounded = true, buildingId?: string) {
+  if (profile.buildingIds && (!buildingId || !profile.buildingIds.includes(buildingId))) return undefined;
   if ((profile.holdout && !profile.learnedFrom) || profile.confidence < .45 || !profile.evidence.some(e => e.quality >= .45) || profile.visualClass && !admittedStreetAppearanceVisualClass(profile)) return undefined;
   const run = wall.frontage ?? wall;
   const midpoint: StreetPoint = [(run.start[0] + run.end[0]) / 2, (run.start[1] + run.end[1]) / 2];
@@ -105,8 +108,8 @@ function spatialMatch(profile: StreetAppearanceProfile, wall: StreetAppearanceWa
 const candidateOrder = (a: NonNullable<ReturnType<typeof spatialMatch>>, b: NonNullable<ReturnType<typeof spatialMatch>>) =>
   Number(!!b.profile.visualClass) - Number(!!a.profile.visualClass) || b.score-a.score || a.profile.id.localeCompare(b.profile.id);
 /** Spatial lookup only; use resolveStreetAppearanceProfile for eligibility and fallback. */
-export function matchStreetAppearanceProfile(profiles: readonly StreetAppearanceProfile[], wall: StreetAppearanceWall) {
-  return profiles.map(profile => spatialMatch(profile, wall)).filter((m): m is NonNullable<typeof m> => !!m).sort(candidateOrder)[0];
+export function matchStreetAppearanceProfile(profiles: readonly StreetAppearanceProfile[], wall: StreetAppearanceWall, buildingId?: string) {
+  return profiles.map(profile => spatialMatch(profile, wall, true, buildingId)).filter((m): m is NonNullable<typeof m> => !!m).sort(candidateOrder)[0];
 }
 const eligibleRecipes = (profile: StreetAppearanceProfile, building: StreetAppearanceBuilding, widthM?: number) => {
   const sourceVisual = admittedStreetAppearanceVisualClass(profile);
@@ -131,7 +134,7 @@ export function resolveStreetAppearanceProfile(profiles: readonly StreetAppearan
     const bounded = !!profile.visualClass || profile.recipes.some(r=>r.frontageMin!=null||r.frontageMax!=null);
     const frontage = bakedFrontage(profile,building.id)?.frontage ?? wall.frontage ?? (bounded && assignments ? compiledFrontages.get(assignments)?.get(key) : undefined);
     if (profile.visualClass && !frontage) return undefined;
-    const match = spatialMatch(profile,{...wall,frontage}); if (!match) return undefined;
+    const match = spatialMatch(profile,{...wall,frontage},true,building.id); if (!match) return undefined;
     const choices = eligibleRecipes(profile,building,frontage?.widthM); if (!choices.length) return undefined;
     const baked = bakedFrontage(profile,building.id);
     // An explicit full-cohort visual bake also bounds admitted identities in streamed subsets.
@@ -155,7 +158,7 @@ export function compileStreetAppearanceAssignments(profiles: readonly StreetAppe
   // observed class boundary or let its small tessellated edges pass a width gate.
   const runs = new Map<string, { profile: StreetAppearanceProfile; fronts: StreetAppearanceFront[]; intervals: Array<[number,number,number]> }>();
   for (const front of fronts) if (front.eligible !== false) for (const profile of profiles) {
-    if (!spatialMatch(profile,front.wall,false)) continue;
+    if (!spatialMatch(profile,front.wall,false,front.building.id)) continue;
     const a=profileLocation(profile,front.wall.start)!, b=profileLocation(profile,front.wall.end)!;
     const kx=111320*Math.cos(profile.segment[0][1]*Math.PI/180);
     const projected=Math.abs(a.alongM-b.alongM), length=Math.hypot((front.wall.end[0]-front.wall.start[0])*kx,(front.wall.end[1]-front.wall.start[1])*110540);
@@ -308,6 +311,7 @@ export function validateStreetAppearanceCatalog(value: unknown): StreetAppearanc
   for (const p of c.profiles) {
     if (!p || typeof p.id !== 'string' || ids.has(p.id) || typeof p.revision !== 'string' || typeof p.streetName !== 'string' || ![-1, 1].includes(p.side) || !unit(p.confidence) || !Number.isFinite(p.reachM) || p.reachM <= 0 || !Number.isFinite(p.assemblyM) || p.assemblyM < 6) throw Error('invalid street profile');
     ids.add(p.id);
+    if(p.buildingIds!=null&&(!Array.isArray(p.buildingIds)||!p.buildingIds.length||p.buildingIds.some(id=>typeof id!=='string'||!id.trim()||id!==id.trim())||new Set(p.buildingIds).size!==p.buildingIds.length))throw Error('invalid street building scope');
     if (!Array.isArray(p.segment) || p.segment.length !== 2 || p.segment.some(pt => !Array.isArray(pt) || pt.length !== 2 || !pt.every(Number.isFinite) || Math.abs(pt[0]) > 180 || Math.abs(pt[1]) > 90) || !profileLocation(p, p.segment[0])) throw Error('invalid street segment');
     if (!['pilot', 'reviewed'].includes(p.status) || !Array.isArray(p.evidence) || !p.evidence.length || !Array.isArray(p.recipes) || !p.recipes.length) throw Error('missing street evidence');
     for (const e of p.evidence) if (!e || !unit(e.quality) || !/^[a-f0-9]{64}$/.test(e.sha256) || !['municipal-panorama', 'user-reference'].includes(e.kind) || !['agent-visual-review', 'model'].includes(e.inference)) throw Error('invalid street evidence');
@@ -358,6 +362,7 @@ export function validateStreetAppearanceCatalog(value: unknown): StreetAppearanc
     if(p.frontages!=null){
       if(!Array.isArray(p.frontages))throw Error('invalid baked frontages');const buildingIds=new Set<string>();
       for(const front of p.frontages){if(!front||typeof front.buildingId!=='string'||!front.buildingId||buildingIds.has(front.buildingId)||!Number.isInteger(front.recipeIndex)||front.recipeIndex<0||front.recipeIndex>=p.recipes.length)throw Error('invalid baked frontage');buildingIds.add(front.buildingId);
+        if(p.buildingIds&&!p.buildingIds.includes(front.buildingId))throw Error('baked frontage outside building scope');
         if(front.frontage&&(!Number.isFinite(front.frontage.widthM)||front.frontage.widthM<=0||[front.frontage.start,front.frontage.end].some(pt=>!Array.isArray(pt)||pt.length!==2||!pt.every(Number.isFinite)||Math.abs(pt[0])>180||Math.abs(pt[1])>90)))throw Error('invalid baked frontage run');
         if(p.visualClass&&!front.frontage)throw Error('missing baked visual frontage run');
       }
