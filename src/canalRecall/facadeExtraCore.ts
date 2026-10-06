@@ -8,7 +8,7 @@ import type { WallLayout } from './facadeLayout.js';
 import type { Openings } from './facadeOpenings.js';
 
 export type V3 = [number, number, number];
-export type FlatTri = { p: V3[]; hex: string; n: V3 };
+export type FlatTri = { p: V3[]; hex: string; n: V3; texture?: 'glass-block'; uv?: [number, number][] };
 /** Wall frame: origin at the wall's start (ground of this building), x along, y outward. */
 export type WallFrame = { x0: number; y0: number; ux: number; uy: number; nx: number; ny: number; len: number };
 export type ExtraContext = {
@@ -111,6 +111,16 @@ export class ExtraSink {
     if (points.length !== 4 || this.mark?.failed || !this.fits(2)) return false;
     this.boxes++;
     this.face(points.map(([a, z]) => [f.x0 + f.ux * a + f.nx * out, f.y0 + f.uy * a + f.ny * out, z]), [f.nx, f.ny, 0], hex);
+    return true;
+  }
+  /** Repeating fixed-colour painted glass cells, still charged to the wall triangle budget. */
+  glassBlockQuad(f: WallFrame, points: readonly [number, number][], out: number, cellM: number, startM: number, bottomM: number): boolean {
+    const first=this.tris.length;
+    if(!this.wallQuad(f,points,out,'#ffffff'))return false;
+    for(const tri of this.tris.slice(first)){
+      tri.texture='glass-block';
+      tri.uv=tri.p.map(([x,y,z])=>[((x-f.x0)*f.ux+(y-f.y0)*f.uy+startM)/cellM,(z-bottomM)/cellM]);
+    }
     return true;
   }
   /** A sloped quad (a hood or a canopy): from (a0..a1, o0, zWall) at the wall to (o1, zOut) outside. */

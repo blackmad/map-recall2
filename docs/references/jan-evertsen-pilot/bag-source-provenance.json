@@ -1,0 +1,3247 @@
+{
+  "schemaVersion": 1,
+  "sources": {
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684474?volgnummer=1": {
+      "file": "1f4b17817b9c01d2d37c.json",
+      "sha256": "307d55e94ecdfa25d9cc7ad62bfe32fe47b041e88778d44e084077b63c7e758d",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:23:26.294209+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684475?volgnummer=1": {
+      "file": "3fe266d2a65606a74348.json",
+      "sha256": "f28753a6c06cb6fd72e2e967e482ae6ba2242aaddfcf1b6e351c882ad2cd6c40",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:23:26.294390+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684476?volgnummer=1": {
+      "file": "a27f7296b8c688ff17bc.json",
+      "sha256": "d7049c09ed00ddd3e2042fcf420874d13a3f8b1946b85b00e2e2340cf7101f53",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:23:26.294466+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684477?volgnummer=2": {
+      "file": "68f3f0c6ad21a7a57c11.json",
+      "sha256": "827913670ede0a7fbd98e1b0a60a86ec3f9d9b65d628c4e4bbf15f3af113089f",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:23:26.294533+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012096187": {
+      "file": "11e1a1360d315c998253.json",
+      "sha256": "1d54b938b579efc65fc18c4b26daa28d692230d437330435bce0aaa113853119",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:23:26.294606+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012088014": {
+      "file": "2231d6f50ccade9d4013.json",
+      "sha256": "3d727f704385fb10a841475c8a38333b7b6cd7089ce08b8184f7a6d941666bef",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:23:26.294728+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012072380": {
+      "file": "4b1e7cf4ff0cacd07620.json",
+      "sha256": "ee49c8f24ca9573e4ad57d4c40b27bd848431d52eacdd7899cb69392037b3cf1",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:23:26.294813+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012096804": {
+      "file": "8a196abe01a8291f8b68.json",
+      "sha256": "76ea798b529e7cbff8c376b70f74e3d5116a42a643bb8e38ab71275cb884a25a",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:23:26.294894+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/openbareruimtes?naam=Jan+Evertsenstraat&_pageSize=100": {
+      "file": "631bc42f54120461a388.json",
+      "sha256": "35a68e2e7035d3acf8dc4760696e8cbb511a61093ed08ac9a49d8f0ebb26ca19",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:23:26.295043+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146265?volgnummer=1": {
+      "file": "4501f1c2b5356172f71a.json",
+      "sha256": "aa10e0f169a2b1d5bd290193127322dbff467d0074d4c080974f586f41ceddd4",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:24:21.447155+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146266?volgnummer=1": {
+      "file": "c72b4a25f3825fd41c75.json",
+      "sha256": "892a1e0543e755c97c4e310b7fb90e868dc0461d387f985ccd602faf23a78f6a",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:24:21.447358+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146267?volgnummer=1": {
+      "file": "04b12944feb9ba0de9bc.json",
+      "sha256": "e18e3dfa7e1e31339d118f0131ec64c222ddc1a4eb5b5c0b8d0f34b87db310ac",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:24:21.447470+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146268?volgnummer=1": {
+      "file": "0c7c8f39aaeb2c8bc830.json",
+      "sha256": "c0eb9ec4ac74ad0d7ebd3495ac64789b5482a8082a10499c800daecd5736d716",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:24:21.447564+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684467?volgnummer=3": {
+      "file": "454a62f655cca2266d8c.json",
+      "sha256": "cefa95a1aedf4ed3bf6e5199583930d6978bfdf8b4df42268847cf8375eb807e",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:24:21.447690+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684468?volgnummer=2": {
+      "file": "7415d3b3c1f18ba3a134.json",
+      "sha256": "d6408fff1a62bc01948a95422fe9609ce902d38e4cbb22cb4e8d35f723b740d0",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:24:21.447744+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684469?volgnummer=3": {
+      "file": "c09cf048818a1167c06a.json",
+      "sha256": "f0ea402e9a6b6eb9fcb6abccace8add9913ae5469279f37c29c4bed53d77ecc0",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:24:21.447814+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684469?volgnummer=4": {
+      "file": "0b4eabc1946f6c647be2.json",
+      "sha256": "164f6b5d9b0c2c9bbf9affef02c76b74e0a81404e934d832e48ca0b9bc811ba6",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:24:21.447865+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684469?volgnummer=5": {
+      "file": "cc2f659ec94a0bd74408.json",
+      "sha256": "f60bb402bf92081f9b05ed7965b41fca334c12b2a96b5dd4cb71ae24734721aa",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:24:21.447914+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000960964?volgnummer=3": {
+      "file": "a8191f4119674b8e6a0b.json",
+      "sha256": "e7d2c6d74b7e3e3ef8e442795886252f3ebe8899582527bbd843051442f8ab1e",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:24:21.447978+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012077477?volgnummer=2": {
+      "file": "931b07404fcb8621a03a.json",
+      "sha256": "3f9e902d720cea96996aa1ecca644046c220c0a3e5b42b239d890aa5ce0b325a",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:24:21.448028+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012598547?volgnummer=1": {
+      "file": "c8a1b57b01694cb98a9d.json",
+      "sha256": "2d0b39549ccb0debc6cc1d0c2a43bba3c5967accd627d4ec6884c1a0f548aab0",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:24:21.448088+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012598547?volgnummer=2": {
+      "file": "5e585199697fb51d059c.json",
+      "sha256": "2701b2e97c72c4affe66cbbf74639e419ed3f72b7ca626de0e41a2e2c8452a68",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:24:21.448140+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684482?volgnummer=2": {
+      "file": "47e69a7e308d56da2dcc.json",
+      "sha256": "3cb92aa0e85ab55074bcf053b710f92052c3b3f94240462d10772af7feb84535",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:24:21.448234+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684483?volgnummer=2": {
+      "file": "7b736b2b50be5d4024ba.json",
+      "sha256": "255d869895c142b486a966ac1b2888353f4eedb74a0a276c2a2e5f275b7ea7e5",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:24:21.448294+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684484?volgnummer=2": {
+      "file": "51d53a9a0c20097461d9.json",
+      "sha256": "b561a533a53442cd726e7d43e7a9148738de3f7448311c9a6f219aed71ccc3e0",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:24:21.448352+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684485?volgnummer=2": {
+      "file": "a806beef0b85da997003.json",
+      "sha256": "e749215b5401990687c469c41ff020d427a125b5844893cec2a74bb7dbe7ff88",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:24:21.448411+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684462?volgnummer=1": {
+      "file": "acf835513f42cb8899a1.json",
+      "sha256": "dcaf13e95201af809c3ea612c77036ea44ac79d70c026a5fe8df541e32ad100c",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:24:21.448505+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684463?volgnummer=1": {
+      "file": "46b298004ec8066f29a8.json",
+      "sha256": "a5466de26beb5102a368ee5ee101522f7785837d8095d4103e59492142eb02ca",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:24:21.448558+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684464?volgnummer=1": {
+      "file": "be180269734e88653979.json",
+      "sha256": "a518bc21d09ca3af18833013f32cf3a4e3771fe1eb224f371566d5286b00576f",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:24:21.448615+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684465?volgnummer=1": {
+      "file": "338435180fbb824e2023.json",
+      "sha256": "3630472502d3167b83eba9645527a9403cefc40080c3fb909d8288929c925bf7",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:24:21.448667+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684450?volgnummer=2": {
+      "file": "f85109f2f9cc36b83d84.json",
+      "sha256": "b577cc2a42da4903a834cc21b068654ebfe948f2b70da7cc1c58df166e7e72cb",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:24:21.448759+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684451?volgnummer=2": {
+      "file": "d54eeb2f26d07b910851.json",
+      "sha256": "8a8bd448f001cca7e97480260170fa317d1dec3267a98544ad875ce763fcd35a",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:24:21.448813+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684452?volgnummer=2": {
+      "file": "32c2152142adf90a0e7c.json",
+      "sha256": "8fb3e1517d6390cce9f3b8490c04bc081f7a536ff0936238c4c10486de7b316b",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:24:21.448876+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684453?volgnummer=2": {
+      "file": "cdd3723d26f6af310ec3.json",
+      "sha256": "4bc4ebf32cbaeea54318505c621d1f005ed8f64aa0aa85bcdf36511d7509c772",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:24:21.448932+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen?ligtAanOpenbareruimte.identificatie=0363300000003426&huisnummer%5Bgte%5D=59&huisnummer%5Blte%5D=140&_pageSize=100&_expandScope=adresseertVerblijfsobject%2CadresseertVerblijfsobject.ligtInPanden": {
+      "file": "5948a8c22b91cb03b3dc.json",
+      "sha256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:24:21.451283+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen?_expandScope=adresseertVerblijfsobject%2CadresseertVerblijfsobject.ligtInPanden&_pageSize=100&huisnummer%5Bgte%5D=59&huisnummer%5Blte%5D=140&ligtAanOpenbareruimte.identificatie=0363300000003426&page=2": {
+      "file": "e5c528937569d12fcadb.json",
+      "sha256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:25:39.166657+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen?_expandScope=adresseertVerblijfsobject%2CadresseertVerblijfsobject.ligtInPanden&_pageSize=100&huisnummer%5Bgte%5D=59&huisnummer%5Blte%5D=140&ligtAanOpenbareruimte.identificatie=0363300000003426&page=3": {
+      "file": "1fac2518443cf84e1968.json",
+      "sha256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:29:29.866606+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen?_expandScope=adresseertVerblijfsobject%2CadresseertVerblijfsobject.ligtInPanden&_pageSize=100&huisnummer%5Bgte%5D=59&huisnummer%5Blte%5D=140&ligtAanOpenbareruimte.identificatie=0363300000003426&page=4": {
+      "file": "be2ace78cea67332f57a.json",
+      "sha256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:30:29.213961+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146259?volgnummer=1": {
+      "file": "b06de8dd60bb08db2a82.json",
+      "sha256": "b1ac95b639d06f5671901150abff1c55888ef95866fa101a795e4b6b33e6a056",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:32:20.038890+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146260?volgnummer=1": {
+      "file": "95d87e6dbfe8eab3e4b0.json",
+      "sha256": "96cedd92fea3a5980aee0f95769415a25b294d8a498d33cdfcab56f5e8a544b8",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:32:20.039350+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200012077911?volgnummer=1": {
+      "file": "d007cb4032abb5c870d6.json",
+      "sha256": "21dc91665d3be24e559888c9bf315e60de1c75edf84d4fd615e21b7c5f5f7958",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:32:20.039544+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200013058762?volgnummer=1": {
+      "file": "d2036c756ea0cf19c9a4.json",
+      "sha256": "510f2b7737d8a9e60b6e519ff059dec0099902faf74d848d3b7ce4184e0020d4",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:32:20.039714+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146273?volgnummer=1": {
+      "file": "5a124595fe5891dcf6ad.json",
+      "sha256": "0873705d5a6510e5d78c188fdd44e1ae5fbd58ba9538df0e137507ff40d4fa37",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:32:20.039903+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146274?volgnummer=1": {
+      "file": "951670115d172233ed04.json",
+      "sha256": "59c58f276839145825c233eda94ec99387461cdf642334029f64725938f62fec",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:32:20.040028+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146275?volgnummer=1": {
+      "file": "5c846b73eec273ff20d1.json",
+      "sha256": "d661cac77627284f55a6072f94330963c31e31a8d749e833e4958ff0084fe414",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:32:20.040147+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146276?volgnummer=1": {
+      "file": "c0fad3ad31a0dbee571f.json",
+      "sha256": "13e6fe7139b148042435a5ffcca4d6ad91308a03813ac07303cf728c1b3971c0",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:32:20.040260+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146252?volgnummer=1": {
+      "file": "6553fecc43593247d924.json",
+      "sha256": "42403ab43a95faa8e34f1ac8778ec0cb3089e8e3846fcbed5c3c2e3aa5ccdd5c",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:32:20.040434+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146253?volgnummer=1": {
+      "file": "2eea80fbf02e541621b7.json",
+      "sha256": "bc496deff91d4d1b823c671f9d2e8a0101ce0e7bbdb66d9d646ecffab8573abc",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:32:20.040548+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146254?volgnummer=1": {
+      "file": "eb9cce141d720fdc2caf.json",
+      "sha256": "7b409db0aa9b5600ee516f6ad2bee605d4820292d0cd947a83dc32cc8eace8f7",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:32:20.040665+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146255?volgnummer=1": {
+      "file": "049de66cca57772ff339.json",
+      "sha256": "7d45accdd2e416ae5be020c34b5fa76e348a1ea760ab777b89afb13f0725d38e",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:32:20.040781+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146240?volgnummer=1": {
+      "file": "c775a6e3a651214c9de4.json",
+      "sha256": "437b4e0d4037d4cba0abdb92c4d0871fb9793c3942c446e14bc7181ac6a8d436",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:32:20.040954+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146241?volgnummer=1": {
+      "file": "d16556a9b3e8ab4d2622.json",
+      "sha256": "956ad694a68c5b887e4663ffc31faf769ad02768aa4acf96f18175985b22abbb",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:32:20.041072+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146242?volgnummer=1": {
+      "file": "94007e9a41bd2693479c.json",
+      "sha256": "1b84adda122cb4cb1875d4a8103f2d588c05f779166baf56a9edb63c71c7bfd8",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:32:20.041189+00:00"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146243?volgnummer=1": {
+      "file": "279cd2f06a1685c882b9.json",
+      "sha256": "88faeb9abec58742621e1d45acf82c71b5e2341d7cdb0faf3031f2111e97f783",
+      "access": "cached-original-response",
+      "recordedAt": "2026-10-06T06:32:20.041300+00:00"
+    }
+  },
+  "attempts": [
+    {
+      "url": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684474?volgnummer=1",
+      "attemptDate": "2026-10-06",
+      "actor": "jan_bag_inventory worker",
+      "access": "five curl attempts failed DNS; root curl subsequently succeeded for same URL",
+      "curlExitCode": 6,
+      "retryPolicy": "4 retries, all errors",
+      "environmentState": "CODEX_SANDBOX_NETWORK_DISABLED=1",
+      "interpretation": "worker-context access failure; not permanent source unavailability"
+    }
+  ],
+  "embeddedSources": {
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684482?volgnummer=2": {
+      "originalFile": "47e69a7e308d56da2dcc.json",
+      "originalSHA256": "3cb92aa0e85ab55074bcf053b710f92052c3b3f94240462d10772af7feb84535"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684462?volgnummer=1": {
+      "originalFile": "acf835513f42cb8899a1.json",
+      "originalSHA256": "dcaf13e95201af809c3ea612c77036ea44ac79d70c026a5fe8df541e32ad100c"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684477?volgnummer=2": {
+      "originalFile": "68f3f0c6ad21a7a57c11.json",
+      "originalSHA256": "827913670ede0a7fbd98e1b0a60a86ec3f9d9b65d628c4e4bbf15f3af113089f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684483?volgnummer=2": {
+      "originalFile": "7b736b2b50be5d4024ba.json",
+      "originalSHA256": "255d869895c142b486a966ac1b2888353f4eedb74a0a276c2a2e5f275b7ea7e5"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684464?volgnummer=1": {
+      "originalFile": "be180269734e88653979.json",
+      "originalSHA256": "a518bc21d09ca3af18833013f32cf3a4e3771fe1eb224f371566d5286b00576f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146266?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012072380?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684484?volgnummer=2": {
+      "originalFile": "51d53a9a0c20097461d9.json",
+      "originalSHA256": "b561a533a53442cd726e7d43e7a9148738de3f7448311c9a6f219aed71ccc3e0"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684485?volgnummer=2": {
+      "originalFile": "a806beef0b85da997003.json",
+      "originalSHA256": "e749215b5401990687c469c41ff020d427a125b5844893cec2a74bb7dbe7ff88"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012088014?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684451?volgnummer=2": {
+      "originalFile": "d54eeb2f26d07b910851.json",
+      "originalSHA256": "8a8bd448f001cca7e97480260170fa317d1dec3267a98544ad875ce763fcd35a"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684467?volgnummer=3": {
+      "originalFile": "454a62f655cca2266d8c.json",
+      "originalSHA256": "cefa95a1aedf4ed3bf6e5199583930d6978bfdf8b4df42268847cf8375eb807e"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684476?volgnummer=1": {
+      "originalFile": "a27f7296b8c688ff17bc.json",
+      "originalSHA256": "d7049c09ed00ddd3e2042fcf420874d13a3f8b1946b85b00e2e2340cf7101f53"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003426?volgnummer=2": {
+      "originalFile": "631bc42f54120461a388.json",
+      "originalSHA256": "35a68e2e7035d3acf8dc4760696e8cbb511a61093ed08ac9a49d8f0ebb26ca19"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684452?volgnummer=2": {
+      "originalFile": "32c2152142adf90a0e7c.json",
+      "originalSHA256": "8fb3e1517d6390cce9f3b8490c04bc081f7a536ff0936238c4c10486de7b316b"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684465?volgnummer=1": {
+      "originalFile": "338435180fbb824e2023.json",
+      "originalSHA256": "3630472502d3167b83eba9645527a9403cefc40080c3fb909d8288929c925bf7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684474?volgnummer=1": {
+      "originalFile": "1f4b17817b9c01d2d37c.json",
+      "originalSHA256": "307d55e94ecdfa25d9cc7ad62bfe32fe47b041e88778d44e084077b63c7e758d"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012096187?volgnummer=2": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684469?volgnummer=5": {
+      "originalFile": "cc2f659ec94a0bd74408.json",
+      "originalSHA256": "f60bb402bf92081f9b05ed7965b41fca334c12b2a96b5dd4cb71ae24734721aa"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146268?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684469?volgnummer=3": {
+      "originalFile": "c09cf048818a1167c06a.json",
+      "originalSHA256": "f0ea402e9a6b6eb9fcb6abccace8add9913ae5469279f37c29c4bed53d77ecc0"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146265?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684475?volgnummer=1": {
+      "originalFile": "3fe266d2a65606a74348.json",
+      "originalSHA256": "f28753a6c06cb6fd72e2e967e482ae6ba2242aaddfcf1b6e351c882ad2cd6c40"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684450?volgnummer=2": {
+      "originalFile": "f85109f2f9cc36b83d84.json",
+      "originalSHA256": "b577cc2a42da4903a834cc21b068654ebfe948f2b70da7cc1c58df166e7e72cb"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012096804?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684463?volgnummer=1": {
+      "originalFile": "46b298004ec8066f29a8.json",
+      "originalSHA256": "a5466de26beb5102a368ee5ee101522f7785837d8095d4103e59492142eb02ca"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012598547?volgnummer=1": {
+      "originalFile": "c8a1b57b01694cb98a9d.json",
+      "originalSHA256": "2d0b39549ccb0debc6cc1d0c2a43bba3c5967accd627d4ec6884c1a0f548aab0"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012598547?volgnummer=2": {
+      "originalFile": "5e585199697fb51d059c.json",
+      "originalSHA256": "2701b2e97c72c4affe66cbbf74639e419ed3f72b7ca626de0e41a2e2c8452a68"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684453?volgnummer=2": {
+      "originalFile": "cdd3723d26f6af310ec3.json",
+      "originalSHA256": "4bc4ebf32cbaeea54318505c621d1f005ed8f64aa0aa85bcdf36511d7509c772"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684468?volgnummer=2": {
+      "originalFile": "7415d3b3c1f18ba3a134.json",
+      "originalSHA256": "d6408fff1a62bc01948a95422fe9609ce902d38e4cbb22cb4e8d35f723b740d0"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146267?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684469?volgnummer=4": {
+      "originalFile": "0b4eabc1946f6c647be2.json",
+      "originalSHA256": "164f6b5d9b0c2c9bbf9affef02c76b74e0a81404e934d832e48ca0b9bc811ba6"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146004?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146005?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146006?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146007?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146008?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146009?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146010?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146011?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146012?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146013?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146014?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146015?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146016?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146017?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146018?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146019?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146020?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146021?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146022?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146023?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146025?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146026?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146027?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146028?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146029?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146030?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146031?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146032?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146033?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146034?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146035?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146036?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146037?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146038?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146039?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146040?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146041?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146043?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146044?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146045?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146046?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146047?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146048?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146049?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146051?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146052?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146053?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146054?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146055?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146056?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146057?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146058?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146059?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146060?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146061?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146062?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146063?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146064?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146065?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146066?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146067?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146068?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146069?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146070?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146071?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146072?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146073?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146074?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146075?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146076?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146077?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146078?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146079?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146080?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146081?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146082?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146083?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146084?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146085?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146086?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146087?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146088?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146089?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146090?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146091?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146092?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146093?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146094?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146095?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146096?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146097?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146098?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146099?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146100?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146101?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146103?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146104?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146105?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146106?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146107?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684222?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012093459?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684223?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684224?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684225?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684226?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012124819?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684227?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684228?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684229?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684230?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012107408?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684231?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684232?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684233?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684234?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012128896?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684235?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684236?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684237?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684238?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012107315?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684239?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684240?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684242?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012115017?volgnummer=3": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684243?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684244?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684245?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012103732?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684246?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684247?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684248?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684249?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012131498?volgnummer=1": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684250?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012147518?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684251?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684252?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684253?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684254?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012096961?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684255?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012080856?volgnummer=2": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684256?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684257?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684258?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012079120?volgnummer=3": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684259?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684260?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684261?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012070389?volgnummer=2": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684262?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684263?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684264?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684266?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012096302?volgnummer=2": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684267?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684268?volgnummer=3": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684269?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012064061?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684270?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684271?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684272?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684273?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012140338?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684274?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684275?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684276?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684277?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012107343?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684278?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684279?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684280?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684281?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684282?volgnummer=3": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684283?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684284?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684285?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012153862?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684286?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684287?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684288?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684289?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684290?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684291?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684292?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684293?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012144026?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684294?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684295?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684296?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684297?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012101228?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684298?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684299?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684300?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684301?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012110182?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684302?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684303?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684304?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684305?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684306?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684307?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684308?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684309?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012119877?volgnummer=2": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684310?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684311?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684312?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684313?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012126326?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684314?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684315?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684316?volgnummer=3": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684318?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684319?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684320?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684321?volgnummer=4": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012130169?volgnummer=2": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684322?volgnummer=2": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001005414?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001005416?volgnummer=1": {
+      "originalFile": "5948a8c22b91cb03b3dc.json",
+      "originalSHA256": "4fbf6c4630bdcd64f71a7f08ffdbc06ebe71eb309abaca8ffb4ce1f385bc74c7"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000960964?volgnummer=3": {
+      "originalFile": "a8191f4119674b8e6a0b.json",
+      "originalSHA256": "e7d2c6d74b7e3e3ef8e442795886252f3ebe8899582527bbd843051442f8ab1e"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012077477?volgnummer=2": {
+      "originalFile": "931b07404fcb8621a03a.json",
+      "originalSHA256": "3f9e902d720cea96996aa1ecca644046c220c0a3e5b42b239d890aa5ce0b325a"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200012077911?volgnummer=1": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146260?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200013058762?volgnummer=1": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146254?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146242?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146255?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146241?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146253?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146276?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146275?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146108?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146110?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146111?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146112?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146113?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146114?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146115?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146116?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146117?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146118?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146119?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146120?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146121?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146122?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146123?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146125?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146126?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146127?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146128?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146130?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146131?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146132?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146133?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146134?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146135?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146136?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146137?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146138?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146139?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146140?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146141?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146142?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146143?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146144?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146145?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146146?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146147?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146148?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146149?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146150?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146151?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146152?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146153?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146154?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146155?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146156?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146157?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146158?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146159?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146160?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146161?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146162?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146163?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146164?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146165?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146166?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146167?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146168?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146169?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146170?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146171?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146172?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146173?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146174?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146175?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146176?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146177?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146178?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146179?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146180?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146181?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146182?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146185?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146186?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146187?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146188?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146189?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146190?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146191?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146193?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146194?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146195?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146196?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146197?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146198?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146199?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146200?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146201?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146202?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146203?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146204?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146205?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146206?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146207?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146208?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146209?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146210?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146211?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146212?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146213?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684323?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684325?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012077667?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684326?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684327?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684328?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012092098?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684329?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684330?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684331?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684332?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012085532?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684333?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684334?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684335?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684336?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684337?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684339?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012144630?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684340?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684341?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684342?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684344?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012070651?volgnummer=2": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684345?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684346?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684347?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012134746?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684348?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684349?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684350?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684351?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012114417?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684352?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684353?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684354?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684356?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012107849?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684357?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684358?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684359?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012062057?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684360?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684361?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684362?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684363?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012110500?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684364?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684365?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684366?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684367?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012094286?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684368?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684369?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684370?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684371?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012135935?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684372?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684373?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684374?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684375?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012089507?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684376?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684377?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684378?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684379?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012088293?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684380?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684381?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684382?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684383?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012147193?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684384?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684385?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684386?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684387?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012063890?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684388?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684389?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684390?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684391?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012113053?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684392?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684393?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684394?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684395?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012120991?volgnummer=2": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684396?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684397?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684400?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012155048?volgnummer=2": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684401?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684402?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684403?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012095353?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684404?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684405?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684406?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684407?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012078348?volgnummer=2": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684408?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684409?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684410?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012075011?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684411?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684412?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684413?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684414?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012065988?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684415?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684416?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684417?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012084878?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684418?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684419?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684420?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684421?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012062999?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684422?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684423?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684424?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012072351?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684425?volgnummer=3": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001005419?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001005422?volgnummer=1": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001005423?volgnummer=2": {
+      "originalFile": "e5c528937569d12fcadb.json",
+      "originalSHA256": "1b71a6d70f0e85b3da8b1eb50c6e52e328995acf3b220041790a46c49269a331"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146274?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146252?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146240?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146243?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146259?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146273?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146214?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146215?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146216?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146217?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146218?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146219?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146220?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146221?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146222?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146223?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146224?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146225?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146226?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146227?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146228?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146229?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146230?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146231?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146232?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146233?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146234?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146235?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146236?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146237?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146238?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146239?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146244?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146245?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146246?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146247?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146281?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146282?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146283?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146284?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146289?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146290?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146291?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146292?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146293?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146294?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146295?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146296?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146297?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146298?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146299?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146300?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146301?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146302?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146303?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146304?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146305?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146315?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146316?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146317?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146318?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146323?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146324?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146325?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146326?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000414417?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000471370?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000471371?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000471372?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000471373?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000471374?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000471375?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000471376?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000471377?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000471379?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000471380?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000471381?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000471382?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000471383?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000471385?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000471387?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000471388?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000478820?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000478821?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000478822?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000478823?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000478824?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000478825?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684355?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684426?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684427?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684428?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012099114?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684429?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684430?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684431?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684432?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012139046?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684433?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684434?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684435?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684436?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012151042?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684437?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684438?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684439?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012127196?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684440?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684441?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684442?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684443?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012142949?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684444?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684445?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684446?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012081416?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684447?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684448?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684449?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684454?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012065738?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684455?volgnummer=3": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684456?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684457?volgnummer=3": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012118917?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684489?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012095376?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684490?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684491?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684492?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684497?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012151570?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684498?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684499?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684500?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684501?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012096363?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684502?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684503?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684504?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684505?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012133377?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684506?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684507?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684508?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684509?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684510?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012092775?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684511?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684512?volgnummer=3": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684513?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684522?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012080990?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684523?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684524?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684525?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684530?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012140699?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684531?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684532?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684533?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001005425?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001005427?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001014426?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012138503?volgnummer=3": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001014427?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001014428?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001014429?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001014430?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001014431?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001014432?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001014433?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001014434?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001014435?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001014436?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001014437?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001014438?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001014439?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001014440?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001014441?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001016640?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012085815?volgnummer=2": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001016641?volgnummer=1": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001016642?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012118443?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001016643?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001016644?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001016645?volgnummer=2": {
+      "originalFile": "1fac2518443cf84e1968.json",
+      "originalSHA256": "0139dcf4bb581c1bb84a261fbe0a70e62c0e411b611ba6df84bc8345b9619d49"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000478826?volgnummer=1": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000478827?volgnummer=1": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000478828?volgnummer=1": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000478829?volgnummer=1": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200003767141?volgnummer=2": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200011122613?volgnummer=1": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200011122614?volgnummer=1": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200011122615?volgnummer=1": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200011122616?volgnummer=1": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200012066361?volgnummer=1": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200012073865?volgnummer=1": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200012073867?volgnummer=1": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200012080352?volgnummer=1": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200012081289?volgnummer=2": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200012081290?volgnummer=1": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200012091394?volgnummer=2": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200012091395?volgnummer=2": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200012129475?volgnummer=2": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200013053326?volgnummer=2": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200013069726?volgnummer=1": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200013069727?volgnummer=1": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001016646?volgnummer=1": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012102496?volgnummer=2": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001016647?volgnummer=1": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001016648?volgnummer=1": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001016649?volgnummer=1": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010003767209?volgnummer=3": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010011122743?volgnummer=3": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/panden/0363100012100052?volgnummer=2": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010011122744?volgnummer=3": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010011122745?volgnummer=3": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010011122746?volgnummer=3": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012066185?volgnummer=2": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012073527?volgnummer=3": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012073529?volgnummer=2": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012079328?volgnummer=2": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012080237?volgnummer=2": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012080238?volgnummer=2": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012090017?volgnummer=2": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012090018?volgnummer=2": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012127575?volgnummer=2": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012593129?volgnummer=3": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012609465?volgnummer=1": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    },
+    "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012609466?volgnummer=1": {
+      "originalFile": "be2ace78cea67332f57a.json",
+      "originalSHA256": "0b29d3f14d5e20f4d88debf8698ffd3a6bdfd6aa656ded81fd23aec59dcff57f"
+    }
+  }
+}

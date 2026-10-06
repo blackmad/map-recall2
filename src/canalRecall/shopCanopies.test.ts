@@ -4,6 +4,11 @@ import { ExtraSink, wallExtras, extraUsage, type ExtraContext } from './facadeEx
 import { continuousShopCanopy, mergeCanopyFrames } from './shopCanopies.js';
 import { buildChunk, type MeshBuilding } from './threeBuildingMesh.js';
 import { validateStreetAppearanceCatalog, type ArchitecturalRecipe, type StreetAppearanceProfile } from './streetAppearance.js';
+import { paintGlassBlockCell } from './glassBlockTexture.js';
+import { CELL_PX } from './facadeCells.js';
+import { recipeBayOpenings } from './facadeOpenings.js';
+
+const glassContext=():ExtraContext=>({...context(),openings:recipeBayOpenings('observed-shop',recipe),recipe:{...recipe,shopCanopy:{...recipe.shopCanopy!,datumOffsetM:-.4,glassBlockBand:{heightM:.8,cellM:.2}}}});
 
 const recipe:ArchitecturalRecipe={family:'masonry',period:'school',confidence:.8,detailPolicy:'architectural',trim:{frames:0,lintels:0,cornice:0,courses:0,quoins:0,arches:0},
   shopCanopy:{kind:'continuous-rigid',projectionM:.85,fasciaHeightM:.24,fasciaHex:'#dedbd2',edgeHex:'#454b49'}};
@@ -102,6 +107,82 @@ test('mesh run owns one continuous canopy; split tiny facets and courtyard holes
   assert.equal(validateStreetAppearanceCatalog(catalog),catalog);
   for(const patch of [{projectionM:NaN},{projectionM:3},{fasciaHeightM:0},{edgeHex:'red'},{kind:'striped'}]){
     const invalid=structuredClone(catalog);Object.assign(invalid.profiles[0].recipes[0].recipe.shopCanopy!,patch);
+    assert.throws(()=>validateStreetAppearanceCatalog(invalid),/invalid source shop canopy/);
+  }
+});
+
+test('opt-in glass band is first-hit visible above the canopy with four20cm rows and only two triangles',()=>{
+  const c=glassContext(),sink=new ExtraSink(180);continuousShopCanopy(c,sink);
+  const band=sink.tris.filter(t=>t.texture==='glass-block');
+  assert.equal(sink.tris.length,38);assert.equal(band.length,2);
+  for(const t of band){
+    assert.deepEqual(t.n,[0,-1,0]);assert.equal(t.hex,'#ffffff');
+    for(const [i,p] of t.p.entries()){
+      assert.ok(Math.abs(p[1]+.04)<1e-8,'band lies in front of wall, not buried in parent skin');
+      assert.ok(p[2]>=3.08-1e-8&&p[2]<=3.88+1e-8,'band clears slab top3.06 and upper window sill');
+      assert.ok(Math.abs(t.uv![i][0]-p[0]/.2)<1e-8);assert.ok(Math.abs(t.uv![i][1]-(p[2]-3.08)/.2)<1e-8);
+    }
+  }
+  assert.ok(Math.abs(Math.max(...band.flatMap(t=>t.uv!.map(p=>p[1])))-4)<1e-8,'four full glass-block rows');
+  for(const patch of [{streetSide:false},{streetSide:undefined},{groundLevel:false},{canopyOwner:false}]){
+    const rear=new ExtraSink(180);continuousShopCanopy({...c,...patch},rear);assert.equal(rear.tris.length,0);
+  }
+  for(const patch of [{datumOffsetM:0},{datumOffsetM:-.6,fasciaHeightM:.4}]){
+    const blocked=new ExtraSink(180);continuousShopCanopy({...c,recipe:{...c.recipe!,shopCanopy:{...c.recipe!.shopCanopy!,...patch}}},blocked);
+    assert.equal(blocked.tris.length,0,'overlapping residential window or shop door rejects full assembly');
+  }
+  const tooSmall=new ExtraSink(37);continuousShopCanopy(c,tooSmall);assert.equal(tooSmall.tris.length,0,'band cannot be lost separately from canopy');
+});
+
+test('glass band preserves surveyed facet seams, gaps and full native180 wall allowance',()=>{
+  const c=glassContext(),frames=[];let x=0,y=0;
+  for(let i=0;i<6;i++){
+    const angle=i*.01,ux=Math.cos(angle),uy=Math.sin(angle);
+    frames.push({...c.f,x0:x,y0:y,len:2,ux,uy,nx:uy,ny:-ux});x+=ux*2;y+=uy*2;
+  }
+  const sink=new ExtraSink(1000);wallExtras({...c,canopyFrames:frames},sink);
+  const band=sink.tris.filter(t=>t.texture==='glass-block');assert.equal(band.length,12);assert.ok(sink.tris.length<=180);
+  const assembly=new ExtraSink(158);continuousShopCanopy({...c,canopyFrames:frames},assembly);assert.equal(assembly.tris.length,158);
+  const small=new ExtraSink(157);continuousShopCanopy({...c,canopyFrames:frames},small);assert.equal(small.tris.length,0);
+  for(let i=0;i<frames.length-1;i++){
+    const left=band.slice(i*2,i*2+2).flatMap(t=>t.p),right=band.slice((i+1)*2,(i+1)*2+2).flatMap(t=>t.p);
+    assert.ok(left.some(a=>right.some(b=>Math.hypot(...a.map((v,k)=>v-b[k]))<1e-7)),'miter endpoints meet exactly');
+  }
+  const gaps=new ExtraSink(180);continuousShopCanopy({...c,canopyFrames:[{...c.f,len:3},{...c.f,x0:5,len:3}]},gaps);
+  assert.ok(gaps.tris.filter(t=>t.texture).flatMap(t=>t.p).every(p=>p[0]<=3||p[0]>=5),'no invented bridging across missing street frontage');
+});
+
+test('original glass-cell paint repeats seamlessly with fixed muted glazing and pale mortar',()=>{
+  const cell=paintGlassBlockCell();assert.equal(cell.length,CELL_PX*CELL_PX*4);
+  assert.deepEqual(cell,paintGlassBlockCell());
+  const pixel=(x:number,y:number)=>Array.from(cell.slice((y*CELL_PX+x)*4,(y*CELL_PX+x)*4+4));
+  for(let i=0;i<CELL_PX;i++){
+    assert.deepEqual(pixel(0,i),pixel(CELL_PX-1,i));assert.deepEqual(pixel(i,0),pixel(i,CELL_PX-1));
+  }
+  assert.ok(pixel(0,0)[0]>pixel(128,128)[0],'mortar is pale, glazing subdued');
+  for(let i=3;i<cell.length;i+=4)assert.equal(cell[i],0,'paint cannot recolor wall or invent a door mask');
+});
+
+test('native footprint fixture preserves all painted window/door surfaces and excludes rear and courtyard glass',()=>{
+  const origin={lng:4.85,lat:52.37},kx=111320*Math.cos(origin.lat*Math.PI/180);
+  const point=(x:number,y:number):[number,number]=>[origin.lng+x/kx,origin.lat+y/110540];
+  const base:MeshBuilding={id:'observed-shop',polygons:[[[point(0,0),point(3,0),point(12,0),point(12,10),point(0,10),point(0,0)],
+    [point(3,3),point(3,7),point(9,7),point(9,3),point(3,3)]]],heightM:14,minHeightM:0,style:'school',wallHex:'#876953',extras:true,lid:{hex:'#876953',flatLayer:0},recipe};
+  const band={...base,recipe:glassContext().recipe};
+  const streets=Float32Array.from([-20,-2,30,-2]);
+  assert.deepEqual(buildChunk([band],origin,'walls',streets),buildChunk([base],origin,'walls',streets),'band opt-in never removes or moves painted doors and residential windows');
+  const records:Array<{c:ExtraContext;used:readonly string[]}>=[],previous=extraUsage.record;
+  try{extraUsage.record=(c,used)=>records.push({c,used});buildChunk([band],origin,'extras',streets);}
+  finally{extraUsage.record=previous;}
+  const owners=records.filter(r=>r.used.includes('continuous-shop-canopy'));assert.equal(owners.length,1);
+  const sink=new ExtraSink(180);continuousShopCanopy(owners[0].c,sink);
+  const glass=sink.tris.filter(t=>t.texture==='glass-block');assert.equal(glass.length,2);
+  assert.ok(glass.flatMap(t=>t.p).every(p=>Math.abs(p[1]+.04)<1e-6),'only the observed front wall receives glass; holes and rear remain unchanged');
+  const catalog={schemaVersion:1,revision:'band-validation',profiles:[{id:'band',streetName:'fixture',revision:'test',segment:[point(-20,-2),point(30,-2)],side:1,reachM:15,confidence:.8,assemblyM:6,status:'pilot',
+    recipes:[{weight:1,recipe:band.recipe}],evidence:[{id:'fixture',kind:'user-reference',sha256:'a'.repeat(64),inference:'agent-visual-review',quality:.8,notes:'synthetic scope fixture'}]}]};
+  assert.equal(validateStreetAppearanceCatalog(catalog),catalog);
+  for(const patch of [{datumOffsetM:.1},{datumOffsetM:-.61},{datumOffsetM:NaN},{glassBlockBand:{heightM:.1,cellM:.2}},{glassBlockBand:{heightM:.8,cellM:1}},{glassBlockBand:{heightM:Infinity,cellM:.2}}]){
+    const invalid=structuredClone(catalog);Object.assign(invalid.profiles[0].recipes[0].recipe!.shopCanopy!,patch);
     assert.throws(()=>validateStreetAppearanceCatalog(invalid),/invalid source shop canopy/);
   }
 });

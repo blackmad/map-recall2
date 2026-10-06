@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-10-06",
+  "reviewer": "independent jan_glassband_review worker; seek-failures review",
+  "decision": "accept-narrow-opt-in-band-capability-only",
+  "fullFacadeDecision": "fail-not-accepted",
+  "extentDecision": "no-new-runtime-admissions",
+  "scope": "Existing exact BAG pilot pair Jan Evertsenstraat124/126 only. This review admits the shared opt-in assembly capability, not this full street profile, any of the65 discovery identities, or neighborhood transfer.",
+  "source": {
+    "archiveCommit": "cb1a9905bdc5067fc742de741aeb5c88b460567a",
+    "archivePath": "streets/jan-evertsen-canopy-rollout-20261006/",
+    "inspectedImage": "processed/panorama/pilot-north.jpg",
+    "captureDate": "2025-09-26",
+    "observation": "Current brown masonry facade has a shallow regular glass-block grid immediately above its continuous projecting dark canopy/pale fascia; three residential levels contain broad white grouped openings and repeated projecting erkers. Shop entrances include recessed portico openings."
+  },
+  "runtimeEvidence": {
+    "directory": "artifacts/jan-evertsen-pilot/glassband-game/",
+    "report": "artifacts/jan-evertsen-pilot/glassband-game/report.json",
+    "appearanceRevision": "e7fdc0dc8f0d223e",
+    "inspectedImages": [
+      "overtoom-photo-street.png",
+      "overtoom-storybook-street.png",
+      "overtoom-procedural-street.png",
+      "overtoom-photo-gameplay.png"
+    ],
+    "registrationLimit": "Capture filenames retain the harness target name overtoom; camera coordinates4.85209,52.37042 are the Jan Evertsen pilot. Oblique map/game camera differs from the source panorama. No exact photographed-building matching asserted."
+  },
+  "checks": [
+    {
+      "criterion": "Band visually survives first-hit facade rendering",
+      "decision": "pass-narrow",
+      "reason": "Photo street image and detail inspection show the muted grid plane above the dark canopy on both pilot frontages, unobscured by the parent wall. Storybook/procedural views retain that band. The test additionally establishes outward facing placement. This proves a visible band capability, not source facade resemblance."
+    },
+    {
+      "criterion": "Residential/shop openings preserved",
+      "decision": "pass-narrow",
+      "reason": "All inspected street modes retain residential window textures and ground storefront glazing. The native footprint test confirms band opt-in does not move/remove existing window/door surfaces, and overlap guard rejects the entire incompatible assembly. Existing openings are architecturally wrong for this source."
+    },
+    {
+      "criterion": "Original repeat texture and shader mask/tint semantics",
+      "decision": "pass-code-and-visible",
+      "reason": "paintGlassBlockCell uses alpha0 as fixed-color tint mask, copied to an appended last atlas layer with opaque rendered alpha. Fragment shader therefore leaves band color independent of masonry tint. Mesh layer formula matches the last layer for photo/storybook and procedural atlas layouts without renumbering existing layers; white vertex tint also preserves sensible untextured fallback."
+    },
+    {
+      "criterion": "Source-scale four-row block rhythm",
+      "decision": "uncertain-visual",
+      "reason": "Recipe0.8m/0.2m gives four full rows and UV tests confirm this. Oblique game captures make the grid small; they cannot establish measured agreement with the source band height or cell spacing. No claim of exact dimension calibration."
+    },
+    {
+      "criterion": "Bounded native geometry cost",
+      "decision": "pass-geometry-only",
+      "reason": "Two triangles per plane, with source-preserving surveyed seams. Six bends including the band use158 triangles within180. Whole-assembly rollback prevents partial budget fragments. Geometry counts do not prove GPU performance."
+    },
+    {
+      "criterion": "Full facade/window/roof composition",
+      "decision": "fail",
+      "reason": "Pilot remains a light tan stock narrow-window facade with extra residential repetition and a stock triangular/gabled roof. Current source is brown brick, three residential rows with wide white grouped windows, prominent erker stacks and a quiet continuous roofline. Recessed porticos are absent. These defining assemblies and proportions remain missing; the band does not make this profile visually acceptable."
+    },
+    {
+      "criterion": "Mode/layer regression and production performance",
+      "decision": "partial-not-production-acceptance",
+      "reason": "Inspected neighboring walls retain windows/doors, all three detailed looks show the band, and report records no errors or mode race mismatches. No separately measured GPU timer, same-version profile-on/off pair, actual desktop/touch rider camera pan, or heldout transfer challenge is provided by this artifact. Vsync frame times and GL-finish Three-layer CPU timings are insufficient for scoped completion."
+    }
+  ],
+  "verification": {
+    "command": "node --import tsx --test src/canalRecall/shopCanopies.test.ts",
+    "result": "10 passed,0 failed",
+    "limitations": "Review used saved actual-game evidence and read-only source/code inspection; reviewer did not independently launch a new GPU browser session."
+  },
+  "nextAction": "Keep full pilot profile unaccepted and all discovered new identities withheld. Improve source-supported wide white window groups/erker stacks and recessed entrance assembly, correct brown material and residential/roof composition, then perform comparable source/game challenges and production evidence before transfer."
+}

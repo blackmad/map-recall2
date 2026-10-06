@@ -1,5 +1,11 @@
 # Canal Recall project memory
 
+## Source access retries
+
+DNS and network failures can be transient. Retry failed source requests with bounded backoff, reuse successful cached responses, and continue independent work between attempts. A failed request is not evidence that a source is permanently unavailable. Record the attempt time and current access state; retry on later passes before treating source acquisition as blocked. The user explicitly requested this behavior on 2026-10-06.
+
+Distinguish host connectivity from tool and worker restrictions. If a worker reports `CODEX_SANDBOX_NETWORK_DISABLED=1`, route authorized downloads through a working root tool context and let the worker parse cached inputs. Keep raw API responses, photos and catalogue records in the companion `map-recall2-source-data` repository; main-repo `artifacts/` is temporary acquisition staging only. Verify and push the source pack, record its commit/path, then remove duplicated staged originals.
+
 ## Amsterdam POI work
 
 The user authorizes ongoing landmark work, parallel agents, and periodic commits and pushes. Keep requested tasks and deferred work in `public/canal-drive/poi-work-queue.json`; regenerate `public/canal-drive/landmark-backlog.json` with `scripts/landmarks/build-poi-backlog.ts` as assets and POI coverage change. Do not drop earlier requests when the user adds another building or reports a bug.

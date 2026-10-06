@@ -5,7 +5,7 @@
     {
       "id": "jan-evertsen-canopy-candidate-native-pair",
       "streetName": "Jan Evertsenstraat",
-      "revision": "unaccepted-runtime-canopy-pilot-v1",
+      "revision": "current-source-glassband-pilot-v2",
       "segment": [
         [
           4.851836,
@@ -54,8 +54,14 @@
               "projectionM": 0.85,
               "fasciaHeightM": 0.24,
               "fasciaHex": "#dedbd2",
-              "edgeHex": "#454b49"
-            }
+              "edgeHex": "#454b49",
+              "datumOffsetM": -0.4,
+              "glassBlockBand": {
+                "heightM": 0.8,
+                "cellM": 0.2
+              }
+            },
+            "groundScale": 1.1333333333333333
           }
         }
       ],
@@ -67,6 +73,17 @@
           "inference": "agent-visual-review",
           "quality": 0.8,
           "notes": "User crop shows long rigid dark rounded canopy edge and pale fascia below masonry. Candidate identity/address unconfirmed; upper facade and roof cropped. No visual acceptance; approximate street axis."
+        },
+        {
+          "id": "jan-evertsen-current-124-126-20250926",
+          "kind": "municipal-panorama",
+          "captureDate": "2025-09-26T09:08:16Z",
+          "panoramaId": "2025_09_26_08_31_34_00859",
+          "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_09_26_08_31_34_00859/equirectangular/panorama_4000.jpg",
+          "sha256": "e37ead2377de9a228a19d46188e658eb9eaf68a85ded4eb31157e5b279593846",
+          "inference": "agent-visual-review",
+          "quality": 0.9,
+          "notes": "2025 source supports continuous canopy and shallow glass-block band. Official BAG resolves exact124/126. Band dimensions procedural approximate; upper projecting window groups and recessed portico remain capability gaps. Shared private source pack streets/jan-evertsen-canopy-rollout-20261006/."
         }
       ],
       "frontages": [
