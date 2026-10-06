@@ -1,0 +1,129 @@
+{
+  "factory": {
+    "triangles": 33206,
+    "bounds": {
+      "min": [
+        -20.129928588867188,
+        -3.9601326307092677e-07,
+        -32.95650100708008
+      ],
+      "max": [
+        20.929311752319336,
+        11.960000038146973,
+        32.41630172729492
+      ]
+    },
+    "downwardRoofTriangles": 0,
+    "maxPlanarResidualM": 0.0006479316834830939,
+    "firstHitCenterOnly": {
+      "clear": 55,
+      "blocked": 7,
+      "fails": [
+        {
+          "pane": [
+            -18.901097297668457,
+            1.2250000089406967,
+            22.517495155334473
+          ],
+          "first": "white"
+        },
+        {
+          "pane": [
+            -19.734259605407715,
+            3.840000033378601,
+            -22.909170150756836
+          ],
+          "first": "green"
+        },
+        {
+          "pane": [
+            -19.36283779144287,
+            3.840000033378601,
+            -4.413131594657898
+          ],
+          "first": "green"
+        },
+        {
+          "pane": [
+            -18.991414070129395,
+            3.840000033378601,
+            14.08290719985962
+          ],
+          "first": "green"
+        },
+        {
+          "pane": [
+            -19.993242263793945,
+            1.8050000071525574,
+            -23.60299015045166
+          ],
+          "first": "white"
+        },
+        {
+          "pane": [
+            -19.606962203979492,
+            1.8050000071525574,
+            -4.367110371589661
+          ],
+          "first": "white"
+        },
+        {
+          "pane": [
+            -19.242141723632812,
+            1.8050000071525574,
+            13.800109386444092
+          ],
+          "first": "white"
+        }
+      ]
+    },
+    "limits": "Uncompressed native generated geometry; pane-center rays are not edge/detail or scene-occlusion acceptance."
+  },
+  "shop": {
+    "triangles": 12324,
+    "bounds": {
+      "min": [
+        -9.493687629699707,
+        -3.635883274455409e-07,
+        -2.817500114440918
+      ],
+      "max": [
+        3.8002634048461914,
+        15.563225746154785,
+        10.810500144958496
+      ]
+    },
+    "downwardRoofTriangles": 0,
+    "maxPlanarResidualM": 0.0004632048293586877,
+    "firstHitCenterOnly": {
+      "clear": 13,
+      "blocked": 1,
+      "fails": [
+        {
+          "pane": [
+            3.646435022354126,
+            1.6349999904632568,
+            4.95429602265358
+          ],
+          "first": "gold"
+        }
+      ]
+    },
+    "limits": "Uncompressed native generated geometry; pane-center rays are not edge/detail or scene-occlusion acceptance."
+  },
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "branch": "source/jan-evertsen-canopy-rollout-20261006",
+    "commit": "e8e9fbbd1011d161cf9b992cd4575ae6acbf2b03",
+    "path": "models/kesbeke/",
+    "currentReleaseCommit": "2aa18011ae2c26568f9170517064a6561e075b30",
+    "currentReleasePath": "models/kesbeke/"
+  },
+  "releaseCheckpoint": {
+    "sourceRepository": "blackmad/map-recall2-source-data",
+    "sourceCommit": "2aa18011ae2c26568f9170517064a6561e075b30",
+    "sourcePath": "models/kesbeke/",
+    "userDiagnosticRenderApproval": "2026-10-06; commit/push explicitly authorized",
+    "actualGameplayReview": "pending; prior failure evidence preserved"
+  }
+}

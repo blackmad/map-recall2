@@ -1,0 +1,599 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-06",
+  "status": "researched-native-candidate-unaccepted",
+  "privateSourcePath": "models/kesbeke/",
+  "privateSourceCommit": "e8e9fbbd1011d161cf9b992cd4575ae6acbf2b03",
+  "sources": [
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/raw/current-corner.webp",
+      "url": "https://static.contentecontent.com/platen_groot/15/15040.webp",
+      "sha256": "fa8023d07f69bcf8d7294de9d20f87ce6216a73961ebea1b8293710510cad090",
+      "bytes": 176868,
+      "retrievedAt": "2026-10-06T08:05:56.489626+00:00",
+      "retrievalContext": "working root tool download, confirmed by coordinator; worker network disabled",
+      "accessState": "downloaded original bytes available; root reported successful download",
+      "rights": "Reference only; no photo pixels used in asset. Architecture images © AmsterdamOpDeKaart; designer/shop rights unstated; APIs open data attribution to provider.",
+      "captureDate": "2019-01",
+      "captureDateEvidence": "architecture-description.html imagealt: Afbeelding uit: januari2019",
+      "datePrecision": "month"
+    },
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/raw/current-hall.webp",
+      "url": "https://static.contentecontent.com/platen_groot/15/15041.webp",
+      "sha256": "9efd64ab0e725f2e57d763180ddab19ca98414691b3e329d03f281215bb54163",
+      "bytes": 187902,
+      "retrievedAt": "2026-10-06T08:06:12.166624+00:00",
+      "retrievalContext": "working root tool download, confirmed by coordinator; worker network disabled",
+      "accessState": "downloaded original bytes available; root reported successful download",
+      "rights": "Reference only; no photo pixels used in asset. Architecture images © AmsterdamOpDeKaart; designer/shop rights unstated; APIs open data attribution to provider.",
+      "captureDate": "2019-01",
+      "captureDateEvidence": "architecture-description.html imagealt: Afbeelding uit: januari2019",
+      "datePrecision": "month"
+    },
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/raw/current-shop.jpg",
+      "url": "https://futureup.nl/img/containers/assets/kesbeke-08.jpg/0553ad3f62da9347e898f4490edb3757/kesbeke-08.jpg",
+      "sha256": "955e1456b0138eb7ed40aae3816951722481670611532fe3cd42543c8d82055b",
+      "bytes": 50898,
+      "retrievedAt": "2026-10-06T08:07:12.756217+00:00",
+      "retrievalContext": "working root tool download, confirmed by coordinator; worker network disabled",
+      "accessState": "downloaded original bytes available; root reported successful download",
+      "rights": "Reference only; no photo pixels used in asset. Architecture images © AmsterdamOpDeKaart; designer/shop rights unstated; APIs open data attribution to provider."
+    },
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/raw/designer-signage.jpg",
+      "url": "https://www.mattmo.com/uploads/content_blocks/1166/259fed59a9b6146f425f53e7ecd7ca9be39b27df.jpg",
+      "sha256": "86d221c52dbdc8f48cf50beba4a291fc27a977cd6a84b777156218281a7b1986",
+      "bytes": 271485,
+      "retrievedAt": "2026-10-06T08:06:12.618722+00:00",
+      "retrievalContext": "working root tool download, confirmed by coordinator; worker network disabled",
+      "accessState": "downloaded original bytes available; root reported successful download",
+      "rights": "Reference only; no photo pixels used in asset. Architecture images © AmsterdamOpDeKaart; designer/shop rights unstated; APIs open data attribution to provider."
+    },
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/raw/official-contact.html",
+      "url": "https://www.kesbeke.nl/contact-keuze/",
+      "sha256": "ac3877fd5bcc1ccdb75532eeea5adcf8c60a738cc38deec1e9a5732c37e3f41c",
+      "bytes": 159841,
+      "retrievedAt": "2026-10-06T08:08:27.268194+00:00",
+      "retrievalContext": "working root tool download, confirmed by coordinator; worker network disabled",
+      "accessState": "downloaded original bytes available; root reported successful download",
+      "rights": "Reference only; no photo pixels used in asset. Architecture images © AmsterdamOpDeKaart; designer/shop rights unstated; APIs open data attribution to provider.",
+      "previousFailedWorkerAttempts": [
+        {
+          "at": "2026-10-06T08:02:34.464891+00:00",
+          "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+        },
+        {
+          "at": "2026-10-06T08:02:36.470954+00:00",
+          "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+        },
+        {
+          "at": "2026-10-06T08:02:41.473910+00:00",
+          "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+        }
+      ]
+    },
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/raw/official-shop.html",
+      "url": "https://www.kesbeke.nl/ons-winkeltje/",
+      "sha256": "793d9ffb711f6a0dcbfad11f8f22a133a35477fc82468704a23b8b71239d8ff9",
+      "bytes": 145493,
+      "retrievedAt": "2026-10-06T08:08:27.505554+00:00",
+      "retrievalContext": "working root tool download, confirmed by coordinator; worker network disabled",
+      "accessState": "downloaded original bytes available; root reported successful download",
+      "rights": "Reference only; no photo pixels used in asset. Architecture images © AmsterdamOpDeKaart; designer/shop rights unstated; APIs open data attribution to provider.",
+      "previousFailedWorkerAttempts": [
+        {
+          "at": "2026-10-06T08:02:41.474399+00:00",
+          "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+        },
+        {
+          "at": "2026-10-06T08:02:43.476050+00:00",
+          "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+        },
+        {
+          "at": "2026-10-06T08:02:48.479498+00:00",
+          "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>"
+        }
+      ]
+    },
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/raw/architecture-description.html",
+      "url": "https://amsterdamopdekaart.nl/wederopbouw/Adolf_van_Nassaustraat/2",
+      "sha256": "3b1a6c8da95f74e1713952ed028406743f5ed487b4bdc48c4637275346432228",
+      "bytes": 274731,
+      "retrievedAt": "2026-10-06T08:07:13.124066+00:00",
+      "retrievalContext": "working root tool download, confirmed by coordinator; worker network disabled",
+      "accessState": "downloaded original bytes available; root reported successful download",
+      "rights": "Reference only; no photo pixels used in asset. Architecture images © AmsterdamOpDeKaart; designer/shop rights unstated; APIs open data attribution to provider."
+    },
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/raw/3dbag-factory.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012132306",
+      "sha256": "0566c5b9e9e9ecb70840243851b54da148cf9fb360ed1373c852668be1a29994",
+      "bytes": 18246,
+      "retrievedAt": "2026-10-06T08:39:29.464753+00:00",
+      "retrievalContext": "working root tool download, confirmed by coordinator; worker network disabled",
+      "accessState": "downloaded original bytes available; root reported successful download",
+      "rights": "Reference only; no photo pixels used in asset. Architecture images © AmsterdamOpDeKaart; designer/shop rights unstated; APIs open data attribution to provider."
+    },
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/raw/3dbag-shop.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012120245",
+      "sha256": "f1192a76673666746d5f6af173a27ec1c9eb7dd4654237f6a6e1f26aaa34dc67",
+      "bytes": 6152,
+      "retrievedAt": "2026-10-06T08:39:29.441529+00:00",
+      "retrievalContext": "working root tool download, confirmed by coordinator; worker network disabled",
+      "accessState": "downloaded original bytes available; root reported successful download",
+      "rights": "Reference only; no photo pixels used in asset. Architecture images © AmsterdamOpDeKaart; designer/shop rights unstated; APIs open data attribution to provider."
+    },
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/raw/bag-factory.json",
+      "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012132306",
+      "sha256": "2cd8aa0e8db4dd4149a4a31bc3ad9381bc71aac7c99f0307626b482738304b58",
+      "bytes": 2175,
+      "retrievedAt": "2026-10-06T08:39:29.718513+00:00",
+      "retrievalContext": "working root tool download, confirmed by coordinator; worker network disabled",
+      "accessState": "downloaded original bytes available; root reported successful download",
+      "rights": "Reference only; no photo pixels used in asset. Architecture images © AmsterdamOpDeKaart; designer/shop rights unstated; APIs open data attribution to provider."
+    },
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/raw/bag-street-current.json",
+      "url": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes?naam=Adolf%20van%20Nassaustraat&_pageSize=20",
+      "sha256": "f56037f96b1cc792e411f420bbb0cfa6671335577aa2a50b1f005abfd3935373",
+      "bytes": 1815,
+      "retrievedAt": "2026-10-06T08:08:38.993403+00:00",
+      "retrievalContext": "working root tool download, confirmed by coordinator; worker network disabled",
+      "accessState": "downloaded original bytes available; root reported successful download",
+      "rights": "Reference only; no photo pixels used in asset. Architecture images © AmsterdamOpDeKaart; designer/shop rights unstated; APIs open data attribution to provider."
+    },
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/raw/bag-addresses-2-8.json",
+      "url": "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen?ligtAanOpenbareruimte.identificatie=0363300000002647&huisnummer[gte]=2&huisnummer[lte]=8&_pageSize=100&_expandScope=adresseertVerblijfsobject,adresseertVerblijfsobject.ligtInPanden",
+      "sha256": "15d287958c008d016488155f7ea2f6ad8187614e289aa31709e2dc344c1bd856",
+      "bytes": 56506,
+      "retrievedAt": "2026-10-06T08:09:02.795314+00:00",
+      "retrievalContext": "working root tool download, confirmed by coordinator; worker network disabled",
+      "accessState": "downloaded original bytes available; root reported successful download",
+      "rights": "Reference only; no photo pixels used in asset. Architecture images © AmsterdamOpDeKaart; designer/shop rights unstated; APIs open data attribution to provider."
+    },
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/raw/shop-full-panorama.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/amsterdam_21112024_Track13_Sphere_00051/equirectangular/panorama_8000.jpg",
+      "sha256": "719239e56bb055a8e0f9e2adf23b164456561aa769014d4c2d037bb9f5e14397",
+      "bytes": 1952101,
+      "retrievedAt": "2026-10-06T08:50:49.142620+00:00",
+      "accessState": "Root downloaded original HTTPbytes successfully; worker inspected derived crops with original preserved",
+      "captureDate": "2024-11-21",
+      "rights": "Gemeente Amsterdam municipal panoramaCCBY4.0; original photos used as geometric reference only",
+      "selectionLimit": "One bounded timestamp_after2023query; selected near-street2024stations, not exhaustive newest-source proof"
+    },
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/raw/office-full-panorama.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/amsterdam_21112024_Track18_Sphere_00006/equirectangular/panorama_8000.jpg",
+      "sha256": "3eb6e1d64b204dd37523502ce532dc87583d642dd1630a304e8364abe73f5b20",
+      "bytes": 2946188,
+      "retrievedAt": "2026-10-06T08:50:49.392073+00:00",
+      "accessState": "Root downloaded original HTTPbytes successfully; worker inspected derived crops with original preserved",
+      "captureDate": "2024-11-21",
+      "rights": "Gemeente Amsterdam municipal panoramaCCBY4.0; original photos used as geometric reference only",
+      "selectionLimit": "One bounded timestamp_after2023query; selected near-street2024stations, not exhaustive newest-source proof"
+    },
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/raw/panorama-current-query.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?bbox=4.8563,52.3824,4.8580,52.3836&timestamp_after=2023-01-01&page_size=40",
+      "sha256": "8597d828a0206b55c1c7b061f4957a8415b3218d80b2b940f050780f2f4b279c",
+      "bytes": 68131,
+      "retrievedAt": "2026-10-06T08:48:40.937950+00:00",
+      "accessState": "Root downloaded original HTTPbytes successfully; worker inspected derived crops with original preserved",
+      "captureDate": null,
+      "rights": "Gemeente Amsterdam municipal panoramaCCBY4.0; original photos used as geometric reference only",
+      "selectionLimit": "One bounded timestamp_after2023query; selected near-street2024stations, not exhaustive newest-source proof"
+    },
+    {
+      "url": "https://amsterdamopdekaart.nl/assets/js/chunks/147.js",
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/raw/aodk-SA-147.js",
+      "retrievedAt": "2026-10-06T09:34:30.691545+00:00",
+      "bytes": 1448,
+      "sha256": "f98b406a250c80141d0ff3225c8d3b5e16a93238b99d1385b2ddbfed449ee935",
+      "accessState": "Root curl downloaded original HTTPbytes successfully; worker parses archived bytes",
+      "httpStatus": "Root reports success; precise numeric status not independently recorded in worker",
+      "featureInformed": "Related Stadsarchiefphoto publicendpoint discovery",
+      "rights": "Public architecture site JavaScript copyright unstated, archived research-only"
+    },
+    {
+      "url": "https://amsterdamopdekaart.nl/xhr/items/saa/pics/6472/1",
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/raw/aodk-SA-pics-6472-page1.json",
+      "retrievedAt": "2026-10-06T09:35:05.085060+00:00",
+      "sha256": "69366de0d0240d5dc2b585b30cdbc8224852c426ee0b070146f917509ad79adb",
+      "bytes": 2020,
+      "accessState": "Root downloaded original public GET response; JSON string contains HTML for exactly3 catalogue hits",
+      "rights": "Catalogue and imagery copyright StadsarchiefAmsterdam; no automatic publicreuse license assumed"
+    },
+    {
+      "url": "https://www.kesbeke.nl/kesbeke-historie/",
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/raw/official-history.html",
+      "retrievedAt": "2026-10-06T09:34:30.738909+00:00",
+      "bytes": 159720,
+      "sha256": "51478020302a44da3a6ecbc5735cb57981e0f6f8c00abe17289d16ad1bca1cdc",
+      "accessState": "Root curl downloaded original HTTPbytes successfully; worker parses archived bytes",
+      "httpStatus": "Root reports success; precise numeric status not independently recorded in worker",
+      "featureInformed": "Primary operator company history1948foundation/1977consolidation",
+      "rights": "Operatorpage copyright Kesbeke; short sourcedassertions only in public index"
+    },
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/raw/saa-ANWS00025000003-proxy.jpg",
+      "url": "https://amsterdamopdekaart.nl/saproxy.php?url=ANWS00025000003",
+      "retrievedAt": "2026-10-06T09:35:55.426040+00:00",
+      "sha256": "27b26871730b47927540c886ea2b86292a821d963634e816d5ff91f6a6d11595",
+      "bytes": 8179,
+      "accessState": "RootdownloadedoriginalHTTPbytes successfully; workerinspectedcachedJPEGthumbnail",
+      "classification": "Historicalimageproxythumbnail, notarchivefulloriginal",
+      "rights": "StadsarchiefAmsterdam; reuseguidehttps://archief.amsterdam/uitleg/beeldbank/26-gebruik; license not otherwise established",
+      "recordId": "ANWS00025000003"
+    },
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/raw/saa-ANWS00025000003-catalogue.html",
+      "url": "https://archief.amsterdam/beeldbank/ANWS00025000003",
+      "retrievedAt": "2026-10-06T09:36:06.589102+00:00",
+      "sha256": "4254fb23d67eea4df520d002b4dee9dc7dd93a00199646b5237ff72628883a16",
+      "bytes": 13686,
+      "accessState": "RootdownloadedoriginalHTTPbytes successfully; workerinspectedcachedHTMLmetadata/viewershell",
+      "classification": "OriginalcatalogueHTMLresponse; metadata available but JavaScriptrecordbodynotrendered",
+      "rights": "StadsarchiefAmsterdam; reuseguidehttps://archief.amsterdam/uitleg/beeldbank/26-gebruik; license not otherwise established",
+      "recordId": "ANWS00025000003"
+    },
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/raw/saa-ANWS00025000004-proxy.jpg",
+      "url": "https://amsterdamopdekaart.nl/saproxy.php?url=ANWS00025000004",
+      "retrievedAt": "2026-10-06T09:35:55.426046+00:00",
+      "sha256": "3142ce4b34e9797d78f1b6f8b35af2daa7ae9e5dba989afc02b17ed9392a5907",
+      "bytes": 8429,
+      "accessState": "RootdownloadedoriginalHTTPbytes successfully; workerinspectedcachedJPEGthumbnail",
+      "classification": "Historicalimageproxythumbnail, notarchivefulloriginal",
+      "rights": "StadsarchiefAmsterdam; reuseguidehttps://archief.amsterdam/uitleg/beeldbank/26-gebruik; license not otherwise established",
+      "recordId": "ANWS00025000004"
+    },
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/raw/saa-ANWS00025000004-catalogue.html",
+      "url": "https://archief.amsterdam/beeldbank/ANWS00025000004",
+      "retrievedAt": "2026-10-06T09:36:06.583427+00:00",
+      "sha256": "7bddd2624d3085db7fe5718292f90efb0b8134bc2b9976fd36ebd0e08e7fc944",
+      "bytes": 13684,
+      "accessState": "RootdownloadedoriginalHTTPbytes successfully; workerinspectedcachedHTMLmetadata/viewershell",
+      "classification": "OriginalcatalogueHTMLresponse; metadata available but JavaScriptrecordbodynotrendered",
+      "rights": "StadsarchiefAmsterdam; reuseguidehttps://archief.amsterdam/uitleg/beeldbank/26-gebruik; license not otherwise established",
+      "recordId": "ANWS00025000004"
+    },
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/raw/saa-010122048699-proxy.jpg",
+      "url": "https://amsterdamopdekaart.nl/saproxy.php?url=010122048699",
+      "retrievedAt": "2026-10-06T09:35:55.429432+00:00",
+      "sha256": "a98b129f7a5cd2a325a45696cffb80d68fac8afbd88d599f8404520edc2750a5",
+      "bytes": 9728,
+      "accessState": "RootdownloadedoriginalHTTPbytes successfully; workerinspectedcachedJPEGthumbnail",
+      "classification": "Historicalimageproxythumbnail, notarchivefulloriginal",
+      "rights": "StadsarchiefAmsterdam; reuseguidehttps://archief.amsterdam/uitleg/beeldbank/26-gebruik; license not otherwise established",
+      "recordId": "010122048699"
+    },
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/raw/saa-010122048699-catalogue.html",
+      "url": "https://archief.amsterdam/beeldbank/010122048699",
+      "retrievedAt": "2026-10-06T09:36:06.588870+00:00",
+      "sha256": "9221e48deeeda01560f014bcae6573ded69a548af65b09ded93547f6e4a245a2",
+      "bytes": 13304,
+      "accessState": "RootdownloadedoriginalHTTPbytes successfully; workerinspectedcachedHTMLmetadata/viewershell",
+      "classification": "OriginalcatalogueHTMLresponse; metadata available but JavaScriptrecordbodynotrendered",
+      "rights": "StadsarchiefAmsterdam; reuseguidehttps://archief.amsterdam/uitleg/beeldbank/26-gebruik; license not otherwise established",
+      "recordId": "010122048699"
+    }
+  ],
+  "identity": {
+    "factory": "Official address2→VBO0363010000783188→Pand0363100012132306; office+hall share parent",
+    "shop": "Official address3→VBO0363010000561624→Pand0363100012120245; genuine installed extract identity n9071288363",
+    "factoryDestinationIdentity": "Existing OSMworks geometry w276264363 matches official factoryPand0363100012132306. Official operatorname/address ties buildingbusiness; coordinator audits destination registration. Not an osm-way alias.",
+    "neighborsRetained": [
+      "NL.IMBAG.Pand.0363100012107360",
+      "NL.IMBAG.Pand.0363100012062925"
+    ],
+    "warehouse": "Independent Kesbekemagazijn photo listed on Commons but original not downloaded/inspected; physical address/scope still unresolved and NOT suppressed"
+  },
+  "assertions": [
+    {
+      "source": "architecture-description.html",
+      "part": "office/factory",
+      "date": "1948 construction; page dateModified2019-01-15",
+      "confidence": "high source prose",
+      "features": [
+        "Built as factory/office/caretaker home forJoh.Moes&Zonen, architectH.Tuininga",
+        "Kesbeke uses complex since1977",
+        "Recurring pale brick crosses in masonry"
+      ]
+    },
+    {
+      "source": "current-corner.webp",
+      "part": "office and front hall",
+      "date": "2019-01, explicit architecturalpageimagealt; current2024municipalphotos cross-check observedretainedarchitecture",
+      "confidence": "high visible relationships, approximate placement",
+      "features": [
+        "Three-storey brown brick office, pale tall framed openings and continuous heads",
+        "Westfour groupedwindows plus separate narrow left windows; southside six visible opening axes counted by worker",
+        "Pale eaves, small office entrance canopy",
+        "Actual yellow raised horizontal and vertical Kesbeke lettering and green/yellow teardrop signage"
+      ]
+    },
+    {
+      "source": "current-hall.webp",
+      "part": "hall street west frontage",
+      "date": "2019-01, explicit architecturalpageimagealt; current2024municipalphotos cross-check observedretainedarchitecture",
+      "confidence": "high visible relationships, approximate bay counts",
+      "features": [
+        "Continuous white vertical grid with divided dark glazing above masonrybase",
+        "Three green deliverydoors eachwith real teardrop marker",
+        "Brickcrosses recur below the glass grid"
+      ]
+    },
+    {
+      "source": "current-shop.jpg",
+      "part": "shopfront only",
+      "date": "not stated",
+      "confidence": "high for lettering; partial tightcrop",
+      "features": [
+        "Yellow Kesbeke serif topword; large condensed Zoet&zuur and van moeder natuur window graphics",
+        "Shopfront geometry/upper residential windows partly unobserved; native upper treatment is candidate, not photographically accepted"
+      ]
+    },
+    {
+      "source": "processed/2024-11-21/shop-full-front.jpg and shop-roof-and-upper.jpg",
+      "original": "raw/shop-full-panorama.jpg",
+      "part": "Shop parent east streetfront",
+      "date": "2024-11-21T10:23:46Z",
+      "confidence": "high visible full-source group relationships; source-guided native-local placements approximate",
+      "features": [
+        "Broad white first-floor glazing carries real dark oval signboard with yellow disk/paired greenpicklecharacters and Kesbeke/Zoet&zuur/van moeder natuur typography",
+        "THREE upper residentialtiers each FOURwindowaxes; lowerglazing dividedbycentralverticalbars, uppertransom; slim openrails spanrighttwoopenings",
+        "Flat extended pale eave with native surveyed roof retained",
+        "Gray downwardsloping projecting groundawning; white corner/return support; widegroundglazing plusrightaccessdoor",
+        "Adjoining right-handwindowcolumns belongseparate nativeparent andremain ordinaryneighbor"
+      ]
+    },
+    {
+      "source": "processed/2024-11-21/office-full-front.jpg and office-west-front.jpg",
+      "original": "raw/office-full-panorama.jpg and raw/shop-full-panorama.jpg",
+      "part": "Factory office front south/west faces",
+      "date": "2024-11-21",
+      "confidence": "high axis counts/visible assemblies; approximateperimeterplacements",
+      "features": [
+        "Three-storey southfront: SIX tallwindowaxes with pale continuousheaders, largeyellowhorizontalwordabove middletier",
+        "Westfront: FOURtallgroupedmainopenings perlevel plusseparatenarrowleftopenings; verticalyellowwordnearcorner",
+        "Modern teardrop emblem now reads FamilieKesbeke; existingdrawnvectorapproximation retains yellow/green motif withoutclaiming exacttinytext",
+        "Photographic lamp/trees obscure fragments; no buildinggeometrybasedonoccluders",
+        "Small white flue/darkcap nearofficecorner appearsin bothcurrent2024views andoldarchitecturephoto; model dimensions explicitlyphoto-guided, not wholebuildingAHNmax"
+      ]
+    },
+    {
+      "source": "official-history.html",
+      "url": "https://www.kesbeke.nl/kesbeke-historie/",
+      "part": "Companyhistory, notarchitecturalheight",
+      "date": "Pagepublished2023-07-19,lastmodified2023-10-12",
+      "confidence": "Primary operator narrative",
+      "features": [
+        "Operatorstates1948start inWaterloopleincellar; narrativealso describes1947familymove/grocerystart as distinctchronology",
+        "Camielconsolidatesbusiness atAdolfvanNassaustraat in1977"
+      ],
+      "publicFactsUnchanged": true
+    }
+  ],
+  "heightNotes": {
+    "factoryGroundNap": 0.41499999165534973,
+    "office": "Roofregion130:12.184–12.319NAP (~11.769–11.904aboveground), not native tile7.46aggregateheight",
+    "hall": "Individual roof planes 120–138; facade-adjacent lower and main pitched zones retained separately, no whole-building maximum extrusion",
+    "shop": "Individual semantic roof planes; ground.418NAP; native whole residentialparentpreserved"
+  },
+  "archiveResearch": {
+    "beeldbank": {
+      "status": "Threeexactrelatedofficialcataloguerecords andproxyimages archived/inspected",
+      "source": "raw/aodk-SA-pics-6472-page1.json",
+      "boundedSearch": "Address/namewebsearches plusactualpublicSA147GETendpointforAODKitem6472,page1",
+      "records": [
+        {
+          "id": "ANWS00025000003",
+          "date": null,
+          "author": null,
+          "catalogue": "https://archief.amsterdam/beeldbank/ANWS00025000003",
+          "proxy": "https://amsterdamopdekaart.nl/saproxy.php?url=ANWS00025000003",
+          "assertion": "SecondaryONHcaptiondates1992; officialrecord dateblank inAODKresponse",
+          "fullOriginalStatus": "Not acquired. Exact640x480thumbnailURLexposed incatalogue; archivefull-size original URLnotresolved within boundedpass.",
+          "catalogueMetadata": {
+            "og:image": "https://images.memorix.nl/ams/thumb/640x480/a2bf38ca-183d-c023-e138-c8d4467b77ea.jpg",
+            "og:image:width": "640",
+            "og:image:height": "414",
+            "og:title": "Adolf van Nassaustraat 2, Firma Kesbeke, bedrijf in tafelzuren, en rechts Willem de Zwijgerlaan 352",
+            "og:description": "Kleurendia's van de wijk ten westen en ten oosten van de Admiraal de Ruijterweg, tussen de Bos en Lommerweg en de Jan van Galenstraat (zonder Erasmuspark en Sportpark Joos Banckersweg).",
+            "og:url": "https://archief.amsterdam/beeldbank/detail/550cc2ab-8b7c-0214-83e1-6de16cc16a5b"
+          },
+          "catalogueAccessState": "OriginalHTMLsuccessfullydownloadedandparsed; JSviewer shell BUT OGrecordtitle/description/canonicalUUID/640thumbnail are genuinelyrecord-specific. Fullrecorddates/rightsnot embedded.",
+          "proxyMetadata": {
+            "width": 224,
+            "height": 145,
+            "format": "jpeg"
+          },
+          "proxyAccessState": "OriginalproxyresponseJPEGdownloadedanddirectlyinspected; low-resolution thumbnail, NOT fullresolutionarchiveoriginal",
+          "visualObservation": "Historical colorcorner/hallview confirms3storeybrickoffice, paleheaders/eaves, lowwhitegridhall and retainedrightneighbor; olderredrectangularsigns differ from currentyellowraisedwords."
+        },
+        {
+          "id": "ANWS00025000004",
+          "date": null,
+          "author": null,
+          "catalogue": "https://archief.amsterdam/beeldbank/ANWS00025000004",
+          "proxy": "https://amsterdamopdekaart.nl/saproxy.php?url=ANWS00025000004",
+          "fullOriginalStatus": "Not acquired. Exact640x480thumbnailURLexposed incatalogue; archivefull-size original URLnotresolved within boundedpass.",
+          "catalogueMetadata": {
+            "og:image": "https://images.memorix.nl/ams/thumb/640x480/44770863-d83d-d305-43b1-c38dfe5f82ee.jpg",
+            "og:image:width": "311",
+            "og:image:height": "480",
+            "og:title": "Golfplaatgevel in Adolf van Nassaustraat 2 met gevelsteen van Firma Kesbeke, bedrijf in tafelzuren",
+            "og:description": "Kleurendia's van de wijk ten westen en ten oosten van de Admiraal de Ruijterweg, tussen de Bos en Lommerweg en de Jan van Galenstraat (zonder Erasmuspark en Sportpark Joos Banckersweg).",
+            "og:url": "https://archief.amsterdam/beeldbank/detail/8c706088-e599-5f62-1f8b-ecd3e0b44a0a"
+          },
+          "catalogueAccessState": "OriginalHTMLsuccessfullydownloadedandparsed; JSviewer shell BUT OGrecordtitle/description/canonicalUUID/640thumbnail are genuinelyrecord-specific. Fullrecorddates/rightsnot embedded.",
+          "proxyMetadata": {
+            "width": 145,
+            "height": 224,
+            "format": "jpeg"
+          },
+          "proxyAccessState": "OriginalproxyresponseJPEGdownloadedanddirectlyinspected; low-resolution thumbnail, NOT fullresolutionarchiveoriginal",
+          "visualObservation": "Close-up of old commemorative masonrypanel in corrugatedfacade;145×224thumbnail text is too smallfor reliabletranscription. Catalogueidentifiesgevelsteen ataddress2; no detailedmodelgeometryinferred."
+        },
+        {
+          "id": "010122048699",
+          "date": "2005-04-26",
+          "author": "Martin Alberts (photographer)",
+          "catalogue": "https://archief.amsterdam/beeldbank/010122048699",
+          "proxy": "https://amsterdamopdekaart.nl/saproxy.php?url=010122048699",
+          "description": "Tafelzurenfabriek firmaC.J.R.Kesbeke; rightcornerWillemdeZwijgerlaan",
+          "fullOriginalStatus": "Not acquired. Exact640x480thumbnailURLexposed incatalogue; archivefull-size original URLnotresolved within boundedpass.",
+          "catalogueMetadata": {
+            "og:image": "https://images.memorix.nl/ams/thumb/640x480/5342aab8-993e-0840-4a69-e82511b711d3.jpg",
+            "og:image:width": "360",
+            "og:image:height": "480",
+            "og:title": "Adolf van Nassaustraat 2",
+            "og:description": "Tafelzurenfabriek firma C.J.R. Kesbeke. Rechts: hoek Willem de Zwijgerlaan",
+            "og:url": "https://archief.amsterdam/beeldbank/detail/05c3b2b8-1ef7-ce88-e0ae-9460418f59cb"
+          },
+          "catalogueAccessState": "OriginalHTMLsuccessfullydownloadedandparsed; JSviewer shell BUT OGrecordtitle/description/canonicalUUID/640thumbnail are genuinelyrecord-specific. Fullrecorddates/rightsnot embedded.",
+          "proxyMetadata": {
+            "width": 167,
+            "height": 224,
+            "format": "jpeg"
+          },
+          "proxyAccessState": "OriginalproxyresponseJPEGdownloadedanddirectlyinspected; low-resolution thumbnail, NOT fullresolutionarchiveoriginal",
+          "visualObservation": "2005cornerofficeview showsolderrectangularredsigns onwest/front and same3tieropeninggroup/smallsideopenings; current2024yellowletteringcontrolsasset."
+        }
+      ],
+      "remaining": "Fullresolutionarchiveoriginals andfulldates/rightstext unavailable in boundedpass; no claimthumbnails arefulloriginals.",
+      "detailedEvidence": "Private models/kesbeke/processed/archive-discovery-state.json"
+    },
+    "monumentRegister": {
+      "cache": "scripts/data/amsterdam-monument-register/records.json.gz",
+      "result": "No exact Kesbeke/Adolf van Nassaustraat text match across municipal/RCE cached records; not monumentdescription evidence",
+      "architecturalProse": "AmsterdamOpDeKaart current page read and archived instead"
+    },
+    "bouwdossiers": {
+      "state": "Not queried in this pass;1948factoryeligible; roof shape now surveyed rather than inferred"
+    }
+  },
+  "geometryChecks": {
+    "factoryTriangles": 33350,
+    "shopTriangles": 7606,
+    "downwardRoofTriangles": 0,
+    "maxFactoryRoofPlanarResidualM": 0.0006479316834830939,
+    "maxShopRoofPlanarResidualM": 0.0004632048293586877,
+    "finiteBounds": true,
+    "limits": "Pre-export generated geometry check. DecodedGLB/gallery/livegame/pane first-hit/neighbor/POI/GPU checks stillrequired.",
+    "scopedTypeScript": "Passed ES2022/ESNext bundler resolution with resolveJsonModule; separate eslint request unavailable/not repository lint command.",
+    "firstHitEvidence": "Fractional5x5samples per actual glassface; all62factory/17shop panes retained. Partial hitsare actualmullions/rails/signboard/stickers/deliverydoors; no nativebrick occlusion reported. These intentionaldecorativeocclusions are not a fullvisualacceptance.",
+    "sourceCorrection": "3upper×4axes, firstfloorwideglazing/ovalboard, grayawning/cornersupport; logo/boardletterings nowclear theirbackingplanes",
+    "fractionalPaneEvidence": "docs/references/kesbeke/geometry-preflight-2024-correction.json"
+  },
+  "signagePolicy": "User explicitly requests high-quality real signage stickers. Smooth original vector letters/emblem shapes follow actual facade planes; actual source words only. Typeface approximation retained openly; no photo textures, no invented building-name label. Existing gold palette is a mutedyellow approximation; source-color and emblem-letterform review pending.",
+  "remainingFailures": [
+    "No full gallery/reference comparison or live-game/GPU evidence",
+    "Factoryhall26modules and door proportions source-guided estimates pending visualcomparison",
+    "Factorydestination identity and all threePOI surfaces needcoordinator audit",
+    "Warehousephysical scopeunresolved; noadmission",
+    "Rawsourcepack mustbecommitted/pushed before modelcommit",
+    "Shop2024oval-boardmascot is an original restrainedvectorredraw, not exact licensedphotographic/stickerreplication; fullreference/renderreviewpending",
+    "Rootrejected overlapping shoplettering CPUview retained privately; actualboundsrepair awaiting freshvisualreview",
+    "Printedboard/windowgraphics plane repair passes geometry; independent finalvisual/reexport review remains"
+  ],
+  "signageInputs": [
+    {
+      "path": "/System/Library/Fonts/Supplemental/Times New Roman Bold Italic.ttf",
+      "classification": "Installed generic font used to author smooth original serif outline approximation; font binary is not part of public asset",
+      "sha256": "906157e8294fdf168d83002eaabde01c2d30fc3f44977be89e33fa22f262002a"
+    },
+    {
+      "path": "src/mapRecall/fonts/Anton-Regular.ttf",
+      "classification": "Existing project font for original condensed source-word sticker outline",
+      "sha256": "a4ba3a92350ebb031da0cb47630ac49eb265082ca1bc0450442f4a83ab947cab"
+    }
+  ],
+  "sourceFreeze": {
+    "plan": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/processed/2024-11-21/crop-plan.json",
+    "beforeBuilder": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/processed/2024-11-21/before-kesbeke-builder.ts",
+    "beforeBuilderSha256": "12ce2aa5dfdb03a1bd2be6459f99f62ed67a922d8af92829fd1785a89cfe6356",
+    "status": "Raw-backed fullfacade source cropplan and beforebuilder preserved before corrections; source-derivedassemblies, not exactphotographicregistration"
+  },
+  "supersededGaps": [
+    "Initial shop upper facade unphotographed: superseded by archived2024fullmunicipal source; initialfourtiers×threewindow axes incorrect and corrected.",
+    "Initial emblem/oval lettering depth would bury glyphs in backing: sharedworddepth nowexplicit and exposed; geometrytest tobeexported/reviewed."
+  ],
+  "letteringRepair": {
+    "status": "actualglyphbounds-pass-visual-review-pending",
+    "failedEvidence": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/processed/failed-lettering-overlap/review.json",
+    "failure": "Root exported CPUshopview showed motherNature/main text overlap. Prior sourcecheck/triangle pass not visualacceptance.",
+    "sourceWords": "2024 municipal fullfacade source lowercase zoet&zuur retained; original vectorpath corrected to lowercase",
+    "builderAPI": "Optional word maxHeight bounds actual geometric aspectratio along with maxWidth; factory lettering fitunchanged",
+    "boardMaxHeightM": {
+      "brand": 0.36,
+      "main": 0.62,
+      "tagline": 0.25
+    },
+    "glassMaxHeightM": {
+      "brand": 0.25,
+      "main": 0.45,
+      "tagline": 0.21
+    },
+    "actualGlyphFitEvidence": "docs/references/kesbeke/signage-line-fit-review.json",
+    "boardVerticalGapsM": [
+      0.13,
+      0.17
+    ],
+    "glassVerticalGapsM": [
+      0.12,
+      0.26
+    ],
+    "remaining": "Fresh decodedGLB/CPU/gallery/reference readability review needed"
+  },
+  "printedDecalRepair": {
+    "reviewFailure": "Independent review found shopboardglyphs floating40mm andglassglyphs30mm with35mm extrusion; printed artwork shouldhug actualbacking",
+    "status": "sixflat-nativeprintedwordmeshes actualclearancepass-visualpending",
+    "implementation": "Shop words use native flat ShapeGeometry; no rastertexture, zeroextrusion, 4mm nominalclearance; factory raisedletter geometry unchanged",
+    "actualMeasuredClearanceM": "0.00399977–0.00399980 against actual backingmesh front",
+    "actualMaxPlaneThicknessM": 2.46e-07,
+    "reversedTriangles": 0,
+    "sourceWordsAndFitPreserved": true,
+    "evidence": "docs/references/kesbeke/printed-decal-plane-review.json",
+    "triangleChange": {
+      "factory": 33350,
+      "shopBefore": 24998,
+      "shopAfter": 7606
+    },
+    "limits": "Needs fresh decodedGLB/currentmaterial and referencevisualreview"
+  },
+  "archiveCheckpoint": {
+    "status": "Research/archiveonly, noasset/spec/rootfactchanges",
+    "failedAccessMeaning": "WorkerDNSrestriction remains; rootdownloads succeeded. Priorwebtoolcatalogue502/cachemiss is recorded as toolingaccessgap, not permanenthostoutage.",
+    "archivesCompared": "Historicalredrectangularsigns superseded by actual2024yellowraisedword/Familyteardrop source; historicpictures notusedtooverwritecurrentassembly",
+    "newRawRecords": 9,
+    "fullOriginalGap": true
+  },
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "branch": "source/jan-evertsen-canopy-rollout-20261006",
+    "commit": "e8e9fbbd1011d161cf9b992cd4575ae6acbf2b03",
+    "path": "models/kesbeke/",
+    "currentReleaseCommit": "2aa18011ae2c26568f9170517064a6561e075b30",
+    "currentReleasePath": "models/kesbeke/"
+  },
+  "releaseCheckpoint": {
+    "sourceRepository": "blackmad/map-recall2-source-data",
+    "sourceCommit": "2aa18011ae2c26568f9170517064a6561e075b30",
+    "sourcePath": "models/kesbeke/",
+    "userDiagnosticRenderApproval": "2026-10-06; commit/push explicitly authorized",
+    "actualGameplayReview": "pending; prior failure evidence preserved"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "id": "beest-boulders",
+  "name": "Beest Boulders Amsterdam",
+  "landmarkId": "n8805218642",
+  "modelUrl": "./models/beest-boulders.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012151240"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.8590257886306105,
+      52.382092992601216
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 222,
+    "widthMetres": 42
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.8590257886306105,
+      52.382092992601216
+    ],
+    "northOffsetDegrees": 0,
+    "source": "PDOK BAG0363100012151240 and AHN5 native roof regions; local coordinates baked into east/south world axes."
+  },
+  "attribution": {
+    "title": "Beest Boulders Amsterdam shared industrial host",
+    "author": "Map Recall",
+    "sourceUrl": "https://beestboulders.com/beest-boulders-amsterdam/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original native shared-host geometry with the source-observed complete western frontage and user-authorized real vector sign graphics. Reference photos guide geometry only. Preserve genuine Beest and Padel identities."
+  },
+  "relatedLandmarkIds": [
+    "n3974788355"
+  ],
+  "destinationLandmarkIds": [
+    "n8805218642",
+    "n3974788355"
+  ],
+  "preservePositionPrecision": true
+}

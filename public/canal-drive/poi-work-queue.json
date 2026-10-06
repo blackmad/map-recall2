@@ -1043,6 +1043,60 @@
       "nextAction": "Publish reviewed scale-one MidWestasset. Preserved both initialsourcevisualfailures; generalhardwareperformance followup remains. Currentnative route/pin/physicalcard/masks andfourneighbors verified.",
       "owner": "midwest_source_and_build",
       "evidence": "../../scripts/landmarks/midwest-review.json"
+    },
+    {
+      "id": "kesbeke-factory-and-shop",
+      "task": "Model Kesbeke factory and separate shop with high-quality source-supported facade decals",
+      "priority": "high",
+      "status": "user-render-approved-gameplay-pending",
+      "requestedOn": "2026-10-06",
+      "scope": "Adolf van Nassaustraat2–8 factory; independently verify shop3 physical parent",
+      "source": "https://www.kesbeke.nl/contact-keuze/",
+      "nextAction": "Complete actual gallery/game exact suppression and neighbor checks; preserve diagnostic render approval and researched POI destinations/cards/pins.",
+      "sourceCommit": "2aa18011ae2c26568f9170517064a6561e075b30",
+      "checks": {
+        "nativeGeometry": "pass",
+        "poiDestinationsPinsCards": "pass",
+        "galleryLiveSuppressionNeighbors": "gameplay-pending; prior-browser-launch-failure-evidence-preserved",
+        "productionBytes": {
+          "kesbeke": 420980,
+          "kesbeke-shop": 64228
+        }
+      },
+      "sourcePaths": [
+        "models/kesbeke/",
+        "models/beest-boulders/"
+      ],
+      "userVisualApproval": {
+        "date": "2026-10-06",
+        "scope": "User approved diagnostic renders and explicitly authorized commit/push; not a declaration of actual gameplay completion."
+      }
+    },
+    {
+      "id": "willem-de-zwijger-beest-padel-full-frontage",
+      "task": "Model entire pictured industrial frontage including Beest and Padel Next with sharp real-sign decals",
+      "priority": "high",
+      "status": "user-render-approved-gameplay-pending",
+      "requestedOn": "2026-10-06",
+      "scope": "User2024StreetViewfrontage at329Willem de Zwijgerlaan; resolve wholecontinuousnativecomplex without inventing parcel rectangle",
+      "userEvidence": "/var/folders/tl/40rt5yw54v150s3k8shhw5y00000gn/T/codex-clipboard-bgg0od.png",
+      "nextAction": "Complete actual gallery/game exact suppression and neighbor checks; preserve diagnostic render approval and researched POI destinations/cards/pins.",
+      "sourceCommit": "2aa18011ae2c26568f9170517064a6561e075b30",
+      "checks": {
+        "nativeGeometry": "pass",
+        "poiDestinationsPinsCards": "pass",
+        "galleryLiveSuppressionNeighbors": "gameplay-pending; prior-browser-launch-failure-evidence-preserved",
+        "productionBytes": {
+          "beest-boulders": 443132
+        }
+      },
+      "sourcePaths": [
+        "models/beest-boulders/"
+      ],
+      "userVisualApproval": {
+        "date": "2026-10-06",
+        "scope": "User approved diagnostic renders and explicitly authorized commit/push; not a declaration of actual gameplay completion."
+      }
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

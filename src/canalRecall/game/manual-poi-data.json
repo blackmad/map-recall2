@@ -637,7 +637,20 @@
       52.3816671,
       4.8593849
     ],
-    "preferDescription": true
+    "preferDescription": true,
+    "destinations": [
+      {
+        "landmarkId": "n3974788355",
+        "name": "Padel NEXT",
+        "center": [
+          52.3817412,
+          4.8592628
+        ],
+        "description": "Padel NEXT is the indoor padel venue at Willem de Zwijgerlaan 338C. Its Americano tournaments rotate partners and opponents, so participants play with and against one another rather than staying in a fixed pair.",
+        "sourceUrl": "https://padelnext.nl/",
+        "preferDescription": true
+      }
+    ]
   },
   {
     "modelId": "klimmuur-centraal",
@@ -784,5 +797,35 @@
       "reason": "Cabralstraat1 public entrance between source-observed twin towers on native surveyed west edge; avoid inaccessible school courtyard centroid."
     },
     "sourceUrl": "https://www.inmidwest.nl/cabralstraat-1-het-monument/"
+  },
+  {
+    "modelId": "kesbeke",
+    "name": "Kesbeke Fijne Tafelzuren",
+    "description": "This factory was designed by H. Tuininga in 1948 for machinery maker Joh. Moes & Zonen. Brick crosses and large yellow Kesbeke lettering distinguish the office from the low production halls. Kesbeke moved here in 1977 after starting in a Waterlooplein cellar.",
+    "sourceUrl": "https://amsterdamopdekaart.nl/wederopbouw/Adolf_van_Nassaustraat/2",
+    "preferDescription": true,
+    "center": [
+      52.38287280299574,
+      4.857204443898143
+    ],
+    "routeDestination": {
+      "center": [
+        52.38287280299574,
+        4.857204443898143
+      ],
+      "sourceUrl": "https://amsterdamopdekaart.nl/wederopbouw/Adolf_van_Nassaustraat/2",
+      "note": "Public street immediately outside the source-observed west office entrance; RD118915.32/488466.48, one metre outward from surveyed facade."
+    }
+  },
+  {
+    "modelId": "kesbeke-shop",
+    "name": "Kesbeke Zoet & Zuur winkel",
+    "center": [
+      52.3828246,
+      4.8567913
+    ],
+    "description": "Kesbeke’s shop at Adolf van Nassaustraat 3 faces the family’s pickle factory. Alongside its Amsterdam pickles and other preserved vegetables, the shop sells oils, cheeses and accompaniments for the table.",
+    "sourceUrl": "https://www.kesbeke.nl/ons-winkeltje/",
+    "preferDescription": true
   }
 ]

@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "status": "built-original-native-draft-awaiting-gallery-and-live-review",
+  "reviewedOn": "2026-10-06",
+  "canonicalModelId": "beest-boulders",
+  "scope": {
+    "sourceHostBag": "0363100012151240",
+    "sourceVbo": "0363010012080775",
+    "hostConstructionYear": 1959,
+    "nativeAnchor": [
+      4.8590257886306105,
+      52.382092992601216
+    ],
+    "suppressionIds": [
+      "NL.IMBAG.Pand.0363100012151240"
+    ],
+    "physicalScope": "Complete 222 m shared host: 70 m curved northern hall, central low glazed wing with open upper porticos, and surveyed southern office setbacks. No padded rectangle.",
+    "cameraAddressWarning": "User Street View address 329 identifies the opposite camera-side address. The photographed businesses occupy 338B and 338C. Retain opposite residential Pand0363100012112601.",
+    "poiIdentities": [
+      {
+        "id": "n8805218642",
+        "name": "Beest Boulders Amsterdam",
+        "lng": 4.8593849,
+        "lat": 52.3816671,
+        "address": "Willem de Zwijgerlaan338B",
+        "source": "Installed click-poi-info.json; preserve existing Beest researched card."
+      },
+      {
+        "id": "n3974788355",
+        "name": "Padel NEXT",
+        "lng": 4.8592628,
+        "lat": 52.3817412,
+        "address": "Willem de Zwijgerlaan338C",
+        "source": "Installed click-poi-info.json and current official operator website."
+      }
+    ],
+    "preservedNeighbors": [
+      "0363100012191862",
+      "0363100012157960",
+      "0363100012112601"
+    ]
+  },
+  "sources": [
+    {
+      "url": "https://padelnext.nl/",
+      "rawPrivatePath": "models/beest-boulders/raw/padelnext-home.html",
+      "state": "Original HTML downloaded by root on2026-10-06.",
+      "assertion": "Operator identifies338C; current gallery is linked."
+    },
+    {
+      "url": "https://padelnext.nl/galerij/",
+      "rawPrivatePath": "models/beest-boulders/raw/padelnext-gallery.html",
+      "state": "Original gallery HTML downloaded by root on2026-10-06."
+    },
+    {
+      "url": "https://beestboulders.com/beest-boulders-amsterdam/",
+      "rawPrivatePath": "models/beest-boulders/raw/beest-current.html",
+      "state": "Web fetch initially returned403; a working root request subsequently downloaded original HTML. Preserve transient access history."
+    },
+    {
+      "url": "https://padelnext.nl/wp-content/uploads/2023/08/logo.svg",
+      "rawPrivatePath": "models/beest-boulders/raw/padelnext-logo.svg",
+      "sha256": "3990d84fe9e958bbdae48b35347b003ad3ea4f9a1b6d421b2fa42e00ff490cad",
+      "state": "Root downloaded62728 original SVG bytes; inspected transforms and glyph/emblem paths.",
+      "rights": "Operator brand graphic. User explicitly authorizes real sign graphics; no site photo pixels are used."
+    },
+    {
+      "url": "https://archief.amsterdam/beeldbank/?q=Willem%20de%20Zwijgerlaan%20338",
+      "rawPrivatePath": "models/beest-boulders/raw/beeldbank.html",
+      "state": "Reuse bounded address search and cached JavaScript shell from Beest source pack. No archival photograph or drawing was inspected."
+    },
+    {
+      "query": "site:amsterdam.nl \"Willem de Zwijgerlaan338\" monument; exact329addressregistersearch",
+      "state": "Bounded web search returned no matched register description for the photographed host.",
+      "limit": "No assertion of non-monument status. Address329 results concern the opposite1937 residential parent, rather than this1959 shared host."
+    }
+  ],
+  "architecturalAssertions": [
+    {
+      "part": "north70mhall",
+      "trait": "Pale fine corrugated upper frontage follows the broad curved roof outline. Brick plinth contains sparse tall windows/doors, broad dark garage leaves and a real colored circular mural.",
+      "source": "2025-09-26 municipal entrance0/1 and May2024 user screenshot",
+      "confidence": "High confidence in family/material; metric aperture placement remains approximate."
+    },
+    {
+      "part": "centralwestupperwing",
+      "trait": "A low continuous flat frontage has white full-height piers, deep open upper porticos mixed with flush wide glazing, and dark rear upper panels.",
+      "source": "2025-09-26 municipal panoramas00071/00076",
+      "confidence": "High confidence in observed assembly; native bay widths and pier depths are bounded interpretations."
+    },
+    {
+      "part": "tenantfascias",
+      "trait": "Mint PADELNEXT letters lie at the floor boundary, white BEEST BOULDERS letters fit their actual fascia, and CrossFitAKA appears on real glazing.",
+      "source": "2025 municipal panoramas00071/00076 and entrance1",
+      "confidence": "High confidence in real identity/case/material; positions and Beest/CrossFit fonts are approximate."
+    },
+    {
+      "part": "blackservicepanel",
+      "trait": "The intervening black service panel carries a smaller colored circular emblem and narrow horizontal cladding strips.",
+      "source": "2025 municipal panorama00071",
+      "confidence": "High confidence in the feature; metric dimensions remain approximate."
+    }
+  ],
+  "decals": {
+    "policy": "User explicitly authorizes real source-supported vector/texture graphics. This draft uses flat filled vectors, with no facade photo pixels.",
+    "padelLetters": "Official SVG first9 letter paths, transforms baked into sign-artwork.json. Tiny tagline omitted.",
+    "emblems": "Official SVG final16 paths contain12 dots and4 colored parts; retain clean contours and source RGB colors.",
+    "beestCrossfitLetters": "Smooth Archivo Black repository font contours reproduce supported words/case. Font choice is approximate.",
+    "callback": "Optional fourth argument addDecal(geometry,hex) receives geometry already transformed to native east/south/Y-up coordinates. Root supplies exact-color unlit material; three-argument palette fallback is a draft."
+  },
+  "failedEvidence": [
+    {
+      "finding": "Initial standalone lower-wing draft used flat windows and omitted current recessed upper porticos.",
+      "state": "Corrected after fresh00071/00076 references: source200 western carrier wall removed so rear glazing remains visible."
+    },
+    {
+      "finding": "Initial regular pier spacing occluded fractional ground-door samples.",
+      "state": "Corrected by respecting actual aperture extents; current fractional probes pass."
+    }
+  ],
+  "verification": {
+    "command": "node --import tsx scripts/landmarks/willem-de-zwijger-frontage-geometry-check.ts",
+    "triangles": 24320,
+    "result": "CPU checks pass: fractional first-hit glazing, finite native bounds, garage opacity, outside open rays and planar smooth signs.",
+    "notCompleted": [
+      "GLB export and asset budget",
+      "Root source/render comparison",
+      "Independent review",
+      "Native gallery rotations",
+      "Live game exact suppression and neighbor retention",
+      "Pointer/card, route and map-pin audit",
+      "Source-pack root commit/push"
+    ]
+  },
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "branch": "source/jan-evertsen-canopy-rollout-20261006",
+    "commit": "e8e9fbbd1011d161cf9b992cd4575ae6acbf2b03",
+    "path": "models/beest-boulders/",
+    "currentReleaseCommit": "2aa18011ae2c26568f9170517064a6561e075b30",
+    "currentReleasePath": "models/beest-boulders/"
+  },
+  "releaseCheckpoint": {
+    "sourceRepository": "blackmad/map-recall2-source-data",
+    "sourceCommit": "2aa18011ae2c26568f9170517064a6561e075b30",
+    "sourcePath": "models/beest-boulders/",
+    "userDiagnosticRenderApproval": "2026-10-06; commit/push explicitly authorized",
+    "actualGameplayReview": "pending; prior failure evidence preserved"
+  }
+}

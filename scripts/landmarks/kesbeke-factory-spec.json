@@ -1,0 +1,41 @@
+{
+  "id": "kesbeke",
+  "name": "Kesbeke Fijne Tafelzuren",
+  "landmarkId": "w276264363",
+  "modelUrl": "./models/kesbeke.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012132306"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.857491067626641,
+      52.383076488700894
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 40.70900000000256,
+    "widthMetres": 65.0680000000284
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.857491067626641,
+      52.383076488700894
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Native RD anchor118935/488489; AHN5 individual semantic roof planes, groundNAP0.41499999165534973; exact official BAG address/VBO/Pand relationship"
+  },
+  "attribution": {
+    "title": "Kesbeke factory and office",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.kesbeke.nl/contact-keuze/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original native flat-color reconstruction with sharp original vector signage following actual walls; reference photos inform geometry only; no photo pixels or imported mesh."
+  },
+  "materialOverrides": {
+    "brick": "#8a7159",
+    "gold": "#f4c400"
+  }
+}

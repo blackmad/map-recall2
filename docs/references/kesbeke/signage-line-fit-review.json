@@ -1,0 +1,106 @@
+{
+  "builderSha256": "d9a891efe64f2b42b007250f5b09217a6dcc307d1bafe7adfebb26632c4fde21",
+  "status": "actual-generated-glyph-vertex-bounds-pass",
+  "results": [
+    {
+      "surface": "board",
+      "inside": true,
+      "nonoverlap": true,
+      "gapsM": [
+        0.12999963760375977,
+        0.1699995994567871
+      ],
+      "sourceWordsExact": [
+        "van moeder natuur",
+        "zoet&zuur",
+        "Kesbeke"
+      ],
+      "actualGeometryBounds": [
+        {
+          "text": "van moeder natuur",
+          "depth": 0,
+          "left": 0.1843392983515093,
+          "right": 2.375660702199032,
+          "bottom": 4.010000228881836,
+          "top": 4.260000228881836,
+          "height": 0.25,
+          "width": 2.191321403847523
+        },
+        {
+          "text": "zoet&zuur",
+          "depth": 0,
+          "left": -0.09956407972565007,
+          "right": 2.6595643186461038,
+          "bottom": 4.389999866485596,
+          "top": 5.010000228881836,
+          "height": 0.6200003623962402,
+          "width": 2.759128398371754
+        },
+        {
+          "text": "Kesbeke",
+          "depth": 0,
+          "left": 0.39005093313900696,
+          "right": 2.169949067411535,
+          "bottom": 5.179999828338623,
+          "top": 5.539999961853027,
+          "height": 0.3600001335144043,
+          "width": 1.779898134272528
+        }
+      ]
+    },
+    {
+      "surface": "glass",
+      "inside": true,
+      "nonoverlap": true,
+      "gapsM": [
+        0.12000000476837158,
+        0.25999999046325684
+      ],
+      "sourceWordsExact": [
+        "van moeder natuur",
+        "zoet&zuur",
+        "Kesbeke"
+      ],
+      "actualGeometryBounds": [
+        {
+          "text": "van moeder natuur",
+          "depth": 0,
+          "left": -1.4203549895694616,
+          "right": 0.42035492619447634,
+          "bottom": 1.2999999523162842,
+          "top": 1.5099999904632568,
+          "height": 0.21000003814697266,
+          "width": 1.840709915763938
+        },
+        {
+          "text": "zoet&zuur",
+          "depth": 0,
+          "left": -1.5012964986856732,
+          "right": 0.5012966736805993,
+          "bottom": 1.6299999952316284,
+          "top": 2.0799999237060547,
+          "height": 0.44999992847442627,
+          "width": 2.0025931723662724
+        },
+        {
+          "text": "Kesbeke",
+          "depth": 0,
+          "left": -1.1180200000311045,
+          "right": 0.11802017502603146,
+          "bottom": 2.3399999141693115,
+          "top": 2.5899999141693115,
+          "height": 0.25,
+          "width": 1.236040175057136
+        }
+      ]
+    }
+  ],
+  "limits": "Pre-export geometry bounds, not decoded GLB or visual readability acceptance; shape rounded-corner containment is conservative because rows stay in central right board zone.",
+  "releaseCheckpoint": {
+    "sourceRepository": "blackmad/map-recall2-source-data",
+    "sourceCommit": "2aa18011ae2c26568f9170517064a6561e075b30",
+    "sourcePath": "models/kesbeke/",
+    "userDiagnosticRenderApproval": "2026-10-06; commit/push explicitly authorized",
+    "actualGameplayReview": "pending; prior failure evidence preserved"
+  }
+}

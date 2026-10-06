@@ -1,0 +1,11 @@
+The user approved the Beest/Padel and Kesbeke diagnostic renders on 2026-10-06 and explicitly authorized this commit and push. Actual gameplay review remains pending; this checkpoint does not mark the modeling tasks complete. Earlier browser launch failures and rejected lettering/quantization exports remain recorded in the reference reviews and private archive.
+
+This scoped update replaces the complete native Beest industrial host with the source-observed frontage and retains separate genuine Beest and Padel NEXT destinations, pins and researched cards. It adds the separate Kesbeke factory and shop on their native identities. Source-supported vector graphics use actual fascia/glass/cladding backing; no facade photo pixels or invented identifying words are used.
+
+The private source pack was committed and pushed first: `blackmad/map-recall2-source-data` commit `2aa18011ae2c26568f9170517064a6561e075b30`, paths `models/beest-boulders/` and `models/kesbeke/`. Beest's accepted production hash is `05d2fc34067b8fe3b3cae20b738f689e6cc71d34bc29410a7e50421e08961b9e`; a concurrent unapproved 253080-byte export was excluded.
+
+Production assets reproduce the approved bytes: Beest 443132 bytes / 31318 triangles; Kesbeke factory 420980 / 33350; shop 64228 / 7606. Beest selectively preserves exact graphics and supporting triangles while quantizing other positions. Its independent exact decoded review covers all 11324 graphic triangle centroids and 101916 near-edge probes with positive approximately 4mm backing clearance and no earlier first hits.
+
+Scoped validation passed: geometry/native bounds/glazing and roof-top checks, real sign field fitting and decal planes, both selective-precision tests, manual POI contract (163 models / 165 genuine destinations), and TypeScript. The signature, landmark gallery, building gallery, game landmarks and route-selection bundles were rebuilt from this isolated checkout. Existing unrelated model specs, asset dates, source cards, gallery-view metadata and Haring palette treatment are preserved.
+
+Required follow-up: actual gallery/game camera views, exact native suppression and neighbor retention, live destination/pin/card interactions and performance evidence. Hidden lower apertures and the inferred canal-side office frontage remain explicit source uncertainties.

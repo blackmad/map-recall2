@@ -6,7 +6,9 @@ import fs from 'node:fs';
 import {buildConservatorium} from './conservatorium-builder';
 import {buildKinderkookkafe} from './kinderkookkafe-builder';
 import {buildBetaBoulders} from './beta-boulders-builder';
-import {buildBeestBoulders} from './beest-boulders-builder';
+import {buildWillemDeZwijgerFrontage} from './willem-de-zwijger-frontage-builder';
+import {buildKesbeke, buildKesbekeShop} from './kesbeke-builder';
+import {graphicProtectionBounds, splitGraphicSupportGeometry, quantizeOrdinaryMesh} from './selective-position-precision';
 import {buildKlimmuurCentraal} from './klimmuur-centraal-builder';
 import {buildKeithHaringMural} from './keith-haring-mural-builder';
 import {buildMountainNetwork} from './mountain-network-builder';
@@ -16,8 +18,8 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 import * as T from 'three';
 import {Document, NodeIO} from '@gltf-transform/core';
-import {dedup, prune, weld, meshopt} from '@gltf-transform/functions';
-import {ALL_EXTENSIONS} from '@gltf-transform/extensions';
+import {dedup, prune, weld, meshopt, reorder, quantize} from '@gltf-transform/functions';
+import {ALL_EXTENSIONS, KHRMaterialsUnlit, EXTMeshoptCompression} from '@gltf-transform/extensions';
 import {MeshoptEncoder} from 'meshoptimizer';
 await MeshoptEncoder.ready;
 import {buildCulturalLandmark} from './cultural-builders';
@@ -118,7 +120,12 @@ import {placementFor, scaledExtent} from '../../src/canalRecall/landmarks/signat
 const out=path.resolve('public/canal-drive/models');
 const palette={brick:'#9a5240',stone:'#cfc2a6',slate:'#4a525d',white:'#efe9db',gold:'#d9b24c',glass:'#527787',dark:'#303b43',frame:'#9daaa8',red:'#ac624e',blue:'#3f5f9a',pink:'#be9295',bronze:'#3d5148',copper:'#43888b',green:'#718b58',ochre:'#9f825c',concrete:'#d4d5d0',greyBrick:'#7d7871'};
 type Colour=keyof typeof palette;
-let parts: {g:T.BufferGeometry,c:Colour}[]=[];
+let parts: {g:T.BufferGeometry,c:Colour,hex?:string,unlit?:boolean}[]=[];
+/** Native decal geometry is already transformed by its builder; do not translate it again. */
+function addDecal(g:T.BufferGeometry,hex:string,unlit=true){
+ if(!/^#[a-f0-9]{6}$/i.test(hex))throw Error(`Invalid decal color: ${hex}`);
+ parts.push({g,c:'white',hex:hex.toLowerCase(),unlit});
+}
 function add(g:T.BufferGeometry,c:Colour,x=0,y=0,z=0,angle=0){g.rotateY(angle);g.translate(x,y,z);parts.push({g,c});}
 function box(x:number,y:number,z:number,w:number,h:number,d:number,c:Colour,angle=0){add(new T.BoxGeometry(w,h,d),c,x,y+h/2,z,angle);}
 function prism(x:number,y:number,z:number,w:number,d:number,h:number,c:Colour){let shape=new T.Shape();shape.moveTo(-w/2,0);shape.lineTo(w/2,0);shape.lineTo(0,h);shape.closePath();add(new T.ExtrudeGeometry(shape,{depth:d,bevelEnabled:false,steps:1}),c,x,y,z-d/2);}
@@ -169,7 +176,57 @@ function hospital(id:string){let s=hospitals.sites.find(s=>s.id===id)!;let spec=
  }else{ // Oosterpark entrance: tall glazed hall framed by pale concrete columns.
  let p=coord([4.91615,52.35875]);sign('OLVG',p.x+18,9,p.y+6,.25,'blue');let angle=-24*Math.PI/180;box(p.x,0,p.y,33,12,8,'glass',angle);for(let u=-15;u<=15;u+=5)box(p.x+u*Math.cos(angle),0,p.y-u*Math.sin(angle),.9,13,8.5,'stone',angle);box(p.x,12.7,p.y,34,.6,9,'stone',angle);}
 }
-async function save(id:string){let doc=new Document();let buffer=doc.createBuffer();let scene=doc.createScene(id);doc.getRoot().setDefaultScene(scene);let mesh=doc.createMesh(id);let all:number[]=[];for(let c of Object.keys(palette) as Colour[]){let geos=parts.filter(p=>p.c===c).map(p=>p.g.index?p.g.toNonIndexed():p.g);if(!geos.length)continue;let positions=Float32Array.from(geos.flatMap(g=>Array.from(g.getAttribute('position').array)));let normals=Float32Array.from(geos.flatMap(g=>Array.from(g.getAttribute('normal').array)));for (const value of positions) all.push(value);let rgb=new T.Color(id==='keith-haring-mural'&&c==='brick'?'#564840':palette[c]);let material=doc.createMaterial(c).setBaseColorFactor([rgb.r,rgb.g,rgb.b,1]).setMetallicFactor(0).setRoughnessFactor(.9).setDoubleSided(true);if(id==='conservatorium'&&c==='glass')material.setBaseColorFactor([rgb.r,rgb.g,rgb.b,.28]).setAlphaMode('BLEND');mesh.addPrimitive(doc.createPrimitive().setAttribute('POSITION',doc.createAccessor().setType('VEC3').setArray(positions).setBuffer(buffer)).setAttribute('NORMAL',doc.createAccessor().setType('VEC3').setArray(normals).setBuffer(buffer)).setMaterial(material));}scene.addChild(doc.createNode(id).setMesh(mesh));await doc.transform(weld(),dedup(),prune());let dest=path.join(out,`${id}.glb`);await doc.transform(meshopt({encoder:MeshoptEncoder,level:'medium'}));await new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({'meshopt.encoder':MeshoptEncoder}).write(dest,doc);let bounds={min:[Infinity,Infinity,Infinity],max:[-Infinity,-Infinity,-Infinity]};for(let i=0;i<all.length;i++) {let a=i%3;bounds.min[a]=Math.min(bounds.min[a],all[i]);bounds.max[a]=Math.max(bounds.max[a],all[i]);}let spec=MANUAL_LANDMARKS.find(s=>s.id===id)!;let placement=placementFor(spec,bounds as any);let triangles=doc.getRoot().listMeshes().flatMap(m=>m.listPrimitives()).reduce((s,p)=>s+(p.getIndices()?.getCount()??p.getAttribute('POSITION')!.getCount())/3,0);console.log(id,triangles,fs.statSync(dest).size,bounds);return {...spec,bounds,placement,extent:spec.footprint?scaledExtent(bounds as any,1,spec.footprint):null,triangles,bytes:fs.statSync(dest).size,generatedBy:'scripts/landmarks/build-manual-landmarks.ts'};}
+async function save(id:string){
+ const spec=MANUAL_LANDMARKS.find(s=>s.id===id)!;
+ for(const [name,hex]of Object.entries(spec.materialOverrides??{})){
+  if(!Object.hasOwn(palette,name)||!/^#[a-f0-9]{6}$/i.test(hex))throw Error(`Invalid ${id} material override: ${name}`);
+ }
+ const doc=new Document(),buffer=doc.createBuffer(),scene=doc.createScene(id),mesh=doc.createMesh(id),all:number[]=[];
+ const preciseMesh=spec.preservePositionPrecision?doc.createMesh(`${id}-precise`):null;
+ const protection=spec.preservePositionPrecision?graphicProtectionBounds(parts.filter(p=>p.unlit).map(p=>p.g)):[];
+ doc.getRoot().setDefaultScene(scene);
+ const groups=new Map<string,{colour:Colour;hex:string;unlit:boolean;precise:boolean;geometries:T.BufferGeometry[]}>();
+ for(const part of parts){
+  const hex=part.hex??spec.materialOverrides?.[part.c]??(id==='keith-haring-mural'&&part.c==='brick'?'#564840':palette[part.c]),unlit=!!part.unlit;
+  const materialName=part.hex?`decal-${hex.slice(1)}-${unlit?'unlit':'lit'}`:part.c;
+  const split=spec.preservePositionPrecision?(unlit?{precise:part.g}:splitGraphicSupportGeometry(part.g,protection)):{ordinary:part.g};
+  for(const [precision,g]of Object.entries(split)){
+   if(!g)continue;
+   const precise=precision==='precise',key=`${materialName}|${precise?'precise':'ordinary'}`;
+   let group=groups.get(key);
+   if(!group){group={colour:part.c,hex,unlit,precise,geometries:[]};groups.set(key,group);}
+   group.geometries.push(g.index?g.toNonIndexed():g);
+  }
+ }
+ const unlitExtension=[...groups.values()].some(group=>group.unlit)?doc.createExtension(KHRMaterialsUnlit):null;
+ for(const [groupKey,group]of groups){
+  const name=groupKey.split('|')[0];
+  const positions=Float32Array.from(group.geometries.flatMap(g=>Array.from(g.getAttribute('position').array)));
+  const normals=Float32Array.from(group.geometries.flatMap(g=>Array.from(g.getAttribute('normal').array)));
+  for(const value of positions)all.push(value);
+  const rgb=new T.Color(group.hex),material=doc.createMaterial(name).setBaseColorFactor([rgb.r,rgb.g,rgb.b,1]).setMetallicFactor(0).setRoughnessFactor(.9).setDoubleSided(true);
+  if(group.unlit)material.setExtension('KHR_materials_unlit',unlitExtension!.createUnlit());
+  if(id==='conservatorium'&&!name.startsWith('decal-')&&group.colour==='glass')material.setBaseColorFactor([rgb.r,rgb.g,rgb.b,.28]).setAlphaMode('BLEND');
+  (group.precise?preciseMesh!:mesh).addPrimitive(doc.createPrimitive().setExtras(spec.preservePositionPrecision?{positionPrecision:group.precise?'exact':'ordinary'}:{}).setAttribute('POSITION',doc.createAccessor().setType('VEC3').setArray(positions).setBuffer(buffer)).setAttribute('NORMAL',doc.createAccessor().setType('VEC3').setArray(normals).setBuffer(buffer)).setMaterial(material));
+ }
+ const ordinaryNode=doc.createNode(id).setMesh(mesh);scene.addChild(ordinaryNode);
+ if(preciseMesh?.listPrimitives().length)scene.addChild(doc.createNode(`${id}-precise`).setMesh(preciseMesh));
+ await doc.transform(weld(),dedup(),prune());
+ const dest=path.join(out,`${id}.glb`);
+ // Printed paint on folded cladding must retain the shared fold boundaries.
+ if(spec.preservePositionPrecision){
+  await doc.transform(reorder({encoder:MeshoptEncoder,target:'size'}));
+  await quantizeOrdinaryMesh(doc,mesh,ordinaryNode);
+  await doc.transform(quantize({pattern:/^(?!POSITION$).+/,patternTargets:/^(?!POSITION$).+/}));
+  doc.createExtension(EXTMeshoptCompression).setRequired(true).setEncoderOptions({method:EXTMeshoptCompression.EncoderMethod.QUANTIZE});
+ }else await doc.transform(meshopt({encoder:MeshoptEncoder,level:'medium'}));
+ await new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({'meshopt.encoder':MeshoptEncoder}).write(dest,doc);
+ const bounds={min:[Infinity,Infinity,Infinity],max:[-Infinity,-Infinity,-Infinity]};
+ for(let i=0;i<all.length;i++){const axis=i%3;bounds.min[axis]=Math.min(bounds.min[axis],all[i]);bounds.max[axis]=Math.max(bounds.max[axis],all[i]);}
+ const placement=placementFor(spec,bounds as any),triangles=doc.getRoot().listMeshes().flatMap(m=>m.listPrimitives()).reduce((s,p)=>s+(p.getIndices()?.getCount()??p.getAttribute('POSITION')!.getCount())/3,0);
+ console.log(id,triangles,fs.statSync(dest).size,bounds);
+ return {...spec,bounds,placement,extent:spec.footprint?scaledExtent(bounds as any,1,spec.footprint):null,triangles,bytes:fs.statSync(dest).size,generatedBy:'scripts/landmarks/build-manual-landmarks.ts'};
+}
 const manifest=JSON.parse(fs.readFileSync(path.join(out,'signature-landmarks.json'),'utf8'));
 const helpers={add,box,prism,gableRoof,hip,window,clock,sign};
 const venueIds=new Set(['embassy-free-mind','the-movies','delamar','magna-plaza']);
@@ -204,7 +261,9 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     if(id==='petruskerk')buildPetruskerk(w,d,helpers);
     else if(id==='kinderkookkafe')buildKinderkookkafe(w,d,helpers);
     else if(id==='beta-boulders')buildBetaBoulders(w,d,helpers);
-    else if(id==='beest-boulders')buildBeestBoulders(w,d,helpers);
+    else if(id==='beest-boulders')buildWillemDeZwijgerFrontage(w,d,helpers,addDecal);
+    else if(id==='kesbeke')buildKesbeke(w,d,helpers);
+    else if(id==='kesbeke-shop')buildKesbekeShop(w,d,helpers);
     else if(id==='klimmuur-centraal')buildKlimmuurCentraal(w,d,helpers);
     else if(id==='keith-haring-mural')buildKeithHaringMural(w,d,helpers);
     else if(id==='mountain-network')buildMountainNetwork(w,d,helpers);

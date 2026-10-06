@@ -1,0 +1,520 @@
+{
+  "schemaVersion": 2,
+  "reviewer": "independent jan_grouped_windows; did not implement Kesbeke builders",
+  "criteriaFrozenAtUTC": "2026-10-06T09:23:24.016267+00:00",
+  "decision": "repaired-draft-CPU-and-geometry-checks-pass-bounded; gallery-and-live-acceptance-pending",
+  "acceptance": "No CPU-only model acceptance. Gallery, live game, exact suppression/neighbor and POI checks remain required.",
+  "sourceIndex": "docs/references/kesbeke/sources-index.json",
+  "criteria": [
+    {
+      "id": "office-hall-hierarchy",
+      "critical": true,
+      "requirement": "Three-tier brown-brick corner office is substantially taller than the long low hall; quiet pale roof edges, tall narrow grouped office openings and white hall structural grid remain source-recognizable."
+    },
+    {
+      "id": "source-brown-materials",
+      "critical": true,
+      "requirement": "Office and hall lower masonry read as source brown/ochre brick rather than monochrome gray or vivid red; white structural trim and darkgreen doors stay distinct."
+    },
+    {
+      "id": "real-sign-planes",
+      "critical": true,
+      "requirement": "Only actual supported yellow Kesbeke letters and real yellow/green emblem/board graphics; smooth vector shapes fit their exact facade/panel planes without buried, floating or overlapping words."
+    },
+    {
+      "id": "native-roof-support",
+      "critical": true,
+      "requirement": "Nineteen native factory roof regions retain supported heights/setbacks, upward visible tops and no invented whole-building height/capping plate. Photo-poor rear roof family remains survey-supported uncertainty, rather than a photographic failure."
+    },
+    {
+      "id": "shop-full-height",
+      "critical": true,
+      "requirement": "2024 shop frontage has four aligned window axes and three upper rows, distinct lower commercial glazing and a source-supported oval board/awning with corner support. No fourth stock row or three-axis substitution."
+    },
+    {
+      "id": "shop-board-fit",
+      "critical": true,
+      "requirement": "The oval/signboard artwork and all real shop words fit their actual fields, remain subordinate to architecture, and have no overlapping or clipped word groups."
+    }
+  ],
+  "inspectedSources": [
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/raw/current-corner.webp",
+      "sha256": "fa8023d07f69bcf8d7294de9d20f87ce6216a73961ebea1b8293710510cad090",
+      "type": "archived original image"
+    },
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/raw/current-hall.webp",
+      "sha256": "9efd64ab0e725f2e57d763180ddab19ca98414691b3e329d03f281215bb54163",
+      "type": "archived original image"
+    },
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/raw/current-shop.jpg",
+      "sha256": "955e1456b0138eb7ed40aae3816951722481670611532fe3cd42543c8d82055b",
+      "type": "archived original image"
+    },
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/processed/2024-11-21/office-full-front.jpg",
+      "sha256": "621ec545f3c40b3993f1fd94f2f878d961477d7c2c43a1c916e3cde169776ce2",
+      "type": "raw-backed processed2024-11-21 panorama crop"
+    },
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/processed/2024-11-21/office-west-front.jpg",
+      "sha256": "845f550a8b0c4f85c9a846b4cbe399ab004ed4d2ba9de587898e30ae6de22038",
+      "type": "raw-backed processed2024-11-21 panorama crop"
+    },
+    {
+      "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/processed/2024-11-21/shop-full-front.jpg",
+      "sha256": "d2deaf037867ac906045f1a56505b1ae04ee591acb81b1d4e413c7e0430e0ac7",
+      "type": "raw-backed processed2024-11-21 panorama crop"
+    }
+  ],
+  "findings": [
+    {
+      "id": "office-hall-hierarchy",
+      "decision": "pass-bounded-CPU-composition",
+      "reason": "Both fresh factory CPU views retain the taller three-tier office, low long hall, tall grouped office openings and white hall grid. Native source scale and spacing remain approximate."
+    },
+    {
+      "id": "brown-masonry",
+      "decision": "repaired-pass-bounded-CPU-comparison",
+      "reason": "Fresh exports use per-model brick #8a7159 and sign yellow #f4c400. Source-comparison CPU views now read warm brown/ochre, correcting the previous red/terracotta field."
+    },
+    {
+      "id": "native-roof-ownership",
+      "decision": "pass-decoded-factory-top-contract; rear-family-uncertain",
+      "reason": "Factory retains nineteen surveyed roof regions, no upward brick cap triangles and no downward slate triangles. Photo-poor rear roof remains survey-supported uncertainty. Actual shop survey/awning tops are upward."
+    },
+    {
+      "id": "shop-row-axis-count",
+      "decision": "pass-bounded-CPU-composition",
+      "reason": "Fresh shop front retains four aligned axes and three upper residential rows, right-pair rails, distinct wide commercial tier and lower storefront."
+    },
+    {
+      "id": "shop-board-word-fit",
+      "decision": "repaired-pass-bounded-CPU-comparison",
+      "reason": "Fresh front CPU view shows separate readable word fields fitted within the board. Previous overlap mesh/images are preserved in the private staging pack. Shop mascot/font remain original approximations rather than exact brand artwork."
+    },
+    {
+      "id": "shop-decal-plane",
+      "decision": "repaired-pass-geometry-and-support-rays",
+      "reason": "Six printed fields now use flat ShapeGeometry, four millimetres above actual board/glass surfaces. Independent sampled triangle-centroid back rays hit supporting non-letter geometry at approximately 0.004m for all 240 samples. Raised factory letters remain distinct from printed shop graphics."
+    },
+    {
+      "id": "awning-top-winding",
+      "decision": "prior-failure-withdrawn-reviewer-classification-error",
+      "reason": "The two downward slate triangles are at Y=2.78m on the closed awning fascia underside; they are not the awning roof surface. The earlier material-wide classifier incorrectly called them a roof failure. Actual awning/survey tops are upward. This correction is not credited as a model repair."
+    },
+    {
+      "id": "sign-supported-identity",
+      "decision": "pass-source-words; exact-artwork-approximation-explicit",
+      "reason": "Only documented Kesbeke letters, shop words and yellow/green motif appear. Geometry is original vector work with no facade photo pixels. CPU views support crisp placement; final gallery/live legibility remains unverified."
+    }
+  ],
+  "openLimitations": [
+    "Actual Jan Evertsen ground-game review also remains pending; preserve its separate failed capture evidence."
+  ],
+  "criteriaFreezeNote": "Critical source traits were recorded before inspecting the CPU render outputs. Source facts are drawn from original architecture images and raw-backed2024-11-21 municipal crops, not reconstructed from the model.",
+  "inspectedDrafts": [
+    {
+      "id": "kesbeke",
+      "file": "artifacts/frontage-landmark-drafts/kesbeke.glb",
+      "sha256": "09a7a19511fea60aa64a38a0278983306fc831f5c6cd4711f609953b193b5fc9",
+      "bytes": 1570004
+    },
+    {
+      "id": "kesbeke-shop",
+      "file": "artifacts/frontage-landmark-drafts/kesbeke-shop.glb",
+      "sha256": "b3ff4db589a300806bba192be6803ae3fbc534e5e2f715452adad74dc752109b",
+      "bytes": 212144
+    }
+  ],
+  "inspectedCpuViews": [
+    {
+      "file": "artifacts/frontage-landmark-drafts/cpu/kesbeke-cpu-northeast.png",
+      "sha256": "f8726f98516ac4c9261221173656e211d4e0118630bf6e56af5dc789daf80a58",
+      "bytes": 13845
+    },
+    {
+      "file": "artifacts/frontage-landmark-drafts/cpu/kesbeke-cpu-southwest.png",
+      "sha256": "b815d0f63cec4a90a461fe27e67371520eae7258eb37fc3a6cfd48129d5b7e57",
+      "bytes": 23210
+    },
+    {
+      "file": "artifacts/frontage-landmark-drafts/cpu/kesbeke-shop-cpu-northeast.png",
+      "sha256": "993e47299bae431f68d6dc8109f45c287e0ff5c6c2e23f0b2771c6b5a21c578e",
+      "bytes": 17422
+    },
+    {
+      "file": "artifacts/frontage-landmark-drafts/cpu/kesbeke-shop-cpu-southwest.png",
+      "sha256": "1c627ae0df6fdd5a69215d37e73f1c34ee7d009e31befcb71ad2246e9e94221d",
+      "bytes": 10659
+    }
+  ],
+  "decodedGeometry": {
+    "factory": {
+      "triangles": 33350,
+      "bytes": 1570004,
+      "nonfiniteCoordinates": 0,
+      "upwardBrickCapTriangles": 0,
+      "downwardSlateTriangles": 0,
+      "goldSignTriangles": 25648
+    },
+    "shop": {
+      "triangles": 7606,
+      "bytes": 212144,
+      "nonfiniteCoordinates": 0,
+      "upwardBrickCapTriangles": 0,
+      "downwardSlateTriangles": 2,
+      "downwardSlateClassification": "intentional closed awning fascia underside at Y=2.779999971; not roof tops",
+      "goldSignTriangles": 5784
+    },
+    "limits": "Both drafts meet 40000 triangles. Uncompressed shop meets 500000 bytes. Factory uncompressed draft does not certify final compressed production byte budget; verify production export."
+  },
+  "requiredNextChecks": [
+    "Verify final compressed production bytes and actual decoded production geometry/materials.",
+    "Inspect native-scale gallery source comparison and live game with exact suppression and neighbor retention.",
+    "Audit genuine destinations, geographic pins/labels and meaningful researched cards for both Kesbeke POIs.",
+    "Keep photo-poor factory rear roof and unphotographed rear facades explicitly uncertain.",
+    "Retry actual Jan Evertsen ground-game evidence in a working browser context; earlier failed captures remain preserved."
+  ],
+  "printedPlaneVerification": {
+    "method": "Independently rebuilt shop and sampled 40 triangle centroids per signage.surface=printed field. Ray from point plus normal*0.02 back to non-letter meshes. All 240 hits land on backing approximately 0.004m away. This is geometry evidence, not game acceptance.",
+    "samples": 240,
+    "fields": [
+      {
+        "name": "board Kesbeke",
+        "minBackingGapMetres": 0.003999846,
+        "maxBackingGapMetres": 0.004000023
+      },
+      {
+        "name": "board zoet&zuur",
+        "minBackingGapMetres": 0.003999829,
+        "maxBackingGapMetres": 0.004000016
+      },
+      {
+        "name": "board subtitle",
+        "minBackingGapMetres": 0.003999848,
+        "maxBackingGapMetres": 0.004000041
+      },
+      {
+        "name": "glass Kesbeke",
+        "minBackingGapMetres": 0.003999866,
+        "maxBackingGapMetres": 0.004000047
+      },
+      {
+        "name": "glass zoet&zuur",
+        "minBackingGapMetres": 0.003999839,
+        "maxBackingGapMetres": 0.004000024
+      },
+      {
+        "name": "glass subtitle",
+        "minBackingGapMetres": 0.003999879,
+        "maxBackingGapMetres": 0.004000063
+      }
+    ],
+    "boardFrontLocalOutMetres": 0.4,
+    "boardGlyphLocalOutMetres": 0.404,
+    "glassFrontLocalOutMetres": 0.23,
+    "glassGlyphLocalOutMetres": 0.234
+  },
+  "failurePreservation": {
+    "path": "/private/tmp/map-recall2-jan-evertsen-source-archive/models/kesbeke/processed/failed-lettering-overlap",
+    "confirmedFiles": [
+      "kesbeke-shop.glb",
+      "review.json",
+      "kesbeke-shop-cpu-northeast.png",
+      "kesbeke-shop-cpu-southwest.png"
+    ],
+    "note": "Prior mesh and CPU images preserved; initial review retained below with its original failed classifications."
+  },
+  "cycles": [
+    {
+      "decision": "draft-source-render-failures-found; no visual acceptance",
+      "findings": [
+        {
+          "id": "office-hall-hierarchy",
+          "decision": "pass-bounded-CPU-composition",
+          "reason": "Rendered office remains a clearly taller three-tier corner volume above the long low hall. Its six-axis principal front and four-axis west group plus small side aperture match the dated source. Tall grouped openings, pale cornice and hall structural grid are readable. Metric spacing remains approximate."
+        },
+        {
+          "id": "brown-masonry",
+          "decision": "fail-current-render-material",
+          "reason": "CPU images show consistent red/terracotta masonry. Source office and lower hall are neutral warm ochre-brown. Decoded GLB confirms default material#9a5240. This changes the building-wide source appearance; adjust per-model material rather than changing the shared palette globally."
+        },
+        {
+          "id": "native-roof-ownership",
+          "decision": "pass-decoded-factory-top-contract; rear-family-uncertain",
+          "reason": "Builder preserves nineteen separate surveyed roof regions, open-top shells and fitted tops with very small residuals. Decoded factory has zero downward slate roof triangles and zero upward brick cap triangles. No invented wall-colored top cap was found. Jagged rear/setback roof appearance remains survey-supported but not well established by current photographs; this is uncertainty, not a photo comparison failure."
+        },
+        {
+          "id": "shop-row-axis-count",
+          "decision": "pass-bounded-CPU-composition",
+          "reason": "The shop GLB front has three upper residential rows with four aligned axes, shallow rails at the right pair, a distinct wider commercial tier and lower storefront. This corrects the earlier four-row/three-axis substitution."
+        },
+        {
+          "id": "shop-board-word-fit",
+          "decision": "fail-current-export; code-repair-pending-reexport",
+          "reason": "Current shop CPU view visibly overlaps the signboard words. Latest builder has separate baselines and width/height caps, but its repaired layout has not been demonstrated in the reviewed export. Preserve the failed current image and mesh before refreshing."
+        },
+        {
+          "id": "shop-decal-plane",
+          "decision": "fail-source-sheet-interpretation-in-current-code",
+          "reason": "Board front is local outward0.40m; glyph backs begin0.44m and extrude0.035m. Lower glazing front is0.23m; sticker backs begin0.26m and also extrude0.035m. These printed/sticker words are several centimetres clear of the supporting surfaces. Use a flat or thin decal treatment close to each actual field, distinct from the source-supported raised office letters."
+        },
+        {
+          "id": "awning-top-winding",
+          "decision": "fail-current-export; latest-code-repair-needs-reexport-check",
+          "reason": "Decoded shop slate material contains two downward triangles, consistent with the awning. Latest builder indices appear reversed upward. Recheck decoded refreshed GLB; double-sided CPU rendering cannot certify winding."
+        },
+        {
+          "id": "sign-supported-identity",
+          "decision": "pass-source-words; quality-partial",
+          "reason": "Kesbeke office letters, actual yellow/green label motif and shop words are documented in the sources. Smooth original vector lettering is present, with no facade photo pixels. Shop mascot/font remain acknowledged original approximations; final crisp field fitting and source color need refreshed render review."
+        }
+      ],
+      "inspectedDrafts": [
+        {
+          "id": "kesbeke",
+          "file": "artifacts/frontage-landmark-drafts/kesbeke.glb",
+          "sha256": "b11c4839c3fb239e73bb8f6eb17c9ab882ec49a1857ccf8fcf0d6eb56b523278",
+          "bytes": 1570004
+        },
+        {
+          "id": "kesbeke-shop",
+          "file": "artifacts/frontage-landmark-drafts/kesbeke-shop.glb",
+          "sha256": "f96f182f3bfdecf046938e63d54fa492692a5e0d4d088e3ae8ddd69938bede08",
+          "bytes": 995020
+        }
+      ],
+      "inspectedCpuViews": [
+        {
+          "file": "artifacts/frontage-landmark-drafts/cpu/kesbeke-cpu-northeast.png",
+          "sha256": "e78c1c099b223c8d26f63ff315f47732dc7fbd96aec3b37d8da2c415babeb627"
+        },
+        {
+          "file": "artifacts/frontage-landmark-drafts/cpu/kesbeke-cpu-southwest.png",
+          "sha256": "5ed0bd2ca71af59ba65945eab9080d1a786510269fde947abcd365709ee83257"
+        },
+        {
+          "file": "artifacts/frontage-landmark-drafts/cpu/kesbeke-shop-cpu-northeast.png",
+          "sha256": "94a4c74005846808ea0c3edfc1b660b1f70fe5b112ade0e556d800874b3ac3ec"
+        },
+        {
+          "file": "artifacts/frontage-landmark-drafts/cpu/kesbeke-shop-cpu-southwest.png",
+          "sha256": "ccb8a77fe0fd0a5cc5668129b3b1b9fc9ba7a3616f1c55f8303e27a22506cf32"
+        }
+      ],
+      "decodedGeometry": {
+        "factory": {
+          "triangles": 33350,
+          "bytes": 1570004,
+          "nonfiniteCoordinates": 0,
+          "upwardBrickCapTriangles": 0,
+          "downwardSlateTriangles": 0,
+          "goldSignTriangles": 25648
+        },
+        "shop": {
+          "triangles": 24998,
+          "bytes": 995020,
+          "nonfiniteCoordinates": 0,
+          "upwardBrickCapTriangles": 0,
+          "downwardSlateTriangles": 2,
+          "goldSignTriangles": 23176
+        },
+        "limits": "Current drafts are uncompressed. Both meet40000 triangles; production500000-byte budget remains pending compression/export verification. Material grouping obscures primitive-level semantic identity; winding checks classify actual decoded slate/brick triangles."
+      },
+      "requiredNextChecks": [
+        "Preserve current failed/stale shop mesh and CPU images before replacing them.",
+        "Refresh material and shop sign/decal plane repairs, then inspect exact new decoded exports and CPU source comparison.",
+        "Verify production byte budget and decoded top/awning winding after compression.",
+        "Perform gallery reference views and live game exact suppression/neighbor retention.",
+        "Audit genuine destination, geographic pin/label and physical pointer-selected researched card for each POI.",
+        "Keep rear roof and unphotographed rear facade uncertainty explicit.",
+        "Retry actual Jan Evertsen ground-game evidence later through a working browser context; its separate failed attempts remain preserved."
+      ],
+      "id": "initial-draft-source-review",
+      "reviewedAtUTC": "2026-10-06T09:23:24.016267+00:00",
+      "immutable": true
+    },
+    {
+      "decision": "repaired-draft-CPU-and-geometry-checks-pass-bounded; gallery-and-live-acceptance-pending",
+      "findings": [
+        {
+          "id": "office-hall-hierarchy",
+          "decision": "pass-bounded-CPU-composition",
+          "reason": "Both fresh factory CPU views retain the taller three-tier office, low long hall, tall grouped office openings and white hall grid. Native source scale and spacing remain approximate."
+        },
+        {
+          "id": "brown-masonry",
+          "decision": "repaired-pass-bounded-CPU-comparison",
+          "reason": "Fresh exports use per-model brick #8a7159 and sign yellow #f4c400. Source-comparison CPU views now read warm brown/ochre, correcting the previous red/terracotta field."
+        },
+        {
+          "id": "native-roof-ownership",
+          "decision": "pass-decoded-factory-top-contract; rear-family-uncertain",
+          "reason": "Factory retains nineteen surveyed roof regions, no upward brick cap triangles and no downward slate triangles. Photo-poor rear roof remains survey-supported uncertainty. Actual shop survey/awning tops are upward."
+        },
+        {
+          "id": "shop-row-axis-count",
+          "decision": "pass-bounded-CPU-composition",
+          "reason": "Fresh shop front retains four aligned axes and three upper residential rows, right-pair rails, distinct wide commercial tier and lower storefront."
+        },
+        {
+          "id": "shop-board-word-fit",
+          "decision": "repaired-pass-bounded-CPU-comparison",
+          "reason": "Fresh front CPU view shows separate readable word fields fitted within the board. Previous overlap mesh/images are preserved in the private staging pack. Shop mascot/font remain original approximations rather than exact brand artwork."
+        },
+        {
+          "id": "shop-decal-plane",
+          "decision": "repaired-pass-geometry-and-support-rays",
+          "reason": "Six printed fields now use flat ShapeGeometry, four millimetres above actual board/glass surfaces. Independent sampled triangle-centroid back rays hit supporting non-letter geometry at approximately 0.004m for all 240 samples. Raised factory letters remain distinct from printed shop graphics."
+        },
+        {
+          "id": "awning-top-winding",
+          "decision": "prior-failure-withdrawn-reviewer-classification-error",
+          "reason": "The two downward slate triangles are at Y=2.78m on the closed awning fascia underside; they are not the awning roof surface. The earlier material-wide classifier incorrectly called them a roof failure. Actual awning/survey tops are upward. This correction is not credited as a model repair."
+        },
+        {
+          "id": "sign-supported-identity",
+          "decision": "pass-source-words; exact-artwork-approximation-explicit",
+          "reason": "Only documented Kesbeke letters, shop words and yellow/green motif appear. Geometry is original vector work with no facade photo pixels. CPU views support crisp placement; final gallery/live legibility remains unverified."
+        }
+      ],
+      "inspectedDrafts": [
+        {
+          "id": "kesbeke",
+          "file": "artifacts/frontage-landmark-drafts/kesbeke.glb",
+          "sha256": "09a7a19511fea60aa64a38a0278983306fc831f5c6cd4711f609953b193b5fc9",
+          "bytes": 1570004
+        },
+        {
+          "id": "kesbeke-shop",
+          "file": "artifacts/frontage-landmark-drafts/kesbeke-shop.glb",
+          "sha256": "b3ff4db589a300806bba192be6803ae3fbc534e5e2f715452adad74dc752109b",
+          "bytes": 212144
+        }
+      ],
+      "inspectedCpuViews": [
+        {
+          "file": "artifacts/frontage-landmark-drafts/cpu/kesbeke-cpu-northeast.png",
+          "sha256": "f8726f98516ac4c9261221173656e211d4e0118630bf6e56af5dc789daf80a58",
+          "bytes": 13845
+        },
+        {
+          "file": "artifacts/frontage-landmark-drafts/cpu/kesbeke-cpu-southwest.png",
+          "sha256": "b815d0f63cec4a90a461fe27e67371520eae7258eb37fc3a6cfd48129d5b7e57",
+          "bytes": 23210
+        },
+        {
+          "file": "artifacts/frontage-landmark-drafts/cpu/kesbeke-shop-cpu-northeast.png",
+          "sha256": "993e47299bae431f68d6dc8109f45c287e0ff5c6c2e23f0b2771c6b5a21c578e",
+          "bytes": 17422
+        },
+        {
+          "file": "artifacts/frontage-landmark-drafts/cpu/kesbeke-shop-cpu-southwest.png",
+          "sha256": "1c627ae0df6fdd5a69215d37e73f1c34ee7d009e31befcb71ad2246e9e94221d",
+          "bytes": 10659
+        }
+      ],
+      "decodedGeometry": {
+        "factory": {
+          "triangles": 33350,
+          "bytes": 1570004,
+          "nonfiniteCoordinates": 0,
+          "upwardBrickCapTriangles": 0,
+          "downwardSlateTriangles": 0,
+          "goldSignTriangles": 25648
+        },
+        "shop": {
+          "triangles": 7606,
+          "bytes": 212144,
+          "nonfiniteCoordinates": 0,
+          "upwardBrickCapTriangles": 0,
+          "downwardSlateTriangles": 2,
+          "downwardSlateClassification": "intentional closed awning fascia underside at Y=2.779999971; not roof tops",
+          "goldSignTriangles": 5784
+        },
+        "limits": "Both drafts meet 40000 triangles. Uncompressed shop meets 500000 bytes. Factory uncompressed draft does not certify final compressed production byte budget; verify production export."
+      },
+      "printedPlaneVerification": {
+        "method": "Independently rebuilt shop and sampled 40 triangle centroids per signage.surface=printed field. Ray from point plus normal*0.02 back to non-letter meshes. All 240 hits land on backing approximately 0.004m away. This is geometry evidence, not game acceptance.",
+        "samples": 240,
+        "fields": [
+          {
+            "name": "board Kesbeke",
+            "minBackingGapMetres": 0.003999846,
+            "maxBackingGapMetres": 0.004000023
+          },
+          {
+            "name": "board zoet&zuur",
+            "minBackingGapMetres": 0.003999829,
+            "maxBackingGapMetres": 0.004000016
+          },
+          {
+            "name": "board subtitle",
+            "minBackingGapMetres": 0.003999848,
+            "maxBackingGapMetres": 0.004000041
+          },
+          {
+            "name": "glass Kesbeke",
+            "minBackingGapMetres": 0.003999866,
+            "maxBackingGapMetres": 0.004000047
+          },
+          {
+            "name": "glass zoet&zuur",
+            "minBackingGapMetres": 0.003999839,
+            "maxBackingGapMetres": 0.004000024
+          },
+          {
+            "name": "glass subtitle",
+            "minBackingGapMetres": 0.003999879,
+            "maxBackingGapMetres": 0.004000063
+          }
+        ],
+        "boardFrontLocalOutMetres": 0.4,
+        "boardGlyphLocalOutMetres": 0.404,
+        "glassFrontLocalOutMetres": 0.23,
+        "glassGlyphLocalOutMetres": 0.234
+      },
+      "requiredNextChecks": [
+        "Verify final compressed production bytes and actual decoded production geometry/materials.",
+        "Inspect native-scale gallery source comparison and live game with exact suppression and neighbor retention.",
+        "Audit genuine destinations, geographic pins/labels and meaningful researched cards for both Kesbeke POIs.",
+        "Keep photo-poor factory rear roof and unphotographed rear facades explicitly uncertain.",
+        "Retry actual Jan Evertsen ground-game evidence in a working browser context; earlier failed captures remain preserved."
+      ],
+      "id": "repaired-flat-decal-brown-material-review",
+      "reviewedAtUTC": "2026-10-06T09:37:53.317064+00:00",
+      "immutable": true,
+      "codeInputs": [
+        {
+          "file": "scripts/landmarks/kesbeke-builder.ts",
+          "sha256": "d9a891efe64f2b42b007250f5b09217a6dcc307d1bafe7adfebb26632c4fde21",
+          "bytes": 12622
+        },
+        {
+          "file": "scripts/landmarks/export-frontage-drafts.ts",
+          "sha256": "b551e0cfd0aef541f88d8113982f3131fd48867a96253706cb1da9b40d4f24ea",
+          "bytes": 2946
+        }
+      ]
+    }
+  ],
+  "browserState": "Not launched for this cycle. Root owns GPU for Jan actual scene/pan retry; CPU review cannot accept final assets.",
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "branch": "source/jan-evertsen-canopy-rollout-20261006",
+    "commit": "e8e9fbbd1011d161cf9b992cd4575ae6acbf2b03",
+    "path": "models/kesbeke/",
+    "currentReleaseCommit": "2aa18011ae2c26568f9170517064a6561e075b30",
+    "currentReleasePath": "models/kesbeke/"
+  },
+  "releaseCheckpoint": {
+    "sourceRepository": "blackmad/map-recall2-source-data",
+    "sourceCommit": "2aa18011ae2c26568f9170517064a6561e075b30",
+    "sourcePath": "models/kesbeke/",
+    "userDiagnosticRenderApproval": "2026-10-06; commit/push explicitly authorized",
+    "actualGameplayReview": "pending; prior failure evidence preserved"
+  }
+}

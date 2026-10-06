@@ -25,6 +25,8 @@ export interface LandmarkFeature {
   wikipediaExtractLang?: string;
   wikipediaImageUrl?: string;
   sourceUrl?: string;
+  researchSourceUrl?: string;
+  researchDetail?: string;
   manualPoi?: boolean;
   modelId?: string;
   buildingIds?: string[];

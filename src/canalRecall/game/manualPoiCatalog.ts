@@ -2,7 +2,10 @@ import { SIGNATURE_MODELS } from '../landmarks/signatureModels';
 import facts from './manual-poi-data.json';
 import type { LandmarkFeature } from './extracts';
 
-const supplemental = new Map(facts.map(fact => [fact.modelId, fact]));
+type SupplementalFact = Omit<typeof facts[number], 'destinations'> & {
+  destinations?: readonly { landmarkId: string; name?: string; center?: number[]; description?: string; funFact?: string; sourceUrl?: string; preferDescription?: boolean; routeDestination?: { center: number[] }; destinationOverride?: { center: number[] } }[];
+};
+const supplemental = new Map<string, SupplementalFact>(facts.map(fact => [fact.modelId, fact]));
 
 /** One physical asset may host several genuine venues; facade aliases are
  * identities for picking, not extra destinations. Existing extract content
@@ -15,22 +18,26 @@ export function mergeManualPoiFeatures(features: readonly LandmarkFeature[], cit
     const anchor = model.surveyed?.anchor ?? model.footprint?.centre;
     if (!anchor) continue;
     const ids = [model.landmarkId, ...(model.relatedLandmarkIds ?? [])].filter(Boolean) as string[];
-    // Muziekgebouw and Bimhuis have independent programmes and destination
-    // identities. Other related IDs name the same place/building facade.
-    const destinations = model.id === 'muziekgebouw-bimhuis' ? ids : ids.slice(0, 1);
+    // Explicit venue IDs remain independent destinations within a shared mesh.
+    // The legacy concert-hall pair retains its existing behavior.
+    const destinations = model.destinationLandmarkIds ?? (model.id === 'muziekgebouw-bimhuis' ? ids : ids.slice(0, 1));
     for (const id of destinations) {
+      const venue=fallback?.destinations?.find(p=>p.landmarkId===id);
+      const specific=venue??fallback;
       const existing = merged.get(id);
       merged.set(id, {
         ...existing,
         id,
-        name: existing?.name || fallback?.name || model.name,
+        name: existing?.name || specific?.name || model.name,
         // Explicit sourced corrections fix mislabeled neighbors or use a public entrance.
-        center: (fallback?.destinationOverride?.center as LandmarkFeature['center'] | undefined) ?? existing?.center ?? (fallback?.center as LandmarkFeature['center'] | undefined) ?? [anchor[1], anchor[0]],
-        routeCenter: (fallback?.routeDestination?.center as LandmarkFeature['routeCenter'] | undefined) ?? existing?.routeCenter,
+        center: (specific?.destinationOverride?.center as LandmarkFeature['center'] | undefined) ?? existing?.center ?? (specific?.center as LandmarkFeature['center'] | undefined) ?? [anchor[1], anchor[0]],
+        routeCenter: ((venue?.routeDestination?.center ?? (id===model.landmarkId ? fallback?.routeDestination?.center : undefined)) as LandmarkFeature['routeCenter'] | undefined) ?? existing?.routeCenter,
         type: existing?.type || 'landmark',
-        // A researched description can improve a generic mapped summary while preserving extract facts.
-        funFact: existing?.funFact || (fallback?.preferDescription || !existing?.wikipediaExtract ? fallback?.description : undefined),
-        sourceUrl: existing?.sourceUrl || fallback?.sourceUrl || model.attribution.sourceUrl,
+        // Opt-in researched descriptions can improve generic address summaries while retaining extract history.
+        funFact: existing?.funFact || specific?.funFact || (specific?.preferDescription || !existing?.wikipediaExtract ? specific?.description : undefined),
+        sourceUrl: (!existing?.funFact && specific?.funFact ? specific?.sourceUrl : existing?.sourceUrl) || specific?.sourceUrl || model.attribution.sourceUrl,
+        researchSourceUrl: specific?.sourceUrl || existing?.researchSourceUrl,
+        researchDetail: specific?.funFact || specific?.description || existing?.researchDetail,
         manualPoi: true,
         modelId: model.id,
         buildingIds: [...new Set([...(existing?.buildingIds ?? []), ...(model.suppressOsmIds ?? [])])],
@@ -40,7 +47,7 @@ export function mergeManualPoiFeatures(features: readonly LandmarkFeature[], cit
     // Suppress duplicate aliases in the pin/destination pool while allowing
     // delayed building joins to resolve those identities to the primary POI.
     if (model.id !== 'muziekgebouw-bimhuis') {
-      for (const alias of ids.slice(1)) merged.delete(alias);
+      for (const alias of ids.slice(1)) if(!destinations.includes(alias))merged.delete(alias);
     }
   }
   return [...merged.values()];
