@@ -1234,7 +1234,7 @@
       "id": "uva-roeterseiland",
       "task": "UvA Roeterseiland campus — De Brug and REC B/C/D; verify REC A scope",
       "priority": "high",
-      "status": "requested-identity-and-native-scope-review",
+      "status": "three-early-source-geometry-cycles; full-native-acceptance-pending",
       "requestedOn": "2026-10-06",
       "requested": true,
       "workflow": "full-landmark",
@@ -1243,11 +1243,14 @@
         "https://www.uva.nl/locaties/roeterseiland/rec-b-c-d-ingang-d.html"
       ],
       "sourceArchive": {
-        "path": "models/uva-roeterseiland",
-        "commit": "93d26c6"
+        "commit": "b97968cc37f549a2172c78518761d56d07635e25",
+        "path": "models/uva-roeterseiland"
       },
-      "nextAction": "Resolve official address/VBO/BAG/OSM parents of highlighted complex from user screenshot; verify REC A involvement and keep CREA distinct unless source proves shared scope. Preserve canal under De Brug, raised connections and actual courtyards; reuse genuine campus POI identity rather than moving a generic University of Amsterdam destination. Then full source/geometry/gallery/native route-pin-card acceptance.",
-      "evidence": "Private original user-campus-request-20261006.png and operator pages under models/uva-roeterseiland"
+      "nextAction": "Source/CPU cycles repair raised40mcanalvoid, double-heightcityroom, entryrecess/supports, widenedbridgeapproach and adjacentglazedpavilion. Root/independent early comparisons retain failed evidence. Finish bounded remaining annex/roof semantic review, then full finalexport/gallery/native sourceviews, exact composite-parent masks, retainedCREA/otherneighbors, chosen route/pin/card/fallback and performance evidence. No source-only spec registered or parent suppressed yet.",
+      "evidence": "Private original user-campus-request-20261006.png and operator pages under models/uva-roeterseiland",
+      "canonicalPoi": "extract_landmarks_596580010",
+      "surveyedParent": "NL.IMBAG.Pand.0363100012185420",
+      "retainedCREA": "NL.IMBAG.Pand.0363100012164972"
     },
     {
       "id": "wine-guildhall",
@@ -1261,6 +1264,19 @@
       "sourceArchive": {
         "commit": "dd7bf70c00c59533abe5c7e8b376c63867aa8a6e",
         "path": "models/wine-guildhall"
+      }
+    },
+    {
+      "id": "amsterdam-portal-reference-workflow",
+      "task": "Use dated municipal panorama views and capture history for facade references",
+      "priority": "high",
+      "status": "bounded-reference-trial-verified; calibrated-comparison-pending",
+      "verifiedOn": "2026-10-06",
+      "notes": "Actual supplied2025 portal/station/original8000 image and clean viewer capture verified; one2024 winter alternative inspected and reveals scaffold-hidden neighbor crown. Exact capture timestamp takes precedence over mission-year tag. Retain dated per-feature references and try bounded nearby/year alternatives for obstructions; no generic photo-texture import. Actual municipal panorama-textures and project world-aligned core projection agree on7directions except1px wrap seam. Camera height/datum/wall/boresight calibration and measured facade comparison remain unresolved. Herengracht fixture is separate from ordinary-building pilot and blank-wall location report. Municipal unmodified extraction and ours ran on the SAME2025pano/SAMEsurveyedwall/sharedassumedcamera. Architectural crops nearly identical; no upstream fidelity advantage established on this fixture. Use municipal extraction as reference implementation; camera/ground calibration remains explicit.",
+      "handoff": "docs/amsterdam-panorama-building-treatment-handoff.md",
+      "sourceArchive": {
+        "commit": "b97968cc37f549a2172c78518761d56d07635e25",
+        "path": "workflows/amsterdam-portal-facade-reference-20261006"
       }
     }
   ],
