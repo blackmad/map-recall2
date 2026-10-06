@@ -4,7 +4,7 @@ import { GLTFExporter } from "three/addons/exporters/GLTFExporter.js";
 import { openTopPrism, upwardRoofPlane } from "../../../scripts/landmarks/house-geometry";
 const warehouse = new URLSearchParams(location.search).get("building") === "warehouse";
 const BUILDING_ID = warehouse ? "0363100012118320" : "0363100012139498";
-const DATA = "/canal-drive/ordinary-building-pilot-data/";
+const DATA = new URL("ordinary-building-pilot-data/", document.baseURI).href;
 const container = document.querySelector("#scene");
 const renderer = new T.WebGLRenderer({ antialias: true, alpha: false });
 renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
