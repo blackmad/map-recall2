@@ -157,7 +157,7 @@ class VectorBasemap {
       }
       const signature = window.CanalRecallSignature3D;
       if (window.CanalRecallArtisAnimals) this._artisAnimals = new window.CanalRecallArtisAnimals.ArtisAnimals(this.map, maplibregl, this._extractPath);
-      const manualModels = window.CanalRecallSignatureLandmarks?.MANUAL_LANDMARKS;
+      const manualModels = window.CanalRecallSignatureLandmarks?.GAME_BUILDING_MODELS || window.CanalRecallSignatureLandmarks?.MANUAL_LANDMARKS;
       if (signature?.SignatureLandmarks && manualModels) {
         this._signatureLandmarks = new signature.SignatureLandmarks(this.map, maplibregl, {
           models: manualModels,

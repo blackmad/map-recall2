@@ -1,6 +1,263 @@
 {
   "version": 1,
-  "reviews": {},
+  "reviews": {
+    "NL.IMBAG.Pand.0363100012242125": {
+      "treatment": "standard",
+      "reviewedOn": "2026-10-06",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012242125",
+        "https://data.amsterdam.nl/data/geozoek?center=52.394305,4.788693&lagen=pano-pano2025bi"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012242125/reference-0363100012242125-2025-recording_2025-07-01_04-12-51_02405.jpg",
+      "reason": "Root and independent source/render review: one dominant grounded ordinary volume; original face-specific industrial/commercial assemblies, native plan and supported roof volumes. Main source traits retained; observed facade dates and unseen/lower-frontage approximations remain in catalogue. Exact replacement and native neighbors checked in desktop/touch game.",
+      "checks": {
+        "ordinarySilhouette": true,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591",
+      "sourcePack": "experiments/ordinary-ten/west/0363100012242125",
+      "independentReview": "ordinary-buildings-data/independent-review.json",
+      "liveGameReview": "ordinary-buildings-data/game-review.json",
+      "limits": [
+        "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained."
+      ]
+    },
+    "NL.IMBAG.Pand.0363100012074248": {
+      "treatment": "standard",
+      "reviewedOn": "2026-10-06",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012074248",
+        "https://data.amsterdam.nl/data/geozoek?center=52.397391999999996,4.939452&lagen=pano-pano2025bi"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012074248/reference-0363100012074248-2025-0.jpg",
+      "reason": "Root and independent source/render review: one dominant grounded ordinary volume; original face-specific industrial/commercial assemblies, native plan and supported roof volumes. Main source traits retained; observed facade dates and unseen/lower-frontage approximations remain in catalogue. Exact replacement and native neighbors checked in desktop/touch game.",
+      "checks": {
+        "ordinarySilhouette": true,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591",
+      "sourcePack": "experiments/ordinary-ten/east/0363100012074248",
+      "independentReview": "ordinary-buildings-data/independent-review.json",
+      "liveGameReview": "ordinary-buildings-data/game-review.json",
+      "limits": [
+        "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained."
+      ]
+    },
+    "NL.IMBAG.Pand.0363100012223044": {
+      "treatment": "standard",
+      "reviewedOn": "2026-10-06",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012223044",
+        "https://data.amsterdam.nl/data/geozoek?center=52.385817,4.939824&lagen=pano-pano2025bi"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012223044/reference-0363100012223044-2017-0.jpg",
+      "reason": "Root and independent source/render review: one dominant grounded ordinary volume; original face-specific industrial/commercial assemblies, native plan and supported roof volumes. Main source traits retained; observed facade dates and unseen/lower-frontage approximations remain in catalogue. Exact replacement and native neighbors checked in desktop/touch game.",
+      "checks": {
+        "ordinarySilhouette": true,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591",
+      "sourcePack": "experiments/ordinary-ten/boxes/0363100012223044",
+      "independentReview": "ordinary-buildings-data/independent-review.json",
+      "liveGameReview": "ordinary-buildings-data/game-review.json",
+      "limits": [
+        "Only observed primary facades support pattern placement; other faces use neutral industrial material.",
+        "Door counts and dimensions are approximate visual estimates, not surveys.",
+        "Omit minor branding; do not invent building-name text.",
+        "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained.",
+        "Regular6\u00d77 shallow roof panel grid approximates observed aerial rhythm; fitted patch noise omitted. Glazing/pier proportions are visual estimates from2017 facade."
+      ]
+    },
+    "NL.IMBAG.Pand.0363100012123231": {
+      "treatment": "standard",
+      "reviewedOn": "2026-10-06",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012123231",
+        "https://data.amsterdam.nl/data/geozoek?center=52.400291499999994,4.813311000000001&lagen=pano-pano2025bi"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012123231/reference-0363100012123231-2025-0.jpg",
+      "reason": "Root and independent source/render review: one dominant grounded ordinary volume; original face-specific industrial/commercial assemblies, native plan and supported roof volumes. Main source traits retained; observed facade dates and unseen/lower-frontage approximations remain in catalogue. Exact replacement and native neighbors checked in desktop/touch game.",
+      "checks": {
+        "ordinarySilhouette": true,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591",
+      "sourcePack": "experiments/ordinary-ten/boxes/0363100012123231",
+      "independentReview": "ordinary-buildings-data/independent-review.json",
+      "liveGameReview": "ordinary-buildings-data/game-review.json",
+      "limits": [
+        "Only observed primary facades support pattern placement; other faces use neutral industrial material.",
+        "Door counts and dimensions are approximate visual estimates, not surveys.",
+        "Omit minor branding; do not invent building-name text.",
+        "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained."
+      ]
+    },
+    "NL.IMBAG.Pand.0363100012183449": {
+      "treatment": "standard",
+      "reviewedOn": "2026-10-06",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012183449",
+        "https://data.amsterdam.nl/data/geozoek?center=52.4036035,4.814140999999999&lagen=pano-pano2025bi"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012183449/reference-0363100012183449-2022-0.jpg",
+      "reason": "Root and independent source/render review: one dominant grounded ordinary volume; original face-specific industrial/commercial assemblies, native plan and supported roof volumes. Main source traits retained; observed facade dates and unseen/lower-frontage approximations remain in catalogue. Exact replacement and native neighbors checked in desktop/touch game.",
+      "checks": {
+        "ordinarySilhouette": true,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591",
+      "sourcePack": "experiments/ordinary-ten/boxes/0363100012183449",
+      "independentReview": "ordinary-buildings-data/independent-review.json",
+      "liveGameReview": "ordinary-buildings-data/game-review.json",
+      "limits": [
+        "Only observed primary facades support pattern placement; other faces use neutral industrial material.",
+        "Door counts and dimensions are approximate visual estimates, not surveys.",
+        "Omit minor branding; do not invent building-name text.",
+        "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained."
+      ]
+    },
+    "NL.IMBAG.Pand.0363100012191215": {
+      "treatment": "standard",
+      "reviewedOn": "2026-10-06",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012191215",
+        "https://data.amsterdam.nl/data/geozoek?center=52.401129999999995,4.78618&lagen=pano-pano2025bi"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012191215/reference-0363100012191215-2020-0.jpg",
+      "reason": "Root and independent source/render review: one dominant grounded ordinary volume; original face-specific industrial/commercial assemblies, native plan and supported roof volumes. Main source traits retained; observed facade dates and unseen/lower-frontage approximations remain in catalogue. Exact replacement and native neighbors checked in desktop/touch game.",
+      "checks": {
+        "ordinarySilhouette": true,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591",
+      "sourcePack": "experiments/ordinary-ten/boxes/0363100012191215",
+      "independentReview": "ordinary-buildings-data/independent-review.json",
+      "liveGameReview": "ordinary-buildings-data/game-review.json",
+      "limits": [
+        "Only observed primary facades support pattern placement; other faces use neutral industrial material.",
+        "Door counts and dimensions are approximate visual estimates, not surveys.",
+        "Omit minor branding; do not invent building-name text.",
+        "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained.",
+        "Upper muted purple-gray band contrast and width approximate; scrub-obscured lower facade remains conservative."
+      ]
+    },
+    "NL.IMBAG.Pand.0363100012224669": {
+      "treatment": "standard",
+      "reviewedOn": "2026-10-06",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012224669",
+        "https://data.amsterdam.nl/data/geozoek?center=52.4123705,4.7617615&lagen=pano-pano2025bi"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012224669/reference-0363100012224669-2025-0.jpg",
+      "reason": "Root and independent source/render review: one dominant grounded ordinary volume; original face-specific industrial/commercial assemblies, native plan and supported roof volumes. Main source traits retained; observed facade dates and unseen/lower-frontage approximations remain in catalogue. Exact replacement and native neighbors checked in desktop/touch game.",
+      "checks": {
+        "ordinarySilhouette": true,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591",
+      "sourcePack": "experiments/ordinary-ten/boxes/0363100012224669",
+      "independentReview": "ordinary-buildings-data/independent-review.json",
+      "liveGameReview": "ordinary-buildings-data/game-review.json",
+      "limits": [
+        "Only observed primary facades support pattern placement; other faces use neutral industrial material.",
+        "Door counts and dimensions are approximate visual estimates, not surveys.",
+        "Omit minor branding; do not invent building-name text.",
+        "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained."
+      ]
+    },
+    "NL.IMBAG.Pand.0363100012067126": {
+      "treatment": "standard",
+      "reviewedOn": "2026-10-06",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012067126",
+        "https://data.amsterdam.nl/data/geozoek?center=52.410713,4.7641575&lagen=pano-pano2025bi"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012067126/reference-0363100012067126-2025-0.jpg",
+      "reason": "Root and independent source/render review: one dominant grounded ordinary volume; original face-specific industrial/commercial assemblies, native plan and supported roof volumes. Main source traits retained; observed facade dates and unseen/lower-frontage approximations remain in catalogue. Exact replacement and native neighbors checked in desktop/touch game.",
+      "checks": {
+        "ordinarySilhouette": true,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591",
+      "sourcePack": "experiments/ordinary-ten/boxes/0363100012067126",
+      "independentReview": "ordinary-buildings-data/independent-review.json",
+      "liveGameReview": "ordinary-buildings-data/game-review.json",
+      "limits": [
+        "Only observed primary facades support pattern placement; other faces use neutral industrial material.",
+        "Door counts and dimensions are approximate visual estimates, not surveys.",
+        "Omit minor branding; do not invent building-name text.",
+        "Native rectangular gable preserves two fitted12.5degree roofplanes; tiny perimeter survey irregularities omitted.",
+        "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained."
+      ]
+    },
+    "NL.IMBAG.Pand.0363100012159282": {
+      "treatment": "standard",
+      "reviewedOn": "2026-10-06",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012159282",
+        "https://data.amsterdam.nl/data/geozoek?center=52.405080999999996,4.7512865&lagen=pano-pano2025bi"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012159282/reference-0363100012159282-2025-0.jpg",
+      "reason": "Root and independent source/render review: one dominant grounded ordinary volume; original face-specific industrial/commercial assemblies, native plan and supported roof volumes. Main source traits retained; observed facade dates and unseen/lower-frontage approximations remain in catalogue. Exact replacement and native neighbors checked in desktop/touch game.",
+      "checks": {
+        "ordinarySilhouette": true,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591",
+      "sourcePack": "experiments/ordinary-ten/boxes/0363100012159282",
+      "independentReview": "ordinary-buildings-data/independent-review.json",
+      "liveGameReview": "ordinary-buildings-data/game-review.json",
+      "limits": [
+        "Unseen faces use restrained same industrial material, without invented doors or glazing.",
+        "Door count and panel spacing are visual estimates.",
+        "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained."
+      ]
+    },
+    "NL.IMBAG.Pand.0363100012238052": {
+      "treatment": "standard",
+      "reviewedOn": "2026-10-06",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012238052",
+        "https://data.amsterdam.nl/data/geozoek?center=52.3134115,4.937098000000001&lagen=pano-pano2025bi"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012238052/reference-0363100012238052-2025-0.jpg",
+      "reason": "Root and independent source/render review: one dominant grounded ordinary volume; original face-specific industrial/commercial assemblies, native plan and supported roof volumes. Main source traits retained; observed facade dates and unseen/lower-frontage approximations remain in catalogue. Exact replacement and native neighbors checked in desktop/touch game.",
+      "checks": {
+        "ordinarySilhouette": true,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591",
+      "sourcePack": "experiments/ordinary-ten/tall-boxes/0363100012238052",
+      "independentReview": "ordinary-buildings-data/independent-review.json",
+      "liveGameReview": "ordinary-buildings-data/game-review.json",
+      "limits": [
+        "Four34mroofequipmenthousings omitted; they do not define occupied buildingheight.",
+        "Unobserved northeast and lowstripfaces conservatively carry plain darkbase and uppermetalassembly; no inventedglazing.",
+        "Source mainandlowstriproofplanes retained via nativeplanintersections.",
+        "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained."
+      ]
+    }
+  },
   "notes": [
     "Automatic geometry screening suggests review order; it never approves lower fidelity.",
     "Standard treatment requires a dated facade/context image, source URL, reason, and all recognition/open-space checks.",

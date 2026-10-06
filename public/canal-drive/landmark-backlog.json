@@ -23,7 +23,8 @@
   "counts": {
     "manual-model": 183,
     "procedural-kit": 15,
-    "pending": 139
+    "pending": 129,
+    "catalogue-model": 10
   },
   "destinations": [
     {
@@ -4150,9 +4151,10 @@
       "lng": null,
       "queueRank": 326,
       "origin": "User requested",
-      "status": "pending",
+      "status": "catalogue-model",
+      "modelId": "ordinary-0363100012242125",
       "requested": true,
-      "treatment": "review"
+      "treatment": "building"
     },
     {
       "id": "requested-symphony",
@@ -4161,9 +4163,10 @@
       "lng": null,
       "queueRank": 327,
       "origin": "User requested",
-      "status": "pending",
+      "status": "catalogue-model",
+      "modelId": "ordinary-0363100012242125",
       "requested": true,
-      "treatment": "review"
+      "treatment": "building"
     },
     {
       "id": "requested-world-trade-center-amsterdam",
@@ -4172,9 +4175,10 @@
       "lng": null,
       "queueRank": 328,
       "origin": "User requested",
-      "status": "pending",
+      "status": "catalogue-model",
+      "modelId": "ordinary-0363100012242125",
       "requested": true,
-      "treatment": "review"
+      "treatment": "building"
     },
     {
       "id": "machinegebouw",
@@ -4195,9 +4199,10 @@
       "lng": null,
       "queueRank": 330,
       "origin": "User requested",
-      "status": "pending",
+      "status": "catalogue-model",
+      "modelId": "ordinary-0363100012242125",
       "requested": true,
-      "treatment": "review"
+      "treatment": "building"
     },
     {
       "id": "requested-vondelcs",
@@ -4206,9 +4211,10 @@
       "lng": null,
       "queueRank": 331,
       "origin": "User requested",
-      "status": "pending",
+      "status": "catalogue-model",
+      "modelId": "ordinary-0363100012242125",
       "requested": true,
-      "treatment": "review"
+      "treatment": "building"
     },
     {
       "id": "requested-vondeltuin",
@@ -4217,9 +4223,10 @@
       "lng": null,
       "queueRank": 332,
       "origin": "User requested",
-      "status": "pending",
+      "status": "catalogue-model",
+      "modelId": "ordinary-0363100012242125",
       "requested": true,
-      "treatment": "review"
+      "treatment": "building"
     },
     {
       "id": "requested-monk-amsterdam",
@@ -4228,9 +4235,10 @@
       "lng": null,
       "queueRank": 333,
       "origin": "User requested",
-      "status": "pending",
+      "status": "catalogue-model",
+      "modelId": "ordinary-0363100012242125",
       "requested": true,
-      "treatment": "review"
+      "treatment": "building"
     },
     {
       "id": "requested-het-lab",
@@ -4239,9 +4247,10 @@
       "lng": null,
       "queueRank": 334,
       "origin": "User requested",
-      "status": "pending",
+      "status": "catalogue-model",
+      "modelId": "ordinary-0363100012242125",
       "requested": true,
-      "treatment": "review"
+      "treatment": "building"
     },
     {
       "id": "requested-mountain-network-amsterdam",
@@ -4250,9 +4259,10 @@
       "lng": null,
       "queueRank": 335,
       "origin": "User requested",
-      "status": "pending",
+      "status": "catalogue-model",
+      "modelId": "ordinary-0363100012242125",
       "requested": true,
-      "treatment": "review"
+      "treatment": "building"
     },
     {
       "id": "requested-klimhal-amsterdam",
@@ -4261,9 +4271,10 @@
       "lng": null,
       "queueRank": 336,
       "origin": "User requested",
-      "status": "pending",
+      "status": "catalogue-model",
+      "modelId": "ordinary-0363100012242125",
       "requested": true,
-      "treatment": "review"
+      "treatment": "building"
     },
     {
       "id": "hart-museum",

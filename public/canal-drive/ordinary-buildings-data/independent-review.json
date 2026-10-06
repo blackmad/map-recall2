@@ -1,0 +1,67 @@
+{
+  "reviewedAt": "2026-10-06T20:20:15.459315+00:00",
+  "scope": "Independent saved-image/source review only: all ten latest acceptance source/render pages, selected rear/wide views.",
+  "criticalFailuresRemaining": [],
+  "unverifiedDetails": [],
+  "gameAcceptance": "not reviewed by this agent; root must inspect actual game cameras, suppression/neighbors/fallback and performance",
+  "previousEvidence": "Initial first batch, dark final pass and corrected failure pass remain preserved; later limited gallery decisions supersede only corrected assemblies.",
+  "models": [
+    {
+      "id": "ordinary-0363100012242125",
+      "result": "conditional-pass",
+      "notes": "North blank pale-gray corrugated wall/native flat roof passes. Supplementary actual-game west-office-loading screenshot exposes two upper rows of narrow office windows above dark loading bays: observed critical assembly verified. Window/bay count and covered-recess depth simplified; neutral roof top approximate."
+    },
+    {
+      "id": "ordinary-0363100012074248",
+      "result": "conditional-pass",
+      "notes": "Upper grouped glazing and pale projecting opaque band now visible/source recognizable; repaired previous failure. Full-front repeated modules simplify source partial balcony extent, mullion proportions and small-square-window variation. Native stepped filled plan passes."
+    },
+    {
+      "id": "ordinary-0363100012223044",
+      "result": "conditional-pass",
+      "notes": "Latest aligned regular shallow roof grid and two tall glazed loading assemblies/pale piers/transom resolve critical prior roof/facade failures. Roof grid and glazing proportions approximate. 2017 clear facade currentness gap explicitly retained;2025 aerial supports plan/roof. No adjacent sawtooth/red-brick structure included."
+    },
+    {
+      "id": "ordinary-0363100012123231",
+      "result": "conditional-pass",
+      "notes": "Charcoal ribbed rectangle, low plinth and muted red loading openings recognizable; count/position estimates, personnel detail omitted. No invented glazing; portable cabin excluded. Fitted roof seam simplified."
+    },
+    {
+      "id": "ordinary-0363100012183449",
+      "result": "conditional-pass",
+      "notes": "Charcoal industrial rectangle and sparse loading openings source-consistent.2022 source/container obscuration prevents precise lower-front count/currentness acceptance. Containers/scaffold/cranes excluded."
+    },
+    {
+      "id": "ordinary-0363100012191215",
+      "result": "conditional-pass-limited",
+      "notes": "Blank pale-gray panel/seam rhythm/native rectangle passes conservative standard treatment. Low source-facing supplement verifies thin top band, but purple-gray contrast remains weak: declared color/band approximation.2020 scrub hides lower frontage: no exact door/window or full currentness claim."
+    },
+    {
+      "id": "ordinary-0363100012224669",
+      "result": "conditional-pass",
+      "notes": "Dark hall, three red loading portals/small pale personnel doors/low plinth source recognizable. Counts/spacing estimates; tenant marks omitted. Minor irregular fitted roof seam remains simplified."
+    },
+    {
+      "id": "ordinary-0363100012067126",
+      "result": "conditional-pass",
+      "notes": "Pale ribbed shed/coral stripes/small dark personnel doors/gabled profile recognizable. Evenly distributed stripes approximate source clustered spacing. Recipe should describe gable accurately instead of flat edge. No invented office grid."
+    },
+    {
+      "id": "ordinary-0363100012159282",
+      "result": "conditional-pass",
+      "notes": "Pale panelled metal/concrete lower band, sparse personnel doors and native box pass. Tiny-edge doorway overlaps pruned and doors now visible. Grid/seams more emphatic than source; colors approximate under viewer lighting."
+    },
+    {
+      "id": "ordinary-0363100012238052",
+      "result": "conditional-pass",
+      "notes": "Tall dark shell/native low strip, smooth pale rear concrete base with panel joints and sparse dark front doors pass source recognition. Supplement-2238052 verifies removal of fine base corrugation and black artifacts. Upper dense ribs remain subtle on source-facing high camera but recognizable from opposite gallery view. Game shots named rear-smooth-base actually show SE dark-door side; they do not verify NW pale base."
+    }
+  ],
+  "supplementaryGameEvidence": [
+    "../game/desktop-ordinary-0363100012242125-west-office-loading.png"
+  ],
+  "supplementaryGalleryEvidence": [
+    "supplement-2238052.png",
+    "supplement-2191215.png"
+  ]
+}

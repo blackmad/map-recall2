@@ -1,0 +1,3213 @@
+{
+  "version": 1,
+  "recipes": [
+    {
+      "digits": "0363100012242125",
+      "id": "NL.IMBAG.Pand.0363100012242125",
+      "label": "Simple gray metal industrial shed",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.788421,
+              52.394573
+            ],
+            [
+              4.788421,
+              52.394591
+            ],
+            [
+              4.788368,
+              52.394591
+            ],
+            [
+              4.788368,
+              52.394573
+            ],
+            [
+              4.788085,
+              52.394573
+            ],
+            [
+              4.788085,
+              52.394447
+            ],
+            [
+              4.788087,
+              52.394019
+            ],
+            [
+              4.789301,
+              52.394021
+            ],
+            [
+              4.789298,
+              52.394575
+            ],
+            [
+              4.788421,
+              52.394573
+            ]
+          ]
+        ]
+      },
+      "anchor": [
+        4.788693,
+        52.394305
+      ],
+      "sourceHeight": 14.31,
+      "levels": 1,
+      "wall": "#a7ada9",
+      "roof": "#727875",
+      "palette": {
+        "wall": "#a7ada9",
+        "frames": "#cbd0c9",
+        "glass": "#566771"
+      },
+      "primary": [
+        3,
+        8,
+        7
+      ],
+      "secondary": [
+        4,
+        5
+      ],
+      "traits": [
+        "Large native rectangular metal industrial shed, flat roof edge: overwhelmingly blank pale-gray northern facade and darker gray east facade. Preserve vertical fine corrugation; do not apply domestic window grid.",
+        "Full-resolution north-centered photo has straight horizontal top; NE-corner image apparent peak is perspective convergence of horizontal perimeter edges, not a pitched ridge.",
+        "West end has two upper rows of narrow rectangular office windows, about 0.9\u20131.2 m wide by 1.8\u20132.1 m tall, above dark covered loading/vehicle bays one storey (about 3.5\u20134 m) high. Native west face edges 4/5.",
+        "Thin pale lower curb and very restrained roof perimeter trim; use neutral gray roof surface inferred from edge material, record it as approximate where top itself unseen.",
+        "External round tank and neighboring delivery/service building lie outside exact polygon. Dark west loading recess is local industrial frontage, with no evidence for a public through-passage or surveyed court; do not invent a traversable underpass."
+      ],
+      "sourcePack": "experiments/ordinary-ten/west/0363100012242125",
+      "references": [
+        "reference-0363100012242125-2025-recording_2025-07-01_04-12-51_02405.jpg",
+        "reference-0363100012242125-2025-recording_2025-07-01_04-12-51_02391.jpg",
+        "reference-0363100012242125-2024-recording_2024-09-18_07-45-49_01251.jpg"
+      ],
+      "timing": {
+        "sourceRequestStartedAt": "2026-10-06T19:23:13+00:00",
+        "recipeCompletedAt": "2026-10-06T19:28:44.675454+00:00",
+        "sourceAndReviewElapsedSeconds": 332,
+        "scope": "Shared bounded acquisition/cropping/visual review for eight candidates; excludes initial local selection time and root modeling/game acceptance."
+      },
+      "cameraBearing": 1.109596432550859,
+      "facade": {
+        "levels": 1,
+        "kind": "corrugated",
+        "bayPitchMetres": 2.2,
+        "groupWidthMetres": 1.1,
+        "groupHeightMetres": 2,
+        "panes": 1,
+        "groundExceptionalBandHeightMetres": 4,
+        "corrugationPitchMetres": 0.4,
+        "corrugationColor": "#909895",
+        "edges": {
+          "4": {
+            "kind": "industrial-office",
+            "levels": 2,
+            "firstSillMetres": 5,
+            "floorPitchMetres": 3,
+            "doors": [
+              {
+                "kind": "loading",
+                "pitchMetres": 7,
+                "widthMetres": 5,
+                "heightMetres": 3.7
+              }
+            ]
+          },
+          "5": {
+            "kind": "industrial-office",
+            "levels": 2,
+            "firstSillMetres": 5,
+            "floorPitchMetres": 3,
+            "doors": [
+              {
+                "kind": "loading",
+                "pitchMetres": 7,
+                "widthMetres": 5,
+                "heightMetres": 3.7
+              }
+            ]
+          }
+        }
+      },
+      "mainHeight": 14.306999940872192,
+      "heightEvidence": "Official fitted roof plane vertices minus b3_h_maaiveld; dominant regions clipped to native footprint, eaves and local roof slopes retained. Equipment planes below0.8% footprint area omitted.",
+      "officialRegions": [
+        {
+          "sourceArea": 5078.95,
+          "ring": [
+            [
+              -41.33675512656401,
+              14.204999940872192,
+              31.91390885962221
+            ],
+            [
+              -41.18605858509693,
+              14.204999940872192,
+              31.91366016801254
+            ],
+            [
+              -41.18586003363064,
+              14.204999940872192,
+              32.05873320606571
+            ],
+            [
+              41.122512200039814,
+              14.306999940872192,
+              31.816353459703635
+            ],
+            [
+              40.92049758469471,
+              14.301999940872193,
+              -29.82669893495398
+            ],
+            [
+              -18.684509951341603,
+              14.226999940872192,
+              -29.64240135682047
+            ],
+            [
+              -18.69142078558824,
+              14.226999940872192,
+              -31.570336310535936
+            ],
+            [
+              -19.6604783455484,
+              14.225999940872192,
+              -31.568310808808064
+            ],
+            [
+              -19.08778826363083,
+              14.226999940872192,
+              -29.531004632412703
+            ],
+            [
+              -21.70751767369159,
+              14.223999940872192,
+              -29.523306858620515
+            ],
+            [
+              -21.940559821851803,
+              14.222999940872192,
+              -31.279280668780416
+            ],
+            [
+              -22.23356903414621,
+              14.222999940872192,
+              -31.229828727679774
+            ],
+            [
+              -22.23835191681184,
+              14.222999940872192,
+              -29.630966287841716
+            ],
+            [
+              -41.513473386017516,
+              14.198999940872193,
+              -29.562269827626153
+            ],
+            [
+              -41.45558960121253,
+              14.199999940872193,
+              -15.526525583631496
+            ]
+          ]
+        }
+      ],
+      "wallBaseHeight": 14.198999940872193,
+      "official3D": {
+        "summaryPath": "experiments/3dbag-screen/0363100012242125/geometry-summary.json",
+        "groundNAP": 1.3380000591278076,
+        "rectangleFill": 0.971,
+        "courtyardArea": 0,
+        "dominantRoofPlaneCount": 1
+      },
+      "simplifications": [
+        "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained."
+      ]
+    },
+    {
+      "digits": "0363100012074248",
+      "id": "NL.IMBAG.Pand.0363100012074248",
+      "label": "Dark brick commercial block",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.939442,
+              52.397051
+            ],
+            [
+              4.939816,
+              52.397401
+            ],
+            [
+              4.939803,
+              52.397406
+            ],
+            [
+              4.939872,
+              52.397471
+            ],
+            [
+              4.939879,
+              52.397468
+            ],
+            [
+              4.940003,
+              52.397583
+            ],
+            [
+              4.93963,
+              52.397733
+            ],
+            [
+              4.939435,
+              52.397551
+            ],
+            [
+              4.939274,
+              52.397615
+            ],
+            [
+              4.938901,
+              52.397268
+            ],
+            [
+              4.939442,
+              52.397051
+            ]
+          ]
+        ]
+      },
+      "anchor": [
+        4.939452,
+        52.397391999999996
+      ],
+      "sourceHeight": 9.2,
+      "levels": 2,
+      "wall": "#3e3b33",
+      "roof": "#666862",
+      "palette": {
+        "glass": "#64818a",
+        "frames": "#c2c7c2",
+        "balcony": "#c1c6bf"
+      },
+      "primary": [
+        9
+      ],
+      "secondary": [],
+      "traits": [
+        "Low dark-brick commercial block with flat pale-edged roof.",
+        "Upper facade long horizontally grouped glazing beneath slim eave; small square windows on plainer wall runs.",
+        "A pale opaque projecting balcony/canopy band lies in front of upper glazing on reviewed street face.",
+        "Ground face mostly dark opaque wall/service entries; do not fill with evenly repeated housing windows.",
+        "2025 aerial confirms filled native roof plan and surface setback/equipment zones, open parking exterior."
+      ],
+      "sourcePack": "experiments/ordinary-ten/east/0363100012074248",
+      "references": [
+        "reference-0363100012074248-2025-0.jpg"
+      ],
+      "timing": {
+        "startedAt": "2026-10-06T19:22:00Z",
+        "finishedAt": "2026-10-06T19:30:51.694861+00:00"
+      },
+      "cameraBearing": 213.35269921891947,
+      "facade": {
+        "kind": "sparse",
+        "levels": 2,
+        "bayPitchMetres": 4,
+        "groupWidthMetres": 3.1,
+        "groupHeightMetres": 1.6,
+        "panes": 3,
+        "floorPitchMetres": 4.3,
+        "groundExceptionalBandHeightMetres": 3.2,
+        "sillHeightMetres": 0.65,
+        "edges": {
+          "9": {
+            "kind": "commercial-upper",
+            "canopy": {
+              "bottomMetres": 4.425,
+              "heightMetres": 0.75,
+              "depthMetres": 1
+            },
+            "firstSillMetres": 1,
+            "floorPitchMetres": 4.2,
+            "groupHeightMetres": 2.25
+          }
+        }
+      },
+      "mainHeight": 9.221999895095825,
+      "heightEvidence": "Official fitted roof plane vertices minus b3_h_maaiveld; dominant regions clipped to native footprint, eaves and local roof slopes retained. Equipment planes below0.8% footprint area omitted.",
+      "officialRegions": [
+        {
+          "sourceArea": 717.88,
+          "ring": [
+            [
+              23.797940331177497,
+              7.978999895095825,
+              -1.5812180228093098
+            ],
+            [
+              28.333907152115277,
+              7.9779998950958255,
+              -8.540782502096533
+            ],
+            [
+              28.78984095353257,
+              7.980999895095826,
+              -8.24145206231151
+            ],
+            [
+              37.21787784820823,
+              7.978999895095825,
+              -21.062032344172223
+            ],
+            [
+              11.915685219399135,
+              7.832999895095825,
+              -37.713883834934734
+            ],
+            [
+              -1.224818450887679,
+              7.835999895095825,
+              -17.59540986383257
+            ]
+          ]
+        },
+        {
+          "sourceArea": 2019.9,
+          "ring": [
+            [
+              -1.3315934772142335,
+              9.218999895095825,
+              -17.431666296717196
+            ],
+            [
+              -12.304158842395813,
+              9.221999895095825,
+              -24.63734237326406
+            ],
+            [
+              -37.585518542266854,
+              9.220999895095826,
+              14.027785065232763
+            ],
+            [
+              -0.8301705694749139,
+              9.210999895095824,
+              38.17322827211285
+            ],
+            [
+              24.569686261286257,
+              9.211999895095826,
+              -0.7235606762071711
+            ],
+            [
+              23.63777398433107,
+              9.211999895095826,
+              -1.3361037096655082
+            ],
+            [
+              23.797940331177497,
+              9.211999895095826,
+              -1.5812180228093098
+            ],
+            [
+              -1.224818450887679,
+              9.218999895095825,
+              -17.59540986383257
+            ]
+          ]
+        }
+      ],
+      "wallBaseHeight": 7.832999895095825,
+      "official3D": {
+        "summaryPath": "experiments/3dbag-screen/0363100012074248/geometry-summary.json",
+        "groundNAP": -3.609999895095825,
+        "rectangleFill": 0.891,
+        "courtyardArea": 0,
+        "dominantRoofPlaneCount": 2
+      },
+      "simplifications": [
+        "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained."
+      ]
+    },
+    {
+      "digits": "0363100012223044",
+      "id": "NL.IMBAG.Pand.0363100012223044",
+      "label": "Gray factory hall with high narrow glazing",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.939613,
+              52.386128
+            ],
+            [
+              4.939395,
+              52.385605
+            ],
+            [
+              4.940036,
+              52.385506
+            ],
+            [
+              4.940253,
+              52.386028
+            ],
+            [
+              4.939613,
+              52.386128
+            ]
+          ]
+        ]
+      },
+      "anchor": [
+        4.939824,
+        52.385817
+      ],
+      "sourceHeight": 9,
+      "mainHeight": 8.7,
+      "heightEvidence": "Source aerial and official dominant8.683m plane support8.7m hall; original regular shallow roof panel relief approximated at0.2m. Noisy fitted patch boundaries rejected after visual review.",
+      "levels": 1,
+      "wall": "#9b9b96",
+      "roof": "#646866",
+      "palette": {
+        "wall": "#9b9b96",
+        "roof": "#646866",
+        "frames": "#afb5b0",
+        "glass": "#4b616a"
+      },
+      "primary": [
+        3
+      ],
+      "secondary": [],
+      "traits": [
+        "2017 clear north canal facade photos show gray metal cladding, repeated high narrow slit windows, muted blue loading doors and light vertical piers.",
+        "North face has sparse blue loading doors about3.5\u00d74m plus a wider vertical glazed loading or stair assembly. The neighboring red brick wall and continuous roof glazing are outside this footprint.",
+        "2025 aerial and2023 AHN3DBAG support a solid rectangular hall with8\u20139m roof. A fresh230m panorama search found2021 context but no clear newer target facade. Preserve the2017 facade currentness gap and conditional acceptance.",
+        "Broad upper glazing and pale piers above two loading gates; regular shallow roof panel rhythm from2025 aerial."
+      ],
+      "sourcePack": "experiments/ordinary-ten/boxes/0363100012223044",
+      "references": [
+        "reference-0363100012223044-2017-0.jpg",
+        "reference-0363100012223044-2017-1.jpg",
+        "reference-0363100012223044-2017-2.jpg",
+        "reference-0363100012223044-2017-3.jpg"
+      ],
+      "cameraBearing": 17.370603278811984,
+      "facade": {
+        "kind": "corrugated",
+        "levels": 1,
+        "corrugationPitchMetres": 0.3,
+        "corrugationColor": "#909b96",
+        "plinthHeightMetres": 0.6,
+        "edges": {
+          "3": {
+            "doors": [
+              {
+                "kind": "loading",
+                "xMetres": 13.211983350666854,
+                "widthMetres": 3.5,
+                "heightMetres": 4,
+                "color": "#394f62"
+              },
+              {
+                "kind": "loading",
+                "xMetres": 28.173966701333708,
+                "widthMetres": 3.5,
+                "heightMetres": 4,
+                "color": "#394f62"
+              }
+            ],
+            "kind": "corrugated",
+            "levels": 1,
+            "firstSillMetres": 7.583,
+            "groupWidthMetres": 0.65,
+            "groupHeightMetres": 0.55,
+            "groundGroupHeightMetres": 0.55,
+            "bayPitchMetres": 5,
+            "panes": 1,
+            "sparseWindows": [
+              {
+                "xMetres": 1,
+                "sillMetres": 7.8,
+                "widthMetres": 42.5,
+                "heightMetres": 0.55,
+                "panes": 18
+              }
+            ],
+            "glazedAssemblies": [
+              {
+                "xMetres": 12.7119833507,
+                "sillMetres": 4.15,
+                "widthMetres": 4.5,
+                "heightMetres": 4.1,
+                "panes": 2,
+                "crossbarMetres": 6.2,
+                "pierWidthMetres": 0.3
+              },
+              {
+                "xMetres": 27.6739667013,
+                "sillMetres": 4.15,
+                "widthMetres": 4.5,
+                "heightMetres": 4.1,
+                "panes": 2,
+                "crossbarMetres": 6.2,
+                "pierWidthMetres": 0.3
+              }
+            ]
+          }
+        }
+      },
+      "official3D": {
+        "summaryPath": "experiments/ordinary-ten/boxes/0363100012223044/3dbag-geometry-summary.json",
+        "rectangleFill": 1,
+        "courtyardArea": 0,
+        "groundNAP": 0.949999988079071,
+        "dominantRoofHeightMetres": 8.683,
+        "dominantRoofPlaneCount": 26
+      },
+      "simplifications": [
+        "Only observed primary facades support pattern placement; other faces use neutral industrial material.",
+        "Door counts and dimensions are approximate visual estimates, not surveys.",
+        "Omit minor branding; do not invent building-name text.",
+        "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained.",
+        "Regular6\u00d77 shallow roof panel grid approximates observed aerial rhythm; fitted patch noise omitted. Glazing/pier proportions are visual estimates from2017 facade."
+      ],
+      "timing": null,
+      "officialRegions": [],
+      "wallBaseHeight": 8.7,
+      "roofPanelGrid": {
+        "columns": 6,
+        "rows": 7,
+        "reliefMetres": 0.2
+      },
+      "roofInterpretation": {
+        "kind": "regular-shallow-panels",
+        "reason": "Root/independent aerial comparison rejects noisy fitted patch ridges; preserve curated8.7m roof with original regular shallow panel grid."
+      }
+    },
+    {
+      "digits": "0363100012123231",
+      "id": "NL.IMBAG.Pand.0363100012123231",
+      "label": "Dark ribbed hall with red loading doors",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.812852,
+              52.399752
+            ],
+            [
+              4.81377,
+              52.399753
+            ],
+            [
+              4.81377,
+              52.400831
+            ],
+            [
+              4.812852,
+              52.40083
+            ],
+            [
+              4.812852,
+              52.399752
+            ]
+          ]
+        ]
+      },
+      "anchor": [
+        4.813311000000001,
+        52.400291499999994
+      ],
+      "sourceHeight": 9.3,
+      "mainHeight": 9.831000029563905,
+      "heightEvidence": "Official fitted roof plane vertices minus b3_h_maaiveld; dominant regions clipped to native footprint, eaves and local roof slopes retained. Equipment planes below0.8% footprint area omitted.",
+      "levels": 1,
+      "wall": "#414c4c",
+      "roof": "#646866",
+      "palette": {
+        "wall": "#414c4c",
+        "roof": "#646866",
+        "frames": "#afb5b0",
+        "glass": "#4b616a"
+      },
+      "primary": [
+        0
+      ],
+      "secondary": [],
+      "traits": [
+        "2025 south front views show charcoal green gray corrugated metal, a flat roof edge and low gray plinth.",
+        "Large muted red sectional loading doors about3.5\u00d74m; occasional blue or dark personnel door. The portable blue cabin lies outside the installed footprint.",
+        "A truck obscures the second view. Visible wall is mostly blank metal. Preserve shallow fitted roof elevations9.21\u20139.53m and avoid an invented office grid."
+      ],
+      "sourcePack": "experiments/ordinary-ten/boxes/0363100012123231",
+      "references": [
+        "reference-0363100012123231-2025-0.jpg",
+        "reference-0363100012123231-2025-1.jpg"
+      ],
+      "cameraBearing": 193.8162032703822,
+      "facade": {
+        "kind": "corrugated",
+        "levels": 1,
+        "corrugationPitchMetres": 0.22,
+        "corrugationColor": "#65706f",
+        "plinthHeightMetres": 0.6,
+        "edges": {
+          "0": {
+            "doors": [
+              {
+                "kind": "loading",
+                "xMetres": 19.03383186809997,
+                "widthMetres": 3.5,
+                "heightMetres": 4,
+                "color": "#865753"
+              },
+              {
+                "kind": "loading",
+                "xMetres": 39.81766373619994,
+                "widthMetres": 3.5,
+                "heightMetres": 4,
+                "color": "#865753"
+              }
+            ]
+          }
+        }
+      },
+      "official3D": {
+        "summaryPath": "experiments/ordinary-ten/boxes/0363100012123231/3dbag-geometry-summary.json",
+        "rectangleFill": 0.999,
+        "courtyardArea": 0,
+        "groundNAP": 1.2059999704360962,
+        "dominantRoofHeightMetres": 9.411,
+        "dominantRoofPlaneCount": 2
+      },
+      "simplifications": [
+        "Only observed primary facades support pattern placement; other faces use neutral industrial material.",
+        "Door counts and dimensions are approximate visual estimates, not surveys.",
+        "Omit minor branding; do not invent building-name text.",
+        "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained."
+      ],
+      "timing": null,
+      "officialRegions": [
+        {
+          "sourceArea": 4686,
+          "ring": [
+            [
+              -8.234521503932365,
+              9.698000029563904,
+              -53.65663418909179
+            ],
+            [
+              -8.762868969089093,
+              9.712000029563903,
+              -53.58040103421786
+            ],
+            [
+              -9.081262505689937,
+              9.721000029563903,
+              -52.57335848475776
+            ],
+            [
+              -9.187435316517488,
+              9.725000029563903,
+              -36.96253168487431
+            ],
+            [
+              -8.553634318153042,
+              9.708000029563904,
+              -36.82849447927708
+            ],
+            [
+              -9.062216326052726,
+              9.723000029563904,
+              -24.906359441386883
+            ],
+            [
+              -8.602294559613737,
+              9.711000029563904,
+              -11.91936782040301
+            ],
+            [
+              -12.921653063562893,
+              9.831000029563905,
+              -10.40030035335235
+            ],
+            [
+              -7.990861372258456,
+              9.695000029563904,
+              -8.553499904811588
+            ],
+            [
+              -7.614425633051521,
+              9.685000029563904,
+              1.825821028389214
+            ],
+            [
+              -7.722940722535833,
+              9.688000029563904,
+              1.8596997694479
+            ],
+            [
+              -7.212824342160833,
+              9.675000029563904,
+              15.768765367550657
+            ],
+            [
+              -7.393888469129731,
+              9.680000029563903,
+              15.84123974669808
+            ],
+            [
+              -7.347648834664424,
+              9.679000029563904,
+              17.398669395219883
+            ],
+            [
+              -7.3275321754744365,
+              9.678000029563904,
+              18.55510127880649
+            ],
+            [
+              -6.9813670465607895,
+              9.670000029563903,
+              29.777094147199534
+            ],
+            [
+              -7.068964332119774,
+              9.672000029563904,
+              29.805804183264968
+            ],
+            [
+              -7.31794165458549,
+              9.681000029563904,
+              47.047601313141456
+            ],
+            [
+              -7.234970684169167,
+              9.678000029563904,
+              47.064951552684704
+            ],
+            [
+              -6.988153927144672,
+              9.672000029563904,
+              60.23873223183131
+            ],
+            [
+              30.996295133880132,
+              8.618000029563904,
+              60.205337850569265
+            ],
+            [
+              31.005936999458957,
+              8.607000029563904,
+              -59.6790565500703
+            ],
+            [
+              30.87619464046087,
+              8.611000029563904,
+              -59.67902764780092
+            ],
+            [
+              30.876315877637943,
+              8.611000029563904,
+              -59.790085400160535
+            ],
+            [
+              -6.82128984292817,
+              9.658000029563905,
+              -59.713950323168206
+            ],
+            [
+              -8.04621773611695,
+              9.692000029563903,
+              -55.8442477650928
+            ]
+          ]
+        },
+        {
+          "sourceArea": 2806.62,
+          "ring": [
+            [
+              -8.762868969089093,
+              9.314000029563903,
+              -53.58040103421786
+            ],
+            [
+              -8.234521503932365,
+              9.333000029563904,
+              -53.65663418909179
+            ],
+            [
+              -8.04621773611695,
+              9.340000029563903,
+              -55.8442477650928
+            ],
+            [
+              -6.82128984292817,
+              9.383000029563904,
+              -59.713950323168206
+            ],
+            [
+              -31.37318378844756,
+              8.503000029563903,
+              -59.663972220762105
+            ],
+            [
+              -31.350792784970032,
+              8.508000029563904,
+              60.16714903288289
+            ],
+            [
+              -31.22404738197046,
+              8.513000029563903,
+              60.1671422834832
+            ],
+            [
+              -31.224309617396177,
+              8.513000029563903,
+              60.26019197859199
+            ],
+            [
+              -6.988153927144672,
+              9.382000029563903,
+              60.23873223183131
+            ],
+            [
+              -7.234970684169167,
+              9.372000029563903,
+              47.064951552684704
+            ],
+            [
+              -7.31794165458549,
+              9.369000029563903,
+              47.047601313141456
+            ],
+            [
+              -7.068964332119774,
+              9.378000029563903,
+              29.805804183264968
+            ],
+            [
+              -6.9813670465607895,
+              9.381000029563904,
+              29.777094147199534
+            ],
+            [
+              -7.3275321754744365,
+              9.368000029563904,
+              18.55510127880649
+            ],
+            [
+              -7.347648834664424,
+              9.367000029563904,
+              17.398669395219883
+            ],
+            [
+              -7.393888469129731,
+              9.365000029563904,
+              15.84123974669808
+            ],
+            [
+              -7.212824342160833,
+              9.372000029563903,
+              15.768765367550657
+            ],
+            [
+              -7.722940722535833,
+              9.353000029563903,
+              1.8596997694479
+            ],
+            [
+              -7.614425633051521,
+              9.357000029563904,
+              1.825821028389214
+            ],
+            [
+              -7.990861372258456,
+              9.343000029563903,
+              -8.553499904811588
+            ],
+            [
+              -12.921653063562893,
+              9.166000029563904,
+              -10.40030035335235
+            ],
+            [
+              -8.602294559613737,
+              9.321000029563903,
+              -11.91936782040301
+            ],
+            [
+              -9.062216326052726,
+              9.304000029563904,
+              -24.906359441386883
+            ],
+            [
+              -8.553634318153042,
+              9.322000029563904,
+              -36.82849447927708
+            ],
+            [
+              -9.187435316517488,
+              9.299000029563905,
+              -36.96253168487431
+            ],
+            [
+              -9.081262505689937,
+              9.303000029563904,
+              -52.57335848475776
+            ]
+          ]
+        }
+      ],
+      "wallBaseHeight": 8.503000029563903
+    },
+    {
+      "digits": "0363100012183449",
+      "id": "NL.IMBAG.Pand.0363100012183449",
+      "label": "Charcoal port warehouse behind containers",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.813468,
+              52.40312
+            ],
+            [
+              4.815148,
+              52.403446
+            ],
+            [
+              4.814816,
+              52.404087
+            ],
+            [
+              4.813134,
+              52.403762
+            ],
+            [
+              4.813468,
+              52.40312
+            ]
+          ]
+        ]
+      },
+      "anchor": [
+        4.814140999999999,
+        52.4036035
+      ],
+      "sourceHeight": 11.3,
+      "mainHeight": 11.609999979496003,
+      "heightEvidence": "Official fitted roof plane vertices minus b3_h_maaiveld; dominant regions clipped to native footprint, eaves and local roof slopes retained. Equipment planes below0.8% footprint area omitted.",
+      "levels": 1,
+      "wall": "#494c4b",
+      "roof": "#646866",
+      "palette": {
+        "wall": "#494c4b",
+        "roof": "#646866",
+        "frames": "#afb5b0",
+        "glass": "#4b616a"
+      },
+      "primary": [
+        0,
+        3
+      ],
+      "secondary": [],
+      "traits": [
+        "2022 southwest context shows a simple charcoal corrugated metal rectangle with a straight roof edge.",
+        "Containers obscure ground frontage; one tall loading opening is visible near the western end. Keep containers, scaffold and cranes outside the building mass.",
+        "Use sparse loading doors only on observed south and west faces. Record the2022 image gap; fitted2023 AHN roof supports an11.2\u201311.46m hall."
+      ],
+      "sourcePack": "experiments/ordinary-ten/boxes/0363100012183449",
+      "references": [
+        "reference-0363100012183449-2022-0.jpg",
+        "reference-0363100012183449-2022-1.jpg",
+        "reference-0363100012183449-2022-2.jpg",
+        "reference-0363100012183449-2022-3.jpg"
+      ],
+      "cameraBearing": 221.6056697938902,
+      "facade": {
+        "kind": "corrugated",
+        "levels": 1,
+        "corrugationPitchMetres": 0.22,
+        "corrugationColor": "#65706f",
+        "plinthHeightMetres": 0.6,
+        "edges": {
+          "0": {
+            "doors": [
+              {
+                "kind": "loading",
+                "xMetres": 57.36541125852885,
+                "widthMetres": 5,
+                "heightMetres": 5,
+                "color": "#313534"
+              }
+            ]
+          },
+          "3": {
+            "doors": [
+              {
+                "kind": "loading",
+                "xMetres": 34.99051031384674,
+                "widthMetres": 5,
+                "heightMetres": 5,
+                "color": "#313534"
+              }
+            ]
+          }
+        }
+      },
+      "official3D": {
+        "summaryPath": "experiments/ordinary-ten/boxes/0363100012183449/3dbag-geometry-summary.json",
+        "rectangleFill": 0.999,
+        "courtyardArea": 0,
+        "groundNAP": 0.8410000205039978,
+        "dominantRoofHeightMetres": 11.369,
+        "dominantRoofPlaneCount": 2
+      },
+      "simplifications": [
+        "Only observed primary facades support pattern placement; other faces use neutral industrial material.",
+        "Door counts and dimensions are approximate visual estimates, not surveys.",
+        "Omit minor branding; do not invent building-name text.",
+        "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained."
+      ],
+      "timing": null,
+      "officialRegions": [
+        {
+          "sourceArea": 5986.19,
+          "ring": [
+            [
+              53.17241750447828,
+              11.519999979496003,
+              -29.86862171465333
+            ],
+            [
+              47.6278549463686,
+              11.511999979496002,
+              -27.411481727750413
+            ],
+            [
+              47.58009194404628,
+              11.513999979496003,
+              -27.520159152798556
+            ],
+            [
+              33.64801080617113,
+              11.514999979496002,
+              -22.93951963247622
+            ],
+            [
+              32.848538215773026,
+              11.537999979496002,
+              -24.46696904318884
+            ],
+            [
+              30.033171823485667,
+              11.582999979496002,
+              -27.122030403193094
+            ],
+            [
+              30.44669102831536,
+              11.503999979496003,
+              -21.002179804371508
+            ],
+            [
+              19.397318388683747,
+              11.507999979496002,
+              -17.633946345604272
+            ],
+            [
+              19.117288908897443,
+              11.517999979496002,
+              -18.341089275943716
+            ],
+            [
+              1.70899855266202,
+              11.530999979496002,
+              -13.531704268841906
+            ],
+            [
+              1.721274875577405,
+              11.527999979496002,
+              -13.240652904685533
+            ],
+            [
+              -12.279548059096772,
+              11.525999979496003,
+              -8.402206013169007
+            ],
+            [
+              -23.830412745164995,
+              11.543999979496002,
+              -5.988386611940371
+            ],
+            [
+              -25.059927702270016,
+              11.577999979496003,
+              -8.2597964022915
+            ],
+            [
+              -26.56411374572874,
+              11.609999979496003,
+              -10.305912479216488
+            ],
+            [
+              -26.62109941237326,
+              11.609999979496003,
+              -10.318466953495431
+            ],
+            [
+              -27.424697246601223,
+              11.605999979496001,
+              -9.711783902612012
+            ],
+            [
+              -26.67641435713061,
+              11.531999979496002,
+              -4.051827403758068
+            ],
+            [
+              -41.12049305793524,
+              11.552999979496002,
+              -0.8806341627251868
+            ],
+            [
+              -40.9501081668831,
+              11.539999979496002,
+              0.09551268338526597
+            ],
+            [
+              -52.28216383899005,
+              11.553999979496002,
+              2.788806069731322
+            ],
+            [
+              -52.692488484846834,
+              11.564999979496003,
+              2.012665933424671
+            ],
+            [
+              -55.3374209612849,
+              11.556999979496002,
+              3.5014174320383518
+            ],
+            [
+              -55.25457382322688,
+              11.551999979496003,
+              3.88195430046153
+            ],
+            [
+              -57.08315709450709,
+              11.551999979496003,
+              4.483774741475202
+            ],
+            [
+              -60.79519836951584,
+              11.541999979496001,
+              6.573305797589057
+            ],
+            [
+              -60.36541336159497,
+              11.522999979496003,
+              7.917581025152174
+            ],
+            [
+              -45.788273713056576,
+              10.882999979496002,
+              54.06747168813297
+            ],
+            [
+              68.00777765410139,
+              10.858999979496001,
+              17.88937592614758
+            ],
+            [
+              67.96275722431689,
+              10.860999979496002,
+              17.74866024453189
+            ],
+            [
+              68.19769624821812,
+              10.860999979496002,
+              17.673763277798002
+            ]
+          ]
+        },
+        {
+          "sourceArea": 3000.27,
+          "ring": [
+            [
+              53.17241750447828,
+              11.249999979496002,
+              -29.86862171465333
+            ],
+            [
+              45.67807779017738,
+              10.755999979496002,
+              -53.58341205350001
+            ],
+            [
+              -68.4900907352612,
+              10.789999979496002,
+              -17.451881234442226
+            ],
+            [
+              -68.46452526371215,
+              10.791999979496001,
+              -17.374044444191554
+            ],
+            [
+              -68.52226394317475,
+              10.791999979496001,
+              -17.35557660989258
+            ],
+            [
+              -60.9303257785587,
+              11.291999979496001,
+              6.649417279762133
+            ],
+            [
+              -60.79519836951584,
+              11.291999979496001,
+              6.573305797589057
+            ],
+            [
+              -57.08315709450709,
+              11.272999979496003,
+              4.483774741475202
+            ],
+            [
+              -55.25457382322688,
+              11.271999979496002,
+              3.88195430046153
+            ],
+            [
+              -55.3374209612849,
+              11.263999979496003,
+              3.5014174320383518
+            ],
+            [
+              -52.692488484846834,
+              11.250999979496003,
+              2.012665933424671
+            ],
+            [
+              -52.28216383899005,
+              11.267999979496002,
+              2.788806069731322
+            ],
+            [
+              -40.9501081668831,
+              11.281999979496002,
+              0.09551268338526597
+            ],
+            [
+              -41.12049305793524,
+              11.261999979496002,
+              -0.8806341627251868
+            ],
+            [
+              -26.67641435713061,
+              11.284999979496002,
+              -4.051827403758068
+            ],
+            [
+              -27.424697246601223,
+              11.172999979496002,
+              -9.711783902612012
+            ],
+            [
+              -26.62109941237326,
+              11.165999979496002,
+              -10.318466953495431
+            ],
+            [
+              -26.56411374572874,
+              11.165999979496002,
+              -10.305912479216488
+            ],
+            [
+              -25.059927702270016,
+              11.213999979496002,
+              -8.2597964022915
+            ],
+            [
+              -23.830412745164995,
+              11.263999979496003,
+              -5.988386611940371
+            ],
+            [
+              -12.279548059096772,
+              11.283999979496002,
+              -8.402206013169007
+            ],
+            [
+              1.721274875577405,
+              11.271999979496002,
+              -13.240652904685533
+            ],
+            [
+              1.70899855266202,
+              11.266999979496003,
+              -13.531704268841906
+            ],
+            [
+              19.117288908897443,
+              11.274999979496002,
+              -18.341089275943716
+            ],
+            [
+              19.397318388683747,
+              11.289999979496002,
+              -17.633946345604272
+            ],
+            [
+              30.44669102831536,
+              11.288999979496003,
+              -21.002179804371508
+            ],
+            [
+              30.033171823485667,
+              11.169999979496001,
+              -27.122030403193094
+            ],
+            [
+              32.848538215773026,
+              11.236999979496002,
+              -24.46696904318884
+            ],
+            [
+              33.64801080617113,
+              11.269999979496003,
+              -22.93951963247622
+            ],
+            [
+              47.58009194404628,
+              11.262999979496001,
+              -27.520159152798556
+            ],
+            [
+              47.6278549463686,
+              11.264999979496002,
+              -27.411481727750413
+            ]
+          ]
+        }
+      ],
+      "wallBaseHeight": 10.755999979496002
+    },
+    {
+      "digits": "0363100012191215",
+      "id": "NL.IMBAG.Pand.0363100012191215",
+      "label": "Pale gray warehouse beyond canal scrub",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.785516,
+              52.400858
+            ],
+            [
+              4.786846,
+              52.400859
+            ],
+            [
+              4.786844,
+              52.401402
+            ],
+            [
+              4.785514,
+              52.4014
+            ],
+            [
+              4.785516,
+              52.400858
+            ]
+          ]
+        ]
+      },
+      "anchor": [
+        4.78618,
+        52.401129999999995
+      ],
+      "sourceHeight": 14,
+      "mainHeight": 14.428999948501588,
+      "heightEvidence": "Official fitted roof plane vertices minus b3_h_maaiveld; dominant regions clipped to native footprint, eaves and local roof slopes retained. Equipment planes below0.8% footprint area omitted.",
+      "levels": 1,
+      "wall": "#a7acab",
+      "roof": "#646866",
+      "palette": {
+        "wall": "#a7acab",
+        "roof": "#646866",
+        "frames": "#afb5b0",
+        "glass": "#4b616a"
+      },
+      "primary": [
+        2
+      ],
+      "secondary": [],
+      "traits": [
+        "2020 north canal context shows light gray vertical metal panels, dark vertical seams and a muted purple gray top band.",
+        "Scrub obscures lower frontage. There is no supported door or window count; maintain blank industrial walls.",
+        "The lower structure at the right lies outside the exact footprint and remains separate. Main fitted roof is13.6\u201313.86m, with small14.3m roof patches."
+      ],
+      "sourcePack": "experiments/ordinary-ten/boxes/0363100012191215",
+      "references": [
+        "reference-0363100012191215-2020-0.jpg",
+        "reference-0363100012191215-2020-1.jpg",
+        "reference-0363100012191215-2020-2.jpg",
+        "reference-0363100012191215-2020-3.jpg"
+      ],
+      "cameraBearing": 353.5377022200746,
+      "facade": {
+        "kind": "corrugated",
+        "levels": 1,
+        "corrugationPitchMetres": 0.25,
+        "corrugationColor": "#909b96",
+        "plinthHeightMetres": 0.6,
+        "edges": {
+          "2": {
+            "doors": [],
+            "topBandColor": "#75717d",
+            "topBandHeightMetres": 1.3,
+            "panelSeamPitchMetres": 12
+          }
+        },
+        "topBandHeightMetres": 1.2,
+        "topBandColor": "#827d8b"
+      },
+      "official3D": {
+        "summaryPath": "experiments/ordinary-ten/boxes/0363100012191215/3dbag-geometry-summary.json",
+        "rectangleFill": 1,
+        "courtyardArea": 0,
+        "groundNAP": 1.371000051498413,
+        "dominantRoofHeightMetres": 13.854,
+        "dominantRoofPlaneCount": 6
+      },
+      "simplifications": [
+        "Only observed primary facades support pattern placement; other faces use neutral industrial material.",
+        "Door counts and dimensions are approximate visual estimates, not surveys.",
+        "Omit minor branding; do not invent building-name text.",
+        "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained."
+      ],
+      "timing": null,
+      "officialRegions": [
+        {
+          "sourceArea": 641.65,
+          "ring": [
+            [
+              38.90153648933059,
+              13.630999948501588,
+              -24.45332990882008
+            ],
+            [
+              39.69758618496811,
+              13.671999948501586,
+              -23.290343212802895
+            ],
+            [
+              40.318835159851176,
+              13.670999948501587,
+              -23.3525338623528
+            ],
+            [
+              44.915616205577514,
+              13.806999948501588,
+              -19.49772319382845
+            ],
+            [
+              44.891502116645725,
+              13.447999948501588,
+              -30.02192571483647
+            ],
+            [
+              -45.44156647997793,
+              13.350999948501586,
+              -29.858994540365416
+            ],
+            [
+              -45.42215785849868,
+              13.640999948501587,
+              -21.371798143687215
+            ]
+          ]
+        },
+        {
+          "sourceArea": 48.89,
+          "ring": [
+            [
+              -35.467284060073105,
+              14.219999948501586,
+              18.959085468410706
+            ],
+            [
+              -35.354459058542616,
+              14.322999948501588,
+              -10.076763397635489
+            ],
+            [
+              -36.90262260161799,
+              14.428999948501588,
+              -10.468084670918358
+            ],
+            [
+              -37.253301846330885,
+              14.339999948501587,
+              19.008969671662328
+            ]
+          ]
+        },
+        {
+          "sourceArea": 79.31,
+          "ring": [
+            [
+              -20.13244375680616,
+              14.215999948501587,
+              19.981060384045577
+            ],
+            [
+              -20.37379224177562,
+              14.359999948501587,
+              -16.886863792383906
+            ],
+            [
+              -22.11708578029684,
+              14.368999948501587,
+              -17.09947524774833
+            ],
+            [
+              -22.67251680903084,
+              14.227999948501587,
+              19.963175339409247
+            ]
+          ]
+        },
+        {
+          "sourceArea": 80.87,
+          "ring": [
+            [
+              -7.414425340813818,
+              14.360999948501586,
+              -16.98766981804198
+            ],
+            [
+              -7.842206053796297,
+              14.226999948501588,
+              20.076918232822436
+            ],
+            [
+              -5.172057396813319,
+              14.219999948501586,
+              20.014688483738325
+            ],
+            [
+              -5.697137499192585,
+              14.354999948501588,
+              -16.540716639582342
+            ]
+          ]
+        },
+        {
+          "sourceArea": 4494.87,
+          "ring": [
+            [
+              39.69758618496811,
+              14.017999948501586,
+              -23.290343212802895
+            ],
+            [
+              38.90153648933059,
+              14.022999948501587,
+              -24.45332990882008
+            ],
+            [
+              -45.42215785849868,
+              13.914999948501587,
+              -21.371798143687215
+            ],
+            [
+              -45.29771714375232,
+              13.658999948501586,
+              30.15462638268218
+            ],
+            [
+              -44.84262561992379,
+              13.659999948501587,
+              30.154839591891687
+            ],
+            [
+              -44.84141427439303,
+              13.657999948501587,
+              30.542028361115854
+            ],
+            [
+              45.034466910652355,
+              13.756999948501587,
+              30.379898114089485
+            ],
+            [
+              44.915616205577514,
+              14.004999948501586,
+              -19.49772319382845
+            ],
+            [
+              40.318835159851176,
+              14.018999948501587,
+              -23.3525338623528
+            ]
+          ]
+        },
+        {
+          "sourceArea": 72.28,
+          "ring": [
+            [
+              9.7037938826132,
+              14.236999948501587,
+              20.084083016020884
+            ],
+            [
+              9.174411182816517,
+              14.351999948501588,
+              -15.919003729964913
+            ],
+            [
+              7.561449171940958,
+              14.337999948501587,
+              -15.457362599341025
+            ],
+            [
+              7.282458924916825,
+              14.217999948501587,
+              20.06319421959148
+            ]
+          ]
+        }
+      ],
+      "wallBaseHeight": 13.350999948501586
+    },
+    {
+      "digits": "0363100012224669",
+      "id": "NL.IMBAG.Pand.0363100012224669",
+      "label": "Dark metal warehouse with red delivery portals",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.762121,
+              52.412883
+            ],
+            [
+              4.760986,
+              52.412663
+            ],
+            [
+              4.761403,
+              52.411858
+            ],
+            [
+              4.762537,
+              52.412078
+            ],
+            [
+              4.762121,
+              52.412883
+            ]
+          ]
+        ]
+      },
+      "anchor": [
+        4.7617615,
+        52.4123705
+      ],
+      "sourceHeight": 10,
+      "mainHeight": 10.386999978065491,
+      "heightEvidence": "Official fitted roof plane vertices minus b3_h_maaiveld; dominant regions clipped to native footprint, eaves and local roof slopes retained. Equipment planes below0.8% footprint area omitted.",
+      "levels": 1,
+      "wall": "#404645",
+      "roof": "#646866",
+      "palette": {
+        "wall": "#404645",
+        "roof": "#646866",
+        "frames": "#afb5b0",
+        "glass": "#4b616a"
+      },
+      "primary": [
+        0
+      ],
+      "secondary": [],
+      "traits": [
+        "2025 north panoramas show a dark charcoal metal hall with broad vertical panel joints and a low gray concrete plinth.",
+        "North front has muted red loading doors about4\u00d74.5m and adjacent small pale personnel doors. Minor logos and tenant words may be omitted.",
+        "The low glazed neighboring structure and containers sit outside the exact rectangle. Fitted roof planes lie at9.95\u201310.15m; this is a shallow roof variation."
+      ],
+      "sourcePack": "experiments/ordinary-ten/boxes/0363100012224669",
+      "references": [
+        "reference-0363100012224669-2025-0.jpg",
+        "reference-0363100012224669-2025-1.jpg",
+        "reference-0363100012224669-2025-2.jpg"
+      ],
+      "cameraBearing": 341.4372824937231,
+      "facade": {
+        "kind": "corrugated",
+        "levels": 1,
+        "corrugationPitchMetres": 0.2,
+        "corrugationColor": "#65706f",
+        "plinthHeightMetres": 0.6,
+        "edges": {
+          "0": {
+            "doors": [
+              {
+                "kind": "loading",
+                "xMetres": 18.21668590646236,
+                "widthMetres": 4,
+                "heightMetres": 4.5,
+                "color": "#8a4b50"
+              },
+              {
+                "kind": "loading",
+                "xMetres": 38.43337181292472,
+                "widthMetres": 4,
+                "heightMetres": 4.5,
+                "color": "#8a4b50"
+              },
+              {
+                "kind": "loading",
+                "xMetres": 58.65005771938708,
+                "widthMetres": 4,
+                "heightMetres": 4.5,
+                "color": "#8a4b50"
+              },
+              {
+                "xMetres": 9.434453423015766,
+                "widthMetres": 1,
+                "heightMetres": 2.1,
+                "color": "#b0b7b0"
+              },
+              {
+                "xMetres": 36.390034631632254,
+                "widthMetres": 1,
+                "heightMetres": 2.1,
+                "color": "#b0b7b0"
+              }
+            ],
+            "panelSeamPitchMetres": 4.5
+          }
+        }
+      },
+      "official3D": {
+        "summaryPath": "experiments/ordinary-ten/boxes/0363100012224669/3dbag-geometry-summary.json",
+        "rectangleFill": 0.999,
+        "courtyardArea": 0,
+        "groundNAP": 1.0770000219345093,
+        "dominantRoofHeightMetres": 10.071,
+        "dominantRoofPlaneCount": 2
+      },
+      "simplifications": [
+        "Only observed primary facades support pattern placement; other faces use neutral industrial material.",
+        "Door counts and dimensions are approximate visual estimates, not surveys.",
+        "Omit minor branding; do not invent building-name text.",
+        "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained."
+      ],
+      "timing": null,
+      "officialRegions": [
+        {
+          "sourceArea": 4735.14,
+          "ring": [
+            [
+              21.362001861190382,
+              10.20499997806549,
+              4.741510102198561
+            ],
+            [
+              23.588390374050203,
+              10.18999997806549,
+              2.866298881845637
+            ],
+            [
+              24.507140844208177,
+              10.21899997806549,
+              4.5572234173889115
+            ],
+            [
+              24.7605131617836,
+              10.219999978065491,
+              4.543025621294703
+            ],
+            [
+              28.249632543765944,
+              10.20299997806549,
+              2.116617070973632
+            ],
+            [
+              28.956455269366074,
+              10.22499997806549,
+              3.419175205863496
+            ],
+            [
+              30.74995600316824,
+              10.20299997806549,
+              1.2245454979802162
+            ],
+            [
+              32.65801948140058,
+              10.213999978065491,
+              1.3251038436871454
+            ],
+            [
+              32.740028318861334,
+              10.20799997806549,
+              0.8811672015684735
+            ],
+            [
+              35.68038725997987,
+              10.22199997806549,
+              0.7907059032174857
+            ],
+            [
+              38.495637840676594,
+              10.219999978065491,
+              -0.3852293053060407
+            ],
+            [
+              39.07096344561388,
+              10.13599997806549,
+              -6.478327783248972
+            ],
+            [
+              40.08059303392922,
+              10.14199997806549,
+              -6.404015241916454
+            ],
+            [
+              24.24076885428929,
+              9.34599997806549,
+              -56.65687957292391
+            ],
+            [
+              24.128293493615754,
+              9.34599997806549,
+              -56.62188922400816
+            ],
+            [
+              24.089295139204413,
+              9.34399997806549,
+              -56.74661605076665
+            ],
+            [
+              -52.83856368411466,
+              9.299999978065491,
+              -32.358423167459875
+            ],
+            [
+              -35.8021949808981,
+              10.15499997806549,
+              21.62575440376031
+            ],
+            [
+              -33.97027034777001,
+              10.155999978065491,
+              20.99857251798369
+            ],
+            [
+              -32.36793707457991,
+              10.200999978065491,
+              23.60803998012358
+            ],
+            [
+              -30.036374401669843,
+              10.19199997806549,
+              22.128096548556755
+            ],
+            [
+              -28.979198143565025,
+              10.200999978065491,
+              22.393081125230196
+            ],
+            [
+              -27.65266395305171,
+              10.26099997806549,
+              26.12051128939271
+            ],
+            [
+              -25.709205248137657,
+              10.239999978065491,
+              23.959579902484904
+            ],
+            [
+              -26.25807689158183,
+              10.20899997806549,
+              21.994322220726872
+            ],
+            [
+              -23.60757562617171,
+              10.216999978065491,
+              21.623190244094417
+            ],
+            [
+              -22.024928036285136,
+              10.19999997806549,
+              19.863589246586173
+            ],
+            [
+              -20.8354727731135,
+              10.225999978065492,
+              21.233998006574666
+            ],
+            [
+              -20.20548646886261,
+              10.22799997806549,
+              21.146500798889463
+            ],
+            [
+              -19.484513957395283,
+              10.216999978065491,
+              20.151750648781785
+            ],
+            [
+              -19.57813277337104,
+              10.19199997806549,
+              18.43668071128974
+            ],
+            [
+              -15.977330420167288,
+              10.19699997806549,
+              17.509043049688557
+            ],
+            [
+              -15.358598417078932,
+              10.19699997806549,
+              17.273567921805864
+            ],
+            [
+              -13.558867257027979,
+              10.19199997806549,
+              16.26847834234951
+            ],
+            [
+              -12.445857879579235,
+              10.21799997806549,
+              17.685574580130492
+            ],
+            [
+              -10.913343240210686,
+              10.22499997806549,
+              17.636288696567703
+            ],
+            [
+              -8.30427285198206,
+              10.203999978065491,
+              15.235481927537933
+            ],
+            [
+              -2.240631609205537,
+              10.19699997806549,
+              12.54063931469318
+            ],
+            [
+              -1.8356112757675116,
+              10.194999978065491,
+              12.289006413454615
+            ],
+            [
+              -0.6013464093872253,
+              10.20199997806549,
+              12.373372457322773
+            ],
+            [
+              0.6428345829442486,
+              10.19699997806549,
+              11.52317346235293
+            ],
+            [
+              5.5584771975013085,
+              10.241999978065492,
+              12.966394654422686
+            ],
+            [
+              8.209039949642392,
+              10.25399997806549,
+              12.833401572177365
+            ],
+            [
+              12.927622624761117,
+              10.386999978065491,
+              20.484520008906202
+            ],
+            [
+              10.276702611543481,
+              10.245999978065491,
+              11.533852411896248
+            ],
+            [
+              12.91031920028678,
+              10.245999978065491,
+              10.591593173687386
+            ],
+            [
+              13.875796525336689,
+              10.21499997806549,
+              8.087959317020932
+            ],
+            [
+              15.665409182053029,
+              10.232999978065491,
+              8.688792066877795
+            ],
+            [
+              15.806420470687014,
+              10.22199997806549,
+              7.911173693393039
+            ],
+            [
+              17.495787509796028,
+              10.23199997806549,
+              7.996609495359905
+            ],
+            [
+              19.614173163956053,
+              10.21799997806549,
+              6.212377010196235
+            ],
+            [
+              19.81187309215052,
+              10.19899997806549,
+              4.83195930573288
+            ]
+          ]
+        },
+        {
+          "sourceArea": 2793.26,
+          "ring": [
+            [
+              23.588390374050203,
+              10.04199997806549,
+              2.866298881845637
+            ],
+            [
+              21.362001861190382,
+              10.01999997806549,
+              4.741510102198561
+            ],
+            [
+              19.81187309215052,
+              10.02699997806549,
+              4.83195930573288
+            ],
+            [
+              19.614173163956053,
+              10.00299997806549,
+              6.212377010196235
+            ],
+            [
+              17.495787509796028,
+              9.98199997806549,
+              7.996609495359905
+            ],
+            [
+              15.806420470687014,
+              9.992999978065491,
+              7.911173693393039
+            ],
+            [
+              15.665409182053029,
+              9.97899997806549,
+              8.688792066877795
+            ],
+            [
+              13.875796525336689,
+              9.99999997806549,
+              8.087959317020932
+            ],
+            [
+              12.91031920028678,
+              9.95899997806549,
+              10.591593173687386
+            ],
+            [
+              10.276702611543481,
+              9.95599997806549,
+              11.533852411896248
+            ],
+            [
+              12.927622624761117,
+              9.77899997806549,
+              20.484520008906202
+            ],
+            [
+              8.209039949642392,
+              9.943999978065492,
+              12.833401572177365
+            ],
+            [
+              5.5584771975013085,
+              9.95599997806549,
+              12.966394654422686
+            ],
+            [
+              0.6428345829442486,
+              10.008999978065491,
+              11.52317346235293
+            ],
+            [
+              -0.6013464093872253,
+              9.99999997806549,
+              12.373372457322773
+            ],
+            [
+              -1.8356112757675116,
+              10.007999978065492,
+              12.289006413454615
+            ],
+            [
+              -2.240631609205537,
+              10.005999978065491,
+              12.54063931469318
+            ],
+            [
+              -8.30427285198206,
+              9.988999978065491,
+              15.235481927537933
+            ],
+            [
+              -10.913343240210686,
+              9.959999978065492,
+              17.636288696567703
+            ],
+            [
+              -12.445857879579235,
+              9.966999978065491,
+              17.685574580130492
+            ],
+            [
+              -13.558867257027979,
+              9.998999978065491,
+              16.26847834234951
+            ],
+            [
+              -15.358598417078932,
+              9.989999978065491,
+              17.273567921805864
+            ],
+            [
+              -15.977330420167288,
+              9.988999978065491,
+              17.509043049688557
+            ],
+            [
+              -19.57813277337104,
+              9.991999978065492,
+              18.43668071128974
+            ],
+            [
+              -19.484513957395283,
+              9.959999978065492,
+              20.151750648781785
+            ],
+            [
+              -20.20548646886261,
+              9.94599997806549,
+              21.146500798889463
+            ],
+            [
+              -20.8354727731135,
+              9.947999978065491,
+              21.233998006574666
+            ],
+            [
+              -22.024928036285136,
+              9.97899997806549,
+              19.863589246586173
+            ],
+            [
+              -23.60757562617171,
+              9.95499997806549,
+              21.623190244094417
+            ],
+            [
+              -26.25807689158183,
+              9.96299997806549,
+              21.994322220726872
+            ],
+            [
+              -25.709205248137657,
+              9.92399997806549,
+              23.959579902484904
+            ],
+            [
+              -19.777647679893025,
+              9.505999978065491,
+              45.20514530756117
+            ],
+            [
+              -20.734688599272545,
+              9.504999978065491,
+              45.55760902681499
+            ],
+            [
+              -27.65266395305171,
+              9.89499997806549,
+              26.12051128939271
+            ],
+            [
+              -28.979198143565025,
+              9.969999978065491,
+              22.393081125230196
+            ],
+            [
+              -30.036374401669843,
+              9.98099997806549,
+              22.128096548556755
+            ],
+            [
+              -32.36793707457991,
+              9.96599997806549,
+              23.60803998012358
+            ],
+            [
+              -33.97027034777001,
+              10.02299997806549,
+              20.99857251798369
+            ],
+            [
+              -35.8021949808981,
+              10.020999978065491,
+              21.62575440376031
+            ],
+            [
+              -24.54157624869126,
+              9.31199997806549,
+              57.31259131751244
+            ],
+            [
+              52.45015769384279,
+              9.341999978065491,
+              32.83923466792828
+            ],
+            [
+              40.08059303392922,
+              10.12199997806549,
+              -6.404015241916454
+            ],
+            [
+              39.07096344561388,
+              10.12899997806549,
+              -6.478327783248972
+            ],
+            [
+              38.495637840676594,
+              10.020999978065491,
+              -0.3852293053060407
+            ],
+            [
+              35.68038725997987,
+              10.014999978065491,
+              0.7907059032174857
+            ],
+            [
+              32.740028318861334,
+              10.02899997806549,
+              0.8811672015684735
+            ],
+            [
+              32.65801948140058,
+              10.021999978065491,
+              1.3251038436871454
+            ],
+            [
+              30.74995600316824,
+              10.033999978065491,
+              1.2245454979802162
+            ],
+            [
+              28.956455269366074,
+              10.00299997806549,
+              3.419175205863496
+            ],
+            [
+              28.249632543765944,
+              10.030999978065491,
+              2.116617070973632
+            ],
+            [
+              24.7605131617836,
+              10.005999978065491,
+              4.543025621294703
+            ],
+            [
+              24.507140844208177,
+              10.00699997806549,
+              4.5572234173889115
+            ]
+          ]
+        }
+      ],
+      "wallBaseHeight": 9.299999978065491
+    },
+    {
+      "digits": "0363100012067126",
+      "id": "NL.IMBAG.Pand.0363100012067126",
+      "label": "Pale corrugated shed with faded coral stripes",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.763517,
+              52.41106
+            ],
+            [
+              4.76396,
+              52.410204
+            ],
+            [
+              4.764798,
+              52.410366
+            ],
+            [
+              4.764356,
+              52.411222
+            ],
+            [
+              4.763517,
+              52.41106
+            ]
+          ]
+        ]
+      },
+      "anchor": [
+        4.7641575,
+        52.410713
+      ],
+      "sourceHeight": 14.3,
+      "mainHeight": 16.32300004196167,
+      "heightEvidence": "Official fitted roof plane vertices minus b3_h_maaiveld; dominant regions clipped to native footprint, eaves and local roof slopes retained. Equipment planes below0.8% footprint area omitted.",
+      "levels": 1,
+      "wall": "#a0afae",
+      "roof": "#646866",
+      "palette": {
+        "wall": "#a0afae",
+        "roof": "#646866",
+        "frames": "#afb5b0",
+        "glass": "#4b616a"
+      },
+      "primary": [
+        1
+      ],
+      "secondary": [],
+      "traits": [
+        "2025 south views confirm a pale gray green corrugated metal hall with a flat edge and no domestic glazing grid.",
+        "Observed south face has three broad faded salmon vertical stripes, about1.5m wide, and two dark personnel doors about1\u00d72.1m.",
+        "Low gray aggregate plinth about0.6m high. Use restrained metal material on unseen faces; do not extrapolate decorative stripes."
+      ],
+      "sourcePack": "experiments/ordinary-ten/boxes/0363100012067126",
+      "references": [
+        "reference-0363100012067126-2025-0.jpg",
+        "reference-0363100012067126-2025-1.jpg",
+        "reference-0363100012067126-2025-2.jpg"
+      ],
+      "cameraBearing": 161.98867550171224,
+      "facade": {
+        "kind": "corrugated",
+        "levels": 1,
+        "corrugationPitchMetres": 0.2,
+        "corrugationColor": "#909b98",
+        "plinthHeightMetres": 0.6,
+        "edges": {
+          "1": {
+            "stripes": [
+              {
+                "fraction": 0.2,
+                "widthMetres": 1.5,
+                "color": "#bb9090"
+              },
+              {
+                "fraction": 0.5,
+                "widthMetres": 1.5,
+                "color": "#bb9090"
+              },
+              {
+                "fraction": 0.8,
+                "widthMetres": 1.5,
+                "color": "#bb9090"
+              }
+            ],
+            "doors": [
+              {
+                "xMetres": 16.71418564826386,
+                "widthMetres": 1,
+                "heightMetres": 2.1
+              },
+              {
+                "xMetres": 38.800788112041104,
+                "widthMetres": 1,
+                "heightMetres": 2.1
+              }
+            ]
+          }
+        }
+      },
+      "official3D": {
+        "summaryPath": "experiments/ordinary-ten/boxes/0363100012067126/3dbag-geometry-summary.json",
+        "rectangleFill": 1,
+        "courtyardArea": 0,
+        "groundNAP": 1.11899995803833,
+        "dominantRoofPlaneCount": 2
+      },
+      "simplifications": [
+        "Only observed primary facades support pattern placement; other faces use neutral industrial material.",
+        "Door counts and dimensions are approximate visual estimates, not surveys.",
+        "Omit minor branding; do not invent building-name text.",
+        "Native rectangular gable preserves two fitted12.5degree roofplanes; tiny perimeter survey irregularities omitted.",
+        "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained."
+      ],
+      "officialRegions": [
+        {
+          "sourceArea": 2989.62,
+          "ring": [
+            [
+              14.869066202680944,
+              16.28700004196167,
+              47.859378062282474
+            ],
+            [
+              -15.204853827865904,
+              16.32300004196167,
+              -47.405365321811814
+            ],
+            [
+              -43.59605260520748,
+              9.70100004196167,
+              -38.399922683322814
+            ],
+            [
+              -43.56116026912307,
+              9.70100004196167,
+              -38.28816630600386
+            ],
+            [
+              -43.64177900409421,
+              9.68300004196167,
+              -38.262457689142764
+            ],
+            [
+              -13.622164193354369,
+              9.64200004196167,
+              56.89652988514865
+            ]
+          ]
+        },
+        {
+          "sourceArea": 2988.14,
+          "ring": [
+            [
+              -15.204853827865904,
+              16.32300004196167,
+              -47.405365321811814
+            ],
+            [
+              14.869066202680944,
+              16.28700004196167,
+              47.859378062282474
+            ],
+            [
+              43.3275554903394,
+              9.64500004196167,
+              38.83267962470228
+            ],
+            [
+              13.287439166108292,
+              9.67700004196167,
+              -56.38850238396003
+            ],
+            [
+              13.234685175017624,
+              9.68900004196167,
+              -56.37203948917232
+            ],
+            [
+              13.219295540918221,
+              9.68900004196167,
+              -56.42093200683746
+            ]
+          ]
+        }
+      ],
+      "wallBaseHeight": 9.64200004196167
+    },
+    {
+      "digits": "0363100012159282",
+      "id": "NL.IMBAG.Pand.0363100012159282",
+      "label": "White metal industrial box with concrete lower wall",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.751975,
+              52.405421
+            ],
+            [
+              4.750883,
+              52.405563
+            ],
+            [
+              4.750612,
+              52.404781
+            ],
+            [
+              4.750605,
+              52.404782
+            ],
+            [
+              4.750604,
+              52.404779
+            ],
+            [
+              4.750611,
+              52.404778
+            ],
+            [
+              4.750598,
+              52.404741
+            ],
+            [
+              4.751691,
+              52.404599
+            ],
+            [
+              4.751704,
+              52.404636
+            ],
+            [
+              4.751711,
+              52.404635
+            ],
+            [
+              4.751712,
+              52.404639
+            ],
+            [
+              4.751705,
+              52.40464
+            ],
+            [
+              4.751975,
+              52.405421
+            ]
+          ]
+        ]
+      },
+      "anchor": [
+        4.7512865,
+        52.405080999999996
+      ],
+      "sourceHeight": 13.4,
+      "mainHeight": 13.608999998807906,
+      "heightEvidence": "Official fitted roof plane vertices minus b3_h_maaiveld; dominant regions clipped to native footprint, eaves and local roof slopes retained. Equipment planes below0.8% footprint area omitted.",
+      "levels": 1,
+      "wall": "#d9dfdd",
+      "roof": "#888e8b",
+      "palette": {
+        "wall": "#d9dfdd",
+        "roof": "#888e8b",
+        "frames": "#b4bab7",
+        "glass": "#596b70"
+      },
+      "primary": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "secondary": [],
+      "traits": [
+        "Clear2025 west views show the exact2159282 white corrugated metal box with a gray concrete lower wall about3m high.",
+        "Main wall is mostly blank white metal with horizontal panel joints and stronger vertical bay seams around4.5\u20135m apart. Sparse dark personnel doors about1\u00d72.1m sit in the lower concrete strip.",
+        "No supported window grid or tall loading doors on photographed west face; preserve neighboring sister sheds separately."
+      ],
+      "sourcePack": "experiments/ordinary-ten/boxes/0363100012159282",
+      "references": [
+        "reference-0363100012159282-2025-0.jpg",
+        "reference-0363100012159282-2025-1.jpg",
+        "reference-0363100012159282-2025-2.jpg"
+      ],
+      "cameraBearing": 282.8297665422222,
+      "facade": {
+        "kind": "corrugated",
+        "levels": 1,
+        "corrugationPitchMetres": 0.25,
+        "corrugationColor": "#c4ccc8",
+        "plinthHeightMetres": 3,
+        "plinthColor": "#a1a9a5",
+        "horizontalJointPitchMetres": 1.2,
+        "edges": {
+          "1": {
+            "doors": [
+              {
+                "xMetres": 10.380593692053823,
+                "widthMetres": 1,
+                "heightMetres": 2.1,
+                "color": "#3d4544"
+              },
+              {
+                "xMetres": 40.03943281220761,
+                "widthMetres": 1,
+                "heightMetres": 2.1,
+                "color": "#3d4544"
+              }
+            ],
+            "panelSeamPitchMetres": 4.5
+          },
+          "2": {
+            "panelSeamPitchMetres": 4.5
+          },
+          "3": {
+            "panelSeamPitchMetres": 4.5
+          },
+          "4": {
+            "panelSeamPitchMetres": 4.5
+          },
+          "5": {
+            "panelSeamPitchMetres": 4.5
+          }
+        }
+      },
+      "official3D": {
+        "summaryPath": "experiments/ordinary-ten/boxes/0363100012159282/3dbag-geometry-summary.json",
+        "rectangleFill": 0.987,
+        "courtyardArea": 0,
+        "groundNAP": 0.4050000011920929,
+        "dominantRoofHeightMetres": 12.963,
+        "dominantRoofPlaneCount": 2
+      },
+      "simplifications": [
+        "Unseen faces use restrained same industrial material, without invented doors or glazing.",
+        "Door count and panel spacing are visual estimates.",
+        "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained."
+      ],
+      "timing": null,
+      "officialRegions": [
+        {
+          "sourceArea": 6701.85,
+          "ring": [
+            [
+              46.37018433456168,
+              12.624999998807906,
+              -37.69724681386123
+            ],
+            [
+              -22.98935545151077,
+              13.601999998807907,
+              -52.40998839760806
+            ],
+            [
+              -26.258575399667677,
+              13.596999998807908,
+              -35.51551107355834
+            ],
+            [
+              -27.163437669587147,
+              13.608999998807906,
+              -35.47652791251295
+            ],
+            [
+              -42.7985351196415,
+              13.601999998807907,
+              38.98348206228292
+            ],
+            [
+              27.27367822773669,
+              12.614999998807907,
+              53.84775280958024
+            ],
+            [
+              28.143825823370886,
+              12.614999998807907,
+              49.72898122280782
+            ],
+            [
+              28.63375469712096,
+              12.607999998807907,
+              49.83272863732452
+            ],
+            [
+              28.72020670031902,
+              12.607999998807907,
+              49.44777032361941
+            ],
+            [
+              28.225270655217297,
+              12.614999998807907,
+              49.34206590037462
+            ],
+            [
+              46.50374899273463,
+              12.621999998807906,
+              -37.14613619307414
+            ],
+            [
+              46.26377013692933,
+              12.624999998807906,
+              -37.198054639922304
+            ]
+          ]
+        },
+        {
+          "sourceArea": 402.78,
+          "ring": [
+            [
+              -22.98935545151077,
+              13.315999998807907,
+              -52.40998839760806
+            ],
+            [
+              -26.960884049692,
+              13.246999998807906,
+              -53.252473487617635
+            ],
+            [
+              -27.0231561413029,
+              13.246999998807906,
+              -52.955772533429695
+            ],
+            [
+              -27.649062492682944,
+              13.235999998807907,
+              -53.08633160085577
+            ],
+            [
+              -27.70170568132132,
+              13.235999998807907,
+              -52.82973605340885
+            ],
+            [
+              -45.985514346584566,
+              13.228999998807907,
+              33.591759999386
+            ],
+            [
+              -46.46846088439083,
+              13.220999998807907,
+              33.48795851690198
+            ],
+            [
+              -46.55685930519055,
+              13.220999998807907,
+              33.87793790147953
+            ],
+            [
+              -46.067925232513744,
+              13.228999998807907,
+              33.98168663534449
+            ],
+            [
+              -46.93996556738899,
+              13.228999998807907,
+              38.105490878417356
+            ],
+            [
+              -42.7985351196415,
+              13.300999998807907,
+              38.98348206228292
+            ],
+            [
+              -27.163437669587147,
+              13.304999998807908,
+              -35.47652791251295
+            ],
+            [
+              -26.258575399667677,
+              13.319999998807907,
+              -35.51551107355834
+            ]
+          ]
+        }
+      ],
+      "wallBaseHeight": 12.607999998807907
+    },
+    {
+      "digits": "0363100012238052",
+      "id": "NL.IMBAG.Pand.0363100012238052",
+      "label": "Tall charcoal ribbed industrial box with low southwest strip",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.938083,
+              52.313292
+            ],
+            [
+              4.938083,
+              52.313292
+            ],
+            [
+              4.938058,
+              52.31332
+            ],
+            [
+              4.938071,
+              52.313349
+            ],
+            [
+              4.938119,
+              52.313365
+            ],
+            [
+              4.938092,
+              52.313395
+            ],
+            [
+              4.938106,
+              52.313423
+            ],
+            [
+              4.938151,
+              52.313439
+            ],
+            [
+              4.938151,
+              52.313439
+            ],
+            [
+              4.937673,
+              52.313964
+            ],
+            [
+              4.937673,
+              52.313964
+            ],
+            [
+              4.937627,
+              52.313948
+            ],
+            [
+              4.937581,
+              52.313956
+            ],
+            [
+              4.937554,
+              52.313985
+            ],
+            [
+              4.937507,
+              52.31397
+            ],
+            [
+              4.93746,
+              52.313977
+            ],
+            [
+              4.937434,
+              52.314005
+            ],
+            [
+              4.937433,
+              52.314005
+            ],
+            [
+              4.936116,
+              52.313555
+            ],
+            [
+              4.936116,
+              52.313554
+            ],
+            [
+              4.936118,
+              52.313552
+            ],
+            [
+              4.936045,
+              52.313527
+            ],
+            [
+              4.936691,
+              52.312818
+            ],
+            [
+              4.936764,
+              52.312843
+            ],
+            [
+              4.936766,
+              52.312841
+            ],
+            [
+              4.936767,
+              52.312841
+            ],
+            [
+              4.938083,
+              52.313292
+            ]
+          ]
+        ]
+      },
+      "anchor": [
+        4.937098000000001,
+        52.3134115
+      ],
+      "sourceHeight": 31.51,
+      "mainHeight": 31.419999961853026,
+      "levels": 1,
+      "wall": "#343b3e",
+      "roof": "#50575a",
+      "palette": {
+        "wall": "#343b3e",
+        "roof": "#50575a",
+        "frames": "#525c5e",
+        "glass": "#343b3e"
+      },
+      "primary": [
+        25,
+        17
+      ],
+      "secondary": [],
+      "traits": [
+        "One tall nearly rectangular volume, about31m high, no office window grid",
+        "Dense full-height vertical metal ribs from about5m base to eaves",
+        "Ground treatment differs by long side: SE charcoal doors/panels; NW pale concrete panels",
+        "Low5m strip separate from tall shell on SW short face",
+        "Small roof equipment does not define whole-building height"
+      ],
+      "sourcePack": "experiments/ordinary-ten/tall-boxes/0363100012238052",
+      "references": [
+        "reference-0363100012238052-2025-0.jpg",
+        "reference-0363100012238052-2025-1.jpg",
+        "reference-0363100012238052-2025-2.jpg",
+        "reference-0363100012238052-2025-3.jpg"
+      ],
+      "cameraBearing": 145.9215859028709,
+      "facade": {
+        "kind": "corrugated",
+        "levels": 1,
+        "corrugationPitchMetres": 0.25,
+        "corrugationColor": "#252c2f",
+        "plinthHeightMetres": 5.4,
+        "plinthColor": "#55575a",
+        "edges": {
+          "8": {},
+          "17": {
+            "plinthColor": "#c7ccc9",
+            "panelSeamPitchMetres": 3.2,
+            "panelSeamColor": "#8b9491",
+            "baseVents": {
+              "pitchMetres": 3.2,
+              "sillMetres": 4.4,
+              "widthMetres": 0.45,
+              "heightMetres": 0.3
+            },
+            "lintelBand": {
+              "bottomMetres": 5,
+              "heightMetres": 0.4,
+              "color": "#303839"
+            }
+          },
+          "21": {},
+          "25": {
+            "doors": [
+              {
+                "xMetres": 10,
+                "widthMetres": 2.5,
+                "heightMetres": 3.7,
+                "color": "#262b2c"
+              },
+              {
+                "xMetres": 45,
+                "widthMetres": 2.5,
+                "heightMetres": 3.7,
+                "color": "#262b2c"
+              },
+              {
+                "xMetres": 75,
+                "widthMetres": 2.5,
+                "heightMetres": 3.7,
+                "color": "#262b2c"
+              }
+            ]
+          }
+        }
+      },
+      "official3D": {
+        "summaryPath": "experiments/ordinary-ten/tall-boxes/0363100012238052/geometry-summary.json",
+        "groundNAP": -3.1649999618530273,
+        "annexHeightMetres": 5.27,
+        "annexFootprintFraction": 0.048,
+        "rectangleFill": 0.981,
+        "courtyardArea": 0,
+        "dominantRoofPlaneCount": 2
+      },
+      "simplifications": [
+        "Four34mroofequipmenthousings omitted; they do not define occupied buildingheight.",
+        "Unobserved northeast and lowstripfaces conservatively carry plain darkbase and uppermetalassembly; no inventedglazing.",
+        "Source mainandlowstriproofplanes retained via nativeplanintersections.",
+        "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained."
+      ],
+      "timing": {
+        "checkedAt": "2026-10-06T19:54:30.522Z"
+      },
+      "officialRegions": [
+        {
+          "sourceArea": 9694.72,
+          "ring": [
+            [
+              66.05851166064569,
+              31.414999961853027,
+              7.2213571325178805
+            ],
+            [
+              69.3057662872741,
+              31.41599996185303,
+              5.4032560869498525
+            ],
+            [
+              67.45906717445465,
+              31.41599996185303,
+              2.110004041905711
+            ],
+            [
+              68.38574298365333,
+              31.416999961853026,
+              -1.0353843782070271
+            ],
+            [
+              71.47975548576827,
+              31.417999961853027,
+              -2.7814953530108255
+            ],
+            [
+              71.50629888658413,
+              31.417999961853027,
+              -2.846694010596593
+            ],
+            [
+              38.938489941741665,
+              31.419999961853026,
+              -61.23485413790462
+            ],
+            [
+              35.84631843814818,
+              31.41899996185303,
+              -59.50974535941128
+            ],
+            [
+              32.718240535014345,
+              31.41899996185303,
+              -60.36275293913121
+            ],
+            [
+              30.873494589274433,
+              31.41899996185303,
+              -63.655002709790836
+            ],
+            [
+              27.63587914732181,
+              31.417999961853027,
+              -61.886962619801125
+            ],
+            [
+              24.441900621519167,
+              31.416999961853026,
+              -62.744557778274554
+            ],
+            [
+              22.697174301014208,
+              31.416999961853026,
+              -65.839323411642
+            ],
+            [
+              22.621228627512988,
+              31.416999961853026,
+              -65.85485943026697
+            ],
+            [
+              -66.99001363254067,
+              31.387999961853026,
+              -15.681922567674746
+            ],
+            [
+              -22.91409025432962,
+              31.384999961853026,
+              63.51972647877574
+            ],
+            [
+              -22.777996046621382,
+              31.384999961853026,
+              63.739993933316725
+            ],
+            [
+              -22.730992934711125,
+              31.384999961853026,
+              63.755709510651855
+            ],
+            [
+              66.86379158627345,
+              31.413999961853026,
+              13.50262756548858
+            ],
+            [
+              65.13486368104824,
+              31.413999961853026,
+              10.371729844692936
+            ]
+          ]
+        },
+        {
+          "sourceArea": 516.58,
+          "ring": [
+            [
+              -27.879848436168096,
+              5.254999961853027,
+              66.29908875255325
+            ],
+            [
+              -22.91409025432962,
+              5.303999961853027,
+              63.51972647877574
+            ],
+            [
+              -66.99001363254067,
+              5.269999961853028,
+              -15.681922567674746
+            ],
+            [
+              -67.00161674681993,
+              5.268999961853027,
+              -15.621818952262174
+            ],
+            [
+              -66.88048796510206,
+              5.268999961853027,
+              -15.40145938617286
+            ],
+            [
+              -71.84331903140361,
+              5.219999961853027,
+              -12.62407265765006
+            ]
+          ]
+        }
+      ],
+      "wallBaseHeight": 5.219999961853027,
+      "heightEvidence": "Official fitted roof plane vertices minus b3_h_maaiveld; dominant regions clipped to native footprint, eaves and local roof slopes retained. Equipment planes below0.8% footprint area omitted.",
+      "excludeRegionAboveHeightMetres": 32
+    }
+  ]
+}
