@@ -1,0 +1,956 @@
+{
+  "version": 1,
+  "libraryUrl": "https://katamari.andrew-boylan.com/",
+  "sourcePack": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "33b38f0",
+    "path": "models/artis-animals"
+  },
+  "attribution": "Imported models from Katamari Damacy / We Love Katamari via Andrew Boylan’s Katamari Object Library. Original game assets © their respective owners. Additional animal miniatures are original Canal Recall geometry. Locations © OpenStreetMap contributors (ODbL).",
+  "placementNote": "Named OSM animal points; approximate adult heights/headings and one representative per species. Mixed-species groups use a 3m radius. Hollandse Polder spoonbills/lapwings and Gierenvolière griffon vultures are confirmed by ARTIS. No building suppression or new route destinations.",
+  "supplementalSources": [
+    "https://www.artis.nl/en/events/event-venues-at-artis/royal-hall",
+    "https://www.artis.nl/nl/artis-park/nieuws-uit-artis-park/mannenkoppel-heeft-vale-gier-ei-uitgebroed-in-artis"
+  ],
+  "selectionNote": "User-requested focus on larger and distinctive animals; small extras deliberately omitted. Originals use broad angular faces, small painted eyes and flush coat markings.",
+  "animals": [
+    {
+      "id": "12950153661-0ac5",
+      "name": "Indian Elephant",
+      "osmId": "n12950153661",
+      "mappedName": "Aziatische olifant",
+      "osmUrl": "https://www.openstreetmap.org/node/12950153661",
+      "anchor": [
+        4.9168123,
+        52.366743
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 3.1,
+      "headingDegrees": 0,
+      "file": "0ac5_Indian_Elephant.glb",
+      "version": "e3e34de2c0b6",
+      "sourceUrl": "https://pub-13a5286ea5b347fbb60687b5ebb02b5a.r2.dev/we-love-katamari-models-v2/0ac5_Indian_Elephant.glb",
+      "game": "We Love Katamari"
+    },
+    {
+      "id": "12950334391-01ed",
+      "name": "Giraffe",
+      "osmId": "n12950334391",
+      "mappedName": "Netgiraffe, Grantzebra, Grote Koedoe, Nijlantilope",
+      "osmUrl": "https://www.openstreetmap.org/node/12950334391",
+      "anchor": [
+        4.9180529,
+        52.3664195
+      ],
+      "offsetMetres": [
+        3,
+        0
+      ],
+      "heightMetres": 4.8,
+      "headingDegrees": 137,
+      "file": "01ed_Giraffe.glb",
+      "version": "ab7261f26d6a",
+      "sourceUrl": "https://pub-13a5286ea5b347fbb60687b5ebb02b5a.r2.dev/models-v3/01ed_Giraffe.glb",
+      "game": "Katamari Damacy"
+    },
+    {
+      "id": "12950334391-0a9a",
+      "name": "Zebra",
+      "osmId": "n12950334391",
+      "mappedName": "Netgiraffe, Grantzebra, Grote Koedoe, Nijlantilope",
+      "osmUrl": "https://www.openstreetmap.org/node/12950334391",
+      "anchor": [
+        4.9180529,
+        52.3664195
+      ],
+      "offsetMetres": [
+        0,
+        3
+      ],
+      "heightMetres": 1.6,
+      "headingDegrees": 274,
+      "file": "0a9a_Zebra.glb",
+      "version": "1ab937cd7240",
+      "sourceUrl": "https://pub-13a5286ea5b347fbb60687b5ebb02b5a.r2.dev/we-love-katamari-models-v2/0a9a_Zebra.glb",
+      "game": "We Love Katamari"
+    },
+    {
+      "id": "12954884298-0a9b",
+      "name": "Lion",
+      "osmId": "n12954884298",
+      "mappedName": "Leeuw",
+      "osmUrl": "https://www.openstreetmap.org/node/12954884298",
+      "anchor": [
+        4.9194838,
+        52.3661911
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 1.2,
+      "headingDegrees": 51,
+      "file": "0a9b_Lion.glb",
+      "version": "c9ce8ece32b2",
+      "sourceUrl": "https://pub-13a5286ea5b347fbb60687b5ebb02b5a.r2.dev/we-love-katamari-models-v2/0a9b_Lion.glb",
+      "game": "We Love Katamari"
+    },
+    {
+      "id": "12954909218-0406",
+      "name": "Penguin",
+      "osmId": "n12954909218",
+      "mappedName": "Afrikaanse pinguïn",
+      "osmUrl": "https://www.openstreetmap.org/node/12954909218",
+      "anchor": [
+        4.9182319,
+        52.3647412
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 0.65,
+      "headingDegrees": 188,
+      "file": "0406_Penguin.glb",
+      "version": "2dc256d8fd87",
+      "sourceUrl": "https://pub-13a5286ea5b347fbb60687b5ebb02b5a.r2.dev/models-v3/0406_Penguin.glb",
+      "game": "Katamari Damacy"
+    },
+    {
+      "id": "12941391669-0a2e",
+      "name": "Flamingo",
+      "osmId": "n12941391669",
+      "mappedName": "Chileense flamingo",
+      "osmUrl": "https://www.openstreetmap.org/node/12941391669",
+      "anchor": [
+        4.9140872,
+        52.3660568
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 1.35,
+      "headingDegrees": 325,
+      "file": "0a2e_Flamingo.glb",
+      "version": "325bc698b52a",
+      "sourceUrl": "https://pub-13a5286ea5b347fbb60687b5ebb02b5a.r2.dev/we-love-katamari-models-v2/0a2e_Flamingo.glb",
+      "game": "We Love Katamari"
+    },
+    {
+      "id": "12954909756-0a15",
+      "name": "Giant Tortoise",
+      "osmId": "n12954909756",
+      "mappedName": "Aldabra reuzenschildpad",
+      "osmUrl": "https://www.openstreetmap.org/node/12954909756",
+      "anchor": [
+        4.9189487,
+        52.3654608
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 0.65,
+      "headingDegrees": 102,
+      "file": "0a15_Giant_Tortoise.glb",
+      "version": "dbdc5a4f7fbf",
+      "sourceUrl": "https://pub-13a5286ea5b347fbb60687b5ebb02b5a.r2.dev/we-love-katamari-models-v2/0a15_Giant_Tortoise.glb",
+      "game": "We Love Katamari"
+    },
+    {
+      "id": "12954909757-0a24",
+      "name": "Gorilla",
+      "osmId": "n12954909757",
+      "mappedName": "Westelijke laaglandgorilla",
+      "osmUrl": "https://www.openstreetmap.org/node/12954909757",
+      "anchor": [
+        4.9191914,
+        52.3652248
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 1.65,
+      "headingDegrees": 239,
+      "file": "0a24_Gorilla.glb",
+      "version": "23bbc2e816e5",
+      "sourceUrl": "https://pub-13a5286ea5b347fbb60687b5ebb02b5a.r2.dev/we-love-katamari-models-v2/0a24_Gorilla.glb",
+      "game": "We Love Katamari"
+    },
+    {
+      "id": "12923412139-0a28",
+      "name": "Red Panda",
+      "osmId": "n12923412139",
+      "mappedName": "Kleine panda, Aziatische kleinklauwotter",
+      "osmUrl": "https://www.openstreetmap.org/node/12923412139",
+      "anchor": [
+        4.9139738,
+        52.3669295
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 0.6,
+      "headingDegrees": 16,
+      "file": "0a28_Red_Panda.glb",
+      "version": "909e5d66779e",
+      "sourceUrl": "https://pub-13a5286ea5b347fbb60687b5ebb02b5a.r2.dev/we-love-katamari-models-v2/0a28_Red_Panda.glb",
+      "game": "We Love Katamari"
+    },
+    {
+      "id": "12954909220-0a2b",
+      "name": "Ostrich",
+      "osmId": "n12954909220",
+      "mappedName": "Struisvogel",
+      "osmUrl": "https://www.openstreetmap.org/node/12954909220",
+      "anchor": [
+        4.9190815,
+        52.3647408
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 2.4,
+      "headingDegrees": 153,
+      "file": "0a2b_Ostrich.glb",
+      "version": "8f6d77694288",
+      "sourceUrl": "https://pub-13a5286ea5b347fbb60687b5ebb02b5a.r2.dev/we-love-katamari-models-v2/0a2b_Ostrich.glb",
+      "game": "We Love Katamari"
+    },
+    {
+      "id": "12930531148-0804",
+      "name": "Raccoon",
+      "osmId": "n12930531148",
+      "mappedName": "Wasbeer",
+      "osmUrl": "https://www.openstreetmap.org/node/12930531148",
+      "anchor": [
+        4.916691,
+        52.3659069
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 0.55,
+      "headingDegrees": 290,
+      "file": "0804_Raccoon.glb",
+      "version": "563449a85762",
+      "sourceUrl": "https://pub-13a5286ea5b347fbb60687b5ebb02b5a.r2.dev/we-love-katamari-models-v2/0804_Raccoon.glb",
+      "game": "We Love Katamari"
+    },
+    {
+      "id": "12923412128-spoonbill",
+      "name": "Spoonbill",
+      "osmId": "n12923412128",
+      "mappedName": "Hollandse Polder",
+      "osmUrl": "https://www.openstreetmap.org/node/12923412128",
+      "anchor": [
+        4.9133506,
+        52.3665883
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 0.85,
+      "headingDegrees": 67,
+      "file": "original-spoonbill.glb",
+      "version": "5a08ead833b6",
+      "sourceUrl": "https://www.openstreetmap.org/node/12923412128",
+      "game": null,
+      "original": true,
+      "triangles": 464,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "spoonbill"
+    },
+    {
+      "id": "12923412138-oryx",
+      "name": "Scimitar-horned oryx",
+      "osmId": "n12923412138",
+      "mappedName": "Algazel, Stokstaartje",
+      "osmUrl": "https://www.openstreetmap.org/node/12923412138",
+      "anchor": [
+        4.9135641,
+        52.367203
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 1.25,
+      "headingDegrees": 204,
+      "file": "original-oryx.glb",
+      "version": "99eb3e3182f1",
+      "sourceUrl": "https://www.openstreetmap.org/node/12923412138",
+      "game": null,
+      "original": true,
+      "triangles": 612,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "oryx"
+    },
+    {
+      "id": "12927954942-jaguar",
+      "name": "Jaguar",
+      "osmId": "n12927954942",
+      "mappedName": "Jaguar",
+      "osmUrl": "https://www.openstreetmap.org/node/12927954942",
+      "anchor": [
+        4.9154703,
+        52.3657577
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 0.9,
+      "headingDegrees": 341,
+      "file": "original-jaguar.glb",
+      "version": "e456430fdb82",
+      "sourceUrl": "https://www.openstreetmap.org/node/12927954942",
+      "game": null,
+      "original": true,
+      "triangles": 1126,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "jaguar"
+    },
+    {
+      "id": "12927954943-jaguar",
+      "name": "Jaguar",
+      "osmId": "n12927954943",
+      "mappedName": "Jaguar",
+      "osmUrl": "https://www.openstreetmap.org/node/12927954943",
+      "anchor": [
+        4.9156737,
+        52.3655673
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 0.9,
+      "headingDegrees": 118,
+      "file": "original-jaguar.glb",
+      "version": "e456430fdb82",
+      "sourceUrl": "https://www.openstreetmap.org/node/12927954943",
+      "game": null,
+      "original": true,
+      "triangles": 1126,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "jaguar"
+    },
+    {
+      "id": "12927954944-ruffed",
+      "name": "Red ruffed lemur",
+      "osmId": "n12927954944",
+      "mappedName": "Rode vari",
+      "osmUrl": "https://www.openstreetmap.org/node/12927954944",
+      "anchor": [
+        4.9153754,
+        52.366751
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 0.6,
+      "headingDegrees": 255,
+      "file": "original-ruffed.glb",
+      "version": "8829098c0b84",
+      "sourceUrl": "https://www.openstreetmap.org/node/12927954944",
+      "game": null,
+      "original": true,
+      "triangles": 800,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "ruffed"
+    },
+    {
+      "id": "12927954947-gibbon",
+      "name": "Yellow-cheeked gibbon",
+      "osmId": "n12927954947",
+      "mappedName": "Goudwanggibbon",
+      "osmUrl": "https://www.openstreetmap.org/node/12927954947",
+      "anchor": [
+        4.9144043,
+        52.3665922
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 0.85,
+      "headingDegrees": 32,
+      "file": "original-gibbon.glb",
+      "version": "3623a244d42a",
+      "sourceUrl": "https://www.openstreetmap.org/node/12927954947",
+      "game": null,
+      "original": true,
+      "triangles": 740,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "gibbon"
+    },
+    {
+      "id": "12927954955-spider",
+      "name": "Red-faced spider monkey",
+      "osmId": "n12927954955",
+      "mappedName": "Zwarte slingeraap",
+      "osmUrl": "https://www.openstreetmap.org/node/12927954955",
+      "anchor": [
+        4.9147836,
+        52.367075
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 0.8,
+      "headingDegrees": 169,
+      "file": "original-spider.glb",
+      "version": "5e997abaf222",
+      "sourceUrl": "https://www.openstreetmap.org/node/12927954955",
+      "game": null,
+      "original": true,
+      "triangles": 756,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "spider"
+    },
+    {
+      "id": "12927954956-pelican",
+      "name": "Great white pelican",
+      "osmId": "n12927954956",
+      "mappedName": "Roze pelikaan",
+      "osmUrl": "https://www.openstreetmap.org/node/12927954956",
+      "anchor": [
+        4.914711,
+        52.3669247
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 1.3,
+      "headingDegrees": 306,
+      "file": "original-pelican.glb",
+      "version": "defe6dddc9e6",
+      "sourceUrl": "https://www.openstreetmap.org/node/12927954956",
+      "game": null,
+      "original": true,
+      "triangles": 464,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "pelican"
+    },
+    {
+      "id": "12930531147-macaque",
+      "name": "Sulawesi crested macaque",
+      "osmId": "n12930531147",
+      "mappedName": "Zwarte kuifmakaak",
+      "osmUrl": "https://www.openstreetmap.org/node/12930531147",
+      "anchor": [
+        4.9170832,
+        52.3657636
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 0.65,
+      "headingDegrees": 83,
+      "file": "original-macaque.glb",
+      "version": "ad9d619aec78",
+      "sourceUrl": "https://www.openstreetmap.org/node/12930531147",
+      "game": null,
+      "original": true,
+      "triangles": 672,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "macaque"
+    },
+    {
+      "id": "12930531149-pig",
+      "name": "Visayan warty pig",
+      "osmId": "n12930531149",
+      "mappedName": "Visaya wrattenzwijn",
+      "osmUrl": "https://www.openstreetmap.org/node/12930531149",
+      "anchor": [
+        4.9166816,
+        52.3661088
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 0.7,
+      "headingDegrees": 220,
+      "file": "original-pig.glb",
+      "version": "f68d1e0d2721",
+      "sourceUrl": "https://www.openstreetmap.org/node/12930531149",
+      "game": null,
+      "original": true,
+      "triangles": 616,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "pig"
+    },
+    {
+      "id": "12941391668-tapir",
+      "name": "Lowland tapir",
+      "osmId": "n12941391668",
+      "mappedName": "Laaglandtapir, Vicuña, reuzenmiereneter, capibara, grote mara, kuifhoenderkoet",
+      "osmUrl": "https://www.openstreetmap.org/node/12941391668",
+      "anchor": [
+        4.9146759,
+        52.3659855
+      ],
+      "offsetMetres": [
+        3,
+        0
+      ],
+      "heightMetres": 1.05,
+      "headingDegrees": 357,
+      "file": "original-tapir.glb",
+      "version": "f7aed2064fee",
+      "sourceUrl": "https://www.openstreetmap.org/node/12941391668",
+      "game": null,
+      "original": true,
+      "triangles": 456,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "tapir"
+    },
+    {
+      "id": "12941391668-vicuna",
+      "name": "Vicuña",
+      "osmId": "n12941391668",
+      "mappedName": "Laaglandtapir, Vicuña, reuzenmiereneter, capibara, grote mara, kuifhoenderkoet",
+      "osmUrl": "https://www.openstreetmap.org/node/12941391668",
+      "anchor": [
+        4.9146759,
+        52.3659855
+      ],
+      "offsetMetres": [
+        0,
+        3
+      ],
+      "heightMetres": 1.3,
+      "headingDegrees": 134,
+      "file": "original-vicuna.glb",
+      "version": "87689e284542",
+      "sourceUrl": "https://www.openstreetmap.org/node/12941391668",
+      "game": null,
+      "original": true,
+      "triangles": 524,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "vicuna"
+    },
+    {
+      "id": "12941391668-anteater",
+      "name": "Giant anteater",
+      "osmId": "n12941391668",
+      "mappedName": "Laaglandtapir, Vicuña, reuzenmiereneter, capibara, grote mara, kuifhoenderkoet",
+      "osmUrl": "https://www.openstreetmap.org/node/12941391668",
+      "anchor": [
+        4.9146759,
+        52.3659855
+      ],
+      "offsetMetres": [
+        -3,
+        0
+      ],
+      "heightMetres": 0.8,
+      "headingDegrees": 271,
+      "file": "original-anteater.glb",
+      "version": "2ade6e07298e",
+      "sourceUrl": "https://www.openstreetmap.org/node/12941391668",
+      "game": null,
+      "original": true,
+      "triangles": 380,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "anteater"
+    },
+    {
+      "id": "12941391668-capybara",
+      "name": "Capybara",
+      "osmId": "n12941391668",
+      "mappedName": "Laaglandtapir, Vicuña, reuzenmiereneter, capibara, grote mara, kuifhoenderkoet",
+      "osmUrl": "https://www.openstreetmap.org/node/12941391668",
+      "anchor": [
+        4.9146759,
+        52.3659855
+      ],
+      "offsetMetres": [
+        0,
+        -3
+      ],
+      "heightMetres": 0.6,
+      "headingDegrees": 48,
+      "file": "original-capybara.glb",
+      "version": "d414a56ad41c",
+      "sourceUrl": "https://www.openstreetmap.org/node/12941391668",
+      "game": null,
+      "original": true,
+      "triangles": 392,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "capybara"
+    },
+    {
+      "id": "12950333640-anoa",
+      "name": "Anoa",
+      "osmId": "n12950333640",
+      "mappedName": "Anoa",
+      "osmUrl": "https://www.openstreetmap.org/node/12950333640",
+      "anchor": [
+        4.9177591,
+        52.3657849
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 0.9,
+      "headingDegrees": 185,
+      "file": "original-anoa.glb",
+      "version": "cea97d67bf06",
+      "sourceUrl": "https://www.openstreetmap.org/node/12950333640",
+      "game": null,
+      "original": true,
+      "triangles": 516,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "anoa"
+    },
+    {
+      "id": "12950334374-vulture",
+      "name": "Griffon vulture",
+      "osmId": "n12950334374",
+      "mappedName": "Gierenvolière",
+      "osmUrl": "https://www.openstreetmap.org/node/12950334374",
+      "anchor": [
+        4.918415,
+        52.3658769
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 1,
+      "headingDegrees": 322,
+      "file": "original-vulture.glb",
+      "version": "ed04e13ed2a5",
+      "sourceUrl": "https://www.openstreetmap.org/node/12950334374",
+      "game": null,
+      "original": true,
+      "triangles": 464,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "vulture"
+    },
+    {
+      "id": "12950334391-kudu",
+      "name": "Greater kudu",
+      "osmId": "n12950334391",
+      "mappedName": "Netgiraffe, Grantzebra, Grote Koedoe, Nijlantilope",
+      "osmUrl": "https://www.openstreetmap.org/node/12950334391",
+      "anchor": [
+        4.9180529,
+        52.3664195
+      ],
+      "offsetMetres": [
+        -3,
+        0
+      ],
+      "heightMetres": 1.7,
+      "headingDegrees": 99,
+      "file": "original-kudu.glb",
+      "version": "d23c76b33e8d",
+      "sourceUrl": "https://www.openstreetmap.org/node/12950334391",
+      "game": null,
+      "original": true,
+      "triangles": 676,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "kudu"
+    },
+    {
+      "id": "12950334391-lechwe",
+      "name": "Nile lechwe",
+      "osmId": "n12950334391",
+      "mappedName": "Netgiraffe, Grantzebra, Grote Koedoe, Nijlantilope",
+      "osmUrl": "https://www.openstreetmap.org/node/12950334391",
+      "anchor": [
+        4.9180529,
+        52.3664195
+      ],
+      "offsetMetres": [
+        0,
+        -3
+      ],
+      "heightMetres": 1.3,
+      "headingDegrees": 236,
+      "file": "original-lechwe.glb",
+      "version": "b08f9cd95a60",
+      "sourceUrl": "https://www.openstreetmap.org/node/12950334391",
+      "game": null,
+      "original": true,
+      "triangles": 604,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "lechwe"
+    },
+    {
+      "id": "12950334392-wallaby",
+      "name": "Bennett’s wallaby",
+      "osmId": "n12950334392",
+      "mappedName": "Bennettwallaby",
+      "osmUrl": "https://www.openstreetmap.org/node/12950334392",
+      "anchor": [
+        4.918934,
+        52.3657927
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 1,
+      "headingDegrees": 13,
+      "file": "original-wallaby.glb",
+      "version": "1eb8171d1155",
+      "sourceUrl": "https://www.openstreetmap.org/node/12950334392",
+      "game": null,
+      "original": true,
+      "triangles": 692,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "wallaby"
+    },
+    {
+      "id": "12952103910-chimp",
+      "name": "Chimpanzee",
+      "osmId": "n12952103910",
+      "mappedName": "Chimpansee",
+      "osmUrl": "https://www.openstreetmap.org/node/12952103910",
+      "anchor": [
+        4.9183267,
+        52.3651717
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 1.2,
+      "headingDegrees": 150,
+      "file": "original-chimp.glb",
+      "version": "f87661b5d85d",
+      "sourceUrl": "https://www.openstreetmap.org/node/12952103910",
+      "game": null,
+      "original": true,
+      "triangles": 652,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "chimp"
+    },
+    {
+      "id": "12952111505-wolf",
+      "name": "Hudson Bay wolf",
+      "osmId": "n12952111505",
+      "mappedName": "Hudson Bay wolf",
+      "osmUrl": "https://www.openstreetmap.org/node/12952111505",
+      "anchor": [
+        4.9176545,
+        52.3654369
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 0.85,
+      "headingDegrees": 287,
+      "file": "original-wolf.glb",
+      "version": "1be29e502d9c",
+      "sourceUrl": "https://www.openstreetmap.org/node/12952111505",
+      "game": null,
+      "original": true,
+      "triangles": 476,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "wolf"
+    },
+    {
+      "id": "12954909219-crane",
+      "name": "Common crane",
+      "osmId": "n12954909219",
+      "mappedName": "Europese kraanvogel",
+      "osmUrl": "https://www.openstreetmap.org/node/12954909219",
+      "anchor": [
+        4.9186282,
+        52.3649529
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 1.1,
+      "headingDegrees": 64,
+      "file": "original-crane.glb",
+      "version": "c8653c06315a",
+      "sourceUrl": "https://www.openstreetmap.org/node/12954909219",
+      "game": null,
+      "original": true,
+      "triangles": 508,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "crane"
+    },
+    {
+      "id": "12954909510-cassowary",
+      "name": "Southern cassowary",
+      "osmId": "n12954909510",
+      "mappedName": "Helmkasuaris",
+      "osmUrl": "https://www.openstreetmap.org/node/12954909510",
+      "anchor": [
+        4.9197768,
+        52.3654573
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 1.65,
+      "headingDegrees": 201,
+      "file": "original-cassowary.glb",
+      "version": "b3d40e294225",
+      "sourceUrl": "https://www.openstreetmap.org/node/12954909510",
+      "game": null,
+      "original": true,
+      "triangles": 504,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "cassowary"
+    },
+    {
+      "id": "12954909651-mandrill",
+      "name": "Mandrill",
+      "osmId": "n12954909651",
+      "mappedName": "Mandril",
+      "osmUrl": "https://www.openstreetmap.org/node/12954909651",
+      "anchor": [
+        4.9198097,
+        52.3650913
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 0.85,
+      "headingDegrees": 338,
+      "file": "original-mandrill.glb",
+      "version": "6420edb2ff85",
+      "sourceUrl": "https://www.openstreetmap.org/node/12954909651",
+      "game": null,
+      "original": true,
+      "triangles": 828,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "mandrill"
+    },
+    {
+      "id": "12956627032-red-crane",
+      "name": "Red-crowned crane",
+      "osmId": "n12956627032",
+      "mappedName": "Japanse kraanvogel, kleine zilverreiger",
+      "osmUrl": "https://www.openstreetmap.org/node/12956627032",
+      "anchor": [
+        4.9166266,
+        52.3664122
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 1.5,
+      "headingDegrees": 115,
+      "file": "original-red-crane.glb",
+      "version": "067dec274aa5",
+      "sourceUrl": "https://www.openstreetmap.org/node/12956627032",
+      "game": null,
+      "original": true,
+      "triangles": 508,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "red-crane"
+    },
+    {
+      "id": "12956647402-ibex",
+      "name": "Alpine ibex",
+      "osmId": "n12956647402",
+      "mappedName": "Alpensteenbok",
+      "osmUrl": "https://www.openstreetmap.org/node/12956647402",
+      "anchor": [
+        4.9149898,
+        52.3664806
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 1.15,
+      "headingDegrees": 252,
+      "file": "original-ibex.glb",
+      "version": "a88a035e846a",
+      "sourceUrl": "https://www.openstreetmap.org/node/12956647402",
+      "game": null,
+      "original": true,
+      "triangles": 556,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "ibex"
+    },
+    {
+      "id": "13799239487-ringtail",
+      "name": "Ring-tailed lemur",
+      "osmId": "n13799239487",
+      "mappedName": "Ringstaartmaki",
+      "osmUrl": "https://www.openstreetmap.org/node/13799239487",
+      "anchor": [
+        4.9156665,
+        52.3670347
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 0.65,
+      "headingDegrees": 29,
+      "file": "original-ringtail.glb",
+      "version": "cc84bf97191a",
+      "sourceUrl": "https://www.openstreetmap.org/node/13799239487",
+      "game": null,
+      "original": true,
+      "triangles": 952,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "ringtail"
+    },
+    {
+      "id": "13799239488-fox",
+      "name": "Bat-eared fox",
+      "osmId": "n13799239488",
+      "mappedName": "Grootoorvos",
+      "osmUrl": "https://www.openstreetmap.org/node/13799239488",
+      "anchor": [
+        4.9197081,
+        52.3648939
+      ],
+      "offsetMetres": [
+        0,
+        0
+      ],
+      "heightMetres": 0.65,
+      "headingDegrees": 166,
+      "file": "original-fox.glb",
+      "version": "f54f7c98210c",
+      "sourceUrl": "https://www.openstreetmap.org/node/13799239488",
+      "game": null,
+      "original": true,
+      "triangles": 432,
+      "generator": "scripts/artis-original-animals.mjs",
+      "detail": "fox"
+    }
+  ],
+  "unmatched": [
+    {
+      "osmId": "n12942273048",
+      "name": "Witstaartstekelvarken",
+      "reason": "Deliberately omitted small-animal detail"
+    }
+  ]
+}

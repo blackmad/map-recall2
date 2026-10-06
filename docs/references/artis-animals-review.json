@@ -1,0 +1,159 @@
+{
+  "animals": 39,
+  "mappedLocations": 33,
+  "bytes": 661176,
+  "triangles": 17943,
+  "runtime": [
+    {
+      "name": "savannah",
+      "touch": false,
+      "visible": [
+        "Greater kudu",
+        "Nile lechwe",
+        "Giraffe",
+        "Zebra"
+      ],
+      "draws": 4,
+      "triangles": 1602,
+      "frameIntervalMedianMs": 91.59999999999854,
+      "failures": [],
+      "center": {
+        "lng": 4.918055,
+        "lat": 52.36642
+      },
+      "zoom": 20
+    },
+    {
+      "name": "south-america",
+      "touch": false,
+      "visible": [
+        "Lowland tapir",
+        "Vicuña",
+        "Capybara",
+        "Giant anteater"
+      ],
+      "draws": 4,
+      "triangles": 1752,
+      "frameIntervalMedianMs": 75.70000000000437,
+      "failures": [],
+      "center": {
+        "lng": 4.91467,
+        "lat": 52.36598
+      },
+      "zoom": 21
+    },
+    {
+      "name": "jaguar",
+      "touch": false,
+      "visible": [
+        "Jaguar",
+        "Jaguar"
+      ],
+      "draws": 2,
+      "triangles": 2252,
+      "frameIntervalMedianMs": 83.30000000000291,
+      "failures": [],
+      "center": {
+        "lng": 4.91547,
+        "lat": 52.365757
+      },
+      "zoom": 21
+    },
+    {
+      "name": "lemurs",
+      "touch": false,
+      "visible": [
+        "Ring-tailed lemur"
+      ],
+      "draws": 1,
+      "triangles": 952,
+      "frameIntervalMedianMs": 83.80000000000291,
+      "failures": [],
+      "center": {
+        "lng": 4.9156665,
+        "lat": 52.3670347
+      },
+      "zoom": 21
+    },
+    {
+      "touch": false,
+      "startupAnimalRequests": 0,
+      "retryVerified": true,
+      "returnReusesAssets": true,
+      "otherCityHidden": true,
+      "errors": []
+    },
+    {
+      "name": "touch-savannah",
+      "touch": true,
+      "visible": [
+        "Greater kudu",
+        "Nile lechwe",
+        "Giraffe",
+        "Zebra"
+      ],
+      "draws": 4,
+      "triangles": 1602,
+      "frameIntervalMedianMs": 41.599999999998545,
+      "failures": [],
+      "center": {
+        "lng": 4.918055,
+        "lat": 52.36642
+      },
+      "zoom": 20.5
+    },
+    {
+      "name": "touch-lemurs",
+      "touch": true,
+      "visible": [
+        "Ring-tailed lemur"
+      ],
+      "draws": 1,
+      "triangles": 952,
+      "frameIntervalMedianMs": 41.30000000000291,
+      "failures": [],
+      "center": {
+        "lng": 4.9156665,
+        "lat": 52.3670347
+      },
+      "zoom": 21
+    },
+    {
+      "name": "touch-penguin",
+      "touch": true,
+      "visible": [
+        "Penguin"
+      ],
+      "draws": 1,
+      "triangles": 106,
+      "frameIntervalMedianMs": 41.5,
+      "failures": [],
+      "center": {
+        "lng": 4.9182319,
+        "lat": 52.3647412
+      },
+      "zoom": 21
+    },
+    {
+      "touch": true,
+      "startupAnimalRequests": 0,
+      "retryVerified": false,
+      "returnReusesAssets": true,
+      "otherCityHidden": true,
+      "errors": []
+    }
+  ],
+  "styleRevision": {
+    "requested": "More Katamari-like models, correct jaguar coat, reduce small-animal breadth",
+    "visualEvidence": "jaguar-rosettes.png",
+    "rejectedEvidence": "rejected-round-originals.png",
+    "changes": "Angular corner-clipped bodies, small painted faces, lower feline proportions and flush irregular rosettes on jaguar sides and back. Seven small extras retired.",
+    "review": "Gallery, detailed imported-lion comparison, native game jaguar view and desktop/touch checks passed."
+  },
+  "sourcePack": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "33b38f0",
+    "path": "models/artis-animals"
+  },
+  "evidenceDirectory": "artifacts/artis-animals"
+}
