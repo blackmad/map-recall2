@@ -1721,7 +1721,8 @@
       "landmarkId": "rem-eiland",
       "modelUrl": "./models/rem-eiland.glb",
       "suppressOsmIds": [
-        "w169906479"
+        "w169906479",
+        "NL.IMBAG.Pand.0363100012238479"
       ],
       "footprint": {
         "centre": [
@@ -1742,6 +1743,15 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
       },
+      "surveyed": {
+        "anchor": [
+          4.883275104301525,
+          52.39872817898343
+        ],
+        "northOffsetDegrees": 50.856118282596185,
+        "source": "Existing native OSM w169906479 footprint centre and heading; current ref:bag 0363100012238479 verified 2026-10-06. Stair appendages do not rescale the platform."
+      },
+      "spatialSuppression": false,
       "bounds": {
         "min": [
           -12.936393737792969,
@@ -1749,9 +1759,9 @@
           -6.478930473327637
         ],
         "max": [
-          12.981337547302246,
+          16.216394424438477,
           34.20000076293945,
-          7.991522312164307
+          6.478930473327637
         ]
       },
       "placement": {
@@ -1762,16 +1772,16 @@
         "altitudeMetres": 0,
         "modelRotationDegrees": 140.85611828259619,
         "facadeBearingDegrees": 230.85611828259619,
-        "scale": 1.0053181377256732
+        "scale": 1
       },
       "extent": {
-        "widthMetres": 25.917731285095215,
+        "widthMetres": 29.152788162231445,
         "heightMetres": 34.20000076293945,
-        "depthMetres": 14.470452785491943,
-        "depthCoverage": 1.2047300148406452
+        "depthMetres": 12.957860946655273,
+        "depthCoverage": 1.0787999685965817
       },
-      "triangles": 1720,
-      "bytes": 26604,
+      "triangles": 4792,
+      "bytes": 61952,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "paradiso": {

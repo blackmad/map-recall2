@@ -1231,7 +1231,8 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "rem-eiland",
       modelUrl: "./models/rem-eiland.glb",
       suppressOsmIds: [
-        "w169906479"
+        "w169906479",
+        "NL.IMBAG.Pand.0363100012238479"
       ],
       footprint: {
         centre: [
@@ -1251,7 +1252,16 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
-      }
+      },
+      surveyed: {
+        anchor: [
+          4.883275104301525,
+          52.39872817898343
+        ],
+        northOffsetDegrees: 50.856118282596185,
+        source: "Existing native OSM w169906479 footprint centre and heading; current ref:bag 0363100012238479 verified 2026-10-06. Stair appendages do not rescale the platform."
+      },
+      spatialSuppression: false
     },
     {
       id: "paradiso",
@@ -7152,6 +7162,10 @@ Map source: ${osmUrl(places[i][0])}`);
         licence: "Original project geometry; underlying artwork by Keith Haring",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free surveyed building and hand-authored white stroke interpretation; no reference pixels or imported mesh."
+      },
+      galleryView: {
+        theta: -1.3,
+        phi: 1.15
       }
     }
   ];
