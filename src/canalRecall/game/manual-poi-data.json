@@ -1364,5 +1364,25 @@
         4.87262
       ]
     }
+  },
+  {
+    "modelId": "el-tawheed",
+    "landmarkId": "extract_landmarks_1862244163",
+    "name": "El Tawheed",
+    "description": "El Tawheed occupies a former clothing factory on Jan Hanzenstraat. The building later housed an etui and box maker and then the Amex metal workshop before becoming a mosque and cultural centre in 1997. Its factory facade retains six tall window bays and a projecting cornice; the former name panel is now whitewashed.",
+    "sourceUrl": "https://amsterdamopdekaart.nl/1850-1940/Jan_Hanzenstraat/114",
+    "preferDescription": true,
+    "destinationOverride": {
+      "center": [
+        52.36763342532987,
+        4.8640231890577725
+      ]
+    },
+    "routeDestination": {
+      "center": [
+        52.36763342532987,
+        4.8640231890577725
+      ]
+    }
   }
 ]

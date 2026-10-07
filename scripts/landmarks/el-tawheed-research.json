@@ -1,0 +1,361 @@
+{
+  "id": "el-tawheed",
+  "researchedOn": "2026-10-07",
+  "identity": {
+    "osm": "w276303116",
+    "bag": "0363100012137097",
+    "vbo": "0363010000685019",
+    "address": "Jan Hanzenstraat114,1053SV Amsterdam",
+    "BAGConstructionYear": 1914,
+    "currentVboAreaNotFootprint": 1,
+    "scope": "One installed physical BAG parent; exact native concavities. VBO reported usable area1m\u00b2 is not a footprint measure."
+  },
+  "sourceArchive": {
+    "commit": "222aa2b1",
+    "modelPath": "models/el-tawheed",
+    "remote": "blackmad/map-recall2-source-data",
+    "publisherLocalPath": "/tmp/el-tawheed-private",
+    "additionalRearEvidenceCommit": "e23fad84",
+    "latestCompleteCommit": "d4c2880119aef096f16e139bff475a4a28d5671b",
+    "verificationCommit": "d4c2880119aef096f16e139bff475a4a28d5671b",
+    "acceptedEvidencePath": "models/el-tawheed/checkpoint-f39"
+  },
+  "architecturalAssertions": [
+    {
+      "feature": "Six bays across each upper tier; lower third bay is double entrance, far left lower bay split into narrow pair",
+      "buildingPart": "Jan Hanzenstraatfront",
+      "source": "2025municipal panorama + Commons2020 photo",
+      "confidence": "high for count/placement; approximate photo-guided dimensions"
+    },
+    {
+      "feature": "Whitewashed horizontal factory name panel; straight pale cornice with close square modillions and toothed parapet",
+      "buildingPart": "principalfront",
+      "source": "Commons2020 and municipal2025",
+      "confidence": "high; no identifying name/signage invented"
+    },
+    {
+      "feature": "Tall streetfront flatroof11.6m; rear lower slanted and flat shedzones2.6-7.0m; not a domed mosque",
+      "buildingPart": "fullnativeparent",
+      "source": "3DBAGAHN5survey2023 semanticroofrings",
+      "confidence": "high for measured roofregions; original planar approximations"
+    },
+    {
+      "feature": "Basement grille under left second-bay window; recessed full-height door approach interrupts paleplinth",
+      "buildingPart": "lowfront",
+      "source": "municipal2025closeview",
+      "confidence": "high for visible aperture; approximate opening size; no hidden extra cellar openings invented"
+    },
+    {
+      "feature": "Two-light main white frames with short upperstoreytransom; middlemaincrossbar58% and ground69% ofapertureheight. Fine glazingbars subordinate.",
+      "buildingPart": "principalwindowtiers",
+      "source": "2025municipal closefront +2023leaf-off pano +Commons2020",
+      "confidence": "High for shortuppertransom/twolightframe hierarchy; exact ratios .77/.58/.69 are photo-guided simplifications, matching hiddenleftbays is explicitly inferred repeated rhythm."
+    },
+    {
+      "feature": "Long unlettered whitewashedpaneluses white#f4f4ef independently ofstone plinth/sills",
+      "buildingPart": "panelabovelowtier",
+      "source": "2025/2023municipalphotos",
+      "confidence": "High for materialcontrast; nativeflatpaletteapproximation"
+    },
+    {
+      "feature": "Panel startsafterfirstbay andendsonpierbetweenfifth/sixthbay",
+      "source": "Commons2020 andmunicipal2025; independentreviewfailed57ee",
+      "buildingPart": "principalblankpanel",
+      "confidence": "High forpierphase; conservativephoto-guidedendpoints u2.10 and13.05m."
+    },
+    {
+      "feature": "Shallowgreyentranceapproachinterrupts paleplinth; nofullstaircount",
+      "source": "municipal2025front",
+      "buildingPart": "doorapproach",
+      "confidence": "Observedshallowapproachplane; rise5cm retaineddoorbasey.05 and width2.08/depth.79m approximate. Pavementdatum remainsy0; unknowntreads, nonefabricated."
+    },
+    {
+      "feature": "Upperpierbrickstrips are shallow relief, not deepprojectingpilasters",
+      "source": "2025municipal/2020Commons, decoded nativeproduction seamfailure",
+      "buildingPart": "upper tier between sixbays",
+      "confidence": "High for phase/strip presence; 17.5mm relief photo-guided approximation, not measured. Previously14cmprojection unsupported and failed actualgameview."
+    }
+  ],
+  "archiveSearch": {
+    "beeldbank": {
+      "url": "https://archief.amsterdam/beeldbank/?q=Jan%20Hanzenstraat%20114",
+      "accessState": "one bounded exactaddress query downloaded viewer shell; no inspected archival photo"
+    },
+    "monuments": {
+      "url": "https://monumentenregister.cultureelerfgoed.nl/zoeken?search=Jan%20Hanzenstraat%20114",
+      "accessState": "boundedaddress query retrieved; no positively matched description/designation, not treated as monument truth"
+    },
+    "bouwdossiers": "No scanned drawing acquired; roofzones and principalfront resolved with survey/currentphotos."
+  },
+  "referencePhotos": [
+    {
+      "path": "../map-recall2-source-data/models/el-tawheed/files/photo.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/20/El_Tawheed_Mosque.jpg",
+      "date": "2020-01-20",
+      "author": "LittleT889",
+      "licence": "CC BY-SA4.0",
+      "use": "fullfrontcornicewindowrhythm"
+    },
+    {
+      "path": "../map-recall2-source-data/models/el-tawheed/files/pano-0.jpg",
+      "date": "2025-07-31T10:37:00Z",
+      "panoramaId": "recording_2025-07-31_10-03-10_01081",
+      "viewerUrl": "https://data.amsterdam.nl/",
+      "derivedCrop": {
+        "headingDegrees": 340,
+        "pitchDegrees": 15,
+        "fovDegrees": 100,
+        "viewport": [
+          1300,
+          1100
+        ]
+      },
+      "occlusions": "Tree obscures left upperfront, right edge clipped; Commonsfullfront resolves baycount; pavement/plinth/door clear"
+    },
+    {
+      "path": "../map-recall2-source-data/models/el-tawheed/files/pano-1.jpg",
+      "date": "2023-01-10T10:28:21.574650Z",
+      "panoramaId": "TMX7316010203-002921_pano_0013_000105",
+      "use": "leaf-off corroborationfront"
+    }
+  ],
+  "references": [
+    "https://dareltawheed.nl",
+    "https://amsterdamopdekaart.nl/1850-1940/Jan_Hanzenstraat/114",
+    "https://commons.wikimedia.org/wiki/File:El_Tawheed_Mosque.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/2/20/El_Tawheed_Mosque.jpg",
+    "https://archief.amsterdam/beeldbank/?q=Jan%20Hanzenstraat%20114",
+    "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Jan%20Hanzenstraat%20114%20Amsterdam&rows=5",
+    "https://www.openstreetmap.org/api/0.6/way/276303116/full",
+    "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?f=json&bbox=4.8634,52.3674,4.8644,52.3681&limit=100",
+    "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?f=json&bbox=4.8634,52.3674,4.8644,52.3681&limit=100",
+    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012137097",
+    "https://monumentenregister.cultureelerfgoed.nl/zoeken?search=Jan%20Hanzenstraat%20114",
+    "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.86403,52.36764&srid=4326&radius=55&page_size=80"
+  ],
+  "rawSourceFiles": [
+    {
+      "path": "../map-recall2-source-data/models/el-tawheed/files/3dbag.txt",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012137097",
+      "sha256": "3efcf1692befa7bc32c710fc4e7f218a1b082b7b4b91c06d8f9c1d984eabab8b"
+    },
+    {
+      "path": "../map-recall2-source-data/models/el-tawheed/files/pano-1-meta.json",
+      "url": null,
+      "sha256": "88cb32b61e0c1f5bf19c4e936d799f52b731487406aeadb1d89c723ce6591433"
+    },
+    {
+      "path": "../map-recall2-source-data/models/el-tawheed/files/pano-0-meta.json",
+      "url": null,
+      "sha256": "f3f7c79a7a78fdc6158653b4cf52de5244fb55e5da494822e1a59c013881b2a1"
+    },
+    {
+      "path": "../map-recall2-source-data/models/el-tawheed/files/bag-vbo.txt",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?f=json&bbox=4.8634,52.3674,4.8644,52.3681&limit=100",
+      "sha256": "34aa5804758a9f489a19a574e037f240d7b23bfaeb069e1136f058e00713c4ac"
+    },
+    {
+      "path": "../map-recall2-source-data/models/el-tawheed/files/bag-pand.txt",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?f=json&bbox=4.8634,52.3674,4.8644,52.3681&limit=100",
+      "sha256": "847bcd36727e0c25b660018c4aed05c96e57c7e47d23190f1f9f8e91183b11ac"
+    },
+    {
+      "path": "../map-recall2-source-data/models/el-tawheed/files/photo-page.txt",
+      "url": "https://commons.wikimedia.org/wiki/File:El_Tawheed_Mosque.jpg",
+      "sha256": "01071787bf1c0d416a48d7eac518cb2cba51d841fa9ed83e4eda68a97fb6973e"
+    },
+    {
+      "path": "../map-recall2-source-data/models/el-tawheed/files/pano-1.jpg",
+      "url": null,
+      "sha256": "748edaacf27bdb538d56dd2833d280729f467b38cc53fa2b2b2d2de857793366"
+    },
+    {
+      "path": "../map-recall2-source-data/models/el-tawheed/files/panos.txt",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.86403,52.36764&srid=4326&radius=55&page_size=80",
+      "sha256": "4ff040b7c5e8c210db75384f49243fb419e82569b5601a11f19f52d2f322efb7"
+    },
+    {
+      "path": "../map-recall2-source-data/models/el-tawheed/files/pano-0.jpg",
+      "url": null,
+      "sha256": "80fc864aa547c2ad584152f9490e1c6720b105648a3b653eb14193ccb57a1d0b"
+    },
+    {
+      "path": "../map-recall2-source-data/models/el-tawheed/files/bag-address.txt",
+      "url": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Jan%20Hanzenstraat%20114%20Amsterdam&rows=5",
+      "sha256": "67f710f84f06c7485a88c6bd31500dc8b1cfd194bcd6cb73b3cc40b9fe01c825"
+    },
+    {
+      "path": "../map-recall2-source-data/models/el-tawheed/files/photo.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/20/El_Tawheed_Mosque.jpg",
+      "sha256": "31d0ce10514aabf39c20cf38892780d053339364e6e21040f33eaa69769bde91"
+    },
+    {
+      "path": "../map-recall2-source-data/models/el-tawheed/files/osm.txt",
+      "url": "https://www.openstreetmap.org/api/0.6/way/276303116/full",
+      "sha256": "604ef4fccd7907ea2dea1c36bb206cddb9482832b47b7b2adb351e772f8839a2"
+    },
+    {
+      "path": "../map-recall2-source-data/models/el-tawheed/files/urls.json",
+      "url": null,
+      "sha256": "79b9cf46bca7f475caf73bac9c25fa3901707945f7d6ff06581757b411c7ce1e"
+    },
+    {
+      "path": "../map-recall2-source-data/models/el-tawheed/files/history.txt",
+      "url": "https://amsterdamopdekaart.nl/1850-1940/Jan_Hanzenstraat/114",
+      "sha256": "19c579a9d8ba4797d7bb698cfe0302edc3c05de33b5aeb29edde00d1a93376dc"
+    },
+    {
+      "path": "../map-recall2-source-data/models/el-tawheed/files/operator.txt",
+      "url": "https://dareltawheed.nl",
+      "sha256": "b2c77061c929fc354ca3d3356d9637cd25dac679919d1e90fb183b7f1f8c3fb3"
+    },
+    {
+      "path": "../map-recall2-source-data/models/el-tawheed/files/monuments.txt",
+      "url": "https://monumentenregister.cultureelerfgoed.nl/zoeken?search=Jan%20Hanzenstraat%20114",
+      "sha256": "a2e1b2d729a5fe1b3c3be9c8f905ed5985bbfcbf97f1f915f876d337191bf5b3"
+    },
+    {
+      "path": "../map-recall2-source-data/models/el-tawheed/files/beeldbank.txt",
+      "url": "https://archief.amsterdam/beeldbank/?q=Jan%20Hanzenstraat%20114",
+      "sha256": "a3a9cab666f2b112b5b20f34758b266b9dcd126d19ef631eb6a8d8910de85fea"
+    }
+  ],
+  "semanticHeightNotes": {
+    "terrainNAP": 0.374,
+    "mainFlatRoofAboveTerrain": "11.55\u201311.69m fitted source plane",
+    "equipmentMaximum": "12.201m NAP is not wholebuildingheight",
+    "mainCornice": "photo-guided11.0\u201311.5m",
+    "rearRoofs": "surveyregionalplanes; internal verticalclosures intentionallyoriginal rather than importedsurveymesh"
+  },
+  "uncertainties": [
+    "Rear municipal2025boundedstation attempt is occluded by retained neighboringhousing; no rear apertures invented. Rear recognition remains lowerconfidence and must seek aerial/context/gamefailure.",
+    "Window/frame depths, sill widths, cornice relief and parapetteeth spacing are photo-guided simplifications.",
+    "Basement grille beneath left two narrow groundwindows ambiguous lateralwidth in2025; boundedobserved aperture preserved, no hidden completebasementtier invented.",
+    "Gallery/livegame/physicalcardclick/route/pin/neighborretention and GPU performance pending root acceptance."
+  ],
+  "nativeReviewPlan": {
+    "principalFrontEdge": {
+      "from": [
+        -5.6,
+        6.9
+      ],
+      "to": [
+        8.8,
+        1.0
+      ],
+      "outwardNormalApprox": [
+        0.38,
+        0.93
+      ],
+      "publicStreet": "Jan Hanzenstraat",
+      "entrancePin": [
+        4.8640231890577725,
+        52.36763342532987
+      ]
+    },
+    "requiredViews": [
+      "principalfront low y2.2m eye outwardnormal 12m: basement/door and allsixbays",
+      "front oblique from east: cornice and sideattachment against retainedhousing",
+      "higherroof from southwest: lowrearshedbands and exactconcaveperimeter",
+      "canal-side neighborcontext: sourcefailedrearviewmustnotbeaccepted"
+    ],
+    "suppression": [
+      "w276303116",
+      "NL.IMBAG.Pand.0363100012137097"
+    ],
+    "pending": [
+      "independentreviewer",
+      "gallerydefaultandfourlowerangles",
+      "livebothsidesexactreplacementandretainedneighbors",
+      "selectedexistingdestination+frontdoorpin",
+      "physicalbuildingclickmeaningfulcard",
+      "performanceandroute-startsmoke"
+    ],
+    "retainedFrontNeighbors": [
+      "NL.IMBAG.Pand.0363100012087338",
+      "NL.IMBAG.Pand.0363100012164087"
+    ],
+    "retainedCanalOccluder": "NL.IMBAG.Pand.0363100012145755"
+  },
+  "checks": {
+    "draftSha256": "e2cf586100936cafa7aaa853024450824863e30a9d70046edb7e3004d8b34549",
+    "triangles": 6004,
+    "bytes": 83092,
+    "sourceRoofFacesBeforeCleanup": 79,
+    "upwardRoofFaces": 74,
+    "compressedUpwardRoofFaces": 74,
+    "glazingRays": 288,
+    "scopeProbe": "outsideconcavenorthshoulder empty",
+    "failedEvidence": {
+      "previousDraftSha256": "a9d70d3109406ef125b83c27828b2d6427166381e2728582b35ba256ccd0eaec",
+      "path": "artifacts/el-tawheed-before-refinement",
+      "roofFailure": "One decoded nearcollinearrooftrianglereversed area0.001419m\u00b2. Removed5 source triangulation slivers with altitude<4mm, reran compressedroofchecks. Preservefailedmesh; originalroofregionalrings unchanged.",
+      "reviewFailure": "Root found generic equalgrid and panelmaterial hierarchy. Corrected tier-specifictwo-light/transoms and dedicatedwhitepalette."
+    },
+    "acceptance": "Draft CPU only; gallery/livegame/route/pin/card/context/performance pending.",
+    "decodedPaneRays": 288,
+    "panelPhaseFailure": {
+      "rejectedSha256": "57ee08c0a928603bf258d3ba33f2a9812b78addbdc6a8899b6d62e0a3024d8f8",
+      "evidencePath": "artifacts/el-tawheed-panel-failure-57ee",
+      "report": "scripts/landmarks/el-tawheed-independent-draft-review.json",
+      "correction": "Panel endpoints u2.10..13.05 on piers afterfirst/beforelastbay, nofirst/lastbayextension."
+    },
+    "lockedInstallAndLint": "npmci ownnode_modules from9a0b07a8 package-lock passed; normalnpmrunlint tsc--noEmit exit0; rebuilt GLB same110102hash.",
+    "upperPierRays": 15,
+    "maxDecodedUpperPierOffset": 0.038691157288279765,
+    "nativeSeamFailure": {
+      "productionSha256": "78e81d0d28f16d66e882297e6a1338e5b59d976a9b89d4ab3f262bb3a7d21707",
+      "authorBeforeSha256": "11010232746baf94cfa029672b3040ddb9969b37eb57b5cf7f8bc8c511d5dd95",
+      "preservedEvidence": "artifacts/el-tawheed-native-seam-failure",
+      "diagnosis": "Author and production first upper-pier triangles identical: u2.554..2.684,y7.851..10.771, frontoffset.159m/back.041m;119mmsidefaces normaldotfront\u00b1.00486. Long screenshotseams align sevenexplicitpilasterbox phases rather than irregular tiledwallcellboundaries. Maincause is excessivepilasterrelief, not packing differences or roofregionwalls.",
+      "repair": "Retained source-supportedupperpierstripphase/width/height; reduced boxeddepth.12->.025m and offset.10->.025m, ~17.5mmrelief beyondprincipalwall. Backs buryinsidewall; no sourcebody/aperture/suppression/roof changes.",
+      "beforeCheckerFailure": "Newdecodedupperpierray asserted projection<.045m, rejected original.159516879m.",
+      "afterChecker": "15pier rays max.038691157m,288decodedpane rays/74decodeduproof pass; normal lint passed.",
+      "pending": "Native production re-export/GPU screenshot required to show longdarkshadows resolved; CPU has no shadow simulation. Other potential tiledcell artifacts are not accepted absent gameview."
+    }
+  },
+  "comparisons": [
+    {
+      "reference": "../map-recall2-source-data/models/el-tawheed/processed/pano-0-front.jpg",
+      "render": "artifacts/landmark-offline-preview/el-tawheed-cpu-low-front.png",
+      "observation": "Sixupperbayrhythm/thirdbaydoor/narrowleftgroundpair, paleapertureawareplinthandwhitepanel retained. Shortuppertransoms/twolightframehierarchy repaired after root comparison; cornicerelief and windowratiosphotoapproximate."
+    },
+    {
+      "reference": "../map-recall2-source-data/models/el-tawheed/files/photo.jpg",
+      "render": "artifacts/landmark-offline-preview/el-tawheed-cpu-oblique-front.png",
+      "observation": "Straightmodillioncornice and parapetteeth retained; adjacenthouseexcluded frommodel. Survey tallfront flatroof andlowerrearshedzones; rearheldoutphotooccluded so no positive rearfacadeacceptance."
+    }
+  ],
+  "cpuLowView": {
+    "frontSha256": "738e438afd500c0c607027c7442bd095236f51104af19731dc41aa056e7a3df1",
+    "lowSha256": "04d7823028363bdbb33b8adbb4c812a99148f171b59320c7a5e2b4e59f8adf52",
+    "parameters": {
+      "elevation": 0.015,
+      "viewAngle": 0.39,
+      "focus": [
+        1.2,
+        2.4,
+        4.5,
+        17
+      ]
+    },
+    "limitation": "Distinct lower-angle orthographic crop, not calibrated metric perspective loweye or gameplaycamera. Actual low-eye gallery/game threshold/approach placementcheck remains required. Previous front/low images were identical; preserved failedreview/CPUs."
+  },
+  "currentProductionReview": {
+    "assetSHA256": "f39fb7244564e06750bfaa148fddba539d4420286efc0bfeac3db15a1c7f90e0",
+    "triangles": 6004,
+    "bytes": 83264,
+    "independentReview": "artifacts/el-tawheed-final-game-f39-wide-fov/independent-scoped-review.json",
+    "rootDecision": "Scoped local gallery/native acceptance: current default and four rotated gallery views, full native front/source comparison, low-door plinth/approach and rear surveyed roof/open shoulder inspected. Prior deep upper-pier seam failure resolved; thin source-supported relief retained.",
+    "nativeProof": "artifacts/el-tawheed-review/placement-proof.json",
+    "physicalCardProof": "artifacts/el-tawheed-review/physical-card-proof.json",
+    "geometry": "74 decoded upward roof triangles; 288 fractional pane and 15 upper-pier rays pass, maximum pier projection0.038691m",
+    "contracts": "Manual POI contract203models188destinations, shared186assets and locked lint pass",
+    "limitations": [
+      "Rear photographic facade match unverified: retained housing occludes source; blank rear surfaces are conservative omissions.",
+      "Low-eye max26/89 and FOV80 captures explicitly diagnostic, not shipping defaults. Preferred full-front actual zoom21.89047/FOV36.87 fits shipping max22.",
+      "90frame El-only fallback comparison headless3000x1400 ~147/144/145ms median; no physicalmobile or whole-game performance claim."
+    ],
+    "release": "Private accepted sources/evidence pushed; route-start desktop smoke passed. Local accepted production awaiting public commit and hosted verification."
+  }
+}

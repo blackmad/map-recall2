@@ -1,0 +1,27 @@
+{
+  "id": "lm-extract_landmarks_1862244163",
+  "name": "El Tawheed",
+  "lat": 52.36763342532987,
+  "lng": 4.8640231890577725,
+  "destinationPinReason": "Main double-door entrance observed on Jan Hanzenstraat 114 in municipal2025 panorama; placed on actual surveyed street front at third bay, rather than rear extract centre.",
+  "funFact": "El Tawheed occupies a former clothing factory on Jan Hanzenstraat. The building later housed an etui and box maker and then the Amex metal workshop before becoming a mosque and cultural centre in 1997. Its factory facade retains six tall window bays and a projecting cornice; the former name panel is now whitewashed.",
+  "description": "Mosque and Islamic cultural centre in the Bellamybuurt, housed in a former factory building.",
+  "website": "https://dareltawheed.nl/",
+  "wikipedia": "nl:Stichting El Tawheed",
+  "wikidata": "Q526708",
+  "sources": [
+    {
+      "title": "El Tawheed operator",
+      "url": "https://dareltawheed.nl/"
+    },
+    {
+      "title": "Jan Hanzenstraat 114 building history",
+      "url": "https://amsterdamopdekaart.nl/1850-1940/Jan_Hanzenstraat/114"
+    },
+    {
+      "title": "Municipal panorama2025-07-31",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-31_10-03-10_01081/"
+    }
+  ],
+  "integration": "Reuse existing genuine selectable extract identity; no duplicate destination. Root to wire fallback facts and physical click card, pin and chosen destination."
+}

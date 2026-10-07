@@ -39,10 +39,23 @@ assert.deepEqual(singelkerk?.center, [52.36770787, 4.88862596], 'Singelkerk pin 
 assert.notDeepEqual(singelkerk?.center, raw.find(feature => feature.id === singelkerk?.id)?.center, 'explicit correction supersedes the mistaken extract pin');
 const boomkerk = features.find(feature => feature.id === 'extract_landmarks_746878126');
 assert.deepEqual(boomkerk?.center, [52.3830729, 4.8505888], 'Boomkerk uses the documented public southwest entrance outside its surveyed portal');
-for (const feature of features.filter(feature => feature.manualPoi && feature.id !== singelkerk?.id && feature.id !== boomkerk?.id)) {
+// Explicit sourced entrance corrections are supported by the runtime. Preserve
+// every original pin unless its own supplemental record authorizes a correction.
+const correctionFacts = JSON.parse(readFileSync('src/canalRecall/game/manual-poi-data.json', 'utf8')) as {
+  modelId: string; destinationOverride?: { center: number[] };
+  destinations?: { landmarkId: string; destinationOverride?: { center: number[] } }[];
+}[];
+const correctionsByModel = new Map(correctionFacts.map(fact => [fact.modelId, fact]));
+for (const feature of features.filter(feature => feature.manualPoi)) {
   const original = raw.find(item => item.id === feature.id);
-  if (original?.center) assert.deepEqual(feature.center, original.center, 'uncorrected existing destinations retain their coordinates');
+  const fact = correctionsByModel.get(feature.modelId!);
+  const correction = fact?.destinations?.find(item => item.landmarkId === feature.id)?.destinationOverride?.center ?? fact?.destinationOverride?.center;
+  if (original?.center) assert.deepEqual(feature.center, correction ?? original.center, 'original pin retained unless its own sourced record explicitly corrects it');
 }
+const elTawheed = features.find(feature => feature.id === 'extract_landmarks_1862244163');
+assert.deepEqual(elTawheed?.center, [52.36763342532987, 4.8640231890577725], 'El Tawheed pin uses the source-observed Jan Hanzenstraat114 entrance');
+assert.deepEqual(elTawheed?.routeCenter, elTawheed?.center, 'chosen arrival is the same public entrance');
+assert.equal(features.filter(feature => feature.modelId === 'el-tawheed').length, 1, 'El Tawheed reuses its genuine extract identity');
 const beestVenue = features.find(feature => feature.id === 'n8805218642');
 const padelVenue = features.find(feature => feature.id === 'n3974788355');
 assert.equal(beestVenue?.modelId, 'beest-boulders');

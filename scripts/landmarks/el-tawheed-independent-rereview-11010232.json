@@ -1,0 +1,94 @@
+{
+  "id": "el-tawheed",
+  "reviewedOn": "2026-10-07",
+  "reviewer": "independent source/CPU failure-seeking worker",
+  "draft": {
+    "sha256": "11010232746baf94cfa029672b3040ddb9969b37eb57b5cf7f8bc8c511d5dd95",
+    "path": "artifacts/landmark-next-batch/el-tawheed.glb",
+    "triangles": 6004,
+    "bytes": 83108
+  },
+  "sourceFamily": {
+    "archiveCommit": "7d9c1206",
+    "modelPath": "models/el-tawheed",
+    "references": [
+      "original Commons2020 /tmp/el-tawheed-sources/raw/photo.jpg",
+      "municipal2025 derived front /tmp/el-tawheed-sources/pano-0-front.jpg",
+      "recorded BAG parent/3DBAG regional roof rings"
+    ]
+  },
+  "decision": "PASS scoped principal-front/source and CPU re-review; rear/context/GPU/full POI acceptance remain held.",
+  "previousFailurePreserved": {
+    "draftSha256": "57ee08c0a928603bf258d3ba33f2a9812b78addbdc6a8899b6d62e0a3024d8f8",
+    "report": "scripts/landmarks/el-tawheed-independent-draft-review.json",
+    "failure": "White panel extended through portions of first/last bays; duplicate front/low-front evidence."
+  },
+  "currentObservations": [
+    {
+      "trait": "Panel endpoints and bay phase",
+      "result": "PASS",
+      "observation": "Current front and oblique CPU views visibly place white strip between the pier after first bay and pier before sixth bay, matching both source families. Six upper/middle bays and third-bay door remain readable.",
+      "decodedPanelBounds": {
+        "u": [
+          2.0989809255375484,
+          13.050471664644842
+        ],
+        "y": [
+          3.7103576479154063,
+          4.379989090798803
+        ]
+      },
+      "qualification": "Endpoints are photo-guided approximations rather than surveyed original panel dimensions."
+    },
+    {
+      "trait": "Raised entrance approach",
+      "result": "PASS scoped geometric simplification",
+      "observation": "Decoded concrete plane spans entrance width and slopes shallowly toward pavement without invented steps. This matches source family showing a shallow grey door approach and preserves interrupted pale plinth/basement grille.",
+      "decodedBounds": {
+        "u": [
+          5.379347284089618,
+          7.46078623580581
+        ],
+        "outward": [
+          0.10902987284248544,
+          0.9005111092041269
+        ],
+        "y": [
+          -6.802394573135473e-05,
+          0.049454558646932156
+        ],
+        "allTrianglesUpward": true
+      },
+      "qualification": "Width/depth/5cm rise approximate source; actual game ground relation and first-hit low-eye readability remain pending."
+    },
+    {
+      "trait": "Window/crown readability",
+      "result": "PASS scoped source hierarchy",
+      "observation": "Two-light primary divisions dominate fine glazing bars, upper-storey short transoms differ from middle and ground crossbars, left narrow ground pair stays distinct, cornice has modillions and toothed parapet. Unlettered white strip avoids invented name signage. Fine native detail remains simplified."
+    },
+    {
+      "trait": "Distinct CPU low angle",
+      "result": "PASS evidence distinction only",
+      "observation": "New low-front image has different framing/elevation and is no longer duplicate of front. It makes panel and basement phase legible; shallow approach is barely visible at this grazing angle.",
+      "frontImageSha256": "738e438afd500c0c607027c7442bd095236f51104af19731dc41aa056e7a3df1",
+      "lowFrontImageSha256": "04d7823028363bdbb33b8adbb4c812a99148f171b59320c7a5e2b4e59f8adf52",
+      "qualification": "Orthographic elevation .015/focus17m is not a true perspective eye-height view."
+    },
+    {
+      "trait": "Roof/scope retention",
+      "result": "PASS decoded roof direction",
+      "observation": "74 decoded slate triangles upward and 0 downward; current correction retains native regional roof family and lower rear shed geometry, without fabricated domes. No model regeneration performed."
+    }
+  ],
+  "viewsInspected": [
+    "artifacts/landmark-offline-preview/el-tawheed-cpu-front.png",
+    "artifacts/landmark-offline-preview/el-tawheed-cpu-low-front.png",
+    "artifacts/landmark-offline-preview/el-tawheed-cpu-oblique-front.png"
+  ],
+  "acceptanceLimits": [
+    "Rear source remains occluded by neighboring housing; blank rear/side source coverage gap is not accepted by this pass.",
+    "No GPU, gallery/game, ordinary-layer suppression, neighboring building retention, POI route/pin/card, or performance acceptance.",
+    "Do true low-eye scene view for approach/pavement relation, door/plinth and glazing first-hit readability.",
+    "Previous independent FAIL report remains intact; new pass is bounded to current hash and corrections."
+  ]
+}
