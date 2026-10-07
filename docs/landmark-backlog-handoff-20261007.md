@@ -1,5 +1,16 @@
 # Landmark backlog handoff — 7 October
 
+## Latest durable continuation — October7 evening
+
+This section supersedes older worktree/status paragraphs below. Original /tmpworktrees disappeared; recovered work now lives under /Users/blackmad/Code/map-recall2-worktrees. Do not infer old processes active from olderhandoffs. Rootmain remainsdirty/unrelated and is not thepublisher.
+
+Magna exactsuppressionfix59dab6ae is published/hostedverified; source/acceptedhosted packbea10cd4. Its full rear/end/sign model defects remainqueued. ElectricLadyland local originalmodel accepted:05312522,13966tri161324B, exacttwoBAGs, genuineexistingmuseum5 identity, correctedruntime +70.147. SourceCPU→native placement failure preserved; accepted nativepack6f8fe12389a2d969fa29f6c36f503155b48c7d89. Publicmodel commit/hostedchecks next.
+
+CaféKobalt recoveredproductiona96ecaaf,7031tri118392B sourceCPUindependentpass; realOSMnode539179321/exactPand2178170. Redshutters/brownbrick/slateroof corrected after root sourcecomparison, thinrealpanel lettering native. Nativegallery/game/POI/fallback/pans/performance pending. Westerannex b2efbdd4,20635tri241440B sourceCPUscopedpass with strict1/2038micrometreboundarymiss retained;4lowchurchroofs,open courtyard,separateneighbors preserved. Native acceptance pending.
+
+Homomonument mainland-waterreport stillqueued foractualbasemapground diagnosis; intendedeasternwatersideplatformmustremain. Melk currentproduction56c06a remainsnative sharedRabozaalhallcontextHOLD; photographavailability is notblocker, retainedPand2173457 andlegacyStadsschouwburggroundfill needsource-backedcoupledrepair. Unpublished/tmpnativeproof lost is notproof ofacceptance; currentraw/web originals retained forre-review. NewOCCII misalignmentnote063e3e2c remainsopen/unclaimed; earlierfanrepairresolution staysseparate. Latest successfulFirebasepull recovered1openOCCII+1inprogressMelk onthischeckpoint (see durableoverlap-release .cache/canal-feedback). Continue atbatch/before release/30mininterval. Preserveeveryotherqueue/streetrequest and allfailure/sourcearchives.
+
+
 This section supersedes the earlier statuses above. The continuous building backlog goal remains active; the current checkpoint does not complete the overall queue.
 
 Afrikahuis is published and verified on the hosted site. Public model commit `1205afb0a1b05d881bca603f124c5bdf3cc0b517`, canonical research URL repair `234f08da5870dea20fe3628b77f4df0270543dfe`, and hosted closeout `059c5f6c325716af1054a01226e89b4f851f2739` are committed and pushed with normal lint and route smoke hooks. Model and URL-fix Firebase deployments succeeded. The closeout deployment has not yet been checked. The model SHA is `09ff3adba973233b03ab2f7a1dddd4b6a21b85e9fd603658c66273c1042a0fc7`, 400,140 bytes and 28,070 triangles. Current hosted geometry, genuine destination/pin/physical card, exact suppression, neighboring buildings, fallback and real desktop/touch camera gestures were reviewed. The actual expanded research link opens the apex Amsterdam op de Kaart URL with HTTP 200. Earlier software rendering, invalid cameras and the baseline MapLibre D-label warning remain explicit limitations.
