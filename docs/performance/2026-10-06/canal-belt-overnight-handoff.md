@@ -29,7 +29,7 @@ All use exact native BAG identity/footprint, metre scale and surveyed roof regio
 
 Ten combined:2,749,328bytes and26,091triangles. Every asset is below500KB and40,000triangles; detail was retained rather than raising budgets. Source ownership, authoring and root/independent gallery/game acceptance are recorded in the fidelity ledger and private validation packs.
 
-Batch01 public0dedeea8cf9781e22ea5707c08a4b64ec9a2fe40; batch02 public6499eee0a234b8f6b3cd485ba96612f4a2d99008; batch03 public8997fa36c765260aec2c2264bec002a73a3032c6. The final trio accompanies this handoff. Separate material demo26fce452c9cc63a77d125c195e067c4ecad9c3ea. First seven hosted fingerprints were verified; final-trio deployment/fingerprint checks occur after the accompanying push.
+Batch01 public0dedeea8cf9781e22ea5707c08a4b64ec9a2fe40; batch02 public6499eee0a234b8f6b3cd485ba96612f4a2d99008; batch03 public8997fa36c765260aec2c2264bec002a73a3032c6. The final trio accompanies this handoff. Separate material demo26fce452c9cc63a77d125c195e067c4ecad9c3ea. All ten hosted fingerprints are verified; final-trio deployment and 20-card desktop/touch-emulated feedback checks passed for release `278e989c`.
 
 ## What the workflow learned
 
