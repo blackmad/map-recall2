@@ -1,0 +1,668 @@
+{
+  "id": "centrale-markthal",
+  "reviewedOn": "2026-10-05",
+  "status": "verified-awaiting-deployment",
+  "cpuReady": false,
+  "visualAccepted": true,
+  "changes": [
+    "Separated unequal surveyed outer stair-bay cap/masonry support polygons314 west and309 east from the taller inset flanking towers. No tower relocation or broad shell holes.",
+    "Replaced flat side-only tall pane with three source-directed exterior faces above7.8m loading plinth. Retained historic office window counts46/43 with the side rows ending before stairhouse support.",
+    "Added72 multi-height/lateral stair samples and persistent first-hit evidence. Existing pre-repair failures preserved.",
+    "Extended all three stair-bay faces from the unsupported7.8m loading-roof cutoff to an approximate photo-backed4.4m sill above the unchanged portico canopy. Added fixed4.65m/6m lower-strip probes; no annex, loading-wing, base or survey cap moved or cut.",
+    "Clipped only the eastern upper loading-wing front to the source LoD2.2 roof296 stepped contour shared with stair roof309. Ground BAG shell, surveyed stairhouse, office wing and all annexes retain their native scope/height; glazing and sill unchanged.",
+    "Geo-matched west source exposes mistaken source-side comparison: retained2016 stair image depicts east.",
+    "Replaced roof-fragment extrusion with bounded original photo-guided projecting bay outside actual BAG wall; full ground shell and annexes retained.",
+    "Created supporting outer stairhouse brick facade and18.5m roof, with4.4\u201317.6m window;22m inward tower retained. All new metrics approximate.",
+    "Upper office wing ends at52.3m front transition; removed last repetitive loading detail crossing genuine stairhouse.",
+    "Preserved roof296/309 shared-boundary provenance as survey evidence while withdrawing its unsupported complete-window interpretation."
+  ],
+  "sourceInterpretation": {
+    "observed": "stair-2016 shows a lower exposed stairhouse with a projecting three-sided ladder-glazed bay and a taller flattened brick tower behind it; RCE expressly distinguishes the two assemblies.",
+    "rceAssertion": "Het trappenhuis op de hoek met de voorgevel bevat over de vier bouwlagen een doorgetrokken uitgebouwd driezijdig venster met stalen kozijnen boven het afdak dat het portiek met de ingangspartij overhuift. Een afgeplatte toren flankeert het trappenhuis.",
+    "survey": "314 west cap min16.620NAP minus0.312 terrain=16.308;309 east min13.944NAP minus0.312=13.632. Towers290/308 remain around21.8m. These roof patches are measured but their exact correspondence to the photographed lower facade is an interpretation.",
+    "competingInterpretations": [
+      {
+        "interpretation": "Small surveyed outer polygons314/309 are entire lower glazed stairhouse caps.",
+        "support": "Exterior location near photo bay and heights distinct from inset high tower.",
+        "conflict": "Side return faces share boundary with front annex; photo shows continuous exposed angled glass whereas rectangular front annex blocks current side rays."
+      },
+      {
+        "interpretation": "Small fitted outer polygons describe only bay heads/adjacent roof fragments, with a separate larger stairhouse enclosing structure.",
+        "support": "West314 is a tiny irregular triangle, east309 an irregular multi-part14NAP patch; eastern323 separately describes21NAP surrounding roof with tower290 hole.",
+        "missing": "A georeferenced exterior stairhouse plan/elevation identifying every bay return and neighboring roof edge is absent."
+      }
+    ],
+    "lowerGlazing": {
+      "photo": "artifacts/landmarks/centrale-markthal/references/stair-2016.jpg",
+      "observation": "Continuous three-sided glazing ends just above the portico canopy; the lowest glazed storey is below the neighboring loading-wing roof. RCE explicitly describes a continuous projecting three-sided window across four storeys above the entrance canopy.",
+      "height": 4.4,
+      "heightConfidence": "approximate; not a surveyed sill",
+      "metricBasis": "Existing canopy top3.89m plus approximately0.5m photographed brick gap. The photo establishes the vertical relationship, not an exact metre measurement.",
+      "scopeLimitation": "Surveyed small roof polygons may not be the complete photographed facade outline. Extension preserves those current faces and reveals retained-shell overlap rather than concealing it."
+    },
+    "loadingWingBoundary": {
+      "source": "artifacts/landmarks/centrale-markthal/references/roof-surfaces-derived.json, roof296; original 3dbag.json LoD2.2",
+      "observed": "Roof296 front edge[(33.1716,55.4560),(34.4195,55.1357)] is shared exactly with roof309 vertices2/3. Its further stepped inner return is also shared with309 vertices3\u20137. Rectangular upper loading shell to57.2 invaded this surveyed stairhouse height zone.",
+      "repair": "Eastern upper loading shell follows296 front/inner-return chain, with exterior endpoint clipped to existing BAG wall x33.9. Below7.1m the complete BAG ground shell remains. Source roof overhang outside the BAG wall was not added. Existing approximate loading height7.7 retained; no sill or legitimate annex moved.",
+      "confidence": "high for roof zoning/shared contour; facade correspondence, dated survey drift and precise loading eave height remain approximate"
+    }
+  },
+  "checks": {
+    "exitCode": 0,
+    "immediateSamples": 108,
+    "immediateFailures": 0,
+    "exteriorNormalOcclusions": 24,
+    "exteriorNormalRoles": {
+      "surveyed-base": 18,
+      "front-annex": 6
+    },
+    "sourceCameraSamples": 90,
+    "sourceCameraMasonryOrNeighborFailures": 0,
+    "sourceCameraFrameOcclusions": 5,
+    "neighborScope": "all6 genuine source neighbors included in geo-matched source-camera ray scene",
+    "note": "Camera ray test allows recorded genuine cage-frame hits; immediate fractional glass test still requires actual glass first hit. Exterior-normal diagnostics remain preserved; normal rays can cross adjacent loading wall from non-street directions."
+  },
+  "failedEvidence": [
+    "artifacts/centrale-markthal-review/firsthit-before-repair.json",
+    "artifacts/centrale-markthal-review/firsthit-after-audit.json",
+    "artifacts/centrale-markthal-review/check-after-repair.log",
+    "artifacts/centrale-markthal-review/firsthit-original-two-metre-audit.json",
+    "artifacts/centrale-markthal-review/firsthit-before-loading-contour-repair.json",
+    "artifacts/landmarks/markthal-bay-repair/firsthit-existing-check-frame-collisions.json",
+    "artifacts/landmarks/markthal-bay-repair/firsthit-pane-interior-audit.json",
+    "artifacts/landmarks/markthal-bay-repair/firsthit-before-pane-interior-audit.json",
+    "artifacts/landmarks/centrale-markthal-finish-20261006/independent-narrow-silhouette-failure.json"
+  ],
+  "originalSources": [
+    {
+      "path": "artifacts/landmarks/centrale-markthal/references/rce.html",
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/526739",
+      "status": 200,
+      "sha256": "761a163c123f3df652c2c403cc407894abba776e09c3875772a1a988ee916642",
+      "retrievedAt": "2026-10-05",
+      "rights": "Referenceonly;sourcecopyright retained"
+    },
+    {
+      "path": "artifacts/landmarks/centrale-markthal/references/bag.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012210502&f=json",
+      "status": 200,
+      "sha256": "56396fc15289a7f260e55622136101d15d39972fcce94612f3ba9ca5f2ab540c",
+      "retrievedAt": "2026-10-05",
+      "rights": "BAG/OSM/3DBAGopendata;retainattribution"
+    },
+    {
+      "path": "artifacts/landmarks/centrale-markthal/references/3dbag.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012210502",
+      "status": 200,
+      "sha256": "9e4e60ed4cdbf1eb58bcc582df67fc855850401ba4cebfa3239b4ec825cf62ab",
+      "retrievedAt": "2026-10-05",
+      "rights": "BAG/OSM/3DBAGopendata;retainattribution"
+    },
+    {
+      "path": "artifacts/landmarks/centrale-markthal/references/side-2016.jpg",
+      "url": "https://items.amsterdamse-school.nl/webapiimages/wwwopac.ashx?command=getcontent&server=images&value=20042%5C9090099%20kopiex%20%28Medium%29.jpg",
+      "retrievedAt": "2026-10-05",
+      "sha256": "3a5445fa3521c7f2a38ba299ddf38e8685d067a5678777a5f799f388cecf0a92",
+      "sourcePage": "https://items.amsterdamse-school.nl/details/objects/900",
+      "attribution": "MuseumHetSchip/AnnemariekeVerheijorCorrieGroen-Pickhard2016;seeoriginalsourcepage",
+      "rights": "Photographercopyright;referenceonly"
+    },
+    {
+      "path": "artifacts/landmarks/centrale-markthal/references/stair-2016.jpg",
+      "url": "https://items.amsterdamse-school.nl/webapiimages/wwwopac.ashx?command=getcontent&server=images&value=20042%5C9090116%20kopiex%20%28Medium%29.jpg",
+      "retrievedAt": "2026-10-05",
+      "sha256": "2511c6510dfebccae8125de874362d4f1026317ae2fdca4c254d78c868c20292",
+      "sourcePage": "https://items.amsterdamse-school.nl/details/objects/900",
+      "attribution": "MuseumHetSchip/AnnemariekeVerheijorCorrieGroen-Pickhard2016;seeoriginalsourcepage",
+      "rights": "Photographercopyright;referenceonly"
+    },
+    {
+      "path": "artifacts/landmarks/centrale-markthal/references/front-2016.jpg",
+      "url": "https://items.amsterdamse-school.nl/webapiimages/wwwopac.ashx?command=getcontent&server=images&value=20042%5CCentrale%20Markthal%20-%20Annemarieke%20Verheij%20%2813%29.jpg",
+      "retrievedAt": "2026-10-05",
+      "sha256": "443e2cae810d46cc34a2e21f0c391f1e4a8f98ef5f6ab6f6311f66745fd4442b",
+      "sourcePage": "https://items.amsterdamse-school.nl/details/objects/900",
+      "attribution": "MuseumHetSchip/AnnemariekeVerheijorCorrieGroen-Pickhard2016;seeoriginalsourcepage",
+      "rights": "Photographercopyright;referenceonly"
+    },
+    {
+      "path": "artifacts/landmarks/centrale-markthal/references/context-2016.jpg",
+      "url": "https://items.amsterdamse-school.nl/webapiimages/wwwopac.ashx?command=getcontent&server=images&value=20042%5CCentrale%20Markthal%20-%20Annemarieke%20Verheij%20%285%29.jpg",
+      "retrievedAt": "2026-10-05",
+      "sha256": "5297be78ae4b45b908fe4edb953016be1858bfad862ef6f3469426d7185084f8",
+      "sourcePage": "https://items.amsterdamse-school.nl/details/objects/900",
+      "attribution": "MuseumHetSchip/AnnemariekeVerheijorCorrieGroen-Pickhard2016;seeoriginalsourcepage",
+      "rights": "Photographercopyright;referenceonly"
+    }
+  ],
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "205d04f0c48c3a651000233510d5f9ac1596edee",
+    "path": "models/centrale-markthal",
+    "finalEvidencePath": "models/centrale-markthal/validation/final-20261007",
+    "rawSourceCheckpoint": "68906c28297c781d0d2b8c8784adde49f2eba399"
+  },
+  "remainingWork": [
+    "Root isolated compressed export/decoded check and front/side source-camera CPU comparison.",
+    "Independent failure-seeking review, native gallery and live gameplay with exact suppression and all genuine neighbors.",
+    "Selectable destination / geographic pin / meaningful physically clicked card / route failure and fallback contracts, performance evidence.",
+    "Approximate stairhead/projection dimensions require source/render recognition review; fitted AHN fragment mismatch explicitly remains uncertainty."
+  ],
+  "ownedFiles": [
+    "scripts/landmarks/centrale-markthal-builder.ts",
+    "scripts/landmarks/centrale-markthal-review.json",
+    "scripts/check-centrale-markthal-geometry.ts"
+  ],
+  "coordinatorDiagnostic": {
+    "date": "2026-10-05",
+    "finding": "Two-metre rays start inside the front annex across a narrow reentrant gap, conflating distant contextual occlusion with immediate pane burial. Six samples also hit legitimate ladder bars.",
+    "geometryChangedByCoordinator": false,
+    "immediateExposure": {
+      "samples": 72,
+      "failed": 0,
+      "originMetres": 0.05,
+      "structuralBacking": "All sampled panes have masonry within0.16m behind their source-directed surface. Frame-hit samples check adjacent glass interior; offsets recorded."
+    },
+    "contextualOcclusion": {
+      "twoMetreOriginCount": 16,
+      "status": "Unresolved visual acceptance hold; adjacent annex retained without cuts, relocation or masking."
+    },
+    "warning": "Local exposure verifies physical disjointness/backing only. It does not establish that source-visible three-sided bays are recognizable from a real street camera. Lower glazed storeys below7.8m remain incomplete.",
+    "supersededByLowerGlazingExtension": "Historical7.8m-pane diagnostic only;4.4m extension now has one immediate loading-wing failure and28 contextual occlusions."
+  },
+  "lowerGlazingDiagnostic": {
+    "date": "2026-10-05",
+    "status": "held",
+    "immediateSamples": 108,
+    "immediateFailures": [
+      {
+        "point": [
+          33.91378390167439,
+          7.556840119361878,
+          57.08432065851234
+        ],
+        "normal": [
+          -0.36987963285332276,
+          0,
+          0.9290796829122306
+        ],
+        "originDistance": 0.05,
+        "mullionOffset": 0,
+        "lowerStorey": true,
+        "structuralBacking": "surveyed-outer-stair-bay",
+        "visible": false,
+        "hit": "ochre",
+        "role": "loading-wing",
+        "distance": 0.012738213809806241
+      }
+    ],
+    "lowerSamples": 63,
+    "twoMetreContextOcclusions": 28,
+    "twoMetreRoles": {
+      "surveyed-base": 15,
+      "front-annex": 11,
+      "loading-wing": 2
+    },
+    "warning": "One real lower local failure and28 contextual occlusions remain. No visual acceptance follows from a local pane ray; native gallery/game review remains required."
+  },
+  "loadingContourDiagnostic": {
+    "date": "2026-10-05",
+    "immediateSamples": 108,
+    "immediateFailures": 0,
+    "twoMetreContextOcclusions": 28,
+    "twoMetreRoles": {
+      "surveyed-base": 15,
+      "front-annex": 12,
+      "loading-wing": 1
+    },
+    "sourceChecks": "Independent native roof296/309 shared vertices and first-hit height zones on both sides of their boundary. Low loading roof remains; full-height stair roof remains.",
+    "preservedFailure": "artifacts/centrale-markthal-review/firsthit-before-loading-contour-repair.json",
+    "warning": "Local intersection repaired; retained annex/base context still occludes28 two-metre samples. Native gallery/game visual acceptance remains HELD."
+  },
+  "bayFramingDiagnostic": {
+    "date": "2026-10-06",
+    "status": "held-geometry-and-visual-failures",
+    "source": "inspected cached original stair-2016.jpg and RCE526739 continuous projecting three-sided steel window assertion",
+    "change": "Added three frontal lights / single-light angled returns, upright perimeter bars and head/sill to existing surveyed assembly. Frame dimensions remain approximate; no wider ground plan was inferred.",
+    "draft": {
+      "output": "/tmp/markthal-bay-repair-gE44bv/centrale-markthal.glb",
+      "sha256": "843a689eda2c4714e0b6550a8239765a98a725af53d6a34d3adca05a4d6536a0",
+      "bytes": 300160,
+      "triangles": 25416
+    },
+    "diagnostic": {
+      "status": "held-local-exposure",
+      "stairSamples": 108,
+      "failedSamples": 6,
+      "failureRoles": {
+        "surveyed-base": 3,
+        "front-annex": 3
+      },
+      "contextOcclusions": 37,
+      "contextRoles": {
+        "untagged": 2,
+        "surveyed-base": 19,
+        "front-annex": 15,
+        "loading-wing": 1
+      },
+      "oldFixedOffsetFrameFailures": 18,
+      "meshBudget": {
+        "triangles": 25416,
+        "bytes": 300160
+      },
+      "unchangedChecksReachedBeforeFinalExposureAssertion": [
+        "finite bounds",
+        "upward roof normals",
+        "native BAG transform",
+        "roof pitches/eaves",
+        "roof296/309 first-hit zoning",
+        "surveyed open-space probes",
+        "exact suppression identity and neighbor contract"
+      ],
+      "warning": "Fractional pane-interior rays expose real masonry overlaps previously missed; original fixed-offset checker additionally collides with genuine new vertical framing. Neither diagnostic is a visual acceptance.",
+      "sameSamplingBefore": {
+        "failedSamples": 6,
+        "contextOcclusions": 37
+      },
+      "sameSamplingAfter": {
+        "failedSamples": 6,
+        "contextOcclusions": 37
+      },
+      "newMasonryFailures": 0
+    },
+    "beforeAfterImages": [
+      "artifacts/landmarks/markthal-bay-repair/centrale-markthal-cpu-before-west-facing.png",
+      "artifacts/landmarks/markthal-bay-repair/centrale-markthal-cpu-after-west-facing.png",
+      "artifacts/landmarks/markthal-bay-repair/centrale-markthal-cpu-after-west-oblique.png"
+    ],
+    "recognitionFailure": "CPU comparison still visibly fails: lower glazing covered by retained shell; silhouette remains flat/narrow compared with photo. Survey cap-to-window correspondence and annex boundary remain unresolved. Framing is a bounded detail improvement, not a bay-shape fix.",
+    "requiredNextEvidence": "Geo-matched plan/elevation or confidently matched source contour before widening/repositioning the bay or cutting annex/base; gallery/live native-neighbor and POI acceptance plus independent review remain pending.",
+    "canonicalAcceptanceCheck": {
+      "command": "node --import tsx scripts/check-centrale-markthal-geometry.ts",
+      "exitCode": 1,
+      "result": "Fails on six actual masonry overlaps; correctly rejects current draft",
+      "log": "artifacts/landmarks/markthal-bay-repair/canonical-fractional-check.log"
+    }
+  },
+  "checkHistory": [
+    {
+      "preservedOn": "2026-10-06",
+      "checks": {
+        "command": "node --import tsx scripts/check-centrale-markthal-geometry.ts",
+        "exitCode": 1,
+        "finiteBoundsBudget": true,
+        "upwardRoofs": true,
+        "exactIdentityNeighborRetention": true,
+        "exteriorOpenSpace": true,
+        "nativeBagTransform": true,
+        "roofPitchSupport": true,
+        "firstHitGlazing": false,
+        "stairSamples": 108,
+        "failedSamples": 6,
+        "triangles": 25080,
+        "firstHitFailureBreakdown": {
+          "surveyed-base": 3,
+          "front-annex": 3
+        },
+        "gallery": "not run; browser launch EPERM",
+        "liveGame": "not run; browser launch EPERM",
+        "localPaneExposure": false,
+        "contextualFacadeVisibility": "held",
+        "commandExitCodeAfterLocalDiagnostic": 1,
+        "contextualOcclusions": 37,
+        "lowerStoreySamples": 63,
+        "sourceBoundaryFirstHits": true,
+        "sampling": "Three fractional positions16%,50%,84% on each actual pane face at six heights; neighboring mullion adjustment retained",
+        "evidence": "artifacts/centrale-markthal-review/firsthit-after-audit.json"
+      },
+      "reason": "Previous fixed metre-offset sampling was superseded after actual pane-fraction rays revealed missed masonry overlaps."
+    },
+    {
+      "preservedOn": "2026-10-06",
+      "checks": {
+        "command": "node --import tsx scripts/check-centrale-markthal-geometry.ts",
+        "exitCode": 1,
+        "finiteBoundsBudget": true,
+        "upwardRoofs": true,
+        "exactIdentityNeighborRetention": true,
+        "exteriorOpenSpace": true,
+        "nativeBagTransform": true,
+        "roofPitchSupport": true,
+        "firstHitGlazing": false,
+        "stairSamples": 108,
+        "failedSamples": 6,
+        "triangles": 25080,
+        "firstHitFailureBreakdown": {
+          "surveyed-base": 3,
+          "front-annex": 3
+        },
+        "gallery": "not run; browser launch EPERM",
+        "liveGame": "not run; browser launch EPERM",
+        "localPaneExposure": false,
+        "contextualFacadeVisibility": "held",
+        "commandExitCodeAfterLocalDiagnostic": 1,
+        "contextualOcclusions": 37,
+        "lowerStoreySamples": 63,
+        "sourceBoundaryFirstHits": true,
+        "sampling": "Three fractional positions16%,50%,84% on each actual pane face at six heights; neighboring mullion adjustment retained",
+        "evidence": "artifacts/centrale-markthal-review/firsthit-after-audit.json"
+      },
+      "reason": "Source camera reconstruction supersedes fitted-roof-fragment window correspondence; previous failures remain archived."
+    }
+  ],
+  "independentFailureReview": {
+    "reviewedOn": "2026-10-06",
+    "reviewer": "independent failure-seeking worker",
+    "status": "held-geometry-and-visual-failures",
+    "visualAccepted": false,
+    "builderChanged": false,
+    "sourceCommit": "9926aa1",
+    "sourcesInspected": [
+      "models/centrale-markthal/files/stair-2016.jpg",
+      "models/centrale-markthal/files/side-2016.jpg",
+      "models/centrale-markthal/files/front-2016.jpg",
+      "models/centrale-markthal/files/front-2023.jpg",
+      "models/centrale-markthal/files/context-2016.jpg",
+      "models/centrale-markthal/files/rce.html",
+      "models/centrale-markthal/files/bag.json",
+      "models/centrale-markthal/files/roof-surfaces-derived.json"
+    ],
+    "draft": {
+      "output": "/tmp/markthal-bay-repair-nOYbZs/centrale-markthal.glb",
+      "sha256": "843a689eda2c4714e0b6550a8239765a98a725af53d6a34d3adca05a4d6536a0",
+      "bytes": 300160,
+      "triangles": 25416
+    },
+    "checks": {
+      "command": "MARKTHAL_CHECK_OUTPUT_DIR=artifacts/landmarks/centrale-markthal-next-review node --import tsx scripts/check-centrale-markthal-geometry.ts",
+      "exitCode": 1,
+      "triangles": 25416,
+      "stairSamples": 108,
+      "immediateFailures": 6,
+      "twoMetreContextOcclusions": 37,
+      "exteriorNormalContextOcclusions": 81,
+      "exteriorNormalRoles": {
+        "untagged": 14,
+        "office-wing": 9,
+        "surveyed-base": 37,
+        "front-annex": 18,
+        "main-wall": 3
+      },
+      "roofAndSourceChecks": "Reached canonical final exposure assertion; upward normals, source296/309 zoning, roof support, native BAG transform, open spaces and exact identity contract passed. No GPU checks run."
+    },
+    "finding": "The bay is a narrow upper strip in both exact exported draft views; the lower photographed continuous glazing does not reach the canopy in the visible render. This is an assembly/footprint correspondence failure, not a framing or palette problem. Immediate rays can start inside enclosing masonry and miss it. Exterior-origin diagnostics expose substantially more occlusion.",
+    "sourceContradiction": "West roof314 outer x=-35.6308 near z55 lies about0.41m inside installed BAG sidewall x=-36.045. Treating the roof fragment as the entire projecting window footprint while retaining a uniform opaque BAG plinth cannot produce the photographed continuous window. Roof309 has a different irregular topology and distinct height; symmetric transplant is unsupported.",
+    "decision": "Do not move/widen bay or cut generic shell using these roof fragments alone. A geo-matched current facade/plan is needed to resolve stairhouse backing, projecting-window extent and adjacent annex boundary. Preserve current failed draft and source uncertainty.",
+    "requiredNextChecks": [
+      "Obtain/source-match current stairhouse footprint and window projection before builder repair",
+      "Repeat fractional first-hit and exterior-origin diagnostics after geometry repair",
+      "Root reference/render comparison followed by gallery/live native-neighbor review and POI acceptance; no acceptance from probes"
+    ]
+  },
+  "finish20261006": {
+    "status": "geometry-ready-visual-held",
+    "sourceRecord": "artifacts/landmarks/centrale-markthal-finish-20261006/municipal-source-record.json",
+    "changes": [
+      "Geo-matched west source exposes mistaken source-side comparison: retained2016 stair image depicts east.",
+      "Replaced roof-fragment extrusion with bounded original photo-guided projecting bay outside actual BAG wall; full ground shell and annexes retained.",
+      "Created supporting outer stairhouse brick facade and18.5m roof, with4.4\u201317.6m window;22m inward tower retained. All new metrics approximate.",
+      "Upper office wing ends at52.3m front transition; removed last repetitive loading detail crossing genuine stairhouse.",
+      "Preserved roof296/309 shared-boundary provenance as survey evidence while withdrawing its unsupported complete-window interpretation."
+    ],
+    "triangles": 25420,
+    "checks": {
+      "exitCode": 0,
+      "immediateSamples": 108,
+      "immediateFailures": 0,
+      "exteriorNormalOcclusions": 24,
+      "exteriorNormalRoles": {
+        "surveyed-base": 18,
+        "front-annex": 6
+      },
+      "sourceCameraSamples": 90,
+      "sourceCameraMasonryOrNeighborFailures": 0,
+      "sourceCameraFrameOcclusions": 5,
+      "neighborScope": "all6 genuine source neighbors included in geo-matched source-camera ray scene",
+      "note": "Camera ray test allows recorded genuine cage-frame hits; immediate fractional glass test still requires actual glass first hit. Exterior-normal diagnostics remain preserved; normal rays can cross adjacent loading wall from non-street directions."
+    },
+    "acceptance": "Root native-scale source/render and independent/gallery/live/POI/fallback/performance review required. No visual acceptance claimed."
+  },
+  "boundedFacadeScreenRepair": {
+    "status": "geometry-ready-source-comparison-pending",
+    "reviewedOn": "2026-10-06",
+    "supersedes": "candidate4354c57c narrow4.93m high facade failed independent silhouette review",
+    "changes": [
+      "Lowered outer stairhouse solid and its owned roof from18.5m to15.25m.",
+      "Added only0.30m-thick street facade screen fromz52.3 to60.3 and15.25\u201318.5m height, with bounded pale cornice.",
+      "Retained source316/310 low front-annex roof ownership and all native ground/neighbor scope; continuous window and backing unchanged."
+    ],
+    "sourceCorrespondence": "Photo broad facade/front-light ratio~4.1; candidate screen/glass ratio4.44. Approximate photo bay position57.4% from left matches reversed native centre57.5%; high inward source323 reaches60.3m. Thin screen versus inset roof relationship remains bounded inference.",
+    "triangles": 25468,
+    "checks": {
+      "command": "MARKTHAL_CHECK_OUTPUT_DIR=artifacts/landmarks/centrale-markthal-finish-20261006 node --import tsx scripts/check-centrale-markthal-geometry.ts",
+      "exitCode": 0,
+      "immediateSamples": 108,
+      "immediateFailures": 0,
+      "sourceCameraSamples": 90,
+      "sourceCameraMasonryOrNeighborFailures": 0,
+      "sourceCameraFrameHits": 5,
+      "exteriorNormalOcclusions": 24,
+      "exteriorRoles": {
+        "surveyed-base": 18,
+        "front-annex": 6
+      },
+      "broadFacadeRatio": true,
+      "thinUpperWallScope": true,
+      "lowAnnexRoofOwner": true
+    },
+    "failedEvidence": "artifacts/landmarks/centrale-markthal-finish-20261006/independent-narrow-silhouette-failure.json",
+    "pending": [
+      "Root isolated compressed export/decoded source-facing CPU comparison",
+      "Root native GPU gallery/live source comparison and final independent acceptance"
+    ]
+  },
+  "nativeFitRepair20261006": {
+    "status": "runtime-BAG-vertex-fit-pass-final-native-visual-held",
+    "diagnosis": "Source east/south-to-local rotation +12.8 was reused as runtime local-to-world +12.8, doubling yaw to25.6degrees. Existing source-only assertion verified authoring math but never tested the renderer matrix. Genuine neighbors must not be suppressed to compensate.",
+    "minimalFix": "surveyed.northOffsetDegrees=-12.8. Author/source/local geometry, all six genuine neighbors, exact two suppression identities, the8m high facade screen and15.25m low annex roofs remain unchanged.",
+    "sourceArchive": {
+      "commit": "80a5462b",
+      "modelPath": "models/centrale-markthal"
+    },
+    "mesh": {
+      "sha256": "6f4927d135dfb1ab149ecfbf318653a4544bd63cefa06cd46c7ca6098955f575",
+      "triangles": 25468,
+      "changed": false
+    },
+    "evidence": "artifacts/landmarks/centrale-markthal-native-fit-repair/native-fit-proof.json",
+    "checks": {
+      "command": "MARKTHAL_CHECK_OUTPUT_DIR=artifacts/landmarks/centrale-markthal-native-fit-repair node --import tsx scripts/check-centrale-markthal-geometry.ts public/canal-drive/models/centrale-markthal.glb",
+      "exitCode": 0,
+      "bagCornerCount": 29,
+      "formerMaxWorldErrorMetres": 33.04792774003745,
+      "correctedAuthoredMaxPlanarErrorMetres": 0.0006326363895676356,
+      "correctedDecodedMaxPlanarErrorMetres": 0.005511912483242596,
+      "correctedDecodedMaxMapLibreErrorMetres": 0.0846451852209314
+    },
+    "precisionNote": "Planar source uses111320m/degree; true MapLibre spherical projection introduces a small scale difference. Native Mercator evidence is recorded separately and bounded below0.12m.",
+    "failedNativeEvidence": [
+      "artifacts/landmark-release-check/independent-markthal/review.json",
+      "artifacts/centrale-markthal-review/neutral-front.png",
+      "artifacts/centrale-markthal-review/live-rear.png"
+    ],
+    "pending": [
+      "Coordinator catalogue/runtime integration",
+      "Actual current-model native gallery/live visual review and independent failure review"
+    ]
+  },
+  "previousAuthorStatus": "held",
+  "state": "verified-awaiting-deployment",
+  "gameAccepted": true,
+  "finalAcceptance": {
+    "date": "2026-10-07",
+    "assetSha256": "6f4927d135dfb1ab149ecfbf318653a4544bd63cefa06cd46c7ca6098955f575",
+    "nativePlacement": {
+      "id": "centrale-markthal",
+      "actualCamera": {
+        "center": [
+          4.86579375,
+          52.37877065
+        ],
+        "zoom": 18,
+        "pitch": 55.00000000000001,
+        "bearing": 12.799999999999955,
+        "elevation": 0
+      },
+      "surveyedNorthOffset": -12.8,
+      "assetVersion": "6f4927d135dfb1ab",
+      "scale": 1,
+      "bias": false,
+      "broad": false,
+      "pin": true,
+      "destination": true,
+      "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/526739",
+      "click": {
+        "x": 776.0876566569189,
+        "y": 482.0101910020875
+      },
+      "aliases": [
+        {
+          "id": "NL.IMBAG.Pand.0363100012210502",
+          "hidden": true
+        },
+        {
+          "id": "w276272968",
+          "hidden": true
+        },
+        {
+          "id": "w1080812379",
+          "hidden": true
+        },
+        {
+          "id": "w1080812380",
+          "hidden": true
+        },
+        {
+          "id": "w1080812381",
+          "hidden": true
+        },
+        {
+          "id": "w1080812382",
+          "hidden": true
+        },
+        {
+          "id": "w1080812383",
+          "hidden": true
+        },
+        {
+          "id": "w1080812384",
+          "hidden": true
+        },
+        {
+          "id": "w1080812385",
+          "hidden": true
+        },
+        {
+          "id": "w1080812386",
+          "hidden": true
+        },
+        {
+          "id": "w1080812387",
+          "hidden": true
+        },
+        {
+          "id": "w1080812388",
+          "hidden": true
+        },
+        {
+          "id": "w1080812389",
+          "hidden": true
+        },
+        {
+          "id": "w1080812390",
+          "hidden": true
+        },
+        {
+          "id": "w1080812391",
+          "hidden": true
+        },
+        {
+          "id": "w1080812392",
+          "hidden": true
+        }
+      ],
+      "oldPyramidIds": [],
+      "neighbors": [
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012202278"
+          ],
+          "resident": true,
+          "ordinaryResident": true,
+          "hidden": false,
+          "drawable": true,
+          "retainedReplacement": null
+        },
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012202596"
+          ],
+          "resident": true,
+          "ordinaryResident": true,
+          "hidden": false,
+          "drawable": true,
+          "retainedReplacement": null
+        },
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012202277"
+          ],
+          "resident": true,
+          "ordinaryResident": true,
+          "hidden": false,
+          "drawable": true,
+          "retainedReplacement": null
+        },
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012210504"
+          ],
+          "resident": true,
+          "ordinaryResident": true,
+          "hidden": false,
+          "drawable": true,
+          "retainedReplacement": null
+        },
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012210518"
+          ],
+          "resident": true,
+          "ordinaryResident": true,
+          "hidden": false,
+          "drawable": true,
+          "retainedReplacement": null
+        },
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012202378"
+          ],
+          "resident": true,
+          "ordinaryResident": true,
+          "hidden": false,
+          "drawable": true,
+          "retainedReplacement": null
+        }
+      ],
+      "features": 21091,
+      "buildings": 25889
+    },
+    "sourceGalleryIndependent": "accepted",
+    "fallback": "simulated target unavailable/restored through actual entry collection, resident ordinary fallback and retained neighbors",
+    "galleryAndNativeEvidence": "artifacts/landmark-release-check/centrale-markthal-review",
+    "desktopAndTouchPans": "artifacts/landmark-release-check/gameplay-pans-oct7",
+    "performanceScope": "Headless same-scene model visible/hidden comparison and actual mouse/emulated-touch camera pans; no physical-mobile or whole-game performance guarantee.",
+    "hostedVerification": "pending deployment",
+    "exactPartInventory": "14 source-verified current building parts + named parent/BAG; all14 actual shader ranges hidden;16aliasfallback passed;6genuine neighbors retained."
+  }
+}

@@ -1,0 +1,511 @@
+{
+  "id": "straat-museum",
+  "status": "verified-awaiting-deployment",
+  "recognitionCriteria": [
+    "Distinct separate Lasloods host: high blank brick rectangular hall, not the neighboring Scheepsbouwloods steel/window facade",
+    "Four long transverse flattened skylights, eight steep glass slopes and flat crests around27.6m; base roof22.6m",
+    "Southwest low original office11.9m with two glazed floors and blue bands",
+    "High horizontal glass on both short hall fronts; sparse low square cross windows and very large blue doors",
+    "Tall front-left geometric Anne Frank mural interpretation and actual glass portal; no invented building-name words",
+    "Retain adjoining NDSM-loods, timmerwerkplaats, utility hut, site street/space"
+  ],
+  "checks": {
+    "cpuGeometry": "PASS 8960 triangles; 8 rooflight and 6 facade first-hit probes; low office/open street/site; finite native height (2026-10-05 entry-side glazing repair)",
+    "typescript": "npm run lint PASS2026-10-05",
+    "gallery": "pending coordinator",
+    "nativeGame": "pending coordinator",
+    "POIDestinationPinCard": "pending coordinator"
+  },
+  "sourceFiles": [
+    {
+      "path": "artifacts/landmarks/straat-museum/references/panorama-rear.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-10-23_08-22-02_00031/equirectangular/panorama_4000.jpg",
+      "sha256": "0066946929af51ace60c6f3aa976bc4dc8c4d97c23b7c618ad7312504fd170d9",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes",
+      "rights": "Source-owner copyright; research reference only"
+    },
+    {
+      "path": "artifacts/landmarks/straat-museum/references/operator-photo.jpg",
+      "url": "https://api.straatmuseum.com/assets/ndsm/ndsm.jpg",
+      "sha256": "618fc493886861e194d4926eb828cddb54264093595d5b4be189f48e2083ff85",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes",
+      "rights": "Source-owner copyright; research reference only"
+    },
+    {
+      "path": "artifacts/landmarks/straat-museum/references/panorama-index.raw",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?bbox=4.8928,52.4014,4.8957,52.40325&page_size=100&timestamp_after=2024-01-01",
+      "sha256": "cd3d753d8cff2ce0b6310884c043e9e45f7349afaf7a249e2adec223279e9af5",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/straat-museum/references/operator-0369.jpg",
+      "url": "https://api.straatmuseum.com/assets/museum/0369.jpg",
+      "sha256": "756c1279dafdd16ad3766a3c7bc4a9780e19ac3f4acf3b55d25b64776bbfc4c9",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes",
+      "rights": "Source-owner copyright; research reference only"
+    },
+    {
+      "path": "artifacts/landmarks/straat-museum/references/operator.raw",
+      "url": "https://straatmuseum.com/en/ndsm-amsterdam",
+      "sha256": "0ef7ee82f1f16ca22e162e8def0f1b1336c2963e61ac7fd8513c59e012a4f472",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/straat-museum/references/operator-0340.jpg",
+      "url": "https://api.straatmuseum.com/assets/museum/0340.jpg",
+      "sha256": "bcd6154eea0b6df817fca0301771dd599832202c62e328fb0809b6b9fe52885b",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes",
+      "rights": "Source-owner copyright; research reference only"
+    },
+    {
+      "path": "artifacts/landmarks/straat-museum/references/operator-faq.raw",
+      "url": "https://www.straatmuseum.com/faq",
+      "sha256": "cc69b965a6be4ffe5c5e5556c7f119805be8d8b132944dae00ce3edb34a30c52",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/straat-museum/references/beeldbank.raw",
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=NDSM-plein%201%20Lasloods",
+      "sha256": "a45e805ef644e5817b24f32801f5d9ee1b59c8096b2746abfc092b03b8b8529d",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/straat-museum/references/operator-share.jpg",
+      "url": "https://api.straatmuseum.com/assets/museum/share-image.png",
+      "sha256": "1612e786803df07567374f53139c93ae35ae7fe20f981cac49bc44a164fda54b",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes",
+      "rights": "Source-owner copyright; research reference only"
+    },
+    {
+      "path": "artifacts/landmarks/straat-museum/references/panorama-front.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-10-23_07-33-22_01792/equirectangular/panorama_4000.jpg",
+      "sha256": "1b6eb5c72a0e09005258c4f9e3f940313db3290006ffcbd6176642f870b79076",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes",
+      "rights": "Source-owner copyright; research reference only"
+    },
+    {
+      "path": "artifacts/landmarks/straat-museum/references/panorama-front-metadata.raw",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-23_07-33-22_01792/",
+      "sha256": "459bd96bc79ce8e44126c88dc15f8a3d563617ebef11420aa9dd0c1463ef34f3",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/straat-museum/references/operator-home.raw",
+      "url": "https://straatmuseum.com/en",
+      "sha256": "ac39d71087ca5b25f34a457f8471b15eaf80c472fab1be52410acea30e40429b",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/straat-museum/references/panorama-west-metadata.raw",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-23_07-33-22_01334/",
+      "sha256": "4f299b0a5cc6b5ac8e3477ddd1b5de9c4e22523fcce87c47fd0f8ce6107aaaaf",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/straat-museum/references/bag-pand.raw",
+      "url": "https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application/json&srsName=EPSG:4326&typeNames=bag:pand&bbox=52.4014,4.8925,52.4027,4.8953,urn:ogc:def:crs:EPSG::4326",
+      "sha256": "6aeeb31b43554db0f2b918f4d7b195ae1ad6be7d2180f8809e442408fb9c1fa7",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/straat-museum/references/bag-vbo.raw",
+      "url": "https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application/json&srsName=EPSG:4326&typeNames=bag:verblijfsobject&bbox=52.4014,4.8925,52.4031,4.8955,urn:ogc:def:crs:EPSG::4326",
+      "sha256": "450f20bf187d84c86ea09096c561d5f2a94befa98401403ecdbc6266a572c71e",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/straat-museum/references/survey.raw",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012079735",
+      "sha256": "d2f9fdef5920a9da83ec28d4f584e73045d978d118aab05b09a291595a781453",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/straat-museum/references/panorama-rear-metadata.raw",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-23_08-22-02_00031/",
+      "sha256": "09578a2fdf2532da57aed66a318f79fb8ddffc6fa59e43c9d64b2ba4910b779b",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/straat-museum/references/bag-address.raw",
+      "url": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=NDSM-plein%201%20Amsterdam&fq=type:adres",
+      "sha256": "b387b44aa81b4d08d015265dbbc064873b87d68b78f678a68dc17bc82cc61188",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/straat-museum/references/register-complex.raw",
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/528252",
+      "sha256": "0e3a571e96167125bd08c193601c4c855bf50c4c50f5c879ad9489505e9b15f8",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/straat-museum/references/osm-poi.raw",
+      "url": "https://api.openstreetmap.org/api/0.6/node/6741685223.json",
+      "sha256": "f2485768cc75740401f2fd5eb971ab0f3e7858b449c759326f8ceb804e9784a2",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/straat-museum/references/roof-planes.processed.json",
+      "url": null,
+      "sha256": "f698c587880fa361df25dc4eccad88ef6ae18fd90590cf0c32f4736efcb0cd01",
+      "retrievedOn": "2026-10-05",
+      "access": "Processed roof coordinate extraction",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/straat-museum/references/osm-map.raw",
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=4.8933,52.4016,4.8954,52.4030",
+      "sha256": "2d31e89717916d3cdf8bdd1c76d8c18242bde77fdd13f681e8ec1f54d67f455f",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/straat-museum/references/panorama-west.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-10-23_07-33-22_01334/equirectangular/panorama_4000.jpg",
+      "sha256": "fd43e35ba305b743ac206da9c513f0e6cb2f6ef4b10ba07c5f9ff882f5bca946",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes",
+      "rights": "Source-owner copyright; research reference only"
+    },
+    {
+      "path": "artifacts/landmarks/straat-museum/references/mural-page.raw",
+      "url": "https://www.straatmuseum.com/collectie/let-me-be-myself",
+      "sha256": "3addf43c56f6c9029503c3850f0bcb4dd2375bf91a6b6ce440c315c804c633fb",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes",
+      "rights": "See source terms"
+    },
+    {
+      "path": "artifacts/landmarks/straat-museum/references/municipal-lasloods.raw",
+      "url": "https://amsterdamopdekaart.nl/wederopbouw/NDSM-plein/Lasloods",
+      "sha256": "229d69a15eb8c6bb94a4fb137fc5d9a6cfd4cf9eb38e2f82f3ffa30c6cee3c0b",
+      "retrievedOn": "2026-10-05",
+      "access": "Original HTTP bytes",
+      "rights": "See source terms"
+    }
+  ],
+  "sourceUrls": [
+    "https://straatmuseum.com/en/ndsm-amsterdam",
+    "https://monumentenregister.cultureelerfgoed.nl/monumenten/528252",
+    "https://api.openstreetmap.org/api/0.6/node/6741685223.json",
+    "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=NDSM-plein%201%20Amsterdam&fq=type:adres",
+    "https://archief.amsterdam/beeldbank/?mode=gallery&q=NDSM-plein%201%20Lasloods",
+    "https://straatmuseum.com/en",
+    "https://api.straatmuseum.com/assets/museum/share-image.png",
+    "https://api.straatmuseum.com/assets/museum/0340.jpg",
+    "https://api.straatmuseum.com/assets/museum/0369.jpg",
+    "https://api.straatmuseum.com/assets/ndsm/ndsm.jpg",
+    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012079735",
+    "https://api.openstreetmap.org/api/0.6/map?bbox=4.8933,52.4016,4.8954,52.4030",
+    "https://www.straatmuseum.com/collectie/let-me-be-myself",
+    "https://amsterdamopdekaart.nl/wederopbouw/NDSM-plein/Lasloods",
+    "https://www.straatmuseum.com/faq",
+    "https://api.data.amsterdam.nl/panorama/panoramas/?bbox=4.8928,52.4014,4.8957,52.40325&page_size=100&timestamp_after=2024-01-01",
+    "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-23_07-33-22_01792/",
+    "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-10-23_07-33-22_01792/equirectangular/panorama_4000.jpg",
+    "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-23_08-22-02_00031/",
+    "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-10-23_08-22-02_00031/equirectangular/panorama_4000.jpg",
+    "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-23_07-33-22_01334/",
+    "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-10-23_07-33-22_01334/equirectangular/panorama_4000.jpg",
+    "https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application/json&srsName=EPSG:4326&typeNames=bag:pand&bbox=52.4014,4.8925,52.4027,4.8953,urn:ogc:def:crs:EPSG::4326",
+    "https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&outputFormat=application/json&srsName=EPSG:4326&typeNames=bag:verblijfsobject&bbox=52.4014,4.8925,52.4031,4.8955,urn:ogc:def:crs:EPSG::4326"
+  ],
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "205d04f0c48c3a651000233510d5f9ac1596edee",
+    "path": "models/straat-museum",
+    "finalEvidencePath": "models/straat-museum/validation/final-20261007",
+    "rawSourceCheckpoint": "68906c28297c781d0d2b8c8784adde49f2eba399"
+  },
+  "limitations": [
+    "Fine pane spacing and office vertical tier heights photograph estimates.",
+    "Current mural artwork reduced to original geometric color/portrait interpretation; independent gallery must judge recognition and panel fit.",
+    "Small surrounding transient graffiti simplified/omitted; no invented lettering.",
+    "Skylight end profile surveyed, its dark material inferred; photos do not certify every end panel.",
+    "All three BAG VBOs preserve shared physical host. Industrial142m2 and meeting158m2 atNDSM-plein3/5 not asserted to be separate museum destinations or erased tenants.",
+    "Beeldbank search saved original JavaScript shell; no historical image inspected, no permit elevation available."
+  ],
+  "scopeExclusions": [
+    "Separate NDSM-loods/Scheepsbouwloods BAG0363100012062886 and existing POI1741957518",
+    "Separate timmerwerkplaats BAG0363100012061445",
+    "Tiny utility hut BAG0363100012230316 and adjacent container arch",
+    "Faralda crane, Pllek, Treehouse"
+  ],
+  "failedEvidence": [
+    {
+      "probe": "roof slope arithmetic centroid",
+      "result": "One first hit was a thin legitimate frame bar",
+      "resolution": "Shifted interior probe7.3percent toward original corner to inspect actual exposed pane; all8slopes thenpass. No pane or frame removed to pass."
+    },
+    {
+      "probe": "Independent CPU reference material comparison2026-10-05",
+      "evidence": [
+        "artifacts/landmark-offline-preview/straat-museum-cpu-front.png",
+        "artifacts/landmark-offline-preview/straat-museum-cpu-opposite.png"
+      ],
+      "result": "Photographed dark grey-brown hall becomes red/terracotta; material recognition not accepted.",
+      "resolution": "GreyBrick builder repair; reexport/review pending."
+    },
+    {
+      "probe": "Independent low frontal/entry-side source comparison 2026-10-05",
+      "evidence": [
+        "artifacts/landmarks/straat-museum/references/operator-share.jpg",
+        "artifacts/landmark-offline-preview/straat-museum-cpu-facade-low.png"
+      ],
+      "result": "Two stacked glazed window groups above the office short-side entrance are absent in the draft builder, leaving a blank entry side beside the mural.",
+      "resolution": "Added two photo-supported cross-divided glass groups on the native office entry edge ring0\u21922. First-hit glazing probes pass on both floors. Coordinator exact GLB export/render comparison pending; aperture dimensions are photograph estimates."
+    }
+  ],
+  "independentCpuPreflight": {
+    "date": "2026-10-05",
+    "scope": "Cached references compared with exact-mesh CPU orthographic front/opposite PNGs only. No native gallery/game, surrounding-shell suppression, runtime or performance acceptance.",
+    "evidence": [
+      "artifacts/landmark-offline-preview/straat-museum-cpu-front.png",
+      "artifacts/landmark-offline-preview/straat-museum-cpu-opposite.png"
+    ],
+    "verdict": "Native hall, low office and four flattened skylights are plausible; grey-brown masonry repair pending reexport; mural/portal frontal recognition remains unreviewed.",
+    "sourceComparisons": [
+      {
+        "source": "artifacts/landmarks/straat-museum/references/operator-share.jpg",
+        "finding": "Low glazed office and tall blank industrial wall supported; original red/terracotta brick palette failed the observed dark grey-brown masonry identity. Changed main/office shells to greyBrick. Supplied angles expose only an oblique sliver of the mural, insufficient to assess face recognition or portal fit."
+      },
+      {
+        "source": "artifacts/landmarks/straat-museum/references/panorama-front.jpg",
+        "finding": "Current two glazed office floors/blue horizontal bands and high hall-front glazing are retained; windows are source-inspired repetition rather than measured opening coordinates."
+      },
+      {
+        "source": "artifacts/landmarks/straat-museum/references/panorama-rear.jpg",
+        "finding": "High strip glazing, industrial vents and low square cross-window families supported; main flat roof with four flattened raised skylights is supported by cached survey, not this street-level photo."
+      }
+    ],
+    "repairs": [
+      "Builder main hall and office shells brick\u2192greyBrick; no roof/scope/open-space changes."
+    ],
+    "requiresReexport": true,
+    "remainingVisualHolds": [
+      "Reexport and rerender grey-brown material repair.",
+      "Frontal or low front view needed for mural, glass portal and office panel fit.",
+      "Native gallery/game suppression, neighbor retention and performance evidence still required."
+    ]
+  },
+  "independentCpuFrontalReview": {
+    "date": "2026-10-05",
+    "scope": "Independent bounded cached-source versus exact exported CPU frontal and oblique mesh comparison. No native game/gallery, suppression/neighbors, destination/pin/card or performance acceptance.",
+    "mesh": {
+      "path": "artifacts/landmark-offline-preview/straat-museum.glb",
+      "sha256": "6be9c2e982d2406b5f623d2bf7c149237ea258e1e6a3b5434ccbbd5f1828a903",
+      "state": "Before office entry-side glazing repair; coordinator must reexport."
+    },
+    "evidence": [
+      "artifacts/landmark-offline-preview/straat-museum-cpu-facade-low.png",
+      "artifacts/landmark-offline-preview/straat-museum-cpu-facade-a.png",
+      "artifacts/landmark-offline-preview/straat-museum-cpu-facade-b.png"
+    ],
+    "sourceComparisons": [
+      {
+        "source": "artifacts/landmarks/straat-museum/references/operator-share.jpg",
+        "finding": "Tall front-left mural panel and exposed ground glass portal, high hall-front glazing, low projecting two-floor office and blue bands give the correct frontal assembly. Added the omitted two stacked glazed groups above its short-side entrance. Detailed mural portrait matching was outside this review; original simplified geometry retained. GreyBrick renders grey-brown rather than the earlier failed terracotta."
+      },
+      {
+        "source": "artifacts/landmarks/straat-museum/references/panorama-front.jpg",
+        "finding": "Current long office face supports two glazed floors with blue bands, retained in model. Curved appearance is equirectangular camera projection rather than evidence of a curved building. Fine pane spacing remains photo-derived rather than measured."
+      },
+      {
+        "source": "artifacts/landmarks/straat-museum/references/panorama-west.jpg",
+        "finding": "Long blank grey-brown industrial wall with sparse low pale-framed square groups and tall uninterrupted wall above is represented. This ground view cannot verify rooflight shape or exact window positions; no new roof or count claim made."
+      }
+    ],
+    "verdict": "Bounded frontal assembly plausible after greyBrick export; concrete missing office entry-side glazing repaired in source and ray checked, awaiting exact reexport and affected oblique source/render comparison. No observed buried main-front glazing or unsupported roof proportion defect in supplied views.",
+    "requiresReexport": true,
+    "remainingVisualHolds": [
+      "Reexport office short-side glazing repair and inspect an oblique entrance-facing image.",
+      "Native gallery/game exact suppression and neighbor retention.",
+      "Actual destination route, visible pin/label, physical meaningful card click and GPU performance."
+    ]
+  },
+  "independentFinalBatch20261006": {
+    "sources": [
+      "/Users/blackmad/Code/map-recall2/artifacts/landmarks/straat-museum/references/operator-share.jpg",
+      "/Users/blackmad/Code/map-recall2/artifacts/landmarks/straat-museum/references/panorama-front.jpg",
+      "/Users/blackmad/Code/map-recall2/artifacts/landmarks/straat-museum/references/operator-photo.jpg"
+    ],
+    "findings": [
+      "Operator-photo depicts neighboring Scheepsbouwloods, not Lasloods; rejected as facade authority. operator-share is the relevant mural/portal facade.",
+      "Added entry-facing low CPU render now exposes simplified multicolor face on tall left panel, glass portal below and separate two-glazed-floor office; previously unresolved hidden-mural CPU angle hold is resolved at preflight scope.",
+      "Grey-brown main brick shell, four transverse flattened rooflights, high short-end clerestory and sparse low square windows match recognition criteria."
+    ],
+    "risks": [
+      "Native low entry/source view must still establish mural/portal visibility. Operator-share brick looks warmer under sunset than current panorama; grey-brown remains reasonable."
+    ],
+    "meshSha256": "1208ef710c5cffee59e95e743edc88be96225dabe966353eb739c9623ee8c736",
+    "meshBytes": 149908,
+    "verdict": "Accepted current hash against cached sources, gallery rotations, native source-facing mural/portal/office views and actual neighbor/card/pin/route integration evidence",
+    "checksPassed": true,
+    "galleryAccepted": true,
+    "liveGameAccepted": true,
+    "cpuEvidence": [
+      "artifacts/landmark-release-check/independent-ready-four/straat-museum-cpu-entry-low.png",
+      "artifacts/landmark-release-check/independent-ready-four/straat-museum-cpu-front-low.png",
+      "artifacts/landmark-release-check/independent-ready-four/straat-museum-cpu-front.png",
+      "artifacts/landmark-release-check/independent-ready-four/straat-museum-cpu-opposite-low.png",
+      "artifacts/landmark-release-check/independent-ready-four/straat-museum-cpu-opposite.png",
+      "artifacts/landmark-release-check/independent-ready-four/straat-museum-cpu-rear-low.png"
+    ],
+    "galleryEvidence": [
+      "artifacts/landmark-release-check/straat-museum-review/gallery.png",
+      "artifacts/landmark-release-check/straat-museum-review/gallery-angle-0.png",
+      "artifacts/landmark-release-check/straat-museum-review/gallery-angle-1.png",
+      "artifacts/landmark-release-check/straat-museum-review/gallery-angle-2.png",
+      "artifacts/landmark-release-check/straat-museum-review/gallery-angle-3.png"
+    ],
+    "nativeEvidence": [
+      "artifacts/landmark-release-check/straat-museum-review/live-front.png",
+      "artifacts/landmark-release-check/straat-museum-review/live-rear.png",
+      "artifacts/landmark-release-check/straat-museum-review/neutral-front.png",
+      "artifacts/landmark-release-check/straat-museum-review/placement-proof.json",
+      "artifacts/landmark-release-check/straat-museum-review/physical-card-proof.json",
+      "artifacts/landmark-release-check/straat-museum-review/performance-comparison.json",
+      "artifacts/landmark-release-check/straat-museum-review/source-close/entry-mural-source.png",
+      "artifacts/landmark-release-check/straat-museum-review/source-close/entry-mural-clear.png",
+      "artifacts/landmark-release-check/straat-museum-review/source-close/portal-low.png",
+      "artifacts/landmark-release-check/straat-museum-review/source-close/portal-context.png",
+      "artifacts/landmark-release-check/straat-museum-review/source-close/portal-context.json"
+    ],
+    "nativeIntegrationProofAccepted": true,
+    "stationaryCustomDrawPerformance": {
+      "accepted": true,
+      "p95VisibleMs": [
+        9.800000190734863,
+        9.5
+      ],
+      "scope": "Headless Chromium same stationary scene; hidden model keeps existing replacement masks, isolating custom draw cost. No whole-game performance pass claimed."
+    },
+    "nativeFindings": [
+      "Native exact masks retain ordinary hut/office and actual rendered NDSM signature replacement; no mistaken failure from its hidden original shell.",
+      "Gallery angle3 exposes mural/portal/office; both native wide views show opposite long walls so source-facing installed view requested.",
+      "Initial source-close view was legitimately blocked by retained neighbor roof; closer mural view was overcropped. Both failures retained. Supplemental portal-context and portal-low physically expose actual glass before masonry, lower mural panel and right low office wing/door without deleting neighbor. Together with gallery/context and mural view, source-facing installed facade hold resolved."
+    ],
+    "blockingFindings": [],
+    "remainingRootChecks": [
+      "Batch final contracts and fallback checks are coordinator-owned; independent review does not imply they already passed.",
+      "Whole-game desktop/touch pan performance is separate from bounded stationary custom draw samples."
+    ]
+  },
+  "previousAuthorStatus": "CPU/source-ready; gallery/native/runtime acceptance pending",
+  "state": "verified-awaiting-deployment",
+  "visualAccepted": true,
+  "gameAccepted": true,
+  "finalAcceptance": {
+    "date": "2026-10-07",
+    "assetSha256": "1208ef710c5cffee59e95e743edc88be96225dabe966353eb739c9623ee8c736",
+    "nativePlacement": {
+      "id": "straat-museum",
+      "actualCamera": {
+        "center": [
+          4.894349,
+          52.40231
+        ],
+        "zoom": 18.5,
+        "pitch": 55.00000000000001,
+        "bearing": 135,
+        "elevation": 0
+      },
+      "assetVersion": "1208ef710c5cffee",
+      "scale": 1,
+      "bias": false,
+      "broad": false,
+      "pin": true,
+      "destination": true,
+      "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/528252",
+      "click": {
+        "x": 796.6804116545445,
+        "y": 542.3308247558899
+      },
+      "aliases": [
+        {
+          "id": "w717827611",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012079735",
+          "hidden": true
+        }
+      ],
+      "oldPyramidIds": [],
+      "neighbors": [
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012061445"
+          ],
+          "resident": true,
+          "ordinaryResident": true,
+          "hidden": false,
+          "drawable": true,
+          "retainedReplacement": null
+        },
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012062886"
+          ],
+          "resident": true,
+          "ordinaryResident": true,
+          "hidden": true,
+          "drawable": true,
+          "retainedReplacement": "ndsm-warehouse-complex"
+        },
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012230316"
+          ],
+          "resident": true,
+          "ordinaryResident": true,
+          "hidden": false,
+          "drawable": true,
+          "retainedReplacement": null
+        }
+      ],
+      "features": 28109,
+      "buildings": 31980
+    },
+    "sourceGalleryIndependent": "accepted",
+    "fallback": "simulated target unavailable/restored through actual entry collection, resident ordinary fallback and retained neighbors",
+    "galleryAndNativeEvidence": "artifacts/landmark-release-check/straat-museum-review",
+    "desktopAndTouchPans": "artifacts/landmark-release-check/gameplay-pans-oct7",
+    "performanceScope": "Headless same-scene model visible/hidden comparison and actual mouse/emulated-touch camera pans; no physical-mobile or whole-game performance guarantee.",
+    "hostedVerification": "pending deployment"
+  }
+}

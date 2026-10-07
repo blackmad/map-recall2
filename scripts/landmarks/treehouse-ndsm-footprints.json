@@ -1,0 +1,2804 @@
+{
+  "id": "treehouse-ndsm",
+  "anchor": [
+    4.89311,
+    52.39948
+  ],
+  "buildings": [
+    {
+      "id": "0363100012252476",
+      "building": {
+        "type": "Feature",
+        "id": "pand.d1f3ccab-ea56-40cc-ac69-a00466505399",
+        "properties": {
+          "identificatie": "0363100012252476",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012252476",
+          "bouwjaar": 2020,
+          "status": "Pand in gebruik",
+          "gebruiksdoel": "industriefunctie",
+          "oppervlakte_min": 50,
+          "oppervlakte_max": 50,
+          "aantal_verblijfsobjecten": 2
+        },
+        "bbox": [
+          4.892943238710474,
+          52.39961967258171,
+          4.893128784588501,
+          52.39968695848475
+        ],
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.893128784588501,
+                52.399663934986194
+              ],
+              [
+                4.89295784994627,
+                52.39968695848475
+              ],
+              [
+                4.892943238710474,
+                52.39964269612086
+              ],
+              [
+                4.893114158496685,
+                52.39961967258171
+              ],
+              [
+                4.893128784588501,
+                52.399663934986194
+              ]
+            ]
+          ]
+        }
+      },
+      "outline": [
+        [
+          [
+            1.2758898275463395,
+            -20.332173374186766
+          ],
+          [
+            -10.334360308610052,
+            -22.87719090462673
+          ],
+          [
+            -11.326787005562599,
+            -17.984429199871244
+          ],
+          [
+            0.28245407759680297,
+            -15.43940718224718
+          ]
+        ]
+      ],
+      "roofs": [
+        {
+          "rings": [
+            [
+              [
+                0.335,
+                -15.416,
+                5.835
+              ],
+              [
+                0.892,
+                -18.161,
+                6.651
+              ],
+              [
+                -10.718,
+                -20.704,
+                6.643
+              ],
+              [
+                -11.23,
+                -18.182,
+                5.893
+              ],
+              [
+                -11.266,
+                -17.96,
+                5.828
+              ]
+            ]
+          ]
+        },
+        {
+          "rings": [
+            [
+              [
+                -10.157,
+                -22.827,
+                5.818
+              ],
+              [
+                -10.204,
+                -22.615,
+                5.9
+              ],
+              [
+                -10.326,
+                -22.64,
+                5.9
+              ],
+              [
+                -10.718,
+                -20.704,
+                6.643
+              ],
+              [
+                0.892,
+                -18.161,
+                6.651
+              ],
+              [
+                0.92,
+                -18.299,
+                6.598
+              ],
+              [
+                1.11,
+                -20.357,
+                5.826
+              ]
+            ]
+          ]
+        }
+      ],
+      "attributes": {
+        "b3_bag_bag_overlap": null,
+        "b3_bouwlagen": null,
+        "b3_dak_type": "slanted",
+        "b3_extrusie": "standard",
+        "b3_h_dak_50p": 7.545000076293945,
+        "b3_h_dak_70p": 7.752999782562256,
+        "b3_h_dak_max": 8.00100040435791,
+        "b3_h_dak_min": 7.107999801635742,
+        "b3_h_maaiveld": 1.3179999589920044,
+        "b3_h_nok": 7.9606709480285645,
+        "b3_is_glas_dak": false,
+        "b3_kas_warenhuis": false,
+        "b3_kwaliteitsindicator": true,
+        "b3_mutatie_ahn3_ahn4": true,
+        "b3_mutatie_ahn4_ahn5": false,
+        "b3_n_nok": 1,
+        "b3_n_vlakken": 2,
+        "b3_nodata_fractie_ahn3": 0,
+        "b3_nodata_fractie_ahn4": 0,
+        "b3_nodata_fractie_ahn5": 0,
+        "b3_nodata_radius_ahn3": 0,
+        "b3_nodata_radius_ahn4": 0,
+        "b3_nodata_radius_ahn5": 0,
+        "b3_opp_buitenmuur": 200.22,
+        "b3_opp_dak_plat": 0,
+        "b3_opp_dak_schuin": 62.72,
+        "b3_opp_grond": 59.58,
+        "b3_opp_scheidingsmuur": 0,
+        "b3_puntdichtheid_ahn3": 16.816667556762695,
+        "b3_puntdichtheid_ahn4": 27.950000762939453,
+        "b3_puntdichtheid_ahn5": 32.58333206176758,
+        "b3_pw_bron": "ahn5",
+        "b3_pw_datum": 2023,
+        "b3_pw_onvoldoende": false,
+        "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+        "b3_rmse_lod12": 0.32993367314338684,
+        "b3_rmse_lod13": 0.32993367314338684,
+        "b3_rmse_lod22": 0.04504570737481117,
+        "b3_t_run": 34,
+        "b3_val3dity_lod12": "[]",
+        "b3_val3dity_lod13": "[]",
+        "b3_val3dity_lod22": "[]",
+        "b3_volume_lod12": 382.5279541015625,
+        "b3_volume_lod13": 382.5279541015625,
+        "b3_volume_lod22": 371.6415710449219,
+        "begingeldigheid": "2021-03-12",
+        "documentdatum": "2021-03-12",
+        "documentnummer": "SN03397769_OV07GM",
+        "eindgeldigheid": null,
+        "eindregistratie": null,
+        "fid": 8442780,
+        "geconstateerd": false,
+        "identificatie": "NL.IMBAG.Pand.0363100012252476",
+        "oorspronkelijkbouwjaar": 2020,
+        "status": "Pand in gebruik",
+        "tijdstipeindregistratielv": null,
+        "tijdstipinactief": null,
+        "tijdstipinactieflv": null,
+        "tijdstipnietbaglv": null,
+        "tijdstipregistratie": "2021-03-15T13:07:43Z",
+        "tijdstipregistratielv": "2021-03-15T13:13:01Z",
+        "voorkomenidentificatie": 4
+      },
+      "osmId": "w717022796"
+    },
+    {
+      "id": "0363100012252477",
+      "building": {
+        "type": "Feature",
+        "id": "pand.08429338-5faf-46cc-a196-2f6b17da827f",
+        "properties": {
+          "identificatie": "0363100012252477",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012252477",
+          "bouwjaar": 2020,
+          "status": "Pand in gebruik",
+          "gebruiksdoel": "industriefunctie",
+          "oppervlakte_min": 50,
+          "oppervlakte_max": 50,
+          "aantal_verblijfsobjecten": 2
+        },
+        "bbox": [
+          4.892780491363497,
+          52.399647025705754,
+          4.892922586213341,
+          52.3997066626586
+        ],
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.892780491363497,
+                52.399662805560155
+              ],
+              [
+                4.892908176198992,
+                52.399647025705754
+              ],
+              [
+                4.892922586213341,
+                52.39969088278896
+              ],
+              [
+                4.892794901256441,
+                52.3997066626586
+              ],
+              [
+                4.892780491363497,
+                52.399662805560155
+              ]
+            ]
+          ]
+        }
+      },
+      "outline": [
+        [
+          [
+            -22.380938362741702,
+            -20.207326619845105
+          ],
+          [
+            -13.708308523977703,
+            -18.463021514366034
+          ],
+          [
+            -12.729549222277347,
+            -23.310983491954858
+          ],
+          [
+            -21.402187307138544,
+            -25.05529028218973
+          ]
+        ]
+      ],
+      "roofs": [
+        {
+          "rings": [
+            [
+              [
+                -21.79,
+                -22.852,
+                6.531
+              ],
+              [
+                -13.119,
+                -21.103,
+                6.522
+              ],
+              [
+                -12.677,
+                -23.287,
+                5.714
+              ],
+              [
+                -21.349,
+                -25.033,
+                5.725
+              ]
+            ]
+          ]
+        },
+        {
+          "rings": [
+            [
+              [
+                -13.119,
+                -21.103,
+                6.522
+              ],
+              [
+                -21.79,
+                -22.852,
+                6.531
+              ],
+              [
+                -22.329,
+                -20.184,
+                5.701
+              ],
+              [
+                -13.656,
+                -18.439,
+                5.694
+              ]
+            ]
+          ]
+        }
+      ],
+      "attributes": {
+        "b3_bag_bag_overlap": null,
+        "b3_bouwlagen": null,
+        "b3_dak_type": "slanted",
+        "b3_extrusie": "standard",
+        "b3_h_dak_50p": 7.4070000648498535,
+        "b3_h_dak_70p": 7.586999893188477,
+        "b3_h_dak_max": 7.836999893188477,
+        "b3_h_dak_min": 6.953999996185303,
+        "b3_h_maaiveld": 1.2940000295639038,
+        "b3_h_nok": 7.824366569519043,
+        "b3_is_glas_dak": false,
+        "b3_kas_warenhuis": false,
+        "b3_kwaliteitsindicator": true,
+        "b3_mutatie_ahn3_ahn4": true,
+        "b3_mutatie_ahn4_ahn5": false,
+        "b3_n_nok": 1,
+        "b3_n_vlakken": 2,
+        "b3_nodata_fractie_ahn3": 0,
+        "b3_nodata_fractie_ahn4": 0,
+        "b3_nodata_fractie_ahn5": 0,
+        "b3_nodata_radius_ahn3": 0,
+        "b3_nodata_radius_ahn4": 0,
+        "b3_nodata_radius_ahn5": 0,
+        "b3_opp_buitenmuur": 162.1,
+        "b3_opp_dak_plat": 0,
+        "b3_opp_dak_schuin": 46.47,
+        "b3_opp_grond": 44.13,
+        "b3_opp_scheidingsmuur": 0,
+        "b3_puntdichtheid_ahn3": 16.67796516418457,
+        "b3_puntdichtheid_ahn4": 28.045198440551758,
+        "b3_puntdichtheid_ahn5": 31.14124298095703,
+        "b3_pw_bron": "ahn5",
+        "b3_pw_datum": 2023,
+        "b3_pw_onvoldoende": false,
+        "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+        "b3_rmse_lod12": 0.3190407156944275,
+        "b3_rmse_lod13": 0.3190407156944275,
+        "b3_rmse_lod22": 0.038071487098932266,
+        "b3_t_run": 25,
+        "b3_val3dity_lod12": "[]",
+        "b3_val3dity_lod13": "[]",
+        "b3_val3dity_lod22": "[]",
+        "b3_volume_lod12": 277.6678161621094,
+        "b3_volume_lod13": 277.6678161621094,
+        "b3_volume_lod22": 269.91448974609375,
+        "begingeldigheid": "2021-03-12",
+        "documentdatum": "2021-03-12",
+        "documentnummer": "SN03397769_OV00GM",
+        "eindgeldigheid": null,
+        "eindregistratie": null,
+        "fid": 8442790,
+        "geconstateerd": false,
+        "identificatie": "NL.IMBAG.Pand.0363100012252477",
+        "oorspronkelijkbouwjaar": 2020,
+        "status": "Pand in gebruik",
+        "tijdstipeindregistratielv": null,
+        "tijdstipinactief": null,
+        "tijdstipinactieflv": null,
+        "tijdstipnietbaglv": null,
+        "tijdstipregistratie": "2021-03-12T14:41:29Z",
+        "tijdstipregistratielv": "2021-03-12T14:46:45Z",
+        "voorkomenidentificatie": 4
+      },
+      "osmId": "w717022787"
+    },
+    {
+      "id": "0363100012252479",
+      "building": {
+        "type": "Feature",
+        "id": "pand.949de432-8a08-4277-b7df-439d10db23e2",
+        "properties": {
+          "identificatie": "0363100012252479",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012252479",
+          "bouwjaar": 2020,
+          "status": "Pand in gebruik",
+          "gebruiksdoel": "industriefunctie",
+          "oppervlakte_min": 50,
+          "oppervlakte_max": 50,
+          "aantal_verblijfsobjecten": 4
+        },
+        "bbox": [
+          4.893149769803311,
+          52.399588618608085,
+          4.89337736812577,
+          52.39965840765975
+        ],
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.89337736812577,
+                52.399632148375204
+              ],
+              [
+                4.893165447321786,
+                52.39965840765975
+              ],
+              [
+                4.893149769803311,
+                52.39961487786508
+              ],
+              [
+                4.8933616904081365,
+                52.399588618608085
+              ],
+              [
+                4.89337736812577,
+                52.399632148375204
+              ]
+            ]
+          ]
+        }
+      },
+      "outline": [
+        [
+          [
+            18.160220644037974,
+            -16.818481395399658
+          ],
+          [
+            3.7661018674036595,
+            -19.721182709105136
+          ],
+          [
+            2.701250947614006,
+            -14.909399206659515
+          ],
+          [
+            17.095356196944845,
+            -12.006700938081423
+          ]
+        ]
+      ],
+      "roofs": [
+        {
+          "rings": [
+            [
+              [
+                17.743,
+                -14.673,
+                6.508
+              ],
+              [
+                18.212,
+                -16.796,
+                5.689
+              ],
+              [
+                3.818,
+                -19.699,
+                5.732
+              ],
+              [
+                3.365,
+                -17.65,
+                6.522
+              ]
+            ]
+          ]
+        },
+        {
+          "rings": [
+            [
+              [
+                17.148,
+                -11.983,
+                5.662
+              ],
+              [
+                17.743,
+                -14.673,
+                6.508
+              ],
+              [
+                3.365,
+                -17.65,
+                6.522
+              ],
+              [
+                2.753,
+                -14.887,
+                5.653
+              ]
+            ]
+          ]
+        }
+      ],
+      "attributes": {
+        "b3_bag_bag_overlap": null,
+        "b3_bouwlagen": null,
+        "b3_dak_type": "slanted",
+        "b3_extrusie": "standard",
+        "b3_h_dak_50p": 7.389999866485596,
+        "b3_h_dak_70p": 7.579999923706055,
+        "b3_h_dak_max": 7.813000202178955,
+        "b3_h_dak_min": 6.885000228881836,
+        "b3_h_maaiveld": 1.277999997138977,
+        "b3_h_nok": 7.799398422241211,
+        "b3_is_glas_dak": false,
+        "b3_kas_warenhuis": false,
+        "b3_kwaliteitsindicator": true,
+        "b3_mutatie_ahn3_ahn4": true,
+        "b3_mutatie_ahn4_ahn5": false,
+        "b3_n_nok": 1,
+        "b3_n_vlakken": 2,
+        "b3_nodata_fractie_ahn3": 0,
+        "b3_nodata_fractie_ahn4": 0,
+        "b3_nodata_fractie_ahn5": 0,
+        "b3_nodata_radius_ahn3": 0,
+        "b3_nodata_radius_ahn4": 0,
+        "b3_nodata_radius_ahn5": 0,
+        "b3_opp_buitenmuur": 227.79,
+        "b3_opp_dak_plat": 0,
+        "b3_opp_dak_schuin": 77.01,
+        "b3_opp_grond": 72.98,
+        "b3_opp_scheidingsmuur": 0,
+        "b3_puntdichtheid_ahn3": 16.668941497802734,
+        "b3_puntdichtheid_ahn4": 28.696245193481445,
+        "b3_puntdichtheid_ahn5": 31.426620483398438,
+        "b3_pw_bron": "ahn5",
+        "b3_pw_datum": 2023,
+        "b3_pw_onvoldoende": false,
+        "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+        "b3_rmse_lod12": 0.3343315124511719,
+        "b3_rmse_lod13": 0.3343315124511719,
+        "b3_rmse_lod22": 0.04310978576540947,
+        "b3_t_run": 39,
+        "b3_val3dity_lod12": "[]",
+        "b3_val3dity_lod13": "[]",
+        "b3_val3dity_lod22": "[]",
+        "b3_volume_lod12": 459.2410888671875,
+        "b3_volume_lod13": 459.2410888671875,
+        "b3_volume_lod22": 444.9425354003906,
+        "begingeldigheid": "2021-03-12",
+        "documentdatum": "2021-03-12",
+        "documentnummer": "SN03397769_OV08GM",
+        "eindgeldigheid": null,
+        "eindregistratie": null,
+        "fid": 8443201,
+        "geconstateerd": false,
+        "identificatie": "NL.IMBAG.Pand.0363100012252479",
+        "oorspronkelijkbouwjaar": 2020,
+        "status": "Pand in gebruik",
+        "tijdstipeindregistratielv": null,
+        "tijdstipinactief": null,
+        "tijdstipinactieflv": null,
+        "tijdstipnietbaglv": null,
+        "tijdstipregistratie": "2021-03-15T15:42:43Z",
+        "tijdstipregistratielv": "2021-03-15T15:47:50Z",
+        "voorkomenidentificatie": 4
+      },
+      "osmId": "w717022799"
+    },
+    {
+      "id": "0363100012252480",
+      "building": {
+        "type": "Feature",
+        "id": "pand.d455acbb-714c-4cfe-89bd-58bdb2cd6f55",
+        "properties": {
+          "identificatie": "0363100012252480",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012252480",
+          "bouwjaar": 2020,
+          "status": "Pand in gebruik",
+          "gebruiksdoel": "industriefunctie",
+          "oppervlakte_min": 50,
+          "oppervlakte_max": 50,
+          "aantal_verblijfsobjecten": 2
+        },
+        "bbox": [
+          4.893390693254736,
+          52.39956509553645,
+          4.8935616739509475,
+          52.399628797484155
+        ],
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.893405763594957,
+                52.399628797484155
+              ],
+              [
+                4.893390693254736,
+                52.399584820868476
+              ],
+              [
+                4.893546603362423,
+                52.39956509553645
+              ],
+              [
+                4.8935616739509475,
+                52.39960906314539
+              ],
+              [
+                4.893405763594957,
+                52.399628797484155
+              ]
+            ]
+          ]
+        }
+      },
+      "outline": [
+        [
+          [
+            20.088902248233143,
+            -16.448073898834252
+          ],
+          [
+            19.06529218704379,
+            -11.586898801701153
+          ],
+          [
+            29.65504348244898,
+            -9.40646059979386
+          ],
+          [
+            30.678670409015524,
+            -14.266640091860552
+          ]
+        ]
+      ],
+      "roofs": [
+        {
+          "rings": [
+            [
+              [
+                30.281,
+                -12.106,
+                6.691
+              ],
+              [
+                19.685,
+                -14.254,
+                6.701
+              ],
+              [
+                19.148,
+                -11.71,
+                5.916
+              ],
+              [
+                19.344,
+                -11.67,
+                5.916
+              ],
+              [
+                19.312,
+                -11.524,
+                5.87
+              ],
+              [
+                29.708,
+                -9.384,
+                5.85
+              ]
+            ]
+          ]
+        },
+        {
+          "rings": [
+            [
+              [
+                30.683,
+                -14.017,
+                5.968
+              ],
+              [
+                30.687,
+                -14.253,
+                5.882
+              ],
+              [
+                20.141,
+                -16.426,
+                5.88
+              ],
+              [
+                19.685,
+                -14.254,
+                6.701
+              ],
+              [
+                30.281,
+                -12.106,
+                6.691
+              ]
+            ]
+          ]
+        }
+      ],
+      "attributes": {
+        "b3_bag_bag_overlap": null,
+        "b3_bouwlagen": null,
+        "b3_dak_type": "slanted",
+        "b3_extrusie": "standard",
+        "b3_h_dak_50p": 7.369999885559082,
+        "b3_h_dak_70p": 7.557000160217285,
+        "b3_h_dak_max": 7.808000087738037,
+        "b3_h_dak_min": 6.913000106811523,
+        "b3_h_maaiveld": 1.090000033378601,
+        "b3_h_nok": 7.7905168533325195,
+        "b3_is_glas_dak": false,
+        "b3_kas_warenhuis": false,
+        "b3_kwaliteitsindicator": true,
+        "b3_mutatie_ahn3_ahn4": true,
+        "b3_mutatie_ahn4_ahn5": false,
+        "b3_n_nok": 1,
+        "b3_n_vlakken": 2,
+        "b3_nodata_fractie_ahn3": 0,
+        "b3_nodata_fractie_ahn4": 0,
+        "b3_nodata_fractie_ahn5": 0,
+        "b3_nodata_radius_ahn3": 0,
+        "b3_nodata_radius_ahn4": 0,
+        "b3_nodata_radius_ahn5": 0,
+        "b3_opp_buitenmuur": 189.79,
+        "b3_opp_dak_plat": 0,
+        "b3_opp_dak_schuin": 56.78,
+        "b3_opp_grond": 54.13,
+        "b3_opp_scheidingsmuur": 0,
+        "b3_puntdichtheid_ahn3": 16.405529022216797,
+        "b3_puntdichtheid_ahn4": 28.90322494506836,
+        "b3_puntdichtheid_ahn5": 31.668203353881836,
+        "b3_pw_bron": "ahn5",
+        "b3_pw_datum": 2023,
+        "b3_pw_onvoldoende": false,
+        "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+        "b3_rmse_lod12": 0.32973504066467285,
+        "b3_rmse_lod13": 0.32973504066467285,
+        "b3_rmse_lod22": 0.04124902933835983,
+        "b3_t_run": 33,
+        "b3_val3dity_lod12": "[]",
+        "b3_val3dity_lod13": "[]",
+        "b3_val3dity_lod22": "[]",
+        "b3_volume_lod12": 349.587158203125,
+        "b3_volume_lod13": 349.587158203125,
+        "b3_volume_lod22": 340.0885314941406,
+        "begingeldigheid": "2021-03-12",
+        "documentdatum": "2021-03-12",
+        "documentnummer": "SN03397769_OV05GM",
+        "eindgeldigheid": null,
+        "eindregistratie": null,
+        "fid": 8443424,
+        "geconstateerd": false,
+        "identificatie": "NL.IMBAG.Pand.0363100012252480",
+        "oorspronkelijkbouwjaar": 2020,
+        "status": "Pand in gebruik",
+        "tijdstipeindregistratielv": null,
+        "tijdstipinactief": null,
+        "tijdstipinactieflv": null,
+        "tijdstipnietbaglv": null,
+        "tijdstipregistratie": "2021-03-12T15:09:35Z",
+        "tijdstipregistratielv": "2021-03-12T15:14:55Z",
+        "voorkomenidentificatie": 4
+      },
+      "osmId": "w717022798"
+    },
+    {
+      "id": "0363100012252481",
+      "building": {
+        "type": "Feature",
+        "id": "pand.acc21fc6-3aeb-40ca-8b03-d3cfd52ad9b7",
+        "properties": {
+          "identificatie": "0363100012252481",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012252481",
+          "bouwjaar": 2020,
+          "status": "Pand in gebruik",
+          "gebruiksdoel": "industriefunctie",
+          "oppervlakte_min": 59,
+          "oppervlakte_max": 59,
+          "aantal_verblijfsobjecten": 1
+        },
+        "bbox": [
+          4.892719807706999,
+          52.39948133125272,
+          4.892940310640481,
+          52.39963511206712
+        ],
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.892895830130363,
+                52.39948133125272
+              ],
+              [
+                4.892913738853941,
+                52.39953425352991
+              ],
+              [
+                4.892940310640481,
+                52.39961275493137
+              ],
+              [
+                4.892764828593371,
+                52.39963511206712
+              ],
+              [
+                4.892719807706999,
+                52.39950212220993
+              ],
+              [
+                4.892895830130363,
+                52.39948133125272
+              ]
+            ]
+          ]
+        }
+      },
+      "outline": [
+        [
+          [
+            -14.546880173979803,
+            -0.14715667631364227
+          ],
+          [
+            -13.330480983946167,
+            -5.997185196295334
+          ],
+          [
+            -11.525667844448975,
+            -14.67473011379866
+          ],
+          [
+            -23.444787542795208,
+            -17.146087900173796
+          ],
+          [
+            -26.50270339482218,
+            -2.445389086119718
+          ]
+        ]
+      ],
+      "roofs": [
+        {
+          "rings": [
+            [
+              [
+                -25.1,
+                -8.913,
+                8.08
+              ],
+              [
+                -26.451,
+                -2.423,
+                6.382
+              ],
+              [
+                -14.494,
+                -0.124,
+                6.417
+              ],
+              [
+                -13.175,
+                -6.47,
+                8.078
+              ]
+            ]
+          ]
+        },
+        {
+          "rings": [
+            [
+              [
+                -13.175,
+                -6.47,
+                8.078
+              ],
+              [
+                -11.474,
+                -14.652,
+                5.863
+              ],
+              [
+                -23.392,
+                -17.124,
+                5.857
+              ],
+              [
+                -25.1,
+                -8.913,
+                8.08
+              ]
+            ]
+          ]
+        }
+      ],
+      "attributes": {
+        "b3_bag_bag_overlap": 0,
+        "b3_bouwlagen": null,
+        "b3_dak_type": "slanted",
+        "b3_extrusie": "standard",
+        "b3_h_dak_50p": 8.508000373840332,
+        "b3_h_dak_70p": 8.923999786376953,
+        "b3_h_dak_max": 9.520000457763672,
+        "b3_h_dak_min": 7.308000087738037,
+        "b3_h_maaiveld": 1.4359999895095825,
+        "b3_h_nok": 9.515912055969238,
+        "b3_is_glas_dak": false,
+        "b3_kas_warenhuis": false,
+        "b3_kwaliteitsindicator": true,
+        "b3_mutatie_ahn3_ahn4": true,
+        "b3_mutatie_ahn4_ahn5": false,
+        "b3_n_nok": 1,
+        "b3_n_vlakken": 3,
+        "b3_nodata_fractie_ahn3": 0,
+        "b3_nodata_fractie_ahn4": 0,
+        "b3_nodata_fractie_ahn5": 0,
+        "b3_nodata_radius_ahn3": 0,
+        "b3_nodata_radius_ahn4": 0,
+        "b3_nodata_radius_ahn5": 0,
+        "b3_opp_buitenmuur": 344.11,
+        "b3_opp_dak_plat": 0,
+        "b3_opp_dak_schuin": 189.34,
+        "b3_opp_grond": 183.27,
+        "b3_opp_scheidingsmuur": 18.42,
+        "b3_puntdichtheid_ahn3": 16.10340118408203,
+        "b3_puntdichtheid_ahn4": 27.97823143005371,
+        "b3_puntdichtheid_ahn5": 32.96326446533203,
+        "b3_pw_bron": "ahn5",
+        "b3_pw_datum": 2023,
+        "b3_pw_onvoldoende": false,
+        "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+        "b3_rmse_lod12": 0.9636048674583435,
+        "b3_rmse_lod13": 0.9636048674583435,
+        "b3_rmse_lod22": 0.6060986518859863,
+        "b3_t_run": 86,
+        "b3_val3dity_lod12": "[]",
+        "b3_val3dity_lod13": "[]",
+        "b3_val3dity_lod22": "[]",
+        "b3_volume_lod12": 1372.237060546875,
+        "b3_volume_lod13": 1372.237060546875,
+        "b3_volume_lod22": 1298.922607421875,
+        "begingeldigheid": "2022-01-26",
+        "documentdatum": "2022-01-26",
+        "documentnummer": "SN03397769_OV14GM",
+        "eindgeldigheid": null,
+        "eindregistratie": null,
+        "fid": 8443526,
+        "geconstateerd": false,
+        "identificatie": "NL.IMBAG.Pand.0363100012252481",
+        "oorspronkelijkbouwjaar": 2020,
+        "status": "Pand in gebruik",
+        "tijdstipeindregistratielv": null,
+        "tijdstipinactief": null,
+        "tijdstipinactieflv": null,
+        "tijdstipnietbaglv": null,
+        "tijdstipregistratie": "2022-01-26T13:00:10Z",
+        "tijdstipregistratielv": "2022-01-26T13:05:14Z",
+        "voorkomenidentificatie": 5
+      },
+      "osmId": "w717022786"
+    },
+    {
+      "id": "0363100012252482",
+      "building": {
+        "type": "Feature",
+        "id": "pand.d684e25c-7b1b-4796-8118-9cb9713ee60f",
+        "properties": {
+          "identificatie": "0363100012252482",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012252482",
+          "bouwjaar": 2020,
+          "status": "Pand in gebruik",
+          "gebruiksdoel": "",
+          "aantal_verblijfsobjecten": 0
+        },
+        "bbox": [
+          4.892956892885542,
+          52.39954636869946,
+          4.893044899472499,
+          52.39960837819411
+        ],
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.893027873626494,
+                52.39954636869946
+              ],
+              [
+                4.893044899472499,
+                52.39959942208817
+              ],
+              [
+                4.892974844687457,
+                52.39960837819411
+              ],
+              [
+                4.892956892885542,
+                52.399555356883084
+              ],
+              [
+                4.893027873626494,
+                52.39954636869946
+              ]
+            ]
+          ]
+        }
+      },
+      "outline": [
+        [
+          [
+            -5.578200689680014,
+            -7.336396038771795
+          ],
+          [
+            -4.421768451496205,
+            -13.200917626944602
+          ],
+          [
+            -9.180040776873092,
+            -14.190925577206741
+          ],
+          [
+            -10.399365940572146,
+            -8.329949856475878
+          ]
+        ]
+      ],
+      "roofs": [],
+      "attributes": {},
+      "osmId": "w717022795"
+    },
+    {
+      "id": "0363100012252483",
+      "building": {
+        "type": "Feature",
+        "id": "pand.61388db8-725f-41e6-ba60-75ce9fde2e69",
+        "properties": {
+          "identificatie": "0363100012252483",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012252483",
+          "bouwjaar": 2020,
+          "status": "Pand in gebruik",
+          "gebruiksdoel": "industriefunctie",
+          "oppervlakte_min": 44,
+          "oppervlakte_max": 49,
+          "aantal_verblijfsobjecten": 2
+        },
+        "bbox": [
+          4.893099586832719,
+          52.39952334599092,
+          4.8932422359280165,
+          52.39959077977962
+        ],
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.893116934329934,
+                52.39959077977962
+              ],
+              [
+                4.893099586832719,
+                52.39953889345837
+              ],
+              [
+                4.893224888289984,
+                52.39952334599092
+              ],
+              [
+                4.8932422359280165,
+                52.399575232294154
+              ],
+              [
+                4.893116934329934,
+                52.39959077977962
+              ]
+            ]
+          ]
+        }
+      },
+      "outline": [
+        [
+          [
+            0.4709946679774108,
+            -12.245596839763806
+          ],
+          [
+            -0.7072848152259222,
+            -6.510082888570992
+          ],
+          [
+            7.803460825830126,
+            -4.791465836804463
+          ],
+          [
+            8.981749873637497,
+            -10.526977796136805
+          ]
+        ]
+      ],
+      "roofs": [
+        {
+          "rings": [
+            [
+              [
+                -0.081,
+                -9.284,
+                6.618
+              ],
+              [
+                -0.656,
+                -6.488,
+                5.563
+              ],
+              [
+                7.856,
+                -4.768,
+                5.562
+              ],
+              [
+                8.426,
+                -7.545,
+                6.609
+              ]
+            ]
+          ]
+        },
+        {
+          "rings": [
+            [
+              [
+                8.981,
+                -10.246,
+                5.779
+              ],
+              [
+                9.019,
+                -10.507,
+                5.7
+              ],
+              [
+                0.524,
+                -12.223,
+                5.716
+              ],
+              [
+                -0.081,
+                -9.284,
+                6.618
+              ],
+              [
+                8.426,
+                -7.545,
+                6.609
+              ]
+            ]
+          ]
+        }
+      ],
+      "attributes": {
+        "b3_bag_bag_overlap": null,
+        "b3_bouwlagen": null,
+        "b3_dak_type": "slanted",
+        "b3_extrusie": "standard",
+        "b3_h_dak_50p": 7.563000202178955,
+        "b3_h_dak_70p": 7.776000022888184,
+        "b3_h_dak_max": 8.069000244140625,
+        "b3_h_dak_min": 7.026000022888184,
+        "b3_h_maaiveld": 1.4170000553131104,
+        "b3_h_nok": 8.025114059448242,
+        "b3_is_glas_dak": false,
+        "b3_kas_warenhuis": false,
+        "b3_kwaliteitsindicator": true,
+        "b3_mutatie_ahn3_ahn4": true,
+        "b3_mutatie_ahn4_ahn5": false,
+        "b3_n_nok": 1,
+        "b3_n_vlakken": 2,
+        "b3_nodata_fractie_ahn3": 0,
+        "b3_nodata_fractie_ahn4": 0,
+        "b3_nodata_fractie_ahn5": 0,
+        "b3_nodata_radius_ahn3": 0,
+        "b3_nodata_radius_ahn4": 0,
+        "b3_nodata_radius_ahn5": 0,
+        "b3_opp_buitenmuur": 170.15,
+        "b3_opp_dak_plat": 0,
+        "b3_opp_dak_schuin": 54.06,
+        "b3_opp_grond": 51.28,
+        "b3_opp_scheidingsmuur": 0,
+        "b3_puntdichtheid_ahn3": 16.407766342163086,
+        "b3_puntdichtheid_ahn4": 28.233009338378906,
+        "b3_puntdichtheid_ahn5": 31.533981323242188,
+        "b3_pw_bron": "ahn5",
+        "b3_pw_datum": 2023,
+        "b3_pw_onvoldoende": false,
+        "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+        "b3_rmse_lod12": 0.37417492270469666,
+        "b3_rmse_lod13": 0.37417492270469666,
+        "b3_rmse_lod22": 0.043174631893634796,
+        "b3_t_run": 29,
+        "b3_val3dity_lod12": "[]",
+        "b3_val3dity_lod13": "[]",
+        "b3_val3dity_lod22": "[]",
+        "b3_volume_lod12": 325.1622314453125,
+        "b3_volume_lod13": 325.1622314453125,
+        "b3_volume_lod22": 314.0478515625,
+        "begingeldigheid": "2021-03-12",
+        "documentdatum": "2021-03-12",
+        "documentnummer": "SN03397769_OV10GM",
+        "eindgeldigheid": null,
+        "eindregistratie": null,
+        "fid": 8443921,
+        "geconstateerd": false,
+        "identificatie": "NL.IMBAG.Pand.0363100012252483",
+        "oorspronkelijkbouwjaar": 2020,
+        "status": "Pand in gebruik",
+        "tijdstipeindregistratielv": null,
+        "tijdstipinactief": null,
+        "tijdstipinactieflv": null,
+        "tijdstipnietbaglv": null,
+        "tijdstipregistratie": "2021-03-15T15:47:19Z",
+        "tijdstipregistratielv": "2021-03-15T15:52:40Z",
+        "voorkomenidentificatie": 4
+      },
+      "osmId": "w717022791"
+    },
+    {
+      "id": "0363100012252484",
+      "building": {
+        "type": "Feature",
+        "id": "pand.983f124f-ada4-47d1-be1a-96ce06576b74",
+        "properties": {
+          "identificatie": "0363100012252484",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012252484",
+          "bouwjaar": 2020,
+          "status": "Pand in gebruik",
+          "gebruiksdoel": "",
+          "aantal_verblijfsobjecten": 0
+        },
+        "bbox": [
+          4.892895830130363,
+          52.39946874343227,
+          4.893019790758566,
+          52.39953425352991
+        ],
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.892913738853941,
+                52.39953425352991
+              ],
+              [
+                4.892895830130363,
+                52.39948133125272
+              ],
+              [
+                4.893002335179604,
+                52.39946874343227
+              ],
+              [
+                4.893019790758566,
+                52.39952146607401
+              ],
+              [
+                4.892913738853941,
+                52.39953425352991
+              ]
+            ]
+          ]
+        }
+      },
+      "outline": [
+        [
+          [
+            -13.330480983946167,
+            -5.997185196295334
+          ],
+          [
+            -14.546880173979803,
+            -0.14715667631364227
+          ],
+          [
+            -7.312827168012973,
+            1.2443009962287022
+          ],
+          [
+            -6.127206539139084,
+            -4.583659821753798
+          ]
+        ]
+      ],
+      "roofs": [],
+      "attributes": {},
+      "osmId": "w1509690547"
+    },
+    {
+      "id": "0363100012252486",
+      "building": {
+        "type": "Feature",
+        "id": "pand.dca45727-d829-4bef-8e79-5f3b1ea7a921",
+        "properties": {
+          "identificatie": "0363100012252486",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012252486",
+          "bouwjaar": 2020,
+          "status": "Pand in gebruik",
+          "gebruiksdoel": "industriefunctie",
+          "oppervlakte_min": 55,
+          "oppervlakte_max": 55,
+          "aantal_verblijfsobjecten": 2
+        },
+        "bbox": [
+          4.893263330375354,
+          52.399477103217116,
+          4.8935389070322195,
+          52.39957002942653
+        ],
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.893516328439795,
+                52.39947730355687
+              ],
+              [
+                4.893517858772742,
+                52.399477103217116
+              ],
+              [
+                4.893518186393106,
+                52.39947803031331
+              ],
+              [
+                4.8935389070322195,
+                52.39953844196044
+              ],
+              [
+                4.893283435193009,
+                52.39957002942653
+              ],
+              [
+                4.893263330375354,
+                52.39950976410443
+              ],
+              [
+                4.893516328439795,
+                52.39947730355687
+              ]
+            ]
+          ]
+        }
+      },
+      "outline": [
+        [
+          [
+            27.59870534074297,
+            0.29806482311173
+          ],
+          [
+            27.70264886014652,
+            0.3202103796793665
+          ],
+          [
+            27.724901542943435,
+            0.21772916624328786
+          ],
+          [
+            29.132292110197543,
+            -6.460174307126323
+          ],
+          [
+            11.78009294643624,
+            -9.951852808702597
+          ],
+          [
+            10.414530302893727,
+            -3.2901241039876084
+          ]
+        ]
+      ],
+      "roofs": [
+        {
+          "rings": [
+            [
+              [
+                28.508,
+                -3.226,
+                7.096
+              ],
+              [
+                29.185,
+                -6.437,
+                5.85
+              ],
+              [
+                11.832,
+                -9.928,
+                5.88
+              ],
+              [
+                11.188,
+                -6.782,
+                7.1
+              ]
+            ]
+          ]
+        },
+        {
+          "rings": [
+            [
+              [
+                11.188,
+                -6.782,
+                7.1
+              ],
+              [
+                10.494,
+                -3.402,
+                5.886
+              ],
+              [
+                10.598,
+                -3.38,
+                5.886
+              ],
+              [
+                10.572,
+                -3.246,
+                5.838
+              ],
+              [
+                27.756,
+                0.343,
+                5.813
+              ],
+              [
+                28.508,
+                -3.226,
+                7.096
+              ]
+            ]
+          ]
+        }
+      ],
+      "attributes": {
+        "b3_bag_bag_overlap": null,
+        "b3_bouwlagen": null,
+        "b3_dak_type": "slanted",
+        "b3_extrusie": "standard",
+        "b3_h_dak_50p": 7.664000034332275,
+        "b3_h_dak_70p": 7.927000045776367,
+        "b3_h_dak_max": 8.258999824523926,
+        "b3_h_dak_min": 7.020999908447266,
+        "b3_h_maaiveld": 1.1710000038146973,
+        "b3_h_nok": 8.270023345947266,
+        "b3_is_glas_dak": false,
+        "b3_kas_warenhuis": false,
+        "b3_kwaliteitsindicator": true,
+        "b3_mutatie_ahn3_ahn4": true,
+        "b3_mutatie_ahn4_ahn5": false,
+        "b3_n_nok": 1,
+        "b3_n_vlakken": 2,
+        "b3_nodata_fractie_ahn3": 0,
+        "b3_nodata_fractie_ahn4": 0,
+        "b3_nodata_fractie_ahn5": 0,
+        "b3_nodata_radius_ahn3": 0,
+        "b3_nodata_radius_ahn4": 0,
+        "b3_nodata_radius_ahn5": 0,
+        "b3_opp_buitenmuur": 296.51,
+        "b3_opp_dak_plat": 0,
+        "b3_opp_dak_schuin": 130.01,
+        "b3_opp_grond": 122.39,
+        "b3_opp_scheidingsmuur": 0,
+        "b3_puntdichtheid_ahn3": 16.29327964782715,
+        "b3_puntdichtheid_ahn4": 28.790224075317383,
+        "b3_puntdichtheid_ahn5": 31.991853713989258,
+        "b3_pw_bron": "ahn5",
+        "b3_pw_datum": 2023,
+        "b3_pw_onvoldoende": false,
+        "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+        "b3_rmse_lod12": 0.4510313868522644,
+        "b3_rmse_lod13": 0.4510313868522644,
+        "b3_rmse_lod22": 0.02425369620323181,
+        "b3_t_run": 67,
+        "b3_val3dity_lod12": "[]",
+        "b3_val3dity_lod13": "[]",
+        "b3_val3dity_lod22": "[]",
+        "b3_volume_lod12": 823.19091796875,
+        "b3_volume_lod13": 823.19091796875,
+        "b3_volume_lod22": 792.0277709960938,
+        "begingeldigheid": "2021-03-12",
+        "documentdatum": "2021-03-12",
+        "documentnummer": "SN03397769_OV11GM",
+        "eindgeldigheid": null,
+        "eindregistratie": null,
+        "fid": 8444884,
+        "geconstateerd": false,
+        "identificatie": "NL.IMBAG.Pand.0363100012252486",
+        "oorspronkelijkbouwjaar": 2020,
+        "status": "Pand in gebruik",
+        "tijdstipeindregistratielv": null,
+        "tijdstipinactief": null,
+        "tijdstipinactieflv": null,
+        "tijdstipnietbaglv": null,
+        "tijdstipregistratie": "2021-03-15T15:49:50Z",
+        "tijdstipregistratielv": "2021-03-15T15:55:02Z",
+        "voorkomenidentificatie": 4
+      },
+      "osmId": "w717022784"
+    },
+    {
+      "id": "0363100012252487",
+      "building": {
+        "type": "Feature",
+        "id": "pand.f3ca9dc5-6c4a-4adb-a9b3-818e5ecb6af3",
+        "properties": {
+          "identificatie": "0363100012252487",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012252487",
+          "bouwjaar": 2020,
+          "status": "Pand in gebruik",
+          "gebruiksdoel": "",
+          "aantal_verblijfsobjecten": 0
+        },
+        "bbox": [
+          4.893295659293008,
+          52.399354604618544,
+          4.8935002676035255,
+          52.39944627018797
+        ],
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.893498428427761,
+                52.39942353656669
+              ],
+              [
+                4.893318197296127,
+                52.39944627018797
+              ],
+              [
+                4.893295659293008,
+                52.399377564282645
+              ],
+              [
+                4.893477714636865,
+                52.399354604618544
+              ],
+              [
+                4.8935002676035255,
+                52.39942331055109
+              ],
+              [
+                4.893498428427761,
+                52.39942353656669
+              ]
+            ]
+          ]
+        }
+      },
+      "outline": [
+        [
+          [
+            26.382897857560746,
+            6.241467918112562
+          ],
+          [
+            14.141210079798743,
+            3.728493421168224
+          ],
+          [
+            12.610380223633701,
+            11.323244196092617
+          ],
+          [
+            24.975972436065533,
+            13.8612054657726
+          ],
+          [
+            26.507818648293146,
+            6.266451681850782
+          ]
+        ]
+      ],
+      "roofs": [
+        {
+          "rings": [
+            [
+              [
+                25.029,
+                13.884,
+                7.92
+              ],
+              [
+                25.616,
+                10.972,
+                9.319
+              ],
+              [
+                13.246,
+                8.453,
+                9.31
+              ],
+              [
+                12.663,
+                11.346,
+                7.921
+              ]
+            ]
+          ]
+        },
+        {
+          "rings": [
+            [
+              [
+                25.616,
+                10.972,
+                9.319
+              ],
+              [
+                26.56,
+                6.29,
+                7.101
+              ],
+              [
+                14.194,
+                3.752,
+                7.084
+              ],
+              [
+                13.246,
+                8.453,
+                9.31
+              ]
+            ]
+          ]
+        }
+      ],
+      "attributes": {
+        "b3_bag_bag_overlap": null,
+        "b3_bouwlagen": null,
+        "b3_dak_type": "slanted",
+        "b3_extrusie": "standard",
+        "b3_h_dak_50p": 9.520000457763672,
+        "b3_h_dak_70p": 9.909000396728516,
+        "b3_h_dak_max": 10.435999870300293,
+        "b3_h_dak_min": 8.284000396728516,
+        "b3_h_maaiveld": 1.1510000228881836,
+        "b3_h_nok": 10.468986511230469,
+        "b3_is_glas_dak": false,
+        "b3_kas_warenhuis": false,
+        "b3_kwaliteitsindicator": true,
+        "b3_mutatie_ahn3_ahn4": true,
+        "b3_mutatie_ahn4_ahn5": true,
+        "b3_n_nok": 1,
+        "b3_n_vlakken": 2,
+        "b3_nodata_fractie_ahn3": 0,
+        "b3_nodata_fractie_ahn4": 0,
+        "b3_nodata_fractie_ahn5": 0,
+        "b3_nodata_radius_ahn3": 0,
+        "b3_nodata_radius_ahn4": 0,
+        "b3_nodata_radius_ahn5": 0,
+        "b3_opp_buitenmuur": 320.27,
+        "b3_opp_dak_plat": 0,
+        "b3_opp_dak_schuin": 108.72,
+        "b3_opp_grond": 98.63,
+        "b3_opp_scheidingsmuur": 0,
+        "b3_puntdichtheid_ahn3": 16.13197898864746,
+        "b3_puntdichtheid_ahn4": 27.888324737548828,
+        "b3_puntdichtheid_ahn5": 31.44162368774414,
+        "b3_pw_bron": "ahn5",
+        "b3_pw_datum": 2023,
+        "b3_pw_onvoldoende": false,
+        "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+        "b3_rmse_lod12": 0.7444686889648438,
+        "b3_rmse_lod13": 0.7444686889648438,
+        "b3_rmse_lod22": 0.013473233208060265,
+        "b3_t_run": 44,
+        "b3_val3dity_lod12": "[]",
+        "b3_val3dity_lod13": "[]",
+        "b3_val3dity_lod22": "[]",
+        "b3_volume_lod12": 864.7994384765625,
+        "b3_volume_lod13": 864.7994384765625,
+        "b3_volume_lod22": 824.7767333984375,
+        "begingeldigheid": "2021-03-12",
+        "documentdatum": "2021-03-12",
+        "documentnummer": "SN03397769_OV04GM",
+        "eindgeldigheid": null,
+        "eindregistratie": null,
+        "fid": 8445234,
+        "geconstateerd": false,
+        "identificatie": "NL.IMBAG.Pand.0363100012252487",
+        "oorspronkelijkbouwjaar": 2020,
+        "status": "Pand in gebruik",
+        "tijdstipeindregistratielv": null,
+        "tijdstipinactief": null,
+        "tijdstipinactieflv": null,
+        "tijdstipnietbaglv": null,
+        "tijdstipregistratie": "2021-03-12T15:07:23Z",
+        "tijdstipregistratielv": "2021-03-12T15:12:33Z",
+        "voorkomenidentificatie": 4
+      },
+      "osmId": "w717022803"
+    },
+    {
+      "id": "0363100012252488",
+      "building": {
+        "type": "Feature",
+        "id": "pand.eac4a999-8dca-4110-bbfb-46e95763592a",
+        "properties": {
+          "identificatie": "0363100012252488",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012252488",
+          "bouwjaar": 2020,
+          "status": "Pand in gebruik",
+          "gebruiksdoel": "industriefunctie",
+          "oppervlakte_min": 57,
+          "oppervlakte_max": 57,
+          "aantal_verblijfsobjecten": 4
+        },
+        "bbox": [
+          4.892923677168579,
+          52.3993521556371,
+          4.893222427591059,
+          52.39944062610801
+        ],
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.89320500590855,
+                52.3993521556371
+              ],
+              [
+                4.893222427591059,
+                52.39940530052931
+              ],
+              [
+                4.892941083834551,
+                52.39944062610801
+              ],
+              [
+                4.892923677168579,
+                52.39938748123652
+              ],
+              [
+                4.89320500590855,
+                52.3993521556371
+              ]
+            ]
+          ]
+        }
+      },
+      "outline": [
+        [
+          [
+            6.453006530932322,
+            14.131915875018564
+          ],
+          [
+            7.636324839515331,
+            8.257279489771747
+          ],
+          [
+            -11.473150833001327,
+            4.352390020223851
+          ],
+          [
+            -12.655449185990847,
+            10.227024114359864
+          ]
+        ]
+      ],
+      "roofs": [
+        {
+          "rings": [
+            [
+              [
+                7.689,
+                8.281,
+                5.217
+              ],
+              [
+                -9.256,
+                4.818,
+                5.332
+              ],
+              [
+                -10.22,
+                10.737,
+                5.328
+              ],
+              [
+                6.505,
+                14.155,
+                5.215
+              ]
+            ]
+          ]
+        },
+        {
+          "rings": [
+            [
+              [
+                -11.421,
+                4.375,
+                5.721
+              ],
+              [
+                -12.603,
+                10.249,
+                5.679
+              ],
+              [
+                -10.22,
+                10.737,
+                5.675
+              ],
+              [
+                -9.256,
+                4.818,
+                5.718
+              ]
+            ]
+          ]
+        }
+      ],
+      "attributes": {
+        "b3_bag_bag_overlap": null,
+        "b3_bouwlagen": null,
+        "b3_dak_type": "multiple horizontal",
+        "b3_extrusie": "standard",
+        "b3_h_dak_50p": 6.747000217437744,
+        "b3_h_dak_70p": 6.769999980926514,
+        "b3_h_dak_max": 7.1479997634887695,
+        "b3_h_dak_min": 4.4670000076293945,
+        "b3_h_maaiveld": 1.4240000247955322,
+        "b3_h_nok": null,
+        "b3_is_glas_dak": false,
+        "b3_kas_warenhuis": false,
+        "b3_kwaliteitsindicator": true,
+        "b3_mutatie_ahn3_ahn4": true,
+        "b3_mutatie_ahn4_ahn5": false,
+        "b3_n_nok": 0,
+        "b3_n_vlakken": 3,
+        "b3_nodata_fractie_ahn3": 0,
+        "b3_nodata_fractie_ahn4": 0,
+        "b3_nodata_fractie_ahn5": 0,
+        "b3_nodata_radius_ahn3": 0,
+        "b3_nodata_radius_ahn4": 0,
+        "b3_nodata_radius_ahn5": 0,
+        "b3_opp_buitenmuur": 276.11,
+        "b3_opp_dak_plat": 117.89,
+        "b3_opp_dak_schuin": 0,
+        "b3_opp_grond": 117.88,
+        "b3_opp_scheidingsmuur": 0,
+        "b3_puntdichtheid_ahn3": 16.355932235717773,
+        "b3_puntdichtheid_ahn4": 29.279661178588867,
+        "b3_puntdichtheid_ahn5": 32.84745788574219,
+        "b3_pw_bron": "ahn5",
+        "b3_pw_datum": 2023,
+        "b3_pw_onvoldoende": false,
+        "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+        "b3_rmse_lod12": 0.5204211473464966,
+        "b3_rmse_lod13": 0.5204211473464966,
+        "b3_rmse_lod22": 0.5110670328140259,
+        "b3_t_run": 67,
+        "b3_val3dity_lod12": "[]",
+        "b3_val3dity_lod13": "[]",
+        "b3_val3dity_lod22": "[]",
+        "b3_volume_lod12": 630.25,
+        "b3_volume_lod13": 630.25,
+        "b3_volume_lod22": 627.474365234375,
+        "begingeldigheid": "2021-03-12",
+        "documentdatum": "2021-03-12",
+        "documentnummer": "SN03397769_OV03GM",
+        "eindgeldigheid": null,
+        "eindregistratie": null,
+        "fid": 8445257,
+        "geconstateerd": false,
+        "identificatie": "NL.IMBAG.Pand.0363100012252488",
+        "oorspronkelijkbouwjaar": 2020,
+        "status": "Pand in gebruik",
+        "tijdstipeindregistratielv": null,
+        "tijdstipinactief": null,
+        "tijdstipinactieflv": null,
+        "tijdstipnietbaglv": null,
+        "tijdstipregistratie": "2021-03-12T15:05:57Z",
+        "tijdstipregistratielv": "2021-03-12T15:11:03Z",
+        "voorkomenidentificatie": 4
+      },
+      "osmId": "w717022788"
+    },
+    {
+      "id": "0363100012252489",
+      "building": {
+        "type": "Feature",
+        "id": "pand.5c23eff4-dee4-42b4-a552-5e4b4e7642fb",
+        "properties": {
+          "identificatie": "0363100012252489",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012252489",
+          "bouwjaar": 2020,
+          "status": "Pand in gebruik",
+          "gebruiksdoel": "industriefunctie",
+          "oppervlakte_min": 67,
+          "oppervlakte_max": 67,
+          "aantal_verblijfsobjecten": 2
+        },
+        "bbox": [
+          4.892701161275698,
+          52.39939468495207,
+          4.892888585205031,
+          52.399470364694736
+        ],
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.892870921509429,
+                52.39939468495207
+              ],
+              [
+                4.892888585205031,
+                52.399447174803186
+              ],
+              [
+                4.892718839572052,
+                52.399470364694736
+              ],
+              [
+                4.892701161275698,
+                52.39941788374471
+              ],
+              [
+                4.892870921509429,
+                52.39939468495207
+              ]
+            ]
+          ]
+        }
+      },
+      "outline": [
+        [
+          [
+            -16.238727512905836,
+            9.430725397724586
+          ],
+          [
+            -15.038971152265672,
+            3.628497255527634
+          ],
+          [
+            -26.568461211651694,
+            1.0650866435744888
+          ],
+          [
+            -27.769209286887673,
+            6.866330859322289
+          ]
+        ]
+      ],
+      "roofs": [
+        {
+          "rings": [
+            [
+              [
+                -16.187,
+                9.454,
+                5.405
+              ],
+              [
+                -15.559,
+                6.418,
+                6.574
+              ],
+              [
+                -27.136,
+                4.081,
+                6.577
+              ],
+              [
+                -27.716,
+                6.889,
+                5.496
+              ]
+            ]
+          ]
+        },
+        {
+          "rings": [
+            [
+              [
+                -15.559,
+                6.418,
+                6.574
+              ],
+              [
+                -14.987,
+                3.652,
+                5.714
+              ],
+              [
+                -26.516,
+                1.088,
+                5.646
+              ],
+              [
+                -27.136,
+                4.081,
+                6.577
+              ]
+            ]
+          ]
+        }
+      ],
+      "attributes": {
+        "b3_bag_bag_overlap": null,
+        "b3_bouwlagen": null,
+        "b3_dak_type": "slanted",
+        "b3_extrusie": "standard",
+        "b3_h_dak_50p": 7.525000095367432,
+        "b3_h_dak_70p": 7.742000102996826,
+        "b3_h_dak_max": 8.027000427246094,
+        "b3_h_dak_min": 6.934000015258789,
+        "b3_h_maaiveld": 1.4299999475479126,
+        "b3_h_nok": 8.003289222717285,
+        "b3_is_glas_dak": false,
+        "b3_kas_warenhuis": false,
+        "b3_kwaliteitsindicator": true,
+        "b3_mutatie_ahn3_ahn4": true,
+        "b3_mutatie_ahn4_ahn5": false,
+        "b3_n_nok": 1,
+        "b3_n_vlakken": 3,
+        "b3_nodata_fractie_ahn3": 0.10247349739074707,
+        "b3_nodata_fractie_ahn4": 0,
+        "b3_nodata_fractie_ahn5": 0,
+        "b3_nodata_radius_ahn3": 0,
+        "b3_nodata_radius_ahn4": 0,
+        "b3_nodata_radius_ahn5": 0,
+        "b3_opp_buitenmuur": 204.13,
+        "b3_opp_dak_plat": 0,
+        "b3_opp_dak_schuin": 74.55,
+        "b3_opp_grond": 70.57,
+        "b3_opp_scheidingsmuur": 0,
+        "b3_puntdichtheid_ahn3": 14.535432815551758,
+        "b3_puntdichtheid_ahn4": 28.494699478149414,
+        "b3_puntdichtheid_ahn5": 32.197879791259766,
+        "b3_pw_bron": "ahn5",
+        "b3_pw_datum": 2023,
+        "b3_pw_onvoldoende": false,
+        "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+        "b3_rmse_lod12": 0.6167854070663452,
+        "b3_rmse_lod13": 0.6167854070663452,
+        "b3_rmse_lod22": 0.4018847644329071,
+        "b3_t_run": 35,
+        "b3_val3dity_lod12": "[]",
+        "b3_val3dity_lod13": "[]",
+        "b3_val3dity_lod22": "[]",
+        "b3_volume_lod12": 444.10015869140625,
+        "b3_volume_lod13": 444.10015869140625,
+        "b3_volume_lod22": 428.3153076171875,
+        "begingeldigheid": "2021-03-12",
+        "documentdatum": "2021-03-12",
+        "documentnummer": "SN03397769_OV02GM",
+        "eindgeldigheid": null,
+        "eindregistratie": null,
+        "fid": 8445276,
+        "geconstateerd": false,
+        "identificatie": "NL.IMBAG.Pand.0363100012252489",
+        "oorspronkelijkbouwjaar": 2020,
+        "status": "Pand in gebruik",
+        "tijdstipeindregistratielv": null,
+        "tijdstipinactief": null,
+        "tijdstipinactieflv": null,
+        "tijdstipnietbaglv": null,
+        "tijdstipregistratie": "2021-03-12T15:04:17Z",
+        "tijdstipregistratielv": "2021-03-12T15:09:37Z",
+        "voorkomenidentificatie": 4
+      },
+      "osmId": "w717022801"
+    },
+    {
+      "id": "0363100012252490",
+      "building": {
+        "type": "Feature",
+        "id": "pand.31e175ce-8838-4002-b52d-189a4fa68486",
+        "properties": {
+          "identificatie": "0363100012252490",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012252490",
+          "bouwjaar": 2020,
+          "status": "Pand in gebruik",
+          "gebruiksdoel": "industriefunctie",
+          "oppervlakte_min": 50,
+          "oppervlakte_max": 57,
+          "aantal_verblijfsobjecten": 2
+        },
+        "bbox": [
+          4.892673552919399,
+          52.39931925798783,
+          4.892832327424389,
+          52.39939008057499
+        ],
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.892673552919399,
+                52.39933751750819
+              ],
+              [
+                4.8926821168205805,
+                52.39933640283149
+              ],
+              [
+                4.892814356183788,
+                52.39931925798783
+              ],
+              [
+                4.892832327424389,
+                52.399371830020925
+              ],
+              [
+                4.8926915241004,
+                52.39939008057499
+              ],
+              [
+                4.892673552919399,
+                52.39933751750819
+              ]
+            ]
+          ]
+        }
+      },
+      "outline": [
+        [
+          [
+            -29.644428483504267,
+            15.750014644718249
+          ],
+          [
+            -29.06274981640613,
+            15.87323100706854
+          ],
+          [
+            -20.080766617189244,
+            17.768422025281723
+          ],
+          [
+            -18.86012113587256,
+            11.957109486586148
+          ],
+          [
+            -28.423787050430704,
+            9.939693240399095
+          ]
+        ]
+      ],
+      "roofs": [
+        {
+          "rings": [
+            [
+              [
+                -28.999,
+                12.95,
+                6.496
+              ],
+              [
+                -19.429,
+                14.934,
+                6.496
+              ],
+              [
+                -18.808,
+                11.981,
+                5.57
+              ],
+              [
+                -28.371,
+                9.963,
+                5.56
+              ]
+            ]
+          ]
+        },
+        {
+          "rings": [
+            [
+              [
+                -19.429,
+                14.934,
+                6.496
+              ],
+              [
+                -28.999,
+                12.95,
+                6.496
+              ],
+              [
+                -29.592,
+                15.772,
+                5.415
+              ],
+              [
+                -20.029,
+                17.791,
+                5.401
+              ]
+            ]
+          ]
+        }
+      ],
+      "attributes": {
+        "b3_bag_bag_overlap": null,
+        "b3_bouwlagen": null,
+        "b3_dak_type": "slanted",
+        "b3_extrusie": "standard",
+        "b3_h_dak_50p": 7.434000015258789,
+        "b3_h_dak_70p": 7.664000034332275,
+        "b3_h_dak_max": 7.964000225067139,
+        "b3_h_dak_min": 6.879000186920166,
+        "b3_h_maaiveld": 1.4470000267028809,
+        "b3_h_nok": 7.9421305656433105,
+        "b3_is_glas_dak": false,
+        "b3_kas_warenhuis": false,
+        "b3_kwaliteitsindicator": true,
+        "b3_mutatie_ahn3_ahn4": true,
+        "b3_mutatie_ahn4_ahn5": false,
+        "b3_n_nok": 1,
+        "b3_n_vlakken": 2,
+        "b3_nodata_fractie_ahn3": 0.22127659618854523,
+        "b3_nodata_fractie_ahn4": 0,
+        "b3_nodata_fractie_ahn5": 0,
+        "b3_nodata_radius_ahn3": 0,
+        "b3_nodata_radius_ahn4": 0,
+        "b3_nodata_radius_ahn5": 0,
+        "b3_opp_buitenmuur": 179.05,
+        "b3_opp_dak_plat": 0,
+        "b3_opp_dak_schuin": 61.8,
+        "b3_opp_grond": 58.52,
+        "b3_opp_scheidingsmuur": 0,
+        "b3_puntdichtheid_ahn3": 13.027322769165039,
+        "b3_puntdichtheid_ahn4": 28.44255256652832,
+        "b3_puntdichtheid_ahn5": 32.051063537597656,
+        "b3_pw_bron": "ahn5",
+        "b3_pw_datum": 2023,
+        "b3_pw_onvoldoende": false,
+        "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+        "b3_rmse_lod12": 0.38327085971832275,
+        "b3_rmse_lod13": 0.38327085971832275,
+        "b3_rmse_lod22": 0.03940233215689659,
+        "b3_t_run": 32,
+        "b3_val3dity_lod12": "[]",
+        "b3_val3dity_lod13": "[]",
+        "b3_val3dity_lod22": "[]",
+        "b3_volume_lod12": 363.4471130371094,
+        "b3_volume_lod13": 363.4471130371094,
+        "b3_volume_lod22": 350.71600341796875,
+        "begingeldigheid": "2021-03-12",
+        "documentdatum": "2021-03-12",
+        "documentnummer": "SN03397769_OV01GM",
+        "eindgeldigheid": null,
+        "eindregistratie": null,
+        "fid": 8445773,
+        "geconstateerd": false,
+        "identificatie": "NL.IMBAG.Pand.0363100012252490",
+        "oorspronkelijkbouwjaar": 2020,
+        "status": "Pand in gebruik",
+        "tijdstipeindregistratielv": null,
+        "tijdstipinactief": null,
+        "tijdstipinactieflv": null,
+        "tijdstipnietbaglv": null,
+        "tijdstipregistratie": "2021-03-12T14:47:00Z",
+        "tijdstipregistratielv": "2021-03-12T14:52:11Z",
+        "voorkomenidentificatie": 4
+      },
+      "osmId": "w717022789"
+    },
+    {
+      "id": "0363100012252491",
+      "building": {
+        "type": "Feature",
+        "id": "pand.d9a8df71-e79d-4b3b-9b41-bff7459bf898",
+        "properties": {
+          "identificatie": "0363100012252491",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012252491",
+          "bouwjaar": 2020,
+          "status": "Pand in gebruik",
+          "gebruiksdoel": "industriefunctie",
+          "oppervlakte_min": 45,
+          "oppervlakte_max": 57,
+          "aantal_verblijfsobjecten": 4
+        },
+        "bbox": [
+          4.892861754253521,
+          52.39927259465114,
+          4.893195851752288,
+          52.399366247941764
+        ],
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.892861754253521,
+                52.399312876785025
+              ],
+              [
+                4.893178651321944,
+                52.39927259465114
+              ],
+              [
+                4.893195851752288,
+                52.399325810527166
+              ],
+              [
+                4.892879540317316,
+                52.399366247941764
+              ],
+              [
+                4.892861754253521,
+                52.399312876785025
+              ]
+            ]
+          ]
+        }
+      },
+      "outline": [
+        [
+          [
+            -16.861387336372726,
+            18.47380018298381
+          ],
+          [
+            4.6629460800983145,
+            22.926587262971054
+          ],
+          [
+            5.83123646370556,
+            17.044104326686096
+          ],
+          [
+            -15.653319463742516,
+            12.574152517106114
+          ]
+        ]
+      ],
+      "roofs": [
+        {
+          "rings": [
+            [
+              [
+                4.752,
+                22.762,
+                5.297
+              ],
+              [
+                5.858,
+                17.198,
+                5.311
+              ],
+              [
+                5.7,
+                17.164,
+                5.312
+              ],
+              [
+                5.725,
+                17.034,
+                5.312
+              ],
+              [
+                -15.602,
+                12.598,
+                5.394
+              ],
+              [
+                -16.786,
+                18.384,
+                5.38
+              ],
+              [
+                -16.509,
+                18.441,
+                5.379
+              ],
+              [
+                -16.531,
+                18.554,
+                5.379
+              ],
+              [
+                4.634,
+                22.933,
+                5.297
+              ],
+              [
+                4.668,
+                22.746,
+                5.298
+              ]
+            ]
+          ]
+        }
+      ],
+      "attributes": {
+        "b3_bag_bag_overlap": 0,
+        "b3_bouwlagen": null,
+        "b3_dak_type": "horizontal",
+        "b3_extrusie": "standard",
+        "b3_h_dak_50p": 6.784999847412109,
+        "b3_h_dak_70p": 6.803999900817871,
+        "b3_h_dak_max": 6.840000152587891,
+        "b3_h_dak_min": 6.716000080108643,
+        "b3_h_maaiveld": 1.4359999895095825,
+        "b3_h_nok": null,
+        "b3_is_glas_dak": false,
+        "b3_kas_warenhuis": false,
+        "b3_kwaliteitsindicator": true,
+        "b3_mutatie_ahn3_ahn4": true,
+        "b3_mutatie_ahn4_ahn5": false,
+        "b3_n_nok": 0,
+        "b3_n_vlakken": 1,
+        "b3_nodata_fractie_ahn3": 0,
+        "b3_nodata_fractie_ahn4": 0,
+        "b3_nodata_fractie_ahn5": 0,
+        "b3_nodata_radius_ahn3": 0,
+        "b3_nodata_radius_ahn4": 0,
+        "b3_nodata_radius_ahn5": 0,
+        "b3_opp_buitenmuur": 299.98,
+        "b3_opp_dak_plat": 133.05,
+        "b3_opp_dak_schuin": 0,
+        "b3_opp_grond": 133.05,
+        "b3_opp_scheidingsmuur": 0,
+        "b3_puntdichtheid_ahn3": 16.14285659790039,
+        "b3_puntdichtheid_ahn4": 28.015037536621094,
+        "b3_puntdichtheid_ahn5": 31.872180938720703,
+        "b3_pw_bron": "ahn5",
+        "b3_pw_datum": 2023,
+        "b3_pw_onvoldoende": false,
+        "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+        "b3_rmse_lod12": 0.041940201073884964,
+        "b3_rmse_lod13": 0.041940201073884964,
+        "b3_rmse_lod22": 0.025535494089126587,
+        "b3_t_run": 88,
+        "b3_val3dity_lod12": "[]",
+        "b3_val3dity_lod13": "[]",
+        "b3_val3dity_lod22": "[]",
+        "b3_volume_lod12": 714.1624145507812,
+        "b3_volume_lod13": 714.1624145507812,
+        "b3_volume_lod22": 711.167236328125,
+        "begingeldigheid": "2021-03-12",
+        "documentdatum": "2021-03-12",
+        "documentnummer": "SN03397769_OV12GM",
+        "eindgeldigheid": null,
+        "eindregistratie": null,
+        "fid": 8445793,
+        "geconstateerd": false,
+        "identificatie": "NL.IMBAG.Pand.0363100012252491",
+        "oorspronkelijkbouwjaar": 2020,
+        "status": "Pand in gebruik",
+        "tijdstipeindregistratielv": null,
+        "tijdstipinactief": null,
+        "tijdstipinactieflv": null,
+        "tijdstipnietbaglv": null,
+        "tijdstipregistratie": "2021-03-15T15:51:25Z",
+        "tijdstipregistratielv": "2021-03-15T15:56:48Z",
+        "voorkomenidentificatie": 4
+      },
+      "osmId": "w717022792"
+    },
+    {
+      "id": "0363100012252492",
+      "building": {
+        "type": "Feature",
+        "id": "pand.6dcc1a3a-6c98-4e24-94f7-ada94e652caf",
+        "properties": {
+          "identificatie": "0363100012252492",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012252492",
+          "bouwjaar": 2020,
+          "status": "Pand in gebruik",
+          "gebruiksdoel": "industriefunctie",
+          "oppervlakte_min": 39,
+          "oppervlakte_max": 39,
+          "aantal_verblijfsobjecten": 2
+        },
+        "bbox": [
+          4.893178651321944,
+          52.399267102122465,
+          4.893244095533101,
+          52.399325810527166
+        ],
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.893244095533101,
+                52.399320007909346
+              ],
+              [
+                4.893195851752288,
+                52.399325810527166
+              ],
+              [
+                4.893178651321944,
+                52.39927259465114
+              ],
+              [
+                4.8932258189867515,
+                52.399267102122465
+              ],
+              [
+                4.893244095533101,
+                52.399320007909346
+              ]
+            ]
+          ]
+        }
+      },
+      "outline": [
+        [
+          [
+            9.108058267884411,
+            17.685525700608906
+          ],
+          [
+            5.83123646370556,
+            17.044104326686096
+          ],
+          [
+            4.6629460800983145,
+            22.926587262971054
+          ],
+          [
+            7.8666757606867606,
+            23.533731382360656
+          ]
+        ]
+      ],
+      "roofs": [],
+      "attributes": {},
+      "osmId": "w717022783"
+    },
+    {
+      "id": "0363100012252493",
+      "building": {
+        "type": "Feature",
+        "id": "pand.c4bed2af-6b08-4d00-b780-af167f573ee4",
+        "properties": {
+          "identificatie": "0363100012252493",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012252493",
+          "bouwjaar": 2020,
+          "status": "Pand in gebruik",
+          "gebruiksdoel": "industriefunctie",
+          "oppervlakte_min": 50,
+          "oppervlakte_max": 50,
+          "aantal_verblijfsobjecten": 2
+        },
+        "bbox": [
+          4.8932258189867515,
+          52.39923973300574,
+          4.893454793210842,
+          52.399320007909346
+        ],
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.8932258189867515,
+                52.399267102122465
+              ],
+              [
+                4.89343672171883,
+                52.39923973300574
+              ],
+              [
+                4.893454793210842,
+                52.39929260195437
+              ],
+              [
+                4.893244095533101,
+                52.399320007909346
+              ],
+              [
+                4.8932258189867515,
+                52.399267102122465
+              ]
+            ]
+          ]
+        }
+      },
+      "outline": [
+        [
+          [
+            7.8666757606867606,
+            23.533731382360656
+          ],
+          [
+            22.19164489433648,
+            26.559113544843456
+          ],
+          [
+            23.41909966802286,
+            20.714979963419182
+          ],
+          [
+            9.108058267884411,
+            17.685525700608906
+          ]
+        ]
+      ],
+      "roofs": [
+        {
+          "rings": [
+            [
+              [
+                9.231,
+                17.723,
+                5.562
+              ],
+              [
+                9.192,
+                17.913,
+                5.562
+              ],
+              [
+                9.119,
+                17.9,
+                5.562
+              ],
+              [
+                7.959,
+                23.369,
+                5.551
+              ],
+              [
+                8.084,
+                23.394,
+                5.551
+              ],
+              [
+                8.045,
+                23.583,
+                5.551
+              ],
+              [
+                22.244,
+                26.582,
+                5.556
+              ],
+              [
+                23.472,
+                20.737,
+                5.568
+              ]
+            ]
+          ]
+        }
+      ],
+      "attributes": {
+        "b3_bag_bag_overlap": 0,
+        "b3_bouwlagen": null,
+        "b3_dak_type": "horizontal",
+        "b3_extrusie": "standard",
+        "b3_h_dak_50p": 6.741000175476074,
+        "b3_h_dak_70p": 6.745999813079834,
+        "b3_h_dak_max": 6.765999794006348,
+        "b3_h_dak_min": 6.690999984741211,
+        "b3_h_maaiveld": 1.1799999475479126,
+        "b3_h_nok": null,
+        "b3_is_glas_dak": false,
+        "b3_kas_warenhuis": false,
+        "b3_kwaliteitsindicator": true,
+        "b3_mutatie_ahn3_ahn4": true,
+        "b3_mutatie_ahn4_ahn5": false,
+        "b3_n_nok": 0,
+        "b3_n_vlakken": 1,
+        "b3_nodata_fractie_ahn3": 0,
+        "b3_nodata_fractie_ahn4": 0,
+        "b3_nodata_fractie_ahn5": 0,
+        "b3_nodata_radius_ahn3": 0,
+        "b3_nodata_radius_ahn4": 0,
+        "b3_nodata_radius_ahn5": 0,
+        "b3_opp_buitenmuur": 229.93,
+        "b3_opp_dak_plat": 88.16,
+        "b3_opp_dak_schuin": 0,
+        "b3_opp_grond": 88.16,
+        "b3_opp_scheidingsmuur": 0,
+        "b3_puntdichtheid_ahn3": 16.101408004760742,
+        "b3_puntdichtheid_ahn4": 28.529577255249023,
+        "b3_puntdichtheid_ahn5": 32.067604064941406,
+        "b3_pw_bron": "ahn5",
+        "b3_pw_datum": 2023,
+        "b3_pw_onvoldoende": false,
+        "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+        "b3_rmse_lod12": 0.19758814573287964,
+        "b3_rmse_lod13": 0.19758814573287964,
+        "b3_rmse_lod22": 0.19711364805698395,
+        "b3_t_run": 53,
+        "b3_val3dity_lod12": "[]",
+        "b3_val3dity_lod13": "[]",
+        "b3_val3dity_lod22": "[]",
+        "b3_volume_lod12": 490.6145935058594,
+        "b3_volume_lod13": 490.6145935058594,
+        "b3_volume_lod22": 490.0321960449219,
+        "begingeldigheid": "2021-03-12",
+        "documentdatum": "2021-03-12",
+        "documentnummer": "SN03397769_OV13GM",
+        "eindgeldigheid": null,
+        "eindregistratie": null,
+        "fid": 8446980,
+        "geconstateerd": false,
+        "identificatie": "NL.IMBAG.Pand.0363100012252493",
+        "oorspronkelijkbouwjaar": 2020,
+        "status": "Pand in gebruik",
+        "tijdstipeindregistratielv": null,
+        "tijdstipinactief": null,
+        "tijdstipinactieflv": null,
+        "tijdstipnietbaglv": null,
+        "tijdstipregistratie": "2021-03-15T15:53:24Z",
+        "tijdstipregistratielv": "2021-03-15T15:58:40Z",
+        "voorkomenidentificatie": 4
+      },
+      "osmId": "w717022804"
+    }
+  ],
+  "scope": "Only16 independentPandsinsideOSMTreeHousew1163404107. Outerparcelneverextruded. ExcludesPllekPand0363100012241285 andwesternmodularofficePands0363100012252810\u20132812.",
+  "sourceFiles": [
+    "artifacts/landmarks/treehouse-ndsm/references/3dbag-0363100012252476.json",
+    "artifacts/landmarks/treehouse-ndsm/references/3dbag-0363100012252477.json",
+    "artifacts/landmarks/treehouse-ndsm/references/3dbag-0363100012252479.json",
+    "artifacts/landmarks/treehouse-ndsm/references/3dbag-0363100012252480.json",
+    "artifacts/landmarks/treehouse-ndsm/references/3dbag-0363100012252481.json",
+    "artifacts/landmarks/treehouse-ndsm/references/3dbag-0363100012252483.json",
+    "artifacts/landmarks/treehouse-ndsm/references/3dbag-0363100012252486.json",
+    "artifacts/landmarks/treehouse-ndsm/references/3dbag-0363100012252487.json",
+    "artifacts/landmarks/treehouse-ndsm/references/3dbag-0363100012252488.json",
+    "artifacts/landmarks/treehouse-ndsm/references/3dbag-0363100012252489.json",
+    "artifacts/landmarks/treehouse-ndsm/references/3dbag-0363100012252490.json",
+    "artifacts/landmarks/treehouse-ndsm/references/3dbag-0363100012252491.json",
+    "artifacts/landmarks/treehouse-ndsm/references/3dbag-0363100012252493.json",
+    "artifacts/landmarks/treehouse-ndsm/references/bag-site.json",
+    "artifacts/landmarks/treehouse-ndsm/references/beeldbank.html",
+    "artifacts/landmarks/treehouse-ndsm/references/municipal-inside-metadata.json",
+    "artifacts/landmarks/treehouse-ndsm/references/municipal-inside.jpg",
+    "artifacts/landmarks/treehouse-ndsm/references/municipal-north-metadata.json",
+    "artifacts/landmarks/treehouse-ndsm/references/municipal-north.jpg",
+    "artifacts/landmarks/treehouse-ndsm/references/ndsm-courtyard.jpeg",
+    "artifacts/landmarks/treehouse-ndsm/references/ndsm.html",
+    "artifacts/landmarks/treehouse-ndsm/references/official-concept.html",
+    "artifacts/landmarks/treehouse-ndsm/references/official-style.css",
+    "artifacts/landmarks/treehouse-ndsm/references/official.html",
+    "artifacts/landmarks/treehouse-ndsm/references/osm-site.xml",
+    "artifacts/landmarks/treehouse-ndsm/references/panorama-index.json"
+  ],
+  "sourceUrls": [
+    "https://www.treehousendsm.com/pages/concept-story",
+    "https://www.ndsm.nl/en/locaties/treehouse-ndsm",
+    "https://api.openstreetmap.org/api/0.6/way/1163404107/full",
+    "https://service.pdok.nl/lv/bag/wfs/v2_0",
+    "https://api.data.amsterdam.nl/panorama/panoramas/"
+  ],
+  "heightNotes": "Native roofsurveys transformedRD->lonlat->east/southmetres; perPandAHNgroundremoved. Sourcewhitepitchedprefabroofs and2 largerworkinghalls,not equipmentmaxwholecomplex. Pand2492survey502; horizontalcontainerroof5.55m fromneighborphoto/source."
+}

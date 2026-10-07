@@ -1,0 +1,2038 @@
+{
+  "id": "centrale-markthal",
+  "anchor": [
+    4.86579375,
+    52.37877065
+  ],
+  "authorHeadingDegrees": 77.2,
+  "coordinateConvention": "Metres x transverse east-northeast; z longitudinal south-southeast. Source east/south-to-local rotation is +12.8degrees; runtime local-to-world is its inverse, using northOffsetDegrees -12.8. Actual local +X compass bearing is77.2degrees.",
+  "localFootprint": [
+    [
+      -29.001,
+      64.255
+    ],
+    [
+      -29.001,
+      65.105
+    ],
+    [
+      26.82,
+      65.079
+    ],
+    [
+      26.82,
+      64.228
+    ],
+    [
+      35.063,
+      64.223
+    ],
+    [
+      35.057,
+      57.226
+    ],
+    [
+      33.87,
+      57.226
+    ],
+    [
+      33.934,
+      -48.19
+    ],
+    [
+      33.229,
+      -48.159
+    ],
+    [
+      33.234,
+      -48.014
+    ],
+    [
+      30.081,
+      -48.015
+    ],
+    [
+      30.09,
+      -54.599
+    ],
+    [
+      33.885,
+      -54.584
+    ],
+    [
+      33.905,
+      -65.263
+    ],
+    [
+      25.065,
+      -65.28
+    ],
+    [
+      25.047,
+      -65.594
+    ],
+    [
+      -27.089,
+      -65.57
+    ],
+    [
+      -27.093,
+      -65.324
+    ],
+    [
+      -35.98,
+      -65.331
+    ],
+    [
+      -35.97,
+      -54.579
+    ],
+    [
+      -32.866,
+      -54.578
+    ],
+    [
+      -32.841,
+      -47.967
+    ],
+    [
+      -35.298,
+      -47.967
+    ],
+    [
+      -35.945,
+      -47.966
+    ],
+    [
+      -36.047,
+      57.261
+    ],
+    [
+      -37.248,
+      57.262
+    ],
+    [
+      -37.249,
+      57.991
+    ],
+    [
+      -37.255,
+      64.258
+    ],
+    [
+      -29.001,
+      64.255
+    ]
+  ],
+  "building": {
+    "type": "Feature",
+    "properties": {
+      "aantal_verblijfsobjecten": 1,
+      "bouwjaar": 1935,
+      "documentdatum": "2023-09-15",
+      "documentnummer": "GV00007156_AC00AC",
+      "gebruiksdoel": "bijeenkomstfunctie",
+      "geconstateerd": "N",
+      "identificatie": "0363100012210502",
+      "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012210502",
+      "status": "Pand in gebruik",
+      "verblijfsobject.href": [
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/dc688fa7-57c4-53b3-8b88-5af0116df4c0"
+      ]
+    },
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.8655870690783205,
+            52.37815006788784
+          ],
+          [
+            4.865589844263977,
+            52.37814262030864
+          ],
+          [
+            4.866390789545106,
+            52.37825394441035
+          ],
+          [
+            4.8663880143813545,
+            52.37826140099553
+          ],
+          [
+            4.866506295802629,
+            52.37827784739726
+          ],
+          [
+            4.866483399972754,
+            52.37833912381996
+          ],
+          [
+            4.866466362127781,
+            52.37833676601651
+          ],
+          [
+            4.866123599160585,
+            52.379260327644644
+          ],
+          [
+            4.8661135732322265,
+            52.37925864776226
+          ],
+          [
+            4.866114116708562,
+            52.37925739187397
+          ],
+          [
+            4.866068867346407,
+            52.379251126039726
+          ],
+          [
+            4.866047539985557,
+            52.379308814186764
+          ],
+          [
+            4.866102043115836,
+            52.379316235227705
+          ],
+          [
+            4.866067516455443,
+            52.37940982513169
+          ],
+          [
+            4.865940608154728,
+            52.37939237864411
+          ],
+          [
+            4.865939327842046,
+            52.37939509628532
+          ],
+          [
+            4.865191236650875,
+            52.37929112049158
+          ],
+          [
+            4.8651919817551335,
+            52.379288957737195
+          ],
+          [
+            4.865064429979418,
+            52.37927133670457
+          ],
+          [
+            4.8650996410744956,
+            52.379177165900614
+          ],
+          [
+            4.8651441716736725,
+            52.37918333906014
+          ],
+          [
+            4.865166089698083,
+            52.379125473920595
+          ],
+          [
+            4.865130840690271,
+            52.379120581994684
+          ],
+          [
+            4.865121544573882,
+            52.379119291717316
+          ],
+          [
+            4.865463163223959,
+            52.37819730969918
+          ],
+          [
+            4.865445920313687,
+            52.378194914894046
+          ],
+          [
+            4.865448286539867,
+            52.37818852606665
+          ],
+          [
+            4.865468641592614,
+            52.378133610933816
+          ],
+          [
+            4.8655870690783205,
+            52.37815006788784
+          ]
+        ]
+      ]
+    },
+    "id": "a0926c59-dd5e-58b2-8d86-0a360f021dd8"
+  },
+  "osmWay": {
+    "id": 276272968,
+    "tags": {
+      "building": "yes",
+      "height": "28.3",
+      "name": "Centrale Markthal",
+      "ref:bag": "0363100012210502",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "source:height": "3DBAG",
+      "source:height:date": "2025-09-03",
+      "start_date": "1935",
+      "wikidata": "Q2351332",
+      "wikimedia_commons": "Category:Centrale Markthal (Amsterdam)"
+    }
+  },
+  "neighbors": [
+    {
+      "osmWayId": "276272871",
+      "id": "NL.IMBAG.Pand.0363100012202278",
+      "height": 9.1,
+      "localRing": [
+        [
+          6.323,
+          129.018
+        ],
+        [
+          5.808,
+          207.546
+        ],
+        [
+          5.819,
+          208.415
+        ],
+        [
+          5.764,
+          210.831
+        ],
+        [
+          -3.732,
+          210.84
+        ],
+        [
+          -3.726,
+          206.338
+        ],
+        [
+          -8.669,
+          206.344
+        ],
+        [
+          -8.675,
+          206.217
+        ],
+        [
+          -8.604,
+          100.232
+        ],
+        [
+          11.308,
+          100.217
+        ],
+        [
+          11.319,
+          128.294
+        ],
+        [
+          11.355,
+          129.055
+        ],
+        [
+          6.323,
+          129.018
+        ]
+      ]
+    },
+    {
+      "osmWayId": "276272895",
+      "id": "NL.IMBAG.Pand.0363100012202596",
+      "height": 9.5,
+      "localRing": [
+        [
+          29.94,
+          124.52
+        ],
+        [
+          29.943,
+          172.025
+        ],
+        [
+          30.688,
+          172.023
+        ],
+        [
+          30.69,
+          173.791
+        ],
+        [
+          30.684,
+          191.988
+        ],
+        [
+          29.945,
+          191.992
+        ],
+        [
+          29.95,
+          210.75
+        ],
+        [
+          5.764,
+          210.831
+        ],
+        [
+          5.819,
+          208.415
+        ],
+        [
+          5.808,
+          207.546
+        ],
+        [
+          6.323,
+          129.018
+        ],
+        [
+          11.355,
+          129.055
+        ],
+        [
+          11.319,
+          128.294
+        ],
+        [
+          11.308,
+          100.217
+        ],
+        [
+          26.831,
+          100.152
+        ],
+        [
+          26.754,
+          124.48
+        ],
+        [
+          29.94,
+          124.52
+        ]
+      ]
+    },
+    {
+      "osmWayId": "276272976",
+      "id": "NL.IMBAG.Pand.0363100012202277",
+      "height": 14.6,
+      "localRing": [
+        [
+          39.234,
+          -144.609
+        ],
+        [
+          39.256,
+          -131.285
+        ],
+        [
+          40.698,
+          -131.231
+        ],
+        [
+          40.717,
+          -127.76
+        ],
+        [
+          39.218,
+          -127.748
+        ],
+        [
+          39.225,
+          -113.378
+        ],
+        [
+          39.157,
+          -71.568
+        ],
+        [
+          38.793,
+          -71.525
+        ],
+        [
+          38.796,
+          -67.191
+        ],
+        [
+          35.102,
+          -67.198
+        ],
+        [
+          35.11,
+          -71.553
+        ],
+        [
+          -39.821,
+          -71.563
+        ],
+        [
+          -39.819,
+          -107.938
+        ],
+        [
+          -39.885,
+          -125.171
+        ],
+        [
+          -39.925,
+          -128.305
+        ],
+        [
+          -39.879,
+          -153.905
+        ],
+        [
+          -37.129,
+          -156.633
+        ],
+        [
+          -36.421,
+          -156.689
+        ],
+        [
+          -36.397,
+          -171.131
+        ],
+        [
+          14.1,
+          -171.118
+        ],
+        [
+          14.102,
+          -192.144
+        ],
+        [
+          13.726,
+          -192.173
+        ],
+        [
+          13.731,
+          -193.483
+        ],
+        [
+          31.502,
+          -198.294
+        ],
+        [
+          28.314,
+          -210.455
+        ],
+        [
+          56.427,
+          -210.511
+        ],
+        [
+          56.399,
+          -174.267
+        ],
+        [
+          58.355,
+          -174.268
+        ],
+        [
+          58.346,
+          -170.028
+        ],
+        [
+          56.387,
+          -170.017
+        ],
+        [
+          56.356,
+          -161.974
+        ],
+        [
+          37.239,
+          -161.961
+        ],
+        [
+          37.222,
+          -144.792
+        ],
+        [
+          37.244,
+          -144.582
+        ],
+        [
+          39.234,
+          -144.609
+        ]
+      ]
+    },
+    {
+      "osmWayId": "276273072",
+      "id": "NL.IMBAG.Pand.0363100012210504",
+      "height": 3.1,
+      "localRing": [
+        [
+          37.405,
+          91.722
+        ],
+        [
+          37.528,
+          97.862
+        ],
+        [
+          29.886,
+          97.95
+        ],
+        [
+          29.767,
+          91.823
+        ],
+        [
+          37.405,
+          91.722
+        ]
+      ]
+    },
+    {
+      "osmWayId": "276273391",
+      "id": "NL.IMBAG.Pand.0363100012210518",
+      "height": 4.1,
+      "localRing": [
+        [
+          26.844,
+          85.696
+        ],
+        [
+          26.868,
+          99.1
+        ],
+        [
+          9.938,
+          99.108
+        ],
+        [
+          9.95,
+          96.237
+        ],
+        [
+          7.922,
+          96.244
+        ],
+        [
+          7.973,
+          85.697
+        ],
+        [
+          26.844,
+          85.696
+        ]
+      ]
+    },
+    {
+      "osmWayId": "276273417",
+      "id": "NL.IMBAG.Pand.0363100012202378",
+      "height": 6.1,
+      "localRing": [
+        [
+          -88.652,
+          53.048
+        ],
+        [
+          -127.629,
+          82.324
+        ],
+        [
+          -143.046,
+          61.762
+        ],
+        [
+          -123.163,
+          46.827
+        ],
+        [
+          -87.006,
+          19.67
+        ],
+        [
+          -71.591,
+          40.242
+        ],
+        [
+          -88.652,
+          53.048
+        ]
+      ]
+    }
+  ],
+  "neighborsToRetain": [
+    "NL.IMBAG.Pand.0363100012202278",
+    "NL.IMBAG.Pand.0363100012202596",
+    "NL.IMBAG.Pand.0363100012202277",
+    "NL.IMBAG.Pand.0363100012210504",
+    "NL.IMBAG.Pand.0363100012210518",
+    "NL.IMBAG.Pand.0363100012202378"
+  ],
+  "openSpaceProbes": [
+    [
+      -45,
+      0
+    ],
+    [
+      42,
+      0
+    ],
+    [
+      0,
+      73
+    ],
+    [
+      0,
+      -72
+    ]
+  ],
+  "heightNotes": {
+    "terrainNap": 0.312,
+    "ridgeAboveGround": 28.23,
+    "mainEaveAboveGround": 17.75,
+    "loadingWing": 7.7,
+    "upperOffice": 15.45,
+    "tallStairs": 21.8,
+    "basis": "Cached AHN5 2023 3DBAG roof surfaces interpreted; profile approximate. Source world roof coordinates are NAP; builder heights subtract terrain. Main high hall spans about52.2m; whole surveyed outline about72x131m. RCE70x100 description is not used to rescale current footprint."
+  },
+  "references": [
+    {
+      "path": "artifacts/landmarks/centrale-markthal/references/osm-way.json",
+      "url": "https://www.openstreetmap.org/api/0.6/way/276272968/full.json",
+      "status": 200,
+      "sha256": "7ac42dd89ff15d74fb1c919b24068a0d14b05509621be15c27407fcf5067e4b5",
+      "retrievedAt": "2026-10-05",
+      "rights": "Referenceonly;sourcecopyright retained"
+    },
+    {
+      "path": "artifacts/landmarks/centrale-markthal/references/rce.html",
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/526739",
+      "status": 200,
+      "sha256": "761a163c123f3df652c2c403cc407894abba776e09c3875772a1a988ee916642",
+      "retrievedAt": "2026-10-05",
+      "rights": "Referenceonly;sourcecopyright retained"
+    },
+    {
+      "path": "artifacts/landmarks/centrale-markthal/references/owner-history.html",
+      "url": "https://centralemarkthal.nl/the-building/the-past/",
+      "status": 200,
+      "sha256": "5288d161fb0e64c7bac7af76b233a878c5dd9518c7f0372c69e8d9d246fc7c14",
+      "retrievedAt": "2026-10-05",
+      "rights": "Referenceonly;sourcecopyright retained"
+    },
+    {
+      "path": "artifacts/landmarks/centrale-markthal/references/owner-current.html",
+      "url": "https://centralemarkthal.nl/the-building/",
+      "status": 200,
+      "sha256": "98b627e1b1c9f1f5ee4ce3757d47490cf87738c104ce9026d2a0eacc230cee97",
+      "retrievedAt": "2026-10-05",
+      "rights": "Referenceonly;sourcecopyright retained"
+    },
+    {
+      "path": "artifacts/landmarks/centrale-markthal/references/owner-visit.html",
+      "url": "https://centralemarkthal.nl/visit/",
+      "status": 200,
+      "sha256": "465f1a41299e9d564e7e4c134b01a444819ca7547a1066e84cf87102a861eb37",
+      "retrievedAt": "2026-10-05",
+      "rights": "Referenceonly;sourcecopyright retained"
+    },
+    {
+      "path": "artifacts/landmarks/centrale-markthal/references/boei-restored.html",
+      "url": "https://www.boei.nl/nieuws/cascorestauratie-centrale-markthal-amsterdam-afgerond/",
+      "status": 200,
+      "sha256": "50b24fe5511bcc2df8f5277af670ac8e004cde1cbbe761f1113baeac444c04ec",
+      "retrievedAt": "2026-10-05",
+      "rights": "Referenceonly;sourcecopyright retained"
+    },
+    {
+      "path": "artifacts/landmarks/centrale-markthal/references/beeldbank.html",
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=Jan%20van%20Galenstraat%204",
+      "status": 200,
+      "sha256": "d69558a926e5cd6630f698bd44ba331eb03dd2d3d37e2b2f2766ab36f8f85cf6",
+      "retrievedAt": "2026-10-05",
+      "rights": "Referenceonly;sourcecopyright retained"
+    },
+    {
+      "path": "artifacts/landmarks/centrale-markthal/references/school.html",
+      "url": "https://items.amsterdamse-school.nl/details/objects/900",
+      "status": 200,
+      "sha256": "f8dd6b603083f9ef4139e0d7e5ce09b5af8e2d3b47789e8c4b35831ad1850be6",
+      "retrievedAt": "2026-10-05",
+      "rights": "Referenceonly;sourcecopyright retained"
+    },
+    {
+      "path": "artifacts/landmarks/centrale-markthal/references/bag.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012210502&f=json",
+      "status": 200,
+      "sha256": "56396fc15289a7f260e55622136101d15d39972fcce94612f3ba9ca5f2ab540c",
+      "retrievedAt": "2026-10-05",
+      "rights": "BAG/OSM/3DBAGopendata;retainattribution"
+    },
+    {
+      "path": "artifacts/landmarks/centrale-markthal/references/3dbag.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012210502",
+      "status": 200,
+      "sha256": "9e4e60ed4cdbf1eb58bcc582df67fc855850401ba4cebfa3239b4ec825cf62ab",
+      "retrievedAt": "2026-10-05",
+      "rights": "BAG/OSM/3DBAGopendata;retainattribution"
+    },
+    {
+      "path": "artifacts/landmarks/centrale-markthal/references/osm-map.xml",
+      "url": "https://www.openstreetmap.org/api/0.6/map?bbox=4.8648,52.3779,4.8668,52.3797",
+      "status": 200,
+      "sha256": "07508b21576e4a4b6c26a57a5e3fcc48bbed47e5a11f37658443ae13ea96e72f",
+      "retrievedAt": "2026-10-05",
+      "rights": "BAG/OSM/3DBAGopendata;retainattribution"
+    },
+    {
+      "path": "artifacts/landmarks/centrale-markthal/references/front-2023.jpg",
+      "url": "https://www.boei.nl/wp-content/uploads/2023/07/Centrale-Markthal-Amsterdam-Foto-Ernie-Enkelaar.jpg",
+      "retrievedAt": "2026-10-05",
+      "sha256": "cf67edbc2f4b47d6c2447df769fe6bdb449088dff87084719cf5a360e9e7cb63",
+      "rights": "Photographercopyright;referenceonly"
+    },
+    {
+      "path": "artifacts/landmarks/centrale-markthal/references/historic-context.jpg",
+      "url": "https://centralemarkthal.nl/wp-content/uploads/2023/01/original_4d95a200cd5fa9f4b4dd3fcd2114ace2.jpg",
+      "retrievedAt": "2026-10-05",
+      "sha256": "b6de35d3b7170e38b07aac0de6fcd159bdcad0fca41e7593130c45b90385d828",
+      "rights": "Photographercopyright;referenceonly"
+    },
+    {
+      "path": "artifacts/landmarks/centrale-markthal/references/school-front.jpg",
+      "url": "https://items.amsterdamse-school.nl/Content/Images/dot.gif",
+      "retrievedAt": "2026-10-05",
+      "sha256": "bd47363b989b8ae2d657ce4ba3059404f59e16a2ee8f521ab020cd91c07d0c86",
+      "rights": "Photographercopyright;referenceonly"
+    },
+    {
+      "path": "artifacts/landmarks/centrale-markthal/references/side-2016.jpg",
+      "url": "https://items.amsterdamse-school.nl/webapiimages/wwwopac.ashx?command=getcontent&server=images&value=20042%5C9090099%20kopiex%20%28Medium%29.jpg",
+      "retrievedAt": "2026-10-05",
+      "sha256": "3a5445fa3521c7f2a38ba299ddf38e8685d067a5678777a5f799f388cecf0a92",
+      "sourcePage": "https://items.amsterdamse-school.nl/details/objects/900",
+      "attribution": "MuseumHetSchip/AnnemariekeVerheijorCorrieGroen-Pickhard2016;seeoriginalsourcepage",
+      "rights": "Photographercopyright;referenceonly"
+    },
+    {
+      "path": "artifacts/landmarks/centrale-markthal/references/stair-2016.jpg",
+      "url": "https://items.amsterdamse-school.nl/webapiimages/wwwopac.ashx?command=getcontent&server=images&value=20042%5C9090116%20kopiex%20%28Medium%29.jpg",
+      "retrievedAt": "2026-10-05",
+      "sha256": "2511c6510dfebccae8125de874362d4f1026317ae2fdca4c254d78c868c20292",
+      "sourcePage": "https://items.amsterdamse-school.nl/details/objects/900",
+      "attribution": "MuseumHetSchip/AnnemariekeVerheijorCorrieGroen-Pickhard2016;seeoriginalsourcepage",
+      "rights": "Photographercopyright;referenceonly"
+    },
+    {
+      "path": "artifacts/landmarks/centrale-markthal/references/front-2016.jpg",
+      "url": "https://items.amsterdamse-school.nl/webapiimages/wwwopac.ashx?command=getcontent&server=images&value=20042%5CCentrale%20Markthal%20-%20Annemarieke%20Verheij%20%2813%29.jpg",
+      "retrievedAt": "2026-10-05",
+      "sha256": "443e2cae810d46cc34a2e21f0c391f1e4a8f98ef5f6ab6f6311f66745fd4442b",
+      "sourcePage": "https://items.amsterdamse-school.nl/details/objects/900",
+      "attribution": "MuseumHetSchip/AnnemariekeVerheijorCorrieGroen-Pickhard2016;seeoriginalsourcepage",
+      "rights": "Photographercopyright;referenceonly"
+    },
+    {
+      "path": "artifacts/landmarks/centrale-markthal/references/context-2016.jpg",
+      "url": "https://items.amsterdamse-school.nl/webapiimages/wwwopac.ashx?command=getcontent&server=images&value=20042%5CCentrale%20Markthal%20-%20Annemarieke%20Verheij%20%285%29.jpg",
+      "retrievedAt": "2026-10-05",
+      "sha256": "5297be78ae4b45b908fe4edb953016be1858bfad862ef6f3469426d7185084f8",
+      "sourcePage": "https://items.amsterdamse-school.nl/details/objects/900",
+      "attribution": "MuseumHetSchip/AnnemariekeVerheijorCorrieGroen-Pickhard2016;seeoriginalsourcepage",
+      "rights": "Photographercopyright;referenceonly"
+    }
+  ],
+  "architecturalAssertions": [
+    {
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/526739",
+      "part": "whole hall",
+      "date": "1932\u20131934",
+      "confidence": "high",
+      "passage": "opgetrokken in gele baksteen ... zadeldak ... lichtstroken ... volle breedte van het dak",
+      "modeling": "Yellow-brick shell; gable roof with repeated full-width transverse roof lights."
+    },
+    {
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/526739",
+      "part": "office wings/end fronts",
+      "confidence": "high",
+      "passage": "46 aan de west- en 43 aan de oostzijde ... korte zijden ... 21 per laag",
+      "modeling": "Two office rows46/43;21 windows per end row; steel ladder mullions."
+    },
+    {
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/526739",
+      "part": "north-east",
+      "confidence": "high",
+      "passage": "de hoge toren op de noordoostelijke hoek is inmiddels afgebroken",
+      "modeling": "No reconstructed clock tower."
+    }
+  ],
+  "archiveSearch": {
+    "beeldbank": {
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=Jan%20van%20Galenstraat%204",
+      "state": "Cached JavaScript viewer shell; no digitized drawings inspected"
+    },
+    "bouwdossiers": {
+      "state": "Not retrieved; current facade photographs and AHN5 survey sufficient for bounded exterior draft"
+    }
+  },
+  "limitations": [
+    "Native ground polygon exact; upper rectangles and roof profile simplify detailed AHN zones.",
+    "External three-sided stair bays and entrance framing approximate; GPU reference comparison required.",
+    "front-2023.jpg is an interior roof photograph, not an exterior principal-front image.",
+    "school-front.jpg is a downloaded GIF placeholder and must not be treated as photographic evidence.",
+    "Photo-matched stair facade head/projection approximate: AHN314/309 fitted fragments contradict complete facade heights. Geo-matched source/render review remains required."
+  ],
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "modelPath": "models/centrale-markthal",
+    "commit": "pending coordinator archive commit"
+  },
+  "surveyTransform": {
+    "rotationDegrees": 12.8,
+    "validation": "Original BAG east/south vertices rotate +12.8degrees into local axes; the runtime matrix must rotate -12.8degrees back. First vertex maps to[-29.001,64.255] within source millimetre rounding."
+  },
+  "stairBaySurvey": {
+    "309": {
+      "index": 309,
+      "bounds": [
+        [
+          31.6,
+          34.4
+        ],
+        [
+          52.5,
+          57.3
+        ],
+        [
+          13.9,
+          14.0
+        ]
+      ],
+      "localRings": [
+        [
+          [
+            33.83222816108345,
+            56.9765099646493,
+            13.971
+          ],
+          [
+            34.4187512420811,
+            57.210013017024096,
+            13.969
+          ],
+          [
+            34.419547883869136,
+            55.135717867962846,
+            13.953
+          ],
+          [
+            33.171557619741286,
+            55.45600102492746,
+            13.964
+          ],
+          [
+            31.969956003430326,
+            54.085753764170505,
+            13.961
+          ],
+          [
+            32.630393812549265,
+            53.401702669376235,
+            13.952
+          ],
+          [
+            32.62485008814363,
+            52.45437681882687,
+            13.944
+          ],
+          [
+            31.681411659250767,
+            52.45156064169125,
+            13.950000000000001
+          ],
+          [
+            31.619381723993424,
+            56.64214392893936,
+            13.982000000000001
+          ],
+          [
+            31.88698262618184,
+            57.068617559012296,
+            13.984
+          ],
+          [
+            32.006476184987854,
+            57.26078750829201,
+            13.985
+          ]
+        ]
+      ]
+    },
+    "314": {
+      "index": 314,
+      "bounds": [
+        [
+          -35.6,
+          -33.9
+        ],
+        [
+          54.6,
+          56.8
+        ],
+        [
+          16.6,
+          16.6
+        ]
+      ],
+      "localRings": [
+        [
+          [
+            -34.56436436055103,
+            56.81593465589261,
+            16.62
+          ],
+          [
+            -33.872309363586695,
+            55.84395066364967,
+            16.624
+          ],
+          [
+            -35.02922605852052,
+            55.047718435602945,
+            16.631
+          ],
+          [
+            -35.629355447453634,
+            54.634082464565786,
+            16.634
+          ],
+          [
+            -35.63076846257646,
+            56.51574423102119,
+            16.623
+          ]
+        ]
+      ]
+    }
+  },
+  "stairBayInterpretation": {
+    "reviewStatus": "held-for-native-visual-review",
+    "basis": "Geo-matched municipal west panorama confirms full continuous projecting bay at BAG sidewall. Cached2016 stair photo is east (office to right); municipal west shows office to left. Roof314/309 are retained fitted AHN fragments and no longer treated as complete window outlines.",
+    "photoPaths": [
+      "artifacts/landmarks/centrale-markthal/references/stair-2016.jpg",
+      "artifacts/landmarks/centrale-markthal/references/side-2016.jpg"
+    ],
+    "glazingLowerBound": 4.4,
+    "glazingLowerBoundReason": "Exposed panes above retained loading-wing roof; lower photographed glazing/portico masonry require a further source-backed shell subdivision. Side return panes remain occluded by the rectangular front annex and must not be accepted.",
+    "supersededOn": "2026-10-06"
+  },
+  "photoMatchedStairReconstruction": {
+    "sourceRecord": "artifacts/landmarks/centrale-markthal-finish-20261006/municipal-source-record.json",
+    "surveyedWallContacts": {
+      "west": [
+        -36.045,
+        55.7
+      ],
+      "east": [
+        33.87,
+        55.7
+      ]
+    },
+    "approximateDimensions": {
+      "projectionMetres": 0.62,
+      "frontWidthMetres": 2,
+      "wallSpanMetres": 2.9,
+      "sillMetres": 4.4,
+      "windowHeadMetres": 17.6,
+      "outerStairRoofMetres": 15.25,
+      "facadeScreenTopMetres": 18.5,
+      "facadeScreenThicknessMetres": 0.3,
+      "facadeScreenZInterval": [
+        52.3,
+        60.3
+      ],
+      "facadeScreenWidthMetres": 8
+    },
+    "confidence": "Photo-guided approximate reconstruction; wall contacts derive from installed native BAG vertices. Width/projection/head are not surveyed measurements. AHN roof fragment heights do not resolve this facade assembly.",
+    "sourceFeatures": "Full continuous pale steel cage above portico; three frontal lights and single-light angled returns; lower stair facade above office eave and below taller inward brick tower.",
+    "nativeCameras": {
+      "west": [
+        -55.60592289330406,
+        2.5,
+        54.2016389082022
+      ],
+      "east": [
+        43.13793685528684,
+        2.5,
+        54.234833086409516
+      ]
+    },
+    "rawArchive": "models/centrale-markthal/raw/municipal-20261006",
+    "dateAuthority": "Exact panorama captureTimestamp, not mission year.",
+    "occlusion": "West panorama vans conceal portico; retained2016 photo establishes canopy/window vertical relationship. East2022 panorama scaffold conceals bay; use retained2016 east photo.",
+    "facadeScreenInterpretation": {
+      "basis": "West2020 photo has a continuous high street-facing cornice and broad brick face, about4.1x frontal light width. Geo-matched photo apparent centre position57.4% from left agrees with native bayz55.7 in52.3\u201360.3 reversed interval57.5%.",
+      "scope": "Only a bounded thin upper facade screen, not a solid raised annex; source roof316/310 retain low15.25m interiors. Source323 high inward stair zone reaches60.3m, supporting bounded front transition rather than expansion to64.22m.",
+      "confidence": "medium; head height,8m span and thin-screen/roof setback correspondence are bounded photograph/plan inference, not surveyed dimensions. Exact parapet construction unresolved.",
+      "preservedFailure": "artifacts/landmarks/centrale-markthal-finish-20261006/independent-narrow-silhouette-failure.json"
+    }
+  },
+  "loadingRoofSurvey": {
+    "index": 296,
+    "bounds": [
+      [
+        31.7,
+        34.4
+      ],
+      [
+        24.6,
+        55.5
+      ],
+      [
+        7.7,
+        7.9
+      ]
+    ],
+    "localRings": [
+      [
+        [
+          33.171557619741286,
+          55.45600102492746,
+          7.776
+        ],
+        [
+          34.419547883869136,
+          55.135717867962846,
+          7.883
+        ],
+        [
+          34.43277838336843,
+          24.638998782935886,
+          7.909
+        ],
+        [
+          34.25545835743161,
+          24.649128363274226,
+          7.894
+        ],
+        [
+          34.25707806738036,
+          25.11639421538046,
+          7.893
+        ],
+        [
+          32.91240721499266,
+          24.843029443130654,
+          7.779
+        ],
+        [
+          32.45484938046992,
+          25.707905635500005,
+          7.739
+        ],
+        [
+          32.46206258300181,
+          26.88495787294874,
+          7.739
+        ],
+        [
+          32.61971013791933,
+          51.64946528271696,
+          7.732
+        ],
+        [
+          31.69393221840702,
+          51.58500410251922,
+          7.6530000000000005
+        ],
+        [
+          31.681411659250767,
+          52.45156064169125,
+          7.651
+        ],
+        [
+          32.62485008814363,
+          52.45437681882687,
+          7.732
+        ],
+        [
+          32.630393812549265,
+          53.401702669376235,
+          7.732
+        ],
+        [
+          31.969956003430326,
+          54.085753764170505,
+          7.675
+        ]
+      ]
+    ]
+  },
+  "installedBuildingParts": [
+    {
+      "id": "w1080812379",
+      "osmWayId": 1080812379,
+      "tags": {
+        "building:part": "yes",
+        "height": "29",
+        "roof:height": "10",
+        "roof:orientation": "along",
+        "roof:shape": "gabled"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8663685,
+              52.3782924
+            ],
+            [
+              4.8663293,
+              52.3782869
+            ],
+            [
+              4.865621,
+              52.3781872
+            ],
+            [
+              4.8656038,
+              52.3781848
+            ],
+            [
+              4.8652267,
+              52.3791964
+            ],
+            [
+              4.8651921,
+              52.3792894
+            ],
+            [
+              4.8651914,
+              52.3792915
+            ],
+            [
+              4.8659395,
+              52.3793955
+            ],
+            [
+              4.8659408,
+              52.3793928
+            ],
+            [
+              4.8659766,
+              52.3793025
+            ],
+            [
+              4.8660029,
+              52.3792346
+            ],
+            [
+              4.8663685,
+              52.3782924
+            ]
+          ]
+        ]
+      },
+      "parentOsmId": "w276272968",
+      "parentBagId": "0363100012210502",
+      "ownershipEvidence": {
+        "sharedParentNodeCount": 4,
+        "nativeBagMaxOutsideVertexDistanceMetres": 0.04643923572620035,
+        "osmParentMaxOutsideVertexDistanceMetres": 0,
+        "nativeAndParentInteriorSamples": {
+          "contained": 4058,
+          "total": 4058
+        },
+        "installedPolygonExactMatch": true,
+        "sourceGeometryBoundaryToleranceMetres": 0.15
+      },
+      "rawSourcePackPath": "models/centrale-markthal/raw/20261007-owner",
+      "sourceUrls": [
+        "https://www.openstreetmap.org/api/0.6/way/1080812379/full.json",
+        "https://www.openstreetmap.org/api/0.6/way/276272968/full.json"
+      ]
+    },
+    {
+      "id": "w1080812380",
+      "osmWayId": 1080812380,
+      "tags": {
+        "building:part": "yes",
+        "height": "7"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8659408,
+              52.3793928
+            ],
+            [
+              4.8659766,
+              52.3793025
+            ],
+            [
+              4.8660466,
+              52.3793119
+            ],
+            [
+              4.8660477,
+              52.3793092
+            ],
+            [
+              4.8661022,
+              52.3793167
+            ],
+            [
+              4.8660677,
+              52.3794102
+            ],
+            [
+              4.8659408,
+              52.3793928
+            ]
+          ]
+        ]
+      },
+      "parentOsmId": "w276272968",
+      "parentBagId": "0363100012210502",
+      "ownershipEvidence": {
+        "sharedParentNodeCount": 4,
+        "nativeBagMaxOutsideVertexDistanceMetres": 0.043554413287920674,
+        "osmParentMaxOutsideVertexDistanceMetres": 0,
+        "nativeAndParentInteriorSamples": {
+          "contained": 4581,
+          "total": 4581
+        },
+        "installedPolygonExactMatch": true,
+        "sourceGeometryBoundaryToleranceMetres": 0.15
+      },
+      "rawSourcePackPath": "models/centrale-markthal/raw/20261007-owner",
+      "sourceUrls": [
+        "https://www.openstreetmap.org/api/0.6/way/1080812380/full.json",
+        "https://www.openstreetmap.org/api/0.6/way/276272968/full.json"
+      ]
+    },
+    {
+      "id": "w1080812381",
+      "osmWayId": 1080812381,
+      "tags": {
+        "building:part": "yes",
+        "height": "18"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8660718,
+              52.3792442
+            ],
+            [
+              4.866069,
+              52.3792515
+            ],
+            [
+              4.8660477,
+              52.3793092
+            ],
+            [
+              4.8660466,
+              52.3793119
+            ],
+            [
+              4.8659766,
+              52.3793025
+            ],
+            [
+              4.8660029,
+              52.3792346
+            ],
+            [
+              4.8660718,
+              52.3792442
+            ]
+          ]
+        ]
+      },
+      "parentOsmId": "w276272968",
+      "parentBagId": "0363100012210502",
+      "ownershipEvidence": {
+        "sharedParentNodeCount": 2,
+        "nativeBagMaxOutsideVertexDistanceMetres": 0.017957603509133283,
+        "osmParentMaxOutsideVertexDistanceMetres": 0,
+        "nativeAndParentInteriorSamples": {
+          "contained": 4417,
+          "total": 4417
+        },
+        "installedPolygonExactMatch": true,
+        "sourceGeometryBoundaryToleranceMetres": 0.15
+      },
+      "rawSourcePackPath": "models/centrale-markthal/raw/20261007-owner",
+      "sourceUrls": [
+        "https://www.openstreetmap.org/api/0.6/way/1080812381/full.json",
+        "https://www.openstreetmap.org/api/0.6/way/276272968/full.json"
+      ]
+    },
+    {
+      "id": "w1080812382",
+      "osmWayId": 1080812382,
+      "tags": {
+        "building:part": "yes",
+        "height": "15"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.866069,
+              52.3792515
+            ],
+            [
+              4.8660803,
+              52.3792531
+            ],
+            [
+              4.86642,
+              52.378331
+            ],
+            [
+              4.8664665,
+              52.3783372
+            ],
+            [
+              4.8664836,
+              52.3783395
+            ],
+            [
+              4.8665065,
+              52.3782783
+            ],
+            [
+              4.8663882,
+              52.3782618
+            ],
+            [
+              4.8663396,
+              52.378255
+            ],
+            [
+              4.8663293,
+              52.3782869
+            ],
+            [
+              4.8663685,
+              52.3782924
+            ],
+            [
+              4.8660029,
+              52.3792346
+            ],
+            [
+              4.8660718,
+              52.3792442
+            ],
+            [
+              4.866069,
+              52.3792515
+            ]
+          ]
+        ]
+      },
+      "parentOsmId": "w276272968",
+      "parentBagId": "0363100012210502",
+      "ownershipEvidence": {
+        "sharedParentNodeCount": 6,
+        "nativeBagMaxOutsideVertexDistanceMetres": 0.04402715136952435,
+        "osmParentMaxOutsideVertexDistanceMetres": 0,
+        "nativeAndParentInteriorSamples": {
+          "contained": 1025,
+          "total": 1025
+        },
+        "installedPolygonExactMatch": true,
+        "sourceGeometryBoundaryToleranceMetres": 0.15
+      },
+      "rawSourcePackPath": "models/centrale-markthal/raw/20261007-owner",
+      "sourceUrls": [
+        "https://www.openstreetmap.org/api/0.6/way/1080812382/full.json",
+        "https://www.openstreetmap.org/api/0.6/way/276272968/full.json"
+      ]
+    },
+    {
+      "id": "w1080812383",
+      "osmWayId": 1080812383,
+      "tags": {
+        "building:part": "yes",
+        "height": "8"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8660803,
+              52.3792531
+            ],
+            [
+              4.8661143,
+              52.3792578
+            ],
+            [
+              4.8661137,
+              52.3792591
+            ],
+            [
+              4.8661238,
+              52.3792607
+            ],
+            [
+              4.8664665,
+              52.3783372
+            ],
+            [
+              4.86642,
+              52.378331
+            ],
+            [
+              4.8660803,
+              52.3792531
+            ]
+          ]
+        ]
+      },
+      "parentOsmId": "w276272968",
+      "parentBagId": "0363100012210502",
+      "ownershipEvidence": {
+        "sharedParentNodeCount": 5,
+        "nativeBagMaxOutsideVertexDistanceMetres": 0.046267379291960835,
+        "osmParentMaxOutsideVertexDistanceMetres": 0,
+        "nativeAndParentInteriorSamples": {
+          "contained": 803,
+          "total": 803
+        },
+        "installedPolygonExactMatch": true,
+        "sourceGeometryBoundaryToleranceMetres": 0.15
+      },
+      "rawSourcePackPath": "models/centrale-markthal/raw/20261007-owner",
+      "sourceUrls": [
+        "https://www.openstreetmap.org/api/0.6/way/1080812383/full.json",
+        "https://www.openstreetmap.org/api/0.6/way/276272968/full.json"
+      ]
+    },
+    {
+      "id": "w1080812384",
+      "osmWayId": 1080812384,
+      "tags": {
+        "building:part": "yes",
+        "height": "14",
+        "min_height": "4"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8663396,
+              52.378255
+            ],
+            [
+              4.866342,
+              52.3782476
+            ],
+            [
+              4.8663909,
+              52.3782544
+            ],
+            [
+              4.8663882,
+              52.3782618
+            ],
+            [
+              4.8663396,
+              52.378255
+            ]
+          ]
+        ]
+      },
+      "parentOsmId": "w276272968",
+      "parentBagId": "0363100012210502",
+      "ownershipEvidence": {
+        "sharedParentNodeCount": 3,
+        "nativeBagMaxOutsideVertexDistanceMetres": 0.018555270738683738,
+        "osmParentMaxOutsideVertexDistanceMetres": 0,
+        "nativeAndParentInteriorSamples": {
+          "contained": 3416,
+          "total": 3416
+        },
+        "installedPolygonExactMatch": true,
+        "sourceGeometryBoundaryToleranceMetres": 0.15
+      },
+      "rawSourcePackPath": "models/centrale-markthal/raw/20261007-owner",
+      "sourceUrls": [
+        "https://www.openstreetmap.org/api/0.6/way/1080812384/full.json",
+        "https://www.openstreetmap.org/api/0.6/way/276272968/full.json"
+      ]
+    },
+    {
+      "id": "w1080812385",
+      "osmWayId": 1080812385,
+      "tags": {
+        "building:part": "yes",
+        "height": "14",
+        "min_height": "4"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8655872,
+              52.3781505
+            ],
+            [
+              4.8656323,
+              52.3781571
+            ],
+            [
+              4.8656349,
+              52.3781492
+            ],
+            [
+              4.86559,
+              52.378143
+            ],
+            [
+              4.8655872,
+              52.3781505
+            ]
+          ]
+        ]
+      },
+      "parentOsmId": "w276272968",
+      "parentBagId": "0363100012210502",
+      "ownershipEvidence": {
+        "sharedParentNodeCount": 3,
+        "nativeBagMaxOutsideVertexDistanceMetres": 0,
+        "osmParentMaxOutsideVertexDistanceMetres": 0,
+        "nativeAndParentInteriorSamples": {
+          "contained": 3555,
+          "total": 3555
+        },
+        "installedPolygonExactMatch": true,
+        "sourceGeometryBoundaryToleranceMetres": 0.15
+      },
+      "rawSourcePackPath": "models/centrale-markthal/raw/20261007-owner",
+      "sourceUrls": [
+        "https://www.openstreetmap.org/api/0.6/way/1080812385/full.json",
+        "https://www.openstreetmap.org/api/0.6/way/276272968/full.json"
+      ]
+    },
+    {
+      "id": "w1080812386",
+      "osmWayId": 1080812386,
+      "tags": {
+        "building:part": "yes",
+        "height": "15"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8656323,
+              52.3781571
+            ],
+            [
+              4.865621,
+              52.3781872
+            ],
+            [
+              4.8656038,
+              52.3781848
+            ],
+            [
+              4.8652267,
+              52.3791964
+            ],
+            [
+              4.8651443,
+              52.3791838
+            ],
+            [
+              4.8651662,
+              52.3791259
+            ],
+            [
+              4.8655069,
+              52.3782035
+            ],
+            [
+              4.8654633,
+              52.3781977
+            ],
+            [
+              4.8654461,
+              52.3781953
+            ],
+            [
+              4.8654688,
+              52.378134
+            ],
+            [
+              4.8655872,
+              52.3781505
+            ],
+            [
+              4.8656323,
+              52.3781571
+            ]
+          ]
+        ]
+      },
+      "parentOsmId": "w276272968",
+      "parentBagId": "0363100012210502",
+      "ownershipEvidence": {
+        "sharedParentNodeCount": 6,
+        "nativeBagMaxOutsideVertexDistanceMetres": 0.03909284329468399,
+        "osmParentMaxOutsideVertexDistanceMetres": 0,
+        "nativeAndParentInteriorSamples": {
+          "contained": 1223,
+          "total": 1223
+        },
+        "installedPolygonExactMatch": true,
+        "sourceGeometryBoundaryToleranceMetres": 0.15
+      },
+      "rawSourcePackPath": "models/centrale-markthal/raw/20261007-owner",
+      "sourceUrls": [
+        "https://www.openstreetmap.org/api/0.6/way/1080812386/full.json",
+        "https://www.openstreetmap.org/api/0.6/way/276272968/full.json"
+      ]
+    },
+    {
+      "id": "w1080812387",
+      "osmWayId": 1080812387,
+      "tags": {
+        "building:part": "yes",
+        "height": "8"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8656323,
+              52.3781571
+            ],
+            [
+              4.8663396,
+              52.378255
+            ],
+            [
+              4.8663293,
+              52.3782869
+            ],
+            [
+              4.865621,
+              52.3781872
+            ],
+            [
+              4.8656323,
+              52.3781571
+            ]
+          ]
+        ]
+      },
+      "parentOsmId": "w276272968",
+      "parentBagId": "0363100012210502",
+      "ownershipEvidence": {
+        "sharedParentNodeCount": 0,
+        "nativeBagMaxOutsideVertexDistanceMetres": 0,
+        "osmParentMaxOutsideVertexDistanceMetres": 0,
+        "nativeAndParentInteriorSamples": {
+          "contained": 1621,
+          "total": 1621
+        },
+        "installedPolygonExactMatch": true,
+        "sourceGeometryBoundaryToleranceMetres": 0.15
+      },
+      "rawSourcePackPath": "models/centrale-markthal/raw/20261007-owner",
+      "sourceUrls": [
+        "https://www.openstreetmap.org/api/0.6/way/1080812387/full.json",
+        "https://www.openstreetmap.org/api/0.6/way/276272968/full.json"
+      ]
+    },
+    {
+      "id": "w1080812388",
+      "osmWayId": 1080812388,
+      "tags": {
+        "building:part": "yes",
+        "height": "8",
+        "min_height": "4"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8656323,
+              52.3781571
+            ],
+            [
+              4.8656349,
+              52.3781492
+            ],
+            [
+              4.866342,
+              52.3782476
+            ],
+            [
+              4.8663396,
+              52.378255
+            ],
+            [
+              4.8656323,
+              52.3781571
+            ]
+          ]
+        ]
+      },
+      "parentOsmId": "w276272968",
+      "parentBagId": "0363100012210502",
+      "ownershipEvidence": {
+        "sharedParentNodeCount": 2,
+        "nativeBagMaxOutsideVertexDistanceMetres": 0,
+        "osmParentMaxOutsideVertexDistanceMetres": 0,
+        "nativeAndParentInteriorSamples": {
+          "contained": 497,
+          "total": 497
+        },
+        "installedPolygonExactMatch": true,
+        "sourceGeometryBoundaryToleranceMetres": 0.15
+      },
+      "rawSourcePackPath": "models/centrale-markthal/raw/20261007-owner",
+      "sourceUrls": [
+        "https://www.openstreetmap.org/api/0.6/way/1080812388/full.json",
+        "https://www.openstreetmap.org/api/0.6/way/276272968/full.json"
+      ]
+    },
+    {
+      "id": "w1080812389",
+      "osmWayId": 1080812389,
+      "tags": {
+        "building:part": "yes",
+        "height": "22"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8656056,
+              52.378199
+            ],
+            [
+              4.8655311,
+              52.3781891
+            ],
+            [
+              4.8655151,
+              52.378234
+            ],
+            [
+              4.8655897,
+              52.3782439
+            ],
+            [
+              4.8656056,
+              52.378199
+            ]
+          ]
+        ]
+      },
+      "parentOsmId": "w276272968",
+      "parentBagId": "0363100012210502",
+      "ownershipEvidence": {
+        "sharedParentNodeCount": 0,
+        "nativeBagMaxOutsideVertexDistanceMetres": 0,
+        "osmParentMaxOutsideVertexDistanceMetres": 0,
+        "nativeAndParentInteriorSamples": {
+          "contained": 4639,
+          "total": 4639
+        },
+        "installedPolygonExactMatch": true,
+        "sourceGeometryBoundaryToleranceMetres": 0.15
+      },
+      "rawSourcePackPath": "models/centrale-markthal/raw/20261007-owner",
+      "sourceUrls": [
+        "https://www.openstreetmap.org/api/0.6/way/1080812389/full.json",
+        "https://www.openstreetmap.org/api/0.6/way/276272968/full.json"
+      ]
+    },
+    {
+      "id": "w1080812390",
+      "osmWayId": 1080812390,
+      "tags": {
+        "building:part": "yes",
+        "height": "22"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8664143,
+              52.3783121
+            ],
+            [
+              4.8663397,
+              52.3783022
+            ],
+            [
+              4.8663237,
+              52.3783471
+            ],
+            [
+              4.8663983,
+              52.378357
+            ],
+            [
+              4.8664143,
+              52.3783121
+            ]
+          ]
+        ]
+      },
+      "parentOsmId": "w276272968",
+      "parentBagId": "0363100012210502",
+      "ownershipEvidence": {
+        "sharedParentNodeCount": 0,
+        "nativeBagMaxOutsideVertexDistanceMetres": 0,
+        "osmParentMaxOutsideVertexDistanceMetres": 0,
+        "nativeAndParentInteriorSamples": {
+          "contained": 4637,
+          "total": 4637
+        },
+        "installedPolygonExactMatch": true,
+        "sourceGeometryBoundaryToleranceMetres": 0.15
+      },
+      "rawSourcePackPath": "models/centrale-markthal/raw/20261007-owner",
+      "sourceUrls": [
+        "https://www.openstreetmap.org/api/0.6/way/1080812390/full.json",
+        "https://www.openstreetmap.org/api/0.6/way/276272968/full.json"
+      ]
+    },
+    {
+      "id": "w1080812391",
+      "osmWayId": 1080812391,
+      "tags": {
+        "building:part": "yes",
+        "height": "8"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8654633,
+              52.3781977
+            ],
+            [
+              4.8655069,
+              52.3782035
+            ],
+            [
+              4.8651662,
+              52.3791259
+            ],
+            [
+              4.8651217,
+              52.3791197
+            ],
+            [
+              4.8654633,
+              52.3781977
+            ]
+          ]
+        ]
+      },
+      "parentOsmId": "w276272968",
+      "parentBagId": "0363100012210502",
+      "ownershipEvidence": {
+        "sharedParentNodeCount": 3,
+        "nativeBagMaxOutsideVertexDistanceMetres": 0.04197714226116802,
+        "osmParentMaxOutsideVertexDistanceMetres": 0,
+        "nativeAndParentInteriorSamples": {
+          "contained": 788,
+          "total": 788
+        },
+        "installedPolygonExactMatch": true,
+        "sourceGeometryBoundaryToleranceMetres": 0.15
+      },
+      "rawSourcePackPath": "models/centrale-markthal/raw/20261007-owner",
+      "sourceUrls": [
+        "https://www.openstreetmap.org/api/0.6/way/1080812391/full.json",
+        "https://www.openstreetmap.org/api/0.6/way/276272968/full.json"
+      ]
+    },
+    {
+      "id": "w1080812392",
+      "osmWayId": 1080812392,
+      "tags": {
+        "building:part": "yes",
+        "height": "8"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8650998,
+              52.3791776
+            ],
+            [
+              4.8651443,
+              52.3791838
+            ],
+            [
+              4.8652267,
+              52.3791964
+            ],
+            [
+              4.8651921,
+              52.3792894
+            ],
+            [
+              4.8650646,
+              52.3792718
+            ],
+            [
+              4.8650998,
+              52.3791776
+            ]
+          ]
+        ]
+      },
+      "parentOsmId": "w276272968",
+      "parentBagId": "0363100012210502",
+      "ownershipEvidence": {
+        "sharedParentNodeCount": 4,
+        "nativeBagMaxOutsideVertexDistanceMetres": 0.047751801664779644,
+        "osmParentMaxOutsideVertexDistanceMetres": 0,
+        "nativeAndParentInteriorSamples": {
+          "contained": 4551,
+          "total": 4551
+        },
+        "installedPolygonExactMatch": true,
+        "sourceGeometryBoundaryToleranceMetres": 0.15
+      },
+      "rawSourcePackPath": "models/centrale-markthal/raw/20261007-owner",
+      "sourceUrls": [
+        "https://www.openstreetmap.org/api/0.6/way/1080812392/full.json",
+        "https://www.openstreetmap.org/api/0.6/way/276272968/full.json"
+      ]
+    }
+  ]
+}

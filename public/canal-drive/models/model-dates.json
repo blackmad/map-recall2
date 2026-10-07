@@ -92,9 +92,9 @@
       "dateSource": "git-history"
     },
     "boom-chicago": {
-      "updatedAt": "2026-10-04T20:43:07+02:00",
-      "version": "926c88d13bb852a8",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-06T21:08:45.801Z",
+      "version": "93f24ea15c5e59af",
+      "dateSource": "asset-update"
     },
     "boomkerk": {
       "updatedAt": "2026-10-05T18:07:25+02:00",
@@ -879,6 +879,41 @@
     "nieuw-dakota": {
       "updatedAt": "2026-10-06T20:56:05.320Z",
       "version": "1579cea94e829e38",
+      "dateSource": "asset-update"
+    },
+    "treehouse-ndsm": {
+      "updatedAt": "2026-10-06T21:05:23.950Z",
+      "version": "16a70ba7c3f5215f",
+      "dateSource": "asset-update"
+    },
+    "centrale-markthal": {
+      "updatedAt": "2026-10-06T21:18:12.497Z",
+      "version": "6f4927d135dfb1ab",
+      "dateSource": "asset-update"
+    },
+    "rasphuispoort": {
+      "updatedAt": "2026-10-06T21:05:24.027Z",
+      "version": "a5285cde46a71818",
+      "dateSource": "asset-update"
+    },
+    "vondeltuin": {
+      "updatedAt": "2026-10-06T21:05:23.959Z",
+      "version": "cc3f4c61eef67258",
+      "dateSource": "asset-update"
+    },
+    "monk-amsterdam": {
+      "updatedAt": "2026-10-06T21:05:23.847Z",
+      "version": "931e573ff99f3f64",
+      "dateSource": "asset-update"
+    },
+    "straat-museum": {
+      "updatedAt": "2026-10-06T21:05:23.873Z",
+      "version": "1208ef710c5cffee",
+      "dateSource": "asset-update"
+    },
+    "pllek": {
+      "updatedAt": "2026-10-06T21:05:23.826Z",
+      "version": "dc5d3ef35f825449",
       "dateSource": "asset-update"
     }
   }

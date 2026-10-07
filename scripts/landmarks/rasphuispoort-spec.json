@@ -1,0 +1,65 @@
+{
+  "id": "rasphuispoort",
+  "name": "Rasphuispoort",
+  "landmarkId": "extract_landmarks_953524097",
+  "modelUrl": "./models/rasphuispoort.glb",
+  "suppressOsmIds": [],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.891053469773061,
+      52.367740805556565
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 4.46,
+    "widthMetres": 0.97
+  },
+  "surveyed": {
+    "anchor": [
+      4.891053469773061,
+      52.367740805556565
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012165086 facade edge 24\u201325 retrieved 2026-10-05; native additive portal at scale 1, rotated -149.4246 degrees. Opening uses exact installed tile edge 18\u201319 and runtime east/height/south projection. Vertical/depth dimensions estimated from 2020 photo."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "Rasphuispoort",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1482",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free additive gate with open round arch, half-columns, colored cart relief and three-figure crown. Native exact host-edge opening available only with the loaded model; no whole-host suppression. Approximate elevations; no photo pixels or imported geometry."
+  },
+  "hostWallOpenings": [
+    {
+      "hostIdentity": "NL.IMBAG.Pand.0363100012165086",
+      "enabled": true,
+      "anchorLngLat": [
+        4.891053469773061,
+        52.367740805556565
+      ],
+      "wallEdge": [
+        [
+          2.1430316621888177,
+          -1.3479737773575096
+        ],
+        [
+          -1.7990851086602186,
+          0.8628262225587946
+        ]
+      ],
+      "authorAngleRadians": -2.6079504457462543,
+      "halfWidth": 1.07,
+      "springHeight": 2.63,
+      "crownHeight": 3.7,
+      "portalDepth": 0.94,
+      "revealLayer": 0
+    }
+  ],
+  "galleryView": {
+    "theta": 3.691592653589793,
+    "phi": 1.1
+  }
+}

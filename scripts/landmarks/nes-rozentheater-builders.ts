@@ -1,3 +1,5 @@
+import {boomChicagoSignage} from './boom-chicago-signage';
+import {openTopPrism,upwardRoofPlane} from './house-geometry';
 import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import specs from './nes-rozentheater-specs.json';
@@ -76,27 +78,63 @@ export function buildNesRozentheaterLandmark(id:string,_w:number,_d:number,b:Bui
   for(const x of [6.8,9.7])for(const yy of [.9,4.3,7.8,11.3])sash(x,yy,cz-.12,1.65,2.5,true);
   triangle(ccx,15.35,cz-.2,5.3,2.65,'stone',true);for(const x of [5.7,ccx,10.8])add(new T.SphereGeometry(.24,6,4),'stone',x,x===ccx?18.15:15.65,cz-.2);
  }else if(id==='boom-chicago'){
-  body(ring,11.75,'brick');plane(ring,11.79,'slate');
-  const front=21.4,left=-4.15,right=9.0,cx=(left+right)/2,w=right-left;
-  // Three stone entrance arches below the tall original stained-glass theater windows.
-  box(cx,0,front,w,3.6,.22,'stone');for(const x of [cx-2.6,cx,cx+2.6]){arch(x,.05,front+.18,2.35,3.2,'white');arch(x,.09,front+.23,2.05,2.95,'dark');box(x,.1,front+.3,.07,2.5,.08,'gold');}
-  for(const x of [left+.75,right-.75]){box(x,4.25,front+.07,1.0,6.65,.18,'white');box(x,4.37,front+.2,.78,6.4,.08,'glass');box(x,4.37,front+.26,.055,6.4,.05,'frame');for(let yy=4.4;yy<10.8;yy+=1.1)box(x,yy,front+.26,.8,.055,.05,'frame');}
-  for(let i=0;i<5;i++){const x=cx-3.0+i*1.5;sash(x,4.65,front+.13,1.22,6.7);for(let j=0;j<6;j++){const c:C=(i+j)%3===0?'gold':(i+j)%3===1?'red':'blue';box(x+(j%2?-.28:.27),5.2+j*.86,front+.34,.28,.25,.04,c);}}
-  box(cx,3.65,front+.4,8.1,.35,.85,'slate');box(cx,4.0,front+.4,8.0,.85,.23,'dark');sign('BOOM CHICAGO',cx,4.1,front+.55,.14,'red',7.6);
-  for(const y of [3.8,11.3,11.65])box(cx,y,front+.09,w+.2,.22,.3,'stone');
-  // Lead-covered barrel across central foyer, with the taller sloping side roof masses behind the facade.
-  for(const [lo,hi] of [[left,cx-3.9],[cx+3.9,right]])roof(region(lo,hi,11,21.2),11.75,3.3,'x','slate');
-  // Build directly in native X/Y/Z. Rotating a unit cylinder and then
-  // scaling its world axes distorted the old barrel into intersecting arcs.
-  const barrelRegion=region(cx-3.9,cx+3.9,11,21.2),steps=20;
-  for(let i=0;i<steps;i++){
-   const x0=cx-3.9+i*7.8/steps,x1=cx-3.9+(i+1)*7.8/steps;
-   const strip=clip(clip(barrelRegion,'x',x0,true),'x',x1,false);if(strip.length<3)continue;
-   const roof=new T.ShapeGeometry(new T.Shape(strip)),p=roof.getAttribute('position');
-   for(let j=0;j<p.count;j++){const x=p.getX(j),z=p.getY(j),u=(x-cx)/3.9;p.setXYZ(j,x,11.79+2.3*Math.sqrt(Math.max(0,1-u*u)),z)}
-   if(roof.index)for(let j=0;j<roof.index.count;j+=3){const k=roof.index.getX(j);roof.index.setX(j,roof.index.getX(j+2));roof.index.setX(j+2,k)}roof.computeVertexNormals();roof.userData.role='boom-foyer-barrel';add(roof,'slate');
+  // Current PDOK aerial + 3DBAG (2026-10-06): long metal auditorium gable,
+  // short front lead roofs, low western rear annex. RCE518326 describes the
+  // original flat hall roof; do not use that historical state over current evidence.
+  const shell=(r:T.Vector2[],height:number)=>{if(r.length>2)add(openTopPrism(shape([r]),0,height),'brick');};
+  const flat=(r:T.Vector2[],y:number)=>{if(r.length>2)add(upwardRoofPlane(shape([r]),y),'slate');};
+  const rearLow=region(-20,-3.4,-30,-9.95),rearMain=region(-3.4,7.55,-17.7,-9.95),rearEnd=region(-3.4,7.55,-30,-17.7);
+  const eastLow=region(7.55,20,-30,-11.1),eastLink=region(7.55,20,-11.1,-9.95);
+  for(const [r,y] of [[rearLow,3.22],[rearMain,12.98],[rearEnd,10.3],[eastLow,3.85],[eastLink,10.65]] as const){shell(r,y);flat(r,y);}
+  const hall=region(-5.6,20,-9.95,18.5);shell(hall,10.72);roof(hall,10.72,3.75,'x','frame');
+  // Close the hall's gable ends below the separate roof, including the rear
+  // height transition. The roof is lighter standing-seam metal in the aerial.
+  for(const z of [-9.95,18.5]){const section=hall.filter(p=>Math.abs(p.y-z)<.01),lo=Math.min(...section.map(p=>p.x)),hi=Math.max(...section.map(p=>p.x));triangle((lo+hi)/2,10.72,z,hi-lo,3.75,'brick',z<0);}
+  const left=-4.3,right=9.12,cx=2.41,front=(x:number)=>21.4+x*.0278,angle=-Math.atan(.0278);
+  const frontPart=region(-20,20,18.5,30);shell(frontPart,10.9);
+  const facadeBox=(x:number,y:number,w:number,hh:number,depth:number,c:C,offset=.09)=>box(x,y,front(x)+offset,w,hh,depth,c,angle);
+  facadeBox(cx,0,right-left,1.55,.2,'stone');
+  // Three entrance arches in their continuous natural-stone surround.
+  facadeBox(cx,0,8.0,4.8,.23,'stone');
+  for(const x of [cx-2.6,cx,cx+2.6]){arch(x,.06,front(x)+.24,2.35,3.2,'white');arch(x,.1,front(x)+.29,2.07,2.96,'dark');facadeBox(x,.12,.06,2.48,.06,'frame',.34);facadeBox(x,2.33,2.07,.06,.06,'frame',.34);}
+  // Tower entrances and long paired lights have slender stone central mullions.
+  for(const x of [-2.83,7.67]){
+   facadeBox(x,.15,1.65,2.45,.18,'stone');facadeBox(x,.25,1.39,2.27,.07,'dark',.22);
+   facadeBox(x,4.22,1.22,5.78,.14,'stone');
+   for(const dx of [-.31,.31]){facadeBox(x+dx,4.3,.48,5.59,.07,'glass',.23);for(const yy of [5.4,6.65,7.9,9.1])facadeBox(x+dx,yy,.48,.045,.05,'frame',.29);}
+   facadeBox(x,4.22,.1,5.78,.17,'stone',.2);facadeBox(x,4.13,1.62,.16,.22,'stone');
+   for(const dx of [-.71,.71])facadeBox(x+dx,9.6,.43,.43,.22,'stone');
   }
-  // Rear auditorium volume follows the narrow irregular mapped plot and remains below mapped max15.1m.
-  const auditorium=region(-10,10,-22,11);body(auditorium,12.6,'brick');roof(auditorium,12.6,2.45,'x','slate');
+  // RCE's three paired stained-glass bays, rather than five generic sashes.
+  for(const pair of [cx-2.7,cx,cx+2.7]){
+   for(const dx of [-.59,.59]){const x=pair+dx;facadeBox(x,4.94,1.05,5.18,.12,'stone');
+    const pane=new T.BoxGeometry(.91,5.04,.065);pane.userData.role='boom-stained-pane';add(pane,'glass',x,7.53,front(x)+.23,angle);
+    for(const yy of [5.55,6.7,7.85,9.0])facadeBox(x,yy,.92,.035,.045,'frame',.28);
+    // Muted flower-like leaded accents; current glass is dark, not bright checkerboard.
+    for(const yy of [5.7,7.2,8.7]){const flower=new T.CircleGeometry(.095,6);flower.rotateY(angle);add(flower,'gold',x,yy,front(x)+.275);}
+   }
+   facadeBox(pair,4.93,.14,5.23,.2,'stone',.18);
+  }
+  for(const x of [cx-4.0,cx-1.35,cx+1.35,cx+4.0]){facadeBox(x,4.78,.3,5.55,.19,'brick');facadeBox(x,9.93,.45,.4,.23,'stone');}
+  facadeBox(cx,3.8,8.12,.87,.23,'stone',.22);
+  // Current real signs occupy two separate black panels. Native letter geometry
+  // is added below; lettering backs clear the panels by5mm.
+  for(const x of [cx-2.6,cx+2.6])facadeBox(x,4.04,2.55,.55,.12,'dark',.35);
+  boomChicagoSignage(b,cx,front,angle);
+  // Broad curved garland frieze is the defining cap of the middle volume.
+  const frieze=new T.Shape();frieze.moveTo(-4.05,10.15);frieze.lineTo(4.05,10.15);frieze.lineTo(4.0,10.9);for(let i=19;i>=0;i--){const x=-4+i*.4;frieze.lineTo(x,10.9+1.65*Math.sqrt(Math.max(0,1-(x/4)**2)));}frieze.lineTo(-4.05,10.15);frieze.closePath();
+  const fg=new T.ExtrudeGeometry(frieze,{depth:.2,bevelEnabled:false,curveSegments:16});fg.rotateY(angle);add(fg,'stone',cx,0,front(cx)+.08);
+  for(let i=0;i<13;i++){const x=cx-3.65+i*.61;const yy=10.8+.38*(1-((x-cx)/4)**2);const relief=new T.TorusGeometry(.17,.035,4,8,Math.PI);relief.rotateZ(Math.PI);relief.rotateY(angle);add(relief,'white',x,yy,front(x)+.31);}
+  for(const x of [-2.8,7.6])facadeBox(x,10.63,3.05,.27,.34,'stone');
+  // Two four-sided hips, not narrow gables. Each footprint stays inside the
+  // native surveyed parent, and the fronts slope away from the street.
+  const hip=(r:T.Vector2[],x:number,z:number)=>{const vertices:number[]=[];for(let i=0;i<r.length;i++){const p=r[i],q=r[(i+1)%r.length];if(p.distanceTo(q)<.001)continue;vertices.push(p.x,10.9,p.y,q.x,10.9,q.y,x,12.43,z);}const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(vertices,3));for(let i=0;i<vertices.length;i+=9){const p=new T.Vector3(...vertices.slice(i,i+3)),q=new T.Vector3(...vertices.slice(i+3,i+6)),r=new T.Vector3(...vertices.slice(i+6,i+9));if(q.sub(p).cross(r.sub(p)).y<0){for(let k=0;k<3;k++){const v=vertices[i+3+k];vertices[i+3+k]=vertices[i+6+k];vertices[i+6+k]=v;}}}g.setAttribute('position',new T.Float32BufferAttribute(vertices,3));g.computeVertexNormals();g.userData.role='boom-tower-hip';add(g,'slate');};
+  hip(region(-20,cx-4,18.5,30),-2.75,19.88);hip(region(cx+4,20,18.5,30),7.68,20.17);
+  const barrelRegion=region(cx-4,cx+4,18.5,30),steps=20;
+  for(let i=0;i<steps;i++){
+   const strip=clip(clip(barrelRegion,'x',cx-4+i*8/steps,true),'x',cx-4+(i+1)*8/steps,false);if(strip.length<3)continue;
+   const g=upwardRoofPlane(shape([strip])),p=g.getAttribute('position');
+   for(let j=0;j<p.count;j++){const x=p.getX(j),u=(x-cx)/4;p.setY(j,10.9+1.65*Math.sqrt(Math.max(0,1-u*u)));}g.computeVertexNormals();g.userData.role='boom-foyer-barrel';add(g,'slate');
+  }
  }else throw new Error(`No Nes/Rozentheater builder for ${id}`);
 }

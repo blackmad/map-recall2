@@ -1,0 +1,141 @@
+{
+  "modelId": "rasphuispoort",
+  "date": "2026-10-06",
+  "state": "verified-awaiting-deployment",
+  "visualAccepted": true,
+  "gameAccepted": true,
+  "sourceComparison": {
+    "principalReference": "artifacts/landmarks/rasphuispoort/references/commons-2020.jpg",
+    "historicReference": "artifacts/landmarks/rasphuispoort/references/commons-archive.jpg",
+    "referenceInspected": true,
+    "renderInspected": true,
+    "recognitionTargets": [
+      "open roundarch",
+      "two exposed halfcolumns",
+      "colored cart relief with two goldwheels",
+      "straight projecting cornice",
+      "central seatedfigure/redshield and two captives"
+    ]
+  },
+  "cpuCheck": {
+    "command": "node --import tsx scripts/check-rasphuispoort-geometry.ts",
+    "passed": true,
+    "triangles": 6440,
+    "authorBoundsMetres": [
+      4.46,
+      7.23,
+      0.94
+    ],
+    "evidence": "Portal passage rays open; halfcolumns/cartwheel/shield details firsthit; exact frontage nativeattachment bounded. Full installedhost outline regenerated as shell confirms blocked passage."
+  },
+  "failureEvidence": {
+    "severity": "acceptance blocker",
+    "sourceHost": "NL.IMBAG.Pand.0363100012165086",
+    "installedHostHeight": 29.36,
+    "condition": "Actual installedhost footprint frontedge crosses modeled gateopening; ordinary fullheight extrusion blocks sightline behind portal.",
+    "noWorkaroundApplied": "No host suppression or broad walloffset. Model is NOT registered or claimedcomplete.",
+    "handoff": "docs/rasphuispoort-host-opening-handoff.md",
+    "preservedBaseline": "Original installed host edge still blocks the additive gate when opening is absent. Saved original CPU failure and independent review remain intact.",
+    "currentState": "Exact installed entrance edge can now be opened reversibly; runtime activation and gallery/live acceptance remain pending."
+  },
+  "remainingChecks": [
+    "Root runtime activation and refreshed content fingerprints/bundles",
+    "Three-disabled and measured-colour mode gate visibility/fallback",
+    "Independent gallery/reference review including low angles",
+    "Live game source-bounded passage and exact neighbor/roof retention",
+    "Route destination/geographic pin/info physical-click audit",
+    "Desktop/touch gameplay pan and performance"
+  ],
+  "installedPassageCheck": {
+    "command": "node --import tsx scripts/check-rasphuispoort-installed-passage.ts",
+    "passed": true,
+    "clearBehindAnchorMetres": 7,
+    "firstDeeperWallBehindAnchorMetres": 74.69346798234595,
+    "modes": [
+      "walls",
+      "coarse"
+    ],
+    "combinedScene": "Actual installed host and both retained neighbors, original gate geometry and ordinary relief extras. Fifteen low/arch passage rays per mode clear; first-hit half-columns retained. Disabled and unavailable model restore exact ordinary blockage.",
+    "evidence": "artifacts/landmarks/rasphuispoort/host-opening/installed-passage-check.json",
+    "interpretation": "Earlier front-edge-only test retained a distant wall 74.69 m behind the gate. It is beyond the surveyed 7\u201310.7 m entrance finger; it is not an immediate corridor blockage and must remain. This CPU clearance does not accept the complete game scene."
+  },
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "205d04f0c48c3a651000233510d5f9ac1596edee",
+    "path": "models/rasphuispoort",
+    "finalEvidencePath": "models/rasphuispoort/validation/final-20261007",
+    "rawSourceCheckpoint": "68906c28297c781d0d2b8c8784adde49f2eba399"
+  },
+  "previousAuthorStatus": "installed-cpu-passage-ready-visual-review-pending",
+  "status": "verified-awaiting-deployment",
+  "finalAcceptance": {
+    "date": "2026-10-07",
+    "assetSha256": "a5285cde46a71818ffa2861cf95f85263d446a121a286a1cd9a226957720be0b",
+    "nativePlacement": {
+      "id": "rasphuispoort",
+      "actualCamera": {
+        "center": [
+          4.891053469773027,
+          52.367740805556565
+        ],
+        "zoom": 23.043879724840973,
+        "pitch": 76.02315387934081,
+        "bearing": 149.57750356575366,
+        "elevation": 3
+      },
+      "assetVersion": "a5285cde46a71818",
+      "scale": 1,
+      "bias": false,
+      "broad": false,
+      "pin": true,
+      "destination": true,
+      "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1482",
+      "click": {
+        "x": 910.7351738945935,
+        "y": 458.3364252511831
+      },
+      "aliases": [],
+      "oldPyramidIds": [],
+      "neighbors": [
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012167502"
+          ],
+          "resident": true,
+          "ordinaryResident": true,
+          "hidden": false,
+          "drawable": true,
+          "retainedReplacement": null
+        },
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012175881"
+          ],
+          "resident": true,
+          "ordinaryResident": true,
+          "hidden": false,
+          "drawable": true,
+          "retainedReplacement": null
+        },
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012165086"
+          ],
+          "resident": true,
+          "ordinaryResident": true,
+          "hidden": false,
+          "drawable": true,
+          "retainedReplacement": null
+        }
+      ],
+      "features": 17155,
+      "buildings": 21944
+    },
+    "sourceGalleryIndependent": "accepted",
+    "fallback": "actual-mode/opening metadata, measured-only filter/return and attachment-unavailable host restoration",
+    "galleryAndNativeEvidence": "artifacts/landmark-release-check/rasphuispoort-review",
+    "desktopAndTouchPans": "artifacts/landmark-release-check/gameplay-pans-oct7",
+    "performanceScope": "Headless same-scene model visible/hidden comparison and actual mouse/emulated-touch camera pans; no physical-mobile or whole-game performance guarantee.",
+    "hostedVerification": "pending deployment"
+  }
+}

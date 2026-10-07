@@ -1,0 +1,19 @@
+{
+  "modelId": "monk-amsterdam",
+  "landmarkId": "extract_landmarks_2270458123",
+  "name": "Monk Amsterdam",
+  "center": [
+    52.38347556,
+    4.92940658
+  ],
+  "genuineOsmIdentity": "n2270458123",
+  "sourceUrl": "https://monk.nl/amsterdam/",
+  "description": "Monk Amsterdam is a bouldering gym on the IJ waterfront in Amsterdam Noord. Its climbing walls occupy part of a large industrial factory compound; the black corrugated facade, tall workshop doors and upper glazing retain the building’s working character. The gym combines climbing with a waterside café and terrace.",
+  "sourceLinks": [
+    {
+      "title": "Monk Amsterdam: climbing and waterfront café",
+      "url": "https://monk.nl/amsterdam/"
+    }
+  ],
+  "destinationPinNotes": "Public entrance Aambeeldstraat26; coordinate from BAG VBO. Root preserve actual existing extract identity if found, do not create duplicate alias."
+}

@@ -1,0 +1,517 @@
+{
+  "id": "treehouse-ndsm",
+  "status": "verified-awaiting-deployment",
+  "identity": {
+    "osmSite": "w1163404107",
+    "genuineExtractFeature": null,
+    "canonicalRequestedIdentity": "requested-treehouse-ndsm",
+    "modeledPandCount": 16,
+    "modeledIdentities": [
+      "0363100012252476",
+      "0363100012252477",
+      "0363100012252479",
+      "0363100012252480",
+      "0363100012252481",
+      "0363100012252482",
+      "0363100012252483",
+      "0363100012252484",
+      "0363100012252486",
+      "0363100012252487",
+      "0363100012252488",
+      "0363100012252489",
+      "0363100012252490",
+      "0363100012252491",
+      "0363100012252492",
+      "0363100012252493"
+    ],
+    "retainedNeighbors": [
+      "NL.IMBAG.Pand.0363100012241285",
+      "NL.IMBAG.Pand.0363100012252810",
+      "NL.IMBAG.Pand.0363100012252811",
+      "NL.IMBAG.Pand.0363100012252812"
+    ]
+  },
+  "architecturalAssertions": [
+    {
+      "part": "compound",
+      "source": "https://www.ndsm.nl/en/locaties/treehouse-ndsm",
+      "assertion": "Morethan100studios,300m\u00b2 exhibition/stagehall,workhall,communalspaces,courtyardterrace;2-storeyreusedshippingcontainer/cabinvillage",
+      "confidence": "high"
+    },
+    {
+      "part": "northrow",
+      "source": "artifacts/landmarks/treehouse-ndsm/references/municipal-north-metadata.json",
+      "date": "2025-09-16",
+      "assertion": "Yellow,mintgreen,orangeupperstudiofronts,whitewindowframes/shallowwhitepitchedcabinsroofs,darkverticalscreensbelownorthupperwindows",
+      "confidence": "high"
+    },
+    {
+      "part": "wholeplan",
+      "source": "artifacts/landmarks/treehouse-ndsm/references/ndsm-courtyard.jpeg",
+      "assertion": "Opencentralcourtyardandlanesbetweenindividualblocks;2largergreen/greyroofedworkhalls;Pllekcompoundseparateonsouth",
+      "confidence": "high;photodateunknowncrosscheckedcurrentsurvey"
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "artifacts/landmarks/treehouse-ndsm/references/panorama-index.json",
+      "sha256": "56c0afbd0b4ee11162cad27862f7d14870ef212d9f231dd514ef6d9ba498dbd5",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/treehouse-ndsm/references/3dbag-0363100012252493.json",
+      "sha256": "c5d549d939be7a5264d0c6bc775ea0a1a1032575eb16328ce917c410de770164",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/treehouse-ndsm/references/3dbag-0363100012252489.json",
+      "sha256": "9524a2ba4837bfb8affdb59b1da002f0809acea35ed3ad455dceb3130ed7418a",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/treehouse-ndsm/references/3dbag-0363100012252488.json",
+      "sha256": "76fdc36dd8e9006500e95275800aef6f4d99dc0f55748a794e019571cd369627",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/treehouse-ndsm/references/municipal-north-metadata.json",
+      "sha256": "6a3a3d4dbc46d85880633abdfe88c44052f5fbea8b351757afd79c0359f7cd1a",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/treehouse-ndsm/references/3dbag-0363100012252476.json",
+      "sha256": "2b7318576955bda210bf00791cdbcdf02c5aa419ef9859e183fdae44e4c30eab",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/treehouse-ndsm/references/official.html",
+      "sha256": "42e35c9c8d36cd2476c6bae0df218ddca61dd5ba56e718081c81cabe38f8dccb",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/treehouse-ndsm/references/official-style.css",
+      "sha256": "0abed1a8abf8e4b0182a320d7e413b474b95e02373febc452513c58682fa5b60",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/treehouse-ndsm/references/bag-site.json",
+      "sha256": "3e5237b25ede2a4cc57a04ef4fc9f9823bca4d73fee93d42878021e649545bad",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/treehouse-ndsm/references/3dbag-0363100012252483.json",
+      "sha256": "a12aad11f918235859bb8fc517a790af12d606429deeb658e0ee4eaa1837974a",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/treehouse-ndsm/references/beeldbank.html",
+      "sha256": "ea308a007fb654717e5a151c7c5c214ff3da628f39beca59824a6e2b2aa4e994",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/treehouse-ndsm/references/3dbag-0363100012252477.json",
+      "sha256": "4bda583edc6dc1a3ba780284639013bd4a37b24db7bb5ba2076ee872cf283035",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/treehouse-ndsm/references/official-concept.html",
+      "sha256": "e14e3dbd25451301ae12f86b5f6b22576d1e33ed6dc2f33aeabfd72a75b1e193",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/treehouse-ndsm/references/ndsm-courtyard.jpeg",
+      "sha256": "5e89fbdae500afca1f2956677edc0dd78a6de5746b5dcbc41d2a7a4540592037",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/treehouse-ndsm/references/3dbag-0363100012252481.json",
+      "sha256": "e419d7cc59dd4a80195c84d64dd8b25a309620b37674272438049c76dcc058e9",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/treehouse-ndsm/references/municipal-inside-metadata.json",
+      "sha256": "32cf74f6b2dcf1a411e69ede477f6ddbf79d2d037eb4f8826fa6e3715ac3e1dc",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/treehouse-ndsm/references/3dbag-0363100012252480.json",
+      "sha256": "a1f8d8492c07c0fd8b5e59742cc607a4ba933b8f6e743b2bbfa82c3c69ce019c",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/treehouse-ndsm/references/3dbag-0363100012252479.json",
+      "sha256": "f993dc87277d107ee291c274754587d0afb88cd489cd623e9eadb6bbde6989ce",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/treehouse-ndsm/references/ndsm.html",
+      "sha256": "30e7536ac72eb4297c10ce843c439e73e4bcb4b36e5f057c22af83bc3bc1f5f4",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/treehouse-ndsm/references/3dbag-0363100012252491.json",
+      "sha256": "6f31f699a1aba338d43f74bdf86a476dd8eafc749b66ebd86390eada40af9974",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/treehouse-ndsm/references/3dbag-0363100012252487.json",
+      "sha256": "ff1266cb0cfa5fc1c955259794cb35b11800f182fdb518e2d6c3cac16090b8b6",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/treehouse-ndsm/references/municipal-north.jpg",
+      "sha256": "4762fede01ba2d55fad7302abed5042f5264478c20a0ea953ea2057ea2a3894c",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/treehouse-ndsm/references/municipal-inside.jpg",
+      "sha256": "10f1ce4c77d4cd302ce3e6063f60a00922ba54416d4fd600e0e221b5e3b0c1ea",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/treehouse-ndsm/references/3dbag-0363100012252486.json",
+      "sha256": "8c2c71829fd14a8b7a6f215a594293afa639087aa2b4a239b71cdab147177744",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/treehouse-ndsm/references/3dbag-0363100012252490.json",
+      "sha256": "4615d0be95af986c13514a25c76ba79bacc3444c99db98860875d750a7bb619c",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/treehouse-ndsm/references/osm-site.xml",
+      "sha256": "b8cd8553dc4c5491d1dbf9efe94bd038edaf6fb958e4865f90289d45c91f1cb1",
+      "retrievedOn": "2026-10-05"
+    }
+  ],
+  "sourceUrls": [
+    "https://www.treehousendsm.com/pages/concept-story",
+    "https://www.ndsm.nl/en/locaties/treehouse-ndsm",
+    "https://api.openstreetmap.org/api/0.6/way/1163404107/full",
+    "https://service.pdok.nl/lv/bag/wfs/v2_0",
+    "https://api.data.amsterdam.nl/panorama/panoramas/"
+  ],
+  "checks": {
+    "cpuGeometry": "passed 18779 triangles, native 60.56 x 51.85 m, max height 9.319 m; 3 northern upper-glass first hits plus exact-Pand exposed wall/material hits, 6 open-space/neighbor vertical rays, upward roof normals, exact 32 suppression IDs",
+    "gallery": "pendingcoordinator",
+    "liveGame": "pendingcoordinator",
+    "routePinCardPointer": "pendingcoordinator"
+  },
+  "visualAcceptanceCriteria": [
+    "Recognizablewhitepitchedcabinsalongnorth,mint/yellow/orangewalls,darklowerfrontscreens",
+    "16separatebuildingvolumesandcourtyard/pedestrianlanes visiblefromdefaultandlowgallery",
+    "Twohigherworkinghallswithsourcepitchedgreyroofs;ordinarycontainersnotextrudedtohallheight",
+    "Pllekandwesternofficerowsremainvisibleandunsuppressed",
+    "Upperglassvisiblethroughnativeactualfacadewalls;doorspresentinallstudioblocks"
+  ],
+  "limitations": [
+    "Roofplanegeometrysurvey-derived;pane/doorrepetitionphotocalibrated,notindividualstudioelevationdrawings",
+    "BAG roofsurveys2492API502:flat5.55mroofsupportedbyhorizontalneighborcontainer/photo;2482and2484low3.1/3.2mOSMsourceheights",
+    "Noidentificationnamewords;realTREEHOUSEletteringnotmodeled",
+    "Blacknorthscreensretainactualgroundvisibilityobstruction;upperglassfirst-hitrequired",
+    "BeeldbankboundedqueryreturnsJavaScriptshellonly;noarchiveimagesinspected",
+    "Gallery/gameacceptancepending;sourcearchivecommitneededbeforemodelcommit",
+    "Cabin 2479 uses existing frame #9daaa8 as a pale green-grey approximation of photographed mint; exact hue remains subject to native reference/render review. Shared palette unchanged."
+  ],
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "205d04f0c48c3a651000233510d5f9ac1596edee",
+    "path": "models/treehouse-ndsm",
+    "finalEvidencePath": "models/treehouse-ndsm/validation/final-20261007",
+    "rawSourceCheckpoint": "68906c28297c781d0d2b8c8784adde49f2eba399"
+  },
+  "independentCpuPreflight": {
+    "date": "2026-10-05",
+    "scope": "Cached references compared with exact-mesh CPU orthographic front/opposite PNGs only. No native gallery/game, surrounding-shell suppression, runtime or performance acceptance.",
+    "evidence": [
+      "artifacts/landmark-offline-preview/treehouse-ndsm-cpu-front.png",
+      "artifacts/landmark-offline-preview/treehouse-ndsm-cpu-opposite.png"
+    ],
+    "verdict": "Prior reference/material failure preserved. Builder repairs now use gold for yellow2476 and pale green-grey frame for mint2479; new export and native visual comparison pending.",
+    "sourceComparisons": [
+      {
+        "source": "artifacts/landmarks/treehouse-ndsm/references/ndsm-courtyard.jpeg",
+        "finding": "Both CPU views retain sixteen separate volumes, central court and internal lanes; white shallow-pitched cabin roofs and two larger workhall roof masses are visible. Date of aerial reference unknown; surveyed outlines govern present scope."
+      },
+      {
+        "source": "artifacts/landmarks/treehouse-ndsm/references/municipal-north.jpg",
+        "finding": "Photographed yellow, pale mint and orange upper cabins with black lower screens are not well represented by ochre/olive/rust in the supplied original previews. Changed yellow cabin2476 to gold; existing green material for2479 remains too olive. Exact pane/door positions on unphotographed elevations remain estimates."
+      }
+    ],
+    "repairs": [
+      "Builder north cabin2476 ochre\u2192gold; no roof/scope/open-space changes.",
+      "Builder north cabin2479 olive green \u2192 existing pale green-grey frame (#9daaa8), including shell, surveyed roof-side walls and corrugation; exact facade wall/material CPU first-hit probes pass. No shared palette, roof/scope/open-space changes."
+    ],
+    "requiresReexport": true,
+    "remainingVisualHolds": [
+      "Reexport and rerender yellow2476 and pale mint2479 material repairs against cached references.",
+      "Frame approximates source mint; hue and remaining orange/red appearance require native reference/render review.",
+      "Native low street-row view, suppression/neighbor retention and real gameplay/performance evidence still required."
+    ]
+  },
+  "failedEvidence": [
+    {
+      "probe": "Independent CPU reference material comparison2026-10-05",
+      "evidence": [
+        "artifacts/landmark-offline-preview/treehouse-ndsm-cpu-front.png",
+        "artifacts/landmark-offline-preview/treehouse-ndsm-cpu-opposite.png"
+      ],
+      "result": "Yellow/mint/orange source street-row becomes brown/olive/rust; material recognition not accepted.",
+      "resolution": "Builder repairs now cover yellow2476 and mint2479; original failed images and findings preserved. Mint uses frame approximation. Reexport and visual review pending; no visual acceptance granted."
+    }
+  ],
+  "materialRepair": {
+    "date": "2026-10-05",
+    "sourceImagesInspected": [
+      "artifacts/landmarks/treehouse-ndsm/references/municipal-north.jpg",
+      "artifacts/landmarks/treehouse-ndsm/references/ndsm-courtyard.jpeg"
+    ],
+    "part": "0363100012252479",
+    "previous": "green #718b58 (olive)",
+    "replacement": "frame #9daaa8 (pale green-grey approximation)",
+    "reason": "Cached northern panorama and aerial photograph support a pale green facade distinct from olive adjacent blocks. Existing BuildingTools palette offers no exact pale mint; frame is the bounded local approximation.",
+    "geometryCheck": "node --import tsx scripts/check-treehouse-ndsm-geometry.ts passed; photographed cabin wall is first-hit at y=3.82 m with exact Pand identity and frame palette; upper glazing remains first-hit at y=4.7 m.",
+    "requiresReexport": true,
+    "visualAcceptance": "pending coordinator gallery/live reference comparison"
+  },
+  "independentFinalBatch20261006": {
+    "sources": [
+      "/Users/blackmad/Code/map-recall2/artifacts/landmarks/treehouse-ndsm/references/ndsm-courtyard.jpeg",
+      "/Users/blackmad/Code/map-recall2/artifacts/landmarks/treehouse-ndsm/references/municipal-north.jpg"
+    ],
+    "findings": [
+      "Both decoded views show separated surveyed blocks, empty internal lanes, two taller work halls and source white pitched cabin roofs.",
+      "Northern front shows yellow cabin, pale cool mint approximation, orange/rust cabin and black lower screens; previous wrong-yellow failure repaired.",
+      "Source photo also shows adjacent Pllek barrels; they correctly do not form part of this model."
+    ],
+    "risks": [
+      "Pale mint approximation remains less saturated than source; native lighting recognition needed. Actual Pllek retention requires live installed context."
+    ],
+    "meshSha256": "16a70ba7c3f5215fa6b5228cccb59617724507cc2e3502c55d225982780da435",
+    "meshBytes": 251256,
+    "verdict": "Accepted current hash against cached sources, gallery rotations and actual native open-lane/color/neighbor/card/pin/route evidence",
+    "checksPassed": true,
+    "galleryAccepted": true,
+    "liveGameAccepted": true,
+    "cpuEvidence": [
+      "artifacts/landmark-release-check/independent-ready-four/treehouse-ndsm-cpu-front.png",
+      "artifacts/landmark-release-check/independent-ready-four/treehouse-ndsm-cpu-opposite.png"
+    ],
+    "galleryEvidence": [
+      "artifacts/landmark-release-check/treehouse-ndsm-review/gallery.png",
+      "artifacts/landmark-release-check/treehouse-ndsm-review/gallery-angle-0.png",
+      "artifacts/landmark-release-check/treehouse-ndsm-review/gallery-angle-1.png",
+      "artifacts/landmark-release-check/treehouse-ndsm-review/gallery-angle-2.png",
+      "artifacts/landmark-release-check/treehouse-ndsm-review/gallery-angle-3.png"
+    ],
+    "nativeEvidence": [
+      "artifacts/landmark-release-check/treehouse-ndsm-review/live-front.png",
+      "artifacts/landmark-release-check/treehouse-ndsm-review/live-rear.png",
+      "artifacts/landmark-release-check/treehouse-ndsm-review/neutral-front.png",
+      "artifacts/landmark-release-check/treehouse-ndsm-review/placement-proof.json",
+      "artifacts/landmark-release-check/treehouse-ndsm-review/physical-card-proof.json",
+      "artifacts/landmark-release-check/treehouse-ndsm-review/performance-comparison.json"
+    ],
+    "nativeIntegrationProofAccepted": true,
+    "stationaryCustomDrawPerformance": {
+      "accepted": true,
+      "p95VisibleMs": [
+        10.199999809265137,
+        9.699999809265137
+      ],
+      "scope": "Headless Chromium same stationary scene; hidden model keeps existing replacement masks, isolating custom draw cost. No whole-game performance pass claimed."
+    },
+    "nativeFindings": [
+      "Native neutral/open-lane view shows discrete volumes and source roofs; opposite view shows northern black screens, yellow/pale mint/orange cabins and actual Pllek behind.",
+      "POI now uses genuine site w1163404107; pointer selects sourced card with current model fingerprint."
+    ],
+    "blockingFindings": [],
+    "remainingRootChecks": [
+      "Batch final contracts and fallback checks are coordinator-owned; independent review does not imply they already passed.",
+      "Whole-game desktop/touch pan performance is separate from bounded stationary custom draw samples."
+    ]
+  },
+  "previousAuthorStatus": "CPU-ready-visual-acceptance-pending",
+  "state": "verified-awaiting-deployment",
+  "visualAccepted": true,
+  "gameAccepted": true,
+  "finalAcceptance": {
+    "date": "2026-10-07",
+    "assetSha256": "16a70ba7c3f5215fa6b5228cccb59617724507cc2e3502c55d225982780da435",
+    "nativePlacement": {
+      "id": "treehouse-ndsm",
+      "actualCamera": {
+        "center": [
+          4.89311,
+          52.39948
+        ],
+        "zoom": 20,
+        "pitch": 55.00000000000001,
+        "bearing": -30,
+        "elevation": 0
+      },
+      "assetVersion": "16a70ba7c3f5215f",
+      "scale": 1,
+      "bias": false,
+      "broad": false,
+      "pin": true,
+      "destination": true,
+      "source": "https://www.treehousendsm.com/",
+      "click": {
+        "x": 763.874988489212,
+        "y": 542.779478023118
+      },
+      "aliases": [
+        {
+          "id": "w717022796",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012252476",
+          "hidden": true
+        },
+        {
+          "id": "w717022787",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012252477",
+          "hidden": true
+        },
+        {
+          "id": "w717022799",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012252479",
+          "hidden": true
+        },
+        {
+          "id": "w717022798",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012252480",
+          "hidden": true
+        },
+        {
+          "id": "w717022786",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012252481",
+          "hidden": true
+        },
+        {
+          "id": "w717022795",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012252482",
+          "hidden": true
+        },
+        {
+          "id": "w717022791",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012252483",
+          "hidden": true
+        },
+        {
+          "id": "w1509690547",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012252484",
+          "hidden": true
+        },
+        {
+          "id": "w717022784",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012252486",
+          "hidden": true
+        },
+        {
+          "id": "w717022803",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012252487",
+          "hidden": true
+        },
+        {
+          "id": "w717022788",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012252488",
+          "hidden": true
+        },
+        {
+          "id": "w717022801",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012252489",
+          "hidden": true
+        },
+        {
+          "id": "w717022789",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012252490",
+          "hidden": true
+        },
+        {
+          "id": "w717022792",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012252491",
+          "hidden": true
+        },
+        {
+          "id": "w717022783",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012252492",
+          "hidden": true
+        },
+        {
+          "id": "w717022804",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012252493",
+          "hidden": true
+        }
+      ],
+      "oldPyramidIds": [],
+      "neighbors": [
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012241285"
+          ],
+          "resident": true,
+          "ordinaryResident": true,
+          "hidden": true,
+          "drawable": true,
+          "retainedReplacement": "pllek"
+        }
+      ],
+      "features": 21891,
+      "buildings": 25609
+    },
+    "sourceGalleryIndependent": "accepted",
+    "fallback": "simulated target unavailable/restored through actual entry collection, resident ordinary fallback and retained neighbors",
+    "galleryAndNativeEvidence": "artifacts/landmark-release-check/treehouse-ndsm-review",
+    "desktopAndTouchPans": "artifacts/landmark-release-check/gameplay-pans-oct7",
+    "performanceScope": "Headless same-scene model visible/hidden comparison and actual mouse/emulated-touch camera pans; no physical-mobile or whole-game performance guarantee.",
+    "hostedVerification": "pending deployment"
+  }
+}

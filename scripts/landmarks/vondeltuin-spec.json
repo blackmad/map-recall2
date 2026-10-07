@@ -1,0 +1,38 @@
+{
+  "id": "vondeltuin",
+  "name": "De Vondeltuin",
+  "landmarkId": "extract_landmarks_620869345",
+  "modelUrl": "./models/vondeltuin.glb",
+  "suppressOsmIds": [
+    "w1243333955",
+    "NL.IMBAG.Pand.0363100012253390"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.85651048,
+      52.35492528
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 12.6,
+    "widthMetres": 15.9
+  },
+  "surveyed": {
+    "anchor": [
+      4.85651048,
+      52.35492528
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Native exact BAG polygon, surveyed AHN5 roof outlines/heights cross-checked with published architect photos/section"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 90,
+  "attribution": {
+    "title": "De Vondeltuin",
+    "author": "Map Recall",
+    "sourceUrl": "https://doorarchitecten.nl/portfolio/horecapaviljoen-vondeltuin-gemeente-amsterdam/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original flat-color reconstruction of surveyed shell and source-backed glazing/shingle/sunshade assemblies. No copied reference pixels or third-party mesh. Fine pane/slat divisions photographic approximations."
+  }
+}

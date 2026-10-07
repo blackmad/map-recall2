@@ -11,6 +11,7 @@
 //     hidden by touching a few bytes instead of rebuilding the mesh.
 // Positions are metres east / north / up from a caller-supplied origin.
 
+import { applyHostWallOpenings, type ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import { sharedWallCuts, subtractWallCuts, subtractConvex, polygonArea, type Point2 } from './coplanarSurfaces.js';
 import { recipeBayOpenings, type Openings } from './facadeOpenings.js';
 import { streetWallBuilding, frontageLayoutScale, PROCEDURAL_RECIPE_LAYER_OFFSET, type StreetFacadeContext } from './streetFacadeRendering.js';
@@ -81,6 +82,8 @@ export type Origin = { lng: number; lat: number };
 export type VertexRange = { id: string; start: number; count: number };
 
 export type Chunk = {
+  /** Exact identities whose source wall opening was successfully installed. */
+  hostOpeningIds?: readonly string[];
   positions: Float32Array;
   uvs: Float32Array;
   /** Texture-array layer, one byte per vertex. */
@@ -343,7 +346,7 @@ export function wallRuns(rings: readonly (readonly Edge[])[], hidden: (e: Edge) 
  * `mode: 'extras'` builds only the facade extras (facadeExtras.ts) of these buildings: they are a
  * separate, near-camera chunk, too many triangles to draw across the whole resident city.
  */
-export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, mode: 'walls' | 'extras' = 'walls', streets?: Float32Array, context: readonly MeshBuilding[] = []): Chunk {
+export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, mode: 'walls' | 'extras' = 'walls', streets?: Float32Array, context: readonly MeshBuilding[] = [], hostOpenings: readonly ChunkHostOpeningConfig[] = []): Chunk {
   type Prepared = { b: MeshBuilding; edges: Edge[]; top: number };
   const prepared: Prepared[] = [];
   const rings: Edge[][][] = [];
@@ -656,7 +659,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     }
     ranges.push({ id: b.id, start, count: v - start });
   }
-  return { positions, uvs, layers, tints, accents, indices, ranges, vertexCount, quadCount: quadTotal + Math.ceil(roofTotal / 2), wallCount: wallTotal, buildingCount: ranges.length };
+  const chunk = { positions, uvs, layers, tints, accents, indices, ranges, vertexCount, quadCount: quadTotal + Math.ceil(roofTotal / 2), wallCount: wallTotal, buildingCount: ranges.length };
+  return mode === 'walls' ? applyHostWallOpenings(chunk, origin, hostOpenings) : chunk;
 }
 
 /**

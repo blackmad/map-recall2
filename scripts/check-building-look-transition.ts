@@ -20,7 +20,7 @@ class WorkerStub {
   constructor(_url: string) {} postMessage(message: any) { this.messages.push(message); } terminate() {}
   reply(message: any) {
     const chunk = { positions: new Float32Array(9), uvs: new Float32Array(6), layers: new Float32Array(3), tints: new Uint8Array(12), accents: new Uint8Array(12), indices: new Uint16Array([0, 1, 2]), vertexCount: 3, buildingCount: 1, wallCount: 1, quadCount: 0, ranges: [{ id: message.features[0].properties.id, start: 0, count: 3 }] };
-    this.onmessage({ data: { key: message.key, gen: message.gen, chunk, ms: 1 } });
+    this.onmessage({ data: { key: message.key, gen: message.gen, hostOpeningRevision: message.hostOpeningRevision, chunk, ms: 1 } });
   }
 }
 const THREE = { Camera: class {}, Scene, WebGLRenderer: class {}, RawShaderMaterial: Material, Matrix4: Matrix, Vector3: class {}, BufferGeometry: Geometry, BufferAttribute: Attribute, Mesh: class { constructor(public geometry: any, public material: any) {} } };

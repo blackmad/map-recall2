@@ -1,0 +1,13 @@
+{
+  "id": "extract_landmarks_953524097",
+  "name": "Rasphuispoort",
+  "funFact": "The sandstone gate on Heiligeweg survives from the Rasphuis, where prisoners rasped brazilwood into powder for red textile dye. Its 1603 portal is attributed, with uncertainty, to Hendrick de Keyser; the crowning figures were added later. Today it leads into the Kalverpassage.",
+  "description": "A surviving prison gate with sandstone half-columns, a cart-and-keeper relief and a later group of three figures. The historic gate dates from 1603; the surrounding shopping complex is a separate BAG building registered as 1997.",
+  "wikipediaUrl": "https://en.wikipedia.org/wiki/Rasphuis",
+  "sourceUrls": [
+    "https://monumentenregister.cultureelerfgoed.nl/monumenten/1482",
+    "https://www.amsterdam-monumentenstad.nl/database/grachtenboek_objecten.php?id=4151",
+    "https://commons.wikimedia.org/wiki/File:De_Rasphuispoort_aan_de_Heiligeweg_(2020).jpg"
+  ],
+  "sourceNotes": "Preserve existing genuineextract identity and its researched prison/dyework facts. Namegate independentlyof wikidataQ1460467(prison); gateQ2307025 is architecturalrelatedidentity, not a newdestination."
+}

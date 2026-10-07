@@ -1,0 +1,38 @@
+{
+  "id": "straat-museum",
+  "name": "STRAAT Museum",
+  "landmarkId": "extract_landmarks_6741685223",
+  "modelUrl": "./models/straat-museum.glb",
+  "suppressOsmIds": [
+    "w717827611",
+    "NL.IMBAG.Pand.0363100012079735"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.894349,
+      52.40231
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 118.1,
+    "widthMetres": 128.8
+  },
+  "surveyed": {
+    "anchor": [
+      4.894349,
+      52.40231
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Exact current BAG Lasloods host incl office; AHN5 roof planes and October2024 municipal panorama"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 90,
+  "attribution": {
+    "title": "STRAAT Museum / Lasloods",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/528252",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original flat-color reconstruction using survey dimensions and primary current photographs. Four flattened roof lights, brick walls, annex glazing and restrained original geometric mural interpretation; no copied mesh or photo pixels."
+  }
+}

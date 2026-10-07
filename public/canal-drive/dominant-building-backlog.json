@@ -14,7 +14,7 @@
     "Exact modeled identities excluded; repeated tile identities, near-identical footprints and raised parts grouped.",
     "Ground-level courtyard buildings remain separate. Uncertain complex identities require manual research."
   ],
-  "candidateCount": 1835,
+  "candidateCount": 1832,
   "candidates": [
     {
       "id": "NL.IMBAG.Pand.0363100012207510",
@@ -3438,31 +3438,6 @@
       "sourceUrl": "https://3dbag.nl/en/viewer"
     },
     {
-      "id": "w1080812379",
-      "name": null,
-      "footprintSquareMetres": 6663,
-      "heightMetres": 29,
-      "center": [
-        4.86577995,
-        52.37879015
-      ],
-      "aliases": [],
-      "raisedParts": false,
-      "roofShape": "gabled",
-      "poiNames": [],
-      "fidelity": {
-        "treatment": "unreviewed",
-        "workflow": "standard-eligibility-review",
-        "state": "suggested",
-        "reasons": [
-          "Simple mapped massing; facade and recognition still need visual review"
-        ]
-      },
-      "priority": "low",
-      "status": "needs-identification-and-research",
-      "sourceUrl": "https://www.openstreetmap.org/way/1080812379"
-    },
-    {
       "id": "NL.IMBAG.Pand.0363100012243125",
       "name": null,
       "footprintSquareMetres": 8715,
@@ -4817,31 +4792,6 @@
       "center": [
         4.846694,
         52.3574415
-      ],
-      "aliases": [],
-      "raisedParts": false,
-      "roofShape": "",
-      "poiNames": [],
-      "fidelity": {
-        "treatment": "unreviewed",
-        "workflow": "standard-eligibility-review",
-        "state": "suggested",
-        "reasons": [
-          "Simple mapped massing; facade and recognition still need visual review"
-        ]
-      },
-      "priority": "low",
-      "status": "needs-identification-and-research",
-      "sourceUrl": "https://3dbag.nl/en/viewer"
-    },
-    {
-      "id": "NL.IMBAG.Pand.0363100012079735",
-      "name": null,
-      "footprintSquareMetres": 6945,
-      "heightMetres": 22.9,
-      "center": [
-        4.894354,
-        52.402319
       ],
       "aliases": [],
       "raisedParts": false,
@@ -7493,31 +7443,6 @@
       "priority": "low",
       "status": "needs-identification-and-research",
       "sourceUrl": "https://www.openstreetmap.org/way/1244980638"
-    },
-    {
-      "id": "NL.IMBAG.Pand.0363100012136881",
-      "name": null,
-      "footprintSquareMetres": 17001,
-      "heightMetres": 7.2,
-      "center": [
-        4.929326,
-        52.3840565
-      ],
-      "aliases": [],
-      "raisedParts": false,
-      "roofShape": "",
-      "poiNames": [],
-      "fidelity": {
-        "treatment": "unreviewed",
-        "workflow": "recognition-review",
-        "state": "suggested",
-        "reasons": [
-          "Complex footprint"
-        ]
-      },
-      "priority": "low",
-      "status": "needs-identification-and-research",
-      "sourceUrl": "https://3dbag.nl/en/viewer"
     },
     {
       "id": "NL.IMBAG.Pand.0363100012149766",
