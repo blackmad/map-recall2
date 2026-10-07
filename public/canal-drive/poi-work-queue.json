@@ -1360,6 +1360,33 @@
       },
       "validation": "Final source/gallery/native independently accepted; actual route finish/pin/physical sourced card/exact suppression/retained neighbors/fallback pass.",
       "nextAction": "Published native original model; source-qualified fine-detail approximations preserved."
+    },
+    {
+      "id": "canal-belt-overnight-building-treatments",
+      "task": "Continuously improve warehouse conversions and modern blocks inside the canal belt until morning",
+      "status": "in-progress",
+      "priority": "high",
+      "owner": "root",
+      "startedAt": "2026-10-06T21:08:31.877748+00:00",
+      "assumedDeadline": "2026-10-07T06:00:00Z",
+      "scope": "Central canal enclosure; warehouse conversions and modern street blocks like original facade demos. Exclude remote portindustrial from this run. Box screening suggests fast workflow; source-critical historic assemblies and mappedPOIs keep full review.",
+      "candidates": [
+        "NL.IMBAG.Pand.0363100012177576",
+        "NL.IMBAG.Pand.0363100012177571",
+        "NL.IMBAG.Pand.0363100012165119"
+      ],
+      "promotedCandidates": [
+        "NL.IMBAG.Pand.0363100012175216",
+        "NL.IMBAG.Pand.0363100012169587"
+      ],
+      "handoff": "docs/performance/2026-10-06/canal-belt-overnight-handoff.md",
+      "nextAction": "Review source-backed roof/assembly drafts, archive private sources, inspect reference/render comparisons independently and in game, publish accepted batch then continue the next central selection.",
+      "acceptedModels": [
+        "ordinary-0363100012177576",
+        "ordinary-0363100012177571",
+        "ordinary-0363100012165119"
+      ],
+      "notes": "Batch01 source/gallery/game reviewed; batch02/03 drafts pending. Continue user-authorized central warehouse/modern work today; periodic commits/pushes. Roofcrown hold withdrawn after native source/runtime review; initial failures preserved."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

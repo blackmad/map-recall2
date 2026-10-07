@@ -71,7 +71,7 @@
         "Door counts and dimensions are approximate visual estimates, not surveys.",
         "Omit minor branding; do not invent building-name text.",
         "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained.",
-        "Regular6\u00d77 shallow roof panel grid approximates observed aerial rhythm; fitted patch noise omitted. Glazing/pier proportions are visual estimates from2017 facade."
+        "Regular6×7 shallow roof panel grid approximates observed aerial rhythm; fitted patch noise omitted. Glazing/pier proportions are visual estimates from2017 facade."
       ]
     },
     "NL.IMBAG.Pand.0363100012123231": {
@@ -255,6 +255,86 @@
         "Unobserved northeast and lowstripfaces conservatively carry plain darkbase and uppermetalassembly; no inventedglazing.",
         "Source mainandlowstriproofplanes retained via nativeplanintersections.",
         "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained."
+      ]
+    },
+    "NL.IMBAG.Pand.0363100012177576": {
+      "treatment": "full-researched",
+      "reviewedOn": "2026-10-07",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012177576",
+        "https://data.amsterdam.nl/data/geozoek?center=52.381433,4.887598499999999&lagen=pano-pano2025bi"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012177576/reference-0363100012177576-2025-wide.jpg",
+      "reason": "Root inspected sources, gallery fronts/roofs and desktop/touch game scenes. Independent galleryv4 and actual-game followup retain native measured high/low volumes and source-specific facade assemblies. Initial roof crown hold withdrawn after source/GLB comparison and runtime isolation; failed evidence preserved. No invented POI destination.",
+      "checks": {
+        "ordinarySilhouette": true,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "9c29e89655ab177fa1125320ad1a6f0fc0cfc8e6",
+      "sourcePack": "experiments/canal-belt-overnight/warehouses-01/0363100012177576",
+      "independentReview": "ordinary-buildings-data/canal-belt-batch01-review.json",
+      "liveGameReview": "ordinary-buildings-data/canal-belt-batch01-review.json",
+      "limits": [
+        "Rear openings unobserved: restrained plain brick, no invented grid.",
+        "Atlas encodes original window mullions, brick arches and rails; shallow physical shutters/sills/gable caps preserve recognition.",
+        "Small source-supported cursive ground name omitted pending exact lettering review.",
+        "Physicalphone untested; cached steady-frame samples do not establish cold-loading stall elimination."
+      ]
+    },
+    "NL.IMBAG.Pand.0363100012177571": {
+      "treatment": "full-researched",
+      "reviewedOn": "2026-10-07",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012177571",
+        "https://data.amsterdam.nl/data/geozoek?center=52.381502,4.887475&lagen=pano-pano2025bi"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012177571/reference-0363100012177571-2025-wide.jpg",
+      "reason": "Root inspected sources, gallery fronts/roofs and desktop/touch game scenes. Independent galleryv4 and actual-game followup retain native measured high/low volumes and source-specific facade assemblies. Initial roof crown hold withdrawn after source/GLB comparison and runtime isolation; failed evidence preserved. No invented POI destination.",
+      "checks": {
+        "ordinarySilhouette": true,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "9c29e89655ab177fa1125320ad1a6f0fc0cfc8e6",
+      "sourcePack": "experiments/canal-belt-overnight/warehouses-01/0363100012177571",
+      "independentReview": "ordinary-buildings-data/canal-belt-batch01-review.json",
+      "liveGameReview": "ordinary-buildings-data/canal-belt-batch01-review.json",
+      "limits": [
+        "Rear openings unobserved: restrained plain brick, no invented grid.",
+        "Atlas encodes original window mullions, brick arches and rails; shallow physical shutters/sills/gable caps preserve recognition.",
+        "Small source-supported cursive ground name omitted pending exact lettering review.",
+        "Physicalphone untested; cached steady-frame samples do not establish cold-loading stall elimination."
+      ]
+    },
+    "NL.IMBAG.Pand.0363100012165119": {
+      "treatment": "standard",
+      "reviewedOn": "2026-10-07",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165119",
+        "https://data.amsterdam.nl/data/geozoek?center=52.3729795,4.889293&lagen=pano-pano2025bi"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012165119/reference-0363100012165119-2025-1.jpg",
+      "reason": "Root inspected sources, gallery fronts/roofs and desktop/touch game scenes. Independent galleryv4 and actual-game followup retain native measured high/low volumes and source-specific facade assemblies. Initial roof crown hold withdrawn after source/GLB comparison and runtime isolation; failed evidence preserved. No invented POI destination.",
+      "checks": {
+        "ordinarySilhouette": true,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "9c29e89655ab177fa1125320ad1a6f0fc0cfc8e6",
+      "sourcePack": "experiments/canal-belt-overnight/modern-01/0363100012165119",
+      "independentReview": "ordinary-buildings-data/canal-belt-batch01-review.json",
+      "liveGameReview": "ordinary-buildings-data/canal-belt-batch01-review.json",
+      "limits": [
+        "Minor roof patches below0.8% footprint may be omitted only where recognition permits. Main steps18/21/22/24/25m remain.",
+        "Projecting glass bays use estimated0.28m relief, supported visually but not surveyed.",
+        "Small joinery, interiors and tenant logos are omitted.",
+        "Source-corrected raised regions0/7 have estimated upper glazing21.8–24.6m; region4 remains dark technical enclosure. Measured roof polygons/heights preserved. Ground doors distinguish narrow recessed dark entrances from shop glass; obscured details conservative.",
+        "Northeast terrace-facing upper office glazing is source-derived; bay counts/heights estimated within measured roof envelope. Unknown rooftop side faces remain plain.",
+        "Physicalphone untested; cached steady-frame samples do not establish cold-loading stall elimination."
       ]
     }
   },

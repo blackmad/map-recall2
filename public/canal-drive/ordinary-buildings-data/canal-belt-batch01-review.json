@@ -1,0 +1,636 @@
+{
+  "reviewedAt": "2026-10-07T06:38:49.107683+00:00",
+  "sourceCommit": "9c29e89655ab177fa1125320ad1a6f0fc0cfc8e6",
+  "galleryReview": {
+    "checkpoint": "corner-v4",
+    "captureDate": "2026-10-06T21:49:27.315Z",
+    "status": "all-three-bounded-gallery-recognition-pass",
+    "scope": "Saved gallery reference/render evidence only. Root-owned game, suppression/neighbor/fallback and performance acceptance remain separate.",
+    "priorFailureReportsPreserved": [
+      "independent-review.md/json",
+      "independent-review-v2.md/json",
+      "independent-review-v3.md/json"
+    ],
+    "modern": {
+      "id": "0363100012165119",
+      "decision": "bounded-gallery-recognition-pass",
+      "blankCornerIssue": "resolved-with-source-conditions",
+      "passed": [
+        "NE camera exposes researched east/north street facades and sign-corner relationship.",
+        "Former source-visible broad blank upper plane now carries terrace-facing dark glazing18.5\u201321.3m and dark cap21.4\u201322.3m within recorded region9/XZ scope.",
+        "Upper raised glazing0/7 and dark technical region4 retain distinct supported setback roof masses; dominant roof/equipment maxima are not substituted for whole-building height.",
+        "Cream concrete, grouped dark glazing, shallow projecting bay stacks, tall lower office tier and smaller upper tiers give recognizable source composition.",
+        "Actual defining verticalMAXWELLHOUSE sign remains narrow upright native sans on sourced east panel, not a name painted onto another front.",
+        "Wide/full-context view retains mixed ground entries/dark doors and party-wall blank south face."
+      ],
+      "criticalRemainingFailures": [],
+      "limitations": [
+        "Remaining pale rooftop side/transition cheeks are not established by ground source photos; conservative plain treatment is an explicit unknown, not an observed blank-facade assertion.",
+        "Precise pane counts, bay depth, cap dimensions and upper glazing dimensions are photographic estimates.",
+        "Exact typeface unidentified; recorded narrow sans approximation.",
+        "Saved views have elevated gallery camera; source-faithful gameplay street recognition remains root-owned."
+      ]
+    },
+    "warehouses": {
+      "ids": [
+        "0363100012177576",
+        "0363100012177571"
+      ],
+      "decision": "earlier-bounded-gallery-pass-retained",
+      "evidence": "closer-v3 plus v2/source records",
+      "conditions": [
+        "No warehouse asset change evaluated in v4.",
+        "Rear current-photo and useful Beeldbank catalogue gaps remain documented."
+      ]
+    }
+  },
+  "gameReview": {
+    "reviewedAt": "2026-10-07T06:31:40.524243+00:00",
+    "supersedes": "game-independent-review.json warehouse unsupported-crown diagnosis only; original evidence/report preserved",
+    "decision": "bounded-game-visual-pass-source-supported-envelope",
+    "ids": [
+      "0363100012177576",
+      "0363100012177571"
+    ],
+    "correction": "Initial unsupported-triangle and filled/obscured-low-center critical-loss claim was too strong. Direct source/GLB isometric comparison shows the same rear paired peaks, irregular roof faces, and low middle arrangement. Actual-game view compresses/occludes the low roof valley behind front/rear high volumes.",
+    "runtimeCause": "Runtime isolation all-layers/signatures-hidden establishes visible forms belong to signature GLBs, not residual independent roofs. It does not by itself establish an asset defect.",
+    "visualEvidence": "Source/GLB top views align roof-part placement; isometrics align the paired front/rear high groups and low middle. Game front shows pale front sloping group and brown rear/inner faces; reverse views reveal inward gabled closures. No additional whole-height center mass or extra unsupported ridge is established.",
+    "cpuSupport": "Diagnostic first-hit height grids (1231 samples/model) and fitted-plane residuals support the visual attribution; these checks alone do not establish visual acceptance.",
+    "remainingLimits": [
+      "Low middle is visually hard to read at the saved steep game angle because high front and rear blocks occlude it. This alone is not a source geometry failure.",
+      "Exact inward/rear wall finish and small roof irregularities lack current close photo evidence. Step walls are necessary enclosing geometry; no demonstrably unsupported extra closure found.",
+      "Brown rear/internal versus pale front roof appearance makes the peaks conspicuous; source/current roof color fidelity remains approximate.",
+      "Original Maxwell bounded recognition/color caveat and independent performance/fallback limitations remain."
+    ],
+    "requiredRepair": "None justified by this comparison; do not simplify source-supported rear gables or raise/fill the low center to remove apparent triangles.",
+    "files": [
+      "runtime-isolate/all-layers.png",
+      "runtime-isolate/signatures-hidden.png",
+      "roof-diagnostic-review/0363100012177576-source-iso.png",
+      "roof-diagnostic-review/0363100012177576-glb-iso.png",
+      "roof-diagnostic-review/0363100012177571-source-iso.png",
+      "roof-diagnostic-review/0363100012177571-glb-iso.png"
+    ]
+  },
+  "performance": {
+    "desktop": {
+      "models": [
+        {
+          "id": "ordinary-0363100012177576",
+          "frameMedian": 16.69999999999891,
+          "frameP95": 16.700000000000728,
+          "sampleFrames": 90,
+          "targetInstalled": 1,
+          "pick": {
+            "id": "NL.IMBAG.Pand.0363100012177576",
+            "landmarkId": "",
+            "footprintType": "Polygon",
+            "height": 15.688265800476074,
+            "screen": [
+              690,
+              299.99999999576147
+            ]
+          },
+          "shaderHidden": true,
+          "pyramidHidden": true,
+          "pyramidEntries": 0,
+          "neighborCount": 728,
+          "otherHiddenNeighborIds": []
+        },
+        {
+          "id": "ordinary-0363100012177571",
+          "frameMedian": 16.69999999999891,
+          "frameP95": 16.700000000000728,
+          "sampleFrames": 90,
+          "targetInstalled": 1,
+          "pick": {
+            "id": "NL.IMBAG.Pand.0363100012177571",
+            "landmarkId": "",
+            "footprintType": "Polygon",
+            "height": 15.676854133605957,
+            "screen": [
+              690.0000000226056,
+              299.99999999434857
+            ]
+          },
+          "shaderHidden": true,
+          "pyramidHidden": true,
+          "pyramidEntries": 0,
+          "neighborCount": 721,
+          "otherHiddenNeighborIds": []
+        },
+        {
+          "id": "ordinary-0363100012165119",
+          "frameMedian": 16.69999999999891,
+          "frameP95": 16.80000000000109,
+          "sampleFrames": 90,
+          "targetInstalled": 1,
+          "pick": {
+            "id": "NL.IMBAG.Pand.0363100012165119",
+            "landmarkId": "",
+            "footprintType": "Polygon",
+            "height": 25.489049911499023,
+            "screen": [
+              659.9999999773944,
+              239.9999999971743
+            ]
+          },
+          "shaderHidden": true,
+          "pyramidHidden": true,
+          "pyramidEntries": 0,
+          "neighborCount": 503,
+          "otherHiddenNeighborIds": [
+            {
+              "id": "NL.IMBAG.Pand.0363100012175378",
+              "hidden": true
+            },
+            {
+              "id": "w174987150",
+              "hidden": true
+            },
+            {
+              "id": "w747911435",
+              "hidden": true
+            },
+            {
+              "id": "w747911436",
+              "hidden": true
+            },
+            {
+              "id": "w747911437",
+              "hidden": true
+            },
+            {
+              "id": "w747911438",
+              "hidden": true
+            },
+            {
+              "id": "w747911439",
+              "hidden": true
+            },
+            {
+              "id": "w747911440",
+              "hidden": true
+            },
+            {
+              "id": "w747911441",
+              "hidden": true
+            },
+            {
+              "id": "w747924617",
+              "hidden": true
+            },
+            {
+              "id": "w747924618",
+              "hidden": true
+            },
+            {
+              "id": "w747924619",
+              "hidden": true
+            },
+            {
+              "id": "w747924621",
+              "hidden": true
+            },
+            {
+              "id": "w747924622",
+              "hidden": true
+            },
+            {
+              "id": "w747924623",
+              "hidden": true
+            },
+            {
+              "id": "w747924624",
+              "hidden": true
+            },
+            {
+              "id": "w747924625",
+              "hidden": true
+            },
+            {
+              "id": "w747924626",
+              "hidden": true
+            },
+            {
+              "id": "w748659170",
+              "hidden": true
+            },
+            {
+              "id": "w748659171",
+              "hidden": true
+            },
+            {
+              "id": "w748659172",
+              "hidden": true
+            },
+            {
+              "id": "w748659173",
+              "hidden": true
+            },
+            {
+              "id": "w748659174",
+              "hidden": true
+            },
+            {
+              "id": "w748659175",
+              "hidden": true
+            },
+            {
+              "id": "w748659176",
+              "hidden": true
+            },
+            {
+              "id": "w748659177",
+              "hidden": true
+            },
+            {
+              "id": "w748659178",
+              "hidden": true
+            },
+            {
+              "id": "w748659179",
+              "hidden": true
+            },
+            {
+              "id": "w748659180",
+              "hidden": true
+            },
+            {
+              "id": "w748659181",
+              "hidden": true
+            },
+            {
+              "id": "w748659182",
+              "hidden": true
+            },
+            {
+              "id": "w748659183",
+              "hidden": true
+            },
+            {
+              "id": "w748659184",
+              "hidden": true
+            },
+            {
+              "id": "w748659185",
+              "hidden": true
+            },
+            {
+              "id": "w748659186",
+              "hidden": true
+            },
+            {
+              "id": "w748659187",
+              "hidden": true
+            },
+            {
+              "id": "w748997143",
+              "hidden": true
+            },
+            {
+              "id": "w748997144",
+              "hidden": true
+            }
+          ]
+        }
+      ],
+      "wideFrameP95": 16.799999999999272,
+      "preReloadLongTasks": [
+        {
+          "stage": "startup",
+          "at": 451.6000003814697,
+          "ms": 59
+        },
+        {
+          "stage": "startup",
+          "at": 861.6000003814697,
+          "ms": 57
+        },
+        {
+          "stage": "startup",
+          "at": 1053.3000001907349,
+          "ms": 145
+        },
+        {
+          "stage": "startup",
+          "at": 3811.6000003814697,
+          "ms": 108
+        },
+        {
+          "stage": "startup",
+          "at": 3994.9000000953674,
+          "ms": 96
+        },
+        {
+          "stage": "startup",
+          "at": 4181.400000095367,
+          "ms": 72
+        },
+        {
+          "stage": "startup",
+          "at": 4293.700000286102,
+          "ms": 112
+        },
+        {
+          "stage": "startup",
+          "at": 4513.5,
+          "ms": 127
+        },
+        {
+          "stage": "startup",
+          "at": 4886.900000095367,
+          "ms": 56
+        },
+        {
+          "stage": "startup",
+          "at": 5847.10000038147,
+          "ms": 64
+        }
+      ],
+      "delayedSuppressed": false,
+      "disabledSuppressed": false,
+      "restoredSuppressed": true,
+      "loadFailureSuppressed": false,
+      "gestureRiderStationary": false
+    },
+    "touch": {
+      "models": [
+        {
+          "id": "ordinary-0363100012177576",
+          "frameMedian": 16.69999999999891,
+          "frameP95": 16.800000000000182,
+          "sampleFrames": 90,
+          "targetInstalled": 1,
+          "pick": {
+            "id": "NL.IMBAG.Pand.0363100012177576",
+            "landmarkId": "",
+            "footprintType": "Polygon",
+            "height": 15.688265800476074,
+            "screen": [
+              195.00000000766005,
+              301.9999999990425
+            ]
+          },
+          "shaderHidden": true,
+          "pyramidHidden": true,
+          "pyramidEntries": 0,
+          "neighborCount": 728,
+          "otherHiddenNeighborIds": []
+        },
+        {
+          "id": "ordinary-0363100012177571",
+          "frameMedian": 16.69999999999891,
+          "frameP95": 16.700000000000728,
+          "sampleFrames": 90,
+          "targetInstalled": 1,
+          "pick": {
+            "id": "NL.IMBAG.Pand.0363100012177571",
+            "landmarkId": "",
+            "footprintType": "Polygon",
+            "height": 15.676854133605957,
+            "screen": [
+              195,
+              302
+            ]
+          },
+          "shaderHidden": true,
+          "pyramidHidden": true,
+          "pyramidEntries": 0,
+          "neighborCount": 721,
+          "otherHiddenNeighborIds": []
+        },
+        {
+          "id": "ordinary-0363100012165119",
+          "frameMedian": 16.69999999999891,
+          "frameP95": 16.700000000000728,
+          "sampleFrames": 90,
+          "targetInstalled": 1,
+          "pick": {
+            "id": "NL.IMBAG.Pand.0363100012165119",
+            "landmarkId": "",
+            "footprintType": "Polygon",
+            "height": 25.489049911499023,
+            "screen": [
+              195.00000000766005,
+              241.99999999856374
+            ]
+          },
+          "shaderHidden": true,
+          "pyramidHidden": true,
+          "pyramidEntries": 0,
+          "neighborCount": 503,
+          "otherHiddenNeighborIds": [
+            {
+              "id": "NL.IMBAG.Pand.0363100012175378",
+              "hidden": true
+            },
+            {
+              "id": "w174987150",
+              "hidden": true
+            },
+            {
+              "id": "w747911435",
+              "hidden": true
+            },
+            {
+              "id": "w747911436",
+              "hidden": true
+            },
+            {
+              "id": "w747911437",
+              "hidden": true
+            },
+            {
+              "id": "w747911438",
+              "hidden": true
+            },
+            {
+              "id": "w747911439",
+              "hidden": true
+            },
+            {
+              "id": "w747911440",
+              "hidden": true
+            },
+            {
+              "id": "w747911441",
+              "hidden": true
+            },
+            {
+              "id": "w747924617",
+              "hidden": true
+            },
+            {
+              "id": "w747924618",
+              "hidden": true
+            },
+            {
+              "id": "w747924619",
+              "hidden": true
+            },
+            {
+              "id": "w747924621",
+              "hidden": true
+            },
+            {
+              "id": "w747924622",
+              "hidden": true
+            },
+            {
+              "id": "w747924623",
+              "hidden": true
+            },
+            {
+              "id": "w747924624",
+              "hidden": true
+            },
+            {
+              "id": "w747924625",
+              "hidden": true
+            },
+            {
+              "id": "w747924626",
+              "hidden": true
+            },
+            {
+              "id": "w748659170",
+              "hidden": true
+            },
+            {
+              "id": "w748659171",
+              "hidden": true
+            },
+            {
+              "id": "w748659172",
+              "hidden": true
+            },
+            {
+              "id": "w748659173",
+              "hidden": true
+            },
+            {
+              "id": "w748659174",
+              "hidden": true
+            },
+            {
+              "id": "w748659175",
+              "hidden": true
+            },
+            {
+              "id": "w748659176",
+              "hidden": true
+            },
+            {
+              "id": "w748659177",
+              "hidden": true
+            },
+            {
+              "id": "w748659178",
+              "hidden": true
+            },
+            {
+              "id": "w748659179",
+              "hidden": true
+            },
+            {
+              "id": "w748659180",
+              "hidden": true
+            },
+            {
+              "id": "w748659181",
+              "hidden": true
+            },
+            {
+              "id": "w748659182",
+              "hidden": true
+            },
+            {
+              "id": "w748659183",
+              "hidden": true
+            },
+            {
+              "id": "w748659184",
+              "hidden": true
+            },
+            {
+              "id": "w748659185",
+              "hidden": true
+            },
+            {
+              "id": "w748659186",
+              "hidden": true
+            },
+            {
+              "id": "w748659187",
+              "hidden": true
+            },
+            {
+              "id": "w748997143",
+              "hidden": true
+            },
+            {
+              "id": "w748997144",
+              "hidden": true
+            }
+          ]
+        }
+      ],
+      "wideFrameP95": 16.799999999999272,
+      "preReloadLongTasks": [
+        {
+          "stage": "startup",
+          "at": 771.6000003814697,
+          "ms": 60
+        },
+        {
+          "stage": "startup",
+          "at": 833.2000002861023,
+          "ms": 54
+        },
+        {
+          "stage": "startup",
+          "at": 1058.7000002861023,
+          "ms": 147
+        },
+        {
+          "stage": "startup",
+          "at": 3555,
+          "ms": 108
+        },
+        {
+          "stage": "startup",
+          "at": 3734.800000190735,
+          "ms": 97
+        },
+        {
+          "stage": "startup",
+          "at": 3913.9000000953674,
+          "ms": 126
+        },
+        {
+          "stage": "startup",
+          "at": 5121.300000190735,
+          "ms": 52
+        },
+        {
+          "stage": "ordinary-0363100012165119",
+          "at": 20564.5,
+          "ms": 78
+        },
+        {
+          "stage": "ordinary-0363100012165119",
+          "at": 20683.800000190735,
+          "ms": 52
+        }
+      ],
+      "delayedSuppressed": false,
+      "disabledSuppressed": false,
+      "restoredSuppressed": true,
+      "loadFailureSuppressed": null,
+      "gestureRiderStationary": false
+    }
+  },
+  "scope": "Three central canal-belt models; desktop plus iPhone13 emulation, AppleM4Pro. Steady samples are not comparative speedup or loading-stall elimination. Prior failed visual interpretations preserved in private validation pack.",
+  "neighborNote": "Other nearby researched replacement assets may already suppress their own native fallback. Exact native neighbors for the three new models remain present."
+}

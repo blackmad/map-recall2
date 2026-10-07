@@ -1446,6 +1446,2041 @@
         "https://data.amsterdam.nl/data/geozoek?center=52.3134115,4.937098000000001&lagen=pano-pano2025bi"
       ],
       "sourceCommit": "9ed72ffa39b0107d1a60c6efea88f7169b87c591"
+    },
+    {
+      "id": "ordinary-0363100012177576",
+      "buildingId": "NL.IMBAG.Pand.0363100012177576",
+      "name": "Koning David / De David",
+      "anchor": [
+        4.887598499999999,
+        52.381433
+      ],
+      "cameraBearing": 222.2,
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.887802,
+              52.381493
+            ],
+            [
+              4.887678,
+              52.381562
+            ],
+            [
+              4.887395,
+              52.381373
+            ],
+            [
+              4.887519,
+              52.381304
+            ],
+            [
+              4.887802,
+              52.381493
+            ]
+          ]
+        ]
+      },
+      "height": 15.688265800476074,
+      "modelUrl": "./models/ordinary-buildings/0363100012177576.glb",
+      "bounds": {
+        "min": [
+          -13.949356079101562,
+          0,
+          -14.373581886291504
+        ],
+        "max": [
+          13.84109878540039,
+          15.688265800476074,
+          14.486138343811035
+        ]
+      },
+      "triangles": 1355,
+      "bytes": 142396,
+      "materials": 3,
+      "hash": "c472127efcb726f8cdc88a0900b0841051e9b86bd73e1f6b15b6ed44eff2a2a3",
+      "referenceImages": [
+        "./ordinary-buildings-data/references/0363100012177576/reference-0363100012177576-2025-wide.jpg",
+        "./ordinary-buildings-data/references/0363100012177576/reference-0363100012177576-2025.jpg",
+        "./ordinary-buildings-data/references/0363100012177576/official-roof-plan.png"
+      ],
+      "sourcePack": "experiments/canal-belt-overnight/warehouses-01/0363100012177576",
+      "traits": [
+        "Two broad brick gables and separate crest lines",
+        "Three rows of tall glazed loading openings with outward burgundy planked shutters",
+        "Cream projecting landing/lintel slabs, thin black Juliet rails",
+        "Small paired cream-framed side windows flank each large central loading bay",
+        "Lower central roof volumes between tall front/rear blocks retained"
+      ],
+      "simplifications": [
+        "Rear openings unobserved: restrained plain brick, no invented grid.",
+        "Atlas encodes original window mullions, brick arches and rails; shallow physical shutters/sills/gable caps preserve recognition.",
+        "Small source-supported cursive ground name omitted pending exact lettering review."
+      ],
+      "heightEvidence": "Official 2023 fitted survey roof surfaces minus groundNAP; high front/rear and low centre preserved. Front wall silhouette follows roofs; assemblies estimated from 2025 perspective.",
+      "facadeRecipe": {
+        "kind": "blank",
+        "edges": {
+          "2": {
+            "kind": "blank",
+            "windowTiers": [
+              {
+                "startMetres": 2.001508525903279,
+                "pitchMetres": 5.703017051806558,
+                "count": 2,
+                "widthMetres": 1.7,
+                "sillMetres": 3,
+                "heightMetres": 2.45,
+                "panes": 2,
+                "transomHeightsMetres": [
+                  1.65
+                ],
+                "shutters": {
+                  "widthMetres": 0.85,
+                  "color": "#713e43"
+                }
+              },
+              {
+                "startMetres": 0.28045255777098377,
+                "pitchMetres": 12.406034103613116,
+                "count": 1,
+                "widthMetres": 1.15,
+                "sillMetres": 3.55,
+                "heightMetres": 1.35,
+                "panes": 2,
+                "transomHeightsMetres": []
+              },
+              {
+                "startMetres": 4.272564494035574,
+                "pitchMetres": 12.406034103613116,
+                "count": 1,
+                "widthMetres": 1.15,
+                "sillMetres": 3.55,
+                "heightMetres": 1.35,
+                "panes": 2,
+                "transomHeightsMetres": []
+              },
+              {
+                "startMetres": 5.983469609577541,
+                "pitchMetres": 12.406034103613116,
+                "count": 1,
+                "widthMetres": 1.15,
+                "sillMetres": 3.55,
+                "heightMetres": 1.35,
+                "panes": 2,
+                "transomHeightsMetres": []
+              },
+              {
+                "startMetres": 9.975581545842134,
+                "pitchMetres": 12.406034103613116,
+                "count": 1,
+                "widthMetres": 1.15,
+                "sillMetres": 3.55,
+                "heightMetres": 1.35,
+                "panes": 2,
+                "transomHeightsMetres": []
+              },
+              {
+                "startMetres": 2.001508525903279,
+                "pitchMetres": 5.703017051806558,
+                "count": 2,
+                "widthMetres": 1.7,
+                "sillMetres": 6,
+                "heightMetres": 2.45,
+                "panes": 2,
+                "transomHeightsMetres": [
+                  1.65
+                ],
+                "shutters": {
+                  "widthMetres": 0.85,
+                  "color": "#713e43"
+                }
+              },
+              {
+                "startMetres": 0.28045255777098377,
+                "pitchMetres": 12.406034103613116,
+                "count": 1,
+                "widthMetres": 1.15,
+                "sillMetres": 6.55,
+                "heightMetres": 1.35,
+                "panes": 2,
+                "transomHeightsMetres": []
+              },
+              {
+                "startMetres": 4.272564494035574,
+                "pitchMetres": 12.406034103613116,
+                "count": 1,
+                "widthMetres": 1.15,
+                "sillMetres": 6.55,
+                "heightMetres": 1.35,
+                "panes": 2,
+                "transomHeightsMetres": []
+              },
+              {
+                "startMetres": 5.983469609577541,
+                "pitchMetres": 12.406034103613116,
+                "count": 1,
+                "widthMetres": 1.15,
+                "sillMetres": 6.55,
+                "heightMetres": 1.35,
+                "panes": 2,
+                "transomHeightsMetres": []
+              },
+              {
+                "startMetres": 9.975581545842134,
+                "pitchMetres": 12.406034103613116,
+                "count": 1,
+                "widthMetres": 1.15,
+                "sillMetres": 6.55,
+                "heightMetres": 1.35,
+                "panes": 2,
+                "transomHeightsMetres": []
+              },
+              {
+                "startMetres": 2.001508525903279,
+                "pitchMetres": 5.703017051806558,
+                "count": 2,
+                "widthMetres": 1.7,
+                "sillMetres": 9,
+                "heightMetres": 2.35,
+                "panes": 2,
+                "transomHeightsMetres": [
+                  1.65
+                ],
+                "shutters": {
+                  "widthMetres": 0.85,
+                  "color": "#713e43"
+                }
+              },
+              {
+                "startMetres": 0.28045255777098377,
+                "pitchMetres": 12.406034103613116,
+                "count": 1,
+                "widthMetres": 1.15,
+                "sillMetres": 9.5,
+                "heightMetres": 1.35,
+                "panes": 2,
+                "transomHeightsMetres": []
+              },
+              {
+                "startMetres": 4.272564494035574,
+                "pitchMetres": 12.406034103613116,
+                "count": 1,
+                "widthMetres": 1.15,
+                "sillMetres": 9.5,
+                "heightMetres": 1.35,
+                "panes": 2,
+                "transomHeightsMetres": []
+              },
+              {
+                "startMetres": 5.983469609577541,
+                "pitchMetres": 12.406034103613116,
+                "count": 1,
+                "widthMetres": 1.15,
+                "sillMetres": 9.5,
+                "heightMetres": 1.35,
+                "panes": 2,
+                "transomHeightsMetres": []
+              },
+              {
+                "startMetres": 9.975581545842134,
+                "pitchMetres": 12.406034103613116,
+                "count": 1,
+                "widthMetres": 1.15,
+                "sillMetres": 9.5,
+                "heightMetres": 1.35,
+                "panes": 2,
+                "transomHeightsMetres": []
+              },
+              {
+                "startMetres": 2.1765085259032793,
+                "pitchMetres": 5.703017051806558,
+                "count": 2,
+                "widthMetres": 1.35,
+                "sillMetres": 12.2,
+                "heightMetres": 1.75,
+                "panes": 2,
+                "shutters": {
+                  "widthMetres": 0.65,
+                  "color": "#713e43"
+                }
+              }
+            ],
+            "frameWidthMetres": 0.11,
+            "plinthHeightMetres": 0.3,
+            "plinthColor": "#524d43",
+            "balconyGroups": [
+              {
+                "xMetres": 2.001508525903279,
+                "bottomMetres": 3,
+                "widthMetres": 1.7,
+                "railHeightMetres": 0.95,
+                "railColor": "#272b2a",
+                "barPitchMetres": 0.17,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.2,
+                "slabHeightMetres": 0.18
+              },
+              {
+                "xMetres": 2.001508525903279,
+                "bottomMetres": 6,
+                "widthMetres": 1.7,
+                "railHeightMetres": 0.95,
+                "railColor": "#272b2a",
+                "barPitchMetres": 0.17,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.2,
+                "slabHeightMetres": 0.18
+              },
+              {
+                "xMetres": 2.001508525903279,
+                "bottomMetres": 9,
+                "widthMetres": 1.7,
+                "railHeightMetres": 0.95,
+                "railColor": "#272b2a",
+                "barPitchMetres": 0.17,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.2,
+                "slabHeightMetres": 0.18
+              },
+              {
+                "xMetres": 7.704525577709838,
+                "bottomMetres": 3,
+                "widthMetres": 1.7,
+                "railHeightMetres": 0.95,
+                "railColor": "#272b2a",
+                "barPitchMetres": 0.17,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.2,
+                "slabHeightMetres": 0.18
+              },
+              {
+                "xMetres": 7.704525577709838,
+                "bottomMetres": 6,
+                "widthMetres": 1.7,
+                "railHeightMetres": 0.95,
+                "railColor": "#272b2a",
+                "barPitchMetres": 0.17,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.2,
+                "slabHeightMetres": 0.18
+              },
+              {
+                "xMetres": 7.704525577709838,
+                "bottomMetres": 9,
+                "widthMetres": 1.7,
+                "railHeightMetres": 0.95,
+                "railColor": "#272b2a",
+                "barPitchMetres": 0.17,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.2,
+                "slabHeightMetres": 0.18
+              }
+            ],
+            "canopyGroups": [
+              {
+                "xMetres": 1.851508525903279,
+                "bottomMetres": 5.45,
+                "widthMetres": 2,
+                "heightMetres": 0.14,
+                "depthMetres": 0.15
+              },
+              {
+                "xMetres": 1.851508525903279,
+                "bottomMetres": 8.45,
+                "widthMetres": 2,
+                "heightMetres": 0.14,
+                "depthMetres": 0.15
+              },
+              {
+                "xMetres": 1.851508525903279,
+                "bottomMetres": 11.45,
+                "widthMetres": 2,
+                "heightMetres": 0.14,
+                "depthMetres": 0.15
+              },
+              {
+                "xMetres": 7.554525577709837,
+                "bottomMetres": 5.45,
+                "widthMetres": 2,
+                "heightMetres": 0.14,
+                "depthMetres": 0.15
+              },
+              {
+                "xMetres": 7.554525577709837,
+                "bottomMetres": 8.45,
+                "widthMetres": 2,
+                "heightMetres": 0.14,
+                "depthMetres": 0.15
+              },
+              {
+                "xMetres": 7.554525577709837,
+                "bottomMetres": 11.45,
+                "widthMetres": 2,
+                "heightMetres": 0.14,
+                "depthMetres": 0.15
+              }
+            ],
+            "shutterGroups": [
+              {
+                "xMetres": 2.001508525903279,
+                "bottomMetres": 3,
+                "openingWidthMetres": 1.7,
+                "widthMetres": 0.85,
+                "heightMetres": 2.45,
+                "openAngleDegrees": 55
+              },
+              {
+                "xMetres": 7.704525577709838,
+                "bottomMetres": 3,
+                "openingWidthMetres": 1.7,
+                "widthMetres": 0.85,
+                "heightMetres": 2.45,
+                "openAngleDegrees": 55
+              },
+              {
+                "xMetres": 2.001508525903279,
+                "bottomMetres": 6,
+                "openingWidthMetres": 1.7,
+                "widthMetres": 0.85,
+                "heightMetres": 2.45,
+                "openAngleDegrees": 55
+              },
+              {
+                "xMetres": 7.704525577709838,
+                "bottomMetres": 6,
+                "openingWidthMetres": 1.7,
+                "widthMetres": 0.85,
+                "heightMetres": 2.45,
+                "openAngleDegrees": 55
+              },
+              {
+                "xMetres": 2.001508525903279,
+                "bottomMetres": 9,
+                "openingWidthMetres": 1.7,
+                "widthMetres": 0.85,
+                "heightMetres": 2.35,
+                "openAngleDegrees": 55
+              },
+              {
+                "xMetres": 7.704525577709838,
+                "bottomMetres": 9,
+                "openingWidthMetres": 1.7,
+                "widthMetres": 0.85,
+                "heightMetres": 2.35,
+                "openAngleDegrees": 55
+              },
+              {
+                "xMetres": 2.1765085259032793,
+                "bottomMetres": 12.2,
+                "openingWidthMetres": 1.35,
+                "widthMetres": 0.65,
+                "heightMetres": 1.75,
+                "openAngleDegrees": 55
+              },
+              {
+                "xMetres": 7.879525577709837,
+                "bottomMetres": 12.2,
+                "openingWidthMetres": 1.35,
+                "widthMetres": 0.65,
+                "heightMetres": 1.75,
+                "openAngleDegrees": 55
+              }
+            ],
+            "gableTrim": true,
+            "groundEntries": [
+              {
+                "xMetres": 1.7015085259032792,
+                "bottomMetres": 0.1,
+                "widthMetres": 2.3,
+                "heightMetres": 2.5,
+                "kind": "glazed",
+                "panes": 2,
+                "frameWidthMetres": 0.2,
+                "transomHeightsMetres": [
+                  1.85
+                ]
+              },
+              {
+                "xMetres": 7.604525577709837,
+                "bottomMetres": 0.1,
+                "widthMetres": 1.9,
+                "heightMetres": 2.5,
+                "kind": "glazed",
+                "panes": 2,
+                "frameWidthMetres": 0.2
+              },
+              {
+                "xMetres": 0.3,
+                "bottomMetres": 0.1,
+                "widthMetres": 1.1,
+                "heightMetres": 2.4,
+                "kind": "glazed",
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.55,
+                "frameColor": "#675e50",
+                "brickArch": {
+                  "color": "#8a765e"
+                }
+              }
+            ],
+            "bands": [
+              {
+                "xMetres": 1.551508525903279,
+                "bottomMetres": 2.6,
+                "widthMetres": 3.7,
+                "heightMetres": 0.35,
+                "color": "#e6e4cd"
+              },
+              {
+                "xMetres": 7.454525577709838,
+                "bottomMetres": 2.6,
+                "widthMetres": 3.2,
+                "heightMetres": 0.35,
+                "color": "#e6e4cd"
+              }
+            ]
+          }
+        }
+      },
+      "official3D": {
+        "summaryPath": "experiments/canal-belt-overnight/warehouses-01/0363100012177576/geometry-summary.json",
+        "groundNAP": 0.38600000739097595,
+        "annexHeightMetres": 6.1
+      },
+      "generationMilliseconds": 53,
+      "reviewState": "Source/gallery and native-game reviewed; unseen rear finish, estimated facade detail and loading-stall limits documented.",
+      "sourceCommit": "9c29e89655ab177fa1125320ad1a6f0fc0cfc8e6",
+      "galleryFrontage": {
+        "target": [
+          4.8874569999999995,
+          52.3813385
+        ],
+        "distanceMetres": 35
+      },
+      "updatedAt": "2026-10-07T06:38:49.107683+00:00"
+    },
+    {
+      "id": "ordinary-0363100012177571",
+      "buildingId": "NL.IMBAG.Pand.0363100012177571",
+      "name": "Groene Valk / Grauwe Valk",
+      "anchor": [
+        4.887475,
+        52.381502
+      ],
+      "cameraBearing": 222.2,
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.887678,
+              52.381562
+            ],
+            [
+              4.887554,
+              52.381631
+            ],
+            [
+              4.887272,
+              52.381443
+            ],
+            [
+              4.887395,
+              52.381373
+            ],
+            [
+              4.887678,
+              52.381562
+            ]
+          ]
+        ]
+      },
+      "height": 15.676854133605957,
+      "modelUrl": "./models/ordinary-buildings/0363100012177571.glb",
+      "bounds": {
+        "min": [
+          -13.91659164428711,
+          0,
+          -14.373581886291504
+        ],
+        "max": [
+          13.80710220336914,
+          15.676854133605957,
+          14.485940933227539
+        ]
+      },
+      "triangles": 1259,
+      "bytes": 136200,
+      "materials": 3,
+      "hash": "027344d234046566e7c955cc55c64a16b9c880170a39bc0442d8f5fa66b6fb3d",
+      "referenceImages": [
+        "./ordinary-buildings-data/references/0363100012177571/reference-0363100012177571-2025-wide.jpg",
+        "./ordinary-buildings-data/references/0363100012177571/reference-0363100012177571-2025.jpg",
+        "./ordinary-buildings-data/references/0363100012177571/official-roof-plan.png"
+      ],
+      "sourcePack": "experiments/canal-belt-overnight/warehouses-01/0363100012177571",
+      "traits": [
+        "Two broad brick gables and separate crest lines",
+        "Three rows of tall glazed loading openings with outward burgundy planked shutters",
+        "Cream projecting landing/lintel slabs, thin black Juliet rails",
+        "Small paired cream-framed side windows flank each large central loading bay",
+        "Lower central roof volumes between tall front/rear blocks retained"
+      ],
+      "simplifications": [
+        "Rear openings unobserved: restrained plain brick, no invented grid.",
+        "Atlas encodes original window mullions, brick arches and rails; shallow physical shutters/sills/gable caps preserve recognition.",
+        "Small source-supported cursive ground name omitted pending exact lettering review."
+      ],
+      "heightEvidence": "Official 2023 fitted survey roof surfaces minus groundNAP; high front/rear and low centre preserved. Front wall silhouette follows roofs; assemblies estimated from 2025 perspective.",
+      "facadeRecipe": {
+        "kind": "blank",
+        "edges": {
+          "2": {
+            "kind": "blank",
+            "windowTiers": [
+              {
+                "startMetres": 2.0078618947189946,
+                "pitchMetres": 5.715723789437989,
+                "count": 2,
+                "widthMetres": 1.7,
+                "sillMetres": 3,
+                "heightMetres": 2.45,
+                "panes": 2,
+                "transomHeightsMetres": [
+                  1.65
+                ],
+                "shutters": {
+                  "widthMetres": 0.85,
+                  "color": "#713e43"
+                }
+              },
+              {
+                "startMetres": 0.2823585684156984,
+                "pitchMetres": 12.431447578875979,
+                "count": 1,
+                "widthMetres": 1.15,
+                "sillMetres": 3.55,
+                "heightMetres": 1.35,
+                "panes": 2,
+                "transomHeightsMetres": []
+              },
+              {
+                "startMetres": 4.283365221022291,
+                "pitchMetres": 12.431447578875979,
+                "count": 1,
+                "widthMetres": 1.15,
+                "sillMetres": 3.55,
+                "heightMetres": 1.35,
+                "panes": 2,
+                "transomHeightsMetres": []
+              },
+              {
+                "startMetres": 5.998082357853687,
+                "pitchMetres": 12.431447578875979,
+                "count": 1,
+                "widthMetres": 1.15,
+                "sillMetres": 3.55,
+                "heightMetres": 1.35,
+                "panes": 2,
+                "transomHeightsMetres": []
+              },
+              {
+                "startMetres": 9.999089010460281,
+                "pitchMetres": 12.431447578875979,
+                "count": 1,
+                "widthMetres": 1.15,
+                "sillMetres": 3.55,
+                "heightMetres": 1.35,
+                "panes": 2,
+                "transomHeightsMetres": []
+              },
+              {
+                "startMetres": 2.0078618947189946,
+                "pitchMetres": 5.715723789437989,
+                "count": 2,
+                "widthMetres": 1.7,
+                "sillMetres": 6,
+                "heightMetres": 2.45,
+                "panes": 2,
+                "transomHeightsMetres": [
+                  1.65
+                ],
+                "shutters": {
+                  "widthMetres": 0.85,
+                  "color": "#713e43"
+                }
+              },
+              {
+                "startMetres": 0.2823585684156984,
+                "pitchMetres": 12.431447578875979,
+                "count": 1,
+                "widthMetres": 1.15,
+                "sillMetres": 6.55,
+                "heightMetres": 1.35,
+                "panes": 2,
+                "transomHeightsMetres": []
+              },
+              {
+                "startMetres": 4.283365221022291,
+                "pitchMetres": 12.431447578875979,
+                "count": 1,
+                "widthMetres": 1.15,
+                "sillMetres": 6.55,
+                "heightMetres": 1.35,
+                "panes": 2,
+                "transomHeightsMetres": []
+              },
+              {
+                "startMetres": 5.998082357853687,
+                "pitchMetres": 12.431447578875979,
+                "count": 1,
+                "widthMetres": 1.15,
+                "sillMetres": 6.55,
+                "heightMetres": 1.35,
+                "panes": 2,
+                "transomHeightsMetres": []
+              },
+              {
+                "startMetres": 9.999089010460281,
+                "pitchMetres": 12.431447578875979,
+                "count": 1,
+                "widthMetres": 1.15,
+                "sillMetres": 6.55,
+                "heightMetres": 1.35,
+                "panes": 2,
+                "transomHeightsMetres": []
+              },
+              {
+                "startMetres": 2.0078618947189946,
+                "pitchMetres": 5.715723789437989,
+                "count": 2,
+                "widthMetres": 1.7,
+                "sillMetres": 9,
+                "heightMetres": 2.35,
+                "panes": 2,
+                "transomHeightsMetres": [
+                  1.65
+                ],
+                "shutters": {
+                  "widthMetres": 0.85,
+                  "color": "#713e43"
+                }
+              },
+              {
+                "startMetres": 0.2823585684156984,
+                "pitchMetres": 12.431447578875979,
+                "count": 1,
+                "widthMetres": 1.15,
+                "sillMetres": 9.5,
+                "heightMetres": 1.35,
+                "panes": 2,
+                "transomHeightsMetres": []
+              },
+              {
+                "startMetres": 4.283365221022291,
+                "pitchMetres": 12.431447578875979,
+                "count": 1,
+                "widthMetres": 1.15,
+                "sillMetres": 9.5,
+                "heightMetres": 1.35,
+                "panes": 2,
+                "transomHeightsMetres": []
+              },
+              {
+                "startMetres": 5.998082357853687,
+                "pitchMetres": 12.431447578875979,
+                "count": 1,
+                "widthMetres": 1.15,
+                "sillMetres": 9.5,
+                "heightMetres": 1.35,
+                "panes": 2,
+                "transomHeightsMetres": []
+              },
+              {
+                "startMetres": 9.999089010460281,
+                "pitchMetres": 12.431447578875979,
+                "count": 1,
+                "widthMetres": 1.15,
+                "sillMetres": 9.5,
+                "heightMetres": 1.35,
+                "panes": 2,
+                "transomHeightsMetres": []
+              },
+              {
+                "startMetres": 2.182861894718995,
+                "pitchMetres": 5.715723789437989,
+                "count": 2,
+                "widthMetres": 1.35,
+                "sillMetres": 12.2,
+                "heightMetres": 1.75,
+                "panes": 2,
+                "shutters": {
+                  "widthMetres": 0.65,
+                  "color": "#713e43"
+                }
+              }
+            ],
+            "frameWidthMetres": 0.11,
+            "plinthHeightMetres": 0.3,
+            "plinthColor": "#524d43",
+            "balconyGroups": [
+              {
+                "xMetres": 2.0078618947189946,
+                "bottomMetres": 3,
+                "widthMetres": 1.7,
+                "railHeightMetres": 0.95,
+                "railColor": "#272b2a",
+                "barPitchMetres": 0.17,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.2,
+                "slabHeightMetres": 0.18
+              },
+              {
+                "xMetres": 2.0078618947189946,
+                "bottomMetres": 6,
+                "widthMetres": 1.7,
+                "railHeightMetres": 0.95,
+                "railColor": "#272b2a",
+                "barPitchMetres": 0.17,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.2,
+                "slabHeightMetres": 0.18
+              },
+              {
+                "xMetres": 2.0078618947189946,
+                "bottomMetres": 9,
+                "widthMetres": 1.7,
+                "railHeightMetres": 0.95,
+                "railColor": "#272b2a",
+                "barPitchMetres": 0.17,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.2,
+                "slabHeightMetres": 0.18
+              },
+              {
+                "xMetres": 7.723585684156985,
+                "bottomMetres": 3,
+                "widthMetres": 1.7,
+                "railHeightMetres": 0.95,
+                "railColor": "#272b2a",
+                "barPitchMetres": 0.17,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.2,
+                "slabHeightMetres": 0.18
+              },
+              {
+                "xMetres": 7.723585684156985,
+                "bottomMetres": 6,
+                "widthMetres": 1.7,
+                "railHeightMetres": 0.95,
+                "railColor": "#272b2a",
+                "barPitchMetres": 0.17,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.2,
+                "slabHeightMetres": 0.18
+              },
+              {
+                "xMetres": 7.723585684156985,
+                "bottomMetres": 9,
+                "widthMetres": 1.7,
+                "railHeightMetres": 0.95,
+                "railColor": "#272b2a",
+                "barPitchMetres": 0.17,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.2,
+                "slabHeightMetres": 0.18
+              }
+            ],
+            "canopyGroups": [
+              {
+                "xMetres": 1.8578618947189947,
+                "bottomMetres": 5.45,
+                "widthMetres": 2,
+                "heightMetres": 0.14,
+                "depthMetres": 0.15
+              },
+              {
+                "xMetres": 1.8578618947189947,
+                "bottomMetres": 8.45,
+                "widthMetres": 2,
+                "heightMetres": 0.14,
+                "depthMetres": 0.15
+              },
+              {
+                "xMetres": 1.8578618947189947,
+                "bottomMetres": 11.45,
+                "widthMetres": 2,
+                "heightMetres": 0.14,
+                "depthMetres": 0.15
+              },
+              {
+                "xMetres": 7.573585684156985,
+                "bottomMetres": 5.45,
+                "widthMetres": 2,
+                "heightMetres": 0.14,
+                "depthMetres": 0.15
+              },
+              {
+                "xMetres": 7.573585684156985,
+                "bottomMetres": 8.45,
+                "widthMetres": 2,
+                "heightMetres": 0.14,
+                "depthMetres": 0.15
+              },
+              {
+                "xMetres": 7.573585684156985,
+                "bottomMetres": 11.45,
+                "widthMetres": 2,
+                "heightMetres": 0.14,
+                "depthMetres": 0.15
+              }
+            ],
+            "shutterGroups": [
+              {
+                "xMetres": 2.0078618947189946,
+                "bottomMetres": 3,
+                "openingWidthMetres": 1.7,
+                "widthMetres": 0.85,
+                "heightMetres": 2.45,
+                "openAngleDegrees": 55
+              },
+              {
+                "xMetres": 7.723585684156985,
+                "bottomMetres": 3,
+                "openingWidthMetres": 1.7,
+                "widthMetres": 0.85,
+                "heightMetres": 2.45,
+                "openAngleDegrees": 55
+              },
+              {
+                "xMetres": 2.0078618947189946,
+                "bottomMetres": 6,
+                "openingWidthMetres": 1.7,
+                "widthMetres": 0.85,
+                "heightMetres": 2.45,
+                "openAngleDegrees": 55
+              },
+              {
+                "xMetres": 7.723585684156985,
+                "bottomMetres": 6,
+                "openingWidthMetres": 1.7,
+                "widthMetres": 0.85,
+                "heightMetres": 2.45,
+                "openAngleDegrees": 55
+              },
+              {
+                "xMetres": 2.0078618947189946,
+                "bottomMetres": 9,
+                "openingWidthMetres": 1.7,
+                "widthMetres": 0.85,
+                "heightMetres": 2.35,
+                "openAngleDegrees": 55
+              },
+              {
+                "xMetres": 7.723585684156985,
+                "bottomMetres": 9,
+                "openingWidthMetres": 1.7,
+                "widthMetres": 0.85,
+                "heightMetres": 2.35,
+                "openAngleDegrees": 55
+              },
+              {
+                "xMetres": 2.182861894718995,
+                "bottomMetres": 12.2,
+                "openingWidthMetres": 1.35,
+                "widthMetres": 0.65,
+                "heightMetres": 1.75,
+                "openAngleDegrees": 55
+              },
+              {
+                "xMetres": 7.898585684156985,
+                "bottomMetres": 12.2,
+                "openingWidthMetres": 1.35,
+                "widthMetres": 0.65,
+                "heightMetres": 1.75,
+                "openAngleDegrees": 55
+              }
+            ],
+            "gableTrim": true,
+            "groundEntries": [
+              {
+                "xMetres": 1.8578618947189947,
+                "bottomMetres": 0.1,
+                "widthMetres": 2,
+                "heightMetres": 2.6,
+                "kind": "glazed",
+                "panes": 2,
+                "frameColor": "#4c4b40",
+                "head": "round",
+                "crownRiseMetres": 1,
+                "transomHeightsMetres": [
+                  1.7
+                ],
+                "brickArch": {
+                  "color": "#947c5e",
+                  "bandHeightMetres": 0.22
+                },
+                "shutters": {
+                  "widthMetres": 0.8,
+                  "color": "#713e43"
+                }
+              },
+              {
+                "xMetres": 7.573585684156985,
+                "bottomMetres": 0.1,
+                "widthMetres": 2,
+                "heightMetres": 2.6,
+                "kind": "glazed",
+                "panes": 2,
+                "frameColor": "#4c4b40",
+                "head": "round",
+                "crownRiseMetres": 1,
+                "transomHeightsMetres": [
+                  1.7
+                ],
+                "brickArch": {
+                  "color": "#947c5e",
+                  "bandHeightMetres": 0.22
+                },
+                "shutters": {
+                  "widthMetres": 0.8,
+                  "color": "#713e43"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "official3D": {
+        "summaryPath": "experiments/canal-belt-overnight/warehouses-01/0363100012177571/geometry-summary.json",
+        "groundNAP": 0.39399999380111694,
+        "annexHeightMetres": 6.1
+      },
+      "generationMilliseconds": 26,
+      "reviewState": "Source/gallery and native-game reviewed; unseen rear finish, estimated facade detail and loading-stall limits documented.",
+      "sourceCommit": "9c29e89655ab177fa1125320ad1a6f0fc0cfc8e6",
+      "galleryFrontage": {
+        "target": [
+          4.8873335,
+          52.381408
+        ],
+        "distanceMetres": 35
+      },
+      "updatedAt": "2026-10-07T06:38:49.107683+00:00"
+    },
+    {
+      "id": "ordinary-0363100012165119",
+      "buildingId": "NL.IMBAG.Pand.0363100012165119",
+      "name": "Pale glazed commercial corner on Spuistraat",
+      "anchor": [
+        4.889293,
+        52.3729795
+      ],
+      "cameraBearing": 41,
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.889488,
+              52.373119
+            ],
+            [
+              4.88948,
+              52.373119
+            ],
+            [
+              4.88948,
+              52.37312
+            ],
+            [
+              4.889219,
+              52.373132
+            ],
+            [
+              4.889183,
+              52.373115
+            ],
+            [
+              4.889072,
+              52.372827
+            ],
+            [
+              4.889202,
+              52.372853
+            ],
+            [
+              4.889462,
+              52.372905
+            ],
+            [
+              4.889514,
+              52.373079
+            ],
+            [
+              4.889506,
+              52.373098
+            ],
+            [
+              4.889498,
+              52.373096
+            ],
+            [
+              4.889488,
+              52.373119
+            ]
+          ]
+        ]
+      },
+      "height": 25.489049911499023,
+      "modelUrl": "./models/ordinary-buildings/0363100012165119.glb",
+      "bounds": {
+        "min": [
+          -15.049013137817383,
+          0,
+          -17.249170303344727
+        ],
+        "max": [
+          15.049324035644531,
+          25.489049911499023,
+          17.072500228881836
+        ]
+      },
+      "triangles": 1906,
+      "bytes": 219068,
+      "materials": 3,
+      "hash": "b576d23ba164a2c48352baeddff02b6f81106f00f289c1bdae490e3be0bc60b1",
+      "referenceImages": [
+        "./ordinary-buildings-data/references/0363100012165119/reference-0363100012165119-2025-1.jpg",
+        "./ordinary-buildings-data/references/0363100012165119/reference-0363100012165119-2025-2.jpg",
+        "./ordinary-buildings-data/references/0363100012165119/reference-0363100012165119-2025-0.jpg"
+      ],
+      "sourcePack": "experiments/canal-belt-overnight/modern-01/0363100012165119",
+      "traits": [
+        "Pale concrete frame and dark grouped glazing dominate the corner and long Spuistraat street wall.",
+        "The lowest office floor is visibly taller than upper tiers; ground-floor shops and dark doors stay separate.",
+        "Retain shallow projecting glazed stacks and measured roof height steps; a flat box with an even grid would lose the source character.",
+        "The real vertical MAXWELLHOUSE sign occupies the pale corner panel. Use narrow upright sans capitals with restrained strokes; exact typeface is unknown."
+      ],
+      "simplifications": [
+        "Minor roof patches below0.8% footprint may be omitted only where recognition permits. Main steps18/21/22/24/25m remain.",
+        "Projecting glass bays use estimated0.28m relief, supported visually but not surveyed.",
+        "Small joinery, interiors and tenant logos are omitted.",
+        "Source-corrected raised regions0/7 have estimated upper glazing21.8\u201324.6m; region4 remains dark technical enclosure. Measured roof polygons/heights preserved. Ground doors distinguish narrow recessed dark entrances from shop glass; obscured details conservative.",
+        "Northeast terrace-facing upper office glazing is source-derived; bay counts/heights estimated within measured roof envelope. Unknown rooftop side faces remain plain."
+      ],
+      "heightEvidence": "Official LoD2.2 roof regions supply the dominant22.308m plane plus source-supported18/21/24/25m steps. Do not use the equipment maximum as whole-building height. Photos show stepped roofline and dark rounded corner cap. Roof vertices are measured source geometry; facade openings are visual estimates.",
+      "facadeRecipe": {
+        "kind": "blank",
+        "levels": 0,
+        "edges": {
+          "2": {
+            "kind": "modern-office",
+            "levels": 5,
+            "windowTiers": [
+              {
+                "sillMetres": 3.7,
+                "heightMetres": 4.1,
+                "startMetres": 0.35,
+                "pitchMetres": 4.447139384449518,
+                "count": 4,
+                "widthMetres": 3.747139384449518,
+                "panes": 3,
+                "transomHeightsMetres": [
+                  3.55
+                ]
+              },
+              {
+                "sillMetres": 8.3,
+                "heightMetres": 2.8,
+                "startMetres": 0.35,
+                "pitchMetres": 4.447139384449518,
+                "count": 4,
+                "widthMetres": 3.747139384449518,
+                "panes": 3,
+                "transomHeightsMetres": [
+                  2.25
+                ]
+              },
+              {
+                "sillMetres": 11.7,
+                "heightMetres": 2.8,
+                "startMetres": 0.35,
+                "pitchMetres": 4.447139384449518,
+                "count": 4,
+                "widthMetres": 3.747139384449518,
+                "panes": 3,
+                "transomHeightsMetres": [
+                  2.25
+                ]
+              },
+              {
+                "sillMetres": 15.1,
+                "heightMetres": 2.8,
+                "startMetres": 0.35,
+                "pitchMetres": 4.447139384449518,
+                "count": 4,
+                "widthMetres": 3.747139384449518,
+                "panes": 3,
+                "transomHeightsMetres": [
+                  2.25
+                ]
+              },
+              {
+                "sillMetres": 18.5,
+                "heightMetres": 2.8,
+                "startMetres": 0.35,
+                "pitchMetres": 4.447139384449518,
+                "count": 4,
+                "widthMetres": 3.747139384449518,
+                "panes": 3,
+                "transomHeightsMetres": [
+                  2.25
+                ]
+              }
+            ],
+            "bands": [
+              {
+                "bottomMetres": 3.15,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 7.8,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 11.15,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 14.55,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 17.95,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 21.35,
+                "heightMetres": 0.45,
+                "color": "#454e50"
+              }
+            ],
+            "groundEntries": [
+              {
+                "xMetres": 0.35,
+                "widthMetres": 3.747139384449518,
+                "heightMetres": 2.65,
+                "bottomMetres": 0.35,
+                "kind": "glazed",
+                "panes": 1,
+                "transomHeightsMetres": [
+                  2.1
+                ]
+              },
+              {
+                "xMetres": 4.797139384449518,
+                "widthMetres": 3.747139384449518,
+                "heightMetres": 2.65,
+                "bottomMetres": 0.35,
+                "kind": "glazed",
+                "panes": 2,
+                "transomHeightsMetres": [
+                  2.1
+                ]
+              },
+              {
+                "xMetres": 9.244278768899036,
+                "widthMetres": 1.35,
+                "heightMetres": 2.65,
+                "bottomMetres": 0.35,
+                "kind": "glazed",
+                "panes": 1,
+                "transomHeightsMetres": [
+                  2.1
+                ],
+                "frameColor": "#353e40",
+                "glassColor": "#394a4f"
+              },
+              {
+                "xMetres": 13.691418153348556,
+                "widthMetres": 3.747139384449518,
+                "heightMetres": 2.65,
+                "bottomMetres": 0.35,
+                "kind": "glazed",
+                "panes": 1,
+                "transomHeightsMetres": [
+                  2.1
+                ]
+              }
+            ],
+            "projectionGroups": [
+              {
+                "xMetres": 0.35,
+                "widthMetres": 3.747139384449518,
+                "bottomMetres": 3.7,
+                "heightMetres": 14.2,
+                "depthMetres": 0.28
+              },
+              {
+                "xMetres": 13.691418153348556,
+                "widthMetres": 3.747139384449518,
+                "bottomMetres": 3.7,
+                "heightMetres": 14.2,
+                "depthMetres": 0.28
+              }
+            ],
+            "roundedCap": {
+              "heightMetres": 0.85,
+              "depthMetres": 0.45,
+              "minTopMetres": 22.1,
+              "maxTopMetres": 22.65
+            }
+          },
+          "3": {
+            "kind": "modern-office",
+            "levels": 5,
+            "windowTiers": [
+              {
+                "sillMetres": 3.7,
+                "heightMetres": 4.1,
+                "startMetres": 0.35,
+                "pitchMetres": 3.093138198074501,
+                "count": 1,
+                "widthMetres": 2.3931381980745012,
+                "panes": 3,
+                "transomHeightsMetres": [
+                  3.55
+                ]
+              },
+              {
+                "sillMetres": 8.3,
+                "heightMetres": 2.8,
+                "startMetres": 0.35,
+                "pitchMetres": 3.093138198074501,
+                "count": 1,
+                "widthMetres": 2.3931381980745012,
+                "panes": 3,
+                "transomHeightsMetres": [
+                  2.25
+                ]
+              },
+              {
+                "sillMetres": 11.7,
+                "heightMetres": 2.8,
+                "startMetres": 0.35,
+                "pitchMetres": 3.093138198074501,
+                "count": 1,
+                "widthMetres": 2.3931381980745012,
+                "panes": 3,
+                "transomHeightsMetres": [
+                  2.25
+                ]
+              },
+              {
+                "sillMetres": 15.1,
+                "heightMetres": 2.8,
+                "startMetres": 0.35,
+                "pitchMetres": 3.093138198074501,
+                "count": 1,
+                "widthMetres": 2.3931381980745012,
+                "panes": 3,
+                "transomHeightsMetres": [
+                  2.25
+                ]
+              },
+              {
+                "sillMetres": 18.5,
+                "heightMetres": 2.8,
+                "startMetres": 0.35,
+                "pitchMetres": 3.093138198074501,
+                "count": 1,
+                "widthMetres": 2.3931381980745012,
+                "panes": 3,
+                "transomHeightsMetres": [
+                  2.25
+                ]
+              }
+            ],
+            "bands": [
+              {
+                "bottomMetres": 3.15,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 7.8,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 11.15,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 14.55,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 17.95,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 21.35,
+                "heightMetres": 0.45,
+                "color": "#454e50"
+              }
+            ],
+            "groundEntries": [
+              {
+                "xMetres": 0.35,
+                "widthMetres": 2.3931381980745012,
+                "heightMetres": 2.65,
+                "bottomMetres": 0.35,
+                "kind": "glazed",
+                "panes": 2,
+                "transomHeightsMetres": [
+                  2.1
+                ]
+              }
+            ],
+            "roundedCap": {
+              "heightMetres": 0.85,
+              "depthMetres": 0.45,
+              "minTopMetres": 22.1,
+              "maxTopMetres": 22.65
+            }
+          },
+          "4": {
+            "kind": "modern-office",
+            "levels": 5,
+            "windowTiers": [
+              {
+                "sillMetres": 3.7,
+                "heightMetres": 4.1,
+                "startMetres": 0.35,
+                "pitchMetres": 4.1169696267356475,
+                "count": 8,
+                "widthMetres": 3.4169696267356473,
+                "panes": 3,
+                "transomHeightsMetres": [
+                  3.55
+                ]
+              },
+              {
+                "sillMetres": 8.3,
+                "heightMetres": 2.8,
+                "startMetres": 0.35,
+                "pitchMetres": 4.1169696267356475,
+                "count": 8,
+                "widthMetres": 3.4169696267356473,
+                "panes": 3,
+                "transomHeightsMetres": [
+                  2.25
+                ]
+              },
+              {
+                "sillMetres": 11.7,
+                "heightMetres": 2.8,
+                "startMetres": 0.35,
+                "pitchMetres": 4.1169696267356475,
+                "count": 8,
+                "widthMetres": 3.4169696267356473,
+                "panes": 3,
+                "transomHeightsMetres": [
+                  2.25
+                ]
+              },
+              {
+                "sillMetres": 15.1,
+                "heightMetres": 2.8,
+                "startMetres": 0.35,
+                "pitchMetres": 4.1169696267356475,
+                "count": 8,
+                "widthMetres": 3.4169696267356473,
+                "panes": 3,
+                "transomHeightsMetres": [
+                  2.25
+                ]
+              },
+              {
+                "sillMetres": 18.5,
+                "heightMetres": 2.8,
+                "startMetres": 0.35,
+                "pitchMetres": 4.1169696267356475,
+                "count": 8,
+                "widthMetres": 3.4169696267356473,
+                "panes": 3,
+                "transomHeightsMetres": [
+                  2.25
+                ]
+              }
+            ],
+            "bands": [
+              {
+                "bottomMetres": 3.15,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 7.8,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 11.15,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 14.55,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 17.95,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 21.35,
+                "heightMetres": 0.45,
+                "color": "#454e50"
+              }
+            ],
+            "groundEntries": [
+              {
+                "xMetres": 0.35,
+                "widthMetres": 1.3,
+                "heightMetres": 2.65,
+                "bottomMetres": 0.35,
+                "kind": "glazed",
+                "panes": 1,
+                "transomHeightsMetres": [
+                  2.1
+                ],
+                "frameColor": "#343b3d",
+                "glassColor": "#344247"
+              },
+              {
+                "xMetres": 4.466969626735647,
+                "widthMetres": 3.4169696267356473,
+                "heightMetres": 2.65,
+                "bottomMetres": 0.35,
+                "kind": "glazed",
+                "panes": 2,
+                "transomHeightsMetres": [
+                  2.1
+                ]
+              },
+              {
+                "xMetres": 8.583939253471295,
+                "widthMetres": 1.2,
+                "heightMetres": 2.65,
+                "bottomMetres": 0.35,
+                "kind": "glazed",
+                "panes": 1,
+                "transomHeightsMetres": [
+                  2.1
+                ],
+                "frameColor": "#343b3d",
+                "glassColor": "#344247"
+              },
+              {
+                "xMetres": 12.700908880206942,
+                "widthMetres": 3.4169696267356473,
+                "heightMetres": 2.65,
+                "bottomMetres": 0.35,
+                "kind": "glazed",
+                "panes": 2,
+                "transomHeightsMetres": [
+                  2.1
+                ]
+              },
+              {
+                "xMetres": 16.81787850694259,
+                "widthMetres": 3.4169696267356473,
+                "heightMetres": 2.65,
+                "bottomMetres": 0.35,
+                "kind": "glazed",
+                "panes": 2,
+                "transomHeightsMetres": [
+                  2.1
+                ]
+              },
+              {
+                "xMetres": 20.934848133678237,
+                "widthMetres": 1.15,
+                "heightMetres": 2.65,
+                "bottomMetres": 0.35,
+                "kind": "solid",
+                "panes": 2,
+                "transomHeightsMetres": [
+                  2.1
+                ],
+                "color": "#505858"
+              },
+              {
+                "xMetres": 25.051817760413886,
+                "widthMetres": 3.4169696267356473,
+                "heightMetres": 2.65,
+                "bottomMetres": 0.35,
+                "kind": "glazed",
+                "panes": 2,
+                "transomHeightsMetres": [
+                  2.1
+                ]
+              },
+              {
+                "xMetres": 29.168787387149536,
+                "widthMetres": 3.4169696267356473,
+                "heightMetres": 2.65,
+                "bottomMetres": 0.35,
+                "kind": "glazed",
+                "panes": 2,
+                "transomHeightsMetres": [
+                  2.1
+                ]
+              }
+            ],
+            "projectionGroups": [
+              {
+                "xMetres": 0.35,
+                "widthMetres": 3.4169696267356473,
+                "bottomMetres": 3.7,
+                "heightMetres": 14.2,
+                "depthMetres": 0.28
+              }
+            ],
+            "roundedCap": {
+              "heightMetres": 0.85,
+              "depthMetres": 0.45,
+              "minTopMetres": 22.1,
+              "maxTopMetres": 22.65
+            }
+          },
+          "7": {
+            "kind": "modern-office",
+            "levels": 5,
+            "windowTiers": [
+              {
+                "sillMetres": 3.7,
+                "heightMetres": 4.1,
+                "startMetres": 0.35,
+                "pitchMetres": 4.922360819132907,
+                "count": 4,
+                "widthMetres": 4.2223608191329065,
+                "panes": 3,
+                "transomHeightsMetres": [
+                  3.55
+                ]
+              },
+              {
+                "sillMetres": 8.3,
+                "heightMetres": 2.8,
+                "startMetres": 0.35,
+                "pitchMetres": 4.922360819132907,
+                "count": 4,
+                "widthMetres": 4.2223608191329065,
+                "panes": 3,
+                "transomHeightsMetres": [
+                  2.25
+                ]
+              },
+              {
+                "sillMetres": 11.7,
+                "heightMetres": 2.8,
+                "startMetres": 0.35,
+                "pitchMetres": 4.922360819132907,
+                "count": 4,
+                "widthMetres": 4.2223608191329065,
+                "panes": 3,
+                "transomHeightsMetres": [
+                  2.25
+                ]
+              },
+              {
+                "sillMetres": 15.1,
+                "heightMetres": 2.8,
+                "startMetres": 0.35,
+                "pitchMetres": 4.922360819132907,
+                "count": 4,
+                "widthMetres": 4.2223608191329065,
+                "panes": 3,
+                "transomHeightsMetres": [
+                  2.25
+                ]
+              },
+              {
+                "sillMetres": 18.5,
+                "heightMetres": 2.8,
+                "startMetres": 0.35,
+                "pitchMetres": 4.922360819132907,
+                "count": 4,
+                "widthMetres": 4.2223608191329065,
+                "panes": 3,
+                "transomHeightsMetres": [
+                  2.25
+                ]
+              }
+            ],
+            "bands": [
+              {
+                "bottomMetres": 3.15,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 7.8,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 11.15,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 14.55,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 17.95,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 21.35,
+                "heightMetres": 0.45,
+                "color": "#454e50"
+              },
+              {
+                "xMetres": 14.5,
+                "widthMetres": 1.3,
+                "bottomMetres": 3.2,
+                "heightMetres": 18.8,
+                "color": "#deddd3"
+              }
+            ],
+            "groundEntries": [
+              {
+                "xMetres": 0.35,
+                "widthMetres": 4.2223608191329065,
+                "heightMetres": 2.65,
+                "bottomMetres": 0.35,
+                "kind": "glazed",
+                "panes": 2,
+                "transomHeightsMetres": [
+                  2.1
+                ]
+              },
+              {
+                "xMetres": 5.272360819132906,
+                "widthMetres": 4.2223608191329065,
+                "heightMetres": 2.65,
+                "bottomMetres": 0.35,
+                "kind": "glazed",
+                "panes": 2,
+                "transomHeightsMetres": [
+                  2.1
+                ]
+              },
+              {
+                "xMetres": 10.194721638265813,
+                "widthMetres": 4.2223608191329065,
+                "heightMetres": 2.65,
+                "bottomMetres": 0.35,
+                "kind": "glazed",
+                "panes": 2,
+                "transomHeightsMetres": [
+                  2.1
+                ]
+              },
+              {
+                "xMetres": 15.11708245739872,
+                "widthMetres": 4.2223608191329065,
+                "heightMetres": 2.65,
+                "bottomMetres": 0.35,
+                "kind": "glazed",
+                "panes": 2,
+                "transomHeightsMetres": [
+                  2.1
+                ]
+              }
+            ],
+            "roundedCap": {
+              "heightMetres": 0.85,
+              "depthMetres": 0.45,
+              "minTopMetres": 22.1,
+              "maxTopMetres": 22.65
+            }
+          },
+          "8": {
+            "kind": "modern-office",
+            "levels": 5,
+            "windowTiers": [
+              {
+                "sillMetres": 3.7,
+                "heightMetres": 4.1,
+                "startMetres": 0.35,
+                "pitchMetres": 2.183844540162013,
+                "count": 1,
+                "widthMetres": 1.483844540162013,
+                "panes": 2,
+                "transomHeightsMetres": [
+                  3.55
+                ]
+              },
+              {
+                "sillMetres": 8.3,
+                "heightMetres": 2.8,
+                "startMetres": 0.35,
+                "pitchMetres": 2.183844540162013,
+                "count": 1,
+                "widthMetres": 1.483844540162013,
+                "panes": 2,
+                "transomHeightsMetres": [
+                  2.25
+                ]
+              },
+              {
+                "sillMetres": 11.7,
+                "heightMetres": 2.8,
+                "startMetres": 0.35,
+                "pitchMetres": 2.183844540162013,
+                "count": 1,
+                "widthMetres": 1.483844540162013,
+                "panes": 2,
+                "transomHeightsMetres": [
+                  2.25
+                ]
+              },
+              {
+                "sillMetres": 15.1,
+                "heightMetres": 2.8,
+                "startMetres": 0.35,
+                "pitchMetres": 2.183844540162013,
+                "count": 1,
+                "widthMetres": 1.483844540162013,
+                "panes": 2,
+                "transomHeightsMetres": [
+                  2.25
+                ]
+              },
+              {
+                "sillMetres": 18.5,
+                "heightMetres": 2.8,
+                "startMetres": 0.35,
+                "pitchMetres": 2.183844540162013,
+                "count": 1,
+                "widthMetres": 1.483844540162013,
+                "panes": 2,
+                "transomHeightsMetres": [
+                  2.25
+                ]
+              }
+            ],
+            "bands": [
+              {
+                "bottomMetres": 3.15,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 7.8,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 11.15,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 14.55,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 17.95,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 21.35,
+                "heightMetres": 0.45,
+                "color": "#454e50"
+              }
+            ],
+            "groundEntries": [
+              {
+                "xMetres": 0.35,
+                "widthMetres": 1.483844540162013,
+                "heightMetres": 2.65,
+                "bottomMetres": 0.35,
+                "kind": "glazed",
+                "panes": 2,
+                "transomHeightsMetres": [
+                  2.1
+                ]
+              }
+            ],
+            "roundedCap": {
+              "heightMetres": 0.85,
+              "depthMetres": 0.45,
+              "minTopMetres": 22.1,
+              "maxTopMetres": 22.65
+            }
+          },
+          "10": {
+            "kind": "modern-office",
+            "levels": 5,
+            "windowTiers": [
+              {
+                "sillMetres": 3.7,
+                "heightMetres": 4.1,
+                "startMetres": 0.35,
+                "pitchMetres": 2.6490261481263744,
+                "count": 1,
+                "widthMetres": 1.9490261481263744,
+                "panes": 2,
+                "transomHeightsMetres": [
+                  3.55
+                ]
+              },
+              {
+                "sillMetres": 8.3,
+                "heightMetres": 2.8,
+                "startMetres": 0.35,
+                "pitchMetres": 2.6490261481263744,
+                "count": 1,
+                "widthMetres": 1.9490261481263744,
+                "panes": 2,
+                "transomHeightsMetres": [
+                  2.25
+                ]
+              },
+              {
+                "sillMetres": 11.7,
+                "heightMetres": 2.8,
+                "startMetres": 0.35,
+                "pitchMetres": 2.6490261481263744,
+                "count": 1,
+                "widthMetres": 1.9490261481263744,
+                "panes": 2,
+                "transomHeightsMetres": [
+                  2.25
+                ]
+              },
+              {
+                "sillMetres": 15.1,
+                "heightMetres": 2.8,
+                "startMetres": 0.35,
+                "pitchMetres": 2.6490261481263744,
+                "count": 1,
+                "widthMetres": 1.9490261481263744,
+                "panes": 2,
+                "transomHeightsMetres": [
+                  2.25
+                ]
+              },
+              {
+                "sillMetres": 18.5,
+                "heightMetres": 2.8,
+                "startMetres": 0.35,
+                "pitchMetres": 2.6490261481263744,
+                "count": 1,
+                "widthMetres": 1.9490261481263744,
+                "panes": 2,
+                "transomHeightsMetres": [
+                  2.25
+                ]
+              }
+            ],
+            "bands": [
+              {
+                "bottomMetres": 3.15,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 7.8,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 11.15,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 14.55,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 17.95,
+                "heightMetres": 0.45,
+                "color": "#deddd3"
+              },
+              {
+                "bottomMetres": 21.35,
+                "heightMetres": 0.45,
+                "color": "#454e50"
+              }
+            ],
+            "groundEntries": [
+              {
+                "xMetres": 0.35,
+                "widthMetres": 1.9490261481263744,
+                "heightMetres": 2.65,
+                "bottomMetres": 0.35,
+                "kind": "glazed",
+                "panes": 2,
+                "transomHeightsMetres": [
+                  2.1
+                ]
+              }
+            ],
+            "roundedCap": {
+              "heightMetres": 0.85,
+              "depthMetres": 0.45,
+              "minTopMetres": 22.1,
+              "maxTopMetres": 22.65
+            }
+          }
+        }
+      },
+      "official3D": {
+        "summaryPath": "experiments/canal-belt-overnight/modern-01/0363100012165119/geometry-summary.json",
+        "groundNAP": 0.9670000076293945,
+        "rectangleFill": 0.752,
+        "courtyardArea": 0
+      },
+      "generationMilliseconds": 98,
+      "reviewState": "Source/gallery and native-game reviewed; unseen rear finish, estimated facade detail and loading-stall limits documented.",
+      "sourceCommit": "9c29e89655ab177fa1125320ad1a6f0fc0cfc8e6",
+      "galleryFrontage": {
+        "target": [
+          4.88948,
+          52.3731
+        ],
+        "distanceMetres": 48
+      },
+      "updatedAt": "2026-10-07T06:38:49.107683+00:00"
     }
   ]
 }

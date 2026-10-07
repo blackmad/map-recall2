@@ -33,7 +33,7 @@
   <p><a href="landmark-queue.html">Building queue</a> &middot; <a href="manual-landmarks.html">Landmark models</a> &middot; <a href="ordinary-buildings.html">Source comparisons</a> &middot; <a href="park-landscape.html">Park views</a> &middot; <a href="tree-models.html">Tree models</a> &middot; <a href="model-reuse-review.html">Reusable model review</a></p>
   <p>Custom ordinary buildings placed on their surveyed footprints. Drag to orbit &middot; scroll to zoom. Open a source comparison or add feedback on any model.</p>
   <div class="sort-controls"><label for="model-sort">Sort models</label><select id="model-sort">
-    <option value="default" selected>Catalogue order</option><option value="newest">Newest updated</option>
+    <option value="default">Catalogue order</option><option value="newest" selected>Newest updated</option>
     <option value="oldest">Oldest updated</option><option value="name">Name</option>
   </select><span id="date-status" role="status"></span></div>
 </header>
@@ -69,7 +69,7 @@ const entries = [];
 const sortControl = document.querySelector('#model-sort');
 const requestedSort = new URLSearchParams(location.search).get('sort');
 if (['default', 'newest', 'oldest', 'name'].includes(requestedSort)) sortControl.value = requestedSort;
-let modelDates = {};
+let modelDates = Object.fromEntries(MODELS.filter(spec => spec.updatedAt).map(spec => [spec.id, { updatedAt: spec.updatedAt }]));
 function sortModels() {
   const mode = sortControl.value;
   const ordered = [...entries].sort((a, b) => {
@@ -236,7 +236,7 @@ fetch('./models/model-dates.json').then(response => {
   if (!response.ok) throw new Error('Date metadata unavailable');
   return response.json();
 }).then(data => {
-  modelDates = data.models || {};
+  modelDates = { ...(data.models || {}), ...modelDates };
   for (const entry of entries) {
     const date = modelDates[entry.spec.id]?.updatedAt;
     if (date && Number.isFinite(Date.parse(date))) {

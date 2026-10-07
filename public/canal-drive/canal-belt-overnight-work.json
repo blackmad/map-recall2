@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "startedAt": "2026-10-06T21:08:31.879031+00:00",
+  "scope": "Warehouse conversions and modern blocks in the central canal enclosure",
+  "deadlineAssumption": "08:00Europe/Amsterdam2026-10-07",
+  "acceptance": "Batch01 source/gallery/game-reviewed; release pending",
+  "batches": [
+    {
+      "id": "01",
+      "state": "reviewed-release-pending",
+      "candidates": [
+        "0363100012177576",
+        "0363100012177571",
+        "0363100012165119"
+      ],
+      "sourcePacks": [
+        "experiments/canal-belt-overnight/warehouses-01",
+        "experiments/canal-belt-overnight/modern-01"
+      ],
+      "criticalTraits": [
+        "pairedfront/reargables andlowcenter",
+        "burgundyshutters/whitewindowgroups/Julietrails",
+        "modernprojectingglazedbays/windowtiers/mixedground/roofsteps"
+      ],
+      "accepted": [
+        "0363100012177576",
+        "0363100012177571",
+        "0363100012165119"
+      ],
+      "failedEvidence": [
+        "initial wrong cameras",
+        "Maxwell blankuppercorner repairedv4",
+        "game roofcrown hold withdrawn after source/runtime diagnosis"
+      ],
+      "sourceCommit": "9c29e89655ab177fa1125320ad1a6f0fc0cfc8e6"
+    }
+  ],
+  "morningCheckpoint": {
+    "at": "2026-10-07T06:16:17Z",
+    "state": "interrupted-usage-limit",
+    "publicBaseline": "3d2e3d31",
+    "newPublicModels": 0,
+    "batch01Gallery": "independent-v4-pass-game-release-pending",
+    "batch02": "drafts-source-conflicts",
+    "batch03": "sources-ready-builder-usage-failure",
+    "handoff": "docs/performance/2026-10-06/canal-belt-overnight-handoff.md"
+  }
+}
