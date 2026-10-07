@@ -2043,10 +2043,18 @@
           },
           "constructionYear": 2002,
           "bagStatus": "Pand in gebruik",
-          "status": "pending-source-review",
-          "modelIds": [],
+          "status": "local-production-reviewed-hosted-pending",
+          "modelIds": [
+            "haparandaweg-11"
+          ],
           "sourceUrl": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/ca080bc6-44e4-51b4-90a0-77bca1dc07e0?f=json",
-          "resolution": "explicit-official-verblijfsobject-pand-link"
+          "resolution": "explicit-official-verblijfsobject-pand-link",
+          "sourceArchiveCommit": "77019d7c738212ccec9a5c8c58e6ce3749ed7bc4",
+          "acceptedArchiveLocalCommit": "e01d259d564d87933995a5e6e51e8dc601312e9c",
+          "acceptedArchivePublication": "verified-remote-main",
+          "assetSHA256": "d7277ae156f938942f4cbf573294fc3ee5e85bdc43fe796b50cbb751c4562bee",
+          "acceptedSourceArchiveCommit": "e01d259d564d87933995a5e6e51e8dc601312e9c",
+          "sourceRemoteVerifiedCommit": "16d644906c974150de90690eca7a8918e154cd6c"
         },
         {
           "bagId": "0363100012104964",
@@ -2100,10 +2108,18 @@
           },
           "constructionYear": 2002,
           "bagStatus": "Pand in gebruik",
-          "status": "pending-source-review",
-          "modelIds": [],
+          "status": "local-production-reviewed-hosted-pending",
+          "modelIds": [
+            "haparandaweg-13"
+          ],
           "sourceUrl": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/0322e6b9-f465-563d-a55a-6e391ced5326?f=json",
-          "resolution": "explicit-official-verblijfsobject-pand-link"
+          "resolution": "explicit-official-verblijfsobject-pand-link",
+          "sourceArchiveCommit": "77019d7c738212ccec9a5c8c58e6ce3749ed7bc4",
+          "acceptedArchiveLocalCommit": "e01d259d564d87933995a5e6e51e8dc601312e9c",
+          "acceptedArchivePublication": "verified-remote-main",
+          "assetSHA256": "f0257cb44f19da99e9557b8b1c2207607da809904d2fec38af4c91392ddb1dd0",
+          "acceptedSourceArchiveCommit": "e01d259d564d87933995a5e6e51e8dc601312e9c",
+          "sourceRemoteVerifiedCommit": "16d644906c974150de90690eca7a8918e154cd6c"
         },
         {
           "bagId": "0363100012071094",

@@ -1,0 +1,15 @@
+# Haparandaweg 13 bounded source/build handoff
+
+Isolated base0f4d3dcf; no commit, shared registration, queue, cloud, private-repository or browser mutations. Owned dedicated13 files and ignored artifacts only.
+
+Official BAG0363100012104964, VBO0363010001010868, address0363200000485207 and OSMw268508403 establish separate 2002 industrial parent. VBO140m² is usable area, not60.47m² surveyed roof. Native anchor4.873399,52.394953, Xeast/Zsouth/Yup0.44mNAP, north0/scale1. Exact neighboring9/11/school/apartments retain independent identities. Parent13 is behind11's long street wing; white Interall/NobleBouw is a separate neighbor.
+
+Critical exposed southeastedge2→3→4, approximately6.7m wide, faces southwest-east source station001264. Leaf-off2021 original resolves broad left upper light, narrow right upper light, dark spandrel and lower glazed/door tier. Lower three-way subdivision and metric sizes approximate under fence/tree occlusion. Current2025station00484 confirms upper assembly; lower stillhidden. Hidden party/rear openings are unknown and not invented. No signage or genuine POI point established; only ordinary BAG address point inside parent. Sourcepanoramas used exclusively as original-geometry reference.
+
+Private source pack staged at artifacts/haparandaweg-13/source-pack/models/haparandaweg-13 with20 originals/provenance/checksum entries. Includes officialraws, reused published11front2021/front2025/frontwest2025, new2021adjacencies+east001264 and2025adjacencies+east00484. Exact bounded Beeldbank query13 returns200 viewer shell; no archive image inspected. Modern ordinary building has no historic register claim. Pythonurllib SSL failure followed by successful curl boundedretry is recorded. Root must verify/publish source pack before publicmodel commit; update research/spec sourcecommit and remove duplicated stagedoriginals only after successful private publication.
+
+Compressed draft artifacts/haparandaweg-13/haparandaweg-13.glb SHA2561d9d7dfb704bb8acfbc46469a493b55c277187b732686565f911cebf54572785;661triangles/17,660bytes. Decoded finite bounds,0downward roof faces, roofsupport probes pass,360dense glazing samples/30ordinary firsthits pass,2outsideairprobes clear. Native sourceplane7.09–7.15m owns roof; wall has no cap, sourcepointmaximum is not extrusionheight.
+
+CPU comparison artifacts/haparandaweg-13/comparison.html: east2021/east2025 native optical sourceviews plus higher/opposite. Source facing silhouette and glazing assembly align; isolated westblankwall is hidden by11 in actual context. Independent/root sourcecomparison, gallery/live joint11+13 placement, exact suppression/fallback, neighborretention and performance remain pending. No GPU acceptance claimed. Full shared lint/runtime/bundle checks remain coordinator-owned.
+
+Commands: node scripts/landmarks/haparandaweg-13-extract.mjs; node --import tsx scripts/landmarks/haparandaweg-13-export-draft.ts; node --import tsx scripts/landmarks/haparandaweg-13-check-geometry.ts; blender -b -t4 -P scripts/landmarks/haparandaweg-13-cpu-review.py.
