@@ -18,7 +18,9 @@
     "additionalRearEvidenceCommit": "e23fad84",
     "latestCompleteCommit": "d4c2880119aef096f16e139bff475a4a28d5671b",
     "verificationCommit": "d4c2880119aef096f16e139bff475a4a28d5671b",
-    "acceptedEvidencePath": "models/el-tawheed/checkpoint-f39"
+    "acceptedEvidencePath": "models/el-tawheed/checkpoint-f39",
+    "hostedCommit": "197e8b8397ef52b74d548b26ca3faa1ee0338f50",
+    "hostedEvidencePath": "models/el-tawheed/checkpoint-hosted-f39"
   },
   "architecturalAssertions": [
     {
@@ -356,6 +358,6 @@
       "Low-eye max26/89 and FOV80 captures explicitly diagnostic, not shipping defaults. Preferred full-front actual zoom21.89047/FOV36.87 fits shipping max22.",
       "90frame El-only fallback comparison headless3000x1400 ~147/144/145ms median; no physicalmobile or whole-game performance claim."
     ],
-    "release": "Private accepted sources/evidence pushed; route-start desktop smoke passed. Local accepted production awaiting public commit and hosted verification."
+    "release": "Committed/pushed05cbf49ad1b903d6b35f878ad351e6f6081df742, Firebase37608599008SUCCESS; fresh hosted exact fingerprint/hash, gallery, nativefront, chosenroute/pin/physicalcard/exactmasks/neighbors verified. Source rear remains unverified; other limits retained."
   }
 }

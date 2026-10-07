@@ -1,0 +1,9 @@
+# El Tawheed hosted checkpoint
+
+The Jan Hanzenstraat114 former factory now uses an original native-scale model, preserving the six-bay facade, short window transoms, source-supported pale panel/cornice, basement grille and entrance approach. Deep upper-pier relief failed the initial game view; the corrected shallow strips passed root and independent source/gallery/game review. Earlier failed exports and screenshots remain in the private source pack.
+
+Public model commit: `05cbf49ad1b903d6b35f878ad351e6f6081df742`. Firebase run `37608599008` succeeded. Fresh gallery/game requests returned the reviewed mesh SHA `f39fb7244564e06750bfaa148fddba539d4420286efc0bfeac3db15a1c7f90e0`, 6,004 triangles and 83,264 bytes. Chosen genuine destination, sourced entrance pin, physical info-card click, two exact masks and both resident neighbors passed. Root inspected the full hosted frontage; current default and four rotated gallery views passed independent review.
+
+Private source/evidence commits: accepted local `d4c2880119aef096f16e139bff475a4a28d5671b`; hosted `197e8b8397ef52b74d548b26ca3faa1ee0338f50`. Canonical pack `models/el-tawheed`, hosted evidence `checkpoint-hosted-f39`. Hosted archive verifies 140 unique objects and 413 dependencies with zero missing local files.
+
+Decoded roof/pane/pier checks, shared asset/POI contracts, TypeScript and desktop route-start smoke passed. Actual fallback shader ranges restore; paused stationary desktop/touch-emulated pans retain ordinary windows/doors. No physical-device performance pass is claimed: the headless frame comparison remains slow and bounded. Diagnostic low-eye/FOV variants are identified in saved reports. Rear source photography is occluded; conservative blank rear surfaces and surveyed roofs are not a positive rear-facade photo match. Hosted opposite context was partly HUD-covered; identical bytes retain the separately reviewed local roof/open-space evidence.
