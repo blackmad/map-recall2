@@ -1,0 +1,57 @@
+{
+  "request": "VondelCS",
+  "canonicalModelId": "idfa-pavilion",
+  "landmarkId": "osm-way-57857054",
+  "osmId": "w57857054",
+  "bagId": "0363100012237216",
+  "monumentId": "504833",
+  "address": "Vondelpark 3, Amsterdam",
+  "finding": "VondelCS was the AVROTROS-era name (2014\u20132021) of the Vondelparkpaviljoen, now IDFA Het Documentaire Paviljoen. Reuse existing native model and genuine POI identity; do not add a model or destination.",
+  "sources": [
+    {
+      "url": "https://www.grachtenfestival.nl/locatie/vondelparkpaviljoen",
+      "path": "../map-recall2-source-data/models/vondelcs/webpages/grachtenfestival.html",
+      "sha256": "69d2320cd6063ed7cd25a4adb9a65b9d0ea0844653b160c67d1acb31618ca6c8",
+      "status": 200,
+      "representation": "raw-http-response-body",
+      "retrievedOn": "2026-10-06T05:37:35.267701+00:00",
+      "rights": "Original source rights retained; private research only"
+    },
+    {
+      "url": "https://www.idfa.nl/en/vondelpark/",
+      "path": "../map-recall2-source-data/models/vondelcs/webpages/idfa.html",
+      "sha256": "42ba180b6e640a5d0152c54d7253fb1462306ba1b99d31556d2f4cd17e68164e",
+      "status": 200,
+      "representation": "raw-http-response-body",
+      "retrievedOn": "2026-10-06T05:37:35.485910+00:00",
+      "rights": "Original source rights retained; private research only"
+    },
+    {
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/504833",
+      "path": "../map-recall2-source-data/models/vondelcs/webpages/register.html",
+      "sha256": "ab67b5f1b2d1059b1b54cc98de02d82741438c2645c0a104442293fb54accb56",
+      "status": 200,
+      "representation": "raw-http-response-body",
+      "retrievedOn": "2026-10-06T05:37:35.654590+00:00",
+      "rights": "Original source rights retained; private research only"
+    },
+    {
+      "url": "https://amsterdamopdekaart.nl/1850-1940/Vondelpark/Vondelparkpaviljoen",
+      "path": "../map-recall2-source-data/models/vondelcs/webpages/municipal-history.html",
+      "sha256": "49dedb36a4fc14b0a73815d8f34d370e4b30be7b2de188d4546e831631fa8acf",
+      "status": 200,
+      "representation": "raw-http-response-body",
+      "retrievedOn": "2026-10-06T05:37:35.920617+00:00",
+      "rights": "Original source rights retained; private research only"
+    }
+  ],
+  "existingSources": "models/idfa-pavilion/manifest.json",
+  "reviewEvidence": "artifacts/idfa-pavilion-review/; scripts/landmarks/idfa-pavilion-review.json",
+  "limitations": "This is alias research only, not a new visual acceptance. Existing canonical model review remains authoritative.",
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "ec763e6c7f79c143d560fe20ceaa23e714af00c2",
+    "path": "models/vondelcs",
+    "canonicalPath": "models/idfa-pavilion"
+  }
+}

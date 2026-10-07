@@ -19,6 +19,10 @@ const extras=extract.flatMap((f:any)=>{
   seen.add(key);return[p];
 }).sort((a:any,b:any)=>b.prominence-a.prominence);
 const requests=['Silodam','Embassy of the Free Mind','OLVG West','OLVG Oost','A’DAM Tower','Pontsteiger','REM-eiland','Paradiso','Melkweg','Amsterdam Centraal station complex','RAI Amsterdam','Amstel Hotel','Rembrandt Tower','Breitner Tower','Mondriaan Tower','De Piramides','Valley','Viñoly','The Rock','Symphony','World Trade Center Amsterdam','Westergasfabriek','Zuiveringshal','Machinegebouw','Transformatorhuis','Westergastheater','Blauwe Theehuis','Groot Melkhuis','VondelCS','Vondeltuin','Kinderkookkafé','Beest Boulders','Monk Amsterdam','Het Lab','Beta Boulders','Klimmuur Centraal','Mountain Network Amsterdam','Klimhal Amsterdam','Beest Boulders Het Lab','Amsterdam Sloterdijk station','HNK Amsterdam Sloterdijk','Amsta De Poort'];
+// VondelCS was the AVROTROS-era name of the current IDFA pavilion, not
+// another destination. Cached alias proof: docs/references/vondelcs/alias-coverage.json;
+// https://www.grachtenfestival.nl/locatie/vondelparkpaviljoen (2014–2021).
+const requestedModelAliases:Record<string,string>={'vondelcs':'idfa-pavilion'};
 const aliases:Record<string,string>={'central':'centraal-station','nemo':'nemo','palace':'palace-on-the-dam','rijksmuseum':'rijksmuseum','mint':'munttoren-amsterdam','westerkerk':'westerkerk'};
 const equivalents:Record<string,string>={
   'national maritime museum':'scheepvaartmuseum','the national maritime museum':'scheepvaartmuseum','het scheepvaartmuseum':'scheepvaartmuseum',
@@ -35,7 +39,9 @@ const canon=(n:string)=>{
 const kits=KITS.map(k=>({name:k.name,key:canon(k.name)}));
 function coverage(p:any){
   const featureId=p.id.replace(/^lm-/,'');
-  const model=SIGNATURE_MODELS.find(m=>m.id===aliases[p.id]||m.landmarkId===featureId||m.relatedLandmarkIds?.includes(featureId)||canon(m.name)===canon(p.name));
+  // Missing POI identities must not match an ordinary model's empty landmarkId.
+  const aliasId=aliases[p.id];
+  const model=SIGNATURE_MODELS.find(m=>(aliasId&&m.id===aliasId)||(featureId&&(m.landmarkId===featureId||m.relatedLandmarkIds?.includes(featureId)))||canon(m.name)===canon(p.name));
   if(model)return {status:MANUAL_LANDMARKS.some(m=>m.id===model.id)?'manual-model':'catalogue-model',modelId:model.id};
   const kit=kits.find(k=>k.key&&k.key===canon(p.name));
   if(kit)return{status:'procedural-kit',kitName:kit.name};
@@ -45,6 +51,13 @@ function coverage(p:any){
 }
 const destinations=[...city.curatedPois,...extras].map((p,i)=>({...p,queueRank:i+1,origin:'POI Destinations',...coverage(p)}));
 for(const name of requests){
+  const aliasModelId=requestedModelAliases[normaliseAnswer(name)];
+  if(aliasModelId){
+    const match=destinations.find(p=>(p as any).modelId===aliasModelId);
+    if(!match)throw new Error(`Requested alias ${name} has no canonical destination ${aliasModelId}`);
+    Object.assign(match,{requested:true,requestedAliases:[...((match as any).requestedAliases||[]),name]});
+    continue;
+  }
   const match=destinations.find(p=>canon(p.name)===canon(name));
   if(match){(match as any).requested=true;continue;}
   const spec=MANUAL_LANDMARKS.find(s=>canon(s.name)===canon(name)||s.id===normaliseAnswer(name).replaceAll(' ','-'));
