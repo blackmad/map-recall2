@@ -3,7 +3,7 @@
   "startedAt": "2026-10-06T21:08:31.879031+00:00",
   "scope": "Warehouse conversions and modern blocks in the central canal enclosure",
   "deadlineAssumption": "Overnight run resumed October7; continue today per user instruction",
-  "acceptance": "Ten new canal-belt treatments reviewed; final trio release pending",
+  "acceptance": "Ten new canal-belt treatments independently reviewed, published and hosted-verified; gallery total 20",
   "batches": [
     {
       "id": "01",
@@ -65,7 +65,7 @@
     },
     {
       "id": "04",
-      "state": "reviewed-release-pending",
+      "state": "published",
       "candidates": [
         "0363100012168028",
         "0363100012176271",
@@ -90,7 +90,14 @@
       "runtimeLoadingMaxMs": {
         "desktop": 319,
         "touchEmulated": 128
-      }
+      },
+      "publicCommit": "278e989c4f16158c6126522913db7fa30ff7a63e",
+      "hostedVerifiedAt": "2026-10-07T10:15:41.597122+00:00",
+      "hostedChecks": [
+        "Three GLB SHA-256 and byte counts match committed catalogue",
+        "20 cards load without browser errors on desktop and touch emulation",
+        "Feedback screenshot dialog and filtered card pass without submitting a note"
+      ]
     }
   ],
   "morningCheckpoint": {
@@ -118,13 +125,11 @@
     "decision": "Warehouse finish subtle close-up; concrete payoff rejected. Actual game loading/motion acceptance remains pending."
   },
   "feedbackCheckpoint": {
-    "at": "2026-10-07T08:06:38.531432+00:00",
+    "at": "2026-10-07T10:15:41.597122+00:00",
     "open": 0,
-    "inProgress": 1,
+    "inProgress": 0,
     "atLimit": false,
-    "claimedElsewhere": [
-      "1d79b5b9-8491-4c91-b99f-9f9820b69e5b"
-    ]
+    "claimedElsewhere": []
   },
   "source04AndRoofFollowupCommit": "7b26e67e736c6434849b443ec649cb1836713f3d"
 }
