@@ -105,10 +105,45 @@ for(const at of [26,29.6,33.2,36.8,40.4,44])for(const q of [-.5,.5])canalRay(at+
 for(const at of [1.4,7,9.8])canalRay(at,13,'canal-755-edge2-panel-face');
 for(const at of [1.4,25.2,42])canalRay(at,8.15,'canal-755-main-frame');
 for(const m of meshes.filter(m=>String(m.geometry.userData.role).startsWith('canal-755'))){assert(m.geometry.boundingBox!.max.y<=14.153);assert(m.geometry.boundingBox!.min.y>-.001);}
-fs.writeFileSync('artifacts/uva-roeterseiland-massing-20261006/cycle12/755-native-firsthit.json',JSON.stringify({samples:canalSamples,count:canalSamples.length,singleSided:true},null,2));
+fs.mkdirSync('artifacts/uva-roeterseiland-massing-20261006/cycle16',{recursive:true});fs.writeFileSync('artifacts/uva-roeterseiland-massing-20261006/cycle16/755-native-firsthit.json',JSON.stringify({samples:canalSamples,count:canalSamples.length,singleSided:true},null,2));
 for(const m of meshes)(m.material as T.MeshBasicMaterial).side=T.DoubleSide;
-const report={model:'uva-roeterseiland',phase:'cycle12-source755-edge2',triangles,bounds:{min:bounds.min.toArray(),max:bounds.max.toArray()},void:roeterseilandMassing,status:'CPU-only; gallery/live/suppression/full-parent acceptance pending'};
-const out='artifacts/uva-roeterseiland-massing-20261006/cycle12';fs.mkdirSync(out,{recursive:true});fs.writeFileSync(out+'/geometry-report.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
+// 756 single-sided source-facing fractional samples catch buried panes and
+// unjustified long slots; exact survey heights/hole are independently retained.
+for(const m of meshes)(m.material as T.MeshBasicMaterial).side=T.FrontSide;
+const terraceSamples:any[]=[];
+for(const ei of [17,19,22]){
+ const rr=source.roofs.find(r=>r.index===756)!.rings[0],a=rr[ei],q=rr[(ei+1)%rr.length];
+ const len=Math.hypot(q[0]-a[0],q[1]-a[1]),tx=(q[0]-a[0])/len,tz=(q[1]-a[1])/len,nx=-tz,nz=tx;
+ const ray=(at:number,y:number,expected:string)=>{
+  const h=new T.Raycaster(new T.Vector3(a[0]+at*tx+nx*2,y,a[1]+at*tz+nz*2),new T.Vector3(-nx,0,-nz)).intersectObjects(meshes)[0];
+  assert(h,'756 source-facing surface');const actual=(h.object as T.Mesh).geometry.userData.role;
+  assert.equal(actual,expected);terraceSamples.push({ei,at,y,actual});
+ };
+ if(ei===17){
+  for(const fraction of [.15,.5,.85])ray(len*fraction,23.3,'survey-756');
+  continue;
+ }
+ if(ei===19){
+  for(const [fraction,w,kind] of [[.0928497151,1.65,'shallow'],[.8274369307,1.80,'short']] as [number,number,string][]){
+   for(const f of [-.3,.3])ray(len*fraction+f*w,23.3,'terrace-756-transition-'+kind+'-pane');
+  }
+  for(const fraction of [.3,.5,.65])ray(len*fraction,23.3,'survey-756');
+  continue;
+ }
+ for(let at=1.4;at<len-.8;at+=2.8){
+  for(const f of [-.30,.30])for(const y of [22.9,23.7])ray(at+f*1.95,y,'terrace-756-main-paired-pane');
+  ray(at,23.3,'terrace-756-main-paired-mullion');
+  const pair=ei===22&&at>5;for(const f of [-.3,.3])ray(at+f*(pair?1.65:1.8),25.1,'terrace-756-upper-pane');
+  ray(at,19.3,'terrace-756-terrace-strip-pane');
+  ray(at,20,'survey-756');
+ }
+}
+assert(!meshes.some(m=>String(m.geometry.userData.role).startsWith('north-low-')));
+assert(!meshes.some(m=>String(m.geometry.userData.role).startsWith('terrace-756-') && (m.geometry.userData.sourceEdge===17 || (m.geometry.userData.sourceEdge===19 && !String(m.geometry.userData.role).startsWith('terrace-756-transition-')))), 'unsupported paired family must not transfer to17/19');
+fs.mkdirSync('artifacts/uva-roeterseiland-massing-20261006/cycle16',{recursive:true});
+fs.writeFileSync('artifacts/uva-roeterseiland-massing-20261006/cycle16/756-native-firsthit.json',JSON.stringify({singleSided:true,samples:terraceSamples,count:terraceSamples.length},null,2));
+const report={model:'uva-roeterseiland',phase:'cycle16-source-supported756-plane-family',triangles,bounds:{min:bounds.min.toArray(),max:bounds.max.toArray()},void:roeterseilandMassing,status:'CPU-only; gallery/live/suppression/full-parent acceptance pending'};
+const out='artifacts/uva-roeterseiland-massing-20261006/cycle16';fs.mkdirSync(out,{recursive:true});fs.writeFileSync(out+'/geometry-report.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
 // CPU z-buffer of the exact native builder, without export or shared GPU state.
 if(process.argv.includes('--render')) {
  // Context only: exact retained CREA footprint, median AHN roof elevation.

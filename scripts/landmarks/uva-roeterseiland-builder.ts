@@ -229,17 +229,43 @@ export function buildUvaRoeterseiland(_w: number, _d: number, b: BuildingTools):
    box(u+side*.36,y+3.23,v,.15,.10,3.35,'frame','a-clerestory-trim');
   }
  }
- // Source3439 northern lower block: pale masonry, long narrow paired-floor
- // slots and a glazed roof-level ribbon. Facade-family allocation to patch756
- // is a plan/photo inference pending independent native context confirmation.
+ // Municipal00151 captured10Dec2024: exact756 canal setback boundary.
+ // Cycle16 source allocation: upright pairs are supported on edge22 only.
+ // Edge19 has two bounded shallow/short controls; edge17 remains a source gap.
+ // Aperture heights/counts are approximate and source camera datum is unaccepted;
+ // no unseen returns, equipment or terrace depth inferred. Survey ring/hole stays.
  const northBlock=source.roofs.find(r=>r.index===756)!;
- for(let u=-25.5;u<7;u+=2.8) {
-  const ring=northBlock.rings[0].map(uv),vs:number[]=[];
-  for(let j=0;j<ring.length;j++){const a=ring[j],q=ring[(j+1)%ring.length];if((a[0]<=u&&q[0]>u)||(q[0]<=u&&a[0]>u))vs.push(a[1]+(q[1]-a[1])*(u-a[0])/(q[0]-a[0]));}
-  const v=Math.min(...vs);if(!Number.isFinite(v))continue;
-  for(const y of [5,15]){box(u,y,v-.18,.90,7.4,.15,'glass','north-low-paired-slot');box(u,y+3.2,v-.28,.9,1.2,.13,'dark','north-low-spandrel');}
-  box(u,24.0,v-.2,2.65,1.7,.15,'glass','north-low-roof-ribbon');
-  box(u,25.7,v-.3,2.8,.14,.15,'frame','north-low-roof-trim');
+ for(const ei of [19,22]) {
+  const a=northBlock.rings[0][ei],q=northBlock.rings[0][(ei+1)%northBlock.rings[0].length];
+  const len=Math.hypot(q[0]-a[0],q[1]-a[1]),tx=(q[0]-a[0])/len,tz=(q[1]-a[1])/len,nx=-tz,nz=tx;
+  const angle=Math.atan2(-tz,tx);
+  function terraceFace(at:number,y:number,w:number,h:number,col:Colour,role:string,outset:number){
+   const g=omitWallBack(new T.BoxGeometry(w,h,.06),5);g.userData.role=role;g.userData.sourceEdge=ei;
+   b.add(g,col,a[0]+at*tx+outset*nx,y+h/2,a[1]+at*tz+outset*nz,angle);
+  }
+  function opening(at:number,centre:number,w:number,h:number,paired:boolean,kind:string){
+   const y=centre-h/2;
+   terraceFace(at,y,w,h,'dark','terrace-756-'+kind+'-frame',.16);
+   terraceFace(at,y+.075,w-.15,h-.15,'glass','terrace-756-'+kind+'-pane',.23);
+   if(paired)terraceFace(at,y+.075,.075,h-.15,'dark','terrace-756-'+kind+'-mullion',.29);
+  }
+  if(ei===19){
+   // Original00151 pixels700,373 and750,356 conditionally allocate here.
+   // Their family differs from the upright pairs. Isolated approximations
+   // retain the drafted23.3m datum; neither a full row nor hidden depth follows.
+   opening(len*.0928497151,23.3,1.65,.45,false,'transition-shallow');
+   opening(len*.8274369307,23.3,1.80,.65,false,'transition-short');
+   continue;
+  }
+  for(let at=1.4;at<len-.8;at+=2.8){
+   opening(at,23.3,1.95,1.95,true,'main-paired');
+   // Far/eastern roof strip is short; the nearer/western portion has upright
+   // pairs. This photographed variation must not become a continuous ribbon.
+   const upperPair=ei===22&&at>5;
+   opening(at,25.1,upperPair?1.65:1.80,upperPair?1.40:.65,upperPair,'upper');
+   // Only shallow aperture tops are visible above the pale terrace band.
+   opening(at,19.3,1.65,.45,false,'terrace-strip');
+  }
  }
  // Photo3437/siteplan: curtain-glazed low pavilion immediately west/right of
  // the entrance. Source3438 independently exposes its full canal-facing frontage,

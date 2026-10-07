@@ -1,0 +1,96 @@
+{
+  "model": "uva-roeterseiland",
+  "cycle": 16,
+  "status": "HELD; supported family corrected; source aperture metric/composition and budget unaccepted",
+  "source": {
+    "raw": "/tmp/uva-remaining-faces-oct7/raw/742-north-00151.jpg",
+    "sha256": "cf7e16ebd374138a20c9be21b7ba61751070390f28050327905317efc4da2d9d",
+    "capturedAt": "2024-12-10T13:20:33Z",
+    "privateRawCommit": "b0ac0437e7d29fde1fc7954cefbe471cb4a03a5a",
+    "privateCycle12Commit": "67fb1d97a326db0c5a7ce31b387bb69504bb81cc"
+  },
+  "survey": {
+    "roof": 756,
+    "authoredEdges": [
+      19,
+      22
+    ],
+    "heightsFrozen": [
+      26.6335017395,
+      26.6845017395
+    ],
+    "holePreserved": true,
+    "755Unchanged": true,
+    "sourceGapEdges": [
+      17
+    ],
+    "736Retained": true
+  },
+  "assertions": [
+    {
+      "feature": "upright paired recognition family",
+      "part": "756 edge22 only",
+      "confidence": "high visual family; plane allocation conditional",
+      "rowCenterApproxMetres": 23.3,
+      "evidence": "Original00151 clear pairs at pixels800,346;850,335;900,325;935,317; conditional surveyed edge22 fractions .142\u2013.938. Current uniform2.8m count/spacing is approximate, not matched individual openings."
+    },
+    {
+      "feature": "isolated shallow aperture and short transition",
+      "part": "756 edge19 fractions .09285 and .82744 only",
+      "confidence": "high shallow family; moderate short partly hidden transition; conditional allocation",
+      "rowCenterApproxMetres": 23.3,
+      "limits": "Two bounded details replace unsupported full row. Heights preserve existing drafted datum; .45/.65m apertures and1.65/1.8m widths are approximations, not camera-calibrated dimensions."
+    },
+    {
+      "feature": "source gap",
+      "part": "756 edge17",
+      "confidence": "no corresponding paired-row control",
+      "limits": "No painted-on paired family; unchanged surveyed wall retained. This is unresolved coverage, not evidence of a blank real facade."
+    }
+  ],
+  "rejectedPrevious": "long7.4m vertical slots and continuous roof-level ribbon unsupported on756",
+  "diagnostic": "Cycle15 source-family allocation supersedes homogeneous six-pixel cycle13 claim. Camera roadNAP/rig height unmeasured; geometryZ=0 is not altitude. Original source-pixel rays at diagnostic3m reach756 for all four clear pair pixels without736, but three hit surveyed wall rather than pane at the current approximate rhythm. Do not shift apertures or surveyed shells to force acceptance. Historical lower target rays are retained separately and are not observed photo-pixel rays.",
+  "remainingUnknowns": [
+    "camera actual height/datum/orientation calibration",
+    "lower portions of756 paired main row in source-station global visibility",
+    "upper742",
+    "A rear",
+    "courtyard faces",
+    "unseen756 returns/terrace depths/equipment"
+  ],
+  "evidenceDirectory": "artifacts/uva-roeterseiland-massing-20261006/cycle16",
+  "cameraMetadata": {
+    "geometryZ": 0,
+    "eyeHeightApprox": 2.5,
+    "roll": -1.6605834232046135,
+    "pitch": -0.003806287924580915,
+    "heading": -16.955446302383706,
+    "appliedByRecognitionHelper": false
+  },
+  "candidate": {
+    "sha256": "aa0b946b19fa3b790a6dba9c455212f0db9dd1ff3e9412d9f90baf9ff71d5440",
+    "triangles": 37232,
+    "bytes": 522940,
+    "byteCap": 500000,
+    "budgetPass": false,
+    "overBytes": 22940,
+    "localDecodedProbes": 314,
+    "localDecodedFailures": 0
+  },
+  "preservation": {
+    "unaffectedMeshes": 3108,
+    "755Meshes": 185,
+    "identicalGeometryMaterialsOrder": true,
+    "surveyRoofsAndHolesUnchanged": true,
+    "retainedNeighbourOSM": "12164972"
+  },
+  "sourceAllocationEvidence": "artifacts/uva-roeterseiland-massing-20261006/cycle15-plane-allocation/source-decision.json",
+  "parentHolds": [
+    "22,940 bytes above500,000 byte cap",
+    "aperture heights/counts/rhythm and complete source composition unaccepted",
+    "unmeasured station road/rig datum",
+    "edge17 and unseen756 returns",
+    "upper742, A rear and courtyard coverage",
+    "native lit gallery/live-game/performance and exact suppression evidence"
+  ]
+}
