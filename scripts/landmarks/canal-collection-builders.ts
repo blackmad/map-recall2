@@ -4,7 +4,7 @@ import data from './canal-collection-footprints.json';
 type Colour=Parameters<BuildingTools['add']>[1];
 /** Two individually scoped canal-house museums with open rear spaces. */
 export function buildCanalCollectionLandmark(id:string,_w:number,_d:number,b:BuildingTools){
- const {add,box,sign}=b,s=data.sites.find(s=>s.id===id)!,a=s.authorHeadingDegrees*Math.PI/180;
+ const {add,box}=b,s=data.sites.find(s=>s.id===id)!,a=s.authorHeadingDegrees*Math.PI/180;
  const point=(p:number[])=>{const e=(p[0]-s.anchor[0])*111320*Math.cos(s.anchor[1]*Math.PI/180),n=(p[1]-s.anchor[1])*110540;return new T.Vector2(e*Math.sin(a)+n*Math.cos(a),e*Math.cos(a)-n*Math.sin(a));};
  const poly=s.buildings[0].geometry.coordinates[0].map(r=>r.slice(0,-1).map(point));
  function shell(r:T.Vector2[],h:number,c:Colour){const g=new T.ExtrudeGeometry(new T.Shape(r),{depth:h,bevelEnabled:false});g.rotateX(Math.PI/2);g.translate(0,h,0);add(g,c);}
@@ -16,6 +16,19 @@ export function buildCanalCollectionLandmark(id:string,_w:number,_d:number,b:Bui
   const planes=[(p:T.Vector2)=>p.y-zl,(p:T.Vector2)=>zh-p.y,(p:T.Vector2)=>p.x-xl,(p:T.Vector2)=>xh-p.x];
   function half(r:T.Vector2[],f:(p:T.Vector2)=>number){const out:T.Vector2[]=[];for(let i=0;i<r.length;i++){const p=r[i],q=r[(i+1)%r.length],fp=f(p),fq=f(q);if(fp>=-1e-7)out.push(p);if((fp>=0)!==(fq>=0))out.push(p.clone().lerp(q,fp/(fp-fq)));}return out;}
   const vertices:number[]=[];for(let i=0;i<4;i++){let p=r;for(let j=0;j<4;j++)if(i!==j)p=half(p,q=>planes[j](q)-planes[i](q));if(p.length<3)continue;const triangulation=new T.ShapeGeometry(new T.Shape(p)),pos=triangulation.getAttribute('position'),indices=triangulation.index!;for(let k=0;k<indices.count;k++){const q=new T.Vector2(pos.getX(indices.getX(k)),pos.getY(indices.getX(k)));vertices.push(q.x,y+Math.max(0,Math.min(hz,planes[i](q)))*rise/hz,q.y);}triangulation.dispose();}
+  // ShapeGeometry's XY winding points down after mapping its Y into Z.
+  // Orient only the hip-plane tops upward; boundary skirts keep their winding.
+  const tops:number[]=[];
+  for(let k=0;k<vertices.length;k+=9){
+   const dx=vertices[k+3]-vertices[k],dy=vertices[k+4]-vertices[k+1],dz=vertices[k+5]-vertices[k+2],ex=vertices[k+6]-vertices[k],ey=vertices[k+7]-vertices[k+1],ez=vertices[k+8]-vertices[k+2];
+   const normal=[dy*ez-dz*ey,dz*ex-dx*ez,dx*ey-dy*ex];
+   // Sub-square-millimetre clipping remnants can invert after GLB quantization.
+   // Omit only these nominally degenerate tops; retain all real roof planes.
+   if(Math.hypot(...normal)/2<=1e-6)continue;
+   const a=vertices.slice(k,k+3),q=vertices.slice(k+3,k+6),r=vertices.slice(k+6,k+9);
+   tops.push(...a,...(normal[1]<0?r:q),...(normal[1]<0?q:r));
+  }
+  vertices.length=0;vertices.push(...tops);
   for(let k=0;k<r.length;k++){const p=r[k],q=r[(k+1)%r.length],yp=y+Math.max(0,Math.min(hz,...planes.map(f=>f(p))))*rise/hz,yq=y+Math.max(0,Math.min(hz,...planes.map(f=>f(q))))*rise/hz;vertices.push(p.x,y,p.y,q.x,y,q.y,q.x,yq,q.y,p.x,y,p.y,q.x,yq,q.y,p.x,yp,p.y);}const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(vertices,3));g.computeVertexNormals();add(g,'slate');
  }
  function pane(x:number,y:number,z:number,w:number,h:number,angle=0,c:Colour='white'){
@@ -47,8 +60,9 @@ export function buildCanalCollectionLandmark(id:string,_w:number,_d:number,b:Bui
   // Extrude three portions independently, without roofing over that recess.
   const front=clip(r,3.7,false,'y'),middle=clip(clip(r,-3.2,false,'y'),3.7,true,'y'),rear=clip(r,-3.2,true,'y');for(const [p,h,rise]of [[front,13.4,2],[middle,4.1,.2],[rear,9.4,2.0]] as [T.Vector2[],number,number][]){shell(p,h,'brick');roof(p,h,rise);sideWindows(p,h,p===front);}
   const x=-.80,z=15.64;for(const yy of [2.3,6.3,9.8])for(const u of [-2.4,2.4])pane(x+u,yy,z+.16,2.15,yy===2.3?3.55:2.85,0,'stone');cornice(x,12.94,z+.12,9.4);box(x,13.55,z,9.4,.55,.35,'stone');for(let u=-4.1;u<4.2;u+=.65){box(x+u,13.67,z+.20,.10,.30,.10,'white');}box(x-2.4,2.0,z+.25,2.15,2.75,.15,'dark');pane(x-2.4,4.85,z+.3,2.0,1.05,0,'stone');const oval=new T.TorusGeometry(.45,.09,4,16);oval.scale(.9,1.25,1);add(oval,'gold',x-2.4,5.35,z+.39);for(const u of [-3.62,-1.18])box(x+u,2.05,z+.33,.2,3.8,.3,'stone');box(x-2.4,5.90,z+.35,2.6,.3,.34,'stone');
-  // Basement shop, raised museum door and iron stoop rail are permanent,
-  // small-scale identifying details rather than a billboard on the roof.
-  box(x+2.1,.05,z+.26,2.25,1.95,.17,'dark');pane(x-2.4,.28,z+.22,1.9,1.15,0,'stone');for(let j=0;j<7;j++)box(x-2.4,j*.285,z+2.14-j*.23,2.35,.29,.30,'stone');for(const u of [-3.62,-1.18]){box(x+u,1.92,z+.96,.085,.87,1.9,'dark');for(let j=0;j<5;j++)box(x+u,.75+j*.27,z+2.1-j*.27,.085,.7,.085,'dark');}box(x-2.4,2.28,z+1.85,2.3,.65,.07,'white');sign('PIPE',x-2.4,2.62,z+1.90,.045,'blue');sign('MUSEUM',x-2.4,2.33,z+1.90,.035,'dark');box(x+2.1,1.9,z+.32,2.4,.42,.1,'dark');sign('PIPESHOP',x+2.1,2.02,z+.39,.035,'white');
+  // Preserve the photographed entrance placard panel and basement fascia.
+  // Their small identity lettering is omitted under the defining-sign policy;
+  // the cached source does show real words, not an unlettered frontage.
+  box(x+2.1,.05,z+.26,2.25,1.95,.17,'dark');pane(x-2.4,.28,z+.22,1.9,1.15,0,'stone');for(let j=0;j<7;j++)box(x-2.4,j*.285,z+2.14-j*.23,2.35,.29,.30,'stone');for(const u of [-3.62,-1.18]){box(x+u,1.92,z+.96,.085,.87,1.9,'dark');for(let j=0;j<5;j++)box(x+u,.75+j*.27,z+2.1-j*.27,.085,.7,.085,'dark');}box(x-2.4,2.28,z+1.85,2.3,.65,.07,'white');box(x+2.1,1.9,z+.32,2.4,.42,.1,'dark');
  }
 }

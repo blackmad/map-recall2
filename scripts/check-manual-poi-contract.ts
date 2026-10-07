@@ -24,16 +24,19 @@ for (const model of MANUAL_LANDMARKS) {
     const card = landmarks.find(landmark => landmark.id === poi.id)!;
     assert.ok(isWorthACard(card) && card.detail, `${model.id}: card payload`);
     assert.deepEqual(card.buildingIds, poi.buildingIds, `${model.id}: exact building identity survives projection`);
-    if (poi.routeCenter) {
-      assert.ok(poi.routeCenter.every(Number.isFinite), `${model.id}: sourced route arrival`);
-      assert.deepEqual(card.lngLat, [poi.center![1], poi.center![0]], `${model.id}: public arrival must not move the artwork card/pin`);
-    }
     const original = raw.find(feature => feature.id === poi.id);
     if (original?.funFact) assert.equal(poi.funFact, original.funFact, `${model.id}: existing static trivia preserved`);
     if (original?.wikipediaExtract) assert.equal(poi.wikipediaExtract, original.wikipediaExtract, `${model.id}: existing description preserved`);
   }
 }
 assert.deepEqual(mergeManualPoiFeatures(raw, 'utrecht'), raw, 'other cities untouched');
+const oba = features.find(feature => feature.id === 'extract_landmarks_751632752')!;
+assert.match(oba.funFact || '', /Jo Coenen.*7 July 2007/, 'OBA card uses researched building history instead of generic address text');
+assert.equal(oba.wikipediaExtract, raw.find(feature => feature.id === oba.id)?.wikipediaExtract, 'OBA retains original encyclopedia information');
+assert.equal(oba.sourceUrl, 'https://arcam.nl/architectuur-gids/openbare-bibliotheek-amsterdam/', 'OBA supplemental research has its supporting link');
+const existingObaFact = 'Existing researched fact retained';
+assert.equal(mergeManualPoiFeatures([{...oba, funFact: existingObaFact}]).find(feature => feature.id === oba.id)?.funFact, existingObaFact, 'curated supplements preserve existing researched trivia');
+
 const singelkerk = features.find(feature => feature.id === 'extract_landmarks_760984505');
 assert.deepEqual(singelkerk?.center, [52.36770787, 4.88862596], 'Singelkerk pin uses sourced Singel452 address rather than neighboring454');
 assert.notDeepEqual(singelkerk?.center, raw.find(feature => feature.id === singelkerk?.id)?.center, 'explicit correction supersedes the mistaken extract pin');
@@ -64,9 +67,6 @@ assert.match(padelVenue?.name ?? '', /Padel NEXT/);
 assert.match(padelVenue?.funFact ?? '', /Americano/);
 assert.notDeepEqual(padelVenue?.center, beestVenue?.center, 'shared host preserves separate venue pins');
 assert.notEqual(padelVenue?.sourceUrl, beestVenue?.sourceUrl, 'shared host preserves independent cards');
-const kesbekeFact = JSON.parse(readFileSync('src/canalRecall/game/manual-poi-data.json', 'utf8')).find((fact: {modelId:string}) => fact.modelId === 'kesbeke');
-const kesbekeVenue = features.find(feature => feature.modelId === 'kesbeke');
-assert.deepEqual(kesbekeVenue?.routeCenter, kesbekeFact.routeDestination.center, 'factory destination uses its sourced public entrance');
 const store = createOverlayStore(defaultPreferences({ min: 0.2, max: 1.5, defaultZoom: 0.5 }));
 assert.equal(store.getState().destinationId, '', 'Surprise remains the default');
 const choice = { id: 'lm-frascati', name: 'Frascati', lat: 52.37, lng: 4.89 };

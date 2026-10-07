@@ -1,6 +1,6 @@
 {
   "id": "groot-melkhuis",
-  "status": "Current source/gallery and native game integration verified; performance followup retained",
+  "status": "accepted-scoped; native gallery/game and POI contract verified",
   "referenceImages": [
     "artifacts/landmarks/groot-melkhuis/references/Copy-of-EmiroSmolders-GrootMelkhuis-0331-2.jpg",
     "artifacts/landmarks/groot-melkhuis/references/Copy-of-EmiroSmolders-GMH-03599-scaled.jpg",
@@ -126,113 +126,5 @@
     "runtimeEvidence": "Actual selected route destination, geographic pin, physical click sourced card, native scale 1 and retained resident drawable neighbors verified with review-manual-pois.mjs.",
     "geometryEvidence": "scripts/check-groot-melkhuis-geometry.ts",
     "independentReviewStatus": "pass-scoped-recognition-after-repair"
-  },
-  "sourceArchive": {
-    "commit": "5e4e6b6",
-    "path": "models/groot-melkhuis",
-    "priorSourcesCommit": "9926aa1"
-  },
-  "export": {
-    "sha256": "236cf1e655704a1903a2524e617979f1f746e502428eb83b572fef89b576dc09",
-    "bytes": 51768
-  },
-  "currentIndependentReview": "models/groot-melkhuis/validation/clean-release-20261006/independent-review.json",
-  "currentRuntime": {
-    "proof": {
-      "id": "groot-melkhuis",
-      "actualCamera": {
-        "center": [
-          4.868295,
-          52.3585254
-        ],
-        "zoom": 19,
-        "pitch": 55.00000000000001,
-        "bearing": 10,
-        "elevation": 0
-      },
-      "assetVersion": "236cf1e655704a19",
-      "scale": 1,
-      "bias": false,
-      "broad": false,
-      "pin": true,
-      "destination": true,
-      "source": "https://grootmelkhuis.nl/historie/",
-      "click": {
-        "x": 753.1801636898768,
-        "y": 500.58511891126767
-      },
-      "aliases": [
-        {
-          "id": "w57855717",
-          "hidden": true
-        },
-        {
-          "id": "NL.IMBAG.Pand.0363100012166911",
-          "hidden": true
-        }
-      ],
-      "oldPyramidIds": [],
-      "neighbors": [
-        {
-          "ids": [
-            "NL.IMBAG.Pand.0363100012146952"
-          ],
-          "resident": true,
-          "hidden": false,
-          "drawable": true
-        }
-      ],
-      "features": 12781,
-      "buildings": 13891
-    },
-    "card": {
-      "notice": "extract_landmarks_291097138",
-      "source": "https://grootmelkhuis.nl/historie/",
-      "alpha": 1,
-      "drawn": true,
-      "active": "extract_landmarks_291097138"
-    },
-    "performance": {
-      "id": "groot-melkhuis",
-      "assetVersion": "236cf1e655704a19",
-      "samples": [
-        {
-          "label": "model-visible",
-          "visible": true,
-          "frames": 60,
-          "p50Ms": 83,
-          "p95Ms": 98.40000009536743
-        },
-        {
-          "label": "same-scene-model-hidden",
-          "visible": false,
-          "frames": 60,
-          "p50Ms": 78.7000002861023,
-          "p95Ms": 90.5
-        },
-        {
-          "label": "model-visible-repeat",
-          "visible": true,
-          "frames": 60,
-          "p50Ms": 83.30000019073486,
-          "p95Ms": 91.40000009536743
-        }
-      ],
-      "buildings": {
-        "kitVertices": 79185,
-        "chunks": 26,
-        "buildings": 13891,
-        "walls": 61949,
-        "quads": 215068,
-        "vertices": 1540727,
-        "geometryMB": 51.37913703918457,
-        "textureMB": 97.5,
-        "drawCalls": 5,
-        "triangles": 252307,
-        "buildMs": 6.5
-      },
-      "scope": "Headless Chromium same stationary scene; hidden model keeps existing replacement masks, isolating custom draw cost. No whole-game performance pass claimed."
-    },
-    "performanceAcceptance": "Stationary headless evidence only; no general smooth gameplay or physical touch performance acceptance."
   }
 }

@@ -13,7 +13,9 @@ export function buildRetailCinemaLandmark(id:string,w:number,d:number,b:Building
  function text(t:string,x:number,y:number,z:number,p:number,c:C){if(!turn){b.sign(t,x,y,z,p,c);return;}const glyph:Record<string,string[]>={R:['110','101','110','101','101'],I:['111','010','010','010','111'],A:['010','101','111','101','101'],L:['100','100','100','100','111'],T:['111','010','010','010','010'],O:['111','101','101','101','111']};let u=x-t.length*4*p/2;for(const ch of t){const rows=glyph[ch];if(rows)for(let j=0;j<5;j++)for(let k=0;k<3;k++)if(rows[j][k]==='1')box(u+k*p,y+(4-j)*p,z,p*.8,p*.8,.08,c);u+=4*p;}}
  if(id==='rialto'){
   // Compact cinema behind the white Art Deco front, five vertical window slots.
-  box(0,0,0,fw*.98,13.9,dep*.97,'brick');box(0,13.9,0,fw,.3,dep,'slate');const z=dep/2;
+  box(0,0,0,fw*.98,13.9,dep*.97,'brick');// The rear roof stops at the back of the taller facade; its old front
+  // shared the cream wall plane and produced a dark flickering stripe.
+  box(0,13.9,-.45,fw,.3,dep-.9,'slate');const z=dep/2;
   box(0,0,z-.45,fw,15.9,.9,'white');box(0,15.9,z-.45,fw+.25,.35,1,'white');
   for(const x of [-fw*.46,fw*.46]){box(x,0,z+.12,.42,16.3,.3,'white');for(let y=13;y<16;y+=.8)box(x,y,z+.33,1,.3,.4,'stone');}
   for(let i=0;i<5;i++){let x=(i-2)*fw*.135;box(x,7.25,z+.08,fw*.074,5.1,.2,'dark');for(const y of [8.85,10.55])box(x,y,z+.23,fw*.074,.11,.12,'frame');box(x-fw*.06,7.1,z+.23,.26,5.4,.33,'white');}

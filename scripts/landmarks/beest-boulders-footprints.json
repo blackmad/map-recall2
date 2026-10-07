@@ -1997,11 +1997,6 @@
       "uncertainty": "Tier heights/projections/column spacing not measured elevations. Fixed to measured main/lower roof endpoints; camera station pixels support composition, not precise metric opening intervals."
     }
   },
-  "privateSourceArchive": {
-    "commit": "bb6074e",
-    "path": "models/beest-boulders/",
-    "repository": "blackmad/map-recall2-source-data"
-  },
   "sourceArchive": {
     "repository": "blackmad/map-recall2-source-data",
     "modelPath": "models/beest-boulders/",

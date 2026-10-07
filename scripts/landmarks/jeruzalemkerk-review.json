@@ -1,7 +1,7 @@
 {
   "id": "jeruzalemkerk",
   "reviewedOn": "2026-10-05",
-  "status": "Current source/gallery and native game integration verified; performance followup retained",
+  "status": "accepted-scoped; native gallery/game and POI contract verified",
   "check": "node --import tsx scripts/check-jeruzalemkerk-geometry.ts",
   "geometryResult": {
     "triangles": 7196,
@@ -106,125 +106,5 @@
     "runtimeEvidence": "Actual selected route destination, geographic pin, physical click sourced card, native scale 1 and retained resident drawable neighbors verified with review-manual-pois.mjs.",
     "geometryEvidence": "scripts/check-jeruzalemkerk-geometry.ts",
     "independentReviewStatus": "scoped-church-gallery-and-native-visual-pass"
-  },
-  "sourceArchive": {
-    "commit": "5e4e6b6",
-    "path": "models/jeruzalemkerk",
-    "priorSourcesCommit": "9926aa1"
-  },
-  "export": {
-    "sha256": "202fbee82e35d0c0b7b3e0b35fb788cef386f99aa51bc345116a40cd47a98ff9",
-    "bytes": 115364
-  },
-  "currentIndependentReview": "models/jeruzalemkerk/validation/clean-release-20261006/independent-review.json",
-  "currentRuntime": {
-    "proof": {
-      "id": "jeruzalemkerk",
-      "actualCamera": {
-        "center": [
-          4.85196,
-          52.371445
-        ],
-        "zoom": 19,
-        "pitch": 55.00000000000001,
-        "bearing": 15,
-        "elevation": 0
-      },
-      "assetVersion": "202fbee82e35d0c0",
-      "scale": 1,
-      "bias": false,
-      "broad": false,
-      "pin": true,
-      "destination": true,
-      "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/527155",
-      "click": {
-        "x": 756.4968442869629,
-        "y": 501.2416366002185
-      },
-      "aliases": [
-        {
-          "id": "NL.IMBAG.Pand.0363100012120412",
-          "hidden": true
-        },
-        {
-          "id": "NL.IMBAG.Pand.0363100012133330",
-          "hidden": true
-        },
-        {
-          "id": "NL.IMBAG.Pand.0363100012144824",
-          "hidden": true
-        }
-      ],
-      "oldPyramidIds": [],
-      "neighbors": [
-        {
-          "ids": [
-            "NL.IMBAG.Pand.0363100012075879"
-          ],
-          "resident": true,
-          "hidden": false,
-          "drawable": true
-        },
-        {
-          "ids": [
-            "NL.IMBAG.Pand.0363100012139123"
-          ],
-          "resident": true,
-          "hidden": false,
-          "drawable": true
-        }
-      ],
-      "features": 12717,
-      "buildings": 16697
-    },
-    "card": {
-      "notice": "extract_landmarks_2017340658",
-      "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/527155",
-      "alpha": 1,
-      "drawn": true,
-      "active": "extract_landmarks_2017340658"
-    },
-    "performance": {
-      "id": "jeruzalemkerk",
-      "assetVersion": "202fbee82e35d0c0",
-      "samples": [
-        {
-          "label": "model-visible",
-          "visible": true,
-          "frames": 60,
-          "p50Ms": 69.5,
-          "p95Ms": 97.69999980926514
-        },
-        {
-          "label": "same-scene-model-hidden",
-          "visible": false,
-          "frames": 60,
-          "p50Ms": 58,
-          "p95Ms": 90.90000009536743
-        },
-        {
-          "label": "model-visible-repeat",
-          "visible": true,
-          "frames": 60,
-          "p50Ms": 60.5,
-          "p95Ms": 74
-        }
-      ],
-      "buildings": {
-        "kitVertices": 71427,
-        "chunks": 26,
-        "buildings": 16697,
-        "walls": 76466,
-        "quads": 309652,
-        "vertices": 2836217,
-        "geometryMB": 93.50123405456543,
-        "textureMB": 97.5,
-        "drawCalls": 5,
-        "triangles": 126448,
-        "buildMs": 0.5999999046325684
-      },
-      "scope": "Headless Chromium same stationary scene; hidden model keeps existing replacement masks, isolating custom draw cost. No whole-game performance pass claimed."
-    },
-    "performanceAcceptance": "Stationary headless evidence only; no general smooth gameplay or physical touch performance acceptance."
   }
 }

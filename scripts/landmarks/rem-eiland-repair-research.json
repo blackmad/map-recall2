@@ -98,5 +98,13 @@
     "repository": "blackmad/map-recall2-source-data",
     "commit": "e017b23",
     "path": "models/rem-eiland"
+  },
+  "deployment": {
+    "publicCommit": "fac211c2b11fa7c3556a7979f22389ad0ee99c7d",
+    "hostingRun": "37439918556",
+    "status": "success",
+    "liveAssetSha256": "c1d915bb11c847951d6e4b44a04e1e7d836094600ef9b0be041e81cc477e6ab3",
+    "livePage": "https://canalrecall-blackmad.web.app/manual-landmarks.html?only=rem-eiland",
+    "verifiedOn": "2026-10-06"
   }
 }

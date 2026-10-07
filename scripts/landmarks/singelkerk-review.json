@@ -196,5 +196,73 @@
       "Physical destination, pin/label and meaningful info card",
       "Independent visual review"
     ]
+  },
+  "reportedFloatingRoof20261006": {
+    "evidenceDirectory": "artifacts/landmarks/singelkerk-floating",
+    "diagnosis": "artifacts/landmarks/singelkerk-floating/diagnosis.json",
+    "decodedSupportCheck": "pass",
+    "modelChanges": false,
+    "visualDecision": "Pending root and independent exact-current comparison; preserve prior acceptance as history, not resolution of this new user report.",
+    "expandedGeometryAudit": {
+      "handoff": "artifacts/landmarks/singelkerk-floating/worker-geometry-handoff.json",
+      "exactGlbSha256": "44504f14eb3bbca580b37e3224a046cea0fe2331c17ffb5f974772d86aa59d6d",
+      "frontPaneFractionalSamples": 138,
+      "glassFirstHits": 123,
+      "whiteTraceryFirstHits": 15,
+      "roofInteriorSourceMatches": 209,
+      "maxSourceRoofHeightResidualMetres": 0.002467560903241406,
+      "thinSourceCentroidMisses": [
+        {
+          "part": "church",
+          "surface": 139,
+          "triangle": [
+            7,
+            6,
+            5
+          ],
+          "centroid": [
+            7.514372601973978,
+            10.63016828171412,
+            -2.9532429374590135
+          ],
+          "projectedArea": 0.0006850641701689787,
+          "minAltitude": 0.00023847783621796002
+        },
+        {
+          "part": "church",
+          "surface": 143,
+          "triangle": [
+            1,
+            0,
+            4
+          ],
+          "centroid": [
+            -12.510196931240763,
+            11.756834948380789,
+            7.201126298513575
+          ],
+          "projectedArea": 0.00040433268337140144,
+          "minAltitude": 0.0004397533312181601
+        },
+        {
+          "part": "church",
+          "surface": 158,
+          "triangle": [
+            11,
+            10,
+            9
+          ],
+          "centroid": [
+            -1.8646748414179013,
+            15.504501615047456,
+            -14.264865371018036
+          ],
+          "projectedArea": 0.00035767165481093155,
+          "minAltitude": 0.0002601615092161829
+        }
+      ],
+      "modelChanges": false,
+      "status": "Report unresolved: exact-current gallery/native and independent review pending; three thin quantized-source misses preserved separately."
+    }
   }
 }

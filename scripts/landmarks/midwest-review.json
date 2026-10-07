@@ -1,6 +1,7 @@
 {
   "modelId": "midwest",
-  "status": "Real source-supported entrance sign and fascia proportions accepted in source/gallery/native game; general performance followup retained",
+  "status": "Source/gallery and native game integration accepted; performance followup retained",
+  "cpu": "Passed 2026-10-06: 6803 triangles; all fifteen classroom panes sampled at four fractions; nineteen courtyard panes; entry ladder and door; four open-space rays; upward owned roofs; native bounds; exact identities.",
   "sourceReferenceFiles": [
     "files/entrance.jpg",
     "files/ref-0.jpg",
@@ -38,188 +39,22 @@
     "Roof part6 vertical fitting artefact converted to frontal wall silhouette rather than sloped plate",
     "Entrance pin needs root route connectivity confirmation"
   ],
-  "sourceArchive": {
-    "commit": "6062ad0",
-    "path": "models/midwest",
-    "validationPath": "models/midwest/validation/real-sign-spacing-repair-20261006"
-  },
-  "currentIndependentReview": "models/midwest/validation/real-sign-spacing-repair-20261006/independent/after-spacing-repair/native-game-review.json",
-  "export": {
-    "sha256": "0cf4c0abc070d60923d2bd119e2035436bfc71276d8b62f57bca32384fed468b",
-    "triangles": 10483,
-    "bytes": 141396
-  },
-  "realSignRepair": {
-    "status": "source-gallery-native-independent-accepted",
-    "sourceFiles": [
-      "files/ref-0.jpg",
-      "files/user-cabral-sign-20261006.png"
-    ],
-    "fontApproximation": "Original heavy geometric/Art Deco uppercase silhouettes, source-based M/W/D/S forms and narrow I; exact font unidentified",
-    "geometryChecks": {
-      "passed": true,
-      "triangles": 10483,
-      "command": "npx tsx scripts/check-midwest-geometry.ts",
-      "checks": [
-        "seven first-hit strokes",
-        "open D counter",
-        "attached dark rails and brick backing",
-        "bounded relief/native fascia placement",
-        "no east duplicate",
-        "all prior native/pane/roof/open-space/suppression tests"
-      ]
-    },
-    "fasciaCalibrationRepair": {
-      "failedAssetSha256": "e9cd3737c10b2f7f22db7b0b17df2772e1b3f2aafc530aba6e3f830193a3dea5",
-      "failedReview": "artifacts/landmark-continuation-20261006/midwest-sign-independent-review/review.json",
-      "status": "source-gallery-native-independent-accepted",
-      "source": "ref-0 same-plane photo landmarks and entrance.jpg ground/parapet cross-check; explicit approximate measurements in footprints realSignRepair.fasciaCalibrationRepair",
-      "geometry": "West fascia cap8.88m, glyph7.49\u20137.98m; curve6.5m and ladder6.45m retained; upper/lower blank clearances1.84/2.02 glyph heights",
-      "sourceRatiosApprox": "upper41/22=1.86 and lower45/22=2.05 glyph heights",
-      "checks": "Full npx tsx scripts/check-midwest-geometry.ts passes10483tri, all prior probes plus calibrated brick/cap and source-relative clearance checks"
-    }
-  },
-  "previousPublicExport": {
-    "sha256": "4fff0ebe8e393e1bbada16460aecaff01413dacc6e288283afd3630d6bc33992",
-    "triangles": 10147,
-    "bytes": 137412
-  },
-  "currentRuntime": {
-    "proof": {
-      "id": "midwest",
-      "actualCamera": {
-        "center": [
-          4.85495,
-          52.369735
-        ],
-        "zoom": 19.2,
-        "pitch": 60,
-        "bearing": -90,
-        "elevation": 0
-      },
-      "assetVersion": "0cf4c0abc070d609",
-      "scale": 1,
-      "bias": false,
-      "broad": false,
-      "pin": true,
-      "destination": true,
-      "source": "https://www.inmidwest.nl/cabralstraat-1-het-monument/",
-      "click": {
-        "x": 752.7908152514124,
-        "y": 227.9646018691991
-      },
-      "aliases": [
-        {
-          "id": "w119042875",
-          "hidden": true
-        },
-        {
-          "id": "NL.IMBAG.Pand.0363100012081251",
-          "hidden": true
-        }
-      ],
-      "oldPyramidIds": [],
-      "neighbors": [
-        {
-          "ids": [
-            "NL.IMBAG.Pand.0363100012142520"
-          ],
-          "resident": true,
-          "hidden": false,
-          "drawable": true
-        },
-        {
-          "ids": [
-            "NL.IMBAG.Pand.0363100012141200"
-          ],
-          "resident": true,
-          "hidden": false,
-          "drawable": true
-        },
-        {
-          "ids": [
-            "NL.IMBAG.Pand.0363100012118594"
-          ],
-          "resident": true,
-          "hidden": false,
-          "drawable": true
-        },
-        {
-          "ids": [
-            "NL.IMBAG.Pand.0363100012212723"
-          ],
-          "resident": true,
-          "hidden": false,
-          "drawable": true
-        }
-      ],
-      "features": 9553,
-      "buildings": 10609
-    },
-    "card": {
-      "notice": "w119042875",
-      "source": "https://www.inmidwest.nl/cabralstraat-1-het-monument/",
-      "alpha": 1,
-      "drawn": true,
-      "active": "w119042875"
-    },
-    "performance": {
-      "id": "midwest",
-      "assetVersion": "0cf4c0abc070d609",
-      "samples": [
-        {
-          "label": "model-visible",
-          "visible": true,
-          "frames": 60,
-          "p50Ms": 56,
-          "p95Ms": 59.799999713897705
-        },
-        {
-          "label": "same-scene-model-hidden",
-          "visible": false,
-          "frames": 60,
-          "p50Ms": 64.59999990463257,
-          "p95Ms": 71.5
-        },
-        {
-          "label": "model-visible-repeat",
-          "visible": true,
-          "frames": 60,
-          "p50Ms": 56.80000019073486,
-          "p95Ms": 66.10000038146973
-        }
-      ],
-      "buildings": {
-        "kitVertices": 83730,
-        "chunks": 36,
-        "buildings": 17099,
-        "walls": 69254,
-        "quads": 310908,
-        "vertices": 1712062,
-        "geometryMB": 57.16141891479492,
-        "textureMB": 97.5,
-        "drawCalls": 7,
-        "triangles": 378578,
-        "buildMs": 3.5
-      },
-      "scope": "Headless Chromium same stationary scene; hidden model keeps existing replacement masks, isolating custom draw cost. No whole-game performance pass claimed."
-    }
-  },
-  "initialAcceptance": {
+  "acceptance": {
     "gallery": "not run",
     "independent": "not run",
     "game": "not run",
     "poiContract": "not integrated"
   },
-  "initialCpu": "Passed 2026-10-06: 6803 triangles; all fifteen classroom panes sampled at four fractions; nineteen courtyard panes; entry ladder and door; four open-space rays; upward owned roofs; native bounds; exact identities.",
-  "acceptance": {
-    "gallery": "current four low-angle/source comparisons passed",
-    "independent": "after-spacing-repair source/gallery/native passed",
-    "game": "native route, physical card, exact masks and four resident neighbors passed",
-    "fallback": "disable restores resident ordinary host; enable reapplies masks"
+  "sourceArchive": {
+    "commit": "678a8f4"
   },
-  "cpu": "Full authored and decoded geometry checks pass:10483 triangles; includes all previous facade/roof/open-space tests and seven real-sign stroke/counter/backing/spacing checks.",
-  "previousRuntime": {
+  "currentIndependentReview": "models/midwest/validation/clean-release-20261006/independent/review.json",
+  "export": {
+    "sha256": "4fff0ebe8e393e1bbada16460aecaff01413dacc6e288283afd3630d6bc33992",
+    "triangles": 10147,
+    "bytes": 137412
+  },
+  "runtime": {
     "proof": {
       "id": "midwest",
       "actualCamera": {
@@ -341,5 +176,34 @@
     },
     "performanceAcceptance": "No general smooth gameplay pass; headlessmedians69.9/60.1/69.6ms with existingreplacementmasksretained."
   },
-  "fallbackEvidence": "models/midwest/validation/real-sign-spacing-repair-20261006/fallback/fallback-proof.json"
+  "realSignRepair": {
+    "status": "geometry-passed-pending-gallery-live-independent-review",
+    "sourceFiles": [
+      "files/ref-0.jpg",
+      "files/user-cabral-sign-20261006.png"
+    ],
+    "fontApproximation": "Original heavy geometric/Art Deco uppercase silhouettes, source-based M/W/D/S forms and narrow I; exact font unidentified",
+    "geometryChecks": {
+      "passed": true,
+      "triangles": 10483,
+      "command": "npx tsx scripts/check-midwest-geometry.ts",
+      "checks": [
+        "seven first-hit strokes",
+        "open D counter",
+        "attached dark rails and brick backing",
+        "bounded relief/native fascia placement",
+        "no east duplicate",
+        "all prior native/pane/roof/open-space/suppression tests"
+      ]
+    },
+    "fasciaCalibrationRepair": {
+      "failedAssetSha256": "e9cd3737c10b2f7f22db7b0b17df2772e1b3f2aafc530aba6e3f830193a3dea5",
+      "failedReview": "artifacts/landmark-continuation-20261006/midwest-sign-independent-review/review.json",
+      "status": "source-calibrated geometry passed; gallery/live/independent pending",
+      "source": "ref-0 same-plane photo landmarks and entrance.jpg ground/parapet cross-check; explicit approximate measurements in footprints realSignRepair.fasciaCalibrationRepair",
+      "geometry": "West fascia cap8.88m, glyph7.49\u20137.98m; curve6.5m and ladder6.45m retained; upper/lower blank clearances1.84/2.02 glyph heights",
+      "sourceRatiosApprox": "upper41/22=1.86 and lower45/22=2.05 glyph heights",
+      "checks": "Full npx tsx scripts/check-midwest-geometry.ts passes10483tri, all prior probes plus calibrated brick/cap and source-relative clearance checks"
+    }
+  }
 }

@@ -64,7 +64,7 @@
   "sourceArchive": {
     "path": "models/ndsm-warehouse-complex",
     "sourceChecksumVerification": 18,
-    "commit": "2a7e00c"
+    "commit": "069b9ad"
   },
   "referenceComparisons": [
     {
@@ -337,8 +337,8 @@
           "drawable": true
         }
       ],
-      "features": 26983,
-      "buildings": 31325
+      "features": 24977,
+      "buildings": 28556
     },
     "card": {
       "notice": "extract_landmarks_1741957518",
@@ -348,48 +348,6 @@
       "active": "extract_landmarks_1741957518"
     },
     "performance": {
-      "id": "ndsm-warehouse-complex",
-      "assetVersion": "ebf02ab7f8d789da",
-      "samples": [
-        {
-          "label": "model-visible",
-          "visible": true,
-          "frames": 60,
-          "p50Ms": 61.80000019073486,
-          "p95Ms": 66.7999997138977
-        },
-        {
-          "label": "same-scene-model-hidden",
-          "visible": false,
-          "frames": 60,
-          "p50Ms": 63.09999990463257,
-          "p95Ms": 176.5
-        },
-        {
-          "label": "model-visible-repeat",
-          "visible": true,
-          "frames": 60,
-          "p50Ms": 68.19999980926514,
-          "p95Ms": 96.59999990463257
-        }
-      ],
-      "buildings": {
-        "kitVertices": 210540,
-        "chunks": 44,
-        "buildings": 31325,
-        "walls": 130832,
-        "quads": 537368,
-        "vertices": 3849561,
-        "geometryMB": 127.73000907897949,
-        "textureMB": 97.5,
-        "drawCalls": 8,
-        "triangles": 458271,
-        "buildMs": 20.90000009536743
-      },
-      "scope": "Headless Chromium same stationary scene; hidden model keeps existing replacement masks, isolating custom draw cost. No whole-game performance pass claimed."
-    },
-    "performanceAcceptance": "Headless stationary medians61.8/63.1/68.2ms. No smooth whole-game performance or hardware pan acceptance claimed.",
-    "previousPerformance": {
       "id": "ndsm-warehouse-complex",
       "assetVersion": "ebf02ab7f8d789da",
       "samples": [
@@ -430,8 +388,7 @@
       },
       "scope": "Headless Chromium same stationary scene; hidden model keeps existing replacement masks, isolating custom draw cost. No whole-game performance pass claimed."
     },
-    "rendererBase": "caedf982",
-    "updatedRendererReview": "models/ndsm-warehouse-complex/validation/renderer-caedf982-20261006/review.json"
+    "performanceAcceptance": "No smooth whole-game performance pass: stationary headless medians107.5/92.9/107.1ms. Evidence isolatesmodelcost withmaskskept; hardware desktop/touchpan remains unproven."
   },
   "preservedFailures": [
     "Original tallfacades classifiedwholelow and wrong7.2mportal",

@@ -1,6 +1,6 @@
 {
   "id": "nikolaas-myrakerk",
-  "status": "Current source/gallery and native game integration verified; performance followup retained",
+  "status": "accepted-scoped; native gallery/game and POI contract verified",
   "referenceImages": [
     "artifacts/landmarks/nikolaas-myrakerk/references/tichelstraat.jpg",
     "artifacts/landmarks/nikolaas-myrakerk/references/Tichelkerk_in_de_Lijnbaansgracht_foto_1.jpg"
@@ -157,114 +157,5 @@
     "runtimeEvidence": "Actual selected route destination, geographic pin, physical click sourced card, native scale 1 and retained resident drawable neighbors verified with review-manual-pois.mjs.",
     "geometryEvidence": "scripts/check-nikolaas-myrakerk-geometry.ts",
     "independentReviewStatus": "gallery-and-native-live-visual-pass"
-  },
-  "sourceArchive": {
-    "commit": "5e4e6b6",
-    "path": "models/nikolaas-myrakerk",
-    "priorSourcesCommit": "9926aa1"
-  },
-  "export": {
-    "sha256": "c1750d621307d40f958d4a37f0fbba4ca315a8234103c978cc979e7c81a7a492",
-    "bytes": 126712
-  },
-  "currentIndependentReview": "models/nikolaas-myrakerk/validation/clean-release-20261006/independent-review.json",
-  "currentRuntime": {
-    "proof": {
-      "id": "nikolaas-myrakerk",
-      "actualCamera": {
-        "center": [
-          4.88061,
-          52.37907
-        ],
-        "zoom": 19.7,
-        "pitch": 45,
-        "bearing": -77.99999999999999,
-        "elevation": 0
-      },
-      "assetVersion": "c1750d621307d40f",
-      "scale": 1,
-      "bias": false,
-      "broad": false,
-      "pin": true,
-      "destination": true,
-      "source": "https://orthodox-amsterdam.nl/wie-wijzijn/",
-      "click": {
-        "x": 756.6921983721011,
-        "y": 514.4812745714156
-      },
-      "aliases": [
-        {
-          "id": "w266555973",
-          "hidden": true
-        },
-        {
-          "id": "NL.IMBAG.Pand.0363100012169397",
-          "hidden": true
-        }
-      ],
-      "oldPyramidIds": [],
-      "neighbors": [
-        {
-          "ids": [
-            "w266556814",
-            "NL.IMBAG.Pand.0363100012173180"
-          ],
-          "resident": true,
-          "hidden": false,
-          "drawable": true
-        }
-      ],
-      "features": 11608,
-      "buildings": 16526
-    },
-    "card": {
-      "notice": "extract_landmarks_2003244540",
-      "source": "https://orthodox-amsterdam.nl/wie-wijzijn/",
-      "alpha": 1,
-      "drawn": true,
-      "active": "extract_landmarks_2003244540"
-    },
-    "performance": {
-      "id": "nikolaas-myrakerk",
-      "assetVersion": "c1750d621307d40f",
-      "samples": [
-        {
-          "label": "model-visible",
-          "visible": true,
-          "frames": 60,
-          "p50Ms": 66,
-          "p95Ms": 69.30000019073486
-        },
-        {
-          "label": "same-scene-model-hidden",
-          "visible": false,
-          "frames": 60,
-          "p50Ms": 70.5,
-          "p95Ms": 75.19999980926514
-        },
-        {
-          "label": "model-visible-repeat",
-          "visible": true,
-          "frames": 60,
-          "p50Ms": 75.90000009536743,
-          "p95Ms": 87.80000019073486
-        }
-      ],
-      "buildings": {
-        "kitVertices": 184434,
-        "chunks": 25,
-        "buildings": 16526,
-        "walls": 93542,
-        "quads": 425361,
-        "vertices": 3471300,
-        "geometryMB": 114.46551132202148,
-        "textureMB": 97.5,
-        "drawCalls": 7,
-        "triangles": 639836,
-        "buildMs": 0.9000000953674316
-      },
-      "scope": "Headless Chromium same stationary scene; hidden model keeps existing replacement masks, isolating custom draw cost. No whole-game performance pass claimed."
-    },
-    "performanceAcceptance": "Stationary headless evidence only; no general smooth gameplay or physical touch performance acceptance."
   }
 }

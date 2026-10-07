@@ -4,6 +4,8 @@ import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import specs from './nes-rozentheater-specs.json';
 import sources from './nes-rozentheater-footprints.json';
+import {openTopPrism,upwardRoofPlane} from './house-geometry';
+import {boomChicagoSignage} from './boom-chicago-signage';
 type C=Parameters<BuildingTools['add']>[1];
 /** Venue-specific architecture, built on individual current BAG plans and never a block-wide slab. */
 export function buildNesRozentheaterLandmark(id:string,_w:number,_d:number,b:BuildingTools){

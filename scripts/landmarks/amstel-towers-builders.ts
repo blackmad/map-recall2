@@ -102,7 +102,7 @@ export function buildAmstelTowerLandmark(id: string, _width: number, _depth: num
     for (const x of [-10.5, -5, 1.5, 8, 13.5]) b.box(x, 0, 25.7, .40, 4.8, .40, 'stone');
     b.box(1.5, 5.2, 26.49, 12.4, 10.8, .13, 'glass');
     for (const x of [-4.6, 1.5, 7.6]) b.box(x, 5.2, 26.62, .23, 10.8, .15, 'frame');
-    b.sign('REMBRANDT', 1.5, 4.94, 26.61, .15, 'dark');
+  // POI identification uses the map label; nondefining name glyphs omitted.
   } else if (id === 'breitner-tower') {
     // One real physical parent: curved northern low-rise block, transparent
     // linking hall, and three stepped-height glass plates at the south end.
@@ -135,6 +135,6 @@ export function buildAmstelTowerLandmark(id: string, _width: number, _depth: num
     // Equipment measured above the architectural120m headline remains small.
     b.box(4.7, 119.0, .9, 5.6, 3.3, 4.8, 'slate');
     b.box(-24.5, 4.0, 8.7, 10.1, .28, 3.7, 'stone');
-    b.sign('MONDRIAAN', -22.0, 5.0, 9.4, .10, 'dark');
+  // POI identification uses the map label; nondefining name glyphs omitted.
   } else throw new Error(`No Amstel tower builder for ${id}`);
 }

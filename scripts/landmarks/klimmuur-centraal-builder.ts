@@ -3,41 +3,6 @@ import type {BuildingTools} from './cultural-builders';
 import data from './klimmuur-centraal-footprints.json';
 import {upwardRoofPlane} from './house-geometry';
 type P=[number,number,number];
-/** Original narrow sans strokes, transformed into a surveyed facade frame. No font/photo textures. */
-function facadeLettering(text:string,p:P,q:P,b:BuildingTools):void{
- const length=Math.hypot(q[0]-p[0],q[1]-p[1]),tx=(q[0]-p[0])/length,tz=(q[1]-p[1])/length,nx=-tz,nz=tx,slope=(q[2]-p[2])/length;
- // Photo-derived dimensions, not a surveyed sign: 90% of frontage, 1.8m tall,
- // with the top 0.8m below the descending crown. Stems remain vertical.
- const height=1.8,clearance=.8,width=length*.90,start=length*.05;
- type V=[number,number];
- const arc=(cx:number,cy:number,rx:number,ry:number,a:number,z:number):V[]=>Array.from({length:13},(_,i)=>{const t=a+(z-a)*i/12;return[cx+rx*Math.cos(t),cy+ry*Math.sin(t)]});
- const glyphs:Record<string,V[][]>={
-  K:[[[0,0],[0,1]],[[1,1],[0,.48],[1,0]]],L:[[[0,1],[0,0],[1,0]]],I:[[[.5,0],[.5,1]]],
-  M:[[[0,0],[0,1],[.5,.53],[1,1],[1,0]]],
-  U:[[[0,1],[0,.25]],arc(.5,.25,.5,.25,Math.PI,2*Math.PI),[[1,.25],[1,1]]],
-  R:[[[0,0],[0,1],[.48,1]],arc(.48,.75,.52,.25,Math.PI/2,-Math.PI/2),[[.48,.5],[0,.5]],[[.45,.5],[1,0]]],
-  C:[arc(.5,.5,.5,.5,Math.PI*.24,Math.PI*1.76)],E:[[[1,1],[0,1],[0,0],[1,0]],[[0,.5],[.82,.5]]],
-  N:[[[0,0],[0,1],[1,0],[1,1]]],T:[[[0,1],[1,1]],[[.5,1],[.5,0]]],
-  A:[[[0,0],[.5,1],[1,0]],[[.22,.43],[.78,.43]]]
- };
- const advance=(ch:string)=>ch===' '?1.0:1.06,total=[...text].reduce((n,ch)=>n+advance(ch),0)-.36,unit=width/total,glyphWidth=unit*.70,stroke=.18;
- let cursor=0,index=0;
- for(const ch of text){if(ch===' '){cursor+=advance(ch)*unit;continue;}
-  const paths=glyphs[ch];if(!paths)throw Error(`Unsupported facade glyph ${ch}`);
-  for(const path of paths)for(let i=0;i<path.length-1;i++){
-   const a=new T.Vector2(path[i][0]*glyphWidth,path[i][1]*height),c=new T.Vector2(path[i+1][0]*glyphWidth,path[i+1][1]*height),normal=new T.Vector2(-(c.y-a.y),c.x-a.x).normalize().multiplyScalar(stroke/2);
-   const shape=new T.Shape([a.clone().add(normal),c.clone().add(normal),c.clone().sub(normal),a.clone().sub(normal)]);
-   const g=new T.ExtrudeGeometry(shape,{depth:.012,bevelEnabled:false,steps:1});
-   const positions=g.getAttribute('position');
-   for(let j=0;j<positions.count;j++){
-    const u=start+cursor+positions.getX(j),v=positions.getY(j),depth=.062+positions.getZ(j);
-    positions.setXYZ(j,p[0]+tx*u+nx*depth,p[2]+slope*u-clearance-height+v,p[1]+tz*u+nz*depth);
-   }
-   g.computeVertexNormals();g.userData.part='south-real-lettering';g.userData.glyph=ch;g.userData.glyphIndex=index;g.userData.text=text;b.add(g,'dark');
-  }
-  cursor+=advance(ch)*unit;index++;
- }
-}
 /** Original surveyed wedge, native RD east/south. Sources are measurements, never asset mesh imports. */
 export function buildKlimmuurCentraal(_w:number,_d:number,b:BuildingTools):void{
  const all=data.roofs.map(r=>({surface:r.surface,ring:r.rings[0] as P[]}));
@@ -64,7 +29,7 @@ export function buildKlimmuurCentraal(_w:number,_d:number,b:BuildingTools):void{
    }
   }
   for(let i=0;i<roof.ring.length;i++){const p=roof.ring[i],q=roof.ring[(i+1)%roof.ring.length];if(shared(p,q)||Math.max(p[2],q[2])<.03)continue;const topP=height(p[0],p[1]),topQ=height(q[0],q[1]);quad(p,q,0,0,topP,topQ,'concrete');
-   // Broad photographic silver lower and warm pale upper bands; unrelated graffiti omitted.
+   // Broad photographic silver lower and warm pale upper bands. No copied graffiti/name paint.
    if(roof.surface===5&&Math.hypot(p[0]-q[0],p[1]-q[1])>12){quad(p,q,0,0,topP*.61,topQ*.61,'white',.025);quad(p,q,topP*.61,topQ*.61,topP,topQ,'stone',.025);
     // Restrained corrugation running vertically on the actual long side planes.
     const n=Math.ceil(Math.hypot(p[0]-q[0],p[1]-q[1])/.52);for(let k=1;k<n;k++){const f=k/n,pa:P=[p[0]+(q[0]-p[0])*f,p[1]+(q[1]-p[1])*f,0],pb:P=[pa[0]+(q[0]-p[0])*.0018,pa[1]+(q[1]-p[1])*.0018,0],h=topP+(topQ-topP)*f;quad(pa,pb,0,0,h,h,'concrete',.055)}
@@ -74,7 +39,6 @@ export function buildKlimmuurCentraal(_w:number,_d:number,b:BuildingTools):void{
  // South terrace frontage corresponds to AHN main roof edge west crown→east low.
  const main=roofs.find(r=>r.surface===5)!,p=main.ring[5],q=main.ring[6];
  // Source2016 5.113×4.864m folding glass assembly; latest2023 observed fully closed shutter.
- facadeLettering('KLIM MUUR CENTRAAL',p,q,b);
  const length=Math.hypot(q[0]-p[0],q[1]-p[1]),fraction=.57,span=5.113/length;
  const point=(f:number):P=>[p[0]+(q[0]-p[0])*f,p[1]+(q[1]-p[1])*f,0];const a=point(fraction-span/2),d=point(fraction+span/2);
  quad(a,d,.05,.05,4.914,4.914,'frame',.105);const innerA=point(fraction-span/2+.025/length),innerD=point(fraction+span/2-.025/length);quad(innerA,innerD,.12,.12,4.86,4.86,'concrete',.125);

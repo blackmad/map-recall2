@@ -109,5 +109,5 @@ export function buildAmstaDePoort(_id: string, _w: number, _d: number, b: Buildi
     }
   }
   plane(5.0, 3.82, front + .40, 8.8, .80, 'white');
-  b.sign('AMSTA DE POORT', 5.0, 4.03, front + .45, .054, 'dark');
+  // POI identification uses the map label; nondefining name glyphs omitted.
 }

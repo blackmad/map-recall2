@@ -1961,9 +1961,9 @@
     }
   ],
   "privateSourceArchive": {
-    "commit": "bb6074e",
+    "commit": "30c5c22",
     "path": "models/beta-boulders/",
-    "repository": "blackmad/map-recall2-source-data"
+    "remote": "blackmad/map-recall2-source-data"
   },
   "principalFrontage": {
     "part": "east articulated tram-corridor face",

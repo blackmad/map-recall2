@@ -468,9 +468,9 @@
     }
   ],
   "privateSourceArchive": {
-    "commit": "bb6074e",
+    "commit": "30c5c22",
     "path": "models/kinderkookkafe/",
-    "repository": "blackmad/map-recall2-source-data"
+    "remote": "blackmad/map-recall2-source-data"
   },
   "sourceArchive": {
     "repository": "blackmad/map-recall2-source-data",

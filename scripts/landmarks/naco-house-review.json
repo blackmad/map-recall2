@@ -1,6 +1,6 @@
 {
   "id": "naco-house",
-  "status": "Current source/gallery and native game integration verified; performance followup retained",
+  "status": "accepted-scoped; native gallery/game and POI contract verified",
   "date": "2026-10-05",
   "geometryCheck": "node --import tsx scripts/check-naco-house-geometry.ts",
   "triangles": 3448,
@@ -86,113 +86,5 @@
     "runtimeEvidence": "Actual selected route destination, geographic pin, physical click sourced card, native scale 1 and retained resident drawable neighbors verified with review-manual-pois.mjs.",
     "geometryEvidence": "scripts/check-naco-house-geometry.ts",
     "independentReviewStatus": "gallery-and-native-live-visual-pass"
-  },
-  "sourceArchive": {
-    "commit": "5e4e6b6",
-    "path": "models/naco-house",
-    "priorSourcesCommit": "9926aa1"
-  },
-  "export": {
-    "sha256": "df4445c3f6b327bb4581003019fd3488554d4d013f66ca400bc7cad2c2abfdb2",
-    "bytes": 53428
-  },
-  "currentIndependentReview": "models/naco-house/validation/clean-release-20261006/independent-review.json",
-  "currentRuntime": {
-    "proof": {
-      "id": "naco-house",
-      "actualCamera": {
-        "center": [
-          4.905443,
-          52.3786995
-        ],
-        "zoom": 19.2,
-        "pitch": 55.00000000000001,
-        "bearing": -77.5,
-        "elevation": 0
-      },
-      "assetVersion": "df4445c3f6b327bb",
-      "scale": 1,
-      "bias": false,
-      "broad": false,
-      "pin": true,
-      "destination": true,
-      "source": "https://stadsherstel.nl/monumenten/de-ruijterkade-naco-huisje/",
-      "click": {
-        "x": 741.5529601361274,
-        "y": 496.323060781234
-      },
-      "aliases": [
-        {
-          "id": "w1535749695",
-          "hidden": true
-        },
-        {
-          "id": "NL.IMBAG.Pand.0363100012570001",
-          "hidden": true
-        }
-      ],
-      "oldPyramidIds": [],
-      "neighbors": [
-        {
-          "ids": [
-            "NL.IMBAG.Pand.0363100012181960"
-          ],
-          "resident": true,
-          "hidden": false,
-          "drawable": true
-        }
-      ],
-      "features": 8951,
-      "buildings": 13103
-    },
-    "card": {
-      "notice": "extract_landmarks_1769455774",
-      "source": "https://stadsherstel.nl/monumenten/de-ruijterkade-naco-huisje/",
-      "alpha": 1,
-      "drawn": true,
-      "active": "extract_landmarks_1769455774"
-    },
-    "performance": {
-      "id": "naco-house",
-      "assetVersion": "df4445c3f6b327bb",
-      "samples": [
-        {
-          "label": "model-visible",
-          "visible": true,
-          "frames": 60,
-          "p50Ms": 32.90000009536743,
-          "p95Ms": 36.80000019073486
-        },
-        {
-          "label": "same-scene-model-hidden",
-          "visible": false,
-          "frames": 60,
-          "p50Ms": 34.59999990463257,
-          "p95Ms": 40
-        },
-        {
-          "label": "model-visible-repeat",
-          "visible": true,
-          "frames": 60,
-          "p50Ms": 33.40000009536743,
-          "p95Ms": 37.700000286102295
-        }
-      ],
-      "buildings": {
-        "kitVertices": 74697,
-        "chunks": 25,
-        "buildings": 13103,
-        "walls": 58847,
-        "quads": 274473,
-        "vertices": 2447054,
-        "geometryMB": 80.531982421875,
-        "textureMB": 97.5,
-        "drawCalls": 5,
-        "triangles": 122205,
-        "buildMs": 30
-      },
-      "scope": "Headless Chromium same stationary scene; hidden model keeps existing replacement masks, isolating custom draw cost. No whole-game performance pass claimed."
-    },
-    "performanceAcceptance": "Stationary headless evidence only; no general smooth gameplay or physical touch performance acceptance."
   }
 }

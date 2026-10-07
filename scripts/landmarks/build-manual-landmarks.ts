@@ -1,4 +1,5 @@
 import {buildHaparandaweg9} from './haparandaweg-9-builder';
+import {buildNdsmContainerArch} from './ndsm-container-arch-builder';
 import {buildHaparandaweg8338} from './haparandaweg-8-338-builder';
 import {buildAfrikahuis} from './afrikahuis-builder';
 import {buildHaparandaweg24} from './haparandaweg-2-4-builder';
@@ -30,14 +31,6 @@ import {buildBeestHetLab} from './beest-het-lab-builder';
  */
 import fs from 'node:fs';
 import {buildConservatorium} from './conservatorium-builder';
-import {buildKinderkookkafe} from './kinderkookkafe-builder';
-import {buildBetaBoulders} from './beta-boulders-builder';
-import {buildWillemDeZwijgerFrontage} from './willem-de-zwijger-frontage-builder';
-import {buildKesbeke, buildKesbekeShop} from './kesbeke-builder';
-import {graphicProtectionBounds, splitGraphicSupportGeometry, quantizeOrdinaryMesh} from './selective-position-precision';
-import {buildKlimmuurCentraal} from './klimmuur-centraal-builder';
-import {buildKeithHaringMural} from './keith-haring-mural-builder';
-import {buildMountainNetwork} from './mountain-network-builder';
 import {buildW139} from './w139-builder';
 import {refreshModelDates} from './model-dates';
 import path from 'node:path';
@@ -47,13 +40,11 @@ import {Document, NodeIO} from '@gltf-transform/core';
 import {dedup, prune, weld, meshopt, reorder, quantize} from '@gltf-transform/functions';
 import {ALL_EXTENSIONS, KHRMaterialsUnlit, EXTMeshoptCompression} from '@gltf-transform/extensions';
 import {MeshoptEncoder} from 'meshoptimizer';
+import {graphicProtectionBounds, splitGraphicSupportGeometry, quantizeOrdinaryMesh} from './selective-position-precision';
 await MeshoptEncoder.ready;
 import {buildCulturalLandmark} from './cultural-builders';
 import {buildRemEiland} from './rem-eiland-builder';
 import {buildMidwest} from './midwest-builder';
-import {buildNdsmContainerArch} from './ndsm-container-arch-builder';
-import {buildValley} from './valley-builder';
-import {buildNdsmWarehouseComplex} from './ndsm-warehouse-complex-builder';
 import {openTopPrism, upwardRoofPlane} from './house-geometry';
 import {fittedSignLayout} from './sign-layout';
 import {buildNieuweKerk} from './nieuwe-kerk-builder';
@@ -137,6 +128,15 @@ import {buildCanalsMuseum} from './canals-museum-builder';
 import {buildNiod} from './niod-builder';
 import {buildMultatuli} from './multatuli-builder';
 import {buildSingelkerk} from './singelkerk-builder';
+import {buildKinderkookkafe} from './kinderkookkafe-builder';
+import {buildBetaBoulders} from './beta-boulders-builder';
+import {buildWillemDeZwijgerFrontage} from './willem-de-zwijger-frontage-builder';
+import {buildKesbeke, buildKesbekeShop} from './kesbeke-builder';
+import {buildKlimmuurCentraal} from './klimmuur-centraal-builder';
+import {buildMountainNetwork} from './mountain-network-builder';
+import {buildVinoly} from './vinoly-builder';
+import {buildValley} from './valley-builder';
+import {buildNdsmWarehouseComplex} from './ndsm-warehouse-complex-builder';
 import {buildObaOosterdok} from './oba-oosterdok-builder';
 import {buildSintAgneskerk} from './sint-agneskerk-builder';
 import {buildPetruskerk} from './petruskerk-builder';
@@ -177,7 +177,7 @@ Object.assign(letters,{
  '6':['01110','10000','10000','11110','10001','10001','01110'],'7':['11111','00001','00010','00100','01000','01000','01000'],
  '8':['01110','10001','10001','01110','10001','10001','01110'],'9':['01110','10001','10001','01111','00001','00001','01110'],
 });
-function sign(text:string,x:number,y:number,z:number,pixel:number,c:Colour='white',maxWidth?:number){const layout=fittedSignLayout(text,letters,pixel,maxWidth);pixel=layout.pixel;let u=layout.start;for(let ch of text){let rows=letters[ch];if(rows)for(let j=0;j<7;j++)for(let k=0;k<rows[j].length;k++)if(rows[j][k]==='1')box(x+u+k*pixel,y+(6-j)*pixel,z,pixel*.85,pixel*.85,.08,c);u+=((rows?.[0].length??3)+1)*pixel;}}
+function sign(text:string,x:number,y:number,z:number,pixel:number,c:Colour='white',maxWidth?:number,reliefDepth=.08){const layout=fittedSignLayout(text,letters,pixel,maxWidth);pixel=layout.pixel;let u=layout.start;for(let ch of text){let rows=letters[ch];if(rows)for(let j=0;j<7;j++)for(let k=0;k<rows[j].length;k++)if(rows[j][k]==='1')box(x+u+k*pixel,y+(6-j)*pixel,z,pixel*.85,pixel*.85,reliefDepth,c);u+=((rows?.[0].length??3)+1)*pixel;}}
 function station(){box(0,0,0,244,1,31,'stone');box(0,1,0,244,15.7,29,'brick');gableRoof(0,16.7,0,244,29,6.3,'slate');for(let z of [-14.65,14.65]){for(let y of [1,6.6,12.5,16])box(0,y,z,244,.4,.6,'stone');for(let x=-117;x<=117;x+=5.85){for(let y of [1.9,8.1])window(x,y,z>0?14.72:-15.1,2.5,y<3?3.7:3.4);box(x-2.8,1,z,.5,15.7,.65,'stone');}}
  // Central entrance pavilion, paired clock / wind-dial towers, steep roof and crest.
  box(0,1,14,33,19,5,'brick');prism(0,20,14,33,8,11,'brick');prism(0,20.7,14.1,29,8.3,9.5,'stone');prism(0,21.3,14.25,26,8.6,8,'brick');for(let x of [-10,0,10])window(x,1.5,16.6,5.5,7);for(let x of [-9,-3,3,9])window(x,11.3,16.6,3.7,5.4);box(0,19,16.8,31,.8,.8,'stone');box(0,27.5,18.75,3,2,.4,'gold');
@@ -214,7 +214,7 @@ async function save(id:string){
  doc.getRoot().setDefaultScene(scene);
  const groups=new Map<string,{colour:Colour;hex:string;unlit:boolean;precise:boolean;geometries:T.BufferGeometry[]}>();
  for(const part of parts){
-  const hex=part.hex??spec.materialOverrides?.[part.c]??(id==='keith-haring-mural'&&part.c==='brick'?'#564840':palette[part.c]),unlit=!!part.unlit;
+  const hex=part.hex??spec.materialOverrides?.[part.c]??palette[part.c],unlit=!!part.unlit;
   const materialName=part.hex?`decal-${hex.slice(1)}-${unlit?'unlit':'lit'}`:part.c;
   const split=spec.preservePositionPrecision?(unlit?{precise:part.g}:splitGraphicSupportGeometry(part.g,protection)):{ordinary:part.g};
   for(const [precision,g]of Object.entries(split)){
@@ -234,7 +234,7 @@ async function save(id:string){
   const rgb=new T.Color(group.hex),material=doc.createMaterial(name).setBaseColorFactor([rgb.r,rgb.g,rgb.b,1]).setMetallicFactor(0).setRoughnessFactor(.9).setDoubleSided(true);
   if(group.unlit)material.setExtension('KHR_materials_unlit',unlitExtension!.createUnlit());
   if(id==='conservatorium'&&!name.startsWith('decal-')&&group.colour==='glass')material.setBaseColorFactor([rgb.r,rgb.g,rgb.b,.28]).setAlphaMode('BLEND');
-  (group.precise?preciseMesh!:mesh).addPrimitive(doc.createPrimitive().setExtras(spec.preservePositionPrecision?{positionPrecision:group.precise?'exact':'ordinary'}:{}).setAttribute('POSITION',doc.createAccessor().setType('VEC3').setArray(positions).setBuffer(buffer)).setAttribute('NORMAL',doc.createAccessor().setType('VEC3').setArray(normals).setBuffer(buffer)).setMaterial(material));
+  (group.precise?preciseMesh!:mesh).addPrimitive(doc.createPrimitive().setExtras({positionPrecision:group.precise?'exact':'ordinary'}).setAttribute('POSITION',doc.createAccessor().setType('VEC3').setArray(positions).setBuffer(buffer)).setAttribute('NORMAL',doc.createAccessor().setType('VEC3').setArray(normals).setBuffer(buffer)).setMaterial(material));
  }
  const ordinaryNode=doc.createNode(id).setMesh(mesh);scene.addChild(ordinaryNode);
  if(preciseMesh?.listPrimitives().length)scene.addChild(doc.createNode(`${id}-precise`).setMesh(preciseMesh));
@@ -287,18 +287,28 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   else {
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
     if(id==='petruskerk')buildPetruskerk(w,d,helpers);
+    else if(id==='boomkerk')buildBoomkerk(w,d,helpers);
+    else if(id==='sint-agneskerk')buildSintAgneskerk(w,d,helpers);
+    else if(id==='oba-oosterdok')buildObaOosterdok(w,d,helpers);
+    else if(id==='singelkerk')buildSingelkerk(w,d,helpers);
+    else if(id==='nikolaas-myrakerk')buildNikolaasMyrakerk(w,d,helpers);
+    else if(id==='wine-guildhall')buildWineGuildhall(w,d,helpers);
     else if(id==='kinderkookkafe')buildKinderkookkafe(w,d,helpers);
     else if(id==='beta-boulders')buildBetaBoulders(w,d,helpers);
     else if(id==='beest-boulders')buildWillemDeZwijgerFrontage(w,d,helpers,addDecal);
     else if(id==='kesbeke')buildKesbeke(w,d,helpers);
     else if(id==='kesbeke-shop')buildKesbekeShop(w,d,helpers);
     else if(id==='klimmuur-centraal')buildKlimmuurCentraal(w,d,helpers);
-    else if(id==='keith-haring-mural')buildKeithHaringMural(w,d,helpers);
     else if(id==='mountain-network')buildMountainNetwork(w,d,helpers);
-    else if(id==='boomkerk')buildBoomkerk(w,d,helpers);
-    else if(id==='sint-agneskerk')buildSintAgneskerk(w,d,helpers);
-    else if(id==='oba-oosterdok')buildObaOosterdok(w,d,helpers);
-    else if(id==='singelkerk')buildSingelkerk(w,d,helpers);
+    else if(id==='vinoly')buildVinoly(w,d,helpers);
+    else if(id==='valley')buildValley(w,d,helpers);
+    else if(id==='rai-amsterdam')buildRaiAmsterdamComplex(w,d,helpers);
+    else if(id==='ndsm-warehouse-complex')buildNdsmWarehouseComplex(w,d,helpers);
+    else if(id==='naco-house')buildNacoHouse(w,d,helpers);
+    else if(id==='jeruzalemkerk')buildJeruzalemkerk(w,d,helpers);
+    else if(id==='beest-het-lab')buildBeestHetLab(w,d,helpers);
+    else if(id==='groot-melkhuis')buildGrootMelkhuis(w,d,helpers);
+    else if(id==='blauwe-theehuis')buildBlauweTheehuis(w,d,helpers);
     else if(id==='w139')buildW139(w,d,helpers);
     else if(id==='conservatorium')buildConservatorium(w,d,helpers);
     else if(id==='multatuli')buildMultatuli(w,d,helpers);
@@ -392,25 +402,14 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='vondeltuin')buildVondeltuin(w,d,helpers);
     else if(id==='centrale-markthal')buildCentraleMarkthal(w,d,helpers);
     else if(id==='rasphuispoort')buildRasphuispoort(w,d,helpers);
-    else if(id==='rai-amsterdam')buildRaiAmsterdamComplex(w,d,helpers);
     else if(id==='pulitzer-amsterdam')buildPulitzerAmsterdam(w,d,helpers);
     else if(id==='the-rock')buildTheRock(w,d,helpers);
-    else if(id==='wine-guildhall')buildWineGuildhall(w,d,helpers);
     else if(id==='ndsm-container-arch')buildNdsmContainerArch(w,d,helpers);
-    else if(id==='beest-het-lab')buildBeestHetLab(w,d,helpers);
-    else if(id==='blauwe-theehuis')buildBlauweTheehuis(w,d,helpers);
-    else if(id==='groot-melkhuis')buildGrootMelkhuis(w,d,helpers);
-    else if(id==='jeruzalemkerk')buildJeruzalemkerk(w,d,helpers);
-    else if(id==='naco-house')buildNacoHouse(w,d,helpers);
-    else if(id==='nikolaas-myrakerk')buildNikolaasMyrakerk(w,d,helpers);
-    else if(id==='vinoly')buildVinoly(w,d,helpers);
     else if(id==='afrikahuis')buildAfrikahuis(w,d,helpers);
     else if(id==='el-tawheed')buildElTawheed(w,d,helpers);
     else if(id==='haparandaweg-2-4')buildHaparandaweg24(w,d,helpers);
     else if(id==='haparandaweg-8-338')buildHaparandaweg8338(w,d,helpers);
     else if(id==='haparandaweg-9')buildHaparandaweg9(w,d,helpers);
-    else if(id==='valley')buildValley(w,d,helpers);
-    else if(id==='ndsm-warehouse-complex')buildNdsmWarehouseComplex(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   manifest.models[id]=await save(id);

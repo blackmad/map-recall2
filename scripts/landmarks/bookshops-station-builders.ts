@@ -36,8 +36,14 @@ export function buildBookshopsStationLandmark(id:string,_w:number,_d:number,b:Bu
   for(const x of [-1.55,1.55])for(const yy of [3.8,7.0,10.3,13.6]){arch(x,yy,3.99,1.45,2.4,'white');arch(x,yy+.12,4.04,1.21,2.18,'glass');box(x,yy+.2,4.08,.05,2.1,.045,'frame');}
   for(const z of [-5.5,-2.4,.5])for(const yy of [3.8,7.0,10.3,13.6]){arch(6.84,yy,z,1.6,2.45,'white',Math.PI/2);arch(6.9,yy+.12,z,1.36,2.22,'glass',Math.PI/2);}
   for(const x of [-11,-7.4,-3.8])for(const yy of [3.9,7.1,10.2])sash(x,yy,3.94,2.0,2.25);
-  // Two real shop fronts: red/white awnings, dark fascia, books displayed behind panes.
-  box(-3.25,.25,3.95,18.0,2.9,.11,'glass');box(-3.25,3.2,4.02,18.3,.32,.35,'dark');sign('ATHENAEUM',1.0,3.67,4.25,.115,'white');sign('NIEUWSCENTRUM',-8.3,3.63,4.25,.075,'white');
+  // Two real shop fronts: red/white awnings, dark corner band, books behind panes.
+  box(-3.25,.25,3.95,18.0,2.9,.11,'glass');box(-3.25,3.2,4.02,18.3,.32,.35,'dark');
+  // Archived principal-front photo: dark ATHENAEUM / BOEKHANDEL letters on a
+  // narrow white fascia, below the first window tier and above the awning.
+  // Panel dimensions are photo-relative, not surveyed. Keep the dark corner
+  // band exposed; omit the unverified news-shop words and projecting boards.
+  box(.35,3.2,4.215,6.5,.32,.04,'white');
+  sign('ATHENAEUM BOEKHANDEL',.35,3.245,4.246,.035,'dark',5.8,.012);
   for(const x of [-11.5,-8,-4.5,-1,2.5])box(x,.2,4.05,.12,3.0,.12,'gold');
   stripAwning(-8.0,2.7,4.83,8.6,1.75);stripAwning(1.0,2.7,4.83,8.0,1.75);
   box(6.83,.2,-1.4,.11,3.0,9.0,'glass');box(6.9,3.2,-1.4,.35,.32,9.5,'dark');
@@ -50,13 +56,33 @@ export function buildBookshopsStationLandmark(id:string,_w:number,_d:number,b:Bu
   // Four broad bays with two unequal stone gables, rather than generic narrow canal houses.
   for(const x of [-9.65,-3.9,1.95,7.7]){
    for(const yy of [4.2,8.4,12.6,16.8]){for(const dx of [-1.2,0,1.2])sash(x+dx,yy,2.24,.98,2.8);box(x,yy+2.95,2.22,4.45,.25,.36,'stone');}
-   box(x,.2,2.22,4.8,3.55,.12,'glass');
+   if(x!==1.95)box(x,.2,2.22,4.8,3.55,.12,'glass');
+   else{
+    // The photo shows narrow side apertures flanking an exposed recessed
+    // arched entrance, not one continuous pane over the whole central bay.
+    // Keep the full existing 2.7m arch sightline clear; dimensions of these
+    // flanking openings/jambs are photo-relative, not surveyed measurements.
+    for(const dx of [-2.0,2.0])box(x+dx,.2,2.22,.7,3.05,.12,'glass');
+    for(const dx of [-1.55,1.55])box(x+dx,.12,1.47,.25,3.35,1.5,'stone');
+   }
   }
   for(const x of [-12.25,-6.75,-.7,5.5,10.4]){box(x,3.8,2.18,.55,17.25,.4,'stone');box(x,18.4,2.28,1.15,.38,.5,'stone');}
   for(const x of [-9.65,1.95]){box(x,16.5,2.22,5.8,3.4,.07,'stone');gable(x,19.65,2.37,5.8,4.65);box(x,23.95,2.36,.64,.55,.45,'stone');arch(x,19.8,2.43,2.7,2.65,'white');arch(x,19.94,2.47,2.4,2.35,'glass');}
-  box(-1.0,3.63,2.35,23.6,.35,.65,'stone');box(-1.0,3.28,2.76,23.6,.15,.85,'stone');
+  box(-1.0,3.63,2.35,23.6,.35,.65,'stone');
+  // The photographed entrance arch ends beneath the cornice/header, rather
+  // than behind its lip. Preserve the neighboring lip at its existing height;
+  // the central header elevation is a bounded photo-relative reconstruction.
+  // Its y3.5 base clears the unchanged arch crown y3.47 and meets the upper
+  // course at y3.63, beneath the existing fascia. Bay endpoints follow fascia.
+  box(-6.5375,3.28,2.76,12.525,.15,.85,'stone');
+  box(7.4875,3.28,2.76,6.625,.15,.85,'stone');
+  box(1.95,3.5,2.76,4.45,.15,.85,'stone');
   arch(1.95,.12,.72,2.7,3.35,'stone');arch(1.95,.26,.8,2.38,3.1,'dark');box(1.95,.3,.88,.08,2.7,.1,'gold');
-  sign('SCHELTEMA',1.95,4.03,2.67,.14,'white');
+  // Archived Rokin 9–15 photo: the fixed white name belongs to the narrow central
+  // dark fascia, above the entrance cornice. Dimensions are photo-relative;
+  // keep this shallow panel below the first window tier and within its stone bay.
+  box(1.95,3.64,2.645,4.45,.55,.1,'dark');
+  sign('SCHELTEMA',1.95,3.695,2.706,.064,'white',3.5,.012);
   // Blue shop awnings occupy the northern bays, neighboring retail bay remains separate.
   stripAwning(-9.65,2.8,3.25,4.7,1.9,0,'blue');stripAwning(-3.9,2.8,3.25,4.7,1.9,0,'blue');
   for(let z=-21;z<0;z+=3.7)for(const yy of [4.2,8.4,12.6,16.8])sash(-13.15,yy,z,2.2,2.8,-Math.PI/2);
@@ -78,6 +104,7 @@ export function buildBookshopsStationLandmark(id:string,_w:number,_d:number,b:Bu
   for(const z of [-5.9,-1.8,2.2])for(const yy of [.7,4.2]){sash(17.47,yy,z,1.2,2.0,Math.PI/2);box(17.42,yy-.1,z,.22,.15,2.1,'stone');}
   // Rear platform face and lower service appendage retain the original mapped setbacks.
   for(const x of [-2,3,8,13])for(const yy of [.7,4.2])sash(x,yy,-6.2,1.25,2.0,Math.PI);
-  sign('HAARLEMMERMEERSTATION',5.75,3.47,7.42,.022,'white');
+  // Keep the thin entrance canopy; cached operator photos do not establish
+  // a defining name panel here. Identification belongs to the map label.
  }else throw new Error(`No bookshop/station builder for ${id}`);
 }

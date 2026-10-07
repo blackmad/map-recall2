@@ -246,8 +246,7 @@
     "https://www.deklimmuur.nl/klimmen/klimmuur-centraal/",
     "https://www.nationalestaalprijs.nl/project/klimwand",
     "https://commons.wikimedia.org/wiki/File:2023_Dijksgracht,_Asd-Klimmuur_centraal.jpg",
-    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012170819",
-    "https://www.deklimmuur.nl/wp-content/uploads/2024/03/USPs_locatie.webp"
+    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012170819"
   ],
   "sourceDate": "2026-10-06",
   "scope": "Only Dijksgracht2 current BAG parent; VBO0363010001173286 sportfunctie458m² usable floor area. Hannekes Boom BAG0363100012238899, adjoining bridge/railway and separate IJtunnel ventilation shafts are retained, never included. No courts in current surveyed footprint.",
@@ -267,29 +266,13 @@
       "feature": "four folding glass doors, 5113mm total width and4864mm height",
       "sourceUrl": "https://www.nationalestaalprijs.nl/project/klimwand",
       "date": "2016-02-03 drawing +2018 current project photos",
-      "confidence": "high dimensions from source design; 2023 photo shutter closed. Real upper-band lettering retained separately."
-    },
-    {
-      "feature": "Actual black KLIM MUUR CENTRAAL lettering in tall narrow sans capitals, spanning the descending south terrace facade upper pale corrugated band. Letter stems vertical; baseline and tops follow crown slope.",
-      "sourceUrl": "https://www.deklimmuur.nl/wp-content/uploads/2024/03/USPs_locatie.webp",
-      "crossCheckSourceUrl": "https://commons.wikimedia.org/wiki/File:2023_Dijksgracht,_Asd-Klimmuur_centraal.jpg",
-      "buildingPart": "long south terrace facade, below descending roof edge",
-      "date": "Operator upload path March 2024; photo capture date unknown. Independently visible in 2023-01-21 Commons photo.",
-      "confidence": "high for text, placement, slope and narrow sans proportions; dimensions photo-derived approximate",
-      "estimatedDimensions": {
-        "spanMetres": 18.9,
-        "glyphHeightMetres": 1.8,
-        "roofClearanceMetres": 0.8,
-        "note": "Span follows 90% of surveyed 20.99m frontage; not sign survey measurements.",
-        "strokeWidthMetres": 0.18
-      },
-      "privateRawPath": "models/klimmuur-centraal/signage-2026-10-06/USPs_locatie.webp"
+      "confidence": "high dimensions from source design, 2023 photo shutter closed; no historic lettering copied"
     }
   ],
   "privateSourceArchive": {
-    "commit": "bb6074e",
     "path": "models/klimmuur-centraal/",
-    "repository": "blackmad/map-recall2-source-data"
+    "remote": "blackmad/map-recall2-source-data",
+    "commit": "pending coordinator commit"
   },
   "installedIdentityEvidence": {
     "tile": "public/data/extracts/amsterdam/building-tiles/14/8415/5383.geojson.gz",
@@ -306,14 +289,9 @@
   },
   "sourceArchive": {
     "repository": "blackmad/map-recall2-source-data",
-    "commit": "1313b00",
     "modelPath": "models/klimmuur-centraal/",
-    "validationPath": "models/klimmuur-centraal/validation/signage-20261006/"
-  },
-  "southSignageCorrection": {
-    "finding": "Blanket omission of building names incorrectly removed defining real source-supported facade lettering, despite explicit 2023 photo evidence.",
-    "repair": "Original texture-free narrow sans vector strokes transformed into measured south wall frame with descending crown; black lettering occupies real warm-pale upper band. No source photo pixels or unrelated graffiti.",
-    "geometryValidation": "scripts/check-klimmuur-centraal-geometry.ts verifies all sixteen glyphs, panel fit, wall-plane offset and first-hit facade visibility.",
-    "visualAcceptance": "Coordinator gallery/live-game comparison pending."
+    "commit": "04a87dc",
+    "manifest": "models/klimmuur-centraal/manifest.json",
+    "validationPath": "models/klimmuur-centraal/validation/release-20261006/"
   }
 }

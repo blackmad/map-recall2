@@ -1999,8 +1999,8 @@
   },
   "sourceArchive": {
     "repository": "blackmad/map-recall2-source-data",
-    "modelPath": "models/beest-boulders/",
-    "commit": "2aa18011ae2c26568f9170517064a6561e075b30",
+    "modelPath": "models/willem-de-zwijger-frontage/",
+    "commit": "pending root source sync",
     "reusedSourceCommit": "04a87dc"
   },
   "canonicalPoiModel": "beest-boulders"

@@ -1,6 +1,6 @@
 {
   "id": "beest-het-lab",
-  "status": "Current source/gallery and native game integration verified; performance followup retained",
+  "status": "accepted-scoped; native gallery/game and POI contract verified",
   "sourceFiles": [
     {
       "path": "artifacts/landmarks/beest-het-lab/references/panorama-index.json",
@@ -126,9 +126,8 @@
     "Entrance destination pin is south roadside public approach; coordinator must route-check it."
   ],
   "sourceArchive": {
-    "commit": "5e4e6b6",
-    "path": "models/beest-het-lab",
-    "priorSourcesCommit": "9926aa1"
+    "status": "Coordinator must archive/commit before model commit",
+    "cacheRoot": "artifacts/landmarks/beest-het-lab/references"
   },
   "failedEvidence": [
     {
@@ -179,104 +178,5 @@
     "runtimeEvidence": "Actual selected route destination, geographic pin, physical click sourced card, native scale 1 and retained resident drawable neighbors verified with review-manual-pois.mjs.",
     "geometryEvidence": "scripts/check-beest-het-lab-geometry.ts",
     "independentReviewStatus": "gallery-and-scoped-native-visual-pass"
-  },
-  "export": {
-    "sha256": "ec32672c79476dd7c930174a24dff8a11bbc916b6cd707729b5daca8f3ffc893",
-    "bytes": 35800
-  },
-  "currentIndependentReview": "models/beest-het-lab/validation/clean-release-20261006/independent-review.json",
-  "currentRuntime": {
-    "proof": {
-      "id": "beest-het-lab",
-      "actualCamera": {
-        "center": [
-          4.85133,
-          52.39261
-        ],
-        "zoom": 18.8,
-        "pitch": 55.00000000000001,
-        "bearing": 0,
-        "elevation": 0
-      },
-      "assetVersion": "ec32672c79476dd7",
-      "scale": 1,
-      "bias": false,
-      "broad": false,
-      "pin": true,
-      "destination": true,
-      "source": "https://beestboulders.com/boulderen/het-lab-amsterdam/",
-      "click": {
-        "x": 765.8639195292225,
-        "y": 496.10689688676445
-      },
-      "aliases": [
-        {
-          "id": "NL.IMBAG.Pand.0363100012123591",
-          "hidden": true
-        }
-      ],
-      "oldPyramidIds": [],
-      "neighbors": [
-        {
-          "ids": [
-            "NL.IMBAG.Pand.0363100012151118"
-          ],
-          "resident": true,
-          "hidden": false,
-          "drawable": true
-        }
-      ],
-      "features": 5974,
-      "buildings": 7661
-    },
-    "card": {
-      "notice": "requested-het-lab",
-      "source": "https://beestboulders.com/boulderen/het-lab-amsterdam/",
-      "alpha": 1,
-      "drawn": true,
-      "active": "requested-het-lab"
-    },
-    "performance": {
-      "id": "beest-het-lab",
-      "assetVersion": "ec32672c79476dd7",
-      "samples": [
-        {
-          "label": "model-visible",
-          "visible": true,
-          "frames": 60,
-          "p50Ms": 48,
-          "p95Ms": 61.59999990463257
-        },
-        {
-          "label": "same-scene-model-hidden",
-          "visible": false,
-          "frames": 60,
-          "p50Ms": 35.89999961853027,
-          "p95Ms": 55.59999990463257
-        },
-        {
-          "label": "model-visible-repeat",
-          "visible": true,
-          "frames": 60,
-          "p50Ms": 46.80000019073486,
-          "p95Ms": 56.40000009536743
-        }
-      ],
-      "buildings": {
-        "kitVertices": 59691,
-        "chunks": 26,
-        "buildings": 7661,
-        "walls": 43825,
-        "quads": 200452,
-        "vertices": 1390607,
-        "geometryMB": 46.04998970031738,
-        "textureMB": 97.5,
-        "drawCalls": 2,
-        "triangles": 46943,
-        "buildMs": 6.299999237060547
-      },
-      "scope": "Headless Chromium same stationary scene; hidden model keeps existing replacement masks, isolating custom draw cost. No whole-game performance pass claimed."
-    },
-    "performanceAcceptance": "Stationary headless evidence only; no general smooth gameplay or physical touch performance acceptance."
   }
 }
