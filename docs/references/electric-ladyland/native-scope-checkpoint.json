@@ -1,0 +1,41 @@
+{
+  "modelId": "electric-ladyland",
+  "landmarkId": "extract_landmarks_238467800",
+  "museumAddress": "Tweede Leliedwarsstraat 5",
+  "architecturalEnsemble": "Tweede Leliedwarsstraat 3–9",
+  "monumentNumber": "212005",
+  "monumentSourceId": "e53d7476-e7be-4c97-9e5a-d33325bd7c4e",
+  "linkedBagParents": [
+    "0363100012168653",
+    "0363100012169918"
+  ],
+  "scopeReview": "Register-linked parents share native seam and concave rear outlines. Museum occupancy does not extend automatically to other shops.",
+  "sourceRepository": "blackmad/map-recall2-source-data",
+  "sourceCommit": "706b8a3ca72c330b1de1a874563c7c3f77e45389",
+  "sourcePath": "models/electric-ladyland/checkpoints/processed-native-scope-20261007",
+  "sourceRemoteVerified": true,
+  "architecturalTraits": [
+    "Basement, shop ground floor, two upper levels and hipped tile attic",
+    "Four small and two large street dormers, positions unverified",
+    "Three paired entrance groups, wooden shopfront and pilasters, hardstone plinth",
+    "Green/red ornamental brick, two projecting bays and timber cornice"
+  ],
+  "heightNote": "Installed 12.89/12.85m median shell proxies cannot specify eave/crest/floor levels.",
+  "acceptance": {
+    "scopeChecks": "pass",
+    "builderCreated": false,
+    "registered": false,
+    "visualAccepted": false
+  },
+  "nextSources": [
+    "Current full-height facade and lower tier",
+    "Semantic 3DBAG roofs for both parents",
+    "Official address join and calibrated pavement datum"
+  ],
+  "nextReferenceUrls": [
+    "https://amsterdamopdekaart.nl/1850-1940/Tweede_Leliedwarsstraat/3-9",
+    "https://static.contentecontent.com/platen_groot/17/17347.webp",
+    "https://static.contentecontent.com/platen_groot/17/17346.webp",
+    "https://static.contentecontent.com/platen_groot/10/10087.webp"
+  ]
+}
