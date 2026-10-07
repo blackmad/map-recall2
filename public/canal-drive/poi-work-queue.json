@@ -1898,7 +1898,7 @@
       "id": "cafe-kobalt",
       "task": "Building housing Caf\u00e9 Kobalt \u2014 original native landmark",
       "priority": "high",
-      "status": "production-source-cpu-reviewed-native-pending",
+      "status": "local-model-accepted-hosted-pending",
       "owner": "root",
       "requestedOn": "2026-10-07",
       "requestedAddress": "Singel 2A, Amsterdam",
@@ -1907,16 +1907,20 @@
         "https://www.cafekobalt.nl/about.html"
       ],
       "workflow": "full-landmark",
-      "nextAction": "Actual native gallery/game/source-corner, genuineOSMnode539179321 destination/pin/meaningfulcard, exactBAGmask+neighbors, unavailablefallback anddesktop/touchpans/performance beforepublication.",
+      "nextAction": "Publish accepted exact native model and genuine OSM venue integration, then verify canonical hosted asset/gallery/game/route/pin/card/suppression. Preserve source gaps, failed partywall/rear overlap candidates and headless timing limits.",
       "surveyedParent": "NL.IMBAG.Pand.0363100012178170",
       "officialVBO": "0363010001040093",
       "monumentNumber": "5249",
-      "candidateSHA256": "a96ecaafca35cd5e146ce39501cfe70e3898d1d2512c2d3f5999073a7e376204",
+      "candidateSHA256": "be40f3802a213638838e4ec0c435abdab0472441a5958b301ae969c4e63c3ca1",
       "sourceArchive": {
         "commit": "8653ace3",
         "path": "models/cafe-kobalt/checkpoints/material-shutter-correction-dac3be8e-20261007"
       },
-      "validation": "Independent exactproduction7031tri118392B:13572sourcecoverage+147edgechecks,976pane/48shutter/520signstrokefirsthits pass; brownbrick/redshutters/slateroof corrected after root source comparison. Native pending."
+      "validation": "Root and independent exactbe40 source/gallery/native acceptance:7050tri121384B, actual SE Singel gable and NE white Droogbak frontage, sourced clay roof, duplicate rear ownership removed. Genuine route/actual endpoint arrival, rendered geographic label, physical mouse/touch researched card, exact parent mask/eight retained neighbors, disabled/unavailable fallback, stationary pans and bounded frame evidence pass. Hosted pending.",
+      "acceptedNativeArchive": {
+        "commit": "92c49c40beff63820e26b1ee0d7a98906f62cd52",
+        "path": "models/cafe-kobalt/checkpoints/accepted-native-be40f380-20261008"
+      }
     },
     {
       "id": "magna-plaza-overlap-feedback",

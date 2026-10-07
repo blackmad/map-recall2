@@ -1415,5 +1415,17 @@
     "description": "Architect Joop van Stigt designed Afrikahuis as five linked octagonal units, combining a church with neighborhood spaces. Its concrete base, limestone walls and glazed staircase bays express Amsterdam structuralism.",
     "sourceUrl": "https://amsterdamopdekaart.nl/1966-1990/Van_Ostadestraat/Afrikahuis",
     "additionalSources": ["https://erfgoedregister.amsterdam.nl/monument/34d28c9d-f6c7-44bc-affa-d3d2c055b7a9/"]
+  },
+  {
+    "modelId": "cafe-kobalt",
+    "name": "Café Kobalt",
+    "center": [
+      52.3795667,
+      4.8943639
+    ],
+    "description": "Café Kobalt occupies a protected double corner house built between 1606 and 1611. Its high stepped gable, wooden frontage and wheelbarrow façade stone recall the former warehouse.",
+    "funFact": "Kobalt’s seventeenth-century corner house retains a broad stepped gable, wooden frontage and a wheelbarrow façade stone. The café describes the building as a former warehouse.",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/5249",
+    "preferDescription": true
   }
 ]
