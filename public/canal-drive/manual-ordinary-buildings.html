@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Amsterdam landmark models</title>
+<title>Amsterdam ordinary building models</title>
 <style>
   :root{--bg:#ebe7dd;--ink:#303b43;--mut:#6d6a63;--line:#d4cfc3;--card:#f7f4ec;--link:#2f5d8a}
   *{box-sizing:border-box}
@@ -29,25 +29,34 @@
 </head>
 <body>
 <header>
-  <h1>Amsterdam landmark models</h1>
-  <p><a href="landmark-queue.html">Building queue</a> &middot; <a href="manual-ordinary-buildings.html">Ordinary building models</a> &middot; <a href="park-landscape.html">Park views</a> &middot; <a href="tree-models.html">Tree models</a> &middot; <a href="model-reuse-review.html">Reusable model review</a></p>
-  <p>Every curated one-off landmark the game places by hand, read live from <code>SIGNATURE_MODELS</code> — the surveyed 3D Warehouse batch and the original flat-colour reconstructions. Drag to orbit &middot; scroll to zoom. Screenshot contract: <code>window.review</code>.</p>
+  <h1>Amsterdam ordinary building models</h1>
+  <p><a href="landmark-queue.html">Building queue</a> &middot; <a href="manual-landmarks.html">Landmark models</a> &middot; <a href="ordinary-buildings.html">Source comparisons</a> &middot; <a href="park-landscape.html">Park views</a> &middot; <a href="tree-models.html">Tree models</a> &middot; <a href="model-reuse-review.html">Reusable model review</a></p>
+  <p>Custom ordinary buildings placed on their surveyed footprints. Drag to orbit &middot; scroll to zoom. Open a source comparison or add feedback on any model.</p>
   <div class="sort-controls"><label for="model-sort">Sort models</label><select id="model-sort">
-    <option value="default">Catalogue order</option><option value="newest" selected>Newest updated</option>
+    <option value="default" selected>Catalogue order</option><option value="newest">Newest updated</option>
     <option value="oldest">Oldest updated</option><option value="name">Name</option>
   </select><span id="date-status" role="status"></span></div>
 </header>
 <main></main>
 <script src="./js/feedback/browser.js"></script>
 <script src="./js/three.bundle.js"></script>
-<script src="./js/signature-placement.bundle.js"></script>
-<script>
+
+<script type="module">
 // One WebGL context for the whole page, blitted into a 2D canvas per model.
 // A renderer per model would exhaust the browser's context budget before the
 // sixteen listed here finished loading.
 const { THREE: T, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
 const selectedIds = new Set((new URLSearchParams(location.search).get('only') || '').split(',').filter(Boolean));
-const MODELS = ((window.CanalRecallSignatureLandmarks || {}).SIGNATURE_MODELS || []).filter(spec => !selectedIds.size || selectedIds.has(spec.id));
+const catalogue = await fetch('./ordinary-buildings-data/catalogue.json').then(response => {
+  if (!response.ok) throw new Error('Building catalogue unavailable');
+  return response.json();
+}).catch(error => {
+  document.querySelector('#date-status').textContent = error.message;
+  window.review = { loaded: [], errors: [{ error: error.message }], total: 0, done: true };
+  return null;
+});
+if (!catalogue) throw new Error('Building catalogue unavailable');
+const MODELS = catalogue.models.filter(spec => !selectedIds.size || selectedIds.has(spec.id) || selectedIds.has(spec.buildingId.split('.').at(-1)));
 const main = document.querySelector('main');
 
 window.review = { loaded: [], errors: [], total: MODELS.length, done: MODELS.length === 0 };
@@ -76,7 +85,7 @@ function sortModels() {
 }
 sortControl.addEventListener('change', () => {
   const url = new URL(location.href);
-  if (sortControl.value === 'newest') url.searchParams.delete('sort');
+  if (sortControl.value === 'default') url.searchParams.delete('sort');
   else url.searchParams.set('sort', sortControl.value);
   history.replaceState(null, '', url);
   sortModels();
@@ -131,7 +140,7 @@ function build(spec) {
   const attribution = spec.attribution || {};
   const meta = document.createElement('p');
   meta.className = 'meta';
-  meta.textContent = [attribution.author, attribution.licence].filter(Boolean).join(' \u00b7 ') || spec.id;
+  meta.textContent = `${spec.buildingId} · ${spec.triangles.toLocaleString()} triangles · ${(spec.bytes / 1024).toFixed(0)} KB`;
   if (attribution.title) meta.title = attribution.title;
   article.append(meta);
 
@@ -142,8 +151,8 @@ function build(spec) {
   const links = document.createElement('p');
   links.className = 'links';
   const link = document.createElement('a');
-  link.href = `./signature-landmark-demo.html?only=${encodeURIComponent(spec.id)}`;
-  link.textContent = 'Inspect map placement \u2192';
+  link.href = `./ordinary-buildings.html?building=${encodeURIComponent(spec.id)}`;
+  link.textContent = 'Inspect source comparison \u2192';
   links.append(link);
   article.append(links);
 
@@ -159,12 +168,12 @@ function build(spec) {
   const entry = {
     spec, article, updated, order: entries.length, view, canvas, ctx: canvas.getContext('2d'),
     scene, sun, camera: new T.PerspectiveCamera(32, 1, 1, 20000),
-    target: new T.Vector3(), distance: 200, theta: spec.galleryView?.theta ?? 0.55, phi: spec.galleryView?.phi ?? 1.02, ready: false,
+    target: new T.Vector3(), distance: 200, theta: Math.PI - (spec.cameraBearing || 0) * Math.PI / 180, phi: 1.22, ready: false,
   };
   entries.push(entry);
   window.CanalFeedback.attach(article, {
     id: spec.id, label: spec.name || spec.id, canvas,
-    context: () => ({ modelUrl: spec.modelUrl, assetVersion: window.CanalRecallSignatureLandmarks.MODEL_ASSET_VERSIONS?.[spec.id] || null,
+    context: () => ({ modelUrl: spec.modelUrl, assetVersion: spec.hash || null,
       camera: { theta: entry.theta, phi: entry.phi, distance: entry.distance, target: entry.target.toArray() }, ready: entry.ready }),
   });
 
@@ -189,7 +198,7 @@ function build(spec) {
   }, { passive: false });
 
   const modelUrl = new URL(spec.modelUrl, location.href);
-  const version = window.CanalRecallSignatureLandmarks.MODEL_ASSET_VERSIONS?.[spec.id];
+  const version = spec.hash;
   if (version) modelUrl.searchParams.set('asset', version);
   loader.load(modelUrl.href, (gltf) => {
     const model = gltf.scene;
@@ -236,10 +245,10 @@ fetch('./models/model-dates.json').then(response => {
       time.textContent = new Date(date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
       time.title = new Date(date).toLocaleString();
       entry.updated.append('Model updated ', time);
-    } else entry.updated.textContent = 'Model update date unavailable';
+    } else entry.updated.textContent = entry.spec.reviewState || 'Review pending';
   }
   sortModels();
-}).catch(() => { document.querySelector('#date-status').textContent = 'Update dates unavailable'; });
+}).catch(() => { for (const entry of entries) entry.updated.textContent = entry.spec.reviewState || 'Review pending'; });
 
 let resizeTimer = 0;
 addEventListener('resize', () => {
