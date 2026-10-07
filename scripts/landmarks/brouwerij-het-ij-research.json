@@ -1,6 +1,6 @@
 {
   "modelId": "brouwerij-het-ij",
-  "status": "accepted-awaiting-hosted",
+  "status": "hosted-verified",
   "worktree": "/tmp/map-recall2-brewery-oct7",
   "baseCommit": "b6ce5f98",
   "identity": {
@@ -27,7 +27,8 @@
     "newSourceCommit": "b9ecc5f2",
     "commit": "b48b9e9e33a15680e2cccacc02cacae5b2305604",
     "rawSourceCommit": "b9ecc5f2",
-    "acceptedCheckpointCommit": "b48b9e9e33a15680e2cccacc02cacae5b2305604"
+    "acceptedCheckpointCommit": "b48b9e9e33a15680e2cccacc02cacae5b2305604",
+    "hostedEvidenceCommit": "e968189f45dedf7e1c47ed4677b3a019269497a7"
   },
   "references": [
     {
@@ -208,9 +209,25 @@
     "acceptance": "CPU preflight only; gallery/game/root independent acceptance not claimed",
     "independentReview": "Sign proportion corrected using uniform Archivo Black glyph scale and source-consistent red panel height; independent brewery reviewer passed corrected production CPU sign compare, root GPU remains pending."
   },
-  "pendingRootAcceptance": [
-    "Publish accepted owned files",
-    "Root hosted fingerprint and native game audit before marking hosted verified"
-  ],
-  "rootNativeAcceptance": "Root/independent accepted production56cc1a41 using five gallery views, native front/rear, exact loaded scope and physically selected card; fallback entry availability simulation passed. Hosted acceptance pending."
+  "pendingRootAcceptance": [],
+  "rootNativeAcceptance": "Root/independent accepted production56cc1a41 using five gallery views, native front/rear, exact loaded scope and physically selected card; fallback entry availability simulation passed. Hosted acceptance pending.",
+  "hostedVerification": {
+    "publicCommit": "6064212c86b18dd7bea9123886f46e1ecbdf2660",
+    "hostingRun": "37592119843",
+    "builtAt": "2026-10-07T08:13:23.224Z",
+    "modelPublicationCommit": "7747028e6018c582154a7f391d79cd5c2c3d337d",
+    "liveUrl": "https://canalrecall-blackmad.web.app/",
+    "galleryUrl": "https://canalrecall-blackmad.web.app/manual-landmarks.html?only=brouwerij-het-ij",
+    "modelUrl": "https://canalrecall-blackmad.web.app/models/brouwerij-het-ij.glb",
+    "assetSha256": "56cc1a41eb3ddfa660889193490b2209713605270a5c389f5e9e8913369a63ae",
+    "assetBytes": 29732,
+    "terminalCell": 7305,
+    "exitCode": 0,
+    "evidenceRepository": "blackmad/map-recall2-source-data",
+    "evidencePath": "models/brouwerij-het-ij/processed/2026-10-07-hosted-final-evidence",
+    "evidenceCheckpoint": "models/brouwerij-het-ij/checkpoints/2026-10-07-hosted-final-manifest.json",
+    "evidenceCommit": "e968189f45dedf7e1c47ed4677b3a019269497a7",
+    "visualAcceptance": "Root inspected hosted gallery and neutral-front against current source and accepted. Correct-path actual hosted harness passed genuine route, pin, physically clicked sourced card, exact brewery masks and retained loaded De Gooyer/ordinary9759."
+  },
+  "completionScope": "Brewery hosted verified; no completion claim for unrelated queue/whole-game performance goals."
 }

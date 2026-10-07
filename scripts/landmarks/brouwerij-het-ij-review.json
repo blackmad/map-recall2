@@ -1,6 +1,6 @@
 {
   "modelId": "brouwerij-het-ij",
-  "status": "accepted-awaiting-hosted",
+  "status": "hosted-verified",
   "reviewedOn": "2026-10-07",
   "productionSha256": "56cc1a41eb3ddfa660889193490b2209713605270a5c389f5e9e8913369a63ae",
   "productionBytes": 29732,
@@ -277,7 +277,8 @@
   "failedEvidence": [
     "artifacts/landmark-offline-preview/brouwerij-het-ij-failed-small-sign.png",
     "artifacts/landmark-offline-preview/brouwerij-het-ij-failed-floating-side-cladding.png",
-    "artifacts/landmark-release-check/brouwerij-het-ij-review/before-pointer-check.png"
+    "artifacts/landmark-release-check/brouwerij-het-ij-review/before-pointer-check.png",
+    "models/brouwerij-het-ij/processed/2026-10-07-hosted-final-evidence/failed-initial-wrong-path-hosted-timeout.log"
   ],
   "accessGaps": {
     "oppositeFacade": "Complete current opposite facade absent. Historical paired rear panes and narrow side clerestory remain currentness gaps, not accepted new current geometry.",
@@ -285,5 +286,136 @@
     "monumentRegister": "No dedicated brewery register description established; mill and other bathhouse register descriptions never substituted."
   },
   "performanceLimit": "Same stationary60-frame headless scene cost comparison only; not whole-game/device performance acceptance.",
-  "hostedVerification": "Pending root after publication; local acceptance is not hosted completion."
+  "hostedVerification": {
+    "publicCommit": "6064212c86b18dd7bea9123886f46e1ecbdf2660",
+    "hostingRun": "37592119843",
+    "builtAt": "2026-10-07T08:13:23.224Z",
+    "modelPublicationCommit": "7747028e6018c582154a7f391d79cd5c2c3d337d",
+    "liveUrl": "https://canalrecall-blackmad.web.app/",
+    "galleryUrl": "https://canalrecall-blackmad.web.app/manual-landmarks.html?only=brouwerij-het-ij",
+    "modelUrl": "https://canalrecall-blackmad.web.app/models/brouwerij-het-ij.glb",
+    "assetSha256": "56cc1a41eb3ddfa660889193490b2209713605270a5c389f5e9e8913369a63ae",
+    "assetBytes": 29732,
+    "terminalCell": 7305,
+    "exitCode": 0,
+    "evidenceRepository": "blackmad/map-recall2-source-data",
+    "evidencePath": "models/brouwerij-het-ij/processed/2026-10-07-hosted-final-evidence",
+    "evidenceCheckpoint": "models/brouwerij-het-ij/checkpoints/2026-10-07-hosted-final-manifest.json",
+    "evidenceCommit": "e968189f45dedf7e1c47ed4677b3a019269497a7",
+    "visualAcceptance": "Root inspected hosted gallery and neutral-front against current source and accepted. Correct-path actual hosted harness passed genuine route, pin, physically clicked sourced card, exact brewery masks and retained loaded De Gooyer/ordinary9759."
+  },
+  "hostedProofs": {
+    "placement-proof.json": {
+      "id": "brouwerij-het-ij",
+      "actualCamera": {
+        "center": [
+          4.926389999999998,
+          52.36673999999999
+        ],
+        "zoom": 20.901123040945105,
+        "pitch": 62.29752524354737,
+        "bearing": -34.48643662655752,
+        "elevation": 5
+      },
+      "surveyedNorthOffset": 0,
+      "assetVersion": "56cc1a41eb3ddfa6",
+      "scale": 1,
+      "bias": false,
+      "broad": false,
+      "pin": true,
+      "destination": true,
+      "source": "https://www.brouwerijhetij.nl/de-brouwerij",
+      "click": {
+        "x": 733.6368136807823,
+        "y": 350.04395294933886
+      },
+      "aliases": [
+        {
+          "id": "w269052426",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012169757",
+          "hidden": true
+        }
+      ],
+      "oldPyramidIds": [],
+      "neighbors": [
+        {
+          "ids": [
+            "w269052487",
+            "NL.IMBAG.Pand.0363100012169758"
+          ],
+          "resident": true,
+          "ordinaryResident": true,
+          "hidden": true,
+          "drawable": true,
+          "retainedReplacement": "de-gooyer"
+        },
+        {
+          "ids": [
+            "w269052518",
+            "NL.IMBAG.Pand.0363100012169759"
+          ],
+          "resident": true,
+          "ordinaryResident": true,
+          "hidden": false,
+          "drawable": true,
+          "retainedReplacement": null
+        }
+      ],
+      "features": 11053,
+      "buildings": 14048
+    },
+    "physical-card-proof.json": {
+      "notice": "n332059860",
+      "source": "https://www.brouwerijhetij.nl/de-brouwerij",
+      "alpha": 1,
+      "drawn": true,
+      "active": "n332059860"
+    },
+    "performance-comparison.json": {
+      "id": "brouwerij-het-ij",
+      "assetVersion": "56cc1a41eb3ddfa6",
+      "samples": [
+        {
+          "label": "model-visible",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 8.299999713897705,
+          "p95Ms": 10.099999904632568
+        },
+        {
+          "label": "same-scene-model-hidden",
+          "visible": false,
+          "frames": 60,
+          "p50Ms": 8.300000190734863,
+          "p95Ms": 9.400000095367432
+        },
+        {
+          "label": "model-visible-repeat",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 8.300000190734863,
+          "p95Ms": 9.100000381469727
+        }
+      ],
+      "buildings": {
+        "kitVertices": 73182,
+        "chunks": 29,
+        "buildings": 14048,
+        "walls": 60403,
+        "quads": 290263,
+        "vertices": 2115820,
+        "geometryMB": 70.0239486694336,
+        "textureMB": 97.5,
+        "drawCalls": 6,
+        "triangles": 412924,
+        "buildMs": 19.40000009536743
+      },
+      "scope": "Headless Chromium same stationary scene; hidden model keeps existing replacement masks, isolating custom draw cost. No whole-game performance pass claimed."
+    }
+  },
+  "failedHostedAttempt": "Initial wrong-path hosted harness timed out120s; failed log preserved privately. It does not support acceptance. Correct-path terminal7305 exit0 and root inspected current served gallery/native evidence supersede it.",
+  "completionScope": "This brewery task is hosted verified. Other queued landmarks/street work and whole-game performance goals remain independent."
 }
