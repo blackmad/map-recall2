@@ -623,19 +623,21 @@
       "id": "haparandaweg-requested-buildings",
       "task": "Buildings along Haparandaweg requested by user",
       "priority": "high",
-      "status": "first-parent-local-accepted-release-pending",
+      "status": "first-parent-hosted-accepted-remaining-pending",
       "owner": "root",
-      "validation": "All522 official addresses resolved through explicit VBO/BAG parent links to17 buildings:16 in use pending source/model review;1 permit-only deferred. Exact polygons, holes, address lists and reproducible source snapshot persisted in requested-street-buildings.json.",
+      "validation": "All 522 official addresses resolve through explicit VBO/BAG links to 17 physical parents. First parent 0363100012244095 (Het 4e Gymnasium) passed source, independent, gallery and live-game review and fresh hosted verification. Remaining 15 in-use parents need source/model review; one permit-only parent remains deferred.",
       "sourceCommit": "fc18134851149129315e2c9e539427a628f5de73",
-      "nextAction": "Publish first physicalparent0363100012244095/Het4eGymnasium after accepted private evidence checkpoint and release checks; then remaining16parents. Genuine n4337412612, sourcedwestentry. Root/current independent source/gallery/native3surfaces/fallback/neighbors/pans and actualAAvisualpass. Earliernativevisual/performance failures preserved; no physicalmobile/generalAAoverhead guarantee.",
+      "nextAction": "Continue the remaining 16 physical parents, preserving the permit-only deferral. The first school is deployed at native scale with genuine destination n4337412612, sourced west entrance, physical architectural card, exact replacement masks and retained resident neighbors. Earlier visual/performance failures remain archived; acceptance does not claim physical mobile performance or general antialias overhead.",
       "firstParent": {
         "bagId": "0363100012244095",
         "modelId": "haparandaweg-2-4",
         "assetSHA256": "c5955dfe0b6d1b43b6cc0f9434b42c92012a44f69b81e893dcecc27275dcc3c3",
         "canonicalPoi": "n4337412612",
-        "status": "local-reviewed-hosted-pending"
+        "status": "hosted-reviewed",
+        "publicCommit": "5ed408db4b58768bfc6e98c082fed46121a40228"
       },
-      "acceptedSourceCommit": "d71d6e18646df491173b8557d3dc3a68f898f1bb"
+      "acceptedSourceCommit": "d71d6e18646df491173b8557d3dc3a68f898f1bb",
+      "hostedSourceCommit": "67bd93da2d1c8d73b0befc5efc246bddfec92b09"
     },
     {
       "id": "concertgebouw-original-detail",
