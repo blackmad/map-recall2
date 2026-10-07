@@ -21,9 +21,9 @@
     }
   ],
   "counts": {
-    "manual-model": 197,
+    "manual-model": 198,
     "procedural-kit": 15,
-    "pending": 127,
+    "pending": 126,
     "catalogue-model": 7
   },
   "destinations": [
@@ -821,8 +821,9 @@
       "type": "landmark",
       "queueRank": 63,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "afrikahuis",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1604899229",

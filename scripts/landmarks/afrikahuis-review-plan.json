@@ -1,0 +1,26 @@
+{
+  "specPath": "scripts/landmarks/afrikahuis-spec.json",
+  "neighbors": [
+    [
+      "NL.IMBAG.Pand.0363100012164683"
+    ],
+    [
+      "NL.IMBAG.Pand.0363100012116483"
+    ],
+    [
+      "NL.IMBAG.Pand.0363100012164850"
+    ],
+    [
+      "NL.IMBAG.Pand.0363100012092043"
+    ]
+  ],
+  "zoom": 18.7,
+  "bearing": 150,
+  "pitch": 65,
+  "clickLocal": [
+    -5,
+    5,
+    6
+  ],
+  "oppositeBearing": 330
+}

@@ -1677,6 +1677,20 @@
       "priority": "high",
       "evidence": "Private validation-batch04-20261007 game-roof-v4: desktop nonstartup319ms atfirstwarehouse stage and152ms modern; touch128ms. Warm frames16.7\u201316.8ms do not establish stall-free loading. Earlier road/surface optimizations retain their separate verified scope.",
       "nextAction": "Capture a bounded cold/streaming Chrome trace and distinguish tile/road/surface setup, shader compilation and model texture upload before choosing an optimization; retain facade windows/doors and source geometry."
+    },
+    {
+      "id": "afrikahuis-original",
+      "task": "Afrikahuis \u2014 original native landmark",
+      "priority": "high",
+      "status": "local-reviewed-release-pending",
+      "owner": "root",
+      "modelId": "afrikahuis",
+      "landmarkId": "extract_landmarks_1448512409",
+      "sourceCommit": "c3ffff8f22f2261b6869975cf8453ba11eecaa5f",
+      "acceptedSourceCommit": "676470caf3bc2a10d2eda0d3bf9da87600602a52",
+      "assetSHA256": "09ff3adba973233b03ab2f7a1dddd4b6a21b85e9fd603658c66273c1042a0fc7",
+      "validation": "Root and fresh independent source/gallery/native review passed for raised octagonal church, projecting glass stairs, open forecourt and repaired presbytery entrance. Genuine chosen route, exact geographic pin and D-visible label, physical sourced card, exact masks, four resident neighbors, actual missing-GLB fallback and stationary-rider desktop/touch-emulated camera pans passed. Controlled installed Chrome/Metal desktop samples show no measurable model penalty at 16.7 ms frame resolution. Failed CPU/native frames, software timing, invalid paused pan and existing baseline MapLibre label-toggle warnings remain archived.",
+      "nextAction": "Commit and push scoped model/integration after accepted private archive; verify deployed current bytes and actual gallery/game POI surfaces. Hidden rear source gaps, photo-guided support/step dimensions and register/Beeldbank access gaps remain explicit; no physical-mobile or full-game performance claim."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

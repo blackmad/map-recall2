@@ -1,0 +1,15 @@
+{
+  "modelId": "afrikahuis",
+  "date": "2026-10-07",
+  "scope": "independent source / decoded Meshopt GLB CPU",
+  "verdict": "fail-required-repairs",
+  "frozenInput": {"path": "artifacts/afrikahuis/afrikahuis.glb", "bytes": 397572, "triangles": 27926},
+  "requiredRepairs": [
+    {"id": "presbytery-ground-entry", "confidence": "high", "source": "models/afrikahuis/raw/2026-10-07/21-21791.webp", "finding": "Ground corner repeats upper timber glass bay; source requires recessed angled doors, central vertical core and flaring concrete entrance structure. Broad stair approach also needs readable width/shape.", "builderIndices": [30,31]},
+    {"id": "presbytery-roof-gap", "confidence": "high", "source": "models/afrikahuis/raw/2026-10-07/21-21791.webp", "finding": "Tall wall ends12.78m below roof13.09m, leaving0.31m open slit. Decoded long-face ray at12.92m misses all geometry; close concrete perimeter edge.", "probe": "presbytery-top-gap"}
+  ],
+  "scopedPasses": ["raised-west-forecourt-open", "projecting-stair-glass-first-hit", "presbytery-upper-bay-first-hit", "presbytery-long-ribbon-first-hit", "main-dark-clerestory-first-hit", "separate-surveyed-main-and-high-roofs", "prominent-source-cross-face"],
+  "pending": ["repair-and-independent-recheck", "native-gallery-source-facing-view", "game-exact-suppression-neighbors-pyramid-fallback", "route-pin-trivia", "actual-performance", "private-source-pack-commit"],
+  "failedEvidence": "artifacts/afrikahuis/independent-review",
+  "readerReleased": true
+}

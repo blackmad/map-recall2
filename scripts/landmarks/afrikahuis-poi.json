@@ -1,0 +1,24 @@
+{
+  "modelId": "afrikahuis",
+  "poiId": "extract_landmarks_1448512409",
+  "name": "Afrikahuis",
+  "preserveExistingExtractFacts": true,
+  "mapPin": [
+    52.352932,
+    4.897546
+  ],
+  "pinPolicy": "Existing genuine extract identity and western surveyed corner retained; actual route reaches this chosen POI without substitution.",
+  "funFact": "Architect Joop van Stigt designed Afrikahuis as five linked octagonal units, combining a church with neighborhood spaces. Its concrete base, limestone walls and glazed staircase bays express Amsterdam structuralism.",
+  "sourceLinks": [
+    {
+      "label": "Architectural history and dated facade photos",
+      "url": "https://www.amsterdamopdekaart.nl/1966-1990/Van_Ostadestraat/Afrikahuis"
+    },
+    {
+      "label": "Amsterdam municipal heritage register",
+      "url": "https://erfgoedregister.amsterdam.nl/monument/34d28c9d-f6c7-44bc-affa-d3d2c055b7a9/"
+    }
+  ],
+  "integrationStatus": "Production route arrival at genuine identity, exact geographic label after normal D toggle, and physical sourced card verified for 09ff3adb; visual independent acceptance pending",
+  "linkAccess": "Primary Amsterdam op de Kaart raw page archived200; municipal heritage register text read through web tool but direct original HTTP TLS/403 gap recorded in private pack."
+}

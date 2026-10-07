@@ -1,0 +1,38 @@
+{
+  "id": "afrikahuis",
+  "name": "Afrikahuis",
+  "landmarkId": "extract_landmarks_1448512409",
+  "modelUrl": "./models/afrikahuis.glb",
+  "suppressOsmIds": [
+    "w44451421",
+    "NL.IMBAG.Pand.0363100012108180"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.897546,
+      52.352932
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 59.043000053599826,
+    "widthMetres": 43.35500002122717
+  },
+  "surveyed": {
+    "anchor": [
+      4.897546,
+      52.352932
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG exact linked octagonal perimeter; AHN5 2023 flat roof survey; east X / south Z native metres"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "Afrikahuis",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.amsterdamopdekaart.nl/1966-1990/Van_Ostadestraat/Afrikahuis",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native reconstruction of raised octagonal church, limestone facades, glazed stairs and taller presbytery. Source archive c3ffff8f22f2261b6869975cf8453ba11eecaa5f models/afrikahuis. Photo-guided undercroft supports and seven-riser fan stairs; no third-party meshes or pixels."
+  }
+}

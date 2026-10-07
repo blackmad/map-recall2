@@ -1,0 +1,696 @@
+{
+  "id": "afrikahuis",
+  "status": "production-candidate-independent-final-review-pending",
+  "reviewedAt": "2026-10-07",
+  "publicBase": "16f25f26595d39ecf44c6ed093eba37436229362",
+  "asset": {
+    "sha256": "09ff3adba973233b03ab2f7a1dddd4b6a21b85e9fd603658c66273c1042a0fc7",
+    "version": "09ff3adba973233b",
+    "bytes": 400140,
+    "triangles": 28070,
+    "nativeScale": 1,
+    "textures": 0
+  },
+  "sourceArchive": {
+    "commit": "c3ffff8f22f2261b6869975cf8453ba11eecaa5f",
+    "path": "models/afrikahuis",
+    "rawHeritageRegisterGap": "Direct original HTTP TLS/403; text read through web tool. Primary opdekaart archived200 and is actual card link."
+  },
+  "checks": {
+    "focusedGeometry": "pass",
+    "decodedExportAperturesAndRepairedDoorRoof": "pass",
+    "manualAssets": "pass",
+    "manualPoiContract": "pass",
+    "typescript": "pass",
+    "routeChosenIdentity": [
+      52.352932,
+      4.897546
+    ],
+    "geographicFeature": [
+      4.897546,
+      52.352932
+    ],
+    "visibleLabelAfterNormalD": "pass; metal-source-final/report.json and map-label-geographic PNG",
+    "physicalCard": {
+      "notice": "extract_landmarks_1448512409",
+      "source": "https://www.amsterdamopdekaart.nl/1966-1990/Van_Ostadestraat/Afrikahuis",
+      "alpha": 1,
+      "drawn": true,
+      "active": "extract_landmarks_1448512409"
+    },
+    "neighbors": [
+      {
+        "ids": [
+          "NL.IMBAG.Pand.0363100012164683"
+        ],
+        "resident": true,
+        "hidden": false,
+        "drawable": true
+      },
+      {
+        "ids": [
+          "NL.IMBAG.Pand.0363100012116483"
+        ],
+        "resident": true,
+        "hidden": false,
+        "drawable": true
+      },
+      {
+        "ids": [
+          "NL.IMBAG.Pand.0363100012164850"
+        ],
+        "resident": true,
+        "hidden": false,
+        "drawable": true
+      },
+      {
+        "ids": [
+          "NL.IMBAG.Pand.0363100012092043"
+        ],
+        "resident": true,
+        "hidden": false,
+        "drawable": true
+      }
+    ],
+    "exactSuppression": [
+      {
+        "id": "w44451421",
+        "hidden": true
+      },
+      {
+        "id": "NL.IMBAG.Pand.0363100012108180",
+        "hidden": true
+      }
+    ],
+    "noOldPyramids": [],
+    "actualMissingGlbFallback": {
+      "failed": true,
+      "shown": false,
+      "entry": false,
+      "finish": "extract_landmarks_1448512409",
+      "aliases": [
+        {
+          "id": "w44451421",
+          "hidden": false,
+          "drawable": false,
+          "resident": false
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012108180",
+          "hidden": false,
+          "drawable": true,
+          "resident": true
+        }
+      ],
+      "pyramids": []
+    }
+  },
+  "evidenceRoot": "artifacts/afrikahuis-review",
+  "recognitionViews": [
+    "gallery.png",
+    "gallery-angle-0.png",
+    "gallery-angle-1.png",
+    "gallery-angle-2.png",
+    "gallery-angle-3.png",
+    "metal-source-final/corner-street-west-HUD-only-hidden-diagnostic.png",
+    "metal-source-final/corner-street-front-HUD-only-hidden-diagnostic.png",
+    "source-followup/entry-low-alternate-HUD-only-hidden-diagnostic.png"
+  ],
+  "performance": {
+    "environment": {
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "vendor": "Google Inc. (Apple)",
+      "dpr": 1,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+      "viewport": [
+        1500,
+        1000
+      ]
+    },
+    "singleModelControlled": [
+      {
+        "enabled": true,
+        "player": [
+          -3284.03930766827,
+          -2343.7766510777287,
+          0,
+          0
+        ],
+        "state": 6,
+        "camera": {
+          "center": [
+            4.897546,
+            52.352932
+          ],
+          "zoom": 18.4,
+          "pitch": 55.00000000000001,
+          "bearing": 150
+        },
+        "otherEntries": [
+          "amsterdam-pipe-museum",
+          "cinecenter",
+          "concertgebouw",
+          "conservatorium",
+          "dageraad",
+          "de-balie",
+          "de-dokwerker",
+          "delamar",
+          "dutch-resistance-museum",
+          "foam",
+          "hart-museum",
+          "heineken-experience-amsterdam",
+          "herepoort-bergpoort",
+          "hollandsche-schouwburg",
+          "hortus-greenhouses",
+          "huis-de-pinto",
+          "jewish-museum",
+          "kattenkabinet",
+          "kleine-komedie",
+          "melkweg",
+          "micropia-ledenlokalen",
+          "moco-museum",
+          "munttoren-amsterdam",
+          "museum-van-loon",
+          "national-holocaust-museum",
+          "oost-indisch-huis",
+          "ordinary-0363100012176244",
+          "paradiso",
+          "pathe-city",
+          "portuguese-synagogue",
+          "rembrandt-house",
+          "rialto",
+          "rijksmuseum",
+          "sint-jorishof",
+          "stadhuis",
+          "stadsschouwburg",
+          "stedelijk-museum",
+          "tuschinski",
+          "van-gogh-museum",
+          "walloon-church",
+          "willet-holthuysen"
+        ],
+        "chunks": [
+          "__kit",
+          "boats:8413/5384",
+          "boats:8413/5385",
+          "boats:8414/5383",
+          "boats:8414/5384",
+          "boats:8414/5385",
+          "boats:8414/5386",
+          "boats:8415/5384",
+          "boats:8415/5385",
+          "boats:8415/5386",
+          "coarse:8413/5384",
+          "coarse:8413/5385",
+          "coarse:8414/5383",
+          "coarse:8414/5384",
+          "coarse:8414/5385",
+          "coarse:8414/5386",
+          "coarse:8415/5384",
+          "coarse:8415/5385",
+          "coarse:8415/5386",
+          "coarse:8416/5385",
+          "extras:33656/21539",
+          "extras:33656/21540",
+          "extras:33657/21539",
+          "extras:33657/21540",
+          "near:33656/21539",
+          "near:33656/21540",
+          "near:33657/21539",
+          "near:33657/21540"
+        ],
+        "geometryMB": 121.29979705810547,
+        "textureMB": 97.5,
+        "ownHidden": true,
+        "medianMs": 16.69999999999709,
+        "p95Ms": 16.799999999999272,
+        "samples": 90
+      },
+      {
+        "enabled": false,
+        "player": [
+          -3284.03930766827,
+          -2343.7766510777287,
+          0,
+          0
+        ],
+        "state": 6,
+        "camera": {
+          "center": [
+            4.897546,
+            52.352932
+          ],
+          "zoom": 18.4,
+          "pitch": 55.00000000000001,
+          "bearing": 150
+        },
+        "otherEntries": [
+          "amsterdam-pipe-museum",
+          "cinecenter",
+          "concertgebouw",
+          "conservatorium",
+          "dageraad",
+          "de-balie",
+          "de-dokwerker",
+          "delamar",
+          "dutch-resistance-museum",
+          "foam",
+          "hart-museum",
+          "heineken-experience-amsterdam",
+          "herepoort-bergpoort",
+          "hollandsche-schouwburg",
+          "hortus-greenhouses",
+          "huis-de-pinto",
+          "jewish-museum",
+          "kattenkabinet",
+          "kleine-komedie",
+          "melkweg",
+          "micropia-ledenlokalen",
+          "moco-museum",
+          "munttoren-amsterdam",
+          "museum-van-loon",
+          "national-holocaust-museum",
+          "oost-indisch-huis",
+          "ordinary-0363100012176244",
+          "paradiso",
+          "pathe-city",
+          "portuguese-synagogue",
+          "rembrandt-house",
+          "rialto",
+          "rijksmuseum",
+          "sint-jorishof",
+          "stadhuis",
+          "stadsschouwburg",
+          "stedelijk-museum",
+          "tuschinski",
+          "van-gogh-museum",
+          "walloon-church",
+          "willet-holthuysen"
+        ],
+        "chunks": [
+          "__kit",
+          "boats:8413/5384",
+          "boats:8413/5385",
+          "boats:8414/5383",
+          "boats:8414/5384",
+          "boats:8414/5385",
+          "boats:8414/5386",
+          "boats:8415/5384",
+          "boats:8415/5385",
+          "boats:8415/5386",
+          "coarse:8413/5384",
+          "coarse:8413/5385",
+          "coarse:8414/5383",
+          "coarse:8414/5384",
+          "coarse:8414/5385",
+          "coarse:8414/5386",
+          "coarse:8415/5384",
+          "coarse:8415/5385",
+          "coarse:8415/5386",
+          "coarse:8416/5385",
+          "extras:33656/21539",
+          "extras:33656/21540",
+          "extras:33657/21539",
+          "extras:33657/21540",
+          "near:33656/21539",
+          "near:33656/21540",
+          "near:33657/21539",
+          "near:33657/21540"
+        ],
+        "geometryMB": 121.29979705810547,
+        "textureMB": 97.5,
+        "ownHidden": false,
+        "medianMs": 16.69999999999709,
+        "p95Ms": 16.700000000000728,
+        "samples": 90
+      },
+      {
+        "enabled": true,
+        "player": [
+          -3284.03930766827,
+          -2343.7766510777287,
+          0,
+          0
+        ],
+        "state": 6,
+        "camera": {
+          "center": [
+            4.897546,
+            52.352932
+          ],
+          "zoom": 18.4,
+          "pitch": 55.00000000000001,
+          "bearing": 150
+        },
+        "otherEntries": [
+          "amsterdam-pipe-museum",
+          "cinecenter",
+          "concertgebouw",
+          "conservatorium",
+          "dageraad",
+          "de-balie",
+          "de-dokwerker",
+          "delamar",
+          "dutch-resistance-museum",
+          "foam",
+          "hart-museum",
+          "heineken-experience-amsterdam",
+          "herepoort-bergpoort",
+          "hollandsche-schouwburg",
+          "hortus-greenhouses",
+          "huis-de-pinto",
+          "jewish-museum",
+          "kattenkabinet",
+          "kleine-komedie",
+          "melkweg",
+          "micropia-ledenlokalen",
+          "moco-museum",
+          "munttoren-amsterdam",
+          "museum-van-loon",
+          "national-holocaust-museum",
+          "oost-indisch-huis",
+          "ordinary-0363100012176244",
+          "paradiso",
+          "pathe-city",
+          "portuguese-synagogue",
+          "rembrandt-house",
+          "rialto",
+          "rijksmuseum",
+          "sint-jorishof",
+          "stadhuis",
+          "stadsschouwburg",
+          "stedelijk-museum",
+          "tuschinski",
+          "van-gogh-museum",
+          "walloon-church",
+          "willet-holthuysen"
+        ],
+        "chunks": [
+          "__kit",
+          "boats:8413/5384",
+          "boats:8413/5385",
+          "boats:8414/5383",
+          "boats:8414/5384",
+          "boats:8414/5385",
+          "boats:8414/5386",
+          "boats:8415/5384",
+          "boats:8415/5385",
+          "boats:8415/5386",
+          "coarse:8413/5384",
+          "coarse:8413/5385",
+          "coarse:8414/5383",
+          "coarse:8414/5384",
+          "coarse:8414/5385",
+          "coarse:8414/5386",
+          "coarse:8415/5384",
+          "coarse:8415/5385",
+          "coarse:8415/5386",
+          "coarse:8416/5385",
+          "extras:33656/21539",
+          "extras:33656/21540",
+          "extras:33657/21539",
+          "extras:33657/21540",
+          "near:33656/21539",
+          "near:33656/21540",
+          "near:33657/21539",
+          "near:33657/21540"
+        ],
+        "geometryMB": 121.29979705810547,
+        "textureMB": 97.5,
+        "ownHidden": true,
+        "medianMs": 16.700000000000728,
+        "p95Ms": 16.700000000000728,
+        "samples": 90
+      },
+      {
+        "enabled": false,
+        "player": [
+          -3284.03930766827,
+          -2343.7766510777287,
+          0,
+          0
+        ],
+        "state": 6,
+        "camera": {
+          "center": [
+            4.897546,
+            52.352932
+          ],
+          "zoom": 18.4,
+          "pitch": 55.00000000000001,
+          "bearing": 150
+        },
+        "otherEntries": [
+          "amsterdam-pipe-museum",
+          "cinecenter",
+          "concertgebouw",
+          "conservatorium",
+          "dageraad",
+          "de-balie",
+          "de-dokwerker",
+          "delamar",
+          "dutch-resistance-museum",
+          "foam",
+          "hart-museum",
+          "heineken-experience-amsterdam",
+          "herepoort-bergpoort",
+          "hollandsche-schouwburg",
+          "hortus-greenhouses",
+          "huis-de-pinto",
+          "jewish-museum",
+          "kattenkabinet",
+          "kleine-komedie",
+          "melkweg",
+          "micropia-ledenlokalen",
+          "moco-museum",
+          "munttoren-amsterdam",
+          "museum-van-loon",
+          "national-holocaust-museum",
+          "oost-indisch-huis",
+          "ordinary-0363100012176244",
+          "paradiso",
+          "pathe-city",
+          "portuguese-synagogue",
+          "rembrandt-house",
+          "rialto",
+          "rijksmuseum",
+          "sint-jorishof",
+          "stadhuis",
+          "stadsschouwburg",
+          "stedelijk-museum",
+          "tuschinski",
+          "van-gogh-museum",
+          "walloon-church",
+          "willet-holthuysen"
+        ],
+        "chunks": [
+          "__kit",
+          "boats:8413/5384",
+          "boats:8413/5385",
+          "boats:8414/5383",
+          "boats:8414/5384",
+          "boats:8414/5385",
+          "boats:8414/5386",
+          "boats:8415/5384",
+          "boats:8415/5385",
+          "boats:8415/5386",
+          "coarse:8413/5384",
+          "coarse:8413/5385",
+          "coarse:8414/5383",
+          "coarse:8414/5384",
+          "coarse:8414/5385",
+          "coarse:8414/5386",
+          "coarse:8415/5384",
+          "coarse:8415/5385",
+          "coarse:8415/5386",
+          "coarse:8416/5385",
+          "extras:33656/21539",
+          "extras:33656/21540",
+          "extras:33657/21539",
+          "extras:33657/21540",
+          "near:33656/21539",
+          "near:33656/21540",
+          "near:33657/21539",
+          "near:33657/21540"
+        ],
+        "geometryMB": 121.29979705810547,
+        "textureMB": 97.5,
+        "ownHidden": false,
+        "medianMs": 16.69999999999709,
+        "p95Ms": 16.700000000000728,
+        "samples": 90
+      },
+      {
+        "enabled": true,
+        "player": [
+          -3284.03930766827,
+          -2343.7766510777287,
+          0,
+          0
+        ],
+        "state": 6,
+        "camera": {
+          "center": [
+            4.897546,
+            52.352932
+          ],
+          "zoom": 18.4,
+          "pitch": 55.00000000000001,
+          "bearing": 150
+        },
+        "otherEntries": [
+          "amsterdam-pipe-museum",
+          "cinecenter",
+          "concertgebouw",
+          "conservatorium",
+          "dageraad",
+          "de-balie",
+          "de-dokwerker",
+          "delamar",
+          "dutch-resistance-museum",
+          "foam",
+          "hart-museum",
+          "heineken-experience-amsterdam",
+          "herepoort-bergpoort",
+          "hollandsche-schouwburg",
+          "hortus-greenhouses",
+          "huis-de-pinto",
+          "jewish-museum",
+          "kattenkabinet",
+          "kleine-komedie",
+          "melkweg",
+          "micropia-ledenlokalen",
+          "moco-museum",
+          "munttoren-amsterdam",
+          "museum-van-loon",
+          "national-holocaust-museum",
+          "oost-indisch-huis",
+          "ordinary-0363100012176244",
+          "paradiso",
+          "pathe-city",
+          "portuguese-synagogue",
+          "rembrandt-house",
+          "rialto",
+          "rijksmuseum",
+          "sint-jorishof",
+          "stadhuis",
+          "stadsschouwburg",
+          "stedelijk-museum",
+          "tuschinski",
+          "van-gogh-museum",
+          "walloon-church",
+          "willet-holthuysen"
+        ],
+        "chunks": [
+          "__kit",
+          "boats:8413/5384",
+          "boats:8413/5385",
+          "boats:8414/5383",
+          "boats:8414/5384",
+          "boats:8414/5385",
+          "boats:8414/5386",
+          "boats:8415/5384",
+          "boats:8415/5385",
+          "boats:8415/5386",
+          "coarse:8413/5384",
+          "coarse:8413/5385",
+          "coarse:8414/5383",
+          "coarse:8414/5384",
+          "coarse:8414/5385",
+          "coarse:8414/5386",
+          "coarse:8415/5384",
+          "coarse:8415/5385",
+          "coarse:8415/5386",
+          "coarse:8416/5385",
+          "extras:33656/21539",
+          "extras:33656/21540",
+          "extras:33657/21539",
+          "extras:33657/21540",
+          "near:33656/21539",
+          "near:33656/21540",
+          "near:33657/21539",
+          "near:33657/21540"
+        ],
+        "geometryMB": 121.29979705810547,
+        "textureMB": 97.5,
+        "ownHidden": true,
+        "medianMs": 16.700000000000728,
+        "p95Ms": 16.799999999999272,
+        "samples": 90
+      }
+    ],
+    "invariants": "Other41 signature entries,28 resident chunks,player,state,camera,geometry and texture memory unchanged across five toggles. Only Afrikahuis mesh and own fallback suppression change.",
+    "actualGesturePan": {
+      "desktop": {
+        "summary": "artifacts/city-performance/afrikahuis-final-stationary/desktop/summary.json",
+        "gesture": "artifacts/city-performance/afrikahuis-final-stationary/desktop/gesture-proof.json",
+        "frames": [
+          [
+            "street",
+            16.699999999999818,
+            16.799999999999272
+          ],
+          [
+            "pan",
+            16.69999999999891,
+            16.799999999999272
+          ]
+        ],
+        "errors": []
+      },
+      "touch": {
+        "summary": "artifacts/city-performance/afrikahuis-final-stationary/touch/summary.json",
+        "gesture": "artifacts/city-performance/afrikahuis-final-stationary/touch/gesture-proof.json",
+        "frames": [
+          [
+            "street",
+            16.699999999999818,
+            16.800000000000182
+          ],
+          [
+            "pan",
+            16.69999999999891,
+            16.700000000000728
+          ]
+        ],
+        "errors": []
+      }
+    },
+    "limits": "Headless installedChrome on AppleM4Pro, touch emulation, no physical mobile guarantee; bounded90frames per state. Not a city-wide performance claim."
+  },
+  "failedEvidence": [
+    {
+      "path": "artifacts/afrikahuis/failed-20261007 (draft worktree/private source archive)",
+      "failure": "Initial missing ground entry assembly and presbytery roof slit; repaired and decoded independent rereview pass."
+    },
+    {
+      "path": "artifacts/afrikahuis-review/corner-source.png,source-followup-wide/corner-higher-full.png",
+      "failure": "Distant source cameras blocked by preserved school/neighbor roofs; replaced with within-street source views, failed frames retained."
+    },
+    {
+      "path": "artifacts/afrikahuis-review/extended-game-proof.json",
+      "failure": "Software headless global-signature A/B ~208/200ms not valid single-model/device acceptance; replaced with installedMetal single-model invariant samples."
+    },
+    {
+      "path": "artifacts/city-performance/afrikahuis-final",
+      "failure": "State6 pause freezes camera follow as well as rider, so recorded pan center unchanged. Replaced with actual running gameplay stationary-rider gesture tests."
+    },
+    {
+      "path": "artifacts/afrikahuis-review/metal-source-final/report.json;label-baseline/report.json",
+      "failure": "NormalD toggle MapLibre icon opacity/layout length mismatch3candidate/5baseline errors. ShippingHEAD baseline withoutAfrikahuis reproduces same48147!=323660/4. CorrectAfrikahuis label still renders. Unresolved general existing label toggle issue, not cleanconsole.",
+      "locus": "node_modules/maplibre-gl/src/symbol/placement.ts:1240; runtime unpkg.com/maplibre-gl@5/dist/maplibre-gl.js updateBucketOpacities45:120597"
+    }
+  ],
+  "limitations": [
+    "Photo-guided undercroft core/support positioning and seven-riser fan stairs, not surveyed detail.",
+    "Hidden south/rear current full-height reference incomplete.",
+    "Lower connector roof53 not individually exposed beneath continuous surveyed mainplate.",
+    "Heritage rawHTTP body gap and BeeldbankJS shell recorded honestly.",
+    "Existing DeAvonturijn school map overlay is separately sourced OSMeducationway296847987; its oblique projection across the facade is not asset signage."
+  ],
+  "remaining": [
+    "Fresh independent production report from root reviewer",
+    "Root acceptance queue/backlog updates, private review evidence archive if desired",
+    "Root exact public git-index window, required prepush route-start smoke and publish"
+  ]
+}
