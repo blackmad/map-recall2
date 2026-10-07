@@ -336,6 +336,62 @@
         "Northeast terrace-facing upper office glazing is source-derived; bay counts/heights estimated within measured roof envelope. Unknown rooftop side faces remain plain.",
         "Physicalphone untested; cached steady-frame samples do not establish cold-loading stall elimination."
       ]
+    },
+    "NL.IMBAG.Pand.0363100012167569": {
+      "treatment": "full-researched",
+      "reviewedOn": "2026-10-07",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012167569",
+        "https://data.amsterdam.nl/data/geozoek?center=52.371359,4.8916475&lagen=pano-pano2025bi"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012167569/reference-0363100012167569-2025-0.jpg",
+      "reason": "Root/independent source/gallery and actual-game recognition. Corrected fin hierarchy and rear surveyedpart association, distinct source-defined shop/door and roof/sculpture assemblies. Native footprint/open low terraces/neighbor identities retained. Exact native picking/suppression and delayed/disable/failure fallback plus stationary desktop/touch pans verified. No invented POI; all source uncertainties recorded.",
+      "checks": {
+        "ordinarySilhouette": true,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "056663b9872690367e3b82b3627858e8015d7825",
+      "sourcePack": "experiments/canal-belt-overnight/modern-02/0363100012167569",
+      "independentReview": "ordinary-buildings-data/canal-belt-batch02-review.json",
+      "liveGameReview": "ordinary-buildings-data/canal-belt-batch02-review.json",
+      "limits": [
+        "Original procedural atlas replaces physical small mullions; source-specific physical group dimensions and face exceptions retained.",
+        "Tiny signs, interiors, rail bars and rooftop equipment omitted.",
+        "Actual rear game visibility partial; source/gallery/first-hit supports its geometry separately.",
+        "Warm90-frame/site AppleM4Pro and iPhone13 emulation; physicalphone untested; loading stalls remain.",
+        "Kalver12.17m source terrace deck retained with18cm estimated underside; structural supports unknown.",
+        "Singel NE outerroof13.15m, ground+3upper, Jan2019actualcapture despite2018mission filenames; prior17–18m/oppositewing association withdrawn."
+      ]
+    },
+    "NL.IMBAG.Pand.0363100012168534": {
+      "treatment": "full-researched",
+      "reviewedOn": "2026-10-07",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012168534",
+        "https://data.amsterdam.nl/data/geozoek?center=52.3677615,4.8899425&lagen=pano-pano2025bi"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012168534/reference-0363100012168534-2025-0.jpg",
+      "reason": "Root/independent source/gallery and actual-game recognition. Corrected fin hierarchy and rear surveyedpart association, distinct source-defined shop/door and roof/sculpture assemblies. Native footprint/open low terraces/neighbor identities retained. Exact native picking/suppression and delayed/disable/failure fallback plus stationary desktop/touch pans verified. No invented POI; all source uncertainties recorded.",
+      "checks": {
+        "ordinarySilhouette": true,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "056663b9872690367e3b82b3627858e8015d7825",
+      "sourcePack": "experiments/canal-belt-overnight/modern-02/0363100012168534",
+      "independentReview": "ordinary-buildings-data/canal-belt-batch02-review.json",
+      "liveGameReview": "ordinary-buildings-data/canal-belt-batch02-review.json",
+      "limits": [
+        "Original procedural atlas replaces physical small mullions; source-specific physical group dimensions and face exceptions retained.",
+        "Tiny signs, interiors, rail bars and rooftop equipment omitted.",
+        "Actual rear game visibility partial; source/gallery/first-hit supports its geometry separately.",
+        "Warm90-frame/site AppleM4Pro and iPhone13 emulation; physicalphone untested; loading stalls remain.",
+        "Kalver12.17m source terrace deck retained with18cm estimated underside; structural supports unknown.",
+        "Singel NE outerroof13.15m, ground+3upper, Jan2019actualcapture despite2018mission filenames; prior17–18m/oppositewing association withdrawn."
+      ]
     }
   },
   "notes": [

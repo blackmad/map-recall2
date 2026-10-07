@@ -3,11 +3,11 @@
   "startedAt": "2026-10-06T21:08:31.879031+00:00",
   "scope": "Warehouse conversions and modern blocks in the central canal enclosure",
   "deadlineAssumption": "08:00Europe/Amsterdam2026-10-07",
-  "acceptance": "Batch01 source/gallery/game-reviewed; release pending",
+  "acceptance": "Batch01 published; batch02 two models source/gallery/game reviewed, release pending",
   "batches": [
     {
       "id": "01",
-      "state": "reviewed-release-pending",
+      "state": "published",
       "candidates": [
         "0363100012177576",
         "0363100012177571",
@@ -32,7 +32,33 @@
         "Maxwell blankuppercorner repairedv4",
         "game roofcrown hold withdrawn after source/runtime diagnosis"
       ],
-      "sourceCommit": "9c29e89655ab177fa1125320ad1a6f0fc0cfc8e6"
+      "sourceCommit": "9c29e89655ab177fa1125320ad1a6f0fc0cfc8e6",
+      "publicCommit": "0dedeea8cf9781e22ea5707c08a4b64ec9a2fe40"
+    },
+    {
+      "id": "02",
+      "state": "reviewed-release-pending",
+      "candidates": [
+        "0363100012167569",
+        "0363100012168534"
+      ],
+      "accepted": [
+        "0363100012167569",
+        "0363100012168534"
+      ],
+      "sourceCommit": "056663b9872690367e3b82b3627858e8015d7825",
+      "review": "ordinary-buildings-data/canal-belt-batch02-review.json",
+      "failedEvidence": [
+        "initial opaque deck",
+        "fullheightminorfinretail grid",
+        "misassociated17mrear and4/5unsupportedwindowtiers"
+      ],
+      "limits": [
+        "Actual rear game visibility partial; source/gallery/first-hit supports its geometry separately.",
+        "Warm90-frame/site AppleM4Pro and iPhone13 emulation; physicalphone untested; loading stalls remain.",
+        "Kalver12.17m source terrace deck retained with18cm estimated underside; structural supports unknown.",
+        "Singel NE outerroof13.15m, ground+3upper, Jan2019actualcapture despite2018mission filenames; prior17\u201318m/oppositewing association withdrawn."
+      ]
     }
   ],
   "morningCheckpoint": {
@@ -44,5 +70,15 @@
     "batch02": "drafts-source-conflicts",
     "batch03": "sources-ready-builder-usage-failure",
     "handoff": "docs/performance/2026-10-06/canal-belt-overnight-handoff.md"
+  },
+  "continuedOn": "2026-10-07",
+  "materialTextureTrial": {
+    "state": "researched-proposed",
+    "sources": [
+      "https://polyhaven.com/textures",
+      "https://polyhaven.com/license",
+      "https://gist.github.com/mauricesvay/1330cc530f6ab2ef33eb6a5ea56ef5bd"
+    ],
+    "scope": "Small shared brick/stone/roof/wood surface finish comparison; preserve source-specific architecture and measure game zoom/loading cost; no blanketPBR rollout."
   }
 }
