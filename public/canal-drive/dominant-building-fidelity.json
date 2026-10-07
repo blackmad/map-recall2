@@ -712,6 +712,62 @@
         "Warmframe samples16.7\u201316.8ms;startupstallsremain.",
         "Pyramidalhidden-ID/fallbackchecked;noresidentpyramidalentryfor visible-instanceclaim."
       ]
+    },
+    "NL.IMBAG.Pand.0363100012254471": {
+      "treatment": "landmark",
+      "reviewedOn": "2026-10-07",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012254471",
+        "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_06-42-40_01793/",
+        "https://api.data.amsterdam.nl/panorama/panoramas/b_20250108_1349_Track25_Sphere_00045/",
+        "https://rijnboutt.nl/project/rokin-district-amsterdam",
+        "https://imdbv.nl/storage/files/2017-04-10-bouwwereld-rokin.pdf",
+        "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?request=GetMap&service=WMS&version=1.3.0&layers=Actueel_orthoHR&styles=&crs=EPSG%3A4326&bbox=52.3710%2C4.8927%2C52.37208%2C4.8940&width=1500&height=1400&format=image%2Fjpeg"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012254471/wide-0363100012254471-2024-00358-einitial.jpg",
+      "reason": "Grounded ordinary asset with distinctive roof/facade assemblies; full architectural source/render review, exact native physical ownership and open ground gap. Independent corrected roof gallery review and root desktop/touch live game pass. No curated destination invented.",
+      "checks": {
+        "ordinarySilhouette": false,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourcePack": "experiments/canal-belt-continuation-20261007/rokin-north-build",
+      "sourceCommit": "052ce837e0721eaa173873a5517a47ba8b86b982",
+      "assetHash": "8209740b1de72c0de97fa9a897c930a4cb399687ec3d3d708778dc9176843f21",
+      "independentReview": "ordinary-buildings-data/canal-rokin-review-20261007.json",
+      "liveGameReview": "ordinary-buildings-data/canal-rokin-review-20261007.json",
+      "limits": [
+        "Nes exact aperture counts inferred from partial source coverage; east roof glazing internal subdivisions unresolved; fine inner plant/deck details approximate."
+      ]
+    },
+    "NL.IMBAG.Pand.0363100012243483": {
+      "treatment": "landmark",
+      "reviewedOn": "2026-10-07",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012243483",
+        "https://api.data.amsterdam.nl/panorama/panoramas/b_20241211_0954_Track19_Sphere_00350/",
+        "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-19_03-28-47_01372/",
+        "https://www.octatube.nl/en_GB/project-item/projectitem/140-rokin-49.html?pdf=1",
+        "https://vmrg.nl/Inspiratie/1049/flagshipstore-hudsons-bay",
+        "https://imdbv.nl/storage/files/2017-04-10-bouwwereld-rokin.pdf"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012243483/wide-rokin-south-build-2024-00350-einitial.jpg",
+      "reason": "Grounded ordinary asset with distinctive roof/facade assemblies; full architectural source/render review, exact native physical ownership and open ground gap. Independent corrected roof gallery review and root desktop/touch live game pass. No curated destination invented.",
+      "checks": {
+        "ordinarySilhouette": false,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourcePack": "experiments/canal-belt-continuation-20261007/rokin-south-build",
+      "sourceCommit": "052ce837e0721eaa173873a5517a47ba8b86b982",
+      "assetHash": "b11545cb0e5074da1ecdc3264af3cc6ed7e0a8461c3f1b643a34e1638a3fd260",
+      "independentReview": "ordinary-buildings-data/canal-rokin-review-20261007.json",
+      "liveGameReview": "ordinary-buildings-data/canal-rokin-review-20261007.json",
+      "limits": [
+        "Diamond pattern has 400 interior centers plus edge partial panels vs sourced 423 cassettes; native dimensions and circular profile are approximate; house-style glass is opaque colored."
+      ]
     }
   },
   "notes": [

@@ -1,0 +1,43 @@
+# Source-specific ordinary building components
+
+The shared `build.ts` creates native-footprint shells, original facade atlases and surveyed roof surfaces. Building recipes own actual dimensions, face assignments, opening groups and source uncertainty. New components extend the observed assemblies without changing the old batch.
+
+| Component | Purpose | First integration |
+| --- | --- | --- |
+| `facade-assemblies.mjs` | Arched opening profiles, projecting curved glass bays and matching bands; caller supplies native edge frame and material | Rokin southern block |
+| `repeated-front-assemblies.mjs` | Repeated shallow stepped pediments, with separate upward roof tops | Rokin northern block |
+| `sloped-window-groups.mjs` | Flush window groups on measured sloped roof planes | Rokin northern block |
+| `barrel-vault.mjs` | Bounded circular vault mesh and original diamond-cassette pattern with glazing tapering toward an opaque crest | Rokin southern block |
+| `exact-index.mjs` | Exact attribute-tuple indexing of expanded static triangles, preserving IEEE bits, typed/normalized attributes, primitive order and materials | Rokin southern block |
+
+`build-rokin-north-details.mjs` and `build-rokin-south-details.mjs` place these components using the two individual recipes. They modify only their exact BAG identity, update only its catalogue entry and reject a second application. `rokin-roof-details.mjs` owns the southern building's source-specific roof/deck assembly. Roof and facade helper functions contain no BAG IDs; native placement stays in the building stage.
+
+## Reproduction
+
+Run from the repository root. `ORDINARY_DATA_ROOT`, `ORDINARY_OUTPUT_ROOT` and `ORDINARY_SOURCE_ROOT` can point to a disposable generation directory and the private source clone. The source root must contain every recipe's source pack and its processed references.
+
+```sh
+node --import tsx scripts/ordinary-buildings/build.ts
+node scripts/ordinary-buildings/build-canal-belt-details.mjs
+node scripts/ordinary-buildings/build-canal-belt-three-details.mjs
+node scripts/ordinary-buildings/build-canal-belt-box-details.mjs
+node scripts/ordinary-buildings/build-canal-belt-spui-details.mjs
+node scripts/ordinary-buildings/build-rokin-north-details.mjs
+node scripts/ordinary-buildings/build-rokin-south-details.mjs
+node --import tsx scripts/ordinary-buildings/check.ts
+npm run build:canal-signature-landmarks
+```
+
+The full sequence reproduced all 26 reviewed model byte streams exactly during Rokin integration; the previous 24 hashes stayed unchanged. Both new models fit the strict 500,000-byte / three-material budget. Exact indexing applies to these static expanded triangle assets, not arbitrary animated glTF files.
+
+## What this batch taught us
+
+Street panoramas hid important roof assemblies. The first actual GPU review held both roofs: the northern model lacked sloped glazing; the southern model mistook a planar LoD2.2 proxy for its curved restaurant roof. Preserve these failures. The corrected models use primary construction photos/profile drawings and aerial ownership evidence, with original procedural colors/patterns rather than copied photo pixels.
+
+Box-shaped ground plans can have distinctive roofs. These two remain ordinary assets, but required full architectural review. A shared official VBO/address does not merge their physical Pand identities, close the ground gap or create a curated destination. Existing mapped place information must stay attached to the exact clicked footprint.
+
+Reuse geometry mechanisms after an actual source/render comparison. Reuse of a roof shape, window count, material color or height requires evidence for the next building. Check current official BAG geometry against installed candidates early: the next Amstel 130 candidate proved stale and covered neighboring facades, so it was held before authoring.
+
+## Next work
+
+Measure source research, authoring, integration and visual-review time separately on the next comparable buildings. No measured speedup is established by this first shared-component integration. Start with a simple grounded native box and verified photo ownership; configure opening groups, top tier, ground entrances and roof roles before writing another bespoke stage. Extract another component only when a real building needs it. Keep independent gallery review, exact neighbor/fallback checks, stationary-rider desktop/touch camera pans and zoom-out evidence in the acceptance loop.
