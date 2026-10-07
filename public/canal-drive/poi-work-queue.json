@@ -1682,17 +1682,20 @@
       "id": "afrikahuis-original",
       "task": "Afrikahuis \u2014 original native landmark",
       "priority": "high",
-      "status": "hosted-geometry-reviewed-source-link-fix-pending",
+      "status": "complete",
       "owner": "root",
       "modelId": "afrikahuis",
       "landmarkId": "extract_landmarks_1448512409",
       "sourceCommit": "c3ffff8f22f2261b6869975cf8453ba11eecaa5f",
       "acceptedSourceCommit": "676470caf3bc2a10d2eda0d3bf9da87600602a52",
       "assetSHA256": "09ff3adba973233b03ab2f7a1dddd4b6a21b85e9fd603658c66273c1042a0fc7",
-      "validation": "Root and fresh independent source/gallery/native review passed for raised octagonal church, projecting glass stairs, open forecourt and repaired presbytery entrance. Genuine chosen route, exact geographic pin and D-visible label, physical sourced card, exact masks, four resident neighbors, actual missing-GLB fallback and stationary-rider desktop/touch-emulated camera pans passed. Controlled installed Chrome/Metal desktop samples show no measurable model penalty at 16.7 ms frame resolution. Failed CPU/native frames, software timing, invalid paused pan and existing baseline MapLibre label-toggle warnings remain archived.",
-      "nextAction": "Deploy canonical source URL correction and repeat the affected physical card click. Fresh hosted exact model bytes, gallery/native views, route/pin/visible running label, four neighbors and exact masks passed. Retain baseline label-toggle warnings and source/physical-mobile/performance limits.",
+      "validation": "Root and fresh independent native/source review passed. Fresh hosted gallery/native views, exact current mesh bytes, genuine route/pin/normal running label, physical useful card, exact masks and four retained neighbors passed. Actual Research source click opens the corrected canonical HTTPS page with HTTP200; existing Wikipedia remains. Local missing-GLB fallback, controlled Metal desktop timings and actual stationary-rider desktop/touch-emulated camera pans passed. Failed evidence and preexisting MapLibre label-toggle warnings remain archived.",
+      "nextAction": "Continue the remaining backlog while preserving documented rear-source, approximate support/tread, access and physical-mobile/performance limits.",
       "publicModelCommit": "1205afb0a1b05d881bca603f124c5bdf3cc0b517",
-      "sourceUrlValidationCommit": "7e049c2118edcbeaee5c40a6a1a768b7b7055af1"
+      "sourceUrlValidationCommit": "7e049c2118edcbeaee5c40a6a1a768b7b7055af1",
+      "completedOn": "2026-10-07",
+      "hostedSourceCommit": "bffe50a7fa8aaa04791dccaa896a5ca99a9c3b78",
+      "sourceUrlFixCommit": "234f08da5870dea20fe3628b77f4df0270543dfe"
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"
