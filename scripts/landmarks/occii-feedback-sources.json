@@ -1,0 +1,98 @@
+{
+  "modelId": "occii",
+  "feedbackId": "56aad0df-0be9-478c-812a-e99f9e9d9086",
+  "claimUpdateTime": "2026-10-07T13:53:17.453985Z",
+  "checkedOn": "2026-10-07",
+  "sourcePack": {
+    "status": "Private source archive published by coordinator worker",
+    "rawCaptureStaging": "/Users/blackmad/Code/map-recall2/artifacts/occii-feedback-20261007",
+    "inventory": [
+      {
+        "url": "https://www.monumenten.nl/files/styles/gallery_first_image/public/externals/a0476eb104ea5ede8e412c462b5aa64b.jpg?itok=I2a70u76",
+        "name": "current-monumenten-facade.jpg",
+        "at": "2026-10-07T13:47:14.745876+00:00",
+        "attempt": 1,
+        "status": 200,
+        "sha256": "9a73c7cba88de0c734dc848bd8ae205d87e87e4432fb6f28e8bd33be314bc49a",
+        "bytes": 70872
+      },
+      {
+        "url": "https://www.monumenten.nl/monument/504667",
+        "name": "monumenten-504667.html",
+        "at": "2026-10-07T13:47:14.899948+00:00",
+        "attempt": 1,
+        "status": 200,
+        "sha256": "c95ac7518bb21563fdf075cfb7d49924db60ca31b7b8686bf5a1c13b39f04f65",
+        "bytes": 662469
+      },
+      {
+        "url": "https://occii.org/wp-content/uploads/2014/09/occii-gevel.jpg",
+        "name": "operator-2014-facade.jpg",
+        "at": "2026-10-07T13:47:46.479243+00:00",
+        "status": 200,
+        "sha256": "8a43877de4d9e0ddfbd012b026abd391e284d554f54d3c25be4e9c2345fe1fe3",
+        "bytes": 343039,
+        "dateAuthority": "OCCII cached article labels image OCCII 2014; not EXIF verified"
+      }
+    ],
+    "commit": "a311883a016366f26d1e81125e4e20a248ea82c4",
+    "path": "models/occii/"
+  },
+  "assertions": [
+    {
+      "part": "central upper arcade",
+      "assertion": "Window-head trim is confined to central three-window assembly; it does not cross both sloping windboards.",
+      "sourceUrl": "https://occii.org/wp-content/uploads/2014/09/occii-gevel.jpg",
+      "date": "2014 label in operator article; photograph date not independently verified",
+      "confidence": "high",
+      "geometry": "Top bar width reduced 8.7 to 4.4 m; lower cornices retained."
+    },
+    {
+      "part": "upper roundel ornament",
+      "assertion": "Decorative radial fan is above/around roundel, with short collar/corbels below; no long red tripod connects central window heads to roundel.",
+      "sourceUrl": "https://occii.org/wp-content/uploads/2014/09/occii-gevel.jpg",
+      "date": "2014 operator label",
+      "confidence": "high",
+      "geometry": "Nine shallow radial gold members radius 0.58\u20131.04 m, short split collar, four hanging corbels. Exact count/scale are photo-guided simplifications, not survey measurements."
+    },
+    {
+      "part": "gable ornament",
+      "assertion": "Register explicitly supports radial ornament incorporating collar beam/kingpost and carved windboard supports.",
+      "sourceUrl": "https://www.monumenten.nl/monument/504667",
+      "date": "retrieved 2026-10-07",
+      "confidence": "high",
+      "geometry": "Retain simplified radial fan rather than deleting all ornament."
+    }
+  ],
+  "stateCaveat": "Recorded Monumenten photo has unknown capture date and appears pre-restoration; use explicitly restored 2014 operator photo for current-state detail. Cached occii-front.jpg is colored historical illustration, not current photo.",
+  "preserved": "All non-gold/non-red decoded material geometry unchanged within 5 mm compressed-export quantization; roof/footprint/suppression/route/pin/card untouched.",
+  "pending": [
+    "Independent root source/render comparison",
+    "Native gallery default+feedback camera+lower rotations",
+    "Live-game frontage and retained-neighbor check",
+    "Hosted feedback view after deployment"
+  ],
+  "candidateRevision": {
+    "sha256": "daa846481f1d36932a0b64008446f8b0694949a3a27358b6cd14865f0988357b",
+    "failedFirstCandidate": "5cd11c091478b571843ae554a0f248202fa9988a8afa14e7337245dd94872531",
+    "correction": "Retained high-relief red windboard bosses obscured two initial radial angles; redistributed upper fan spoke angles in same shallow supported plane, preserving bosses and roundel. Exact carved petal shape/angular spacing remain photo-guided approximation.",
+    "spokeAnglesRadians": [
+      0,
+      0.18,
+      0.98,
+      1.15,
+      1.4,
+      1.58,
+      2.35,
+      2.75,
+      3.141592653589793
+    ],
+    "checks": "243 fan first-hit probes across all nine spokes, three length fractions, three fractional-width positions, front and obliques matching independent rays pass; no material exemptions.",
+    "failedSecondCandidate": "9f694d1afd03c1395b33d02b6ed173e04df6a4e6738c71082a9de8fb8eca6496"
+  },
+  "sourceArchiveCommit": "a311883a016366f26d1e81125e4e20a248ea82c4",
+  "sourceArchivePath": "models/occii",
+  "acceptedSourceArchiveCommit": "cb67adebb70c3c70e28fef91cb64398bd2f0c110",
+  "acceptedEvidencePath": "models/occii/checkpoints/accepted-daa84648",
+  "acceptance": "Scoped local source/root/fresh independent/gallery/native repair accepted; public commit and hosted verification pending. Retained rear roof not newly certified."
+}

@@ -42,10 +42,23 @@ export function buildIndependentCinemaLandmark(id:string,_w:number,_d:number,b:B
   box(cx,0,f(cx)+.12,4.3,3.1,.16,'dark');for(let i=0;i<5;i++)box(cx-2.1+i*1.05,.1,f(cx)+.25,.08,3.0,.06,'gold');
   for(const x of [lo+1,hi-1]){sash(x,.9,f(x)+.12,1.3,2.0);arch(x,2.6,f(x)+.3,1.65,1.1,'gold');add(new T.CircleGeometry(.19,8),'red',x,3.27,f(x)+.4);}
   for(const x of [cx-1.3,cx,cx+1.3]){box(x,4.3,f(x)+.2,1.0,1.5,.12,'gold');box(x,4.4,f(x)+.29,.76,1.27,.06,'dark');arch(x,5.6,f(x)+.33,.98,.7,'gold');arch(x,5.68,f(x)+.36,.74,.5,'dark');box(x-.65,4.15,f(x)+.35,.16,2.0,.2,'gold');}for(const x of [cx-2.85,cx+2.85]){box(x,4.35,f(x)+.24,1.0,1.9,.08,'red');for(let j=0;j<3;j++){add(new T.CircleGeometry(.28,12),'gold',x,4.64+j*.55,f(x)+.32);add(new T.CircleGeometry(.20,12),'dark',x,4.64+j*.55,f(x)+.36);}beam(x-.5,4.4,f(x)+.4,x+.5,6.2,f(x)+.4,.06,'gold');beam(x+.5,4.4,f(x)+.4,x-.5,6.2,f(x)+.4,.06,'gold');}add(new T.CircleGeometry(.49,12),'gold',cx,7.15,f(cx)+.22);add(new T.CircleGeometry(.31,12),'white',cx,7.15,f(cx)+.25);
-  for(const yy of [3.75,4.08,5.67])box(cx,yy,f(cx)+.25,8.7,.15,.25,'gold',-Math.atan(.12));
+  for(const yy of [3.75,4.08])box(cx,yy,f(cx)+.25,8.7,.15,.25,'gold',-Math.atan(.12));
+  // Restored 2014 facade: the window-head transom ends at the central arcade,
+  // rather than continuing through the narrowing gable and its windboards.
+  box(cx,5.67,f(cx)+.25,4.4,.15,.25,'gold',-Math.atan(.12));
   beam(lo-.15,4.75,f(lo)+.35,cx,8.6,f(cx)+.35,.23,'gold');beam(cx,8.6,f(cx)+.35,hi+.15,4.75,f(hi)+.35,.23,'gold');
   for(let i=0;i<9;i++){const x=lo+.4+i*.95,y=8.5-Math.abs(x-cx)*.82;add(new T.CircleGeometry(.16,8),'red',x,y-.4,f(x)+.4);}
-  for(const x of [cx-1.1,cx,cx+1.1]){beam(x,5.85,f(x)+.35,cx,7.4,f(cx)+.35,.11,'red');}
+  // The register's radiating ornament is a shallow upper fan around the roundel;
+  // it does not run as a tripod from the window heads. Keep its centre open.
+  const fanY=7.15,fanInner=.58,fanOuter=1.04;
+  // Unequal petal angles follow the source's carved fan and clear retained bosses.
+  for(const aa of [0,.18,.98,1.15,1.4,1.58,2.35,2.75,Math.PI]){
+   const x0=cx+Math.cos(aa)*fanInner,y0=fanY+Math.sin(aa)*fanInner,x1=cx+Math.cos(aa)*fanOuter,y1=fanY+Math.sin(aa)*fanOuter;
+   beam(x0,y0,f(x0)+.23,x1,y1,f(x1)+.23,.12,'gold');
+  }
+  // Short collar and hanging corbels remain behind/outside the roundel disc.
+  for(const side of [-1,1])beam(cx+side*.53,6.98,f(cx+side*.53)+.22,cx+side*1.72,6.98,f(cx+side*1.72)+.22,.10,'gold');
+  for(const dx of [-1.7,-.85,.85,1.7])box(cx+dx,6.58,f(cx+dx)+.23,.11,.4,.09,'gold',-Math.atan(.12));
   add(new T.IcosahedronGeometry(.28,0),'gold',cx,9.48,f(cx));box(cx,8.5,f(cx),.12,.7,.12,'gold');
   box(lo+.5,5.5,27.5,.65,4.35,.75,'brick');box(lo+.5,9.75,27.5,.83,.14,.92,'stone');sign('OCCII',cx-1.0,3.26,f(cx)+.45,.2,'gold');
   // Rear stable/forge stays on the same individual parent without filling neighboring courtyards.
