@@ -22,7 +22,9 @@ const requests=['Silodam','Embassy of the Free Mind','OLVG West','OLVG Oost','Aâ
 // VondelCS was the AVROTROS-era name of the current IDFA pavilion, not
 // another destination. Cached alias proof: docs/references/vondelcs/alias-coverage.json;
 // https://www.grachtenfestival.nl/locatie/vondelparkpaviljoen (2014â€“2021).
-const requestedModelAliases:Record<string,string>={'vondelcs':'idfa-pavilion'};
+// Sports aliases use the existing researched model names and operator identities;
+// proof: docs/references/requested-model-aliases-20261007.json.
+const requestedModelAliases:Record<string,string>={'vondelcs':'idfa-pavilion','mountain network amsterdam':'mountain-network','het lab':'beest-het-lab'};
 const aliases:Record<string,string>={'central':'centraal-station','nemo':'nemo','palace':'palace-on-the-dam','rijksmuseum':'rijksmuseum','mint':'munttoren-amsterdam','westerkerk':'westerkerk'};
 const equivalents:Record<string,string>={
   'national maritime museum':'scheepvaartmuseum','the national maritime museum':'scheepvaartmuseum','het scheepvaartmuseum':'scheepvaartmuseum',

@@ -1,0 +1,22 @@
+{
+  "reviewedOn": "2026-10-07",
+  "baseCommit": "9acac969ed7b97a17ab5bd3ffd8a8efc76b552bb",
+  "aliases": [
+    {
+      "requestedName": "Mountain Network Amsterdam",
+      "modelId": "mountain-network",
+      "canonicalName": "Climbing Center Amsterdam (Mountain Network)",
+      "landmarkId": "n2231887299",
+      "sourceUrl": "https://arcam.nl/architectuur-gids/de-tribune/",
+      "evidence": "Existing researched catalogue explicitly names the requested operator/venue; alias attaches to its existing POI destination, without a new destination or geometry change."
+    },
+    {
+      "requestedName": "Het Lab",
+      "modelId": "beest-het-lab",
+      "canonicalName": "Beest Boulders Het Lab",
+      "landmarkId": "requested-het-lab",
+      "sourceUrl": "https://beestboulders.com/boulderen/het-lab-amsterdam/",
+      "evidence": "Existing researched catalogue explicitly names the requested operator/venue; alias attaches to its existing POI destination, without a new destination or geometry change."
+    }
+  ]
+}
