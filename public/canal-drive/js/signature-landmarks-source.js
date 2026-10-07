@@ -48,11 +48,14 @@ export class SignatureLandmarks {
    * @param maplibregl     the MapLibre module, for MercatorCoordinate
    * @param onModelShown   called with a spec once its model is actually drawn,
    *                       so the caller can hide the matching extrusion
+   * @param onSuppressionChanged called when the loaded-only replacement mask
+   *                       changes, including disable, removal and rollback
    */
   constructor(map, maplibregl, options = {}) {
     this.map = map;
     this.maplibregl = maplibregl;
     this.onModelShown = options.onModelShown || (() => {});
+    this.onSuppressionChanged = options.onSuppressionChanged || (() => {});
     this.onHostWallOpeningsChanged = options.onHostWallOpeningsChanged || (() => {});
     this.canShowModel = options.canShowModel || (spec => !spec.hostWallOpenings?.length);
     /** Which specs to draw. Defaults to the whole curated list; the demo passes
@@ -202,6 +205,14 @@ export class SignatureLandmarks {
           material.needsUpdate = true;
         }
       });
+    }
+    // Hosts also draw ordinary shells/roofs outside the basemap. Notify on
+    // disable, rollback and removal as well as successful insertion, so an
+    // unavailable replacement immediately restores every fallback layer.
+    const suppressionRevision = JSON.stringify(this.shownSuppressOsmIds());
+    if (suppressionRevision !== this._suppressionRevision) {
+      this._suppressionRevision = suppressionRevision;
+      this.onSuppressionChanged();
     }
   }
 
@@ -386,7 +397,7 @@ export class SignatureLandmarks {
         owner.shown.clear();
         owner._loader = null;
         owner._lightScene = null;
-        owner._applyBasemapFilter();
+        owner._applySuppression();
         // This renderer borrows MapLibre's context: release resources, never lose it.
         renderer?.dispose();
       },
