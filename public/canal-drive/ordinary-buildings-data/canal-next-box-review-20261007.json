@@ -1,0 +1,104 @@
+{
+  "at": "2026-10-07T21:21:01.705480+00:00",
+  "sourceCommit": "81bef5d1ca4ff18d05306ba9b4ec34d98c7febcb",
+  "sourcePack": "experiments/canal-belt-continuation-20261007/next-box-runtime-07",
+  "verdict": "Root+independent source/geometry/actualgallery and desktop/touch gameplay PASS",
+  "reproduction": {
+    "exactHashes": 24,
+    "total": 24
+  },
+  "manualGallery": {
+    "desktopLoaded": 24,
+    "touchLoaded": 24,
+    "feedbackCapturedPreview": true,
+    "submittedFeedback": false
+  },
+  "models": [
+    {
+      "id": "0363100012168201",
+      "device": "desktop",
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.799999999999272,
+      "maxLongTaskMs": 149,
+      "targetInstalled": 1,
+      "nearbyInstalled": 542,
+      "exactIdSuppression": true,
+      "stationaryPanAndZoomOut": true,
+      "fallback": true,
+      "restored": true,
+      "forcedLoadFailureFallback": true,
+      "errors": [],
+      "requestedHash": "6b80919b97e24f25a74e043e47eadf281c88cf32288ce8989db4bfd20fa7e2ee",
+      "limits": [
+        "Terminal narrowwindow width/clipping approximated;core4pairedgroups and brick/glasssplit source-supported.",
+        "Small uncertainequipment omitted;nativecourtyardholesnotinvented."
+      ]
+    },
+    {
+      "id": "0363100012168201",
+      "device": "touch",
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.700000000000728,
+      "maxLongTaskMs": 136,
+      "targetInstalled": 1,
+      "nearbyInstalled": 542,
+      "exactIdSuppression": true,
+      "stationaryPanAndZoomOut": true,
+      "fallback": true,
+      "restored": true,
+      "forcedLoadFailureFallback": "covereddesktop",
+      "errors": [],
+      "requestedHash": "6b80919b97e24f25a74e043e47eadf281c88cf32288ce8989db4bfd20fa7e2ee",
+      "limits": [
+        "Terminal narrowwindow width/clipping approximated;core4pairedgroups and brick/glasssplit source-supported.",
+        "Small uncertainequipment omitted;nativecourtyardholesnotinvented."
+      ]
+    },
+    {
+      "id": "0363100012175754",
+      "device": "desktop",
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.700000000000728,
+      "maxLongTaskMs": 132,
+      "targetInstalled": 1,
+      "nearbyInstalled": 626,
+      "exactIdSuppression": true,
+      "stationaryPanAndZoomOut": true,
+      "fallback": true,
+      "restored": true,
+      "forcedLoadFailureFallback": true,
+      "errors": [],
+      "requestedHash": "6112509cc37e9e26c412a66e963b092af7c58a8282f1f536b83421a2046338ee",
+      "limits": [
+        "Thin paleupperbands approximateindividualsourcelintels.",
+        "113m\u00b2nativegapclosure usesboundedconservative inferredplanes,not newsurveymeasurements;retainedsourceplanes/lowinteriorpreserved.",
+        "Private rearblank/heightclosure approximate;uncertain tiny20.25m fittedpatch explicitlyomitted."
+      ]
+    },
+    {
+      "id": "0363100012175754",
+      "device": "touch",
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.799999999999272,
+      "maxLongTaskMs": 141,
+      "targetInstalled": 1,
+      "nearbyInstalled": 626,
+      "exactIdSuppression": true,
+      "stationaryPanAndZoomOut": true,
+      "fallback": true,
+      "restored": true,
+      "forcedLoadFailureFallback": "covereddesktop",
+      "errors": [],
+      "requestedHash": "6112509cc37e9e26c412a66e963b092af7c58a8282f1f536b83421a2046338ee",
+      "limits": [
+        "Thin paleupperbands approximateindividualsourcelintels.",
+        "113m\u00b2nativegapclosure usesboundedconservative inferredplanes,not newsurveymeasurements;retainedsourceplanes/lowinteriorpreserved.",
+        "Private rearblank/heightclosure approximate;uncertain tiny20.25m fittedpatch explicitlyomitted."
+      ]
+    }
+  ],
+  "limits": [
+    "Warmframe samples16.7\u201316.8ms;startupstallsremain.",
+    "Pyramidalhidden-ID/fallbackchecked;noresidentpyramidalentryfor visible-instanceclaim."
+  ]
+}

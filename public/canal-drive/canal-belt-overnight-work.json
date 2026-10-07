@@ -170,7 +170,7 @@
     },
     {
       "id": "canal-box-recovered-20261007",
-      "state": "accepted-local-awaiting-hosted-verification",
+      "state": "published-hosted-verified",
       "accepted": [
         "0363100012165204",
         "0363100012168482"
@@ -192,6 +192,37 @@
           "triangles": 956,
           "materials": 3,
           "hash": "466b074f4d5ae238b0570cf5218390e6e409d58e275e4ffa839faa165f497a6f"
+        }
+      ],
+      "publicCommit": "85d5dd73fef7edb608a6cefdff808204f29139b7",
+      "deploymentRun": "37686231054",
+      "hostEvidenceSourceCommit": "1bdd61027bbaeda4c1cdf889af68ef9818da7462",
+      "hostEvidenceSourcePath": "experiments/canal-belt-continuation-20261007/host-and-kalver-06/host"
+    },
+    {
+      "id": "kalver-spui-persistent-20261007",
+      "state": "accepted-local-awaiting-hosted-verification",
+      "accepted": [
+        "0363100012168201",
+        "0363100012175754"
+      ],
+      "sourceCommit": "81bef5d1ca4ff18d05306ba9b4ec34d98c7febcb",
+      "sourcePath": "experiments/canal-belt-continuation-20261007/next-box-runtime-07",
+      "review": "ordinary-buildings-data/canal-next-box-review-20261007.json",
+      "models": [
+        {
+          "id": "ordinary-0363100012168201",
+          "hash": "6b80919b97e24f25a74e043e47eadf281c88cf32288ce8989db4bfd20fa7e2ee",
+          "bytes": 105912,
+          "triangles": 675,
+          "materials": 2
+        },
+        {
+          "id": "ordinary-0363100012175754",
+          "hash": "6112509cc37e9e26c412a66e963b092af7c58a8282f1f536b83421a2046338ee",
+          "bytes": 238320,
+          "triangles": 2049,
+          "materials": 3
         }
       ]
     }
@@ -221,7 +252,7 @@
     "decision": "Warehouse finish subtle close-up; concrete payoff rejected. Actual game loading/motion acceptance remains pending."
   },
   "feedbackCheckpoint": {
-    "at": "2026-10-07T20:57:09.208Z",
+    "at": "2026-10-07T21:17:49.905Z",
     "open": 1,
     "inProgress": 1,
     "atLimit": false,
@@ -233,7 +264,7 @@
     ]
   },
   "source04AndRoofFollowupCommit": "7b26e67e736c6434849b443ec649cb1836713f3d",
-  "continuedAt": "2026-10-07T20:59:33.670018+00:00",
+  "continuedAt": "2026-10-07T21:21:01.705480+00:00",
   "selectionConstraint": "Large fairly boxy ordinary buildings inside canal belt: warehouse conversions and modern commercial blocks. Exclude already modeled manual/ordinary IDs, elaborate monuments, courtyard complexes and uncertain wings from fast discovery.",
   "currentAccess": {
     "at": "2026-10-07T19:05:47.485551+00:00",
@@ -245,14 +276,16 @@
   "nextBoxCandidates": {
     "sourceCommit": "90c943cad8b611a65266057448c82d9ff40aa8cf",
     "sourcePath": "experiments/canal-belt-continuation-20261007/checkpoint-02",
-    "state": "two-accepted-local-next-kalver-spui-corrections-active",
+    "state": "four-accepted-continue-next-canal-belt-discovery",
     "ids": [
       "0363100012168482",
       "0363100012165204"
     ],
     "accepted": [
+      "0363100012168482",
       "0363100012165204",
-      "0363100012168482"
+      "0363100012168201",
+      "0363100012175754"
     ]
   }
 }

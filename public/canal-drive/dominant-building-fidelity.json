@@ -645,6 +645,73 @@
         "Pyramidal hidden-ID/fallback behavior checked; these models have no resident pyramidal entries, so no visible-instance coverage claimed.",
         "Haarlemmer520176bytes exceeds500KBpreference by4%, preserving source defining assemblies."
       ]
+    },
+    "NL.IMBAG.Pand.0363100012168201": {
+      "treatment": "standard",
+      "reviewedOn": "2026-10-07",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012168201",
+        "https://api.data.amsterdam.nl/panorama/panoramas/b_20250120_0926_Track02_Sphere_00135/"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012168201/plane-00135.jpg",
+      "reason": "Root and independent source/geometry/actualGPU recognition PASS for native ordinary commercial/residential box. Source-specific opening groups, grounddoors/toptiers and defining native assemblies retained. Failedsource/roof/camera exports preserved. Exact loaded-ID replacement, neighboring shells, ordinarypicking, fallback and stationarydesktop/touch pan/zoom-out tested; rootinspected actualframes.",
+      "checks": {
+        "ordinarySilhouette": true,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "1bdd61027bbaeda4c1cdf889af68ef9818da7462",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/kalver-rebuild/corrected-v3",
+      "acceptanceSourceCommit": "81bef5d1ca4ff18d05306ba9b4ec34d98c7febcb",
+      "acceptanceSourcePack": "experiments/canal-belt-continuation-20261007/next-box-runtime-07",
+      "independentReview": "ordinary-buildings-data/canal-next-box-review-20261007.json",
+      "liveGameReview": "ordinary-buildings-data/canal-next-box-review-20261007.json",
+      "limits": [
+        "Original procedural facade atlas contains no source photograph pixels.",
+        "Opaque/covered top parapet inset panels are simplified; no historical ornament, shop lettering or interior fixtures.",
+        "Rear and abutting walls stay restrained blank masonry because no unoccluded rear reference was acquired.",
+        "Small technical roof patches omitted; 52m\u00b2 raised inset patch retained.",
+        "Southern strip has two source-visible separate narrow openings per upper tier, two opaque crown panels and partial broad ground shop bay clipped to exact native edge; details beyond footprint excluded.",
+        "Core pair spacing2.45m and source openingwidth2.1m approximate both calibrated source projections; broad shopbays clipped to observed3\u20137m and7.9\u201312.05m ranges; source-visible masonrypier retained beforeglass.",
+        "Terminal narrowwindow width/clipping approximated;core4pairedgroups and brick/glasssplit source-supported.",
+        "Small uncertainequipment omitted;nativecourtyardholesnotinvented.",
+        "Warmframe samples16.7\u201316.8ms;startupstallsremain.",
+        "Pyramidalhidden-ID/fallbackchecked;noresidentpyramidalentryfor visible-instanceclaim."
+      ]
+    },
+    "NL.IMBAG.Pand.0363100012175754": {
+      "treatment": "standard",
+      "reviewedOn": "2026-10-07",
+      "sourceUrls": [
+        "https://api.data.amsterdam.nl/panorama/panoramas/b_20250109_1300_Track05_Sphere_00188/",
+        "https://api.data.amsterdam.nl/panorama/panoramas/b_20250109_1300_Track05_Sphere_00187/",
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012175754"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012175754/wide-0363100012175754-2025-00188-einitial.jpg",
+      "reason": "Root and independent source/geometry/actualGPU recognition PASS for native ordinary commercial/residential box. Source-specific opening groups, grounddoors/toptiers and defining native assemblies retained. Failedsource/roof/camera exports preserved. Exact loaded-ID replacement, neighboring shells, ordinarypicking, fallback and stationarydesktop/touch pan/zoom-out tested; rootinspected actualframes.",
+      "checks": {
+        "ordinarySilhouette": true,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "81bef5d1ca4ff18d05306ba9b4ec34d98c7febcb",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/spui-rebuild/source",
+      "acceptanceSourceCommit": "81bef5d1ca4ff18d05306ba9b4ec34d98c7febcb",
+      "acceptanceSourcePack": "experiments/canal-belt-continuation-20261007/next-box-runtime-07",
+      "independentReview": "ordinary-buildings-data/canal-next-box-review-20261007.json",
+      "liveGameReview": "ordinary-buildings-data/canal-next-box-review-20261007.json",
+      "limits": [
+        "Original procedural atlas plus shallow native balcony/central faceted bay geometry; no photographed pixels/signage/POI.",
+        "Observed wing opening counts6+6; north4+2 division follows native split. Widths/sills and recess depths estimated from oblique panoramas.",
+        "No second public street; secondary is oblique Spuistraat front. Rear faces conservatively blank; tiny equipment and uncertain high patch omitted.",
+        "Thin paleupperbands approximateindividualsourcelintels.",
+        "113m\u00b2nativegapclosure usesboundedconservative inferredplanes,not newsurveymeasurements;retainedsourceplanes/lowinteriorpreserved.",
+        "Private rearblank/heightclosure approximate;uncertain tiny20.25m fittedpatch explicitlyomitted.",
+        "Warmframe samples16.7\u201316.8ms;startupstallsremain.",
+        "Pyramidalhidden-ID/fallbackchecked;noresidentpyramidalentryfor visible-instanceclaim."
+      ]
     }
   },
   "notes": [
