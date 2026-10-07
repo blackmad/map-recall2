@@ -1554,7 +1554,7 @@
     {
       "id": "canal-belt-overnight-building-treatments",
       "task": "Continuously improve warehouse conversions and modern blocks inside the canal belt until morning",
-      "status": "in-progress",
+      "status": "reviewed-release-pending",
       "priority": "high",
       "owner": "root",
       "startedAt": "2026-10-06T21:08:31.877748+00:00",
@@ -1570,7 +1570,7 @@
         "NL.IMBAG.Pand.0363100012169587"
       ],
       "handoff": "docs/performance/2026-10-06/canal-belt-overnight-handoff.md",
-      "nextAction": "Repair final three source-specific facades; independent architectural holds remain. Preserve failed evidence/date gaps, then gallery/game/performance review.",
+      "nextAction": "Publish final accepted trio, verify hosted fingerprints/gallery and update handoff; loading319/128ms remains a separate measured follow-up.",
       "acceptedModels": [
         "NL.IMBAG.Pand.0363100012177576",
         "NL.IMBAG.Pand.0363100012177571",
@@ -1578,15 +1578,15 @@
         "NL.IMBAG.Pand.0363100012167569",
         "NL.IMBAG.Pand.0363100012168534",
         "NL.IMBAG.Pand.0363100012167770",
-        "NL.IMBAG.Pand.0363100012167736"
-      ],
-      "notes": "Five central source-specific building treatments reviewed; next pair held for rooftop interpretation and three more source-ready. Continue today with periodic commits/pushes; native spaces and neighboring windows/doors retained. Failed evidence and source correction history archived before model commits.",
-      "remainingModels": [
+        "NL.IMBAG.Pand.0363100012167736",
         "NL.IMBAG.Pand.0363100012168028",
         "NL.IMBAG.Pand.0363100012176271",
         "NL.IMBAG.Pand.0363100012176244"
       ],
-      "resumedOn": "2026-10-07"
+      "notes": "Five central source-specific building treatments reviewed; next pair held for rooftop interpretation and three more source-ready. Continue today with periodic commits/pushes; native spaces and neighboring windows/doors retained. Failed evidence and source correction history archived before model commits.",
+      "remainingModels": [],
+      "resumedOn": "2026-10-07",
+      "sourceCommit": "8efa7eef24d4f47a7460c5f17fa532388e7afe40"
     },
     {
       "id": "rasphuispoort",
@@ -1648,6 +1648,14 @@
       "workflow": "full-landmark",
       "nextAction": "Resolve exact current physical parent and entrance, source/archive primary originals, original native geometry then source/gallery/game/independent route/pin/card/neighbor/fallback acceptance. No shared registration until scoped authoring is ready.",
       "startedOn": "2026-10-07"
+    },
+    {
+      "id": "ordinary-building-loading-task-profile",
+      "task": "Profile remaining loading pauses observed during canal-belt scene review",
+      "status": "planned",
+      "priority": "high",
+      "evidence": "Private validation-batch04-20261007 game-roof-v4: desktop nonstartup319ms atfirstwarehouse stage and152ms modern; touch128ms. Warm frames16.7\u201316.8ms do not establish stall-free loading. Earlier road/surface optimizations retain their separate verified scope.",
+      "nextAction": "Capture a bounded cold/streaming Chrome trace and distinguish tile/road/surface setup, shader compilation and model texture upload before choosing an optimization; retain facade windows/doors and source geometry."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"
