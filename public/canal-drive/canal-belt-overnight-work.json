@@ -98,6 +98,75 @@
         "20 cards load without browser errors on desktop and touch emulation",
         "Feedback screenshot dialog and filtered card pass without submitting a note"
       ]
+    },
+    {
+      "id": "05",
+      "state": "local-gallery-review-source-corrections-in-progress",
+      "candidates": [
+        "0363100012175221",
+        "0363100012175216",
+        "0363100012164994"
+      ],
+      "accepted": [],
+      "sourcePack": "experiments/canal-belt-overnight/sources-04/0363100012175221",
+      "priorSourceCommit": "7b26e67e736c6434849b443ec649cb1836713f3d",
+      "notes": "Full architecture and genuine-POI assessment required; native roof regions and rear scope under review.",
+      "draftModels": {
+        "0363100012175221": {
+          "state": "independent-narrow-window-repair-verified-broader-hold",
+          "bytes": 380532,
+          "triangles": 3801,
+          "materials": 3,
+          "issues": [
+            "Exact long frontage bay counts and Kalverstraat street facade scope unresolved",
+            "Roof finish/part interpretation and actual gallery/game checks pending"
+          ],
+          "evidence": "/tmp/canal-belt-batch05-build/evidence/root-cpu-v6"
+        },
+        "0363100012175216": {
+          "state": "v08-local-gallery-hold-roof134",
+          "bytes": 448648,
+          "triangles": 3702,
+          "materials": 2,
+          "issues": [
+            "32.26m surveyed thin sail is not supported by current aerial silhouette; bounded AHN samples needed for seam interpretation",
+            "Actual game/performance and native neighbor checks pending"
+          ],
+          "evidence": "/tmp/canal-belt-batch05-arcade/roof-followup/v08"
+        },
+        "0363100012164994": {
+          "state": "deferred-from-fast-box-workflow",
+          "bytes": 470252,
+          "triangles": 5587,
+          "materials": 2,
+          "monumentId": "518372",
+          "streetFaces": {
+            "11": "Herengracht295",
+            "19": "Singel340"
+          },
+          "issues": [
+            "Surveyroof17inner rings restored in V7",
+            "Tiny26/29m roofpart omission and broad upper closures still need source interpretation",
+            "Independent/gallery/game/performance acceptance pending"
+          ]
+        }
+      },
+      "candidateNotes": {
+        "0363100012175216": "Full-loop pale office block: genuinely open recessed ground arcade/columns, dense upper grille and sparse second-wing windows; cached primary refs inspected by root, first build in progress.",
+        "0363100012164994": "Mixed modern/historic throughblock screened for subsequent build; native/frontage association still pending."
+      },
+      "sourceCommit": "a588990cc983751afd09ac17d0ffd62d11401596",
+      "sourcePath": "experiments/canal-belt-continuation-20261007/checkpoint-01",
+      "fastQueueCandidates": [
+        "0363100012175221",
+        "0363100012175216"
+      ],
+      "deferredFromFastQueue": [
+        {
+          "id": "0363100012164994",
+          "reason": "User re-emphasized boxy non-landmarks; ornate registered telephone exchange belongs to full landmark architecture workflow. Retain source/draft evidence; no acceptance or publication."
+        }
+      ]
     }
   ],
   "morningCheckpoint": {
@@ -125,11 +194,32 @@
     "decision": "Warehouse finish subtle close-up; concrete payoff rejected. Actual game loading/motion acceptance remains pending."
   },
   "feedbackCheckpoint": {
-    "at": "2026-10-07T10:15:41.597122+00:00",
+    "at": "2026-10-07T18:57:35.164Z",
     "open": 0,
-    "inProgress": 0,
+    "inProgress": 1,
     "atLimit": false,
-    "claimedElsewhere": []
+    "claimedElsewhere": [
+      "Melkweg: source-backed repair already claimed; do not duplicate claim"
+    ]
   },
-  "source04AndRoofFollowupCommit": "7b26e67e736c6434849b443ec649cb1836713f3d"
+  "source04AndRoofFollowupCommit": "7b26e67e736c6434849b443ec649cb1836713f3d",
+  "continuedAt": "2026-10-07T17:13:36.750665+00:00",
+  "selectionConstraint": "Large fairly boxy ordinary buildings inside canal belt: warehouse conversions and modern commercial blocks. Exclude already modeled manual/ordinary IDs, elaborate monuments, courtyard complexes and uncertain wings from fast discovery.",
+  "currentAccess": {
+    "at": "2026-10-07T19:05:47.485551+00:00",
+    "feedback": "Open and in-progress pull succeeded; one existing Melkweg claim.",
+    "github": "Private source checkpoint a588990cc983751afd09ac17d0ffd62d11401596 pushed; public origin fetched a9c53249.",
+    "sourceAccess": "Root full access restored; data.amsterdam.nl HTTP200 verified. Earlier worker DNS/network-disabled failures retained.",
+    "retryPolicy": "Bounded retries; route disabled-worker downloads through working root; reuse cached successful source packs."
+  },
+  "nextBoxCandidates": {
+    "sourceCommit": "90c943cad8b611a65266057448c82d9ff40aa8cf",
+    "sourcePath": "experiments/canal-belt-continuation-20261007/checkpoint-02",
+    "state": "two-scoped-builders-active",
+    "ids": [
+      "0363100012168482",
+      "0363100012165204"
+    ],
+    "accepted": []
+  }
 }
