@@ -1899,7 +1899,7 @@
           },
           "constructionYear": 2022,
           "bagStatus": "Pand in gebruik",
-          "status": "local-model-reviewed-release-pending",
+          "status": "hosted-model-reviewed",
           "modelIds": [
             "haparandaweg-8-338"
           ],
@@ -1907,7 +1907,10 @@
           "resolution": "explicit-official-verblijfsobject-pand-link",
           "assetSHA256": "824920011fa98d29b7b9f7e2af5d4e787d58ddb16df3ce6212104a3b4c7a2993",
           "sourceArchiveCommit": "09b242cbc167782d6532ac5d4778021592b83af6",
-          "acceptedSourceArchiveCommit": "60963ceb098e9649e57759948aaa2c3f3030e93e"
+          "acceptedSourceArchiveCommit": "60963ceb098e9649e57759948aaa2c3f3030e93e",
+          "publicModelCommit": "645bad472685cac9f1e3c8f0ef9889dfd5b09578",
+          "hostedSourceArchiveCommit": "cdbe87c8ed80de55c39dfc29fa2457519ea34a84",
+          "hostedDeploymentRun": 37632078933
         },
         {
           "bagId": "0363100012122663",

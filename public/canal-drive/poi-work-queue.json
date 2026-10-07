@@ -623,11 +623,11 @@
       "id": "haparandaweg-requested-buildings",
       "task": "Buildings along Haparandaweg requested by user",
       "priority": "high",
-      "status": "school-hosted-second-parent-local-accepted-release-pending",
+      "status": "two-parents-hosted-accepted-remaining-pending",
       "owner": "root",
-      "validation": "All 522 official addresses resolve to 17 physical parents. School first parent is hosted-reviewed. Apartment second parent passed scoped root and fresh independent source/native review; exact masks, actual missing-GLB fallback, school/152 drawable neighbors, ordinary physical click and running desktop/touch pans verified. Constant4m checker486/25 remains failed with source-backed exterior classifications; bounded timing/approximation limits retained. Private accepted evidence published before model commit. Remaining14 in-use parents need source/model review; one permit-only parent remains deferred.",
+      "validation": "School and apartment parents passed source, root/fresh independent gallery/native and exact hosted mesh reviews. Apartment load-failure fallback, exact suppression, retained school and 152 resident ordinary neighbors, physical ordinary click without invented card/destination verified on canonical Firebase host. Full constant4m checker486/25 remains failed with independently source-classified external rays; custom domain timed out and is not verified. Local active desktop/emulated-touch pans and bounded Metal timings remain preserved. Remaining14 in-use physical parents and one permit-only parent remain pending/deferred.",
       "sourceCommit": "fc18134851149129315e2c9e539427a628f5de73",
-      "nextAction": "Publish and verify the second physical parent on the hosted site, then continue the remaining15 parents preserving the permit-only deferral. Preserve the genuine school destination and source facts; apartments do not get invented POIs. Keep failed diagnostics and device limits visible.",
+      "nextAction": "Continue the remaining15 physical parents, preserving the permit-only deferral and genuine school destination. Both accepted assets are deployed at native scale. Apartments remain ordinary assets with no invented POI. Retain failed diagnostics, source approximations, custom-host access failure and device limits.",
       "firstParent": {
         "bagId": "0363100012244095",
         "modelId": "haparandaweg-2-4",
@@ -643,10 +643,13 @@
         "modelId": "haparandaweg-8-338",
         "assetSHA256": "824920011fa98d29b7b9f7e2af5d4e787d58ddb16df3ce6212104a3b4c7a2993",
         "addressCount": 165,
-        "status": "local-reviewed-release-pending",
+        "status": "hosted-reviewed",
         "sourceCommit": "09b242cbc167782d6532ac5d4778021592b83af6",
         "acceptedSourceCommit": "60963ceb098e9649e57759948aaa2c3f3030e93e",
-        "destinationPolicy": "Ordinary physical apartment asset; no landmarkId or fabricated route destination."
+        "destinationPolicy": "Ordinary physical apartment asset; no landmarkId or fabricated route destination.",
+        "publicCommit": "645bad472685cac9f1e3c8f0ef9889dfd5b09578",
+        "hostedSourceCommit": "cdbe87c8ed80de55c39dfc29fa2457519ea34a84",
+        "hostedDeploymentRun": 37632078933
       }
     },
     {
@@ -1711,23 +1714,31 @@
       "id": "occii-gable-feedback",
       "task": "OCCII upper gable trim and roundel cutwork",
       "priority": "high",
-      "status": "source-investigated-repair-pending",
+      "status": "repair-native-review-in-progress",
       "modelId": "occii",
       "feedbackId": "56aad0df-0be9-478c-812a-e99f9e9d9086",
       "reportedAssetVersion": "99ed270e19f3ac00",
       "requestedOn": "2026-10-07",
-      "nextAction": "Claim fresh Firestore update-time before repair. Clip window-head trim to actual arcade and replace unsupported long red spokes with source-supported bounded roundel cutwork. Preserve submitted screenshot and current operator/register originals in private source pack; gallery/native/independent and hosted verification required before resolution."
+      "nextAction": "Claim fresh Firestore update-time before repair. Clip window-head trim to actual arcade and replace unsupported long red spokes with source-supported bounded roundel cutwork. Preserve submitted screenshot and current operator/register originals in private source pack; gallery/native/independent and hosted verification required before resolution.",
+      "candidateSHA256": "daa846481f1d36932a0b64008446f8b0694949a3a27358b6cd14865f0988357b",
+      "sourceCommit": "a311883a016366f26d1e81125e4e20a248ea82c4",
+      "validation": "Revised bounded fan passes independent243 width/fraction/oblique first hits; two failed candidates preserved. Actual gallery/native review in progress.",
+      "feedbackStatus": "in-progress"
     },
     {
       "id": "melkweg-roof-crosses-feedback",
       "task": "Melkweg unsupported freestanding pale roof crosses",
       "priority": "high",
-      "status": "source-investigated-repair-pending",
+      "status": "repair-native-review-in-progress",
       "modelId": "melkweg",
       "feedbackId": "26b15ccf-5dd2-46e9-abf3-a103dc2ab5d5",
       "reportedAssetVersion": "a55b13361380a702",
       "requestedOn": "2026-10-07",
-      "nextAction": "Claim fresh Firestore update-time before repair. Remove three unsupported pale freestanding roof crosses. Real entrance gable has small pale multi-point stars mounted flat around the oculus/sign; real dark wall tie anchors also appear lower down. Any replacement ornaments must match sourced wall planes and locations. Preserve user evidence and raw sources; native/gallery/independent and hosted checks required before resolution."
+      "nextAction": "Claim fresh Firestore update-time before repair. Remove three unsupported pale freestanding roof crosses. Real entrance gable has small pale multi-point stars mounted flat around the oculus/sign; real dark wall tie anchors also appear lower down. Any replacement ornaments must match sourced wall planes and locations. Preserve user evidence and raw sources; native/gallery/independent and hosted checks required before resolution.",
+      "candidateSHA256": "b0168447eb72475d0a39b0cb75f1cd76ed7c2d00128b0770ebba24fd7e2a23af",
+      "sourceCommit": "a311883a016366f26d1e81125e4e20a248ea82c4",
+      "validation": "Three unsupported crosses removed, all131 remaining primitive calls unchanged. Native review exposes pre-existing ordinary BAG0363100012168735 overlay hiding the replacement. Official ownership/scope investigation required before exact alias change; no native acceptance yet.",
+      "feedbackStatus": "in-progress"
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"
