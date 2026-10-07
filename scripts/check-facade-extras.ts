@@ -1,11 +1,11 @@
 // Facade extras: every component builds finite, unit-normal, in-frame geometry on a typical wall of
 // each of its styles; door items need a door; choices are deterministic; the triangle budgets hold;
-// ornaments are all-or-nothing; every component turns up in a sample city; extras only exist in the
-// near chunk.
+// ornaments are all-or-nothing; generic components turn up in a sample city and explicit assemblies
+// require their recipe; extras only exist in the near chunk.
 import assert from 'node:assert/strict';
 import { ExtraSink, EXTRA_BUDGET, ORNAMENT_COMPONENTS, ROOF_COMPONENTS, WALL_COMPONENTS, COMPONENT_COUNT, chanceFor, wallExtras, extraUsage, type ExtraContext } from '../src/canalRecall/facadeExtras.ts';
 import { buildFeatureChunk, ORIGIN } from '../src/canalRecall/threeBuildingFeatures.ts';
-import { bayLookOpenings, proceduralOpenings } from '../src/canalRecall/facadeOpenings.ts';
+import { bayLookOpenings, proceduralOpenings, recipeBayOpenings } from '../src/canalRecall/facadeOpenings.ts';
 import { doorSpan, windowSpans } from '../src/canalRecall/facadeOrnaments.ts';
 import { buildChunk, type MeshBuilding } from '../src/canalRecall/threeBuildingMesh.ts';
 import type { FacadeStyle } from '../src/canalRecall/genericFacades.ts';
@@ -15,6 +15,15 @@ const wall = (style: ExtraContext['style'], id = 'h1', over: Partial<ExtraContex
   id, style, wallKey: '0,0', f: { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1, len: 10 }, base: 0, top: 14,
   layout: { bays: 2, bayWidthM: 5, groundM: 3.3, storeys: 3, storeyM: 3.1, doorBays: [0] }, wallHex: '#a4523b', accentHex: '#ffffff', groundLevel: true, ...over,
 });
+// Same explicit recipe as historicBalconies.test.ts. Zero generic probability is intentional:
+// this capability fixture does not admit a neighborhood transfer or change runtime selection.
+const EXPLICIT_COMPONENTS: Partial<Record<string, NonNullable<ExtraContext['recipe']>>> = {
+  'historic-balcony-stack': { family: 'masonry', period: 'c19', confidence: .8, facadeAssembly: 'stacked-iron-balcony', sash: 'paired-transom', frameHex: '#ece7db', trimDensity: 'restrained' },
+};
+const componentWall = (id: string, style: FacadeStyle): ExtraContext => {
+  const recipe = EXPLICIT_COMPONENTS[id];
+  return wall(style, 'h1', recipe ? { recipe, openings: recipeBayOpenings('h1', recipe), streetSide: true } : {});
+};
 const finite = (s: ExtraSink, what: string) => {
   for (const t of s.tris) { assert.ok(t.p.flat().every(Number.isFinite), `${what}: finite`); assert.ok(Math.abs(Math.hypot(...t.n) - 1) < 1e-6, `${what}: unit normal`); }
 };
@@ -56,10 +65,13 @@ const DOOR_ITEMS = ['stoop', 'double-stoop', 'gable-stone', 'door-pediment', 'do
 }
 
 for (const comp of WALL_COMPONENTS) {
-  const live = comp.styles.filter(st => chanceFor(comp.p, st) > 0);
-  assert.ok(live.length > 0, `${comp.id} is used by at least one style`);
+  const generic = comp.styles.filter(st => chanceFor(comp.p, st) > 0);
+  const explicit = EXPLICIT_COMPONENTS[comp.id];
+  assert.ok(generic.length > 0 || explicit, `${comp.id} has generic selection or an explicit recipe fixture`);
+  if (explicit) assert.equal(generic.length, 0, `${comp.id} is never selected by generic probability`);
+  const live = explicit ? comp.styles : generic;
   for (const style of live) {
-    const c = wall(style), sink = new ExtraSink(9999);
+    const c = componentWall(comp.id, style), sink = new ExtraSink(9999);
     comp.build(c, sink, 0.4);
     assert.ok(sink.tris.length > 0, `${comp.id} builds geometry on a ${style} wall`);
     finite(sink, comp.id);
@@ -72,6 +84,21 @@ for (const comp of WALL_COMPONENTS) {
       assert.ok(along >= -slack && along <= c.f.len + slack, `${comp.id}/${style}: along ${along}`);
       assert.ok(out >= -0.1 && out <= 2.0, `${comp.id}/${style}: out ${out}`);
       assert.ok(p[2] >= -0.01 && p[2] <= c.top + rise + 1e-6, `${comp.id}/${style}: height ${p[2]}`);
+    }
+    if (explicit) {
+      const a = new ExtraSink(EXTRA_BUDGET.building), b = new ExtraSink(EXTRA_BUDGET.building);
+      const used = wallExtras(c, a);
+      assert.equal(used[0], comp.id, `${comp.id}/${style}: recipe selects its defining assembly first`);
+      assert.deepEqual(wallExtras(c, b), used, `${comp.id}/${style}: deterministic selection`);
+      assert.deepEqual(b.tris, a.tris, `${comp.id}/${style}: deterministic geometry`);
+      assert.deepEqual(a.tris.slice(0, sink.tris.length), sink.tris, `${comp.id}/${style}: dispatcher retains the complete checked assembly`);
+      assert.ok(a.tris.length > 0 && a.tris.length <= EXTRA_BUDGET.wall, `${comp.id}/${style}: dispatched geometry fits wall budget`);
+      finite(a, `${comp.id}/${style}: dispatched`);
+      const ordinary = { ...c, recipe: { ...explicit, facadeAssembly: undefined } };
+      const absent = new ExtraSink(9999);
+      comp.build(ordinary, absent, 0.4);
+      assert.equal(absent.tris.length, 0, `${comp.id}/${style}: builder requires explicit assembly`);
+      assert.ok(!wallExtras(ordinary, new ExtraSink(EXTRA_BUDGET.building)).includes(comp.id), `${comp.id}/${style}: recipe without assembly does not select it`);
     }
   }
   if (DOOR_ITEMS.includes(comp.id)) {
@@ -98,8 +125,8 @@ for (const comp of WALL_COMPONENTS) {
 {
   const THIN = new Set(['hoist-beam', 'hoist-hood', 'house-flag', 'scaffolding']);
   for (const style of ['canal', 'c19', 'school'] as FacadeStyle[]) for (const comp of WALL_COMPONENTS) {
-    if (THIN.has(comp.id) || chanceFor(comp.p, style) <= 0 || !comp.styles.includes(style)) continue;
-    const c = wall(style), sink = new ExtraSink(9999); comp.build(c, sink, 0.4);
+    if (THIN.has(comp.id) || !comp.styles.includes(style) || (chanceFor(comp.p, style) <= 0 && !EXPLICIT_COMPONENTS[comp.id])) continue;
+    const c = componentWall(comp.id, style), sink = new ExtraSink(9999); comp.build(c, sink, 0.4);
     const out = Math.max(0, ...sink.tris.flatMap(t => t.p.filter(p => p[2] > c.base + c.layout.groundM + 0.05).map(p => -p[1])));
     assert.ok(out <= 0.6, `${comp.id} on a ${style} front sticks out ${out.toFixed(2)} m above the ground floor`);
   }
@@ -155,8 +182,12 @@ for (let i = 0; i < 3000; i++) {
 }
 assert.ok(maxStreet <= EXTRA_BUDGET.wall, `street wall budget holds (${maxStreet})`);
 assert.ok(maxSide <= EXTRA_BUDGET.sideWall, `side wall budget holds (${maxSide})`);
-const unseen = WALL_COMPONENTS.map(c => c.id).filter(id => !seen.has(id));
-assert.deepEqual(unseen, [], `every wall component appears in a 3000-wall sample`);
+const unseen = WALL_COMPONENTS.filter(c => !EXPLICIT_COMPONENTS[c.id]).map(c => c.id).filter(id => !seen.has(id));
+assert.deepEqual(unseen, [], `every generic wall component appears in a 3000-wall sample`);
+for (const id of Object.keys(EXPLICIT_COMPONENTS)) {
+  assert.ok(WALL_COMPONENTS.some(c => c.id === id), `${id}: explicit fixture names an existing component`);
+  assert.ok(!seen.has(id), `${id} never appears in the generic 3000-wall sample`);
+}
 
 // A 19th-century house laid out as a canal house (the bay looks) gets 19th-century ornament and keeps canal furniture.
 {
