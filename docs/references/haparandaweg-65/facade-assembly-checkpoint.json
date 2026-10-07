@@ -1,0 +1,31 @@
+{
+  "modelId": "haparandaweg-65",
+  "status": "source-derived-components-only-unaccepted",
+  "builderModule": "scripts/landmarks/haparandaweg-65-facade-assembly.ts",
+  "sourceRepository": "blackmad/map-recall2-source-data",
+  "sourceCommit": "941ba3ad1acc05566daf187e9558c708619ba5f0",
+  "sourcePath": "models/haparandaweg-65/checkpoints/processed-numeral-separation-repair-20261007",
+  "components": [
+    "aperture-aware pink panels with irregular glazing",
+    "actual sculptural 67 numeral outline interpretation",
+    "recessed balcony with solid parapet, rails and exposed soffit"
+  ],
+  "verification": {
+    "balconyGeometryProbes": 18,
+    "focusedTypeScript": "pass",
+    "wholeModelAccepted": false,
+    "exported": false,
+    "registered": false,
+    "independentComponentReview": "Original glyph foot collision found and fixed; separated pair rereview passes. Calibration/full model remain held.",
+    "numeralGeometry": "Actual rotated glyphs separate and overall sign width retained"
+  },
+  "paletteApproximation": "Existing gold approximates yellow soffit; visual comparison required.",
+  "remaining": [
+    "calibrated facade dimensions and pavement datum",
+    "roof/rear survey and open-space scope",
+    "whole original model",
+    "independent gallery and actual game integration/performance"
+  ],
+  "sourcePublication": "exact remote main verified",
+  "precedingSourceCommit": "c9901de04891bcd714df049ea1d3e6c989849314"
+}
