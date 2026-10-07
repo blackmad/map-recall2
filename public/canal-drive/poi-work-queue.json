@@ -337,10 +337,12 @@
       "id": "vinoly",
       "task": "Vi\u00f1oly",
       "priority": "normal",
-      "status": "local-verified-hosted-pending",
+      "status": "hosted-verified-complete",
       "sourceCommit": "3bb971b282cf9943c34b80406dc864ceb312e25b",
       "reviewEvidence": "scripts/landmarks/vinoly-review.json",
-      "validation": "Current e25 mesh22942tri322440B: root/independent source/gallery/north/south/lowfront bounded accepted; exact route/pin/physical sourced card,6aliases and resident neighbors verified. Actual aborted asset request restores fallback; paused-touch fixed-rider pan and Vi-only replacement/fallback scene samples pass. Diagnostic highpitch camera and concealed18m terrace transit limits explicit. Hosted verification pending."
+      "validation": "Exact current e25 mesh22942tri322440B deployed9a0b07a8/Firebase37600949181 SUCCESS; root hosted gallery/neutralfront accepted. Hosted actual route/pin/physical sourced card,6aliases and2resident drawable neighbors pass. Local archived actual north/south/diagnostic lowfront,fallback,paused-touch fixed-rider pan and bounded Vi-only replacement/fallback samples accepted. Hosted rear is same north, not separate south; diagnostic highpitch, source pose/material approximation, absent target pyramids, refresh-limited timing and concealed18m transit limits remain explicit. Private hosted checkpoint e2a04e38 pushed first.",
+      "hostedSourceCommit": "e2a04e38",
+      "hostedEvidencePath": "models/vinoly/validation/hosted-current-e25e6203-20261007"
     },
     {
       "id": "the-rock",
@@ -1634,6 +1636,18 @@
       "feedbackStatus": "resolved",
       "feedbackUpdateTime": "2026-10-07T09:19:10.677917Z",
       "hostedSourceCommit": "173f7bdbfaf300dfb2656206649402b9766e8450"
+    },
+    {
+      "id": "el-tawheed",
+      "task": "El Tawheed \u2014 original native house-style POI landmark",
+      "priority": "normal",
+      "status": "source-and-original-builder-in-progress",
+      "owner": "el_tawheed_build_oct7",
+      "canonicalPoi": "extract_landmarks_1862244163",
+      "inventoryOrigin": "POI Destinations",
+      "workflow": "full-landmark",
+      "nextAction": "Resolve exact current physical parent and entrance, source/archive primary originals, original native geometry then source/gallery/game/independent route/pin/card/neighbor/fallback acceptance. No shared registration until scoped authoring is ready.",
+      "startedOn": "2026-10-07"
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"
