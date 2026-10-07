@@ -623,11 +623,11 @@
       "id": "haparandaweg-requested-buildings",
       "task": "Buildings along Haparandaweg requested by user",
       "priority": "high",
-      "status": "two-parents-hosted-third-local-accepted-remaining-pending",
+      "status": "three-parents-hosted-accepted-remaining-pending",
       "owner": "root",
       "validation": "School and apartment parents passed source, root/fresh independent gallery/native and exact hosted mesh reviews. Apartment load-failure fallback, exact suppression, retained school and 152 resident ordinary neighbors, physical ordinary click without invented card/destination verified on canonical Firebase host. Full constant4m checker486/25 remains failed with independently source-classified external rays; custom domain timed out and is not verified. Local active desktop/emulated-touch pans and bounded Metal timings remain preserved. Remaining14 in-use physical parents and one permit-only parent remain pending/deferred.",
       "sourceCommit": "fc18134851149129315e2c9e539427a628f5de73",
-      "nextAction": "Publish and verify hosted Haparandaweg 9, then continue Haparandaweg 11 source build; retain the other requested in-use parents and deferred permit-only parent.",
+      "nextAction": "Continue Haparandaweg 11 source-visible upper-opening correction and Haparandaweg 13 source build. Preserve the remaining requested in-use parents and deferred permit-only parent.",
       "firstParent": {
         "bagId": "0363100012244095",
         "modelId": "haparandaweg-2-4",
@@ -655,10 +655,20 @@
         "modelId": "haparandaweg-9",
         "bagId": "0363100012122663",
         "assetSHA256": "11c8aea6e9d43520207db55f95a60bed4b27ffadc8ec6d06c76453cf1683dc37",
-        "status": "local-accepted-hosted-pending",
+        "status": "hosted-accepted",
         "sourceCommit": "e8a5653bd166de54478f2bd11eea59ca38fe21d9",
         "acceptedSourceCommit": "c563f910f1b0fa08df0e162893129f3dd1a30504",
-        "validation": "Root and fresh independent source/decoded/gallery/native recognition accepted; actual production browser responses, exact masks, neighbor 11 and school/apartments retention, physical ordinary click, fresh failed-download fallback and stationary desktop/touch-emulated pans passed. 90-frame intervals per view median 16.7ms/p95 16.7\u201316.8ms on M4 Pro; bounded observation only. Western lower openings approximate, no physical-phone or unseen rear claim."
+        "validation": "Root and fresh independent source/decoded/gallery/native recognition accepted; actual production browser responses, exact masks, neighbor 11 and school/apartments retention, physical ordinary click, fresh failed-download fallback and stationary desktop/touch-emulated pans passed. 90-frame intervals per view median 16.7ms/p95 16.7\u201316.8ms on M4 Pro; bounded observation only. Western lower openings approximate, no physical-phone or unseen rear claim.",
+        "publicModelCommit": "0f4d3dcf5321e43e33cc3ab571de0475edfbf48c",
+        "hostedSourceCommit": "e2a16ce60723459acc9a31d3bef954deb1a81191"
+      },
+      "fourthParentCandidate": {
+        "modelId": "haparandaweg-11",
+        "bagId": "0363100012104965",
+        "status": "source-recognition-hold-missing-visible-upper-window",
+        "candidateSHA256": "0e33b2a8cdacb4dc0c18fef44f5ae4e4816741660b96a300874164162d758250",
+        "sourceCommit": "999a83d778cd61615a3d1b2521d7605e4121437b",
+        "validation": "Structural production/native tests passed, but fresh source/native review found a complete far-right upper window omitted from the four-window draft. Projected wall fraction .919396; root inspected and agrees. Possible intermediate opening requires bounded source review. No public model commit or visual acceptance for this draft."
       }
     },
     {
@@ -1743,16 +1753,18 @@
       "id": "melkweg-roof-crosses-feedback",
       "task": "Melkweg unsupported freestanding pale roof crosses",
       "priority": "high",
-      "status": "surveyed-rebuild-in-progress-native-hold",
+      "status": "surveyed-rebuild-entry-allocation-hold",
       "modelId": "melkweg",
       "feedbackId": "26b15ccf-5dd2-46e9-abf3-a103dc2ab5d5",
       "reportedAssetVersion": "a55b13361380a702",
       "requestedOn": "2026-10-07",
-      "nextAction": "Complete original surveyed whole-parent Melkweg rebuild with source-supported heights/open spaces and neighbors, then full source/independent/gallery/native/hosted verification. Preserve72-triangle gallery candidate and failed legacy scope evidence; do not suppress unmodeled parent parts.",
+      "nextAction": "Correct source allocation of low glazed vestibule versus brick gable behind it, then verify full gallery/native shared hall joint, open underside, exact masks/retained neighbors, genuine route/pin/physical card, fallback and stationary camera pans before publication/feedback resolution.",
       "candidateSHA256": "b0168447eb72475d0a39b0cb75f1cd76ed7c2d00128b0770ebba24fd7e2a23af",
       "sourceCommit": "cb67adebb70c3c70e28fef91cb64398bd2f0c110",
       "validation": "Three invented freestanding crosses source-confirmed; bounded removal passes source/decoded/gallery but native model is blocked by genuine BAG parent. Official current OSM/BAG proof shows legacy rectangle omits451m\u00b2 and overlaps neighbors151m\u00b2; no alias-only masking approved. Full surveyed native original rebuild active with exact parent and roof-part ownership. Real wall stars are preserved as source-supported future geometry. Source survey archived privately; no public repair or feedback resolution yet.",
-      "feedbackStatus": "in-progress"
+      "feedbackStatus": "in-progress",
+      "rebuildSourceCommit": "999a83d778cd61615a3d1b2521d7605e4121437b",
+      "rebuildCandidateSHA256": "99a1c6b5c7eaddefae348fa5be3d6c9ce8bdf8524529af34b39e605cad422362"
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"
