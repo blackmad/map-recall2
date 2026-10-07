@@ -20,6 +20,12 @@ function clip(ring: number[][], bound: number, above: boolean): number[][] {
   if(ai) out.push(a); if(ai!==qi) {const t=(bound-av)/(qv-av); out.push(a.map((x,j)=>x+t*(q[j]-x)));}
  } return out;
 }
+/** Opaque facade primitives are backed by surveyed walls. Keep the front and
+ * four reliefreturns; omit only the wall-facing back. This removes hidden export
+ * faces without changing facade assembly/detail or the source-facing silhouette. */
+function omitWallBack(g:T.BoxGeometry,face:number):T.BoxGeometry {
+ const indices=Array.from(g.index!.array);g.setIndex(indices.filter((_v,i)=>Math.floor(i/6)!==face));g.clearGroups();return g;
+}
 /** First source/photo-informed native massing cycle; not a suppression-ready asset. */
 export function buildUvaRoeterseiland(_w: number, _d: number, b: BuildingTools): void {
  function shell(rings: number[][][], bottom: number, top: number, colour: Colour, role: string) {
@@ -31,7 +37,17 @@ export function buildUvaRoeterseiland(_w: number, _d: number, b: BuildingTools):
   const us:number[]=[]; for(let i=0;i<ring.length;i++){const a=uv(ring[i]),q=uv(ring[(i+1)%ring.length]);if((a[1]<=v&&q[1]>v)||(q[1]<=v&&a[1]>v))us.push(a[0]+(q[0]-a[0])*(v-a[1])/(q[1]-a[1]));}return side<0?Math.min(...us):Math.max(...us);
  }
  function box(u:number,y:number,v:number,w:number,h:number,d:number,colour:Colour,role:string) {
-  const [x,z]=campusNative(u,v),g=new T.BoxGeometry(w,h,d);g.userData.role=role;b.add(g,colour,x,y+h/2,z,theta);
+  const [x,z]=campusNative(u,v),g=new T.BoxGeometry(w,h,d);
+  // BoxGeometryface indices:+X,-X,+Y,-Y,+Z,-Z before nativeaxisrotation.
+  let back:number|undefined;
+  if(role.startsWith('a-north-')||role.startsWith('north-low-')||role.startsWith('entry-pavilion-north-')||role.startsWith('entry-glazing'))back=4;
+  // A side-ribbon backs retained at surveyedcorner/setback transitions.
+  // B/C pane backs retained: native perimeter setbacks expose some under obliqueviews.
+  else if(role.startsWith('entry-pavilion-east-'))back=1;
+  else if(role.startsWith('entry-pavilion-west-'))back=0;
+  else if(role==='b-south-end-office-glazing')back=5;
+  if(back!==undefined)omitWallBack(g,back);
+  g.userData.role=role;b.add(g,colour,x,y+h/2,z,theta);
  }
  const main=source.roofs.find(r=>r.index===722)!;
  // Roof survey does not see the underside. Architect's four-storey/40m cut controls
@@ -69,7 +85,7 @@ export function buildUvaRoeterseiland(_w: number, _d: number, b: BuildingTools):
  const fa=streetAnnex.rings[0][11],fb=streetAnnex.rings[0][12];
  const fl=Math.hypot(fb[0]-fa[0],fb[1]-fa[1]),fx=(fb[0]-fa[0])/fl,fz=(fb[1]-fa[1])/fl,fnx=-fz,fnz=fx,angle=Math.atan2(-fz,fx);
  function annexFace(at:number,y:number,w:number,h:number,d:number,col:Colour,role:string,outset=.22){
-  const g=new T.BoxGeometry(w,h,d);g.userData.role=role;b.add(g,col,fa[0]+at*fx+outset*fnx,y+h/2,fa[1]+at*fz+outset*fnz,angle);
+  const g=omitWallBack(new T.BoxGeometry(w,h,d),5);g.userData.role=role;b.add(g,col,fa[0]+at*fx+outset*fnx,y+h/2,fa[1]+at*fz+outset*fnz,angle);
  }
  for(let at=3.5;at<fl-2;at+=4.5){
   for(const [y,h] of [[.45,2.65],[4.05,3.15],[8.20,3.15]]){
@@ -77,7 +93,11 @@ export function buildUvaRoeterseiland(_w: number, _d: number, b: BuildingTools):
    annexFace(at,y,3.15,h,.16,'glass','north-annex-west-window');
    for(const offset of [-1.63,1.63])annexFace(at+offset,y,.075,h,.12,'dark','north-annex-west-window-jamb',.34);
    annexFace(at,y+h,3.32,.085,.12,'dark','north-annex-west-window-head',.34);
-   for(const f of [.33,.67])annexFace(at,y+h*f,3.15,.055,.12,'dark','north-annex-west-window-transom',.34);
+   // Source broaduppergroups have a principalvertical mullion and shallow
+   // headvents. Groundglazing uses tall doubleleaf/entrance framing instead.
+   annexFace(at,y,.080,h,.12,'dark',y>3?'north-annex-upper-vertical-mullion':'north-annex-ground-door-stile',.34);
+   if(y>3)for(const f of [.72,.88])annexFace(at,y+h*f,3.15,.055,.12,'dark','north-annex-upper-head-transom',.34);
+   else annexFace(at,y+h*.87,3.15,.075,.12,'dark','north-annex-ground-door-head',.34);
   }
   annexFace(at,12.9,4.35,1.1,.16,'glass','north-annex-west-clerestory');
   annexFace(at,12.9,.07,1.1,.12,'dark','north-annex-west-clerestory-jamb',.34);
@@ -86,6 +106,12 @@ export function buildUvaRoeterseiland(_w: number, _d: number, b: BuildingTools):
  annexFace(22.5,4.05,7.80,7.30,.16,'frame','north-annex-west-glassblock');
  for(let q=-3.9;q<=3.91;q+=.45)annexFace(22.5+q,4.05,.035,7.3,.10,'concrete','north-annex-glassblock-grid',.33);
  for(let y=4.05;y<=11.35;y+=.45)annexFace(22.5,y,7.8,.035,.10,'concrete','north-annex-glassblock-grid',.33);
+ // Principal2x2 frames visibly dominate the fineblockjoints in current source.
+ // Approximate framing widths; retain the acceptednativepanelplace/tierheights.
+ annexFace(22.5,4.05,.16,7.3,.13,'dark','north-annex-glassblock-central-mullion',.41);
+ annexFace(22.5,7.61,7.8,.18,.13,'dark','north-annex-glassblock-storey-divider',.41);
+ for(const q of [-3.90,3.90])annexFace(22.5+q,4.05,.13,7.3,.13,'dark','north-annex-glassblock-outer-frame',.41);
+ for(const y of [4.05,11.22])annexFace(22.5,y,7.8,.13,.13,'dark','north-annex-glassblock-outer-frame',.41);
  annexFace(fl/2,14.15,fl,1.0,.55,'dark','north-annex-straight-roof-fascia',.25);
  // Critical glazing: office rhythm over the wide double-height glazed lintel.
  // Native planes lie just proud of the solid shell, with recess represented by frame.

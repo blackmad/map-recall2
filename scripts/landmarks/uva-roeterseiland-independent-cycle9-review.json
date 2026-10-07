@@ -1,0 +1,147 @@
+{
+  "modelId": "uva-roeterseiland",
+  "reviewedAt": "2026-10-07T10:07:14.454542+00:00",
+  "reviewer": "independent CPU/source worker /root/uva_cycle8_independent_oct7",
+  "candidate": {
+    "phase": "cycle9 734 framing correction and bounded wall-back pruning",
+    "builderSha256": "73031dfe9b43aad0569521b48f162580baf49b6806325fae284f96fd71ba121c",
+    "checkSha256": "e87fe8ad726a25401aa42f88cb45db210a1bb0db8392f1aea800242a4f623bf9",
+    "sourceArchiveCommit": "4d7e01caf1b6765a86a6a69a7a0098c61709315d",
+    "sourceArchivePath": "models/uva-roeterseiland",
+    "exportSha256": "bc00dc572f0dd977539d0e6043da0d1cca341f6ec15206f80b0f041ed35efa01",
+    "triangles": 35092,
+    "exportBytes": 490076,
+    "textures": 0
+  },
+  "verdict": "PASS scoped734 source-assembly corrections and bounded CPU decoded first-hit checks; WHOLE PARENT HELD",
+  "scope": "Current734 source-facing framing repair and bounded pruning checks only. Original photographed architecture/current CPU images plus actual decoded GLB read without mutation; no GPU/Git/registration/source edits.",
+  "inspectedSources": [
+    "processed/oct7-targeted-northlow-west-perspective.jpg (reopened actual source this turn)",
+    "processed/oct7-targeted-742-north-perspective.jpg (reviewed prior cycle8)"
+  ],
+  "inspectedImages": [
+    {
+      "path": "north-annex-framing-close.png",
+      "sha256": "278de4ca65e146dea7e96c705d1810608b64ef10955a77769fe4c6665d67a92c"
+    },
+    {
+      "path": "north-annex-street.png",
+      "sha256": "a3e05d8c58e29f8e86e746fb33d8d12c16188e94bb711a219f86e0f1b65e03b8"
+    },
+    {
+      "path": "native-overview.png",
+      "sha256": "12ca35d38971289e7ef17e0f7c180f79167883d0d9596b5c82a2b0b003919246"
+    }
+  ],
+  "resolvedCycle8Failures": [
+    {
+      "id": "734-glassblock-major-subdivision",
+      "finding": "Current close image clearly exposes dark central vertical mullion, thick floor-level horizontal divider and outer frame, restoring the conspicuous2\u00d72 glassblock assembly visible in actualsource. Fine grid remains approximate/coarser than source but is visually subordinate to principal framing. Existing edge placement/two-storey extent preserved."
+    },
+    {
+      "id": "734-broad-window-mullions",
+      "finding": "Current broad upper windows now expose a central vertical mullion and short upper head transoms instead of three equal horizontal strips. Ground glazing uses vertical door stile and high door head. The repaired image restores source-supported groups without claiming exact individual doors/pane counts."
+    }
+  ],
+  "pruningReview": {
+    "native734Tangent": "annexFace rotation atan2(-fz,fx) maps local+Z to actual outward(-fz,fx); omitting local-Z face5 removes wall-facing back, retaining outward front and all4relief sides. No wrong tangent found.",
+    "retainedRiskFaces": "B/C general pane backs and A side ribbons retained after recorded failed broader attempt; current code confirms exclusion from pruning.",
+    "independentPixelComparison": "Decoded before/after PNG arrays independently compared for A-front and overview: exactly8pixels at x253..264/y449..475 and9pixels at x323/y307 plus x481..514/y471..520. These lie along narrow primitive boundaries; no vanished broad facade field found. Other identical-view claims are author recorded, not newly rerendered by reviewer.",
+    "limit": "A frozen CPU camera set is not exhaustive visibility proof. Open-backed geometry requires native GPU/oblique neighbor acceptance before release."
+  },
+  "decodedExportIndependentChecks": {
+    "method": "Read actual GLB via NodeIO/ALL_EXTENSIONS/MeshoptDecoder; map normalized position/normal accessors and each node world transform into Three meshes. No GLB writes.",
+    "triangles": 35092,
+    "bytes": 490076,
+    "textures": 0,
+    "bounds": {
+      "min": [
+        -82.22481966311179,
+        -0.0010818701472068426,
+        -103.83932495117188
+      ],
+      "max": [
+        61.437633994166475,
+        51.56808177859452,
+        106.33067321777344
+      ]
+    },
+    "firstHitSamples": [
+      {
+        "at": 22.5,
+        "y": 5.2,
+        "expectedMaterial": "dark",
+        "result": "pass"
+      },
+      {
+        "at": 20.1,
+        "y": 7.7,
+        "expectedMaterial": "dark",
+        "result": "pass"
+      },
+      {
+        "at": 12.5,
+        "y": 5,
+        "expectedMaterial": "dark",
+        "result": "pass"
+      },
+      {
+        "at": 12.5,
+        "y": 1.5,
+        "expectedMaterial": "dark",
+        "result": "pass"
+      },
+      {
+        "at": 12.1,
+        "y": 2.8,
+        "expectedMaterial": "dark",
+        "result": "pass"
+      },
+      {
+        "at": 20.1,
+        "y": 5.2,
+        "expectedMaterial": "frame",
+        "result": "pass"
+      },
+      {
+        "at": 12.1,
+        "y": 5,
+        "expectedMaterial": "glass",
+        "result": "pass"
+      },
+      {
+        "at": 12.1,
+        "y": 1.5,
+        "expectedMaterial": "glass",
+        "result": "pass"
+      },
+      {
+        "at": 12.1,
+        "y": 13.3,
+        "expectedMaterial": "glass",
+        "result": "pass"
+      },
+      {
+        "at": 12.1,
+        "y": 14.6,
+        "expectedMaterial": "dark",
+        "result": "pass"
+      }
+    ],
+    "finding": "Actual compressed export preserves sampled principal glassblock framing, broad-window mullion, ground stile/head, pale field, open glazing, clerestory and straight fascia. Quantized bounds remain native-scale. These material-firsthit checks do not constitute decoded full-view visual acceptance."
+  },
+  "geometryCheck": {
+    "command": "node --import tsx scripts/check-uva-roeterseiland-geometry.ts",
+    "result": "PASS35092triangles; existing roof/void/entry/pavilion/A bounds plus new734 principal-framing samples pass"
+  },
+  "requiredScopedFixes": [],
+  "heldLimits": [
+    "independent-cycle8-review.json and cycle8failed evidence preserved; only its two734framing failures are resolved by this candidate.",
+    "734 grid density/exact bay offsets/ground door allocation remain bounded approximations. Straight fascia and tier heights remain plausible; no new roof-outlier failure established.",
+    "742 north/A back or southterminal/735 and remaining annex/rear faces remain unpictured or incomplete; no source734family transfer acceptance.",
+    "WHOLE PARENT HELD: no suppression or registration acceptance, no actual gallery/liveGPU/native-scene/neighbor/performance acceptance and no route/map/info-card three-surface audit.",
+    "Compression-budget/CPU first-hit success is not GPU or whole-coverage acceptance."
+  ],
+  "readerRelease": "All reads finished on frozen candidate; author may checkpoint. A new changed builder/export needs corresponding fresh evidence.",
+  "reviewChanges": "Only independent-cycle9-review.json written; checker refreshed deterministic geometry-report.json. No authoring/GPU/Git/source/registration changes."
+}

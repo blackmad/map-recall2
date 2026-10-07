@@ -1,9 +1,9 @@
 {
   "modelId": "uva-roeterseiland",
   "date": "2026-10-07",
-  "phase": "eighth-cycle-current-north-street-annex",
+  "phase": "ninth-cycle-independent-734-framing-correction",
   "status": "draft-not-accepted-do-not-register-or-suppress",
-  "builderSha256": "be24daa4afbfb7d328f8a3ef481a69647dce08a837b35dd0856829fbeb3c9733",
+  "builderSha256": "73031dfe9b43aad0569521b48f162580baf49b6806325fae284f96fd71ba121c",
   "sourceArchive": {
     "path": "models/uva-roeterseiland",
     "commit": "4d7e01caf1b6765a86a6a69a7a0098c61709315d",
@@ -78,12 +78,20 @@
       "rawReference": "raw/oct7-targeted-northlow-west.jpg",
       "finding": "Native734streetface nowwarmmasonry,groundglass,two broadwindowtiers,tallpaleglassblockgrid,thinclerestory andstraightdarkcap. Sourcepanorama perspectiveprojection removes apparentroofcurve artifact.",
       "pending": "Independentnewassemblyreview; exactbaycount/panelnativeallocationmediumconfidence; othernorthfaces notobserved."
+    },
+    {
+      "cycle": 9,
+      "render": "north-annex-framing-close.png",
+      "contextRender": "north-annex-street.png",
+      "reference": "../map-recall2-source-data/models/uva-roeterseiland/processed/oct7-targeted-northlow-west-perspective.jpg",
+      "finding": "Approximateactualnearstreetstation reveals strong2x2glassblockhierarchy,verticallydividedbroaduppergroups andtallgrounddoorframes. Nativepanelposition/tiers/roofheldunchanged.",
+      "pending": "Independentcurrentreview; no compressedsource-facingGPU/game/suppression acceptance."
     }
   ],
   "checks": {
     "command": "node --import tsx scripts/check-uva-roeterseiland-geometry.ts --render",
     "result": "pass",
-    "triangles": 37142,
+    "triangles": 35092,
     "finiteNativeBounds": true,
     "upwardRoofNormals": true,
     "canalAndBankVoidRays": true,
@@ -106,7 +114,20 @@
       "dependencySetup": "Replaced only isolatedworktree rootnode_modules symlink with npm ci --workspaces=false --ignore-scripts --no-audit --no-fund; root node_modules/lock untouched",
       "priorMismatchedDependencyFailure": "25 untouchedsrc errors whenusingrootlinkeddeps; savedartifacts/uva-roeterseiland-massing-20261006/inherited-full-lint-failure.txt. These vanishedunderlockeddependencies.",
       "checkpointHook": "Initialunpublishedlocalcheckpointskippedhook; corrected withlockeddependencyinstall/fullnormalgate andnormalhookamend beforehandoff/publication."
-    }
+    },
+    "northAnnexPrincipalFraming": "5first-hit rays: glassblockcentraldarkmullion+storeydivider; upperverticalmullion; grounddoorstile/head allPASS.",
+    "compressedDraftBudget": {
+      "model": "uva-roeterseiland",
+      "status": "unaccepted artifact only; no registration/version/suppression",
+      "file": "artifacts/uva-roeterseiland-massing-20261006/cycle9-unaccepted-draft.glb",
+      "sha256": "bc00dc572f0dd977539d0e6043da0d1cca341f6ec15206f80b0f041ed35efa01",
+      "bytes": 490076,
+      "decodedTriangles": 35092,
+      "textures": 0,
+      "compression": "sameproduction weld/dedup/prune/meshopt medium",
+      "limit": "decoded budget/finiteness only; no compressed first-hit/render/live acceptance"
+    },
+    "backPruneViews": "8source-facingCPUviews pixel-identicalto fullboxframingrepair; Afront8pixels/nativeoverview9boundarypixels differ (<0.0012%). Exactcomparisons preserved. BroaderB/C/Asideribbon pruning discarded afterobliquevisible difference."
   },
   "failedOrLimitedEvidence": [
     "Cycle1 deep portal failed: original glazing was essentially flush and ground-up survey shell728 flattened the hall; preserved before repair.",
@@ -119,11 +140,13 @@
     "Cycle3 north pavilion only detailed18m corner, leaving observable west frontage blank; preserved before cycle4. Other annex faces remain unresolved.",
     "Cycle5 source401 southern lowerbank curtain test hit survey689 atv27.2,y2 (3.53m away). Genuine9m annexe retained; southern stair glass limitedabove12.65m. Lowerbank facade unresolved.",
     "Cycle6 initial Bterminal pane loop used wholeboundingbox33m width includingnorthspur; actual19m southendnativeedge correction preserved.",
-    "Independent cycle6 review FAILED: clerestory43.3\u201343.78/trim43.88 exceeded Aroof43.5845 and low ribbonphaseleft2.78m blankband; equal3.4m pavilion tiers missed shortground/tallupper proportions. Cycle7 sourceguided phase/tiercorrection awaiting re-review."
+    "Independent cycle6 review FAILED: clerestory43.3\u201343.78/trim43.88 exceeded Aroof43.5845 and low ribbonphaseleft2.78m blankband; equal3.4m pavilion tiers missed shortground/tallupper proportions. Cycle7 sourceguided phase/tiercorrection awaiting re-review.",
+    "Independentcycle8 FAILED principal2x2glassblocksubdivision/upperverticalwindowmullions/grounddoorfamily; exact37142builder/CPU/reportpreserved ascycle8-* + independent-cycle8-review.json. Cycle9repairs onlyobservedframingfamily, awaitingre-review.",
+    "Cycle9 firstproductionmediumdraftGLB521468bytes FAILED500000budget. Preserve originalfailure/GLB. Conservativeopaque-wall-back cleanupkeepscriticalexposedfront/sidefaces; final490076bytes. No changedcompressionlevel/detailreduction."
   ],
-  "independentReviewer": "Cycle6 failed preserved; cycle7 PASS correctedA/pavilion sourcefamily/proportion CPUonly inindependent-cycle7-review.json. Cycle8 NEW734annex review pending.",
+  "independentReviewer": "Cycle6FAIL andcycle8FAILpreserved; cycle7boundedA/pavilionPASS. Cycle9new734framingandconservativebackcleanup currentre-reviewpending.",
   "nextCycle": [
-    "Independent bounded current734source/render cycle8 review; freezebuilderSHA above.",
+    "Independentcycle9source-facingclose/contextreview for734framing +budgetcleanup; freeze exactbuilderhash above.",
     "Recordedactualsourcegap: target-specificcurrentstreetcaptures projectAbackinto708pavilion,735eastinto retainedCREA,742northinto foreground734. Keepthese unseen assemblies unresolved andfullparentsuppression withheld.",
     "Root compressed export/gallery/live/neighbors/performance/POI acceptance follows meaningfullycomplete native composite."
   ],
@@ -152,7 +175,16 @@
     "cycle6-end-invalid-bounds-failed.json",
     "cycle6-builder.ts",
     "cycle6-review.json",
-    "independent-draft-current-review.json"
+    "independent-draft-current-review.json",
+    "cycle8-builder.ts",
+    "cycle8-review.json",
+    "cycle8-geometry-report.json",
+    "cycle8-north-annex-street.png",
+    "cycle8-native-overview.png",
+    "independent-cycle8-review.json",
+    "cycle9-over-budget-failed.glb",
+    "cycle9-over-budget-failed.json",
+    "cycle9-broad-back-prune-visible-difference.json"
   ],
   "cpuCameras": {
     "north-bank-entry": {
@@ -258,5 +290,11 @@
       }
     ],
     "confidence": "photoguided proportions; approximate dimensions, not measuredasbuilt"
+  },
+  "cycle9Corrections": {
+    "glassblock": "darkouterframe/principalcentralvertical.16m+storeydivider.18m create2x2hierarchy abovefine.035m grid; existing7.8x7.3m panel/t22.5 retained",
+    "broadUpperWindows": "mainverticalmullion.08m plusnarrowheadtransoms at.72/.88 ofpaneband; no equal3horizontalstrip substitute",
+    "groundFamily": "tall doubleleaf/entrance stiles andhighhead; exactindividualdoorallocation notclaimed",
+    "confidence": "high sourceassembly hierarchy; medium inferredframewidths/transom heights/pane counts; no newhiddenregiontransfer"
   }
 }
