@@ -8342,6 +8342,51 @@ Map source: ${osmUrl(places[i][0])}`);
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free surveyed-footprint reconstruction with photo-guided sculptural stair recesses and aluminium fins; no third-party render mesh/photo pixels."
       }
+    },
+    {
+      id: "el-tawheed",
+      name: "El Tawheed",
+      landmarkId: "extract_landmarks_1862244163",
+      modelUrl: "./models/el-tawheed.glb",
+      suppressOsmIds: [
+        "w276303116",
+        "NL.IMBAG.Pand.0363100012137097"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.86401798,
+          52.36767359
+        ],
+        headingDegrees: 90,
+        lengthMetres: 36,
+        widthMetres: 34
+      },
+      surveyed: {
+        anchor: [
+          4.86401798,
+          52.36767359
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG parent exact stepped perimeter; native RD roof regions transformed to east/south metres; AHN5 2023 elevations"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#786150",
+        stone: "#bcb6a7",
+        slate: "#494b4c",
+        white: "#f4f4ef",
+        concrete: "#adada5"
+      },
+      attribution: {
+        title: "El Tawheed former factory",
+        author: "Map Recall",
+        sourceUrl: "https://dareltawheed.nl/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original flat-color native reconstruction, survey bounded stepped roofs and photographed factory cornice and opening assemblies. No third-party pixels or meshes."
+      }
     }
   ];
 
@@ -21339,6 +21384,26 @@ Map source: ${osmUrl(places[i][0])}`);
         center: [
           52.33768,
           4.87262
+        ]
+      }
+    },
+    {
+      modelId: "el-tawheed",
+      landmarkId: "extract_landmarks_1862244163",
+      name: "El Tawheed",
+      description: "El Tawheed occupies a former clothing factory on Jan Hanzenstraat. The building later housed an etui and box maker and then the Amex metal workshop before becoming a mosque and cultural centre in 1997. Its factory facade retains six tall window bays and a projecting cornice; the former name panel is now whitewashed.",
+      sourceUrl: "https://amsterdamopdekaart.nl/1850-1940/Jan_Hanzenstraat/114",
+      preferDescription: true,
+      destinationOverride: {
+        center: [
+          52.36763342532987,
+          4.8640231890577725
+        ]
+      },
+      routeDestination: {
+        center: [
+          52.36763342532987,
+          4.8640231890577725
         ]
       }
     }

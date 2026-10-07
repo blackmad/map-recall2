@@ -1,0 +1,56 @@
+{
+  "assetSHA256": "f39fb7244564e06750bfaa148fddba539d4420286efc0bfeac3db15a1c7f90e0",
+  "assetRuntimeFingerprint": "f39fb7244564e067",
+  "assetTriangles": 6004,
+  "assetBytes": 83264,
+  "scope": "Independent current-gallery/source/native-game visual and bounded fallback/pan/frame review; no tracked code changes. Root retains final acceptance ownership.",
+  "visualDecision": {
+    "front": "Pass scoped recognizable factory facade: six bays, source window proportions and upper transoms, blank pale panel endpoints, heavy cornice, double entrance, basement grille and aperture-aware plinth. Thin pilaster shadow lines remain visible but previous deep dark side strips/chunks absent.",
+    "doorApproach": "Pass current native 2m public street eye diagnostic: door reaches threshold, shallow approach descends to pavement, plinth does not cover basement aperture. Retained tree trunk/canopy partially occludes facade as real frontage context; not removed.",
+    "roofAndOpenSpace": "Pass native upper opposite and east overview for surveyed stepped rear/sawtooth roofs, tall frontage and open exterior shoulder with retained neighbors; no filled broad rectangle or extra old fallback roof observed.",
+    "rearPhotoMatch": "Unverified: retained housing occludes municipal rear source photo. Blank modeled rear walls are conservative omission, not a positive photographed facade match.",
+    "ordinaryStreetAppearance": "Pass inspected paused desktop and emulated-touch 0/45/110 degree pans: neighboring textured windows and ground doors retained at normal views; no rider drift across recorded exact coordinates."
+  },
+  "preferredEvidence": {
+    "normalFront": "normal-default-FOV-full-front-high-eye.png",
+    "normalFrontSceneWithoutHUD": "normal-default-FOV-full-front-high-eye-HUD-only-hidden-diagnostic.png",
+    "sourceProfile": "full-front-side-wide-FOV-diagnostic-HUD-only-hidden-diagnostic.png",
+    "lowEye": "../el-tawheed-final-game-f39-actual-eye/door-actual-low-eye-HUD-only-hidden-diagnostic.png",
+    "oppositeRoof": "../el-tawheed-final-game-f39-actual-eye/rear-court-overview-HUD-only-hidden-diagnostic.png",
+    "openShoulder": "../el-tawheed-final-game-f39-actual-eye/rear-court-overview-east-HUD-only-hidden-diagnostic.png"
+  },
+  "cameraLimitations": [
+    "Default FOV36.8699 high front actualeye24m, actualzoom21.89047 within ordinary max22; capture configured max26 but did not require it. HUD-only-hidden variant is explicit scene diagnostic; ordinary UI screenshot preserved.",
+    "Wide FOV80 and maxPitch89 variants are architecture diagnostics, not shipping camera defaults.",
+    "True low eye actualaltitude1.9999978m uses maxZoom26/maxPitch89; no low-eye normal gameplay camera acceptance claimed.",
+    "Architecture captures retain original route spawn; separate pan initialization moves rider once to public street approach east of door, solely diagnostic. Route/home/GPS origin unchanged; not evidence rider traveled the selected route.",
+    "Pan is manual native map camera movement with game PAUSED state6, original game rendering and CDP touch emulation. Not a physical mobile guarantee."
+  ],
+  "fallback": {
+    "report": "../el-tawheed-final-game-f39-corrected/report.json",
+    "decision": "Pass unavailable and restored two exact alias hidden states; BAG shader ranges coarse174 vertices and kit420 vertices min=max1 before, min=max0 unavailable. Other signature entries invariant.",
+    "osmAliasGeometry": "w276303116 has no independent resident shader range in this BAG tile scene; alias hidden membership verified rather than inventing a missing range.",
+    "independentPyramid": "Both aliases in pyramid hidden ID set while replacement available; removed from set while unavailable. No actual resident target pyramid mesh exists for this building in current scene, explicitly not an exercised target cone."
+  },
+  "performance": {
+    "report": "../el-tawheed-final-game-f39-corrected/report.json",
+    "framesPerPhase": 90,
+    "p50Ms": {
+      "replaced": 147.2,
+      "onlyElUnavailableActualFallback": 143.9,
+      "replacedRepeat": 144.9
+    },
+    "p95Ms": {
+      "replaced": 155.3,
+      "onlyElUnavailableActualFallback": 173.4,
+      "replacedRepeat": 152.0
+    },
+    "claim": "Bounded scene frame evidence only. Other signatures stay invariant; only El entry removed with genuine fallback restored. Headless software/raster load and 3000x1400 viewport make this unsuitable for whole-game cost or device performance pass."
+  },
+  "preservedFailures": [
+    "../el-tawheed-final-game-f39: close door-initialized oversized game bike and clipped front cameras; preservation rather than visual acceptance.",
+    "../el-tawheed-final-game-f39-corrected: nominal source-camera positions actually clamped at maxZoom22, moving actual camera behind opposite roofs; full front/right context clipped or occluded.",
+    "../el-tawheed-final-game-f39-actual-eye: close normal-FOV views clip cornice and full facade; useful pane/door detail, not full front acceptance."
+  ],
+  "runtime": "All four browser runs closed, zero page errors; terminals65351,5266,72485,5492 completed. Root HTTP5213 untouched. No tracked publisher files, git/index/source files changed."
+}

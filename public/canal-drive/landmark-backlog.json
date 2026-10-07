@@ -21,9 +21,9 @@
     }
   ],
   "counts": {
-    "manual-model": 195,
+    "manual-model": 196,
     "procedural-kit": 15,
-    "pending": 128,
+    "pending": 127,
     "catalogue-model": 7
   },
   "destinations": [
@@ -724,14 +724,15 @@
     {
       "id": "lm-extract_landmarks_1862244163",
       "name": "El Tawheed",
-      "lat": 52.367833,
-      "lng": 4.863719,
+      "lat": 52.36763342532987,
+      "lng": 4.8640231890577725,
       "prominence": 301,
       "type": "landmark",
       "queueRank": 56,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "el-tawheed",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1450151185",

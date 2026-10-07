@@ -13239,6 +13239,82 @@
       "triangles": 22942,
       "bytes": 322440,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "el-tawheed": {
+      "id": "el-tawheed",
+      "name": "El Tawheed",
+      "landmarkId": "extract_landmarks_1862244163",
+      "modelUrl": "./models/el-tawheed.glb",
+      "suppressOsmIds": [
+        "w276303116",
+        "NL.IMBAG.Pand.0363100012137097"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.86401798,
+          52.36767359
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 36,
+        "widthMetres": 34
+      },
+      "surveyed": {
+        "anchor": [
+          4.86401798,
+          52.36767359
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current BAG parent exact stepped perimeter; native RD roof regions transformed to east/south metres; AHN5 2023 elevations"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "brick": "#786150",
+        "stone": "#bcb6a7",
+        "slate": "#494b4c",
+        "white": "#f4f4ef",
+        "concrete": "#adada5"
+      },
+      "attribution": {
+        "title": "El Tawheed former factory",
+        "author": "Map Recall",
+        "sourceUrl": "https://dareltawheed.nl/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original flat-color native reconstruction, survey bounded stepped roofs and photographed factory cornice and opening assemblies. No third-party pixels or meshes."
+      },
+      "bounds": {
+        "min": [
+          -24.68917465209961,
+          -3.7252903539730653e-10,
+          -28.006168365478516
+        ],
+        "max": [
+          8.926719665527344,
+          12.050000190734863,
+          7.270059108734131
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.86401798,
+          52.36767359
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 90,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 35.27622747421265,
+        "heightMetres": 12.050000191107392,
+        "depthMetres": 33.61589431762695,
+        "depthCoverage": 0.9887027740478516
+      },
+      "triangles": 6004,
+      "bytes": 83264,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

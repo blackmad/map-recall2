@@ -1,0 +1,85 @@
+{
+  "id": "el-tawheed",
+  "reviewedOn": "2026-10-07",
+  "reviewer": "independent source and CPU failure-seeking worker",
+  "scope": "Source/CPU draft review only. No GPU, code modification, registration, Git, gallery/game or POI acceptance.",
+  "draft": {
+    "path": "artifacts/landmark-next-batch/el-tawheed.glb",
+    "sha256": "57ee08c0a928603bf258d3ba33f2a9812b78addbdc6a8899b6d62e0a3024d8f8",
+    "triangles": 6002,
+    "bytes": 81960
+  },
+  "provenance": {
+    "sourcePackCommit": "7d9c1206",
+    "sourcePackPath": "models/el-tawheed",
+    "originalPhoto2020": "/tmp/el-tawheed-sources/raw/photo.jpg",
+    "derivedMunicipal2025Front": "/tmp/el-tawheed-sources/pano-0-front.jpg",
+    "sourceFilesRead": [
+      "scripts/landmarks/el-tawheed-handoff.md",
+      "scripts/landmarks/el-tawheed-research.json",
+      "scripts/landmarks/el-tawheed-spec.json",
+      "scripts/landmarks/el-tawheed-footprints.json",
+      "scripts/landmarks/el-tawheed-builder.ts",
+      "scripts/check-el-tawheed-geometry.ts"
+    ]
+  },
+  "views": [
+    "artifacts/landmark-offline-preview/el-tawheed-cpu-front.png",
+    "artifacts/landmark-offline-preview/el-tawheed-cpu-oblique-front.png",
+    "artifacts/landmark-offline-preview/el-tawheed-cpu-low-front.png",
+    "artifacts/landmark-offline-preview/el-tawheed-cpu-rear.png"
+  ],
+  "decision": "FAIL current draft panel phase; source-supported correction required before positive front acceptance.",
+  "failures": [
+    {
+      "feature": "Whitewashed panel width and bay phase",
+      "evidence": "Both original Commons2020 and municipal2025 show right panel edge on the pier between fifth and sixth bays, leaving the final bay without white panel above it. The left panel starts on the pier after the first bay. Current centered length-2.1 panel visibly extends across portions of both first and last bays.",
+      "builderEvidence": "box(length/2,3.71,length-2.1,.67,.07,white,.07)",
+      "supportableCorrection": "Photo-guided left endpoint around u=2.1m and right endpoint around u=13.05m, with exact endpoints adjusted from source-facing comparison; keep white material and blank panel.",
+      "severity": "recognizable principal-front trait mismatch"
+    },
+    {
+      "feature": "Low-front evidence is duplicate",
+      "evidence": "front and low-front PNG SHA256 both 13a80750da844cd965027352c000c6781ca86edf4775f32cb3c3dcc9a4131110; render script uses one LANDMARK_CPU_ELEVATION for all view labels.",
+      "implication": "low-front is not a distinct low-eye view and cannot validate raised entrance approach or low plinth geometry."
+    }
+  ],
+  "supportedObservations": [
+    {
+      "feature": "Factory identity and opening phase",
+      "observation": "Six upper/middle tall bays, third-bay double door, far-left narrow ground pair, unlettered panel, white frames and modillion/toothed crown are retained. No fabricated mosque dome or identifying lettering."
+    },
+    {
+      "feature": "Window hierarchy repair",
+      "observation": "Main two-light centre division and tier-specific short upper transoms now visibly stronger than fine glazing bars; source broad hierarchy is supported. Exact frame depth and bay ratios remain simplified."
+    },
+    {
+      "feature": "Dedicated white panel material",
+      "observation": "Decoded white material baseColorFactor [0.9046611743890203,0.9046611743890203,0.8631572134510892,1] corresponds to documented #f4f4ef; beige-looking CPU shading is not itself a retained material assignment defect."
+    },
+    {
+      "feature": "Native survey scope and low sheds",
+      "observation": "Builder uses recorded regional rings and explicit upward roof planes, preserving tall street-front and lower rear shed zones. Side/end and rear are largely blank in CPU views; absent rear openings remain documented uncertainty, not positive source acceptance."
+    },
+    {
+      "feature": "Decoded roofs and scale",
+      "observation": "Read-only decoded mesh inspection: 74 slate roof triangles upward, 0 downward, 0 zero signed vertical area; world bounds min [-24.68822310514168,-0.00006802394573135473,-28.006168365478516], max [8.925768118569415,12.050068214308066,7.270059108734131]. Transform-aware bounds confirm native scale. The previously failed near-collinear cleanup evidence remains preserved."
+    }
+  ],
+  "followupChecks": [
+    {
+      "feature": "Raised entrance approach",
+      "observation": "2025 source shows a shallow raised grey entrance approach interrupting the pale basement plinth. Current builder has door starting y=.05 and no explicit platform/approach surface; model-only orthographic view cannot establish whether scene pavement makes this meaningful. Require actual low-eye gallery/game view and add shallow approach only if absent at scene height."
+    },
+    {
+      "feature": "Basement",
+      "observation": "Observed grille below second bay and interrupted pale plinth are visibly retained. Width/hidden cellar continuation remains photo-approximate; no hidden basement tier is accepted."
+    }
+  ],
+  "limits": [
+    "Rear source pano was occluded by retained housing; rear blank facade cannot be claimed researched or passed heldout.",
+    "No GPU/gallery/live context check, exact ordinary-layer suppression, neighboring building retention, click-card, route/pin or performance check performed.",
+    "Existing checker regenerates GLB, so it was read rather than executed; decoded exported mesh inspected read-only.",
+    "CPU pass is not full POI acceptance."
+  ]
+}

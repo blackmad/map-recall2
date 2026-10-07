@@ -1643,13 +1643,16 @@
       "id": "el-tawheed",
       "task": "El Tawheed \u2014 original native house-style POI landmark",
       "priority": "normal",
-      "status": "source-and-original-builder-in-progress",
-      "owner": "el_tawheed_build_oct7",
+      "status": "local-accepted-release-pending",
+      "owner": "root",
       "canonicalPoi": "extract_landmarks_1862244163",
       "inventoryOrigin": "POI Destinations",
       "workflow": "full-landmark",
-      "nextAction": "Resolve exact current physical parent and entrance, source/archive primary originals, original native geometry then source/gallery/game/independent route/pin/card/neighbor/fallback acceptance. No shared registration until scoped authoring is ready.",
-      "startedOn": "2026-10-07"
+      "nextAction": "Commit/push reviewed asset and verify current hosted bytes/gallery/game; rear-photo and physical-device limitations remain recorded.",
+      "startedOn": "2026-10-07",
+      "assetSHA256": "f39fb7244564e06750bfaa148fddba539d4420286efc0bfeac3db15a1c7f90e0",
+      "validation": "Root/current independent gallery and native front/entrance/roof/open-shoulder review pass; genuine route/pin/physical card, exact two masks/retained neighbors and fallback/pans verified. Geometry/shared asset/POI/lint pass. Rear photo occluded; diagnostic low-eye camera and bounded headless frames are not device performance acceptance.",
+      "sourceCommit": "d4c2880119aef096f16e139bff475a4a28d5671b"
     },
     {
       "id": "ordinary-building-loading-task-profile",
