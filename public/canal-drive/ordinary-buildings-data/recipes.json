@@ -77,7 +77,7 @@
       "traits": [
         "Large native rectangular metal industrial shed, flat roof edge: overwhelmingly blank pale-gray northern facade and darker gray east facade. Preserve vertical fine corrugation; do not apply domestic window grid.",
         "Full-resolution north-centered photo has straight horizontal top; NE-corner image apparent peak is perspective convergence of horizontal perimeter edges, not a pitched ridge.",
-        "West end has two upper rows of narrow rectangular office windows, about 0.9–1.2 m wide by 1.8–2.1 m tall, above dark covered loading/vehicle bays one storey (about 3.5–4 m) high. Native west face edges 4/5.",
+        "West end has two upper rows of narrow rectangular office windows, about 0.9\u20131.2 m wide by 1.8\u20132.1 m tall, above dark covered loading/vehicle bays one storey (about 3.5\u20134 m) high. Native west face edges 4/5.",
         "Thin pale lower curb and very restrained roof perimeter trim; use neutral gray roof surface inferred from edge material, record it as approximate where top itself unseen.",
         "External round tank and neighboring delivery/service building lie outside exact polygon. Dark west loading recess is local industrial frontage, with no evidence for a public through-passage or surveyed court; do not invent a traversable underpass."
       ],
@@ -492,8 +492,8 @@
       "secondary": [],
       "traits": [
         "2017 clear north canal facade photos show gray metal cladding, repeated high narrow slit windows, muted blue loading doors and light vertical piers.",
-        "North face has sparse blue loading doors about3.5×4m plus a wider vertical glazed loading or stair assembly. The neighboring red brick wall and continuous roof glazing are outside this footprint.",
-        "2025 aerial and2023 AHN3DBAG support a solid rectangular hall with8–9m roof. A fresh230m panorama search found2021 context but no clear newer target facade. Preserve the2017 facade currentness gap and conditional acceptance.",
+        "North face has sparse blue loading doors about3.5\u00d74m plus a wider vertical glazed loading or stair assembly. The neighboring red brick wall and continuous roof glazing are outside this footprint.",
+        "2025 aerial and2023 AHN3DBAG support a solid rectangular hall with8\u20139m roof. A fresh230m panorama search found2021 context but no clear newer target facade. Preserve the2017 facade currentness gap and conditional acceptance.",
         "Broad upper glazing and pale piers above two loading gates; regular shallow roof panel rhythm from2025 aerial."
       ],
       "sourcePack": "experiments/ordinary-ten/boxes/0363100012223044",
@@ -581,7 +581,7 @@
         "Door counts and dimensions are approximate visual estimates, not surveys.",
         "Omit minor branding; do not invent building-name text.",
         "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained.",
-        "Regular6×7 shallow roof panel grid approximates observed aerial rhythm; fitted patch noise omitted. Glazing/pier proportions are visual estimates from2017 facade."
+        "Regular6\u00d77 shallow roof panel grid approximates observed aerial rhythm; fitted patch noise omitted. Glazing/pier proportions are visual estimates from2017 facade."
       ],
       "timing": null,
       "officialRegions": [],
@@ -649,8 +649,8 @@
       "secondary": [],
       "traits": [
         "2025 south front views show charcoal green gray corrugated metal, a flat roof edge and low gray plinth.",
-        "Large muted red sectional loading doors about3.5×4m; occasional blue or dark personnel door. The portable blue cabin lies outside the installed footprint.",
-        "A truck obscures the second view. Visible wall is mostly blank metal. Preserve shallow fitted roof elevations9.21–9.53m and avoid an invented office grid."
+        "Large muted red sectional loading doors about3.5\u00d74m; occasional blue or dark personnel door. The portable blue cabin lies outside the installed footprint.",
+        "A truck obscures the second view. Visible wall is mostly blank metal. Preserve shallow fitted roof elevations9.21\u20139.53m and avoid an invented office grid."
       ],
       "sourcePack": "experiments/ordinary-ten/boxes/0363100012123231",
       "references": [
@@ -1029,7 +1029,7 @@
       "traits": [
         "2022 southwest context shows a simple charcoal corrugated metal rectangle with a straight roof edge.",
         "Containers obscure ground frontage; one tall loading opening is visible near the western end. Keep containers, scaffold and cranes outside the building mass.",
-        "Use sparse loading doors only on observed south and west faces. Record the2022 image gap; fitted2023 AHN roof supports an11.2–11.46m hall."
+        "Use sparse loading doors only on observed south and west faces. Record the2022 image gap; fitted2023 AHN roof supports an11.2\u201311.46m hall."
       ],
       "sourcePack": "experiments/ordinary-ten/boxes/0363100012183449",
       "references": [
@@ -1463,7 +1463,7 @@
       "traits": [
         "2020 north canal context shows light gray vertical metal panels, dark vertical seams and a muted purple gray top band.",
         "Scrub obscures lower frontage. There is no supported door or window count; maintain blank industrial walls.",
-        "The lower structure at the right lies outside the exact footprint and remains separate. Main fitted roof is13.6–13.86m, with small14.3m roof patches."
+        "The lower structure at the right lies outside the exact footprint and remains separate. Main fitted roof is13.6\u201313.86m, with small14.3m roof patches."
       ],
       "sourcePack": "experiments/ordinary-ten/boxes/0363100012191215",
       "references": [
@@ -1752,8 +1752,8 @@
       "secondary": [],
       "traits": [
         "2025 north panoramas show a dark charcoal metal hall with broad vertical panel joints and a low gray concrete plinth.",
-        "North front has muted red loading doors about4×4.5m and adjacent small pale personnel doors. Minor logos and tenant words may be omitted.",
-        "The low glazed neighboring structure and containers sit outside the exact rectangle. Fitted roof planes lie at9.95–10.15m; this is a shallow roof variation."
+        "North front has muted red loading doors about4\u00d74.5m and adjacent small pale personnel doors. Minor logos and tenant words may be omitted.",
+        "The low glazed neighboring structure and containers sit outside the exact rectangle. Fitted roof planes lie at9.95\u201310.15m; this is a shallow roof variation."
       ],
       "sourcePack": "experiments/ordinary-ten/boxes/0363100012224669",
       "references": [
@@ -2411,7 +2411,7 @@
       "secondary": [],
       "traits": [
         "2025 south views confirm a pale gray green corrugated metal hall with a flat edge and no domestic glazing grid.",
-        "Observed south face has three broad faded salmon vertical stripes, about1.5m wide, and two dark personnel doors about1×2.1m.",
+        "Observed south face has three broad faded salmon vertical stripes, about1.5m wide, and two dark personnel doors about1\u00d72.1m.",
         "Low gray aggregate plinth about0.6m high. Use restrained metal material on unseen faces; do not extrapolate decorative stripes."
       ],
       "sourcePack": "experiments/ordinary-ten/boxes/0363100012067126",
@@ -2638,7 +2638,7 @@
       "secondary": [],
       "traits": [
         "Clear2025 west views show the exact2159282 white corrugated metal box with a gray concrete lower wall about3m high.",
-        "Main wall is mostly blank white metal with horizontal panel joints and stronger vertical bay seams around4.5–5m apart. Sparse dark personnel doors about1×2.1m sit in the lower concrete strip.",
+        "Main wall is mostly blank white metal with horizontal panel joints and stronger vertical bay seams around4.5\u20135m apart. Sparse dark personnel doors about1\u00d72.1m sit in the lower concrete strip.",
         "No supported window grid or tall loading doors on photographed west face; preserve neighboring sister sheds separately."
       ],
       "sourcePack": "experiments/ordinary-ten/boxes/0363100012159282",
@@ -3358,7 +3358,7 @@
           "height": 0.2,
           "projection": 0.2
         },
-        "ground": "188–190: unequal glass entry/white horizontal signs/plinth;192–194: round brick arches, dark paneled glazing, burgundy side shutters. Use correct separate source crop."
+        "ground": "188\u2013190: unequal glass entry/white horizontal signs/plinth;192\u2013194: round brick arches, dark paneled glazing, burgundy side shutters. Use correct separate source crop."
       },
       "sources": {
         "currentPhotoDates": [
@@ -3372,7 +3372,7 @@
           "Central roof/terrace use not visually determined; low roof is surveyed, no ground hole.",
           "Precise shutters/rail projections approximate.",
           "Beeldbank viewer shell inspected as access gap, no useful drawing acquired.",
-          "192–194 crop clearly identifiesGroeneValk192 onSE/right half; GrauweValk194 NW/left half partly treeobscured. Both retainburgundyshuttercharacter; donotborrow190 whitegroundpanel."
+          "192\u2013194 crop clearly identifiesGroeneValk192 onSE/right half; GrauweValk194 NW/left half partly treeobscured. Both retainburgundyshuttercharacter; donotborrow190 whitegroundpanel."
         ],
         "olderPhotoDateInterpretation": "Mission2022 panoramas show API timestamp2023-01-11; path2022/12/31. Do not infer actual recordingdate fromTMXname. Retain originalmetadata."
       },
@@ -5146,7 +5146,7 @@
           "height": 0.2,
           "projection": 0.2
         },
-        "ground": "188–190: unequal glass entry/white horizontal signs/plinth;192–194: round brick arches, dark paneled glazing, burgundy side shutters. Use correct separate source crop."
+        "ground": "188\u2013190: unequal glass entry/white horizontal signs/plinth;192\u2013194: round brick arches, dark paneled glazing, burgundy side shutters. Use correct separate source crop."
       },
       "sources": {
         "currentPhotoDates": [
@@ -5160,7 +5160,7 @@
           "Central roof/terrace use not visually determined; low roof is surveyed, no ground hole.",
           "Precise shutters/rail projections approximate.",
           "Beeldbank viewer shell inspected as access gap, no useful drawing acquired.",
-          "192–194 crop clearly identifiesGroeneValk192 onSE/right half; GrauweValk194 NW/left half partly treeobscured. Both retainburgundyshuttercharacter; donotborrow190 whitegroundpanel."
+          "192\u2013194 crop clearly identifiesGroeneValk192 onSE/right half; GrauweValk194 NW/left half partly treeobscured. Both retainburgundyshuttercharacter; donotborrow190 whitegroundpanel."
         ],
         "olderPhotoDateInterpretation": "Mission2022 panoramas show API timestamp2023-01-11; path2022/12/31. Do not infer actual recordingdate fromTMXname. Retain originalmetadata."
       },
@@ -7694,7 +7694,7 @@
         "Minor roof patches below0.8% footprint may be omitted only where recognition permits. Main steps18/21/22/24/25m remain.",
         "Projecting glass bays use estimated0.28m relief, supported visually but not surveyed.",
         "Small joinery, interiors and tenant logos are omitted.",
-        "Source-corrected raised regions0/7 have estimated upper glazing21.8–24.6m; region4 remains dark technical enclosure. Measured roof polygons/heights preserved. Ground doors distinguish narrow recessed dark entrances from shop glass; obscured details conservative.",
+        "Source-corrected raised regions0/7 have estimated upper glazing21.8\u201324.6m; region4 remains dark technical enclosure. Measured roof polygons/heights preserved. Ground doors distinguish narrow recessed dark entrances from shop glass; obscured details conservative.",
         "Northeast terrace-facing upper office glazing is source-derived; bay counts/heights estimated within measured roof envelope. Unknown rooftop side faces remain plain."
       ],
       "sourceUrls": [
@@ -8691,7 +8691,7 @@
       "heightEvidence": "Official AHN5/2023 fitted LoD2.2 heights minus groundNAP. Architect renovation completed2023; exact survey/photo ordering is unknown. Preserve source roof rings and heights. Region3 is proposed as a thin measured-height terrace/platform rather than an opaque ground-to12m extrusion, because current architect evidence exposes two rear glass tiers.",
       "completedAt": "2026-10-06T21:21:29.981950+00:00",
       "visualAcceptance": false,
-      "label": "Modern commercial facade on Kalverstraat48–52",
+      "label": "Modern commercial facade on Kalverstraat48\u201352",
       "wall": "#bdbbb2",
       "roof": "#777b77",
       "levels": 3,
@@ -8928,13 +8928,13 @@
               }
             ],
             "physicalAssemblyRoles": {
-              "canopyGroups": "Existing generic outward box primitive reused for source stone piers: entries0–3 major fullheight plot boundaries, entries4–9 minor upperoffice only. No extra generator feature needed."
+              "canopyGroups": "Existing generic outward box primitive reused for source stone piers: entries0\u20133 major fullheight plot boundaries, entries4\u20139 minor upperoffice only. No extra generator feature needed."
             }
           }
         }
       },
       "traits": [
-        "OfficeWinhov2020–2023 replaced the closed retail front with a deep pale stone facade referencing the three original building divisions.",
+        "OfficeWinhov2020\u20132023 replaced the closed retail front with a deep pale stone facade referencing the three original building divisions.",
         "Two upper rows each use nine narrow dark-framed vertically tall openings. Major piers divide three groups; relief and floor bands carry recognition.",
         "Doubleheight retail plinth uses three broad glazed bays, with separate ground shop entries below upper retail glazing.",
         "Retain low rear volumes, light aluminum rear facade and stair/roof steps; do not fill terraces or suppress the separately installed adjacent monumental street house."
@@ -8985,7 +8985,7 @@
         "existingMappedIdentity": "n2724001003",
         "existingMappedName": "Topshop / Topman",
         "identityCurrentness": "Old tenant label; do not rename to OYSHO. Official OYSHO locator places that neighbor at42. This treatment creates no automatic destination. Preserve basic mapped point separately or use existing genuine requested POI identity if root promotes.",
-        "usefulFacts": "OfficeWinhov transformed a dense cluster at Kalverstraat48–52 and NZVoorburgwal269–271 in2020–2023. The new facade refers to three historic plots; retail occupies three levels and upper offices connect to a doubleheight rear entrance.",
+        "usefulFacts": "OfficeWinhov transformed a dense cluster at Kalverstraat48\u201352 and NZVoorburgwal269\u2013271 in2020\u20132023. The new facade refers to three historic plots; retail occupies three levels and upper offices connect to a doubleheight rear entrance.",
         "sourceLinks": [
           "https://winhov.nl/projecten/verdichting-in-de-binnenstad/",
           "https://nzvw269.nl/"
@@ -10674,7 +10674,7 @@
             14,
             15
           ],
-          "interpretation": "Three upper tiers4.3/7.9/11.5m plus ground. Previously claimed17–18m outerrear refers to opposite negativeX stripregions14/15; it does not bound these NE outerwalls. Remove15.1m tier rather than forceheight. Higher21m storage region12 retained unchanged.",
+          "interpretation": "Three upper tiers4.3/7.9/11.5m plus ground. Previously claimed17\u201318m outerrear refers to opposite negativeX stripregions14/15; it does not bound these NE outerwalls. Remove15.1m tier rather than forceheight. Higher21m storage region12 retained unchanged.",
           "confidence": "high native/survey association; top tier extent clipped by local survey",
           "rearCaptureDates": [
             "2019-01-11",
@@ -10708,7 +10708,7 @@
         "Main roof heights17m/21m vary by region; whole-building height maxima are inappropriate.",
         "Library left in2025; current venue use must not be represented as still the active main UvA library.",
         "BAG registered1970 differs from architectural opening1967 and extension1972; keep both evidence types distinct.",
-        "NE exterior roof is region2≈13.15m; four total glazedbands (ground+threeupper). Source mission2018 captures areJanuary2019. Top extent remains cropped/estimated; no fourth/fifthupper exterior tiers."
+        "NE exterior roof is region2\u224813.15m; four total glazedbands (ground+threeupper). Source mission2018 captures areJanuary2019. Top extent remains cropped/estimated; no fourth/fifthupper exterior tiers."
       ],
       "sourceUrls": [
         "https://arcam.nl/architectuur-gids/universiteitsbibliotheek/",
@@ -11651,7 +11651,4814 @@
       "exposedRoofSteps": true,
       "sourceCommit": "056663b9872690367e3b82b3627858e8015d7825",
       "reviewState": "Draft; repaired facade/source association, visual re-review pending.",
-      "rearSourceAssociation": "Native NE edges13/14/15: surveyed roofregion2 approximately13.15m, ground+threeupper rows. Oppositewing17–18m strip and inset21m storage remain separate; earlier association withdrawn."
+      "rearSourceAssociation": "Native NE edges13/14/15: surveyed roofregion2 approximately13.15m, ground+threeupper rows. Oppositewing17\u201318m strip and inset21m storage remain separate; earlier association withdrawn."
+    },
+    {
+      "digits": "0363100012167770",
+      "id": "NL.IMBAG.Pand.0363100012167770",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.888266,
+              52.381195
+            ],
+            [
+              4.888197,
+              52.381231
+            ],
+            [
+              4.888284,
+              52.381289
+            ],
+            [
+              4.888224,
+              52.381322
+            ],
+            [
+              4.888136,
+              52.381263
+            ],
+            [
+              4.888076,
+              52.381297
+            ],
+            [
+              4.887829,
+              52.38113
+            ],
+            [
+              4.888012,
+              52.381024
+            ],
+            [
+              4.888266,
+              52.381195
+            ]
+          ]
+        ]
+      },
+      "anchor": [
+        4.888056499999999,
+        52.381173
+      ],
+      "sourceHeight": 16.29,
+      "primary": [
+        6
+      ],
+      "secondary": [],
+      "edgePlan": [
+        {
+          "edge": 0,
+          "a": [
+            4.888266,
+            52.381195
+          ],
+          "b": [
+            4.888197,
+            52.381231
+          ],
+          "lengthMetres": 6.167895571873043,
+          "outwardNormalXZ": [
+            0.6497386269702499,
+            -0.7601576919447797
+          ]
+        },
+        {
+          "edge": 1,
+          "a": [
+            4.888197,
+            52.381231
+          ],
+          "b": [
+            4.888284,
+            52.381289
+          ],
+          "lengthMetres": 8.754148704667237,
+          "outwardNormalXZ": [
+            0.7375428745992132,
+            0.6753003095867269
+          ]
+        },
+        {
+          "edge": 2,
+          "a": [
+            4.888284,
+            52.381289
+          ],
+          "b": [
+            4.888224,
+            52.381322
+          ],
+          "lengthMetres": 5.487908254314899,
+          "outwardNormalXZ": [
+            0.6693916569282172,
+            -0.7429096914396095
+          ]
+        },
+        {
+          "edge": 3,
+          "a": [
+            4.888224,
+            52.381322
+          ],
+          "b": [
+            4.888136,
+            52.381263
+          ],
+          "lengthMetres": 8.882174207707655,
+          "outwardNormalXZ": [
+            -0.739445078022542,
+            -0.6732168867372809
+          ]
+        },
+        {
+          "edge": 4,
+          "a": [
+            4.888136,
+            52.381263
+          ],
+          "b": [
+            4.888076,
+            52.381297
+          ],
+          "lengthMetres": 5.563039686968749,
+          "outwardNormalXZ": [
+            0.6803618549752131,
+            -0.7328763512999223
+          ]
+        },
+        {
+          "edge": 5,
+          "a": [
+            4.888076,
+            52.381297
+          ],
+          "b": [
+            4.887829,
+            52.38113
+          ],
+          "lengthMetres": 25.045921063952388,
+          "outwardNormalXZ": [
+            -0.7422541959248891,
+            -0.6701184288108306
+          ]
+        },
+        {
+          "edge": 6,
+          "a": [
+            4.887829,
+            52.38113
+          ],
+          "b": [
+            4.888012,
+            52.381024
+          ],
+          "lengthMetres": 17.142495176514846,
+          "outwardNormalXZ": [
+            -0.6883432008445892,
+            0.7253851651715972
+          ]
+        },
+        {
+          "edge": 7,
+          "a": [
+            4.888012,
+            52.381024
+          ],
+          "b": [
+            4.888266,
+            52.381195
+          ],
+          "lengthMetres": 25.69523357161344,
+          "outwardNormalXZ": [
+            0.7408268909926743,
+            0.6716960008680477
+          ]
+        }
+      ],
+      "sourcePack": "experiments/canal-belt-overnight/sources-03/0363100012167770",
+      "sourceArchiveCommit": "df79731b0ec912f4410c3441db4a1a00c252da2e",
+      "neighborRetentionIds": [
+        "NL.IMBAG.Pand.0363100012167772",
+        "NL.IMBAG.Pand.0363100012167774",
+        "NL.IMBAG.Pand.0363100012177579",
+        "NL.IMBAG.Pand.0363100012238903"
+      ],
+      "official3D": {
+        "groundNAP": 0.38999998569488525,
+        "footprintArea": 482.017588500681,
+        "courtyardArea": 0,
+        "rectangleFill": 0.8208641977976379,
+        "summaryPath": "geometry-summary.json"
+      },
+      "heightEvidence": "Official3DBAG LoD2.2 per-region vertices minus groundNAP. Main-height is an atlas/surface bound, not uniform extrusion permission. Photographic opening dimensions approximate. Retain rear lows/native notches.",
+      "visualAcceptance": false,
+      "completedAt": "2026-10-06T21:55:21.261774+00:00",
+      "mappedPoiAudit": "mapped-poi-audit.json",
+      "cameraBearing": 223.49910153153093,
+      "facade": {
+        "kind": "blank",
+        "levels": 0,
+        "edges": {
+          "6": {
+            "kind": "historic-warehouse",
+            "levels": 6,
+            "windowTiers": [
+              {
+                "sillMetres": 5,
+                "heightMetres": 2.3,
+                "startMetres": 2.0049701960836077,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 2.0049701960836077,
+                "panes": 2,
+                "head": "round",
+                "crownRiseMetres": 0.85,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "brickArch": {
+                  "widthMetres": 0.18,
+                  "color": "#674b43"
+                },
+                "shutters": {
+                  "widthMetres": 0.83,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 5,
+                "heightMetres": 2.3,
+                "startMetres": 7.568762490215619,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 2.0049701960836077,
+                "panes": 2,
+                "head": "round",
+                "crownRiseMetres": 0.85,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "brickArch": {
+                  "widthMetres": 0.18,
+                  "color": "#674b43"
+                },
+                "shutters": {
+                  "widthMetres": 0.83,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 5,
+                "heightMetres": 2.3,
+                "startMetres": 13.13255478434763,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 2.0049701960836077,
+                "panes": 2,
+                "head": "round",
+                "crownRiseMetres": 0.85,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "brickArch": {
+                  "widthMetres": 0.18,
+                  "color": "#674b43"
+                },
+                "shutters": {
+                  "widthMetres": 0.83,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 5.25,
+                "heightMetres": 1.75,
+                "startMetres": 0.20049701960836078,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 0.6716650156880086,
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "shutters": {
+                  "widthMetres": 0.28,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 5.25,
+                "heightMetres": 1.75,
+                "startMetres": 5.36329527452365,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 0.6716650156880086,
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "shutters": {
+                  "widthMetres": 0.28,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 5.25,
+                "heightMetres": 1.75,
+                "startMetres": 6.415904627467545,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 0.6716650156880086,
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "shutters": {
+                  "widthMetres": 0.28,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 5.25,
+                "heightMetres": 1.75,
+                "startMetres": 10.927087568655663,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 0.6716650156880086,
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "shutters": {
+                  "widthMetres": 0.28,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 5.25,
+                "heightMetres": 1.75,
+                "startMetres": 11.979696921599555,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 0.6716650156880086,
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "shutters": {
+                  "widthMetres": 0.28,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 5.25,
+                "heightMetres": 1.75,
+                "startMetres": 16.490879862787672,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 0.6716650156880086,
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "shutters": {
+                  "widthMetres": 0.28,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 7.7,
+                "heightMetres": 2.3,
+                "startMetres": 2.0049701960836077,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 2.0049701960836077,
+                "panes": 2,
+                "head": "round",
+                "crownRiseMetres": 0.85,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "brickArch": {
+                  "widthMetres": 0.18,
+                  "color": "#674b43"
+                },
+                "shutters": {
+                  "widthMetres": 0.83,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 7.7,
+                "heightMetres": 2.3,
+                "startMetres": 7.568762490215619,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 2.0049701960836077,
+                "panes": 2,
+                "head": "round",
+                "crownRiseMetres": 0.85,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "brickArch": {
+                  "widthMetres": 0.18,
+                  "color": "#674b43"
+                },
+                "shutters": {
+                  "widthMetres": 0.83,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 7.7,
+                "heightMetres": 2.3,
+                "startMetres": 13.13255478434763,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 2.0049701960836077,
+                "panes": 2,
+                "head": "round",
+                "crownRiseMetres": 0.85,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "brickArch": {
+                  "widthMetres": 0.18,
+                  "color": "#674b43"
+                },
+                "shutters": {
+                  "widthMetres": 0.83,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 7.95,
+                "heightMetres": 1.75,
+                "startMetres": 0.20049701960836078,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 0.6716650156880086,
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "shutters": {
+                  "widthMetres": 0.28,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 7.95,
+                "heightMetres": 1.75,
+                "startMetres": 5.36329527452365,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 0.6716650156880086,
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "shutters": {
+                  "widthMetres": 0.28,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 7.95,
+                "heightMetres": 1.75,
+                "startMetres": 6.415904627467545,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 0.6716650156880086,
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "shutters": {
+                  "widthMetres": 0.28,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 7.95,
+                "heightMetres": 1.75,
+                "startMetres": 10.927087568655663,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 0.6716650156880086,
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "shutters": {
+                  "widthMetres": 0.28,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 7.95,
+                "heightMetres": 1.75,
+                "startMetres": 11.979696921599555,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 0.6716650156880086,
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "shutters": {
+                  "widthMetres": 0.28,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 7.95,
+                "heightMetres": 1.75,
+                "startMetres": 16.490879862787672,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 0.6716650156880086,
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "shutters": {
+                  "widthMetres": 0.28,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 10.4,
+                "heightMetres": 2.3,
+                "startMetres": 2.0049701960836077,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 2.0049701960836077,
+                "panes": 2,
+                "head": "round",
+                "crownRiseMetres": 0.85,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "brickArch": {
+                  "widthMetres": 0.18,
+                  "color": "#674b43"
+                },
+                "shutters": {
+                  "widthMetres": 0.83,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 10.4,
+                "heightMetres": 2.3,
+                "startMetres": 7.568762490215619,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 2.0049701960836077,
+                "panes": 2,
+                "head": "round",
+                "crownRiseMetres": 0.85,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "brickArch": {
+                  "widthMetres": 0.18,
+                  "color": "#674b43"
+                },
+                "shutters": {
+                  "widthMetres": 0.83,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 10.4,
+                "heightMetres": 2.3,
+                "startMetres": 13.13255478434763,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 2.0049701960836077,
+                "panes": 2,
+                "head": "round",
+                "crownRiseMetres": 0.85,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "brickArch": {
+                  "widthMetres": 0.18,
+                  "color": "#674b43"
+                },
+                "shutters": {
+                  "widthMetres": 0.83,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 10.65,
+                "heightMetres": 1.75,
+                "startMetres": 0.20049701960836078,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 0.6716650156880086,
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "shutters": {
+                  "widthMetres": 0.28,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 10.65,
+                "heightMetres": 1.75,
+                "startMetres": 5.36329527452365,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 0.6716650156880086,
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "shutters": {
+                  "widthMetres": 0.28,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 10.65,
+                "heightMetres": 1.75,
+                "startMetres": 6.415904627467545,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 0.6716650156880086,
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "shutters": {
+                  "widthMetres": 0.28,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 10.65,
+                "heightMetres": 1.75,
+                "startMetres": 10.927087568655663,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 0.6716650156880086,
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "shutters": {
+                  "widthMetres": 0.28,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 10.65,
+                "heightMetres": 1.75,
+                "startMetres": 11.979696921599555,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 0.6716650156880086,
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "shutters": {
+                  "widthMetres": 0.28,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 10.65,
+                "heightMetres": 1.75,
+                "startMetres": 16.490879862787672,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 0.6716650156880086,
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "shutters": {
+                  "widthMetres": 0.28,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 13.1,
+                "heightMetres": 2.3,
+                "startMetres": 2.0049701960836077,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 2.0049701960836077,
+                "panes": 2,
+                "head": "round",
+                "crownRiseMetres": 0.85,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "brickArch": {
+                  "widthMetres": 0.18,
+                  "color": "#674b43"
+                },
+                "shutters": {
+                  "widthMetres": 0.83,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 13.1,
+                "heightMetres": 2.3,
+                "startMetres": 7.568762490215619,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 2.0049701960836077,
+                "panes": 2,
+                "head": "round",
+                "crownRiseMetres": 0.85,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "brickArch": {
+                  "widthMetres": 0.18,
+                  "color": "#674b43"
+                },
+                "shutters": {
+                  "widthMetres": 0.83,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 13.1,
+                "heightMetres": 2.3,
+                "startMetres": 13.13255478434763,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 2.0049701960836077,
+                "panes": 2,
+                "head": "round",
+                "crownRiseMetres": 0.85,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "brickArch": {
+                  "widthMetres": 0.18,
+                  "color": "#674b43"
+                },
+                "shutters": {
+                  "widthMetres": 0.83,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 13.35,
+                "heightMetres": 1.75,
+                "startMetres": 0.20049701960836078,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 0.6716650156880086,
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "shutters": {
+                  "widthMetres": 0.28,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 13.35,
+                "heightMetres": 1.75,
+                "startMetres": 5.36329527452365,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 0.6716650156880086,
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "shutters": {
+                  "widthMetres": 0.28,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 13.35,
+                "heightMetres": 1.75,
+                "startMetres": 6.415904627467545,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 0.6716650156880086,
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "shutters": {
+                  "widthMetres": 0.28,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 13.35,
+                "heightMetres": 1.75,
+                "startMetres": 10.927087568655663,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 0.6716650156880086,
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "shutters": {
+                  "widthMetres": 0.28,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 13.35,
+                "heightMetres": 1.75,
+                "startMetres": 11.979696921599555,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 0.6716650156880086,
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "shutters": {
+                  "widthMetres": 0.28,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "sillMetres": 13.35,
+                "heightMetres": 1.75,
+                "startMetres": 16.490879862787672,
+                "pitchMetres": 18.142495176514846,
+                "count": 1,
+                "widthMetres": 0.6716650156880086,
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "shutters": {
+                  "widthMetres": 0.28,
+                  "color": "#d9d9cd",
+                  "jointColor": "#babcae",
+                  "sides": [
+                    "left",
+                    "right"
+                  ]
+                }
+              },
+              {
+                "startMetres": 0.2,
+                "pitchMetres": 18,
+                "count": 1,
+                "sillMetres": 3.25,
+                "widthMetres": 0.68,
+                "heightMetres": 1.25,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "panes": 1
+              },
+              {
+                "startMetres": 5.36,
+                "pitchMetres": 18,
+                "count": 1,
+                "sillMetres": 3.25,
+                "widthMetres": 0.68,
+                "heightMetres": 1.25,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "panes": 1
+              },
+              {
+                "startMetres": 6.42,
+                "pitchMetres": 18,
+                "count": 1,
+                "sillMetres": 3.25,
+                "widthMetres": 0.68,
+                "heightMetres": 1.25,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "panes": 1
+              },
+              {
+                "startMetres": 10.93,
+                "pitchMetres": 18,
+                "count": 1,
+                "sillMetres": 3.25,
+                "widthMetres": 0.68,
+                "heightMetres": 1.25,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "panes": 1
+              },
+              {
+                "startMetres": 11.98,
+                "pitchMetres": 18,
+                "count": 1,
+                "sillMetres": 3.25,
+                "widthMetres": 0.68,
+                "heightMetres": 1.25,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "panes": 1
+              },
+              {
+                "startMetres": 16.49,
+                "pitchMetres": 18,
+                "count": 1,
+                "sillMetres": 3.25,
+                "widthMetres": 0.68,
+                "heightMetres": 1.25,
+                "head": "round",
+                "crownRiseMetres": 0.32,
+                "panes": 1
+              }
+            ],
+            "groundEntries": [
+              {
+                "xMetres": 2.0049701960836077,
+                "widthMetres": 2.0049701960836077,
+                "heightMetres": 2.65,
+                "bottomMetres": 0.2,
+                "kind": "glazed",
+                "panes": 2,
+                "head": "round",
+                "crownRiseMetres": 1
+              },
+              {
+                "xMetres": 7.568762490215619,
+                "widthMetres": 2.0049701960836077,
+                "heightMetres": 2.65,
+                "bottomMetres": 0.2,
+                "kind": "glazed",
+                "panes": 2,
+                "head": "round",
+                "crownRiseMetres": 1
+              },
+              {
+                "xMetres": 13.13255478434763,
+                "widthMetres": 2.0049701960836077,
+                "heightMetres": 2.65,
+                "bottomMetres": 0.2,
+                "kind": "glazed",
+                "panes": 2,
+                "head": "round",
+                "crownRiseMetres": 1
+              },
+              {
+                "xMetres": 0.20049701960836078,
+                "widthMetres": 0.6716650156880086,
+                "heightMetres": 2.05,
+                "bottomMetres": 0.2,
+                "kind": "glazed",
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32
+              },
+              {
+                "xMetres": 5.36329527452365,
+                "widthMetres": 0.6716650156880086,
+                "heightMetres": 2.05,
+                "bottomMetres": 0.2,
+                "kind": "glazed",
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32
+              },
+              {
+                "xMetres": 10.927087568655663,
+                "widthMetres": 0.6716650156880086,
+                "heightMetres": 2.05,
+                "bottomMetres": 0.2,
+                "kind": "glazed",
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32
+              },
+              {
+                "xMetres": 16.490879862787672,
+                "widthMetres": 0.6716650156880086,
+                "heightMetres": 2.05,
+                "bottomMetres": 0.2,
+                "kind": "glazed",
+                "panes": 1,
+                "head": "round",
+                "crownRiseMetres": 0.32
+              }
+            ],
+            "frameWidthMetres": 0.09,
+            "gableTrim": false,
+            "bands": [
+              {
+                "xMetres": 1.8249701960836078,
+                "widthMetres": 2.0049701960836077,
+                "bottomMetres": 5,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 3.9499403921672154,
+                "widthMetres": 2.0049701960836077,
+                "bottomMetres": 5,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 7.388762490215619,
+                "widthMetres": 2.0049701960836077,
+                "bottomMetres": 5,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 9.513732686299226,
+                "widthMetres": 2.0049701960836077,
+                "bottomMetres": 5,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 12.95255478434763,
+                "widthMetres": 2.0049701960836077,
+                "bottomMetres": 5,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 15.077524980431237,
+                "widthMetres": 2.0049701960836077,
+                "bottomMetres": 5,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 0.020497019608360784,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 5.25,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 0.8121620352963693,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 5.25,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 5.18329527452365,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 5.25,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 5.9749602902116585,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 5.25,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 6.235904627467545,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 5.25,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 7.027569643155553,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 5.25,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 10.747087568655664,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 5.25,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 11.538752584343673,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 5.25,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 11.799696921599555,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 5.25,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 12.591361937287562,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 5.25,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 16.310879862787672,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 5.25,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 17.10254487847568,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 5.25,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 1.8249701960836078,
+                "widthMetres": 2.0049701960836077,
+                "bottomMetres": 7.7,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 3.9499403921672154,
+                "widthMetres": 2.0049701960836077,
+                "bottomMetres": 7.7,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 7.388762490215619,
+                "widthMetres": 2.0049701960836077,
+                "bottomMetres": 7.7,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 9.513732686299226,
+                "widthMetres": 2.0049701960836077,
+                "bottomMetres": 7.7,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 12.95255478434763,
+                "widthMetres": 2.0049701960836077,
+                "bottomMetres": 7.7,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 15.077524980431237,
+                "widthMetres": 2.0049701960836077,
+                "bottomMetres": 7.7,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 0.020497019608360784,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 7.95,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 0.8121620352963693,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 7.95,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 5.18329527452365,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 7.95,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 5.9749602902116585,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 7.95,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 6.235904627467545,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 7.95,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 7.027569643155553,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 7.95,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 10.747087568655664,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 7.95,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 11.538752584343673,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 7.95,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 11.799696921599555,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 7.95,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 12.591361937287562,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 7.95,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 16.310879862787672,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 7.95,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 17.10254487847568,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 7.95,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 1.8249701960836078,
+                "widthMetres": 2.0049701960836077,
+                "bottomMetres": 10.4,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 3.9499403921672154,
+                "widthMetres": 2.0049701960836077,
+                "bottomMetres": 10.4,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 7.388762490215619,
+                "widthMetres": 2.0049701960836077,
+                "bottomMetres": 10.4,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 9.513732686299226,
+                "widthMetres": 2.0049701960836077,
+                "bottomMetres": 10.4,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 12.95255478434763,
+                "widthMetres": 2.0049701960836077,
+                "bottomMetres": 10.4,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 15.077524980431237,
+                "widthMetres": 2.0049701960836077,
+                "bottomMetres": 10.4,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 0.020497019608360784,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 10.65,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 0.8121620352963693,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 10.65,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 5.18329527452365,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 10.65,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 5.9749602902116585,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 10.65,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 6.235904627467545,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 10.65,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 7.027569643155553,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 10.65,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 10.747087568655664,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 10.65,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 11.538752584343673,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 10.65,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 11.799696921599555,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 10.65,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 12.591361937287562,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 10.65,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 16.310879862787672,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 10.65,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 17.10254487847568,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 10.65,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 1.8249701960836078,
+                "widthMetres": 2.0049701960836077,
+                "bottomMetres": 13.1,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 3.9499403921672154,
+                "widthMetres": 2.0049701960836077,
+                "bottomMetres": 13.1,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 7.388762490215619,
+                "widthMetres": 2.0049701960836077,
+                "bottomMetres": 13.1,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 9.513732686299226,
+                "widthMetres": 2.0049701960836077,
+                "bottomMetres": 13.1,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 12.95255478434763,
+                "widthMetres": 2.0049701960836077,
+                "bottomMetres": 13.1,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 15.077524980431237,
+                "widthMetres": 2.0049701960836077,
+                "bottomMetres": 13.1,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 0.020497019608360784,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 13.35,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 0.8121620352963693,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 13.35,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 5.18329527452365,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 13.35,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 5.9749602902116585,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 13.35,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 6.235904627467545,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 13.35,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 7.027569643155553,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 13.35,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 10.747087568655664,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 13.35,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 11.538752584343673,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 13.35,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 11.799696921599555,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 13.35,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 12.591361937287562,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 13.35,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 16.310879862787672,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 13.35,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 17.10254487847568,
+                "widthMetres": 0.6716650156880086,
+                "bottomMetres": 13.35,
+                "heightMetres": 0.23,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 1.8249701960836078,
+                "widthMetres": 2.3649701960836076,
+                "bottomMetres": 4.91,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 7.388762490215619,
+                "widthMetres": 2.3649701960836076,
+                "bottomMetres": 4.91,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 12.95255478434763,
+                "widthMetres": 2.3649701960836076,
+                "bottomMetres": 4.91,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 0.020497019608360784,
+                "widthMetres": 1.0316650156880085,
+                "bottomMetres": 5.16,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 5.18329527452365,
+                "widthMetres": 1.0316650156880085,
+                "bottomMetres": 5.16,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 6.235904627467545,
+                "widthMetres": 1.0316650156880085,
+                "bottomMetres": 5.16,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 10.747087568655664,
+                "widthMetres": 1.0316650156880085,
+                "bottomMetres": 5.16,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 11.799696921599555,
+                "widthMetres": 1.0316650156880085,
+                "bottomMetres": 5.16,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 16.310879862787672,
+                "widthMetres": 1.0316650156880085,
+                "bottomMetres": 5.16,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 1.8249701960836078,
+                "widthMetres": 2.3649701960836076,
+                "bottomMetres": 7.61,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 7.388762490215619,
+                "widthMetres": 2.3649701960836076,
+                "bottomMetres": 7.61,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 12.95255478434763,
+                "widthMetres": 2.3649701960836076,
+                "bottomMetres": 7.61,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 0.020497019608360784,
+                "widthMetres": 1.0316650156880085,
+                "bottomMetres": 7.86,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 5.18329527452365,
+                "widthMetres": 1.0316650156880085,
+                "bottomMetres": 7.86,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 6.235904627467545,
+                "widthMetres": 1.0316650156880085,
+                "bottomMetres": 7.86,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 10.747087568655664,
+                "widthMetres": 1.0316650156880085,
+                "bottomMetres": 7.86,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 11.799696921599555,
+                "widthMetres": 1.0316650156880085,
+                "bottomMetres": 7.86,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 16.310879862787672,
+                "widthMetres": 1.0316650156880085,
+                "bottomMetres": 7.86,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 1.8249701960836078,
+                "widthMetres": 2.3649701960836076,
+                "bottomMetres": 10.31,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 7.388762490215619,
+                "widthMetres": 2.3649701960836076,
+                "bottomMetres": 10.31,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 12.95255478434763,
+                "widthMetres": 2.3649701960836076,
+                "bottomMetres": 10.31,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 0.020497019608360784,
+                "widthMetres": 1.0316650156880085,
+                "bottomMetres": 10.56,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 5.18329527452365,
+                "widthMetres": 1.0316650156880085,
+                "bottomMetres": 10.56,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 6.235904627467545,
+                "widthMetres": 1.0316650156880085,
+                "bottomMetres": 10.56,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 10.747087568655664,
+                "widthMetres": 1.0316650156880085,
+                "bottomMetres": 10.56,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 11.799696921599555,
+                "widthMetres": 1.0316650156880085,
+                "bottomMetres": 10.56,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 16.310879862787672,
+                "widthMetres": 1.0316650156880085,
+                "bottomMetres": 10.56,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 1.8249701960836078,
+                "widthMetres": 2.3649701960836076,
+                "bottomMetres": 13.01,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 7.388762490215619,
+                "widthMetres": 2.3649701960836076,
+                "bottomMetres": 13.01,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 12.95255478434763,
+                "widthMetres": 2.3649701960836076,
+                "bottomMetres": 13.01,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 0.020497019608360784,
+                "widthMetres": 1.0316650156880085,
+                "bottomMetres": 13.26,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 5.18329527452365,
+                "widthMetres": 1.0316650156880085,
+                "bottomMetres": 13.26,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 6.235904627467545,
+                "widthMetres": 1.0316650156880085,
+                "bottomMetres": 13.26,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 10.747087568655664,
+                "widthMetres": 1.0316650156880085,
+                "bottomMetres": 13.26,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 11.799696921599555,
+                "widthMetres": 1.0316650156880085,
+                "bottomMetres": 13.26,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              },
+              {
+                "xMetres": 16.310879862787672,
+                "widthMetres": 1.0316650156880085,
+                "bottomMetres": 13.26,
+                "heightMetres": 0.1,
+                "color": "#e2e1d5"
+              }
+            ],
+            "shallowProjectionGroups": [],
+            "balconyGroups": [],
+            "circularOpenings": [
+              {
+                "xMetres": 2.5,
+                "sillMetres": 3.35,
+                "diameterMetres": 1,
+                "frameWidthMetres": 0.09,
+                "frameColor": "#594b40",
+                "glassColor": "#546b70"
+              },
+              {
+                "xMetres": 8.05,
+                "sillMetres": 3.35,
+                "diameterMetres": 1,
+                "frameWidthMetres": 0.09,
+                "frameColor": "#594b40",
+                "glassColor": "#546b70"
+              },
+              {
+                "xMetres": 13.6,
+                "sillMetres": 3.35,
+                "diameterMetres": 1,
+                "frameWidthMetres": 0.09,
+                "frameColor": "#594b40",
+                "glassColor": "#546b70"
+              }
+            ]
+          }
+        }
+      },
+      "researchTiming": {
+        "sourcePassStart": "2026-10-06T21:39Z",
+        "sourcePassEnd": "2026-10-06T21:55:21.263256+00:00",
+        "note": "Includes bounded primary heritage/Beeldbank/panorama/current-roof identity research; root integration and review excluded."
+      },
+      "label": "Brouwersgracht174\u2013178 triple warehouse",
+      "wall": "#75594e",
+      "roof": "#d6d8cf",
+      "levels": 6,
+      "palette": {
+        "wall": "#75594e",
+        "frames": "#343d3d",
+        "glass": "#657b83",
+        "balcony": "#dddccf"
+      },
+      "sourceColors": {
+        "shutters": "#d9d9cd"
+      },
+      "workflow": "full-researched-landmark-quality-treatment",
+      "eligibility": "Historic registered/detailed triple warehouse with source-defining crest, trapezium termination, three arched loading stacks and pale shutters. Shared atlas base is useful; crest/coping/trapezium must receive original physical geometry. Do not accept generic flat rectangular frontage.",
+      "traits": [
+        "One broad17m frontage represents three warehouses, four tall loading rows, three wide round-arched stacks with black metal frames.",
+        "Small flanking arched ventilation windows, natural-stone white impost/hinge blocks and pale open shutters define the current rhythm.",
+        "1894fire removed one storey; broad clipped trapezium termination with Amsterdam red/black/white coat of arms and imperial crown.",
+        "Current red-brown brick is authoritative: black paint removed2011. Old black photographs document superseded state.",
+        "Official roofs have high coherent15.4\u201317.3m region, lower12.7\u201315.7m rear/side steps, low~2m rear appendage. Preserve exact concave rear outline and neighbors."
+      ],
+      "sourceUrls": [
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/790",
+        "https://www.amsterdam-monumentenstad.nl/database/grachtenboek_objecten.php?id=243"
+      ],
+      "criticalAssemblyNotes": [
+        {
+          "assembly": "Frontedge6",
+          "widthMetres": 17.142495176514846,
+          "loadingStacks": 3,
+          "upperLoadingRows": 4,
+          "smallOpeningsPerRow": 6,
+          "confidence": "High group counts, medium approximate opening dimensions/photo estimates."
+        },
+        {
+          "assembly": "White naturalstone impost/hinge blocks",
+          "confidence": "Explicit heritage text + current2025photo",
+          "requiredCapability": "Painted/physical white blocks at loading arch spring points; do not replace them with unrelated floorbands."
+        },
+        {
+          "assembly": "Trapezium front with coatofarms/crown",
+          "confidence": "High register/primaryphoto",
+          "requiredCapability": "Original physical parapet with clipped slopes and horizontal top, pale coping and central crest/crown. Decorative geometry extends above surveyedroof; no full extra storey."
+        },
+        {
+          "assembly": "Low subrow of circular windows",
+          "count": 3,
+          "centresAlongEdge6Metres": [
+            3,
+            8.55,
+            14.1
+          ],
+          "sillMetres": 3.35,
+          "diameterMetres": 1,
+          "confidence": "High presence from wholefront primary photo/current2020; dimensions approximate",
+          "requiredCapability": "True circular openings plus flanking short arches. Existing round-head opening does not create a complete circle."
+        },
+        {
+          "assembly": "Trapezium parapet envelope",
+          "approxFrontEdge6HeightsMetres": [
+            [
+              0,
+              14.6
+            ],
+            [
+              3.3,
+              17.2
+            ],
+            [
+              13.8,
+              17.2
+            ],
+            [
+              17.1,
+              14.6
+            ]
+          ],
+          "crownTopMetres": 18.8,
+          "confidence": "Approximate photograph envelope tied to roof15.4\u201317.3m; root should compare silhouette before final dimensions."
+        }
+      ],
+      "researchCard": {
+        "existingMappedIdentity": null,
+        "policy": "No curated extract/inside mapped POI found. Full fidelity workflow does not itself authorize fabricating an extract identity. If deliberately promoted, research/install genuine museum/heritage identity and all three POI surfaces. Otherwise building remains ordinary background with no generic year-card.",
+        "usefulFacts": "The three warehouses behind one broad facade appear on BalthasarFlorisz1625map. A fire in1894 lowered the building; conversion to apartments took place in1970s. Black facade paint was removed2011. Register790 identifies the triple warehouse and Amsterdam coatofarms.",
+        "sourceLinks": [
+          "https://monumentenregister.cultureelerfgoed.nl/monumenten/790",
+          "https://www.amsterdam-monumentenstad.nl/database/grachtenboek_objecten.php?id=243"
+        ],
+        "entryLngLat": [
+          4.8879205,
+          52.381077
+        ],
+        "entryEvidence": "Midpoint frontedge6 containing174/178source-supported entrydoors; use surveyed actual doorway if promoted."
+      },
+      "uncertainties": [
+        "Register datesfirstquarter17c; heritage secondary attribution sayssecondquarter17c but documented1625map is sufficient broad era; preserve discrepancy.",
+        "Rear/windows belowroofsteps have no clear facade photo in bounded pass; do not invent identicalfront stacks onrear.",
+        "Shutter open angles vary by apartment/date, including closed leaves. Current2025image is authority for visible local state; group existence from clear wholefront primaryphoto.",
+        "Unknown photo date on heritage slagthuis images; no false date inferred from download.",
+        "Beeldbank bounded exactaddress request returned viewer shell; no archival photo inspected there."
+      ],
+      "sourceexplicitRegionFacadeAssemblies": [],
+      "officialRegions": [
+        {
+          "sourceArea": 154.97358800022153,
+          "ring": [
+            [
+              -4.704143181152494,
+              16.291500624656678,
+              1.8025993869480317
+            ],
+            [
+              -0.9443227382473085,
+              16.438500624656676,
+              -0.9077344847619884
+            ],
+            [
+              0.19376700583949935,
+              16.893500624656678,
+              1.614697318527476
+            ],
+            [
+              5.1262961700781835,
+              16.886500624656676,
+              -3.5579813911078872
+            ],
+            [
+              3.926512708484946,
+              15.980500624656678,
+              -9.68582756704194
+            ],
+            [
+              4.468831901493168,
+              15.950500624656677,
+              -10.49898479186993
+            ],
+            [
+              2.3337403062026563,
+              15.439500624656677,
+              -12.43924015419509
+            ],
+            [
+              0.9692171116995303,
+              15.403500624656678,
+              -11.313248755305665
+            ],
+            [
+              1.257944432089204,
+              15.624500624656676,
+              -9.816477947921385
+            ],
+            [
+              -0.06353057918716015,
+              15.632500624656679,
+              -8.38062529767626
+            ],
+            [
+              -0.5584930174864046,
+              15.605500624656678,
+              -8.083057401963174
+            ],
+            [
+              -0.4449125718490494,
+              15.634500624656678,
+              -7.965781495615829
+            ],
+            [
+              -13.903292938851138,
+              15.715500624656677,
+              6.659584290542568
+            ],
+            [
+              -9.020259034879423,
+              16.90550062465668,
+              11.278227591540144
+            ],
+            [
+              -8.83496851708823,
+              16.90550062465668,
+              11.083849277561342
+            ],
+            [
+              -3.532867504121872,
+              16.898500624656677,
+              5.523412564788828
+            ],
+            [
+              -1.9514368522140921,
+              17.28950062465668,
+              7.062282072092216
+            ],
+            [
+              -0.7388355101513964,
+              17.301500624656676,
+              5.904322031239246
+            ],
+            [
+              -0.9223695584759241,
+              17.172500624656678,
+              5.0471515233530795
+            ],
+            [
+              -1.0504253370199663,
+              17.168500624656676,
+              5.147086332259789
+            ]
+          ],
+          "sourceRegionIndex": 0
+        },
+        {
+          "sourceArea": 121.24986499996214,
+          "ring": [
+            [
+              -0.9223695584759241,
+              16.53950062465668,
+              5.0471515233530795
+            ],
+            [
+              -0.7388355101513964,
+              16.374500624656676,
+              5.904322031239246
+            ],
+            [
+              -1.9514368522140921,
+              16.394500624656676,
+              7.062282072092216
+            ],
+            [
+              -3.532867504121872,
+              16.898500624656677,
+              5.523412564788828
+            ],
+            [
+              -8.83496851708823,
+              16.90550062465668,
+              11.083849277561342
+            ],
+            [
+              -8.762627611611268,
+              16.88250062465668,
+              11.154385850509243
+            ],
+            [
+              -8.975062298508815,
+              16.891500624656675,
+              11.319936848012446
+            ],
+            [
+              -4.393389897658676,
+              15.449500624656677,
+              15.654520315794969
+            ],
+            [
+              11.298350464521357,
+              15.510500624656677,
+              -1.321427995484612
+            ],
+            [
+              8.078730829103142,
+              15.886500624656676,
+              -0.31269893216432365
+            ],
+            [
+              6.896373522900595,
+              16.213500624656678,
+              -1.143964456235551
+            ],
+            [
+              5.391092818180076,
+              16.630500624656676,
+              -2.2031175711646256
+            ],
+            [
+              5.1262961700781835,
+              16.886500624656676,
+              -3.5579813911078872
+            ],
+            [
+              0.19376700583949935,
+              16.893500624656678,
+              1.614697318527476
+            ],
+            [
+              -1.3163058425774412,
+              16.895500624656677,
+              3.1989276815491507
+            ],
+            [
+              -1.1213954423737311,
+              16.71950062465668,
+              4.114049218560183
+            ],
+            [
+              -0.9159596226138705,
+              16.711500624656676,
+              3.9465458688056287
+            ],
+            [
+              -0.5362131534212822,
+              16.522500624656676,
+              4.746332879299189
+            ]
+          ],
+          "sourceRegionIndex": 1
+        },
+        {
+          "sourceArea": 49.06408000016562,
+          "ring": [
+            [
+              -13.903292938851138,
+              15.715500624656677,
+              6.659584290542568
+            ],
+            [
+              -0.4449125718490494,
+              15.634500624656678,
+              -7.965781495615829
+            ],
+            [
+              -0.5584930174864046,
+              15.444500624656676,
+              -8.083057401963174
+            ],
+            [
+              -1.6149365872107484,
+              13.672500624656678,
+              -9.180325593451926
+            ],
+            [
+              -1.6199676264239522,
+              13.664500624656677,
+              -9.186293911287464
+            ],
+            [
+              -2.2120136841483733,
+              12.672500624656676,
+              -9.800520853130479
+            ],
+            [
+              -15.627076734836328,
+              12.950500624656677,
+              5.0286545906226365
+            ]
+          ],
+          "sourceRegionIndex": 2
+        },
+        {
+          "sourceArea": 47.21328199996001,
+          "ring": [
+            [
+              5.1262961700781835,
+              16.213500624656678,
+              -3.5579813911078872
+            ],
+            [
+              5.391092818180076,
+              16.294500624656678,
+              -2.2031175711646256
+            ],
+            [
+              6.896373522900595,
+              16.213500624656678,
+              -1.143964456235551
+            ],
+            [
+              8.078730829103142,
+              16.150500624656676,
+              -0.31269893216432365
+            ],
+            [
+              11.298350464521357,
+              15.711500624656676,
+              -1.321427995484612
+            ],
+            [
+              12.292960878640637,
+              15.513500624656677,
+              -2.3968386567131006
+            ],
+            [
+              12.966597154685479,
+              15.379500624656677,
+              -3.125858018479448
+            ],
+            [
+              9.357361668294923,
+              15.526500624656677,
+              -6.242546042944355
+            ],
+            [
+              9.636696817472654,
+              15.470500624656678,
+              -6.548629516161952
+            ],
+            [
+              5.518192641017612,
+              15.633500624656676,
+              -10.142044039901634
+            ],
+            [
+              5.221038613342325,
+              15.693500624656679,
+              -9.814826593743078
+            ],
+            [
+              4.468831901493168,
+              15.721500624656677,
+              -10.49898479186993
+            ],
+            [
+              3.926512708484946,
+              15.847500624656679,
+              -9.68582756704194
+            ]
+          ],
+          "sourceRegionIndex": 3
+        },
+        {
+          "sourceArea": 46.14813900024317,
+          "ring": [
+            [
+              5.518192641017612,
+              2.0595006246566765,
+              -10.142044039901634
+            ],
+            [
+              9.636696817472654,
+              2.1035006246566765,
+              -6.548629516161952
+            ],
+            [
+              15.267138654978506,
+              2.0915006246566765,
+              -12.69661069693285
+            ],
+            [
+              11.185751937004841,
+              2.0465006246566766,
+              -16.407345828247344
+            ]
+          ],
+          "sourceRegionIndex": 4
+        },
+        {
+          "sourceArea": 39.21394000015533,
+          "ring": [
+            [
+              14.02174443682555,
+              13.831500624656677,
+              -2.2166736933749576
+            ],
+            [
+              12.966597154685479,
+              15.516500624656677,
+              -3.125858018479448
+            ],
+            [
+              12.292960878640637,
+              15.513500624656677,
+              -2.3968386567131006
+            ],
+            [
+              11.298350464521357,
+              15.510500624656677,
+              -1.321427995484612
+            ],
+            [
+              -4.393389897658676,
+              15.449500624656677,
+              15.654520315794969
+            ],
+            [
+              -3.1829362201166393,
+              13.434500624656676,
+              16.798748852081644
+            ]
+          ],
+          "sourceRegionIndex": 5
+        },
+        {
+          "sourceArea": 13.619315999946114,
+          "ring": [
+            [
+              -0.9443227382473085,
+              18.22550062465668,
+              -0.9077344847619884
+            ],
+            [
+              -4.704143181152494,
+              18.106500624656675,
+              1.8025993869480317
+            ],
+            [
+              -1.0504253370199663,
+              18.016500624656675,
+              5.147086332259789
+            ],
+            [
+              -0.9223695584759241,
+              18.020500624656677,
+              5.0471515233530795
+            ],
+            [
+              -0.5362131534212822,
+              18.03350062465668,
+              4.746332879299189
+            ],
+            [
+              -0.9159596226138705,
+              18.058500624656677,
+              3.9465458688056287
+            ],
+            [
+              -1.1213954423737311,
+              18.051500624656676,
+              4.114049218560183
+            ],
+            [
+              -1.3163058425774412,
+              18.081500624656677,
+              3.1989276815491507
+            ],
+            [
+              0.19376700583949935,
+              18.146500624656678,
+              1.614697318527476
+            ]
+          ],
+          "sourceRegionIndex": 6
+        },
+        {
+          "sourceArea": 6.215979500036905,
+          "ring": [
+            [
+              2.3337403062026563,
+              13.500500624656677,
+              -12.43924015419509
+            ],
+            [
+              1.1506861657649274,
+              13.901500624656677,
+              -13.516625019182698
+            ],
+            [
+              -2.2120136841483733,
+              13.877500624656676,
+              -9.800520853130479
+            ],
+            [
+              -1.6199676264239522,
+              13.664500624656677,
+              -9.186293911287464
+            ],
+            [
+              -1.6149365872107484,
+              13.662500624656676,
+              -9.180325593451926
+            ],
+            [
+              0.9692171116995303,
+              13.556500624656676,
+              -11.313248755305665
+            ]
+          ],
+          "sourceRegionIndex": 7
+        },
+        {
+          "sourceArea": 4.3193989999902165,
+          "ring": [
+            [
+              -0.06353057918716015,
+              12.838500624656676,
+              -8.38062529767626
+            ],
+            [
+              1.257944432089204,
+              12.778500624656678,
+              -9.816477947921385
+            ],
+            [
+              0.9692171116995303,
+              12.793500624656676,
+              -11.313248755305665
+            ],
+            [
+              -1.6149365872107484,
+              12.910500624656677,
+              -9.180325593451926
+            ],
+            [
+              -0.5584930174864046,
+              12.860500624656677,
+              -8.083057401963174
+            ]
+          ],
+          "sourceRegionIndex": 8
+        }
+      ],
+      "mainHeight": 18.22550062465668,
+      "wallBaseHeight": 2.0465006246566766,
+      "references": [
+        "reference-0363100012167770-2020-02785.jpg",
+        "reference-0363100012167770-2020-02786.jpg",
+        "reference-0363100012167770-2020-02794.jpg",
+        "reference-0363100012167770-2020-02795.jpg"
+      ],
+      "roofInterpretation": {
+        "policy": "Per-region official roof ownership, no uniform maximum-height prism.",
+        "dominantMassHeightMetres": 17.3,
+        "equipmentOrUnresolvedHigherPatches": [
+          {
+            "sourceRoofSurfaceIndex": 6,
+            "areaMetres2": 13.619315999946114,
+            "rangeMetres": [
+              18.016500624656675,
+              18.22550062465668
+            ]
+          }
+        ],
+        "equipmentInstructions": "High small patches are survey evidence to reconcile, not permission for an extra whole storey or unsupported roof plate. Source photos support modern terrace glazing / warehouse crest separately."
+      },
+      "sourceAdmission": false,
+      "exposedRoofSteps": false,
+      "timing": {
+        "sourcePassStart": "2026-10-06T21:39Z",
+        "sourcePassEnd": "2026-10-06T21:55:21.263256+00:00",
+        "note": "Includes bounded primary heritage/Beeldbank/panorama/current-roof identity research; root integration and review excluded."
+      },
+      "simplifications": [
+        "Original source-informed procedural atlas; no downloaded photo pixels in mesh.",
+        "Facade dimensions estimated from dated photos; native footprint and surveyed local roof patches retained.",
+        "Rear openings undocumented and left unasserted.",
+        "Visual/game independent acceptance pending; no fabricated POI identity."
+      ],
+      "roofObjectAssemblies": [
+        {
+          "name": "interior-pale-capped-housing",
+          "sourceIndices": [
+            6
+          ],
+          "supportSourceIndices": [
+            0,
+            1
+          ],
+          "topColor": "#b2b8b8",
+          "cheekColor": "#767e7e",
+          "recipeRegionIndices": [
+            6
+          ],
+          "supportRecipeRegionIndices": [
+            0,
+            1
+          ],
+          "sourceEvidence": "experiments/canal-belt-overnight/sources-03/0363100012167770/roof-followup/region-classification.json",
+          "sourceYear": "2026 layer; precise local flight day unknown",
+          "sideMaterialConfidence": "Opaque conservative technical cheek inference; hidden side material/function unresolved",
+          "curbColor": "#a7acae",
+          "curbHeightMetres": 0.075
+        }
+      ],
+      "roofFollowupState": "Original roof local-closure repair; actual gallery/game/performance acceptance pending"
+    },
+    {
+      "digits": "0363100012167736",
+      "id": "NL.IMBAG.Pand.0363100012167736",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.888776,
+              52.378893
+            ],
+            [
+              4.888349,
+              52.37904
+            ],
+            [
+              4.888182,
+              52.378866
+            ],
+            [
+              4.888263,
+              52.378839
+            ],
+            [
+              4.88861,
+              52.378713
+            ],
+            [
+              4.888612,
+              52.378716
+            ],
+            [
+              4.888614,
+              52.378717
+            ],
+            [
+              4.888776,
+              52.378893
+            ],
+            [
+              4.888775,
+              52.378893
+            ],
+            [
+              4.888776,
+              52.378893
+            ]
+          ]
+        ]
+      },
+      "anchor": [
+        4.888479,
+        52.378876500000004
+      ],
+      "sourceHeight": 19.72,
+      "primary": [
+        6
+      ],
+      "secondary": [],
+      "edgePlan": [
+        {
+          "edge": 0,
+          "a": [
+            4.888776,
+            52.378893
+          ],
+          "b": [
+            4.888349,
+            52.37904
+          ],
+          "lengthMetres": 33.312574907451186,
+          "outwardNormalXZ": [
+            0.49122711306673217,
+            -0.8710315283548143
+          ]
+        },
+        {
+          "edge": 1,
+          "a": [
+            4.888349,
+            52.37904
+          ],
+          "b": [
+            4.888182,
+            52.378866
+          ],
+          "lengthMetres": 22.4492391147677,
+          "outwardNormalXZ": [
+            -0.8628212253035737,
+            -0.5055091820784658
+          ]
+        },
+        {
+          "edge": 2,
+          "a": [
+            4.888182,
+            52.378866
+          ],
+          "b": [
+            4.888263,
+            52.378839
+          ],
+          "lengthMetres": 6.271426416488885,
+          "outwardNormalXZ": [
+            -0.4792593902431506,
+            0.8776733087338155
+          ]
+        },
+        {
+          "edge": 3,
+          "a": [
+            4.888263,
+            52.378839
+          ],
+          "b": [
+            4.88861,
+            52.378713
+          ],
+          "lengthMetres": 27.436357963984268,
+          "outwardNormalXZ": [
+            -0.5112311196184726,
+            0.8594432746456527
+          ]
+        },
+        {
+          "edge": 4,
+          "a": [
+            4.88861,
+            52.378713
+          ],
+          "b": [
+            4.888612,
+            52.378716
+          ],
+          "lengthMetres": 0.3605553994272565,
+          "outwardNormalXZ": [
+            0.9262376890716513,
+            0.37693997312994965
+          ]
+        },
+        {
+          "edge": 5,
+          "a": [
+            4.888612,
+            52.378716
+          ],
+          "b": [
+            4.888614,
+            52.378717
+          ],
+          "lengthMetres": 0.1756788461600644,
+          "outwardNormalXZ": [
+            0.6336562593796545,
+            0.7736147264297546
+          ]
+        },
+        {
+          "edge": 6,
+          "a": [
+            4.888614,
+            52.378717
+          ],
+          "b": [
+            4.888776,
+            52.378893
+          ],
+          "lengthMetres": 22.473243488825076,
+          "outwardNormalXZ": [
+            0.871806511121416,
+            0.4898503926366747
+          ]
+        },
+        {
+          "edge": 7,
+          "a": [
+            4.888776,
+            52.378893
+          ],
+          "b": [
+            4.888775,
+            52.378893
+          ],
+          "lengthMetres": 0.06795387128598417,
+          "outwardNormalXZ": [
+            0,
+            -1
+          ]
+        },
+        {
+          "edge": 8,
+          "a": [
+            4.888775,
+            52.378893
+          ],
+          "b": [
+            4.888776,
+            52.378893
+          ],
+          "lengthMetres": 0.06795387128598417,
+          "outwardNormalXZ": [
+            0,
+            1
+          ]
+        }
+      ],
+      "sourcePack": "experiments/canal-belt-overnight/sources-03/0363100012167736",
+      "sourceArchiveCommit": "df79731b0ec912f4410c3441db4a1a00c252da2e",
+      "neighborRetentionIds": [
+        "NL.IMBAG.Pand.0363100012167735",
+        "NL.IMBAG.Pand.0363100012167742"
+      ],
+      "official3D": {
+        "groundNAP": 0.007000000216066837,
+        "footprintArea": 759.8843095002715,
+        "courtyardArea": 0,
+        "rectangleFill": 0.9785739785639354,
+        "summaryPath": "geometry-summary.json"
+      },
+      "heightEvidence": "Official3DBAG LoD2.2 per-region vertices minus groundNAP. Main-height is an atlas/surface bound, not uniform extrusion permission. Photographic opening dimensions approximate. Retain rear lows/native notches.",
+      "visualAcceptance": false,
+      "completedAt": "2026-10-06T21:55:49.124889+00:00",
+      "mappedPoiAudit": "mapped-poi-audit.json",
+      "cameraBearing": 119.33074879248113,
+      "facade": {
+        "kind": "blank",
+        "levels": 0,
+        "edges": {
+          "6": {
+            "kind": "modern-residential",
+            "levels": 6,
+            "windowTiers": [
+              {
+                "sillMetres": 1.8,
+                "heightMetres": 2.55,
+                "startMetres": 0.6492270341216133,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 1.8,
+                "heightMetres": 2.55,
+                "startMetres": 2.1973838077962298,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 1.8,
+                "heightMetres": 2.55,
+                "startMetres": 3.745540581470846,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 1.8,
+                "heightMetres": 2.55,
+                "startMetres": 6.741973046647523,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 1.8,
+                "heightMetres": 2.55,
+                "startMetres": 8.29012982032214,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 1.8,
+                "heightMetres": 2.55,
+                "startMetres": 12.934600141345987,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 1.8,
+                "heightMetres": 2.55,
+                "startMetres": 14.482756915020603,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 1.8,
+                "heightMetres": 2.55,
+                "startMetres": 16.979783969334502,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 1.8,
+                "heightMetres": 2.55,
+                "startMetres": 18.52794074300912,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 1.8,
+                "heightMetres": 2.55,
+                "startMetres": 20.076097516683735,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 5.05,
+                "heightMetres": 2.55,
+                "startMetres": 0.6492270341216133,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 5.05,
+                "heightMetres": 2.55,
+                "startMetres": 2.1973838077962298,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 5.05,
+                "heightMetres": 2.55,
+                "startMetres": 3.745540581470846,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 5.05,
+                "heightMetres": 2.55,
+                "startMetres": 6.741973046647523,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 5.05,
+                "heightMetres": 2.55,
+                "startMetres": 8.29012982032214,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 5.05,
+                "heightMetres": 2.55,
+                "startMetres": 12.934600141345987,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 5.05,
+                "heightMetres": 2.55,
+                "startMetres": 14.482756915020603,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 5.05,
+                "heightMetres": 2.55,
+                "startMetres": 16.979783969334502,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 5.05,
+                "heightMetres": 2.55,
+                "startMetres": 18.52794074300912,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 5.05,
+                "heightMetres": 2.55,
+                "startMetres": 20.076097516683735,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 8.3,
+                "heightMetres": 2.55,
+                "startMetres": 2.1973838077962298,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 8.3,
+                "heightMetres": 2.55,
+                "startMetres": 3.745540581470846,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 8.3,
+                "heightMetres": 2.55,
+                "startMetres": 6.741973046647523,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 8.3,
+                "heightMetres": 2.55,
+                "startMetres": 8.29012982032214,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 8.3,
+                "heightMetres": 2.55,
+                "startMetres": 9.838286593996754,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 8.3,
+                "heightMetres": 2.55,
+                "startMetres": 11.386443367671372,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 8.3,
+                "heightMetres": 2.55,
+                "startMetres": 12.934600141345987,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 8.3,
+                "heightMetres": 2.55,
+                "startMetres": 14.482756915020603,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 8.3,
+                "heightMetres": 2.55,
+                "startMetres": 16.979783969334502,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 8.3,
+                "heightMetres": 2.55,
+                "startMetres": 18.52794074300912,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 11.55,
+                "heightMetres": 2.55,
+                "startMetres": 2.1973838077962298,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 11.55,
+                "heightMetres": 2.55,
+                "startMetres": 3.745540581470846,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 11.55,
+                "heightMetres": 2.55,
+                "startMetres": 6.741973046647523,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 11.55,
+                "heightMetres": 2.55,
+                "startMetres": 8.29012982032214,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 11.55,
+                "heightMetres": 2.55,
+                "startMetres": 9.838286593996754,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 11.55,
+                "heightMetres": 2.55,
+                "startMetres": 11.386443367671372,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 11.55,
+                "heightMetres": 2.55,
+                "startMetres": 12.934600141345987,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 11.55,
+                "heightMetres": 2.55,
+                "startMetres": 14.482756915020603,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 11.55,
+                "heightMetres": 2.55,
+                "startMetres": 16.979783969334502,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              },
+              {
+                "sillMetres": 11.55,
+                "heightMetres": 2.55,
+                "startMetres": 18.52794074300912,
+                "pitchMetres": 23.473243488825076,
+                "count": 1,
+                "widthMetres": 1.0986919038981149,
+                "panes": 1,
+                "transomHeightsMetres": [
+                  0.5
+                ],
+                "frameColor": "#ddded2"
+              }
+            ],
+            "groundEntries": [
+              {
+                "xMetres": 9.438762265306531,
+                "widthMetres": 3.2461351706080666,
+                "heightMetres": 6.7,
+                "bottomMetres": 0.45,
+                "kind": "glazed",
+                "panes": 2,
+                "frameColor": "#254550",
+                "transomHeightsMetres": [
+                  0.85,
+                  2.4,
+                  3.95,
+                  5.5
+                ]
+              },
+              {
+                "xMetres": 18.627821825181673,
+                "widthMetres": 2.896551383004121,
+                "heightMetres": 4.4,
+                "bottomMetres": 0.15,
+                "kind": "glazed",
+                "panes": 4,
+                "frameColor": "#3b484b",
+                "transomHeightsMetres": [
+                  1.8,
+                  2.9,
+                  3.9
+                ]
+              }
+            ],
+            "frameWidthMetres": 0.08,
+            "bands": [
+              {
+                "xMetres": 5.27,
+                "widthMetres": 0.8,
+                "bottomMetres": 0,
+                "heightMetres": 16.85,
+                "color": "#303d3d"
+              },
+              {
+                "xMetres": 16.35,
+                "widthMetres": 0.8,
+                "bottomMetres": 0,
+                "heightMetres": 16.85,
+                "color": "#303d3d"
+              }
+            ],
+            "balconyGroups": [],
+            "shallowProjectionGroups": [],
+            "gableTrim": false,
+            "recessGroups": [
+              {
+                "xMetres": 0.65,
+                "widthMetres": 1.18,
+                "bottomMetres": 8.3,
+                "heightMetres": 8.35,
+                "depthMetres": 0.65
+              },
+              {
+                "xMetres": 20.12,
+                "widthMetres": 1.18,
+                "bottomMetres": 8.3,
+                "heightMetres": 8.35,
+                "depthMetres": 0.65
+              },
+              {
+                "xMetres": 6.45,
+                "widthMetres": 9.65,
+                "bottomMetres": 17.15,
+                "heightMetres": 2.18,
+                "depthMetres": 0.25
+              }
+            ]
+          }
+        }
+      },
+      "researchTiming": {
+        "sourcePassStart": "2026-10-06T21:39Z",
+        "sourcePassEnd": "2026-10-06T21:55:49.125094+00:00",
+        "note": "Includes bounded primary heritage/Beeldbank/panorama/current-roof identity research; root integration and review excluded."
+      },
+      "label": "Keysersveste modern marble apartments Keizersgracht28\u201336",
+      "wall": "#c9bcae",
+      "roof": "#727775",
+      "levels": 6,
+      "palette": {
+        "wall": "#c9bcae",
+        "frames": "#dddcd0",
+        "glass": "#657b81",
+        "balcony": "#c9bcae"
+      },
+      "workflow": "full-source-ready-modern-building-specific-treatment",
+      "eligibility": "759.9m\u00b2 grounded modern block with22.5m marblefrontage, roof terraces and rear lowstrip. Repetitive window grid alone loses doubleheight centralentry, flanking insetbalconies and topterrace composition. No mappedPOI identity found; keep source-specific background treatment unless deliberately promoted.",
+      "traits": [
+        "Modern pale pink/beige marble-panel facade with12 narrow rectangular window columns arranged3/6/3 around two dark fullheight recessslots.",
+        "White thin frames and low horizontal transoms; two central windowcolumns become a dark doubleheight glazedentry with blue steel posts and stair.",
+        "Two flanking balcony stacks and shallow faceted glazed bays occupyupper rows; red/dark balconyrails.",
+        "Top has lowered outer terracebands and higher central marble-framed glazedvolume. Retain setbacks and source lowrear~3m surfaces; garden beyond physical footprint remainsopen.",
+        "1990\u201391 replacement byArchitectengroepHerenmarkt: predecessor1875/1910buildings demolished completely. Earlier historicfront photos are not currentmodel authority."
+      ],
+      "sourceUrls": [
+        "https://www.amsterdam-monumentenstad.nl/database/grachtenboek_objecten.php?evenzijde=2&grachtenboek=Keizersgracht&id=8637"
+      ],
+      "criticalAssemblyNotes": [
+        {
+          "assembly": "Main streetedge6",
+          "widthMetres": 22.473243488825076,
+          "windowColumns": 12,
+          "grouping": [
+            3,
+            6,
+            3
+          ],
+          "confidence": "High wholefrontphoto/groupcount, approximate dimensions."
+        },
+        {
+          "assembly": "Centraldoubleheightentry",
+          "widthMetres": 3.3,
+          "bottomMetres": 0.6,
+          "heightMetres": 6.65,
+          "confidence": "High sourceassembly; approximate envelope."
+        },
+        {
+          "assembly": "Insetsidebalconies/facetedbaystacks",
+          "confidence": "High sourcephoto; physical recession/facetedshape needsbuilder geometry",
+          "requiredCapability": "Do not replace recessedbalconies with solid protrudingblocks. Window/balcony face must befirsthitvisible."
+        },
+        {
+          "assembly": "Top terraces",
+          "confidence": "High photo andofficialroofsteps",
+          "requiredCapability": "Fronttoprow isregion-specific; centralhighglazedvolume,outerlowrails. No uniform sixthstorey."
+        },
+        {
+          "assembly": "Central blue steel columns with small yellow/gold caps and side stair rail",
+          "count": 2,
+          "bottomMetres": 0.7,
+          "heightMetres": 6.4,
+          "columnDiameterMetres": 0.16,
+          "confidence": "High source2020 panorama; dimensions approximate",
+          "requiredCapability": "Expose columns ahead of doubleheight glazed entry; retain stair footprint only onactualfrontage/publicentry, no padded suppression."
+        }
+      ],
+      "researchCard": {
+        "existingMappedIdentity": null,
+        "policy": "No inside mappedplace/curatedPOI identity. Keep ordinarycard behavior, no invented automatic destination.",
+        "usefulFacts": "Keysersveste wasbuilt1990\u201391 byArchitectengroepHerenmarkt on formerB\u00fchrmannpapercompany premises. Two predecessor buildings from1875and1910 were entirely demolished; a garden wascreated between theKeizersgrachtandPrinsengracht residentialcomplexes.",
+        "sourceLinks": [
+          "https://www.amsterdam-monumentenstad.nl/database/grachtenboek_objecten.php?evenzijde=2&grachtenboek=Keizersgracht&id=8637"
+        ],
+        "entryLngLat": [
+          4.888695,
+          52.378805
+        ],
+        "entryEvidence": "Midpoint22.5m frontageedge6; sourcephoto showscentralglazedentry/stair."
+      },
+      "uncertainties": [
+        "2025 facade partly scaffolded/leafobstructed; saved2020leaf-off municipalphotos + clearwholefrontheritagephoto +design drawing provide recognizability. Do not claimscaffolding-free currentinspection.",
+        "Heritage photo keysersveste.jpg has no explicitcapturedate;20190917-38 filename hintsdate only, not independentlyverifiedcataloguedcapture.",
+        "Design drawing isproposal/historicalstate, notcurrentmeasurementtruth; compare clearwholefrontphoto before modelingbay/terracecounts.",
+        "Officialroofs include smallroofequipmentmaxima~22m; dominantroof19.7m andlowerfrontregions16.9m. Do notextrude22m wholebuilding.",
+        "Rear lowstrip~3m isinsidephysicalfootprint; gardenbeyondparent footprint mustremainopen. Do notcombine adjacentPrinsengrachtblock.",
+        "Beeldbank bounded exactaddressrequest returned viewershell; noBeeldbankphotoinspection claimed."
+      ],
+      "sourceexplicitRegionFacadeAssemblies": [
+        {
+          "source": "raw/heritage-2-keysersveste.jpg",
+          "buildingPart": "Upper frontterrace centralvolume",
+          "frontEdge": 6,
+          "approxStartMetres": 6.4,
+          "approxEndMetres": 16.1,
+          "bottomMetres": 17.3,
+          "heightMetres": 2.15,
+          "kind": "broadglazedpanels",
+          "groupCount": 2,
+          "confidence": "High presence; approximateplane/height, builder mustbind toactualroofregion"
+        },
+        {
+          "source": "raw/heritage-2-keysersveste.jpg",
+          "buildingPart": "Outerlowterrace rails",
+          "frontEdge": 6,
+          "segmentsMetres": [
+            [
+              0,
+              6.4
+            ],
+            [
+              16.1,
+              22.473243488825076
+            ]
+          ],
+          "bottomMetres": 17.1,
+          "railHeightMetres": 0.95,
+          "kind": "redhorizontalrailwithdarkverticalbars",
+          "confidence": "High presence; exactstepedgefrom3DBAGrequired"
+        }
+      ],
+      "officialRegions": [
+        {
+          "sourceArea": 507.31528300013764,
+          "ring": [
+            [
+              -7.414694284171559,
+              19.714500610135495,
+              8.48769642571284
+            ],
+            [
+              -6.573325836796824,
+              19.715500610135496,
+              7.768526174284034
+            ],
+            [
+              -4.172293645654004,
+              19.714500610135495,
+              7.308731845677983
+            ],
+            [
+              -4.679512264381113,
+              19.714500610135495,
+              8.001583696939178
+            ],
+            [
+              -1.6117212936704202,
+              19.711500610135495,
+              9.445163966880443
+            ],
+            [
+              -1.7110655712293776,
+              19.711500610135495,
+              9.65695718349565
+            ],
+            [
+              -1.2161161881767426,
+              19.711500610135495,
+              9.793613747822008
+            ],
+            [
+              -1.221241257199658,
+              19.711500610135495,
+              9.628564825608805
+            ],
+            [
+              -0.3822006994908097,
+              19.710500610135494,
+              10.023980734175097
+            ],
+            [
+              0.29273079483492465,
+              19.710500610135494,
+              10.210421747001988
+            ],
+            [
+              1.5146081510810487,
+              19.709500610135496,
+              10.548168618940963
+            ],
+            [
+              1.7767946435099724,
+              19.707500610135494,
+              11.960081570082934
+            ],
+            [
+              1.4679312560854532,
+              19.706500610135496,
+              13.3439178348101
+            ],
+            [
+              1.3188201188687885,
+              19.706500610135496,
+              14.011286753695913
+            ],
+            [
+              2.2607567245704714,
+              19.705500610135495,
+              14.567075467012955
+            ],
+            [
+              2.1519403193542663,
+              19.705500610135495,
+              13.980526333374144
+            ],
+            [
+              7.097128788696347,
+              19.701500610135497,
+              16.465698883667983
+            ],
+            [
+              15.920464695871669,
+              19.710500610135494,
+              2.5037478568984284
+            ],
+            [
+              16.011288197575404,
+              19.711500610135495,
+              2.3590479863753444
+            ],
+            [
+              15.419830868171235,
+              19.713500610135494,
+              0.3751118191257774
+            ],
+            [
+              17.199555769764526,
+              19.715500610135496,
+              -3.219990146289149
+            ],
+            [
+              12.46667993423465,
+              19.720500610135495,
+              -5.886729058509843
+            ],
+            [
+              10.425042995654817,
+              19.718500610135496,
+              -3.809594799529634
+            ],
+            [
+              9.22663807358566,
+              19.720500610135495,
+              -4.94391236402322
+            ],
+            [
+              9.463364916099039,
+              19.720500610135495,
+              -5.205677960331911
+            ],
+            [
+              8.189961316743467,
+              19.721500610135497,
+              -5.925266520301022
+            ],
+            [
+              7.465702336328729,
+              19.722500610135494,
+              -6.60962273456704
+            ],
+            [
+              7.340362360982299,
+              19.722500610135494,
+              -6.404653967041156
+            ],
+            [
+              7.238172338440234,
+              19.722500610135494,
+              -6.46197870439579
+            ],
+            [
+              5.339652064137242,
+              19.725500610135494,
+              -8.397877699003686
+            ],
+            [
+              4.165427867730378,
+              19.724500610135497,
+              -7.6083786340106485
+            ],
+            [
+              3.644535906434032,
+              19.726500610135496,
+              -9.488747043534715
+            ],
+            [
+              4.247243282741701,
+              19.727500610135497,
+              -10.519428841380432
+            ],
+            [
+              -3.1105767517539404,
+              19.734500610135495,
+              -14.664808248084285
+            ],
+            [
+              -3.8828097585781807,
+              19.733500610135497,
+              -13.323797983494785
+            ],
+            [
+              -5.22305987634409,
+              19.731500610135495,
+              -10.9873619517532
+            ],
+            [
+              -5.777298084322797,
+              19.731500610135495,
+              -10.020045617429503
+            ],
+            [
+              -13.47554077883553,
+              19.721500610135497,
+              3.404908492015295
+            ],
+            [
+              -13.656912936363074,
+              19.721500610135497,
+              3.2981051663637118
+            ],
+            [
+              -14.227845185937138,
+              19.721500610135497,
+              4.304557635733772
+            ],
+            [
+              -14.053451876236911,
+              19.721500610135497,
+              4.412409624940494
+            ],
+            [
+              -8.107235418100256,
+              19.715500610135496,
+              8.062255915065748
+            ],
+            [
+              -8.253749403347857,
+              19.715500610135496,
+              8.090280791750217
+            ],
+            [
+              -7.459794623934284,
+              19.714500610135495,
+              8.459993349774777
+            ]
+          ],
+          "sourceRegionIndex": 0
+        },
+        {
+          "sourceArea": 63.22208649994528,
+          "ring": [
+            [
+              -12.35434491089044,
+              2.879500610135495,
+              -3.6524289839448443
+            ],
+            [
+              -8.267832123090992,
+              2.803500610135495,
+              -11.11142512023605
+            ],
+            [
+              -7.714004628549471,
+              2.855500610135495,
+              -10.685027393953135
+            ],
+            [
+              -6.72479681220154,
+              2.860500610135495,
+              -11.966504385200665
+            ],
+            [
+              -7.582802851833583,
+              2.790500610135495,
+              -12.361788338375845
+            ],
+            [
+              -5.741605148488334,
+              2.756500610135495,
+              -15.723203287493845
+            ],
+            [
+              -6.8085282118496,
+              2.647500610135495,
+              -16.748368043931237
+            ],
+            [
+              -8.985621914040372,
+              2.462500610135495,
+              -17.974978053002246
+            ],
+            [
+              -15.802265135077441,
+              2.5515006101354953,
+              -6.3860386821278325
+            ],
+            [
+              -14.09627413485368,
+              2.840500610135495,
+              -2.1136267641935547
+            ],
+            [
+              -13.222537359854531,
+              2.889500610135495,
+              -2.1886925972216886
+            ],
+            [
+              -12.768215697465465,
+              2.8305006101354953,
+              -4.189848345824316
+            ]
+          ],
+          "sourceRegionIndex": 1
+        },
+        {
+          "sourceArea": 32.32320950007056,
+          "ring": [
+            [
+              7.097128788696347,
+              16.993500610135495,
+              16.465698883667983
+            ],
+            [
+              9.025937304224616,
+              16.978500610135494,
+              17.435896750519362
+            ],
+            [
+              8.953166464886355,
+              16.980500610135497,
+              18.029701593231664
+            ],
+            [
+              9.021427911328804,
+              16.979500610135496,
+              17.942186320441635
+            ],
+            [
+              17.170247784609423,
+              16.853500610135494,
+              3.4176003968224222
+            ],
+            [
+              15.920464695871669,
+              16.862500610135495,
+              2.5037478568984284
+            ]
+          ],
+          "sourceRegionIndex": 2
+        },
+        {
+          "sourceArea": 23.65428500001813,
+          "ring": [
+            [
+              -14.641684517333093,
+              2.816500610135495,
+              -1.8957529190359423
+            ],
+            [
+              -14.896203248439816,
+              2.7945006101354952,
+              -2.0450732903228186
+            ],
+            [
+              -15.988382737738217,
+              2.732500610135495,
+              -1.952491187106773
+            ],
+            [
+              -16.46743910970677,
+              2.658500610135495,
+              -2.9717064912813385
+            ],
+            [
+              -17.4644887391706,
+              2.5725006101354952,
+              -3.5591275377305465
+            ],
+            [
+              -20.381543328741508,
+              2.610500610135495,
+              1.3975295841277102
+            ],
+            [
+              -15.809312389143598,
+              2.998500610135495,
+              3.9222727226228926
+            ],
+            [
+              -15.73888708134543,
+              2.9875006101354953,
+              3.5686062972041555
+            ],
+            [
+              -15.469630114227808,
+              2.945500610135495,
+              2.2310658331059585
+            ],
+            [
+              -14.733350468640163,
+              2.8305006101354953,
+              -1.4378867838959764
+            ]
+          ],
+          "sourceRegionIndex": 3
+        },
+        {
+          "sourceArea": 22.09394599993736,
+          "ring": [
+            [
+              -7.3387688289287505,
+              17.603500610135494,
+              -10.396468188483539
+            ],
+            [
+              -7.936799972264506,
+              17.562500610135494,
+              -9.41184072206056
+            ],
+            [
+              -8.27584616847352,
+              17.981500610135495,
+              -8.20888805258221
+            ],
+            [
+              -12.346509415149347,
+              18.012500610135497,
+              -1.0581585794554371
+            ],
+            [
+              -13.440523202959707,
+              16.582500610135494,
+              -1.2327007581535554
+            ],
+            [
+              -14.23095284323215,
+              18.026500610135496,
+              2.25353193885212
+            ],
+            [
+              -14.532706639787476,
+              18.029500610135496,
+              2.782883899027695
+            ],
+            [
+              -13.656912936363074,
+              19.431500610135494,
+              3.2981051663637118
+            ],
+            [
+              -13.47554077883553,
+              19.721500610135497,
+              3.404908492015295
+            ],
+            [
+              -5.777298084322797,
+              19.731500610135495,
+              -10.020045617429503
+            ],
+            [
+              -7.032843015417802,
+              17.623500610135494,
+              -10.89983520110792
+            ]
+          ],
+          "sourceRegionIndex": 4
+        },
+        {
+          "sourceArea": 19.649341000017174,
+          "ring": [
+            [
+              -8.267832123090992,
+              14.054500610135495,
+              -11.11142512023605
+            ],
+            [
+              -12.35434491089044,
+              14.068500610135496,
+              -3.6524289839448443
+            ],
+            [
+              -12.768215697465465,
+              14.075500610135496,
+              -4.189848345824316
+            ],
+            [
+              -13.222537359854531,
+              14.071500610135496,
+              -2.1886925972216886
+            ],
+            [
+              -13.270008190551756,
+              14.071500610135496,
+              -1.980258707037592
+            ],
+            [
+              -13.640623117309003,
+              14.072500610135496,
+              -1.305357462845791
+            ],
+            [
+              -13.81397743836523,
+              14.075500610135496,
+              -1.4072135726522106
+            ],
+            [
+              -13.76422555264215,
+              14.074500610135495,
+              -1.283493626132497
+            ],
+            [
+              -14.733350468640163,
+              14.085500610135496,
+              -1.4378867838959764
+            ],
+            [
+              -15.469630114227808,
+              14.078500610135496,
+              2.2310658331059585
+            ],
+            [
+              -14.532706639787476,
+              14.065500610135496,
+              2.782883899027695
+            ],
+            [
+              -14.23095284323215,
+              14.064500610135495,
+              2.25353193885212
+            ],
+            [
+              -13.440523202959707,
+              14.070500610135495,
+              -1.2327007581535554
+            ],
+            [
+              -12.346509415149347,
+              14.057500610135495,
+              -1.0581585794554371
+            ],
+            [
+              -8.27584616847352,
+              14.043500610135496,
+              -8.20888805258221
+            ],
+            [
+              -7.936799972264506,
+              14.044500610135495,
+              -9.41184072206056
+            ],
+            [
+              -7.3387688289287505,
+              14.041500610135495,
+              -10.396468188483539
+            ],
+            [
+              -7.714004628549471,
+              14.047500610135495,
+              -10.685027393953135
+            ]
+          ],
+          "sourceRegionIndex": 5
+        },
+        {
+          "sourceArea": 16.18625249999686,
+          "ring": [
+            [
+              17.170247784609423,
+              17.238500610135496,
+              3.4176003968224222
+            ],
+            [
+              19.977241013259952,
+              17.033500610135494,
+              -1.5852993696930184
+            ],
+            [
+              19.98978890008661,
+              17.029500610135496,
+              -1.6474175571246974
+            ],
+            [
+              17.199555769764526,
+              16.668500610135496,
+              -3.219990146289149
+            ],
+            [
+              15.419830868171235,
+              16.835500610135494,
+              0.3751118191257774
+            ],
+            [
+              16.011288197575404,
+              17.053500610135494,
+              2.3590479863753444
+            ],
+            [
+              15.920464695871669,
+              17.058500610135496,
+              2.5037478568984284
+            ]
+          ],
+          "sourceRegionIndex": 6
+        },
+        {
+          "sourceArea": 13.061911000088386,
+          "ring": [
+            [
+              -4.679512264381113,
+              3.073500610135495,
+              8.001583696939178
+            ],
+            [
+              -4.9227425869037225,
+              3.0685006101354952,
+              8.33343061432231
+            ],
+            [
+              -5.045324237132214,
+              3.0685006101354952,
+              10.248253642226928
+            ],
+            [
+              -0.6592666740381551,
+              3.1695006101354952,
+              12.84132973834545
+            ],
+            [
+              -0.6249838594299927,
+              3.170500610135495,
+              12.74704518863615
+            ],
+            [
+              -0.15192758839940765,
+              3.179500610135495,
+              11.439115300423452
+            ],
+            [
+              0.17229099123574482,
+              3.186500610135495,
+              11.41986974196584
+            ],
+            [
+              0.3066519761597446,
+              3.1885006101354954,
+              10.348396187578999
+            ],
+            [
+              0.25157901355886314,
+              3.187500610135495,
+              10.321762360350988
+            ],
+            [
+              0.29273079483492465,
+              3.1885006101354954,
+              10.210421747001988
+            ],
+            [
+              -0.3822006994908097,
+              3.1725006101354953,
+              10.023980734175097
+            ],
+            [
+              -1.221241257199658,
+              3.153500610135495,
+              9.628564825608805
+            ],
+            [
+              -1.2161161881767426,
+              3.153500610135495,
+              9.793613747822008
+            ],
+            [
+              -1.7110655712293776,
+              3.142500610135495,
+              9.65695718349565
+            ],
+            [
+              -1.6117212936704202,
+              3.1445006101354953,
+              9.445163966880443
+            ]
+          ],
+          "sourceRegionIndex": 7
+        },
+        {
+          "sourceArea": 11.103081000040204,
+          "ring": [
+            [
+              -4.087086402715926,
+              20.764500610135496,
+              5.6192816715295635
+            ],
+            [
+              -0.6881919793406553,
+              20.815500610135494,
+              7.46478424127929
+            ],
+            [
+              0.5127028030763732,
+              20.788500610135497,
+              4.891189215983047
+            ],
+            [
+              -2.583494128718108,
+              20.738500610135496,
+              2.9445466870453174
+            ]
+          ],
+          "sourceRegionIndex": 8
+        },
+        {
+          "sourceArea": 10.73825749996188,
+          "ring": [
+            [
+              0.7492717075982712,
+              22.823500610135497,
+              -4.843411821273094
+            ],
+            [
+              1.9631071842907415,
+              22.724500610135497,
+              -7.277024185511891
+            ],
+            [
+              2.1285391622094187,
+              22.713500610135494,
+              -7.6023309694002705
+            ],
+            [
+              0.6106524354382512,
+              21.831500610135496,
+              -8.17215532157718
+            ],
+            [
+              -0.7118228245728626,
+              20.953500610135496,
+              -9.06148986152516
+            ],
+            [
+              -1.9256958572648892,
+              21.131500610135497,
+              -6.342731006766655
+            ],
+            [
+              -1.6231516612168748,
+              21.322500610135496,
+              -6.175732131332836
+            ],
+            [
+              -1.7868154251804143,
+              21.487500610135495,
+              -5.302157517963053
+            ],
+            [
+              0.33619521070790026,
+              22.711500610135495,
+              -4.538407684875665
+            ],
+            [
+              0.21674876181828245,
+              22.545500610135495,
+              -4.928783309758273
+            ],
+            [
+              0.6391095869941122,
+              22.795500610135495,
+              -4.753606341832892
+            ]
+          ],
+          "sourceRegionIndex": 9
+        },
+        {
+          "sourceArea": 9.606480999922729,
+          "ring": [
+            [
+              4.968678374588148,
+              20.832500610135497,
+              -2.5403296095353767
+            ],
+            [
+              6.142175895085917,
+              20.824500610135495,
+              -4.453397080851573
+            ],
+            [
+              3.100190025268794,
+              20.736500610135497,
+              -6.498467182749437
+            ],
+            [
+              2.6532581987602186,
+              20.732500610135496,
+              -6.182224067485436
+            ],
+            [
+              2.1258901171738405,
+              20.729500610135496,
+              -5.807396369374089
+            ],
+            [
+              2.009209608533661,
+              20.736500610135497,
+              -5.213288520300239
+            ],
+            [
+              1.3627279692471879,
+              20.736500610135497,
+              -4.453442853060778
+            ],
+            [
+              1.9101905836149233,
+              20.749500610135495,
+              -4.227102287414937
+            ]
+          ],
+          "sourceRegionIndex": 10
+        },
+        {
+          "sourceArea": 9.549621499978768,
+          "ring": [
+            [
+              9.956619926900554,
+              3.111500610135495,
+              -5.752357432932342
+            ],
+            [
+              10.883705900432318,
+              3.008500610135495,
+              -6.779272667100145
+            ],
+            [
+              6.558585661997055,
+              3.1165006101354953,
+              -9.216699694277963
+            ],
+            [
+              5.339652064137242,
+              3.224500610135495,
+              -8.397877699003686
+            ],
+            [
+              7.238172338440234,
+              3.2215006101354953,
+              -6.46197870439579
+            ],
+            [
+              7.340362360982299,
+              3.218500610135495,
+              -6.404653967041156
+            ],
+            [
+              7.465702336328729,
+              3.2015006101354953,
+              -6.60962273456704
+            ],
+            [
+              8.189961316743467,
+              3.1975006101354952,
+              -5.925266520301022
+            ],
+            [
+              9.463364916099039,
+              3.165500610135495,
+              -5.205677960331911
+            ],
+            [
+              9.649573539413947,
+              3.145500610135495,
+              -5.412067010211672
+            ],
+            [
+              9.458011509616579,
+              3.1405006101354953,
+              -5.694890799989025
+            ]
+          ],
+          "sourceRegionIndex": 11
+        },
+        {
+          "sourceArea": 9.501795499920096,
+          "ring": [
+            [
+              -8.068992256374832,
+              20.930500610135496,
+              3.4576412820550217
+            ],
+            [
+              -5.851143161952811,
+              22.321500610135494,
+              4.661959227822194
+            ],
+            [
+              -4.077972718451007,
+              22.427500610135496,
+              2.0043732798990277
+            ],
+            [
+              -6.83939927927547,
+              20.628500610135497,
+              0.2675317691094392
+            ]
+          ],
+          "sourceRegionIndex": 12
+        },
+        {
+          "sourceArea": 8.41340000004686,
+          "ring": [
+            [
+              1.9273389486319028,
+              21.426500610135495,
+              8.884473283928287
+            ],
+            [
+              3.2079706827321326,
+              21.453500610135496,
+              6.586469801271164
+            ],
+            [
+              0.5127028030763732,
+              22.583500610135495,
+              4.891189215983047
+            ],
+            [
+              -0.6881919793406553,
+              22.481500610135495,
+              7.46478424127929
+            ]
+          ],
+          "sourceRegionIndex": 13
+        },
+        {
+          "sourceArea": 8.246230499955633,
+          "ring": [
+            [
+              -13.270008190551756,
+              4.159500610135495,
+              -1.980258707037592
+            ],
+            [
+              -13.222537359854531,
+              4.063500610135495,
+              -2.1886925972216886
+            ],
+            [
+              -14.09627413485368,
+              4.284500610135495,
+              -2.1136267641935547
+            ],
+            [
+              -15.802265135077441,
+              2.889500610135495,
+              -6.3860386821278325
+            ],
+            [
+              -17.4644887391706,
+              4.421500610135495,
+              -3.5591275377305465
+            ],
+            [
+              -16.46743910970677,
+              4.446500610135495,
+              -2.9717064912813385
+            ],
+            [
+              -15.988382737738217,
+              4.764500610135495,
+              -1.952491187106773
+            ],
+            [
+              -14.896203248439816,
+              4.487500610135495,
+              -2.0450732903228186
+            ],
+            [
+              -14.641684517333093,
+              4.494500610135495,
+              -1.8957529190359423
+            ],
+            [
+              -14.733350468640163,
+              4.703500610135495,
+              -1.4378867838959764
+            ],
+            [
+              -13.76422555264215,
+              4.555500610135495,
+              -1.283493626132497
+            ],
+            [
+              -13.81397743836523,
+              4.515500610135495,
+              -1.4072135726522106
+            ],
+            [
+              -13.640623117309003,
+              4.519500610135495,
+              -1.305357462845791
+            ]
+          ],
+          "sourceRegionIndex": 14
+        },
+        {
+          "sourceArea": 6.35181299999387,
+          "ring": [
+            [
+              7.69256230162767,
+              21.349500610135497,
+              -1.038342555534939
+            ],
+            [
+              7.769885804106974,
+              21.391500610135495,
+              -1.4050628546502253
+            ],
+            [
+              8.638729771714676,
+              21.350500610135494,
+              -2.7747519876800197
+            ],
+            [
+              6.142175895085917,
+              22.507500610135494,
+              -4.453397080851573
+            ],
+            [
+              4.968678374588148,
+              22.551500610135495,
+              -2.5403296095353767
+            ]
+          ],
+          "sourceRegionIndex": 15
+        },
+        {
+          "sourceArea": 5.907360999937501,
+          "sourceRegionIndex": 17,
+          "ring": [
+            [
+              -4.087086402715926,
+              22.348500610135495,
+              5.6192816715295635
+            ],
+            [
+              -2.583494128718108,
+              22.396500610135494,
+              2.9445466870453174
+            ],
+            [
+              -4.077972718451007,
+              22.354500610135496,
+              2.0043732798990277
+            ],
+            [
+              -5.851143161952811,
+              22.298500610135495,
+              4.661959227822194
+            ]
+          ]
+        },
+        {
+          "sourceArea": 2.4595305000466983,
+          "sourceRegionIndex": 30,
+          "ring": [
+            [
+              2.7713282075613375,
+              22.109500610135495,
+              -6.719312375779225
+            ],
+            [
+              1.9631071842907415,
+              22.727500610135497,
+              -7.277024185511891
+            ],
+            [
+              0.7492717075982712,
+              22.823500610135497,
+              -4.843411821273094
+            ],
+            [
+              1.2279645627799347,
+              22.479500610135496,
+              -4.603590243723374
+            ],
+            [
+              1.2406199623690952,
+              22.447500610135496,
+              -4.50462698689563
+            ],
+            [
+              1.3627279692471879,
+              22.362500610135495,
+              -4.453442853060778
+            ],
+            [
+              2.009209608533661,
+              22.174500610135496,
+              -5.213288520300239
+            ],
+            [
+              2.1258901171738405,
+              22.257500610135494,
+              -5.807396369374089
+            ],
+            [
+              2.6532581987602186,
+              22.041500610135497,
+              -6.182224067485436
+            ]
+          ]
+        }
+      ],
+      "mainHeight": 22.823500610135497,
+      "wallBaseHeight": 2.462500610135495,
+      "references": [
+        "reference-0363100012167736-2020-02513.jpg",
+        "reference-0363100012167736-2020-02514.jpg",
+        "reference-0363100012167736-2020-02507.jpg",
+        "reference-0363100012167736-2020-02508.jpg"
+      ],
+      "roofInterpretation": {
+        "policy": "Per-region official roof ownership, no uniform maximum-height prism.",
+        "dominantMassHeightMetres": 19.73,
+        "equipmentOrUnresolvedHigherPatches": [
+          {
+            "sourceRoofSurfaceIndex": 8,
+            "areaMetres2": 11.103081000040204,
+            "rangeMetres": [
+              20.738500610135496,
+              20.815500610135494
+            ]
+          },
+          {
+            "sourceRoofSurfaceIndex": 9,
+            "areaMetres2": 10.73825749996188,
+            "rangeMetres": [
+              20.953500610135496,
+              22.823500610135497
+            ]
+          },
+          {
+            "sourceRoofSurfaceIndex": 10,
+            "areaMetres2": 9.606480999922729,
+            "rangeMetres": [
+              20.729500610135496,
+              20.832500610135497
+            ]
+          },
+          {
+            "sourceRoofSurfaceIndex": 12,
+            "areaMetres2": 9.501795499920096,
+            "rangeMetres": [
+              20.628500610135497,
+              22.427500610135496
+            ]
+          },
+          {
+            "sourceRoofSurfaceIndex": 13,
+            "areaMetres2": 8.41340000004686,
+            "rangeMetres": [
+              21.426500610135495,
+              22.583500610135495
+            ]
+          },
+          {
+            "sourceRoofSurfaceIndex": 15,
+            "areaMetres2": 6.35181299999387,
+            "rangeMetres": [
+              21.349500610135497,
+              22.551500610135495
+            ]
+          },
+          {
+            "sourceRoofSurfaceIndex": 17,
+            "areaMetres2": 5.907360999937501,
+            "rangeMetres": [
+              22.298500610135495,
+              22.396500610135494
+            ]
+          },
+          {
+            "sourceRoofSurfaceIndex": 30,
+            "areaMetres2": 2.4595305000466983,
+            "rangeMetres": [
+              22.041500610135497,
+              22.823500610135497
+            ]
+          }
+        ],
+        "equipmentInstructions": "High small patches are survey evidence to reconcile, not permission for an extra whole storey or unsupported roof plate. Source photos support modern terrace glazing / warehouse crest separately."
+      },
+      "sourceAdmission": false,
+      "exposedRoofSteps": false,
+      "timing": {
+        "sourcePassStart": "2026-10-06T21:39Z",
+        "sourcePassEnd": "2026-10-06T21:55:49.125094+00:00",
+        "note": "Includes bounded primary heritage/Beeldbank/panorama/current-roof identity research; root integration and review excluded."
+      },
+      "simplifications": [
+        "Original source-informed procedural atlas; no downloaded photo pixels in mesh.",
+        "Facade dimensions estimated from dated photos; native footprint and surveyed local roof patches retained.",
+        "Rear openings undocumented and left unasserted.",
+        "Visual/game independent acceptance pending; no fabricated POI identity."
+      ],
+      "roofObjectAssemblies": [
+        {
+          "name": "south-opaque-roof-row",
+          "sourceIndices": [
+            12,
+            17,
+            8,
+            13
+          ],
+          "supportSourceIndices": [
+            0
+          ],
+          "topColor": "#6c7275",
+          "cheekColor": "#747a7d",
+          "recipeRegionIndices": [
+            12,
+            16,
+            8,
+            13
+          ],
+          "supportRecipeRegionIndices": [
+            0
+          ],
+          "sourceEvidence": "experiments/canal-belt-overnight/sources-03/0363100012167736/roof-followup/region-classification.json",
+          "sourceYear": "2026 layer; precise local flight day unknown",
+          "sideMaterialConfidence": "Opaque conservative technical cheek inference; hidden side material/function unresolved",
+          "curbColor": "#a7acae",
+          "curbHeightMetres": 0.075
+        },
+        {
+          "name": "north-opaque-roof-row",
+          "sourceIndices": [
+            9,
+            30,
+            10,
+            15
+          ],
+          "supportSourceIndices": [
+            0
+          ],
+          "topColor": "#656d71",
+          "cheekColor": "#747a7d",
+          "recipeRegionIndices": [
+            9,
+            17,
+            10,
+            15
+          ],
+          "supportRecipeRegionIndices": [
+            0
+          ],
+          "sourceEvidence": "experiments/canal-belt-overnight/sources-03/0363100012167736/roof-followup/region-classification.json",
+          "sourceYear": "2026 layer; precise local flight day unknown",
+          "sideMaterialConfidence": "Opaque conservative technical cheek inference; hidden side material/function unresolved",
+          "curbColor": "#a7acae",
+          "curbHeightMetres": 0.075
+        }
+      ],
+      "roofFollowupState": "Original roof local-closure repair; actual gallery/game/performance acceptance pending"
     }
   ]
 }

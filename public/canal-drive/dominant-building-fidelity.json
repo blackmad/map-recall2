@@ -71,7 +71,7 @@
         "Door counts and dimensions are approximate visual estimates, not surveys.",
         "Omit minor branding; do not invent building-name text.",
         "Minor roof/equipment patches below0.8% footprint area omitted; main fitted roof planes retained.",
-        "Regular6×7 shallow roof panel grid approximates observed aerial rhythm; fitted patch noise omitted. Glazing/pier proportions are visual estimates from2017 facade."
+        "Regular6\u00d77 shallow roof panel grid approximates observed aerial rhythm; fitted patch noise omitted. Glazing/pier proportions are visual estimates from2017 facade."
       ]
     },
     "NL.IMBAG.Pand.0363100012123231": {
@@ -332,7 +332,7 @@
         "Minor roof patches below0.8% footprint may be omitted only where recognition permits. Main steps18/21/22/24/25m remain.",
         "Projecting glass bays use estimated0.28m relief, supported visually but not surveyed.",
         "Small joinery, interiors and tenant logos are omitted.",
-        "Source-corrected raised regions0/7 have estimated upper glazing21.8–24.6m; region4 remains dark technical enclosure. Measured roof polygons/heights preserved. Ground doors distinguish narrow recessed dark entrances from shop glass; obscured details conservative.",
+        "Source-corrected raised regions0/7 have estimated upper glazing21.8\u201324.6m; region4 remains dark technical enclosure. Measured roof polygons/heights preserved. Ground doors distinguish narrow recessed dark entrances from shop glass; obscured details conservative.",
         "Northeast terrace-facing upper office glazing is source-derived; bay counts/heights estimated within measured roof envelope. Unknown rooftop side faces remain plain.",
         "Physicalphone untested; cached steady-frame samples do not establish cold-loading stall elimination."
       ]
@@ -362,7 +362,7 @@
         "Actual rear game visibility partial; source/gallery/first-hit supports its geometry separately.",
         "Warm90-frame/site AppleM4Pro and iPhone13 emulation; physicalphone untested; loading stalls remain.",
         "Kalver12.17m source terrace deck retained with18cm estimated underside; structural supports unknown.",
-        "Singel NE outerroof13.15m, ground+3upper, Jan2019actualcapture despite2018mission filenames; prior17–18m/oppositewing association withdrawn."
+        "Singel NE outerroof13.15m, ground+3upper, Jan2019actualcapture despite2018mission filenames; prior17\u201318m/oppositewing association withdrawn."
       ]
     },
     "NL.IMBAG.Pand.0363100012168534": {
@@ -390,8 +390,53 @@
         "Actual rear game visibility partial; source/gallery/first-hit supports its geometry separately.",
         "Warm90-frame/site AppleM4Pro and iPhone13 emulation; physicalphone untested; loading stalls remain.",
         "Kalver12.17m source terrace deck retained with18cm estimated underside; structural supports unknown.",
-        "Singel NE outerroof13.15m, ground+3upper, Jan2019actualcapture despite2018mission filenames; prior17–18m/oppositewing association withdrawn."
+        "Singel NE outerroof13.15m, ground+3upper, Jan2019actualcapture despite2018mission filenames; prior17\u201318m/oppositewing association withdrawn."
       ]
+    },
+    "NL.IMBAG.Pand.0363100012167770": {
+      "treatment": "landmark",
+      "assetRole": "ordinary-background-building",
+      "reviewedOn": "2026-10-07",
+      "sourceUrls": [
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/790",
+        "https://www.amsterdam-monumentenstad.nl/database/grachtenboek_objecten.php?id=243"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012167770/reference-0363100012167770-2020-02785.jpg",
+      "reason": "Full source-specific review for distinctive warehouse crown/arched shutters or marble apartments/recess slots/entrance. Primary aerial roof-object interpretation and local closure repaired; measured planes retained. Root/independent gallery and desktop/touch-emulated indexed actual game, identity suppression, neighbors and centered fallback reviewed. Anonymous architecture treatment; no invented POI. Hidden technical material/function, rear windows and curved lower rooflight details remain approximations.",
+      "checks": {
+        "ordinarySilhouette": false,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "df79731b0ec912f4410c3441db4a1a00c252da2e",
+      "sourcePack": "experiments/canal-belt-overnight/validation-batch03-20261007",
+      "roofSourceCommit": "7b26e67e736c6434849b443ec649cb1836713f3d",
+      "independentReview": "Private validation: gallery-roof-independent-v3 and game-independent-v4",
+      "liveGameReview": "Private validation: game-indexed-v4; warm p95approximately16.7\u201316.8ms, touch nonstartup81ms, no cold/stall-free claim",
+      "published": true
+    },
+    "NL.IMBAG.Pand.0363100012167736": {
+      "treatment": "landmark",
+      "assetRole": "ordinary-background-building",
+      "reviewedOn": "2026-10-07",
+      "sourceUrls": [
+        "https://www.amsterdam-monumentenstad.nl/database/grachtenboek_objecten.php?evenzijde=2&grachtenboek=Keizersgracht&id=8637"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012167736/reference-0363100012167736-2020-02513.jpg",
+      "reason": "Full source-specific review for distinctive warehouse crown/arched shutters or marble apartments/recess slots/entrance. Primary aerial roof-object interpretation and local closure repaired; measured planes retained. Root/independent gallery and desktop/touch-emulated indexed actual game, identity suppression, neighbors and centered fallback reviewed. Anonymous architecture treatment; no invented POI. Hidden technical material/function, rear windows and curved lower rooflight details remain approximations.",
+      "checks": {
+        "ordinarySilhouette": false,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "df79731b0ec912f4410c3441db4a1a00c252da2e",
+      "sourcePack": "experiments/canal-belt-overnight/validation-batch03-20261007",
+      "roofSourceCommit": "7b26e67e736c6434849b443ec649cb1836713f3d",
+      "independentReview": "Private validation: gallery-roof-independent-v3 and game-independent-v4",
+      "liveGameReview": "Private validation: game-indexed-v4; warm p95approximately16.7\u201316.8ms, touch nonstartup81ms, no cold/stall-free claim",
+      "published": true
     }
   },
   "notes": [
