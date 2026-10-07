@@ -1,8 +1,8 @@
 {
   "modelId": "uva-roeterseiland",
   "date": "2026-10-07",
-  "phase": "cycle11-source735-edge30-color-only",
-  "status": "draft-not-accepted-do-not-register-or-suppress",
+  "phase": "cycle12-source755-edge2",
+  "status": "SOURCE-BOUNDED CPU DRAFT; BYTE-BUDGET HOLD; whole parent HELD/unregistered",
   "builderSha256": "824667f737a37607f74fc2962fb1e583ba8b8cd1e5ad1af29fa013f1b6d5f7d4",
   "sourceArchive": {
     "path": "models/uva-roeterseiland",
@@ -403,5 +403,68 @@
     ],
     "finalBudgetDecision": "Two previouslyunusedslots warmwall/darkopenings plus existingdarkframe; geometry/fulldetail retained;499432B only568B headroom.",
     "geometryReviewReuse": "Root reports independentcycle10 scoped112FrontSide geometryPASS/readerrelease; sourcecolor/readabilityfailure correctedhere, freshaffectedmaterial review required. No claim ofwholescene/GPU acceptance."
+  },
+  "cycle12": {
+    "date": "2026-10-07",
+    "phase": "cycle12-source755-edge2",
+    "status": "SOURCE-BOUNDED CPU DRAFT; BYTE-BUDGET HOLD; whole parent HELD/unregistered",
+    "sourceDecision": "scripts/landmarks/uva-roeterseiland-755-source-decision-20261007.json",
+    "sourceArchiveCommit": "b0ac0437e7d29fde1fc7954cefbe471cb4a03a5a",
+    "sourceArchivePath": "models/uva-roeterseiland/raw/2026-10-07-remaining-faces/currentpack",
+    "processed755DecisionArchive": "root pending archival before checkpoint; no private index touched",
+    "evidenceDirectory": "artifacts/uva-roeterseiland-massing-20261006/cycle12",
+    "authoredScope": "Only surveyed755 edge2 length45.6777m/top14.13\u201314.15m; pale panels/joints, four rows at1.3/4.3/7.2/10.2m, paired upper panes, eastern three-bay ribbon, short strip boundedt\u2248.36..1",
+    "sourceLimits": [
+      "Full frontage bay count/dimensions approximate;13 separated groups plus ribbon are representation, not a measured count",
+      "Ground apertures meaningful, no exact doors/stoep inferred from occlusion",
+      "No756 height/upperrow transfer onto755; no unseen return/court treatment",
+      "Existing756 source-inference assemblies remain held; CPU image includes them without accepting them"
+    ],
+    "checks": {
+      "nativeFrontSideFirstHit": 250,
+      "decodedFrontSideFirstHit": 250,
+      "firstHitFailures": 0,
+      "materialsRGB": {
+        "glass": "#527787",
+        "dark": "#303b43",
+        "concrete": "#d4d5d0",
+        "frame": "#9daaa8"
+      },
+      "roofAndCourtTests": "Existing checker roof-up normals, raised canal void/underside, north court/south atria and prior facade rays pass",
+      "priorGeometry": "Exact pre-existing2995 geometrybuffers/order/palette retained;185new755meshes",
+      "nativeScale": "Survey roof/rings/holes retained; scale1 no height changes"
+    },
+    "standardExport": {
+      "model": "uva-roeterseiland",
+      "status": "unaccepted artifact only; no registration/version/suppression",
+      "file": "artifacts/uva-roeterseiland-massing-20261006/cycle12-unaccepted-draft.glb",
+      "sha256": "c1159f09939b60f5eaf5075da4036c52a0674e463b66774458eb86b5cbf29b42",
+      "bytes": 525832,
+      "decodedTriangles": 37452,
+      "textures": 0,
+      "compression": "sameproduction weld/dedup/prune/meshopt medium",
+      "budgetPass": false,
+      "limit": "unaccepted measured candidate; no compressed first-hit/render/live acceptance"
+    },
+    "losslessSharedPacking": {
+      "input": "artifacts/uva-roeterseiland-massing-20261006/cycle12-unaccepted-draft.glb",
+      "inputBytes": 525832,
+      "file": "artifacts/uva-roeterseiland-massing-20261006/cycle12-shared-lossless-draft.glb",
+      "bytes": 595008,
+      "uniqueVertices": 72603,
+      "decodedExact": true,
+      "sha256": "e073a1a89e74e0b293e11cc52fa85ed94f5d27f6eddb0460d33a1a92f9bf8a5d",
+      "budgetPass": false
+    },
+    "failedEvidence": [
+      "cycle12-unaccepted-draft.glb525832B",
+      "cycle12-shared-lossless-draft.glb595008B"
+    ],
+    "acceptanceGaps": [
+      "25,832byte standardexport overage; actual productionbudget remains unproven",
+      "Fresh independent source/composition/decoded review pending",
+      "Lit native gallery and actual livegame/retainedneighbor/performance review pending",
+      "Upper742,A rear and exposed courtyard sourcecoverage incomplete; fullparent suppression unsafe"
+    ]
   }
 }

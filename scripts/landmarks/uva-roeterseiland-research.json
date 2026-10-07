@@ -1,6 +1,6 @@
 {
   "modelId": "uva-roeterseiland",
-  "status": "cycle11-source735-edge30-color-only; unregistered/unaccepted",
+  "status": "cycle12-source755-edge2 CPU draft; byte-budget HOLD; unregistered/unaccepted",
   "retrievedOn": "2026-10-07",
   "sourceArchive": {
     "path": "models/uva-roeterseiland",
@@ -571,5 +571,40 @@
     "glazingAndOpaqueDoor": "blue reservedslot #202d2b darkmutedgreenblack; material remainsopaque/roughness.9 likeall nativeflatcolor panes, sourceopaqueservice role retained",
     "frame": "existingdark #303b43 subduedgraycontrast; all otherdarkroles unchanged",
     "slotIsolation": "Native capture verifiesbrick/blue absent from frozen cycle10 and used only edge30 incycle11. No globalmaterial/coloroverride."
+  },
+  "cycle12Canal755": {
+    "sourceDecision": "scripts/landmarks/uva-roeterseiland-755-source-decision-20261007.json",
+    "sourceArchiveCommit": "b0ac0437e7d29fde1fc7954cefbe471cb4a03a5a",
+    "scope": "Only surveyed755 edge2 length45.6777m/top14.13\u201314.15m; pale panels/joints, four rows at1.3/4.3/7.2/10.2m, paired upper panes, eastern three-bay ribbon, short strip boundedt\u2248.36..1",
+    "limits": [
+      "Full frontage bay count/dimensions approximate;13 separated groups plus ribbon are representation, not a measured count",
+      "Ground apertures meaningful, no exact doors/stoep inferred from occlusion",
+      "No756 height/upperrow transfer onto755; no unseen return/court treatment",
+      "Existing756 source-inference assemblies remain held; CPU image includes them without accepting them"
+    ],
+    "sameBuildingConfidence": "root inspected source allocation high;755vs756 medium-high; exact apertures low-medium",
+    "sourceCamera": {
+      "nativeEastSouth": [
+        -83.88021750438939,
+        -120.93407466864193
+      ],
+      "heightApprox": 2.5,
+      "azimuthDegrees": 117.59389950776254,
+      "elevationDegrees": 7.479082853405441,
+      "hfovDegrees": 90,
+      "viewport": [
+        1200,
+        900
+      ],
+      "pitchRollCorrectionApplied": false,
+      "approxResidualPixels": "15\u201340; recognition projection not metric measurement"
+    },
+    "processedArchival": "root pending beforecheckpoint; raworiginal archivedb0ac0437",
+    "budget": "37452tri/525832B standard draft; overbytes; no weakened40k/500k limits"
+  },
+  "cycle12PrivateArchive": {
+    "commit": "67fb1d97a326db0c5a7ce31b387bb69504bb81cc",
+    "path": "models/uva-roeterseiland/processed/evidence/2026-10-07-755/checkpoint-cycle12-held",
+    "status": "UNACCEPTED source/CPU scoped755; byte budgetHOLD525832B, existing756source mismatch andotherparentfacegaps remain."
   }
 }

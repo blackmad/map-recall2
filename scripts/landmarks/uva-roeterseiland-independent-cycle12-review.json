@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-07",
+  "scope": "Frozen cycle12 new755edge2 only; source/CPU/actual decodedGLB independent review",
+  "verdict": "SCOPED SOURCE/CPU FAMILY PASS; DECODED VISIBILITY PASS; BYTE-BUDGET HOLD; full parent HELD/unregistered",
+  "releaseAccepted": false,
+  "byteHold": {
+    "bytes": 525832,
+    "limit": 500000,
+    "overage": 25832,
+    "failedLosslessBytes": 595008,
+    "required": "Keep budget fixed; retain both failed artifacts; packing/geometry representation improvement requires decoded equality or retained-critical-assembly checks and renewed visual review."
+  },
+  "reviewedImages": [
+    "raw742-north-00151.jpg",
+    "processed742-north-far-alternate.jpg",
+    "processed755-allocation/source-overlay.jpg",
+    "755-source-comparison.png",
+    "755-edge2-close.png",
+    "native-overview.png"
+  ],
+  "sourceSha256": "cf7e16ebd374138a20c9be21b7ba61751070390f28050327905317efc4da2d9d",
+  "actualGlbSha256": "c1159f09939b60f5eaf5075da4036c52a0674e463b66774458eb86b5cbf29b42",
+  "frozenFilesUnchanged": true,
+  "decodedIndependentChecks": {
+    "frontSideSamples": 269,
+    "failures": 0,
+    "textures": 0,
+    "triangles": 37452,
+    "roofHoleSamples": 7,
+    "new755CapFound": false
+  },
+  "findings": [
+    {
+      "part": "755 edge2",
+      "severity": "pass-with-limits",
+      "finding": "Pale rectangular grid, four principal rows, taller ground apertures, upper paired panes, eastern/far broad ribbon and near/west short upper strip convey the visible source family. Survey14.15m front and26.68m756 setback stay separate. No extra755 attic family or height inferred. Exact counts are approximate and camera residual15\u201340px forbids metric photo-fit claims."
+    },
+    {
+      "part": "materials/visibility",
+      "severity": "pass-with-limits",
+      "finding": "Independent decoded pane fractions, paired mullions, ribbon interiors, short strip, strip absence and pale panel intervals all first-hit correct FrontSide materials. Pale wall/dark frame contrast reads in CPU; shared blue glass differs from source green reflection and requires lit native-game review before color acceptance."
+    },
+    {
+      "part": "base",
+      "severity": "bounded",
+      "finding": "Ground windows remain useful apertures without invented entry leaves/name words. Occluded plinth, doorway identity and access are unresolved, so this is an approximate ground row rather than accepted entrance geometry."
+    },
+    {
+      "part": "roof755 hole",
+      "severity": "retained-source-layer",
+      "finding": "Seven rays meet pre-existing survey736 slate roof at16.61981m; source736 outer ring contains them, source755 contains them only in its inner ring. No14.15m755 top at these points. This is retained multi-height survey coverage, not proof of an open-to-sky courtyard and not a new755 hole-cover defect."
+    },
+    {
+      "part": "756 higher facade",
+      "severity": "held-prior-evidence",
+      "finding": "Source-facing composite includes previously inferred long vertical slots/ribbon on756; these are visually different from the photo upper paired-window terraces. They are outside new755 scope and still lack independent face-specific source acceptance. The whole-photo composite does not pass as a whole-building recognition result."
+    },
+    {
+      "part": "wholeparent",
+      "severity": "hold",
+      "finding": "742 upper, A rear and exposed court coverage; actual lit gallery/live neighbor retention and performance remain unresolved. No whole-parent suppression or registration authorized."
+    }
+  ],
+  "requiredRepairs": [
+    {
+      "scope": "release",
+      "repair": "Reduce standard GLB below500000bytes without dropping critical prior or new755 assemblies; preserve failed candidates and re-run decoded first-hit/visual review."
+    },
+    {
+      "scope": "future756 source allocation",
+      "repair": "Locate and allocate a756 face-specific current reference before altering its inherited long-slot/ribbon assembly; do not transfer bounded755 rows upwards."
+    },
+    {
+      "scope": "acceptance",
+      "repair": "Complete missing face sources and actual lit native gallery/live-game neighbor/performance review. Do not treat269 rays or this scoped CPU verdict as full acceptance."
+    }
+  ],
+  "new755ImmediateGeometryRepairRequired": false,
+  "mutations": "Only independent review JSON/MD under cycle12. No authoring/GPU/Git/registry/privateindex mutations. Frozen reader released."
+}

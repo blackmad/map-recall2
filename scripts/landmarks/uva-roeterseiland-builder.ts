@@ -142,6 +142,40 @@ export function buildUvaRoeterseiland(_w: number, _d: number, b: BuildingTools):
   for(const q of [-w/2-.045,w/2+.045])eastFace(at+q,.08,.09,3.07,.07,'dark','east-low-735-ground-jamb',.22);
   eastFace(at,3.08,w+.18,.09,.07,'dark','east-low-735-ground-head',.22);
  }
+ // Municipal00151 (10Dec2024), root-inspected755edge2 allocation only.
+ // Four principal rows and a bounded shallow strip belong to this14m facade;
+ // the taller white terraces are756, not an extra755 storey. Counts/dimensions
+ // below are bounded photo approximations, not surveyed opening measurements.
+ const canal=source.roofs.find(r=>r.index===755)!;
+ const ca=canal.rings[0][2],cb=canal.rings[0][3];
+ const cl=Math.hypot(cb[0]-ca[0],cb[1]-ca[1]),cx=(cb[0]-ca[0])/cl,cz=(cb[1]-ca[1])/cl;
+ function canalFace(at:number,y:number,w:number,h:number,d:number,col:Colour,role:string,outset=.14){
+  const g=omitWallBack(new T.BoxGeometry(w,h,d),5);g.userData.role=role;
+  b.add(g,col,ca[0]+at*cx-outset*cz,y+h/2,ca[1]+at*cz+outset*cx,Math.atan2(-cz,cx));
+ }
+ // Existing paleconcrete is retained; the slightly recessed panel joints use
+ // existing frame material. No source-photo textures or invented entrance leaves.
+ const canalTop=(canal.minHeight+canal.maxHeight)/2;
+ canalFace(cl/2,0,cl,canalTop,.04,'concrete','canal-755-edge2-panel-face',.025);
+ for(let at=2.8;at<cl;at+=2.8)canalFace(at,0,.027,canalTop,.04,'frame','canal-755-panel-vertical-joint',.065);
+ for(const y of [2.8,5.7,8.7,11.7])canalFace(cl/2,y,cl,.025,.04,'frame','canal-755-panel-horizontal-joint',.065);
+ const canalBays=[1.4,4.2,7.0,9.8,22.4,25.2,28.0,30.8,33.6,36.4,39.2,42.0,44.5];
+ function canalAperture(at:number,centre:number,w:number,h:number,paired:boolean,kind:string){
+  const y=centre-h/2;
+  canalFace(at,y,w,h,.10,'dark','canal-755-'+kind+'-frame',.16);
+  canalFace(at,y+.085,w-.17,h-.17,.06,'glass','canal-755-'+kind+'-pane',.235);
+  if(paired)canalFace(at,y+.07,.085,h-.14,.06,'dark','canal-755-'+kind+'-paired-mullion',.285);
+ }
+ for(const [centre,h]of [[1.3,2.35],[4.3,1.85],[7.2,1.95],[10.2,1.95]]){
+  for(const at of canalBays)canalAperture(at,centre,centre<2?1.65:1.95,h,centre>6,'main');
+  // The eastern/far three-bay ribbon interrupts the separated rhythm. Source
+  // shows opaque uprights; retain broadglass and subdivisions, not extra bays.
+  canalAperture(15.8,centre,8.0,h,false,'ribbon');
+  for(const at of [13.15,15.8,18.45])canalFace(at,centre-h/2+.07,.13,h-.14,.06,'dark','canal-755-ribbon-upright',.285);
+ }
+ // Only the visible t≈.36..1.0 extent; no strip on obscured eastern continuation.
+ canalAperture(20.7,13,7.5,.65,false,'short-strip');
+ for(const at of [26.0,29.6,33.2,36.8,40.4,44.0])canalAperture(at,13,1.9,.65,false,'short-strip');
  // Critical glazing: office rhythm over the wide double-height glazed lintel.
  // Native planes lie just proud of the solid shell, with recess represented by frame.
  for(const side of [-1,1]) {
