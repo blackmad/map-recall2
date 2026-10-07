@@ -3082,7 +3082,9 @@
       "landmarkId": "extract_landmarks_1605152135",
       "modelUrl": "./models/kriterion.glb",
       "suppressOsmIds": [
-        "w268999077"
+        "w268999077",
+        "NL.IMBAG.Pand.0363100012253901",
+        "NL.IMBAG.Pand.0363100012181099"
       ],
       "footprint": {
         "centre": [
@@ -3101,7 +3103,7 @@
         "sourceUrl": "https://www.stichtingkriterion.nl/geschiedenis",
         "licence": "Original project asset",
         "licenceUrl": "./LICENSE",
-        "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+        "modifications": "Original texture-free native reconstruction of the current cinema and shared residential/hall parents. Surveyed roof zones and current municipal panorama references guide the original facade geometry, concrete entrance and approximate real-sign lettering."
       },
       "surveyed": {
         "anchor": [
@@ -3112,16 +3114,20 @@
         "source": "OSM building w268999077 polygon, east-facing Roetersstraat street house"
       },
       "spatialSuppression": false,
+      "materialOverrides": {
+        "greyBrick": "#756b5c",
+        "concrete": "#8c918a"
+      },
       "bounds": {
         "min": [
-          -22.612171173095703,
-          -4.7683716530855236e-08,
-          -15.273883819580078
+          -22.65472412109375,
+          -6.234367901924998e-07,
+          -15.271407127380371
         ],
         "max": [
-          22.612171173095703,
+          23.042362213134766,
           20.5,
-          15.3838472366333
+          15.826309204101562
         ]
       },
       "placement": {
@@ -3135,13 +3141,13 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 45.224342346191406,
-        "heightMetres": 20.500000047683717,
-        "depthMetres": 30.65773105621338,
-        "depthCoverage": 1.0036021174915652
+        "widthMetres": 45.697086334228516,
+        "heightMetres": 20.50000062343679,
+        "depthMetres": 31.097716331481934,
+        "depthCoverage": 1.0180053410411154
       },
-      "triangles": 2513,
-      "bytes": 36656,
+      "triangles": 7690,
+      "bytes": 84128,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "de-bijenkorf": {
@@ -13073,7 +13079,7 @@
     },
     "brouwerij-het-ij": {
       "id": "brouwerij-het-ij",
-      "name": "Brouwerij ’t IJ",
+      "name": "Brouwerij \u2019t IJ",
       "landmarkId": "n332059860",
       "modelUrl": "./models/brouwerij-het-ij.glb",
       "suppressOsmIds": [
@@ -13112,7 +13118,7 @@
         "glass": "#65848b"
       },
       "attribution": {
-        "title": "Brouwerij ’t IJ former Funen bathhouse",
+        "title": "Brouwerij \u2019t IJ former Funen bathhouse",
         "author": "Map Recall",
         "sourceUrl": "https://www.brouwerijhetij.nl/proeflokalen/proeflokaal-de-molen",
         "licence": "Original project asset",

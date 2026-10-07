@@ -264,12 +264,13 @@ const hallenHouseIds=new Set(['de-hallen','huis-bartolotti']);
 const historicMuseumIds=new Set(['hart-museum','amsterdam-museum']);
 const plantageMuseumIds=new Set(['national-holocaust-museum','hollandsche-schouwburg']);
 const jewishQuarterIds=new Set(['jewish-museum','portuguese-synagogue']);
-const selectedIds = process.argv.flatMap((arg, index, args) => arg === '--only' ? (args[index + 1] ?? '').split(',').filter(Boolean) : []);
+const selectedIds = process.argv.flatMap((arg, index, args) => arg === '--only' ? (args[index + 1] ?? '').split(',').filter(Boolean) : arg.startsWith('--only=') ? arg.slice(7).split(',').filter(Boolean) : []);
 if (process.argv.includes('--help')) {
   console.log('Usage: build-manual-landmarks.ts [--only model-id[,model-id]]');
   process.exit(0);
 }
-if (process.argv.includes('--only') && !selectedIds.length) throw new Error('--only requires at least one model ID');
+for (const arg of process.argv.slice(2)) if (arg.startsWith('--') && arg !== '--only' && arg !== '--help' && !arg.startsWith('--only=')) throw new Error(`Unknown option: ${arg}`);
+if (process.argv.some(arg => arg === '--only' || arg.startsWith('--only=')) && !selectedIds.length) throw new Error('--only requires at least one model ID');
 for (const id of selectedIds) if (!MANUAL_LANDMARKS.some(model => model.id === id)) throw new Error(`Unknown manual landmark: ${id}`);
 for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || selectedIds.includes(model.id))){
   const id=spec.id;

@@ -1618,11 +1618,14 @@
       "id": "kriterion-lower-glazing-feedback",
       "task": "Kriterion lower window glazing hidden by masonry",
       "priority": "high",
-      "status": "queued",
+      "status": "local-verified-hosted-pending",
       "modelId": "kriterion",
       "feedbackId": "1d79b5b9-8491-4c91-b99f-9f9820b69e5b",
       "reportedAssetVersion": "452d0da753f4c034",
-      "nextAction": "Claim fresh Firestore note, inspect original source photos/current builder and repair first-hit glazing exposure. Current published fingerprint still matches faulty screenshot; preserve evidence and verify gallery/native behavior before resolution."
+      "nextAction": "Claim fresh Firestore note, inspect original source photos/current builder and repair first-hit glazing exposure. Current published fingerprint still matches faulty screenshot; preserve evidence and verify gallery/native behavior before resolution.",
+      "sourceCommit": "2c5a558f9c25a0e06b419c250c2d20c793bb90a5",
+      "reviewEvidence": "scripts/landmarks/kriterion-glazing-feedback-review.json",
+      "validation": "Current two-Pand reconstruction and source-family geometric signs: decoded1296pane samples pass, 99.957% native ground coverage, gallery/game/independent/root visual accepted. Selected route/pin/physical sourced card, exactthreealias loaded/fallback and two retained neighbors verified. Hosted verification and conditional feedback resolution pending."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

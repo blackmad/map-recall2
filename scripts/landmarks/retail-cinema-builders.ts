@@ -1,4 +1,6 @@
 import * as T from 'three';
+import {buildKcriterionNativeScope} from './kriterion-native-scope';
+import {addKcriterionFrontLettering} from './kriterion-front-lettering';
 import type {BuildingTools} from './cultural-builders';
 import footprints from './retail-cinema-footprints.json';
 import specs from './retail-cinema-specs.json';
@@ -7,7 +9,7 @@ export function buildRetailCinemaLandmark(id:string,w:number,d:number,b:Building
  type C=Parameters<BuildingTools['add']>[1];const turn=id==='rialto'?Math.PI/2:0,fw=id==='rialto'?d:w,dep=id==='rialto'?w:d;
  function add(g:T.BufferGeometry,c:C,x=0,y=0,z=0){g.translate(x,y,z);g.rotateY(turn);b.add(g,c);}
  function box(x:number,y:number,z:number,a:number,h:number,c:number,colour:C){add(new T.BoxGeometry(a,h,c),colour,x,y+h/2,z);}
- function win(x:number,y:number,z:number,a:number,h:number){box(x,y-.15,z,a+.3,h+.3,.18,'stone');box(x,y,z+.15,a,h,.15,'dark');box(x,y,z+.28,.09,h,.08,'white');for(let v=h/3;v<h;v+=h/3)box(x,y+v,z+.28,a,.09,.08,'white');}
+ function win(x:number,y:number,z:number,a:number,h:number,emit=box){emit(x,y-.15,z,a+.3,h+.3,.18,'stone');emit(x,y,z+.15,a,h,.15,'dark');emit(x,y,z+.28,.09,h,.08,'white');for(let v=h/3;v<h;v+=h/3)emit(x,y+v,z+.28,a,.09,.08,'white');}
  function text(t:string,x:number,y:number,z:number,p:number,c:C){if(!turn){b.sign(t,x,y,z,p,c);return;}const glyph:Record<string,string[]>={R:['110','101','110','101','101'],I:['111','010','010','010','111'],A:['010','101','111','101','101'],L:['100','100','100','100','111'],T:['111','010','010','010','010'],O:['111','101','101','101','111']};let u=x-t.length*4*p/2;for(const ch of t){const rows=glyph[ch];if(rows)for(let j=0;j<5;j++)for(let k=0;k<3;k++)if(rows[j][k]==='1')box(u+k*p,y+(4-j)*p,z,p*.8,p*.8,.08,c);u+=4*p;}}
  if(id==='rialto'){
   // Compact cinema behind the white Art Deco front, five vertical window slots.
@@ -22,10 +24,32 @@ export function buildRetailCinemaLandmark(id:string,w:number,d:number,b:Building
   // narrow bay at its southern end, rather than a facade stretched across it.
   const s=specs.find(s=>s.id===id)!,f=footprints.find(f=>f.id===id)!,anchor=s.footprint.centre,heading=(s.footprint.headingDegrees+180)*Math.PI/180;
   const coord=([lng,lat]:number[])=>{let e=(lng-anchor[0])*111320*Math.cos(anchor[1]*Math.PI/180),n=(lat-anchor[1])*111320;return new T.Vector2(e*Math.sin(heading)+n*Math.cos(heading),e*Math.cos(heading)-n*Math.sin(heading));};
-  const ring=f.ring.map(coord),shape=new T.Shape(ring);const g=new T.ExtrudeGeometry(shape,{depth:9.2,bevelEnabled:false});g.rotateX(Math.PI/2);g.translate(0,9.2,0);add(g,'brick');const roof=new T.ShapeGeometry(shape);roof.rotateX(Math.PI/2);add(roof,'slate',0,9.25,0);
-  const a=12.1,x=-w/2+a/2+.5,z=d/2-.5;box(x,0,z-3,a,17.8,6,'brick');box(x,17.8,z-3,a+.2,.45,6.3,'slate');box(x,0,z+.1,a*.84,4.4,.4,'slate');box(x,0,z+.36,a*.71,3.4,.2,'glass');
-  for(const u of [-a*.24,0,a*.24]){win(x+u,5.4,z+.13,a*.2,3.2);win(x+u,10.2,z+.06,a*.18,3.3);}for(let i=0;i<6;i++)win(x+(i-2.5)*a*.14,14.6,z+.06,a*.1,1.95);
-  box(x,8.8,z+.24,a*.77,.3,.6,'stone');box(x,16.7,z+.21,a+.15,.35,.7,'stone');text('KRITERION',x,3.65,z+.57,.16,'red');for(const u of [-a*.4,a*.4])box(x+u,15.3,z+.3,.1,5.2,.1,'white');
+  const ring=f.ring.map(coord);buildKcriterionNativeScope(b);
+  const a=12.1,x=-w/2+a/2+.5,z=d/2-.5;
+  // The source street chain is slightly oblique to the bounding-box axes.
+  // Put every tier on that same surveyed plane; the lower panes used to sit
+  // inside the auditorium extrusion while their thinner mullions protruded.
+  const p=ring[11],q=ring[13],angle=-Math.atan2(q.y-p.y,q.x-p.x),ca=Math.cos(angle),sa=Math.sin(angle);
+  const streetZ=p.y+(x-p.x)*(q.y-p.y)/(q.x-p.x);
+  function facadeBox(px:number,y:number,pz:number,ww:number,hh:number,dd:number,c:C){
+   const u=px-x,v=pz-z,g=new T.BoxGeometry(ww,hh,dd);g.rotateY(angle);
+   add(g,c,x+u*ca+v*sa,y+hh/2,streetZ-u*sa+v*ca);
+  }
+  // Current concrete plinth and asymmetric glazed entrance, rather than a single billboard pane.
+  facadeBox(x,0,z+.10,a*.90,5.25,.24,'concrete');
+  const shop=x-a*.11,shopWidth=a*.56,door=x+a*.34,doorWidth=a*.15;
+  facadeBox(shop,.2,z+.34,shopWidth,3.3,.14,'glass');
+  facadeBox(door,0,z+.34,doorWidth,3.55,.14,'glass');
+  for(const [center,width] of [[shop,shopWidth],[door,doorWidth]]){
+   for(const side of [-1,1])facadeBox(center+side*width/2,0,z+.44,.10,3.55,.10,'white');
+   for(const y of [.2,1.45,2.55,3.5])facadeBox(center,y,z+.44,width,.09,.10,'white');
+  }
+  for(const u of [-shopWidth/6,shopWidth/6])facadeBox(shop+u,.2,z+.44,.08,3.3,.10,'white');
+  for(const u of [-a*.24,0,a*.24]){win(x+u,5.4,z+.13,a*.2,3.2,facadeBox);win(x+u,10.2,z+.06,a*.18,3.3,facadeBox);}for(let i=0;i<6;i++)win(x+(i-2.5)*a*.14,14.6,z+.06,a*.1,1.95,facadeBox);
+  facadeBox(x,8.8,z+.24,a*.77,.3,.6,'stone');facadeBox(x,16.7,z+.21,a+.15,.35,.7,'stone');
+  // Current municipal photo: thin fabricated caps with red fronts/gold relief.
+  addKcriterionFrontLettering(b,new T.Vector3(x+.24*sa,3.65,streetZ+.24*ca),angle,6.1,.78);
+  for(const u of [-a*.4,a*.4])facadeBox(x+u,15.3,z+.3,.1,5.2,.1,'white');
  }else if(id==='de-bijenkorf'){
   buildBijenkorfNative(b);
  }else throw new Error(`No retail/cinema builder for ${id}`);
