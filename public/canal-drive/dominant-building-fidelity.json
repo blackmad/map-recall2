@@ -437,6 +437,78 @@
       "independentReview": "Private validation: gallery-roof-independent-v3 and game-independent-v4",
       "liveGameReview": "Private validation: game-indexed-v4; warm p95approximately16.7\u201316.8ms, touch nonstartup81ms, no cold/stall-free claim",
       "published": true
+    },
+    "NL.IMBAG.Pand.0363100012168028": {
+      "treatment": "landmark",
+      "assetRole": "ordinary-background-building",
+      "reviewedOn": "2026-10-07",
+      "sourceUrls": [
+        "https://www.amsterdam-monumentenstad.nl/database/grachtenboek_objecten.php?id=11207",
+        "https://amsterdamopdekaart.nl/1850-1940/Singel/151",
+        "https://onsamsterdam.nl/artikelen/de-vaste-route-van-arendo-joustra"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012168028/reference-0363100012168028-2020-00387-einitial.jpg",
+      "reason": "Full source-specific architectural review of historic/registered or distinctive office building. Source-critical frontage, window-tier/base/entry and roof assemblies repaired against current municipal panoramas, register and official aerials. Native surveyed footprint, lower covered parts and roof planes retained; no generic box substitution or invented POI destination. Root/independent gallery and actual desktop/touch-emulated street/zoom-out/pan/fallback review pass with explicit hidden technical materials, window curvature, tiny rooflight/ornament and partial frontage visibility limits.",
+      "checks": {
+        "ordinarySilhouette": false,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "8efa7eef24d4f47a7460c5f17fa532388e7afe40",
+      "sourcePack": "experiments/canal-belt-overnight/validation-batch04-20261007",
+      "roofSourceCommit": "74dc6ae19d03957a9a2cc9f7692140223726655c",
+      "independentReview": "Private validation: gallery-independent-v4 and game-independent-v4",
+      "liveGameReview": "Private validation game-roof-v4; warm p95desktop16.8/touch16.7ms; nonstartup319/128ms; no cold/stall-free claim. Touch emulated onM4Pro; target pyramid meshes absent, hiddenID contract verified.",
+      "published": true
+    },
+    "NL.IMBAG.Pand.0363100012176271": {
+      "treatment": "landmark",
+      "assetRole": "ordinary-background-building",
+      "reviewedOn": "2026-10-07",
+      "sourceUrls": [
+        "https://api.data.amsterdam.nl/v1/monumenten/monumenten/?monumentnummer=210050",
+        "https://amsterdamopdekaart.nl/1850-1940/Singel/152-158"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012176271/reference-0363100012176271-2020-00284-e9.jpg",
+      "reason": "Full source-specific architectural review of historic/registered or distinctive office building. Source-critical frontage, window-tier/base/entry and roof assemblies repaired against current municipal panoramas, register and official aerials. Native surveyed footprint, lower covered parts and roof planes retained; no generic box substitution or invented POI destination. Root/independent gallery and actual desktop/touch-emulated street/zoom-out/pan/fallback review pass with explicit hidden technical materials, window curvature, tiny rooflight/ornament and partial frontage visibility limits.",
+      "checks": {
+        "ordinarySilhouette": false,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "8efa7eef24d4f47a7460c5f17fa532388e7afe40",
+      "sourcePack": "experiments/canal-belt-overnight/validation-batch04-20261007",
+      "roofSourceCommit": "74dc6ae19d03957a9a2cc9f7692140223726655c",
+      "independentReview": "Private validation: gallery-independent-v4 and game-independent-v4",
+      "liveGameReview": "Private validation game-roof-v4; warm p95desktop16.8/touch16.7ms; nonstartup319/128ms; no cold/stall-free claim. Touch emulated onM4Pro; target pyramid meshes absent, hiddenID contract verified.",
+      "published": true
+    },
+    "NL.IMBAG.Pand.0363100012176244": {
+      "treatment": "landmark",
+      "assetRole": "ordinary-background-building",
+      "reviewedOn": "2026-10-07",
+      "sourceUrls": [
+        "https://amsterdam-monumentenstad.nl/database/grachtenboek_objecten.php?id=8083",
+        "https://www.goudenbochtoriginals.com/offices",
+        "https://www.breeam.nl/projecten/gouden-bocht-459-469-17498",
+        "https://cok.amsterdam.nl/wp-content/uploads/2024/06/111jaarwelstandsadviseringdeel2.pdf"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012176244/reference-0363100012176244-2020-00900-einitial.jpg",
+      "reason": "Full source-specific architectural review of historic/registered or distinctive office building. Source-critical frontage, window-tier/base/entry and roof assemblies repaired against current municipal panoramas, register and official aerials. Native surveyed footprint, lower covered parts and roof planes retained; no generic box substitution or invented POI destination. Root/independent gallery and actual desktop/touch-emulated street/zoom-out/pan/fallback review pass with explicit hidden technical materials, window curvature, tiny rooflight/ornament and partial frontage visibility limits.",
+      "checks": {
+        "ordinarySilhouette": false,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "8efa7eef24d4f47a7460c5f17fa532388e7afe40",
+      "sourcePack": "experiments/canal-belt-overnight/validation-batch04-20261007",
+      "roofSourceCommit": "74dc6ae19d03957a9a2cc9f7692140223726655c",
+      "independentReview": "Private validation: gallery-independent-v4 and game-independent-v4",
+      "liveGameReview": "Private validation game-roof-v4; warm p95desktop16.8/touch16.7ms; nonstartup319/128ms; no cold/stall-free claim. Touch emulated onM4Pro; target pyramid meshes absent, hiddenID contract verified.",
+      "published": true
     }
   },
   "notes": [

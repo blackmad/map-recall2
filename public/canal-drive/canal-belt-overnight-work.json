@@ -3,7 +3,7 @@
   "startedAt": "2026-10-06T21:08:31.879031+00:00",
   "scope": "Warehouse conversions and modern blocks in the central canal enclosure",
   "deadlineAssumption": "Overnight run resumed October7; continue today per user instruction",
-  "acceptance": "Seven new canal-belt buildings accepted; final three drafts held in architectural review",
+  "acceptance": "Ten new canal-belt treatments reviewed; final trio release pending",
   "batches": [
     {
       "id": "01",
@@ -51,29 +51,46 @@
     },
     {
       "id": "03",
-      "state": "reviewed-release-pending",
+      "state": "published",
       "candidates": [
         "0363100012167770",
         "0363100012167736"
       ],
       "accepted": [
-        "0363100012167736",
-        "0363100012167770"
+        "0363100012167770",
+        "0363100012167736"
       ],
-      "sourceCommit": "df79731b0ec912f4410c3441db4a1a00c252da2e",
-      "failedEvidence": [
-        "Whole-height roof-object walls repaired to local support",
-        "Fallback screenshot framing gap corrected before acceptance"
-      ]
+      "publicCommit": "8997fa36c765260aec2c2264bec002a73a3032c6",
+      "sourceCommit": "df79731b0ec912f4410c3441db4a1a00c252da2e"
     },
     {
       "id": "04",
-      "state": "draft-builds-review-pending",
+      "state": "reviewed-release-pending",
       "candidates": [
         "0363100012168028",
         "0363100012176271",
         "0363100012176244"
-      ]
+      ],
+      "failedEvidence": [
+        "Metallic-default material",
+        "Incorrect bank rear/street role",
+        "Modern uniform window tiers/base",
+        "Warehouse return strip/parapet",
+        "Bank four tiers/stacked attic groups",
+        "Whole dark roof finish differs from aerial"
+      ],
+      "roofSourceCommit": "74dc6ae1",
+      "accepted": [
+        "0363100012168028",
+        "0363100012176244",
+        "0363100012176271"
+      ],
+      "sourceCommit": "8efa7eef24d4f47a7460c5f17fa532388e7afe40",
+      "currentBankSideSourceCommit": "a2a35c791b21f1412d79a79741aa16be702edc48",
+      "runtimeLoadingMaxMs": {
+        "desktop": 319,
+        "touchEmulated": 128
+      }
     }
   ],
   "morningCheckpoint": {
