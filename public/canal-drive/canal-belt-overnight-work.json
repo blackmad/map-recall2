@@ -79,13 +79,17 @@
   },
   "continuedOn": "2026-10-07",
   "materialTextureTrial": {
-    "state": "isolated-trial-in-progress",
+    "state": "isolated-browser-comparison-reviewed-not-runtime-admitted",
     "sources": [
       "https://polyhaven.com/textures",
       "https://polyhaven.com/license",
       "https://gist.github.com/mauricesvay/1330cc530f6ab2ef33eb6a5ea56ef5bd"
     ],
-    "scope": "Small shared brick/stone/roof/wood surface finish comparison; preserve source-specific architecture and measure game zoom/loading cost; no blanketPBR rollout."
+    "scope": "Small shared brick/stone/roof/wood surface finish comparison; preserve source-specific architecture and measure game zoom/loading cost; no blanketPBR rollout.",
+    "sourceCommit": "e6093506637c4355b3588dbc8fd4890968004a54",
+    "warehouseCostVsOptimizedBaselineBytes": 24676,
+    "modernCostVsOptimizedBaselineBytes": 23468,
+    "decision": "Warehouse finish subtle close-up; concrete payoff rejected. Actual game loading/motion acceptance remains pending."
   },
   "feedbackCheckpoint": {
     "at": "2026-10-07T08:06:38.531432+00:00",
@@ -95,5 +99,6 @@
     "claimedElsewhere": [
       "1d79b5b9-8491-4c91-b99f-9f9820b69e5b"
     ]
-  }
+  },
+  "source04AndRoofFollowupCommit": "7b26e67e736c6434849b443ec649cb1836713f3d"
 }
