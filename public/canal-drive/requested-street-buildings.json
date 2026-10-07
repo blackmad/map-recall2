@@ -126,14 +126,16 @@
           },
           "constructionYear": 2015,
           "bagStatus": "Pand in gebruik",
-          "status": "local-model-reviewed-hosted-pending",
+          "status": "hosted-model-reviewed",
           "modelIds": [
             "haparandaweg-2-4"
           ],
           "sourceUrl": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/c730a627-4789-5c97-9115-7461e604b8bd?f=json",
           "resolution": "explicit-official-verblijfsobject-pand-link",
           "sourceArchiveCommit": "fc18134851149129315e2c9e539427a628f5de73",
-          "acceptedSourceArchiveCommit": "d71d6e18646df491173b8557d3dc3a68f898f1bb"
+          "acceptedSourceArchiveCommit": "d71d6e18646df491173b8557d3dc3a68f898f1bb",
+          "hostedSourceArchiveCommit": "67bd93da2d1c8d73b0befc5efc246bddfec92b09",
+          "publicModelCommit": "5ed408db4b58768bfc6e98c082fed46121a40228"
         },
         {
           "bagId": "0363100012252993",
