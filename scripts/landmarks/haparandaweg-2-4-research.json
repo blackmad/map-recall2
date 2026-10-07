@@ -1,0 +1,498 @@
+{
+  "id": "haparandaweg-2-4",
+  "researchedOn": "2026-10-07",
+  "status": "frozen CPU draft; not gallery/live-game accepted",
+  "identity": {
+    "BAG": "0363100012244095",
+    "OSMBuilding": "w435847382",
+    "genuinePOI": "n4337412612",
+    "VBOs": [
+      "0363010012088521",
+      "0363010012088522"
+    ],
+    "addresses": [
+      "Haparandaweg2",
+      "Haparandaweg4"
+    ],
+    "physicalBuilding": "Het4eGymnasium, Archangelweg4",
+    "BAGYear": 2015,
+    "architectCompletion": 2016
+  },
+  "sourceArchive": {
+    "commit": "fc18134851149129315e2c9e539427a628f5de73",
+    "modelPath": "models/haparandaweg-2-4",
+    "remote": "blackmad/map-recall2-source-data",
+    "scope": "Source-first raw pack; actual native louver correction still needs current game verification.",
+    "acceptedCommit": "d71d6e18646df491173b8557d3dc3a68f898f1bb",
+    "acceptedCheckpoint": "models/haparandaweg-2-4/accepted-checkpoint-2026-10-07.json"
+  },
+  "sources": [
+    {
+      "file": "raw/2026-10-07/3dbag.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012244095",
+      "sha256": "4ae43cd00abc1a00c14501b784ac32838de1cee4acf1b84319c16cc7b15b964a",
+      "bytes": 10191,
+      "retrievedOn": "2026-10-07",
+      "access": "downloaded raw HTTP body",
+      "rights": "Source provider terms; research archive only"
+    },
+    {
+      "file": "raw/2026-10-07/architect-0.jpg",
+      "url": "https://cdn.paulderuiter.nl/_imager/36ff95d9adcf56f87c50dcc9d8c98211/26685/gymnasium_10_c4e709ce89.jpg",
+      "sha256": "139ad860c6765f582f8d400b0e4c86653947720302a5afc49f1091d36dc3661d",
+      "bytes": 116655,
+      "retrievedOn": "2026-10-07",
+      "access": "downloaded raw HTTP body",
+      "rights": "Architect photos Sonia Arrepia, rights retained; geometric reference only"
+    },
+    {
+      "file": "raw/2026-10-07/architect-1.jpg",
+      "url": "https://cdn.paulderuiter.nl/_imager/36ff95d9adcf56f87c50dcc9d8c98211/26684/gymnasium_1_5ae402c983.jpg",
+      "sha256": "aee475793b87e4a3c4b3304cebe489a498510689ad87120f8d303393a03d3742",
+      "bytes": 107745,
+      "retrievedOn": "2026-10-07",
+      "access": "downloaded raw HTTP body",
+      "rights": "Architect photos Sonia Arrepia, rights retained; geometric reference only"
+    },
+    {
+      "file": "raw/2026-10-07/architect-2.jpg",
+      "url": "https://cdn.paulderuiter.nl/_imager/36ff95d9adcf56f87c50dcc9d8c98211/26689/gymnasium_2_5ae402c983.jpg",
+      "sha256": "54123d398266bd46c824ea87c425ca37f4cfa1e512011842c2597f0ae0eaa678",
+      "bytes": 87674,
+      "retrievedOn": "2026-10-07",
+      "access": "downloaded raw HTTP body",
+      "rights": "Architect photos Sonia Arrepia, rights retained; geometric reference only"
+    },
+    {
+      "file": "raw/2026-10-07/architect-3.jpg",
+      "url": "https://cdn.paulderuiter.nl/_imager/36ff95d9adcf56f87c50dcc9d8c98211/26690/gymnasium_3_5ae402c983.jpg",
+      "sha256": "73f4524ef2916fba9c81e995002cbd0517f10fc6a971c040140c78d49ca3c855",
+      "bytes": 85658,
+      "retrievedOn": "2026-10-07",
+      "access": "downloaded raw HTTP body",
+      "rights": "Architect photos Sonia Arrepia, rights retained; geometric reference only"
+    },
+    {
+      "file": "raw/2026-10-07/architect-4.jpg",
+      "url": "https://cdn.paulderuiter.nl/_imager/36ff95d9adcf56f87c50dcc9d8c98211/26691/gymnasium_4_5ae402c983.jpg",
+      "sha256": "bac716c7ecc7d3b45e57a29234ef35dce40927d90287f0f8e46e5443f964361d",
+      "bytes": 88188,
+      "retrievedOn": "2026-10-07",
+      "access": "downloaded raw HTTP body",
+      "rights": "Architect photos Sonia Arrepia, rights retained; geometric reference only"
+    },
+    {
+      "file": "raw/2026-10-07/architect-5.jpg",
+      "url": "https://cdn.paulderuiter.nl/_imager/36ff95d9adcf56f87c50dcc9d8c98211/26692/gymnasium_5_5ae402c983.jpg",
+      "sha256": "48e3b4fec219e6784b8bf096ed172601f5835a3a85fb659da93cc5f391c1b5f9",
+      "bytes": 107419,
+      "retrievedOn": "2026-10-07",
+      "access": "downloaded raw HTTP body",
+      "rights": "Architect photos Sonia Arrepia, rights retained; geometric reference only"
+    },
+    {
+      "file": "raw/2026-10-07/architect-6.jpg",
+      "url": "https://cdn.paulderuiter.nl/_imager/36ff95d9adcf56f87c50dcc9d8c98211/26693/gymnasium_6_5ae402c983.jpg",
+      "sha256": "5aa1dd37dd86047886589d7fac186e9a8e75542b9ccc7ae5f035f460ebd9d6b5",
+      "bytes": 106470,
+      "retrievedOn": "2026-10-07",
+      "access": "downloaded raw HTTP body",
+      "rights": "Architect photos Sonia Arrepia, rights retained; geometric reference only"
+    },
+    {
+      "file": "raw/2026-10-07/architect-7.jpg",
+      "url": "https://cdn.paulderuiter.nl/_imager/36ff95d9adcf56f87c50dcc9d8c98211/26694/gymnasium_7_5ae402c983.jpg",
+      "sha256": "0feee62ce743f8daed67de2cc61fe4343518d7be48688acac0dbadafa51e241f",
+      "bytes": 111001,
+      "retrievedOn": "2026-10-07",
+      "access": "downloaded raw HTTP body",
+      "rights": "Architect photos Sonia Arrepia, rights retained; geometric reference only"
+    },
+    {
+      "file": "raw/2026-10-07/architect.html",
+      "url": "https://paulderuiter.nl/projects/het-4th-vierde-gymnasium",
+      "sha256": "c7cbab37795da83f95ad70bdaf23f096aca5948fc5fb1cfb3fe0a27c3c788e52",
+      "bytes": 148931,
+      "retrievedOn": "2026-10-07",
+      "access": "downloaded raw HTTP body",
+      "rights": "Source provider terms; research archive only"
+    },
+    {
+      "file": "raw/2026-10-07/bag.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/c730a627-4789-5c97-9115-7461e604b8bd?f=json",
+      "sha256": "0c679ebcb5ae38aff39f18ac57f0433ab802ee5674f666b14fced6f20a32e992",
+      "bytes": 2403,
+      "retrievedOn": "2026-10-07",
+      "access": "downloaded raw HTTP body",
+      "rights": "Source provider terms; research archive only"
+    },
+    {
+      "file": "raw/2026-10-07/beeldbank.html",
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=Haparandaweg%202",
+      "sha256": "a45e805ef644e5817b24f32801f5d9ee1b59c8096b2746abfc092b03b8b8529d",
+      "bytes": 12352,
+      "retrievedOn": "2026-10-07",
+      "access": "downloaded raw HTTP body",
+      "rights": "Source provider terms; research archive only"
+    },
+    {
+      "file": "raw/2026-10-07/east-metadata.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_07_54_42_00356/",
+      "sha256": "6d9e1568db9bf47518e99baafba3d5fa13974347715b465dc0a9bc5b70374d34",
+      "bytes": 1761,
+      "retrievedOn": "2026-10-07",
+      "access": "processed selected record from original panos-recent.json",
+      "rights": "Source provider terms; research archive only"
+    },
+    {
+      "file": "raw/2026-10-07/east-pano.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_09_29_07_54_42_00356/equirectangular/panorama_8000.jpg",
+      "sha256": "d8b67ace9c1bc38458fac9722969f2ce464eca04268eb276ab4ce35246dde1ab",
+      "bytes": 3358109,
+      "retrievedOn": "2026-10-07",
+      "access": "downloaded raw HTTP body",
+      "rights": "Gemeente Amsterdam CC BY4.0"
+    },
+    {
+      "file": "raw/2026-10-07/neighbors-bag.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?bbox=4.8722,52.3934,4.8740,52.3949&limit=100&f=json",
+      "sha256": "3d74a53df63f0d22488df81161e694a9194206603379f48fbb6eee38f59847bb",
+      "bytes": 38197,
+      "retrievedOn": "2026-10-07",
+      "access": "downloaded raw HTTP body",
+      "rights": "Source provider terms; research archive only"
+    },
+    {
+      "file": "raw/2026-10-07/north-metadata.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_10_02_09_32_34_00389/",
+      "sha256": "52b1f885fa4ce4214b78ecb54ce08e6c0399a41c69c1f719f6c01e770b178c2c",
+      "bytes": 1761,
+      "retrievedOn": "2026-10-07",
+      "access": "processed selected record from original panos-recent.json",
+      "rights": "Source provider terms; research archive only"
+    },
+    {
+      "file": "raw/2026-10-07/north-pano.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_09_32_34_00389/equirectangular/panorama_8000.jpg",
+      "sha256": "f43672550dc50884dcebff7974bd4043c8931f9b51319a8b3e9dfb65c8e02332",
+      "bytes": 2226111,
+      "retrievedOn": "2026-10-07",
+      "access": "downloaded raw HTTP body",
+      "rights": "Gemeente Amsterdam CC BY4.0"
+    },
+    {
+      "file": "raw/2026-10-07/panos-recent.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.8731,52.3942&radius=100&srid=4326&page_size=500&timestamp_after=2024-01-01",
+      "sha256": "86cead1a7bb2d974ba0534efbf3f348c9090e9745f2a9a704d2f392ef2426c62",
+      "bytes": 440682,
+      "retrievedOn": "2026-10-07",
+      "access": "downloaded raw HTTP body",
+      "rights": "Gemeente Amsterdam CC BY4.0"
+    },
+    {
+      "file": "raw/2026-10-07/panos.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.8731,52.3942&radius=100",
+      "sha256": "276e9c3e3f3bbe69ff82757f2f4c75453669b6ccaa7110e4da03a3c68ef7def6",
+      "bytes": 41417,
+      "retrievedOn": "2026-10-07",
+      "access": "downloaded raw HTTP body",
+      "rights": "Gemeente Amsterdam CC BY4.0"
+    },
+    {
+      "file": "raw/2026-10-07/school-contact.html",
+      "url": "https://www.het4egymnasium.nl/home/contact",
+      "sha256": "8474175eadb25a98055ed80e9759fc0892617cdbc27a8f60a9cb06077e4cbac6",
+      "bytes": 74447,
+      "retrievedOn": "2026-10-07",
+      "access": "downloaded raw HTTP body",
+      "rights": "Source provider terms; research archive only"
+    },
+    {
+      "file": "raw/2026-10-07/south-metadata.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_07_54_42_00350/",
+      "sha256": "16b9becf9edd9807651214ea5f78be0e64cc4065c3e95512630933cbe15b53ab",
+      "bytes": 1760,
+      "retrievedOn": "2026-10-07",
+      "access": "processed selected record from original panos-recent.json",
+      "rights": "Source provider terms; research archive only"
+    },
+    {
+      "file": "raw/2026-10-07/south-pano.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_09_29_07_54_42_00350/equirectangular/panorama_8000.jpg",
+      "sha256": "14c7cca853554c3482a0ed2698492e2101d96f028bddd9fbd4a1c7c3f91084eb",
+      "bytes": 3330535,
+      "retrievedOn": "2026-10-07",
+      "access": "downloaded raw HTTP body",
+      "rights": "Gemeente Amsterdam CC BY4.0"
+    },
+    {
+      "file": "raw/2026-10-07/west-metadata.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_07_54_42_00377/",
+      "sha256": "42758d1693999a29ac6a50fff9a4f605ef06b2487993e7bd73357f2e23b812a0",
+      "bytes": 1761,
+      "retrievedOn": "2026-10-07",
+      "access": "processed selected record from original panos-recent.json",
+      "rights": "Source provider terms; research archive only"
+    },
+    {
+      "file": "raw/2026-10-07/west-pano.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_09_29_07_54_42_00377/equirectangular/panorama_8000.jpg",
+      "sha256": "8e330a6e73d14c46cbb171f1808f65b858f82215db7f4cb5bd9b4280f9c11f24",
+      "bytes": 3801048,
+      "retrievedOn": "2026-10-07",
+      "access": "downloaded raw HTTP body",
+      "rights": "Gemeente Amsterdam CC BY4.0"
+    },
+    {
+      "file": "raw/2026-10-07/osm-map.xml",
+      "url": "https://www.openstreetmap.org/api/0.6/map?bbox=4.8725,52.3936,4.8737,52.3947",
+      "retrievedOn": "2026-10-07",
+      "sha256": "0cc706bf9248ae0c84b6a84d3e9526fb1e8ae1a7eb560c6891902228f817c090",
+      "bytes": 156866,
+      "access": "downloaded original HTTPbody through curl after PythonTLS failure",
+      "rights": "OSM ODbL1.0"
+    },
+    {
+      "file": "raw/2026-10-07/vbo-0363010012088521.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?identificatie=0363010012088521&f=json",
+      "retrievedOn": "2026-10-07",
+      "sha256": "8c0867f989effb571668d0883ba0307f6be83f8c1f17137e9b4d596753ffcf38",
+      "bytes": 1863,
+      "access": "downloaded original HTTPbody through curl after PythonTLS failure",
+      "rights": "PDOK open BAG data"
+    },
+    {
+      "file": "raw/2026-10-07/vbo-0363010012088522.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?identificatie=0363010012088522&f=json",
+      "retrievedOn": "2026-10-07",
+      "sha256": "e6ad6f4c0b7a760103d08168583b1539ffd625bfa934327be1db8ca6340cd6a5",
+      "bytes": 1863,
+      "access": "downloaded original HTTPbody through curl after PythonTLS failure",
+      "rights": "PDOK open BAG data"
+    }
+  ],
+  "architecturalAssertions": [
+    {
+      "part": "fullschool",
+      "source": "architect.html;architect-1.jpg;currentpanos",
+      "feature": "threezones: glazed publicground/entrance; coloured enamel and exposed glazing upperclassrooms framed by projecting timber; silver-louvered sports halls above",
+      "confidence": "high assembly andmaterial; photo-guided approximate per-bay counts"
+    },
+    {
+      "part": "groundwest",
+      "source": "architect-1.jpg;architect-5.jpg;west-pano.jpg",
+      "feature": "west schoolyard is principal publicentrance, broadorange panels continue to lowlevel between narrow door glazing, stepped public forecourt",
+      "confidence": "high orientation; stepdepth simplified inside scope"
+    },
+    {
+      "part": "groundsouth",
+      "source": "south-pano.jpg;architect.html",
+      "feature": "south cycleentry, partiallysunken cycle store, yellowinfill around lower exposed glazing",
+      "confidence": "high orientation, subground interiors not modeled"
+    },
+    {
+      "part": "roofterrace",
+      "source": "architect-6.jpg;3dbag.json",
+      "feature": "southlowroof12.78m overground, northhalltop21.1m, central glazed enclosure approx17-18m; white hallend panels surround blueglass, roofterrace is openabove lowroof, atrium below is enclosed rather thancourtyard",
+      "confidence": "survey envelope/currentarchitectphoto"
+    },
+    {
+      "part": "ordinaryneighbors",
+      "source": "neighbors-bag.json;currentpanos;osm-map.xml",
+      "feature": "preserve every other parent. Westschoolyard, southHaparandaweg street and eastretained apartmentparent2252993; no rectangular replacement padding",
+      "confidence": "survey"
+    }
+  ],
+  "frontage": {
+    "southNativeEndpoints": [
+      [
+        -20.32,
+        27.18
+      ],
+      [
+        18.83,
+        28.09
+      ]
+    ],
+    "outwardNormalApprox": [
+      -1,
+      -0.023
+    ],
+    "westNativeEndpoints": [
+      [
+        -19.06,
+        -28.42
+      ],
+      [
+        -20.32,
+        27.18
+      ]
+    ],
+    "westPublicEntryApprox": [
+      -20.08,
+      9.36
+    ],
+    "sourceFacingCameras": [
+      {
+        "face": "south",
+        "record": "../map-recall2-source-data/models/haparandaweg-2-4/raw/2026-10-07/south-metadata.json",
+        "crop": "../map-recall2-source-data/models/haparandaweg-2-4/processed/2026-10-07/south-perspective.jpg"
+      },
+      {
+        "face": "west",
+        "record": "../map-recall2-source-data/models/haparandaweg-2-4/raw/2026-10-07/west-metadata.json",
+        "crop": "../map-recall2-source-data/models/haparandaweg-2-4/processed/2026-10-07/west-perspective.jpg"
+      },
+      {
+        "face": "east",
+        "record": "../map-recall2-source-data/models/haparandaweg-2-4/raw/2026-10-07/east-metadata.json",
+        "crop": "../map-recall2-source-data/models/haparandaweg-2-4/processed/2026-10-07/east-perspective.jpg"
+      },
+      {
+        "face": "north",
+        "record": "../map-recall2-source-data/models/haparandaweg-2-4/raw/2026-10-07/north-metadata.json",
+        "crop": "../map-recall2-source-data/models/haparandaweg-2-4/processed/2026-10-07/north-perspective.jpg"
+      }
+    ]
+  },
+  "visualReview": {
+    "inspectedSourceImages": [
+      "architect-1.jpg",
+      "architect-5.jpg",
+      "architect-6.jpg",
+      "south/west/east/north-perspective.jpg"
+    ],
+    "CPUImages": [
+      "artifacts/landmark-offline-preview/haparandaweg-2-4-cpu-south-east.png",
+      "artifacts/landmark-offline-preview/haparandaweg-2-4-cpu-south-west.png",
+      "artifacts/landmark-offline-preview/haparandaweg-2-4-cpu-north-east.png",
+      "artifacts/landmark-offline-preview/haparandaweg-2-4-cpu-north-west.png",
+      "artifacts/haparandaweg-2-4/lower-north/haparandaweg-2-4-cpu-north-east-low.png",
+      "artifacts/haparandaweg-2-4/lower-north/haparandaweg-2-4-cpu-north-west-low.png"
+    ],
+    "finding": "Native visual HOLD on broken louver strokes supersedes earlier CPU acceptance; scoped separation candidate ready root regeneration and affected native capture. Existing source rhythm preserved.",
+    "pending": [
+      "nativegallerydefault+fourlowerrotations",
+      "streetground westentrance/southcycleentry",
+      "livegamebothstreets and eastneighborretain",
+      "exactmask/pyramidalroof fallback",
+      "routefinish/pin/clickcard",
+      "performance"
+    ]
+  },
+  "simplifications": [
+    "Nativeflat-color enamel ratherthan photopixels; individualpane counts photo-guided",
+    "Louverpitch .44m visual approximation with flat attached stripe geometry to preserve budgets",
+    "Exterior translucentglass represented opaque bluegray house-style; no interior/classroomfurniture",
+    "Existing real signs omitted as nondistinctive; no painted buildingname",
+    "PVexistence architectsupported but cellcounts simplified"
+  ],
+  "failedEvidence": {
+    "path": "artifacts/haparandaweg-2-4/failed-roof-quantization.glb",
+    "issue": "two small nearlycollinear source-top slivers reversedafter quantization; initial51008tri budgetfailed",
+    "repair": "remove only source triangulation topremnants projectedarea<.025m2, final export checks29rooftriangles no downwardfaces"
+  },
+  "budget": {
+    "triangles": 26233,
+    "bytes": 357384,
+    "sha256": "50625e96b3262bbf5aba32e5eb1db5a940fc25a167c7e658447662508d80a0a5"
+  },
+  "checks": [
+    "focused scopedTypeScriptcompile passes",
+    "compressed exported first-hit36glazingprobes pass",
+    "compressed slateRoof29faces allupward",
+    "finite nativebounds; underbudgets",
+    "24 targeted decoded terrace/roofguard/stair/door/northcolour rays pass",
+    "decodeduppernorthmodule scan pass7frames/2spacinggroups"
+  ],
+  "accessGaps": [
+    "Beeldbank exactaddress request returns JSshell; catalogueimages uninspected; modernschool no monumentassertion",
+    "OSM Overpass failed406/timeouts; directOSMmapcurl recovered originalXML",
+    "PythonTLSfailed on VBO/OSM; curlverified successful"
+  ],
+  "independentRepair": {
+    "failedFrozenSHA256": "7e87ae397177572eb35d2c268ede9ff331515d7b7ba496ae4ddac3367487d6ad",
+    "failedEvidencePath": "artifacts/haparandaweg-2-4/failed-independent-7e87ae",
+    "reviewPath": "artifacts/haparandaweg-2-4-independent-review",
+    "correctedCandidateSHA256": "a912c0ecc4e37ca43d553839c1c14ad6515c89fec2e52005f7da205d2cfe8d5d",
+    "status": "targeted fixes complete; fresh independent CPU/source review pending",
+    "changes": [
+      {
+        "finding": "H24-R1",
+        "repair": "Upperhallmodule arrays independent ofclassrooms. West7modules overnorth52% length then2broad modules through76%; north3broad goldside plus4narrow orangeside. Photo-supported screen/parapet crest21.9mvs21.3m above unchanged surveyed structuralroof; approximate elevations not AHN equipment promotion.",
+        "source": "architect-1.jpg,north-perspective.jpg",
+        "validation": "decodednorthscan finds7frames with broad/narrow spacing ratio>1.5; sourcefourfullviews plus2lowernorthviews inspected bybuilder"
+      },
+      {
+        "finding": "H24-R2",
+        "repair": "All7actualatriumperimetersegments glazed to own sloping endpointtops,2-sidedexposure arounddarkcarrier; upperhallreturns whiteabove18.1m",
+        "source": "architect-6.jpg andsurveyregion37/40",
+        "validation": "6southatrium rays acrossleft/right and3heights exposedglass;3innerhallupper rays exposedwhite/concrete"
+      },
+      {
+        "finding": "H24-R3",
+        "repair": "Remove falsebelowdeckguard. Photo-guided2.34mhigh enclosure starts12.86m over12.78msurveydeck,4southmodules+3east/westreturnmodules. Interiorroofterracekeptopen.",
+        "source": "architect-1.jpg,architect-6.jpg,west/south2025views",
+        "validation": "3above-deckguardrays exposedglass;3downwardterracerays hitdeckwith no floatingcap"
+      },
+      {
+        "finding": "H24-R4",
+        "repair": "Externalweststair4x.16mrise/.65musefultreadrun pluslanding extendingto0.64mdoorthreshold; originalpaddingfreeexactBAGsuppression unchanged. Omitonegroundorangeinfill atactualdoorbay to exposeboth leaves.",
+        "source": "architect-1.jpg,architect-5.jpg,west2025view",
+        "validation": "decoded5approachdown-rays hitmonotonicactualtreads0.16/0.32/0.48/0.64/0.64;2door-leafrays hitglass. Nativecontextgrading/neighboroverlap stillpending"
+      },
+      {
+        "finding": "H24-R5",
+        "repair": "Northyellow/orangeinfillcontinuesfromgroundthroughupperclassroomtiers; glazinglimitedtopane strips",
+        "source": "north2025perspective",
+        "validation": "decodedgroundrays hitgold/copper; low-northrenders showfullheightcolourgroups"
+      }
+    ],
+    "newDecodedProbeCount": 24,
+    "upperNorthDecodedFrameBands": [
+      -15.199999999999976,
+      -11.29999999999999,
+      -7.300000000000004,
+      -3.4000000000000155,
+      4.399999999999988,
+      12.29999999999996
+    ],
+    "remainingLimits": [
+      "photo-guided crest/enclosure/stair dimensions neednativeGPU/sourcecomparison",
+      "subgroundcycleinteriorunmodeled",
+      "freshindependentreview pending",
+      "sourcepackprivatepublication andgallery/live/route/pin/pointer/suppression/performance stillpending"
+    ]
+  },
+  "nativeLouverRepair": {
+    "status": "candidate only; fresh production/nativeGPU effect pending root review",
+    "failedEvidence": "artifacts/haparandaweg-2-4/failed-native-a912-6e1f",
+    "failedDraftSHA256": "a912c0ecc4e37ca43d553839c1c14ad6515c89fec2e52005f7da205d2cfe8d5d",
+    "failedProductionSHA256": "6e1f8242cd3eeacbc7b2b62ea7e971a0f6903224b59289074e4c7acfd6fad7be",
+    "observedFailure": "Chrome game west/north/south details show broken/diagonal upper louver strokes, source/current gallery have continuous slats",
+    "mechanism": "Depth precision/fighting remains inference; actual native result must establish fix. Decoded failed original sampled1188slat triangles, no duplicate triangles, exactly horizontal normals, minbackinggap0.017223861824m.",
+    "targetedChange": "Street silver slat planes shifted outward0.205->0.335m againstwhitebackingfront~0.185; southguard slats0.25->0.385 againstglassfront~0.2325; innerterrace slatboxes shifted to0.33mfromwall anddepth0.06 vswhiteface0.13. Continuous geometry, counts, heights, materials, module grouping and allsourcecriticalassemblies retained; no shader/depthbias/globalbuilding edits.",
+    "sourceSupport": "Silver source assembly remains within existingdeepwoodenframes; separation is a rendering-robust photo-guided approximation, not surveyed construction depth.",
+    "correctedDecoded": {
+      "slatTriangles": 1188,
+      "minimumGapMetres": 0.1482689741340369,
+      "duplicateTriangles": 0,
+      "maximumAbsoluteNormalY": 0
+    },
+    "check": "Decoded allslat/backings scan assertsgap>0.14m, zero duplicates, horizontalnormals; originalcriticalglazing/terrace/steps/roofchecks pass. ScopedTypeScriptpasses. FreshCPU4views regenerated, no nativeacceptanceclaim.",
+    "nativeStateFromRoot": "3 surfaces, fallback/exactsuppression/neighbors/fullgrouping passed. InstalledChromeANGLEMetalM4 wholepausedscene repeat16.58vs16.55ms; earlier95vs49msfailure retained. Lowthresholdsourcecamera clamped/cropped; grading unproven."
+  },
+  "currentNativeReview": {
+    "assetSHA256": "c5955dfe0b6d1b43b6cc0f9434b42c92012a44f69b81e893dcecc27275dcc3c3",
+    "triangles": 26233,
+    "bytes": 362336,
+    "decision": "Root and independent scoped source/gallery/native pass with actual map-context four-sample antialiasing. Native source screens are continuous, west2m entrance approach coherent, genuine route/pin/physical card/exact masks/neighbors/fallback/pans reviewed.",
+    "evidence": "artifacts/haparandaweg-2-4-final-aa-native/review.md",
+    "limits": [
+      "Headless software95/49ms failed result retained; installedMetal currentAA school16.681/fallback16.593 controls pass, not whole-game/device or AA-overhead claim.",
+      "Cross-context AA overhead comparison failed residency controls and remains preserved.",
+      "Approximate source proportions/screen crest/guard/steps; diagnostic true2m camera is not shipping chase view."
+    ],
+    "release": "Local accepted; private evidence pushed, hosted verification pending."
+  }
+}

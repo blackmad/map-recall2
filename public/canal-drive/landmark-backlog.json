@@ -21,7 +21,7 @@
     }
   ],
   "counts": {
-    "manual-model": 196,
+    "manual-model": 197,
     "procedural-kit": 15,
     "pending": 127,
     "catalogue-model": 7
@@ -3614,13 +3614,26 @@
       "treatment": "building"
     },
     {
+      "id": "lm-n4337412612",
+      "name": "Het 4e Gymnasium",
+      "lat": 52.394106,
+      "lng": 4.872795,
+      "prominence": 220,
+      "type": "landmark",
+      "queueRank": 281,
+      "origin": "POI Destinations",
+      "status": "manual-model",
+      "modelId": "haparandaweg-2-4",
+      "treatment": "building"
+    },
+    {
       "id": "lm-olvg-west",
       "name": "OLVG West",
       "lat": 52.37115,
       "lng": 4.8397,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 281,
+      "queueRank": 282,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "olvg-west",
@@ -3634,7 +3647,7 @@
       "lng": 4.9153,
       "prominence": 220,
       "type": "landmark",
-      "queueRank": 282,
+      "queueRank": 283,
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "olvg-oost",
@@ -3648,7 +3661,7 @@
       "lng": 4.897484,
       "prominence": 210,
       "type": "landmark",
-      "queueRank": 283,
+      "queueRank": 284,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -3660,7 +3673,7 @@
       "lng": 4.8934706,
       "prominence": 196,
       "type": "cinema",
-      "queueRank": 284,
+      "queueRank": 285,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "building"
@@ -3672,7 +3685,7 @@
       "lng": 4.8804351,
       "prominence": 196,
       "type": "landmark",
-      "queueRank": 285,
+      "queueRank": 286,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -3684,7 +3697,7 @@
       "lng": 4.882602,
       "prominence": 195,
       "type": "museum",
-      "queueRank": 286,
+      "queueRank": 287,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "building"
@@ -3696,7 +3709,7 @@
       "lng": 4.8523734,
       "prominence": 187,
       "type": "landmark",
-      "queueRank": 287,
+      "queueRank": 288,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -3708,7 +3721,7 @@
       "lng": 4.8558875,
       "prominence": 182,
       "type": "library",
-      "queueRank": 288,
+      "queueRank": 289,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "building"
@@ -3720,7 +3733,7 @@
       "lng": 4.8826015,
       "prominence": 182,
       "type": "library",
-      "queueRank": 289,
+      "queueRank": 290,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "building"
@@ -3732,7 +3745,7 @@
       "lng": 4.93883,
       "prominence": 182,
       "type": "library",
-      "queueRank": 290,
+      "queueRank": 291,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "building"
@@ -3744,7 +3757,7 @@
       "lng": 4.8720423,
       "prominence": 182,
       "type": "library",
-      "queueRank": 291,
+      "queueRank": 292,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "building"
@@ -3756,7 +3769,7 @@
       "lng": 4.8502319,
       "prominence": 182,
       "type": "library",
-      "queueRank": 292,
+      "queueRank": 293,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "building"
@@ -3768,7 +3781,7 @@
       "lng": 4.894049,
       "prominence": 182,
       "type": "library",
-      "queueRank": 293,
+      "queueRank": 294,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "building"
@@ -3780,7 +3793,7 @@
       "lng": 4.8799997,
       "prominence": 182,
       "type": "library",
-      "queueRank": 294,
+      "queueRank": 295,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "building"
@@ -3792,7 +3805,7 @@
       "lng": 4.8512273,
       "prominence": 182,
       "type": "library",
-      "queueRank": 295,
+      "queueRank": 296,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "building"
@@ -3804,7 +3817,7 @@
       "lng": 4.926209,
       "prominence": 182,
       "type": "library",
-      "queueRank": 296,
+      "queueRank": 297,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "building"
@@ -3816,7 +3829,7 @@
       "lng": 4.9117961,
       "prominence": 182,
       "type": "library",
-      "queueRank": 297,
+      "queueRank": 298,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "building"
@@ -3828,7 +3841,7 @@
       "lng": 4.9063659,
       "prominence": 182,
       "type": "library",
-      "queueRank": 298,
+      "queueRank": 299,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "building"
@@ -3840,7 +3853,7 @@
       "lng": 4.892066,
       "prominence": 176,
       "type": "landmark",
-      "queueRank": 299,
+      "queueRank": 300,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -3852,7 +3865,7 @@
       "lng": 4.921024,
       "prominence": 174,
       "type": "landmark",
-      "queueRank": 300,
+      "queueRank": 301,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -3864,7 +3877,7 @@
       "lng": 4.90541,
       "prominence": 173,
       "type": "landmark",
-      "queueRank": 301,
+      "queueRank": 302,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -3876,7 +3889,7 @@
       "lng": 4.8403867,
       "prominence": 172,
       "type": "landmark",
-      "queueRank": 302,
+      "queueRank": 303,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -3888,7 +3901,7 @@
       "lng": 4.925544,
       "prominence": 171,
       "type": "landmark",
-      "queueRank": 303,
+      "queueRank": 304,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -3900,7 +3913,7 @@
       "lng": 4.890663,
       "prominence": 166,
       "type": "landmark",
-      "queueRank": 304,
+      "queueRank": 305,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -3912,7 +3925,7 @@
       "lng": 4.8825,
       "prominence": 165,
       "type": "landmark",
-      "queueRank": 305,
+      "queueRank": 306,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -3924,7 +3937,7 @@
       "lng": 4.907724,
       "prominence": 165,
       "type": "landmark",
-      "queueRank": 306,
+      "queueRank": 307,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -3936,7 +3949,7 @@
       "lng": 4.862746,
       "prominence": 164,
       "type": "landmark",
-      "queueRank": 307,
+      "queueRank": 308,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -3948,7 +3961,7 @@
       "lng": 4.8784792,
       "prominence": 163,
       "type": "landmark",
-      "queueRank": 308,
+      "queueRank": 309,
       "origin": "POI Destinations",
       "status": "procedural-kit",
       "kitName": "Fatih",
@@ -3961,7 +3974,7 @@
       "lng": 4.918031,
       "prominence": 159,
       "type": "landmark",
-      "queueRank": 309,
+      "queueRank": 310,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -3973,7 +3986,7 @@
       "lng": 4.9177925,
       "prominence": 156,
       "type": "landmark",
-      "queueRank": 310,
+      "queueRank": 311,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -3985,7 +3998,7 @@
       "lng": 4.933403,
       "prominence": 155,
       "type": "landmark",
-      "queueRank": 311,
+      "queueRank": 312,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -3997,7 +4010,7 @@
       "lng": 4.8628697,
       "prominence": 151,
       "type": "landmark",
-      "queueRank": 312,
+      "queueRank": 313,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -4009,7 +4022,7 @@
       "lng": 4.8887091,
       "prominence": 151,
       "type": "landmark",
-      "queueRank": 313,
+      "queueRank": 314,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -4021,7 +4034,7 @@
       "lng": 4.9245472,
       "prominence": 151,
       "type": "landmark",
-      "queueRank": 314,
+      "queueRank": 315,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -4033,7 +4046,7 @@
       "lng": 4.9012273,
       "prominence": 151,
       "type": "landmark",
-      "queueRank": 315,
+      "queueRank": 316,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -4045,7 +4058,7 @@
       "lng": 4.9001164,
       "prominence": 151,
       "type": "landmark",
-      "queueRank": 316,
+      "queueRank": 317,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -4057,7 +4070,7 @@
       "lng": 4.9371822,
       "prominence": 151,
       "type": "landmark",
-      "queueRank": 317,
+      "queueRank": 318,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -4069,7 +4082,7 @@
       "lng": 4.8900864,
       "prominence": 151,
       "type": "landmark",
-      "queueRank": 318,
+      "queueRank": 319,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -4081,7 +4094,7 @@
       "lng": 4.877496,
       "prominence": 151,
       "type": "landmark",
-      "queueRank": 319,
+      "queueRank": 320,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -4093,7 +4106,7 @@
       "lng": 4.8625048,
       "prominence": 151,
       "type": "landmark",
-      "queueRank": 320,
+      "queueRank": 321,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -4105,7 +4118,7 @@
       "lng": 4.9088495,
       "prominence": 151,
       "type": "museum",
-      "queueRank": 321,
+      "queueRank": 322,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "building"
@@ -4117,7 +4130,7 @@
       "lng": 4.9158632,
       "prominence": 151,
       "type": "landmark",
-      "queueRank": 322,
+      "queueRank": 323,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -4129,7 +4142,7 @@
       "lng": 4.859192,
       "prominence": 151,
       "type": "landmark",
-      "queueRank": 323,
+      "queueRank": 324,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -4141,7 +4154,7 @@
       "lng": 4.906545,
       "prominence": 146,
       "type": "landmark",
-      "queueRank": 324,
+      "queueRank": 325,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -4153,7 +4166,7 @@
       "lng": 4.8894308,
       "prominence": 144,
       "type": "landmark",
-      "queueRank": 325,
+      "queueRank": 326,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -4165,7 +4178,7 @@
       "lng": 4.9164237,
       "prominence": 144,
       "type": "landmark",
-      "queueRank": 326,
+      "queueRank": 327,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -4177,7 +4190,7 @@
       "lng": 4.9044884,
       "prominence": 144,
       "type": "landmark",
-      "queueRank": 327,
+      "queueRank": 328,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -4189,7 +4202,7 @@
       "lng": 4.897755,
       "prominence": 138,
       "type": "landmark",
-      "queueRank": 328,
+      "queueRank": 329,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -4201,7 +4214,7 @@
       "lng": 4.8721123,
       "prominence": 132,
       "type": "museum",
-      "queueRank": 329,
+      "queueRank": 330,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "building"
@@ -4213,7 +4226,7 @@
       "lng": 4.897689,
       "prominence": 106,
       "type": "landmark",
-      "queueRank": 330,
+      "queueRank": 331,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -4225,7 +4238,7 @@
       "lng": 4.883456,
       "prominence": 100,
       "type": "landmark",
-      "queueRank": 331,
+      "queueRank": 332,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -4237,7 +4250,7 @@
       "lng": 4.9138603,
       "prominence": 92,
       "type": "landmark",
-      "queueRank": 332,
+      "queueRank": 333,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -4249,7 +4262,7 @@
       "lng": 4.913976,
       "prominence": 92,
       "type": "landmark",
-      "queueRank": 333,
+      "queueRank": 334,
       "origin": "POI Destinations",
       "status": "pending",
       "treatment": "review"
@@ -4259,7 +4272,7 @@
       "name": "Amsterdam Centraal station complex",
       "lat": 52.37855998792934,
       "lng": 4.899750668752946,
-      "queueRank": 334,
+      "queueRank": 335,
       "origin": "User requested",
       "status": "manual-model",
       "modelId": "centraal-station",
@@ -4271,7 +4284,7 @@
       "name": "Breitner Tower",
       "lat": 52.34470057536986,
       "lng": 4.916345037374623,
-      "queueRank": 335,
+      "queueRank": 336,
       "origin": "User requested",
       "status": "manual-model",
       "modelId": "breitner-tower",
@@ -4283,7 +4296,7 @@
       "name": "Symphony",
       "lat": null,
       "lng": null,
-      "queueRank": 336,
+      "queueRank": 337,
       "origin": "User requested",
       "status": "catalogue-model",
       "modelId": "ordinary-0363100012242125",
@@ -4295,7 +4308,7 @@
       "name": "World Trade Center Amsterdam",
       "lat": null,
       "lng": null,
-      "queueRank": 337,
+      "queueRank": 338,
       "origin": "User requested",
       "status": "catalogue-model",
       "modelId": "ordinary-0363100012242125",
@@ -4307,7 +4320,7 @@
       "name": "Machinegebouw",
       "lat": 52.38634502756621,
       "lng": 4.872808548242466,
-      "queueRank": 338,
+      "queueRank": 339,
       "origin": "User requested",
       "status": "manual-model",
       "modelId": "machinegebouw",
@@ -4319,7 +4332,7 @@
       "name": "Transformatorhuis",
       "lat": null,
       "lng": null,
-      "queueRank": 339,
+      "queueRank": 340,
       "origin": "User requested",
       "status": "catalogue-model",
       "modelId": "ordinary-0363100012242125",
@@ -4331,7 +4344,7 @@
       "name": "VondelCS",
       "lat": null,
       "lng": null,
-      "queueRank": 340,
+      "queueRank": 341,
       "origin": "User requested",
       "status": "catalogue-model",
       "modelId": "ordinary-0363100012242125",
@@ -4343,7 +4356,7 @@
       "name": "Vondeltuin",
       "lat": 52.35492528,
       "lng": 4.85651048,
-      "queueRank": 341,
+      "queueRank": 342,
       "origin": "User requested",
       "status": "manual-model",
       "modelId": "vondeltuin",
@@ -4355,7 +4368,7 @@
       "name": "Het Lab",
       "lat": null,
       "lng": null,
-      "queueRank": 342,
+      "queueRank": 343,
       "origin": "User requested",
       "status": "catalogue-model",
       "modelId": "ordinary-0363100012242125",
@@ -4367,7 +4380,7 @@
       "name": "Mountain Network Amsterdam",
       "lat": null,
       "lng": null,
-      "queueRank": 343,
+      "queueRank": 344,
       "origin": "User requested",
       "status": "catalogue-model",
       "modelId": "ordinary-0363100012242125",
@@ -4379,7 +4392,7 @@
       "name": "Klimhal Amsterdam",
       "lat": null,
       "lng": null,
-      "queueRank": 344,
+      "queueRank": 345,
       "origin": "User requested",
       "status": "catalogue-model",
       "modelId": "ordinary-0363100012242125",
@@ -4391,7 +4404,7 @@
       "name": "H'ART Museum — Amstelhof",
       "lat": 52.36539923653881,
       "lng": 4.902899923436612,
-      "queueRank": 345,
+      "queueRank": 346,
       "origin": "Landmark catalogue",
       "status": "manual-model",
       "modelId": "hart-museum",

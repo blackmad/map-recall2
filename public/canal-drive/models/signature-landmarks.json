@@ -13315,6 +13315,91 @@
       "triangles": 6004,
       "bytes": 83264,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "haparandaweg-2-4": {
+      "id": "haparandaweg-2-4",
+      "name": "Het 4e Gymnasium",
+      "modelUrl": "./models/haparandaweg-2-4.glb",
+      "suppressOsmIds": [
+        "w435847382",
+        "w1193314343",
+        "w1193314344",
+        "w1193314345",
+        "NL.IMBAG.Pand.0363100012244095"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.87309,
+          52.39419
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 57,
+        "widthMetres": 41
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.87309,
+          52.39419
+        ],
+        "northOffsetDegrees": 0,
+        "source": "PDOK BAG0363100012244095/AHN5 source2023 roof regions, native east/south axes"
+      },
+      "materialOverrides": {
+        "dark": "#263334",
+        "glass": "#466d79",
+        "frame": "#2c3839",
+        "concrete": "#6f7875",
+        "slate": "#646f6c",
+        "white": "#bcc8c2",
+        "bronze": "#b36b38",
+        "gold": "#d9ba4c",
+        "copper": "#ae5139",
+        "red": "#d7732d"
+      },
+      "attribution": {
+        "title": "Het4eGymnasium source-derived school host",
+        "author": "Map Recall",
+        "sourceUrl": "https://paulderuiter.nl/projects/het-4th-vierde-gymnasium",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free metre geometry; architectural references guide geometry only. Requested Haparandaweg2/4 share single BAGparent."
+      },
+      "preservePositionPrecision": true,
+      "landmarkId": "n4337412612",
+      "bounds": {
+        "min": [
+          -23.584064483642578,
+          0,
+          -29.109800338745117
+        ],
+        "max": [
+          20.834423065185547,
+          21.979999542236328,
+          28.77759552001953
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.87309,
+          52.39419
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 57.88739585876465,
+        "heightMetres": 21.979999542236328,
+        "depthMetres": 44.418487548828125,
+        "depthCoverage": 1.0833777450933688
+      },
+      "triangles": 26233,
+      "bytes": 362336,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

@@ -114,6 +114,8 @@ class VectorBasemap {
 
     this.map = new maplibregl.Map({
       container,
+      // Native Three.js layers share this context; MSAA must be requested here.
+      canvasContextAttributes: { antialias: true },
       style: 'https://tiles.openfreemap.org/styles/liberty',
       center: [4.9041, 52.3676],
       zoom: 17,
