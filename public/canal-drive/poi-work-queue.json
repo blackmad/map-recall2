@@ -25,6 +25,41 @@
   ],
   "tasks": [
     {
+      "id": "podium-mozaiek",
+      "task": "Podium Mozaïek — model the former Pniëlkerk theatre building",
+      "priority": "high",
+      "status": "queued",
+      "requested": true,
+      "requestedOn": "2026-10-07",
+      "sources": [
+        {
+          "title": "Podium Mozaïek — about the venue",
+          "url": "https://podiummozaiek.nl/over-ons/overzicht"
+        }
+      ],
+      "nextAction": "Resolve the genuine mapped venue identity and official building parent at Bos en Lommerweg 191; archive current exterior, surveyed footprint/roof and bounded Beeldbank sources. Model the church/theatre in native house style and verify destination, pin and researched card together."
+    },
+    {
+      "id": "dorus-theus-brug",
+      "task": "Dorus Theus Brug — source-backed bridge landmark",
+      "priority": "high",
+      "status": "queued-needs-identity-research",
+      "requested": true,
+      "requestedOn": "2026-10-07",
+      "userRequestedName": "Dorus Theus Brug",
+      "nextAction": "Confirm official bridge name, location, municipal bridge number and mapped identity before modeling. Preserve the actual deck, water opening, abutments and adjoining paths; verify native bridge geometry, destination, pin and researched card. Do not treat it as a building extrusion."
+    },
+    {
+      "id": "westerkerk-tours-pancakes-neighbor-fidelity",
+      "task": "Repair the small Tours/Pancakes building beside Westerkerk",
+      "priority": "high",
+      "status": "queued-source-fidelity-failure",
+      "requestedOn": "2026-10-07",
+      "parentPand": "0363100012174413",
+      "osmId": "w266616392",
+      "nextAction": "Restore the source-supported pitched tile roof, circular gable and glazed frontage of the independently owned retail building. The current generic flat roof and regular two-tier facade are unchanged by the church courtyard repair. Preserve its separate footprint and do not add it to Westerkerk suppression. Dated municipal panorama03246 and official BAG/OSM records are archived with the Westerkerk source pack."
+    },
+    {
       "id": "sloterdijkermeer-missing-garden-houses",
       "task": "Restore missing Sloterdijkermeer garden-house footprints and develop source-informed small allotment-house treatment",
       "priority": "high",
@@ -529,10 +564,10 @@
       "id": "electric-ladyland",
       "task": "Electric Ladyland: research identifiable exterior before model",
       "priority": "normal",
-      "status": "local-model-accepted-hosted-pending",
+      "status": "verified-scoped-hosted",
       "scopeResearch": "docs/references/electric-ladyland/native-scope-checkpoint.json",
       "sourceCommit": "706b8a3ca72c330b1de1a874563c7c3f77e45389",
-      "nextAction": "Publish accepted native original two-parent ensemble and verify actual hosted fingerprint, gallery/game/source card and exact suppression. Preserve unobserved rear apertures and bounded headless performance limits.",
+      "nextAction": "Hosted canonical game review passed at463f304d; later5402f898 readonly unchanged-model compatibility audited. Preserve approximate joinery, unobserved rear apertures and bounded headless timing limitations.",
       "sourceArchive": {
         "repository": "blackmad/map-recall2-source-data",
         "commit": "fc73c8bbd7d907846e133df99362c77e0080543a",
@@ -540,10 +575,14 @@
       },
       "referenceSupplementCommit": "3cbc70dd1a42ec2d2f77369ea4551564a4807298",
       "candidateSHA256": "05312522c406fec6f915b72d11e8e44042c2b956787875874f0d00056012910e",
-      "validation": "Root and independent sourceCPU/gallery/native review pass; corrected source-backed +70.147 offset, actualgenuine route/pin/physicalcard, exact two-parent masks/sixretainedneighbors, disabled/unavailablefallback, mouse/touch stationaryriderpans; bounded enabled/disabled framecomparisons. Hosted pending.",
+      "validation": "Root and independent source, native and canonical hosted gallery/game passed. Actual fetched05312522 asset, genuine route/pin/physical card, exact two-parent masks, six retained neighbors, disabled/unavailable fallback and desktop/touch stationary pans verified. Hosted463 browser checks do not extend to later540 performance; Edumap provides matching revision stamps only, not Canal Drive assets.",
       "acceptedNativeArchive": {
         "commit": "6f8fe12389a2d969fa29f6c36f503155b48c7d89",
         "path": "models/electric-ladyland/checkpoints/accepted-native-05312522-20261007"
+      },
+      "hostedEvidence": {
+        "commit": "f04e5e019060648a0c997a06da57afbdd2bbcef3",
+        "path": "models/electric-ladyland/checkpoints/hosted-463f304d-20261007"
       }
     },
     {
@@ -1903,16 +1942,20 @@
       "id": "westerkerk-annex-rear-feedback",
       "task": "Westerkerk adjoining buildings and blank rear slab",
       "priority": "high",
-      "status": "production-source-cpu-reviewed-native-pending",
+      "status": "local-scoped-courtyard-accepted-release-pending",
       "modelId": "westerkerk",
       "requestedOn": "2026-10-07",
-      "nextAction": "Inspect direct front/rear screenshots against exact surveyed church/annex/neighbor ownership; distinguish overlapping ordinary carriers from incorrect legacy geometry. Rebuild source-critical assemblies with native/gallery/game review; preserve neighbors/open space and all3POIsurfaces.",
+      "nextAction": "Publish the source-backed courtyard and low-roof correction, then verify hosted exact asset. Tours/Pancakes2174413 pitched roof/circular gable remains a separate queued source-fidelity failure.",
       "diagnosis": "Actual native layer check: church aliases already masked; blank rear slab is custom w749287964 top5 excluded by facade top>5 guard. Residual-parent volumes also require source height/scope review. Separate ordinary adjoining buildings stay visible.",
       "candidateSHA256": "b2efbdd4c34631b76573988a696e90c56c9fede504447c9b30b292da6be27a5e",
       "validation": "Source/CPU scoped pass: unsupported courtyard slab removed,4exactlowchurchroofs retained,separateTours/Pancakes verifiedofficialBAG/OSM,nonewneighborintersections. Production16bit fixes14bitreversedear;128rooftrianglesup and4continuousroofs withoutinteriorholes. Strictsourcegrid1/2038 misses due36micrometre edge shift retained.289legacyfacadereliefintercepts within.552mwall band preserved. Native pending.",
       "sourceArchive": {
         "commit": "7e21be82",
         "path": "models/westerkerk/checkpoints/final-source-cpu-and-production-1bfbeb49-20261007"
+      },
+      "acceptedNativeArchive": {
+        "commit": "f04e5e019060648a0c997a06da57afbdd2bbcef3",
+        "path": "models/westerkerk/checkpoints/native-courtyard-b2efbdd4-20261007"
       }
     },
     {

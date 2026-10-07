@@ -1,12 +1,13 @@
 import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import source from './westerkerk-footprints.json';
+import {openTopPrism,upwardRoofPlane} from './house-geometry';
 type Colour=Parameters<BuildingTools['add']>[1];
 /** Original Renaissance church: exact double-cross roofs and stepped bell tower. */
 export function buildWesterkerk(_w:number,_d:number,b:BuildingTools){
  const {add,box}=b;
  function shape(rings:number[][][]){const s=new T.Shape(rings[0].map(p=>new T.Vector2(p[0],p[1])));for(const r of rings.slice(1))s.holes.push(new T.Path(r.map(p=>new T.Vector2(p[0],p[1]))));return s;}
- function body(polygons:number[][][][],base:number,height:number,c:Colour){for(const r of polygons){const g=new T.ExtrudeGeometry(shape(r),{depth:height,bevelEnabled:false});g.rotateX(Math.PI/2);g.translate(0,base+height,0);add(g,c);}}
+ function body(polygons:number[][][][],base:number,height:number,c:Colour){for(const r of polygons)add(openTopPrism(shape(r),base,base+height),c);}
  function mesh(v:number[],c:Colour){if(!v.length)return;const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(v,3));g.computeVertexNormals();add(g,c);}
  function segment(a:number[],q:number[],y:number,h:number,d:number,c:Colour){const dx=q[0]-a[0],dz=q[1]-a[1];box((a[0]+q[0])/2,y,(a[1]+q[1])/2,Math.hypot(dx,dz),h,d,c,-Math.atan2(dz,dx));}
  function arch(x:number,y:number,z:number,w:number,h:number,a:number,c:Colour,depth=.12){const s=new T.Shape();s.moveTo(-w/2,0);s.lineTo(w/2,0);s.lineTo(w/2,h-w/2);s.absarc(0,h-w/2,w/2,0,Math.PI,false);s.closePath();add(new T.ExtrudeGeometry(s,{depth,bevelEnabled:false,curveSegments:6}),c,x,y,z,a);}
@@ -32,6 +33,8 @@ export function buildWesterkerk(_w:number,_d:number,b:BuildingTools){
   }
  }
  for(const part of source.parts){
+  // The mapped5m part sweeps an open terrace and separately owned neighbor.
+  if(part.osmId==='w749287964')continue;
   const tags=part.properties as Record<string,string>,top=Number(tags.height),base=Number(tags.min_height||0),[x0,z0,x1,z1]=part.bounds,cx=(x0+x1)/2,cz=(z0+z1)/2;
   const tower=part.osmId.startsWith('w751083'),gable=tags['roof:shape']==='gabled',pyramid=tags['roof:shape']==='pyramidal';
   const rise=Number(tags['roof:height']||0),aisle=part.osmId==='w749268115',eaves=aisle?12.5:top-rise;
@@ -41,7 +44,7 @@ export function buildWesterkerk(_w:number,_d:number,b:BuildingTools){
   const height=(x:number,z:number)=>{if(gable){const v=part.roofAxis==='x'?x:z,m=part.roofAxis==='x'?cx:cz,r=part.roofAxis==='x'?(x1-x0)/2:(z1-z0)/2;return eaves+rise*Math.max(0,1-Math.abs(v-m)/r);}if(aisle)return eaves+(top-eaves)*Math.max(0,1-Math.abs(z-cz)/((z1-z0)/2));return top;};
   if(pyramid){const v:number[]=[];for(const rings of part.localPolygons){const r=rings[0];for(let i=0;i<r.length-1;i++)v.push(r[i][0],eaves,r[i][1],r[i+1][0],eaves,r[i+1][1],cx,top,cz);}mesh(v,'slate');}
   else{
-   for(const rings of part.roofPolygons){const g=new T.ShapeGeometry(shape(rings)),p=g.getAttribute('position');for(let i=0;i<p.count;i++){const x=p.getX(i),z=p.getY(i);p.setXYZ(i,x,height(x,z),z);}g.computeVertexNormals();add(g,tower?'slate':top===5?'frame':'slate');}
+   for(const rings of part.roofPolygons){const g=new T.ShapeGeometry(shape(rings)),p=g.getAttribute('position');for(let i=0;i<p.count;i++){const x=p.getX(i),z=p.getY(i);p.setXYZ(i,x,height(x,z),z);}const ix=g.index!;for(let i=0;i<ix.count;i+=3){const q=ix.getX(i+1);ix.setX(i+1,ix.getX(i+2));ix.setX(i+2,q);}g.computeVertexNormals();add(g,tower?'slate':top===5?'frame':'slate');}
    if(gable||aisle){const v:number[]=[];
     for(const rings of part.localPolygons)for(const r of rings)for(let i=0;i<r.length-1;i++){
      const a=r[i],q=r[i+1],points=[a],axis=gable?part.roofAxis:'z',k=axis==='x'?0:1,m=k===0?cx:cz,t=(m-a[k])/(q[k]-a[k]);if(t>0&&t<1)points.push([a[0]+(q[0]-a[0])*t,a[1]+(q[1]-a[1])*t]);points.push(q);
@@ -65,8 +68,17 @@ export function buildWesterkerk(_w:number,_d:number,b:BuildingTools){
    }
   }
  }
- // Exact low mapped annex/rim geometry remains below the monumental roofs.
- body(source.residualParentPolygons,0,12,'brick');for(const rings of source.residualParentPolygons){const g=new T.ShapeGeometry(shape(rings));g.rotateX(Math.PI/2);add(g,'slate',0,12,0);}
+ // Keep real buttress/rim residuals, excluding degenerate Boolean slivers.
+ const residuals=source.residualParentPolygons.filter(rings=>Math.abs(rings[0].slice(0,-1).reduce((s,a,i)=>{const q=rings[0][i+1];return s+a[0]*q[1]-q[0]*a[1];},0))>.05);
+ body(residuals,0,12,'brick');for(const rings of residuals)add(upwardRoofPlane(shape(rings),12),'slate');
+ // Exact surveyed low church RoofSurfaces; the north terrace stays open.
+ for(const plane of source.annexRepair.lowChurchRoofPlanes){
+  const ring=plane.vertices.map(v=>[v[0],v[2]]);ring.push(ring[0]);
+  const low=Math.min(...plane.vertices.map(v=>v[1]));body([[ring]],0,low,'brick');
+  const skirt:number[]=[];for(let i=0;i<plane.vertices.length;i++){const a=plane.vertices[i],q=plane.vertices[(i+1)%plane.vertices.length];skirt.push(a[0],low,a[2],q[0],low,q[2],q[0],q[1],q[2],a[0],low,a[2],q[0],q[1],q[2],a[0],a[1],a[2]);}mesh(skirt,'brick');
+  const roof=upwardRoofPlane(shape([ring]));const p=roof.getAttribute('position');
+  for(let i=0;i<p.count;i++){const v=plane.vertices.reduce((a,b)=>Math.hypot(b[0]-p.getX(i),b[2]-p.getZ(i))<Math.hypot(a[0]-p.getX(i),a[2]-p.getZ(i))?b:a);p.setY(i,v[1]);}roof.computeVertexNormals();add(roof,'slate');
+ }
  const lower=source.parts.find(p=>p.osmId==='w751083598')!,[x0,z0,x1,z1]=lower.bounds,cx=(x0+x1)/2,cz=(z0+z1)/2;
  for(const [x,z,angle] of [[cx,z0-.18,Math.PI],[cx,z1+.18,0],[x0-.18,cz,-Math.PI/2],[x1+.18,cz,Math.PI/2]]){
   const nx=Math.sin(angle),nz=Math.cos(angle),y=52.3;box(x,y-2.4,z,5.3,4.8,.22,'stone',angle);box(x+nx*.17,y-2.15,z+nz*.17,4.8,4.35,.2,'red',angle);
