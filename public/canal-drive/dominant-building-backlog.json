@@ -14,7 +14,7 @@
     "Exact modeled identities excluded; repeated tile identities, near-identical footprints and raised parts grouped.",
     "Ground-level courtyard buildings remain separate. Uncertain complex identities require manual research."
   ],
-  "candidateCount": 1832,
+  "candidateCount": 1831,
   "candidates": [
     {
       "id": "NL.IMBAG.Pand.0363100012207510",
@@ -9056,34 +9056,6 @@
       "priority": "low",
       "status": "needs-identification-and-research",
       "sourceUrl": "https://3dbag.nl/en/viewer"
-    },
-    {
-      "id": "w754894012",
-      "name": null,
-      "footprintSquareMetres": 1185,
-      "heightMetres": 92,
-      "center": [
-        4.8720391,
-        52.3377523
-      ],
-      "aliases": [
-        "w754894013"
-      ],
-      "raisedParts": true,
-      "roofShape": "",
-      "poiNames": [],
-      "fidelity": {
-        "treatment": "unreviewed",
-        "workflow": "recognition-review",
-        "state": "suggested",
-        "reasons": [
-          "Tall skyline building",
-          "Raised parts or underpass risk"
-        ]
-      },
-      "priority": "low",
-      "status": "needs-identification-and-research",
-      "sourceUrl": "https://www.openstreetmap.org/way/754894012"
     },
     {
       "id": "NL.IMBAG.Pand.0363100012202379",

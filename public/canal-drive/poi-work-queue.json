@@ -337,7 +337,10 @@
       "id": "vinoly",
       "task": "Vi\u00f1oly",
       "priority": "normal",
-      "status": "queued"
+      "status": "local-verified-hosted-pending",
+      "sourceCommit": "3bb971b282cf9943c34b80406dc864ceb312e25b",
+      "reviewEvidence": "scripts/landmarks/vinoly-review.json",
+      "validation": "Current e25 mesh22942tri322440B: root/independent source/gallery/north/south/lowfront bounded accepted; exact route/pin/physical sourced card,6aliases and resident neighbors verified. Actual aborted asset request restores fallback; paused-touch fixed-rider pan and Vi-only replacement/fallback scene samples pass. Diagnostic highpitch camera and concealed18m terrace transit limits explicit. Hosted verification pending."
     },
     {
       "id": "the-rock",
@@ -1618,14 +1621,19 @@
       "id": "kriterion-lower-glazing-feedback",
       "task": "Kriterion lower window glazing hidden by masonry",
       "priority": "high",
-      "status": "local-verified-hosted-pending",
+      "status": "hosted-verified",
       "modelId": "kriterion",
       "feedbackId": "1d79b5b9-8491-4c91-b99f-9f9820b69e5b",
       "reportedAssetVersion": "452d0da753f4c034",
       "nextAction": "Claim fresh Firestore note, inspect original source photos/current builder and repair first-hit glazing exposure. Current published fingerprint still matches faulty screenshot; preserve evidence and verify gallery/native behavior before resolution.",
       "sourceCommit": "2c5a558f9c25a0e06b419c250c2d20c793bb90a5",
       "reviewEvidence": "scripts/landmarks/kriterion-glazing-feedback-review.json",
-      "validation": "Current two-Pand reconstruction and source-family geometric signs: decoded1296pane samples pass, 99.957% native ground coverage, gallery/game/independent/root visual accepted. Selected route/pin/physical sourced card, exactthreealias loaded/fallback and two retained neighbors verified. Hosted verification and conditional feedback resolution pending."
+      "validation": "Current two-Pand reconstruction and source-family geometric signs: decoded1296pane samples pass, 99.957% native ground coverage, gallery/game/independent/root visual accepted. Selected route/pin/physical sourced card, exactthreealias loaded/fallback and two retained neighbors verified. Exact hosted mesh/gallery/game checks passed and conditional feedback resolved after root inspection.",
+      "publicCommit": "6e06b7e4806756f6de1e808906b78236e6e68680",
+      "hostedDeploymentRun": 37598982704,
+      "feedbackStatus": "resolved",
+      "feedbackUpdateTime": "2026-10-07T09:19:10.677917Z",
+      "hostedSourceCommit": "173f7bdbfaf300dfb2656206649402b9766e8450"
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

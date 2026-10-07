@@ -1903,7 +1903,9 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_1605152135",
       modelUrl: "./models/kriterion.glb",
       suppressOsmIds: [
-        "w268999077"
+        "w268999077",
+        "NL.IMBAG.Pand.0363100012253901",
+        "NL.IMBAG.Pand.0363100012181099"
       ],
       footprint: {
         centre: [
@@ -1922,7 +1924,7 @@ Map source: ${osmUrl(places[i][0])}`);
         sourceUrl: "https://www.stichtingkriterion.nl/geschiedenis",
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
-        modifications: "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+        modifications: "Original texture-free native reconstruction of the current cinema and shared residential/hall parents. Surveyed roof zones and current municipal panorama references guide the original facade geometry, concrete entrance and approximate real-sign lettering."
       },
       surveyed: {
         anchor: [
@@ -1932,7 +1934,11 @@ Map source: ${osmUrl(places[i][0])}`);
         northOffsetDegrees: 251.44363710419276,
         source: "OSM building w268999077 polygon, east-facing Roetersstraat street house"
       },
-      spatialSuppression: false
+      spatialSuppression: false,
+      materialOverrides: {
+        greyBrick: "#756b5c",
+        concrete: "#8c918a"
+      }
     },
     {
       id: "de-bijenkorf",
@@ -8293,6 +8299,48 @@ Map source: ${osmUrl(places[i][0])}`);
         commit: "b48b9e9e33a15680e2cccacc02cacae5b2305604",
         rawSourceCommit: "b9ecc5f2",
         acceptedCheckpointCommit: "b48b9e9e33a15680e2cccacc02cacae5b2305604"
+      }
+    },
+    {
+      id: "vinoly",
+      name: "Vi\xF1oly",
+      landmarkId: "osm_building_27653949",
+      modelUrl: "./models/vinoly.glb",
+      suppressOsmIds: [
+        "w27653949",
+        "w754894011",
+        "w754894012",
+        "w754894013",
+        "w754894014",
+        "NL.IMBAG.Pand.0363100012107681"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.872403,
+          52.337767
+        ],
+        headingDegrees: 0,
+        lengthMetres: 91,
+        widthMetres: 34
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      surveyed: {
+        anchor: [
+          4.872403,
+          52.337767
+        ],
+        northOffsetDegrees: 0,
+        source: "Native WGS84 OSM part rings checked against BAG0363100012107681, metre east/south axes, scale1; broad91.29NAP crown rebase0.333NAP. Exact identities only."
+      },
+      attribution: {
+        title: "Vi\xF1oly/Mahler4 Amsterdam",
+        author: "Map Recall",
+        sourceUrl: "https://vinoly.com/works/mahler-4-office-tower/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free surveyed-footprint reconstruction with photo-guided sculptural stair recesses and aluminium fins; no third-party render mesh/photo pixels."
       }
     }
   ];
@@ -15422,6 +15470,4412 @@ Map source: ${osmUrl(places[i][0])}`);
         },
         rearSourceAssociation: "Native NE edges13/14/15: surveyed roofregion2 approximately13.15m, ground+threeupper rows. Oppositewing17\u201318m strip and inset21m storage remain separate; earlier association withdrawn.",
         updatedAt: "2026-10-07T07:41:05.401169+00:00"
+      },
+      {
+        id: "ordinary-0363100012167770",
+        buildingId: "NL.IMBAG.Pand.0363100012167770",
+        name: "Triple warehouse, Brouwersgracht 174\u2013178",
+        anchor: [
+          4.888056499999999,
+          52.381173
+        ],
+        cameraBearing: 223.49910153153093,
+        footprint: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [
+                4.888266,
+                52.381195
+              ],
+              [
+                4.888197,
+                52.381231
+              ],
+              [
+                4.888284,
+                52.381289
+              ],
+              [
+                4.888224,
+                52.381322
+              ],
+              [
+                4.888136,
+                52.381263
+              ],
+              [
+                4.888076,
+                52.381297
+              ],
+              [
+                4.887829,
+                52.38113
+              ],
+              [
+                4.888012,
+                52.381024
+              ],
+              [
+                4.888266,
+                52.381195
+              ]
+            ]
+          ]
+        },
+        height: 18.225500106811523,
+        modelUrl: "./models/ordinary-buildings/0363100012167770.glb",
+        bounds: {
+          min: [
+            -15.684957504272461,
+            0,
+            -16.600051879882812
+          ],
+          max: [
+            15.471977233886719,
+            18.225500106811523,
+            16.895231246948242
+          ]
+        },
+        triangles: 6104,
+        bytes: 485052,
+        materials: 2,
+        hash: "26c17de9d9dd589d492fa2b964e742cef106a1f1102da1e4e9bcc1ed5244ff5f",
+        referenceImages: [
+          "./ordinary-buildings-data/references/0363100012167770/reference-0363100012167770-2020-02785.jpg",
+          "./ordinary-buildings-data/references/0363100012167770/reference-0363100012167770-2020-02786.jpg",
+          "./ordinary-buildings-data/references/0363100012167770/reference-0363100012167770-2020-02794.jpg",
+          "./ordinary-buildings-data/references/0363100012167770/reference-0363100012167770-2020-02795.jpg"
+        ],
+        sourcePack: "experiments/canal-belt-overnight/sources-03/0363100012167770",
+        traits: [
+          "One broad17m frontage represents three warehouses, four tall loading rows, three wide round-arched stacks with black metal frames.",
+          "Small flanking arched ventilation windows, natural-stone white impost/hinge blocks and pale open shutters define the current rhythm.",
+          "1894fire removed one storey; broad clipped trapezium termination with Amsterdam red/black/white coat of arms and imperial crown.",
+          "Current red-brown brick is authoritative: black paint removed2011. Old black photographs document superseded state.",
+          "Official roofs have high coherent15.4\u201317.3m region, lower12.7\u201315.7m rear/side steps, low~2m rear appendage. Preserve exact concave rear outline and neighbors."
+        ],
+        simplifications: [
+          "Original source-informed procedural atlas; no downloaded photo pixels in mesh.",
+          "Facade dimensions estimated from dated photos; native footprint and surveyed local roof patches retained.",
+          "Rear openings undocumented and left unasserted.",
+          "Visual/game independent acceptance pending; no fabricated POI identity."
+        ],
+        sourceTiming: {
+          sourcePassStart: "2026-10-06T21:39Z",
+          sourcePassEnd: "2026-10-06T21:55:21.263256+00:00",
+          note: "Includes bounded primary heritage/Beeldbank/panorama/current-roof identity research; root integration and review excluded."
+        },
+        heightEvidence: "Official3DBAG LoD2.2 per-region vertices minus groundNAP. Main-height is an atlas/surface bound, not uniform extrusion permission. Photographic opening dimensions approximate. Retain rear lows/native notches.",
+        facadeRecipe: {
+          kind: "blank",
+          levels: 0,
+          edges: {
+            "6": {
+              kind: "historic-warehouse",
+              levels: 6,
+              windowTiers: [
+                {
+                  sillMetres: 5,
+                  heightMetres: 2.3,
+                  startMetres: 2.0049701960836077,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 2.0049701960836077,
+                  panes: 2,
+                  head: "round",
+                  crownRiseMetres: 0.85,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  brickArch: {
+                    widthMetres: 0.18,
+                    color: "#674b43"
+                  },
+                  shutters: {
+                    widthMetres: 0.83,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 5,
+                  heightMetres: 2.3,
+                  startMetres: 7.568762490215619,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 2.0049701960836077,
+                  panes: 2,
+                  head: "round",
+                  crownRiseMetres: 0.85,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  brickArch: {
+                    widthMetres: 0.18,
+                    color: "#674b43"
+                  },
+                  shutters: {
+                    widthMetres: 0.83,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 5,
+                  heightMetres: 2.3,
+                  startMetres: 13.13255478434763,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 2.0049701960836077,
+                  panes: 2,
+                  head: "round",
+                  crownRiseMetres: 0.85,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  brickArch: {
+                    widthMetres: 0.18,
+                    color: "#674b43"
+                  },
+                  shutters: {
+                    widthMetres: 0.83,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 5.25,
+                  heightMetres: 1.75,
+                  startMetres: 0.20049701960836078,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 0.6716650156880086,
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  shutters: {
+                    widthMetres: 0.28,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 5.25,
+                  heightMetres: 1.75,
+                  startMetres: 5.36329527452365,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 0.6716650156880086,
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  shutters: {
+                    widthMetres: 0.28,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 5.25,
+                  heightMetres: 1.75,
+                  startMetres: 6.415904627467545,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 0.6716650156880086,
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  shutters: {
+                    widthMetres: 0.28,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 5.25,
+                  heightMetres: 1.75,
+                  startMetres: 10.927087568655663,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 0.6716650156880086,
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  shutters: {
+                    widthMetres: 0.28,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 5.25,
+                  heightMetres: 1.75,
+                  startMetres: 11.979696921599555,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 0.6716650156880086,
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  shutters: {
+                    widthMetres: 0.28,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 5.25,
+                  heightMetres: 1.75,
+                  startMetres: 16.490879862787672,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 0.6716650156880086,
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  shutters: {
+                    widthMetres: 0.28,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 7.7,
+                  heightMetres: 2.3,
+                  startMetres: 2.0049701960836077,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 2.0049701960836077,
+                  panes: 2,
+                  head: "round",
+                  crownRiseMetres: 0.85,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  brickArch: {
+                    widthMetres: 0.18,
+                    color: "#674b43"
+                  },
+                  shutters: {
+                    widthMetres: 0.83,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 7.7,
+                  heightMetres: 2.3,
+                  startMetres: 7.568762490215619,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 2.0049701960836077,
+                  panes: 2,
+                  head: "round",
+                  crownRiseMetres: 0.85,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  brickArch: {
+                    widthMetres: 0.18,
+                    color: "#674b43"
+                  },
+                  shutters: {
+                    widthMetres: 0.83,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 7.7,
+                  heightMetres: 2.3,
+                  startMetres: 13.13255478434763,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 2.0049701960836077,
+                  panes: 2,
+                  head: "round",
+                  crownRiseMetres: 0.85,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  brickArch: {
+                    widthMetres: 0.18,
+                    color: "#674b43"
+                  },
+                  shutters: {
+                    widthMetres: 0.83,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 7.95,
+                  heightMetres: 1.75,
+                  startMetres: 0.20049701960836078,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 0.6716650156880086,
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  shutters: {
+                    widthMetres: 0.28,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 7.95,
+                  heightMetres: 1.75,
+                  startMetres: 5.36329527452365,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 0.6716650156880086,
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  shutters: {
+                    widthMetres: 0.28,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 7.95,
+                  heightMetres: 1.75,
+                  startMetres: 6.415904627467545,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 0.6716650156880086,
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  shutters: {
+                    widthMetres: 0.28,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 7.95,
+                  heightMetres: 1.75,
+                  startMetres: 10.927087568655663,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 0.6716650156880086,
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  shutters: {
+                    widthMetres: 0.28,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 7.95,
+                  heightMetres: 1.75,
+                  startMetres: 11.979696921599555,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 0.6716650156880086,
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  shutters: {
+                    widthMetres: 0.28,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 7.95,
+                  heightMetres: 1.75,
+                  startMetres: 16.490879862787672,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 0.6716650156880086,
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  shutters: {
+                    widthMetres: 0.28,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 10.4,
+                  heightMetres: 2.3,
+                  startMetres: 2.0049701960836077,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 2.0049701960836077,
+                  panes: 2,
+                  head: "round",
+                  crownRiseMetres: 0.85,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  brickArch: {
+                    widthMetres: 0.18,
+                    color: "#674b43"
+                  },
+                  shutters: {
+                    widthMetres: 0.83,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 10.4,
+                  heightMetres: 2.3,
+                  startMetres: 7.568762490215619,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 2.0049701960836077,
+                  panes: 2,
+                  head: "round",
+                  crownRiseMetres: 0.85,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  brickArch: {
+                    widthMetres: 0.18,
+                    color: "#674b43"
+                  },
+                  shutters: {
+                    widthMetres: 0.83,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 10.4,
+                  heightMetres: 2.3,
+                  startMetres: 13.13255478434763,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 2.0049701960836077,
+                  panes: 2,
+                  head: "round",
+                  crownRiseMetres: 0.85,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  brickArch: {
+                    widthMetres: 0.18,
+                    color: "#674b43"
+                  },
+                  shutters: {
+                    widthMetres: 0.83,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 10.65,
+                  heightMetres: 1.75,
+                  startMetres: 0.20049701960836078,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 0.6716650156880086,
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  shutters: {
+                    widthMetres: 0.28,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 10.65,
+                  heightMetres: 1.75,
+                  startMetres: 5.36329527452365,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 0.6716650156880086,
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  shutters: {
+                    widthMetres: 0.28,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 10.65,
+                  heightMetres: 1.75,
+                  startMetres: 6.415904627467545,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 0.6716650156880086,
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  shutters: {
+                    widthMetres: 0.28,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 10.65,
+                  heightMetres: 1.75,
+                  startMetres: 10.927087568655663,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 0.6716650156880086,
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  shutters: {
+                    widthMetres: 0.28,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 10.65,
+                  heightMetres: 1.75,
+                  startMetres: 11.979696921599555,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 0.6716650156880086,
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  shutters: {
+                    widthMetres: 0.28,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 10.65,
+                  heightMetres: 1.75,
+                  startMetres: 16.490879862787672,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 0.6716650156880086,
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  shutters: {
+                    widthMetres: 0.28,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 13.1,
+                  heightMetres: 2.3,
+                  startMetres: 2.0049701960836077,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 2.0049701960836077,
+                  panes: 2,
+                  head: "round",
+                  crownRiseMetres: 0.85,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  brickArch: {
+                    widthMetres: 0.18,
+                    color: "#674b43"
+                  },
+                  shutters: {
+                    widthMetres: 0.83,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 13.1,
+                  heightMetres: 2.3,
+                  startMetres: 7.568762490215619,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 2.0049701960836077,
+                  panes: 2,
+                  head: "round",
+                  crownRiseMetres: 0.85,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  brickArch: {
+                    widthMetres: 0.18,
+                    color: "#674b43"
+                  },
+                  shutters: {
+                    widthMetres: 0.83,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 13.1,
+                  heightMetres: 2.3,
+                  startMetres: 13.13255478434763,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 2.0049701960836077,
+                  panes: 2,
+                  head: "round",
+                  crownRiseMetres: 0.85,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  brickArch: {
+                    widthMetres: 0.18,
+                    color: "#674b43"
+                  },
+                  shutters: {
+                    widthMetres: 0.83,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 13.35,
+                  heightMetres: 1.75,
+                  startMetres: 0.20049701960836078,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 0.6716650156880086,
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  shutters: {
+                    widthMetres: 0.28,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 13.35,
+                  heightMetres: 1.75,
+                  startMetres: 5.36329527452365,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 0.6716650156880086,
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  shutters: {
+                    widthMetres: 0.28,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 13.35,
+                  heightMetres: 1.75,
+                  startMetres: 6.415904627467545,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 0.6716650156880086,
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  shutters: {
+                    widthMetres: 0.28,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 13.35,
+                  heightMetres: 1.75,
+                  startMetres: 10.927087568655663,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 0.6716650156880086,
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  shutters: {
+                    widthMetres: 0.28,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 13.35,
+                  heightMetres: 1.75,
+                  startMetres: 11.979696921599555,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 0.6716650156880086,
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  shutters: {
+                    widthMetres: 0.28,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  sillMetres: 13.35,
+                  heightMetres: 1.75,
+                  startMetres: 16.490879862787672,
+                  pitchMetres: 18.142495176514846,
+                  count: 1,
+                  widthMetres: 0.6716650156880086,
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  shutters: {
+                    widthMetres: 0.28,
+                    color: "#d9d9cd",
+                    jointColor: "#babcae",
+                    sides: [
+                      "left",
+                      "right"
+                    ]
+                  }
+                },
+                {
+                  startMetres: 0.2,
+                  pitchMetres: 18,
+                  count: 1,
+                  sillMetres: 3.25,
+                  widthMetres: 0.68,
+                  heightMetres: 1.25,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  panes: 1
+                },
+                {
+                  startMetres: 5.36,
+                  pitchMetres: 18,
+                  count: 1,
+                  sillMetres: 3.25,
+                  widthMetres: 0.68,
+                  heightMetres: 1.25,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  panes: 1
+                },
+                {
+                  startMetres: 6.42,
+                  pitchMetres: 18,
+                  count: 1,
+                  sillMetres: 3.25,
+                  widthMetres: 0.68,
+                  heightMetres: 1.25,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  panes: 1
+                },
+                {
+                  startMetres: 10.93,
+                  pitchMetres: 18,
+                  count: 1,
+                  sillMetres: 3.25,
+                  widthMetres: 0.68,
+                  heightMetres: 1.25,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  panes: 1
+                },
+                {
+                  startMetres: 11.98,
+                  pitchMetres: 18,
+                  count: 1,
+                  sillMetres: 3.25,
+                  widthMetres: 0.68,
+                  heightMetres: 1.25,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  panes: 1
+                },
+                {
+                  startMetres: 16.49,
+                  pitchMetres: 18,
+                  count: 1,
+                  sillMetres: 3.25,
+                  widthMetres: 0.68,
+                  heightMetres: 1.25,
+                  head: "round",
+                  crownRiseMetres: 0.32,
+                  panes: 1
+                }
+              ],
+              groundEntries: [
+                {
+                  xMetres: 2.0049701960836077,
+                  widthMetres: 2.0049701960836077,
+                  heightMetres: 2.65,
+                  bottomMetres: 0.2,
+                  kind: "glazed",
+                  panes: 2,
+                  head: "round",
+                  crownRiseMetres: 1
+                },
+                {
+                  xMetres: 7.568762490215619,
+                  widthMetres: 2.0049701960836077,
+                  heightMetres: 2.65,
+                  bottomMetres: 0.2,
+                  kind: "glazed",
+                  panes: 2,
+                  head: "round",
+                  crownRiseMetres: 1
+                },
+                {
+                  xMetres: 13.13255478434763,
+                  widthMetres: 2.0049701960836077,
+                  heightMetres: 2.65,
+                  bottomMetres: 0.2,
+                  kind: "glazed",
+                  panes: 2,
+                  head: "round",
+                  crownRiseMetres: 1
+                },
+                {
+                  xMetres: 0.20049701960836078,
+                  widthMetres: 0.6716650156880086,
+                  heightMetres: 2.05,
+                  bottomMetres: 0.2,
+                  kind: "glazed",
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32
+                },
+                {
+                  xMetres: 5.36329527452365,
+                  widthMetres: 0.6716650156880086,
+                  heightMetres: 2.05,
+                  bottomMetres: 0.2,
+                  kind: "glazed",
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32
+                },
+                {
+                  xMetres: 10.927087568655663,
+                  widthMetres: 0.6716650156880086,
+                  heightMetres: 2.05,
+                  bottomMetres: 0.2,
+                  kind: "glazed",
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32
+                },
+                {
+                  xMetres: 16.490879862787672,
+                  widthMetres: 0.6716650156880086,
+                  heightMetres: 2.05,
+                  bottomMetres: 0.2,
+                  kind: "glazed",
+                  panes: 1,
+                  head: "round",
+                  crownRiseMetres: 0.32
+                }
+              ],
+              frameWidthMetres: 0.09,
+              gableTrim: false,
+              bands: [
+                {
+                  xMetres: 1.8249701960836078,
+                  widthMetres: 2.0049701960836077,
+                  bottomMetres: 5,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 3.9499403921672154,
+                  widthMetres: 2.0049701960836077,
+                  bottomMetres: 5,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 7.388762490215619,
+                  widthMetres: 2.0049701960836077,
+                  bottomMetres: 5,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 9.513732686299226,
+                  widthMetres: 2.0049701960836077,
+                  bottomMetres: 5,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 12.95255478434763,
+                  widthMetres: 2.0049701960836077,
+                  bottomMetres: 5,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 15.077524980431237,
+                  widthMetres: 2.0049701960836077,
+                  bottomMetres: 5,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 0.020497019608360784,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 5.25,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 0.8121620352963693,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 5.25,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 5.18329527452365,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 5.25,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 5.9749602902116585,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 5.25,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 6.235904627467545,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 5.25,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 7.027569643155553,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 5.25,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 10.747087568655664,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 5.25,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 11.538752584343673,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 5.25,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 11.799696921599555,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 5.25,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 12.591361937287562,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 5.25,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 16.310879862787672,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 5.25,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 17.10254487847568,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 5.25,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 1.8249701960836078,
+                  widthMetres: 2.0049701960836077,
+                  bottomMetres: 7.7,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 3.9499403921672154,
+                  widthMetres: 2.0049701960836077,
+                  bottomMetres: 7.7,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 7.388762490215619,
+                  widthMetres: 2.0049701960836077,
+                  bottomMetres: 7.7,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 9.513732686299226,
+                  widthMetres: 2.0049701960836077,
+                  bottomMetres: 7.7,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 12.95255478434763,
+                  widthMetres: 2.0049701960836077,
+                  bottomMetres: 7.7,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 15.077524980431237,
+                  widthMetres: 2.0049701960836077,
+                  bottomMetres: 7.7,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 0.020497019608360784,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 7.95,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 0.8121620352963693,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 7.95,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 5.18329527452365,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 7.95,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 5.9749602902116585,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 7.95,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 6.235904627467545,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 7.95,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 7.027569643155553,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 7.95,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 10.747087568655664,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 7.95,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 11.538752584343673,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 7.95,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 11.799696921599555,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 7.95,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 12.591361937287562,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 7.95,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 16.310879862787672,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 7.95,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 17.10254487847568,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 7.95,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 1.8249701960836078,
+                  widthMetres: 2.0049701960836077,
+                  bottomMetres: 10.4,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 3.9499403921672154,
+                  widthMetres: 2.0049701960836077,
+                  bottomMetres: 10.4,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 7.388762490215619,
+                  widthMetres: 2.0049701960836077,
+                  bottomMetres: 10.4,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 9.513732686299226,
+                  widthMetres: 2.0049701960836077,
+                  bottomMetres: 10.4,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 12.95255478434763,
+                  widthMetres: 2.0049701960836077,
+                  bottomMetres: 10.4,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 15.077524980431237,
+                  widthMetres: 2.0049701960836077,
+                  bottomMetres: 10.4,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 0.020497019608360784,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 10.65,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 0.8121620352963693,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 10.65,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 5.18329527452365,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 10.65,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 5.9749602902116585,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 10.65,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 6.235904627467545,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 10.65,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 7.027569643155553,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 10.65,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 10.747087568655664,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 10.65,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 11.538752584343673,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 10.65,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 11.799696921599555,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 10.65,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 12.591361937287562,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 10.65,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 16.310879862787672,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 10.65,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 17.10254487847568,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 10.65,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 1.8249701960836078,
+                  widthMetres: 2.0049701960836077,
+                  bottomMetres: 13.1,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 3.9499403921672154,
+                  widthMetres: 2.0049701960836077,
+                  bottomMetres: 13.1,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 7.388762490215619,
+                  widthMetres: 2.0049701960836077,
+                  bottomMetres: 13.1,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 9.513732686299226,
+                  widthMetres: 2.0049701960836077,
+                  bottomMetres: 13.1,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 12.95255478434763,
+                  widthMetres: 2.0049701960836077,
+                  bottomMetres: 13.1,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 15.077524980431237,
+                  widthMetres: 2.0049701960836077,
+                  bottomMetres: 13.1,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 0.020497019608360784,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 13.35,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 0.8121620352963693,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 13.35,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 5.18329527452365,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 13.35,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 5.9749602902116585,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 13.35,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 6.235904627467545,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 13.35,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 7.027569643155553,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 13.35,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 10.747087568655664,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 13.35,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 11.538752584343673,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 13.35,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 11.799696921599555,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 13.35,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 12.591361937287562,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 13.35,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 16.310879862787672,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 13.35,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 17.10254487847568,
+                  widthMetres: 0.6716650156880086,
+                  bottomMetres: 13.35,
+                  heightMetres: 0.23,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 1.8249701960836078,
+                  widthMetres: 2.3649701960836076,
+                  bottomMetres: 4.91,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 7.388762490215619,
+                  widthMetres: 2.3649701960836076,
+                  bottomMetres: 4.91,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 12.95255478434763,
+                  widthMetres: 2.3649701960836076,
+                  bottomMetres: 4.91,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 0.020497019608360784,
+                  widthMetres: 1.0316650156880085,
+                  bottomMetres: 5.16,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 5.18329527452365,
+                  widthMetres: 1.0316650156880085,
+                  bottomMetres: 5.16,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 6.235904627467545,
+                  widthMetres: 1.0316650156880085,
+                  bottomMetres: 5.16,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 10.747087568655664,
+                  widthMetres: 1.0316650156880085,
+                  bottomMetres: 5.16,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 11.799696921599555,
+                  widthMetres: 1.0316650156880085,
+                  bottomMetres: 5.16,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 16.310879862787672,
+                  widthMetres: 1.0316650156880085,
+                  bottomMetres: 5.16,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 1.8249701960836078,
+                  widthMetres: 2.3649701960836076,
+                  bottomMetres: 7.61,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 7.388762490215619,
+                  widthMetres: 2.3649701960836076,
+                  bottomMetres: 7.61,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 12.95255478434763,
+                  widthMetres: 2.3649701960836076,
+                  bottomMetres: 7.61,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 0.020497019608360784,
+                  widthMetres: 1.0316650156880085,
+                  bottomMetres: 7.86,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 5.18329527452365,
+                  widthMetres: 1.0316650156880085,
+                  bottomMetres: 7.86,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 6.235904627467545,
+                  widthMetres: 1.0316650156880085,
+                  bottomMetres: 7.86,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 10.747087568655664,
+                  widthMetres: 1.0316650156880085,
+                  bottomMetres: 7.86,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 11.799696921599555,
+                  widthMetres: 1.0316650156880085,
+                  bottomMetres: 7.86,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 16.310879862787672,
+                  widthMetres: 1.0316650156880085,
+                  bottomMetres: 7.86,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 1.8249701960836078,
+                  widthMetres: 2.3649701960836076,
+                  bottomMetres: 10.31,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 7.388762490215619,
+                  widthMetres: 2.3649701960836076,
+                  bottomMetres: 10.31,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 12.95255478434763,
+                  widthMetres: 2.3649701960836076,
+                  bottomMetres: 10.31,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 0.020497019608360784,
+                  widthMetres: 1.0316650156880085,
+                  bottomMetres: 10.56,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 5.18329527452365,
+                  widthMetres: 1.0316650156880085,
+                  bottomMetres: 10.56,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 6.235904627467545,
+                  widthMetres: 1.0316650156880085,
+                  bottomMetres: 10.56,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 10.747087568655664,
+                  widthMetres: 1.0316650156880085,
+                  bottomMetres: 10.56,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 11.799696921599555,
+                  widthMetres: 1.0316650156880085,
+                  bottomMetres: 10.56,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 16.310879862787672,
+                  widthMetres: 1.0316650156880085,
+                  bottomMetres: 10.56,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 1.8249701960836078,
+                  widthMetres: 2.3649701960836076,
+                  bottomMetres: 13.01,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 7.388762490215619,
+                  widthMetres: 2.3649701960836076,
+                  bottomMetres: 13.01,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 12.95255478434763,
+                  widthMetres: 2.3649701960836076,
+                  bottomMetres: 13.01,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 0.020497019608360784,
+                  widthMetres: 1.0316650156880085,
+                  bottomMetres: 13.26,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 5.18329527452365,
+                  widthMetres: 1.0316650156880085,
+                  bottomMetres: 13.26,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 6.235904627467545,
+                  widthMetres: 1.0316650156880085,
+                  bottomMetres: 13.26,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 10.747087568655664,
+                  widthMetres: 1.0316650156880085,
+                  bottomMetres: 13.26,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 11.799696921599555,
+                  widthMetres: 1.0316650156880085,
+                  bottomMetres: 13.26,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                },
+                {
+                  xMetres: 16.310879862787672,
+                  widthMetres: 1.0316650156880085,
+                  bottomMetres: 13.26,
+                  heightMetres: 0.1,
+                  color: "#e2e1d5"
+                }
+              ],
+              shallowProjectionGroups: [],
+              balconyGroups: [],
+              circularOpenings: [
+                {
+                  xMetres: 2.5,
+                  sillMetres: 3.35,
+                  diameterMetres: 1,
+                  frameWidthMetres: 0.09,
+                  frameColor: "#594b40",
+                  glassColor: "#546b70"
+                },
+                {
+                  xMetres: 8.05,
+                  sillMetres: 3.35,
+                  diameterMetres: 1,
+                  frameWidthMetres: 0.09,
+                  frameColor: "#594b40",
+                  glassColor: "#546b70"
+                },
+                {
+                  xMetres: 13.6,
+                  sillMetres: 3.35,
+                  diameterMetres: 1,
+                  frameWidthMetres: 0.09,
+                  frameColor: "#594b40",
+                  glassColor: "#546b70"
+                }
+              ]
+            }
+          }
+        },
+        official3D: {
+          groundNAP: 0.38999998569488525,
+          footprintArea: 482.017588500681,
+          courtyardArea: 0,
+          rectangleFill: 0.8208641977976379,
+          summaryPath: "geometry-summary.json"
+        },
+        generationMilliseconds: 53,
+        reviewState: "Root/independent gallery and desktop/touch-emulated game reviewed; source limitations recorded",
+        detailGenerationMilliseconds: 34,
+        sourceArchiveCommit: "df79731b0ec912f4410c3441db4a1a00c252da2e",
+        sourceAdmission: true,
+        galleryFrontage: {
+          target: [
+            4.8879205,
+            52.381077
+          ],
+          distanceMetres: 43,
+          targetHeightMetres: 8.4
+        },
+        roofClosureProof: [
+          {
+            group: "interior-pale-capped-housing",
+            regionIndex: 6,
+            sourceRoofSurfaceIndex: 6,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                -0.9443227382473085,
+                -0.9077344847619884
+              ],
+              [
+                -4.704143181152494,
+                1.8025993869480317
+              ]
+            ],
+            bottomHeights: [
+              16.437987030825326,
+              16.291500624656678
+            ],
+            topHeights: [
+              18.22550062465668,
+              18.106500624656675
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              16.437987030825326,
+              16.291500624656678
+            ]
+          },
+          {
+            group: "interior-pale-capped-housing",
+            regionIndex: 6,
+            sourceRoofSurfaceIndex: 6,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                -4.704143181152494,
+                1.8025993869480317
+              ],
+              [
+                -1.0504253370199663,
+                5.147086332259789
+              ]
+            ],
+            bottomHeights: [
+              16.291500624656678,
+              17.16819922744559
+            ],
+            topHeights: [
+              18.106500624656675,
+              18.016500624656675
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              16.291500624656678,
+              17.16819922744559
+            ]
+          },
+          {
+            group: "interior-pale-capped-housing",
+            regionIndex: 6,
+            sourceRoofSurfaceIndex: 6,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                -1.0504253370199663,
+                5.147086332259789
+              ],
+              [
+                -0.9223695584759241,
+                5.0471515233530795
+              ]
+            ],
+            bottomHeights: [
+              17.16819922744559,
+              17.172251979827735
+            ],
+            topHeights: [
+              18.016500624656675,
+              18.020815879595997
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              17.16819922744559,
+              17.172251979827735
+            ]
+          },
+          {
+            group: "interior-pale-capped-housing",
+            regionIndex: 6,
+            sourceRoofSurfaceIndex: 6,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                -0.9223695584759241,
+                5.0471515233530795
+              ],
+              [
+                -0.5362131534212822,
+                4.746332879299189
+              ]
+            ],
+            bottomHeights: [
+              17.172251979827735,
+              16.522630154228192
+            ],
+            topHeights: [
+              18.020815879595997,
+              18.033810164677565
+            ],
+            supportRegionIndices: [
+              0,
+              1
+            ],
+            supportHeights: [
+              17.172251979827735,
+              16.522630154228192
+            ]
+          },
+          {
+            group: "interior-pale-capped-housing",
+            regionIndex: 6,
+            sourceRoofSurfaceIndex: 6,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                -0.5362131534212822,
+                4.746332879299189
+              ],
+              [
+                -0.9159596226138705,
+                3.9465458688056287
+              ]
+            ],
+            bottomHeights: [
+              16.522630154228192,
+              16.7113434189494
+            ],
+            topHeights: [
+              18.033810164677565,
+              18.058718271330193
+            ],
+            supportRegionIndices: [
+              1,
+              1
+            ],
+            supportHeights: [
+              16.522630154228192,
+              16.7113434189494
+            ]
+          },
+          {
+            group: "interior-pale-capped-housing",
+            regionIndex: 6,
+            sourceRoofSurfaceIndex: 6,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                -0.9159596226138705,
+                3.9465458688056287
+              ],
+              [
+                -1.1213954423737311,
+                4.114049218560183
+              ]
+            ],
+            bottomHeights: [
+              16.7113434189494,
+              16.719145400006116
+            ],
+            topHeights: [
+              18.058718271330193,
+              18.05154843021114
+            ],
+            supportRegionIndices: [
+              1,
+              1
+            ],
+            supportHeights: [
+              16.7113434189494,
+              16.719145400006116
+            ]
+          },
+          {
+            group: "interior-pale-capped-housing",
+            regionIndex: 6,
+            sourceRoofSurfaceIndex: 6,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                -1.1213954423737311,
+                4.114049218560183
+              ],
+              [
+                -1.3163058425774412,
+                3.1989276815491507
+              ]
+            ],
+            bottomHeights: [
+              16.719145400006116,
+              16.895281895963805
+            ],
+            topHeights: [
+              18.05154843021114,
+              18.08169068939353
+            ],
+            supportRegionIndices: [
+              1,
+              1
+            ],
+            supportHeights: [
+              16.719145400006116,
+              16.895281895963805
+            ]
+          },
+          {
+            group: "interior-pale-capped-housing",
+            regionIndex: 6,
+            sourceRoofSurfaceIndex: 6,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                -1.3163058425774412,
+                3.1989276815491507
+              ],
+              [
+                0.19376700583949935,
+                1.614697318527476
+              ]
+            ],
+            bottomHeights: [
+              16.895281895963805,
+              16.893387153491442
+            ],
+            topHeights: [
+              18.08169068939353,
+              18.146535056031055
+            ],
+            supportRegionIndices: [
+              1,
+              1
+            ],
+            supportHeights: [
+              16.895281895963805,
+              16.893387153491442
+            ]
+          },
+          {
+            group: "interior-pale-capped-housing",
+            regionIndex: 6,
+            sourceRoofSurfaceIndex: 6,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                0.19376700583949935,
+                1.614697318527476
+              ],
+              [
+                -0.9443227382473085,
+                -0.9077344847619884
+              ]
+            ],
+            bottomHeights: [
+              16.893387153491442,
+              16.437987030825326
+            ],
+            topHeights: [
+              18.146535056031055,
+              18.22550062465668
+            ],
+            supportRegionIndices: [
+              1,
+              0
+            ],
+            supportHeights: [
+              16.893387153491442,
+              16.437987030825326
+            ]
+          }
+        ],
+        roofObjectAssemblies: [
+          {
+            name: "interior-pale-capped-housing",
+            sourceIndices: [
+              6
+            ],
+            supportSourceIndices: [
+              0,
+              1
+            ],
+            topColor: "#b2b8b8",
+            cheekColor: "#767e7e",
+            recipeRegionIndices: [
+              6
+            ],
+            supportRecipeRegionIndices: [
+              0,
+              1
+            ],
+            sourceEvidence: "experiments/canal-belt-overnight/sources-03/0363100012167770/roof-followup/region-classification.json",
+            sourceYear: "2026 layer; precise local flight day unknown",
+            sideMaterialConfidence: "Opaque conservative technical cheek inference; hidden side material/function unresolved",
+            curbColor: "#a7acae",
+            curbHeightMetres: 0.075
+          }
+        ],
+        roofFollowupArchiveCommit: "7b26e67e736c6434849b443ec649cb1836713f3d",
+        updatedAt: "2026-10-07T08:35:12.271728+00:00",
+        validationSourceCommit: "df79731b0ec912f4410c3441db4a1a00c252da2e",
+        sourceUrls: [
+          "https://monumentenregister.cultureelerfgoed.nl/monumenten/790",
+          "https://www.amsterdam-monumentenstad.nl/database/grachtenboek_objecten.php?id=243"
+        ]
+      },
+      {
+        id: "ordinary-0363100012167736",
+        buildingId: "NL.IMBAG.Pand.0363100012167736",
+        name: "Keysersveste apartments, Keizersgracht 28\u201336",
+        anchor: [
+          4.888479,
+          52.378876500000004
+        ],
+        cameraBearing: 119.33074879248113,
+        footprint: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [
+                4.888776,
+                52.378893
+              ],
+              [
+                4.888349,
+                52.37904
+              ],
+              [
+                4.888182,
+                52.378866
+              ],
+              [
+                4.888263,
+                52.378839
+              ],
+              [
+                4.88861,
+                52.378713
+              ],
+              [
+                4.888612,
+                52.378716
+              ],
+              [
+                4.888614,
+                52.378717
+              ],
+              [
+                4.888776,
+                52.378893
+              ],
+              [
+                4.888775,
+                52.378893
+              ],
+              [
+                4.888776,
+                52.378893
+              ]
+            ]
+          ]
+        },
+        height: 22.823501586914062,
+        modelUrl: "./models/ordinary-buildings/0363100012167736.glb",
+        bounds: {
+          min: [
+            -20.197830200195312,
+            0,
+            -18.21649932861328
+          ],
+          max: [
+            20.1979923248291,
+            22.823501586914062,
+            18.216289520263672
+          ]
+        },
+        triangles: 4202,
+        bytes: 379304,
+        materials: 2,
+        hash: "84da4d662c3935421b290326a8bbbb11b31aa89db7ca3b1983cfa5810252fd7a",
+        referenceImages: [
+          "./ordinary-buildings-data/references/0363100012167736/reference-0363100012167736-2020-02513.jpg",
+          "./ordinary-buildings-data/references/0363100012167736/reference-0363100012167736-2020-02514.jpg",
+          "./ordinary-buildings-data/references/0363100012167736/reference-0363100012167736-2020-02507.jpg",
+          "./ordinary-buildings-data/references/0363100012167736/reference-0363100012167736-2020-02508.jpg"
+        ],
+        sourcePack: "experiments/canal-belt-overnight/sources-03/0363100012167736",
+        traits: [
+          "Modern pale pink/beige marble-panel facade with12 narrow rectangular window columns arranged3/6/3 around two dark fullheight recessslots.",
+          "White thin frames and low horizontal transoms; two central windowcolumns become a dark doubleheight glazedentry with blue steel posts and stair.",
+          "Two flanking balcony stacks and shallow faceted glazed bays occupyupper rows; red/dark balconyrails.",
+          "Top has lowered outer terracebands and higher central marble-framed glazedvolume. Retain setbacks and source lowrear~3m surfaces; garden beyond physical footprint remainsopen.",
+          "1990\u201391 replacement byArchitectengroepHerenmarkt: predecessor1875/1910buildings demolished completely. Earlier historicfront photos are not currentmodel authority."
+        ],
+        simplifications: [
+          "Original source-informed procedural atlas; no downloaded photo pixels in mesh.",
+          "Facade dimensions estimated from dated photos; native footprint and surveyed local roof patches retained.",
+          "Rear openings undocumented and left unasserted.",
+          "Visual/game independent acceptance pending; no fabricated POI identity."
+        ],
+        sourceTiming: {
+          sourcePassStart: "2026-10-06T21:39Z",
+          sourcePassEnd: "2026-10-06T21:55:49.125094+00:00",
+          note: "Includes bounded primary heritage/Beeldbank/panorama/current-roof identity research; root integration and review excluded."
+        },
+        heightEvidence: "Official3DBAG LoD2.2 per-region vertices minus groundNAP. Main-height is an atlas/surface bound, not uniform extrusion permission. Photographic opening dimensions approximate. Retain rear lows/native notches.",
+        facadeRecipe: {
+          kind: "blank",
+          levels: 0,
+          edges: {
+            "6": {
+              kind: "modern-residential",
+              levels: 6,
+              windowTiers: [
+                {
+                  sillMetres: 1.8,
+                  heightMetres: 2.55,
+                  startMetres: 0.6492270341216133,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 1.8,
+                  heightMetres: 2.55,
+                  startMetres: 2.1973838077962298,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 1.8,
+                  heightMetres: 2.55,
+                  startMetres: 3.745540581470846,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 1.8,
+                  heightMetres: 2.55,
+                  startMetres: 6.741973046647523,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 1.8,
+                  heightMetres: 2.55,
+                  startMetres: 8.29012982032214,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 1.8,
+                  heightMetres: 2.55,
+                  startMetres: 12.934600141345987,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 1.8,
+                  heightMetres: 2.55,
+                  startMetres: 14.482756915020603,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 1.8,
+                  heightMetres: 2.55,
+                  startMetres: 16.979783969334502,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 1.8,
+                  heightMetres: 2.55,
+                  startMetres: 18.52794074300912,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 1.8,
+                  heightMetres: 2.55,
+                  startMetres: 20.076097516683735,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 5.05,
+                  heightMetres: 2.55,
+                  startMetres: 0.6492270341216133,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 5.05,
+                  heightMetres: 2.55,
+                  startMetres: 2.1973838077962298,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 5.05,
+                  heightMetres: 2.55,
+                  startMetres: 3.745540581470846,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 5.05,
+                  heightMetres: 2.55,
+                  startMetres: 6.741973046647523,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 5.05,
+                  heightMetres: 2.55,
+                  startMetres: 8.29012982032214,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 5.05,
+                  heightMetres: 2.55,
+                  startMetres: 12.934600141345987,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 5.05,
+                  heightMetres: 2.55,
+                  startMetres: 14.482756915020603,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 5.05,
+                  heightMetres: 2.55,
+                  startMetres: 16.979783969334502,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 5.05,
+                  heightMetres: 2.55,
+                  startMetres: 18.52794074300912,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 5.05,
+                  heightMetres: 2.55,
+                  startMetres: 20.076097516683735,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 8.3,
+                  heightMetres: 2.55,
+                  startMetres: 2.1973838077962298,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 8.3,
+                  heightMetres: 2.55,
+                  startMetres: 3.745540581470846,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 8.3,
+                  heightMetres: 2.55,
+                  startMetres: 6.741973046647523,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 8.3,
+                  heightMetres: 2.55,
+                  startMetres: 8.29012982032214,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 8.3,
+                  heightMetres: 2.55,
+                  startMetres: 9.838286593996754,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 8.3,
+                  heightMetres: 2.55,
+                  startMetres: 11.386443367671372,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 8.3,
+                  heightMetres: 2.55,
+                  startMetres: 12.934600141345987,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 8.3,
+                  heightMetres: 2.55,
+                  startMetres: 14.482756915020603,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 8.3,
+                  heightMetres: 2.55,
+                  startMetres: 16.979783969334502,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 8.3,
+                  heightMetres: 2.55,
+                  startMetres: 18.52794074300912,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 11.55,
+                  heightMetres: 2.55,
+                  startMetres: 2.1973838077962298,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 11.55,
+                  heightMetres: 2.55,
+                  startMetres: 3.745540581470846,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 11.55,
+                  heightMetres: 2.55,
+                  startMetres: 6.741973046647523,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 11.55,
+                  heightMetres: 2.55,
+                  startMetres: 8.29012982032214,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 11.55,
+                  heightMetres: 2.55,
+                  startMetres: 9.838286593996754,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 11.55,
+                  heightMetres: 2.55,
+                  startMetres: 11.386443367671372,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 11.55,
+                  heightMetres: 2.55,
+                  startMetres: 12.934600141345987,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 11.55,
+                  heightMetres: 2.55,
+                  startMetres: 14.482756915020603,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 11.55,
+                  heightMetres: 2.55,
+                  startMetres: 16.979783969334502,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                },
+                {
+                  sillMetres: 11.55,
+                  heightMetres: 2.55,
+                  startMetres: 18.52794074300912,
+                  pitchMetres: 23.473243488825076,
+                  count: 1,
+                  widthMetres: 1.0986919038981149,
+                  panes: 1,
+                  transomHeightsMetres: [
+                    0.5
+                  ],
+                  frameColor: "#ddded2"
+                }
+              ],
+              groundEntries: [
+                {
+                  xMetres: 9.438762265306531,
+                  widthMetres: 3.2461351706080666,
+                  heightMetres: 6.7,
+                  bottomMetres: 0.45,
+                  kind: "glazed",
+                  panes: 2,
+                  frameColor: "#254550",
+                  transomHeightsMetres: [
+                    0.85,
+                    2.4,
+                    3.95,
+                    5.5
+                  ]
+                },
+                {
+                  xMetres: 18.627821825181673,
+                  widthMetres: 2.896551383004121,
+                  heightMetres: 4.4,
+                  bottomMetres: 0.15,
+                  kind: "glazed",
+                  panes: 4,
+                  frameColor: "#3b484b",
+                  transomHeightsMetres: [
+                    1.8,
+                    2.9,
+                    3.9
+                  ]
+                }
+              ],
+              frameWidthMetres: 0.08,
+              bands: [
+                {
+                  xMetres: 5.27,
+                  widthMetres: 0.8,
+                  bottomMetres: 0,
+                  heightMetres: 16.85,
+                  color: "#303d3d"
+                },
+                {
+                  xMetres: 16.35,
+                  widthMetres: 0.8,
+                  bottomMetres: 0,
+                  heightMetres: 16.85,
+                  color: "#303d3d"
+                }
+              ],
+              balconyGroups: [],
+              shallowProjectionGroups: [],
+              gableTrim: false,
+              recessGroups: [
+                {
+                  xMetres: 0.65,
+                  widthMetres: 1.18,
+                  bottomMetres: 8.3,
+                  heightMetres: 8.35,
+                  depthMetres: 0.65
+                },
+                {
+                  xMetres: 20.12,
+                  widthMetres: 1.18,
+                  bottomMetres: 8.3,
+                  heightMetres: 8.35,
+                  depthMetres: 0.65
+                },
+                {
+                  xMetres: 6.45,
+                  widthMetres: 9.65,
+                  bottomMetres: 17.15,
+                  heightMetres: 2.18,
+                  depthMetres: 0.25
+                }
+              ]
+            }
+          }
+        },
+        official3D: {
+          groundNAP: 0.007000000216066837,
+          footprintArea: 759.8843095002715,
+          courtyardArea: 0,
+          rectangleFill: 0.9785739785639354,
+          summaryPath: "geometry-summary.json"
+        },
+        generationMilliseconds: 27,
+        reviewState: "Root/independent gallery and desktop/touch-emulated game reviewed; source limitations recorded",
+        detailGenerationMilliseconds: 18,
+        sourceArchiveCommit: "df79731b0ec912f4410c3441db4a1a00c252da2e",
+        sourceAdmission: true,
+        galleryFrontage: {
+          target: [
+            4.888695,
+            52.378805
+          ],
+          distanceMetres: 48,
+          targetHeightMetres: 9.3
+        },
+        roofClosureProof: [
+          {
+            group: "south-opaque-roof-row",
+            regionIndex: 12,
+            sourceRoofSurfaceIndex: 12,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                -8.068992256374832,
+                3.4576412820550217
+              ],
+              [
+                -5.851143161952811,
+                4.661959227822194
+              ]
+            ],
+            bottomHeights: [
+              19.71949132608539,
+              19.717459232214097
+            ],
+            topHeights: [
+              20.930500610135496,
+              22.322320025788944
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.71949132608539,
+              19.717459232214097
+            ]
+          },
+          {
+            group: "south-opaque-roof-row",
+            regionIndex: 12,
+            sourceRoofSurfaceIndex: 12,
+            type: "shared-local-step",
+            neighborRegionIndex: 16,
+            segmentXZ: [
+              [
+                -5.851143161952811,
+                4.661959227822194
+              ],
+              [
+                -4.077972718451007,
+                2.0043732798990277
+              ]
+            ],
+            bottomHeights: [
+              22.298500610135495,
+              22.354500610135496
+            ],
+            topHeights: [
+              22.322320025788944,
+              22.427500610135496
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.717459232214097,
+              19.719235415590337
+            ]
+          },
+          {
+            group: "south-opaque-roof-row",
+            regionIndex: 12,
+            sourceRoofSurfaceIndex: 12,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                -4.077972718451007,
+                2.0043732798990277
+              ],
+              [
+                -6.83939927927547,
+                0.2675317691094392
+              ]
+            ],
+            bottomHeights: [
+              19.719235415590337,
+              19.721988517815724
+            ],
+            topHeights: [
+              22.427500610135496,
+              20.628500610135497
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.719235415590337,
+              19.721988517815724
+            ]
+          },
+          {
+            group: "south-opaque-roof-row",
+            regionIndex: 12,
+            sourceRoofSurfaceIndex: 12,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                -6.83939927927547,
+                0.2675317691094392
+              ],
+              [
+                -8.068992256374832,
+                3.4576412820550217
+              ]
+            ],
+            bottomHeights: [
+              19.721988517815724,
+              19.71949132608539
+            ],
+            topHeights: [
+              20.628500610135497,
+              20.930500610135496
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.721988517815724,
+              19.71949132608539
+            ]
+          },
+          {
+            group: "south-opaque-roof-row",
+            regionIndex: 16,
+            sourceRoofSurfaceIndex: 17,
+            type: "shared-local-step",
+            neighborRegionIndex: 8,
+            segmentXZ: [
+              [
+                -4.087086402715926,
+                5.6192816715295635
+              ],
+              [
+                -2.583494128718108,
+                2.9445466870453174
+              ]
+            ],
+            bottomHeights: [
+              20.764500610135496,
+              20.738500610135496
+            ],
+            topHeights: [
+              22.348500610135495,
+              22.396654904189926
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.71584346917885,
+              19.717745255918526
+            ]
+          },
+          {
+            group: "south-opaque-roof-row",
+            regionIndex: 16,
+            sourceRoofSurfaceIndex: 17,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                -2.583494128718108,
+                2.9445466870453174
+              ],
+              [
+                -4.077972718451007,
+                2.0043732798990277
+              ]
+            ],
+            bottomHeights: [
+              19.717745255918526,
+              19.719235415590337
+            ],
+            topHeights: [
+              22.396654904189926,
+              22.354500610135496
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.717745255918526,
+              19.719235415590337
+            ]
+          },
+          {
+            group: "south-opaque-roof-row",
+            regionIndex: 16,
+            neighborRegionIndex: 12,
+            type: "internal-face-suppressed",
+            segmentXZ: [
+              [
+                -4.077972718451007,
+                2.0043732798990277
+              ],
+              [
+                -5.851143161952811,
+                4.661959227822194
+              ]
+            ]
+          },
+          {
+            group: "south-opaque-roof-row",
+            regionIndex: 16,
+            sourceRoofSurfaceIndex: 17,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                -5.851143161952811,
+                4.661959227822194
+              ],
+              [
+                -4.087086402715926,
+                5.6192816715295635
+              ]
+            ],
+            bottomHeights: [
+              19.717459232214097,
+              19.71584346917885
+            ],
+            topHeights: [
+              22.298500610135495,
+              22.348500610135495
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.717459232214097,
+              19.71584346917885
+            ]
+          },
+          {
+            group: "south-opaque-roof-row",
+            regionIndex: 8,
+            sourceRoofSurfaceIndex: 8,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                -4.087086402715926,
+                5.6192816715295635
+              ],
+              [
+                -0.6881919793406555,
+                7.46478424127929
+              ]
+            ],
+            bottomHeights: [
+              19.71584346917885,
+              19.712729376521757
+            ],
+            topHeights: [
+              20.764500610135496,
+              20.815500610135494
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.71584346917885,
+              19.712729376521757
+            ]
+          },
+          {
+            group: "south-opaque-roof-row",
+            regionIndex: 8,
+            neighborRegionIndex: 13,
+            type: "internal-face-suppressed",
+            segmentXZ: [
+              [
+                -0.6881919793406553,
+                7.46478424127929
+              ],
+              [
+                0.5127028030763731,
+                4.891189215983047
+              ]
+            ]
+          },
+          {
+            group: "south-opaque-roof-row",
+            regionIndex: 8,
+            sourceRoofSurfaceIndex: 8,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                0.5127028030763732,
+                4.891189215983047
+              ],
+              [
+                -2.583494128718108,
+                2.9445466870453174
+              ]
+            ],
+            bottomHeights: [
+              19.714659104449098,
+              19.717745255918526
+            ],
+            topHeights: [
+              20.788651677279823,
+              20.738500610135496
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.714659104449098,
+              19.717745255918526
+            ]
+          },
+          {
+            group: "south-opaque-roof-row",
+            regionIndex: 8,
+            neighborRegionIndex: 16,
+            type: "internal-face-suppressed",
+            segmentXZ: [
+              [
+                -2.583494128718108,
+                2.9445466870453174
+              ],
+              [
+                -4.087086402715926,
+                5.6192816715295635
+              ]
+            ]
+          },
+          {
+            group: "south-opaque-roof-row",
+            regionIndex: 13,
+            sourceRoofSurfaceIndex: 13,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                1.9273389486319028,
+                8.884473283928287
+              ],
+              [
+                3.2079706827321326,
+                6.586469801271164
+              ]
+            ],
+            bottomHeights: [
+              19.710333448445997,
+              19.711971913947817
+            ],
+            topHeights: [
+              21.426500610135495,
+              21.454103125500264
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.710333448445997,
+              19.711971913947817
+            ]
+          },
+          {
+            group: "south-opaque-roof-row",
+            regionIndex: 13,
+            sourceRoofSurfaceIndex: 13,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                3.2079706827321326,
+                6.586469801271164
+              ],
+              [
+                0.5127028030763734,
+                4.891189215983047
+              ]
+            ],
+            bottomHeights: [
+              19.711971913947817,
+              19.714659104449098
+            ],
+            topHeights: [
+              21.454103125500264,
+              22.583500610135495
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.711971913947817,
+              19.714659104449098
+            ]
+          },
+          {
+            group: "south-opaque-roof-row",
+            regionIndex: 13,
+            sourceRoofSurfaceIndex: 13,
+            type: "shared-local-step",
+            neighborRegionIndex: 8,
+            segmentXZ: [
+              [
+                0.5127028030763732,
+                4.891189215983047
+              ],
+              [
+                -0.6881919793406552,
+                7.46478424127929
+              ]
+            ],
+            bottomHeights: [
+              20.788651677279823,
+              20.815500610135494
+            ],
+            topHeights: [
+              22.583500610135495,
+              22.481500610135495
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.714659104449098,
+              19.712729376521757
+            ]
+          },
+          {
+            group: "south-opaque-roof-row",
+            regionIndex: 13,
+            sourceRoofSurfaceIndex: 13,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                -0.6881919793406553,
+                7.46478424127929
+              ],
+              [
+                1.9273389486319026,
+                8.884473283928287
+              ]
+            ],
+            bottomHeights: [
+              19.712729376521757,
+              19.710333448445997
+            ],
+            topHeights: [
+              22.481500610135495,
+              21.426500610135495
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.712729376521757,
+              19.710333448445997
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 9,
+            neighborRegionIndex: 17,
+            type: "internal-face-suppressed",
+            segmentXZ: [
+              [
+                0.7492717075982712,
+                -4.843411821273094
+              ],
+              [
+                1.9631071842907417,
+                -7.277024185511891
+              ]
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 9,
+            sourceRoofSurfaceIndex: 9,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                1.9631071842907415,
+                -7.277024185511891
+              ],
+              [
+                2.1285391622094187,
+                -7.6023309694002705
+              ]
+            ],
+            bottomHeights: [
+              19.725500151213264,
+              19.725738533231592
+            ],
+            topHeights: [
+              22.724588763426503,
+              22.71288005737475
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.725500151213264,
+              19.725738533231592
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 9,
+            sourceRoofSurfaceIndex: 9,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                2.1285391622094187,
+                -7.6023309694002705
+              ],
+              [
+                0.6106524354382512,
+                -8.17215532157718
+              ]
+            ],
+            bottomHeights: [
+              19.725738533231592,
+              19.726890314843075
+            ],
+            topHeights: [
+              22.71288005737475,
+              21.831096155393602
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.725738533231592,
+              19.726890314843075
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 9,
+            sourceRoofSurfaceIndex: 9,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                0.6106524354382512,
+                -8.17215532157718
+              ],
+              [
+                -0.7118228245728626,
+                -9.06148986152516
+              ]
+            ],
+            bottomHeights: [
+              19.726890314843075,
+              19.728262856705236
+            ],
+            topHeights: [
+              21.831096155393602,
+              20.953500610135496
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.726890314843075,
+              19.728262856705236
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 9,
+            sourceRoofSurfaceIndex: 9,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                -0.7118228245728626,
+                -9.06148986152516
+              ],
+              [
+                -1.9256958572648892,
+                -6.342731006766655
+              ]
+            ],
+            bottomHeights: [
+              19.728262856705236,
+              19.726202041152956
+            ],
+            topHeights: [
+              20.953500610135496,
+              21.131748182514777
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.728262856705236,
+              19.726202041152956
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 9,
+            sourceRoofSurfaceIndex: 9,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                -1.9256958572648892,
+                -6.342731006766655
+              ],
+              [
+                -1.6231516612168748,
+                -6.175732131332836
+              ]
+            ],
+            bottomHeights: [
+              19.726202041152956,
+              19.725922287208
+            ],
+            topHeights: [
+              21.131748182514777,
+              21.322371583090636
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.726202041152956,
+              19.725922287208
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 9,
+            sourceRoofSurfaceIndex: 9,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                -1.6231516612168748,
+                -6.175732131332836
+              ],
+              [
+                -1.7868154251804143,
+                -5.302157517963053
+              ]
+            ],
+            bottomHeights: [
+              19.725922287208,
+              19.725168174048427
+            ],
+            topHeights: [
+              21.322371583090636,
+              21.487500610135495
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.725922287208,
+              19.725168174048427
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 9,
+            sourceRoofSurfaceIndex: 9,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                -1.7868154251804143,
+                -5.302157517963053
+              ],
+              [
+                0.33619521070790004,
+                -4.538407684875665
+              ]
+            ],
+            bottomHeights: [
+              19.725168174048427,
+              19.723588446384664
+            ],
+            topHeights: [
+              21.487500610135495,
+              22.711567424043807
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.725168174048427,
+              19.723588446384664
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 9,
+            sourceRoofSurfaceIndex: 9,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                0.33619521070790026,
+                -4.538407684875665
+              ],
+              [
+                0.21674876181828245,
+                -4.928783309758273
+              ]
+            ],
+            bottomHeights: [
+              19.723588446384664,
+              19.72400365952289
+            ],
+            topHeights: [
+              22.711567424043807,
+              22.54601847065494
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.723588446384664,
+              19.72400365952289
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 9,
+            sourceRoofSurfaceIndex: 9,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                0.21674876181828245,
+                -4.928783309758273
+              ],
+              [
+                0.6391095869941122,
+                -4.753606341832892
+              ]
+            ],
+            bottomHeights: [
+              19.72400365952289,
+              19.72366755763527
+            ],
+            topHeights: [
+              22.54601847065494,
+              22.796005176540614
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.72400365952289,
+              19.72366755763527
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 9,
+            sourceRoofSurfaceIndex: 9,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                0.6391095869941122,
+                -4.753606341832892
+              ],
+              [
+                0.7492717075982712,
+                -4.843411821273094
+              ]
+            ],
+            bottomHeights: [
+              19.72366755763527,
+              19.723707171494066
+            ],
+            topHeights: [
+              22.796005176540614,
+              22.823500610135497
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.72366755763527,
+              19.723707171494066
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 17,
+            sourceRoofSurfaceIndex: 30,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                2.7713282075613375,
+                -6.719312375779225
+              ],
+              [
+                1.9631071842907415,
+                -7.277024185511891
+              ]
+            ],
+            bottomHeights: [
+              19.72464799219161,
+              19.725500151213264
+            ],
+            topHeights: [
+              22.109500610135495,
+              22.727500610135497
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.72464799219161,
+              19.725500151213264
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 17,
+            neighborRegionIndex: 9,
+            type: "internal-face-suppressed",
+            segmentXZ: [
+              [
+                1.9631071842907415,
+                -7.277024185511891
+              ],
+              [
+                0.7492717075982711,
+                -4.843411821273094
+              ]
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 17,
+            sourceRoofSurfaceIndex: 30,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                0.7492717075982712,
+                -4.843411821273094
+              ],
+              [
+                1.2279645627799347,
+                -4.603590243723374
+              ]
+            ],
+            bottomHeights: [
+              19.723707171494066,
+              19.723287465614614
+            ],
+            topHeights: [
+              22.823500610135497,
+              22.480493611829452
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.723707171494066,
+              19.723287465614614
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 17,
+            sourceRoofSurfaceIndex: 30,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                1.2279645627799347,
+                -4.603590243723374
+              ],
+              [
+                1.2406199623690952,
+                -4.50462698689563
+              ]
+            ],
+            bottomHeights: [
+              19.723287465614614,
+              19.723189364679392
+            ],
+            topHeights: [
+              22.480493611829452,
+              22.447863459777654
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.723287465614614,
+              19.723189364679392
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 17,
+            sourceRoofSurfaceIndex: 30,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                1.2406199623690952,
+                -4.50462698689563
+              ],
+              [
+                1.3627279692471879,
+                -4.453442853060778
+              ]
+            ],
+            bottomHeights: [
+              19.723189364679392,
+              19.723091688514852
+            ],
+            topHeights: [
+              22.447863459777654,
+              22.362908644134166
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.723189364679392,
+              19.723091688514852
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 17,
+            sourceRoofSurfaceIndex: 30,
+            type: "shared-local-step",
+            neighborRegionIndex: 10,
+            segmentXZ: [
+              [
+                1.3627279692471879,
+                -4.453442853060778
+              ],
+              [
+                2.009209608533661,
+                -5.213288520300239
+              ]
+            ],
+            bottomHeights: [
+              20.736500610135497,
+              20.736517369554207
+            ],
+            topHeights: [
+              22.362908644134166,
+              22.17535731919382
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.723091688514852,
+              19.723542864888966
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 17,
+            sourceRoofSurfaceIndex: 30,
+            type: "shared-local-step",
+            neighborRegionIndex: 10,
+            segmentXZ: [
+              [
+                2.009209608533661,
+                -5.213288520300239
+              ],
+              [
+                2.1258901171738405,
+                -5.807396369374089
+              ]
+            ],
+            bottomHeights: [
+              20.736517369554207,
+              20.729395806385828
+            ],
+            topHeights: [
+              22.17535731919382,
+              22.257752706292113
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.723542864888966,
+              19.72405354536302
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 17,
+            sourceRoofSurfaceIndex: 30,
+            type: "shared-local-step",
+            neighborRegionIndex: 10,
+            segmentXZ: [
+              [
+                2.1258901171738405,
+                -5.807396369374089
+              ],
+              [
+                2.6532581987602186,
+                -6.182224067485436
+              ]
+            ],
+            bottomHeights: [
+              20.729395806385828,
+              20.733229551305907
+            ],
+            topHeights: [
+              22.257752706292113,
+              22.0424287203346
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.72405354536302,
+              19.724191437142398
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 17,
+            sourceRoofSurfaceIndex: 30,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                2.6532581987602186,
+                -6.182224067485436
+              ],
+              [
+                2.7713282075613375,
+                -6.719312375779225
+              ]
+            ],
+            bottomHeights: [
+              19.724191437142398,
+              19.72464799219161
+            ],
+            topHeights: [
+              22.0424287203346,
+              22.109500610135495
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.724191437142398,
+              19.72464799219161
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 10,
+            neighborRegionIndex: 15,
+            type: "internal-face-suppressed",
+            segmentXZ: [
+              [
+                4.968678374588148,
+                -2.5403296095353767
+              ],
+              [
+                6.142175895085917,
+                -4.453397080851573
+              ]
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 10,
+            sourceRoofSurfaceIndex: 10,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                6.142175895085917,
+                -4.453397080851573
+              ],
+              [
+                3.100190025268794,
+                -6.498467182749437
+              ]
+            ],
+            bottomHeights: [
+              19.721150378446747,
+              19.724306968526516
+            ],
+            topHeights: [
+              20.82420867668494,
+              20.736500610135497
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.721150378446747,
+              19.724306968526516
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 10,
+            sourceRoofSurfaceIndex: 10,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                3.100190025268794,
+                -6.498467182749437
+              ],
+              [
+                2.6532581987602186,
+                -6.182224067485436
+              ]
+            ],
+            bottomHeights: [
+              19.724306968526516,
+              19.724191437142398
+            ],
+            topHeights: [
+              20.736500610135497,
+              20.733229551305907
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.724306968526516,
+              19.724191437142398
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 10,
+            neighborRegionIndex: 17,
+            type: "internal-face-suppressed",
+            segmentXZ: [
+              [
+                2.6532581987602186,
+                -6.182224067485436
+              ],
+              [
+                2.1258901171738405,
+                -5.807396369374089
+              ]
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 10,
+            neighborRegionIndex: 17,
+            type: "internal-face-suppressed",
+            segmentXZ: [
+              [
+                2.1258901171738405,
+                -5.807396369374089
+              ],
+              [
+                2.009209608533661,
+                -5.213288520300239
+              ]
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 10,
+            neighborRegionIndex: 17,
+            type: "internal-face-suppressed",
+            segmentXZ: [
+              [
+                2.009209608533661,
+                -5.213288520300239
+              ],
+              [
+                1.3627279692471879,
+                -4.453442853060778
+              ]
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 10,
+            sourceRoofSurfaceIndex: 10,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                1.3627279692471879,
+                -4.453442853060778
+              ],
+              [
+                1.9101905836149233,
+                -4.227102287414937
+              ]
+            ],
+            bottomHeights: [
+              19.723091688514852,
+              19.72265671376945
+            ],
+            topHeights: [
+              20.736500610135497,
+              20.750075947755366
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.723091688514852,
+              19.72265671376945
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 10,
+            sourceRoofSurfaceIndex: 10,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                1.9101905836149233,
+                -4.227102287414937
+              ],
+              [
+                4.968678374588148,
+                -2.5403296095353767
+              ]
+            ],
+            bottomHeights: [
+              19.72265671376945,
+              19.719829986199933
+            ],
+            topHeights: [
+              20.750075947755366,
+              20.832500610135497
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.72265671376945,
+              19.719829986199933
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 15,
+            sourceRoofSurfaceIndex: 15,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                7.69256230162767,
+                -1.038342555534939
+              ],
+              [
+                7.769885804106974,
+                -1.4050628546502253
+              ]
+            ],
+            bottomHeights: [
+              19.71731274214503,
+              19.717625812760282
+            ],
+            topHeights: [
+              21.349500610135497,
+              21.39114471380874
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.71731274214503,
+              19.717625812760282
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 15,
+            sourceRoofSurfaceIndex: 15,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                7.769885804106974,
+                -1.4050628546502253
+              ],
+              [
+                8.638729771714676,
+                -2.7747519876800197
+              ]
+            ],
+            bottomHeights: [
+              19.717625812760282,
+              19.718559526033864
+            ],
+            topHeights: [
+              21.39114471380874,
+              21.349919783461885
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.717625812760282,
+              19.718559526033864
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 15,
+            sourceRoofSurfaceIndex: 15,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                8.638729771714676,
+                -2.7747519876800197
+              ],
+              [
+                6.142175895085917,
+                -4.453397080851573
+              ]
+            ],
+            bottomHeights: [
+              19.718559526033864,
+              19.721150378446747
+            ],
+            topHeights: [
+              21.349919783461885,
+              22.507500610135494
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.718559526033864,
+              19.721150378446747
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 15,
+            sourceRoofSurfaceIndex: 15,
+            type: "shared-local-step",
+            neighborRegionIndex: 10,
+            segmentXZ: [
+              [
+                6.142175895085917,
+                -4.453397080851573
+              ],
+              [
+                4.968678374588148,
+                -2.5403296095353767
+              ]
+            ],
+            bottomHeights: [
+              20.82420867668494,
+              20.832500610135497
+            ],
+            topHeights: [
+              22.507500610135494,
+              22.551500610135495
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.721150378446747,
+              19.719829986199933
+            ]
+          },
+          {
+            group: "north-opaque-roof-row",
+            regionIndex: 15,
+            sourceRoofSurfaceIndex: 15,
+            type: "exterior-technical-cheek",
+            segmentXZ: [
+              [
+                4.968678374588148,
+                -2.5403296095353767
+              ],
+              [
+                7.69256230162767,
+                -1.038342555534939
+              ]
+            ],
+            bottomHeights: [
+              19.719829986199933,
+              19.71731274214503
+            ],
+            topHeights: [
+              22.551500610135495,
+              21.349500610135497
+            ],
+            supportRegionIndices: [
+              0,
+              0
+            ],
+            supportHeights: [
+              19.719829986199933,
+              19.71731274214503
+            ]
+          }
+        ],
+        roofObjectAssemblies: [
+          {
+            name: "south-opaque-roof-row",
+            sourceIndices: [
+              12,
+              17,
+              8,
+              13
+            ],
+            supportSourceIndices: [
+              0
+            ],
+            topColor: "#6c7275",
+            cheekColor: "#747a7d",
+            recipeRegionIndices: [
+              12,
+              16,
+              8,
+              13
+            ],
+            supportRecipeRegionIndices: [
+              0
+            ],
+            sourceEvidence: "experiments/canal-belt-overnight/sources-03/0363100012167736/roof-followup/region-classification.json",
+            sourceYear: "2026 layer; precise local flight day unknown",
+            sideMaterialConfidence: "Opaque conservative technical cheek inference; hidden side material/function unresolved",
+            curbColor: "#a7acae",
+            curbHeightMetres: 0.075
+          },
+          {
+            name: "north-opaque-roof-row",
+            sourceIndices: [
+              9,
+              30,
+              10,
+              15
+            ],
+            supportSourceIndices: [
+              0
+            ],
+            topColor: "#656d71",
+            cheekColor: "#747a7d",
+            recipeRegionIndices: [
+              9,
+              17,
+              10,
+              15
+            ],
+            supportRecipeRegionIndices: [
+              0
+            ],
+            sourceEvidence: "experiments/canal-belt-overnight/sources-03/0363100012167736/roof-followup/region-classification.json",
+            sourceYear: "2026 layer; precise local flight day unknown",
+            sideMaterialConfidence: "Opaque conservative technical cheek inference; hidden side material/function unresolved",
+            curbColor: "#a7acae",
+            curbHeightMetres: 0.075
+          }
+        ],
+        roofFollowupArchiveCommit: "7b26e67e736c6434849b443ec649cb1836713f3d",
+        updatedAt: "2026-10-07T08:35:12.271728+00:00",
+        validationSourceCommit: "df79731b0ec912f4410c3441db4a1a00c252da2e",
+        sourceUrls: [
+          "https://www.amsterdam-monumentenstad.nl/database/grachtenboek_objecten.php?evenzijde=2&grachtenboek=Keizersgracht&id=8637"
+        ]
       }
     ]
   };
@@ -16875,6 +21329,18 @@ Map source: ${osmUrl(places[i][0])}`);
       description: "Brouwerij \u2019t IJ began in 1985 when musician Kaspar Peterson turned the former Funen municipal bathhouse into a brewery. The bathhouse opened in 1911, providing showers for homes without bathrooms. The brewery and its tasting room occupy the separate brick bathhouse beside De Gooyer windmill; the mill itself remains a distinct historic building.",
       sourceUrl: "https://www.brouwerijhetij.nl/de-brouwerij",
       preferDescription: true
+    },
+    {
+      modelId: "vinoly",
+      name: "Vi\xF1oly",
+      description: "Vi\xF1oly is Rafael Vi\xF1oly Architects\u2019 2005 Mahler4 office tower in Zuidas. An exterior stair spirals through notches cut into its glass and aluminium facade, tying the offset podium, middle volume and tower into one composition. The planned public rooftop stair access was closed for safety before opening. Its podium contains independently serviced ground-floor retail and a glass-covered two-story patio.",
+      sourceUrl: "https://vinoly.com/works/mahler-4-office-tower/",
+      routeDestination: {
+        center: [
+          52.33768,
+          4.87262
+        ]
+      }
     }
   ];
 

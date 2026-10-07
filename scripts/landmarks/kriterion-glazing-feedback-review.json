@@ -2,7 +2,7 @@
   "modelId": "kriterion",
   "feedbackId": "1d79b5b9-8491-4c91-b99f-9f9820b69e5b",
   "reviewedOn": "2026-10-07",
-  "status": "local-geometry-gallery-game-and-independent-review-passed-root-visual-accepted-hosted-verification-pending",
+  "status": "hosted-verified-feedback-resolved",
   "originalEvidence": {
     "note": "bottom ewindows brown",
     "reportedFingerprint": "452d0da753f4c034",
@@ -139,14 +139,21 @@
   ],
   "performanceLimitation": "Default headless Playwright Chromium current actual scene is slow: canopy-close visible p50 158ms/p95 274.6ms; hidden p50 110.1ms/p95 162.8ms; repeat p50 170.3ms/p95 258.2ms. A subsequent default Chromium front scene is also slow (~115\u2013129ms p50). Final installed Chrome front scene visible p50 16.7ms/p95 18.4ms, hidden16.6/18.7, repeat16.7/18.5; model-enabled/disabled isolation only. Exact WebGL backend identity was not recorded; these results suggest a browser/backend difference but do not establish its mechanism or erase slow runs. No whole-game performance acceptance claimed.",
   "visualEvidence": "artifacts/landmark-release-check/kriterion-review current exact asset gallery four rotations, front, canal close, complementary low/high west and roof context captures",
-  "pending": [
-    "Scoped public commit/push and deployment",
-    "Hosted reported-angle verification before conditional cloud feedback resolution"
-  ],
-  "feedbackStatus": "claimed unresolved; never resolve from local-only evidence",
+  "pending": [],
+  "feedbackStatus": "resolved after hosted verification",
   "independentReview": {
     "path": "artifacts/kriterion-feedback-oct7/d069-independent-final-review.json",
     "assetSha256": "d069a17f44212a81df0a10389ff4be681c7aed2404274298bed507c17d2b0abe",
     "decision": "bounded visual pass"
-  }
+  },
+  "hostedVerification": {
+    "publicCommit": "6e06b7e4806756f6de1e808906b78236e6e68680",
+    "deploymentRun": 37598982704,
+    "privateCommit": "173f7bdbfaf300dfb2656206649402b9766e8450",
+    "path": "models/kriterion/checkpoints/2026-10-07-hosted-closeout/accepted-hosted-manifest.json",
+    "exactMeshSha256": "d069a17f44212a81df0a10389ff4be681c7aed2404274298bed507c17d2b0abe",
+    "terminalHarness": 90313,
+    "checks": "Exact hosted bytes/gallery/current game route,pin,physical sourced card,three masks and both resident drawable neighbors passed; root inspected hosted lower glazing/front. Hosted fallback not rerun; local accepted fallback retained."
+  },
+  "feedbackUpdateTime": "2026-10-07T09:19:10.677917Z"
 }

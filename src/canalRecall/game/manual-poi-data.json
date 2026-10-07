@@ -844,7 +844,7 @@
         "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/504760"
       },
       {
-        "title": "Brouwerij \u2019t IJ \u2014 Blauwe Theehuis",
+        "title": "Brouwerij ’t IJ \u2014 Blauwe Theehuis",
         "url": "https://brouwerijhetij.nl/en/tasting-rooms/t-blauwe-theehuis"
       }
     ]
@@ -1054,7 +1054,7 @@
       4.9261523,
       52.3667975
     ],
-    "description": "De Gooyer is the Netherlands\u2019 tallest wooden windmill. Its octagonal grain mill was built around 1725 and moved here in 1814 after a barracks obstructed its wind. It stands on the raised square brick base of a former city water mill. The gallery is 17.8 metres above ground and the sails span 26.6 metres. Brouwerij \u2019t IJ occupies the separate former bathhouse next door.",
+    "description": "De Gooyer is the Netherlands\u2019 tallest wooden windmill. Its octagonal grain mill was built around 1725 and moved here in 1814 after a barracks obstructed its wind. It stands on the raised square brick base of a former city water mill. The gallery is 17.8 metres above ground and the sails span 26.6 metres. Brouwerij ’t IJ occupies the separate former bathhouse next door.",
     "sourceUrl": "https://stadsherstel.nl/monumenten/funenkade-5-molen-de-gooyer/",
     "additionalSources": [
       "https://www.molens.nl/ontdek-molens/alle-molens/de-gooyer-te-amsterdam",
@@ -1352,5 +1352,17 @@
     "description": "Brouwerij ’t IJ began in 1985 when musician Kaspar Peterson turned the former Funen municipal bathhouse into a brewery. The bathhouse opened in 1911, providing showers for homes without bathrooms. The brewery and its tasting room occupy the separate brick bathhouse beside De Gooyer windmill; the mill itself remains a distinct historic building.",
     "sourceUrl": "https://www.brouwerijhetij.nl/de-brouwerij",
     "preferDescription": true
+  },
+  {
+    "modelId": "vinoly",
+    "name": "Vi\u00f1oly",
+    "description": "Vi\u00f1oly is Rafael Vi\u00f1oly Architects\u2019 2005 Mahler4 office tower in Zuidas. An exterior stair spirals through notches cut into its glass and aluminium facade, tying the offset podium, middle volume and tower into one composition. The planned public rooftop stair access was closed for safety before opening. Its podium contains independently serviced ground-floor retail and a glass-covered two-story patio.",
+    "sourceUrl": "https://vinoly.com/works/mahler-4-office-tower/",
+    "routeDestination": {
+      "center": [
+        52.33768,
+        4.87262
+      ]
+    }
   }
 ]
