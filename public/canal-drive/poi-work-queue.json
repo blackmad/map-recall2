@@ -2031,10 +2031,21 @@
       ],
       "evidence": "ordinary-buildings-data/canal-rokin-review-20261007.json",
       "handoff": "docs/performance/2026-10-06/canal-belt-continuation-handoff.md",
-      "nextAction": "Publish and verify Rokin pair26, then continue source-confirmed canal-belt boxes using shared assemblies. Keizersgracht603/Vijzelstraat79 next build source review underway; LangeLeidsedwarsstraat12 candidate source screening. Preserve prior holds.",
+      "nextAction": "Continue Keizersgracht603 and LangeLeidsedwarsstraat12 frozen candidates through independent source/GPU review and root exact native game checks before source-backed publication. Continuous goal remains active; Rokin pair26 hosted verified.",
       "sourceCommit": "052ce837e0721eaa173873a5517a47ba8b86b982",
       "notes": "Ordinary assets/full architecture review for defining Rokin roof assemblies; no invented POI routes. Existing Nacarat basic inside-footprint click card retained. Both strict500k/three-material budgets pass.",
-      "localModelCount": 26
+      "localModelCount": 26,
+      "hostedVerification": {
+        "publicCommit": "bb31004d418c36599f319ae14903973e7592a6db",
+        "firebaseRun": "37698102176",
+        "verifiedAtUTC": "2026-10-07T22:48:24.706529+00:00",
+        "models": 26,
+        "allAssetHashesExact": true,
+        "manualDesktopTouchLoaded": 26,
+        "feedbackPreview": true,
+        "sourceCommit": "fc7c606dbbe77bd9d92efb8111c4a11078fde7a9",
+        "sourcePack": "experiments/canal-belt-continuation-20261007/host26-14"
+      }
     },
     {
       "id": "amstel130-stale-native-candidate",

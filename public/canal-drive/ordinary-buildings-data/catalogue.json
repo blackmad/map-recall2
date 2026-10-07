@@ -14491,9 +14491,10 @@
         ]
       },
       "generationMilliseconds": 31,
-      "reviewState": "Root and independent full architecture source/gallery and desktop/touch game accepted; hosted verification pending",
+      "reviewState": "Verified source comparison and in-game placement.",
       "treatment": "landmark",
-      "sourceCommit": "052ce837e0721eaa173873a5517a47ba8b86b982"
+      "sourceCommit": "052ce837e0721eaa173873a5517a47ba8b86b982",
+      "updatedAt": "2026-10-07T22:46:40.509Z"
     },
     {
       "id": "ordinary-0363100012243483",
@@ -16157,10 +16158,11 @@
         ]
       },
       "generationMilliseconds": 32,
-      "reviewState": "Root and independent full architecture source/gallery and desktop/touch game accepted; hosted verification pending",
+      "reviewState": "Verified source comparison and in-game placement.",
       "portableDetailStage": "scripts/curved-details.mjs",
       "sourceCommit": "052ce837e0721eaa173873a5517a47ba8b86b982",
-      "treatment": "landmark"
+      "treatment": "landmark",
+      "updatedAt": "2026-10-07T22:46:40.509Z"
     }
   ]
 }
