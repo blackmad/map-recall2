@@ -9283,6 +9283,57 @@ Map source: ${osmUrl(places[i][0])}`);
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native two-parent ensemble, interpreted from BAG/3DBAG, municipal monument212005 and dated references. Museum occupancy only number5; dimensions/joinery approximate."
       }
+    },
+    {
+      id: "cafe-kobalt",
+      name: "Caf\xE9 Kobalt \u2014 Singel 2",
+      modelUrl: "./models/cafe-kobalt.glb",
+      osmPoi: {
+        type: "node",
+        id: 539179321,
+        coordinate: [
+          4.8943639,
+          52.3795667
+        ]
+      },
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012178170"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.894340622677857,
+          52.37955910785327
+        ],
+        headingDegrees: 90,
+        lengthMetres: 18,
+        widthMetres: 16
+      },
+      surveyed: {
+        anchor: [
+          4.894340622677857,
+          52.37955910785327
+        ],
+        northOffsetDegrees: 0,
+        source: "Exact current BAG0363100012178170 native east/south metres. Singel southeast principal chain2\u21926; Droogbak northeast white flank6\u21920. Ridge/eaves calibrated to AHN2023 3DBAG vertices29/33/27/31. Partywalls1\u21922 and0\u21921 retain neighbors."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "Caf\xE9 Kobalt / Singel 2",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/5249",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Reconstructedoriginalnativeflatcolourwarehouse;photoreferencesonly,noimportedpixels/mesh."
+      },
+      materialOverrides: {
+        brick: "#765447",
+        red: "#c14332",
+        slate: "#4a525d",
+        bronze: "#8a624b"
+      },
+      landmarkId: "osm_node_539179321"
     }
   ];
 
@@ -23255,7 +23306,8 @@ Map source: ${osmUrl(places[i][0])}`);
         reviewedAt: "2026-10-07T20:59:33.670018+00:00",
         packedSourceCommit: "7a366827879aadd6f1059bf6424c3eef5b8480ab",
         packedSourcePack: "experiments/canal-belt-continuation-20261007/packing-04",
-        sizeBudgetException: "520176bytes exceeds500KBpreference4%; defining assemblies retained, physical materials consolidated7to3."
+        sizeBudgetException: "520176bytes exceeds500KBpreference4%; defining assemblies retained, physical materials consolidated7to3.",
+        updatedAt: "2026-10-07T21:00:00Z"
       },
       {
         id: "ordinary-0363100012168482",
@@ -23682,7 +23734,1575 @@ Map source: ${osmUrl(places[i][0])}`);
         sourceCommit: "2249ce1e871c2c39ddcf1adeb603f02fb716c098",
         acceptanceSourceCommit: "b444eca8edfc9cc545047bebbf92b9c315d79c23",
         acceptanceSourcePack: "experiments/canal-belt-continuation-20261007/runtime-05",
-        reviewedAt: "2026-10-07T20:59:33.670018+00:00"
+        reviewedAt: "2026-10-07T20:59:33.670018+00:00",
+        updatedAt: "2026-10-07T21:00:00Z"
+      },
+      {
+        id: "ordinary-0363100012168201",
+        buildingId: "NL.IMBAG.Pand.0363100012168201",
+        name: "Kalverstraat 99 \u2014 brick core and glazed commercial flank",
+        anchor: [
+          4.891583714285715,
+          52.36992792857143
+        ],
+        cameraBearing: 254.26230448652336,
+        footprint: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [
+                4.89165,
+                52.370023
+              ],
+              [
+                4.891469,
+                52.370037
+              ],
+              [
+                4.891441,
+                52.370026
+              ],
+              [
+                4.891357,
+                52.369844
+              ],
+              [
+                4.891357,
+                52.369844
+              ],
+              [
+                4.891356,
+                52.36984
+              ],
+              [
+                4.891724,
+                52.369807
+              ],
+              [
+                4.891737,
+                52.369863
+              ],
+              [
+                4.891689,
+                52.369867
+              ],
+              [
+                4.891719,
+                52.369933
+              ],
+              [
+                4.891689,
+                52.369936
+              ],
+              [
+                4.891705,
+                52.369971
+              ],
+              [
+                4.891629,
+                52.369977
+              ],
+              [
+                4.89165,
+                52.370023
+              ]
+            ]
+          ]
+        },
+        height: 15.031368255615234,
+        modelUrl: "./models/ordinary-buildings/0363100012168201.glb",
+        bounds: {
+          min: [
+            -15.548131942749023,
+            0,
+            -12.159688949584961
+          ],
+          max: [
+            10.436290740966797,
+            15.031368255615234,
+            13.70304012298584
+          ]
+        },
+        triangles: 675,
+        bytes: 105912,
+        materials: 2,
+        hash: "6b80919b97e24f25a74e043e47eadf281c88cf32288ce8989db4bfd20fa7e2ee",
+        referenceImages: [
+          "./ordinary-buildings-data/references/0363100012168201/plane-00135.jpg",
+          "./ordinary-buildings-data/references/0363100012168201/plane-00134.jpg"
+        ],
+        sourcePack: "experiments/canal-belt-continuation-20261007/kalver-rebuild/corrected-v3",
+        sourceUrls: [
+          "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012168201",
+          "https://api.data.amsterdam.nl/panorama/panoramas/b_20250120_0926_Track02_Sphere_00135/"
+        ],
+        traits: [
+          "Native 463 m\xB2 footprint; no open court",
+          "Northern brick core has four paired tall openings in each of two upper tiers over two broad transomed shop bays",
+          "Southern glazed commercial flank belongs to the same BAG Pand and retains a separate facade rhythm",
+          "Low main roof, narrow higher frontage/parapet strip and inset raised roof patch",
+          "Southern2.15m same-Pand brick/window strip retained after glazing boundary correction"
+        ],
+        simplifications: [
+          "Original procedural facade atlas contains no source photograph pixels.",
+          "Opaque/covered top parapet inset panels are simplified; no historical ornament, shop lettering or interior fixtures.",
+          "Rear and abutting walls stay restrained blank masonry because no unoccluded rear reference was acquired.",
+          "Small technical roof patches omitted; 52m\xB2 raised inset patch retained.",
+          "Southern strip has two source-visible separate narrow openings per upper tier, two opaque crown panels and partial broad ground shop bay clipped to exact native edge; details beyond footprint excluded.",
+          "Core pair spacing2.45m and source openingwidth2.1m approximate both calibrated source projections; broad shopbays clipped to observed3\u20137m and7.9\u201312.05m ranges; source-visible masonrypier retained beforeglass.",
+          "Terminal narrowwindow width/clipping approximated;core4pairedgroups and brick/glasssplit source-supported.",
+          "Small uncertainequipment omitted;nativecourtyardholesnotinvented."
+        ],
+        sourceTiming: {
+          startedOn: "2026-10-07T20:50:47.282Z",
+          scope: "persistent reconstruction from cached original source pack"
+        },
+        heightEvidence: "Official roof vertices relative to 1.549m NAP terrain; native source height12.53m is main roof envelope, equipment maxima excluded.",
+        facadeRecipe: {
+          kind: "blank",
+          wallColor: "#504c43",
+          windowTiers: [],
+          edges: {
+            "0": {
+              fixedFacadeTopMetres: 12.49,
+              kind: "blank",
+              windowTiers: []
+            },
+            "1": {
+              fixedFacadeTopMetres: 12.49,
+              kind: "blank",
+              windowTiers: []
+            },
+            "2": {
+              fixedFacadeTopMetres: 14.54,
+              kind: "blank",
+              windowTiers: [
+                {
+                  sillMetres: 4.8,
+                  heightMetres: 2.7,
+                  startMetres: 2.75,
+                  pitchMetres: 2.45,
+                  count: 4,
+                  requiredClusterCount: 4,
+                  endMarginMetres: 6.1,
+                  panes: 2,
+                  frameWidthMetres: 0.075,
+                  clusters: [
+                    {
+                      widthMetres: 2.1,
+                      openings: [
+                        {
+                          offsetMetres: 0,
+                          widthMetres: 2.1
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  sillMetres: 8.4,
+                  heightMetres: 2.7,
+                  startMetres: 2.75,
+                  pitchMetres: 2.45,
+                  count: 4,
+                  requiredClusterCount: 4,
+                  endMarginMetres: 6.1,
+                  panes: 2,
+                  frameWidthMetres: 0.075,
+                  clusters: [
+                    {
+                      widthMetres: 2.1,
+                      openings: [
+                        {
+                          offsetMetres: 0,
+                          widthMetres: 2.1
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  startMetres: 12.9,
+                  pitchMetres: 6.5,
+                  count: 1,
+                  requiredClusterCount: 1,
+                  endMarginMetres: 0.2,
+                  sillMetres: 3.2,
+                  heightMetres: 11,
+                  widthMetres: 6,
+                  panes: 3,
+                  frameColor: "#9ea9a4",
+                  frameWidthMetres: 0.1,
+                  transomHeightsMetres: [
+                    5.6
+                  ]
+                },
+                {
+                  startMetres: 12.9,
+                  pitchMetres: 6.5,
+                  count: 1,
+                  requiredClusterCount: 1,
+                  endMarginMetres: 0.2,
+                  sillMetres: 0.12,
+                  heightMetres: 2.8,
+                  widthMetres: 6,
+                  panes: 4,
+                  frameColor: "#9ea9a4",
+                  frameWidthMetres: 0.1
+                },
+                {
+                  sillMetres: 4.8,
+                  heightMetres: 2.7,
+                  startMetres: 19.16,
+                  pitchMetres: 2.5,
+                  count: 1,
+                  requiredClusterCount: 1,
+                  endMarginMetres: 0.2,
+                  panes: 1,
+                  frameWidthMetres: 0.075,
+                  clusters: [
+                    {
+                      widthMetres: 1.62,
+                      openings: [
+                        {
+                          offsetMetres: 0,
+                          widthMetres: 0.62
+                        },
+                        {
+                          offsetMetres: 1,
+                          widthMetres: 0.62
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  sillMetres: 8.4,
+                  heightMetres: 2.7,
+                  startMetres: 19.16,
+                  pitchMetres: 2.5,
+                  count: 1,
+                  requiredClusterCount: 1,
+                  endMarginMetres: 0.2,
+                  panes: 1,
+                  frameWidthMetres: 0.075,
+                  clusters: [
+                    {
+                      widthMetres: 1.62,
+                      openings: [
+                        {
+                          offsetMetres: 0,
+                          widthMetres: 0.62
+                        },
+                        {
+                          offsetMetres: 1,
+                          widthMetres: 0.62
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              bands: [
+                {
+                  xMetres: 0,
+                  bottomMetres: 0,
+                  widthMetres: 2.2,
+                  heightMetres: 14.54,
+                  color: "#babdb5"
+                },
+                {
+                  xMetres: 12.9,
+                  bottomMetres: 0,
+                  widthMetres: 6,
+                  heightMetres: 14.54,
+                  color: "#b5bcb7"
+                },
+                {
+                  xMetres: 19.16,
+                  bottomMetres: 12.3,
+                  widthMetres: 0.62,
+                  heightMetres: 1.5,
+                  color: "#65665b"
+                },
+                {
+                  xMetres: 19.16,
+                  bottomMetres: 13.6,
+                  widthMetres: 0.62,
+                  heightMetres: 0.2,
+                  color: "#34392f"
+                },
+                {
+                  xMetres: 20.16,
+                  bottomMetres: 12.3,
+                  widthMetres: 0.62,
+                  heightMetres: 1.5,
+                  color: "#65665b"
+                },
+                {
+                  xMetres: 20.16,
+                  bottomMetres: 13.6,
+                  widthMetres: 0.62,
+                  heightMetres: 0.2,
+                  color: "#34392f"
+                },
+                {
+                  xMetres: 2.75,
+                  bottomMetres: 12.3,
+                  widthMetres: 0.8,
+                  heightMetres: 1.5,
+                  color: "#65665b"
+                },
+                {
+                  xMetres: 2.75,
+                  bottomMetres: 13.6,
+                  widthMetres: 0.8,
+                  heightMetres: 0.2,
+                  color: "#34392f"
+                },
+                {
+                  xMetres: 3.95,
+                  bottomMetres: 12.3,
+                  widthMetres: 0.8,
+                  heightMetres: 1.5,
+                  color: "#65665b"
+                },
+                {
+                  xMetres: 3.95,
+                  bottomMetres: 13.6,
+                  widthMetres: 0.8,
+                  heightMetres: 0.2,
+                  color: "#34392f"
+                },
+                {
+                  xMetres: 5.2,
+                  bottomMetres: 12.3,
+                  widthMetres: 0.8,
+                  heightMetres: 1.5,
+                  color: "#65665b"
+                },
+                {
+                  xMetres: 5.2,
+                  bottomMetres: 13.6,
+                  widthMetres: 0.8,
+                  heightMetres: 0.2,
+                  color: "#34392f"
+                },
+                {
+                  xMetres: 6.4,
+                  bottomMetres: 12.3,
+                  widthMetres: 0.8,
+                  heightMetres: 1.5,
+                  color: "#65665b"
+                },
+                {
+                  xMetres: 6.4,
+                  bottomMetres: 13.6,
+                  widthMetres: 0.8,
+                  heightMetres: 0.2,
+                  color: "#34392f"
+                },
+                {
+                  xMetres: 7.65,
+                  bottomMetres: 12.3,
+                  widthMetres: 0.8,
+                  heightMetres: 1.5,
+                  color: "#65665b"
+                },
+                {
+                  xMetres: 7.65,
+                  bottomMetres: 13.6,
+                  widthMetres: 0.8,
+                  heightMetres: 0.2,
+                  color: "#34392f"
+                },
+                {
+                  xMetres: 8.850000000000001,
+                  bottomMetres: 12.3,
+                  widthMetres: 0.8,
+                  heightMetres: 1.5,
+                  color: "#65665b"
+                },
+                {
+                  xMetres: 8.850000000000001,
+                  bottomMetres: 13.6,
+                  widthMetres: 0.8,
+                  heightMetres: 0.2,
+                  color: "#34392f"
+                },
+                {
+                  xMetres: 10.100000000000001,
+                  bottomMetres: 12.3,
+                  widthMetres: 0.8,
+                  heightMetres: 1.5,
+                  color: "#65665b"
+                },
+                {
+                  xMetres: 10.100000000000001,
+                  bottomMetres: 13.6,
+                  widthMetres: 0.8,
+                  heightMetres: 0.2,
+                  color: "#34392f"
+                },
+                {
+                  xMetres: 11.3,
+                  bottomMetres: 12.3,
+                  widthMetres: 0.8,
+                  heightMetres: 1.5,
+                  color: "#65665b"
+                },
+                {
+                  xMetres: 11.3,
+                  bottomMetres: 13.6,
+                  widthMetres: 0.8,
+                  heightMetres: 0.2,
+                  color: "#34392f"
+                }
+              ],
+              groundEntries: [
+                {
+                  xMetres: 3,
+                  bottomMetres: 0.2,
+                  widthMetres: 4,
+                  heightMetres: 3.6,
+                  kind: "glazed",
+                  panes: 2,
+                  transomHeightsMetres: [
+                    2.7
+                  ]
+                },
+                {
+                  xMetres: 7.9,
+                  bottomMetres: 0.2,
+                  widthMetres: 4.15,
+                  heightMetres: 3.6,
+                  kind: "glazed",
+                  panes: 2,
+                  transomHeightsMetres: [
+                    2.7
+                  ]
+                },
+                {
+                  xMetres: 19.15,
+                  bottomMetres: 0.2,
+                  widthMetres: 1.87,
+                  heightMetres: 3.6,
+                  kind: "glazed",
+                  panes: 2,
+                  transomHeightsMetres: [
+                    2.7
+                  ]
+                }
+              ],
+              glazedAssemblies: [],
+              topBandHeightMetres: 0.2,
+              topBandColor: "#333a36"
+            },
+            "3": {
+              fixedFacadeTopMetres: 12.49,
+              kind: "blank",
+              windowTiers: []
+            },
+            "4": {
+              fixedFacadeTopMetres: 12.49,
+              kind: "blank",
+              windowTiers: []
+            },
+            "5": {
+              fixedFacadeTopMetres: 12.49,
+              kind: "blank",
+              windowTiers: []
+            },
+            "6": {
+              fixedFacadeTopMetres: 12.49,
+              kind: "blank",
+              windowTiers: []
+            },
+            "7": {
+              fixedFacadeTopMetres: 12.49,
+              kind: "blank",
+              windowTiers: []
+            },
+            "8": {
+              fixedFacadeTopMetres: 12.49,
+              kind: "blank",
+              windowTiers: []
+            },
+            "9": {
+              fixedFacadeTopMetres: 12.49,
+              kind: "blank",
+              windowTiers: []
+            },
+            "10": {
+              fixedFacadeTopMetres: 12.49,
+              kind: "blank",
+              windowTiers: []
+            },
+            "11": {
+              fixedFacadeTopMetres: 12.49,
+              kind: "blank",
+              windowTiers: []
+            },
+            "12": {
+              fixedFacadeTopMetres: 12.49,
+              kind: "blank",
+              windowTiers: []
+            }
+          }
+        },
+        official3D: {
+          source: "cached original 3DBAG CityJSON response",
+          groundNAP: 1.5490000247955322,
+          sourceYear: 2023
+        },
+        galleryFrontage: {
+          target: [
+            4.891399,
+            52.369935
+          ],
+          cameraBearing: 254.26230448652336,
+          distanceMetres: 35,
+          targetHeightMetres: 7,
+          referenceImages: [
+            "./ordinary-buildings-data/references/0363100012168201/plane-00135.jpg",
+            "./ordinary-buildings-data/references/0363100012168201/plane-00134.jpg"
+          ]
+        },
+        generationMilliseconds: 19,
+        reviewState: "Reviewed standard exterior; source-specific facades, native roof/open-space and desktop/touch game checks pass.",
+        sourceCommit: "1bdd61027bbaeda4c1cdf889af68ef9818da7462",
+        visualAcceptance: true,
+        sourceAdmission: true,
+        acceptanceSourceCommit: "81bef5d1ca4ff18d05306ba9b4ec34d98c7febcb",
+        acceptanceSourcePack: "experiments/canal-belt-continuation-20261007/next-box-runtime-07",
+        reviewedAt: "2026-10-07T21:21:01.705480+00:00",
+        updatedAt: "2026-10-07T21:21:01.705480+00:00"
+      },
+      {
+        id: "ordinary-0363100012175754",
+        buildingId: "NL.IMBAG.Pand.0363100012175754",
+        name: "Spuistraat 242\u2013250 ordinary residential/shop block",
+        anchor: [
+          4.888969210526316,
+          52.37091194736842
+        ],
+        cameraBearing: 105,
+        footprint: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [
+                4.889107,
+                52.371087
+              ],
+              [
+                4.8891,
+                52.371084
+              ],
+              [
+                4.888985,
+                52.37105
+              ],
+              [
+                4.888986,
+                52.371049
+              ],
+              [
+                4.888765,
+                52.370981
+              ],
+              [
+                4.888789,
+                52.370932
+              ],
+              [
+                4.888773,
+                52.370803
+              ],
+              [
+                4.888783,
+                52.370802
+              ],
+              [
+                4.888776,
+                52.370748
+              ],
+              [
+                4.88892,
+                52.370742
+              ],
+              [
+                4.888916,
+                52.370705
+              ],
+              [
+                4.889007,
+                52.370696
+              ],
+              [
+                4.889042,
+                52.370827
+              ],
+              [
+                4.889037,
+                52.370828
+              ],
+              [
+                4.889055,
+                52.370896
+              ],
+              [
+                4.889061,
+                52.370896
+              ],
+              [
+                4.889096,
+                52.371028
+              ],
+              [
+                4.88911,
+                52.371086
+              ],
+              [
+                4.889107,
+                52.371087
+              ]
+            ]
+          ]
+        },
+        height: 15.986502647399902,
+        modelUrl: "./models/ordinary-buildings/0363100012175754.glb",
+        bounds: {
+          min: [
+            -13.89664363861084,
+            0,
+            -19.501590728759766
+          ],
+          max: [
+            9.727205276489258,
+            15.986502647399902,
+            24.065019607543945
+          ]
+        },
+        triangles: 2049,
+        bytes: 238320,
+        materials: 3,
+        hash: "6112509cc37e9e26c412a66e963b092af7c58a8282f1f536b83421a2046338ee",
+        referenceImages: [
+          "./ordinary-buildings-data/references/0363100012175754/wide-0363100012175754-2025-00188-einitial.jpg",
+          "./ordinary-buildings-data/references/0363100012175754/wide-0363100012175754-2025-00187-einitial.jpg"
+        ],
+        sourcePack: "experiments/canal-belt-continuation-20261007/spui-rebuild/source",
+        sourceUrls: [
+          "https://api.data.amsterdam.nl/panorama/panoramas/b_20250109_1300_Track05_Sphere_00188/",
+          "https://api.data.amsterdam.nl/panorama/panoramas/b_20250109_1300_Track05_Sphere_00187/",
+          "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012175754"
+        ],
+        traits: [
+          "Ochre1993 brick box with four dark-frame upper tiers and pale lintels over broad ground glazing.",
+          "South edge11 six opening groups; north15+16 six groups4+2, retaining native edge16.",
+          "Dark recessed balcony stacks; central two recessed stacks beneath defining red-framed polygonal glazed top bay.",
+          "Native644.212m\xB2 footprint preserved; officialBAGv4 approximate644.495m\xB2,584.55m\xB2 is reconstructed3DBAG statistic."
+        ],
+        simplifications: [
+          "Original procedural atlas plus shallow native balcony/central faceted bay geometry; no photographed pixels/signage/POI.",
+          "Observed wing opening counts6+6; north4+2 division follows native split. Widths/sills and recess depths estimated from oblique panoramas.",
+          "No second public street; secondary is oblique Spuistraat front. Rear faces conservatively blank; tiny equipment and uncertain high patch omitted.",
+          "Thin paleupperbands approximateindividualsourcelintels.",
+          "113m\xB2nativegapclosure usesboundedconservative inferredplanes,not newsurveymeasurements;retainedsourceplanes/lowinteriorpreserved.",
+          "Private rearblank/heightclosure approximate;uncertain tiny20.25m fittedpatch explicitlyomitted."
+        ],
+        sourceTiming: {
+          authoringMode: "persistent bounded ordinary rebuild",
+          researchDate: "2026-10-07"
+        },
+        heightEvidence: "Cached3DBAG roof vertices minus b3_h_maaiveld;312.8m\xB214.67m,80.6m\xB212.08m,70.9m\xB23.87m low interior,32.9m\xB2~12m; northern sloped21+17m\xB2 surfaces retained max15.99m. Tiny10.83m\xB219.84\u201320.25m fitted patch133 conflicts parent16.11m maximum and photographic silhouette: uncertain omitted. Per-edge tops conservative to avoid nearest-region plane extrapolation fins.",
+        facadeRecipe: {
+          kind: "blank",
+          edges: {
+            "0": {
+              kind: "blank",
+              fixedFacadeTopMetres: 14.667342386332422
+            },
+            "1": {
+              kind: "blank",
+              fixedFacadeTopMetres: 11.992112588352626
+            },
+            "2": {
+              kind: "blank",
+              fixedFacadeTopMetres: 11.992112588352626
+            },
+            "3": {
+              kind: "blank",
+              fixedFacadeTopMetres: 3.8729300486700873
+            },
+            "4": {
+              kind: "blank",
+              fixedFacadeTopMetres: 12.077501477241515
+            },
+            "5": {
+              kind: "blank",
+              fixedFacadeTopMetres: 12.077501477241515
+            },
+            "6": {
+              kind: "blank",
+              fixedFacadeTopMetres: 12.077501477241515
+            },
+            "7": {
+              kind: "blank",
+              fixedFacadeTopMetres: 14.667342386332422
+            },
+            "8": {
+              kind: "blank",
+              fixedFacadeTopMetres: 14.667342386332422
+            },
+            "9": {
+              kind: "blank",
+              fixedFacadeTopMetres: 14.667342386332422
+            },
+            "10": {
+              kind: "blank",
+              fixedFacadeTopMetres: 14.667342386332422
+            },
+            "11": {
+              kind: "commercial-upper",
+              fixedFacadeTopMetres: 14.67,
+              windowTiers: [
+                {
+                  sillMetres: 4.55,
+                  heightMetres: 1.72,
+                  widthMetres: 1.65,
+                  startMetres: 0.55,
+                  pitchMetres: 2.36,
+                  count: 6,
+                  requiredClusterCount: 6,
+                  endMarginMetres: 0.1,
+                  panes: 2,
+                  transomHeightsMetres: [
+                    1.38
+                  ]
+                },
+                {
+                  sillMetres: 7.25,
+                  heightMetres: 1.72,
+                  widthMetres: 1.65,
+                  startMetres: 0.55,
+                  pitchMetres: 2.36,
+                  count: 6,
+                  requiredClusterCount: 6,
+                  endMarginMetres: 0.1,
+                  panes: 2,
+                  transomHeightsMetres: [
+                    1.38
+                  ]
+                },
+                {
+                  sillMetres: 9.95,
+                  heightMetres: 1.72,
+                  widthMetres: 1.65,
+                  startMetres: 0.55,
+                  pitchMetres: 2.36,
+                  count: 6,
+                  requiredClusterCount: 6,
+                  endMarginMetres: 0.1,
+                  panes: 2,
+                  transomHeightsMetres: [
+                    1.38
+                  ]
+                },
+                {
+                  sillMetres: 12.65,
+                  heightMetres: 1.72,
+                  widthMetres: 1.65,
+                  startMetres: 0.55,
+                  pitchMetres: 2.36,
+                  count: 6,
+                  requiredClusterCount: 6,
+                  endMarginMetres: 0.1,
+                  panes: 2,
+                  transomHeightsMetres: [
+                    1.38
+                  ]
+                }
+              ],
+              groundEntries: [
+                {
+                  kind: "glazed",
+                  xMetres: 0.27,
+                  widthMetres: 1.8599999999999999,
+                  heightMetres: 3.05,
+                  bottomMetres: 0.1,
+                  frameColor: "#aaa489",
+                  panes: 2,
+                  transomHeightsMetres: [
+                    2.45
+                  ]
+                },
+                {
+                  kind: "glazed",
+                  xMetres: 2.63,
+                  widthMetres: 1.8599999999999999,
+                  heightMetres: 3.05,
+                  bottomMetres: 0.1,
+                  frameColor: "#aaa489",
+                  panes: 2,
+                  transomHeightsMetres: [
+                    2.45
+                  ]
+                },
+                {
+                  kind: "glazed",
+                  xMetres: 4.99,
+                  widthMetres: 1.8599999999999999,
+                  heightMetres: 3.05,
+                  bottomMetres: 0.1,
+                  frameColor: "#aaa489",
+                  panes: 2,
+                  transomHeightsMetres: [
+                    2.45
+                  ]
+                },
+                {
+                  kind: "glazed",
+                  xMetres: 7.35,
+                  widthMetres: 1.8599999999999999,
+                  heightMetres: 3.05,
+                  bottomMetres: 0.1,
+                  frameColor: "#aaa489",
+                  panes: 2,
+                  transomHeightsMetres: [
+                    2.45
+                  ]
+                },
+                {
+                  kind: "glazed",
+                  xMetres: 9.709999999999999,
+                  widthMetres: 1.8599999999999999,
+                  heightMetres: 3.05,
+                  bottomMetres: 0.1,
+                  frameColor: "#aaa489",
+                  panes: 2,
+                  transomHeightsMetres: [
+                    2.45
+                  ]
+                },
+                {
+                  kind: "glazed",
+                  xMetres: 12.069999999999999,
+                  widthMetres: 1.8599999999999999,
+                  heightMetres: 3.05,
+                  bottomMetres: 0.1,
+                  frameColor: "#aaa489",
+                  panes: 2,
+                  transomHeightsMetres: [
+                    2.45
+                  ]
+                }
+              ],
+              bands: [
+                {
+                  bottomMetres: 3.3,
+                  heightMetres: 0.12,
+                  color: "#c9c1a6"
+                },
+                {
+                  xMetres: 0.46,
+                  bottomMetres: 6.329999999999999,
+                  widthMetres: 13.879999999999999,
+                  heightMetres: 0.09,
+                  color: "#c2b99b"
+                },
+                {
+                  xMetres: 0.46,
+                  bottomMetres: 9.030000000000001,
+                  widthMetres: 13.879999999999999,
+                  heightMetres: 0.09,
+                  color: "#c2b99b"
+                },
+                {
+                  xMetres: 0.46,
+                  bottomMetres: 11.73,
+                  widthMetres: 13.879999999999999,
+                  heightMetres: 0.09,
+                  color: "#c2b99b"
+                },
+                {
+                  xMetres: 0.46,
+                  bottomMetres: 14.430000000000001,
+                  widthMetres: 13.879999999999999,
+                  heightMetres: 0.09,
+                  color: "#c2b99b"
+                }
+              ],
+              physicalBands: [
+                {
+                  bottomMetres: 3.3,
+                  heightMetres: 0.1,
+                  depthMetres: 0.16
+                }
+              ],
+              recessGroups: [
+                {
+                  xMetres: 7.48,
+                  widthMetres: 1.95,
+                  bottomMetres: 4.2,
+                  heightMetres: 10.47,
+                  depthMetres: 0.33
+                }
+              ],
+              balconyGroups: [
+                {
+                  xMetres: 7.48,
+                  widthMetres: 1.95,
+                  bottomMetres: 4.55,
+                  railHeightMetres: 0.78,
+                  railColor: "#383d39",
+                  barPitchMetres: 0.17,
+                  barWidthMetres: 0.035,
+                  depthMetres: 0.21,
+                  slabHeightMetres: 0.08,
+                  count: 1
+                },
+                {
+                  xMetres: 7.48,
+                  widthMetres: 1.95,
+                  bottomMetres: 7.25,
+                  railHeightMetres: 0.78,
+                  railColor: "#383d39",
+                  barPitchMetres: 0.17,
+                  barWidthMetres: 0.035,
+                  depthMetres: 0.21,
+                  slabHeightMetres: 0.08,
+                  count: 1
+                },
+                {
+                  xMetres: 7.48,
+                  widthMetres: 1.95,
+                  bottomMetres: 9.95,
+                  railHeightMetres: 0.78,
+                  railColor: "#383d39",
+                  barPitchMetres: 0.17,
+                  barWidthMetres: 0.035,
+                  depthMetres: 0.21,
+                  slabHeightMetres: 0.08,
+                  count: 1
+                },
+                {
+                  xMetres: 7.48,
+                  widthMetres: 1.95,
+                  bottomMetres: 12.65,
+                  railHeightMetres: 0.78,
+                  railColor: "#383d39",
+                  barPitchMetres: 0.17,
+                  barWidthMetres: 0.035,
+                  depthMetres: 0.21,
+                  slabHeightMetres: 0.08,
+                  count: 1
+                }
+              ]
+            },
+            "12": {
+              kind: "blank",
+              fixedFacadeTopMetres: 14.67
+            },
+            "13": {
+              kind: "commercial-upper",
+              fixedFacadeTopMetres: 14.67,
+              windowTiers: [
+                {
+                  sillMetres: 4.55,
+                  heightMetres: 1.77,
+                  widthMetres: 2.6,
+                  startMetres: 0.3,
+                  pitchMetres: 20,
+                  count: 1,
+                  requiredClusterCount: 1,
+                  endMarginMetres: 0.1,
+                  panes: 2
+                },
+                {
+                  sillMetres: 4.55,
+                  heightMetres: 1.77,
+                  widthMetres: 2.6,
+                  startMetres: 4.73,
+                  pitchMetres: 20,
+                  count: 1,
+                  requiredClusterCount: 1,
+                  endMarginMetres: 0.1,
+                  panes: 2
+                },
+                {
+                  sillMetres: 7.25,
+                  heightMetres: 1.77,
+                  widthMetres: 2.6,
+                  startMetres: 0.3,
+                  pitchMetres: 20,
+                  count: 1,
+                  requiredClusterCount: 1,
+                  endMarginMetres: 0.1,
+                  panes: 2
+                },
+                {
+                  sillMetres: 7.25,
+                  heightMetres: 1.77,
+                  widthMetres: 2.6,
+                  startMetres: 4.73,
+                  pitchMetres: 20,
+                  count: 1,
+                  requiredClusterCount: 1,
+                  endMarginMetres: 0.1,
+                  panes: 2
+                },
+                {
+                  sillMetres: 9.95,
+                  heightMetres: 1.77,
+                  widthMetres: 2.6,
+                  startMetres: 0.3,
+                  pitchMetres: 20,
+                  count: 1,
+                  requiredClusterCount: 1,
+                  endMarginMetres: 0.1,
+                  panes: 2
+                },
+                {
+                  sillMetres: 9.95,
+                  heightMetres: 1.77,
+                  widthMetres: 2.6,
+                  startMetres: 4.73,
+                  pitchMetres: 20,
+                  count: 1,
+                  requiredClusterCount: 1,
+                  endMarginMetres: 0.1,
+                  panes: 2
+                }
+              ],
+              recessGroups: [
+                {
+                  xMetres: 0.2,
+                  widthMetres: 2.88,
+                  bottomMetres: 4.1,
+                  heightMetres: 7.94,
+                  depthMetres: 0.5
+                },
+                {
+                  xMetres: 4.58,
+                  widthMetres: 2.88,
+                  bottomMetres: 4.1,
+                  heightMetres: 7.94,
+                  depthMetres: 0.5
+                }
+              ],
+              balconyGroups: [
+                {
+                  xMetres: 0.2,
+                  widthMetres: 2.88,
+                  bottomMetres: 4.55,
+                  railHeightMetres: 0.83,
+                  railColor: "#383d39",
+                  barPitchMetres: 0.16,
+                  barWidthMetres: 0.03,
+                  depthMetres: 0.2,
+                  slabHeightMetres: 0.1,
+                  count: 1
+                },
+                {
+                  xMetres: 4.58,
+                  widthMetres: 2.88,
+                  bottomMetres: 4.55,
+                  railHeightMetres: 0.83,
+                  railColor: "#383d39",
+                  barPitchMetres: 0.16,
+                  barWidthMetres: 0.03,
+                  depthMetres: 0.2,
+                  slabHeightMetres: 0.1,
+                  count: 1
+                },
+                {
+                  xMetres: 0.2,
+                  widthMetres: 2.88,
+                  bottomMetres: 7.25,
+                  railHeightMetres: 0.83,
+                  railColor: "#383d39",
+                  barPitchMetres: 0.16,
+                  barWidthMetres: 0.03,
+                  depthMetres: 0.2,
+                  slabHeightMetres: 0.1,
+                  count: 1
+                },
+                {
+                  xMetres: 4.58,
+                  widthMetres: 2.88,
+                  bottomMetres: 7.25,
+                  railHeightMetres: 0.83,
+                  railColor: "#383d39",
+                  barPitchMetres: 0.16,
+                  barWidthMetres: 0.03,
+                  depthMetres: 0.2,
+                  slabHeightMetres: 0.1,
+                  count: 1
+                },
+                {
+                  xMetres: 0.2,
+                  widthMetres: 2.88,
+                  bottomMetres: 9.95,
+                  railHeightMetres: 0.83,
+                  railColor: "#383d39",
+                  barPitchMetres: 0.16,
+                  barWidthMetres: 0.03,
+                  depthMetres: 0.2,
+                  slabHeightMetres: 0.1,
+                  count: 1
+                },
+                {
+                  xMetres: 4.58,
+                  widthMetres: 2.88,
+                  bottomMetres: 9.95,
+                  railHeightMetres: 0.83,
+                  railColor: "#383d39",
+                  barPitchMetres: 0.16,
+                  barWidthMetres: 0.03,
+                  depthMetres: 0.2,
+                  slabHeightMetres: 0.1,
+                  count: 1
+                }
+              ],
+              groundEntries: [
+                {
+                  kind: "glazed",
+                  xMetres: 0.22,
+                  widthMetres: 2.65,
+                  heightMetres: 3.05,
+                  panes: 2
+                },
+                {
+                  kind: "glazed",
+                  xMetres: 3.02,
+                  widthMetres: 1.65,
+                  heightMetres: 3.05,
+                  panes: 1
+                },
+                {
+                  kind: "glazed",
+                  xMetres: 4.84,
+                  widthMetres: 2.55,
+                  heightMetres: 3.05,
+                  panes: 2
+                }
+              ],
+              glazedAssemblies: [
+                {
+                  xMetres: 0.12,
+                  sillMetres: 12.12,
+                  widthMetres: 7.42,
+                  heightMetres: 2.4,
+                  panes: 6
+                }
+              ],
+              frameColor: "#7e3735",
+              glassColor: "#637878",
+              bands: [
+                {
+                  bottomMetres: 11.87,
+                  heightMetres: 0.18,
+                  color: "#383d39"
+                },
+                {
+                  bottomMetres: 14.52,
+                  heightMetres: 0.15,
+                  color: "#7e3735"
+                }
+              ]
+            },
+            "14": {
+              kind: "blank",
+              fixedFacadeTopMetres: 14.67
+            },
+            "15": {
+              kind: "commercial-upper",
+              fixedFacadeTopMetres: 14.67,
+              windowTiers: [
+                {
+                  sillMetres: 4.55,
+                  heightMetres: 1.72,
+                  widthMetres: 1.65,
+                  startMetres: 0.55,
+                  pitchMetres: 3.52,
+                  count: 4,
+                  requiredClusterCount: 4,
+                  endMarginMetres: 0.1,
+                  panes: 2,
+                  transomHeightsMetres: [
+                    1.38
+                  ]
+                },
+                {
+                  sillMetres: 7.25,
+                  heightMetres: 1.72,
+                  widthMetres: 1.65,
+                  startMetres: 0.55,
+                  pitchMetres: 3.52,
+                  count: 4,
+                  requiredClusterCount: 4,
+                  endMarginMetres: 0.1,
+                  panes: 2,
+                  transomHeightsMetres: [
+                    1.38
+                  ]
+                },
+                {
+                  sillMetres: 9.95,
+                  heightMetres: 1.72,
+                  widthMetres: 1.65,
+                  startMetres: 0.55,
+                  pitchMetres: 3.52,
+                  count: 4,
+                  requiredClusterCount: 4,
+                  endMarginMetres: 0.1,
+                  panes: 2,
+                  transomHeightsMetres: [
+                    1.38
+                  ]
+                },
+                {
+                  sillMetres: 12.65,
+                  heightMetres: 1.72,
+                  widthMetres: 1.65,
+                  startMetres: 0.55,
+                  pitchMetres: 3.52,
+                  count: 4,
+                  requiredClusterCount: 4,
+                  endMarginMetres: 0.1,
+                  panes: 2,
+                  transomHeightsMetres: [
+                    1.38
+                  ]
+                }
+              ],
+              groundEntries: [
+                {
+                  kind: "glazed",
+                  xMetres: 0.27,
+                  widthMetres: 3.02,
+                  heightMetres: 3.05,
+                  bottomMetres: 0.1,
+                  frameColor: "#aaa489",
+                  panes: 2,
+                  transomHeightsMetres: [
+                    2.45
+                  ]
+                },
+                {
+                  kind: "glazed",
+                  xMetres: 3.79,
+                  widthMetres: 3.02,
+                  heightMetres: 3.05,
+                  bottomMetres: 0.1,
+                  frameColor: "#aaa489",
+                  panes: 2,
+                  transomHeightsMetres: [
+                    2.45
+                  ]
+                },
+                {
+                  kind: "glazed",
+                  xMetres: 7.3100000000000005,
+                  widthMetres: 3.02,
+                  heightMetres: 3.05,
+                  bottomMetres: 0.1,
+                  frameColor: "#aaa489",
+                  panes: 2,
+                  transomHeightsMetres: [
+                    2.45
+                  ]
+                },
+                {
+                  kind: "glazed",
+                  xMetres: 10.83,
+                  widthMetres: 3.02,
+                  heightMetres: 3.05,
+                  bottomMetres: 0.1,
+                  frameColor: "#aaa489",
+                  panes: 2,
+                  transomHeightsMetres: [
+                    2.45
+                  ]
+                }
+              ],
+              bands: [
+                {
+                  bottomMetres: 3.3,
+                  heightMetres: 0.12,
+                  color: "#c9c1a6"
+                },
+                {
+                  xMetres: 0.46,
+                  bottomMetres: 6.329999999999999,
+                  widthMetres: 13.99,
+                  heightMetres: 0.09,
+                  color: "#c2b99b"
+                },
+                {
+                  xMetres: 0.46,
+                  bottomMetres: 9.030000000000001,
+                  widthMetres: 13.99,
+                  heightMetres: 0.09,
+                  color: "#c2b99b"
+                },
+                {
+                  xMetres: 0.46,
+                  bottomMetres: 11.73,
+                  widthMetres: 13.99,
+                  heightMetres: 0.09,
+                  color: "#c2b99b"
+                },
+                {
+                  xMetres: 0.46,
+                  bottomMetres: 14.430000000000001,
+                  widthMetres: 13.99,
+                  heightMetres: 0.09,
+                  color: "#c2b99b"
+                }
+              ],
+              physicalBands: [
+                {
+                  bottomMetres: 3.3,
+                  heightMetres: 0.1,
+                  depthMetres: 0.16
+                }
+              ],
+              recessGroups: [
+                {
+                  xMetres: 3.92,
+                  widthMetres: 1.95,
+                  bottomMetres: 4.2,
+                  heightMetres: 10.47,
+                  depthMetres: 0.33
+                }
+              ],
+              balconyGroups: [
+                {
+                  xMetres: 3.92,
+                  widthMetres: 1.95,
+                  bottomMetres: 4.55,
+                  railHeightMetres: 0.78,
+                  railColor: "#383d39",
+                  barPitchMetres: 0.17,
+                  barWidthMetres: 0.035,
+                  depthMetres: 0.21,
+                  slabHeightMetres: 0.08,
+                  count: 1
+                },
+                {
+                  xMetres: 3.92,
+                  widthMetres: 1.95,
+                  bottomMetres: 7.25,
+                  railHeightMetres: 0.78,
+                  railColor: "#383d39",
+                  barPitchMetres: 0.17,
+                  barWidthMetres: 0.035,
+                  depthMetres: 0.21,
+                  slabHeightMetres: 0.08,
+                  count: 1
+                },
+                {
+                  xMetres: 3.92,
+                  widthMetres: 1.95,
+                  bottomMetres: 9.95,
+                  railHeightMetres: 0.78,
+                  railColor: "#383d39",
+                  barPitchMetres: 0.17,
+                  barWidthMetres: 0.035,
+                  depthMetres: 0.21,
+                  slabHeightMetres: 0.08,
+                  count: 1
+                },
+                {
+                  xMetres: 3.92,
+                  widthMetres: 1.95,
+                  bottomMetres: 12.65,
+                  railHeightMetres: 0.78,
+                  railColor: "#383d39",
+                  barPitchMetres: 0.17,
+                  barWidthMetres: 0.035,
+                  depthMetres: 0.21,
+                  slabHeightMetres: 0.08,
+                  count: 1
+                }
+              ]
+            },
+            "16": {
+              kind: "commercial-upper",
+              fixedFacadeTopMetres: 14.67,
+              windowTiers: [
+                {
+                  sillMetres: 4.55,
+                  heightMetres: 1.72,
+                  widthMetres: 1.65,
+                  startMetres: 0.55,
+                  pitchMetres: 3.04,
+                  count: 2,
+                  requiredClusterCount: 2,
+                  endMarginMetres: 0.1,
+                  panes: 2,
+                  transomHeightsMetres: [
+                    1.38
+                  ]
+                },
+                {
+                  sillMetres: 7.25,
+                  heightMetres: 1.72,
+                  widthMetres: 1.65,
+                  startMetres: 0.55,
+                  pitchMetres: 3.04,
+                  count: 2,
+                  requiredClusterCount: 2,
+                  endMarginMetres: 0.1,
+                  panes: 2,
+                  transomHeightsMetres: [
+                    1.38
+                  ]
+                },
+                {
+                  sillMetres: 9.95,
+                  heightMetres: 1.72,
+                  widthMetres: 1.65,
+                  startMetres: 0.55,
+                  pitchMetres: 3.04,
+                  count: 2,
+                  requiredClusterCount: 2,
+                  endMarginMetres: 0.1,
+                  panes: 2,
+                  transomHeightsMetres: [
+                    1.38
+                  ]
+                },
+                {
+                  sillMetres: 12.65,
+                  heightMetres: 1.72,
+                  widthMetres: 1.65,
+                  startMetres: 0.55,
+                  pitchMetres: 3.04,
+                  count: 2,
+                  requiredClusterCount: 2,
+                  endMarginMetres: 0.1,
+                  panes: 2,
+                  transomHeightsMetres: [
+                    1.38
+                  ]
+                }
+              ],
+              groundEntries: [
+                {
+                  kind: "glazed",
+                  xMetres: 0.27,
+                  widthMetres: 2.54,
+                  heightMetres: 3.05,
+                  bottomMetres: 0.1,
+                  frameColor: "#aaa489",
+                  panes: 2,
+                  transomHeightsMetres: [
+                    2.45
+                  ]
+                },
+                {
+                  kind: "glazed",
+                  xMetres: 3.31,
+                  widthMetres: 2.54,
+                  heightMetres: 3.05,
+                  bottomMetres: 0.1,
+                  frameColor: "#aaa489",
+                  panes: 2,
+                  transomHeightsMetres: [
+                    2.45
+                  ]
+                }
+              ],
+              bands: [
+                {
+                  bottomMetres: 3.3,
+                  heightMetres: 0.12,
+                  color: "#c9c1a6"
+                },
+                {
+                  xMetres: 0.46,
+                  bottomMetres: 6.329999999999999,
+                  widthMetres: 5.63,
+                  heightMetres: 0.09,
+                  color: "#c2b99b"
+                },
+                {
+                  xMetres: 0.46,
+                  bottomMetres: 9.030000000000001,
+                  widthMetres: 5.63,
+                  heightMetres: 0.09,
+                  color: "#c2b99b"
+                },
+                {
+                  xMetres: 0.46,
+                  bottomMetres: 11.73,
+                  widthMetres: 5.63,
+                  heightMetres: 0.09,
+                  color: "#c2b99b"
+                },
+                {
+                  xMetres: 0.46,
+                  bottomMetres: 14.430000000000001,
+                  widthMetres: 5.63,
+                  heightMetres: 0.09,
+                  color: "#c2b99b"
+                }
+              ],
+              physicalBands: [
+                {
+                  bottomMetres: 3.3,
+                  heightMetres: 0.1,
+                  depthMetres: 0.16
+                }
+              ],
+              recessGroups: [],
+              balconyGroups: []
+            },
+            "17": {
+              kind: "blank",
+              fixedFacadeTopMetres: 14.667342386332422
+            }
+          }
+        },
+        galleryFrontage: {
+          target: [
+            4.889046,
+            52.370862
+          ],
+          cameraBearing: 105,
+          distanceMetres: 43,
+          targetHeightMetres: 9,
+          referenceImages: [
+            "./ordinary-buildings-data/references/0363100012175754/wide-0363100012175754-2025-00188-einitial.jpg",
+            "./ordinary-buildings-data/references/0363100012175754/wide-0363100012175754-2025-00187-einitial.jpg"
+          ]
+        },
+        gallerySecondary: {
+          target: [
+            4.889046,
+            52.370862
+          ],
+          cameraBearing: 133,
+          distanceMetres: 48,
+          targetHeightMetres: 10,
+          referenceImages: [
+            "./ordinary-buildings-data/references/0363100012175754/wide-0363100012175754-2025-00188-einitial.jpg",
+            "./ordinary-buildings-data/references/0363100012175754/wide-0363100012175754-2025-00187-einitial.jpg"
+          ]
+        },
+        generationMilliseconds: 31,
+        reviewState: "Reviewed standard exterior; source-specific facades, native roof/open-space and desktop/touch game checks pass.",
+        visualAcceptance: true,
+        sourceAdmission: true,
+        sourceCommit: "81bef5d1ca4ff18d05306ba9b4ec34d98c7febcb",
+        acceptanceSourceCommit: "81bef5d1ca4ff18d05306ba9b4ec34d98c7febcb",
+        acceptanceSourcePack: "experiments/canal-belt-continuation-20261007/next-box-runtime-07",
+        reviewedAt: "2026-10-07T21:21:01.705480+00:00",
+        updatedAt: "2026-10-07T21:21:01.705480+00:00"
       }
     ]
   };
@@ -25199,6 +26819,18 @@ Map source: ${osmUrl(places[i][0])}`);
       description: "Architect Joop van Stigt designed Afrikahuis as five linked octagonal units, combining a church with neighborhood spaces. Its concrete base, limestone walls and glazed staircase bays express Amsterdam structuralism.",
       sourceUrl: "https://amsterdamopdekaart.nl/1966-1990/Van_Ostadestraat/Afrikahuis",
       additionalSources: ["https://erfgoedregister.amsterdam.nl/monument/34d28c9d-f6c7-44bc-affa-d3d2c055b7a9/"]
+    },
+    {
+      modelId: "cafe-kobalt",
+      name: "Caf\xE9 Kobalt",
+      center: [
+        52.3795667,
+        4.8943639
+      ],
+      description: "Caf\xE9 Kobalt occupies a protected double corner house built between 1606 and 1611. Its high stepped gable, wooden frontage and wheelbarrow fa\xE7ade stone recall the former warehouse.",
+      funFact: "Kobalt\u2019s seventeenth-century corner house retains a broad stepped gable, wooden frontage and a wheelbarrow fa\xE7ade stone. The caf\xE9 describes the building as a former warehouse.",
+      sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/5249",
+      preferDescription: true
     }
   ];
 

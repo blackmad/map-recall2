@@ -1,0 +1,13 @@
+# Café Kobalt native model acceptance
+
+The original model replaces exact Pand0363100012178170 at native scale1 using current BAG/3DBAG source geometry. Genuine café OSMnode539179321 supplies a single destination, geographic name and researched RCE5249 card. It does not create a second destination for the historic building name.
+
+Accepted production SHA256 be40f3802a213638838e4ec0c435abdab0472441a5958b301ae969c4e63c3ca1:121384 bytes,7050 triangles, zero textures. Current municipal2024/2025 photos, original operator references, current Singel/Droogbak street geometry and surveyed ridge establish the southeast stepped gable and northeast white flank. Roof uses subdued clay color. Real thin spaced sans lettering is fitted to the actual café sign panel; no added building-name label. Exact typeface and joinery remain approximate.
+
+The a96 candidate put the front on a party wall. Its failed review's proposed northeast-gable remedy was withdrawn after primary evidence. Correctedf53 then showed rear checker fighting from two coplanar gable owners; be40 removes the redundant triangle. Failed evidence remains privately archived. Do not use the old inferred frontage or call these failures accepted.
+
+Root and independent reviewers inspected default/four lower gallery rotations, actual game front/white side/rear context, eight retained neighbors and useful physical mouse/touch card. Actual selected route and endpoint arrival preserve osm_node_539179321; rendered name uses its genuine coordinate. Disable and failed-download checks preserve ordinary fallback. Mouse and touch-emulated stationary-rider pans retain surrounding windows and ground-floor doors. Fourteen explicit roof faces are upward;13572 unchanged interior samples,147 added boundary samples and976 pane first-hit samples pass. Native placement's ten source vertices agree within0.010949m.
+
+Settled90-frame same-camera on/off/on tests: desktop medians16.7ms and p9518.8/19.5/18.8; touch emulation medians16.7/16.6/16.7 and p9518.4/18.3/18.4. These are bounded Chrome game scheduling checks, not isolated GPU or physical-phone benchmarks. Elevated diagnostic views are not ground-level photo calibration. Unknown rear/party apertures are left unpainted; source glare and survey-date limits remain recorded.
+
+Private source-first checkpoint190201714 models/cafe-kobalt/checkpoints/rear-ownership-milestone05-20261008 preserves original inputs and failures. Accepted exact production/native evidence92c49c40beff63820e26b1ee0d7a98906f62cd52 is in models/cafe-kobalt/checkpoints/accepted-native-be40f380-20261008. Hosted review remains pending.

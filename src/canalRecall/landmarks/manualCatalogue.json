@@ -8215,5 +8215,56 @@
       "licenceUrl": "./LICENSE",
       "modifications": "Original texture-free native two-parent ensemble, interpreted from BAG/3DBAG, municipal monument212005 and dated references. Museum occupancy only number5; dimensions/joinery approximate."
     }
+  },
+  {
+    "id": "cafe-kobalt",
+    "name": "Café Kobalt — Singel 2",
+    "modelUrl": "./models/cafe-kobalt.glb",
+    "osmPoi": {
+      "type": "node",
+      "id": 539179321,
+      "coordinate": [
+        4.8943639,
+        52.3795667
+      ]
+    },
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012178170"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.894340622677857,
+        52.37955910785327
+      ],
+      "headingDegrees": 90,
+      "lengthMetres": 18,
+      "widthMetres": 16
+    },
+    "surveyed": {
+      "anchor": [
+        4.894340622677857,
+        52.37955910785327
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Exact current BAG0363100012178170 native east/south metres. Singel southeast principal chain2→6; Droogbak northeast white flank6→0. Ridge/eaves calibrated to AHN2023 3DBAG vertices29/33/27/31. Partywalls1→2 and0→1 retain neighbors."
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "attribution": {
+      "title": "Café Kobalt / Singel 2",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/5249",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Reconstructedoriginalnativeflatcolourwarehouse;photoreferencesonly,noimportedpixels/mesh."
+    },
+    "materialOverrides": {
+      "brick": "#765447",
+      "red": "#c14332",
+      "slate": "#4a525d",
+      "bronze": "#8a624b"
+    },
+    "landmarkId": "osm_node_539179321"
   }
 ]

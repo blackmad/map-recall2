@@ -1,0 +1,23 @@
+{
+  "name": "Café Kobalt",
+  "osmType": "node",
+  "osmId": 539179321,
+  "address": "Singel 2A, 1013GA Amsterdam",
+  "description": "Café Kobalt occupies the ground floor of a double corner house built between 1606 and 1611. Its unusually broad stepped gable, central loading openings, wooden frontage and wheelbarrow facade stone recall the historic warehouse. Heavy timber framing remains inside the café.",
+  "facts": [
+    {
+      "text": "The protected double corner house dates to1606–1611 and retains its high stepped gable, wooden frontage and facade stone.",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/5249"
+    },
+    {
+      "text": "The café describes its premises as a former seventeenth-century warehouse.",
+      "sourceUrl": "https://www.cafekobalt.nl/about.html"
+    }
+  ],
+  "website": "https://www.cafekobalt.nl/",
+  "researchSourceUrls": [
+    "https://monumentenregister.cultureelerfgoed.nl/monumenten/5249",
+    "https://www.cafekobalt.nl/about.html",
+    "https://www.cafekobalt.nl/contact.html"
+  ]
+}

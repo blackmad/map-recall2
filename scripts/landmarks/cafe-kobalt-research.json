@@ -1,0 +1,339 @@
+{
+  "id": "cafe-kobalt",
+  "recovery": {
+    "state": "Reconstructed original after temporaryworktree loss; oldbuilder/binaries not recoverable. Newcandidate not sameSHA.",
+    "base": "59dab6ae",
+    "durableWorktree": "/Users/blackmad/Code/map-recall2-worktrees/cafe-kobalt",
+    "originalSourceArchiveCommit": "def105db",
+    "originalSourceArchivePath": "models/cafe-kobalt/recovery-source-20261007/raw",
+    "previousFreezeCommit": "bea10cd4",
+    "officialRawSourceArchiveCommit": "6a4e406c"
+  },
+  "sources": [
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/cafe-kobalt/artifacts/cafe-kobalt-recovery/raw/vbo.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?identificatie=0363010001040093&f=json",
+      "retrievedAt": "2026-10-07T21:32:17.991478+00:00",
+      "httpStatus": 200,
+      "sha256": "b17bdbd3c5cd919edb8473ad8831c6919902161194bd9cc28f6ec4bd56d9436a",
+      "kind": "original HTTP response"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/cafe-kobalt/artifacts/cafe-kobalt-recovery/raw/pand.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/c23104ca-741a-5004-b623-4cf56c63d076?f=json",
+      "retrievedAt": "2026-10-07T21:32:17.991669+00:00",
+      "httpStatus": 200,
+      "sha256": "5712de4367ab8136c20862c440b4e04d6bb48aa7af4935355781d115501ae4fe",
+      "kind": "original HTTP response"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/cafe-kobalt/artifacts/cafe-kobalt-recovery/raw/3dbag.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012178170",
+      "retrievedAt": "2026-10-07T21:32:17.991816+00:00",
+      "httpStatus": 200,
+      "sha256": "b65ad4bb7066bdfb1b447339197d2b312fb3811c71d77e9f4f44dee2fb8a3f10",
+      "kind": "original HTTP response"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/cafe-kobalt/artifacts/cafe-kobalt-recovery/raw/register.html",
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/5249",
+      "retrievedAt": "2026-10-07T21:32:17.991975+00:00",
+      "httpStatus": 200,
+      "sha256": "f0dada96ccd16c01d332cc09cf4a70df28dda52ac3d966c7f986c2aeaacd003c",
+      "kind": "original HTTP response"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/cafe-kobalt/artifacts/cafe-kobalt-recovery/raw/operator-corner.jpg",
+      "url": "https://www.cafekobalt.nl/assets/images/kobalt_img_x-5.jpg",
+      "retrievedAt": "2026-10-07T21:32:17.992187+00:00",
+      "httpStatus": 200,
+      "sha256": "b849f00b17333d123d1d51675a1ed1b473811bcc5a0a6938348ebe8eb72a71af",
+      "kind": "original HTTP response"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/cafe-kobalt/artifacts/cafe-kobalt-recovery/raw/panoramas.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.8942785,52.3795229&radius=45&srid=4326&page_size=100&timestamp_after=2024-01-01",
+      "retrievedAt": "2026-10-07T21:32:17.992513+00:00",
+      "httpStatus": 200,
+      "sha256": "0ddb289e4261b9e83c06397befbab9e7ae4872e441adf958f04c0c7142cd1188",
+      "kind": "original HTTP response"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/cafe-kobalt/artifacts/cafe-kobalt-recovery/raw/panorama.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_03-46-32_01226/equirectangular/panorama_4000.jpg",
+      "retrievedAt": "2026-10-07T21:32:17.993070+00:00",
+      "httpStatus": 200,
+      "sha256": "7eb9d976123cff2fcea31964689df8d23994a7f2eaf34897f16cb68e17f2b419",
+      "kind": "original HTTP response"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/cafe-kobalt/artifacts/cafe-kobalt-recovery/raw/public-front2025.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_03-46-32_02736/equirectangular/panorama_4000.jpg",
+      "retrievedAt": "2026-10-07T21:32:17.993817+00:00",
+      "httpStatus": 200,
+      "sha256": "8a383f1b715713b0ef2f7de9a706eb8e1a35cb7b560dbc65725cdd93fba0f2f6",
+      "kind": "original HTTP response"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/cafe-kobalt/artifacts/cafe-kobalt-recovery/raw/public-front2024.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241211_1256_Track16_Sphere_00068/equirectangular/panorama_4000.jpg",
+      "retrievedAt": "2026-10-07T21:32:17.994688+00:00",
+      "httpStatus": 200,
+      "sha256": "048879b69fb09ac648b4042961e2e45f00c5072a1a50bdb763cdcc86ef2aa511",
+      "kind": "original HTTP response"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/cafe-kobalt/artifacts/cafe-kobalt-recovery/raw/official-neighbor-pands.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?bbox=4.8940,52.3793,4.8946,52.3798&limit=100&f=json",
+      "retrievedAt": "2026-10-07T21:32:17.995443+00:00",
+      "httpStatus": 200,
+      "sha256": "0d086ff22cd7ba02abd3362a42f19053e966f3d9f850ba78cb709efb86a95c8f",
+      "kind": "original HTTP response"
+    }
+  ],
+  "rootCachedSources": [
+    "/Users/blackmad/Code/map-recall2-worktrees/source-archive/models/cafe-kobalt/recovery-source-20261007/raw/Singel_2_Amsterdam_2024.jpg",
+    "/Users/blackmad/Code/map-recall2-worktrees/source-archive/models/cafe-kobalt/recovery-source-20261007/raw/about.html",
+    "/Users/blackmad/Code/map-recall2-worktrees/source-archive/models/cafe-kobalt/recovery-source-20261007/raw/contact.html",
+    "/Users/blackmad/Code/map-recall2-worktrees/source-archive/models/cafe-kobalt/recovery-source-20261007/raw/home.html",
+    "/Users/blackmad/Code/map-recall2-worktrees/source-archive/models/cafe-kobalt/recovery-source-20261007/raw/beeldbank.html",
+    "/Users/blackmad/Code/map-recall2-worktrees/source-archive/models/cafe-kobalt/recovery-source-20261007/raw/osm-map.xml"
+  ],
+  "identity": {
+    "address": "Singel2A1013GA",
+    "vbo": "0363010001040093",
+    "pand": "0363100012178170",
+    "rce": 5249,
+    "osmAmenity": {
+      "type": "node",
+      "id": 539179321
+    },
+    "excludedTerraceNode": 3820090982
+  },
+  "architecturalAssertions": [
+    {
+      "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/5249",
+      "part": "wholecornerbuilding",
+      "confidence": "high",
+      "text": "Dubbel hoekpand met hoge trapgevel, gebouwd tussen 1606 en 1611; houten pui en gevelsteen."
+    }
+  ],
+  "openings": {
+    "front": "4sidegroups+centraldoor eachlowerlevel;innergroups4pane columns/strongmiddleframe;upperpairedgroups/nextsingles/tophoist",
+    "side": "13observedallocations irregularheights+grounddoor/transom/steps;distance/heightsapproxoperatorfit. Signalcoversfragment;no inventedregular3x3."
+  },
+  "signage": {
+    "source": "Oursana2024-10-04original",
+    "text": "CAFE KOBALT",
+    "family": "thinwidelyspacedsanscapitals;unidentifiedtypefaceapproxcontinuousnativestrokes",
+    "panel": "actualnarrowwhitepanelabovetransoms"
+  },
+  "panorama": {
+    "metadataSelection": "/Users/blackmad/Code/map-recall2-worktrees/cafe-kobalt/artifacts/cafe-kobalt-recovery/raw/selected-panorama.json",
+    "processedView": "artifacts/cafe-kobalt-recovery/processed/panorama-front.jpg",
+    "parametersFile": "artifacts/cafe-kobalt-recovery/processed/panorama-view.json",
+    "capturedAt": "2025-06-16T04:06:13Z",
+    "id": "recording_2025-06-16_03-46-32_01226",
+    "occlusions": "Sun glare obscureslowerpui;2024original+operatorcorner remainopeningauthority; perspective projectionnotcalibratedmeasurement",
+    "targetCorrection": "SE Singel chain2\u21926 midpoint, with zero heading framing adjustment. Earlier partywall midpoint/25degree reframing superseded."
+  },
+  "failedEvidence": [
+    {
+      "sha256": "0a4b57eae105104bbc111cd8a5e8e21ed9a987b4f0b607e38d234829e3daf231",
+      "review": "/Users/blackmad/Code/map-recall2/artifacts/cafe-kobalt-independent/review.md",
+      "failure": "Pairedsashcollapsed/regularsidegrid/frontroofstrip132misses",
+      "lostFiles": "Temporarycandidatebinaryandbuilderlost;rootreview/probesretained"
+    },
+    {
+      "sha256": "5da75c634127f5c81a3c39ca32d0a11cc147696c7a5830e5148e1339b0a9d5b0",
+      "review": "/Users/blackmad/Code/map-recall2/artifacts/cafe-kobalt-independent/corrected-review.md",
+      "failure": "Quantizationreversednearcollinearroofsliver normalY-.91554 area.00239954m\u00b2",
+      "lostFiles": "Temporarycandidatebinaryandbuilderlost;decodedfailureJSONsurvives"
+    },
+    {
+      "sha256": "0e2904468fbf410764162233b3fc2e714061d9ad05947205a90eedad853a8d75",
+      "failure": "Root source/decoded CPU comparison held homogeneous brick/red shutter colours and incorrect red roof material.",
+      "preservedWorkerPath": "artifacts/cafe-kobalt-failed-0e290",
+      "privateFreezeCommit": "bea10cd4"
+    },
+    {
+      "sha256": "a96ecaafca35cd5e146ce39501cfe70e3898d1d2512c2d3f5999073a7e376204",
+      "type": "Actual native production HOLD",
+      "failure": "Singel facade assemblies were authored on partywall1\u21922, hidden by retained neighboring Pand2178169. Isolated CPU/source checks had not established street ownership.",
+      "preservedWorkerPath": "artifacts/cafe-kobalt-failed-native-a96",
+      "review": "artifacts/cafe-kobalt-native/review-HOLD.md",
+      "correction": "Genuine Singel front SE2\u21926, white Droogbak NE6\u21920; footprint/map orientation and both neighbors preserved. Earlier NE-gable proposal was rejected by dated panoramas, current OSM street axes and surveyed ridge."
+    },
+    {
+      "sha256": "f53fb05c5a99dd082d2da8d43c50d87b15a5772eca78f780e8f687c26e2939d1",
+      "type": "Production f53 native gallery HOLD",
+      "failure": "Independent rear gable triangle overlapped measured perimeter skirts, causing visible checker/z-fighting. One rear skirt inherited white flank material.",
+      "preservedWorkerPath": "artifacts/cafe-kobalt-failed-production-f53",
+      "correction": "Remove independent back triangle; two measured rear-partywall skirts exclusively own surface and use brick. White reserved for exact exposed NE edges6\u21927\u21928\u21929\u21920."
+    }
+  ],
+  "visualPreflight": {
+    "candidateSha256": "f3cecce433f4a0f9494a1aa7e984fc14574d64d896d86db2a4774e63f62cbb72",
+    "triangles": 7050,
+    "bytes": 286128,
+    "check": "artifacts/cafe-kobalt-cpu/geometry-check.json",
+    "roofSamples": 13572,
+    "roofMisses": 0,
+    "paneSamples": 976,
+    "buriedPaneSamples": 0,
+    "decodedRoofTriangles": 14,
+    "decodedRoofWinding": "allupward",
+    "textures": 0,
+    "cpuViews": 8,
+    "recognition": "Recoveredfrontpairedsash/irregularwhiteflank/door/redshutter/woodpui/sourcepanel maintained vs2024front+operatorcorner",
+    "status": "Source/CPU rear-ownership correction checked. Root production export and affected native rear/north gallery re-review pending; no new native acceptance claimed.",
+    "signatureShutterFirstHitChecks": 6,
+    "materialEvidence": "Dated2024-12-11 white-flank panorama shows subdued reddish-brown clay tiles. Bronze material override#8a624b applies to original pitched roof; visible NE slope source confidence high, unobserved SW slope same-family inference lower confidence. Earlier slate-gray interpretation from undated overcast operator photo superseded. Bright red shutters remain separate material.",
+    "lint": "Passed npm run lint",
+    "retainedNeighborPublicFirstHitShutters": 6,
+    "realSignPanelPublicFirstHit": true,
+    "installedContextNeighbors": 8,
+    "installedContextEdges": 69,
+    "currentOfficialBboxPands": 9,
+    "currentOfficialEdges": 88,
+    "rearSingleOwnershipSamples": 4,
+    "rearOwnerMaterials": "Exactly two brick measured-height skirts; no separate rear triangle."
+  },
+  "accessGaps": [
+    {
+      "source": "Beeldbankaddresssearch",
+      "state": "RetainedJSHTMLshellonly;noscaninspected"
+    },
+    {
+      "source": "Bouwdossiers",
+      "state": "Notacquired;nodrawingclaimed"
+    }
+  ],
+  "sourceArchive": {
+    "newRecoveryRawAndCode": "Rootmustcommit/pushdurablemilestones beforemodelcommit",
+    "currentMilestone": "artifacts/cafe-kobalt-recovery/milestone-05; rear ownership correction and preserved f53 failure."
+  },
+  "sourceDatesAndRights": [
+    {
+      "source": "Singel_2_Amsterdam_2024.jpg",
+      "creator": "Oursana",
+      "capturedAt": "2024-10-04T17:26:04",
+      "rights": "CC0 1.0, as recorded on Wikimedia Commons file page. Used as geometry reference only; no photo pixels imported into original GLB."
+    },
+    {
+      "source": "https://www.cafekobalt.nl/assets/images/kobalt_img_x-5.jpg",
+      "capturedAt": "Unknown; undated operator current website photograph",
+      "rights": "Operator/photo copyright not licensed for asset reuse; raw original privately retained for research. Original geometry only."
+    },
+    {
+      "source": "Amsterdam municipal panorama recording_2025-06-16_03-46-32_01226",
+      "capturedAt": "2025-06-16T04:06:13Z",
+      "rights": "Municipal source terms apply; original privately retained, processed perspective separate. Sun glare obscures lower pui."
+    },
+    {
+      "source": "Bounded Beeldbank exact Singel2 address/name search",
+      "access": "Original JS shell cached; no catalogue image or scan inspected",
+      "rights": "Unknown scan rights; no scan used"
+    }
+  ],
+  "currentVsHistoricalEvidence": "RCE assertion describes the protected historic double corner house. BAG records original year1610 separately from RCE1606\u20131611. 2024front and undated operator corner agree on gable/loading tiers; 2025panorama confirms frontage silhouette but glare prevents complete lower-opening comparison. No permit drawings or historical scan details are claimed.",
+  "architecturalAllocation": {
+    "singelFront": {
+      "edges": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "direction": "southeast",
+      "assemblies": "Single tall stepped gable, central loading openings/red shutters/wood pui/source-real narrow panel"
+    },
+    "droogbakFlank": {
+      "edges": [
+        6,
+        7,
+        8,
+        9,
+        0
+      ],
+      "direction": "northeast",
+      "assemblies": "White facade with irregular openings, ground entrance and two roof dormers"
+    },
+    "partyWalls": [
+      {
+        "edges": [
+          1,
+          2
+        ],
+        "retainedNeighbor": "NL.IMBAG.Pand.0363100012178169"
+      },
+      {
+        "edges": [
+          0,
+          1
+        ],
+        "retainedNeighbor": "NL.IMBAG.Pand.0363100012179144"
+      }
+    ],
+    "streetProof": {
+      "source": "Privately archived original osm-map.xml",
+      "SingelWay": 609962726,
+      "DroogbakWay": 7376033
+    },
+    "roofProof": {
+      "source": "Original3DBAG2023 CityJSON",
+      "ridgeVertices": [
+        29,
+        33
+      ],
+      "nativeRidge": [
+        [
+          -5.384782284172495,
+          18.18850096130371,
+          -5.000268479074634
+        ],
+        [
+          3.6838616846485395,
+          18.16950096130371,
+          3.2051145540111747
+        ]
+      ],
+      "roofSupportVertices": [
+        27,
+        31
+      ],
+      "method": "Original exact-BAG region roofs with safe interior fan; planes fitted from surveyed ridge and eaves. Variable-height perimeter skirts have no top cap."
+    }
+  },
+  "panoramaEvidence": [
+    {
+      "id": "b_20241211_1256_Track16_Sphere_00068",
+      "capturedAt": "2024-12-11T13:27:12Z",
+      "camera": [
+        4.8944275335908,
+        52.3796806389747
+      ],
+      "part": "Northeast Droogbak white wall and roof",
+      "original": "artifacts/cafe-kobalt-recovery/raw/public-front2024.jpg",
+      "metadataSelection": "artifacts/cafe-kobalt-recovery/raw/public-front2024-selection.json",
+      "processed": "artifacts/cafe-kobalt-recovery/processed/public-front2024.jpg",
+      "parameters": "artifacts/cafe-kobalt-recovery/processed/public-front2024-view.json",
+      "confidence": "High for white-wall allocation/roof tile color; a road sign masks a lower pane fragment."
+    },
+    {
+      "id": "recording_2025-06-16_03-46-32_02736",
+      "capturedAt": "2025-06-16T04:36:46Z",
+      "camera": [
+        4.894456695658987,
+        52.37964415343988
+      ],
+      "part": "Northeast white wall",
+      "original": "artifacts/cafe-kobalt-recovery/raw/public-front2025.jpg",
+      "metadataSelection": "artifacts/cafe-kobalt-recovery/raw/public-front2025-selection.json",
+      "processed": "artifacts/cafe-kobalt-recovery/processed/public-front2025.jpg",
+      "parameters": "artifacts/cafe-kobalt-recovery/processed/public-front2025-view.json",
+      "confidence": "Public-side camera identity clear; severe overexposure prevents reliable colour details."
+    }
+  ]
+}
