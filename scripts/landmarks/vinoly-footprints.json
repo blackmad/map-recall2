@@ -1,0 +1,624 @@
+{
+  "id": "vinoly",
+  "anchor": [
+    4.872403,
+    52.337767
+  ],
+  "bagId": "0363100012107681",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.872808167396063,
+          52.33772937200946
+        ],
+        [
+          4.873067554846148,
+          52.337762252656795
+        ],
+        [
+          4.873050054813275,
+          52.337937878567196
+        ],
+        [
+          4.87289713376934,
+          52.33793152502321
+        ],
+        [
+          4.871731556556461,
+          52.3378863518529
+        ],
+        [
+          4.871757926463567,
+          52.337623367656924
+        ],
+        [
+          4.871759927756664,
+          52.33759634115519
+        ],
+        [
+          4.871918410234658,
+          52.33761644470843
+        ],
+        [
+          4.872808167396063,
+          52.33772937200946
+        ]
+      ]
+    ]
+  },
+  "parts": [
+    {
+      "type": "Feature",
+      "id": "w754894011",
+      "properties": {
+        "osmId": "w754894011",
+        "name": "",
+        "colour": "#d2c9bc",
+        "roofColour": "#b7b1a6",
+        "material": "",
+        "roofMaterial": "metal",
+        "roofShape": "skillion",
+        "height": 26,
+        "minHeight": 0,
+        "roofHeight": 8.0,
+        "isPart": true
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.8726273,
+                52.3377511
+              ],
+              [
+                4.8726306,
+                52.3377067
+              ],
+              [
+                4.872977,
+                52.3377503
+              ],
+              [
+                4.8729763,
+                52.337765
+              ],
+              [
+                4.8726273,
+                52.3377511
+              ]
+            ]
+          ]
+        ]
+      },
+      "localRing": [
+        [
+          15.256239411494134,
+          1.7575860001180388
+        ],
+        [
+          15.480695898565124,
+          6.665562000136447
+        ],
+        [
+          39.04182533295448,
+          1.8460179995805959
+        ],
+        [
+          38.99421335088879,
+          0.2210800002272606
+        ]
+      ]
+    },
+    {
+      "type": "Feature",
+      "id": "w754894012",
+      "properties": {
+        "osmId": "w754894012",
+        "name": "",
+        "colour": "#73fdff",
+        "roofColour": "#ecddc0",
+        "material": "",
+        "roofMaterial": "",
+        "roofShape": "",
+        "height": 62,
+        "minHeight": 0,
+        "roofHeight": 0,
+        "isPart": true
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.8717323,
+                52.3378865
+              ],
+              [
+                4.8717613,
+                52.3375961
+              ],
+              [
+                4.8723459,
+                52.3376701
+              ],
+              [
+                4.8723219,
+                52.3379085
+              ],
+              [
+                4.8717323,
+                52.3378865
+              ]
+            ]
+          ]
+        ]
+      },
+      "localRing": [
+        [
+          -45.61908057641494,
+          -13.209530000422802
+        ],
+        [
+          -43.64658417453968,
+          18.89128600005847
+        ],
+        [
+          -3.8837773981252997,
+          10.711326000289603
+        ],
+        [
+          -5.516188213428682,
+          -15.641409999780933
+        ]
+      ]
+    },
+    {
+      "type": "Feature",
+      "id": "w754894013",
+      "properties": {
+        "osmId": "w754894013",
+        "name": "",
+        "colour": "#73fdff",
+        "roofColour": "#ecddc0",
+        "material": "",
+        "roofMaterial": "",
+        "roofShape": "",
+        "height": 92,
+        "minHeight": 62,
+        "roofHeight": 0,
+        "isPart": true
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.8717323,
+                52.3378865
+              ],
+              [
+                4.8717538,
+                52.3376762
+              ],
+              [
+                4.8723375,
+                52.3377459
+              ],
+              [
+                4.8723219,
+                52.3379085
+              ],
+              [
+                4.8717323,
+                52.3378865
+              ]
+            ]
+          ]
+        ]
+      },
+      "localRing": [
+        [
+          -45.61908057641494,
+          -13.209530000422802
+        ],
+        [
+          -44.15671255436729,
+          10.037032000264077
+        ],
+        [
+          -4.455121183457319,
+          2.3323939997663956
+        ],
+        [
+          -5.516188213428682,
+          -15.641409999780933
+        ]
+      ]
+    },
+    {
+      "type": "Feature",
+      "id": "w754894014",
+      "properties": {
+        "osmId": "w754894014",
+        "name": "",
+        "colour": "#73fdff",
+        "roofColour": "#ecddc0",
+        "material": "",
+        "roofMaterial": "",
+        "roofShape": "",
+        "height": 26,
+        "minHeight": 0,
+        "roofHeight": 0,
+        "isPart": true
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.8723219,
+                52.3379085
+              ],
+              [
+                4.8723459,
+                52.3376701
+              ],
+              [
+                4.8726306,
+                52.3377067
+              ],
+              [
+                4.8726273,
+                52.3377511
+              ],
+              [
+                4.8729763,
+                52.337765
+              ],
+              [
+                4.872977,
+                52.3377503
+              ],
+              [
+                4.873072,
+                52.3377621
+              ],
+              [
+                4.8730554,
+                52.3379366
+              ],
+              [
+                4.8723219,
+                52.3379085
+              ]
+            ]
+          ]
+        ]
+      },
+      "localRing": [
+        [
+          -5.516188213428682,
+          -15.641409999780933
+        ],
+        [
+          -3.8837773981252997,
+          10.711326000289603
+        ],
+        [
+          15.480695898565124,
+          6.665562000136447
+        ],
+        [
+          15.256239411494134,
+          1.7575860001180388
+        ],
+        [
+          38.99421335088879,
+          0.2210800002272606
+        ],
+        [
+          39.04182533295448,
+          1.8460179995805959
+        ],
+        [
+          45.50345147691405,
+          0.5416460000462564
+        ],
+        [
+          44.37436732968872,
+          -18.747583999950024
+        ]
+      ]
+    }
+  ],
+  "bagProperties": {
+    "identificatie": "0363100012107681",
+    "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012107681",
+    "bouwjaar": 2005,
+    "status": "Pand in gebruik",
+    "gebruiksdoel": "bijeenkomstfunctie,kantoorfunctie,overige gebruiksfunctie",
+    "oppervlakte_min": 1,
+    "oppervlakte_max": 11508,
+    "aantal_verblijfsobjecten": 30
+  },
+  "sourceUrls": [
+    "https://vinoly.com/works/mahler-4-office-tower/",
+    "https://zuidas.nl/en/construction-project/mahler-4-vinoly/",
+    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012107681"
+  ],
+  "heightNotes": {
+    "groundNAP": 0.333,
+    "mainRoofNAP": [
+      91.26,
+      91.29
+    ],
+    "equipmentNAP": [
+      95.09,
+      95.13
+    ],
+    "mainRoofRelative": 90.95,
+    "publishedHeight": 91,
+    "podiumRelative": 26.19,
+    "middleTerraceRelative": 62.2,
+    "note": "3DBAG LoD2.2 roof226 broad near-horizontal surveyed crown; separate roof228 rooftop plant excluded as whole-building height. OSM92m close but not roof authority; CTBUH95m and supplier110m conflicts retained."
+  },
+  "archive": {
+    "modelPath": "models/vinoly",
+    "sourceCommit": "fa73c85693429a169df717b11b6b5cbb9cd97507"
+  },
+  "references": [
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/vinoly/raw/architect.html",
+      "feature": "three angled volumes; carved spiral stairs; glass/anodized aluminium fins; glass-covered fourth/fifth-floor patio",
+      "url": "https://vinoly.com/works/mahler-4-office-tower/"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/vinoly/raw/municipal.html",
+      "feature": "91m primary municipal height; stair closed for public safety",
+      "url": "https://zuidas.nl/en/construction-project/mahler-4-vinoly/"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/vinoly/raw/front.jpg",
+      "feature": "east/south exterior stair and glazed podium entrance",
+      "url": "https://vinoly.com/wp-content/uploads/2016/05/Mahler_1-714x1000.jpg"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/vinoly/raw/side.jpg",
+      "feature": "opposite west facade/slanted stair break",
+      "url": "https://vinoly.com/wp-content/uploads/2016/05/Mahler_2-714x1000.jpg"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/vinoly/raw/current-front.jpg",
+      "feature": "2021 principal Claude Debussylaan ground door and podium notch",
+      "url": "https://zuidas.nl/wp-content/uploads/2021/09/20210112-Vinoly-claude-debussylaan-marcel-steinbach-1800x1006.jpg"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/vinoly/raw/current-context.jpg",
+      "feature": "2021 north full-height context; two diagonal stair bands; west tower/east podium; rooftop plant",
+      "url": "https://zuidas.nl/wp-content/uploads/2021/09/20210113-mahlerplein-abn-amro-vinoly_MST2618-1800x1201.jpg"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/vinoly/raw/sketch.jpg",
+      "feature": "architect original diagram: spiral across stepped volumes",
+      "url": "https://vinoly.com/wp-content/uploads/2016/05/Mahler_Sketch1-1778x1000.jpg"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/vinoly/raw/bag-axis-correct.json",
+      "feature": "native current BAG parent plus adjacent parents",
+      "url": "https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&typeNames=bag:pand&outputFormat=application/json&srsName=EPSG:4326&bbox=52.3372,4.8713,52.3383,4.8738,EPSG:4326"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/vinoly/raw/3dbag.json",
+      "feature": "main roof versus small equipment maxima",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012107681"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/vinoly/raw/osm-27653949-full.xml",
+      "url": "https://api.openstreetmap.org/api/0.6/way/27653949/full",
+      "feature": "Current genuine named building parent w27653949, ref:bag0363100012107681, WikidataQ2313543; exact polygon suppression"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/vinoly/raw/osm-754894011-full.xml",
+      "url": "https://api.openstreetmap.org/api/0.6/way/754894011/full",
+      "feature": "current original OSM footprint nodes/part tags"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/vinoly/raw/osm-754894012-full.xml",
+      "url": "https://api.openstreetmap.org/api/0.6/way/754894012/full",
+      "feature": "current original OSM footprint nodes/part tags"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/vinoly/raw/osm-754894013-full.xml",
+      "url": "https://api.openstreetmap.org/api/0.6/way/754894013/full",
+      "feature": "current original OSM footprint nodes/part tags"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/vinoly/raw/osm-754894014-full.xml",
+      "url": "https://api.openstreetmap.org/api/0.6/way/754894014/full",
+      "feature": "current original OSM footprint nodes/part tags"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-source-data/models/vinoly/raw-source-manifest.json",
+      "feature": "raw response URLs/checksums/access state/retrieval times; original-versus-processed provenance"
+    }
+  ],
+  "archiveSearch": {
+    "query": "Claude Debussylaan 2 Vinoly",
+    "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=Claude%20Debussylaan%202%20Vinoly",
+    "access": "HTTP200 JavaScriptviewer shell archived; no inspected relevant catalogue image/drawing. Web exactaddress search returned no result; modern2005 building, historic monument description not applicable."
+  },
+  "retainedNeighbors": [
+    {
+      "bagId": "0363100012109184",
+      "role": "immediate western Mahler4 neighbor"
+    },
+    {
+      "bagId": "0363100012112073",
+      "role": "south block across Claude Debussylaan"
+    }
+  ],
+  "uncertainties": [
+    "Stair exact riser count and changing path levels are photo-guided; no facade elevation drawing obtained.",
+    "Podium two-story enclosed patio per architect is glass-covered, not an open ground courtyard; roof clerestory simplified pending survey/photo alignment.",
+    "No existing extract destination found: root must create requested genuine building destination and verify physical click/route.",
+    "Podium south stair cut follows source-visible sloping breach approximately; exact cut/landing coordinates require gallery/currentphoto review. No glass-covered patio inserted without matched roof location."
+  ],
+  "osmId": "w27653949",
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "modelPath": "models/vinoly/",
+    "manifest": "models/vinoly/manifest.json",
+    "commit": "fa73c85693429a169df717b11b6b5cbb9cd97507",
+    "currentAccessState": "Private archive commit verified in Git objects and origin/main on 2026-10-07; models/vinoly contains current raw sources and exact e25e6203 CPU-only draft checkpoint. Current GPU/game/performance acceptance remains pending."
+  },
+  "staircaseTrace": {
+    "status": "visible-flight-reconstruction-with-unresolved-terrace-transit",
+    "sourceCommit": "fa73c85693429a169df717b11b6b5cbb9cd97507",
+    "coordinateConvention": "Native ring indices: tower 0NW,1SW,2SE,3NE. Heights are relative metres, photo-guided rather than measured.",
+    "chains": [
+      {
+        "id": "podium-to-middle",
+        "segments": [
+          {
+            "part": "w754894014",
+            "edge": 5,
+            "start": 6.3,
+            "end": 8.8,
+            "reverse": true
+          },
+          {
+            "part": "w754894014",
+            "edge": 4,
+            "start": 8.8,
+            "end": 8.8,
+            "reverse": true
+          },
+          {
+            "part": "w754894014",
+            "edge": 3,
+            "start": 8.8,
+            "end": 18.0,
+            "reverse": true
+          },
+          {
+            "part": "w754894014",
+            "edge": 2,
+            "start": 18.0,
+            "end": 18.0,
+            "reverse": true
+          },
+          {
+            "part": "w754894014",
+            "edge": 1,
+            "start": 18.0,
+            "end": 26.19,
+            "reverse": true
+          },
+          {
+            "part": "w754894012",
+            "edge": 1,
+            "start": 26.19,
+            "end": 36.0,
+            "reverse": true
+          },
+          {
+            "part": "w754894012",
+            "edge": 0,
+            "start": 36.0,
+            "end": 46.0,
+            "reverse": true
+          },
+          {
+            "part": "w754894012",
+            "edge": 3,
+            "start": 46.0,
+            "end": 62.2,
+            "reverse": true
+          }
+        ]
+      },
+      {
+        "id": "upper-visible",
+        "segments": [
+          {
+            "part": "w754894013",
+            "edge": 2,
+            "start": 62.2,
+            "end": 76.5,
+            "reverse": false
+          },
+          {
+            "part": "w754894013",
+            "edge": 3,
+            "start": 76.5,
+            "end": 89.3,
+            "reverse": false
+          }
+        ]
+      }
+    ],
+    "sourceAssertions": [
+      {
+        "source": "raw/current-context.jpg",
+        "feature": "North middle band ascends from western tower corner to eastern corner; upper north band ascends from eastern corner to western corner. Endpoint heights bounded by surveyed terrace/crown and approximate floor spacing.",
+        "confidence": "high direction; medium height"
+      },
+      {
+        "source": "raw/current-front.jpg",
+        "feature": "Podium south breach rises westward through stepped facade and exposed level landings; preserve small notch returns as landings rather than reversing rise.",
+        "confidence": "high direction; medium endpoints"
+      },
+      {
+        "source": "raw/sketch.jpg",
+        "feature": "Exterior circulation traverses stepped volumes; no independent sawtooth loops.",
+        "confidence": "high composition; not a measured elevation"
+      },
+      {
+        "source": "raw/front.jpg; raw/side.jpg",
+        "feature": "Opposite oblique views support climbing side flights; facade attribution and concealed terrace linkage remain approximate.",
+        "confidence": "medium"
+      }
+    ],
+    "unresolvedTransit": {
+      "from": [
+        "w754894012",
+        3,
+        62.2
+      ],
+      "to": [
+        "w754894013",
+        2,
+        62.2
+      ],
+      "description": "Approximately18m plan transit between lower NE and upper SE, at the same surveyed middle-terrace height. Source sketch supports a terrace connection but no matched plan locates its walkable inset alignment. No invented opaque bridge or extra diagonal flight. This gap prevents claiming complete exterior-path/open-space acceptance."
+    },
+    "simplification": "2.35m headroom and2.3m recess remain approximate. Exact risers omitted; flat return landings retained."
+  },
+  "retainedNeighborIdentityAudit": {
+    "source": "private models/vinoly/raw/current-zuidas-osm-map.xml, original2026 OSM response",
+    "west": {
+      "bag": "0363100012109184",
+      "osmOutline": "w37804729"
+    },
+    "south": {
+      "bag": "0363100012112073",
+      "osmOutline": "w277373193",
+      "osmBuildingRelation": "r10402579",
+      "installedPart": "w754894015",
+      "partMembers": [
+        "w754852672",
+        "w754852671",
+        "w754852670",
+        "w754894015"
+      ]
+    },
+    "finding": "Installed south part belongs to the explicit building relation whose outline carries the recorded BAG identity. Use aliases for retention checks, not a substitute neighbor."
+  }
+}

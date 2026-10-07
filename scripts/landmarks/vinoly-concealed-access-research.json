@@ -1,0 +1,144 @@
+{
+  "modelId": "vinoly",
+  "date": "2026-10-06",
+  "status": "bounded-primary-source-pass-complete-precise-gaps-remain",
+  "reviewedGlbSha256": "1004d3b7389f91af7d8f37c1a6904ede506e2d0ca2808a833ebd6c036aa38738",
+  "geometryChanged": false,
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "baseCommit": "a6921b9",
+    "modelPath": "models/vinoly/concealed-access/",
+    "provenance": "models/vinoly/concealed-access/provenance.json",
+    "newSourceCommit": "281a771"
+  },
+  "boundedScope": {
+    "searchQueries": [
+      "Vinoly Mahler4 floor plan patio exterior staircase terrace architect",
+      "Viñoly Claude Debussylaan2 bouwdossier",
+      "Vinoly gebouw atrium patio plattegrond",
+      "Viñoly plattegrond patio",
+      "Vinoly Claude Debussylaan dakterras",
+      "Mahler4 Van den Oever drawings"
+    ],
+    "method": "Reuse cached architect/municipal text and primary architect PDF; inspect remaining task-relevant official architect gallery photos, both concept sketches and construction images. Inspect facade-contractor product/project PDFs. One municipal address viewer attempt with two bounded retries. Secondary hits only discovery leads; no extracted geometry authority.",
+    "stopReason": "Remaining sources are exterior obliques, concept sketches or facade component sections, not dimensioned current terrace/patio plans. Continue independent queue work; no unbounded repeat search."
+  },
+  "findings": [
+    {
+      "id": "podium-glass-roof-observation",
+      "sourceUrl": "https://vinoly.com/wp-content/uploads/2016/05/Mahler_3.jpg",
+      "privateFile": "models/vinoly/concealed-access/raw/Mahler_3.jpg",
+      "observed": "Elevated exterior photograph clearly shows one rectangular gridded glazed roof inset on the east podium roof, immediately east of the tower east facade and inward from the podium perimeter. Roof does not extend across the entire podium.",
+      "imageCoordinates": {
+        "imageSize": [
+          1000,
+          1400
+        ],
+        "approximateGlazingCornersPixels": [
+          [
+            575,
+            1070
+          ],
+          [
+            641,
+            1053
+          ],
+          [
+            705,
+            1073
+          ],
+          [
+            639,
+            1093
+          ]
+        ],
+        "note": "Visual reading only; no georeferencing or measured dimensions. Image displayed scaled by tool; verify original pixel positions before any homography."
+      },
+      "architectTextSupport": "Architect page identifies an enclosed two-story glass-roofed patio at fourth/fifth floors in the center of the podium.",
+      "confidence": "high visible roof feature; medium identification as described patio; no exact native position/extent or current-state proof",
+      "date": "Exposure date unstated; cranes/unbuilt surroundings show early completion context.2016/05 upload path is not exposure date.",
+      "modelImplication": "Do not insert a large clerestory or open ground courtyard. A bounded small glazed-roof candidate is now source visible, but exact position/extent and patio cavity remain pending survey/plan alignment; this pass does not accept patio/open spaces."
+    },
+    {
+      "id": "terrace-transit-still-unresolved",
+      "sourceUrls": [
+        "https://vinoly.com/wp-content/uploads/2016/05/Mahler_4-714x1000.jpg",
+        "https://vinoly.com/wp-content/uploads/2016/05/Mahler_Sketch2-1778x1000.jpg"
+      ],
+      "observed": "Closeup directly shows different-height recessed stairs/flat corner landings and soffit headroom. Sketch2 depicts a green public spiral/terrace concept; no dimensions, compass, floor plan or matched walkable route on east62.2m terrace. Construction1 confirms sloping stair bands but does not expose this terrace plan.",
+      "confidence": "high that these sources cannot locate concealed transit",
+      "unknowns": [
+        "Native walkable alignment for lowerNE62.2m to upperSE62.2m (~18m plan transit).",
+        "Whether transit follows an inset terrace edge or another concealed access arrangement.",
+        "Rail/clearance/door/open-space footprint along that transit."
+      ],
+      "modelImplication": "Keep unresolved; do not invent bridge/extra flight. No complete exterior-path acceptance."
+    },
+    {
+      "id": "supplier-details",
+      "sourceUrl": "https://www.rollecate.nl/projecten/vinoly-mahler",
+      "privateFiles": [
+        "models/vinoly/concealed-access/raw/rollecate-product.pdf",
+        "models/vinoly/concealed-access/raw/rollecate-project.pdf"
+      ],
+      "observed": "Product PDF two pages and project PDF one page inspected visually. They contain facade panel elevations, fin profile and floor/slab glazing sections, ground stair photos and exterior context. No terrace/patio plan or relevant stair section.",
+      "confidence": "high",
+      "modelImplication": "No new access geometry. Retain supplier110m conflict; do not replace91m surveyed crown with this value."
+    }
+  ],
+  "access": [
+    {
+      "source": "https://beta.archief.amsterdam/handleiding/bouwdossiers",
+      "state": "HTTP200 original archived and page read. Guide says1905–2010 dossiers found by address in DataAmsterdam; public dossier access uses submitted email for temporary access. Individual Viñoly dossier identity/public status NOT established.",
+      "usefulSheets": [
+        "As-built Mahler4/Viñoly terrace plan at approximately62.2m relative height, with north arrow, stair arrival/departure and external walkable/rail boundaries.",
+        "Podium fourth/fifth floor plans, roof plan and section through enclosed glass-covered patio, including dimensions and its position relative to tower."
+      ],
+      "authorization": "No email entered, no outreach."
+    },
+    {
+      "source": "https://data.amsterdam.nl/data/?zoek=Claude%20Debussylaan%202",
+      "state": "HTTP403 after bounded retries; no viewer/address dossier inspected. This is current host access state, not permanent unavailability or proof all Viñoly sheets are email-only."
+    },
+    {
+      "source": "cached models/vinoly/raw/beeldbank-search.html",
+      "state": "Previous exact address/name search HTTP200 JS shell reused; no new inspected catalogue drawing/image; no claim archive unavailable."
+    }
+  ],
+  "inspectedOriginals": [
+    "raw/architect.html",
+    "raw/municipal.html",
+    "raw/architect.pdf",
+    "concealed-access/raw/Mahler_3-714x1000.jpg",
+    "concealed-access/raw/Mahler_4-714x1000.jpg",
+    "concealed-access/raw/Mahler_5-1778x1000.jpg",
+    "concealed-access/raw/Mahler_7-714x1000.jpg",
+    "concealed-access/raw/Mahler_8-714x1000.jpg",
+    "concealed-access/raw/Mahler_9-1778x1000.jpg",
+    "concealed-access/raw/Mahler_10-1778x1000.jpg",
+    "concealed-access/raw/Mahler_11-1778x1000.jpg",
+    "concealed-access/raw/Mahler_Sketch2-1778x1000.jpg",
+    "concealed-access/raw/Mahler_Construction1-714x1000.jpg",
+    "concealed-access/raw/Mahler_Construction2-714x1000.jpg",
+    "concealed-access/raw/Mahler_Construction3-1778x1000.jpg",
+    "concealed-access/raw/rollecate.html",
+    "concealed-access/raw/bouwdossiers-guide.html",
+    "concealed-access/raw/Mahler_3.jpg",
+    "concealed-access/raw/rollecate-product.pdf",
+    "concealed-access/raw/rollecate-project.pdf"
+  ],
+  "acceptance": {
+    "galleryRecognition": "Prior scoped pass inherited from root; no new GPU review here.",
+    "concealedTerraceTransit": false,
+    "patioExactPlacementAndOpenSpace": false,
+    "wholeFlight": false,
+    "remainingEvidence": "Dimensioned matched terrace/patio plans or survey-matched current elevated roof views; independent gallery/live checks after any supported geometry change."
+  },
+  "reusedPriorEvidence": [
+    "raw/front.jpg",
+    "raw/side.jpg",
+    "raw/sketch.jpg",
+    "raw/current-front.jpg",
+    "raw/current-context.jpg"
+  ]
+}

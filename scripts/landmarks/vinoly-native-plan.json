@@ -1,0 +1,68 @@
+{
+  "specPath": "scripts/landmarks/vinoly-spec.json",
+  "neighbors": [
+    [
+      "NL.IMBAG.Pand.0363100012109184",
+      "w37804729"
+    ],
+    [
+      "w754894015",
+      "w277373193",
+      "NL.IMBAG.Pand.0363100012112073",
+      "w754852672",
+      "w754852671",
+      "w754852670"
+    ]
+  ],
+  "sourceCamera": {
+    "from": [
+      4.87365,
+      52.33965
+    ],
+    "fromAltitude": 205,
+    "to": [
+      4.872403,
+      52.337767
+    ],
+    "toAltitude": 44
+  },
+  "oppositeBearing": 22,
+  "oppositeZoom": 17.5,
+  "sourceReadyChecks": [
+    "Current tile14/8413/5386 contains west BAG9184 and actual south part w754894015",
+    "Current asset SHAe25e62032c28211db0729dec875b2d783fe8a9d37a34e78d61ae729ed30cd7e1; require actual loaded runtime e25e62032c28211d",
+    "Physical pointer must open sourced genuine osm_building_27653949 card; preserve destination on routing failure",
+    "All six exact replaced aliases hidden only after load; west/south installed features must remain drawn",
+    "Concealed18m transit and glass-covered fourth/fifth-floor patio remain source gaps; no complete exterior-path/patio acceptance"
+  ],
+  "expectedPin": [
+    4.872403,
+    52.337767
+  ],
+  "expectedRouteCenter": [
+    52.33768,
+    4.87262
+  ],
+  "cameraPreparation": {
+    "status": "Wider after first native fulltower capture cropped crown/podium; first framing preserved",
+    "referenceSide": "north/northeast current-context facade plus podium eastward relation",
+    "coordinatesStatus": "inferred source-side elevated inspection; not a surveyed photo pose",
+    "comparisonSource": "models/vinoly/raw/current-context.jpg",
+    "privateSourceCommit": "fa73c85693429a169df717b11b6b5cbb9cd97507",
+    "from": [
+      4.87313,
+      52.33875
+    ],
+    "fromAltitude": 130,
+    "to": [
+      4.87215,
+      52.33778
+    ],
+    "toAltitude": 46,
+    "estimatedGroundDistanceMetres": 126.9,
+    "estimatedRequestedPitchDegrees": null
+  },
+  "oppositePitch": 50,
+  "neighborEvidence": "scripts/landmarks/vinoly-installed-scope.json",
+  "note": "Current accepted wider north inspection and real south/opposite view; original112degree-clamped and cropped plans preserved in private accepted archive. Source camera is an inferred inspection pose, not calibrated photograph."
+}

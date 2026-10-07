@@ -1,3 +1,4 @@
+import {buildVinoly} from './vinoly-builder';
 import {buildRasphuispoort} from './rasphuispoort-builder';
 import {buildCentraleMarkthal} from './centrale-markthal-builder';
 import {buildVondeltuin} from './vondeltuin-builder';
@@ -397,6 +398,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='jeruzalemkerk')buildJeruzalemkerk(w,d,helpers);
     else if(id==='naco-house')buildNacoHouse(w,d,helpers);
     else if(id==='nikolaas-myrakerk')buildNikolaasMyrakerk(w,d,helpers);
+    else if(id==='vinoly')buildVinoly(w,d,helpers);
     else if(id==='valley')buildValley(w,d,helpers);
     else if(id==='ndsm-warehouse-complex')buildNdsmWarehouseComplex(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
