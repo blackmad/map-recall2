@@ -509,6 +509,75 @@
       "independentReview": "Private validation: gallery-independent-v4 and game-independent-v4",
       "liveGameReview": "Private validation game-roof-v4; warm p95desktop16.8/touch16.7ms; nonstartup319/128ms; no cold/stall-free claim. Touch emulated onM4Pro; target pyramid meshes absent, hiddenID contract verified.",
       "published": true
+    },
+    "NL.IMBAG.Pand.0363100012175221": {
+      "treatment": "landmark",
+      "assetRole": "ordinary-background-building",
+      "reviewedOn": "2026-10-07",
+      "reviewState": "draft-held-source-composition-correction",
+      "visualAcceptance": false,
+      "published": false,
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012175221"
+      ],
+      "referenceImage": "/tmp/canal-belt-batch05-screen/reference-0363100012175221-2025-01578-einitial.jpg",
+      "reason": "Source-specific draft reviewed against actual exported CPU views; corrected second angled upper pairs independently verified. Kalverstraat/roof context and real gallery/game remain pending.",
+      "checks": {
+        "ordinarySilhouette": false,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": false,
+        "openSpacesUnderstood": false
+      },
+      "acceptanceScope": "Source/exported CPU review only; no production integration, real gallery/game, performance or public source gate.",
+      "remainingSourceFailures": [
+        "Kalverstraat facade nativeedge2 incorrectly blank",
+        "LongSingel source composition10 upperpairedgroups versus13draft; westernbrickbalconystack missing"
+      ]
+    },
+    "NL.IMBAG.Pand.0363100012175216": {
+      "treatment": "landmark",
+      "assetRole": "ordinary-background-building",
+      "reviewedOn": "2026-10-07",
+      "reviewState": "draft-held-high-roof-object-unresolved",
+      "visualAcceptance": false,
+      "published": false,
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012175216"
+      ],
+      "referenceImage": "/tmp/map-recall2-source-ordinary-pilot/experiments/canal-belt-overnight/modern-01/0363100012175216/processed/reference-0363100012175216-2025-0.jpg",
+      "reason": "Source-specific arcade draft has exposed cylinders/recessed glazing; official aerials require restoring rooftop144 and resolving134 plus upper loggia. Runtime not reviewed.",
+      "checks": {
+        "ordinarySilhouette": false,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": false,
+        "openSpacesUnderstood": false
+      },
+      "acceptanceScope": "Source/exported CPU review only; no production integration, real gallery/game, performance or public source gate.",
+      "remainingSourceFailures": [
+        "Thin32m surveyplane renders as sail; AHN confirms broadhighreturns but physicalrole/ownership unresolved; unsupported simplification rejected"
+      ]
+    },
+    "NL.IMBAG.Pand.0363100012164994": {
+      "treatment": "landmark",
+      "assetRole": "ordinary-background-building",
+      "reviewedOn": "2026-10-07",
+      "reviewState": "deferred-from-fast-box-queue",
+      "visualAcceptance": false,
+      "published": false,
+      "sourceUrls": [
+        "https://arcam.nl/architectuur-gids/telefooncentrale-herengracht/",
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/518372"
+      ],
+      "referenceImage": "/tmp/map-recall2-source-ordinary-pilot/experiments/canal-belt-overnight/modern-01/0363100012164994/processed/reference-0363100012164994-2025-0.jpg",
+      "reason": "Official identity518372 telephone exchange Herengracht295/Singel340 resolved; actual street faces west11/east19, prior mixed-neighbor interpretation withdrawn. Recognizable facade draft; source roof parts and independent/runtime review pending.",
+      "checks": {
+        "ordinarySilhouette": false,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": false,
+        "openSpacesUnderstood": false
+      },
+      "acceptanceScope": "Source/exported CPU review only; no production integration, real gallery/game, performance or public source gate.",
+      "deferralReason": "User reconfirmed boxy non-landmark workflow; registered ornate telephone exchange retained for full architecture review, not quick queue."
     }
   },
   "notes": [
