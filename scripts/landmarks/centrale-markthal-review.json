@@ -1,7 +1,7 @@
 {
   "id": "centrale-markthal",
   "reviewedOn": "2026-10-05",
-  "status": "verified-awaiting-deployment",
+  "status": "hosted-verified",
   "cpuReady": false,
   "visualAccepted": true,
   "changes": [
@@ -496,7 +496,7 @@
     ]
   },
   "previousAuthorStatus": "held",
-  "state": "verified-awaiting-deployment",
+  "state": "hosted-verified",
   "gameAccepted": true,
   "finalAcceptance": {
     "date": "2026-10-07",
@@ -662,7 +662,29 @@
     "galleryAndNativeEvidence": "artifacts/landmark-release-check/centrale-markthal-review",
     "desktopAndTouchPans": "artifacts/landmark-release-check/gameplay-pans-oct7",
     "performanceScope": "Headless same-scene model visible/hidden comparison and actual mouse/emulated-touch camera pans; no physical-mobile or whole-game performance guarantee.",
-    "hostedVerification": "pending deployment",
+    "hostedVerification": "Exact asset bytes and hosted route/pin/physical-card/masks/resident-neighbors verified at 1c492a10; see hostedVerification.",
     "exactPartInventory": "14 source-verified current building parts + named parent/BAG; all14 actual shader ranges hidden;16aliasfallback passed;6genuine neighbors retained."
+  },
+  "hostedVerification": {
+    "state": "hosted-verified",
+    "date": "2026-10-07",
+    "deployment": {
+      "sha": "1c492a108d31079b8360241f6954cbe252a6e08a",
+      "short": "1c492a1",
+      "run": "37584807879",
+      "builtAt": "2026-10-07T07:02:56.141Z"
+    },
+    "assetSha256": "6f4927d135dfb1ab149ecfbf318653a4544bd63cefa06cd46c7ca6098955f575",
+    "assetBytes": 300692,
+    "checks": [
+      "Exact hosted GLB SHA256 and byte length match published asset",
+      "Hosted gallery/default and four angles captured",
+      "Hosted native route destination, pin, meaningful physical card, exact suppression and resident neighbors pass"
+    ],
+    "evidenceRepository": "blackmad/map-recall2-source-data",
+    "evidencePath": "models/centrale-markthal/validation/hosted-release-20261007",
+    "visualAcceptance": "Hosted exact bytes/runtime compared with independently accepted local source/native evidence; no separate review of every hosted image claimed.",
+    "performanceScope": "Bounded headless same-scene comparisons; no whole-game or physical-mobile guarantee.",
+    "evidenceCommit": "d47d3b8e118d7a7d53980d3b0c4c2ec09b3396a2"
   }
 }

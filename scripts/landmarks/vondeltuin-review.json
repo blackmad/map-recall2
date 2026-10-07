@@ -1,6 +1,6 @@
 {
   "id": "vondeltuin",
-  "status": "verified-awaiting-deployment",
+  "status": "hosted-verified",
   "referenceImages": [
     "artifacts/landmarks/vondeltuin/references/facade.jpg",
     "artifacts/landmarks/vondeltuin/references/side.jpg",
@@ -158,7 +158,7 @@
     ]
   },
   "previousAuthorStatus": "CPU-preflight-hold; solar, sunshade and roof-step closure repairs; reexport/gallery/live review pending",
-  "state": "verified-awaiting-deployment",
+  "state": "hosted-verified",
   "visualAccepted": true,
   "gameAccepted": true,
   "sourceArchive": {
@@ -235,6 +235,28 @@
     "galleryAndNativeEvidence": "artifacts/landmark-release-check/vondeltuin-review",
     "desktopAndTouchPans": "artifacts/landmark-release-check/gameplay-pans-oct7",
     "performanceScope": "Headless same-scene model visible/hidden comparison and actual mouse/emulated-touch camera pans; no physical-mobile or whole-game performance guarantee.",
-    "hostedVerification": "pending deployment"
+    "hostedVerification": "Exact asset bytes and hosted route/pin/physical-card/masks/resident-neighbors verified at 1c492a10; see hostedVerification."
+  },
+  "hostedVerification": {
+    "state": "hosted-verified",
+    "date": "2026-10-07",
+    "deployment": {
+      "sha": "1c492a108d31079b8360241f6954cbe252a6e08a",
+      "short": "1c492a1",
+      "run": "37584807879",
+      "builtAt": "2026-10-07T07:02:56.141Z"
+    },
+    "assetSha256": "cc3f4c61eef672584ac2c2b0ae437bff31f91b9f883c43edd16e837f2cffb70c",
+    "assetBytes": 34808,
+    "checks": [
+      "Exact hosted GLB SHA256 and byte length match published asset",
+      "Hosted gallery/default and four angles captured",
+      "Hosted native route destination, pin, meaningful physical card, exact suppression and resident neighbors pass"
+    ],
+    "evidenceRepository": "blackmad/map-recall2-source-data",
+    "evidencePath": "models/vondeltuin/validation/hosted-release-20261007",
+    "visualAcceptance": "Hosted exact bytes/runtime compared with independently accepted local source/native evidence; no separate review of every hosted image claimed.",
+    "performanceScope": "Bounded headless same-scene comparisons; no whole-game or physical-mobile guarantee.",
+    "evidenceCommit": "d47d3b8e118d7a7d53980d3b0c4c2ec09b3396a2"
   }
 }
