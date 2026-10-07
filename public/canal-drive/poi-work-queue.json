@@ -453,8 +453,8 @@
       "id": "vondeltuin",
       "task": "Vondeltuin",
       "priority": "normal",
-      "status": "verified-awaiting-deployment",
-      "nextAction": "Source/gallery/native, route destination/pin/physical card, exact masks/neighbor retention and fallback verified; publish and verify hosted fingerprints.",
+      "status": "hosted-verified",
+      "nextAction": "Hosted asset fingerprints and native route/pin/physical card/exact masks/resident neighbors verified; preserve evidence and reconcile published owned files into root.",
       "modelId": "vondeltuin",
       "evidence": "../../scripts/landmarks/vondeltuin-review.json",
       "sourceArchive": {
@@ -462,7 +462,16 @@
         "commit": "205d04f0c48c3a651000233510d5f9ac1596edee",
         "path": "models/vondeltuin"
       },
-      "validation": "Independent source/gallery/live visual acceptance; all15 scoped CPU commands pass. Actual desktop/touch camera pans retain surrounding facade detail. Failed earlier evidence preserved."
+      "validation": "Independent source/gallery/live visual acceptance; all15 scoped CPU commands pass. Actual desktop/touch camera pans retain surrounding facade detail. Failed earlier evidence preserved.",
+      "hostedVerification": {
+        "publicCommit": "1c492a108d31079b8360241f6954cbe252a6e08a",
+        "hostingRun": "37584807879",
+        "assetSha256": "cc3f4c61eef672584ac2c2b0ae437bff31f91b9f883c43edd16e837f2cffb70c",
+        "assetBytes": 34808,
+        "evidenceRepository": "blackmad/map-recall2-source-data",
+        "evidencePath": "models/vondeltuin/validation/hosted-release-20261007",
+        "evidenceCommit": "d47d3b8e118d7a7d53980d3b0c4c2ec09b3396a2"
+      }
     },
     {
       "id": "het-lab",
@@ -474,8 +483,8 @@
       "id": "monk",
       "task": "Monk Amsterdam",
       "priority": "high",
-      "status": "verified-awaiting-deployment",
-      "nextAction": "Source/gallery/native, route destination/pin/physical card, exact masks/neighbor retention and fallback verified; publish and verify hosted fingerprints.",
+      "status": "hosted-verified",
+      "nextAction": "Hosted asset fingerprints and native route/pin/physical card/exact masks/resident neighbors verified; preserve evidence and reconcile published owned files into root.",
       "evidence": "../../scripts/landmarks/monk-amsterdam-review.json",
       "modelId": "monk-amsterdam",
       "sourceArchive": {
@@ -483,7 +492,16 @@
         "commit": "205d04f0c48c3a651000233510d5f9ac1596edee",
         "path": "models/monk-amsterdam"
       },
-      "validation": "Independent source/gallery/live visual acceptance; all15 scoped CPU commands pass. Actual desktop/touch camera pans retain surrounding facade detail. Failed earlier evidence preserved."
+      "validation": "Independent source/gallery/live visual acceptance; all15 scoped CPU commands pass. Actual desktop/touch camera pans retain surrounding facade detail. Failed earlier evidence preserved.",
+      "hostedVerification": {
+        "publicCommit": "1c492a108d31079b8360241f6954cbe252a6e08a",
+        "hostingRun": "37584807879",
+        "assetSha256": "931e573ff99f3f64cb7fbb18eb9d922f40480edb9d7f23c47083f27adf0bda09",
+        "assetBytes": 57168,
+        "evidenceRepository": "blackmad/map-recall2-source-data",
+        "evidencePath": "models/monk-amsterdam/validation/hosted-release-20261007",
+        "evidenceCommit": "d47d3b8e118d7a7d53980d3b0c4c2ec09b3396a2"
+      }
     },
     {
       "id": "klimhal-amsterdam",
@@ -663,7 +681,7 @@
       "id": "boom-roof-sign-repair",
       "task": "Repair Boom Chicago barrel roof and fit defining facade sign",
       "priority": "high",
-      "status": "verified-awaiting-deployment",
+      "status": "hosted-verified",
       "owner": "root",
       "validation": "Independent source/gallery/live visual acceptance; all15 scoped CPU commands pass. Actual desktop/touch camera pans retain surrounding facade detail. Failed earlier evidence preserved.",
       "modelId": "boom-chicago",
@@ -673,7 +691,16 @@
         "commit": "205d04f0c48c3a651000233510d5f9ac1596edee",
         "path": "models/boom-chicago"
       },
-      "nextAction": "Source/gallery/native, route destination/pin/physical card, exact masks/neighbor retention and fallback verified; publish and verify hosted fingerprints."
+      "nextAction": "Hosted asset fingerprints and native route/pin/physical card/exact masks/resident neighbors verified; preserve evidence and reconcile published owned files into root.",
+      "hostedVerification": {
+        "publicCommit": "1c492a108d31079b8360241f6954cbe252a6e08a",
+        "hostingRun": "37584807879",
+        "assetSha256": "93f24ea15c5e59af567ae4a391dc8deda48d6ec5850442eca769371cf06d53dc",
+        "assetBytes": 50196,
+        "evidenceRepository": "blackmad/map-recall2-source-data",
+        "evidencePath": "models/boom-chicago/validation/hosted-release-20261007",
+        "evidenceCommit": "d47d3b8e118d7a7d53980d3b0c4c2ec09b3396a2"
+      }
     },
     {
       "id": "brakke-window-wall-repair",
@@ -868,9 +895,9 @@
       "id": "pllek",
       "task": "Pllek \u2014 NDSM waterfront venue and container architecture",
       "priority": "high",
-      "status": "verified-awaiting-deployment",
+      "status": "hosted-verified",
       "requestedOn": "2026-10-05",
-      "nextAction": "Source/gallery/native, route destination/pin/physical card, exact masks/neighbor retention and fallback verified; publish and verify hosted fingerprints.",
+      "nextAction": "Hosted asset fingerprints and native route/pin/physical card/exact masks/resident neighbors verified; preserve evidence and reconcile published owned files into root.",
       "modelId": "pllek",
       "evidence": "../../scripts/landmarks/pllek-review.json",
       "sourceArchive": {
@@ -878,7 +905,16 @@
         "commit": "205d04f0c48c3a651000233510d5f9ac1596edee",
         "path": "models/pllek"
       },
-      "validation": "Independent source/gallery/live visual acceptance; all15 scoped CPU commands pass. Actual desktop/touch camera pans retain surrounding facade detail. Failed earlier evidence preserved."
+      "validation": "Independent source/gallery/live visual acceptance; all15 scoped CPU commands pass. Actual desktop/touch camera pans retain surrounding facade detail. Failed earlier evidence preserved.",
+      "hostedVerification": {
+        "publicCommit": "1c492a108d31079b8360241f6954cbe252a6e08a",
+        "hostingRun": "37584807879",
+        "assetSha256": "dc5d3ef35f8254491d878b96b79dc5b05ffb9bde6098c603a81142bfd49cde02",
+        "assetBytes": 91912,
+        "evidenceRepository": "blackmad/map-recall2-source-data",
+        "evidencePath": "models/pllek/validation/hosted-release-20261007",
+        "evidenceCommit": "d47d3b8e118d7a7d53980d3b0c4c2ec09b3396a2"
+      }
     },
     {
       "id": "ndsm-warehouse-complex",
@@ -893,9 +929,9 @@
       "id": "straat-museum",
       "task": "STRAAT Museum \u2014 NDSM warehouse exterior",
       "priority": "high",
-      "status": "verified-awaiting-deployment",
+      "status": "hosted-verified",
       "requestedOn": "2026-10-05",
-      "nextAction": "Source/gallery/native, route destination/pin/physical card, exact masks/neighbor retention and fallback verified; publish and verify hosted fingerprints.",
+      "nextAction": "Hosted asset fingerprints and native route/pin/physical card/exact masks/resident neighbors verified; preserve evidence and reconcile published owned files into root.",
       "modelId": "straat-museum",
       "evidence": "../../scripts/landmarks/straat-museum-review.json",
       "sourceArchive": {
@@ -903,7 +939,16 @@
         "commit": "205d04f0c48c3a651000233510d5f9ac1596edee",
         "path": "models/straat-museum"
       },
-      "validation": "Independent source/gallery/live visual acceptance; all15 scoped CPU commands pass. Actual desktop/touch camera pans retain surrounding facade detail. Failed earlier evidence preserved."
+      "validation": "Independent source/gallery/live visual acceptance; all15 scoped CPU commands pass. Actual desktop/touch camera pans retain surrounding facade detail. Failed earlier evidence preserved.",
+      "hostedVerification": {
+        "publicCommit": "1c492a108d31079b8360241f6954cbe252a6e08a",
+        "hostingRun": "37584807879",
+        "assetSha256": "1208ef710c5cffee59e95e743edc88be96225dabe966353eb739c9623ee8c736",
+        "assetBytes": 149908,
+        "evidenceRepository": "blackmad/map-recall2-source-data",
+        "evidencePath": "models/straat-museum/validation/hosted-release-20261007",
+        "evidenceCommit": "d47d3b8e118d7a7d53980d3b0c4c2ec09b3396a2"
+      }
     },
     {
       "id": "former-nieuw-dakota",
@@ -917,9 +962,9 @@
       "id": "treehouse-ndsm",
       "task": "Treehouse NDSM \u2014 studios and distinctive compound",
       "priority": "high",
-      "status": "verified-awaiting-deployment",
+      "status": "hosted-verified",
       "requestedOn": "2026-10-05",
-      "nextAction": "Source/gallery/native, route destination/pin/physical card, exact masks/neighbor retention and fallback verified; publish and verify hosted fingerprints.",
+      "nextAction": "Hosted asset fingerprints and native route/pin/physical card/exact masks/resident neighbors verified; preserve evidence and reconcile published owned files into root.",
       "modelId": "treehouse-ndsm",
       "evidence": "../../scripts/landmarks/treehouse-ndsm-review.json",
       "sourceArchive": {
@@ -927,7 +972,16 @@
         "commit": "205d04f0c48c3a651000233510d5f9ac1596edee",
         "path": "models/treehouse-ndsm"
       },
-      "validation": "Independent source/gallery/live visual acceptance; all15 scoped CPU commands pass. Actual desktop/touch camera pans retain surrounding facade detail. Failed earlier evidence preserved."
+      "validation": "Independent source/gallery/live visual acceptance; all15 scoped CPU commands pass. Actual desktop/touch camera pans retain surrounding facade detail. Failed earlier evidence preserved.",
+      "hostedVerification": {
+        "publicCommit": "1c492a108d31079b8360241f6954cbe252a6e08a",
+        "hostingRun": "37584807879",
+        "assetSha256": "16a70ba7c3f5215fa6b5228cccb59617724507cc2e3502c55d225982780da435",
+        "assetBytes": 251256,
+        "evidenceRepository": "blackmad/map-recall2-source-data",
+        "evidencePath": "models/treehouse-ndsm/validation/hosted-release-20261007",
+        "evidenceCommit": "d47d3b8e118d7a7d53980d3b0c4c2ec09b3396a2"
+      }
     },
     {
       "id": "de-gooyer-windmill",
@@ -967,9 +1021,9 @@
       "id": "centrale-markthal",
       "task": "Centrale Markthal \u2014 Food Center Amsterdam",
       "priority": "high",
-      "status": "verified-awaiting-deployment",
+      "status": "hosted-verified",
       "requestedOn": "2026-10-05",
-      "nextAction": "Source/gallery/native, route destination/pin/physical card, exact masks/neighbor retention and fallback verified; publish and verify hosted fingerprints.",
+      "nextAction": "Hosted asset fingerprints and native route/pin/physical card/exact masks/resident neighbors verified; preserve evidence and reconcile published owned files into root.",
       "researchLeads": [
         "User previously linked jungle_jim Amsterdam Sketchfab collection including a market-hall reference; inspect matching model/rights rather than assuming a licence or copying its mesh."
       ],
@@ -980,7 +1034,16 @@
         "commit": "205d04f0c48c3a651000233510d5f9ac1596edee",
         "path": "models/centrale-markthal"
       },
-      "validation": "Independent source/gallery/live visual acceptance; all15 scoped CPU commands pass. Actual desktop/touch camera pans retain surrounding facade detail. Failed earlier evidence preserved."
+      "validation": "Independent source/gallery/live visual acceptance; all15 scoped CPU commands pass. Actual desktop/touch camera pans retain surrounding facade detail. Failed earlier evidence preserved.",
+      "hostedVerification": {
+        "publicCommit": "1c492a108d31079b8360241f6954cbe252a6e08a",
+        "hostingRun": "37584807879",
+        "assetSha256": "6f4927d135dfb1ab149ecfbf318653a4544bd63cefa06cd46c7ca6098955f575",
+        "assetBytes": 300692,
+        "evidenceRepository": "blackmad/map-recall2-source-data",
+        "evidencePath": "models/centrale-markthal/validation/hosted-release-20261007",
+        "evidenceCommit": "d47d3b8e118d7a7d53980d3b0c4c2ec09b3396a2"
+      }
     },
     {
       "id": "mediamatic",
@@ -1453,10 +1516,19 @@
       "id": "rasphuispoort",
       "task": "Rasphuispoort \u2014 original gate and exact host opening",
       "priority": "high",
-      "status": "verified-awaiting-deployment",
+      "status": "hosted-verified",
       "modelId": "rasphuispoort",
       "evidence": "../../scripts/landmarks/rasphuispoort-review.json",
-      "nextAction": "Publish verified gate/runtime and verify hosted activation/fallback."
+      "nextAction": "Hosted asset fingerprints and native route/pin/physical card/exact masks/resident neighbors verified; preserve evidence and reconcile published owned files into root.",
+      "hostedVerification": {
+        "publicCommit": "1c492a108d31079b8360241f6954cbe252a6e08a",
+        "hostingRun": "37584807879",
+        "assetSha256": "a5285cde46a71818ffa2861cf95f85263d446a121a286a1cd9a226957720be0b",
+        "assetBytes": 61168,
+        "evidenceRepository": "blackmad/map-recall2-source-data",
+        "evidencePath": "models/rasphuispoort/validation/hosted-release-20261007",
+        "evidenceCommit": "d47d3b8e118d7a7d53980d3b0c4c2ec09b3396a2"
+      }
     },
     {
       "id": "free-texture-material-trial",

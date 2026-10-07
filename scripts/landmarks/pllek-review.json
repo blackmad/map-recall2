@@ -1,6 +1,6 @@
 {
   "id": "pllek",
-  "status": "verified-awaiting-deployment",
+  "status": "hosted-verified",
   "architecturalAssertions": [
     {
       "part": "two waterfront halls",
@@ -249,7 +249,7 @@
     "browserRoofPinpricks": "Small sparse roof pinpricks visible in browser gallery. No decoded coplanar/winding defect established; retained as observation, no speculative topology edit."
   },
   "previousAuthorStatus": "Old final gallery FAILED narrow-hall siding; repaired builder CPU-ready, coordinator reexport/gallery/native pending",
-  "state": "verified-awaiting-deployment",
+  "state": "hosted-verified",
   "visualAccepted": true,
   "gameAccepted": true,
   "finalAcceptance": {
@@ -329,6 +329,28 @@
     "galleryAndNativeEvidence": "artifacts/landmark-release-check/pllek-review",
     "desktopAndTouchPans": "artifacts/landmark-release-check/gameplay-pans-oct7",
     "performanceScope": "Headless same-scene model visible/hidden comparison and actual mouse/emulated-touch camera pans; no physical-mobile or whole-game performance guarantee.",
-    "hostedVerification": "pending deployment"
+    "hostedVerification": "Exact asset bytes and hosted route/pin/physical-card/masks/resident-neighbors verified at 1c492a10; see hostedVerification."
+  },
+  "hostedVerification": {
+    "state": "hosted-verified",
+    "date": "2026-10-07",
+    "deployment": {
+      "sha": "1c492a108d31079b8360241f6954cbe252a6e08a",
+      "short": "1c492a1",
+      "run": "37584807879",
+      "builtAt": "2026-10-07T07:02:56.141Z"
+    },
+    "assetSha256": "dc5d3ef35f8254491d878b96b79dc5b05ffb9bde6098c603a81142bfd49cde02",
+    "assetBytes": 91912,
+    "checks": [
+      "Exact hosted GLB SHA256 and byte length match published asset",
+      "Hosted gallery/default and four angles captured",
+      "Hosted native route destination, pin, meaningful physical card, exact suppression and resident neighbors pass"
+    ],
+    "evidenceRepository": "blackmad/map-recall2-source-data",
+    "evidencePath": "models/pllek/validation/hosted-release-20261007",
+    "visualAcceptance": "Hosted exact bytes/runtime compared with independently accepted local source/native evidence; no separate review of every hosted image claimed.",
+    "performanceScope": "Bounded headless same-scene comparisons; no whole-game or physical-mobile guarantee.",
+    "evidenceCommit": "d47d3b8e118d7a7d53980d3b0c4c2ec09b3396a2"
   }
 }
