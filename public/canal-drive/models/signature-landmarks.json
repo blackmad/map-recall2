@@ -802,8 +802,8 @@
       "bounds": {
         "min": [
           -30.827640533447266,
-          0,
-          -28.61675453186035
+          -1.3732910986163915e-07,
+          -18.91600799560547
         ],
         "max": [
           32.09428024291992,
@@ -823,12 +823,12 @@
       },
       "extent": {
         "widthMetres": 62.92192077636719,
-        "heightMetres": 87,
-        "depthMetres": 43.352142333984375,
-        "depthCoverage": 0.999999985540659
+        "heightMetres": 87.00000013732911,
+        "depthMetres": 33.65139579772949,
+        "depthCoverage": 0.7762337337772733
       },
-      "triangles": 20591,
-      "bytes": 242096,
+      "triangles": 20635,
+      "bytes": 241440,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "bimhuis-in-amsterdam-the-netherlands": {

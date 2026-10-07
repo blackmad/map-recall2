@@ -1,3 +1,13 @@
+## Current scoped review and request checkpoint
+
+Podium Mozaïek and Dorus Theus Brug were explicitly requested and are queued in poi-work-queue.json and the generated backlog. The former Pniëlkerk venue at Bos en Lommerweg191 needs native historic-building research; the bridge needs official identity/number/location confirmation and bridge geometry rather than a building shell. Preserve all prior requests.
+
+Electric Ladyland is hosted-verified on the canonical game at463f304d. Root inspected source front/rear context and touch gameplay pan. The later5402f898 is a read-only unchanged-model compatibility audit, not another browser/performance run. Edumap agrees only on deployment stamps; Canal Drive requests there return Map Quest HTML. Hosted evidence is archived privately at f04e5e019060648a0c997a06da57afbdd2bbcef3, models/electric-ladyland/checkpoints/hosted-463f304d-20261007.
+
+Westerkerk b2efbdd4 courtyard correction is root/independent scoped native accepted, release pending. Unsupported broad north slab/degenerate wall removed and four measured low church roofs retained. One strict source-grid boundary miss remains documented; decoded continuous roof coverage passes. Existing Tours/Pancakes Pand0363100012174413 generic flat roof/circular-gable omission remains a separate queued failure. Native evidence is archived at the same private commit under models/westerkerk/checkpoints/native-courtyard-b2efbdd4-20261007.
+
+Café Kobalt current unpublished candidatef53fb05c has correct primary-source SE Singel gable/NE white Droogbak frontage and clay roof. Final gallery review found overlapping rear-gable ownership causing checker fighting; author is repairing it while native front/POI checks continue. Preserve faileda96 party-wall allocation and f53 rear overlap. No final acceptance. Current live Melkweg is legacya55b1336; native56c06a was an unpublished failed candidate and must not be described as production. Collectie Six source research continues in its durable worktree. Homomonument ground/water and new OCCII facade feedback remain pending.
+
 # Landmark backlog handoff — 7 October
 
 ## Latest durable continuation — October7 evening
@@ -8,7 +18,7 @@ Magna exactsuppressionfix59dab6ae is published/hostedverified; source/acceptedho
 
 CaféKobalt recoveredproductiona96ecaaf,7031tri118392B sourceCPUindependentpass; realOSMnode539179321/exactPand2178170. Redshutters/brownbrick/slateroof corrected after root sourcecomparison, thinrealpanel lettering native. Nativegallery/game/POI/fallback/pans/performance pending. Westerannex b2efbdd4,20635tri241440B sourceCPUscopedpass with strict1/2038micrometreboundarymiss retained;4lowchurchroofs,open courtyard,separateneighbors preserved. Native acceptance pending.
 
-Homomonument mainland-waterreport stillqueued foractualbasemapground diagnosis; intendedeasternwatersideplatformmustremain. Melk currentproduction56c06a remainsnative sharedRabozaalhallcontextHOLD; photographavailability is notblocker, retainedPand2173457 andlegacyStadsschouwburggroundfill needsource-backedcoupledrepair. Unpublished/tmpnativeproof lost is notproof ofacceptance; currentraw/web originals retained forre-review. NewOCCII misalignmentnote063e3e2c remainsopen/unclaimed; earlierfanrepairresolution staysseparate. Latest successfulFirebasepull recovered1openOCCII+1inprogressMelk onthischeckpoint (see durableoverlap-release .cache/canal-feedback). Continue atbatch/before release/30mininterval. Preserveeveryotherqueue/streetrequest and allfailure/sourcearchives.
+Homomonument mainland-waterreport stillqueued foractualbasemapground diagnosis; intendedeasternwatersideplatformmustremain. Melk live committed legacyasset a55b1336 (36,176B); unpublished local native candidate56c06a remains sharedRabozaalhallcontextHOLD; photographavailability is notblocker, retainedPand2173457 andlegacyStadsschouwburggroundfill needsource-backedcoupledrepair. Unpublished/tmpnativeproof lost is notproof ofacceptance; currentraw/web originals retained forre-review. NewOCCII misalignmentnote063e3e2c remainsopen/unclaimed; earlierfanrepairresolution staysseparate. Latest successfulFirebasepull recovered1openOCCII+1inprogressMelk onthischeckpoint (see durableoverlap-release .cache/canal-feedback). Continue atbatch/before release/30mininterval. Preserveeveryotherqueue/streetrequest and allfailure/sourcearchives.
 
 
 This section supersedes the earlier statuses above. The continuous building backlog goal remains active; the current checkpoint does not complete the overall queue.

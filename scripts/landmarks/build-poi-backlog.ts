@@ -18,7 +18,7 @@ const extras=extract.flatMap((f:any)=>{
   if(seen.has(key)||(!f.manualPoi&&km(p,city.center)>4))return[];
   seen.add(key);return[p];
 }).sort((a:any,b:any)=>b.prominence-a.prominence);
-const requests=['Silodam','Embassy of the Free Mind','OLVG West','OLVG Oost','A’DAM Tower','Pontsteiger','REM-eiland','Paradiso','Melkweg','Amsterdam Centraal station complex','RAI Amsterdam','Amstel Hotel','Rembrandt Tower','Breitner Tower','Mondriaan Tower','De Piramides','Valley','Viñoly','The Rock','Symphony','World Trade Center Amsterdam','Westergasfabriek','Zuiveringshal','Machinegebouw','Transformatorhuis','Westergastheater','Blauwe Theehuis','Groot Melkhuis','VondelCS','Vondeltuin','Kinderkookkafé','Beest Boulders','Monk Amsterdam','Het Lab','Beta Boulders','Klimmuur Centraal','Mountain Network Amsterdam','Klimhal Amsterdam','Beest Boulders Het Lab','Amsterdam Sloterdijk station','HNK Amsterdam Sloterdijk','Amsta De Poort'];
+const requests=['Silodam','Embassy of the Free Mind','OLVG West','OLVG Oost','A’DAM Tower','Pontsteiger','REM-eiland','Paradiso','Melkweg','Amsterdam Centraal station complex','RAI Amsterdam','Amstel Hotel','Rembrandt Tower','Breitner Tower','Mondriaan Tower','De Piramides','Valley','Viñoly','The Rock','Symphony','World Trade Center Amsterdam','Westergasfabriek','Zuiveringshal','Machinegebouw','Transformatorhuis','Westergastheater','Blauwe Theehuis','Groot Melkhuis','VondelCS','Vondeltuin','Kinderkookkafé','Beest Boulders','Monk Amsterdam','Het Lab','Beta Boulders','Klimmuur Centraal','Mountain Network Amsterdam','Klimhal Amsterdam','Beest Boulders Het Lab','Amsterdam Sloterdijk station','HNK Amsterdam Sloterdijk','Amsta De Poort','Podium Mozaïek','Dorus Theus Brug'];
 // VondelCS was the AVROTROS-era name of the current IDFA pavilion, not
 // another destination. Cached alias proof: docs/references/vondelcs/alias-coverage.json;
 // https://www.grachtenfestival.nl/locatie/vondelparkpaviljoen (2014–2021).
@@ -80,6 +80,7 @@ for (const spec of MANUAL_LANDMARKS) {
 // A destination can describe a whole district, a complex or a small memorial.
 // Keep its teaching identity while making the asset task explicit for reviewers.
 const treatments:Record<string,{kind:string;note:string}>={
+  'dorus theus brug':{kind:'bridge',note:'Confirm the official bridge identity; model the deck, abutments and open water passage rather than a building shell.'},
   'red light district':{kind:'area',note:'Treat the streets and canals as an area; individual buildings have their own queue entries.'},
   'canal ring area of amsterdam':{kind:'area',note:'Treat the canal ensemble; there is no single building to replace.'},
   'amsterdam':{kind:'area',note:'City-wide identity; choose a specific mapped place before authoring geometry.'},
