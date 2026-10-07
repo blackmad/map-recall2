@@ -1007,15 +1007,54 @@
       "id": "brouwerij-het-ij",
       "task": "Brouwerij \u2019t IJ brewery beside De Gooyer",
       "priority": "normal",
-      "status": "queued",
+      "status": "accepted-awaiting-hosted",
       "requestedOn": "2026-10-05",
-      "nextAction": "Full user-supplied public reference recovered and independently inspected; includes entire brewery. Current operator photos archived and cross-checked. Author original native-scale brewery on separate BAG0363100012169757 after surveyed roof zones/current lower openings verified; preserve windmill/terrace and genuine POI.",
+      "nextAction": "Publish locally and independently accepted original brewery, then root verifies hosted fingerprint/native route/pin/physical card/loaded scope before marking hosted verified.",
       "sourceArchive": {
         "repository": "blackmad/map-recall2-source-data",
-        "commit": "68906c28297c781d0d2b8c8784adde49f2eba399",
+        "commit": "b48b9e9e33a15680e2cccacc02cacae5b2305604",
+        "rawSourceCommit": "b9ecc5f2",
         "path": "models/brouwerij-het-ij"
       },
-      "referenceRecovery": "User model2011/2014 reference GLB with full brewery, current operator photos; reference geometry is not copied into original game asset."
+      "referenceRecovery": "User model2011/2014 reference GLB with full brewery, current operator photos; reference geometry is not copied into original game asset.",
+      "modelId": "brouwerij-het-ij",
+      "evidence": "../../scripts/landmarks/brouwerij-het-ij-review.json",
+      "geometryChecks": {
+        "status": "passed",
+        "triangles": 1839,
+        "bytes": 29732,
+        "sha256": "56cc1a41eb3ddfa660889193490b2209713605270a5c389f5e9e8913369a63ae",
+        "nativeScale": 1,
+        "glazing": "Fractional first-hit main/terrace/annex panes exposed",
+        "roofs": "Small supported upward pavilion roofs;18m thin survey fin rejected"
+      },
+      "nativeChecks": {
+        "status": "accepted",
+        "rootTerminal": 3231,
+        "fallbackTerminal": 75037,
+        "poiId": "n332059860",
+        "destination": true,
+        "geographicPin": true,
+        "physicalSourcedCard": true,
+        "retainedNeighbors": [
+          "de-gooyer:w269052487/BAG9758",
+          "w269052518/BAG9759"
+        ],
+        "fallback": "Target entry availability simulation, not networkfailure"
+      },
+      "nativeHint": {
+        "anchor": [
+          4.92639,
+          52.36674
+        ],
+        "northOffset": 0,
+        "broad": false,
+        "suppression": [
+          "w269052426",
+          "NL.IMBAG.Pand.0363100012169757"
+        ],
+        "reviewPlan": "../../scripts/landmarks/brouwerij-het-ij-review-plan.json"
+      }
     },
     {
       "id": "centrale-markthal",

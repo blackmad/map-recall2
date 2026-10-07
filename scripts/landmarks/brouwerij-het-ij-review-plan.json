@@ -1,0 +1,80 @@
+{
+  "modelId": "brouwerij-het-ij",
+  "reviewBase": "b6ce5f98",
+  "server": "http://127.0.0.1:5209",
+  "productionAsset": {
+    "url": "http://127.0.0.1:5209/canal-drive/models/brouwerij-het-ij.glb",
+    "sha256": "56cc1a41eb3ddfa660889193490b2209713605270a5c389f5e9e8913369a63ae",
+    "triangles": 1839,
+    "bytes": 29732
+  },
+  "gallery": {
+    "url": "http://127.0.0.1:5209/canal-drive/manual-landmarks.html?only=brouwerij-het-ij,de-gooyer",
+    "ready": "window.review.loaded contains both IDs, errors empty, done true",
+    "rotationHook": "entries.find(e=>e.spec.id===\"brouwerij-het-ij\"); set theta/phi then frame(entry), lexical entries/frame accessible in classic script context",
+    "views": [
+      {
+        "theta": 0.79,
+        "phi": 1.32,
+        "source": "Current Funenkade facade: nine upper windows, twin dark hips, pale corbels, current red sign and awning, five-light dark wing"
+      },
+      {
+        "theta": 2.36,
+        "phi": 1.27,
+        "source": "Dark annex short source-supported8m side edge; no upper glazing floats over low wing"
+      },
+      {
+        "theta": 3.93,
+        "phi": 1.27,
+        "source": "Surveyed low-wing setbacks and open notches, rear currentness gap remains explicit"
+      },
+      {
+        "theta": 5.5,
+        "phi": 1.27,
+        "source": "Mill-facing stepped terrace edge and dark-green entrance glazing"
+      }
+    ]
+  },
+  "nativePlacement": "http://127.0.0.1:5209/canal-drive/signature-landmark-demo.html?only=brouwerij-het-ij",
+  "game": "http://127.0.0.1:5209/canal-drive/",
+  "nativeViews": [
+    {
+      "center": [
+        4.92639,
+        52.36674
+      ],
+      "cameraPosition": [
+        4.92666,
+        52.3665
+      ],
+      "direction": "toward northwest; principal street front"
+    },
+    {
+      "center": [
+        4.92639,
+        52.36674
+      ],
+      "cameraPosition": [
+        4.926,
+        52.36693
+      ],
+      "direction": "toward southeast; terrace/mill context"
+    }
+  ],
+  "required": [
+    "Wait current building tile14/8416/5384 residency",
+    "Record brewery GLB loaded true with fingerprint56cc1a41eb3ddfa6",
+    "Verify exact suppression w269052426/BAG9757 across ordinary and pyramidal layers after load only",
+    "Verify De Gooyer loaded original replacement survives, BAG9758/w269052487 remains outside brewery mask",
+    "Verify drawn ordinary neighboring BAG9759/w269052518 remains unchanged",
+    "Toggle brewery off/unavailable, observe fallback9757 restored without rebuilding all pyramidal roofs",
+    "Inspect main pane, dark wing, side roof attachment and corrected sign native scale against current source",
+    "Select genuine n332059860 destination, map pin at[4.9263471,52.3666977], actual pointer useful card linked operator source",
+    "Chosen origin fixed; if destination unreachable, clear failure and no silent substitution",
+    "Root independent/gallery/game comparison before marking accepted"
+  ],
+  "sourceProof": "scripts/landmarks/brouwerij-het-ij-installed-scope.json",
+  "sourceArchiveCommit": "b48b9e9e33a15680e2cccacc02cacae5b2305604",
+  "workerClaim": "All GPU/native/game acceptance pending root; worker used noGPU.",
+  "sourceCommit": "b48b9e9e33a15680e2cccacc02cacae5b2305604"
+}

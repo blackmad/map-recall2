@@ -13070,6 +13070,96 @@
       "triangles": 6573,
       "bytes": 91912,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "brouwerij-het-ij": {
+      "id": "brouwerij-het-ij",
+      "name": "Brouwerij ’t IJ",
+      "landmarkId": "n332059860",
+      "modelUrl": "./models/brouwerij-het-ij.glb",
+      "suppressOsmIds": [
+        "w269052426",
+        "NL.IMBAG.Pand.0363100012169757"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.92639,
+          52.36674
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 29,
+        "widthMetres": 26
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.92639,
+          52.36674
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current exact BAG parent and 3DBAG AHN5 roof zones; native east/south geometry, photo-guided original bathhouse facade and pavilion reconstruction."
+      },
+      "materialOverrides": {
+        "brick": "#655246",
+        "stone": "#c7c4a9",
+        "bronze": "#263b35",
+        "dark": "#303431",
+        "slate": "#434745",
+        "copper": "#92a7a3",
+        "red": "#ad4932",
+        "white": "#e9e8d5",
+        "glass": "#65848b"
+      },
+      "attribution": {
+        "title": "Brouwerij ’t IJ former Funen bathhouse",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.brouwerijhetij.nl/proeflokalen/proeflokaal-de-molen",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original native texture-free surveyed bathhouse with twin roof pavilions, nine upper windows, dark upper annex, current awning and source-supported smooth approximate sign lettering. Public SketchUp inspected as historical reference only, no copied mesh/photo pixels."
+      },
+      "scopeWarning": "Accepted original native bathhouse replaces only w269052426/BAG0363100012169757 after successful model availability. Independent De Gooyer replacement BAG9758/w269052487 and ordinary neighbor BAG9759/w269052518 retained; terrace stays open. Genuine n332059860 manual destination, geographic pin and meaningful physical-click card verified locally. Hosted acceptance pending publication.",
+      "sourceArchive": {
+        "repository": "blackmad/map-recall2-source-data",
+        "path": "models/brouwerij-het-ij",
+        "recoveredSourceCommit": "68906c28",
+        "newNativeSurveyCommit": "b9ecc5f2",
+        "commit": "b48b9e9e33a15680e2cccacc02cacae5b2305604",
+        "rawSourceCommit": "b9ecc5f2",
+        "acceptedCheckpointCommit": "b48b9e9e33a15680e2cccacc02cacae5b2305604"
+      },
+      "bounds": {
+        "min": [
+          -12.08186149597168,
+          -5.7220457705398076e-08,
+          -13.015332221984863
+        ],
+        "max": [
+          13.487669944763184,
+          11.119999885559082,
+          14.744869232177734
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.92639,
+          52.36674
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 27.760201454162598,
+        "heightMetres": 11.11999994277954,
+        "depthMetres": 25.569531440734863,
+        "depthCoverage": 0.9834435169513409
+      },
+      "triangles": 1839,
+      "bytes": 29732,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

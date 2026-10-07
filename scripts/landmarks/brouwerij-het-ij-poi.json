@@ -1,0 +1,30 @@
+{
+  "modelId": "brouwerij-het-ij",
+  "landmarkId": "n332059860",
+  "osmId": "n332059860",
+  "sourceIdentity": "Genuine mapped pub node n332059860 present in click-poi-info.json, promoted through manualPoiCatalog under its real node ID; no pre-existing curated extract entry claimed.",
+  "name": "Brouwerij \u2019t IJ",
+  "center": [
+    52.3666977,
+    4.9263471
+  ],
+  "description": "Brouwerij \u2019t IJ began in 1985 when musician Kaspar Peterson turned the former Funen municipal bathhouse into a brewery. The bathhouse opened in 1911, providing showers for homes without bathrooms. The brewery and its tasting room occupy the separate brick bathhouse beside De Gooyer windmill; the mill itself remains a distinct historic building.",
+  "sourceUrl": "https://www.brouwerijhetij.nl/de-brouwerij",
+  "additionalSources": [
+    "https://www.amsterdam.nl/nieuws/achtergrond/gemeentebadhuis/",
+    "https://www.brouwerijhetij.nl/proeflokalen/proeflokaal-de-molen"
+  ],
+  "preferDescription": true,
+  "locationNote": "Pin uses genuine pub node in the bathhouse. No route destination override claimed; coordinator must check route reachability and keep explicit selected identity on failure. Terrace/northwest entrance is photo supported but no precise entrance-node route authority established.",
+  "supplementalFactRecord": {
+    "modelId": "brouwerij-het-ij",
+    "name": "Brouwerij \u2019t IJ",
+    "center": [
+      52.3666977,
+      4.9263471
+    ],
+    "description": "Brouwerij \u2019t IJ began in 1985 when musician Kaspar Peterson turned the former Funen municipal bathhouse into a brewery. The bathhouse opened in 1911, providing showers for homes without bathrooms. The brewery and its tasting room occupy the separate brick bathhouse beside De Gooyer windmill; the mill itself remains a distinct historic building.",
+    "sourceUrl": "https://www.brouwerijhetij.nl/de-brouwerij",
+    "preferDescription": true
+  }
+}

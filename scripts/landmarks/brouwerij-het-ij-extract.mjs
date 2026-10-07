@@ -1,0 +1,14 @@
+import fs from 'node:fs';import path from 'node:path';import proj4 from 'proj4';
+const sourceRepo=process.env.LANDMARK_SOURCE_REPO??path.resolve('../map-recall2-source-data');
+const rd='+proj=sterea +lat_0=52.15616055555555 +lon_0=5.38763888888889 +k=0.9999079 +x_0=155000 +y_0=463000 +ellps=bessel +towgs84=565.4171,50.3319,465.5524,-0.398957,0.343988,-1.8774,4.0725 +units=m +no_defs';
+const original=JSON.parse(fs.readFileSync(path.join(sourceRepo,'models/brouwerij-het-ij/raw/2026-10-07-native-survey/3dbag.json')));
+const f=original.feature,t=original.metadata.transform,world=f.vertices.map(v=>v.map((p,i)=>p*t.scale[i]+t.translate[i]));
+const anchor=[4.92639,52.36674],anchorRd=proj4('EPSG:4326',rd,anchor), ground=1.871000051498413;
+const convert=p=>{const ll=proj4(rd,'EPSG:4326',p.slice(0,2));return[(ll[0]-anchor[0])*111320*Math.cos(anchor[1]*Math.PI/180),p[2]-ground,(anchor[1]-ll[1])*111320]};
+const parent=f.CityObjects['NL.IMBAG.Pand.0363100012169757'],g=f.CityObjects['NL.IMBAG.Pand.0363100012169757-0'].geometry.find(g=>g.lod==='2.2');
+const roofRegions=[];for(let i=0;i<g.boundaries[0].length;i++)if(g.semantics.surfaces[g.semantics.values[0][i]].type==='RoofSurface')roofRegions.push({index:i,rings:g.boundaries[0][i].map(r=>r.map(k=>convert(world[k])))});
+const old=JSON.parse(fs.readFileSync(path.join(sourceRepo,'models/brouwerij-t-ij/files/brouwerij-t-ij-footprints.json')));
+const outline=old.parent.geometry.coordinates.map(r=>r.map(p=>[(p[0]-anchor[0])*111320*Math.cos(anchor[1]*Math.PI/180),(anchor[1]-p[1])*111320]));
+const result={modelId:'brouwerij-het-ij',anchor,anchorRd,groundNap:ground,outline,parent:old.parent,mustRetain:old.mustRetain,surveyRoofRegions:roofRegions,coordinateConvention:'X east, Z south, Y relative to local ground1.871mNAP; RD vertices converted through WGS84 using same east/south convention as native building placement',sources:[{url:'https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169757',archivePath:'models/brouwerij-het-ij/raw/2026-10-07-native-survey/3dbag.json',retrievedAt:'2026-10-07',status:200}],heightPolicy:'Photo-cross-checked principal eaves approx8m and pavilion ridges approx10.5m; survey roof90 is18.1m thin fin overlapping mill swept area, rejected as whole building height; irregular mill-side roof84 is not used as a blanket crest plane',sourceArchive:{repository:'blackmad/map-recall2-source-data',modelPath:'models/brouwerij-het-ij',commit:'b48b9e9e33a15680e2cccacc02cacae5b2305604',rawSourceCommit:'b9ecc5f2',newSurveyCommit:'b9ecc5f2'}};
+fs.writeFileSync(new URL('./brouwerij-het-ij-footprints.json',import.meta.url),JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify({anchor,outline:outline[0].map((p,i)=>[i,...p.map(x=>+x.toFixed(2))]),roofs:roofRegions.map(r=>({index:r.index,bounds:[Math.min(...r.rings.flat().map(p=>p[1])),Math.max(...r.rings.flat().map(p=>p[1]))]}))}));

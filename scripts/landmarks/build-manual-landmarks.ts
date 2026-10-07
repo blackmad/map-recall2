@@ -7,6 +7,7 @@ import {buildMonkAmsterdam} from './monk-amsterdam-builder';
 import {buildPllek} from './pllek-builder';
 import {buildNieuwDakota} from './nieuw-dakota-builder';
 import {buildDeGooyer} from './de-gooyer-builder';
+import {buildBrouwerijHetIj} from './brouwerij-het-ij-builder';
 import {buildRaiAmsterdamComplex} from './rai-amsterdam-complex-builder';
 import {buildPulitzerAmsterdam} from './pulitzer-amsterdam-builder';
 import {buildTheRock} from './the-rock-builder';
@@ -375,6 +376,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='rem-eiland')buildRemEiland(w,d,helpers);
     else if(id==='midwest')buildMidwest(w,d,helpers);
     else if(id==='de-gooyer')buildDeGooyer(w,d,helpers);
+    else if(id==='brouwerij-het-ij')buildBrouwerijHetIj(w,d,helpers);
     else if(id==='nieuw-dakota')buildNieuwDakota(w,d,helpers);
     else if(id==='pllek')buildPllek(w,d,helpers);
     else if(id==='monk-amsterdam')buildMonkAmsterdam(w,d,helpers);
