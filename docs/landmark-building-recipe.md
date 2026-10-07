@@ -21,6 +21,8 @@ Save source footprints and their provenance alongside the builder. Keep source I
 
 Use primary architectural, operator, heritage or municipal references. Obtain a clear principal facade and roof view, plus an opposite/context view when needed. Identify the few features that distinguish the building: silhouette, roof profile, tower, entrance, window rhythm, materials and open spaces.
 
+Before the first export, cross-check exposed facade openings across the cached dated views. Record a visible minimum separately from a complete count: a clearer partial view must not delete an opening seen elsewhere unless a current alteration is supported. Match openings by their projected wall positions so distinct openings are not mistaken for the same one.
+
 Use actual dimensions and survey data where available. OSM/BAG/AHN/3DBAG each describe different things: equipment maxima are not whole-building heights; a fitted roof can omit a thin spire or open crane. Record uncertainty instead of inventing precision. A historical construction date may not date every present wing.
 
 Reuse stored research first. Browse only for missing evidence or changed conditions. Reference images guide original reconstruction; do not import their pixels or third-party geometry into an asset attributed as original.
