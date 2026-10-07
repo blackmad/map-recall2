@@ -1,6 +1,6 @@
 {
   "modelId": "vinoly",
-  "status": "current-e25-source-and-game-evidence-complete-bounded-independent-review-root-release-pending",
+  "status": "hosted-verified-bounded-acceptance-complete",
   "draftSha256": "e25e62032c28211db0729dec875b2d783fe8a9d37a34e78d61ae729ed30cd7e1",
   "triangles": 22942,
   "bytes": 322440,
@@ -44,9 +44,7 @@
     "reason": "Per-bay floor bars exceededbudget; consolidated same visible floor rhythm."
   },
   "pending": [
-    "root final actual-source/native visual acceptance",
-    "root integration into current publish tree and route smoke/release",
-    "concealed approximately18m terrace transit/glass-covered patio remain unlocated; no complete exterior-path/patio acceptance"
+    "concealed approximately 18m terrace transit/glass-covered patio remain unlocated; no complete exterior-path/patio acceptance"
   ],
   "spiralRepair": {
     "date": "2026-10-06",
@@ -55,7 +53,7 @@
     "geometryCheck": "Actual decoded concrete floor support at5 fractions of every flight; adjacent flight native corner/elevation joins; existing pane/recess/roof/budget checks retained.",
     "sourceComparison": "Viewed original sketch/front/side/current-context/current-front files; current archive closure is private commit fa73c85693429a169df717b11b6b5cbb9cd97507. Lower north direction and upper north opposite rise direction preserved. Concealed/oblique endpoints are approximate; no drawings establish exact rear terrace link.",
     "unresolved": "Same-height lowerNE62.2\u2192upperSE62.2 terrace transit is unmodeled because a matched roof plan/walkable alignment is absent. No claimed complete continuous exterior path or patio/open-space acceptance.",
-    "acceptance": "Current selective export and decoded geometry passed; current GPU/native/card/neighbor/performance acceptance pending.",
+    "acceptance": "Current exact e25 decoded geometry, independently reviewed source/gallery/north/south/diagnostic street-eye and root native/runtime acceptance complete within recorded limits; hosted gallery/neutral-front and POI integration verified.",
     "authoredChecks": {
       "command": "node --import tsx scripts/check-vinoly-geometry.ts --authored",
       "triangles": 22942,
@@ -159,6 +157,35 @@
     "loadedFingerprint": "e25e62032c28211d",
     "nativeProof": "artifacts/vinoly-review/placement-proof.json",
     "rootVisual": "gallery/source and true north/south/diagnosticstreet door accepted; integration neutralfront inspected",
-    "state": "public commit/deployment pending"
+    "state": "published 9a0b07a8e2a9f3fa20f74a37079dd817a3a26c9f; Firebase deploy 37600949181 success; exact hosted bytes and bounded actual gallery/game checks verified"
+  },
+  "hostedReview": {
+    "date": "2026-10-07",
+    "publicCommit": "9a0b07a8e2a9f3fa20f74a37079dd817a3a26c9f",
+    "firebaseDeployRun": 37600949181,
+    "firebaseState": "SUCCESS",
+    "sha256": "e25e62032c28211db0729dec875b2d783fe8a9d37a34e78d61ae729ed30cd7e1",
+    "bytes": 322440,
+    "fingerprint": "e25e62032c28211d",
+    "rootVisual": "Hosted gallery and neutral-front inspected and accepted by root",
+    "actualChecks": "Selected route destination, native map pin, physical meaningful sourced card, six suppressed exact aliases and two resident drawable ordinary neighbors passed. Scale1 and surveyed native placement.",
+    "privateArchive": {
+      "repository": "blackmad/map-recall2-source-data",
+      "commit": "e2a04e38",
+      "path": "models/vinoly/validation/hosted-current-e25e6203-20261007",
+      "state": "pushed before public metadata commit; 14 files checksummed and 95 prior accepted dependencies plus exact mesh verified"
+    },
+    "limitations": [
+      "Hosted live-rear bearing180 is the same north side; actual separate south acceptance is local archived bearing22 evidence.",
+      "Hosted fallback not rerun; local actual aborted asset request remains accepted fallback proof.",
+      "Diagnostic maxPitch89 is temporary, shipping default remains60; source pose approximate.",
+      "Concealed18m transit remains unverified; target independent pyramids absent in this scene.",
+      "Hosted model-visible/hidden scene timing keeps suppression masks fixed:60-frame samples median16.5\u201316.6ms,p9518.3\u201318.8ms; display-refresh limited and not standalone GPU or restored fallback timing."
+    ],
+    "ciAtCloseout": {
+      "run": 37600949385,
+      "bootAndCanalCheck": "SUCCESS",
+      "fullE2E": "in-progress at root handoff; no all-tests-pass assertion"
+    }
   }
 }
