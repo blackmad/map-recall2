@@ -529,7 +529,10 @@
       "id": "electric-ladyland",
       "task": "Electric Ladyland: research identifiable exterior before model",
       "priority": "normal",
-      "status": "queued"
+      "status": "scope-researched-reference-held",
+      "scopeResearch": "docs/references/electric-ladyland/native-scope-checkpoint.json",
+      "sourceCommit": "706b8a3ca72c330b1de1a874563c7c3f77e45389",
+      "nextAction": "Acquire current facade/roof originals, exact address join and semantic roof measurements for the two register-linked parents before original geometry; preserve museum occupancy at number5 and genuine POI identity."
     },
     {
       "id": "legacy-imports",
