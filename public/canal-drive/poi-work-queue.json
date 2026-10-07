@@ -1682,7 +1682,7 @@
       "id": "afrikahuis-original",
       "task": "Afrikahuis \u2014 original native landmark",
       "priority": "high",
-      "status": "local-reviewed-release-pending",
+      "status": "hosted-geometry-reviewed-source-link-fix-pending",
       "owner": "root",
       "modelId": "afrikahuis",
       "landmarkId": "extract_landmarks_1448512409",
@@ -1690,7 +1690,9 @@
       "acceptedSourceCommit": "676470caf3bc2a10d2eda0d3bf9da87600602a52",
       "assetSHA256": "09ff3adba973233b03ab2f7a1dddd4b6a21b85e9fd603658c66273c1042a0fc7",
       "validation": "Root and fresh independent source/gallery/native review passed for raised octagonal church, projecting glass stairs, open forecourt and repaired presbytery entrance. Genuine chosen route, exact geographic pin and D-visible label, physical sourced card, exact masks, four resident neighbors, actual missing-GLB fallback and stationary-rider desktop/touch-emulated camera pans passed. Controlled installed Chrome/Metal desktop samples show no measurable model penalty at 16.7 ms frame resolution. Failed CPU/native frames, software timing, invalid paused pan and existing baseline MapLibre label-toggle warnings remain archived.",
-      "nextAction": "Commit and push scoped model/integration after accepted private archive; verify deployed current bytes and actual gallery/game POI surfaces. Hidden rear source gaps, photo-guided support/step dimensions and register/Beeldbank access gaps remain explicit; no physical-mobile or full-game performance claim."
+      "nextAction": "Deploy canonical source URL correction and repeat the affected physical card click. Fresh hosted exact model bytes, gallery/native views, route/pin/visible running label, four neighbors and exact masks passed. Retain baseline label-toggle warnings and source/physical-mobile/performance limits.",
+      "publicModelCommit": "1205afb0a1b05d881bca603f124c5bdf3cc0b517",
+      "sourceUrlValidationCommit": "7e049c2118edcbeaee5c40a6a1a768b7b7055af1"
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"
