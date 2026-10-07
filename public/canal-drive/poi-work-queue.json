@@ -1554,7 +1554,7 @@
     {
       "id": "canal-belt-overnight-building-treatments",
       "task": "Continuously improve warehouse conversions and modern blocks inside the canal belt until morning",
-      "status": "reviewed-release-pending",
+      "status": "verified",
       "priority": "high",
       "owner": "root",
       "startedAt": "2026-10-06T21:08:31.877748+00:00",
@@ -1570,7 +1570,7 @@
         "NL.IMBAG.Pand.0363100012169587"
       ],
       "handoff": "docs/performance/2026-10-06/canal-belt-overnight-handoff.md",
-      "nextAction": "Publish final accepted trio, verify hosted fingerprints/gallery and update handoff; loading319/128ms remains a separate measured follow-up.",
+      "nextAction": "Ten-building scope complete; next bounded follow-up is ordinary-building-loading-task-profile.",
       "acceptedModels": [
         "NL.IMBAG.Pand.0363100012177576",
         "NL.IMBAG.Pand.0363100012177571",
@@ -1583,10 +1583,12 @@
         "NL.IMBAG.Pand.0363100012176271",
         "NL.IMBAG.Pand.0363100012176244"
       ],
-      "notes": "Five central source-specific building treatments reviewed; next pair held for rooftop interpretation and three more source-ready. Continue today with periodic commits/pushes; native spaces and neighboring windows/doors retained. Failed evidence and source correction history archived before model commits.",
+      "notes": "Ten central canal-belt treatments independently accepted in source/gallery and actual desktop/touch-emulated game views, archived before publication, and hosted-verified. Native spaces and neighboring windows/doors retained. Failed evidence preserved. Loading pauses of 319/128 ms remain unresolved in a separate profiling task.",
       "remainingModels": [],
       "resumedOn": "2026-10-07",
-      "sourceCommit": "8efa7eef24d4f47a7460c5f17fa532388e7afe40"
+      "sourceCommit": "8efa7eef24d4f47a7460c5f17fa532388e7afe40",
+      "publicCommit": "278e989c4f16158c6126522913db7fa30ff7a63e",
+      "completedAt": "2026-10-07T10:15:41.597122+00:00"
     },
     {
       "id": "rasphuispoort",

@@ -1,6 +1,6 @@
 # Canal-belt ordinary buildings: result and handoff
 
-Updated 2026-10-07. Ten additional source-specific warehouse/modern treatments are accepted in the resumed canal-belt pass. The accompanying final release brings the ordinary gallery to 20, preserving the earlier ten port-area models. No workers remain building these ten. This document and the scoped work inventory replace the old checkpoint chronology; failed evidence is preserved.
+Updated 2026-10-07. Ten additional source-specific warehouse/modern treatments are accepted in the resumed canal-belt pass. Verified release `278e989c` brings the ordinary gallery to 20, preserving the earlier ten port-area models. No workers remain building these ten. This document and the scoped work inventory replace the old checkpoint chronology; failed evidence is preserved.
 
 ## Demos
 
@@ -99,7 +99,7 @@ Final-trio pack326payloads/106.4MB and prior aerial/current-side packs109/20payl
 
 ## Next steps and feedback
 
-1. Complete final accompanying release/hosted hash and20-card feedback checks, then update release state; ten-building architecture scope is complete only after that publication check.
+1. The ten-building architecture scope is complete: release `278e989c` deployed successfully; hosted 20-card desktop/touch-emulated loading, screenshot-feedback dialog/filter, and final three GLB hashes/byte counts pass. No feedback note was submitted during testing. Continue with the bounded loading-task profile below.
 2. Profile remaining loading pauses with a bounded Chrome trace; separate tile/road/surface work, shader compilation and model texture upload before optimizing. Retain ordinary window/door identity when panning away from the rider.
 3. For future central candidates, use short fresh source/build/review handoffs and the same native/source/critical-trait gates. Box-like geometry is useful screening, not acceptance. Keep full review for mapped POIs, raised/detailed structures and requested landmarks; no ordinary background asset becomes a fake destination.
 4. A shared bowed-window helper or source-supported relief treatment could improve repeated historic office bays efficiently. Exact tiny ornament is secondary to the observed frontage composition.
