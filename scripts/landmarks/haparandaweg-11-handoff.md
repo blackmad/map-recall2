@@ -1,3 +1,9 @@
+## Current production status — publication recovered
+
+Exact accepted production is published in public commit `9acac969ed7b97a17ab5bd3ffd8a8efc76b552bb`. The current production budget and hash are in research `productionAcceptance`; earlier CPU budgets and pending/HOLD statements below belong to preserved historical drafts. Root and fresh independent source/gallery/native joint reviews and stationary desktop/touch-emulated pans accepted the pair. Private accepted evidence `e01d259d564d87933995a5e6e51e8dc601312e9c` is pushed at `models/haparandaweg-11/checkpoints/accepted-d7277ae1`. Fresh canonical-host gallery/native/fallback/ordinary-click and joint desktop/touch-emulated gameplay-pan evidence is root scoped accepted. Hosted source pack is pushed at `59aed5b370ab6a804dc4ee88622582e873774463`, `models/haparandaweg-11/checkpoints/hosted-d7277ae1`; live deployment `c5ca253700360cab6e2d34394ff9b60cd7c7d490` / Firebase run37666033260.
+
+Lower details remain approximate and hidden rear unknown. Preserve H11 two millimetric roof-boundary misses, H13 deliberate door-handle ray hits, failed three/four-window drafts and touch-north roof-only framing. Touch-east views carry surrounding facade evidence; no physical-mobile or broad performance claim.
+
 Haparandaweg 11 revised source inventory, 2026-10-07
 
 Candidate SHA256 `b611af87dcc001ca84d663372e77472c2412adfd79749a774dfdaf0bafb1cb8a`, 1,380 triangles, 30,368 bytes, texture-free. Original native metre geometry uses BuildingTools, openTopPrism and upwardRoofPlane. Worktree `/tmp/map-recall2-haparanda-11-oct7`, base `63ee3da671902635ba5b8467c871d232b0236a88`. Owned `scripts/landmarks/haparandaweg-11-*` and ignored own artifacts only. No shared catalogue, dispatcher, git index, GPU, private archive or cloud mutation; no draft commit.

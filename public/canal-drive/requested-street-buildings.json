@@ -2043,7 +2043,7 @@
           },
           "constructionYear": 2002,
           "bagStatus": "Pand in gebruik",
-          "status": "local-production-reviewed-hosted-pending",
+          "status": "hosted-model-reviewed",
           "modelIds": [
             "haparandaweg-11"
           ],
@@ -2054,7 +2054,10 @@
           "acceptedArchivePublication": "verified-remote-main",
           "assetSHA256": "d7277ae156f938942f4cbf573294fc3ee5e85bdc43fe796b50cbb751c4562bee",
           "acceptedSourceArchiveCommit": "e01d259d564d87933995a5e6e51e8dc601312e9c",
-          "sourceRemoteVerifiedCommit": "16d644906c974150de90690eca7a8918e154cd6c"
+          "sourceRemoteVerifiedCommit": "16d644906c974150de90690eca7a8918e154cd6c",
+          "publicModelCommit": "9acac969ed7b97a17ab5bd3ffd8a8efc76b552bb",
+          "hostedSourceArchiveCommit": "59aed5b370ab6a804dc4ee88622582e873774463",
+          "hostedDeploymentRun": 37666033260
         },
         {
           "bagId": "0363100012104964",
@@ -2108,7 +2111,7 @@
           },
           "constructionYear": 2002,
           "bagStatus": "Pand in gebruik",
-          "status": "local-production-reviewed-hosted-pending",
+          "status": "hosted-model-reviewed",
           "modelIds": [
             "haparandaweg-13"
           ],
@@ -2119,7 +2122,10 @@
           "acceptedArchivePublication": "verified-remote-main",
           "assetSHA256": "f0257cb44f19da99e9557b8b1c2207607da809904d2fec38af4c91392ddb1dd0",
           "acceptedSourceArchiveCommit": "e01d259d564d87933995a5e6e51e8dc601312e9c",
-          "sourceRemoteVerifiedCommit": "16d644906c974150de90690eca7a8918e154cd6c"
+          "sourceRemoteVerifiedCommit": "16d644906c974150de90690eca7a8918e154cd6c",
+          "publicModelCommit": "9acac969ed7b97a17ab5bd3ffd8a8efc76b552bb",
+          "hostedSourceArchiveCommit": "59aed5b370ab6a804dc4ee88622582e873774463",
+          "hostedDeploymentRun": 37666033260
         },
         {
           "bagId": "0363100012071094",

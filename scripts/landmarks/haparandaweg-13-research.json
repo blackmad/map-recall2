@@ -513,12 +513,32 @@
     "independentReport": "artifacts/haparandaweg-11-13-joint-independent/review.md",
     "panReport": "artifacts/haparandaweg-11-13-joint-pan/pan-performance-report.json",
     "validation": "Root and fresh independent source/gallery/native joint recognition, exact masks, retained neighbors, ordinary physical click and fresh actual failed-download fallback passed. Actual running stationary desktop and touch-emulated camera pans retain surrounding windows and doors. Each view has90 frame intervals median16.7ms/p9516.7\u201316.8ms on Metal M4 Pro, bounded observation only. No invented POI destination/card/highlight. Earlier source/geometry failures remain preserved.",
-    "limits": "Lower aperture/entrance details approximate; unseen rear unknown. Millimetric boundary probe misses and intentional handle occlusions retained. No physical-phone or performance-improvement claim."
+    "limits": "Lower aperture/entrance details approximate; unseen rear unknown. Millimetric boundary probe misses and intentional handle occlusions retained. No physical-phone or performance-improvement claim.",
+    "acceptedSourceCommit": "e01d259d564d87933995a5e6e51e8dc601312e9c",
+    "acceptedSourcePath": "models/haparandaweg-13/checkpoints/accepted-f0257cb4"
   },
   "acceptedSourceArchive": {
     "commit": "e01d259d564d87933995a5e6e51e8dc601312e9c",
     "path": "models/haparandaweg-13/checkpoints/accepted-f0257cb4",
     "remoteVerifiedAtCommit": "16d644906c974150de90690eca7a8918e154cd6c",
     "status": "published"
+  },
+  "hostedAcceptance": {
+    "status": "root-scoped-canonical-firebase-host-accepted",
+    "publicModelCommit": "9acac969ed7b97a17ab5bd3ffd8a8efc76b552bb",
+    "deployment": {
+      "sha": "c5ca253700360cab6e2d34394ff9b60cd7c7d490",
+      "short": "c5ca253",
+      "run": "37666033260",
+      "builtAt": "2026-10-07T18:21:49.449Z"
+    },
+    "assetSHA256": "f0257cb44f19da99e9557b8b1c2207607da809904d2fec38af4c91392ddb1dd0",
+    "sourceArchiveCommit": "59aed5b370ab6a804dc4ee88622582e873774463",
+    "sourceArchivePath": "models/haparandaweg-13/checkpoints/hosted-f0257cb4",
+    "report": "artifacts/haparandaweg-13-hosted-f0257cb4/report.json",
+    "rootReview": "artifacts/haparandaweg-13-hosted-f0257cb4/root-review.md",
+    "panReport": "artifacts/haparandaweg-11-13-hosted-pan/pan-performance-report.json",
+    "validation": "Fresh gallery/native game browser assets match exact accepted production. Exact masks, retained neighbors, ordinary physical click with no unrelated card/highlight and fresh aborted-download fallback pass. Root inspected galleries/source-facing joint native views/fallback and useful desktop/touch-emulated pans. Six90-frame observations median16.7ms/p95atmost16.8ms; boundedChromeMetalM4Pro only.",
+    "limits": "Lower aperture/entrance details approximate; unseen rear unknown. Millimetric boundary probe misses and intentional handle occlusions retained. No physical-phone or performance-improvement claim. Empty pyramid arrays provide no positive drawing evidence; touch north roof-only limitation retained."
   }
 }
