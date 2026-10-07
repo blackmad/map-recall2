@@ -627,7 +627,7 @@
       "owner": "root",
       "validation": "School and apartment parents passed source, root/fresh independent gallery/native and exact hosted mesh reviews. Apartment load-failure fallback, exact suppression, retained school and 152 resident ordinary neighbors, physical ordinary click without invented card/destination verified on canonical Firebase host. Full constant4m checker486/25 remains failed with independently source-classified external rays; custom domain timed out and is not verified. Local active desktop/emulated-touch pans and bounded Metal timings remain preserved. Remaining14 in-use physical parents and one permit-only parent remain pending/deferred.",
       "sourceCommit": "fc18134851149129315e2c9e539427a628f5de73",
-      "nextAction": "Continue the remaining15 physical parents, preserving the permit-only deferral and genuine school destination. Both accepted assets are deployed at native scale. Apartments remain ordinary assets with no invented POI. Retain failed diagnostics, source approximations, custom-host access failure and device limits.",
+      "nextAction": "Archive/review the Haparandaweg9 candidate, then integrate only after source/root/independent acceptance; remaining14 in-use parents and permit-only deferral retained.",
       "firstParent": {
         "bagId": "0363100012244095",
         "modelId": "haparandaweg-2-4",
@@ -650,6 +650,13 @@
         "publicCommit": "645bad472685cac9f1e3c8f0ef9889dfd5b09578",
         "hostedSourceCommit": "cdbe87c8ed80de55c39dfc29fa2457519ea34a84",
         "hostedDeploymentRun": 37632078933
+      },
+      "thirdParentCandidate": {
+        "bagId": "0363100012122663",
+        "modelId": "haparandaweg-9",
+        "status": "candidate-awaiting-independent-review",
+        "assetSHA256": "b5e64d531df33d825943c0c713af8f0b6b91aff7870f8934ae1ece7def4f8e79",
+        "destinationPolicy": "No invented ordinary-building POI."
       }
     },
     {
@@ -1714,30 +1721,32 @@
       "id": "occii-gable-feedback",
       "task": "OCCII upper gable trim and roundel cutwork",
       "priority": "high",
-      "status": "repair-native-review-in-progress",
+      "status": "local-accepted-release-pending",
       "modelId": "occii",
       "feedbackId": "56aad0df-0be9-478c-812a-e99f9e9d9086",
       "reportedAssetVersion": "99ed270e19f3ac00",
       "requestedOn": "2026-10-07",
-      "nextAction": "Claim fresh Firestore update-time before repair. Clip window-head trim to actual arcade and replace unsupported long red spokes with source-supported bounded roundel cutwork. Preserve submitted screenshot and current operator/register originals in private source pack; gallery/native/independent and hosted verification required before resolution.",
+      "nextAction": "Commit/push scoped OCCII production and verify exact hosted model/gallery/native evidence before conditionally resolving cloud feedback.",
       "candidateSHA256": "daa846481f1d36932a0b64008446f8b0694949a3a27358b6cd14865f0988357b",
       "sourceCommit": "a311883a016366f26d1e81125e4e20a248ea82c4",
-      "validation": "Revised bounded fan passes independent243 width/fraction/oblique first hits; two failed candidates preserved. Actual gallery/native review in progress.",
-      "feedbackStatus": "in-progress"
+      "validation": "Root and fresh independent source/gallery/native repair accepted. All243 exterior fan rays and decoded reported overhang/tripod probes pass; all other material geometry preserved. Actual sourced physicalcard, genuine route/pin, exact masks/two resident neighbors and fresh real download-failure fallback verified. Earlier failed fan candidates retained; rear roof outside scoped front repair. Private accepted evidence pushed first. Hosted verification pending.",
+      "feedbackStatus": "in-progress",
+      "assetSHA256": "daa846481f1d36932a0b64008446f8b0694949a3a27358b6cd14865f0988357b",
+      "acceptedSourceCommit": "cb67adebb70c3c70e28fef91cb64398bd2f0c110"
     },
     {
       "id": "melkweg-roof-crosses-feedback",
       "task": "Melkweg unsupported freestanding pale roof crosses",
       "priority": "high",
-      "status": "repair-native-review-in-progress",
+      "status": "surveyed-rebuild-in-progress-native-hold",
       "modelId": "melkweg",
       "feedbackId": "26b15ccf-5dd2-46e9-abf3-a103dc2ab5d5",
       "reportedAssetVersion": "a55b13361380a702",
       "requestedOn": "2026-10-07",
-      "nextAction": "Claim fresh Firestore update-time before repair. Remove three unsupported pale freestanding roof crosses. Real entrance gable has small pale multi-point stars mounted flat around the oculus/sign; real dark wall tie anchors also appear lower down. Any replacement ornaments must match sourced wall planes and locations. Preserve user evidence and raw sources; native/gallery/independent and hosted checks required before resolution.",
+      "nextAction": "Complete original surveyed whole-parent Melkweg rebuild with source-supported heights/open spaces and neighbors, then full source/independent/gallery/native/hosted verification. Preserve72-triangle gallery candidate and failed legacy scope evidence; do not suppress unmodeled parent parts.",
       "candidateSHA256": "b0168447eb72475d0a39b0cb75f1cd76ed7c2d00128b0770ebba24fd7e2a23af",
-      "sourceCommit": "a311883a016366f26d1e81125e4e20a248ea82c4",
-      "validation": "Three unsupported crosses removed, all131 remaining primitive calls unchanged. Native review exposes pre-existing ordinary BAG0363100012168735 overlay hiding the replacement. Official ownership/scope investigation required before exact alias change; no native acceptance yet.",
+      "sourceCommit": "cb67adebb70c3c70e28fef91cb64398bd2f0c110",
+      "validation": "Three invented freestanding crosses source-confirmed; bounded removal passes source/decoded/gallery but native model is blocked by genuine BAG parent. Official current OSM/BAG proof shows legacy rectangle omits451m\u00b2 and overlaps neighbors151m\u00b2; no alias-only masking approved. Full surveyed native original rebuild active with exact parent and roof-part ownership. Real wall stars are preserved as source-supported future geometry. Source survey archived privately; no public repair or feedback resolution yet.",
       "feedbackStatus": "in-progress"
     }
   ],
