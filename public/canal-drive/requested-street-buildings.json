@@ -1976,10 +1976,14 @@
           },
           "constructionYear": 2002,
           "bagStatus": "Pand in gebruik",
-          "status": "pending-source-review",
-          "modelIds": [],
+          "status": "local-model-reviewed-hosted-pending",
+          "modelIds": [
+            "haparandaweg-9"
+          ],
           "sourceUrl": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/fcc6112d-27b7-5d13-8113-4b696ba88df0?f=json",
-          "resolution": "explicit-official-verblijfsobject-pand-link"
+          "resolution": "explicit-official-verblijfsobject-pand-link",
+          "sourceArchiveCommit": "e8a5653bd166de54478f2bd11eea59ca38fe21d9",
+          "acceptedSourceArchiveCommit": "c563f910f1b0fa08df0e162893129f3dd1a30504"
         },
         {
           "bagId": "0363100012104965",
