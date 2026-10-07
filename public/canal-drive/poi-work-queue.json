@@ -1461,7 +1461,7 @@
       "id": "uva-roeterseiland",
       "task": "UvA Roeterseiland campus \u2014 De Brug and REC B/C/D; verify REC A scope",
       "priority": "high",
-      "status": "three-early-source-geometry-cycles; full-native-acceptance-pending",
+      "status": "draft-cpu-reviewed-native-acceptance-pending",
       "requestedOn": "2026-10-06",
       "requested": true,
       "workflow": "full-landmark",
@@ -1473,11 +1473,14 @@
         "commit": "b97968cc37f549a2172c78518761d56d07635e25",
         "path": "models/uva-roeterseiland"
       },
-      "nextAction": "Source/CPU cycles repair raised40mcanalvoid, double-heightcityroom, entryrecess/supports, widenedbridgeapproach and adjacentglazedpavilion. Root/independent early comparisons retain failed evidence. Finish bounded remaining annex/roof semantic review, then full finalexport/gallery/native sourceviews, exact composite-parent masks, retainedCREA/otherneighbors, chosen route/pin/card/fallback and performance evidence. No source-only spec registered or parent suppressed yet.",
+      "nextAction": "Continue existing original cycle3 CPU draft, preserving failed cycle1/2 evidence: independently review current adjacent pavilion, resolve high roof681 and unpictured low annexes from source evidence; verify exact whole composite BAG0363100012185420 ownership and retain CREA BAG0363100012164972. Sync current raw sources privately before extraction/publication, then export/integrate only after full scope is ready and complete gallery/live-game, open canal, neighbor, destination/pin/card and performance acceptance. Do not register or suppress the incomplete draft.",
       "evidence": "Private original user-campus-request-20261006.png and operator pages under models/uva-roeterseiland",
       "canonicalPoi": "extract_landmarks_596580010",
       "surveyedParent": "NL.IMBAG.Pand.0363100012185420",
-      "retainedCREA": "NL.IMBAG.Pand.0363100012164972"
+      "retainedCREA": "NL.IMBAG.Pand.0363100012164972",
+      "draftEvidence": "scripts/landmarks/uva-roeterseiland-review.json",
+      "draftStateVerifiedOn": "2026-10-07",
+      "draftStateLimit": "Fresh root CPU geometry check passes for 21818 authored triangles. Current compressed-export and GPU acceptance remain pending."
     },
     {
       "id": "wine-guildhall",
