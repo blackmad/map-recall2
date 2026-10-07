@@ -1,0 +1,262 @@
+{
+  "modelId": "uva-roeterseiland",
+  "date": "2026-10-07",
+  "phase": "eighth-cycle-current-north-street-annex",
+  "status": "draft-not-accepted-do-not-register-or-suppress",
+  "builderSha256": "be24daa4afbfb7d328f8a3ef481a69647dce08a837b35dd0856829fbeb3c9733",
+  "sourceArchive": {
+    "path": "models/uva-roeterseiland",
+    "commit": "4d7e01caf1b6765a86a6a69a7a0098c61709315d",
+    "initialCommit": "93d26c6",
+    "previousCommit": "b97968cc37f549a2172c78518761d56d07635e25"
+  },
+  "evidenceDirectory": "artifacts/uva-roeterseiland-massing-20261006",
+  "sourceFacingComparisons": [
+    {
+      "render": "west-canal.png",
+      "reference": "../map-recall2-source-data/models/uva-roeterseiland/raw/399_UvA_Tim_Soar_1_.jpg",
+      "finding": "Raised40m cityroom lintel and five narrow office-window tiers read above canal opening. CPU orthographic view omits perspective/city context, so it does not recreate exact photograph. West facade bronze/graygreen is bounded palette approximation.",
+      "pending": "Fine bay counts/frames, low bank frontage rhythm, exact lower tier and east/west material allocation."
+    },
+    {
+      "render": "east-promenade.png",
+      "reference": "../map-recall2-source-data/models/uva-roeterseiland/raw/403_UvA_Tim_Soar_4_.jpg",
+      "finding": "Double-height glazing directly over exposed underside and narrow office slots reproduce critical source composition. Separate CREA remains absent from authored mesh and must be retained by runtime.",
+      "pending": "Actual CREA neighbor/first-hit occlusion checks require integrated city view; underside elevation and native40m cut need source-calibrated camera/section."
+    },
+    {
+      "render": "native-overview.png",
+      "reference": "../map-recall2-source-data/models/uva-roeterseiland/raw/12968_PRO_UvA_SitePlan.jpg",
+      "finding": "Long bar, separate western A tower and complex low-height north/south annexes follow survey. Distinct tower ribbon bays visible.",
+      "pending": "High A roof681 is modeled only as limited raised roof island, but current visual classification uncertain. Entrance/courtyard assembly still preliminary."
+    },
+    {
+      "render": "north-bank-entry.png",
+      "reference": "../map-recall2-source-data/models/uva-roeterseiland/raw/3437_06042_N104.jpg",
+      "finding": "Finite near-bank CPU perspective now shows deeply inset glazing, pale reveal/soffit, exposed supports, differentiated tower rhythms, timber widening and split stair/ramp. Near-camera triangles are clipped to a plane to exclude opposite-bank foreground from this local station.",
+      "pending": "Exact station alignment/proportions need independent review; generic low right frontage remains simplified. Stair rises and width estimates explicitly approximate."
+    },
+    {
+      "render": "east-crea-approach.png",
+      "reference": "../map-recall2-source-data/models/uva-roeterseiland/raw/403_UvA_Tim_Soar_4_.jpg",
+      "finding": "Retained CREA exact footprint surrogate stands at left; native promenade view sees ribbed underside, glazing and open passage. Surrogate uses median AHN elevation only and is not exported.",
+      "pending": "Live retained-neighbor rendering/clearance still required. Initial stationv22 intersected CREA and was moved to documented actual north promenadev15; no false scene acceptance from a blocked station."
+    },
+    {
+      "render": "north-bank-entry.png",
+      "reference": "../map-recall2-source-data/models/uva-roeterseiland/raw/3437_06042_N104.jpg",
+      "cycle": 3,
+      "finding": "The previouslyblank right-side low pavilion is now exposed curtain glazing on the actual surveyed base708 north corner/east return. This restores the conspicuous glazing beside the pale recessed portal while retaining the independent stair/ramp arrival.",
+      "pending": "Independent review and integrated nativeGLB/game still pending; curtain tier/bay dimensions photo-guided estimates, other annex faces remain unpictured/unresolved."
+    },
+    {
+      "render": "a-pavilion-canal-front.png",
+      "reference": "../map-recall2-source-data/models/uva-roeterseiland/raw/oct7-3438_06042_N105.jpg",
+      "cycle": 4,
+      "finding": "Full surveyed north708curtain frontage and alternating broad/clerestory A ribbon bands are now exposed. Opaque surveyed rooftop enclave is dark charcoal.",
+      "pending": "Independent review; sourcephoto proportions/as-built bay count; nativeGLB/game/neighbors still pending. CPU camera is finite perspective and clips rear-of-camera far north annexes, not altered exported geometry."
+    },
+    {
+      "render": "west-pavilion-street.png",
+      "reference": "../map-recall2-source-data/models/uva-roeterseiland/raw/oct7-pano-west.jpg",
+      "sourceCaptureDate": "2024-12-10T13:20:11Z",
+      "cycle": 5,
+      "finding": "Current weststreet source confirms curtain-glazed long708 return beneath A ribbon tower. Original geometry tracksactualsurveywesternboundaryat eachv.",
+      "pending": "Bay/tier dimensions are bounded photo-guided approximations; framing/perspective/nativecityindependentreview pending."
+    },
+    {
+      "cycle": 6,
+      "render": "b-south-end.png",
+      "reference": "../map-recall2-source-data/models/uva-roeterseiland/raw/oct7-facade-pilot-photo.jpg",
+      "finding": "Operator pilotphoto andsouthB drawing confirmverticalgrid on Bexposed southernend; model addsnativeedgegridaboveforeground8mroof.",
+      "pending": "Exact bay/floor calibration/independentreview; A SOUTHterminal remainsblank, lowannexfaces unresolved."
+    },
+    {
+      "cycle": 8,
+      "render": "north-annex-street.png",
+      "reference": "../map-recall2-source-data/models/uva-roeterseiland/processed/oct7-targeted-northlow-west-perspective.jpg",
+      "rawReference": "raw/oct7-targeted-northlow-west.jpg",
+      "finding": "Native734streetface nowwarmmasonry,groundglass,two broadwindowtiers,tallpaleglassblockgrid,thinclerestory andstraightdarkcap. Sourcepanorama perspectiveprojection removes apparentroofcurve artifact.",
+      "pending": "Independentnewassemblyreview; exactbaycount/panelnativeallocationmediumconfidence; othernorthfaces notobserved."
+    }
+  ],
+  "checks": {
+    "command": "node --import tsx scripts/check-uva-roeterseiland-geometry.ts --render",
+    "result": "pass",
+    "triangles": 37142,
+    "finiteNativeBounds": true,
+    "upwardRoofNormals": true,
+    "canalAndBankVoidRays": true,
+    "firstHitCityroomGlazingBothSides": true,
+    "raisedUndersideRays": true,
+    "northCourtOpenSouthernAtriaRoofed": true,
+    "scopedTypeScript": "pass: tsc --noEmit --skipLibCheck --module esnext --target es2021 --moduleResolution bundler --resolveJsonModule --allowSyntheticDefaultImports builder/check scripts",
+    "insetEntryGlass": "15 first-hit samples: visible glass18.68m behind v20 probe station",
+    "exposedPortalColumns": "2 first-hit support samples8\u201310m forward of station; glass remains behind",
+    "paleSoffit": "upward portal ray sees pale soffit first",
+    "adjacentPavilionFirstHit": "72 fractional north pane probes across6stations at3heights plus18east probes; all pass",
+    "roof681": "top/support ray and opaque dark side first-hit pass",
+    "westPavilionFirstHit": "36 pane fraction probes at6 native stations,3 heights pass",
+    "westBankStairFirstHit": "48 fraction probes; north uses2/18/30/42m; south uses14/18/30/42m. Lower southern2m probe failedagainst genuine9m survey689 and remains preserved, not accepted.",
+    "bSouthEnd": "24 fraction probes over4 native pane stations,3 heights; exposed terminal end above8.9m. Source drawnfamily, actual19m edge controlswidth.",
+    "aFacadeRoofBounds": "all actual north/side ribbon,clerestory,trim geometry starts above pavilion12.2195m and stays >0.4m belowAroof43.5845m; pass",
+    "northStreetAnnexFirstHit": "30 fractionalpaneprobes across5nativebays/3heights +2glassblockprobes allpass; sourceprojection actual63.98m surveyedge, actualmaterial family",
+    "fullRepositoryLint": {
+      "result": "pass: npm run lint underworktreeownfrozenpackage-lock dependencies",
+      "dependencySetup": "Replaced only isolatedworktree rootnode_modules symlink with npm ci --workspaces=false --ignore-scripts --no-audit --no-fund; root node_modules/lock untouched",
+      "priorMismatchedDependencyFailure": "25 untouchedsrc errors whenusingrootlinkeddeps; savedartifacts/uva-roeterseiland-massing-20261006/inherited-full-lint-failure.txt. These vanishedunderlockeddependencies.",
+      "checkpointHook": "Initialunpublishedlocalcheckpointskippedhook; corrected withlockeddependencyinstall/fullnormalgate andnormalhookamend beforehandoff/publication."
+    }
+  },
+  "failedOrLimitedEvidence": [
+    "Cycle1 deep portal failed: original glazing was essentially flush and ground-up survey shell728 flattened the hall; preserved before repair.",
+    "Cycle2 missed photographed right-side curtain-glazed pavilion; preserved cycle2 entry image before scoped base708 north-corner repair.",
+    "Current exposed bar bank faces and A north ribbons now have source-supported rhythm; other low annex facades still lack full source-confirmed identities. Full parent suppression remains withheld.",
+    "Source3439 slot/ribbon allocation to northern patch756 is an inference requiring independent native confirmation.",
+    "Source3438 supports opaque rectangular roof681 enclosure family; exact classification/equipment height remains medium confidence. Survey height retained; no claim of photo-measured roof.",
+    "No compressed export, gallery/live context, pointer/card/route checks or GPU performance evidence.",
+    "Bridge final widths, six stair rises and height/ramp estimates are approximate; proposal sketches are not treated as built dimensions.",
+    "Cycle3 north pavilion only detailed18m corner, leaving observable west frontage blank; preserved before cycle4. Other annex faces remain unresolved.",
+    "Cycle5 source401 southern lowerbank curtain test hit survey689 atv27.2,y2 (3.53m away). Genuine9m annexe retained; southern stair glass limitedabove12.65m. Lowerbank facade unresolved.",
+    "Cycle6 initial Bterminal pane loop used wholeboundingbox33m width includingnorthspur; actual19m southendnativeedge correction preserved.",
+    "Independent cycle6 review FAILED: clerestory43.3\u201343.78/trim43.88 exceeded Aroof43.5845 and low ribbonphaseleft2.78m blankband; equal3.4m pavilion tiers missed shortground/tallupper proportions. Cycle7 sourceguided phase/tiercorrection awaiting re-review."
+  ],
+  "independentReviewer": "Cycle6 failed preserved; cycle7 PASS correctedA/pavilion sourcefamily/proportion CPUonly inindependent-cycle7-review.json. Cycle8 NEW734annex review pending.",
+  "nextCycle": [
+    "Independent bounded current734source/render cycle8 review; freezebuilderSHA above.",
+    "Recordedactualsourcegap: target-specificcurrentstreetcaptures projectAbackinto708pavilion,735eastinto retainedCREA,742northinto foreground734. Keepthese unseen assemblies unresolved andfullparentsuppression withheld.",
+    "Root compressed export/gallery/live/neighbors/performance/POI acceptance follows meaningfullycomplete native composite."
+  ],
+  "preservedFailedEvidence": [
+    "cycle1-builder.ts",
+    "cycle1-review.json",
+    "cycle1-north-bank-entry-failed.png",
+    "cycle1-west-canal.png",
+    "cycle1-east-promenade.png",
+    "cycle1-native-overview.png",
+    "cycle1-geometry-report.json",
+    "cycle2-builder.ts",
+    "cycle2-review.json",
+    "cycle2-north-bank-entry.png",
+    "cycle2-east-crea-approach.png",
+    "cycle2-west-canal.png",
+    "cycle2-east-promenade.png",
+    "cycle2-native-overview.png",
+    "cycle2-geometry-report.json",
+    "cycle3-north-bank-entry.png",
+    "cycle3-native-overview.png",
+    "cycle3-west-canal.png",
+    "cycle3-east-promenade.png",
+    "cycle3-geometry-report.json",
+    "cycle5-stair-lower-failed.json",
+    "cycle6-end-invalid-bounds-failed.json",
+    "cycle6-builder.ts",
+    "cycle6-review.json",
+    "independent-draft-current-review.json"
+  ],
+  "cpuCameras": {
+    "north-bank-entry": {
+      "nativeCampusTarget": [
+        -24.2,
+        34
+      ],
+      "targetHeight": 7,
+      "distance": 22,
+      "elevationRatio": -0.23,
+      "projection": "perspective with near clipping"
+    },
+    "east-crea-approach": {
+      "nativeCampusTarget": [
+        -5.8,
+        15
+      ],
+      "targetHeight": 18,
+      "distance": 58,
+      "elevationRatio": -0.28,
+      "projection": "perspective with near clipping"
+    },
+    "a-pavilion-canal-front": {
+      "nativeCampusTarget": [
+        -60,
+        28
+      ],
+      "targetHeight": 20,
+      "distance": 40,
+      "elevationRatio": -0.52,
+      "projection": "perspective with near clipping; approximate source-facing station"
+    }
+  },
+  "cycle4Corrections": [
+    "Source3438 shows full north canal-facing curtain pavilion; glazing extends native surveyed face rather than just 18m entry corner.",
+    "A facade now contains broad and thin clerestory ribbon per observed floor.",
+    "Roof681 remains a bounded surveyed rooftop enclosure; source3438 supports opaque charcoal family. Perspective obscures setback/base so photograph does not override surveyed 7.6m height."
+  ],
+  "unresolvedFacadeInventory": [
+    {
+      "roof": 742,
+      "height": 39.2,
+      "area": 325,
+      "location": "nativeu-23..4,v-50..-35; northmainbarbankextension",
+      "state": "currentlyblankofficefamilyunpictured; no sourceapproved full-height assembly"
+    },
+    {
+      "roofs": [
+        686,
+        747,
+        755,
+        745,
+        687
+      ],
+      "location": "northwest/northannexinner/rear",
+      "state": "734observedstreetfront nowmodeled; remainingfaces notadmittedbyautomaticpalettetransfer"
+    },
+    {
+      "roof": 735,
+      "height": 8.7,
+      "area": 1237,
+      "location": "nativeu4..42,v4..72; east/southeastlargeannex",
+      "state": "unpictured exteriorfacades remainblank; CREAneighborretained, photographicfeatureassignmentunresolved"
+    },
+    {
+      "roofs": [
+        728,
+        750,
+        689,
+        690
+      ],
+      "location": "southrear/portalbanks",
+      "state": "entryportal observed; rear/courtyard/lowbankotherfacesunresolved"
+    },
+    {
+      "roof": 748,
+      "location": "A southterminal nativev61",
+      "state": "ribbonfamily presentnorth/westsides only; southterminal blank untilsourceconfirmation/independenttransferreview"
+    }
+  ],
+  "cycle7Corrections": {
+    "aRibbonBase": 12.65,
+    "aFloorPitch": 3.85,
+    "aHighestClerestory": [
+      42.35,
+      42.83
+    ],
+    "aHighestTrimTop": 42.93,
+    "aRoof": 43.5845,
+    "opaqueCapMetres": 0.65,
+    "pavilionTiers": [
+      {
+        "base": 0.4,
+        "height": 2.35
+      },
+      {
+        "base": 3.0,
+        "height": 4.25
+      },
+      {
+        "base": 7.5,
+        "height": 4.15
+      }
+    ],
+    "confidence": "photoguided proportions; approximate dimensions, not measuredasbuilt"
+  }
+}

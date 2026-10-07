@@ -1,0 +1,478 @@
+{
+  "anchor": [
+    4.91212,
+    52.36334
+  ],
+  "scale": 1,
+  "faces": [
+    {
+      "roof": 742,
+      "edge": 14,
+      "length": 12.82,
+      "nativeMidpoint": [
+        -15.81,
+        -31.628
+      ],
+      "nativeOutward": [
+        0.29452,
+        0.95565
+      ],
+      "faceCentreWgs84": [
+        4.911887418232216,
+        52.36362411630169
+      ],
+      "sourceDirection": "currentroofouterring; adjoiningroofgeometrymaymakeedgepartywall"
+    },
+    {
+      "roof": 742,
+      "edge": 26,
+      "length": 12.59,
+      "nativeMidpoint": [
+        -31.017,
+        -42.278
+      ],
+      "nativeOutward": [
+        -0.29724,
+        -0.9548
+      ],
+      "faceCentreWgs84": [
+        4.911663712773454,
+        52.36371978644183
+      ],
+      "sourceDirection": "currentroofouterring; adjoiningroofgeometrymaymakeedgepartywall"
+    },
+    {
+      "roof": 735,
+      "edge": 15,
+      "length": 14.64,
+      "nativeMidpoint": [
+        22.804,
+        60.114
+      ],
+      "nativeOutward": [
+        -0.94474,
+        0.32782
+      ],
+      "faceCentreWgs84": [
+        4.912455464160891,
+        52.36279998766353
+      ],
+      "sourceDirection": "currentroofouterring; adjoiningroofgeometrymaymakeedgepartywall"
+    },
+    {
+      "roof": 735,
+      "edge": 29,
+      "length": 24.01,
+      "nativeMidpoint": [
+        49.98,
+        59.301
+      ],
+      "nativeOutward": [
+        0.29782,
+        0.95462
+      ],
+      "faceCentreWgs84": [
+        4.912855234509716,
+        52.362807295424936
+      ],
+      "sourceDirection": "currentroofouterring; adjoiningroofgeometrymaymakeedgepartywall"
+    },
+    {
+      "roof": 735,
+      "edge": 30,
+      "length": 20.59,
+      "nativeMidpoint": [
+        58.371,
+        45.896
+      ],
+      "nativeOutward": [
+        0.95449,
+        -0.29824
+      ],
+      "faceCentreWgs84": [
+        4.912978679262606,
+        52.36292770954639
+      ],
+      "sourceDirection": "currentroofouterring; adjoiningroofgeometrymaymakeedgepartywall"
+    },
+    {
+      "roof": 735,
+      "edge": 31,
+      "length": 21.7,
+      "nativeMidpoint": [
+        44.944,
+        39.307
+      ],
+      "nativeOutward": [
+        -0.29853,
+        -0.9544
+      ],
+      "faceCentreWgs84": [
+        4.912781151476223,
+        52.36298689926971
+      ],
+      "sourceDirection": "currentroofouterring; adjoiningroofgeometrymaymakeedgepartywall"
+    },
+    {
+      "roof": 735,
+      "edge": 32,
+      "length": 31.39,
+      "nativeMidpoint": [
+        29.908,
+        27.564
+      ],
+      "nativeOutward": [
+        0.95453,
+        -0.29812
+      ],
+      "faceCentreWgs84": [
+        4.912559961545406,
+        52.363092392442546
+      ],
+      "sourceDirection": "currentroofouterring; adjoiningroofgeometrymaymakeedgepartywall"
+    },
+    {
+      "roof": 735,
+      "edge": 35,
+      "length": 15.64,
+      "nativeMidpoint": [
+        16.899,
+        14.474
+      ],
+      "nativeOutward": [
+        -0.29805,
+        -0.95455
+      ],
+      "faceCentreWgs84": [
+        4.912368590182676,
+        52.36320998137535
+      ],
+      "sourceDirection": "currentroofouterring; adjoiningroofgeometrymaymakeedgepartywall"
+    },
+    {
+      "roof": 735,
+      "edge": 36,
+      "length": 15.14,
+      "nativeMidpoint": [
+        7.181,
+        9.579
+      ],
+      "nativeOutward": [
+        0.95471,
+        -0.29754
+      ],
+      "faceCentreWgs84": [
+        4.9122256390552,
+        52.36325395370737
+      ],
+      "sourceDirection": "currentroofouterring; adjoiningroofgeometrymaymakeedgepartywall"
+    },
+    {
+      "roof": 735,
+      "edge": 38,
+      "length": 22.96,
+      "nativeMidpoint": [
+        8.267,
+        13.346
+      ],
+      "nativeOutward": [
+        -0.95199,
+        0.30614
+      ],
+      "faceCentreWgs84": [
+        4.91224161486425,
+        52.36322010983385
+      ],
+      "sourceDirection": "currentroofouterring; adjoiningroofgeometrymaymakeedgepartywall"
+    },
+    {
+      "roof": 748,
+      "edge": 12,
+      "length": 14.54,
+      "nativeMidpoint": [
+        -22.685,
+        69.775
+      ],
+      "nativeOutward": [
+        0.2983,
+        0.95447
+      ],
+      "faceCentreWgs84": [
+        4.91178628959565,
+        52.36271320631247
+      ],
+      "sourceDirection": "currentroofouterring; adjoiningroofgeometrymaymakeedgepartywall"
+    },
+    {
+      "roof": 748,
+      "edge": 17,
+      "length": 23.11,
+      "nativeMidpoint": [
+        -20.636,
+        51.24
+      ],
+      "nativeOutward": [
+        0.94875,
+        -0.31602
+      ],
+      "faceCentreWgs84": [
+        4.911816431798912,
+        52.36287970828875
+      ],
+      "sourceDirection": "currentroofouterring; adjoiningroofgeometrymaymakeedgepartywall"
+    },
+    {
+      "roof": 748,
+      "edge": 19,
+      "length": 35.21,
+      "nativeMidpoint": [
+        -41.695,
+        43.663
+      ],
+      "nativeOutward": [
+        -0.30238,
+        -0.95319
+      ],
+      "faceCentreWgs84": [
+        4.91150663202849,
+        52.36294777332648
+      ],
+      "sourceDirection": "currentroofouterring; adjoiningroofgeometrymaymakeedgepartywall"
+    },
+    {
+      "roof": 748,
+      "edge": 26,
+      "length": 20.81,
+      "nativeMidpoint": [
+        -57.116,
+        61.589
+      ],
+      "nativeOutward": [
+        -0.95467,
+        0.29767
+      ],
+      "faceCentreWgs84": [
+        4.911279778482126,
+        52.36278674206525
+      ],
+      "sourceDirection": "currentroofouterring; adjoiningroofgeometrymaymakeedgepartywall"
+    },
+    {
+      "roof": 734,
+      "edge": 11,
+      "length": 63.98,
+      "nativeMidpoint": [
+        -75.948,
+        -32.047
+      ],
+      "nativeOutward": [
+        -0.98363,
+        -0.18021
+      ],
+      "faceCentreWgs84": [
+        4.911002746773084,
+        52.363627880225515
+      ],
+      "sourceDirection": "currentroofouterring; adjoiningroofgeometrymaymakeedgepartywall"
+    },
+    {
+      "roof": 734,
+      "edge": 24,
+      "length": 39.87,
+      "nativeMidpoint": [
+        -65.139,
+        -21.896
+      ],
+      "nativeOutward": [
+        0.98442,
+        0.17585
+      ],
+      "faceCentreWgs84": [
+        4.911161754618402,
+        52.36353669265814
+      ],
+      "sourceDirection": "currentroofouterring; adjoiningroofgeometrymaymakeedgepartywall"
+    },
+    {
+      "roof": 686,
+      "edge": 2,
+      "length": 27.27,
+      "nativeMidpoint": [
+        -44.758,
+        -8.625
+      ],
+      "nativeOutward": [
+        0.22317,
+        0.97478
+      ],
+      "faceCentreWgs84": [
+        4.91146157318584,
+        52.36341748227366
+      ],
+      "sourceDirection": "currentroofouterring; adjoiningroofgeometrymaymakeedgepartywall"
+    },
+    {
+      "roof": 686,
+      "edge": 3,
+      "length": 14.94,
+      "nativeMidpoint": [
+        -35.883,
+        -17.692
+      ],
+      "nativeOutward": [
+        0.80648,
+        -0.59127
+      ],
+      "faceCentreWgs84": [
+        4.911592130557215,
+        52.3634989321479
+      ],
+      "sourceDirection": "currentroofouterring; adjoiningroofgeometrymaymakeedgepartywall"
+    },
+    {
+      "roof": 686,
+      "edge": 5,
+      "length": 25.2,
+      "nativeMidpoint": [
+        -47.729,
+        -33.831
+      ],
+      "nativeOutward": [
+        0.79886,
+        -0.60152
+      ],
+      "faceCentreWgs84": [
+        4.9114178677266445,
+        52.36364391058843
+      ],
+      "sourceDirection": "currentroofouterring; adjoiningroofgeometrymaymakeedgepartywall"
+    },
+    {
+      "roof": 686,
+      "edge": 6,
+      "length": 40.01,
+      "nativeMidpoint": [
+        -58.942,
+        -24.227
+      ],
+      "nativeOutward": [
+        -0.98337,
+        -0.18163
+      ],
+      "faceCentreWgs84": [
+        4.91125292411802,
+        52.363557636783185
+      ],
+      "sourceDirection": "currentroofouterring; adjoiningroofgeometrymaymakeedgepartywall"
+    },
+    {
+      "roof": 747,
+      "edge": 10,
+      "length": 25.2,
+      "nativeMidpoint": [
+        -47.729,
+        -33.831
+      ],
+      "nativeOutward": [
+        -0.79886,
+        0.60152
+      ],
+      "faceCentreWgs84": [
+        4.9114178677266445,
+        52.36364391058843
+      ],
+      "sourceDirection": "currentroofouterring; adjoiningroofgeometrymaymakeedgepartywall"
+    },
+    {
+      "roof": 747,
+      "edge": 31,
+      "length": 12.59,
+      "nativeMidpoint": [
+        -31.017,
+        -42.278
+      ],
+      "nativeOutward": [
+        0.29724,
+        0.9548
+      ],
+      "faceCentreWgs84": [
+        4.911663712773454,
+        52.36371978644183
+      ],
+      "sourceDirection": "currentroofouterring; adjoiningroofgeometrymaymakeedgepartywall"
+    },
+    {
+      "roof": 747,
+      "edge": 37,
+      "length": 16.8,
+      "nativeMidpoint": [
+        -38.242,
+        -56.949
+      ],
+      "nativeOutward": [
+        -0.27477,
+        -0.96151
+      ],
+      "faceCentreWgs84": [
+        4.911557428040137,
+        52.363851582165864
+      ],
+      "sourceDirection": "currentroofouterring; adjoiningroofgeometrymaymakeedgepartywall"
+    },
+    {
+      "roof": 755,
+      "edge": 2,
+      "length": 45.68,
+      "nativeMidpoint": [
+        -40.66,
+        -97.025
+      ],
+      "nativeOutward": [
+        -0.29837,
+        -0.95445
+      ],
+      "faceCentreWgs84": [
+        4.911521857592364,
+        52.3642115848608
+      ],
+      "sourceDirection": "currentroofouterring; adjoiningroofgeometrymaymakeedgepartywall"
+    },
+    {
+      "roof": 755,
+      "edge": 10,
+      "length": 14.56,
+      "nativeMidpoint": [
+        -45.463,
+        -83.278
+      ],
+      "nativeOutward": [
+        0.2989,
+        0.95428
+      ],
+      "faceCentreWgs84": [
+        4.911451202149578,
+        52.36408809402357
+      ],
+      "sourceDirection": "currentroofouterring; adjoiningroofgeometrymaymakeedgepartywall"
+    },
+    {
+      "roof": 755,
+      "edge": 18,
+      "length": 12.13,
+      "nativeMidpoint": [
+        -20.745,
+        -90.878
+      ],
+      "nativeOutward": [
+        0.29858,
+        0.95438
+      ],
+      "faceCentreWgs84": [
+        4.911814828333731,
+        52.36415636567287
+      ],
+      "sourceDirection": "currentroofouterring; adjoiningroofgeometrymaymakeedgepartywall"
+    }
+  ],
+  "policy": "Use outwardhalfplane station andtargetsourceprojection; adjacent/partywallsnotautomaticallyexposed; sourceacquisition is not facadeapproval"
+}

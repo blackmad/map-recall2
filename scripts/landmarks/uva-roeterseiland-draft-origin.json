@@ -1,0 +1,35 @@
+{
+  "base": "8997fa36",
+  "copiedAt": "2026-10-07",
+  "source": "existing untracked root draft; preserved without rebuild",
+  "files": [
+    {
+      "path": "scripts/landmarks/uva-roeterseiland-poi.json",
+      "sha256": "3c6dd3c090c926c5ac6dbedf069213c68c9765e7e85ab98b27b01d4f214d0adc"
+    },
+    {
+      "path": "scripts/landmarks/uva-roeterseiland-builder.ts",
+      "sha256": "07c0b929b0a1fc4a06e734e6c775bbaddaeb8dfa67c60be65f5123a22edb8270"
+    },
+    {
+      "path": "scripts/landmarks/uva-roeterseiland-review.json",
+      "sha256": "5e932688b187a4b71fd38b739e88d19f715d228a03662afe93372df7a9db1905"
+    },
+    {
+      "path": "scripts/landmarks/uva-roeterseiland-footprints.json",
+      "sha256": "a3a8c9b25fa62566ad04ac7547ac6a635d0e89de55a3394a2f24e55bacae8d6c"
+    },
+    {
+      "path": "scripts/landmarks/uva-roeterseiland-spec.json",
+      "sha256": "ca3fac4868d56c652579428481fdfb85c1fa5f0bcc29f5a0c1ce09ce00830e0b"
+    },
+    {
+      "path": "scripts/landmarks/uva-roeterseiland-research.json",
+      "sha256": "ff9a723dd5e6736f89bccf8565b50af2ae0d5bc71912c0321455ba1a20230ed9"
+    },
+    {
+      "path": "scripts/check-uva-roeterseiland-geometry.ts",
+      "sha256": "5d82df4ecba6c4e8346ad70b4415397cb40fe7d68f42501c45d8fe822e5c90f8"
+    }
+  ]
+}

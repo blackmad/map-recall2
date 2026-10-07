@@ -1,0 +1,532 @@
+{
+  "modelId": "uva-roeterseiland",
+  "status": "eighth-native-observed-assembly-cycle; unregistered/unaccepted",
+  "retrievedOn": "2026-10-07",
+  "sourceArchive": {
+    "path": "models/uva-roeterseiland",
+    "commit": "4d7e01caf1b6765a86a6a69a7a0098c61709315d",
+    "initialCommit": "93d26c6",
+    "previousCommit": "b97968cc37f549a2172c78518761d56d07635e25"
+  },
+  "scopeDecision": {
+    "include": "Requested REC A/B/C/D and De Brug within surveyed composite Pand0363100012185420; render full physical parent if exact installed parent is suppressed.",
+    "exclude": "CREA Pand0363100012164972; separate surrounding campus buildings and public water/open lanes.",
+    "uncertainty": "Letter-by-letter internal partition and full composite annex naming remain unresolved; cadastral identity is resolved. Campus destination is broad, model scope is physical parent."
+  },
+  "canonicalPoi": {
+    "landmarkId": "extract_landmarks_596580010",
+    "genuineOsmIdentity": "w596580010",
+    "name": "Roeterseiland (UvA)",
+    "currentCenter": [
+      52.363558,
+      4.915006
+    ],
+    "policy": "Reuse existing university destination; do not create De Brug/REC A/BCD alias destinations."
+  },
+  "sources": [
+    {
+      "file": "raw/address-127.json",
+      "url": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Nieuwe+Achtergracht+127+Amsterdam&fq=type%3Aadres&rows=10",
+      "sha256": "fb7fb7d7f014d6d439199d6c1e98d50fd833c907034257b3fc78c2e022ba874f",
+      "retrievedAt": "2026-10-06T18:29:45.306927+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "raw/address-166.json",
+      "url": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Nieuwe+Achtergracht+166+Amsterdam&fq=type%3Aadres&rows=10",
+      "sha256": "894f320c6ecc700bf6578e4989814fa6924b097f62d68f7d16254cfb3733045d",
+      "retrievedAt": "2026-10-06T18:29:45.442127+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "raw/address-168.json",
+      "url": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Nieuwe+Achtergracht+168+Amsterdam&fq=type%3Aadres&rows=10",
+      "sha256": "bca1329b04e1767a1496bab9f687b15537d3b8e03e78ec697555cc125c905ebb",
+      "retrievedAt": "2026-10-06T18:29:45.578978+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "raw/address-170.json",
+      "url": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Nieuwe+Achtergracht+170+Amsterdam&fq=type%3Aadres&rows=10",
+      "sha256": "cb984c117001773f06b8d5d26721360a4b2abe9b3bca1050d461a4d35569e217",
+      "retrievedAt": "2026-10-06T18:29:45.709618+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "raw/vbo-127.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?identificatie=0363010000755286&f=json",
+      "sha256": "ac793fc3060fa00497d32c5d425dcd2eef78a27be5eeb53d20b6e96877058427",
+      "retrievedAt": "2026-10-06T18:29:59.858892+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "raw/pand-de0335ee-cb94-5e50-9e5e-5d803ec7c0f4.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/de0335ee-cb94-5e50-9e5e-5d803ec7c0f4?f=json",
+      "sha256": "f44f9154472dd3ab472dbb90805a680e2a723faa3241fd4e45ba1a99fc640585",
+      "retrievedAt": "2026-10-06T18:29:59.948878+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "raw/vbo-166.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?identificatie=0363010012124683&f=json",
+      "sha256": "993f0f2207283ef54f5bd820fbe1830b5fc7e9aa375e8ea1d628160ba58760c9",
+      "retrievedAt": "2026-10-06T18:30:00.029787+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "raw/vbo-168.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?identificatie=0363010012067967&f=json",
+      "sha256": "df8c06373acd920d728b45298c93866fa4db9a603a6300df02b6ed43433ef5bc",
+      "retrievedAt": "2026-10-06T18:30:00.118157+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "raw/pand-d7d47064-aef4-5f6b-8f1c-ca604cd31409.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/d7d47064-aef4-5f6b-8f1c-ca604cd31409?f=json",
+      "sha256": "59ad9177cc6047c92163d7e354ebbe6f61bf10ebbddcaf70e057695488dcbf3d",
+      "retrievedAt": "2026-10-06T18:30:00.208340+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "raw/vbo-170.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?identificatie=0363010012067966&f=json",
+      "sha256": "cb8d8bd41de3c87e6e46400a04a49fd823d2f67254d815f3a84238ce5c8ee1ac",
+      "retrievedAt": "2026-10-06T18:30:00.292574+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "raw/3dbag-0363100012185420.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012185420",
+      "sha256": "e2152d1aad4b12dc7d2d2483d527295a8f4146e0f2a8327070a15285511892b3",
+      "retrievedAt": "2026-10-06T18:30:40.849461+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "raw/3dbag-0363100012164972.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012164972",
+      "sha256": "bd1fae1df39baf8694362f48d7d4244a128f80da144f7aaf427ce3e5714f356a",
+      "retrievedAt": "2026-10-06T18:30:41.018562+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "webpages/ahmm.html",
+      "url": "https://www.ahmm.co.uk/projects/reuse/university-of-amsterdam/",
+      "sha256": "61ce01ef1fa10c8d5e326b8c377b4a0b7f77f9b9bb41b2c0711734be52b9b62b",
+      "retrievedAt": "2026-10-06T18:30:41.349098+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "webpages/aronsohn-a.html",
+      "url": "https://www.aronsohn.nl/project/roeterseilandcampus-gebouw-a-uva/",
+      "sha256": "2893d301e83d7b507efcc8fa9d873b886603fbc1f39a19e17888ba9282f49fa7",
+      "retrievedAt": "2026-10-06T18:30:41.460319+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "webpages/arcam.html",
+      "url": "https://arcam.nl/architectuur-gids/uva-roeterseiland/",
+      "sha256": "f01c137244dcf414906154edf78b60c5cb9f9be63711a2a974eef39a2bb31805",
+      "retrievedAt": "2026-10-06T18:30:42.501634+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "webpages/crea.html",
+      "url": "https://www.crea.nl/over-crea/bezoekersinformatie/?lang=en",
+      "sha256": "86b96b862a8c111329230336d0c4d1da95ac367e1a1079ce43dcb70bedd9cd70",
+      "retrievedAt": "2026-10-06T18:30:43.930685+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "webpages/uva-a.html",
+      "url": "https://www.uva.nl/en/shared-content/locaties/en/roeterseiland/rec-a.html",
+      "sha256": "a1ce5471da9a6d2d591919c154674a0d13a22698ed461a60aac228ebe1b17941",
+      "retrievedAt": "2026-10-06T18:30:44.165913+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "raw/12968_PRO_UvA_SitePlan.jpg",
+      "url": "https://www.ahmm.co.uk/assets/galleries/16/12968_PRO_UvA_SitePlan.jpg",
+      "sha256": "bea10335983bb245aac5e9b2e7cba5aa85731688899bc61f58a4e2a514bded8f",
+      "retrievedAt": "2026-10-06T18:30:55.787781+00:00",
+      "representation": "original image bytes",
+      "rights": "AHMM / photographers including Tim Soar; private research only"
+    },
+    {
+      "file": "raw/399_UvA_Tim_Soar_1_.jpg",
+      "url": "https://www.ahmm.co.uk/assets/galleries/16/399_UvA_Tim_Soar_1_.jpg",
+      "sha256": "b7a2bdb8b0a8941888cd0d422e33363ff7a02aae4c18c8fc3696ab8a90d4d5a2",
+      "retrievedAt": "2026-10-06T18:30:55.954459+00:00",
+      "representation": "original image bytes",
+      "rights": "AHMM / photographers including Tim Soar; private research only"
+    },
+    {
+      "file": "raw/401_UvA_Tim_Soar_2_.jpg",
+      "url": "https://www.ahmm.co.uk/assets/galleries/16/401_UvA_Tim_Soar_2_.jpg",
+      "sha256": "7ab0751b2ef34ce74d2e6ad7ab6e1085b167815bf8df4204a1d85332181d1465",
+      "retrievedAt": "2026-10-06T18:30:56.142664+00:00",
+      "representation": "original image bytes",
+      "rights": "AHMM / photographers including Tim Soar; private research only"
+    },
+    {
+      "file": "raw/3439_06042_N1561.jpg",
+      "url": "https://www.ahmm.co.uk/assets/galleries/16/3439_06042_N1561.jpg",
+      "sha256": "38e289e82ace5450e8b138291e3c11e05cd7ac336b4b013b908f652d9a5b606c",
+      "retrievedAt": "2026-10-06T18:30:56.347974+00:00",
+      "representation": "original image bytes",
+      "rights": "AHMM / photographers including Tim Soar; private research only"
+    },
+    {
+      "file": "raw/12969_PRO_UvA_Construction_sequence.jpg",
+      "url": "https://www.ahmm.co.uk/assets/galleries/16/12969_PRO_UvA_Construction_sequence.jpg",
+      "sha256": "864a2131929b497a1f6535a037ca3a276650bf8d6f6e044abbda767647583409",
+      "retrievedAt": "2026-10-06T18:30:56.573478+00:00",
+      "representation": "original image bytes",
+      "rights": "AHMM / photographers including Tim Soar; private research only"
+    },
+    {
+      "file": "raw/overpass-campus.json",
+      "url": "https://overpass-api.de/api/interpreter",
+      "requestQuery": "[out:json][timeout:25];(way[building](52.3621,4.9107,52.3652,4.9150);way[\"building:part\"](52.3621,4.9107,52.3652,4.9150);relation[building](52.3621,4.9107,52.3652,4.9150););out body geom;",
+      "sha256": "4fb3106df648b17ca52b35eecf1640ceaf8b32dea145664c470c43907f69b0cc",
+      "retrievedAt": "2026-10-06T18:31:36.929639+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "raw/403_UvA_Tim_Soar_4_.jpg",
+      "url": "https://www.ahmm.co.uk/assets/galleries/16/403_UvA_Tim_Soar_4_.jpg",
+      "sha256": "e6fc6a9b7ec1b76451078056a52001d72f239e4836d87cba878441f6d735c41c",
+      "retrievedAt": "2026-10-06T18:32:12.520813+00:00",
+      "representation": "original image bytes",
+      "rights": "AHMM/photographer; private research only"
+    },
+    {
+      "file": "raw/3437_06042_N104.jpg",
+      "url": "https://www.ahmm.co.uk/assets/galleries/16/3437_06042_N104.jpg",
+      "sha256": "f37ba62e11435fa95690bf8d1a05b0475c01b457f545ead926cbd7f65de3904a",
+      "retrievedAt": "2026-10-06T18:32:12.699497+00:00",
+      "representation": "original image bytes",
+      "rights": "AHMM/photographer; private research only"
+    },
+    {
+      "file": "raw/12962_PRO_UvA_Bridge_design_sketches.jpg",
+      "url": "https://www.ahmm.co.uk/assets/galleries/16/12962_PRO_UvA_Bridge_design_sketches.jpg",
+      "sha256": "f69f03a1ba34e1b22a023029f3fb2140e307f0fdc35548bae5db7fa77ef93bfc",
+      "retrievedAt": "2026-10-06T18:32:12.850508+00:00",
+      "representation": "original image bytes",
+      "rights": "AHMM/photographer; private research only"
+    },
+    {
+      "file": "raw/campus-vbo-0.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/6d9d7920-8abe-5506-8ec6-f91422160b1e?f=json",
+      "sha256": "93c6419d4630c5a5252e16caab7741e24c83e3585a35ec1395f5715205ad2bdd",
+      "retrievedAt": "2026-10-06T18:33:24.538532+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "raw/campus-vbo-1.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/c1fdb3ba-d0ed-5e79-a217-8eddc84cd2dd?f=json",
+      "sha256": "69cae4c36a970424e72fb60e8412a1c44bbb7abab5915c494f53ba991fb9f6dd",
+      "retrievedAt": "2026-10-06T18:33:24.647982+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "raw/campus-vbo-2.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/1f600608-5d48-58cc-a570-1b35e7b6cac4?f=json",
+      "sha256": "a61d43085c7707387d91b3a5575e2fbd988f290a33ea07e0d2ce248c7bc6bca3",
+      "retrievedAt": "2026-10-06T18:33:24.804426+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "raw/campus-vbo-3.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/d0fa71a7-cce4-5c57-9522-86825da41c4c?f=json",
+      "sha256": "042084978c85e4926f0006e73a20a0dd9ce36aecfcbb5a0d61aa337689b42523",
+      "retrievedAt": "2026-10-06T18:33:24.896248+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "raw/campus-vbo-4.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/596e1773-43de-5eaa-8ca3-dbb52db435a7?f=json",
+      "sha256": "300e11f0546f24212577f45c549e64d4692d92ad519693962ea4b6d16165d07d",
+      "retrievedAt": "2026-10-06T18:33:25.006208+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "raw/campus-vbo-5.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/721d7c00-b81b-58f5-a2c1-1b85163b7910?f=json",
+      "sha256": "292002c53068205ebffa8170202c817de2b624fcef66ebb5e398281e094b54eb",
+      "retrievedAt": "2026-10-06T18:33:25.139495+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "raw/campus-vbo-6.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/05f321b9-639b-52d3-a51d-cc18a00cefef?f=json",
+      "sha256": "97c00f6089c68788a18cb3c0789156e7cf0564cb11a7d91a5e048ff215545b23",
+      "retrievedAt": "2026-10-06T18:33:25.295388+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "raw/campus-vbo-7.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/a5ee94c6-ed78-5ba0-97df-4327110790a9?f=json",
+      "sha256": "aa59515357f05c08b69204ab6f18f3a1915b22b05274d88478b5514e85cd84f5",
+      "retrievedAt": "2026-10-06T18:33:25.437730+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "raw/campus-vbo-8.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/86638db8-5cca-5572-8977-ce4fbad8f37f?f=json",
+      "sha256": "152e22fb3fd3813c141f786c78009235ed5179905af86c4f01dfa00f1c78396e",
+      "retrievedAt": "2026-10-06T18:33:25.555286+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "raw/campus-vbo-9.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/343cd448-e6d7-5000-be89-775ced896509?f=json",
+      "sha256": "3fa745e580a78f51de288c1d978e083fbbda8b698222dbe1cc7832a275b2fe30",
+      "retrievedAt": "2026-10-06T18:33:25.667573+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "raw/campus-vbo-10.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/118b64bc-fc4b-5bff-a485-18b5fef240d9?f=json",
+      "sha256": "f3b1240bdd3baa6449fff0a62ee0af3d3508a6af3d4fb147499ca437e5e58a7c",
+      "retrievedAt": "2026-10-06T18:33:25.791369+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "raw/campus-vbo-11.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/7d58f868-daa3-5bc0-9735-8b2ba9e99a7b?f=json",
+      "sha256": "436a84bbd19b0b6979246b61673c0b7b06cf3fe99d89d9695198cbe715e519c0",
+      "retrievedAt": "2026-10-06T18:33:25.887541+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "raw/campus-vbo-12.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/9b55956a-0bbb-528a-ba15-5acc5b5447cf?f=json",
+      "sha256": "1180785c3503aa1ffb30bfabf788dc6ab42f8a8a247e4d822f982aec33a7d1bd",
+      "retrievedAt": "2026-10-06T18:33:25.970086+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "raw/campus-vbo-13.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/c6fa8c69-da67-5454-baa9-6805586bb1c7?f=json",
+      "sha256": "bfd2d13e7ccfc64ff014ca585a95f45cbca11c2fc54d8c8f6703d31038ecbdc7",
+      "retrievedAt": "2026-10-06T18:33:26.059639+00:00",
+      "representation": "original HTTP response body"
+    },
+    {
+      "file": "webpages/beeldbank-address-search.html",
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=Nieuwe%20Achtergracht%20127",
+      "sha256": "2c58f828ae2064223924ea0091b054f9491af3a922ebc52697104024f3ba5f04",
+      "retrievedAt": "2026-10-06T18:33:55.632192+00:00",
+      "representation": "original HTTP response body",
+      "accessState": "HTTP200 viewer shell; no inspected catalogue photo/drawing"
+    },
+    {
+      "file": "raw/installed-14-8415-5384.geojson.gz",
+      "sourcePath": "public/data/extracts/amsterdam/building-tiles/14/8415/5384.geojson.gz",
+      "sha256": "9a56ff6be88bfa885258f14a0f15c0270a5414f91e35e05bdf7c9ffee1ede4ff",
+      "retrievedAt": "2026-10-06T18:36:20.045819+00:00",
+      "representation": "original installed source gzip bytes",
+      "featureInformed": "exact installed parent and retained neighbor identities"
+    },
+    {
+      "file": "raw/installed-building-features.json",
+      "sourcePath": "raw/installed-14-8415-5384.geojson.gz",
+      "sha256": "a66267d428895379a1b307b64760f5272632bf247cb580527a2bec4742ea259b",
+      "representation": "processed feature subset, not original HTTP response"
+    },
+    {
+      "url": "https://overpass-api.de/api/interpreter",
+      "requestMethod": "GET",
+      "attemptAt": "2026-10-06; exact original attempt clock not recorded",
+      "accessState": "HTTP406 first GET attempt; successful bounded POST retry saved as overpass-campus.json, transient original failure retained"
+    }
+  ],
+  "assertions": [
+    {
+      "sourceUrl": "https://www.ahmm.co.uk/projects/reuse/university-of-amsterdam/",
+      "part": "B/C raised bar and entrance A/B",
+      "date": "project2018; page retrieved2026-10-06",
+      "confidence": "high",
+      "assertion": "Existing megastructure retained; circa40m section opens the canal axis as a four-storey void. A double-height glazed event room forms its lintel, with research-office floors above. A separate pedestrian bridge meets a triple-height passage between remodelled buildings.",
+      "modelAssembly": "Raised bar, exposed underside, tall glazing over canal, narrow repeated office apertures; independent street-level pedestrian bridge and recessed glazed entry hall."
+    },
+    {
+      "sourceUrl": "https://www.uva.nl/locaties/roeterseiland/rec-b-c-d-ingang-d.html",
+      "part": "De Brug/B/C/D",
+      "confidence": "high",
+      "assertion": "De Brug is an event venue over Nieuwe Achtergracht; accessible connection to D crosses a fourth-floor bridge. D entrance is127; B/C main entry166.",
+      "modelAssembly": "Keep real canal water/open bank passage beneath, no opaque ground extrusion across span."
+    },
+    {
+      "sourceUrl": "https://www.aronsohn.nl/project/roeterseilandcampus-gebouw-a-uva/",
+      "part": "REC A",
+      "date": "realised2017",
+      "confidence": "high",
+      "assertion": "A belongs to campus heart with B/C/D. New bridge enters hall between A and B. Law faculty building has13 storeys including basement and renovated external envelope.",
+      "modelAssembly": "Tall separate A volume, horizontal window ribbons, shared low glazed entrance and varied lower extensions; do not use13\u00d7generic floor height as surveyed height."
+    },
+    {
+      "sourceUrl": "https://www.ahmm.co.uk/assets/galleries/16/403_UvA_Tim_Soar_4_.jpg",
+      "part": "B/C east face, cityroom and CREA context",
+      "confidence": "high-photographic",
+      "assertion": "Charcoal metal-clad bar has regularly spaced tall narrow glazing above large double-height glazed base; open ground-level promenade passes beside red brick CREA under the raised bar.",
+      "modelAssembly": "Metal piers and spandrels surrounding exposed glazing; patterned underside; CREA is retained neighboring building, not merged into bar."
+    },
+    {
+      "sourceUrl": "https://www.ahmm.co.uk/assets/galleries/16/3437_06042_N104.jpg",
+      "part": "A/B entrance",
+      "confidence": "high-photographic",
+      "assertion": "A/B facade rhythms differ: one narrow vertical aperture field, the other pronounced horizontal window ribbons. Low portal has pale soffit, exposed slender supports and large glazing; pedestrian bridge has bank-level stepped/ramped approach.",
+      "modelAssembly": "Distinct facade functions by real side; recessed wall planes and exposed glazing, no decorative panels buried by full parent extrusion."
+    },
+    {
+      "sourceUrl": "https://www.ahmm.co.uk/assets/galleries/16/3439_06042_N1561.jpg",
+      "part": "northern lower facade candidate patch756",
+      "confidence": "medium facade-family/native allocation inferred",
+      "assertion": "Pale masonry lower block in northward context has paired-storey narrow slots with dark intervening panels and a glazed roof-level ribbon. Exact patch/facade attribution requires independent native context confirmation.",
+      "modelAssembly": "Pale shell756 and bounded northern slot/ribbon facade. Not automatically applied to every low annex."
+    },
+    {
+      "sourceUrl": "https://www.ahmm.co.uk/assets/galleries/16/12962_PRO_UvA_Bridge_design_sketches.jpg",
+      "part": "pedestrian bridge approach",
+      "confidence": "high for designed widening/split options; medium final-photo interpretation",
+      "assertion": "Sketches present several widening and split ramp/stair proposals. Source3437 shows a broad timber approach and central stair; final mesh uses approximate widths/height/rises, not an asserted as-built sketch dimension.",
+      "modelAssembly": "Widened deck, separate west ramp and central stair/landing."
+    },
+    {
+      "sourceUrl": "https://www.ahmm.co.uk/assets/galleries/16/3437_06042_N104.jpg",
+      "part": "low glazed pavilion directlywest/right of A/B portal; frontcorner of surveyed base708",
+      "confidence": "high-photographic assembly; medium approximate bay/tier dimensions",
+      "assertion": "The low volume immediatelyright of the photographed portal is conspicuously curtain-glazed with pale mullions and multiple horizontal transoms; a blank pale wall loses this entrance composition. Siteplan/current native perimeter locate the corner next to A.",
+      "modelAssembly": "Exposed curtain glazing on observed northfront and short eastreturn of roofpatch708 only, not all unpictured annexfaces."
+    }
+  ],
+  "criticalAcceptance": [
+    "Raised De Brug canal passage visibly open from west canal axis and east CREA promenade.",
+    "Charcoal upper bar with narrow vertical windows; tall glazed city-room immediately above void.",
+    "A differentiated by horizontal ribbon facade; A/B recessed tall entry portal and separate pedestrian bridge.",
+    "Correct native low annexes/roof heights; full parent represented before single parent suppression.",
+    "Retain CREA brick footprint and canal courts; distinguish open OSM north court from survey-roofed southern atria."
+  ],
+  "heightSemantics": {
+    "datumNAP": 0.588,
+    "candidateMainBarRoofPatch": 722,
+    "candidateMainBarRoofHeight": 45.1,
+    "candidateATowerRoofPatch": 748,
+    "candidateATowerRoofHeight": 43.6,
+    "candidateHighTopPatch": 681,
+    "candidateHighTopHeight": 51.2,
+    "warning": "These are measured fitted top surfaces, not final whole-volume classification. High patch681 may be rooftop plant/lift housing or raised roof; verify source photo/section. Generic extrusion to same top across parent would fail. Survey contains no reliable raised underside."
+  },
+  "referenceImages": [
+    "raw/12968_PRO_UvA_SitePlan.jpg",
+    "raw/399_UvA_Tim_Soar_1_.jpg",
+    "raw/401_UvA_Tim_Soar_2_.jpg",
+    "raw/403_UvA_Tim_Soar_4_.jpg",
+    "raw/3437_06042_N104.jpg",
+    "raw/3439_06042_N1561.jpg",
+    "raw/12969_PRO_UvA_Construction_sequence.jpg",
+    "raw/12962_PRO_UvA_Bridge_design_sketches.jpg",
+    "raw/oct7-3438_06042_N105.jpg"
+  ],
+  "nativeCameraSuggestions": [
+    {
+      "name": "west-canal-axis",
+      "positionWgs84": [
+        4.9101,
+        52.36339
+      ],
+      "targetWgs84": [
+        4.91215,
+        52.36313
+      ],
+      "cameraHeightMetres": 2.2,
+      "sourceImage": "raw/399_UvA_Tim_Soar_1_.jpg",
+      "purpose": "Show water axis through raised bar and tall cityroom; confirm longitude/latitude camera side against map."
+    },
+    {
+      "name": "east-CREA-promenade",
+      "positionWgs84": [
+        4.913,
+        52.36316
+      ],
+      "targetWgs84": [
+        4.91219,
+        52.3631
+      ],
+      "cameraHeightMetres": 1.8,
+      "sourceImage": "raw/403_UvA_Tim_Soar_4_.jpg",
+      "purpose": "See exposed underside and retained brick CREA; source exact station not surveyed."
+    },
+    {
+      "name": "north-bank-A-B-entry",
+      "positionWgs84": [
+        4.91231,
+        52.3633
+      ],
+      "targetWgs84": [
+        4.91218,
+        52.36293
+      ],
+      "cameraHeightMetres": 1.8,
+      "sourceImage": "raw/3437_06042_N104.jpg",
+      "purpose": "Separate A/B rhythm, entrance glazing and bridge; approximate station."
+    }
+  ],
+  "archiveSearch": {
+    "addressQuery": "Nieuwe Achtergracht127",
+    "url": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=Nieuwe%20Achtergracht%20127",
+    "state": "HTTP200 JS viewer shell saved; no inspected catalogue photo/drawing. Bounded web address/name searches did not expose direct CityArchive record. CREA historic research remains separate deferred task.",
+    "bouwdossiers": "Not acquired; unresolved underside section would benefit from exact project section, rather than whole dossier search.",
+    "monumentRegister": "REC A/B/C/D modern campus; no monument status asserted. Separate CREA historic status not investigated as excluded neighbor."
+  },
+  "limitations": [
+    "Architect project references show2014-2017 states; operator currently reports facade maintenance, so material geometry can use established architecture but temporary scaffolding need not be modeled.",
+    "Source publisher must commit/push this new raw pack and update pending source commit before model commit.",
+    "First CPU native-builder massing render exists; no compressed export/gallery/live-game/performance/route-pointer acceptance. Low annex facade details, side/end tower rhythms, entrance bank calibration and high roof681 classification remain pending.",
+    "Bounded current2024/25north/south/eastpanostationsmostly showneighbors and retainedCREA; they do not establish unseen annexfaces. Usefulwestpano confirms708longreturn. North55m query returned0,95m expansion returned66; connectivitysuccess is distinct fromviewcoverage.",
+    "734isobservedwarmmasonry/glassblock/clerestory ancillaryREC E(Krater) inphysicalcomposite; newstreetface modeled but otherfacade/roof749classificationretainedpending. Targetedcameraoutwardselectionrecordsactualblockedviews; no furthergenericassembly invented."
+  ],
+  "inheritedSources": [
+    {
+      "path": "files/user-campus-request-20261006.png",
+      "sha256": "085610be1c14d012d66ad8ec4bd1f5497db25800529847913fec3af2a0a6daec",
+      "bytes": 2566851,
+      "source": "User supplied screenshot in project conversation",
+      "receivedDate": "2026-10-06",
+      "captureDate": "unknown",
+      "representation": "original uploaded bytes"
+    },
+    {
+      "path": "webpages/uva-bcd.html",
+      "url": "https://www.uva.nl/locaties/roeterseiland/rec-b-c-d-ingang-b-c.html",
+      "sha256": "619b0d4d91458a73332de7e5f78774df388f1e292641fbc261e5571d598084bc",
+      "bytes": 125979,
+      "retrievedDate": "2026-10-06",
+      "representation": "original HTTP response body",
+      "rights": "UvA website; private research reference only"
+    },
+    {
+      "path": "webpages/uva-de-brug.html",
+      "url": "https://www.uva.nl/locaties/roeterseiland/rec-b-c-d-ingang-d.html",
+      "sha256": "bbd0081481618aeaf2fb2ae75479b7a7463d4f16e7a96d7c6ec4ea0a45e8c250",
+      "bytes": 126327,
+      "retrievedDate": "2026-10-06",
+      "representation": "original HTTP response body",
+      "rights": "UvA website; private research reference only"
+    }
+  ],
+  "massingReview": "scripts/landmarks/uva-roeterseiland-review.json",
+  "additionalRawSourceManifest": "private models/uva-roeterseiland/acquisition-20261007.json",
+  "additionalArchitecturalAssertions": "private models/uva-roeterseiland/oct7-architectural-assertions.json",
+  "additionalMunicipalSources": "private models/uva-roeterseiland/acquisition-20261007-pano-originals.json",
+  "additionalOperatorSources": "private models/uva-roeterseiland/acquisition-20261007-facade-maintenance.json",
+  "targetedStationInventory": "scripts/landmarks/uva-roeterseiland-missing-facade-stations.json",
+  "targetedSources": "private models/uva-roeterseiland/acquisition-20261007-targeted-stations.json + oct7-targeted-projection-manifest.json + oct7-next-face-source-decisions.json",
+  "sourceAcquisitionState": {
+    "Commons429": "recoveredall6originalsusing4/8sboundedretries, cachedoriginalsreused",
+    "TLS": "isolatedPython3.13 localcertificatefailure reroutedtoexplicitHomebrewPython3.14 verifiedTLS",
+    "gap": "currentmissingfacadesareviewcoverage/neighborocclusion, notnetworkfailure"
+  }
+}
