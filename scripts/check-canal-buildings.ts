@@ -118,6 +118,29 @@ assert.match(suppressedJson, /"osmId"/);
 assert.match(suppressedJson, /"id"/, 'streamed LoD1 features carry their OSM id under `id`');
 const wallsOnly = coloredBuildingLayerFilter(null, ['w1']) as unknown[];
 assert.equal(wallsOnly[0], '!', 'walls with suppression get the suppression clause alone');
+// A feature can retain an OSM alias alongside its canonical BAG carrier.
+// Exercise the expression against that mixed-identity source, including a
+// separate neighbor and both identity forms individually.
+function evaluateFilter(value: any, properties: Record<string, string>): any {
+  if (!Array.isArray(value)) return value;
+  const [op, ...args] = value;
+  if (op === 'get') return properties[args[0]];
+  if (op === 'literal') return args[0];
+  const values = args.map(arg => evaluateFilter(arg, properties));
+  if (op === 'coalesce') return values.find(value => value !== undefined && value !== null);
+  if (op === 'in') return values[1].includes(values[0]);
+  if (op === 'any') return values.some(Boolean);
+  if (op === '!') return !values[0];
+  throw new Error(`Unexpected filter operation ${op}`);
+}
+const mixedFilter = coloredBuildingLayerFilter(null, ['w57861220', 'NL.IMBAG.Pand.0363100012167578']);
+for (const properties of [
+  { id: 'NL.IMBAG.Pand.0363100012167578', osmId: 'wDifferentRetainedAlias' },
+  { id: 'NL.IMBAG.Pand.0363100012167578' },
+  { osmId: 'w57861220' },
+]) assert.equal(evaluateFilter(mixedFilter, properties), false, 'either exact replacement identity hides the source');
+assert.equal(evaluateFilter(mixedFilter, { id: 'NL.IMBAG.Pand.0363100012175848', osmId: 'wNeighbor' }), true,
+  'the separately surveyed adjacent building remains visible');
 
 // Published hide-id sidecar must match the extract it names. Missing sidecar
 // is fine (fallback encodes at runtime); a present sidecar with a missing or

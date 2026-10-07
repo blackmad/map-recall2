@@ -334,7 +334,12 @@ export function coloredBuildingLayerFilter(
   const clauses: MapLibreExpression[] = [];
   if (base) clauses.push(base);
   if (hideOsmIds.length) {
-    clauses.push(['!', ['in', ['coalesce', ['get', 'osmId'], ['get', 'id'], ''], ['literal', [...hideOsmIds]]]]);
+    // Some source features retain both identities. Either identity can own
+    // the replacement; coalescing would ignore the BAG id when osmId exists.
+    clauses.push(['!', ['any',
+      ['in', ['coalesce', ['get', 'osmId'], ''], ['literal', [...hideOsmIds]]],
+      ['in', ['coalesce', ['get', 'id'], ''], ['literal', [...hideOsmIds]]],
+    ]]);
   }
   if (!clauses.length) return null;
   return clauses.length === 1 ? clauses[0] : ['all', ...clauses];

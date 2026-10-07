@@ -347,8 +347,10 @@
     "landmarkId": "magna-plaza",
     "modelUrl": "./models/magna-plaza.glb",
     "suppressOsmIds": [
-      "w57861220"
+      "w57861220",
+      "NL.IMBAG.Pand.0363100012167578"
     ],
+    "spatialSuppression": false,
     "footprint": {
       "centre": [
         4.890243858773726,

@@ -166,6 +166,7 @@ class VectorBasemap {
           loadVisibleOnly: true,
           depthBiasEnabled: !this._completeCityHasBuildings,
           manageBasemapFilter: false,
+          onSuppressionChanged: () => this._refreshBuildingSuppression(),
           onHostWallOpeningsChanged: () => this._syncHostWallOpenings(),
           canShowModel: spec => !spec.hostWallOpenings?.length || (this._hostOpeningRendererActive() && !!this._threeBuildings.hostWallOpeningsVisible?.(spec.hostWallOpenings)),
           onModelShown: () => {
@@ -1149,6 +1150,9 @@ class VectorBasemap {
     if (!this.map) return;
     const signatureHide = this._measuredColoursOnly ? [] : this._signatureSuppressOsmIds();
     if (this._threeBuildings) this._threeBuildings.setHidden('signature', signatureHide);
+    // The independent roof renderer owns its own visibility flags. Refresh
+    // them with the same loaded-only mask, including unload/failure/settings.
+    if (this._pyramidalRoofs) this._pyramidalRoofs.setHidden(signatureHide);
     // Landmark kits draw their own towers: the plain prisms they replace go, except the answer building,
     // which keeps its yellow prism so a landmark question still lights up.
     const kitApi = window.CanalRecallThreeBuildings;
