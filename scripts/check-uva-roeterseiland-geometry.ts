@@ -3,12 +3,13 @@ import fs from 'node:fs';
 import * as T from 'three';
 import sharp from 'sharp';
 import source from './landmarks/uva-roeterseiland-footprints.json';
+import spec from './landmarks/uva-roeterseiland-spec.json';
 import {openTopPrism,upwardRoofPlane} from './landmarks/house-geometry';
 import {buildUvaRoeterseiland,campusNative,roeterseilandMassing} from './landmarks/uva-roeterseiland-builder';
 import type {BuildingTools} from './landmarks/cultural-builders';
 const meshes:T.Mesh[]=[];
 const palette={bronze:'#3d5148',glass:'#527787',dark:'#303b43',frame:'#9daaa8',concrete:'#d4d5d0',slate:'#4a525d',greyBrick:'#7d7871',stone:'#cfc2a6'};
-const add:BuildingTools['add']=(g,col,x=0,y=0,z=0,a=0)=>{g.rotateY(a);g.translate(x,y,z);g.userData.palette=col;meshes.push(new T.Mesh(g,new T.MeshBasicMaterial({color:palette[col as keyof typeof palette]??'#9a5240',side:T.DoubleSide})))};
+const add:BuildingTools['add']=(g,col,x=0,y=0,z=0,a=0)=>{g.rotateY(a);g.translate(x,y,z);g.userData.palette=col;meshes.push(new T.Mesh(g,new T.MeshBasicMaterial({color:spec.materialOverrides[col as keyof typeof spec.materialOverrides]??palette[col as keyof typeof palette]??'#9a5240',side:T.DoubleSide})))};
 const b:BuildingTools={add,box:(x,y,z,w,h,d,col,a=0)=>add(new T.BoxGeometry(w,h,d),col,x,y+h/2,z,a),prism:()=>{},gableRoof:()=>{},hip:()=>{},window:()=>{},clock:()=>{},sign:()=>{}};
 buildUvaRoeterseiland(0,0,b);
 const bounds=new T.Box3();let triangles=0;for(const m of meshes){m.geometry.computeBoundingBox();bounds.union(m.geometry.boundingBox!);triangles+=(m.geometry.index?.count??m.geometry.getAttribute('position').count)/3;assert([...m.geometry.getAttribute('position').array].every(Number.isFinite));}
@@ -70,12 +71,30 @@ for(const at of [20.1,24.6]){const h=annexRay(at,5.2);assert(h);assert.equal((h.
 for(const [at,y,role] of [[22.5,5.2,'north-annex-glassblock-central-mullion'],[20.1,7.7,'north-annex-glassblock-storey-divider'],[12.5,5.0,'north-annex-upper-vertical-mullion'],[12.5,1.5,'north-annex-ground-door-stile'],[12.1,2.8,'north-annex-ground-door-head']] as [number,number,string][]){
  const h=annexRay(at,y);assert(h);assert.equal((h.object as T.Mesh).geometry.userData.role,role,'734principalframingexposed');
 }
+//735edge30 checks use true nativeedge/tangent, keeping whole physicalshell.
+const east=source.roofs.find(r=>r.index===735)!,ea=east.rings[0][30],eb=east.rings[0][31];
+const el=Math.hypot(eb[0]-ea[0],eb[1]-ea[1]),ex=(eb[0]-ea[0])/el,ez=(eb[1]-ea[1])/el;
+function eastRay(at:number,y:number){return new T.Raycaster(new T.Vector3(ea[0]+at*ex-3*ez,y,ea[1]+at*ez+3*ex),new T.Vector3(ez,0,-ex)).intersectObjects(meshes)[0];}
+for(const at of [11.5,12.9,14.3,15.7,17.1,18.5])for(const f of [-.35,.35])for(const y of [4.7,6.2]){
+ const h=eastRay(at+f*.68,y);assert(h);assert.equal((h.object as T.Mesh).geometry.userData.role,'east-low-735-upper-slot','735upperfractionalopeningexposed');
+}
+for(const [at,w] of [[11.7,1.30],[14,.62],[15.5,.62],[17,.62]])for(const f of [-.35,.35])for(const y of [.8,2.5]){
+ const h=eastRay(at+f*w,y);assert(h);assert.equal((h.object as T.Mesh).geometry.userData.role,at===11.7?'east-low-735-ground-entry':'east-low-735-ground-slot','735groundfractionalopeningexposed');
+}
+for(const at of [1,3,5,7])for(const y of [1,5,7.8]){const h=eastRay(at,y);assert(h);assert.equal((h.object as T.Mesh).geometry.userData.role,'east-low-735-edge30-dark-brick','735nearblankwallpreserved');}
+for(const [at,y,role] of [[11.12,5,'east-low-735-upper-jamb'],[11.5,6.84,'east-low-735-upper-head-sill'],[9.4,1.5,'east-low-735-service-door'],[11.005,2,'east-low-735-ground-jamb'],[11.7,3.12,'east-low-735-ground-head']] as [number,number,string][]){const h=eastRay(at,y);assert(h);assert.equal((h.object as T.Mesh).geometry.userData.role,role);}
+for(const m of meshes.filter(m=>String(m.geometry.userData.role).startsWith('east-low-735'))){const bb=m.geometry.boundingBox!;assert(bb.max.y<=8.39,'735facadetreatmentunderroof');for(const p of [bb.min,bb.max]){const along=(p.x-ea[0])*ex+(p.z-ea[1])*ez;assert(along>-.15&&along<el+.15,'735facadeextentnativeedge30');}}
+// Per-model colour slots are reserved to edge30 only; do not recolour any
+// existing campus facade. Verify real first-hit RGB for wall, openings and source-dark door; reused dark frame contrasts.
+for(const m of meshes.filter(m=>Object.hasOwn(spec.materialOverrides,m.geometry.userData.palette))){assert(String(m.geometry.userData.role).startsWith('east-low-735'),'735overridesisolatedfromotherfacades');}
+for(const [at,y,key] of [[3,5,'brick'],[11.5-.2,5,'blue'],[11.7-.3,1.5,'blue'],[9.4,1.5,'blue']] as [number,number,keyof typeof spec.materialOverrides][]){const h=eastRay(at,y);assert(h);const m=h.object as T.Mesh;assert.equal(m.geometry.userData.palette,key);assert.equal((m.material as T.MeshBasicMaterial).color.getHexString(),spec.materialOverrides[key].slice(1),'735realRGBfirsthit');}
+const frameHit=eastRay(11.12,5)!;assert.equal((frameHit.object as T.Mesh).geometry.userData.palette,'dark');assert.equal(((frameHit.object as T.Mesh).material as T.MeshBasicMaterial).color.getHexString(),'303b43','735reusedframeRGBfirsthit');
 // Rooftop plant remains supported by A roof, with dark opaque source family.
 const [rx,rz]=campusNative(-53,44);const plant=new T.Raycaster(new T.Vector3(rx,60,rz),new T.Vector3(0,-1,0)).intersectObjects(meshes)[0];
 assert.equal((plant.object as T.Mesh).geometry.userData.role,'survey-681-roof');
 const plantSide=hits(-80,47,44,1,0)[0];assert.equal((plantSide.object as T.Mesh).geometry.userData.role,'survey-681');assert.equal((plantSide.object as T.Mesh).geometry.userData.palette,'dark');
-const report={model:'uva-roeterseiland',phase:'ninth-cycle-independent-734-framing-correction',triangles,bounds:{min:bounds.min.toArray(),max:bounds.max.toArray()},void:roeterseilandMassing,status:'CPU-only; gallery/live/suppression/full-parent acceptance pending'};
-const out='artifacts/uva-roeterseiland-massing-20261006';fs.mkdirSync(out,{recursive:true});fs.writeFileSync(out+'/geometry-report.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
+const report={model:'uva-roeterseiland',phase:'cycle11-source735-edge30-color-only',triangles,bounds:{min:bounds.min.toArray(),max:bounds.max.toArray()},void:roeterseilandMassing,status:'CPU-only; gallery/live/suppression/full-parent acceptance pending'};
+const out='artifacts/uva-roeterseiland-massing-20261006/cycle11';fs.mkdirSync(out,{recursive:true});fs.writeFileSync(out+'/geometry-report.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
 // CPU z-buffer of the exact native builder, without export or shared GPU state.
 if(process.argv.includes('--render')) {
  // Context only: exact retained CREA footprint, median AHN roof elevation.
@@ -83,15 +102,15 @@ if(process.argv.includes('--render')) {
  const creaShape=new T.Shape(source.excludedNeighbour.outline[0].map(p=>new T.Vector2(p[0],p[1])));
  const creaMat=new T.MeshBasicMaterial({color:'#9a5240',side:T.DoubleSide});
  const context=[new T.Mesh(openTopPrism(creaShape,0,18.019),creaMat),new T.Mesh(upwardRoofPlane(creaShape,18.019),creaMat)];
- const W=1000,H=760,tris:{p:T.Vector3[],rgb:number[]}[]=[];
+ const W=1200,H=900,tris:{p:T.Vector3[],rgb:number[]}[]=[];
  for(const m of [...meshes,...context]){const g=m.geometry,pos=g.getAttribute('position'),ix=g.index,col=(m.material as T.MeshBasicMaterial).color;for(let i=0;i<(ix?.count??pos.count);i+=3)tris.push({p:[0,1,2].map(k=>new T.Vector3().fromBufferAttribute(pos,ix?ix.getX(i+k):i+k)),rgb:col.toArray()});}
- for(const [name,angle,elevation,focus,extent] of [['west-canal',-Math.PI/2+roeterseilandMassing.axesRadians,.09,[-4,25,12],120],['east-promenade',Math.PI/2+roeterseilandMassing.axesRadians,.07,[-4,24,12],112],['native-overview',-.9,.7,[-11,20,0],240],['north-annex-framing-close',Math.atan2(-.98363,-.18021),-.558,[-75.948,10,-32.047],20.2],['north-annex-street',-Math.PI/2,.12,[-75.948,9,-32.047],85],['b-south-end',roeterseilandMassing.axesRadians,.20,[...(() => {const[x,z]=campusNative(0,54);return[x,24,z]})()],112],['west-pavilion-street',-Math.PI/2+roeterseilandMassing.axesRadians,.10,[...(() => {const[x,z]=campusNative(-74,49);return[x,22,z]})()],110],['a-pavilion-canal-front',Math.PI+roeterseilandMassing.axesRadians,-.52,[...(() => {const[x,z]=campusNative(-60,28);return[x,20,z]})()],104],['east-crea-approach',Math.PI/2+roeterseilandMassing.axesRadians,-.28,[...(() => {const[x,z]=campusNative(-5.8,15);return[x,18,z]})()],95],['north-bank-entry',Math.PI+roeterseilandMassing.axesRadians,-.23,[...(() => {const[x,z]=campusNative(-24.2,34);return[x,7,z]})()],55]] as [string,number,number,number[],number][]) {
+ for(const [name,angle,elevation,focus,extent] of [['735-edge30-low',Math.atan2(.95453,-.29812),-.10625,[58.37,4.2,45.90],20],['735-edge30-source',.5763661911084779,-.11957142692329696,[55.3,7,36.1],48.96],['735-edge30-close',Math.atan2(.95453,-.29812),.05,[58.37,4.2,45.90],27],['west-canal',-Math.PI/2+roeterseilandMassing.axesRadians,.09,[-4,25,12],120],['east-promenade',Math.PI/2+roeterseilandMassing.axesRadians,.07,[-4,24,12],112],['native-overview',-.9,.7,[-11,20,0],240],['north-annex-framing-close',Math.atan2(-.98363,-.18021),-.558,[-75.948,10,-32.047],20.2],['north-annex-street',-Math.PI/2,.12,[-75.948,9,-32.047],85],['b-south-end',roeterseilandMassing.axesRadians,.20,[...(() => {const[x,z]=campusNative(0,54);return[x,24,z]})()],112],['west-pavilion-street',-Math.PI/2+roeterseilandMassing.axesRadians,.10,[...(() => {const[x,z]=campusNative(-74,49);return[x,22,z]})()],110],['a-pavilion-canal-front',Math.PI+roeterseilandMassing.axesRadians,-.52,[...(() => {const[x,z]=campusNative(-60,28);return[x,20,z]})()],104],['east-crea-approach',Math.PI/2+roeterseilandMassing.axesRadians,-.28,[...(() => {const[x,z]=campusNative(-5.8,15);return[x,18,z]})()],95],['north-bank-entry',Math.PI+roeterseilandMassing.axesRadians,-.23,[...(() => {const[x,z]=campusNative(-24.2,34);return[x,7,z]})()],55]] as [string,number,number,number[],number][]) {
   const eye=new T.Vector3(Math.sin(angle),elevation,Math.cos(angle)).normalize(),right=new T.Vector3(0,1,0).cross(eye).normalize(),up=eye.clone().cross(right),center=new T.Vector3(...focus),scale=.86*Math.min(W,H)/extent;
   const rgba=new Uint8Array(W*H*4),depth=new Float64Array(W*H).fill(-Infinity);for(let i=0;i<W*H;i++)rgba.set([232,229,217,255],i*4);
-  const cameraDistance=name==='north-annex-framing-close'?15.43:name==='a-pavilion-canal-front'?40:name==='north-bank-entry'?22:name==='east-crea-approach'?58:Infinity;
+  const cameraDistance=name==='735-edge30-low'?16.09006:name==='735-edge30-source'?37.902487:name==='north-annex-framing-close'?15.43:name==='a-pavilion-canal-front'?40:name==='north-bank-entry'?22:name==='east-crea-approach'?58:Infinity;
   const visibleTris=Number.isFinite(cameraDistance)?tris.flatMap(t=>{const pts:T.Vector3[]=[];for(let i=0;i<3;i++){const a=t.p[i],b=t.p[(i+1)%3],ad=a.clone().sub(center).dot(eye),bd=b.clone().sub(center).dot(eye);if(ad<=cameraDistance-.3)pts.push(a);if((ad<=cameraDistance-.3)!==(bd<=cameraDistance-.3))pts.push(a.clone().lerp(b,(cameraDistance-.3-ad)/(bd-ad)));}return pts.length<3?[]:Array.from({length:pts.length-2},(_,i)=>({p:[pts[0],pts[i+1],pts[i+2]],rgb:t.rgb}));}):tris;
   for(const t of visibleTris){const q=t.p.map(p=>{const a=p.clone().sub(center);const z=a.dot(eye),perspective=Number.isFinite(cameraDistance)?cameraDistance/(cameraDistance-z):1;return[W/2+a.dot(right)*scale*perspective,H/2-a.dot(up)*scale*perspective,z]});const[a,b,c]=q,area=(b[1]-c[1])*(a[0]-c[0])+(c[0]-b[0])*(a[1]-c[1]);if(Math.abs(area)<1e-9)continue;const x0=Math.max(0,Math.floor(Math.min(...q.map(p=>p[0])))),x1=Math.min(W-1,Math.ceil(Math.max(...q.map(p=>p[0])))),y0=Math.max(0,Math.floor(Math.min(...q.map(p=>p[1])))),y1=Math.min(H-1,Math.ceil(Math.max(...q.map(p=>p[1]))));const n=t.p[1].clone().sub(t.p[0]).cross(t.p[2].clone().sub(t.p[0])).normalize();if(n.dot(eye)<0)n.negate();const shade=.7+.3*Math.max(0,n.dot(new T.Vector3(-.5,.9,.6).normalize())),color=t.rgb.map(v=>{v*=shade;return Math.round(255*(v<=.0031308?12.92*v:1.055*v**(1/2.4)-.055))});
-   for(let y=y0;y<=y1;y++)for(let x=x0;x<=x1;x++){const px=x+.5,py=y+.5,u=((b[1]-c[1])*(px-c[0])+(c[0]-b[0])*(py-c[1]))/area,v=((c[1]-a[1])*(px-c[0])+(a[0]-c[0])*(py-c[1]))/area,w=1-u-v;if(u<0||v<0||w<0)continue;const z=u*a[2]+v*b[2]+w*c[2],j=y*W+x;if(z>depth[j]+1e-8){depth[j]=z;rgba.set([...color,255],j*4);}}
+   for(let y=y0;y<=y1;y++)for(let x=x0;x<=x1;x++){const px=x+.5,py=y+.5,u=((b[1]-c[1])*(px-c[0])+(c[0]-b[0])*(py-c[1]))/area,v=((c[1]-a[1])*(px-c[0])+(a[0]-c[0])*(py-c[1]))/area,w=1-u-v;if(u<0||v<0||w<0)continue;const z=Number.isFinite(cameraDistance)?cameraDistance-1/(u/(cameraDistance-a[2])+v/(cameraDistance-b[2])+w/(cameraDistance-c[2])):u*a[2]+v*b[2]+w*c[2],j=y*W+x;if(z>depth[j]+1e-8){depth[j]=z;rgba.set([...color,255],j*4);}}
   }
   await sharp(rgba,{raw:{width:W,height:H,channels:4}}).png().toFile(out+'/'+name+'.png');
  }

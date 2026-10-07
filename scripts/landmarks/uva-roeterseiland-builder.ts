@@ -113,6 +113,35 @@ export function buildUvaRoeterseiland(_w: number, _d: number, b: BuildingTools):
  for(const q of [-3.90,3.90])annexFace(22.5+q,4.05,.13,7.3,.13,'dark','north-annex-glassblock-outer-frame',.41);
  for(const y of [4.05,11.22])annexFace(22.5,y,7.8,.13,.13,'dark','north-annex-glassblock-outer-frame',.41);
  annexFace(fl/2,14.15,fl,1.0,.55,'dark','north-annex-straight-roof-fascia',.25);
+ // Current municipal735 east source00061 (20Jan2025): only surveyededge30.
+ // Broad nearhalf is opaque darkbrick; narrow upper openings/ground doors
+ // cluster toward farreturn. Metricdimensions/counts are photo approximations.
+ // This shallow facing leaves unseen735 faces/CREA untouched and surveyroof intact.
+ // Per-model spec overrides use previouslyunused brick/blue slots only here.
+ // Warmblack wall/dark openings are sourcecolour approximations; frames reuse dark.
+ const lowEast=source.roofs.find(r=>r.index===735)!;
+ const ea=lowEast.rings[0][30],eb=lowEast.rings[0][31];
+ const el=Math.hypot(eb[0]-ea[0],eb[1]-ea[1]),ex=(eb[0]-ea[0])/el,ez=(eb[1]-ea[1])/el;
+ function eastFace(at:number,y:number,w:number,h:number,d:number,col:Colour,role:string,outset=.13){
+  const g=omitWallBack(new T.BoxGeometry(w,h,d),5);g.userData.role=role;
+  b.add(g,col,ea[0]+at*ex-outset*ez,y+h/2,ea[1]+at*ez+outset*ex,Math.atan2(-ez,ex));
+ }
+ const eastTop=(lowEast.minHeight+lowEast.maxHeight)/2;
+ eastFace(el/2,0,el,eastTop,.06,'brick','east-low-735-edge30-dark-brick',.035);
+ // Flat parapetline is the walltop, not an added unsupportedroof plate.
+ // Six clear upper slots represent the visible group, not a measuredcount.
+ for(const at of [11.5,12.9,14.3,15.7,17.1,18.5]){
+  eastFace(at,4.15,.68,2.65,.08,'blue','east-low-735-upper-slot');
+  for(const q of [-.38,.38])eastFace(at+q,4.1,.08,2.75,.07,'dark','east-low-735-upper-jamb',.20);
+  for(const y of [4.05,6.80])eastFace(at,y,.84,.08,.07,'dark','east-low-735-upper-head-sill',.20);
+ }
+ eastFace(9.4,.12,1.55,2.95,.08,'blue','east-low-735-service-door',.16);
+ eastFace(11.7,.12,1.30,2.95,.08,'blue','east-low-735-ground-entry');
+ for(const at of [14.0,15.5,17.0])eastFace(at,.12,.62,2.95,.08,'blue','east-low-735-ground-slot');
+ for(const [at,w] of [[9.4,1.55],[11.7,1.30],[14.0,.62],[15.5,.62],[17.0,.62]]){
+  for(const q of [-w/2-.045,w/2+.045])eastFace(at+q,.08,.09,3.07,.07,'dark','east-low-735-ground-jamb',.22);
+  eastFace(at,3.08,w+.18,.09,.07,'dark','east-low-735-ground-head',.22);
+ }
  // Critical glazing: office rhythm over the wide double-height glazed lintel.
  // Native planes lie just proud of the solid shell, with recess represented by frame.
  for(const side of [-1,1]) {

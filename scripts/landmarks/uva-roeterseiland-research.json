@@ -1,12 +1,12 @@
 {
   "modelId": "uva-roeterseiland",
-  "status": "ninth-native-independent-framing-correction; unregistered/unaccepted",
+  "status": "cycle11-source735-edge30-color-only; unregistered/unaccepted",
   "retrievedOn": "2026-10-07",
   "sourceArchive": {
     "path": "models/uva-roeterseiland",
-    "commit": "4d7e01caf1b6765a86a6a69a7a0098c61709315d",
+    "commit": "b0ac0437e7d29fde1fc7954cefbe471cb4a03a5a",
     "initialCommit": "93d26c6",
-    "previousCommit": "b97968cc37f549a2172c78518761d56d07635e25"
+    "previousCommit": "4d7e01caf1b6765a86a6a69a7a0098c61709315d"
   },
   "scopeDecision": {
     "include": "Requested REC A/B/C/D and De Brug within surveyed composite Pand0363100012185420; render full physical parent if exact installed parent is suppressed.",
@@ -534,5 +534,42 @@
     "part": "734westwindow/glassblockfields",
     "assertion": "Glassblockfield dark2column\u00d72storeymajorframing; broadupperwindows verticalmullion plusshallowheadventframing; groundtallentry/doorframefamily distinct. Existingfamilylayout remainsphotoguided estimates.",
     "confidence": "high observedhierarchy; mediumexactdimensions/counts; no hiddenfacade claims"
+  },
+  "cycle10Source735Edge30": {
+    "source": "raw/735-east-00061.jpg",
+    "sourceSha256": "7fcf8e8f7b5eb1eca74bafaa2419c790a92b3c44d9c23939f52037f6ea1c6d43",
+    "captureTimestamp": "2025-01-20T13:01:01Z",
+    "panoId": "b_20250120_1330_Track02_Sphere_00061",
+    "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20250120_1330_Track02_Sphere_00061/equirectangular/panorama_8000.jpg",
+    "rawSourceStaging": "/tmp/uva-remaining-faces-oct7",
+    "privateArchiveState": "Root verified pushed checkpointb0ac0437e7d29fde1fc7954cefbe471cb4a03a5a",
+    "assertion": "Dark brown/charcoal brick low east wall; broad near portion blank, upper narrow slots and ground entries concentrated toward far return. No signage added.",
+    "allocation": {
+      "roof": 735,
+      "edge": 30,
+      "endpoints": [
+        [
+          61.442108236355125,
+          55.724673295917455
+        ],
+        [
+          55.300108236362576,
+          36.06767329596914
+        ]
+      ],
+      "length": 20.59421795062576,
+      "shellTop": 8.376501739501954
+    },
+    "authoring": "Only20.59m edge30 shallow dark facing; six upper openings at11.5..18.5m from nearendpoint and five approximate grounddoor/slot assemblies at9.4..17m. Existing native roof plane and all other geometry retained. Source supports family/cluster; exact counts, widths, heights and groundleaf allocation are approximate. Dark palette is charcoal approximation rather than brick texture.",
+    "limits": "No transfer to edge32/CREA or adjacent edge29; no wholeparent/GPU/live acceptance.",
+    "canonicalRawPath": "models/uva-roeterseiland/raw/2026-10-07-remaining-faces/735-east-00061.jpg"
+  },
+  "cycle11Colors": {
+    "photoAuthority": "same00061 original, rootpushedprivatecommitb0ac0437e7d29fde1fc7954cefbe471cb4a03a5a",
+    "approximateNotMeasured": true,
+    "wall": "brick reservedslot #39332d warmdarkbrown",
+    "glazingAndOpaqueDoor": "blue reservedslot #202d2b darkmutedgreenblack; material remainsopaque/roughness.9 likeall nativeflatcolor panes, sourceopaqueservice role retained",
+    "frame": "existingdark #303b43 subduedgraycontrast; all otherdarkroles unchanged",
+    "slotIsolation": "Native capture verifiesbrick/blue absent from frozen cycle10 and used only edge30 incycle11. No globalmaterial/coloroverride."
   }
 }

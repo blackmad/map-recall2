@@ -1,0 +1,521 @@
+{
+  "date": "2026-10-07",
+  "scope": "Remaining face evidence only; frozen cycle9 unaffected",
+  "canonicalModelId": "uva-roeterseiland",
+  "bagId": "0363100012185420",
+  "poiId": "extract_landmarks_596580010",
+  "preservedCreaBagId": "0363100012164972",
+  "sourcePack": "/tmp/uva-remaining-faces-oct7",
+  "baseSourceArchiveCommit": "4d7e01caf1b6765a86a6a69a7a0098c61709315d",
+  "publicationState": "staged raw source pack; coordinator must archive/verify/commit/push before model commit",
+  "sources": [
+    {
+      "label": "a-south",
+      "target": [
+        -36.8,
+        74.2
+      ],
+      "targetHeight": 29,
+      "pano": {
+        "_links": {
+          "self": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241210_1246_Track30_Sphere_00101/"
+          },
+          "equirectangular_full": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241210_1246_Track30_Sphere_00101/equirectangular/panorama_8000.jpg"
+          },
+          "equirectangular_medium": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241210_1246_Track30_Sphere_00101/equirectangular/panorama_4000.jpg"
+          },
+          "equirectangular_small": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241210_1246_Track30_Sphere_00101/equirectangular/panorama_2000.jpg"
+          },
+          "cubic_img_preview": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241210_1246_Track30_Sphere_00101/cubic/preview.jpg"
+          },
+          "thumbnail": {
+            "href": "https://api.data.amsterdam.nl/panorama/thumbnail/b_20241210_1246_Track30_Sphere_00101/"
+          },
+          "adjacencies": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241210_1246_Track30_Sphere_00101/adjacencies/"
+          }
+        },
+        "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241210_1246_Track30_Sphere_00101/cubic/",
+        "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241210_1246_Track30_Sphere_00101/cubic/{z}/{f}/{y}/{x}.jpg",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            4.911232733058021,
+            52.362269044162346,
+            0.0
+          ]
+        },
+        "pano_id": "b_20241210_1246_Track30_Sphere_00101",
+        "timestamp": "2024-12-10T13:20:00Z",
+        "filename": "Job_20241210_1246_Track30_Sphere_00101.jpg",
+        "surface_type": "L",
+        "mission_distance": 5,
+        "mission_type": "bi",
+        "mission_year": "2024",
+        "tags": [
+          "mission-bi",
+          "mission-2024",
+          "mission-distance-5",
+          "surface-land"
+        ],
+        "roll": 0.7708482109011499,
+        "pitch": -0.01602615642416977,
+        "heading": -18.105479771362933
+      },
+      "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241210_1246_Track30_Sphere_00101/equirectangular/panorama_8000.jpg",
+      "path": "raw/a-south-00101.jpg",
+      "sha256": "a698972528c4defc642b1b0900e3c6193676a6464bd73f48e18be6cb7ab15049",
+      "retrievedAt": "2026-10-07T10:36:16.126284+00:00",
+      "access": "HTTP200 original bytes",
+      "rights": "Municipality Amsterdam; architectural research"
+    },
+    {
+      "label": "742-north",
+      "target": [
+        -31,
+        -42
+      ],
+      "targetHeight": 29,
+      "pano": {
+        "_links": {
+          "self": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241210_1246_Track30_Sphere_00144/"
+          },
+          "equirectangular_full": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241210_1246_Track30_Sphere_00144/equirectangular/panorama_8000.jpg"
+          },
+          "equirectangular_medium": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241210_1246_Track30_Sphere_00144/equirectangular/panorama_4000.jpg"
+          },
+          "equirectangular_small": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241210_1246_Track30_Sphere_00144/equirectangular/panorama_2000.jpg"
+          },
+          "cubic_img_preview": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241210_1246_Track30_Sphere_00144/cubic/preview.jpg"
+          },
+          "thumbnail": {
+            "href": "https://api.data.amsterdam.nl/panorama/thumbnail/b_20241210_1246_Track30_Sphere_00144/"
+          },
+          "adjacencies": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241210_1246_Track30_Sphere_00144/adjacencies/"
+          }
+        },
+        "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241210_1246_Track30_Sphere_00144/cubic/",
+        "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241210_1246_Track30_Sphere_00144/cubic/{z}/{f}/{y}/{x}.jpg",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            4.910953393392402,
+            52.364115974846456,
+            0.0
+          ]
+        },
+        "pano_id": "b_20241210_1246_Track30_Sphere_00144",
+        "timestamp": "2024-12-10T13:20:29Z",
+        "filename": "Job_20241210_1246_Track30_Sphere_00144.jpg",
+        "surface_type": "L",
+        "mission_distance": 5,
+        "mission_type": "bi",
+        "mission_year": "2024",
+        "tags": [
+          "mission-bi",
+          "mission-2024",
+          "mission-distance-5",
+          "surface-land"
+        ],
+        "roll": 4.014161184583941,
+        "pitch": -0.894877783430929,
+        "heading": 3.756868327560553
+      },
+      "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241210_1246_Track30_Sphere_00144/equirectangular/panorama_8000.jpg",
+      "path": "raw/742-north-00144.jpg",
+      "sha256": "999e39143d3db69e1cdcd715dc7f98fcca659f85c41704eb9a78fb25fe403587",
+      "retrievedAt": "2026-10-07T10:36:16.754725+00:00",
+      "access": "HTTP200 original bytes",
+      "rights": "Municipality Amsterdam; architectural research"
+    },
+    {
+      "label": "735-east",
+      "target": [
+        55.3,
+        36.1
+      ],
+      "targetHeight": 7,
+      "pano": {
+        "_links": {
+          "self": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250120_1330_Track02_Sphere_00061/"
+          },
+          "equirectangular_full": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20250120_1330_Track02_Sphere_00061/equirectangular/panorama_8000.jpg"
+          },
+          "equirectangular_medium": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20250120_1330_Track02_Sphere_00061/equirectangular/panorama_4000.jpg"
+          },
+          "equirectangular_small": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20250120_1330_Track02_Sphere_00061/equirectangular/panorama_2000.jpg"
+          },
+          "cubic_img_preview": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20250120_1330_Track02_Sphere_00061/cubic/preview.jpg"
+          },
+          "thumbnail": {
+            "href": "https://api.data.amsterdam.nl/panorama/thumbnail/b_20250120_1330_Track02_Sphere_00061/"
+          },
+          "adjacencies": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250120_1330_Track02_Sphere_00061/adjacencies/"
+          }
+        },
+        "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20250120_1330_Track02_Sphere_00061/cubic/",
+        "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20250120_1330_Track02_Sphere_00061/cubic/{z}/{f}/{y}/{x}.jpg",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            4.913235217824531,
+            52.36273225192888,
+            0.0
+          ]
+        },
+        "pano_id": "b_20250120_1330_Track02_Sphere_00061",
+        "timestamp": "2025-01-20T13:01:01Z",
+        "filename": "Job_20250120_1330_Track02_Sphere_00061.jpg",
+        "surface_type": "L",
+        "mission_distance": 5,
+        "mission_type": "bi",
+        "mission_year": "2024",
+        "tags": [
+          "mission-bi",
+          "mission-2024",
+          "mission-distance-5",
+          "surface-land"
+        ],
+        "roll": -3.3256493171925854,
+        "pitch": -0.888215622755597,
+        "heading": 116.1712158266429
+      },
+      "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20250120_1330_Track02_Sphere_00061/equirectangular/panorama_8000.jpg",
+      "path": "raw/735-east-00061.jpg",
+      "sha256": "7fcf8e8f7b5eb1eca74bafaa2419c790a92b3c44d9c23939f52037f6ea1c6d43",
+      "retrievedAt": "2026-10-07T10:36:17.193904+00:00",
+      "access": "HTTP200 original bytes",
+      "rights": "Municipality Amsterdam; architectural research"
+    },
+    {
+      "label": "a-south-far",
+      "target": [
+        -36.8,
+        74.2
+      ],
+      "targetHeight": 29,
+      "pano": {
+        "_links": {
+          "self": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241211_0954_Track02_Sphere_00220/"
+          },
+          "equirectangular_full": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241211_0954_Track02_Sphere_00220/equirectangular/panorama_8000.jpg"
+          },
+          "equirectangular_medium": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241211_0954_Track02_Sphere_00220/equirectangular/panorama_4000.jpg"
+          },
+          "equirectangular_small": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241211_0954_Track02_Sphere_00220/equirectangular/panorama_2000.jpg"
+          },
+          "cubic_img_preview": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241211_0954_Track02_Sphere_00220/cubic/preview.jpg"
+          },
+          "thumbnail": {
+            "href": "https://api.data.amsterdam.nl/panorama/thumbnail/b_20241211_0954_Track02_Sphere_00220/"
+          },
+          "adjacencies": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241211_0954_Track02_Sphere_00220/adjacencies/"
+          }
+        },
+        "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241211_0954_Track02_Sphere_00220/cubic/",
+        "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241211_0954_Track02_Sphere_00220/cubic/{z}/{f}/{y}/{x}.jpg",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            4.911856056543085,
+            52.36202114176506,
+            0.0
+          ]
+        },
+        "pano_id": "b_20241211_0954_Track02_Sphere_00220",
+        "timestamp": "2024-12-11T09:37:00Z",
+        "filename": "Job_20241211_0954_Track02_Sphere_00220.jpg",
+        "surface_type": "L",
+        "mission_distance": 5,
+        "mission_type": "bi",
+        "mission_year": "2024",
+        "tags": [
+          "mission-bi",
+          "mission-2024",
+          "mission-distance-5",
+          "surface-land"
+        ],
+        "roll": 0.8122201065710613,
+        "pitch": 3.298834962238604,
+        "heading": -107.27424646368254
+      },
+      "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241211_0954_Track02_Sphere_00220/equirectangular/panorama_8000.jpg",
+      "path": "raw/a-south-00220.jpg",
+      "sha256": "f348658362127d0442981aa7a71aa938d09d74c1c90e209ca7dd3e143d4e010b",
+      "retrievedAt": "2026-10-07T10:37:51.229748+00:00",
+      "access": "HTTP200 original bytes",
+      "rights": "Municipality Amsterdam; architectural research"
+    },
+    {
+      "label": "742-north-far",
+      "target": [
+        -40,
+        -98
+      ],
+      "targetHeight": 9,
+      "pano": {
+        "_links": {
+          "self": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241210_1246_Track30_Sphere_00151/"
+          },
+          "equirectangular_full": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241210_1246_Track30_Sphere_00151/equirectangular/panorama_8000.jpg"
+          },
+          "equirectangular_medium": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241210_1246_Track30_Sphere_00151/equirectangular/panorama_4000.jpg"
+          },
+          "equirectangular_small": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241210_1246_Track30_Sphere_00151/equirectangular/panorama_2000.jpg"
+          },
+          "cubic_img_preview": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241210_1246_Track30_Sphere_00151/cubic/preview.jpg"
+          },
+          "thumbnail": {
+            "href": "https://api.data.amsterdam.nl/panorama/thumbnail/b_20241210_1246_Track30_Sphere_00151/"
+          },
+          "adjacencies": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241210_1246_Track30_Sphere_00151/adjacencies/"
+          }
+        },
+        "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241210_1246_Track30_Sphere_00151/cubic/",
+        "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241210_1246_Track30_Sphere_00151/cubic/{z}/{f}/{y}/{x}.jpg",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            4.9108860641456,
+            52.36442636430712,
+            0.0
+          ]
+        },
+        "pano_id": "b_20241210_1246_Track30_Sphere_00151",
+        "timestamp": "2024-12-10T13:20:33Z",
+        "filename": "Job_20241210_1246_Track30_Sphere_00151.jpg",
+        "surface_type": "L",
+        "mission_distance": 5,
+        "mission_type": "bi",
+        "mission_year": "2024",
+        "tags": [
+          "mission-bi",
+          "mission-2024",
+          "mission-distance-5",
+          "surface-land"
+        ],
+        "roll": -1.6605834232046135,
+        "pitch": -0.003806287924580915,
+        "heading": -16.955446302383706
+      },
+      "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241210_1246_Track30_Sphere_00151/equirectangular/panorama_8000.jpg",
+      "path": "raw/742-north-00151.jpg",
+      "sha256": "cf7e16ebd374138a20c9be21b7ba61751070390f28050327905317efc4da2d9d",
+      "retrievedAt": "2026-10-07T10:37:51.616534+00:00",
+      "access": "HTTP200 original bytes",
+      "rights": "Municipality Amsterdam; architectural research"
+    }
+  ],
+  "rawFiles": [
+    {
+      "path": "raw/735-east-00061.jpg",
+      "sha256": "7fcf8e8f7b5eb1eca74bafaa2419c790a92b3c44d9c23939f52037f6ea1c6d43",
+      "bytes": 1898707,
+      "representation": "original HTTP response bytes",
+      "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20250120_1330_Track02_Sphere_00061/equirectangular/panorama_8000.jpg"
+    },
+    {
+      "path": "raw/742-north-00144.jpg",
+      "sha256": "999e39143d3db69e1cdcd715dc7f98fcca659f85c41704eb9a78fb25fe403587",
+      "bytes": 2610202,
+      "representation": "original HTTP response bytes",
+      "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241210_1246_Track30_Sphere_00144/equirectangular/panorama_8000.jpg"
+    },
+    {
+      "path": "raw/742-north-00151.jpg",
+      "sha256": "cf7e16ebd374138a20c9be21b7ba61751070390f28050327905317efc4da2d9d",
+      "bytes": 2010124,
+      "representation": "original HTTP response bytes",
+      "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241210_1246_Track30_Sphere_00151/equirectangular/panorama_8000.jpg"
+    },
+    {
+      "path": "raw/742-north-page2.json",
+      "sha256": "ea0449cc59f02da99fc9722646af37f19c897b222790729d071e3f5055a1eb2c",
+      "bytes": 28495,
+      "representation": "original HTTP response bytes",
+      "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.911663712773454%2C52.36371978644183&page=2&page_size=100&radius=100&srid=4326&timestamp_after=2024-01-01"
+    },
+    {
+      "path": "raw/a-south-00101.jpg",
+      "sha256": "a698972528c4defc642b1b0900e3c6193676a6464bd73f48e18be6cb7ab15049",
+      "bytes": 2750871,
+      "representation": "original HTTP response bytes",
+      "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241210_1246_Track30_Sphere_00101/equirectangular/panorama_8000.jpg"
+    },
+    {
+      "path": "raw/a-south-00220.jpg",
+      "sha256": "f348658362127d0442981aa7a71aa938d09d74c1c90e209ca7dd3e143d4e010b",
+      "bytes": 2616638,
+      "representation": "original HTTP response bytes",
+      "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241211_0954_Track02_Sphere_00220/equirectangular/panorama_8000.jpg"
+    },
+    {
+      "path": "raw/a-south-page2.json",
+      "sha256": "b31189948804d8fc4a7922fd496197b83215ab10ed3f341036b64ac3b7cc13c4",
+      "bytes": 165242,
+      "representation": "original HTTP response bytes",
+      "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.91178628959565%2C52.36271320631247&page=2&page_size=100&radius=100&srid=4326&timestamp_after=2024-01-01"
+    },
+    {
+      "path": "raw/operator-campus-map.pdf",
+      "sha256": "1c57673695d0cd6217e77206fddb47169556d491b2519eb72ba32f76ee818923",
+      "bytes": 2316413,
+      "representation": "original HTTP response bytes",
+      "sourceUrl": "https://campus.uva.nl/binaries/content/assets/subsites/huisvestingsontwikkeling/en/real-estate-development/mt_roeterseilandcampus_en_site.pdf"
+    }
+  ],
+  "projection": {
+    "script": "project-new.py",
+    "worldAlignedNorthCentre": true,
+    "headingApplied": false,
+    "cameraHeightApprox": 2.5,
+    "horizontalFovDegrees": 90,
+    "viewport": [
+      1200,
+      900
+    ],
+    "warning": "Perspective recognition view; not rectified measurement. Low resolution and photographed blur limit exact opening counts."
+  },
+  "decisions": [
+    {
+      "roof": 735,
+      "edge": 30,
+      "state": "exposed and source-supported for targeted authoring",
+      "endpoints": [
+        [
+          61.442108236355125,
+          55.724673295917455
+        ],
+        [
+          55.300108236362576,
+          36.06767329596914
+        ]
+      ],
+      "length": 20.59,
+      "topHeight": 8.38,
+      "outward": [
+        0.95453,
+        -0.29812
+      ],
+      "source": "raw/735-east-00061.jpg",
+      "projection": "processed/735-east-alternate.jpg",
+      "captureDate": "2025-01-20T13:01:01Z",
+      "assertion": "Low east terminal facade is dark brown/charcoal brick with a flat parapet. Broad near section is opaque/blank; toward the far endpoint is an upper group of narrow upright glazing slots and ground door openings. Preserve the blank section as a recognition feature rather than covering it with generic windows.",
+      "confidence": {
+        "visibleFacadeAndMaterial": "high",
+        "surveyEdgeAllocation": "medium-high from camera/outline overlay",
+        "openingCountAndMetricDimensions": "medium/approximate; must compare native authoring view"
+      },
+      "authoringLimits": "Only edge30. Near [61.442,55.725] maps to image left foreground; far [55.300,36.068] maps near rear return. Roughly six visible upper narrow openings toward far half; exact count/dimensions not survey measurements. Do not transfer to edge32 or CREA. Keep surveyed roof plane, not flat unsupported roof plate.",
+      "currentGeometry": "cycle9 survey735 remains concrete massing without source-specific exposed terminal treatment; no existing matching facade roles."
+    },
+    {
+      "roof": 735,
+      "edge": 32,
+      "state": "exposed alley face, still occluded in inspected sources",
+      "length": 31.39,
+      "assertion": "No campus roof immediately outside edge32 at five survey samples. CREA sits across the narrow exterior gap; nearest outward camera is inside/behind its sight obstruction. This is not evidence of an actual party wall.",
+      "confidence": "high survey separation; no valid opening/material evidence for edge32",
+      "source": "cached raw/oct7-targeted-735-east.jpg (2025-01-20T13:00:41Z)",
+      "nextAction": "Do not repeat same blocked station. Opposite canal-side view/architect elevation or source-specific in-alley station needed."
+    },
+    {
+      "roof": 742,
+      "edges": [
+        26,
+        27
+      ],
+      "state": "lower wall adjacent; upper band exposed and unresolved",
+      "assertion": "Edges26/27 lengths12.59/11.03m abut roof747 height7.99m. Their survey tops are39.15m, so adjacency covers only lower8m and cannot dismiss the remaining31m facade as party wall. Edge14 abuts45.11m bar722 and is genuinely internal in this massing.",
+      "sources": [
+        "survey-adjacency.json",
+        "raw/742-north-00144.jpg (2024-12-10T13:20:29Z)"
+      ],
+      "confidence": "high geometric height difference; no validated source window rhythm",
+      "nextAction": "The alternate outside street view exposes a distant dark bar but cannot isolate742 upper face from722; retain source gap rather than mirror generic slots."
+    },
+    {
+      "roof": 748,
+      "face": "A rear/south terminal",
+      "edges": [
+        12,
+        19
+      ],
+      "state": "lower wall internal/occluded; upper rear remains exposed, partially visible but not authoring-resolved",
+      "assertion": "Roof708 adjoining southern boundary rises12.22m, while A rises43.58m. Existing and alternate west/southwest street views show A upper horizontal band architecture above the pavilion but insufficient distinct rear-face extent. Far southern view hits a different foreground rounded-window building and supplies no A facade truth.",
+      "sources": [
+        "cached raw/oct7-targeted-a-south.jpg (2024-12-10T13:20:03Z)",
+        "raw/a-south-00101.jpg (2024-12-10T13:20:00Z)",
+        "raw/a-south-00220.jpg (2024-12-11T09:37:00Z)"
+      ],
+      "confidence": "high adjacency; medium visible upper family; unresolved rear allocation",
+      "nextAction": "Useful rear courtyard/roof-level architect view needed; do not describe whole rear as unexposed or copy neighboring rounded-window building."
+    },
+    {
+      "roof": 755,
+      "edge": 2,
+      "state": "candidate source-supported northern canal face; allocation requires independent comparison",
+      "length": 45.68,
+      "source": "raw/742-north-00151.jpg",
+      "projection": "processed/742-north-far-alternate.jpg",
+      "captureDate": "2024-12-10T13:20:33Z",
+      "assertion": "Canal-side visible low white facade has broad dark rectangular window groups in a regular pale panel grid, with a higher white volume set behind it. This is a useful current source for the long north perimeter. Exact correspondence of each stepped facade section to755/756 must be checked against source-native view before authoring; do not put the higher volume height onto755.",
+      "confidence": "high observed facade family; medium source-to-roof allocation",
+      "nextAction": "Root independent overlay/photo review can authorize a bounded755 canal treatment if allocation agrees."
+    },
+    {
+      "roofs": [
+        686,
+        687,
+        745,
+        747
+      ],
+      "state": "mixed internal lower edges and exposed bands; no complete source detail",
+      "assertion": "686 edges2/3 lengths27.27/14.94m have no immediate adjoining roof and remain exposed; edge5 abuts747 only to7.99m leaving7.24m upper band; edge6 abuts74916.82m and is internal. 687 edge11 abuts75626.66m, but edge14 length15.55m is free.745 edges0/13 meet taller756/755.747 edges10/30/31/37 meet taller686/742/756. These individual shared segments may omit hidden detail; other free segments cannot be blanket-cleared.",
+      "source": "survey-adjacency.json",
+      "confidence": "high survey adjacency screening; source appearance unresolved",
+      "nextAction": "Use survey adjacency to reduce only internal-face research. Exposed courtyard-facing fields need a source view/elevation; no invented pane pattern."
+    },
+    {
+      "source": "raw/operator-campus-map.pdf",
+      "state": "access successful but unsuitable current facade authority",
+      "assertion": "Despite search freshness, inspected PDF masthead dates April2013. Its first page is a campus newsletter, not an architectural elevation. Do not interpret as current geometry evidence.",
+      "confidence": "high inspected date"
+    }
+  ],
+  "accessState": {
+    "attemptDate": "2026-10-07T10:40:41.690805+00:00",
+    "network": "successful downloads; five original panoramas and two API page bodies",
+    "boundedStations": "Three alternate stations plus two farther tests. Reused original four earlier stations and cached architect references. No repeated same obstructed station.",
+    "gaps": "Remaining view coverage/physical occlusion, not unavailable server. No acquired architectural elevation for upper742/A rear/courtyard."
+  }
+}

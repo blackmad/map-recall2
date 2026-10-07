@@ -40,6 +40,10 @@
   "scopeWarning": "Suppression is planned only and unsafe until full composite physical parent is modeled and bridge/courtyard/annex acceptance complete. CREA Pand0363100012164972 retained. Do not register this source-only spec.",
   "sourceArchive": {
     "path": "models/uva-roeterseiland",
-    "commit": "4d7e01caf1b6765a86a6a69a7a0098c61709315d"
+    "commit": "b0ac0437e7d29fde1fc7954cefbe471cb4a03a5a"
+  },
+  "materialOverrides": {
+    "brick": "#39332d",
+    "blue": "#202d2b"
   }
 }

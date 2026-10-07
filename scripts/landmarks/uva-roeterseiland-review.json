@@ -1,14 +1,14 @@
 {
   "modelId": "uva-roeterseiland",
   "date": "2026-10-07",
-  "phase": "ninth-cycle-independent-734-framing-correction",
+  "phase": "cycle11-source735-edge30-color-only",
   "status": "draft-not-accepted-do-not-register-or-suppress",
-  "builderSha256": "73031dfe9b43aad0569521b48f162580baf49b6806325fae284f96fd71ba121c",
+  "builderSha256": "824667f737a37607f74fc2962fb1e583ba8b8cd1e5ad1af29fa013f1b6d5f7d4",
   "sourceArchive": {
     "path": "models/uva-roeterseiland",
-    "commit": "4d7e01caf1b6765a86a6a69a7a0098c61709315d",
+    "commit": "b0ac0437e7d29fde1fc7954cefbe471cb4a03a5a",
     "initialCommit": "93d26c6",
-    "previousCommit": "b97968cc37f549a2172c78518761d56d07635e25"
+    "previousCommit": "4d7e01caf1b6765a86a6a69a7a0098c61709315d"
   },
   "evidenceDirectory": "artifacts/uva-roeterseiland-massing-20261006",
   "sourceFacingComparisons": [
@@ -86,12 +86,24 @@
       "reference": "../map-recall2-source-data/models/uva-roeterseiland/processed/oct7-targeted-northlow-west-perspective.jpg",
       "finding": "Approximateactualnearstreetstation reveals strong2x2glassblockhierarchy,verticallydividedbroaduppergroups andtallgrounddoorframes. Nativepanelposition/tiers/roofheldunchanged.",
       "pending": "Independentcurrentreview; no compressedsource-facingGPU/game/suppression acceptance."
+    },
+    {
+      "render": "cycle10/735-edge30-source.png",
+      "reference": "/tmp/uva-remaining-faces-oct7/processed/735-east-alternate.jpg",
+      "finding": "Edge30 darkblanknearhalf plusclusterofnarrowupperglass/groundentries; exactsurveyedge30 only. Source/nativecamera comparison available incycle10/735-source-comparison.png.",
+      "pending": "Independent scopedreview; sourcearchive commit pending; physicalparent rest/GPU/gallery/live/neighbor/performance pending."
+    },
+    {
+      "render": "cycle11/735-source-comparison.png",
+      "reference": "Private sourcecommitb0ac0437e7d29fde1fc7954cefbe471cb4a03a5a/raw/2026-10-07-remaining-faces/735-east-00061.jpg",
+      "finding": "Warmdarkwall/darkgroundpanes nowcontrast withservicedoor/frame; source/low/closecomparisons preserve geometry.",
+      "pending": "Root/freshindependent affectedcolorreadability; wholeparentheld."
     }
   ],
   "checks": {
     "command": "node --import tsx scripts/check-uva-roeterseiland-geometry.ts --render",
     "result": "pass",
-    "triangles": 35092,
+    "triangles": 35602,
     "finiteNativeBounds": true,
     "upwardRoofNormals": true,
     "canalAndBankVoidRays": true,
@@ -119,15 +131,17 @@
     "compressedDraftBudget": {
       "model": "uva-roeterseiland",
       "status": "unaccepted artifact only; no registration/version/suppression",
-      "file": "artifacts/uva-roeterseiland-massing-20261006/cycle9-unaccepted-draft.glb",
-      "sha256": "bc00dc572f0dd977539d0e6043da0d1cca341f6ec15206f80b0f041ed35efa01",
-      "bytes": 490076,
-      "decodedTriangles": 35092,
+      "file": "artifacts/uva-roeterseiland-massing-20261006/cycle11-unaccepted-draft.glb",
+      "sha256": "426c8e35e6e4e083b2dd3d9c93b1917c712477cc338650217ce31788db1fd77a",
+      "bytes": 499432,
+      "decodedTriangles": 35602,
       "textures": 0,
       "compression": "sameproduction weld/dedup/prune/meshopt medium",
       "limit": "decoded budget/finiteness only; no compressed first-hit/render/live acceptance"
     },
-    "backPruneViews": "8source-facingCPUviews pixel-identicalto fullboxframingrepair; Afront8pixels/nativeoverview9boundarypixels differ (<0.0012%). Exactcomparisons preserved. BroaderB/C/Asideribbon pruning discarded afterobliquevisible difference."
+    "backPruneViews": "8source-facingCPUviews pixel-identicalto fullboxframingrepair; Afront8pixels/nativeoverview9boundarypixels differ (<0.0012%). Exactcomparisons preserved. BroaderB/C/Asideribbon pruning discarded afterobliquevisible difference.",
+    "east735FirstHits": "57sourceedge fractionalglass/blank/framing samples pass in both nativebuilder andcompressedexport; edge30 tangents/height/extents pass",
+    "edge735ColorFirstHits": "ActualRGB wall39332d/glass-service202d2b/frame303b43 sampled nativeanddecoded; onlybrick/blue slots isolatededge30."
   },
   "failedOrLimitedEvidence": [
     "Cycle1 deep portal failed: original glazing was essentially flush and ground-up survey shell728 flattened the hall; preserved before repair.",
@@ -135,20 +149,22 @@
     "Current exposed bar bank faces and A north ribbons now have source-supported rhythm; other low annex facades still lack full source-confirmed identities. Full parent suppression remains withheld.",
     "Source3439 slot/ribbon allocation to northern patch756 is an inference requiring independent native confirmation.",
     "Source3438 supports opaque rectangular roof681 enclosure family; exact classification/equipment height remains medium confidence. Survey height retained; no claim of photo-measured roof.",
-    "No compressed export, gallery/live context, pointer/card/route checks or GPU performance evidence.",
+    "Compressed draft CPU-only; no gallery/live context, pointer/card/route checks or GPU performance evidence.",
     "Bridge final widths, six stair rises and height/ramp estimates are approximate; proposal sketches are not treated as built dimensions.",
     "Cycle3 north pavilion only detailed18m corner, leaving observable west frontage blank; preserved before cycle4. Other annex faces remain unresolved.",
     "Cycle5 source401 southern lowerbank curtain test hit survey689 atv27.2,y2 (3.53m away). Genuine9m annexe retained; southern stair glass limitedabove12.65m. Lowerbank facade unresolved.",
     "Cycle6 initial Bterminal pane loop used wholeboundingbox33m width includingnorthspur; actual19m southendnativeedge correction preserved.",
-    "Independent cycle6 review FAILED: clerestory43.3\u201343.78/trim43.88 exceeded Aroof43.5845 and low ribbonphaseleft2.78m blankband; equal3.4m pavilion tiers missed shortground/tallupper proportions. Cycle7 sourceguided phase/tiercorrection awaiting re-review.",
-    "Independentcycle8 FAILED principal2x2glassblocksubdivision/upperverticalwindowmullions/grounddoorfamily; exact37142builder/CPU/reportpreserved ascycle8-* + independent-cycle8-review.json. Cycle9repairs onlyobservedframingfamily, awaitingre-review.",
-    "Cycle9 firstproductionmediumdraftGLB521468bytes FAILED500000budget. Preserve originalfailure/GLB. Conservativeopaque-wall-back cleanupkeepscriticalexposedfront/sidefaces; final490076bytes. No changedcompressionlevel/detailreduction."
+    "Independent cycle6 review FAILED: clerestory43.3\u201343.78/trim43.88 exceeded Aroof43.5845 and low ribbonphaseleft2.78m blankband; equal3.4m pavilion tiers missed shortground/tallupper proportions. Cycle7 sourceguided phase/tiercorrection independently passed within scope.",
+    "Independentcycle8 FAILED principal2x2glassblocksubdivision/upperverticalwindowmullions/grounddoorfamily; exact37142builder/CPU/reportpreserved ascycle8-* + independent-cycle8-review.json. Cycle9 observedframingfamily independently passed within scope; fullparent held.",
+    "Cycle9 firstproductionmediumdraftGLB521468bytes FAILED500000budget. Preserve originalfailure/GLB. Conservativeopaque-wall-back cleanupkeepscriticalexposedfront/sidefaces; final490076bytes. No changedcompressionlevel/detailreduction.",
+    "Root cycle10 sourcecomparison colorFAIL: coldcharcoalwall/brightbluegroundpanes/opaqueservice blendedwithwall. Frozen cycle10hash/screenshots/review preserved. Cycle11 materialonlyrepair pendingaffectedreadabilityreview."
   ],
-  "independentReviewer": "Cycle6FAIL andcycle8FAILpreserved; cycle7boundedA/pavilionPASS. Cycle9new734framingandconservativebackcleanup currentre-reviewpending.",
+  "independentReviewer": "Cycle9 scoped734PASS. Root reportscycle10 scoped112FrontSide geometryPASS/readerreleased; rootsourcecolorFAIL preserved. Cycle11 affectedmaterial/readabilityreview pending; wholeparentheld.",
   "nextCycle": [
-    "Independentcycle9source-facingclose/contextreview for734framing +budgetcleanup; freeze exactbuilderhash above.",
-    "Recordedactualsourcegap: target-specificcurrentstreetcaptures projectAbackinto708pavilion,735eastinto retainedCREA,742northinto foreground734. Keepthese unseen assemblies unresolved andfullparentsuppression withheld.",
-    "Root compressed export/gallery/live/neighbors/performance/POI acceptance follows meaningfullycomplete native composite."
+    "Fresh independent affectededge30 color/readability andactualdecodedRGB review of frozen cycle11;112cycle10 geometryrays can bereused becauseall nativebuffers unchanged.",
+    "Root sourcecheckpoint b0ac0437e7d29fde1fc7954cefbe471cb4a03a5a nowpushed; maintain sourcecommit provenance beforepublicmodelcommit.",
+    "Remaining735edge32/otherfaces,742exposedupper,Aupperrear/courtyard remainunresolved;755allocation belongsroot.",
+    "Wholephysicalparent remainsheld; noGPU/gallery/live/neighbor/performance orroute-map-card acceptance."
   ],
   "preservedFailedEvidence": [
     "cycle1-builder.ts",
@@ -247,7 +263,7 @@
       "height": 8.7,
       "area": 1237,
       "location": "nativeu4..42,v4..72; east/southeastlargeannex",
-      "state": "unpictured exteriorfacades remainblank; CREAneighborretained, photographicfeatureassignmentunresolved"
+      "state": "735edge30 targetedcycle10; edge32 andremainingexteriorfaces unresolved; CREAretained; no wholeparentacceptance."
     },
     {
       "roofs": [
@@ -296,5 +312,96 @@
     "broadUpperWindows": "mainverticalmullion.08m plusnarrowheadtransoms at.72/.88 ofpaneband; no equal3horizontalstrip substitute",
     "groundFamily": "tall doubleleaf/entrance stiles andhighhead; exactindividualdoorallocation notclaimed",
     "confidence": "high sourceassembly hierarchy; medium inferredframewidths/transom heights/pane counts; no newhiddenregiontransfer"
+  },
+  "cycle9FrozenBefore735": {
+    "phase": "cycle9 734 framing correction and bounded wall-back pruning",
+    "builderSha256": "73031dfe9b43aad0569521b48f162580baf49b6806325fae284f96fd71ba121c",
+    "checkSha256": "e87fe8ad726a25401aa42f88cb45db210a1bb0db8392f1aea800242a4f623bf9",
+    "sourceArchiveCommit": "4d7e01caf1b6765a86a6a69a7a0098c61709315d",
+    "sourceArchivePath": "models/uva-roeterseiland",
+    "exportSha256": "bc00dc572f0dd977539d0e6043da0d1cca341f6ec15206f80b0f041ed35efa01",
+    "triangles": 35092,
+    "exportBytes": 490076,
+    "textures": 0
+  },
+  "cycle10": {
+    "builderSha256": "1272c46d4804c96d64e7b2acc1ca92ff149a6aecf46d47a597eea25ba09dff6b",
+    "checkSha256": "e032f1bfd8e4d10dddf817533acd93c79fcb597d1f60997660abd1007157d642",
+    "exportSha256": "b7c1cc47d6f94df62ac1860068c3fa054e1b713e00b7115e3fbbf35f9eea16cf",
+    "triangles": 35602,
+    "bytes": 497924,
+    "textures": 0,
+    "scope": "Only source-supported735edge30; no unrelated geometry pruning",
+    "evidenceDirectory": "artifacts/uva-roeterseiland-massing-20261006/cycle10",
+    "geometryCheck": "PASS35602tri; all inherited checks plus57 nativefirsthit/fractionalopening/blank/framing samples andnativeedgeextent/topbounds",
+    "decodedCheck": "PASS57 fractional materialfirsthits on actual compressedexport",
+    "lint": "npm run lint PASS",
+    "authorSourceComparison": "Inspected00061 source, source-facingrender andnativeclose. Broad nearblankfield andfaropeningcluster read correctly on edge30. Adjacentedge29 remains visiblypale; CREAcontext is plain exactfootprintsurrogate; these are retained unresolvedcontext, not acceptedarchitecture. Dark palette approximates observedcharcoal but is coolerthanphoto.",
+    "cpuRendererCorrection": "Perspective depth now interpolates reciprocalcamera depth. Initial directlinearz causedparentwall showthrough despite firsthits; rerenderedcycle10 removes artifact. Preserved all priorcycle9 frames/reports. No geometry/roofpruning performed incycle10.",
+    "camera": {
+      "nativeStation": [
+        75.81002963231316,
+        2.5,
+        67.65451527690118
+      ],
+      "target": [
+        55.3,
+        7,
+        36.1
+      ],
+      "horizontalFovApprox": 90,
+      "viewport": [
+        1200,
+        900
+      ],
+      "projection": "Sameworldaligned northcentre municipalpanorama projection; sourcefocal match approximate, notrectifiedmeasurements"
+    },
+    "sourceArchiveState": "new735original pendingrootprivatearchive; no publicmodelcommit authorized",
+    "reviewState": "fresh independent scopedreview pending; WHOLE PARENT HELD",
+    "failedEvidencePreserved": [
+      "cycle5-stair-lower-failed.json",
+      "cycle6-end-invalid-bounds-failed.json",
+      "independent-cycle7-review.json",
+      "independent-cycle8-review.json",
+      "cycle9-over-budget-failed.glb",
+      "cycle9-over-budget-failed.json",
+      "cycle9-broad-back-prune-visible-difference.json",
+      "cycle9-back-prune-render-comparison.json",
+      "cycle10/failed-linear-perspective-depth/735-edge30-source.png"
+    ]
+  },
+  "cycle11": {
+    "builderSha256": "824667f737a37607f74fc2962fb1e583ba8b8cd1e5ad1af29fa013f1b6d5f7d4",
+    "checkSha256": "38b41f9442ad1d8a849a0e857e3d43c32ba81d605272d05fbbe5d57ffe191a7e",
+    "specSha256": "9fdc0ac450d3a2c242801b1cfabfb939dd6dd6825a0e9f70d7e402684969edb0",
+    "exportSha256": "426c8e35e6e4e083b2dd3d9c93b1917c712477cc338650217ce31788db1fd77a",
+    "triangles": 35602,
+    "bytes": 499432,
+    "textures": 0,
+    "geometryUnchangedFromCycle10": true,
+    "sourceArchiveCommit": "b0ac0437e7d29fde1fc7954cefbe471cb4a03a5a",
+    "evidenceDirectory": "artifacts/uva-roeterseiland-massing-20261006/cycle11",
+    "scope": "Edge30 color/material only; all2995 geometry primitive position/normal/index buffers byte-identical tocycle10. No newpruning/frames/countchanges.",
+    "materialColors": {
+      "brick": "#39332d",
+      "blue": "#202d2b"
+    },
+    "reusedFrameRGB": "#303b43",
+    "firstHitColors": "nativeactualwall/glazing/service/frame RGB probes PASS; compressed57fractionalglass/blank/framing/service material+RGB firsthits PASS",
+    "sourceVisualReview": "Author reopenedsource/close/low/sourcecamera. Warmwall and darkservice/glazing nowreadagainstunchangeddarkframes; opaque service distinctfromwall. Darkopenings share flatopaque material color anddo notclaim serviceglass. Groundopenings no longer brightblue. Exactcolor/exposure/counts remain approximate. Root/freshindependent affectedcolor/readability review pending.",
+    "failedAttempts": [
+      {
+        "file": "cycle11/four-color-overbudget-failed.glb",
+        "bytes": 501116,
+        "finding": "Fourseparatecustomwall/glazing/service/frame materialgroups exceededbudget; original geometry/config preserved."
+      },
+      {
+        "file": "cycle11/three-color-overbudget-failed.glb",
+        "bytes": 500484,
+        "finding": "Merging service/frame stilloverbudget; no geometry/pruning attempted."
+      }
+    ],
+    "finalBudgetDecision": "Two previouslyunusedslots warmwall/darkopenings plus existingdarkframe; geometry/fulldetail retained;499432B only568B headroom.",
+    "geometryReviewReuse": "Root reports independentcycle10 scoped112FrontSide geometryPASS/readerrelease; sourcecolor/readabilityfailure correctedhere, freshaffectedmaterial review required. No claim ofwholescene/GPU acceptance."
   }
 }
