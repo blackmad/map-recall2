@@ -1048,9 +1048,19 @@
       "id": "former-nieuw-dakota",
       "task": "Former Nieuw Dakota building at NDSM",
       "priority": "high",
-      "status": "queued",
+      "status": "published-visual-and-game-integration-verified-performance-followup",
       "requestedOn": "2026-10-05",
-      "nextAction": "Resolve current venue/site identities and surveyed building scope; archive original references; build source-backed house-style model with destination, pin/label and meaningful sourced card. Preserve separate tenants, neighboring structures and existing Faralda model."
+      "nextAction": "Existing accepted original model is already published with unchanged fingerprint. Preserve former-venue facts. Broader desktop/touch camera-pan performance remains a follow-up; do not rebuild the unchanged asset or claim fresh hosted verification.",
+      "acceptedAssetReconciliation": {
+        "date": "2026-10-07",
+        "modelId": "nieuw-dakota",
+        "assetSha256": "1579cea94e829e387c482fc3cb48b4a590c4dcaf640fddbfcb59f4818e3a7b5a",
+        "sourceCommit": "336ad5747f53149c41107f5fd05f01dd49ca87cc",
+        "sourcePath": "models/nieuw-dakota/validation/final-20261006",
+        "currentPrivateArchiveContainsAcceptedEvidence": true,
+        "verification": "Current committed GLB is byte-identical to archived accepted GLB; archived source/gallery/native/exact-mask/neighbor/route/pin/physical-card/fallback evidence reread. No new runtime review claimed.",
+        "performanceLimit": "Historical 60-frame stationary visible/hidden comparison, p50 8.3ms/p95 9.1ms; no broader game/touch/pan pass."
+      }
     },
     {
       "id": "treehouse-ndsm",
