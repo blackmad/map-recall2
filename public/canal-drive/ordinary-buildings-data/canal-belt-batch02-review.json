@@ -1,0 +1,350 @@
+{
+  "reviewedAt": "2026-10-07T07:41:05.401169+00:00",
+  "sourceCommit": "056663b9872690367e3b82b3627858e8015d7825",
+  "gallery": {
+    "reviewedAt": "2026-10-07T07:10:38.823093+00:00",
+    "reviewer": "independent-gallery-source-review",
+    "reviewVersion": 3,
+    "scope": "Actual repaired gallery image comparison against previously inspected raw architect and municipal references; no GPU, game, performance or git mutations",
+    "overall": "gallery-recognition-pass-game-review-still-required",
+    "visualGalleryAcceptance": true,
+    "fullScopeComplete": false,
+    "captureDirectories": [
+      "gallery-closer-v3",
+      "gallery-repaired-v2"
+    ],
+    "provenanceCaution": "Root reports original gallery-first image paths were accidentally reused during repair. Initial failure report and failed GLB/CPU evidence remain preserved. Any failed-deck-reconstructed images are dated reconstructions, not original captures. This review judges the actual v3/v2 repaired images only.",
+    "models": [
+      {
+        "id": "0363100012167569",
+        "verdict": "gallery-recognition-pass",
+        "criticalFailures": [],
+        "resolvedFailures": [
+          "Equal minor fins no longer continue through the retail plinth. Three broad lower bays, stronger three-group piers and distinct central double-leaf entry are directly visible in v3 close and v2 high-angle capture."
+        ],
+        "visualFindings": [
+          "Two upper rows of nine narrow office openings remain distinct from broad lower retail glazing.",
+          "Source-colored pale piers have legible relief and stronger main divisions.",
+          "Two aluminum rear glass tiers remain exposed; terrace rails and thin elevated platform survive.",
+          "Surveyed roof steps and native perimeter remain distinct rather than a padded box."
+        ],
+        "sourceComparison": [
+          "raw/winhov-1.jpg and raw/winhov-8.jpg: front relief and broad retail/central entrance",
+          "raw/winhov-0.jpg: narrow office rows and floor-band rhythm",
+          "raw/winhov-13.jpg: exposed rear glass tiers and light aluminum framing",
+          "raw/winhov-11.jpg and raw/winhov-14.jpg: stepped terrace/connected ensemble"
+        ],
+        "remainingUncertainty": [
+          "Platform association is medium-confidence recognition interpretation; exact 0.18m underside thickness is estimated. No claim of structural precision or survey/photo chronological order.",
+          "Exact neighboring historic house/church preservation requires actual scene check."
+        ],
+        "recognitionDetailJudgment": "Fine stone jointing and individual fluting do not block useful recognition; defining front grouping is now present."
+      },
+      {
+        "id": "0363100012168534",
+        "verdict": "gallery-recognition-pass",
+        "criticalFailures": [],
+        "resolvedFailures": [
+          "Withdraw previous review requirement for ground plus four upper NE tiers. It inherited an incorrect opposite-wing roof association. Correct NE outer roof is approximately13.15m and supports ground plus three upper tiers; those four total glazing bands are directly visible in repaired rear image."
+        ],
+        "visualFindings": [
+          "Broad pale street facade retains three office tiers, taller dark-spandrel first tier, two revolving entry assemblies and two top relief silhouettes.",
+          "Brown rear wall and pale broad multipane groups remain legible and distinct from front.",
+          "Top exterior glazing row is clipped and attached beneath local roof; no detached or invented upper panes are visible.",
+          "High inset storage wall remains separate from lower NE outer wall. Conservative blank higher walls are documented source gaps."
+        ],
+        "sourceComparison": [
+          "processed/reference-0363100012168534-2025-0.jpg and -2022-0.jpg: front tier proportions, entries and reliefs",
+          "processed/reference-0363100012168534-2018-4.jpg and -5.jpg plus raw/TMX7316010203-001054_pano_0000_000796.jpg: brown NE rear, broad openings and loading shutter; actual January2019 captures",
+          "survey-interpretation-correction.json updated2026-10-07T07:03:52Z: correct positiveX NE part association; earlier four-upper claim explicitly withdrawn"
+        ],
+        "remainingUncertainty": [
+          "Rear top is cropped in January2019 source photos; precise third-row dimensions remain approximate and constrained by measured roof.",
+          "Opening arrangements on high inset storage step walls remain unknown; avoid unsupported window transfer."
+        ],
+        "recognitionDetailJudgment": "Simplified sculptural silhouette/carving and omitted small plaques remain acceptable at ordinary background recognition scope."
+      }
+    ],
+    "minorCorrections": [
+      {
+        "severity": "documentation",
+        "finding": "Gallery trait text still uses rear2018 source as a date label. Replace with January2019 capture (legacy mission2018) to match corrected source authority."
+      }
+    ],
+    "rootRemainingGates": [
+      "Actual game placement, first-hit facade visibility, exact suppression and neighboring geometry retention.",
+      "Open-space and fallback restoration checks.",
+      "Actual performance evidence and final source archival/release checks."
+    ],
+    "evidenceBasis": "Visual findings derive from the images, not triangle counts, test output or CPU probe success."
+  },
+  "game": {
+    "reviewedAt": "2026-10-07T07:32:49.037533+00:00",
+    "scope": "Follow-up actual Kalver game PNG review; prior provisional game review retained unchanged",
+    "overall": "game-recognition-pass-with-explicit-partial-rear-visibility",
+    "criticalFailures": [],
+    "primaryFrontGateFulfilled": true,
+    "kalverFront": {
+      "capture": "game-close/kalver-front.png",
+      "visualVerdict": "pass",
+      "findings": [
+        "Three broad doubleheight retail bays directly visible.",
+        "Distinct central double-leaf door assembly visible below central retail glazing.",
+        "Two narrow upper-office rows and stronger three-group piers directly visible.",
+        "Opposite buildings and adjacent streetfront shells remain installed; no neighbor removal was needed to expose front."
+      ],
+      "comparison": "Matches defining relationships in cached architect raw/winhov-1.jpg and -8.jpg and actual repaired v3 gallery."
+    },
+    "kalverRear": {
+      "capture": "game-close/kalver-rear.png",
+      "visibility": "partial",
+      "findings": [
+        "Thin railing/platform edge and upper glass strip are partially visible.",
+        "Lower roof steps and native perimeter arrangement remain exposed.",
+        "Adjoining roofs obscure much of both glass tiers; not enough actual-game exposure to independently verify every pane/row."
+      ],
+      "acceptanceLimit": "No new critical missing assembly observed. Cached rear photo/section, actual close gallery and root first-hit checks support geometry, but this image does not prove full runtime rear-row visibility. Medium-confidence platform association and estimated underside remain documented."
+    },
+    "singelVerdict": "Previous actual-game visual pass retained; no new Singel change reviewed in follow-up.",
+    "sceneJudgment": "Primary-front gate now fulfilled, native footprints/relative heights/open stepped volumes remain consistent and neighboring buildings are visibly present. No remaining critical architectural failure identified in reviewed game/gallery evidence.",
+    "cameraProvenance": {
+      "capturedAt": "2026-10-07T07:24:48.890Z",
+      "method": "Supported game 3D tilt and detached camera; no geometry or neighbor hiding reported in evidence record",
+      "frontPitch": 20,
+      "rearPitch": 12,
+      "recordedZoom": 19.85,
+      "riderMovement": "Only submillimetre recorded differences; effectively fixed across captures."
+    },
+    "remainingRuntimeUnknowns": [
+      "Full Kalver rear glass-row visibility is not independently demonstrated by captured game angles.",
+      "This review does not replace root exact suppression/picking/fallback/performance evidence."
+    ],
+    "supersedesOnly": "Provisional request for closer actual-game primary front; initial reports and limitations remain preserved."
+  },
+  "performance": {
+    "desktop": {
+      "models": [
+        {
+          "id": "ordinary-0363100012167569",
+          "frameMedian": 16.69999999999891,
+          "frameP95": 16.700000000000728,
+          "sampleFrames": 90,
+          "targetInstalled": 1,
+          "pick": {
+            "id": "NL.IMBAG.Pand.0363100012167569",
+            "landmarkId": "",
+            "footprintType": "Polygon",
+            "height": 20.835399627685547,
+            "screen": [
+              599.9999999886971,
+              299.9999999886972
+            ]
+          },
+          "shaderHidden": true,
+          "pyramidHidden": true,
+          "pyramidEntryCount": 0,
+          "nearbyInstalled": 494
+        },
+        {
+          "id": "ordinary-0363100012168534",
+          "frameMedian": 16.69999999999891,
+          "frameP95": 16.799999999999272,
+          "sampleFrames": 90,
+          "targetInstalled": 1,
+          "pick": {
+            "id": "NL.IMBAG.Pand.0363100012168534",
+            "landmarkId": "",
+            "footprintType": "Polygon",
+            "height": 21.04400062561035,
+            "screen": [
+              630,
+              239.99999999434857
+            ]
+          },
+          "shaderHidden": true,
+          "pyramidHidden": true,
+          "pyramidEntryCount": 0,
+          "nearbyInstalled": 545
+        }
+      ],
+      "wideFrameP95": 16.700000000000728,
+      "preReloadLongTasks": [
+        {
+          "stage": "startup",
+          "at": 590.0999999046326,
+          "ms": 92
+        },
+        {
+          "stage": "startup",
+          "at": 1054.4000000953674,
+          "ms": 54
+        },
+        {
+          "stage": "startup",
+          "at": 1275.2000002861023,
+          "ms": 172
+        },
+        {
+          "stage": "startup",
+          "at": 4388,
+          "ms": 124
+        },
+        {
+          "stage": "startup",
+          "at": 4591.099999904633,
+          "ms": 106
+        },
+        {
+          "stage": "startup",
+          "at": 4784.599999904633,
+          "ms": 75
+        },
+        {
+          "stage": "startup",
+          "at": 4902.400000095367,
+          "ms": 116
+        },
+        {
+          "stage": "startup",
+          "at": 5121.5,
+          "ms": 103
+        },
+        {
+          "stage": "startup",
+          "at": 5511.200000286102,
+          "ms": 55
+        },
+        {
+          "stage": "startup",
+          "at": 6574.900000095367,
+          "ms": 63
+        },
+        {
+          "stage": "ordinary-0363100012167569",
+          "at": 7962.5,
+          "ms": 59
+        },
+        {
+          "stage": "ordinary-0363100012168534",
+          "at": 18165.400000095367,
+          "ms": 153
+        }
+      ],
+      "delayedSuppressed": false,
+      "disabledSuppressed": false,
+      "restoredSuppressed": true,
+      "loadFailureSuppressed": false,
+      "gestureRiderStationary": false
+    },
+    "touch": {
+      "models": [
+        {
+          "id": "ordinary-0363100012167569",
+          "frameMedian": 16.699999999999818,
+          "frameP95": 16.799999999999272,
+          "sampleFrames": 90,
+          "targetInstalled": 1,
+          "pick": {
+            "id": "NL.IMBAG.Pand.0363100012167569",
+            "landmarkId": "",
+            "footprintType": "Polygon",
+            "height": 20.835399627685547,
+            "screen": [
+              165,
+              272
+            ]
+          },
+          "shaderHidden": true,
+          "pyramidHidden": true,
+          "pyramidEntryCount": 0,
+          "nearbyInstalled": 494
+        },
+        {
+          "id": "ordinary-0363100012168534",
+          "frameMedian": 16.69999999999891,
+          "frameP95": 16.700000000000728,
+          "sampleFrames": 90,
+          "targetInstalled": 1,
+          "pick": {
+            "id": "NL.IMBAG.Pand.0363100012168534",
+            "landmarkId": "",
+            "footprintType": "Polygon",
+            "height": 21.04400062561035,
+            "screen": [
+              165,
+              272
+            ]
+          },
+          "shaderHidden": true,
+          "pyramidHidden": true,
+          "pyramidEntryCount": 0,
+          "nearbyInstalled": 545
+        }
+      ],
+      "wideFrameP95": 16.700000000000728,
+      "preReloadLongTasks": [
+        {
+          "stage": "startup",
+          "at": 760.3000001907349,
+          "ms": 57
+        },
+        {
+          "stage": "startup",
+          "at": 819.3000001907349,
+          "ms": 54
+        },
+        {
+          "stage": "startup",
+          "at": 947.5,
+          "ms": 155
+        },
+        {
+          "stage": "startup",
+          "at": 3410.0999999046326,
+          "ms": 106
+        },
+        {
+          "stage": "startup",
+          "at": 3578.5999999046326,
+          "ms": 96
+        },
+        {
+          "stage": "startup",
+          "at": 3756,
+          "ms": 156
+        },
+        {
+          "stage": "startup",
+          "at": 4972.099999904633,
+          "ms": 50
+        },
+        {
+          "stage": "ordinary-0363100012168534",
+          "at": 16873,
+          "ms": 123
+        },
+        {
+          "stage": "ordinary-0363100012168534",
+          "at": 17055.800000190735,
+          "ms": 109
+        },
+        {
+          "stage": "ordinary-0363100012168534",
+          "at": 17239,
+          "ms": 109
+        }
+      ],
+      "delayedSuppressed": false,
+      "disabledSuppressed": false,
+      "restoredSuppressed": true,
+      "loadFailureSuppressed": null,
+      "gestureRiderStationary": false
+    }
+  },
+  "limits": [
+    "Actual rear game visibility partial; source/gallery/first-hit supports its geometry separately.",
+    "Warm90-frame/site AppleM4Pro and iPhone13 emulation; physicalphone untested; loading stalls remain.",
+    "Kalver12.17m source terrace deck retained with18cm estimated underside; structural supports unknown.",
+    "Singel NE outerroof13.15m, ground+3upper, Jan2019actualcapture despite2018mission filenames; prior17\u201318m/oppositewing association withdrawn."
+  ]
+}
