@@ -1,0 +1,575 @@
+{
+  "modelId": "brouwerij-het-ij",
+  "reviewBase": "b6ce5f98",
+  "currentOsmBuildingWays": [
+    {
+      "id": "w269052426",
+      "version": "4",
+      "timestamp": "2026-06-22T08:15:25Z",
+      "tags": {
+        "building": "retail",
+        "height": "18.2",
+        "ref:bag": "0363100012169757",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "source:height": "3DBAG",
+        "source:height:date": "2025-09-03",
+        "start_date": "1905"
+      },
+      "coordinates": [
+        [
+          4.9265656,
+          52.3667506
+        ],
+        [
+          4.9264743,
+          52.3666947
+        ],
+        [
+          4.9264762,
+          52.3666935
+        ],
+        [
+          4.9263451,
+          52.3666117
+        ],
+        [
+          4.9262124,
+          52.3666926
+        ],
+        [
+          4.9262645,
+          52.366725
+        ],
+        [
+          4.9262471,
+          52.3667356
+        ],
+        [
+          4.9262724,
+          52.3667514
+        ],
+        [
+          4.9262587,
+          52.3667598
+        ],
+        [
+          4.9262974,
+          52.3667839
+        ],
+        [
+          4.9262959,
+          52.3667849
+        ],
+        [
+          4.9263563,
+          52.3668225
+        ],
+        [
+          4.9263121,
+          52.3668492
+        ],
+        [
+          4.9263254,
+          52.3668573
+        ],
+        [
+          4.9263977,
+          52.3668532
+        ],
+        [
+          4.9263975,
+          52.3668523
+        ],
+        [
+          4.9265656,
+          52.3667506
+        ]
+      ]
+    }
+  ],
+  "cachedNeighborWays": [
+    {
+      "id": "w269052487",
+      "version": "3",
+      "timestamp": "2025-04-07T17:59:50Z",
+      "tags": {
+        "building": "industrial",
+        "ref:bag": "0363100012169758",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "start_date": "1725"
+      },
+      "source": "models/de-gooyer/files/osm-map.xml cached original 2026-10-05; not fresh current response"
+    },
+    {
+      "id": "w269052518",
+      "version": "5",
+      "timestamp": "2026-06-22T08:15:23Z",
+      "tags": {
+        "building": "retail",
+        "building:levels": "1",
+        "height": "3.5",
+        "ref:bag": "0363100012169759",
+        "roof:levels": "0",
+        "roof:shape": "flat",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "source:height": "3DBAG",
+        "source:height:date": "2025-09-03",
+        "start_date": "1967"
+      },
+      "source": "models/de-gooyer/files/osm-map.xml cached original 2026-10-05; not fresh current response"
+    }
+  ],
+  "currentBagParents": [
+    {
+      "type": "Feature",
+      "properties": {
+        "aantal_verblijfsobjecten": 2,
+        "bouwjaar": 1905,
+        "documentdatum": "2023-09-21",
+        "documentnummer": "GV00007167_AC00AC",
+        "gebruiksdoel": "industriefunctie,woonfunctie",
+        "geconstateerd": "N",
+        "identificatie": "0363100012169757",
+        "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012169757",
+        "status": "Pand in gebruik",
+        "verblijfsobject.href": [
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/65f7d70a-48df-5f7c-9c6c-2fa2b898109c",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/53864cf8-7d5a-5d2e-8ced-53c216d47114"
+        ]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.926325197032014,
+              52.36685691818503
+            ],
+            [
+              4.926311949718933,
+              52.366848795662776
+            ],
+            [
+              4.926356098144844,
+              52.3668221122635
+            ],
+            [
+              4.92629571854747,
+              52.366784461432516
+            ],
+            [
+              4.9262972848155675,
+              52.366783505845845
+            ],
+            [
+              4.926258524695401,
+              52.36675933082862
+            ],
+            [
+              4.926272251537632,
+              52.36675097178121
+            ],
+            [
+              4.926246926877887,
+              52.36673518066272
+            ],
+            [
+              4.9262643033810685,
+              52.36672459788783
+            ],
+            [
+              4.92621385844703,
+              52.36669313327769
+            ],
+            [
+              4.9262122538109745,
+              52.3666921293951
+            ],
+            [
+              4.92634281386061,
+              52.366612602193854
+            ],
+            [
+              4.926344941577925,
+              52.36661130725932
+            ],
+            [
+              4.926476087314565,
+              52.36669306647963
+            ],
+            [
+              4.926474166356158,
+              52.36669424538098
+            ],
+            [
+              4.926565482447014,
+              52.36675022556773
+            ],
+            [
+              4.926397355332019,
+              52.36685185136555
+            ],
+            [
+              4.926397492909429,
+              52.366852741683324
+            ],
+            [
+              4.926325197032014,
+              52.36685691818503
+            ]
+          ]
+        ]
+      },
+      "id": "2feb34ca-1c1e-5cc6-905c-51cd920a3bdb"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "aantal_verblijfsobjecten": 1,
+        "bouwjaar": 1725,
+        "documentdatum": "2023-09-21",
+        "documentnummer": "GV00007167_AC00AC",
+        "gebruiksdoel": "woonfunctie",
+        "geconstateerd": "N",
+        "identificatie": "0363100012169758",
+        "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012169758",
+        "status": "Pand in gebruik",
+        "verblijfsobject.href": [
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/abe811c5-0ef8-5dae-b50a-d9ceef92b48f"
+        ]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.92626056953206,
+              52.36685221768604
+            ],
+            [
+              4.926200336532136,
+              52.36685556926663
+            ],
+            [
+              4.926099718069225,
+              52.366861163257695
+            ],
+            [
+              4.926085246579154,
+              52.36676316792458
+            ],
+            [
+              4.9260850961012395,
+              52.36676210678985
+            ],
+            [
+              4.92624027646333,
+              52.36675348069211
+            ],
+            [
+              4.9262459618894905,
+              52.36675316129458
+            ],
+            [
+              4.92626056953206,
+              52.36685221768604
+            ]
+          ]
+        ]
+      },
+      "id": "aa64632a-6fb0-5b35-b068-babab156f417"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "aantal_verblijfsobjecten": 1,
+        "bouwjaar": 1967,
+        "documentdatum": "2023-09-21",
+        "documentnummer": "GV00007167_AC00AC",
+        "gebruiksdoel": "bijeenkomstfunctie",
+        "geconstateerd": "N",
+        "identificatie": "0363100012169759",
+        "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012169759",
+        "status": "Pand in gebruik",
+        "verblijfsobject.href": [
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/13a01865-0575-5d7e-a907-3aceb0c60748"
+        ]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.925924428305865,
+              52.36687627184899
+            ],
+            [
+              4.925928151075986,
+              52.36690232372115
+            ],
+            [
+              4.92578212602793,
+              52.36691011328442
+            ],
+            [
+              4.925769269800271,
+              52.36682063555934
+            ],
+            [
+              4.925915309050855,
+              52.36681286404332
+            ],
+            [
+              4.925924428305865,
+              52.36687627184899
+            ]
+          ]
+        ]
+      },
+      "id": "d9ae552e-7e9e-53bb-af89-f40ab7ed4444"
+    }
+  ],
+  "actualInstalledFeatures": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "NL.IMBAG.Pand.0363100012169759",
+        "tier": 3,
+        "minHeight": 0,
+        "height": 3.54,
+        "roofShape": "flat"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.925931,
+              52.366904
+            ],
+            [
+              4.925785,
+              52.366912
+            ],
+            [
+              4.925772,
+              52.366823
+            ],
+            [
+              4.925918,
+              52.366815
+            ],
+            [
+              4.925931,
+              52.366904
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "NL.IMBAG.Pand.0363100012169757",
+        "tier": 3,
+        "minHeight": 0,
+        "height": 7.12
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.926328,
+              52.366859
+            ],
+            [
+              4.926315,
+              52.366851
+            ],
+            [
+              4.926359,
+              52.366824
+            ],
+            [
+              4.926298,
+              52.366787
+            ],
+            [
+              4.9263,
+              52.366786
+            ],
+            [
+              4.926261,
+              52.366762
+            ],
+            [
+              4.926275,
+              52.366753
+            ],
+            [
+              4.92625,
+              52.366737
+            ],
+            [
+              4.926267,
+              52.366727
+            ],
+            [
+              4.926215,
+              52.366694
+            ],
+            [
+              4.926348,
+              52.366613
+            ],
+            [
+              4.926479,
+              52.366695
+            ],
+            [
+              4.926477,
+              52.366696
+            ],
+            [
+              4.926568,
+              52.366752
+            ],
+            [
+              4.9264,
+              52.366854
+            ],
+            [
+              4.9264,
+              52.366855
+            ],
+            [
+              4.926328,
+              52.366859
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "NL.IMBAG.Pand.0363100012169758",
+        "tier": 3,
+        "minHeight": 0,
+        "height": 32.2
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.926263,
+              52.366854
+            ],
+            [
+              4.926102,
+              52.366863
+            ],
+            [
+              4.926088,
+              52.366764
+            ],
+            [
+              4.926249,
+              52.366755
+            ],
+            [
+              4.926263,
+              52.366854
+            ]
+          ]
+        ]
+      }
+    }
+  ],
+  "exactInstalledScopeAliases": [
+    "NL.IMBAG.Pand.0363100012169757"
+  ],
+  "exactCurrentOsmAlias": "w269052426",
+  "exactSuppression": [
+    "w269052426",
+    "NL.IMBAG.Pand.0363100012169757"
+  ],
+  "retainedReplacement": {
+    "modelId": "de-gooyer",
+    "sourceIdentities": [
+      "w269052487",
+      "NL.IMBAG.Pand.0363100012169758"
+    ],
+    "actualLoadedState": "root GPU review must establish currently loaded replacement; no worker claim"
+  },
+  "retainedOrdinaryNeighbor": "NL.IMBAG.Pand.0363100012169759",
+  "sourceArchive": "models/brouwerij-het-ij/raw/2026-10-07-native-survey",
+  "sourceCommit": "b48b9e9e33a15680e2cccacc02cacae5b2305604",
+  "checksums": {
+    "current-brewery-osm-way.xml": "025fb84bc3bf7f905695c0313c9657a945d6e16964afca22bcf3d8d68e7920ad",
+    "installed-building-tile-14-8416-5384.geojson.gz": "9eb9daed5824631d90c853eb5aa717661301baa50e3e6ada16f8460fb8feb320",
+    "current-bag-nearby.json": "455db00ab6b23602d4ae779bfa18e10a4cde3a32984221b74afb2b6370b5a0a9",
+    "current-mill-osm-way.xml": "8d170356b711900306e6e7874100c83086261ca0780881d182c811c0b24df710",
+    "current-neighbor-osm-way.xml": "0605e6fdfccb069ebd72d9870255940083d5747ed324ded09dc0570c88922d79"
+  },
+  "accessHistory": [
+    {
+      "time": "2026-10-07T07:37Z",
+      "url": "https://www.openstreetmap.org/api/0.6/map?bbox=4.9256,52.3664,4.9268,52.3672",
+      "status": "503 all backends failed; original response archived"
+    },
+    {
+      "time": "2026-10-07T07:40Z",
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=4.9256,52.3664,4.9268,52.3672",
+      "status": "curl56 connection failure, bounded retries"
+    },
+    {
+      "time": "2026-10-07T07:40:52.519753+00:00",
+      "url": "https://www.openstreetmap.org/api/0.6/way/269052426/full",
+      "status": "success original current API XML; primary building version/tags proof"
+    }
+  ],
+  "currentNeighborWays": [
+    {
+      "id": "w269052487",
+      "version": "3",
+      "timestamp": "2025-04-07T17:59:50Z",
+      "tags": {
+        "building": "industrial",
+        "ref:bag": "0363100012169758",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "start_date": "1725"
+      },
+      "rawFile": "current-mill-osm-way.xml",
+      "accessState": "Original current OSM API XML downloaded2026-10-07"
+    },
+    {
+      "id": "w269052518",
+      "version": "5",
+      "timestamp": "2026-06-22T08:15:23Z",
+      "tags": {
+        "building": "retail",
+        "building:levels": "1",
+        "height": "3.5",
+        "ref:bag": "0363100012169759",
+        "roof:levels": "0",
+        "roof:shape": "flat",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "source:height": "3DBAG",
+        "source:height:date": "2025-09-03",
+        "start_date": "1967"
+      },
+      "rawFile": "current-neighbor-osm-way.xml",
+      "accessState": "Original current OSM API XML downloaded2026-10-07"
+    }
+  ],
+  "retainedOrdinaryNeighborOsmAlias": "w269052518",
+  "sourceArchiveCommit": "b48b9e9e33a15680e2cccacc02cacae5b2305604"
+}

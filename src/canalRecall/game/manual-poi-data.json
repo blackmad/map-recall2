@@ -1341,5 +1341,16 @@
     "modelId": "rasphuispoort",
     "landmarkId": "extract_landmarks_953524097",
     "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1482"
+  },
+  {
+    "modelId": "brouwerij-het-ij",
+    "name": "Brouwerij ’t IJ",
+    "center": [
+      52.3666977,
+      4.9263471
+    ],
+    "description": "Brouwerij ’t IJ began in 1985 when musician Kaspar Peterson turned the former Funen municipal bathhouse into a brewery. The bathhouse opened in 1911, providing showers for homes without bathrooms. The brewery and its tasting room occupy the separate brick bathhouse beside De Gooyer windmill; the mill itself remains a distinct historic building.",
+    "sourceUrl": "https://www.brouwerijhetij.nl/de-brouwerij",
+    "preferDescription": true
   }
 ]

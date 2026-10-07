@@ -7167,5 +7167,64 @@
       "theta": 3.691592653589793,
       "phi": 1.1
     }
+  },
+  {
+    "id": "brouwerij-het-ij",
+    "name": "Brouwerij \u2019t IJ",
+    "landmarkId": "n332059860",
+    "modelUrl": "./models/brouwerij-het-ij.glb",
+    "suppressOsmIds": [
+      "w269052426",
+      "NL.IMBAG.Pand.0363100012169757"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.92639,
+        52.36674
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 29,
+      "widthMetres": 26
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.92639,
+        52.36674
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Current exact BAG parent and 3DBAG AHN5 roof zones; native east/south geometry, photo-guided original bathhouse facade and pavilion reconstruction."
+    },
+    "materialOverrides": {
+      "brick": "#655246",
+      "stone": "#c7c4a9",
+      "bronze": "#263b35",
+      "dark": "#303431",
+      "slate": "#434745",
+      "copper": "#92a7a3",
+      "red": "#ad4932",
+      "white": "#e9e8d5",
+      "glass": "#65848b"
+    },
+    "attribution": {
+      "title": "Brouwerij \u2019t IJ former Funen bathhouse",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.brouwerijhetij.nl/proeflokalen/proeflokaal-de-molen",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original native texture-free surveyed bathhouse with twin roof pavilions, nine upper windows, dark upper annex, current awning and source-supported smooth approximate sign lettering. Public SketchUp inspected as historical reference only, no copied mesh/photo pixels."
+    },
+    "scopeWarning": "Accepted original native bathhouse replaces only w269052426/BAG0363100012169757 after successful model availability. Independent De Gooyer replacement BAG9758/w269052487 and ordinary neighbor BAG9759/w269052518 retained; terrace stays open. Genuine n332059860 manual destination, geographic pin and meaningful physical-click card verified locally. Hosted acceptance pending publication.",
+    "sourceArchive": {
+      "repository": "blackmad/map-recall2-source-data",
+      "path": "models/brouwerij-het-ij",
+      "recoveredSourceCommit": "68906c28",
+      "newNativeSurveyCommit": "b9ecc5f2",
+      "commit": "b48b9e9e33a15680e2cccacc02cacae5b2305604",
+      "rawSourceCommit": "b9ecc5f2",
+      "acceptedCheckpointCommit": "b48b9e9e33a15680e2cccacc02cacae5b2305604"
+    }
   }
 ]

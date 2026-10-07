@@ -1,0 +1,216 @@
+{
+  "modelId": "brouwerij-het-ij",
+  "status": "accepted-awaiting-hosted",
+  "worktree": "/tmp/map-recall2-brewery-oct7",
+  "baseCommit": "b6ce5f98",
+  "identity": {
+    "bag": "0363100012169757",
+    "osmBuilding": "w269052426",
+    "genuinePoiNode": "n332059860",
+    "poiCoordinates": [
+      4.9263471,
+      52.3666977
+    ],
+    "manualPromotion": "Genuine mapped node n332059860 promoted through manualPoiCatalog under real n332059860 ID, no extract presence manufactured.",
+    "retained": [
+      "w269052487",
+      "NL.IMBAG.Pand.0363100012169758",
+      "NL.IMBAG.Pand.0363100012169759"
+    ]
+  },
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "path": "models/brouwerij-het-ij",
+    "recoveryCommit": "68906c28",
+    "newRawPath": "models/brouwerij-het-ij/raw/2026-10-07-native-survey",
+    "newProcessedPath": "models/brouwerij-het-ij/processed/2026-10-07-native-survey",
+    "newSourceCommit": "b9ecc5f2",
+    "commit": "b48b9e9e33a15680e2cccacc02cacae5b2305604",
+    "rawSourceCommit": "b9ecc5f2",
+    "acceptedCheckpointCommit": "b48b9e9e33a15680e2cccacc02cacae5b2305604"
+  },
+  "references": [
+    {
+      "url": "https://www.brouwerijhetij.nl/proeflokalen/proeflokaal-de-molen",
+      "archivePath": "models/brouwerij-het-ij/raw/2026-10-07-user-model/cached-operator-venue.html",
+      "role": "Current upper principal facade, lower shaded openings, long awning and terrace details"
+    },
+    {
+      "url": "https://cms.brouwerijhetij.nl/storage/images/Proeflokalen/de-molen/Proeflokaal-de-Molen-Funenkade.jpg",
+      "archivePath": "models/brouwerij-het-ij/raw/2026-10-07-user-model/Proeflokaal-de-Molen-Funenkade.jpg",
+      "role": "Nine upper pale-border dark frame windows, twin dark hipped pavilion roofs, horizontal dark annex, real red sign panel; capture date unknown"
+    },
+    {
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169757",
+      "archivePath": "models/brouwerij-het-ij/raw/2026-10-07-native-survey/3dbag.json",
+      "role": "Native survey roof zones AHN5 ground and eaves/ridge cross-check"
+    },
+    {
+      "url": "https://www.amsterdam.nl/nieuws/achtergrond/gemeentebadhuis/",
+      "archivePath": "models/brouwerij-het-ij/processed/2026-10-07-native-survey/municipal-history-webtool.json",
+      "role": "Municipal first bathhouse opened1911; article body read through web tool, separate curl capture is Cloudflare challenge, not successfully downloaded article"
+    },
+    {
+      "url": "https://www.brouwerijhetij.nl/de-brouwerij",
+      "archivePath": "models/brouwerij-t-ij/files/operator-history.html",
+      "role": "Operator history musician Kaspar founded brewery1985 in former bathhouse"
+    },
+    {
+      "url": "https://3dwarehouse.sketchup.com/model/ba985eba9ad259b9f912bad2283ae4f5/Molen-de-Gooyer-Amsterdam?hl=de",
+      "archivePath": "models/brouwerij-het-ij/raw/2026-10-07-user-model/reference-glb.glb",
+      "role": "Historical visual recognition only; imported mesh vertices and photo pixels never copied into asset"
+    }
+  ],
+  "architecturalAssertions": [
+    {
+      "part": "Funenkade principal facade",
+      "assertion": "Brown brick two-storey facade with nine tall pale-bordered dark-frame upper windows, two hipped roof end pavilions, and low central parapet. Current operator photo confirms this arrangement.",
+      "evidence": [
+        "reference-glb-cpu-side-a.png",
+        "texture-47.jpg",
+        "Proeflokaal-de-Molen-Funenkade.jpg"
+      ],
+      "confidence": "high"
+    },
+    {
+      "part": "roof pavilions",
+      "assertion": "Small hipped/pyramidal roofs at both facade ends, pale wide cornices with exposed brackets and white finials. Historical texture reddish tile; current operator image reads dark grey/brown tile. Use current appearance, cross-check aerial/survey geometry.",
+      "evidence": [
+        "reference-glb-cpu-side-a.png",
+        "Proeflokaal-de-Molen-Funenkade.jpg"
+      ],
+      "confidence": "high form, photo-guided color"
+    },
+    {
+      "part": "ground floor principal facade",
+      "assertion": "Historic source has paired arched central doorways plus tall side apertures. Current long pale awning with orange-red valance covers most lintels; complete current aperture arrangement cannot be established from this photo alone.",
+      "evidence": [
+        "texture-47.jpg",
+        "Proeflokaal-de-Molen-Funenkade.jpg"
+      ],
+      "confidence": "historic confirmed; current lower tier occluded"
+    },
+    {
+      "part": "right/rear upper wing",
+      "assertion": "Stepped flat/low-roof upper wing with near-black horizontal cladding and grouped horizontal pale-framed windows, not a uniform brick volume. Current principal photo confirms the right upper wing.",
+      "evidence": [
+        "reference-glb-cpu-side-a.png",
+        "reference-glb-cpu-side-b.png",
+        "texture-45.jpg",
+        "texture-46.jpg",
+        "texture-48.jpg",
+        "Proeflokaal-de-Molen-Funenkade.jpg"
+      ],
+      "confidence": "high"
+    },
+    {
+      "part": "terrace/mill-side entrance",
+      "assertion": "Historical low brick entrance wing with green glazed doors, broad canopy/awning and upper logo panel. Current operator terrace pictures confirm an open paved gathering space and dark green frames, with tables/trees; do not fill terrace into opaque building geometry.",
+      "evidence": [
+        "reference-glb-cpu-side-d.png",
+        "texture-41.jpg",
+        "Proeflokaal-de-Molen-vol-terras-voorkant.jpg",
+        "Proeflokaal-de-Molen-in-de-deuropening.jpg"
+      ],
+      "confidence": "high open space; roof split current cross-check pending"
+    },
+    {
+      "part": "signage",
+      "assertion": "Current principal real sign uses white heavy rounded sans lettering on long red panel within a patterned blue-grey tile fascia. Historical photo differs. Use actual source-supported lettering approximated in native geometry, not generic pixel text or added building name.",
+      "evidence": [
+        "Proeflokaal-de-Molen-Funenkade.jpg",
+        "texture-47.jpg"
+      ],
+      "confidence": "high current sign, exact font unknown"
+    }
+  ],
+  "nativeMassing": {
+    "principalFacadeVertices": [
+      12,
+      13,
+      15
+    ],
+    "outwardDirection": "southeast",
+    "principalLengthMetres": 12.75,
+    "darkAnnexWidthMetres": 8.79,
+    "lowWingHeightMetres": 3.94,
+    "centralRoofMetres": 7.55,
+    "darkAnnexRoofMetres": 7.08,
+    "pavilionEavesMetres": 8.72,
+    "pavilionRidgesMetres": 10.51,
+    "heightConfidence": "Pavilion and wing categories cross-checked current photo and native survey; small cornice/finial/pane dimensions photo-guided approximations.",
+    "rejectedSurveySurfaces": [
+      {
+        "index": 90,
+        "heightMetres": [
+          18.1255,
+          18.1835
+        ],
+        "reason": "Very thin fin along northwest side by mill swept zone; not supported by current brewery silhouette. Never entire-parent height."
+      },
+      {
+        "index": 84,
+        "reason": "Nonplanar noisy pavilion zone generalized to supported original photo-guided hip roof, not a fitted blanket crest plate."
+      }
+    ]
+  },
+  "sourceCurrentness": {
+    "roofTiles": "Historical imported reference red roof superseded by current operator dark gray tile appearance",
+    "mainLowerTier": "Long awning and patrons shade/occlude lintels. Current rectangular dark green glazed groups retained; historic exposed central arches not invented above awning. Exact lower-tier bay widths remain approximation.",
+    "terrace": "Green triple glazed portal rhythm from historical texture41, current operator doorway confirms dark green framing. Native placement uses northwest stepped boundary vertices3->5. Current complete opposite facade photo not available.",
+    "rearAnnex": "Historical source texture48/side-c has two paired rear pane groups and texture45/side-b narrow low-wing clerestory; dates unknown, current operator photos do not establish current rear count. Omitted unsupported current additions and left explicit source gap."
+  },
+  "signage": {
+    "text": "Brouwerij \u2019t IJ",
+    "authority": "Actual current red sign within blue-gray patterned tile band on principal parapet",
+    "fontApproximation": "Archivo Black smooth vector contours, heavy sans; exact face unknown",
+    "panelBounds": "Placed within actual central parapet; no generic pixel sign or added identity-name labels",
+    "simplified": "Tiny awning printed logos and repeating ostrich artwork omitted rather than copied photo pixels",
+    "sourceObservedLetteringPanelWidthFraction": 0.63,
+    "observedLetteringPanelHeightFraction": 0.74
+  },
+  "accessGaps": {
+    "beeldbank": "Bounded Funenkade7 HTTP200 viewer shell previously archived; no actual catalogue photo result inspected",
+    "monumentRegister": "Bounded address/name search did not establish dedicated Funenkade7 register description. Do not apply De Gooyer1107 or other bathhouse descriptions to brewery.",
+    "bouwdossiers": "No email-gated drawing sheet acquired; finer historical lower openings remain unmeasured.",
+    "municipalPage": "Curl Cloudflare challenge retained separately; complete web tool processed page read and archived honestly."
+  },
+  "geometryChecks": {
+    "status": "pass",
+    "triangles": 1839,
+    "draftGlbBytes": 85936,
+    "glbSha256": "1b974b99e7fdd690185b638088fc4d5be99e7004652bf4f2d996c88f72319ea9",
+    "checks": [
+      "finite native bounds and no18m whole block",
+      "9 upper pane fractional first-hit rays at four heights",
+      "principal paired-door and current utility-door first-hit checks",
+      "terrace door fractional first-hit checks",
+      "annex side glazing and cladding confined to actual8m upper roof boundary",
+      "upward supported pavilion surfaces",
+      "mill/terrace/neighbors exterior downward probes",
+      "exact BAG/OSM suppression and triangle budget"
+    ],
+    "focusedTypecheck": "pass",
+    "repositoryTypecheck": "pre-existing unrelated errors in current appearance viewers against installed modules; no brewery errors in focused typecheck",
+    "productionGlbBytes": 29732,
+    "productionGlbSha256": "56cc1a41eb3ddfa660889193490b2209713605270a5c389f5e9e8913369a63ae"
+  },
+  "cpuComparison": {
+    "directory": "artifacts/landmark-offline-preview",
+    "viewAnglesRadians": [
+      0.79,
+      3.93,
+      2.36,
+      5.5
+    ],
+    "sourceCompare": "Principal current operator photo and historical full-scope reference views inspected. Street-low rendering recognizes nine windows, twin hips, dark annex and long current awning. Native survey rear silhouette retained; blank low-wing side walls and historical entrance-currentness await source/gallery independent review.",
+    "failedEvidence": "brouwerij-het-ij-failed-floating-side-cladding.png preserved. Initial side cladding incorrectly followed16m full parent side above low wing; corrected to8m native annex upper edge. New geometry probes prevent extension past surveyed upper edge.",
+    "acceptance": "CPU preflight only; gallery/game/root independent acceptance not claimed",
+    "independentReview": "Sign proportion corrected using uniform Archivo Black glyph scale and source-consistent red panel height; independent brewery reviewer passed corrected production CPU sign compare, root GPU remains pending."
+  },
+  "pendingRootAcceptance": [
+    "Publish accepted owned files",
+    "Root hosted fingerprint and native game audit before marking hosted verified"
+  ],
+  "rootNativeAcceptance": "Root/independent accepted production56cc1a41 using five gallery views, native front/rear, exact loaded scope and physically selected card; fallback entry availability simulation passed. Hosted acceptance pending."
+}

@@ -1,0 +1,289 @@
+{
+  "modelId": "brouwerij-het-ij",
+  "status": "accepted-awaiting-hosted",
+  "reviewedOn": "2026-10-07",
+  "productionSha256": "56cc1a41eb3ddfa660889193490b2209713605270a5c389f5e9e8913369a63ae",
+  "productionBytes": 29732,
+  "triangles": 1839,
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "path": "models/brouwerij-het-ij",
+    "commit": "b48b9e9e33a15680e2cccacc02cacae5b2305604",
+    "rawSourceCommit": "b9ecc5f2",
+    "recoveryCommit": "68906c28297c781d0d2b8c8784adde49f2eba399",
+    "checkpointPath": "models/brouwerij-het-ij/checkpoints/2026-10-07-native-final-manifest.json",
+    "acceptedEvidencePath": "models/brouwerij-het-ij/processed/2026-10-07-native-final-evidence"
+  },
+  "rootReview": {
+    "reviewer": "root coordinator",
+    "terminalCell": 3231,
+    "exitCode": 0,
+    "visualAcceptance": "Root inspected default gallery and four lower rotations plus native front/rear against source photos; accepted current production mesh. Root witnessed actual loaded game scope, route/pin and physical sourced card."
+  },
+  "independentReview": {
+    "reviewer": "brewery_independent_oct7",
+    "acceptedSha256": "56cc1a41eb3ddfa660889193490b2209713605270a5c389f5e9e8913369a63ae",
+    "nativeReview": {
+      "productionSha256": "56cc1a41eb3ddfa660889193490b2209713605270a5c389f5e9e8913369a63ae",
+      "directory": "artifacts/landmark-release-check/brouwerij-het-ij-review",
+      "inspected": [
+        "gallery.png",
+        "gallery-angle-0.png",
+        "gallery-angle-1.png",
+        "gallery-angle-2.png",
+        "gallery-angle-3.png",
+        "neutral-front.png",
+        "live-front.png",
+        "live-rear.png",
+        "before-pointer-check.png",
+        "placement-proof.json",
+        "physical-card-proof.json",
+        "performance-comparison.json"
+      ],
+      "verdict": "pass for current source-supported native landmark appearance and witnessed loaded-context scope",
+      "observations": [
+        "Principal source-recognition features visible at native scale and lighting: nine pale-border windows/transoms, two separate hips/cornices/finials, corrected smooth real sign, pale awning/red valance, dark five-light annex. No buried visible panes, wall-colored pavilion roof caps or floating side cladding observed.",
+        "Gallery rear/end preserve stepped native roof/low-wing silhouette and three green terrace portals with canopy. Terrace is not closed with a fabricated rectangular parcel slab. Rear currentness gaps remain as previously documented; no unverified historical pane group acceptance claimed.",
+        "Neutral-front/live-rear show actual De Gooyer replacement standing directly behind/adjacent to brewery, including base and sails. Detached ordinary9759 context building is visible in rear lower-right and front upper-left; proof JSON confirms its drawable ordinary geometry and unhidden alias.",
+        "Placement proof uses actual center4.92639/52.36674, scale1/northOffset0/broad=false; only brewery BAG9757 and w269052426 are hidden. De Gooyer aliases are independently hidden by its own retained replacement, not a brewery suppression mistake.",
+        "Actual pointer card screenshot shows brewery title and meaningful researched1985 founding/1911 bathhouse history; physical-card proof drawn alpha1/active genuine n332059860, source operator-history. Destination pin/label visible in live rear and destination HUD preserves brewery name.",
+        "Same stationary scene60-frame samples: visible and hidden p50 both~8.3ms, visible p95 10.2ms/repeat10.1ms versus hidden10.0ms. This demonstrates no material custom-model cost in tested scene; no whole-game/device performance acceptance inferred."
+      ],
+      "remaining": [
+        "Coordinator actual disable/unavailable fallback checks",
+        "Coordinator route outcome/source-link contract remains its test ownership; review witnesses selected-destination HUD and pin/card but does not independently execute route"
+      ]
+    },
+    "signCorrection": "Uniform Archivo Black geometry fills63%redpanelwidth and74%height; initial42%tiny sign failure corrected and preserved."
+  },
+  "proofs": {
+    "placement-proof.json": {
+      "id": "brouwerij-het-ij",
+      "actualCamera": {
+        "center": [
+          4.926389999999998,
+          52.36673999999999
+        ],
+        "zoom": 20.901123040945105,
+        "pitch": 62.29752524354737,
+        "bearing": -34.48643662655752,
+        "elevation": 5
+      },
+      "surveyedNorthOffset": 0,
+      "assetVersion": "56cc1a41eb3ddfa6",
+      "scale": 1,
+      "bias": false,
+      "broad": false,
+      "pin": true,
+      "destination": true,
+      "source": "https://www.brouwerijhetij.nl/de-brouwerij",
+      "click": {
+        "x": 733.6368136807823,
+        "y": 350.04395294933886
+      },
+      "aliases": [
+        {
+          "id": "w269052426",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012169757",
+          "hidden": true
+        }
+      ],
+      "oldPyramidIds": [],
+      "neighbors": [
+        {
+          "ids": [
+            "w269052487",
+            "NL.IMBAG.Pand.0363100012169758"
+          ],
+          "resident": true,
+          "ordinaryResident": true,
+          "hidden": true,
+          "drawable": true,
+          "retainedReplacement": "de-gooyer"
+        },
+        {
+          "ids": [
+            "w269052518",
+            "NL.IMBAG.Pand.0363100012169759"
+          ],
+          "resident": true,
+          "ordinaryResident": true,
+          "hidden": false,
+          "drawable": true,
+          "retainedReplacement": null
+        }
+      ],
+      "features": 9655,
+      "buildings": 14300
+    },
+    "physical-card-proof.json": {
+      "notice": "n332059860",
+      "source": "https://www.brouwerijhetij.nl/de-brouwerij",
+      "alpha": 1,
+      "drawn": true,
+      "active": "n332059860"
+    },
+    "performance-comparison.json": {
+      "id": "brouwerij-het-ij",
+      "assetVersion": "56cc1a41eb3ddfa6",
+      "samples": [
+        {
+          "label": "model-visible",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 8.299999713897705,
+          "p95Ms": 10.200000286102295
+        },
+        {
+          "label": "same-scene-model-hidden",
+          "visible": false,
+          "frames": 60,
+          "p50Ms": 8.300000190734863,
+          "p95Ms": 10
+        },
+        {
+          "label": "model-visible-repeat",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 8.300000190734863,
+          "p95Ms": 10.099999904632568
+        }
+      ],
+      "buildings": {
+        "kitVertices": 170007,
+        "chunks": 27,
+        "buildings": 14300,
+        "walls": 70648,
+        "quads": 361416,
+        "vertices": 3140481,
+        "geometryMB": 103.2374324798584,
+        "textureMB": 97.5,
+        "drawCalls": 5,
+        "triangles": 282587,
+        "buildMs": 11.200000286102295
+      },
+      "scope": "Headless Chromium same stationary scene; hidden model keeps existing replacement masks, isolating custom draw cost. No whole-game performance pass claimed."
+    },
+    "fallback-proof.json": [
+      {
+        "enabled": false,
+        "actualEnabled": true,
+        "targetEntryPresent": false,
+        "targetDrawn": false,
+        "pending": 0,
+        "inflight": 0,
+        "scope": "Simulated target GLB unavailable/loaded through exact entry collection snapshot and host suppression composer; signature global enabled remains active.",
+        "version": "56cc1a41eb3ddfa6",
+        "aliases": [
+          {
+            "id": "w269052426",
+            "hidden": false,
+            "resident": false,
+            "drawable": false
+          },
+          {
+            "id": "NL.IMBAG.Pand.0363100012169757",
+            "hidden": false,
+            "resident": true,
+            "drawable": true
+          }
+        ],
+        "pyramids": [],
+        "neighbors": [
+          {
+            "ids": [
+              "w269052487",
+              "NL.IMBAG.Pand.0363100012169758"
+            ],
+            "resident": true,
+            "ordinaryResident": true,
+            "hidden": true,
+            "drawable": true,
+            "retainedReplacement": "de-gooyer"
+          },
+          {
+            "ids": [
+              "w269052518",
+              "NL.IMBAG.Pand.0363100012169759"
+            ],
+            "resident": true,
+            "ordinaryResident": true,
+            "hidden": false,
+            "drawable": true,
+            "retainedReplacement": null
+          }
+        ]
+      },
+      {
+        "enabled": true,
+        "actualEnabled": true,
+        "targetEntryPresent": true,
+        "targetDrawn": true,
+        "pending": 0,
+        "inflight": 0,
+        "scope": "Simulated target GLB unavailable/loaded through exact entry collection snapshot and host suppression composer; signature global enabled remains active.",
+        "version": "56cc1a41eb3ddfa6",
+        "aliases": [
+          {
+            "id": "w269052426",
+            "hidden": true,
+            "resident": false,
+            "drawable": false
+          },
+          {
+            "id": "NL.IMBAG.Pand.0363100012169757",
+            "hidden": true,
+            "resident": true,
+            "drawable": true
+          }
+        ],
+        "pyramids": [],
+        "neighbors": [
+          {
+            "ids": [
+              "w269052487",
+              "NL.IMBAG.Pand.0363100012169758"
+            ],
+            "resident": true,
+            "ordinaryResident": true,
+            "hidden": true,
+            "drawable": true,
+            "retainedReplacement": "de-gooyer"
+          },
+          {
+            "ids": [
+              "w269052518",
+              "NL.IMBAG.Pand.0363100012169759"
+            ],
+            "resident": true,
+            "ordinaryResident": true,
+            "hidden": false,
+            "drawable": true,
+            "retainedReplacement": null
+          }
+        ]
+      }
+    ]
+  },
+  "fallback": {
+    "terminalCell": 75037,
+    "exitCode": 0,
+    "method": "Actual target entry availability simulation through exact entry collection snapshot and suppression composer, global signature enabled. Brewery absent state restores resident ordinary BAG9757; restored state hides target; De Gooyer replacement and BAG9759 retained in both states.",
+    "claimLimit": "Not an actual network fetch failure; no independent pyramidal roof exists for target scope, so empty pyramid evidence accurately retained."
+  },
+  "failedEvidence": [
+    "artifacts/landmark-offline-preview/brouwerij-het-ij-failed-small-sign.png",
+    "artifacts/landmark-offline-preview/brouwerij-het-ij-failed-floating-side-cladding.png",
+    "artifacts/landmark-release-check/brouwerij-het-ij-review/before-pointer-check.png"
+  ],
+  "accessGaps": {
+    "oppositeFacade": "Complete current opposite facade absent. Historical paired rear panes and narrow side clerestory remain currentness gaps, not accepted new current geometry.",
+    "beeldbank": "Exact address search archived viewer shell; useful catalogue image not inspected.",
+    "monumentRegister": "No dedicated brewery register description established; mill and other bathhouse register descriptions never substituted."
+  },
+  "performanceLimit": "Same stationary60-frame headless scene cost comparison only; not whole-game/device performance acceptance.",
+  "hostedVerification": "Pending root after publication; local acceptance is not hosted completion."
+}
