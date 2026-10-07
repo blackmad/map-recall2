@@ -282,5 +282,14 @@
     "decodedEvidence": "artifacts/afrikahuis/repair-review/decoded-first-hits.json",
     "sourceFacingCpu": "artifacts/afrikahuis/repair-review/afrikahuis-cpu-presbytery-low-approach.png",
     "acceptance": "requires fresh affected independent review then root native/game checks"
+  },
+  "sourceUrlValidation": {
+    "checkedOn": "2026-10-07",
+    "canonicalUrl": "https://amsterdamopdekaart.nl/1966-1990/Van_Ostadestraat/Afrikahuis",
+    "httpStatus": 200,
+    "privateCommit": "7e049c2118edcbeaee5c40a6a1a768b7b7055af1",
+    "privateRecord": "models/afrikahuis/source-url-validation-20261007.json",
+    "originalAlias": "https://www.amsterdamopdekaart.nl/1966-1990/Van_Ostadestraat/Afrikahuis",
+    "originalAliasAccess": "TLS certificate hostname mismatch during fresh hosted checks; original captures retained."
   }
 }

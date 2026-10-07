@@ -8474,7 +8474,7 @@ Map source: ${osmUrl(places[i][0])}`);
       attribution: {
         title: "Afrikahuis",
         author: "Map Recall",
-        sourceUrl: "https://www.amsterdamopdekaart.nl/1966-1990/Van_Ostadestraat/Afrikahuis",
+        sourceUrl: "https://amsterdamopdekaart.nl/1966-1990/Van_Ostadestraat/Afrikahuis",
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native reconstruction of raised octagonal church, limestone facades, glazed stairs and taller presbytery. Source archive c3ffff8f22f2261b6869975cf8453ba11eecaa5f models/afrikahuis. Photo-guided undercroft supports and seven-riser fan stairs; no third-party meshes or pixels."
@@ -23035,7 +23035,7 @@ Map source: ${osmUrl(places[i][0])}`);
       modelId: "afrikahuis",
       name: "Afrikahuis",
       description: "Architect Joop van Stigt designed Afrikahuis as five linked octagonal units, combining a church with neighborhood spaces. Its concrete base, limestone walls and glazed staircase bays express Amsterdam structuralism.",
-      sourceUrl: "https://www.amsterdamopdekaart.nl/1966-1990/Van_Ostadestraat/Afrikahuis",
+      sourceUrl: "https://amsterdamopdekaart.nl/1966-1990/Van_Ostadestraat/Afrikahuis",
       additionalSources: ["https://erfgoedregister.amsterdam.nl/monument/34d28c9d-f6c7-44bc-affa-d3d2c055b7a9/"]
     }
   ];
