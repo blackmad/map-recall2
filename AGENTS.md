@@ -56,3 +56,5 @@ During the user-authorized continuous landmark queue run, keep progressing throu
 ## Submitted feedback
 
 When asked to review or fix feedback submitted from the game or image galleries, use `.agents/skills/canal-feedback/SKILL.md` and `npm run feedback:queue -- pull`. Read the full saved note, screenshot, image anchor, host and build context before claiming work. Preserve user evidence, claim with the note's Firestore update-time precondition, and resolve only after the relevant behavior/visual checks. Keep landmark and street tasks in their existing inventories as well; cloud feedback does not replace them.
+
+During active landmark/game work, pull Firebase feedback at session start, at batch checkpoints, before release, and at least every 30 minutes during longer uninterrupted work. Recover `in-progress` claims as well as `open` notes. Record the last successful pull and actionable feedback in the handoff; keep existing POI/street tasks. This is an active-work checkpoint, not an unattended background service. Follow the canal-feedback skill for full evidence review, conditional claims and verified resolutions. User requested periodic checks on 2026-10-07.
