@@ -1,0 +1,99 @@
+{
+  "reviewedOn": "2026-10-07",
+  "taskId": "vondelcs",
+  "canonicalModelId": "idfa-pavilion",
+  "landmarkId": "osm-way-57857054",
+  "baseCommit": "9acac969ed7b97a17ab5bd3ffd8a8efc76b552bb",
+  "finding": "Queued VondelCS request is already physically covered by accepted canonical IDFA pavilion; retain one genuine POI destination and existing model.",
+  "asset": {
+    "path": "public/canal-drive/models/idfa-pavilion.glb",
+    "sha256": "666d6b58ad29572a835ea6b05e6a383697277cd7819799593f9fd607b95a6690",
+    "bytes": 176976,
+    "triangles": 17407
+  },
+  "checks": [
+    {
+      "command": "node --import tsx scripts/check-idfa-pavilion-geometry.ts",
+      "status": "passed",
+      "evidence": "17407 triangles; finite native bounds; arcade/column first-hit visibility and 9 closed supported roof assemblies pass"
+    },
+    {
+      "command": "node --import tsx scripts/check-manual-poi-contract.ts",
+      "status": "passed",
+      "evidence": "212 models, 190 independent destinations; route/card/pin/source/identity covered"
+    },
+    {
+      "command": "node --import tsx scripts/landmarks/check-manual-landmarks.ts",
+      "status": "passed",
+      "evidence": "192 manual landmarks finite geometry/native placement/compression/material/suppression pass"
+    },
+    {
+      "command": "LANDMARK_CPU_INPUT_DIR=public/canal-drive/models LANDMARK_CPU_OUTPUT_DIR=artifacts/vondelcs-alias-audit node /Users/blackmad/Code/map-recall2/scripts/landmarks/render-cpu-preflight.mjs idfa-pavilion",
+      "status": "passed",
+      "evidence": "Exact compressed GLB decoded; front/opposite CPU preview generated; 17407 triangles"
+    },
+    {
+      "command": "npm run lint",
+      "status": "passed",
+      "evidence": "TypeScript tsc --noEmit exits0"
+    },
+    {
+      "command": "git diff --check",
+      "status": "passed",
+      "evidence": "No whitespace errors"
+    },
+    {
+      "command": "Scoped reconciliation assertions",
+      "status": "passed",
+      "evidence": "Only VondelCS task differs; backlog has one canonical IDFA destination with VondelCS alias and no requested-vondelcs duplicate"
+    }
+  ],
+  "comparison": {
+    "scope": "CPU source/reference comparison only; existing 2026-10-05 native acceptance remains authoritative",
+    "source": "private models/idfa-pavilion/files/front.jpg",
+    "renders": [
+      "artifacts/vondelcs-alias-audit/idfa-pavilion-cpu-front.png",
+      "artifacts/vondelcs-alias-audit/idfa-pavilion-cpu-opposite.png"
+    ],
+    "finding": "Pale arched main frontage, dark central hip, corner domes and terrace/base remain present. Main roof remains simplified, matching the explicit limitation in the existing accepted scoped repair. No fresh defect was established that justifies replacing this accepted asset."
+  },
+  "priorNativeAcceptance": {
+    "record": "scripts/landmarks/idfa-pavilion-review.json",
+    "date": "2026-10-05",
+    "status": "verified-scoped-repair",
+    "evidence": "artifacts/idfa-pavilion-review/",
+    "checks": "Recorded native gallery/game front and rear, physical card, route/pin, exact suppression and resident drawable neighbors"
+  },
+  "queueRecommendation": {
+    "status": "covered-by-existing-canonical-model",
+    "modelId": "idfa-pavilion",
+    "evidence": "../../docs/references/vondelcs/alias-audit-20261007.json",
+    "nextAction": "Retain existing accepted canonical asset and genuine destination; close alias request coverage discrepancy. Exact accepted-asset hash continuity permits reusing recorded native review for alias bookkeeping; preserve its source-detail and performance limitations."
+  },
+  "limitations": [
+    "No fresh gallery/game or performance acceptance claimed; browser access unavailable to this worker.",
+    "Historic alias dates are source-derived from cached Grachtenfestival response; no new live source request needed.",
+    "No model geometry, shared model registration, manifests, bundles, git index, commit or push changed. Alias backlog bookkeeping and only the VondelCS queue item are reconciled."
+  ],
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "ec763e6c7f79c143d560fe20ceaa23e714af00c2",
+    "path": "models/vondelcs",
+    "canonicalPath": "models/idfa-pavilion"
+  },
+  "acceptedAssetContinuity": {
+    "commit": "bcdc4ad1",
+    "sha256": "666d6b58ad29572a835ea6b05e6a383697277cd7819799593f9fd607b95a6690",
+    "matchesCurrentAsset": true,
+    "evidence": "GLB bytes unchanged from 2026-10-05 repaired-native-acceptance commit; current modelAssetVersions fingerprint agrees. Existing review proof is a recorded review, not a new browser run."
+  },
+  "backlogReconciliation": {
+    "generatedBy": "scripts/landmarks/build-poi-backlog.ts",
+    "canonicalDestination": "lm-osm-way-57857054",
+    "requestedAliases": [
+      "VondelCS"
+    ],
+    "removedFalseCoverage": "requested-vondelcs was wrongly attributed to catalogue model ordinary-0363100012242125; source-supported explicit alias now reuses IDFA destination",
+    "newPoiCount": 0
+  }
+}

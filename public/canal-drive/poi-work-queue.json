@@ -452,7 +452,18 @@
       "id": "vondelcs",
       "task": "VondelCS",
       "priority": "normal",
-      "status": "queued"
+      "status": "covered-by-existing-canonical-model",
+      "modelId": "idfa-pavilion",
+      "landmarkId": "osm-way-57857054",
+      "evidence": "../../docs/references/vondelcs/alias-audit-20261007.json",
+      "sourceArchive": {
+        "repository": "blackmad/map-recall2-source-data",
+        "commit": "ec763e6c7f79c143d560fe20ceaa23e714af00c2",
+        "path": "models/vondelcs",
+        "canonicalPath": "models/idfa-pavilion"
+      },
+      "nextAction": "Reuse accepted IDFA Het Documentaire Paviljoen asset and genuine destination; VondelCS was its AVROTROS-era name (2014–2021). Exact GLB unchanged from accepted 2026-10-05 repair. Preserve canonical gallery/game proof and source-detail/performance limitations; no duplicate model or destination.",
+      "validation": "Alias coverage verified from cached raw source; identical accepted asset hash, focused geometry, exact compressed CPU export, shared asset and three-surface POI contract pass. Existing native route/pin/physical card/exact-neighbor acceptance reused; no new native or performance acceptance claimed."
     },
     {
       "id": "vondeltuin",
