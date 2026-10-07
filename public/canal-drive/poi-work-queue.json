@@ -1562,15 +1562,23 @@
         "NL.IMBAG.Pand.0363100012169587"
       ],
       "handoff": "docs/performance/2026-10-06/canal-belt-overnight-handoff.md",
-      "nextAction": "Review source-backed roof/assembly drafts, archive private sources, inspect reference/render comparisons independently and in game, publish accepted batch then continue the next central selection.",
+      "nextAction": "Repair final three source-specific facades; independent architectural holds remain. Preserve failed evidence/date gaps, then gallery/game/performance review.",
       "acceptedModels": [
-        "ordinary-0363100012177576",
-        "ordinary-0363100012177571",
-        "ordinary-0363100012165119",
-        "ordinary-0363100012167569",
-        "ordinary-0363100012168534"
+        "NL.IMBAG.Pand.0363100012177576",
+        "NL.IMBAG.Pand.0363100012177571",
+        "NL.IMBAG.Pand.0363100012165119",
+        "NL.IMBAG.Pand.0363100012167569",
+        "NL.IMBAG.Pand.0363100012168534",
+        "NL.IMBAG.Pand.0363100012167770",
+        "NL.IMBAG.Pand.0363100012167736"
       ],
-      "notes": "Five central source-specific building treatments reviewed; next pair held for rooftop interpretation and three more source-ready. Continue today with periodic commits/pushes; native spaces and neighboring windows/doors retained. Failed evidence and source correction history archived before model commits."
+      "notes": "Five central source-specific building treatments reviewed; next pair held for rooftop interpretation and three more source-ready. Continue today with periodic commits/pushes; native spaces and neighboring windows/doors retained. Failed evidence and source correction history archived before model commits.",
+      "remainingModels": [
+        "NL.IMBAG.Pand.0363100012168028",
+        "NL.IMBAG.Pand.0363100012176271",
+        "NL.IMBAG.Pand.0363100012176244"
+      ],
+      "resumedOn": "2026-10-07"
     },
     {
       "id": "rasphuispoort",

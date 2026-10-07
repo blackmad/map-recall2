@@ -3,7 +3,7 @@
   "startedAt": "2026-10-06T21:08:31.879031+00:00",
   "scope": "Warehouse conversions and modern blocks in the central canal enclosure",
   "deadlineAssumption": "Overnight run resumed October7; continue today per user instruction",
-  "acceptance": "Five new canal-belt buildings published; two roof-repaired and three fresh drafts await visual/game acceptance",
+  "acceptance": "Seven new canal-belt buildings accepted; final three drafts held in architectural review",
   "batches": [
     {
       "id": "01",
@@ -51,10 +51,19 @@
     },
     {
       "id": "03",
-      "state": "roof-repaired-drafts-review-pending",
+      "state": "reviewed-release-pending",
       "candidates": [
         "0363100012167770",
         "0363100012167736"
+      ],
+      "accepted": [
+        "0363100012167736",
+        "0363100012167770"
+      ],
+      "sourceCommit": "df79731b0ec912f4410c3441db4a1a00c252da2e",
+      "failedEvidence": [
+        "Whole-height roof-object walls repaired to local support",
+        "Fallback screenshot framing gap corrected before acceptance"
       ]
     },
     {
