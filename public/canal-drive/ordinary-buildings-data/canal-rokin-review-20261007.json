@@ -2,7 +2,7 @@
   "atUTC": "2026-10-07T22:37:30.323850+00:00",
   "sourceCommit": "052ce837e0721eaa173873a5517a47ba8b86b982",
   "sourcePack": "experiments/canal-belt-continuation-20261007/rokin-runtime-12",
-  "verdict": "Root+independent full architectural source/actualGPUgallery and desktop/touch actualgame PASS; hosted verification pending",
+  "verdict": "Root and independent full architectural source/gallery, desktop/touch game and actual hosted verification PASS",
   "reproduction": {
     "exactHashes": 26,
     "total": 26,
@@ -140,5 +140,16 @@
   "sharedComponents": "scripts/ordinary-buildings/README.md",
   "performanceLimits": "Headless desktop/touch emulation, warm16.7ms frames; startup longtasks remain open. No physical-mobile or stall-free claim.",
   "mergedBase": "d1655800",
-  "mergedDesktopTouch": "Current peer merged runtime checks both pass; exact newhashes/neighbors/fallback retained"
+  "mergedDesktopTouch": "Current peer merged runtime checks both pass; exact newhashes/neighbors/fallback retained",
+  "hostedVerification": {
+    "publicCommit": "bb31004d418c36599f319ae14903973e7592a6db",
+    "firebaseRun": "37698102176",
+    "verifiedAtUTC": "2026-10-07T22:48:24.706529+00:00",
+    "models": 26,
+    "allAssetHashesExact": true,
+    "manualDesktopTouchLoaded": 26,
+    "feedbackPreview": true,
+    "sourceCommit": "fc7c606dbbe77bd9d92efb8111c4a11078fde7a9",
+    "sourcePack": "experiments/canal-belt-continuation-20261007/host26-14"
+  }
 }
