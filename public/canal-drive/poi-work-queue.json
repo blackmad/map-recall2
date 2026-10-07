@@ -529,10 +529,17 @@
       "id": "electric-ladyland",
       "task": "Electric Ladyland: research identifiable exterior before model",
       "priority": "normal",
-      "status": "scope-researched-reference-held",
+      "status": "source-cpu-reviewed-native-pending",
       "scopeResearch": "docs/references/electric-ladyland/native-scope-checkpoint.json",
       "sourceCommit": "706b8a3ca72c330b1de1a874563c7c3f77e45389",
-      "nextAction": "Acquire current facade/roof originals, exact address join and semantic roof measurements for the two register-linked parents before original geometry; preserve museum occupancy at number5 and genuine POI identity."
+      "nextAction": "Integrate independently source/CPU-reviewed native two-parent museum ensemble; preserve failed grouped-window arches and missing2.5m²rearstrip evidence, currentno7door correction, then actual gallery/game/museum entrance/card/exact neighbors/fallback/pans/performance and hosted acceptance.",
+      "sourceArchive": {
+        "repository": "blackmad/map-recall2-source-data",
+        "commit": "fc73c8bbd7d907846e133df99362c77e0080543a",
+        "path": "models/electric-ladyland/recovery-source-20261007"
+      },
+      "referenceSupplementCommit": "3cbc70dd1a42ec2d2f77369ea4551564a4807298",
+      "candidateSHA256": "91c310bae570344d21142965d9d90189afb3875010ea9428f45d51d8d6398392"
     },
     {
       "id": "legacy-imports",
@@ -1828,18 +1835,77 @@
       "id": "melkweg-roof-crosses-feedback",
       "task": "Melkweg unsupported freestanding pale roof crosses",
       "priority": "high",
-      "status": "surveyed-rebuild-entry-allocation-hold",
+      "status": "native-shared-hall-context-hold",
       "modelId": "melkweg",
       "feedbackId": "26b15ccf-5dd2-46e9-abf3-a103dc2ab5d5",
       "reportedAssetVersion": "a55b13361380a702",
       "requestedOn": "2026-10-07",
-      "nextAction": "Correct source allocation of low glazed vestibule versus brick gable behind it, then verify full gallery/native shared hall joint, open underside, exact masks/retained neighbors, genuine route/pin/physical card, fallback and stationary camera pans before publication/feedback resolution.",
+      "nextAction": "Review source-backed shared Rabozaal interface: live first-hit identifies retained ordinary Pand0363100012173457 (installed minHeight0,height35.63m) and existing Stadsschouwburg signature as actual blockers. Preserve correct Melkweg native parent, no neighbor hiding/alias-only repair. Reconcile source-supported raised/glazed/open-under-hall geometry for exact owners, then complete gallery/game/card/fallback/pan/performance/hosted acceptance before resolving feedback.",
       "candidateSHA256": "b0168447eb72475d0a39b0cb75f1cd76ed7c2d00128b0770ebba24fd7e2a23af",
       "sourceCommit": "cb67adebb70c3c70e28fef91cb64398bd2f0c110",
       "validation": "Three invented freestanding crosses source-confirmed; bounded removal passes source/decoded/gallery but native model is blocked by genuine BAG parent. Official current OSM/BAG proof shows legacy rectangle omits451m² and overlaps neighbors151m²; no alias-only masking approved. Full surveyed native original rebuild active with exact parent and roof-part ownership. Real wall stars are preserved as source-supported future geometry. Source survey archived privately; no public repair or feedback resolution yet.",
       "feedbackStatus": "in-progress",
       "rebuildSourceCommit": "999a83d778cd61615a3d1b2521d7605e4121437b",
-      "rebuildCandidateSHA256": "99a1c6b5c7eaddefae348fa5be3d6c9ce8bdf8524529af34b39e605cad422362"
+      "rebuildCandidateSHA256": "99a1c6b5c7eaddefae348fa5be3d6c9ce8bdf8524529af34b39e605cad422362",
+      "rebuildProductionSHA256": "56c06af8d27bedcc23db5a5bf3eade7bb993f3cc37630dc99bd9a04df138026e",
+      "nativeEvidence": "/tmp/map-recall2-melkweg-native-oct7/artifacts/melkweg-native-56c06a/review.md"
+    },
+    {
+      "id": "cafe-kobalt",
+      "task": "Building housing Café Kobalt — original native landmark",
+      "priority": "high",
+      "status": "source-research-and-original-build",
+      "owner": "root",
+      "requestedOn": "2026-10-07",
+      "requestedAddress": "Singel 2A, Amsterdam",
+      "sourceLinks": [
+        "https://www.cafekobalt.nl/contact.html",
+        "https://www.cafekobalt.nl/about.html"
+      ],
+      "workflow": "full-landmark",
+      "nextAction": "Resolve official address/VBO/Pand and current genuine OSM cafe identity; research historic warehouse roof/facade/current entrances with primary register and bounded Beeldbank search. Archive raw originals privately, build native texture-free original geometry, then verify actual gallery/game, exact suppression/neighbors/fallback, destination/pin/meaningful sourced card and performance. Preserve earlier queue tasks.",
+      "surveyedParent": "NL.IMBAG.Pand.0363100012178170",
+      "officialVBO": "0363010001040093",
+      "monumentNumber": "5249"
+    },
+    {
+      "id": "magna-plaza-overlap-feedback",
+      "task": "Magna Plaza ordinary-shell/custom-landmark overlap",
+      "priority": "high",
+      "status": "in-progress-native-layer-diagnosis",
+      "modelId": "magna-plaza",
+      "requestedOn": "2026-10-07",
+      "nextAction": "Investigate actual installed carrier IDs and every ordinary layer against loaded signature masks; fix exact scope/load/fallback suppression with native/gallery/game/neighbor/card and desktop/touch checks.",
+      "evidence": "User direct chat screenshots archived privately before publication; root staging artifacts/landmark-user-feedback-20261007."
+    },
+    {
+      "id": "westerkerk-annex-rear-feedback",
+      "task": "Westerkerk adjoining buildings and blank rear slab",
+      "priority": "high",
+      "status": "in-progress-source-backed-annex-repair",
+      "modelId": "westerkerk",
+      "requestedOn": "2026-10-07",
+      "nextAction": "Inspect direct front/rear screenshots against exact surveyed church/annex/neighbor ownership; distinguish overlapping ordinary carriers from incorrect legacy geometry. Rebuild source-critical assemblies with native/gallery/game review; preserve neighbors/open space and all3POIsurfaces.",
+      "diagnosis": "Actual native layer check: church aliases already masked; blank rear slab is custom w749287964 top5 excluded by facade top>5 guard. Residual-parent volumes also require source height/scope review. Separate ordinary adjoining buildings stay visible."
+    },
+    {
+      "id": "homomonument-water-feedback",
+      "task": "Homomonument main-land triangles reported in water",
+      "priority": "high",
+      "status": "queued-source-and-native-diagnosis",
+      "modelId": "homomonument",
+      "requestedOn": "2026-10-07",
+      "nextAction": "Reopen earlier scoped placement acceptance; verify exact triangle arrangement against mapped/BGTground-water boundaries and currentphotos. Correct misplaced land elements while retaining source-supported watersideplatform; actualgame/independentreview required."
+    },
+    {
+      "id": "occii-facade-alignment-feedback",
+      "task": "OCCII remaining facade assembly alignment",
+      "priority": "high",
+      "status": "queued-source-and-native-diagnosis",
+      "modelId": "occii",
+      "requestedOn": "2026-10-07",
+      "nextAction": "Read fresh Firebase note063e3e2c-0627-48a8-b835-f407fee9cbe7 full evidence; conditionally claim beforecodefix. Compare currentexport daa84648 withoriginalfrontphotos and repair actual misaligned trim/window/ornament assemblies, then native/gallery/independent/hosted proof beforeconditionalresolution.",
+      "feedbackId": "063e3e2c-0627-48a8-b835-f407fee9cbe7"
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"
