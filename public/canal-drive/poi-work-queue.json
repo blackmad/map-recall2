@@ -637,11 +637,11 @@
       "id": "haparandaweg-requested-buildings",
       "task": "Buildings along Haparandaweg requested by user",
       "priority": "high",
-      "status": "three-parents-hosted-accepted-remaining-pending",
+      "status": "five-parents-hosted-accepted-remaining-pending",
       "owner": "root",
-      "validation": "School and apartment parents passed source, root/fresh independent gallery/native and exact hosted mesh reviews. Apartment load-failure fallback, exact suppression, retained school and 152 resident ordinary neighbors, physical ordinary click without invented card/destination verified on canonical Firebase host. Full constant4m checker486/25 remains failed with independently source-classified external rays; custom domain timed out and is not verified. Local active desktop/emulated-touch pans and bounded Metal timings remain preserved. Remaining14 in-use physical parents and one permit-only parent remain pending/deferred.",
+      "validation": "Five requested physical parents are hosted accepted: school, apartments,9,11,13. Fresh H11/H13 exact browser hashes, root gallery/source-facing joint native views, masks/retained9-school-apartment-warehouse, ordinary clicks without invented cards/destinations and actual failed-download fallback passed. Actual stationary desktop/touch-emulated pans retain surrounding windows/doors, six90-frame median16.7ms/p95atmost16.8ms onMetalM4Pro. Lowerdetails approximate, rearunknown, millimetricboundary/handle exceptions retained. Earlier apartment full4m486/25 diagnostic remains failed; no physical-phone/performance-improvement claim. Twelve in-use parents and one permit-only parent remain pending/deferred.",
       "sourceCommit": "fc18134851149129315e2c9e539427a628f5de73",
-      "nextAction": "Publish the verified private checkpoint, then commit/push and verify hosted Haparandaweg 11 and 13. Haparandaweg 57 draft recovered; independent/source archive/native checks pending. Preserve all remaining requested parents and deferred permit-only parent.",
+      "nextAction": "Continue remaining twelve in-use physical parents and one deferred permit-only parent, including held Haparandaweg 57 and source-only Haparandaweg 65. Preserve all earlier requests and failed evidence.",
       "firstParent": {
         "bagId": "0363100012244095",
         "modelId": "haparandaweg-2-4",
@@ -679,12 +679,39 @@
       "fourthParentCandidate": {
         "modelId": "haparandaweg-11",
         "bagId": "0363100012104965",
+        "assetSHA256": "d7277ae156f938942f4cbf573294fc3ee5e85bdc43fe796b50cbb751c4562bee",
+        "status": "hosted-accepted",
+        "publicModelCommit": "9acac969ed7b97a17ab5bd3ffd8a8efc76b552bb",
+        "acceptedSourceCommit": "e01d259d564d87933995a5e6e51e8dc601312e9c",
+        "hostedSourceCommit": "59aed5b370ab6a804dc4ee88622582e873774463",
+        "hostedDeploymentRun": 37666033260
+      },
+      "localPairValidation": "Exact production meshes passed root and fresh independent source/gallery/native reviews, exact suppression, retained neighbors, actual ordinary clicks without invented POIs, fresh load-failure fallback, and stationary desktop/emulated-touch pans. H11 complete six-opening inventory corrected after failed three/four-window candidates. Hosted acceptance pending; no new POI destinations. Fresh canonical-host acceptance and source publication now complete; earlier holds preserved in historicalFourthParentSourceHold.",
+      "haparandaweg65ComponentCheckpoint": {
+        "status": "source-derived-components-only-unaccepted",
+        "evidence": "docs/references/haparandaweg-65/facade-assembly-checkpoint.json",
+        "sourceCommit": "941ba3ad1acc05566daf187e9558c708619ba5f0",
+        "nextAction": "Acquire roof/rear survey and calibrate observed frontage before whole-model build; no registration or visual acceptance."
+      },
+      "historicalFourthParentSourceHold": {
+        "modelId": "haparandaweg-11",
+        "bagId": "0363100012104965",
         "status": "source-recognition-hold-missing-visible-upper-window",
         "candidateSHA256": "0e33b2a8cdacb4dc0c18fef44f5ae4e4816741660b96a300874164162d758250",
         "sourceCommit": "999a83d778cd61615a3d1b2521d7605e4121437b",
         "validation": "Structural production/native tests passed, but fresh source/native review found a complete far-right upper window omitted from the four-window draft. Projected wall fraction .919396; root inspected and agrees. Possible intermediate opening requires bounded source review. No public model commit or visual acceptance for this draft."
       },
-      "locallyReviewedPendingRelease": [
+      "fifthParentCandidate": {
+        "modelId": "haparandaweg-13",
+        "bagId": "0363100012104964",
+        "assetSHA256": "f0257cb44f19da99e9557b8b1c2207607da809904d2fec38af4c91392ddb1dd0",
+        "status": "hosted-accepted",
+        "publicModelCommit": "9acac969ed7b97a17ab5bd3ffd8a8efc76b552bb",
+        "acceptedSourceCommit": "e01d259d564d87933995a5e6e51e8dc601312e9c",
+        "hostedSourceCommit": "59aed5b370ab6a804dc4ee88622582e873774463",
+        "hostedDeploymentRun": 37666033260
+      },
+      "acceptedPairReleaseHistory": [
         {
           "bagId": "0363100012104965",
           "modelId": "haparandaweg-11",
@@ -707,14 +734,7 @@
           "acceptedSourceArchiveCommit": "e01d259d564d87933995a5e6e51e8dc601312e9c",
           "sourceRemoteVerifiedCommit": "16d644906c974150de90690eca7a8918e154cd6c"
         }
-      ],
-      "localPairValidation": "Exact production meshes passed root and fresh independent source/gallery/native reviews, exact suppression, retained neighbors, actual ordinary clicks without invented POIs, fresh load-failure fallback, and stationary desktop/emulated-touch pans. H11 complete six-opening inventory corrected after failed three/four-window candidates. Hosted acceptance pending; no new POI destinations.",
-      "haparandaweg65ComponentCheckpoint": {
-        "status": "source-derived-components-only-unaccepted",
-        "evidence": "docs/references/haparandaweg-65/facade-assembly-checkpoint.json",
-        "sourceCommit": "941ba3ad1acc05566daf187e9558c708619ba5f0",
-        "nextAction": "Acquire roof/rear survey and calibrate observed frontage before whole-model build; no registration or visual acceptance."
-      }
+      ]
     },
     {
       "id": "concertgebouw-original-detail",
