@@ -201,7 +201,7 @@
     },
     {
       "id": "kalver-spui-persistent-20261007",
-      "state": "accepted-local-awaiting-hosted-verification",
+      "state": "published-hosted-verified",
       "accepted": [
         "0363100012168201",
         "0363100012175754"
@@ -224,7 +224,11 @@
           "triangles": 2049,
           "materials": 3
         }
-      ]
+      ],
+      "publicCommit": "5402f898cc98d9f7d58730775788e1f3ad53734f",
+      "deploymentRun": "37689366537",
+      "hostEvidenceSourceCommit": "526c11f5fe28d71b4a7dfc87f9b261ed512265e9",
+      "hostEvidenceSourcePath": "experiments/canal-belt-continuation-20261007/host24-10"
     }
   ],
   "morningCheckpoint": {
@@ -252,7 +256,7 @@
     "decision": "Warehouse finish subtle close-up; concrete payoff rejected. Actual game loading/motion acceptance remains pending."
   },
   "feedbackCheckpoint": {
-    "at": "2026-10-07T21:17:49.905Z",
+    "at": "2026-10-07T21:37:20.965Z",
     "open": 1,
     "inProgress": 1,
     "atLimit": false,
@@ -264,7 +268,7 @@
     ]
   },
   "source04AndRoofFollowupCommit": "7b26e67e736c6434849b443ec649cb1836713f3d",
-  "continuedAt": "2026-10-07T21:21:01.705480+00:00",
+  "continuedAt": "2026-10-07T21:38:46.024049+00:00",
   "selectionConstraint": "Large fairly boxy ordinary buildings inside canal belt: warehouse conversions and modern commercial blocks. Exclude already modeled manual/ordinary IDs, elaborate monuments, courtyard complexes and uncertain wings from fast discovery.",
   "currentAccess": {
     "at": "2026-10-07T19:05:47.485551+00:00",
@@ -287,5 +291,23 @@
       "0363100012168201",
       "0363100012175754"
     ]
+  },
+  "nextDiscovery": {
+    "sourceCommit": "526c11f5fe28d71b4a7dfc87f9b261ed512265e9",
+    "sourcePath": "experiments/canal-belt-continuation-20261007/discovery-09",
+    "state": "originals-cached-ownership-and-frontage-selection-next",
+    "suggestedIds": [
+      "0363100012254471",
+      "0363100012243483",
+      "0363100012171135"
+    ],
+    "held": [
+      {
+        "id": "0363100012179346",
+        "reason": "Nearestsourceornatehistoricforeground;nativeownershipunproven."
+      }
+    ],
+    "screenCount": 143,
+    "warning": "Geometry suggestions not acceptance;addresssamples3/panocatalogues300bounded;confirmcuratedPOI/alternateIDoverlap/canalbeltlocation."
   }
 }

@@ -1,6 +1,18 @@
 # Canal-belt ordinary-building handoff
 
-Updated 2026-10-07 20:51 UTC. This replaces the earlier temporary-directory checkpoint. The continuous building request remains active; the newest two models are **not yet published**.
+Updated 2026-10-07 21:38 UTC. The continuous building request remains active. Four additional canal-belt ordinary models are now published; next-source discovery is underway.
+
+## Current authoritative checkpoint
+
+- Public model release **5402f898cc98d9f7d58730775788e1f3ad53734f**; Firebase run37689366537 succeeded. **24 models hosted**, exact Kalver/Spui GLB hashes verified; hosted source galleries and manual24 desktop/touch load/feedback previews pass. First pair release85d5dd73 remains an ancestor.
+- Persistent release clone HEAD5402f898; rebase retained Electric Ladyland463f304d and rebuilt shared bundle. Final desktop/touch reruns against that merge pass, evidence private **1ee51ba8385e8f6c29d6e74215147a911859f7a8**, `rebase-and-discovery-08`.
+- Latest private checkpoint **526c11f5fe28d71b4a7dfc87f9b261ed512265e9**: `host24-10` verified hosted24 evidence; `discovery-09` contains122checksummedpayloads34,159,146bytes:143derivedscreen suggestions,12 official address samples,4 rawsurvey/panocatalogue packs,8original photos and processed previews/scripts. Dependencies are outside sourcepack. Source-clone origin now HTTPS/keyring.
+- All authors/reviewers completed. No worker or oldprocess should be described as activelybuilding. Own local server49330/session41730 may still be live; verify handle before using. Goal remains active; select/build next genuine boxes rather than stopping at24.
+- Next promising targets: Rokin49 separate Pand0363100012254471/0363100012243483, and Amstel1300363100012171135. Bind actual native street planes and exclude photographed124/126neighbors atAmstel; obtain wider Rokinfront views rather than relying on neareststeeg images. Herengracht5370363100012179346 is **held from quick selection**: nearestphoto shows ornatehistoric foreground despite2000BAGyear; do not borrow it into a rearbox without ownership proof. These are discovery candidates, not acceptedfidelity. Check mappedPOI/alternate-ID replacement overlap and actualcanalbelt position before authoring.
+- Source tools: `/Users/blackmad/Code/map-recall2-worktrees/canal-source-tools/bin/python` hasPillow/numpy/shapely2.1.2, isolated from repo. Newpreviewmetadata correctlyrecords actual23degpitch/110degFOV; oldarchived project-wide.py had erroneous17/80metadata although pixels used23/110. Preserve that oldevidence; use corrected script for newpreviews. Panocatalogue capped3pages/300records and officialaddress samples capped3, not exhaustive.
+- Latest feedback pull **2026-10-07T21:37:20.965Z**: openOCCII1/unresolved, existingMelkweg1 claimedelsewhere, no duplicateclaims.
+
+Production: https://canalrecall-blackmad.web.app/manual-ordinary-buildings.html . Newsource comparisons: https://canalrecall-blackmad.web.app/ordinary-buildings.html?building=ordinary-0363100012168201 and https://canalrecall-blackmad.web.app/ordinary-buildings.html?building=ordinary-0363100012175754 . Older sections below record the recovery/review history; use this checkpoint for current paths/status.
 
 ## Scope and acceptance
 
