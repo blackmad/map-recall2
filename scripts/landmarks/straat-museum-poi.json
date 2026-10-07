@@ -1,0 +1,43 @@
+{
+  "id": "extract_landmarks_6741685223",
+  "name": "STRAAT Museum",
+  "osmId": "n6741685223",
+  "osmType": "node",
+  "coordinates": [
+    4.8938542,
+    52.4019462
+  ],
+  "destinationCoordinates": [
+    4.8936,
+    52.40181
+  ],
+  "destinationReason": "Public southwest office/mural entrance approach; coordinator must route-check surveyed position. Centroid inside large closed industrial hall is not the public entrance.",
+  "website": "https://straatmuseum.com/",
+  "description": "STRAAT presents street art and graffiti inside the former NDSM welding hall. This Lasloods is a separate monument from the adjoining NDSM shipbuilding warehouse. Its huge two-aisle industrial interior retains the steel structure of the shipyard.",
+  "facts": [
+    {
+      "text": "Built in 1952 to designs by J.D. and A.E.G. Postma, the welding hall has closed brick walls, blue loading doors and four flattened roof-light strips.",
+      "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/528252"
+    },
+    {
+      "text": "Eduardo Kobra\u2019s Anne Frank mural, Let Me Be Myself, marks the outside of the museum.",
+      "source": "https://www.straatmuseum.com/collectie/let-me-be-myself"
+    },
+    {
+      "text": "The museum occupies the former welding hall; STRAAT Caf\u00e9 overlooks its exhibition from upper levels.",
+      "source": "https://www.straatmuseum.com/faq"
+    }
+  ],
+  "identityNotes": {
+    "osmBuilding": "w717827611",
+    "osmPOI": "n6741685223",
+    "bagPand": "0363100012079735",
+    "rceMonument": "528252",
+    "rceComplex": "528250",
+    "canonicalPOI": "extract_landmarks_6741685223",
+    "existingNDSMPoi": "extract_landmarks_1741957518",
+    "relationship": "Lasloods is a separate physical Pand from NDSM-loods/Scheepsbouwloods. STRAAT genuine museum POI occupies Lasloods; no duplicate destination for hall/office. Three VBOs share host; no inference that each is a new tenant POI."
+  },
+  "preserveExistingFacts": true,
+  "integrationState": "Genuine OSM museum node absent current landmark extract; coordinator must promote same identity, not duplicate NDSM-loods destination. No alias destination for Lasloods or office."
+}

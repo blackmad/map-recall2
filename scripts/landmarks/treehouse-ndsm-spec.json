@@ -1,0 +1,68 @@
+{
+  "id": "treehouse-ndsm",
+  "name": "Treehouse NDSM",
+  "landmarkId": "w1163404107",
+  "modelUrl": "./models/treehouse-ndsm.glb",
+  "suppressOsmIds": [
+    "w717022796",
+    "NL.IMBAG.Pand.0363100012252476",
+    "w717022787",
+    "NL.IMBAG.Pand.0363100012252477",
+    "w717022799",
+    "NL.IMBAG.Pand.0363100012252479",
+    "w717022798",
+    "NL.IMBAG.Pand.0363100012252480",
+    "w717022786",
+    "NL.IMBAG.Pand.0363100012252481",
+    "w717022795",
+    "NL.IMBAG.Pand.0363100012252482",
+    "w717022791",
+    "NL.IMBAG.Pand.0363100012252483",
+    "w1509690547",
+    "NL.IMBAG.Pand.0363100012252484",
+    "w717022784",
+    "NL.IMBAG.Pand.0363100012252486",
+    "w717022803",
+    "NL.IMBAG.Pand.0363100012252487",
+    "w717022788",
+    "NL.IMBAG.Pand.0363100012252488",
+    "w717022801",
+    "NL.IMBAG.Pand.0363100012252489",
+    "w717022789",
+    "NL.IMBAG.Pand.0363100012252490",
+    "w717022792",
+    "NL.IMBAG.Pand.0363100012252491",
+    "w717022783",
+    "NL.IMBAG.Pand.0363100012252492",
+    "w717022804",
+    "NL.IMBAG.Pand.0363100012252493"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.89311,
+      52.39948
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 60,
+    "widthMetres": 57
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.89311,
+      52.39948
+    ],
+    "northOffsetDegrees": 0,
+    "source": "CurrentPDOK16separateBAGPands inOSMsitew1163404107. AHNroofplanes+perPandgroundcalibration. Outsideparcelneverfilled."
+  },
+  "attribution": {
+    "title": "Treehouse NDSM",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.treehousendsm.com/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free studio/container village;16nativeseparatefootprints,sourcewhitepitchedcabinsandlargeworkhalls,observedcoloredcorrugationandnorthblackslats. Source-derivedroofplanes,notimportedmesh. Courtyards/alleys/Pllekneighbors retained."
+  }
+}

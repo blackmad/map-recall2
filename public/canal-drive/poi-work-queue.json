@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedOn": "2026-10-06",
+  "updatedOn": "2026-10-07",
   "primaryBuildingInventory": "./landmark-backlog.json",
   "agentMemory": "AGENTS.md (repository root)",
   "completionRequirements": [
@@ -20,7 +20,7 @@
     "Gashouder, Ketelhuis, Vondelpark open-air theater and bandstand already have original models.",
     "Preserve previous requests when adding tasks. Existing completed landmark inventory is generated separately.",
     "Background ordinary city geometry is not automatically a researched POI. Candidate backlog is separate from completed POIs.",
-    "2026-10-06: User requested a break after the current RAI/Pulitzer set. Pause continuous landmark assignment after this reviewed checkpoint; preserve UvA and Viñoly drafts and earlier requested tasks.",
+    "2026-10-06: User requested a break after the current RAI/Pulitzer set. Pause continuous landmark assignment after this reviewed checkpoint; preserve UvA and Vi\u00f1oly drafts and earlier requested tasks.",
     "2026-10-06 resumed bounded completion: De Gooyer and Former Nieuw Dakota passed final acceptance; other eight requested tasks remain active. No broad all-day queue expansion."
   ],
   "tasks": [
@@ -95,11 +95,11 @@
     },
     {
       "id": "batched-road-projection-and-surface-setup",
-      "task": "Remove the remaining 200–470ms road/surface startup pauses",
+      "task": "Remove the remaining 200\u2013470ms road/surface startup pauses",
       "priority": "high",
       "status": "verified",
       "owner": "root",
-      "validation": "Projection, snap-index median partition and surface-grid setup yield on8ms budgets; projection/index publish atomically and cancelled loads preserve prior state. Real72330-segment fixture matches every projected segment,473 snaps and147133 surface-cell/span sequences. Desktop largest startup task447→176ms; touch-emulated388→160ms. Actual stationary pans/min zoom preserve textured facades and smooth fade. TypeScript, seven staged/queue/snap/graph tests, adapter cancellation, road/surface regressions and desktop route/restarted-loading checks pass. Report:docs/performance/2026-10-06/road-setup.md. Smaller setup/tile-arrival pauses remain; overall startup timing varies."
+      "validation": "Projection, snap-index median partition and surface-grid setup yield on8ms budgets; projection/index publish atomically and cancelled loads preserve prior state. Real72330-segment fixture matches every projected segment,473 snaps and147133 surface-cell/span sequences. Desktop largest startup task447\u2192176ms; touch-emulated388\u2192160ms. Actual stationary pans/min zoom preserve textured facades and smooth fade. TypeScript, seven staged/queue/snap/graph tests, adapter cancellation, road/surface regressions and desktop route/restarted-loading checks pass. Report:docs/performance/2026-10-06/road-setup.md. Smaller setup/tile-arrival pauses remain; overall startup timing varies."
     },
     {
       "id": "startup-stalls-and-smooth-zoom-fade",
@@ -107,7 +107,7 @@
       "priority": "high",
       "status": "verified",
       "owner": "root",
-      "validation": "Kit/houseboat builds use a coalesced, backpressured worker queue; four-look geometry byte matches. Exact nearest-road indexing and duplicate-junction removal preserve snap results, graph topology and unique surface coverage. Routing construction yields in8ms batches and respects cancelled loading tokens. Desktop largest startup task1614→470ms and main chunk build93→14ms. Smooth depth-correct fade ends at15.4, before measured phone minimum; desktop/touch stationary pans, min zoom and overview retain facades without stippling. TypeScript, startup/route/loading cancellation, road/surface/LOD and stale look regressions passed. Report:docs/performance/2026-10-06/stalls-and-fade.md. Total startup time remains variable; shorter setup stalls remain. Rejected two-pass phone-minimum evidence retained."
+      "validation": "Kit/houseboat builds use a coalesced, backpressured worker queue; four-look geometry byte matches. Exact nearest-road indexing and duplicate-junction removal preserve snap results, graph topology and unique surface coverage. Routing construction yields in8ms batches and respects cancelled loading tokens. Desktop largest startup task1614\u2192470ms and main chunk build93\u219214ms. Smooth depth-correct fade ends at15.4, before measured phone minimum; desktop/touch stationary pans, min zoom and overview retain facades without stippling. TypeScript, startup/route/loading cancellation, road/surface/LOD and stale look regressions passed. Report:docs/performance/2026-10-06/stalls-and-fade.md. Total startup time remains variable; shorter setup stalls remain. Rejected two-pass phone-minimum evidence retained."
     },
     {
       "id": "city-context-and-camera-performance",
@@ -115,7 +115,7 @@
       "priority": "high",
       "status": "verified",
       "owner": "root",
-      "validation": "Fixed Anne Frank–Rijksmuseum route: desktop context CPU621→147ms, tile update peak231→76ms; touch context105→40ms. Overview building draws44→27 and triangles2.82M→2.65M. Same-scene culling preserves visible pixels; actual mouse/touch pan retains windows/doors/roofs away from stationary rider. Street, zoom16, actual minimum and diagnostic14.8 reviewed. TypeScript, exact neighbor-index regressions, real-tile LOD and desktop route/shell ownership checks passed. Report:docs/performance/2026-10-06/README.md. GPU/startup timing remains variable, resident memory unchanged; physical phone performance and broader startup stalls remain open."
+      "validation": "Fixed Anne Frank\u2013Rijksmuseum route: desktop context CPU621\u2192147ms, tile update peak231\u219276ms; touch context105\u219240ms. Overview building draws44\u219227 and triangles2.82M\u21922.65M. Same-scene culling preserves visible pixels; actual mouse/touch pan retains windows/doors/roofs away from stationary rider. Street, zoom16, actual minimum and diagnostic14.8 reviewed. TypeScript, exact neighbor-index regressions, real-tile LOD and desktop route/shell ownership checks passed. Report:docs/performance/2026-10-06/README.md. GPU/startup timing remains variable, resident memory unchanged; physical phone performance and broader startup stalls remain open."
     },
     {
       "id": "initial-overview-mobile-lod",
@@ -155,7 +155,7 @@
       "priority": "urgent",
       "status": "verified",
       "owner": "root",
-      "validation": "Real browser drag, recenter click, continued driving, wheel pan and R; frame-rate equivalence at 5–120 fps."
+      "validation": "Real browser drag, recenter click, continued driving, wheel pan and R; frame-rate equivalence at 5\u2013120 fps."
     },
     {
       "id": "building-inspection",
@@ -335,7 +335,7 @@
     },
     {
       "id": "vinoly",
-      "task": "Viñoly",
+      "task": "Vi\u00f1oly",
       "priority": "normal",
       "status": "queued"
     },
@@ -453,8 +453,16 @@
       "id": "vondeltuin",
       "task": "Vondeltuin",
       "priority": "normal",
-      "status": "in-progress",
-      "nextAction": "User resumed this bounded landmark set on 2026-10-06; finish existing geometry, source/native review and complete destination/pin/card/fallback acceptance, commit and deploy."
+      "status": "verified-awaiting-deployment",
+      "nextAction": "Source/gallery/native, route destination/pin/physical card, exact masks/neighbor retention and fallback verified; publish and verify hosted fingerprints.",
+      "modelId": "vondeltuin",
+      "evidence": "../../scripts/landmarks/vondeltuin-review.json",
+      "sourceArchive": {
+        "repository": "blackmad/map-recall2-source-data",
+        "commit": "205d04f0c48c3a651000233510d5f9ac1596edee",
+        "path": "models/vondeltuin"
+      },
+      "validation": "Independent source/gallery/live visual acceptance; all15 scoped CPU commands pass. Actual desktop/touch camera pans retain surrounding facade detail. Failed earlier evidence preserved."
     },
     {
       "id": "het-lab",
@@ -466,9 +474,16 @@
       "id": "monk",
       "task": "Monk Amsterdam",
       "priority": "high",
-      "status": "scope-research",
-      "nextAction": "Model the source-backed corrugated Noord industrial architecture: establish full shared-host/tenant scope or accurate additive venue components. Do not erase unrelated tenants with a Monk-only parent replacement. Shared-host complexity is a modeling task, not grounds to drop it.",
-      "evidence": "../../scripts/landmarks/monk-amsterdam-review.json"
+      "status": "verified-awaiting-deployment",
+      "nextAction": "Source/gallery/native, route destination/pin/physical card, exact masks/neighbor retention and fallback verified; publish and verify hosted fingerprints.",
+      "evidence": "../../scripts/landmarks/monk-amsterdam-review.json",
+      "modelId": "monk-amsterdam",
+      "sourceArchive": {
+        "repository": "blackmad/map-recall2-source-data",
+        "commit": "205d04f0c48c3a651000233510d5f9ac1596edee",
+        "path": "models/monk-amsterdam"
+      },
+      "validation": "Independent source/gallery/live visual acceptance; all15 scoped CPU commands pass. Actual desktop/touch camera pans retain surrounding facade detail. Failed earlier evidence preserved."
     },
     {
       "id": "klimhal-amsterdam",
@@ -538,7 +553,7 @@
     },
     {
       "id": "street-aware-procedural-architecture",
-      "task": "Street-side panorama profiles and architectural recipes: Overtoom 215–247, Bethaniëndwarsstraat around Samrat, screenshot-area family/repetition control; all detailed modes, adjoining-block holdouts",
+      "task": "Street-side panorama profiles and architectural recipes: Overtoom 215\u2013247, Bethani\u00ebndwarsstraat around Samrat, screenshot-area family/repetition control; all detailed modes, adjoining-block holdouts",
       "priority": "high",
       "status": "verified-pilot",
       "notes": "Three self-review/improvement cycles complete on Overtoom, De Wallen and Marcantilaan, plus adjacent withheld-source transfers. 36 tests and four rendering-mode browser review pass; 349 surveyed neighbors, 95 frozen frontage assignments, 169 compact architectural street segments. Current source and cohort admission replay pass. Final same-worker profile-on/off CPU compile aggregate +0.29%; walls +3.29%, extras -0.37%, one of 24 cases +12.3%. Reviewed stage triangles decrease with unchanged draw calls. Full-game GPU budget remains unverified. Ready for reviewed city batches, not a blanket city-wide style claim. Approximate street character, no individual facade registration claim. Latest demos: artifacts/street-appearance/cycles/index.html."
@@ -648,9 +663,17 @@
       "id": "boom-roof-sign-repair",
       "task": "Repair Boom Chicago barrel roof and fit defining facade sign",
       "priority": "high",
-      "status": "verified",
+      "status": "verified-awaiting-deployment",
       "owner": "root",
-      "validation": "Focused roof/sign envelope and wall-backed pane geometry checks passed. Regenerated native GLBs; gallery and live front/rear reviewed. Actual selected destination, pin, physical click sourced card, exact suppression and preserved resident/drawable neighboring buildings passed. Evidence: scripts/landmarks/review-nes-rozentheater-repairs.mjs; /tmp/nes-repairs-review.log; /tmp/boom-chicago-gallery.png and live front/rear screenshots. All 138 manual asset checks and TypeScript passed."
+      "validation": "Independent source/gallery/live visual acceptance; all15 scoped CPU commands pass. Actual desktop/touch camera pans retain surrounding facade detail. Failed earlier evidence preserved.",
+      "modelId": "boom-chicago",
+      "evidence": "../../scripts/landmarks/boom-chicago-review.json",
+      "sourceArchive": {
+        "repository": "blackmad/map-recall2-source-data",
+        "commit": "205d04f0c48c3a651000233510d5f9ac1596edee",
+        "path": "models/boom-chicago"
+      },
+      "nextAction": "Source/gallery/native, route destination/pin/physical card, exact masks/neighbor retention and fallback verified; publish and verify hosted fingerprints."
     },
     {
       "id": "brakke-window-wall-repair",
@@ -677,14 +700,14 @@
     },
     {
       "id": "ing-house",
-      "task": "ING House / Infinity — original house-style landmark",
+      "task": "ING House / Infinity \u2014 original house-style landmark",
       "priority": "high",
       "status": "verified",
       "owner": "ing_house",
       "requested": true,
       "workflow": "full-landmark",
       "sourceUrl": "https://mvsa-architects.com/en/projects/ing-house/",
-      "notes": "Explicit user request. MVSA primary reference documents glass/aluminium wedge and 9–12 m stilts; preserve raised open structure and distinctive rising silhouette. Resolve exact OSM/BAG footprint and genuine destination identity before modeling. Completion requires destination, map pin/label and sourced info card.",
+      "notes": "Explicit user request. MVSA primary reference documents glass/aluminium wedge and 9\u201312 m stilts; preserve raised open structure and distinctive rising silhouette. Resolve exact OSM/BAG footprint and genuine destination identity before modeling. Completion requires destination, map pin/label and sourced info card.",
       "validation": "Native gallery/reference and live front/rear review accepted; actual destination route, geographic pin, physical sourced card, exact suppression and resident drawable neighbors passed. Detailed source/review records in scripts/landmarks."
     },
     {
@@ -697,7 +720,7 @@
     },
     {
       "id": "idfa-vondelpark-pavilion",
-      "task": "IDFA — Het Documentaire Paviljoen / Vondelparkpaviljoen",
+      "task": "IDFA \u2014 Het Documentaire Paviljoen / Vondelparkpaviljoen",
       "priority": "high",
       "status": "verified",
       "owner": "idfa_pavilion",
@@ -709,7 +732,7 @@
     },
     {
       "id": "muiderpoort-original",
-      "task": "Muiderpoort historic gate — original house-style model",
+      "task": "Muiderpoort historic gate \u2014 original house-style model",
       "priority": "normal",
       "status": "verified",
       "owner": "muiderpoort",
@@ -737,7 +760,7 @@
     },
     {
       "id": "our-lord-attic-repair",
-      "task": "Our Lord in the Attic — facade and canonical identity repair",
+      "task": "Our Lord in the Attic \u2014 facade and canonical identity repair",
       "priority": "normal",
       "status": "verified",
       "owner": "our_lord_attic",
@@ -746,7 +769,7 @@
     },
     {
       "id": "da-costakade-13-17-archive-facades",
-      "task": "Use user-found 1903 Beeldbank elevation to improve Da Costakade 13–17 coordinated facade and roof composition",
+      "task": "Use user-found 1903 Beeldbank elevation to improve Da Costakade 13\u201317 coordinated facade and roof composition",
       "priority": "high",
       "status": "research",
       "owner": "archive_facades",
@@ -779,7 +802,7 @@
     },
     {
       "id": "singelkerk-original",
-      "task": "Singelkerk — bounded original landmark build",
+      "task": "Singelkerk \u2014 bounded original landmark build",
       "priority": "normal",
       "status": "verified",
       "owner": "muiderpoort",
@@ -789,7 +812,7 @@
     },
     {
       "id": "oba-oosterdok-rebuild",
-      "task": "OBA Oosterdok — source-backed architectural rebuild",
+      "task": "OBA Oosterdok \u2014 source-backed architectural rebuild",
       "priority": "urgent",
       "status": "verified",
       "owner": "oba_rebuild",
@@ -798,7 +821,7 @@
     },
     {
       "id": "sint-agneskerk-original",
-      "task": "Sint-Agneskerk — church and detached campanile",
+      "task": "Sint-Agneskerk \u2014 church and detached campanile",
       "priority": "normal",
       "status": "verified",
       "owner": "agneskerk_build",
@@ -807,7 +830,7 @@
     },
     {
       "id": "petruskerk-original",
-      "task": "Petruskerk — native church and belfry",
+      "task": "Petruskerk \u2014 native church and belfry",
       "priority": "normal",
       "status": "verified",
       "owner": "petruskerk_build",
@@ -816,7 +839,7 @@
     },
     {
       "id": "boomkerk-original",
-      "task": "Boomkerk — source-backed church",
+      "task": "Boomkerk \u2014 source-backed church",
       "priority": "normal",
       "status": "verified",
       "owner": "boomkerk_build",
@@ -825,7 +848,7 @@
     },
     {
       "id": "solder-modern-entrance-review",
-      "task": "Ons’ Lieve Heer op Solder — modern entrance repair",
+      "task": "Ons\u2019 Lieve Heer op Solder \u2014 modern entrance repair",
       "priority": "high",
       "status": "verified",
       "owner": "petruskerk_build",
@@ -834,7 +857,7 @@
     },
     {
       "id": "dageraad-window-scope-review",
-      "task": "De Dageraad — own-parent flank windows",
+      "task": "De Dageraad \u2014 own-parent flank windows",
       "priority": "high",
       "status": "verified",
       "owner": "agneskerk_build",
@@ -843,11 +866,19 @@
     },
     {
       "id": "pllek",
-      "task": "Pllek — NDSM waterfront venue and container architecture",
+      "task": "Pllek \u2014 NDSM waterfront venue and container architecture",
       "priority": "high",
-      "status": "in-progress",
+      "status": "verified-awaiting-deployment",
       "requestedOn": "2026-10-05",
-      "nextAction": "User resumed this bounded landmark set on 2026-10-06; finish existing geometry, source/native review and complete destination/pin/card/fallback acceptance, commit and deploy."
+      "nextAction": "Source/gallery/native, route destination/pin/physical card, exact masks/neighbor retention and fallback verified; publish and verify hosted fingerprints.",
+      "modelId": "pllek",
+      "evidence": "../../scripts/landmarks/pllek-review.json",
+      "sourceArchive": {
+        "repository": "blackmad/map-recall2-source-data",
+        "commit": "205d04f0c48c3a651000233510d5f9ac1596edee",
+        "path": "models/pllek"
+      },
+      "validation": "Independent source/gallery/live visual acceptance; all15 scoped CPU commands pass. Actual desktop/touch camera pans retain surrounding facade detail. Failed earlier evidence preserved."
     },
     {
       "id": "ndsm-warehouse-complex",
@@ -860,11 +891,19 @@
     },
     {
       "id": "straat-museum",
-      "task": "STRAAT Museum — NDSM warehouse exterior",
+      "task": "STRAAT Museum \u2014 NDSM warehouse exterior",
       "priority": "high",
-      "status": "in-progress",
+      "status": "verified-awaiting-deployment",
       "requestedOn": "2026-10-05",
-      "nextAction": "User resumed this bounded landmark set on 2026-10-06; finish existing geometry, source/native review and complete destination/pin/card/fallback acceptance, commit and deploy."
+      "nextAction": "Source/gallery/native, route destination/pin/physical card, exact masks/neighbor retention and fallback verified; publish and verify hosted fingerprints.",
+      "modelId": "straat-museum",
+      "evidence": "../../scripts/landmarks/straat-museum-review.json",
+      "sourceArchive": {
+        "repository": "blackmad/map-recall2-source-data",
+        "commit": "205d04f0c48c3a651000233510d5f9ac1596edee",
+        "path": "models/straat-museum"
+      },
+      "validation": "Independent source/gallery/live visual acceptance; all15 scoped CPU commands pass. Actual desktop/touch camera pans retain surrounding facade detail. Failed earlier evidence preserved."
     },
     {
       "id": "former-nieuw-dakota",
@@ -876,11 +915,19 @@
     },
     {
       "id": "treehouse-ndsm",
-      "task": "Treehouse NDSM — studios and distinctive compound",
+      "task": "Treehouse NDSM \u2014 studios and distinctive compound",
       "priority": "high",
-      "status": "in-progress",
+      "status": "verified-awaiting-deployment",
       "requestedOn": "2026-10-05",
-      "nextAction": "User resumed this bounded landmark set on 2026-10-06; finish existing geometry, source/native review and complete destination/pin/card/fallback acceptance, commit and deploy."
+      "nextAction": "Source/gallery/native, route destination/pin/physical card, exact masks/neighbor retention and fallback verified; publish and verify hosted fingerprints.",
+      "modelId": "treehouse-ndsm",
+      "evidence": "../../scripts/landmarks/treehouse-ndsm-review.json",
+      "sourceArchive": {
+        "repository": "blackmad/map-recall2-source-data",
+        "commit": "205d04f0c48c3a651000233510d5f9ac1596edee",
+        "path": "models/treehouse-ndsm"
+      },
+      "validation": "Independent source/gallery/live visual acceptance; all15 scoped CPU commands pass. Actual desktop/touch camera pans retain surrounding facade detail. Failed earlier evidence preserved."
     },
     {
       "id": "de-gooyer-windmill",
@@ -891,7 +938,7 @@
       "nextAction": "Published native original model; source-qualified fine-detail approximations preserved.",
       "researchLeads": [
         "User supplied: dates from 1725; former flour mill; claimed largest windmill in the country. Verify date, original versus moved/rebuilt structure, and precise size distinction before publishing trivia.",
-        "Nearby Brouwerij ’t IJ; brewery tour/free-beer claims require current operator verification."
+        "Nearby Brouwerij \u2019t IJ; brewery tour/free-beer claims require current operator verification."
       ],
       "completedOn": "2026-10-06",
       "modelId": "de-gooyer",
@@ -904,26 +951,40 @@
     },
     {
       "id": "brouwerij-het-ij",
-      "task": "Brouwerij ’t IJ brewery beside De Gooyer",
+      "task": "Brouwerij \u2019t IJ brewery beside De Gooyer",
       "priority": "normal",
       "status": "queued",
       "requestedOn": "2026-10-05",
-      "nextAction": "Resolve brewery building and terrace scope alongside De Gooyer; preserve separate windmill and brewery POI identities and meaningful sourced cards. Verify current operator history and visitor information."
+      "nextAction": "Full user-supplied public reference recovered and independently inspected; includes entire brewery. Current operator photos archived and cross-checked. Author original native-scale brewery on separate BAG0363100012169757 after surveyed roof zones/current lower openings verified; preserve windmill/terrace and genuine POI.",
+      "sourceArchive": {
+        "repository": "blackmad/map-recall2-source-data",
+        "commit": "68906c28297c781d0d2b8c8784adde49f2eba399",
+        "path": "models/brouwerij-het-ij"
+      },
+      "referenceRecovery": "User model2011/2014 reference GLB with full brewery, current operator photos; reference geometry is not copied into original game asset."
     },
     {
       "id": "centrale-markthal",
-      "task": "Centrale Markthal — Food Center Amsterdam",
+      "task": "Centrale Markthal \u2014 Food Center Amsterdam",
       "priority": "high",
-      "status": "in-progress",
+      "status": "verified-awaiting-deployment",
       "requestedOn": "2026-10-05",
-      "nextAction": "User resumed this bounded landmark set on 2026-10-06; finish existing geometry, source/native review and complete destination/pin/card/fallback acceptance, commit and deploy.",
+      "nextAction": "Source/gallery/native, route destination/pin/physical card, exact masks/neighbor retention and fallback verified; publish and verify hosted fingerprints.",
       "researchLeads": [
         "User previously linked jungle_jim Amsterdam Sketchfab collection including a market-hall reference; inspect matching model/rights rather than assuming a licence or copying its mesh."
-      ]
+      ],
+      "modelId": "centrale-markthal",
+      "evidence": "../../scripts/landmarks/centrale-markthal-review.json",
+      "sourceArchive": {
+        "repository": "blackmad/map-recall2-source-data",
+        "commit": "205d04f0c48c3a651000233510d5f9ac1596edee",
+        "path": "models/centrale-markthal"
+      },
+      "validation": "Independent source/gallery/live visual acceptance; all15 scoped CPU commands pass. Actual desktop/touch camera pans retain surrounding facade detail. Failed earlier evidence preserved."
     },
     {
       "id": "mediamatic",
-      "task": "Mediamatic — original house-style landmark model",
+      "task": "Mediamatic \u2014 original house-style landmark model",
       "priority": "high",
       "status": "queued",
       "requestedOn": "2026-10-05",
@@ -931,7 +992,7 @@
     },
     {
       "id": "hannekes-boom",
-      "task": "Hannekes Boom — original house-style landmark model",
+      "task": "Hannekes Boom \u2014 original house-style landmark model",
       "priority": "high",
       "status": "queued",
       "requestedOn": "2026-10-05",
@@ -939,7 +1000,7 @@
     },
     {
       "id": "pulitzer-amsterdam",
-      "task": "Pulitzer Amsterdam hotel — original house-style landmark model",
+      "task": "Pulitzer Amsterdam hotel \u2014 original house-style landmark model",
       "priority": "high",
       "status": "completed",
       "requestedOn": "2026-10-05",
@@ -1006,7 +1067,7 @@
     },
     {
       "id": "kinderkookkafe",
-      "task": "Kinderkookkafé",
+      "task": "Kinderkookkaf\u00e9",
       "priority": "normal",
       "status": "verified",
       "owner": "kinderkookkafe",
@@ -1109,7 +1170,7 @@
     },
     {
       "id": "midwest",
-      "task": "Midwest Amsterdam — source-informed original landmark",
+      "task": "Midwest Amsterdam \u2014 source-informed original landmark",
       "priority": "high",
       "status": "visual-and-game-integration-verified-performance-followup",
       "requestedOn": "2026-10-05",
@@ -1227,7 +1288,7 @@
       "priority": "high",
       "status": "user-render-approved-gameplay-pending",
       "requestedOn": "2026-10-06",
-      "scope": "Adolf van Nassaustraat2–8 factory; independently verify shop3 physical parent",
+      "scope": "Adolf van Nassaustraat2\u20138 factory; independently verify shop3 physical parent",
       "source": "https://www.kesbeke.nl/contact-keuze/",
       "nextAction": "Complete actual gallery/game exact suppression and neighbor checks; preserve diagnostic render approval and researched POI destinations/cards/pins.",
       "sourceCommit": "2aa18011ae2c26568f9170517064a6561e075b30",
@@ -1277,7 +1338,7 @@
     },
     {
       "id": "uva-roeterseiland",
-      "task": "UvA Roeterseiland campus — De Brug and REC B/C/D; verify REC A scope",
+      "task": "UvA Roeterseiland campus \u2014 De Brug and REC B/C/D; verify REC A scope",
       "priority": "high",
       "status": "three-early-source-geometry-cycles; full-native-acceptance-pending",
       "requestedOn": "2026-10-06",
@@ -1387,6 +1448,38 @@
         "ordinary-0363100012165119"
       ],
       "notes": "Batch01 source/gallery/game reviewed; batch02/03 drafts pending. Continue user-authorized central warehouse/modern work today; periodic commits/pushes. Roofcrown hold withdrawn after native source/runtime review; initial failures preserved."
+    },
+    {
+      "id": "rasphuispoort",
+      "task": "Rasphuispoort \u2014 original gate and exact host opening",
+      "priority": "high",
+      "status": "verified-awaiting-deployment",
+      "modelId": "rasphuispoort",
+      "evidence": "../../scripts/landmarks/rasphuispoort-review.json",
+      "nextAction": "Publish verified gate/runtime and verify hosted activation/fallback."
+    },
+    {
+      "id": "free-texture-material-trial",
+      "task": "Evaluate shared CC0 material textures for Photo buildings mode",
+      "priority": "normal",
+      "status": "queued",
+      "requestedOn": "2026-10-07",
+      "sourceLinks": [
+        "https://polyhaven.com/textures",
+        "https://polyhaven.com/license",
+        "https://gist.github.com/mauricesvay/1330cc530f6ab2ef33eb6a5ea56ef5bd"
+      ],
+      "nextAction": "Bounded side-by-side trial of small shared brick/stone/wood/roof material palette in Photo buildings mode; preserve current flat-color landmark style pending explicit visual choice. Verify real-world texture scale, recognition and desktop/touch memory/frame impact before adoption."
+    },
+    {
+      "id": "kriterion-lower-glazing-feedback",
+      "task": "Kriterion lower window glazing hidden by masonry",
+      "priority": "high",
+      "status": "queued",
+      "modelId": "kriterion",
+      "feedbackId": "1d79b5b9-8491-4c91-b99f-9f9820b69e5b",
+      "reportedAssetVersion": "452d0da753f4c034",
+      "nextAction": "Claim fresh Firestore note, inspect original source photos/current builder and repair first-hit glazing exposure. Current published fingerprint still matches faulty screenshot; preserve evidence and verify gallery/native behavior before resolution."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

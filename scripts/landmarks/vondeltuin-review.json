@@ -1,0 +1,240 @@
+{
+  "id": "vondeltuin",
+  "status": "verified-awaiting-deployment",
+  "referenceImages": [
+    "artifacts/landmarks/vondeltuin/references/facade.jpg",
+    "artifacts/landmarks/vondeltuin/references/side.jpg",
+    "artifacts/landmarks/vondeltuin/references/context-7.jpg",
+    "artifacts/landmarks/vondeltuin/references/context-8.jpg",
+    "artifacts/landmarks/vondeltuin/references/context-9.jpg",
+    "artifacts/landmarks/vondeltuin/references/section.jpg"
+  ],
+  "geometryResult": {
+    "triangles": 1869,
+    "perimeterGlazingFirstHitProbes": 6,
+    "upwardRoofFirstHit": true,
+    "neighborHutOpen": true,
+    "nativeScale": 1,
+    "solarRoofSupportProbes": 24,
+    "roofStepFirstHitProbes": 15
+  },
+  "criticalReview": [
+    "Two offset unequal shingle-clad pitched roof volumes, higher winter house and low glazed restaurant",
+    "Broad glazed gable ends with projecting pale diagonal lattice sunshade, source-supported solar panels on lower slope",
+    "Dark sliding frames, timber posts and stone plinth; glazing remains exposed",
+    "Only2020 BAG/OSM replacement;1927 Werkmanshuisje, playground and terrace open",
+    "Actual route/pin/physical sourced card and precise neighbor/suppression live checks"
+  ],
+  "limitations": [
+    "Glazing/frame/shingle-course/sunshade spacing original simplifications from primary photos/section",
+    "Roof planes triangulate native surveyed rings with original per-vertex heights, rather than extrapolating unstable three-point planes",
+    "Beeldbank search returned JS viewer; no scanned historical photograph or monument description claimed for2020 pavilion",
+    "No independent visual acceptance or performance observation yet"
+  ],
+  "acceptance": {
+    "gallery": false,
+    "liveGame": false,
+    "poiContract": false,
+    "privateSourceArchiveCommit": null
+  },
+  "independentCpuPreflight": {
+    "reviewedOn": "2026-10-05",
+    "reviewer": "independent bounded cached-source preflight",
+    "renderMode": "exact-input orthographic CPU preview; not browser gallery or gameplay",
+    "evidence": [
+      "artifacts/landmark-offline-preview/vondeltuin-cpu-front.png",
+      "artifacts/landmark-offline-preview/vondeltuin-cpu-opposite.png"
+    ],
+    "galleryAcceptance": false,
+    "liveGameAcceptance": false,
+    "performanceAcceptance": false,
+    "verdict": "hold; source-supported solar attachment, sunshade diagonal and missing upper/lower roof-step closures repaired; corrected export/browser/live review required",
+    "actualReferences": [
+      "artifacts/landmarks/vondeltuin/references/facade.jpg",
+      "artifacts/landmarks/vondeltuin/references/side.jpg",
+      "artifacts/landmarks/vondeltuin/references/context-7.jpg",
+      "artifacts/landmarks/vondeltuin/references/context-8.jpg",
+      "artifacts/landmarks/vondeltuin/references/context-9.jpg",
+      "artifacts/landmarks/vondeltuin/references/section.jpg"
+    ],
+    "findings": [
+      "Offset unequal roofs are source-supported: section and context-7/8/9 show taller winter house behind lower restaurant. Do not flatten them because of the CPU stepped silhouette.",
+      "Failed original preview: solar slab tilts on global Z and cuts across the surveyed roof. Replaced with roof-derived ridge/slope basis, inset centre and small normal mounting clearance; 24 corner support rays now pass. Original PNG evidence retained.",
+      "Failed original preview: current gable slats read as kinked chevrons, while facade/side photos show crossing straight diagonal sunshade arms. Builder now emits two straight crossing families clipped to the gable profile; spacing remains an original photo-based approximation and corrected render review is pending.",
+      "Failed refreshed CPU front preview: the upper/lower roof transition is visibly open. Actual DOOR context-7/9 show closed dark glazing in the exposed upper gable and shingle-clad longitudinal side return; the section shows a vertical volume step. Builder previously emitted only BAG perimeter walls. Added five vertical closures at exact matching surveyed roof-plan edges, retaining both roof heights, with glass on transverse gable segments and ochre on longitudinal returns. Fifteen exterior first-hit rays at three positions per edge now pass; refreshed render review still required.",
+      "No building-name lettering present."
+    ],
+    "reexportRequired": true,
+    "unresolved": [
+      "Corrected solar bank, straight crossing sunshade and five roof-step closures require reexport and rendered review.",
+      "Sunshade density and source-supported glazed upper gable/side return need browser reference comparison.",
+      "Browser gallery, live-game neighbor/suppression/pin/card/route and performance evidence pending."
+    ]
+  },
+  "roofStepReview": {
+    "reviewedOn": "2026-10-05",
+    "sourceEvidence": [
+      "artifacts/landmarks/vondeltuin/references/section.jpg",
+      "artifacts/landmarks/vondeltuin/references/context-7.jpg",
+      "artifacts/landmarks/vondeltuin/references/context-9.jpg"
+    ],
+    "failedEvidence": "artifacts/landmark-offline-preview/vondeltuin-cpu-front.png",
+    "decision": "repair missing vertical closures; transition is glazed/enclosed, not open",
+    "scope": "Only five paired surveyed upper/lower roof boundary edges; original roof triangles, hut exclusion and solar bank unchanged",
+    "firstHitProbes": 15,
+    "renderAcceptance": false,
+    "reexportRequired": true
+  },
+  "coordinatorRepairedMeshPreflight": {
+    "verdict": "Source-backed targeted solar, slat and roof-step repairs pass CPU geometry and independent exact-mesh comparisons; native acceptance remains held",
+    "triangles": 1869,
+    "meshSha256": "f7d396ca0140048d8a3a6938e1dcb22667b74ea6eb957f4cbf68f3845d0cef30",
+    "independentEvidence": [
+      "artifacts/landmark-offline-preview/repaired-three-independent-review.json",
+      "artifacts/landmark-offline-preview/vondeltuin-infill-independent-review.json"
+    ],
+    "nativeGalleryAccepted": false,
+    "liveGameAccepted": false
+  },
+  "independentFinalBatch20261006": {
+    "sources": [
+      "/Users/blackmad/Code/map-recall2/artifacts/landmarks/vondeltuin/references/facade.jpg",
+      "/Users/blackmad/Code/map-recall2/artifacts/landmarks/vondeltuin/references/context-7.jpg",
+      "/Users/blackmad/Code/map-recall2/artifacts/landmarks/vondeltuin/references/section.jpg"
+    ],
+    "findings": [
+      "Section/context support unequal offset pitched volumes; retain roof step rather than flattening silhouette.",
+      "New mesh closes roof transition with exposed glazed gable and ochre side return; no visible open upper/lower gap in either CPU view.",
+      "Solar rectangle is slope-aligned and contained on lower roof; straight crossing diagonal lattice matches source family."
+    ],
+    "risks": [
+      "Fine lattice ends/projecting density and glazed transition require low native view; exact slat spacing is an acknowledged photographic approximation. Neighbor historic hut is outside model and requires live retention."
+    ],
+    "meshSha256": "cc3f4c61eef672584ac2c2b0ae437bff31f91b9f883c43edd16e837f2cffb70c",
+    "meshBytes": 34808,
+    "verdict": "Accepted current hash against cached sources, gallery rotations, close native facade plus actual neighbor/card/pin/route integration evidence",
+    "checksPassed": true,
+    "galleryAccepted": true,
+    "liveGameAccepted": true,
+    "cpuEvidence": [
+      "artifacts/landmark-release-check/independent-ready-four/vondeltuin-cpu-front.png",
+      "artifacts/landmark-release-check/independent-ready-four/vondeltuin-cpu-opposite.png"
+    ],
+    "galleryEvidence": [
+      "artifacts/landmark-release-check/vondeltuin-review/gallery.png",
+      "artifacts/landmark-release-check/vondeltuin-review/gallery-angle-0.png",
+      "artifacts/landmark-release-check/vondeltuin-review/gallery-angle-1.png",
+      "artifacts/landmark-release-check/vondeltuin-review/gallery-angle-2.png",
+      "artifacts/landmark-release-check/vondeltuin-review/gallery-angle-3.png"
+    ],
+    "nativeEvidence": [
+      "artifacts/landmark-release-check/vondeltuin-review/live-front.png",
+      "artifacts/landmark-release-check/vondeltuin-review/live-rear.png",
+      "artifacts/landmark-release-check/vondeltuin-review/neutral-front.png",
+      "artifacts/landmark-release-check/vondeltuin-review/placement-proof.json",
+      "artifacts/landmark-release-check/vondeltuin-review/physical-card-proof.json",
+      "artifacts/landmark-release-check/vondeltuin-review/performance-comparison.json",
+      "artifacts/landmark-release-check/vondeltuin-review/source-close/gable-source-5.png",
+      "artifacts/landmark-release-check/vondeltuin-review/source-close/gable-source-5.json"
+    ],
+    "nativeIntegrationProofAccepted": true,
+    "stationaryCustomDrawPerformance": {
+      "accepted": true,
+      "p95VisibleMs": [
+        10.200000286102295,
+        9.799999713897705
+      ],
+      "scope": "Headless Chromium same stationary scene; hidden model keeps existing replacement masks, isolating custom draw cost. No whole-game performance pass claimed."
+    },
+    "nativeFindings": [
+      "Native shows unequal offset roofs/closed returns and supported solar; park paths remain open and two resident building neighbors retained.",
+      "Gallery low rotations establish straight lattice. Native gable details partly foliage-occluded; source-facing view requested.",
+      "Close native source-facing view resolves prior camera coverage hold: straight crossing diagonal lattice, exposed broad gable glass and closed stepped taller volume visible with legitimate park trees retained."
+    ],
+    "blockingFindings": [],
+    "remainingRootChecks": [
+      "Batch final contracts and fallback checks are coordinator-owned; independent review does not imply they already passed.",
+      "Whole-game desktop/touch pan performance is separate from bounded stationary custom draw samples."
+    ]
+  },
+  "previousAuthorStatus": "CPU-preflight-hold; solar, sunshade and roof-step closure repairs; reexport/gallery/live review pending",
+  "state": "verified-awaiting-deployment",
+  "visualAccepted": true,
+  "gameAccepted": true,
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "205d04f0c48c3a651000233510d5f9ac1596edee",
+    "path": "models/vondeltuin",
+    "finalEvidencePath": "models/vondeltuin/validation/final-20261007",
+    "rawSourceCheckpoint": "68906c28297c781d0d2b8c8784adde49f2eba399"
+  },
+  "finalAcceptance": {
+    "date": "2026-10-07",
+    "assetSha256": "cc3f4c61eef672584ac2c2b0ae437bff31f91b9f883c43edd16e837f2cffb70c",
+    "nativePlacement": {
+      "id": "vondeltuin",
+      "actualCamera": {
+        "center": [
+          4.85651048,
+          52.35492528
+        ],
+        "zoom": 20.5,
+        "pitch": 55.00000000000001,
+        "bearing": -110.00000000000001,
+        "elevation": 0
+      },
+      "assetVersion": "cc3f4c61eef67258",
+      "scale": 1,
+      "bias": false,
+      "broad": false,
+      "pin": true,
+      "destination": true,
+      "source": "https://doorarchitecten.nl/portfolio/horecapaviljoen-vondeltuin-gemeente-amsterdam/",
+      "click": {
+        "x": 766.6522063424695,
+        "y": 491.9974963789551
+      },
+      "aliases": [
+        {
+          "id": "w1243333955",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012253390",
+          "hidden": true
+        }
+      ],
+      "oldPyramidIds": [],
+      "neighbors": [
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012253391"
+          ],
+          "resident": true,
+          "ordinaryResident": true,
+          "hidden": false,
+          "drawable": true,
+          "retainedReplacement": null
+        },
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012116940"
+          ],
+          "resident": true,
+          "ordinaryResident": true,
+          "hidden": false,
+          "drawable": true,
+          "retainedReplacement": null
+        }
+      ],
+      "features": 26648,
+      "buildings": 31771
+    },
+    "sourceGalleryIndependent": "accepted",
+    "fallback": "simulated target unavailable/restored through actual entry collection, resident ordinary fallback and retained neighbors",
+    "galleryAndNativeEvidence": "artifacts/landmark-release-check/vondeltuin-review",
+    "desktopAndTouchPans": "artifacts/landmark-release-check/gameplay-pans-oct7",
+    "performanceScope": "Headless same-scene model visible/hidden comparison and actual mouse/emulated-touch camera pans; no physical-mobile or whole-game performance guarantee.",
+    "hostedVerification": "pending deployment"
+  }
+}

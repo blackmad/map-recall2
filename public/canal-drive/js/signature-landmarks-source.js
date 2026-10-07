@@ -53,6 +53,8 @@ export class SignatureLandmarks {
     this.map = map;
     this.maplibregl = maplibregl;
     this.onModelShown = options.onModelShown || (() => {});
+    this.onHostWallOpeningsChanged = options.onHostWallOpeningsChanged || (() => {});
+    this.canShowModel = options.canShowModel || (spec => !spec.hostWallOpenings?.length);
     /** Which specs to draw. Defaults to the whole curated list; the demo passes
      *  a single candidate so an asset can be judged before it is committed. */
     this.models = options.models || SIGNATURE_MODELS;
@@ -91,7 +93,7 @@ export class SignatureLandmarks {
     const nx = x / width * 2 - 1, ny = 1 - y / height * 2;
     let result = null;
     for (const entry of this._entries || []) {
-      if (!entry.pickProjection || !this._nearby(entry.spec, entry.placement.anchor)) continue;
+      if (!this.canShowModel(entry.spec) || !entry.pickProjection || !this._nearby(entry.spec, entry.placement.anchor)) continue;
       const inverse = entry.pickProjection.clone().invert();
       const near = new THREE.Vector3(nx, ny, -1).applyMatrix4(inverse);
       const far = new THREE.Vector3(nx, ny, 1).applyMatrix4(inverse);
@@ -181,6 +183,11 @@ export class SignatureLandmarks {
    */
   _applySuppression() {
     this._applyBasemapFilter();
+    const openingRevision = JSON.stringify(this.shownHostWallOpenings());
+    if (openingRevision !== this._hostOpeningRevision) {
+      this._hostOpeningRevision = openingRevision;
+      this.onHostWallOpeningsChanged();
+    }
     const bias = this.enabled && this.suppressing && this.depthBiasEnabled ? -1 : 0;
     for (const entry of this._entries || []) {
       if (entry.depthBias === bias) continue;
@@ -196,6 +203,16 @@ export class SignatureLandmarks {
         }
       });
     }
+  }
+
+  /** Optional explicit attachment metadata, available only for loaded/shown models.
+   * Missing, failed, removed or disabled models never carve their host shell. */
+  shownHostWallOpenings() {
+    if (!this.enabled || this._removed) return [];
+    return (this._entries || []).filter(entry => this.shown.has(entry.spec.id))
+      .flatMap(entry => (entry.spec.hostWallOpenings || []).map(config => ({
+        ...config, enabled: config.enabled !== false, additiveModelAvailable: true,
+      })));
   }
 
   /** OSM ids of every footprint a currently drawn model replaces. */
@@ -360,6 +377,8 @@ export class SignatureLandmarks {
       onRemove(map) {
         owner._removed = true;
         owner._generation++;
+        owner._hostOpeningRevision = '[]';
+        owner.onHostWallOpeningsChanged();
         map.off('moveend', owner._onMove);
         owner._pending.clear();
         for (const entry of owner._entries) owner._disposeModel(entry.group);
@@ -375,7 +394,7 @@ export class SignatureLandmarks {
         if (owner._removed || !owner.enabled || !owner._entries.length) return;
         for (const entry of owner._entries) {
           // Shared WebGL canvas: distant landmarks should cost no render calls.
-          if (!owner._nearby(entry.spec, entry.placement.anchor)) continue;
+          if (!owner._nearby(entry.spec, entry.placement.anchor) || !owner.canShowModel(entry.spec)) { entry.pickProjection = null; continue; }
           camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(entry.transform);
           entry.pickProjection = camera.projectionMatrix.clone();
           renderer.resetState();

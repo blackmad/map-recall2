@@ -1,0 +1,530 @@
+{
+  "id": "monk-amsterdam",
+  "status": "verified-awaiting-deployment",
+  "address": "Aambeeldstraat 26, 1021 KB Amsterdam",
+  "bagParent": "0363100012136881",
+  "bagVbo": "0363010012074249",
+  "genuineExtractIdentity": null,
+  "sourceFiles": [
+    {
+      "path": "artifacts/landmarks/monk-amsterdam/references/official-front.png",
+      "sourceUrl": "https://monk.nl/wp-content/uploads/2020/09/monk-ams-voorkant-rond.png",
+      "sha256": "4d3390ba5f4d7bc33231d72becb405ef56e9f3df7bc269edfcfc9989ccfba680",
+      "retrievedOn": "2026-10-05",
+      "httpStatus": 200,
+      "kind": "original HTTP response",
+      "rights": "Operator/copyright holder; original reference only, not incorporated as texture"
+    },
+    {
+      "path": "artifacts/landmarks/monk-amsterdam/references/pdok-address.json",
+      "sourceUrl": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Aambeeldstraat%2026%20Amsterdam&rows=3",
+      "sha256": "777d7ec865e89fe1b34cb337edd04fbe83a5bc3389236b173b39f516c76ca1b6",
+      "retrievedOn": "2026-10-05",
+      "httpStatus": 200,
+      "kind": "original HTTP response",
+      "rights": "BAG/3DBAG open data"
+    },
+    {
+      "path": "artifacts/landmarks/monk-amsterdam/references/bag-vbo.json",
+      "sourceUrl": "https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&typeNames=bag:verblijfsobject&outputFormat=json&srsName=EPSG:4326&bbox=52.3828,4.9285,52.3840,4.9304,EPSG:4326",
+      "sha256": "c9728352f5d18d37b4e0df7ebb72cc480c283ff9d777074d4470493a0eb60060",
+      "retrievedOn": "2026-10-05",
+      "httpStatus": 200,
+      "kind": "original HTTP response",
+      "rights": "BAG/3DBAG open data"
+    },
+    {
+      "path": "artifacts/landmarks/monk-amsterdam/references/official-context.jpg",
+      "sourceUrl": "https://monk.nl/wp-content/uploads/2020/01/monk-bouldergym-amsterdam-2019_08.jpg",
+      "sha256": "44bd00bbb0db032d28b078b634b7f9074ffaaa5eca9e5dc90764a5eb143e2d4c",
+      "retrievedOn": "2026-10-05",
+      "httpStatus": 200,
+      "kind": "original HTTP response",
+      "rights": "Operator/copyright holder; original reference only, not incorporated as texture"
+    },
+    {
+      "path": "artifacts/landmarks/monk-amsterdam/references/official-main.html",
+      "sourceUrl": "https://monk.nl/amsterdam/",
+      "sha256": "467242df6cc343e138aa68a74369dd8ffc58d6b2f9d99e96e541d7f2a4f419c1",
+      "retrievedOn": "2026-10-05",
+      "httpStatus": 200,
+      "kind": "original HTTP response",
+      "rights": "Operator/copyright holder; original reference only, not incorporated as texture"
+    },
+    {
+      "path": "artifacts/landmarks/monk-amsterdam/references/official-contact.html",
+      "sourceUrl": "https://monk.nl/amsterdam/contact/",
+      "sha256": "da8c4bf3cd6b2980f4aa08a2be10a0887bcd20078a67bc5fab52ec79be6668a7",
+      "retrievedOn": "2026-10-05",
+      "httpStatus": 200,
+      "kind": "original HTTP response",
+      "rights": "Operator/copyright holder; original reference only, not incorporated as texture"
+    },
+    {
+      "path": "artifacts/landmarks/monk-amsterdam/references/beeldbank.html",
+      "sourceUrl": "https://archief.amsterdam/beeldbank/?q=Aambeeldstraat%2026",
+      "sha256": "a45e805ef644e5817b24f32801f5d9ee1b59c8096b2746abfc092b03b8b8529d",
+      "retrievedOn": "2026-10-05",
+      "httpStatus": 200,
+      "kind": "original HTTP response",
+      "rights": "Operator/copyright holder; original reference only, not incorporated as texture"
+    },
+    {
+      "path": "artifacts/landmarks/monk-amsterdam/references/3dbag.json",
+      "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012136881",
+      "sha256": "be5ebd4f9881cc9f2ffafb65afea25310261f06d568e5fd29a7b476973fdcb75",
+      "retrievedOn": "2026-10-05",
+      "httpStatus": 200,
+      "kind": "original HTTP response",
+      "rights": "BAG/3DBAG open data"
+    },
+    {
+      "path": "artifacts/landmarks/monk-amsterdam/references/official-interior.jpg",
+      "sourceUrl": "https://monk.nl/wp-content/uploads/2020/01/monk-bouldergym-amsterdam-2019_01.jpg",
+      "sha256": "b39ec4f95f64de14829e1c0fda0aaf075324ac1e0e69c93ad6fd306351e0c067",
+      "retrievedOn": "2026-10-05",
+      "httpStatus": 200,
+      "kind": "original HTTP response",
+      "rights": "Operator/copyright holder; original reference only, not incorporated as texture"
+    },
+    {
+      "path": "artifacts/landmarks/monk-amsterdam/references/official-2019.jpg",
+      "sourceUrl": "https://monk.nl/wp-content/uploads/2020/01/monk-bouldergym-amsterdam-2019_09.jpg",
+      "sha256": "686404ae1edfafd448d8845786e557d2e24871a0431e3511e557f15eb8496510",
+      "retrievedOn": "2026-10-05",
+      "httpStatus": 200,
+      "kind": "original HTTP response",
+      "rights": "Operator/copyright holder; original reference only, not incorporated as texture"
+    },
+    {
+      "path": "artifacts/landmarks/monk-amsterdam/references/bag-bbox.json",
+      "sourceUrl": "https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&typeNames=bag:pand&outputFormat=json&srsName=EPSG:4326&bbox=52.3828,4.9285,52.3840,4.9304,EPSG:4326",
+      "sha256": "8bf1267e51e161e07b5562bd308b19e0423b820f8bc92fd6d5e467e654f486c9",
+      "retrievedOn": "2026-10-05",
+      "httpStatus": 200,
+      "kind": "original HTTP response",
+      "rights": "BAG/3DBAG open data"
+    },
+    {
+      "path": "artifacts/landmarks/monk-amsterdam/references/aerial-current.jpg",
+      "sourceUrl": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=Actueel_orthoHR&STYLES=&CRS=EPSG:4326&BBOX=52.3832,4.9276,52.3849,4.9310&WIDTH=1600&HEIGHT=1300&FORMAT=image/jpeg",
+      "sha256": "e6e70c4d19e645fb0d78424eb116743aa0dfb1d2ecf43680efe64f84ba907166",
+      "retrievedOn": "2026-10-05",
+      "httpStatus": 200,
+      "kind": "original HTTP response",
+      "rights": "PDOK current aerial; source reference only"
+    },
+    {
+      "path": "artifacts/landmarks/monk-amsterdam/references/municipal-entrance-metadata.json",
+      "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001587_pano_0000_002172/",
+      "sha256": "f1941c74c3a454085b684f8a062cb190fafe00f66528644ee3ee16185b843122",
+      "retrievedOn": "2026-10-05",
+      "httpStatus": 200,
+      "kind": "original HTTP response",
+      "rights": "Gemeente Amsterdam panorama; municipal open-data attribution"
+    },
+    {
+      "path": "artifacts/landmarks/monk-amsterdam/references/municipal-entrance.jpg",
+      "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2020/01/23/TMX7316010203-001587/pano_0000_002172/equirectangular/panorama_8000.jpg",
+      "sha256": "8cc0c98442db75c97770be73cf69df6ef812c4eba01b5f6addc9f7ec4f0d0a4b",
+      "retrievedOn": "2026-10-05",
+      "httpStatus": 200,
+      "kind": "original HTTP response",
+      "rights": "Gemeente Amsterdam panorama; municipal open-data attribution"
+    },
+    {
+      "path": "artifacts/landmarks/monk-amsterdam/references/municipal-north-east-metadata.json",
+      "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001622_pano_0000_000020/",
+      "sha256": "dfa1f0779de2a20c688ae3f82d583271a8e067d216b831bcf189e062666be0c7",
+      "retrievedOn": "2026-10-05",
+      "httpStatus": 200,
+      "kind": "original HTTP response",
+      "rights": "Gemeente Amsterdam panorama; municipal open-data attribution"
+    },
+    {
+      "path": "artifacts/landmarks/monk-amsterdam/references/municipal-north-east.jpg",
+      "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2020/02/06/TMX7316010203-001622/pano_0000_000020/equirectangular/panorama_8000.jpg",
+      "sha256": "8044e23e99bcd620814e0917929eb19d6f5e8e47fce9f2c069c125731b6cd007",
+      "retrievedOn": "2026-10-05",
+      "httpStatus": 200,
+      "kind": "original HTTP response",
+      "rights": "Gemeente Amsterdam panorama; municipal open-data attribution"
+    },
+    {
+      "path": "artifacts/landmarks/monk-amsterdam/references/municipal-west-metadata.json",
+      "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-001587_pano_0000_002197/",
+      "sha256": "9e3bfe37fa3f6ba6077089bbc97b6c2204d29d77ca621836439c575d722cdb6d",
+      "retrievedOn": "2026-10-05",
+      "httpStatus": 200,
+      "kind": "original HTTP response",
+      "rights": "Gemeente Amsterdam panorama; municipal open-data attribution"
+    },
+    {
+      "path": "artifacts/landmarks/monk-amsterdam/references/municipal-west.jpg",
+      "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2020/01/23/TMX7316010203-001587/pano_0000_002197/equirectangular/panorama_8000.jpg",
+      "sha256": "f147db7d61556380239eebc73b0b43d4127c5b301be656fbf6db04ade574480d",
+      "retrievedOn": "2026-10-05",
+      "httpStatus": 200,
+      "kind": "original HTTP response",
+      "rights": "Gemeente Amsterdam panorama; municipal open-data attribution"
+    },
+    {
+      "path": "artifacts/landmarks/monk-amsterdam/references/osm-site.xml",
+      "sourceUrl": "https://api.openstreetmap.org/api/0.6/map?bbox=4.9278,52.3832,4.9308,52.3849",
+      "sha256": "e626c29b88d39c165fe39ef11a9c78e6b092dc77d25d84565b2af57d8bdc9dc1",
+      "retrievedOn": "2026-10-05",
+      "httpStatus": 200,
+      "kind": "original HTTP response",
+      "rights": "OpenStreetMap contributors ODbL"
+    },
+    {
+      "path": "artifacts/landmarks/monk-amsterdam/references/panorama-index-2020-plus.json",
+      "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/",
+      "sha256": "741afe2f2964431ee69e4362c2de2e2d5b22afe77e9666407388b864ee9e48bf",
+      "retrievedOn": "2026-10-05",
+      "httpStatus": 200,
+      "kind": "original HTTP response",
+      "rights": "Municipal API response; current2024+ query empty, older2020+ captures inspected"
+    },
+    {
+      "path": "artifacts/landmarks/monk-amsterdam/references/panorama-index-current.json",
+      "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/",
+      "sha256": "1d443f462e77c4cd8853d754c9d9af12160bab6a64f6a7966f80c17582d51357",
+      "retrievedOn": "2026-10-05",
+      "httpStatus": 200,
+      "kind": "original HTTP response",
+      "rights": "Municipal API response; current2024+ query empty, older2020+ captures inspected"
+    }
+  ],
+  "sourceUrls": [
+    "https://monk.nl/amsterdam/contact/",
+    "https://monk.nl/amsterdam/",
+    "https://archief.amsterdam/beeldbank/?q=Aambeeldstraat%2026",
+    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012136881"
+  ],
+  "visualFindings": [
+    "Official front/context photo: black vertically folded metal sheet, exposed upper glazing with horizontal division, one tall partly glazed loading portal, short opaque roller shutter, separate glazed pedestrian double door.",
+    "Municipal entrance panorama: neighboring tenant frontage has low grouped windows and loading bays; repeating Monk doors down the whole factory would be false.",
+    "Municipal west panorama: raised dark corrugated factory-strip end rises well above two low adjoining halls, corroborating the survey14.65m strip. Current aerial retains broader low industrial roof/rooflight pattern and solar-bearing perimeter portions.",
+    "3DBAG generalized perimeter differs from current BAG by up to roughly0.5m along the front; without registration, the complete host buries additive glazing. Current native BAG boundary owns only sub0.9m exterior discrepancies; interior rooflight holes stay unsnapped.",
+    "Independent CPU review required central pale rooflight rhythm. Saved WMS bbox/image georeferencing and direct source inspection establish six long strips on roof15 and five shorter/longer strips on roof28; roughlysix/seven in initial review was a preliminary count. All11 strips projected and clipped to the actual survey roof triangles/holes; existing11 measured northeast rooflight patches are now pale rather than slate.",
+    "Source-clear loadingportal glazing sill step added as dark corrugated/metal infill across source-estimated portal width; backing glazing remains exposed above6.29m.",
+    "Genuine roofseams traced to previous roof coordinates using110540 latitude factor versus111320 in walls. All31 roof rings regenerated through same canonical cached survey transform; exact surveyed outerroof/wall vertex match now0m. Original failed coordinates preserved, no broad overlapping cap used."
+  ],
+  "blockingCapability": "Gallery/live render acceptance, exact replacement-neighbor audit, actual Monk route/pin/pointer card and shared export remain pending coordinator.",
+  "nextStep": "Re-export repaired mesh, rerender default front/opposite and focused lowfront/oblique, independently compare rooflight rhythm and sill step to references. Keep native acceptance held until full gallery/live/neighbor/route/pin/card/performance checks.",
+  "history": [
+    {
+      "status": "deferred-shared-host-scope",
+      "blockingCapability": "Exact source building-part/partial-replacement mask needed. Whole parent suppression would erase unrelated tenants. No acceptable GLB produced and no visual acceptance claimed.",
+      "visualFindings": [
+        "Official photo: black vertical corrugated cladding, upper full-height glazed ribbon, tall roll-up garage opening, smaller metal roller shutter, right-side glazed double door, flat shallow shed roof.",
+        "1948 BAG Pand has 14 VBOs and extends roughly 181m east-west by155m north-south; one venue bay cannot replace this mixed industrial/office/residential host."
+      ]
+    },
+    {
+      "status": "additive-facade-cpu-draft-pending-review",
+      "blockingCapability": "Full shared-host roof scope unresolved; additive facade must be reviewed over current host before integration. No suppression permitted.",
+      "visualFindings": [
+        "Official photo: black vertical corrugated cladding, upper full-height glazed ribbon, tall roll-up garage opening, smaller metal roller shutter, right-side glazed double door, flat shallow shed roof.",
+        "1948 BAG Pand has 14 VBOs and extends roughly 181m east-west by155m north-south; one venue bay cannot replace this mixed industrial/office/residential host."
+      ],
+      "approximationNotes": [
+        "Industrial opening widths and bay positions inferred from waterfront panoramas; survey constrains perimeter, not opening dimensions.",
+        "No roof or host body is supplied. Full source-backed factory roof replacement remains deferred."
+      ],
+      "cpuCheck": {
+        "command": "node --import tsx scripts/check-monk-amsterdam-geometry.ts",
+        "status": "pass-additive-draft",
+        "triangles": 2996,
+        "limitations": "First-hit assertions cover standalone facade only; existing shared-host exposure must be visually tested.",
+        "failedProbeHistory": [
+          "Initial ribbon sample hit a structural mullion; changed probe to actual clear bay centers, preserved geometry."
+        ]
+      }
+    },
+    {
+      "status": "full-shared-host-geometry-ready-pending-visual-review",
+      "cpuCheck": {
+        "command": "node --import tsx scripts/check-monk-amsterdam-geometry.ts",
+        "status": "pass-fullhost-draft",
+        "triangles": 4135,
+        "roofSurfaces": 31,
+        "surveyWalls": 229,
+        "bounds": {
+          "min": [
+            -89.2216,
+            0.001,
+            -78.1566
+          ],
+          "max": [
+            91.5365,
+            14.661,
+            77.0917
+          ]
+        },
+        "checked": [
+          "Finite native geometry",
+          "All31 explicit surveyed roof surfaces and229 walls retained",
+          "Upward roof faces",
+          "Five upper ribbon first-hit rays include fullhost body",
+          "Two pedestrian-door first-hit rays and opaque short shutter",
+          "Four exterior quay/forecourt lane rays",
+          "Real central high strip retained",
+          "Only exact BAG/OSM source identities proposed for suppression",
+          "All11 current central rooflights first-hit visible against completehost body",
+          "Raised opaque glazing sill at5.8m and exposed glass at6.5m over loading portal",
+          "Every outer-roof source vertex matches native semantic wall vertex exactly"
+        ],
+        "failedProbeHistory": [
+          "Previous additive mesh front glazing became buried when complete generalized survey walls were supplied; fixed underlying sub0.9m current BAG registration, not ray locations.",
+          "Postregistration triangulation included reversed tiny roof faces; restored upward winding after surface fitting and kept interior rooflight holes unsnapped.",
+          "Independent CPU render revealed missing central rooflight strips, generic constant glazing sill, and real source-coordinate roof/wall seams up to0.55m. Corrected with source-based strips/step and canonical roof-coordinate regeneration; re-render review pending."
+        ],
+        "limitations": "Photo-inferred rooflight endpoints/widths and opening positions remain approximate. Geometry checks establish exposure/native edge alignment; exported render acceptance, native roofsupport grid, gallery/live neighboring buildings, route/pin/card and performance remain pending.",
+        "currentCentralRooflightAssemblies": 11,
+        "paleMeasuredNortheastRooflightSurfaces": 11,
+        "maxSourceRoofWallVertexMismatchMetres": 0
+      },
+      "acceptance": "Not visually accepted. Fullhost geometry screening passes; pending root reference/render and independent review, gallery/live tests, route/pin/card and performance.",
+      "independentReview": "artifacts/landmark-offline-preview/monk-independent-review.json",
+      "inputGlbSha256": "5b9b3b34a6812ad696273236ddda867659e96e2812542c5156be69ecdba187bd",
+      "failure": "Current aerial central rooflight rhythm missing; roof seams confirmed source-coordinate discrepancy; loading-portal glazing sill needed explicit step."
+    }
+  ],
+  "acceptance": "Not visually accepted. Independent failures repaired in geometry; fresh exported CPU/reference re-review and native gallery/live acceptance pending.",
+  "cpuCheck": {
+    "command": "node --import tsx scripts/check-monk-amsterdam-geometry.ts",
+    "status": "pass-fullhost-draft",
+    "triangles": 4135,
+    "roofSurfaces": 31,
+    "surveyWalls": 229,
+    "bounds": {
+      "min": [
+        -89.2216,
+        0.001,
+        -78.1566
+      ],
+      "max": [
+        91.5365,
+        14.661,
+        77.0917
+      ]
+    },
+    "checked": [
+      "Finite native geometry",
+      "All31 explicit surveyed roof surfaces and229 walls retained",
+      "Upward roof faces",
+      "Five upper ribbon first-hit rays include fullhost body",
+      "Two pedestrian-door first-hit rays and opaque short shutter",
+      "Four exterior quay/forecourt lane rays",
+      "Real central high strip retained",
+      "Only exact BAG/OSM source identities proposed for suppression",
+      "All11 current central rooflights first-hit visible against completehost body",
+      "Raised opaque glazing sill at5.8m and exposed glass at6.5m over loading portal",
+      "Every outer-roof source vertex matches native semantic wall vertex exactly"
+    ],
+    "failedProbeHistory": [
+      "Previous additive mesh front glazing became buried when complete generalized survey walls were supplied; fixed underlying sub0.9m current BAG registration, not ray locations.",
+      "Postregistration triangulation included reversed tiny roof faces; restored upward winding after surface fitting and kept interior rooflight holes unsnapped.",
+      "Independent CPU render revealed missing central rooflight strips, generic constant glazing sill, and real source-coordinate roof/wall seams up to0.55m. Corrected with source-based strips/step and canonical roof-coordinate regeneration; re-render review pending."
+    ],
+    "limitations": "Photo-inferred rooflight endpoints/widths and opening positions remain approximate. Geometry checks establish exposure/native edge alignment; exported render acceptance, native roofsupport grid, gallery/live neighboring buildings, route/pin/card and performance remain pending.",
+    "currentCentralRooflightAssemblies": 11,
+    "paleMeasuredNortheastRooflightSurfaces": 11,
+    "maxSourceRoofWallVertexMismatchMetres": 0
+  },
+  "approximationNotes": [
+    "Opening widths/positions and repeated window bays inferred from operator/photos and January2020 municipal panoramas, not measured facade elevations. Venue cluster revised to distinct loading portal, shutter and double doorway.",
+    "Solar-panel grids and tiny rooftop equipment omitted in texture-free industrial style. Long pale rooflight rhythms are retained: eleven photo-derived central strips plus eleven measured northeast rooflight surfaces.",
+    "Central rooflight sheets stand0.035m above measured source planes to avoid coplanar flicker; no raised monitor volumes invented. Endpoints and1.7m width are approximate from the current aerial, not asserted field measurements.",
+    "Seam investigation rejected single-plane fitting as visible-gap cause (maximum residual3.7mm); actual cause was differing latitude coordinate factors. Source plane fits stay centered and upward."
+  ],
+  "scopeDecision": {
+    "scope": "Complete shared industrial parent, not Monk-exclusive venue footprint",
+    "bagParent": "0363100012136881",
+    "osmParent": "w280838840",
+    "venueVbo": "0363010012074249",
+    "sharedTenantCount": 14,
+    "sourceBacked": true,
+    "reason": "BAG provides complete physical parent; all31 survey roofs and229 wall faces retained. Official images establish venue frontage, municipal entrance/west/northeast panorama and current aerial establish broader host architecture. Municipal-west visibly corroborates the high dark industrial end above surrounding low halls; it is not an equipment maximum to discard.",
+    "aliases": "Only physical BAG/OSM host aliases; retain one Monk venue destination and do not invent destinations for unresearched tenants.",
+    "retainedNeighborIds": [
+      "w280838786",
+      "w383531604",
+      "w698324272",
+      "w698324275",
+      "w1060144412"
+    ]
+  },
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "205d04f0c48c3a651000233510d5f9ac1596edee",
+    "path": "models/monk-amsterdam",
+    "finalEvidencePath": "models/monk-amsterdam/validation/final-20261007",
+    "rawSourceCheckpoint": "68906c28297c781d0d2b8c8784adde49f2eba399"
+  },
+  "repairEvidence": [
+    "artifacts/landmarks/monk-amsterdam/roof-seam-diagnosis.json",
+    "artifacts/landmarks/monk-amsterdam/previous-roof-coordinates.json"
+  ],
+  "independentFinalBatch20261006": {
+    "sources": [
+      "/Users/blackmad/Code/map-recall2/artifacts/landmarks/monk-amsterdam/references/official-context.jpg",
+      "/Users/blackmad/Code/map-recall2/artifacts/landmarks/monk-amsterdam/references/official-front.png",
+      "/Users/blackmad/Code/map-recall2/artifacts/landmarks/monk-amsterdam/references/aerial-current.jpg"
+    ],
+    "findings": [
+      "Whole native shared host and irregular high strip remain distinct; no padded parcel slab or building-name text.",
+      "Low tenant-facing exact-mesh view shows exposed high glazing ribbon, varying sill/loading portals, short shutter and doorway; ribbed dark steel readable.",
+      "Eleven rooflight strips plus source roof patches visible in decoded mesh. Focused roof-wall seam maximum zero; no visible detached boundary."
+    ],
+    "risks": [
+      "Full-host identity must remain shared tenancy, not exclusively Monk. Native camera must show the low tenant frontage instead of only huge roof."
+    ],
+    "meshSha256": "931e573ff99f3f64cb7fbb18eb9d922f40480edb9d7f23c47083f27adf0bda09",
+    "meshBytes": 57168,
+    "verdict": "Accepted current hash against cached sources, gallery rotations, close native facade plus actual neighbor/card/pin/route integration evidence",
+    "checksPassed": true,
+    "galleryAccepted": true,
+    "liveGameAccepted": true,
+    "cpuEvidence": [
+      "artifacts/landmark-release-check/independent-ready-four/monk-amsterdam-cpu-front.png",
+      "artifacts/landmark-release-check/independent-ready-four/monk-amsterdam-cpu-opposite.png",
+      "artifacts/landmark-release-check/independent-ready-four/monk-amsterdam-cpu-tenant-low.png"
+    ],
+    "galleryEvidence": [
+      "artifacts/landmark-release-check/monk-amsterdam-review/gallery.png",
+      "artifacts/landmark-release-check/monk-amsterdam-review/gallery-angle-0.png",
+      "artifacts/landmark-release-check/monk-amsterdam-review/gallery-angle-1.png",
+      "artifacts/landmark-release-check/monk-amsterdam-review/gallery-angle-2.png",
+      "artifacts/landmark-release-check/monk-amsterdam-review/gallery-angle-3.png"
+    ],
+    "nativeEvidence": [
+      "artifacts/landmark-release-check/monk-amsterdam-review/live-front.png",
+      "artifacts/landmark-release-check/monk-amsterdam-review/live-rear.png",
+      "artifacts/landmark-release-check/monk-amsterdam-review/neutral-front.png",
+      "artifacts/landmark-release-check/monk-amsterdam-review/placement-proof.json",
+      "artifacts/landmark-release-check/monk-amsterdam-review/physical-card-proof.json",
+      "artifacts/landmark-release-check/monk-amsterdam-review/performance-comparison.json",
+      "artifacts/landmark-release-check/monk-amsterdam-review/source-close/tenant-source-low.png",
+      "artifacts/landmark-release-check/monk-amsterdam-review/source-close/tenant-source-low.json"
+    ],
+    "nativeIntegrationProofAccepted": true,
+    "stationaryCustomDrawPerformance": {
+      "accepted": true,
+      "p95VisibleMs": [
+        9.599999904632568,
+        10.5
+      ],
+      "scope": "Headless Chromium same stationary scene; hidden model keeps existing replacement masks, isolating custom draw cost. No whole-game performance pass claimed."
+    },
+    "nativeFindings": [
+      "Native scene retains four drawable ordinary neighbors, exterior lanes and shared tenant labels; card explicitly says Monk occupies part of large compound.",
+      "High native views show correct irregular roof/light layout; low tenant facade native source-facing view requested.",
+      "Close native source-facing view resolves prior camera coverage hold: corrugated steel, varied ground openings, split upper window ribbon physically visible before shared host walls."
+    ],
+    "blockingFindings": [],
+    "remainingRootChecks": [
+      "Batch final contracts and fallback checks are coordinator-owned; independent review does not imply they already passed.",
+      "Whole-game desktop/touch pan performance is separate from bounded stationary custom draw samples."
+    ]
+  },
+  "previousAuthorStatus": "fullhost-rooflight-seam-step-repair-ready-pending-independent-review",
+  "state": "verified-awaiting-deployment",
+  "visualAccepted": true,
+  "gameAccepted": true,
+  "finalAcceptance": {
+    "date": "2026-10-07",
+    "assetSha256": "931e573ff99f3f64cb7fbb18eb9d922f40480edb9d7f23c47083f27adf0bda09",
+    "nativePlacement": {
+      "id": "monk-amsterdam",
+      "actualCamera": {
+        "center": [
+          4.9293,
+          52.38405
+        ],
+        "zoom": 17.8,
+        "pitch": 55.00000000000001,
+        "bearing": 20,
+        "elevation": 0
+      },
+      "assetVersion": "931e573ff99f3f64",
+      "scale": 1,
+      "bias": false,
+      "broad": false,
+      "pin": true,
+      "destination": true,
+      "source": "https://monk.nl/amsterdam/",
+      "click": {
+        "x": 755.511407688201,
+        "y": 491.67317740597383
+      },
+      "aliases": [
+        {
+          "id": "w280838840",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012136881",
+          "hidden": true
+        }
+      ],
+      "oldPyramidIds": [],
+      "neighbors": [
+        {
+          "ids": [
+            "w280838786",
+            "NL.IMBAG.Pand.0363100012120085"
+          ],
+          "resident": true,
+          "ordinaryResident": true,
+          "hidden": false,
+          "drawable": true,
+          "retainedReplacement": null
+        },
+        {
+          "ids": [
+            "w383531604",
+            "NL.IMBAG.Pand.0363100012246330"
+          ],
+          "resident": true,
+          "ordinaryResident": true,
+          "hidden": false,
+          "drawable": true,
+          "retainedReplacement": null
+        },
+        {
+          "ids": [
+            "w698324272",
+            "NL.IMBAG.Pand.0363100012252688"
+          ],
+          "resident": true,
+          "ordinaryResident": true,
+          "hidden": false,
+          "drawable": true,
+          "retainedReplacement": null
+        },
+        {
+          "ids": [
+            "w698324275",
+            "NL.IMBAG.Pand.0363100012252686"
+          ],
+          "resident": true,
+          "ordinaryResident": true,
+          "hidden": false,
+          "drawable": true,
+          "retainedReplacement": null
+        }
+      ],
+      "features": 22182,
+      "buildings": 26823
+    },
+    "sourceGalleryIndependent": "accepted",
+    "fallback": "simulated target unavailable/restored through actual entry collection, resident ordinary fallback and retained neighbors",
+    "galleryAndNativeEvidence": "artifacts/landmark-release-check/monk-amsterdam-review",
+    "desktopAndTouchPans": "artifacts/landmark-release-check/gameplay-pans-oct7",
+    "performanceScope": "Headless same-scene model visible/hidden comparison and actual mouse/emulated-touch camera pans; no physical-mobile or whole-game performance guarantee.",
+    "hostedVerification": "pending deployment"
+  }
+}

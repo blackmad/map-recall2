@@ -1,0 +1,45 @@
+{
+  "id": "monk-amsterdam",
+  "name": "Monk Amsterdam",
+  "landmarkId": "extract_landmarks_2270458123",
+  "modelUrl": "./models/monk-amsterdam.glb",
+  "suppressOsmIds": [
+    "w280838840",
+    "NL.IMBAG.Pand.0363100012136881"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.9293,
+      52.38405
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 181,
+    "widthMetres": 155
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.9293,
+      52.38405
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Full shared BAG host 0363100012136881; all native LoD2.2 roof patches and walls, registered to current BAG boundary."
+  },
+  "attribution": {
+    "title": "Monk Amsterdam shared industrial host",
+    "author": "Map Recall",
+    "sourceUrl": "https://monk.nl/amsterdam/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free full shared factory geometry; black folded steel, exposed window ribbon, differentiated loading and tenant openings. Monk remains one venue identity within the host."
+  },
+  "scopeWarning": "Fullhost draft replaces only w280838840 / BAG0363100012136881 after visual acceptance and successful model load. Never describe entire host as Monk-owned. Neighboring parents and exterior lanes retained; gallery/game review pending.",
+  "sharedHost": {
+    "bagParent": "0363100012136881",
+    "tenantVbo": "0363010012074249",
+    "tenantCount": 14,
+    "labelPolicy": "Monk labels the venue destination; whole shared factory not renamed or assigned exclusive tenant ownership."
+  }
+}

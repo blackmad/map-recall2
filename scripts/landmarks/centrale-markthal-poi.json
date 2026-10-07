@@ -1,0 +1,29 @@
+{
+  "id": "manual_centrale_markthal",
+  "name": "Centrale Markthal",
+  "category": "building",
+  "coordinates": [
+    4.86579375,
+    52.37877065
+  ],
+  "description": "Designed by municipal architect Nicolaas Lansdorp in1932 and completed in1934, the Centrale Markthal brought Amsterdam\u2019s wholesale produce trade into one central hall. Its sixteen steel frames span the open interior without intermediate columns, while transverse roof lights illuminate the market floor. The yellow-brick exterior combines loading doors, projecting offices and long rows of steel-framed windows. The original northeast clock tower has been demolished.",
+  "facts": [
+    "The hall was served by both the eastern and western market canals; its original docking inlets were later filled.",
+    "The steel roof structure spans the large undivided market floor; the exterior was designed in businesslike Expressionist style."
+  ],
+  "sources": [
+    {
+      "title": "RCE monument526739",
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/526739"
+    },
+    {
+      "title": "Centrale Markthal history",
+      "url": "https://centralemarkthal.nl/the-building/the-past/"
+    },
+    {
+      "title": "Museum Het Schip architectural photographs",
+      "url": "https://items.amsterdamse-school.nl/details/objects/900"
+    }
+  ],
+  "integrationNotes": "No matching genuine identity found in current extract landmarks; coordinator must add one explicit manual POI destination, geographic label and meaningful card. Centroid is draft pin; verify accessible sourced public entrance and route reachability before acceptance."
+}

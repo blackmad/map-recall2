@@ -164,7 +164,10 @@ class VectorBasemap {
           loadVisibleOnly: true,
           depthBiasEnabled: !this._completeCityHasBuildings,
           manageBasemapFilter: false,
+          onHostWallOpeningsChanged: () => this._syncHostWallOpenings(),
+          canShowModel: spec => !spec.hostWallOpenings?.length || (this._hostOpeningRendererActive() && !!this._threeBuildings.hostWallOpeningsVisible?.(spec.hostWallOpenings)),
           onModelShown: () => {
+            this._syncHostWallOpenings();
             this._syncDetailedBuildingLayers();
             this._raisePoiLayers();
             this.setActiveLandmark(this._activeLandmark);
@@ -654,6 +657,7 @@ class VectorBasemap {
   // building (by id and by measured proximity), and hide coloured extrusions
   // under any signature model that has loaded.
   _refreshBuildingSuppression() {
+    this._syncHostWallOpenings();
     // Streamed buildings still need their replacement mask refreshed when a
     // signature model loads or becomes unavailable; only the basemap is skipped.
     this._refreshColoredBuildingFilter();
@@ -773,6 +777,19 @@ class VectorBasemap {
     return false;
   }
 
+  _hostOpeningRendererActive() {
+    return !!(this._threeBuildings?.setHostWallOpenings && this._buildings3dEnabled
+      && !this._measuredColoursOnly && this._facadesActive());
+  }
+
+  _syncHostWallOpenings() {
+    if (!this._threeBuildings?.setHostWallOpenings) return;
+    // Loaded attachments may request their cut before it is installed; their
+    // render/pick predicate stays false until the installed geometry confirms it.
+    const configs = this._hostOpeningRendererActive() ? this._signatureLandmarks?.shownHostWallOpenings?.() || [] : [];
+    this._threeBuildings.setHostWallOpenings(configs);
+  }
+
   _signatureSuppressOsmIds() {
     if (!this._signatureLandmarks) return [];
     const ids = new Set(this._signatureLandmarks.shownSuppressOsmIds());
@@ -888,6 +905,7 @@ class VectorBasemap {
       if (this._tileFeatures.length) this._threeBuildings.setFeatures(this._tileFeatures);
     }
     this._threeBuildings.setVisible(this._facadesActive() && this._buildings3dEnabled);
+    this._syncHostWallOpenings();
     // The layer may arrive after the first facade-state pass: re-apply so MapLibre's buildings switch off.
     this._facadeStateApplied = undefined;
     this._applyFacadeState();
@@ -1091,6 +1109,7 @@ class VectorBasemap {
     if (this._facadeStateApplied === key) return;
     this._facadeStateApplied = key;
     if (this._threeBuildings) this._threeBuildings.setVisible(active && three);
+    this._syncHostWallOpenings();
     if (hasPattern) this.map.setLayoutProperty('osm-colored-building-facades', 'visibility', active && !three ? 'visible' : 'none');
     const helpers = window.CanalRecallBuildings;
     const wallTop = helpers && helpers.wallTopHeightExpression ? helpers.wallTopHeightExpression() : ['coalesce', ['get', 'height'], 5];
@@ -1124,6 +1143,7 @@ class VectorBasemap {
   }
 
   _refreshColoredBuildingFilter() {
+    this._syncHostWallOpenings();
     if (!this.map) return;
     const signatureHide = this._measuredColoursOnly ? [] : this._signatureSuppressOsmIds();
     if (this._threeBuildings) this._threeBuildings.setHidden('signature', signatureHide);

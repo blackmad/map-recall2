@@ -1,0 +1,334 @@
+{
+  "id": "pllek",
+  "status": "verified-awaiting-deployment",
+  "architecturalAssertions": [
+    {
+      "part": "two waterfront halls",
+      "source": "https://pllek.nl/wp-content/uploads/2022/02/1200buiten.jpg",
+      "assertion": "Two different-width red corrugated shallow barrel-roof halls with full glazed waterfront fronts; central container connector,open sandy beach",
+      "confidence": "high/currentphoto crosscheckedDec2024municipal"
+    },
+    {
+      "part": "rear",
+      "source": "artifacts/landmarks/pllek/references/municipal-current-metadata.json",
+      "assertion": "2025Septemberrear has yellow two-stack corrugatedcontainers; adjacentTreehouse green/red windowcontainers outside replacedPand",
+      "confidence": "high"
+    },
+    {
+      "part": "narrowtower",
+      "source": "artifacts/landmarks/pllek/references/3dbag.json",
+      "assertion": "Narrow tall rear yellowtower also visible in owner2022 photo/currentmunicipal; survey13.7mNAP yields12.55m aboveground, not wholecompoundheight",
+      "confidence": "medium; no dimensiondrawing"
+    }
+  ],
+  "checks": {
+    "cpuGeometry": "PASS6573triangles; prior native/barrel/glazing/open-beach probes plus four source-backed west-side red-siding first hits",
+    "gallery": "pendingcoordinator",
+    "liveGame": "pendingcoordinator",
+    "destinationPinCard": "pendingcoordinator"
+  },
+  "sourceFiles": [
+    {
+      "path": "artifacts/landmarks/pllek/references/panorama-index.json",
+      "sha256": "6539d9e610fcd3d2116a0bcbb0363d134301c02e47f8ba3365813aa6e433a4a7",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/pllek/references/municipal-front.jpg",
+      "sha256": "0145512e053decba31c27ce88071bceee01ebed0b55b5e6282903cf4ad3a2727",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/pllek/references/official-exterior.jpg",
+      "sha256": "b2967d2ad75b45a0ee3d8babd150284034a1ad84ee88483212c5b68675ba57d7",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/pllek/references/pdok-address.json",
+      "sha256": "072877e0c105c3c8225ace4fe71bafd0787532bc7810e363ce73f4660ae8d4de",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/pllek/references/bag-vbo.json",
+      "sha256": "af440050374119a9b15ed61a281499cec01aa9be54c1359f0de0cd991df71b80",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/pllek/references/official-beach-index.json",
+      "sha256": "3973dbf0d1e139698bdc7682b0fb505c36954d716d545631dfb1c81099db20c8",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/pllek/references/municipal-current.jpg",
+      "sha256": "bd234663e1096ed8dec364474a55212c0073d6b6c4ddb296bf146f1dc03b54fc",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/pllek/references/official-containers-index.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/pllek/references/official-media-index.json",
+      "sha256": "f45a3c21c52d56786124731181e32383d211296d4ba5a2501a228a7b3808b52e",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/pllek/references/official-overview.jpg",
+      "sha256": "d63ad7b9a0793c47e703ecd20653e919c74ea497bdec6ea681ff99d9f933849d",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/pllek/references/ndsm-front.webp",
+      "sha256": "5afb5e218ee0baf0b8e8699fd4337ec784b93437fcb732af76bdf8df35d6f04b",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/pllek/references/official-waterfront.jpg",
+      "sha256": "057527e8c6b2c063944da4ae1175b5ec109833975fc19748e1d37940d600bea3",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/pllek/references/official.html",
+      "sha256": "77eee7ea4fb4a0efd8b129e8b105a7cab87aa1b2abe509fc1c2a9c899d3f45c9",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/pllek/references/bag-site.json",
+      "sha256": "c85637dad255dce785fc73220cce34807180de7881ad96c343c2861aafbe8b53",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/pllek/references/official-beach.jpg",
+      "sha256": "feda40ee8db73cf90d9443f9d52ded3fc94b047818f49b823a9148369df42ba7",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/pllek/references/beeldbank.html",
+      "sha256": "ea308a007fb654717e5a151c7c5c214ff3da628f39beca59824a6e2b2aa4e994",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/pllek/references/3dbag.json",
+      "sha256": "0db406b8c048e6918e140690d2da77406788f4272a820276bcc23a7251f36088",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/pllek/references/osm-pllek.json",
+      "sha256": "bc3602cccc8bc1ef9d877dbe2f2d62dc6f881a08e8c26f940f9fef3d52feac78",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/pllek/references/official-outside-index.json",
+      "sha256": "91ea2c6d1153e1259bb2ca29d712cc522bf5b0d198d6bb677b7505f338b53971",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/pllek/references/ndsm.html",
+      "sha256": "2e0f1c509b680816747393d30ff73b04d2275f2a0ffd3e4e226a97e6f52d7e47",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/pllek/references/processed-native.json",
+      "sha256": "311aa643a500970735a71404aa29ee713c1171321bfa61b6a310767c85271d47",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/pllek/references/bag-bbox.json",
+      "sha256": "ef8b9410b669e5bb217766a3367b3c6b27e214933022bf8c9c9b28bb4ecebdeb",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/pllek/references/municipal-front-metadata.json",
+      "sha256": "c50b42d0c078be16768e1f1bdeee252f12f7df3a2e37a0c5cc95bf0304c45d87",
+      "retrievedOn": "2026-10-05"
+    },
+    {
+      "path": "artifacts/landmarks/pllek/references/municipal-current-metadata.json",
+      "sha256": "a45c9944553067d9ed71fd8df8f763af26d540989baa0c9c0b9db957df94ef8e",
+      "retrievedOn": "2026-10-05"
+    }
+  ],
+  "sourceUrls": [
+    "https://pllek.nl/",
+    "https://pllek.nl/wp-content/uploads/2022/02/1200buiten.jpg",
+    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012241285",
+    "https://api.openstreetmap.org/api/0.6/way/500238189/full",
+    "https://archief.amsterdam/beeldbank/?q=Pllek%20Neveritaweg%2059"
+  ],
+  "genuineOsmPoi": "n4913392670",
+  "identityNote": "Use genuine OSM POI n4913392670 in runtime/spec/card; exact model suppression w500238189/Pand0363100012241285. Requested-pllek is a queue request alias, not a new destination identity.",
+  "visualReviewCriteria": [
+    "Two red barrelroofs with exposedglass;westhall noticeably narrower",
+    "Yellowrearstack corrugation,red/blueflanks,lowserviceconnector",
+    "Tall narrow yellowtower only; no whole9\u201313mparentextrusion",
+    "AdjacentTreehousestudios,pavedapproach and sandybeachopen",
+    "Photo2022 includes temporary terracefixtures;these omitted ratherthaninvented"
+  ],
+  "limitations": [
+    "Roofcurveheight/segmentation fromsurvey+photo;18roofsegments original approximation; no permit elevations",
+    "No namewords painted; historic realPLLEKsign omitted atthisscale",
+    "No importedphoto pixels/meshes",
+    "BeeldbankboundedsearchsavedJavaScriptvieweronly;noinspectedarchiveimages",
+    "Gallery/nativegamevisualacceptancepending"
+  ],
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "205d04f0c48c3a651000233510d5f9ac1596edee",
+    "path": "models/pllek",
+    "finalEvidencePath": "models/pllek/validation/final-20261007",
+    "rawSourceCheckpoint": "68906c28297c781d0d2b8c8784adde49f2eba399"
+  },
+  "independentCpuPreflight": {
+    "reviewedOn": "2026-10-05",
+    "reviewer": "independent bounded cached-source preflight",
+    "renderMode": "exact-input orthographic CPU preview; not browser gallery or gameplay",
+    "evidence": [
+      "artifacts/landmark-offline-preview/pllek-cpu-front.png",
+      "artifacts/landmark-offline-preview/pllek-cpu-opposite.png"
+    ],
+    "galleryAcceptance": false,
+    "liveGameAcceptance": false,
+    "performanceAcceptance": false,
+    "verdict": "bounded CPU preflight found no concrete source-backed massing repair; gallery/live hold retained",
+    "actualReferences": [
+      "artifacts/landmarks/pllek/references/official-exterior.jpg",
+      "artifacts/landmarks/pllek/references/official-overview.jpg",
+      "artifacts/landmarks/pllek/references/municipal-current.jpg",
+      "artifacts/landmarks/pllek/references/municipal-front.jpg"
+    ],
+    "findings": [
+      "Official exterior shows different-width shallow red barrel halls and full glazed waterfront ends; CPU front retains both, low central connector and isolated narrow tower. No observed roof fins or accidental tall whole-compound extrusion.",
+      "Current municipal rear view supports the yellow two-stack containers and separate adjacent green/red Treehouse buildings. CPU rear preserves the differentiated container mass rather than extending replacement to those neighbors.",
+      "Glazing is visibly exposed at both waterfront ends in CPU front. Source interior overview also confirms the large steel-framed glass fronts.",
+      "No unsupported identification lettering appears; omission of real sign remains documented simplification."
+    ],
+    "reexportRequired": false,
+    "unresolved": [
+      "Corrugation shading, exact ground-level barrel silhouette and glazing/window attachment still require native browser views.",
+      "CPU image cannot establish installed neighbor retention, map click/card/pin/route or gameplay performance."
+    ]
+  },
+  "independentFinalReview": {
+    "reviewedOn": "2026-10-06",
+    "reviewer": "independent review_dakota_pllek worker",
+    "scope": "Failure-seeking source comparison and exact-final-compressed-GLB CPU preflight; native/gallery screenshots pending",
+    "assetSha256": "bba5af70cbdea2ae03d045be47351009aba31760b309367b002cde71fceed3a5",
+    "assetBytes": 82228,
+    "triangles": 5787,
+    "sourceImagesInspected": [
+      "/Users/blackmad/Code/map-recall2/artifacts/landmarks/pllek/references/official-exterior.jpg",
+      "/Users/blackmad/Code/map-recall2/artifacts/landmarks/pllek/references/official-overview.jpg",
+      "/Users/blackmad/Code/map-recall2/artifacts/landmarks/pllek/references/municipal-current.jpg",
+      "/Users/blackmad/Code/map-recall2/artifacts/landmarks/pllek/references/municipal-front.jpg"
+    ],
+    "cpuRendersInspected": [
+      "artifacts/landmark-release-check/independent-dakota-pllek/pllek-cpu-front.png",
+      "artifacts/landmark-release-check/independent-dakota-pllek/pllek-cpu-opposite.png"
+    ],
+    "findings": [
+      "Different-width red shallow barrel roofs and both full glazed waterfront ends remain exposed in final decoded GLB.",
+      "Low central connector, native whole footprint, yellow rear two-stack container row and isolated narrow yellow tower are preserved; no whole-compound equipment-height extrusion observed.",
+      "Source current rear panorama supports yellow containers and adjacent green/red Treehouse structures. Exact native neighbor retention remains a live-scene requirement.",
+      "Roof curve segmentation, corrugation spacing and pane divisions are approximations; source-supported temporary terrace objects and actual sign are omitted."
+    ],
+    "blockingSourceGeometryDefects": [
+      {
+        "kind": "source-material-sidewall",
+        "oldAssetSha256": "bba5af70cbdea2ae03d045be47351009aba31760b309367b002cde71fceed3a5",
+        "evidence": "artifacts/landmark-release-check/independent-dakota-pllek/pllek-failed-dark-side/gallery-angle-3.png",
+        "source": "artifacts/landmarks/pllek/references/official-exterior.jpg",
+        "cause": "near-vertical surveyed side edges12/13 misclassified as glazed frontage",
+        "repair": "require predominantly horizontal positive-u frontage tangent; retain red backing/corrugation on west side",
+        "cpuRegression": "4 first-hit outside sidewall probes red; revised6573 triangles"
+      }
+    ],
+    "galleryAcceptance": false,
+    "nativeGameAcceptance": false,
+    "verdict": "FAIL old bba5af70cbdea2ae gallery: source red narrow-hall west siding rendered dark; source-backed repair CPU passes, new export/browser review pending",
+    "browserRoofPinpricks": "Small sparse roof pinpricks visible in browser gallery. No decoded coplanar/winding defect established; retained as observation, no speculative topology edit."
+  },
+  "previousAuthorStatus": "Old final gallery FAILED narrow-hall siding; repaired builder CPU-ready, coordinator reexport/gallery/native pending",
+  "state": "verified-awaiting-deployment",
+  "visualAccepted": true,
+  "gameAccepted": true,
+  "finalAcceptance": {
+    "date": "2026-10-07",
+    "assetSha256": "dc5d3ef35f8254491d878b96b79dc5b05ffb9bde6098c603a81142bfd49cde02",
+    "nativePlacement": {
+      "id": "pllek",
+      "actualCamera": {
+        "center": [
+          4.893035,
+          52.39915
+        ],
+        "zoom": 19.5,
+        "pitch": 55.00000000000001,
+        "bearing": 10,
+        "elevation": 0
+      },
+      "assetVersion": "dc5d3ef35f825449",
+      "scale": 1,
+      "bias": false,
+      "broad": false,
+      "pin": true,
+      "destination": true,
+      "source": "https://pllek.nl/",
+      "click": {
+        "x": 755.6319872958392,
+        "y": 534.3135380862491
+      },
+      "aliases": [
+        {
+          "id": "w500238189",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012241285",
+          "hidden": true
+        }
+      ],
+      "oldPyramidIds": [],
+      "neighbors": [
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012252491"
+          ],
+          "resident": true,
+          "ordinaryResident": true,
+          "hidden": true,
+          "drawable": true,
+          "retainedReplacement": "treehouse-ndsm"
+        },
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012252492"
+          ],
+          "resident": true,
+          "ordinaryResident": false,
+          "hidden": true,
+          "drawable": true,
+          "retainedReplacement": "treehouse-ndsm"
+        },
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012252493"
+          ],
+          "resident": true,
+          "ordinaryResident": true,
+          "hidden": true,
+          "drawable": true,
+          "retainedReplacement": "treehouse-ndsm"
+        }
+      ],
+      "features": 21891,
+      "buildings": 25609
+    },
+    "sourceGalleryIndependent": "accepted",
+    "fallback": "simulated target unavailable/restored through actual entry collection, resident ordinary fallback and retained neighbors",
+    "galleryAndNativeEvidence": "artifacts/landmark-release-check/pllek-review",
+    "desktopAndTouchPans": "artifacts/landmark-release-check/gameplay-pans-oct7",
+    "performanceScope": "Headless same-scene model visible/hidden comparison and actual mouse/emulated-touch camera pans; no physical-mobile or whole-game performance guarantee.",
+    "hostedVerification": "pending deployment"
+  }
+}

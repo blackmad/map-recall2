@@ -23,6 +23,7 @@ import { KIT_HIDE_IDS, KIT_MODELLED_IDS, KIT_PART_IDS, decorateKitRoof } from '.
 import { FRONT_PART_IDS, decorateFront } from './landmarkFrontData.js';
 import { decorateShopfront, setShopfronts } from './shopfronts.js';
 import { boatForLandmark, houseboatsByTile, type Houseboat } from './houseboats.js';
+import type { ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import type { Chunk } from './threeBuildingMesh.js';
 import { FALLBACK_REACH_M, SegmentGrid, streetSegments } from './streetFronts.js';
 import { ORIGIN, ROOF_TONES, asPolygons, buildFeatureChunk, cellSetOf, type BuildingLook, type Feature } from './threeBuildingFeatures.js';
@@ -34,6 +35,8 @@ import { buildingProjectionScale } from './buildingProjectionScale.js';
 import { buildSpecialKits, buildSpecialBoats } from './buildingSpecialChunks.js';
 import { ChunkBuildQueue } from './chunkBuildQueue.js';
 import { BuildingContextIndex } from './buildingContextIndex.js';
+
+type BuildOptions = { look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; contextFeatures?: readonly Feature[]; appearanceRevision: string; hostOpenings: readonly ChunkHostOpeningConfig[]; hostOpeningRevision: string };
 
 type MapLike = { getCanvas(): HTMLCanvasElement; triggerRepaint(): void; getZoom(): number };
 type MaplibreLike = { MercatorCoordinate: { fromLngLat(lngLat: [number, number], altitude: number): { x: number; y: number; z: number; meterInMercatorCoordinateUnits(): number } } };
@@ -284,7 +287,9 @@ export class ThreeBuildings {
   private worker: Worker | null | undefined;
   private readonly gens = new Map<string, number>();
   private readonly inflight = new Map<string, Feature[]>();
-  private readonly inflightOptions = new Map<string, { look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; contextFeatures?: readonly Feature[]; appearanceRevision: string }>();
+  private readonly inflightOptions = new Map<string, BuildOptions>();
+  private hostWallOpenings: readonly ChunkHostOpeningConfig[] = [];
+  private hostWallOpeningsRevision = '[]';
   private boatTiles = new Map<string, Houseboat[]>();
   private boatIds: ReadonlySet<string> = new Set();
   private boats: readonly Houseboat[] = [];
@@ -325,7 +330,7 @@ export class ThreeBuildings {
         const installedLook = chunk.mesh.userData.installedLook as BuildingLook | undefined;
         if (!installedLook) continue;
         const rebuilt = key === KIT_KEY ? this.buildKits(chunk.source, installedLook)
-          : buildFeatureChunk(chunk.source, installedLook, chunkMode(key), chunk.mesh.userData.installedStreets, chunk.mesh.userData.installedProfiles ?? [], chunk.mesh.userData.installedContextFeatures ?? []);
+          : buildFeatureChunk(chunk.source, installedLook, chunkMode(key), chunk.mesh.userData.installedStreets, chunk.mesh.userData.installedProfiles ?? [], chunk.mesh.userData.installedContextFeatures ?? [], chunk.mesh.userData.installedHostOpenings ?? []);
         if (rebuilt.vertexCount !== chunk.mesh.geometry.getAttribute('position').count
           || rebuilt.ranges.length !== chunk.ranges.size
           || rebuilt.ranges.some(range => {
@@ -510,6 +515,63 @@ export class ThreeBuildings {
    * as a plain yellow extrusion instead, and signature-landmark models replace
    * their OSM footprint. Only the ids whose state changed touch the GPU.
    */
+  /** Exact host openings become active only after their additive model is available.
+   * Source groups are also the context-loss cache; only affected wall/coarse
+   * groups are invalidated. Extras, kits, boats and independent roofs retain ownership.
+   */
+  setHostWallOpenings(configs: readonly ChunkHostOpeningConfig[] = []): void {
+    // Snapshot serializable input so callers cannot change a posted job in place.
+    const next: ChunkHostOpeningConfig[] = JSON.parse(JSON.stringify(configs));
+    const active = next.filter(c => c.enabled && c.additiveModelAvailable).sort((a, b) => a.hostIdentity.localeCompare(b.hostIdentity));
+    if (new Set(active.map(c => c.hostIdentity)).size !== active.length) throw Error('One host wall opening per explicit identity required');
+    const revision = JSON.stringify(active);
+    if (revision === this.hostWallOpeningsRevision) return;
+    this.hostWallOpeningsRevision = revision;
+    const previous = this.hostWallOpenings;
+    this.hostWallOpenings = active;
+    for (const [key, source] of this.sourceGroups) {
+      if (this.openingRevision(key, source, previous) === this.openingRevision(key, source)) continue;
+      this.gens.set(key, (this.gens.get(key) ?? 0) + 1);
+      this.inflight.delete(key);
+      this.inflightOptions.delete(key);
+      this.pending.push(key, () => this.rebuild(key, source));
+    }
+    this.pump();
+  }
+
+  /** Only expose an attached gate after every resident host shell has its exact cut.
+   * Source validation failure, pending work, lost context and inactive modes withhold it. */
+  hostWallOpeningsVisible(configs: readonly Pick<ChunkHostOpeningConfig, 'hostIdentity'>[]): boolean {
+    if (!this.visible || !this.ready || this.look !== this.requestedLook || this.map.getZoom() < MIN_ZOOM || !configs.length) return false;
+    for (const config of configs) {
+      if (!this.hostWallOpenings.some(c => c.hostIdentity === config.hostIdentity)) return false;
+      let resident = false;
+      for (const [key, source] of this.sourceGroups) {
+        if (key === KIT_KEY || key.startsWith(BOAT_PREFIX) || key.startsWith(EXTRAS_PREFIX) || !source.some(f => String(f.properties.id) === config.hostIdentity)) continue;
+        resident = true;
+        const entry = this.chunks.get(key);
+        if (!entry?.mesh || entry.mesh.userData.hostOpeningRevision !== this.openingRevision(key, source)
+          || !entry.mesh.userData.hostOpeningIds?.includes(config.hostIdentity)) return false;
+      }
+      if (!resident) return false;
+    }
+    return true;
+  }
+
+  private openingsFor(key: string, source: readonly Feature[], configs = this.hostWallOpenings): readonly ChunkHostOpeningConfig[] {
+    if (key === KIT_KEY || key.startsWith(BOAT_PREFIX) || key.startsWith(EXTRAS_PREFIX)) return [];
+    const ids = new Set(source.map(f => String(f.properties.id)));
+    // Reveals belong to this chunk's atlas. A declarative config cannot carry
+    // a photo-layer index into a procedural or untextured look.
+    const revealLayer = this.kitLayers().flat;
+    return configs.filter(c => ids.has(c.hostIdentity)).map(c => ({ ...c, revealLayer }))
+      .sort((a, b) => a.hostIdentity.localeCompare(b.hostIdentity));
+  }
+
+  private openingRevision(key: string, source: readonly Feature[], configs = this.hostWallOpenings): string {
+    return JSON.stringify(this.openingsFor(key, source, configs));
+  }
+
   /** The answer building(s): drawn plain yellow in place, so MapLibre need not draw a stand-in prism. */
   setHighlighted(ids: Iterable<string | number>): void {
     const next = new Set([...ids].map(String));
@@ -682,7 +744,7 @@ export class ThreeBuildings {
     if (worker) {
       // Off the main thread; a reply for an older generation (the tile changed again, or the look) is dropped.
       this.inflight.set(key, source);
-      const options = { look: this.look, streets: this.streetsFor(source), profiles: this.appearanceProfiles, contextFeatures: this.contextGroups.get(key) ?? this.contextFor(source), appearanceRevision: this.appearanceRevision };
+      const options = { look: this.look, streets: this.streetsFor(source), profiles: this.appearanceProfiles, contextFeatures: this.contextGroups.get(key) ?? this.contextFor(source), appearanceRevision: this.appearanceRevision, hostOpenings: this.openingsFor(key, source), hostOpeningRevision: this.openingRevision(key, source) };
       this.inflightOptions.set(key, options);
       this.workerBusy = true;
       worker.postMessage({ key, gen, ...options, features: source, mode: chunkMode(key),
@@ -692,8 +754,8 @@ export class ThreeBuildings {
       return;
     }
     const t0 = performance.now();
-    const options = { look: this.look, streets: this.streetsFor(source), profiles: this.appearanceProfiles, contextFeatures: this.contextGroups.get(key) ?? this.contextFor(source), appearanceRevision: this.appearanceRevision };
-    const chunk = key === KIT_KEY ? this.buildKits(source) : key.startsWith(BOAT_PREFIX) ? this.buildBoats(key.slice(BOAT_PREFIX.length)) : buildFeatureChunk(source, options.look, chunkMode(key), options.streets, options.profiles, options.contextFeatures);
+    const options = { look: this.look, streets: this.streetsFor(source), profiles: this.appearanceProfiles, contextFeatures: this.contextGroups.get(key) ?? this.contextFor(source), appearanceRevision: this.appearanceRevision, hostOpenings: this.openingsFor(key, source), hostOpeningRevision: this.openingRevision(key, source) };
+    const chunk = key === KIT_KEY ? this.buildKits(source) : key.startsWith(BOAT_PREFIX) ? this.buildBoats(key.slice(BOAT_PREFIX.length)) : buildFeatureChunk(source, options.look, chunkMode(key), options.streets, options.profiles, options.contextFeatures, options.hostOpenings);
     this.install(key, source, chunk, performance.now() - t0, options);
   }
 
@@ -704,11 +766,12 @@ export class ThreeBuildings {
     if (typeof Worker === 'undefined' || !WORKER_URL) return null;
     try {
       const worker = new Worker(WORKER_URL);
-      worker.onmessage = (event: MessageEvent<{ key: string; gen: number; chunk: Chunk; ms: number }>) => {
+      worker.onmessage = (event: MessageEvent<{ key: string; gen: number; chunk: Chunk; ms: number; hostOpeningRevision: string }>) => {
         const { key, gen, chunk, ms } = event.data, source = this.inflight.get(key);
         this.workerBusy = false;
         if (this.gens.get(key) !== gen || !source) { this.pump(); return; }
         const options = this.inflightOptions.get(key);
+        if (!options || event.data.hostOpeningRevision !== options.hostOpeningRevision || options.hostOpeningRevision !== this.openingRevision(key, source)) { this.pump(); return; }
         this.inflight.delete(key);
         this.inflightOptions.delete(key);
         this.install(key, source, chunk, ms, options);
@@ -730,9 +793,9 @@ export class ThreeBuildings {
     return this.worker;
   }
 
-  private install(key: string, source: Feature[], chunk: Chunk, buildMs: number, options?: { look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; contextFeatures?: readonly Feature[]; appearanceRevision: string }): void {
+  private install(key: string, source: Feature[], chunk: Chunk, buildMs: number, options?: BuildOptions): void {
     if (!this.THREE || this.look !== this.requestedLook || !this.currentSource(key, source)) return;
-    if (options && (options.look !== this.look || options.appearanceRevision !== this.appearanceRevision)) return;
+    if (options && (options.look !== this.look || options.appearanceRevision !== this.appearanceRevision || options.hostOpeningRevision !== this.openingRevision(key, source))) return;
     const context=this.contextGroups.get(key);
     if(options?.contextFeatures && context && (context.length!==options.contextFeatures.length || context.some((f,i)=>f!==options.contextFeatures![i]))) return;
     const t0 = performance.now() - buildMs;
@@ -761,6 +824,9 @@ export class ThreeBuildings {
     mesh.userData.installedStreets = options?.streets;
     mesh.userData.installedContextFeatures = options?.contextFeatures;
     mesh.userData.installedProfiles = options?.profiles;
+    mesh.userData.installedHostOpenings = options?.hostOpenings;
+    mesh.userData.hostOpeningRevision = options?.hostOpeningRevision;
+    mesh.userData.hostOpeningIds = chunk.hostOpeningIds ?? [];
     mesh.userData.appearanceRevision = options?.appearanceRevision;
     // The pre-upload bounding sphere survives CPU buffer disposal. Keep
     // resident shells intact while skipping chunks outside the map camera.

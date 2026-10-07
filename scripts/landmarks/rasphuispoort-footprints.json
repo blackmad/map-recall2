@@ -1,0 +1,751 @@
+{
+  "modelId": "rasphuispoort",
+  "poiIdentity": "extract_landmarks_953524097",
+  "retrievedOn": "2026-10-05",
+  "physicalScope": "Additive sandstone gate only, Heiligeweg 19, with exact installed front-edge reversible host opening. Host shell, roof, distant walls and neighboring buildings retained. CPU passage ready; gallery/live acceptance pending.",
+  "hostIdentity": "NL.IMBAG.Pand.0363100012165086",
+  "hostBag": {
+    "identificatie": "0363100012165086",
+    "status": "Pand in gebruik",
+    "registeredYear": 1997,
+    "note": "1997 dates shopping complex, not historic1603 gate; 72 VBO, usable area not footprint",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.89215214698125,
+            52.36760730825718
+          ],
+          [
+            4.892028598744958,
+            52.36754615146249
+          ],
+          [
+            4.891979319135992,
+            52.367580736806815
+          ],
+          [
+            4.891931779135545,
+            52.36755813156592
+          ],
+          [
+            4.891876520448511,
+            52.36759825525381
+          ],
+          [
+            4.891841393478416,
+            52.36762375923952
+          ],
+          [
+            4.891808190795907,
+            52.36764786918229
+          ],
+          [
+            4.891878992010464,
+            52.3676793527914
+          ],
+          [
+            4.891872247934035,
+            52.36768503177794
+          ],
+          [
+            4.891959222892694,
+            52.367723701275814
+          ],
+          [
+            4.891915455556809,
+            52.36774981625643
+          ],
+          [
+            4.891896883660905,
+            52.36776148551129
+          ],
+          [
+            4.8918537422643285,
+            52.367788079436735
+          ],
+          [
+            4.891705725595233,
+            52.36772227214797
+          ],
+          [
+            4.891655085070193,
+            52.367759035677445
+          ],
+          [
+            4.891613725863954,
+            52.36778906129593
+          ],
+          [
+            4.891549418860883,
+            52.367755870086555
+          ],
+          [
+            4.891488253304329,
+            52.36780027398198
+          ],
+          [
+            4.89148114793067,
+            52.367805430145914
+          ],
+          [
+            4.891427157967433,
+            52.36778320214471
+          ],
+          [
+            4.891376632052783,
+            52.36776239070971
+          ],
+          [
+            4.891285781865369,
+            52.367724980807054
+          ],
+          [
+            4.891294920771704,
+            52.367715231460224
+          ],
+          [
+            4.8911603819740135,
+            52.367667985650684
+          ],
+          [
+            4.891082205554721,
+            52.367751171975605
+          ],
+          [
+            4.891024733991401,
+            52.367730439137524
+          ],
+          [
+            4.8910777253294615,
+            52.36767388578189
+          ],
+          [
+            4.8910151217645925,
+            52.367651226036934
+          ],
+          [
+            4.891026088524831,
+            52.36763952504818
+          ],
+          [
+            4.890965707864237,
+            52.36761766551171
+          ],
+          [
+            4.891008355686571,
+            52.36757353479918
+          ],
+          [
+            4.8909358815213935,
+            52.36754729248207
+          ],
+          [
+            4.8909697758262585,
+            52.36751258017227
+          ],
+          [
+            4.890889459960441,
+            52.367482512141265
+          ],
+          [
+            4.890824321396482,
+            52.36745811602455
+          ],
+          [
+            4.89080967647795,
+            52.36747310905467
+          ],
+          [
+            4.890750620648922,
+            52.36745228854911
+          ],
+          [
+            4.890733041809337,
+            52.3674709811956
+          ],
+          [
+            4.8906507468184275,
+            52.367441974241196
+          ],
+          [
+            4.890658072569855,
+            52.36743418564904
+          ],
+          [
+            4.890603974548789,
+            52.36741512948005
+          ],
+          [
+            4.890712657083694,
+            52.367299571800075
+          ],
+          [
+            4.890702469977852,
+            52.36726915957439
+          ],
+          [
+            4.8907032289168315,
+            52.367268254997306
+          ],
+          [
+            4.890757957049579,
+            52.36726116848667
+          ],
+          [
+            4.890861974905918,
+            52.36724751185387
+          ],
+          [
+            4.890918290448715,
+            52.367240270145004
+          ],
+          [
+            4.890918632057969,
+            52.36724123326301
+          ],
+          [
+            4.891357575150795,
+            52.36718556895733
+          ],
+          [
+            4.8914021707525706,
+            52.367179913699424
+          ],
+          [
+            4.891402879739207,
+            52.367182163598336
+          ],
+          [
+            4.891432299955128,
+            52.367177244685806
+          ],
+          [
+            4.891681462561487,
+            52.36714845752877
+          ],
+          [
+            4.8917113471790294,
+            52.36714665024165
+          ],
+          [
+            4.891711828222853,
+            52.36714959123917
+          ],
+          [
+            4.891744034390819,
+            52.36714763188061
+          ],
+          [
+            4.891743567826061,
+            52.36714470891929
+          ],
+          [
+            4.891764210784002,
+            52.367143465121316
+          ],
+          [
+            4.891771947082405,
+            52.367144908566424
+          ],
+          [
+            4.891789256741109,
+            52.36714369575431
+          ],
+          [
+            4.891796255243375,
+            52.3671415230473
+          ],
+          [
+            4.8918182793027025,
+            52.36714019514176
+          ],
+          [
+            4.891820960575027,
+            52.367140700685134
+          ],
+          [
+            4.891907065707332,
+            52.367188794707076
+          ],
+          [
+            4.892168369226526,
+            52.36732723787985
+          ],
+          [
+            4.892237236174336,
+            52.36727412976637
+          ],
+          [
+            4.892518346556412,
+            52.36739165066387
+          ],
+          [
+            4.892513480749253,
+            52.36739349079113
+          ],
+          [
+            4.892426257775763,
+            52.36743500009995
+          ],
+          [
+            4.89215214698125,
+            52.36760730825718
+          ]
+        ]
+      ]
+    },
+    "rawSource": "artifacts/landmarks/rasphuispoort/references/bag-host-current.json"
+  },
+  "anchor": [
+    4.891053469773061,
+    52.367740805556565
+  ],
+  "authorAngleRadians": -2.6079504457462543,
+  "axes": "Native east/south metres, authored +Z faces streetNW. RotY(a): east=x*cos(a)+z*sin(a), south=-x*sin(a)+z*cos(a). GroundY0. No scale.",
+  "facadeSegment": [
+    [
+      4.891082205554721,
+      52.367751171975605
+    ],
+    [
+      4.891024733991401,
+      52.367730439137524
+    ]
+  ],
+  "segmentLengthMetres": 4.5372602565516935,
+  "nativePassageFinger": {
+    "geographic": [
+      [
+        4.8911603819740135,
+        52.367667985650684
+      ],
+      [
+        4.891082205554721,
+        52.367751171975605
+      ],
+      [
+        4.891024733991401,
+        52.367730439137524
+      ],
+      [
+        4.8910777253294615,
+        52.36767388578189
+      ]
+    ],
+    "authorLocalMetres": [
+      [
+        -2.1330786965837154,
+        -10.675698520434366
+      ],
+      [
+        -2.2686301282758463,
+        3.3306690738754696e-16
+      ],
+      [
+        2.2686301282758463,
+        -3.3306690738754696e-16
+      ],
+      [
+        2.3699175279985614,
+        -7.252365673852626
+      ]
+    ],
+    "note": "CurrentBAG covered corridor projection, not gate footprint or permission to replace host. End depth approximately10m. Lateral alignment varies."
+  },
+  "portalDimensions": {
+    "width": 4.46,
+    "height": 7.23,
+    "depth": 0.97,
+    "clearOpeningWidth": 2.14,
+    "openingSpring": 2.63,
+    "openingCrown": 3.7,
+    "confidence": "Facade frontage matches surveyed edge. Vertical/depth dimensions and ornament simplified estimates from2020photo; no measured elevation."
+  },
+  "installedHostHeight": 29.36,
+  "suppressOsmIds": [],
+  "preserveIds": [
+    "NL.IMBAG.Pand.0363100012165086",
+    "NL.IMBAG.Pand.0363100012167502",
+    "NL.IMBAG.Pand.0363100012175881"
+  ],
+  "criticalArchitecturalAssertions": [
+    {
+      "part": "gate",
+      "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1482",
+      "passage": "Poortje van het voormalige rasphuis: zandstenen poortje met halve zuilen en reli\u00ebf boven de doorgang (1603, door Hendrik de Keyser ?); bekronende beeldengroep later.",
+      "confidence": "explicit register description; architect attribution uncertain",
+      "raw": "artifacts/landmarks/rasphuispoort/references/rce-register.html"
+    },
+    {
+      "part": "current facade",
+      "source": "https://commons.wikimedia.org/wiki/File:De_Rasphuispoort_aan_de_Heiligeweg_(2020).jpg",
+      "date": "2020-07-16",
+      "confidence": "photo inspected",
+      "traits": [
+        "Open roundarch between sandstone halfcolumns",
+        "Colored cart-and-keeper relief under console lintel",
+        "Straight projecting cornice",
+        "Central seated figure with red Amsterdamshield flanked by two chained captives",
+        "No host facade or roof replaced"
+      ],
+      "author": "MatteoNL97",
+      "rights": "CCBY4.0",
+      "originalPhoto": "artifacts/landmarks/rasphuispoort/references/commons-2020.jpg"
+    },
+    {
+      "part": "historical gate",
+      "source": "https://commons.wikimedia.org/wiki/File:Stadsarchief_Amsterdam,_Afb_012000006381.jpg",
+      "confidence": "Historical original photo inspected. Roundarch/columns/relief/crown preserved across dates; 2020 principalphoto controls present colors and surrounding context.",
+      "originalPhoto": "artifacts/landmarks/rasphuispoort/references/commons-archive.jpg",
+      "date": "1892",
+      "author": "Unknown",
+      "rights": "Publicdomain according to savedCommons catalogue"
+    }
+  ],
+  "archiveSearch": {
+    "address": "Heiligeweg19",
+    "url": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=Heiligeweg%2019",
+    "access": "HTTP200 JSviewer shell saved; no catalogue results or drawings inspected through shell. Bounded name/address search found Stadsarchief012000006381viaCommons; original downloaded."
+  },
+  "bouwdossiersAccess": "No drawing inspected; no email access claimed. Gate is1603 and facadephoto plus currentBAG resolves bounded scope; exact elevations remain unavailable.",
+  "sourceArchive": {
+    "canonicalModelId": "rasphuispoort",
+    "privatePath": "models/rasphuispoort",
+    "sourceCommit": null,
+    "state": "Ready for coordinator sync and private source commit before public model commit.",
+    "manifest": "artifacts/landmarks/rasphuispoort/references/raw-source-manifest.json"
+  },
+  "sources": [
+    {
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1482",
+      "localFile": "artifacts/landmarks/rasphuispoort/references/rce-register.html",
+      "access": "downloaded"
+    },
+    {
+      "url": "https://www.amsterdam-monumentenstad.nl/database/grachtenboek_objecten.php?id=4151",
+      "localFile": "artifacts/landmarks/rasphuispoort/references/monumentenstad.html",
+      "access": "downloaded"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:De_Rasphuispoort_aan_de_Heiligeweg_(2020).jpg",
+      "localFile": "artifacts/landmarks/rasphuispoort/references/commons-2020.html",
+      "access": "downloaded"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Stadsarchief_Amsterdam,_Afb_012000006381.jpg",
+      "localFile": "artifacts/landmarks/rasphuispoort/references/commons-archive.html",
+      "access": "downloaded"
+    },
+    {
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=Heiligeweg%2019",
+      "localFile": "artifacts/landmarks/rasphuispoort/references/beeldbank-search.html",
+      "access": "downloaded"
+    },
+    {
+      "url": "https://overpass-api.de/api/interpreter?data=%5Bout%3Ajson%5D%3B%28way%28around%3A40%2C52.3677405%2C4.8910517%29%5Bbuilding%5D%3Bnode%28953524097%29%3B%29%3Bout%20geom%3B",
+      "localFile": "artifacts/landmarks/rasphuispoort/references/overpass.json",
+      "access": "HTTP Error 504: Gateway Timeout"
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/d/d7/De_Rasphuispoort_aan_de_Heiligeweg_%282020%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "localFile": "artifacts/landmarks/rasphuispoort/references/commons-2020.jpg",
+      "access": "downloaded"
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/25/Stadsarchief_Amsterdam%2C_Afb_012000006381.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "localFile": "artifacts/landmarks/rasphuispoort/references/commons-archive.jpg",
+      "access": "downloaded"
+    },
+    {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012165086&f=json",
+      "localFile": "artifacts/landmarks/rasphuispoort/references/bag-host-current.json",
+      "access": "downloaded"
+    },
+    {
+      "localFile": "artifacts/landmarks/rasphuispoort/references/installed-building-tile-original-bytes.zip",
+      "sourceLocalPath": "public/data/extracts/amsterdam/building-tiles/14/8414/5384.geojson.gz",
+      "access": "Locally generated ZIP for archive packaging; member originalGZIP copied unchanged. Not currentBAG response; retrieval date of installed sourceunknown."
+    }
+  ],
+  "acceptanceBlocker": "Installed full-height host covers opening. Localized reversible host cutout and gallery/live evidence required. No visual acceptance claimed.",
+  "installedHostFeature": {
+    "type": "Feature",
+    "properties": {
+      "id": "NL.IMBAG.Pand.0363100012165086",
+      "tier": 3,
+      "minHeight": 0,
+      "height": 29.36
+    },
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.892155,
+            52.367609
+          ],
+          [
+            4.892031,
+            52.367548
+          ],
+          [
+            4.891982,
+            52.367583
+          ],
+          [
+            4.891934,
+            52.36756
+          ],
+          [
+            4.891811,
+            52.36765
+          ],
+          [
+            4.891882,
+            52.367682
+          ],
+          [
+            4.891875,
+            52.367687
+          ],
+          [
+            4.891962,
+            52.367726
+          ],
+          [
+            4.891918,
+            52.367752
+          ],
+          [
+            4.8919,
+            52.367764
+          ],
+          [
+            4.891856,
+            52.36779
+          ],
+          [
+            4.891708,
+            52.367724
+          ],
+          [
+            4.891616,
+            52.367791
+          ],
+          [
+            4.891552,
+            52.367758
+          ],
+          [
+            4.891484,
+            52.367808
+          ],
+          [
+            4.891288,
+            52.367727
+          ],
+          [
+            4.891298,
+            52.367717
+          ],
+          [
+            4.891163,
+            52.36767
+          ],
+          [
+            4.891085,
+            52.367753
+          ],
+          [
+            4.891027,
+            52.367733
+          ],
+          [
+            4.89108,
+            52.367676
+          ],
+          [
+            4.891018,
+            52.367653
+          ],
+          [
+            4.891029,
+            52.367642
+          ],
+          [
+            4.890968,
+            52.36762
+          ],
+          [
+            4.891011,
+            52.367576
+          ],
+          [
+            4.890939,
+            52.367549
+          ],
+          [
+            4.890972,
+            52.367515
+          ],
+          [
+            4.890827,
+            52.36746
+          ],
+          [
+            4.890812,
+            52.367475
+          ],
+          [
+            4.890753,
+            52.367454
+          ],
+          [
+            4.890736,
+            52.367473
+          ],
+          [
+            4.890653,
+            52.367444
+          ],
+          [
+            4.890661,
+            52.367436
+          ],
+          [
+            4.890607,
+            52.367417
+          ],
+          [
+            4.890715,
+            52.367302
+          ],
+          [
+            4.890705,
+            52.367271
+          ],
+          [
+            4.890706,
+            52.36727
+          ],
+          [
+            4.890921,
+            52.367242
+          ],
+          [
+            4.890921,
+            52.367243
+          ],
+          [
+            4.891405,
+            52.367182
+          ],
+          [
+            4.891406,
+            52.367184
+          ],
+          [
+            4.891435,
+            52.367179
+          ],
+          [
+            4.891684,
+            52.367151
+          ],
+          [
+            4.891714,
+            52.367149
+          ],
+          [
+            4.891715,
+            52.367152
+          ],
+          [
+            4.891747,
+            52.36715
+          ],
+          [
+            4.891746,
+            52.367147
+          ],
+          [
+            4.891767,
+            52.367146
+          ],
+          [
+            4.891775,
+            52.367147
+          ],
+          [
+            4.891792,
+            52.367146
+          ],
+          [
+            4.891799,
+            52.367144
+          ],
+          [
+            4.891821,
+            52.367142
+          ],
+          [
+            4.891824,
+            52.367143
+          ],
+          [
+            4.89191,
+            52.367191
+          ],
+          [
+            4.892171,
+            52.367329
+          ],
+          [
+            4.89224,
+            52.367276
+          ],
+          [
+            4.892521,
+            52.367394
+          ],
+          [
+            4.892516,
+            52.367396
+          ],
+          [
+            4.892429,
+            52.367437
+          ],
+          [
+            4.892155,
+            52.367609
+          ]
+        ]
+      ]
+    }
+  },
+  "installedOpening": {
+    "tilePath": "public/data/extracts/amsterdam/building-tiles/14/8414/5384.geojson.gz",
+    "ringEdgeIndices": [
+      18,
+      19
+    ],
+    "geographicEdge": [
+      [
+        4.891085,
+        52.367753
+      ],
+      [
+        4.891027,
+        52.367733
+      ]
+    ],
+    "projection": "east metres at threeBuildingFeatures.ORIGIN latitude; south metres using 110540 m/degree latitude; same native frame as uploaded ordinary chunks",
+    "openingConfig": "rasphuispoort-spec.json hostWallOpenings[0]",
+    "clearSightlineBehindAnchorMetres": 7,
+    "preservedNextHostWallBehindAnchorMetres": 74.69346798234595,
+    "sourceInterpretation": "2020 original photograph shows a covered public shopping entrance beyond the open round arch; current BAG corridor finger extends 7.25\u201310.68 m. Exact front-edge clipping yields seven metres of clear sightline without further cuts. Portal 0.94 m reveal is an approximate photo-derived depth, not a surveyed interior reconstruction."
+  }
+}

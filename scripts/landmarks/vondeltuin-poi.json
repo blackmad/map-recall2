@@ -1,0 +1,20 @@
+{
+  "id": "extract_landmarks_620869345",
+  "name": "De Vondeltuin",
+  "center": [
+    52.35492528,
+    4.85651048
+  ],
+  "type": "landmark",
+  "cityId": "amsterdam",
+  "funFact": "Amsterdam\u2019s first circular municipal building opened here in2020. DOOR architecten drew inspiration from the neighboring Batak-style hut and used roof shingles made from Amsterdam trees, reused window-frame hardwood and a floor recovered from a gymnasium.",
+  "description": "A timber pavilion with two offset roofs, glass gable ends and projecting wooden sunshades beside Vondelpark\u2019s playground.",
+  "website": "https://devondeltuin.nl/",
+  "sources": [
+    {
+      "title": "DOOR architecten \u2014 Vondeltuin",
+      "url": "https://doorarchitecten.nl/portfolio/horecapaviljoen-vondeltuin-gemeente-amsterdam/"
+    }
+  ],
+  "sourceIdentity": "Existing mapped caf\u00e9 node n620869345 absent landmark extract; coordinator promote genuine node once."
+}

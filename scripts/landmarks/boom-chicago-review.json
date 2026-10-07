@@ -1,0 +1,84 @@
+{
+  "modelId": "boom-chicago",
+  "previousAuthorStatus": null,
+  "status": "verified-awaiting-deployment",
+  "state": "verified-awaiting-deployment",
+  "visualAccepted": true,
+  "gameAccepted": true,
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "205d04f0c48c3a651000233510d5f9ac1596edee",
+    "path": "models/boom-chicago",
+    "finalEvidencePath": "models/boom-chicago/validation/final-20261007",
+    "rawSourceCheckpoint": "68906c28297c781d0d2b8c8784adde49f2eba399"
+  },
+  "finalAcceptance": {
+    "date": "2026-10-07",
+    "assetSha256": "93f24ea15c5e59af567ae4a391dc8deda48d6ec5850442eca769371cf06d53dc",
+    "nativePlacement": {
+      "id": "boom-chicago",
+      "actualCamera": {
+        "center": [
+          4.879140883714867,
+          52.372669186374516
+        ],
+        "zoom": 20,
+        "pitch": 55.00000000000001,
+        "bearing": -20,
+        "elevation": 0
+      },
+      "assetVersion": "93f24ea15c5e59af",
+      "scale": 1,
+      "bias": false,
+      "broad": false,
+      "pin": true,
+      "destination": true,
+      "source": "https://arcam.nl/architectuur-gids/rozentheater-2/",
+      "click": {
+        "x": 760.110385197903,
+        "y": 505.714378003269
+      },
+      "aliases": [
+        {
+          "id": "w266659986",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012174999",
+          "hidden": true
+        }
+      ],
+      "oldPyramidIds": [],
+      "neighbors": [
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012175000"
+          ],
+          "resident": true,
+          "ordinaryResident": true,
+          "hidden": false,
+          "drawable": true,
+          "retainedReplacement": null
+        },
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012174998"
+          ],
+          "resident": true,
+          "ordinaryResident": true,
+          "hidden": false,
+          "drawable": true,
+          "retainedReplacement": null
+        }
+      ],
+      "features": 13015,
+      "buildings": 17248
+    },
+    "sourceGalleryIndependent": "accepted",
+    "fallback": "simulated target unavailable/restored through actual entry collection, resident ordinary fallback and retained neighbors",
+    "galleryAndNativeEvidence": "artifacts/landmark-release-check/boom-chicago-review",
+    "desktopAndTouchPans": "artifacts/landmark-release-check/gameplay-pans-oct7",
+    "performanceScope": "Headless same-scene model visible/hidden comparison and actual mouse/emulated-touch camera pans; no physical-mobile or whole-game performance guarantee.",
+    "hostedVerification": "pending deployment"
+  }
+}

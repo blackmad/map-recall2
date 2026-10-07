@@ -1,0 +1,52 @@
+{
+  "id": "centrale-markthal",
+  "name": "Centrale Markthal",
+  "landmarkId": "manual_centrale_markthal",
+  "modelUrl": "./models/centrale-markthal.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012210502",
+    "w276272968",
+    "w1080812379",
+    "w1080812380",
+    "w1080812381",
+    "w1080812382",
+    "w1080812383",
+    "w1080812384",
+    "w1080812385",
+    "w1080812386",
+    "w1080812387",
+    "w1080812388",
+    "w1080812389",
+    "w1080812390",
+    "w1080812391",
+    "w1080812392"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.86579375,
+      52.37877065
+    ],
+    "headingDegrees": 167.2,
+    "lengthMetres": 130.699,
+    "widthMetres": 72.318
+  },
+  "surveyed": {
+    "anchor": [
+      4.86579375,
+      52.37877065
+    ],
+    "northOffsetDegrees": -12.8,
+    "source": "Native PDOK BAG0363100012210502; local surveyed transverse/long-axis coordinates; AHN5 roofs"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "Centrale Markthal original surveyed reconstruction",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/526739",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original flat-color texture-free geometry based on current BAG footprint, AHN5 roof massing, RCE architectural description and Museum Het Schip facade photos. No imported mesh or image pixels. Demolished northeast clock tower omitted. Fine facade and upper footprint details approximate."
+  }
+}

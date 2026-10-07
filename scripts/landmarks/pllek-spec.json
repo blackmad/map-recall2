@@ -1,0 +1,38 @@
+{
+  "id": "pllek",
+  "name": "Pllek",
+  "landmarkId": "n4913392670",
+  "modelUrl": "./models/pllek.glb",
+  "suppressOsmIds": [
+    "w500238189",
+    "NL.IMBAG.Pand.0363100012241285"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.893035,
+      52.39915
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 57,
+    "widthMetres": 26
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.893035,
+      52.39915
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Native currentBAG0363100012241285/OSMw500238189; curved hall roofs from owner originals; AHNground1.153m removed."
+  },
+  "attribution": {
+    "title": "Pllek",
+    "author": "Map Recall",
+    "sourceUrl": "https://pllek.nl/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original flat-color container restaurant compound with two red barrelvaults and waterfront glass,source-supported tall yellowtower; nativeplan/exactIDs retain Treehouse,NDSMbeach and shipyardneighbors. No photo textures or copiedmeshes."
+  }
+}

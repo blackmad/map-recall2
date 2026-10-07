@@ -1,0 +1,394 @@
+{
+  "id": "vondeltuin",
+  "anchor": [
+    4.85651048,
+    52.35492528
+  ],
+  "bag": {
+    "type": "Feature",
+    "id": "pand.0705147c-1a6e-4a7f-8584-e8c9218d56dd",
+    "properties": {
+      "identificatie": "0363100012253390",
+      "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012253390",
+      "bouwjaar": 2020,
+      "status": "Pand in gebruik",
+      "gebruiksdoel": "bijeenkomstfunctie",
+      "oppervlakte_min": 128,
+      "oppervlakte_max": 128,
+      "aantal_verblijfsobjecten": 1
+    },
+    "bbox": [
+      4.856428608304998,
+      52.354839823469945,
+      4.856613535460692,
+      52.354976088342994
+    ],
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.85643457099445,
+            52.354959917566106
+          ],
+          [
+            4.856428608304998,
+            52.354958956110885
+          ],
+          [
+            4.856455304946753,
+            52.354896700737264
+          ],
+          [
+            4.8564574040868065,
+            52.35489178485495
+          ],
+          [
+            4.856492184129544,
+            52.35489737834118
+          ],
+          [
+            4.856516857483529,
+            52.354839823469945
+          ],
+          [
+            4.856613535460692,
+            52.3548553651519
+          ],
+          [
+            4.856583849007491,
+            52.35492461761425
+          ],
+          [
+            4.856559001778826,
+            52.35492063253956
+          ],
+          [
+            4.8565352342619335,
+            52.354976088342994
+          ],
+          [
+            4.85643457099445,
+            52.354959917566106
+          ]
+        ]
+      ]
+    }
+  },
+  "roofPlanes": [
+    {
+      "id": 21,
+      "rings": [
+        [
+          [
+            2.729401080969514,
+            5.739000869750978,
+            8.57287533116505
+          ],
+          [
+            1.5271611716115425,
+            5.761000869750976,
+            3.8724131529900774
+          ],
+          [
+            -0.832440477025485,
+            4.213000869750976,
+            4.508567432044401
+          ],
+          [
+            0.47449055968354187,
+            4.214000869750977,
+            9.466577872227475
+          ],
+          [
+            2.8023600682066516,
+            5.738000869750977,
+            8.858473690228124
+          ]
+        ]
+      ]
+    },
+    {
+      "id": 22,
+      "rings": [
+        [
+          [
+            4.626902222808048,
+            3.804000869750977,
+            0.19868125588729413
+          ],
+          [
+            3.4880250002256514,
+            4.603000869750977,
+            2.2138665539399938
+          ],
+          [
+            3.763258175890369,
+            4.596000869750977,
+            3.2699458882153465
+          ],
+          [
+            1.6028595741849896,
+            5.721000869750977,
+            3.8519912571233306
+          ],
+          [
+            1.5271611716115425,
+            5.761000869750976,
+            3.8724131529900774
+          ],
+          [
+            2.729401080969514,
+            5.739000869750978,
+            8.57287533116505
+          ],
+          [
+            6.943988082774319,
+            3.534000869750977,
+            7.351937098116821
+          ],
+          [
+            5.030321552637228,
+            3.5950008697509768,
+            0.09340983393414604
+          ]
+        ]
+      ]
+    },
+    {
+      "id": 23,
+      "rings": [
+        [
+          [
+            1.6028595741849896,
+            6.732000869750976,
+            3.8519912571233306
+          ],
+          [
+            -0.6955241982669156,
+            6.739000869750978,
+            -4.963536200440188
+          ],
+          [
+            -5.17496553350008,
+            4.271000869750978,
+            -3.793316603774457
+          ],
+          [
+            -5.1094739323412615,
+            4.275000869750977,
+            -3.5732354123986454
+          ],
+          [
+            -5.461990283058278,
+            4.079000869750978,
+            -3.4673407501848885
+          ],
+          [
+            -3.566774253841958,
+            4.084000869750977,
+            3.722764985180902
+          ],
+          [
+            -1.203041926228498,
+            5.3870008697509775,
+            3.1054559352543265
+          ],
+          [
+            -0.832440477025485,
+            5.388000869750977,
+            4.508567432044401
+          ],
+          [
+            1.5271611716115425,
+            6.6900008697509765,
+            3.8724131529900774
+          ]
+        ]
+      ]
+    },
+    {
+      "id": 24,
+      "rings": [
+        [
+          [
+            -0.6955241982669156,
+            6.739000869750978,
+            -4.963536200440188
+          ],
+          [
+            1.6028595741849896,
+            6.732000869750976,
+            3.8519912571233306
+          ],
+          [
+            3.763258175890369,
+            5.5760008697509775,
+            3.2699458882153465
+          ],
+          [
+            3.4880250002256514,
+            5.5760008697509775,
+            2.2138665539399938
+          ],
+          [
+            4.626902222808048,
+            4.745000869750976,
+            0.19868125588729413
+          ],
+          [
+            3.340938569646329,
+            5.432000869750977,
+            0.5339241374315407
+          ],
+          [
+            1.7239886332616772,
+            5.446000869750977,
+            -5.596153021693766
+          ]
+        ]
+      ]
+    }
+  ],
+  "sourceCoordinateConvention": "BAG lon/lat, roof rings original surveyed RD converted via proj4 EPSG28992 to native east X / south Z metres, ground -1.331 NAP",
+  "references": [
+    {
+      "url": "https://devondeltuin.nl/",
+      "cache": "artifacts/landmarks/vondeltuin/references/operator.raw",
+      "access": "raw HTTP downloaded"
+    },
+    {
+      "url": "https://doorarchitecten.nl/portfolio/horecapaviljoen-vondeltuin-gemeente-amsterdam/",
+      "cache": "artifacts/landmarks/vondeltuin/references/architect.raw",
+      "access": "raw HTTP downloaded"
+    },
+    {
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=Vondelpark%207%20Vondeltuin",
+      "cache": "artifacts/landmarks/vondeltuin/references/beeldbank.raw",
+      "access": "raw HTTP downloaded"
+    },
+    {
+      "url": "https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&typeNames=bag:pand&outputFormat=application/json&srsName=EPSG:4326&bbox=52.35465,4.8561,52.3553,4.8571,EPSG:4326",
+      "cache": "artifacts/landmarks/vondeltuin/references/bag-pand.raw",
+      "access": "raw HTTP downloaded"
+    },
+    {
+      "url": "https://doorarchitecten.nl/projecten/",
+      "cache": "artifacts/landmarks/vondeltuin/references/architect-projects.raw",
+      "access": "raw HTTP downloaded"
+    },
+    {
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012253390",
+      "cache": "artifacts/landmarks/vondeltuin/references/survey.raw",
+      "access": "raw HTTP downloaded"
+    },
+    {
+      "url": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Vondelpark%207%20Amsterdam&fq=type:adres",
+      "cache": "artifacts/landmarks/vondeltuin/references/bag-address.raw",
+      "access": "raw HTTP downloaded"
+    },
+    {
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=4.85635,52.35480,4.85668,52.35502",
+      "cache": "artifacts/landmarks/vondeltuin/references/osm-map.raw",
+      "access": "raw HTTP downloaded"
+    },
+    {
+      "url": "https://doorarchitecten.nl/wp-content/uploads/2020/07/Horecapaviljoen-Vondeltuin-door-architecten-12.jpg",
+      "cache": "artifacts/landmarks/vondeltuin/references/facade.jpg",
+      "rights": "DOOR architecten; reference only",
+      "role": "original photograph"
+    },
+    {
+      "url": "https://doorarchitecten.nl/wp-content/uploads/2020/07/Horecapaviljoen-Vondeltuin-door-architecten-11.jpg",
+      "cache": "artifacts/landmarks/vondeltuin/references/side.jpg",
+      "rights": "DOOR architecten; reference only",
+      "role": "original photograph"
+    },
+    {
+      "url": "https://doorarchitecten.nl/wp-content/uploads/2020/07/Horecapaviljoen-Vondeltuin-door-architecten-13.jpg",
+      "cache": "artifacts/landmarks/vondeltuin/references/roof.jpg",
+      "rights": "DOOR architecten; reference only",
+      "role": "original photograph"
+    },
+    {
+      "url": "https://doorarchitecten.nl/wp-content/uploads/2021/11/DOOR-Architecten-Amsterdam-Horecapaviljoen-vondeltuin-Exterior_SECTION-02.jpg",
+      "cache": "artifacts/landmarks/vondeltuin/references/section.jpg",
+      "rights": "DOOR architecten; reference only",
+      "role": "architect published section; original raster drawing"
+    },
+    {
+      "url": "https://doorarchitecten.nl/wp-content/uploads/2020/07/Horecapaviljoen-Vondeltuin-door-architecten-10.jpg",
+      "cache": "artifacts/landmarks/vondeltuin/references/opposite.jpg",
+      "rights": "DOOR architecten; reference only",
+      "role": "original photograph"
+    },
+    {
+      "url": "https://doorarchitecten.nl/wp-content/uploads/2020/07/Horecapaviljoen-Vondeltuin-door-architecten-7.jpg",
+      "cache": "artifacts/landmarks/vondeltuin/references/context-7.jpg",
+      "rights": "DOOR architecten; reference only",
+      "role": "original photograph"
+    },
+    {
+      "url": "https://doorarchitecten.nl/wp-content/uploads/2020/07/Horecapaviljoen-Vondeltuin-door-architecten-8.jpg",
+      "cache": "artifacts/landmarks/vondeltuin/references/context-8.jpg",
+      "rights": "DOOR architecten; reference only",
+      "role": "original photograph"
+    },
+    {
+      "url": "https://doorarchitecten.nl/wp-content/uploads/2020/07/Horecapaviljoen-Vondeltuin-door-architecten-9.jpg",
+      "cache": "artifacts/landmarks/vondeltuin/references/context-9.jpg",
+      "rights": "DOOR architecten; reference only",
+      "role": "original photograph"
+    },
+    {
+      "url": "https://doorarchitecten.nl/wp-content/uploads/2020/07/Horecapaviljoen-Vondeltuin-door-architecten-thumbnail.jpg",
+      "cache": "artifacts/landmarks/vondeltuin/references/architect-photo-0.jpg",
+      "rights": "DOOR architecten; reference only",
+      "role": "original photograph"
+    }
+  ],
+  "identity": {
+    "poi": "n620869345",
+    "osmBuilding": "w1243333955",
+    "bag": "0363100012253390",
+    "vbo": "0363010012150568"
+  },
+  "keepNeighbors": [
+    "NL.IMBAG.Pand.0363100012253391",
+    "NL.IMBAG.Pand.0363100012116940"
+  ],
+  "scope": "2020 pavilion only. Keep separate surviving1927 Werkmanshuisje south and existing playground. Burned earlier Snoephuisje does not exist. No terrace parcel extrusion/suppression.",
+  "architecturalAssertions": [
+    {
+      "source": "https://doorarchitecten.nl/portfolio/horecapaviljoen-vondeltuin-gemeente-amsterdam/",
+      "part": "whole",
+      "assertion": "2020 circular building, inspired by Indonesian Batak style of neighboring Werkmanshuisje"
+    },
+    {
+      "source": "https://doorarchitecten.nl/portfolio/horecapaviljoen-vondeltuin-gemeente-amsterdam/",
+      "part": "roof/facade",
+      "assertion": "Amsterdam city-tree shingles, reused hardwood window frames, modified wood sunshade strips, reused natural-stone plinth and extensive glazing"
+    },
+    {
+      "source": "architect facade/side/context7/context8/context9 photos and section",
+      "part": "massing",
+      "assertion": "two shifted volumes with different ridge heights; gabled glazing ends and projecting diagonal pale sunshade lattice; lower roof solar panels"
+    }
+  ],
+  "heightNotes": {
+    "groundNAP": -1.331,
+    "AHN5Year": 2023,
+    "measuredRidge": 6.733,
+    "upperWallStart": "2.45m from current section/photo; approximate",
+    "sourceMax": "3DBAG plane raw corners6.74m includes rounding"
+  },
+  "accessGaps": [
+    "Beeldbank bounded address/name query returns JS shell, no scanned photograph inspected",
+    "No historic monument designation asserted for2020 building; neighboring historic hut excluded",
+    "Municipal narrative direct HTTP403; authoritative architect page supplies build facts"
+  ],
+  "archive": {
+    "processedRoofFile": "artifacts/landmarks/vondeltuin/references/roof-rings.processed.json",
+    "rawRoofFile": "artifacts/landmarks/vondeltuin/references/survey.raw"
+  }
+}

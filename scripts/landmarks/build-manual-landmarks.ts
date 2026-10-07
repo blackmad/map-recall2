@@ -1,3 +1,10 @@
+import {buildRasphuispoort} from './rasphuispoort-builder';
+import {buildCentraleMarkthal} from './centrale-markthal-builder';
+import {buildVondeltuin} from './vondeltuin-builder';
+import {buildTreehouseNdsm} from './treehouse-ndsm-builder';
+import {buildStraatMuseum} from './straat-museum-builder';
+import {buildMonkAmsterdam} from './monk-amsterdam-builder';
+import {buildPllek} from './pllek-builder';
 import {buildNieuwDakota} from './nieuw-dakota-builder';
 import {buildDeGooyer} from './de-gooyer-builder';
 import {buildRaiAmsterdamComplex} from './rai-amsterdam-complex-builder';
@@ -369,6 +376,13 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='midwest')buildMidwest(w,d,helpers);
     else if(id==='de-gooyer')buildDeGooyer(w,d,helpers);
     else if(id==='nieuw-dakota')buildNieuwDakota(w,d,helpers);
+    else if(id==='pllek')buildPllek(w,d,helpers);
+    else if(id==='monk-amsterdam')buildMonkAmsterdam(w,d,helpers);
+    else if(id==='straat-museum')buildStraatMuseum(w,d,helpers);
+    else if(id==='treehouse-ndsm')buildTreehouseNdsm(w,d,helpers);
+    else if(id==='vondeltuin')buildVondeltuin(w,d,helpers);
+    else if(id==='centrale-markthal')buildCentraleMarkthal(w,d,helpers);
+    else if(id==='rasphuispoort')buildRasphuispoort(w,d,helpers);
     else if(id==='rai-amsterdam')buildRaiAmsterdamComplex(w,d,helpers);
     else if(id==='pulitzer-amsterdam')buildPulitzerAmsterdam(w,d,helpers);
     else if(id==='the-rock')buildTheRock(w,d,helpers);

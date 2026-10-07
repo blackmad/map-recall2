@@ -1,0 +1,137 @@
+{
+  "id": "boom-chicago",
+  "reviewedOn": "2026-10-06",
+  "privateSourcePath": "models/boom-chicago/raw/2026-10-06",
+  "sourceCommit": "pending root source archive publisher",
+  "rawSources": [
+    {
+      "file": "arcam.html",
+      "url": "https://arcam.nl/architectuur-gids/rozentheater-2/",
+      "sha256": "3ede0d8685622fa50661a8ae7a7011d3661eae7e3d3faaeff94d4cc912e4c3ee",
+      "bytes": 37990,
+      "access": "downloaded and inspected",
+      "rights": "Provider attribution retained; license not inferred"
+    },
+    {
+      "file": "arcam-current.jpeg",
+      "url": "https://arcam.nl/wp-content/uploads/2021/07/1.jpeg",
+      "sha256": "1acb0ac9ffdf735691ec13e9cfb5a3722e62e4e34e994f8a61679dff6ed30011",
+      "bytes": 900552,
+      "access": "downloaded and inspected",
+      "rights": "Reference only; rights unresolved"
+    },
+    {
+      "file": "register.html",
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518326",
+      "sha256": "06e7d3f6c463bbaacd38409dde8fa365249f644750c5d6aeaf2f074ca8cdb602",
+      "bytes": 29494,
+      "access": "downloaded and inspected",
+      "rights": "Provider attribution retained; license not inferred"
+    },
+    {
+      "file": "3dbag.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012174999",
+      "sha256": "fb783eda5a32d1a979313ed6d9ce8d594d63a5d14efe08ef3e11378f562747dd",
+      "bytes": 15434,
+      "access": "downloaded and inspected",
+      "rights": "Provider attribution retained; license not inferred"
+    },
+    {
+      "file": "beeldbank.html",
+      "url": "https://archief.amsterdam/beeldbank/?q=Rozengracht%20117%20Rozentheater",
+      "sha256": "a45e805ef644e5817b24f32801f5d9ee1b59c8096b2746abfc092b03b8b8529d",
+      "bytes": 12352,
+      "access": "HTTP body downloaded; Beeldbank response is a viewer/search shell, no catalogue photo inspection",
+      "rights": "Provider attribution retained; license not inferred"
+    },
+    {
+      "file": "commons.html",
+      "url": "https://commons.wikimedia.org/wiki/File:Rozentheater.JPG",
+      "sha256": "c8c6a1f31980dc85bdf5aaec20adea1bd9e3e592015a274f3ea435487d8c358f",
+      "bytes": 102798,
+      "access": "downloaded and inspected",
+      "rights": "Provider attribution retained; license not inferred"
+    },
+    {
+      "file": "commons-front.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Rozentheater.JPG",
+      "sha256": "2e76b2f7c5e53541844eb1f63a5c53fb5494f27dd58a7ac6c6854f906dd39427",
+      "bytes": 774003,
+      "access": "downloaded and inspected",
+      "rights": "Reference only; rights unresolved"
+    },
+    {
+      "file": "aerial.jpg",
+      "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?request=GetMap&service=WMS&version=1.3.0&layers=Actueel_orthoHR&styles=&crs=EPSG:4326&bbox=52.37235,4.87865,52.373,4.8796&width=1400&height=1200&format=image/jpeg",
+      "sha256": "820d5ebf9757e60cfb0c6f3ea056d5a28e11169967938fe88b275423fd57bc97",
+      "bytes": 370904,
+      "access": "downloaded and inspected",
+      "rights": "Provider attribution retained; license not inferred"
+    }
+  ],
+  "assertions": [
+    {
+      "feature": "Front towers have four-sided lead-covered hipped roofs, rounded central roof; three paired tall stained-glass bays",
+      "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518326",
+      "confidence": "high",
+      "date": "historical register description; agrees with2010Commons and2021Arcam frontage"
+    },
+    {
+      "feature": "Main hall currently has long light-grey metal gable roof; ridge14.4\u201314.5m above surveyed terrain, eaves10.7m; it begins immediately behind short front roof masses",
+      "source": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012174999",
+      "crossCheck": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?request=GetMap&service=WMS&version=1.3.0&layers=Actueel_orthoHR&styles=&crs=EPSG:4326&bbox=52.37235,4.87865,52.373,4.8796&width=1400&height=1200&format=image/jpeg",
+      "confidence": "high",
+      "note": "Overrides original flat main roof described by register; no unsupported full-height15.1m slab"
+    },
+    {
+      "feature": "Western rear annex3.22m; rear central roof12.98m and additional narrow low eastern notch",
+      "source": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012174999",
+      "confidence": "high",
+      "simplification": "Explicit eastern low notch3.85m and lower rear end10.3m retained; small equipment/skylight volumes simplified"
+    },
+    {
+      "feature": "Current BOOM and CHICAGO are separate red signs in two black panels",
+      "source": "https://arcam.nl/wp-content/uploads/2021/07/1.jpeg",
+      "confidence": "high",
+      "date": "Arcam image storedunder2021/07; actual photographic date unknown",
+      "fontMatch": "Custom rounded heavy BOOM contours, compact bold sans CHICAGO continuous strokes; approximate exact fontunknown"
+    },
+    {
+      "feature": "Preserve immediately adjoining Rozengracht115/119 canalhouses",
+      "source": "scripts/landmarks/nes-rozentheater-specs.json",
+      "confidence": "high",
+      "neighbors": [
+        "NL.IMBAG.Pand.0363100012175000",
+        "NL.IMBAG.Pand.0363100012174998"
+      ],
+      "frontFace": "z=21.4+0.0278x; outward+Z; native frontal camera[2.4,8,48], roof/context camera[19,25,45], rear camera[5,19,-45]"
+    }
+  ],
+  "sourceAccess": {
+    "beeldbank": "Bounded exactaddress/name search downloaded2026-10-06; viewer shell only, no inspected catalogueimage",
+    "bouwdossiers": "Not requested: current roof layout resolved with3DBAG+aerial+front photos"
+  },
+  "failedEvidence": {
+    "beforeGlb": "artifacts/landmarks/boom-chicago/before/boom-chicago.glb",
+    "beforeCpu": "artifacts/landmarks/boom-chicago/before/boom-chicago-cpu-front.png",
+    "observedFailures": [
+      "rearleftannex incorrectly11.75m",
+      "barrel10mdeep rather than short frontage roof",
+      "sidegables instead ofhips",
+      "5windows instead of3pairs",
+      "pixel combinedBOOMCHICAGO sign",
+      "fixedzfront glazing can bury against slightlyangledsurveywall"
+    ]
+  },
+  "draftEvidence": "artifacts/landmarks/boom-chicago/draft",
+  "acceptance": "CPU geometry/first-hit panes checked; root native gallery/live/hash/neighbors/route/pin/card and independent review pending",
+  "checks": {
+    "command": "node --import tsx scripts/check-boom-chicago-geometry.ts --export",
+    "state": "PASS",
+    "triangles": 3920,
+    "draftBytes": 229744,
+    "typescript": "PASS",
+    "draftSha256": "eedb633cc4e11d97f18671b91968b08bd67a19e32879ccf28def9df2d9a8325c",
+    "sourceArchiveVerify": "PASS9objects; runs/scoped-boom-chicago.json; customrawdirectorymustbecommittedwithscopedarchive"
+  }
+}

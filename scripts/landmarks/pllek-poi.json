@@ -1,0 +1,23 @@
+{
+  "modelId": "pllek",
+  "landmarkId": "n4913392670",
+  "name": "Pllek",
+  "center": [
+    52.399077,
+    4.893322
+  ],
+  "sourceUrl": "https://pllek.nl/",
+  "description": "Pllek combines a restaurant, live music and cultural events on the NDSM waterfront. Reused shipping containers frame two curved red-roofed halls with large windows facing the IJ. Outside, its sandy city beach continues the former shipyard’s tradition of inventive reuse. The restaurant emphasizes plant-based food and seasonal ingredients.",
+  "sourceLinks": [
+    {
+      "title": "Pllek: restaurant and cultural program",
+      "url": "https://pllek.nl/"
+    },
+    {
+      "title": "NDSM: waterfront cultural district",
+      "url": "https://www.ndsm.nl/"
+    }
+  ],
+  "genuineOsmIdentity": "n4913392670",
+  "destinationPinNotes": "Public east-side entrance approach; root verify chosenroutefinish,manualpin and physicalclickcard."
+}
