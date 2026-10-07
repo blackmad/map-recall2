@@ -14,7 +14,7 @@
     "Exact modeled identities excluded; repeated tile identities, near-identical footprints and raised parts grouped.",
     "Ground-level courtyard buildings remain separate. Uncertain complex identities require manual research."
   ],
-  "candidateCount": 1830,
+  "candidateCount": 1829,
   "candidates": [
     {
       "id": "NL.IMBAG.Pand.0363100012207510",
@@ -14432,34 +14432,6 @@
         "workflow": "recognition-review",
         "state": "suggested",
         "reasons": [
-          "Complex footprint"
-        ]
-      },
-      "priority": "low",
-      "status": "needs-identification-and-research",
-      "sourceUrl": "https://3dbag.nl/en/viewer"
-    },
-    {
-      "id": "NL.IMBAG.Pand.0363100012167578",
-      "name": null,
-      "footprintSquareMetres": 2544,
-      "heightMetres": 30.3,
-      "center": [
-        4.8902405,
-        52.3736575
-      ],
-      "aliases": [],
-      "raisedParts": false,
-      "roofShape": "",
-      "poiNames": [
-        "Magna Plaza"
-      ],
-      "fidelity": {
-        "treatment": "unreviewed",
-        "workflow": "recognition-review",
-        "state": "suggested",
-        "reasons": [
-          "Mapped POI: Magna Plaza",
           "Complex footprint"
         ]
       },

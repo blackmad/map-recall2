@@ -1,0 +1,144 @@
+{
+  "atUTC": "2026-10-07T22:37:30.323850+00:00",
+  "sourceCommit": "052ce837e0721eaa173873a5517a47ba8b86b982",
+  "sourcePack": "experiments/canal-belt-continuation-20261007/rokin-runtime-12",
+  "verdict": "Root+independent full architectural source/actualGPUgallery and desktop/touch actualgame PASS; hosted verification pending",
+  "reproduction": {
+    "exactHashes": 26,
+    "total": 26,
+    "previous24Unchanged": true
+  },
+  "manualGallery": {
+    "desktopLoaded": 26,
+    "touchLoaded": 26,
+    "feedbackCapturedPreview": true,
+    "submittedFeedback": false
+  },
+  "models": [
+    {
+      "id": "0363100012254471",
+      "device": "desktop",
+      "assetHash": "8209740b1de72c0de97fa9a897c930a4cb399687ec3d3d708778dc9176843f21",
+      "bytes": 176608,
+      "triangles": 1533,
+      "materials": 3,
+      "medianMs": 16.69999999999891,
+      "p95Ms": 16.700000000000728,
+      "maxNonstartupLongTaskMs": 0,
+      "startupMaxLongTaskMs": 147,
+      "exactIdSuppression": true,
+      "retainedNeighbors": [
+        "0363100012179125",
+        "0363100012179137",
+        "0363100012168530"
+      ],
+      "groundGap": "Root sourcefront and Nes gameplay views show separate native parents and open slit; source/native geometric ownership separately checked",
+      "stationaryPanAndZoomOut": true,
+      "fallback": true,
+      "restored": true,
+      "forcedLoadFailureFallback": true,
+      "errors": [],
+      "limits": [
+        "Nes exact aperture counts inferred from partial source coverage; east roof glazing internal subdivisions unresolved; fine inner plant/deck details approximate."
+      ],
+      "mergedRuntimeFinished": "2026-10-07T22:38:07.977Z"
+    },
+    {
+      "id": "0363100012254471",
+      "device": "touch",
+      "assetHash": "8209740b1de72c0de97fa9a897c930a4cb399687ec3d3d708778dc9176843f21",
+      "bytes": 176608,
+      "triangles": 1533,
+      "materials": 3,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.700000000000728,
+      "maxNonstartupLongTaskMs": 0,
+      "startupMaxLongTaskMs": 137,
+      "exactIdSuppression": true,
+      "retainedNeighbors": [
+        "0363100012179125",
+        "0363100012179137",
+        "0363100012168530"
+      ],
+      "groundGap": "Root sourcefront and Nes gameplay views show separate native parents and open slit; source/native geometric ownership separately checked",
+      "stationaryPanAndZoomOut": true,
+      "fallback": true,
+      "restored": true,
+      "forcedLoadFailureFallback": "covered desktop",
+      "errors": [],
+      "limits": [
+        "Nes exact aperture counts inferred from partial source coverage; east roof glazing internal subdivisions unresolved; fine inner plant/deck details approximate."
+      ],
+      "mergedRuntimeFinished": "2026-10-07T22:39:54.246Z"
+    },
+    {
+      "id": "0363100012243483",
+      "device": "desktop",
+      "assetHash": "b11545cb0e5074da1ecdc3264af3cc6ed7e0a8461c3f1b643a34e1638a3fd260",
+      "bytes": 384972,
+      "triangles": 3338,
+      "materials": 3,
+      "medianMs": 16.69999999999891,
+      "p95Ms": 16.700000000000728,
+      "maxNonstartupLongTaskMs": 55,
+      "startupMaxLongTaskMs": 147,
+      "exactIdSuppression": true,
+      "retainedNeighbors": [
+        "0363100012179125",
+        "0363100012179137",
+        "0363100012168530"
+      ],
+      "groundGap": "Root sourcefront and Nes gameplay views show separate native parents and open slit; source/native geometric ownership separately checked",
+      "stationaryPanAndZoomOut": true,
+      "fallback": true,
+      "restored": true,
+      "forcedLoadFailureFallback": true,
+      "errors": [],
+      "limits": [
+        "Diamond pattern has 400 interior centers plus edge partial panels vs sourced 423 cassettes; native dimensions and circular profile are approximate; house-style glass is opaque colored."
+      ],
+      "mergedRuntimeFinished": "2026-10-07T22:38:07.977Z"
+    },
+    {
+      "id": "0363100012243483",
+      "device": "touch",
+      "assetHash": "b11545cb0e5074da1ecdc3264af3cc6ed7e0a8461c3f1b643a34e1638a3fd260",
+      "bytes": 384972,
+      "triangles": 3338,
+      "materials": 3,
+      "medianMs": 16.69999999999891,
+      "p95Ms": 16.700000000000728,
+      "maxNonstartupLongTaskMs": 0,
+      "startupMaxLongTaskMs": 137,
+      "exactIdSuppression": true,
+      "retainedNeighbors": [
+        "0363100012179125",
+        "0363100012179137",
+        "0363100012168530"
+      ],
+      "groundGap": "Root sourcefront and Nes gameplay views show separate native parents and open slit; source/native geometric ownership separately checked",
+      "stationaryPanAndZoomOut": true,
+      "fallback": true,
+      "restored": true,
+      "forcedLoadFailureFallback": "covered desktop",
+      "errors": [],
+      "limits": [
+        "Diamond pattern has 400 interior centers plus edge partial panels vs sourced 423 cassettes; native dimensions and circular profile are approximate; house-style glass is opaque colored."
+      ],
+      "mergedRuntimeFinished": "2026-10-07T22:39:54.246Z"
+    }
+  ],
+  "ordinaryClickInfo": {
+    "north": "Physical click selects existing inside-footprint Nacarat mapped restaurant card n6295780085, sourced OSM link; no curated route destination created",
+    "south": "Physical click has no useful inside-footprint place/card; does not borrow neighboring POI"
+  },
+  "preservedFailures": [
+    "north opaque roof4507496e missing sloped glazing",
+    "south opaque planar roof f1d4d537 lost curved diamond roof",
+    "south antialiased roof atlas607604bytes violated strict500k"
+  ],
+  "sharedComponents": "scripts/ordinary-buildings/README.md",
+  "performanceLimits": "Headless desktop/touch emulation, warm16.7ms frames; startup longtasks remain open. No physical-mobile or stall-free claim.",
+  "mergedBase": "d1655800",
+  "mergedDesktopTouch": "Current peer merged runtime checks both pass; exact newhashes/neighbors/fallback retained"
+}
