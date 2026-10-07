@@ -24568,6 +24568,2182 @@
         ],
         "sidePolicy": "Only interior roof-return/step triangles identified by zero-UV native closure and measured boundary top are neutral roof tones. Exterior facade and real gable shells retain brick. Hidden materials/functions unknown; conservative source palette approximation."
       }
+    },
+    {
+      "digits": "0363100012165204",
+      "id": "NL.IMBAG.Pand.0363100012165204",
+      "label": "Haarlemmerdijk 1\u20137 / Korte Prinsengracht 22\u201334 ordinary modern block",
+      "anchor": [
+        4.888721,
+        52.381581000000004
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.888741,
+              52.381732
+            ],
+            [
+              4.88874,
+              52.381732
+            ],
+            [
+              4.888736,
+              52.381734
+            ],
+            [
+              4.888436,
+              52.381535
+            ],
+            [
+              4.888437,
+              52.381534
+            ],
+            [
+              4.888364,
+              52.381486
+            ],
+            [
+              4.888748,
+              52.381275
+            ],
+            [
+              4.888981,
+              52.381529
+            ],
+            [
+              4.888983,
+              52.381528
+            ],
+            [
+              4.889024,
+              52.381574
+            ],
+            [
+              4.888741,
+              52.381732
+            ]
+          ]
+        ]
+      },
+      "sourceHeight": 16.01,
+      "mainHeight": 19.47,
+      "wallBaseHeight": 3.43,
+      "exposedRoofSteps": true,
+      "officialRegions": [
+        {
+          "sourceRegionIndex": 74,
+          "sourceArea": 27.294666290283203,
+          "ring": [
+            [
+              -15.667776245297665,
+              5.997500627040862,
+              5.002749102955875
+            ],
+            [
+              -8.461729061000677,
+              5.9845006270408625,
+              -3.2181289888447395
+            ],
+            [
+              -10.215094994484136,
+              3.674500627040863,
+              -4.798846618770369
+            ],
+            [
+              -17.61993884406795,
+              3.4285006270408624,
+              3.2483163516747027
+            ]
+          ],
+          "min": 3.4285006270408624,
+          "max": 5.997500627040862
+        },
+        {
+          "sourceRegionIndex": 76,
+          "sourceArea": 54.03692626953125,
+          "ring": [
+            [
+              -6.447604686870183,
+              12.968500627040862,
+              23.706716743799348
+            ],
+            [
+              -22.859347078458164,
+              12.893500627040863,
+              9.078424094268769
+            ],
+            [
+              -24.468107260574577,
+              12.797500627040863,
+              10.825411267391871
+            ],
+            [
+              -7.619759935919213,
+              12.870500627040864,
+              25.95994675122654
+            ]
+          ],
+          "min": 12.797500627040863,
+          "max": 12.968500627040862
+        },
+        {
+          "sourceRegionIndex": 79,
+          "sourceArea": 105.13738632202148,
+          "ring": [
+            [
+              -6.274230872563659,
+              15.934500627040862,
+              23.37535253465461
+            ],
+            [
+              -6.447604686870183,
+              15.935500627040863,
+              23.706716743799348
+            ],
+            [
+              -7.619759935919213,
+              15.941500627040863,
+              25.95994675122654
+            ],
+            [
+              1.6408603644888704,
+              16.01850062704086,
+              34.27835416604324
+            ],
+            [
+              7.892647239047587,
+              15.989500627040862,
+              23.124580872793956
+            ],
+            [
+              6.484381528314062,
+              15.980500627040861,
+              22.23883364154858
+            ],
+            [
+              2.241522112205822,
+              15.950500627040864,
+              19.56771179192998
+            ],
+            [
+              1.462234557453275,
+              15.953500627040864,
+              20.898761612330645
+            ],
+            [
+              0.8328720170145589,
+              15.956500627040864,
+              21.971646552171364
+            ],
+            [
+              1.5661713151324763,
+              15.961500627040863,
+              22.519872013805013
+            ],
+            [
+              -0.7880804108044279,
+              15.963500627040862,
+              24.851287680224914
+            ],
+            [
+              -3.301830414983671,
+              15.947500627040863,
+              23.57296295920264
+            ],
+            [
+              -3.3557497688547544,
+              15.948500627040861,
+              23.714406777098702
+            ]
+          ],
+          "min": 15.934500627040862,
+          "max": 16.01850062704086
+        },
+        {
+          "sourceRegionIndex": 81,
+          "sourceArea": 275.07400131225586,
+          "ring": [
+            [
+              4.92521078261661,
+              5.946500627040862,
+              2.9937639819002015
+            ],
+            [
+              -7.150133388609397,
+              5.9845006270408625,
+              -8.130676474091274
+            ],
+            [
+              -10.215094994484136,
+              5.990500627040863,
+              -4.798846618770369
+            ],
+            [
+              -8.461729061000677,
+              5.9845006270408625,
+              -3.2181289888447395
+            ],
+            [
+              -15.667776245297665,
+              5.997500627040862,
+              5.002749102955875
+            ],
+            [
+              -1.542785834991977,
+              5.953500627040863,
+              17.69283891796306
+            ],
+            [
+              5.9014427370629985,
+              5.943500627040863,
+              3.893495162503484
+            ],
+            [
+              4.975431196080425,
+              5.946500627040862,
+              3.0404416919279242
+            ],
+            [
+              5.102602645703548,
+              5.946500627040862,
+              2.8114485109597354
+            ]
+          ],
+          "min": 5.943500627040863,
+          "max": 5.997500627040862
+        },
+        {
+          "sourceRegionIndex": 82,
+          "sourceArea": 18.795127868652344,
+          "ring": [
+            [
+              11.1592089677039,
+              16.199500627040862,
+              6.117399000602006
+            ],
+            [
+              9.96345884047501,
+              16.071500627040862,
+              9.588408282258172
+            ],
+            [
+              14.178958453083569,
+              15.942500627040864,
+              11.9075457694953
+            ],
+            [
+              15.842232121003148,
+              16.046500627040864,
+              8.9395730986422
+            ],
+            [
+              14.483323331623925,
+              16.090500627040864,
+              8.12051756607076
+            ],
+            [
+              14.924259255916704,
+              16.122500627040864,
+              7.22102100798395
+            ],
+            [
+              13.166506636461545,
+              16.133500627040863,
+              7.327185515175643
+            ]
+          ],
+          "min": 15.942500627040864,
+          "max": 16.199500627040862
+        },
+        {
+          "sourceRegionIndex": 83,
+          "sourceArea": 18.519779205322266,
+          "ring": [
+            [
+              6.8956623799195285,
+              15.995500627040862,
+              17.889781460422682
+            ],
+            [
+              7.188496396741316,
+              16.005500627040863,
+              18.241943103502933
+            ],
+            [
+              7.397205899330646,
+              16.010500627040862,
+              18.260514339744134
+            ],
+            [
+              10.461990201411442,
+              16.094500627040862,
+              18.54053851048633
+            ],
+            [
+              12.066102710118573,
+              16.121500627040863,
+              15.678025937456823
+            ],
+            [
+              8.186169092504166,
+              16.005500627040863,
+              13.538669573386244
+            ],
+            [
+              6.699836176823128,
+              15.972500627040862,
+              14.657482521008944
+            ]
+          ],
+          "min": 15.972500627040862,
+          "max": 16.121500627040863
+        },
+        {
+          "sourceRegionIndex": 84,
+          "sourceArea": 180.82938385009766,
+          "ring": [
+            [
+              -6.447604686870183,
+              15.882500627040862,
+              23.706716743799348
+            ],
+            [
+              -6.274230872563659,
+              15.883500627040863,
+              23.37535253465461
+            ],
+            [
+              -3.3557497688547544,
+              15.902500627040862,
+              23.714406777098702
+            ],
+            [
+              -3.301830414983671,
+              15.902500627040862,
+              23.57296295920264
+            ],
+            [
+              -1.6706683276557055,
+              15.919500627040861,
+              19.272526027745016
+            ],
+            [
+              -1.3010918422174582,
+              15.922500627040861,
+              19.464076276812534
+            ],
+            [
+              -0.8087236372592937,
+              15.926500627040863,
+              18.352115403122014
+            ],
+            [
+              -1.542785834991977,
+              15.923500627040863,
+              17.69283891796306
+            ],
+            [
+              -15.667776245297665,
+              15.849500627040864,
+              5.002749102955875
+            ],
+            [
+              -17.61993884406795,
+              15.839500627040863,
+              3.2483163516747027
+            ],
+            [
+              -19.552623459844938,
+              15.823500627040861,
+              5.348715955902605
+            ],
+            [
+              -19.485320822653765,
+              15.824500627040862,
+              5.412284217805734
+            ],
+            [
+              -22.859347078458164,
+              15.796500627040864,
+              9.078424094268769
+            ]
+          ],
+          "min": 15.796500627040864,
+          "max": 15.926500627040863
+        },
+        {
+          "sourceRegionIndex": 85,
+          "sourceArea": 188.52746963500977,
+          "ring": [
+            [
+              7.188496396741316,
+              19.174500627040864,
+              18.241943103502933
+            ],
+            [
+              6.8956623799195285,
+              19.133500627040863,
+              17.889781460422682
+            ],
+            [
+              6.699836176823128,
+              18.968500627040864,
+              14.657482521008944
+            ],
+            [
+              8.186169092504166,
+              19.04150062704086,
+              13.538669573386244
+            ],
+            [
+              12.066102710118573,
+              19.464500627040863,
+              15.678025937456823
+            ],
+            [
+              14.178958453083569,
+              19.468500627040864,
+              11.9075457694953
+            ],
+            [
+              9.96345884047501,
+              19.007500627040862,
+              9.588408282258172
+            ],
+            [
+              11.1592089677039,
+              18.94850062704086,
+              6.117399000602006
+            ],
+            [
+              13.166506636461545,
+              19.17250062704086,
+              7.327185515175643
+            ],
+            [
+              14.924259255916704,
+              19.314500627040864,
+              7.22102100798395
+            ],
+            [
+              16.71158499656294,
+              19.295500627040862,
+              3.568845100029705
+            ],
+            [
+              13.254157893282702,
+              18.923500627040863,
+              1.7727491041512167
+            ],
+            [
+              13.133970786697867,
+              18.910500627040864,
+              1.7105454596537584
+            ],
+            [
+              12.028232796271583,
+              18.79150062704086,
+              1.135870920678883
+            ],
+            [
+              11.765930750117622,
+              18.716500627040862,
+              -0.0029025044699437785
+            ],
+            [
+              8.950730485532619,
+              18.42850062704086,
+              -1.1420854836347871
+            ],
+            [
+              5.102602645703548,
+              18.287500627040863,
+              2.8114485109597354
+            ],
+            [
+              4.975431196080425,
+              18.287500627040863,
+              3.0404416919279242
+            ],
+            [
+              5.9014427370629985,
+              18.404500627040864,
+              3.893495162503484
+            ],
+            [
+              -1.542785834991977,
+              18.417500627040862,
+              17.69283891796306
+            ],
+            [
+              -0.8087236372592937,
+              18.508500627040863,
+              18.352115403122014
+            ],
+            [
+              -1.3010918422174582,
+              18.519500627040863,
+              19.464076276812534
+            ],
+            [
+              1.462234557453275,
+              18.816500627040863,
+              20.898761612330645
+            ],
+            [
+              2.241522112205822,
+              18.820500627040865,
+              19.56771179192998
+            ],
+            [
+              6.484381528314062,
+              19.299500627040864,
+              22.23883364154858
+            ],
+            [
+              7.5289156970112625,
+              19.317500627040864,
+              20.72986605987637
+            ],
+            [
+              7.397205899330646,
+              19.192500627040864,
+              18.260514339744134
+            ]
+          ],
+          "min": 18.287500627040863,
+          "max": 19.468500627040864
+        },
+        {
+          "sourceRegionIndex": 86,
+          "sourceArea": 245.78033065795898,
+          "ring": [
+            [
+              -7.150133388609397,
+              15.924500627040864,
+              -8.130676474091274
+            ],
+            [
+              4.92521078261661,
+              15.986500627040861,
+              2.9937639819002015
+            ],
+            [
+              5.102602645703548,
+              15.988500627040864,
+              2.8114485109597354
+            ],
+            [
+              8.950730485532619,
+              16.019500627040863,
+              -1.1420854836347871
+            ],
+            [
+              11.765930750117622,
+              16.035500627040864,
+              -0.0029025044699437785
+            ],
+            [
+              11.658979671691434,
+              16.035500627040864,
+              -0.463400423783753
+            ],
+            [
+              11.468668675610058,
+              16.035500627040864,
+              -1.2915114360032476
+            ],
+            [
+              12.271967434194305,
+              16.040500627040863,
+              -0.8688307195319567
+            ],
+            [
+              13.804461829579232,
+              16.049500627040864,
+              -0.05997696114377504
+            ],
+            [
+              13.254157893282702,
+              16.043500627040864,
+              1.7727491041512167
+            ],
+            [
+              16.71158499656294,
+              16.062500627040862,
+              3.568845100029705
+            ],
+            [
+              18.497390363274626,
+              16.07350062704086,
+              4.497016080479739
+            ],
+            [
+              20.404972206111452,
+              16.090500627040864,
+              1.0621239399659999
+            ],
+            [
+              1.1631021730491504,
+              15.991500627040864,
+              -16.589294125675167
+            ],
+            [
+              1.1284344137460662,
+              15.990500627040863,
+              -16.551035675192338
+            ],
+            [
+              0.8451630292179441,
+              15.989500627040862,
+              -16.818219519194315
+            ]
+          ],
+          "min": 15.924500627040864,
+          "max": 16.090500627040864
+        }
+      ],
+      "roof": "#6e7470",
+      "wall": "#c3b999",
+      "levels": 4,
+      "palette": {
+        "frames": "#426b64",
+        "glass": "#6b8b91",
+        "balcony": "#e0e3d6"
+      },
+      "facade": {
+        "kind": "blank",
+        "frameColor": "#426b64",
+        "glassColor": "#6b8b91",
+        "edges": {
+          "2": {
+            "kind": "sparse",
+            "sparseWindows": [
+              {
+                "xMetres": 2,
+                "sillMetres": 6,
+                "widthMetres": 1.2,
+                "heightMetres": 1.8
+              },
+              {
+                "xMetres": 2,
+                "sillMetres": 9,
+                "widthMetres": 1.2,
+                "heightMetres": 1.8
+              }
+            ]
+          },
+          "5": {
+            "kind": "blank"
+          },
+          "6": {
+            "kind": "commercial-upper",
+            "windowTiers": [
+              {
+                "sillMetres": 6,
+                "heightMetres": 2.22,
+                "widthMetres": 1.7,
+                "startMetres": 0.6,
+                "pitchMetres": 2.43,
+                "count": 13,
+                "requiredClusterCount": 13,
+                "endMarginMetres": 0.15,
+                "panes": 2,
+                "frameWidthMetres": 0.09,
+                "transomHeightsMetres": [
+                  0.42
+                ]
+              },
+              {
+                "sillMetres": 9.05,
+                "heightMetres": 2.22,
+                "widthMetres": 1.7,
+                "startMetres": 0.6,
+                "pitchMetres": 2.43,
+                "count": 13,
+                "requiredClusterCount": 13,
+                "endMarginMetres": 0.15,
+                "panes": 2,
+                "frameWidthMetres": 0.09,
+                "transomHeightsMetres": [
+                  0.42
+                ]
+              },
+              {
+                "sillMetres": 12.1,
+                "heightMetres": 2.22,
+                "widthMetres": 1.7,
+                "startMetres": 0.6,
+                "pitchMetres": 2.43,
+                "count": 13,
+                "requiredClusterCount": 13,
+                "endMarginMetres": 0.15,
+                "panes": 2,
+                "frameWidthMetres": 0.09,
+                "transomHeightsMetres": [
+                  0.42
+                ]
+              }
+            ],
+            "balconyGroups": [
+              {
+                "xMetres": 5.46,
+                "widthMetres": 1.7,
+                "bottomMetres": 6,
+                "railHeightMetres": 0.85,
+                "railColor": "#e4e8da",
+                "barPitchMetres": 0.18,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.14,
+                "slabHeightMetres": 0.08,
+                "count": 1
+              },
+              {
+                "xMetres": 15.180000000000001,
+                "widthMetres": 1.7,
+                "bottomMetres": 6,
+                "railHeightMetres": 0.85,
+                "railColor": "#e4e8da",
+                "barPitchMetres": 0.18,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.14,
+                "slabHeightMetres": 0.08,
+                "count": 1
+              },
+              {
+                "xMetres": 24.900000000000002,
+                "widthMetres": 1.7,
+                "bottomMetres": 6,
+                "railHeightMetres": 0.85,
+                "railColor": "#e4e8da",
+                "barPitchMetres": 0.18,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.14,
+                "slabHeightMetres": 0.08,
+                "count": 1
+              },
+              {
+                "xMetres": 5.46,
+                "widthMetres": 1.7,
+                "bottomMetres": 9.05,
+                "railHeightMetres": 0.85,
+                "railColor": "#e4e8da",
+                "barPitchMetres": 0.18,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.14,
+                "slabHeightMetres": 0.08,
+                "count": 1
+              },
+              {
+                "xMetres": 15.180000000000001,
+                "widthMetres": 1.7,
+                "bottomMetres": 9.05,
+                "railHeightMetres": 0.85,
+                "railColor": "#e4e8da",
+                "barPitchMetres": 0.18,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.14,
+                "slabHeightMetres": 0.08,
+                "count": 1
+              },
+              {
+                "xMetres": 24.900000000000002,
+                "widthMetres": 1.7,
+                "bottomMetres": 9.05,
+                "railHeightMetres": 0.85,
+                "railColor": "#e4e8da",
+                "barPitchMetres": 0.18,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.14,
+                "slabHeightMetres": 0.08,
+                "count": 1
+              },
+              {
+                "xMetres": 5.46,
+                "widthMetres": 1.7,
+                "bottomMetres": 12.1,
+                "railHeightMetres": 0.85,
+                "railColor": "#e4e8da",
+                "barPitchMetres": 0.18,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.14,
+                "slabHeightMetres": 0.08,
+                "count": 1
+              },
+              {
+                "xMetres": 15.180000000000001,
+                "widthMetres": 1.7,
+                "bottomMetres": 12.1,
+                "railHeightMetres": 0.85,
+                "railColor": "#e4e8da",
+                "barPitchMetres": 0.18,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.14,
+                "slabHeightMetres": 0.08,
+                "count": 1
+              },
+              {
+                "xMetres": 24.900000000000002,
+                "widthMetres": 1.7,
+                "bottomMetres": 12.1,
+                "railHeightMetres": 0.85,
+                "railColor": "#e4e8da",
+                "barPitchMetres": 0.18,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.14,
+                "slabHeightMetres": 0.08,
+                "count": 1
+              }
+            ],
+            "bands": [
+              {
+                "bottomMetres": 0,
+                "heightMetres": 4.5,
+                "color": "#e0e2d7"
+              },
+              {
+                "bottomMetres": 4.55,
+                "heightMetres": 0.7,
+                "color": "#e0e2d7"
+              },
+              {
+                "bottomMetres": 15.05,
+                "heightMetres": 0.18,
+                "color": "#dddccd"
+              }
+            ],
+            "physicalBands": [
+              {
+                "bottomMetres": 4.5,
+                "heightMetres": 0.18,
+                "depthMetres": 0.18
+              }
+            ],
+            "groundEntries": [
+              {
+                "kind": "glazed",
+                "xMetres": 0.35,
+                "widthMetres": 2.15,
+                "heightMetres": 2.25,
+                "bottomMetres": 2.15,
+                "frameColor": "#e0e2d7",
+                "panes": 1
+              },
+              {
+                "kind": "glazed",
+                "xMetres": 2.97,
+                "widthMetres": 2.15,
+                "heightMetres": 2.25,
+                "bottomMetres": 2.15,
+                "frameColor": "#e0e2d7",
+                "panes": 1
+              },
+              {
+                "kind": "glazed",
+                "xMetres": 5.59,
+                "widthMetres": 2.15,
+                "heightMetres": 2.25,
+                "bottomMetres": 2.15,
+                "frameColor": "#e0e2d7",
+                "panes": 1
+              },
+              {
+                "kind": "glazed",
+                "xMetres": 8.21,
+                "widthMetres": 2.15,
+                "heightMetres": 2.25,
+                "bottomMetres": 2.15,
+                "frameColor": "#e0e2d7",
+                "panes": 1
+              },
+              {
+                "kind": "glazed",
+                "xMetres": 10.83,
+                "widthMetres": 2.15,
+                "heightMetres": 2.25,
+                "bottomMetres": 2.15,
+                "frameColor": "#e0e2d7",
+                "panes": 1
+              },
+              {
+                "kind": "glazed",
+                "xMetres": 13.450000000000001,
+                "widthMetres": 2.15,
+                "heightMetres": 2.25,
+                "bottomMetres": 2.15,
+                "frameColor": "#e0e2d7",
+                "panes": 1
+              },
+              {
+                "kind": "glazed",
+                "xMetres": 16.07,
+                "widthMetres": 2.15,
+                "heightMetres": 2.25,
+                "bottomMetres": 2.15,
+                "frameColor": "#e0e2d7",
+                "panes": 1
+              },
+              {
+                "kind": "glazed",
+                "xMetres": 18.69,
+                "widthMetres": 2.15,
+                "heightMetres": 2.25,
+                "bottomMetres": 2.15,
+                "frameColor": "#e0e2d7",
+                "panes": 1
+              },
+              {
+                "kind": "glazed",
+                "xMetres": 21.310000000000002,
+                "widthMetres": 2.15,
+                "heightMetres": 2.25,
+                "bottomMetres": 2.15,
+                "frameColor": "#e0e2d7",
+                "panes": 1
+              },
+              {
+                "kind": "glazed",
+                "xMetres": 23.930000000000003,
+                "widthMetres": 2.15,
+                "heightMetres": 2.25,
+                "bottomMetres": 2.15,
+                "frameColor": "#e0e2d7",
+                "panes": 1
+              },
+              {
+                "kind": "glazed",
+                "xMetres": 26.550000000000004,
+                "widthMetres": 2.15,
+                "heightMetres": 2.25,
+                "bottomMetres": 2.15,
+                "frameColor": "#e0e2d7",
+                "panes": 1
+              },
+              {
+                "kind": "glazed",
+                "xMetres": 29.17,
+                "widthMetres": 2.15,
+                "heightMetres": 2.25,
+                "bottomMetres": 2.15,
+                "frameColor": "#e0e2d7",
+                "panes": 1
+              }
+            ],
+            "canopy": {
+              "bottomMetres": 4.47,
+              "heightMetres": 0.12,
+              "depthMetres": 0.5
+            },
+            "topBandHeightMetres": 0.13,
+            "topBandColor": "#dedfcf",
+            "fixedFacadeTopMetres": 16.0
+          },
+          "8": {
+            "kind": "commercial-upper",
+            "windowTiers": [
+              {
+                "sillMetres": 6,
+                "heightMetres": 2.22,
+                "widthMetres": 1.7,
+                "startMetres": 0.6,
+                "pitchMetres": 2.35,
+                "count": 2,
+                "requiredClusterCount": 2,
+                "endMarginMetres": 0.15,
+                "panes": 2,
+                "frameWidthMetres": 0.09,
+                "transomHeightsMetres": [
+                  0.42
+                ]
+              },
+              {
+                "sillMetres": 9.05,
+                "heightMetres": 2.22,
+                "widthMetres": 1.7,
+                "startMetres": 0.6,
+                "pitchMetres": 2.35,
+                "count": 2,
+                "requiredClusterCount": 2,
+                "endMarginMetres": 0.15,
+                "panes": 2,
+                "frameWidthMetres": 0.09,
+                "transomHeightsMetres": [
+                  0.42
+                ]
+              },
+              {
+                "sillMetres": 12.1,
+                "heightMetres": 2.22,
+                "widthMetres": 1.7,
+                "startMetres": 0.6,
+                "pitchMetres": 2.35,
+                "count": 2,
+                "requiredClusterCount": 2,
+                "endMarginMetres": 0.15,
+                "panes": 2,
+                "frameWidthMetres": 0.09,
+                "transomHeightsMetres": [
+                  0.42
+                ]
+              }
+            ],
+            "balconyGroups": [],
+            "bands": [
+              {
+                "bottomMetres": 4.55,
+                "heightMetres": 0.7,
+                "color": "#e0e2d7"
+              },
+              {
+                "bottomMetres": 15.05,
+                "heightMetres": 0.18,
+                "color": "#dddccd"
+              }
+            ],
+            "physicalBands": [
+              {
+                "bottomMetres": 4.5,
+                "heightMetres": 0.18,
+                "depthMetres": 0.18
+              }
+            ],
+            "groundEntries": [
+              {
+                "kind": "glazed",
+                "xMetres": 0.35,
+                "widthMetres": 2.15,
+                "heightMetres": 2.25,
+                "bottomMetres": 2.15,
+                "frameColor": "#e0e2d7",
+                "panes": 1
+              },
+              {
+                "kind": "glazed",
+                "xMetres": 2.97,
+                "widthMetres": 2.15,
+                "heightMetres": 2.25,
+                "bottomMetres": 2.15,
+                "frameColor": "#e0e2d7",
+                "panes": 1
+              },
+              {
+                "kind": "glazed",
+                "xMetres": 5.59,
+                "widthMetres": 2.15,
+                "heightMetres": 2.25,
+                "bottomMetres": 2.15,
+                "frameColor": "#e0e2d7",
+                "panes": 1
+              },
+              {
+                "kind": "glazed",
+                "xMetres": 8.21,
+                "widthMetres": 2.15,
+                "heightMetres": 2.25,
+                "bottomMetres": 2.15,
+                "frameColor": "#e0e2d7",
+                "panes": 1
+              },
+              {
+                "kind": "glazed",
+                "xMetres": 10.83,
+                "widthMetres": 2.15,
+                "heightMetres": 2.25,
+                "bottomMetres": 2.15,
+                "frameColor": "#e0e2d7",
+                "panes": 1
+              },
+              {
+                "kind": "glazed",
+                "xMetres": 13.450000000000001,
+                "widthMetres": 2.15,
+                "heightMetres": 2.25,
+                "bottomMetres": 2.15,
+                "frameColor": "#e0e2d7",
+                "panes": 1
+              },
+              {
+                "kind": "glazed",
+                "xMetres": 16.07,
+                "widthMetres": 2.15,
+                "heightMetres": 2.25,
+                "bottomMetres": 2.15,
+                "frameColor": "#e0e2d7",
+                "panes": 1
+              },
+              {
+                "kind": "glazed",
+                "xMetres": 18.69,
+                "widthMetres": 2.15,
+                "heightMetres": 2.25,
+                "bottomMetres": 2.15,
+                "frameColor": "#e0e2d7",
+                "panes": 1
+              },
+              {
+                "kind": "glazed",
+                "xMetres": 21.310000000000002,
+                "widthMetres": 2.15,
+                "heightMetres": 2.25,
+                "bottomMetres": 2.15,
+                "frameColor": "#e0e2d7",
+                "panes": 1
+              },
+              {
+                "kind": "glazed",
+                "xMetres": 23.930000000000003,
+                "widthMetres": 2.15,
+                "heightMetres": 2.25,
+                "bottomMetres": 2.15,
+                "frameColor": "#e0e2d7",
+                "panes": 1
+              },
+              {
+                "kind": "glazed",
+                "xMetres": 26.550000000000004,
+                "widthMetres": 2.15,
+                "heightMetres": 2.25,
+                "bottomMetres": 2.15,
+                "frameColor": "#e0e2d7",
+                "panes": 1
+              },
+              {
+                "kind": "glazed",
+                "xMetres": 29.17,
+                "widthMetres": 2.15,
+                "heightMetres": 2.25,
+                "bottomMetres": 2.15,
+                "frameColor": "#e0e2d7",
+                "panes": 1
+              }
+            ],
+            "canopy": {
+              "bottomMetres": 4.47,
+              "heightMetres": 0.12,
+              "depthMetres": 0.5
+            },
+            "topBandHeightMetres": 0.13,
+            "topBandColor": "#dedfcf",
+            "fixedFacadeTopMetres": 16.0
+          },
+          "9": {
+            "kind": "commercial-upper",
+            "windowTiers": [
+              {
+                "sillMetres": 6,
+                "heightMetres": 2.22,
+                "widthMetres": 1.7,
+                "startMetres": 0.6,
+                "pitchMetres": 2.24,
+                "count": 11,
+                "requiredClusterCount": 11,
+                "endMarginMetres": 0.15,
+                "panes": 2,
+                "frameWidthMetres": 0.09,
+                "transomHeightsMetres": [
+                  0.42
+                ]
+              },
+              {
+                "sillMetres": 9.05,
+                "heightMetres": 2.22,
+                "widthMetres": 1.7,
+                "startMetres": 0.6,
+                "pitchMetres": 2.24,
+                "count": 11,
+                "requiredClusterCount": 11,
+                "endMarginMetres": 0.15,
+                "panes": 2,
+                "frameWidthMetres": 0.09,
+                "transomHeightsMetres": [
+                  0.42
+                ]
+              },
+              {
+                "sillMetres": 12.1,
+                "heightMetres": 2.22,
+                "widthMetres": 1.7,
+                "startMetres": 0.6,
+                "pitchMetres": 2.24,
+                "count": 11,
+                "requiredClusterCount": 11,
+                "endMarginMetres": 0.15,
+                "panes": 2,
+                "frameWidthMetres": 0.09,
+                "transomHeightsMetres": [
+                  0.42
+                ]
+              }
+            ],
+            "balconyGroups": [
+              {
+                "xMetres": 0.6,
+                "widthMetres": 1.7,
+                "bottomMetres": 6,
+                "railHeightMetres": 0.85,
+                "railColor": "#e4e8da",
+                "barPitchMetres": 0.18,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.14,
+                "slabHeightMetres": 0.08,
+                "count": 1
+              },
+              {
+                "xMetres": 9.56,
+                "widthMetres": 1.7,
+                "bottomMetres": 6,
+                "railHeightMetres": 0.85,
+                "railColor": "#e4e8da",
+                "barPitchMetres": 0.18,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.14,
+                "slabHeightMetres": 0.08,
+                "count": 1
+              },
+              {
+                "xMetres": 18.520000000000003,
+                "widthMetres": 1.7,
+                "bottomMetres": 6,
+                "railHeightMetres": 0.85,
+                "railColor": "#e4e8da",
+                "barPitchMetres": 0.18,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.14,
+                "slabHeightMetres": 0.08,
+                "count": 1
+              },
+              {
+                "xMetres": 0.6,
+                "widthMetres": 1.7,
+                "bottomMetres": 9.05,
+                "railHeightMetres": 0.85,
+                "railColor": "#e4e8da",
+                "barPitchMetres": 0.18,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.14,
+                "slabHeightMetres": 0.08,
+                "count": 1
+              },
+              {
+                "xMetres": 9.56,
+                "widthMetres": 1.7,
+                "bottomMetres": 9.05,
+                "railHeightMetres": 0.85,
+                "railColor": "#e4e8da",
+                "barPitchMetres": 0.18,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.14,
+                "slabHeightMetres": 0.08,
+                "count": 1
+              },
+              {
+                "xMetres": 18.520000000000003,
+                "widthMetres": 1.7,
+                "bottomMetres": 9.05,
+                "railHeightMetres": 0.85,
+                "railColor": "#e4e8da",
+                "barPitchMetres": 0.18,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.14,
+                "slabHeightMetres": 0.08,
+                "count": 1
+              },
+              {
+                "xMetres": 0.6,
+                "widthMetres": 1.7,
+                "bottomMetres": 12.1,
+                "railHeightMetres": 0.85,
+                "railColor": "#e4e8da",
+                "barPitchMetres": 0.18,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.14,
+                "slabHeightMetres": 0.08,
+                "count": 1
+              },
+              {
+                "xMetres": 9.56,
+                "widthMetres": 1.7,
+                "bottomMetres": 12.1,
+                "railHeightMetres": 0.85,
+                "railColor": "#e4e8da",
+                "barPitchMetres": 0.18,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.14,
+                "slabHeightMetres": 0.08,
+                "count": 1
+              },
+              {
+                "xMetres": 18.520000000000003,
+                "widthMetres": 1.7,
+                "bottomMetres": 12.1,
+                "railHeightMetres": 0.85,
+                "railColor": "#e4e8da",
+                "barPitchMetres": 0.18,
+                "barWidthMetres": 0.025,
+                "depthMetres": 0.14,
+                "slabHeightMetres": 0.08,
+                "count": 1
+              }
+            ],
+            "bands": [
+              {
+                "bottomMetres": 4.55,
+                "heightMetres": 0.7,
+                "color": "#e0e2d7"
+              },
+              {
+                "bottomMetres": 15.05,
+                "heightMetres": 0.18,
+                "color": "#dddccd"
+              }
+            ],
+            "physicalBands": [
+              {
+                "bottomMetres": 4.5,
+                "heightMetres": 0.18,
+                "depthMetres": 0.18
+              }
+            ],
+            "groundEntries": [
+              {
+                "kind": "glazed",
+                "xMetres": 0.5,
+                "widthMetres": 4.45,
+                "heightMetres": 4.15,
+                "bottomMetres": 0.12,
+                "frameColor": "#d9ddcf",
+                "panes": 3,
+                "transomHeightsMetres": [
+                  3.25
+                ]
+              },
+              {
+                "kind": "glazed",
+                "xMetres": 5.6,
+                "widthMetres": 4.45,
+                "heightMetres": 4.15,
+                "bottomMetres": 0.12,
+                "frameColor": "#d9ddcf",
+                "panes": 3,
+                "transomHeightsMetres": [
+                  3.25
+                ]
+              },
+              {
+                "kind": "glazed",
+                "xMetres": 10.7,
+                "widthMetres": 4.45,
+                "heightMetres": 4.15,
+                "bottomMetres": 0.12,
+                "frameColor": "#d9ddcf",
+                "panes": 3,
+                "transomHeightsMetres": [
+                  3.25
+                ]
+              },
+              {
+                "kind": "glazed",
+                "xMetres": 15.799999999999999,
+                "widthMetres": 4.45,
+                "heightMetres": 4.15,
+                "bottomMetres": 0.12,
+                "frameColor": "#d9ddcf",
+                "panes": 3,
+                "transomHeightsMetres": [
+                  3.25
+                ]
+              },
+              {
+                "kind": "glazed",
+                "xMetres": 20.9,
+                "widthMetres": 4.45,
+                "heightMetres": 4.15,
+                "bottomMetres": 0.12,
+                "frameColor": "#d9ddcf",
+                "panes": 3,
+                "transomHeightsMetres": [
+                  3.25
+                ]
+              }
+            ],
+            "canopy": {
+              "bottomMetres": 4.47,
+              "heightMetres": 0.12,
+              "depthMetres": 0.5
+            },
+            "topBandHeightMetres": 0.13,
+            "topBandColor": "#dedfcf",
+            "fixedFacadeTopMetres": 16.0,
+            "recessGroups": [
+              {
+                "xMetres": 0.6,
+                "widthMetres": 1.7,
+                "bottomMetres": 6,
+                "heightMetres": 2.22,
+                "depthMetres": 0.4
+              },
+              {
+                "xMetres": 0.6,
+                "widthMetres": 1.7,
+                "bottomMetres": 9.05,
+                "heightMetres": 2.22,
+                "depthMetres": 0.4
+              }
+            ]
+          }
+        }
+      },
+      "sourcePack": "experiments/canal-belt-continuation-20261007/checkpoint-03/processed/authors/0363100012165204/source",
+      "references": [
+        "wide-0363100012165204-2025-00671-einitial.jpg",
+        "wide-0363100012165204-2025-00670-einitial.jpg",
+        "wide-0363100012165204-2025-00513-e6.jpg",
+        "wide-0363100012165204-2025-00514-e6.jpg"
+      ],
+      "sourceUrls": [
+        "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-03_06-23-16_00671/",
+        "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-03_06-23-16_00670/",
+        "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-03_06-23-16_00513/",
+        "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-03_06-23-16_00514/"
+      ],
+      "cameraBearing": 42.44768236001123,
+      "traits": [
+        "Native1967 pale-brick box with green two-pane window frames and three upper tiers.",
+        "Edge9 Haarlemmerdijk facade11 opening groups per tier with white Juliet guards in repeated stacks and ground white shopfront piers.",
+        "Edge6 KortePrinsengracht has13 estimated opening groups per tier, raised shop-floor openings over basement entries, source-supported white Juliet guards.",
+        "Surveyed lower interior volume, intermediate terrace and upper roof block retained instead of 16m solid extrusion.",
+        "Canal edge6 complete lower4.5m is white, including raised shopfront and basement surround; pink basement doors remain."
+      ],
+      "heightEvidence": "3DBAG LoD2.2 2023 roof polygons transformed RD\u2192WGS84\u2192native metres; all model heights subtract b3_h_maaiveld0.83m. Street roofs~16m; source188.5m\u00b2 high roof retained18.29\u201319.47m. Tiny3.8m\u00b2 steep roof patch omitted; no overall equipment-max20.08m extrusion. Tiny9\u201316m\u00b2 roof equipment patches75/77/78 at19\u201320m omitted; source-supported street faces stop at16m, surveyed highrear188m\u00b2 roof retained.",
+      "simplifications": [
+        "Original procedural atlas, shallow physical slab/canopy relief, no photograph pixels or invented signage.",
+        "Window widths/pitch/sills are perspective estimates. Edge9 count11 visually complete; edge6 count13 estimate with trees/foreshortening; narrow edge8 estimate. Party/back facade observations incomplete: sparse/blank conservative faces.",
+        "White Juliet guards and rooftop rails provided in separate native detail stage; roof beams retain approximate source positions.",
+        "No POI destination or trivia identity added; mapped shops remain basic clicked information.",
+        "Source edge9 Juliet columns1/5/9 and inset lower two left openings retained. Roof beam locations approximate; no rooftop equipment invented."
+      ],
+      "timing": {
+        "researchStarted": "2026-10-07",
+        "authoringMode": "bounded ordinary block"
+      },
+      "facadeCountEvidence": {
+        "6": {
+          "minimum": 8,
+          "count": 13,
+          "confidence": "moderate",
+          "source": "00513/00514 oblique; tree occlusion; estimate for complete32.4m face"
+        },
+        "9": {
+          "minimum": 11,
+          "count": 11,
+          "confidence": "high",
+          "source": "00671 current facade; threeupperrows"
+        }
+      },
+      "gallerySecondary": {
+        "target": [
+          4.8888645,
+          52.381402
+        ],
+        "cameraBearing": 119.24593458304251,
+        "distanceMetres": 40,
+        "targetHeightMetres": 7,
+        "referenceImages": [
+          "./ordinary-buildings-data/references/0363100012165204/wide-0363100012165204-2025-00513-e6.jpg",
+          "./ordinary-buildings-data/references/0363100012165204/wide-0363100012165204-2025-00514-e6.jpg"
+        ]
+      },
+      "galleryFrontage": {
+        "target": [
+          4.888882499999999,
+          52.381653
+        ],
+        "cameraBearing": 42.44768236001123,
+        "distanceMetres": 35,
+        "targetHeightMetres": 8,
+        "referenceImages": [
+          "./ordinary-buildings-data/references/0363100012165204/wide-0363100012165204-2025-00671-einitial.jpg",
+          "./ordinary-buildings-data/references/0363100012165204/wide-0363100012165204-2025-00670-einitial.jpg"
+        ]
+      },
+      "detailStage": "build-canal-belt-box-details.mjs"
+    },
+    {
+      "digits": "0363100012168482",
+      "id": "NL.IMBAG.Pand.0363100012168482",
+      "label": "Singel 532\u2013540 / Reguliersdwarsstraat 59\u201363 gray stone office block",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.89219,
+              52.366503
+            ],
+            [
+              4.892296,
+              52.366493
+            ],
+            [
+              4.892334,
+              52.366618
+            ],
+            [
+              4.892342,
+              52.366618
+            ],
+            [
+              4.892354,
+              52.366668
+            ],
+            [
+              4.892311,
+              52.366669
+            ],
+            [
+              4.891788,
+              52.366684
+            ],
+            [
+              4.891785,
+              52.366676
+            ],
+            [
+              4.891724,
+              52.366524
+            ],
+            [
+              4.891663,
+              52.366373
+            ],
+            [
+              4.892111,
+              52.366305
+            ],
+            [
+              4.89219,
+              52.366503
+            ]
+          ]
+        ]
+      },
+      "anchor": [
+        4.892090666666667,
+        52.36655283333334
+      ],
+      "sourceHeight": 21.52,
+      "mainHeight": 21.55,
+      "wallBaseHeight": 17.9,
+      "exposedRoofSteps": true,
+      "levels": 0,
+      "wall": "#adb1a5",
+      "roof": "#656b67",
+      "palette": {
+        "frames": "#303b3f",
+        "glass": "#718b96",
+        "balcony": "#959b97"
+      },
+      "primary": [
+        5
+      ],
+      "secondary": [
+        9
+      ],
+      "cameraBearing": 2.69,
+      "facade": {
+        "kind": "blank",
+        "levels": 0,
+        "edges": {
+          "5": {
+            "kind": "blank",
+            "windowTiers": [
+              {
+                "sillMetres": 4.85,
+                "heightMetres": 2.15,
+                "widthMetres": 2.3,
+                "pitchMetres": 3.8,
+                "startMetres": 2.6,
+                "count": 8,
+                "panes": 1,
+                "frameWidthMetres": 0.075
+              },
+              {
+                "sillMetres": 7.7,
+                "heightMetres": 2.15,
+                "widthMetres": 2.3,
+                "pitchMetres": 3.8,
+                "startMetres": 2.6,
+                "count": 8,
+                "panes": 1,
+                "frameWidthMetres": 0.075
+              },
+              {
+                "sillMetres": 10.55,
+                "heightMetres": 2.15,
+                "widthMetres": 2.3,
+                "pitchMetres": 3.8,
+                "startMetres": 2.6,
+                "count": 8,
+                "panes": 1,
+                "frameWidthMetres": 0.075
+              },
+              {
+                "sillMetres": 13.4,
+                "heightMetres": 1.7,
+                "widthMetres": 2.3,
+                "pitchMetres": 3.8,
+                "startMetres": 2.6,
+                "count": 8,
+                "panes": 1,
+                "frameWidthMetres": 0.075
+              },
+              {
+                "sillMetres": 16.05,
+                "heightMetres": 1.15,
+                "widthMetres": 2.3,
+                "pitchMetres": 3.8,
+                "startMetres": 2.6,
+                "count": 8,
+                "panes": 1,
+                "glassColor": "#343e40"
+              }
+            ],
+            "bands": [
+              {
+                "bottomMetres": 3.5,
+                "heightMetres": 0.95,
+                "color": "#959b97"
+              },
+              {
+                "bottomMetres": 7.0,
+                "heightMetres": 0.45,
+                "color": "#a4aa9f"
+              },
+              {
+                "bottomMetres": 9.85,
+                "heightMetres": 0.45,
+                "color": "#a4aa9f"
+              },
+              {
+                "bottomMetres": 12.700000000000001,
+                "heightMetres": 0.45,
+                "color": "#a4aa9f"
+              },
+              {
+                "bottomMetres": 15.1,
+                "heightMetres": 0.45,
+                "color": "#a4aa9f"
+              }
+            ],
+            "groundEntries": [
+              {
+                "kind": "glazed",
+                "xMetres": 0.5,
+                "bottomMetres": 0.15,
+                "widthMetres": 34.6,
+                "heightMetres": 3.5,
+                "panes": 14,
+                "frameWidthMetres": 0.13,
+                "glassColor": "#526366"
+              }
+            ],
+            "canopy": {
+              "bottomMetres": 3.5,
+              "heightMetres": 0.95,
+              "depthMetres": 0.4
+            },
+            "recessGroups": [
+              {
+                "xMetres": 0.5,
+                "widthMetres": 1.7,
+                "bottomMetres": 4.85,
+                "heightMetres": 12.35,
+                "depthMetres": 0.35
+              },
+              {
+                "xMetres": 33.25,
+                "widthMetres": 1.8,
+                "bottomMetres": 4.85,
+                "heightMetres": 12.35,
+                "depthMetres": 0.35
+              },
+              {
+                "xMetres": 2.2,
+                "widthMetres": 31.05,
+                "bottomMetres": 16.05,
+                "heightMetres": 1.15,
+                "depthMetres": 0.18
+              }
+            ],
+            "sparseWindows": [
+              {
+                "xMetres": 0.55,
+                "sillMetres": 4.85,
+                "widthMetres": 1.6,
+                "heightMetres": 2.15
+              },
+              {
+                "xMetres": 0.55,
+                "sillMetres": 7.7,
+                "widthMetres": 1.6,
+                "heightMetres": 2.15
+              },
+              {
+                "xMetres": 0.55,
+                "sillMetres": 10.55,
+                "widthMetres": 1.6,
+                "heightMetres": 2.15
+              },
+              {
+                "xMetres": 0.55,
+                "sillMetres": 13.4,
+                "widthMetres": 1.6,
+                "heightMetres": 1.7
+              },
+              {
+                "xMetres": 0.55,
+                "sillMetres": 16.05,
+                "widthMetres": 1.6,
+                "heightMetres": 1.15
+              },
+              {
+                "xMetres": 33.3,
+                "sillMetres": 4.85,
+                "widthMetres": 1.6,
+                "heightMetres": 2.15
+              },
+              {
+                "xMetres": 33.3,
+                "sillMetres": 7.7,
+                "widthMetres": 1.6,
+                "heightMetres": 2.15
+              },
+              {
+                "xMetres": 33.3,
+                "sillMetres": 10.55,
+                "widthMetres": 1.6,
+                "heightMetres": 2.15
+              },
+              {
+                "xMetres": 33.3,
+                "sillMetres": 13.4,
+                "widthMetres": 1.6,
+                "heightMetres": 1.7
+              },
+              {
+                "xMetres": 33.3,
+                "sillMetres": 16.05,
+                "widthMetres": 1.6,
+                "heightMetres": 1.15
+              }
+            ],
+            "jointColor": "#969d96",
+            "panelSeamColor": "#a1a79d"
+          },
+          "7": {
+            "kind": "blank"
+          },
+          "8": {
+            "kind": "blank"
+          },
+          "9": {
+            "kind": "blank",
+            "wallColor": "#b3b9b0",
+            "windowTiers": [
+              {
+                "sillMetres": 4.9,
+                "heightMetres": 2.9,
+                "startMetres": 4,
+                "pitchMetres": 3.35,
+                "widthMetres": 2.35,
+                "panes": 2,
+                "frameWidthMetres": 0.075,
+                "glassColor": "#657d88"
+              },
+              {
+                "sillMetres": 8.7,
+                "heightMetres": 2.75,
+                "startMetres": 4,
+                "pitchMetres": 3.35,
+                "widthMetres": 2.35,
+                "panes": 2,
+                "frameWidthMetres": 0.075,
+                "glassColor": "#8da7b0"
+              },
+              {
+                "sillMetres": 12.25,
+                "heightMetres": 2.15,
+                "startMetres": 4,
+                "pitchMetres": 3.35,
+                "widthMetres": 2.35,
+                "panes": 2,
+                "frameWidthMetres": 0.075,
+                "glassColor": "#8da7b0"
+              },
+              {
+                "sillMetres": 15.1,
+                "heightMetres": 1.85,
+                "startMetres": 4,
+                "pitchMetres": 3.35,
+                "widthMetres": 2.35,
+                "panes": 2,
+                "frameWidthMetres": 0.075,
+                "glassColor": "#8da7b0"
+              }
+            ],
+            "groundEntries": [
+              {
+                "kind": "glazed",
+                "xMetres": 0.6,
+                "bottomMetres": 0.2,
+                "widthMetres": 3.2,
+                "heightMetres": 3.7,
+                "panes": 2,
+                "glassColor": "#536562"
+              },
+              {
+                "kind": "glazed",
+                "xMetres": 4.6,
+                "bottomMetres": 0.2,
+                "widthMetres": 10.3,
+                "heightMetres": 3.7,
+                "panes": 5,
+                "glassColor": "#536562"
+              },
+              {
+                "kind": "loading",
+                "xMetres": 16.1,
+                "bottomMetres": 0.15,
+                "widthMetres": 10.3,
+                "heightMetres": 3.9,
+                "color": "#293738",
+                "jointColor": "#3d4846",
+                "jointPitchMetres": 0.16
+              },
+              {
+                "kind": "loading",
+                "xMetres": 27.1,
+                "bottomMetres": 0.15,
+                "widthMetres": 3.7,
+                "heightMetres": 3.9,
+                "color": "#293738",
+                "jointPitchMetres": 0.16
+              }
+            ],
+            "bands": [
+              {
+                "bottomMetres": 3.9,
+                "heightMetres": 0.5,
+                "color": "#adb5ac"
+              }
+            ]
+          }
+        }
+      },
+      "officialRegions": [
+        {
+          "sourceRegionIndex": 77,
+          "sourceArea": 988.9922716323994,
+          "ring": [
+            [
+              16.36606750629405,
+              21.530501098632815,
+              -8.626285496698358
+            ],
+            [
+              -18.182754387236702,
+              21.507501098632815,
+              -10.94097181455993
+            ],
+            [
+              -25.22616155479233,
+              21.501501098632815,
+              17.673946963821834
+            ],
+            [
+              2.041517725060155,
+              21.518501098632814,
+              24.45170448679562
+            ],
+            [
+              5.650164991813684,
+              21.521501098632815,
+              9.639409394489178
+            ],
+            [
+              5.151639226646406,
+              21.521501098632815,
+              9.562782079577516
+            ],
+            [
+              6.014258027530982,
+              21.522501098632812,
+              5.511800934108635
+            ],
+            [
+              7.727599701863215,
+              21.523501098632813,
+              5.917283033259366
+            ],
+            [
+              8.84558194587268,
+              21.524501098632815,
+              6.095723572040299
+            ],
+            [
+              9.198103671344136,
+              21.524501098632815,
+              4.517501842118747
+            ],
+            [
+              10.329587317809471,
+              21.525501098632812,
+              4.626814879009373
+            ],
+            [
+              12.18730494623495,
+              21.526501098632814,
+              3.664609233158558
+            ],
+            [
+              12.682728284570928,
+              21.526501098632814,
+              3.725250293151703
+            ],
+            [
+              14.314829570414293,
+              21.528501098632812,
+              3.9251851870648125
+            ],
+            [
+              16.37769581169702,
+              21.530501098632815,
+              -7.0655647980177605
+            ],
+            [
+              16.86880806727302,
+              21.530501098632815,
+              -7.051917906545668
+            ],
+            [
+              17.10493306076528,
+              21.530501098632815,
+              -8.576315052523569
+            ]
+          ],
+          "sourceRoofEquipmentCutouts": [
+            [
+              [
+                -5.7131422746391065,
+                21.515501098632814,
+                1.286910862302193
+              ],
+              [
+                -2.679356753343608,
+                21.517501098632813,
+                2.143580607918807
+              ],
+              [
+                1.3353471354277298,
+                21.519501098632812,
+                3.275679012824071
+              ],
+              [
+                1.1568164794964222,
+                21.519501098632812,
+                3.585059696322901
+              ],
+              [
+                3.1953301307243227,
+                21.520501098632813,
+                4.696676523062138
+              ],
+              [
+                2.9889800921500593,
+                21.520501098632813,
+                7.221383547958169
+              ],
+              [
+                2.286796133566208,
+                21.519501098632812,
+                7.867521112080453
+              ],
+              [
+                0.9448978241527884,
+                21.518501098632814,
+                9.100338466449784
+              ],
+              [
+                -0.15828252726104441,
+                21.518501098632814,
+                8.750710618251105
+              ],
+              [
+                -4.979679951573042,
+                21.515501098632814,
+                8.012338096908707
+              ],
+              [
+                -7.533240507591885,
+                21.513501098632815,
+                7.621620709414003
+              ],
+              [
+                -9.12771912314352,
+                21.512501098632814,
+                7.3774127608388085
+              ],
+              [
+                -9.667591143935864,
+                21.512501098632814,
+                6.798812637963181
+              ],
+              [
+                -9.863013534250012,
+                21.511501098632813,
+                7.265389996191232
+              ],
+              [
+                -13.122894553403306,
+                21.509501098632814,
+                6.767456924227417
+              ],
+              [
+                -12.39415717526483,
+                21.510501098632815,
+                3.867979799314014
+              ],
+              [
+                -11.672234154173593,
+                21.511501098632813,
+                0.993562313503844
+              ],
+              [
+                -11.346729396161752,
+                21.511501098632813,
+                -0.30133061366484526
+              ]
+            ]
+          ],
+          "holes": []
+        },
+        {
+          "sourceRegionIndex": 79,
+          "sourceArea": 342.4203079379786,
+          "ring": [
+            [
+              -18.182754387236702,
+              18.077501098632812,
+              -10.94097181455993
+            ],
+            [
+              16.36606750629405,
+              18.057501098632812,
+              -8.626285496698358
+            ],
+            [
+              17.122400605339465,
+              18.058501098632814,
+              -12.605500503876499
+            ],
+            [
+              14.792518336202667,
+              18.060501098632812,
+              -12.683599567588715
+            ],
+            [
+              -20.613269063488183,
+              18.079501098632814,
+              -14.361078574419253
+            ],
+            [
+              -20.75588888784671,
+              18.079501098632814,
+              -14.347094540426895
+            ],
+            [
+              -20.960435046294226,
+              18.079501098632814,
+              -13.462239778671687
+            ],
+            [
+              -25.127731108911046,
+              18.074501098632815,
+              3.423964956544978
+            ],
+            [
+              -29.266153622501744,
+              18.068501098632815,
+              20.295968780012288
+            ],
+            [
+              1.2318100868105402,
+              18.048501098632812,
+              27.77194957140523
+            ],
+            [
+              2.041517725060155,
+              18.049501098632813,
+              24.45170448679562
+            ],
+            [
+              -25.22616155479233,
+              18.067501098632814,
+              17.673946963821834
+            ]
+          ],
+          "holes": []
+        }
+      ],
+      "official3D": {
+        "groundNAP": 0.451,
+        "dominantRoofPlaneCount": 2
+      },
+      "sourcePack": "experiments/canal-belt-continuation-20261007/checkpoint-03/processed/authors/0363100012168482/source",
+      "references": [
+        "whole-front-wrap.jpg",
+        "wide-0363100012168482-2025-01498-einitial.jpg",
+        "wide-0363100012168482-2025-00252-einitial.jpg",
+        "reference-reguliersdwarsstraat-2025-01838.jpg"
+      ],
+      "sourceUrls": [
+        "https://data.amsterdam.nl/data/geozoek?center=52.36669801091609%2C4.892124016478439&locatie=52.36669801091609%2C4.892124016478439&lagen=pano-pano2025bi&heading=187.98777271768938&pitch=23&fov=110&zoom=17",
+        "https://data.amsterdam.nl/data/geozoek?center=52.366703037243646%2C4.892088003033646&locatie=52.366703037243646%2C4.892088003033646&lagen=pano-pano2025bi&heading=179.379367502442&pitch=23&fov=110&zoom=17",
+        "https://data.amsterdam.nl/data/geozoek?center=52.36625884019302%2C4.891916831240847&locatie=52.36625884019302%2C4.891916831240847&lagen=pano-pano2025bi&heading=349&pitch=20&fov=118&zoom=17"
+      ],
+      "traits": [
+        "35.6m gray stone slab facade with square dark thin framed windows and broad sill/spandrel panels.",
+        "Four glazed upper tiers beneath dark recessed top tier; narrow recessed end stacks; continuous tall glazed storefront strip.",
+        "Native no-hole footprint and dominant 3DBAG fitted roof areas; highest NAP roof/equipment maximum does not set full-wall height.",
+        "Reguliersdwarsstraat south edge9 is a public frontage: pale gray slabs, four paired-pane tiers, broad glazed western ground openings and dark eastern loading/garage bays. Edge7 borrowed neighboring glazing removed; west/native side treated as party wall."
+      ],
+      "heightEvidence": "3DBAG LoD2.2 roof polygons transformed from RD to native local metres, minus 0.451m ground NAP; roof regions >0.8% native area retained; not copied mesh.",
+      "simplifications": [
+        "Original procedural atlas, no photo pixels. Fine slab texture, furniture, interiors and business signage omitted.",
+        "Tiny roof patches below10.8m\u00b2 omitted; fitted roof steps and low areas retained.",
+        "Elevated minor roof/equipment surfaces (16\u201330m\u00b2) remain archived but are omitted because physical role and support unresolved; no tall opaque equipment box invented.",
+        "Survey roof cutouts under omitted equipment are capped at the dominant supporting roof plane; these are rooftop-object cutouts, not native courtyard holes.",
+        "Reguliers paired opening count/spacing and loading-bay widths estimated from2025municipalperspective panorama; no garage interior/lettering recreated. Neighbor glazing excluded from edge7."
+      ],
+      "gallerySecondary": {
+        "edge": 9,
+        "cameraBearing": 196.04,
+        "referenceImage": "./ordinary-buildings-data/references/0363100012168482/reference-reguliersdwarsstraat-2025-01838.jpg",
+        "sourcePanoramaId": "recording_2025-06-19_03-28-47_01838",
+        "captureTimestamp": "2025-06-19T03:46:31Z",
+        "target": [
+          4.8918870000000005,
+          52.366338999999996
+        ],
+        "distanceMetres": 42,
+        "targetHeightMetres": 9,
+        "referenceImages": [
+          "./ordinary-buildings-data/references/0363100012168482/reference-reguliersdwarsstraat-2025-01838.jpg"
+        ]
+      }
     }
   ]
 }

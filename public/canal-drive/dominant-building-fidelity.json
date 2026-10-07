@@ -578,6 +578,73 @@
       },
       "acceptanceScope": "Source/exported CPU review only; no production integration, real gallery/game, performance or public source gate.",
       "deferralReason": "User reconfirmed boxy non-landmark workflow; registered ornate telephone exchange retained for full architecture review, not quick queue."
+    },
+    "NL.IMBAG.Pand.0363100012165204": {
+      "treatment": "standard",
+      "reviewedOn": "2026-10-07",
+      "sourceUrls": [
+        "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-03_06-23-16_00671/",
+        "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-03_06-23-16_00670/",
+        "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-03_06-23-16_00513/",
+        "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-07-03_06-23-16_00514/"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012165204/wide-0363100012165204-2025-00671-einitial.jpg",
+      "reason": "Source-specific repetitive ordinary street facade on native surveyed footprint, no ground courtyard. Root inspected actual gallery/game front and second-street faces, neighbors and stationary desktop/touch pan/zoom-out. Independent source/geometry/actual GPU PASS; failures preserved. Exact replacement/fallback and ordinary picking verified.",
+      "checks": {
+        "ordinarySilhouette": true,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "2249ce1e871c2c39ddcf1adeb603f02fb716c098",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/checkpoint-03/processed/authors/0363100012165204/source",
+      "acceptanceSourceCommit": "b444eca8edfc9cc545047bebbf92b9c315d79c23",
+      "acceptanceSourcePack": "experiments/canal-belt-continuation-20261007/runtime-05",
+      "independentReview": "ordinary-buildings-data/canal-box-review-20261007.json",
+      "liveGameReview": "ordinary-buildings-data/canal-box-review-20261007.json",
+      "limits": [
+        "Original procedural atlas, shallow physical slab/canopy relief, no photograph pixels or invented signage.",
+        "Window widths/pitch/sills are perspective estimates. Edge9 count11 visually complete; edge6 count13 estimate with trees/foreshortening; narrow edge8 estimate. Party/back facade observations incomplete: sparse/blank conservative faces.",
+        "White Juliet guards and rooftop rails provided in separate native detail stage; roof beams retain approximate source positions.",
+        "No POI destination or trivia identity added; mapped shops remain basic clicked information.",
+        "Source edge9 Juliet columns1/5/9 and inset lower two left openings retained. Roof beam locations approximate; no rooftop equipment invented.",
+        "Startup longtasks remain; warm frame samples do not establish universally stall-free gameplay.",
+        "Pyramidal hidden-ID/fallback behavior checked; these models have no resident pyramidal entries, so no visible-instance coverage claimed.",
+        "Haarlemmer520176bytes exceeds500KBpreference by4%, preserving source defining assemblies."
+      ]
+    },
+    "NL.IMBAG.Pand.0363100012168482": {
+      "treatment": "standard",
+      "reviewedOn": "2026-10-07",
+      "sourceUrls": [
+        "https://data.amsterdam.nl/data/geozoek?center=52.36669801091609%2C4.892124016478439&locatie=52.36669801091609%2C4.892124016478439&lagen=pano-pano2025bi&heading=187.98777271768938&pitch=23&fov=110&zoom=17",
+        "https://data.amsterdam.nl/data/geozoek?center=52.366703037243646%2C4.892088003033646&locatie=52.366703037243646%2C4.892088003033646&lagen=pano-pano2025bi&heading=179.379367502442&pitch=23&fov=110&zoom=17",
+        "https://data.amsterdam.nl/data/geozoek?center=52.36625884019302%2C4.891916831240847&locatie=52.36625884019302%2C4.891916831240847&lagen=pano-pano2025bi&heading=349&pitch=20&fov=118&zoom=17"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012168482/whole-front-wrap.jpg",
+      "reason": "Source-specific repetitive ordinary street facade on native surveyed footprint, no ground courtyard. Root inspected actual gallery/game front and second-street faces, neighbors and stationary desktop/touch pan/zoom-out. Independent source/geometry/actual GPU PASS; failures preserved. Exact replacement/fallback and ordinary picking verified.",
+      "checks": {
+        "ordinarySilhouette": true,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "2249ce1e871c2c39ddcf1adeb603f02fb716c098",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/checkpoint-03/processed/authors/0363100012168482/source",
+      "acceptanceSourceCommit": "b444eca8edfc9cc545047bebbf92b9c315d79c23",
+      "acceptanceSourcePack": "experiments/canal-belt-continuation-20261007/runtime-05",
+      "independentReview": "ordinary-buildings-data/canal-box-review-20261007.json",
+      "liveGameReview": "ordinary-buildings-data/canal-box-review-20261007.json",
+      "limits": [
+        "Original procedural atlas, no photo pixels. Fine slab texture, furniture, interiors and business signage omitted.",
+        "Tiny roof patches below10.8m\u00b2 omitted; fitted roof steps and low areas retained.",
+        "Elevated minor roof/equipment surfaces (16\u201330m\u00b2) remain archived but are omitted because physical role and support unresolved; no tall opaque equipment box invented.",
+        "Survey roof cutouts under omitted equipment are capped at the dominant supporting roof plane; these are rooftop-object cutouts, not native courtyard holes.",
+        "Reguliers paired opening count/spacing and loading-bay widths estimated from2025municipalperspective panorama; no garage interior/lettering recreated. Neighbor glazing excluded from edge7.",
+        "Startup longtasks remain; warm frame samples do not establish universally stall-free gameplay.",
+        "Pyramidal hidden-ID/fallback behavior checked; these models have no resident pyramidal entries, so no visible-instance coverage claimed.",
+        "Haarlemmer520176bytes exceeds500KBpreference by4%, preserving source defining assemblies."
+      ]
     }
   },
   "notes": [
