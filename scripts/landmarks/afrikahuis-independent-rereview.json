@@ -1,0 +1,14 @@
+{
+  "modelId": "afrikahuis",
+  "date": "2026-10-07",
+  "verdict": "bounded-source-decoded-cpu-pass",
+  "scope": "affected repairs and sampled regression probes only",
+  "input": {"bytes": 399800, "triangles": 28070, "sha256": "92ed230a003ed2449e6ee1e8e9c1b08293bf31a47b0f29ad4380a6d8ae705673"},
+  "resolvedBlockers": ["presbytery-ground-entry", "presbytery-roof-gap"],
+  "evidence": "artifacts/afrikahuis/independent-rereview",
+  "source": "models/afrikahuis/raw/2026-10-07/21-21791.webp",
+  "approachConfidence": "photo-guided proportions; seven-riser approximation",
+  "pending": ["native-gallery", "live-game-suppression-neighbors-pyramid-fallback", "route-pin-trivia", "actual-performance", "source-pack-publication"],
+  "finalAcceptance": false,
+  "readerReleased": true
+}

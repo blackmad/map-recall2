@@ -1,0 +1,286 @@
+{
+  "id": "afrikahuis",
+  "status": "production-candidate-final-native-independent-review-pending",
+  "retrievedAt": "2026-10-07",
+  "identity": {
+    "poiId": "extract_landmarks_1448512409",
+    "osmId": "w44451421",
+    "bagId": "0363100012108180",
+    "monument": "222145",
+    "addresses": [
+      "Van Ostadestraat268",
+      "Van Ostadestraat270",
+      "Henrick de Keijserstraat9"
+    ],
+    "scope": "Five linked octagonal modules of one current Pand only. Public street corner hall raised above open sheltered forecourt; eastern upper residential/presbytery octagon and south wing included. Adjacent schools retained."
+  },
+  "assertions": [
+    {
+      "source": "https://erfgoedregister.amsterdam.nl/monument/34d28c9d-f6c7-44bc-affa-d3d2c055b7a9/",
+      "part": "whole complex",
+      "date": "register read2026-10-07",
+      "confidence": "high",
+      "features": "Joop van Stigt; late1960s; five linked octagonal units; concrete plinth; limestone block walls; projecting staircase volumes; structuralist/Forum style. Register text inspected via web tool; original direct HTTP capture blocked TLS/403, preserved honestly."
+    },
+    {
+      "source": "https://www.amsterdamopdekaart.nl/1966-1990/Van_Ostadestraat/Afrikahuis",
+      "part": "corner hall",
+      "date": "page current2026-10-07/photos2011,2021",
+      "confidence": "high",
+      "features": "Raised church hall over street-level entrance square; French limestone and merbau wood; smaller presbytery/staff wings. Current2024/2021 panorama agrees main blank limestone faces, tall glass staircases, red timber fascia."
+    },
+    {
+      "source": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012108180",
+      "part": "roofs",
+      "date": "AHN5 2023",
+      "confidence": "high-survey",
+      "features": "GroundNAP-.356; roof54 approximately9.21m relative ground; roof55 eastern octagonal upper part13.09m; roof53 small inset7.45m. No blanket13.1m roof."
+    }
+  ],
+  "criticalRecognition": [
+    "faceted linked octagonal silhouette",
+    "raised corner limestone church hall over open forecourt",
+    "continuous shadowed clerestory and overhanging thin roof fascia",
+    "projecting full-height glazed staircases with stepped concrete mullions and red fascia",
+    "taller eastern presbytery with narrow ribbon windows on long faces and red timber corner bays",
+    "limestone block wall and exposed concrete plinth"
+  ],
+  "referenceViews": [
+    {
+      "path": "pano-2024-0.jpg",
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2024-12-20_09-04-31_00009/?width=1600&fov=100&aspect=1.6&horizon=0.42&heading=142.6437683444619",
+      "metadata": {
+        "_links": {
+          "self": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-12-20_09-04-31_00009/"
+          },
+          "equirectangular_full": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-12-20_09-04-31_00009/equirectangular/panorama_8000.jpg"
+          },
+          "equirectangular_medium": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-12-20_09-04-31_00009/equirectangular/panorama_4000.jpg"
+          },
+          "equirectangular_small": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-12-20_09-04-31_00009/equirectangular/panorama_2000.jpg"
+          },
+          "cubic_img_preview": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-12-20_09-04-31_00009/cubic/preview.jpg"
+          },
+          "thumbnail": {
+            "href": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2024-12-20_09-04-31_00009/"
+          },
+          "adjacencies": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-12-20_09-04-31_00009/adjacencies/"
+          }
+        },
+        "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-12-20_09-04-31_00009/cubic/",
+        "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-12-20_09-04-31_00009/cubic/{z}/{f}/{y}/{x}.jpg",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            4.897540380300232,
+            52.35297171713585,
+            0.0
+          ]
+        },
+        "pano_id": "recording_2024-12-20_09-04-31_00009",
+        "timestamp": "2024-12-20T09:05:09Z",
+        "filename": "recording_2024-12-20_09-04-31_00009.jpg",
+        "surface_type": "L",
+        "mission_distance": 5,
+        "mission_type": "bi",
+        "mission_year": "2024",
+        "tags": [
+          "mission-bi",
+          "mission-2024",
+          "mission-distance-5",
+          "surface-land"
+        ],
+        "roll": 0.0,
+        "pitch": 0.0,
+        "heading": 0.0
+      },
+      "heading": 142.6437683444619,
+      "status": 200
+    },
+    {
+      "path": "pano-2021-1.jpg",
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-002115_pano_0000_004756/?width=1600&fov=100&aspect=1.6&horizon=0.42&heading=148.28583312884845",
+      "metadata": {
+        "_links": {
+          "self": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002115_pano_0000_004756/"
+          },
+          "equirectangular_full": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2021/04/23/TMX7316010203-002115/pano_0000_004756/equirectangular/panorama_8000.jpg"
+          },
+          "equirectangular_medium": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2021/04/23/TMX7316010203-002115/pano_0000_004756/equirectangular/panorama_4000.jpg"
+          },
+          "equirectangular_small": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2021/04/23/TMX7316010203-002115/pano_0000_004756/equirectangular/panorama_2000.jpg"
+          },
+          "cubic_img_preview": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2021/04/23/TMX7316010203-002115/pano_0000_004756/cubic/preview.jpg"
+          },
+          "thumbnail": {
+            "href": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-002115_pano_0000_004756/"
+          },
+          "adjacencies": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002115_pano_0000_004756/adjacencies/"
+          }
+        },
+        "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2021/04/23/TMX7316010203-002115/pano_0000_004756/cubic/",
+        "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2021/04/23/TMX7316010203-002115/pano_0000_004756/cubic/{z}/{f}/{y}/{x}.jpg",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            4.8975824931871,
+            52.3529563772384,
+            47.6450722664595
+          ]
+        },
+        "pano_id": "TMX7316010203-002115_pano_0000_004756",
+        "timestamp": "2021-04-23T09:12:30.371710Z",
+        "filename": "pano_0000_004756.jpg",
+        "surface_type": "L",
+        "mission_distance": 5,
+        "mission_type": "bi",
+        "mission_year": "2021",
+        "tags": [
+          "mission-bi",
+          "mission-2021",
+          "surface-land",
+          "mission-distance-5"
+        ],
+        "roll": -0.195010975707756,
+        "pitch": 0.676246404410548,
+        "heading": 60.6465330872441
+      },
+      "heading": 148.28583312884845,
+      "status": 200
+    },
+    {
+      "path": "pano-2024-2.jpg",
+      "url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2024-12-20_09-04-31_00004/?width=1600&fov=100&aspect=1.6&horizon=0.42&heading=214.90465765669003",
+      "metadata": {
+        "_links": {
+          "self": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-12-20_09-04-31_00004/"
+          },
+          "equirectangular_full": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-12-20_09-04-31_00004/equirectangular/panorama_8000.jpg"
+          },
+          "equirectangular_medium": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-12-20_09-04-31_00004/equirectangular/panorama_4000.jpg"
+          },
+          "equirectangular_small": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-12-20_09-04-31_00004/equirectangular/panorama_2000.jpg"
+          },
+          "cubic_img_preview": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-12-20_09-04-31_00004/cubic/preview.jpg"
+          },
+          "thumbnail": {
+            "href": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2024-12-20_09-04-31_00004/"
+          },
+          "adjacencies": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-12-20_09-04-31_00004/adjacencies/"
+          }
+        },
+        "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-12-20_09-04-31_00004/cubic/",
+        "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2024/360geo/recording_2024-12-20_09-04-31_00004/cubic/{z}/{f}/{y}/{x}.jpg",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            4.89788871396384,
+            52.353042708499544,
+            0.0
+          ]
+        },
+        "pano_id": "recording_2024-12-20_09-04-31_00004",
+        "timestamp": "2024-12-20T09:04:49Z",
+        "filename": "recording_2024-12-20_09-04-31_00004.jpg",
+        "surface_type": "L",
+        "mission_distance": 5,
+        "mission_type": "bi",
+        "mission_year": "2024",
+        "tags": [
+          "mission-bi",
+          "mission-2024",
+          "mission-distance-5",
+          "surface-land"
+        ],
+        "roll": 0.0,
+        "pitch": 0.0,
+        "heading": 0.0
+      },
+      "heading": 214.90465765669003,
+      "status": 200
+    }
+  ],
+  "referenceFiles": [
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/processed/front-0.jpg",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/processed/front-1.jpg",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/processed/front-2.jpg",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/raw/2026-10-07/20-20989.webp",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/raw/2026-10-07/21-21791.webp",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/raw/2026-10-07/21-21792.webp",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/raw/2026-10-07/3dbag.json",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/raw/2026-10-07/8-8886.webp",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/raw/2026-10-07/acquisition-survey.json",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/raw/2026-10-07/acquisition.json",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/raw/2026-10-07/bag-bbox.json",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/raw/2026-10-07/beeldbank.html",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/raw/2026-10-07/current-pick.jpg",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/raw/2026-10-07/opdekaart-photos.json",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/raw/2026-10-07/opdekaart.html",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/raw/2026-10-07/osm-map.xml",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/raw/2026-10-07/osm.json",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/raw/2026-10-07/pano-2021-1.jpg",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/raw/2026-10-07/pano-2024-0.jpg",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/raw/2026-10-07/pano-2024-2.jpg",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/raw/2026-10-07/pano-original-0.jpg",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/raw/2026-10-07/pano-original-1.jpg",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/raw/2026-10-07/pano-original-2.jpg",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/raw/2026-10-07/panorama-selections.json",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/raw/2026-10-07/panoramas.json",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/raw/2026-10-07/reference.jpg",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/raw/2026-10-07/register.html",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/raw/2026-10-07/thumbnail-pick.json",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/raw/2026-10-07/vbo-0.json",
+    "/Users/blackmad/Code/map-recall2-source-data/models/afrikahuis/raw/2026-10-07/vbo-1.json"
+  ],
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "path": "models/afrikahuis",
+    "commit": "c3ffff8f22f2261b6869975cf8453ba11eecaa5f"
+  },
+  "accessGaps": [
+    {
+      "url": "https://erfgoedregister.amsterdam.nl/monument/34d28c9d-f6c7-44bc-affa-d3d2c055b7a9/",
+      "state": "primary text inspected via web tool; original direct HTTP body unavailable TLS hostname mismatch, retried three times; insecure fallback HTTP403 body retained as failure evidence"
+    },
+    {
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=Van%20Ostadestraat%20270",
+      "state": "bounded address search HTTP200 JavaScript viewer shell; no inspected image/drawing; opdekaart reports15 related CityArchives images but originals not acquired"
+    },
+    {
+      "source": "DataAmsterdam Bouwdossiers1905\u20132010",
+      "state": "drawings not acquired. No geometry dimension asserted from drawing."
+    }
+  ],
+  "uncertainty": "Forecourt recessed-core extent, support positions, staircase mullion profiles and hidden rear apertures are photo-guided approximations; no sourced tread count claimed; seven-riser approach is explicitly approximate. Presbytery grand corner approach still needs final source-facing native review. Separate south wing facade lacks clear current full-height view. Architecture not accepted until independent native gallery/game review.",
+  "repairCycle": {
+    "failedEvidence": "artifacts/afrikahuis/failed-20261007",
+    "originalBytes": 397572,
+    "originalTriangles": 27926,
+    "repairs": [
+      "Ground presbytery repeated bay removed on indices30/31; recessed V-shaped doors/core/flared concretebeams",
+      "Stair approach fanned wider;sevenriser count remains explicitapproximation",
+      "Closed highouterparapet12.78\u201313.09m and inset upperwallreturns; explicitroofowns top"
+    ],
+    "decodedEvidence": "artifacts/afrikahuis/repair-review/decoded-first-hits.json",
+    "sourceFacingCpu": "artifacts/afrikahuis/repair-review/afrikahuis-cpu-presbytery-low-approach.png",
+    "acceptance": "requires fresh affected independent review then root native/game checks"
+  }
+}
