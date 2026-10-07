@@ -21,7 +21,7 @@
     }
   ],
   "counts": {
-    "manual-model": 198,
+    "manual-model": 199,
     "procedural-kit": 15,
     "pending": 126,
     "catalogue-model": 7
@@ -4409,6 +4409,17 @@
       "origin": "Landmark catalogue",
       "status": "manual-model",
       "modelId": "hart-museum",
+      "treatment": "building"
+    },
+    {
+      "id": "haparandaweg-8-338",
+      "name": "Domūs Houthaven — Haparandaweg 8–338",
+      "lat": 52.39418,
+      "lng": 4.87411,
+      "queueRank": 347,
+      "origin": "Landmark catalogue",
+      "status": "manual-model",
+      "modelId": "haparandaweg-8-338",
       "treatment": "building"
     }
   ]

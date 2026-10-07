@@ -13469,6 +13469,90 @@
       "triangles": 28070,
       "bytes": 400140,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "haparandaweg-8-338": {
+      "id": "haparandaweg-8-338",
+      "name": "Domūs Houthaven — Haparandaweg 8–338",
+      "modelUrl": "./models/haparandaweg-8-338.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012252993",
+        "w855553958"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.87411,
+          52.39418
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 60,
+        "widthMetres": 70
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.87411,
+          52.39418
+        ],
+        "northOffsetDegrees": 0,
+        "source": "PDOK BAG0363100012252993/AHN5 2023 bounded regions"
+      },
+      "materialOverrides": {
+        "brick": "#a9664c",
+        "stone": "#615e53",
+        "ochre": "#98906b",
+        "gold": "#c3ae7d",
+        "copper": "#b87555",
+        "frame": "#77766c",
+        "white": "#d2d3c4",
+        "glass": "#627c7c",
+        "concrete": "#a8aaa0",
+        "slate": "#62645c",
+        "green": "#747d58",
+        "dark": "#373b36",
+        "bronze": "#e3bb35"
+      },
+      "preservePositionPrecision": true,
+      "attribution": {
+        "title": "Domūs Houthaven original architecture",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.shift-au.com/projects/xs-deluxe-houthaven/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free metre geometry; one requested physical BAG parent, no invented POI identity. Source archive 09b242cbc167782d6532ac5d4778021592b83af6 models/haparandaweg-8-338."
+      },
+      "bounds": {
+        "min": [
+          -35.227203369140625,
+          -6.718953500239877e-07,
+          -28.62818717956543
+        ],
+        "max": [
+          35.627017974853516,
+          32.709999084472656,
+          30.64375114440918
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.87411,
+          52.39418
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 70.85422134399414,
+        "heightMetres": 32.709999756368006,
+        "depthMetres": 59.27193832397461,
+        "depthCoverage": 0.8467419760567801
+      },
+      "triangles": 27649,
+      "bytes": 316556,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

@@ -1899,10 +1899,15 @@
           },
           "constructionYear": 2022,
           "bagStatus": "Pand in gebruik",
-          "status": "pending-source-review",
-          "modelIds": [],
+          "status": "local-model-reviewed-release-pending",
+          "modelIds": [
+            "haparandaweg-8-338"
+          ],
           "sourceUrl": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/1d1f8b2f-35ed-5c23-bcd0-40fceca3e891?f=json",
-          "resolution": "explicit-official-verblijfsobject-pand-link"
+          "resolution": "explicit-official-verblijfsobject-pand-link",
+          "assetSHA256": "824920011fa98d29b7b9f7e2af5d4e787d58ddb16df3ce6212104a3b4c7a2993",
+          "sourceArchiveCommit": "09b242cbc167782d6532ac5d4778021592b83af6",
+          "acceptedSourceArchiveCommit": "60963ceb098e9649e57759948aaa2c3f3030e93e"
         },
         {
           "bagId": "0363100012122663",

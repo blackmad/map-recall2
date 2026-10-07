@@ -1,0 +1,740 @@
+{
+  "id": "haparandaweg-8-338",
+  "status": "scoped-local-accepted-public-release-and-hosted-review-pending",
+  "sourceArchive": {
+    "modelPath": "models/haparandaweg-8-338",
+    "manifest": "/tmp/haparanda-private-oct7/models/haparandaweg-8-338/raw/2026-10-07/manifest.json",
+    "sourceCommit": "09b242cbc167782d6532ac5d4778021592b83af6",
+    "publication": "Source-first and accepted production evidence pushed before public model commit. Hosted review pending.",
+    "acceptedSourceCommit": "60963ceb098e9649e57759948aaa2c3f3030e93e",
+    "acceptedEvidencePath": "models/haparandaweg-8-338/checkpoints/production-82492001"
+  },
+  "identity": {
+    "bagId": "0363100012252993",
+    "osmAlias": "w855553958",
+    "osmName": "Dom\u00fcs Houthavens",
+    "constructionYear": 2022,
+    "requestedAddressCount": 165,
+    "totalBagVboCount": 247,
+    "architectApartmentCount": 235,
+    "countDistinction": "Requested subset, BAG mixed-use units and architect dwellings count different scopes",
+    "poiPolicy": "Keep requested-street-building identity. No new automatic POI/destination/trivia created."
+  },
+  "sources": [
+    {
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012252993",
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/haparandaweg-8-338/raw/2026-10-07/3dbag.json"
+    },
+    {
+      "url": "https://archief.amsterdam/beeldbank/?q=Haparandaweg",
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/haparandaweg-8-338/raw/2026-10-07/beeldbank.html"
+    },
+    {
+      "url": "https://www.shift-au.com/projects/xs-deluxe-houthaven/",
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/haparandaweg-8-338/raw/2026-10-07/architect.html"
+    },
+    {
+      "url": "https://www.domus.nl/en/why-domus/",
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/haparandaweg-8-338/raw/2026-10-07/domus-operator.html"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_07_54_42_00363/",
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/haparandaweg-8-338/raw/2026-10-07/front-metadata.json"
+    },
+    {
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_09_29_07_54_42_00363/equirectangular/panorama_8000.jpg",
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/haparandaweg-8-338/raw/2026-10-07/front-pano.jpg"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_10_02_09_32_34_00403/",
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/haparandaweg-8-338/raw/2026-10-07/rear-metadata.json"
+    },
+    {
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_09_32_34_00403/equirectangular/panorama_8000.jpg",
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/haparandaweg-8-338/raw/2026-10-07/rear-pano.jpg"
+    },
+    {
+      "url": "https://www.shift-au.com/wp-content/uploads/2017/10/03_SHIFTau_DOMUS_H-1-1920x1339.jpg",
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/haparandaweg-8-338/raw/2026-10-07/architect-0.jpg"
+    },
+    {
+      "url": "https://www.shift-au.com/wp-content/uploads/2017/10/01_SHIFTau_DOMUS_HOUTHAVEN-1-1920x1440.jpg",
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/haparandaweg-8-338/raw/2026-10-07/architect-1.jpg"
+    },
+    {
+      "url": "https://www.shift-au.com/wp-content/uploads/2017/10/02_SHIFTau_DOMUS_HOUTHAVEN-1920x1441.jpg",
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/haparandaweg-8-338/raw/2026-10-07/architect-2.jpg"
+    },
+    {
+      "url": "https://www.shift-au.com/wp-content/uploads/2017/10/04_SHIFTau_DOMUS_H-1920x1280.jpg",
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/haparandaweg-8-338/raw/2026-10-07/architect-3.jpg"
+    },
+    {
+      "url": "https://www.shift-au.com/wp-content/uploads/2017/10/06_SHIFTau_DOMUS_Ha-1920x1280.jpg",
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/haparandaweg-8-338/raw/2026-10-07/architect-4.jpg"
+    },
+    {
+      "url": "https://www.shift-au.com/wp-content/uploads/2017/10/08_SHIFTau_DOMUS_H-1920x1920.jpg",
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/haparandaweg-8-338/raw/2026-10-07/architect-5.jpg"
+    },
+    {
+      "url": "https://www.shift-au.com/wp-content/uploads/2017/10/08_SHIFTau_DOMUS_Hc-1920x1920.jpg",
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/haparandaweg-8-338/raw/2026-10-07/architect-6.jpg"
+    },
+    {
+      "url": "https://www.shift-au.com/wp-content/uploads/2017/10/09_SHIFTau_DOMUS_H-1920x1200.jpg",
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/haparandaweg-8-338/raw/2026-10-07/architect-7.jpg"
+    },
+    {
+      "url": "https://www.shift-au.com/wp-content/uploads/2017/10/28_SHIFTau_DOMUS_H-1920x1200.jpg",
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/haparandaweg-8-338/raw/2026-10-07/architect-8.jpg"
+    }
+  ],
+  "architecturalAssertions": [
+    {
+      "part": "whole complex",
+      "source": "architect.html",
+      "assertion": "Family of interconnected blocks with own grain/rhythm/colors surrounding raised communal courtyard over commercial plinth. Roof pavilion reached by airbridge.",
+      "confidence": "high"
+    },
+    {
+      "part": "north street front",
+      "source": "rear-pano.jpg and architect-4,7jpg",
+      "assertion": "Tall contrasting charcoal and red masonry grids, generous glazing and deep narrow side ventilation/balcony niches; entrances between blocks.",
+      "confidence": "high"
+    },
+    {
+      "part": "south street front",
+      "source": "front-pano.jpg and architect-3jpg",
+      "assertion": "Lower pale khaki block with white subdivided windows and first-level glazed wall; red adjacent block with warm frames; courtyard gap has white railing above shopfronts.",
+      "confidence": "high"
+    },
+    {
+      "part": "massing",
+      "source": "3dbag.json AHN5 captured2023",
+      "assertion": "Native north bounded roof31.5m, west22.45m, south17.12m, roofpavilion20.45m, courtyarddeck4.2m above0.704mNAP datum. Tiny higher regions equipment only.",
+      "confidence": "survey-derived"
+    },
+    {
+      "part": "airbridge",
+      "source": "architect-3jpg and front-pano.jpg",
+      "assertion": "Connects westwing to southern rooftop across visible opencourt. Native-endpoint reconstruction[-18.8,16.6,17.7]\u2192[-3.6,17.05,17.0] is bounded photo-guided approximation; exact elevations/alignment require review.",
+      "confidence": "medium"
+    },
+    {
+      "part": "survey175 inner south facade",
+      "source": "3dbag.json sourceSurface175 surveyed polygon; independent decoded/source review2026-10-07",
+      "assertion": "x\u22123.43..15.41,z11.75..13.55 at13.73m is a separate inner-facade cantilever/gallery band. It does not cross the photographed west-to-south airbridge. Retain surveyed slab only; no source-supported exposed glass/parapet reconstruction established. Removed unsupported glazed overlay.",
+      "confidence": "survey-derived band; function unresolved"
+    },
+    {
+      "part": "south khaki street frontage",
+      "source": "architect-3.jpg original; front official2025 panorama",
+      "assertion": "One broad glazed level above plinth, then THREE subdivided residential window rows to17.12m roof. Lower glazing follows surveyed angled facade; no axis-aligned glass-box overlay or fourth subdivided row.",
+      "confidence": "high for assembly/count; approximate row elevations"
+    },
+    {
+      "part": "roof pavilion cap",
+      "source": "architect-3.jpg original and surveyed sourceSurface166",
+      "assertion": "Broad pale cap strongly projects beyond glazing. Survey166 retains roof outline and hole; cap owns top and0.5m fascia, glazing walls are radially inset0.9m below cap, with external plane-following slender mullions. Inset/fascia are photo-guided dimensions, not separate surveyed glass-wall measurements.",
+      "confidence": "high pale projecting cap; medium exact inset/fascia"
+    },
+    {
+      "part": "north charcoal frontage",
+      "source": "architect-4.jpg and architect-7.jpg originals",
+      "assertion": "Outer right2bay stack has broad pane with one right loggia; central broad charcoal bays have two glazed sections divided by broad silver panel and paired narrow dark side niches. Geometry confines central glass to exposed aperture between niches; side niches remain source-supported.",
+      "confidence": "high assembly; approximate repetitive niche/upper-floor variation"
+    },
+    {
+      "part": "gallery southwest corner",
+      "source": "survey165/187 boundary and independent dense ray review",
+      "assertion": "Last gallery bay glazing clipped1.35m along its end to avoid adjacent diagonal masonry/core. Core and source bay retained; full36-point triangle scan checks brick burial including triangles passed by original3-point lattice.",
+      "confidence": "geometry-derived clipping; native corner/source review pending"
+    }
+  ],
+  "cameras": [
+    {
+      "name": "front",
+      "metadata": "/Users/blackmad/Code/map-recall2-source-data/models/haparandaweg-8-338/raw/2026-10-07/front-metadata.json",
+      "crop": "models/haparandaweg-8-338/processed/2026-10-07/front.jpg",
+      "target": [
+        4.8741,
+        52.39418
+      ],
+      "fov": 105,
+      "pitch": 20,
+      "viewport": [
+        1600,
+        1100
+      ],
+      "timestamp": "2025-09-29T08:07:24Z"
+    },
+    {
+      "name": "rear",
+      "metadata": "/Users/blackmad/Code/map-recall2-source-data/models/haparandaweg-8-338/raw/2026-10-07/rear-metadata.json",
+      "crop": "models/haparandaweg-8-338/processed/2026-10-07/rear.jpg",
+      "target": [
+        4.8741,
+        52.39418
+      ],
+      "fov": 105,
+      "pitch": 20,
+      "viewport": [
+        1600,
+        1100
+      ],
+      "timestamp": "2025-10-02T09:54:17Z"
+    }
+  ],
+  "nativeCameraStations": [
+    {
+      "side": "south",
+      "position": [
+        0,
+        8,
+        60
+      ],
+      "target": [
+        0,
+        12,
+        0
+      ]
+    },
+    {
+      "side": "north",
+      "position": [
+        0,
+        12,
+        -65
+      ],
+      "target": [
+        0,
+        17,
+        -15
+      ]
+    },
+    {
+      "side": "courtyard",
+      "position": [
+        0,
+        8,
+        35
+      ],
+      "target": [
+        0,
+        15,
+        0
+      ]
+    }
+  ],
+  "geometry": {
+    "sha256": "ddd28d76b0112d43d5b7ab16fa754c4fa5003a83b827bc33058f410927534352",
+    "triangles": 27935,
+    "bytes": 316088,
+    "bounds": [
+      [
+        -35.227203369140625,
+        0.0021121884366763766,
+        -28.629869398193378
+      ],
+      [
+        35.627017974853516,
+        32.70788622414063,
+        30.028612073974628
+      ]
+    ],
+    "downwardRoofFaces": 0,
+    "firstHitGlazing": {
+      "checks": 3840,
+      "failures": 461,
+      "denseChecks": 46080,
+      "unclassifiedTriangles": 0,
+      "denseFailureSamples": [],
+      "sampleFailures": [
+        {
+          "pane": 26,
+          "target": [
+            32.93271090387916,
+            2.2613513760402144,
+            -25.593476148544752
+          ],
+          "normal": [
+            0.024992191160202872,
+            0,
+            -0.9996876464081228
+          ],
+          "hit": "white",
+          "distance": 0.8328415640840735
+        },
+        {
+          "pane": 27,
+          "target": [
+            33.15759688733127,
+            0.7615348556326584,
+            -25.587853998958447
+          ],
+          "normal": [
+            0.024992191160202872,
+            0,
+            -0.9996876464081228
+          ],
+          "hit": "white",
+          "distance": 0.8331375705210533
+        },
+        {
+          "pane": 28,
+          "target": [
+            29.005855654369185,
+            2.2613513760402144,
+            -25.692944948917805
+          ],
+          "normal": [
+            0.024992191160204447,
+            0,
+            -0.9996876464081227
+          ],
+          "hit": "white",
+          "distance": 0.8285010246511048
+        },
+        {
+          "pane": 29,
+          "target": [
+            29.230741637821303,
+            0.7615348556326584,
+            -25.687322799331497
+          ],
+          "normal": [
+            0.024992191160204447,
+            0,
+            -0.9996876464081227
+          ],
+          "hit": "white",
+          "distance": 0.8287189589105259
+        },
+        {
+          "pane": 30,
+          "target": [
+            25.08224395269746,
+            2.2613513760402144,
+            -25.79241374929085
+          ],
+          "normal": [
+            0.02499219116020441,
+            0,
+            -0.9996876464081227
+          ],
+          "hit": "white",
+          "distance": 0.8285183142310947
+        },
+        {
+          "pane": 31,
+          "target": [
+            25.307129936149575,
+            0.7615348556326584,
+            -25.78679159970455
+          ],
+          "normal": [
+            0.02499219116020441,
+            0,
+            -0.9996876464081227
+          ],
+          "hit": "white",
+          "distance": 0.8288143893304686
+        },
+        {
+          "pane": 32,
+          "target": [
+            21.155388703187484,
+            2.2613513760402144,
+            -25.892477200100913
+          ],
+          "normal": [
+            0.025472501312200333,
+            0,
+            -0.9996755231958517
+          ],
+          "hit": "white",
+          "distance": 0.828013905808505
+        },
+        {
+          "pane": 33,
+          "target": [
+            21.380274686639602,
+            0.7615348556326584,
+            -25.886746932253338
+          ],
+          "normal": [
+            0.025472501312200333,
+            0,
+            -0.9996755231958517
+          ],
+          "hit": "white",
+          "distance": 0.8281250457874664
+        },
+        {
+          "pane": 34,
+          "target": [
+            17.2322635336915,
+            2.2613513760402144,
+            -25.9924325326497
+          ],
+          "normal": [
+            0.024980188953552005,
+            0,
+            -0.999687946391195
+          ],
+          "hit": "white",
+          "distance": 0.8285319776890878
+        },
+        {
+          "pane": 35,
+          "target": [
+            17.45725763540489,
+            0.7615348556326584,
+            -25.9868103830634
+          ],
+          "normal": [
+            0.024980188953552005,
+            0,
+            -0.999687946391195
+          ],
+          "hit": "white",
+          "distance": 0.8288308628124594
+        },
+        {
+          "pane": 36,
+          "target": [
+            13.304921752005788,
+            2.2613513760402144,
+            -26.09190133302275
+          ],
+          "normal": [
+            0.024992191160204447,
+            0,
+            -0.9996876464081227
+          ],
+          "hit": "white",
+          "distance": 0.8284994989961987
+        },
+        {
+          "pane": 37,
+          "target": [
+            13.5298077354579,
+            0.7615348556326584,
+            -26.086279183436446
+          ],
+          "normal": [
+            0.024992191160204447,
+            0,
+            -0.9996876464081227
+          ],
+          "hit": "white",
+          "distance": 0.8287187208712796
+        },
+        {
+          "pane": 38,
+          "target": [
+            9.381796582509804,
+            2.2613513760402144,
+            -26.193748735143853
+          ],
+          "normal": [
+            0.026900401080722062,
+            0,
+            -0.9996381187318221
+          ],
+          "hit": "white",
+          "distance": 0.8308805855532618
+        },
+        {
+          "pane": 39,
+          "target": [
+            9.60679068422319,
+            0.7615348556326584,
+            -26.187694112512453
+          ],
+          "normal": [
+            0.026900401080722062,
+            0,
+            -0.9996381187318221
+          ],
+          "hit": "white",
+          "distance": 0.8307471642019634
+        },
+        {
+          "pane": 40,
+          "target": [
+            5.454454800824089,
+            2.2613513760402144,
+            -26.293217535516906
+          ],
+          "normal": [
+            0.026913324600467713,
+            0,
+            -0.9996377708745053
+          ],
+          "hit": "white",
+          "distance": 0.830878444210969
+        },
+        {
+          "pane": 41,
+          "target": [
+            5.679340784276202,
+            0.7615348556326584,
+            -26.287162912885503
+          ],
+          "normal": [
+            0.026913324600467713,
+            0,
+            -0.9996377708745053
+          ],
+          "hit": "white",
+          "distance": 0.8306653303020647
+        }
+      ],
+      "failureGroups": [
+        [
+          "white:35:-25",
+          20
+        ],
+        [
+          "white:30:-25",
+          20
+        ],
+        [
+          "white:25:-25",
+          20
+        ],
+        [
+          "white:20:-25",
+          20
+        ],
+        [
+          "white:15:-25",
+          40
+        ],
+        [
+          "white:10:-25",
+          20
+        ],
+        [
+          "white:5:-25",
+          20
+        ],
+        [
+          "concrete:5:-30",
+          1
+        ],
+        [
+          "concrete:0:-30",
+          1
+        ],
+        [
+          "concrete:-5:-30",
+          1
+        ],
+        [
+          "concrete:-10:-30",
+          1
+        ],
+        [
+          "concrete:-15:-30",
+          2
+        ],
+        [
+          "concrete:-20:-30",
+          1
+        ],
+        [
+          "white:-35:-25",
+          20
+        ],
+        [
+          "white:-35:-20",
+          40
+        ],
+        [
+          "white:-35:-15",
+          20
+        ],
+        [
+          "white:-35:-10",
+          20
+        ],
+        [
+          "white:-35:-5",
+          20
+        ],
+        [
+          "white:-20:30",
+          7
+        ],
+        [
+          "white:-25:30",
+          7
+        ],
+        [
+          "white:-20:15",
+          12
+        ],
+        [
+          "white:-20:10",
+          24
+        ],
+        [
+          "white:-20:5",
+          12
+        ],
+        [
+          "white:-20:0",
+          12
+        ],
+        [
+          "white:-20:-5",
+          12
+        ],
+        [
+          "copper:-20:-10",
+          8
+        ],
+        [
+          "copper:-15:-10",
+          8
+        ],
+        [
+          "copper:-10:-10",
+          8
+        ],
+        [
+          "copper:-5:-15",
+          24
+        ],
+        [
+          "copper:0:-15",
+          8
+        ],
+        [
+          "copper:0:-10",
+          16
+        ],
+        [
+          "copper:5:-10",
+          16
+        ]
+      ]
+    },
+    "openCourt": [
+      {
+        "from": [
+          0,
+          10,
+          0
+        ],
+        "clear": true
+      },
+      {
+        "from": [
+          15,
+          10,
+          5
+        ],
+        "clear": true
+      },
+      {
+        "from": [
+          -10,
+          8,
+          20
+        ],
+        "clear": true
+      }
+    ],
+    "pending": "Independent/sourcecomparison/gallery/live neighbors/suppression/performance. CPU not acceptance."
+  },
+  "risks": [
+    "Native gallery/live-game, exact suppression/school retention/performance still pending; HOLD until reviewed.",
+    "Airbridge endpoint/height approximate16\u201317m photo-derived; no survey175 floor identity claim.",
+    "Inner175 cantilever/gallery function unresolved; surveyed slab retained without invented glass.",
+    "Pavilion glazing inset0.9m and cap0.5m fascia are photo-guided; inspect native views against architect3.",
+    "North niche/upper-floor variations remain an approximation; actual source/photo game-camera comparison required.",
+    "All unclassified dense failures must remain visible and block geometry check; original3point raw hits are retained separately from rail/trim classification.",
+    "Source publication/shared registration remain coordinator-owned and pending."
+  ],
+  "frontageRepair20261007": {
+    "sourceCommit": "09b242cbc167782d6532ac5d4778021592b83af6",
+    "privateSourcePath": "models/haparandaweg-8-338/raw/2026-10-07",
+    "references": [
+      "architect-3.jpg",
+      "architect-4.jpg",
+      "architect-7.jpg",
+      "front-pano.jpg",
+      "front-metadata.json"
+    ],
+    "derivedReference": "models/haparandaweg-8-338/processed/2026-10-07/front.jpg",
+    "assertions": [
+      {
+        "part": "survey165 courtyard gallery",
+        "source": "BAG/3DBAG footprint + architect-3.jpg",
+        "trait": "Facade follows exposed surveyed short and diagonal edges, not the internal straight chord",
+        "confidence": "survey perimeter measured, bay assignment photo approximation"
+      },
+      {
+        "part": "south khaki ground storey",
+        "source": "architect-3.jpg and official 2025 front panorama",
+        "trait": "Commercial glazed/door openings continue beneath wing, with threshold and contrasting frames",
+        "confidence": "visible arrangement, metric subdivisions approximate"
+      },
+      {
+        "part": "south khaki lower glazed row",
+        "source": "architect-3.jpg and official 2025 front panorama",
+        "trait": "Continuous curtain strip with slender white mullions, three residential rows remain above",
+        "confidence": "high recognition, exact joinery approximate"
+      },
+      {
+        "part": "shop awning",
+        "source": "official 2025 front panorama",
+        "trait": "Projecting alternating yellow/white strip geometry, no name lettering",
+        "confidence": "visible source, 1.5m projection and mounting levels approximate"
+      }
+    ],
+    "frozenMesh": {
+      "sha256": "2a71e5b43ab894ea7a93f90868867196c722bca80cbf3df0a3ecf1bf0a7f00e1",
+      "triangles": 27649,
+      "bytes": 315008
+    },
+    "reviewState": "HOLD for fresh independent and native review; full 4m scan retains corner/canopy obstructions, raw evidence preserved"
+  },
+  "integration": {
+    "productionSha256": "824920011fa98d29b7b9f7e2af5d4e787d58ddb16df3ce6212104a3b4c7a2993",
+    "triangles": 27649,
+    "bytes": 316556,
+    "runtimePalette": "Decoded production/draft named material colours identical; no detail removal",
+    "nativeReview": "artifacts/haparandaweg-8-338-native/report.json",
+    "mappedPlaceAudit": "artifacts/haparandaweg-8-338-native/mapped-place-audit.json",
+    "productionExteriorProbes": "artifacts/haparandaweg-8-338/external-independent-review/production-summary.json",
+    "reviewLimits": [
+      "Full4m checker retains486 sparse failures/25flagged pane triangles; case-specific external classification and raw rays retained.",
+      "Original interior court camera[7,10,19] failed; corrected externally validated court views stored separately.",
+      "Chrome Metal desktop and emulated iPhone13; no physical mobile guarantee."
+    ],
+    "sourceFirstCommit": "09b242cbc167782d6532ac5d4778021592b83af6",
+    "acceptedEvidenceArchiveCommit": null,
+    "panCourtReview": "artifacts/haparandaweg-8-338-native/pan-court-report.json",
+    "actualCourtOriginValidation": "artifacts/haparandaweg-8-338-native/actual-court-origins.json",
+    "stationaryPanMaxMeasuredDisplacementMetres": {
+      "desktop": 0.001567,
+      "touch": 0.007405
+    }
+  },
+  "acceptance": {
+    "assetSHA256": "824920011fa98d29b7b9f7e2af5d4e787d58ddb16df3ce6212104a3b4c7a2993",
+    "assetBytes": 316556,
+    "triangles": 27649,
+    "sourceFirstCommit": "09b242cbc167782d6532ac5d4778021592b83af6",
+    "acceptedSourceCommit": "60963ceb098e9649e57759948aaa2c3f3030e93e",
+    "rootReview": "artifacts/haparandaweg-8-338-native/root-review.md",
+    "independentReview": "artifacts/haparandaweg-8-338-native/independent-review/review.md",
+    "fullDiagnostic": "FAILED: constant4m checker retains 486 sparse failures and 25 flagged triangle cases; individually classified exterior first-hit checks and actual native source views support scoped acceptance. No blanket exemptions or thresholds changed.",
+    "limits": "Photo-guided bridge dimensions; roof175 exact function unresolved; target pyramid absent; installed Metal60Hz bounded timing and emulated touch, no physical-mobile/full-game claim. Hosted review pending."
+  }
+}

@@ -1,0 +1,11 @@
+# Haparandaweg 8–338 local acceptance
+
+Production `824920011fa98d29b7b9f7e2af5d4e787d58ddb16df3ce6212104a3b4c7a2993`: 316,556 bytes, 27,649 triangles, original flat-color geometry at scale 1/north 0. Source archive `60963ceb098e9649e57759948aaa2c3f3030e93e` (`models/haparandaweg-8-338/checkpoints/production-82492001`) was published before this model commit.
+
+Root and fresh independent reviewer inspected original current/architect source photographs against gallery and actual game views. Reviewed principal north red/charcoal grids and loggias, south three-row khaki frontage/glazed band/striped awning, white courtyard gallery rails, open raised deck, bridge with open air, and pale projecting pavilion cap. Source-supported assemblies remain visible. Exact BAG0363100012252993 and OSMw855553958 suppression loads after the GLB; actual aborted-load fallback remains drawable. School signature and 152 resident ordinary neighbors are retained. Installed footprint has its hole; no mapped/curated POI lies inside. Physical clicking clears generic card/highlight; no apartment destination was invented.
+
+**Full constant4m checker remains FAILED: 486 sparse samples, 25 triangle flags.** Preserved raw ray/closed-volume classifications and independently recomputed external groups distinguish foreground corner, real rails/bridge/equipment and invalid inside-volume origins from buried panes. Intended valid glass hits are within 0.002m; selected gallery rays have no brick. Failed cameras/harnesses remain archived. Shared asset/POI contracts, lint and diff checks passed; compilation is not visual acceptance.
+
+Actual active-state camera gestures on desktop and emulated touch retain ordinary windows and ground-floor doors, with subcentimetre stationary rider displacement. Five invariant-controlled Chrome154 Metal runs give median 16.7ms/p95 16.7–16.8ms at60Hz. No broad speedup, full-game or physical-mobile guarantee. Bridge dimensions are photo-guided; roof175 function remains unresolved; target pyramidal roof is absent. This is local acceptance; hosted verification remains pending.
+
+Native reports and fresh independent/root review are archived privately with reproducible checks and failed evidence. Public source-first commit remains 09b242cbc167782d6532ac5d4778021592b83af6.

@@ -623,11 +623,11 @@
       "id": "haparandaweg-requested-buildings",
       "task": "Buildings along Haparandaweg requested by user",
       "priority": "high",
-      "status": "first-parent-hosted-accepted-remaining-pending",
+      "status": "school-hosted-second-parent-local-accepted-release-pending",
       "owner": "root",
-      "validation": "All 522 official addresses resolve through explicit VBO/BAG links to 17 physical parents. First parent 0363100012244095 (Het 4e Gymnasium) passed source, independent, gallery and live-game review and fresh hosted verification. Remaining 15 in-use parents need source/model review; one permit-only parent remains deferred.",
+      "validation": "All 522 official addresses resolve to 17 physical parents. School first parent is hosted-reviewed. Apartment second parent passed scoped root and fresh independent source/native review; exact masks, actual missing-GLB fallback, school/152 drawable neighbors, ordinary physical click and running desktop/touch pans verified. Constant4m checker486/25 remains failed with source-backed exterior classifications; bounded timing/approximation limits retained. Private accepted evidence published before model commit. Remaining14 in-use parents need source/model review; one permit-only parent remains deferred.",
       "sourceCommit": "fc18134851149129315e2c9e539427a628f5de73",
-      "nextAction": "Continue the remaining 16 physical parents, preserving the permit-only deferral. The first school is deployed at native scale with genuine destination n4337412612, sourced west entrance, physical architectural card, exact replacement masks and retained resident neighbors. Earlier visual/performance failures remain archived; acceptance does not claim physical mobile performance or general antialias overhead.",
+      "nextAction": "Publish and verify the second physical parent on the hosted site, then continue the remaining15 parents preserving the permit-only deferral. Preserve the genuine school destination and source facts; apartments do not get invented POIs. Keep failed diagnostics and device limits visible.",
       "firstParent": {
         "bagId": "0363100012244095",
         "modelId": "haparandaweg-2-4",
@@ -637,7 +637,17 @@
         "publicCommit": "5ed408db4b58768bfc6e98c082fed46121a40228"
       },
       "acceptedSourceCommit": "d71d6e18646df491173b8557d3dc3a68f898f1bb",
-      "hostedSourceCommit": "67bd93da2d1c8d73b0befc5efc246bddfec92b09"
+      "hostedSourceCommit": "67bd93da2d1c8d73b0befc5efc246bddfec92b09",
+      "secondParent": {
+        "bagId": "0363100012252993",
+        "modelId": "haparandaweg-8-338",
+        "assetSHA256": "824920011fa98d29b7b9f7e2af5d4e787d58ddb16df3ce6212104a3b4c7a2993",
+        "addressCount": 165,
+        "status": "local-reviewed-release-pending",
+        "sourceCommit": "09b242cbc167782d6532ac5d4778021592b83af6",
+        "acceptedSourceCommit": "60963ceb098e9649e57759948aaa2c3f3030e93e",
+        "destinationPolicy": "Ordinary physical apartment asset; no landmarkId or fabricated route destination."
+      }
     },
     {
       "id": "concertgebouw-original-detail",
@@ -1696,6 +1706,28 @@
       "completedOn": "2026-10-07",
       "hostedSourceCommit": "bffe50a7fa8aaa04791dccaa896a5ca99a9c3b78",
       "sourceUrlFixCommit": "234f08da5870dea20fe3628b77f4df0270543dfe"
+    },
+    {
+      "id": "occii-gable-feedback",
+      "task": "OCCII upper gable trim and roundel cutwork",
+      "priority": "high",
+      "status": "source-investigated-repair-pending",
+      "modelId": "occii",
+      "feedbackId": "56aad0df-0be9-478c-812a-e99f9e9d9086",
+      "reportedAssetVersion": "99ed270e19f3ac00",
+      "requestedOn": "2026-10-07",
+      "nextAction": "Claim fresh Firestore update-time before repair. Clip window-head trim to actual arcade and replace unsupported long red spokes with source-supported bounded roundel cutwork. Preserve submitted screenshot and current operator/register originals in private source pack; gallery/native/independent and hosted verification required before resolution."
+    },
+    {
+      "id": "melkweg-roof-crosses-feedback",
+      "task": "Melkweg unsupported freestanding pale roof crosses",
+      "priority": "high",
+      "status": "source-investigated-repair-pending",
+      "modelId": "melkweg",
+      "feedbackId": "26b15ccf-5dd2-46e9-abf3-a103dc2ab5d5",
+      "reportedAssetVersion": "a55b13361380a702",
+      "requestedOn": "2026-10-07",
+      "nextAction": "Claim fresh Firestore update-time before repair. Remove three unsupported pale freestanding roof crosses. Real entrance gable has small pale multi-point stars mounted flat around the oculus/sign; real dark wall tie anchors also appear lower down. Any replacement ornaments must match sourced wall planes and locations. Preserve user evidence and raw sources; native/gallery/independent and hosted checks required before resolution."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"
