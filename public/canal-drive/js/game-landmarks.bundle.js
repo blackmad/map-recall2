@@ -9059,6 +9059,180 @@ Map source: ${osmUrl(places[i][0])}`);
         ]
       },
       heightMetres: 7.28
+    },
+    {
+      id: "haparandaweg-11",
+      name: "Haparandaweg 11",
+      modelUrl: "./models/haparandaweg-11.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012104965",
+        "w268508547"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.87328,
+          52.394975
+        ],
+        headingDegrees: 0,
+        lengthMetres: 16.3,
+        widthMetres: 15.7
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      surveyed: {
+        anchor: [
+          4.87328,
+          52.394975
+        ],
+        northOffsetDegrees: 0,
+        source: "PDOK BAG0363100012104965 / AHN5 2023 bounded roof"
+      },
+      materialOverrides: {
+        brick: "#826354",
+        stone: "#535e5c",
+        ochre: "#98906b",
+        gold: "#c3ae7d",
+        copper: "#448ca0",
+        frame: "#303b3c",
+        white: "#bfc4be",
+        glass: "#7d9291",
+        concrete: "#a8aaa0",
+        slate: "#626768",
+        green: "#747d58",
+        dark: "#434a4a",
+        bronze: "#37798d"
+      },
+      preservePositionPrecision: true,
+      attribution: {
+        title: "Haparandaweg 11 original architecture",
+        author: "Map Recall",
+        sourceUrl: "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012104965",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native metre geometry. Private source archive 999a83d778cd61615a3d1b2521d7605e4121437b models/haparandaweg-11; supplementary current six-window source evidence 77019d7c738212ccec9a5c8c58e6ce3749ed7bc4 models/haparandaweg-11/supplemental/2026-10-07-six-window. Ordinary building; no automatic POI added."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.87339064977362,
+              52.395003470710215
+            ],
+            [
+              4.873331609206694,
+              52.39504350635012
+            ],
+            [
+              4.8731660654388556,
+              52.39495192259305
+            ],
+            [
+              4.87321376512114,
+              52.39491938747367
+            ],
+            [
+              4.87340608085267,
+              52.39490293854837
+            ],
+            [
+              4.873317381296253,
+              52.39496293298757
+            ],
+            [
+              4.87339064977362,
+              52.395003470710215
+            ]
+          ]
+        ]
+      },
+      heightMetres: 7.187
+    },
+    {
+      id: "haparandaweg-13",
+      name: "Haparandaweg 13",
+      modelUrl: "./models/haparandaweg-13.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012104964",
+        "w268508403"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.873399,
+          52.394953
+        ],
+        headingDegrees: 0,
+        lengthMetres: 12,
+        widthMetres: 12
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      surveyed: {
+        anchor: [
+          4.873399,
+          52.394953
+        ],
+        northOffsetDegrees: 0,
+        source: "PDOK BAG0363100012104964 /AHN5 2023 bounded roof"
+      },
+      materialOverrides: {
+        brick: "#826354",
+        stone: "#535e5c",
+        ochre: "#98906b",
+        gold: "#c3ae7d",
+        copper: "#448ca0",
+        frame: "#303b3c",
+        white: "#bfc4be",
+        glass: "#7d9291",
+        concrete: "#a8aaa0",
+        slate: "#626768",
+        green: "#747d58",
+        dark: "#434a4a",
+        bronze: "#37798d"
+      },
+      preservePositionPrecision: true,
+      attribution: {
+        title: "Haparandaweg 13 original architecture",
+        author: "Map Recall",
+        sourceUrl: "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012104964",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native metre geometry. Private source archive 77019d7c738212ccec9a5c8c58e6ce3749ed7bc4 models/haparandaweg-13. Ordinary requested building, no automatic POI added."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.87339064977362,
+              52.395003470710215
+            ],
+            [
+              4.873317381296253,
+              52.39496293298757
+            ],
+            [
+              4.87340608085267,
+              52.39490293854837
+            ],
+            [
+              4.873417190142301,
+              52.394909080384686
+            ],
+            [
+              4.873479217925722,
+              52.39494340374535
+            ],
+            [
+              4.87339064977362,
+              52.395003470710215
+            ]
+          ]
+        ]
+      },
+      heightMetres: 7.15
     }
   ];
 

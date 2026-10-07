@@ -1,0 +1,85 @@
+{
+  "id": "haparandaweg-13",
+  "name": "Haparandaweg 13",
+  "modelUrl": "./models/haparandaweg-13.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012104964",
+    "w268508403"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.873399,
+      52.394953
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 12,
+    "widthMetres": 12
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.873399,
+      52.394953
+    ],
+    "northOffsetDegrees": 0,
+    "source": "PDOK BAG0363100012104964 /AHN5 2023 bounded roof"
+  },
+  "materialOverrides": {
+    "brick": "#826354",
+    "stone": "#535e5c",
+    "ochre": "#98906b",
+    "gold": "#c3ae7d",
+    "copper": "#448ca0",
+    "frame": "#303b3c",
+    "white": "#bfc4be",
+    "glass": "#7d9291",
+    "concrete": "#a8aaa0",
+    "slate": "#626768",
+    "green": "#747d58",
+    "dark": "#434a4a",
+    "bronze": "#37798d"
+  },
+  "preservePositionPrecision": true,
+  "attribution": {
+    "title": "Haparandaweg 13 original architecture",
+    "author": "Map Recall",
+    "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012104964",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native metre geometry. Private source archive 77019d7c738212ccec9a5c8c58e6ce3749ed7bc4 models/haparandaweg-13. Ordinary requested building, no automatic POI added."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.87339064977362,
+          52.395003470710215
+        ],
+        [
+          4.873317381296253,
+          52.39496293298757
+        ],
+        [
+          4.87340608085267,
+          52.39490293854837
+        ],
+        [
+          4.873417190142301,
+          52.394909080384686
+        ],
+        [
+          4.873479217925722,
+          52.39494340374535
+        ],
+        [
+          4.87339064977362,
+          52.395003470710215
+        ]
+      ]
+    ]
+  },
+  "heightMetres": 7.15
+}

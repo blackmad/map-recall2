@@ -21,7 +21,7 @@
     }
   ],
   "counts": {
-    "manual-model": 200,
+    "manual-model": 202,
     "procedural-kit": 15,
     "pending": 126,
     "catalogue-model": 7
@@ -4431,6 +4431,28 @@
       "origin": "Landmark catalogue",
       "status": "manual-model",
       "modelId": "haparandaweg-9",
+      "treatment": "building"
+    },
+    {
+      "id": "haparandaweg-11",
+      "name": "Haparandaweg 11",
+      "lat": 52.394975,
+      "lng": 4.87328,
+      "queueRank": 349,
+      "origin": "Landmark catalogue",
+      "status": "manual-model",
+      "modelId": "haparandaweg-11",
+      "treatment": "building"
+    },
+    {
+      "id": "haparandaweg-13",
+      "name": "Haparandaweg 13",
+      "lat": 52.394953,
+      "lng": 4.873399,
+      "queueRank": 350,
+      "origin": "Landmark catalogue",
+      "status": "manual-model",
+      "modelId": "haparandaweg-13",
       "treatment": "building"
     }
   ]

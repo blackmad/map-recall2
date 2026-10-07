@@ -1,0 +1,524 @@
+{
+  "id": "haparandaweg-13",
+  "status": "local-production-accepted-hosted-pending",
+  "identity": {
+    "bagId": "0363100012104964",
+    "vboId": "0363010001010868",
+    "addressId": "0363200000485207",
+    "osmAlias": "w268508403",
+    "constructionYear": 2002,
+    "surveyRoofArea": 60.47,
+    "vboUsableArea": 140,
+    "officialRelationship": "VBO pand.href exactly references BAG UUID0322e6b9-f465-563d-a55a-6e391ced5326",
+    "poiAudit": {
+      "pointsInsideActualFootprint": [
+        {
+          "id": "n2738399294",
+          "tags": {
+            "addr:city": "Amsterdam",
+            "addr:housenumber": "13",
+            "addr:postcode": "1013BD",
+            "addr:street": "Haparandaweg",
+            "source": "BAG",
+            "source:date": "2014-02-11"
+          }
+        }
+      ],
+      "policy": "ordinary requested industrial building, no invented curated destination/card/signage"
+    }
+  },
+  "sourceArchive": {
+    "stagedPack": "artifacts/haparandaweg-13/source-pack/models/haparandaweg-13",
+    "modelPath": "models/haparandaweg-13",
+    "sourceCommit": "77019d7c738212ccec9a5c8c58e6ce3749ed7bc4",
+    "state": "Private originals committed, pushed and verified before production integration",
+    "cachedReuseCommit": "999a83d / earlier9e8a"
+  },
+  "sources": [
+    {
+      "file": "artifacts/haparandaweg-13/raw/adjacencies2025.json",
+      "rawPath": "artifacts/haparandaweg-13/raw/adjacencies2025.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_10_02_09_32_34_00488/adjacencies/",
+      "sha256": "483a51f7a2b3633ecae813a266152088cc18c8aa1fbca1b413f4e31988e9a1cb",
+      "retrievedOn": "2026-10-07",
+      "kind": "original HTTP response body",
+      "accessState": "200 success; reused published11 cached originals for front/context inputs",
+      "rights": "Municipal original panoramas reference only; no pixels in mesh. BAG/3DBAG open data; OSM ODbL. Beeldbank viewer-shell rights unknown."
+    },
+    {
+      "file": "artifacts/haparandaweg-13/raw/front2025-pano.jpg",
+      "rawPath": "artifacts/haparandaweg-13/raw/front2025-pano.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_09_32_34_00488/equirectangular/panorama_8000.jpg",
+      "sha256": "de7fdf730e0cd6b40d9725a90fc4449012b93aaeee7913dc32b4519c7cbed2f3",
+      "retrievedOn": "2026-10-07",
+      "kind": "original HTTP response body",
+      "accessState": "200 success; reused published11 cached originals for front/context inputs",
+      "rights": "Municipal original panoramas reference only; no pixels in mesh. BAG/3DBAG open data; OSM ODbL. Beeldbank viewer-shell rights unknown."
+    },
+    {
+      "file": "artifacts/haparandaweg-13/raw/osm-map.xml",
+      "rawPath": "artifacts/haparandaweg-13/raw/osm-map.xml",
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=4.8728,52.3948,4.8735,52.3953",
+      "sha256": "9c0fac7206a9b48425080d585b41f0f7f599fe471525cb37bad4e5ccd7dd63a1",
+      "retrievedOn": "2026-10-07",
+      "kind": "original HTTP response body",
+      "accessState": "200 success; reused published11 cached originals for front/context inputs",
+      "rights": "Municipal original panoramas reference only; no pixels in mesh. BAG/3DBAG open data; OSM ODbL. Beeldbank viewer-shell rights unknown."
+    },
+    {
+      "file": "artifacts/haparandaweg-13/raw/east2025-pano.jpg",
+      "rawPath": "artifacts/haparandaweg-13/raw/east2025-pano.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_09_32_34_00484/equirectangular/panorama_8000.jpg",
+      "sha256": "06007ab68450c5a53d2b9b10d033f305ba308455c52c63d69805a3508bda3764",
+      "retrievedOn": "2026-10-07",
+      "kind": "original HTTP response body",
+      "accessState": "200 success; reused published11 cached originals for front/context inputs",
+      "rights": "Municipal original panoramas reference only; no pixels in mesh. BAG/3DBAG open data; OSM ODbL. Beeldbank viewer-shell rights unknown."
+    },
+    {
+      "file": "artifacts/haparandaweg-13/raw/neighbors-bag.json",
+      "rawPath": "artifacts/haparandaweg-13/raw/neighbors-bag.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?bbox=4.8728,52.39485,4.87355,52.39532&f=json&limit=100",
+      "sha256": "c28c6c59bedfbfaa6e07bf4ffbbc8af0aee67280f90fd05aef3cf90dbac613d8",
+      "retrievedOn": "2026-10-07",
+      "kind": "original HTTP response body",
+      "accessState": "200 success; reused published11 cached originals for front/context inputs",
+      "rights": "Municipal original panoramas reference only; no pixels in mesh. BAG/3DBAG open data; OSM ODbL. Beeldbank viewer-shell rights unknown."
+    },
+    {
+      "file": "artifacts/haparandaweg-13/raw/vbo.json",
+      "rawPath": "artifacts/haparandaweg-13/raw/vbo.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?identificatie=0363010001010868&f=json",
+      "sha256": "18922d450fb9fc34d7f286287b0e6f1db9cab7f33970c00a6d1eb4a64e631d31",
+      "retrievedOn": "2026-10-07",
+      "kind": "original HTTP response body",
+      "accessState": "200 success; reused published11 cached originals for front/context inputs",
+      "rights": "Municipal original panoramas reference only; no pixels in mesh. BAG/3DBAG open data; OSM ODbL. Beeldbank viewer-shell rights unknown."
+    },
+    {
+      "file": "artifacts/haparandaweg-13/raw/beeldbank.html",
+      "rawPath": "artifacts/haparandaweg-13/raw/beeldbank.html",
+      "url": "https://archief.amsterdam/beeldbank/?q=Haparandaweg%2013",
+      "sha256": "ea308a007fb654717e5a151c7c5c214ff3da628f39beca59824a6e2b2aa4e994",
+      "retrievedOn": "2026-10-07",
+      "kind": "original HTTP response body",
+      "accessState": "200 success; reused published11 cached originals for front/context inputs",
+      "rights": "Municipal original panoramas reference only; no pixels in mesh. BAG/3DBAG open data; OSM ODbL. Beeldbank viewer-shell rights unknown."
+    },
+    {
+      "file": "artifacts/haparandaweg-13/raw/3dbag.json",
+      "rawPath": "artifacts/haparandaweg-13/raw/3dbag.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012104964",
+      "sha256": "6789d1a99d5c635433901b38e7baf81fedbec8eec2272e5b8e1b54a81a0b5df8",
+      "retrievedOn": "2026-10-07",
+      "kind": "original HTTP response body",
+      "accessState": "200 success; reused published11 cached originals for front/context inputs",
+      "rights": "Municipal original panoramas reference only; no pixels in mesh. BAG/3DBAG open data; OSM ODbL. Beeldbank viewer-shell rights unknown."
+    },
+    {
+      "file": "artifacts/haparandaweg-13/raw/bag.json",
+      "rawPath": "artifacts/haparandaweg-13/raw/bag.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/0322e6b9-f465-563d-a55a-6e391ced5326?f=json",
+      "sha256": "5bb15fa2b395f796fff06909aec25b4c2777d65f145a31a2cccb05ac0c6b6aba",
+      "retrievedOn": "2026-10-07",
+      "kind": "original HTTP response body",
+      "accessState": "200 success; reused published11 cached originals for front/context inputs",
+      "rights": "Municipal original panoramas reference only; no pixels in mesh. BAG/3DBAG open data; OSM ODbL. Beeldbank viewer-shell rights unknown."
+    },
+    {
+      "file": "artifacts/haparandaweg-13/raw/adjacencies2021.json",
+      "rawPath": "artifacts/haparandaweg-13/raw/adjacencies2021.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002051_pano_0000_001268/adjacencies/",
+      "sha256": "5e62441ad286c225736e3f1d34cc69798cbfad125a33c8f4bc578d1d2bbbb20d",
+      "retrievedOn": "2026-10-07",
+      "kind": "original HTTP response body",
+      "accessState": "200 success; reused published11 cached originals for front/context inputs",
+      "rights": "Municipal original panoramas reference only; no pixels in mesh. BAG/3DBAG open data; OSM ODbL. Beeldbank viewer-shell rights unknown."
+    },
+    {
+      "file": "artifacts/haparandaweg-13/raw/east2021-pano.jpg",
+      "rawPath": "artifacts/haparandaweg-13/raw/east2021-pano.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2021/03/19/TMX7316010203-002051/pano_0000_001264/equirectangular/panorama_8000.jpg",
+      "sha256": "8c428fa4dafe626e804f09b5bf1410e66e6661ca173052fdcc0a7341ea04509c",
+      "retrievedOn": "2026-10-07",
+      "kind": "original HTTP response body",
+      "accessState": "200 success; reused published11 cached originals for front/context inputs",
+      "rights": "Municipal original panoramas reference only; no pixels in mesh. BAG/3DBAG open data; OSM ODbL. Beeldbank viewer-shell rights unknown."
+    },
+    {
+      "file": "artifacts/haparandaweg-13/raw/front2021-metadata.json",
+      "rawPath": "artifacts/haparandaweg-13/raw/front2021-metadata.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002051_pano_0000_001268/",
+      "sha256": "8b154352832e38d14b6d5200061a2e4ea4c42031d8cf1148cee697279f7b80e8",
+      "retrievedOn": "2026-10-07",
+      "kind": "original HTTP response body",
+      "accessState": "200 success; reused published11 cached originals for front/context inputs",
+      "rights": "Municipal original panoramas reference only; no pixels in mesh. BAG/3DBAG open data; OSM ODbL. Beeldbank viewer-shell rights unknown."
+    },
+    {
+      "file": "artifacts/haparandaweg-13/raw/frontwest2025-pano.jpg",
+      "rawPath": "artifacts/haparandaweg-13/raw/frontwest2025-pano.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_09_32_34_00491/equirectangular/panorama_8000.jpg",
+      "sha256": "808c25deeb2ffb93a767dd0ee9a9ec669182ddbddc044f317c77676f71771c40",
+      "retrievedOn": "2026-10-07",
+      "kind": "original HTTP response body",
+      "accessState": "200 success; reused published11 cached originals for front/context inputs",
+      "rights": "Municipal original panoramas reference only; no pixels in mesh. BAG/3DBAG open data; OSM ODbL. Beeldbank viewer-shell rights unknown."
+    },
+    {
+      "file": "artifacts/haparandaweg-13/raw/front2021-pano.jpg",
+      "rawPath": "artifacts/haparandaweg-13/raw/front2021-pano.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2021/03/19/TMX7316010203-002051/pano_0000_001268/equirectangular/panorama_8000.jpg",
+      "sha256": "50d2cb473d90267b93f7b78d2996d85af27005709a39b122ec43a355121b18f5",
+      "retrievedOn": "2026-10-07",
+      "kind": "original HTTP response body",
+      "accessState": "200 success; reused published11 cached originals for front/context inputs",
+      "rights": "Municipal original panoramas reference only; no pixels in mesh. BAG/3DBAG open data; OSM ODbL. Beeldbank viewer-shell rights unknown."
+    },
+    {
+      "file": "artifacts/haparandaweg-13/raw/east2025-metadata.json",
+      "rawPath": "artifacts/haparandaweg-13/raw/east2025-metadata.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_10_02_09_32_34_00484/",
+      "sha256": "c5cce5eef8c56beb824b3788ebea4faf5afbaf3232a5a47842db6d83ec8e4e7b",
+      "retrievedOn": "2026-10-07",
+      "kind": "original HTTP response body",
+      "accessState": "200 success; reused published11 cached originals for front/context inputs",
+      "rights": "Municipal original panoramas reference only; no pixels in mesh. BAG/3DBAG open data; OSM ODbL. Beeldbank viewer-shell rights unknown."
+    },
+    {
+      "file": "artifacts/haparandaweg-13/raw/front2025-metadata.json",
+      "rawPath": "artifacts/haparandaweg-13/raw/front2025-metadata.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_10_02_09_32_34_00488/",
+      "sha256": "d16a0dd2bb623af3e98a8e9e3badfd1575590187743344b8bd69bf524b0074ae",
+      "retrievedOn": "2026-10-07",
+      "kind": "original HTTP response body",
+      "accessState": "200 success; reused published11 cached originals for front/context inputs",
+      "rights": "Municipal original panoramas reference only; no pixels in mesh. BAG/3DBAG open data; OSM ODbL. Beeldbank viewer-shell rights unknown."
+    },
+    {
+      "file": "artifacts/haparandaweg-13/raw/east2021-metadata.json",
+      "rawPath": "artifacts/haparandaweg-13/raw/east2021-metadata.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002051_pano_0000_001264/",
+      "sha256": "eef9f2dc5a0ef3593eef99f1761fac4369c611dd729810c61c86dabc726e6068",
+      "retrievedOn": "2026-10-07",
+      "kind": "original HTTP response body",
+      "accessState": "200 success; reused published11 cached originals for front/context inputs",
+      "rights": "Municipal original panoramas reference only; no pixels in mesh. BAG/3DBAG open data; OSM ODbL. Beeldbank viewer-shell rights unknown."
+    },
+    {
+      "file": "artifacts/haparandaweg-13/raw/frontwest2025-metadata.json",
+      "rawPath": "artifacts/haparandaweg-13/raw/frontwest2025-metadata.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_10_02_09_32_34_00491/",
+      "sha256": "483304a9fcb413ea41ac936e73089060b62eb0d507a250c4679c99eb4394454e",
+      "retrievedOn": "2026-10-07",
+      "kind": "original HTTP response body",
+      "accessState": "200 success; reused published11 cached originals for front/context inputs",
+      "rights": "Municipal original panoramas reference only; no pixels in mesh. BAG/3DBAG open data; OSM ODbL. Beeldbank viewer-shell rights unknown."
+    }
+  ],
+  "cameras": [
+    {
+      "name": "front2021",
+      "panoId": "TMX7316010203-002051_pano_0000_001268",
+      "timestamp": "2021-03-19T12:23:56.659250Z",
+      "location": [
+        4.87307118533363,
+        52.3947653409932
+      ],
+      "heading": 46.82872326391051,
+      "pitch": 8,
+      "fov": 65,
+      "viewport": [
+        1600,
+        1050
+      ],
+      "reference": "artifacts/haparandaweg-13/processed/front2021.jpg",
+      "nativePosition": [
+        -22.268164573357,
+        2.3,
+        20.89020063674866
+      ]
+    },
+    {
+      "name": "front2025",
+      "panoId": "2025_10_02_09_32_34_00488",
+      "timestamp": "2025-10-02T09:56:49Z",
+      "location": [
+        4.873078646252159,
+        52.39473808577285
+      ],
+      "heading": 42.28946053282871,
+      "pitch": 8,
+      "fov": 65,
+      "viewport": [
+        1600,
+        1050
+      ],
+      "reference": "artifacts/haparandaweg-13/processed/front2025.jpg",
+      "nativePosition": [
+        -21.76135088037473,
+        2.3,
+        23.9242517664033
+      ]
+    },
+    {
+      "name": "frontwest2025",
+      "panoId": "2025_10_02_09_32_34_00491",
+      "timestamp": "2025-10-02T09:56:50Z",
+      "location": [
+        4.872853744012667,
+        52.39475333211716
+      ],
+      "heading": 59.031955156839274,
+      "pitch": 8,
+      "fov": 65,
+      "viewport": [
+        1600,
+        1050
+      ],
+      "reference": "artifacts/haparandaweg-13/processed/frontwest2025.jpg",
+      "nativePosition": [
+        -37.03876399120811,
+        2.3,
+        22.227028717647954
+      ]
+    },
+    {
+      "name": "east2021",
+      "panoId": "TMX7316010203-002051_pano_0000_001264",
+      "timestamp": "2021-03-19T12:23:54.574380Z",
+      "location": [
+        4.873368172522,
+        52.3947466258306
+      ],
+      "heading": 5.208223851884529,
+      "pitch": 8,
+      "fov": 65,
+      "viewport": [
+        1600,
+        1050
+      ],
+      "reference": "artifacts/haparandaweg-13/processed/east2021.jpg",
+      "nativePosition": [
+        -2.094083712234728,
+        2.3,
+        22.97357253778756
+      ]
+    },
+    {
+      "name": "east2025",
+      "panoId": "2025_10_02_09_32_34_00484",
+      "timestamp": "2025-10-02T09:56:47Z",
+      "location": [
+        4.873373070538456,
+        52.394716435805705
+      ],
+      "heading": 3.8265165804518984,
+      "pitch": 8,
+      "fov": 65,
+      "viewport": [
+        1600,
+        1050
+      ],
+      "reference": "artifacts/haparandaweg-13/processed/east2025.jpg",
+      "nativePosition": [
+        -1.761365723370743,
+        2.3,
+        26.334326109014228
+      ]
+    }
+  ],
+  "assertions": [
+    {
+      "part": "ownership",
+      "source": "Official BAG/VBO and east2021-scope vertex projection",
+      "date": "2026-10-07 /2021-03-19",
+      "confidence": "high",
+      "assertion": "13 is separate rear/east rectangle behind retained11 street charcoal wing. Exposed southeast edge2\u21923\u21924 only. White Interall/NobleBouw warehouse is neighbor, not13."
+    },
+    {
+      "part": "glazing",
+      "source": "east2021 original panorama; east2025 current assembly confirmation partly tree hidden",
+      "confidence": "photo-supported assembly; approximate dimensions/subdivisions",
+      "assertion": "Dark horizontal cladding, broad upper left pane plus narrow right light, dark spandrel, lower glazed/door tier subdivided into three approximately; lower fence and righttree hide exact detailing. Aperture covers last47% of southeast edge; lower0.35\u21922.75 and upper3.72\u21926.20m approximate abovepavement."
+    },
+    {
+      "part": "roof",
+      "source": "AHN5 2023 LoD2.2 plane/0.44NAP ground",
+      "confidence": "survey",
+      "assertion": "One bounded near-flat plane7.09\u21927.15m aboveground; no equipment maximum extrusion. No courtyard hole or raised passage."
+    },
+    {
+      "part": "party/rear",
+      "source": "Surveyed exact outlines/neighborparents",
+      "confidence": "scope high; hidden surfaces unknown",
+      "assertion": "No invented windows on hidden party/rear walls. No signage supported on13."
+    }
+  ],
+  "access": {
+    "beeldbank": "Exact bounded address query200 JavaScript shell; no archive photos inspected.",
+    "heritage": "2002 modern ordinary industrial structure; historic register not applicable.",
+    "retry": "Pythonurllib SSL retrieval failed2026-10-07; curl bounded retries succeeded same inputs.",
+    "bouwdossiers": "Not inspected; hidden rear remains unknown."
+  },
+  "geometry": {
+    "sha256": "f0257cb44f19da99e9557b8b1c2207607da809904d2fec38af4c91392ddb1dd0",
+    "triangles": 661,
+    "bytes": 18152,
+    "bounds": [
+      [
+        -5.54430212667348,
+        8.213549341995474e-06,
+        -5.6208977699279785
+      ],
+      [
+        5.562451502589007,
+        7.152251197308808,
+        5.650627136230469
+      ]
+    ],
+    "downwardRoofFaces": 0,
+    "roofSupportProbes": [
+      {
+        "point": [
+          0.1292419731616974,
+          7.112807114919026,
+          1.8422549168268838
+        ],
+        "firstHit": "slate",
+        "delta": 0
+      },
+      {
+        "point": [
+          -0.22048133611679077,
+          7.124789396921793,
+          -1.8881461222966511
+        ],
+        "firstHit": "slate",
+        "delta": 8.881784197001252e-16
+      }
+    ],
+    "firstHitGlazing": {
+      "checks": 30,
+      "failures": 0,
+      "denseChecks": 360,
+      "unclassifiedTriangles": 0,
+      "denseFailureSamples": [],
+      "sampleFailures": [],
+      "failureGroups": []
+    },
+    "frontRecessAndNeighborOutsideScope": [
+      {
+        "from": [
+          8,
+          1,
+          7
+        ],
+        "clear": true
+      },
+      {
+        "from": [
+          -8,
+          1,
+          -6
+        ],
+        "clear": true
+      }
+    ],
+    "pending": "Public commit and hosted verification only"
+  },
+  "comparison": {
+    "sha256": "1d9d7dfb704bb8acfbc46469a493b55c277187b732686565f911cebf54572785",
+    "renderer": "CPU Cycles12 samples native source-camera yaw and8degreepitch, two sourceviews + higher/opposite",
+    "finding": "Correct scoped tall southeast glazing/spandrel assembly visible at parent13 rightside; giant blankleftwall in isolated render is party wall hidden by retained11. Gallery/live must review joint11/13 context.",
+    "acceptance": "Local production accepted by root and fresh independent review; earlier CPU draft is preserved separately; hosted verification pending."
+  },
+  "risks": [
+    "Lower southeast tier exact subdivisions/door geometry partly obscured; photograph-guided approximation.",
+    "Most13 mass occluded by11 in weststations.",
+    "Current2025 trees occlude rightglazing; leaf-off2021 used for bounded assembly."
+  ],
+  "draftGeometry": {
+    "sha256": "1d9d7dfb704bb8acfbc46469a493b55c277187b732686565f911cebf54572785",
+    "triangles": 661,
+    "bytes": 17660,
+    "bounds": [
+      [
+        -5.5441301316036515,
+        -0.000335776590315362,
+        -5.6208977699279785
+      ],
+      [
+        5.562279507519179,
+        7.1525951874484655,
+        5.650627136230469
+      ]
+    ],
+    "downwardRoofFaces": 0,
+    "roofSupportProbes": [
+      {
+        "point": [
+          0.12924192349116007,
+          7.112921555836995,
+          1.842082897822062
+        ],
+        "firstHit": "slate",
+        "delta": 0
+      },
+      {
+        "point": [
+          -0.22048139572143555,
+          7.124846617380777,
+          -1.888260761896769
+        ],
+        "firstHit": "slate",
+        "delta": 0
+      }
+    ],
+    "firstHitGlazing": {
+      "checks": 30,
+      "failures": 0,
+      "denseChecks": 360,
+      "unclassifiedTriangles": 0,
+      "denseFailureSamples": [],
+      "sampleFailures": [],
+      "failureGroups": []
+    },
+    "frontRecessAndNeighborOutsideScope": [
+      {
+        "from": [
+          8,
+          1,
+          7
+        ],
+        "clear": true
+      },
+      {
+        "from": [
+          -8,
+          1,
+          -6
+        ],
+        "clear": true
+      }
+    ],
+    "pending": "Independent/sourcecomparison/gallery/live neighbors/suppression/performance. CPU not acceptance."
+  },
+  "productionAcceptance": {
+    "sha256": "f0257cb44f19da99e9557b8b1c2207607da809904d2fec38af4c91392ddb1dd0",
+    "bytes": 18152,
+    "triangles": 661,
+    "status": "root-and-fresh-independent-local-accepted",
+    "nativeReport": "artifacts/haparandaweg-13-native-f0257cb4/report.json",
+    "independentReport": "artifacts/haparandaweg-11-13-joint-independent/review.md",
+    "panReport": "artifacts/haparandaweg-11-13-joint-pan/pan-performance-report.json",
+    "validation": "Root and fresh independent source/gallery/native joint recognition, exact masks, retained neighbors, ordinary physical click and fresh actual failed-download fallback passed. Actual running stationary desktop and touch-emulated camera pans retain surrounding windows and doors. Each view has90 frame intervals median16.7ms/p9516.7\u201316.8ms on Metal M4 Pro, bounded observation only. No invented POI destination/card/highlight. Earlier source/geometry failures remain preserved.",
+    "limits": "Lower aperture/entrance details approximate; unseen rear unknown. Millimetric boundary probe misses and intentional handle occlusions retained. No physical-phone or performance-improvement claim."
+  },
+  "acceptedSourceArchive": {
+    "commit": "e01d259d564d87933995a5e6e51e8dc601312e9c",
+    "path": "models/haparandaweg-13/checkpoints/accepted-f0257cb4",
+    "remoteVerifiedAtCommit": "16d644906c974150de90690eca7a8918e154cd6c",
+    "status": "published"
+  }
+}
