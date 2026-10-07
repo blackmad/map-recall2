@@ -7894,5 +7894,102 @@
       ]
     },
     "heightMetres": 31.5
+  },
+  {
+    "id": "haparandaweg-9",
+    "name": "Haparandaweg 9",
+    "modelUrl": "./models/haparandaweg-9.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012122663",
+      "w268508574"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.8731,
+        52.39506
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 28,
+      "widthMetres": 30
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.8731,
+        52.39506
+      ],
+      "northOffsetDegrees": 0,
+      "source": "PDOK BAG0363100012122663 /AHN5 2023 bounded roof"
+    },
+    "materialOverrides": {
+      "brick": "#826354",
+      "stone": "#535e5c",
+      "ochre": "#98906b",
+      "gold": "#c3ae7d",
+      "copper": "#448ca0",
+      "frame": "#303b3c",
+      "white": "#bfc4be",
+      "glass": "#7d9291",
+      "concrete": "#a8aaa0",
+      "slate": "#626768",
+      "green": "#747d58",
+      "dark": "#434a4a",
+      "bronze": "#37798d"
+    },
+    "preservePositionPrecision": true,
+    "attribution": {
+      "title": "Haparandaweg 9 original architecture",
+      "author": "Map Recall",
+      "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012122663",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native metre geometry. Private source archive e8a5653bd166de54478f2bd11eea59ca38fe21d9 models/haparandaweg-9. Ordinary requested building; no automatic POI added."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.8731660654388556,
+            52.39495192259305
+          ],
+          [
+            4.873331609206694,
+            52.39504350635012
+          ],
+          [
+            4.873132703340451,
+            52.39517842012251
+          ],
+          [
+            4.872890541167243,
+            52.39504506123514
+          ],
+          [
+            4.87296508749492,
+            52.3949944247574
+          ],
+          [
+            4.872961730636645,
+            52.394979841154225
+          ],
+          [
+            4.8730866776573265,
+            52.39496905907497
+          ],
+          [
+            4.8731165293961505,
+            52.39498570799813
+          ],
+          [
+            4.8731660654388556,
+            52.39495192259305
+          ]
+        ]
+      ]
+    },
+    "heightMetres": 7.28
   }
 ]

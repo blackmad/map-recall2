@@ -1,0 +1,401 @@
+{
+  "id": "haparandaweg-9",
+  "status": "local-production-accepted-hosted-pending",
+  "identity": {
+    "bagId": "0363100012122663",
+    "osmAlias": "w268508574",
+    "vboId": "0363010001010865",
+    "addressId": "0363200000485205",
+    "address": "Haparandaweg 9, 1013BD Amsterdam",
+    "constructionYear": 2002,
+    "status": "Pand in gebruik",
+    "poiPolicy": "Ordinary explicitly requested physical building. No fabricated destination, map-name signage or trivia. Exact footprint scan found only the address node, no genuine curated/mapped place point."
+  },
+  "sourceArchive": {
+    "modelPath": "models/haparandaweg-9",
+    "stagedPack": "artifacts/haparandaweg-9/source-pack/models/haparandaweg-9",
+    "sourceCommit": "e8a5653bd166de54478f2bd11eea59ca38fe21d9",
+    "state": "Private source pack committed, pushed and verified before production integration",
+    "cachedReuseCommit": "cdbe87c8ed80de55c39dfc29fa2457519ea34a84",
+    "acceptedSourceCommit": "c563f910f1b0fa08df0e162893129f3dd1a30504"
+  },
+  "sources": [
+    {
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012122663",
+      "rawPath": "artifacts/haparandaweg-9/source-pack/models/haparandaweg-9/raw/2026-10-07/3dbag.json",
+      "sha256": "55bca45b96a9a52627d7e782c61a6c54a3e9687aa1dbb2d8412aebfb74b4a32a",
+      "accessState": "200",
+      "feature": "original response/reference; applicability described in assertions"
+    },
+    {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/fcc6112d-27b7-5d13-8113-4b696ba88df0?f=json",
+      "rawPath": "artifacts/haparandaweg-9/source-pack/models/haparandaweg-9/raw/2026-10-07/bag.json",
+      "sha256": "6cd014a40c363eab5bddb392da2999f756801cbb2e70c3b9a03d190656455fdd",
+      "accessState": "200",
+      "feature": "original response/reference; applicability described in assertions"
+    },
+    {
+      "url": "https://archief.amsterdam/beeldbank/?q=Haparandaweg%209",
+      "rawPath": "artifacts/haparandaweg-9/source-pack/models/haparandaweg-9/raw/2026-10-07/beeldbank.html",
+      "sha256": "ea308a007fb654717e5a151c7c5c214ff3da628f39beca59824a6e2b2aa4e994",
+      "accessState": "200",
+      "feature": "original response/reference; applicability described in assertions"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002051_pano_0000_001268/",
+      "rawPath": "artifacts/haparandaweg-9/source-pack/models/haparandaweg-9/raw/2026-10-07/front2021-metadata.json",
+      "sha256": "8b154352832e38d14b6d5200061a2e4ea4c42031d8cf1148cee697279f7b80e8",
+      "accessState": "200",
+      "feature": "original response/reference; applicability described in assertions"
+    },
+    {
+      "url": "https://t1.data.amsterdam.nl/panorama/2021/03/19/TMX7316010203-002051/pano_0000_001268/equirectangular/panorama_8000.jpg",
+      "rawPath": "artifacts/haparandaweg-9/source-pack/models/haparandaweg-9/raw/2026-10-07/front2021-pano.jpg",
+      "sha256": "50d2cb473d90267b93f7b78d2996d85af27005709a39b122ec43a355121b18f5",
+      "accessState": "200",
+      "feature": "original response/reference; applicability described in assertions"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_10_02_09_32_34_00488/",
+      "rawPath": "artifacts/haparandaweg-9/source-pack/models/haparandaweg-9/raw/2026-10-07/front2025-metadata.json",
+      "sha256": "d16a0dd2bb623af3e98a8e9e3badfd1575590187743344b8bd69bf524b0074ae",
+      "accessState": "200",
+      "feature": "original response/reference; applicability described in assertions"
+    },
+    {
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_09_32_34_00488/equirectangular/panorama_8000.jpg",
+      "rawPath": "artifacts/haparandaweg-9/source-pack/models/haparandaweg-9/raw/2026-10-07/front2025-pano.jpg",
+      "sha256": "de7fdf730e0cd6b40d9725a90fc4449012b93aaeee7913dc32b4519c7cbed2f3",
+      "accessState": "200",
+      "feature": "original response/reference; applicability described in assertions"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_10_02_09_32_34_00491/",
+      "rawPath": "artifacts/haparandaweg-9/source-pack/models/haparandaweg-9/raw/2026-10-07/frontwest2025-metadata.json",
+      "sha256": "483304a9fcb413ea41ac936e73089060b62eb0d507a250c4679c99eb4394454e",
+      "accessState": "200",
+      "feature": "original response/reference; applicability described in assertions"
+    },
+    {
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_09_32_34_00491/equirectangular/panorama_8000.jpg",
+      "rawPath": "artifacts/haparandaweg-9/source-pack/models/haparandaweg-9/raw/2026-10-07/frontwest2025-pano.jpg",
+      "sha256": "808c25deeb2ffb93a767dd0ee9a9ec669182ddbddc044f317c77676f71771c40",
+      "accessState": "200",
+      "feature": "original response/reference; applicability described in assertions"
+    },
+    {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?bbox=4.8728,52.39485,4.87355,52.39532&f=json&limit=100",
+      "rawPath": "artifacts/haparandaweg-9/source-pack/models/haparandaweg-9/raw/2026-10-07/neighbors-bag.json",
+      "sha256": "c28c6c59bedfbfaa6e07bf4ffbbc8af0aee67280f90fd05aef3cf90dbac613d8",
+      "accessState": "200",
+      "feature": "original response/reference; applicability described in assertions"
+    },
+    {
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=4.8728,52.3948,4.8735,52.3953",
+      "rawPath": "artifacts/haparandaweg-9/source-pack/models/haparandaweg-9/raw/2026-10-07/osm-map.xml",
+      "sha256": "9c0fac7206a9b48425080d585b41f0f7f599fe471525cb37bad4e5ccd7dd63a1",
+      "accessState": "200",
+      "feature": "original response/reference; applicability described in assertions"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.8731,52.39506&radius=80&srid=4326&page_size=200&timestamp_after=2024-01-01",
+      "rawPath": "artifacts/haparandaweg-9/source-pack/models/haparandaweg-9/raw/2026-10-07/panos-recent.json",
+      "sha256": "3e774c3021d0395383e8e4e1ac7785b25cb5314050234e84c8e9d2e6df9ba52e",
+      "accessState": "200",
+      "feature": "original response/reference; applicability described in assertions"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.8731,52.39506&radius=80&srid=4326&page_size=200",
+      "rawPath": "artifacts/haparandaweg-9/source-pack/models/haparandaweg-9/raw/2026-10-07/panos.json",
+      "sha256": "7899ba24105b4ac00d3f6eab331b2648bbe01e079f246f898a465112aa1cb159",
+      "accessState": "200",
+      "feature": "original response/reference; applicability described in assertions"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_10_02_09_32_34_00389/",
+      "rawPath": "artifacts/haparandaweg-9/source-pack/models/haparandaweg-9/raw/2026-10-07/reused-school-north-metadata.json",
+      "sha256": "52b1f885fa4ce4214b78ecb54ce08e6c0399a41c69c1f719f6c01e770b178c2c",
+      "accessState": "200",
+      "feature": "original response/reference; applicability described in assertions"
+    },
+    {
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_10_02_09_32_34_00389/equirectangular/panorama_8000.jpg",
+      "rawPath": "artifacts/haparandaweg-9/source-pack/models/haparandaweg-9/raw/2026-10-07/reused-school-north-pano.jpg",
+      "sha256": "f43672550dc50884dcebff7974bd4043c8931f9b51319a8b3e9dfb65c8e02332",
+      "accessState": "200",
+      "feature": "original response/reference; applicability described in assertions"
+    },
+    {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?identificatie=0363010001010865&f=json",
+      "rawPath": "artifacts/haparandaweg-9/source-pack/models/haparandaweg-9/raw/2026-10-07/vbo.json",
+      "sha256": "129a8c2b0a8eb78e6f970a33466cd21a9c5784e5a89b9e963816a83f1c427c08",
+      "accessState": "200",
+      "feature": "original response/reference; applicability described in assertions"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002497_pano_0006_000409/",
+      "rawPath": "artifacts/haparandaweg-9/source-pack/models/haparandaweg-9/raw/2026-10-07/west2022-metadata.json",
+      "sha256": "eda14e45784fe63de802d4689f8ce3e70f8cf421311399f9635d3b9faa17f64a",
+      "accessState": "200",
+      "feature": "original response/reference; applicability described in assertions"
+    },
+    {
+      "url": "https://t1.data.amsterdam.nl/panorama/2022/04/08/TMX7316010203-002497/pano_0006_000409/equirectangular/panorama_8000.jpg",
+      "rawPath": "artifacts/haparandaweg-9/source-pack/models/haparandaweg-9/raw/2026-10-07/west2022-pano.jpg",
+      "sha256": "c1d60981ff0d9c3f126990829a601044439cb55cf20cd4288ffbb161ac1d0b6e",
+      "accessState": "200",
+      "feature": "original response/reference; applicability described in assertions"
+    }
+  ],
+  "architecturalAssertions": [
+    {
+      "part": "whole physical Pand",
+      "source": "Official address/VBO/BAG raw responses and OSM way268508574",
+      "assertion": "One 2002 in-use building, approximately403.85m2 surveyed footprint, no courtyard holes. Adjoining11 is separately owned.",
+      "confidence": "official measured identity/scope"
+    },
+    {
+      "part": "roof",
+      "source": "3DBAG LoD2.2 RoofSurface11, AHN5 2023",
+      "assertion": "One bounded near-flat roof7.18–7.28m above0.471mNAP. Apparent slanted classification is a0.22-degree fitted plane, not a pitched/gabled roof. Raw equipment/point maximum7.978mNAP is not a whole-footprint height.",
+      "confidence": "survey measured"
+    },
+    {
+      "part": "south office front edge5→6",
+      "source": "front2021 leaf-off and front2025 current perspective crops",
+      "assertion": "Charcoal horizontal cladding, red-brown brick plinth, three narrow upper windows and two lower narrow windows; tall left stair/door glazed stack with opaque mid-band.",
+      "confidence": "high assembly/count; photo-approximate window dimensions"
+    },
+    {
+      "part": "short return edge6→7",
+      "source": "front2021 and front2025",
+      "assertion": "Charcoal return with tall upper pane, shorter lower opening and dark opaque mid-band; follows surveyed diagonal edge.",
+      "confidence": "high assembly; approximate metric joinery"
+    },
+    {
+      "part": "west oblique office edge3→4",
+      "source": "front2021, frontwest2025",
+      "assertion": "Lighter horizontally clad return, upper grouped windows and ground openings. Trees/cars partly obscure lower arrangement. Model uses three repeated framed groups, calibrated to real perimeter, with source-supported exposed upper glazing.",
+      "confidence": "medium upper grouping; lower subdivision uncertain"
+    },
+    {
+      "part": "recessed workshop edge7→0",
+      "source": "front2021-scope.jpg actual BAG vertex projection, front2025",
+      "assertion": "Number9 owns LEFT pale workshop bay/blue roller door, with blank upper sign zone. Number11 owns RIGHT blue roller door and upper four-pane window group. Current2025 source shows left roller partially open; closed blue original leaf approximates its permanent door assembly without transient workshop interior.",
+      "confidence": "high surveyed scope; door closure approximate"
+    },
+    {
+      "part": "signage",
+      "source": "front2021/front2025 original photos",
+      "assertion": "Real business sign present on upper pale panel; omitted because ordinary business name lettering is not required for structural recognition. No invented building-name word added.",
+      "confidence": "high source presence"
+    },
+    {
+      "part": "rear/party walls",
+      "source": "BAG neighbor polygons, bounded west2022 panorama",
+      "assertion": "Rear/opposite source station sees Archangelkade4 courtyard buildings, not9. Retain context image as applicability failure, do not copy its orange facade. Unobserved adjoining wall faces keep bounded native shell without invented openings.",
+      "confidence": "scope high; rear visible material unresolved"
+    }
+  ],
+  "access": {
+    "retrievedOn": "2026-10-07",
+    "boundedBeeldbank": "Exact Haparandaweg9 query HTTP200 JavaScript viewer shell; not inspected photo/drawing evidence.",
+    "heritageRegister": "Modern2002 ordinary industrial building, no historic monument claim; historic register workflow not applicable.",
+    "bouwdossiers": "No inspected permit drawing; facade metric joinery remains photo-guided, contemporary BAG/survey establishes massing.",
+    "network": "Python urllib failed local CA certificate verification on three bounded attempts per source. Verified curl succeeded HTTP200; failure logs retained. No permanent source-unavailability claim."
+  },
+  "cameras": [
+    {
+      "name": "front2021",
+      "panoId": "TMX7316010203-002051_pano_0000_001268",
+      "timestamp": "2021-03-19T12:23:56.659250Z",
+      "location": [
+        4.87307118533363,
+        52.3947653409932
+      ],
+      "heading": 3.4149441833426537,
+      "pitch": 8,
+      "fov": 65,
+      "viewport": [
+        1600,
+        1050
+      ],
+      "viewerUrl": "https://data.amsterdam.nl/data/geozoek?center=52.3947653409932%2C4.87307118533363&locatie=52.3947653409932%2C4.87307118533363&heading=3.4149&pitch=8&fov=65&lagen=pano-pano2025bi",
+      "reference": "artifacts/haparandaweg-9/processed/front2021.jpg",
+      "applicability": "Actual9 facade; panorama north-centre publisher convention, no vehicle heading applied again"
+    },
+    {
+      "name": "front2025",
+      "panoId": "2025_10_02_09_32_34_00488",
+      "timestamp": "2025-10-02T09:56:49Z",
+      "location": [
+        4.873078646252159,
+        52.39473808577285
+      ],
+      "heading": 2.317935476108196,
+      "pitch": 8,
+      "fov": 65,
+      "viewport": [
+        1600,
+        1050
+      ],
+      "viewerUrl": "https://data.amsterdam.nl/data/geozoek?center=52.39473808577285%2C4.873078646252159&locatie=52.39473808577285%2C4.873078646252159&heading=2.3179&pitch=8&fov=65&lagen=pano-pano2025bi",
+      "reference": "artifacts/haparandaweg-9/processed/front2025.jpg",
+      "applicability": "Actual9 facade; panorama north-centre publisher convention, no vehicle heading applied again"
+    },
+    {
+      "name": "frontwest2025",
+      "panoId": "2025_10_02_09_32_34_00491",
+      "timestamp": "2025-10-02T09:56:50Z",
+      "location": [
+        4.872853744012667,
+        52.39475333211716
+      ],
+      "heading": 26.105073746940025,
+      "pitch": 8,
+      "fov": 65,
+      "viewport": [
+        1600,
+        1050
+      ],
+      "viewerUrl": "https://data.amsterdam.nl/data/geozoek?center=52.39475333211716%2C4.872853744012667&locatie=52.39475333211716%2C4.872853744012667&heading=26.1051&pitch=8&fov=65&lagen=pano-pano2025bi",
+      "reference": "artifacts/haparandaweg-9/processed/frontwest2025.jpg",
+      "applicability": "Actual9 facade; panorama north-centre publisher convention, no vehicle heading applied again"
+    },
+    {
+      "name": "west2022",
+      "panoId": "TMX7316010203-002497_pano_0006_000409",
+      "timestamp": "2022-04-08T08:35:18.585160Z",
+      "location": [
+        4.87272017941474,
+        52.3951606172978
+      ],
+      "heading": 113.46675258488786,
+      "pitch": 8,
+      "fov": 100,
+      "viewport": [
+        1600,
+        1050
+      ],
+      "viewerUrl": "https://data.amsterdam.nl/data/geozoek?center=52.3951606172978%2C4.87272017941474&locatie=52.3951606172978%2C4.87272017941474&heading=113.4668&pitch=8&fov=65&lagen=pano-pano2025bi",
+      "reference": "artifacts/haparandaweg-9/processed/west2022.jpg",
+      "applicability": "Adjacent Archangelkade4 occludes9; not used to author9 facade"
+    }
+  ],
+  "nativeCameraStations": [
+    {
+      "name": "sourcefront2021",
+      "position": [
+        -1.96,
+        2.3,
+        32.8
+      ],
+      "target": [
+        0,
+        3.5,
+        0
+      ],
+      "fov": 65
+    },
+    {
+      "name": "southwestlower",
+      "position": [
+        -24,
+        5,
+        32
+      ],
+      "target": [
+        0,
+        3.5,
+        5
+      ]
+    },
+    {
+      "name": "higher",
+      "position": [
+        25,
+        24,
+        35
+      ],
+      "target": [
+        0,
+        3,
+        0
+      ]
+    },
+    {
+      "name": "opposite",
+      "position": [
+        -28,
+        12,
+        -30
+      ],
+      "target": [
+        0,
+        3,
+        0
+      ]
+    }
+  ],
+  "geometry": {
+    "sha256": "b5e64d531df33d825943c0c713af8f0b6b91aff7870f8934ae1ece7def4f8e79",
+    "triangles": 1752,
+    "bytes": 36232,
+    "bounds": [
+      [
+        -14.343626976013184,
+        -3.884632048833936e-05,
+        -13.186814229729288
+      ],
+      [
+        15.733219146728516,
+        7.280748026007987,
+        12.135307233574503
+      ]
+    ],
+    "downwardRoofFaces": 0,
+    "firstHitGlazing": {
+      "checks": 114,
+      "failures": 0,
+      "denseChecks": 1368,
+      "unclassifiedTriangles": 0,
+      "denseFailureSamples": [],
+      "sampleFailures": [],
+      "failureGroups": []
+    },
+    "frontRecessAndNeighborOutsideScope": [
+      {
+        "from": [
+          2,
+          1,
+          11
+        ],
+        "clear": true
+      },
+      {
+        "from": [
+          7,
+          1,
+          14
+        ],
+        "clear": true
+      }
+    ],
+    "pending": "Independent/sourcecomparison/gallery/live neighbors/suppression/performance. CPU not acceptance."
+  },
+  "comparison": {
+    "referenceScopeOverlay": "artifacts/haparandaweg-9/processed/front2021-scope.jpg",
+    "cpuFront": "artifacts/haparandaweg-9/cpu-front2021.png",
+    "cpuHigher": "artifacts/haparandaweg-9/cpu-higher.png",
+    "cpuOpposite": "artifacts/haparandaweg-9/cpu-opposite.png",
+    "decision": "CPU front retains actual8.6m charcoal front,3/2narrow rows,tall glazing and only left workshop bay. Native review must inspect neighbor11 retention and verify west-window/door approximations.",
+    "acceptance": "Pending root inspection, independent failure review, native gallery/live source comparison, exact suppression and neighbors, startup/performance and desktop/touch stationary-camera pan. CPU tests/render do not establish acceptance."
+  },
+  "risks": [
+    "Western ground opening subdivisions partly occluded; retained approximation must be visible in review.",
+    "Rear/party-wall source material/openings unresolved; bounded source-shell treatment only.",
+    "Left workshop roller modeled closed rather than transient partly open captured state.",
+    "No independent/native/gallery/live/performance acceptance performed by worker.",
+    "Source pack publication and shared registration remain coordinator-owned."
+  ]
+}

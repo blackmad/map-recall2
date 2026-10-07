@@ -21,7 +21,7 @@
     }
   ],
   "counts": {
-    "manual-model": 199,
+    "manual-model": 200,
     "procedural-kit": 15,
     "pending": 126,
     "catalogue-model": 7
@@ -4420,6 +4420,17 @@
       "origin": "Landmark catalogue",
       "status": "manual-model",
       "modelId": "haparandaweg-8-338",
+      "treatment": "building"
+    },
+    {
+      "id": "haparandaweg-9",
+      "name": "Haparandaweg 9",
+      "lat": 52.39506,
+      "lng": 4.8731,
+      "queueRank": 348,
+      "origin": "Landmark catalogue",
+      "status": "manual-model",
+      "modelId": "haparandaweg-9",
       "treatment": "building"
     }
   ]

@@ -1,0 +1,11 @@
+# Haparandaweg 9 production review — 2026-10-07
+
+Scoped local production acceptance PASS for exact SHA256 `11c8aea6e9d43520207db55f95a60bed4b27ffadc8ec6d06c76453cf1683dc37`, 36,708 bytes and 1,752 triangles. Root inspected dated source scope/CPU preflight, actual native source-front/current west/opposite views, gallery and stationary desktop/touch-emulated pans. Fresh independent review agrees. Charcoal office front, tall stair glass, dark short return, white western facade and left blue workshop bay match the observed parent; neighbor 11 retains its right bay.
+
+Production roof normals and 114 sparse / 1,368 dense glazing rays pass. Independent 456 rays have 152 normal passes and 11 classified physical recess self-occlusions among 304 oblique rays, preserved without a global exemption. Exact native footprint, north 0 / scale 1, no broad mask, resident BAG suppression and actual failed-download fallback pass. Empty own-pyramid inventory establishes no positive pyramid-drawing evidence. Neighbor 11, school and apartments remain. Actual physical click produces no fabricated POI card/highlight/destination.
+
+Actual running stationary rider desktop/touch-emulated camera pans retain surrounding windows and ground doors. Rider displacement stays below 0.000152 m. Each view records 90 frame intervals, median 16.7 ms and p95 16.7–16.8 ms on installed Chrome / ANGLE Metal M4 Pro. This is bounded observation, not an improvement or physical-phone claim.
+
+Two failed harness reports remain: the browser page-response listener was initially attached at the wrong event level; actual successful gallery/game responses in the refreshed completed report verify exact production bytes. Local deployment.json 404 is a metadata gap, not missing GLB. Western lower apertures remain source-occluded approximations; neighboring rear views do not certify unseen adjoining faces. Private source archive e8a5653bd166de54478f2bd11eea59ca38fe21d9 precedes production integration. Public commit and hosted verification remain pending.
+
+Accepted production evidence private commit `c563f910f1b0fa08df0e162893129f3dd1a30504`, path `models/haparandaweg-9/checkpoints/accepted-11c8aea6/`. All 261 required paths are committed; 82 new evidence checksum/byte comparisons passed.

@@ -1,3 +1,4 @@
+import {buildHaparandaweg9} from './haparandaweg-9-builder';
 import {buildHaparandaweg8338} from './haparandaweg-8-338-builder';
 import {buildAfrikahuis} from './afrikahuis-builder';
 import {buildHaparandaweg24} from './haparandaweg-2-4-builder';
@@ -407,6 +408,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='el-tawheed')buildElTawheed(w,d,helpers);
     else if(id==='haparandaweg-2-4')buildHaparandaweg24(w,d,helpers);
     else if(id==='haparandaweg-8-338')buildHaparandaweg8338(w,d,helpers);
+    else if(id==='haparandaweg-9')buildHaparandaweg9(w,d,helpers);
     else if(id==='valley')buildValley(w,d,helpers);
     else if(id==='ndsm-warehouse-complex')buildNdsmWarehouseComplex(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);

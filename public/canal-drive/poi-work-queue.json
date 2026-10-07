@@ -623,11 +623,11 @@
       "id": "haparandaweg-requested-buildings",
       "task": "Buildings along Haparandaweg requested by user",
       "priority": "high",
-      "status": "two-parents-hosted-accepted-remaining-pending",
+      "status": "two-parents-hosted-third-local-accepted-remaining-pending",
       "owner": "root",
       "validation": "School and apartment parents passed source, root/fresh independent gallery/native and exact hosted mesh reviews. Apartment load-failure fallback, exact suppression, retained school and 152 resident ordinary neighbors, physical ordinary click without invented card/destination verified on canonical Firebase host. Full constant4m checker486/25 remains failed with independently source-classified external rays; custom domain timed out and is not verified. Local active desktop/emulated-touch pans and bounded Metal timings remain preserved. Remaining14 in-use physical parents and one permit-only parent remain pending/deferred.",
       "sourceCommit": "fc18134851149129315e2c9e539427a628f5de73",
-      "nextAction": "Archive/review the Haparandaweg9 candidate, then integrate only after source/root/independent acceptance; remaining14 in-use parents and permit-only deferral retained.",
+      "nextAction": "Publish and verify hosted Haparandaweg 9, then continue Haparandaweg 11 source build; retain the other requested in-use parents and deferred permit-only parent.",
       "firstParent": {
         "bagId": "0363100012244095",
         "modelId": "haparandaweg-2-4",
@@ -652,11 +652,13 @@
         "hostedDeploymentRun": 37632078933
       },
       "thirdParentCandidate": {
-        "bagId": "0363100012122663",
         "modelId": "haparandaweg-9",
-        "status": "candidate-awaiting-independent-review",
-        "assetSHA256": "b5e64d531df33d825943c0c713af8f0b6b91aff7870f8934ae1ece7def4f8e79",
-        "destinationPolicy": "No invented ordinary-building POI."
+        "bagId": "0363100012122663",
+        "assetSHA256": "11c8aea6e9d43520207db55f95a60bed4b27ffadc8ec6d06c76453cf1683dc37",
+        "status": "local-accepted-hosted-pending",
+        "sourceCommit": "e8a5653bd166de54478f2bd11eea59ca38fe21d9",
+        "acceptedSourceCommit": "c563f910f1b0fa08df0e162893129f3dd1a30504",
+        "validation": "Root and fresh independent source/decoded/gallery/native recognition accepted; actual production browser responses, exact masks, neighbor 11 and school/apartments retention, physical ordinary click, fresh failed-download fallback and stationary desktop/touch-emulated pans passed. 90-frame intervals per view median 16.7ms/p95 16.7\u201316.8ms on M4 Pro; bounded observation only. Western lower openings approximate, no physical-phone or unseen rear claim."
       }
     },
     {
