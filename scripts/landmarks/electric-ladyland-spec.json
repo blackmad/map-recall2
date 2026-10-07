@@ -1,0 +1,48 @@
+{
+  "id": "electric-ladyland",
+  "name": "Electric Ladyland — four-shop ensemble",
+  "landmarkId": "extract_landmarks_238467800",
+  "modelUrl": "./models/electric-ladyland.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012168653",
+    "NL.IMBAG.Pand.0363100012169918"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.8807964,
+      52.3756175
+    ],
+    "headingDegrees": 19.853,
+    "lengthMetres": 19.41,
+    "widthMetres": 11.59
+  },
+  "surveyed": {
+    "anchor": [
+      4.8807964,
+      52.3756175
+    ],
+    "northOffsetDegrees": 70.147
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#694b43",
+    "red": "#914938",
+    "green": "#395444",
+    "stone": "#676b68",
+    "white": "#eee9da",
+    "dark": "#242a29",
+    "glass": "#53686b",
+    "slate": "#69625b",
+    "blue": "#436c7e"
+  },
+  "attribution": {
+    "title": "Electric Ladyland ensemble",
+    "author": "Map Recall",
+    "sourceUrl": "https://amsterdamopdekaart.nl/1850-1940/Tweede_Leliedwarsstraat/3-9",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native two-parent ensemble, interpreted from BAG/3DBAG, municipal monument212005 and dated references. Museum occupancy only number5; dimensions/joinery approximate."
+  }
+}

@@ -7,3 +7,5 @@ Root inspected native before/after, route/pin/card, missing-GLB and disabled fal
 Private raw current OSM/BAG sources, user screenshots and runtime evidence: source-data commit ce20c5f717902d0363d6151d51223d6386f1b4db, models/magna-plaza/checkpoints/exact-shell-suppression-20261007.
 
 Scoped visibility acceptance only. Legacy back panes are buried, end facades lack defining assemblies and signage uses generic pixel lettering; source-derived asset repair remains queued. Westerkerk's blank annex is separate geometry work.
+
+Hosted closeout: canonical and edumap now serve59dab6ae; desktop/touch/failure/layers reports complete with zeroerrors. Root inspected actual front/back,panned ordinaryfacades andrestoredfallback. All794coarse+794near+690extras ownvertices hidden; three shellfilters matchbothid/osmId. __kit has no targetaliases and no matchingresidentpyramids; no vacuous scene roofclaim. Evidence archivedbea10cd4 models/magna-plaza/checkpoints/hosted-59dab6ae-20261007. Full asset fidelity repair remains queued.

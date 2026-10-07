@@ -1,0 +1,194 @@
+{
+  "modelId": "electric-ladyland",
+  "poiId": "extract_landmarks_238467800",
+  "reviewedAt": "2026-10-07",
+  "status": "Local model accepted after root and independent source/gallery/native/game review; hosted publication pending",
+  "sourceArchive": {
+    "rawRecoveryCommit": "fc73c8bbd7d907846e133df99362c77e0080543a",
+    "supplementCommit": "3cbc70dd1a42ec2d2f77369ea4551564a4807298",
+    "acceptedSourceCpuCommit": "458d5d0485251692638ad3a3dc78db80bc600855",
+    "acceptedSourceCpuPath": "models/electric-ladyland/checkpoints/accepted-source-cpu-91c310ba-20261007",
+    "acceptedNativeCommit": "6f8fe12389a2d969fa29f6c36f503155b48c7d89",
+    "acceptedNativePath": "models/electric-ladyland/checkpoints/accepted-native-05312522-20261007"
+  },
+  "scope": {
+    "parents": [
+      "0363100012168653",
+      "0363100012169918"
+    ],
+    "meaning": "Northern/southern parent halves of the same four-shop ensemble, not museum plus rear annex.",
+    "museumOccupancy": "Number5 only; genuine route/card identity preserved by root integration.",
+    "excluded": "Rounded corner neighbor and all rear/neighbour buildings; exact suppression only.",
+    "footprint": "Current source polygons with concave rear recesses; scale1."
+  },
+  "primaryAssertions": [
+    {
+      "source": "Municipal monument212005 fresh official description",
+      "date": "1896 construction; designation2006; fetched2026-10-07",
+      "part": "whole ensemble",
+      "confidence": "high",
+      "assertion": "A.M.Bruning designed four shops with dwellings on four old parcels; basement, ground, two upper levels, attic; surrounding hipped slopes; four small/two large front dormers; three paired entrance groups; timber pilaster shopfront; stone plinth and cordons; green glazed/bright red brick accents; frieze/timber cornice."
+    },
+    {
+      "source": "3DBAG exact parent original responses",
+      "date": "AHN5 2023",
+      "part": "main/rear roofs",
+      "confidence": "medium",
+      "assertion": "Main front/rear slopes about50–52degrees, end slopes about50–54; broad shallow crown around12.8–13m above local ground, eaves around10.0–10.3m. Narrow rear fingers roughly10m, north central rear finger roughly4m. Semantic maxima up to13.7m on a fitted plane are not whole-building crest height."
+    },
+    {
+      "source": "BAG parent originals / installed footprint derived inventory",
+      "part": "geometry/identity",
+      "confidence": "high",
+      "assertion": "Both native footprints; original register1896 retained separately from conflicting BAG1905/1914 metadata."
+    }
+  ],
+  "datedViews": [
+    {
+      "id": "17347.webp",
+      "source": "https://amsterdamopdekaart.nl/1850-1940/Tweede_Leliedwarsstraat/3-9",
+      "caption": "Foto redactie, juli2020",
+      "rights": "©AmsterdamOpDeKaart.nl; exact licence unknown, reference only",
+      "part": "north-oblique whole ensemble",
+      "observed": "Upper six window groups per level: broad pair, separated narrow pair, broad pair, broad pair, separated narrow pair, broad pair. Narrow pairs are slight risalits. Dormer/hoist family and cornice visible; individual rear roof not visible."
+    },
+    {
+      "id": "17346.webp",
+      "source": "same editorial page",
+      "caption": "Foto redactie, juli2020",
+      "rights": "Reference only",
+      "part": "lower south-oblique",
+      "observed": "Four shop-display spans alternating three paired door groups; exposed basement glazing below raised shop sills, black lower framing, iron rails, shallow raised door thresholds, white carved/fluted pilasters. Plants/bench obscure portions; no invented basement openings under door groups."
+    },
+    {
+      "id": "10087.webp",
+      "source": "same editorial page",
+      "caption": "Foto redactie, oktober2013",
+      "rights": "Reference only",
+      "part": "opposite south-oblique whole ensemble",
+      "observed": "Opposite window/dormer order and hoist projections corroborate2020. Temporary boarded shop pane is historical and deliberately omitted from current candidate."
+    },
+    {
+      "id": "recording_2025-07-03_08-35-58_00218",
+      "source": "Amsterdam municipal panorama original8000px+metadata",
+      "part": "current facade and frontage",
+      "observed": "Agrees with2020 shopfront/upper group order, open shop glazing, paired dark doors and green/red courses. Source camera elevation0 is not surveyed camera height; derived full-FOV pavement crop shows contact and low plinth."
+    },
+    {
+      "id": "b_20241216_0911_Track06_Sphere_00058",
+      "source": "Amsterdam municipal leaf-off original8000px+metadata",
+      "part": "upper masonry/shopfront",
+      "observed": "White mullions and dark transoms; broad pairs and narrow stairwindow pairs remain distinct; ground pilaster capitals visible. Original near perspective crops hide roof and ground contact."
+    }
+  ],
+  "facadeInventory": {
+    "coordinateFrame": "Builder local X from north toward south, street frontZ≈4.835m; local groundY0. Values approximate from photo proportions, not photogrammetric survey.",
+    "windowGroupsX": [
+      -4.08,
+      -0.97,
+      2.2,
+      5.49,
+      8.68,
+      11.89
+    ],
+    "narrowPairsX": [
+      -0.97,
+      8.68
+    ],
+    "observedUpperLeavesPerFloor": 12,
+    "modeledUpperLeavesPerFloor": 12,
+    "shopfrontEdgesX": [
+      -5.7,
+      -2.47,
+      -0.49,
+      2.8,
+      5.04,
+      8.3,
+      10.32,
+      13.7
+    ],
+    "pairedDoorGroups": 3,
+    "shopSpans": 4,
+    "basementVisibleMinimum": 4,
+    "modeledBasementSpans": 4,
+    "dormers": {
+      "registerTotal": 6,
+      "small": 4,
+      "large": 2,
+      "placement": "Six grouped bays; large dormers over narrow-pair risalits; two projecting hoist beams supported by opposite dated views."
+    }
+  },
+  "assemblyHeights": {
+    "groundDatum": 0,
+    "basementVisibleRange": [
+      0.15,
+      0.85
+    ],
+    "shopSill": 1.1,
+    "groundEntablature": [
+      3.79,
+      4.28
+    ],
+    "firstUpperOpening": [
+      4.47,
+      6.99
+    ],
+    "secondUpperOpening": [
+      7.52,
+      9.64
+    ],
+    "cornice": [
+      10.07,
+      10.44
+    ],
+    "mainRoofEave": 10.1,
+    "mainCrown": 12.88,
+    "meaning": "Ground is local pavement; floor/aperture intervals approximate source-photo proportions bounded by semantic survey. Not source camera metadata or absolute NAP."
+  },
+  "archiveAccess": {
+    "Beeldbank": "Bounded address/name request cachedHTTP200 viewer shell, no inspected archive-original drawing/image claimed.",
+    "Bouwdossiers": "No useful sheet acquired in this bounded pass; access unknown. Roof/opening family resolved from municipal description/current/directional photos/survey."
+  },
+  "uncertainty": [
+    "Native survey roof partitions simplified into original interpreted roof planes; individual fitted intersections and crest/hoist details require independent roof review.",
+    "Pane subdivisions/ornament and facade vertical intervals approximate; first-hit geometry tests establish visibility only.",
+    "Opposite rear facade apertures not resolved and not invented; rear scope/height/open-space requires root neighbor/gallery review.",
+    "No identification words or copied reference pixels; small actual incidental museum sign omitted because not defining architecture."
+  ],
+  "validation": {
+    "command": "npx tsx scripts/check-electric-ladyland-geometry.ts",
+    "result": "13966 triangles,161152 compressed bytes;50/50 glass assemblies visible,24 upper leaves,4 basement spans; every native base vertex retained,three courtyard probes open;20 roof pieces face upward;16/16 heads exposed. Exact-decoded independent12cm scan:13312 native interior samples,zero misses,zero sampled extras,50/50 pane assemblies visible.",
+    "limits": "CPU preflight only; source comparisons and root independent acceptance remain required.",
+    "candidateSha256": "91c310bae570344d21142965d9d90189afb3875010ea9428f45d51d8d6398392",
+    "commands": [
+      "npx tsx scripts/landmarks/electric-ladyland-export-draft.ts",
+      "npx tsx scripts/check-electric-ladyland-geometry.ts",
+      "blender -b --python scripts/landmarks/electric-ladyland-cpu-review.py"
+    ]
+  },
+  "independentReview": {
+    "reviewer": "Root source-facing comparison2026-10-07",
+    "finding": "Broad paired openings incorrectly had two per-leaf segmental brick heads in first CPU candidate. Source17346/17347 own a single broad head; narrow stair windows remain separately headed.",
+    "correction": "One group-width brick arch for each broad pair; preserved prior candidate+images under artifacts/electric-ladyland/pre-head-correction. Two risalits use actual wall geometry relief≈7.5cm and pane offset≈9cm beyond ordinary panes.",
+    "status": "Source head correction applied, all16 head assemblies exposed, exactcompressed CPU rerender complete; root roof/native/live acceptance pending"
+  },
+  "independentCoverageCorrection": {
+    "holdBeforeSha256": "6d13c305dc7199805162c2a3dd2ac496a44bcea1bdec5beb9777c291879682bd",
+    "failure": "Interval-only rear finger slices omitted south parent rear boundary strip(~2.5m2); vertex-only check missed interior loss.",
+    "repair": "Triangulate unchanged actual native ring, then partition every rear triangle among height regions. South middle strip uses near10.0m roof transition from10.10m main rear eave to10.03m source rear boundary; individual fingers10m and north central4m retained. Variable-height wall tops match roof surface. No courtyard padding.",
+    "compression": "16-bit position quantization fixes last sampled boundary sliver missed by14-bit decoded mesh; no source polygon changes or loosened checks.",
+    "doorCorrection": "Current2025 no7 at southpairedgroup leftdoor(X≈8.90m) has blue flatter lower panel and plain upper glass; removed generic repeated ornate iron curls for that door only. Numbered2020 view fixes door identity, current2025 fixes color/state. No2013 boarded shop copied.",
+    "independentProbe": "node artifacts/electric-ladyland/independent-review/probe.mjs (unchanged root probe)",
+    "beforeEvidence": "artifacts/electric-ladyland/pre-coverage-correction/",
+    "result": "zero missedInterior / zero geometryBeyondFootprint in13312sample independentdecodedscan;50/50 visible glass assemblies",
+    "status": "Corrected exactcompressed CPU rerenders complete; independent re-review and native/gallery/game/performance remain pending",
+    "cpuRenderState": "artifacts/electric-ladyland/cpu-review-state.json; fiveviews all candidateSHA91c310bae570344d21142965d9d90189afb3875010ea9428f45d51d8d6398392"
+  },
+  "nativeOrientationRepair": {
+    "beforeNorthOffsetDegrees": -70.147,
+    "afterNorthOffsetDegrees": 70.147,
+    "reason": "Runtime surveyedPlacement uses bearing90+northOffset; local north-to-south +X has bearing160.147, whereas conventional Three rotateY -70.147 maps into East/South. Before public street camera saw rear fingers instead of photographed front.",
+    "evidence": "artifacts/electric-ladyland-native; failed pre-repair source camera views retained.",
+    "status": "Corrected runtime +70.147 independently verified;18 sourcevertices within0.01710m, failed views preserved"
+  }
+}

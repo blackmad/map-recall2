@@ -21,9 +21,9 @@
     }
   ],
   "counts": {
-    "manual-model": 202,
+    "manual-model": 203,
     "procedural-kit": 15,
-    "pending": 130
+    "pending": 129
   },
   "destinations": [
     {
@@ -1353,7 +1353,8 @@
       "type": "museum",
       "queueRank": 104,
       "origin": "POI Destinations",
-      "status": "pending",
+      "status": "manual-model",
+      "modelId": "electric-ladyland",
       "treatment": "building"
     },
     {

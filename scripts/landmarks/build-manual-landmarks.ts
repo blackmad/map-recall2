@@ -95,6 +95,7 @@ import {buildSintNicolaas} from './sint-nicolaas-builder';
 import {buildEye} from './eye-builder';
 import {buildRijksmuseum} from './rijksmuseum-builder';
 import {buildWesterkerk} from './westerkerk-builder';
+import {buildElectricLadyland} from './electric-ladyland-builder';
 import {buildMontelbaanstoren} from './montelbaanstoren-builder';
 import {buildMunttoren} from './munttoren-builder';
 import {buildNationalMonument} from './national-monument-builder';
@@ -248,7 +249,7 @@ async function save(id:string){
   await quantizeOrdinaryMesh(doc,mesh,ordinaryNode);
   await doc.transform(quantize({pattern:/^(?!POSITION$).+/,patternTargets:/^(?!POSITION$).+/}));
   doc.createExtension(EXTMeshoptCompression).setRequired(true).setEncoderOptions({method:EXTMeshoptCompression.EncoderMethod.QUANTIZE});
- }else await doc.transform(meshopt({encoder:MeshoptEncoder,level:'medium'}));
+ }else await doc.transform(meshopt({encoder:MeshoptEncoder,level:'medium',...(id==='electric-ladyland'?{quantizePosition:16}:{})}));
  await new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({'meshopt.encoder':MeshoptEncoder}).write(dest,doc);
  const bounds={min:[Infinity,Infinity,Infinity],max:[-Infinity,-Infinity,-Infinity]};
  for(let i=0;i<all.length;i++){const axis=i%3;bounds.min[axis]=Math.min(bounds.min[axis],all[i]);bounds.max[axis]=Math.max(bounds.max[axis],all[i]);}
@@ -340,6 +341,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='eye-filmmuseum')buildEye(w,d,helpers);
     else if(id==='rijksmuseum')buildRijksmuseum(w,d,helpers);
     else if(id==='westerkerk')buildWesterkerk(w,d,helpers);
+    else if(id==='electric-ladyland')buildElectricLadyland(w,d,helpers);
     else if(id==='montelbaanstoren-amsterdam')buildMontelbaanstoren(w,d,helpers);
     else if(id==='munttoren-amsterdam')buildMunttoren(w,d,helpers);
     else if(id==='national-monument-on-the-dam')buildNationalMonument(w,d,helpers);

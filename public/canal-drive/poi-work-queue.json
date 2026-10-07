@@ -529,17 +529,22 @@
       "id": "electric-ladyland",
       "task": "Electric Ladyland: research identifiable exterior before model",
       "priority": "normal",
-      "status": "source-cpu-reviewed-native-pending",
+      "status": "local-model-accepted-hosted-pending",
       "scopeResearch": "docs/references/electric-ladyland/native-scope-checkpoint.json",
       "sourceCommit": "706b8a3ca72c330b1de1a874563c7c3f77e45389",
-      "nextAction": "Integrate independently source/CPU-reviewed native two-parent museum ensemble; preserve failed grouped-window arches and missing2.5m\u00b2rearstrip evidence, currentno7door correction, then actual gallery/game/museum entrance/card/exact neighbors/fallback/pans/performance and hosted acceptance.",
+      "nextAction": "Publish accepted native original two-parent ensemble and verify actual hosted fingerprint, gallery/game/source card and exact suppression. Preserve unobserved rear apertures and bounded headless performance limits.",
       "sourceArchive": {
         "repository": "blackmad/map-recall2-source-data",
         "commit": "fc73c8bbd7d907846e133df99362c77e0080543a",
         "path": "models/electric-ladyland/recovery-source-20261007"
       },
       "referenceSupplementCommit": "3cbc70dd1a42ec2d2f77369ea4551564a4807298",
-      "candidateSHA256": "91c310bae570344d21142965d9d90189afb3875010ea9428f45d51d8d6398392"
+      "candidateSHA256": "05312522c406fec6f915b72d11e8e44042c2b956787875874f0d00056012910e",
+      "validation": "Root and independent sourceCPU/gallery/native review pass; corrected source-backed +70.147 offset, actualgenuine route/pin/physicalcard, exact two-parent masks/sixretainedneighbors, disabled/unavailablefallback, mouse/touch stationaryriderpans; bounded enabled/disabled framecomparisons. Hosted pending.",
+      "acceptedNativeArchive": {
+        "commit": "6f8fe12389a2d969fa29f6c36f503155b48c7d89",
+        "path": "models/electric-ladyland/checkpoints/accepted-native-05312522-20261007"
+      }
     },
     {
       "id": "legacy-imports",
@@ -1854,7 +1859,7 @@
       "id": "cafe-kobalt",
       "task": "Building housing Caf\u00e9 Kobalt \u2014 original native landmark",
       "priority": "high",
-      "status": "source-research-and-original-build",
+      "status": "production-source-cpu-reviewed-native-pending",
       "owner": "root",
       "requestedOn": "2026-10-07",
       "requestedAddress": "Singel 2A, Amsterdam",
@@ -1863,36 +1868,52 @@
         "https://www.cafekobalt.nl/about.html"
       ],
       "workflow": "full-landmark",
-      "nextAction": "Resolve official address/VBO/Pand and current genuine OSM cafe identity; research historic warehouse roof/facade/current entrances with primary register and bounded Beeldbank search. Archive raw originals privately, build native texture-free original geometry, then verify actual gallery/game, exact suppression/neighbors/fallback, destination/pin/meaningful sourced card and performance. Preserve earlier queue tasks.",
+      "nextAction": "Actual native gallery/game/source-corner, genuineOSMnode539179321 destination/pin/meaningfulcard, exactBAGmask+neighbors, unavailablefallback anddesktop/touchpans/performance beforepublication.",
       "surveyedParent": "NL.IMBAG.Pand.0363100012178170",
       "officialVBO": "0363010001040093",
-      "monumentNumber": "5249"
+      "monumentNumber": "5249",
+      "candidateSHA256": "a96ecaafca35cd5e146ce39501cfe70e3898d1d2512c2d3f5999073a7e376204",
+      "sourceArchive": {
+        "commit": "8653ace3",
+        "path": "models/cafe-kobalt/checkpoints/material-shutter-correction-dac3be8e-20261007"
+      },
+      "validation": "Independent exactproduction7031tri118392B:13572sourcecoverage+147edgechecks,976pane/48shutter/520signstrokefirsthits pass; brownbrick/redshutters/slateroof corrected after root source comparison. Native pending."
     },
     {
       "id": "magna-plaza-overlap-feedback",
       "task": "Magna Plaza ordinary-shell/custom-landmark overlap",
       "priority": "high",
-      "status": "local-visibility-verified-release-pending",
+      "status": "verified-scoped-hosted",
       "modelId": "magna-plaza",
       "requestedOn": "2026-10-07",
-      "nextAction": "Publish and verify hosted runtime. Source-derived rear/end facade and real sign rebuild remains required; full asset acceptance pending.",
+      "nextAction": "Scoped suppression release complete. Continue separate full surveyed facade/sign/roof fidelity repair.",
       "evidence": "User direct chat screenshots archived privately before publication; root staging artifacts/landmark-user-feedback-20261007.",
       "diagnosis": "Ordinary carrier BAG0363100012167578 was absent from exact replacement aliases. Coalesced OSM/BAG filter missed secondary identities. Load/disable/removal now update shell and independent roof visibility.",
-      "validation": "Native before/after, selected route/pin/card, GLB failure/disable fallback, retained neighbors and stationary desktop/touch-emulated camera pans reviewed by root. Focused suppression/building checks and lint pass. Hosted verification pending.",
+      "validation": "Hosted59dab6ae canonical/edumap bundles match. Root inspected front/back/touchpan andmissingGLBfallback. Coarse/near/extras aliases hidden; shell filters matchbothid/osmId; neighbors retained. __kit alias ranges andmatchingpyramids absent, no applicableactualsceneclaim. Full assetrear/sign/end defects separatelyqueued.",
       "sourceArchive": {
         "commit": "ce20c5f717902d0363d6151d51223d6386f1b4db",
         "path": "models/magna-plaza/checkpoints/exact-shell-suppression-20261007"
+      },
+      "acceptedHostedArchive": {
+        "commit": "bea10cd4",
+        "path": "models/magna-plaza/checkpoints/hosted-59dab6ae-20261007"
       }
     },
     {
       "id": "westerkerk-annex-rear-feedback",
       "task": "Westerkerk adjoining buildings and blank rear slab",
       "priority": "high",
-      "status": "in-progress-source-backed-annex-repair",
+      "status": "production-source-cpu-reviewed-native-pending",
       "modelId": "westerkerk",
       "requestedOn": "2026-10-07",
       "nextAction": "Inspect direct front/rear screenshots against exact surveyed church/annex/neighbor ownership; distinguish overlapping ordinary carriers from incorrect legacy geometry. Rebuild source-critical assemblies with native/gallery/game review; preserve neighbors/open space and all3POIsurfaces.",
-      "diagnosis": "Actual native layer check: church aliases already masked; blank rear slab is custom w749287964 top5 excluded by facade top>5 guard. Residual-parent volumes also require source height/scope review. Separate ordinary adjoining buildings stay visible."
+      "diagnosis": "Actual native layer check: church aliases already masked; blank rear slab is custom w749287964 top5 excluded by facade top>5 guard. Residual-parent volumes also require source height/scope review. Separate ordinary adjoining buildings stay visible.",
+      "candidateSHA256": "b2efbdd4c34631b76573988a696e90c56c9fede504447c9b30b292da6be27a5e",
+      "validation": "Source/CPU scoped pass: unsupported courtyard slab removed,4exactlowchurchroofs retained,separateTours/Pancakes verifiedofficialBAG/OSM,nonewneighborintersections. Production16bit fixes14bitreversedear;128rooftrianglesup and4continuousroofs withoutinteriorholes. Strictsourcegrid1/2038 misses due36micrometre edge shift retained.289legacyfacadereliefintercepts within.552mwall band preserved. Native pending.",
+      "sourceArchive": {
+        "commit": "7e21be82",
+        "path": "models/westerkerk/checkpoints/final-source-cpu-and-production-1bfbeb49-20261007"
+      }
     },
     {
       "id": "homomonument-water-feedback",
