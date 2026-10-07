@@ -1,0 +1,100 @@
+{
+  "at": "2026-10-07T20:59:33.670018+00:00",
+  "sourceCommit": "b444eca8edfc9cc545047bebbf92b9c315d79c23",
+  "sourcePack": "experiments/canal-belt-continuation-20261007/runtime-05",
+  "runtimeBase": "59dab6aec058827fd3b8d1e421e54531efad75bf",
+  "independentReview": "PASS source/geometry/actual GPU for both; earlier failed source/camera drafts preserved privately",
+  "reproduction": {
+    "exactHashes": 22,
+    "total": 22
+  },
+  "manualGallery": {
+    "desktopLoaded": 22,
+    "touchLoaded": 22,
+    "feedbackPreview": true,
+    "submittedFeedback": false
+  },
+  "models": [
+    {
+      "device": "desktop",
+      "id": "ordinary-0363100012165204",
+      "shown": true,
+      "suppressed": true,
+      "shaderHidden": true,
+      "pyramidHidden": true,
+      "targetInstalled": 1,
+      "nearbyInstalled": 593,
+      "medianMs": 16.69999999999891,
+      "p95Ms": 16.700000000000728,
+      "errors": [],
+      "stationaryPan": true,
+      "zoomOut": true,
+      "disabledFallback": true,
+      "restored": true,
+      "loadFailureFallback": true,
+      "requestedHash": "15d6ea5dd01e55344422b75767cc539563bd1932ad52f7e5d3d008ee738f310b"
+    },
+    {
+      "device": "desktop",
+      "id": "ordinary-0363100012168482",
+      "shown": true,
+      "suppressed": true,
+      "shaderHidden": true,
+      "pyramidHidden": true,
+      "targetInstalled": 1,
+      "nearbyInstalled": 418,
+      "medianMs": 16.69999999999891,
+      "p95Ms": 16.700000000000728,
+      "errors": [],
+      "stationaryPan": true,
+      "zoomOut": true,
+      "disabledFallback": true,
+      "restored": true,
+      "loadFailureFallback": true,
+      "requestedHash": "466b074f4d5ae238b0570cf5218390e6e409d58e275e4ffa839faa165f497a6f"
+    },
+    {
+      "device": "touch",
+      "id": "ordinary-0363100012165204",
+      "shown": true,
+      "suppressed": true,
+      "shaderHidden": true,
+      "pyramidHidden": true,
+      "targetInstalled": 1,
+      "nearbyInstalled": 593,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.800000000000182,
+      "errors": [],
+      "stationaryPan": true,
+      "zoomOut": true,
+      "disabledFallback": true,
+      "restored": true,
+      "loadFailureFallback": "covered by desktop",
+      "requestedHash": "15d6ea5dd01e55344422b75767cc539563bd1932ad52f7e5d3d008ee738f310b"
+    },
+    {
+      "device": "touch",
+      "id": "ordinary-0363100012168482",
+      "shown": true,
+      "suppressed": true,
+      "shaderHidden": true,
+      "pyramidHidden": true,
+      "targetInstalled": 1,
+      "nearbyInstalled": 418,
+      "medianMs": 16.69999999999891,
+      "p95Ms": 16.700000000000728,
+      "errors": [],
+      "stationaryPan": true,
+      "zoomOut": true,
+      "disabledFallback": true,
+      "restored": true,
+      "loadFailureFallback": "covered by desktop",
+      "requestedHash": "466b074f4d5ae238b0570cf5218390e6e409d58e275e4ffa839faa165f497a6f"
+    }
+  ],
+  "limits": [
+    "Startup longtasks remain; warm frame samples do not establish universally stall-free gameplay.",
+    "Pyramidal hidden-ID/fallback behavior checked; these models have no resident pyramidal entries, so no visible-instance coverage claimed.",
+    "Haarlemmer520176bytes exceeds500KBpreference by4%, preserving source defining assemblies."
+  ]
+}

@@ -167,6 +167,33 @@
           "reason": "User re-emphasized boxy non-landmarks; ornate registered telephone exchange belongs to full landmark architecture workflow. Retain source/draft evidence; no acceptance or publication."
         }
       ]
+    },
+    {
+      "id": "canal-box-recovered-20261007",
+      "state": "accepted-local-awaiting-hosted-verification",
+      "accepted": [
+        "0363100012165204",
+        "0363100012168482"
+      ],
+      "sourceCommit": "b444eca8edfc9cc545047bebbf92b9c315d79c23",
+      "sourcePath": "experiments/canal-belt-continuation-20261007/runtime-05",
+      "review": "ordinary-buildings-data/canal-box-review-20261007.json",
+      "models": [
+        {
+          "id": "ordinary-0363100012165204",
+          "bytes": 520176,
+          "triangles": 7357,
+          "materials": 3,
+          "hash": "15d6ea5dd01e55344422b75767cc539563bd1932ad52f7e5d3d008ee738f310b"
+        },
+        {
+          "id": "ordinary-0363100012168482",
+          "bytes": 139672,
+          "triangles": 956,
+          "materials": 3,
+          "hash": "466b074f4d5ae238b0570cf5218390e6e409d58e275e4ffa839faa165f497a6f"
+        }
+      ]
     }
   ],
   "morningCheckpoint": {
@@ -194,16 +221,19 @@
     "decision": "Warehouse finish subtle close-up; concrete payoff rejected. Actual game loading/motion acceptance remains pending."
   },
   "feedbackCheckpoint": {
-    "at": "2026-10-07T18:57:35.164Z",
-    "open": 0,
+    "at": "2026-10-07T20:57:09.208Z",
+    "open": 1,
     "inProgress": 1,
     "atLimit": false,
+    "openNotes": [
+      "OCCII facade misalignment; unclaimed separate queue"
+    ],
     "claimedElsewhere": [
-      "Melkweg: source-backed repair already claimed; do not duplicate claim"
+      "Melkweg; do not duplicate"
     ]
   },
   "source04AndRoofFollowupCommit": "7b26e67e736c6434849b443ec649cb1836713f3d",
-  "continuedAt": "2026-10-07T17:13:36.750665+00:00",
+  "continuedAt": "2026-10-07T20:59:33.670018+00:00",
   "selectionConstraint": "Large fairly boxy ordinary buildings inside canal belt: warehouse conversions and modern commercial blocks. Exclude already modeled manual/ordinary IDs, elaborate monuments, courtyard complexes and uncertain wings from fast discovery.",
   "currentAccess": {
     "at": "2026-10-07T19:05:47.485551+00:00",
@@ -215,11 +245,14 @@
   "nextBoxCandidates": {
     "sourceCommit": "90c943cad8b611a65266057448c82d9ff40aa8cf",
     "sourcePath": "experiments/canal-belt-continuation-20261007/checkpoint-02",
-    "state": "two-scoped-builders-active",
+    "state": "two-accepted-local-next-kalver-spui-corrections-active",
     "ids": [
       "0363100012168482",
       "0363100012165204"
     ],
-    "accepted": []
+    "accepted": [
+      "0363100012165204",
+      "0363100012168482"
+    ]
   }
 }
