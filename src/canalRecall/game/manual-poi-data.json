@@ -1384,5 +1384,29 @@
         4.8640231890577725
       ]
     }
+  },
+  {
+    "modelId": "haparandaweg-2-4",
+    "name": "Het 4e Gymnasium",
+    "center": [
+      52.3941814,
+      4.8730885
+    ],
+    "description": "Paul de Ruiter Architects designed this school as an early anchor for the Houthaven redevelopment. Coloured enamel glass and projecting wooden sun frames distinguish the classroom facades; two sports halls and a roof terrace occupy the upper level.",
+    "funFact": "The school atrium doubles as a lunch and theatre space. Its upper sports halls have a separate entrance for clubs and neighbours, while a south entrance serves the bicycle store. The architect dates completion to 2016; BAG records construction year 2015.",
+    "sourceUrl": "https://paulderuiter.nl/projects/het-4th-vierde-gymnasium",
+    "website": "https://www.het4egymnasium.nl/",
+    "destinationOverride": {
+      "center": [
+        52.394106,
+        4.872795
+      ]
+    },
+    "routeDestination": {
+      "center": [
+        52.394106,
+        4.872795
+      ]
+    }
   }
 ]

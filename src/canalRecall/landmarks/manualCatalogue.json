@@ -7319,5 +7319,59 @@
       "licenceUrl": "./LICENSE",
       "modifications": "Original flat-color native reconstruction, survey bounded stepped roofs and photographed factory cornice and opening assemblies. No third-party pixels or meshes."
     }
+  },
+  {
+    "id": "haparandaweg-2-4",
+    "name": "Het 4e Gymnasium",
+    "modelUrl": "./models/haparandaweg-2-4.glb",
+    "suppressOsmIds": [
+      "w435847382",
+      "w1193314343",
+      "w1193314344",
+      "w1193314345",
+      "NL.IMBAG.Pand.0363100012244095"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.87309,
+        52.39419
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 57,
+      "widthMetres": 41
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.87309,
+        52.39419
+      ],
+      "northOffsetDegrees": 0,
+      "source": "PDOK BAG0363100012244095/AHN5 source2023 roof regions, native east/south axes"
+    },
+    "materialOverrides": {
+      "dark": "#263334",
+      "glass": "#466d79",
+      "frame": "#2c3839",
+      "concrete": "#6f7875",
+      "slate": "#646f6c",
+      "white": "#bcc8c2",
+      "bronze": "#b36b38",
+      "gold": "#d9ba4c",
+      "copper": "#ae5139",
+      "red": "#d7732d"
+    },
+    "attribution": {
+      "title": "Het4eGymnasium source-derived school host",
+      "author": "Map Recall",
+      "sourceUrl": "https://paulderuiter.nl/projects/het-4th-vierde-gymnasium",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free metre geometry; architectural references guide geometry only. Requested Haparandaweg2/4 share single BAGparent."
+    },
+    "preservePositionPrecision": true,
+    "landmarkId": "n4337412612"
   }
 ]

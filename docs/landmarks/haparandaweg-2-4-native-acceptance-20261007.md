@@ -1,0 +1,11 @@
+# Het 4e Gymnasium native checkpoint
+
+The first requested Haparandaweg parent now has a source-derived school model, genuine mapped destination n4337412612, sourced west entrance and useful architectural card. Haparandaweg2/4 are small ancillary VBOs in the same whole school parent0363100012244095; remaining16 requested parents are retained.
+
+Root and independent source/gallery/native review passed after preserving and repairing five initial architecture failures. The model has26,233 triangles/362,336 bytes; SHA c5955dfe0b6d1b43b6cc0f9434b42c92012a44f69b81e893dcecc27275dcc3c3. All five exact BAG/OSM masks, resident retained neighbors and unavailable/restored fallback were verified. Chosen route, public pin and physical sourced-card click passed. Actual2m diagnostic shows stairs and landing meeting the door threshold coherently.
+
+Broken game-screen louvers persisted after increasing clearance. The map context had zero antialias samples, while source slats projected0.32–0.46pixels tall. Four-sample antialiasing makes unchanged screens continuous. The map constructor now requests it before shared Three layers initialize; the index refreshes this script URL. Root inspected fresh actual-app west/north/south views without diagnostic context interception.
+
+In the actual antialiased app, controlled school-only loaded/fallback90-frame averages were16.681/16.593ms on installed Chrome154/ANGLE Metal AppleM4Pro at1500x1000,DPR1, with scene/player/camera/53other entries invariant. This is bounded school cost, not pureGPU/full-game/device performance or AA-overhead acceptance. Original bundled-browser95/49ms failure and the cross-context comparison with mismatched residency remain prominently preserved. Paused desktop/CDPtouch-emulated pans retain surrounding windows/doors; physical touch hardware was not tested.
+
+Private source-first fc181348 and accepted d71d6e18646df491173b8557d3dc3a68f898f1bb preserve raw photos/APIs, all failed evidence, current model/context and native proof. Canonical pack models/haparandaweg-2-4, accepted-checkpoint-2026-10-07.json;384 committed dependencies verified, no missing local files. Hosted verification remains pending. Regenerated game bundles also refresh the already committed ordinary-building catalogue additions from the preceding remote checkpoint.

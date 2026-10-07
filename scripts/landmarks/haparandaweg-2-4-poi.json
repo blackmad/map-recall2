@@ -1,0 +1,34 @@
+{
+  "id": "n4337412612",
+  "name": "Het 4e Gymnasium",
+  "category": "School",
+  "longitude": 4.8730885,
+  "latitude": 52.3941814,
+  "website": "https://www.het4egymnasium.nl/",
+  "description": "Paul de Ruiter Architects designed this school as an early anchor for the Houthaven redevelopment. Its coloured enamel glass and projecting wooden sun frames distinguish the classroom facades; two gym halls and a roof terrace occupy the upper level.",
+  "facts": [
+    "Completed in 2016 for roughly 800 secondary-school pupils; BAG records construction year2015.",
+    "The west schoolyard entrance leads to an atrium used for lunch and theatre. A separate south entrance serves the partly sunken bicycle store.",
+    "The upper sports halls have a separate entrance so clubs and the neighbourhood can use them outside school hours."
+  ],
+  "sources": [
+    {
+      "label": "Architect: design and programme",
+      "url": "https://paulderuiter.nl/projects/het-4th-vierde-gymnasium"
+    },
+    {
+      "label": "School contact and address",
+      "url": "https://www.het4egymnasium.nl/home/contact"
+    },
+    {
+      "label": "Genuine mapped school",
+      "url": "https://www.openstreetmap.org/node/4337412612"
+    }
+  ],
+  "integrationStatus": "proposal awaiting root route/pin/card integration and physical-click review",
+  "publicEntranceProposal": {
+    "longitude": 4.872795,
+    "latitude": 52.394106,
+    "basis": "Photo-supported west entrance bay, actualmodeldoorcentre native(-20.08,9.36), observed schoolyard; route network accessibility remains untested"
+  }
+}

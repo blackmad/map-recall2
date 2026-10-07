@@ -1,0 +1,79 @@
+{
+  "modelId": "haparandaweg-2-4",
+  "reviewedOn": "2026-10-07",
+  "verdict": "Five initial targeted failures corrected at CPU/source review scope; proceed to native gallery/game review. Whole-model acceptance withheld.",
+  "frozen": {
+    "artifacts/landmark-next-batch/haparandaweg-2-4.glb": "a912c0ecc4e37ca43d553839c1c14ad6515c89fec2e52005f7da205d2cfe8d5d",
+    "scripts/landmarks/haparandaweg-2-4-builder.ts": "d420cbbb6af85a5670314e8394f115b453099efbba89ce277d0dda061f89d832",
+    "scripts/check-haparandaweg-2-4-geometry.ts": "6a982dd18893e2a18fd12f709191191a8d1213c518459765d7f2ee4975760a1e"
+  },
+  "decodedMetrics": {
+    "sha256": "a912c0ecc4e37ca43d553839c1c14ad6515c89fec2e52005f7da205d2cfe8d5d",
+    "triangles": 26233,
+    "bytes": 357504,
+    "textures": 0,
+    "roofFaces": 29,
+    "downwardSlate": 0,
+    "bounds": {
+      "min": [
+        -23.584098467646697,
+        0.0006338912103558414,
+        -29.109800338745117
+      ],
+      "max": [
+        20.834457049189666,
+        21.979365651025972,
+        28.77759552001953
+      ]
+    }
+  },
+  "freshRepairProbeResults": "independent-rereview-a912-probes.json",
+  "assessments": [
+    {
+      "id": "H24-R1",
+      "status": "targeted CPU/source failure corrected",
+      "evidence": "Four full views plus two lower north views now show independent broad/narrow upper modules and stepped crest. Source-visible north three broad/four narrow groups and west seven narrow/two broad groups are recognizable.",
+      "remaining": "21.9/21.3m screen crests are photo-guided approximations above fitted roof; verify profile in native gallery, including gap above roof from elevated angles. No source-supported precise elevation acceptance."
+    },
+    {
+      "id": "H24-R2",
+      "status": "targeted CPU/source failure corrected",
+      "evidence": "Actual mesh former left atrium ray now hits glass at1.943884m; former upper hall ray hits white at1.876065m. Four full CPU views show glazing through the missing span and white upper returns. Fresh decode of all24 repair rays agrees with declared first-hit material.",
+      "remaining": "Roof-terrace photo has restricted viewpoint; all seven perimeter segments are surveyed geometry, but facade treatment on unseen returns remains inferred. Native gallery should inspect joints and glass/frame continuity."
+    },
+    {
+      "id": "H24-R3",
+      "status": "targeted CPU/source failure corrected",
+      "evidence": "Actual guard first-hit glass lies at14.15m, above12.7836m deck. Downward rays across deck hit roof rather than an overhead cap. Revised south/west views show an above-roof band and unobscured upper classroom glazing.",
+      "remaining": "2.34m band height and full return extent remain source-guided approximations. Check actual source-facing lower west/south perspective; near-front source photo is preferable to elevated CPU overview for proportional acceptance."
+    },
+    {
+      "id": "H24-R4",
+      "status": "targeted CPU/source failure corrected",
+      "evidence": "Five freshly decoded downward approach rays hit concrete at0.1596/0.3186/0.4812/0.6402/0.6402m; tread positions separated0.65m. Both west door leaf samples hit glass; approach is visible in CPU overview.",
+      "remaining": "Stair projection now expands west bound toX=-23.5841. Verify actual schoolyard grading, no adjacent-building collision, landing/threshold alignment and camera approach in native game. Exact suppression remains parent-only and must stay so."
+    },
+    {
+      "id": "H24-R5",
+      "status": "targeted CPU/source failure corrected",
+      "evidence": "Lower north views show colored full-height ground strips. Freshly decoded north samples hit gold/copper at1.7m. This matches unobscured dated north source groups.",
+      "remaining": "North fence obscures threshold details; do not infer more door openings from this view alone."
+    }
+  ],
+  "newDefiniteCPUBlockers": [],
+  "remainingVisualRisks": [
+    "Deep projecting timber fins conceal side-face panes in the two lower north oblique views; this may be correct geometric occlusion, but inspect true west entrance/source-facing street camera before accepting facade visibility. Low north side views do not prove west classroom glass visible in normal gameplay.",
+    "Small unsupported numerical crest/guard/stair details remain approximations; do not conflate recovered architectural grouping with exact building matching.",
+    "CPU renderer is double-sided and simplistically shaded: cannot prove actual GPU winding/lighting, z-fighting or material rendering."
+  ],
+  "pendingRequiredEvidence": [
+    "Native default gallery plus four lower rotations",
+    "West entrance and south cycle-portal actual street camera; terrace/source proportion check",
+    "Live ordinary-building and pyramidal-roof exact suppression after load; fallback restoration and retained east parent2252993",
+    "Genuine n4337412612 route endpoint/pin/map label/trivia card/pointer and fixed-origin failure behavior",
+    "Live camera pan, scale1/native scope and performance",
+    "Private source pack verification/publication commit and recorded path"
+  ],
+  "documentationNote": "Handoff leading draft metric/entry sections retain old figures; appended corrected section is accurate. Reconcile stale lead before handing off integration.",
+  "mutationScope": "Only new independent-rereview-a912 JSON/MD outputs. No author/source/shared/GPU/git changes. Old failed independent review preserved."
+}
