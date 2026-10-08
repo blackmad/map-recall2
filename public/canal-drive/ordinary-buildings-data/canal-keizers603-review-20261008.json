@@ -1,0 +1,107 @@
+{
+  "atUTC": "2026-10-08T00:02:22.785948+00:00",
+  "modelId": "ordinary-0363100012167975",
+  "buildingId": "NL.IMBAG.Pand.0363100012167975",
+  "hash": "2f679b1f5dc25af796d6d856b388318c72e3d428b992c6afa1047a0ae7ab9fb1",
+  "bytes": 435380,
+  "triangles": 5312,
+  "materials": 3,
+  "verdict": "Full source/independent actual GPU gallery and root desktop/touch native game PASS; hosted release pending",
+  "sourceCommit": "26f2679530ae6a0a9fe362c0043a8941887efd58",
+  "sourcePack": "experiments/canal-belt-continuation-20261007/box-pair-runtime-19",
+  "authorSourcePack": "experiments/canal-belt-continuation-20261007/keizers603-build",
+  "independentGalleryEvidence": "keizers603-review-16/isolated-gallery-verdict.json at source49ae23cd",
+  "criticalAssemblies": [
+    "One narrow and six broad main-front groups across four tiers; two double-height ground openings",
+    "20 physical circular canopy through-holes, thin underside and open terrace",
+    "Own lower southern fifth group: ground glazing and three upper tiers under16.34m roof"
+  ],
+  "nativeGame": [
+    {
+      "device": "desktop",
+      "assetHash": "2f679b1f5dc25af796d6d856b388318c72e3d428b992c6afa1047a0ae7ab9fb1",
+      "exactLoadedIdSuppression": true,
+      "retainedResidentNeighbors": [
+        "0363100012167905",
+        "0363100012175165"
+      ],
+      "stationaryRiderCameraPanAndZoomOut": true,
+      "ordinaryPickingIdentity": {
+        "id": "NL.IMBAG.Pand.0363100012167975",
+        "landmarkId": "",
+        "footprintType": "Polygon",
+        "height": 25.467500686645508,
+        "screen": [
+          599.9999999773944,
+          240
+        ]
+      },
+      "fallbackOnDelayedDisabledUnavailable": true,
+      "forcedFailureFallback": true,
+      "frameMedianMs": 16.699999999999818,
+      "frameP95Ms": 16.799999999999272,
+      "maxStartupLongTaskMs": 124,
+      "maxSourceStageLongTaskMs": 135,
+      "errors": []
+    },
+    {
+      "device": "touch",
+      "assetHash": "2f679b1f5dc25af796d6d856b388318c72e3d428b992c6afa1047a0ae7ab9fb1",
+      "exactLoadedIdSuppression": true,
+      "retainedResidentNeighbors": [
+        "0363100012167905",
+        "0363100012175165"
+      ],
+      "stationaryRiderCameraPanAndZoomOut": true,
+      "ordinaryPickingIdentity": {
+        "id": "NL.IMBAG.Pand.0363100012167975",
+        "landmarkId": "",
+        "footprintType": "Polygon",
+        "height": 25.467500686645508,
+        "screen": [
+          135.00000000766005,
+          272.00000000383
+        ]
+      },
+      "fallbackOnDelayedDisabledUnavailable": true,
+      "forcedFailureFallback": "covered desktop",
+      "frameMedianMs": 16.699999999999818,
+      "frameP95Ms": 16.700000000000728,
+      "maxStartupLongTaskMs": 125,
+      "maxSourceStageLongTaskMs": 117,
+      "errors": []
+    }
+  ],
+  "manualGallery": {
+    "desktopLoaded": 27,
+    "touchLoaded": 27,
+    "feedbackCapturedPreview": true,
+    "submittedFeedback": false,
+    "evidence": "keizers-release27-22/manual27/capture.json at fbb979079744b0f9014b87918fd36108253318a4",
+    "newestCard": "Keizersgracht 603 / Vijzelstraat 79"
+  },
+  "reproduction": {
+    "total": 27,
+    "exactHashes": 27,
+    "previous26Unchanged": true
+  },
+  "preservedFailures": [
+    "Initial811720-byte export exceeded strict budget",
+    "9cfe79 blank own low southern wing rejected by source/independent review",
+    "Initial close south diagnostic clipped required own wing; full-width south view added"
+  ],
+  "limits": [
+    "Rear aperture counts remain unobserved and conservative.",
+    "Facade/perforation dimensions approximated from source photos; native roof heights and footprints retained.",
+    "Native main-front is partly blocked by the opposite bookshop; complete southern frontage, low wing, canopy and neighbor boundary reviewed.",
+    "Headless desktop/touch emulation; warm frame samples do not prove absence of tile/setup stalls or physical-mobile performance."
+  ],
+  "ordinaryAsset": {
+    "curatedDestinationCreated": false,
+    "mappedPoiCreated": false,
+    "realSignageAdded": false
+  },
+  "deferredNeighborWork": "Lange Leidsedwarsstraat12 passed source/GPU/native review but official geographic membership failed; excluded from this scoped release and preserved privately.",
+  "publicationSourceCommit": "fbb979079744b0f9014b87918fd36108253318a4",
+  "finalReproductionAndManualPack": "experiments/canal-belt-continuation-20261007/keizers-release27-22"
+}

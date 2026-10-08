@@ -2023,18 +2023,18 @@
         "NL.IMBAG.Pand.0363100012168201",
         "NL.IMBAG.Pand.0363100012175754",
         "NL.IMBAG.Pand.0363100012254471",
-        "NL.IMBAG.Pand.0363100012243483"
+        "NL.IMBAG.Pand.0363100012243483",
+        "NL.IMBAG.Pand.0363100012167975"
       ],
       "latestBatch": [
-        "NL.IMBAG.Pand.0363100012254471",
-        "NL.IMBAG.Pand.0363100012243483"
+        "NL.IMBAG.Pand.0363100012167975"
       ],
-      "evidence": "ordinary-buildings-data/canal-rokin-review-20261007.json",
+      "evidence": "ordinary-buildings-data/canal-keizers603-review-20261008.json",
       "handoff": "docs/performance/2026-10-06/canal-belt-continuation-handoff.md",
-      "nextAction": "Continue Keizersgracht603 and LangeLeidsedwarsstraat12 frozen candidates through independent source/GPU review and root exact native game checks before source-backed publication. Continuous goal remains active; Rokin pair26 hosted verified.",
-      "sourceCommit": "052ce837e0721eaa173873a5517a47ba8b86b982",
+      "nextAction": "Commit/push and verify Keizersgracht603 hosted27 release. Continue fresh Kerkstraat206\u2013210 build and independent visual/native review. LangeLeids12 remains outside-scope hold; do not include in canal-belt counts.",
+      "sourceCommit": "26f2679530ae6a0a9fe362c0043a8941887efd58",
       "notes": "Ordinary assets/full architecture review for defining Rokin roof assemblies; no invented POI routes. Existing Nacarat basic inside-footprint click card retained. Both strict500k/three-material budgets pass.",
-      "localModelCount": 26,
+      "localModelCount": 27,
       "hostedVerification": {
         "publicCommit": "bb31004d418c36599f319ae14903973e7592a6db",
         "firebaseRun": "37698102176",
@@ -2045,7 +2045,8 @@
         "feedbackPreview": true,
         "sourceCommit": "fc7c606dbbe77bd9d92efb8111c4a11078fde7a9",
         "sourcePack": "experiments/canal-belt-continuation-20261007/host26-14"
-      }
+      },
+      "publicationSourceCommit": "fbb979079744b0f9014b87918fd36108253318a4"
     },
     {
       "id": "amstel130-stale-native-candidate",
@@ -2059,6 +2060,23 @@
       "sourceCommit": "052ce837e0721eaa173873a5517a47ba8b86b982",
       "nextAction": "Current official1735/130.46m2 Pand disagrees installed1985/839.3m2 candidate spanning neighbors. Correct native identity/scope and use full historic reference loop; exclude from quick ordinary authoring.",
       "evidence": "private source-verdict.json plus officialoriginal and five sourceownership overlays"
+    },
+    {
+      "id": "langeleids12-canal-belt-scope-hold",
+      "task": "Preserve completed Lange Leidsedwarsstraat12 model outside the current canal-belt work scope",
+      "priority": "normal",
+      "status": "held",
+      "buildingIds": [
+        "NL.IMBAG.Pand.0363100012173772"
+      ],
+      "sourceCommit": "26f2679530ae6a0a9fe362c0043a8941887efd58",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/box-pair-runtime-19",
+      "assetHash": "26f68a1cf8d7bd1779202f4b719026e7562d44cbe61e770924e14ae43fffa24c",
+      "reason": "Independent source/gallery/native desktop-touch checks passed, but fresh official geographic audit excludes anchor from current Grachtengordel-Zuid wijk polygon by79.42m. Prior betweenPrinsengracht/Keizersgracht discovery description was wrong. Do not count completed outside-scope work as canal-belt acceptance.",
+      "boundaryEvidence": "experiments/canal-belt-continuation-20261007/next-box-source-20/boundary-audit/processed/membership-review.json",
+      "nextAction": "Exclude this model from the next in-scope public catalogue release; retain frozen builder/source and failed evidence for later adjacent-area work.",
+      "scopeSourceCommit": "fbb979079744b0f9014b87918fd36108253318a4",
+      "preservedAssetPack": "experiments/canal-belt-continuation-20261007/lange-outside-scope-21"
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"
