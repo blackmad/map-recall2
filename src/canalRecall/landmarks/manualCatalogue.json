@@ -8477,5 +8477,55 @@
       4.915873654538593,
       52.36005012574633
     ]
+  },
+  {
+    "id": "mediamatic",
+    "name": "Mediamatic Biotoop Dijkspark",
+    "landmarkId": "extract_landmarks_32851647",
+    "status": "authored-pending-visual-review",
+    "modelUrl": "./models/mediamatic.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012180473"
+    ],
+    "footprint": {
+      "centre": [
+        4.9131485,
+        52.376516
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 31.838,
+      "widthMetres": 45.328
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.9131485,
+        52.376516
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Native installed BAG parent; 2015 operator plan partitions,2025 municipal panoramas and decoded3DBAG main/portakabin roof heights. Greenhouse heights approximate."
+    },
+    "attribution": {
+      "title": "Mediamatic Biotoop Dijkspark",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.mediamatic.net/en/page/86200/mediamatic-biotoop",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original surveyed/native1 flat-colour geometry with separate greenhouse/office zones. No reference photo pixels or imported mesh. Approximate greenhouse heights and bay cadence; visual/game acceptance pending."
+    },
+    "heightMetres": 10.65,
+    "galleryView": {
+      "theta": 3.8,
+      "phi": 1.22
+    },
+    "materialOverrides": {
+      "ochre": "#91886b",
+      "glass": "#668389",
+      "white": "#d3d4cb",
+      "frame": "#9ca7a6",
+      "dark": "#404946"
+    }
   }
 ]

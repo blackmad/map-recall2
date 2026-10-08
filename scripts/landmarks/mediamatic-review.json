@@ -1,0 +1,72 @@
+{
+  "id": "mediamatic",
+  "reviewedOn": "2026-10-08T19:29:30.879101+00:00",
+  "status": "local-scoped-source-gallery-game-verified; hostedpending",
+  "geometryAcceptance": true,
+  "galleryAcceptance": true,
+  "liveGameAcceptance": true,
+  "poiContractAcceptance": true,
+  "privateSourceArchiveAcceptance": true,
+  "modelCreated": true,
+  "triangles": 21326,
+  "bytes": null,
+  "sourceFailures": [
+    "2026-10-05 prior failed operator requests superseded by successful2026-10-08 raw downloads.",
+    "Beeldbank bounded address viewer returns shell; no archive item or monument description admitted."
+  ],
+  "holdReasons": [
+    "Roof-color repair requires final export, upward/first-hit checks and affected gallery/live/performance recapture before deadline.",
+    "Private source pack commit/path must be published and recorded before model commit."
+  ],
+  "surveyCheckCommand": "node --import tsx scripts/check-mediamatic-geometry.ts",
+  "nextBoundedAction": "Root register/export in integration worktree; compare sources/CPU massing then serial GPU gallery/four rotations/live both sides plus chosen destination, geographic pin and physical sourced card.",
+  "focusedCheckNotes": "All surveyed angled portakabin faces tested at .25/.5/.75 pane fractions and four heights using near-face probes. A wider rear context probe hit intentional attached greenhouse rail: retain this limitation in gallery/live review rather than assert all rear panes exposed from arbitrary exterior positions.",
+  "simplifications": [
+    "Real defining facade lettering uses native Times New Roman Italic vector outlines, approximate high-contrast italic serif font match. North glazing sign and stacked southbrickpier differ; no generic pixel lettering.",
+    "Panorama greenery/furniture excluded from asset; gardens remain city context.",
+    "Roof-storey slab overhang and metal framing are photo-guided."
+  ],
+  "sourceCorrections": [
+    "Rejected initial mirrored five north low windows on the waterfront face; actual cropped waterfront photographs show a different frontage.",
+    "The acquisition filename south-current.jpg describes a requested target, but its exact camera station is northwest of the building and shows the NORTH end. It is not a southern heldout.",
+    "Added the northeast aromalab greenhouse L return after independent plan comparison.",
+    "Rejected greenhouse blue wall slabs on exact d4fa3362 mesh:0.10m panes buried0.055m mullions and coplanar horizontal rails. Reduced pane thickness to0.035m; actual frame first-hit probes now required.",
+    "Rejected stacked sign on the southern short face in b4943913 mesh. Current official aerial confirms the southern greenhouse and western terrace; the cropped2019 sign photograph faces the WEST long wall. Moved letters to its final brick pier.",
+    "Exact3ef7f57a CPU confirms western sign plane and exposed atic lettering but shows a white lintel crossing Med. Shortened western lintels to end at v17.8, retaining east bands. New FrontSide probes reject the previous export.",
+    "Final9cd82027 gallery/game passed facade composition, but current aerial comparison showed main roof top wrongly pale. Corrected main top to an owning dark slate plane over open-top concrete fascia; portakabin top also slate. Triangle count unchanged21326."
+  ],
+  "compressedCheckCommand": "node --import tsx scripts/check-mediamatic-geometry.ts <actual-compressed-glb>",
+  "compressedCheckNotes": "Final21458triangle269264byte export passes FrontSide decoded aperture fractions, exposed greenhouse gridbars,28upwardroofpitchfaces, ridge support and open apron. Decoded portnearface195mm matches authored probe; a210mm context probe hits attached southgreenhouse rail by design, retained as context limitation.",
+  "failedEvidence": {
+    "images": "artifacts/mediamatic-independent-review/mediamatic-cpu-{north-low,waterfront-oblique,north-oblique}.png",
+    "inputHashPrefix": "d4fa3362",
+    "reason": "Buried greenhouse metal grid resulted in blankblue wallslabs. Corrected source geometry; final compressed/GPU review pending.",
+    "additionalHashPrefix": "b4943913",
+    "additionalReason": "Stackedletteringwronglysouthshortface, greenhouse hidatic comparedtoactualwestwaterfrontsource.",
+    "lintelInputHashPrefix": "3ef7f57a",
+    "lintelImages": "artifacts/mediamatic-independent-review/final-west-pier/"
+  },
+  "exportSha256": null,
+  "limitations": [
+    "greenhouse joinery/rear glazing estimates",
+    "headless timing/touch emulation limitations",
+    "hosted check pending"
+  ],
+  "reportedRootChecks": {
+    "assetSha256BeforeRoofColor": "9cd8202719e279f99933d785c59c0b846d5a25ebf0463e59dd0e1dd873c37184",
+    "triangles": 21326,
+    "bytes": 267252,
+    "galleryFourRotations": true,
+    "northAndWestGame": true,
+    "destinationPinPhysicalCard": true,
+    "exactSuppressionAndSevenNeighbors": true,
+    "desktopAndTouchStationaryPan": true,
+    "performanceLimitation": "SwiftShader timings slow; overlapping desktop session prevented a controlled GPU cost claim. Hardware-backed rerun pending; no physical phone claim."
+  },
+  "acceptedSHA256": "72fda1651845e18bf40e58d8b3c1bd017465a7da8787e07d1d4bdf2e9113893b",
+  "acceptanceEvidencePath": "models/mediamatic/checkpoints/accepted-local-72fda165-20261008",
+  "performanceScope": "AppleM4ProANGLEMetal60rAF median16.6–16.7ms p9517.0–17.3ms; desktop/touch-emulated stationarycamera pans; no physicalphoneclaim",
+  "sourceArchiveCommit": "9ae768a488e916e56953716b04812eb6628b0a0d",
+  "sourceArchivePath": "models/mediamatic",
+  "sourceEvidenceCommit": "9ae768a488e916e56953716b04812eb6628b0a0d"
+}

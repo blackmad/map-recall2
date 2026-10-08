@@ -1394,11 +1394,23 @@
     },
     {
       "id": "mediamatic",
-      "task": "Mediamatic \u2014 original house-style landmark model",
+      "task": "Mediamatic — original house-style landmark model",
       "priority": "high",
-      "status": "queued",
+      "status": "verified-scoped",
       "requestedOn": "2026-10-05",
-      "nextAction": "Research the waterfront venue and greenhouse/industrial ensemble; resolve exact occupied buildings and public entrance while preserving surrounding uses. Archive original reference sources; integrate destination, pin/label and meaningful sourced card, then review gallery and native game placement."
+      "nextAction": "Publish model then scoped canonical hosted gallery/game compatibility review; retain failed views and documented approximations.",
+      "sourceArchive": {
+        "repository": "blackmad/map-recall2-source-data",
+        "commit": "9ae768a488e916e56953716b04812eb6628b0a0d",
+        "path": "models/mediamatic"
+      },
+      "candidateSHA256": "72fda1651845e18bf40e58d8b3c1bd017465a7da8787e07d1d4bdf2e9113893b",
+      "validation": "Root + independent source/gallery/nativegame route/pin/physicalcard/exactmask/7neighbors and desktop/touch-emulated stationarypans passed exact72fda165 at6789f77e. AppleM4ProANGLEMetal60rAF median16.6–16.7ms,p9517–17.3ms. Published-source checkpoint accepted-local-72fda165-20261008. Approximate greenhouse joinery/rear glazing; no physicalphone or globalnew-mainperformanceclaim.",
+      "acceptedEvidence": {
+        "repository": "blackmad/map-recall2-source-data",
+        "commit": "9ae768a488e916e56953716b04812eb6628b0a0d",
+        "path": "models/mediamatic/checkpoints/accepted-local-72fda165-20261008"
+      }
     },
     {
       "id": "hannekes-boom",

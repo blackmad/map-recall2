@@ -1,0 +1,43 @@
+{
+  "specPath": "scripts/landmarks/mediamatic-spec.json",
+  "neighbors": [
+    [
+      "NL.IMBAG.Pand.0363100012170821"
+    ],
+    [
+      "NL.IMBAG.Pand.0363100012170822"
+    ],
+    [
+      "NL.IMBAG.Pand.0363100012170823"
+    ],
+    [
+      "NL.IMBAG.Pand.0363100012180471"
+    ],
+    [
+      "NL.IMBAG.Pand.0363100012180474"
+    ],
+    [
+      "NL.IMBAG.Pand.0363100012181724"
+    ],
+    [
+      "NL.IMBAG.Pand.0363100012209294"
+    ]
+  ],
+  "zoom": 18.5,
+  "pitch": 60,
+  "bearing": 190,
+  "oppositeBearing": 100,
+  "clickLocal": [
+    0,
+    5,
+    -12.7
+  ],
+  "sourceReadyChecks": [
+    "native exact BAG0363100012180473 only",
+    "current2025 front/portakabin source comparison",
+    "western apron and east shed gap stay open",
+    "greenhouse approximate low ridges; main flat-roof glass storey",
+    "all7 nearby BAG parents retained",
+    "Stackedwaterfrontsign belongsWESTlongwallfinalpier and staysvisiblefromwesternterrace; sourcefacingsecondviewbearing100."
+  ]
+}

@@ -1,0 +1,357 @@
+{
+  "id": "mediamatic",
+  "retrievedOn": "2026-10-08T19:29:30.879101+00:00",
+  "rawRecords": [
+    {
+      "path": "models/mediamatic/raw/00_area.pdf",
+      "sha256": "cea7d7b53c2c9dedb67319bf0b38c05f18fe678f9e15d21179a210430a0dc918",
+      "bytes": 247365,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/16456447354_d39d993de0_o.jpg",
+      "sha256": "858622c224364696be57d2a390bc71b6cde0c4c63b0cc84ce9ab993bee7c18a9",
+      "bytes": 411097,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/2025-ortho.jpg",
+      "sha256": "31c02156ac14f5aa503effb6a0ff8f8c439a074b9e57936afff5e730b0570001",
+      "bytes": 6237,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/20706484020_d8bb949732_o.jpg",
+      "sha256": "387794f8106c3388ff5958f42420bea0b38c959aeddf13f4255a53ddef62783c",
+      "bytes": 203607,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/23696506885_59acc799e5_k_1.jpg",
+      "sha256": "e16f7c068492a6b3a181dd5da13cb1b7d8d0177a1e3496021d58c0aefad47ab1",
+      "bytes": 404152,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/3dbag.json",
+      "sha256": "2fe9ce42c43a90955dc649974877510774c2c03fb2a2c82bac2170d45e4b1df9",
+      "bytes": 7805,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/415131.jpg",
+      "sha256": "765b260c6ff65581214c03a8b5fa99e7ad66097ef7e3b7b65c007b72f1090889",
+      "bytes": 167627,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/415132.jpg",
+      "sha256": "100dfe129f6041652e38f9afeb8aeb6bac0d51a77a45b811b049a246712922e9",
+      "bytes": 308602,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/415134.jpg",
+      "sha256": "93f533a4bcce334b05f68347f0aeba8bdeee336c2400c651f955ebdc48fdb438",
+      "bytes": 340813,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/415145.jpg",
+      "sha256": "8208452ed77c7bc2c1c25c1abb3c17c106ec8f9f797ba391d85a50b935587e67",
+      "bytes": 389326,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/415166.jpg",
+      "sha256": "a470ea79879faefbf9b43b162ad2d9e7cadd4cea2937226cb015740582e276ee",
+      "bytes": 295429,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/bar_foto2.jpg",
+      "sha256": "549617763db0e031c45b1bbf2c1f4575f2447794d1fd22237124a32512f875fa",
+      "bytes": 340016,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/beeldbank-address.html",
+      "sha256": "a45e805ef644e5817b24f32801f5d9ee1b59c8096b2746abfc092b03b8b8529d",
+      "bytes": 12352,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/current-ortho.jpg",
+      "sha256": "d90f625a6b7f0529793d8f17d663218fd71c315f83afb90f5e57153adae289eb",
+      "bytes": 13537,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/dsc08951-412086084.jpg",
+      "sha256": "78f8cb33ed5ba5ddb8a4b5be6972199de9163adac327ad1d2928233ff8c0d72b",
+      "bytes": 362645,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/east-panorama.jpg",
+      "sha256": "2b775dbbeefef7464ea18dc96d9def4d26a6f098e86d40137ed2631319d49e03",
+      "bytes": 2915048,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/east-panorama.json",
+      "sha256": "6554899ca3aebc91e620af63f105d5bef36b3f48014790f26c193f83dd969aa2",
+      "bytes": 1871,
+      "classification": "metadata/provenance capture"
+    },
+    {
+      "path": "models/mediamatic/raw/full-16456447354_d39d993de0_o.jpg",
+      "sha256": "722b49591495a7ffe532617680d304ac203d743d47e174a4dad9247bfd332b5c",
+      "bytes": 573726,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/full-20706484020_d8bb949732_o.jpg",
+      "sha256": "7dcf7bf5ea210f274b496f84c91ee2c62954c2ab1ddd70d819008378fa0aea64",
+      "bytes": 1275337,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/full-23696506885_59acc799e5_k_1.jpg",
+      "sha256": "56eb1dc43393e0ff153933857acea36c9c8a6bb35de18aa0af73c15ec6bf03d8",
+      "bytes": 304584,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/full-415131.jpg",
+      "sha256": "e5ca721781b25c2baa608f1ee4f54267d491efe34e4de95230431a7b3d7dfe86",
+      "bytes": 1127332,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/full-415132.jpg",
+      "sha256": "3dcdd9f7ee982828b3d9e7d423fe26a4fb1c175c61b8f8b4685270454eee5539",
+      "bytes": 734696,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/full-415134.jpg",
+      "sha256": "8c06e0946d151ec4279834f6914d43568c6be45cc03ef64bc66cf9401317e7ef",
+      "bytes": 1906941,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/full-415145.jpg",
+      "sha256": "555eeef770e712d255de9ac73b7db8cb2053a339ae5c88c6a2045d00585b33d8",
+      "bytes": 1352109,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/full-415166.jpg",
+      "sha256": "ed38f3a185de720be1b9877fb8abe5eb19117cb90b322d0229031809cf2666c4",
+      "bytes": 898365,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/full-bar_foto2.jpg",
+      "sha256": "18f1458a5d39e8ccdebdf6549f37d7e384b55496ab5add3af46039b8fc308310",
+      "bytes": 1294697,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/full-dsc08951-412086084.jpg",
+      "sha256": "4396ef073b638f5a6a4a0ddd2c7018e02cb817eb923776966a7d87e4cc352760",
+      "bytes": 1141983,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/full-img_0938.jpg",
+      "sha256": "6c876546d04b8c3ece7b991424740673ff0251db19cf804aaae05c6c65dffd44",
+      "bytes": 559884,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/full-img_9430-322908664.jpg",
+      "sha256": "b8d9acadd3335ce42cfd5950e428d589eb5c7ad67f527ba87043460cc5d8da7a",
+      "bytes": 600561,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/full-raw-url-provenance.json",
+      "sha256": "1ebeb9a7d26ea0522c559f49cbc81dcbd57c0e956730ed873a76776fdf633269",
+      "bytes": 8340,
+      "classification": "metadata/provenance capture"
+    },
+    {
+      "path": "models/mediamatic/raw/full-screen_shot_2016_04_25_at_16_23_28.png",
+      "sha256": "9af8e9542045ecbc33ab93604f5bf8412930313964ee8663af578faa98d77ce1",
+      "bytes": 44888,
+      "classification": "metadata/provenance capture"
+    },
+    {
+      "path": "models/mediamatic/raw/full-selectie_1.jpg",
+      "sha256": "f5704fac3d024cf272c6021e14b537bd698d6ade9937a890e61337303b90fbe4",
+      "bytes": 1611913,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/full-undefined-219003614.jpg",
+      "sha256": "06577d534a6cce1c8157bb9a9760ea27bc2f99afcb27d2f7e49ddbd6b4668040",
+      "bytes": 301679,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/img_0938.jpg",
+      "sha256": "75846a57a8cf9d73878b323d32372a1e2fbebbf36b315beae3ed36f9cff32040",
+      "bytes": 206331,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/img_9430-322908664.jpg",
+      "sha256": "81c6b7655c18c2de8b61397ea24b4ae2ff04e5aa954d214f71f156e6072da238",
+      "bytes": 203802,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/north-panorama.jpg",
+      "sha256": "58350be99abdc71b24db6a55386f5ea6e20a1e08058a81f80cfe39b23fd9d941",
+      "bytes": 2160993,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/north-panorama.json",
+      "sha256": "7a3c28255d728a64d0d749a5fd09a0f89cf9be6337dbea31098df087387dc189",
+      "bytes": 1946,
+      "classification": "metadata/provenance capture"
+    },
+    {
+      "path": "models/mediamatic/raw/operator-biotoop.html",
+      "sha256": "f2ecd159077c0d224679bc32c2ccddd11229e891c4f5463ecb4cb754705a754c",
+      "bytes": 148578,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/operator-info.html",
+      "sha256": "e19b5dc525c6611ec2484a5218a8d4a01e66ae946e0529e9ebb7d2e9b8f8b872",
+      "bytes": 31048,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/operator-mediamatic-biotoop.html",
+      "sha256": "3aee278b3a92ef3860d5ad047184718c0815d120305a39be0ea3cf3e0064d85b",
+      "bytes": 148578,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/operator-mediamatic-has-moved-to-dijkspark-in-2014.html",
+      "sha256": "30b15bf9b99895e4c7cb63f95047b2f45805508b1c5a1aa346dd639a419fe333",
+      "bytes": 94080,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/operator-open-friday-tour.html",
+      "sha256": "e174720d59efabd164ebd5d841cad62a95aed9c4b90bc4267a6c1697943402e9",
+      "bytes": 57136,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/ortho-capabilities.xml",
+      "sha256": "30e411329dc093e2a06868bdd617517fcdcfb21c51483d6d5d10191488ec0aa6",
+      "bytes": 43331,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/ortho-context.jpg",
+      "sha256": "0f3aea473dc770554cdc2659c4e9e28a0c371dc6ba4cda598ea8f597be8e8753",
+      "bytes": 73210,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/ortho-context.metadata.json",
+      "sha256": "14b3427513ca5832a8821e9367ab00c2383ee4161c660cbd9aaaad281f140d33",
+      "bytes": 997,
+      "classification": "metadata/provenance capture"
+    },
+    {
+      "path": "models/mediamatic/raw/panorama-discovery.json",
+      "sha256": "a0cd90e722b328b584d3c1c533972fa8086d10e14e6a57f831f9ca3a4dea818f",
+      "bytes": 43107,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/photo-provenance.json",
+      "sha256": "6e57c3afc253c8689b4aeb666ffcdbedf61208645508a96d64c9cd6cc164f1f0",
+      "bytes": 3695,
+      "classification": "metadata/provenance capture"
+    },
+    {
+      "path": "models/mediamatic/raw/screen_shot_2016_04_25_at_16_23_28.png",
+      "sha256": "d612c00e9d4c75db2acdf60fab87da104714fe3f28672c51936be3748b192777",
+      "bytes": 210509,
+      "classification": "metadata/provenance capture"
+    },
+    {
+      "path": "models/mediamatic/raw/selectie_1.jpg",
+      "sha256": "533de0c4fdf83789c012f7aff973a0861745a98e2aee03a4e60bfe276752ba1b",
+      "bytes": 322677,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/south-panorama.jpg",
+      "sha256": "415ae19117645936dadb5fcafb6dcd56613260779e48036671ba94904eed2bfc",
+      "bytes": 2034858,
+      "classification": "raw downloaded response"
+    },
+    {
+      "path": "models/mediamatic/raw/south-panorama.json",
+      "sha256": "495325d096362ea38f0a778b70d56bfc0e94ee30d0d8547d1c47c6f8e4f28114",
+      "bytes": 1948,
+      "classification": "metadata/provenance capture"
+    },
+    {
+      "path": "models/mediamatic/raw/undefined-219003614.jpg",
+      "sha256": "884e368238b8008c6fc3c0a4480c6ddf09d096f7893cc6a30ec7618d911c433c",
+      "bytes": 378443,
+      "classification": "raw downloaded response"
+    }
+  ],
+  "operatorUrl": "https://www.mediamatic.net/en/page/86200/mediamatic-biotoop",
+  "photoProvenancePath": "models/mediamatic/raw/photo-provenance.json",
+  "panoramaRights": "Municipal panoramas CC BY4.0; date authority capture timestamps, mission year ignored.",
+  "operatorPhotoRights": "Operator photographers named in preserved page; no universal reuse licence established. Private research reference only; no pixels in original asset.",
+  "beeldbankAccess": "200 viewer shell acquired bounded Dijksgracht6 search; no useful catalogue item/image admitted.",
+  "surveyQuality": "3DBAG b3_pw_bron AHN3(2014), quality indicator false; greenhouse unreliable. Main/portakabin roof zones crosschecked against current2025 facade photos.",
+  "partitionEvidence": "Operator PDF G.Cappineri20Nov2015 scale1:500; separate Sluisdeurenloods and cleanlab excluded. Topology current pane/gable evidence agrees; exact partition dimensions approximated from native parent/survey roof vertices.",
+  "cropParameters": {
+    "width": 1500,
+    "height": 950,
+    "fovDegrees": 105,
+    "pitchDegrees": 15,
+    "heading": "calculated geographic bearing from exact station to native anchor"
+  },
+  "sourceArchiveCommit": "9ae768a488e916e56953716b04812eb6628b0a0d",
+  "signFontApproximation": "Times New Roman Italic native vector glyph paths; specific source typeface unknown; 12mm relief aligns glazing/brick wall plane.",
+  "referenceOrientation": "north-current: Jan2025 north end; south-current: Jan2025 NW oblique north end, NOT southern waterfront. east-current: June2025 NE context. Waterfront evidence full-dsc08951(2019) andfull207064(2015). CurrentPDOKaerialfixeswaterfrontphotoasWESTlongwall, croppedleftframe; southernwrapnotremoved.",
+  "currentAerial": {
+    "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=Actueel_orthoHR&STYLES=&SRS=EPSG:28992&BBOX=122650,487650,122800,487800&WIDTH=750&HEIGHT=750&FORMAT=image/jpeg",
+    "privatePath": "models/mediamatic/raw/ortho-context.jpg",
+    "retrievedAt": "2026-10-08T19:41:39.084466+00:00",
+    "sha256": "0f3aea473dc770554cdc2659c4e9e28a0c371dc6ba4cda598ea8f597be8e8753",
+    "httpStatus": 200,
+    "serviceLayer": "Actueel_orthoHR",
+    "captureDate": "current composite, exact acquisition date not returned by WMS; do not label photograph2025 solely fromcurrentlayer",
+    "rights": "PDOK public aerial reference; retain provider source; asset uses no pixels",
+    "featureInformed": "southgreenhouse wrap is present, westbasin terrace uncovered. Strong orientationevidence for2019waterfrontsign onwestlongwall, notsouthshortend",
+    "failedRequests": "narrow GetMapbboxrequests returned uniformwhite despiteHTTP200; savedseparately, notadmittedphotoevidence"
+  },
+  "fullImageAndPoiRawProvenance": "models/mediamatic/raw/full-raw-url-provenance.json",
+  "sourceOrientationDecision": "Current official aerial confirms the southern greenhouse strip exists and the western terrace is open. Cropped2019 waterfront photographs therefore show the final WEST long-wall brick sign pier, not the southern short face.",
+  "roofColorEvidence": {
+    "sourceId": "current-orthophoto",
+    "sourceImage": "models/mediamatic/raw/ortho-context.jpg",
+    "assertion": "Main flat roof membrane is dark gray with a pale outer fascia. Portakabin flat roof also gray/dark. Roof slate material is source-derived; native top planes own roof surfaces with no pale overlapping caps.",
+    "observedOn": "2026-10-08",
+    "confidence": "high"
+  },
+  "sourceArchivePath": "models/mediamatic"
+}
