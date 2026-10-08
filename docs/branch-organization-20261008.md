@@ -76,3 +76,26 @@ Reconciliation applied 292 guarded path updates, using three-way source merges a
 Root TypeScript lint, 19 focused coarse/source-roof/repeated-terrace tests, the manual POI contract (231 models, 197 destinations) and researched-facts check pass. Eight affected runtime bundles were rebuilt from the reconciled root source; the POI backlog was regenerated. This verifies reconciliation, not acceptance of retained draft visuals. Active local source/runtime changes remain uncommitted and unpublished.
 
 The publication branch contains only this document and the four topic handoffs, rebased additively over refreshed upstream. Its normal main push publishes documentation only. Exact push SHA, baseline/index checks and follow-up validation evidence are recorded in `artifacts/branch-organization-20261008/implementation-checkpoint.json` locally. Historical failed-push and permission records above are retained as recovery context, rather than current blockers.
+
+
+## Reviewed delivery and branch split —2026-10-09
+
+Feedback controls/account state are committed on main at `d4885928`; viewer declarations/resource ownership follow at `025e5df6`. Their scoped desktop/iPhone/browser tests pass, and both are published. SSH later had no agent identities; authenticated HTTPS Git access works without changing the shared remote or permissions.
+
+Shared rendering and diagnostic surveyed-envelope infrastructure are isolated on `feat/street-rendering-core-20261008`. Current native worker, four-look, exact roof ownership, failed-load and changed-metadata checks pass. Surveyed envelopes use BAG/3DBAG source geometry; they remain explicit diagnostics and are separate from the Amsterdam panorama/projection and fast ordinary-building treatment work. No default surveyed-envelope source admission or held-family transfer is introduced.
+
+The eight-parent Marnixstraat124-138 row photographed from263 is accepted as a bounded installed pilot. Actual-game roof gaps exposed missing party ends, crown backs and cross-gable cheeks; each was repaired within native bounds with regression coverage. Exact heldout first hits, independent source/game review, desktop/touch stationary-rider pans and default/offline-stock activation checks pass. Failed roof views, desktop6GPU1.214/1.673 and touch portrait heldout miss remain prominent. A same-build desktop repeat and all-six-round aggregation pass unchanged limits; measurements remain local and variable. See `docs/handoffs/marnixstraat-repeated-row-20261008.md`.
+
+Private raw sources were pushed at `abb4664d378649cdcaff6e43e4b5d6e8b314c859`; failed/corrected evidence at `87412d138`; default/offline checks and author inputs at `d9ba4d73f26b6a054cb8e9129e4437fca766a023`, under `streets/marnixstraat-263-repeated-row`. Only procedural previews and derived assertions enter the public branch.
+
+The three unfinished facade families have clean, separate branches based on the repaired core:
+
+| Branch | Topic tip | Work still required |
+| --- | --- | --- |
+| `feat/jan-evertsen-frontage-20261008` | `a99a4b91` | Jan Evertsen projecting-window read and upper masonry/roof fit; fixed challenges and native game/performance before transfer. |
+| `feat/oudezijds-compound-frontage-20261008` | `c46d62ef` | Oudezijds compound neighbor-row failure; fresh positive compound challenge and full native source/game review.85/99 remain negative controls. |
+| `feat/regular-canal-frontage-20261008` | `f93f95af` | Regular canal85 shaped clock crown, rejected99 envelope/courtyard, latest hoist review and unopened113 challenge before transfer. |
+
+The original four preservation tips and verified bundle remain intact; these newer branches refine their scope. Shared dependencies ship with their owners; queues preserve other sessions' requests and draft states. Do not publish all supporting files merely because they are dirty.
+
+A fresh root snapshot preserves248 current tracked/untracked paths, index bytes and binary patch at `/Users/blackmad/Code/map-recall2-main-sync-recovery-20261009`. Final replay/cleanup uses exact content guards and preserves unrelated landmark work and index ownership. Current branch refs, root status, test results and publication receipts are recorded locally under `artifacts/branch-organization-20261008/`. Historical permission/DNS/approval failures above are recovery history, not a reason to reset or discard current work.
