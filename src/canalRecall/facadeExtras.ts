@@ -340,6 +340,10 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
     continuousShopCanopy(c,sink);
     if(sink.tris.length>before){used.push('continuous-shop-canopy');groups.add('door-frame');}
   }
+  if(c.groundFrontageActive){
+    // The wall layer owns the cut portal, panes and frames; stock door dressing would float over it.
+    sink.budget=outer;if(street)streetDressed.add(sink);state.spent+=sink.tris.length-beforeWall;return;
+  }
   const raisedEntry = street && !!(c.recipe?.entranceAssembly || c.recipe?.groundAssembly === 'tall-side-entry') && !c.shopfront;
   if (raisedEntry && phase !== 'optional') {
     const before = sink.tris.length;

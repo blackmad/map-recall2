@@ -1,13 +1,10 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-06T06:36:45.485952+00:00",
+  "generatedAt": "2026-10-06T06:43:14.814305+00:00",
   "status": "official-identity-discovery-not-visual-admission",
   "officialDocumentation": "https://api.data.amsterdam.nl/v1/docs/datasets/bag%40v1.html",
   "provenance": "docs/references/jan-evertsen-pilot/bag-source-provenance.json",
-  "pilotSeed": {
-    "path": "artifacts/canopy-rollout/raw/bag-pilot-retry.json",
-    "sha256": "eb07b92c8fa9fcb17e5fe27803fabb4d7cd188fde341dfcfdc3a8925323c1e3a"
-  },
+  "pilotSeed": null,
   "geometryPolicy": "Use exact extract identities; preserve native polygon holes and scale. No nearest-address assignment.",
   "pilots": [
     {
@@ -52,56 +49,52 @@
       },
       "addresses": [
         {
-          "vboId": "0363010000684474",
-          "nummeraanduidingId": "0363200000146265",
-          "street": "Jan Evertsenstraat",
           "huisnummer": 126,
           "huisletter": null,
           "huisnummertoevoeging": "H",
-          "postcode": "1056EJ",
-          "vboSource": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684474?volgnummer=1",
+          "nummeraanduidingId": "0363200000146265",
+          "vboId": "0363010000684474",
+          "pandSource": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012118917?volgnummer=2",
           "addressSource": "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146265?volgnummer=1",
-          "streetSource": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003426?volgnummer=2"
+          "street": "Jan Evertsenstraat",
+          "streetSource": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes?naam=Jan+Evertsenstraat&_pageSize=100"
         },
         {
-          "vboId": "0363010000684475",
-          "nummeraanduidingId": "0363200000146266",
-          "street": "Jan Evertsenstraat",
           "huisnummer": 126,
           "huisletter": null,
           "huisnummertoevoeging": "1",
-          "postcode": "1056EJ",
-          "vboSource": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684475?volgnummer=1",
+          "nummeraanduidingId": "0363200000146266",
+          "vboId": "0363010000684475",
+          "pandSource": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012118917?volgnummer=2",
           "addressSource": "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146266?volgnummer=1",
-          "streetSource": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003426?volgnummer=2"
+          "street": "Jan Evertsenstraat",
+          "streetSource": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes?naam=Jan+Evertsenstraat&_pageSize=100"
         },
         {
-          "vboId": "0363010000684476",
-          "nummeraanduidingId": "0363200000146267",
-          "street": "Jan Evertsenstraat",
           "huisnummer": 126,
           "huisletter": null,
           "huisnummertoevoeging": "2",
-          "postcode": "1056EJ",
-          "vboSource": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684476?volgnummer=1",
+          "nummeraanduidingId": "0363200000146267",
+          "vboId": "0363010000684476",
+          "pandSource": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012118917?volgnummer=2",
           "addressSource": "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146267?volgnummer=1",
-          "streetSource": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003426?volgnummer=2"
+          "street": "Jan Evertsenstraat",
+          "streetSource": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes?naam=Jan+Evertsenstraat&_pageSize=100"
         },
         {
-          "vboId": "0363010000684477",
-          "nummeraanduidingId": "0363200000146268",
-          "street": "Jan Evertsenstraat",
           "huisnummer": 126,
           "huisletter": null,
           "huisnummertoevoeging": "3",
-          "postcode": "1056EJ",
-          "vboSource": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684477?volgnummer=2",
+          "nummeraanduidingId": "0363200000146268",
+          "vboId": "0363010000684477",
+          "pandSource": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012118917?volgnummer=2",
           "addressSource": "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146268?volgnummer=1",
-          "streetSource": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003426?volgnummer=2"
+          "street": "Jan Evertsenstraat",
+          "streetSource": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes?naam=Jan+Evertsenstraat&_pageSize=100"
         }
       ],
       "endedVboVersions": [],
-      "relationshipState": "official-pand-vbo-address-chain",
+      "relationshipState": "official-address-vbo-pand-chain",
       "status": "Pand in gebruik",
       "year": 1925,
       "officialGeometry": {

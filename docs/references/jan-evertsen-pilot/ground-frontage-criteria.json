@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "frozenOn": "2026-10-06",
+  "status": "source-criteria-frozen-before-implementation; visual-acceptance-pending",
+  "scope": "Shared opt-in ground assembly; proposed installation only existing north pilot124/126. No new Pand, odd-side or neighborhood admission.",
+  "source": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "3c515c4",
+    "path": "streets/jan-evertsen-canopy-rollout-20261006/processed/panorama/pilot-north.jpg",
+    "captureDate": "2025-09-26",
+    "comparison": "even-west-extension shows related shop panes/entrance separation; opposite side and eastern source remain independent untuned challenges."
+  },
+  "observations": [
+    "Wide ground shop glazing is distinct from narrow residential access porticos and separated by pale/masonry piers.",
+    "Residential portico is visibly recessed behind the storefront wall plane; dark back door and side reveals create depth, not a painted dark panel.",
+    "Canopy stays continuous in front of both shops and residential entrances; upper glass-block band and three residential window rows remain separate.",
+    "Shop pane/door allocations vary. Shared ratios should preserve the broad-shop/narrow-entry relationship without pretending exact present shop or individual photographed frontage matching.",
+    "Shop glazing includes customer access distinct from residential portico. An explicitly chosen shop leaf may reach sidewalk datum; a continuous solid shop plinth must not block that doorway."
+  ],
+  "draftParameters": {
+    "classification": "Bounded design inputs estimated from photographed relationships; not surveyed dimensions or source-derived millimetres.",
+    "nativeFrontageWidthsM": [
+      5.945129,
+      6.010429
+    ],
+    "entranceWidthM": 1.05,
+    "recessDepthM": 0.65,
+    "edgePierM": 0.18,
+    "separatorPierM": 0.22,
+    "shopSillM": 0.12,
+    "openingHeadM": 2.9,
+    "shopPanes": 3,
+    "frameWidthM": 0.07,
+    "shopTransomFraction": 0.8,
+    "entranceSide": "Explicit observed frontage recipe left/right; never random ID or whole-neighborhood inference.",
+    "shopDoorPane": "Optional explicit integer0..shopPanes-1, source-selected; absence does not invent a customer door. Pane position is a bounded row relationship pending current/render review, not exact surveyed allocation."
+  },
+  "criticalAcceptance": [
+    "Real parent wall cuts make the entrance back door first-hit behind the wall plane; reveal sides, soffit and floor close the bounded portico without invented interior.",
+    "Wide shop pane group and separate narrow entry share a coherent ground datum, with visible separating pier; no stock fanlight/stoop overlaid through the shop.",
+    "Textures and pale framing remain visible in photo/storybook/procedural actual game views, including near oblique views exposing recess.",
+    "Ground openings remain wholly below canopy/glass band and preserve the three residential rows and source-compatible broad/projected window rhythm.",
+    "Atomic incompatible-input fallback preserves ordinary textured stock doors/windows; no partial shop or recess assembly.",
+    "Fixed122/119 heldouts and128 transition remain untuned and unaccepted until independently sourced and reviewed.",
+    "Customer shop door reaches ground via a separately cut threshold; wall segments subtract its union with the common shop opening so no hidden stock plinth crosses access. Preserve unselected pane sills."
+  ],
+  "withheld": [
+    "Whole facade/street profile acceptance",
+    "New runtime identities or transfer",
+    "Exact individual pane counts and shop interior",
+    "Measured recess dimensions",
+    "Full-scene GPU profile on/off and desktop/touch stationary-rider camera pans"
+  ],
+  "amendment": "Before runtime ground admission, independent reviewer identified missing customer shop access; contract amended explicitly with lowered selected pane and real union threshold cut. Original source parameters and heldout gates retained."
+}

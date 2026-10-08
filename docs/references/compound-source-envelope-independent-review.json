@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-10-06",
+  "reviewer": "street_group_discovery; independent of source-envelope renderer integration",
+  "decision": "improved-primary-composition; glazing-appearance-failed; technical-envelope-failed; admission-withheld",
+  "scope": {
+    "primaryAddress": "Oudezijds Voorburgwal 87\u201389",
+    "nativePand": "NL.IMBAG.Pand.0363100012178298",
+    "runtimeAdmissions": 0,
+    "freshHeldout99": "Completely unseen and unused in this review",
+    "transition85": "Not viewed in this task",
+    "acceptanceExtent": "CPU diagnostic primary only; not a street-row, gameplay, transfer or performance acceptance"
+  },
+  "sources": {
+    "reference": {
+      "path": "/Users/blackmad/Code/map-recall2-source-data/streets/oudezijds-east-next-south/artifacts/street-appearance/rows/oudezijds-east-next-south/evaluation-source/processed/oudezijds-east-next-south-station-2.jpg",
+      "sha256": "a441bfff36fec4484bea0fae21f16f28ec9cd45d61dfcc548cb4fac684d1bba2",
+      "captureDate": "2025-06-30",
+      "attribution": "Gemeente Amsterdam CC BY4.0",
+      "inspected": true
+    },
+    "freeze": "docs/references/oudezijds-compound-discovery-review.json",
+    "sourceCandidate": "docs/references/compound-frontage-source-candidate.json",
+    "priorFailure": "docs/references/compound-frontage-root-visual-review.json",
+    "workPolicy": "public/canal-drive/street-rhythm-work.json",
+    "privateSourcePack": "streets/oudezijds-east-next-south/",
+    "surveySha256": "d414e590684c0398989ce054377b495e1c9d6819747708d6ed35ad3083df8d71",
+    "envelopeCandidateSha256": "5ed91547e1a8ce52dbf9bbc8992627f15fde7029a2691fcd109d256a36c03906"
+  },
+  "renderEvidence": [
+    {
+      "phase": "before",
+      "view": "front",
+      "file": "artifacts/street-appearance/compound-native/source-envelope-cycle-1/before-front.png",
+      "sha256": "380b76bc3ef6a7b1d4b81a01af679a534e77fed783195558343f874d977b38a6",
+      "triangles": 251,
+      "inspected": true,
+      "hashVerified": true
+    },
+    {
+      "phase": "after",
+      "view": "front",
+      "file": "artifacts/street-appearance/compound-native/source-envelope-cycle-1/after-front.png",
+      "sha256": "d3bba7a7ba3643e91d6489c4ff39d5e731e30ee69c3114e8b884b61e1d9f22f0",
+      "triangles": 1817,
+      "inspected": true,
+      "hashVerified": true
+    },
+    {
+      "phase": "before",
+      "view": "oblique",
+      "file": "artifacts/street-appearance/compound-native/source-envelope-cycle-1/before-oblique.png",
+      "sha256": "1fb5a24a5d397c7e8020d37405c94f4635bacccff81287059a95888ddbca25c1",
+      "triangles": 251,
+      "inspected": true,
+      "hashVerified": true
+    },
+    {
+      "phase": "after",
+      "view": "oblique",
+      "file": "artifacts/street-appearance/compound-native/source-envelope-cycle-1/after-oblique.png",
+      "sha256": "d1fa197edbfd3b1700fa9efef756782afeb2254c05efac9bdd87918a97184725",
+      "triangles": 1817,
+      "inspected": true,
+      "hashVerified": true
+    }
+  ],
+  "comparisonLimits": {
+    "camera": "Reference is a low-angle municipal view with strong converging verticals and clipped pavement. CPU front/oblique are elevated whole-Pand views showing roofs and rear mass absent from the reference. No exact pixel registration is claimed.",
+    "confidence": "High visible counts/hierarchy, repeated pane-strip failure and assembly presence; medium proportions/cornice reading; low-to-medium absolute row datums and projection; low current-photo roof registration.",
+    "nativeFacts": "Pand original year1650 and aggregate height22.99 remain facts; monument facade design1920 and surveyed street eave19.267\u201319.331 are separate observations."
+  },
+  "criticalDecisions": [
+    {
+      "id": "unequal-main-shaft-hierarchy",
+      "decision": "pass-bounded-primary-composition",
+      "confidence": "high counts, medium proportions",
+      "evidence": "Both after views show3 broad main axes over3 upper rows beside a separate narrow right shaft. The top shaft window is shorter and higher than the top main row. Before instead repeated4 stock columns over7 upper rows. Source zone hierarchy is now recognizable without a palette-only change.",
+      "limit": "Absolute opening dimensions remain approximate; no recurring-group transfer claim."
+    },
+    {
+      "id": "glazing-and-frame-appearance",
+      "decision": "fail",
+      "confidence": "high repeated visible defect; underlying material cause unverified",
+      "evidence": "In both after views each broad main field contains an opaque pale vertical strip on its right portion, roughly a quarter of apparent glazing width. This repeats in basement openings and shaft principal panes. Source main panes have narrow pale perimeter/transom framing with a broad glazing field; it does not show this repeated asymmetric filled stripe. The rendered strip reduces the broad-opening identity despite correct geometric opening count.",
+      "nextAction": "Inspect the actual composed glass/frame material and atlas crop/mask at native rendering scale; verify that the full inner field remains glazing with narrow actual frames. Do not assume geometric first-hit tests establish glass appearance."
+    },
+    {
+      "id": "raised-white-ground-and-separate-access",
+      "decision": "improved; access-detail-failed",
+      "confidence": "high assembly relationships; medium detail attribution",
+      "evidence": "Connected pale surround encloses3 main ground apertures above3 visible basement fields; dark door and projecting pale canopy/corbels remain on the separate shaft axis. These are meaningful source-supported improvements over the stock red-door commercial baseline. The door head nevertheless shows a small white V/fanlight-like patch in both after views, unlike the source dark rectangular relief leaf. Ground panes also carry the repeated opaque stripe.",
+      "nextAction": "Preserve joined surround/basement/access hierarchy, fix unsupported door-head atlas content and glazing strips. Do not invent stairs or exact grade from the cropped photo."
+    },
+    {
+      "id": "continuous-brick-shaft",
+      "decision": "partial-improvement; source-fit-uncertain",
+      "confidence": "medium",
+      "evidence": "Oblique after view shows a connected brick strip/mass and masonry between independently placed upper and ground fields rather than only unrelated stock boxes. Upper principal plus slim side lights and3 narrow lower lights remain legible. The source has more articulated brick spandrel/panel bands and a distinct shaft/crown junction; these are restrained/weak in the CPU view and cannot yet be declared matched.",
+      "nextAction": "Review continuous shallow projection and restrained brick bands at comparable low-angle/block scale; prioritize connected mass and correct glazing over individual brick ornament."
+    },
+    {
+      "id": "heavy-cornice",
+      "decision": "pass-bounded-presence; attachment-uncertain",
+      "confidence": "high presence; medium source proportion",
+      "evidence": "A broad pale cornice with repeated underside blocks now spans the declared street facade top and provides a clear termination. Source shows the same heavy pale crown family. The right shaft attachment/detail differs or is insufficiently visible for exact matching.",
+      "limit": "Presence/composition pass does not waive native perimeter joins or roof closure checks."
+    },
+    {
+      "id": "street-eave-and-steep-roof-family",
+      "decision": "improved-native-family; acceptance-withheld",
+      "confidence": "medium supported family; low current-photo roof registration",
+      "evidence": "After views replace the unsupported whole-parent horizontal cap with a steep street roof and mixed-height rear regions; main facade rows terminate below the cornice rather than below a large aggregate-height blank story. This follows the monument-described steep front dakschild and surveyed eave versus aggregate distinction. Elevated renders expose a bare brick insert/opening in the steep roof and tall rear masses not comparably visible in station2; their photo agreement cannot be established from this low-angle crop.",
+      "nextAction": "Repair native perimeter joins and compare surveyed roof-ring/insert closure, eave attachment and oblique street silhouette without replacing survey facts or fitting a fake roof plate."
+    }
+  ],
+  "technicalFailure": {
+    "decision": "fail; blocks admission independently of visual progress",
+    "reportedBy": "Root image-ready handoff; not independently measured from these PNGs",
+    "perimeterJoinMaxXYM": 0.048,
+    "perimeterJoinMaxZM": 0.056,
+    "causeReported": "Source/native coordinate rounding leaves perimeter joins outside the required invariant.",
+    "rule": "Do not accept or silently widen tolerance based on visually small gaps; preserve failure and resolve measured binding/closure."
+  },
+  "secondaryUncertainty": [
+    {
+      "id": "basement-count-and-grade",
+      "state": "Three-axis lower group is a useful source-informed candidate; exact full basement count/grade not verified because source left/base is clipped."
+    },
+    {
+      "id": "ground-sash-subdivisions",
+      "state": "Source lower sash has vertical subdivisions; quiet single-field candidate remains simplified. Reassess after the larger glazing defect is fixed."
+    },
+    {
+      "id": "whole-Pand-return-and-neighbors",
+      "state": "CPU whole-Pand views show large rear/side faces; no actual neighboring street row or source return view is supplied here. No neighbor-appearance acceptance from this isolated candidate."
+    }
+  ],
+  "nextBoundedCycle": [
+    "Correct repeated opaque glazing strips and unsupported door-head content in the composed native renderer.",
+    "Resolve the failed native perimeter binding/roof closure invariant independently from facade proportions.",
+    "Repeat primary front/oblique and a comparable low-angle street view against station2; preserve current failed PNG hashes.",
+    "Require fresh independent review, actual game views and performance evidence before any scoped acceptance; keep99 unseen until the proper frozen challenge."
+  ],
+  "actualGameReview": "pending; separate worker owns later review",
+  "gpuPerformance": "pending",
+  "demo": "public/canal-drive/street-generator-demos.html remains a working CPU candidate with no expansion accepted",
+  "latestMaterialDecision": "cycle2-primary-material-appearance-pass; cycle1FAIL and technical join failure retained; final geometry/game/heldout acceptance pending",
+  "cycle2MaterialReview": {
+    "reviewedOn": "2026-10-06",
+    "scope": "Same frozen primary87/89 only. Material/appearance review, not final roof-joint geometry acceptance.",
+    "decision": "pass-bounded-primary-material-appearance",
+    "source": "Same station2 image/candidate and critical relationships recorded above; fresh99 remains entirely unseen.",
+    "renderEvidence": [
+      {
+        "phase": "after",
+        "view": "front",
+        "file": "artifacts/street-appearance/compound-native/source-envelope-cycle-2/after-front.png",
+        "sha256": "c15b9fbeda9d2e5fe48a6248a2cbdc5797a8cb566f1b8b2a584764e33e9458ee",
+        "triangles": 2456,
+        "inspected": true,
+        "hashVerified": true
+      },
+      {
+        "phase": "after",
+        "view": "oblique",
+        "file": "artifacts/street-appearance/compound-native/source-envelope-cycle-2/after-oblique.png",
+        "sha256": "d042c096c7a7feb0280c9385a82bd7d142c46712c4e32e3fe0b9b2caef611b39",
+        "triangles": 2456,
+        "inspected": true,
+        "hashVerified": true
+      }
+    ],
+    "rendererSources": {
+      "src/canalRecall/threeBuildingMesh.ts": "83347be64386738f8869e45555351aedf51efe778e1647421c33d26607df1344",
+      "src/canalRecall/threeBuildingFeatures.ts": "34238977296a25011afb6ecd595d20007371a9b30cfddcec70235bdd51dc32f9",
+      "src/canalRecall/compoundSourceCandidate.fixture.ts": "869d7c0e85e880142852cbc72343d3c2f54004a44c3286ccc24c8d2015e2a0d0",
+      "src/canalRecall/surveyedEnvelopeMeshBinding.ts": "b4f59223fd6850ae71ac02d9bd312534ab766a59b0c7d70dbcbf29f957e190fd"
+    },
+    "cycle1FailurePreservation": "All original criticalDecisions, PNG hashes and technicalFailure above remain unchanged. Cycle1 glazing stripe and whiteVdoor remain explicit failed evidence; cycle2 does not retroactively accept them.",
+    "checks": [
+      {
+        "id": "broad-quiet-glazing",
+        "decision": "pass-material-only",
+        "confidence": "high visible repair",
+        "evidence": "Both cycle2 after views have uninterrupted dark glass fields inside slim pale perimeter frames and quiet transoms. The repeated right-quarter opaque pale strip seen in cycle1 is gone in the main, basement and shaft principal fields. Broad main opening width is consequently readable again.",
+        "limit": "Uniform CPU glass color cannot establish live material behavior in all looks/lighting; game review remains separate."
+      },
+      {
+        "id": "dark-independent-access-leaf",
+        "decision": "pass-material-only",
+        "confidence": "high visible repair",
+        "evidence": "Both after views show a continuous dark rectangular door leaf under the separate pale canopy. The unsupported whiteV/fanlight-like head patch seen in cycle1 is gone. Exact source door relief is secondary and is not required for this bounded material pass."
+      },
+      {
+        "id": "coupled-main-shaft-ground-crown",
+        "decision": "retained-bounded-primary-composition-improvement",
+        "confidence": "high counts/ordering; medium source proportions",
+        "evidence": "3 broad main axes over3 rows, independently shifted narrow shaft including its shorter high top pane,3 narrow ground lights, raised joined white surround above basement, and pale block cornice remain legible after the material repair. No newly demonstrated critical composition failure is found in these two material diagnostic views.",
+        "limit": "Approximate datums and weakly articulated shaft spandrel/crown details remain uncertainty rather than a newly invented architectural blocker."
+      }
+    ],
+    "remainingCriticalGates": [
+      {
+        "id": "native-envelope-joins",
+        "status": "pending final repaired-binding validation and same-version evidence",
+        "reason": "These2456-triangle views were rendered while repair was underway. They do not resolve or replace cycle1 reported4.8cmXY/5.6cmZ failure; final join invariant and roof/eave closure evidence must be reviewed separately."
+      },
+      {
+        "id": "actual-street-scene-and-roof-read",
+        "status": "pending",
+        "reason": "Elevated isolated CPU views cannot establish roof-ring/insert attachment, neighboring street composition or actual material visibility at gameplay camera scale."
+      },
+      {
+        "id": "frozen-transfer-challenge",
+        "status": "pending; no admissions",
+        "reason": "No99 photograph was opened or used; primary success does not establish recurring-group transfer."
+      },
+      {
+        "id": "performance",
+        "status": "pending actual game/GPU evidence",
+        "reason": "Triangle count and image appearance are not performance acceptance."
+      }
+    ],
+    "secondarySourceLimits": [
+      "Exact bel-etage sash subdivisions, source door relief and individual shaft brick panels remain simplified; prioritize useful composition rather than exact photographed-building matching.",
+      "Clipped source grade and different elevated diagnostic camera still prevent absolute facade dimension and full approach claims."
+    ],
+    "runtimeAdmissions": 0,
+    "finalGeometryAcceptance": false,
+    "actualGameAcceptance": false
+  },
+  "latestSourceRenderDecision": "cycle3-bounded-primary-source/render-pass; runtime transfer/game/performance not accepted. Original cycle1FAIL and intermediate cycle2 limits remain preserved.",
+  "cycle3FinalFrozenPrimaryReview": {
+    "reviewedOn": "2026-10-06",
+    "decision": "pass-bounded-primary-source/render-checkpoint; no runtime admission",
+    "scope": "Final frozen87/89 diagnostic only. No99 view/tuning, transition/row/game/performance acceptance.",
+    "renderEvidence": [
+      {
+        "phase": "before",
+        "view": "front",
+        "file": "artifacts/street-appearance/compound-native/source-envelope-cycle-3/before-front.png",
+        "sha256": "380b76bc3ef6a7b1d4b81a01af679a534e77fed783195558343f874d977b38a6",
+        "triangles": 251,
+        "inspected": false,
+        "hashVerified": true,
+        "note": "After image personally inspected in this cycle; before baseline matches already inspected earlier cycle."
+      },
+      {
+        "phase": "after",
+        "view": "front",
+        "file": "artifacts/street-appearance/compound-native/source-envelope-cycle-3/after-front.png",
+        "sha256": "49ea0787d07d4e35473a091d8d726f37289fd6e3081bad6cf3dc33a8bbbf2f6e",
+        "triangles": 2453,
+        "inspected": true,
+        "hashVerified": true,
+        "note": "After image personally inspected in this cycle; before baseline matches already inspected earlier cycle."
+      },
+      {
+        "phase": "before",
+        "view": "oblique",
+        "file": "artifacts/street-appearance/compound-native/source-envelope-cycle-3/before-oblique.png",
+        "sha256": "1fb5a24a5d397c7e8020d37405c94f4635bacccff81287059a95888ddbca25c1",
+        "triangles": 251,
+        "inspected": false,
+        "hashVerified": true,
+        "note": "After image personally inspected in this cycle; before baseline matches already inspected earlier cycle."
+      },
+      {
+        "phase": "after",
+        "view": "oblique",
+        "file": "artifacts/street-appearance/compound-native/source-envelope-cycle-3/after-oblique.png",
+        "sha256": "d042c096c7a7feb0280c9385a82bd7d142c46712c4e32e3fe0b9b2caef611b39",
+        "triangles": 2453,
+        "inspected": true,
+        "hashVerified": true,
+        "note": "After image personally inspected in this cycle; before baseline matches already inspected earlier cycle."
+      }
+    ],
+    "frozenIdentity": {
+      "bindingFile": "artifacts/street-appearance/compound-native/source-envelope-cycle-3/validated-binding.json",
+      "bindingSha256": "68da4ff982e470a8191fad6e156cdc0e12b5232655e8158d63ca96d48c80c3e8",
+      "bindingRawBytesHashVerified": true,
+      "atlasColourSha256": "ccb9951494c947732952a26b86e62d480782c8e857929135f1b4409dd3ca3369",
+      "atlasMaskSha256": "f080426b2a7a01b283727b4dff3b99ff6c49e9155e961df840c89a39350b0e3f",
+      "atlasSize": 256,
+      "atlasLayers": 195,
+      "surveySourceSha256": "d414e590684c0398989ce054377b495e1c9d6819747708d6ed35ad3083df8d71",
+      "envelopeCandidateSha256": "5ed91547e1a8ce52dbf9bbc8992627f15fde7029a2691fcd109d256a36c03906",
+      "rendererSources": {
+        "src/canalRecall/threeBuildingMesh.ts": "83347be64386738f8869e45555351aedf51efe778e1647421c33d26607df1344",
+        "src/canalRecall/threeBuildingFeatures.ts": "34238977296a25011afb6ecd595d20007371a9b30cfddcec70235bdd51dc32f9",
+        "src/canalRecall/compoundSourceCandidate.fixture.ts": "869d7c0e85e880142852cbc72343d3c2f54004a44c3286ccc24c8d2015e2a0d0",
+        "src/canalRecall/surveyedEnvelopeMeshBinding.ts": "3dcce7f6a2c85121b10873a322d6a10b1746970029d29f659ef8b0811e5b9187"
+      },
+      "afterTriangles": 2453
+    },
+    "visualDecisions": [
+      {
+        "id": "three-main-axes-and-independent-shaft",
+        "decision": "pass-bounded-primary",
+        "confidence": "high relationships; medium proportions",
+        "evidence": "Front and oblique retain3 broad main axes over3 rows beside narrow independent shaft, with offset shaft rows and shorter high top opening. Hierarchy remains recognizable against station2; no aggregate-height blank extra story or equal4-column grid remains."
+      },
+      {
+        "id": "quiet-glazing-and-dark-access",
+        "decision": "pass-bounded-primary-material",
+        "confidence": "high visible repair",
+        "evidence": "Broad main, basement and principal shaft fields are quiet uninterrupted glazing with slim pale framing/transoms. Repeated opaque pale rightquarter strips and whiteVdoor remain absent; dark separate access leaf reads below pale canopy."
+      },
+      {
+        "id": "raised-connected-ground-and-basement",
+        "decision": "pass-bounded-primary-composition",
+        "confidence": "high assembly relationship; low-to-medium absolute datums",
+        "evidence": "One substantial white raised surround joins3 apertures above3 basement fields, while door/canopy/corbels remain on the independent shaft axis. This captures source lower composition without inventing approach/stairs."
+      },
+      {
+        "id": "continuous-shaft-and-cornice",
+        "decision": "pass-bounded-primary-composition",
+        "confidence": "medium",
+        "evidence": "The oblique view retains connected brick shaft/masonry between independently placed window fields and a substantial pale cornice with underside blocks. Source brick-panel and shaft/crown ornament remain restrained, but no missing macro assembly is demonstrated by these views."
+      },
+      {
+        "id": "eave-and-roof-attachment",
+        "decision": "pass-bounded-visual-attachment; sampled technical evidence supports repair",
+        "confidence": "medium visual; high saved audit consistency",
+        "evidence": "Steep street roof meets the cornice/eave without a visible open daylight seam in either inspected render; whole-Pand rear mass remains separately articulated. No new macro roof-attachment failure found at this image resolution. Current-photo low-angle view does not independently establish exact rear roof insert/region appearance.",
+        "limit": "No claim of exact pixel registration, complete manifold/topology verification or gameplay visibility from a two-view CPU preview."
+      }
+    ],
+    "jointEvidence": {
+      "jointFile": "artifacts/street-appearance/compound-native/roof-joint-cycle2/joint-validation.json",
+      "jointFileSha256": "d2ead74bf3cb5d41e91db676ea939803e5f2cad05cde615f459f158eacc44c62",
+      "sourceOutlineFile": "artifacts/street-appearance/compound-native/roof-joint-cycle2/source-outline-comparison.json",
+      "sourceOutlineSha256": "15aecec77e66b2f021613f4c7ffb8a13b2b5dc36650f7933288275f3786ddded",
+      "inspection": "Read saved audit and source-outline record; independently recomputed sample counts/maxima from all recorded per-edge sample values. Did not regenerate measurements or run renderer/binding tests.",
+      "nativeEdges": 9,
+      "sampleCount": 179,
+      "maxXYGapM": 0.0010772893793185377,
+      "maxVerticalMismatchM": 0.0003213540023025985,
+      "maxTotalDistanceM": 0.001078119574735608,
+      "sameStrictAuditBaseline": {
+        "maxXYGapM": 0.05255510419526027,
+        "maxVerticalMismatchM": 0.05819898771942178,
+        "maxTotalDistanceM": 0.058803289591346335
+      },
+      "attachment": {
+        "method": "source-LoD0-to-rounded-native-perimeter-collar",
+        "maxCornerDisplacementM": 0.05312277968359913,
+        "collarWidthM": 0.055951206808345325,
+        "unchangedInteriorTriangles": 929,
+        "attachmentTriangles": 270,
+        "sourceQuantizationM": [
+          0.001,
+          0.001,
+          0.001
+        ]
+      },
+      "sourceRoofRegionCount": 18,
+      "sourceOutlineComparison": {
+        "sourceCurrentBagCorners": 13,
+        "sourceLoD0Corners": 9,
+        "currentBagAreaM2": 265.80921399964245,
+        "sourceLoD0AreaM2": 265.7856795006492,
+        "maxBidirectionalCornerToOutlineM": 0.004412783216728017,
+        "interpretation": "Official current BAG13 vs surveyed LoD0 9 differences are source simplification/quantization, not different Pand or datum; boundary attachment uses actual raw LoD0\u2192installed round6 correspondence. Interior source roof114 and roof108 insertion remain unchanged."
+      },
+      "sourceInteriorPreservation": "Saved evidence records929 unchanged interior triangles and18 roof regions; source-outline comparison says roof114 and roof108 insertion remain unchanged. Root reports16 adapter/binding/native tests passing. These preservation assertions are supporting technical evidence, not substituted architectural recognition."
+    },
+    "failureHistory": "Original cycle1 stripe/fanlight failures, PNG hashes and failed perimeter findings remain above; cycle2 was material-only while binding repair was underway. Final cycle3 uses recorded binding/atlas hashes and2453-triangle snapshot. Neither prior failed cycle is retroactively accepted.",
+    "remainingUncertainty": [
+      "Absolute source facade datums and full grade/approach remain approximate because station2 is low-angle and cropped.",
+      "Exact brick panels, sash subdivisions, door relief and roof insert/rear details are secondary or unobserved at comparable source angle; no invented detailed source agreement.",
+      "Whole-Pand exposed rear/return mass in elevated CPU views has not been judged against actual surrounding street-row geometry."
+    ],
+    "nextGates": [
+      "Frozen85 transition and fresh99 challenge with row context;99 remains completely unseen here.",
+      "Actual gallery/game camera material, roof, neighbor and streaming review.",
+      "Same-version performance/GPU evidence before scoped completion or runtime admission."
+    ],
+    "runtimeAdmissions": 0,
+    "streetGroupTransferAccepted": false,
+    "actualGameAccepted": false,
+    "performanceAccepted": false
+  }
+}

@@ -3,52 +3,60 @@
   "researchedOn": "2026-10-06",
   "status": "prioritized-discovery-not-rollout-admission",
   "discoveryCorridor": "Jan Evertsenstraat between Admiralengracht and Mercatorplein; profiles belong to observed street-side groups, not the whole neighborhood",
-  "decision": "First complete north even-side block/source inventory around existing pilot; use opposite odd side as an independently sourced transfer challenge. No additional identities installed.",
+  "decision": "Official65physical-Pand inventory and current/historicalrawreferences acquired. Existing124/126window capability improved, no additionalidentities admitted. Complete entrances and challenge distinct street-side groups before expansion.",
   "groups": [
     {
       "id": "jan-evertsen-even-west",
-      "label": "Jan Evertsenstraat 94–140",
+      "label": "Jan Evertsenstraat 94\u2013140",
       "priority": 1,
       "side": "north-even",
-      "status": "current-source-and-official-identity-link-pending",
+      "status": "official-identities-inventoried-current-source-observation-pending-admission",
       "source": "https://amsterdamopdekaart.nl/1850-1940/Jan_Evertsenstraat/94-140",
-      "notes": "Closest expansion discovery group to pilot; contemporary identity and source address relationship still unresolved.",
-      "installedNewBuildingIds": []
+      "notes": "Closest expansion discovery group to pilot; Official address/VBO/Pand relationships archived; visual group transfer remains unaccepted.",
+      "installedNewBuildingIds": [],
+      "physicalPandCount": 24,
+      "officialInventory": "bag-rollout-inventory.json"
     },
     {
       "id": "jan-evertsen-even-east",
-      "label": "Jan Evertsenstraat 68–92",
+      "label": "Jan Evertsenstraat 68\u201392",
       "priority": 2,
       "side": "north-even",
-      "status": "current-source-and-official-identity-link-pending",
+      "status": "official-identities-inventoried-current-source-observation-pending-admission",
       "source": "https://amsterdamopdekaart.nl/1850-1940/Jan_Evertsenstraat/68-92",
       "notes": "Related Staal shop/apartment composition; split around John Franklinstraat gateway, exclude opening and returned residential sides.",
-      "installedNewBuildingIds": []
+      "installedNewBuildingIds": [],
+      "physicalPandCount": 10,
+      "officialInventory": "bag-rollout-inventory.json"
     },
     {
       "id": "jan-evertsen-odd-west",
-      "label": "Jan Evertsenstraat 91–123",
+      "label": "Jan Evertsenstraat 91\u2013123",
       "priority": 3,
       "side": "south-odd",
-      "status": "current-source-and-official-identity-link-pending",
+      "status": "official-identities-inventoried-current-source-observation-pending-admission",
       "source": "https://amsterdamopdekaart.nl/1850-1940/Jan_Evertsenstraat/91-123",
       "notes": "Independent opposite-side transfer group. Freeze source samples before fitting; do not copy north upper-window or door arrangement.",
-      "installedNewBuildingIds": []
+      "installedNewBuildingIds": [],
+      "physicalPandCount": 16,
+      "officialInventory": "bag-rollout-inventory.json"
     },
     {
       "id": "jan-evertsen-odd-east",
-      "label": "Jan Evertsenstraat 59–89",
+      "label": "Jan Evertsenstraat 59\u201389",
       "priority": 4,
       "side": "south-odd",
-      "status": "current-source-and-official-identity-link-pending",
+      "status": "official-identities-inventoried-current-source-observation-pending-admission",
       "source": "https://amsterdamopdekaart.nl/1850-1940/Jan_Evertsenstraat/59-89",
       "notes": "Second opposite-side candidate; independent roof/window/shop composition review required.",
-      "installedNewBuildingIds": []
+      "installedNewBuildingIds": [],
+      "physicalPandCount": 15,
+      "officialInventory": "bag-rollout-inventory.json"
     }
   ],
   "laterCandidates": [
     {
-      "scope": "Jan Evertsenstraat 125–131 / Mercatorplein approaches",
+      "scope": "Jan Evertsenstraat 125\u2013131 / Mercatorplein approaches",
       "status": "boundary-review",
       "source": "https://amsterdamopdekaart.nl/1850-1940/Jan_Evertsenstraat/125-131",
       "reason": "Corner/approach to different monumental spatial system; not automatic canopy admission."
@@ -78,11 +86,11 @@
     "Glazing strip or canopy aperture only where current source proves it"
   ],
   "capabilityGaps": [
-    "Current canopy has no glazed roof aperture or separately source-controlled glass-block band",
     "Stock shop glazing does not encode actual pane/door/portico relationships",
     "Fixed nominal school ground scale removes jitter but is not a surveyed row elevation datum",
     "Only small-bend miter joints, not right-angle corner wrapping",
-    "Mercatorplein arcade columns, recessed frontage and open gateways need another assembly"
+    "Mercatorplein arcade columns, recessed frontage and open gateways need another assembly",
+    "Bounded paired-window/projecting-leaf capability now installed on124/126 only; source-supported portico/shop groups remain missing."
   ],
   "frozenExistingSamples": [
     {
@@ -396,7 +404,7 @@
     {
       "url": "https://www.archivolt.eu/nl/projecten/mercatorplein",
       "kind": "restoration-architect",
-      "notes": "West wall 1998–2000 work; confirms maintained access between shops and fine facade details.",
+      "notes": "West wall 1998\u20132000 work; confirms maintained access between shops and fine facade details.",
       "access": "Web text inspected; raw pack acquisition and current image inspection pending"
     }
   ],
@@ -408,7 +416,7 @@
       "use": "Original dated facade, canopy, window-group and entrance photographs; compare historical condition with latest municipal panorama.",
       "existingReusableAcquisition": "scripts/canalhouse-recipes/research-beeldbank-photos.py discovers public viewer media service; cached service record confirms earlier three catalogue/original-photo retrievals. Do not rerun unrelated houses.",
       "boundedQuery": "Jan Evertsenstraat; rows=5; page=1",
-      "accessState": "2026-10-06 bounded service query failed DNS in current shell; viewer unavailable via web tool. No new records or photos inspected."
+      "accessState": "Successful bounded original acquisition archived privately;14catalogue records,5originalphotos. Earlier DNSattempts retained as history."
     },
     "panorama": {
       "api": "https://api.data.amsterdam.nl/panorama/panoramas/",
@@ -418,7 +426,7 @@
     "bag": {
       "documentation": "https://api.data.amsterdam.nl/v1/docs/datasets/bag%40v1.html",
       "use": "Resolve address to VBO and Pand via official relationships; no nearby-place substitute.",
-      "access": "Official public/no-auth documentation inspected; pilot request failed DNS."
+      "access": "Official70baseaddresses\u219265installedcurrentPands resolved;0unresolved. RawAPIresponses archived privately."
     },
     "pointCloud": {
       "documentation": "https://api.data.amsterdam.nl/v1/mvt/puntenwolk/v2",

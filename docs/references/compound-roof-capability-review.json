@@ -1,0 +1,411 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-10-06",
+  "scope": "Observed Oudezijds Voorburgwal 87–89 physical Pand only; shared source-envelope capability, no neighborhood transfer/admission",
+  "decision": "source-height/roof-envelope capability gap confirmed; bounded implementation proposed; visual acceptance false",
+  "nativeIdentity": "NL.IMBAG.Pand.0363100012178298",
+  "originalPandYear": 1650,
+  "facadeDesignYear": 1920,
+  "sourceRecords": {
+    "discoveryReview": "docs/references/oudezijds-compound-discovery-review.json",
+    "officialPand": {
+      "sourcePackPath": "streets/oudezijds-east-next-south/raw/current-identity-20261006/pand-0363100012178298.json",
+      "sha256": "b22e7538b4556d031051234c70238dfb111ca9b6d5d23038c5bc8ee1738fbb9b",
+      "bytes": 2899,
+      "recordSelfUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012178298.4?_format=json",
+      "accessState": "Actual root-acquired raw JSON inspected; HTTP headers and exact retrieval timestamp not supplied in these bytes",
+      "registeredAt": "2026-10-06T10:20:21.544115+00:00"
+    },
+    "roofSurvey": {
+      "sourcePackPath": "streets/oudezijds-east-next-south/raw/current-identity-20261006/3dbag-0363100012178298.json",
+      "sha256": "d414e590684c0398989ce054377b495e1c9d6819747708d6ed35ad3083df8d71",
+      "bytes": 18110,
+      "recordSelfUrl": null,
+      "accessState": "Actual root-acquired raw JSON inspected; HTTP headers and exact retrieval timestamp not supplied in these bytes",
+      "registeredAt": "2026-10-06T10:20:21.543807+00:00"
+    },
+    "municipalImages": [
+      {
+        "id": "station-2",
+        "privateSourcePath": "streets/oudezijds-east-next-south/artifacts/street-appearance/rows/oudezijds-east-next-south/evaluation-source/processed/oudezijds-east-next-south-station-2.jpg",
+        "sha256": "a441bfff36fec4484bea0fae21f16f28ec9cd45d61dfcc548cb4fac684d1bba2",
+        "captureDate": "2025-06-30",
+        "inspected": true,
+        "attribution": "Gemeente Amsterdam CC BY4.0"
+      },
+      {
+        "id": "station-1",
+        "privateSourcePath": "streets/oudezijds-east-next-south/artifacts/street-appearance/rows/oudezijds-east-next-south/evaluation-source/processed/oudezijds-east-next-south-station-1.jpg",
+        "sha256": "5d4b0c06b70609b0bea3424767238145a675eb2df87d993178634dc00d187b03",
+        "captureDate": "2025-06-30",
+        "inspected": true,
+        "attribution": "Gemeente Amsterdam CC BY4.0"
+      }
+    ],
+    "monumentDescription": {
+      "sourceId": "3db98b0f-39b1-4851-9fc2-81df5ed3ad89",
+      "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/3db98b0f-39b1-4851-9fc2-81df5ed3ad89?_format=json",
+      "assertion": "Souterrain and bel-etage, three upper bouwlagen and kapverdieping; flat roof with steep street-side dakschild. Narrow right projected shaft remains separate from broad main zone."
+    }
+  },
+  "sourceFacts": {
+    "aggregateNativeHeightM": 22.99,
+    "aggregateMeaning": "3DBAG roof70 percentile minus source ground datum; preserve factual native height, do not use as every exterior wall top",
+    "groundDatumNapM": 0.49900001287460327,
+    "frontWallSurfaceIndex": 4,
+    "frontWallEndpointsRdNap": [
+      [
+        121708.9191875,
+        487412.49825,
+        19.766001266479492
+      ],
+      [
+        121715.4691875,
+        487420.74825,
+        19.83000126647949
+      ]
+    ],
+    "frontEaveAboveGroundM": [
+      19.26700125360489,
+      19.331001253604885
+    ],
+    "frontShieldSurfaceIndex": 108,
+    "frontShieldHighestNapM": 25.36800126647949,
+    "frontShieldHighestAboveGroundM": 24.869001253604885,
+    "frontRoofInsertionSurfaceIndex": 114,
+    "frontRoofInsertionNapRangeM": [
+      22.15800126647949,
+      22.307001266479492
+    ],
+    "roofRegionCount": 18,
+    "roofRingVertexReferences": 173,
+    "exteriorSurveyWallRegionCount": 31,
+    "localJunctionWallRegionCount": 68,
+    "groundFootprintM2": 265.8,
+    "groundFootprintRings": 1,
+    "frontRoofShieldRings": 2,
+    "openSpaceLimit": "Roof108 has one interior ring, but the BAG/LoD0 footprint has no courtyard hole and LoD2.2 has one ground surface. Interior roof ring is a roof insertion/junction or possible dormer feature, not demonstrated ground-open court. Preserve ring in roof processing; do not cut an invented ground courtyard or fill a surveyed roof hole blindly.",
+    "roofRegions": [
+      {
+        "surfaceIndex": 100,
+        "rings": 1,
+        "heightMinNapM": 24.339001266479492,
+        "heightMaxNapM": 24.423001266479492,
+        "centroidRD": [
+          121716.63398750001,
+          487416.3444499999
+        ],
+        "outerVertexCount": 5
+      },
+      {
+        "surfaceIndex": 101,
+        "rings": 1,
+        "heightMinNapM": 6.44900126647949,
+        "heightMaxNapM": 6.4770012664794905,
+        "centroidRD": [
+          121733.31840972223,
+          487411.0574722222
+        ],
+        "outerVertexCount": 9
+      },
+      {
+        "surfaceIndex": 102,
+        "rings": 1,
+        "heightMinNapM": 19.984001266479492,
+        "heightMaxNapM": 20.34300126647949,
+        "centroidRD": [
+          121732.67807638888,
+          487409.0916944444
+        ],
+        "outerVertexCount": 9
+      },
+      {
+        "surfaceIndex": 103,
+        "rings": 1,
+        "heightMinNapM": 18.56500126647949,
+        "heightMaxNapM": 23.53500126647949,
+        "centroidRD": [
+          121727.9473125,
+          487412.46725
+        ],
+        "outerVertexCount": 8
+      },
+      {
+        "surfaceIndex": 104,
+        "rings": 1,
+        "heightMinNapM": 13.97400126647949,
+        "heightMaxNapM": 23.79200126647949,
+        "centroidRD": [
+          121730.01402083332,
+          487410.40291666664
+        ],
+        "outerVertexCount": 12
+      },
+      {
+        "surfaceIndex": 105,
+        "rings": 1,
+        "heightMinNapM": 25.63300126647949,
+        "heightMaxNapM": 25.70600126647949,
+        "centroidRD": [
+          121723.3231875,
+          487414.94125
+        ],
+        "outerVertexCount": 5
+      },
+      {
+        "surfaceIndex": 106,
+        "rings": 1,
+        "heightMinNapM": 15.79500126647949,
+        "heightMaxNapM": 15.809001266479491,
+        "centroidRD": [
+          121743.17602083333,
+          487405.84891666664
+        ],
+        "outerVertexCount": 12
+      },
+      {
+        "surfaceIndex": 107,
+        "rings": 1,
+        "heightMinNapM": 5.86200126647949,
+        "heightMaxNapM": 6.0490012664794905,
+        "centroidRD": [
+          121744.6865875,
+          487405.25204999995
+        ],
+        "outerVertexCount": 5
+      },
+      {
+        "surfaceIndex": 108,
+        "rings": 2,
+        "heightMinNapM": 19.766001266479492,
+        "heightMaxNapM": 25.368001266479492,
+        "centroidRD": [
+          121713.4606875,
+          487415.11508333334
+        ],
+        "outerVertexCount": 6
+      },
+      {
+        "surfaceIndex": 109,
+        "rings": 1,
+        "heightMinNapM": 22.84300126647949,
+        "heightMaxNapM": 22.90600126647949,
+        "centroidRD": [
+          121726.6717875,
+          487410.23144999996
+        ],
+        "outerVertexCount": 5
+      },
+      {
+        "surfaceIndex": 110,
+        "rings": 1,
+        "heightMinNapM": 12.38700126647949,
+        "heightMaxNapM": 17.21000126647949,
+        "centroidRD": [
+          121744.5789875,
+          487406.12555
+        ],
+        "outerVertexCount": 10
+      },
+      {
+        "surfaceIndex": 111,
+        "rings": 1,
+        "heightMinNapM": 20.81900126647949,
+        "heightMaxNapM": 20.89500126647949,
+        "centroidRD": [
+          121735.3984875,
+          487408.48034999997
+        ],
+        "outerVertexCount": 10
+      },
+      {
+        "surfaceIndex": 112,
+        "rings": 1,
+        "heightMinNapM": 25.90700126647949,
+        "heightMaxNapM": 26.03100126647949,
+        "centroidRD": [
+          121719.96333035713,
+          487409.62582142855
+        ],
+        "outerVertexCount": 7
+      },
+      {
+        "surfaceIndex": 113,
+        "rings": 1,
+        "heightMinNapM": 23.25200126647949,
+        "heightMaxNapM": 23.62400126647949,
+        "centroidRD": [
+          121721.3771875,
+          487412.51577
+        ],
+        "outerVertexCount": 25
+      },
+      {
+        "surfaceIndex": 114,
+        "rings": 1,
+        "heightMinNapM": 22.15800126647949,
+        "heightMaxNapM": 22.307001266479492,
+        "centroidRD": [
+          121711.40852083334,
+          487414.12708333327
+        ],
+        "outerVertexCount": 6
+      },
+      {
+        "surfaceIndex": 115,
+        "rings": 1,
+        "heightMinNapM": 17.30300126647949,
+        "heightMaxNapM": 23.61700126647949,
+        "centroidRD": [
+          121723.39204464285,
+          487408.62467857136
+        ],
+        "outerVertexCount": 7
+      },
+      {
+        "surfaceIndex": 116,
+        "rings": 1,
+        "heightMinNapM": 10.86600126647949,
+        "heightMaxNapM": 10.98800126647949,
+        "centroidRD": [
+          121723.31768749999,
+          487406.39074999996
+        ],
+        "outerVertexCount": 6
+      },
+      {
+        "surfaceIndex": 117,
+        "rings": 1,
+        "heightMinNapM": 18.41500126647949,
+        "heightMaxNapM": 18.51500126647949,
+        "centroidRD": [
+          121735.2329875,
+          487409.06715
+        ],
+        "outerVertexCount": 20
+      }
+    ]
+  },
+  "criticalTraitsFrozen": [
+    {
+      "id": "front-eave-body-separation",
+      "assertion": "Actual street masonry/cornice stops at surveyed ~19.3m above ground. Facade rows stay below that edge; aggregate22.99 is metadata, not stretched body.",
+      "priority": "critical"
+    },
+    {
+      "id": "steep-front-shield",
+      "assertion": "Sloping front roof108 rises inward behind low front edge; source insertion114 remains a separately bounded local roof, not flat frontage lid or generic symmetric mansard.",
+      "priority": "critical"
+    },
+    {
+      "id": "rear-local-roof-ownership",
+      "assertion": "Rear/side surfaces retain individual surveyed levels and footprint extents. Roofcrest26.062NAP belongs to local regions, never whole-body extrusion.",
+      "priority": "critical"
+    },
+    {
+      "id": "holes-and-closures",
+      "assertion": "Triangulation preserves roof108 insertion ring and closes its surveyed junction with roof114/source walls. No ground courtyard is invented; no overlapping stock lid fills the sloped roof or insertion.",
+      "priority": "critical"
+    },
+    {
+      "id": "normal-distance-continuity",
+      "assertion": "Textured windows/doors and distinct front eave/shield survive ordinary/coarse camera views, mode changes, streaming and context neighbor retention.",
+      "priority": "critical"
+    }
+  ],
+  "existingRepresentation": [
+    {
+      "module": "src/canalRecall/sourceVisualRoof.ts",
+      "gap": "Source-admitted procedural crown derives eaves as native height minus plan rise; broad compound has no crown recipe branch. Existing guards skip roofVertices/roofGeometry/measured-accepted rather than supplying surveyed planes. Keep those guards, add separate validated surveyed-envelope path before procedural synthesis."
+    },
+    {
+      "module": "src/canalRecall/roofMesh.ts",
+      "gap": "RoofPlan has a single rise/base, rectangles/pieces/perimeterInset and sourceCrownFront. roofTrianglesForOutline takes only outer ring. Existing kinds cannot represent18 independently elevated surveyed regions or roof108 interior insertion ring without a new source-surface assembly."
+    },
+    {
+      "module": "src/canalRecall/threeBuildingFeatures.ts",
+      "gap": "meshBuildingFor sets one heightM from wallTopHeightM and always allocates lid; coarse explicitly resets heightM to source aggregate and drops roofs. Source envelope needs separate edge-top data and retained compact coarse silhouette; avoid resetting survey top to aggregate."
+    },
+    {
+      "module": "src/canalRecall/threeBuildingMesh.ts",
+      "gap": "Prepared.top/building.heightM is global; roof generator receives this as base, stock lid at that height; shared neighbor wall cuts also use aggregate. Need per-edge surveyed top profile for exposed wall geometry and matching neighbor clipping, plus sole roof ownership without blanket lid."
+    }
+  ],
+  "options": [
+    {
+      "id": "single-procedural-family",
+      "scope": "school/mansard/pitched/parapet over whole Pand",
+      "decision": "reject for this source",
+      "reason": "No one global rise/eave describes18 regions. Whole-body lowering misrepresents rear surfaces; adjusting rise to roofmax creates unsourced plate/slope extent and fills insertion. Width/year priors cannot establish roof family."
+    },
+    {
+      "id": "front-only-shield",
+      "scope": "Source108/114 plus local street eave correction",
+      "decision": "diagnostic-only fallback proposal; not full envelope acceptance",
+      "reason": "Can isolate immediate blank-wall failure, but unchanged aggregate-height lid intersects the source shield and uncorrected side/rear geometry remains. Requires explicit local cap cut/junction ownership, still costs new topology logic."
+    },
+    {
+      "id": "compact-surveyed-envelope",
+      "scope": "18 native roof surfaces plus source wall-top/junction envelopes for one confirmed Pand",
+      "decision": "recommended smallest coherent bounded capability",
+      "reason": "173 roof ring vertex references is compact; exact source rings avoid invented rectangle fitting/fullplate and handle rear regions once. Shared pure compiler reuses texture/shading triangle sinks while preserving native footprint/height metadata."
+    }
+  ],
+  "proposedContract": {
+    "name": "SourceRoofEnvelope (identity-specific surveyed geometry, separate from transferrable appearance recipe)",
+    "identityAndProvenance": [
+      "nativePandId",
+      "nativeFootprintSha256",
+      "sourcePackPath and rawSha256",
+      "surveyLoD2.2 and explicit sourceGroundNapM",
+      "coordinate system/transform",
+      "reviewed frontage edge endpoints and source wall/surface indices"
+    ],
+    "geometry": [
+      "roofSurfaces: {sourceSurfaceIndex, rings:[outer,...holes], localXYZAboveSourceGround, materialRole}",
+      "exteriorWallTopProfiles: source-footprint-bound piecewise line endpoints/height curves, including source street edge4",
+      "junctionClosures: surveyed local wall faces needed where roof regions/insertion meet; no guessed full-Pand slab",
+      "frontCornice: optional reviewed assembly along actual edge4 at surveyed eave; do not invent cornice dimensions from survey alone"
+    ],
+    "assembly": "Validate complete source envelope atomically, triangulate individual roof rings in their own planes with upward normals and metre-scaled UVs, retain holes; generate source-supported local wall/junction closures separately. Source surfaces own their tops. Apply per-edge wall tops to facade/context cuts; omit generic roof/lid only when valid source assembly supplies coverage. Keep source height/minHeight/year/footprint fields untouched.",
+    "integrationOrder": [
+      "New pure sourceRoofEnvelope compiler and tests; bake small provenance-bound local coordinates offline from raw survey, no runtime API",
+      "Add optional validated envelope to source-specific frontage cohort sidecar/feature adapter, with no city-wide recipe inference",
+      "Mesh building retains native aggregate height separately from surveyed edge tops; facade layout uses observed front eave, not maxcrest",
+      "Roof assembly branch emits envelope triangles before generic roof synthesis; no stock lids over owned regions, preserve exterior/roof holes and survey local closures",
+      "Coarse keeps cheap source silhouette/topology and textured walls/doors; drops cornice relief/extras instead of raising body to22.99",
+      "All look/worker/stream paths consume same revisioned source envelope; inspect native row/oblique/near first-hit images before any admission"
+    ],
+    "corniceLimit": "Municipal image supplies the readable street cornice relationship; roof survey supplies alignment/height. Cornice thickness/projection remain reviewed display parameters, not measured architectural facts."
+  },
+  "guardsAndFallback": [
+    "Exact confirmed identity+footprint fingerprint; no selection by1650/1920,width,neighborhood or appearance alone",
+    "No addition to transition85 or untouched heldout99 without their own acquired source envelope/review",
+    "Finite coordinates/transform and valid rings; topology/ring/orientation checks; sampled source footprint alignment tolerance recorded, never padded footprint suppression",
+    "Keep front roof insertion ring and source wall junctions; no automatic ground courtyard from roofhole",
+    "Do not clamp legitimate source local roof maxima to aggregate22.99; metadata aggregate is not physical envelope maximum",
+    "Do not place every wall at local maximum or uniformly front eave; use matched surveyed exterior profiles",
+    "Atomic fallback to existing native stock assembly if source compilation/coverage fails; never partly lower walls then silently draw old stock lid",
+    "Existing authoritative mapped roof geometry/survey sources retain precedence; contradictory source blocks review",
+    "Build/texture/geometry budgets measured on exact native scene; no speculative timing acceptance"
+  ],
+  "requiredChecks": [
+    "Native ID, footprint polygons/rings, original1650 and aggregate22.99 remain unchanged",
+    "Source front edge4 height exact within decode precision; body stops at19.267–19.331aboveground, roof108 rises behind",
+    "All18roof regions retained without positive-area overlapping stock roof caps; upward roof normals; vertical junction faces separate",
+    "Roof108hole preserves empty shield area and actual114insertion roof/junction geometry; no groundhole invented",
+    "Near/oblique first-hit facade cornice/window/shaft geometry visible, no parent wall or source lid burial",
+    "Neighbor native walls/roof/context retained; reverse/tessellated footprint gives same physical roof/world edge ownership",
+    "Same silhouette on all3looks and coarse; real stationary rider desktop/touch pan windows/doors remain",
+    "Root personally compares station2 and actual native/game images; fresh independent reviewer seeks blanktop, floatingcornice, overlapping roof and open-space failures; untouched heldout99 staysuntuned",
+    "Actual same-version CPU/fullGPU checks before scopedproductioncompletion"
+  ],
+  "acceptance": {
+    "roofVisualAccepted": false,
+    "frontageAccepted": false,
+    "transferAccepted": false,
+    "productionComplete": false,
+    "limits": "Proposal/code/source inspection only. Current compound preview reported blank upper wall by root; this worker has not run a fresh GPU/native render for roof assembly."
+  },
+  "nextAction": "Implement the compact sourceRoofEnvelope compiler and source-specific validated adapter for the confirmed representative Pand, then compare before/after against station2 plus native rear/top evidence. Preserve failed current preview, source front asymmetry and heldout inventory."
+}

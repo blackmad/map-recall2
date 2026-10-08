@@ -1,0 +1,425 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "jan_grouped_windows; did not implement compound planner/integration",
+  "reviewedAtUTC": "2026-10-06T10:33:54.499271+00:00",
+  "decision": "native-integration-contract-pass-bounded; no source/game admission",
+  "sourceReview": "docs/references/oudezijds-compound-discovery-review.json",
+  "workInventory": "public/canal-drive/street-rhythm-work.json",
+  "criticalTraitsFrozen": [
+    {
+      "id": "unequal-linked-zones",
+      "critical": true,
+      "source": "station-2",
+      "assertion": "One broad left window field with three principal axes stacks beside independent narrow right access/erker shaft. Preserve unequal field hierarchy and a shared facade envelope; stock four equal columns fail.",
+      "confidence": "high visible/source register agreement",
+      "acceptance": "Broad and narrow fields read as different coupled zones at block and oblique scale, not four independently repeated windows."
+    },
+    {
+      "id": "shaft-and-sash-composition",
+      "critical": true,
+      "source": "station-2",
+      "assertion": "Right shaft has a broad principal pane with narrow pale side-light strips and shallow projection. Main left sash has quiet transoms and tall lower lights, not generic six-over-six texture. Shaft ground hasthree narrowvertical lights above its canopy and differs from upper shaft windows.",
+      "confidence": "high relationships; exact projection/dimensions unresolved",
+      "acceptance": "Distinct explicit upper/ground shaft opening profiles, visible first-hit projected/reveal geometry and source quiet sash; independent shaft floor/window axes not inferred from equal main-bay division."
+    },
+    {
+      "id": "connected-ground-surround-access-axis",
+      "critical": true,
+      "source": "station-2",
+      "assertion": "Raised mainzone has one connected pale three-opening surround with substantial sill/header/piers; separate dark right door has projecting pale canopy on same access axis and layered side corbels. Shared groundlayout aligns to its own upper zone, not stock left red fanlight door or full-width plinth.",
+      "confidence": "high assembly relationship; full pavement/approach cropped",
+      "acceptance": "Joined pale surround stays with the main three openings; independent dark access and white canopy stays with the shaft, openings visible and no wallplane burying framedglass/door."
+    },
+    {
+      "id": "quiet-top-and-neighbor-boundaries",
+      "critical": true,
+      "source": "station-2 and station-1",
+      "assertion": "Wide front quiet heavy cornice/roof zone contrasts with narrow neighbors gabled/corniced mixture. Source official description flat roof with steep front dakschild is metadata, not permission for unsurveyed full roof geometry. Preserve adjacent identity, native heights and open courts and local trim hierarchy.",
+      "confidence": "medium roofsurface; high neighbor contrast",
+      "acceptance": "Compound group does not flatten or repaint narrow neighbors; crown attachment remainsclosed and quiet broad top owns the supported native envelope."
+    },
+    {
+      "id": "masonry-pale-trim-low-balcony",
+      "critical": true,
+      "source": "station-2",
+      "assertion": "Gray/darkbrown masonry and pale opening trims establishstrong contrast; no repeated balcony stacks. Lower masonry differs from upper course in photograph/register, palette is secondary to missing assemblies.",
+      "confidence": "high trim/balcony relationship; medium color under lighting",
+      "acceptance": "Pale connected trim and glazing-shaft strip stay recognizable in all looks against masonry; no randomized balconydecorations or palette-only workaround."
+    }
+  ],
+  "scope": {
+    "representativeId": "NL.IMBAG.Pand.0363100012178298",
+    "transitionId": "NL.IMBAG.Pand.0363100012178296",
+    "heldoutId": "NL.IMBAG.Pand.0363100012178291",
+    "runtimeAdmissions": 0,
+    "role": "Exposed87\u201389 discovery is not fresh validation; original failed south heldout remains failed/withheld."
+  },
+  "codeInputs": [
+    {
+      "file": "src/canalRecall/compoundFrontageLayout.ts",
+      "sha256": "7720c6bedb91ef9d97bad9dba815f00d7db73ee25489ee71c64b35030b5b142b"
+    },
+    {
+      "file": "src/canalRecall/compoundFrontageLayout.test.ts",
+      "sha256": "6834864d572d2719ab9d003cb5597734149032029de0bb449f557579b5d306ed"
+    },
+    {
+      "file": "src/canalRecall/compoundNativeFrontage.fixture.ts",
+      "sha256": "8c6b0e3f9867b9e49ce05a10c790042c535e6f072deeb2811174e825c7e92435"
+    },
+    {
+      "file": "src/canalRecall/compoundNativeFrontage.test.ts",
+      "sha256": "7b2c056a43d68c4895b841df40d68c6a532b0875ef1d080d95110828130ffec7"
+    },
+    {
+      "file": "src/canalRecall/streetAppearance.ts",
+      "sha256": "090d67cc2bcbdb4e082dc7313e353c15e7ebf4633391cd9ecdf23559f7767f6d"
+    },
+    {
+      "file": "src/canalRecall/threeBuildingMesh.ts",
+      "sha256": "52e165a73cf366d3e4135a7b252e19e7c170ea555d03498821940bed73718f4d"
+    },
+    {
+      "file": "src/canalRecall/facadeExtras.ts",
+      "sha256": "e71f57e2720c956731a3310e8580db16c59af67af7812a7f6571e07e636a7a4c"
+    }
+  ],
+  "checks": [
+    {
+      "id": "pure-planner-contract",
+      "decision": "pass-local-only",
+      "evidence": "Independently reran9 tests: unequal main/shaft fields, connected surround, local assembled first hits, exact wall complement, source-explicit rows and eave envelope, complete mirror normals/UVs and bounded refusals."
+    },
+    {
+      "id": "wall-lod-ownership",
+      "decision": "code-path-supported; native-evidence-pending",
+      "evidence": "compoundTriangles appended only to walls frontageTriangles. Whole wall complement replaces both stock ground and upper rectangles when complete plan exists; extras LOD does not own these windows/door."
+    },
+    {
+      "id": "stock-dressing-suppression",
+      "decision": "code-path-supported",
+      "evidence": "Successful compound sets groundFrontageActive. dressWall returns early, suppressing stock ground and upper dressing. Earlier mixed-balcony concern withdrawn after inspecting actual early return; no measured defect."
+    },
+    {
+      "id": "texture-retention",
+      "decision": "code-path-supported; native-UV-and-first-hit-evidence-pending",
+      "evidence": "compoundTriangles samples actual upper pane atlas field for glass and actual door atlas field for dark access, while frames use flat layer. Photo/storybook/procedural actual native chunks must confirm correct layers and visibility."
+    },
+    {
+      "id": "fallback",
+      "decision": "unmeasured-native-contract",
+      "evidence": "Plan undefined leaves stock ground/upper wall branch and groundActive false. Exact array equality against compound-optout is required for rejected widths/heights/bent fronts in both walls/extras all3 looks."
+    },
+    {
+      "id": "orientation",
+      "decision": "pure-plan-mirror-pass; native-source-frame-unmeasured",
+      "evidence": "compoundDirection compares native edge tangent with admitted source segment direction; planner mirrors complete plan/cuts/normals/UVs for-1. Native reversed ring/tessellation still needs identical physical source-frame/window placement proof."
+    }
+  ],
+  "requiredNextChecks": [
+    "Source-select measured/bounded representative proportions and root independently compare actual source/render; diagnostic-only recipe must remain unpublished until that review.",
+    "Review transition and fresh heldout independently; exposed failed old heldout is discovery, not fresh validation.",
+    "Collect actual game camera/pan and performance evidence before completing scoped work.",
+    "Verify neighboring identity/native heights/open courts and quiet crown attachment in actual row context."
+  ],
+  "acceptance": "No source architecture/gallery/game acceptance from local fixture or unit test success.",
+  "cycles": [
+    {
+      "schemaVersion": 1,
+      "reviewer": "jan_grouped_windows; did not implement compound planner/integration",
+      "reviewedAtUTC": "2026-10-06T10:33:54.499271+00:00",
+      "decision": "local-contract-checks-pass; native-integration-evidence-pending; no admission",
+      "sourceReview": "docs/references/oudezijds-compound-discovery-review.json",
+      "workInventory": "public/canal-drive/street-rhythm-work.json",
+      "criticalTraitsFrozen": [
+        {
+          "id": "unequal-linked-zones",
+          "critical": true,
+          "source": "station-2",
+          "assertion": "One broad left window field with three principal axes stacks beside independent narrow right access/erker shaft. Preserve unequal field hierarchy and a shared facade envelope; stock four equal columns fail.",
+          "confidence": "high visible/source register agreement",
+          "acceptance": "Broad and narrow fields read as different coupled zones at block and oblique scale, not four independently repeated windows."
+        },
+        {
+          "id": "shaft-and-sash-composition",
+          "critical": true,
+          "source": "station-2",
+          "assertion": "Right shaft has a broad principal pane with narrow pale side-light strips and shallow projection. Main left sash has quiet transoms and tall lower lights, not generic six-over-six texture. Shaft ground hasthree narrowvertical lights above its canopy and differs from upper shaft windows.",
+          "confidence": "high relationships; exact projection/dimensions unresolved",
+          "acceptance": "Distinct explicit upper/ground shaft opening profiles, visible first-hit projected/reveal geometry and source quiet sash; independent shaft floor/window axes not inferred from equal main-bay division."
+        },
+        {
+          "id": "connected-ground-surround-access-axis",
+          "critical": true,
+          "source": "station-2",
+          "assertion": "Raised mainzone has one connected pale three-opening surround with substantial sill/header/piers; separate dark right door has projecting pale canopy on same access axis and layered side corbels. Shared groundlayout aligns to its own upper zone, not stock left red fanlight door or full-width plinth.",
+          "confidence": "high assembly relationship; full pavement/approach cropped",
+          "acceptance": "Joined pale surround stays with the main three openings; independent dark access and white canopy stays with the shaft, openings visible and no wallplane burying framedglass/door."
+        },
+        {
+          "id": "quiet-top-and-neighbor-boundaries",
+          "critical": true,
+          "source": "station-2 and station-1",
+          "assertion": "Wide front quiet heavy cornice/roof zone contrasts with narrow neighbors gabled/corniced mixture. Source official description flat roof with steep front dakschild is metadata, not permission for unsurveyed full roof geometry. Preserve adjacent identity, native heights and open courts and local trim hierarchy.",
+          "confidence": "medium roofsurface; high neighbor contrast",
+          "acceptance": "Compound group does not flatten or repaint narrow neighbors; crown attachment remainsclosed and quiet broad top owns the supported native envelope."
+        },
+        {
+          "id": "masonry-pale-trim-low-balcony",
+          "critical": true,
+          "source": "station-2",
+          "assertion": "Gray/darkbrown masonry and pale opening trims establishstrong contrast; no repeated balcony stacks. Lower masonry differs from upper course in photograph/register, palette is secondary to missing assemblies.",
+          "confidence": "high trim/balcony relationship; medium color under lighting",
+          "acceptance": "Pale connected trim and glazing-shaft strip stay recognizable in all looks against masonry; no randomized balconydecorations or palette-only workaround."
+        }
+      ],
+      "scope": {
+        "representativeId": "NL.IMBAG.Pand.0363100012178298",
+        "transitionId": "NL.IMBAG.Pand.0363100012178296",
+        "heldoutId": "NL.IMBAG.Pand.0363100012178291",
+        "runtimeAdmissions": 0,
+        "role": "Exposed87\u201389 discovery is not fresh validation; original failed south heldout remains failed/withheld."
+      },
+      "codeInputs": [
+        {
+          "file": "src/canalRecall/compoundFrontageLayout.ts",
+          "sha256": "7720c6bedb91ef9d97bad9dba815f00d7db73ee25489ee71c64b35030b5b142b"
+        },
+        {
+          "file": "src/canalRecall/compoundFrontageLayout.test.ts",
+          "sha256": "6834864d572d2719ab9d003cb5597734149032029de0bb449f557579b5d306ed"
+        },
+        {
+          "file": "src/canalRecall/streetAppearance.ts",
+          "sha256": "090d67cc2bcbdb4e082dc7313e353c15e7ebf4633391cd9ecdf23559f7767f6d"
+        },
+        {
+          "file": "src/canalRecall/threeBuildingMesh.ts",
+          "sha256": "fd24822d9775f199f38e91d142f4ccccbcf39f3e0b44a4b8228e90378a7ca1ea"
+        },
+        {
+          "file": "src/canalRecall/facadeExtras.ts",
+          "sha256": "e71f57e2720c956731a3310e8580db16c59af67af7812a7f6571e07e636a7a4c"
+        }
+      ],
+      "checks": [
+        {
+          "id": "pure-planner-contract",
+          "decision": "pass-local-only",
+          "evidence": "Independently reran9 tests: unequal main/shaft fields, connected surround, local assembled first hits, exact wall complement, source-explicit rows and eave envelope, complete mirror normals/UVs and bounded refusals."
+        },
+        {
+          "id": "wall-lod-ownership",
+          "decision": "code-path-supported; native-evidence-pending",
+          "evidence": "compoundTriangles appended only to walls frontageTriangles. Whole wall complement replaces both stock ground and upper rectangles when complete plan exists; extras LOD does not own these windows/door."
+        },
+        {
+          "id": "stock-dressing-suppression",
+          "decision": "code-path-supported",
+          "evidence": "Successful compound sets groundFrontageActive. dressWall returns early, suppressing stock ground and upper dressing. Earlier mixed-balcony concern withdrawn after inspecting actual early return; no measured defect."
+        },
+        {
+          "id": "texture-retention",
+          "decision": "code-path-supported; native-UV-and-first-hit-evidence-pending",
+          "evidence": "compoundTriangles samples actual upper pane atlas field for glass and actual door atlas field for dark access, while frames use flat layer. Photo/storybook/procedural actual native chunks must confirm correct layers and visibility."
+        },
+        {
+          "id": "fallback",
+          "decision": "unmeasured-native-contract",
+          "evidence": "Plan undefined leaves stock ground/upper wall branch and groundActive false. Exact array equality against compound-optout is required for rejected widths/heights/bent fronts in both walls/extras all3 looks."
+        },
+        {
+          "id": "orientation",
+          "decision": "pure-plan-mirror-pass; native-source-frame-unmeasured",
+          "evidence": "compoundDirection compares native edge tangent with admitted source segment direction; planner mirrors complete plan/cuts/normals/UVs for-1. Native reversed ring/tessellation still needs identical physical source-frame/window placement proof."
+        }
+      ],
+      "requiredNextChecks": [
+        "Use root diagnostic native buildFeatureChunk fixture to probe actual world first hits for every broad main and narrow sidelight/ground light; dark door behind original wall in all3 looks.",
+        "Verify walls-only LOD textured panes/access and combined extras first-hit visibility.",
+        "Compare array-identical rejected compound optout fallback all3 looks in walls and extras.",
+        "Reverse native ring and tessellate admitted front: stable source-oriented shaft side, access axis and window physical coordinates.",
+        "Root source/render and actual game/performance evidence remain required before any scoped admission; transition and fresh heldout remain frozen."
+      ],
+      "acceptance": "No source architecture/gallery/game acceptance from local fixture or unit test success.",
+      "id": "pre-native-code-review",
+      "immutable": true
+    },
+    {
+      "id": "independent-native-world-ray-and-fallback-challenge",
+      "immutable": true,
+      "reviewedAtUTC": "2026-10-06T10:47:52.239239+00:00",
+      "codeInputs": [
+        {
+          "file": "src/canalRecall/compoundFrontageLayout.ts",
+          "sha256": "7720c6bedb91ef9d97bad9dba815f00d7db73ee25489ee71c64b35030b5b142b"
+        },
+        {
+          "file": "src/canalRecall/compoundFrontageLayout.test.ts",
+          "sha256": "6834864d572d2719ab9d003cb5597734149032029de0bb449f557579b5d306ed"
+        },
+        {
+          "file": "src/canalRecall/compoundNativeFrontage.fixture.ts",
+          "sha256": "8c6b0e3f9867b9e49ce05a10c790042c535e6f072deeb2811174e825c7e92435"
+        },
+        {
+          "file": "src/canalRecall/compoundNativeFrontage.test.ts",
+          "sha256": "7b2c056a43d68c4895b841df40d68c6a532b0875ef1d080d95110828130ffec7"
+        },
+        {
+          "file": "src/canalRecall/streetAppearance.ts",
+          "sha256": "090d67cc2bcbdb4e082dc7313e353c15e7ebf4633391cd9ecdf23559f7767f6d"
+        },
+        {
+          "file": "src/canalRecall/threeBuildingMesh.ts",
+          "sha256": "52e165a73cf366d3e4135a7b252e19e7c170ea555d03498821940bed73718f4d"
+        },
+        {
+          "file": "src/canalRecall/facadeExtras.ts",
+          "sha256": "e71f57e2720c956731a3310e8580db16c59af67af7812a7f6571e07e636a7a4c"
+        }
+      ],
+      "decision": "native-integration-contract-pass-bounded; no source/game admission",
+      "officialParentConstructionYear": 1650,
+      "sourceFacadeDesignYear": 1920,
+      "yearPolicy": "Diagnostic retains official parent1650; 1920 office facade description does not rewrite its native year.",
+      "fixturePolicy": "Unpublished unmeasured capability recipe; row positions/proportions are diagnostic only and not an admitted profile.",
+      "publishedCompoundProfiles": [],
+      "rootNativeTestsRerun": {
+        "tests": 3,
+        "passed": 3,
+        "command": "node --import tsx --test src/canalRecall/compoundNativeFrontage.test.ts"
+      },
+      "independentChallenge": {
+        "implementation": "Separate temporary probe imports actual native fixture and production buildFeatureChunk; not a rerun of planner assertions.",
+        "geometryVariants": 12,
+        "variants": "Original, every9 open-ring starting vertex, reversed ring and front split into3 collinear facets.",
+        "looks": [
+          "photo",
+          "storybook",
+          "procedural"
+        ],
+        "wallLODs": [
+          "walls",
+          "coarse"
+        ],
+        "extras": "Every walls-mode first-hit uses combined actual walls AND extras meshes, screening stock dressing burial.",
+        "fractionalObliquePaneRays": 46656,
+        "recessedDoorRays": 648,
+        "failures": [],
+        "rayFractions": {
+          "paneHorizontal": [
+            0.2,
+            0.41,
+            0.78
+          ],
+          "paneVertical": [
+            0.18,
+            0.39,
+            0.55
+          ],
+          "obliqueAlongOffsetsMetres": [
+            -0.2,
+            0,
+            0.2
+          ],
+          "doorHeightsMetres": [
+            0.3,
+            1.3,
+            2.2
+          ]
+        },
+        "expectations": "Actual first-hit atlas upper layer on every main/shaft/sidelight/ground field. Door first hit uses atlas door layer and remains more than0.3m behind original wall. Broad and shaft plan geometry remains at the original physical source frame across all variants.",
+        "fallbackCases": 27,
+        "fallbackRejections": [
+          "too-wide main openings",
+          "explicit row beyond native envelope",
+          "overlapping explicit main rows"
+        ],
+        "fallbackModes": [
+          "walls",
+          "extras",
+          "coarse"
+        ],
+        "fallbackArrays": [
+          "positions",
+          "uvs",
+          "layers",
+          "tints",
+          "accents",
+          "indices"
+        ],
+        "fallbackDifferences": [],
+        "probeScriptSha256": "947020c92a422dde276b6118b9c1489ad2fe2cb8596378cb9f486d5a93d0ee54"
+      },
+      "limits": [
+        "This verifies native generator integration, atlas-layer retention and physical visibility, not actual rendered pixel texture/color/shader quality.",
+        "Fixture proportions are unmeasured, so no source architecture acceptance follows from its successful rays.",
+        "No browser/GPU used, no actual performance or game pan measured.",
+        "Native diagnostic single host does not establish neighboring identity or transfer behavior. Frozen transition and heldout remain unaccepted."
+      ]
+    }
+  ],
+  "nativeIntegrationEvidence": {
+    "implementation": "Separate temporary probe imports actual native fixture and production buildFeatureChunk; not a rerun of planner assertions.",
+    "geometryVariants": 12,
+    "variants": "Original, every9 open-ring starting vertex, reversed ring and front split into3 collinear facets.",
+    "looks": [
+      "photo",
+      "storybook",
+      "procedural"
+    ],
+    "wallLODs": [
+      "walls",
+      "coarse"
+    ],
+    "extras": "Every walls-mode first-hit uses combined actual walls AND extras meshes, screening stock dressing burial.",
+    "fractionalObliquePaneRays": 46656,
+    "recessedDoorRays": 648,
+    "failures": [],
+    "rayFractions": {
+      "paneHorizontal": [
+        0.2,
+        0.41,
+        0.78
+      ],
+      "paneVertical": [
+        0.18,
+        0.39,
+        0.55
+      ],
+      "obliqueAlongOffsetsMetres": [
+        -0.2,
+        0,
+        0.2
+      ],
+      "doorHeightsMetres": [
+        0.3,
+        1.3,
+        2.2
+      ]
+    },
+    "expectations": "Actual first-hit atlas upper layer on every main/shaft/sidelight/ground field. Door first hit uses atlas door layer and remains more than0.3m behind original wall. Broad and shaft plan geometry remains at the original physical source frame across all variants.",
+    "fallbackCases": 27,
+    "fallbackRejections": [
+      "too-wide main openings",
+      "explicit row beyond native envelope",
+      "overlapping explicit main rows"
+    ],
+    "fallbackModes": [
+      "walls",
+      "extras",
+      "coarse"
+    ],
+    "fallbackArrays": [
+      "positions",
+      "uvs",
+      "layers",
+      "tints",
+      "accents",
+      "indices"
+    ],
+    "fallbackDifferences": [],
+    "probeScriptSha256": "947020c92a422dde276b6118b9c1489ad2fe2cb8596378cb9f486d5a93d0ee54"
+  }
+}

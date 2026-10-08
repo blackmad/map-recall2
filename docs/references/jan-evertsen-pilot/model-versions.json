@@ -3,7 +3,7 @@
   "models": [
     {
       "id": "jan-evertsen-native-0363100012118917",
-      "name": "Native GLB draft · 0363100012118917",
+      "name": "Native GLB draft \u00b7 0363100012118917",
       "modelUrl": "./models/jan-evertsen-pilot/jan-evertsen-native-0363100012118917.glb?asset=5cc3df3eea3f3079",
       "attribution": {
         "author": "Original project geometry",
@@ -12,7 +12,7 @@
     },
     {
       "id": "jan-evertsen-native-0363100012096187",
-      "name": "Native GLB draft · 0363100012096187",
+      "name": "Native GLB draft \u00b7 0363100012096187",
       "modelUrl": "./models/jan-evertsen-pilot/jan-evertsen-native-0363100012096187.glb?asset=a2980a284da57718",
       "attribution": {
         "author": "Original project geometry",
@@ -21,20 +21,20 @@
     },
     {
       "id": "jan-evertsen-procedural-0363100012118917",
-      "name": "Procedural geometry preview · 0363100012118917",
-      "modelUrl": "./models/jan-evertsen-pilot/jan-evertsen-procedural-0363100012118917.glb?asset=5cf327969489eeb9",
+      "name": "Procedural facade preview \u00b7 0363100012118917",
+      "modelUrl": "./models/jan-evertsen-pilot/jan-evertsen-procedural-0363100012118917.glb?asset=8f3384b5a334226d",
       "attribution": {
         "author": "Original project geometry",
-        "licence": "Facade atlas omitted from this geometry preview"
+        "licence": "Embedded game facade atlas \u00b7 ambientCG brick CC0"
       }
     },
     {
       "id": "jan-evertsen-procedural-0363100012096187",
-      "name": "Procedural geometry preview · 0363100012096187",
-      "modelUrl": "./models/jan-evertsen-pilot/jan-evertsen-procedural-0363100012096187.glb?asset=171ba54746b6a457",
+      "name": "Procedural facade preview \u00b7 0363100012096187",
+      "modelUrl": "./models/jan-evertsen-pilot/jan-evertsen-procedural-0363100012096187.glb?asset=580cb66ca4a659e0",
       "attribution": {
         "author": "Original project geometry",
-        "licence": "Facade atlas omitted from this geometry preview"
+        "licence": "Embedded game facade atlas \u00b7 ambientCG brick CC0"
       }
     }
   ],

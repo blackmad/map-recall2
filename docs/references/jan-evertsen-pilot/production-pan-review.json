@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "attemptedAt": "2026-10-06T09:26:24.733653+00:00",
+  "stage": "browser-launch",
+  "device": "desktop",
+  "command": "node scripts/jan-evertsen-pilot/production-pan-check.mjs --base-url=http://127.0.0.1:5196 --device=desktop --looks=photo,storybook,procedural --rounds=3 --output=artifacts/jan-evertsen-pilot/production-desktop",
+  "error": "browserType.launch: Target page, context or browser has been closed; process signal SIGABRT; cleanup kill EPERM",
+  "bundleHashes": {
+    "vector-map.js": "6d14f9beb639943ecb5b3eefea87459a04e988f39992c10a75b25d1aa0dfe73c",
+    "game-route.js": "9e17954ca9169adf81eb810df29dc35104866b132722578961e54a49aa5c4ee6",
+    "three-buildings-worker.bundle.js": "db1d4bdf9356d1ef4bd2a828c009e357cc884950b76271c6d34703386c42c200",
+    "three-buildings.bundle.js": "0dfbbf5b0d0004a65773069693b0387cb4f62198809aa28054a3cd38b00ffc38"
+  },
+  "catalogRevision": "24fbf8cad9701025",
+  "sceneAcquired": false,
+  "gpuTimerSupport": "unmeasured; launch failed before WebGL context creation",
+  "gpuMeasurements": [],
+  "desktopPan": "not performed; browser launch failed",
+  "touchPan": "not performed; same launch precondition not satisfied; avoid duplicate doomed browser launch",
+  "decision": "production acceptance withheld",
+  "accessState": "Current bounded browser attempt failed; earlier successful window captures preserved; no permanent browser-unavailability claim",
+  "retry": "Use prepared harness in a later working browser context, first desktop then --device=phone --output=artifacts/jan-evertsen-pilot/production-touch. Freeze bundles and keep GPU exclusive."
+}

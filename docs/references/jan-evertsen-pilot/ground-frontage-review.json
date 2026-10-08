@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-10-06",
+  "reviewer": "independent jan_grouped_windows worker; did not implement ground module or runtime integration",
+  "decision": "pending-runtime-review-not-accepted",
+  "fullFacadeDecision": "not-accepted",
+  "extentDecision": "no-new-runtime-admissions",
+  "scope": "Existing exact124/126 pilot only. This review does not admit the128 transition,122/119 heldouts, discovered new identities or a neighborhood profile.",
+  "criteriaFrozenBeforeRuntimeReview": {
+    "criteriaFile": "docs/references/jan-evertsen-pilot/ground-frontage-criteria.json",
+    "sourceArchiveCommit": "3c515c4",
+    "sourcePath": "streets/jan-evertsen-canopy-rollout-20261006/processed/panorama/pilot-north.jpg",
+    "sourceSha256": "e37ead2377de9a228a19d46188e658eb9eaf68a85ded4eb31157e5b279593846"
+  },
+  "criticalRequirements": [
+    {
+      "id": "real-portico-cut",
+      "requirement": "Parent ground wall must be cut out. Front-on rays reach a textured back door behind the wall, while oblique views expose side reveals, soffit and floor. Reject a facade-plane dark panel."
+    },
+    {
+      "id": "shop-and-residential-separation",
+      "requirement": "Broad textured shop panes and narrow recessed residential access share one ground/head datum and a visible separating pier. No stock fanlight, stoop or stock door overlays survive inside shop panes."
+    },
+    {
+      "id": "textured-three-mode-survival",
+      "requirement": "Photo, storybook and procedural actual game views retain textured shop glazing and a textured residential door, with pale framing. An oblique near view must expose the recess. Geometry role labels alone are insufficient."
+    },
+    {
+      "id": "shop-customer-access",
+      "requirement": "The source shop group includes customer access. Review whether a shop leaf reads as a customer door; generic raised-sill glazing alone cannot establish a complete shop entrance assembly. Exact commercial pane allocation remains approximate."
+    },
+    {
+      "id": "canopy-upper-preservation",
+      "requirement": "Ground openings remain below canopy and glass-block band. Existing three residential rows and broad/projected window distinction remain visible and source-compatible."
+    },
+    {
+      "id": "atomic-street-scope",
+      "requirement": "Apply complete assembly only to supported street-facing straight/collinear fronts at ground level. Invalid dimensions, bent fronts or missing texture support preserve original textured fallback."
+    },
+    {
+      "id": "heldout-boundary",
+      "requirement": "Fixed122/119 heldouts and128 transition remain untuned and unaccepted; no neighborhood transfer follows from a ground capability pass."
+    }
+  ],
+  "codeReview": {
+    "module": "src/canalRecall/interwarGroundFrontage.ts",
+    "decision": "pure-geometry-contract-plausible-not-runtime-acceptance",
+    "verification": "node --import tsx --test src/canalRecall/interwarGroundFrontage.test.ts",
+    "result": "Updated module tests7 passed; pure geometry is not visual acceptance.",
+    "findings": [
+      "Exact complementary wallSegments avoid covering the shop and entrance cuts in the pure plan.",
+      "Residential back-door plane lies roughly0.64m behind the front wall under the proposed0.65m recess input.",
+      "Pale frames and transoms own their geometry independently of texture crops.",
+      "Runtime wall substitution, material/atlas mapping, extra suppression and street eligibility are not established by these pure-plan tests.",
+      "Prior window-groups-final-game capture requested pitch75 but diagnostics recorded actual pitch60. New ground review requires actual near oblique camera evidence, rather than relying on requested pitch.",
+      "Reviewer identified missing customer shop-door allocation. Root added optional shopDoorPane, lowered threshold union cuts and a customer pull handle; code now expresses this source relationship.",
+      "Integrated storefront crop samples the shopWindow atlas glass field rather than copying a whole facade cell. Its visual treatment still needs actual mode captures.",
+      "Runtime currently passes groundFrontageActive into extras; final consumption of this flag must prevent stock plinth/door trim from covering the cut.",
+      "Atomic-fallback risk: streetWallBuilding selects shopWindow and shopfront before knowing whether ground plan fits. A rejected plan may already have lost stock doorBays on a short frontage; compare against source recipe without ground opt-in.",
+      "Final inspected integration moves shopWindow atlas override after complete ground plan admission and removes unconditional shopfront mutation. Previously identified fallback risk is code-addressed.",
+      "Final inspected dressWall returns after continuous canopy when groundFrontageActive, suppressing stock plinth/door/stoop overlays.",
+      "Active canopy overlap guard now uses the new source-selected ground openingHeadM."
+    ],
+    "openFailure": "No current actual-game ground captures; all three visual-mode/recess/customer-door acceptance requirements remain pending despite passing native cut/fallback tests.",
+    "nativeVerification": {
+      "command": "node --import tsx --test src/canalRecall/interwarNativeFrontage.test.ts",
+      "result": "3 tests passed, including byte-for-byte whole-chunk equality for rejected ground vs opt-out across photo/storybook/procedural walls and extras."
+    },
+    "independentNativeFirstHitProbe": {
+      "pipeline": "buildFeatureChunk from installed native pilot features and profile; merged wall/extras raycast with Three.js, double-sided geometry",
+      "sampleCount": 18,
+      "looks": [
+        "photo",
+        "storybook",
+        "procedural"
+      ],
+      "pilotIds": [
+        "NL.IMBAG.Pand.0363100012096187",
+        "NL.IMBAG.Pand.0363100012118917"
+      ],
+      "sampleHeightsM": [
+        0.3,
+        1.4,
+        2.4
+      ],
+      "rayOriginOutwardM": 3,
+      "firstHitDistancesM": [
+        3.6438478338792284,
+        3.63657533746444
+      ],
+      "doorLayers": {
+        "photo": [
+          114,
+          125
+        ],
+        "storybook": [
+          114,
+          125
+        ],
+        "procedural": [
+          178,
+          189
+        ]
+      },
+      "result": "Every sample reaches the door plane roughly0.64m behind the parent street face; no front wall or low stock plinth is first hit.",
+      "limit": "Native fixture sets constructionYear1925 as existing native tests do. This verifies installed geometry/material indices, rather than proving game visibility or photographic registration."
+    }
+  },
+  "runtimeEvidence": {
+    "state": "Three bounded attempts completed without a current-ground screenshot. Actual game visual acceptance remains pending.",
+    "inspected": [],
+    "attempts": [
+      {
+        "snapshotTimeUTC": "2026-10-06T09:07:26.279428+00:00",
+        "directory": "artifacts/jan-evertsen-pilot/ground-frontage-game",
+        "outcome": "scene-readiness-timeout",
+        "reason": "Chrome launched and game/map became ready; first scene failed chunk/city quiescence barrier after120000ms at review-capture.mjs:70. No screenshot emitted.",
+        "state": "finished; no browser left active"
+      },
+      {
+        "snapshotTimeUTC": "2026-10-06T09:11:50.060502+00:00",
+        "directory": "artifacts/jan-evertsen-pilot/ground-frontage-independent-diagnostic",
+        "outcome": "chrome-launch-restriction",
+        "reason": "Google Chrome launch ended SIGABRT; cleanup kill EPERM. No screenshot emitted.",
+        "state": "finished; no browser left active"
+      },
+      {
+        "snapshotTimeUTC": "2026-10-06T09:12:25.039783+00:00",
+        "directory": "artifacts/jan-evertsen-pilot/ground-frontage-independent-near",
+        "outcome": "headless-shell-launch-restriction",
+        "reason": "Playwright headless-shell1243 fatal MachPortRendezvous/bootstrap_check_in Permission denied1100, SIGTRAP. Thermal notification and DNS-config read restrictions also reported. No screenshot emitted.",
+        "state": "finished; no browser left active"
+      }
+    ],
+    "currentAccessState": "Worker browser launch is restricted by macOS bootstrap/IPC sandbox. One initial Chrome launch reached game but residency stalled. Distinguish these states; retry later through a working root context before declaring browser acquisition blocked.",
+    "independentNearCameraRequested": {
+      "center": [
+        4.85209,
+        52.37042
+      ],
+      "bearing": 344,
+      "targets": "front",
+      "views": [
+        "gameplay",
+        "street"
+      ],
+      "harnessMaxPitch": 85,
+      "actualCamera": "unavailable because browser did not launch"
+    },
+    "oldCapturePitchLimit": {
+      "file": "artifacts/jan-evertsen-pilot/window-groups-final-game/report.json",
+      "requestedPitch": 75,
+      "actualDiagnosticsPitch": 60,
+      "implication": "Previous window capture is not current ground evidence and does not establish close recess visibility."
+    }
+  },
+  "preservedLimitations": [
+    "No whole facade or profile acceptance.",
+    "No new runtime identities or heldout transfer.",
+    "Source window projection sequence/flat subtype contrasts remain independently bounded.",
+    "No measured source dimensions or exact photographed storefront matching.",
+    "No full-scene GPU profile on/off or actual desktop/touch stationary-rider camera-pan acceptance."
+  ],
+  "correctedCodeFailures": [
+    {
+      "id": "missing-shop-customer-door",
+      "previous": "All shop leaves used raised-sill generic glazing.",
+      "repair": "Source-selected shopDoorPane, lowered threshold and handle now exist.",
+      "decision": "code-addressed; visual readability pending"
+    },
+    {
+      "id": "stock-ground-dressing-over-cut",
+      "previous": "groundFrontageActive was passed but not yet consumed by extras.",
+      "repair": "dressWall exits after the canopy when groundFrontageActive.",
+      "decision": "code-addressed; actual scene checks pending"
+    },
+    {
+      "id": "incompatible-fit-door-fallback",
+      "previous": "Ground texture and shopfront flag changed before successful fit, risking stock-door loss.",
+      "repair": "Ground atlas override now occurs only after successful plan fit; unconditional shopfront mutation removed.",
+      "decision": "code-addressed; native fallback checks pending"
+    }
+  ]
+}

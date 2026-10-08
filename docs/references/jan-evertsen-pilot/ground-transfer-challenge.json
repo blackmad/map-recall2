@@ -1,0 +1,537 @@
+{
+  "schemaVersion": 1,
+  "frozenOn": "2026-10-06T10:13:48.090679+00:00",
+  "status": "frozen-evaluation-source-traits-no-admission",
+  "scope": "Only preselected128transition,122eastheldout and119oppositeheldout; no neighborhood profile/newIDs. Source inspection defines failure criteria, not tuning.",
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "recordedPushedCheckpoint": "3c515c4",
+    "path": "streets/jan-evertsen-canopy-rollout-20261006/",
+    "olderInventoryCheckpoint": "a558154b43f6740a4f22d7c0947d730b7b12adc8",
+    "note": "Source originals already cached; temporary crops are reproducible review derivatives, not new original acquisition."
+  },
+  "candidateFreeze": {
+    "profilesPath": "public/data/street-appearance/profiles.json",
+    "catalogRevision": "24fbf8cad9701025",
+    "profileId": "jan-evertsen-canopy-candidate-native-pair",
+    "profileRevision": "current-source-ground-portico-pilot-v5",
+    "profileFileSha256": "4d59a6465c2c22ad9905e5e31dcb3c279aa9dbe61471d06116016ee5f4f9116b",
+    "groundModulePath": "src/canalRecall/interwarGroundFrontage.ts",
+    "groundModuleSha256": "1d99cbc3ff24952270ddb098588d95af919095b96101d9163b8b7ec82a8e6085",
+    "canopyModuleSha256": "eaf819d484563c70588159a3a711dd5b7fb19b52e2d771b73b70991d3a84e00c",
+    "installedBuildingIds": [
+      "NL.IMBAG.Pand.0363100012118917",
+      "NL.IMBAG.Pand.0363100012096187"
+    ],
+    "groundRecipe": {
+      "entranceSide": "left",
+      "entranceWidthM": 1.05,
+      "recessDepthM": 0.65,
+      "edgePierM": 0.15,
+      "separatorPierM": 0.2,
+      "shopSillM": 0.12,
+      "openingHeadM": 2.7,
+      "shopPanes": 3,
+      "shopDoorPane": 0,
+      "frameWidthM": 0.065,
+      "shopTransomFraction": 0.78,
+      "frameHex": "#e5e5d8"
+    },
+    "upperRecipe": {
+      "residentialRows": 3,
+      "groupPitchM": 2.95,
+      "groupWidthM": 2.15,
+      "windowHeightM": 1.8,
+      "firstSillM": 1.15,
+      "rowPitchM": 2.9,
+      "projectionSequence": [
+        "left",
+        "flat",
+        "right"
+      ],
+      "projectionM": 0.35,
+      "frameWidthM": 0.065,
+      "centralMullionM": 0.18,
+      "transomFraction": 0.72,
+      "frameHex": "#e5e5d8",
+      "capHex": "#454b49"
+    },
+    "canopyAndBand": {
+      "kind": "continuous-rigid",
+      "projectionM": 0.85,
+      "fasciaHeightM": 0.24,
+      "fasciaHex": "#dedbd2",
+      "edgeHex": "#454b49",
+      "datumOffsetM": -0.4,
+      "glassBlockBand": {
+        "heightM": 0.8,
+        "cellM": 0.2
+      }
+    },
+    "limits": "Frozenexistingpilotrecipe for evaluation only. No new targetparameter selection; future implementationchanges need new immutable candidatefreeze."
+  },
+  "capabilityComparison": {
+    "supported": [
+      "Explicit left/right residential access placement; complete parentwallcut plus side reveals/soffit/floor and boundedtextured doorback",
+      "Broad shop panes with coherent head/sill and physical pale frames/transoms",
+      "Optional source-selected customer shopDoorPane and separatelycutunionthreshold atstreetdatum",
+      "Existing continuous canopy and optional broadglassBlockBand, alreadyimplemented: no missing-bandcapabilityclaim",
+      "Upper flat/projected family exists, narrowlyaccepted124/126 only"
+    ],
+    "boundedOrMissingEvidence": [
+      "Only one rectangular residential recess and equal-width shop pane subdivision; angledreturn/customerdooroffsets beyond selectedpane remainuntested",
+      "One explicit customerleaf; source spanningmultiPandtenants/unknownaxes mustnotbe forced into this layout",
+      "Metredimensions .65mdepth/1.05mwidth are designestimates, not measuredtargettruth",
+      "Fixedleftside/shopDoorPane0 in pilot cannot be copied to right-looking128 or unknown119 without sourceaxisconfirmation",
+      "Shop/canopy/band/head guards must fit nativeelevations; invalidcomplete assembly keeps ordinarytextured fallback",
+      "No actualcurrentground gamevisual/performance review or challenge rendercomparison"
+    ]
+  },
+  "samples": [
+    {
+      "address": "Jan Evertsenstraat128",
+      "role": "frozen-transition",
+      "nativeId": "NL.IMBAG.Pand.0363100012088014",
+      "officialJoin": {
+        "vboId": "0363010000684482",
+        "nummeraanduidingId": "0363200000146273",
+        "street": "Jan Evertsenstraat",
+        "huisnummer": 128,
+        "huisletter": null,
+        "huisnummertoevoeging": "H",
+        "postcode": "1056EJ",
+        "vboSource": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684482?volgnummer=2",
+        "addressSource": "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146273?volgnummer=1",
+        "streetSource": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003426?volgnummer=2"
+      },
+      "joinState": "official-pand-vbo-address-chain",
+      "status": "Pand in gebruik",
+      "registeredYear": 1925,
+      "nativeStreetFace": [
+        [
+          4.851921,
+          52.370462
+        ],
+        [
+          4.852006,
+          52.370476
+        ]
+      ],
+      "photographicOwnershipPolicy": "Exact official address→VBO→Pand chain is established. Photograph opening-to-boundary registration is approximate; shop signs spanning Pands and cropped-door positions never substitute for official join.",
+      "renderDecision": "not-reviewed-no-transfer-pass",
+      "sourceObservations": {
+        "upperGroup": "Broad pale flat multi-light group remains distinct beside vertically repeated narrow projecting leaf plus flatter companion. Three residential rows, generous masonry and dark projection caps are visible. No independent random leaf-direction inference.",
+        "groundGroup": "Broad commercial glazing is visibly separated from a darker narrow access recess at the right of the observed glazing; photo includes neighbor bays, so exact right-portico ownership within128 remains medium/uncertain.",
+        "residentialEntranceSide": "right-of-observed-shop relationship visible; native128-specific ownership not conclusively registered. Do not automatically flip/admit a recipe from this crop.",
+        "porticoDepth": "Backplane and side-reveal depth visible, but metre depth unmeasured. Photo does not establish that .65m is correct.",
+        "shopCustomerDoorAxes": "Parked van masks shop threshold and much of lower glass. Stickers/transom lines do not independently identify the customer leaf; pane count/door index unresolved.",
+        "glassBlockBand": "Substantial square-cell glazing/transom strip visibly spans commercial frontage ABOVE continuous canopy and BELOW first residential openings. Preserve this separate assembly and its visible height; it is not the canopy fascia or a wall palette band.",
+        "roof": "Quiet flat/parapet street termination with sparse hooks; do not invent a gabled front from construction year."
+      },
+      "sources": [
+        {
+          "id": "pilot-north",
+          "rawPath": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/jan-evertsen-canopy-rollout-20261006/raw/panorama/pilot-north.jpg",
+          "rawSha256": "a64bd682b9d05f631770f4e746403d271ee7f22734bc5eb6bad05836941513c4",
+          "cachedFullRowCrop": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/jan-evertsen-canopy-rollout-20261006/processed/panorama/pilot-north.jpg",
+          "cachedFullRowCropSha256": "e37ead2377de9a228a19d46188e658eb9eaf68a85ded4eb31157e5b279593846",
+          "captureDate": "2025-09-26T09:08:16Z",
+          "panoId": "2025_09_26_08_31_34_00859",
+          "camera": [
+            4.85208297759952,
+            52.370399666363085,
+            0.0
+          ],
+          "rawSizeNote": "Preserved raw archive download; full URL links in selections.json do not establish which resolution the cached raw file contains. Verify response provenance if asserting original8k.",
+          "sourceMetadata": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/jan-evertsen-canopy-rollout-20261006/processed/panorama/selections.json"
+        },
+        {
+          "id": "even-west-extension",
+          "rawPath": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/jan-evertsen-canopy-rollout-20261006/raw/panorama/even-west-extension.jpg",
+          "rawSha256": "d3b3332d84e2812d4d8d5be4ce66eedf0a328c2b02088c1a38c4f773d8a142ee",
+          "cachedFullRowCrop": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/jan-evertsen-canopy-rollout-20261006/processed/panorama/even-west-extension.jpg",
+          "cachedFullRowCropSha256": "19f4ae3ba2044f6f91fcbe8205a3a3a80637cb911dfad60744bdec9cbab611cd",
+          "captureDate": "2025-09-26T09:08:22Z",
+          "panoId": "2025_09_26_08_31_34_00865",
+          "camera": [
+            4.851635458627213,
+            52.37033180769952,
+            0.0
+          ],
+          "rawSizeNote": "Preserved raw archive download; full URL links in selections.json do not establish which resolution the cached raw file contains. Verify response provenance if asserting original8k.",
+          "sourceMetadata": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/jan-evertsen-canopy-rollout-20261006/processed/panorama/selections.json"
+        }
+      ],
+      "inspectionCrops": [
+        {
+          "path": "/private/tmp/jan-evertsen-ground-transfer-review/128-full-front.jpg",
+          "sha256": "451c218302cdee31c262c12611e7f5008db783a14ecf8ec72f1a6e959b3ccb8f",
+          "derivedFrom": "pilot-north",
+          "parameters": {
+            "headingDeg": 313.46,
+            "width": 1000,
+            "height": 1300,
+            "fovDeg": 62,
+            "pitchDeg": 19
+          },
+          "method": "scripts/street-appearance/perspective.ts perspectiveCrop: worldaligned northclockwise yaw. Heading targets official nativefrontagemidpoint; image-centre alone is not an ownershipjoin.",
+          "status": "Temporary processed inspection crop only. Original archived byte inputs unchanged; coordinator can archive derivative before transfercheckpoint."
+        },
+        {
+          "path": "/private/tmp/jan-evertsen-ground-transfer-review/128-adjacent-station.jpg",
+          "sha256": "ee80c317c6fc7ac78cc68bddc7320e8978408ff48a2ace7fbf08eb75a6f4643f",
+          "derivedFrom": "even-west-extension",
+          "parameters": {
+            "headingDeg": 55.39,
+            "width": 1000,
+            "height": 1300,
+            "fovDeg": 62,
+            "pitchDeg": 19
+          },
+          "method": "scripts/street-appearance/perspective.ts perspectiveCrop: worldaligned northclockwise yaw. Heading targets official nativefrontagemidpoint; image-centre alone is not an ownershipjoin.",
+          "status": "Temporary processed inspection crop only. Original archived byte inputs unchanged; coordinator can archive derivative before transfercheckpoint."
+        }
+      ],
+      "criticalTraits": [
+        {
+          "id": "128-ground-separated-access",
+          "relationship": "Broad shop glazing and a genuine narrow recessed access with a separating pier; source-visible right-side relation must be checked against native ownership before any assignment.",
+          "capability": "supported-generic-side-and-recess, source-specific-axis-selection-withheld",
+          "rejectWhen": "A flat black frontage panel replaces portico depth, or automaticleft/right choice is made without confirmed native axes."
+        },
+        {
+          "id": "128-shop-customer-access",
+          "relationship": "Customer shop access must belong to a distinct selected glass/door leaf and reach street datum; preserve neighboring pane sills.",
+          "capability": "supported shopDoorPane plus threshold union, exactsourceallocationunknown",
+          "rejectWhen": "An invented customer door/index is used to claim a source-complete transfer while source threshold is occluded."
+        },
+        {
+          "id": "separate-glass-block-band",
+          "relationship": "Visible broad square-cell glazing band must sit ABOVE continuous canopy and BELOW first residential row, with its own transparent/cellular identity, supported dimensions and source-compatible relative height.",
+          "capability": "alreadyimplemented in src/canalRecall/shopCanopies.ts, glassBlockBand fitguards and glassBlockQuad; actual latest source/render comparison pending",
+          "rejectWhen": "Brick-only spandrel, fascia misclassified as band, thin tokenstripe replacing broad band, wrong datum/overlap, or band erased by fullassemblyfallback. Do not duplicate an existing capability without demonstrablefailure.",
+          "importance": "critical"
+        },
+        {
+          "id": "three-row-upper-joint-grammar",
+          "relationship": "Broad flat groups remain distinct beside localized projected narrow leaves and darkcaps; vertically aligned on masonry axes in three rows, entirely above glassblockband.",
+          "capability": "existinginterwarFrontage family accepted narrowly124/126; this targettransfer remainsunreviewed",
+          "rejectWhen": "All groups become narrowstock windows or allprojected/allflat, incorrect mirrored relationship, or newgroup jitter erased coherentaxes.",
+          "importance": "critical"
+        },
+        {
+          "id": "continuous-canopy-ground-datum",
+          "relationship": "Opaque continuous projecting nose and pale fascia cap both commercial/recessed residential ground; separate band above. Neighbor continuity/end conditions preserved.",
+          "capability": "existingcontinuousShopCanopy with source-selectednominaldatum and fitguards; runtime/compositioncomparison required",
+          "rejectWhen": "Broken per-Pand canopydatum, blocked doorhead, glassband/residentialoverlap or unsupportedarcade/corner transfer.",
+          "importance": "critical"
+        }
+      ],
+      "uncertainties": [
+        "Primary crop vehicle blocks complete ground/threshold",
+        "Supporting adjacent west station is oblique and includes neighboring Pands; cannot settle door ownership by image centre",
+        "No measured entrance width/recess depth or exact shoppane count"
+      ],
+      "secondaryTraits": [
+        "Exact glazing cell counts, tiny signage wording and photographed pane counts are secondary once critical assemblies/axes are recognizable.",
+        "Individual attic/hook counts and exact photo registration are secondary; actual identity/footprint/neighbor retention remainmandatory."
+      ]
+    },
+    {
+      "address": "Jan Evertsenstraat122",
+      "role": "frozen-east-heldout",
+      "nativeId": "NL.IMBAG.Pand.0363100012072380",
+      "officialJoin": {
+        "vboId": "0363010000684462",
+        "nummeraanduidingId": "0363200000146252",
+        "street": "Jan Evertsenstraat",
+        "huisnummer": 122,
+        "huisletter": null,
+        "huisnummertoevoeging": "H",
+        "postcode": "1056EJ",
+        "vboSource": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684462?volgnummer=1",
+        "addressSource": "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146252?volgnummer=1",
+        "streetSource": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003426?volgnummer=2"
+      },
+      "joinState": "official-pand-vbo-address-chain",
+      "status": "Pand in gebruik",
+      "registeredYear": 1925,
+      "nativeStreetFace": [
+        [
+          4.852175,
+          52.370506
+        ],
+        [
+          4.85226,
+          52.37052
+        ]
+      ],
+      "photographicOwnershipPolicy": "Exact official address→VBO→Pand chain is established. Photograph opening-to-boundary registration is approximate; shop signs spanning Pands and cropped-door positions never substitute for official join.",
+      "renderDecision": "not-reviewed-no-transfer-pass",
+      "sourceObservations": {
+        "upperGroup": "Three vertically aligned residential rows preserve broad flat groups and paired projecting/flat leaves around masonry piers. Current source does not support a blanket all-flat upper rule.",
+        "groundGroup": "Narrow recessed access reads at the LEFT of the Mercator-group commercial frontage; a separate glazed shop customer entrance lies adjacent toward the broad shop pane group.",
+        "residentialEntranceSide": "left-of-observed-shop relation supported by source and root inspection; exact leaf-to-Pand boundary ownership remains approximate rather than inferred from cropcentre.",
+        "porticoDepth": "A dark back and visible side reveals require real recess; depth remains unmeasured, not fixed to pilot.65m.",
+        "shopCustomerDoorAxes": "Customer glazed leaf is adjacent to residential access, rather than substituting its recessed door. Leftmost customer-pane arrangement is plausible at group level; exact pane0/nativeallocation not frozen as training input.",
+        "glassBlockBand": "Broad square-cell transom/spandrel lies above canopy and below first upper row, clear across source group. Keep visible material/cell rhythm distinct from plain brick.",
+        "roof": "Long flat/parapet row; photographed geometry/no year-only family inference."
+      },
+      "sources": [
+        {
+          "id": "pilot-north",
+          "rawPath": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/jan-evertsen-canopy-rollout-20261006/raw/panorama/pilot-north.jpg",
+          "rawSha256": "a64bd682b9d05f631770f4e746403d271ee7f22734bc5eb6bad05836941513c4",
+          "cachedFullRowCrop": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/jan-evertsen-canopy-rollout-20261006/processed/panorama/pilot-north.jpg",
+          "cachedFullRowCropSha256": "e37ead2377de9a228a19d46188e658eb9eaf68a85ded4eb31157e5b279593846",
+          "captureDate": "2025-09-26T09:08:16Z",
+          "panoId": "2025_09_26_08_31_34_00859",
+          "camera": [
+            4.85208297759952,
+            52.370399666363085,
+            0.0
+          ],
+          "rawSizeNote": "Preserved raw archive download; full URL links in selections.json do not establish which resolution the cached raw file contains. Verify response provenance if asserting original8k.",
+          "sourceMetadata": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/jan-evertsen-canopy-rollout-20261006/processed/panorama/selections.json"
+        }
+      ],
+      "inspectionCrops": [
+        {
+          "path": "/private/tmp/jan-evertsen-ground-transfer-review/122-full-front.jpg",
+          "sha256": "b2001f35a063f1b0b77f8ab6df9b4b7330e88b3cf092bed615d8fc424b753943",
+          "derivedFrom": "pilot-north",
+          "parameters": {
+            "headingDeg": 35.76,
+            "width": 1000,
+            "height": 1300,
+            "fovDeg": 62,
+            "pitchDeg": 19
+          },
+          "method": "scripts/street-appearance/perspective.ts perspectiveCrop: worldaligned northclockwise yaw. Heading targets official nativefrontagemidpoint; image-centre alone is not an ownershipjoin.",
+          "status": "Temporary processed inspection crop only. Original archived byte inputs unchanged; coordinator can archive derivative before transfercheckpoint."
+        }
+      ],
+      "criticalTraits": [
+        {
+          "id": "122-left-portico-adjacent-shop-door",
+          "relationship": "Two distinct access roles: left narrow recessed residential access and adjacent customer leaf within broad shop glazing.",
+          "capability": "generic left side/realrecess/selectedcustomerleaf supported; exactsourceaxes not admitted",
+          "rejectWhen": "One stock door stands in for both roles, a sill blocks customer threshold, or doorway is assigned from image centre alone."
+        },
+        {
+          "id": "122-recess-and-shop-framing",
+          "relationship": "Pale/masonry separator and textured glass/door leaves remain readable beneath the canopy; source portico back lies behind front plane.",
+          "capability": "wall cuts/side reveals/soffit/floor and atlas role crops supported in module; actualgamecomparisonpending",
+          "rejectWhen": "Stock plinth/fanlight/trim overlays obscure the admitted cut or glass panes."
+        },
+        {
+          "id": "separate-glass-block-band",
+          "relationship": "Visible broad square-cell glazing band must sit ABOVE continuous canopy and BELOW first residential row, with its own transparent/cellular identity, supported dimensions and source-compatible relative height.",
+          "capability": "alreadyimplemented in src/canalRecall/shopCanopies.ts, glassBlockBand fitguards and glassBlockQuad; actual latest source/render comparison pending",
+          "rejectWhen": "Brick-only spandrel, fascia misclassified as band, thin tokenstripe replacing broad band, wrong datum/overlap, or band erased by fullassemblyfallback. Do not duplicate an existing capability without demonstrablefailure.",
+          "importance": "critical"
+        },
+        {
+          "id": "three-row-upper-joint-grammar",
+          "relationship": "Broad flat groups remain distinct beside localized projected narrow leaves and darkcaps; vertically aligned on masonry axes in three rows, entirely above glassblockband.",
+          "capability": "existinginterwarFrontage family accepted narrowly124/126; this targettransfer remainsunreviewed",
+          "rejectWhen": "All groups become narrowstock windows or allprojected/allflat, incorrect mirrored relationship, or newgroup jitter erased coherentaxes.",
+          "importance": "critical"
+        },
+        {
+          "id": "continuous-canopy-ground-datum",
+          "relationship": "Opaque continuous projecting nose and pale fascia cap both commercial/recessed residential ground; separate band above. Neighbor continuity/end conditions preserved.",
+          "capability": "existingcontinuousShopCanopy with source-selectednominaldatum and fitguards; runtime/compositioncomparison required",
+          "rejectWhen": "Broken per-Pand canopydatum, blocked doorhead, glassband/residentialoverlap or unsupportedarcade/corner transfer.",
+          "importance": "critical"
+        }
+      ],
+      "uncertainties": [
+        "Lamppost/utility boxes and bicycles hide ground fragments",
+        "Exact door leaf ownership at122boundary not yet pixel/native aligned",
+        "No measured recessdepth or individual pane count"
+      ],
+      "secondaryTraits": [
+        "Exact glazing cell counts, tiny signage wording and photographed pane counts are secondary once critical assemblies/axes are recognizable.",
+        "Individual attic/hook counts and exact photo registration are secondary; actual identity/footprint/neighbor retention remainmandatory."
+      ]
+    },
+    {
+      "address": "Jan Evertsenstraat119",
+      "role": "frozen-opposite-heldout",
+      "nativeId": "NL.IMBAG.Pand.0363100012096804",
+      "officialJoin": {
+        "vboId": "0363010000684450",
+        "nummeraanduidingId": "0363200000146240",
+        "street": "Jan Evertsenstraat",
+        "huisnummer": 119,
+        "huisletter": null,
+        "huisnummertoevoeging": "H",
+        "postcode": "1057BT",
+        "vboSource": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000684450?volgnummer=2",
+        "addressSource": "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000146240?volgnummer=1",
+        "streetSource": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003426?volgnummer=2"
+      },
+      "joinState": "official-pand-vbo-address-chain",
+      "status": "Pand in gebruik",
+      "registeredYear": 1926,
+      "nativeStreetFace": [
+        [
+          4.852383,
+          52.370261
+        ],
+        [
+          4.852298,
+          52.370247
+        ]
+      ],
+      "photographicOwnershipPolicy": "Exact official address→VBO→Pand chain is established. Photograph opening-to-boundary registration is approximate; shop signs spanning Pands and cropped-door positions never substitute for official join.",
+      "renderDecision": "not-reviewed-no-transfer-pass",
+      "sourceObservations": {
+        "upperGroup": "Original2024opposite-side crop supports three upper rows with broad flat groups and local narrow projecting/flat leaf relationships. Blur/fog and oblique angle weaken precise handedness observations; do not simply transfer north sequence. Supporting2025nearby panorama shows similar row relationships through tree/tram-wire occlusions.",
+        "groundGroup": "Frozen2024 evaluation source has large white van and image smear hiding the principal ground/threshold. Supporting2025reverse view exposes wide commercial windows and intermittent narrow darker accesses but a tree/mixed shop occupancy still prevents clean119door ownership.",
+        "residentialEntranceSide": "unresolved for exact119; no left/right recipe selected",
+        "porticoDepth": "unresolved for exact119; row context suggests recessed accesses but source does not measure or prove119doorback",
+        "shopCustomerDoorAxes": "unresolved for119; no customerpane index admitted",
+        "glassBlockBand": "Broad square-cell band above continuous canopy is visible at row scale;2025context supports separate square glazing strips. Exact119span/assembly ownership and height need native registration.",
+        "roof": "Quiet flat/parapet row with a separate distantcorner/tower exception; do not spread corner exception to119."
+      },
+      "sources": [
+        {
+          "id": "odd-west-evaluation",
+          "rawPath": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/jan-evertsen-canopy-rollout-20261006/raw/panorama/odd-west-evaluation.jpg",
+          "rawSha256": "9e80d273b77da60de7a88f425b0e42dd88a80063acfe37243646b888c6da95e0",
+          "cachedFullRowCrop": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/jan-evertsen-canopy-rollout-20261006/processed/panorama/odd-west-evaluation.jpg",
+          "cachedFullRowCropSha256": "d8a640025dd6571b2d29b33966345cc5be633625a589203682f65adc73b2d3b1",
+          "captureDate": "2024-12-06T10:52:17Z",
+          "panoId": "b_20241206_0806_Track57_Sphere_00064",
+          "camera": [
+            4.852569647356385,
+            52.37045634861003,
+            0.0
+          ],
+          "rawSizeNote": "Preserved raw archive download; full URL links in selections.json do not establish which resolution the cached raw file contains. Verify response provenance if asserting original8k.",
+          "sourceMetadata": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/jan-evertsen-canopy-rollout-20261006/processed/panorama/selections.json"
+        },
+        {
+          "id": "pilot-north",
+          "rawPath": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/jan-evertsen-canopy-rollout-20261006/raw/panorama/pilot-north.jpg",
+          "rawSha256": "a64bd682b9d05f631770f4e746403d271ee7f22734bc5eb6bad05836941513c4",
+          "cachedFullRowCrop": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/jan-evertsen-canopy-rollout-20261006/processed/panorama/pilot-north.jpg",
+          "cachedFullRowCropSha256": "e37ead2377de9a228a19d46188e658eb9eaf68a85ded4eb31157e5b279593846",
+          "captureDate": "2025-09-26T09:08:16Z",
+          "panoId": "2025_09_26_08_31_34_00859",
+          "camera": [
+            4.85208297759952,
+            52.370399666363085,
+            0.0
+          ],
+          "rawSizeNote": "Preserved raw archive download; full URL links in selections.json do not establish which resolution the cached raw file contains. Verify response provenance if asserting original8k.",
+          "sourceMetadata": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/jan-evertsen-canopy-rollout-20261006/processed/panorama/selections.json"
+        }
+      ],
+      "inspectionCrops": [
+        {
+          "path": "/private/tmp/jan-evertsen-ground-transfer-review/119-full-front.jpg",
+          "sha256": "ebbd675c664c54d5ec811c12b9aef57d5de288ec167ea759449081eef85fa88b",
+          "derivedFrom": "odd-west-evaluation",
+          "parameters": {
+            "headingDeg": 214.46,
+            "width": 1000,
+            "height": 1300,
+            "fovDeg": 62,
+            "pitchDeg": 19
+          },
+          "method": "scripts/street-appearance/perspective.ts perspectiveCrop: worldaligned northclockwise yaw. Heading targets official nativefrontagemidpoint; image-centre alone is not an ownershipjoin.",
+          "status": "Temporary processed inspection crop only. Original archived byte inputs unchanged; coordinator can archive derivative before transfercheckpoint."
+        },
+        {
+          "path": "/private/tmp/jan-evertsen-ground-transfer-review/119-adjacent-station.jpg",
+          "sha256": "9f5e56309d3579ae2525d1730e2571c7b5f17598404e0c49e3b1b66220a0e18a",
+          "derivedFrom": "pilot-north",
+          "parameters": {
+            "headingDeg": 132.87,
+            "width": 1000,
+            "height": 1300,
+            "fovDeg": 62,
+            "pitchDeg": 19
+          },
+          "method": "scripts/street-appearance/perspective.ts perspectiveCrop: worldaligned northclockwise yaw. Heading targets official nativefrontagemidpoint; image-centre alone is not an ownershipjoin.",
+          "status": "Temporary processed inspection crop only. Original archived byte inputs unchanged; coordinator can archive derivative before transfercheckpoint."
+        }
+      ],
+      "criticalTraits": [
+        {
+          "id": "119-ground-observation-gate",
+          "relationship": "Freeze unknown entrance side/depth and shop customer axis rather than borrow north pilot arrangement.",
+          "capability": "generic canexpress boundedassembly but absenttargetevidencecannotselectrecipe",
+          "rejectWhen": "Groundtransfer is marked passed from upper resemblance, sourcegeometry or CPU/module tests despite van/fog occlusion."
+        },
+        {
+          "id": "119-opposite-upper-challenge",
+          "relationship": "Test broad/projected window grouping and side-specific handedness independently of north pilot; retain three alignedrows and source glassband separation.",
+          "capability": "upper family supported in124/126 only; opposite transfer unproven",
+          "rejectWhen": "Opposite side inherits source-unconfirmed projection sequence/door pattern by district label."
+        },
+        {
+          "id": "separate-glass-block-band",
+          "relationship": "Visible broad square-cell glazing band must sit ABOVE continuous canopy and BELOW first residential row, with its own transparent/cellular identity, supported dimensions and source-compatible relative height.",
+          "capability": "alreadyimplemented in src/canalRecall/shopCanopies.ts, glassBlockBand fitguards and glassBlockQuad; actual latest source/render comparison pending",
+          "rejectWhen": "Brick-only spandrel, fascia misclassified as band, thin tokenstripe replacing broad band, wrong datum/overlap, or band erased by fullassemblyfallback. Do not duplicate an existing capability without demonstrablefailure.",
+          "importance": "critical"
+        },
+        {
+          "id": "three-row-upper-joint-grammar",
+          "relationship": "Broad flat groups remain distinct beside localized projected narrow leaves and darkcaps; vertically aligned on masonry axes in three rows, entirely above glassblockband.",
+          "capability": "existinginterwarFrontage family accepted narrowly124/126; this targettransfer remainsunreviewed",
+          "rejectWhen": "All groups become narrowstock windows or allprojected/allflat, incorrect mirrored relationship, or newgroup jitter erased coherentaxes.",
+          "importance": "critical"
+        },
+        {
+          "id": "continuous-canopy-ground-datum",
+          "relationship": "Opaque continuous projecting nose and pale fascia cap both commercial/recessed residential ground; separate band above. Neighbor continuity/end conditions preserved.",
+          "capability": "existingcontinuousShopCanopy with source-selectednominaldatum and fitguards; runtime/compositioncomparison required",
+          "rejectWhen": "Broken per-Pand canopydatum, blocked doorhead, glassband/residentialoverlap or unsupportedarcade/corner transfer.",
+          "importance": "critical"
+        }
+      ],
+      "uncertainties": [
+        "Primary2024van/fog preventsgroundacceptance",
+        "Supporting2025source doesnot replace original immutable challenge; remains evaluation/context only, not training",
+        "Side/leaf/depth/threshold ownership unresolved",
+        "No opposite-side recipe admitted"
+      ],
+      "secondaryTraits": [
+        "Exact glazing cell counts, tiny signage wording and photographed pane counts are secondary once critical assemblies/axes are recognizable.",
+        "Individual attic/hook counts and exact photo registration are secondary; actual identity/footprint/neighbor retention remainmandatory."
+      ]
+    }
+  ],
+  "rootMustInspect": [
+    "/private/tmp/jan-evertsen-ground-transfer-review/128-full-front.jpg",
+    "/private/tmp/jan-evertsen-ground-transfer-review/122-full-front.jpg",
+    "/private/tmp/jan-evertsen-ground-transfer-review/119-full-front.jpg",
+    "/private/tmp/jan-evertsen-ground-transfer-review/128-adjacent-station.jpg",
+    "/private/tmp/jan-evertsen-ground-transfer-review/119-adjacent-station.jpg",
+    "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/jan-evertsen-canopy-rollout-20261006/processed/panorama/pilot-north.jpg",
+    "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/jan-evertsen-canopy-rollout-20261006/processed/panorama/odd-west-evaluation.jpg"
+  ],
+  "rootInspectionRecord": {
+    "threeFullFrontCrops": "Root reports personally inspected128/122/119 temporaryfull-frontcrops duringthis review. Root corrected overbroad missing-banddiagnosis: capabilityalreadyexists, dimension/compositioncriterion remains.",
+    "adjacentCrops": "Listedfor root inspection; not asserted inspectedbyroot yet."
+  },
+  "acceptance": {
+    "upper": "Source pattern compatibility only; no new heldout/source-specific upper transfer accepted",
+    "ground": "119ground withheld by van/fog;128/122 axes/dimensions and allactualrenderchecks remainpending",
+    "runtime": "Current rootbrowserChrome SIGABRT/scene-quiescence failures; CPU/preflight and moduletests do not establish actual gameappearance",
+    "requiredNext": [
+      "Compare frozen-candidate native street row/oblique and ground detail against sourcecriteria before selecting/tuninganyheldoutrecipe",
+      "Preserve reportedfailed andunknown axes; root and independent reviewer must seek band/door/upper contradictions",
+      "Acquire or use a clear adjacent119station with officialface/doorownership before groundacceptance; existing2025contextdoesnot yet settleit",
+      "Actualdesktop/touch normalgameplay camera pan must retain ordinaryneighbor windows/doors and profile mode consistency",
+      "Sameversion full-scene GPU/CPU evidence before marking scopedworkcomplete"
+    ],
+    "newRuntimeAdmissions": 0,
+    "newProfileAdmissions": 0
+  }
+}

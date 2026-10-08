@@ -85,35 +85,43 @@
     {
       "label": "service-connectivity-no-query",
       "url": "https://webservices.memorix.nl/mediabank/",
-      "rawPath": "artifacts/canopy-rollout/beeldbank/service-connectivity.txt",
       "sha256": "595bd80819fd2c0fddde6d7036960c8c9ea9b4aa1a8cd197dc88bf7e87210317",
       "bytes": 67,
       "responseCode": 403,
-      "accessState": "Service answered application-level missing-key message once; this is connectivity evidence only, no photograph/catalogue acquired"
+      "accessState": "Service answered application-level missing-key message once; this is connectivity evidence only, no photograph/catalogue acquired",
+      "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/service-connectivity.txt",
+      "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/service-connectivity.txt",
+      "archiveState": "root copying/committing; source commit pending"
     },
     {
       "label": "broad-query.json",
-      "rawPath": "artifacts/canopy-rollout/beeldbank/broad-query.json",
       "sha256": "c800cf56a7e671b16778a03784352228d18b1c1cd35a247dafd69d01634620f6",
       "bytes": 18351,
       "registeredAt": "2026-10-06T06:29:35.182695+00:00",
-      "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+      "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured",
+      "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/broad-query.json",
+      "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/broad-query.json",
+      "archiveState": "root copying/committing; source commit pending"
     },
     {
       "label": "query-94.json",
-      "rawPath": "artifacts/canopy-rollout/beeldbank/query-94.json",
       "sha256": "a085821cf53e6b1b41a909cc5e297200b51a196a80e64a332ae44673630a20d2",
       "bytes": 16512,
       "registeredAt": "2026-10-06T06:29:35.182695+00:00",
-      "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+      "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured",
+      "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/query-94.json",
+      "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/query-94.json",
+      "archiveState": "root copying/committing; source commit pending"
     },
     {
       "label": "query-68.json",
-      "rawPath": "artifacts/canopy-rollout/beeldbank/query-68.json",
       "sha256": "5c77c980621525d2e43ac5bd7df951cd4992c8ddd343628eb9ab2ee1a4d9ee04",
       "bytes": 15808,
       "registeredAt": "2026-10-06T06:29:35.182695+00:00",
-      "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+      "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured",
+      "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/query-68.json",
+      "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/query-68.json",
+      "archiveState": "root copying/committing; source commit pending"
     }
   ],
   "items": [
@@ -130,11 +138,13 @@
       ],
       "catalogueSource": {
         "label": "broad-query.json",
-        "rawPath": "artifacts/canopy-rollout/beeldbank/broad-query.json",
         "sha256": "c800cf56a7e671b16778a03784352228d18b1c1cd35a247dafd69d01634620f6",
         "bytes": 18351,
         "registeredAt": "2026-10-06T06:29:35.182695+00:00",
-        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured",
+        "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/broad-query.json",
+        "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/broad-query.json",
+        "archiveState": "root copying/committing; source commit pending"
       },
       "geographicMetadata": [
         [
@@ -175,11 +185,13 @@
       ],
       "catalogueSource": {
         "label": "broad-query.json",
-        "rawPath": "artifacts/canopy-rollout/beeldbank/broad-query.json",
         "sha256": "c800cf56a7e671b16778a03784352228d18b1c1cd35a247dafd69d01634620f6",
         "bytes": 18351,
         "registeredAt": "2026-10-06T06:29:35.182695+00:00",
-        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured",
+        "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/broad-query.json",
+        "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/broad-query.json",
+        "archiveState": "root copying/committing; source commit pending"
       },
       "geographicMetadata": [
         [
@@ -213,11 +225,13 @@
       ],
       "catalogueSource": {
         "label": "broad-query.json",
-        "rawPath": "artifacts/canopy-rollout/beeldbank/broad-query.json",
         "sha256": "c800cf56a7e671b16778a03784352228d18b1c1cd35a247dafd69d01634620f6",
         "bytes": 18351,
         "registeredAt": "2026-10-06T06:29:35.182695+00:00",
-        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured",
+        "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/broad-query.json",
+        "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/broad-query.json",
+        "archiveState": "root copying/committing; source commit pending"
       },
       "geographicMetadata": [
         [
@@ -244,18 +258,22 @@
       ],
       "catalogueQuality": "Preview",
       "originalSource": {
-        "rawPath": "artifacts/canopy-rollout/beeldbank/original-6fab7078-8527-11e4-b1c6-037456a763ec.bin",
         "sha256": "0892093102008457a69eceb8a2544c4fb8441498a54844f6c519997f549f4b38",
         "bytes": 175516,
         "registeredAt": "2026-10-06T06:29:35.182695+00:00",
-        "accessState": "Actual bytes acquired by root; visual inspection pending"
+        "accessState": "Actual bytes acquired by root; visual inspection pending",
+        "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/original-6fab7078-8527-11e4-b1c6-037456a763ec.bin",
+        "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/original-6fab7078-8527-11e4-b1c6-037456a763ec.bin",
+        "archiveState": "root copying/committing; source commit pending"
       },
       "previewSource": {
-        "rawPath": "artifacts/canopy-rollout/beeldbank/preview-6fab7078-8527-11e4-b1c6-037456a763ec.jpg",
         "sha256": "bcca57afadb130f82279a3e99b32b568d2ee9ea917c14ddcea1347b80a0a7ddf",
         "bytes": 54243,
         "registeredAt": "2026-10-06T06:29:35.182695+00:00",
-        "accessState": "Actual bytes acquired by root; visual inspection pending"
+        "accessState": "Actual bytes acquired by root; visual inspection pending",
+        "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/preview-6fab7078-8527-11e4-b1c6-037456a763ec.jpg",
+        "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/preview-6fab7078-8527-11e4-b1c6-037456a763ec.jpg",
+        "archiveState": "root copying/committing; source commit pending"
       }
     },
     {
@@ -271,11 +289,13 @@
       ],
       "catalogueSource": {
         "label": "broad-query.json",
-        "rawPath": "artifacts/canopy-rollout/beeldbank/broad-query.json",
         "sha256": "c800cf56a7e671b16778a03784352228d18b1c1cd35a247dafd69d01634620f6",
         "bytes": 18351,
         "registeredAt": "2026-10-06T06:29:35.182695+00:00",
-        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured",
+        "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/broad-query.json",
+        "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/broad-query.json",
+        "archiveState": "root copying/committing; source commit pending"
       },
       "geographicMetadata": [
         [
@@ -314,18 +334,22 @@
       ],
       "catalogueQuality": "Hoog",
       "originalSource": {
-        "rawPath": "artifacts/canopy-rollout/beeldbank/original-7597e032-f6e9-f1b0-e2d2-fe00f124307e.bin",
         "sha256": "b97af1556dacf1d906bd76995d5b56e30b2a9dc464e467f2f5b932819dbe5ee6",
         "bytes": 3940826,
         "registeredAt": "2026-10-06T06:29:35.182695+00:00",
-        "accessState": "Actual bytes acquired by root; visual inspection pending"
+        "accessState": "Actual bytes acquired by root; visual inspection pending",
+        "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/original-7597e032-f6e9-f1b0-e2d2-fe00f124307e.bin",
+        "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/original-7597e032-f6e9-f1b0-e2d2-fe00f124307e.bin",
+        "archiveState": "root copying/committing; source commit pending"
       },
       "previewSource": {
-        "rawPath": "artifacts/canopy-rollout/beeldbank/preview-7597e032-f6e9-f1b0-e2d2-fe00f124307e.jpg",
         "sha256": "8157bf2de3e7c1dc13f3fe39b350df463ab0e0c7c9f683a815f48f1597fc4bf7",
         "bytes": 39820,
         "registeredAt": "2026-10-06T06:29:35.182695+00:00",
-        "accessState": "Actual bytes acquired by root; visual inspection pending"
+        "accessState": "Actual bytes acquired by root; visual inspection pending",
+        "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/preview-7597e032-f6e9-f1b0-e2d2-fe00f124307e.jpg",
+        "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/preview-7597e032-f6e9-f1b0-e2d2-fe00f124307e.jpg",
+        "archiveState": "root copying/committing; source commit pending"
       }
     },
     {
@@ -339,11 +363,13 @@
       "creator": null,
       "catalogueSource": {
         "label": "broad-query.json",
-        "rawPath": "artifacts/canopy-rollout/beeldbank/broad-query.json",
         "sha256": "c800cf56a7e671b16778a03784352228d18b1c1cd35a247dafd69d01634620f6",
         "bytes": 18351,
         "registeredAt": "2026-10-06T06:29:35.182695+00:00",
-        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured",
+        "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/broad-query.json",
+        "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/broad-query.json",
+        "archiveState": "root copying/committing; source commit pending"
       },
       "geographicMetadata": [
         [
@@ -389,11 +415,13 @@
       ],
       "catalogueSource": {
         "label": "query-94.json",
-        "rawPath": "artifacts/canopy-rollout/beeldbank/query-94.json",
         "sha256": "a085821cf53e6b1b41a909cc5e297200b51a196a80e64a332ae44673630a20d2",
         "bytes": 16512,
         "registeredAt": "2026-10-06T06:29:35.182695+00:00",
-        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured",
+        "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/query-94.json",
+        "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/query-94.json",
+        "archiveState": "root copying/committing; source commit pending"
       },
       "geographicMetadata": [
         [
@@ -427,11 +455,13 @@
       ],
       "catalogueSource": {
         "label": "query-94.json",
-        "rawPath": "artifacts/canopy-rollout/beeldbank/query-94.json",
         "sha256": "a085821cf53e6b1b41a909cc5e297200b51a196a80e64a332ae44673630a20d2",
         "bytes": 16512,
         "registeredAt": "2026-10-06T06:29:35.182695+00:00",
-        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured",
+        "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/query-94.json",
+        "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/query-94.json",
+        "archiveState": "root copying/committing; source commit pending"
       },
       "geographicMetadata": [
         [
@@ -458,18 +488,22 @@
       ],
       "catalogueQuality": "Hoog",
       "originalSource": {
-        "rawPath": "artifacts/canopy-rollout/beeldbank/original-ad2f103f-571f-2a34-ffaa-909ba5a6c644.bin",
         "sha256": "8b40e5733bb84c32ae3b9a970a9c8dc761ed6d87db0ea816e58b128e360cc130",
         "bytes": 1548693,
         "registeredAt": "2026-10-06T06:29:35.182695+00:00",
-        "accessState": "Actual bytes acquired by root; visual inspection pending"
+        "accessState": "Actual bytes acquired by root; visual inspection pending",
+        "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/original-ad2f103f-571f-2a34-ffaa-909ba5a6c644.bin",
+        "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/original-ad2f103f-571f-2a34-ffaa-909ba5a6c644.bin",
+        "archiveState": "root copying/committing; source commit pending"
       },
       "previewSource": {
-        "rawPath": "artifacts/canopy-rollout/beeldbank/preview-ad2f103f-571f-2a34-ffaa-909ba5a6c644.jpg",
         "sha256": "b6fb5793b165368c3b92df8e74ce7b67537ba65f19ed5b9a107383a726553591",
         "bytes": 67612,
         "registeredAt": "2026-10-06T06:29:35.182695+00:00",
-        "accessState": "Actual bytes acquired by root; visual inspection pending"
+        "accessState": "Actual bytes acquired by root; visual inspection pending",
+        "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/preview-ad2f103f-571f-2a34-ffaa-909ba5a6c644.jpg",
+        "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/preview-ad2f103f-571f-2a34-ffaa-909ba5a6c644.jpg",
+        "archiveState": "root copying/committing; source commit pending"
       }
     },
     {
@@ -483,11 +517,13 @@
       "creator": null,
       "catalogueSource": {
         "label": "query-94.json",
-        "rawPath": "artifacts/canopy-rollout/beeldbank/query-94.json",
         "sha256": "a085821cf53e6b1b41a909cc5e297200b51a196a80e64a332ae44673630a20d2",
         "bytes": 16512,
         "registeredAt": "2026-10-06T06:29:35.182695+00:00",
-        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured",
+        "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/query-94.json",
+        "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/query-94.json",
+        "archiveState": "root copying/committing; source commit pending"
       },
       "geographicMetadata": [
         [
@@ -533,11 +569,13 @@
       ],
       "catalogueSource": {
         "label": "query-94.json",
-        "rawPath": "artifacts/canopy-rollout/beeldbank/query-94.json",
         "sha256": "a085821cf53e6b1b41a909cc5e297200b51a196a80e64a332ae44673630a20d2",
         "bytes": 16512,
         "registeredAt": "2026-10-06T06:29:35.182695+00:00",
-        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured",
+        "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/query-94.json",
+        "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/query-94.json",
+        "archiveState": "root copying/committing; source commit pending"
       },
       "geographicMetadata": [
         [
@@ -569,11 +607,13 @@
       "creator": null,
       "catalogueSource": {
         "label": "query-94.json",
-        "rawPath": "artifacts/canopy-rollout/beeldbank/query-94.json",
         "sha256": "a085821cf53e6b1b41a909cc5e297200b51a196a80e64a332ae44673630a20d2",
         "bytes": 16512,
         "registeredAt": "2026-10-06T06:29:35.182695+00:00",
-        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured",
+        "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/query-94.json",
+        "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/query-94.json",
+        "archiveState": "root copying/committing; source commit pending"
       },
       "geographicMetadata": [
         [
@@ -619,11 +659,13 @@
       ],
       "catalogueSource": {
         "label": "query-68.json",
-        "rawPath": "artifacts/canopy-rollout/beeldbank/query-68.json",
         "sha256": "5c77c980621525d2e43ac5bd7df951cd4992c8ddd343628eb9ab2ee1a4d9ee04",
         "bytes": 15808,
         "registeredAt": "2026-10-06T06:29:35.182695+00:00",
-        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured",
+        "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/query-68.json",
+        "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/query-68.json",
+        "archiveState": "root copying/committing; source commit pending"
       },
       "geographicMetadata": [
         [
@@ -650,18 +692,22 @@
       ],
       "catalogueQuality": "Hoog",
       "originalSource": {
-        "rawPath": "artifacts/canopy-rollout/beeldbank/original-8738f6f0-1d70-44d4-9390-78779734ae89.bin",
         "sha256": "60e5304b4e2708c446024ed6f8838c5e33e588d06b867af48c429c5208c269b1",
         "bytes": 799280,
         "registeredAt": "2026-10-06T06:29:35.182695+00:00",
-        "accessState": "Actual bytes acquired by root; visual inspection pending"
+        "accessState": "Actual bytes acquired by root; visual inspection pending",
+        "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/original-8738f6f0-1d70-44d4-9390-78779734ae89.bin",
+        "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/original-8738f6f0-1d70-44d4-9390-78779734ae89.bin",
+        "archiveState": "root copying/committing; source commit pending"
       },
       "previewSource": {
-        "rawPath": "artifacts/canopy-rollout/beeldbank/preview-8738f6f0-1d70-44d4-9390-78779734ae89.jpg",
         "sha256": "af530b01c8d30d2846139a6fb8ccc6f485c050f824ed3b6362f2065183515796",
         "bytes": 67579,
         "registeredAt": "2026-10-06T06:29:35.182695+00:00",
-        "accessState": "Actual bytes acquired by root; visual inspection pending"
+        "accessState": "Actual bytes acquired by root; visual inspection pending",
+        "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/preview-8738f6f0-1d70-44d4-9390-78779734ae89.jpg",
+        "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/preview-8738f6f0-1d70-44d4-9390-78779734ae89.jpg",
+        "archiveState": "root copying/committing; source commit pending"
       }
     },
     {
@@ -677,11 +723,13 @@
       ],
       "catalogueSource": {
         "label": "query-68.json",
-        "rawPath": "artifacts/canopy-rollout/beeldbank/query-68.json",
         "sha256": "5c77c980621525d2e43ac5bd7df951cd4992c8ddd343628eb9ab2ee1a4d9ee04",
         "bytes": 15808,
         "registeredAt": "2026-10-06T06:29:35.182695+00:00",
-        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured",
+        "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/query-68.json",
+        "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/query-68.json",
+        "archiveState": "root copying/committing; source commit pending"
       },
       "geographicMetadata": [
         [
@@ -713,11 +761,13 @@
       "creator": null,
       "catalogueSource": {
         "label": "query-68.json",
-        "rawPath": "artifacts/canopy-rollout/beeldbank/query-68.json",
         "sha256": "5c77c980621525d2e43ac5bd7df951cd4992c8ddd343628eb9ab2ee1a4d9ee04",
         "bytes": 15808,
         "registeredAt": "2026-10-06T06:29:35.182695+00:00",
-        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured",
+        "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/query-68.json",
+        "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/query-68.json",
+        "archiveState": "root copying/committing; source commit pending"
       },
       "geographicMetadata": [
         [
@@ -744,18 +794,22 @@
       ],
       "catalogueQuality": "Hoog",
       "originalSource": {
-        "rawPath": "artifacts/canopy-rollout/beeldbank/original-43c5ea58-cd0a-5c1d-0714-51000525e30b.bin",
         "sha256": "1096a17fc1d3d73fa949637b8b5c2cf7d397e0039929b2ed2fdba3cdd328e505",
         "bytes": 2213827,
         "registeredAt": "2026-10-06T06:29:35.182695+00:00",
-        "accessState": "Actual bytes acquired by root; visual inspection pending"
+        "accessState": "Actual bytes acquired by root; visual inspection pending",
+        "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/original-43c5ea58-cd0a-5c1d-0714-51000525e30b.bin",
+        "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/original-43c5ea58-cd0a-5c1d-0714-51000525e30b.bin",
+        "archiveState": "root copying/committing; source commit pending"
       },
       "previewSource": {
-        "rawPath": "artifacts/canopy-rollout/beeldbank/preview-43c5ea58-cd0a-5c1d-0714-51000525e30b.jpg",
         "sha256": "5d746550c41e87047c03a109c4ddac320b7ed44a194cbe966a309ee66c1d4dce",
         "bytes": 58373,
         "registeredAt": "2026-10-06T06:29:35.182695+00:00",
-        "accessState": "Actual bytes acquired by root; visual inspection pending"
+        "accessState": "Actual bytes acquired by root; visual inspection pending",
+        "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/preview-43c5ea58-cd0a-5c1d-0714-51000525e30b.jpg",
+        "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/preview-43c5ea58-cd0a-5c1d-0714-51000525e30b.jpg",
+        "archiveState": "root copying/committing; source commit pending"
       }
     },
     {
@@ -771,11 +825,13 @@
       ],
       "catalogueSource": {
         "label": "query-68.json",
-        "rawPath": "artifacts/canopy-rollout/beeldbank/query-68.json",
         "sha256": "5c77c980621525d2e43ac5bd7df951cd4992c8ddd343628eb9ab2ee1a4d9ee04",
         "bytes": 15808,
         "registeredAt": "2026-10-06T06:29:35.182695+00:00",
-        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured"
+        "accessState": "Actual catalogue JSON acquired by root direct curl; HTTP/time metadata unspecified unless separately captured",
+        "temporaryAcquisitionPath": "artifacts/canopy-rollout/beeldbank/query-68.json",
+        "sourcePackPath": "streets/jan-evertsen-canopy-rollout-20261006/raw/beeldbank/query-68.json",
+        "archiveState": "root copying/committing; source commit pending"
       },
       "geographicMetadata": [
         [
@@ -1006,7 +1062,7 @@
     }
   ],
   "acquisitionRuntimeNote": "Worker sandbox DNS/network failures did not imply user internet or source outage. Root direct curl acquired the complete bounded pack successfully.",
-  "rawArchivePathPolicy": "Source records retain temporary acquisition rawPath/checksum until root confirms private-pack file mapping. Permanent source claims must cite canonicalSourcePack + source commit.",
+  "rawArchivePathPolicy": "Permanent source claims use sourcePackPath under private archive; temporaryAcquisitionPath records initial worker/root acquisition only. Source commit pending root.",
   "sourceArchive": {
     "repository": "blackmad/map-recall2-source-data",
     "commit": "a558154b43f6740a4f22d7c0947d730b7b12adc8",

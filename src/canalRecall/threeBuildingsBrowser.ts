@@ -1,3 +1,7 @@
+import { BuildingContextIndex } from './buildingContextIndex.js';
+import { ChunkBuildQueue } from './chunkBuildQueue.js';
+import { buildSpecialKits, buildSpecialBoats } from './buildingSpecialChunks.js';
+import {buildTransportedEnvelopeChunk,diagnosticEnvelopeTransport,EMPTY_ENVELOPE_TRANSPORT,type EnvelopeTransport} from './surveyedEnvelopeTransport.js';
 // Browser adapter: facade walls for the streamed city as one three.js custom
 // layer inside MapLibre's GL context (spike, 2026-10-02). See
 // `public/canal-drive/RENDERING_STACK_OPTIONS.md` for why.
@@ -19,26 +23,24 @@ import { decorateRoof, exceptLandmarks as exceptLandmarksOf, fitRect, localOuter
 import { BAY_ENTRIES, BAY_LAYER_COUNT, bayLayer, bayLookFor, bayVariant } from './bayLook.js';
 import { paintGlassBlockCell } from './glassBlockTexture.js';
 import { bayTextures, type Look } from './bayTextures.js';
-import { KIT_HIDE_IDS, KIT_MODELLED_IDS, KIT_PART_IDS, decorateKitRoof } from './landmarkKits.js';
-import { FRONT_PART_IDS, decorateFront } from './landmarkFrontData.js';
+import { KITS, KIT_HIDE_IDS, KIT_MODELLED_IDS, KIT_PART_IDS, decorateKitRoof, kitGeometry, type KitPartGeometry, type PartInput } from './landmarkKits.js';
+import { FRONT_LIST, FRONT_PART_IDS, decorateFront } from './landmarkFrontData.js';
+import { frontKitGeometry, lookHex } from './landmarkFronts.js';
 import { decorateShopfront, setShopfronts } from './shopfronts.js';
-import { boatForLandmark, houseboatsByTile, type Houseboat } from './houseboats.js';
-import type { ChunkHostOpeningConfig } from './hostWallOpenings.js';
-import type { Chunk } from './threeBuildingMesh.js';
+import { boatForLandmark, houseboatGeometry, houseboatsByTile, type Houseboat } from './houseboats.js';
+import { buildKitChunk, type Chunk } from './threeBuildingMesh.js';
 import { FALLBACK_REACH_M, SegmentGrid, streetSegments } from './streetFronts.js';
-import { ORIGIN, ROOF_TONES, asPolygons, buildFeatureChunk, cellSetOf, type BuildingLook, type Feature } from './threeBuildingFeatures.js';
+import { ORIGIN, ROOF_TONES, asPolygons, cellSetOf, type BuildingLook, type Feature } from './threeBuildingFeatures.js';
 export { ORIGIN, ROOF_TONES, type BuildingLook };
 import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
 import { validateStreetAppearanceCatalog, type StreetAppearanceCatalog, type StreetAppearanceProfile } from './streetAppearance.js';
+import type { ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import { PROCEDURAL_RECIPE_LAYER_OFFSET } from './streetFacadeRendering.js';
 import { buildingProjectionScale } from './buildingProjectionScale.js';
-import { buildSpecialKits, buildSpecialBoats } from './buildingSpecialChunks.js';
-import { ChunkBuildQueue } from './chunkBuildQueue.js';
-import { BuildingContextIndex } from './buildingContextIndex.js';
 
-type BuildOptions = { look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; contextFeatures?: readonly Feature[]; appearanceRevision: string; hostOpenings: readonly ChunkHostOpeningConfig[]; hostOpeningRevision: string };
+type BuildOptions = { surveyedEnvelopeData: EnvelopeTransport["envelopes"]; surveyedEnvelopeRevision: string; look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; contextFeatures?: readonly Feature[]; appearanceRevision: string; hostOpenings: readonly ChunkHostOpeningConfig[]; hostOpeningRevision: string };
 
-type MapLike = { getCanvas(): HTMLCanvasElement; triggerRepaint(): void; getZoom(): number };
+type MapLike = { _surveyedEnvelopeRoofIds?: string[]; _pyramidalRoofs?: {setHiddenReason(reason:string,ids:Iterable<string>):void}; getCanvas(): HTMLCanvasElement; triggerRepaint(): void; getZoom(): number };
 type MaplibreLike = { MercatorCoordinate: { fromLngLat(lngLat: [number, number], altitude: number): { x: number; y: number; z: number; meterInMercatorCoordinateUnits(): number } } };
 
 const TILE_ZOOM = 14;
@@ -52,8 +54,6 @@ const COARSE_PREFIX = 'coarse:';
 const chunkMode = (key: string): 'walls' | 'extras' | 'coarse' => key.startsWith(EXTRAS_PREFIX) ? 'extras' : key.startsWith(COARSE_PREFIX) ? 'coarse' : 'walls';
 /** Facades show from this map zoom (the extrusion layer's own minzoom was 14). */
 export const MIN_ZOOM = 14;
-// Finish before the ordinary phone minimum zoom; reserve blending for the intro/overview.
-const CITY_FADE_RANGE = 1.4;
 
 export const VERTEX = /* glsl */ `
 in vec3 position;
@@ -94,14 +94,16 @@ in float vShade;
 flat in float vHighlight;
 out vec4 fragColor;
 void main() {
-  if (vHighlight > 0.5) { fragColor = vec4(vec3(1.0, 0.824, 0.122) * vShade, cityFade); return; }
+  // Screen-door coverage keeps depth writes correct while the city emerges from the overview.
+  if (cityFade < 1.0 && fract(dot(floor(gl_FragCoord.xy), vec2(0.754877666, 0.569840296))) >= cityFade) discard;
+  if (vHighlight > 0.5) { fragColor = vec4(vec3(1.0, 0.824, 0.122) * vShade, 1.0); return; }
   vec3 p = vec3(vUv, vLayer);
   vec3 c = texture(cells, p).rgb;
   vec2 m = texture(masks, p).rg;
   c *= mix(vec3(1.0), vTint, m.r) * mix(vec3(1.0), vAccent, m.g);
   if (flatColour > 0.5) c = vTint;
   float shade = bands > 0.5 ? floor(vShade * bands + 0.5) / bands : vShade;
-  fragColor = vec4(c * shade, cityFade);
+  fragColor = vec4(c * shade, 1.0);
 }`;
 
 const ROOF_LAYER_COUNT = 4;
@@ -257,7 +259,6 @@ export class ThreeBuildings {
   private THREE: any;
   private scene: any;
   private material: any;
-  private depthMaterial: any;
   private renderer: any;
   private camera: any;
   private readonly chunks = new Map<string, { source: Feature[]; mesh: any; info: ChunkInfo; ranges: Map<string, { start: number; count: number }> }>();
@@ -269,7 +270,6 @@ export class ThreeBuildings {
   private workerBusy = false;
   private pumping = false;
   private lastBuildMs = 0;
-  private lastRenderInfo?: { calls: number; triangles: number };
   private transform: any = null;
 
   private look: BuildingLook;
@@ -280,6 +280,8 @@ export class ThreeBuildings {
   private textureSets = new Map<BuildingLook, Promise<{ colour: any; mask: any }>>();
   private lookToken = 0;
   private appearanceToken = 0;
+  private envelopeLoadToken = 0;
+  private surveyedEnvelopeTransport = EMPTY_ENVELOPE_TRANSPORT;
   private appearanceRevision = '';
   private appearanceProfiles: readonly StreetAppearanceProfile[] = [];
   private appearanceStreets: SegmentGrid | null = null;
@@ -330,7 +332,7 @@ export class ThreeBuildings {
         const installedLook = chunk.mesh.userData.installedLook as BuildingLook | undefined;
         if (!installedLook) continue;
         const rebuilt = key === KIT_KEY ? this.buildKits(chunk.source, installedLook)
-          : buildFeatureChunk(chunk.source, installedLook, chunkMode(key), chunk.mesh.userData.installedStreets, chunk.mesh.userData.installedProfiles ?? [], chunk.mesh.userData.installedContextFeatures ?? [], chunk.mesh.userData.installedHostOpenings ?? []);
+          : buildTransportedEnvelopeChunk(chunk.source, {look:installedLook,mode:chunkMode(key),streets:chunk.mesh.userData.installedStreets,profiles:chunk.mesh.userData.installedProfiles ?? [],contextFeatures:chunk.mesh.userData.installedContextFeatures ?? [],hostOpenings:chunk.mesh.userData.installedHostOpenings ?? [],surveyedEnvelopeData:chunk.mesh.userData.installedSurveyedEnvelopeData ?? []}).chunk;
         if (rebuilt.vertexCount !== chunk.mesh.geometry.getAttribute('position').count
           || rebuilt.ranges.length !== chunk.ranges.size
           || rebuilt.ranges.some(range => {
@@ -386,6 +388,7 @@ export class ThreeBuildings {
 
   /** Invalidate work at request time, before awaiting textures or pumping queued jobs. */
   private invalidateBuilds(): void {
+    this.workerBusy = false;
     for (const key of new Set([...this.gens.keys(), ...this.inflight.keys(), ...this.sourceGroups.keys()])) {
       this.gens.set(key, (this.gens.get(key) ?? 0) + 1);
     }
@@ -407,6 +410,33 @@ export class ThreeBuildings {
     for (const [key, source] of this.sourceGroups) this.pending.push(key, () => this.rebuild(key, source));
     this.pump();
     this.map.triggerRepaint();
+  }
+
+  /** Explicit diagnostic opt-in only. No source IDs or URLs are enabled by default. */
+  setDiagnosticSurveyedEnvelopes(payload: unknown): boolean {
+    ++this.envelopeLoadToken;
+    const next = diagnosticEnvelopeTransport(payload);
+    this.surveyedEnvelopeTransport = next ?? EMPTY_ENVELOPE_TRANSPORT;
+    this.invalidateBuilds();
+    // Old source-owned tops cannot continue suppressing roofs after disabling/replacing their data.
+    for (const [key, entry] of [...this.chunks]) if (entry.mesh?.userData.boundParentIds?.length) this.dropChunk(key);
+    for (const [key, source] of this.sourceGroups) this.pending.push(key, () => this.rebuild(key, source));
+    this.refreshSurveyedRoofOwnership();
+    this.pump(); this.map.triggerRepaint();
+    return !!next;
+  }
+
+  async loadDiagnosticSurveyedEnvelopes(url: string): Promise<boolean> {
+    const token = ++this.envelopeLoadToken;
+    try {
+      const response = await fetch(url, {cache:'no-cache'});
+      if (!response.ok) throw new Error(`Envelope request ${response.status}`);
+      const payload = await response.json();
+      return token === this.envelopeLoadToken && this.setDiagnosticSurveyedEnvelopes(payload);
+    } catch {
+      if (token === this.envelopeLoadToken) this.setDiagnosticSurveyedEnvelopes({schemaVersion:1,diagnosticOnly:true,envelopes:[]});
+      return false;
+    }
   }
 
   private async loadStreetAppearance(): Promise<void> {
@@ -456,6 +486,7 @@ export class ThreeBuildings {
   setVisible(visible: boolean): void {
     if (this.visible === visible) return;
     this.visible = visible;
+    this.refreshSurveyedRoofOwnership();
     this.map.triggerRepaint();
   }
 
@@ -598,7 +629,7 @@ export class ThreeBuildings {
     for (const { info } of this.chunks.values()) {
       buildings += info.buildingCount; walls += info.wallCount; quads += info.quadCount; vertices += info.vertexCount; bytes += info.bytes;
     }
-    const info = this.lastRenderInfo ?? this.renderer?.info?.render;
+    const info = this.renderer?.info?.render;
     return {
       kitVertices: this.chunks.get(KIT_KEY)?.info.vertexCount ?? 0, chunks: this.chunks.size, buildings, walls, quads, vertices,
       geometryMB: bytes / 1048576, textureMB: this.textureMB,
@@ -607,16 +638,15 @@ export class ThreeBuildings {
   }
 
   dispose(): void {
+    ++this.envelopeLoadToken;
     ++this.appearanceToken;
     this.appearanceLoaded = false;
     this.invalidateBuilds();
     this.worker?.terminate();
     this.worker = undefined;
-    this.workerBusy = false;
     for (const key of [...this.chunks.keys()]) this.dropChunk(key);
     for (const material of new Set([this.material, ...this.materials.values()])) material?.dispose();
     this.materials.clear();
-    this.depthMaterial?.dispose();
     for (const set of this.textureSets.values()) void set.then(t => { t.colour.dispose(); t.mask.dispose(); });
   }
 
@@ -627,8 +657,8 @@ export class ThreeBuildings {
   private pump(): void {
     if (this.pumping || this.workerBusy || !this.pending.length || !this.THREE || !this.ready) return;
     this.pumping = true;
-    // One dispatch at a time keeps newer tile/look inputs in the coalesced
-    // queue rather than trapping obsolete jobs inside the worker.
+    // One chunk per task: a z14 tile is ~10-30 ms of layout and fill, so
+    // spreading them keeps a tile arrival from stalling a frame.
     setTimeout(() => {
       this.pumping = false;
       const job = this.pending.shift();
@@ -744,7 +774,7 @@ export class ThreeBuildings {
     if (worker) {
       // Off the main thread; a reply for an older generation (the tile changed again, or the look) is dropped.
       this.inflight.set(key, source);
-      const options = { look: this.look, streets: this.streetsFor(source), profiles: this.appearanceProfiles, contextFeatures: this.contextGroups.get(key) ?? this.contextFor(source), appearanceRevision: this.appearanceRevision, hostOpenings: this.openingsFor(key, source), hostOpeningRevision: this.openingRevision(key, source) };
+      const options = { surveyedEnvelopeData: this.surveyedEnvelopeTransport.envelopes, surveyedEnvelopeRevision: this.surveyedEnvelopeTransport.revision, look: this.look, streets: this.streetsFor(source), profiles: this.appearanceProfiles, contextFeatures: this.contextGroups.get(key) ?? this.contextFor(source), appearanceRevision: this.appearanceRevision, hostOpenings: this.openingsFor(key, source), hostOpeningRevision: this.openingRevision(key, source) };
       this.inflightOptions.set(key, options);
       this.workerBusy = true;
       worker.postMessage({ key, gen, ...options, features: source, mode: chunkMode(key),
@@ -754,9 +784,11 @@ export class ThreeBuildings {
       return;
     }
     const t0 = performance.now();
-    const options = { look: this.look, streets: this.streetsFor(source), profiles: this.appearanceProfiles, contextFeatures: this.contextGroups.get(key) ?? this.contextFor(source), appearanceRevision: this.appearanceRevision, hostOpenings: this.openingsFor(key, source), hostOpeningRevision: this.openingRevision(key, source) };
-    const chunk = key === KIT_KEY ? this.buildKits(source) : key.startsWith(BOAT_PREFIX) ? this.buildBoats(key.slice(BOAT_PREFIX.length)) : buildFeatureChunk(source, options.look, chunkMode(key), options.streets, options.profiles, options.contextFeatures, options.hostOpenings);
-    this.install(key, source, chunk, performance.now() - t0, options);
+    const options = { surveyedEnvelopeData: this.surveyedEnvelopeTransport.envelopes, surveyedEnvelopeRevision: this.surveyedEnvelopeTransport.revision, look: this.look, streets: this.streetsFor(source), profiles: this.appearanceProfiles, contextFeatures: this.contextGroups.get(key) ?? this.contextFor(source), appearanceRevision: this.appearanceRevision, hostOpenings: this.openingsFor(key, source), hostOpeningRevision: this.openingRevision(key, source) };
+    const result = key === KIT_KEY ? {chunk:this.buildKits(source),boundParentIds:[]}
+      : key.startsWith(BOAT_PREFIX) ? {chunk:this.buildBoats(key.slice(BOAT_PREFIX.length)),boundParentIds:[]}
+      : buildTransportedEnvelopeChunk(source,{...options,mode:chunkMode(key)});
+    this.install(key, source, result.chunk, performance.now() - t0, options, result.boundParentIds);
   }
 
   /** The chunk worker, started on first use; null where workers are unavailable (then chunks build inline). */
@@ -766,15 +798,15 @@ export class ThreeBuildings {
     if (typeof Worker === 'undefined' || !WORKER_URL) return null;
     try {
       const worker = new Worker(WORKER_URL);
-      worker.onmessage = (event: MessageEvent<{ key: string; gen: number; chunk: Chunk; ms: number; hostOpeningRevision: string }>) => {
+      worker.onmessage = (event: MessageEvent<{ key: string; gen: number; chunk: Chunk; ms: number; appearanceRevision: string; hostOpeningRevision: string; surveyedEnvelopeRevision: string; boundParentIds: string[] }>) => {
         const { key, gen, chunk, ms } = event.data, source = this.inflight.get(key);
         this.workerBusy = false;
         if (this.gens.get(key) !== gen || !source) { this.pump(); return; }
         const options = this.inflightOptions.get(key);
-        if (!options || event.data.hostOpeningRevision !== options.hostOpeningRevision || options.hostOpeningRevision !== this.openingRevision(key, source)) { this.pump(); return; }
+        if (!options || event.data.appearanceRevision !== options.appearanceRevision || options.appearanceRevision !== this.appearanceRevision || event.data.surveyedEnvelopeRevision !== options.surveyedEnvelopeRevision || options.surveyedEnvelopeRevision !== this.surveyedEnvelopeTransport.revision || event.data.hostOpeningRevision !== options.hostOpeningRevision || options.hostOpeningRevision !== this.openingRevision(key, source)) { this.pump(); return; }
         this.inflight.delete(key);
         this.inflightOptions.delete(key);
-        this.install(key, source, chunk, ms, options);
+        this.install(key, source, chunk, ms, options, event.data.boundParentIds);
         this.pump();
       };
       worker.onerror = (error) => {
@@ -793,9 +825,9 @@ export class ThreeBuildings {
     return this.worker;
   }
 
-  private install(key: string, source: Feature[], chunk: Chunk, buildMs: number, options?: BuildOptions): void {
+  private install(key: string, source: Feature[], chunk: Chunk, buildMs: number, options?: BuildOptions, boundParentIds: string[] = []): void {
     if (!this.THREE || this.look !== this.requestedLook || !this.currentSource(key, source)) return;
-    if (options && (options.look !== this.look || options.appearanceRevision !== this.appearanceRevision || options.hostOpeningRevision !== this.openingRevision(key, source))) return;
+    if (options && (options.surveyedEnvelopeRevision !== this.surveyedEnvelopeTransport.revision || options.look !== this.look || options.appearanceRevision !== this.appearanceRevision || options.hostOpeningRevision !== this.openingRevision(key, source))) return;
     const context=this.contextGroups.get(key);
     if(options?.contextFeatures && context && (context.length!==options.contextFeatures.length || context.some((f,i)=>f!==options.contextFeatures![i]))) return;
     const t0 = performance.now() - buildMs;
@@ -820,6 +852,8 @@ export class ThreeBuildings {
     geometry.computeBoundingSphere();
     const mesh = new THREE.Mesh(geometry, this.material);
     mesh.userData ??= {};
+    mesh.userData.installedSurveyedEnvelopeData = options?.surveyedEnvelopeData;
+    mesh.userData.boundParentIds = boundParentIds;
     mesh.userData.installedLook = options?.look ?? this.look;
     mesh.userData.installedStreets = options?.streets;
     mesh.userData.installedContextFeatures = options?.contextFeatures;
@@ -828,12 +862,11 @@ export class ThreeBuildings {
     mesh.userData.hostOpeningRevision = options?.hostOpeningRevision;
     mesh.userData.hostOpeningIds = chunk.hostOpeningIds ?? [];
     mesh.userData.appearanceRevision = options?.appearanceRevision;
-    // The pre-upload bounding sphere survives CPU buffer disposal. Keep
-    // resident shells intact while skipping chunks outside the map camera.
     mesh.frustumCulled = true;
     const entry = { source, mesh, info: infoOf(chunk), ranges: new Map(chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }])) };
     this.chunks.set(key, entry);
     this.scene.add(mesh);
+    this.refreshSurveyedRoofOwnership();
     mesh.userData.coarse = key.startsWith(COARSE_PREFIX);
     this.refreshDetailOwnership();
     this.applyHidden(entry, new Set([...this.hidden, ...this.highlighted, ...this.installedDetailIds]));
@@ -859,7 +892,18 @@ export class ThreeBuildings {
     if (!held) return;
     if (held.mesh) { this.scene?.remove(held.mesh); held.mesh.geometry.dispose(); }
     this.chunks.delete(key);
+    this.refreshSurveyedRoofOwnership();
     if (key.startsWith('near:')) this.refreshDetailOwnership();
+  }
+
+  private refreshSurveyedRoofOwnership(): void {
+    const ids = new Set<string>();
+    if (this.visible && this.ready && this.map.getZoom() > MIN_ZOOM) for (const entry of this.chunks.values()) if (entry.mesh)
+      for (const id of entry.mesh.userData.boundParentIds ?? []) ids.add(id);
+    const previous = this.map._surveyedEnvelopeRoofIds;
+    if (previous && previous.length === ids.size && previous.every(id => ids.has(id))) return;
+    this.map._surveyedEnvelopeRoofIds = [...ids];
+    this.map._pyramidalRoofs?.setHiddenReason('surveyed-envelope', ids);
   }
 
   private refreshDetailOwnership(): void {
@@ -898,11 +942,6 @@ export class ThreeBuildings {
           glslVersion: THREE.GLSL3, vertexShader: VERTEX, fragmentShader: FRAGMENT,
           uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: owner.look === 'cartoon' ? 3 : 0 }, flatColour: { value: owner.look === 'untextured' ? 1 : 0 }, cityFade: { value: 1 } }, side: THREE.FrontSide,
         });
-        owner.depthMaterial = new THREE.RawShaderMaterial({
-          glslVersion: THREE.GLSL3, vertexShader: VERTEX,
-          fragmentShader: 'precision highp float; out vec4 fragColor; void main() { fragColor = vec4(0.0); }',
-          colorWrite: false, depthWrite: true, side: THREE.FrontSide,
-        });
         owner.materials.set(owner.look, owner.material);
         const initialLook = owner.requestedLook, token = ++owner.lookToken;
         void owner.texturesFor(cellSetOf(initialLook)).then(set => {
@@ -921,27 +960,13 @@ export class ThreeBuildings {
         owner.transform = new THREE.Matrix4().makeTranslation(c.x, c.y, c.z).scale(new THREE.Vector3(...buildingProjectionScale(scale)));
       },
       render(_gl: WebGL2RenderingContext, args: any) {
+        owner.refreshSurveyedRoofOwnership();
         if (!owner.visible || !owner.ready || !owner.scene || !owner.chunks.size || owner.map.getZoom() < MIN_ZOOM) return;
-        const fade = Math.max(0, Math.min(1, (owner.map.getZoom() - MIN_ZOOM) / CITY_FADE_RANGE));
-        for (const material of owner.materials.values()) {
-          material.uniforms.cityFade.value = fade;
-          material.transparent = fade < 1;
-          material.depthWrite = fade === 1;
-        }
+        const fade = Math.max(0, Math.min(1, (owner.map.getZoom() - MIN_ZOOM) / 1.6));
+        for (const material of owner.materials.values()) material.uniforms.cityFade.value = fade;
         owner.camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(owner.transform);
         owner.renderer.resetState();
-        let depthCalls = 0, depthTriangles = 0;
-        if (fade < 1) {
-          // Populate only the nearest surfaces before blending. Without this,
-          // translucent roofs/walls show geometry behind them and chunk order leaks through.
-          owner.scene.overrideMaterial = owner.depthMaterial;
-          owner.renderer.render(owner.scene, owner.camera);
-          owner.scene.overrideMaterial = null;
-          depthCalls = owner.renderer.info.render.calls;
-          depthTriangles = owner.renderer.info.render.triangles;
-        }
         owner.renderer.render(owner.scene, owner.camera);
-        owner.lastRenderInfo = { calls: depthCalls + owner.renderer.info.render.calls, triangles: depthTriangles + owner.renderer.info.render.triangles };
       },
       onRemove() { owner.dispose(); },
     };

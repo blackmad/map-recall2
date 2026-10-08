@@ -1,0 +1,475 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-10-06",
+  "reviewer": "independent jan_archive_retry source-derived seek-failures review",
+  "criteriaFrozenAt": "2026-10-06T07:55:53.357180+00:00",
+  "decision": "accept-narrow-existing-pilot-window-capability",
+  "fullFacadeDecision": "not-accepted",
+  "extentDecision": "no-new-runtime-admissions",
+  "scope": "Narrow grouped-window capability review for existing exact pilot124/126 only. Current even-west source informs projecting subtype; even-east is contrasting flat-subtype control, not automatic transfer.",
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "path": "streets/jan-evertsen-canopy-rollout-20261006/",
+    "commit": "cb1a9905bdc5067fc742de741aeb5c88b460567a",
+    "commitNote": "Existing source commit recorded by glassband-review; root may update final pack commit. Worker inspected same-checksummed local acquisition crops; private pack sibling unavailable in worker checkout."
+  },
+  "sources": [
+    {
+      "id": "pilot-north",
+      "archivePath": "streets/jan-evertsen-canopy-rollout-20261006/processed/panorama/pilot-north.jpg",
+      "sha256": "e37ead2377de9a228a19d46188e658eb9eaf68a85ded4eb31157e5b279593846",
+      "panoId": "2025_09_26_08_31_34_00859",
+      "captureTimestamp": "2025-09-26T09:08:16Z",
+      "heading": 344,
+      "inspected": true
+    },
+    {
+      "id": "even-west-extension",
+      "archivePath": "streets/jan-evertsen-canopy-rollout-20261006/processed/panorama/even-west-extension.jpg",
+      "sha256": "19f4ae3ba2044f6f91fcbe8205a3a3a80637cb911dfad60744bdec9cbab611cd",
+      "panoId": "2025_09_26_08_31_34_00865",
+      "captureTimestamp": "2025-09-26T09:08:22Z",
+      "heading": 344,
+      "inspected": true
+    },
+    {
+      "id": "even-east-representative",
+      "archivePath": "streets/jan-evertsen-canopy-rollout-20261006/processed/panorama/even-east-representative.jpg",
+      "sha256": "540d9f8f0b5d39f3cd305d6453ee1b6e6aac4b741b610e5be7176fa1c1bb038e",
+      "panoId": "b_20241206_0806_Track57_Sphere_00040",
+      "captureTimestamp": "2024-12-06T10:52:02Z",
+      "heading": 344,
+      "inspected": true
+    }
+  ],
+  "criteria": [
+    {
+      "id": "three-residential-rows",
+      "critical": true,
+      "sourceObservation": "All three source crops have three vertically aligned residential window rows above the glass-block band/canopy, under a broad quiet masonry roof-zone.",
+      "passRequirement": "Render shows exactly three source-scale residential rows on the applicable front, vertically stacked on coherent axes; no fourth stock repetition or extra attic window row.",
+      "rejectWhen": "Extra row, missing row, glass-band overlap or first-floor group placed inside shophead."
+    },
+    {
+      "id": "broad-pale-groups",
+      "critical": true,
+      "sourceObservation": "Window openings read as broad white framed groups with multiple vertical lights and a shared transom across the group; each group is wider than an isolated stock narrow opening.",
+      "passRequirement": "At street-row scale broad pale multi-light groups dominate with substantial masonry between whole groups; paired lights share composition rather than appearing as unrelated narrow repeated windows.",
+      "rejectWhen": "Single narrow stock windows, uniform blank panes, thin separators mistaken for whole facade bay spacing, or bay width converted into excessive repetitions."
+    },
+    {
+      "id": "projected-leaf-stacks",
+      "critical": true,
+      "sourceObservation": "Pilot-north and even-west-extension alternate broad flat groups with paired projecting-leaf groups. A narrow white-framed leaf projects from its adjacent flatter companion; mirrored leaves flank a brick pier. Projecting leaves repeat vertically across three floors and have a visible dark head/side depth.",
+      "passRequirement": "Projecting variant visibly has one narrow outboard leaf plus a flatter adjacent pane, correct mirrored relationship around masonry piers, and coherent three-storey stacks; oblique game view exposes projection rather than only facade-plane textures.",
+      "rejectWhen": "Every group equally protrudes, a whole broad group becomes a slab balcony, leaf buried in parent wall, lateral wall cuts obscure leaf, or mirrored direction changes randomly between floors."
+    },
+    {
+      "id": "flat-group-subtype-boundary",
+      "critical": true,
+      "sourceObservation": "Even-east-representative principal straight run uses broad flat groups across three rows and has a distinct rounded/corner group at right. It does not show the pilot/west repeating narrow projecting leaves on its main straight frontage.",
+      "passRequirement": "Keep flat subtype separate; only reviewed pilot/west observations justify projecting-leaf type. Preserve physical frontage scope; do not opt all north-side Pand identities into projection.",
+      "rejectWhen": "Unobserved erker stacks installed on even-east main frontage or opposite odd side, or projecting pattern inferred from neighborhood name."
+    },
+    {
+      "id": "visible-window-texture-and-frame",
+      "critical": true,
+      "sourceObservation": "Pale frames, tall lower lights and small upper transom panes contrast strongly with brown/red masonry in current panoramas.",
+      "passRequirement": "White/pale frames and textured openings survive photo, storybook and procedural game views and normal gameplay distance without band/canopy or relief burying first-hit surfaces.",
+      "rejectWhen": "Blank pale planes, masonry tint bleaching glass/frames, untextured fallback in ordinary detailed view, or texture grids too small to read as grouped windows."
+    },
+    {
+      "id": "group-spacing-and-ground-stack",
+      "critical": true,
+      "sourceObservation": "Flat groups and paired-leaf modules have generous intervening masonry and sit entirely above the continuous glass-block band; windows align vertically rather than independently jittering each floor.",
+      "passRequirement": "A reviewed pilot frontage has a recognizable broad-flat/paired-leaf rhythm at native frontage width, three aligned rows, and a clear separation from glass band; assess proportions and relationships rather than exact photographed window counts.",
+      "rejectWhen": "Too many groups per Pand, independently randomized floor axes, group/canopy overlap or group height compressed into a stock small-window rhythm."
+    }
+  ],
+  "fixedSamples": {
+    "representatives": [
+      "NL.IMBAG.Pand.0363100012118917",
+      "NL.IMBAG.Pand.0363100012096187"
+    ],
+    "sourceContrast": "even-east-representative",
+    "newTransfer": "withheld; no identities admitted"
+  },
+  "baselineFailure": {
+    "evidence": "docs/references/jan-evertsen-pilot/glassband-review.json",
+    "reason": "Narrow stock windows, extra residential repetition and absent projecting erkers failed current-source comparison. Prior full facade failure remains active until new game review."
+  },
+  "runtimeEvidence": [
+    {
+      "directory": "artifacts/jan-evertsen-pilot/window-groups-game/",
+      "report": "artifacts/jan-evertsen-pilot/window-groups-game/report.json",
+      "appearanceRevision": "fe50cdf2e4c627b1",
+      "reportSha256": "ad78fcae3fc39e881261077c3ea598f883b8e75cb2160a78f43f6617b8a9389c",
+      "bundleSnapshot": {
+        "three-buildings.bundle.js": "da495b6888b65d585a88ccd0412efa839013df8c47b6ad817b0d5903e1903aa9",
+        "three-buildings-worker.bundle.js": "6d074fa302aa1f87ba8be14c5b5c8a660078a5cc39b6bdbb67e3b20dd1f630a4",
+        "vector-map.js": "6d14f9beb639943ecb5b3eefea87459a04e988f39992c10a75b25d1aa0dfe73c"
+      },
+      "immutableBundleSnapshot": true,
+      "sourceFilesChangedDuringCapture": false,
+      "inspectedImages": [
+        "overtoom-photo-street.png",
+        "overtoom-photo-gameplay.png",
+        "overtoom-storybook-street.png",
+        "overtoom-storybook-gameplay.png",
+        "overtoom-procedural-street.png",
+        "overtoom-procedural-gameplay.png"
+      ],
+      "cameraRegistration": "Harness target name overtoom retained; actual map center4.85209,52.37042/bearing10 is Jan pilot. Source crops are low street perspectives; game street is elevated oblique. Exact photographed correspondence not asserted.",
+      "runtime": "Independent worker directly launched capture successfully after root launch failure; saved actual game evidence supersedes launch-unavailable assumption."
+    },
+    {
+      "directory": "artifacts/jan-evertsen-pilot/window-groups-directed-game/",
+      "report": "artifacts/jan-evertsen-pilot/window-groups-directed-game/report.json",
+      "revision": "6481584d0db92e55",
+      "reportSha256": "cdbf74696b182a118ee9d1caa815368d4f33c59e5fe0ec76f768d1d1b3c72aa8",
+      "bundles": {
+        "three-buildings.bundle.js": "6363920f30249b22c135bf0f200fb07f288cf4fdfdecf38cc424a81b6aa73f8f",
+        "three-buildings-worker.bundle.js": "f681602768c2ad8fdffb55f9cabd62f8813d661322dd3a2eefe02364850784bf",
+        "vector-map.js": "6d14f9beb639943ecb5b3eefea87459a04e988f39992c10a75b25d1aa0dfe73c"
+      },
+      "sourceFilesChangedDuringCapture": false,
+      "inspectedImages": [
+        "overtoom-photo-street.png",
+        "overtoom-photo-gameplay.png",
+        "overtoom-storybook-street.png",
+        "overtoom-storybook-gameplay.png",
+        "overtoom-procedural-street.png",
+        "overtoom-procedural-gameplay.png"
+      ]
+    },
+    {
+      "directory": "artifacts/jan-evertsen-pilot/window-groups-final-game/",
+      "report": "artifacts/jan-evertsen-pilot/window-groups-final-game/report.json",
+      "revision": "6481584d0db92e55",
+      "reportSha256": "3b829de4505915bdeeb139199f050ed4937df94d8417ce7bbfece0346f8fc0ca",
+      "bundles": {
+        "three-buildings.bundle.js": "c07eadcbebe241160b6942faad7a596e0a38c322ba891def946f2ee7b49aca76",
+        "three-buildings-worker.bundle.js": "c0d13a84a2ec40df86c5d9ea13e089e47ed2b8bc88de6cb1cadb5b6e0e12db3e",
+        "vector-map.js": "6d14f9beb639943ecb5b3eefea87459a04e988f39992c10a75b25d1aa0dfe73c"
+      },
+      "sourceFilesChangedDuringCapture": false,
+      "inspectedImages": [
+        "overtoom-photo-street.png",
+        "overtoom-photo-gameplay.png",
+        "overtoom-storybook-street.png",
+        "overtoom-storybook-gameplay.png",
+        "overtoom-procedural-street.png",
+        "overtoom-procedural-gameplay.png"
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "criterion": "three-residential-rows",
+      "decision": "pass-narrow",
+      "reason": "Exactly three aligned residential rows remain visible on both pilot fronts in all street looks."
+    },
+    {
+      "criterion": "broad-pale-groups",
+      "decision": "pass-narrow",
+      "reason": "Broad paired openings with physical pale frames/transoms replace narrow stock upper cells."
+    },
+    {
+      "criterion": "projected-leaf-stacks",
+      "decision": "pass-narrow",
+      "reason": "Visible pilot stacks now form opposing projecting leaves around central pier, separated from adjacent flat groups. Relief survives first-hit and three-floor alignment; narrow existing north pair passes, not generic phase/transfer."
+    },
+    {
+      "criterion": "flat-group-subtype-boundary",
+      "decision": "pass-scope-only",
+      "reason": "Only exact existing north pair installed. Eastern flat-group source remains a subtype control with no projection/transfer admitted."
+    },
+    {
+      "criterion": "visible-window-texture-and-frame",
+      "decision": "pass-narrow",
+      "reason": "Glass crop now samples an isolated lower pane; extra stock muntin grid is removed. Dark glass/pale physical transoms visible in photo/storybook/procedural, shops/neighbors retain openings; ordinary camera pan not tested."
+    },
+    {
+      "criterion": "group-spacing-and-ground-stack",
+      "decision": "pass-narrow",
+      "reason": "Native two-group per frontage layout makes a recognizable flat/mirrored/flat progression across pilot pair, above separate glass band and canopy. Source-scale dimensions are not measured/calibrated."
+    }
+  ],
+  "withheldGates": [
+    "Quiet source roof-family/height composition remains unaccepted separately.",
+    "Recessed shop/residential portico assembly remains missing/unaccepted separately.",
+    "Full-scene GPU same-version profile on/off evidence and desktop/touch stationary-rider camera pans remain required.",
+    "Brown masonry/current material consistency and full facade acceptance remain separate.",
+    "No new discovery identities or odd-side transfer admitted by this window capability review."
+  ],
+  "nextAction": "Continue source-supported recessed portico/shop opening assembly, then review full facade/roof rhythm and fixedheldouts. Keep new identities withheld; require same-version full-scene GPU comparisons and actual desktop/touch stationary-rider camera pans before scopedcompletion.",
+  "integrationRisks": [
+    {
+      "file": "src/canalRecall/threeBuildingMesh.ts",
+      "observation": "Planner runs only for collinear exposed run; incompatible/short geometry falls back to stock windows. Frontage-wide plain upper wall emitted only with a complete plan. Native kink/transition visual challenge remains required."
+    },
+    {
+      "file": "src/canalRecall/threeBuildingMesh.ts",
+      "observation": "Physical frames/transoms plus glass crop sampled from window atlas; photo capture shows busy internal mullions. Do not assume cropped atlas removes all stock frame lines."
+    },
+    {
+      "file": "src/canalRecall/sourceVisualRoof.ts",
+      "observation": "Flat-parapet path now visible on pair, preserving native height/footprint; quiet source composition is improved but roof survey/neighbor and whole-profile acceptance still separate."
+    }
+  ],
+  "performanceObservation": {
+    "frameMedian": "16.7ms in all six static views",
+    "decision": "not-GPU-acceptance",
+    "reason": "Vsync frame medians, CPU rendering timings and triangle counts do not replace same-version profile-on/off full-scene GPU measurement or desktop/touch rider pans."
+  },
+  "preservedFailures": [
+    {
+      "evidence": "artifacts/jan-evertsen-pilot/window-groups-game/",
+      "revision": "fe50cdf2e4c627b1",
+      "failure": "One-direction projected-leaf sequence fails mirrored source rhythm."
+    }
+  ],
+  "reviewUpdatedAt": "2026-10-06T08:37:29.939367+00:00",
+  "cycles": [
+    {
+      "id": "cycle1-one-direction",
+      "decision": "fail-source-projecting-leaf-directional-rhythm",
+      "runtimeEvidence": [
+        {
+          "directory": "artifacts/jan-evertsen-pilot/window-groups-game/",
+          "report": "artifacts/jan-evertsen-pilot/window-groups-game/report.json",
+          "appearanceRevision": "fe50cdf2e4c627b1",
+          "reportSha256": "ad78fcae3fc39e881261077c3ea598f883b8e75cb2160a78f43f6617b8a9389c",
+          "bundleSnapshot": {
+            "three-buildings.bundle.js": "da495b6888b65d585a88ccd0412efa839013df8c47b6ad817b0d5903e1903aa9",
+            "three-buildings-worker.bundle.js": "6d074fa302aa1f87ba8be14c5b5c8a660078a5cc39b6bdbb67e3b20dd1f630a4",
+            "vector-map.js": "6d14f9beb639943ecb5b3eefea87459a04e988f39992c10a75b25d1aa0dfe73c"
+          },
+          "immutableBundleSnapshot": true,
+          "sourceFilesChangedDuringCapture": false,
+          "inspectedImages": [
+            "overtoom-photo-street.png",
+            "overtoom-photo-gameplay.png",
+            "overtoom-storybook-street.png",
+            "overtoom-storybook-gameplay.png",
+            "overtoom-procedural-street.png",
+            "overtoom-procedural-gameplay.png"
+          ],
+          "cameraRegistration": "Harness target name overtoom retained; actual map center4.85209,52.37042/bearing10 is Jan pilot. Source crops are low street perspectives; game street is elevated oblique. Exact photographed correspondence not asserted.",
+          "runtime": "Independent worker directly launched capture successfully after root launch failure; saved actual game evidence supersedes launch-unavailable assumption."
+        }
+      ],
+      "checks": [
+        {
+          "criterion": "three-residential-rows",
+          "decision": "pass-narrow",
+          "reason": "Both modified brown pilot frontages visibly have three vertically aligned residential rows in all three street looks; stock neighbors remain outside admitted pair."
+        },
+        {
+          "criterion": "broad-pale-groups",
+          "decision": "pass-narrow",
+          "reason": "Broad pale groups with two leaf fields replace narrow stock single openings on the pilot; whole-group masonry spacing is visibly substantial. Exact pane subdivisions remain more busy than source in elevated capture."
+        },
+        {
+          "criterion": "projected-leaf-stacks",
+          "decision": "fail",
+          "reason": "Saved recipe projectionSequence is [left,flat], with no right variant. Three groups reset per frontage as left-flat-left, lacking source mirrored leaf relationship around brick piers. Relief is visible narrowly, but directional stack rhythm is unsupported."
+        },
+        {
+          "criterion": "flat-group-subtype-boundary",
+          "decision": "pass-scope-only",
+          "reason": "Saved profile affects existing exact pair only; no new north/odd identities admitted. Eastern current source remains a flat-group control; actual native eastern-source transfer has not been rendered/tested."
+        },
+        {
+          "criterion": "visible-window-texture-and-frame",
+          "decision": "pass-narrow",
+          "reason": "Photo/storybook/procedural street views retain dark textured glass and pale physical frames; nearby stock windows and shop glazing remain present. Gameplay windows become small; these static captures do not prove stationary-rider pans/streamed detail."
+        },
+        {
+          "criterion": "group-spacing-and-ground-stack",
+          "decision": "pass-bounded-uncalibrated",
+          "reason": "Three rows stack on coherent axes above band and canopy; groups remain broad with intervening masonry. Elevated view prevents measured agreement with source spacings; the directional failure still blocks acceptance."
+        }
+      ],
+      "integrationRisks": [
+        {
+          "file": "src/canalRecall/threeBuildingMesh.ts",
+          "observation": "Planner runs only for collinear exposed run; incompatible/short geometry falls back to stock windows. Frontage-wide plain upper wall emitted only with a complete plan. Native kink/transition visual challenge remains required."
+        },
+        {
+          "file": "src/canalRecall/threeBuildingMesh.ts",
+          "observation": "Physical frames/transoms plus glass crop sampled from window atlas; photo capture shows busy internal mullions. Do not assume cropped atlas removes all stock frame lines."
+        },
+        {
+          "file": "src/canalRecall/interwarFrontageLayout.ts",
+          "observation": "Projection sequence restarts for each planned run. Source pair directions need explicit sequence and boundary challenge, not independent probability."
+        },
+        {
+          "file": "src/canalRecall/sourceVisualRoof.ts",
+          "observation": "Flat-parapet path now visible on pair, preserving native height/footprint; quiet source composition is improved but roof survey/neighbor and whole-profile acceptance still separate."
+        }
+      ]
+    },
+    {
+      "id": "cycle2-mirrored-clean-pane",
+      "decision": "pass-narrow-existing-pilot-window-capability",
+      "runtimeEvidence": {
+        "directory": "artifacts/jan-evertsen-pilot/window-groups-corrected-game/",
+        "revision": "6481584d0db92e55",
+        "report": "artifacts/jan-evertsen-pilot/window-groups-corrected-game/report.json",
+        "reportSha256": "a0d209594149f52ff95175a92857b1fff66569a41ec040fb9ebface29e2cf55b",
+        "bundles": {
+          "three-buildings.bundle.js": "6dbbbe6f990d52607824b1f7c723dc2b03a3f9e18397796de8a7f58dcb97fd97",
+          "three-buildings-worker.bundle.js": "9a7adc132f63f3b830798b4c09e4c4d8cec2943ec64d8e16567f5f1f468c54f5",
+          "vector-map.js": "6d14f9beb639943ecb5b3eefea87459a04e988f39992c10a75b25d1aa0dfe73c"
+        },
+        "inspectedImages": [
+          "overtoom-photo-street.png",
+          "overtoom-photo-gameplay.png",
+          "overtoom-storybook-street.png",
+          "overtoom-storybook-gameplay.png",
+          "overtoom-procedural-street.png",
+          "overtoom-procedural-gameplay.png"
+        ]
+      },
+      "reason": "Corrected visible pilot rhythm is flat-right | left-flat with mirrored leaf pair across center pier, broadgroups/three rows, clean lower-pane glass crop and retained ground glazing in allthree looks. Generic row phase direction handling still code-risk at this revision; no transfer accepted.",
+      "limits": "Elevated oblique/static captures do not measure exact source dimensions, production GPU, desktop/touch pan or full facade acceptance."
+    },
+    {
+      "id": "cycle3-directed-phase",
+      "decision": "accept-narrow-existing-pilot-window-capability",
+      "runtimeEvidence": {
+        "directory": "artifacts/jan-evertsen-pilot/window-groups-directed-game/",
+        "report": "artifacts/jan-evertsen-pilot/window-groups-directed-game/report.json",
+        "revision": "6481584d0db92e55",
+        "reportSha256": "cdbf74696b182a118ee9d1caa815368d4f33c59e5fe0ec76f768d1d1b3c72aa8",
+        "bundles": {
+          "three-buildings.bundle.js": "6363920f30249b22c135bf0f200fb07f288cf4fdfdecf38cc424a81b6aa73f8f",
+          "three-buildings-worker.bundle.js": "f681602768c2ad8fdffb55f9cabd62f8813d661322dd3a2eefe02364850784bf",
+          "vector-map.js": "6d14f9beb639943ecb5b3eefea87459a04e988f39992c10a75b25d1aa0dfe73c"
+        },
+        "sourceFilesChangedDuringCapture": false,
+        "inspectedImages": [
+          "overtoom-photo-street.png",
+          "overtoom-photo-gameplay.png",
+          "overtoom-storybook-street.png",
+          "overtoom-storybook-gameplay.png",
+          "overtoom-procedural-street.png",
+          "overtoom-procedural-gameplay.png"
+        ]
+      },
+      "checks": [
+        {
+          "criterion": "three-residential-rows",
+          "decision": "pass-narrow",
+          "reason": "Exactly three aligned residential rows remain visible on both pilot fronts in all street looks."
+        },
+        {
+          "criterion": "broad-pale-groups",
+          "decision": "pass-narrow",
+          "reason": "Broad paired openings with physical pale frames/transoms replace narrow stock upper cells."
+        },
+        {
+          "criterion": "projected-leaf-stacks",
+          "decision": "pass-narrow",
+          "reason": "Visible pilot stacks now form opposing projecting leaves around central pier, separated from adjacent flat groups. Relief survives first-hit and three-floor alignment; narrow existing north pair passes, not generic phase/transfer."
+        },
+        {
+          "criterion": "flat-group-subtype-boundary",
+          "decision": "pass-scope-only",
+          "reason": "Only exact existing north pair installed. Eastern flat-group source remains a subtype control with no projection/transfer admitted."
+        },
+        {
+          "criterion": "visible-window-texture-and-frame",
+          "decision": "pass-narrow",
+          "reason": "Glass crop now samples an isolated lower pane; extra stock muntin grid is removed. Dark glass/pale physical transoms visible in photo/storybook/procedural, shops/neighbors retain openings; ordinary camera pan not tested."
+        },
+        {
+          "criterion": "group-spacing-and-ground-stack",
+          "decision": "pass-narrow",
+          "reason": "Native two-group per frontage layout makes a recognizable flat/mirrored/flat progression across pilot pair, above separate glass band and canopy. Source-scale dimensions are not measured/calibrated."
+        }
+      ],
+      "codeLimit": "Actual north-front CCW edge aligns with admitted eastward segment. Signed step swaps left/right for reversed edges, but phase quantization at reversed endpoint can remain off by one; generic reversal/neighbor transfer needs group-center check before admission."
+    },
+    {
+      "id": "cycle4-group-center-phase-final",
+      "decision": "accept-narrow-existing-pilot-window-capability",
+      "runtimeEvidence": {
+        "directory": "artifacts/jan-evertsen-pilot/window-groups-final-game/",
+        "report": "artifacts/jan-evertsen-pilot/window-groups-final-game/report.json",
+        "revision": "6481584d0db92e55",
+        "reportSha256": "3b829de4505915bdeeb139199f050ed4937df94d8417ce7bbfece0346f8fc0ca",
+        "bundles": {
+          "three-buildings.bundle.js": "c07eadcbebe241160b6942faad7a596e0a38c322ba891def946f2ee7b49aca76",
+          "three-buildings-worker.bundle.js": "c0d13a84a2ec40df86c5d9ea13e089e47ed2b8bc88de6cb1cadb5b6e0e12db3e",
+          "vector-map.js": "6d14f9beb639943ecb5b3eefea87459a04e988f39992c10a75b25d1aa0dfe73c"
+        },
+        "sourceFilesChangedDuringCapture": false,
+        "inspectedImages": [
+          "overtoom-photo-street.png",
+          "overtoom-photo-gameplay.png",
+          "overtoom-storybook-street.png",
+          "overtoom-storybook-gameplay.png",
+          "overtoom-procedural-street.png",
+          "overtoom-procedural-gameplay.png"
+        ]
+      },
+      "checks": [
+        {
+          "criterion": "three-residential-rows",
+          "decision": "pass-narrow",
+          "reason": "Exactly three aligned residential rows remain visible on both pilot fronts in all street looks."
+        },
+        {
+          "criterion": "broad-pale-groups",
+          "decision": "pass-narrow",
+          "reason": "Broad paired openings with physical pale frames/transoms replace narrow stock upper cells."
+        },
+        {
+          "criterion": "projected-leaf-stacks",
+          "decision": "pass-narrow",
+          "reason": "Visible pilot stacks now form opposing projecting leaves around central pier, separated from adjacent flat groups. Relief survives first-hit and three-floor alignment; narrow existing north pair passes, not generic phase/transfer."
+        },
+        {
+          "criterion": "flat-group-subtype-boundary",
+          "decision": "pass-scope-only",
+          "reason": "Only exact existing north pair installed. Eastern flat-group source remains a subtype control with no projection/transfer admitted."
+        },
+        {
+          "criterion": "visible-window-texture-and-frame",
+          "decision": "pass-narrow",
+          "reason": "Glass crop now samples an isolated lower pane; extra stock muntin grid is removed. Dark glass/pale physical transoms visible in photo/storybook/procedural, shops/neighbors retain openings; ordinary camera pan not tested."
+        },
+        {
+          "criterion": "group-spacing-and-ground-stack",
+          "decision": "pass-narrow",
+          "reason": "Native two-group per frontage layout makes a recognizable flat/mirrored/flat progression across pilot pair, above separate glass band and canopy. Source-scale dimensions are not measured/calibrated."
+        }
+      ],
+      "verification": {
+        "command": "node --import tsx --test src/canalRecall/interwarFrontageLayout.test.ts",
+        "result": "7passed,0failed; native width5.945129/6.010429 reversed physical openings compared at3canonical starts"
+      },
+      "reason": "Independent final actual game capture shows mirrored projected leaves, cleanpairedglazing, palephysical frames/transoms andthree aligned rows in allthree looks. First actual group-center sampling resolves earlier endpoint phase concern for testednative-width cases. All earlier immutablecycles retained; this exactfinal bundle alone owns latest narrowacceptance.",
+      "limitations": "No expansion, portico/fullfacade, heldout, measured source dimensions, GPU or stationary-rider desktop/touch camera-pan acceptance."
+    }
+  ],
+  "acceptedScope": "Existing exact north pilot124/126: broad paired window capability,3aligned rows, visible opposing projected leaves and clean transoms/glass. Whole facade/street group/neighborhood completion remains withheld.",
+  "currentAcceptedBundle": {
+    "three-buildings.bundle.js": "c07eadcbebe241160b6942faad7a596e0a38c322ba891def946f2ee7b49aca76",
+    "three-buildings-worker.bundle.js": "c0d13a84a2ec40df86c5d9ea13e089e47ed2b8bc88de6cb1cadb5b6e0e12db3e",
+    "vector-map.js": "6d14f9beb639943ecb5b3eefea87459a04e988f39992c10a75b25d1aa0dfe73c"
+  },
+  "verification": {
+    "command": "node --import tsx --test src/canalRecall/interwarFrontageLayout.test.ts",
+    "result": "7passed,0failed; native width5.945129/6.010429 reversed physical openings compared at3canonical starts"
+  },
+  "resolvedIntegrationRisks": [
+    {
+      "id": "directed-phase-and-reversed-endpoint",
+      "resolution": "interwarStreetPhase samples first actual group center; step follows signed canonical street direction and planner swapsleft/right on reversed edges. Independent native-width tests pass; final actual northpilot capture retains desired rhythm.",
+      "scope": "Recorded nativepilot cases only, not visually accepted transfer."
+    }
+  ]
+}

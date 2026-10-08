@@ -1,0 +1,301 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-10-06T19:09:36.379546+00:00",
+  "scopeId": "regular-canal-left-raised-entry-20261006",
+  "decision": "SOURCE CONSTRAINT REVIEW ONLY; full roof mixture FAIL persists",
+  "prominentFailures": [
+    "99 has no separately corroborated official current BAG input in supplied cache; no99source-admissible envelope.85 now has official corroboration and bounded candidate validation PASS, pending private source commit and visual review.",
+    "99 rejects existing atomic envelope quality guard (LoD2.2 RMSE2.470m>1m), exact legacy footprint proof, native null year compatibility, and courtyard mesh binding. Do not relax guards or close court.",
+    "85 surveyed pitched outline is not the photographed clock crown; source envelope diagnostic compatibility does not resolve visual crown acceptance.",
+    "No game/GPU, performance or fresh heldout acceptance."
+  ],
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "bodySourceCommit": "21434484d4cf7f4b0a28da22b691a615611c586b",
+    "freezeClarificationCommit": "c006cfb",
+    "roofRawCommit": "pending root archive sync",
+    "cacheRoot": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/oudezijds-east-next-south",
+    "rawLocationPolicy": "Private archive only; main artifacts contain processed extractions and diagnostics."
+  },
+  "sampling": {
+    "exposedTrainingPersonallyInspected": [
+      85,
+      99
+    ],
+    "fresh113": "Strictly unseen: no photo or register description inspection",
+    "admissions": 0,
+    "generatorTuning": false
+  },
+  "sources": [
+    {
+      "address": 85,
+      "nativeParentId": "NL.IMBAG.Pand.0363100012178296",
+      "processedExtraction": "artifacts/regular-canal-front/roof-source-review/85-processed-envelope.json",
+      "bindingDiagnostic": "artifacts/regular-canal-front/roof-source-review/85-binding-diagnostic.json",
+      "rawPrivateArchivePath": "streets/oudezijds-east-next-south/raw/regular-canal-roofs-20261006/3dbag-0363100012178296.json",
+      "rawSha256": "21efce07dac02350b51e7eb0fa9aa9fc051d8475586524a5a95d6d97dbebcd6e",
+      "access": {
+        "state": "HTTP200 original saved by root before parsing",
+        "retrievedAt": "2026-10-06T19:04:28.349377+00:00",
+        "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012178296"
+      },
+      "nativeMetadata": {
+        "aggregateHeightM": 16.23,
+        "constructionYear": 1746,
+        "rings": 1
+      },
+      "survey": {
+        "year": 2023,
+        "pointCloud": "ahn5",
+        "groundNapM": 0.7990000247955322,
+        "quantizationM": [
+          0.001,
+          0.001,
+          0.001
+        ],
+        "rmseM": 0.9126220345497131,
+        "validity": "[]",
+        "insufficient": false
+      }
+    },
+    {
+      "address": 99,
+      "nativeParentId": "NL.IMBAG.Pand.0363100012178291",
+      "processedExtraction": "artifacts/regular-canal-front/roof-source-review/99-processed-envelope.json",
+      "bindingDiagnostic": "artifacts/regular-canal-front/roof-source-review/99-binding-diagnostic.json",
+      "rawPrivateArchivePath": "streets/oudezijds-east-next-south/raw/regular-canal-roofs-20261006/3dbag-0363100012178291.json",
+      "rawSha256": "f2e519ce141cf54e96b01f0f422c31440470dd6309e21be3b1a640d41c091af0",
+      "access": {
+        "state": "HTTP200 original saved by root before parsing",
+        "retrievedAt": "2026-10-06T19:04:28.349842+00:00",
+        "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012178291"
+      },
+      "nativeMetadata": {
+        "aggregateHeightM": 18.53,
+        "constructionYear": null,
+        "rings": 2
+      },
+      "survey": {
+        "year": 2020,
+        "pointCloud": "ahn4",
+        "groundNapM": 0.6389999985694885,
+        "quantizationM": [
+          0.001,
+          0.001,
+          0.001
+        ],
+        "rmseM": 2.470017194747925,
+        "validity": "[]",
+        "insufficient": false
+      }
+    }
+  ],
+  "source85": {
+    "family": "Photo+register support shaped clock crown and central hoist; roof and crown are separate physical assemblies.",
+    "coordinateFrame": {
+      "legacyExactLoD0Round6Proof": true,
+      "correctedFrameExact": false,
+      "correctedMaxIndexedCornerDifferenceM": 0.3892829468692348,
+      "bindingDiagnosticPass": true,
+      "maxCornerDisplacementM": 0.05312277968359913,
+      "collarWidthM": 0.055951206808345325,
+      "limitation": "Official current Pand original filtered response now corroborates identity/year/current footprint. Exact legacy LoD0 proof and source/native binding pass with unchanged metadata. Candidate remains diagnostic-only; crown/game/transfer acceptance absent."
+    },
+    "frontSourceProfile": {
+      "direction": "sourceLoD0 edge0, local[0,0] to[-3.191,-4.034]; do not assume viewer left/right",
+      "sourceEdgeLengthM": 5.143504350140977,
+      "nativeFrontageLengthM": 5.060729691630045,
+      "segments": [
+        {
+          "surface": 4,
+          "t0": 0,
+          "t1": 0.3483628838781381,
+          "z0M": 14.934001241683958,
+          "z1M": 18.08800124168396
+        },
+        {
+          "surface": 16,
+          "t0": 0.3483628838781381,
+          "t1": 0.6596525723477529,
+          "z0M": 18.08800124168396,
+          "z1M": 15.262001241683958
+        },
+        {
+          "surface": 7,
+          "t0": 0.6596525723477529,
+          "t1": 1,
+          "z0M": 15.262001241683958,
+          "z1M": 15.773001241683957
+        }
+      ],
+      "heightDatum": "source groundNAP0.799m subtracted, never whole-building aggregate metadata",
+      "lowEndpointClearanceOverExistingLastOpeningTop13_7M": 1.234001241683958,
+      "crestMinusImmutableAggregate16_23M": 1.8580012416839604
+    },
+    "roofConstraints": {
+      "frontAdjacentSourceSurfaceIndices": [
+        24,
+        26,
+        30
+      ],
+      "mainSteepRoofIndices": [
+        26,
+        30
+      ],
+      "mainSteepSemanticSlopeDeg": [
+        61.11835479736328,
+        61.1937141418457
+      ],
+      "mainRoofMaxAboveGroundM": 18.09400124168396,
+      "lowerRearRoofLevelsAboveGroundM": [
+        5.128001241683958,
+        8.180001241683959,
+        13.859001241683957
+      ],
+      "caution": "Preserve multipiece native depth and low rear surfaces; no fitted crest-wide roof plate. First-triplet normals may disagree with semantic plane slope on nonplanar reconstructed polygons (27,29,43); do not treat their first triangle as entire roof plane."
+    },
+    "confidence": {
+      "clockCrownFamily": "high:dated2025-06-30 photo and RCE description agree",
+      "eaveCrestEnvelope": "moderate:AHN5 2023 RMSE0.913m; triangulated survey is not trim survey",
+      "exactCrownShapeDimensions": "not surveyed; bounded visual approximation needed"
+    },
+    "candidateEnvelope": "artifacts/regular-canal-front/roof-source-review/85-candidate-envelope.json",
+    "diagnosticHistory": {
+      "priorSurrogatePass": "artifacts/regular-canal-front/roof-source-review/85-derived-surrogate-binding-history.json",
+      "meaning": "Earlier derivedLoD0 surrogate structural diagnostic retained as narrower history; superseded for85by actual official Pand source validation. No official99corroboration or quality admission."
+    },
+    "officialPandCorroboration": {
+      "rawPrivateArchivePath": "streets/oudezijds-east-next-south/raw/regular-canal-roofs-20261006/pand-85-list.json",
+      "rawSha256": "8230a523fc379709177329db1a5a87bc02becd8cd56bd7fc6e2c5c14d8de5d89",
+      "access": {
+        "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/panden/?identificatie=0363100012178296&_format=json",
+        "retrievedAt": "2026-10-06T19:08:13.934471+00:00",
+        "sha256": "8230a523fc379709177329db1a5a87bc02becd8cd56bd7fc6e2c5c14d8de5d89",
+        "bytes": 3713,
+        "access": "HTTP200 original saved before parse",
+        "purpose": "Official85Pand source corroboration before envelope validation"
+      },
+      "selectedItem": {
+        "identificatie": "0363100012178296",
+        "volgnummer": 4,
+        "plusvolgnummer": 12,
+        "oorspronkelijkBouwjaar": 1746,
+        "beginGeldigheid": "2023-09-28T00:00:00",
+        "eindGeldigheid": null,
+        "datumActueelTot": null,
+        "documentnummer": "GV00007182_AC00AC"
+      },
+      "selectionRule": "Unique exact-identificatie item with eindGeldigheid=null from original _embedded.panden; no proximity or surrogate selection.",
+      "officialFootprintTopology": "1ring,11unique surveyed boundaryvertices; existing adapter coverage/outline checks PASS with source LoD0 and exact installed4vertexoutline.",
+      "officialInvestigationFlags": [
+        {
+          "identificatie": "0363100012178296.geometrie",
+          "beginGeldigheid": "2023-09-28T00:00:00",
+          "eindGeldigheid": null
+        },
+        {
+          "identificatie": "0363100012178296.oorspronkelijk bouwjaar",
+          "beginGeldigheid": "2023-09-28T00:00:00",
+          "eindGeldigheid": null
+        },
+        {
+          "identificatie": "0363100012178296.status",
+          "beginGeldigheid": "2023-09-28T00:00:00",
+          "eindGeldigheid": null
+        }
+      ],
+      "investigationMeaning": "API lists ongoing geometrie, originallybuilt-year and status investigations. Preserve installed1746; corroboration of current source values is not a claim that cadastral investigations are resolved."
+    }
+  },
+  "source99": {
+    "family": "Dated2025-06-30 photo supports straight projecting bracketed cornice, repeated dark consoles and one central projecting hoist above top window axis. Historical register explicitly says upper floors rebuilt around1900 with modern termination; do not restore original neck gable.",
+    "coordinateFrame": {
+      "legacyExact": false,
+      "correctedExact": false,
+      "nativePrecision": "7decimals with outer-ring7unique vertices versus sourceLoD0 5; installed native shape subdivides longedge and preserves5unique-vertex courtyard",
+      "interpretation": "Corrected source coordinates are visually nearer native99 than legacy, but no exact parent-frame proof; cannot copy85 binding proof or snap wholeoutline.",
+      "sourceRingCount": 2,
+      "nativeRingCount": 2,
+      "legacySymmetricVertexToBoundaryGapsM": [
+        0.25392943016413067,
+        0.2753213207368914
+      ],
+      "correctedSymmetricVertexToBoundaryGapsM": [
+        0.05891070785662604,
+        0.08445025857049898
+      ],
+      "distanceMeaning": "Diagnostic rounded display curve gaps only; not exact coordinate-frame proof, attachment authorization or a tuned admission threshold."
+    },
+    "qualityRejection": {
+      "rmseM": 2.470017194747925,
+      "existingGuardMaxM": 1,
+      "validity": "[]",
+      "insufficient": false,
+      "interpretation": "Topologically valid and sufficient survey flag does not override high geometric RMSE."
+    },
+    "sourceRoofLevelsAboveGroundM": {
+      "streetWallSurface4Max": 18.720001451015474,
+      "streetAdjacentNearlyFlatSurface40Range": [
+        18.197001451015474,
+        18.722001451015473
+      ],
+      "lowerRoofRanges": [
+        [
+          1.201001451015472,
+          1.272001451015472
+        ],
+        [
+          4.648001451015472,
+          4.811001451015472
+        ],
+        [
+          11.192001451015472,
+          11.230001451015472
+        ],
+        [
+          12.992001451015472,
+          14.689001451015473
+        ]
+      ],
+      "meaning": "Context only, no metric roof admission or wholebuilding height replacement."
+    },
+    "metadataConflict": {
+      "source3DBAGYear": 1732,
+      "installedYear": null,
+      "decision": "Keep installed null unchanged. Survey source year is evidence conflict to research separately, not an automatic fact correction."
+    },
+    "confidence": {
+      "corniceHoistFamily": "high photographic; metric proportions approximate",
+      "metricSurveyEnvelope": "not admissible due quality/native compatibility",
+      "courtyard": "high native footprint requirement; preserve as open hole"
+    }
+  },
+  "nextConcreteCodeChanges": [
+    {
+      "order": 1,
+      "module": "shared regular frontage crown assembly planner",
+      "change": "Create separately owned crown contract independent of regular-body axis/tier grammar: clock-shaped front crown variant85; straight bracketed cornice plus central hoist variant99. Bind street-front only; no extra citywide admissions.",
+      "constraints": "Keep existing aggregate heights/years and native rear/courtyard.99 assembly uses existing native top, no surveyed-envelope claim."
+    },
+    {
+      "order": 2,
+      "module": "surveyed envelope source compiler/fixture",
+      "change": "Integrate validated85 official-source candidate in diagnostic native85fixture and renderer, retaining exact source-native binding and surveyed profile heights/semantic roof regions. Current candidate acquired official BAG and passed atomic compiler/adapter/binder; archive originals before model/source change commit.",
+      "constraints": "Do not stretch roof to native wholebuilding box, install uniform crest cap, replace aggregate16.23, or adopt99quality-failed envelope."
+    },
+    {
+      "order": 3,
+      "module": "roof/crown visual verification",
+      "change": "Check85 crown connects to supported eave/roof ownership with last opening clear; compare85/99 front+oblique+near and full row against exposed photos, root inspect and independent reviewer seek failures.",
+      "constraints": "Freeze training before113 photo/register challenge. Game/GPU/pan/performance evidence remains required."
+    }
+  ],
+  "verification": {
+    "processedChecks": "Ran extract.ts and check-binding.ts against original checksummed cached HTTP200 CityJSON, official85Pand filtered-list original and installed tile8414/5384.85actual-source compile/adapter/binder allPASS;99surrogatestructural compile rejects with no quality guard changes.",
+    "runtimeCoreEdits": 0,
+    "gpuEvidence": false,
+    "gameEvidence": false,
+    "transferAcceptance": false,
+    "rawSourcesCopiedIntoMainRepo": false
+  }
+}

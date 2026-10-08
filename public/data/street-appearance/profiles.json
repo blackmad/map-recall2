@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "e7fdc0dc8f0d223e",
+  "revision": "24fbf8cad9701025",
   "profiles": [
     {
       "id": "bethanienstraat-observed-historic-pair",
@@ -368,7 +368,7 @@
     {
       "id": "jan-evertsen-canopy-candidate-native-pair",
       "streetName": "Jan Evertsenstraat",
-      "revision": "current-source-glassband-pilot-v2",
+      "revision": "current-source-ground-portico-pilot-v5",
       "segment": [
         [
           4.851836,
@@ -398,14 +398,14 @@
             "family": "masonry",
             "period": "school",
             "confidence": 0.8,
-            "wallHex": "#92775c",
+            "wallHex": "#76564c",
             "frameHex": "#e5e5d8",
             "frameColor": "pale",
             "wallMaterial": "brick",
             "balconyPolicy": "assembly-only",
             "detailPolicy": "architectural",
             "trim": {
-              "frames": 0.5,
+              "frames": 0,
               "lintels": 0,
               "cornice": 0,
               "courses": 0,
@@ -424,7 +424,41 @@
                 "cellM": 0.2
               }
             },
-            "groundScale": 1.1333333333333333
+            "groundScale": 1.1333333333333333,
+            "roofFamily": "flat-parapet",
+            "interwarFrontage": {
+              "residentialRows": 3,
+              "groupPitchM": 2.95,
+              "groupWidthM": 2.15,
+              "windowHeightM": 1.8,
+              "firstSillM": 1.15,
+              "rowPitchM": 2.9,
+              "projectionSequence": [
+                "left",
+                "flat",
+                "right"
+              ],
+              "projectionM": 0.35,
+              "frameWidthM": 0.065,
+              "centralMullionM": 0.18,
+              "transomFraction": 0.72,
+              "frameHex": "#e5e5d8",
+              "capHex": "#454b49"
+            },
+            "interwarGround": {
+              "entranceSide": "left",
+              "entranceWidthM": 1.05,
+              "recessDepthM": 0.65,
+              "edgePierM": 0.15,
+              "separatorPierM": 0.2,
+              "shopSillM": 0.12,
+              "openingHeadM": 2.7,
+              "shopPanes": 3,
+              "shopDoorPane": 0,
+              "frameWidthM": 0.065,
+              "shopTransomFraction": 0.78,
+              "frameHex": "#e5e5d8"
+            }
           }
         }
       ],

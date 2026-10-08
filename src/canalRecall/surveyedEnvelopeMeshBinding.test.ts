@@ -1,0 +1,39 @@
+import envelopeFixture from './fixtures/compoundSurveyEnvelope.json';
+import installedFootprintFixture from './fixtures/compoundInstalledFootprint.json';
+const fixtureReviewClock='2026-10-06T23:59:59Z';
+import {test}from'node:test';import assert from'node:assert/strict';
+import{adaptSurveyedBuildingEnvelope,legacyExtractFootprint,surveyedEnvelopeRdToLngLat,type EnvelopeTriangle}from'./surveyedBuildingEnvelope.ts';
+import{lngLatToRd,NSGI_ALIGNMENT_M}from'./facade/rdNew.ts';
+import{bindSurveyedEnvelopeToMesh,type SurveyedMeshWallEdge}from'./surveyedEnvelopeMeshBinding.ts';
+function fixture(){
+ const anchorRd:[number,number]=[121715,487420],ring=[[0,0],[10,0],[10,10],[0,10]],coordinateFrame='legacy-extract-rd-no-nsgi' as const,rdToInstalledLngLat=(p:{x:number;y:number})=>surveyedEnvelopeRdToLngLat({coordinateFrame},p);
+ const roofTriangles:EnvelopeTriangle[]=[{p:[[0,0,10],[10,0,12],[10,10,12]],n:[-.2,0,1],sourceSurfaceIndex:10,role:'roof'},{p:[[0,0,10],[10,10,12],[0,10,10]],n:[-.2,0,1],sourceSurfaceIndex:10,role:'roof'}];
+ const plan={coordinateFrame,anchorRd,installedLngLatToRd:(p:readonly number[])=>{const lat=p[1]-NSGI_ALIGNMENT_M.north/111320;return lngLatToRd([p[0]-NSGI_ALIGNMENT_M.east/(111320*Math.cos(lat*Math.PI/180)),lat]);},sourceLoD0Local:[ring],sourceCoordinateScaleM:[.001,.001,.001]as[number,number,number],rdToInstalledLngLat,roofTriangles,closureTriangles:[]as EnvelopeTriangle[],nativeMetadata:{aggregateHeightM:12,constructionYear:1650},exteriorWallTopProfiles:ring.map((p,i)=>({sourceSurfaceIndex:i,points:[[...p,10+p[0]*.2],[...ring[(i+1)%4],10+ring[(i+1)%4][0]*.2]]as[number,number,number][]}))} as NonNullable<ReturnType<typeof adaptSurveyedBuildingEnvelope>>;
+ return{plan,footprint:legacyExtractFootprint(anchorRd,[ring]),origin:{lng:4.9,lat:52.37}};
+}
+test('binding retains exact installed vertices, original sourced slope heights and metric roof geometry',()=>{
+ const {plan,footprint,origin}=fixture(),before=JSON.stringify(plan),b=bindSurveyedEnvelopeToMesh(plan,footprint,origin);assert(b);assert.equal(b.edges.length,4);assert.equal(b.edges[0].topAt(.5),11);assert.equal(b.edges[0].topAt(-1),undefined);assert.deepEqual(b.nativeMetadata,{aggregateHeightM:12,constructionYear:1650});
+ const kx=111320*Math.cos(origin.lat*Math.PI/180);for(const edge of b.edges){const n=footprint.coordinates[0][edge.nativeEdgeIndex];assert.deepEqual(edge.start,[(n[0]-origin.lng)*kx,(n[1]-origin.lat)*110540]);}
+ assert(b.roofTriangles.every(t=>t.n[2]>0));assert(b.roofTriangles.some(t=>t.p.some(p=>p[2]===12)));const xs=b.roofTriangles.flatMap(t=>t.p.map(p=>p[0]));assert(Math.max(...xs)-Math.min(...xs)>9.8);assert(Math.max(...xs)-Math.min(...xs)<10.2);assert.equal(JSON.stringify(plan),before);
+});
+test('missing source edge, altered native corner, ambiguous/missing proof and unsupported courtyard reject entire binding',()=>{
+ const {plan,footprint,origin}=fixture();for(const mutate of [(p:typeof plan)=>p.exteriorWallTopProfiles.pop(),(p:typeof plan)=>p.sourceLoD0Local=undefined,(p:typeof plan)=>p.sourceCoordinateScaleM=undefined,(p:typeof plan)=>p.sourceLoD0Local![0][0][0]+=.1]){const p={...plan,sourceLoD0Local:structuredClone(plan.sourceLoD0Local),exteriorWallTopProfiles:structuredClone(plan.exteriorWallTopProfiles)};mutate(p);assert.equal(bindSurveyedEnvelopeToMesh(p,footprint,origin),undefined);}
+ const moved=structuredClone(footprint);moved.coordinates[0][1][0]+=.000001;assert.equal(bindSurveyedEnvelopeToMesh(plan,moved,origin),undefined);const hole=structuredClone(footprint);hole.coordinates.push(hole.coordinates[0]);assert.equal(bindSurveyedEnvelopeToMesh(plan,hole,origin),undefined);
+});
+test('reversed native ordering maps same physical source upper boundaries',()=>{
+ const {plan,footprint,origin}=fixture(),normal=bindSurveyedEnvelopeToMesh(plan,footprint,origin);assert(normal);const open=footprint.coordinates[0].slice(0,-1).reverse(),reversed={...footprint,coordinates:[[...open,open[0]]]};const b=bindSurveyedEnvelopeToMesh(plan,reversed,origin);assert(b);for(const edge of b.edges){const matching:SurveyedMeshWallEdge|undefined=normal.edges.find(e=>JSON.stringify(e.start)===JSON.stringify(edge.end)&&JSON.stringify(e.end)===JSON.stringify(edge.start));assert(matching);assert.equal(edge.topAt(.25),matching.topAt(.75));}
+});
+test('actual confirmed Pand candidate binds all nine native edges with front19.3m and independent rear heights',()=>{
+ const e=JSON.parse(JSON.stringify(envelopeFixture)),f=JSON.parse(JSON.stringify(installedFootprintFixture)),plan=adaptSurveyedBuildingEnvelope(e,{nativeParentId:e.nativeParentId,footprint:f,...e.nativeMetadata,now:fixtureReviewClock});assert(plan);const b=bindSurveyedEnvelopeToMesh(plan,f,{lng:4.898,lat:52.373});assert(b);assert.equal(b.edges.length,9);assert.equal(b.edges[0].segments.length,1);assert(Math.abs(b.edges[0].topAt(.5)!-19.29900125360489)<1e-8);assert(b.edges[2].topAt(.5)!<11);assert(b.edges[5].topAt(0)!>23);assert.equal(b.nativeMetadata.aggregateHeightM,22.99);assert.equal(b.nativeMetadata.constructionYear,1650);assert.deepEqual([...new Set(b.roofTriangles.map(t=>t.sourceSurfaceIndex))].sort(),[...new Set(plan.sourceRoofTriangles.map(t=>t.sourceSurfaceIndex))].sort());assert(b.attachment.unchangedInteriorTriangles>0&&b.attachment.attachmentTriangles>0);assert(b.attachment.collarWidthM<.08);
+ const bounds=(tris:EnvelopeTriangle[])=>[0,1,2].map(k=>{const values=tris.flatMap(t=>t.p.map(p=>p[k]));return Math.max(...values)-Math.min(...values);});const oldBounds=bounds(plan.sourceRoofTriangles),newBounds=bounds(b.roofTriangles);assert(oldBounds[0]>30&&newBounds[0]>30);assert(oldBounds[1]>15&&newBounds[1]>15);assert(Math.abs(newBounds[2]-oldBounds[2])<1e-9);
+ const missing={...plan,exteriorWallTopProfiles:plan.exteriorWallTopProfiles.filter(p=>p.sourceSurfaceIndex!==4)};assert.equal(bindSurveyedEnvelopeToMesh(missing,f,{lng:4.898,lat:52.373}),undefined);
+});
+
+test('actual source roof insertion and interior planes remain unchanged outside the measured perimeter attachment',()=>{
+ const e=JSON.parse(JSON.stringify(envelopeFixture)),f=JSON.parse(JSON.stringify(installedFootprintFixture)),p=adaptSurveyedBuildingEnvelope(e,{nativeParentId:e.nativeParentId,footprint:f,...e.nativeMetadata,now:fixtureReviewClock});assert(p);const origin={lng:4.9,lat:52.37},b=bindSurveyedEnvelopeToMesh(p,f,origin);assert(b);const kx=111320*Math.cos(origin.lat*Math.PI/180),convert=(v:number[])=>{const w=p.rdToInstalledLngLat({x:p.anchorRd[0]+v[0],y:p.anchorRd[1]+v[1]});return[(w[0]-origin.lng)*kx,(w[1]-origin.lat)*110540,v[2]];};
+ const sourceInsertion=p.sourceRoofTriangles.filter(t=>t.sourceSurfaceIndex===114),newInsertion=b.roofTriangles.filter(t=>t.sourceSurfaceIndex===114);assert.equal(newInsertion.length,sourceInsertion.length);for(let i=0;i<sourceInsertion.length;i++)for(let j=0;j<3;j++)assert.deepEqual(newInsertion[i].p[j],convert(sourceInsertion[i].p[j]));
+ const hole=e.roofSurfaces.find((s:any)=>s.sourceSurfaceIndex===108).rings[1],center=convert([0,1,2].map(i=>hole.reduce((sum:number,v:number[])=>sum+v[i]/hole.length,0)));
+ const inside=(tri:number[][])=>{const[a,b,c]=tri,den=(b[1]-c[1])*(a[0]-c[0])+(c[0]-b[0])*(a[1]-c[1]);if(Math.abs(den)<1e-10)return false;const u=((b[1]-c[1])*(center[0]-c[0])+(c[0]-b[0])*(center[1]-c[1]))/den,v=((c[1]-a[1])*(center[0]-c[0])+(a[0]-c[0])*(center[1]-c[1]))/den;return u>0&&v>0&&u+v<1;};
+ assert(!b.roofTriangles.filter(t=>t.sourceSurfaceIndex===108).some(t=>inside(t.p)),'front shield must preserve original roof insertion ring');assert(newInsertion.some(t=>inside(t.p)),'separate source insertion roof still owns its supported opening');
+ const original=e.roofSurfaces.find((s:any)=>s.sourceSurfaceIndex===114);assert.equal(original.rings.length,1);assert.equal(e.roofSurfaces.find((s:any)=>s.sourceSurfaceIndex===108).rings.length,2);assert(b.roofTriangles.every(t=>t.n[2]>0));
+});

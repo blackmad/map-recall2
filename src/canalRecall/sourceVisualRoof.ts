@@ -15,7 +15,9 @@ export function sourceVisualRoof<T extends Feature>(feature: T, profiles: readon
   if (Number(p.roofEavesHeightM) > 0 && !p.roofPlanned || p.roofShapeTag || p.roofVertices || p.roofGeometry || p.roofHeightSource === 'measured-accepted') return;
   if (!p.roofPlanned && p.roofShape && p.roofShape !== 'flat') return;
   const id = String(p.id ?? '');
-  const candidates = profiles.filter(admittedStreetAppearanceVisualClass);
+  const candidates = profiles.filter(profile=>admittedStreetAppearanceVisualClass(profile)||
+    profile.status==='pilot'&&!profile.holdout&&!profile.learnedFrom&&profile.buildingIds?.includes(id)&&
+    profile.evidence.some(e=>e.kind==='municipal-panorama'&&e.quality>=.8&&e.inference==='agent-visual-review'&&!!e.captureDate&&Number.isFinite(Date.parse(e.captureDate))&&!!e.panoramaId&&/^https:\/\/t[1-4]\.data\.amsterdam\.nl\/panorama\//.test(e.url??'')&&/^[a-f0-9]{64}$/.test(e.sha256))); 
   for (const profile of candidates) {
     const front = profile.frontages?.find(f => f.buildingId === id);
     if (!front) continue; // Complete source-cohort admission, never a tile-local guessed membership.
@@ -23,6 +25,12 @@ export function sourceVisualRoof<T extends Feature>(feature: T, profiles: readon
     if (!front.frontage || selected?.heightMin != null && Number(p.height) < selected.heightMin || selected?.heightMax != null && Number(p.height) > selected.heightMax) continue;
     if (selected?.frontageMin != null && front.frontage.widthM < selected.frontageMin || selected?.frontageMax != null && front.frontage.widthM > selected.frontageMax) continue;
     const recipe = selected?.recipe;
+    if(recipe?.interwarFrontage&&recipe.roofFamily==='flat-parapet'){
+      const height=Number(p.height),parapetM=.12;
+      if(!Number.isFinite(height)||height<5)continue;
+      const plan:RoofPlan={kind:'parapet',gable:'plain',riseM:parapetM,parapetM,nativeEnvelopeM:parapetM,dormers:false,chimney:false,accents:false,material:'slate',tone:.4,seed:id,keepLid:true,trimHex:recipe.wallHex??'#76564c'};
+      return {feature:{...feature,properties:{...p,roofPlanned:true,roofShape:'parapet',roofEavesHeightM:height-parapetM}},plan};
+    }
     if (!recipe?.crownShape) continue;
     const official = profile.registerCrowns?.find(c => c.buildingId === id);
     const registerShape = official?.shape ?? (typeof p.monumentGable === 'string' && GABLE_SHAPES.includes(p.monumentGable as any) ? p.monumentGable : undefined);

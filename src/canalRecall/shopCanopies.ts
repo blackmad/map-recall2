@@ -26,8 +26,10 @@ export function continuousShopCanopy(c: ExtraContext, sink: ExtraSink): void {
     const openings=c.openings??proceduralOpenings(c.style);
     // A full source assembly must fit between shop doors and residential windows.
     // Never shorten the glass band or paint it over an existing opening to make it fit.
-    if(z-canopy.fasciaHeightM<c.base+c.layout.groundM*openings.door.top+.03
-      ||bandBottom+band.heightM>Math.min(c.top,c.base+c.layout.groundM+c.layout.storeyM*openings.upper.sill)-.03)return;
+    const doorHead=c.groundFrontageActive&&c.recipe?.interwarGround?c.base+c.recipe.interwarGround.openingHeadM:c.base+c.layout.groundM*openings.door.top;
+    const firstSill=c.recipe?.interwarFrontage?c.base+c.layout.groundM+c.recipe.interwarFrontage.firstSillM:c.base+c.layout.groundM+c.layout.storeyM*openings.upper.sill;
+    if(z-canopy.fasciaHeightM<doorHead+.03
+      ||bandBottom+band.heightM>Math.min(c.top,firstSill)-.03)return;
   }
   const p=canopy.projectionM;
   sink.begin();

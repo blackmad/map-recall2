@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-10-06",
+  "decision": "85and99 are compound negative controls; primary-only scope preserved; wider compound transfer barred/unproven",
+  "scope": {
+    "primary": "Oudezijds Voorburgwal87\u201389/Pand0363100012178298",
+    "transition": "Oudezijds Voorburgwal85/Pand0363100012178296",
+    "heldout": "Oudezijds Voorburgwal99/Pand0363100012178291",
+    "frozenBeforeChallenge": "Primary finalcycle3 criteria/layout/material/roof binding frozen before these targeted85/99originals were projected/inspected.",
+    "heldoutExposure": "99first targeted source inspection in this challenge; it is now exposed evaluation evidence and must not be reused as fresh untouched validation after tuning.",
+    "generatorTuning": false,
+    "publicRuntimeAdmissions": 0
+  },
+  "policy": "public/canal-drive/street-rhythm-work.json",
+  "frozenPrimary": {
+    "sourceCriteria": "docs/references/oudezijds-compound-discovery-review.json",
+    "sourceDimensions": "docs/references/compound-frontage-source-candidate.json",
+    "primaryReview": "docs/references/compound-source-envelope-independent-review.json",
+    "finalReport": "artifacts/street-appearance/compound-native/source-envelope-cycle-3/report.json",
+    "bindingSha256": "68da4ff982e470a8191fad6e156cdc0e12b5232655e8158d63ca96d48c80c3e8",
+    "fixtureSha256": "869d7c0e85e880142852cbc72343d3c2f54004a44c3286ccc24c8d2015e2a0d0"
+  },
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "path": "streets/oudezijds-east-next-south/",
+    "newOriginalsPrivateRoot": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/oudezijds-east-next-south/raw/transfer-challenge-20261006",
+    "processedCropRoot": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/oudezijds-east-next-south/processed/transfer-challenge-20261006",
+    "newSourceCommit": "pending root private archive commit/push; originals and root provenance saved before extraction",
+    "existingCatalogueState": "Reused archived4-page municipal discovery response from2026-10-05. Selected nearest2025-06-30 camera among this bounded cached response, not an exhaustive latest-source claim.",
+    "initialCropGap": "Existingstation1 is visibly77, not99. Station2 is primary87\u201389 with partial85neighbor. Those exposed crops were not falsely relabeled as a fresh99challenge."
+  },
+  "sources": [
+    {
+      "address": 85,
+      "target": [
+        4.89846,
+        52.373672
+      ],
+      "camera": [
+        4.898423356049586,
+        52.37370705112712
+      ],
+      "pano": "recording_2025-06-30_05-16-46_01757",
+      "date": "2025-06-30T06:08:28Z",
+      "headingDeg": 147.2688899914873,
+      "width": 1000,
+      "height": 1500,
+      "fovDeg": 100,
+      "pitchDeg": 25,
+      "sourceFile": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/oudezijds-east-next-south/raw/transfer-challenge-20261006/85-panorama-20250630.jpg",
+      "sourceSha256": "9819cf871b56926fb99f402770d9158513b564bf60d4756bdc1dd63b86bf60e9",
+      "cropFile": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/oudezijds-east-next-south/processed/transfer-challenge-20261006/85-full-front.jpg",
+      "cropSha256": "19fdfcf5682ca839307a2b3aaab6358c46f7067039a1771232f98187f517c14e",
+      "originalProvenance": {
+        "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01757/equirectangular/panorama_8000.jpg",
+        "retrievedAt": "2026-10-06T18:29:03.525829+00:00",
+        "access": "HTTP200; original response saved before projection/inspection",
+        "sha256": "9819cf871b56926fb99f402770d9158513b564bf60d4756bdc1dd63b86bf60e9",
+        "bytes": 5137844,
+        "captureDate": "2025-06-30",
+        "attribution": "Gemeente Amsterdam",
+        "rights": "CC BY4.0 municipal panorama archive; verify catalogue metadata alongside crop",
+        "role": "frozen transition85"
+      },
+      "accessRoute": "Worker CODEX_SANDBOX_NETWORK_DISABLED=1; authorized root downloaded HTTP200 first attempt, cached catalogue parsed locally.",
+      "rights": "Gemeente Amsterdam panorama CC BY4.0 according to archived municipal acquisition manifest and root provenance; individual raw catalogue panorama record does not include a separate license field.",
+      "registration": "Projection aimed at frozen native street frontage midpoint from dated official panorama camera; not exact photogrammetric/pixel registration.85 plaque visible;99 registration based on surveyed midpoint/camera and facade/neighbor position rather than a readable99number.",
+      "inspected": true
+    },
+    {
+      "address": 99,
+      "target": [
+        4.898109,
+        52.3734
+      ],
+      "camera": [
+        4.898054269231004,
+        52.37342072462232
+      ],
+      "pano": "recording_2025-06-30_05-16-46_01749",
+      "date": "2025-06-30T06:08:11Z",
+      "headingDeg": 121.62870793160772,
+      "width": 1000,
+      "height": 1500,
+      "fovDeg": 100,
+      "pitchDeg": 25,
+      "sourceFile": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/oudezijds-east-next-south/raw/transfer-challenge-20261006/99-panorama-20250630.jpg",
+      "sourceSha256": "fae4c6365b5963c0e10d1270520dc15067b84a049ebedbc30de528b535688c65",
+      "cropFile": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/oudezijds-east-next-south/processed/transfer-challenge-20261006/99-full-front.jpg",
+      "cropSha256": "731f68b56784fec317045a5fc1e20f0928ceb4d6369ed6b91558c021ffc4f4e5",
+      "originalProvenance": {
+        "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01749/equirectangular/panorama_8000.jpg",
+        "retrievedAt": "2026-10-06T18:29:03.535324+00:00",
+        "access": "HTTP200; original response saved before projection/inspection",
+        "sha256": "fae4c6365b5963c0e10d1270520dc15067b84a049ebedbc30de528b535688c65",
+        "bytes": 4627169,
+        "captureDate": "2025-06-30",
+        "attribution": "Gemeente Amsterdam",
+        "rights": "CC BY4.0 municipal panorama archive; verify catalogue metadata alongside crop",
+        "role": "fresh heldout99; no code tuning from challenge"
+      },
+      "accessRoute": "Worker CODEX_SANDBOX_NETWORK_DISABLED=1; authorized root downloaded HTTP200 first attempt, cached catalogue parsed locally.",
+      "rights": "Gemeente Amsterdam panorama CC BY4.0 according to archived municipal acquisition manifest and root provenance; individual raw catalogue panorama record does not include a separate license field.",
+      "registration": "Projection aimed at frozen native street frontage midpoint from dated official panorama camera; not exact photogrammetric/pixel registration.85 plaque visible;99 registration based on surveyed midpoint/camera and facade/neighbor position rather than a readable99number.",
+      "inspected": true
+    }
+  ],
+  "officialIdentity": {
+    "sourceCache": "scripts/data/amsterdam-monument-register/records.json.gz",
+    "sourceCacheSha256": "5b73fb7b464fa18349803be34e7a838f000ad293835073ff839bed25f1c0d22d",
+    "85": {
+      "recordUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/b90049bb-25fb-4115-b135-e791ce2d4a7c?_format=json",
+      "officialPand": "0363100012178296",
+      "descriptionState": "Cached municipal description fields null; explicit official Pand join available. Architectural assertions below are photographic, not invented register descriptions."
+    },
+    "99": {
+      "recordUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/67bac75f-0d13-4355-8c0a-819524bc41d4?_format=json",
+      "officialPand": "0363100012178291",
+      "descriptionState": "Cached municipal description fields null; explicit official Pand join available."
+    }
+  },
+  "sampleDecisions": [
+    {
+      "address": 85,
+      "role": "transition/negative control",
+      "decision": "compound family incompatible; retain ordinary/canal front class",
+      "confidence": "high regularity/access/absence ofshaft; medium crown-family/detail",
+      "visibleTraits": [
+        "Narrow front with3 regular window axes,3 main upper rows and shortened attic tier/raised shaped crown.",
+        "Raised left panel door with decorative transom and substantial stone stoop/iron railing, tall adjacent ground windows.",
+        "Pale lower/basement composition includes separate lower access; it is not one white87/89three-aperture frame.",
+        "Pale window trim against dark brick; no separate projected narrow rightbay principal+sidelights/3skinnygroundlight/canopy system."
+      ],
+      "criticalTransferContradictions": [
+        "Forced rightshaft would replace a regular principal window axis.",
+        "87/89rightdoor/canopy relationship would move or invent the left raised entrance.",
+        "Main3rows/shortshafttop and broad whitegroundsurround are not this source joint assembly."
+      ],
+      "nativeContract": {
+        "role": "transition",
+        "buildingId": "NL.IMBAG.Pand.0363100012178296",
+        "nativeFrontageM": 5.060729691630045,
+        "heightM": 16.23,
+        "constructionYear": 1746,
+        "geometryRings": 1,
+        "frozenCompoundFit": "rejected-whole-plan; not architectural acceptance",
+        "profileControlChecks": [
+          {
+            "mode": "walls",
+            "beforeSha256": "71302be659b7a9904f17474a44bb67699af3d5beb80e660a29fd526ffeec5b4c",
+            "afterSha256": "71302be659b7a9904f17474a44bb67699af3d5beb80e660a29fd526ffeec5b4c",
+            "exactArraysUnchanged": true,
+            "triangles": 26
+          },
+          {
+            "mode": "extras",
+            "beforeSha256": "71b6e27ea3b4c2d4b0978a39097e77d285c8f319af3ecaa990315129254b93b3",
+            "afterSha256": "71b6e27ea3b4c2d4b0978a39097e77d285c8f319af3ecaa990315129254b93b3",
+            "exactArraysUnchanged": true,
+            "triangles": 224
+          }
+        ]
+      }
+    },
+    {
+      "address": 99,
+      "role": "heldout/negative control",
+      "decision": "compound family incompatible; wider compound prior fails this challenge",
+      "confidence": "high3axes/4uppertiers/leftentrance; medium roofcrown detail; courtyard source onlynative",
+      "visibleTraits": [
+        "Regular3-axis tall canal front with FOURupper rows shortening toward the crown, rather than independent rightshaft.",
+        "Very tall ground/bel-etage window-and-leftdoor fields above a pale basement; left raised stoop/rail, different lower entrance.",
+        "Strong bracketed cornice and central hoist beam; current source does not demonstrate87/89steepfrontroof/erker grammar.",
+        "Pale perimeter sash framing, source panel/mullion subdivisions and dark brick; no primary-style connected broadwhite3-windowband or rightdoor-canopy axis."
+      ],
+      "criticalTransferContradictions": [
+        "Compound unequalzone split and independentrightshaft would contradict regular3-axis frontage.",
+        "Frozen3mainrows plusshortershaft would contradict4shorteningupperrows.",
+        "Primarygroundwhitegroup/rightcanopydoor would contradict tallgroundandleftstoop."
+      ],
+      "nativeContract": {
+        "role": "heldout",
+        "buildingId": "NL.IMBAG.Pand.0363100012178291",
+        "nativeFrontageM": 7.58384261978025,
+        "heightM": 18.53,
+        "constructionYear": null,
+        "geometryRings": 2,
+        "frozenCompoundFit": "rejected-whole-plan; not architectural acceptance",
+        "profileControlChecks": [
+          {
+            "mode": "walls",
+            "beforeSha256": "7cdc8346e0c84128002dc6154f250ab23b0fadaf9b0d2a6d53cebebf5455ed53",
+            "afterSha256": "7cdc8346e0c84128002dc6154f250ab23b0fadaf9b0d2a6d53cebebf5455ed53",
+            "exactArraysUnchanged": true,
+            "triangles": 76
+          },
+          {
+            "mode": "extras",
+            "beforeSha256": "feec99484349b1afe1dbc0771e7907508caf5e25b21d6e02fc0a740cf428da6a",
+            "afterSha256": "feec99484349b1afe1dbc0771e7907508caf5e25b21d6e02fc0a740cf428da6a",
+            "exactArraysUnchanged": true,
+            "triangles": 230
+          }
+        ]
+      },
+      "sourceLimits": "Construction barrier partly occludes lower left stairs/grade. Street panorama cannot verify the rear courtyard; preserve installed two-ring polygon independently."
+    }
+  ],
+  "nativeRowDiagnostic": {
+    "status": "scope/isolation evidence and visible fallback deficiencies; NOT source-rhythm acceptance",
+    "directory": "artifacts/street-appearance/compound-transfer-challenge-20261006/native-row-complete-metadata",
+    "reproduction": "node --import tsx artifacts/street-appearance/compound-transfer-challenge-20261006/render-native-row-complete-metadata.mts",
+    "scope": "Seven installed native parents along85-to99, fixed compound profile on87/89only; factual building-facts joined before standard citywide identity decoration; no source-derived recipe tuning forcontrols.",
+    "images": [
+      {
+        "phase": "before",
+        "view": "front",
+        "file": "artifacts/street-appearance/compound-transfer-challenge-20261006/native-row-complete-metadata/before-front.png",
+        "sha256": "1dc92de8d0be08368293e93ac9ee4145cdbb7727a5bfcfcca77821ca5d8ff49b",
+        "triangles": 1790,
+        "inspected": false,
+        "hashVerified": true
+      },
+      {
+        "phase": "after",
+        "view": "front",
+        "file": "artifacts/street-appearance/compound-transfer-challenge-20261006/native-row-complete-metadata/after-front.png",
+        "sha256": "83d959d468b42888ee92ad586d7ab2dde6732cdfd3f4035f70019fbfb4fb7229",
+        "triangles": 3974,
+        "inspected": true,
+        "hashVerified": true
+      },
+      {
+        "phase": "before",
+        "view": "oblique",
+        "file": "artifacts/street-appearance/compound-transfer-challenge-20261006/native-row-complete-metadata/before-oblique.png",
+        "sha256": "83dfdeb108725d6cc95aaea6f231cb883631714bac4352e9b9fb12ab377437cd",
+        "triangles": 1790,
+        "inspected": false,
+        "hashVerified": true
+      },
+      {
+        "phase": "after",
+        "view": "oblique",
+        "file": "artifacts/street-appearance/compound-transfer-challenge-20261006/native-row-complete-metadata/after-oblique.png",
+        "sha256": "13a177877b7a48b6b563a5d0a8196a831a79b4f5354f080b4b223720b3edf69c",
+        "triangles": 3974,
+        "inspected": true,
+        "hashVerified": true
+      }
+    ],
+    "bindings": {
+      "fixtureSha256MatchesFrozenPrimary": true,
+      "bindingSha256MatchesFrozenPrimary": true,
+      "rendererSources": {
+        "src/canalRecall/threeBuildingMesh.ts": "68bae54972aee6e9d591a24f862fd4be339e874c520886c3a8a562e0fce2de0c",
+        "src/canalRecall/threeBuildingFeatures.ts": "34238977296a25011afb6ecd595d20007371a9b30cfddcec70235bdd51dc32f9",
+        "src/canalRecall/compoundSourceCandidate.fixture.ts": "869d7c0e85e880142852cbc72343d3c2f54004a44c3286ccc24c8d2015e2a0d0",
+        "src/canalRecall/surveyedEnvelopeMeshBinding.ts": "3dcce7f6a2c85121b10873a322d6a10b1746970029d29f659ef8b0811e5b9187"
+      },
+      "atlasColourSha256": "e3f63e77b04453b23e7a939754ff39e35de9363076476cce91c4d078807fe979",
+      "atlasMaskSha256": "f080426b2a7a01b283727b4dff3b99ff6c49e9155e961df840c89a39350b0e3f",
+      "limit": "Current sharedrenderer and atlas snapshot differ from finalcycle3report (recorded hashes); same fixed recipe/binding and within-run before/after comparisons only. Do not claim bit-identical finalcycle3primary material revalidation."
+    },
+    "visualDecision": "Candidate maintains one broad asymmetric primary among narrower neighbors; it does not homogenize85/99. Ordinary controls nevertheless remain visually generic: native-row85 lacks source raisedentry/shaped crown;99fallback has uniformly repeated smaller tiers instead of tallground/shortening4upperrows. These are existing fallback/sourceclass gaps, not permission to paste compound onto them.",
+    "criticalRowFailure": "This native row is not accepted source identity/rhythm. Source-aligned regular canal-front grouping/raisedentry/roof mixture needs separate bounded work; palette alone would not fix it.",
+    "preservedInitialSetupFailure": {
+      "directory": "artifacts/street-appearance/compound-transfer-challenge-20261006/native-row",
+      "reason": "Initial diagnostic passed undecorated rawnativefeatures without production citywide appearance/facts, leaving controls bare. Preserved as failed setup, not falsely attributed to live game renderer. Corrected diagnostic supplies established appearance metadata and official cached facts."
+    }
+  },
+  "nativeControlsAndCourtyard": {
+    "evidence": "artifacts/street-appearance/compound-transfer-challenge-20261006/native-control-contract.json",
+    "reproduction": "node --import tsx artifacts/street-appearance/compound-transfer-challenge-20261006/check-native-controls.mts",
+    "controlProfileEffect": "Both wall/extras chunks positions,UVs,atlaslayers,tints,accents,indices byte-identical with primaryprofile on/off for85and99; this establishes bounded profile isolation, not source identity.",
+    "planFit": "Untunedcompletecompoundplanner returnsundefined for both nativefrontages (85~5.061m/99~7.584m), retaining stockfallback rather than clipping/scaling. Fit refusal is supporting guard behavior; photographed relationships are the reason not to transfer.",
+    "courtyard99": {
+      "nativeRings": 2,
+      "centreLngLat": [
+        4.89833834,
+        52.3733326
+      ],
+      "verticalProjectedTriangleHits": 0,
+      "scope": "one representative interior-point roof/closure probe plus exact untouched source-ring identity; not exhaustive topology/game proof"
+    },
+    "limit": "One interior vertical probe+exact retainedring is not an exhaustivecourtyard/topology or live-game review."
+  },
+  "transferConclusion": {
+    "positiveTransferExamples": 0,
+    "negativeControlBoundary": "pass for current primary-only diagnostic scope",
+    "compoundWiderTransfer": "withheld/barred forthesecontrols; no recurringstreetgroup demonstrated by adjacent85/99",
+    "reason": "Both source challenges show different regular canal-front assemblies, so proximity/width/year cannot authorize compoundprior expansion. Tests or primaryvisualpass cannot override these critical differences."
+  },
+  "nextActions": [
+    "Keep frozencompound primary isolated; do not tune87/89from85/99or admit eithernegativecontrol.",
+    "Retain99asnowexposed challenge, request a fresh uninspectedpositivecompoundexample before recurring-group transfer.",
+    "Consider separately bounded regular3-axis raised-entry canal-front work using existingcanal assemblies, keeping tallground/upperheight/crown relationships source-derived and unknown99year unknown.",
+    "Root archives new originalpanoramas+cropplan/evaluation artifacts and records privatecommit before any published checkpoint.",
+    "Actualgame/row/material/neighbor/streaming andGPU/performance gates remainpending."
+  ],
+  "actualGameEvidence": "not acquired in this child task",
+  "gpuPerformance": "pending"
+}

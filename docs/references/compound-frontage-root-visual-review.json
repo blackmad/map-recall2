@@ -1,0 +1,22 @@
+{
+  "reviewedOn": "2026-10-06",
+  "decision": "source-fit-failed-unmeasured-capability-fixture",
+  "source": "docs/references/oudezijds-compound-discovery-review.json",
+  "failures": [
+    "Large blank upper area: unmeasured row datums do not match the source facade/eave composition.",
+    "Installed22.99m roof-percentile height differs from measured street eave~19.3m; supported native roof regions need distinct treatment.",
+    "Initial light door ignored dark tint through atlas accent mask; repaired, failed image hashes reproduced exactly and preserved."
+  ],
+  "failedLightDoor": {
+    "path": "artifacts/street-appearance/compound-native/failed-before-door-accent/",
+    "reproduction": "Diagnostic code snapshot reproduces recorded originalPNGhashes bit-for-bit; artifacts were regenerated after correction and verified against initial recordedhashes.",
+    "frontSha256": "49ba518bf58dbd5a78a1b7da09dcb2d98f0e11dfd5110616cd3da88f43029ff8",
+    "obliqueSha256": "da27d781a6455659f6f50508f95f0de8bb89d12bee9b3e9007e5a00d2aecd62f"
+  },
+  "repairedDarkDoor": {
+    "frontSha256": "838a0d353472c4bf78a4b4950386a662a6b138ff2fb707ae3747e6e9608f3458",
+    "doorGeometry": "recessed textured leaf with independent dark atlas accent; frames remain pale"
+  },
+  "noAdmissions": true,
+  "actualGamePerformance": "pending"
+}

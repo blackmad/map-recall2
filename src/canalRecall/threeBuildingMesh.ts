@@ -1,3 +1,8 @@
+import {envelopeFootprintFingerprint} from './surveyedBuildingEnvelope.js';
+import type {SurveyedMeshBinding,SurveyedMeshWallEdge} from './surveyedEnvelopeMeshBinding.js';
+import { planInterwarGroundFrontage, type InterwarGroundFrontagePlan } from './interwarGroundFrontage.js';
+import { planCompoundFrontage, type CompoundFrontagePlan } from './compoundFrontageLayout.js';
+import { planRegularCanalFrontage, type RegularCanalFrontagePlan } from './regularCanalFrontage.js';
 // Merged wall meshes for the three.js building layer (spike, 2026-10-02).
 //
 // Takes streamed building features and returns typed arrays for ONE
@@ -11,11 +16,12 @@
 //     hidden by touching a few bytes instead of rebuilding the mesh.
 // Positions are metres east / north / up from a caller-supplied origin.
 
+import { interwarStreetPhase, planInterwarFrontage, type InterwarFrontagePlan } from './interwarFrontageLayout.js';
 import { applyHostWallOpenings, type ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import { sharedWallCuts, subtractWallCuts, subtractConvex, polygonArea, type Point2 } from './coplanarSurfaces.js';
 import { recipeBayOpenings, type Openings } from './facadeOpenings.js';
 import { streetWallBuilding, frontageLayoutScale, PROCEDURAL_RECIPE_LAYER_OFFSET, type StreetFacadeContext } from './streetFacadeRendering.js';
-import { BAY_LAYER_COUNT } from './bayLook.js';
+import { BAY_LAYER_COUNT, bayLookFor } from './bayLook.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
 import { streetCrown, type StreetCrownFront, type StreetCrownTri } from './streetCrown.js';
 import { CELL_VARIANTS, CELL_LAYER_COUNT, cellLayer } from './facadeCells.js';
@@ -30,6 +36,8 @@ import { ExtraSink, EXTRA_BUDGET, roofExtras, buildingWallExtras, type ExtraCont
 import { fitRect, roofTrianglesForOutline, type RoofDims, type RoofPlan, type RoofTri } from './roofMesh.js';
 
 export type MeshBuilding = {
+  /** Diagnostic-only, already validated exact native parent/envelope binding. */
+  surveyedEnvelope?: SurveyedMeshBinding;
   streetAppearance?: StreetFacadeContext;
   recipe?: ArchitecturalRecipe;
   /** Exact opening positions of the active texture, shared with 3D entrance details. */
@@ -205,7 +213,7 @@ function lidMesh(b: MeshBuilding, origin: Origin): LidMesh | null {
 }
 
 /** `lit`: lit signage (a chain's fascia and lettering), barely dimmed on a wall facing away from the sun. */
-type SignTri = { p: [number, number, number][]; hex: string; n: [number, number, number]; lit?: boolean; texture?: 'glass-block'; uv?: [number,number][] };
+type SignTri = { p: [number, number, number][]; hex: string; n: [number, number, number]; lit?: boolean; texture?: 'glass-block'; uv?: [number,number][]; layer?: number; accentHex?: string };
 
 /** One flat quad (corners in order) as two triangles wound to face `n`. */
 function faceTris(q: [number, number, number][], n: [number, number, number], hex: string, out: SignTri[]) {
@@ -342,6 +350,22 @@ export function wallRuns(rings: readonly (readonly Edge[])[], hidden: (e: Edge) 
  * belt's edges) are skipped: nobody sees them, and they are about half the
  * vertices of a naive mesh.
  */
+function sourceEdgeFor(b:MeshBuilding,e:Edge){
+ const exact=(a:number,b:number)=>Math.abs(a-b)<1e-8;
+ const match=b.surveyedEnvelope?.edges.find(s=>exact(s.start[0],e.x0)&&exact(s.start[1],e.y0)&&exact(s.end[0],e.x1)&&exact(s.end[1],e.y1)||exact(s.end[0],e.x0)&&exact(s.end[1],e.y0)&&exact(s.start[0],e.x1)&&exact(s.start[1],e.y1));
+ if(!match)return;const reversed=!exact(match.start[0],e.x0)||!exact(match.start[1],e.y0);
+ return {binding:match,segments:reversed?match.segments.map(s=>({...s,t0:1-s.t1,t1:1-s.t0,z0:s.z1,z1:s.z0})).reverse():match.segments};
+}
+function validatedSourceBuilding(input:MeshBuilding,origin:Origin):MeshBuilding{
+ const binding=input.surveyedEnvelope;if(!binding)return input;
+ const valid=binding.nativeParentId===input.id&&binding.meshOrigin.lng===origin.lng&&binding.meshOrigin.lat===origin.lat&&input.polygons.length===1&&input.polygons[0].length===1&&binding.installedFootprintFingerprint===envelopeFootprintFingerprint({type:'Polygon',coordinates:input.polygons[0]})&&input.plainLayer!==undefined&&!!input.lid;
+ const edges=input.polygons.flatMap(p=>p.flatMap((ring,i)=>ringEdges(ring,origin,i>0)));
+ if(!valid||edges.length!==binding.edges.length||!edges.every(e=>{const source=sourceEdgeFor(input,e);return source&&source.segments.length&&Math.abs(source.segments[0].t0)<1e-8&&Math.abs(source.segments[source.segments.length-1].t1-1)<1e-8&&source.segments.every((s,i)=>[s.t0,s.t1,s.z0,s.z1].every(Number.isFinite)&&s.t1>s.t0&&(!i||Math.abs(s.t0-source.segments[i-1].t1)<1e-8));}))return{...input,surveyedEnvelope:undefined};return input;
+}
+function sourceWallCutGroups(b:MeshBuilding,edges:readonly Edge[]){
+ if(!b.surveyedEnvelope)return[{b,edges}];
+ return edges.flatMap(e=>{const s=sourceEdgeFor(b,e)!;return s.segments.map(p=>({b:{...b,heightM:Math.min(p.z0,p.z1)},edges:[{...e,x0:e.x0+(e.x1-e.x0)*p.t0,y0:e.y0+(e.y1-e.y0)*p.t0,x1:e.x0+(e.x1-e.x0)*p.t1,y1:e.y0+(e.y1-e.y0)*p.t1,len:e.len*(p.t1-p.t0)}]}));});
+}
 /**
  * `mode: 'extras'` builds only the facade extras (facadeExtras.ts) of these buildings: they are a
  * separate, near-camera chunk, too many triangles to draw across the whole resident city.
@@ -351,7 +375,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
   const prepared: Prepared[] = [];
   const rings: Edge[][][] = [];
   const shared = new Map<string, { top: number; base: number }[]>();
-  for (const b of buildings) {
+  for (const input of buildings) {
+    const b=validatedSourceBuilding(input,origin);
     // A lidded building owns its top, so its facade rows run to the full height (no band to leave room for).
     const top = b.lid ? b.heightM : facadeTopM(b.heightM);
     const own: Edge[][] = [];
@@ -363,14 +388,21 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       const key = `${edgeKey(e.x0, e.y0)}>${edgeKey(e.x1, e.y1)}`;
       let list = shared.get(key);
       if (!list) shared.set(key, list = []);
-      list.push({ top: b.heightM, base: b.minHeightM });
+      list.push({ top: sourceEdgeFor(b,e)?.segments.reduce((m,s)=>Math.max(m,s.z0,s.z1),-Infinity)??b.heightM, base: b.minHeightM });
     }
   }
-  const contextPrepared = context.map(b => ({ b, edges: b.polygons.flatMap(p => p.flatMap((ring, i) => ringEdges(ring, origin, i > 0))) }));
-  const wallCuts = sharedWallCuts([...prepared, ...contextPrepared]);
+  const contextPrepared = context.map(input=>{const b=validatedSourceBuilding(input,origin);return {b,edges:b.polygons.flatMap(p=>p.flatMap((ring,i)=>ringEdges(ring,origin,i>0)))};});
+  const cutters=[...prepared,...contextPrepared].flatMap(({b,edges})=>sourceWallCutGroups(b,edges));
+  const wallCuts=sharedWallCuts(cutters);
+  // Preserve original edge keys for source walls while using per-segment
+  // source heights when this parent clips an ordinary/context neighbor.
+  if(prepared.some(p=>p.b.surveyedEnvelope)){
+    const direct=sharedWallCuts([...prepared.filter(p=>p.b.surveyedEnvelope),...cutters.filter(p=>!p.b.surveyedEnvelope)]);
+    for(const p of prepared.filter(p=>p.b.surveyedEnvelope))for(const e of p.edges)if(direct.has(e))wallCuts.set(e,direct.get(e)!);
+  }
   const hiddenByNeighbour = (e: Edge, b: MeshBuilding) => {
     const others = shared.get(`${edgeKey(e.x1, e.y1)}>${edgeKey(e.x0, e.y0)}`);
-    return !!others && others.some(o => o.top >= b.heightM && o.base <= b.minHeightM);
+    return !!others && others.some(o => o.top >= (sourceEdgeFor(b,e)?.segments.reduce((m,s)=>Math.max(m,s.z0,s.z1),-Infinity)??b.heightM) && o.base <= b.minHeightM);
   };
 
   // Street side: with the streets near this chunk, a door goes only on a wall that sees a street
@@ -395,12 +427,12 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
   };
 
   const CORNICE_STYLES = new Set<string>(['canal', 'c19', 'school']);
-  type Quad = { accent: [number, number, number]; e: Edge; u0: number; u1: number; v1: number; v0?: number; layer: number; z0: number; z1: number; tint: [number, number, number, number]; along0: number; along1: number };
+  type Quad = { accent: [number, number, number]; e: Edge; u0: number; u1: number; v1: number; v0?: number; z1Left?:number;z1Right?:number;v1Left?:number;v1Right?:number;layer: number; z0: number; z1: number; tint: [number, number, number, number]; along0: number; along1: number };
   const quadsByBuilding: Array<{ b: MeshBuilding; quads: Quad[]; walls: number; roof: StreetCrownTri[]; lid: LidMesh | null; sign: SignTri[] }> = [];
   let signTotal = 0;
   let quadTotal = 0, wallTotal = 0, roofTotal = 0, lidVerts = 0, lidIndices = 0;
   const kxLocal = mPerDegLng(origin.lat);
-  for (const [bi, { b, edges, top }] of prepared.entries()) {
+  for (const [bi, { b, edges, top:buildingTop }] of prepared.entries()) {
     const quads: Quad[] = [];
     const base = b.minHeightM;
     const wallRGB = parseHex(b.wallHex), wallAccent = parseHex(b.accentHex ?? '#ffffff');
@@ -412,7 +444,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     let walls = 0;
     const extraSink = mode === 'extras' && b.extras ? new ExtraSink(EXTRA_BUDGET.building) : null;
     const wallExtraContexts: ExtraContext[] = [];
-    const cornice: RoofTri[] = [];
+    const frontageTriangles: SignTri[] = [];
+    const cornice: StreetCrownTri[] = [];
     const doorAllowed = doorWalls(bi);
     let groundSeen = Infinity;
     const streetEdges = [...doorAllowed];
@@ -421,6 +454,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     const crownFronts: StreetCrownFront[] = [];
     for (const run of wallRuns(rings[bi], e => hiddenByNeighbour(e, fallbackBuilding))) {
       const first = run[0].e;
+      const sourceSegments=run.flatMap(({e})=>sourceEdgeFor(fallbackBuilding,e)?.segments??[]);
+      const top=sourceSegments.length?Math.min(...sourceSegments.flatMap(s=>[s.z0,s.z1])):buildingTop;
       let b = fallbackBuilding.streetAppearance ? streetWallBuilding(fallbackBuilding, {
         ...first, x1: run[run.length - 1].e.x1, y1: run[run.length - 1].e.y1,
       }, origin, run.some(({ e }) => doorAllowed.has(e))) : fallbackBuilding;
@@ -436,6 +471,12 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       const [r, g, bl] = b === fallbackBuilding ? wallRGB : parseHex(b.wallHex);
       const accent = b === fallbackBuilding ? wallAccent : parseHex(b.accentHex ?? '#ffffff');
       if (b.recipe) crownFronts.push({ start:[first.x0,first.y0],end:[run[run.length-1].e.x1,run[run.length-1].e.y1],normal:[first.nx,first.ny],tint:[r*jitter,g*jitter,bl*jitter],plainLayer:b.plainLayer,recipe:b.recipe,frameHex:b.recipe.frameHex??'#e6e1d4',glassHex:b.streetAppearance?.look==='cartoon'?'#68a2bf':'#35464f' });
+      if(b.surveyedEnvelope&&b.plainLayer!==undefined)for(const {e}of run)for(const s of sourceEdgeFor(b,e)!.segments){
+        if(Math.max(s.z0,s.z1)-top<1e-7)continue;
+        const point=(t:number,z:number):[number,number,number]=>[e.x0+(e.x1-e.x0)*t,e.y0+(e.y1-e.y0)*t,z];
+        const A=point(s.t0,top),B=point(s.t1,top),C=point(s.t1,s.z1),D=point(s.t0,s.z0),uv=(p:[number,number,number]):[number,number]=>[Math.hypot(p[0]-e.x0,p[1]-e.y0)/5,p[2]/3],n:[number,number,number]=[e.nx,e.ny,0];
+        for(const p of [[A,B,C],[A,C,D]]as [number,number,number][][]){if(Math.hypot(...p[0].map((v,i)=>v-p[1][i]))<1e-8||Math.hypot(...p[0].map((v,i)=>v-p[2][i]))<1e-8)continue;cornice.push({p:p as RoofTri['p'],uv:p.map(uv)as RoofTri['uv'],part:'plate',n,facadeLayer:b.plainLayer,facadeTint:[r*jitter,g*jitter,bl*jitter]});}
+      }
       const paintTint = b === fallbackBuilding ? groundPaint : b.groundHex && b.layers ? parseHex(b.groundHex) : null;
       const layout = b.bare ? null : layoutRun(b.style, run.map(r => r.e.len), top - base, hash01(`${b.id}:${edgeKey(first.x0, first.y0)}`), base < 0.5, runScale, run.map(r => doorAllowed.has(r.e)));
       if(layout&&b.recipe?.facadeAssembly==='stacked-open-balcony'&&base<.5){
@@ -449,8 +490,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       }
       if (!layout) {
         // With the top owned here, a wall too short for a layout (a corner chamfer) is still walled, in bare wall.
-        if (b.lid && b.plainLayer !== undefined && b.heightM > base + 0.01) for (const { e } of run) {
-          quads.push({ e, u0: 0, u1: Math.max(1, e.len / 5), v1: 1, layer: b.plainLayer, accent, z0: base, z1: b.heightM, tint: [Math.min(255, r * jitter), Math.min(255, g * jitter), Math.min(255, bl * jitter), wallShade(e.nx, e.ny) * 255], along0: 0, along1: 1 });
+        if (b.lid && b.plainLayer !== undefined && top > base + 0.01) for (const { e } of run) {
+          quads.push({ e, u0: 0, u1: Math.max(1, e.len / 5), v1: 1, layer: b.plainLayer, accent, z0: base, z1: top, tint: [Math.min(255, r * jitter), Math.min(255, g * jitter), Math.min(255, bl * jitter), wallShade(e.nx, e.ny) * 255], along0: 0, along1: 1 });
         }
         continue;
       }
@@ -459,6 +500,28 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       // A shop fills its ground floor; only a wide front keeps a separate door to the floors above.
       if (b.shopfront && layout.bays < 3) layout.doorBays.length = 0;
       const bw = layout.bayWidthM, groundTop = base + layout.groundM;
+      const compound=b.recipe?.compoundFrontage&&b.layers&&b.plainLayer!==undefined&&base<.5
+        &&run.every(({e})=>!e.hole&&Math.abs(e.nx-first.nx)+Math.abs(e.ny-first.ny)<1e-6)
+        ?planCompoundFrontage({lengthM:layout.lengthM,baseM:base,topM:top,recipe:b.recipe.compoundFrontage,direction:compoundDirection(b,first,origin)}):undefined;
+      if(compound&&mode==='walls')frontageTriangles.push(...compoundTriangles(compound,first,b));
+      const regular=b.recipe?.regularCanalFrontage&&b.layers&&b.plainLayer!==undefined&&base<.5
+        &&run.every(({e})=>!e.hole&&Math.abs(e.nx-first.nx)+Math.abs(e.ny-first.ny)<1e-6)
+        ?planRegularCanalFrontage({lengthM:layout.lengthM,baseM:base,topM:top,recipe:b.recipe.regularCanalFrontage,direction:compoundDirection(b,first,origin)}):undefined;
+      if(regular&&mode==='walls')frontageTriangles.push(...regularCanalTriangles(regular,first,b));
+      // Defining window groups live in the wall chunk, so near-detail LOD cannot erase them.
+      const interwar = b.recipe?.interwarFrontage && b.layers && b.plainLayer !== undefined
+        && run.every(({e}) => !e.hole && Math.abs(e.nx-first.nx)+Math.abs(e.ny-first.ny)<1e-6)
+        ? planInterwarFrontage({lengthM:layout.lengthM,baseM:base,topM:top,groundM:layout.groundM,recipe:b.recipe.interwarFrontage,...interwarRowPhase(b,first,origin,layout.lengthM)}) : undefined;
+      if(interwar && mode==='walls') frontageTriangles.push(...interwarTriangles(interwar,first,b));
+      const groundFrontage=b.recipe?.interwarGround&&b.layers&&b.plainLayer!==undefined&&base<.5&&interwar
+        ? planInterwarGroundFrontage({lengthM:layout.lengthM,baseM:base,groundM:layout.groundM,recipe:b.recipe.interwarGround}) : undefined;
+      if(groundFrontage){
+        const look=b.streetAppearance?.look==='procedural'?'photo':b.streetAppearance?.look??'photo';
+        const shop=bayLookFor(b.id,b.streetAppearance?.year??null,b.heightM,look,'shopWindow',b.recipe);
+        const offset=b.streetAppearance?.look==='procedural'?PROCEDURAL_RECIPE_LAYER_OFFSET:0;
+        b={...b,layers:{...b.layers!,ground:shop.layers.ground+offset}};
+        if(mode==='walls')frontageTriangles.push(...interwarGroundTriangles(groundFrontage,first,b));
+      }
       groundSeen = Math.min(groundSeen, layout.groundM);
       // Polygon vertices do not create additional observed stacks: one eligible facet owns
       // each continuous facade. Keep relief contained on that facet, without seam matching.
@@ -482,9 +545,9 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       run.forEach(({ e }, k) => {
         walls++;
         const s = layout.edgeStartM[k];
-        if (extraSink && !b.plainWalls && !e.hole && ((b.recipe?.openingGroup ? k === 0 && layout.lengthM >= 2.5 : e.len >= 2.5) || canopyRuns.has(k))) wallExtraContexts.push({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: b.recipe?.openingGroup ? layout.lengthM : e.len }, base, top, layout: b.recipe?.openingGroup ? layout : edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5, period: b.period, recipe: b.recipe, runStart: k === 0, runEnd: k === run.length - 1, assemblyOwner: b.recipe?.facadeAssembly ? k === assemblyOwnerEdge : undefined, canopyOwner: b.recipe?.shopCanopy ? canopyRuns.has(k) : undefined, canopyFrames: canopyRuns.get(k), openings: b.recipe ? recipeBayOpenings(b.id, b.recipe, b.streetAppearance?.look === 'procedural' ? 'photo' : b.streetAppearance?.look ?? 'photo') : b.openings, streetSide: canopyRuns.has(k) || (b.recipe?.openingGroup ? run.some(r=>doorAllowed.has(r.e)) : doorAllowed.has(e)), shopfront: !!(b.shopfront || b.shop), roofKind: b.roof ? b.roof.plan.kind : 'flat' });
+        if (extraSink && !b.plainWalls && !e.hole && ((b.recipe?.openingGroup ? k === 0 && layout.lengthM >= 2.5 : e.len >= 2.5) || canopyRuns.has(k))) wallExtraContexts.push({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: b.recipe?.openingGroup ? layout.lengthM : e.len }, base, top, layout: b.recipe?.openingGroup ? layout : edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5, period: b.period, recipe: b.recipe, runStart: k === 0, runEnd: k === run.length - 1, assemblyOwner: b.recipe?.facadeAssembly ? k === assemblyOwnerEdge : undefined, canopyOwner: b.recipe?.shopCanopy ? canopyRuns.has(k) : undefined, canopyFrames: canopyRuns.get(k), groundFrontageActive:!!(groundFrontage||compound||regular), openings: b.recipe ? recipeBayOpenings(b.id, b.recipe, b.streetAppearance?.look === 'procedural' ? 'photo' : b.streetAppearance?.look ?? 'photo') : b.openings, streetSide: canopyRuns.has(k) || (b.recipe?.openingGroup ? run.some(r=>doorAllowed.has(r.e)) : doorAllowed.has(e)), shopfront: !!(b.shopfront || b.shop), roofKind: b.roof ? b.roof.plan.kind : 'flat' });
         // A projecting cornice under the flat lid: one sloped strip that catches the light and throws a shadow line.
-        if (!b.roof && b.plainLayer !== undefined && CORNICE_STYLES.has(b.style) && e.len >= 3.5 && !e.hole) {
+        if (!b.surveyedEnvelope && !b.roof && b.plainLayer !== undefined && CORNICE_STYLES.has(b.style) && e.len >= 3.5 && !e.hole) {
           const z = top - 0.05, out = 0.26, drop = 0.22, nx = e.nx * out, ny = e.ny * out;
           const A: [number, number, number] = [e.x0, e.y0, z], B: [number, number, number] = [e.x1, e.y1, z];
           const C: [number, number, number] = [e.x1 + nx, e.y1 + ny, z - drop], D: [number, number, number] = [e.x0 + nx, e.y0 + ny, z - drop];
@@ -495,27 +558,42 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         const tint: [number, number, number, number] = [Math.min(255, r * jitter), Math.min(255, g * jitter), Math.min(255, bl * jitter), wallShade(e.nx, e.ny) * 255];
         const paint = paintTint ? [paintTint[0], paintTint[1], paintTint[2], tint[3]] as [number, number, number, number] : tint;
         // u counts bays along the whole run, so the bay grid carries on round a kink.
-        for (const piece of edgeGroundPieces(layout, k, e.len)) {
+        if(compound||regular||groundFrontage){
+          for(const piece of (compound??regular??groundFrontage!).wallSegments){
+            const a=Math.max(s,piece.left),end=Math.min(s+e.len,piece.left+piece.width);if(end<=a)continue;
+            quads.push({e,u0:a/5,u1:end/5,v0:piece.bottom/3,v1:(piece.bottom+piece.height)/3,tint,layer:b.plainLayer!,accent,z0:piece.bottom,z1:piece.bottom+piece.height,along0:(a-s)/e.len,along1:(end-s)/e.len});
+          }
+        }else for (const piece of edgeGroundPieces(layout, k, e.len)) {
           quads.push({ e, u0: piece.a0 / bw, u1: piece.a1 / bw, v1: 1, tint: (piece.door && !b.recipe?.groundWallHex) || b.plainWalls ? tint : paint, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? (piece.door ? b.layers.door : b.layers.ground) : cellLayer(b.style, piece.door ? 'door' : b.shop ? 'shop' : 'ground', variant), accent, z0: base, z1: groundTop, along0: (piece.a0 - s) / e.len, along1: (piece.a1 - s) / e.len });
         }
-        if (layout.storeys > 0) quads.push({ e, u0: s / bw, u1: (s + e.len) / bw, v1: layout.storeys, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: top, tint, along0: 0, along1: 1 });
+        if (!compound&&!regular&&layout.storeys > 0) quads.push({ e, u0: s / bw, u1: (s + e.len) / bw, v1: layout.storeys, layer: (b.plainWalls || interwar) && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: top, tint, along0: 0, along1: 1 });
       });
     }
+    const clampToSource=(q:Quad):Quad[]=>{
+      const source=sourceEdgeFor(b,q.e);if(!source)return[q];const out:Quad[]=[];
+      for(const s of source.segments){const a=Math.max(q.along0,s.t0),end=Math.min(q.along1,s.t1);if(end-a<1e-10)continue;
+        const height=(t:number)=>s.z0+(s.z1-s.z0)*(t-s.t0)/(s.t1-s.t0),breaks=[a,end];
+        if(Math.abs(s.z1-s.z0)>1e-9)for(const z of[q.z0,q.z1]){const t=s.t0+(z-s.z0)*(s.t1-s.t0)/(s.z1-s.z0);if(t>a&&t<end)breaks.push(t);}breaks.sort((a,b)=>a-b);
+        for(let i=1;i<breaks.length;i++){const left=breaks[i-1],right=breaks[i],zl=Math.max(q.z0,Math.min(q.z1,height(left))),zr=Math.max(q.z0,Math.min(q.z1,height(right)));if(Math.max(zl,zr)-q.z0<1e-8)continue;const u=(t:number)=>q.u0+(q.u1-q.u0)*(t-q.along0)/(q.along1-q.along0),v=(z:number)=>(q.v0??0)+(q.v1-(q.v0??0))*(z-q.z0)/(q.z1-q.z0);out.push({...q,along0:left,along1:right,u0:u(left),u1:u(right),z1Left:zl,z1Right:zr,v1Left:v(zl),v1Right:v(zr)});}
+      }return out;
+    };
     // Clip conflicting wall rectangles while retaining their original UV grid.
     const visibleQuads = quads.flatMap(q => subtractWallCuts(q, wallCuts.get(q.e) ?? [], (p, r) => {
       const u = (a: number) => p.u0 + (p.u1 - p.u0) * (a - p.along0) / (p.along1 - p.along0);
       const v = (z: number) => (p.v0 ?? 0) + (p.v1 - (p.v0 ?? 0)) * (z - p.z0) / (p.z1 - p.z0);
       return { ...p, ...r, u0: u(r.along0), u1: u(r.along1), v0: v(r.z0), v1: v(r.z1) };
-    }));
+    })).flatMap(clampToSource);
     let roof: StreetCrownTri[] = cornice;
-    if (b.roof) {
+    if(b.surveyedEnvelope){
+      roof.push(...b.surveyedEnvelope.roofTriangles.map(t=>({...t,uv:t.p.map(p=>[p[0]/5,p[1]/5])as RoofTri['uv'],part:'trim' as const,hex:'#4a525d'})),...b.surveyedEnvelope.closureTriangles.map(t=>({...t,uv:t.p.map(p=>[p[0]/5,p[2]/3])as RoofTri['uv'],part:'plate' as const,facadeLayer:b.plainLayer})));
+    }else if (b.roof) {
       roof = roofTrianglesForOutline(b.polygons[0]?.[0] ?? [], origin, b.roof.plan, b.heightM, b.roof.dims, kxLocal);
       if (crownFronts.length) roof = streetCrown(roof,crownFronts,b.heightM,['gable','pitched','halfHipped'].includes(b.roof.plan.kind)&&!b.roof.plan.shutters);
     }
     const walled = mode === 'walls';
-    const lid = walled && b.lid && (!b.roof || !roof.length || b.roof.plan.keepLid) ? lidMesh(b, origin) : null;
+    const lid = walled && !b.surveyedEnvelope && b.lid && (!b.roof || !roof.length || b.roof.plan.keepLid) ? lidMesh(b, origin) : null;
     // Walls mode carries the signature storefront; extras mode only the extras.
-    const sign: SignTri[] = walled && b.signature && b.lid ? signatureTris(b.signature, edges, b.minHeightM, origin) : [];
+    const sign: SignTri[] = [...frontageTriangles,...(walled && b.signature && b.lid ? signatureTris(b.signature, edges, b.minHeightM, origin) : [])];
     // A chain supermarket's fascia goes on a street wall (else any exposed wall) nearest its point.
     if (walled && b.chain && b.lid) {
       const exposed = edges.filter(e => !e.hole && !hiddenByNeighbour(e, b));
@@ -525,7 +603,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     if (extraSink) {
       buildingWallExtras(wallExtraContexts, extraSink);
       // Roof extras on a flat roof only (a pitched roof has its own chimneys and dormers).
-      if (!b.roof || b.roof.plan.kind === 'parapet') {
+      if (!b.surveyedEnvelope && (!b.roof || b.roof.plan.kind === 'parapet')) {
         const outer = b.polygons[0]?.[0] ?? [];
         const rect = fitRect(outer.map(([lng, lat]) => [(lng - origin.lng) * kxLocal, (lat - origin.lat) * M_PER_DEG_LAT] as [number, number]), 40);
         if (rect && rect.coverage > 0.75 && rect.len > 4 && rect.wid > 4) roofExtras({ id: b.id, style: b.style, rect, z: b.heightM, wallHex: b.wallHex }, extraSink);
@@ -543,7 +621,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
   // other (Centraal's mapped parts). Give the intersection one stable owner.
   const lids = [
     ...quadsByBuilding.filter(x => x.lid).map(x => ({...x, contextOnly:false, target:x})),
-    ...context.filter(b=>b.lid && (!b.roof || b.roof.plan.keepLid)).map(b => ({b,lid:lidMesh(b,origin),contextOnly:true,target:null})),
+    ...contextPrepared.map(p=>p.b).filter(b=>!b.surveyedEnvelope && b.lid && (!b.roof || b.roof.plan.keepLid)).map(b => ({b,lid:lidMesh(b,origin),contextOnly:true,target:null})),
   ].filter(x=>x.lid).sort((a,b)=>a.b.id.localeCompare(b.b.id));
   type PriorLid = { z: number; tri: Point2[]; box: number[] };
   const prior = new Map<string, PriorLid[]>();
@@ -596,7 +674,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       const ax = e.x0 + (e.x1 - e.x0) * quad.along0, ay = e.y0 + (e.y1 - e.y0) * quad.along0;
       const bx = e.x0 + (e.x1 - e.x0) * quad.along1, by = e.y0 + (e.y1 - e.y0) * quad.along1;
       const corners: Array<[number, number, number, number, number]> = [
-        [ax, ay, quad.z0, quad.u0, quad.v0 ?? 0], [bx, by, quad.z0, quad.u1, quad.v0 ?? 0], [bx, by, quad.z1, quad.u1, quad.v1], [ax, ay, quad.z1, quad.u0, quad.v1],
+        [ax, ay, quad.z0, quad.u0, quad.v0 ?? 0], [bx, by, quad.z0, quad.u1, quad.v0 ?? 0], [bx, by, quad.z1Right??quad.z1, quad.u1, quad.v1Right??quad.v1], [ax, ay, quad.z1Left??quad.z1, quad.u0, quad.v1Left??quad.v1],
       ];
       for (const [x, y, z, u, vv] of corners) {
         positions[v * 3] = x; positions[v * 3 + 1] = y; positions[v * 3 + 2] = z;
@@ -618,7 +696,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         const shade = Math.max(0.5, Math.min(1, 0.58 + 0.42 * Math.max(0, t.n[0] * -0.35 + t.n[1] * 0.5 + t.n[2] * 0.8)));
         const wall = t.part === 'plate' || t.part === 'dormerFace', flat = t.part === 'trim' || t.part === 'decal';
         // Trim and decals (white stone, cornices, shutters) are flat colour on the lid's flat layer.
-        const layer = flat ? (b.lid?.flatLayer ?? b.roof!.layers.slope) : t.part === 'plate' ? (t.facadeLayer ?? b.plainLayer ?? b.roof!.layers.plain) : t.part === 'dormerFace' ? b.roof!.layers.dormer : b.roof!.layers.slope;
+        const layer = flat ? (b.lid?.flatLayer ?? b.roof?.layers.slope ?? b.lid!.flatLayer) : t.part === 'plate' ? (t.facadeLayer ?? b.plainLayer ?? b.roof?.layers.plain ?? b.plainLayer!) : t.part === 'dormerFace' ? b.roof?.layers.dormer ?? b.plainLayer! : b.roof?.layers.slope ?? b.lid!.flatLayer;
         const tint = t.hex ? parseHex(t.hex) : flat ? white : wall ? t.facadeTint ?? defaultWallTint : [rr, rg, rb];
         for (let k = 0; k < 3; k++) {
           positions[v * 3] = t.p[k][0]; positions[v * 3 + 1] = t.p[k][1]; positions[v * 3 + 2] = t.p[k][2];
@@ -651,9 +729,10 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       for (const [qi,q] of t.p.entries()) {
         positions[v * 3] = q[0]; positions[v * 3 + 1] = q[1]; positions[v * 3 + 2] = q[2];
         uvs[v * 2] = t.uv?.[qi][0] ?? 0.5; uvs[v * 2 + 1] = t.uv?.[qi][1] ?? 0.5;
-        layers[v] = t.texture === 'glass-block' ? BAY_LAYER_COUNT + (b.streetAppearance?.look === 'procedural' ? PROCEDURAL_RECIPE_LAYER_OFFSET : PROCEDURAL_RECIPE_LAYER_OFFSET - CELL_LAYER_COUNT) : b.lid!.flatLayer;
+        layers[v] = t.layer ?? (t.texture === 'glass-block' ? BAY_LAYER_COUNT + (b.streetAppearance?.look === 'procedural' ? PROCEDURAL_RECIPE_LAYER_OFFSET : PROCEDURAL_RECIPE_LAYER_OFFSET - CELL_LAYER_COUNT) : b.lid!.flatLayer);
         tints[v * 4] = sr; tints[v * 4 + 1] = sg; tints[v * 4 + 2] = sb; tints[v * 4 + 3] = shade * 255;
-        accents[v * 4] = accents[v * 4 + 1] = accents[v * 4 + 2] = accents[v * 4 + 3] = 255;
+        const acc=t.accentHex?parseHex(t.accentHex):[255,255,255];
+        accents[v * 4] = acc[0]; accents[v * 4+1]=acc[1]; accents[v * 4+2]=acc[2]; accents[v * 4+3]=255;
         indices[ti++] = v; v++;
       }
     }
@@ -661,6 +740,146 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
   }
   const chunk = { positions, uvs, layers, tints, accents, indices, ranges, vertexCount, quadCount: quadTotal + Math.ceil(roofTotal / 2), wallCount: wallTotal, buildingCount: ranges.length };
   return mode === 'walls' ? applyHostWallOpenings(chunk, origin, hostOpenings) : chunk;
+}
+
+
+/** Carry the observed repeating subtype along its admitted street, across physical Pand boundaries. */
+function compoundDirection(b:MeshBuilding,e:Edge,origin:Origin):1|-1 {
+  const profile=b.streetAppearance?.profiles.find(p=>p.id===b.recipe?.profileId);
+  if(!profile)return 1;
+  const [a,c]=profile.segment,kx=111320*Math.cos(origin.lat*Math.PI/180);
+  const dx=(c[0]-a[0])*kx,dy=(c[1]-a[1])*110540;
+  return (e.x1-e.x0)*dx+(e.y1-e.y0)*dy<0?-1:1;
+}
+
+function interwarRowPhase(b:MeshBuilding,e:Edge,origin:Origin,lengthM:number):{projectionPhase:number;projectionStep:1|-1} {
+  const profile=b.streetAppearance?.profiles.find(p=>p.id===b.recipe?.profileId);
+  if(!profile)return {projectionPhase:0,projectionStep:1};
+  const kx=111320*Math.cos(origin.lat*Math.PI/180),[a,c]=profile.segment;
+  const ax=(a[0]-origin.lng)*kx,ay=(a[1]-origin.lat)*110540,dx=(c[0]-a[0])*kx,dy=(c[1]-a[1])*110540,len=Math.hypot(dx,dy);
+  if(!len)return {projectionPhase:0,projectionStep:1};
+  const start=(e.x0-ax)*dx/len+(e.y0-ay)*dy/len;
+  const end=(e.x1-ax)*dx/len+(e.y1-ay)*dy/len;
+  return interwarStreetPhase(start,end,lengthM,b.recipe!.interwarFrontage!.groupPitchM);
+}
+
+
+/** True cut portico backs, source shop glass and a separate customer door remain textured. */
+function interwarGroundTriangles(plan:InterwarGroundFrontagePlan,e:Edge,b:MeshBuilding):SignTri[] {
+  const r=b.recipe!.interwarGround!,openings=recipeBayOpenings(b.id,b.recipe!,b.streetAppearance?.look==='procedural'?'photo':b.streetAppearance?.look??'photo');
+  const ux=(e.x1-e.x0)/e.len,uy=(e.y1-e.y0)/e.len;
+  const world=([a,o,z]:number[]):[number,number,number]=>[e.x0+ux*a+e.nx*o,e.y0+uy*a+e.ny*o,z];
+  const material=(q:InterwarGroundFrontagePlan['quads'][number])=>{
+    // The stock school door contains a fanlight and an overpainted floor band.
+    // Use its rectangular relief panel, while the recessed geometry owns access.
+    if(q.role==='door')return {layer:b.layers!.door,hex:'#35413d',rect:[openings.door.axis-openings.door.width/2+14/520,openings.door.top-148/340,openings.door.width-28/520,66/340]};
+    // Keep the painted glazing gradient above the school cell's floor band.
+    if(q.role==='shopGlass'||q.role==='shopDoor')return {layer:b.layers!.ground,hex:'#ffffff',rect:[.42,.24,.06,.31]};
+    return {layer:q.role==='wall'?b.plainLayer!:b.lid!.flatLayer,hex:q.role==='wall'?b.wallHex:r.frameHex??b.recipe!.frameHex??'#e5e5d8',rect:[.5,.5,0,0]};
+  };
+  const tris=plan.quads.flatMap(q=>{
+    const m=material(q),n:[number,number,number]=[ux*q.normal[0]+e.nx*q.normal[1],uy*q.normal[0]+e.ny*q.normal[1],q.normal[2]],p=q.points.map(world);
+    const uv=q.uv.map(([u,v]):[number,number]=>[m.rect[0]+m.rect[2]*u,m.rect[1]+m.rect[3]*v]);
+    return [[0,1,2],[0,2,3]].map(ids=>{
+      const ab=p[ids[1]].map((v,i)=>v-p[ids[0]][i]),ac=p[ids[2]].map((v,i)=>v-p[ids[0]][i]),cross=[ab[1]*ac[2]-ab[2]*ac[1],ab[2]*ac[0]-ab[0]*ac[2],ab[0]*ac[1]-ab[1]*ac[0]];
+      if(cross.reduce((sum,v,i)=>sum+v*n[i],0)<0)ids=[ids[0],ids[2],ids[1]];
+      return {p:ids.map(i=>p[i]),uv:ids.map(i=>uv[i]),n,hex:m.hex,layer:m.layer,accentHex:q.role==='door'?'#35413d':r.frameHex??b.recipe!.frameHex};
+    });
+  });
+  // A small upright pull makes the source-selected glass customer leaf readable as access.
+  if(plan.shopDoor){
+    const door=plan.shopDoor.opening,a=door.left+door.width-.14,z=door.bottom+door.height*.45;
+    const p=[[a,.065,z],[a+.035,.065,z],[a+.035,.065,z+.3],[a,.065,z+.3]].map(world),n:[number,number,number]=[e.nx,e.ny,0];
+    for(const ids of [[0,1,2],[0,2,3]]){const ab=p[ids[1]].map((v,i)=>v-p[ids[0]][i]),ac=p[ids[2]].map((v,i)=>v-p[ids[0]][i]);if((ab[1]*ac[2]-ab[2]*ac[1])*n[0]+(ab[2]*ac[0]-ab[0]*ac[2])*n[1]<0)[ids[1],ids[2]]=[ids[2],ids[1]];tris.push({p:ids.map(i=>p[i]),uv:ids.map(()=>[.5,.5] as [number,number]),n,hex:'#454b49',layer:b.lid!.flatLayer,accentHex:r.frameHex??b.recipe!.frameHex});}
+  }
+  return tris;
+}
+
+/** Crop glass from the active atlas, while shared geometry owns white frames and transoms. */
+/** Coupled zones and their cut access belong to ordinary wall LOD, including textures. */
+function compoundTriangles(plan:CompoundFrontagePlan,e:Edge,b:MeshBuilding):SignTri[] {
+  const openings=recipeBayOpenings(b.id,b.recipe!,b.streetAppearance?.look==='procedural'?'photo':b.streetAppearance?.look??'photo');
+  const upper=openings.upper,width=upper.widths?.[0]??upper.width,axis=upper.axes[0];
+  const ux=(e.x1-e.x0)/e.len,uy=(e.y1-e.y0)/e.len;
+  const world=([a,o,z]:number[]):[number,number,number]=>[e.x0+ux*a+e.nx*o,e.y0+uy*a+e.ny*o,z];
+  const frame=b.recipe!.frameHex??'#e5e5d8';
+  return plan.quads.flatMap(q=>{
+    const door=q.part==='access-door',glass=q.role==='glass';
+    // The stock school cell has six-over-six muntins: the former -.21..-.13
+    // crop included the first vertical bar. This narrower interior retains the
+    // painted glass gradient, with room for filtering at both atlas resolutions.
+    // Access geometry owns the rectangular head; sample only the relief leaf,
+    // below doorAt's fanlight and above the school floor band painted over its
+    // lower leaf. The complete upper relief panel supplies the dark leaf detail.
+    const rect=door
+      ?[openings.door.axis-openings.door.width/2+14/520,openings.door.top-148/340,openings.door.width-28/520,66/340]
+      :glass?[axis-width*.24,upper.sill+(upper.head-upper.sill)*.10,width*.02,(upper.head-upper.sill)*.09]:[.5,.5,0,0];
+    const p=q.points.map(world),uv=q.uv.map(([u,v],i):[number,number]=>q.role==='wall'&&q.part==='shaft-body'?[q.points[i][0]/5,q.points[i][2]/3]:[rect[0]+rect[2]*u,rect[1]+rect[3]*v]);
+    const n:[number,number,number]=[ux*q.normal[0]+e.nx*q.normal[1],uy*q.normal[0]+e.ny*q.normal[1],q.normal[2]];
+    return [[0,1,2],[0,2,3]].map(ids=>{
+      const ab=p[ids[1]].map((v,i)=>v-p[ids[0]][i]),ac=p[ids[2]].map((v,i)=>v-p[ids[0]][i]);
+      const cross=[ab[1]*ac[2]-ab[2]*ac[1],ab[2]*ac[0]-ab[0]*ac[2],ab[0]*ac[1]-ab[1]*ac[0]];
+      if(cross.reduce((sum,v,i)=>sum+v*n[i],0)<0)ids=[ids[0],ids[2],ids[1]];
+      return {p:ids.map(i=>p[i]),uv:ids.map(i=>uv[i]),n,
+        layer:door?b.layers!.door:glass?b.layers!.upper:q.role==='wall'?b.plainLayer!:b.lid!.flatLayer,
+        hex:door?'#35413d':glass?'#ffffff':q.role==='wall'?b.wallHex:q.role==='cap'?'#454b49':frame,accentHex:door?'#35413d':frame};
+    });
+  });
+}
+
+/** Regular source tiers share the audited quiet glazing/dark leaf crop, while
+ * physical frames own pane subdivisions and pale stone remains a solid role. */
+function regularCanalTriangles(plan:RegularCanalFrontagePlan,e:Edge,b:MeshBuilding):SignTri[] {
+  const openings=recipeBayOpenings(b.id,b.recipe!,b.streetAppearance?.look==='procedural'?'photo':b.streetAppearance?.look??'photo');
+  const upper=openings.upper,width=upper.widths?.[0]??upper.width,axis=upper.axes[0];
+  const ux=(e.x1-e.x0)/e.len,uy=(e.y1-e.y0)/e.len;
+  const world=([a,o,z]:number[]):[number,number,number]=>[e.x0+ux*a+e.nx*o,e.y0+uy*a+e.ny*o,z];
+  const frame=b.recipe!.frameHex??'#e5e5d8';
+  return plan.quads.flatMap(q=>{
+    const door=q.role==='door'||q.role==='door-panel',glass=q.role==='glass';
+    const rect=door?[openings.door.axis-openings.door.width/2+14/520,openings.door.top-148/340,openings.door.width-28/520,66/340]
+      :glass?[axis-width*.24,upper.sill+(upper.head-upper.sill)*.10,width*.02,(upper.head-upper.sill)*.09]:[.5,.5,0,0];
+    if(q.role==='door-panel'){
+      // Sample quiet timber, away from doorAt's handle/frame/head glyphs.
+      rect[0]=openings.door.axis-openings.door.width*.18;
+      rect[1]=openings.door.top-130/340;rect[2]=openings.door.width*.08;rect[3]=12/340;
+    }
+    const p=q.points.map(world),uv=q.uv.map(([u,v],i):[number,number]=>q.role==='wall'?[q.points[i][0]/5,q.points[i][2]/3]:[rect[0]+rect[2]*u,rect[1]+rect[3]*v]);
+    const n:[number,number,number]=[ux*q.normal[0]+e.nx*q.normal[1],uy*q.normal[0]+e.ny*q.normal[1],q.normal[2]];
+    return [[0,1,2],[0,2,3]].map(ids=>{
+      const ab=p[ids[1]].map((v,i)=>v-p[ids[0]][i]),ac=p[ids[2]].map((v,i)=>v-p[ids[0]][i]);
+      const cross=[ab[1]*ac[2]-ab[2]*ac[1],ab[2]*ac[0]-ab[0]*ac[2],ab[0]*ac[1]-ab[1]*ac[0]];
+      if(cross.reduce((sum,v,i)=>sum+v*n[i],0)<0)ids=[ids[0],ids[2],ids[1]];
+      return {p:ids.map(i=>p[i]),uv:ids.map(i=>uv[i]),n,
+        layer:door?b.layers!.door:glass?b.layers!.upper:q.role==='wall'?b.plainLayer!:b.lid!.flatLayer,
+        hex:door?(q.role==='door-panel'?'#526057':'#35413d'):glass?'#ffffff':q.role==='wall'?b.wallHex:q.role==='rail'?'#35413d':q.role==='door-hardware'?'#b5b49f':frame,
+        accentHex:door?(q.role==='door-panel'?'#526057':'#35413d'):frame};
+    });
+  });
+}
+
+function interwarTriangles(plan:InterwarFrontagePlan,e:Edge,b:MeshBuilding):SignTri[] {
+  const r=b.recipe!.interwarFrontage!,openings=recipeBayOpenings(b.id,b.recipe!,b.streetAppearance?.look==='procedural'?'photo':b.streetAppearance?.look??'photo').upper;
+  const width=openings.widths?.[0]??openings.width,axis=openings.axes[0];
+  const u0=axis-width*.24,u1=axis-width*.22;
+  // The stock school first vertical muntin starts inside the former -.21..-.13
+  // crop. This interior stays glazing through full/half atlas linear filtering.
+  // Physical framing owns subdivisions.
+  const v0=openings.sill+(openings.head-openings.sill)*.10,v1=openings.sill+(openings.head-openings.sill)*.19;
+  const ux=(e.x1-e.x0)/e.len,uy=(e.y1-e.y0)/e.len;
+  const world=([a,o,z]:number[]):[number,number,number]=>[e.x0+ux*a+e.nx*o,e.y0+uy*a+e.ny*o,z];
+  return plan.quads.flatMap(q=>{
+    const n:[number,number,number]=[ux*q.normal[0]+e.nx*q.normal[1],uy*q.normal[0]+e.ny*q.normal[1],q.normal[2]];
+    const p=q.points.map(world),uv=q.uv.map(([u,v]):[number,number]=>q.role==='glass'?[u0+(u1-u0)*u,v0+(v1-v0)*v]:[.5,.5]);
+    // Local wall frames may be left-handed in world XY; correct using actual world normals.
+    const tri=(a:number,c:number,d:number):SignTri=>{
+      let ids=[a,c,d];const ab=p[c].map((v,i)=>v-p[a][i]),ac=p[d].map((v,i)=>v-p[a][i]);
+      const cross=[ab[1]*ac[2]-ab[2]*ac[1],ab[2]*ac[0]-ab[0]*ac[2],ab[0]*ac[1]-ab[1]*ac[0]];
+      if(cross.reduce((sum,v,i)=>sum+v*n[i],0)<0)ids=[a,d,c];
+      return {p:ids.map(i=>p[i]),uv:ids.map(i=>uv[i]),n,hex:q.role==='glass'?'#ffffff':q.role==='frame'?r.frameHex??b.recipe!.frameHex??'#e5e5d8':q.role==='cap'?r.capHex??'#454b49':b.wallHex,layer:q.role==='glass'?b.layers!.upper:b.lid!.flatLayer,accentHex:r.frameHex??b.recipe!.frameHex};
+    };
+    return [tri(0,1,2),tri(0,2,3)];
+  });
 }
 
 /**

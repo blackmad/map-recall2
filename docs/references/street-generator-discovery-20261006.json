@@ -1,0 +1,994 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-06",
+  "status": "discovery-only-no-admission",
+  "scope": "Choose the next bounded shared-generator discovery after Jan Evertsen; preserve failed transfers and current work inventories.",
+  "authorizationBoundary": "No profiles, runtime registrations, models, source archives or git modified. Historic failed heldout is now discovery only because street-rhythm-work.json explicitly calls it an exposed counterexample. Original immutable evaluation policy is retained in its archive.",
+  "recommendation": {
+    "candidateId": "oudezijds-east-next-south-compound",
+    "reason": "An inspected municipal reference and independently recorded native render expose a missing whole-front relationship. It is immediately actionable using cached evidence; the two Amsterdam School alternatives have strong official identity/prose coverage but no current facade or baseline visual acceptance.",
+    "nextSharedCapability": "Compose one complete frontage from a broad repeated main-window zone and an independent narrow access/window zone, with a connected broad ground surround and entrance canopy aligned to the access axis. Keep ratios source-derived; do not translate width/year into a citywide compound prior.",
+    "noTransferAcceptance": true
+  },
+  "sourcesAndAccess": {
+    "attemptedAt": "2026-10-06T07:54:54.431932+00:00",
+    "networkRequests": 0,
+    "reason": "Successful local source caches reused. New photo/Beeldbank acquisition belongs to root source context once second group is selected. No host-outage or permanent-unavailability claim.",
+    "sourceRepository": "blackmad/map-recall2-source-data",
+    "privateSourcePath": "streets/oudezijds-east-next-south/",
+    "sourceCommit": "Not independently resolved in this pass; existing source archive manifest checked. Root should record exact archival commit before a model/profile checkpoint.",
+    "sourceImage": {
+      "path": "/Users/blackmad/Code/map-recall2-source-data/streets/oudezijds-east-next-south/artifacts/street-appearance/rows/oudezijds-east-next-south/evaluation-source/processed/oudezijds-east-next-south-station-2.jpg",
+      "sha256": "a441bfff36fec4484bea0fae21f16f28ec9cd45d61dfcc548cb4fac684d1bba2",
+      "inspected": true,
+      "attribution": "Gemeente Amsterdam panorama CC BY4.0",
+      "captureDate": "2025-06-30",
+      "retrieval": "2026-10-05 successful200; manifest records original requests and checksums",
+      "originals": "raw/recording_2025-06-30_05-16-46_01760.jpg and recording_2025-06-30_05-16-46_01755.jpg in the same private source path"
+    },
+    "renderInspected": "artifacts/street-appearance/rows/oudezijds-east-next-south/renderer-repair/oudezijds-east-next-south-station-2-photo-block.png"
+  },
+  "candidates": [
+    {
+      "id": "oudezijds-east-next-south-compound",
+      "priority": 1,
+      "status": "observed-critical-generator-gap",
+      "scope": {
+        "street": "Oudezijds Voorburgwal east bank",
+        "segment": [
+          [
+            4.898626,
+            52.373866
+          ],
+          [
+            4.898186,
+            52.373522
+          ]
+        ],
+        "side": 1,
+        "reachM": 20,
+        "lengthM": 48.375133804002424,
+        "nativeInventoryCount": 10,
+        "nativeInventory": [
+          {
+            "id": "NL.IMBAG.Pand.0363100012178398",
+            "heightM": 16.39,
+            "frontageRunsM": [
+              6.338
+            ]
+          },
+          {
+            "id": "NL.IMBAG.Pand.0363100012177703",
+            "heightM": 9.85,
+            "frontageRunsM": [
+              3.863
+            ]
+          },
+          {
+            "id": "NL.IMBAG.Pand.0363100012177702",
+            "heightM": 10.45,
+            "frontageRunsM": [
+              3.904
+            ]
+          },
+          {
+            "id": "NL.IMBAG.Pand.0363100012177704",
+            "heightM": 12.16,
+            "frontageRunsM": [
+              4.59
+            ]
+          },
+          {
+            "id": "NL.IMBAG.Pand.0363100012177700",
+            "heightM": 15.25,
+            "frontageRunsM": [
+              2.016,
+              1.715,
+              2.279
+            ]
+          },
+          {
+            "id": "NL.IMBAG.Pand.0363100012178296",
+            "heightM": 16.23,
+            "frontageRunsM": [
+              5.061
+            ]
+          },
+          {
+            "id": "NL.IMBAG.Pand.0363100012178298",
+            "heightM": 22.99,
+            "frontageRunsM": [
+              10.508
+            ]
+          },
+          {
+            "id": "NL.IMBAG.Pand.0363100012178233",
+            "heightM": 16.16,
+            "frontageRunsM": [
+              4.674
+            ]
+          },
+          {
+            "id": "NL.IMBAG.Pand.0363100012178232",
+            "heightM": 17.84,
+            "frontageRunsM": [
+              1.715,
+              3.088
+            ]
+          },
+          {
+            "id": "NL.IMBAG.Pand.0363100012178300",
+            "heightM": 12.71,
+            "frontageRunsM": [
+              5.489
+            ]
+          }
+        ]
+      },
+      "sourceIdentity": "Photo sign suggests named lodging, but no exact address/Pand join is admitted. Width10.508m Pand0363100012178298 is a geometric candidate only; do not assign the observed compound facade by width alone.",
+      "rendererGap": {
+        "kind": "missing-shared-assembly",
+        "evidence": "artifacts/street-appearance/rows/oudezijds-east-next-south/renderer-repair/oudezijds-east-next-south-station-2-photo-block.png",
+        "independentReview": "scripts/street-appearance/reviews/oudezijds-east-next-south/renderer-repair-review.json",
+        "observed": "Native wide ordinary facade repeats stock equal columns and a generic ground template; municipal source has three broad windows plus a narrow independent access element. Roof attachment repair passed bounded regression, leaving the compound facade failure intact.",
+        "codeBoundary": "src/canalRecall/streetAppearance.ts ArchitecturalRecipe openingGroup currently only canal-two/canal-three; tall-side-entry/tall-commercial cannot express the photographed unequal linked zones."
+      },
+      "criticalRelationships": [
+        {
+          "id": "unequal-main-access-zones",
+          "relationship": "Three broad main window axes repeat vertically beside a narrower access shaft with one principal window and slender side lights. Preserve main-to-access hierarchy across all storeys.",
+          "confidence": "high visible relationship; exact surveyed dimensions unresolved"
+        },
+        {
+          "id": "connected-ground-hierarchy",
+          "relationship": "One pale joined three-opening surround belongs to the broad main zone; a separate projecting pale canopy caps the dark access door and aligns with the shaft above.",
+          "confidence": "high for visible assemblies; source crop obscures complete pavement/approach"
+        },
+        {
+          "id": "window-trim-and-masonry",
+          "relationship": "Pale subdivided glazing and narrow shaft light bands remain distinct against dark/gray-brown brick; no repeated balcony stack.",
+          "confidence": "high visible relationship; palette requires current lighting comparison"
+        },
+        {
+          "id": "top-and-neighbor-rhythm",
+          "relationship": "Broad cornice/attic termination remains quieter than adjacent narrow gabled/corniced fronts; never flatten neighboring roof mixture to accommodate the compound module.",
+          "confidence": "medium; photographed upper edge visible, roof behind not resolved"
+        }
+      ],
+      "frozenSamples": {
+        "freezeKind": "discovery samples frozen here before implementation; fresh challenge suggestion subject to native/blocker audit",
+        "representative": {
+          "id": "oudezijds-east-next-south-station-2",
+          "role": "exposed discovery",
+          "alongM": 36.28135035300182,
+          "source": "/Users/blackmad/Code/map-recall2-source-data/streets/oudezijds-east-next-south/artifacts/street-appearance/rows/oudezijds-east-next-south/evaluation-source/processed/oudezijds-east-next-south-station-2.jpg"
+        },
+        "transition": {
+          "id": "oudezijds-east-next-south-station-1",
+          "role": "exposed narrow/compound context regression",
+          "alongM": 12.093783451000606,
+          "source": "/Users/blackmad/Code/map-recall2-source-data/streets/oudezijds-east-next-south/artifacts/street-appearance/rows/oudezijds-east-next-south/evaluation-source/processed/oudezijds-east-next-south-station-1.jpg"
+        },
+        "heldoutSuggestion": {
+          "id": "oudezijds-east-next-next-south",
+          "segment": [
+            [
+              4.898186,
+              52.373522
+            ],
+            [
+              4.897619,
+              52.373084
+            ]
+          ],
+          "side": 1,
+          "reachM": 20,
+          "stationFractions": [
+            0.25,
+            0.75
+          ],
+          "role": "not acquired or inspected in this pass; must inventory native walls, exclude old exposed footprints and freeze a distinct recipe before current image inspection",
+          "status": "proposed-not-yet-validated-independent"
+        }
+      },
+      "sourceGaps": [
+        "Resolve official photo/address/Pand parent relationship before runtime identity assignment.",
+        "Acquire a second observed compound example; this one photo establishes a capability need, not recurring city/district prevalence.",
+        "Acquire current complete base/approach and roof context with dated municipal stations.",
+        "Bounded Beeldbank address/name search and register description once exact identity resolves.",
+        "Fresh heldout not yet source-inventoried; no transfer or game/performance acceptance."
+      ],
+      "retainedFailures": [
+        "Original next-south heldout failed; repaired roof regression did not accept compound facade or expansion.",
+        "No live-game/GPU evidence for a new compound generator."
+      ]
+    },
+    {
+      "id": "cooperatiehof-exterior-tellegen-ordinary-row",
+      "priority": 2,
+      "status": "official-source-and-native-inventory-shortlist-unobserved",
+      "scope": "Only ordinary residential runs of the exterior Burgemeester Tellegenstraat1–59/Henrick de Keijserplein block; gate buildings, corner shop sculpture and court entries are separate transitions, not uniform repeat modules.",
+      "sources": {
+        "municipalRecord": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/835cfa8e-2621-4ff5-952b-70896d03f134?_format=json",
+        "rceRecord": "https://monumentenregister.cultureelerfgoed.nl/monumenten/527804",
+        "officialPandIds": [
+          "0363100012061585",
+          "0363100012062120",
+          "0363100012067087",
+          "0363100012067432",
+          "0363100012067830",
+          "0363100012069405",
+          "0363100012071313",
+          "0363100012072859",
+          "0363100012072869",
+          "0363100012075029",
+          "0363100012082713",
+          "0363100012085323",
+          "0363100012085547",
+          "0363100012107140",
+          "0363100012109756",
+          "0363100012110143",
+          "0363100012111393",
+          "0363100012113883",
+          "0363100012115475",
+          "0363100012115826",
+          "0363100012119571",
+          "0363100012122233",
+          "0363100012126661",
+          "0363100012127281",
+          "0363100012128110",
+          "0363100012131125",
+          "0363100012133789",
+          "0363100012136508",
+          "0363100012137541",
+          "0363100012139985",
+          "0363100012151609",
+          "0363100012154433"
+        ],
+        "cache": "scripts/data/amsterdam-monument-register/records.json.gz",
+        "snapshotSha256": "5b73fb7b464fa18349803be34e7a838f000ad293835073ff839bed25f1c0d22d",
+        "accessState": "cached official snapshot read successfully; not a fresh network fetch",
+        "descriptionDate": "not stated in cached assertion; snapshot collected2026-10-05",
+        "photoAccess": "No relevant current row photo inspected in this pass"
+      },
+      "installedInventory": {
+        "officialParents": 32,
+        "installedMatches": 32,
+        "matched": [
+          {
+            "id": "0363100012061585",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012061585",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 11.5
+            }
+          },
+          {
+            "id": "0363100012067087",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012067087",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 11.53
+            }
+          },
+          {
+            "id": "0363100012067432",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012067432",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 11.55
+            }
+          },
+          {
+            "id": "0363100012067830",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012067830",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 11.5
+            }
+          },
+          {
+            "id": "0363100012071313",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012071313",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 11.47
+            }
+          },
+          {
+            "id": "0363100012072859",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012072859",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 11.74
+            }
+          },
+          {
+            "id": "0363100012072869",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012072869",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 11.5
+            }
+          },
+          {
+            "id": "0363100012075029",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012075029",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 11.57
+            }
+          },
+          {
+            "id": "0363100012082713",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012082713",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 14.67
+            }
+          },
+          {
+            "id": "0363100012085323",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012085323",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 11.53
+            }
+          },
+          {
+            "id": "0363100012107140",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012107140",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 17.92
+            }
+          },
+          {
+            "id": "0363100012109756",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012109756",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 11.49
+            }
+          },
+          {
+            "id": "0363100012110143",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012110143",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 11.53
+            }
+          },
+          {
+            "id": "0363100012113883",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012113883",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 11.54
+            }
+          },
+          {
+            "id": "0363100012115475",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012115475",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 11.51
+            }
+          },
+          {
+            "id": "0363100012115826",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012115826",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 12.27
+            }
+          },
+          {
+            "id": "0363100012119571",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012119571",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 11.51
+            }
+          },
+          {
+            "id": "0363100012122233",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012122233",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 11.55
+            }
+          },
+          {
+            "id": "0363100012126661",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012126661",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 11.76
+            }
+          },
+          {
+            "id": "0363100012127281",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012127281",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 11.57
+            }
+          },
+          {
+            "id": "0363100012128110",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012128110",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 11.53
+            }
+          },
+          {
+            "id": "0363100012131125",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012131125",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 11.54
+            }
+          },
+          {
+            "id": "0363100012133789",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012133789",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 11.53
+            }
+          },
+          {
+            "id": "0363100012137541",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012137541",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 11.54
+            }
+          },
+          {
+            "id": "0363100012139985",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012139985",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 12.21
+            }
+          },
+          {
+            "id": "0363100012151609",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012151609",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 11.55
+            }
+          },
+          {
+            "id": "0363100012154433",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012154433",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 14.68
+            }
+          },
+          {
+            "id": "0363100012062120",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012062120",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 14.67
+            }
+          },
+          {
+            "id": "0363100012069405",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012069405",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 14.73
+            }
+          },
+          {
+            "id": "0363100012085547",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012085547",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 11.55
+            }
+          },
+          {
+            "id": "0363100012111393",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012111393",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 14.79
+            }
+          },
+          {
+            "id": "0363100012136508",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012136508",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 14.77
+            }
+          }
+        ],
+        "method": "Exact municipal Pand IDs joined against native14/*.geojson.gz feature property IDs; no approximate spatial or date join.",
+        "suppression": "No full ordinary/signature loaded-scene suppression audit performed; required before selecting actual target faces."
+      },
+      "criticalRelationshipsFromRegister": [
+        "Coupled two/three-window groups separated by rounded plaster piers; preserve grouping rather than independent bays.",
+        "White concave attic/cornice bands and small attic openings tied to the flat roof/body termination.",
+        "Projecting wooden window boxes local to gates/recess transitions, rather than a district-wide erker probability.",
+        "Raised portico stairs belong to the corresponding doors; exterior gate passages remain open."
+      ],
+      "actualGenericGap": {
+        "status": "code-capability gap and native coverage established; actual baseline image missing",
+        "basis": "ArchitecturalRecipe school period exists but rounded plaster-separated coupled groups/wooden boxed transition openings are not explicit complete frontage options. No claim of a reviewed visual renderer failure at this street."
+      },
+      "frozenSampleSuggestions": {
+        "representative": "Exterior north facade: one quiet coupled-window run, away from higher corner/gate.",
+        "transition": "North facade change from flush six-bay side to recessed17-bay Henrick de Keijserplein side.",
+        "heldout": "Opposite ordinary exterior west-side run, excluding gate and sculptural corners; official addresses/current-photo stations must be frozen before tuning.",
+        "status": "topological register suggestions; not ready to acquire heldout until street-side native face audit"
+      },
+      "sourceGaps": [
+        "No current municipal row photographs inspected; acquire before deciding generic facade treatment.",
+        "Exact street/address-to-face partition among32 parents unresolved.",
+        "Gate/underpass geometry versus native holes must be checked; full landmark loop for mapped POI/raised structure identities.",
+        "No gallery/game/performance evidence."
+      ]
+    },
+    {
+      "id": "dageraad-residential-quiet-versus-wave-rows",
+      "priority": 3,
+      "status": "source-rich-alternative-defer-distinctive-complex-ownership",
+      "scope": "RCE1508 estate residential fronts excluding the existing Museum De Dageraad parent0363100012076951. Treat quiet and strongly undulating runs as distinct observed groups.",
+      "sources": {
+        "municipalRecord": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/0ada11b4-b2fb-4514-a54b-1c27efc47c9a?_format=json",
+        "rceRecord": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1508",
+        "officialPandIds": [
+          "0363100012068069",
+          "0363100012074646",
+          "0363100012079302",
+          "0363100012084696",
+          "0363100012084774",
+          "0363100012090094",
+          "0363100012090265",
+          "0363100012096531",
+          "0363100012097694",
+          "0363100012100583",
+          "0363100012101824",
+          "0363100012108291",
+          "0363100012110847",
+          "0363100012114550",
+          "0363100012117924",
+          "0363100012123546",
+          "0363100012124691",
+          "0363100012128933",
+          "0363100012132188",
+          "0363100012133212",
+          "0363100012137574",
+          "0363100012140507",
+          "0363100012140896",
+          "0363100012140973",
+          "0363100012141704",
+          "0363100012142626",
+          "0363100012143607",
+          "0363100012145598",
+          "0363100012147294",
+          "0363100012148358",
+          "0363100012151758"
+        ],
+        "cache": "scripts/data/amsterdam-monument-register/records.json.gz",
+        "snapshotSha256": "5b73fb7b464fa18349803be34e7a838f000ad293835073ff839bed25f1c0d22d",
+        "accessState": "cached official snapshot read successfully; not a fresh network fetch",
+        "descriptionDate": "not stated in cached assertion; snapshot collected2026-10-05",
+        "photoAccess": "No relevant current row photo inspected in this pass"
+      },
+      "installedInventory": {
+        "officialParents": 31,
+        "installedMatches": 31,
+        "matched": [
+          {
+            "id": "0363100012068069",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8415/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012068069",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 13.01
+            }
+          },
+          {
+            "id": "0363100012079302",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8415/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012079302",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 12.78
+            }
+          },
+          {
+            "id": "0363100012084696",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8415/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012084696",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 14.17
+            }
+          },
+          {
+            "id": "0363100012084774",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8415/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012084774",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 12.78
+            }
+          },
+          {
+            "id": "0363100012090094",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8415/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012090094",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 12.79
+            }
+          },
+          {
+            "id": "0363100012090265",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8415/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012090265",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 12.59
+            }
+          },
+          {
+            "id": "0363100012097694",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8415/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012097694",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 12.84
+            }
+          },
+          {
+            "id": "0363100012100583",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8415/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012100583",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 13.83
+            }
+          },
+          {
+            "id": "0363100012108291",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8415/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012108291",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 16.61
+            }
+          },
+          {
+            "id": "0363100012110847",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8415/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012110847",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 12.64
+            }
+          },
+          {
+            "id": "0363100012124691",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8415/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012124691",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 16.84
+            }
+          },
+          {
+            "id": "0363100012128933",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8415/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012128933",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 13.94
+            }
+          },
+          {
+            "id": "0363100012137574",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8415/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012137574",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 12.73
+            }
+          },
+          {
+            "id": "0363100012140896",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8415/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012140896",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 12.72
+            }
+          },
+          {
+            "id": "0363100012140973",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8415/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012140973",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 12.7
+            }
+          },
+          {
+            "id": "0363100012141704",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8415/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012141704",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 12.8
+            }
+          },
+          {
+            "id": "0363100012142626",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8415/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012142626",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 12.64
+            }
+          },
+          {
+            "id": "0363100012143607",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8415/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012143607",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 13.81
+            }
+          },
+          {
+            "id": "0363100012147294",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8415/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012147294",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 13.98
+            }
+          },
+          {
+            "id": "0363100012148358",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8415/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012148358",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 12.94
+            }
+          },
+          {
+            "id": "0363100012151758",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8415/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012151758",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 12.73
+            }
+          },
+          {
+            "id": "0363100012074646",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012074646",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 12.72
+            }
+          },
+          {
+            "id": "0363100012096531",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012096531",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 13.25
+            }
+          },
+          {
+            "id": "0363100012101824",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012101824",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 15.36
+            }
+          },
+          {
+            "id": "0363100012114550",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012114550",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 12.7
+            }
+          },
+          {
+            "id": "0363100012117924",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012117924",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 17.69
+            }
+          },
+          {
+            "id": "0363100012123546",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012123546",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 12.68
+            }
+          },
+          {
+            "id": "0363100012132188",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012132188",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 17.68
+            }
+          },
+          {
+            "id": "0363100012133212",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012133212",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 17.71
+            }
+          },
+          {
+            "id": "0363100012140507",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012140507",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 12.71
+            }
+          },
+          {
+            "id": "0363100012145598",
+            "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012145598",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 12.93
+            }
+          }
+        ],
+        "museumRegistration": "src/canalRecall/landmarks/manualCatalogue.json dageraad suppresses only0363100012076951; do not enlarge this identity or manufacture duplicate POIs"
+      },
+      "criticalRelationshipsFromRegister": [
+        "P.L.Takstraat7–25/Burg.Tellegenstraat44–54: grouped windows linked by pale plaster, stepped/undulating masonry and red/yellow brick boundary move together.",
+        "Burg.Tellegenstraat60/Talmastraat2–12 and Ronnerstraat quiet runs form an explicit contrasting group; no estate-wide ornamental prior.",
+        "Horizontal glazing subdivisions persist within the window groups.",
+        "Heavy trapezoid tops and cylindrical/castle-like corners are localized exceptions; preserve surveyed roof/open-court scope."
+      ],
+      "actualGenericGap": {
+        "status": "code-capability gap and native coverage established; current actual game baseline unreviewed",
+        "basis": "A school palette/period alone cannot represent the source-described coupled window/plaster/masonry-wave assembly. Current corner custom model exists; most estate parents are independently installed."
+      },
+      "frozenSampleSuggestions": {
+        "representative": "One source-described quieter Talmastraat2–12 run after official address-to-parent resolution.",
+        "transition": "Boundary from quiet Burg.Tellegenstraat60 to round-tower56–58 and moving44–54 run; special corners remain outside ordinary repeat admission.",
+        "heldout": "Quiet Henriette Ronnerstraat2–12 run after exact source/native-face inventory, held unseen until candidate freeze.",
+        "status": "proposed prose-led regions only; not source-visual heldout admission"
+      },
+      "sourceGaps": [
+        "Current photos and generic live facade views unavailable in this discovery pass.",
+        "Distinctive estate / mapped POI constraints require full review; coordinate existing Dageraad task owner.",
+        "Do not treat RCE historical description as present-day probability or infer unseen restored features.",
+        "Quiet/undulating transfer unknown; no render/game/GPU acceptance."
+      ]
+    }
+  ],
+  "completionPolicy": "This file selects discovery priorities only. Root and an independent reviewer must inspect comparable reference/render row views, then actual game scene with surrounding windows/doors and performance evidence before scoped acceptance."
+}

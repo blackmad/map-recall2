@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "survey_transport_review; independent of implementation, bundles and GPU review",
+  "reviewedAtUTC": "2026-10-06T18:35:19Z",
+  "scope": "Diagnostic structured-clone sidecar transport and exact native runtime roof ownership only; primary Oudezijds Voorburgwal 87/89 fixture, no public source admission.",
+  "workInventory": "public/canal-drive/street-rhythm-work.json#oudezijds-east-next-south-compound",
+  "decision": "bounded-diagnostic-transport-contract-pass-after-three-root-repairs; actual game, visual and performance acceptance remain pending",
+  "reviewedFiles": [
+    "src/canalRecall/surveyedEnvelopeTransport.ts",
+    "src/canalRecall/surveyedEnvelopeTransport.test.ts",
+    "src/canalRecall/threeBuildingsWorker.ts",
+    "src/canalRecall/threeBuildingsBrowser.ts",
+    "public/canal-drive/js/pyramidal-roofs-source.js",
+    "src/canalRecall/threeBuildingFeatures.ts",
+    "src/canalRecall/threeBuildingMesh.ts",
+    "src/canalRecall/surveyedBuildingEnvelope.ts",
+    "src/canalRecall/surveyedEnvelopeMeshBinding.ts"
+  ],
+  "findings": [
+    {
+      "id": "metadata-tolerance-false-roof-ownership",
+      "severity": "blocking-correctness",
+      "status": "root-repaired-independent-regression-pass",
+      "cause": "Adapter admitted aggregate heights within 1e-6, but buildFeatureChunk required exact height equality. Transport advertised every validated binding with a nonzero range, including a binding rejected by the mesh builder.",
+      "reproductionBeforeRepair": {
+        "nativeParentId": "NL.IMBAG.Pand.0363100012178298",
+        "originalHeightM": 22.99,
+        "changedHeightM": 22.9900001,
+        "modes": [
+          "walls",
+          "coarse"
+        ],
+        "look": "photo",
+        "positionsAndIndicesByteEqualStock": true,
+        "boundParentIds": [
+          "NL.IMBAG.Pand.0363100012178298"
+        ]
+      },
+      "impact": "Independent stock roof could be hidden even though the installed chunk contained only stock geometry.",
+      "repair": "Transport now requires exact installed aggregate height and construction year before registering a binding; source adapter tolerance remains unchanged.",
+      "verification": "Independent rerun of transport suite passed new byte-equal-stock and empty-ownership regression for height epsilon in walls/coarse and all three primary looks."
+    },
+    {
+      "id": "diagnostic-load-survives-dispose",
+      "severity": "lifecycle-correctness",
+      "status": "root-repaired-independent-regression-pass",
+      "location": "src/canalRecall/threeBuildingsBrowser.ts: dispose and loadDiagnosticSurveyedEnvelopes",
+      "cause": "dispose increments appearanceToken but does not increment envelopeLoadToken; onRemove calls dispose.",
+      "impact": "A response belonging to a removed renderer can mutate its state and enqueue rebuilds using retained sourceGroups/THREE state.",
+      "requestedRepair": "Invalidate envelopeLoadToken in dispose and regress a successful late response after onRemove/dispose.",
+      "reproductionBeforeRepair": "Start pending mocked diagnostic fetch, call browser.dispose(), then resolve the fetch with the valid fixture payload. loadDiagnosticSurveyedEnvelopes returns true and transport holds one envelope after disposal.",
+      "observedBeforeRepair": {
+        "acceptedAfterDispose": true,
+        "envelopeCount": 1
+      },
+      "repair": "dispose now increments envelopeLoadToken before invalidating jobs and removing chunks.",
+      "verification": "Successful mocked fetch resolving after dispose now returns false and leaves transport empty; independently rerun passing regression."
+    },
+    {
+      "id": "ownership-outlives-render-zoom-visibility",
+      "severity": "roof-fallback-correctness",
+      "status": "root-repaired-independent-regression-pass",
+      "location": "src/canalRecall/threeBuildingsBrowser.ts: refreshSurveyedRoofOwnership and makeLayer.render",
+      "cause": "Ownership checks visible and installed meshes only; render also skips when zoom < MIN_ZOOM (14) or ready is false. The independent pyramid renderer has no matching zoom gate.",
+      "impact": "An independent roof can remain suppressed when its purported source owner is not drawn below the building layer minimum zoom.",
+      "requestedRepair": "Align ownership with actual renderer availability/zoom and update it on gate transitions, preserving the union with landmark suppression. Confirm an actual game zoom transition independently; this review contains no GPU evidence.",
+      "reproductionBeforeRepair": "A stored coarse entry with boundParentIds ['example'] and getZoom() returning 13 still publishes ['example'] through refreshSurveyedRoofOwnership, despite the building render gate skipping that scene.",
+      "observedBeforeRepair": {
+        "zoom": 13,
+        "minimumZoom": 14,
+        "buildingRenderSkipped": true,
+        "hiddenIndependentRoofs": [
+          "example"
+        ]
+      },
+      "repair": "Ownership requires visible, ready and zoom > MIN_ZOOM; layer render refreshes ownership before its early-return gate. Identical ID sets avoid repeated pyramid visibility updates/repaints. Strict > also releases fallback at zoom 14 where source material fade is zero.",
+      "verification": "Independent rerun passes resident-owner transitions zoom17 -> 14 -> 13 -> 17 and readiness=false. Actual game zoom transition has not been inspected."
+    }
+  ],
+  "boundedChecks": {
+    "structuredClone": "Plain diagnostic snapshot detached from caller; callbacks/nonfinite numbers/prototypes rejected atomically; worker constructs callback plans locally.",
+    "sourceGuards": "Exact native ID, footprint, origin and final metadata guards inspected; rejected/expired/duplicate/wrong-ID data preserve stock fallback in tests.",
+    "staleJobs": "Generation, current source, transport revision, host-opening revision, look and appearance installation guards inspected; stale transport chunk test passes.",
+    "inlineFallback": "Worker failure queues original current source for rebuild; inline and worker use buildTransportedEnvelopeChunk with the same diagnostic options. Actual browser Worker failure was not exercised.",
+    "disableAndFailedLoad": "Invalid/empty payload clears owned chunks; failed current fetch clears transport; stale fetch after explicit setter or dispose cannot restore data. Tests pass after repair.",
+    "allLOD": "walls/coarse diagnostic roofs tested across photo/storybook/procedural; extras has no independent roof ownership. No gameplay pan or touch review performed.",
+    "independentPyramid": "Reason union, late renderer attachment, and release of surveyed reason while retaining landmark reason pass test; zoom/readiness gate transitions pass repaired controller regression.",
+    "command": "node --import tsx --test src/canalRecall/surveyedEnvelopeTransport.test.ts",
+    "result": "8 tests passed, 0 failed after all three root repairs"
+  },
+  "acceptanceLimits": {
+    "publicAdmission": false,
+    "gameSceneInspected": false,
+    "gpuPerformanceMeasured": false,
+    "desktopAndTouchPanVerified": false,
+    "transitionAndFreshHeldoutAccepted": false,
+    "streetRowVisualAcceptance": false,
+    "reason": "Tests and transport review do not satisfy the street-rhythm visual acceptance bar. Root retains bundle/GPU ownership and must preserve prior failed source/render evidence."
+  },
+  "initialDecision": "fail-three-reproduced-runtime-correctness-defects; no source/game admission",
+  "postRepairVerification": {
+    "command": "node --import tsx --test src/canalRecall/surveyedEnvelopeTransport.test.ts",
+    "independentlyRun": true,
+    "passed": 8,
+    "failed": 0,
+    "runtimeMs": 295.970209,
+    "gameOrGpuInference": false
+  }
+}
