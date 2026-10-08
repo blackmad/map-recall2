@@ -1,0 +1,32 @@
+{
+  "modelId": "oosterparkkerk",
+  "poiId": "extract_landmarks_1606629595",
+  "name": "Oosterparkkerk",
+  "preserveExistingExtractFacts": true,
+  "existingSelectedDestinationId": "lm-extract_landmarks_1606629595",
+  "existingPin": [
+    52.359877,
+    4.915613
+  ],
+  "mapPin": [
+    52.36005012574633,
+    4.915873654538593
+  ],
+  "pinPolicy": "Photo-supported main public entrance at Oosterpark4. Existing extract is a rear footprint corner; this candidate moves only geographic pin/arrival within genuine samePOI. Root must verify travel network reaches fixed destination without substitution.",
+  "funFact": "Abraham Salm designed this church for Amsterdam\u2019s Mennonite congregation in1904. Its restrained Art Nouveau front combines sandstone detailing, stained glass and a wrought-iron entrance canopy. A small roof turret replaces a full bell tower; the adjacent caretaker\u2019s house belongs to the same building.",
+  "sourceLinks": [
+    {
+      "label": "Church history, architecture and organ",
+      "url": "https://www.oosterparkkerk.nl/het-gebouw-en-geschiedenis"
+    },
+    {
+      "label": "Amsterdam municipal monument description200660",
+      "url": "https://data.amsterdam.nl/monumenten/299e42b1-1f38-407a-963d-3ed16e1d58c8"
+    },
+    {
+      "label": "Architectural history and dated photos",
+      "url": "https://amsterdamopdekaart.nl/1850-1940/Oosterpark/Oosterparkkerk"
+    }
+  ],
+  "integrationStatus": "Candidate only. Root shared catalogue, selectedroute, map pin, physical sourced card, game/GPU/independent review pending."
+}

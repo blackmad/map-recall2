@@ -103,26 +103,64 @@
       }
     },
     {
+      "id": "oosterparkkerk",
+      "task": "Oosterparkkerk — native church and linked caretaker house",
+      "priority": "normal",
+      "status": "verified-native-awaiting-hosted",
+      "existingExtractIdentity": "extract_landmarks_1606629595",
+      "surveyedParent": "NL.IMBAG.Pand.0363100012236498",
+      "currentOSMBuilding": "w252970298",
+      "sourceArchive": {
+        "commit": "3de4a3326",
+        "path": "models/oosterparkkerk/checkpoints/native-accepted-20261008"
+      },
+      "validation": "Independent source/CPU/gallery/game corrected production2ad382a7accepted; wingtop and6caretakerhead failures preserved and repaired. Root inspected actual front/north context, gallery and true stationary rider touch pan. Genuine selected route, reachable public entrance pin/label, physical useful card and sameidentity arrival; exact masks136neighbor rows/off andabort fallback/90frame timings pass. Source approximations/occluded diagnostic views explicit.",
+      "nextAction": "Publish accepted native candidate and verify canonical hosted all3surfaces."
+    },
+    {
       "id": "fatih-side-texture",
       "task": "Correct Fatih Mosque side-wall texture material",
       "priority": "high",
-      "status": "in-progress",
+      "status": "verified-native-awaiting-hosted",
       "requestedOn": "2026-10-08",
       "owner": "fatih_side_texture",
-      "nextAction": "User explicitly requested side GL texture. Native kit nave without constructionYear selects smooth modern atlas; source-supported original masonry texture should use valid physical UVs, preserve roofs and prominent geometry, and retain honest side-window source gaps."
+      "nextAction": "Publish accepted scoped material/height/pin correction and verify canonical hosted scene; retain source architecture gap.",
+      "sourceArchive": {
+        "commit": "ba81c5790",
+        "path": "models/fatih-mosque/checkpoints/side-material-20261008"
+      },
+      "validation": "Root source-facing before/after images and independent CPU/source checks accepted scoped original procedural masonry, known nearly blind rear and kit coarse wall16m versus raw tower37.31m correction. Actual desktop/touch zero-rider pointer drags retain surrounding windows/doors; genuineFatih1997051448physical card and arrival preserved. Exact native-kit POI admission fixes missing163-prominence geographic pin/label without creating a duplicate destination. New layer costs1.5MiBdesktop512px/.375MiBtouch256px. Long-side window layout remains an unaccepted source gap.",
+      "integratedSourceArchive": {
+        "commit": "88cb31157",
+        "path": "models/fatih-mosque/checkpoints/integrated-accepted-20261008"
+      }
+    },
+    {
+      "id": "native-kit-poi-pin-audit",
+      "task": "Audit remaining genuine native-kit POI destinations, pins and cards together",
+      "priority": "high",
+      "status": "queued",
+      "requestedOn": "2026-10-08",
+      "nextAction": "Fatih low-prominence geographic label gap fixed via explicit existing-source identity. Audit remaining native-kit POIs; admit only genuine extract identities, preserve useful cards and existing routes, never manufacture POIs for ordinary shells."
     },
     {
       "id": "kalverpassage-rasphuispoort-click-identity",
       "task": "Keep Kalverpassage roof clicks separate from the additive Rasphuispoort gate",
       "priority": "high",
-      "status": "verified-native-awaiting-hosted",
+      "status": "verified-scoped-hosted",
       "requestedOn": "2026-10-08",
       "owner": "kalverpassage_click_identity",
-      "nextAction": "Remove additive gate host from whole-building researched ownership in initial and delayed joins. Verify physical gate and Kalverpassage roof clicks, correct cards and scoped highlighting.",
+      "nextAction": "Verified canonical hosted roof and native gate physical pointer cards/highlights; existing gate geometry repair remains cancelled.",
       "validation": "Root inspected actual physical roof and gate screenshots. Kalverpassage mapped mall card and host highlight on roof; researched Rasphuispoort card and only gate mesh highlight on gate. Existing selected route identity and pin retained. Initial and delayed stale host containment joins removed; live gate buildingIds=[], host drawable and unsuppressed. Meaningful installed-footprint regression passes.",
       "sourceArchive": {
         "commit": "52d449f6f",
         "path": "checkpoints/kalverpassage-click-identity-20261008"
+      },
+      "hostedVerification": {
+        "publicCommit": "7f9e5bd962be35e57c79e5ef7d9d2217592eb1cf",
+        "deploymentRun": "37796180618",
+        "sourceArchiveCommit": "775ffe48f",
+        "sourceArchivePath": "checkpoints/runtime-and-corrected-oosterparkkerk-20261008/kalverpassage-hosted-7f9e5bd9"
       }
     },
     {

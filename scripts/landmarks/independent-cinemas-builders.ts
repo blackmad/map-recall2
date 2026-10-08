@@ -2,6 +2,7 @@ import * as T from 'three';
 import type { BuildingTools } from './cultural-builders';
 import specs from './independent-cinemas-specs.json';
 import sources from './independent-cinemas-footprints.json';
+import {buildOcciiBanner} from './occii-facade-banner';
 type C=Parameters<BuildingTools['add']>[1];
 /** Three individual cinema/music buildings, retaining mapped notches and adjoining open space. */
 export function buildIndependentCinemaLandmark(id:string,_w:number,_d:number,b:BuildingTools){
@@ -39,9 +40,34 @@ export function buildIndependentCinemaLandmark(id:string,_w:number,_d:number,b:B
   for(const [min,max] of [[lo,cx],[cx,hi]])roof(clip(clip(ring,'x',min,true),'x',max,false),4.8,(x)=>3.65*(1-Math.abs(x-cx)/4.5));
   const f=(x:number)=>31.93+(x-cx)*.12;
   const tri=new T.BufferGeometry();tri.setAttribute('position',new T.Float32BufferAttribute([lo,4.8,f(lo)+.09,hi,4.8,f(hi)+.09,cx,8.5,f(cx)+.09],3));tri.computeVertexNormals();add(tri,'brick');
-  box(cx,0,f(cx)+.12,4.3,3.1,.16,'dark');for(let i=0;i<5;i++)box(cx-2.1+i*1.05,.1,f(cx)+.25,.08,3.0,.06,'gold');
-  for(const x of [lo+1,hi-1]){sash(x,.9,f(x)+.12,1.3,2.0);arch(x,2.6,f(x)+.3,1.65,1.1,'gold');add(new T.CircleGeometry(.19,8),'red',x,3.27,f(x)+.4);}
-  for(const x of [cx-1.3,cx,cx+1.3]){box(x,4.3,f(x)+.2,1.0,1.5,.12,'gold');box(x,4.4,f(x)+.29,.76,1.27,.06,'dark');arch(x,5.6,f(x)+.33,.98,.7,'gold');arch(x,5.68,f(x)+.36,.74,.5,'dark');box(x-.65,4.15,f(x)+.35,.16,2.0,.2,'gold');}for(const x of [cx-2.85,cx+2.85]){box(x,4.35,f(x)+.24,1.0,1.9,.08,'red');for(let j=0;j<3;j++){add(new T.CircleGeometry(.28,12),'gold',x,4.64+j*.55,f(x)+.32);add(new T.CircleGeometry(.20,12),'dark',x,4.64+j*.55,f(x)+.36);}beam(x-.5,4.4,f(x)+.4,x+.5,6.2,f(x)+.4,.06,'gold');beam(x+.5,4.4,f(x)+.4,x-.5,6.2,f(x)+.4,.06,'gold');}add(new T.CircleGeometry(.49,12),'gold',cx,7.15,f(cx)+.22);add(new T.CircleGeometry(.31,12),'white',cx,7.15,f(cx)+.25);
+  // Every window/door assembly follows the surveyed frontage tangent. Previously
+  // individual axis-aligned faces crossed the angled wall and each other's trim.
+  const faceAngle=-Math.atan(.12);
+  const faceBox=(x:number,y:number,offset:number,w:number,hh:number,d:number,c:C)=>box(x,y,f(x)+offset,w,hh,d,c,faceAngle);
+  const faceArch=(x:number,y:number,offset:number,w:number,hh:number,c:C)=>{
+   const r=w/2,sh=new T.Shape();sh.moveTo(-r,0);sh.lineTo(r,0);sh.lineTo(r,hh-r);sh.absarc(0,hh-r,r,0,Math.PI,false);sh.closePath();
+   add(new T.ShapeGeometry(sh),c,x,y,f(x)+offset,faceAngle);
+  };
+  const faceDisc=(x:number,y:number,offset:number,r:number,c:C)=>add(new T.CircleGeometry(r,12),c,x,y,f(x)+offset,faceAngle);
+  faceBox(cx,0,.12,4.3,3.1,.16,'dark');
+  for(let i=0;i<5;i++)faceBox(cx-2.1+i*1.05,.1,.25,.08,3.0,.06,'gold');
+  for(const x of [lo+1,hi-1]){
+   faceBox(x,.9,.12,1.48,2.16,.15,'stone');faceBox(x,.98,.24,1.3,2.0,.06,'glass');
+   faceBox(x,.98,.29,.05,2.0,.05,'frame');for(const yy of [1.68,2.43])faceBox(x,yy,.29,1.3,.045,.05,'frame');
+   faceArch(x,2.6,.3,1.65,1.1,'gold');faceDisc(x,3.27,.4,.19,'red');
+  }
+  for(const x of [cx-1.3,cx,cx+1.3]){
+   faceBox(x,4.3,.2,1.0,1.5,.12,'gold');faceBox(x,4.4,.29,.76,1.27,.06,'dark');
+   faceArch(x,5.6,.33,.98,.7,'gold');faceArch(x,5.68,.36,.74,.5,'dark');
+   faceBox(x-.65,4.15,.35,.16,2.0,.2,'gold');
+  }
+  for(const x of [cx-2.85,cx+2.85]){
+   faceBox(x,4.35,.24,1.0,1.9,.08,'red');
+   for(let j=0;j<3;j++){faceDisc(x,4.64+j*.55,.32,.28,'gold');faceDisc(x,4.64+j*.55,.36,.20,'dark');}
+   beam(x-.5,4.4,f(x-.5)+.4,x+.5,6.2,f(x+.5)+.4,.06,'gold');
+   beam(x+.5,4.4,f(x+.5)+.4,x-.5,6.2,f(x-.5)+.4,.06,'gold');
+  }
+  add(new T.CircleGeometry(.49,12),'gold',cx,7.15,f(cx)+.22);add(new T.CircleGeometry(.31,12),'white',cx,7.15,f(cx)+.25);
   for(const yy of [3.75,4.08])box(cx,yy,f(cx)+.25,8.7,.15,.25,'gold',-Math.atan(.12));
   // Restored 2014 facade: the window-head transom ends at the central arcade,
   // rather than continuing through the narrowing gable and its windboards.
@@ -60,7 +86,8 @@ export function buildIndependentCinemaLandmark(id:string,_w:number,_d:number,b:B
   for(const side of [-1,1])beam(cx+side*.53,6.98,f(cx+side*.53)+.22,cx+side*1.72,6.98,f(cx+side*1.72)+.22,.10,'gold');
   for(const dx of [-1.7,-.85,.85,1.7])box(cx+dx,6.58,f(cx+dx)+.23,.11,.4,.09,'gold',-Math.atan(.12));
   add(new T.IcosahedronGeometry(.28,0),'gold',cx,9.48,f(cx));box(cx,8.5,f(cx),.12,.7,.12,'gold');
-  box(lo+.5,5.5,27.5,.65,4.35,.75,'brick');box(lo+.5,9.75,27.5,.83,.14,.92,'stone');sign('OCCII',cx-1.0,3.26,f(cx)+.45,.2,'gold');
+  box(lo+.5,5.5,27.5,.65,4.35,.75,'brick');box(lo+.5,9.75,27.5,.83,.14,.92,'stone');
+  buildOcciiBanner(b,cx,f,faceAngle);
   // Rear stable/forge stays on the same individual parent without filling neighboring courtyards.
   for(let z=-24;z<18;z+=6)box(-5.95,1.2,z,.15,1.65,1.4,'glass');
  }else if(id==='ketelhuis'){

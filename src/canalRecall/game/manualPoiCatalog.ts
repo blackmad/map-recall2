@@ -1,5 +1,6 @@
 import { SIGNATURE_MODELS } from '../landmarks/signatureModels';
 import facts from './manual-poi-data.json';
+import nativeKitPois from './native-kit-pois.json';
 import type { LandmarkFeature } from './extracts';
 
 type SupplementalFact = Omit<typeof facts[number], 'destinations'> & {
@@ -29,7 +30,13 @@ export function manualPoiBuildingIds(landmarkId: string, ids: readonly string[])
  * and IDs remain intact so reviewed fact rotations continue to work. */
 export function mergeManualPoiFeatures(features: readonly LandmarkFeature[], cityId = 'amsterdam'): LandmarkFeature[] {
   if (cityId !== 'amsterdam') return [...features];
-  const merged = new Map(features.map(feature => [feature.id, { ...feature }]));
+  // Existing researched kit destinations need geographic pins even when their
+  // extract prominence is below the ordinary-place threshold. This admission
+  // preserves the genuine extract; it creates neither a POI nor a route alias.
+  const kitIds = new Set(nativeKitPois.map(poi => poi.landmarkId));
+  const merged = new Map(features.map(feature => [feature.id, {
+    ...feature, ...(kitIds.has(feature.id) ? { nativeKitPoi: true } : {}),
+  }]));
   for (const model of SIGNATURE_MODELS) {
     const fallback = supplemental.get(model.id);
     const anchor = model.surveyed?.anchor ?? model.footprint?.centre;

@@ -28,6 +28,7 @@ export interface LandmarkFeature {
   researchSourceUrl?: string;
   researchDetail?: string;
   manualPoi?: boolean;
+  nativeKitPoi?: boolean;
   modelId?: string;
   buildingIds?: string[];
 }

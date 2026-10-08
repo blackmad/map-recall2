@@ -100,6 +100,7 @@ import {buildCafeKobalt} from './cafe-kobalt-builder';
 import {buildPodiumMozaiek} from './podium-mozaiek-builder';
 import {buildDorusTheusBrug} from './dorus-theus-brug-builder';
 import {buildCollectieSix} from './collectie-six-builder';
+import {buildOosterparkkerk} from './oosterparkkerk-builder';
 import {buildMontelbaanstoren} from './montelbaanstoren-builder';
 import {buildMunttoren} from './munttoren-builder';
 import {buildNationalMonument} from './national-monument-builder';
@@ -350,6 +351,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='podium-mozaiek')buildPodiumMozaiek(w,d,helpers);
     else if(id==='dorus-theus-brug')buildDorusTheusBrug(w,d,helpers);
     else if(id==='collectie-six')buildCollectieSix(w,d,helpers);
+    else if(id==='oosterparkkerk')buildOosterparkkerk(w,d,helpers);
     else if(id==='montelbaanstoren-amsterdam')buildMontelbaanstoren(w,d,helpers);
     else if(id==='munttoren-amsterdam')buildMunttoren(w,d,helpers);
     else if(id==='national-monument-on-the-dam')buildNationalMonument(w,d,helpers);

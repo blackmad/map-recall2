@@ -68,7 +68,7 @@ export type KitRose = { at: [number, number]; z: number; radiusM: number };
  * Cheap window geometry on a kit's walls: dark glass panes a hand's breadth proud of the wall,
  * optionally in a light `frameHex` surround, and a stone `plinth` band round the base.
  */
-export type KitWindows = { rows: KitWindowRow[]; towerRows?: KitWindowRow[]; roses?: KitRose[]; glassHex?: string; frameHex?: string; plinth?: { z1: number; hex: string } };
+export type KitWindows = { rows: KitWindowRow[]; /** Source-supported blind wall points; fill rows skip their nearest edge. */ blindWalls?: [number, number][]; towerRows?: KitWindowRow[]; roses?: KitRose[]; glassHex?: string; frameHex?: string; plinth?: { z1: number; hex: string } };
 /**
  * A pitched or hipped roof over one rectangle of the footprint, at the host's eaves: a nave, a
  * transept, a cross arm. `at` is its centre ([lng, lat]), `lenM` runs along the ridge, `bearingDeg`
@@ -390,6 +390,8 @@ export const HAND_KITS: Kit[] = [
     // behind 10-16 m neighbours; their tall windows are a guess from the plan, not a photo.
     windows: {
       glassHex: '#46505a', frameHex: '#c9bda4',
+      // Amsterdam monument 200454: Bloemstraat elevation is nearly blind.
+      blindWalls: [[4.878470, 52.373455]],
       // `at` points sit on the front wall: its middle, and in front of each tower.
       rows: [
         { z0: 0.3, z1: 4.6, widthM: 2.6, bayM: 3.1, head: 'pointed', at: [4.8786371, 52.3730248], count: 3 },
@@ -817,7 +819,7 @@ function kitWindows(sink: TriSink, ring: readonly Vec2[], spec: KitHalls, win: K
   // A placed row claims its whole wall: every edge on the same line (a front mapped as several
   // collinear pieces a few centimetres apart). Its openings go on the outermost of those pieces,
   // so a piece standing proud does not swallow them (the Fatih front's 0.2 m jogs).
-  const claimed = new Set<number>();
+  const claimed = new Set<number>((win.blindWalls ?? []).map(at => nearestEdge(edges, toLocal(at)).edge));
   const plane = (edge: number): WallEdge => {
     const a = edges[edge];
     let out = 0;

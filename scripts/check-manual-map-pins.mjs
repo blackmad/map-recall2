@@ -15,11 +15,12 @@ map._spoils = name => name.includes('Amsterdam');
 const place = (id, name, manualPoi, prominenceScore) => ({ id, name, manualPoi, prominenceScore, center: [52.3890237, 4.8374469] });
 map.setPlaces([
   place('manual', 'Amsterdam Sloterdijk station', true, 0),
+  { ...place('kit', 'Amsterdam Fatih', false, 163), nativeKitPoi: true },
   place('ordinary-spoiler', 'Amsterdam shop', false, 300),
   place('ordinary-visible', 'Independent shop', false, 300),
   place('ordinary-low', 'Tiny shop', false, 100),
 ], []);
 const pins = data.get('amsterdam-pois').features;
-assert.deepEqual(Array.from(pins, p => p.properties.id), ['manual', 'ordinary-visible']);
+assert.deepEqual(Array.from(pins, p => p.properties.id), ['manual', 'kit', 'ordinary-visible']);
 assert.deepEqual(Array.from(pins[0].geometry.coordinates), [4.8374469, 52.3890237], 'sourced entrance survives map projection');
 console.log('Manual destination pins survive broad name filtering; ordinary spoilers and low-prominence places remain filtered.');
