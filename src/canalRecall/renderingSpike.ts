@@ -8,7 +8,6 @@
  * look and mode. A self-contained preview can pre-seed `window.__SPIKE_EMBED`
  * ({ features, brickUrl }) instead of fetching tiles.
  */
-// @ts-expect-error Installed runtime has no separate Three declarations.
 import * as THREE from 'three';
 import { tilesCovering } from './slippyTiles.js';
 import { planWall, hashSeed, TARGET_BAY_M, TARGET_STOREY_M } from './wallBays.js';

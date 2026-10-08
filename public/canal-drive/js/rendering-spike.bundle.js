@@ -27429,7 +27429,8 @@ void main() {
   var BAY_PX = 520;
   var STOREY_PX = 310;
   var GROUND_PX = 340;
-  var variantKey = (v, look2) => `${look2}|${v.archetype}|${v.kind}|${v.windows}|${v.shape}|${v.shutters}|${v.paintedFrames}`;
+  var SHOP_KINDS = ["groundShop", "shopCafe", "shopWindow", "shopBar", "shopDeli", "shopFlorist", "shopBike"];
+  var variantKey = (v, look2) => `${look2}|${v.archetype}|${v.kind}|${v.windows}|${v.shape}|${v.shutters}|${v.paintedFrames}|${v.family ?? "masonry"}|${v.proportions ?? "tall"}|${v.frameTone ?? "pale"}|${v.lintel ?? "flat"}|${!!v.paleAccents}|${v.openingOccupancy ?? "legacy"}|${v.openingHeight ?? "legacy"}|${v.sash ?? "legacy"}|${v.trimDensity ?? "legacy"}|${v.wallMaterial ?? "legacy"}|${v.facadeAssembly ?? "none"}|${v.entranceAssembly ?? "none"}|${v.openingGroup ?? "none"}|${v.groundAssembly ?? "none"}`;
   function buildingStyle(seed, archetype) {
     const h = hashSeed(seed);
     const windows = archetype === "modern" ? 1 : [2, 2, 3, 1][h % 4];
@@ -27438,6 +27439,7 @@ void main() {
       archetype,
       windows,
       shape,
+      family: archetype === "modern" ? "punched" : "masonry",
       shutters: archetype === "canal" && (h >>> 8) % 4 === 0,
       paintedFrames: (h >>> 10) % 5 === 0,
       shop: (h >>> 13) % 4 === 0
@@ -27449,11 +27451,31 @@ void main() {
         walls: ["#d9674a", "#e58a5c", "#eab85f", "#f0dfb8", "#e5a396", "#9dbb9b", "#7ea3c2", "#c9714a", "#f2c14e", "#b9a1c9"],
         accents: ["#2a8c8c", "#e0a526", "#d9453d", "#2c4a7c", "#7a3b6e", "#2f6b45", "#4aa3d9"]
       },
+      c19: {
+        walls: ["#d9674a", "#e58a5c", "#eab85f", "#f0dfb8", "#e5a396", "#9dbb9b", "#7ea3c2", "#c9714a", "#f2c14e", "#b9a1c9"],
+        accents: ["#2a8c8c", "#e0a526", "#d9453d", "#2c4a7c", "#7a3b6e", "#2f6b45", "#4aa3d9"]
+      },
+      school: { walls: ["#9c5a42", "#8a4b3a", "#a8664c", "#7a4a40"], accents: ["#2c4a7c", "#2a8c8c", "#e0a526"] },
+      modern: { walls: ["#f4efe6", "#dcdcd6", "#e9d9c0", "#b9c4cc", "#f0c9a9"], accents: ["#2a8c8c", "#d9453d", "#2c4a7c", "#e0a526"] }
+    },
+    storybook: {
+      canal: {
+        walls: ["#d9674a", "#e58a5c", "#eab85f", "#f0dfb8", "#e5a396", "#9dbb9b", "#7ea3c2", "#c9714a", "#f2c14e", "#b9a1c9"],
+        accents: ["#2a8c8c", "#e0a526", "#d9453d", "#2c4a7c", "#7a3b6e", "#2f6b45", "#4aa3d9"]
+      },
+      c19: {
+        walls: ["#d9674a", "#e58a5c", "#eab85f", "#f0dfb8", "#e5a396", "#9dbb9b", "#7ea3c2", "#c9714a", "#f2c14e", "#b9a1c9"],
+        accents: ["#2a8c8c", "#e0a526", "#d9453d", "#2c4a7c", "#7a3b6e", "#2f6b45", "#4aa3d9"]
+      },
       school: { walls: ["#9c5a42", "#8a4b3a", "#a8664c", "#7a4a40"], accents: ["#2c4a7c", "#2a8c8c", "#e0a526"] },
       modern: { walls: ["#f4efe6", "#dcdcd6", "#e9d9c0", "#b9c4cc", "#f0c9a9"], accents: ["#2a8c8c", "#d9453d", "#2c4a7c", "#e0a526"] }
     },
     photo: {
       canal: {
+        walls: ["#ffffff", "#f2d9c8", "#d9b9a4", "#e6c9b0", "#c9a38c", "#f0e4d2", "#ffd9b0", "#e8c0b0", "#d0c8c0"],
+        accents: ["#243a2f", "#1f2a3a", "#3a1f1c", "#222222", "#2f4a3c", "#6b2b2b", "#2c3e50"]
+      },
+      c19: {
         walls: ["#ffffff", "#f2d9c8", "#d9b9a4", "#e6c9b0", "#c9a38c", "#f0e4d2", "#ffd9b0", "#e8c0b0", "#d0c8c0"],
         accents: ["#243a2f", "#1f2a3a", "#3a1f1c", "#222222", "#2f4a3c", "#6b2b2b", "#2c3e50"]
       },
@@ -27465,11 +27487,10 @@ void main() {
     const h = hashSeed(seed), p = PALETTES[look2][archetype];
     return { wall: p.walls[h % p.walls.length], accent: p.accents[(h >>> 5) % p.accents.length] };
   }
-  function archetypeFor(seed, year, heightM) {
-    if (year !== null && year > 1700 && year < 2100) return year >= 1985 ? "modern" : year >= 1915 && year < 1945 ? "school" : "canal";
+  function archetypeFor(_seed, year, heightM) {
+    if (year !== null && year > 1500 && year < 2100) return year < 1860 ? "canal" : year < 1915 ? "c19" : year < 1945 ? "school" : "modern";
     if (heightM >= 28) return "modern";
-    const r = (hashSeed(seed + ":a") >>> 3) % 100;
-    return r < 14 ? "modern" : r < 32 ? "school" : "canal";
+    return "c19";
   }
   var OUTLINE = "#3b2a2a";
   var cache = /* @__PURE__ */ new Map();
@@ -27479,8 +27500,21 @@ void main() {
       this.pass = pass;
       this.look = look2;
     }
+    /** Both illustrated looks draw outlined, flat-filled shapes; `toon` is the bolder of the two. */
     get cartoon() {
+      return this.look !== "photo";
+    }
+    get toon() {
       return this.look === "cartoon";
+    }
+    get lineW() {
+      return this.toon ? 9 : 3.5;
+    }
+    get glass() {
+      return this.toon ? ["#a9e0f7", "#5aa8d8"] : ["#a3bccb", "#6a8799"];
+    }
+    get stone() {
+      return this.toon ? "#fff1cf" : "#e6dbc3";
     }
     /** Fill with a role-aware colour: `wall`/`accent` become mask channels; `ink` is untinted. */
     fill(role, colour) {
@@ -27505,19 +27539,21 @@ void main() {
       c.closePath();
     }
   };
-  function wall(p, w, h, brick, archetype) {
+  function wall(p, w, h, brick, archetype, material) {
     const { ctx } = p;
     if (p.pass === "mask") {
       p.fill("wall", "");
       ctx.fillRect(0, 0, w, h);
       return;
     }
-    if (p.cartoon || archetype === "modern") {
+    const smooth = material === "smooth" || archetype === "modern" && material !== "brick";
+    if (p.cartoon || smooth) {
       ctx.fillStyle = "#ffffff";
       ctx.fillRect(0, 0, w, h);
-      ctx.strokeStyle = archetype === "modern" ? "rgba(0,0,0,0.05)" : "rgba(60,30,20,0.10)";
+      if (p.toon && !smooth) return;
+      ctx.strokeStyle = smooth ? "rgba(0,0,0,0.05)" : "rgba(60,30,20,0.16)";
       ctx.lineWidth = 2;
-      if (archetype === "modern") {
+      if (smooth) {
         for (let x = 130; x < w; x += 130) {
           ctx.beginPath();
           ctx.moveTo(x, 0);
@@ -27541,14 +27577,36 @@ void main() {
       return;
     }
     for (let y = 0; y < h; y += 105) for (let x = 0; x < w; x += 105) ctx.drawImage(brick, x, y, 105, 105);
+    ctx.strokeStyle = "rgba(235,223,205,0.18)";
+    ctx.lineWidth = 1.7;
+    for (let row = 0, y = 6; y < h; y += 14, row++) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(w, y);
+      ctx.stroke();
+      for (let x = row % 2 * 24; x < w; x += 48) {
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(x, y + 14);
+        ctx.stroke();
+      }
+    }
     if (archetype === "school") {
       ctx.fillStyle = "rgba(0,0,0,0.22)";
       ctx.fillRect(0, 0, w, h);
     }
   }
+  function segmentalPath(ctx, x, y, w, h, rise) {
+    ctx.beginPath();
+    ctx.moveTo(x, y + h);
+    ctx.lineTo(x, y + rise);
+    ctx.quadraticCurveTo(x + w / 2, y - rise, x + w, y + rise);
+    ctx.lineTo(x + w, y + h);
+    ctx.closePath();
+  }
   function windowAt(p, x, y, w, h, v) {
-    const { ctx } = p, cartoon = p.cartoon, line = cartoon ? 6 : 0;
-    const shape = v.shape;
+    const { ctx } = p, cartoon = p.cartoon, line = cartoon ? p.lineW : 0;
+    const shape = v.shape, headRise = Math.min(w * 0.1, h * 0.07);
     const topR = shape === "arch" ? w / 2 : shape === "round" ? 18 : 6;
     const outline = () => {
       if (cartoon) {
@@ -27558,7 +27616,7 @@ void main() {
       }
     };
     const shutterColour = "#ffffff";
-    if (v.shutters && v.archetype === "canal") {
+    if (v.shutters && v.archetype === "canal" && (v.kind === "ground" || v.kind === "groundDoor")) {
       for (const sx of [x - w * 0.46, x + w * 1.06]) {
         p.fill("accent", shutterColour);
         p.rr(sx, y + 4, w * 0.4, h - 8, 5);
@@ -27577,21 +27635,25 @@ void main() {
       }
     }
     p.fill("ink", "rgba(20,14,10,0.55)");
-    ctx.fillRect(x - 4, y - 4, w + 8, h + 8);
-    const stone = cartoon ? "#fff1cf" : "#cfc8b8";
-    if (v.archetype !== "modern") {
+    if (shape === "segmental") {
+      segmentalPath(ctx, x - 4, y - 4, w + 8, h + 8, headRise + 2);
+      ctx.fill();
+    } else ctx.fillRect(x - 4, y - 4, w + 8, h + 8);
+    const restrained = v.trimDensity === "restrained";
+    const stone = cartoon ? p.stone : "#cfc8b8";
+    if (v.lintel !== "none" && v.family !== "punched" && v.archetype !== "modern") {
       p.fill("ink", stone);
-      if (shape === "arch") {
+      if (v.lintel === "arch" || v.lintel === void 0 && shape === "arch") {
         ctx.beginPath();
-        ctx.ellipse(x + w / 2, y + 2, w / 2 + 12, 30, 0, Math.PI, 0);
+        ctx.ellipse(x + w / 2, y + 2, w / 2 + (restrained ? 5 : 12), restrained ? 12 : 30, 0, Math.PI, 0);
         ctx.fill();
         if (cartoon) outline();
       } else {
-        p.rr(x - 12, y - 32, w + 24, 26, cartoon ? 8 : 2);
+        p.rr(x - (restrained ? 4 : 12), y - (restrained ? 12 : 32), w + (restrained ? 8 : 24), restrained ? 8 : 26, cartoon ? 4 : 1);
         ctx.fill();
         outline();
         p.shade(() => {
-          if (!cartoon) {
+          if (!cartoon && !restrained) {
             ctx.strokeStyle = "rgba(80,58,44,0.7)";
             ctx.lineWidth = 2;
             for (let bx = x - 10; bx < x + w + 12; bx += 10) {
@@ -27604,13 +27666,28 @@ void main() {
         });
       }
       p.fill("ink", stone);
-      p.rr(x - 10, y + h + 2, w + 20, 12, cartoon ? 6 : 1);
+      p.rr(x - (restrained ? 4 : 10), y + h + 2, w + (restrained ? 8 : 20), restrained ? 5 : 12, cartoon ? 3 : 1);
       ctx.fill();
       outline();
     }
-    const frameColour = v.paintedFrames ? "#ffffff" : cartoon ? "#fffaf0" : "#f1ede2";
+    if (v.paleAccents && !v.entranceAssembly) {
+      p.fill("ink", p.cartoon ? "#fffaf0" : "#eee9de");
+      for (let by = y + 8; by < y + h; by += restrained ? 70 : 42) {
+        ctx.fillRect(x - (restrained ? 10 : 18), by, restrained ? 10 : 18, restrained ? 12 : 18);
+        ctx.fillRect(x + w, by, restrained ? 10 : 18, restrained ? 12 : 18);
+      }
+    }
+    if (v.openingGroup) {
+      p.fill("accent", "#ffffff");
+      if (shape === "segmental") {
+        segmentalPath(ctx, x - 11, y - 11, w + 22, h + 22, headRise + 3);
+        ctx.fill();
+      } else ctx.fillRect(x - 11, y - 11, w + 22, h + 22);
+    }
+    const frameColour = v.openingGroup || v.frameTone === "dark" ? "#2c302f" : v.paintedFrames ? "#ffffff" : cartoon ? "#fffaf0" : "#f1ede2";
     p.fill(v.paintedFrames ? "accent" : "ink", frameColour);
-    if (shape === "arch") {
+    if (shape === "segmental") segmentalPath(ctx, x, y, w, h, headRise);
+    else if (shape === "arch") {
       ctx.beginPath();
       ctx.moveTo(x, y + h);
       ctx.lineTo(x, y + w / 2);
@@ -27622,19 +27699,22 @@ void main() {
     } else p.rr(x, y, w, h, topR);
     ctx.fill();
     outline();
-    const m = cartoon ? 12 : 9;
+    const m = restrained ? p.toon ? 8 : 5 : v.paleAccents ? cartoon ? 16 : 13 : cartoon ? 12 : 9;
     p.shade(() => {
       const g = ctx.createLinearGradient(0, y, 0, y + h);
       if (cartoon) {
-        g.addColorStop(0, "#a9e0f7");
-        g.addColorStop(1, "#5aa8d8");
+        g.addColorStop(0, p.glass[0]);
+        g.addColorStop(1, p.glass[1]);
       } else {
         g.addColorStop(0, "#6f8796");
         g.addColorStop(0.55, "#2f4350");
         g.addColorStop(1, "#1d2a33");
       }
       ctx.fillStyle = g;
-      if (shape === "arch") {
+      if (shape === "segmental") {
+        segmentalPath(ctx, x + m, y + m, w - 2 * m, h - 2 * m, headRise);
+        ctx.fill();
+      } else if (shape === "arch") {
         ctx.beginPath();
         ctx.moveTo(x + m, y + h - m);
         ctx.lineTo(x + m, y + w / 2);
@@ -27649,10 +27729,20 @@ void main() {
     });
     if (p.pass === "mask") {
       ctx.fillStyle = "#000";
-      ctx.fillRect(x + m, y + m, w - 2 * m, h - 2 * m);
+      if (shape === "segmental") {
+        segmentalPath(ctx, x + m, y + m, w - 2 * m, h - 2 * m, headRise);
+        ctx.fill();
+      } else ctx.fillRect(x + m, y + m, w - 2 * m, h - 2 * m);
     }
     p.fill(v.paintedFrames ? "accent" : "ink", frameColour);
-    if (cartoon) {
+    if (v.sash === "paired-transom") {
+      const bar = p.toon ? 5 : 4;
+      ctx.fillRect(x + m, y + h * 0.27 - bar / 2, w - 2 * m, bar);
+      ctx.fillRect(x + w / 2 - bar / 2, y + m, bar, h - 2 * m);
+    } else if (v.sash === "transom") {
+      ctx.fillRect(x + m, y + h * 0.29 - 2, w - 2 * m, p.toon ? 5 : 4);
+    } else if (v.sash === "plain") {
+    } else if (p.toon || v.family === "punched") {
       ctx.fillRect(x + w / 2 - 4, y + m, 8, h - 2 * m);
       ctx.fillRect(x + m, y + h * 0.42, w - 2 * m, 8);
     } else {
@@ -27672,11 +27762,59 @@ void main() {
       }
     });
   }
+  function canalGroundGeometry(v) {
+    const axes = Array.from({ length: v.windows }, (_, i) => (i + 0.5) / v.windows);
+    return { axes, width: 0.66 / v.windows, sill: v.groundAssembly === "tall-side-entry" ? 0.14 : 0.06, head: 0.91, doorAxis: axes[axes.length - 1] };
+  }
+  function bayDoorGeometry(v) {
+    const quiet = v.trimDensity === "restrained";
+    if (v.groundAssembly) {
+      const row = canalGroundGeometry(v);
+      return { x: BAY_PX * (row.doorAxis - row.width / 2), width: BAY_PX * row.width, height: GROUND_PX * (row.head - row.sill), bottom: GROUND_PX * row.sill, fanlight: false };
+    }
+    if (v.entranceAssembly === "raised-plain") return { x: BAY_PX * 0.71, width: BAY_PX * 0.18, height: 222, bottom: 70, fanlight: false };
+    if (v.entranceAssembly === "raised-pilaster") return { x: BAY_PX * 0.115, width: BAY_PX * 0.18, height: 222, bottom: 52, fanlight: true };
+    if (v.facadeAssembly === "stacked-open-balcony") return { x: BAY_PX * (0.5 - 0.14), width: BAY_PX * 0.28, height: 274, bottom: 24, fanlight: false };
+    return { x: BAY_PX * 0.14, width: quiet ? 98 : 118, height: quiet ? 214 : 226, bottom: 24, fanlight: !quiet };
+  }
+  function bayDoorWindowGeometry(v, look2 = "photo") {
+    const quiet = v.trimDensity === "restrained";
+    if (v.groundAssembly) {
+      const row = canalGroundGeometry(v);
+      return { axis: row.axes[0], width: BAY_PX * row.width, y: GROUND_PX * (1 - row.head), height: GROUND_PX * (row.head - row.sill) };
+    }
+    if (v.entranceAssembly === "raised-plain") return { axis: 0.335, width: BAY_PX * 0.205, y: 78, height: 166 };
+    if (v.entranceAssembly === "raised-pilaster") return { axis: 0.68, width: BAY_PX * 0.205, y: 78, height: 166 };
+    if (quiet) return { axis: 0.66, width: v.family === "punched" ? 160 : 170, y: 88, height: 166 };
+    const g = bayWindowGeometry({ ...v, windows: 1 }, 76, 150, look2);
+    return { axis: 0.64, ...g };
+  }
+  function quietDoorAt(p, v, groundY) {
+    const { ctx } = p, g = bayDoorGeometry(v), y = GROUND_PX - g.bottom - g.height;
+    p.fill("ink", p.cartoon ? "#e8e3d8" : "#c9c7be");
+    ctx.fillRect(g.x - 5, y - 5, g.width + 10, g.height + 5);
+    p.fill(v.entranceAssembly === "raised-plain" ? "ink" : "accent", v.entranceAssembly === "raised-plain" ? "#30342f" : "#ffffff");
+    ctx.fillRect(g.x, y, g.width, g.height);
+    if (v.family === "punched" || v.family === "curtain" || v.family === "ribbon") {
+      glassRect(p, g.x + 9, y + 10, g.width - 18, g.height - 24, 1);
+      p.fill("ink", "#bdbdb4");
+      ctx.fillRect(g.x + g.width - 16, y + g.height * 0.5, 3, 24);
+    } else {
+      glassRect(p, g.x + 8, y + 9, g.width - 16, 36, 1);
+      p.shade(() => {
+        ctx.strokeStyle = "rgba(0,0,0,.18)";
+        ctx.lineWidth = 2;
+        ctx.strokeRect(g.x + 12, y + 66, g.width - 24, g.height - 82);
+      });
+      p.fill("ink", "#b3aea0");
+      ctx.fillRect(g.x + g.width - 17, y + g.height * 0.6, 4, 13);
+    }
+  }
   function doorAt(p, x, groundY, v) {
     const { ctx } = p, cartoon = p.cartoon, w = 118, h = 226, top = groundY - h;
     const line = () => {
       if (cartoon) {
-        p.stroke(OUTLINE, 6);
+        p.stroke(OUTLINE, p.lineW);
         ctx.lineJoin = "round";
         ctx.stroke();
       }
@@ -27724,18 +27862,22 @@ void main() {
     line();
     void v;
   }
+  function paintedGround(p, w, h) {
+    p.fill("wall", "#f6f3ec");
+    p.ctx.fillRect(0, 0, w, h);
+  }
   function shopAt(p, w, groundY) {
     const { ctx } = p, cartoon = p.cartoon, x = 36, top = 74, sw = w - 72, sh = groundY - top - 8;
     const line = () => {
       if (cartoon) {
-        p.stroke(OUTLINE, 6);
+        p.stroke(OUTLINE, p.lineW);
         ctx.lineJoin = "round";
         ctx.stroke();
       }
     };
     p.fill("ink", "rgba(20,14,10,0.5)");
-    ctx.fillRect(x - 6, top - 6, sw + 12, sh + 12);
-    p.fill("ink", cartoon ? "#fffaf0" : "#e4dfd2");
+    ctx.fillRect(x - 6, top - 6, sw + 12, sh + 6);
+    p.fill("wall", cartoon ? "#fffaf0" : "#e4dfd2");
     p.rr(x, top, sw, sh, cartoon ? 10 : 2);
     ctx.fill();
     line();
@@ -27756,7 +27898,7 @@ void main() {
       ctx.fillStyle = "#000";
       ctx.fillRect(x + 12, top + 12, sw - 24, sh - 24);
     }
-    p.fill("ink", cartoon ? "#fffaf0" : "#e4dfd2");
+    p.fill("wall", cartoon ? "#fffaf0" : "#e4dfd2");
     for (const mx of [x + sw * 0.36, x + sw * 0.7]) ctx.fillRect(mx - 4, top + 12, 8, sh - 24);
     p.fill("accent", "#ffffff");
     p.rr(x - 10, top - 44, sw + 20, 40, 6);
@@ -27766,6 +27908,228 @@ void main() {
       ctx.fillStyle = "rgba(255,255,255,0.55)";
       for (let sx = x; sx < x + sw; sx += 60) ctx.fillRect(sx, top - 40, 30, 32);
     });
+  }
+  function glassRect(p, x, y, w, h, r = 6) {
+    const { ctx } = p;
+    p.shade(() => {
+      const g = ctx.createLinearGradient(0, y, 0, y + h);
+      if (p.cartoon) {
+        g.addColorStop(0, p.glass[0]);
+        g.addColorStop(1, p.glass[1]);
+      } else {
+        g.addColorStop(0, "#7e97a6");
+        g.addColorStop(1, "#27363f");
+      }
+      ctx.fillStyle = g;
+      p.rr(x, y, w, h, r);
+      ctx.fill();
+    });
+    if (p.pass === "mask") {
+      ctx.fillStyle = "#000";
+      p.rr(x, y, w, h, r);
+      ctx.fill();
+    }
+  }
+  function fascia(p, x, y, w, h) {
+    const { ctx } = p;
+    p.fill("accent", "#ffffff");
+    p.rr(x, y, w, h, p.cartoon ? 8 : 2);
+    ctx.fill();
+    if (p.cartoon) {
+      p.stroke(OUTLINE, p.lineW);
+      ctx.stroke();
+    }
+    p.fill("ink", p.cartoon ? "#fffaf0" : "#e8e2d2");
+    const letters = 7;
+    for (let i = 0; i < letters; i++) ctx.fillRect(x + w * 0.16 + i * w * 0.68 / letters, y + h * 0.3, w * 0.68 / letters - 6, h * 0.4);
+  }
+  function quietShopAt(p, w, groundY, kind) {
+    const { ctx } = p;
+    const x = 24, y = 78, width = w - 48, height = groundY - y - 12;
+    p.fill("wall", "#ffffff");
+    ctx.fillRect(x, y, width, height);
+    glassRect(p, x + 7, y + 7, width - 14, height - 14, 1);
+    p.fill("wall", "#ffffff");
+    for (const mx of [w * 0.34, w * 0.7]) ctx.fillRect(mx - 3, y + 7, 6, height - 14);
+    ctx.fillRect(x + 7, y + 42, width - 14, 5);
+    p.fill("ink", kind === "shopBar" ? "#43322f" : "#39423e");
+    ctx.fillRect(x, 35, width, 28);
+    if (kind === "shopCafe" || kind === "groundShop") {
+      p.fill("accent", "#ffffff");
+      ctx.fillRect(x, 66, width, 10);
+    }
+  }
+  function shopVariantAt(p, w, groundY, kind) {
+    const { ctx } = p, cartoon = p.cartoon;
+    const frame = cartoon ? "#fffaf0" : "#e4dfd2";
+    const outline = () => {
+      if (cartoon) {
+        p.stroke(OUTLINE, p.lineW);
+        ctx.lineJoin = "round";
+        ctx.stroke();
+      }
+    };
+    if (kind === "shopCafe") {
+      fascia(p, 24, 16, w - 48, 44);
+      p.fill("wall", frame);
+      p.rr(24, 100, w - 48, groundY - 108, cartoon ? 8 : 2);
+      ctx.fill();
+      outline();
+      glassRect(p, 36, 112, w - 72, groundY - 196, 6);
+      p.fill("wall", frame);
+      ctx.fillRect(w / 2 - 4, 112, 8, groundY - 196);
+      p.fill("accent", "#ffffff");
+      ctx.fillRect(10, 66, w - 20, 34);
+      ctx.beginPath();
+      for (let sx = 10; sx < w - 10; sx += 40) ctx.arc(sx + 20, 100, 20, 0, Math.PI);
+      ctx.fill();
+      outline();
+      p.shade(() => {
+        ctx.fillStyle = "rgba(255,255,255,0.65)";
+        for (let sx = 10; sx < w - 10; sx += 80) ctx.fillRect(sx, 66, 40, 34);
+      });
+      for (let cx = 60; cx < w - 40; cx += 110) {
+        p.fill("ink", cartoon ? "#3a2a20" : "#2c2a28");
+        ctx.fillRect(cx - 3, groundY - 52, 6, 44);
+        p.fill("accent", "#ffffff");
+        ctx.beginPath();
+        ctx.ellipse(cx, groundY - 54, 28, 8, 0, 0, Math.PI * 2);
+        ctx.fill();
+        outline();
+        p.fill("ink", cartoon ? "#3a2a20" : "#2c2a28");
+        for (const dx of [-38, 30]) {
+          ctx.fillRect(cx + dx, groundY - 40, 8, 32);
+          ctx.fillRect(cx + dx - 4, groundY - 42, 16, 6);
+        }
+      }
+    } else if (kind === "shopWindow") {
+      fascia(p, 18, 24, w - 36, 62);
+      p.fill("wall", frame);
+      p.rr(24, 102, w - 48, groundY - 110, cartoon ? 8 : 2);
+      ctx.fill();
+      outline();
+      glassRect(p, 36, 114, w - 72, groundY - 134, 6);
+      p.fill("wall", frame);
+      for (const mx of [w * 0.34, w * 0.67]) ctx.fillRect(mx - 4, 114, 8, groundY - 134);
+    } else if (kind === "shopDeli") {
+      fascia(p, 24, 18, w - 48, 44);
+      p.fill("wall", frame);
+      p.rr(24, 104, w - 48, groundY - 112, cartoon ? 8 : 2);
+      ctx.fill();
+      outline();
+      glassRect(p, 36, 116, w - 72, groundY - 196, 6);
+      p.fill("accent", "#ffffff");
+      ctx.beginPath();
+      ctx.moveTo(14, 70);
+      ctx.lineTo(w - 14, 70);
+      ctx.lineTo(w - 4, 110);
+      ctx.lineTo(4, 110);
+      ctx.closePath();
+      ctx.fill();
+      outline();
+      p.shade(() => {
+        ctx.fillStyle = "rgba(255,255,255,0.6)";
+        for (let sx = 14; sx < w - 14; sx += 48) {
+          ctx.beginPath();
+          ctx.moveTo(sx, 70);
+          ctx.lineTo(sx + 24, 70);
+          ctx.lineTo(sx + 28, 110);
+          ctx.lineTo(sx + 4, 110);
+          ctx.closePath();
+          ctx.fill();
+        }
+      });
+      const produce = ["#e85a3c", "#f2b92e", "#7cb342", "#ee7f2c", "#c0392b", "#9ccc65"];
+      for (let i = 0, cx = 40; cx < w - 60; cx += 62, i++) {
+        p.fill("ink", cartoon ? "#a0703f" : "#7a5a3a");
+        ctx.fillRect(cx, groundY - 70, 52, 54);
+        p.shade(() => {
+          ctx.fillStyle = produce[i % produce.length];
+          for (let k = 0; k < 6; k++) {
+            ctx.beginPath();
+            ctx.arc(cx + 9 + k % 3 * 17, groundY - 74 + Math.floor(k / 3) * 10, 8, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        });
+      }
+    } else if (kind === "shopFlorist") {
+      fascia(p, 24, 22, w - 48, 52);
+      p.fill("wall", frame);
+      p.rr(24, 92, w - 48, groundY - 100, cartoon ? 8 : 2);
+      ctx.fill();
+      outline();
+      glassRect(p, 36, 104, w - 72, groundY - 124, 6);
+      const blooms = ["#e84a7f", "#f2b92e", "#ffffff", "#c04fd0", "#ff7a45", "#e8573d"];
+      for (let row = 0; row < 3; row++) for (let i = 0, cx = 30 + row * 14; cx < w - 40; cx += 44, i++) {
+        const by = groundY - 14 - row * 34;
+        p.fill("ink", cartoon ? "#3f6f5a" : "#33473d");
+        ctx.fillRect(cx, by - 26, 30, 26);
+        p.shade(() => {
+          ctx.fillStyle = cartoon ? "#4caf50" : "#3f7d3a";
+          ctx.beginPath();
+          ctx.arc(cx + 15, by - 30, 17, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillStyle = blooms[(i + row * 2) % blooms.length];
+          for (let k = 0; k < 4; k++) {
+            ctx.beginPath();
+            ctx.arc(cx + 6 + k % 2 * 18, by - 38 + Math.floor(k / 2) * 10, 6, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        });
+      }
+    } else if (kind === "shopBike") {
+      fascia(p, 18, 24, w - 36, 56);
+      p.fill("wall", frame);
+      p.rr(24, 96, w - 48, groundY - 104, cartoon ? 8 : 2);
+      ctx.fill();
+      outline();
+      glassRect(p, 36, 108, w - 72, groundY - 128, 6);
+      const bike = (bx, by, s) => {
+        ctx.beginPath();
+        ctx.arc(bx, by, 16 * s, 0, Math.PI * 2);
+        ctx.arc(bx + 48 * s, by, 16 * s, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(bx, by);
+        ctx.lineTo(bx + 18 * s, by - 26 * s);
+        ctx.lineTo(bx + 40 * s, by - 26 * s);
+        ctx.lineTo(bx + 48 * s, by);
+        ctx.moveTo(bx + 18 * s, by - 26 * s);
+        ctx.lineTo(bx + 24 * s, by);
+        ctx.lineTo(bx + 40 * s, by - 26 * s);
+        ctx.stroke();
+      };
+      p.stroke(cartoon ? OUTLINE : "#1c1c1c", 5);
+      for (let bx = 60; bx < w - 90; bx += 92) bike(bx, groundY - 70, 1);
+      p.stroke(cartoon ? "#2a9d8f" : "#2f3a40", 6);
+      for (let bx = 30; bx < w - 70; bx += 70) bike(bx, groundY - 18, 0.9);
+    } else {
+      p.fill("ink", cartoon ? "#5a3b2c" : "#3d2a20");
+      ctx.fillRect(16, 168, w - 32, groundY - 176);
+      p.fill("ink", cartoon ? "#6d4a37" : "#4b3326");
+      for (let x = 30; x < w - 30; x += 70) ctx.fillRect(x, 182, 54, groundY - 200);
+      for (const cx of [w * 0.28, w * 0.66]) {
+        p.fill("wall", frame);
+        p.rr(cx - 62, 84, 124, 78, cartoon ? 8 : 2);
+        ctx.fill();
+        outline();
+        glassRect(p, cx - 52, 94, 104, 58, 4);
+        p.shade(() => {
+          ctx.fillStyle = cartoon ? "rgba(255,200,120,0.45)" : "rgba(255,180,90,0.30)";
+          ctx.fillRect(cx - 52, 94, 104, 58);
+        });
+      }
+      p.stroke(OUTLINE, 5);
+      ctx.beginPath();
+      ctx.moveTo(w - 30, 58);
+      ctx.lineTo(w - 96, 58);
+      ctx.stroke();
+      p.fill("accent", "#ffffff");
+      ctx.beginPath();
+      ctx.arc(w - 84, 92, 28, 0, Math.PI * 2);
+      ctx.fill();
+      outline();
+    }
   }
   function ribbon(p, w, y, h) {
     const { ctx } = p, cartoon = p.cartoon;
@@ -27796,36 +28160,138 @@ void main() {
     p.fill("accent", "#ffffff");
     ctx.fillRect(14, y + h + 10, w - 28, 44);
   }
+  function bayWindowGeometry(v, y, h, look2) {
+    const width = v.openingOccupancy !== void 0 ? BAY_PX * v.openingOccupancy / v.windows : (v.windows === 1 ? 150 : v.windows === 2 ? 112 : 82) * (v.proportions === "wide" ? 1.35 : v.proportions === "balanced" ? 1.12 : 1) * (look2 === "cartoon" ? 1.12 : 1);
+    const height = v.openingHeight !== void 0 ? Math.min((y === 70 || y === 76 ? GROUND_PX : STOREY_PX) * v.openingHeight, h * 1.18) : h * (v.proportions === "wide" ? 0.76 : v.proportions === "balanced" ? 0.88 : 1);
+    return { width, y: y + (h - height) / 2, height };
+  }
   function layoutWindows(p, v, w, y, h) {
-    const ww = v.windows === 1 ? 150 : v.windows === 2 ? 112 : 82;
+    const geometry = bayWindowGeometry(v, y, h, p.look), ww = geometry.width;
+    y = geometry.y;
+    h = geometry.height;
+    if (v.entranceAssembly === "raised-plain") {
+      for (const axis of [0.2, 0.47, 0.8]) windowAt(p, w * axis - ww / 2, y, ww, h, v);
+      return;
+    }
+    if (v.entranceAssembly === "raised-pilaster") {
+      for (const axis of [0.205, 0.53, 0.8]) windowAt(p, w * axis - ww / 2, y, ww, h, v);
+      return;
+    }
+    if (v.facadeAssembly === "stacked-open-balcony") {
+      for (const axis of [0.17, 0.5, 0.83]) {
+        const wide = w * (axis === 0.5 ? 0.28 : 0.145);
+        windowAt(p, w * axis - wide / 2, y, wide, h, { ...v, sash: axis === 0.5 ? "paired-transom" : "transom" });
+      }
+      return;
+    }
     for (let i = 0; i < v.windows; i++) windowAt(p, (i + 0.5) / v.windows * w - ww / 2, y, ww, h, v);
   }
+  var isBareBay = (kind) => kind === "plain";
   function draw(p, v, w, h, brick) {
     const { ctx } = p;
-    wall(p, w, h, brick, v.archetype);
-    const ground = v.kind === "groundDoor" || v.kind === "groundShop" || v.kind === "ground";
-    if (v.archetype === "modern") {
-      if (!ground) ribbon(p, w, v.kind === "attic" ? 120 : 70, v.kind === "attic" ? 90 : 140);
-      else if (v.kind === "groundShop") shopAt(p, w, h - 24);
-      else {
+    wall(p, w, h, brick, v.archetype, v.wallMaterial);
+    if (v.facadeAssembly === "stacked-open-balcony" && (v.kind === "ground" || v.kind === "groundDoor")) {
+      p.shade(() => {
+        ctx.strokeStyle = "rgba(0,0,0,.19)";
+        ctx.lineWidth = 2;
+        for (let row = 0, y = 12; y < h; y += 38, row++) {
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(w, y);
+          ctx.stroke();
+          for (let x = row % 2 * 65; x < w; x += 130) {
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(x, y + 38);
+            ctx.stroke();
+          }
+        }
+      });
+    }
+    if (v.entranceAssembly === "raised-pilaster" && !isBareBay(v.kind)) {
+      p.fill("ink", p.cartoon ? "#fffaf0" : "#eee9de");
+      for (const fraction of [0.26, 0.56, 0.84]) ctx.fillRect(0, h * fraction, w, 9);
+    }
+    const isShop = SHOP_KINDS.includes(v.kind);
+    const ground = v.kind === "groundDoor" || isShop || v.kind === "ground";
+    if (isBareBay(v.kind)) {
+    } else if (v.family === "ribbon" || v.family === "curtain") {
+      if (!ground) ribbon(p, w, v.family === "curtain" ? 8 : v.kind === "attic" ? 120 : 70, v.family === "curtain" ? h - 24 : v.kind === "attic" ? 90 : 140);
+      else if (isShop) {
+        paintedGround(p, w, h);
+        if (v.trimDensity === "restrained") quietShopAt(p, w, h, v.kind);
+        else if (v.kind === "groundShop") shopAt(p, w, h);
+        else shopVariantAt(p, w, h, v.kind);
+      } else {
         windowAt(p, w * 0.2, 80, 140, 140, { ...v, shape: "rect", archetype: "modern" });
         if (v.kind === "groundDoor") doorAt(p, w * 0.62, h - 24, v);
       }
-    } else if (v.kind === "plain") {
     } else if (ground) {
-      if (v.kind === "groundShop") {
-        shopAt(p, w, h - 24);
+      if (v.groundAssembly) {
+        const row = canalGroundGeometry(v), door = v.kind === "groundDoor" || v.groundAssembly === "tall-side-entry";
+        if (v.groundAssembly === "tall-side-entry") {
+          p.fill("ink", p.stone);
+          ctx.fillRect(0, h * (1 - row.sill), w, h * row.sill);
+        }
+        for (const axis of door ? row.axes.slice(0, -1) : row.axes) windowAt(p, w * (axis - row.width / 2), h * (1 - row.head), w * row.width, h * (row.head - row.sill), v);
+        if (door) {
+          const d = bayDoorGeometry(v), y = h - d.bottom - d.height;
+          windowAt(p, d.x, y, d.width, d.height, v);
+          p.fill("ink", "#30342f");
+          ctx.fillRect(d.x + 5, y + d.height * 0.48, d.width - 10, d.height * 0.52 - 5);
+          p.fill("ink", "#1d2421");
+          ctx.fillRect(d.x + 13, y + d.height * 0.56, d.width - 26, d.height * 0.3);
+          p.fill("ink", "#686a60");
+          ctx.fillRect(d.x + d.width - 18, y + d.height * 0.58, 3, 18);
+        }
+      } else if (v.facadeAssembly === "stacked-open-balcony" && !isShop) {
+        const g = bayWindowGeometry(v, 70, 240, p.look);
+        for (const axis of v.kind === "groundDoor" ? [0.17, 0.83] : [0.17, 0.5, 0.83]) {
+          const ww = w * (axis === 0.5 ? 0.28 : 0.145);
+          windowAt(p, w * axis - ww / 2, g.y, ww, g.height, { ...v, sash: axis === 0.5 ? "paired-transom" : "transom" });
+        }
+        if (v.kind === "groundDoor") quietDoorAt(p, v, h - 24);
+      } else if (isShop) {
+        paintedGround(p, w, h);
+        if (v.trimDensity === "restrained") quietShopAt(p, w, h, v.kind);
+        else if (v.kind === "groundShop") shopAt(p, w, h);
+        else shopVariantAt(p, w, h, v.kind);
+      } else if (v.entranceAssembly === "raised-plain") {
+        const g = bayDoorWindowGeometry(v, p.look), axes = v.kind === "groundDoor" ? [0.2, 0.47] : [0.2, 0.47, 0.8];
+        p.fill("ink", p.stone);
+        ctx.fillRect(0, h - 82, w, 82);
+        for (const axis of axes) windowAt(p, w * axis - g.width / 2, g.y, g.width, g.height, v);
+        if (v.kind === "groundDoor") {
+          quietDoorAt(p, v, h - 70);
+          const d = bayDoorGeometry(v);
+          p.fill("ink", p.stone);
+          for (let i = 1; i <= 4; i++) ctx.fillRect(d.x - 10, h - 17.5 * i, d.width + 20, 3);
+        }
+        for (const axis of [0.2, 0.47]) glassRect(p, w * axis - w * 0.075, h - 42, w * 0.15, 28, 1);
+      } else if (v.kind === "groundDoor" && v.entranceAssembly === "raised-pilaster") {
+        quietDoorAt(p, v, h - 52);
+        const g = bayDoorWindowGeometry(v, p.look);
+        for (const axis of [0.53, 0.8]) windowAt(p, w * axis - g.width / 2, g.y, g.width, g.height, v);
+        p.fill("ink", p.stone);
+        const d = bayDoorGeometry(v);
+        for (let i = 0; i < 3; i++) ctx.fillRect(d.x - 10, h - 17 * (i + 1), d.width + 20, 3);
       } else if (v.kind === "groundDoor") {
-        doorAt(p, w * 0.14, h - 24, v);
-        layoutWindows(p, { ...v, windows: 1 }, w * 1.28, 76, 150);
+        if (v.trimDensity === "restrained") quietDoorAt(p, v, h - 24);
+        else doorAt(p, w * 0.14, h - 24, v);
+        const g = bayDoorWindowGeometry(v, p.look);
+        windowAt(p, w * g.axis - g.width / 2, g.y, g.width, g.height, v);
       } else layoutWindows(p, v, w, 70, 150);
       if (v.archetype === "school") {
         p.fill("ink", p.cartoon ? "#fff1cf" : "#c9c1ae");
         ctx.fillRect(0, h - 70, w, 8);
       }
+      if (v.archetype === "c19") {
+        p.fill("ink", p.stone);
+        ctx.fillRect(0, 0, w, 12);
+      }
     } else {
       const [y, wh] = v.kind === "upperTall" ? [26, 250] : v.kind === "attic" ? [96, 118] : [62, 188];
-      if (v.archetype === "school") {
+      if (v.archetype === "school" && !v.proportions) {
         p.fill("ink", p.cartoon ? "#fff1cf" : "#c9c1ae");
         ctx.fillRect(0, 0, w, 16);
         ctx.fillRect(0, h - 10, w, 10);
@@ -27833,13 +28299,25 @@ void main() {
           windowAt(p, w * cx - 38, y + 6, 76, wh - 8, { ...v, shape: "rect", shutters: false });
         }
       } else layoutWindows(p, v, w, y, wh);
+      if (v.archetype === "c19") {
+        p.fill("ink", p.stone);
+        ctx.fillRect(0, h - (v.entranceAssembly === "raised-pilaster" ? 12 : v.trimDensity === "restrained" ? 4 : 12), w, v.entranceAssembly === "raised-pilaster" ? 12 : v.trimDensity === "restrained" ? 4 : 12);
+        if (v.trimDensity !== "restrained") ctx.fillRect(0, y + wh + 4, w, 7);
+        if (p.cartoon) {
+          p.stroke(OUTLINE, p.lineW * 0.5);
+          ctx.strokeRect(0, h - 12, w, 12);
+        }
+      } else if (v.archetype === "canal" && v.kind !== "attic" && !v.openingGroup) {
+        p.fill("ink", p.stone);
+        ctx.fillRect(0, h - 7, w, 7);
+      }
       if (v.kind === "upperTall" && v.archetype === "canal") {
         p.fill("ink", p.cartoon ? "#fffaf0" : "#2b2b2b");
         ctx.fillRect(w * 0.1, y + wh - 40, w * 0.8, 6);
         for (let bx = w * 0.1; bx < w * 0.9; bx += 18) ctx.fillRect(bx, y + wh - 40, 4, 38);
       }
     }
-    if (ground) {
+    if (ground && !isShop && v.entranceAssembly !== "raised-plain") {
       p.shade(() => {
         ctx.fillStyle = p.cartoon ? "rgba(40,24,24,0.30)" : "rgba(40,36,34,0.78)";
         ctx.fillRect(0, h - 24, w, 24);
@@ -27876,6 +28354,7 @@ void main() {
   var local = ([lng, lat]) => [(lng - lng0) * kx, (lat - lat0) * ky];
   var ROOFS = {
     cartoon: ["#b5574a", "#7f93a3", "#6b7785", "#a8786a", "#8a6f9c"],
+    storybook: ["#b5574a", "#7f93a3", "#6b7785", "#a8786a"],
     photo: ["#8d5a48", "#7c8080", "#9a8f80", "#6e6a68"]
   };
   async function loadTile(z, x, y) {
