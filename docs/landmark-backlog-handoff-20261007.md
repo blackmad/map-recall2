@@ -1,3 +1,21 @@
+## Routability and resolved parklet checkpoint — 2026-10-08
+
+The user requires every landmark to be a routable POI. Completion includes a selectable destination, correct geographic pin/label and meaningful sourced card, with a checked public entrance and explicit failure when unreachable. A read-only existing-landmark audit is active; intentional ordinary custom assets remain a separate inventory.
+
+Dorus Theus Brug is resolved by the user screenshot as the Erasmusgracht water parklet, source-documented Helofytenfilter Erasmusgracht. Worker owns original native filter beds/stone rims/wooden walks, source-linked card and southern public entrance candidate. Earlier roadbridge ambiguity is superseded; no clarification outstanding. Podium corrected support/pane/material candidate awaits independent visual review. Collectie Six exact BAG boundary now uses local roof104 plane heights at new corners and preserves interior source heights; native dormer/source and integrated acceptance remain pending. Podium sources and Collectie failed-front evidence were privately pushed at920da47c0.
+
+Latest successful Firebase open/in-progress pulls at2026-10-08 10:17UTC retain1open OCCII and1in-progress Melkweg. Preserve evidence and all earlier requests.
+
+## Hosted closeout and active builds — 2026-10-08
+
+Café Kobalt publicd1655800 and actualcanonical0f31c976 hostedverified with exactbe40. Root inspected front/whiteflank/pan; route/endpoint arrival, geographicname, physical researchedcard, exactPandmask/eightneighbors andmissing-model fallback pass. Privatehosted evidencee781adc8148c69ce3b27b3497dc59d32a55945e8 models/cafe-kobalt/checkpoints/hosted-be40-on-0f31c976-20261008. Preserve faileda96/f53, withdrawnwrongNE-gable inference andsource/performance limits.
+
+Wester scopedcourtyard correction hosted784 verified withb2efbdd4/all3POIsurfaces/neighbors/fallback/pans. Private5b9a9ac27 models/westerkerk/checkpoints/hosted-courtyard-784cca82-20261008 explicitly separates laterd165 pairedcamera supplement from784 timing. IndependentTours/Pancakes2174413 roof/circulargable remainsqueued. Fresh /root/homomonument_ground_repair ownsground-water diagnosis/repair; do not move intendedeastwatersideplatform. Melk sharedraisedhall stillneedsfix; livelegacyasset remainsa55b1336.
+
+Collectie Six firstdraft failedindependent source review: diagonal17→3 buriedall20glazing probes; actualfrontchain18→3 nowcorrected, butBAG/surveyboundary andjoinery/dormer/stoop repairs remain. Failedbaseline preserved durableCollectieworktree. Source38bfb7c3c pluscurrentaeriale781adc81. Rootauthor andfresh /root/collectie_six_independent ownthat task. Fresh /root/podium_mozaiek_build ownsneworiginalformerPniëlkerk, Pand2122803/currentOSMway57867539; extract943416488 suffix is notOSMway. Rootowns sharedregistration/GPU/git/privateindex; workersown scopedsource/build/checkfiles. Allworktrees durable under /Users/blackmad/Code/map-recall2-worktrees.
+
+Latest successfulFirebaseopen/in-progresspull around2026-10-08 06:28UTC:1openOCCII063e3e2c,1in-progressMelk26b15ccf. Preserve immutable evidence; claimOCCII withfreshupdateTime beforecodefix. Pullagainatbatch/before release/30minutes. PreserveDorusTheusBrug andallpriorPOI/streetrequests; continue fullqueue afterthischeckpoint.
+
 ## Current scoped review and request checkpoint
 
 Podium Mozaïek and Dorus Theus Brug were explicitly requested and are queued in poi-work-queue.json and the generated backlog. The former Pniëlkerk venue at Bos en Lommerweg191 needs native historic-building research; the bridge needs official identity/number/location confirmation and bridge geometry rather than a building shell. Preserve all prior requests.
