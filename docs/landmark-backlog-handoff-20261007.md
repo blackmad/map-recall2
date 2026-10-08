@@ -1,3 +1,11 @@
+## Native batch ready for publication — 2026-10-08
+
+Podium Mozaïek, Dorus Theus Brug water parklet and Collectie Six passed independent source/native review and root gallery/game checks. All three have selectable genuine destinations, map pins/labels and physically selected useful sourced cards. Exact suppression and neighboring geometry, model off/load failure, stationary desktop/touch pans and bounded whole-game timings passed. Collectie failed basement door was preserved and repaired; independent own low-front GPU view passed tall dark doorway/surround/vents. Coordinate conversion discrepancies below4cm remain explicitly recorded, without changing native scale1. Native/source/failure evidence privately pushed de08c187b, checkpoints/landmark-batch-native-20261008. Hosted checks remain pending publication.
+
+Homomonument adds only surveyed BGT quay paving (28vertices,1retainedhole), preserves both mainland triangles and deliberate eastern water projection. Installed root game/card/fallback and true zero-rider-drift desktop/touch pans passed. Central Station destination now resolves canonical modeled identity before a raw name alias; independent actual selected route/highlight/pin/arrival/card check passed. Native audit192 genuine pre-batch destinations reaches street network from Dam, with31boat-mode limitations explicitly retained. Shared-gallery heading/category labels distinguish ordinary custom buildings (including Haparanda11/13) from POI landmarks.
+
+The small Westerkerk neighbor is a separate uncommitted/unregistered candidate pending remaining native neighbor checks, not in this release. Melkweg coupled native hall/foyer/Stadsschouwburg work continues; source-backed coupling failures are preserved and corrected by its worker. Latest feedback pull12:15UTC retains2open OCCII facade notes and1in-progress Melkweg. Do not drop these or any earlier requests. Continue queue after release and hosted verification.
+
 ## Routability and resolved parklet checkpoint — 2026-10-08
 
 The user requires every landmark to be a routable POI. Completion includes a selectable destination, correct geographic pin/label and meaningful sourced card, with a checked public entrance and explicit failure when unreachable. A read-only existing-landmark audit is active; intentional ordinary custom assets remain a separate inventory.

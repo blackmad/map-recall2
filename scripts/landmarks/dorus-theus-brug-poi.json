@@ -1,0 +1,37 @@
+{
+  "id": "dorus-theus-brug",
+  "name": "Dorus Theus Brug",
+  "type": "park",
+  "coordinates": [
+    4.8564044,
+    52.3766581
+  ],
+  "physicalCoordinates": [
+    4.856053,
+    52.376791
+  ],
+  "aliases": [
+    "Helofytenfilter Erasmusgracht"
+  ],
+  "description": "This small water garden in Erasmusgracht is a rainwater filter. Runoff first enters a settling basin, then passes through two planted reed beds before cleaner water returns to the canal. A narrow wooden walk connects the stone-edged filter islands with the surrounding banks.",
+  "facts": [
+    "The reed-bed garden is documented as Helofytenfilter Erasmusgracht; Dorus Theus Brug is a name used on maps.",
+    "Atelier GROENBLAUW carried out the project for Waternet.",
+    "The paired reed beds form part of a local alternative to upgrading the separated sewer system."
+  ],
+  "sources": [
+    {
+      "title": "Amsterdam Weerproof \u2014 Helofytenfilter Erasmusgracht",
+      "url": "https://weerproof.nl/project/helofytenfilter-erasmusgracht/"
+    },
+    {
+      "title": "2004 study \u2014 Zuiveren met helofyten",
+      "url": "https://edepot.wur.nl/107663"
+    },
+    {
+      "title": "Surveyed planted filter bed, OpenStreetMap",
+      "url": "https://www.openstreetmap.org/way/626223376"
+    }
+  ],
+  "routeNote": "Use surveyed southern public walkway contact as destination instead of water-garden centroid; route failure must stay explicit. Preserve single requested identity."
+}

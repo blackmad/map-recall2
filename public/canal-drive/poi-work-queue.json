@@ -26,26 +26,27 @@
   "tasks": [
     {
       "id": "collectie-six",
-      "task": "Collectie Six \u2014 original native Amstel218 museum house",
+      "task": "Collectie Six — original native Amstel218 museum house",
       "priority": "normal",
-      "status": "draft-source-failure-repair-active",
+      "status": "verified-native-awaiting-hosted",
       "owner": "root",
       "existingExtractIdentity": "extract_landmarks_2134910296",
       "officialVBO": "0363010000566905",
       "surveyedParent": "NL.IMBAG.Pand.0363100012185998",
       "currentOSMBuilding": "w268446719",
       "sourceArchive": {
-        "commit": "38bfb7c3c",
-        "path": "models/collectie-six/source-20261007/survey-photo-supplement-20261008"
+        "commit": "de08c187b",
+        "path": "checkpoints/landmark-batch-native-20261008"
       },
-      "nextAction": "Correct/re-review firstdraft: actualfrontchain18\u219219\u21920\u21921\u21922\u21923 replaces faileddiagonal17\u21923; preserve20buriedglass failures. ReconcileBAG/surveyedges, observedtwo dormerglazing, paleouter/darkinner sash anddiagonalstoop rails; preserve source roofhierarchy/rearrecesses. Full source/gallery/native POI/suppression/fallback/pan acceptance pending.",
-      "criticalSourceTraits": "RCE230 doublehouse1662/68,18cstraightconsolecornice,hiproof/twodormers/twochimneys,doubleporch/eight bottlebalusters,originalentrance/fanlight. Current2024/2025 municipalphotos+aerial archived.1001m\u00b2VBO usablearea differs from343.95m\u00b2Pand."
+      "nextAction": "Publish this accepted native batch and verify the canonical hosted scene; retain documented source approximations and earlier failed evidence.",
+      "criticalSourceTraits": "RCE230 doublehouse1662/68,18cstraightconsolecornice,hiproof/twodormers/twochimneys,doubleporch/eight bottlebalusters,originalentrance/fanlight. Current2024/2025 municipalphotos+aerial archived.1001m²VBO usablearea differs from343.95m²Pand.",
+      "validation": "Independent source/native and actual game review pass. Genuine destination, geographic pin/label and physical sourced card verified for POIs; exact suppression/retained neighbors, disabled/load-failure fallback and stationary desktop/touch camera pans checked. Whole-game on/off frame timings recorded; hosted checks follow release."
     },
     {
       "id": "podium-mozaiek",
       "task": "Podium Mozaïek — model the former Pniëlkerk theatre building",
       "priority": "high",
-      "status": "source-native-build-active",
+      "status": "verified-native-awaiting-hosted",
       "requested": true,
       "requestedOn": "2026-10-07",
       "sources": [
@@ -54,24 +55,34 @@
           "url": "https://podiummozaiek.nl/over-ons/overzicht"
         }
       ],
-      "nextAction": "Source-backed formerPniëlkerk originalbuild underway: white diamondconcrete/glass panels, highmiddle/loweraisles andtwo steelbelfries. Preserve genuineextract identity (numeric suffix is notanOSMway), exactparent/currentOSMalias andnativeopen spaces. Root archives originals before modelcommit; independent/gallery/native/all3POI acceptance pending.",
+      "nextAction": "Publish this accepted native batch and verify the canonical hosted scene; retain documented source approximations and earlier failed evidence.",
       "owner": "podium_mozaiek_build",
       "officialVBO": "0363010001021419",
       "surveyedParent": "NL.IMBAG.Pand.0363100012122803",
       "existingExtractIdentity": "extract_landmarks_943416488",
-      "currentOSMBuilding": "w57867539"
+      "currentOSMBuilding": "w57867539",
+      "sourceArchive": {
+        "commit": "de08c187b",
+        "path": "checkpoints/landmark-batch-native-20261008"
+      },
+      "validation": "Independent source/native and actual game review pass. Genuine destination, geographic pin/label and physical sourced card verified for POIs; exact suppression/retained neighbors, disabled/load-failure fallback and stationary desktop/touch camera pans checked. Whole-game on/off frame timings recorded; hosted checks follow release."
     },
     {
       "id": "dorus-theus-brug",
       "task": "Dorus Theus Brug — Erasmusgracht water parklet",
       "priority": "high",
-      "status": "source-native-build-active",
+      "status": "verified-native-awaiting-hosted",
       "requested": true,
       "requestedOn": "2026-10-07",
       "userRequestedName": "Dorus Theus Brug",
-      "nextAction": "User screenshot resolves the water parklet: source-documented Helofytenfilter Erasmusgracht, two planted filter beds, stone retaining rims and connecting wooden walks. Preserve requested alias and single genuine physical identity. Verify a reachable public entrance, selectable route, geographic map label and meaningful sourced card together; native/game review remains pending.",
+      "nextAction": "Publish this accepted native batch and verify the canonical hosted scene; retain documented source approximations and earlier failed evidence.",
       "owner": "dorus_theus_brug_build",
-      "physicalFeature": "w626223376"
+      "physicalFeature": "w626223376",
+      "sourceArchive": {
+        "commit": "de08c187b",
+        "path": "checkpoints/landmark-batch-native-20261008"
+      },
+      "validation": "Independent source/native and actual game review pass. Genuine destination, geographic pin/label and physical sourced card verified for POIs; exact suppression/retained neighbors, disabled/load-failure fallback and stationary desktop/touch camera pans checked. Whole-game on/off frame timings recorded; hosted checks follow release."
     },
     {
       "id": "westerkerk-tours-pancakes-neighbor-fidelity",
@@ -1998,11 +2009,16 @@
       "id": "homomonument-water-feedback",
       "task": "Homomonument main-land triangles reported in water",
       "priority": "high",
-      "status": "source-ground-native-repair-active",
+      "status": "verified-native-awaiting-hosted",
       "modelId": "homomonument",
       "requestedOn": "2026-10-07",
-      "nextAction": "Fresh scoped source/native ground-water diagnosis and repair in durablehomomonument-groundworktree. Check installedtriangles against actualBGT/basemapfills; retain sourcedeastwaterside steppedtriangle. Root sourcearchive/independent/native acceptance required beforecompletion.",
-      "owner": "homomonument_ground_repair"
+      "nextAction": "Publish this accepted native batch and verify the canonical hosted scene; retain documented source approximations and earlier failed evidence.",
+      "owner": "homomonument_ground_repair",
+      "sourceArchive": {
+        "commit": "de08c187b",
+        "path": "checkpoints/landmark-batch-native-20261008"
+      },
+      "validation": "Independent source/native and actual game review pass. Genuine destination, geographic pin/label and physical sourced card verified for POIs; exact suppression/retained neighbors, disabled/load-failure fallback and stationary desktop/touch camera pans checked. Whole-game on/off frame timings recorded; hosted checks follow release."
     },
     {
       "id": "occii-facade-alignment-feedback",

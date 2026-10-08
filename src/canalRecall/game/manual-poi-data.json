@@ -1427,5 +1427,51 @@
     "funFact": "Kobalt’s seventeenth-century corner house retains a broad stepped gable, wooden frontage and a wheelbarrow façade stone. The café describes the building as a former warehouse.",
     "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/5249",
     "preferDescription": true
+  },
+{
+  "modelId": "podium-mozaiek",
+  "name": "Podium Mozaïek",
+  "description": "The theatre occupies B. T. Boeyinga’s 1954 Pniëlkerk. Its geometric glass-block facade gave the church the nickname “the tealight”; the former worship space became a multicultural performance venue in 2005.",
+  "sourceUrl": "https://podiummozaiek.nl/over-ons/overzicht",
+  "preferDescription": true,
+  "website": "https://podiummozaiek.nl/",
+  "funFact": "The theatre occupies B. T. Boeyinga’s 1954 Pniëlkerk. Its geometric glass-block facade gave the church the nickname “the tealight”; the former worship space became a multicultural performance venue in 2005.",
+  "additionalSources": [
+    "https://data.amsterdam.nl/monumenten/f3d3ac3d-299c-4e46-9fdc-06abe8606e48",
+    "https://www.o-drie.nl/en/podium-mozaiek"
+  ]
+},
+{
+  "modelId": "dorus-theus-brug",
+  "name": "Dorus Theus Brug",
+  "description": "This small water garden in Erasmusgracht is a rainwater filter. Runoff first enters a settling basin, then passes through two planted reed beds before cleaner water returns to the canal. A narrow wooden walk connects the stone-edged filter islands with the surrounding banks.",
+  "sourceUrl": "https://weerproof.nl/project/helofytenfilter-erasmusgracht/",
+  "preferDescription": true,
+  "center": [
+    52.3766581,
+    4.8564044
+  ],
+  "destinationOverride": {
+    "center": [
+      52.3766581,
+      4.8564044
+    ]
+  },
+  "routeDestination": {
+    "center": [
+      52.3766581,
+      4.8564044
+    ]
   }
+},
+{
+  "modelId": "collectie-six",
+  "name": "Collectie Six",
+  "description": "Collectie Six occupies the protected double house at Amstel 218. Built in 1662–1668, it retains an eighteenth-century cornice, two roof dormers and a carved double stoop with eight bottle-shaped balusters.",
+  "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/230",
+  "additionalSources": [
+    "https://www.collectiesix.nl/home"
+  ],
+  "preferDescription": true
+}
 ]

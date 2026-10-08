@@ -26,7 +26,7 @@
       map.on('styledata',this.visibilityHandler);
       map.on('remove',this.removeHandler);
       map.addSource('park-landscape', {type:'geojson',data:EMPTY,maxzoom:17,
-        attribution:'Park landscape © OpenStreetMap contributors (ODbL)'});
+        attribution:'Park landscape © OpenStreetMap contributors (ODbL); BGT © Kadaster / Gemeente Amsterdam (CC0 1.0)'});
       const before = map.getStyle().layers.find(l => l.type === 'fill-extrusion' || l.id.startsWith('tree-'))?.id;
       map.addLayer({id:'park-landscape-ground',type:'fill',source:'park-landscape',minzoom:13,
         filter:['in',['get','role'],['literal',['park','lawn','wood','scrub','garden','playground','water','paved-area']]],

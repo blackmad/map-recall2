@@ -1,0 +1,53 @@
+{
+  "id": "podium-mozaiek",
+  "name": "Podium Mozaïek — former Pniëlkerk",
+  "modelUrl": "./models/podium-mozaiek.glb",
+  "landmarkId": "extract_landmarks_943416488",
+  "osmPoi": {
+    "type": "way",
+    "id": 57867539,
+    "coordinate": [
+      4.85413421,
+      52.3800775
+    ]
+  },
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012122803",
+    "57867539"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.854336717033327,
+      52.38009189682617
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 46,
+    "widthMetres": 41
+  },
+  "surveyed": {
+    "anchor": [
+      4.854336717033327,
+      52.38009189682617
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG polygon and3DBAG2023 roof points; nativeeast/south reconstructed original curved roof and open belfries"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "Podium Mozaïek",
+    "author": "Map Recall",
+    "sourceUrl": "https://data.amsterdam.nl/monumenten/f3d3ac3d-299c-4e46-9fdc-06abe8606e48",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native geometry; reference images guide shapes only."
+  },
+  "materialOverrides": {
+    "white": "#e1e2d9",
+    "glass": "#63776e",
+    "slate": "#655348",
+    "frame": "#b8bcb2",
+    "dark": "#343b36"
+  }
+}

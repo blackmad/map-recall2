@@ -1,0 +1,46 @@
+{
+  "id": "collectie-six",
+  "name": "Collectie Six — Amstel 218",
+  "modelUrl": "./models/collectie-six.glb",
+  "landmarkId": "extract_landmarks_2134910296",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012185998",
+    "w268446719"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.90068029,
+      52.36505271
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 34,
+    "widthMetres": 24
+  },
+  "surveyed": {
+    "anchor": [
+      4.90068029,
+      52.36505271
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Exact current BAG parent native east/south polygon with local roof104 plane boundary reconciliation; dated survey heights and rear recess families preserved."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#858077",
+    "stone": "#c6c6bc",
+    "slate": "#47525d",
+    "white": "#e4e4dc",
+    "glass": "#526f78",
+    "dark": "#344c49"
+  },
+  "attribution": {
+    "title": "Collectie Six / Amstel 218",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/230",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native interpretation of source footprint/roof planes, current facade photos and municipal/register description; joinery/stoop/dormer proportions approximate. No photo pixels or third-party mesh imported."
+  }
+}
