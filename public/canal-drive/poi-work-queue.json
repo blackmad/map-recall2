@@ -1414,11 +1414,21 @@
     },
     {
       "id": "hannekes-boom",
-      "task": "Hannekes Boom \u2014 original house-style landmark model",
+      "task": "Hannekes Boom — original house-style landmark model",
       "priority": "high",
-      "status": "queued",
+      "status": "draft-review-pending",
       "requestedOn": "2026-10-05",
-      "nextAction": "Research the waterfront cafe, timber pavilion and terrace; preserve the open waterside setting and verify current footprint and public access. Archive original reference sources; integrate destination, pin/label and meaningful sourced card, then review gallery and native game placement."
+      "nextAction": "Draft is local and unpublished. Complete source repairs and gallery/native-game route, pin, physical card, exact suppression/neighbors and desktop/touch stationary-pan/performance acceptance. Browser launch currently restricted; do not treat CPU checks as visual acceptance.",
+      "sourceArchive": {
+        "repository": "blackmad/map-recall2-source-data",
+        "commit": "9ae768a488e916e56953716b04812eb6628b0a0d",
+        "path": "models/hannekes-boom"
+      },
+      "draftSHA256": "cfb520433d0cf97e94831a0c08aa6526c11dd4cd14ba7f2d2d90252f8fb6f7dc",
+      "claim": {
+        "ownerThread": "01a11cf3-a95a-75b2-a04b-0c2f9879a2c6",
+        "runDeadline": "2026-10-08T22:18:54Z"
+      }
     },
     {
       "id": "pulitzer-amsterdam",
@@ -2261,6 +2271,125 @@
       "nextAction": "Hosted30 verified; preserve documented source-stage and architectural approximation limits.",
       "assetHash": "aa98fe521fbbc9eb5731cf530bf7121ca5f2b8701efd0e436d909da0ef62bd23",
       "reviewEvidenceCommit": "ef64e81d6e6a762ff9fc39112ad5d2ea757ff73c"
+    },
+    {
+      "id": "meerpadkerk",
+      "task": "Meerpadkerk — original house-style landmark model",
+      "priority": "high",
+      "status": "draft-review-pending",
+      "sourceArchive": {
+        "repository": "blackmad/map-recall2-source-data",
+        "commit": "9ae768a488e916e56953716b04812eb6628b0a0d",
+        "path": "models/meerpadkerk"
+      },
+      "draftSHA256": "d2424aeb57d930034fe6e7598294e8145dc4718ef2105ab87c6167c45f46eb77",
+      "claim": {
+        "ownerThread": "01a11cf3-a95a-75b2-a04b-0c2f9879a2c6",
+        "runDeadline": "2026-10-08T22:18:54Z"
+      },
+      "nextAction": "Draft is local and unpublished. Complete source repairs and gallery/native-game route, pin, physical card, exact suppression/neighbors and desktop/touch stationary-pan/performance acceptance. Browser launch currently restricted; do not treat CPU checks as visual acceptance."
+    },
+    {
+      "id": "nieuwendammerkerk",
+      "task": "Nieuwendammerkerk — original house-style landmark model",
+      "priority": "high",
+      "status": "draft-review-pending",
+      "sourceArchive": {
+        "repository": "blackmad/map-recall2-source-data",
+        "commit": "9ae768a488e916e56953716b04812eb6628b0a0d",
+        "path": "models/nieuwendammerkerk"
+      },
+      "draftSHA256": "7dd13c274c3f51e29abd6c983bf69da2b6edad48b6a3cb5181fefb686294c295",
+      "claim": {
+        "ownerThread": "01a11cf3-a95a-75b2-a04b-0c2f9879a2c6",
+        "runDeadline": "2026-10-08T22:18:54Z"
+      },
+      "nextAction": "Draft is local and unpublished. Complete source repairs and gallery/native-game route, pin, physical card, exact suppression/neighbors and desktop/touch stationary-pan/performance acceptance. Browser launch currently restricted; do not treat CPU checks as visual acceptance."
+    },
+    {
+      "id": "this-is-holland",
+      "task": "This is Holland — original house-style landmark model",
+      "priority": "high",
+      "status": "draft-review-pending",
+      "sourceArchive": {
+        "repository": "blackmad/map-recall2-source-data",
+        "commit": "9ae768a488e916e56953716b04812eb6628b0a0d",
+        "path": "models/this-is-holland"
+      },
+      "draftSHA256": "0fbe53d8a3919a7c59f3479b63667e36c76b844f12318612b5b9e15ae30a9b32",
+      "claim": {
+        "ownerThread": "01a11cf3-a95a-75b2-a04b-0c2f9879a2c6",
+        "runDeadline": "2026-10-08T22:18:54Z"
+      },
+      "nextAction": "Draft is local and unpublished. Complete source repairs and gallery/native-game route, pin, physical card, exact suppression/neighbors and desktop/touch stationary-pan/performance acceptance. Browser launch currently restricted; do not treat CPU checks as visual acceptance."
+    },
+    {
+      "id": "huize-frankendael",
+      "task": "Huize Frankendael — original house-style landmark model",
+      "priority": "high",
+      "status": "draft-review-pending",
+      "sourceArchive": {
+        "repository": "blackmad/map-recall2-source-data",
+        "commit": "9ae768a488e916e56953716b04812eb6628b0a0d",
+        "path": "models/huize-frankendael"
+      },
+      "draftSHA256": "03849239aa04f4302f790913737053aa520b68c63935a2c37b79c66310ffb381",
+      "claim": {
+        "ownerThread": "01a11cf3-a95a-75b2-a04b-0c2f9879a2c6",
+        "runDeadline": "2026-10-08T22:18:54Z"
+      },
+      "nextAction": "Draft is local and unpublished. Complete source repairs and gallery/native-game route, pin, physical card, exact suppression/neighbors and desktop/touch stationary-pan/performance acceptance. Browser launch currently restricted; do not treat CPU checks as visual acceptance."
+    },
+    {
+      "id": "uilenburger-synagoge",
+      "task": "Uilenburger Synagoge — original house-style landmark model",
+      "priority": "high",
+      "status": "draft-review-pending",
+      "sourceArchive": {
+        "repository": "blackmad/map-recall2-source-data",
+        "commit": "9ae768a488e916e56953716b04812eb6628b0a0d",
+        "path": "models/uilenburger-synagoge"
+      },
+      "draftSHA256": "58896b5f0545f0f645b23a9a01cab73ad768d9480f0316b36e7b4877ae7cf17c",
+      "claim": {
+        "ownerThread": "01a11cf3-a95a-75b2-a04b-0c2f9879a2c6",
+        "runDeadline": "2026-10-08T22:18:54Z"
+      },
+      "nextAction": "Draft is local and unpublished. Complete source repairs and gallery/native-game route, pin, physical card, exact suppression/neighbors and desktop/touch stationary-pan/performance acceptance. Browser launch currently restricted; do not treat CPU checks as visual acceptance."
+    },
+    {
+      "id": "luther-museum",
+      "task": "Luther Museum Amsterdam — original house-style landmark model",
+      "priority": "high",
+      "status": "draft-review-pending",
+      "sourceArchive": {
+        "repository": "blackmad/map-recall2-source-data",
+        "commit": "9ae768a488e916e56953716b04812eb6628b0a0d",
+        "path": "models/luther-museum"
+      },
+      "draftSHA256": "cd9e83de742a22fe2eaac299109a7bb5ba2cd2e019b75a3fdd99b799695f6b6e",
+      "claim": {
+        "ownerThread": "01a11cf3-a95a-75b2-a04b-0c2f9879a2c6",
+        "runDeadline": "2026-10-08T22:18:54Z"
+      },
+      "nextAction": "Draft is local and unpublished. Complete source repairs and gallery/native-game route, pin, physical card, exact suppression/neighbors and desktop/touch stationary-pan/performance acceptance. Browser launch currently restricted; do not treat CPU checks as visual acceptance."
+    },
+    {
+      "id": "posthoornkerk",
+      "task": "Posthoornkerk — original house-style landmark model",
+      "priority": "high",
+      "status": "draft-review-pending",
+      "sourceArchive": {
+        "repository": "blackmad/map-recall2-source-data",
+        "commit": "9ae768a488e916e56953716b04812eb6628b0a0d",
+        "path": "models/posthoornkerk"
+      },
+      "draftSHA256": "d23292b9424df6587c1dc03c71cc67a77bc8191b4c95cff5709bd1563572a2ae",
+      "claim": {
+        "ownerThread": "01a11cf3-a95a-75b2-a04b-0c2f9879a2c6",
+        "runDeadline": "2026-10-08T22:18:54Z"
+      },
+      "nextAction": "Draft is local and unpublished. Complete source repairs and gallery/native-game route, pin, physical card, exact suppression/neighbors and desktop/touch stationary-pan/performance acceptance. Browser launch currently restricted; do not treat CPU checks as visual acceptance."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"
