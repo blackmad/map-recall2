@@ -950,6 +950,21 @@ export function OverlayApp({
       <div id="settings-panel" className="utility-panel enamel-utility" style={{ display: state.settingsOpen ? 'flex' : 'none' }}>
         <div className="utility-card enamel-plaque enamel-framed enamel-panel">
           <h2>Ride settings</h2>
+          <div className="setup-account" id="settings-account-row">
+            <div className="setup-account-copy" role="status" aria-live="polite">
+              <strong id="settings-account-label">{state.account.buttonLabel === 'Sign out' ? `Signed in as ${state.account.label}` : state.account.label}</strong>
+              <small>{state.account.note}</small>
+            </div>
+            <button
+              id="settings-account-button"
+              type="button"
+              className="account-button enamel-quiet"
+              disabled={state.account.busy}
+              onClick={() => callbacks.onAccountClick()}
+            >
+              {state.account.buttonLabel}
+            </button>
+          </div>
           <div className="enamel-setup-scroll-wrap">
             <div
               className="utility-scroll enamel-setup-scroll"
