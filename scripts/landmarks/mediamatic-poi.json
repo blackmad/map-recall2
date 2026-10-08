@@ -1,0 +1,31 @@
+{
+  "id": "extract_landmarks_32851647",
+  "name": "Mediamatic Biotoop Dijkspark",
+  "type": "landmark",
+  "cityId": "amsterdam",
+  "center": [
+    52.376368,
+    4.913118
+  ],
+  "funFact": "Mediamatic transformed former municipal bridge-maintenance buildings at Dijksgracht into a bio-art laboratory and added 360 m\u00b2 of greenhouse space around them. Its experiments bring artists, designers and living organisms together.",
+  "description": "This waterfront biotope hosts laboratories, workshops and gardens. The operator describes its Hydroponics Greenhouse as growing herbs and edible flowers for restaurant TestTafel, a partnership with De Sering.",
+  "sources": [
+    {
+      "label": "Mediamatic \u2014 move and greenhouse addition",
+      "url": "https://www.mediamatic.net/nl/page/73377/mediamatic-has-moved-to-dijkspark-in-2014"
+    },
+    {
+      "label": "Mediamatic \u2014 biotope",
+      "url": "https://www.mediamatic.net/en/page/86200/mediamatic-biotoop"
+    },
+    {
+      "label": "Mediamatic \u2014 greenhouse and restaurant TestTafel",
+      "url": "https://www.mediamatic.net/en/page/392738/open-friday-tour"
+    },
+    {
+      "label": "Mediamatic \u2014 restaurant partnership",
+      "url": "https://www.mediamatic.net/en/page/374569/info"
+    }
+  ],
+  "sourceNotes": "Meaningful draft card uses genuine existing extract identity. Preserve center until sourced entrance coordinate and route reachability are reviewed. ETEN is historical naming; TestTafel is operator current naming in retrieved material."
+}

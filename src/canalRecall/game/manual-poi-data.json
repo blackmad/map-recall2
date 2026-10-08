@@ -1495,5 +1495,17 @@
         }
       }
     ]
+  },
+  {
+    "modelId": "mediamatic",
+    "name": "Mediamatic Biotoop Dijkspark",
+    "center": [
+      52.376368,
+      4.913118
+    ],
+    "description": "This waterfront biotope hosts laboratories, workshops and gardens. The operator describes its Hydroponics Greenhouse as growing herbs and edible flowers for restaurant TestTafel, a partnership with De Sering.",
+    "funFact": "Mediamatic transformed former municipal bridge-maintenance buildings at Dijksgracht into a bio-art laboratory and added 360 m² of greenhouse space around them. Its experiments bring artists, designers and living organisms together.",
+    "sourceUrl": "https://www.mediamatic.net/nl/page/73377/mediamatic-has-moved-to-dijkspark-in-2014",
+    "preferDescription": true
   }
 ]

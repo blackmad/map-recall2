@@ -14412,6 +14412,87 @@
       "triangles": 15534,
       "bytes": 196664,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "mediamatic": {
+      "id": "mediamatic",
+      "name": "Mediamatic Biotoop Dijkspark",
+      "landmarkId": "extract_landmarks_32851647",
+      "status": "authored-pending-visual-review",
+      "modelUrl": "./models/mediamatic.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012180473"
+      ],
+      "footprint": {
+        "centre": [
+          4.9131485,
+          52.376516
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 31.838,
+        "widthMetres": 45.328
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "spatialSuppression": false,
+      "surveyed": {
+        "anchor": [
+          4.9131485,
+          52.376516
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Native installed BAG parent; 2015 operator plan partitions,2025 municipal panoramas and decoded3DBAG main/portakabin roof heights. Greenhouse heights approximate."
+      },
+      "attribution": {
+        "title": "Mediamatic Biotoop Dijkspark",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.mediamatic.net/en/page/86200/mediamatic-biotoop",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original surveyed/native1 flat-colour geometry with separate greenhouse/office zones. No reference photo pixels or imported mesh. Approximate greenhouse heights and bay cadence; visual/game acceptance pending."
+      },
+      "heightMetres": 10.65,
+      "galleryView": {
+        "theta": 3.8,
+        "phi": 1.22
+      },
+      "materialOverrides": {
+        "ochre": "#91886b",
+        "glass": "#668389",
+        "white": "#d3d4cb",
+        "frame": "#9ca7a6",
+        "dark": "#404946"
+      },
+      "bounds": {
+        "min": [
+          -22.663829803466797,
+          2.6822091214739885e-9,
+          -15.918760299682617
+        ],
+        "max": [
+          22.663829803466797,
+          10.649999618530273,
+          15.918760299682617
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9131485,
+          52.376516
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 45.327659606933594,
+        "heightMetres": 10.649999615848063,
+        "depthMetres": 31.837520599365234,
+        "depthCoverage": 0.702380881560299
+      },
+      "triangles": 21326,
+      "bytes": 268380,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
