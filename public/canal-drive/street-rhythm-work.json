@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedOn": "2026-10-05",
+  "updatedOn": "2026-10-09",
   "purpose": "Persistent plans for autonomous street rhythm: recognizable block composition rather than individually exact facade reconstruction. Technical validity and visual acceptance are separate.",
   "lessons": [
     "Palette accuracy cannot compensate for a wrong facade assembly. Balcony stacks, vertical bays and subdivided windows carry identity.",
@@ -927,6 +927,140 @@
         "independentReview": "docs/references/jan-evertsen-pilot/runtime-review.json",
         "acceptedScope": "Canopy assembly presence and retained windows only; complete facade/neighborhood acceptance withheld."
       }
+    },
+    {
+      "id": "marnixstraat-263-repeated-row",
+      "status": "complete-scoped",
+      "scope": "Only eight monument-source native frontage parents, Marnixstraat124-138 photographed from263. Rear/opposite/neighbor parents retained. No transfer to106-122 or215-231.",
+      "segments": [
+        {
+          "frontageEndpoints": [
+            [
+              4.877058,
+              52.375474
+            ],
+            [
+              4.87761,
+              52.376349
+            ]
+          ],
+          "buildingIds": [
+            "NL.IMBAG.Pand.0363100012174914",
+            "NL.IMBAG.Pand.0363100012168510",
+            "NL.IMBAG.Pand.0363100012173514",
+            "NL.IMBAG.Pand.0363100012173515",
+            "NL.IMBAG.Pand.0363100012174104",
+            "NL.IMBAG.Pand.0363100012174105",
+            "NL.IMBAG.Pand.0363100012174935",
+            "NL.IMBAG.Pand.0363100012173530"
+          ]
+        }
+      ],
+      "sampling": {
+        "representatives": [
+          "NL.IMBAG.Pand.0363100012174914",
+          "NL.IMBAG.Pand.0363100012173515"
+        ],
+        "transitions": [
+          "NL.IMBAG.Pand.0363100012173530"
+        ],
+        "heldouts": [
+          "NL.IMBAG.Pand.0363100012174105"
+        ]
+      },
+      "traits": [
+        {
+          "id": "joint-repeated-frontage",
+          "importance": "critical",
+          "relationship": "Repeated frontage widths and window axes, pale trim, aligned storeys and regularly recurring roof/gable accents as seen in the user photo; corner facade differs.",
+          "sourceEvidence": [
+            "User-provided Google Street View screenshot, May 2024, confirmed viewpoint 263 Marnixstraat"
+          ],
+          "generatorCapability": "supported",
+          "implementation": "Shared repeated terrace facade/roof with native openings and explicit roof closures",
+          "renderEvidence": [
+            "artifacts/marnixstraat-review/cycle-4/after-front.png",
+            "artifacts/marnixstraat-review/cycle-4/after-heldout.png"
+          ],
+          "decision": "pass-scoped-game",
+          "reason": "Independent source + actual-game fixed8 composition passes; native roof-volume gaps corrected."
+        }
+      ],
+      "cycles": [
+        {
+          "cycle": 1,
+          "result": "camera diagnostic incorrectly included opposite buildings behind the street camera",
+          "evidence": "artifacts/marnixstraat-review/cycle-1/"
+        },
+        {
+          "cycle": 2,
+          "result": "failed: self-context erased one parent masonry; dim frames; preserved",
+          "evidence": "artifacts/marnixstraat-review/cycle-2/"
+        },
+        {
+          "cycle": 3,
+          "result": "independent CPU row/heldout passes; actual-game/GPU acceptance pending",
+          "evidence": "artifacts/marnixstraat-review/cycle-3/",
+          "firstAssessment": "docs/references/marnixstraat-repeated-row/cycle3-review.json",
+          "correctedAssessment": "docs/references/marnixstraat-repeated-row/independent-review.json"
+        },
+        {
+          "cycle": 4,
+          "result": "source-described blind ends restored; independent CPU regression and heldout pass; full production acceptance pending",
+          "evidence": "artifacts/marnixstraat-review/cycle-4/",
+          "independentReview": "docs/references/marnixstraat-repeated-row/independent-review.json"
+        },
+        {
+          "cycle": 5,
+          "result": "Native-game roof defects fixed; exact heldout upper/entrance first hits and independent desktop/touch visual passes; bounded local GPU evidence accepted.",
+          "evidence": "docs/references/marnixstraat-repeated-row/live-game-review-20261009.json"
+        }
+      ],
+      "coverage": {
+        "accepted": [
+          "NL.IMBAG.Pand.0363100012174914",
+          "NL.IMBAG.Pand.0363100012168510",
+          "NL.IMBAG.Pand.0363100012173514",
+          "NL.IMBAG.Pand.0363100012173515",
+          "NL.IMBAG.Pand.0363100012174104",
+          "NL.IMBAG.Pand.0363100012174105",
+          "NL.IMBAG.Pand.0363100012174935",
+          "NL.IMBAG.Pand.0363100012173530"
+        ],
+        "withheld": [
+          "All other blocks and any broader repeated-terrace transfer"
+        ],
+        "failed": [
+          "Cycle2: duplicate fallback context erased the masonry of parent0363100012174105; fixed and preserved.",
+          "Initial actual-game roof party/crown/cheek gaps corrected and preserved.",
+          "Desktop6 exceeded per-run GPU limits; same-build desktop7 and all-six-round aggregates pass unchanged limits.",
+          "Touch2 portrait diagnostic missed heldout; excluded, desktop exact first hits supply heldout proof."
+        ]
+      },
+      "productionEvidence": [
+        "docs/references/marnixstraat-repeated-row/live-game-review-20261009.json",
+        "docs/references/marnixstraat-repeated-row/final-independent-review-20261009.json"
+      ],
+      "reviewerDecision": "Accepted fixed-eight installed pilot; source/game/heldout review passes; repeated local performance evidence sufficient with failed desktop6 retained.",
+      "nextAction": "No further admission on this row; retain local performance qualification. Other blocks require their own observed scope/heldout review.",
+      "implementation": {
+        "profile": "public/data/street-appearance/marnixstraat-pilot.json",
+        "demo": "public/canal-drive/marnixstraat-pilot.html",
+        "activation": "Default installed catalogue; exact eight IDs only",
+        "exactParents": [
+          "0363100012174914",
+          "0363100012168510",
+          "0363100012173514",
+          "0363100012173515",
+          "0363100012174104",
+          "0363100012174105",
+          "0363100012174935",
+          "0363100012173530"
+        ],
+        "cpuComparison": "artifacts/marnixstraat-review/cycle-4/report.json",
+        "independentReview": "docs/references/marnixstraat-repeated-row/independent-review.json",
+        "completion": "accepted fixed-eight installed pilot"
+      }
     }
   ],
   "coverageInventory": [
@@ -1216,6 +1350,35 @@
       "status": "complete-scoped",
       "completion": "accepted-observed-row",
       "learnedFrom": null
+    },
+    {
+      "profileId": "marnixstraat-124-138-repeated-row",
+      "streetName": "Marnixstraat",
+      "frontageAssignments": 8,
+      "buildingIds": [
+        "NL.IMBAG.Pand.0363100012174914",
+        "NL.IMBAG.Pand.0363100012168510",
+        "NL.IMBAG.Pand.0363100012173514",
+        "NL.IMBAG.Pand.0363100012173515",
+        "NL.IMBAG.Pand.0363100012174104",
+        "NL.IMBAG.Pand.0363100012174105",
+        "NL.IMBAG.Pand.0363100012174935",
+        "NL.IMBAG.Pand.0363100012173530"
+      ],
+      "segment": [
+        [
+          4.877058,
+          52.375474
+        ],
+        [
+          4.87761,
+          52.376349
+        ]
+      ],
+      "status": "complete-scoped",
+      "completion": "accepted-fixed-eight-installed-pilot",
+      "heldout": false,
+      "coverageLimit": "These eight observed parents only; no neighborhood or repeated-family transfer."
     }
   ],
   "janEvertsenCanopyRolloutDiscovery": {

@@ -1,0 +1,49 @@
+{
+  "recordedAt": "2026-10-09",
+  "status": "accepted-fixed-eight-installed-pilot",
+  "activation": "Default installed catalogue, eight explicit native IDs only",
+  "evidence": "live-game-review-20261009.json",
+  "independentReview": "final-independent-review-20261009.json",
+  "sourceReviewCommit": "87412d138",
+  "historicalCheckpoint": {
+    "recordedAt": "2026-10-08T20:36:57.325713+00:00",
+    "status": "implemented-opt-in-pilot; production-acceptance-pending",
+    "activation": "/canal-drive/?marnixPilot=1",
+    "preview": "/canal-drive/marnixstraat-pilot.html",
+    "scope": "Eight real BAG parents, Marnixstraat124-138, photographed from263. Native outlines, original heights and genuine identities retained; no newPOIdestination.",
+    "implementation": [
+      "Shared recessed paired-window and central-door frontage",
+      "Yellow brick bands split at apertures, pale outer frames and dark green inner sash",
+      "One narrow central gable per parent, alternating pointed/stepped; ridge followsstreet",
+      "Blind outer endwalls; ordinary rear/opposite/neighbor renderer retained",
+      "Exact-ID context dedup prevents fallback clipping its own replacedwall"
+    ],
+    "validation": {
+      "focusedTests": "Native first-hit pane/frame/masonry probes; all8sourceparents; coarse/detail/alllooks; native roof winding/bounds; neighboringcontrols; blindend admission. Passed.",
+      "typecheck": "npx tsc --noEmit passed",
+      "bundles": "Mainandworker building bundles rebuilt",
+      "independentReview": "independent-review.json: CPUrow+heldoutpass",
+      "cpuSceneReport": "artifacts/marnixstraat-review/cycle-4/report.json",
+      "cpuRowTriangles": 7692,
+      "htmlImageCheck": "Missing detailimg src fixed; hook nowclean; nofinding suppressed or outstanding"
+    },
+    "limits": [
+      "Source aperturedimensions approximate; latest2025facade scaffolded; post-restoration window treatment uncertain",
+      "Shallow stairbayprojection and smallarchitecturaldetails remainsecondary",
+      "Chrome launch SIGABRT in restricted session; actual desktop/touch game, streaming and GPU performance checks pending",
+      "Private source pack new originals staged; sibling archive/git writes unavailable; no commit/push/deployment performed",
+      "Normal profilecatalog unchanged; opt-in candidate only",
+      "Other documented matchingblocks106-122and215-231 not automaticallyadmitted"
+    ],
+    "feedback": {
+      "lastSuccessfulEarlierPull": "Prior turn2026-10-08 approximately19:56UTC:0open,1in-progressMelkweg; notclaimed orresolved inthis task",
+      "currentAttempts": "Current sessionstart/checkpoint pulls blocked by gcloud configuration/credentials write restrictions",
+      "nextAction": "Re-pull open/in-progress after environment access is restored; preserveexistingPOI/streetqueues"
+    }
+  },
+  "limits": [
+    "Failed initial roof/GPU/portrait evidence remains recorded; local variability, not universal performance.",
+    "Modern apertures approximate; scaffolded2025source cannot prove current glazing.",
+    "Other matching blocks remain unadmitted."
+  ]
+}

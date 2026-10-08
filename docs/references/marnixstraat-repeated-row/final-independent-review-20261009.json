@@ -1,0 +1,547 @@
+{
+  "reviewedOn": "2026-10-09",
+  "reviewer": "Independent failure-seeking reviewer; personal source/game image inspection and independent report arithmetic; no browser/source/Git changes",
+  "decision": "ACCEPT evidence for only the fixed eight-parent installed pilot, with explicit local GPU variability; no remaining opt-in performance hold required by this review",
+  "scope": "Marnixstraat124-138/New Tuinstraat3 observed source row, exact eight BAG parents listed in report. No broader family transfer or municipality rollout.",
+  "visualDecision": "pass-scoped-observed-row",
+  "criticalTraits": [
+    {
+      "trait": "Three broad paired axes, central doorway and shortening three upper tiers",
+      "decision": "pass",
+      "evidence": "desktop6/desktop7 near-heldout upper plus heldout-entrance lower jointly establish assembly. Exact heldout2174105 first-hit probes at upper z9/12/14 and entrance z1.5/3/6 confirm same native body. A single whole-facade image is not necessary."
+    },
+    {
+      "trait": "Brown masonry, aligned yellow courses, pale paired frames and dark inner sash",
+      "decision": "pass",
+      "evidence": "Exposed2023 source relationships recognizable in desktop combined upper/lower and repeated neighboring modules. Exact aperture dimensions/modern mailbox panel are approximate. No source-supported balcony stack omitted."
+    },
+    {
+      "trait": "One narrow alternating spout/stepped crown per wide parent and closed street-parallel roof",
+      "decision": "pass-corrected",
+      "evidence": "Desktop6/7 and touch2 oblique show closed brown party ends/crown cheeks; previous bright white roof gaps/wedges absent. Narrow alternating crowns visible in desktop upper row. Roof steps from native coarse height variation are present but do not break recognizable row composition."
+    },
+    {
+      "trait": "Eight native bodies, retained rear/opposite neighbors, open end gaps",
+      "decision": "pass-visible-runtime-scope",
+      "evidence": "Corrected oblique and on/off scenes retain rear/west chain and opposite row and end gaps. Source eightIDs consistently reported. No invented filled street gap or lost neighbor visible. Exact vertex-by-vertex footprint remains a geometry audit beyond pixel review."
+    }
+  ],
+  "heldoutDecision": "pass-source-supported-combined-desktop-proof; touch portrait diagnostic excluded",
+  "performanceDecision": "adequate-local-evidence-for-eight-parent-pilot-with-variance",
+  "performance": {
+    "thresholdsUnchanged": {
+      "fullMapGpuMedianRatioMax": 1.15,
+      "fullMapGpuP95RatioMax": 1.25,
+      "sameInventoryRequired": true,
+      "rounds": 3
+    },
+    "failedRunMustRemainProminent": {
+      "sameInventory": true,
+      "gpuAvailable": true,
+      "gpuMedianRatio": 1.2136281329397633,
+      "gpuP95Ratio": 1.6729385942152675
+    },
+    "passingRepeat": {
+      "sameInventory": true,
+      "gpuAvailable": true,
+      "gpuMedianRatio": 0.9912876497990827,
+      "gpuP95Ratio": 0.9637638873740614
+    },
+    "allSixSummary": {
+      "basis": "Both same-build final desktop runs, including the failed desktop6; thresholds unchanged; 6 paired rounds instead of original3 because single-run variance exceeded20%.",
+      "gpuMedianRatio": 0.8989947752562516,
+      "gpuP95Ratio": 1.081626110015898,
+      "singleRuns": [
+        {
+          "name": "desktop-6",
+          "performance": {
+            "sameInventory": true,
+            "gpuAvailable": true,
+            "gpuMedianRatio": 1.2136281329397633,
+            "gpuP95Ratio": 1.6729385942152675
+          }
+        },
+        {
+          "name": "desktop-7",
+          "performance": {
+            "sameInventory": true,
+            "gpuAvailable": true,
+            "gpuMedianRatio": 0.9912876497990827,
+            "gpuP95Ratio": 0.9637638873740614
+          }
+        }
+      ],
+      "limits": "Desktop6 failed preset per-run limits; aggregate is additional evidence and does not erase it. Strong local variability prevents a universal device claim."
+    },
+    "independentlyRecomputedPairedRoundMedianRatios": {
+      "gpuMedian": 1.017702722532953,
+      "gpuP95": 1.0637586297265251
+    },
+    "allPairedRounds": [
+      {
+        "run": "desktop-6",
+        "round": 0,
+        "gpuMedianRatio": 1.0621930709377763,
+        "gpuP95Ratio": 1.877122787087471,
+        "on": {
+          "count": 90,
+          "median": 2.082916,
+          "p95": 6.060916
+        },
+        "off": {
+          "count": 90,
+          "median": 1.960958,
+          "p95": 3.228833
+        }
+      },
+      {
+        "run": "desktop-6",
+        "round": 1,
+        "gpuMedianRatio": 1.2136281329397633,
+        "gpuP95Ratio": 1.6968375750362414,
+        "on": {
+          "count": 90,
+          "median": 2.739916,
+          "p95": 6.1475
+        },
+        "off": {
+          "count": 90,
+          "median": 2.257624,
+          "p95": 3.622916
+        }
+      },
+      {
+        "run": "desktop-6",
+        "round": 2,
+        "gpuMedianRatio": 1.0168436210378435,
+        "gpuP95Ratio": 0.8305138065532832,
+        "on": {
+          "count": 90,
+          "median": 2.895208,
+          "p95": 3.933624
+        },
+        "off": {
+          "count": 90,
+          "median": 2.84725,
+          "p95": 4.736374
+        }
+      },
+      {
+        "run": "desktop-7",
+        "round": 0,
+        "gpuMedianRatio": 0.7358913267664735,
+        "gpuP95Ratio": 0.9403998035551104,
+        "on": {
+          "count": 90,
+          "median": 2.58675,
+          "p95": 4.578375
+        },
+        "off": {
+          "count": 90,
+          "median": 3.515125,
+          "p95": 4.868541
+        }
+      },
+      {
+        "run": "desktop-7",
+        "round": 1,
+        "gpuMedianRatio": 1.018561824028062,
+        "gpuP95Ratio": 1.1871174558979396,
+        "on": {
+          "count": 90,
+          "median": 3.4845,
+          "p95": 4.848583
+        },
+        "off": {
+          "count": 90,
+          "median": 3.421,
+          "p95": 4.084333
+        }
+      },
+      {
+        "run": "desktop-7",
+        "round": 2,
+        "gpuMedianRatio": 0.762151294295049,
+        "gpuP95Ratio": 0.7520836028148213,
+        "on": {
+          "count": 90,
+          "median": 3.79075,
+          "p95": 4.692124
+        },
+        "off": {
+          "count": 90,
+          "median": 4.97375,
+          "p95": 6.238833
+        }
+      }
+    ],
+    "touchResult": {
+      "sameInventory": true,
+      "gpuAvailable": true,
+      "gpuMedianRatio": 0.5687842946366191,
+      "gpuP95Ratio": 1.0014599740165235
+    },
+    "interpretation": "All six paired rounds retained. Ratio of medians across round summaries matches provided0.8990/1.0816; median of within-round paired ratios independently gives1.0177/1.0638, also within1.15/1.25. Frame medians stay near16.7ms. Therefore evidence does not require an opt-in performance hold for this small installed pilot. Desktop6 remains a real failed per-run test, not erased. Aggregate of round p95 summaries is not a pooled raw-sample p95 or proof of universally stable performance."
+  },
+  "failuresRetained": [
+    {
+      "path": "review.json / roof-seams.png",
+      "failure": "Initial bright white roof joint/crown openings; corrected and rereviewed"
+    },
+    {
+      "path": "desktop6-corrected-review.json",
+      "failure": "Desktop6 GPUmedian1.2136/p951.6729 exceeds original per-run limits; retained as measured variability"
+    },
+    {
+      "path": "touch2-corrected-review.json",
+      "failure": "Portrait near-heldout identity diagnostic fails because target pixels outside crop; not candidate source-heldout evidence"
+    },
+    {
+      "path": "inspection1-corrected-review.json",
+      "failure": "Failed whole-facade/opposite-facade positioning attempts excluded"
+    }
+  ],
+  "fallback": {
+    "decision": "pass-reported-optional-catalogue-failure",
+    "report": {
+      "status": "pass",
+      "results": [
+        {
+          "failure": "http",
+          "actual": {
+            "revision": "e7fdc0dc8f0d223e",
+            "profiles": [
+              "bethanienstraat-observed-historic-pair",
+              "bethanienstraat-transition-context",
+              "jan-evertsen-canopy-candidate-native-pair",
+              "oudezijds-voorburgwal-east-39-71-discovery"
+            ],
+            "envelopeIds": []
+          }
+        },
+        {
+          "failure": "network",
+          "actual": {
+            "revision": "e7fdc0dc8f0d223e",
+            "profiles": [
+              "bethanienstraat-observed-historic-pair",
+              "bethanienstraat-transition-context",
+              "jan-evertsen-canopy-candidate-native-pair",
+              "oudezijds-voorburgwal-east-39-71-discovery"
+            ],
+            "envelopeIds": []
+          }
+        }
+      ],
+      "check": "Optional pilot HTTP/network failure retains exact installed catalogue and no envelope ownership"
+    },
+    "visualLimit": "HTTP/network screenshots show setup screen; they do not independently prove live loaded building fallback. Report verifies installed catalogue revision/profile identity and no envelope ownership on failure; same-version-off actual game shows ordinary bodies remain."
+  },
+  "remainingLimits": [
+    "Same Apple M4 Pro with touch emulation; physical mobile-device performance unmeasured.",
+    "Strong per-run GPU variance and some failed paired p95 values prohibit universal device/smoothness claims.",
+    "Shallow stair-bay projection remains visually uncertain and secondary; source/current restoration pane state remains partly uncertain.",
+    "All four mode overview/revision checks support consistent installation; close facade source comparison uses photo mode.",
+    "No broader street style transfer accepted."
+  ],
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "path": "streets/marnixstraat-263-repeated-row/",
+    "commit": "abb4664d378649cdcaff6e43e4b5d6e8b314c859",
+    "state": "verified source originals/metadata/processed records committed and pushed before model/runtime publication"
+  },
+  "bundles": {
+    "three-buildings.bundle.js": "b1c8fffe9dea1cb82050abd44a4baee6887671cf02ec0940cf466e523611cfd1",
+    "three-buildings-worker.bundle.js": "e926837b41ff6a3b3acb34fc8c81f17ae5e7c141b131a2fb742dd1d200bcb72c",
+    "pyramidal-roofs.bundle.js": "2c9e13389410bf4bac23e82b99865dcb6523113033cc8213e821de49d95a2893",
+    "vector-map.js": "ad1402db284f78d96579a6470435b474963e4cbf4d0a980bbc8f976bcd4160fb",
+    "game-route.js": "0ab9056fb48bd00f9dcec27532fcd11d8d8f4d85359c8a4a741a2c9ba2f2b46f"
+  },
+  "desktop7Probes": [
+    {
+      "name": "near-heldout",
+      "camera": {
+        "center": [
+          4.87739,
+          52.37597
+        ],
+        "bearing": -70,
+        "zoom": 20.1,
+        "pitch": 60,
+        "detached": false
+      },
+      "identityProbes": [
+        {
+          "expectedId": "NL.IMBAG.Pand.0363100012174105",
+          "world": [
+            -1533.5573928109866,
+            671.4644138768318,
+            1.5
+          ],
+          "pixel": [
+            996.1162477168198,
+            387.86123365412095
+          ],
+          "inside": true,
+          "hit": {
+            "id": "NL.IMBAG.Pand.0363100012173521",
+            "depth": 0.9534257391554142
+          }
+        },
+        {
+          "expectedId": "NL.IMBAG.Pand.0363100012174105",
+          "world": [
+            -1533.5573928109866,
+            671.4644138768318,
+            3
+          ],
+          "pixel": [
+            999.6683242727763,
+            356.9813750203016
+          ],
+          "inside": true,
+          "hit": {
+            "id": "NL.IMBAG.Pand.0363100012173521",
+            "depth": 0.9565206884618644
+          }
+        },
+        {
+          "expectedId": "NL.IMBAG.Pand.0363100012174105",
+          "world": [
+            -1533.5573928109866,
+            671.4644138768318,
+            6
+          ],
+          "pixel": [
+            1007.0538903347941,
+            292.77520369120236
+          ],
+          "inside": true,
+          "hit": {
+            "id": "NL.IMBAG.Pand.0363100012174936",
+            "depth": 0.961805872023518
+          }
+        },
+        {
+          "expectedId": "NL.IMBAG.Pand.0363100012174105",
+          "world": [
+            -1533.5573928109866,
+            671.4644138768318,
+            9
+          ],
+          "pixel": [
+            1014.8401177270752,
+            225.08589649954715
+          ],
+          "inside": true,
+          "hit": {
+            "id": "NL.IMBAG.Pand.0363100012174105",
+            "depth": 0.9755057494422564
+          }
+        },
+        {
+          "expectedId": "NL.IMBAG.Pand.0363100012174105",
+          "world": [
+            -1533.5573928109866,
+            671.4644138768318,
+            12
+          ],
+          "pixel": [
+            1023.0605188175603,
+            153.62211479646925
+          ],
+          "inside": true,
+          "hit": {
+            "id": "NL.IMBAG.Pand.0363100012174105",
+            "depth": 0.9747334689440534
+          }
+        },
+        {
+          "expectedId": "NL.IMBAG.Pand.0363100012174105",
+          "world": [
+            -1533.5573928109866,
+            671.4644138768318,
+            14
+          ],
+          "pixel": [
+            1028.8002670157537,
+            103.72380597294429
+          ],
+          "inside": true,
+          "hit": {
+            "id": "NL.IMBAG.Pand.0363100012174105",
+            "depth": 0.9742272824087888
+          }
+        }
+      ]
+    },
+    {
+      "name": "heldout-entrance",
+      "camera": {
+        "center": [
+          4.8774365,
+          52.3760745
+        ],
+        "bearing": -68.89999999999998,
+        "zoom": 21.4,
+        "pitch": 80,
+        "detached": false
+      },
+      "identityProbes": [
+        {
+          "expectedId": "NL.IMBAG.Pand.0363100012174105",
+          "world": [
+            -1533.5573928109866,
+            671.4644138768318,
+            1.5
+          ],
+          "pixel": [
+            722.289170962251,
+            352.40238629034985
+          ],
+          "inside": true,
+          "hit": {
+            "id": "NL.IMBAG.Pand.0363100012174105",
+            "depth": 0.9753137975941927
+          }
+        },
+        {
+          "expectedId": "NL.IMBAG.Pand.0363100012174105",
+          "world": [
+            -1533.5573928109866,
+            671.4644138768318,
+            3
+          ],
+          "pixel": [
+            722.3134385640002,
+            270.2037149185277
+          ],
+          "inside": true,
+          "hit": {
+            "id": "NL.IMBAG.Pand.0363100012174105",
+            "depth": 0.9750302395480803
+          }
+        },
+        {
+          "expectedId": "NL.IMBAG.Pand.0363100012174105",
+          "world": [
+            -1533.5573928109866,
+            671.4644138768318,
+            6
+          ],
+          "pixel": [
+            722.3635507748075,
+            100.46476871244045
+          ],
+          "inside": true,
+          "hit": {
+            "id": "NL.IMBAG.Pand.0363100012174105",
+            "depth": 0.9743302246420888
+          }
+        },
+        {
+          "expectedId": "NL.IMBAG.Pand.0363100012174105",
+          "world": [
+            -1533.5573928109866,
+            671.4644138768318,
+            9
+          ],
+          "pixel": [
+            722.4158820501954,
+            -76.79054281366669
+          ],
+          "inside": false,
+          "hit": null
+        },
+        {
+          "expectedId": "NL.IMBAG.Pand.0363100012174105",
+          "world": [
+            -1533.5573928109866,
+            671.4644138768318,
+            12
+          ],
+          "pixel": [
+            722.4705831241974,
+            -262.0727825685618
+          ],
+          "inside": false,
+          "hit": null
+        },
+        {
+          "expectedId": "NL.IMBAG.Pand.0363100012174105",
+          "world": [
+            -1533.5573928109866,
+            671.4644138768318,
+            14
+          ],
+          "pixel": [
+            722.5084477727738,
+            -390.3270631973505
+          ],
+          "inside": false,
+          "hit": null
+        }
+      ]
+    }
+  ],
+  "newImagesPersonallyInspected": [
+    {
+      "path": "/Users/blackmad/Code/map-recall2-worktrees/marnixstraat-repeated-row-20261008/artifacts/marnixstraat-game/desktop-7/actual-input-pan.png",
+      "sha256": "48c884238cac8f89032fc8490ff61011f5ac3d706a7860dc371157a17f55ab0c"
+    },
+    {
+      "path": "/Users/blackmad/Code/map-recall2-worktrees/marnixstraat-repeated-row-20261008/artifacts/marnixstraat-game/desktop-7/game-cartoon.png",
+      "sha256": "3f3da11f97331fca1b3c981b858f5425268df1019b2d4f45313d9233df6fe09c"
+    },
+    {
+      "path": "/Users/blackmad/Code/map-recall2-worktrees/marnixstraat-repeated-row-20261008/artifacts/marnixstraat-game/desktop-7/game-photo.png",
+      "sha256": "a91a799847ac10f5c91b6cde4eb1d18b8b0230f0c9688b52706223e60a1c2323"
+    },
+    {
+      "path": "/Users/blackmad/Code/map-recall2-worktrees/marnixstraat-repeated-row-20261008/artifacts/marnixstraat-game/desktop-7/game-procedural.png",
+      "sha256": "27ea61c38caa810c40e8ead16fb7dd0e476f70c09aec74f89bc70e95ed8de6e2"
+    },
+    {
+      "path": "/Users/blackmad/Code/map-recall2-worktrees/marnixstraat-repeated-row-20261008/artifacts/marnixstraat-game/desktop-7/game-storybook.png",
+      "sha256": "361c0484566b2255e05b09eeb0e3f1c72e55698e710f9dafa2b7f211a66bcb2a"
+    },
+    {
+      "path": "/Users/blackmad/Code/map-recall2-worktrees/marnixstraat-repeated-row-20261008/artifacts/marnixstraat-game/desktop-7/heldout-entrance.png",
+      "sha256": "883684013032497032f700818826db6d4c6c3c818b38a0be09235ca52520509c"
+    },
+    {
+      "path": "/Users/blackmad/Code/map-recall2-worktrees/marnixstraat-repeated-row-20261008/artifacts/marnixstraat-game/desktop-7/near-heldout.png",
+      "sha256": "7898065749b8f090d55e55b58fe721c36a2ea928a35b6666a2b85392a7b633b4"
+    },
+    {
+      "path": "/Users/blackmad/Code/map-recall2-worktrees/marnixstraat-repeated-row-20261008/artifacts/marnixstraat-game/desktop-7/recenter.png",
+      "sha256": "8b3340e75024b950461ed5d2d1771a0349b4755987c3c795ca236d37ca5ed804"
+    },
+    {
+      "path": "/Users/blackmad/Code/map-recall2-worktrees/marnixstraat-repeated-row-20261008/artifacts/marnixstraat-game/desktop-7/row-oblique.png",
+      "sha256": "e851a498265b249b62fe8a196f8b549460ba914f85e34572a00115ec739ee9c9"
+    },
+    {
+      "path": "/Users/blackmad/Code/map-recall2-worktrees/marnixstraat-repeated-row-20261008/artifacts/marnixstraat-game/desktop-7/same-version-off.png",
+      "sha256": "1cbc57db83ade1d485e51ba00b56c334eccb27612b983920ddcd3bd7728d74a0"
+    },
+    {
+      "path": "/Users/blackmad/Code/map-recall2-worktrees/marnixstraat-repeated-row-20261008/artifacts/marnixstraat-game/desktop-7/same-version-on.png",
+      "sha256": "b8d5d9dca939ce83c9e533bdfabd45d61627ab6d74da1c2cc9e84d606f3139de"
+    },
+    {
+      "path": "/Users/blackmad/Code/map-recall2-worktrees/marnixstraat-repeated-row-20261008/artifacts/marnixstraat-game/fallback-1/http.png",
+      "sha256": "d5842b39131372901d7474432e6762d22f233606c7ddf2527034db7e9a6e2832"
+    },
+    {
+      "path": "/Users/blackmad/Code/map-recall2-worktrees/marnixstraat-repeated-row-20261008/artifacts/marnixstraat-game/fallback-1/network.png",
+      "sha256": "a12628428f71e091c3eecbfceae06ca7bedbe4325beeb9ec43a1a0b5770a7dc0"
+    }
+  ],
+  "previousPersonallyInspectedEvidence": [
+    "review.json",
+    "inspection1-corrected-review.json",
+    "desktop6-corrected-review.json",
+    "touch2-corrected-review.json"
+  ]
+}

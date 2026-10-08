@@ -1,0 +1,27 @@
+{
+  "sampledBeforeImplementation": false,
+  "representatives": [
+    "NL.IMBAG.Pand.0363100012174914",
+    "NL.IMBAG.Pand.0363100012173515"
+  ],
+  "transitions": [
+    "NL.IMBAG.Pand.0363100012173530"
+  ],
+  "heldouts": [
+    "NL.IMBAG.Pand.0363100012174105"
+  ],
+  "criticalCriteria": [
+    "Three broad window axes with central doorway; shortening three upper tiers",
+    "Dark brown masonry with yellow bands and pale paired window frames, dark green inner sash",
+    "One narrow central stair-bay crown per parent, alternates spout/step; street-parallel shared roof ridge",
+    "Eight exact footprints remain; independent rear/opposite row remains visible; no filled street gaps"
+  ],
+  "uncertainties": [
+    "Dimensions are source-image approximations, not surveyed apertures",
+    "Latest2025view is scaffolded; post-restoration pane arrangement not yet visible",
+    "Native aggregate height is a bound, not a metric facade-height observation"
+  ],
+  "acceptance": "Accepted only fixed8 installed pilot; current source/game/heldout evidence and independent review in live-game-review-20261009.json",
+  "frozenBeforeFirstNativeRender": true,
+  "samplingLimit": "Samples were fixed before the first native comparison, after the reusable planner was authored. This is a scoped CPU review, not a pre-implementation blind transfer acceptance."
+}

@@ -1,0 +1,13 @@
+# Marnixstraat fixed-eight delivery —2026-10-09
+
+Branch `feat/marnixstraat-repeated-row-20261008` installs only the eight source-supported parents of Marnixstraat124-138, photographed from the263 viewpoint. Exact BAG identities, native outlines and heights remain. Shared recessed paired windows, three broad axes with centered doors, pale trim/dark sash/yellow courses and one alternating narrow crown per parent are visible in the actual game. Rear/opposite/neighbor buildings remain ordinary native geometry. No additional POI or family transfer is created.
+
+Actual-game review exposed open roof party ends, one-sided raised crowns and open cross-gable cheeks. All are corrected within native bounds, with first-hit and roof-coverage regressions. Desktop upper and entrance probes hit exact heldout2174105. Root and independent source/game reviewers pass the fixed-eight composition; actual desktop/touch camera pans retain a stationary rider and surrounding windows/doors. Current test/browser/runtime evidence is in `docs/references/marnixstraat-repeated-row/live-game-review-20261009.json`.
+
+Failures remain prominent: original roof gaps, desktop6 GPU ratios1.214/1.673 above limits1.15/1.25, and touch2's portrait heldout diagnostic miss. Same-build desktop7 passes0.991/0.964; all six paired desktop rounds together pass0.899/1.082 with unchanged limits, and independent median paired ratios also pass. Touch local ratios0.569/1.001 pass. This is bounded local evidence with substantial machine variability, not a universal device benchmark. The portrait miss is excluded; desktop first hits provide heldout proof.
+
+Private original sources are committed at `abb4664d378649cdcaff6e43e4b5d6e8b314c859`, path `streets/marnixstraat-263-repeated-row`; failed/corrected game evidence and independent decisions are pushed at `87412d138`, processed/game-review-20261009. Raw sources stay private. Native source heights are bounds, aperture dimensions remain approximate, and the scaffolded2025source cannot establish post-restoration glazing. Samples were fixed before native render but after planner authoring, so this is observed-row acceptance rather than a blind transfer trial.
+
+Jan Evertsen, Oudezijds compound and regular canal candidates remain separate held branches. Other Marnixstraat blocks106-122 and215-231 need their own observed scope and heldout review.
+
+Default activation without a query flag is verified on desktop/touch; HTTP503 and network catalogue failures preserve all eight native stock parents. These checks and frozen author inputs were pushed privately at `d9ba4d73f26b6a054cb8e9129e4437fca766a023`, same review path/default-installed-1.

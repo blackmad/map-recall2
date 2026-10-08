@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "canonicalId": "marnixstraat-263-repeated-row",
+  "reviewedAt": "2026-10-08",
+  "reviewer": "independent failure-seeking worker; no renderer edits",
+  "cycle": 4,
+  "decision": "CPU architectural relationship checks pass; runtime scope and whole-work acceptance pending",
+  "evidence": {
+    "sourcesInspected": [
+      "artifacts/marnixstraat-sources/processed/south-2023.jpg",
+      "artifacts/marnixstraat-sources/processed/middle-2023.jpg",
+      "artifacts/marnixstraat-sources/raw/south-2023.jpg",
+      "artifacts/marnixstraat-sources/raw/elevation-1876.webp"
+    ],
+    "rendersInspected": [
+      "artifacts/marnixstraat-review/cycle-4/after-front.png",
+      "artifacts/marnixstraat-review/cycle-4/after-oblique.png",
+      "artifacts/marnixstraat-review/cycle-4/after-heldout.png"
+    ],
+    "report": "artifacts/marnixstraat-review/cycle-4/report.json",
+    "latestAlterationsLimit": "Scaffolded 2025 view is not evidence of visible post-restoration glazing details. Conclusions use exposed 2023 photographs; current final pane state remains unconfirmed.",
+    "afterViewsSha256": {
+      "front": "8a3b803263767334e751c5531f8ed4355b9bf5c6fd36929495aa40611c48afdc",
+      "oblique": "df0152efa52e4d5896ce585cb41ea27b4a926b2d3c092506b3b2150a8ae90a11",
+      "heldout": "8c82d5de31d353bbe871900fd8d395a6d63eacb10ed12d0993320de549341f62"
+    }
+  },
+  "criticalTraits": [
+    {
+      "trait": "Three broad window axes, central door, ground plus three shortening upper tiers",
+      "decision": "pass",
+      "reason": "Close representative and heldout views show three correctly related axes, central access and three upper tiers decreasing in opening height. All eight bodies remain visible in the full-row view. Source aperture dimensions are approximate; this is a composition finding."
+    },
+    {
+      "trait": "Dark brown masonry and aligned yellow horizontal courses",
+      "decision": "pass",
+      "reason": "The row uses coherent muted brown brick with restrained warm pale/yellow courses aligned across adjoining houses. This restores the source row's continuous masonry rhythm compared with the varied stock before view. Fine pressed-brick and anchor detail is secondary."
+    },
+    {
+      "trait": "Pale paired frames and dark green inner sash in all three broad axes",
+      "decision": "pass",
+      "reason": "Full-resolution enlarged crops and exact pixel checks show continuous pale paired dividers in the central upper windows across all three tiers, consistent with the outer broad pairs and exposed 2023 source relationship. Dark green inner sash remains distinct. The first failed assessment was a displayed-image misreading, corrected without a renderer change."
+    },
+    {
+      "trait": "One narrow central alternating spout/stepped crown and street-parallel roof ridge",
+      "decision": "pass",
+      "reason": "Full-row and roof views show eight narrow central crowns alternating stepped and pointed/spout silhouettes over a coherent street-parallel main roof. They no longer read as two independently gabled canal houses per native parent. Small coping and ornament differences do not prevent recognition."
+    },
+    {
+      "trait": "Central projecting stair bay continues down from crown",
+      "decision": "uncertain",
+      "reason": "The source and original elevation show a shallow projecting central staircase axis, while candidate close views read nearly flat below the eaves. These CPU views do not establish whether a small projection is present or how it reads with game lighting. Check it in the live oblique view; exact shallow relief is secondary to coherent row composition and is not independently made a blocking ornament requirement."
+    },
+    {
+      "trait": "Eight exact footprints, retained independent rear/opposite buildings and open street gaps",
+      "decision": "uncertain",
+      "reason": "CPU full-row and oblique views show eight contiguous bodies, retained context behind the row and visible transverse end gaps; the previous entire-body loss is absent. Image review cannot certify runtime exact-ID suppression, fallback or every courtyard/neighbor footprint. The report lists exact identities but is not live-game evidence."
+    }
+  ],
+  "heldout": {
+    "index": 5,
+    "installedId": "NL.IMBAG.Pand.0363100012174105",
+    "decision": "pass-CPU-architectural-relationships",
+    "passedRelationships": [
+      "three broad axes",
+      "central door",
+      "ground plus three shortening upper tiers",
+      "single central spout crown",
+      "pale paired upper-frame dividers with dark green inner sash"
+    ],
+    "coverageLimit": "Middle source crop supports the shared assembly, not a precisely registered photographic match to each individual heldout opening."
+  },
+  "endFacadeReview": {
+    "decision": "pass-visible-end-CPU; other-end-runtime-check-pending",
+    "reason": "The official register explicitly describes blind end facades. Cycle 4 oblique shows the exposed perpendicular end with no invented openings, while preserving the front row and neighboring context. Original south panorama alone was insufficient; register supplies the architectural assertion. Actual game-scene end views remain required."
+  },
+  "nextMandatoryChecks": [
+    "Obtain actual game-scene front/near/oblique/end views, exact suppression and fallback/neighbor retention evidence.",
+    "Obtain gameplay camera-pan and GPU/frame-time evidence; CPU build timings do not satisfy performance acceptance."
+  ],
+  "acceptanceLimits": {
+    "gpuLiveGame": "not performed; root reports restricted Chrome sandbox launch failure",
+    "performance": "CPU report inspected only; no gameplay or GPU acceptance",
+    "expansion": "withheld pending runtime scope, gameplay and performance checks; no remaining failed CPU heldout trait in this review",
+    "wholeWork": "not accepted"
+  },
+  "correction": {
+    "firstReview": "docs/references/marnixstraat-repeated-row/cycle3-review.json",
+    "reason": "Initial displayed-image reading incorrectly interpreted the central upper mullions as dark. Independent nearest-neighbor enlarged crops and exact pixel inspection confirm pale dividers in all three central upper tiers of both representative and heldout images. No renderer change occurred between assessments.",
+    "pixelEvidence": {
+      "files": [
+        "artifacts/marnixstraat-review/cycle-3/after-near.png",
+        "artifacts/marnixstraat-review/cycle-3/after-heldout.png"
+      ],
+      "dividerX": [
+        448,
+        449,
+        450
+      ],
+      "sampledY": [
+        275,
+        305,
+        400,
+        440,
+        560,
+        621
+      ],
+      "dividerRGB": [
+        190,
+        189,
+        173
+      ],
+      "adjacentGlassRGBRange": [
+        [
+          55,
+          65,
+          72
+        ],
+        [
+          55,
+          66,
+          74
+        ]
+      ]
+    },
+    "geometryEvidenceLimit": "Root separately supplied first-hit material/depth rays; this reviewer directly verified existing capture pixels and enlarged crops. Shared width increase is not required by this CPU comparison."
+  },
+  "finalRegressionReview": {
+    "previousAssessment": "docs/references/marnixstraat-repeated-row/cycle3-corrected-review.json",
+    "decision": "pass-CPU-regression-check",
+    "change": "The exposed perpendicular end wall visible at the right of the oblique view is now blind; guessed stock side windows are removed. The official monument description explicitly supports blind ends.",
+    "rawSource": "artifacts/marnixstraat-sources/raw/monument-204041.json",
+    "sourceAssertion": "Description identifies blind end facades of the three housing blocks and absence of projecting corner houses as part of the continuous street-wall composition.",
+    "comparison": "The eight front bodies, three-axis opening rhythm, central entrances, shortening upper tiers, bands and alternating crowns remain coherent. Retained right-side context remains visible beyond the now-blind end; transverse gap at the left remains visible. Heldout capture is pixel-identical to cycle 3 (zero changed pixels), preserving its confirmed pale paired dividers. Front changes are confined to narrow end-edge regions; 403 changed pixels. Oblique has 12118 changed pixels corresponding visually to removal of the guessed end openings.",
+    "limits": "One oblique view exposes one end adequately; neither full runtime suppression/fallback nor all rear-wall behavior is certified. Shallow central stair-bay projection remains a secondary visual limit. No GPU/live/gameplay acceptance added."
+  }
+}

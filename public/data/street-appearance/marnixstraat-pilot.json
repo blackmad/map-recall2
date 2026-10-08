@@ -1,0 +1,1088 @@
+{
+  "schemaVersion": 1,
+  "revision": "marnixstraat-eight-parent-accepted-20261009",
+  "profiles": [
+    {
+      "id": "marnixstraat-124-138-repeated-row",
+      "streetName": "Marnixstraat",
+      "revision": "source-2023-eight-parent-accepted-20261009",
+      "status": "pilot",
+      "buildingIds": [
+        "NL.IMBAG.Pand.0363100012174914",
+        "NL.IMBAG.Pand.0363100012168510",
+        "NL.IMBAG.Pand.0363100012173514",
+        "NL.IMBAG.Pand.0363100012173515",
+        "NL.IMBAG.Pand.0363100012174104",
+        "NL.IMBAG.Pand.0363100012174105",
+        "NL.IMBAG.Pand.0363100012174935",
+        "NL.IMBAG.Pand.0363100012173530"
+      ],
+      "segment": [
+        [
+          4.877222761605391,
+          52.37543498980745
+        ],
+        [
+          4.877774761605391,
+          52.37630998980745
+        ]
+      ],
+      "side": 1,
+      "reachM": 20,
+      "confidence": 0.86,
+      "assemblyM": 13,
+      "recipes": [
+        {
+          "weight": 1,
+          "frontageMin": 12,
+          "frontageMax": 14,
+          "heightMin": 14,
+          "heightMax": 17,
+          "recipe": {
+            "family": "masonry",
+            "period": "c19",
+            "confidence": 0.86,
+            "wallHex": "#8b7059",
+            "frameHex": "#e3e2ce",
+            "sashHex": "#2e4d3f",
+            "courseHex": "#b9a47c",
+            "wallMaterial": "brick",
+            "sash": "transom",
+            "balconyPolicy": "assembly-only",
+            "trimDensity": "restrained",
+            "repeatedTerraceFrontage": {
+              "columns": 3,
+              "insetM": 0.8,
+              "frameWidthM": 0.085,
+              "sashWidthM": 0.045,
+              "recessDepthM": 0.14,
+              "upperRows": [
+                {
+                  "bottomM": 4.45,
+                  "heightM": 2.35,
+                  "widthM": 2,
+                  "axisWidthsM": [
+                    2,
+                    1.65,
+                    2
+                  ],
+                  "transomFraction": 0.74
+                },
+                {
+                  "bottomM": 7.45,
+                  "heightM": 2.1,
+                  "widthM": 2,
+                  "axisWidthsM": [
+                    2,
+                    1.65,
+                    2
+                  ],
+                  "transomFraction": 0.74
+                },
+                {
+                  "bottomM": 10.35,
+                  "heightM": 1.7,
+                  "widthM": 2,
+                  "axisWidthsM": [
+                    2,
+                    1.65,
+                    2
+                  ],
+                  "transomFraction": 0.74
+                }
+              ],
+              "ground": {
+                "bottomM": 0.05,
+                "heightM": 3.05,
+                "widthM": 1.75
+              },
+              "groundWindowRow": {
+                "bottomM": 0.65,
+                "heightM": 2.35,
+                "widthM": 2,
+                "transomFraction": 0.74
+              },
+              "entrance": {
+                "axisIndex": 1,
+                "leafHeightM": 2.15
+              },
+              "stringCourses": [
+                {
+                  "bottomM": 0.4,
+                  "heightM": 0.07,
+                  "projectionM": 0.04
+                },
+                {
+                  "bottomM": 3.68,
+                  "heightM": 0.1,
+                  "projectionM": 0.07
+                },
+                {
+                  "bottomM": 7.1,
+                  "heightM": 0.07,
+                  "projectionM": 0.04
+                },
+                {
+                  "bottomM": 9.95,
+                  "heightM": 0.07,
+                  "projectionM": 0.04
+                }
+              ],
+              "segmentalLintel": {
+                "riseM": 0.1,
+                "bandM": 0.06,
+                "projectionM": 0.035
+              }
+            },
+            "repeatedTerraceRoof": {
+              "riseM": 2.4,
+              "widthM": 3.05,
+              "gable": "step",
+              "exposedEnds": [
+                true,
+                false
+              ]
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "frontageMin": 12,
+          "frontageMax": 14,
+          "heightMin": 14,
+          "heightMax": 17,
+          "recipe": {
+            "family": "masonry",
+            "period": "c19",
+            "confidence": 0.86,
+            "wallHex": "#8b7059",
+            "frameHex": "#e3e2ce",
+            "sashHex": "#2e4d3f",
+            "courseHex": "#b9a47c",
+            "wallMaterial": "brick",
+            "sash": "transom",
+            "balconyPolicy": "assembly-only",
+            "trimDensity": "restrained",
+            "repeatedTerraceFrontage": {
+              "columns": 3,
+              "insetM": 0.8,
+              "frameWidthM": 0.085,
+              "sashWidthM": 0.045,
+              "recessDepthM": 0.14,
+              "upperRows": [
+                {
+                  "bottomM": 4.45,
+                  "heightM": 2.35,
+                  "widthM": 2,
+                  "axisWidthsM": [
+                    2,
+                    1.65,
+                    2
+                  ],
+                  "transomFraction": 0.74
+                },
+                {
+                  "bottomM": 7.45,
+                  "heightM": 2.1,
+                  "widthM": 2,
+                  "axisWidthsM": [
+                    2,
+                    1.65,
+                    2
+                  ],
+                  "transomFraction": 0.74
+                },
+                {
+                  "bottomM": 10.35,
+                  "heightM": 1.7,
+                  "widthM": 2,
+                  "axisWidthsM": [
+                    2,
+                    1.65,
+                    2
+                  ],
+                  "transomFraction": 0.74
+                }
+              ],
+              "ground": {
+                "bottomM": 0.05,
+                "heightM": 3.05,
+                "widthM": 1.75
+              },
+              "groundWindowRow": {
+                "bottomM": 0.65,
+                "heightM": 2.35,
+                "widthM": 2,
+                "transomFraction": 0.74
+              },
+              "entrance": {
+                "axisIndex": 1,
+                "leafHeightM": 2.15
+              },
+              "stringCourses": [
+                {
+                  "bottomM": 0.4,
+                  "heightM": 0.07,
+                  "projectionM": 0.04
+                },
+                {
+                  "bottomM": 3.68,
+                  "heightM": 0.1,
+                  "projectionM": 0.07
+                },
+                {
+                  "bottomM": 7.1,
+                  "heightM": 0.07,
+                  "projectionM": 0.04
+                },
+                {
+                  "bottomM": 9.95,
+                  "heightM": 0.07,
+                  "projectionM": 0.04
+                }
+              ],
+              "segmentalLintel": {
+                "riseM": 0.1,
+                "bandM": 0.06,
+                "projectionM": 0.035
+              }
+            },
+            "repeatedTerraceRoof": {
+              "riseM": 2.4,
+              "widthM": 3.05,
+              "gable": "spout",
+              "exposedEnds": [
+                false,
+                false
+              ]
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "frontageMin": 12,
+          "frontageMax": 14,
+          "heightMin": 14,
+          "heightMax": 17,
+          "recipe": {
+            "family": "masonry",
+            "period": "c19",
+            "confidence": 0.86,
+            "wallHex": "#8b7059",
+            "frameHex": "#e3e2ce",
+            "sashHex": "#2e4d3f",
+            "courseHex": "#b9a47c",
+            "wallMaterial": "brick",
+            "sash": "transom",
+            "balconyPolicy": "assembly-only",
+            "trimDensity": "restrained",
+            "repeatedTerraceFrontage": {
+              "columns": 3,
+              "insetM": 0.8,
+              "frameWidthM": 0.085,
+              "sashWidthM": 0.045,
+              "recessDepthM": 0.14,
+              "upperRows": [
+                {
+                  "bottomM": 4.45,
+                  "heightM": 2.35,
+                  "widthM": 2,
+                  "axisWidthsM": [
+                    2,
+                    1.65,
+                    2
+                  ],
+                  "transomFraction": 0.74
+                },
+                {
+                  "bottomM": 7.45,
+                  "heightM": 2.1,
+                  "widthM": 2,
+                  "axisWidthsM": [
+                    2,
+                    1.65,
+                    2
+                  ],
+                  "transomFraction": 0.74
+                },
+                {
+                  "bottomM": 10.35,
+                  "heightM": 1.7,
+                  "widthM": 2,
+                  "axisWidthsM": [
+                    2,
+                    1.65,
+                    2
+                  ],
+                  "transomFraction": 0.74
+                }
+              ],
+              "ground": {
+                "bottomM": 0.05,
+                "heightM": 3.05,
+                "widthM": 1.75
+              },
+              "groundWindowRow": {
+                "bottomM": 0.65,
+                "heightM": 2.35,
+                "widthM": 2,
+                "transomFraction": 0.74
+              },
+              "entrance": {
+                "axisIndex": 1,
+                "leafHeightM": 2.15
+              },
+              "stringCourses": [
+                {
+                  "bottomM": 0.4,
+                  "heightM": 0.07,
+                  "projectionM": 0.04
+                },
+                {
+                  "bottomM": 3.68,
+                  "heightM": 0.1,
+                  "projectionM": 0.07
+                },
+                {
+                  "bottomM": 7.1,
+                  "heightM": 0.07,
+                  "projectionM": 0.04
+                },
+                {
+                  "bottomM": 9.95,
+                  "heightM": 0.07,
+                  "projectionM": 0.04
+                }
+              ],
+              "segmentalLintel": {
+                "riseM": 0.1,
+                "bandM": 0.06,
+                "projectionM": 0.035
+              }
+            },
+            "repeatedTerraceRoof": {
+              "riseM": 2.4,
+              "widthM": 3.05,
+              "gable": "step",
+              "exposedEnds": [
+                false,
+                false
+              ]
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "frontageMin": 12,
+          "frontageMax": 14,
+          "heightMin": 14,
+          "heightMax": 17,
+          "recipe": {
+            "family": "masonry",
+            "period": "c19",
+            "confidence": 0.86,
+            "wallHex": "#8b7059",
+            "frameHex": "#e3e2ce",
+            "sashHex": "#2e4d3f",
+            "courseHex": "#b9a47c",
+            "wallMaterial": "brick",
+            "sash": "transom",
+            "balconyPolicy": "assembly-only",
+            "trimDensity": "restrained",
+            "repeatedTerraceFrontage": {
+              "columns": 3,
+              "insetM": 0.8,
+              "frameWidthM": 0.085,
+              "sashWidthM": 0.045,
+              "recessDepthM": 0.14,
+              "upperRows": [
+                {
+                  "bottomM": 4.45,
+                  "heightM": 2.35,
+                  "widthM": 2,
+                  "axisWidthsM": [
+                    2,
+                    1.65,
+                    2
+                  ],
+                  "transomFraction": 0.74
+                },
+                {
+                  "bottomM": 7.45,
+                  "heightM": 2.1,
+                  "widthM": 2,
+                  "axisWidthsM": [
+                    2,
+                    1.65,
+                    2
+                  ],
+                  "transomFraction": 0.74
+                },
+                {
+                  "bottomM": 10.35,
+                  "heightM": 1.7,
+                  "widthM": 2,
+                  "axisWidthsM": [
+                    2,
+                    1.65,
+                    2
+                  ],
+                  "transomFraction": 0.74
+                }
+              ],
+              "ground": {
+                "bottomM": 0.05,
+                "heightM": 3.05,
+                "widthM": 1.75
+              },
+              "groundWindowRow": {
+                "bottomM": 0.65,
+                "heightM": 2.35,
+                "widthM": 2,
+                "transomFraction": 0.74
+              },
+              "entrance": {
+                "axisIndex": 1,
+                "leafHeightM": 2.15
+              },
+              "stringCourses": [
+                {
+                  "bottomM": 0.4,
+                  "heightM": 0.07,
+                  "projectionM": 0.04
+                },
+                {
+                  "bottomM": 3.68,
+                  "heightM": 0.1,
+                  "projectionM": 0.07
+                },
+                {
+                  "bottomM": 7.1,
+                  "heightM": 0.07,
+                  "projectionM": 0.04
+                },
+                {
+                  "bottomM": 9.95,
+                  "heightM": 0.07,
+                  "projectionM": 0.04
+                }
+              ],
+              "segmentalLintel": {
+                "riseM": 0.1,
+                "bandM": 0.06,
+                "projectionM": 0.035
+              }
+            },
+            "repeatedTerraceRoof": {
+              "riseM": 2.4,
+              "widthM": 3.05,
+              "gable": "spout",
+              "exposedEnds": [
+                false,
+                false
+              ]
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "frontageMin": 12,
+          "frontageMax": 14,
+          "heightMin": 14,
+          "heightMax": 17,
+          "recipe": {
+            "family": "masonry",
+            "period": "c19",
+            "confidence": 0.86,
+            "wallHex": "#8b7059",
+            "frameHex": "#e3e2ce",
+            "sashHex": "#2e4d3f",
+            "courseHex": "#b9a47c",
+            "wallMaterial": "brick",
+            "sash": "transom",
+            "balconyPolicy": "assembly-only",
+            "trimDensity": "restrained",
+            "repeatedTerraceFrontage": {
+              "columns": 3,
+              "insetM": 0.8,
+              "frameWidthM": 0.085,
+              "sashWidthM": 0.045,
+              "recessDepthM": 0.14,
+              "upperRows": [
+                {
+                  "bottomM": 4.45,
+                  "heightM": 2.35,
+                  "widthM": 2,
+                  "axisWidthsM": [
+                    2,
+                    1.65,
+                    2
+                  ],
+                  "transomFraction": 0.74
+                },
+                {
+                  "bottomM": 7.45,
+                  "heightM": 2.1,
+                  "widthM": 2,
+                  "axisWidthsM": [
+                    2,
+                    1.65,
+                    2
+                  ],
+                  "transomFraction": 0.74
+                },
+                {
+                  "bottomM": 10.35,
+                  "heightM": 1.7,
+                  "widthM": 2,
+                  "axisWidthsM": [
+                    2,
+                    1.65,
+                    2
+                  ],
+                  "transomFraction": 0.74
+                }
+              ],
+              "ground": {
+                "bottomM": 0.05,
+                "heightM": 3.05,
+                "widthM": 1.75
+              },
+              "groundWindowRow": {
+                "bottomM": 0.65,
+                "heightM": 2.35,
+                "widthM": 2,
+                "transomFraction": 0.74
+              },
+              "entrance": {
+                "axisIndex": 1,
+                "leafHeightM": 2.15
+              },
+              "stringCourses": [
+                {
+                  "bottomM": 0.4,
+                  "heightM": 0.07,
+                  "projectionM": 0.04
+                },
+                {
+                  "bottomM": 3.68,
+                  "heightM": 0.1,
+                  "projectionM": 0.07
+                },
+                {
+                  "bottomM": 7.1,
+                  "heightM": 0.07,
+                  "projectionM": 0.04
+                },
+                {
+                  "bottomM": 9.95,
+                  "heightM": 0.07,
+                  "projectionM": 0.04
+                }
+              ],
+              "segmentalLintel": {
+                "riseM": 0.1,
+                "bandM": 0.06,
+                "projectionM": 0.035
+              }
+            },
+            "repeatedTerraceRoof": {
+              "riseM": 2.4,
+              "widthM": 3.05,
+              "gable": "step",
+              "exposedEnds": [
+                false,
+                false
+              ]
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "frontageMin": 12,
+          "frontageMax": 14,
+          "heightMin": 14,
+          "heightMax": 17,
+          "recipe": {
+            "family": "masonry",
+            "period": "c19",
+            "confidence": 0.86,
+            "wallHex": "#8b7059",
+            "frameHex": "#e3e2ce",
+            "sashHex": "#2e4d3f",
+            "courseHex": "#b9a47c",
+            "wallMaterial": "brick",
+            "sash": "transom",
+            "balconyPolicy": "assembly-only",
+            "trimDensity": "restrained",
+            "repeatedTerraceFrontage": {
+              "columns": 3,
+              "insetM": 0.8,
+              "frameWidthM": 0.085,
+              "sashWidthM": 0.045,
+              "recessDepthM": 0.14,
+              "upperRows": [
+                {
+                  "bottomM": 4.45,
+                  "heightM": 2.35,
+                  "widthM": 2,
+                  "axisWidthsM": [
+                    2,
+                    1.65,
+                    2
+                  ],
+                  "transomFraction": 0.74
+                },
+                {
+                  "bottomM": 7.45,
+                  "heightM": 2.1,
+                  "widthM": 2,
+                  "axisWidthsM": [
+                    2,
+                    1.65,
+                    2
+                  ],
+                  "transomFraction": 0.74
+                },
+                {
+                  "bottomM": 10.35,
+                  "heightM": 1.7,
+                  "widthM": 2,
+                  "axisWidthsM": [
+                    2,
+                    1.65,
+                    2
+                  ],
+                  "transomFraction": 0.74
+                }
+              ],
+              "ground": {
+                "bottomM": 0.05,
+                "heightM": 3.05,
+                "widthM": 1.75
+              },
+              "groundWindowRow": {
+                "bottomM": 0.65,
+                "heightM": 2.35,
+                "widthM": 2,
+                "transomFraction": 0.74
+              },
+              "entrance": {
+                "axisIndex": 1,
+                "leafHeightM": 2.15
+              },
+              "stringCourses": [
+                {
+                  "bottomM": 0.4,
+                  "heightM": 0.07,
+                  "projectionM": 0.04
+                },
+                {
+                  "bottomM": 3.68,
+                  "heightM": 0.1,
+                  "projectionM": 0.07
+                },
+                {
+                  "bottomM": 7.1,
+                  "heightM": 0.07,
+                  "projectionM": 0.04
+                },
+                {
+                  "bottomM": 9.95,
+                  "heightM": 0.07,
+                  "projectionM": 0.04
+                }
+              ],
+              "segmentalLintel": {
+                "riseM": 0.1,
+                "bandM": 0.06,
+                "projectionM": 0.035
+              }
+            },
+            "repeatedTerraceRoof": {
+              "riseM": 2.4,
+              "widthM": 3.05,
+              "gable": "spout",
+              "exposedEnds": [
+                false,
+                false
+              ]
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "frontageMin": 12,
+          "frontageMax": 14,
+          "heightMin": 14,
+          "heightMax": 17,
+          "recipe": {
+            "family": "masonry",
+            "period": "c19",
+            "confidence": 0.86,
+            "wallHex": "#8b7059",
+            "frameHex": "#e3e2ce",
+            "sashHex": "#2e4d3f",
+            "courseHex": "#b9a47c",
+            "wallMaterial": "brick",
+            "sash": "transom",
+            "balconyPolicy": "assembly-only",
+            "trimDensity": "restrained",
+            "repeatedTerraceFrontage": {
+              "columns": 3,
+              "insetM": 0.8,
+              "frameWidthM": 0.085,
+              "sashWidthM": 0.045,
+              "recessDepthM": 0.14,
+              "upperRows": [
+                {
+                  "bottomM": 4.45,
+                  "heightM": 2.35,
+                  "widthM": 2,
+                  "axisWidthsM": [
+                    2,
+                    1.65,
+                    2
+                  ],
+                  "transomFraction": 0.74
+                },
+                {
+                  "bottomM": 7.45,
+                  "heightM": 2.1,
+                  "widthM": 2,
+                  "axisWidthsM": [
+                    2,
+                    1.65,
+                    2
+                  ],
+                  "transomFraction": 0.74
+                },
+                {
+                  "bottomM": 10.35,
+                  "heightM": 1.7,
+                  "widthM": 2,
+                  "axisWidthsM": [
+                    2,
+                    1.65,
+                    2
+                  ],
+                  "transomFraction": 0.74
+                }
+              ],
+              "ground": {
+                "bottomM": 0.05,
+                "heightM": 3.05,
+                "widthM": 1.75
+              },
+              "groundWindowRow": {
+                "bottomM": 0.65,
+                "heightM": 2.35,
+                "widthM": 2,
+                "transomFraction": 0.74
+              },
+              "entrance": {
+                "axisIndex": 1,
+                "leafHeightM": 2.15
+              },
+              "stringCourses": [
+                {
+                  "bottomM": 0.4,
+                  "heightM": 0.07,
+                  "projectionM": 0.04
+                },
+                {
+                  "bottomM": 3.68,
+                  "heightM": 0.1,
+                  "projectionM": 0.07
+                },
+                {
+                  "bottomM": 7.1,
+                  "heightM": 0.07,
+                  "projectionM": 0.04
+                },
+                {
+                  "bottomM": 9.95,
+                  "heightM": 0.07,
+                  "projectionM": 0.04
+                }
+              ],
+              "segmentalLintel": {
+                "riseM": 0.1,
+                "bandM": 0.06,
+                "projectionM": 0.035
+              }
+            },
+            "repeatedTerraceRoof": {
+              "riseM": 2.4,
+              "widthM": 3.05,
+              "gable": "step",
+              "exposedEnds": [
+                false,
+                false
+              ]
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "frontageMin": 12,
+          "frontageMax": 14,
+          "heightMin": 14,
+          "heightMax": 17,
+          "recipe": {
+            "family": "masonry",
+            "period": "c19",
+            "confidence": 0.86,
+            "wallHex": "#8b7059",
+            "frameHex": "#e3e2ce",
+            "sashHex": "#2e4d3f",
+            "courseHex": "#b9a47c",
+            "wallMaterial": "brick",
+            "sash": "transom",
+            "balconyPolicy": "assembly-only",
+            "trimDensity": "restrained",
+            "repeatedTerraceFrontage": {
+              "columns": 3,
+              "insetM": 0.8,
+              "frameWidthM": 0.085,
+              "sashWidthM": 0.045,
+              "recessDepthM": 0.14,
+              "upperRows": [
+                {
+                  "bottomM": 4.45,
+                  "heightM": 2.35,
+                  "widthM": 2,
+                  "axisWidthsM": [
+                    2,
+                    1.65,
+                    2
+                  ],
+                  "transomFraction": 0.74
+                },
+                {
+                  "bottomM": 7.45,
+                  "heightM": 2.1,
+                  "widthM": 2,
+                  "axisWidthsM": [
+                    2,
+                    1.65,
+                    2
+                  ],
+                  "transomFraction": 0.74
+                },
+                {
+                  "bottomM": 10.35,
+                  "heightM": 1.7,
+                  "widthM": 2,
+                  "axisWidthsM": [
+                    2,
+                    1.65,
+                    2
+                  ],
+                  "transomFraction": 0.74
+                }
+              ],
+              "ground": {
+                "bottomM": 0.05,
+                "heightM": 3.05,
+                "widthM": 1.75
+              },
+              "groundWindowRow": {
+                "bottomM": 0.65,
+                "heightM": 2.35,
+                "widthM": 2,
+                "transomFraction": 0.74
+              },
+              "entrance": {
+                "axisIndex": 1,
+                "leafHeightM": 2.15
+              },
+              "stringCourses": [
+                {
+                  "bottomM": 0.4,
+                  "heightM": 0.07,
+                  "projectionM": 0.04
+                },
+                {
+                  "bottomM": 3.68,
+                  "heightM": 0.1,
+                  "projectionM": 0.07
+                },
+                {
+                  "bottomM": 7.1,
+                  "heightM": 0.07,
+                  "projectionM": 0.04
+                },
+                {
+                  "bottomM": 9.95,
+                  "heightM": 0.07,
+                  "projectionM": 0.04
+                }
+              ],
+              "segmentalLintel": {
+                "riseM": 0.1,
+                "bandM": 0.06,
+                "projectionM": 0.035
+              }
+            },
+            "repeatedTerraceRoof": {
+              "riseM": 2.4,
+              "widthM": 3.05,
+              "gable": "spout",
+              "exposedEnds": [
+                false,
+                true
+              ]
+            }
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "id": "TMX7316010203-002951_pano_0007_000033",
+          "kind": "municipal-panorama",
+          "captureDate": "2023-01-30T10:43:29.209010Z",
+          "sha256": "0de141ada1f097f7c470350a9c3bb6e2d161efd71fcc1c463fb388d7d6f5234f",
+          "url": "https://t1.data.amsterdam.nl/panorama/2023/01/30/TMX7316010203-002951/pano_0007_000033/equirectangular/panorama_8000.jpg",
+          "panoramaId": "TMX7316010203-002951_pano_0007_000033",
+          "inference": "agent-visual-review",
+          "quality": 0.9,
+          "notes": "Clear leaf-off 2023 source; 2024 user image corroborates row. 2025 renovation scaffold obscures current facade; approximate dimensions, not survey."
+        },
+        {
+          "id": "TMX7316010203-002989_pano_0006_000004",
+          "kind": "municipal-panorama",
+          "captureDate": "2023-03-06T09:54:23.659080Z",
+          "sha256": "47144250b00e111ed8d8917bf2dc1f7a82eb01dd872a3d15dd34bd91767f2312",
+          "url": "https://t1.data.amsterdam.nl/panorama/2023/03/06/TMX7316010203-002989/pano_0006_000004/equirectangular/panorama_8000.jpg",
+          "panoramaId": "TMX7316010203-002989_pano_0006_000004",
+          "inference": "agent-visual-review",
+          "quality": 0.9,
+          "notes": "Clear leaf-off 2023 source; 2024 user image corroborates row. 2025 renovation scaffold obscures current facade; approximate dimensions, not survey."
+        }
+      ],
+      "frontages": [
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012174914",
+          "recipeIndex": 0,
+          "frontage": {
+            "start": [
+              4.877058,
+              52.375474
+            ],
+            "end": [
+              4.877128,
+              52.375585
+            ],
+            "widthM": 13.227
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012168510",
+          "recipeIndex": 1,
+          "frontage": {
+            "start": [
+              4.877128,
+              52.375585
+            ],
+            "end": [
+              4.877196,
+              52.375694
+            ],
+            "widthM": 12.97
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012173514",
+          "recipeIndex": 2,
+          "frontage": {
+            "start": [
+              4.877196,
+              52.375694
+            ],
+            "end": [
+              4.877265,
+              52.375802
+            ],
+            "widthM": 12.891
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012173515",
+          "recipeIndex": 3,
+          "frontage": {
+            "start": [
+              4.877265,
+              52.375802
+            ],
+            "end": [
+              4.877334,
+              52.375912
+            ],
+            "widthM": 13.099
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012174104",
+          "recipeIndex": 4,
+          "frontage": {
+            "start": [
+              4.877334,
+              52.375912
+            ],
+            "end": [
+              4.877402,
+              52.37602
+            ],
+            "widthM": 12.867
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012174105",
+          "recipeIndex": 5,
+          "frontage": {
+            "start": [
+              4.877402,
+              52.37602
+            ],
+            "end": [
+              4.877471,
+              52.376129
+            ],
+            "widthM": 12.995
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012174935",
+          "recipeIndex": 6,
+          "frontage": {
+            "start": [
+              4.877471,
+              52.376129
+            ],
+            "end": [
+              4.877539,
+              52.376238
+            ],
+            "widthM": 12.97
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012173530",
+          "recipeIndex": 7,
+          "frontage": {
+            "start": [
+              4.877539,
+              52.376238
+            ],
+            "end": [
+              4.87761,
+              52.376349
+            ],
+            "widthM": 13.251
+          }
+        }
+      ]
+    }
+  ]
+}

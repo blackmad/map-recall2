@@ -1,0 +1,156 @@
+{
+  "kind": "Original procedural CPU previews; actual game acceptance documented separately",
+  "report": {
+    "generatedAt": "2026-10-08T22:11:46.154Z",
+    "scope": "Eight exact Marnixstraat 124\u2013138 BAG parents; retained opposite/rear geometry. CPU runtime diagnostic only.",
+    "acceptance": "CPU diagnostic preview only; native-game acceptance and retained failures recorded in docs/references/marnixstraat-repeated-row/live-game-review-20261009.json",
+    "ids": [
+      "NL.IMBAG.Pand.0363100012174914",
+      "NL.IMBAG.Pand.0363100012168510",
+      "NL.IMBAG.Pand.0363100012173514",
+      "NL.IMBAG.Pand.0363100012173515",
+      "NL.IMBAG.Pand.0363100012174104",
+      "NL.IMBAG.Pand.0363100012174105",
+      "NL.IMBAG.Pand.0363100012174935",
+      "NL.IMBAG.Pand.0363100012173530"
+    ],
+    "retainedIds": [
+      "NL.IMBAG.Pand.0363100012168447",
+      "NL.IMBAG.Pand.0363100012168448",
+      "NL.IMBAG.Pand.0363100012168506",
+      "NL.IMBAG.Pand.0363100012174838",
+      "NL.IMBAG.Pand.0363100012174918",
+      "NL.IMBAG.Pand.0363100012174919",
+      "NL.IMBAG.Pand.0363100012168449",
+      "NL.IMBAG.Pand.0363100012168450",
+      "NL.IMBAG.Pand.0363100012168507",
+      "NL.IMBAG.Pand.0363100012168508",
+      "NL.IMBAG.Pand.0363100012168509",
+      "NL.IMBAG.Pand.0363100012168511",
+      "NL.IMBAG.Pand.0363100012169032",
+      "NL.IMBAG.Pand.0363100012169033",
+      "NL.IMBAG.Pand.0363100012173513",
+      "NL.IMBAG.Pand.0363100012173516",
+      "NL.IMBAG.Pand.0363100012173517",
+      "NL.IMBAG.Pand.0363100012173518",
+      "NL.IMBAG.Pand.0363100012173519",
+      "NL.IMBAG.Pand.0363100012173520",
+      "NL.IMBAG.Pand.0363100012173521",
+      "NL.IMBAG.Pand.0363100012173522",
+      "NL.IMBAG.Pand.0363100012173524",
+      "NL.IMBAG.Pand.0363100012173525",
+      "NL.IMBAG.Pand.0363100012173526",
+      "NL.IMBAG.Pand.0363100012173527",
+      "NL.IMBAG.Pand.0363100012173528",
+      "NL.IMBAG.Pand.0363100012173529",
+      "NL.IMBAG.Pand.0363100012173531",
+      "NL.IMBAG.Pand.0363100012173532",
+      "NL.IMBAG.Pand.0363100012173533",
+      "NL.IMBAG.Pand.0363100012174101",
+      "NL.IMBAG.Pand.0363100012174102",
+      "NL.IMBAG.Pand.0363100012174103",
+      "NL.IMBAG.Pand.0363100012174106",
+      "NL.IMBAG.Pand.0363100012174107",
+      "NL.IMBAG.Pand.0363100012174189",
+      "NL.IMBAG.Pand.0363100012174934",
+      "NL.IMBAG.Pand.0363100012174936",
+      "NL.IMBAG.Pand.0363100012185851"
+    ],
+    "catalogSha256": "ea1cd5dcc7511dd28ef6eecdc10c41392f94ca83f0bd6104635ef6bacab8af6b",
+    "views": [
+      {
+        "phase": "before",
+        "view": "front",
+        "file": "artifacts/marnixstraat-review/current-closed-roof/before-front.png",
+        "sha256": "d27f8d033ed201158b9c6dbbdbaa3b00d3e404ea930c2a60c0831b28d45cb23a"
+      },
+      {
+        "phase": "after",
+        "view": "front",
+        "file": "artifacts/marnixstraat-review/current-closed-roof/after-front.png",
+        "sha256": "455adaf4fab452509261c762907019d13e62cba8cf08a7ecc22eb917906e011e"
+      },
+      {
+        "phase": "before",
+        "view": "oblique",
+        "file": "artifacts/marnixstraat-review/current-closed-roof/before-oblique.png",
+        "sha256": "6ce33e2498557b5ea844164566a3d6f6b443efeaa6f238b0b3adcd9b3c37eae8"
+      },
+      {
+        "phase": "after",
+        "view": "oblique",
+        "file": "artifacts/marnixstraat-review/current-closed-roof/after-oblique.png",
+        "sha256": "f5a3295d0e04d345bcddc53214a3e6871572e33bce5d70458c1a65ba3939933d"
+      },
+      {
+        "phase": "before",
+        "view": "near",
+        "file": "artifacts/marnixstraat-review/current-closed-roof/before-near.png",
+        "sha256": "820b4ee804c71bc4bcd41075f5ce2d621ccc10e99f7fe546d4dd89ffb091aa75"
+      },
+      {
+        "phase": "after",
+        "view": "near",
+        "file": "artifacts/marnixstraat-review/current-closed-roof/after-near.png",
+        "sha256": "77f8b513a4c00e60ae9c90bcf7e2f87fe5ef33853fa7ed76cd38e0be0d99d5b6"
+      },
+      {
+        "phase": "before",
+        "view": "heldout",
+        "file": "artifacts/marnixstraat-review/current-closed-roof/before-heldout.png",
+        "sha256": "2992f79159b86781d1f187bebecec493ceeb2edbdcce033b3253ed5fa056a5c2"
+      },
+      {
+        "phase": "after",
+        "view": "heldout",
+        "file": "artifacts/marnixstraat-review/current-closed-roof/after-heldout.png",
+        "sha256": "22479db258023f2ff195f631cc799755ba813a5ff86f517247e09ea1ee17d3dc"
+      },
+      {
+        "phase": "before",
+        "view": "roof",
+        "file": "artifacts/marnixstraat-review/current-closed-roof/before-roof.png",
+        "sha256": "94d5d04d66c4acf5b3fe167d04d48c3d3ddd17c095ca3dad31641ff82e631147"
+      },
+      {
+        "phase": "after",
+        "view": "roof",
+        "file": "artifacts/marnixstraat-review/current-closed-roof/after-roof.png",
+        "sha256": "214c4ff9c5becd7c92258ac41e0266de7c6c9efb8c8379c3e5ba289aaf3e310b"
+      }
+    ],
+    "performance": [
+      {
+        "phase": "before",
+        "buildCpuMedianMs": 15.66125000000011,
+        "triangles": 13692,
+        "vertices": 40233,
+        "nativeRowTriangles": 933,
+        "limits": "CPU build measurements include bounded context; no live-game frame time or GPU assertion"
+      },
+      {
+        "phase": "after",
+        "buildCpuMedianMs": 23.88408299999992,
+        "triangles": 19509,
+        "vertices": 57387,
+        "nativeRowTriangles": 8126,
+        "limits": "CPU build measurements include bounded context; no live-game frame time or GPU assertion"
+      }
+    ],
+    "rendererSourceHashes": {
+      "src/canalRecall/repeatedTerraceFrontage.ts": "bfe365d123ece1b6ede569739a10aadb9856a84120c5f52a4a879ef27c21acb8",
+      "src/canalRecall/repeatedTerraceRoof.ts": "2a9caa9e87465a669d3e30d6033bf66d1375094b45f9dfe875e9f67b57884e2f",
+      "src/canalRecall/threeBuildingMesh.ts": "fd55be089f00d9c8e287f764ffdefb65bcd4accf97de6ae12386fecada90fbae",
+      "src/canalRecall/sourceVisualRoof.ts": "e0540a50dec8248e8f3a607b9c2640fdcd1050fef456b60268309e29bec55a76"
+    }
+  },
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "path": "streets/marnixstraat-263-repeated-row/",
+    "commit": "abb4664d378649cdcaff6e43e4b5d6e8b314c859",
+    "state": "verified source originals/metadata/processed records committed and pushed before model/runtime publication",
+    "reviewCommit": "87412d138",
+    "reviewPath": "streets/marnixstraat-263-repeated-row/processed/game-review-20261009",
+    "defaultInstalledCommit": "d9ba4d73f26b6a054cb8e9129e4437fca766a023"
+  }
+}

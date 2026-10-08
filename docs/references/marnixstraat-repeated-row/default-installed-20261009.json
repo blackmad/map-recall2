@@ -1,0 +1,192 @@
+{
+  "status": "pass",
+  "defaultActivation": true,
+  "scope": [
+    "NL.IMBAG.Pand.0363100012174914",
+    "NL.IMBAG.Pand.0363100012168510",
+    "NL.IMBAG.Pand.0363100012173514",
+    "NL.IMBAG.Pand.0363100012173515",
+    "NL.IMBAG.Pand.0363100012174104",
+    "NL.IMBAG.Pand.0363100012174105",
+    "NL.IMBAG.Pand.0363100012174935",
+    "NL.IMBAG.Pand.0363100012173530"
+  ],
+  "states": [
+    {
+      "mode": "desktop",
+      "revision": "22480235d4dd617e",
+      "profiles": [
+        "bethanienstraat-observed-historic-pair",
+        "bethanienstraat-transition-context",
+        "jan-evertsen-canopy-candidate-native-pair",
+        "marnixstraat-124-138-repeated-row",
+        "oudezijds-voorburgwal-east-39-71-discovery"
+      ],
+      "rows": [
+        {
+          "id": "NL.IMBAG.Pand.0363100012174914",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012168510",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012173514",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012173515",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012174104",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012174105",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012174935",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012173530",
+          "visible": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "mode": "touch",
+      "revision": "22480235d4dd617e",
+      "profiles": [
+        "bethanienstraat-observed-historic-pair",
+        "bethanienstraat-transition-context",
+        "jan-evertsen-canopy-candidate-native-pair",
+        "marnixstraat-124-138-repeated-row",
+        "oudezijds-voorburgwal-east-39-71-discovery"
+      ],
+      "rows": [
+        {
+          "id": "NL.IMBAG.Pand.0363100012174914",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012168510",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012173514",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012173515",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012174104",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012174105",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012174935",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012173530",
+          "visible": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "mode": "offline-http",
+      "revision": "",
+      "profiles": [],
+      "rows": [
+        {
+          "id": "NL.IMBAG.Pand.0363100012174914",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012168510",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012173514",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012173515",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012174104",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012174105",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012174935",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012173530",
+          "visible": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "mode": "offline-network",
+      "revision": "",
+      "profiles": [],
+      "rows": [
+        {
+          "id": "NL.IMBAG.Pand.0363100012174914",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012168510",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012173514",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012173515",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012174104",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012174105",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012174935",
+          "visible": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012173530",
+          "visible": true
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "checks": [
+    "Default installed profile loads on desktop/touch without query opt-in",
+    "HTTP and network catalogue failure keep all eight ordinary native stock parents visible"
+  ]
+}
