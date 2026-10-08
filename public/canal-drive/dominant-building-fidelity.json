@@ -768,6 +768,33 @@
       "limits": [
         "Diamond pattern has 400 interior centers plus edge partial panels vs sourced 423 cassettes; native dimensions and circular profile are approximate; house-style glass is opaque colored."
       ]
+    },
+    "NL.IMBAG.Pand.0363100012167975": {
+      "treatment": "landmark",
+      "reviewedOn": "2026-10-08",
+      "sourceUrls": [
+        "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_06-42-40_01095/",
+        "https://api.data.amsterdam.nl/panorama/panoramas/b_20241203_1333_Track15_Sphere_00216/"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012167975/wide-0363100012167975-2025-01901-einitial.jpg",
+      "reason": "Distinctive perforated canopy, open terrace and independently researched front/low-wing assemblies require full architectural review. Exact ordinary parent identity remains an ordinary asset without an invented destination. Source/independent actual gallery and root native desktop/touch checks pass.",
+      "checks": {
+        "ordinarySilhouette": false,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourcePack": "experiments/canal-belt-continuation-20261007/keizers603-build",
+      "sourceCommit": "26f2679530ae6a0a9fe362c0043a8941887efd58",
+      "assetHash": "2f679b1f5dc25af796d6d856b388318c72e3d428b992c6afa1047a0ae7ab9fb1",
+      "independentReview": "ordinary-buildings-data/canal-keizers603-review-20261008.json",
+      "liveGameReview": "ordinary-buildings-data/canal-keizers603-review-20261008.json",
+      "limits": [
+        "Rear aperture counts remain unobserved and conservative.",
+        "Facade/perforation dimensions approximated from source photos; native roof heights and footprints retained.",
+        "Native main-front is partly blocked by the opposite bookshop; complete southern frontage, low wing, canopy and neighbor boundary reviewed.",
+        "Headless desktop/touch emulation; warm frame samples do not prove absence of tile/setup stalls or physical-mobile performance."
+      ]
     }
   },
   "notes": [

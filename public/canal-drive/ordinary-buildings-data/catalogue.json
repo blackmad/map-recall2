@@ -16163,6 +16163,2398 @@
       "sourceCommit": "052ce837e0721eaa173873a5517a47ba8b86b982",
       "treatment": "landmark",
       "updatedAt": "2026-10-07T22:46:40.509Z"
+    },
+    {
+      "id": "ordinary-0363100012167975",
+      "buildingId": "NL.IMBAG.Pand.0363100012167975",
+      "name": "Keizersgracht 603 / Vijzelstraat 79 office block",
+      "anchor": [
+        4.892849363636364,
+        52.36422636363636
+      ],
+      "cameraBearing": 257,
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.893,
+              52.363999
+            ],
+            [
+              4.893056,
+              52.364163
+            ],
+            [
+              4.893036,
+              52.364166
+            ],
+            [
+              4.892901,
+              52.364287
+            ],
+            [
+              4.892921,
+              52.364346
+            ],
+            [
+              4.892916,
+              52.364347
+            ],
+            [
+              4.892923,
+              52.364367
+            ],
+            [
+              4.892709,
+              52.364396
+            ],
+            [
+              4.892674,
+              52.3643
+            ],
+            [
+              4.892593,
+              52.364069
+            ],
+            [
+              4.892614,
+              52.36405
+            ],
+            [
+              4.893,
+              52.363999
+            ]
+          ]
+        ]
+      },
+      "height": 25.467500686645508,
+      "modelUrl": "./models/ordinary-buildings/0363100012167975.glb",
+      "bounds": {
+        "min": [
+          -17.450653076171875,
+          -0.014999999664723873,
+          -18.901493072509766
+        ],
+        "max": [
+          14.064020156860352,
+          25.467500686645508,
+          25.40228843688965
+        ]
+      },
+      "triangles": 5312,
+      "bytes": 435380,
+      "materials": 3,
+      "hash": "2f679b1f5dc25af796d6d856b388318c72e3d428b992c6afa1047a0ae7ab9fb1",
+      "referenceImages": [
+        "./ordinary-buildings-data/references/0363100012167975/wide-0363100012167975-2025-01901-einitial.jpg",
+        "./ordinary-buildings-data/references/0363100012167975/wide-0363100012167975-2025-01085-einitial.jpg",
+        "./ordinary-buildings-data/references/0363100012167975/wide-0363100012167975-2025-01095-einitial.jpg",
+        "./ordinary-buildings-data/references/0363100012167975/wide-0363100012167975-2024-00216-einitial.jpg"
+      ],
+      "sourcePack": "experiments/canal-belt-continuation-20261007/keizers603-build/source",
+      "sourceUrls": [
+        "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_06-42-40_01095/",
+        "https://api.data.amsterdam.nl/panorama/panoramas/b_20241203_1333_Track15_Sphere_00216/"
+      ],
+      "traits": [
+        "Dark gray brick repetitive broad horizontal glazing groups, thin pale lintels, narrow projecting brick piers.",
+        "Deep central ground glass entrance.",
+        "Open upper terrace under a thin source-owned perforated horizontal canopy; approximate openings preserve the defining silhouette."
+      ],
+      "simplifications": [
+        "Main Vijzel frontage: 1 narrow transition plus6broad groups,4uppertiers,leftactualrecessedbalconies,2doubleheightgroundgroups. Southfront4main groups+source-owned lower eastern fifth group with3uppertiers only; no invented fourthtier above16.34m roof. Dimensions/pane spacing approximate.",
+        "No source photograph pixels, signs, interiors or invented name words.",
+        "Unseen rear facades remain conservative dark wall; source-owned roof surfaces, equipment and native footprint preserved."
+      ],
+      "heightEvidence": "3DBAG LoD2.2 RoofSurface coordinates minus b3_h_maaiveld; fitted canopy75 (~22.34m), broad roof76 (~22.85m), lower rear levels and localized equipment kept distinct.",
+      "facadeRecipe": {
+        "kind": "blank",
+        "levels": 0,
+        "wallColor": "#454743",
+        "frameColor": "#242e31",
+        "glassColor": "#627f87",
+        "frameWidthMetres": 0.075,
+        "edges": {
+          "7": {
+            "kind": "blank",
+            "fixedFacadeTopMetres": 19.55,
+            "windowTiers": [
+              {
+                "sillMetres": 5.25,
+                "heightMetres": 1.83,
+                "startMetres": 0.5,
+                "pitchMetres": 100,
+                "widthMetres": 2.2,
+                "clusters": [
+                  {
+                    "widthMetres": 2.2,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 2.2,
+                        "heightMetres": 1.83,
+                        "panes": 4
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 8.7,
+                "heightMetres": 1.83,
+                "startMetres": 0.5,
+                "pitchMetres": 100,
+                "widthMetres": 2.2,
+                "clusters": [
+                  {
+                    "widthMetres": 2.2,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 2.2,
+                        "heightMetres": 1.83,
+                        "panes": 4
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 12.15,
+                "heightMetres": 1.83,
+                "startMetres": 0.5,
+                "pitchMetres": 100,
+                "widthMetres": 2.2,
+                "clusters": [
+                  {
+                    "widthMetres": 2.2,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 2.2,
+                        "heightMetres": 1.83,
+                        "panes": 4
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 15.6,
+                "heightMetres": 1.83,
+                "startMetres": 0.5,
+                "pitchMetres": 100,
+                "widthMetres": 2.2,
+                "clusters": [
+                  {
+                    "widthMetres": 2.2,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 2.2,
+                        "heightMetres": 1.83,
+                        "panes": 4,
+                        "glassColor": "#293537"
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 5.25,
+                "heightMetres": 1.83,
+                "startMetres": 3.9,
+                "pitchMetres": 100,
+                "widthMetres": 4.48,
+                "clusters": [
+                  {
+                    "widthMetres": 4.48,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.48,
+                        "heightMetres": 1.83,
+                        "panes": 4
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 4.28,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 8.7,
+                "heightMetres": 1.83,
+                "startMetres": 3.9,
+                "pitchMetres": 100,
+                "widthMetres": 4.48,
+                "clusters": [
+                  {
+                    "widthMetres": 4.48,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.48,
+                        "heightMetres": 1.83,
+                        "panes": 4
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 4.28,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 12.15,
+                "heightMetres": 1.83,
+                "startMetres": 3.9,
+                "pitchMetres": 100,
+                "widthMetres": 4.48,
+                "clusters": [
+                  {
+                    "widthMetres": 4.48,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.48,
+                        "heightMetres": 1.83,
+                        "panes": 4
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 4.28,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 15.6,
+                "heightMetres": 1.83,
+                "startMetres": 3.9,
+                "pitchMetres": 100,
+                "widthMetres": 4.48,
+                "clusters": [
+                  {
+                    "widthMetres": 4.48,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.48,
+                        "heightMetres": 1.83,
+                        "panes": 4,
+                        "glassColor": "#293537"
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 5.25,
+                "heightMetres": 1.83,
+                "startMetres": 9.45,
+                "pitchMetres": 100,
+                "widthMetres": 1.4983540151949661,
+                "clusters": [
+                  {
+                    "widthMetres": 1.4983540151949661,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 1.4983540151949661,
+                        "heightMetres": 1.83,
+                        "panes": 2
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 8.7,
+                "heightMetres": 1.83,
+                "startMetres": 9.45,
+                "pitchMetres": 100,
+                "widthMetres": 1.4983540151949661,
+                "clusters": [
+                  {
+                    "widthMetres": 1.4983540151949661,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 1.4983540151949661,
+                        "heightMetres": 1.83,
+                        "panes": 2
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 12.15,
+                "heightMetres": 1.83,
+                "startMetres": 9.45,
+                "pitchMetres": 100,
+                "widthMetres": 1.4983540151949661,
+                "clusters": [
+                  {
+                    "widthMetres": 1.4983540151949661,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 1.4983540151949661,
+                        "heightMetres": 1.83,
+                        "panes": 2
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 15.6,
+                "heightMetres": 1.83,
+                "startMetres": 9.45,
+                "pitchMetres": 100,
+                "widthMetres": 1.4983540151949661,
+                "clusters": [
+                  {
+                    "widthMetres": 1.4983540151949661,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 1.4983540151949661,
+                        "heightMetres": 1.83,
+                        "panes": 2,
+                        "glassColor": "#293537"
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              }
+            ],
+            "bands": [
+              {
+                "xMetres": 0.5,
+                "widthMetres": 2.2,
+                "bottomMetres": 7.08,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 0.5,
+                "widthMetres": 2.2,
+                "bottomMetres": 10.53,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 0.5,
+                "widthMetres": 2.2,
+                "bottomMetres": 13.98,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 0.5,
+                "widthMetres": 2.2,
+                "bottomMetres": 17.43,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 3.9,
+                "widthMetres": 4.48,
+                "bottomMetres": 7.08,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 3.9,
+                "widthMetres": 4.48,
+                "bottomMetres": 10.53,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 3.9,
+                "widthMetres": 4.48,
+                "bottomMetres": 13.98,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 3.9,
+                "widthMetres": 4.48,
+                "bottomMetres": 17.43,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 9.45,
+                "widthMetres": 1.4983540151949661,
+                "bottomMetres": 7.08,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 9.45,
+                "widthMetres": 1.4983540151949661,
+                "bottomMetres": 10.53,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 9.45,
+                "widthMetres": 1.4983540151949661,
+                "bottomMetres": 13.98,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 9.45,
+                "widthMetres": 1.4983540151949661,
+                "bottomMetres": 17.43,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              }
+            ],
+            "groundEntries": [
+              {
+                "xMetres": 0.5,
+                "bottomMetres": 0.24,
+                "widthMetres": 2.2,
+                "heightMetres": 3.5,
+                "kind": "glazed",
+                "panes": 4,
+                "frameColor": "#202b2e",
+                "crossbarMetres": 3.9
+              },
+              {
+                "xMetres": 3.9,
+                "bottomMetres": 0.24,
+                "widthMetres": 4.48,
+                "heightMetres": 3.5,
+                "kind": "glazed",
+                "panes": 4,
+                "frameColor": "#202b2e",
+                "crossbarMetres": 3.9
+              },
+              {
+                "xMetres": 9.45,
+                "bottomMetres": 0.24,
+                "widthMetres": 1.4983540151949661,
+                "heightMetres": 3.5,
+                "kind": "glazed",
+                "panes": 4,
+                "frameColor": "#202b2e",
+                "crossbarMetres": 3.9
+              }
+            ],
+            "recessGroups": [
+              {
+                "xMetres": 0.5,
+                "widthMetres": 2.2,
+                "bottomMetres": 15.6,
+                "heightMetres": 1.83,
+                "depthMetres": 1.15
+              },
+              {
+                "xMetres": 3.9,
+                "widthMetres": 4.48,
+                "bottomMetres": 15.6,
+                "heightMetres": 1.83,
+                "depthMetres": 1.15
+              },
+              {
+                "xMetres": 9.45,
+                "widthMetres": 1.4983540151949661,
+                "bottomMetres": 15.6,
+                "heightMetres": 1.83,
+                "depthMetres": 1.15
+              }
+            ],
+            "topBandHeightMetres": 0.22,
+            "topBandColor": "#d6d8d0",
+            "physicalBands": [],
+            "sourceGroups": [
+              {
+                "xMetres": 0.5,
+                "widthMetres": 2.2,
+                "globalXMetres": 0.5,
+                "globalWidthMetres": 2.2,
+                "globalIndex": 0,
+                "whole": true
+              },
+              {
+                "xMetres": 3.9,
+                "widthMetres": 4.48,
+                "globalXMetres": 3.9,
+                "globalWidthMetres": 4.48,
+                "globalIndex": 1,
+                "whole": true
+              },
+              {
+                "xMetres": 9.45,
+                "widthMetres": 1.4983540151949661,
+                "globalXMetres": 9.45,
+                "globalWidthMetres": 4.48,
+                "globalIndex": 2,
+                "whole": false
+              }
+            ]
+          },
+          "8": {
+            "kind": "blank",
+            "fixedFacadeTopMetres": 19.55,
+            "windowTiers": [
+              {
+                "sillMetres": 5.25,
+                "heightMetres": 1.83,
+                "startMetres": 0,
+                "pitchMetres": 100,
+                "widthMetres": 2.9816459848050343,
+                "clusters": [
+                  {
+                    "widthMetres": 2.9816459848050343,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 2.9816459848050343,
+                        "heightMetres": 1.83,
+                        "panes": 2
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 8.7,
+                "heightMetres": 1.83,
+                "startMetres": 0,
+                "pitchMetres": 100,
+                "widthMetres": 2.9816459848050343,
+                "clusters": [
+                  {
+                    "widthMetres": 2.9816459848050343,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 2.9816459848050343,
+                        "heightMetres": 1.83,
+                        "panes": 2
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 12.15,
+                "heightMetres": 1.83,
+                "startMetres": 0,
+                "pitchMetres": 100,
+                "widthMetres": 2.9816459848050343,
+                "clusters": [
+                  {
+                    "widthMetres": 2.9816459848050343,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 2.9816459848050343,
+                        "heightMetres": 1.83,
+                        "panes": 2
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 15.6,
+                "heightMetres": 1.83,
+                "startMetres": 0,
+                "pitchMetres": 100,
+                "widthMetres": 2.9816459848050343,
+                "clusters": [
+                  {
+                    "widthMetres": 2.9816459848050343,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 2.9816459848050343,
+                        "heightMetres": 1.83,
+                        "panes": 2,
+                        "glassColor": "#293537"
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 5.25,
+                "heightMetres": 1.83,
+                "startMetres": 4.051645984805035,
+                "pitchMetres": 100,
+                "widthMetres": 4.48,
+                "clusters": [
+                  {
+                    "widthMetres": 4.48,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.48,
+                        "heightMetres": 1.83,
+                        "panes": 4
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 4.28,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 8.7,
+                "heightMetres": 1.83,
+                "startMetres": 4.051645984805035,
+                "pitchMetres": 100,
+                "widthMetres": 4.48,
+                "clusters": [
+                  {
+                    "widthMetres": 4.48,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.48,
+                        "heightMetres": 1.83,
+                        "panes": 4
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 4.28,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 12.15,
+                "heightMetres": 1.83,
+                "startMetres": 4.051645984805035,
+                "pitchMetres": 100,
+                "widthMetres": 4.48,
+                "clusters": [
+                  {
+                    "widthMetres": 4.48,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.48,
+                        "heightMetres": 1.83,
+                        "panes": 4
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 4.28,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 15.6,
+                "heightMetres": 1.83,
+                "startMetres": 4.051645984805035,
+                "pitchMetres": 100,
+                "widthMetres": 4.48,
+                "clusters": [
+                  {
+                    "widthMetres": 4.48,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.48,
+                        "heightMetres": 1.83,
+                        "panes": 4
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 4.28,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 5.25,
+                "heightMetres": 1.83,
+                "startMetres": 9.601645984805032,
+                "pitchMetres": 100,
+                "widthMetres": 4.48,
+                "clusters": [
+                  {
+                    "widthMetres": 4.48,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.48,
+                        "heightMetres": 1.83,
+                        "panes": 4
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 4.28,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 8.7,
+                "heightMetres": 1.83,
+                "startMetres": 9.601645984805032,
+                "pitchMetres": 100,
+                "widthMetres": 4.48,
+                "clusters": [
+                  {
+                    "widthMetres": 4.48,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.48,
+                        "heightMetres": 1.83,
+                        "panes": 4
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 4.28,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 12.15,
+                "heightMetres": 1.83,
+                "startMetres": 9.601645984805032,
+                "pitchMetres": 100,
+                "widthMetres": 4.48,
+                "clusters": [
+                  {
+                    "widthMetres": 4.48,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.48,
+                        "heightMetres": 1.83,
+                        "panes": 4
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 4.28,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 15.6,
+                "heightMetres": 1.83,
+                "startMetres": 9.601645984805032,
+                "pitchMetres": 100,
+                "widthMetres": 4.48,
+                "clusters": [
+                  {
+                    "widthMetres": 4.48,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.48,
+                        "heightMetres": 1.83,
+                        "panes": 4
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 4.28,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 8.7,
+                "heightMetres": 1.83,
+                "startMetres": 15.151645984805032,
+                "pitchMetres": 100,
+                "widthMetres": 4.48,
+                "clusters": [
+                  {
+                    "widthMetres": 4.48,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.48,
+                        "heightMetres": 1.83,
+                        "panes": 4
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 4.28,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 12.15,
+                "heightMetres": 1.83,
+                "startMetres": 15.151645984805032,
+                "pitchMetres": 100,
+                "widthMetres": 4.48,
+                "clusters": [
+                  {
+                    "widthMetres": 4.48,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.48,
+                        "heightMetres": 1.83,
+                        "panes": 4
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 4.28,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 15.6,
+                "heightMetres": 1.83,
+                "startMetres": 15.151645984805032,
+                "pitchMetres": 100,
+                "widthMetres": 4.48,
+                "clusters": [
+                  {
+                    "widthMetres": 4.48,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.48,
+                        "heightMetres": 1.83,
+                        "panes": 4
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 4.28,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 8.7,
+                "heightMetres": 1.83,
+                "startMetres": 20.701645984805033,
+                "pitchMetres": 100,
+                "widthMetres": 4.479999999999997,
+                "clusters": [
+                  {
+                    "widthMetres": 4.479999999999997,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.479999999999997,
+                        "heightMetres": 1.83,
+                        "panes": 4
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 4.279999999999997,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 12.15,
+                "heightMetres": 1.83,
+                "startMetres": 20.701645984805033,
+                "pitchMetres": 100,
+                "widthMetres": 4.479999999999997,
+                "clusters": [
+                  {
+                    "widthMetres": 4.479999999999997,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.479999999999997,
+                        "heightMetres": 1.83,
+                        "panes": 4
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 4.279999999999997,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 15.6,
+                "heightMetres": 1.83,
+                "startMetres": 20.701645984805033,
+                "pitchMetres": 100,
+                "widthMetres": 4.479999999999997,
+                "clusters": [
+                  {
+                    "widthMetres": 4.479999999999997,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.479999999999997,
+                        "heightMetres": 1.83,
+                        "panes": 4
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 4.279999999999997,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              }
+            ],
+            "bands": [
+              {
+                "xMetres": 0,
+                "widthMetres": 2.9816459848050343,
+                "bottomMetres": 7.08,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 0,
+                "widthMetres": 2.9816459848050343,
+                "bottomMetres": 10.53,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 0,
+                "widthMetres": 2.9816459848050343,
+                "bottomMetres": 13.98,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 0,
+                "widthMetres": 2.9816459848050343,
+                "bottomMetres": 17.43,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 4.051645984805035,
+                "widthMetres": 4.48,
+                "bottomMetres": 7.08,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 4.051645984805035,
+                "widthMetres": 4.48,
+                "bottomMetres": 10.53,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 4.051645984805035,
+                "widthMetres": 4.48,
+                "bottomMetres": 13.98,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 4.051645984805035,
+                "widthMetres": 4.48,
+                "bottomMetres": 17.43,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 9.601645984805032,
+                "widthMetres": 4.48,
+                "bottomMetres": 7.08,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 9.601645984805032,
+                "widthMetres": 4.48,
+                "bottomMetres": 10.53,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 9.601645984805032,
+                "widthMetres": 4.48,
+                "bottomMetres": 13.98,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 9.601645984805032,
+                "widthMetres": 4.48,
+                "bottomMetres": 17.43,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 15.151645984805032,
+                "widthMetres": 4.48,
+                "bottomMetres": 10.53,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 15.151645984805032,
+                "widthMetres": 4.48,
+                "bottomMetres": 13.98,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 15.151645984805032,
+                "widthMetres": 4.48,
+                "bottomMetres": 17.43,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 20.701645984805033,
+                "widthMetres": 4.479999999999997,
+                "bottomMetres": 10.53,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 20.701645984805033,
+                "widthMetres": 4.479999999999997,
+                "bottomMetres": 13.98,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 20.701645984805033,
+                "widthMetres": 4.479999999999997,
+                "bottomMetres": 17.43,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              }
+            ],
+            "groundEntries": [
+              {
+                "xMetres": 0,
+                "bottomMetres": 0.24,
+                "widthMetres": 2.9816459848050343,
+                "heightMetres": 3.5,
+                "kind": "glazed",
+                "panes": 4,
+                "frameColor": "#202b2e",
+                "crossbarMetres": 3.9
+              },
+              {
+                "xMetres": 4.051645984805035,
+                "bottomMetres": 0.24,
+                "widthMetres": 4.48,
+                "heightMetres": 3.5,
+                "kind": "glazed",
+                "panes": 4,
+                "frameColor": "#202b2e",
+                "crossbarMetres": 3.9
+              },
+              {
+                "xMetres": 9.601645984805032,
+                "bottomMetres": 0.24,
+                "widthMetres": 4.48,
+                "heightMetres": 3.5,
+                "kind": "glazed",
+                "panes": 4,
+                "frameColor": "#202b2e",
+                "crossbarMetres": 3.9
+              },
+              {
+                "xMetres": 15.151645984805032,
+                "bottomMetres": 0.24,
+                "widthMetres": 4.48,
+                "heightMetres": 6.8,
+                "kind": "glazed",
+                "panes": 4,
+                "frameColor": "#202b2e",
+                "crossbarMetres": 3.9
+              },
+              {
+                "xMetres": 20.701645984805033,
+                "bottomMetres": 0.24,
+                "widthMetres": 4.479999999999997,
+                "heightMetres": 6.8,
+                "kind": "glazed",
+                "panes": 4,
+                "frameColor": "#202b2e",
+                "crossbarMetres": 3.9
+              }
+            ],
+            "recessGroups": [
+              {
+                "xMetres": 0,
+                "widthMetres": 2.9816459848050343,
+                "bottomMetres": 15.6,
+                "heightMetres": 1.83,
+                "depthMetres": 1.15
+              },
+              {
+                "xMetres": 4.051645984805035,
+                "widthMetres": 4.48,
+                "bottomMetres": 0.1,
+                "heightMetres": 3.9,
+                "depthMetres": 0.85
+              }
+            ],
+            "topBandHeightMetres": 0.22,
+            "topBandColor": "#d6d8d0",
+            "physicalBands": [],
+            "sourceGroups": [
+              {
+                "xMetres": 0,
+                "widthMetres": 2.9816459848050343,
+                "globalXMetres": 9.45,
+                "globalWidthMetres": 4.48,
+                "globalIndex": 2,
+                "whole": false
+              },
+              {
+                "xMetres": 4.051645984805035,
+                "widthMetres": 4.48,
+                "globalXMetres": 15,
+                "globalWidthMetres": 4.48,
+                "globalIndex": 3,
+                "whole": true
+              },
+              {
+                "xMetres": 9.601645984805032,
+                "widthMetres": 4.48,
+                "globalXMetres": 20.549999999999997,
+                "globalWidthMetres": 4.48,
+                "globalIndex": 4,
+                "whole": true
+              },
+              {
+                "xMetres": 15.151645984805032,
+                "widthMetres": 4.48,
+                "globalXMetres": 26.099999999999998,
+                "globalWidthMetres": 4.48,
+                "globalIndex": 5,
+                "whole": true
+              },
+              {
+                "xMetres": 20.701645984805033,
+                "widthMetres": 4.479999999999997,
+                "globalXMetres": 31.65,
+                "globalWidthMetres": 4.48,
+                "globalIndex": 6,
+                "whole": true
+              }
+            ]
+          },
+          "10": {
+            "kind": "blank",
+            "windowTiers": [
+              {
+                "sillMetres": 5.25,
+                "heightMetres": 1.83,
+                "startMetres": 0.6,
+                "pitchMetres": 100,
+                "widthMetres": 4.18,
+                "clusters": [
+                  {
+                    "widthMetres": 4.18,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.18,
+                        "heightMetres": 1.83,
+                        "panes": 3
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 8.7,
+                "heightMetres": 1.83,
+                "startMetres": 0.6,
+                "pitchMetres": 100,
+                "widthMetres": 4.18,
+                "clusters": [
+                  {
+                    "widthMetres": 4.18,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.18,
+                        "heightMetres": 1.83,
+                        "panes": 3
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 12.15,
+                "heightMetres": 1.83,
+                "startMetres": 0.6,
+                "pitchMetres": 100,
+                "widthMetres": 4.18,
+                "clusters": [
+                  {
+                    "widthMetres": 4.18,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.18,
+                        "heightMetres": 1.83,
+                        "panes": 3
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 15.6,
+                "heightMetres": 1.83,
+                "startMetres": 0.6,
+                "pitchMetres": 100,
+                "widthMetres": 4.18,
+                "clusters": [
+                  {
+                    "widthMetres": 4.18,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.18,
+                        "heightMetres": 1.83,
+                        "panes": 3
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 5.25,
+                "heightMetres": 1.83,
+                "startMetres": 5.92,
+                "pitchMetres": 100,
+                "widthMetres": 4.18,
+                "clusters": [
+                  {
+                    "widthMetres": 4.18,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.18,
+                        "heightMetres": 1.83,
+                        "panes": 3
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 3.9799999999999995,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 8.7,
+                "heightMetres": 1.83,
+                "startMetres": 5.92,
+                "pitchMetres": 100,
+                "widthMetres": 4.18,
+                "clusters": [
+                  {
+                    "widthMetres": 4.18,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.18,
+                        "heightMetres": 1.83,
+                        "panes": 3
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 3.9799999999999995,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 12.15,
+                "heightMetres": 1.83,
+                "startMetres": 5.92,
+                "pitchMetres": 100,
+                "widthMetres": 4.18,
+                "clusters": [
+                  {
+                    "widthMetres": 4.18,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.18,
+                        "heightMetres": 1.83,
+                        "panes": 3
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 3.9799999999999995,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 15.6,
+                "heightMetres": 1.83,
+                "startMetres": 5.92,
+                "pitchMetres": 100,
+                "widthMetres": 4.18,
+                "clusters": [
+                  {
+                    "widthMetres": 4.18,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.18,
+                        "heightMetres": 1.83,
+                        "panes": 3
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 3.9799999999999995,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 5.25,
+                "heightMetres": 1.83,
+                "startMetres": 11.24,
+                "pitchMetres": 100,
+                "widthMetres": 4.18,
+                "clusters": [
+                  {
+                    "widthMetres": 4.18,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.18,
+                        "heightMetres": 1.83,
+                        "panes": 3
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 3.9799999999999995,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 8.7,
+                "heightMetres": 1.83,
+                "startMetres": 11.24,
+                "pitchMetres": 100,
+                "widthMetres": 4.18,
+                "clusters": [
+                  {
+                    "widthMetres": 4.18,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.18,
+                        "heightMetres": 1.83,
+                        "panes": 3
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 3.9799999999999995,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 12.15,
+                "heightMetres": 1.83,
+                "startMetres": 11.24,
+                "pitchMetres": 100,
+                "widthMetres": 4.18,
+                "clusters": [
+                  {
+                    "widthMetres": 4.18,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.18,
+                        "heightMetres": 1.83,
+                        "panes": 3
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 3.9799999999999995,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 15.6,
+                "heightMetres": 1.83,
+                "startMetres": 11.24,
+                "pitchMetres": 100,
+                "widthMetres": 4.18,
+                "clusters": [
+                  {
+                    "widthMetres": 4.18,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.18,
+                        "heightMetres": 1.83,
+                        "panes": 3
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 3.9799999999999995,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 5.25,
+                "heightMetres": 1.83,
+                "startMetres": 16.560000000000002,
+                "pitchMetres": 100,
+                "widthMetres": 4.18,
+                "clusters": [
+                  {
+                    "widthMetres": 4.18,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.18,
+                        "heightMetres": 1.83,
+                        "panes": 3
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 3.9799999999999995,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 8.7,
+                "heightMetres": 1.83,
+                "startMetres": 16.560000000000002,
+                "pitchMetres": 100,
+                "widthMetres": 4.18,
+                "clusters": [
+                  {
+                    "widthMetres": 4.18,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.18,
+                        "heightMetres": 1.83,
+                        "panes": 3
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 3.9799999999999995,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 12.15,
+                "heightMetres": 1.83,
+                "startMetres": 16.560000000000002,
+                "pitchMetres": 100,
+                "widthMetres": 4.18,
+                "clusters": [
+                  {
+                    "widthMetres": 4.18,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.18,
+                        "heightMetres": 1.83,
+                        "panes": 3
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 3.9799999999999995,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 15.6,
+                "heightMetres": 1.83,
+                "startMetres": 16.560000000000002,
+                "pitchMetres": 100,
+                "widthMetres": 4.18,
+                "clusters": [
+                  {
+                    "widthMetres": 4.18,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.18,
+                        "heightMetres": 1.83,
+                        "panes": 3
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 3.9799999999999995,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 5.25,
+                "heightMetres": 1.83,
+                "startMetres": 21.880000000000003,
+                "pitchMetres": 100,
+                "widthMetres": 4.18,
+                "clusters": [
+                  {
+                    "widthMetres": 4.18,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.18,
+                        "heightMetres": 1.83,
+                        "panes": 3
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 3.9799999999999995,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 8.7,
+                "heightMetres": 1.83,
+                "startMetres": 21.880000000000003,
+                "pitchMetres": 100,
+                "widthMetres": 4.18,
+                "clusters": [
+                  {
+                    "widthMetres": 4.18,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.18,
+                        "heightMetres": 1.83,
+                        "panes": 3
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 3.9799999999999995,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              },
+              {
+                "sillMetres": 12.15,
+                "heightMetres": 1.83,
+                "startMetres": 21.880000000000003,
+                "pitchMetres": 100,
+                "widthMetres": 4.18,
+                "clusters": [
+                  {
+                    "widthMetres": 4.18,
+                    "openings": [
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 4.18,
+                        "heightMetres": 1.83,
+                        "panes": 3
+                      },
+                      {
+                        "offsetMetres": 0,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      },
+                      {
+                        "offsetMetres": 3.9799999999999995,
+                        "widthMetres": 0.2,
+                        "sillOffsetMetres": -0.4,
+                        "heightMetres": 0.55,
+                        "panes": 1
+                      }
+                    ]
+                  }
+                ],
+                "count": 1,
+                "requiredClusterCount": 1,
+                "endMarginMetres": -0.01
+              }
+            ],
+            "bands": [
+              {
+                "xMetres": 0.6,
+                "widthMetres": 4.18,
+                "bottomMetres": 7.08,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 0.6,
+                "widthMetres": 4.18,
+                "bottomMetres": 10.53,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 0.6,
+                "widthMetres": 4.18,
+                "bottomMetres": 13.98,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 0.6,
+                "widthMetres": 4.18,
+                "bottomMetres": 17.43,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 5.92,
+                "widthMetres": 4.18,
+                "bottomMetres": 7.08,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 5.92,
+                "widthMetres": 4.18,
+                "bottomMetres": 10.53,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 5.92,
+                "widthMetres": 4.18,
+                "bottomMetres": 13.98,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 5.92,
+                "widthMetres": 4.18,
+                "bottomMetres": 17.43,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 11.24,
+                "widthMetres": 4.18,
+                "bottomMetres": 7.08,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 11.24,
+                "widthMetres": 4.18,
+                "bottomMetres": 10.53,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 11.24,
+                "widthMetres": 4.18,
+                "bottomMetres": 13.98,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 11.24,
+                "widthMetres": 4.18,
+                "bottomMetres": 17.43,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 16.560000000000002,
+                "widthMetres": 4.18,
+                "bottomMetres": 7.08,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 16.560000000000002,
+                "widthMetres": 4.18,
+                "bottomMetres": 10.53,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 16.560000000000002,
+                "widthMetres": 4.18,
+                "bottomMetres": 13.98,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 16.560000000000002,
+                "widthMetres": 4.18,
+                "bottomMetres": 17.43,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 21.880000000000003,
+                "widthMetres": 4.18,
+                "bottomMetres": 7.08,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 21.880000000000003,
+                "widthMetres": 4.18,
+                "bottomMetres": 10.53,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 21.880000000000003,
+                "widthMetres": 4.18,
+                "bottomMetres": 13.98,
+                "heightMetres": 0.16,
+                "color": "#d6d8d0"
+              },
+              {
+                "xMetres": 21.05,
+                "widthMetres": 5.6,
+                "bottomMetres": 16.15,
+                "heightMetres": 0.17,
+                "color": "#d6d8d0"
+              }
+            ],
+            "groundEntries": [
+              {
+                "xMetres": 0.6,
+                "bottomMetres": 0.24,
+                "widthMetres": 4.18,
+                "heightMetres": 3.5,
+                "kind": "glazed",
+                "panes": 3,
+                "frameColor": "#202b2e",
+                "crossbarMetres": 3.9
+              },
+              {
+                "xMetres": 5.92,
+                "bottomMetres": 0.24,
+                "widthMetres": 4.18,
+                "heightMetres": 3.5,
+                "kind": "glazed",
+                "panes": 3,
+                "frameColor": "#202b2e",
+                "crossbarMetres": 3.9
+              },
+              {
+                "xMetres": 11.24,
+                "bottomMetres": 0.24,
+                "widthMetres": 4.18,
+                "heightMetres": 3.5,
+                "kind": "glazed",
+                "panes": 3,
+                "frameColor": "#202b2e",
+                "crossbarMetres": 3.9
+              },
+              {
+                "xMetres": 16.560000000000002,
+                "bottomMetres": 0.24,
+                "widthMetres": 4.18,
+                "heightMetres": 3.5,
+                "kind": "glazed",
+                "panes": 3,
+                "frameColor": "#202b2e",
+                "crossbarMetres": 3.9
+              },
+              {
+                "xMetres": 21.880000000000003,
+                "bottomMetres": 0.24,
+                "widthMetres": 4.18,
+                "heightMetres": 3.5,
+                "kind": "glazed",
+                "panes": 3,
+                "frameColor": "#202b2e",
+                "crossbarMetres": 3.9
+              }
+            ],
+            "recessGroups": [],
+            "topBandHeightMetres": 0.22,
+            "topBandColor": "#d6d8d0",
+            "physicalBands": [],
+            "sourceGroups": [
+              {
+                "xMetres": 0.6,
+                "widthMetres": 4.18,
+                "globalXMetres": 0.6,
+                "globalWidthMetres": 4.18,
+                "globalIndex": 0,
+                "whole": true
+              },
+              {
+                "xMetres": 5.92,
+                "widthMetres": 4.18,
+                "globalXMetres": 5.92,
+                "globalWidthMetres": 4.18,
+                "globalIndex": 1,
+                "whole": true
+              },
+              {
+                "xMetres": 11.24,
+                "widthMetres": 4.18,
+                "globalXMetres": 11.24,
+                "globalWidthMetres": 4.18,
+                "globalIndex": 2,
+                "whole": true
+              },
+              {
+                "xMetres": 16.560000000000002,
+                "widthMetres": 4.18,
+                "globalXMetres": 16.560000000000002,
+                "globalWidthMetres": 4.18,
+                "globalIndex": 3,
+                "whole": true
+              },
+              {
+                "xMetres": 21.880000000000003,
+                "widthMetres": 4.18,
+                "globalXMetres": 21.880000000000003,
+                "globalWidthMetres": 4.18,
+                "globalIndex": 4,
+                "whole": true
+              }
+            ]
+          }
+        }
+      },
+      "galleryFrontage": {
+        "target": [
+          4.892849363636364,
+          52.36422636363636
+        ],
+        "cameraBearing": 257,
+        "distanceMetres": 46,
+        "targetHeightMetres": 11,
+        "referenceImages": [
+          "./ordinary-buildings-data/references/0363100012167975/wide-0363100012167975-2025-01901-einitial.jpg"
+        ]
+      },
+      "generationMilliseconds": 26,
+      "reviewState": "Verified source comparison and in-game placement.",
+      "sourceCommit": "26f2679530ae6a0a9fe362c0043a8941887efd58",
+      "sourceDiscoveryPath": "experiments/canal-belt-continuation-20261007/next-box-discovery-13/0363100012167975",
+      "gallerySecondary": {
+        "target": [
+          4.892849363636364,
+          52.36422636363636
+        ],
+        "cameraBearing": 170,
+        "distanceMetres": 42,
+        "targetHeightMetres": 11,
+        "referenceImages": [
+          "./ordinary-buildings-data/references/0363100012167975/wide-0363100012167975-2025-01085-einitial.jpg"
+        ]
+      },
+      "treatment": "landmark",
+      "updatedAt": "2026-10-08T00:02:22.785948+00:00"
     }
   ]
 }
