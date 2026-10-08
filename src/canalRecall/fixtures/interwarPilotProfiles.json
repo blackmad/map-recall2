@@ -1,0 +1,1216 @@
+{
+  "schemaVersion": 1,
+  "revision": "24fbf8cad9701025",
+  "profiles": [
+    {
+      "id": "jan-evertsen-canopy-candidate-native-pair",
+      "streetName": "Jan Evertsenstraat",
+      "revision": "current-source-ground-portico-pilot-v5",
+      "segment": [
+        [
+          4.851836,
+          52.37036
+        ],
+        [
+          4.852514,
+          52.37048
+        ]
+      ],
+      "side": 1,
+      "reachM": 15,
+      "confidence": 0.8,
+      "assemblyM": 6,
+      "status": "pilot",
+      "recipes": [
+        {
+          "weight": 1,
+          "priority": 0,
+          "yearMin": 1920,
+          "yearMax": 1940,
+          "heightMin": 10,
+          "heightMax": 20,
+          "frontageMin": 5,
+          "frontageMax": 7,
+          "recipe": {
+            "family": "masonry",
+            "period": "school",
+            "confidence": 0.8,
+            "wallHex": "#76564c",
+            "frameHex": "#e5e5d8",
+            "frameColor": "pale",
+            "wallMaterial": "brick",
+            "balconyPolicy": "assembly-only",
+            "detailPolicy": "architectural",
+            "trim": {
+              "frames": 0,
+              "lintels": 0,
+              "cornice": 0,
+              "courses": 0,
+              "quoins": 0,
+              "arches": 0
+            },
+            "shopCanopy": {
+              "kind": "continuous-rigid",
+              "projectionM": 0.85,
+              "fasciaHeightM": 0.24,
+              "fasciaHex": "#dedbd2",
+              "edgeHex": "#454b49",
+              "datumOffsetM": -0.4,
+              "glassBlockBand": {
+                "heightM": 0.8,
+                "cellM": 0.2
+              }
+            },
+            "groundScale": 1.1333333333333333,
+            "roofFamily": "flat-parapet",
+            "interwarFrontage": {
+              "residentialRows": 3,
+              "groupPitchM": 2.95,
+              "groupWidthM": 2.15,
+              "windowHeightM": 1.8,
+              "firstSillM": 1.15,
+              "rowPitchM": 2.9,
+              "projectionSequence": [
+                "left",
+                "flat",
+                "right"
+              ],
+              "projectionM": 0.35,
+              "frameWidthM": 0.065,
+              "centralMullionM": 0.18,
+              "transomFraction": 0.72,
+              "frameHex": "#e5e5d8",
+              "capHex": "#454b49"
+            },
+            "interwarGround": {
+              "entranceSide": "left",
+              "entranceWidthM": 1.05,
+              "recessDepthM": 0.65,
+              "edgePierM": 0.15,
+              "separatorPierM": 0.2,
+              "shopSillM": 0.12,
+              "openingHeadM": 2.7,
+              "shopPanes": 3,
+              "shopDoorPane": 0,
+              "frameWidthM": 0.065,
+              "shopTransomFraction": 0.78,
+              "frameHex": "#e5e5d8"
+            }
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "id": "user-streetview-shop-canopy",
+          "kind": "user-reference",
+          "sha256": "0bcad915f2d04fd581aee5a1685ef9edd58d29309c664d105b034af79c8f4ac4",
+          "inference": "agent-visual-review",
+          "quality": 0.8,
+          "notes": "User crop shows long rigid dark rounded canopy edge and pale fascia below masonry. Candidate identity/address unconfirmed; upper facade and roof cropped. No visual acceptance; approximate street axis."
+        },
+        {
+          "id": "jan-evertsen-current-124-126-20250926",
+          "kind": "municipal-panorama",
+          "captureDate": "2025-09-26T09:08:16Z",
+          "panoramaId": "2025_09_26_08_31_34_00859",
+          "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_09_26_08_31_34_00859/equirectangular/panorama_4000.jpg",
+          "sha256": "e37ead2377de9a228a19d46188e658eb9eaf68a85ded4eb31157e5b279593846",
+          "inference": "agent-visual-review",
+          "quality": 0.9,
+          "notes": "2025 source supports continuous canopy and shallow glass-block band. Official BAG resolves exact124/126. Band dimensions procedural approximate; upper projecting window groups and recessed portico remain capability gaps. Shared private source pack streets/jan-evertsen-canopy-rollout-20261006/."
+        }
+      ],
+      "buildingIds": [
+        "NL.IMBAG.Pand.0363100012118917",
+        "NL.IMBAG.Pand.0363100012096187"
+      ],
+      "frontages": [
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012096187",
+          "recipeIndex": 0,
+          "frontage": {
+            "start": [
+              4.852090009565,
+              52.370490979569
+            ],
+            "end": [
+              4.852174990435,
+              52.370506020431
+            ],
+            "widthM": 6.010429
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012118917",
+          "recipeIndex": 0,
+          "frontage": {
+            "start": [
+              4.852005971305,
+              52.370476061293
+            ],
+            "end": [
+              4.852090028695,
+              52.370490938707
+            ],
+            "widthM": 5.945129
+          }
+        }
+      ]
+    }
+  ],
+  "streetFrontPaths": [
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.899456,
+          52.372114
+        ],
+        [
+          4.899174,
+          52.371768
+        ],
+        [
+          4.898948,
+          52.371522
+        ],
+        [
+          4.898754,
+          52.37131
+        ],
+        [
+          4.898641,
+          52.371187
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.898974,
+          52.370933
+        ],
+        [
+          4.899647,
+          52.371647
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.899509,
+          52.374721
+        ],
+        [
+          4.899598,
+          52.374698
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.898277,
+          52.373969
+        ],
+        [
+          4.898186,
+          52.373933
+        ],
+        [
+          4.898109,
+          52.373896
+        ],
+        [
+          4.897932,
+          52.373746
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.897619,
+          52.373084
+        ],
+        [
+          4.898186,
+          52.373522
+        ],
+        [
+          4.898596,
+          52.373841
+        ],
+        [
+          4.898636,
+          52.373878
+        ],
+        [
+          4.898671,
+          52.373912
+        ],
+        [
+          4.898885,
+          52.374076
+        ],
+        [
+          4.899022,
+          52.374183
+        ],
+        [
+          4.899176,
+          52.374314
+        ],
+        [
+          4.899598,
+          52.374698
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.899287,
+          52.374773
+        ],
+        [
+          4.899206,
+          52.374795
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.899206,
+          52.374795
+        ],
+        [
+          4.899072,
+          52.374663
+        ],
+        [
+          4.898968,
+          52.37456
+        ],
+        [
+          4.89894,
+          52.374532
+        ],
+        [
+          4.89888,
+          52.374473
+        ],
+        [
+          4.898849,
+          52.374441
+        ],
+        [
+          4.898826,
+          52.374407
+        ],
+        [
+          4.898766,
+          52.374341
+        ],
+        [
+          4.89863,
+          52.374217
+        ],
+        [
+          4.89856,
+          52.37416
+        ],
+        [
+          4.898423,
+          52.374062
+        ],
+        [
+          4.898349,
+          52.374013
+        ],
+        [
+          4.898277,
+          52.373969
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.899479,
+          52.375076
+        ],
+        [
+          4.899206,
+          52.374795
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.899598,
+          52.374698
+        ],
+        [
+          4.900164,
+          52.375237
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.900072,
+          52.374533
+        ],
+        [
+          4.899175,
+          52.37373
+        ],
+        [
+          4.898763,
+          52.373362
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.897716,
+          52.372407
+        ],
+        [
+          4.896849,
+          52.371586
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.897522,
+          52.371978
+        ],
+        [
+          4.897804,
+          52.372237
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.898957,
+          52.3733
+        ],
+        [
+          4.899405,
+          52.373669
+        ],
+        [
+          4.899977,
+          52.374204
+        ],
+        [
+          4.900117,
+          52.374358
+        ],
+        [
+          4.900245,
+          52.374484
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.900449,
+          52.374878
+        ],
+        [
+          4.900072,
+          52.374533
+        ]
+      ]
+    },
+    {
+      "highway": "cycleway",
+      "points": [
+        [
+          4.899206,
+          52.374795
+        ],
+        [
+          4.899164,
+          52.37481
+        ],
+        [
+          4.899155,
+          52.374814
+        ],
+        [
+          4.898357,
+          52.375102
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.89819,
+          52.371758
+        ],
+        [
+          4.897704,
+          52.371917
+        ],
+        [
+          4.897522,
+          52.371978
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.898948,
+          52.371522
+        ],
+        [
+          4.89819,
+          52.371758
+        ]
+      ]
+    },
+    {
+      "highway": "cycleway",
+      "points": [
+        [
+          4.898156,
+          52.371149
+        ],
+        [
+          4.897777,
+          52.371248
+        ],
+        [
+          4.897019,
+          52.371449
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.897777,
+          52.371248
+        ],
+        [
+          4.898038,
+          52.371566
+        ],
+        [
+          4.89819,
+          52.371758
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.898636,
+          52.373878
+        ],
+        [
+          4.89856,
+          52.373887
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.898636,
+          52.373878
+        ],
+        [
+          4.899175,
+          52.37373
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.898636,
+          52.373878
+        ],
+        [
+          4.899175,
+          52.37373
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.900072,
+          52.374533
+        ],
+        [
+          4.900115,
+          52.374521
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.89888,
+          52.374473
+        ],
+        [
+          4.898835,
+          52.374491
+        ],
+        [
+          4.898788,
+          52.374509
+        ],
+        [
+          4.898684,
+          52.374566
+        ],
+        [
+          4.89859,
+          52.374607
+        ],
+        [
+          4.898502,
+          52.374629
+        ],
+        [
+          4.898402,
+          52.374647
+        ],
+        [
+          4.898243,
+          52.374665
+        ],
+        [
+          4.89809,
+          52.374675
+        ],
+        [
+          4.897932,
+          52.374679
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.898277,
+          52.373969
+        ],
+        [
+          4.898221,
+          52.373991
+        ],
+        [
+          4.898144,
+          52.374001
+        ],
+        [
+          4.898054,
+          52.374006
+        ],
+        [
+          4.897952,
+          52.374006
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.898343,
+          52.373949
+        ],
+        [
+          4.898277,
+          52.373969
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.900253,
+          52.374116
+        ],
+        [
+          4.899977,
+          52.374204
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.900158,
+          52.37348
+        ],
+        [
+          4.899405,
+          52.373669
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.899174,
+          52.371768
+        ],
+        [
+          4.897804,
+          52.372237
+        ]
+      ]
+    },
+    {
+      "highway": "tertiary",
+      "points": [
+        [
+          4.850632,
+          52.370043
+        ],
+        [
+          4.851249,
+          52.370144
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.853558,
+          52.370016
+        ],
+        [
+          4.852768,
+          52.369878
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.852263,
+          52.36979
+        ],
+        [
+          4.852128,
+          52.370125
+        ]
+      ]
+    },
+    {
+      "highway": "tertiary",
+      "points": [
+        [
+          4.853667,
+          52.370678
+        ],
+        [
+          4.85157,
+          52.370321
+        ],
+        [
+          4.851199,
+          52.370256
+        ]
+      ]
+    },
+    {
+      "highway": "tertiary",
+      "points": [
+        [
+          4.851249,
+          52.370144
+        ],
+        [
+          4.851615,
+          52.37021
+        ],
+        [
+          4.852051,
+          52.370291
+        ],
+        [
+          4.853711,
+          52.370586
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.899175,
+          52.37373
+        ],
+        [
+          4.899223,
+          52.373713
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.89934,
+          52.373682
+        ],
+        [
+          4.899405,
+          52.373669
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.899072,
+          52.374663
+        ],
+        [
+          4.899032,
+          52.374676
+        ],
+        [
+          4.898507,
+          52.374843
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.899509,
+          52.374721
+        ],
+        [
+          4.899287,
+          52.374773
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.89856,
+          52.373887
+        ],
+        [
+          4.898343,
+          52.373949
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.898306,
+          52.373925
+        ],
+        [
+          4.898343,
+          52.373949
+        ],
+        [
+          4.898383,
+          52.373973
+        ],
+        [
+          4.898596,
+          52.373917
+        ],
+        [
+          4.89856,
+          52.373887
+        ],
+        [
+          4.898524,
+          52.373862
+        ],
+        [
+          4.898306,
+          52.373925
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.898306,
+          52.373925
+        ],
+        [
+          4.898524,
+          52.373862
+        ],
+        [
+          4.89856,
+          52.373887
+        ],
+        [
+          4.898596,
+          52.373917
+        ],
+        [
+          4.898383,
+          52.373973
+        ],
+        [
+          4.898343,
+          52.373949
+        ],
+        [
+          4.898306,
+          52.373925
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.898343,
+          52.373949
+        ],
+        [
+          4.898277,
+          52.373969
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.899223,
+          52.373713
+        ],
+        [
+          4.89934,
+          52.373682
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.899351,
+          52.3737
+        ],
+        [
+          4.899322,
+          52.373666
+        ],
+        [
+          4.899206,
+          52.373696
+        ],
+        [
+          4.899247,
+          52.373724
+        ],
+        [
+          4.899351,
+          52.3737
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.899206,
+          52.373696
+        ],
+        [
+          4.899322,
+          52.373666
+        ],
+        [
+          4.899351,
+          52.3737
+        ],
+        [
+          4.899247,
+          52.373724
+        ],
+        [
+          4.899206,
+          52.373696
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.900213,
+          52.374491
+        ],
+        [
+          4.900115,
+          52.374521
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.900179,
+          52.374462
+        ],
+        [
+          4.900097,
+          52.37449
+        ],
+        [
+          4.900153,
+          52.374546
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.900097,
+          52.37449
+        ],
+        [
+          4.900179,
+          52.374462
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.900153,
+          52.374546
+        ],
+        [
+          4.900097,
+          52.37449
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.899598,
+          52.374698
+        ],
+        [
+          4.899719,
+          52.374656
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.899747,
+          52.374647
+        ],
+        [
+          4.900072,
+          52.374533
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.899719,
+          52.374656
+        ],
+        [
+          4.899747,
+          52.374647
+        ]
+      ]
+    },
+    {
+      "highway": "cycleway",
+      "points": [
+        [
+          4.853647,
+          52.370721
+        ],
+        [
+          4.851477,
+          52.370333
+        ]
+      ]
+    },
+    {
+      "highway": "cycleway",
+      "points": [
+        [
+          4.851477,
+          52.370333
+        ],
+        [
+          4.851262,
+          52.370294
+        ],
+        [
+          4.851173,
+          52.370314
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.898641,
+          52.371187
+        ],
+        [
+          4.898575,
+          52.371207
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.898575,
+          52.371207
+        ],
+        [
+          4.898552,
+          52.371213
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.898552,
+          52.371213
+        ],
+        [
+          4.898349,
+          52.371269
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.900449,
+          52.374878
+        ],
+        [
+          4.900072,
+          52.374533
+        ]
+      ]
+    },
+    {
+      "highway": "cycleway",
+      "points": [
+        [
+          4.850641,
+          52.370017
+        ],
+        [
+          4.851296,
+          52.370124
+        ]
+      ]
+    },
+    {
+      "highway": "busway",
+      "points": [
+        [
+          4.851228,
+          52.370203
+        ],
+        [
+          4.853688,
+          52.370634
+        ]
+      ]
+    },
+    {
+      "highway": "cycleway",
+      "points": [
+        [
+          4.851296,
+          52.370124
+        ],
+        [
+          4.853734,
+          52.370545
+        ]
+      ]
+    }
+  ]
+}

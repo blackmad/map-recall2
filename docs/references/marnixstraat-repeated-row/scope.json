@@ -1,0 +1,1974 @@
+{
+  "schemaVersion": 1,
+  "canonicalId": "marnixstraat-263-repeated-row",
+  "recordedAt": "2026-10-08T20:09:15.072558+00:00",
+  "status": "implemented opt-in native row; CPU architectural review passes; live-game/GPU/private source publication pending",
+  "viewpoint": {
+    "userConfirmedAddress": "Marnixstraat263",
+    "bagPandId": "0363100012174932",
+    "coordinates": [
+      4.8770984,
+      52.3752671
+    ],
+    "headingDegrees": 23.32,
+    "captureDate": "May2024",
+    "source": "User Google Street View screenshot",
+    "interpretation": "The263 address labels the camera vicinity/right side, not the photographed repeated left row."
+  },
+  "scope": {
+    "streetSide": "west/northwest of Marnixstraat, looking northeast",
+    "parentsInSouthToNorthOrder": [
+      "0363100012174914",
+      "0363100012168510",
+      "0363100012173514",
+      "0363100012173515",
+      "0363100012174104",
+      "0363100012174105",
+      "0363100012174935",
+      "0363100012173530"
+    ],
+    "frontageEndpoints": [
+      [
+        4.877058,
+        52.375474
+      ],
+      [
+        4.87761,
+        52.376349
+      ]
+    ],
+    "municipalMonumentNumber": 204041,
+    "municipalMonumentEvidence": {
+      "source": "scripts/data/amsterdam-monuments.json",
+      "sourceApi": "https://api.data.amsterdam.nl/v1/monumenten",
+      "cachedFetchedDate": "2026-09-29",
+      "privateSourceCopy": "models/_unassigned/files/amsterdam-monuments.json",
+      "exactParentsMatch": true,
+      "status": "Gemeentelijk monument",
+      "architect": "Greef, B. de",
+      "yearFrom": "1876",
+      "yearTo": "1878",
+      "function": "wonen",
+      "descriptionCapture": "artifacts/marnixstraat-sources/raw/monument-204041.json"
+    },
+    "addressRange": "Municipal monument title: Marnixstraat124-138, NieuweTuinstraat3. Individual address-to-parent mapping remains pending; no ordering inferred.",
+    "geographicBoundaryNote": "Eight connected eastern frontage parents form one continuous row. Separate western/rear chain excluded. Southern and northern ends meet transverse street gaps."
+  },
+  "parents": [
+    {
+      "bagPandId": "0363100012174914",
+      "installedId": "NL.IMBAG.Pand.0363100012174914",
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5384.geojson.gz",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877128,
+              52.375585
+            ],
+            [
+              4.877018,
+              52.375611
+            ],
+            [
+              4.876948,
+              52.375499
+            ],
+            [
+              4.877058,
+              52.375474
+            ],
+            [
+              4.877128,
+              52.375585
+            ]
+          ]
+        ]
+      },
+      "installedHeightMetres": 15.31,
+      "heightInterpretation": "Installed coarse shell height only; not surveyed facade tier/gable height.",
+      "marnixstraatFrontage": {
+        "vertices": [
+          [
+            4.877058,
+            52.375474
+          ],
+          [
+            4.877128,
+            52.375585
+          ]
+        ],
+        "lengthMetres": 13.227,
+        "crossStreetMetres": -10.799,
+        "outwardNormalEastNorth": [
+          0.9332032870750163,
+          -0.3593488903452808
+        ]
+      },
+      "architecturalModuleNote": "Municipal register: one approximately13m-wide three-window-axis house per BAG parent, central projecting staircase bay with one crown. Alternating tuit/trap crowns across eight houses. Do not split into two independent canalhouse facades."
+    },
+    {
+      "bagPandId": "0363100012168510",
+      "installedId": "NL.IMBAG.Pand.0363100012168510",
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877196,
+              52.375694
+            ],
+            [
+              4.877087,
+              52.375719
+            ],
+            [
+              4.877018,
+              52.375611
+            ],
+            [
+              4.877128,
+              52.375585
+            ],
+            [
+              4.877196,
+              52.375694
+            ]
+          ]
+        ]
+      },
+      "installedHeightMetres": 15.4,
+      "heightInterpretation": "Installed coarse shell height only; not surveyed facade tier/gable height.",
+      "marnixstraatFrontage": {
+        "vertices": [
+          [
+            4.877128,
+            52.375585
+          ],
+          [
+            4.877196,
+            52.375694
+          ]
+        ],
+        "lengthMetres": 12.97,
+        "crossStreetMetres": -10.809,
+        "outwardNormalEastNorth": [
+          0.9344940858575486,
+          -0.35597865595743877
+        ]
+      },
+      "architecturalModuleNote": "Municipal register: one approximately13m-wide three-window-axis house per BAG parent, central projecting staircase bay with one crown. Alternating tuit/trap crowns across eight houses. Do not split into two independent canalhouse facades."
+    },
+    {
+      "bagPandId": "0363100012173514",
+      "installedId": "NL.IMBAG.Pand.0363100012173514",
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877265,
+              52.375802
+            ],
+            [
+              4.877156,
+              52.375828
+            ],
+            [
+              4.877087,
+              52.375719
+            ],
+            [
+              4.877196,
+              52.375694
+            ],
+            [
+              4.877265,
+              52.375802
+            ]
+          ]
+        ]
+      },
+      "installedHeightMetres": 15.49,
+      "heightInterpretation": "Installed coarse shell height only; not surveyed facade tier/gable height.",
+      "marnixstraatFrontage": {
+        "vertices": [
+          [
+            4.877196,
+            52.375694
+          ],
+          [
+            4.877265,
+            52.375802
+          ]
+        ],
+        "lengthMetres": 12.891,
+        "crossStreetMetres": -10.79,
+        "outwardNormalEastNorth": [
+          0.9316189429314365,
+          -0.36343657654577494
+        ]
+      },
+      "architecturalModuleNote": "Municipal register: one approximately13m-wide three-window-axis house per BAG parent, central projecting staircase bay with one crown. Alternating tuit/trap crowns across eight houses. Do not split into two independent canalhouse facades."
+    },
+    {
+      "bagPandId": "0363100012173515",
+      "installedId": "NL.IMBAG.Pand.0363100012173515",
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877334,
+              52.375912
+            ],
+            [
+              4.877224,
+              52.375937
+            ],
+            [
+              4.877156,
+              52.375828
+            ],
+            [
+              4.877265,
+              52.375802
+            ],
+            [
+              4.877334,
+              52.375912
+            ]
+          ]
+        ]
+      },
+      "installedHeightMetres": 15,
+      "heightInterpretation": "Installed coarse shell height only; not surveyed facade tier/gable height.",
+      "marnixstraatFrontage": {
+        "vertices": [
+          [
+            4.877265,
+            52.375802
+          ],
+          [
+            4.877334,
+            52.375912
+          ]
+        ],
+        "lengthMetres": 13.099,
+        "crossStreetMetres": -10.76,
+        "outwardNormalEastNorth": [
+          0.9338438934164017,
+          -0.3576808391973158
+        ]
+      },
+      "architecturalModuleNote": "Municipal register: one approximately13m-wide three-window-axis house per BAG parent, central projecting staircase bay with one crown. Alternating tuit/trap crowns across eight houses. Do not split into two independent canalhouse facades."
+    },
+    {
+      "bagPandId": "0363100012174104",
+      "installedId": "NL.IMBAG.Pand.0363100012174104",
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877402,
+              52.37602
+            ],
+            [
+              4.877293,
+              52.376046
+            ],
+            [
+              4.877224,
+              52.375937
+            ],
+            [
+              4.877334,
+              52.375912
+            ],
+            [
+              4.877402,
+              52.37602
+            ]
+          ]
+        ]
+      },
+      "installedHeightMetres": 15.51,
+      "heightInterpretation": "Installed coarse shell height only; not surveyed facade tier/gable height.",
+      "marnixstraatFrontage": {
+        "vertices": [
+          [
+            4.877334,
+            52.375912
+          ],
+          [
+            4.877402,
+            52.37602
+          ]
+        ],
+        "lengthMetres": 12.867,
+        "crossStreetMetres": -10.762,
+        "outwardNormalEastNorth": [
+          0.9333944734513632,
+          -0.3588519986435253
+        ]
+      },
+      "architecturalModuleNote": "Municipal register: one approximately13m-wide three-window-axis house per BAG parent, central projecting staircase bay with one crown. Alternating tuit/trap crowns across eight houses. Do not split into two independent canalhouse facades."
+    },
+    {
+      "bagPandId": "0363100012174105",
+      "installedId": "NL.IMBAG.Pand.0363100012174105",
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877471,
+              52.376129
+            ],
+            [
+              4.877362,
+              52.376155
+            ],
+            [
+              4.877293,
+              52.376046
+            ],
+            [
+              4.877402,
+              52.37602
+            ],
+            [
+              4.877471,
+              52.376129
+            ]
+          ]
+        ]
+      },
+      "installedHeightMetres": 15.57,
+      "heightInterpretation": "Installed coarse shell height only; not surveyed facade tier/gable height.",
+      "marnixstraatFrontage": {
+        "vertices": [
+          [
+            4.877402,
+            52.37602
+          ],
+          [
+            4.877471,
+            52.376129
+          ]
+        ],
+        "lengthMetres": 12.995,
+        "crossStreetMetres": -10.743,
+        "outwardNormalEastNorth": [
+          0.9327447370801666,
+          -0.36053745360121886
+        ]
+      },
+      "architecturalModuleNote": "Municipal register: one approximately13m-wide three-window-axis house per BAG parent, central projecting staircase bay with one crown. Alternating tuit/trap crowns across eight houses. Do not split into two independent canalhouse facades."
+    },
+    {
+      "bagPandId": "0363100012174935",
+      "installedId": "NL.IMBAG.Pand.0363100012174935",
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877539,
+              52.376238
+            ],
+            [
+              4.87743,
+              52.376263
+            ],
+            [
+              4.877362,
+              52.376155
+            ],
+            [
+              4.877471,
+              52.376129
+            ],
+            [
+              4.877539,
+              52.376238
+            ]
+          ]
+        ]
+      },
+      "installedHeightMetres": 15.63,
+      "heightInterpretation": "Installed coarse shell height only; not surveyed facade tier/gable height.",
+      "marnixstraatFrontage": {
+        "vertices": [
+          [
+            4.877471,
+            52.376129
+          ],
+          [
+            4.877539,
+            52.376238
+          ]
+        ],
+        "lengthMetres": 12.97,
+        "crossStreetMetres": -10.745,
+        "outwardNormalEastNorth": [
+          0.9344940858575486,
+          -0.35597865595743877
+        ]
+      },
+      "architecturalModuleNote": "Municipal register: one approximately13m-wide three-window-axis house per BAG parent, central projecting staircase bay with one crown. Alternating tuit/trap crowns across eight houses. Do not split into two independent canalhouse facades."
+    },
+    {
+      "bagPandId": "0363100012173530",
+      "installedId": "NL.IMBAG.Pand.0363100012173530",
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877469,
+              52.376382
+            ],
+            [
+              4.877432,
+              52.376324
+            ],
+            [
+              4.877463,
+              52.376316
+            ],
+            [
+              4.87743,
+              52.376263
+            ],
+            [
+              4.877539,
+              52.376238
+            ],
+            [
+              4.87761,
+              52.376349
+            ],
+            [
+              4.8775,
+              52.376375
+            ],
+            [
+              4.8775,
+              52.376375
+            ],
+            [
+              4.877469,
+              52.376382
+            ]
+          ]
+        ]
+      },
+      "installedHeightMetres": 15.54,
+      "heightInterpretation": "Installed coarse shell height only; not surveyed facade tier/gable height.",
+      "marnixstraatFrontage": {
+        "vertices": [
+          [
+            4.877539,
+            52.376238
+          ],
+          [
+            4.87761,
+            52.376349
+          ]
+        ],
+        "lengthMetres": 13.251,
+        "crossStreetMetres": -10.723,
+        "outwardNormalEastNorth": [
+          0.9314742924280115,
+          -0.3638071502124928
+        ]
+      },
+      "architecturalModuleNote": "Municipal register: one approximately13m-wide three-window-axis house per BAG parent, central projecting staircase bay with one crown. Alternating tuit/trap crowns across eight houses. Do not split into two independent canalhouse facades."
+    }
+  ],
+  "retainedNeighbors": [
+    {
+      "bagPandId": "0363100012168448",
+      "installedId": "NL.IMBAG.Pand.0363100012168448",
+      "relativeRole": "retained rear/west neighbor",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.87672,
+              52.375614
+            ],
+            [
+              4.876686,
+              52.375561
+            ],
+            [
+              4.876837,
+              52.375525
+            ],
+            [
+              4.876838,
+              52.375526
+            ],
+            [
+              4.876921,
+              52.375506
+            ],
+            [
+              4.876953,
+              52.375558
+            ],
+            [
+              4.87672,
+              52.375614
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5384.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012168449",
+      "installedId": "NL.IMBAG.Pand.0363100012168449",
+      "relativeRole": "retained rear/west neighbor",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.876968,
+              52.375732
+            ],
+            [
+              4.876817,
+              52.375769
+            ],
+            [
+              4.876785,
+              52.375717
+            ],
+            [
+              4.876935,
+              52.37568
+            ],
+            [
+              4.876968,
+              52.375732
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012168450",
+      "installedId": "NL.IMBAG.Pand.0363100012168450",
+      "relativeRole": "retained rear/west neighbor",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.876935,
+              52.37568
+            ],
+            [
+              4.876785,
+              52.375717
+            ],
+            [
+              4.876752,
+              52.375665
+            ],
+            [
+              4.876903,
+              52.375629
+            ],
+            [
+              4.876935,
+              52.37568
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012168506",
+      "installedId": "NL.IMBAG.Pand.0363100012168506",
+      "relativeRole": "retained opposite/east building",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877613,
+              52.375599
+            ],
+            [
+              4.877448,
+              52.375639
+            ],
+            [
+              4.877417,
+              52.37559
+            ],
+            [
+              4.877582,
+              52.37555
+            ],
+            [
+              4.877613,
+              52.375599
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5384.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012168507",
+      "installedId": "NL.IMBAG.Pand.0363100012168507",
+      "relativeRole": "retained rear/west neighbor",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877066,
+              52.375887
+            ],
+            [
+              4.876915,
+              52.375924
+            ],
+            [
+              4.876883,
+              52.375872
+            ],
+            [
+              4.877034,
+              52.375836
+            ],
+            [
+              4.877066,
+              52.375887
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012168508",
+      "installedId": "NL.IMBAG.Pand.0363100012168508",
+      "relativeRole": "retained rear/west neighbor",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877001,
+              52.375784
+            ],
+            [
+              4.87685,
+              52.37582
+            ],
+            [
+              4.876817,
+              52.375769
+            ],
+            [
+              4.876968,
+              52.375732
+            ],
+            [
+              4.877001,
+              52.375784
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012168509",
+      "installedId": "NL.IMBAG.Pand.0363100012168509",
+      "relativeRole": "retained rear/west neighbor",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.876883,
+              52.375872
+            ],
+            [
+              4.87685,
+              52.37582
+            ],
+            [
+              4.877028,
+              52.375778
+            ],
+            [
+              4.877061,
+              52.375829
+            ],
+            [
+              4.876883,
+              52.375872
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012169032",
+      "installedId": "NL.IMBAG.Pand.0363100012169032",
+      "relativeRole": "retained opposite/east building",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877472,
+              52.375677
+            ],
+            [
+              4.877448,
+              52.375639
+            ],
+            [
+              4.877613,
+              52.375599
+            ],
+            [
+              4.877637,
+              52.375638
+            ],
+            [
+              4.877472,
+              52.375677
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012173513",
+      "installedId": "NL.IMBAG.Pand.0363100012173513",
+      "relativeRole": "retained rear/west neighbor",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877099,
+              52.375939
+            ],
+            [
+              4.876948,
+              52.375975
+            ],
+            [
+              4.876915,
+              52.375924
+            ],
+            [
+              4.877066,
+              52.375887
+            ],
+            [
+              4.877099,
+              52.375939
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012173516",
+      "installedId": "NL.IMBAG.Pand.0363100012173516",
+      "relativeRole": "retained opposite/east building",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877609,
+              52.375746
+            ],
+            [
+              4.877527,
+              52.375765
+            ],
+            [
+              4.877472,
+              52.375677
+            ],
+            [
+              4.877554,
+              52.375658
+            ],
+            [
+              4.877609,
+              52.375746
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012173517",
+      "installedId": "NL.IMBAG.Pand.0363100012173517",
+      "relativeRole": "retained opposite/east building",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877664,
+              52.375833
+            ],
+            [
+              4.877582,
+              52.375852
+            ],
+            [
+              4.877527,
+              52.375765
+            ],
+            [
+              4.877609,
+              52.375746
+            ],
+            [
+              4.877664,
+              52.375833
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012173518",
+      "installedId": "NL.IMBAG.Pand.0363100012173518",
+      "relativeRole": "retained opposite/east building",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877774,
+              52.375857
+            ],
+            [
+              4.877609,
+              52.375896
+            ],
+            [
+              4.877582,
+              52.375852
+            ],
+            [
+              4.877747,
+              52.375813
+            ],
+            [
+              4.877774,
+              52.375857
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012173519",
+      "installedId": "NL.IMBAG.Pand.0363100012173519",
+      "relativeRole": "retained opposite/east building",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877747,
+              52.375813
+            ],
+            [
+              4.877664,
+              52.375833
+            ],
+            [
+              4.877609,
+              52.375746
+            ],
+            [
+              4.877692,
+              52.375726
+            ],
+            [
+              4.877747,
+              52.375813
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012173520",
+      "installedId": "NL.IMBAG.Pand.0363100012173520",
+      "relativeRole": "retained opposite/east building",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877801,
+              52.3759
+            ],
+            [
+              4.877636,
+              52.37594
+            ],
+            [
+              4.877609,
+              52.375896
+            ],
+            [
+              4.877774,
+              52.375857
+            ],
+            [
+              4.877801,
+              52.3759
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012173521",
+      "installedId": "NL.IMBAG.Pand.0363100012173521",
+      "relativeRole": "retained opposite/east building",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877829,
+              52.375944
+            ],
+            [
+              4.877664,
+              52.375983
+            ],
+            [
+              4.877636,
+              52.37594
+            ],
+            [
+              4.877801,
+              52.3759
+            ],
+            [
+              4.877829,
+              52.375944
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012173522",
+      "installedId": "NL.IMBAG.Pand.0363100012173522",
+      "relativeRole": "retained opposite/east building",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877692,
+              52.375726
+            ],
+            [
+              4.877609,
+              52.375746
+            ],
+            [
+              4.877554,
+              52.375658
+            ],
+            [
+              4.877637,
+              52.375638
+            ],
+            [
+              4.877692,
+              52.375726
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012173524",
+      "installedId": "NL.IMBAG.Pand.0363100012173524",
+      "relativeRole": "retained opposite/east building",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877912,
+              52.376077
+            ],
+            [
+              4.877748,
+              52.376116
+            ],
+            [
+              4.877692,
+              52.376027
+            ],
+            [
+              4.877856,
+              52.375988
+            ],
+            [
+              4.877912,
+              52.376077
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012173525",
+      "installedId": "NL.IMBAG.Pand.0363100012173525",
+      "relativeRole": "retained opposite/east building",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877966,
+              52.376164
+            ],
+            [
+              4.877885,
+              52.376184
+            ],
+            [
+              4.87783,
+              52.376096
+            ],
+            [
+              4.877912,
+              52.376077
+            ],
+            [
+              4.877966,
+              52.376164
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012173526",
+      "installedId": "NL.IMBAG.Pand.0363100012173526",
+      "relativeRole": "retained opposite/east building",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877885,
+              52.376184
+            ],
+            [
+              4.877803,
+              52.376203
+            ],
+            [
+              4.877748,
+              52.376116
+            ],
+            [
+              4.87783,
+              52.376096
+            ],
+            [
+              4.877885,
+              52.376184
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012173527",
+      "installedId": "NL.IMBAG.Pand.0363100012173527",
+      "relativeRole": "retained rear/west neighbor",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877325,
+              52.376298
+            ],
+            [
+              4.877174,
+              52.376334
+            ],
+            [
+              4.877142,
+              52.376282
+            ],
+            [
+              4.877293,
+              52.376246
+            ],
+            [
+              4.877325,
+              52.376298
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012173528",
+      "installedId": "NL.IMBAG.Pand.0363100012173528",
+      "relativeRole": "retained rear/west neighbor",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877357,
+              52.376349
+            ],
+            [
+              4.877207,
+              52.376385
+            ],
+            [
+              4.877174,
+              52.376334
+            ],
+            [
+              4.877325,
+              52.376298
+            ],
+            [
+              4.877357,
+              52.376349
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012173529",
+      "installedId": "NL.IMBAG.Pand.0363100012173529",
+      "relativeRole": "retained rear/west neighbor",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877319,
+              52.376419
+            ],
+            [
+              4.87724,
+              52.376438
+            ],
+            [
+              4.877207,
+              52.376385
+            ],
+            [
+              4.877286,
+              52.376366
+            ],
+            [
+              4.877319,
+              52.376419
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012173531",
+      "installedId": "NL.IMBAG.Pand.0363100012173531",
+      "relativeRole": "retained rear/west neighbor",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877131,
+              52.37599
+            ],
+            [
+              4.87698,
+              52.376026
+            ],
+            [
+              4.876948,
+              52.375975
+            ],
+            [
+              4.877099,
+              52.375939
+            ],
+            [
+              4.877131,
+              52.37599
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012173532",
+      "installedId": "NL.IMBAG.Pand.0363100012173532",
+      "relativeRole": "retained rear/west neighbor",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877163,
+              52.376041
+            ],
+            [
+              4.877012,
+              52.376077
+            ],
+            [
+              4.87698,
+              52.376026
+            ],
+            [
+              4.877131,
+              52.37599
+            ],
+            [
+              4.877163,
+              52.376041
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012173533",
+      "installedId": "NL.IMBAG.Pand.0363100012173533",
+      "relativeRole": "retained rear/west neighbor",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877195,
+              52.376092
+            ],
+            [
+              4.877044,
+              52.376128
+            ],
+            [
+              4.877012,
+              52.376077
+            ],
+            [
+              4.877163,
+              52.376041
+            ],
+            [
+              4.877195,
+              52.376092
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012174101",
+      "installedId": "NL.IMBAG.Pand.0363100012174101",
+      "relativeRole": "retained rear/west neighbor",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877228,
+              52.376143
+            ],
+            [
+              4.877077,
+              52.37618
+            ],
+            [
+              4.877044,
+              52.376128
+            ],
+            [
+              4.877195,
+              52.376092
+            ],
+            [
+              4.877228,
+              52.376143
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012174102",
+      "installedId": "NL.IMBAG.Pand.0363100012174102",
+      "relativeRole": "retained rear/west neighbor",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.87726,
+              52.376195
+            ],
+            [
+              4.877109,
+              52.376231
+            ],
+            [
+              4.877077,
+              52.37618
+            ],
+            [
+              4.877228,
+              52.376143
+            ],
+            [
+              4.87726,
+              52.376195
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012174103",
+      "installedId": "NL.IMBAG.Pand.0363100012174103",
+      "relativeRole": "retained rear/west neighbor",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877293,
+              52.376246
+            ],
+            [
+              4.877142,
+              52.376282
+            ],
+            [
+              4.877109,
+              52.376231
+            ],
+            [
+              4.87726,
+              52.376195
+            ],
+            [
+              4.877293,
+              52.376246
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012174106",
+      "installedId": "NL.IMBAG.Pand.0363100012174106",
+      "relativeRole": "retained rear/west neighbor",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877319,
+              52.376419
+            ],
+            [
+              4.877286,
+              52.376366
+            ],
+            [
+              4.877357,
+              52.376349
+            ],
+            [
+              4.877367,
+              52.376364
+            ],
+            [
+              4.877446,
+              52.376345
+            ],
+            [
+              4.877469,
+              52.376382
+            ],
+            [
+              4.877391,
+              52.376401
+            ],
+            [
+              4.877391,
+              52.376402
+            ],
+            [
+              4.877319,
+              52.376419
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012174838",
+      "installedId": "NL.IMBAG.Pand.0363100012174838",
+      "relativeRole": "retained opposite/east building",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877528,
+              52.375463
+            ],
+            [
+              4.877361,
+              52.375502
+            ],
+            [
+              4.87731,
+              52.37542
+            ],
+            [
+              4.877309,
+              52.375418
+            ],
+            [
+              4.877309,
+              52.375417
+            ],
+            [
+              4.87731,
+              52.375415
+            ],
+            [
+              4.877311,
+              52.375414
+            ],
+            [
+              4.877313,
+              52.375412
+            ],
+            [
+              4.877316,
+              52.375411
+            ],
+            [
+              4.877318,
+              52.37541
+            ],
+            [
+              4.87732,
+              52.37541
+            ],
+            [
+              4.877472,
+              52.375374
+            ],
+            [
+              4.877528,
+              52.375463
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5384.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012174918",
+      "installedId": "NL.IMBAG.Pand.0363100012174918",
+      "relativeRole": "retained opposite/east building",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877582,
+              52.37555
+            ],
+            [
+              4.877416,
+              52.37559
+            ],
+            [
+              4.877389,
+              52.375546
+            ],
+            [
+              4.877555,
+              52.375506
+            ],
+            [
+              4.877582,
+              52.37555
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5384.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012174919",
+      "installedId": "NL.IMBAG.Pand.0363100012174919",
+      "relativeRole": "retained opposite/east building",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877555,
+              52.375506
+            ],
+            [
+              4.877389,
+              52.375546
+            ],
+            [
+              4.877361,
+              52.375502
+            ],
+            [
+              4.877528,
+              52.375463
+            ],
+            [
+              4.877555,
+              52.375506
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5384.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012174934",
+      "installedId": "NL.IMBAG.Pand.0363100012174934",
+      "relativeRole": "retained opposite/east building",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.878016,
+              52.376244
+            ],
+            [
+              4.878017,
+              52.376246
+            ],
+            [
+              4.878017,
+              52.376247
+            ],
+            [
+              4.878017,
+              52.376249
+            ],
+            [
+              4.878016,
+              52.37625
+            ],
+            [
+              4.878015,
+              52.376251
+            ],
+            [
+              4.878013,
+              52.376252
+            ],
+            [
+              4.878011,
+              52.376253
+            ],
+            [
+              4.87801,
+              52.376254
+            ],
+            [
+              4.87787,
+              52.376288
+            ],
+            [
+              4.877868,
+              52.376288
+            ],
+            [
+              4.877866,
+              52.376289
+            ],
+            [
+              4.877863,
+              52.376288
+            ],
+            [
+              4.877861,
+              52.376288
+            ],
+            [
+              4.877858,
+              52.376287
+            ],
+            [
+              4.877856,
+              52.376286
+            ],
+            [
+              4.877854,
+              52.376285
+            ],
+            [
+              4.877853,
+              52.376284
+            ],
+            [
+              4.877803,
+              52.376203
+            ],
+            [
+              4.877966,
+              52.376164
+            ],
+            [
+              4.878016,
+              52.376244
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012174936",
+      "installedId": "NL.IMBAG.Pand.0363100012174936",
+      "relativeRole": "retained opposite/east building",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877856,
+              52.375988
+            ],
+            [
+              4.877691,
+              52.376027
+            ],
+            [
+              4.877664,
+              52.375983
+            ],
+            [
+              4.877829,
+              52.375944
+            ],
+            [
+              4.877856,
+              52.375988
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    },
+    {
+      "bagPandId": "0363100012185851",
+      "installedId": "NL.IMBAG.Pand.0363100012185851",
+      "relativeRole": "retained rear/west neighbor",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.876903,
+              52.375629
+            ],
+            [
+              4.876752,
+              52.375665
+            ],
+            [
+              4.87672,
+              52.375614
+            ],
+            [
+              4.876884,
+              52.375575
+            ],
+            [
+              4.87689,
+              52.375584
+            ],
+            [
+              4.876876,
+              52.375587
+            ],
+            [
+              4.876903,
+              52.375629
+            ]
+          ]
+        ]
+      },
+      "installedSource": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+    }
+  ],
+  "recognitionTraitsFromUserScreenshot": [
+    "Long brick street wall and continuous horizontal pale bands",
+    "Pale window frames and segmental heads",
+    "Ground tier plus three upper residential tiers visible",
+    "One central narrow gabled staircase bay per broad three-axis house"
+  ],
+  "criticalUncertainties": [
+    "Exact house-number/VBO mapping",
+    "Visible module/gable counts per BAG parent",
+    "Individual eave/crest/pavement datums",
+    "Ground-door counts and tree/vehicle-hidden openings"
+  ],
+  "sourceAccess": [
+    {
+      "attemptedAt": "2026-10-08T20:09:15.072833+00:00",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.87722,52.37583&radius=100&srid=4326&page_size=100&timestamp_after=2023-01-01",
+      "state": "worker DNS failed; CODEX_SANDBOX_NETWORK_DISABLED=1; root download requested",
+      "responseStagingPath": "artifacts/marnixstraat-sources/panorama-near.json"
+    }
+  ],
+  "selectedPanoramaStations": [
+    {
+      "label": "middle",
+      "target": [
+        4.877299,
+        52.375854
+      ],
+      "targetBearingDegrees": 286.01,
+      "panoId": "TMX7316010203-002951_pano_0007_000033",
+      "captureTimestamp": "2023-01-30T10:43:29.209010Z",
+      "camera": [
+        4.87744232192954,
+        52.3758288914854,
+        47.2493429947644
+      ],
+      "heading": 199.687143398486,
+      "pitch": -0.514828659133693,
+      "roll": -0.214912920192361,
+      "rawMetadata": "artifacts/marnixstraat-sources/panorama-near.json",
+      "rawMetadataSha256": "d072601d41a17e175afac491e0c8508c85cda724deb4c5e6e8f66278d64cd3d1",
+      "originalImageUrl": "https://t1.data.amsterdam.nl/panorama/2023/01/30/TMX7316010203-002951/pano_0007_000033/equirectangular/panorama_8000.jpg",
+      "metadataUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002951_pano_0007_000033/",
+      "selectionState": "downloaded original and personally inspected perspective crop",
+      "license": "CC BY4.0 municipal panorama service",
+      "originalImageSha256": "0de141ada1f097f7c470350a9c3bb6e2d161efd71fcc1c463fb388d7d6f5234f",
+      "visualDecision": "clear source for observed three-axis facade and central gable",
+      "processedCrop": "artifacts/marnixstraat-sources/processed/middle-2023.jpg"
+    },
+    {
+      "label": "middle-current-alterations",
+      "target": [
+        4.877299,
+        52.375854
+      ],
+      "targetBearingDegrees": 285.32,
+      "panoId": "recording_2025-06-17_08-04-10_02155",
+      "captureTimestamp": "2025-06-17T08:31:12Z",
+      "camera": [
+        4.877456319393371,
+        52.37582768034175,
+        0.0
+      ],
+      "heading": 0.0,
+      "pitch": 0.0,
+      "roll": 0.0,
+      "rawMetadata": "artifacts/marnixstraat-sources/panorama-near.json",
+      "rawMetadataSha256": "d072601d41a17e175afac491e0c8508c85cda724deb4c5e6e8f66278d64cd3d1",
+      "originalImageUrl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-17_08-04-10_02155/equirectangular/panorama_8000.jpg",
+      "metadataUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-17_08-04-10_02155/",
+      "selectionState": "downloaded original and personally inspected perspective crop",
+      "license": "CC BY4.0 municipal panorama service",
+      "originalImageSha256": "60387b1454eb9e651319b78e02dd7444d58d0fd2d3f7e1deed80386d64a92dd3",
+      "visualDecision": "2025 scaffolding obscures facade; current alteration uncertain",
+      "processedCrop": "artifacts/marnixstraat-sources/processed/middle-2025.jpg"
+    },
+    {
+      "label": "south",
+      "target": [
+        4.877093,
+        52.37553
+      ],
+      "targetBearingDegrees": 276.83,
+      "panoId": "TMX7316010203-002989_pano_0006_000004",
+      "captureTimestamp": "2023-03-06T09:54:23.659080Z",
+      "camera": [
+        4.87722477237425,
+        52.3755203636934,
+        46.2052233181894
+      ],
+      "heading": 18.0764698975337,
+      "pitch": -0.435532400849195,
+      "roll": 0.722438010611085,
+      "rawMetadata": "artifacts/marnixstraat-sources/panorama-near.json",
+      "rawMetadataSha256": "d072601d41a17e175afac491e0c8508c85cda724deb4c5e6e8f66278d64cd3d1",
+      "originalImageUrl": "https://t1.data.amsterdam.nl/panorama/2023/03/06/TMX7316010203-002989/pano_0006_000004/equirectangular/panorama_8000.jpg",
+      "metadataUrl": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002989_pano_0006_000004/",
+      "selectionState": "downloaded original and personally inspected perspective crop",
+      "license": "CC BY4.0 municipal panorama service",
+      "originalImageSha256": "47144250b00e111ed8d8917bf2dc1f7a82eb01dd872a3d15dd34bd91767f2312",
+      "visualDecision": "clear source for observed three-axis facade and central gable",
+      "processedCrop": "artifacts/marnixstraat-sources/processed/south-2023.jpg"
+    }
+  ],
+  "supersededInterpretations": [
+    {
+      "assertion": "Each13m BAG parent contains two approximately6.5m independently gabled visual modules.",
+      "state": "rejected",
+      "reason": "Direct municipal register describes eight identical houses, each three window axes wide with one central projecting staircase axis;1876 drawing agrees according to root inspection."
+    }
+  ],
+  "architecturalAssertions": [
+    {
+      "source": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/96a07d03-1673-4985-b846-b3c430807f82",
+      "rawSource": "artifacts/marnixstraat-sources/raw/monument-204041.json",
+      "part": "whole row",
+      "assertion": "Eight identical houses, each sharing one front door among eight original dwellings.",
+      "confidence": "high; explicit municipal register prose"
+    },
+    {
+      "source": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/96a07d03-1673-4985-b846-b3c430807f82",
+      "rawSource": "artifacts/marnixstraat-sources/raw/monument-204041.json",
+      "part": "whole row",
+      "assertion": "Each house is three window axes wide; central slightly projecting axis houses staircase.",
+      "confidence": "high; explicit municipal register prose"
+    },
+    {
+      "source": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/96a07d03-1673-4985-b846-b3c430807f82",
+      "rawSource": "artifacts/marnixstraat-sources/raw/monument-204041.json",
+      "part": "whole row",
+      "assertion": "Central axes alternate tuit and stepped gable crowns.",
+      "confidence": "high; explicit municipal register prose"
+    },
+    {
+      "source": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/96a07d03-1673-4985-b846-b3c430807f82",
+      "rawSource": "artifacts/marnixstraat-sources/raw/monument-204041.json",
+      "part": "whole row",
+      "assertion": "Ground floor plus three upper storeys and attic under saddle roof.",
+      "confidence": "high; explicit municipal register prose"
+    },
+    {
+      "source": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/96a07d03-1673-4985-b846-b3c430807f82",
+      "rawSource": "artifacts/marnixstraat-sources/raw/monument-204041.json",
+      "part": "whole row",
+      "assertion": "Between crowns, simple profiled eaves gutter with double sawtooth brick detail.",
+      "confidence": "high; explicit municipal register prose"
+    },
+    {
+      "source": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/96a07d03-1673-4985-b846-b3c430807f82",
+      "rawSource": "artifacts/marnixstraat-sources/raw/monument-204041.json",
+      "part": "whole row",
+      "assertion": "Dark brown brick with yellow horizontal pressed-brick bands, first-floor underside with mouse-tooth detail.",
+      "confidence": "high; explicit municipal register prose"
+    },
+    {
+      "source": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/96a07d03-1673-4985-b846-b3c430807f82",
+      "rawSource": "artifacts/marnixstraat-sources/raw/monument-204041.json",
+      "part": "whole row",
+      "assertion": "House boundaries marked by pilaster strips containing narrow toilet windows.",
+      "confidence": "high; explicit municipal register prose"
+    },
+    {
+      "source": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/96a07d03-1673-4985-b846-b3c430807f82",
+      "rawSource": "artifacts/marnixstraat-sources/raw/monument-204041.json",
+      "part": "whole row",
+      "assertion": "Most original double sliding windows replaced with casements losing original glazing-bar arrangement.",
+      "confidence": "high; explicit municipal register prose"
+    },
+    {
+      "source": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/96a07d03-1673-4985-b846-b3c430807f82",
+      "rawSource": "artifacts/marnixstraat-sources/raw/monument-204041.json",
+      "part": "whole row",
+      "assertion": "Modern doors replace original paired timber doors with transoms.",
+      "confidence": "high; explicit municipal register prose"
+    },
+    {
+      "source": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/96a07d03-1673-4985-b846-b3c430807f82",
+      "rawSource": "artifacts/marnixstraat-sources/raw/monument-204041.json",
+      "part": "whole row",
+      "assertion": "Block encloses central unbuilt private gardens, which must remain open.",
+      "confidence": "high; explicit municipal register prose"
+    }
+  ],
+  "sourceTextInconsistencies": [
+    "Register architecture paragraph mentions nine linked houses although title, scope paragraph and BAG parent links explicitly identify eight. Scope uses eight linked parents; do not add ninth house."
+  ],
+  "sourceArchive": {
+    "path": "streets/marnixstraat-263-repeated-row/",
+    "commit": null,
+    "state": "New raw sources staged under artifacts/marnixstraat-sources; sibling archive and git metadata read-only in this session."
+  }
+}

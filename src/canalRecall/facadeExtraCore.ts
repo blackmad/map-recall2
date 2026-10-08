@@ -18,6 +18,8 @@ export type ExtraContext = {
   assemblyOwner?: boolean;
   /** One owner emits all eligible facets of a continuous shop canopy, atomically. */
   canopyOwner?: boolean;
+  /** The renderer installed a complete cut ground frontage; generic dressing is incompatible. */
+  groundFrontageActive?: boolean;
   canopyFrames?: readonly WallFrame[];
   id: string; style: FacadeStyle; wallKey: string; f: WallFrame; base: number; top: number;
   layout: WallLayout; wallHex: string; accentHex: string; roofKind?: string; groundLevel: boolean;

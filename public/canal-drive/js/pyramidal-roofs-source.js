@@ -66,9 +66,11 @@ export class PyramidalRoofs {
     this.enabled = true;
     this._entries = [];
     this._hiddenIds = new Set();
+    this._hiddenReasons = new Map([['surveyed-envelope', new Set(map._surveyedEnvelopeRoofIds || [])]]);
     this.layer = this._makeLayer();
     if (!map.getLayer(this.layer.id)) map.addLayer(this.layer);
     map._pyramidalRoofs = this;
+    this.setHiddenReason('surveyed-envelope', map._surveyedEnvelopeRoofIds || []);
   }
 
   setEnabled(enabled) {
@@ -79,7 +81,12 @@ export class PyramidalRoofs {
   // Loaded landmark models also replace these separately rendered roof cones.
   // Toggle visibility without disposing and rebuilding every roof on each model load.
   setHidden(ids) {
-    this._hiddenIds = new Set([...ids].map(String));
+    this.setHiddenReason('landmarks', ids);
+  }
+
+  setHiddenReason(reason, ids) {
+    this._hiddenReasons.set(reason, new Set([...ids].map(String)));
+    this._hiddenIds = new Set([...this._hiddenReasons.values()].flatMap(values => [...values]));
     for (const entry of this._entries) {
       entry.mesh.visible = !entry.ids.some(id => this._hiddenIds.has(id));
     }

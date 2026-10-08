@@ -14,7 +14,7 @@
  * normally so the addons still bundle.
  */
 import { build } from 'esbuild';
-import { resolve } from 'node:path';
+import { resolve, basename } from 'node:path';
 
 const shim = resolve('public/canal-drive/js/three-global-shim.cjs');
 const shareThree = {
@@ -66,7 +66,10 @@ const targets = [
   },
 ];
 
-for (const target of targets) {
+const only = process.argv.find(arg => arg.startsWith('--only='))?.slice(7).split(',');
+const selected = only ? targets.filter(target => only.includes(basename(target.out, '.bundle.js'))) : targets;
+if (only && (new Set(only).size !== only.length || selected.length !== only.length)) throw new Error('Unknown or duplicate 3D bundle target');
+for (const target of selected) {
   await build({
     entryPoints: [target.entry],
     outfile: target.out,

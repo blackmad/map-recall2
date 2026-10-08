@@ -40,6 +40,15 @@ export function streetWallBuilding(building: MeshBuilding, wall: {
 }, origin: Origin, streetSide: boolean): MeshBuilding {
   const context = building.streetAppearance;
   if (!context || wall.hole || building.bare || building.plainWalls) return building;
+  const terrace=building.roof?.plan.repeatedTerrace;
+  if(terrace){
+    const dx=terrace.front.end[0]-terrace.front.start[0],dy=terrace.front.end[1]-terrace.front.start[1],length=Math.hypot(dx,dy);
+    const endFacing=(wall.nx*dx+wall.ny*dy)/length;
+    // The register explicitly describes blind end walls. Keep ordinary rear
+    // walls and neighbors, and never invent side windows on the two exposed ends.
+    if(Math.abs(endFacing)>.85&&terrace.exposedEnds?.[endFacing<0?0:1])
+      return {...building,bare:true,recipe:undefined,wallHex:terrace.wallHex??building.wallHex};
+  }
   const inheritedReturn=shortBakedFrontReturn(building,wall,origin);
   if(inheritedReturn)return inheritedReturn;
   const kx = 111_320 * Math.cos(origin.lat * Math.PI / 180);

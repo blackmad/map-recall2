@@ -1,6 +1,23 @@
+import { validateInterwarGroundFrontageRecipe } from './interwarGroundFrontage.js';
+import { validateInterwarFrontageRecipe } from './interwarFrontageLayout.js';
+import { validateCompoundFrontageRecipe } from './compoundFrontageLayout.js';
+import { validateRegularCanalFrontageRecipe } from './regularCanalFrontage.js';
+import { validateRepeatedTerraceFrontageRecipe } from './repeatedTerraceFrontage.js';
 /** Approximate street-side priors. They never change surveyed geometry or POI facts. */
 export type StreetPoint = readonly [number, number]; // longitude, latitude
 export interface ArchitecturalRecipe {
+  /** A bounded repeated residential frontage; heights and apertures are source-selected. */
+  repeatedTerraceFrontage?: import('./repeatedTerraceFrontage.js').RepeatedTerraceFrontageRecipe;
+  repeatedTerraceRoof?: { riseM:number; widthM:number; gable:'spout'|'step'; exposedEnds?:[boolean,boolean] };
+  sashHex?:string; courseHex?:string;
+  /** Regular source-selected tiers and raised access; no inferred crown or year. */
+  regularCanalFrontage?: import('./regularCanalFrontage.js').RegularCanalFrontageRecipe;
+  /** Coupled unequal facade zones, selected from observed complete street fronts. */
+  compoundFrontage?: import('./compoundFrontageLayout.js').CompoundFrontageRecipe;
+  /** Source-observed interwar window groups; shared layout, confined to admitted frontages. */
+  interwarGround?: import('./interwarGroundFrontage.js').InterwarGroundFrontageRecipe;
+  roofFamily?: 'flat-parapet';
+  interwarFrontage?: import('./interwarFrontageLayout.js').InterwarFrontageRecipe;
   family: 'masonry' | 'punched' | 'ribbon' | 'curtain';
   period: 'canal' | 'c19' | 'school' | 'postwar' | 'modern' | 'tower';
   wallHex?: string; frameHex?: string; groundWallHex?: string;
@@ -336,7 +353,7 @@ export function validateStreetAppearanceCatalog(value: unknown): StreetAppearanc
       if(p.visualClass&&(frontageMin==null||frontageMax==null||heightMin==null||heightMax==null||r.family!=='masonry'||!['canal','c19'].includes(r.period)))throw Error('unbounded visual frontage recipe');
       if(cornerOnly!=null&&typeof cornerOnly!=='boolean')throw Error('invalid corner qualification');
       if(priority!=null&&(!Number.isInteger(priority)||priority<0||priority>10))throw Error('invalid character priority');
-      for (const hex of [r.wallHex, r.frameHex, r.groundWallHex]) if (hex != null && !/^#[a-f0-9]{6}$/i.test(hex)) throw Error('invalid recipe colour');
+      for (const hex of [r.wallHex, r.frameHex, r.groundWallHex, r.sashHex, r.courseHex]) if (hex != null && !/^#[a-f0-9]{6}$/i.test(hex)) throw Error('invalid recipe colour');
       for (const ratio of [r.windowWidth, r.windowHeight]) if (ratio != null && !unit(ratio)) throw Error('invalid opening fraction');
       for (const scale of [r.bayScale, r.storeyScale, r.groundScale]) if (scale != null && (!Number.isFinite(scale) || scale < .5 || scale > 2)) throw Error('invalid recipe scale');
       if (r.windowProportions != null && !['tall','balanced','wide'].includes(r.windowProportions) || r.frameColor != null && !['pale','dark'].includes(r.frameColor) || r.lintel != null && !['flat','arch','none'].includes(r.lintel) || r.paleAccents != null && typeof r.paleAccents !== 'boolean') throw Error('invalid recipe accent');
@@ -353,6 +370,15 @@ export function validateStreetAppearanceCatalog(value: unknown): StreetAppearanc
       if(r.wallMaterial!=null&&!['brick','smooth'].includes(r.wallMaterial))throw Error('invalid recipe wall material');
       if(r.openingGroup!=null&&(!['canal-two','canal-three'].includes(r.openingGroup)||r.family!=='masonry'||r.period!=='canal'))throw Error('incompatible frontage opening group');
       if(r.groundAssembly!=null&&(!['tall-side-entry','tall-commercial'].includes(r.groundAssembly)||!r.openingGroup))throw Error('incompatible frontage ground assembly');
+      if(r.interwarGround!=null&&(!validateInterwarGroundFrontageRecipe(r.interwarGround)||r.family!=='masonry'||r.period!=='school'||!r.shopCanopy))throw Error('invalid interwar ground frontage');
+      if(r.interwarFrontage!=null&&(!validateInterwarFrontageRecipe(r.interwarFrontage)||r.family!=='masonry'||r.period!=='school'))throw Error('invalid interwar frontage');
+      if(r.compoundFrontage!=null&&(!validateCompoundFrontageRecipe(r.compoundFrontage)||r.family!=='masonry'||!['canal','c19','school'].includes(r.period)||r.interwarFrontage||r.interwarGround||r.shopCanopy))throw Error('invalid compound frontage');
+      if(r.regularCanalFrontage!=null&&(!validateRegularCanalFrontageRecipe(r.regularCanalFrontage)||r.family!=='masonry'||!['canal','c19'].includes(r.period)||r.compoundFrontage||r.interwarFrontage||r.interwarGround||r.shopCanopy||r.entranceAssembly||r.facadeAssembly))throw Error('invalid regular canal frontage');
+      if(r.repeatedTerraceFrontage!=null&&(!validateRepeatedTerraceFrontageRecipe(r.repeatedTerraceFrontage)||r.family!=='masonry'||r.period!=='c19'||!p.buildingIds?.length||r.compoundFrontage||r.regularCanalFrontage||r.interwarFrontage||r.interwarGround||r.shopCanopy||r.entranceAssembly||r.facadeAssembly||r.crownShape))throw Error('invalid repeated terrace frontage');
+      if(r.repeatedTerraceRoof!=null){const t=r.repeatedTerraceRoof;
+        if(!r.repeatedTerraceFrontage||!Number.isFinite(t.riseM)||t.riseM<1.5||t.riseM>3.5||!Number.isFinite(t.widthM)||t.widthM<2||t.widthM>4.5||!['spout','step'].includes(t.gable)||t.exposedEnds!==undefined&&(!Array.isArray(t.exposedEnds)||t.exposedEnds.length!==2||t.exposedEnds.some(v=>typeof v!=='boolean')))throw Error('invalid repeated terrace roof');
+      }
+      if(r.roofFamily!=null&&(r.roofFamily!=='flat-parapet'||!r.interwarFrontage))throw Error('invalid source roof family');
       if(r.shopCanopy!=null){
         const c=r.shopCanopy;
         if(c.kind!=='continuous-rigid'||r.family!=='masonry'||!['c19','school'].includes(r.period)||!Number.isFinite(c.projectionM)||c.projectionM<.3||c.projectionM>1.8||!Number.isFinite(c.fasciaHeightM)||c.fasciaHeightM<.12||c.fasciaHeightM>.4||![c.fasciaHex,c.edgeHex].every(hex=>/^#[a-f0-9]{6}$/i.test(hex)))throw Error('invalid source shop canopy');

@@ -172,7 +172,7 @@ export function worldToEquirectangularPixel(
 }
 
 /** Bilinear sample, wrapping horizontally because the panorama is a cylinder. */
-function sample(image: EquirectangularImage, u: number, v: number, out: number[]): void {
+export function sampleEquirectangular(image: EquirectangularImage, u: number, v: number, out: number[]): void {
   const x0 = Math.floor(u), y0 = Math.floor(v);
   const fx = u - x0, fy = v - y0;
   const wrap = (x: number) => ((x % image.width) + image.width) % image.width;
@@ -254,7 +254,7 @@ export function rectifyFacade(
       const [su, sv] = worldToEquirectangularPixel({ x: worldX, y: worldY, z: worldZ }, pose, image, camera);
       if (!Number.isFinite(su) || !Number.isFinite(sv)) { missing++; continue; }
       if (sv < 0 || sv >= image.height) { missing++; continue; }
-      sample(image, su, sv, rgb);
+      sampleEquirectangular(image, su, sv, rgb);
 
       const offset = (py * width + px) * 4;
       data[offset] = rgb[0];

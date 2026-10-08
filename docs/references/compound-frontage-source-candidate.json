@@ -1,0 +1,353 @@
+{
+  "schemaVersion": 1,
+  "recordedOn": "2026-10-06",
+  "decision": "bounded-source-proportion-candidate; not measured facade dimensions, runtime admission or visual acceptance",
+  "scope": {
+    "representative": "Oudezijds Voorburgwal 87\u201389",
+    "nativePand": "NL.IMBAG.Pand.0363100012178298",
+    "factualOriginalPandYear": 1650,
+    "sourceFacadeDesignYear": 1920,
+    "dateReason": "Official Pand year and monument-described office facade year describe different facts; preserve both.",
+    "freshHeldout99": "Not opened, inspected or used.",
+    "transition85": "No additional source inspection in this task."
+  },
+  "inputs": {
+    "rootFailureReview": "docs/references/compound-frontage-root-visual-review.json",
+    "discoveryFreeze": "docs/references/oudezijds-compound-discovery-review.json",
+    "workPolicy": "public/canal-drive/street-rhythm-work.json",
+    "privateSourcePack": "streets/oudezijds-east-next-south/",
+    "archivedSourceCommit": "a3d5c3c6df8b2e6f8fe1d9795c2e29b803def25f",
+    "sourceImage": {
+      "path": "streets/oudezijds-east-next-south/artifacts/street-appearance/rows/oudezijds-east-next-south/evaluation-source/processed/oudezijds-east-next-south-station-2.jpg",
+      "sha256": "a441bfff36fec4484bea0fae21f16f28ec9cd45d61dfcc548cb4fac684d1bba2",
+      "captureDate": "2025-06-30",
+      "attribution": "Gemeente Amsterdam CC BY4.0",
+      "inspected": true
+    },
+    "renderImages": [
+      {
+        "path": "artifacts/street-appearance/compound-native/after-front.png",
+        "sha256": "838a0d353472c4bf78a4b4950386a662a6b138ff2fb707ae3747e6e9608f3458",
+        "inspected": true
+      },
+      {
+        "path": "artifacts/street-appearance/compound-native/after-oblique.png",
+        "sha256": "c0bdebcc61ba7e87478cbd6132aaaabdbe310f96d0b06e08d8da3fcd085f3006",
+        "inspected": true
+      }
+    ]
+  },
+  "method": {
+    "type": "Manual visible-proportion estimates with independent native eave/width anchors; no metric facade survey or camera calibration.",
+    "widthM": 10.5079421839,
+    "streetEaveAboveGroundM": [
+      19.267,
+      19.331
+    ],
+    "workingStreetWallTopM": 19.3,
+    "groundDatumNapM": 0.499,
+    "verticalPlacement": "Explicit approximate metre datums relative to native ground, selected from visible lower/upper hierarchy and independent shaft offsets. Do not multiply raw photographic y fractions by eave height: the source converges strongly and grade is clipped.",
+    "confidence": "High for counts, unequal zones, ordering and relationship; medium for width fractions and relative opening fill; low-to-medium for metre datums/heights; low for projection/recess/corbel measurements. Rounded candidates are tunable hypotheses, not measured claims.",
+    "uncertainty": "Absolute upper row datums may shift roughly 0.7\u20131.0m together after comparable native eave render; lower datum uncertainty at least 0.4\u20130.6m. Preserve source relationships rather than fitting all values independently."
+  },
+  "observedChanges": [
+    {
+      "trait": "main-shaft proportion",
+      "observation": "At cornice the broad left3-axis field is approximately two-thirds of frontage; fixture .72 allocates too much width to the main field.",
+      "candidateRange": [
+        0.62,
+        0.67
+      ],
+      "confidence": "medium; low-angle view and erker projection affect apparent division"
+    },
+    {
+      "trait": "main upper opening fill",
+      "observation": "Pale main openings occupy most of each3-axis pitch, versus narrow fixture panes. Lower light is tall, quiet transom is lower than fixture .76.",
+      "candidateWidthMRange": [
+        1.7,
+        1.9
+      ],
+      "candidateTransomFractionRange": [
+        0.62,
+        0.72
+      ],
+      "confidence": "medium relative fill; low absolute widths"
+    },
+    {
+      "trait": "upper rows and crown",
+      "observation": "Three main rows rise toward the substantial cornice without an extra blank story; independent shaft is offset higher, with a noticeably shorter top principal pane.",
+      "mainBottomMRange": [
+        [
+          5.5,
+          6.7
+        ],
+        [
+          9.5,
+          10.9
+        ],
+        [
+          13.6,
+          15.0
+        ]
+      ],
+      "mainHeightMRange": [
+        2.5,
+        3.1
+      ],
+      "shaftBottomMRange": [
+        [
+          6.0,
+          7.2
+        ],
+        [
+          10.7,
+          12.1
+        ],
+        [
+          15.8,
+          17.1
+        ]
+      ],
+      "shaftHeightMRange": [
+        [
+          2.6,
+          3.3
+        ],
+        [
+          2.3,
+          3.0
+        ],
+        [
+          1.2,
+          1.9
+        ]
+      ],
+      "confidence": "high3-row/offset/short-top relationships; low-to-medium absolute datums"
+    },
+    {
+      "trait": "bel-etage and souterrain",
+      "observation": "Main connected pale surround is raised above visible basement glazing. Broad heavier header and piers enclose glazed openings, whose sash has vertical subdivision unlike the quiet upper panes.",
+      "surroundBottomMRange": [
+        1.4,
+        2.3
+      ],
+      "surroundHeightMRange": [
+        3.3,
+        4.2
+      ],
+      "openingBottomMRange": [
+        1.9,
+        2.6
+      ],
+      "openingHeightMRange": [
+        2.5,
+        3.2
+      ],
+      "confidence": "high assembly/raised relationship; low absolute datum with pavement cropped"
+    },
+    {
+      "trait": "shaft ground/access",
+      "observation": "Three narrow lights stand above the substantial canopy on the same separate dark access axis; layered projecting corbels are apparent.",
+      "groundLightsBottomMRange": [
+        3.1,
+        3.9
+      ],
+      "groundLightsHeightMRange": [
+        1.4,
+        2.1
+      ],
+      "doorHeightMRange": [
+        2.1,
+        2.7
+      ],
+      "canopyThicknessMRange": [
+        0.4,
+        0.7
+      ],
+      "confidence": "high assembly; low dimensions/projection"
+    }
+  ],
+  "approximatePlannerCandidate": {
+    "mainFraction": 0.64,
+    "mainColumns": 3,
+    "mainInsetM": 0.24,
+    "mainWindowWidthM": 1.8,
+    "mainFrameWidthM": 0.09,
+    "mainRows": [
+      {
+        "bottomM": 6.1,
+        "heightM": 2.8,
+        "transomFraction": 0.65
+      },
+      {
+        "bottomM": 10.2,
+        "heightM": 2.8,
+        "transomFraction": 0.65
+      },
+      {
+        "bottomM": 14.3,
+        "heightM": 2.8,
+        "transomFraction": 0.65
+      }
+    ],
+    "shaft": {
+      "axisFraction": 0.5,
+      "frameWidthM": 0.06,
+      "rows": [
+        {
+          "bottomM": 6.6,
+          "heightM": 3.0,
+          "transomFraction": 0.64,
+          "principalWidthM": 1.65,
+          "sideLightWidthM": 0.2,
+          "sideLightGapM": 0.28,
+          "sideLightBottomOffsetM": 0,
+          "sideLightHeightM": 3.0,
+          "projectionM": 0.22
+        },
+        {
+          "bottomM": 11.4,
+          "heightM": 2.7,
+          "transomFraction": 0.64,
+          "principalWidthM": 1.65,
+          "sideLightWidthM": 0.2,
+          "sideLightGapM": 0.28,
+          "sideLightBottomOffsetM": 0,
+          "sideLightHeightM": 2.7,
+          "projectionM": 0.22
+        },
+        {
+          "bottomM": 16.5,
+          "heightM": 1.5,
+          "transomFraction": 0.64,
+          "principalWidthM": 1.65,
+          "sideLightWidthM": 0.2,
+          "sideLightGapM": 0.28,
+          "sideLightBottomOffsetM": 0,
+          "sideLightHeightM": 1.5,
+          "projectionM": 0.22
+        }
+      ],
+      "groundLights": {
+        "bottomM": 3.45,
+        "heightM": 1.75,
+        "lightWidthM": 0.2,
+        "gapM": 0.45,
+        "projectionM": 0.08
+      },
+      "access": {
+        "bottomM": 0,
+        "heightM": 2.35,
+        "widthM": 1.12,
+        "recessDepthM": 0.25,
+        "frameWidthM": 0.1
+      },
+      "canopy": {
+        "bottomM": 2.65,
+        "thicknessM": 0.45,
+        "widthM": 2.35,
+        "projectionM": 0.8,
+        "corbels": {
+          "widthM": 0.25,
+          "layers": [
+            {
+              "heightM": 0.16,
+              "projectionM": 0.3
+            },
+            {
+              "heightM": 0.16,
+              "projectionM": 0.45
+            },
+            {
+              "heightM": 0.16,
+              "projectionM": 0.6
+            }
+          ]
+        }
+      }
+    },
+    "groundSurround": {
+      "bottomM": 1.8,
+      "heightM": 3.7,
+      "openingBottomM": 2.2,
+      "openingHeightM": 2.8,
+      "openingWidthM": 1.65,
+      "frameWidthM": 0.26,
+      "projectionM": 0.25,
+      "transomFraction": 0.65
+    }
+  },
+  "fitContract": {
+    "input": {
+      "lengthM": 10.5079421839,
+      "baseM": 0,
+      "topM": 19.3,
+      "direction": 1
+    },
+    "directionMeaning": "Source order only; root maps to native street frame with direction1 or -1, not polygon-winding inference.",
+    "status": "Nonvisual complete-plan fit passes at10.5079421839m frontage and19.3m street-wall envelope:24 glazing fields,249 quads, highest emitted facade point18.0m. This checks compatibility only.",
+    "limit": "Recipe covers facade apertures/ground access only. Successful planner fit does not add basement/cornice/continuous erker/roof geometry or establish source-fit.",
+    "checkedWith": "node --import tsx importing planCompoundFrontage with the recorded candidate and fitContract.input"
+  },
+  "missingOrInadequateAssemblies": [
+    {
+      "id": "street-eave-and-native-roof-envelope",
+      "importance": "critical",
+      "state": "missing native-envelope integration, not a window proportion problem",
+      "evidence": "Measured street edge19.267\u201319.331m vs installed whole-Pand roof70-minus-ground22.99m; surveyed front roof surface108 rises to25.368NAP and has an interior ring.",
+      "nextCapability": "Separate native street wall/eave from supported roof regions; preserve roof ring, side closure, rear mixed-height regions and surveyed tops. No fake full flat roof or stretching windows to aggregate cap."
+    },
+    {
+      "id": "heavy-cornice",
+      "importance": "critical",
+      "state": "missing compound crown assembly",
+      "evidence": "Broad pale projecting cornice with repeated underside blocks spans the top and bounds upper composition; fixture stops with masonry/roof cap.",
+      "nextCapability": "Bounded source-supported cornice aligned to street eave, independent from aperture datums; no extra window row to consume crown area."
+    },
+    {
+      "id": "continuous-shaft-erker-masonry",
+      "importance": "critical",
+      "state": "inadequate isolated projected windows",
+      "evidence": "Projecting right shaft is a connected vertical masonry composition with recessed horizontal brick panels and pale side-light strips; fixture projects each opening independently.",
+      "nextCapability": "Reusable shallow connected shaft envelope and restrained brick lintel/spandrel panels, preserving source individual row offsets and visible glass."
+    },
+    {
+      "id": "basement-lights",
+      "importance": "critical raised-ground composition; exact count secondary",
+      "state": "missing lower main opening group",
+      "evidence": "Source bottom visibly includes low souterrain glazing below the pale surround; fixture makes the whole strip opaque. Far-left/pavement clipped.",
+      "nextCapability": "Bounded low main-axis opening group with native-wall cuts; use source-supported visible spacing, defer exact basement count/grade registration until another full-base reference. Do not place a basement window under the independent access door."
+    },
+    {
+      "id": "bel-etage-sash",
+      "importance": "secondary near-detail; revisit if reading fails at block scale",
+      "state": "inadequate quiet single-pane ground treatment",
+      "evidence": "Three main ground openings have visible vertical lower sash divisions and transom, unlike quiet main upper windows.",
+      "nextCapability": "Separate bounded ground sash subdivisions, keeping joined surround and actual glazing first-hit visibility."
+    },
+    {
+      "id": "ground-approach",
+      "importance": "secondary; uncertain",
+      "state": "source incomplete",
+      "evidence": "Pavement, steps and grade are cropped; current source cannot support invented approach/stair dimensions.",
+      "nextCapability": "Acquire full-base comparable source before asserting geometry."
+    }
+  ],
+  "palette": {
+    "priority": "secondary",
+    "observation": "Upper warm gray-brown masonry and lower different masonry; pale main surround contrasts with brick shaft and dark door.",
+    "rule": "Palette cannot fix missing cornice, basement, connected erker or native roof envelope."
+  },
+  "nextReview": {
+    "order": [
+      "Root/independent source-envelope review against19.3m street wall and surveyed roof surfaces.",
+      "Diagnostic next render using approximate candidate, preserving failed fixture PNGs and original native Pand facts.",
+      "Review main fill, short upper shaft, raised ground, cornice/erker/basement and native neighbor boundaries independently.",
+      "Keep all runtime/profile transfer withheld; fresh99 remains uninspected until appropriate challenge."
+    ],
+    "actualGameScene": "pending",
+    "gpuPerformance": "pending",
+    "noProfileAdmission": true,
+    "noFixtureMutation": true
+  }
+}
