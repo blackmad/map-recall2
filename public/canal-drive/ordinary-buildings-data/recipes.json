@@ -49626,6 +49626,191 @@
       },
       "builderStage": "scripts/ordinary-buildings/build-prinsen211-details.ts",
       "builderEvidence": "Standalone native original source-specific geometry owns final shell/roofs; generic base is intermediate only."
+    },
+    {
+      "digits": "0363100012169457",
+      "id": "NL.IMBAG.Pand.0363100012169457",
+      "label": "Prinsengracht 215\u2013217",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.885636,
+              52.377051
+            ],
+            [
+              4.885551,
+              52.376957
+            ],
+            [
+              4.885897,
+              52.376837
+            ],
+            [
+              4.885985,
+              52.376932
+            ],
+            [
+              4.885636,
+              52.377051
+            ]
+          ]
+        ]
+      },
+      "anchor": [
+        4.88576725,
+        52.37694425
+      ],
+      "sourceHeight": 16,
+      "mainHeight": 17.690000534057617,
+      "wallBaseHeight": 0,
+      "levels": 0,
+      "wall": "#54463b",
+      "roof": "#515653",
+      "palette": {
+        "frames": "#e1e1cc",
+        "glass": "#4e6970",
+        "balcony": "#303c37"
+      },
+      "cameraBearing": 299.0,
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-box-source49/0363100012169457",
+      "sourceCommit": "93ddc84522c52600ee49555848da55aa48375a15",
+      "references": [
+        "fullfront-0363100012169457-2025-01972-e0.jpg",
+        "roofwide-0363100012169457-2024-00557-e0.jpg",
+        "fullfront-0363100012169457-2024-00557-e0.jpg"
+      ],
+      "sourceUrls": [
+        "https://api.data.amsterdam.nl/v1/bag/panden/?identificatie=0363100012169457",
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169457"
+      ],
+      "traits": [
+        "Twin round-headed loading stacks with black guard rails and red shutters.",
+        "215 white glazed doors and open black shutters;217 black plank closure and right arch.",
+        "Own high rear survey roof planes."
+      ],
+      "simplifications": [
+        "Photo-guided dimensions; roof and ground detail review limits preserved."
+      ],
+      "facade": {
+        "kind": "blank",
+        "levels": 0
+      },
+      "galleryFrontage": {
+        "target": [
+          4.885593500000001,
+          52.377004
+        ],
+        "distanceMetres": 35,
+        "targetHeightMetres": 8
+      },
+      "builderStage": "scripts/ordinary-buildings/build-prinsen215-details.ts",
+      "builderEvidence": "Standalone native original source-specific geometry owns final shell/roofs; generic base is intermediate only."
+    },
+    {
+      "digits": "0363100012174397",
+      "id": "NL.IMBAG.Pand.0363100012174397",
+      "label": "Prinsengracht485\u2013487",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.883635,
+              52.369609
+            ],
+            [
+              4.883503,
+              52.369613
+            ],
+            [
+              4.883506,
+              52.369649
+            ],
+            [
+              4.883001,
+              52.369667
+            ],
+            [
+              4.883001,
+              52.369666
+            ],
+            [
+              4.882993,
+              52.369566
+            ],
+            [
+              4.882992,
+              52.369565
+            ],
+            [
+              4.883429,
+              52.36955
+            ],
+            [
+              4.883424,
+              52.369498
+            ],
+            [
+              4.883625,
+              52.369491
+            ],
+            [
+              4.883635,
+              52.369609
+            ]
+          ]
+        ]
+      },
+      "anchor": [
+        4.8833109,
+        52.3695874
+      ],
+      "sourceHeight": 17.47,
+      "mainHeight": 18.036617279052734,
+      "wallBaseHeight": 0,
+      "levels": 0,
+      "wall": "#54463b",
+      "roof": "#515653",
+      "palette": {
+        "frames": "#e1e1cc",
+        "glass": "#4e6970",
+        "balcony": "#303c37"
+      },
+      "cameraBearing": 267.2,
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-box-source56/0363100012174397",
+      "sourceCommit": "9280ea7fd9a4e199c9a52e80a73a9f4e9b55c644",
+      "references": [
+        "frontwide-0363100012174397-2025-02279-einitial.jpg",
+        "frontwide-0363100012174397-2025-02320-einitial.jpg"
+      ],
+      "sourceUrls": [
+        "https://api.data.amsterdam.nl/v1/bag/panden/?identificatie=0363100012174397",
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012174397"
+      ],
+      "traits": [
+        "Six white-trim upper window bays and own twin attic blocks.",
+        "Two dark garage portals and right entrance.",
+        "Native low rear and separate surveyed principal roofs."
+      ],
+      "simplifications": [
+        "Photo-guided dimensions; roof and ground detail review limits preserved."
+      ],
+      "facade": {
+        "kind": "blank",
+        "levels": 0
+      },
+      "galleryFrontage": {
+        "target": [
+          4.882997,
+          52.369616
+        ],
+        "distanceMetres": 34,
+        "targetHeightMetres": 9
+      },
+      "builderStage": "scripts/ordinary-buildings/build-prinsen485-details.ts",
+      "builderEvidence": "Standalone native original source-specific geometry owns final shell/roofs; generic base is intermediate only."
     }
   ]
 }
