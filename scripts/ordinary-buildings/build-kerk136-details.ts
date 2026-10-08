@@ -1,0 +1,21 @@
+import fs from 'node:fs/promises';
+import * as T from 'three';
+import type {BuildingTools} from '../landmarks/cultural-builders';
+import {buildKerk136,openingProbes} from './kerk136-builder';
+import {exportOrdinaryGeometry} from './export-ordinary-geometry';
+import spec from './kerk136-spec.json';
+const parts:{g:T.BufferGeometry;c:string}[]=[];
+const b={add(g:T.BufferGeometry,c:string,x=0,y=0,z=0,angle=0){g.rotateY(angle);g.translate(x,y,z);parts.push({g,c});}} as BuildingTools;
+buildKerk136(0,0,b);
+const {bytes,report}=await exportOrdinaryGeometry({id:spec.id,suppress:spec.suppress,parts,palette:{brick:'#865346',slate:'#555b5c',dark:'#303334',white:'#e5e4d9',glass:'#55777c',louver:'#735750',yellow:'#edd047'}});
+const out=process.env.ORDINARY_OUTPUT_ROOT??'public/canal-drive/models/ordinary-buildings',evidence=process.env.ORDINARY_REPORT_ROOT??'artifacts/ordinary-buildings/kerk136';await fs.mkdir(out,{recursive:true});await fs.mkdir(evidence,{recursive:true});await fs.writeFile(`${out}/${spec.digits}.glb`,bytes);
+await fs.writeFile(`${evidence}/export.json`,JSON.stringify({...report,sourceCommit:spec.sourceCommit,sourceRoot:spec.sourceRoot,acceptance:spec.acceptance},null,2)+'\n');
+await fs.writeFile(`${evidence}/opening-probes.json`,JSON.stringify(openingProbes,null,2)+'\n');
+await fs.writeFile(`${evidence}/runtime-entry.json`,JSON.stringify({buildingId:spec.id,url:`/models/ordinary-buildings/${spec.digits}.glb`,anchor:spec.anchor,scale:1,bearing:0,...report,id:`ordinary-${spec.digits}`,sourceCommit:spec.sourceCommit},null,2)+'\n');console.log(JSON.stringify(report));
+
+const dataRoot=process.env.ORDINARY_DATA_ROOT??'public/canal-drive/ordinary-buildings-data';
+const catalogue=JSON.parse(await fs.readFile(`${dataRoot}/catalogue.json`,'utf8'));
+const entry=catalogue.models.find((m:{buildingId:string})=>m.buildingId===spec.id);
+if(!entry||entry.id!==`ordinary-${spec.digits}`)throw Error('Exact Kerk136 catalogue identity required');
+Object.assign(entry,{hash:report.sha256,bytes:report.bytes,triangles:report.triangles,materials:report.materials,bounds:report.bounds,height:report.bounds.max[1],sourceCommit:spec.sourceCommit});
+await fs.writeFile(`${dataRoot}/catalogue.json`,JSON.stringify(catalogue,null,2)+'\n');

@@ -49105,6 +49105,187 @@
       },
       "builderStage": "scripts/ordinary-buildings/build-amstelstraat16-details.ts",
       "builderEvidence": "Frozen source-derived roof/spec and lower-front trace at amstelstraat16-build/frozen-authoring-v03; base shell is an intermediate replaced by this exact native procedural stage, never accepted as final."
+    },
+    {
+      "id": "NL.IMBAG.Pand.0363100012177101",
+      "digits": "0363100012177101",
+      "label": "Kerkstraat 136 (Hans Brinker)",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.888226,
+              52.363421
+            ],
+            [
+              4.888383,
+              52.363517
+            ],
+            [
+              4.887993,
+              52.363756
+            ],
+            [
+              4.887862,
+              52.363677
+            ],
+            [
+              4.88797,
+              52.363611
+            ],
+            [
+              4.887819,
+              52.363518
+            ],
+            [
+              4.887816,
+              52.363519
+            ],
+            [
+              4.887817,
+              52.363527
+            ],
+            [
+              4.887809,
+              52.363532
+            ],
+            [
+              4.887797,
+              52.363531
+            ],
+            [
+              4.887794,
+              52.363533
+            ],
+            [
+              4.887767,
+              52.363533
+            ],
+            [
+              4.887748,
+              52.363521
+            ],
+            [
+              4.887734,
+              52.36353
+            ],
+            [
+              4.88769,
+              52.363503
+            ],
+            [
+              4.888005,
+              52.363294
+            ],
+            [
+              4.888081,
+              52.363336
+            ],
+            [
+              4.888076,
+              52.363339
+            ],
+            [
+              4.888101,
+              52.363354
+            ],
+            [
+              4.888044,
+              52.363392
+            ],
+            [
+              4.888019,
+              52.363377
+            ],
+            [
+              4.887906,
+              52.363452
+            ],
+            [
+              4.888115,
+              52.36357
+            ],
+            [
+              4.888183,
+              52.363528
+            ],
+            [
+              4.888173,
+              52.363522
+            ],
+            [
+              4.88822,
+              52.363493
+            ],
+            [
+              4.888164,
+              52.363459
+            ],
+            [
+              4.888226,
+              52.363421
+            ]
+          ]
+        ]
+      },
+      "anchor": [
+        4.887974518518519,
+        52.36349425925926
+      ],
+      "sourceHeight": 15.99,
+      "mainHeight": 19.231,
+      "wallBaseHeight": 6.6,
+      "levels": 0,
+      "wall": "#865346",
+      "roof": "#555b5c",
+      "palette": {
+        "frames": "#e5e4d9",
+        "glass": "#55777c",
+        "balcony": "#303334"
+      },
+      "cameraBearing": 45.09,
+      "sourcePack": "experiments/canal-belt-continuation-20261007/new-next-box-source-31/0363100012177101",
+      "sourceCommit": "d1d1b4b64e2e2d48798292c85c9d29e20e174289",
+      "references": [
+        "plane-2024-centre.jpg",
+        "fullfront-0363100012177101-2025-00234-esoutheast.jpg",
+        "fullfront-0363100012177101-2025-00223-enorthwest.jpg"
+      ],
+      "sourceUrls": [
+        "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/?ligtInPanden.identificatie=0363100012177101&_pageSize=100",
+        "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000163900?volgnummer=1",
+        "https://api.data.amsterdam.nl/v1/bag/panden/?identificatie=0363100012177101&_pageSize=100",
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012177101",
+        "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.887974518518519%2C52.36349425925926&radius=65&srid=4326&page_size=100",
+        "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.887974518518519%2C52.36349425925926&page=2&page_size=100&radius=65&srid=4326",
+        "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.887974518518519%2C52.36349425925926&page=3&page_size=100&radius=65&srid=4326",
+        "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00230/equirectangular/panorama_8000.jpg"
+      ],
+      "traits": [
+        "Broad brown-red brick front, charcoal lower floor, white stacked window frames/sills and small attic/louver row.",
+        "Original surveyed roof families and native rear wings/notch.",
+        "Real yellow HOTEL blade sign."
+      ],
+      "simplifications": [
+        "Far northwest/sign/tree-obscured window counts and widths are photo-guided approximations.",
+        "Hidden rear openings unknown; survey roof levels and native exterior notch preserved.",
+        "Approximate sign font and facade dimensions; no archival drawing/register evidence claimed."
+      ],
+      "facade": {
+        "kind": "blank",
+        "levels": 0
+      },
+      "galleryFrontage": {
+        "target": [
+          4.888188,
+          52.3636365
+        ],
+        "distanceMetres": 60,
+        "targetHeightMetres": 6.5
+      },
+      "builderStage": "scripts/ordinary-buildings/build-kerk136-details.ts",
+      "builderEvidence": "Frozen source-specific geometry in private1888973/kerk136-build-34; base shell is intermediate only, final standalone native builder owns original surveyed roof/window assemblies."
     }
   ]
 }

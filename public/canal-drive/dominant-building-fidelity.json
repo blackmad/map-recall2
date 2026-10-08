@@ -880,6 +880,44 @@
         "Photo-guided facade/roof uncertainties from previous source/CPU and street-gallery reviews remain."
       ],
       "reviewEvidenceCommit": "087986cc828b344e55303764e680ef2d9d4101f8"
+    },
+    "NL.IMBAG.Pand.0363100012177101": {
+      "treatment": "landmark",
+      "reviewedOn": "2026-10-08",
+      "sourceUrls": [
+        "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/?ligtInPanden.identificatie=0363100012177101&_pageSize=100",
+        "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000163900?volgnummer=1",
+        "https://api.data.amsterdam.nl/v1/bag/panden/?identificatie=0363100012177101&_pageSize=100",
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012177101",
+        "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.887974518518519%2C52.36349425925926&radius=65&srid=4326&page_size=100",
+        "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.887974518518519%2C52.36349425925926&page=2&page_size=100&radius=65&srid=4326",
+        "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.887974518518519%2C52.36349425925926&page=3&page_size=100&radius=65&srid=4326",
+        "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00230/equirectangular/panorama_8000.jpg"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012177101/plane-2024-centre.jpg",
+      "reason": "Broad repetitive hostel frontage keeps source-specific stacked window groups, charcoal lower facade and real serif HOTEL sign, separate surveyed roof heights/native rear notch. Full ordinary architectural/source/gallery/native review passes; mapped hostel card retained without invented curated route destination.",
+      "checks": {
+        "ordinarySilhouette": true,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourcePack": "experiments/canal-belt-continuation-20261007/new-next-box-source-31/0363100012177101",
+      "sourceCommit": "d1d1b4b64e2e2d48798292c85c9d29e20e174289",
+      "assetHash": "aa98fe521fbbc9eb5731cf530bf7121ca5f2b8701efd0e436d909da0ef62bd23",
+      "accepted": true,
+      "runtimeVerified": true,
+      "evidence": "ordinary-buildings-data/canal-kerk136-review-20261008.json",
+      "reviewEvidenceCommit": "ef64e81d6e6a762ff9fc39112ad5d2ea757ff73c",
+      "limits": [
+        "Far northwest/sign/tree-obscured window counts and widths are photo-guided approximations.",
+        "Hidden rear openings unknown; survey roof levels and native exterior notch preserved.",
+        "Approximate sign font and facade dimensions; no archival drawing/register evidence claimed.",
+        "Touch emulated on M4 Pro; not physical mobile.",
+        "Warm90-frame samples do not prove stall-free startup.",
+        "No target pyramidal geometry exists; hidden-ID transitions tested only.",
+        "Route harness instrumentation chooses Rijksmuseum with origin override; actual clicked-building card checked separately."
+      ]
     }
   },
   "notes": [

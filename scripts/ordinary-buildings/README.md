@@ -30,6 +30,7 @@ node scripts/ordinary-buildings/build-rokin-south-details.mjs
 node scripts/ordinary-buildings/build-keizers603-details.mjs
 node scripts/ordinary-buildings/build-kerk206-details.mjs
 node --import tsx scripts/ordinary-buildings/build-amstelstraat16-details.ts
+node --import tsx scripts/ordinary-buildings/build-kerk136-details.ts
 node --import tsx scripts/ordinary-buildings/check.ts
 npm run build:canal-signature-landmarks
 ```
