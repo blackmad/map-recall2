@@ -20345,7 +20345,7 @@
       "simplifications": [
         "Photo-guided opening dimensions and shutter angles.28 original first-hit overlaps retained:24 photographed shutter overlaps and4 guardrail hits. Rear roof divisions surveyed; rear window arrangement unobserved. Hoist proportions approximate."
       ],
-      "reviewState": "Source/gallery and independent native desktop/touch accepted; hosted verification pending.",
+      "reviewState": "Source/gallery and independent native desktop/touch accepted; hosted fingerprint/gallery/manual verification complete.",
       "galleryFrontage": {
         "target": [
           4.885593500000001,
@@ -20362,7 +20362,19 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169457",
         "https://data.amsterdam.nl/data/geozoek?center=52.37694425,4.88576725&lagen=pano-pano2025bi"
       ],
-      "reviewEvidenceCommit": "695ec2b222e9ad4eb41add25711dd8e5ae3ebfe5"
+      "reviewEvidenceCommit": "695ec2b222e9ad4eb41add25711dd8e5ae3ebfe5",
+      "hostedVerification": {
+        "publicModelCommit": "fe3dbd7b0e9e82e28b4902a2b025f0838f6a5c6b",
+        "publicCommit": "025e5df61ef2c82c2e18111c4455bc035858f44c",
+        "firebaseRun": "37843611938",
+        "verifiedAtUTC": "2026-10-08T21:05:49.775086+00:00",
+        "models": 34,
+        "allAssetHashesExact": true,
+        "manualDesktopTouchLoaded": 34,
+        "feedbackPreview": true,
+        "evidenceSourceCommit": "6515660e4d5b0cef3bdc0b940abb8fc1173fed66",
+        "evidenceSourcePack": "experiments/canal-belt-continuation-20261007/hosted34-20261008"
+      }
     },
     {
       "buildingId": "NL.IMBAG.Pand.0363100012174397",
@@ -20471,7 +20483,7 @@
         "Two dark garage portals and right entrance.",
         "Native low rear and separate surveyed principal roofs."
       ],
-      "reviewState": "Source/gallery and independent native desktop/touch accepted; hosted verification pending.",
+      "reviewState": "Source/gallery and independent native desktop/touch accepted; hosted fingerprint/gallery/manual verification complete.",
       "simplifications": [
         "Photo-guided front4m attic shoulders/depth and simplified entrance/panel joinery. Rear roof and low volume surveyed; rear window arrangement unobserved. Earlier gate/attic/downward-face failures preserved."
       ],
@@ -20482,7 +20494,19 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012174397",
         "https://data.amsterdam.nl/data/geozoek?center=52.3695874,4.8833109&lagen=pano-pano2025bi"
       ],
-      "reviewEvidenceCommit": "695ec2b222e9ad4eb41add25711dd8e5ae3ebfe5"
+      "reviewEvidenceCommit": "695ec2b222e9ad4eb41add25711dd8e5ae3ebfe5",
+      "hostedVerification": {
+        "publicModelCommit": "fe3dbd7b0e9e82e28b4902a2b025f0838f6a5c6b",
+        "publicCommit": "025e5df61ef2c82c2e18111c4455bc035858f44c",
+        "firebaseRun": "37843611938",
+        "verifiedAtUTC": "2026-10-08T21:05:49.775086+00:00",
+        "models": 34,
+        "allAssetHashesExact": true,
+        "manualDesktopTouchLoaded": 34,
+        "feedbackPreview": true,
+        "evidenceSourceCommit": "6515660e4d5b0cef3bdc0b940abb8fc1173fed66",
+        "evidenceSourcePack": "experiments/canal-belt-continuation-20261007/hosted34-20261008"
+      }
     }
   ]
 }
