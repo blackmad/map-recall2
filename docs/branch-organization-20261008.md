@@ -19,7 +19,7 @@ Disk recovery: `/Users/blackmad/Code/map-recall2-cleanup-recovery-20261008/`. It
 
 The complete updated topic branches live in the independent local clone `/private/tmp/map-recall2-cleanup-20261008`, with worktrees under `/private/tmp/map-recall2-cleanup-worktrees-20261008/`. A durable verified bundle is saved in `artifacts/branch-organization-20261008/topics.bundle` in this checkout. Its manifest, validation logs and cleanup journal are alongside it. Do not push this bundle or preservation branches before reviewing private/raw reference inputs.
 
-**Permission interruption:** filesystem permissions changed during execution. Original `.git` and sibling worktrees became read-only. Before that change, root gained the recovery branch and initial street/canalhouse preservation refs; the final documented tips above are in the temporary clone and bundle. Importing final tips into this checkout, changing root HEAD, and publishing main remain pending. No force push or rewrite of published main was performed.
+**Historical permission interruption (resolved below):** filesystem permissions changed during execution. Original `.git` and sibling worktrees became read-only. Before that change, root gained the recovery branch and initial street/canalhouse preservation refs; the final documented tips above are in the temporary clone and bundle. Importing final tips into this checkout, changing root HEAD, and publishing main remain pending. No force push or rewrite of published main was performed.
 
 When Git writes are available again, import the final branches explicitly (the two existing WIP refs have no subsequent user commits at the checkpoint; inspect before replacing them):
 
@@ -64,3 +64,15 @@ The verified relocation completed **1,822 actions**, predominantly removing dupl
 Root `npm run lint` passed after the cleanup. Relocated canalhouse package commands were removed from root while shared dependencies and unrelated active script changes were retained. The canalhouse branch lockfile was scoped to match its own dependency manifest; active-root-only canvas bindings remain with the active root work.
 
 The normal push of the docs-only reconciliation failed at GitHub DNS resolution. Exact local reconciliation SHA, failed push log, root status, preservation hashes and cleanup journal are saved under `artifacts/branch-organization-20261008/`. No deployment or root Git synchronization is claimed.
+
+## Implementation follow-up — 2026-10-08
+
+The root tool context now has working Git writes, GitHub DNS/fetch access and outbound session coordination. All four final topic tips in the table were imported and verified against the bundle. The clean street worktree was temporarily detached for the ref update and returned to its final topic branch. Preservation branches remain local pending private/raw-source review.
+
+Current main was reconciled with `ebf08b683b912752fce3a2cec2dd2e5638273333`, including the published Mediamatic model and eight-draft tracking. Both active landmark publishers recorded a publication/root-authoring hold. Before reconciliation, 263 current modified/untracked paths, their hashes, binary patches and the original index were saved in `/Users/blackmad/Code/map-recall2-main-sync-recovery-20261008/`. The previous root HEAD is also retained as `backup/main-before-organization-sync-20261008`.
+
+Reconciliation applied 292 guarded path updates, using three-way source merges and identity-keyed JSON merges. Upstream published statuses replace stale local status; local-only requests and active edits remain. Both surveyed-envelope support and the upstream coarse roof wall-top correction survive. The original root index contained no staged edits and was verified unchanged before replacing its baseline. No reset, stash, broad staging, landmark regeneration or topic-branch merge was used.
+
+Root TypeScript lint, 19 focused coarse/source-roof/repeated-terrace tests, the manual POI contract (231 models, 197 destinations) and researched-facts check pass. Eight affected runtime bundles were rebuilt from the reconciled root source; the POI backlog was regenerated. This verifies reconciliation, not acceptance of retained draft visuals. Active local source/runtime changes remain uncommitted and unpublished.
+
+The publication branch contains only this document and the four topic handoffs, rebased additively over refreshed upstream. Its normal main push publishes documentation only. Exact push SHA, baseline/index checks and follow-up validation evidence are recorded in `artifacts/branch-organization-20261008/implementation-checkpoint.json` locally. Historical failed-push and permission records above are retained as recovery context, rather than current blockers.
