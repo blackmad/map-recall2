@@ -1,0 +1,63 @@
+{
+  "modelId": "ordinary-0363100012174397",
+  "buildingId": "NL.IMBAG.Pand.0363100012174397",
+  "sha256": "1e4892e3cdeb045bedb4cb0c415e1eb6a701c31b262e423b406a0676dacc47b6",
+  "bytes": 259396,
+  "triangles": 3572,
+  "materials": 3,
+  "textures": 0,
+  "sourceCommit": "9280ea7fd9a4e199c9a52e80a73a9f4e9b55c644",
+  "sourcePack": "experiments/canal-belt-continuation-20261007/next-box-source56/0363100012174397",
+  "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/native34-resume-20261008",
+  "acceptance": "Root and independent source/gallery/native desktop/touch accepted; publication/hosted checks pending",
+  "rootVisualReview": {
+    "inspectedSourceGalleryNativeImages": true,
+    "exactMeshesReviewed": true,
+    "all34Reproduction": true,
+    "previous32Unchanged": true,
+    "structuralChecks34": true,
+    "typeScript": true,
+    "productionBuild": true
+  },
+  "independentReview": {
+    "at": "2026-10-08T20:55:20.577955+00:00",
+    "verdict": "PASS scoped visual and native integration review; no critical new failure found",
+    "visual": "Own 2025 wide context versus frozen gallery and live show six white-trim upper bays, twin asymmetric attic glazing and white cornice, two dark garage panels and transoms with right entrance. Own side base-left view clears tree and confirms panels/transoms exposed; opposite base view confirms right entry. Rear low connected section retained rather than full-height footprint box; current gallery/native rear reveal stepped main survey owners.4396/4395 installed and unhidden. No buried attic glazing or unsupported whole-front crest plate observed.",
+    "evidence": "independent/verdict.json"
+  },
+  "nativeIntegration": {
+    "exactSuppression": "Loaded model IDs suppressed in ordinary shader ranges, spatialSuppression=false. Near/extras215 restored before load/failed load; coarse hidden=1 while near resident is generic renderer selection policy and is not counted as replacement suppression.485 disable restores coarse range0; re-enable range1. Native fallback screenshots visibly preserve buildings. Neighbor rows remain present.",
+    "pyramid": "pyramidEntries=[] for both targets: saved flags change but these assets do not exercise a present independent pyramidal entry. Do not claim new pyramidal-layer mutation test coverage.",
+    "picking": "Root actual desktop and touch click plus own actual desktop click hit exact BAG IDs, featureTarget=null, notice/source/active=null; no invented curated POI/trivia.",
+    "surroundingFacade": "Root desktop/touch pan gesture screenshots away from nearly stationary rider retain textured surrounding windows and ground-floor doors. No blank ordinary row observed."
+  },
+  "performance": {
+    "source": "Supplied desktop.json/touch.json on AppleM4Pro ChromeANGLEMetal,90frame samples per model. Own review uses same browser/GPU; no independent benchmark.",
+    "desktopBootMs": 6127,
+    "touchEmulatedBootMs": 6075,
+    "desktopFrameMedianMs": 16.7,
+    "desktopFrameP95Ms": 16.7,
+    "touchFrameMedianMs": 16.7,
+    "touchFrameP95Ms": 16.8,
+    "touchLongTaskMs": 149,
+    "longTaskStage": "ordinary-0363100012174397",
+    "interpretation": "Steady-view responsiveness supports this scoped runtime;149ms touch stage longtask preserved, no comparative improvement or real-device mobile performance acceptance claimed."
+  },
+  "preservedFailures": [
+    "/tmp/canal-prinsen215-independent64/review.json:28 failed probes classified independently as24 photo-observed shutter/narrow-pane overlaps and4 black guard rail hits; classification retained, no all-probes-pass claim.",
+    "/tmp/canal-prinsen485-independent65/verdict.json:first-draft gate/attic failures and second-draft mullion/downward-face failures remain preserved. Current independent visual checks do not erase them.",
+    "Root native desktop/touch485low tree-obstructed views retained. Own desktop-485-base.png and misleadingly named desktop-485-base-unobstructed.png are also tree-obstructed; latter is NOT a complete unobstructed base acceptance image. desktop-485-base-left.png clears tree with exposed panels/transoms."
+  ],
+  "limits": [
+    "Photo-guided front4m attic shoulders/depth and simplified entrance/panel joinery. Rear roof and low volume surveyed; rear window arrangement unobserved. Earlier gate/attic/downward-face failures preserved.",
+    "Rear facade details remain survey-derived blank massing rather than independently researched rear window arrangements.215 roof topology evidence confirms raw roof boundaries have source wall/roof support, but no independent decodedGLB roof audit was newly run.",
+    "485 front4m attic shoulder/depth reconstruction is approximate; street sources establish appearance, not full depth measurements.",
+    "Small ornament, trim profiles, shutters/panel joinery and entrance subdivisions simplified in ordinary treatment.485 entrance is modeled with simplified pale-framed/glazed opening while source entrance has dark panel joinery; visible distinction recorded, does not lose this building street-row identity.",
+    "Touch evidence is iPhone13 viewport/input emulation on desktopM4Pro, not physical phone.",
+    "Scoped visual/native acceptance does not certify source pack publication, final repository integration, final asset/bundle checks or release. Root must complete those gates before marking complete."
+  ],
+  "reviewEvidenceCommit": "695ec2b222e9ad4eb41add25711dd8e5ae3ebfe5",
+  "sourceArchiveVerified": true,
+  "routeStartSmoke": "PASS desktop setup form route",
+  "manualGallery": "All34 loaded on desktop/touch; feedback image preview and single-model filter pass"
+}

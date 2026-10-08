@@ -31,11 +31,17 @@ node scripts/ordinary-buildings/build-keizers603-details.mjs
 node scripts/ordinary-buildings/build-kerk206-details.mjs
 node --import tsx scripts/ordinary-buildings/build-amstelstraat16-details.ts
 node --import tsx scripts/ordinary-buildings/build-kerk136-details.ts
+node --import tsx scripts/ordinary-buildings/build-nieuwespiegel555.ts
+node --import tsx scripts/ordinary-buildings/build-prinsen211-details.ts
+node --import tsx scripts/ordinary-buildings/build-prinsen215-details.ts
+ORDINARY_OUTPUT_ROOT=public/canal-drive/models/ordinary-buildings node --import tsx scripts/ordinary-buildings/build-prinsen485-details.ts
 node --import tsx scripts/ordinary-buildings/check.ts
 npm run build:canal-signature-landmarks
 ```
 
 The current local full sequence reproduced all 29 model byte streams exactly during the Amstelstraat integration; the previous 28 hashes stayed unchanged. Hosted acceptance currently covers 28 until Amstelstraat release and hosted verification complete. The Amstelstraat native procedural stage uses existing BuildingTools/house-geometry primitives and replaces only its intermediate shell; its dimensions, lower-front trace and separate main/low roofs live in source-specific specs. The new Keizersgracht model fits the strict 500,000-byte / three-material budget. Exact indexing applies to these static expanded triangle assets, not arbitrary animated glTF files.
+
+The subsequent sequence reproduces 34 meshes, preserving the earlier 32 fingerprints. Prinsengracht 215–217 and 485–487 use their own surveyed roofs and photographed opening groups. The 215–217 check deliberately continues to report 28 first-hit shutter/guardrail overlaps; their source classifications and failed original evidence are retained in its review record. A passing shared structural check does not erase those probe results. The 485–487 stage defaults to a draft directory, so set `ORDINARY_OUTPUT_ROOT` explicitly for runtime regeneration.
 
 ## What this batch taught us
 

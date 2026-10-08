@@ -974,6 +974,52 @@
         "Complete CI pass not claimed."
       ],
       "reviewEvidenceCommit": "3d9b4e2cac5a1e7a05d65ad88b81a35f971df530"
+    },
+    "NL.IMBAG.Pand.0363100012169457": {
+      "treatment": "landmark",
+      "reviewedOn": "2026-10-08",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169457",
+        "https://data.amsterdam.nl/data/geozoek?center=52.37694425,4.88576725&lagen=pano-pano2025bi"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012169457/fullfront-0363100012169457-2025-01972-e0.jpg",
+      "reason": "Ordinary background identity retained; historic defining facade and surveyed roof assemblies received full source/gallery/independent/native loop. No curated destination or fabricated trivia. Scoped native accepted; hosted verification pending.",
+      "checks": {
+        "ordinarySilhouette": false,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "93ddc84522c52600ee49555848da55aa48375a15",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-box-source49/0363100012169457",
+      "independentReview": "experiments/canal-belt-continuation-20261007/native34-resume-20261008/independent/verdict.json",
+      "liveGameReview": "experiments/canal-belt-continuation-20261007/native34-resume-20261008/root/native",
+      "limits": [
+        "Photo-guided opening dimensions and shutter angles.28 original first-hit overlaps retained:24 photographed shutter overlaps and4 guardrail hits. Rear roof divisions surveyed; rear window arrangement unobserved. Hoist proportions approximate."
+      ]
+    },
+    "NL.IMBAG.Pand.0363100012174397": {
+      "treatment": "landmark",
+      "reviewedOn": "2026-10-08",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012174397",
+        "https://data.amsterdam.nl/data/geozoek?center=52.3695874,4.8833109&lagen=pano-pano2025bi"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012174397/frontwide-0363100012174397-2025-02279-einitial.jpg",
+      "reason": "Ordinary background identity retained; historic defining facade and surveyed roof assemblies received full source/gallery/independent/native loop. No curated destination or fabricated trivia. Scoped native accepted; hosted verification pending.",
+      "checks": {
+        "ordinarySilhouette": false,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "9280ea7fd9a4e199c9a52e80a73a9f4e9b55c644",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-box-source56/0363100012174397",
+      "independentReview": "experiments/canal-belt-continuation-20261007/native34-resume-20261008/independent/verdict.json",
+      "liveGameReview": "experiments/canal-belt-continuation-20261007/native34-resume-20261008/root/native",
+      "limits": [
+        "Photo-guided front4m attic shoulders/depth and simplified entrance/panel joinery. Rear roof and low volume surveyed; rear window arrangement unobserved. Earlier gate/attic/downward-face failures preserved."
+      ]
     }
   },
   "notes": [

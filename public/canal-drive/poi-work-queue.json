@@ -104,7 +104,7 @@
     },
     {
       "id": "oosterparkkerk",
-      "task": "Oosterparkkerk — native church and linked caretaker house",
+      "task": "Oosterparkkerk \u2014 native church and linked caretaker house",
       "priority": "normal",
       "status": "verified-native-awaiting-hosted",
       "existingExtractIdentity": "extract_landmarks_1606629595",
@@ -1394,7 +1394,7 @@
     },
     {
       "id": "mediamatic",
-      "task": "Mediamatic — original house-style landmark model",
+      "task": "Mediamatic \u2014 original house-style landmark model",
       "priority": "high",
       "status": "verified-scoped",
       "requestedOn": "2026-10-05",
@@ -1405,7 +1405,7 @@
         "path": "models/mediamatic"
       },
       "candidateSHA256": "72fda1651845e18bf40e58d8b3c1bd017465a7da8787e07d1d4bdf2e9113893b",
-      "validation": "Root + independent source/gallery/nativegame route/pin/physicalcard/exactmask/7neighbors and desktop/touch-emulated stationarypans passed exact72fda165 at6789f77e. AppleM4ProANGLEMetal60rAF median16.6–16.7ms,p9517–17.3ms. Published-source checkpoint accepted-local-72fda165-20261008. Approximate greenhouse joinery/rear glazing; no physicalphone or globalnew-mainperformanceclaim.",
+      "validation": "Root + independent source/gallery/nativegame route/pin/physicalcard/exactmask/7neighbors and desktop/touch-emulated stationarypans passed exact72fda165 at6789f77e. AppleM4ProANGLEMetal60rAF median16.6\u201316.7ms,p9517\u201317.3ms. Published-source checkpoint accepted-local-72fda165-20261008. Approximate greenhouse joinery/rear glazing; no physicalphone or globalnew-mainperformanceclaim.",
       "acceptedEvidence": {
         "repository": "blackmad/map-recall2-source-data",
         "commit": "9ae768a488e916e56953716b04812eb6628b0a0d",
@@ -1414,7 +1414,7 @@
     },
     {
       "id": "hannekes-boom",
-      "task": "Hannekes Boom — original house-style landmark model",
+      "task": "Hannekes Boom \u2014 original house-style landmark model",
       "priority": "high",
       "status": "draft-review-pending",
       "requestedOn": "2026-10-05",
@@ -2184,18 +2184,20 @@
         "NL.IMBAG.Pand.0363100012171370",
         "NL.IMBAG.Pand.0363100012177101",
         "NL.IMBAG.Pand.0363100012167897",
-        "NL.IMBAG.Pand.0363100012169456"
+        "NL.IMBAG.Pand.0363100012169456",
+        "NL.IMBAG.Pand.0363100012169457",
+        "NL.IMBAG.Pand.0363100012174397"
       ],
       "latestBatch": [
-        "NL.IMBAG.Pand.0363100012167897",
-        "NL.IMBAG.Pand.0363100012169456"
+        "NL.IMBAG.Pand.0363100012169457",
+        "NL.IMBAG.Pand.0363100012174397"
       ],
-      "evidence": "ordinary-buildings-data/canal-prinsen211-review-20261008.json",
+      "evidence": "ordinary-buildings-data/canal-prinsen215-review-20261008.json",
       "handoff": "docs/performance/2026-10-06/canal-belt-continuation-handoff.md",
-      "nextAction": "Local32 accepted; publication/host verification pending. Continue215 own-source independent review and485\u2013487 authoring; continuous queue remains active.",
+      "nextAction": "Publish accepted34 and verify hosted exact fingerprints and desktop/touch gallery/manual. Then research next substantial in-scope ordinary candidate with full facade/roof ownership review; continuous queue remains active.",
       "sourceCommit": "9fc691744e03b91f70899896033acdb6cbbd1a18",
       "notes": "Ordinary assets/full architecture review for defining Rokin roof assemblies; no invented POI routes. Existing Nacarat basic inside-footprint click card retained. Both strict500k/three-material budgets pass.",
-      "localModelCount": 32,
+      "localModelCount": 34,
       "hostedVerification": {
         "publicCommit": "cb05b384ad5bd64150bebfd9ecb1ca75d71710e9",
         "firebaseRun": "37814067483",
@@ -2207,9 +2209,16 @@
         "evidenceSourceCommit": "7a370560be2a05390823c3c74222ec2dbbb3062c",
         "evidenceSourcePack": "experiments/canal-belt-continuation-20261007/host30-and-review46/canal-kerk136-host30"
       },
-      "publicationSourceCommit": "3d9b4e2cac5a1e7a05d65ad88b81a35f971df530",
-      "pendingModels": [
-        "NL.IMBAG.Pand.0363100012169457"
+      "publicationSourceCommit": "695ec2b222e9ad4eb41add25711dd8e5ae3ebfe5",
+      "pendingModels": [],
+      "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/native34-resume-20261008",
+      "reviewPreparationCommit": "396603d052c1dc892425ff4ed6da0d449144d61f",
+      "reviewLimits": [
+        "Rear facade details remain survey-derived blank massing rather than independently researched rear window arrangements.215 roof topology evidence confirms raw roof boundaries have source wall/roof support, but no independent decodedGLB roof audit was newly run.",
+        "485 front4m attic shoulder/depth reconstruction is approximate; street sources establish appearance, not full depth measurements.",
+        "Small ornament, trim profiles, shutters/panel joinery and entrance subdivisions simplified in ordinary treatment.485 entrance is modeled with simplified pale-framed/glazed opening while source entrance has dark panel joinery; visible distinction recorded, does not lose this building street-row identity.",
+        "Touch evidence is iPhone13 viewport/input emulation on desktopM4Pro, not physical phone.",
+        "Scoped visual/native acceptance does not certify source pack publication, final repository integration, final asset/bundle checks or release. Root must complete those gates before marking complete."
       ]
     },
     {
@@ -2274,7 +2283,7 @@
     },
     {
       "id": "meerpadkerk",
-      "task": "Meerpadkerk — original house-style landmark model",
+      "task": "Meerpadkerk \u2014 original house-style landmark model",
       "priority": "high",
       "status": "draft-review-pending",
       "sourceArchive": {
@@ -2291,7 +2300,7 @@
     },
     {
       "id": "nieuwendammerkerk",
-      "task": "Nieuwendammerkerk — original house-style landmark model",
+      "task": "Nieuwendammerkerk \u2014 original house-style landmark model",
       "priority": "high",
       "status": "draft-review-pending",
       "sourceArchive": {
@@ -2308,7 +2317,7 @@
     },
     {
       "id": "this-is-holland",
-      "task": "This is Holland — original house-style landmark model",
+      "task": "This is Holland \u2014 original house-style landmark model",
       "priority": "high",
       "status": "draft-review-pending",
       "sourceArchive": {
@@ -2325,7 +2334,7 @@
     },
     {
       "id": "huize-frankendael",
-      "task": "Huize Frankendael — original house-style landmark model",
+      "task": "Huize Frankendael \u2014 original house-style landmark model",
       "priority": "high",
       "status": "draft-review-pending",
       "sourceArchive": {
@@ -2342,7 +2351,7 @@
     },
     {
       "id": "uilenburger-synagoge",
-      "task": "Uilenburger Synagoge — original house-style landmark model",
+      "task": "Uilenburger Synagoge \u2014 original house-style landmark model",
       "priority": "high",
       "status": "draft-review-pending",
       "sourceArchive": {
@@ -2359,7 +2368,7 @@
     },
     {
       "id": "luther-museum",
-      "task": "Luther Museum Amsterdam — original house-style landmark model",
+      "task": "Luther Museum Amsterdam \u2014 original house-style landmark model",
       "priority": "high",
       "status": "draft-review-pending",
       "sourceArchive": {
@@ -2376,7 +2385,7 @@
     },
     {
       "id": "posthoornkerk",
-      "task": "Posthoornkerk — original house-style landmark model",
+      "task": "Posthoornkerk \u2014 original house-style landmark model",
       "priority": "high",
       "status": "draft-review-pending",
       "sourceArchive": {

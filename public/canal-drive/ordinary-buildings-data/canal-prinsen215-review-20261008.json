@@ -1,0 +1,63 @@
+{
+  "modelId": "ordinary-0363100012169457",
+  "buildingId": "NL.IMBAG.Pand.0363100012169457",
+  "sha256": "ae5cf7506a801ca73cea95583e1f44e6cadc2581175e6f79cede9725e255da0e",
+  "bytes": 474556,
+  "triangles": 6939,
+  "materials": 3,
+  "textures": 0,
+  "sourceCommit": "93ddc84522c52600ee49555848da55aa48375a15",
+  "sourcePack": "experiments/canal-belt-continuation-20261007/next-box-source49/0363100012169457",
+  "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/native34-resume-20261008",
+  "acceptance": "Root and independent source/gallery/native desktop/touch accepted; publication/hosted checks pending",
+  "rootVisualReview": {
+    "inspectedSourceGalleryNativeImages": true,
+    "exactMeshesReviewed": true,
+    "all34Reproduction": true,
+    "previous32Unchanged": true,
+    "structuralChecks34": true,
+    "typeScript": true,
+    "productionBuild": true
+  },
+  "independentReview": {
+    "at": "2026-10-08T20:55:20.577955+00:00",
+    "verdict": "PASS scoped visual and native integration review; no critical new failure found",
+    "visual": "Own 2025/2024 facade references versus frozen gallery/live show twin round loading groups, red shutters, black guards, exposed narrow dark panes, small attic panes and black projecting hoists. Hoists are black on current exact215 pair, while adjacent separately modeled pair includes pale hoists. Own rear oblique shows high native roof and supported visible steps; roof does not collapse to a low whole-building box. No disconnected roof plate or wall cap overloading the street crown observed. Retained neighbor9456 ordinary shell hidden because its own replacement is loaded and visible;6494 installed unhidden.",
+    "evidence": "independent/verdict.json"
+  },
+  "nativeIntegration": {
+    "exactSuppression": "Loaded model IDs suppressed in ordinary shader ranges, spatialSuppression=false. Near/extras215 restored before load/failed load; coarse hidden=1 while near resident is generic renderer selection policy and is not counted as replacement suppression.485 disable restores coarse range0; re-enable range1. Native fallback screenshots visibly preserve buildings. Neighbor rows remain present.",
+    "pyramid": "pyramidEntries=[] for both targets: saved flags change but these assets do not exercise a present independent pyramidal entry. Do not claim new pyramidal-layer mutation test coverage.",
+    "picking": "Root actual desktop and touch click plus own actual desktop click hit exact BAG IDs, featureTarget=null, notice/source/active=null; no invented curated POI/trivia.",
+    "surroundingFacade": "Root desktop/touch pan gesture screenshots away from nearly stationary rider retain textured surrounding windows and ground-floor doors. No blank ordinary row observed."
+  },
+  "performance": {
+    "source": "Supplied desktop.json/touch.json on AppleM4Pro ChromeANGLEMetal,90frame samples per model. Own review uses same browser/GPU; no independent benchmark.",
+    "desktopBootMs": 6127,
+    "touchEmulatedBootMs": 6075,
+    "desktopFrameMedianMs": 16.7,
+    "desktopFrameP95Ms": 16.7,
+    "touchFrameMedianMs": 16.7,
+    "touchFrameP95Ms": 16.8,
+    "touchLongTaskMs": 149,
+    "longTaskStage": "ordinary-0363100012174397",
+    "interpretation": "Steady-view responsiveness supports this scoped runtime;149ms touch stage longtask preserved, no comparative improvement or real-device mobile performance acceptance claimed."
+  },
+  "preservedFailures": [
+    "/tmp/canal-prinsen215-independent64/review.json:28 failed probes classified independently as24 photo-observed shutter/narrow-pane overlaps and4 black guard rail hits; classification retained, no all-probes-pass claim.",
+    "/tmp/canal-prinsen485-independent65/verdict.json:first-draft gate/attic failures and second-draft mullion/downward-face failures remain preserved. Current independent visual checks do not erase them.",
+    "Root native desktop/touch485low tree-obstructed views retained. Own desktop-485-base.png and misleadingly named desktop-485-base-unobstructed.png are also tree-obstructed; latter is NOT a complete unobstructed base acceptance image. desktop-485-base-left.png clears tree with exposed panels/transoms."
+  ],
+  "limits": [
+    "Photo-guided opening dimensions and shutter angles.28 original first-hit overlaps retained:24 photographed shutter overlaps and4 guardrail hits. Rear roof divisions surveyed; rear window arrangement unobserved. Hoist proportions approximate.",
+    "Rear facade details remain survey-derived blank massing rather than independently researched rear window arrangements.215 roof topology evidence confirms raw roof boundaries have source wall/roof support, but no independent decodedGLB roof audit was newly run.",
+    "485 front4m attic shoulder/depth reconstruction is approximate; street sources establish appearance, not full depth measurements.",
+    "Small ornament, trim profiles, shutters/panel joinery and entrance subdivisions simplified in ordinary treatment.485 entrance is modeled with simplified pale-framed/glazed opening while source entrance has dark panel joinery; visible distinction recorded, does not lose this building street-row identity.",
+    "Touch evidence is iPhone13 viewport/input emulation on desktopM4Pro, not physical phone.",
+    "Scoped visual/native acceptance does not certify source pack publication, final repository integration, final asset/bundle checks or release. Root must complete those gates before marking complete."
+  ],
+  "reviewEvidenceCommit": "695ec2b222e9ad4eb41add25711dd8e5ae3ebfe5",
+  "sourceArchiveVerified": true,
+  "routeStartSmoke": "PASS desktop setup form route",
+  "manualGallery": "All34 loaded on desktop/touch; feedback image preview and single-model filter pass"
+}
