@@ -1,10 +1,8 @@
 import { appearanceBrickMaterial } from './appearanceBrickMaterial.js';
 import { sourceToRenderHeight, napToSourceHeight } from './appearanceHeight.js';
-/** Actual Three.js renderer adapter for CityAppearanceStreamer. The workspace
- * provides Three's runtime but does not install its separate declaration package.
+/** Actual Three.js renderer adapter for CityAppearanceStreamer.
  * Buffer creation is independent of WebGL and covered by geometry tests.
  */
-// @ts-expect-error Three runtime is installed without @types/three.
 import * as THREE from 'three';
 // @ts-expect-error Shared browser JS has no separate declaration file.
 import { wallObservationIntervals, clipWallTriangles } from '../../public/canal-drive/da-costa-block/wall-intervals.js';
@@ -346,7 +344,7 @@ export function createCityAppearanceThreeAdapter(options: ThreeAppearanceOptions
         const geometry = new THREE.BufferGeometry(); geometry.setAttribute('position', new THREE.Float32BufferAttribute(batch.positions, 3)); geometry.setAttribute('uv', new THREE.Float32BufferAttribute(batch.uvs, 2));
         const mesh = new THREE.Mesh(geometry, entry.material); mesh.name = `city-appearance-source-sign-${batch.descriptor.physicalSignId}`; mesh.userData.triangleIdentities = batch.identities; mesh.userData.sourceSign = true; meshes.push(mesh);
       }
-      for (const mesh of [...group.children]) if (mesh !== selectionMesh && mesh !== signGroup && mesh.geometry) { group.remove(mesh); mesh.geometry.dispose(); if (mesh.userData.sourceSign) { /* shared source-sign materials are disposed below */ } }
+      for (const mesh of [...group.children]) if (mesh !== selectionMesh && mesh !== signGroup && mesh instanceof THREE.Mesh) { group.remove(mesh); mesh.geometry.dispose(); if (mesh.userData.sourceSign) { /* shared source-sign materials are disposed below */ } }
       for (const mesh of meshes) group.add(mesh);
       // Touring a large batch must not retain textures for signs no longer drawn.
       for(const [key,entry] of sourceSignMaterials)if(!sourceSigns.has(key)){entry.material.dispose();entry.texture.dispose();sourceSignMaterials.delete(key);}
@@ -408,7 +406,7 @@ export function createCityAppearanceThreeAdapter(options: ThreeAppearanceOptions
         if (disposed) return;
         disposed = true; options.parent.remove(group);
         for (const mesh of [...signGroup.children]) { signGroup.remove(mesh); disposeMachineSignMesh(mesh); }
-        for (const mesh of [...group.children]) { group.remove(mesh); if (mesh !== signGroup && mesh.geometry) mesh.geometry.dispose(); }
+        for (const mesh of [...group.children]) { group.remove(mesh); if (mesh !== signGroup && mesh instanceof THREE.Mesh) mesh.geometry.dispose(); }
         for (const material of materials.values()) material.dispose();
         for (const { material, texture } of sourceSignMaterials.values()) { texture.dispose(); material.dispose(); }
         selectionMesh=null; selectionMaterial.dispose(); materials.clear(); prepared.clear(); selectionSurfaces.clear(); lods.clear();

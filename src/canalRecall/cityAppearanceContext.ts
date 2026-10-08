@@ -1,5 +1,4 @@
 /** Source-derived street context for a published appearance area. Geometry is illustrative in height only. */
-// @ts-expect-error Three runtime is installed without its separate declaration package.
 import * as THREE from 'three';
 // @ts-expect-error Shared inventory typology is a browser JS module.
 import { treeTypology } from '../../public/canal-drive/da-costa-block/tree-typology.js';
@@ -37,9 +36,9 @@ export function createAppearanceContext(data: any,options:{includeBase?:boolean}
     trunks.push({position:[t.position[0],t.trunkHeight/2+.1,t.position[1]],scale:[t.trunkWidth,t.trunkHeight,t.trunkWidth]});
     for(const lobe of t.lobes)crowns[lobe.tone].push({position:[t.position[0]+lobe.offset[0],lobe.offset[1]+.1,t.position[1]+lobe.offset[2]],scale:lobe.scale});
   }
-  function instances(items:any[],geometry:any,colour:string){if(!items.length){geometry.dispose();return;}const mesh=new THREE.InstancedMesh(geometry,mat(colour),items.length);items.forEach((item,i)=>{dummy.position.set(...item.position);dummy.scale.set(...item.scale);dummy.updateMatrix();mesh.setMatrixAt(i,dummy.matrix);});mesh.instanceMatrix.needsUpdate=true;mesh.castShadow=true;group.add(mesh);}
+  function instances(items:any[],geometry:any,colour:string){if(!items.length){geometry.dispose();return;}const mesh=new THREE.InstancedMesh(geometry,mat(colour),items.length);items.forEach((item,i)=>{dummy.position.set(item.position[0],item.position[1],item.position[2]);dummy.scale.set(item.scale[0],item.scale[1],item.scale[2]);dummy.updateMatrix();mesh.setMatrixAt(i,dummy.matrix);});mesh.instanceMatrix.needsUpdate=true;mesh.castShadow=true;group.add(mesh);}
   instances(trunks,new THREE.CylinderGeometry(.5,.5,1,6),'#827c61');
   for(let i=0;i<3;i++)instances(crowns[i],new THREE.IcosahedronGeometry(1,1),['#9dab78','#acb989','#899b68'][i]);
   let disposed=false;
-  return {group,stats:{trees,bridges,boundaries,meshes:group.children.length},dispose(){if(disposed)return;disposed=true;group.removeFromParent();for(const child of [...group.children]){if(child.isInstancedMesh)child.dispose();child.geometry.dispose();group.remove(child);}for(const m of materials.values())m.dispose();materials.clear();}};
+  return {group,stats:{trees,bridges,boundaries,meshes:group.children.length},dispose(){if(disposed)return;disposed=true;group.removeFromParent();for(const child of [...group.children]){if(child instanceof THREE.InstancedMesh)child.dispose();if(child instanceof THREE.Mesh)child.geometry.dispose();group.remove(child);}for(const m of materials.values())m.dispose();materials.clear();}};
 }

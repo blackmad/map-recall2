@@ -1,8 +1,5 @@
-// @ts-expect-error Installed runtime has no separate Three declarations.
 import * as THREE from 'three';
-// @ts-expect-error Installed runtime has no separate Three declarations.
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-// @ts-expect-error Installed runtime has no separate Three declarations.
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 
 export interface FacadeWall {

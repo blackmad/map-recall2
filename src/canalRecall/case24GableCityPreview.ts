@@ -1,7 +1,5 @@
 /** Isolated inspection page using the same CityAppearanceThree adapter as the city. */
-// @ts-expect-error Three is bundled at build time without separate declaration files.
 import * as THREE from 'three';
-// @ts-expect-error Three add-on is bundled at build time without separate declaration files.
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { createCityAppearanceThreeAdapter } from './cityAppearanceThree.js';
 

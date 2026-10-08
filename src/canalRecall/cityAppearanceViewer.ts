@@ -1,7 +1,5 @@
 /** Published, review-refreshable scene. No extraction or spending happens in this browser. */
-// @ts-expect-error Installed runtime has no separate Three declarations.
 import * as THREE from 'three';
-// @ts-expect-error Installed runtime has no separate Three declarations.
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { CityAppearanceStreamer } from './cityAppearanceStreamer.js';
 import { createCityAppearanceThreeAdapter, type ThreeAppearanceResource } from './cityAppearanceThree.js';
@@ -190,7 +188,7 @@ function createRouteOverlay(route:any){const group=new THREE.Group(),positions:n
 function routeSample(distance:number){const points=active?.context.guidedRoute?.points;if(!points?.length)return null;let remaining=distance;for(let i=1;i<points.length;i++){const a=points[i-1],b=points[i],length=Math.hypot(b[0]-a[0],b[1]-a[1]);if(remaining<=length){const t=length?remaining/length:0;return{point:[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t],ahead:b};}remaining-=length;}return{point:points.at(-1),ahead:points.at(-1)};}
 function routeStreet(distance:number){return active?.context.guidedRoute?.legs?.find((leg:any,index:number,legs:any[])=>distance>=leg.fromM&&(distance<leg.toM||index===legs.length-1))?.streetName??null;}
 function toggleRoutePlayback(){if(!active?.context.guidedRoute)return;routePlaying=!routePlaying;controls.enabled=!routePlaying;$('follow-route').textContent=routePlaying?'Pause street tour':'Resume street tour';if(routePlaying){setMachineSignVisibility(checked('machine-signs'));quizStreet=null;routeDistance=routeDistance>=active.context.guidedRoute.distanceM?0:routeDistance;lastRouteTime=performance.now();}}
-function setRouteCamera(distance:number){if(active?.priorityTiles)active.priorityTiles.length=0;view='route';if(scene.fog){scene.fog.near=260;scene.fog.far=850;}const route=active?.context.guidedRoute;if(!route)return;routeDistance=Math.max(0,Math.min(route.distanceM,distance));const sample=routeSample(routeDistance),forward=routeSample(Math.min(route.distanceM,routeDistance+12));if(!sample||!forward)return;const [x,z]=sample.point;let dx=forward.point[0]-x,dz=forward.point[1]-z;if(Math.hypot(dx,dz)<.1){const behind=routeSample(Math.max(0,routeDistance-12));dx=x-(behind?.point[0]??x-1);dz=z-(behind?.point[1]??z);}const length=Math.hypot(dx,dz)||1;camera.position.set(x-dx/length*4,2.35,z-dz/length*4);controls.target.set(x+dx/length*12,1.75,z+dz/length*12);camera.fov=58;camera.updateProjectionMatrix();controls.update();const street=routeStreet(routeDistance);$('view-label').textContent=`Street tour · ${street?`${street} · `:''}${Math.round(routeDistance)} / ${Math.round(route.distanceM)} m · ${Math.round(routeDistance/route.distanceM*100)}%`;streamDirty=true;}
+function setRouteCamera(distance:number){if(active?.priorityTiles)active.priorityTiles.length=0;view='route';if(scene.fog instanceof THREE.Fog){scene.fog.near=260;scene.fog.far=850;}const route=active?.context.guidedRoute;if(!route)return;routeDistance=Math.max(0,Math.min(route.distanceM,distance));const sample=routeSample(routeDistance),forward=routeSample(Math.min(route.distanceM,routeDistance+12));if(!sample||!forward)return;const [x,z]=sample.point;let dx=forward.point[0]-x,dz=forward.point[1]-z;if(Math.hypot(dx,dz)<.1){const behind=routeSample(Math.max(0,routeDistance-12));dx=x-(behind?.point[0]??x-1);dz=z-(behind?.point[1]??z);}const length=Math.hypot(dx,dz)||1;camera.position.set(x-dx/length*4,2.35,z-dz/length*4);controls.target.set(x+dx/length*12,1.75,z+dz/length*12);camera.fov=58;camera.updateProjectionMatrix();controls.update();const street=routeStreet(routeDistance);$('view-label').textContent=`Street tour · ${street?`${street} · `:''}${Math.round(routeDistance)} / ${Math.round(route.distanceM)} m · ${Math.round(routeDistance/route.distanceM*100)}%`;streamDirty=true;}
 function updateRouteCamera(now:number){if(!routePlaying)return;const route=active?.context.guidedRoute;if(!route){routePlaying=false;return;}const next=routeDistance+Math.min(.1,(now-lastRouteTime)/1000)*9;lastRouteTime=now;if(next>=route.distanceM){routePlaying=false;controls.enabled=true;$('follow-route').textContent='Replay street tour';}setRouteCamera(next);}
 async function loadRelease(){
   const load=++generation;loadController?.abort();const controller=new AbortController();loadController=controller;
@@ -252,7 +250,7 @@ function setView(name:string){
   if(name==='canal'){const rd=expansionMode&&active?lngLatToRd([4.8728,52.3720]):null,x=rd?rd.x-active.context.origin.x:-5,z=rd?active.context.origin.y-rd.y:-30;controls.target.set(x,7,z);camera.position.set(x-70,58,z+55);}
   else if(name==='shops'){const rd=expansionMode&&active?lngLatToRd([4.8730,52.37155]):null,x=rd?rd.x-active.context.origin.x:-22,z=rd?active.context.origin.y-rd.y:70;controls.target.set(x,8,z);camera.position.set(x-26,23,z+38);}
   else{const b=active?.displayExtent.bounds||[-130,-147,130,131],x=(b[0]+b[2])/2,z=(b[1]+b[3])/2,span=Math.max(b[2]-b[0],b[3]-b[1]);controls.target.set(x,5,z);camera.position.set(x+span*.5,span*.74,z+span*.70);}
-  if(scene.fog){scene.fog.near=name==='overview'?1800:260;scene.fog.far=name==='overview'?6000:850;}
+  if(scene.fog instanceof THREE.Fog){scene.fog.near=name==='overview'?1800:260;scene.fog.far=name==='overview'?6000:850;}
   setCameraPreset(activeCameraPreset);
   updateTrees(active);
   document.querySelectorAll<HTMLButtonElement>('[data-view]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.view===name)));streamDirty=true;
@@ -289,7 +287,7 @@ function frameFrontage(id:string){
   const corrected=r.review?.placement==='accepted'?records().find((t:any)=>t.id===r.review.targetId)||r:r;
   const plan=planFrontageCamera(corrected,buildings(),camera.aspect);selectBuilding(r.renderBuildingId||r.buildingId,r.id);
   if(!plan.usable){$('inspector-warning').textContent='This wall has no clear initial camera position. Use the photographs to review it.';return;}
-  controls.target.set(...plan.target);camera.position.set(...plan.position);camera.fov=plan.fov;camera.updateProjectionMatrix();controls.update();frameRecord=corrected;view='frontage';updateTrees(active);
+  controls.target.set(plan.target[0],plan.target[1],plan.target[2]);camera.position.set(plan.position[0],plan.position[1],plan.position[2]);camera.fov=plan.fov;camera.updateProjectionMatrix();controls.update();frameRecord=corrected;view='frontage';updateTrees(active);
   $('view-label').textContent=r.address;document.querySelectorAll('[data-view]').forEach(button=>button.setAttribute('aria-pressed','false'));streamDirty=true;
 }
 function nextFrontage(delta:number){const rs=records();if(!rs.length)return;const i=rs.findIndex((r:any)=>r.id===selectedId);frameFrontage(rs[(i+delta+rs.length)%rs.length].id);}
