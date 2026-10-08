@@ -93,7 +93,18 @@ export function repeatedTerraceRoofTriangles(
   const w = .48, bottom = riseM * .16, top = riseM * .55;
   const hole: V2[] = [[-w, bottom], [-w, top], [w, top], [w, bottom]];
   const points = [...profile, ...hole], face = earcut(points.flat(), [profile.length]);
-  for (let i = 0; i < face.length; i += 3) sink.flatPoly(face.slice(i, i + 3).map(j => [points[j][0], .002, points[j][1]]), 'plate', [0, -1, 0], plan.wallHex);
+  // Masonry crowns have a rear face and edge returns. A single front-facing
+  // plane vanishes from the game's oblique roof camera wherever it rises
+  // above the cross-roof, exposing the street through the crown.
+  for (let i = 0; i < face.length; i += 3) {
+    const triangle = face.slice(i, i + 3);
+    sink.flatPoly(triangle.map(j => [points[j][0], .002, points[j][1]]), 'plate', [0, -1, 0], plan.wallHex);
+    sink.flatPoly(triangle.map(j => [points[j][0], .15, points[j][1]]), 'plate', [0, 1, 0], plan.wallHex);
+  }
+  for (const contour of [profile, hole]) for (let i = 0; i < contour.length; i++) {
+    const a = contour[i], b = contour[(i + 1) % contour.length];
+    sink.flatPoly([[a[0], .002, a[1]], [b[0], .002, b[1]], [b[0], .15, b[1]], [a[0], .15, a[1]]], 'plate', [b[1] - a[1], 0, a[0] - b[0]], plan.wallHex);
+  }
   const rect = (a: number, b: number, c: number, d: number, inset: number, hex: string) => sink.flatPoly([[a, inset, c], [b, inset, c], [b, inset, d], [a, inset, d]], 'decal', [0, -1, 0], hex);
   rect(-w, w, bottom, top, .06, '#354b50');
   const frame = plan.frameHex ?? '#e4ddbf', sash = plan.sashHex ?? '#30463b', t = .055;
