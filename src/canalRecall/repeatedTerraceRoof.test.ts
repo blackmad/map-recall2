@@ -52,3 +52,17 @@ test('eight native roofs retain upward slope winding, outline bounds, native cre
     assert(glassHits.length);assert.equal(glassHits[0].t.hex,'#354b50');
   }
 });
+
+
+test('party roof ends remain closed when adjacent parents have unequal crest heights',()=>{
+  const origin={lng:4.877,lat:52.375},kx=111320*Math.cos(origin.lat*Math.PI/180);
+  const ll=([x,y]:number[])=>[origin.lng+x/kx,origin.lat+y/110540];
+  const outer=[[0,0],[12,0],[12,16],[0,16],[0,0]].map(ll);
+  const roof=repeatedTerraceRoofTriangles(outer,origin,{front:{start:[0,0],end:[12,0],normal:[0,-1]},widthM:3,gable:'spout',exposedEnds:[false,false],wallHex:'#8b7059'},13,2.4,{bayM:3,storeyM:3,cellM:1},kx);
+  // These horizontal rays pass above a lower neighbor but below this roof's
+  // crest. They must hit a masonry party closure, rather than an open volume.
+  for(const [ray,direction,nx]of[[[14,8,14],[-1,0,0],1],[[-2,8,14],[1,0,0],-1]]as const){
+    const hits=roof.map(t=>({t,d:hit([...ray],[...direction],t)})).filter(v=>v.d!==undefined).sort((a,b)=>a.d!-b.d!);
+    assert(hits.length,'Party roof gap exposes sky');assert.equal(hits[0].t.part,'plate');assert.equal(hits[0].t.hex,'#8b7059');assert(Math.abs(hits[0].d!-2)<1e-6);assert.equal(hits[0].t.n[0],nx);
+  }
+});

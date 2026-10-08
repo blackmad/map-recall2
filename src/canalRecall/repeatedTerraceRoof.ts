@@ -71,11 +71,13 @@ export function repeatedTerraceRoofTriangles(
       }
     }
   }
-  // End caps follow the installed perimeter; callers omit party-wall ends.
+  // Close the native roof volume at party edges too. Adjacent surveyed parents
+  // can have different heights/depths; an omitted end exposes sky through the
+  // higher roof. Neighbor geometry occludes shared interior portions naturally.
   for (let i = 0; i < local.length; i++) {
     const a = local[i], b = local[(i + 1) % local.length];
     const middleU = (a[0] + b[0]) / 2;
-    if (Math.abs(middleU) < length * .3 || !plan.exposedEnds?.[middleU < 0 ? 0 : 1]) continue;
+    if (Math.abs(middleU) < length * .3) continue;
     const pieces = [a];
     if ((a[1] - ridge) * (b[1] - ridge) < 0) { const t = (ridge - a[1]) / (b[1] - a[1]); pieces.push([a[0] + t * (b[0] - a[0]), ridge]); }
     pieces.push(b);
