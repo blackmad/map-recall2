@@ -38,7 +38,7 @@ import { BuildingContextIndex } from './buildingContextIndex.js';
 
 type BuildOptions = { look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; contextFeatures?: readonly Feature[]; appearanceRevision: string; hostOpenings: readonly ChunkHostOpeningConfig[]; hostOpeningRevision: string };
 
-type MapLike = { getCanvas(): HTMLCanvasElement; triggerRepaint(): void; getZoom(): number };
+type MapLike = { getCanvas(): HTMLCanvasElement; triggerRepaint(): void; getZoom(): number; _canalElevation?: {enabled:boolean;revision:number;objectGround(g:any):number} };
 type MaplibreLike = { MercatorCoordinate: { fromLngLat(lngLat: [number, number], altitude: number): { x: number; y: number; z: number; meterInMercatorCoordinateUnits(): number } } };
 
 const TILE_ZOOM = 14;
@@ -62,6 +62,7 @@ in float layer;
 in vec4 tint;
 in vec4 accent;
 in float hidden;
+in float ground;
 uniform mat4 projectionMatrix;
 uniform mat4 modelViewMatrix;
 out vec2 vUv;
@@ -74,7 +75,7 @@ void main() {
   vUv = uv; vLayer = layer; vTint = tint.rgb; vAccent = accent.rgb; vShade = tint.a;
   // hidden: 0 drawn, 1 hidden, 2 the highlighted answer (drawn plain yellow).
   vHighlight = hidden > 1.5 ? 1.0 : 0.0;
-  gl_Position = hidden > 0.5 && hidden < 1.5 ? vec4(2.0, 2.0, 2.0, 1.0) : projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+  gl_Position = hidden > 0.5 && hidden < 1.5 ? vec4(2.0, 2.0, 2.0, 1.0) : projectionMatrix * modelViewMatrix * vec4(position + vec3(0.0, 0.0, ground), 1.0);
 }`;
 
 export const FRAGMENT = /* glsl */ `
@@ -326,7 +327,7 @@ export class ThreeBuildings {
       // Uploaded buffers are intentionally released on the CPU. Rebuild
       // only a ray-intersecting chunk, with its installed build inputs, and
       // discard it after the click rather than retaining city-wide buffers.
-      if (!chunk.mesh.geometry.getAttribute('position')?.array || chunk.mesh.geometry.index && !chunk.mesh.geometry.index.array) {
+      if (this.map._canalElevation?.enabled || !chunk.mesh.geometry.getAttribute('position')?.array || chunk.mesh.geometry.index && !chunk.mesh.geometry.index.array) {
         const installedLook = chunk.mesh.userData.installedLook as BuildingLook | undefined;
         if (!installedLook) continue;
         const rebuilt = key === KIT_KEY ? this.buildKits(chunk.source, installedLook)
@@ -337,6 +338,8 @@ export class ThreeBuildings {
             const drawn = chunk.ranges.get(range.id);
             return !drawn || drawn.start !== range.start || drawn.count !== range.count;
           })) continue;
+        const grounding = chunk.mesh.geometry.getAttribute('ground')?.array;
+        if (grounding) for (let i=0;i<rebuilt.vertexCount;i++) rebuilt.positions[i*3+2] += grounding[i];
         temporary = new T.BufferGeometry();
         temporary.setAttribute('position', new T.BufferAttribute(rebuilt.positions, 3));
         temporary.setIndex(new T.BufferAttribute(rebuilt.indices, 1));
@@ -793,6 +796,25 @@ export class ThreeBuildings {
     return this.worker;
   }
 
+  private groundChunk(key: string, chunk: any): void {
+    if (!chunk.mesh || key.startsWith(BOAT_PREFIX)) return;
+    const service = this.map._canalElevation;
+    const revision = service?.revision ?? -1;
+    if (chunk.mesh.userData.groundRevision === revision) return;
+    const attribute = chunk.mesh.geometry.getAttribute('ground');
+    if (!attribute) return;
+    let changed = false;
+    for (const feature of chunk.source) {
+      const range = chunk.ranges.get(String(feature.properties.id));
+      if (!range) continue;
+      const height = service?.objectGround(feature.geometry) ?? 0;
+      if (Math.abs(attribute.array[range.start] - height) < .001) continue;
+      attribute.array.fill(height, range.start, range.start + range.count);changed = true;
+    }
+    if (changed) { attribute.needsUpdate = true; chunk.mesh.frustumCulled = false; }
+    chunk.mesh.userData.groundRevision = revision;
+  }
+
   private install(key: string, source: Feature[], chunk: Chunk, buildMs: number, options?: BuildOptions): void {
     if (!this.THREE || this.look !== this.requestedLook || !this.currentSource(key, source)) return;
     if (options && (options.look !== this.look || options.appearanceRevision !== this.appearanceRevision || options.hostOpeningRevision !== this.openingRevision(key, source))) return;
@@ -812,6 +834,7 @@ export class ThreeBuildings {
     geometry.setAttribute('layer', release(new THREE.BufferAttribute(chunk.layers, 1, false)));
     geometry.setAttribute('tint', release(new THREE.BufferAttribute(chunk.tints, 4, true)));
     geometry.setAttribute('accent', release(new THREE.BufferAttribute(chunk.accents, 4, true)));
+    geometry.setAttribute('ground', new THREE.BufferAttribute(new Float32Array(chunk.vertexCount), 1));
     geometry.setAttribute('hidden', new THREE.BufferAttribute(new Uint8Array(chunk.vertexCount), 1, false));
     geometry.setIndex(release(new THREE.BufferAttribute(chunk.indices, 1)));
     // three.js uploads a new mesh, then computes its bounding sphere to sort it.
@@ -834,6 +857,7 @@ export class ThreeBuildings {
     const entry = { source, mesh, info: infoOf(chunk), ranges: new Map(chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }])) };
     this.chunks.set(key, entry);
     this.scene.add(mesh);
+    this.groundChunk(key, entry);
     mesh.userData.coarse = key.startsWith(COARSE_PREFIX);
     this.refreshDetailOwnership();
     this.applyHidden(entry, new Set([...this.hidden, ...this.highlighted, ...this.installedDetailIds]));
@@ -928,6 +952,7 @@ export class ThreeBuildings {
           material.transparent = fade < 1;
           material.depthWrite = fade === 1;
         }
+        for (const [key, chunk] of owner.chunks) owner.groundChunk(key, chunk);
         owner.camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(owner.transform);
         owner.renderer.resetState();
         let depthCalls = 0, depthTriangles = 0;

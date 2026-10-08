@@ -144,6 +144,7 @@ export class PyramidalRoofs {
       entries.push({
         mesh,
         scene,
+        anchor: [meshData.originLng, meshData.originLat],
         transform: mercatorTransform(this.maplibregl, meshData.originLng, meshData.originLat),
         id: props.osmId || props.id || null,
         ids,
@@ -183,7 +184,10 @@ export class PyramidalRoofs {
         renderer.resetState();
         for (const entry of owner._entries) {
           if (!entry.mesh.visible) continue;
-          mvp.fromArray(main).multiply(entry.transform);
+          const transform = entry.transform.clone();
+          const units = owner.maplibregl.MercatorCoordinate.fromLngLat(entry.anchor, 0).meterInMercatorCoordinateUnits();
+          transform.elements[14] += (owner.map._canalElevation?.heightAt(entry.anchor) || 0) * units;
+          mvp.fromArray(main).multiply(transform);
           camera.projectionMatrix.copy(mvp);
           renderer.render(entry.scene, camera);
         }

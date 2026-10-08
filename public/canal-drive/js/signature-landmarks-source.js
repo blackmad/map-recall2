@@ -395,7 +395,12 @@ export class SignatureLandmarks {
         for (const entry of owner._entries) {
           // Shared WebGL canvas: distant landmarks should cost no render calls.
           if (!owner._nearby(entry.spec, entry.placement.anchor) || !owner.canShowModel(entry.spec)) { entry.pickProjection = null; continue; }
-          camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(entry.transform);
+          const service = owner.map._canalElevation;
+          const ground = service?.heightAt(entry.placement.anchor) || 0;
+          const units = owner.maplibregl.MercatorCoordinate.fromLngLat(entry.placement.anchor, 0).meterInMercatorCoordinateUnits();
+          const grounded = entry.transform.clone();
+          grounded.elements[14] += ground * units;
+          camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(grounded);
           entry.pickProjection = camera.projectionMatrix.clone();
           renderer.resetState();
           renderer.render(entry.scene, camera);

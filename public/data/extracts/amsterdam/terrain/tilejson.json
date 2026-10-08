@@ -1,0 +1,46 @@
+{
+  "tilejson": "3.0.0",
+  "version": 1,
+  "name": "Amsterdam AHN ground and bridge surface proxy",
+  "scheme": "xyz",
+  "tiles": [
+    "{z}/{x}/{y}.png"
+  ],
+  "minzoom": 10,
+  "maxzoom": 18,
+  "bounds": [
+    4.708,
+    52.274,
+    5.104,
+    52.432
+  ],
+  "tileSize": 256,
+  "encoding": "mapbox",
+  "datum": "NAP",
+  "exaggeration": 1,
+  "fingerprint": "61b02c3250a9ed69",
+  "qualityTiles": [
+    "16/{x}/{y}.quality.png"
+  ],
+  "qualityCodes": {
+    "measured": 255,
+    "bridge": 253,
+    "interpolated": 128,
+    "water": 254,
+    "unknown": 0
+  },
+  "waterFallbackNAP": 0,
+  "shoreTransitionM": 4,
+  "bridgeRoadProtection": true,
+  "bridgeDeckProfiles": 729,
+  "bridgeDeckRepresentation": "render proxy; separate water and bank geometry still required",
+  "attribution": "AHN / Rijkswaterstaat / PDOK; water \u00a9 OpenStreetMap contributors",
+  "delivery": "indexed-png-pack-v1",
+  "packs": 248,
+  "payloadBytes": 856047264,
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "10c632417752b71e6737d73343812c759201be7d",
+    "path": "terrain/amsterdam"
+  }
+}

@@ -1,0 +1,2454 @@
+{
+  "version": 2,
+  "renderHeightDatum": "NAP",
+  "coordinateSpace": "east-north-up-metres@4.9,52.37",
+  "terrainFingerprint": "61b02c3250a9ed69",
+  "approvedIds": [],
+  "bridges": [
+    {
+      "id": "BRU0057",
+      "name": "Papiermolensluis",
+      "roadId": "routing_11165",
+      "roadIds": [
+        "routing_11165"
+      ],
+      "origin": [
+        4.888554996903854,
+        52.380319002410715
+      ],
+      "outline": [
+        [
+          4.417,
+          14.36
+        ],
+        [
+          1.495,
+          9.351
+        ],
+        [
+          7.135,
+          4.341
+        ],
+        [
+          9.989,
+          9.351
+        ]
+      ],
+      "deckRangeM": [
+        31.35,
+        38.625
+      ],
+      "widthM": 5.857,
+      "roadwayRangeM": [
+        24,
+        45.67
+      ],
+      "deckAxis": [
+        0.5049209475355094,
+        0.8631655905675593
+      ],
+      "deckAcrossM": [
+        -3.967,
+        3.438
+      ],
+      "approachHalfWidthM": 2.9285846476808906,
+      "family": "masonry-arch",
+      "material": "Metselwerk",
+      "bridgeType": "Vaste brug",
+      "review": {
+        "status": "pending-visual",
+        "structure": "procedural",
+        "triangles": 7964,
+        "geometryBytes": 668976
+      },
+      "samples": [
+        {
+          "s": 0,
+          "point": [
+            -11.878,
+            -20.851
+          ],
+          "rawNAP": 1.301,
+          "surfaceNAP": 1.369,
+          "heightM": 1.352387790569455,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 1.482,
+          "point": [
+            -11.146,
+            -19.562
+          ],
+          "rawNAP": 1.369,
+          "surfaceNAP": 1.384,
+          "heightM": 1.3985561915118239,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 2.965,
+          "point": [
+            -10.415,
+            -18.273
+          ],
+          "rawNAP": 1.428,
+          "surfaceNAP": 1.422,
+          "heightM": 1.4269622240160906,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 4.447,
+          "point": [
+            -9.683,
+            -16.984
+          ],
+          "rawNAP": 1.462,
+          "surfaceNAP": 1.463,
+          "heightM": 1.4784118462541054,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 5.929,
+          "point": [
+            -8.952,
+            -15.695
+          ],
+          "rawNAP": 1.5,
+          "surfaceNAP": 1.498,
+          "heightM": 1.4983327022506951,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 7.412,
+          "point": [
+            -8.22,
+            -14.406
+          ],
+          "rawNAP": 1.53,
+          "surfaceNAP": 1.528,
+          "heightM": 1.5275684466610002,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 8.894,
+          "point": [
+            -7.489,
+            -13.117
+          ],
+          "rawNAP": 1.553,
+          "surfaceNAP": 1.552,
+          "heightM": 1.552,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 10.376,
+          "point": [
+            -6.757,
+            -11.828
+          ],
+          "rawNAP": 1.57,
+          "surfaceNAP": 1.585,
+          "heightM": 1.585,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 11.859,
+          "point": [
+            -6.025,
+            -10.539
+          ],
+          "rawNAP": 1.646,
+          "surfaceNAP": 1.648,
+          "heightM": 1.648,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 13.341,
+          "point": [
+            -5.294,
+            -9.25
+          ],
+          "rawNAP": 1.731,
+          "surfaceNAP": 1.741,
+          "heightM": 1.741,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 14.823,
+          "point": [
+            -4.562,
+            -7.961
+          ],
+          "rawNAP": 1.857,
+          "surfaceNAP": 1.846,
+          "heightM": 1.846,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 16.306,
+          "point": [
+            -3.831,
+            -6.672
+          ],
+          "rawNAP": 1.938,
+          "surfaceNAP": 1.939,
+          "heightM": 1.939,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 17.788,
+          "point": [
+            -3.097,
+            -5.384
+          ],
+          "rawNAP": 2.025,
+          "surfaceNAP": 2.029,
+          "heightM": 2.029,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 19.27,
+          "point": [
+            -2.358,
+            -4.099
+          ],
+          "rawNAP": 2.13,
+          "surfaceNAP": 2.122,
+          "heightM": 2.122,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 20.753,
+          "point": [
+            -1.619,
+            -2.814
+          ],
+          "rawNAP": 2.203,
+          "surfaceNAP": 2.234,
+          "heightM": 2.234,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 22.235,
+          "point": [
+            -0.88,
+            -1.53
+          ],
+          "rawNAP": 2.605,
+          "surfaceNAP": 2.379,
+          "heightM": 2.379,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 23.717,
+          "point": [
+            -0.141,
+            -0.245
+          ],
+          "rawNAP": 2.402,
+          "surfaceNAP": 2.482,
+          "heightM": 2.482,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 25.2,
+          "point": [
+            0.606,
+            1.035
+          ],
+          "rawNAP": 2.509,
+          "surfaceNAP": 2.543,
+          "heightM": 2.543,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 26.682,
+          "point": [
+            1.354,
+            2.315
+          ],
+          "rawNAP": 2.645,
+          "surfaceNAP": 2.638,
+          "heightM": 2.638,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 28.164,
+          "point": [
+            2.102,
+            3.594
+          ],
+          "rawNAP": 2.755,
+          "surfaceNAP": 2.753,
+          "heightM": 2.753,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 29.647,
+          "point": [
+            2.851,
+            4.873
+          ],
+          "rawNAP": 2.855,
+          "surfaceNAP": 2.86,
+          "heightM": 2.86,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 31.129,
+          "point": [
+            3.599,
+            6.153
+          ],
+          "rawNAP": 2.976,
+          "surfaceNAP": 2.974,
+          "heightM": 2.974,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 32.611,
+          "point": [
+            4.348,
+            7.432
+          ],
+          "rawNAP": 3.089,
+          "surfaceNAP": 3.076,
+          "heightM": 3.076,
+          "validPixels": 17,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 34.094,
+          "point": [
+            5.096,
+            8.711
+          ],
+          "rawNAP": 3.149,
+          "surfaceNAP": 3.134,
+          "heightM": 3.134,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 35.576,
+          "point": [
+            5.844,
+            9.991
+          ],
+          "rawNAP": 3.156,
+          "surfaceNAP": 3.135,
+          "heightM": 3.135,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 37.059,
+          "point": [
+            6.593,
+            11.27
+          ],
+          "rawNAP": 3.094,
+          "surfaceNAP": 3.084,
+          "heightM": 3.084,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 38.541,
+          "point": [
+            7.341,
+            12.549
+          ],
+          "rawNAP": 2.999,
+          "surfaceNAP": 2.987,
+          "heightM": 2.987,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 40.023,
+          "point": [
+            8.089,
+            13.828
+          ],
+          "rawNAP": 2.855,
+          "surfaceNAP": 2.853,
+          "heightM": 2.853,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 41.506,
+          "point": [
+            8.838,
+            15.108
+          ],
+          "rawNAP": 2.702,
+          "surfaceNAP": 2.709,
+          "heightM": 2.709,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 42.988,
+          "point": [
+            9.586,
+            16.387
+          ],
+          "rawNAP": 2.576,
+          "surfaceNAP": 2.568,
+          "heightM": 2.568,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 44.47,
+          "point": [
+            10.334,
+            17.666
+          ],
+          "rawNAP": 2.417,
+          "surfaceNAP": 2.433,
+          "heightM": 2.433,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 45.953,
+          "point": [
+            11.08,
+            18.947
+          ],
+          "rawNAP": 2.32,
+          "surfaceNAP": 2.31,
+          "heightM": 2.31,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 47.435,
+          "point": [
+            11.812,
+            20.236
+          ],
+          "rawNAP": 2.181,
+          "surfaceNAP": 2.196,
+          "heightM": 2.196,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 48.917,
+          "point": [
+            12.543,
+            21.525
+          ],
+          "rawNAP": 2.103,
+          "surfaceNAP": 2.101,
+          "heightM": 2.101,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 50.4,
+          "point": [
+            13.275,
+            22.814
+          ],
+          "rawNAP": 2.018,
+          "surfaceNAP": 2.022,
+          "heightM": 2.022,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 51.882,
+          "point": [
+            13.815,
+            24.178
+          ],
+          "rawNAP": 1.95,
+          "surfaceNAP": 1.951,
+          "heightM": 1.951,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 53.364,
+          "point": [
+            14.144,
+            25.624
+          ],
+          "rawNAP": 1.884,
+          "surfaceNAP": 1.899,
+          "heightM": 1.899,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 54.847,
+          "point": [
+            14.473,
+            27.07
+          ],
+          "rawNAP": 1.877,
+          "surfaceNAP": 1.867,
+          "heightM": 1.867,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 56.329,
+          "point": [
+            14.802,
+            28.515
+          ],
+          "rawNAP": 1.83,
+          "surfaceNAP": 1.829,
+          "heightM": 1.829,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 57.811,
+          "point": [
+            15.132,
+            29.961
+          ],
+          "rawNAP": 1.777,
+          "surfaceNAP": 1.776,
+          "heightM": 1.776,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 59.294,
+          "point": [
+            15.81,
+            31.276
+          ],
+          "rawNAP": 1.719,
+          "surfaceNAP": 1.722,
+          "heightM": 1.722,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 60.776,
+          "point": [
+            16.513,
+            32.581
+          ],
+          "rawNAP": 1.671,
+          "surfaceNAP": 1.672,
+          "heightM": 1.672,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 62.258,
+          "point": [
+            17.216,
+            33.886
+          ],
+          "rawNAP": 1.628,
+          "surfaceNAP": 1.62,
+          "heightM": 1.6196917476150057,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 63.741,
+          "point": [
+            17.918,
+            35.191
+          ],
+          "rawNAP": 1.554,
+          "surfaceNAP": 1.557,
+          "heightM": 1.5641530983900096,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 65.223,
+          "point": [
+            18.621,
+            36.496
+          ],
+          "rawNAP": 1.49,
+          "surfaceNAP": 1.49,
+          "heightM": 1.4975261424095665,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 66.705,
+          "point": [
+            19.324,
+            37.8
+          ],
+          "rawNAP": 1.427,
+          "surfaceNAP": 1.427,
+          "heightM": 1.4257139223751136,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 68.188,
+          "point": [
+            20.027,
+            39.105
+          ],
+          "rawNAP": 1.364,
+          "surfaceNAP": 1.38,
+          "heightM": 1.3981952393894488,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 69.67,
+          "point": [
+            20.73,
+            40.41
+          ],
+          "rawNAP": 1.299,
+          "surfaceNAP": 1.364,
+          "heightM": 1.3345604209903614,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        }
+      ],
+      "bounds": [
+        -28.505,
+        -25.659,
+        39.989000000000004,
+        44.36
+      ],
+      "provenance": {
+        "footprint": {
+          "file": "scripts/data/amsterdam-bridge-register.json",
+          "sha256": "dafef265e3ecff8544b176678ad10795a240befc209089646c2943216bc02734",
+          "objectNumber": "BRU0057"
+        },
+        "alignment": {
+          "file": "public/data/extracts/amsterdam/streets-routing.json",
+          "sha256": "1eebf0b2d9a8b731f62b8ca85e4278a825d0f2aa7f2a2bd158d23304fe09d706",
+          "roadId": "routing_11165",
+          "roadIds": [
+            "routing_11165"
+          ],
+          "match": "footprint-and-name",
+          "sources": {
+            "scripts/data/amsterdam-bridge-register.json": "dafef265e3ecff8544b176678ad10795a240befc209089646c2943216bc02734",
+            "public/data/extracts/amsterdam/streets-routing.json": "1eebf0b2d9a8b731f62b8ca85e4278a825d0f2aa7f2a2bd158d23304fe09d706",
+            "public/data/extracts/amsterdam/bridges.json": "6338eeaaeff202d1903c70fd6091773ec210d3f20c24a7f06ecf8866b510fc4f",
+            "scripts/data/amsterdam-bridge-paths.json": "fdab66acc2c34f7f6f408fb0b87e13cc39d6b180b17e03f465dfa7447f06fdc9",
+            "public/data/extracts/amsterdam/water.json": "6597eab74afc45d91f9874a9ab84fb860328bda4c08cb12bdd1142a3c96b388e"
+          }
+        },
+        "elevation": {
+          "rasters": [
+            {
+              "url": "https://service.pdok.nl/rws/ahn/wcs/v1_0?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dsm_05m&CRS=EPSG%3A28992&BBOX=121029%2C488140%2C121075%2C488214&RESX=0.5&RESY=0.5&FORMAT=GEOTIFF",
+              "retrievedAt": "2026-10-04T09:55:18.088Z",
+              "coverage": "dsm_05m",
+              "sha256": "db82410bb77034248924e94d5eeb70e671ecdaf43edad5861134f6fd060a470a"
+            },
+            {
+              "url": "https://service.pdok.nl/rws/ahn/wcs/v1_0?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm_05m&CRS=EPSG%3A28992&BBOX=121029%2C488140%2C121075%2C488214&RESX=0.5&RESY=0.5&FORMAT=GEOTIFF",
+              "retrievedAt": "2026-10-04T09:55:18.169Z",
+              "coverage": "dtm_05m",
+              "sha256": "a8a4c1412e7fba6d3af59c6e6607d7c74756ed9b85549777625eebdbda15a11e"
+            }
+          ],
+          "resolutionM": 0.5,
+          "horizontalCRS": "EPSG:28992",
+          "heightDatum": "NAP",
+          "method": "DSM-footprint-clipped-deck-DTM-approaches-road-corridor-q30-median3-weighted3",
+          "interpolatedStations": 0,
+          "confidence": "raster-supported"
+        },
+        "renderDatum": {
+          "method": "absolute-NAP-deck-connected-road-8m-terrain-join",
+          "terrainFingerprint": "61b02c3250a9ed69"
+        },
+        "structure": {
+          "source": "municipal material plus procedural family",
+          "confidence": "illustrative",
+          "deckThicknessM": 0.35,
+          "archOpeningFraction": 0.7,
+          "railHeightM": 0.95
+        }
+      },
+      "waterFootprint": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.8886619122745785,
+                52.38036161609103
+              ],
+              [
+                4.888578447166224,
+                52.38040452006245
+              ],
+              [
+                4.888618793308822,
+                52.38044673825703
+              ],
+              [
+                4.888701438903809,
+                52.38040316938515
+              ],
+              [
+                4.888701548338766,
+                52.38040325050043
+              ],
+              [
+                4.888701998482131,
+                52.38040300348869
+              ],
+              [
+                4.888659998031195,
+                52.38035799809882
+              ],
+              [
+                4.888658990442098,
+                52.380358544446246
+              ],
+              [
+                4.8886619122745785,
+                52.38036161609103
+              ]
+            ]
+          ]
+        ]
+      },
+      "approachTriangles": [],
+      "mesh": {
+        "url": "BRU0057-38730b6d389fa186.bin",
+        "batches": [
+          {
+            "kind": "deck",
+            "colour": "#817b70",
+            "positionsOffset": 0,
+            "positionsCount": 8577,
+            "indicesOffset": 34308,
+            "indicesCount": 2859,
+            "normalsOffset": 45744,
+            "normalsCount": 8577
+          },
+          {
+            "kind": "coping",
+            "colour": "#b7ad99",
+            "positionsOffset": 80052,
+            "positionsCount": 25056,
+            "indicesOffset": 180276,
+            "indicesCount": 8352,
+            "normalsOffset": 213684,
+            "normalsCount": 25056
+          },
+          {
+            "kind": "structure",
+            "colour": "#785142",
+            "positionsOffset": 313908,
+            "positionsCount": 3330,
+            "indicesOffset": 327228,
+            "indicesCount": 1110,
+            "normalsOffset": 331668,
+            "normalsCount": 3330
+          },
+          {
+            "kind": "soffit",
+            "colour": "#785142",
+            "positionsOffset": 344988,
+            "positionsCount": 8577,
+            "indicesOffset": 379296,
+            "indicesCount": 2859,
+            "normalsOffset": 390732,
+            "normalsCount": 8577
+          },
+          {
+            "kind": "railings",
+            "colour": "#273f35",
+            "positionsOffset": 425040,
+            "positionsCount": 26136,
+            "indicesOffset": 529584,
+            "indicesCount": 8712,
+            "normalsOffset": 564432,
+            "normalsCount": 26136
+          }
+        ],
+        "sha256": "38730b6d389fa1865216b1d31c68f3c965624963cc184427d90a472a8b9fb28e"
+      }
+    },
+    {
+      "id": "BRU0059",
+      "name": "Lekkeresluis",
+      "roadId": "routing_26093",
+      "roadIds": [
+        "routing_26093"
+      ],
+      "origin": [
+        4.888181996902582,
+        52.38043600241121
+      ],
+      "outline": [
+        [
+          -1.971,
+          -3.562
+        ],
+        [
+          12.775,
+          -17.143
+        ],
+        [
+          16.92,
+          -10.464
+        ],
+        [
+          2.31,
+          3.006
+        ]
+      ],
+      "deckRangeM": [
+        23.699,
+        44.972
+      ],
+      "widthM": 7.26,
+      "roadwayRangeM": [
+        24,
+        44.441
+      ],
+      "deckAxis": [
+        0.7419706326039481,
+        -0.670432383132928
+      ],
+      "deckAcrossM": [
+        -4.155,
+        3.779
+      ],
+      "approachHalfWidthM": 3.5,
+      "family": "masonry-arch",
+      "material": "Metselwerk",
+      "bridgeType": "Vaste brug",
+      "review": {
+        "status": "pending-visual",
+        "structure": "procedural",
+        "triangles": 15618,
+        "geometryBytes": 1311912
+      },
+      "samples": [
+        {
+          "s": 0,
+          "point": [
+            -17.679,
+            16.196
+          ],
+          "rawNAP": 1.341,
+          "surfaceNAP": 1.392,
+          "heightM": 1.4000000000014552,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 1.488,
+          "point": [
+            -16.574,
+            15.202
+          ],
+          "rawNAP": 1.392,
+          "surfaceNAP": 1.401,
+          "heightM": 1.4000909182893229,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 2.976,
+          "point": [
+            -15.468,
+            14.209
+          ],
+          "rawNAP": 1.426,
+          "surfaceNAP": 1.427,
+          "heightM": 1.4427012783891524,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 4.464,
+          "point": [
+            -14.362,
+            13.215
+          ],
+          "rawNAP": 1.464,
+          "surfaceNAP": 1.466,
+          "heightM": 1.480055267616,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 5.951,
+          "point": [
+            -13.257,
+            12.221
+          ],
+          "rawNAP": 1.511,
+          "surfaceNAP": 1.505,
+          "heightM": 1.5041840178056445,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 7.439,
+          "point": [
+            -12.151,
+            11.228
+          ],
+          "rawNAP": 1.532,
+          "surfaceNAP": 1.541,
+          "heightM": 1.5411551596352766,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 8.927,
+          "point": [
+            -11.046,
+            10.234
+          ],
+          "rawNAP": 1.589,
+          "surfaceNAP": 1.588,
+          "heightM": 1.588,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 10.415,
+          "point": [
+            -9.94,
+            9.24
+          ],
+          "rawNAP": 1.642,
+          "surfaceNAP": 1.643,
+          "heightM": 1.643,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 11.903,
+          "point": [
+            -8.834,
+            8.247
+          ],
+          "rawNAP": 1.699,
+          "surfaceNAP": 1.701,
+          "heightM": 1.701,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 13.391,
+          "point": [
+            -7.729,
+            7.253
+          ],
+          "rawNAP": 1.762,
+          "surfaceNAP": 1.762,
+          "heightM": 1.762,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 14.879,
+          "point": [
+            -6.623,
+            6.259
+          ],
+          "rawNAP": 1.825,
+          "surfaceNAP": 1.829,
+          "heightM": 1.829,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 16.366,
+          "point": [
+            -5.518,
+            5.266
+          ],
+          "rawNAP": 1.903,
+          "surfaceNAP": 1.909,
+          "heightM": 1.909,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 17.854,
+          "point": [
+            -4.436,
+            4.247
+          ],
+          "rawNAP": 2.006,
+          "surfaceNAP": 2.013,
+          "heightM": 2.013,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 19.342,
+          "point": [
+            -3.362,
+            3.219
+          ],
+          "rawNAP": 2.137,
+          "surfaceNAP": 2.158,
+          "heightM": 2.158,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 20.83,
+          "point": [
+            -2.288,
+            2.19
+          ],
+          "rawNAP": 2.353,
+          "surfaceNAP": 2.353,
+          "heightM": 2.353,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 22.318,
+          "point": [
+            -1.214,
+            1.162
+          ],
+          "rawNAP": 2.57,
+          "surfaceNAP": 2.557,
+          "heightM": 2.557,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 23.806,
+          "point": [
+            -0.14,
+            0.134
+          ],
+          "rawNAP": 2.735,
+          "surfaceNAP": 2.736,
+          "heightM": 2.736,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 25.294,
+          "point": [
+            0.959,
+            -0.866
+          ],
+          "rawNAP": 2.905,
+          "surfaceNAP": 2.903,
+          "heightM": 2.903,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 26.781,
+          "point": [
+            2.062,
+            -1.863
+          ],
+          "rawNAP": 3.066,
+          "surfaceNAP": 3.056,
+          "heightM": 3.056,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 28.269,
+          "point": [
+            3.165,
+            -2.86
+          ],
+          "rawNAP": 3.187,
+          "surfaceNAP": 3.181,
+          "heightM": 3.181,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 29.757,
+          "point": [
+            4.268,
+            -3.856
+          ],
+          "rawNAP": 3.284,
+          "surfaceNAP": 3.271,
+          "heightM": 3.271,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 31.245,
+          "point": [
+            5.371,
+            -4.853
+          ],
+          "rawNAP": 3.33,
+          "surfaceNAP": 3.329,
+          "heightM": 3.329,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 32.733,
+          "point": [
+            6.474,
+            -5.85
+          ],
+          "rawNAP": 3.37,
+          "surfaceNAP": 3.363,
+          "heightM": 3.363,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 34.221,
+          "point": [
+            7.577,
+            -6.846
+          ],
+          "rawNAP": 3.391,
+          "surfaceNAP": 3.377,
+          "heightM": 3.377,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 35.709,
+          "point": [
+            8.68,
+            -7.843
+          ],
+          "rawNAP": 3.38,
+          "surfaceNAP": 3.374,
+          "heightM": 3.374,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 37.196,
+          "point": [
+            9.782,
+            -8.839
+          ],
+          "rawNAP": 3.355,
+          "surfaceNAP": 3.35,
+          "heightM": 3.35,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 38.684,
+          "point": [
+            10.885,
+            -9.836
+          ],
+          "rawNAP": 3.31,
+          "surfaceNAP": 3.296,
+          "heightM": 3.296,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 40.172,
+          "point": [
+            11.988,
+            -10.833
+          ],
+          "rawNAP": 3.21,
+          "surfaceNAP": 3.207,
+          "heightM": 3.207,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 41.66,
+          "point": [
+            13.091,
+            -11.829
+          ],
+          "rawNAP": 3.099,
+          "surfaceNAP": 3.095,
+          "heightM": 3.095,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 43.148,
+          "point": [
+            14.194,
+            -12.826
+          ],
+          "rawNAP": 2.972,
+          "surfaceNAP": 2.974,
+          "heightM": 2.974,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 44.636,
+          "point": [
+            15.309,
+            -13.808
+          ],
+          "rawNAP": 2.854,
+          "surfaceNAP": 2.849,
+          "heightM": 2.849,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 46.124,
+          "point": [
+            16.5,
+            -14.697
+          ],
+          "rawNAP": 2.717,
+          "surfaceNAP": 2.706,
+          "heightM": 2.706,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 47.611,
+          "point": [
+            17.691,
+            -15.586
+          ],
+          "rawNAP": 2.535,
+          "surfaceNAP": 2.538,
+          "heightM": 2.538,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 49.099,
+          "point": [
+            18.882,
+            -16.475
+          ],
+          "rawNAP": 2.364,
+          "surfaceNAP": 2.369,
+          "heightM": 2.369,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 50.587,
+          "point": [
+            20.073,
+            -17.363
+          ],
+          "rawNAP": 2.211,
+          "surfaceNAP": 2.221,
+          "heightM": 2.221,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 52.075,
+          "point": [
+            21.265,
+            -18.252
+          ],
+          "rawNAP": 2.096,
+          "surfaceNAP": 2.092,
+          "heightM": 2.092,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 53.563,
+          "point": [
+            22.418,
+            -19.187
+          ],
+          "rawNAP": 1.966,
+          "surfaceNAP": 1.976,
+          "heightM": 1.976,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 55.051,
+          "point": [
+            23.506,
+            -20.199
+          ],
+          "rawNAP": 1.876,
+          "surfaceNAP": 1.87,
+          "heightM": 1.87,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 56.538,
+          "point": [
+            24.595,
+            -21.212
+          ],
+          "rawNAP": 1.763,
+          "surfaceNAP": 1.769,
+          "heightM": 1.769,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 58.026,
+          "point": [
+            25.683,
+            -22.224
+          ],
+          "rawNAP": 1.675,
+          "surfaceNAP": 1.677,
+          "heightM": 1.677,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 59.514,
+          "point": [
+            26.771,
+            -23.237
+          ],
+          "rawNAP": 1.597,
+          "surfaceNAP": 1.602,
+          "heightM": 1.602,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 61.002,
+          "point": [
+            27.86,
+            -24.25
+          ],
+          "rawNAP": 1.537,
+          "surfaceNAP": 1.54,
+          "heightM": 1.5403522707558306,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 62.49,
+          "point": [
+            28.948,
+            -25.262
+          ],
+          "rawNAP": 1.488,
+          "surfaceNAP": 1.492,
+          "heightM": 1.4933055715109687,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 63.978,
+          "point": [
+            30.036,
+            -26.275
+          ],
+          "rawNAP": 1.453,
+          "surfaceNAP": 1.448,
+          "heightM": 1.4586073952081704,
+          "validPixels": 20,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 65.466,
+          "point": [
+            31.125,
+            -27.287
+          ],
+          "rawNAP": 1.398,
+          "surfaceNAP": 1.399,
+          "heightM": 1.4007421141154672,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 66.953,
+          "point": [
+            32.213,
+            -28.3
+          ],
+          "rawNAP": 1.347,
+          "surfaceNAP": 1.36,
+          "heightM": 1.3735324883865216,
+          "validPixels": 19,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 68.441,
+          "point": [
+            33.302,
+            -29.312
+          ],
+          "rawNAP": 1.3,
+          "surfaceNAP": 1.347,
+          "heightM": 1.3000000000010914,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        }
+      ],
+      "bounds": [
+        -31.971,
+        -47.143,
+        46.92,
+        33.006
+      ],
+      "provenance": {
+        "footprint": {
+          "file": "scripts/data/amsterdam-bridge-register.json",
+          "sha256": "dafef265e3ecff8544b176678ad10795a240befc209089646c2943216bc02734",
+          "objectNumber": "BRU0059"
+        },
+        "alignment": {
+          "file": "public/data/extracts/amsterdam/streets-routing.json",
+          "sha256": "1eebf0b2d9a8b731f62b8ca85e4278a825d0f2aa7f2a2bd158d23304fe09d706",
+          "roadId": "routing_26093",
+          "roadIds": [
+            "routing_26093"
+          ],
+          "match": "footprint-and-name",
+          "sources": {
+            "scripts/data/amsterdam-bridge-register.json": "dafef265e3ecff8544b176678ad10795a240befc209089646c2943216bc02734",
+            "public/data/extracts/amsterdam/streets-routing.json": "1eebf0b2d9a8b731f62b8ca85e4278a825d0f2aa7f2a2bd158d23304fe09d706",
+            "public/data/extracts/amsterdam/bridges.json": "6338eeaaeff202d1903c70fd6091773ec210d3f20c24a7f06ecf8866b510fc4f",
+            "scripts/data/amsterdam-bridge-paths.json": "fdab66acc2c34f7f6f408fb0b87e13cc39d6b180b17e03f465dfa7447f06fdc9",
+            "public/data/extracts/amsterdam/water.json": "6597eab74afc45d91f9874a9ab84fb860328bda4c08cb12bdd1142a3c96b388e"
+          }
+        },
+        "elevation": {
+          "rasters": [
+            {
+              "url": "https://service.pdok.nl/rws/ahn/wcs/v1_0?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dsm_05m&CRS=EPSG%3A28992&BBOX=120998%2C488144%2C121062%2C488203&RESX=0.5&RESY=0.5&FORMAT=GEOTIFF",
+              "retrievedAt": "2026-10-04T09:55:18.314Z",
+              "coverage": "dsm_05m",
+              "sha256": "d713bd113dfbadaea50182c53a8eff1cb58e282042c28a1f34ef0d0a7a4317b3"
+            },
+            {
+              "url": "https://service.pdok.nl/rws/ahn/wcs/v1_0?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm_05m&CRS=EPSG%3A28992&BBOX=120998%2C488144%2C121062%2C488203&RESX=0.5&RESY=0.5&FORMAT=GEOTIFF",
+              "retrievedAt": "2026-10-04T09:55:18.371Z",
+              "coverage": "dtm_05m",
+              "sha256": "5a53935b8cc1c8655b0f92150ed055104cfec3c6e6a9c7123860cb33ae30e965"
+            }
+          ],
+          "resolutionM": 0.5,
+          "horizontalCRS": "EPSG:28992",
+          "heightDatum": "NAP",
+          "method": "DSM-footprint-clipped-deck-DTM-approaches-road-corridor-q30-median3-weighted3",
+          "interpolatedStations": 0,
+          "confidence": "raster-supported"
+        },
+        "renderDatum": {
+          "method": "absolute-NAP-deck-connected-road-8m-terrain-join",
+          "terrainFingerprint": "61b02c3250a9ed69"
+        },
+        "structure": {
+          "source": "municipal material plus procedural family",
+          "confidence": "illustrative",
+          "deckThicknessM": 0.35,
+          "archOpeningFraction": 0.7,
+          "railHeightM": 0.95
+        }
+      },
+      "waterFootprint": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.888216110130731,
+                52.380462939022976
+              ],
+              [
+                4.888427572212192,
+                52.380343931189316
+              ],
+              [
+                4.888369242024294,
+                52.38028243033243
+              ],
+              [
+                4.888154344843676,
+                52.38040324339801
+              ],
+              [
+                4.888216110130731,
+                52.380462939022976
+              ]
+            ]
+          ]
+        ]
+      },
+      "approachTriangles": [],
+      "mesh": {
+        "url": "BRU0059-d5297a1a57c9523e.bin",
+        "batches": [
+          {
+            "kind": "deck",
+            "colour": "#817b70",
+            "positionsOffset": 0,
+            "positionsCount": 13374,
+            "indicesOffset": 53496,
+            "indicesCount": 4458,
+            "normalsOffset": 71328,
+            "normalsCount": 13374
+          },
+          {
+            "kind": "coping",
+            "colour": "#b7ad99",
+            "positionsOffset": 124824,
+            "positionsCount": 52704,
+            "indicesOffset": 335640,
+            "indicesCount": 17568,
+            "normalsOffset": 405912,
+            "normalsCount": 52704
+          },
+          {
+            "kind": "structure",
+            "colour": "#785142",
+            "positionsOffset": 616728,
+            "positionsCount": 5346,
+            "indicesOffset": 638112,
+            "indicesCount": 1782,
+            "normalsOffset": 645240,
+            "normalsCount": 5346
+          },
+          {
+            "kind": "soffit",
+            "colour": "#785142",
+            "positionsOffset": 666624,
+            "positionsCount": 13374,
+            "indicesOffset": 720120,
+            "indicesCount": 4458,
+            "normalsOffset": 737952,
+            "normalsCount": 13374
+          },
+          {
+            "kind": "railings",
+            "colour": "#273f35",
+            "positionsOffset": 791448,
+            "positionsCount": 55764,
+            "indicesOffset": 1014504,
+            "indicesCount": 18588,
+            "normalsOffset": 1088856,
+            "normalsCount": 55764
+          }
+        ],
+        "sha256": "d5297a1a57c9523ed016ba353c871652c5d74fda15b0b6cc03e2cbbfdf5ec913"
+      }
+    },
+    {
+      "id": "BRU0065",
+      "name": "Berensluis",
+      "roadId": "routing_11980",
+      "roadIds": [
+        "routing_11980"
+      ],
+      "origin": [
+        4.882542997095756,
+        52.37043500224679
+      ],
+      "outline": [
+        [
+          23.585,
+          -6.345
+        ],
+        [
+          24.196,
+          3.562
+        ],
+        [
+          3.466,
+          4.898
+        ],
+        [
+          2.855,
+          -9.907
+        ],
+        [
+          2.991,
+          -9.017
+        ],
+        [
+          9.176,
+          -5.343
+        ]
+      ],
+      "deckRangeM": [
+        27.261,
+        48.029
+      ],
+      "widthM": 10.461,
+      "roadwayRangeM": [
+        24,
+        51.06
+      ],
+      "deckAxis": [
+        0.9991503772905004,
+        -0.04121314790513757
+      ],
+      "deckAcrossM": [
+        -9.781,
+        5.037
+      ],
+      "approachHalfWidthM": 3.5,
+      "family": "steel-deck",
+      "material": "Staal",
+      "bridgeType": "Vaste brug",
+      "review": {
+        "status": "pending-visual",
+        "structure": "procedural",
+        "triangles": 9354,
+        "geometryBytes": 785736
+      },
+      "samples": [
+        {
+          "s": 0,
+          "point": [
+            -5.462,
+            -20.593
+          ],
+          "rawNAP": 1.585,
+          "surfaceNAP": 1.619,
+          "heightM": 1.6000000000003638,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 1.472,
+          "point": [
+            -5.33,
+            -19.126
+          ],
+          "rawNAP": 1.619,
+          "surfaceNAP": 1.623,
+          "heightM": 1.6020495068163312,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 2.944,
+          "point": [
+            -5.19,
+            -17.66
+          ],
+          "rawNAP": 1.636,
+          "surfaceNAP": 1.632,
+          "heightM": 1.6098111979522522,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 4.415,
+          "point": [
+            -5.051,
+            -16.195
+          ],
+          "rawNAP": 1.638,
+          "surfaceNAP": 1.639,
+          "heightM": 1.622523798978181,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 5.887,
+          "point": [
+            -4.912,
+            -14.729
+          ],
+          "rawNAP": 1.642,
+          "surfaceNAP": 1.644,
+          "heightM": 1.6398253059072205,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 7.359,
+          "point": [
+            -4.773,
+            -13.263
+          ],
+          "rawNAP": 1.656,
+          "surfaceNAP": 1.659,
+          "heightM": 1.6597474808142283,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 8.831,
+          "point": [
+            -4.634,
+            -11.797
+          ],
+          "rawNAP": 1.683,
+          "surfaceNAP": 1.683,
+          "heightM": 1.683,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 10.302,
+          "point": [
+            -4.494,
+            -10.331
+          ],
+          "rawNAP": 1.71,
+          "surfaceNAP": 1.705,
+          "heightM": 1.705,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 11.774,
+          "point": [
+            -4.355,
+            -8.865
+          ],
+          "rawNAP": 1.715,
+          "surfaceNAP": 1.727,
+          "heightM": 1.727,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 13.246,
+          "point": [
+            -4.216,
+            -7.399
+          ],
+          "rawNAP": 1.768,
+          "surfaceNAP": 1.757,
+          "heightM": 1.757,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 14.718,
+          "point": [
+            -4.077,
+            -5.933
+          ],
+          "rawNAP": 1.782,
+          "surfaceNAP": 1.777,
+          "heightM": 1.777,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 16.189,
+          "point": [
+            -3.937,
+            -4.468
+          ],
+          "rawNAP": 1.778,
+          "surfaceNAP": 1.784,
+          "heightM": 1.784,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 17.661,
+          "point": [
+            -3.798,
+            -3.002
+          ],
+          "rawNAP": 1.793,
+          "surfaceNAP": 1.799,
+          "heightM": 1.799,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 19.133,
+          "point": [
+            -3.659,
+            -1.536
+          ],
+          "rawNAP": 1.828,
+          "surfaceNAP": 1.82,
+          "heightM": 1.82,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 20.605,
+          "point": [
+            -3.382,
+            -0.213
+          ],
+          "rawNAP": 1.831,
+          "surfaceNAP": 1.86,
+          "heightM": 1.86,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 22.077,
+          "point": [
+            -1.916,
+            -0.121
+          ],
+          "rawNAP": 1.948,
+          "surfaceNAP": 1.947,
+          "heightM": 1.947,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 23.548,
+          "point": [
+            -0.45,
+            -0.028
+          ],
+          "rawNAP": 2.059,
+          "surfaceNAP": 2.065,
+          "heightM": 2.065,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 25.02,
+          "point": [
+            1.017,
+            -0.042
+          ],
+          "rawNAP": 2.194,
+          "surfaceNAP": 2.184,
+          "heightM": 2.184,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 26.492,
+          "point": [
+            2.485,
+            -0.103
+          ],
+          "rawNAP": 2.289,
+          "surfaceNAP": 2.287,
+          "heightM": 2.287,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 27.964,
+          "point": [
+            3.952,
+            -0.163
+          ],
+          "rawNAP": 2.377,
+          "surfaceNAP": 2.375,
+          "heightM": 2.375,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 29.435,
+          "point": [
+            5.42,
+            -0.224
+          ],
+          "rawNAP": 2.455,
+          "surfaceNAP": 2.454,
+          "heightM": 2.454,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 30.907,
+          "point": [
+            6.887,
+            -0.284
+          ],
+          "rawNAP": 2.529,
+          "surfaceNAP": 2.527,
+          "heightM": 2.527,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 32.379,
+          "point": [
+            8.355,
+            -0.345
+          ],
+          "rawNAP": 2.594,
+          "surfaceNAP": 2.591,
+          "heightM": 2.591,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 33.851,
+          "point": [
+            9.823,
+            -0.405
+          ],
+          "rawNAP": 2.648,
+          "surfaceNAP": 2.646,
+          "heightM": 2.646,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 35.322,
+          "point": [
+            11.29,
+            -0.466
+          ],
+          "rawNAP": 2.692,
+          "surfaceNAP": 2.691,
+          "heightM": 2.691,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 36.794,
+          "point": [
+            12.758,
+            -0.526
+          ],
+          "rawNAP": 2.734,
+          "surfaceNAP": 2.721,
+          "heightM": 2.721,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 38.266,
+          "point": [
+            14.225,
+            -0.587
+          ],
+          "rawNAP": 2.731,
+          "surfaceNAP": 2.724,
+          "heightM": 2.724,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 39.738,
+          "point": [
+            15.693,
+            -0.647
+          ],
+          "rawNAP": 2.702,
+          "surfaceNAP": 2.696,
+          "heightM": 2.696,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 41.21,
+          "point": [
+            17.16,
+            -0.708
+          ],
+          "rawNAP": 2.65,
+          "surfaceNAP": 2.647,
+          "heightM": 2.647,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 42.681,
+          "point": [
+            18.628,
+            -0.768
+          ],
+          "rawNAP": 2.586,
+          "surfaceNAP": 2.587,
+          "heightM": 2.587,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 44.153,
+          "point": [
+            20.095,
+            -0.829
+          ],
+          "rawNAP": 2.525,
+          "surfaceNAP": 2.523,
+          "heightM": 2.523,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 45.625,
+          "point": [
+            21.563,
+            -0.89
+          ],
+          "rawNAP": 2.456,
+          "surfaceNAP": 2.453,
+          "heightM": 2.453,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 47.097,
+          "point": [
+            23.031,
+            -0.95
+          ],
+          "rawNAP": 2.375,
+          "surfaceNAP": 2.374,
+          "heightM": 2.374,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 48.568,
+          "point": [
+            24.498,
+            -1.011
+          ],
+          "rawNAP": 2.289,
+          "surfaceNAP": 2.284,
+          "heightM": 2.284,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 50.04,
+          "point": [
+            25.966,
+            -1.071
+          ],
+          "rawNAP": 2.182,
+          "surfaceNAP": 2.176,
+          "heightM": 2.176,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 51.512,
+          "point": [
+            27.433,
+            -1.129
+          ],
+          "rawNAP": 2.049,
+          "surfaceNAP": 2.045,
+          "heightM": 2.045,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 52.984,
+          "point": [
+            28.901,
+            -1.179
+          ],
+          "rawNAP": 1.9,
+          "surfaceNAP": 1.901,
+          "heightM": 1.901,
+          "validPixels": 21,
+          "coverage": "dsm_05m"
+        },
+        {
+          "s": 54.456,
+          "point": [
+            30.369,
+            -1.232
+          ],
+          "rawNAP": 1.755,
+          "surfaceNAP": 1.763,
+          "heightM": 1.763,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 55.927,
+          "point": [
+            31.835,
+            -1.325
+          ],
+          "rawNAP": 1.641,
+          "surfaceNAP": 1.644,
+          "heightM": 1.644,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 57.399,
+          "point": [
+            33.301,
+            -1.418
+          ],
+          "rawNAP": 1.541,
+          "surfaceNAP": 1.541,
+          "heightM": 1.541,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 58.871,
+          "point": [
+            34.767,
+            -1.51
+          ],
+          "rawNAP": 1.442,
+          "surfaceNAP": 1.453,
+          "heightM": 1.453,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 60.343,
+          "point": [
+            36.233,
+            -1.603
+          ],
+          "rawNAP": 1.387,
+          "surfaceNAP": 1.389,
+          "heightM": 1.389,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 61.814,
+          "point": [
+            37.699,
+            -1.696
+          ],
+          "rawNAP": 1.341,
+          "surfaceNAP": 1.342,
+          "heightM": 1.342,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 63.286,
+          "point": [
+            39.164,
+            -1.788
+          ],
+          "rawNAP": 1.3,
+          "surfaceNAP": 1.306,
+          "heightM": 1.306,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 64.758,
+          "point": [
+            40.63,
+            -1.881
+          ],
+          "rawNAP": 1.283,
+          "surfaceNAP": 1.281,
+          "heightM": 1.281,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 66.23,
+          "point": [
+            42.096,
+            -1.974
+          ],
+          "rawNAP": 1.256,
+          "surfaceNAP": 1.248,
+          "heightM": 1.248,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 67.701,
+          "point": [
+            43.562,
+            -2.066
+          ],
+          "rawNAP": 1.196,
+          "surfaceNAP": 1.211,
+          "heightM": 1.2107994563669313,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 69.173,
+          "point": [
+            45.028,
+            -2.159
+          ],
+          "rawNAP": 1.176,
+          "surfaceNAP": 1.196,
+          "heightM": 1.1966897370486098,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 70.645,
+          "point": [
+            46.494,
+            -2.252
+          ],
+          "rawNAP": 1.196,
+          "surfaceNAP": 1.196,
+          "heightM": 1.1976898667717917,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 72.117,
+          "point": [
+            47.96,
+            -2.344
+          ],
+          "rawNAP": 1.201,
+          "surfaceNAP": 1.18,
+          "heightM": 1.1938714896729266,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 73.589,
+          "point": [
+            49.426,
+            -2.437
+          ],
+          "rawNAP": 1.133,
+          "surfaceNAP": 1.149,
+          "heightM": 1.160284778112265,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        },
+        {
+          "s": 75.06,
+          "point": [
+            50.891,
+            -2.53
+          ],
+          "rawNAP": 1.068,
+          "surfaceNAP": 1.133,
+          "heightM": 1.1000000000003638,
+          "validPixels": 21,
+          "coverage": "dtm_05m"
+        }
+      ],
+      "bounds": [
+        -27.145,
+        -39.907,
+        54.196,
+        34.897999999999996
+      ],
+      "provenance": {
+        "footprint": {
+          "file": "scripts/data/amsterdam-bridge-register.json",
+          "sha256": "dafef265e3ecff8544b176678ad10795a240befc209089646c2943216bc02734",
+          "objectNumber": "BRU0065"
+        },
+        "alignment": {
+          "file": "public/data/extracts/amsterdam/streets-routing.json",
+          "sha256": "1eebf0b2d9a8b731f62b8ca85e4278a825d0f2aa7f2a2bd158d23304fe09d706",
+          "roadId": "routing_11980",
+          "roadIds": [
+            "routing_11980"
+          ],
+          "match": "footprint-and-name",
+          "sources": {
+            "scripts/data/amsterdam-bridge-register.json": "dafef265e3ecff8544b176678ad10795a240befc209089646c2943216bc02734",
+            "public/data/extracts/amsterdam/streets-routing.json": "1eebf0b2d9a8b731f62b8ca85e4278a825d0f2aa7f2a2bd158d23304fe09d706",
+            "public/data/extracts/amsterdam/bridges.json": "6338eeaaeff202d1903c70fd6091773ec210d3f20c24a7f06ecf8866b510fc4f",
+            "scripts/data/amsterdam-bridge-paths.json": "fdab66acc2c34f7f6f408fb0b87e13cc39d6b180b17e03f465dfa7447f06fdc9",
+            "public/data/extracts/amsterdam/water.json": "6597eab74afc45d91f9874a9ab84fb860328bda4c08cb12bdd1142a3c96b388e"
+          }
+        },
+        "elevation": {
+          "rasters": [
+            {
+              "url": "https://service.pdok.nl/rws/ahn/wcs/v1_0?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dsm_05m&CRS=EPSG%3A28992&BBOX=120619%2C487043%2C120688%2C487082&RESX=0.5&RESY=0.5&FORMAT=GEOTIFF",
+              "retrievedAt": "2026-10-04T09:55:18.526Z",
+              "coverage": "dsm_05m",
+              "sha256": "df807e8f52cbdf62308f7e425b9caa6afee60b3fa46672731b5ae823f0eb58eb"
+            },
+            {
+              "url": "https://service.pdok.nl/rws/ahn/wcs/v1_0?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&COVERAGE=dtm_05m&CRS=EPSG%3A28992&BBOX=120619%2C487043%2C120688%2C487082&RESX=0.5&RESY=0.5&FORMAT=GEOTIFF",
+              "retrievedAt": "2026-10-04T09:55:18.587Z",
+              "coverage": "dtm_05m",
+              "sha256": "a8dc695a491b5f957d68a3347a8759075ab52dbc7afaa034ac7ccef6c13885e7"
+            }
+          ],
+          "resolutionM": 0.5,
+          "horizontalCRS": "EPSG:28992",
+          "heightDatum": "NAP",
+          "method": "DSM-footprint-clipped-deck-DTM-approaches-road-corridor-q30-median3-weighted3",
+          "interpolatedStations": 0,
+          "confidence": "raster-supported"
+        },
+        "renderDatum": {
+          "method": "absolute-NAP-deck-connected-road-8m-terrain-join",
+          "terrainFingerprint": "61b02c3250a9ed69"
+        },
+        "structure": {
+          "source": "municipal material plus procedural family",
+          "confidence": "illustrative",
+          "deckThicknessM": 0.35,
+          "archOpeningFraction": 0.7,
+          "railHeightM": 0.95
+        }
+      },
+      "waterFootprint": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.882897138595581,
+                52.37046386084771
+              ],
+              [
+                4.882894589493192,
+                52.37042339535999
+              ],
+              [
+                4.8828900044400605,
+                52.37037800440274
+              ],
+              [
+                4.882678004065921,
+                52.370387005480715
+              ],
+              [
+                4.882587003835922,
+                52.37035400152814
+              ],
+              [
+                4.882585002860775,
+                52.370346006558684
+              ],
+              [
+                4.882593992535882,
+                52.370479001528146
+              ],
+              [
+                4.882898994115166,
+                52.37046700009085
+              ],
+              [
+                4.882898715924196,
+                52.37046424606509
+              ],
+              [
+                4.882897138595581,
+                52.37046386084771
+              ]
+            ]
+          ]
+        ]
+      },
+      "approachTriangles": [],
+      "mesh": {
+        "url": "BRU0065-5e93b2db8456f68a.bin",
+        "batches": [
+          {
+            "kind": "deck",
+            "colour": "#817b70",
+            "positionsOffset": 0,
+            "positionsCount": 10080,
+            "indicesOffset": 40320,
+            "indicesCount": 3360,
+            "normalsOffset": 53760,
+            "normalsCount": 10080
+          },
+          {
+            "kind": "coping",
+            "colour": "#b7ad99",
+            "positionsOffset": 94080,
+            "positionsCount": 18576,
+            "indicesOffset": 168384,
+            "indicesCount": 6192,
+            "normalsOffset": 193152,
+            "normalsCount": 18576
+          },
+          {
+            "kind": "structure",
+            "colour": "#435a50",
+            "positionsOffset": 267456,
+            "positionsCount": 4500,
+            "indicesOffset": 285456,
+            "indicesCount": 1500,
+            "normalsOffset": 291456,
+            "normalsCount": 4500
+          },
+          {
+            "kind": "soffit",
+            "colour": "#435a50",
+            "positionsOffset": 309456,
+            "positionsCount": 10080,
+            "indicesOffset": 349776,
+            "indicesCount": 3360,
+            "normalsOffset": 363216,
+            "normalsCount": 10080
+          },
+          {
+            "kind": "railings",
+            "colour": "#273f35",
+            "positionsOffset": 403536,
+            "positionsCount": 40482,
+            "indicesOffset": 565464,
+            "indicesCount": 13494,
+            "normalsOffset": 619440,
+            "normalsCount": 40482
+          },
+          {
+            "kind": "abutments",
+            "colour": "#435a50",
+            "positionsOffset": 781368,
+            "positionsCount": 468,
+            "indicesOffset": 783240,
+            "indicesCount": 156,
+            "normalsOffset": 783864,
+            "normalsCount": 468
+          }
+        ],
+        "sha256": "5e93b2db8456f68acf865fed37bf04fd89f35967d481e2a2decd95a26c10c091"
+      }
+    }
+  ],
+  "deferred": [],
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "10c632417752b71e6737d73343812c759201be7d",
+    "path": "bridges/amsterdam-measured"
+  }
+}

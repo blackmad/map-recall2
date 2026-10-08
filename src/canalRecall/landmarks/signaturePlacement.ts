@@ -113,9 +113,9 @@ export interface SignatureModelSpec {
   /** How far the fitted height may fall from `heightMetres` before the model
    *  is treated as the wrong shape for this footprint. */
   readonly heightToleranceMetres?: number;
-  /** Ground elevation in metres above the ellipsoid at the anchor. Amsterdam
-   *  is flat and close to NAP zero, but MapLibre wants an altitude and the
-   *  wrong one sinks or floats the model visibly at low camera angles. */
+  /** Legacy ground-relative placement offset in metres at the anchor.
+   *  The runtime adds sampled NAP ground once; this value is not an ellipsoid
+   *  height and must not contain the surveyed ground a second time. */
   readonly groundAltitudeMetres: number;
   /** Extra rotation, degrees clockwise, applied after the footprint heading.
    *  A fitted rectangle cannot tell a facade from its back wall; this is where

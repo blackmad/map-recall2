@@ -101,6 +101,8 @@ class VectorBasemap {
     this._lastCameraZoom = null;
     this._quizQuietMap = false;
     this._activeLandmark = null;
+    this._elevation = null;
+    this._measuredBridges = null;
     this._playerBike = null;
     this._playerBoat = null;
     this._labelsVisible = false;
@@ -126,6 +128,10 @@ class VectorBasemap {
     });
 
     this.map.on('load', () => {
+      if (window.CanalRecallElevation) {
+        this._elevation = new window.CanalRecallElevation.GroundElevation(this.map, new URLSearchParams(location.search).get("terrain") === "1");
+        void this._elevation.load(this._extractPath);
+      }
       this._hideLabels();
       this._captureBasePaint();
       this._ensureRouteLayer();
@@ -183,6 +189,10 @@ class VectorBasemap {
         if (PlayerBoat3D) this._playerBoat = new PlayerBoat3D(this.map, maplibregl);
         if (PlayerTransit3D) this._playerTransit = new PlayerTransit3D(this.map, maplibregl);
       }
+      if (window.CanalRecallMeasuredBridges && new URLSearchParams(location.search).get('bridges3d') !== '0') {
+        this._measuredBridges = new window.CanalRecallMeasuredBridges.MeasuredBridges(this.map, maplibregl, new URLSearchParams(location.search).get('bridges3d') === '1');
+        void this._measuredBridges.load(this._extractPath);
+      }
       this.ready = true;
       if (window.CanalRecallInventoryTrees && this._trees3dEnabled) {
         this._inventoryTrees = new window.CanalRecallInventoryTrees.InventoryTrees(this.map, maplibregl, () => this._syncTreeVisibility());
@@ -204,6 +214,8 @@ class VectorBasemap {
   setExtractRoot(path) {
     if (!path || path === this._extractPath) return;
     this._extractPath = path;
+    if (this._elevation) void this._elevation.load(path);
+    if (this._measuredBridges) void this._measuredBridges.load(path);
     if (this._artisAnimals) this._artisAnimals.setExtractRoot(path);
     if (this._parkLandscape) this._parkLandscape.load(path);
     this._rawTrees = null;
@@ -1411,7 +1423,12 @@ class VectorBasemap {
     let topBuilding = -1;
     order.forEach((id, index) => { if (/^osm-colored-building|^building-3d|^three-building|detailed|signature/.test(id)) topBuilding = index; });
     if (topBuilding < 0) return;
-    const buried = this._poiLayerIds.filter(id => { const index = order.indexOf(id); return index >= 0 && index < topBuilding; });
+    const buried = this._poiLayerIds.filter(id => {
+      // Terrain paints ground fills/lines together before the 3D scene. Raising
+      // a ground locator would split that pass and fight elevation's layer order.
+      if (this.map.getTerrain() && ['fill', 'line'].includes(this.map.getLayer(id)?.type)) return false;
+      const index = order.indexOf(id); return index >= 0 && index < topBuilding;
+    });
     for (const id of buried) this.map.moveLayer(id);
   }
 
@@ -1846,11 +1863,19 @@ class VectorBasemap {
     ]) this[alias] = list.find(layer => layer.areaId === active) || list[0] || null;
   }
 
+  surfacePoseAt(lngLat, angle, contacts) {
+    const sample = point => this._measuredBridges?.heightAt(point) ?? this._elevation?.heightAt(point) ?? 0;
+    return window.CanalRecallElevation?.groundVehiclePose(sample, lngLat, angle, contacts) || {heightM: sample(lngLat), pitch: 0};
+  }
+
   setPlayerBike(player, loader, visible, zoomScale = 1) {
     if (!this._playerBike || !player || !loader) return;
     this._playerBike.zoomScale = zoomScale;
+    const lngLat = this.worldToLngLat(player.x, player.y, loader);
+    const pose = this.surfacePoseAt(lngLat, player.angle, this._playerBike.surfaceContactOffsets?.());
+    this._playerBike.setSurfacePose(pose.heightM + 0.22, pose.pitch);
     this._playerBike.update(
-      this.worldToLngLat(player.x, player.y, loader), player.angle, visible,
+      lngLat, player.angle, visible,
       player.steerInput || 0, player.distancePx || 0
     );
   }
@@ -1868,7 +1893,7 @@ class VectorBasemap {
     if (typeof this._playerTransit.setAltitude === 'function') {
       // Metro GTFS shapes are ground projections of tunnels — drop the mesh so
       // it does not sit inside extruded buildings along the corridor.
-      this._playerTransit.setAltitude(underground ? -9 : 0.22);
+      this._playerTransit.setAltitude((this._elevation?.heightAt(this.worldToLngLat(player.x, player.y, loader)) || 0) + (underground ? -9 : 0.22));
     }
     this._playerTransit.update(
       this.worldToLngLat(player.x, player.y, loader), player.angle, visible
@@ -2334,7 +2359,9 @@ class VectorBasemap {
     }
     this._clearancePitchRequested = pitch;
     const appliedPitch = Math.min(pitch, this._clearancePitch);
-    this.map.jumpTo({ center: [lon, lat], zoom: mapZoom, bearing, pitch: appliedPitch });
+    const surfaceElevation = detached || introFlat > 0 ? this._elevation?.heightAt([lon, lat]) || 0
+      : this._measuredBridges?.heightAt(subject) ?? this._elevation?.heightAt(subject) ?? 0;
+    this.map.jumpTo({ center: [lon, lat], zoom: mapZoom, bearing, pitch: appliedPitch, elevation: surfaceElevation });
     // Near detail (facade extras) follows the rider.
     if (this._threeBuildings && this._buildings3dEnabled && this._threeBuildings.setDetailCentre) this._threeBuildings.setDetailCentre(subject[0], subject[1]);
     this._syncFacadeZoom(mapZoom);
@@ -2473,7 +2500,7 @@ class VectorBasemap {
     const features = residentFeatures || this._completeCity.sampleFeatures(20_000);
     return features.find(feature => {
       const properties = feature.properties || {};
-      const top = Number(properties.roofEavesHeightM ?? properties.height ?? 5);
+      const top = Number(properties.roofEavesHeightM ?? properties.height ?? 5) + (this._elevation?.objectGround(feature.geometry) || 0);
       return Number.isFinite(top) && altitude < top + 0.75
         && this._pointInBuildingGeometry(point, feature.geometry);
     }) || null;
@@ -2506,7 +2533,7 @@ class VectorBasemap {
     for (let travelled = 1; travelled < distance - 2; travelled += 1) {
       const t = travelled / distance;
       const point = [from[0] + east * t / metresPerDegreeLng, from[1] + north * t / metresPerDegreeLat];
-      const rayAltitude = cameraAltitude * (1 - t);
+      const rayAltitude = cameraAltitude * (1 - t) + (this._elevation?.heightAt(center) || 0) * t;
       const here = candidates.filter(feature => {
         const box = this._featureBox(feature);
         return point[0] >= box[0] && point[0] <= box[2] && point[1] >= box[1] && point[1] <= box[3];

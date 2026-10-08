@@ -22,13 +22,15 @@ export class InventoryTrees {
     this.scene=new THREE.Scene();
     this.scene.add(new THREE.HemisphereLight(0xffffff,0x526048,2.15));
     const sun=new THREE.DirectionalLight(0xfff0d5,1.7);sun.position.set(-2,-1,4);this.scene.add(sun);
+    this._groundChanged = () => { if (this.enabled) this.rebuild(); };
+    map.on("canal-ground-changed", this._groundChanged);
     this.origin=maplibregl.MercatorCoordinate.fromLngLat([4.9,52.37],0);
     this.scale=this.origin.meterInMercatorCoordinateUnits();
     this.layer={id:'municipal-inventory-trees',type:'custom',renderingMode:'3d',
       onAdd:(_map,gl)=>{this.camera=new THREE.Camera();this.renderer=new THREE.WebGLRenderer({canvas:map.getCanvas(),context:gl,antialias:true});this.renderer.autoClear=false;},
       onRemove:()=>{
         this.generation++;this.enabled=false;this.ready=false;
-        this.clear();map.off('moveend',this.move);
+        this.clear();map.off('moveend',this.move);map.off('canal-ground-changed',this._groundChanged);
         for(const geometry of this.geometries.values())geometry.dispose();
         for(const material of this.materials.values())material.dispose();
         this.geometries.clear();this.materials.clear();this.renderer?.dispose();
@@ -113,20 +115,21 @@ export class InventoryTrees {
       if(!Number.isFinite(tree.lng)||!Number.isFinite(tree.lat)||tree.lng<b.getWest()||tree.lng>b.getEast()||tree.lat<b.getSouth()||tree.lat>b.getNorth())continue;
       const point=this.maplibregl.MercatorCoordinate.fromLngLat([tree.lng,tree.lat],0);
       const x=(point.x-this.origin.x)/this.scale,south=(point.y-this.origin.y)/this.scale;
+      const ground = this.map._canalElevation?.heightAt([tree.lng,tree.lat]) || 0;
       const native=treeTypology({...tree,position:[x,south]});const t=this.allotmentCanopyEnabled?scopeAllotmentCrown(tree,native):native;if(!t)continue;
       trees++;if(tree.source==='allotment-prior')authoredTrees++;archetypes.add(t.archetype);
-      append('wood',{p:[x,-south,t.trunkHeight/2],s:[t.trunkWidth*2,t.trunkWidth*2,t.trunkHeight],color:t.bark});
+      append('wood',{p:[x,-south,ground+t.trunkHeight/2],s:[t.trunkWidth*2,t.trunkWidth*2,t.trunkHeight],color:t.bark});
       const co=Math.cos(t.rotation),si=Math.sin(t.rotation);
       for(const l of t.lobes){
         const dx=l.offset[0]*co-l.offset[2]*si,dz=l.offset[0]*si+l.offset[2]*co;
         color.set(t.foliage).multiplyScalar([1,1.10,.86][l.tone]);
         // The map-to-scene south-axis flip also reverses crown yaw.
-        append(`${t.crownGeometry}-${l.tone}`,{p:[x+dx,-(south+dz),l.offset[1]],s:[l.scale[0],l.scale[2],l.scale[1]],rotation:-(t.rotation+(l.rotation??0)),color:color.clone()});
+        append(`${t.crownGeometry}-${l.tone}`,{p:[x+dx,-(south+dz),ground+l.offset[1]],s:[l.scale[0],l.scale[2],l.scale[1]],rotation:-(t.rotation+(l.rotation??0)),color:color.clone()});
         // A short fork connects each offset crown to the recorded trunk position.
         // All forks share the trunk draw call; no per-tree meshes or materials.
         if(t.crownGeometry==='faceted'&&t.archetype!=='fan-palm'&&Math.hypot(dx,dz)>.1){
-          const from=new THREE.Vector3(x,-south,t.trunkHeight*.72);
-          const to=new THREE.Vector3(x+dx*.75,-(south+dz*.75),l.offset[1]);
+          const from=new THREE.Vector3(x,-south,ground+t.trunkHeight*.72);
+          const to=new THREE.Vector3(x+dx*.75,-(south+dz*.75),ground+l.offset[1]);
           const delta=to.clone().sub(from),length=delta.length();
           append('wood',{p:from.add(to).multiplyScalar(.5).toArray(),s:[t.trunkWidth,t.trunkWidth,length],q:new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,0,1),delta.divideScalar(length)),color:t.bark});
         }

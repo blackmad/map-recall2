@@ -77,8 +77,8 @@ export async function openRoute(page: Page, options: OpenRouteOptions = {}): Pro
  */
 export async function serveMapLibreOffline(page: Page): Promise<void> {
   const dist = resolve(process.cwd(), 'node_modules/maplibre-gl/dist');
-  await page.route(/unpkg\.com\/maplibre-gl@5\/dist\/maplibre-gl\.js/, route => route.fulfill({ path: resolve(dist, 'maplibre-gl.js'), contentType: 'application/javascript' }));
-  await page.route(/unpkg\.com\/maplibre-gl@5\/dist\/maplibre-gl\.css/, route => route.fulfill({ path: resolve(dist, 'maplibre-gl.css'), contentType: 'text/css' }));
+  await page.route(/unpkg\.com\/maplibre-gl@5(?:\.\d+\.\d+)?\/dist\/maplibre-gl\.js/, route => route.fulfill({ path: resolve(dist, 'maplibre-gl.js'), contentType: 'application/javascript' }));
+  await page.route(/unpkg\.com\/maplibre-gl@5(?:\.\d+\.\d+)?\/dist\/maplibre-gl\.css/, route => route.fulfill({ path: resolve(dist, 'maplibre-gl.css'), contentType: 'text/css' }));
   await page.route(/tiles\.openfreemap\.org/, route => route.fulfill({
     contentType: 'application/json',
     body: JSON.stringify({ version: 8, name: 'offline', sources: {}, layers: [{ id: 'background', type: 'background', paint: { 'background-color': '#ece6d6' } }] }),
