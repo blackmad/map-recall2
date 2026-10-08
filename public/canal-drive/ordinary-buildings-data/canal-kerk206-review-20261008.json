@@ -6,7 +6,7 @@
   "bytes": 396200,
   "triangles": 5280,
   "materials": 3,
-  "verdict": "Independent source/actual GPU gallery and root/independent native desktop-touch game PASS with limits; local manual28 PASS; hosted release pending",
+  "verdict": "Independent source/actual GPU gallery and root/independent native desktop-touch game PASS with limits; actual hosted28 verified",
   "sourceCommit": "9fc691744e03b91f70899896033acdb6cbbd1a18",
   "sourcePack": "experiments/canal-belt-continuation-20261007/kerk206-build/0363100012175018",
   "rawSourcePack": "experiments/canal-belt-continuation-20261007/next-box-source-20/0363100012175018",
@@ -308,6 +308,17 @@
     "mappedPoiCreated": false,
     "realSignageAdded": false
   },
-  "ciLimit": "Previous public27 full e2e run37706014687 canceled after configured40-minute limit; smoke/check:canal and deployment passed. New release CI not yet run.",
-  "reviewEvidenceCommit": "fe2cb3f800f2c67c7e646aebf96af51462186bfe"
+  "ciLimit": "Kerkstraat28full-e2e37713643423 canceled after40-minute configured limit; logs show player-spawn predicate timeout in openRoute/helpers.ts66. Check:canal/boot smoke and deployment37713643473 passed. Hosted28 assets/manualverified.",
+  "reviewEvidenceCommit": "fe2cb3f800f2c67c7e646aebf96af51462186bfe",
+  "hostedVerification": {
+    "publicCommit": "0f31c976c6460c1d1218c733c5fefa02d93dfa42",
+    "firebaseRun": "37713643473",
+    "verifiedAtUTC": "2026-10-08T01:39:07.180Z",
+    "models": 28,
+    "allAssetHashesExact": true,
+    "manualDesktopTouchLoaded": 28,
+    "feedbackPreview": true,
+    "sourceCommit": "bb15e86d69625b1d20b8fc241f39512d9d32cbcc",
+    "sourcePack": "experiments/canal-belt-continuation-20261007/host28-27"
+  }
 }

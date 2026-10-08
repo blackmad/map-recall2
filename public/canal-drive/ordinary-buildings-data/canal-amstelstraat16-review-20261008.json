@@ -1,0 +1,461 @@
+{
+  "atUTC": "2026-10-08T07:25:45.075992+00:00",
+  "modelId": "ordinary-0363100012171370",
+  "buildingId": "NL.IMBAG.Pand.0363100012171370",
+  "hash": "40103a485cf91a26ac92811831e439ee7f0c9c01b97d0763e171e12a0f62954f",
+  "bytes": 445676,
+  "triangles": 5679,
+  "materials": 3,
+  "textures": 0,
+  "verdict": "Independent source/CPU/street-height GPU gallery and root/independent native desktop-touch game PASS with recorded limits; local manual29 PASS; hosted release pending",
+  "sourceCommit": "9fc691744e03b91f70899896033acdb6cbbd1a18",
+  "sourcePack": "experiments/canal-belt-continuation-20261007/next-large-box-source-23/0363100012171370",
+  "authorSourcePack": "experiments/canal-belt-continuation-20261007/amstelstraat16-build",
+  "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/amstel-release29-28",
+  "criticalAssemblies": [
+    "Twelve front upper opening groups with projecting pale heads",
+    "Four front roof opening/vent groups; bounded steep metal slopes around flat high roof",
+    "AIR neighbor EAST retained; fence gap WEST retained",
+    "Low rear roof ~6.35m rather than full-height extrusion",
+    "Source-traced9 firstfloor groups; BasicFit entrance EAST nextAIR, plain service door+substantial~1m louver WEST nextfence; no wholesalev02 reflection."
+  ],
+  "independentSourceGalleryEvidence": [
+    "REVIEW-V03.md",
+    "REVIEW-V03-GPU-STREET.md",
+    "gpu-v03-street-inputs.json"
+  ],
+  "nativeGame": {
+    "verdict": "PASS",
+    "scope": "Independent review of frozen Amstelstraat16\u201322 v03 native game evidence; source/CPU and source-height gallery gates inherited from saved independent v03 PASS reports. No browser rerun, source publication audit or public model commit performed.",
+    "modelId": "ordinary-0363100012171370",
+    "sha256": "40103a485cf91a26ac92811831e439ee7f0c9c01b97d0763e171e12a0f62954f",
+    "bytes": 445676,
+    "triangles": 5679,
+    "materials": 3,
+    "sourcePath": "/Users/blackmad/Code/map-recall2-worktrees/canal-box-source-recovery/experiments/canal-belt-continuation-20261007/next-large-box-source-23/0363100012171370",
+    "sourceCommitRootReported": "9fc691744e03b91f70899896033acdb6cbbd1a18",
+    "gameEvidence": "/Users/blackmad/Code/map-recall2-worktrees/canal-amstelstraat16-runtime/game",
+    "checks": {
+      "nativeScalePlacementAndCurrentFingerprint": "PASS",
+      "frontFacadeAndRoofRecognition": "PASS",
+      "lowRearAndOpenWestGap": "PASS",
+      "AIRAndOppositeRearRetention": "PASS",
+      "existingWilletHolthuysenReplacementRetained": "PASS",
+      "successfulLoadExactSuppressionAndFallback": "PASS",
+      "nativePickingNoInventedPoi": "PASS",
+      "stationaryDesktopTouchPanOrdinaryWindowsDoors": "PASS",
+      "warmFrameEvidence": "PASS"
+    },
+    "limits": [
+      "No actual pyramidal roof entries for this target; flags and fallback transitions verified, visual pyramidal-geometry behavior not exercised.",
+      "Touch is emulated on Apple M4 Pro, not physical mobile hardware.",
+      "90 warm frames per main/wide view do not establish stall-free startup; source-stage long tasks 86 ms desktop and 70 ms touch remain.",
+      "Other-street-front image has foreground occlusion; source-front/main/rear views carry recognition and neighbor conclusions.",
+      "West open gap/court remains visible; no claim that individual real fence rails are modeled.",
+      "Photo-guided facade/roof uncertainties from previous source/CPU and street-gallery reviews remain."
+    ],
+    "devices": {
+      "desktop": {
+        "errors": [],
+        "bootMs": 5521,
+        "requestFingerprintCurrent": true,
+        "nativePick": {
+          "id": "NL.IMBAG.Pand.0363100012171370",
+          "landmarkId": "",
+          "footprintType": "Polygon",
+          "height": 16.405271530151367,
+          "screen": [
+            630.0000000113029,
+            299.9999999971743
+          ]
+        },
+        "neighborStates": {
+          "0363100012182681": false,
+          "0363100012171563": false,
+          "0363100012171562": true,
+          "0363100012182680": false,
+          "0363100012182679": false,
+          "0363100012182432": false,
+          "0363100012171573": false,
+          "0363100012171565": false,
+          "0363100012171568": false,
+          "0363100012171567": false,
+          "0363100012169213": false,
+          "0363100012182493": false,
+          "0363100012571492": false,
+          "0363100012171566": false,
+          "0363100012177689": false
+        },
+        "suppressionStates": {
+          "delayed": {
+            "shown": false,
+            "suppressed": false,
+            "shaderHidden": false,
+            "pyramidHidden": false,
+            "pyramidEntries": [],
+            "spatialSuppression": false,
+            "ordinaryPoi": [],
+            "targetInstalled": 1,
+            "shaderRanges": []
+          },
+          "loaded": {
+            "shown": true,
+            "suppressed": true,
+            "shaderHidden": true,
+            "pyramidHidden": true,
+            "pyramidEntries": [],
+            "spatialSuppression": false,
+            "ordinaryPoi": [],
+            "targetInstalled": 1,
+            "shaderRanges": [
+              {
+                "key": "coarse:8414/5384",
+                "start": 526666,
+                "count": 71,
+                "first": 1,
+                "last": 1
+              }
+            ]
+          },
+          "disabled": {
+            "shown": true,
+            "suppressed": false,
+            "shaderHidden": false,
+            "pyramidHidden": false,
+            "pyramidEntries": [],
+            "spatialSuppression": false,
+            "ordinaryPoi": [],
+            "targetInstalled": 1,
+            "shaderRanges": [
+              {
+                "key": "coarse:8414/5384",
+                "start": 527373,
+                "count": 71,
+                "first": 0,
+                "last": 0
+              }
+            ]
+          },
+          "restored": {
+            "shown": true,
+            "suppressed": true,
+            "shaderHidden": true,
+            "pyramidHidden": true,
+            "pyramidEntries": [],
+            "spatialSuppression": false,
+            "ordinaryPoi": [],
+            "targetInstalled": 1,
+            "shaderRanges": [
+              {
+                "key": "coarse:8414/5384",
+                "start": 527373,
+                "count": 71,
+                "first": 1,
+                "last": 1
+              }
+            ]
+          },
+          "loadFailure": {
+            "shown": false,
+            "suppressed": false,
+            "shaderHidden": false,
+            "pyramidHidden": false,
+            "pyramidEntries": [],
+            "spatialSuppression": false,
+            "ordinaryPoi": [],
+            "targetInstalled": 1,
+            "shaderRanges": [
+              {
+                "key": "coarse:8414/5384",
+                "start": 526666,
+                "count": 71,
+                "first": 0,
+                "last": 0
+              }
+            ]
+          }
+        },
+        "warmMain": {
+          "frames": 90,
+          "medianMs": 16.69999999999891,
+          "p95Ms": 16.700000000000728
+        },
+        "warmWide": {
+          "frames": 90,
+          "medianMs": 16.699999999998,
+          "p95Ms": 16.700000000000728
+        },
+        "pan": {
+          "centerBefore": [
+            4.899145714285715,
+            52.36600957142857
+          ],
+          "centerAfter": [
+            4.9013828304141045,
+            52.366190604372115
+          ],
+          "riderDisplacementMetres": 3.606541569155508e-05
+        },
+        "longTasks": [
+          {
+            "stage": "startup",
+            "at": 755.1999999992549,
+            "ms": 56
+          },
+          {
+            "stage": "startup",
+            "at": 923.6999999992549,
+            "ms": 124
+          },
+          {
+            "stage": "startup",
+            "at": 3317.300000000745,
+            "ms": 102
+          },
+          {
+            "stage": "startup",
+            "at": 3480.10000000149,
+            "ms": 87
+          },
+          {
+            "stage": "startup",
+            "at": 3645.10000000149,
+            "ms": 65
+          },
+          {
+            "stage": "startup",
+            "at": 3748.10000000149,
+            "ms": 101
+          },
+          {
+            "stage": "startup",
+            "at": 3934.800000000745,
+            "ms": 92
+          },
+          {
+            "stage": "startup",
+            "at": 5467.89999999851,
+            "ms": 52
+          },
+          {
+            "stage": "ordinary-0363100012171370",
+            "at": 5639.800000000745,
+            "ms": 86
+          }
+        ]
+      },
+      "touch": {
+        "errors": [],
+        "bootMs": 4744,
+        "requestFingerprintCurrent": true,
+        "nativePick": {
+          "id": "NL.IMBAG.Pand.0363100012171370",
+          "landmarkId": "",
+          "footprintType": "Polygon",
+          "height": 16.405271530151367,
+          "screen": [
+            165,
+            272.00000000574505
+          ]
+        },
+        "neighborStates": {
+          "0363100012182681": false,
+          "0363100012171563": false,
+          "0363100012171562": true,
+          "0363100012182680": false,
+          "0363100012182679": false,
+          "0363100012182432": false,
+          "0363100012171573": false,
+          "0363100012171565": false,
+          "0363100012171568": false,
+          "0363100012171567": false,
+          "0363100012169213": false,
+          "0363100012182493": false,
+          "0363100012571492": false,
+          "0363100012171566": false,
+          "0363100012177689": false
+        },
+        "suppressionStates": {
+          "delayed": {
+            "shown": false,
+            "suppressed": false,
+            "shaderHidden": false,
+            "pyramidHidden": false,
+            "pyramidEntries": [],
+            "spatialSuppression": false,
+            "ordinaryPoi": [],
+            "targetInstalled": 1,
+            "shaderRanges": []
+          },
+          "loaded": {
+            "shown": true,
+            "suppressed": true,
+            "shaderHidden": true,
+            "pyramidHidden": true,
+            "pyramidEntries": [],
+            "spatialSuppression": false,
+            "ordinaryPoi": [],
+            "targetInstalled": 1,
+            "shaderRanges": [
+              {
+                "key": "coarse:8414/5384",
+                "start": 526814,
+                "count": 71,
+                "first": 1,
+                "last": 1
+              }
+            ]
+          },
+          "disabled": {
+            "shown": true,
+            "suppressed": false,
+            "shaderHidden": false,
+            "pyramidHidden": false,
+            "pyramidEntries": [],
+            "spatialSuppression": false,
+            "ordinaryPoi": [],
+            "targetInstalled": 1,
+            "shaderRanges": [
+              {
+                "key": "coarse:8414/5384",
+                "start": 527521,
+                "count": 71,
+                "first": 0,
+                "last": 0
+              }
+            ]
+          },
+          "restored": {
+            "shown": true,
+            "suppressed": true,
+            "shaderHidden": true,
+            "pyramidHidden": true,
+            "pyramidEntries": [],
+            "spatialSuppression": false,
+            "ordinaryPoi": [],
+            "targetInstalled": 1,
+            "shaderRanges": [
+              {
+                "key": "coarse:8414/5384",
+                "start": 527521,
+                "count": 71,
+                "first": 1,
+                "last": 1
+              }
+            ]
+          }
+        },
+        "warmMain": {
+          "frames": 90,
+          "medianMs": 16.699999999999818,
+          "p95Ms": 16.799999999999272
+        },
+        "warmWide": {
+          "frames": 90,
+          "medianMs": 16.699999999999818,
+          "p95Ms": 16.700000000000728
+        },
+        "pan": {
+          "centerBefore": [
+            4.899145714285715,
+            52.36600957142857
+          ],
+          "centerAfter": [
+            4.901366232834584,
+            52.36638213308652
+          ],
+          "riderDisplacementMetres": 9.711694759980777e-05
+        },
+        "longTasks": [
+          {
+            "stage": "startup",
+            "at": 660.6000000014901,
+            "ms": 50
+          },
+          {
+            "stage": "startup",
+            "at": 826.1000000014901,
+            "ms": 130
+          },
+          {
+            "stage": "startup",
+            "at": 3087.800000000745,
+            "ms": 101
+          },
+          {
+            "stage": "startup",
+            "at": 3249.5,
+            "ms": 93
+          },
+          {
+            "stage": "startup",
+            "at": 3413.60000000149,
+            "ms": 117
+          },
+          {
+            "stage": "ordinary-0363100012171370",
+            "at": 4846,
+            "ms": 70
+          }
+        ]
+      }
+    },
+    "evidenceHashes": {
+      "touch.json": "48b12aa14ef3cf0d9801458fdc523033a5c3156e03d22513a38bd5a48529d86d",
+      "touch-ordinary-0363100012171370-other-street-front.png": "daab19041993b9f3d924b1d24b09ebdf1723a6a55a02bc4fd8b82d627eb2f67b",
+      "desktop-load-failure.png": "1e3fcfc732d5b745e556dc67efa914a3d8b9dffe129fc20d362e0cada870b548",
+      "desktop-ordinary-0363100012171370-source-front.png": "c542f53ba5444589070f0edef0022584de2d8eaf438bc2c638c4d9a657142f04",
+      "touch-ordinary-0363100012171370-source-front.png": "1d923eb8d78f36b35b975ddf02890415f5f2eadca85ae1a284ec10adf7672621",
+      "touch-fallback.png": "8492edc6fa85b67c1bc865ea286784998fd018cc326430e84daa2af2910d2c91",
+      "touch-wide.png": "886a5eda23a38e7dfbefd0eb10e0a7fe2cfd74f0ab12b1d185ba89c1f73bead6",
+      "desktop-fallback.png": "f5587792a59a6775822785ad7344b8968adca9354a9f68de7c1d4900e644b596",
+      "touch-gesture.png": "47dced568c6bf896fd35eb0489fd85405026885799b460cbfb140a329cdae78e",
+      "desktop-ordinary-0363100012171370.png": "058ae12c89d82a0193c9bcaa903a55491d18846393715514ccfd921fba050ff3",
+      "touch-ordinary-0363100012171370.png": "3d3b03105d1de0b0d9060d1433ee64a4079cb7e71966ffa8c29ae4ea6a0e3f31",
+      "desktop-wide.png": "d6c255c191d4ed4eead55514184e432b840a12f1db84b29ade4e557860f53a59",
+      "desktop-gesture.png": "35693a9372fab8dbc13a0e28173c982c0649863d7e498abdd555cfef3a687164",
+      "desktop-ordinary-0363100012171370-other-street-front.png": "301c4d837d7038c9ed3d943d106062a379a3200f5ed62a06eef7fb8e989d53a7",
+      "desktop.json": "e282fc9ce374736a605c27a7796807a6a153cf1c8131ebe7880fee14a309f0d0"
+    }
+  },
+  "manualGallery": {
+    "desktopLoaded": 29,
+    "touchLoaded": 29,
+    "feedbackCapturedPreview": true,
+    "submittedFeedback": false,
+    "newestCard": "Amstelstraat 16\u201322",
+    "evidence": "manual29/capture.json"
+  },
+  "reproduction": {
+    "total": 29,
+    "exactHashes": 29,
+    "previous28Unchanged": true,
+    "rootPortIdenticalToFrozenV03": true
+  },
+  "preservedFailures": [
+    "v01 low-rear source scope overlap",
+    "v02 upper/native geometry correct but lower entrance/service/louver geographically reversed; failed10/31 source-role anchors",
+    "Initialv03 old plinth buried12near-pavement doorway samples; corrected openings retain exact native source roof/uppertriangle bits",
+    "Initial high gallery/side-only framing held; five street-height full/oblique/source-camera views independently accepted"
+  ],
+  "limits": [
+    "Facade opening widths/heights, vent relief and exposed west lower panes are photo-guided approximations.",
+    "Survey val3dity102: source planes clipped to unchanged native outline; centered fits retain millimetric residuals, tiny<0.3m\u00b2 source slivers and unrelated equipment surface132 omitted.",
+    "Beeldbank search produced JS shell only; current2006 facade is from2025/2024 photos.",
+    "Lowerfront native-u intervals from original panorama projections with2.8m assumedcameraheight; near-camera boundary uncertainty0.25-0.6m, far-grazing differences canapproach2m.",
+    "No actual pyramidal roof entries for this target; flags and fallback transitions verified, visual pyramidal-geometry behavior not exercised.",
+    "Touch is emulated on Apple M4 Pro, not physical mobile hardware.",
+    "90 warm frames per main/wide view do not establish stall-free startup; source-stage long tasks 86 ms desktop and 70 ms touch remain.",
+    "Other-street-front image has foreground occlusion; source-front/main/rear views carry recognition and neighbor conclusions.",
+    "West open gap/court remains visible; no claim that individual real fence rails are modeled.",
+    "Photo-guided facade/roof uncertainties from previous source/CPU and street-gallery reviews remain."
+  ],
+  "ordinaryAsset": {
+    "curatedDestinationCreated": false,
+    "mappedPoiCreated": false,
+    "realSignageAdded": false,
+    "insideFootprintBasicPlacesRetained": true
+  },
+  "ciLimit": "Previous28full-e2e37713643423 canceled after configured40-minute limit; log shows openRoute/helpers.ts66 player-spawn predicate timeout. Check:canal/boot smoke/deployment37713643473 passed. New29CI not yet run.",
+  "reviewEvidenceCommit": "087986cc828b344e55303764e680ef2d9d4101f8"
+}
