@@ -775,9 +775,16 @@ class GameRouteRuntime {
       const features = CanalRecallRoute.mergeManualPoiFeatures(await response.json(), city.id);
       for (const poi of curated) {
         const modelId = CanalRecallRoute.manualPoiForCuratedId(poi.id);
-        const match = features.find(feature => modelId && feature.modelId === modelId
-          || this._normaliseCanalName(feature.name) === this._normaliseCanalName(poi.name));
-        if (match) poi.landmarkId = match.id;
+        // Resolve the installed model first: an earlier raw name alias must
+        // not steal its arrival card and signature highlight.
+        const model = modelId && features.find(feature => feature.modelId === modelId);
+        const match = model || features.find(feature =>
+          this._normaliseCanalName(feature.name) === this._normaliseCanalName(poi.name));
+        if (match) {
+          poi.landmarkId = match.id;
+          const centre = model && (model.routeCenter || model.center);
+          if (centre) [poi.lat, poi.lng] = centre;
+        }
       }
       const seen = new Set(curated.map(poi => this._normaliseCanalName(poi.name)));
       const curatedModels = new Set(curated.map(poi => CanalRecallRoute.manualPoiForCuratedId(poi.id)).filter(Boolean));

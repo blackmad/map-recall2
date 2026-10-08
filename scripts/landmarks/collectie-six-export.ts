@@ -1,0 +1,11 @@
+import * as T from 'three';
+import fs from 'node:fs/promises';
+import {Document,NodeIO} from '@gltf-transform/core';
+import {weld,dedup,prune,meshopt} from '@gltf-transform/functions';
+import {ALL_EXTENSIONS} from '@gltf-transform/extensions';
+import {MeshoptEncoder} from 'meshoptimizer';
+import {buildCollectieSix} from './collectie-six-builder';
+import type {BuildingTools} from './cultural-builders';
+const doc=new Document(),buf=doc.createBuffer(),scene=doc.createScene(),colours:Record<string,string>={brick:'#858077',stone:'#c6c6bc',slate:'#47525d',white:'#e4e4dc',glass:'#526f78',dark:'#344c49'},materials=new Map<string,ReturnType<Document['createMaterial']>>();let triangles=0;
+const b={add(g:T.BufferGeometry,c:string,x=0,y=0,z=0,angle=0){g.rotateY(angle);g.translate(x,y,z);const material=materials.get(c)??doc.createMaterial(c).setBaseColorFactor([...new T.Color(colours[c]).toArray(),1]).setRoughnessFactor(1).setMetallicFactor(0).setDoubleSided(true);materials.set(c,material);const p=g.getAttribute('position'),n=g.getAttribute('normal'),prim=doc.createPrimitive().setAttribute('POSITION',doc.createAccessor().setType('VEC3').setArray(new Float32Array(p.array)).setBuffer(buf)).setAttribute('NORMAL',doc.createAccessor().setType('VEC3').setArray(new Float32Array(n.array)).setBuffer(buf)).setMaterial(material).setExtras({role:g.userData.role??'detail'});if(g.index)prim.setIndices(doc.createAccessor().setType('SCALAR').setArray(new Uint32Array(g.index.array)).setBuffer(buf));scene.addChild(doc.createNode().setMesh(doc.createMesh().addPrimitive(prim)));triangles+=(g.index?.count??p.count)/3;}} as BuildingTools;
+buildCollectieSix(0,0,b);await fs.mkdir('artifacts/collectie-six-cpu',{recursive:true});await new NodeIO().write('artifacts/collectie-six-cpu/collectie-six.glb',doc);await MeshoptEncoder.ready;await doc.transform(weld(),dedup(),prune(),meshopt({encoder:MeshoptEncoder,level:'medium',quantizePosition:16}));await new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({'meshopt.encoder':MeshoptEncoder}).write('artifacts/collectie-six-cpu/collectie-six-compressed.glb',doc);console.log({triangles,bytes:(await fs.stat('artifacts/collectie-six-cpu/collectie-six-compressed.glb')).size});

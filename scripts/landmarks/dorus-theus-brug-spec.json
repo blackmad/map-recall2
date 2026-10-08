@@ -1,0 +1,59 @@
+{
+  "id": "dorus-theus-brug",
+  "name": "Dorus Theus Brug",
+  "landmarkId": "dorus-theus-brug",
+  "modelUrl": "./models/dorus-theus-brug.glb",
+  "suppressOsmIds": [],
+  "spatialSuppression": false,
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "footprint": {
+    "centre": [
+      4.856053,
+      52.376791
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 53,
+    "widthMetres": 23
+  },
+  "surveyed": {
+    "anchor": [
+      4.856053,
+      52.376791
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current OSM w626223373,w626223376,w626223371 and exact connecting paths. NativeX east,Z south. User screenshot resolves requested Dorus Theus Brug alias to the Helofytenfilter Erasmusgracht water parklet, no invented municipal bridge number."
+  },
+  "materialOverrides": {
+    "stone": "#a0a196",
+    "concrete": "#787b71",
+    "bronze": "#6f6452",
+    "dark": "#49483f",
+    "green": "#718748",
+    "ochre": "#a7a26b",
+    "frame": "#68695f"
+  },
+  "attribution": {
+    "title": "Helofytenfilter Erasmusgracht \u2014 Dorus Theus Brug",
+    "author": "Map Recall",
+    "sourceUrl": "https://weerproof.nl/project/helofytenfilter-erasmusgracht/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original native-scale texture-free planted filter beds, gabion rims, wooden footwalks and piers using surveyed OSM outlines and source-guided original geometry; no reference pixels or imported meshes."
+  },
+  "identity": {
+    "canonicalPhysicalFeature": "w626223376",
+    "requestedAlias": "Dorus Theus Brug",
+    "primaryDocumentedName": "Helofytenfilter Erasmusgracht",
+    "treatment": "landscape/waterparklet",
+    "routeEntrance": [
+      4.8564044,
+      52.3766581
+    ],
+    "alternativePublicEntrance": [
+      4.8556754,
+      52.3768526
+    ],
+    "avoidDuplicateDestinations": true
+  }
+}

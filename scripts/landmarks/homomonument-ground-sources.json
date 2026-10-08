@@ -1,0 +1,81 @@
+{
+  "id": "homomonument",
+  "purpose": "Source-backed quay paving correction; no monument translation and no canal infill",
+  "retrievedAt": "2026-10-08",
+  "sourcePaths": [
+    "artifacts/homomonument-ground-source/bgt-waterdeel.json",
+    "artifacts/homomonument-ground-source/bgt-wegdeel.json",
+    "artifacts/homomonument-ground-source/bgt-ondersteunendwegdeel.json",
+    "artifacts/homomonument-ground-source/bgt-onbegroeidterreindeel.json",
+    "artifacts/homomonument-ground-source/acquisition.json"
+  ],
+  "derivedGeometry": "public/data/extracts/amsterdam/homomonument-ground.geojson",
+  "sources": [
+    {
+      "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/waterdeel/items?bbox=4.8841,52.3740,4.8854,52.3749&limit=1000&f=json",
+      "path": "artifacts/homomonument-ground-source/bgt-waterdeel.json",
+      "sha256": "fe9508d20e6aac28286bb083fa69ea88c925707a016901d62ddbef2cf8e5eb6a",
+      "license": "CC0 1.0",
+      "accessState": "HTTP 200 via curl after Python certificate-chain verification failed; failed attempts retained"
+    },
+    {
+      "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/wegdeel/items?bbox=4.8841,52.3740,4.8854,52.3749&limit=1000&f=json",
+      "path": "artifacts/homomonument-ground-source/bgt-wegdeel.json",
+      "sha256": "559c17fe330531974a9405c01eca0daf307fac267e990ef6c1769a88b3405df6",
+      "license": "CC0 1.0",
+      "accessState": "HTTP 200 via curl after Python certificate-chain verification failed; failed attempts retained"
+    },
+    {
+      "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/ondersteunendwegdeel/items?bbox=4.8841,52.3740,4.8854,52.3749&limit=1000&f=json",
+      "path": "artifacts/homomonument-ground-source/bgt-ondersteunendwegdeel.json",
+      "sha256": "9c48102f1e07b691f3b975c1b81cbf688d304e958fc0f257991f26a8c11027c6",
+      "license": "CC0 1.0",
+      "accessState": "HTTP 200 via curl after Python certificate-chain verification failed; failed attempts retained"
+    },
+    {
+      "url": "https://api.pdok.nl/lv/bgt/ogc/v1/collections/onbegroeidterreindeel/items?bbox=4.8841,52.3740,4.8854,52.3749&limit=1000&f=json",
+      "path": "artifacts/homomonument-ground-source/bgt-onbegroeidterreindeel.json",
+      "sha256": "b479de570ecc77744eee3a268aaff5cc127ec54f40e8390dfa264d69145efb5a",
+      "license": "CC0 1.0",
+      "accessState": "HTTP 200 via curl after Python certificate-chain verification failed; failed attempts retained"
+    }
+  ],
+  "assertions": [
+    {
+      "feature": "G0363.88e30c8a42194f3684892f750eb0ebf9",
+      "layer": "wegdeel",
+      "state": "current (eind_registratie and termination_date null)",
+      "claim": "Both mainland triangles: all 3 vertices and centroids within mapped paved footpath"
+    },
+    {
+      "feature": "G0363.eb965d61629d424c934f94b634ebf74f",
+      "layer": "wegdeel",
+      "state": "current",
+      "claim": "Both inland base corners of east platform on paved footpath, displayed as pale-green base ground before correction"
+    },
+    {
+      "feature": "G0363.f851c094a0af4a62aedbe38b76c77d7e",
+      "layer": "waterdeel",
+      "state": "current",
+      "claim": "East tip and centroid deliberately over water; derived paved-quay fill excludes both"
+    }
+  ],
+  "simplification": {
+    "metres": 0.08,
+    "sourceVertices": 619,
+    "publishedVertices": 28,
+    "holes": 1,
+    "maxMeasuredBoundaryDeviationM": 0.0766972548481516
+  },
+  "nativePlacement": {
+    "anchor": [
+      4.8846925,
+      52.37443243333333
+    ],
+    "northOffsetDegrees": 0,
+    "runtimeModelRotationDegrees": 90,
+    "runtimeRotationMeaning": "Native +X east convention, not an extra quarter turn",
+    "scale": 1
+  },
+  "reviewState": "Scoped derived paving implemented and checks passed; root source archive/integration/independent acceptance pending"
+}
