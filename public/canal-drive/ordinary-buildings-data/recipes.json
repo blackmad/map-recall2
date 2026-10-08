@@ -49286,6 +49286,346 @@
       },
       "builderStage": "scripts/ordinary-buildings/build-kerk136-details.ts",
       "builderEvidence": "Frozen source-specific geometry in private1888973/kerk136-build-34; base shell is intermediate only, final standalone native builder owns original surveyed roof/window assemblies."
+    },
+    {
+      "digits": "0363100012167897",
+      "id": "NL.IMBAG.Pand.0363100012167897",
+      "label": "Nieuwe Spiegelstraat3\u201317 / Keizersgracht555 historic office and arcade wing",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.890464,
+              52.365062
+            ],
+            [
+              4.890453,
+              52.365064
+            ],
+            [
+              4.89046,
+              52.365085
+            ],
+            [
+              4.890293,
+              52.36514
+            ],
+            [
+              4.89026,
+              52.365102
+            ],
+            [
+              4.890243,
+              52.365083
+            ],
+            [
+              4.89016,
+              52.364988
+            ],
+            [
+              4.89012,
+              52.364944
+            ],
+            [
+              4.890098,
+              52.364919
+            ],
+            [
+              4.890076,
+              52.364892
+            ],
+            [
+              4.890064,
+              52.364878
+            ],
+            [
+              4.889978,
+              52.364779
+            ],
+            [
+              4.889961,
+              52.364758
+            ],
+            [
+              4.889902,
+              52.364691
+            ],
+            [
+              4.889905,
+              52.36469
+            ],
+            [
+              4.889875,
+              52.364655
+            ],
+            [
+              4.8899,
+              52.364647
+            ],
+            [
+              4.889838,
+              52.364571
+            ],
+            [
+              4.889835,
+              52.364572
+            ],
+            [
+              4.88976,
+              52.364489
+            ],
+            [
+              4.889763,
+              52.364488
+            ],
+            [
+              4.889741,
+              52.364464
+            ],
+            [
+              4.88976,
+              52.364437
+            ],
+            [
+              4.889804,
+              52.364431
+            ],
+            [
+              4.889804,
+              52.364429
+            ],
+            [
+              4.889955,
+              52.364408
+            ],
+            [
+              4.889955,
+              52.36441
+            ],
+            [
+              4.89015,
+              52.364384
+            ],
+            [
+              4.890187,
+              52.364489
+            ],
+            [
+              4.890168,
+              52.364491
+            ],
+            [
+              4.890179,
+              52.364522
+            ],
+            [
+              4.890198,
+              52.364519
+            ],
+            [
+              4.890226,
+              52.364599
+            ],
+            [
+              4.890146,
+              52.364609
+            ],
+            [
+              4.890137,
+              52.364612
+            ],
+            [
+              4.890141,
+              52.364618
+            ],
+            [
+              4.890165,
+              52.364616
+            ],
+            [
+              4.890187,
+              52.364643
+            ],
+            [
+              4.89011,
+              52.364669
+            ],
+            [
+              4.890464,
+              52.365062
+            ]
+          ]
+        ]
+      },
+      "anchor": [
+        4.890062076923077,
+        52.364688384615384
+      ],
+      "sourceHeight": 28.036548614501953,
+      "mainHeight": 28.036548614501953,
+      "wallBaseHeight": 0,
+      "levels": 0,
+      "wall": "#824b41",
+      "roof": "#6f7372",
+      "palette": {
+        "frames": "#e1e1cc",
+        "glass": "#4e6970",
+        "balcony": "#303c37"
+      },
+      "cameraBearing": 297.758,
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-large-box-source-26-followup/0363100012167897",
+      "sourceCommit": "087986cc828b344e55303764e680ef2d9d4101f8",
+      "references": [
+        "fullfront-0363100012167897-2025-00403-einitial.jpg",
+        "fullfront-0363100012167897-2025-00390-esouth.jpg",
+        "fullfront-0363100012167897-2025-00415-enorth.jpg"
+      ],
+      "sourceUrls": [
+        "https://api.data.amsterdam.nl/v1/bag/panden/?identificatie=0363100012167897",
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012167897"
+      ],
+      "traits": [
+        "Long red-brick lower street wing: white window surrounds, layered cornice, true recessed ground arcade and arched attic end projections.",
+        "Taller historic Keizers555: pale rusticated base, iron-grilled shallow arches, eighteen-pane historic sashes, fluted pilasters, portico/frontons and west balustrade.",
+        "Native irregular footprint, independent low/high source roof families, retained reentrant perimeter and neighboring Pand identities."
+      ],
+      "simplifications": [
+        "Earlier v03 wall/roof gaps and v05 uppercount failure preserved; survey roof-plane interpretation remains approximate.",
+        "Hidden rear openings unobserved; no invented rear facade inventory."
+      ],
+      "facade": {
+        "kind": "blank",
+        "levels": 0
+      },
+      "galleryFrontage": {
+        "target": [
+          4.890084,
+          52.364897
+        ],
+        "distanceMetres": 83,
+        "targetHeightMetres": 7,
+        "referenceImages": [
+          "./ordinary-buildings-data/references/0363100012167897/fullfront-0363100012167897-2025-00403-einitial.jpg",
+          "./ordinary-buildings-data/references/0363100012167897/fullfront-0363100012167897-2025-00415-enorth.jpg"
+        ]
+      },
+      "builderStage": "scripts/ordinary-buildings/build-nieuwespiegel555.ts",
+      "builderEvidence": "Standalone native original source-specific geometry owns final shell/roofs; generic base is intermediate only.",
+      "gallerySecondary": {
+        "target": [
+          4.889967,
+          52.36441
+        ],
+        "cameraBearing": 192.55,
+        "distanceMetres": 43,
+        "targetHeightMetres": 12,
+        "referenceImages": [
+          "./ordinary-buildings-data/references/0363100012167897/fullfront-0363100012167897-2025-00390-esouth.jpg"
+        ]
+      }
+    },
+    {
+      "digits": "0363100012169456",
+      "id": "NL.IMBAG.Pand.0363100012169456",
+      "label": "Prinsengracht 211\u2013213",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.886083,
+              52.377036
+            ],
+            [
+              4.885732,
+              52.377157
+            ],
+            [
+              4.885731,
+              52.377156
+            ],
+            [
+              4.885636,
+              52.377051
+            ],
+            [
+              4.886184,
+              52.376863
+            ],
+            [
+              4.886281,
+              52.376968
+            ],
+            [
+              4.886124,
+              52.377022
+            ],
+            [
+              4.886071,
+              52.376966
+            ],
+            [
+              4.88603,
+              52.37698
+            ],
+            [
+              4.886083,
+              52.377036
+            ]
+          ]
+        ]
+      },
+      "anchor": [
+        4.885985777777778,
+        52.37702211111111
+      ],
+      "sourceHeight": 15.19,
+      "mainHeight": 17.627357482910156,
+      "wallBaseHeight": 0,
+      "levels": 0,
+      "wall": "#54463b",
+      "roof": "#515653",
+      "palette": {
+        "frames": "#e1e1cc",
+        "glass": "#4e6970",
+        "balcony": "#303c37"
+      },
+      "cameraBearing": 299.37,
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-box-source39/0363100012169456",
+      "sourceCommit": "ef64e81d6e6a762ff9fc39112ad5d2ea757ff73c",
+      "references": [
+        "fullfront-0363100012169456-2025-01975-einitial.jpg",
+        "roofwide-0363100012169456-2025-01975-einitial.jpg",
+        "fullfront-0363100012169456-2024-00560-einitial.jpg"
+      ],
+      "sourceUrls": [
+        "https://api.data.amsterdam.nl/v1/bag/panden/?identificatie=0363100012169456",
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169456"
+      ],
+      "traits": [
+        "Twin warehouse loading stacks with rounded windows and red open shutters.",
+        "Pointed gables, thin pale caps and hoist beams.",
+        "Native rear notch and low rear annex."
+      ],
+      "simplifications": [
+        "32 first-hit overlaps remain preserved and independently classified;211 entry edge and apron proportions approximate.",
+        "Hidden rear openings unobserved; no invented rear facade inventory."
+      ],
+      "facade": {
+        "kind": "blank",
+        "levels": 0
+      },
+      "galleryFrontage": {
+        "target": [
+          4.8856835,
+          52.3771035
+        ],
+        "distanceMetres": 38,
+        "targetHeightMetres": 8
+      },
+      "builderStage": "scripts/ordinary-buildings/build-prinsen211-details.ts",
+      "builderEvidence": "Standalone native original source-specific geometry owns final shell/roofs; generic base is intermediate only."
     }
   ]
 }

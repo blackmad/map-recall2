@@ -19902,6 +19902,372 @@
         "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00230/equirectangular/panorama_8000.jpg"
       ],
       "updatedAt": "2026-10-08T15:29:13.555963+00:00"
+    },
+    {
+      "name": "Nieuwe Spiegelstraat3\u201317 / Keizersgracht555 historic office and arcade wing",
+      "cameraBearing": 297.758,
+      "referenceImages": [
+        "./ordinary-buildings-data/references/0363100012167897/fullfront-0363100012167897-2025-00403-einitial.jpg",
+        "./ordinary-buildings-data/references/0363100012167897/fullfront-0363100012167897-2025-00390-esouth.jpg",
+        "./ordinary-buildings-data/references/0363100012167897/fullfront-0363100012167897-2025-00415-enorth.jpg"
+      ],
+      "traits": [
+        "Long red-brick lower street wing: white window surrounds, layered cornice, true recessed ground arcade and arched attic end projections.",
+        "Taller historic Keizers555: pale rusticated base, iron-grilled shallow arches, eighteen-pane historic sashes, fluted pilasters, portico/frontons and west balustrade.",
+        "Native irregular footprint, independent low/high source roof families, retained reentrant perimeter and neighboring Pand identities."
+      ],
+      "simplifications": [
+        "Earlier v03 wall/roof gaps and v05 uppercount failure preserved; survey roof-plane interpretation remains approximate.",
+        "Hidden rear openings unobserved; no invented rear facade inventory."
+      ],
+      "galleryFrontage": {
+        "target": [
+          4.890084,
+          52.364897
+        ],
+        "distanceMetres": 83,
+        "targetHeightMetres": 7,
+        "referenceImages": [
+          "./ordinary-buildings-data/references/0363100012167897/fullfront-0363100012167897-2025-00403-einitial.jpg",
+          "./ordinary-buildings-data/references/0363100012167897/fullfront-0363100012167897-2025-00415-enorth.jpg"
+        ]
+      },
+      "gallerySecondary": {
+        "target": [
+          4.889967,
+          52.36441
+        ],
+        "cameraBearing": 192.55,
+        "distanceMetres": 43,
+        "targetHeightMetres": 12,
+        "referenceImages": [
+          "./ordinary-buildings-data/references/0363100012167897/fullfront-0363100012167897-2025-00390-esouth.jpg"
+        ]
+      },
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-large-box-source-26-followup/0363100012167897",
+      "reviewState": "Independent source/gallery and native desktop/touch PASS; startup/source-stage pauses and approximation limits preserved.",
+      "id": "ordinary-0363100012167897",
+      "buildingId": "NL.IMBAG.Pand.0363100012167897",
+      "modelUrl": "./models/ordinary-buildings/0363100012167897.glb",
+      "anchor": [
+        4.890062076923077,
+        52.364688384615384
+      ],
+      "bearing": 0,
+      "scale": 1,
+      "hash": "261193e0642c821035d086469bdc5f7e090b4cfcc13542f83adad43c9a7929f9",
+      "bytes": 332168,
+      "materials": 2,
+      "triangles": 15305,
+      "bounds": {
+        "min": [
+          -22.37699317932129,
+          -1.9073486612342094e-07,
+          -50.65300750732422
+        ],
+        "max": [
+          27.321002960205078,
+          28.036548614501953,
+          34.734642028808594
+        ]
+      },
+      "height": 28.036548614501953,
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.890464,
+              52.365062
+            ],
+            [
+              4.890453,
+              52.365064
+            ],
+            [
+              4.89046,
+              52.365085
+            ],
+            [
+              4.890293,
+              52.36514
+            ],
+            [
+              4.89026,
+              52.365102
+            ],
+            [
+              4.890243,
+              52.365083
+            ],
+            [
+              4.89016,
+              52.364988
+            ],
+            [
+              4.89012,
+              52.364944
+            ],
+            [
+              4.890098,
+              52.364919
+            ],
+            [
+              4.890076,
+              52.364892
+            ],
+            [
+              4.890064,
+              52.364878
+            ],
+            [
+              4.889978,
+              52.364779
+            ],
+            [
+              4.889961,
+              52.364758
+            ],
+            [
+              4.889902,
+              52.364691
+            ],
+            [
+              4.889905,
+              52.36469
+            ],
+            [
+              4.889875,
+              52.364655
+            ],
+            [
+              4.8899,
+              52.364647
+            ],
+            [
+              4.889838,
+              52.364571
+            ],
+            [
+              4.889835,
+              52.364572
+            ],
+            [
+              4.88976,
+              52.364489
+            ],
+            [
+              4.889763,
+              52.364488
+            ],
+            [
+              4.889741,
+              52.364464
+            ],
+            [
+              4.88976,
+              52.364437
+            ],
+            [
+              4.889804,
+              52.364431
+            ],
+            [
+              4.889804,
+              52.364429
+            ],
+            [
+              4.889955,
+              52.364408
+            ],
+            [
+              4.889955,
+              52.36441
+            ],
+            [
+              4.89015,
+              52.364384
+            ],
+            [
+              4.890187,
+              52.364489
+            ],
+            [
+              4.890168,
+              52.364491
+            ],
+            [
+              4.890179,
+              52.364522
+            ],
+            [
+              4.890198,
+              52.364519
+            ],
+            [
+              4.890226,
+              52.364599
+            ],
+            [
+              4.890146,
+              52.364609
+            ],
+            [
+              4.890137,
+              52.364612
+            ],
+            [
+              4.890141,
+              52.364618
+            ],
+            [
+              4.890165,
+              52.364616
+            ],
+            [
+              4.890187,
+              52.364643
+            ],
+            [
+              4.89011,
+              52.364669
+            ],
+            [
+              4.890464,
+              52.365062
+            ]
+          ]
+        ]
+      },
+      "sourceCommit": "087986cc828b344e55303764e680ef2d9d4101f8",
+      "sourcePath": "experiments/canal-belt-continuation-20261007/next-large-box-source-26-followup/0363100012167897",
+      "sourceUrls": [
+        "https://api.data.amsterdam.nl/v1/bag/panden/?identificatie=0363100012167897",
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012167897"
+      ],
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012167897"
+      ],
+      "retainedNeighbors": [
+        "NL.IMBAG.Pand.0363100012167898",
+        "NL.IMBAG.Pand.0363100012176763"
+      ],
+      "treatment": "full",
+      "status": "draft-pending-source-render-independent-native-game-performance",
+      "updatedAt": "2026-10-08T19:49:48.773502+00:00"
+    },
+    {
+      "id": "ordinary-0363100012169456",
+      "buildingId": "NL.IMBAG.Pand.0363100012169456",
+      "label": "Prinsengracht 211\u2013213",
+      "url": "/models/ordinary-buildings/0363100012169456.glb",
+      "anchor": [
+        4.885985777777778,
+        52.37702211111111
+      ],
+      "bearing": 0,
+      "scale": 1,
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012169456"
+      ],
+      "hash": "d920c307562b014c19414b3015e25b02c2492caa42d61425d89d3d4b37fa7e67",
+      "bytes": 471396,
+      "triangles": 6982,
+      "materials": 3,
+      "bounds": {
+        "min": [
+          -23.991369247436523,
+          -9.536743306171047e-08,
+          -15.057171821594238
+        ],
+        "max": [
+          20.062335968017578,
+          17.627357482910156,
+          17.712249755859375
+        ]
+      },
+      "height": 17.627357482910156,
+      "sourceCommit": "ef64e81d6e6a762ff9fc39112ad5d2ea757ff73c",
+      "modelUrl": "./models/ordinary-buildings/0363100012169456.glb",
+      "name": "Prinsengracht 211\u2013213",
+      "cameraBearing": 299.37,
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.886083,
+              52.377036
+            ],
+            [
+              4.885732,
+              52.377157
+            ],
+            [
+              4.885731,
+              52.377156
+            ],
+            [
+              4.885636,
+              52.377051
+            ],
+            [
+              4.886184,
+              52.376863
+            ],
+            [
+              4.886281,
+              52.376968
+            ],
+            [
+              4.886124,
+              52.377022
+            ],
+            [
+              4.886071,
+              52.376966
+            ],
+            [
+              4.88603,
+              52.37698
+            ],
+            [
+              4.886083,
+              52.377036
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 15.19,
+      "referenceImages": [
+        "./ordinary-buildings-data/references/0363100012169456/fullfront-0363100012169456-2025-01975-einitial.jpg",
+        "./ordinary-buildings-data/references/0363100012169456/roofwide-0363100012169456-2025-01975-einitial.jpg",
+        "./ordinary-buildings-data/references/0363100012169456/fullfront-0363100012169456-2024-00560-einitial.jpg"
+      ],
+      "traits": [
+        "Twin warehouse loading stacks with rounded windows and red open shutters.",
+        "Pointed gables, thin pale caps and hoist beams.",
+        "Native rear notch and low rear annex."
+      ],
+      "simplifications": [
+        "32 first-hit overlaps remain preserved and independently classified;211 entry edge and apron proportions approximate.",
+        "Hidden rear openings unobserved; no invented rear facade inventory."
+      ],
+      "reviewState": "Independent source/gallery and native desktop/touch PASS; startup/source-stage pauses and approximation limits preserved.",
+      "galleryFrontage": {
+        "target": [
+          4.8856835,
+          52.3771035
+        ],
+        "distanceMetres": 38,
+        "targetHeightMetres": 8
+      },
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-box-source39/0363100012169456",
+      "sourceUrls": [
+        "https://api.data.amsterdam.nl/v1/bag/panden/?identificatie=0363100012169456",
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169456"
+      ],
+      "updatedAt": "2026-10-08T19:49:48.773502+00:00"
     }
   ]
 }

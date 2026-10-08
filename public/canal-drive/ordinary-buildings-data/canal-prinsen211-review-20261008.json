@@ -1,0 +1,1149 @@
+{
+  "modelId": "ordinary-0363100012169456",
+  "sha256": "d920c307562b014c19414b3015e25b02c2492caa42d61425d89d3d4b37fa7e67",
+  "bytes": 471396,
+  "triangles": 6982,
+  "materials": 3,
+  "sourceCommit": "ef64e81d6e6a762ff9fc39112ad5d2ea757ff73c",
+  "sourcePack": "experiments/canal-belt-continuation-20261007/next-box-source39/0363100012169456",
+  "acceptedLocally": true,
+  "hostedVerified": false,
+  "reason": "Source-specific twin warehouse: rounded loading stacks/red shutters, separate211/213 lower openings and native low rear/notch.",
+  "nativeReview": {
+    "verdict": "PASS",
+    "scope": "Independent native gameplay acceptance for frozen Prinsengracht211\u2013213 ordinary warehouse; local staged catalogue32 only, final publication remains root-owned",
+    "reviewedAt": "2026-10-08T19:39:28.377602+00:00",
+    "modelId": "ordinary-0363100012169456",
+    "parentId": "NL.IMBAG.Pand.0363100012169456",
+    "sha256": "d920c307562b014c19414b3015e25b02c2492caa42d61425d89d3d4b37fa7e67",
+    "bytes": 471396,
+    "triangles": 6982,
+    "materials": 3,
+    "textures": 0,
+    "native": {
+      "scale": 1,
+      "frontageMetres": 13.3543,
+      "areaSquareMetres": 552.989,
+      "singleSuppressionId": "NL.IMBAG.Pand.0363100012169456",
+      "all16CurrentAddressesReviewed": true,
+      "retainedIds": [
+        "NL.IMBAG.Pand.0363100012169457",
+        "NL.IMBAG.Pand.0363100012176491",
+        "NL.IMBAG.Pand.0363100012176494",
+        "NL.IMBAG.Pand.0363100012176541",
+        "NL.IMBAG.Pand.0363100012250513"
+      ],
+      "spatialSuppression": false
+    },
+    "sourceArchive": {
+      "publishedSourceCommit": "ef64e81d6e6a762ff9fc39112ad5d2ea757ff73c",
+      "authorActualSourceGpuCommit": "7a370560",
+      "pack": "experiments/canal-belt-continuation-20261007/next-box-source39/0363100012169456"
+    },
+    "sourceVisualChecks": [
+      "Current2025near-bank lower/fullfront and roofwide projections",
+      "Scaffolded2024near-bank lower and2025opposite-bank context",
+      "Author assertions, geometry identity, all16address parent ownership and measured roof surfaces",
+      "Twin13.35m frontage pointed pale crowns/hoists; four rounded loading apertures per stack/red paired open shutters; narrow arched sidelights",
+      "211 narrow roundheaded door/mailbox loading opening and213 glazed double-door differentiation",
+      "Twin sloping principal roofs, low rear roof and exact exterior notch survive native city context"
+    ],
+    "visualFindings": {
+      "recognition": "PASS",
+      "ground211": "entry-211-refined.png and ground-211-entry-mailboxes.png expose narrow black rounded door, pale frame and mailbox group;211groundshutter still covers more of door right edge than source",
+      "ground213": "ground-213-double-door.png shows tall glazed doubledoor, red side shutters and arched sidelights; left image foregroundtree retained",
+      "roofAndOpenSpace": "rear-low-refined.png shows main/low rear height split and unfilled pale notch; opposite-street foreground building partly occludes outer tail edge. No calibrated rear facade inventory claimed",
+      "row": "all5neighbors installed/unhidden;215217 remains generic ordinary neighbor in this frozen scope",
+      "facadesAfterPan": "independently viewed saved desktop/touch actual gesture and wide images; normalrows retain textured windows and groundfloor openings/doors"
+    },
+    "preservedFirstHitFailures": {
+      "total": 32,
+      "upperSidelights": 24,
+      "entry211RightEdge": 2,
+      "groundlight211LeftEdge": 2,
+      "groundlights213InwardEdges": 4,
+      "status": "Preserved prior independent45 classifications: source-supported partial shutter overlaps and nonblocking211entry-edge/apron simplifications; this verdict is not a geometry-test PASS or a claim of complete panes"
+    },
+    "physicalClick": {
+      "candidate": {
+        "x": 770.2150226903303,
+        "y": 379.68616438904525,
+        "hit": {
+          "id": "NL.IMBAG.Pand.0363100012169456",
+          "landmarkId": "",
+          "name": "Prinsengracht 211\u2013213",
+          "lngLat": [
+            4.885985777777778,
+            52.37702211111111
+          ],
+          "depth": 0.9736179626971674,
+          "featureTarget": null,
+          "footprint": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  4.886083,
+                  52.377036
+                ],
+                [
+                  4.885732,
+                  52.377157
+                ],
+                [
+                  4.885731,
+                  52.377156
+                ],
+                [
+                  4.885636,
+                  52.377051
+                ],
+                [
+                  4.886184,
+                  52.376863
+                ],
+                [
+                  4.886281,
+                  52.376968
+                ],
+                [
+                  4.886124,
+                  52.377022
+                ],
+                [
+                  4.886071,
+                  52.376966
+                ],
+                [
+                  4.88603,
+                  52.37698
+                ],
+                [
+                  4.886083,
+                  52.377036
+                ]
+              ]
+            ]
+          },
+          "height": 17.627357482910156
+        }
+      },
+      "result": {
+        "notice": null,
+        "source": null,
+        "active": null
+      }
+    },
+    "clickPolicy": "Real pointer selected exact physical parent with emptylandmarkId; no notice, source or active highlight; mapped cardnull. No nearbyPOI substitution or fake route destination.",
+    "runtime": {
+      "desktop": {
+        "bootMs": 6533,
+        "errors": [],
+        "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+        "phases": {
+          "models": {
+            "shown": true,
+            "suppressed": true,
+            "shaderHidden": true,
+            "pyramidHidden": true,
+            "pyramidEntries": [],
+            "spatialSuppression": false,
+            "ordinaryPoi": [],
+            "targetInstalled": 1,
+            "shaderRanges": [
+              {
+                "key": "near:33657/21535",
+                "start": 25176,
+                "count": 236,
+                "first": 1,
+                "last": 1
+              },
+              {
+                "key": "extras:33657/21535",
+                "start": 61734,
+                "count": 684,
+                "first": 1,
+                "last": 1
+              },
+              {
+                "key": "coarse:8414/5383",
+                "start": 32707,
+                "count": 131,
+                "first": 1,
+                "last": 1
+              }
+            ],
+            "rider": {
+              "x": -3205.038680358034,
+              "y": -6421.011395680307
+            },
+            "center": [
+              4.885985777777778,
+              52.37702211111111
+            ],
+            "zoom": 18.5,
+            "pitch": 48,
+            "retained": [
+              {
+                "id": "NL.IMBAG.Pand.0363100012169457",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176491",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176494",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176541",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012250513",
+                "hidden": false
+              }
+            ],
+            "warmFrames": {
+              "count": 90,
+              "medianMs": 16.7,
+              "p95Ms": 16.7
+            }
+          },
+          "wide": {
+            "shown": true,
+            "suppressed": true,
+            "shaderHidden": true,
+            "pyramidHidden": true,
+            "pyramidEntries": [],
+            "spatialSuppression": false,
+            "ordinaryPoi": [],
+            "targetInstalled": 1,
+            "shaderRanges": [
+              {
+                "key": "near:33657/21535",
+                "start": 25176,
+                "count": 236,
+                "first": 1,
+                "last": 1
+              },
+              {
+                "key": "extras:33657/21535",
+                "start": 61734,
+                "count": 684,
+                "first": 1,
+                "last": 1
+              },
+              {
+                "key": "coarse:8414/5383",
+                "start": 32707,
+                "count": 131,
+                "first": 1,
+                "last": 1
+              }
+            ],
+            "rider": {
+              "x": -3205.0386647907335,
+              "y": -6421.011423148547
+            },
+            "center": [
+              4.885985777777778,
+              52.37702211111111
+            ],
+            "zoom": 16.7,
+            "pitch": 48,
+            "retained": [
+              {
+                "id": "NL.IMBAG.Pand.0363100012169457",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176491",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176494",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176541",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012250513",
+                "hidden": false
+              }
+            ],
+            "warmFrames": {
+              "count": 90,
+              "medianMs": 16.7,
+              "p95Ms": 16.7
+            }
+          },
+          "gesture": {
+            "shown": true,
+            "suppressed": true,
+            "shaderHidden": true,
+            "pyramidHidden": true,
+            "pyramidEntries": [],
+            "spatialSuppression": false,
+            "ordinaryPoi": [],
+            "targetInstalled": 1,
+            "shaderRanges": [
+              {
+                "key": "near:33657/21535",
+                "start": 25176,
+                "count": 236,
+                "first": 1,
+                "last": 1
+              },
+              {
+                "key": "extras:33657/21535",
+                "start": 61734,
+                "count": 684,
+                "first": 1,
+                "last": 1
+              },
+              {
+                "key": "coarse:8414/5383",
+                "start": 32707,
+                "count": 131,
+                "first": 1,
+                "last": 1
+              }
+            ],
+            "rider": {
+              "x": -3205.0386506618393,
+              "y": -6421.011448078741
+            },
+            "center": [
+              4.886710994846893,
+              52.378326569078446
+            ],
+            "zoom": 18.499957383009985,
+            "pitch": 48,
+            "retained": [
+              {
+                "id": "NL.IMBAG.Pand.0363100012169457",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176491",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176494",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176541",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012250513",
+                "hidden": false
+              }
+            ]
+          },
+          "delayed": {
+            "shown": false,
+            "suppressed": false,
+            "shaderHidden": false,
+            "pyramidHidden": false,
+            "pyramidEntries": [],
+            "spatialSuppression": false,
+            "ordinaryPoi": [],
+            "targetInstalled": 1,
+            "shaderRanges": [
+              {
+                "key": "near:33657/21535",
+                "start": 25176,
+                "count": 236,
+                "first": 0,
+                "last": 0
+              },
+              {
+                "key": "extras:33657/21535",
+                "start": 61734,
+                "count": 684,
+                "first": 0,
+                "last": 0
+              },
+              {
+                "key": "coarse:8414/5383",
+                "start": 32707,
+                "count": 131,
+                "first": 1,
+                "last": 1
+              }
+            ],
+            "rider": {
+              "x": -3205.038667482414,
+              "y": -6421.011418399119
+            },
+            "center": [
+              4.885985777777778,
+              52.37702211111111
+            ],
+            "zoom": 18.5,
+            "pitch": 48,
+            "retained": [
+              {
+                "id": "NL.IMBAG.Pand.0363100012169457",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176491",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176494",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176541",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012250513",
+                "hidden": false
+              }
+            ]
+          },
+          "disabled": {
+            "shown": true,
+            "suppressed": false,
+            "shaderHidden": false,
+            "pyramidHidden": false,
+            "pyramidEntries": [],
+            "spatialSuppression": false,
+            "ordinaryPoi": [],
+            "targetInstalled": 1,
+            "shaderRanges": [
+              {
+                "key": "near:33657/21535",
+                "start": 25176,
+                "count": 236,
+                "first": 0,
+                "last": 0
+              },
+              {
+                "key": "extras:33657/21535",
+                "start": 61734,
+                "count": 684,
+                "first": 0,
+                "last": 0
+              },
+              {
+                "key": "coarse:8414/5383",
+                "start": 32707,
+                "count": 131,
+                "first": 1,
+                "last": 1
+              }
+            ],
+            "rider": {
+              "x": -3205.038657145886,
+              "y": -6421.011436637757
+            },
+            "center": [
+              4.885985777777778,
+              52.37702211111111
+            ],
+            "zoom": 18.5,
+            "pitch": 48,
+            "retained": [
+              {
+                "id": "NL.IMBAG.Pand.0363100012169457",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176491",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176494",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176541",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012250513",
+                "hidden": false
+              }
+            ]
+          },
+          "restored": {
+            "shown": true,
+            "suppressed": true,
+            "shaderHidden": true,
+            "pyramidHidden": true,
+            "pyramidEntries": [],
+            "spatialSuppression": false,
+            "ordinaryPoi": [],
+            "targetInstalled": 1,
+            "shaderRanges": [
+              {
+                "key": "near:33657/21535",
+                "start": 25176,
+                "count": 236,
+                "first": 1,
+                "last": 1
+              },
+              {
+                "key": "extras:33657/21535",
+                "start": 61734,
+                "count": 684,
+                "first": 1,
+                "last": 1
+              },
+              {
+                "key": "coarse:8414/5383",
+                "start": 32707,
+                "count": 131,
+                "first": 1,
+                "last": 1
+              }
+            ],
+            "rider": {
+              "x": -3205.0386488823046,
+              "y": -6421.011451218702
+            },
+            "center": [
+              4.885985777777778,
+              52.37702211111111
+            ],
+            "zoom": 18.5,
+            "pitch": 48,
+            "retained": [
+              {
+                "id": "NL.IMBAG.Pand.0363100012169457",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176491",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176494",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176541",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012250513",
+                "hidden": false
+              }
+            ]
+          },
+          "loadFailure": {
+            "shown": false,
+            "suppressed": false,
+            "shaderHidden": false,
+            "pyramidHidden": false,
+            "pyramidEntries": [],
+            "spatialSuppression": false,
+            "ordinaryPoi": [],
+            "targetInstalled": 1,
+            "shaderRanges": [
+              {
+                "key": "near:33657/21535",
+                "start": 25176,
+                "count": 236,
+                "first": 0,
+                "last": 0
+              },
+              {
+                "key": "extras:33657/21535",
+                "start": 61734,
+                "count": 684,
+                "first": 0,
+                "last": 0
+              },
+              {
+                "key": "coarse:8414/5383",
+                "start": 32707,
+                "count": 131,
+                "first": 1,
+                "last": 1
+              }
+            ],
+            "rider": {
+              "x": -3205.0384643699736,
+              "y": -6421.011776787476
+            },
+            "center": [
+              4.885985777777778,
+              52.37702211111111
+            ],
+            "zoom": 18.5,
+            "pitch": 48,
+            "retained": [
+              {
+                "id": "NL.IMBAG.Pand.0363100012169457",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176491",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176494",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176541",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012250513",
+                "hidden": false
+              }
+            ]
+          }
+        },
+        "longTasksBeforeReload": [
+          {
+            "stage": "startup",
+            "at": 994,
+            "ms": 53
+          },
+          {
+            "stage": "startup",
+            "at": 1050.3000000044703,
+            "ms": 165
+          },
+          {
+            "stage": "startup",
+            "at": 4109.80000000447,
+            "ms": 115
+          },
+          {
+            "stage": "startup",
+            "at": 4294.10000000149,
+            "ms": 98
+          },
+          {
+            "stage": "startup",
+            "at": 4473.89999999851,
+            "ms": 70
+          },
+          {
+            "stage": "startup",
+            "at": 4584.89999999851,
+            "ms": 111
+          },
+          {
+            "stage": "startup",
+            "at": 4796.80000000447,
+            "ms": 96
+          },
+          {
+            "stage": "startup",
+            "at": 6462.39999999851,
+            "ms": 63
+          }
+        ],
+        "riderDisplacement": 0.00020559886088762004,
+        "request": "http://localhost:49330/canal-drive/models/ordinary-buildings/0363100012169456.glb?asset=d920c307562b014c19414b3015e25b02c2492caa42d61425d89d3d4b37fa7e67"
+      },
+      "touch": {
+        "bootMs": 5655,
+        "errors": [],
+        "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+        "phases": {
+          "models": {
+            "shown": true,
+            "suppressed": true,
+            "shaderHidden": true,
+            "pyramidHidden": true,
+            "pyramidEntries": [],
+            "spatialSuppression": false,
+            "ordinaryPoi": [],
+            "targetInstalled": 1,
+            "shaderRanges": [
+              {
+                "key": "near:67314/43071",
+                "start": 6732,
+                "count": 236,
+                "first": 1,
+                "last": 1
+              },
+              {
+                "key": "extras:67314/43071",
+                "start": 18366,
+                "count": 684,
+                "first": 1,
+                "last": 1
+              },
+              {
+                "key": "coarse:8414/5383",
+                "start": 32733,
+                "count": 131,
+                "first": 1,
+                "last": 1
+              }
+            ],
+            "rider": {
+              "x": -3205.038739945593,
+              "y": -6421.01129053911
+            },
+            "center": [
+              4.885985777777778,
+              52.37702211111111
+            ],
+            "zoom": 17.2,
+            "pitch": 48,
+            "retained": [
+              {
+                "id": "NL.IMBAG.Pand.0363100012169457",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176491",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176494",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176541",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012250513",
+                "hidden": false
+              }
+            ],
+            "warmFrames": {
+              "count": 90,
+              "medianMs": 16.7,
+              "p95Ms": 16.7
+            }
+          },
+          "wide": {
+            "shown": true,
+            "suppressed": true,
+            "shaderHidden": true,
+            "pyramidHidden": true,
+            "pyramidEntries": [],
+            "spatialSuppression": false,
+            "ordinaryPoi": [],
+            "targetInstalled": 1,
+            "shaderRanges": [
+              {
+                "key": "near:67314/43071",
+                "start": 6732,
+                "count": 236,
+                "first": 1,
+                "last": 1
+              },
+              {
+                "key": "extras:67314/43071",
+                "start": 18366,
+                "count": 684,
+                "first": 1,
+                "last": 1
+              },
+              {
+                "key": "coarse:8414/5383",
+                "start": 32707,
+                "count": 131,
+                "first": 1,
+                "last": 1
+              }
+            ],
+            "rider": {
+              "x": -3205.0386991440787,
+              "y": -6421.011362532677
+            },
+            "center": [
+              4.885985777777778,
+              52.37702211111111
+            ],
+            "zoom": 15.399999999999999,
+            "pitch": 48,
+            "retained": [
+              {
+                "id": "NL.IMBAG.Pand.0363100012169457",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176491",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176494",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176541",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012250513",
+                "hidden": false
+              }
+            ],
+            "warmFrames": {
+              "count": 90,
+              "medianMs": 16.7,
+              "p95Ms": 16.8
+            }
+          },
+          "gesture": {
+            "shown": true,
+            "suppressed": true,
+            "shaderHidden": true,
+            "pyramidHidden": true,
+            "pyramidEntries": [],
+            "spatialSuppression": false,
+            "ordinaryPoi": [],
+            "targetInstalled": 1,
+            "shaderRanges": [
+              {
+                "key": "near:67314/43071",
+                "start": 6732,
+                "count": 236,
+                "first": 1,
+                "last": 1
+              },
+              {
+                "key": "extras:67314/43071",
+                "start": 18366,
+                "count": 684,
+                "first": 1,
+                "last": 1
+              },
+              {
+                "key": "coarse:8414/5383",
+                "start": 32707,
+                "count": 131,
+                "first": 1,
+                "last": 1
+              }
+            ],
+            "rider": {
+              "x": -3205.0388025037405,
+              "y": -6421.0111801563535
+            },
+            "center": [
+              4.8864225057535124,
+              52.37840232515923
+            ],
+            "zoom": 17.19995490797695,
+            "pitch": 48,
+            "retained": [
+              {
+                "id": "NL.IMBAG.Pand.0363100012169457",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176491",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176494",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176541",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012250513",
+                "hidden": false
+              }
+            ]
+          },
+          "delayed": {
+            "shown": false,
+            "suppressed": false,
+            "shaderHidden": false,
+            "pyramidHidden": false,
+            "pyramidEntries": [],
+            "spatialSuppression": false,
+            "ordinaryPoi": [],
+            "targetInstalled": 1,
+            "shaderRanges": [
+              {
+                "key": "near:67314/43071",
+                "start": 6732,
+                "count": 236,
+                "first": 0,
+                "last": 0
+              },
+              {
+                "key": "extras:67314/43071",
+                "start": 18366,
+                "count": 684,
+                "first": 0,
+                "last": 0
+              },
+              {
+                "key": "coarse:8414/5383",
+                "start": 32733,
+                "count": 131,
+                "first": 1,
+                "last": 1
+              }
+            ],
+            "rider": {
+              "x": -3205.038656151382,
+              "y": -6421.011438392528
+            },
+            "center": [
+              4.885985777777778,
+              52.37702211111111
+            ],
+            "zoom": 17.2,
+            "pitch": 48,
+            "retained": [
+              {
+                "id": "NL.IMBAG.Pand.0363100012169457",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176491",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176494",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176541",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012250513",
+                "hidden": false
+              }
+            ]
+          },
+          "disabled": {
+            "shown": true,
+            "suppressed": false,
+            "shaderHidden": false,
+            "pyramidHidden": false,
+            "pyramidEntries": [],
+            "spatialSuppression": false,
+            "ordinaryPoi": [],
+            "targetInstalled": 1,
+            "shaderRanges": [
+              {
+                "key": "near:67314/43071",
+                "start": 6732,
+                "count": 236,
+                "first": 0,
+                "last": 0
+              },
+              {
+                "key": "extras:67314/43071",
+                "start": 18366,
+                "count": 684,
+                "first": 0,
+                "last": 0
+              },
+              {
+                "key": "coarse:8414/5383",
+                "start": 32707,
+                "count": 131,
+                "first": 1,
+                "last": 1
+              }
+            ],
+            "rider": {
+              "x": -3205.038696026858,
+              "y": -6421.01136803296
+            },
+            "center": [
+              4.885985777777778,
+              52.37702211111111
+            ],
+            "zoom": 17.2,
+            "pitch": 48,
+            "retained": [
+              {
+                "id": "NL.IMBAG.Pand.0363100012169457",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176491",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176494",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176541",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012250513",
+                "hidden": false
+              }
+            ]
+          },
+          "restored": {
+            "shown": true,
+            "suppressed": true,
+            "shaderHidden": true,
+            "pyramidHidden": true,
+            "pyramidEntries": [],
+            "spatialSuppression": false,
+            "ordinaryPoi": [],
+            "targetInstalled": 1,
+            "shaderRanges": [
+              {
+                "key": "near:67314/43071",
+                "start": 6732,
+                "count": 236,
+                "first": 1,
+                "last": 1
+              },
+              {
+                "key": "extras:67314/43071",
+                "start": 18366,
+                "count": 684,
+                "first": 1,
+                "last": 1
+              },
+              {
+                "key": "coarse:8414/5383",
+                "start": 32707,
+                "count": 131,
+                "first": 1,
+                "last": 1
+              }
+            ],
+            "rider": {
+              "x": -3205.0386889154097,
+              "y": -6421.011380580987
+            },
+            "center": [
+              4.885985777777778,
+              52.37702211111111
+            ],
+            "zoom": 17.2,
+            "pitch": 48,
+            "retained": [
+              {
+                "id": "NL.IMBAG.Pand.0363100012169457",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176491",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176494",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012176541",
+                "hidden": false
+              },
+              {
+                "id": "NL.IMBAG.Pand.0363100012250513",
+                "hidden": false
+              }
+            ]
+          }
+        },
+        "longTasksBeforeReload": [
+          {
+            "stage": "startup",
+            "at": 693.2000000029802,
+            "ms": 59
+          },
+          {
+            "stage": "startup",
+            "at": 753.9000000059605,
+            "ms": 52
+          },
+          {
+            "stage": "startup",
+            "at": 923.5,
+            "ms": 172
+          },
+          {
+            "stage": "startup",
+            "at": 3853.3000000044703,
+            "ms": 119
+          },
+          {
+            "stage": "startup",
+            "at": 4096.4000000059605,
+            "ms": 108
+          },
+          {
+            "stage": "startup",
+            "at": 4292.60000000149,
+            "ms": 134
+          },
+          {
+            "stage": "startup",
+            "at": 5588.4000000059605,
+            "ms": 60
+          },
+          {
+            "stage": "ordinary-0363100012169456",
+            "at": 11586.5,
+            "ms": 111
+          },
+          {
+            "stage": "ordinary-0363100012169456",
+            "at": 11740.10000000149,
+            "ms": 105
+          }
+        ],
+        "riderDisplacement": 0.00028038762425132446,
+        "request": "http://localhost:49330/canal-drive/models/ordinary-buildings/0363100012169456.glb?asset=d920c307562b014c19414b3015e25b02c2492caa42d61425d89d3d4b37fa7e67"
+      }
+    },
+    "limitations": [
+      "Pyramidal target has zero actual mesh entries: hidden-ID conditional transitions only, no nonexistent target roof mesh claimed reviewed",
+      "Near/extras shader attributes transition0->1 with actual asset load and back0 for disable/failure; coarse mask remains1 under active near residency, no allbuffer-reset claim",
+      "Forced asset-load failure checked desktop only; delayed/disabled/restored bothdevices",
+      "Touch is iPhone13 emulation on AppleM4Pro GPU; no physical-mobile performance claim",
+      "90warmframes demonstrate bounded steady scene only; touch111/105ms scene-stage longtasks and desktop165/touch172ms startupmax remain",
+      "Harness route-start uses chosen Rijksmuseum and _pickDestinationNear override to AnneFrank; instrumented startup only",
+      "Front trees/foreground roof occlude selected view areas; preserved firstattempts not treated as source-identical exhaustive views",
+      "Source rights/Beeldbankaccess/rear-opening uncertainties preserved from archived author/review records"
+    ],
+    "recommendedRootImages": [
+      "front-refined.png",
+      "entry-211-refined.png",
+      "ground-213-double-door.png",
+      "rear-low-refined.png",
+      "physical-click-refined.png",
+      "shared-native50/desktop-gesture.png",
+      "shared-native50/touch-gesture.png",
+      "shared-native50/desktop-wide.png",
+      "shared-native50/touch-wide.png",
+      "shared-native50/desktop-fallback.png",
+      "shared-native50/desktop-load-failure.png"
+    ]
+  },
+  "rootVisualReview": {
+    "inspectedActualImages": true,
+    "geometryStructuralChecks": true,
+    "all32ByteReproduction": true,
+    "previous30Unchanged": true
+  },
+  "limits": [
+    "32 first-hit overlaps remain preserved and independently classified;211 entry edge and apron proportions approximate.",
+    "Touch emulated onM4Pro; warm90frames do not establish stall-free startup.",
+    "Complete CI pass not claimed."
+  ],
+  "reviewEvidenceCommit": "3d9b4e2cac5a1e7a05d65ad88b81a35f971df530",
+  "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/reviewed32-61"
+}
