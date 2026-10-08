@@ -1373,7 +1373,7 @@
       "holdout": false
     }
   ],
-  "runtimeRevision": "e7fdc0dc8f0d223e",
+  "runtimeRevision": "22480235d4dd617e",
   "reviewMode": "agent-visual-review; model proposals retained separately",
   "trainedProfiles": [
     "bethanienstraat-observed-historic-pair",
@@ -1383,7 +1383,7 @@
   "holdoutPriorTransfer": [],
   "frontageSurvey": {
     "url": "frontage-survey.json",
-    "sha256": "0da8dff1c3a5cc357a6e8be7897756d3b99a964c324325ca346fea4afbaac645",
-    "assignments": 27
+    "sha256": "6569276b440e8fbfdea58ac1339376cfff477dba61d793371a7b1b33e20c624c",
+    "assignments": 35
   }
 }

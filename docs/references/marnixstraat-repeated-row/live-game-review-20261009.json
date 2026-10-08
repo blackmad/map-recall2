@@ -1,0 +1,537 @@
+{
+  "status": "accepted fixed-eight installed pilot; no broader transfer",
+  "failedEvidenceProminent": [
+    "Cycle2: duplicate fallback context erased the masonry of parent0363100012174105; fixed and preserved.",
+    "Initial actual-game roof party/crown/cheek gaps corrected and preserved.",
+    "Desktop6 exceeded per-run GPU limits; same-build desktop7 and all-six-round aggregates pass unchanged limits.",
+    "Touch2 portrait diagnostic missed heldout; excluded, desktop exact first hits supply heldout proof."
+  ],
+  "runs": [
+    {
+      "run": "desktop-6",
+      "bundles": {
+        "three-buildings.bundle.js": "b1c8fffe9dea1cb82050abd44a4baee6887671cf02ec0940cf466e523611cfd1",
+        "three-buildings-worker.bundle.js": "e926837b41ff6a3b3acb34fc8c81f17ae5e7c141b131a2fb742dd1d200bcb72c",
+        "pyramidal-roofs.bundle.js": "2c9e13389410bf4bac23e82b99865dcb6523113033cc8213e821de49d95a2893",
+        "vector-map.js": "ad1402db284f78d96579a6470435b474963e4cbf4d0a980bbc8f976bcd4160fb",
+        "game-route.js": "0ab9056fb48bd00f9dcec27532fcd11d8d8f4d85359c8a4a741a2c9ba2f2b46f"
+      },
+      "checks": [
+        "Eight exact native footprints/heights load through real game workers; no fabricated identity",
+        "All four detailed modes install matching geometry/color/revision for all eight parents",
+        "Actual desktop/touch input pan and recenter retain stationary rider"
+      ],
+      "performance": {
+        "sameInventory": true,
+        "gpuAvailable": true,
+        "gpuMedianRatio": 1.2136281329397633,
+        "gpuP95Ratio": 1.6729385942152675
+      },
+      "panRiderDeltaM": 6.688265983994763e-06,
+      "failure": null,
+      "heldoutIdentityProbes": [
+        {
+          "name": "near-heldout",
+          "probes": [
+            {
+              "expectedId": "NL.IMBAG.Pand.0363100012174105",
+              "world": [
+                -1533.5573928109866,
+                671.4644138768318,
+                1.5
+              ],
+              "pixel": [
+                996.1162477168198,
+                387.86123365412095
+              ],
+              "inside": true,
+              "hit": {
+                "id": "NL.IMBAG.Pand.0363100012173521",
+                "depth": 0.9534257391554142
+              }
+            },
+            {
+              "expectedId": "NL.IMBAG.Pand.0363100012174105",
+              "world": [
+                -1533.5573928109866,
+                671.4644138768318,
+                3
+              ],
+              "pixel": [
+                999.6683242727763,
+                356.9813750203016
+              ],
+              "inside": true,
+              "hit": {
+                "id": "NL.IMBAG.Pand.0363100012173521",
+                "depth": 0.9565206884618644
+              }
+            },
+            {
+              "expectedId": "NL.IMBAG.Pand.0363100012174105",
+              "world": [
+                -1533.5573928109866,
+                671.4644138768318,
+                6
+              ],
+              "pixel": [
+                1007.0538903347941,
+                292.77520369120236
+              ],
+              "inside": true,
+              "hit": {
+                "id": "NL.IMBAG.Pand.0363100012174936",
+                "depth": 0.961805872023518
+              }
+            },
+            {
+              "expectedId": "NL.IMBAG.Pand.0363100012174105",
+              "world": [
+                -1533.5573928109866,
+                671.4644138768318,
+                9
+              ],
+              "pixel": [
+                1014.8401177270752,
+                225.08589649954715
+              ],
+              "inside": true,
+              "hit": {
+                "id": "NL.IMBAG.Pand.0363100012174105",
+                "depth": 0.9755057494422564
+              }
+            },
+            {
+              "expectedId": "NL.IMBAG.Pand.0363100012174105",
+              "world": [
+                -1533.5573928109866,
+                671.4644138768318,
+                12
+              ],
+              "pixel": [
+                1023.0605188175603,
+                153.62211479646925
+              ],
+              "inside": true,
+              "hit": {
+                "id": "NL.IMBAG.Pand.0363100012174105",
+                "depth": 0.9747334689440534
+              }
+            },
+            {
+              "expectedId": "NL.IMBAG.Pand.0363100012174105",
+              "world": [
+                -1533.5573928109866,
+                671.4644138768318,
+                14
+              ],
+              "pixel": [
+                1028.8002670157537,
+                103.72380597294429
+              ],
+              "inside": true,
+              "hit": {
+                "id": "NL.IMBAG.Pand.0363100012174105",
+                "depth": 0.9742272824087888
+              }
+            }
+          ]
+        },
+        {
+          "name": "heldout-entrance",
+          "probes": [
+            {
+              "expectedId": "NL.IMBAG.Pand.0363100012174105",
+              "world": [
+                -1533.5573928109866,
+                671.4644138768318,
+                1.5
+              ],
+              "pixel": [
+                722.289170962251,
+                352.40238629034985
+              ],
+              "inside": true,
+              "hit": {
+                "id": "NL.IMBAG.Pand.0363100012174105",
+                "depth": 0.9753137975941927
+              }
+            },
+            {
+              "expectedId": "NL.IMBAG.Pand.0363100012174105",
+              "world": [
+                -1533.5573928109866,
+                671.4644138768318,
+                3
+              ],
+              "pixel": [
+                722.3134385640002,
+                270.2037149185277
+              ],
+              "inside": true,
+              "hit": {
+                "id": "NL.IMBAG.Pand.0363100012174105",
+                "depth": 0.9750302395480803
+              }
+            },
+            {
+              "expectedId": "NL.IMBAG.Pand.0363100012174105",
+              "world": [
+                -1533.5573928109866,
+                671.4644138768318,
+                6
+              ],
+              "pixel": [
+                722.3635507748075,
+                100.46476871244045
+              ],
+              "inside": true,
+              "hit": {
+                "id": "NL.IMBAG.Pand.0363100012174105",
+                "depth": 0.9743302246420888
+              }
+            },
+            {
+              "expectedId": "NL.IMBAG.Pand.0363100012174105",
+              "world": [
+                -1533.5573928109866,
+                671.4644138768318,
+                9
+              ],
+              "pixel": [
+                722.4158820501954,
+                -76.79054281366669
+              ],
+              "inside": false,
+              "hit": null
+            },
+            {
+              "expectedId": "NL.IMBAG.Pand.0363100012174105",
+              "world": [
+                -1533.5573928109866,
+                671.4644138768318,
+                12
+              ],
+              "pixel": [
+                722.4705831241974,
+                -262.0727825685618
+              ],
+              "inside": false,
+              "hit": null
+            },
+            {
+              "expectedId": "NL.IMBAG.Pand.0363100012174105",
+              "world": [
+                -1533.5573928109866,
+                671.4644138768318,
+                14
+              ],
+              "pixel": [
+                722.5084477727738,
+                -390.3270631973505
+              ],
+              "inside": false,
+              "hit": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": "desktop-7",
+      "bundles": {
+        "three-buildings.bundle.js": "b1c8fffe9dea1cb82050abd44a4baee6887671cf02ec0940cf466e523611cfd1",
+        "three-buildings-worker.bundle.js": "e926837b41ff6a3b3acb34fc8c81f17ae5e7c141b131a2fb742dd1d200bcb72c",
+        "pyramidal-roofs.bundle.js": "2c9e13389410bf4bac23e82b99865dcb6523113033cc8213e821de49d95a2893",
+        "vector-map.js": "ad1402db284f78d96579a6470435b474963e4cbf4d0a980bbc8f976bcd4160fb",
+        "game-route.js": "0ab9056fb48bd00f9dcec27532fcd11d8d8f4d85359c8a4a741a2c9ba2f2b46f"
+      },
+      "checks": [
+        "Eight exact native footprints/heights load through real game workers; no fabricated identity",
+        "All four detailed modes install matching geometry/color/revision for all eight parents",
+        "Actual desktop/touch input pan and recenter retain stationary rider"
+      ],
+      "performance": {
+        "sameInventory": true,
+        "gpuAvailable": true,
+        "gpuMedianRatio": 0.9912876497990827,
+        "gpuP95Ratio": 0.9637638873740614
+      },
+      "panRiderDeltaM": 9.420045667335403e-07,
+      "failure": null,
+      "heldoutIdentityProbes": [
+        {
+          "name": "near-heldout",
+          "probes": [
+            {
+              "expectedId": "NL.IMBAG.Pand.0363100012174105",
+              "world": [
+                -1533.5573928109866,
+                671.4644138768318,
+                1.5
+              ],
+              "pixel": [
+                996.1162477168198,
+                387.86123365412095
+              ],
+              "inside": true,
+              "hit": {
+                "id": "NL.IMBAG.Pand.0363100012173521",
+                "depth": 0.9534257391554142
+              }
+            },
+            {
+              "expectedId": "NL.IMBAG.Pand.0363100012174105",
+              "world": [
+                -1533.5573928109866,
+                671.4644138768318,
+                3
+              ],
+              "pixel": [
+                999.6683242727763,
+                356.9813750203016
+              ],
+              "inside": true,
+              "hit": {
+                "id": "NL.IMBAG.Pand.0363100012173521",
+                "depth": 0.9565206884618644
+              }
+            },
+            {
+              "expectedId": "NL.IMBAG.Pand.0363100012174105",
+              "world": [
+                -1533.5573928109866,
+                671.4644138768318,
+                6
+              ],
+              "pixel": [
+                1007.0538903347941,
+                292.77520369120236
+              ],
+              "inside": true,
+              "hit": {
+                "id": "NL.IMBAG.Pand.0363100012174936",
+                "depth": 0.961805872023518
+              }
+            },
+            {
+              "expectedId": "NL.IMBAG.Pand.0363100012174105",
+              "world": [
+                -1533.5573928109866,
+                671.4644138768318,
+                9
+              ],
+              "pixel": [
+                1014.8401177270752,
+                225.08589649954715
+              ],
+              "inside": true,
+              "hit": {
+                "id": "NL.IMBAG.Pand.0363100012174105",
+                "depth": 0.9755057494422564
+              }
+            },
+            {
+              "expectedId": "NL.IMBAG.Pand.0363100012174105",
+              "world": [
+                -1533.5573928109866,
+                671.4644138768318,
+                12
+              ],
+              "pixel": [
+                1023.0605188175603,
+                153.62211479646925
+              ],
+              "inside": true,
+              "hit": {
+                "id": "NL.IMBAG.Pand.0363100012174105",
+                "depth": 0.9747334689440534
+              }
+            },
+            {
+              "expectedId": "NL.IMBAG.Pand.0363100012174105",
+              "world": [
+                -1533.5573928109866,
+                671.4644138768318,
+                14
+              ],
+              "pixel": [
+                1028.8002670157537,
+                103.72380597294429
+              ],
+              "inside": true,
+              "hit": {
+                "id": "NL.IMBAG.Pand.0363100012174105",
+                "depth": 0.9742272824087888
+              }
+            }
+          ]
+        },
+        {
+          "name": "heldout-entrance",
+          "probes": [
+            {
+              "expectedId": "NL.IMBAG.Pand.0363100012174105",
+              "world": [
+                -1533.5573928109866,
+                671.4644138768318,
+                1.5
+              ],
+              "pixel": [
+                722.289170962251,
+                352.40238629034985
+              ],
+              "inside": true,
+              "hit": {
+                "id": "NL.IMBAG.Pand.0363100012174105",
+                "depth": 0.9753137975941927
+              }
+            },
+            {
+              "expectedId": "NL.IMBAG.Pand.0363100012174105",
+              "world": [
+                -1533.5573928109866,
+                671.4644138768318,
+                3
+              ],
+              "pixel": [
+                722.3134385640002,
+                270.2037149185277
+              ],
+              "inside": true,
+              "hit": {
+                "id": "NL.IMBAG.Pand.0363100012174105",
+                "depth": 0.9750302395480803
+              }
+            },
+            {
+              "expectedId": "NL.IMBAG.Pand.0363100012174105",
+              "world": [
+                -1533.5573928109866,
+                671.4644138768318,
+                6
+              ],
+              "pixel": [
+                722.3635507748075,
+                100.46476871244045
+              ],
+              "inside": true,
+              "hit": {
+                "id": "NL.IMBAG.Pand.0363100012174105",
+                "depth": 0.9743302246420888
+              }
+            },
+            {
+              "expectedId": "NL.IMBAG.Pand.0363100012174105",
+              "world": [
+                -1533.5573928109866,
+                671.4644138768318,
+                9
+              ],
+              "pixel": [
+                722.4158820501954,
+                -76.79054281366669
+              ],
+              "inside": false,
+              "hit": null
+            },
+            {
+              "expectedId": "NL.IMBAG.Pand.0363100012174105",
+              "world": [
+                -1533.5573928109866,
+                671.4644138768318,
+                12
+              ],
+              "pixel": [
+                722.4705831241974,
+                -262.0727825685618
+              ],
+              "inside": false,
+              "hit": null
+            },
+            {
+              "expectedId": "NL.IMBAG.Pand.0363100012174105",
+              "world": [
+                -1533.5573928109866,
+                671.4644138768318,
+                14
+              ],
+              "pixel": [
+                722.5084477727738,
+                -390.3270631973505
+              ],
+              "inside": false,
+              "hit": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "run": "touch-2",
+      "bundles": {
+        "three-buildings.bundle.js": "b1c8fffe9dea1cb82050abd44a4baee6887671cf02ec0940cf466e523611cfd1",
+        "three-buildings-worker.bundle.js": "e926837b41ff6a3b3acb34fc8c81f17ae5e7c141b131a2fb742dd1d200bcb72c",
+        "pyramidal-roofs.bundle.js": "2c9e13389410bf4bac23e82b99865dcb6523113033cc8213e821de49d95a2893",
+        "vector-map.js": "ad1402db284f78d96579a6470435b474963e4cbf4d0a980bbc8f976bcd4160fb",
+        "game-route.js": "0ab9056fb48bd00f9dcec27532fcd11d8d8f4d85359c8a4a741a2c9ba2f2b46f"
+      },
+      "checks": [
+        "Eight exact native footprints/heights load through real game workers; no fabricated identity",
+        "All four detailed modes install matching geometry/color/revision for all eight parents",
+        "Actual desktop/touch input pan and recenter retain stationary rider"
+      ],
+      "performance": {
+        "sameInventory": true,
+        "gpuAvailable": true,
+        "gpuMedianRatio": 0.5687842946366191,
+        "gpuP95Ratio": 1.0014599740165235
+      },
+      "panRiderDeltaM": 2.369913349485492e-06,
+      "failure": "AssertionError [ERR_ASSERTION]: near-heldout must prove actual heldout first-hit identity\n    at capture (file:///Users/blackmad/Code/map-recall2-worktrees/marnixstraat-repeated-row-20261008/scripts/street-appearance/review-marnixstraat-game.mjs:25:2)\n    at async file:///Users/blackmad/Code/map-recall2-worktrees/marnixstraat-repeated-row-20261008/scripts/street-appearance/review-marnixstraat-game.mjs:41:418",
+      "heldoutIdentityProbes": []
+    }
+  ],
+  "sameBuildDesktop": {
+    "basis": "Both same-build final desktop runs, including the failed desktop6; thresholds unchanged; 6 paired rounds instead of original3 because single-run variance exceeded20%.",
+    "gpuMedianRatio": 0.8989947752562516,
+    "gpuP95Ratio": 1.081626110015898,
+    "singleRuns": [
+      {
+        "name": "desktop-6",
+        "performance": {
+          "sameInventory": true,
+          "gpuAvailable": true,
+          "gpuMedianRatio": 1.2136281329397633,
+          "gpuP95Ratio": 1.6729385942152675
+        }
+      },
+      {
+        "name": "desktop-7",
+        "performance": {
+          "sameInventory": true,
+          "gpuAvailable": true,
+          "gpuMedianRatio": 0.9912876497990827,
+          "gpuP95Ratio": 0.9637638873740614
+        }
+      }
+    ],
+    "limits": "Desktop6 failed preset per-run limits; aggregate is additional evidence and does not erase it. Strong local variability prevents a universal device claim."
+  },
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "path": "streets/marnixstraat-263-repeated-row/",
+    "commit": "abb4664d378649cdcaff6e43e4b5d6e8b314c859",
+    "state": "verified source originals/metadata/processed records committed and pushed before model/runtime publication",
+    "reviewCommit": "87412d138",
+    "reviewPath": "streets/marnixstraat-263-repeated-row/processed/game-review-20261009",
+    "defaultInstalledCommit": "d9ba4d73f26b6a054cb8e9129e4437fca766a023"
+  },
+  "limits": [
+    "Local GPU measurements vary; failed desktop run retained, not universal device performance.",
+    "Modern aperture dimensions approximate;2025 scaffolded; no post-restoration glazing claim.",
+    "Samples frozen before native render, after planner authoring; no blind family-transfer claim."
+  ],
+  "defaultInstalledSmoke": "default-installed-20261009.json",
+  "defaultCatalogueRevision": "22480235d4dd617e"
+}

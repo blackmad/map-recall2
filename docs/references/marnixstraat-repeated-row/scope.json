@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "canonicalId": "marnixstraat-263-repeated-row",
   "recordedAt": "2026-10-08T20:09:15.072558+00:00",
-  "status": "implemented opt-in native row; CPU architectural review passes; live-game/GPU/private source publication pending",
+  "status": "accepted fixed-eight native installed pilot; independent source/game/heldout passes; local performance variability reported",
   "viewpoint": {
     "userConfirmedAddress": "Marnixstraat263",
     "bagPandId": "0363100012174932",
@@ -49,7 +49,7 @@
       "yearFrom": "1876",
       "yearTo": "1878",
       "function": "wonen",
-      "descriptionCapture": "artifacts/marnixstraat-sources/raw/monument-204041.json"
+      "descriptionCapture": "private-source-pack:streets/marnixstraat-263-repeated-row/raw/monument-204041.json"
     },
     "addressRange": "Municipal monument title: Marnixstraat124-138, NieuweTuinstraat3. Individual address-to-parent mapping remains pending; no ordering inferred.",
     "geographicBoundaryNote": "Eight connected eastern frontage parents form one continuous row. Separate western/rear chain excluded. Southern and northern ends meet transverse street gaps."
@@ -1967,8 +1967,12 @@
     "Register architecture paragraph mentions nine linked houses although title, scope paragraph and BAG parent links explicitly identify eight. Scope uses eight linked parents; do not add ninth house."
   ],
   "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
     "path": "streets/marnixstraat-263-repeated-row/",
-    "commit": null,
-    "state": "New raw sources staged under artifacts/marnixstraat-sources; sibling archive and git metadata read-only in this session."
+    "commit": "abb4664d378649cdcaff6e43e4b5d6e8b314c859",
+    "state": "verified source originals/metadata/processed records committed and pushed before model/runtime publication",
+    "reviewCommit": "87412d138",
+    "reviewPath": "streets/marnixstraat-263-repeated-row/processed/game-review-20261009",
+    "defaultInstalledCommit": "d9ba4d73f26b6a054cb8e9129e4437fca766a023"
   }
 }

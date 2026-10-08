@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "canonicalId": "marnixstraat-263-repeated-row",
+  "reviewedAt": "2026-10-08",
+  "reviewer": "independent failure-seeking worker; no renderer edits",
+  "cycle": 3,
+  "decision": "failed-window-assembly; scoped CPU recognition improved; whole work not accepted",
+  "evidence": {
+    "sourcesInspected": [
+      "artifacts/marnixstraat-sources/processed/south-2023.jpg",
+      "artifacts/marnixstraat-sources/processed/middle-2023.jpg",
+      "artifacts/marnixstraat-sources/raw/south-2023.jpg",
+      "artifacts/marnixstraat-sources/raw/elevation-1876.webp"
+    ],
+    "rendersInspected": [
+      "artifacts/marnixstraat-review/cycle-3/after-front.png",
+      "artifacts/marnixstraat-review/cycle-3/after-near.png",
+      "artifacts/marnixstraat-review/cycle-3/after-oblique.png",
+      "artifacts/marnixstraat-review/cycle-3/after-heldout.png",
+      "artifacts/marnixstraat-review/cycle-3/after-roof.png",
+      "artifacts/marnixstraat-review/cycle-3/before-front.png"
+    ],
+    "report": "artifacts/marnixstraat-review/cycle-3/report.json",
+    "afterNearSha256": "b72755a0cd779077c21aa835f4d139bfe202d8e3bd26a2e53a6e08b460d25275",
+    "afterHeldoutSha256": "8c82d5de31d353bbe871900fd8d395a6d63eacb10ed12d0993320de549341f62",
+    "latestAlterationsLimit": "Scaffolded 2025 view is not evidence of visible post-restoration glazing details. Conclusions use exposed 2023 photographs; current final pane state remains unconfirmed."
+  },
+  "criticalTraits": [
+    {
+      "trait": "Three broad window axes, central door, ground plus three shortening upper tiers",
+      "decision": "pass",
+      "reason": "Close representative and heldout views show three correctly related axes, central access and three upper tiers decreasing in opening height. All eight bodies remain visible in the full-row view. Source aperture dimensions are approximate; this is a composition finding."
+    },
+    {
+      "trait": "Dark brown masonry and aligned yellow horizontal courses",
+      "decision": "pass",
+      "reason": "The row uses coherent muted brown brick with restrained warm pale/yellow courses aligned across adjoining houses. This restores the source row's continuous masonry rhythm compared with the varied stock before view. Fine pressed-brick and anchor detail is secondary."
+    },
+    {
+      "trait": "Pale paired frames and dark green inner sash in all three broad axes",
+      "decision": "fail",
+      "reason": "Both exposed 2023 photographs show a pale central divider in the central upper window pairs as well as the flanking pairs. Candidate central upper dividers read dark green or near-black throughout all three tiers, while flank dividers read pale. The recurring central-axis window family visibly differs from the source; heldout index 5 repeats the failure.",
+      "mandatoryRepair": "Make the central broad upper-window pair divider visibly pale and consistent with the paired frame in all three tiers; retain dark green inner sash. Re-render representative and heldout close views to verify actual visible material/depth ordering."
+    },
+    {
+      "trait": "One narrow central alternating spout/stepped crown and street-parallel roof ridge",
+      "decision": "pass",
+      "reason": "Full-row and roof views show eight narrow central crowns alternating stepped and pointed/spout silhouettes over a coherent street-parallel main roof. They no longer read as two independently gabled canal houses per native parent. Small coping and ornament differences do not prevent recognition."
+    },
+    {
+      "trait": "Central projecting stair bay continues down from crown",
+      "decision": "uncertain",
+      "reason": "The source and original elevation show a shallow projecting central staircase axis, while candidate close views read nearly flat below the eaves. These CPU views do not establish whether a small projection is present or how it reads with game lighting. Check it in the live oblique view; exact shallow relief is secondary to coherent row composition and is not independently made a blocking ornament requirement."
+    },
+    {
+      "trait": "Eight exact footprints, retained independent rear/opposite buildings and open street gaps",
+      "decision": "uncertain",
+      "reason": "CPU full-row and oblique views show eight contiguous bodies, retained context behind the row and visible transverse end gaps; the previous entire-body loss is absent. Image review cannot certify runtime exact-ID suppression, fallback or every courtyard/neighbor footprint. The report lists exact identities but is not live-game evidence."
+    }
+  ],
+  "heldout": {
+    "index": 5,
+    "installedId": "NL.IMBAG.Pand.0363100012174105",
+    "decision": "fail",
+    "passedRelationships": ["three broad axes", "central door", "ground plus three shortening upper tiers", "single central spout crown"],
+    "failure": "Pale paired divider is lost on the central upper axis across all three tiers.",
+    "coverageLimit": "Middle source crop supports the shared assembly, not a precisely registered photographic match to each individual heldout opening."
+  },
+  "endFacadeReview": {
+    "decision": "uncertain",
+    "reason": "Original south panorama was inspected; the exposed end is too oblique/tree-hidden to establish an opening count or prove that a blind side is wrong. No new unsupported side windows are requested from this evidence. A source-supported end/transition view remains useful before final acceptance."
+  },
+  "nextMandatoryChecks": [
+    "Repair and visually re-review pale paired central upper frames, including heldout index 5.",
+    "Obtain actual game-scene front/near/oblique/end views, exact suppression and fallback/neighbor retention evidence.",
+    "Obtain gameplay camera-pan and GPU/frame-time evidence; CPU build timings do not satisfy performance acceptance."
+  ],
+  "acceptanceLimits": {
+    "gpuLiveGame": "not performed; root reports restricted Chrome sandbox launch failure",
+    "performance": "CPU report inspected only; no gameplay or GPU acceptance",
+    "expansion": "withheld; failed heldout prevents accepting transfer",
+    "wholeWork": "not accepted"
+  }
+}

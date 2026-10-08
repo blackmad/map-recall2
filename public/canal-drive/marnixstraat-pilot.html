@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marnixstraat repeated row · Canal Recall</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#ebe7dd;color:#303b43;font:16px/1.5 system-ui,sans-serif}main{max-width:1440px;margin:auto;padding:28px}h1{font-size:28px;margin:0 0 10px}p{max-width:78ch}a{color:#2f5d8a}button,select{font:inherit;padding:7px 12px;color:inherit;background:#f7f4ec;border:1px solid #ccc6ba;border-radius:6px}.controls{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin:20px 0}.pair{display:grid;grid-template-columns:1fr;gap:18px}figure{margin:0;background:#f7f4ec;border:1px solid #d4cfc3;border-radius:8px;overflow:hidden}figure img{width:100%;display:block}figcaption{padding:10px 15px}.note{color:#6d6a63;font-size:14px}#single{max-width:1200px;margin:auto}#single img.detail{max-width:900px;margin:auto}[hidden]{display:none!important}@media(max-width:600px){main{padding:18px}h1{font-size:24px}}
+</style>
+<main>
+<p><a href="street-generator-demos.html">← Street generator checkpoints</a></p>
+<h1>Marnixstraat 124–138</h1>
+<p>The repeated row seen from 263 Marnixstraat: eight houses share three window axes, a central entrance, pale paired frames and yellow brick bands. Pointed and stepped stair-bay gables alternate along the roof.</p>
+<p class="note">The eight-house row is now installed in the game after source, desktop and touch review. These comparison images show the original procedural geometry.</p>
+<div class="controls"><label>View <select id="view"><option value="front">Whole row · before / after</option><option value="oblique">Oblique street view</option><option value="near">First house</option><option value="heldout">Independent test house</option><option value="roof">Roof and surroundings</option></select></label><a href="./">Open game →</a></div>
+<div id="pair" class="pair">
+<figure><a href="demo-assets/marnixstraat/before-front.png"><img src="demo-assets/marnixstraat/before-front.png" alt="Before: unrelated generic facades and roof shapes on the native Marnixstraat row"></a><figcaption>Before · ordinary building generator</figcaption></figure>
+<figure><a href="demo-assets/marnixstraat/after-front.png"><img src="demo-assets/marnixstraat/after-front.png" alt="After: coherent eight-house row with central doors, paired windows and alternating narrow gables"></a><figcaption>After · repeated frontage family on the same native footprints</figcaption></figure>
+</div>
+<figure id="single" hidden><img id="detail" src="demo-assets/marnixstraat/after-oblique.png" alt="Marnixstraat repeated row"><figcaption id="caption"></figcaption></figure>
+<p class="note">These images use the game’s geometry and materials in a CPU preview. Reference dimensions are approximate. Clear 2023 municipal photographs and the supplied 2024 view guide the facade; a 2025 view is hidden by renovation scaffolding.</p>
+<p class="note">The first integration comparison exposed a missing masonry wall caused by duplicate fallback context. That defect was repaired, with a regression check for every house. Earlier failed evidence is retained locally.</p>
+<p><a href="https://api.data.amsterdam.nl/v1/monumenten/monumenten/?monumentnummer=204041">Official architectural description ↗</a> · <a href="https://amsterdamopdekaart.nl/1850-1940/Marnixstraat/124-138">Historic ensemble and drawings ↗</a> · <a href="https://data.amsterdam.nl/?locatie=4.87722%2C52.37583&amp;zoom=19&amp;lagen=pano-pano2023bi">Municipal street imagery ↗</a></p>
+</main>
+<script>
+const view=document.querySelector('#view'),pair=document.querySelector('#pair'),single=document.querySelector('#single'),detail=document.querySelector('#detail'),caption=document.querySelector('#caption');
+view.addEventListener('change',()=>{const value=view.value;pair.hidden=value!=='front';single.hidden=value==='front';if(value!=='front'){detail.src=`demo-assets/marnixstraat/after-${value}.png`;detail.classList.toggle('detail',['near','heldout'].includes(value));caption.textContent=view.options[view.selectedIndex].textContent;}});
+</script>
+</html>

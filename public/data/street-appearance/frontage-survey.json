@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "e7fdc0dc8f0d223e",
+  "revision": "22480235d4dd617e",
   "origin": {
     "lng": 4.9,
     "lat": 52.37
@@ -13,6 +13,30 @@
     {
       "file": "public/data/extracts/amsterdam/building-facts/14/8412/5384.json.gz",
       "sha256": "abe259b4e6e77a2dab0c852669eef4560bad1805bf03e501e10d55d93522c262"
+    },
+    {
+      "file": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz",
+      "sha256": "174af77f92baab83b9e0c168b75e29a5cf4e1746b533f071cf557f85291172a0"
+    },
+    {
+      "file": "public/data/extracts/amsterdam/building-facts/14/8413/5383.json.gz",
+      "sha256": "65376bd851b35bcc8885d46f9316ca9dfb78159cadf1d63a3c863f6ef83c6382"
+    },
+    {
+      "file": "public/data/extracts/amsterdam/building-tiles/14/8413/5384.geojson.gz",
+      "sha256": "2bf316480b3a71cfad0d813cba5f439a401f20e1badcb559b115f02af3b880d6"
+    },
+    {
+      "file": "public/data/extracts/amsterdam/building-facts/14/8413/5384.json.gz",
+      "sha256": "0624a9caef4e83b5996aceb58da91ee8025f60f17e9343daa67bbe3a774fe089"
+    },
+    {
+      "file": "public/data/extracts/amsterdam/building-tiles/14/8414/5383.geojson.gz",
+      "sha256": "8a32974008ea1339ba2e3c44a214d6fd33e4950706655949ca89e8bb6d712f48"
+    },
+    {
+      "file": "public/data/extracts/amsterdam/building-facts/14/8414/5383.json.gz",
+      "sha256": "0156e8b35e367ec7e20ee54ebd6ecad9af248b25468bc3c925fd3adc7b684037"
     },
     {
       "file": "public/data/extracts/amsterdam/building-tiles/14/8414/5384.geojson.gz",
@@ -121,12 +145,12 @@
       "sha256": "8c3c2e069a6678d1f2c443df2e4f7f14b86ffdc6379a6ff6520986c29ea53348"
     }
   ],
-  "streetFrontPathsSha256": "41e1b1dc232ee2db6185b544919ba8620af73d0d8c11a16f06e18957dea61383",
-  "streetSegments": 126,
+  "streetFrontPathsSha256": "e725f87ad3584711fc1d154fcfa9b4247146fe4ef968723e0f159f71dc66a3cf",
+  "streetSegments": 167,
   "neighborHaloM": 25,
-  "features": 350,
-  "exposedRuns": 28,
-  "assignments": 27,
+  "features": 441,
+  "exposedRuns": 36,
+  "assignments": 35,
   "profiles": [
     {
       "id": "bethanienstraat-observed-historic-pair",
@@ -233,6 +257,134 @@
       ],
       "palette": {
         "#92775c": 2
+      }
+    },
+    {
+      "id": "marnixstraat-124-138-repeated-row",
+      "frontages": [
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012168510",
+          "recipeIndex": 1,
+          "frontage": {
+            "start": [
+              4.877127668197,
+              52.375585079117
+            ],
+            "end": [
+              4.877196331803,
+              52.375693920883
+            ],
+            "widthM": 12.904679
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012173514",
+          "recipeIndex": 2,
+          "frontage": {
+            "start": [
+              4.877196377004,
+              52.375693910105
+            ],
+            "end": [
+              4.877264622996,
+              52.375802089895
+            ],
+            "widthM": 12.82622
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012173515",
+          "recipeIndex": 1,
+          "frontage": {
+            "start": [
+              4.877264828635,
+              52.375802040861
+            ],
+            "end": [
+              4.877334171365,
+              52.375911959139
+            ],
+            "widthM": 13.032246
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012173530",
+          "recipeIndex": 7,
+          "frontage": {
+            "start": [
+              4.877539423694,
+              52.376237898972
+            ],
+            "end": [
+              4.877609576306,
+              52.376349101028
+            ],
+            "widthM": 13.184575
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012174104",
+          "recipeIndex": 2,
+          "frontage": {
+            "start": [
+              4.877333942382,
+              52.375912013739
+            ],
+            "end": [
+              4.877402057618,
+              52.376019986261
+            ],
+            "widthM": 12.801531
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012174105",
+          "recipeIndex": 1,
+          "frontage": {
+            "start": [
+              4.877402102819,
+              52.376019975483
+            ],
+            "end": [
+              4.877470897181,
+              52.376129024517
+            ],
+            "widthM": 12.929171
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012174914",
+          "recipeIndex": 0,
+          "frontage": {
+            "start": [
+              4.877057989072,
+              52.375474002606
+            ],
+            "end": [
+              4.877128010928,
+              52.375584997394
+            ],
+            "widthM": 13.159857
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012174935",
+          "recipeIndex": 2,
+          "frontage": {
+            "start": [
+              4.877470668197,
+              52.376129079117
+            ],
+            "end": [
+              4.877539331803,
+              52.376237920883
+            ],
+            "widthM": 12.904679
+          }
+        }
+      ],
+      "palette": {
+        "#8b7059": 8
       }
     },
     {
