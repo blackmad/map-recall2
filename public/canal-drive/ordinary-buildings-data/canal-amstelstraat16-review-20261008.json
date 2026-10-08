@@ -7,7 +7,7 @@
   "triangles": 5679,
   "materials": 3,
   "textures": 0,
-  "verdict": "Independent source/CPU/street-height GPU gallery and root/independent native desktop-touch game PASS with recorded limits; local manual29 PASS; hosted release pending",
+  "verdict": "Independent source/CPU/street-height GPU gallery and root/independent native desktop-touch game PASS with limits; hosted29 verified",
   "sourceCommit": "9fc691744e03b91f70899896033acdb6cbbd1a18",
   "sourcePack": "experiments/canal-belt-continuation-20261007/next-large-box-source-23/0363100012171370",
   "authorSourcePack": "experiments/canal-belt-continuation-20261007/amstelstraat16-build",
@@ -456,6 +456,17 @@
     "realSignageAdded": false,
     "insideFootprintBasicPlacesRetained": true
   },
-  "ciLimit": "Previous28full-e2e37713643423 canceled after configured40-minute limit; log shows openRoute/helpers.ts66 player-spawn predicate timeout. Check:canal/boot smoke/deployment37713643473 passed. New29CI not yet run.",
-  "reviewEvidenceCommit": "087986cc828b344e55303764e680ef2d9d4101f8"
+  "ciLimit": "Amstel29CI37747137231 full e2e canceled; deployment37747137637 succeeded including lint/build/smoke/live-revision. Hosted29 modelhashes and sourcegallery/manualdesktop-touch/newest/feedbackpreview verified. Do not claim fullsuite passed.",
+  "reviewEvidenceCommit": "087986cc828b344e55303764e680ef2d9d4101f8",
+  "hostedVerification": {
+    "publicCommit": "dfb3d25cbabf79577afaade29c45b0d1180f182c",
+    "firebaseRun": "37747137637",
+    "verifiedAtUTC": "2026-10-08T08:26:26.339Z",
+    "models": 29,
+    "allAssetHashesExact": true,
+    "manualDesktopTouchLoaded": 29,
+    "feedbackPreview": true,
+    "sourceCommit": "f2baec3ffd3818d4b569dbb3d9fdacf99e4c3465",
+    "sourcePack": "experiments/canal-belt-continuation-20261007/host29-32"
+  }
 }
