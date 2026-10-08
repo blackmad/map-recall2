@@ -25,10 +25,27 @@
   ],
   "tasks": [
     {
+      "id": "collectie-six",
+      "task": "Collectie Six \u2014 original native Amstel218 museum house",
+      "priority": "normal",
+      "status": "draft-source-failure-repair-active",
+      "owner": "root",
+      "existingExtractIdentity": "extract_landmarks_2134910296",
+      "officialVBO": "0363010000566905",
+      "surveyedParent": "NL.IMBAG.Pand.0363100012185998",
+      "currentOSMBuilding": "w268446719",
+      "sourceArchive": {
+        "commit": "38bfb7c3c",
+        "path": "models/collectie-six/source-20261007/survey-photo-supplement-20261008"
+      },
+      "nextAction": "Correct/re-review firstdraft: actualfrontchain18\u219219\u21920\u21921\u21922\u21923 replaces faileddiagonal17\u21923; preserve20buriedglass failures. ReconcileBAG/surveyedges, observedtwo dormerglazing, paleouter/darkinner sash anddiagonalstoop rails; preserve source roofhierarchy/rearrecesses. Full source/gallery/native POI/suppression/fallback/pan acceptance pending.",
+      "criticalSourceTraits": "RCE230 doublehouse1662/68,18cstraightconsolecornice,hiproof/twodormers/twochimneys,doubleporch/eight bottlebalusters,originalentrance/fanlight. Current2024/2025 municipalphotos+aerial archived.1001m\u00b2VBO usablearea differs from343.95m\u00b2Pand."
+    },
+    {
       "id": "podium-mozaiek",
       "task": "Podium Mozaïek — model the former Pniëlkerk theatre building",
       "priority": "high",
-      "status": "queued",
+      "status": "source-native-build-active",
       "requested": true,
       "requestedOn": "2026-10-07",
       "sources": [
@@ -37,17 +54,24 @@
           "url": "https://podiummozaiek.nl/over-ons/overzicht"
         }
       ],
-      "nextAction": "Resolve the genuine mapped venue identity and official building parent at Bos en Lommerweg 191; archive current exterior, surveyed footprint/roof and bounded Beeldbank sources. Model the church/theatre in native house style and verify destination, pin and researched card together."
+      "nextAction": "Source-backed formerPniëlkerk originalbuild underway: white diamondconcrete/glass panels, highmiddle/loweraisles andtwo steelbelfries. Preserve genuineextract identity (numeric suffix is notanOSMway), exactparent/currentOSMalias andnativeopen spaces. Root archives originals before modelcommit; independent/gallery/native/all3POI acceptance pending.",
+      "owner": "podium_mozaiek_build",
+      "officialVBO": "0363010001021419",
+      "surveyedParent": "NL.IMBAG.Pand.0363100012122803",
+      "existingExtractIdentity": "extract_landmarks_943416488",
+      "currentOSMBuilding": "w57867539"
     },
     {
       "id": "dorus-theus-brug",
-      "task": "Dorus Theus Brug — source-backed bridge landmark",
+      "task": "Dorus Theus Brug — Erasmusgracht water parklet",
       "priority": "high",
-      "status": "queued-needs-identity-research",
+      "status": "source-native-build-active",
       "requested": true,
       "requestedOn": "2026-10-07",
       "userRequestedName": "Dorus Theus Brug",
-      "nextAction": "Confirm official bridge name, location, municipal bridge number and mapped identity before modeling. Preserve the actual deck, water opening, abutments and adjoining paths; verify native bridge geometry, destination, pin and researched card. Do not treat it as a building extrusion."
+      "nextAction": "User screenshot resolves the water parklet: source-documented Helofytenfilter Erasmusgracht, two planted filter beds, stone retaining rims and connecting wooden walks. Preserve requested alias and single genuine physical identity. Verify a reachable public entrance, selectable route, geographic map label and meaningful sourced card together; native/game review remains pending.",
+      "owner": "dorus_theus_brug_build",
+      "physicalFeature": "w626223376"
     },
     {
       "id": "westerkerk-tours-pancakes-neighbor-fidelity",
@@ -1898,7 +1922,7 @@
       "id": "cafe-kobalt",
       "task": "Building housing Caf\u00e9 Kobalt \u2014 original native landmark",
       "priority": "high",
-      "status": "local-model-accepted-hosted-pending",
+      "status": "verified-scoped-hosted",
       "owner": "root",
       "requestedOn": "2026-10-07",
       "requestedAddress": "Singel 2A, Amsterdam",
@@ -1907,7 +1931,7 @@
         "https://www.cafekobalt.nl/about.html"
       ],
       "workflow": "full-landmark",
-      "nextAction": "Publish accepted exact native model and genuine OSM venue integration, then verify canonical hosted asset/gallery/game/route/pin/card/suppression. Preserve source gaps, failed partywall/rear overlap candidates and headless timing limits.",
+      "nextAction": "Hosted original landmark verified. Preserve source and bounded Chrome timing limits; continue the remaining queue.",
       "surveyedParent": "NL.IMBAG.Pand.0363100012178170",
       "officialVBO": "0363010001040093",
       "monumentNumber": "5249",
@@ -1916,10 +1940,14 @@
         "commit": "8653ace3",
         "path": "models/cafe-kobalt/checkpoints/material-shutter-correction-dac3be8e-20261007"
       },
-      "validation": "Root and independent exactbe40 source/gallery/native acceptance:7050tri121384B, actual SE Singel gable and NE white Droogbak frontage, sourced clay roof, duplicate rear ownership removed. Genuine route/actual endpoint arrival, rendered geographic label, physical mouse/touch researched card, exact parent mask/eight retained neighbors, disabled/unavailable fallback, stationary pans and bounded frame evidence pass. Hosted pending.",
+      "validation": "Root/independent source/native and actualcanonicalhosted acceptance passed exactbe40 atserved0f31c976 descendant of modeld1655800: genuine route/endpoint arrival, geographic name, physicalmouse/touch researched card, exactPand mask/eight neighbors, disabled/unavailable fallback, cleanrear andstationarypans. Elevatedcameras/emulatedtouch/bounded scheduling do notprove physicalmobile or isolatedGPU performance.",
       "acceptedNativeArchive": {
         "commit": "92c49c40beff63820e26b1ee0d7a98906f62cd52",
         "path": "models/cafe-kobalt/checkpoints/accepted-native-be40f380-20261008"
+      },
+      "hostedArchive": {
+        "commit": "e781adc8148c69ce3b27b3497dc59d32a55945e8",
+        "path": "models/cafe-kobalt/checkpoints/hosted-be40-on-0f31c976-20261008"
       }
     },
     {
@@ -1946,13 +1974,13 @@
       "id": "westerkerk-annex-rear-feedback",
       "task": "Westerkerk adjoining buildings and blank rear slab",
       "priority": "high",
-      "status": "local-scoped-courtyard-accepted-release-pending",
+      "status": "verified-scoped-hosted-courtyard",
       "modelId": "westerkerk",
       "requestedOn": "2026-10-07",
-      "nextAction": "Publish the source-backed courtyard and low-roof correction, then verify hosted exact asset. Tours/Pancakes2174413 pitched roof/circular gable remains a separate queued source-fidelity failure.",
+      "nextAction": "Scoped courtyard/low-roof correction hosted verified. Continue independent Tours/Pancakes2174413 roof/circular-gable repair; adjoining buildings are not all fixed.",
       "diagnosis": "Actual native layer check: church aliases already masked; blank rear slab is custom w749287964 top5 excluded by facade top>5 guard. Residual-parent volumes also require source height/scope review. Separate ordinary adjoining buildings stay visible.",
       "candidateSHA256": "b2efbdd4c34631b76573988a696e90c56c9fede504447c9b30b292da6be27a5e",
-      "validation": "Source/CPU scoped pass: unsupported courtyard slab removed,4exactlowchurchroofs retained,separateTours/Pancakes verifiedofficialBAG/OSM,nonewneighborintersections. Production16bit fixes14bitreversedear;128rooftrianglesup and4continuousroofs withoutinteriorholes. Strictsourcegrid1/2038 misses due36micrometre edge shift retained.289legacyfacadereliefintercepts within.552mwall band preserved. Native pending.",
+      "validation": "Actualcanonical784 gallery/desktop/touch/failure complete0errors, fetchedb2efbdd4 exact241440B. Unsupportednorth slabremoved,4sourcedlowroofbands retained,3separate neighbors visible, genuine route/pin/physicalcard/fallback/pans pass. Pairedcamera supplementcaptured additived165 with unchangedasset read-onlyverified; no additionalperformanceclaim. Strictsourcegrid1/2038 boundarymiss remainsdocumented whiledecodedcontinuousroofcoverage passes. Tours/Pancakes sourcefidelity remainsseparatefailure.",
       "sourceArchive": {
         "commit": "7e21be82",
         "path": "models/westerkerk/checkpoints/final-source-cpu-and-production-1bfbeb49-20261007"
@@ -1960,16 +1988,21 @@
       "acceptedNativeArchive": {
         "commit": "f04e5e019060648a0c997a06da57afbdd2bbcef3",
         "path": "models/westerkerk/checkpoints/native-courtyard-b2efbdd4-20261007"
+      },
+      "hostedArchive": {
+        "commit": "5b9a9ac27",
+        "path": "models/westerkerk/checkpoints/hosted-courtyard-784cca82-20261008"
       }
     },
     {
       "id": "homomonument-water-feedback",
       "task": "Homomonument main-land triangles reported in water",
       "priority": "high",
-      "status": "queued-source-and-native-diagnosis",
+      "status": "source-ground-native-repair-active",
       "modelId": "homomonument",
       "requestedOn": "2026-10-07",
-      "nextAction": "Reopen earlier scoped placement acceptance; verify exact triangle arrangement against mapped/BGTground-water boundaries and currentphotos. Correct misplaced land elements while retaining source-supported watersideplatform; actualgame/independentreview required."
+      "nextAction": "Fresh scoped source/native ground-water diagnosis and repair in durablehomomonument-groundworktree. Check installedtriangles against actualBGT/basemapfills; retain sourcedeastwaterside steppedtriangle. Root sourcearchive/independent/native acceptance required beforecompletion.",
+      "owner": "homomonument_ground_repair"
     },
     {
       "id": "occii-facade-alignment-feedback",

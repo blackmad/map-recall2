@@ -80,7 +80,8 @@ for (const spec of MANUAL_LANDMARKS) {
 // A destination can describe a whole district, a complex or a small memorial.
 // Keep its teaching identity while making the asset task explicit for reviewers.
 const treatments:Record<string,{kind:string;note:string}>={
-  'dorus theus brug':{kind:'bridge',note:'Confirm the official bridge identity; model the deck, abutments and open water passage rather than a building shell.'},
+  'podium mozaiek':{kind:'building',note:'Model the former Pniëlkerk theatre building, preserving its venue identity and adjoining open spaces.'},
+  'dorus theus brug':{kind:'landscape',note:'User-confirmed Erasmusgracht water parklet: planted filter beds, stone rims and wooden walks. Verify the public entrance and preserve open water.'},
   'red light district':{kind:'area',note:'Treat the streets and canals as an area; individual buildings have their own queue entries.'},
   'canal ring area of amsterdam':{kind:'area',note:'Treat the canal ensemble; there is no single building to replace.'},
   'amsterdam':{kind:'area',note:'City-wide identity; choose a specific mapped place before authoring geometry.'},
