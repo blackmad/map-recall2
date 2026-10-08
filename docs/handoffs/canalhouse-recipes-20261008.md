@@ -32,3 +32,5 @@ The complete local recovery snapshot is backup/root-dirty-20261008; its disk cop
 - npm run lint passed
 - canalhouse review and signature placement built successfully
 - No new visual acceptance performed; existing roof/performance holds retained.
+
+The split lockfile keeps the Three typing dependency and removes active-root-only canvas bindings, matching this branch's manifest. Root retains its canvas dependency for the concurrent street/material work. The complete original lockfile remains in the preservation/recovery commit.
