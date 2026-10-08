@@ -1,12 +1,16 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { runInNewContext } from 'node:vm';
+import { gunzipSync } from 'node:zlib';
 import * as THREE from 'three';
 
 (globalThis as any).window = { CanalRecallGameModules: [] };
 const { GameLandmarkRuntime } = await import('../src/canalRecall/game/landmarkRuntime');
 const { ThreeBuildings } = await import('../src/canalRecall/threeBuildingsBrowser');
 const { buildFeatureChunk } = await import('../src/canalRecall/threeBuildingFeatures');
+const { manualPoiBuildingIds, mergeManualPoiFeatures } = await import('../src/canalRecall/game/manualPoiCatalog');
+const { buildLandmarks } = await import('../src/canalRecall/game/landmarkData');
+const { ClickPoiIndex } = await import('../src/canalRecall/clickPoiInfo');
 const poi = { id: 'museum', name: 'Real museum', detail: 'A museum with a researched collection.',
   buildingIds: ['own'], lngLat: [4.9, 52.37], x: 0, y: 0 };
 let shown: any = null, active: any = null;
@@ -30,6 +34,38 @@ host.landmarks = [poi, otherVenue];
 host.vectorMap.inspectBuilding = () => ({ id: 'own', landmarkId: otherVenue.id, lngLat: [4.9, 52.37], featureTarget: null });
 GameLandmarkRuntime.prototype._inspectBuildingAt.call(host, 400, 300);
 assert.equal(shown.id, otherVenue.id, 'explicit venue/pin identity wins over a shared building owner');
+
+// The gate is an additive facade asset on a much larger mall Pand. Recreate
+// the stale published containment join and the delayed-extract merge, then
+// click each physical identity through the real card/highlight transaction.
+const gateId = 'extract_landmarks_953524097', hostId = 'NL.IMBAG.Pand.0363100012165086';
+const joins = JSON.parse(readFileSync('public/data/extracts/amsterdam/landmark-buildings.json', 'utf8')).buildings;
+assert(joins[gateId].includes(hostId), 'regression includes the real problematic containment join');
+const merged = mergeManualPoiFeatures([{ id: gateId, name: 'Rasphuispoort', center: [52.3677408, 4.8910535], buildingIds: [hostId] }]);
+const gate = buildLandmarks(merged, (lat, lng) => ({ x: lng, y: lat })).find(row => row.id === gateId)!;
+assert.deepEqual(gate.buildingIds, [], 'initial manual merge cannot claim the additive host');
+gate.buildingIds = manualPoiBuildingIds(gate.id, [...gate.buildingIds!, ...joins[gate.id]]);
+assert.deepEqual(gate.buildingIds, [], 'late published join cannot reclaim the additive host');
+const footprint: any = { type: 'Polygon', coordinates: [[[4.891,52.367],[4.892,52.367],[4.892,52.368],[4.891,52.368],[4.891,52.367]]] };
+const tile = JSON.parse(gunzipSync(readFileSync('public/data/extracts/amsterdam/building-tiles/14/8414/5384.geojson.gz')).toString());
+const installedHost = tile.features.find((feature: any) => feature.properties.id === hostId);
+const mappedIndex = new ClickPoiIndex(JSON.parse(readFileSync('public/data/extracts/amsterdam/click-poi-info.json', 'utf8')));
+assert(mappedIndex.contained(installedHost.geometry).some(row => row[0] === 'w266908024'), 'real mapped mall lies in the actual installed footprint');
+assert.match(mappedIndex.card({id:hostId,footprint:installedHost.geometry,lngLat:[0,0],featureTarget:null})!.name, /^Kalverpassage/, 'real footprint names the complex before its tenants');
+host.landmarks = [gate];
+host._clickPoiInfo = new ClickPoiIndex({version: 1, source: 'OSM', points: [
+  ['n1','Tenant shop',4.8915,52.3675,'shop','a shop','','https://example.com',''],
+  ['w266908024','Kalverpassage',4.891631866666667,52.3674059,'shop','a mall','Singel 457','https://www.kalverpassage.nl/',''],
+]});
+host.vectorMap.inspectBuilding = () => ({ id: hostId, footprint, lngLat: [4.8916,52.3674], featureTarget: {source:'osm-building-appearance',id:hostId} });
+GameLandmarkRuntime.prototype._inspectBuildingAt.call(host, 400, 300);
+assert.equal(shown.name, 'Kalverpassage + 1 mapped places', 'host roof receives mall information, with tenant retained');
+assert.equal(active.featureTarget.id, hostId, 'mall card highlight belongs to the clicked host');
+assert.notEqual(shown.id, gateId, 'host roof cannot substitute the contained gate');
+host.vectorMap.inspectBuilding = () => ({ id: 'rasphuispoort', landmarkId: gateId, lngLat: gate.lngLat, featureTarget: null });
+GameLandmarkRuntime.prototype._inspectBuildingAt.call(host, 400, 300);
+assert.equal(shown.id, gateId, 'exact additive gate mesh and pin retain the researched gate card');
+assert.deepEqual(active.buildingIds, [], 'selected gate never highlights the entire host');
 
 // Deliberate information requests are opaque on their first frame; automatic
 // proximity cards still use their existing fade.

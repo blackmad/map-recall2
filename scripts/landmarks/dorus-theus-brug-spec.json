@@ -34,7 +34,7 @@
     "frame": "#68695f"
   },
   "attribution": {
-    "title": "Helofytenfilter Erasmusgracht \u2014 Dorus Theus Brug",
+    "title": "Helofytenfilter Erasmusgracht — Dorus Theus Brug",
     "author": "Map Recall",
     "sourceUrl": "https://weerproof.nl/project/helofytenfilter-erasmusgracht/",
     "licence": "Original project asset",
@@ -55,5 +55,6 @@
       52.3768526
     ],
     "avoidDuplicateDestinations": true
-  }
+  },
+  "assetKind": "landscape"
 }
