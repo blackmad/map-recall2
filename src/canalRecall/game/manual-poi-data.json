@@ -1473,5 +1473,27 @@
     "https://www.collectiesix.nl/home"
   ],
   "preferDescription": true
-}
+},
+  {
+    "modelId": "oosterparkkerk",
+    "name": "Oosterparkkerk",
+    "description": "Abraham Salm designed this church for Amsterdam’s Mennonite congregation in1904. Its restrained Art Nouveau front combines sandstone detailing, stained glass and a wrought-iron entrance canopy. A small roof turret replaces a full bell tower; the adjacent caretaker’s house belongs to the same building.",
+    "sourceUrl": "https://www.oosterparkkerk.nl/het-gebouw-en-geschiedenis",
+    "destinations": [
+      {
+        "landmarkId": "extract_landmarks_1606629595",
+        "name": "Oosterparkkerk",
+        "center": [
+          52.36005012574633,
+          4.915873654538593
+        ],
+        "destinationOverride": {
+          "center": [
+            52.36005012574633,
+            4.915873654538593
+          ]
+        }
+      }
+    ]
+  }
 ]

@@ -1,0 +1,52 @@
+{
+  "id": "oosterparkkerk",
+  "name": "Oosterparkkerk",
+  "landmarkId": "extract_landmarks_1606629595",
+  "modelUrl": "./models/oosterparkkerk.glb",
+  "suppressOsmIds": [
+    "w252970298",
+    "NL.IMBAG.Pand.0363100012236498"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.91575,
+      52.35998
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 28.83,
+    "widthMetres": 22.91
+  },
+  "surveyed": {
+    "anchor": [
+      4.91575,
+      52.35998
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG0363100012236498 and2023AHN5roof survey; eastX/southZ native metres"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#925747",
+    "stone": "#cfbea0",
+    "red": "#a85d47",
+    "ochre": "#785c3e",
+    "glass": "#758b89",
+    "slate": "#4e5352",
+    "white": "#e7dec8",
+    "dark": "#3f3b35"
+  },
+  "attribution": {
+    "title": "Oosterparkkerk",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.oosterparkkerk.nl/het-gebouw-en-geschiedenis",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original native texture-free reconstruction of church and linked kosterij. Current BAG/OSM andAHN5roof survey; source-confirmed stepped front crown, three large side windows, six buttresses, plaque, canopy, parapet, dakruiter. Private source and native acceptance archive3de4a3326; source approximations and failed assemblies preserved. No imported meshes/photo pixels. Plaque uses an explicitly approximate Anton condensed font."
+  },
+  "routeCenter": [
+    4.915873654538593,
+    52.36005012574633
+  ]
+}

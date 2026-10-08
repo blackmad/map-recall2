@@ -21,9 +21,9 @@
     }
   ],
   "counts": {
-    "manual-model": 207,
+    "manual-model": 208,
     "procedural-kit": 15,
-    "pending": 128
+    "pending": 127
   },
   "destinations": [
     {
@@ -2047,14 +2047,15 @@
     {
       "id": "lm-extract_landmarks_1606629595",
       "name": "Oosterparkkerk",
-      "lat": 52.359877,
-      "lng": 4.915613,
+      "lat": 52.36005012574633,
+      "lng": 4.915873654538593,
       "prominence": 242,
       "type": "landmark",
       "queueRank": 159,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "oosterparkkerk",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_2099326007",

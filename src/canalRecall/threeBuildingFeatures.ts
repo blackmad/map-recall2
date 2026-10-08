@@ -6,7 +6,7 @@ import { CELL_LAYER_COUNT, STYLE_DIMS, cellLayer } from './facadeCells.js';
 import { ROOF_CELL_M } from './roofCells.js';
 import { roofPlanForFeature, type RoofPlan } from './roofMesh.js';
 import { sourceVisualRoof } from './sourceVisualRoof.js';
-import { BAY_LAYER_COUNT, bayLookFor } from './bayLook.js';
+import { BAY_LAYER_COUNT, FATIH_MASONRY_LAYER, bayLookFor } from './bayLook.js';
 import type { Look, ShopKind } from './bayTextures.js';
 import { buildChunk, lookVariant, wallTopHeightM, type Chunk, type MeshBuilding } from './threeBuildingMesh.js';
 import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
@@ -100,6 +100,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     // A landmark kit's walls: its own stone or brick colour, bare or in a window grid.
     building.wallHex = String(p.kitWallHex ?? building.wallHex);
     building.plainWalls = p.kitWall === 'plain' || p.kitWall === 'flat';
+    if (id === 'NL.IMBAG.Pand.0363100012167944' && look === 'photo') building.plainLayer = FATIH_MASONRY_LAYER;
     if (p.kitWall === 'flat') { building.bare = true; building.plainLayer = roofBase + 3; }
   }
   if (p.roofPlanned && !coarse) {
@@ -134,7 +135,9 @@ export function buildFeatureChunk(features: readonly Feature[], look: BuildingLo
     if (building && mode === 'coarse') {
       // Keep textured windows and ground-floor doors at every distance. Simplify
       // roofs and omit relief; a plain shell made normal street views look empty.
-      building.heightM = Number(f.properties.height) || building.heightM;
+      // A church host's raw maximum can be its towers. Its semantic kit eaves
+      // must survive coarse LOD or a full-height capped shell buries the roof.
+      building.heightM = f.properties.kitRoof ? wallTopHeightM(f.properties) : Number(f.properties.height) || building.heightM;
       building.roof = undefined;
       building.extras = false;
       // Continue into local facade context below: coarse LOD drops relief and
@@ -149,7 +152,7 @@ export function buildFeatureChunk(features: readonly Feature[], look: BuildingLo
       building.streetAppearance = { profiles: localProfiles, look, sourceHeightM: Number(f.properties.height) || building.heightM, year: p.constructionYear == null || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear), mappedWallHex, shopfront: shopfrontOf(p) };
     }
     return building;
-  }).filter((b): b is MeshBuilding => !!b), ORIGIN, mode === 'coarse' ? 'walls' : mode, streets, contextFeatures.map(f=>{const b=meshBuildingFor(f,look,mode==='coarse');if(b&&mode==='coarse'){b.heightM=Number(f.properties.height)||b.heightM;b.roof=undefined;}return b;}).filter((b):b is MeshBuilding=>!!b), hostOpenings);
+  }).filter((b): b is MeshBuilding => !!b), ORIGIN, mode === 'coarse' ? 'walls' : mode, streets, contextFeatures.map(f=>{const b=meshBuildingFor(f,look,mode==='coarse');if(b&&mode==='coarse'){b.heightM=f.properties.kitRoof?wallTopHeightM(f.properties):Number(f.properties.height)||b.heightM;b.roof=undefined;}return b;}).filter((b):b is MeshBuilding=>!!b), hostOpenings);
   if (!garden.length || mode === 'extras') return chunk;
   const flatLayer = (cellSetOf(look) === 'procedural' ? CELL_LAYER_COUNT : BAY_LAYER_COUNT) + 3;
   return appendAllotmentHouses(chunk, garden, ORIGIN, flatLayer, mode === 'coarse');

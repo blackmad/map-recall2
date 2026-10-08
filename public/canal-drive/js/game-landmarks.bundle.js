@@ -9495,6 +9495,58 @@ Map source: ${osmUrl(places[i][0])}`);
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native interpretation of source footprint/roof planes, current facade photos and municipal/register description; joinery/stoop/dormer proportions approximate. No photo pixels or third-party mesh imported."
       }
+    },
+    {
+      id: "oosterparkkerk",
+      name: "Oosterparkkerk",
+      landmarkId: "extract_landmarks_1606629595",
+      modelUrl: "./models/oosterparkkerk.glb",
+      suppressOsmIds: [
+        "w252970298",
+        "NL.IMBAG.Pand.0363100012236498"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.91575,
+          52.35998
+        ],
+        headingDegrees: 90,
+        lengthMetres: 28.83,
+        widthMetres: 22.91
+      },
+      surveyed: {
+        anchor: [
+          4.91575,
+          52.35998
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG0363100012236498 and2023AHN5roof survey; eastX/southZ native metres"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#925747",
+        stone: "#cfbea0",
+        red: "#a85d47",
+        ochre: "#785c3e",
+        glass: "#758b89",
+        slate: "#4e5352",
+        white: "#e7dec8",
+        dark: "#3f3b35"
+      },
+      attribution: {
+        title: "Oosterparkkerk",
+        author: "Map Recall",
+        sourceUrl: "https://www.oosterparkkerk.nl/het-gebouw-en-geschiedenis",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original native texture-free reconstruction of church and linked kosterij. Current BAG/OSM andAHN5roof survey; source-confirmed stepped front crown, three large side windows, six buttresses, plaque, canopy, parapet, dakruiter. Private source and native acceptance archive3de4a3326; source approximations and failed assemblies preserved. No imported meshes/photo pixels. Plaque uses an explicitly approximate Anton condensed font."
+      },
+      routeCenter: [
+        4.915873654538593,
+        52.36005012574633
+      ]
     }
   ];
 
@@ -31704,6 +31756,200 @@ Map source: ${osmUrl(places[i][0])}`);
         coordinateConvention: "Existing ordinary native glTF metres: x=east111320cos(anchorLat), z=south111320; the unchanged lon/lat ring is authoritative. Local745.862m\xB2 differs from747.004m\xB2 RD/native admission by projection approximation, not scope change.",
         orientation: "edge0 east-to-west, outward north; AIR2182493 EAST; fence/open gap WEST",
         updatedAt: "2026-10-08T01:36:57.498718+00:00"
+      },
+      {
+        id: "ordinary-0363100012177101",
+        buildingId: "NL.IMBAG.Pand.0363100012177101",
+        url: "/models/ordinary-buildings/0363100012177101.glb",
+        anchor: [
+          4.887974518518519,
+          52.36349425925926
+        ],
+        scale: 1,
+        bearing: 0,
+        bytes: 491704,
+        sha256: "aa98fe521fbbc9eb5731cf530bf7121ca5f2b8701efd0e436d909da0ef62bd23",
+        materials: 3,
+        textures: 0,
+        triangles: 7535,
+        bounds: {
+          min: [
+            -19.340869903564453,
+            -19073486612342094e-23,
+            -29.3840274810791
+          ],
+          max: [
+            28.015493392944336,
+            19.23107147216797,
+            22.29286003112793
+          ]
+        },
+        suppress: [
+          "NL.IMBAG.Pand.0363100012177101"
+        ],
+        scope: "Draft asset only. Independent/gallery/live/performance acceptance pending.",
+        sourceCommit: "d1d1b4b64e2e2d48798292c85c9d29e20e174289",
+        name: "Kerkstraat 136 (Hans Brinker)",
+        modelUrl: "./models/ordinary-buildings/0363100012177101.glb",
+        hash: "aa98fe521fbbc9eb5731cf530bf7121ca5f2b8701efd0e436d909da0ef62bd23",
+        height: 19.23107147216797,
+        nativeHeight: 15.99,
+        footprint: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [
+                4.888226,
+                52.363421
+              ],
+              [
+                4.888383,
+                52.363517
+              ],
+              [
+                4.887993,
+                52.363756
+              ],
+              [
+                4.887862,
+                52.363677
+              ],
+              [
+                4.88797,
+                52.363611
+              ],
+              [
+                4.887819,
+                52.363518
+              ],
+              [
+                4.887816,
+                52.363519
+              ],
+              [
+                4.887817,
+                52.363527
+              ],
+              [
+                4.887809,
+                52.363532
+              ],
+              [
+                4.887797,
+                52.363531
+              ],
+              [
+                4.887794,
+                52.363533
+              ],
+              [
+                4.887767,
+                52.363533
+              ],
+              [
+                4.887748,
+                52.363521
+              ],
+              [
+                4.887734,
+                52.36353
+              ],
+              [
+                4.88769,
+                52.363503
+              ],
+              [
+                4.888005,
+                52.363294
+              ],
+              [
+                4.888081,
+                52.363336
+              ],
+              [
+                4.888076,
+                52.363339
+              ],
+              [
+                4.888101,
+                52.363354
+              ],
+              [
+                4.888044,
+                52.363392
+              ],
+              [
+                4.888019,
+                52.363377
+              ],
+              [
+                4.887906,
+                52.363452
+              ],
+              [
+                4.888115,
+                52.36357
+              ],
+              [
+                4.888183,
+                52.363528
+              ],
+              [
+                4.888173,
+                52.363522
+              ],
+              [
+                4.88822,
+                52.363493
+              ],
+              [
+                4.888164,
+                52.363459
+              ],
+              [
+                4.888226,
+                52.363421
+              ]
+            ]
+          ]
+        },
+        cameraBearing: 45.09,
+        referenceImages: [
+          "./ordinary-buildings-data/references/0363100012177101/plane-2024-centre.jpg",
+          "./ordinary-buildings-data/references/0363100012177101/fullfront-0363100012177101-2025-00234-esoutheast.jpg",
+          "./ordinary-buildings-data/references/0363100012177101/fullfront-0363100012177101-2025-00223-enorthwest.jpg"
+        ],
+        traits: [
+          "Broad brown-red brick front, charcoal lower floor, white stacked window frames/sills and small attic/louver row.",
+          "Original surveyed roof families and native rear wings/notch.",
+          "Real yellow HOTEL blade sign."
+        ],
+        simplifications: [
+          "Far northwest/sign/tree-obscured window counts and widths are photo-guided approximations.",
+          "Hidden rear openings unknown; survey roof levels and native exterior notch preserved.",
+          "Approximate sign font and facade dimensions; no archival drawing/register evidence claimed."
+        ],
+        reviewState: "Source/gallery and independent native desktop/touch PASS; source-stage tasks and approximation limits recorded.",
+        galleryFrontage: {
+          target: [
+            4.888188,
+            52.3636365
+          ],
+          distanceMetres: 60,
+          targetHeightMetres: 6.5
+        },
+        sourcePack: "experiments/canal-belt-continuation-20261007/new-next-box-source-31/0363100012177101",
+        sourceUrls: [
+          "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/?ligtInPanden.identificatie=0363100012177101&_pageSize=100",
+          "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000163900?volgnummer=1",
+          "https://api.data.amsterdam.nl/v1/bag/panden/?identificatie=0363100012177101&_pageSize=100",
+          "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012177101",
+          "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.887974518518519%2C52.36349425925926&radius=65&srid=4326&page_size=100",
+          "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.887974518518519%2C52.36349425925926&page=2&page_size=100&radius=65&srid=4326",
+          "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.887974518518519%2C52.36349425925926&page=3&page_size=100&radius=65&srid=4326",
+          "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00230/equirectangular/panorama_8000.jpg"
+        ],
+        updatedAt: "2026-10-08T15:29:13.555963+00:00"
       }
     ]
   };
@@ -33278,6 +33524,38 @@ Map source: ${osmUrl(places[i][0])}`);
         "https://www.collectiesix.nl/home"
       ],
       preferDescription: true
+    },
+    {
+      modelId: "oosterparkkerk",
+      name: "Oosterparkkerk",
+      description: "Abraham Salm designed this church for Amsterdam\u2019s Mennonite congregation in1904. Its restrained Art Nouveau front combines sandstone detailing, stained glass and a wrought-iron entrance canopy. A small roof turret replaces a full bell tower; the adjacent caretaker\u2019s house belongs to the same building.",
+      sourceUrl: "https://www.oosterparkkerk.nl/het-gebouw-en-geschiedenis",
+      destinations: [
+        {
+          landmarkId: "extract_landmarks_1606629595",
+          name: "Oosterparkkerk",
+          center: [
+            52.36005012574633,
+            4.915873654538593
+          ],
+          destinationOverride: {
+            center: [
+              52.36005012574633,
+              4.915873654538593
+            ]
+          }
+        }
+      ]
+    }
+  ];
+
+  // src/canalRecall/game/native-kit-pois.json
+  var native_kit_pois_default = [
+    {
+      buildingId: "NL.IMBAG.Pand.0363100012167944",
+      landmarkId: "extract_landmarks_1997051448",
+      name: "Fatih",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Fatih-moskee"
     }
   ];
 
@@ -33297,7 +33575,11 @@ Map source: ${osmUrl(places[i][0])}`);
   }
   function mergeManualPoiFeatures(features, cityId = "amsterdam") {
     if (cityId !== "amsterdam") return [...features];
-    const merged = new Map(features.map((feature) => [feature.id, { ...feature }]));
+    const kitIds = new Set(native_kit_pois_default.map((poi) => poi.landmarkId));
+    const merged = new Map(features.map((feature) => [feature.id, {
+      ...feature,
+      ...kitIds.has(feature.id) ? { nativeKitPoi: true } : {}
+    }]));
     for (const model of SIGNATURE_MODELS) {
       const fallback = supplemental.get(model.id);
       const anchor = model.surveyed?.anchor ?? model.footprint?.centre;

@@ -70,7 +70,7 @@ export const BAY_STYLES: Record<Archetype, readonly BayStyle[]> = {
 };
 const ARCHETYPES = Object.keys(BAY_STYLES) as Archetype[];
 
-type Entry = { archetype: Archetype; style: number; kind: (typeof BAY_KINDS)[number]; layer: number; restrainedShop?: boolean };
+type Entry = { archetype: Archetype; style: number; kind: (typeof BAY_KINDS)[number]; layer: number; restrainedShop?: boolean; originalMasonry?: boolean };
 // Shop cells are shared by period and art direction, not every opening preset.
 // Share only cells whose painter output is identical. Upper cells do not draw
 // ground assemblies; side-entry ground and groundDoor both paint the same door.
@@ -93,6 +93,10 @@ for (const archetype of ARCHETYPES) for (const kind of SHOP_KINDS) {
   cellLayers.set(cellKey(archetype, 0, kind, true), entries.length);
   entries.push({ archetype, style: 0, kind, restrainedShop: true });
 }
+// A source-supported brick wall must not inherit the smooth modern fallback
+// from an absent construction year. This cell contains original generated pixels.
+export const FATIH_MASONRY_LAYER = entries.length;
+entries.push({ archetype: 'school', style: 0, kind: 'plain', originalMasonry: true });
 export const BAY_ENTRIES: readonly Entry[] = entries.map((e, layer) => ({ ...e, layer }));
 export const BAY_LAYER_COUNT = BAY_ENTRIES.length;
 

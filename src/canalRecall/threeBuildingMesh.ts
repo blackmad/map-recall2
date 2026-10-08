@@ -668,7 +668,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
  * by material kind (bare wall, flat colour, roof tiles) and the colour per
  * triangle. One range per part id, so a part can be hidden with the answer.
  */
-export function buildKitChunk(parts: readonly KitPartGeometry[], layers: { plain: number; flat: number; slope: number }): Chunk {
+export function buildKitChunk(parts: readonly KitPartGeometry[], layers: { plain: number; flat: number; slope: number; fatihMasonry?: number }): Chunk {
   let tris = 0;
   for (const part of parts) tris += part.tris.length;
   const vertexCount = tris * 3;
@@ -686,7 +686,7 @@ export function buildKitChunk(parts: readonly KitPartGeometry[], layers: { plain
       for (let k = 0; k < 3; k++) {
         positions[v * 3] = t.p[k][0]; positions[v * 3 + 1] = t.p[k][1]; positions[v * 3 + 2] = t.p[k][2];
         uvs[v * 2] = t.uv[k][0]; uvs[v * 2 + 1] = t.uv[k][1];
-        layerArr[v] = layers[t.layer];
+        layerArr[v] = part.id === 'NL.IMBAG.Pand.0363100012167944' && t.layer === 'plain' && layers.fatihMasonry !== undefined ? layers.fatihMasonry : layers[t.layer];
         tints[v * 4] = r; tints[v * 4 + 1] = g; tints[v * 4 + 2] = b; tints[v * 4 + 3] = shade * 255;
         indices[v] = v; v++;
       }

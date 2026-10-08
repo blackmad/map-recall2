@@ -1,0 +1,99 @@
+{
+  "modelId": "fatih-mosque",
+  "bagId": "0363100012167944",
+  "type": "native-kit scoped photo masonry correction",
+  "retrievedAt": "2026-10-08T14:58:45.608065+00:00",
+  "sources": [
+    {
+      "url": "https://data.amsterdam.nl/monumenten/f00f0a4f-9128-47f6-bdde-4bd0b1accc78?adressenPagina=2",
+      "rawPath": "artifacts/fatih-side-texture/sources/register.html",
+      "sha256": "0c8d35765434d85d20e347059e1692903ef16bb6831ac4adb6a0a198fe9e951b",
+      "httpState": "200 downloaded original bytes",
+      "informs": "Municipal monument 200454; source-supported nearly blind Bloemstraat rear and tower/front geometry",
+      "rights": "Municipal page copyright not independently established"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Fatihmosquewesterkerkamsterdam.jpg",
+      "rawPath": "artifacts/fatih-side-texture/sources/commons.html",
+      "sha256": "221a65602f285dc1ef1cca2d2d37b3486bbbbb1fdb70ceb47f00aa05a2c98940",
+      "httpState": "200 downloaded original bytes",
+      "informs": "Catalogue, 2009-10-29, LooiNL; original reference photograph",
+      "rights": "Public domain release on original photograph; catalogue text CC BY-SA"
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/d/de/Fatihmosquewesterkerkamsterdam.jpg",
+      "rawPath": "artifacts/fatih-side-texture/sources/tower-side.jpg",
+      "sha256": "4ff5eddd566028c2bfc125158174deb3414d363f454e87a2020a8dff0734a186",
+      "httpState": "200 downloaded original bytes",
+      "informs": "Inspected original current-ish tower/front view; coarse red-brown brick, sparse upper side openings",
+      "rights": "LooiNL, public domain; 2009-10-29; photo pixels not copied into texture"
+    },
+    {
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=Rozengracht%20150",
+      "rawPath": "artifacts/fatih-side-texture/sources/beeldbank.html",
+      "sha256": "f60ef929d710714ed950d7455887cc960a5a7e7b48477afb52f533197b1407d0",
+      "httpState": "200 downloaded original bytes",
+      "informs": "Bounded address search; HTTP200 JavaScript viewer shell only, no catalogue item/image inspected",
+      "rights": "Unknown; not used as visual evidence"
+    },
+    {
+      "rawPath": "artifacts/fatih-side-texture/sources/building-tile-8414-5384.geojson.gz",
+      "sourcePath": "public/data/extracts/amsterdam/building-tiles/14/8414/5384.geojson.gz",
+      "sha256": "1989e17f71e01244ef6db88449dfc0ee86b567124dada97ced783cc31fba3ff4",
+      "accessState": "existing checked-in original compressed tile reused",
+      "informs": "native footprint, raw absent year, tower-max37.31 envelope versus authored nave16",
+      "rights": "Existing project extract provenance; no new HTTP claim"
+    }
+  ],
+  "architecturalAssertions": [
+    {
+      "part": "Bloemstraat rear",
+      "assertion": "nearly blind with low broad choir tower",
+      "source": "register.html",
+      "confidence": "high",
+      "change": "skip generic guessed nave window fill on nearest rear edge only"
+    },
+    {
+      "part": "tower and frontage brick",
+      "assertion": "brown-red masonry with sparse upper arched openings",
+      "source": "tower-side.jpg",
+      "confidence": "high",
+      "change": "original masonry grayscale tinted by existing native wall color; unchanged native opening assemblies"
+    }
+  ],
+  "unknowns": [
+    "Actual long nave side elevation hidden behind neighboring buildings; existing guessed tall nave windows remain unaccepted but unchanged in this scope.",
+    "Exact historic brick bond and dimensions not measured; texture is original low-contrast display approximation.",
+    "2009 reference predates any possible current maintenance changes."
+  ],
+  "textureException": {
+    "authorization": "User explicitly requested GL side texture; native kit already uses texture arrays so no GLB no-texture check relaxed.",
+    "pixels": "Original procedural paintBrick, no photographic samples",
+    "scope": "exact native BAG id; PHOTO nave and kit brick triangles only",
+    "addedAtlasCells": 1,
+    "bytesAt256": 393216,
+    "bytesAt128": 98304,
+    "atlasLimit": 256,
+    "roofGlassTrim": "existing geometry and materials retained"
+  },
+  "checks": {
+    "focused": "node --import tsx scripts/check-fatih-side-material.ts passed",
+    "typescript": "existing unrelated baseline errors in cityAppearance/case24/pointCloud viewer modules",
+    "sharedGeometry": "check-three-buildings passes Fatih block, later fails existing canal flat-lintel assertion line763",
+    "coarseRegression": "actual and context coarse shells preserve existing kit semantic roofEavesHeightM; raw max37.31 no longer replaces nave16"
+  },
+  "sourceArchive": {
+    "commit": "ba81c5790",
+    "path": "models/fatih-mosque/checkpoints/side-material-20261008"
+  },
+  "runtimeReview": {
+    "status": "8 actual scene diagnostic views desktop/emulated touch completed zero errors; coarse roof cap regression corrected; source long-side windows still unresolved",
+    "reviewPath": "docs/references/fatih-side-material/review.json",
+    "evidencePath": "artifacts/fatih-side-texture/after",
+    "sourcePhoto": "artifacts/fatih-side-texture/sources/tower-side.jpg"
+  },
+  "limitations": [
+    "Runtime BAG year enrichment currently yields1886, so normal enriched PHOTO already selected generic brick; absent/stale raw/cache path regressed to modern smooth. New original texture is scoped consistency improvement, not proof all normal game walls were smooth.",
+    "Prior native coarse renderer set whole shell37.31 despite kit nave16, producing cap above native roofs. Fixed semantic height inheritance; no new measured height claim."
+  ]
+}

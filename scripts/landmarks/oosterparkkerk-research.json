@@ -1,0 +1,238 @@
+{
+  "id": "oosterparkkerk",
+  "status": "corrected-frozen-original-candidate-CPU-only-unaccepted",
+  "retrievedAt": "2026-10-08",
+  "identity": {
+    "poiId": "extract_landmarks_1606629595",
+    "osmId": "w252970298",
+    "bagId": "0363100012236498",
+    "vboId": "0363010000762847",
+    "numberId": "0363200000223077",
+    "monumentId": 200660,
+    "monumentUUID": "299e42b1-1f38-407a-963d-3ed16e1d58c8",
+    "addresses": [
+      "Oosterpark4",
+      "Oosterpark5"
+    ],
+    "scope": "Church and attached caretakerhouse form one current Pand with2VBOs; VBO318m2 usable area is not footprint. Net current native footprint 372.72m2. No courtyard holes. Forecourt outside installed footprint stays open.",
+    "preserveNeighbors": [
+      "w278101783 /0363100012163586",
+      "w278102679 /0363100012153583",
+      "w278102736 /0363100012163285",
+      "NearbyOLVG buildings remain outside scope."
+    ]
+  },
+  "criticalRecognition": [
+    "Setback hall and forecourt, linked lower caretaker house",
+    "Light-red brick with dark glazed-brick bands and sandstone detailing",
+    "Stepped/shouldered pointed sandstone front crown, onion corner caps",
+    "Projecting entrance risalit with corbelled shed-roof crown, real1904plaque, segment-headed doors, stained transom, glass/iron canopy",
+    "Main broad segment-headed upper window and two narrow side slits",
+    "Northside six stepped buttresses, three large stained windows, pale arcaded cornice",
+    "Red gable roof and slender louvred roof turret",
+    "Two-storey flat-roof kosterij: paired frontT-windows, register-supported single sideT-window eachfloor, chamfer and openbrickparapet"
+  ],
+  "assertions": [
+    {
+      "source": "https://data.amsterdam.nl/monumenten/299e42b1-1f38-407a-963d-3ed16e1d58c8",
+      "rawFile": "artifacts/oosterparkkerk/raw/monuments.json",
+      "part": "church and kosterij",
+      "date": "Municipal designation2013-03-05; description read2026-10-08",
+      "confidence": "high",
+      "features": "Full redengevendeOmschrijvingPubliek read beforebuilding. Stated redtilegable roof, smallspires, sandstonecrown, sixnorthbuttresses/three stainedwindows, entranceglasscanopy, plaque, paired caretakerwindows and oneTsidewindowperfloor, openbalustrade. Original1904;1970upperconsistoriealteration."
+    },
+    {
+      "source": "https://www.oosterparkkerk.nl/het-gebouw-en-geschiedenis",
+      "rawFile": "artifacts/oosterparkkerk/raw/operator.html",
+      "part": "wholebuilding",
+      "date": "page currentretrieval2026-10-08; individual operatorphotos undated",
+      "confidence": "high-source-description/photo",
+      "features": "Salm1904, originalDoopsgezinde,1975newcongregation,2020-21renovation; front/sidephotographs show currentcriticaltraits."
+    },
+    {
+      "source": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012236498",
+      "rawFile": "artifacts/oosterparkkerk/raw/3dbag.json",
+      "part": "roof/terrain",
+      "date": "AHN52023",
+      "confidence": "survey-massing; interpretation recorded",
+      "features": "Ground.187mNAP; native mainhall eaves8.95\u20139.38m/ridge12.39\u201312.42m. Clean source63/64ridge/eave planes used. Narrow high partywall strip59notaccepted as11.2mflatroof. Caretaker7.7mflat cap andlowannex4.3m are bounded semantic reconstruction, informed by source57/60/62 +currentphotos; source58junctionfitnotused as fullvolumeheight. Thin turret17.265m is photo-estimated, not a measuredsurveymaximum."
+    }
+  ],
+  "referenceViews": [
+    {
+      "rawPhoto": "artifacts/oosterparkkerk/raw/recording_2024-10-02_09-25-01_01832.jpg",
+      "panoramaId": "recording_2024-10-02_09-25-01_01832",
+      "capturedAt": "2024-10-02T10:08:21Z",
+      "viewerUrl": "https://data.amsterdam.nl/",
+      "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2024-10-02_09-25-01_01832/",
+      "derivedCrop": "artifacts/oosterparkkerk/recording_2024-10-02_09-25-01_01832-front.jpg",
+      "projection": {
+        "width": 1400,
+        "height": 1000,
+        "fov": 85,
+        "pitch": 18,
+        "target": [
+          4.915866,
+          52.360021
+        ]
+      },
+      "occlusion": "Frontcars lowerpavement partlyoccluded;2024northview clearentrancesidebuttress/window; no infer hiddenrear.",
+      "metadataExtract": "artifacts/oosterparkkerk/raw/recording_2024-10-02_09-25-01_01832.json",
+      "metadataProvenance": "Per-station normalized extract from complete original panorama-list API body (panoramas2.json/front, panoramas-side.json/north); original list bytes preserved. Not a separate per-station HTTP body."
+    },
+    {
+      "rawPhoto": "artifacts/oosterparkkerk/raw/recording_2025-06-20_10-43-25_01712.jpg",
+      "panoramaId": "recording_2025-06-20_10-43-25_01712",
+      "capturedAt": "2025-06-20T11:23:48Z",
+      "viewerUrl": "https://data.amsterdam.nl/",
+      "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-20_10-43-25_01712/",
+      "derivedCrop": "artifacts/oosterparkkerk/recording_2025-06-20_10-43-25_01712-front.jpg",
+      "projection": {
+        "width": 1400,
+        "height": 1000,
+        "fov": 85,
+        "pitch": 18,
+        "target": [
+          4.915866,
+          52.360021
+        ]
+      },
+      "occlusion": "Frontcars lowerpavement partlyoccluded;2024northview clearentrancesidebuttress/window; no infer hiddenrear.",
+      "metadataExtract": "artifacts/oosterparkkerk/raw/recording_2025-06-20_10-43-25_01712.json",
+      "metadataProvenance": "Per-station normalized extract from complete original panorama-list API body (panoramas2.json/front, panoramas-side.json/north); original list bytes preserved. Not a separate per-station HTTP body."
+    },
+    {
+      "rawPhoto": "artifacts/oosterparkkerk/raw/recording_2025-06-20_10-43-25_01711.jpg",
+      "panoramaId": "recording_2025-06-20_10-43-25_01711",
+      "capturedAt": "2025-06-20T11:23:47Z",
+      "viewerUrl": "https://data.amsterdam.nl/",
+      "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-20_10-43-25_01711/",
+      "derivedCrop": "artifacts/oosterparkkerk/recording_2025-06-20_10-43-25_01711-front.jpg",
+      "projection": {
+        "width": 1400,
+        "height": 1000,
+        "fov": 85,
+        "pitch": 18,
+        "target": [
+          4.915866,
+          52.360021
+        ]
+      },
+      "occlusion": "Frontcars lowerpavement partlyoccluded;2024northview clearentrancesidebuttress/window; no infer hiddenrear.",
+      "metadataExtract": "artifacts/oosterparkkerk/raw/recording_2025-06-20_10-43-25_01711.json",
+      "metadataProvenance": "Per-station normalized extract from complete original panorama-list API body (panoramas2.json/front, panoramas-side.json/north); original list bytes preserved. Not a separate per-station HTTP body."
+    },
+    {
+      "rawPhoto": "artifacts/oosterparkkerk/raw/voorgevel_oosterparkkerk.jpg",
+      "date": "undated operatororiginal, downloaded2026-10-08",
+      "rights": "operator/photographercopyrightunknown; private referenceonly"
+    },
+    {
+      "rawPhoto": "artifacts/oosterparkkerk/raw/oosterparkkerk_amsterdam.jpg",
+      "date": "undated operatororiginal, downloaded2026-10-08",
+      "rights": "operator/photographercopyrightunknown; private referenceonly"
+    }
+  ],
+  "nativeCameras": {
+    "front": {
+      "eye": [
+        40,
+        18,
+        -21
+      ],
+      "target": [
+        -1,
+        7,
+        0
+      ]
+    },
+    "frontNorth": {
+      "eye": [
+        31,
+        22,
+        -43
+      ],
+      "target": [
+        -1,
+        7,
+        0
+      ]
+    },
+    "rearContext": {
+      "eye": [
+        -42,
+        20,
+        12
+      ],
+      "target": [
+        -1,
+        7,
+        0
+      ]
+    }
+  },
+  "signage": {
+    "text": [
+      "ANNO",
+      "KERKGEBOUW",
+      "DER",
+      "VEREEN: DOOPSGEZINDE GEMEENTE",
+      "1904"
+    ],
+    "evidence": "Operator frontcloseup originalvoorgevel_oosterparkkerk.jpg, corroborated2025panorama",
+    "font": "Anton-Regular, condensed smooth native geometry; approximate match for tightly spaced squared capitals, exact1904typefaceunknown",
+    "panel": "Actual sandstonefrontplaque, nativewallplane;12mmrelief with5mmclearance. No invented buildingnamewords."
+  },
+  "sourceAccess": {
+    "beeldbank": "BoundednameandOosterpark4addresssearch bothreturned200JavaScript viewer shell; no catalogue/image assertion fromshell. Original shellcached.",
+    "bouwdossiers": "Register names pandendossier19631. APIguess/v1/bouwdossiers/bouwdossiersreturned404; no drawing downloaded/read. Permit/drawingaccessunresolved, possible email request rootifdetailsremain.",
+    "osm": "Overpass406/500on2026-10-08; successfulcurrentOSM mapXMLcached; not permanenthostfailure.",
+    "architect": "jan-architectuurpagewebtext corroborates1970addition andmonument200660; directrawHTTP403 recorded, not originalHTMLread."
+  },
+  "rawSourcesManifest": "artifacts/oosterparkkerk/source-manifest.json",
+  "sourceArchive": {
+    "status": "Original sources privately pushed; corrected evidence root archival required before public model commit",
+    "commit": "64b76a926",
+    "path": "models/oosterparkkerk/checkpoints/draft-source-20261008"
+  },
+  "geometryChecks": "scripts/landmarks/oosterparkkerk-check.ts /artifacts/oosterparkkerk/check.json",
+  "limitations": [
+    "Rear church face is adjoining/obscured by school; no invented repeatedrearopenings. Current front/northside clear; rearcontextnotfullyobserved.",
+    "Caretaker sideT-windowcount/source formknown, longitudinalplacement is bounded reconstruction oninnerforecourtface; needsindependentreview.",
+    "Corner/wing partition, lowroofsemanticcorrections andturretheight are approximate. Fullgallery/native/game/performance/fallback/neighbor/route/card acceptance pending.",
+    "CPU shadedimages use a standalone triangle rasterizer and do notcountas actualgame/browser acceptance."
+  ],
+  "frozenCandidate": {
+    "sha256": "b2c0cd843192207fde6ff6f5990e67d41467f3d0575104ca937d400b201261f4",
+    "bytes": 196512,
+    "triangles": 15534,
+    "CPUprobes": 69,
+    "roofTriangles": 58,
+    "decodedRedRoofFaces": 6,
+    "decodedCopingTopFaces": 22,
+    "nativeTopGridSamples": 1471,
+    "nativeTopGridGaps": [],
+    "status": "Two bounded rejection corrections; fresh independent and actual native/game acceptance pending"
+  },
+  "failedCandidates": [
+    {
+      "sha256": "001251b8f35d97d65c8ba2033081ae1180c25fb2d6c8e04aa2856e80acdad0fb",
+      "bytes": 169456,
+      "triangles": 13176,
+      "CPUprobes": 21,
+      "roofTriangles": 36,
+      "decodedRedRoofFaces": 6,
+      "status": "Rejected by independent source/CPU review: missing low-wing coping/tops and six rectangular caretaker window heads",
+      "retainedGLB": "artifacts/oosterparkkerk/cycle1-rejected/original-001251b8.glb",
+      "privateSourceCommit": "64b76a926",
+      "privateSourcePath": "models/oosterparkkerk/checkpoints/draft-source-20261008"
+    }
+  ],
+  "correctionCycle2": {
+    "reason": "Independent rejection of original001251b8 low-wing open tops/coping and rectangular caretaker windows",
+    "wingCoping": "Two clipped exact-BAG foreground wing regions only; central entrance/hall/caretaker excluded. Sandstone band3.30\u20133.42m with distinct upward top ownership. Source original rings retained; coping-specific <8mm duplicate and <1.5mm near-collinear cleanup avoids reversed quantized numerical slivers. All8 independent rays now first-hit stone at3.420119m;1471point grid0gaps.",
+    "caretakerWindows": "All4front+2side now shallow segment-head glass, curved dark timber head, T divisions, brick relieving arch with radial joints and sandstone keystone/sill. True existing native wall planes retained. Source original and compressed pane/head/arch/high-corner visibility checked.",
+    "failureRetention": "Original001251b8 export/builder/check and independent review retained; failed degenerate/sliver coping exports retained under cycle2-failed-quantization. No waivers for downward decoded faces.",
+    "independentReproduction": "artifacts/oosterparkkerk/cycle2-reproduced-probe.json is author reproduction of existing reviewer algorithm against corrected GLB; not new independent acceptance."
+  }
+}
