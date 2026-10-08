@@ -28,6 +28,8 @@ const text = dialog.querySelector('textarea')!;
 const status = dialog.querySelector('[role=status]')!;
 const preview = dialog.querySelector('img')!;
 const saveButton = dialog.querySelector('.cf-save') as HTMLButtonElement;
+saveButton.setAttribute('aria-keyshortcuts', 'Meta+Enter Control+Enter');
+saveButton.title = 'Save feedback (⌘/Ctrl+Enter)';
 let current: Target;
 let payload: Context;
 let anchor: { x: number; y: number } | null = null;
@@ -133,6 +135,12 @@ dialog.addEventListener('close', () => {
 dialog.addEventListener('cancel', event => { if (saving) event.preventDefault(); });
 // Keep shortcuts on modal buttons out of the game's window listeners.
 for (const event of ['keydown', 'keyup']) dialog.addEventListener(event, e => e.stopPropagation());
+dialog.addEventListener('keydown', event => {
+  if (event.key === 'Enter' && (event.metaKey || event.ctrlKey) && !event.isComposing) {
+    event.preventDefault();
+    if (!event.repeat) saveButton.click();
+  }
+});
 dialog.querySelector('.cf-close')!.addEventListener('click', close);
 text.addEventListener('input', () => { try { localStorage.setItem(draftKey, text.value); } catch { /* local storage unavailable */ } });
 preview.addEventListener('click', e => {
@@ -159,6 +167,7 @@ saveButton.addEventListener('click', async () => {
     try { localStorage.removeItem(draftKey); } catch { /* optional local storage */ }
     text.value = ''; noteId = crypto.randomUUID();
     status.textContent = 'Saved to the feedback queue.';
+    dialog.close();
   } catch (e) { status.textContent = `Not saved: ${(e as Error).message}\nYour draft is still here. Sign in if needed, then retry.`; }
   finally { saving = false; saveButton.disabled = false; text.disabled = false; }
 });
@@ -179,7 +188,7 @@ function attach(container: HTMLElement, target: Target) {
   button.addEventListener('click', () => open(target)); container.append(button);
 }
 window.CanalFeedback = { attach, open };
-const launch = document.createElement('button'); launch.type = 'button'; launch.className = 'cf-button cf-launch'; launch.textContent = 'Feedback'; launch.addEventListener('click', () => open()); document.body.append(launch);
+const launch = document.createElement('button'); launch.type = 'button'; launch.className = 'cf-button cf-launch'; launch.textContent = 'Feedback'; launch.addEventListener('click', () => open()); (document.getElementById('utility-buttons') || document.body).append(launch);
 // Other gallery pages opt in simply by loading this module. Dynamic cards are supported.
 function discover() {
   for (const card of document.querySelectorAll<HTMLElement>('article, .card, [data-feedback-id]')) {

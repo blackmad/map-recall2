@@ -28,3 +28,11 @@ The complete local recovery snapshot is backup/root-dirty-20261008; its disk cop
 - Feedback and overlay bundles built successfully
 - Failed in shared root node_modules: installed canalhouse @types/three exposes existing original-base viewer errors
 - Three desktop Playwright tests successfully discovered; browser tests not run due unavailable coordination/network and active GPU ownership
+
+## Reviewed integration — 2026-10-08
+
+The UI source and tests were extracted additively onto current main in `fix/feedback-account-ui-release-20261008`; preservation branches remain unchanged. The build-stamp DOM placement is included with the control layout, so it participates in the utility grid rather than overlapping the buttons. Feedback and overlay bundles were regenerated from this reviewed source. No landmark/rendering source or queue data belongs to this change.
+
+All six existing feedback/account Playwright checks pass on desktop and iPhone, including desktop/portrait/landscape button bounds and steering-pad clearance, settings account updates, draft retention after failure, successful shortcut submission and game freeze/release. The isolated server was verified to serve the patched utility-grid CSS on port49187. Earlier runs accidentally reused servers serving another checkout and are retained as invalid comparison evidence, not product failures. Root inspected the portrait control capture. Isolated dependency installation and commit lint pass. These checks use stubbed feedback/account responses; no real sign-in or cloud feedback note was submitted.
+
+The reviewed UI is committed locally; deployment is a separate publication step. Local validation logs are in `artifacts/branch-organization-20261008/ui-isolated-tests.log`.

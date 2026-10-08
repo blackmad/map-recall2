@@ -35,7 +35,7 @@
         'pointer-events:none',
         'white-space:nowrap',
       ].join(';');
-      document.body.appendChild(el);
+      (document.getElementById('utility-buttons') || document.body).appendChild(el);
     }
     el.textContent = 'build ' + sha + (date ? ' \u00b7 ' + date : '');
     el.title = 'Revision ' + info.sha + (info.builtAt ? '\nBuilt ' + info.builtAt : '')

@@ -512,7 +512,8 @@ canvas { display: block; position: relative; z-index: 2; }
 }
 .enamel-start.enamel-framed::before { border-color: rgba(31,28,23,.4); }
 .enamel-start:hover { filter: brightness(1.04); }
-body.setup-open #utility-buttons { display: none; }
+body.setup-open #utility-buttons #open-settings,
+body.setup-open #utility-buttons #open-help { display: none; }
 #route-error { min-height: 20px; margin-top: 10px; color: var(--day-danger); font: 13px/1.4 var(--font-ui); }
 
 /* ---- Help and live settings panels (enamel) ---- */
@@ -606,10 +607,12 @@ body.setup-open #utility-buttons { display: none; }
 #landmark-panel-link { display: inline-block; margin-top: 14px; color: var(--day-accent-ink); font-size: 12px; }
 @media (max-width: 760px) { #landmark-panel-image { float: none; width: 100%; margin: 0 0 12px; } }
 input[type="range"] { width: 100%; height: 24px; accent-color: var(--accent); background: transparent; }
-#utility-buttons { position: fixed; right: 12px; bottom: 10px; z-index: 12; display: flex; gap: 8px; }
+#utility-buttons { position: fixed; right: 12px; bottom: 10px; z-index: 32; display: grid; grid-template-columns: repeat(3, auto); gap: 8px; }
 /* Tucked away while riding; a tap on the map or a mouse move brings them back. */
-#utility-buttons { transition: opacity .25s ease; }
-#utility-buttons.tucked { opacity: 0; pointer-events: none; }
+#utility-buttons #open-settings,
+#utility-buttons #open-help { transition: opacity .25s ease; }
+#utility-buttons.tucked #open-settings,
+#utility-buttons.tucked #open-help { opacity: 0; pointer-events: none; }
 /* Same paper plate as the canvas readouts (hudSurface.card). */
 #utility-buttons button {
   width: 44px; height: 44px; border: 1px solid var(--day-line); border-radius: 8px;
@@ -621,6 +624,11 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--accent); ba
 #utility-buttons button { display: grid; place-items: center; }
 #utility-buttons svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 #utility-buttons button:hover { background: var(--day-paper-raised); border-color: var(--day-line-strong); }
+#utility-buttons .cf-launch { position: static; width: auto; padding: 8px 12px; font: 13px var(--font-ui); grid-column: 1; grid-row: 1; }
+#utility-buttons #open-settings { grid-column: 2; grid-row: 1; }
+#utility-buttons #open-help { grid-column: 3; grid-row: 1; }
+#utility-buttons #build-stamp { position: static !important; grid-column: 1 / -1; justify-self: end; }
+#settings-account-label { white-space: normal; overflow-wrap: anywhere; }
 #map-attribution { position: fixed; left: 10px; bottom: 6px; z-index: 10; max-width: min(42vw, 220px); color: var(--day-ink-muted); font: 10px/1.3 var(--font-ui); text-shadow: 0 0 3px rgba(251,248,242,.9); pointer-events: none; }
 #map-attribution a { color: inherit; pointer-events: auto; text-decoration: underline; text-underline-offset: 2px; }
 
@@ -1144,8 +1152,11 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--accent); ba
   #canal-answer { font-size: 16px; }
   #canal-submit, #canal-no-idea { min-height: 46px; }
   /* The d-pad owns the bottom centre, so these sit beside it on the right. */
-  #utility-buttons { right: calc(10px + env(safe-area-inset-right, 0px)); bottom: calc(12px + var(--safe-bottom)); }
+  #utility-buttons { right: calc(10px + env(safe-area-inset-right, 0px)); bottom: calc(12px + var(--safe-bottom)); grid-template-columns: 46px 46px; }
   #utility-buttons button { width: 46px; height: 46px; }
+  #utility-buttons .cf-launch { grid-column: 1 / -1; justify-self: end; }
+  #utility-buttons #open-settings { grid-column: 1; grid-row: 2; }
+  #utility-buttons #open-help { grid-column: 2; grid-row: 2; }
   #map-attribution { display: none; }
   .utility-panel { padding: 12px; align-items: flex-end; }
   /* Card already flex-scrolls on every viewport; phone only nudges padding and
@@ -1168,8 +1179,11 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--accent); ba
   .enamel-title { padding: 5px 12px; font-size: 18px; }
   .enamel-setup-rail { padding-top: calc(6px + var(--safe-top)); }
   #mission-brief { display: none; }
-  #utility-buttons { top: calc(10px + var(--safe-top)); bottom: auto; left: 50%; right: auto; transform: translateX(-50%); }
+  #utility-buttons { top: calc(10px + var(--safe-top)); bottom: auto; left: 50%; right: auto; transform: translateX(-50%); grid-template-columns: repeat(3, auto); }
   #utility-buttons button { width: 40px; height: 40px; }
+  #utility-buttons .cf-launch { grid-column: 1; }
+  #utility-buttons #open-settings { grid-column: 2; grid-row: 1; }
+  #utility-buttons #open-help { grid-column: 3; grid-row: 1; }
   /* The quiz card docks to the side away from the vehicle, as on desktop: at
      the bottom it took half of a 390px-tall screen, most of the corridor. */
   #canal-prompt, #canal-prompt.dock-left {
