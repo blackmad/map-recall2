@@ -1773,7 +1773,7 @@
       "id": "uva-roeterseiland",
       "task": "UvA Roeterseiland campus — De Brug and REC B/C/D; verify REC A scope",
       "priority": "high",
-      "status": "held-source-and-size-review",
+      "status": "held-source-calibration-and-native-review",
       "requestedOn": "2026-10-06",
       "requested": true,
       "workflow": "full-landmark",
@@ -1783,10 +1783,11 @@
       ],
       "sourceArchive": {
         "repository": "blackmad/map-recall2-source-data",
-        "commit": "b31b221b08896064abffeacbbcc0326774158bc5",
-        "path": "models/uva-roeterseiland"
+        "commit": "16f519fc2559a58cfe855706b2b79d2758b8410b",
+        "path": "models/uva-roeterseiland",
+        "checkpoint": "checkpoints/fresh-lossless-review-20261008"
       },
-      "nextAction": "Resume authoritative cycle16/17 from map-recall2-uva-oct7 and canonical private validation/remaining-cycles13-16-20261007/snapshot, not stale root cycle3. Resolve source-row calibration (part756 edge22: three wall gaps and one pane), whole-parent scope/rear/court/742 assemblies, then reduce 22,940-byte budget excess without dropping detail, shifting surveyed heights or raising cap. Preserve CREA separate BAG and all unaffected assemblies. Full independent/gallery/game/open-court/neighbor/route/pin/card/fallback/performance acceptance required before registration.",
+      "nextAction": "Authoritative cycle16 geometry retained, now under byte cap via reproducible lossless encoding. Resolve source-row calibration part756edge22 (3wall gaps/1pane), whole-parent/rear/court/742 scope and all independent/gallery/game/open-court/neighbor/route/pin/card/fallback/performance gates. Missing station00152 original metadata/photo failed bounded root DNS and web-tool attempts; retry acquisition with access state. Do not shift surveyed heights, drop facade detail or resume stale cycle3; keep unregistered until scope/acceptance ready.",
       "evidence": "Private original user-campus-request-20261006.png and operator pages under models/uva-roeterseiland",
       "canonicalPoi": "extract_landmarks_596580010",
       "surveyedParent": "NL.IMBAG.Pand.0363100012185420",
@@ -1794,18 +1795,16 @@
       "draftEvidence": "scripts/landmarks/uva-roeterseiland-review.json",
       "draftStateVerifiedOn": "2026-10-07",
       "draftStateLimit": "Fresh root CPU geometry check passes for 21818 authored triangles. Current compressed-export and GPU acceptance remain pending.",
-      "draftSHA256": "aa0b946b19fa3b790a6dba9c455212f0db9dd1ff3e9412d9f90baf9ff71d5440",
+      "draftSHA256": "6827a48637a485ce953b330b478b2246467df82bebbad82d8ac17d122389fa3f",
       "draftTriangles": 37232,
-      "draftBytes": 522940,
+      "draftBytes": 434756,
       "workerAssignment": {
         "requested": "fresh worker",
-        "status": "not-launched",
-        "blockers": [
-          "Agent thread limit",
-          "New Codex tasks rejected by session approval policy",
-          "CLI app-server initialization denied"
-        ]
-      }
+        "worker": "/root/uva_roeterseiland_new",
+        "status": "fresh scoped review finished; source/native holds remain"
+      },
+      "originalHeldSHA256": "aa0b946b19fa3b790a6dba9c455212f0db9dd1ff3e9412d9f90baf9ff71d5440",
+      "sizeHold": "cleared: independently proven exact attribute/geometry/material/transform and original oriented triangle sequence,88184bytes saved; actual GPU acceptance remains pending"
     },
     {
       "id": "wine-guildhall",
@@ -2445,26 +2444,22 @@
       "requested": true,
       "priority": "high",
       "workflow": "full-ordinary-requested-building",
-      "status": "draft-review-pending",
+      "status": "draft-source-and-independent-reviewed-native-pending",
       "draftSHA256": "049b4419b135e58688f2cd270187efdb2ae8dd66881c357c9d7ceb39da4d1ad3",
       "draftTriangles": 9605,
       "draftBytes": 147464,
       "sourceArchive": {
         "repository": "blackmad/map-recall2-source-data",
-        "commit": "b31b221b08896064abffeacbbcc0326774158bc5",
+        "commit": "16f519fc2559a58cfe855706b2b79d2758b8410b",
         "path": "models/haparandaweg-57",
-        "checkpoint": "checkpoints/prepared-review-20261008-2146"
+        "checkpoint": "checkpoints/fresh-independent-review-20261008"
       },
       "workerAssignment": {
         "requested": "fresh worker",
-        "status": "not-launched",
-        "blockers": [
-          "Agent thread limit",
-          "New Codex tasks rejected by session approval policy",
-          "CLI app-server initialization denied"
-        ]
+        "worker": "/root/haparandaweg57_new",
+        "status": "fresh independent review finished; native browser hold remains"
       },
-      "nextAction": "Latest processed-production-049b4419 draft is recovered and exact-byte regeneration/geometry checked. Complete independent and native gallery/game front/east/yard/open-space/neighbor/exact-mask/pyramidal/fallback/ordinary-pointer/desktop-touch pan/performance acceptance. Ordinary building: do not create POI, pin, card or route destination. Use genuine separate fixture destination and fixed cached street-station GPS; preserve route failures."
+      "nextAction": "Fresh independent source/geometry and root source-facing CPU comparisons reviewed exact049b draft:21original hashes,0BAG drift,all9605 projected triangles disjoint from six cached neighbors,bounded loading-yard clearance,25outward monitor and168/2016glazing probes pass. No source-backed repair found. Actual native/gallery/game/masks/roof/fallback/ordinary-click/stationary desktop-touch/performance acceptance remains pending: disposable local bindEPERM. Ordinary building: no invented POI/pin/card/destination; use genuine separate fixture and fixed source-station GPS, preserving route failure."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"
