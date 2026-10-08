@@ -2121,17 +2121,18 @@
         "NL.IMBAG.Pand.0363100012243483",
         "NL.IMBAG.Pand.0363100012167975",
         "NL.IMBAG.Pand.0363100012175018",
-        "NL.IMBAG.Pand.0363100012171370"
+        "NL.IMBAG.Pand.0363100012171370",
+        "NL.IMBAG.Pand.0363100012177101"
       ],
       "latestBatch": [
-        "NL.IMBAG.Pand.0363100012171370"
+        "NL.IMBAG.Pand.0363100012177101"
       ],
-      "evidence": "ordinary-buildings-data/canal-amstelstraat16-review-20261008.json",
+      "evidence": "ordinary-buildings-data/canal-kerk136-review-20261008.json",
       "handoff": "docs/performance/2026-10-06/canal-belt-continuation-handoff.md",
-      "nextAction": "Kerkstraat136 native0363100012177101 author34 active from published frozen source31; prioritize broad repetitive ordinary facade and native rear notch. Bank2167897 author30 finishes bounded correction of v03 GPU HOLD; independent/native checks still required. No unaccepted draft counts as shipped.",
+      "nextAction": "Publish verified Kerkstraat136 local30 and verify hosted catalogue/manual/source gallery. Prinsengracht211\u2013213 warehouse author43 frozen and under source/render review. Bank2167897 v06 count correction independently passes; full native review pending. Continue substantial ordinary queue.",
       "sourceCommit": "9fc691744e03b91f70899896033acdb6cbbd1a18",
       "notes": "Ordinary assets/full architecture review for defining Rokin roof assemblies; no invented POI routes. Existing Nacarat basic inside-footprint click card retained. Both strict500k/three-material budgets pass.",
-      "localModelCount": 29,
+      "localModelCount": 30,
       "hostedVerification": {
         "publicCommit": "dfb3d25cbabf79577afaade29c45b0d1180f182c",
         "firebaseRun": "37747137637",
@@ -2144,7 +2145,9 @@
         "sourcePack": "experiments/canal-belt-continuation-20261007/host29-32"
       },
       "publicationSourceCommit": "087986cc828b344e55303764e680ef2d9d4101f8",
-      "pendingModels": []
+      "pendingModels": [
+        "NL.IMBAG.Pand.0363100012177101"
+      ]
     },
     {
       "id": "amstel130-stale-native-candidate",
@@ -2193,7 +2196,7 @@
     {
       "id": "kerkstraat136-ordinary-treatment",
       "task": "Model broad Kerkstraat136 brick ordinary frontage on native surveyed wings",
-      "status": "in-progress",
+      "status": "verified-awaiting-hosted-publication",
       "priority": "high",
       "buildingIds": [
         "NL.IMBAG.Pand.0363100012177101"
@@ -2202,7 +2205,9 @@
       "sourceCommit": "d1d1b4b64e2e2d48798292c85c9d29e20e174289",
       "sourcePack": "experiments/canal-belt-continuation-20261007/new-next-box-source-31/0363100012177101",
       "scope": "Full ordinary loop due basic mapped hostel; no invented curated POI. Broad repetitive brick/dark lower/white stacked groups and attic rhythm. Exact native notch, bounded roof divisions, retain134/140/rear neighbors.",
-      "nextAction": "Freeze first source-specific procedural draft and source-position opening inventory; root GPU/independent/native checks before acceptance. Measure authoring time separately from waits."
+      "nextAction": "Publish and verify actual hosted30 GLB hashes, manual desktop/touch feedback preview and source gallery; preserve153/162ms source-stage limits.",
+      "assetHash": "aa98fe521fbbc9eb5731cf530bf7121ca5f2b8701efd0e436d909da0ef62bd23",
+      "reviewEvidenceCommit": "ef64e81d6e6a762ff9fc39112ad5d2ea757ff73c"
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

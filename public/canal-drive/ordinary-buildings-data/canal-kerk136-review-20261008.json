@@ -1,0 +1,79 @@
+{
+  "atUTC": "2026-10-08T15:31:32.148601+00:00",
+  "modelId": "ordinary-0363100012177101",
+  "buildingId": "NL.IMBAG.Pand.0363100012177101",
+  "hash": "aa98fe521fbbc9eb5731cf530bf7121ca5f2b8701efd0e436d909da0ef62bd23",
+  "bytes": 491704,
+  "triangles": 7535,
+  "materials": 3,
+  "textures": 0,
+  "verdict": "Source/gallery plus independent native desktop/touch PASS; hosted publication pending",
+  "sourceCommit": "d1d1b4b64e2e2d48798292c85c9d29e20e174289",
+  "sourcePack": "experiments/canal-belt-continuation-20261007/new-next-box-source-31/0363100012177101",
+  "authorReviewCommit": "1888973a72660d896034bd030538130a6a74060c",
+  "nativeReviewCommit": "ef64e81d6e6a762ff9fc39112ad5d2ea757ff73c",
+  "nativeReviewPack": "experiments/canal-belt-continuation-20261007/kerk136-native-release44",
+  "criticalAssemblies": [
+    "Broad brown-red brick front, charcoal lower floor, white stacked window frames/sills and small attic/louver row.",
+    "Original surveyed roof families and native rear wings/notch.",
+    "Real yellow HOTEL blade sign."
+  ],
+  "retainedNeighbors": [
+    "0363100012169700",
+    "0363100012177090",
+    "0363100012177102",
+    "0363100012177103",
+    "0363100012177105",
+    "0363100012177268"
+  ],
+  "conditionalSuppressionFallback": true,
+  "spatialSuppression": false,
+  "actualPyramidEntries": 0,
+  "mappedPlaceClick": "Native facade mouse click opens Hans Brinker hostel and Ms. Chelin restaurant; empty landmarkId, no curated ordinary destination",
+  "warmFrameMedianP95Milliseconds": {
+    "desktop": [
+      16.7,
+      16.7
+    ],
+    "touchEmulated": [
+      16.7,
+      16.7
+    ],
+    "wideDesktop": [
+      16.7,
+      16.7
+    ],
+    "wideTouch": [
+      16.7,
+      16.8
+    ]
+  },
+  "remainingSourceStageLongTasksMilliseconds": {
+    "desktop": [
+      153,
+      50
+    ],
+    "touch": [
+      121,
+      162,
+      76
+    ]
+  },
+  "startupMaximumMilliseconds": {
+    "desktop": 128,
+    "touch": 175
+  },
+  "regeneration": "All30 byte-exact; previous29 unchanged",
+  "preservedFailure": "v01 entrance glass buried behind white backing; corrected to jamb/header strips in v02. Failed foreground-occluded native cameras preserved.",
+  "limits": [
+    "Far northwest/sign/tree-obscured window counts and widths are photo-guided approximations.",
+    "Hidden rear openings unknown; survey roof levels and native exterior notch preserved.",
+    "Approximate sign font and facade dimensions; no archival drawing/register evidence claimed.",
+    "Touch emulated on M4 Pro; not physical mobile.",
+    "Warm90-frame samples do not prove stall-free startup.",
+    "No target pyramidal geometry exists; hidden-ID transitions tested only.",
+    "Route harness instrumentation chooses Rijksmuseum with origin override; actual clicked-building card checked separately."
+  ],
+  "publicationSourceCommit": "521938e6a04ab1d9f5550794867650002559bf1d",
+  "publicationSourcePack": "experiments/canal-belt-continuation-20261007/kerk136-public-port45"
+}
