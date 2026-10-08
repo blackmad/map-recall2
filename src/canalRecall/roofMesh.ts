@@ -26,6 +26,7 @@ import earcut from 'earcut';
 import { RoofSink, type V2, type V3 } from './roofSink.js';
 import { findChamfer, inscribedRects, insetRing, openRing, parapetRingOk, perimeterRoofInset, signedArea } from './roofFootprint.js';
 import { gableAccents, outlineBand, vergeBoards } from './gableTrim.js';
+import { repeatedTerraceRoofTriangles, type RepeatedTerraceRoof } from './repeatedTerraceRoof.js';
 
 export type RoofKind = 'gable' | 'pitched' | 'mansard' | 'mansardHip' | 'hipped' | 'halfHipped' | 'school' | 'sawtooth' | 'parapet';
 export type GableShape = 'step' | 'neck' | 'bell' | 'spout' | 'plain' | 'clock' | 'raisedNeck' | 'cornice';
@@ -33,6 +34,7 @@ export const GABLE_SHAPES: readonly GableShape[] = ['step', 'neck', 'bell', 'spo
 export const ROOF_KINDS: readonly RoofKind[] = ['gable', 'pitched', 'mansard', 'mansardHip', 'hipped', 'halfHipped', 'school', 'sawtooth', 'parapet'];
 
 export type RoofPlan = {
+  repeatedTerrace?: RepeatedTerraceRoof;
   kind: RoofKind;
   gable: GableShape;
   /** Inscribed roofs may decorate only ends supported by the exterior outline: negative u, positive u. */
@@ -787,6 +789,7 @@ function gablePieceOnNativeWalls(triangles:RoofTri[],rect:Rect,outline:Vec2[],pl
  */
 export function roofTrianglesForOutline(outer: readonly number[][], origin: { lng: number; lat: number }, plan: RoofPlan, h0: number, dims: RoofDims, kx: number): RoofTri[] {
   if (outer.length < 4) return [];
+  if(plan.repeatedTerrace)return repeatedTerraceRoofTriangles(outer,origin,plan.repeatedTerrace,h0,plan.riseM,dims,kx);
   const toMesh = ([lng, lat]: readonly number[]): Vec2 => [(lng - origin.lng) * kx, (lat - origin.lat) * M_PER_DEG_LAT];
   const mesh = outer.map(toMesh);
   if (plan.perimeterInsetM !== undefined) {

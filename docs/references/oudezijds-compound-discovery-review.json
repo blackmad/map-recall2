@@ -1,0 +1,743 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-10-06",
+  "frozenAt": "2026-10-06T10:10:26.275701+00:00",
+  "reviewer": "jan_archive_retry bounded source/code discovery",
+  "decision": "critical-compound-capability-gap-confirmed; representative identity resolved; runtime/transfer admission withheld",
+  "scope": [
+    [
+      4.898626,
+      52.373866
+    ],
+    [
+      4.898186,
+      52.373522
+    ]
+  ],
+  "currentRuntimeAdmissions": 0,
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "a3d5c3c6df8b2e6f8fe1d9795c2e29b803def25f",
+    "path": "streets/oudezijds-east-next-south/",
+    "policy": "Original archive/evaluation manifests retain inferenceUse forbidden. Current AGENTS street-rhythm-work reclassifies the failed already-exposed south example as discovery; it cannot serve as fresh validation."
+  },
+  "sources": [
+    {
+      "id": "station-2",
+      "privateSourcePath": "streets/oudezijds-east-next-south/artifacts/street-appearance/rows/oudezijds-east-next-south/evaluation-source/processed/oudezijds-east-next-south-station-2.jpg",
+      "sha256": "a441bfff36fec4484bea0fae21f16f28ec9cd45d61dfcc548cb4fac684d1bba2",
+      "captureDate": "2025-06-30",
+      "inspected": true,
+      "attribution": "Gemeente Amsterdam CC BY4.0"
+    },
+    {
+      "id": "station-1",
+      "privateSourcePath": "streets/oudezijds-east-next-south/artifacts/street-appearance/rows/oudezijds-east-next-south/evaluation-source/processed/oudezijds-east-next-south-station-1.jpg",
+      "sha256": "5d4b0c06b70609b0bea3424767238145a675eb2df87d993178634dc00d187b03",
+      "captureDate": "2025-06-30",
+      "inspected": true,
+      "attribution": "Gemeente Amsterdam CC BY4.0"
+    }
+  ],
+  "criticalTraits": [
+    {
+      "id": "unequal-linked-zones",
+      "critical": true,
+      "source": "station-2",
+      "assertion": "One broad left window field with three principal axes stacks beside independent narrow right access/erker shaft. Preserve unequal field hierarchy and a shared facade envelope; stock four equal columns fail.",
+      "confidence": "high visible/source register agreement",
+      "acceptance": "Broad and narrow fields read as different coupled zones at block and oblique scale, not four independently repeated windows."
+    },
+    {
+      "id": "shaft-and-sash-composition",
+      "critical": true,
+      "source": "station-2",
+      "assertion": "Right shaft has a broad principal pane with narrow pale side-light strips and shallow projection. Main left sash has quiet transoms and tall lower lights, not generic six-over-six texture. Shaft ground hasthree narrowvertical lights above its canopy and differs from upper shaft windows.",
+      "confidence": "high relationships; exact projection/dimensions unresolved",
+      "acceptance": "Distinct explicit upper/ground shaft opening profiles, visible first-hit projected/reveal geometry and source quiet sash; independent shaft floor/window axes not inferred from equal main-bay division."
+    },
+    {
+      "id": "connected-ground-surround-access-axis",
+      "critical": true,
+      "source": "station-2",
+      "assertion": "Raised mainzone has one connected pale three-opening surround with substantial sill/header/piers; separate dark right door has projecting pale canopy on same access axis and layered side corbels. Shared groundlayout aligns to its own upper zone, not stock left red fanlight door or full-width plinth.",
+      "confidence": "high assembly relationship; full pavement/approach cropped",
+      "acceptance": "Joined pale surround stays with the main three openings; independent dark access and white canopy stays with the shaft, openings visible and no wallplane burying framedglass/door."
+    },
+    {
+      "id": "quiet-top-and-neighbor-boundaries",
+      "critical": true,
+      "source": "station-2 and station-1",
+      "assertion": "Wide front quiet heavy cornice/roof zone contrasts with narrow neighbors gabled/corniced mixture. Source official description flat roof with steep front dakschild is metadata, not permission for unsurveyed full roof geometry. Preserve adjacent identity, native heights and open courts and local trim hierarchy.",
+      "confidence": "medium roofsurface; high neighbor contrast",
+      "acceptance": "Compound group does not flatten or repaint narrow neighbors; crown attachment remainsclosed and quiet broad top owns the supported native envelope."
+    },
+    {
+      "id": "masonry-pale-trim-low-balcony",
+      "critical": true,
+      "source": "station-2",
+      "assertion": "Gray/darkbrown masonry and pale opening trims establishstrong contrast; no repeated balcony stacks. Lower masonry differs from upper course in photograph/register, palette is secondary to missing assemblies.",
+      "confidence": "high trim/balcony relationship; medium color under lighting",
+      "acceptance": "Pale connected trim and glazing-shaft strip stay recognizable in all looks against masonry; no randomized balconydecorations or palette-only workaround."
+    }
+  ],
+  "officialCompoundReference": {
+    "recordUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/3db98b0f-39b1-4851-9fc2-81df5ed3ad89?_format=json",
+    "sourceId": "3db98b0f-39b1-4851-9fc2-81df5ed3ad89",
+    "address": "Oudezijds Voorburgwal 87-89",
+    "officialPandIds": [],
+    "cache": "scripts/data/amsterdam-monument-register/records.json.gz",
+    "cacheSha256": "5b73fb7b464fa18349803be34e7a838f000ad293835073ff839bed25f1c0d22d",
+    "description": "Oudezijds Voorburgwal 87-89 maakt deel uit van het bouwblok dat verder wordt begrensd door de Oude kennissteeg, Oudezijds Achterburgwal en de Kreupelsteeg en strekt zich uit over de gehele breedte van het blok. Het in 1920 ontworpen kantoorgebouw met conciërgewoning wijkt door zijn hoogtemaat en vormgeving af van de belendende bebouwing maar detoneert door de ambachtelijke uitvoering en de geleding van de gevel niet in de omgeving. Boven het souterrain en bel-etage telt het gebouw drie bouwlagen en een kapverdieping onder een plat dak met een steil dakschild aan de straatzijde. Het gebouw heeft architectuurhistorische waarde vanwege de uitwerking van het in sobere Amsterdamse schoolstijl vormgegeven ontwerp, met zorgvuldig uitgevoerd metselwerk en een door vensterstroken en plastische verticaalaccenten gekenmerkte voorgevel. De gevel is asymmetrisch geleed in twee traveen waarvan de smalle rechter travee architectonisch wordt verbijzonderd door een over meerdere verdiepingen opgaande erker. In de linker travee zijn brede raampartijen aangebracht waarvan het raampartij op de bel-etage architectonisch verbijzonderd is door de plaatsing van een fors gedimensioneerd en wit geschilderde omlijsting. Opvallend is het verschil in metselwerk tussen souterrain en bel-etage en de overige verdiepingen; mogelijk is de bel-etage ooit bekleed geweest met een ander materiaal. Met uitzondering van de toegangsdeur en dakkapellen is het pand gaaf in hoofdvorm en op onderdelen.",
+    "status": "Original register lacks direct Pand list, but actual current NUM/VBO/Pand chain now confirms both87 and89 share the frozen native candidate.",
+    "pendingOfficialAddressLinks": [
+      {
+        "href": "https://api.data.amsterdam.nl/v1/monumenten/situeringen/3db98b0f-39b1-4851-9fc2-81df5ed3ad89.0363200000219772?_format=json",
+        "identificatie": "3db98b0f-39b1-4851-9fc2-81df5ed3ad89.0363200000219772",
+        "title": "3db98b0f-39b1-4851-9fc2-81df5ed3ad89.0363200000219772"
+      },
+      {
+        "href": "https://api.data.amsterdam.nl/v1/monumenten/situeringen/3db98b0f-39b1-4851-9fc2-81df5ed3ad89.0363200000389704?_format=json",
+        "identificatie": "3db98b0f-39b1-4851-9fc2-81df5ed3ad89.0363200000389704",
+        "title": "3db98b0f-39b1-4851-9fc2-81df5ed3ad89.0363200000389704"
+      }
+    ],
+    "rawCatalogueResponse": {
+      "originalPath": ".cache/monument-register/amsterdam/2026-10-05T06-10-55-572Z-83107/responses/8c51c040371cab07fa4949e9daa04bdb83cb91ab42966a859ed8ba27556f64e6.json.gz",
+      "archivedPath": "datasets/amsterdam-monument-register/2026-10-05T06-10-55-572Z-83107/raw/responses/8c51c040371cab07fa4949e9daa04bdb83cb91ab42966a859ed8ba27556f64e6.json.gz",
+      "classification": "original-http-response-gzip",
+      "bytes": 483988,
+      "sha256": "6e57a20ef99f93e6ed9e735e4775be0c417dd9bee5a368a233fb565245333dd9",
+      "uncompressedSha256": "4d02d9fa62ef734f982f17af17ac202de136f0b830a15efa45da1a03a7752845",
+      "uncompressedBytes": 2803538,
+      "url": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/?_format=json&_pageSize=500&page=5",
+      "query": null,
+      "retrievedAt": "2026-10-05T06:13:40.680Z",
+      "accessState": "successful cached HTTP response"
+    },
+    "confirmedPhysicalIdentity": "NL.IMBAG.Pand.0363100012178298",
+    "dateInterpretation": {
+      "originalPandYear": 1650,
+      "originalPandYearSource": "streets/oudezijds-east-next-south/raw/current-identity-20261006/pand-0363100012178298.json: oorspronkelijkBouwjaar",
+      "facadeDesignYear": 1920,
+      "facadeDesignYearSource": "officialCompoundReference.description: in 1920 ontworpen kantoorgebouw",
+      "limit": "Keep 1650 as the factual native Pand year. The monument description supports the 1920 office/frontage appearance; it does not replace the whole physical building original year."
+    }
+  },
+  "frozenSamples": {
+    "representative": {
+      "address": "Oudezijds Voorburgwal 87–89",
+      "nativeCandidate": "NL.IMBAG.Pand.0363100012178298",
+      "native": {
+        "properties": {
+          "id": "NL.IMBAG.Pand.0363100012178298",
+          "tier": 3,
+          "minHeight": 0,
+          "height": 22.99
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.898437,
+                52.373654
+              ],
+              [
+                4.898342,
+                52.373579
+              ],
+              [
+                4.898549,
+                52.373525
+              ],
+              [
+                4.898542,
+                52.373515
+              ],
+              [
+                4.898557,
+                52.373511
+              ],
+              [
+                4.89859,
+                52.373559
+              ],
+              [
+                4.898847,
+                52.373492
+              ],
+              [
+                4.898848,
+                52.373491
+              ],
+              [
+                4.898896,
+                52.373534
+              ],
+              [
+                4.898437,
+                52.373654
+              ]
+            ]
+          ]
+        },
+        "installedTile": "public/data/extracts/amsterdam/building-tiles/14/8414/5384.geojson.gz",
+        "tileSha256": "1989e17f71e01244ef6db88449dfc0ee86b567124dada97ced783cc31fba3ff4"
+      },
+      "role": "exposed discovery representative; never fresh heldout",
+      "identityJoin": "confirmed via actual87/89 NUM→same VBO→same Pand, source candidate unchanged",
+      "source": "station-2",
+      "changePolicy": "Original pending candidate freeze retained in earlier handoff; current official join confirms it without width inference.",
+      "buildingId": "NL.IMBAG.Pand.0363100012178298"
+    },
+    "transition": {
+      "address": "Oudezijds Voorburgwal 85",
+      "buildingId": "NL.IMBAG.Pand.0363100012178296",
+      "official": {
+        "recordUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/b90049bb-25fb-4115-b135-e791ce2d4a7c?_format=json",
+        "sourceId": "b90049bb-25fb-4115-b135-e791ce2d4a7c",
+        "address": "Oudezijds Voorburgwal 85",
+        "officialPandIds": [
+          "0363100012178296"
+        ],
+        "cache": "scripts/data/amsterdam-monument-register/records.json.gz",
+        "cacheSha256": "5b73fb7b464fa18349803be34e7a838f000ad293835073ff839bed25f1c0d22d"
+      },
+      "native": {
+        "properties": {
+          "id": "NL.IMBAG.Pand.0363100012178296",
+          "tier": 3,
+          "minHeight": 0,
+          "height": 16.23
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.898483,
+                52.37369
+              ],
+              [
+                4.898437,
+                52.373654
+              ],
+              [
+                4.898765,
+                52.373568
+              ],
+              [
+                4.898792,
+                52.373607
+              ],
+              [
+                4.898483,
+                52.37369
+              ]
+            ]
+          ]
+        },
+        "installedTile": "public/data/extracts/amsterdam/building-tiles/14/8414/5384.geojson.gz",
+        "tileSha256": "1989e17f71e01244ef6db88449dfc0ee86b567124dada97ced783cc31fba3ff4"
+      },
+      "role": "neighbor narrow-three-window boundary; geometry/identity fixed beforecompoundcode",
+      "sourceRegistration": "Adjacent narrow front in station2 is context; exact photo-pixel-to-Pand registration still not asserted."
+    },
+    "heldout": {
+      "address": "Oudezijds Voorburgwal 99",
+      "buildingId": "NL.IMBAG.Pand.0363100012178291",
+      "official": {
+        "recordUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/67bac75f-0d13-4355-8c0a-819524bc41d4?_format=json",
+        "sourceId": "67bac75f-0d13-4355-8c0a-819524bc41d4",
+        "address": "Oudezijds Voorburgwal 99",
+        "officialPandIds": [
+          "0363100012178291"
+        ],
+        "cache": "scripts/data/amsterdam-monument-register/records.json.gz",
+        "cacheSha256": "5b73fb7b464fa18349803be34e7a838f000ad293835073ff839bed25f1c0d22d"
+      },
+      "native": {
+        "properties": {
+          "id": "NL.IMBAG.Pand.0363100012178291",
+          "tier": 3,
+          "minHeight": 0,
+          "height": 18.53
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.8980749,
+                52.3733731
+              ],
+              [
+                4.8982318,
+                52.373328
+              ],
+              [
+                4.8983096,
+                52.3733056
+              ],
+              [
+                4.8984073,
+                52.3732775
+              ],
+              [
+                4.8984537,
+                52.3733384
+              ],
+              [
+                4.8984274,
+                52.3733459
+              ],
+              [
+                4.8981431,
+                52.3734274
+              ],
+              [
+                4.8980749,
+                52.3733731
+              ]
+            ],
+            [
+              [
+                4.8983102,
+                52.373338
+              ],
+              [
+                4.8983232,
+                52.3733551
+              ],
+              [
+                4.8983805,
+                52.3733387
+              ],
+              [
+                4.8983586,
+                52.37331
+              ],
+              [
+                4.8983192,
+                52.3733212
+              ],
+              [
+                4.8983102,
+                52.373338
+              ]
+            ]
+          ]
+        },
+        "installedTile": "public/data/extracts/amsterdam/building-tiles/14/8414/5384.geojson.gz",
+        "tileSha256": "1989e17f71e01244ef6db88449dfc0ee86b567124dada97ced783cc31fba3ff4"
+      },
+      "role": "fresh untuned adjacent-next-south challenge/negative-control; subtype not inferred beforephotographicchallenge",
+      "photoState": "not acquired/inspected; keep unseen until candidate criteria/layout freeze; not compound transfer acceptance",
+      "nativeCaution": "Installedpolygon hascourtyardhole; preserveit. Sourceclass/prior mustnotfollowwidth or construction date.",
+      "segment": [
+        [
+          4.898186,
+          52.373522
+        ],
+        [
+          4.897619,
+          52.373084
+        ]
+      ],
+      "side": 1
+    }
+  },
+  "representationGap": {
+    "existingRecipe": "ArchitecturalRecipe.openingGroup canal-two/canal-three and groundAssembly tall-side-entry/tall-commercial",
+    "extensionPoints": [
+      {
+        "file": "src/canalRecall/streetAppearance.ts",
+        "role": "Add optional source-selected compoundzone contract; no default period/year/width prior"
+      },
+      {
+        "file": "src/canalRecall/facadeOpenings.ts",
+        "role": "Current rowPx evenly spaces upper axes; opening metadata and texture layouts must share unequal whole-front zone coordinates"
+      },
+      {
+        "file": "src/canalRecall/bayTextures.ts",
+        "role": "canalGroundGeometry uses equal axes and last-slot door; extend linked main surround and independent access shaft painting/masks rather than tune bayScale"
+      },
+      {
+        "file": "src/canalRecall/threeBuildingMesh.ts",
+        "role": "Existing run-based shared interwar planner shows safe whole-front/atomic-fallback integration point for physicalprojection, textured glass and connected ground relief; preserve stock fallback and native wall cuts"
+      },
+      {
+        "file": "src/canalRecall/facadeOrnaments.ts",
+        "role": "Ornaments must align with the same main/access axes; cannot put generic door fanlight or separate full-width surround through new assembly"
+      }
+    ],
+    "proposedSharedContract": "One source-selected wholefront layout with normalized main/accesszone bounds, explicit main axis count, independent shaft openings/levels/side-lights and projection, and linked ground surround/access canopy. Geometry/atlas/openingmetadata share one plan. No copied sign words or exact named-building code.",
+    "unsupported": "Current equal columns and whole-cell ground variants cannot encode asymmetry and connectedground hierarchy together. Interwar planner is useful integrationpattern but its uniformly repeated pairs cannot substitute forcompound zone plan."
+  },
+  "preservedFailures": [
+    {
+      "evidence": "artifacts/street-appearance/rows/oudezijds-east-next-south/evaluation/independent-review.json",
+      "state": "originalheldout failure retained; failed transfer remains withheld"
+    },
+    {
+      "evidence": "scripts/street-appearance/reviews/oudezijds-east-next-south/renderer-repair-review.json",
+      "state": "Roof attachment regression passed only; broadcompound/ground failure persists"
+    }
+  ],
+  "rootInspectionRequired": [
+    "streets/oudezijds-east-next-south/artifacts/street-appearance/rows/oudezijds-east-next-south/evaluation-source/processed/oudezijds-east-next-south-station-2.jpg",
+    "streets/oudezijds-east-next-south/artifacts/street-appearance/rows/oudezijds-east-next-south/evaluation-source/processed/oudezijds-east-next-south-station-1.jpg",
+    "artifacts/street-appearance/rows/oudezijds-east-next-south/renderer-repair/oudezijds-east-next-south-station-2-photo-block.png",
+    "artifacts/street-appearance/rows/oudezijds-east-next-south/renderer-repair/oudezijds-east-next-south-station-2-photo-source-row.png"
+  ],
+  "remainingGates": [
+    "Commit/sync newly acquired official identity and3DBAG raw sources before runtime profile checkpoint",
+    "Second current observed compound example before a recurring street-group prior",
+    "Full base/approach and roof source evidence",
+    "Acquire a fresh 99 challenge without tuning from it; a negative control is not a blanket compound prior",
+    "Root and fresh independent source/render/game review; currently GPU unavailable",
+    "Actual desktop/touch stationary-rider pans andsame-version full GPU profile on/off"
+  ],
+  "implementationAdmission": "Shared geometry capability may be designed from frozen observed relationships; no registered runtime identity, profile or transfer accepted by this discovery review.",
+  "officialIdentityResolution": {
+    "rawSources": {
+      "situering-0363200000219772": {
+        "sourcePackPath": "streets/oudezijds-east-next-south/raw/current-identity-20261006/situering-0363200000219772.json",
+        "sha256": "1aac0fbabad9afc0c20f877337d0a21981adbe6a76c38bbdeb132315750dbc46",
+        "bytes": 832,
+        "recordSelfUrl": "https://api.data.amsterdam.nl/v1/monumenten/situeringen/3db98b0f-39b1-4851-9fc2-81df5ed3ad89.0363200000219772?_format=json",
+        "accessState": "Actual root-acquired raw JSON inspected; HTTP headers and exact retrieval timestamp not supplied in these bytes",
+        "registeredAt": "2026-10-06T10:20:21.543394+00:00"
+      },
+      "3dbag-0363100012178298": {
+        "sourcePackPath": "streets/oudezijds-east-next-south/raw/current-identity-20261006/3dbag-0363100012178298.json",
+        "sha256": "d414e590684c0398989ce054377b495e1c9d6819747708d6ed35ad3083df8d71",
+        "bytes": 18110,
+        "recordSelfUrl": null,
+        "accessState": "Actual root-acquired raw JSON inspected; HTTP headers and exact retrieval timestamp not supplied in these bytes",
+        "registeredAt": "2026-10-06T10:20:21.543807+00:00"
+      },
+      "pand-0363100012178298": {
+        "sourcePackPath": "streets/oudezijds-east-next-south/raw/current-identity-20261006/pand-0363100012178298.json",
+        "sha256": "b22e7538b4556d031051234c70238dfb111ca9b6d5d23038c5bc8ee1738fbb9b",
+        "bytes": 2899,
+        "recordSelfUrl": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012178298.4?_format=json",
+        "accessState": "Actual root-acquired raw JSON inspected; HTTP headers and exact retrieval timestamp not supplied in these bytes",
+        "registeredAt": "2026-10-06T10:20:21.544115+00:00"
+      },
+      "num-0363200000219772": {
+        "sourcePackPath": "streets/oudezijds-east-next-south/raw/current-identity-20261006/num-0363200000219772.json",
+        "sha256": "0f387f7e6f05f20ff84943cf9cf6365cb4578b55a75855cb0a1ca29d3b53186d",
+        "bytes": 1890,
+        "recordSelfUrl": "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000219772.1?_format=json",
+        "accessState": "Actual root-acquired raw JSON inspected; HTTP headers and exact retrieval timestamp not supplied in these bytes",
+        "registeredAt": "2026-10-06T10:20:21.544383+00:00"
+      },
+      "vbo-0363010000561719": {
+        "sourcePackPath": "streets/oudezijds-east-next-south/raw/current-identity-20261006/vbo-0363010000561719.json",
+        "sha256": "323beb72b0b4be21c7fa05c12d5f341c142f62304a486a599f5d5daa968dd3c1",
+        "bytes": 2920,
+        "recordSelfUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000561719.1?_format=json",
+        "accessState": "Actual root-acquired raw JSON inspected; HTTP headers and exact retrieval timestamp not supplied in these bytes",
+        "registeredAt": "2026-10-06T10:20:21.544602+00:00"
+      },
+      "num-0363200000389704": {
+        "sourcePackPath": "streets/oudezijds-east-next-south/raw/current-identity-20261006/num-0363200000389704.json",
+        "sha256": "3c16cb13c0e15af0557c8852688cfff48ddea51314d1212892b3ee791b9aa5e3",
+        "bytes": 1890,
+        "recordSelfUrl": "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000389704.1?_format=json",
+        "accessState": "Actual root-acquired raw JSON inspected; HTTP headers and exact retrieval timestamp not supplied in these bytes",
+        "registeredAt": "2026-10-06T10:20:21.544763+00:00"
+      },
+      "situering-0363200000389704": {
+        "sourcePackPath": "streets/oudezijds-east-next-south/raw/current-identity-20261006/situering-0363200000389704.json",
+        "sha256": "f41536ece2fc9ebd0545d056fcb15be2c82f4275998d01be13598dec8514d845",
+        "bytes": 832,
+        "recordSelfUrl": "https://api.data.amsterdam.nl/v1/monumenten/situeringen/3db98b0f-39b1-4851-9fc2-81df5ed3ad89.0363200000389704?_format=json",
+        "accessState": "Actual root-acquired raw JSON inspected; HTTP headers and exact retrieval timestamp not supplied in these bytes",
+        "registeredAt": "2026-10-06T10:20:21.544907+00:00"
+      }
+    },
+    "chain": [
+      {
+        "address": "Oudezijds Voorburgwal87",
+        "nummeraanduiding": "0363200000219772.1",
+        "verblijfsobject": "0363010000561719.1",
+        "pand": "0363100012178298.4"
+      },
+      {
+        "address": "Oudezijds Voorburgwal89",
+        "nummeraanduiding": "0363200000389704.1",
+        "verblijfsobject": "0363010000561719.1",
+        "pand": "0363100012178298.4"
+      }
+    ],
+    "secondaryAddressCaution": "VBO primary NUM0363200000219332 differs;87 and89 are actual listed nevenadressen, both correctly linked to same VBO. Do not invent two physical buildings.",
+    "usableAreaM2": 1439,
+    "usableAreaLimit": "1439m² VBO usable area is not footprint.",
+    "sourceCommit": "pending root private source archival commit before model/profile checkpoint"
+  },
+  "heightRoofAndOpenSpaceReview": {
+    "source": {
+      "sourcePackPath": "streets/oudezijds-east-next-south/raw/current-identity-20261006/3dbag-0363100012178298.json",
+      "sha256": "d414e590684c0398989ce054377b495e1c9d6819747708d6ed35ad3083df8d71",
+      "bytes": 18110,
+      "recordSelfUrl": null,
+      "accessState": "Actual root-acquired raw JSON inspected; HTTP headers and exact retrieval timestamp not supplied in these bytes",
+      "registeredAt": "2026-10-06T10:20:21.543807+00:00"
+    },
+    "referenceSystem": "EPSG7415: RD horizontal, NAP vertical",
+    "decodeTransform": {
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "translate": [
+        121708.9191875,
+        487402.52225,
+        1.2664794901695586e-06
+      ]
+    },
+    "installedHeightM": 22.99,
+    "installedFrontageWidthM": 10.508,
+    "groundDatumNapM": 0.49900001287460327,
+    "roof70PercentileNapM": 23.48900032043457,
+    "roof70MinusGroundM": 22.990000307559967,
+    "heightSemantics": "Installed22.99m matches roof70-percentile minus ground. This is an aggregate height for the long mixed-roof Pand, not street eave/cornice height or seven repeated window floors.",
+    "roofMaxNapM": 26.062000274658203,
+    "roof50PercentileNapM": 23.01300048828125,
+    "roofMinAttributeNapM": 15.713000297546387,
+    "frontRoofSurfaceIndex": 108,
+    "frontEdgeNapM": [
+      19.766001266479492,
+      19.83000126647949
+    ],
+    "frontEdgeAboveGroundM": [
+      19.26700125360489,
+      19.331001253604885
+    ],
+    "frontRoofMaxNapM": 25.36800126647949,
+    "frontRoofInterpretation": "Surface108 occupies street end and slopes from~19.8mNAP eave to~25.4mNAP rear/upper edge. Explicit roof points own roof surfaces; do not use max26.062mNAP or Pand22.99m to extrude every street wall/window row.",
+    "roofRegions": [
+      {
+        "surfaceIndex": 100,
+        "rings": 1,
+        "heightMinNapM": 24.339001266479492,
+        "heightMaxNapM": 24.423001266479492,
+        "centroidRD": [
+          121716.63398750001,
+          487416.3444499999
+        ],
+        "outerVertexCount": 5
+      },
+      {
+        "surfaceIndex": 101,
+        "rings": 1,
+        "heightMinNapM": 6.44900126647949,
+        "heightMaxNapM": 6.4770012664794905,
+        "centroidRD": [
+          121733.31840972223,
+          487411.0574722222
+        ],
+        "outerVertexCount": 9
+      },
+      {
+        "surfaceIndex": 102,
+        "rings": 1,
+        "heightMinNapM": 19.984001266479492,
+        "heightMaxNapM": 20.34300126647949,
+        "centroidRD": [
+          121732.67807638888,
+          487409.0916944444
+        ],
+        "outerVertexCount": 9
+      },
+      {
+        "surfaceIndex": 103,
+        "rings": 1,
+        "heightMinNapM": 18.56500126647949,
+        "heightMaxNapM": 23.53500126647949,
+        "centroidRD": [
+          121727.9473125,
+          487412.46725
+        ],
+        "outerVertexCount": 8
+      },
+      {
+        "surfaceIndex": 104,
+        "rings": 1,
+        "heightMinNapM": 13.97400126647949,
+        "heightMaxNapM": 23.79200126647949,
+        "centroidRD": [
+          121730.01402083332,
+          487410.40291666664
+        ],
+        "outerVertexCount": 12
+      },
+      {
+        "surfaceIndex": 105,
+        "rings": 1,
+        "heightMinNapM": 25.63300126647949,
+        "heightMaxNapM": 25.70600126647949,
+        "centroidRD": [
+          121723.3231875,
+          487414.94125
+        ],
+        "outerVertexCount": 5
+      },
+      {
+        "surfaceIndex": 106,
+        "rings": 1,
+        "heightMinNapM": 15.79500126647949,
+        "heightMaxNapM": 15.809001266479491,
+        "centroidRD": [
+          121743.17602083333,
+          487405.84891666664
+        ],
+        "outerVertexCount": 12
+      },
+      {
+        "surfaceIndex": 107,
+        "rings": 1,
+        "heightMinNapM": 5.86200126647949,
+        "heightMaxNapM": 6.0490012664794905,
+        "centroidRD": [
+          121744.6865875,
+          487405.25204999995
+        ],
+        "outerVertexCount": 5
+      },
+      {
+        "surfaceIndex": 108,
+        "rings": 2,
+        "heightMinNapM": 19.766001266479492,
+        "heightMaxNapM": 25.368001266479492,
+        "centroidRD": [
+          121713.4606875,
+          487415.11508333334
+        ],
+        "outerVertexCount": 6
+      },
+      {
+        "surfaceIndex": 109,
+        "rings": 1,
+        "heightMinNapM": 22.84300126647949,
+        "heightMaxNapM": 22.90600126647949,
+        "centroidRD": [
+          121726.6717875,
+          487410.23144999996
+        ],
+        "outerVertexCount": 5
+      },
+      {
+        "surfaceIndex": 110,
+        "rings": 1,
+        "heightMinNapM": 12.38700126647949,
+        "heightMaxNapM": 17.21000126647949,
+        "centroidRD": [
+          121744.5789875,
+          487406.12555
+        ],
+        "outerVertexCount": 10
+      },
+      {
+        "surfaceIndex": 111,
+        "rings": 1,
+        "heightMinNapM": 20.81900126647949,
+        "heightMaxNapM": 20.89500126647949,
+        "centroidRD": [
+          121735.3984875,
+          487408.48034999997
+        ],
+        "outerVertexCount": 10
+      },
+      {
+        "surfaceIndex": 112,
+        "rings": 1,
+        "heightMinNapM": 25.90700126647949,
+        "heightMaxNapM": 26.03100126647949,
+        "centroidRD": [
+          121719.96333035713,
+          487409.62582142855
+        ],
+        "outerVertexCount": 7
+      },
+      {
+        "surfaceIndex": 113,
+        "rings": 1,
+        "heightMinNapM": 23.25200126647949,
+        "heightMaxNapM": 23.62400126647949,
+        "centroidRD": [
+          121721.3771875,
+          487412.51577
+        ],
+        "outerVertexCount": 25
+      },
+      {
+        "surfaceIndex": 114,
+        "rings": 1,
+        "heightMinNapM": 22.15800126647949,
+        "heightMaxNapM": 22.307001266479492,
+        "centroidRD": [
+          121711.40852083334,
+          487414.12708333327
+        ],
+        "outerVertexCount": 6
+      },
+      {
+        "surfaceIndex": 115,
+        "rings": 1,
+        "heightMinNapM": 17.30300126647949,
+        "heightMaxNapM": 23.61700126647949,
+        "centroidRD": [
+          121723.39204464285,
+          487408.62467857136
+        ],
+        "outerVertexCount": 7
+      },
+      {
+        "surfaceIndex": 116,
+        "rings": 1,
+        "heightMinNapM": 10.86600126647949,
+        "heightMaxNapM": 10.98800126647949,
+        "centroidRD": [
+          121723.31768749999,
+          487406.39074999996
+        ],
+        "outerVertexCount": 6
+      },
+      {
+        "surfaceIndex": 117,
+        "rings": 1,
+        "heightMinNapM": 18.41500126647949,
+        "heightMaxNapM": 18.51500126647949,
+        "centroidRD": [
+          121735.2329875,
+          487409.06715
+        ],
+        "outerVertexCount": 20
+      }
+    ],
+    "groundFootprintM2": 265.8,
+    "roofAreaApproxM2": {
+      "flat": 193.62,
+      "sloped": 162.31
+    },
+    "openSpace": {
+      "bagFootprintRings": 1,
+      "cityjsonLoD0FootprintRings": 1,
+      "groundSurfaceCount": 1,
+      "roof108Rings": 2,
+      "interpretation": "Roof108 has one interior ring, but the BAG/LoD0 footprint has no courtyard hole and LoD2.2 has one ground surface. Interior roof ring is a roof insertion/junction or possible dormer feature, not demonstrated ground-open court. Preserve ring in roof processing; do not cut an invented ground courtyard or fill a surveyed roof hole blindly."
+    },
+    "floorRhythm": "Official source describes souterrain plus bel-etage, three upper bouwlagen and a kapverdieping. Main source upper rows and independent shaft/attic use their own layout; do not derive equal-column row count from installed aggregate height.",
+    "limits": [
+      "Photographic source supplies facade assembly relationships, not measured floor heights.",
+      "RD roof observations are source geometry, not imported mesh authoring.",
+      "Exact eave/roof facade registration requires comparable survey/render review before visual acceptance."
+    ]
+  },
+  "updatedAt": "2026-10-06T10:20:21.545287+00:00"
+}
