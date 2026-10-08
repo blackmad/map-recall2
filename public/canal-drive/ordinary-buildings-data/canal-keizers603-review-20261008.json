@@ -6,7 +6,7 @@
   "bytes": 435380,
   "triangles": 5312,
   "materials": 3,
-  "verdict": "Full source/independent actual GPU gallery and root desktop/touch native game PASS; hosted release pending",
+  "verdict": "Full source/independent actual GPU gallery/root native desktop-touch game PASS; hosted27 verified",
   "sourceCommit": "26f2679530ae6a0a9fe362c0043a8941887efd58",
   "sourcePack": "experiments/canal-belt-continuation-20261007/box-pair-runtime-19",
   "authorSourcePack": "experiments/canal-belt-continuation-20261007/keizers603-build",
@@ -103,5 +103,16 @@
   },
   "deferredNeighborWork": "Lange Leidsedwarsstraat12 passed source/GPU/native review but official geographic membership failed; excluded from this scoped release and preserved privately.",
   "publicationSourceCommit": "fbb979079744b0f9014b87918fd36108253318a4",
-  "finalReproductionAndManualPack": "experiments/canal-belt-continuation-20261007/keizers-release27-22"
+  "finalReproductionAndManualPack": "experiments/canal-belt-continuation-20261007/keizers-release27-22",
+  "hostedVerification": {
+    "publicCommit": "bc9087c8110a37c87507b65ea640f9e8e199c984",
+    "firebaseRun": "37706014665",
+    "verifiedAtUTC": "2026-10-08T00:24:40.599435+00:00",
+    "models": 27,
+    "allAssetHashesExact": true,
+    "manualDesktopTouchLoaded": 27,
+    "feedbackPreview": true,
+    "sourceCommit": "defa8fd2d5642a460de63ae112a22306b7130304",
+    "sourcePack": "experiments/canal-belt-continuation-20261007/host27-24"
+  }
 }

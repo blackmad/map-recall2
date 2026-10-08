@@ -44448,6 +44448,4541 @@
           "./ordinary-buildings-data/references/0363100012167975/wide-0363100012167975-2025-01085-einitial.jpg"
         ]
       }
+    },
+    {
+      "digits": "0363100012175018",
+      "id": "NL.IMBAG.Pand.0363100012175018",
+      "label": "Kerkstraat 206\u2013210 ordinary modern row",
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.891209,
+              52.363005
+            ],
+            [
+              4.891084,
+              52.363021
+            ],
+            [
+              4.891084,
+              52.363019
+            ],
+            [
+              4.89108,
+              52.36302
+            ],
+            [
+              4.891081,
+              52.363021
+            ],
+            [
+              4.890998,
+              52.363032
+            ],
+            [
+              4.890813,
+              52.363056
+            ],
+            [
+              4.890675,
+              52.363077
+            ],
+            [
+              4.890621,
+              52.362924
+            ],
+            [
+              4.891155,
+              52.362854
+            ],
+            [
+              4.891209,
+              52.363005
+            ]
+          ]
+        ]
+      },
+      "anchor": [
+        4.89098,
+        52.363002900000005
+      ],
+      "sourceHeight": 15.8,
+      "mainHeight": 16.43,
+      "wallBaseHeight": 8.85,
+      "levels": 0,
+      "wall": "#81786b",
+      "roof": "#6b706a",
+      "palette": {
+        "frames": "#e9e8df",
+        "glass": "#354448",
+        "balcony": "#eeeae3"
+      },
+      "cameraBearing": 11.68,
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-box-source-20/0363100012175018",
+      "references": [
+        "view-recording_2025-06-16_06-21-55_00330.jpg",
+        "view-recording_2025-06-16_06-21-55_00325.jpg",
+        "view-recording_2025-06-16_06-21-55_00328.jpg"
+      ],
+      "sourceUrls": [
+        "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/?ligtInPanden.identificatie=0363100012175018&_pageSize=100",
+        "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000448155?volgnummer=1",
+        "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000448156?volgnummer=1",
+        "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000448157?volgnummer=1",
+        "https://api.data.amsterdam.nl/v1/bag/panden/?identificatie=0363100012175018&_pageSize=100",
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012175018",
+        "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.89098%2C52.363002900000005&radius=65&srid=4326&page_size=100",
+        "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.89098%2C52.363002900000005&page=2&page_size=100&radius=65&srid=4326",
+        "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.89098%2C52.363002900000005&page=3&page_size=100&radius=65&srid=4326",
+        "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-21-55_00328/equirectangular/panorama_8000.jpg",
+        "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241211_0954_Track18_Sphere_00017/equirectangular/panorama_8000.jpg",
+        "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-21-55_00330/equirectangular/panorama_8000.jpg",
+        "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-21-55_00325/equirectangular/panorama_8000.jpg"
+      ],
+      "traits": [
+        "Native modern row: eastern dark brick, central pale render, western warm brick and lower white round-column section; two paired-window/Juliet tiers plus centered upper projections.",
+        "Recessed red-orange entrance doors with vertical round portholes; loading shutters framed by real pale piers/transom glazing.",
+        "Low stepped street terrace roofs retain fitted survey heights; 15.8 m rear roof and localized16.4 m equipment never become full street cap."
+      ],
+      "simplifications": [
+        "Original procedural facade atlas; no copied photograph pixels.",
+        "Rear/side openings unobserved and deliberately blank; no invented POI or name signage.",
+        "Submodule transition on edge5 approximately6.4 m based on native/current ownership projections; native geometric edges are not architecture modules.",
+        "Thin round columns/Juliet rails and door portholes are original geometry; source-supported LAMER lettering omitted."
+      ],
+      "facade": {
+        "kind": "blank",
+        "levels": 0,
+        "frameWidthMetres": 0.09,
+        "edges": {
+          "0": {
+            "kind": "blank",
+            "wallColor": "#524a42",
+            "windowTiers": [
+              {
+                "startMetres": 0.55,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.9,
+                "heightMetres": 2.05,
+                "sillMetres": 5,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 3.05,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 2.6,
+                "heightMetres": 2.05,
+                "sillMetres": 5,
+                "panes": 2,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 7.249999999999998,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.9,
+                "heightMetres": 2.05,
+                "sillMetres": 5,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 0.55,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.9,
+                "heightMetres": 2.05,
+                "sillMetres": 8,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 3.05,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 2.6,
+                "heightMetres": 2.05,
+                "sillMetres": 8,
+                "panes": 2,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 7.249999999999998,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.9,
+                "heightMetres": 2.05,
+                "sillMetres": 8,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 3.5,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 1.65,
+                "heightMetres": 1.1,
+                "sillMetres": 10.9,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              }
+            ],
+            "bands": [
+              {
+                "bottomMetres": 3.7,
+                "heightMetres": 0.28,
+                "color": "#eeeae1"
+              },
+              {
+                "bottomMetres": 10.6,
+                "heightMetres": 0.16,
+                "color": "#bebfb8"
+              }
+            ],
+            "groundEntries": [
+              {
+                "kind": "loading",
+                "xMetres": 0.45,
+                "widthMetres": 3.6999999999999997,
+                "heightMetres": 2.8,
+                "color": "#819087",
+                "jointColor": "#56625d",
+                "jointPitchMetres": 0.2
+              },
+              {
+                "kind": "loading",
+                "xMetres": 4.5,
+                "widthMetres": 3.7499999999999996,
+                "heightMetres": 2.8,
+                "color": "#819087",
+                "jointColor": "#56625d",
+                "jointPitchMetres": 0.2
+              }
+            ],
+            "glazedAssemblies": [
+              {
+                "xMetres": 0.45,
+                "sillMetres": 2.8,
+                "widthMetres": 3.6999999999999997,
+                "heightMetres": 0.7,
+                "panes": 3
+              },
+              {
+                "xMetres": 4.5,
+                "sillMetres": 2.8,
+                "widthMetres": 3.7499999999999996,
+                "heightMetres": 0.7,
+                "panes": 3
+              }
+            ],
+            "sourceJuliets": [
+              {
+                "xMetres": 3.05,
+                "widthMetres": 2.6,
+                "bottomMetres": 5
+              },
+              {
+                "xMetres": 3.05,
+                "widthMetres": 2.6,
+                "bottomMetres": 8
+              }
+            ],
+            "sourcePiers": [
+              0.14,
+              4.35,
+              8.559999999999999
+            ],
+            "fixedFacadeTopMetres": 10.65,
+            "upperProjection": {
+              "start": 2.7,
+              "end": 6,
+              "bottom": 10.65,
+              "top": 12.45
+            }
+          },
+          "4": {
+            "kind": "blank",
+            "wallColor": "#deddd1",
+            "windowTiers": [
+              {
+                "startMetres": 0.55,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.9,
+                "heightMetres": 2.05,
+                "sillMetres": 5,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 1.59,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 2.6,
+                "heightMetres": 2.05,
+                "sillMetres": 5,
+                "panes": 2,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 4.33,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.9,
+                "heightMetres": 2.05,
+                "sillMetres": 5,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 0.55,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.9,
+                "heightMetres": 2.05,
+                "sillMetres": 8,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 1.59,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 2.6,
+                "heightMetres": 2.05,
+                "sillMetres": 8,
+                "panes": 2,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 4.33,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.9,
+                "heightMetres": 2.05,
+                "sillMetres": 8,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 2.18,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 1.42,
+                "heightMetres": 1.2,
+                "sillMetres": 11.05,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              }
+            ],
+            "bands": [
+              {
+                "bottomMetres": 3.7,
+                "heightMetres": 0.28,
+                "color": "#eeeae1"
+              },
+              {
+                "bottomMetres": 10.6,
+                "heightMetres": 0.16,
+                "color": "#bebfb8"
+              }
+            ],
+            "groundEntries": [
+              {
+                "kind": "glazed",
+                "xMetres": 0.4,
+                "widthMetres": 4.96,
+                "heightMetres": 3.3,
+                "panes": 4,
+                "glassColor": "#354348"
+              }
+            ],
+            "glazedAssemblies": [
+              {
+                "xMetres": 0.45,
+                "sillMetres": 2.8,
+                "widthMetres": 2.24,
+                "heightMetres": 0.7,
+                "panes": 3
+              },
+              {
+                "xMetres": 3.04,
+                "sillMetres": 2.8,
+                "widthMetres": 2.29,
+                "heightMetres": 0.7,
+                "panes": 3
+              }
+            ],
+            "sourceJuliets": [
+              {
+                "xMetres": 1.59,
+                "widthMetres": 2.6,
+                "bottomMetres": 5
+              },
+              {
+                "xMetres": 1.59,
+                "widthMetres": 2.6,
+                "bottomMetres": 8
+              }
+            ],
+            "sourcePiers": [
+              0.14,
+              1.55,
+              3,
+              4.45,
+              5.63
+            ],
+            "fixedFacadeTopMetres": 10.65,
+            "upperProjection": {
+              "start": 1.7,
+              "end": 4.2,
+              "bottom": 10.65,
+              "top": 13.35
+            },
+            "portDoors": [
+              {
+                "x": 1.71,
+                "width": 0.9
+              },
+              {
+                "x": 3.15,
+                "width": 0.9
+              }
+            ]
+          },
+          "5": {
+            "kind": "blank",
+            "wallColor": "#816d59",
+            "windowTiers": [
+              {
+                "startMetres": 0.55,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.9,
+                "heightMetres": 2.05,
+                "sillMetres": 5,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 1.9000000000000001,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 2.6,
+                "heightMetres": 2.05,
+                "sillMetres": 5,
+                "panes": 2,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 4.95,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.9,
+                "heightMetres": 2.05,
+                "sillMetres": 5,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 0.55,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.9,
+                "heightMetres": 2.05,
+                "sillMetres": 8,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 1.9000000000000001,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 2.6,
+                "heightMetres": 2.05,
+                "sillMetres": 8,
+                "panes": 2,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 4.95,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.9,
+                "heightMetres": 2.05,
+                "sillMetres": 8,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 2.38,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 1.4,
+                "heightMetres": 1.25,
+                "sillMetres": 11.05,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 6.75,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.45,
+                "sillMetres": 0.55,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 7.96,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.45,
+                "sillMetres": 0.55,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 9.17,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.45,
+                "sillMetres": 0.55,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 10.379999999999999,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.45,
+                "sillMetres": 0.55,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 11.59,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.45,
+                "sillMetres": 0.55,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 6.75,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 4.3,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 7.96,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 4.3,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 9.17,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 4.3,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 10.379999999999999,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 4.3,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 11.59,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 4.3,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 6.75,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 7.35,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 7.96,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 7.35,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 9.17,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 7.35,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 10.379999999999999,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 7.35,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 11.59,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 7.35,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              }
+            ],
+            "bands": [
+              {
+                "bottomMetres": 3.7,
+                "heightMetres": 0.28,
+                "color": "#eeeae1"
+              },
+              {
+                "bottomMetres": 10.6,
+                "heightMetres": 0.16,
+                "color": "#bebfb8"
+              },
+              {
+                "xMetres": 6.4,
+                "widthMetres": 6.5,
+                "bottomMetres": 0,
+                "heightMetres": 10.5,
+                "color": "#deddd0"
+              }
+            ],
+            "groundEntries": [
+              {
+                "kind": "loading",
+                "xMetres": 0.45,
+                "widthMetres": 2.5500000000000003,
+                "heightMetres": 2.8,
+                "color": "#819087",
+                "jointColor": "#56625d",
+                "jointPitchMetres": 0.2
+              },
+              {
+                "kind": "loading",
+                "xMetres": 3.35,
+                "widthMetres": 2.6,
+                "heightMetres": 2.8,
+                "color": "#819087",
+                "jointColor": "#56625d",
+                "jointPitchMetres": 0.2
+              }
+            ],
+            "glazedAssemblies": [
+              {
+                "xMetres": 0.45,
+                "sillMetres": 2.8,
+                "widthMetres": 2.5500000000000003,
+                "heightMetres": 0.7,
+                "panes": 3
+              },
+              {
+                "xMetres": 3.35,
+                "sillMetres": 2.8,
+                "widthMetres": 2.6,
+                "heightMetres": 0.7,
+                "panes": 3
+              }
+            ],
+            "sourceJuliets": [
+              {
+                "xMetres": 1.9000000000000001,
+                "widthMetres": 2.6,
+                "bottomMetres": 5
+              },
+              {
+                "xMetres": 1.9000000000000001,
+                "widthMetres": 2.6,
+                "bottomMetres": 8
+              }
+            ],
+            "sourcePiers": [
+              0.14,
+              3.2,
+              6.28
+            ],
+            "fixedFacadeTopMetres": 10.65,
+            "upperProjection": {
+              "start": 1.85,
+              "end": 4.65,
+              "bottom": 10.65,
+              "top": 13.35
+            },
+            "columnSection": {
+              "start": 6.6,
+              "end": 12.75,
+              "pitch": 1.21,
+              "radius": 0.17,
+              "levels": [
+                {
+                  "bottom": 0.12,
+                  "top": 3.6
+                },
+                {
+                  "bottom": 3.82,
+                  "top": 6.9
+                },
+                {
+                  "bottom": 7.12,
+                  "top": 10.22
+                }
+              ]
+            }
+          },
+          "6": {
+            "kind": "blank",
+            "wallColor": "#deddd0",
+            "windowTiers": [
+              {
+                "startMetres": 0.17,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.45,
+                "sillMetres": 0.55,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 1.38,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.45,
+                "sillMetres": 0.55,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 2.59,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.45,
+                "sillMetres": 0.55,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 3.8,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.45,
+                "sillMetres": 0.55,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 5.01,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.45,
+                "sillMetres": 0.55,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 6.22,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.45,
+                "sillMetres": 0.55,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 7.43,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.45,
+                "sillMetres": 0.55,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 8.639999999999999,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.45,
+                "sillMetres": 0.55,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 0.17,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 4.3,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 1.38,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 4.3,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 2.59,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 4.3,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 3.8,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 4.3,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 5.01,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 4.3,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 6.22,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 4.3,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 7.43,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 4.3,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 8.639999999999999,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 4.3,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 0.17,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 7.35,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 1.38,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 7.35,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 2.59,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 7.35,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 3.8,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 7.35,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 5.01,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 7.35,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 6.22,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 7.35,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 7.43,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 7.35,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 8.639999999999999,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 7.35,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              }
+            ],
+            "columnSection": {
+              "start": 0.02,
+              "end": 9.65,
+              "pitch": 1.21,
+              "radius": 0.17,
+              "levels": [
+                {
+                  "bottom": 0.12,
+                  "top": 3.6
+                },
+                {
+                  "bottom": 3.82,
+                  "top": 6.9
+                },
+                {
+                  "bottom": 7.12,
+                  "top": 10.22
+                }
+              ]
+            },
+            "fixedFacadeTopMetres": 10.35
+          }
+        }
+      },
+      "exposedRoofSteps": true,
+      "officialRegions": [
+        {
+          "sourceRegionIndex": 173,
+          "sourceArea": 172.98399449997112,
+          "ring": [
+            [
+              -0.9702237216440985,
+              15.802500849723817,
+              10.000024362876161
+            ],
+            [
+              2.4448713411949425,
+              15.801500849723816,
+              10.719965604092465
+            ],
+            [
+              4.253864821032274,
+              15.800500849723814,
+              11.101752439506924
+            ],
+            [
+              6.124178358181932,
+              15.847500849723815,
+              2.340423673259977
+            ],
+            [
+              -11.263981402962408,
+              15.856500849723815,
+              -1.5912963635787492
+            ],
+            [
+              -11.340154386210799,
+              15.856500849723815,
+              -1.6387980058021867
+            ],
+            [
+              -12.209704886953746,
+              15.860500849723817,
+              -2.411227145298085
+            ],
+            [
+              -12.528593968216125,
+              15.852500849723814,
+              -0.8812528714068435
+            ],
+            [
+              -13.045611774782628,
+              15.838500849723815,
+              1.5945669662124828
+            ],
+            [
+              -13.944299714980772,
+              15.815500849723815,
+              5.905949087420481
+            ],
+            [
+              -14.398090352015052,
+              15.817500849723814,
+              5.511861190673528
+            ],
+            [
+              -14.419737259027842,
+              15.808500849723817,
+              7.163858215091068
+            ],
+            [
+              -9.450504575498892,
+              15.806500849723815,
+              8.211293044112722
+            ],
+            [
+              -1.711814691682514,
+              15.803500849723815,
+              9.843031570956384
+            ]
+          ],
+          "holes": []
+        },
+        {
+          "sourceRegionIndex": 153,
+          "sourceArea": 115.23087400010736,
+          "ring": [
+            [
+              8.816415666438827,
+              15.214500849723816,
+              13.685784556770955
+            ],
+            [
+              10.18541958394637,
+              15.218500849723817,
+              13.794451049737404
+            ],
+            [
+              10.480876696160376,
+              15.223500849723816,
+              16.578854733548667
+            ],
+            [
+              11.746214619966462,
+              15.228500849723815,
+              16.852317270481763
+            ],
+            [
+              14.61694865502998,
+              15.216500849723815,
+              3.4727591210688047
+            ],
+            [
+              6.293431045447974,
+              15.188500849723816,
+              1.5498567374373806
+            ],
+            [
+              6.124178358181932,
+              15.189500849723816,
+              2.340423673259977
+            ],
+            [
+              4.253864821032274,
+              15.196500849723815,
+              11.101752439506924
+            ],
+            [
+              2.4448713411949425,
+              15.190500849723815,
+              10.719965604092465
+            ],
+            [
+              3.6240034376065444,
+              15.198500849723814,
+              13.27618981813714
+            ],
+            [
+              3.7867659512600813,
+              15.198500849723814,
+              13.289079940782358
+            ],
+            [
+              3.6889442885155352,
+              15.198500849723814,
+              13.724974837300294
+            ],
+            [
+              3.837749065160752,
+              15.199500849723815,
+              13.739961783994943
+            ],
+            [
+              4.556989715836282,
+              15.204500849723814,
+              15.300829737918775
+            ],
+            [
+              9.10759548341003,
+              15.219500849723815,
+              16.282120906390958
+            ]
+          ],
+          "holes": []
+        },
+        {
+          "sourceRegionIndex": 172,
+          "sourceArea": 91.4623160000685,
+          "ring": [
+            [
+              -21.488128196823663,
+              9.652500849723815,
+              6.064811747805265
+            ],
+            [
+              -16.44449056973299,
+              9.671500849723815,
+              6.9006200481575775
+            ],
+            [
+              -16.40762657244861,
+              9.672500849723816,
+              8.352112503384319
+            ],
+            [
+              -16.4813180629287,
+              9.672500849723816,
+              8.52170540811727
+            ],
+            [
+              -16.248766700974546,
+              9.673500849723816,
+              8.524110470044661
+            ],
+            [
+              -15.5022258914939,
+              9.677500849723815,
+              9.405439117759897
+            ],
+            [
+              -15.454631570826223,
+              9.677500849723815,
+              9.360089156156448
+            ],
+            [
+              -14.470974402573011,
+              9.679500849723816,
+              8.428859576043521
+            ],
+            [
+              -14.434241436711417,
+              9.679500849723816,
+              8.254517924042943
+            ],
+            [
+              -14.419737259027842,
+              9.678500849723816,
+              7.163858215091068
+            ],
+            [
+              -14.398090352015052,
+              9.677500849723815,
+              5.511861190673528
+            ],
+            [
+              -14.884013950021583,
+              9.675500849723816,
+              5.088979094041406
+            ],
+            [
+              -14.872626331761015,
+              9.675500849723816,
+              5.00285670339963
+            ],
+            [
+              -15.099866857488417,
+              9.674500849723815,
+              4.901364237770167
+            ],
+            [
+              -16.030538328174046,
+              9.670500849723815,
+              4.093336991741978
+            ],
+            [
+              -16.451280022304005,
+              9.668500849723815,
+              4.300331155795902
+            ],
+            [
+              -17.515397648827847,
+              9.664500849723815,
+              3.8263917219734367
+            ],
+            [
+              -19.18399669313995,
+              9.659500849723816,
+              4.2740751731400906
+            ],
+            [
+              -19.51745160464454,
+              9.657500849723816,
+              4.110280003530136
+            ],
+            [
+              -19.36158693945996,
+              9.657500849723816,
+              3.113698255548627
+            ],
+            [
+              -19.667017268784193,
+              9.656500849723816,
+              2.815641767525392
+            ],
+            [
+              -19.452627550469245,
+              9.656500849723816,
+              2.497006462680247
+            ],
+            [
+              -19.209563639138384,
+              9.657500849723816,
+              2.139154195306503
+            ],
+            [
+              -19.06522997360231,
+              9.656500849723816,
+              1.207685052239924
+            ],
+            [
+              -18.96023238265011,
+              9.657500849723816,
+              1.2379798770928119
+            ],
+            [
+              -18.869960065926453,
+              9.655500849723815,
+              -0.3024309121445867
+            ],
+            [
+              -18.790480477259226,
+              9.654500849723815,
+              -1.6696786750677006
+            ],
+            [
+              -12.528593968216125,
+              9.677500849723815,
+              -0.8812528714068435
+            ],
+            [
+              -12.209704886953746,
+              9.677500849723815,
+              -2.411227145298085
+            ],
+            [
+              -11.70816830865695,
+              9.676500849723816,
+              -4.815904088765706
+            ],
+            [
+              -16.614276256216336,
+              9.658500849723815,
+              -5.532600092372206
+            ],
+            [
+              -19.579190295152312,
+              9.646500849723816,
+              -7.115061348592633
+            ],
+            [
+              -19.43895022483305,
+              9.646500849723816,
+              -7.623285017409103
+            ],
+            [
+              -20.91445581593079,
+              9.641500849723815,
+              -7.981340276162143
+            ],
+            [
+              -23.84309725414013,
+              9.644500849723816,
+              5.673777862268423
+            ],
+            [
+              -23.140698808302826,
+              9.646500849723816,
+              5.791015962327606
+            ]
+          ],
+          "holes": []
+        },
+        {
+          "sourceRegionIndex": 164,
+          "sourceArea": 21.96857550004665,
+          "ring": [
+            [
+              -9.586809555848333,
+              1.9635008497238151,
+              11.04868568667115
+            ],
+            [
+              -9.240409241069445,
+              1.9635008497238151,
+              11.062315567409655
+            ],
+            [
+              -9.319685534583176,
+              1.9615008497238153,
+              11.43705205014868
+            ],
+            [
+              -2.950456411868792,
+              1.955500849723815,
+              13.040171791893158
+            ],
+            [
+              -2.8855414209710135,
+              1.955500849723815,
+              13.046729776138193
+            ],
+            [
+              -2.8752404009434294,
+              1.955500849723815,
+              12.947608192773714
+            ],
+            [
+              -3.428179230664227,
+              1.9675008497238151,
+              10.74927290389354
+            ],
+            [
+              -1.7506670047374464,
+              1.9715008497238151,
+              9.999378424048757
+            ],
+            [
+              -1.711814691682514,
+              1.9725008497238155,
+              9.843031570956384
+            ],
+            [
+              -9.450504575498892,
+              1.9785008497238152,
+              8.211293044112722
+            ]
+          ],
+          "holes": []
+        },
+        {
+          "sourceRegionIndex": 176,
+          "sourceArea": 18.70878000000066,
+          "ring": [
+            [
+              2.4448713411949425,
+              5.071500849723815,
+              10.719965604092465
+            ],
+            [
+              -0.9702237216440985,
+              4.978500849723815,
+              10.000024362876161
+            ],
+            [
+              -1.4970419336570462,
+              5.046500849723816,
+              12.79507420077664
+            ],
+            [
+              -1.722190575932374,
+              5.043500849723816,
+              12.853648980265291
+            ],
+            [
+              -1.7367112105356,
+              5.074500849723815,
+              13.942307727525076
+            ],
+            [
+              2.6979633594433943,
+              5.195500849723816,
+              14.899375910359538
+            ],
+            [
+              3.6889442885155352,
+              5.183500849723815,
+              13.724974837300294
+            ],
+            [
+              3.7867659512600813,
+              5.1735008497238155,
+              13.289079940782358
+            ],
+            [
+              3.6240034376065444,
+              5.169500849723815,
+              13.27618981813714
+            ]
+          ],
+          "holes": []
+        },
+        {
+          "sourceRegionIndex": 162,
+          "sourceArea": 17.297658999962092,
+          "ring": [
+            [
+              -14.419737259027842,
+              5.038500849723816,
+              7.163858215091068
+            ],
+            [
+              -14.434241436711417,
+              5.052500849723815,
+              8.254517924042943
+            ],
+            [
+              -14.470974402573011,
+              5.055500849723815,
+              8.428859576043521
+            ],
+            [
+              -15.454631570826223,
+              5.091500849723816,
+              9.360089156156448
+            ],
+            [
+              -15.5022258914939,
+              5.092500849723815,
+              9.405439117759897
+            ],
+            [
+              -15.466005497246016,
+              5.092500849723815,
+              9.4482124823881
+            ],
+            [
+              -15.22252435485143,
+              5.089500849723815,
+              9.735688986224886
+            ],
+            [
+              -14.274758846978,
+              5.078500849723816,
+              10.854758817597485
+            ],
+            [
+              -9.613768055187247,
+              4.962500849723815,
+              11.046869755662385
+            ],
+            [
+              -9.586809555848333,
+              4.961500849723815,
+              11.04868568667115
+            ],
+            [
+              -9.450504575498892,
+              4.924500849723815,
+              8.211293044112722
+            ]
+          ],
+          "holes": []
+        },
+        {
+          "sourceRegionIndex": 167,
+          "sourceArea": 15.702541499732142,
+          "ring": [
+            [
+              4.298267354827503,
+              15.181500849723816,
+              1.0893057270118334
+            ],
+            [
+              1.1425873656627912,
+              15.171500849723815,
+              0.36057902089282834
+            ],
+            [
+              0.7797338705516769,
+              15.169500849723816,
+              0.2760248567884105
+            ],
+            [
+              0.40874792350991485,
+              14.687500849723815,
+              -0.41478485218817696
+            ],
+            [
+              0.5877864952262629,
+              14.467500849723816,
+              -0.6491334623129319
+            ],
+            [
+              0.2375302025135337,
+              14.536500849723815,
+              -0.6427272996165811
+            ],
+            [
+              -0.6078515018033639,
+              15.029500849723815,
+              -0.21470777477105685
+            ],
+            [
+              -0.8545041704088134,
+              14.940500849723815,
+              -0.382101563251922
+            ],
+            [
+              -0.957935896716409,
+              14.769500849723816,
+              -0.6215149156255961
+            ],
+            [
+              -1.2024221938556987,
+              14.816500849723816,
+              -0.6178356962826115
+            ],
+            [
+              -1.1344663433125004,
+              15.163500849723816,
+              -0.16606990397519894
+            ],
+            [
+              -4.478071752623605,
+              15.152500849723815,
+              -0.9385261707899417
+            ],
+            [
+              -7.242916678176628,
+              15.142500849723815,
+              -1.576882716414616
+            ],
+            [
+              -7.4448324846596385,
+              15.142500849723815,
+              -1.6235211441926367
+            ],
+            [
+              -8.234279740219666,
+              15.282500849723817,
+              -1.6271057880965145
+            ],
+            [
+              -8.656327404341939,
+              15.138500849723815,
+              -1.9033515123257416
+            ],
+            [
+              -9.939791723899427,
+              15.133500849723816,
+              -2.1996961760422096
+            ],
+            [
+              -10.561533996808013,
+              15.131500849723816,
+              -2.3435033215898216
+            ],
+            [
+              -11.220392444645796,
+              15.811500849723817,
+              -1.6386198075710467
+            ],
+            [
+              -11.263981402962408,
+              15.856500849723815,
+              -1.5912963635787492
+            ],
+            [
+              6.124178358181932,
+              15.847500849723815,
+              2.340423673259977
+            ],
+            [
+              6.293431045447974,
+              15.188500849723816,
+              1.5498567374373806
+            ]
+          ],
+          "holes": []
+        },
+        {
+          "sourceRegionIndex": 169,
+          "sourceArea": 12.420210000060637,
+          "ring": [
+            [
+              -19.452627550469245,
+              11.359500849723815,
+              2.497006462680247
+            ],
+            [
+              -15.147284144640658,
+              11.545500849723815,
+              3.6580511358039303
+            ],
+            [
+              -14.662503113427764,
+              11.428500849723816,
+              0.9923547958308632
+            ],
+            [
+              -17.978331531011314,
+              11.268500849723816,
+              -0.24252043175721383
+            ],
+            [
+              -18.869960065926453,
+              11.238500849723815,
+              -0.3024309121445867
+            ],
+            [
+              -18.96023238265011,
+              11.312500849723815,
+              1.2379798770928119
+            ],
+            [
+              -19.06522997360231,
+              11.307500849723816,
+              1.207685052239924
+            ],
+            [
+              -19.209563639138384,
+              11.349500849723816,
+              2.139154195306503
+            ]
+          ],
+          "holes": []
+        },
+        {
+          "sourceRegionIndex": 165,
+          "sourceArea": 11.358553000119027,
+          "ring": [
+            [
+              -18.790480477259226,
+              10.711500849723816,
+              -1.6696786750677006
+            ],
+            [
+              -18.869960065926453,
+              11.351500849723816,
+              -0.3024309121445867
+            ],
+            [
+              -17.978331531011314,
+              11.268500849723816,
+              -0.24252043175721383
+            ],
+            [
+              -14.662503113427764,
+              11.428500849723816,
+              0.9923547958308632
+            ],
+            [
+              -13.045611774782628,
+              11.506500849723816,
+              1.5945669662124828
+            ],
+            [
+              -12.528593968216125,
+              10.302500849723815,
+              -0.8812528714068435
+            ]
+          ],
+          "holes": []
+        },
+        {
+          "sourceRegionIndex": 159,
+          "sourceArea": 11.156618499992577,
+          "ring": [
+            [
+              -9.240409241069445,
+              5.082500849723815,
+              11.062315567409655
+            ],
+            [
+              -9.586809555848333,
+              4.971500849723816,
+              11.04868568667115
+            ],
+            [
+              -9.613768055187247,
+              4.962500849723815,
+              11.046869755662385
+            ],
+            [
+              -14.274758846978,
+              3.469500849723815,
+              10.854758817597485
+            ],
+            [
+              -15.22252435485143,
+              5.089500849723815,
+              9.735688986224886
+            ],
+            [
+              -15.466005497246016,
+              5.505500849723815,
+              9.4482124823881
+            ],
+            [
+              -15.5022258914939,
+              5.567500849723816,
+              9.405439117759897
+            ],
+            [
+              -16.850785966875062,
+              2.7625008497238155,
+              10.682351080984631
+            ],
+            [
+              -2.9560694709088002,
+              2.8965008497238154,
+              13.679538679068344
+            ],
+            [
+              -2.8855414209710135,
+              4.051500849723816,
+              13.046729776138193
+            ],
+            [
+              -2.950456411868792,
+              4.038500849723816,
+              13.040171791893158
+            ],
+            [
+              -9.319685534583176,
+              4.384500849723815,
+              11.43705205014868
+            ]
+          ],
+          "holes": []
+        },
+        {
+          "sourceRegionIndex": 171,
+          "sourceArea": 10.447629500030265,
+          "ring": [
+            [
+              -16.44449056973299,
+              10.306500849723815,
+              6.9006200481575775
+            ],
+            [
+              -21.488128196823663,
+              10.112500849723816,
+              6.064811747805265
+            ],
+            [
+              -21.736307703440005,
+              10.138500849723815,
+              8.448739843048827
+            ],
+            [
+              -18.676140325382548,
+              10.249500849723816,
+              8.490754781755072
+            ],
+            [
+              -16.4813180629287,
+              10.328500849723815,
+              8.52170540811727
+            ],
+            [
+              -16.40762657244861,
+              10.328500849723815,
+              8.352112503384319
+            ]
+          ],
+          "holes": []
+        },
+        {
+          "sourceRegionIndex": 163,
+          "sourceArea": 7.159096499945385,
+          "ring": [
+            [
+              -15.147284144640658,
+              10.695500849723816,
+              3.6580511358039303
+            ],
+            [
+              -16.030538328174046,
+              10.735500849723815,
+              4.093336991741978
+            ],
+            [
+              -15.099866857488417,
+              10.586500849723816,
+              4.901364237770167
+            ],
+            [
+              -14.872626331761015,
+              10.558500849723815,
+              5.00285670339963
+            ],
+            [
+              -14.884013950021583,
+              10.552500849723815,
+              5.088979094041406
+            ],
+            [
+              -14.398090352015052,
+              10.474500849723816,
+              5.511861190673528
+            ],
+            [
+              -13.944299714980772,
+              10.402500849723815,
+              5.905949087420481
+            ],
+            [
+              -13.045611774782628,
+              10.685500849723816,
+              1.5945669662124828
+            ],
+            [
+              -14.662503113427764,
+              10.876500849723815,
+              0.9923547958308632
+            ]
+          ],
+          "holes": []
+        },
+        {
+          "sourceRegionIndex": 160,
+          "sourceArea": 7.040463500115094,
+          "ring": [
+            [
+              -18.676140325382548,
+              4.292500849723815,
+              8.490754781755072
+            ],
+            [
+              -21.736307703440005,
+              4.244500849723815,
+              8.448739843048827
+            ],
+            [
+              -24.430170147999203,
+              4.202500849723815,
+              8.412214786793015
+            ],
+            [
+              -24.559752747038345,
+              4.1575008497238155,
+              9.019416284591273
+            ],
+            [
+              -18.68982246806545,
+              4.166500849723815,
+              10.285770625316957
+            ]
+          ],
+          "holes": []
+        },
+        {
+          "sourceRegionIndex": 170,
+          "sourceArea": 6.564095499962273,
+          "ring": [
+            [
+              -21.488128196823663,
+              10.488500849723815,
+              6.064811747805265
+            ],
+            [
+              -23.140698808302826,
+              9.646500849723816,
+              5.791015962327606
+            ],
+            [
+              -23.84309725414013,
+              9.288500849723816,
+              5.673777862268423
+            ],
+            [
+              -24.430170147999203,
+              9.370500849723815,
+              8.412214786793015
+            ],
+            [
+              -21.736307703440005,
+              10.687500849723815,
+              8.448739843048827
+            ]
+          ],
+          "holes": []
+        },
+        {
+          "sourceRegionIndex": 158,
+          "sourceArea": 6.26529200000845,
+          "ring": [
+            [
+              -1.711814691682514,
+              4.275500849723815,
+              9.843031570956384
+            ],
+            [
+              -1.7506670047374464,
+              4.271500849723815,
+              9.999378424048757
+            ],
+            [
+              -3.428179230664227,
+              4.368500849723815,
+              10.74927290389354
+            ],
+            [
+              -2.8752404009434294,
+              4.223500849723815,
+              12.947608192773714
+            ],
+            [
+              -2.8855414209710135,
+              4.219500849723815,
+              13.046729776138193
+            ],
+            [
+              -2.9560694709088002,
+              4.196500849723815,
+              13.679538679068344
+            ],
+            [
+              -1.7367112105356,
+              4.0885008497238156,
+              13.942307727525076
+            ],
+            [
+              -1.722190575932374,
+              4.137500849723815,
+              12.853648980265291
+            ],
+            [
+              -1.4970419336570462,
+              4.122500849723815,
+              12.79507420077664
+            ],
+            [
+              -0.9702237216440985,
+              4.210500849723815,
+              10.000024362876161
+            ]
+          ],
+          "holes": []
+        },
+        {
+          "sourceRegionIndex": 161,
+          "sourceArea": 5.360870999992949,
+          "ring": [
+            [
+              -18.676140325382548,
+              8.052500849723815,
+              8.490754781755072
+            ],
+            [
+              -18.68982246806545,
+              5.959500849723815,
+              10.285770625316957
+            ],
+            [
+              -16.850785966875062,
+              5.763500849723815,
+              10.682351080984631
+            ],
+            [
+              -15.5022258914939,
+              7.445500849723816,
+              9.405439117759897
+            ],
+            [
+              -16.248766700974546,
+              8.364500849723816,
+              8.524110470044661
+            ],
+            [
+              -16.4813180629287,
+              8.334500849723815,
+              8.52170540811727
+            ]
+          ],
+          "holes": []
+        },
+        {
+          "sourceRegionIndex": 168,
+          "sourceArea": 4.198651499929038,
+          "ring": [
+            [
+              -19.667017268784193,
+              10.653500849723816,
+              2.815641767525392
+            ],
+            [
+              -19.36158693945996,
+              10.593500849723815,
+              3.113698255548627
+            ],
+            [
+              -19.51745160464454,
+              10.220500849723816,
+              4.110280003530136
+            ],
+            [
+              -19.18399669313995,
+              10.211500849723816,
+              4.2740751731400906
+            ],
+            [
+              -17.515397648827847,
+              10.612500849723816,
+              3.8263917219734367
+            ],
+            [
+              -16.451280022304005,
+              10.601500849723815,
+              4.300331155795902
+            ],
+            [
+              -16.030538328174046,
+              10.735500849723815,
+              4.093336991741978
+            ],
+            [
+              -15.147284144640658,
+              11.017500849723815,
+              3.6580511358039303
+            ],
+            [
+              -19.452627550469245,
+              10.797500849723816,
+              2.497006462680247
+            ]
+          ],
+          "holes": []
+        },
+        {
+          "sourceRegionIndex": 155,
+          "sourceArea": 3.634991500002765,
+          "ring": [
+            [
+              10.18541958394637,
+              16.366500849723817,
+              13.794451049737404
+            ],
+            [
+              8.816415666438827,
+              16.378500849723814,
+              13.685784556770955
+            ],
+            [
+              9.10759548341003,
+              16.433500849723817,
+              16.282120906390958
+            ],
+            [
+              10.480876696160376,
+              16.426500849723816,
+              16.578854733548667
+            ]
+          ],
+          "holes": []
+        },
+        {
+          "sourceRegionIndex": 154,
+          "sourceArea": 1.403429499988639,
+          "ring": [
+            [
+              4.556989715836282,
+              3.472500849723815,
+              15.300829737918775
+            ],
+            [
+              3.837749065160752,
+              5.187500849723816,
+              13.739961783994943
+            ],
+            [
+              3.6889442885155352,
+              5.183500849723815,
+              13.724974837300294
+            ],
+            [
+              2.6979633594433943,
+              3.6715008497238157,
+              14.899375910359538
+            ]
+          ],
+          "holes": []
+        },
+        {
+          "sourceRegionIndex": "interpreted-150-0",
+          "originalSourceRegionIndex": 150,
+          "sourceArea": 29.43221749988753,
+          "ring": [
+            [
+              14.61694865502998,
+              10.65,
+              3.4727591210688047
+            ],
+            [
+              15.358813513264614,
+              10.65,
+              0.014896066696223897
+            ],
+            [
+              12.861540537520138,
+              10.65,
+              -0.5027242633251814
+            ],
+            [
+              12.111560398139389,
+              10.65,
+              2.8939633189729372
+            ]
+          ],
+          "interpretation": "Exact original survey plan clipped at photo-supported center-projection boundaries; no terrace depth inferred from image. Height roles derived from currentphotos00330/00325 and original local survey bounds."
+        },
+        {
+          "sourceRegionIndex": "interpreted-150-1",
+          "originalSourceRegionIndex": 150,
+          "sourceArea": 29.43221749988753,
+          "ring": [
+            [
+              12.861540537520138,
+              12.45,
+              -0.5027242633251814
+            ],
+            [
+              9.630138039874367,
+              12.45,
+              -1.172510723800035
+            ],
+            [
+              8.896278178368025,
+              12.45,
+              2.151167528245154
+            ],
+            [
+              12.111560398139389,
+              12.45,
+              2.8939633189729372
+            ]
+          ],
+          "interpretation": "Exact original survey plan clipped at photo-supported center-projection boundaries; no terrace depth inferred from image. Height roles derived from currentphotos00330/00325 and original local survey bounds."
+        },
+        {
+          "sourceRegionIndex": "interpreted-150-2",
+          "originalSourceRegionIndex": 150,
+          "sourceArea": 29.43221749988753,
+          "ring": [
+            [
+              9.630138039874367,
+              10.65,
+              -1.172510723800035
+            ],
+            [
+              6.9906685238792665,
+              10.65,
+              -1.7196047320325647
+            ],
+            [
+              6.774073175194677,
+              10.65,
+              -0.7005957785131045
+            ],
+            [
+              6.293431045447974,
+              10.65,
+              1.5498567374373806
+            ],
+            [
+              8.896278178368025,
+              10.65,
+              2.151167528245154
+            ]
+          ],
+          "interpretation": "Exact original survey plan clipped at photo-supported center-projection boundaries; no terrace depth inferred from image. Height roles derived from currentphotos00330/00325 and original local survey bounds."
+        },
+        {
+          "sourceRegionIndex": "interpreted-175-2",
+          "originalSourceRegionIndex": 175,
+          "sourceArea": 25.81398450007527,
+          "ring": [
+            [
+              4.9344188705557555,
+              10.65,
+              -1.152315944883406
+            ],
+            [
+              5.132242394642333,
+              10.65,
+              -1.5937928315037198
+            ],
+            [
+              5.343579076930171,
+              10.65,
+              -2.067485733872445
+            ],
+            [
+              5.145984793640979,
+              10.65,
+              -2.110505776915997
+            ]
+          ],
+          "interpretation": "Exact original survey plan clipped at photo-supported center-projection boundaries; no terrace depth inferred from image. Height roles derived from currentphotos00330/00325 and original local survey bounds."
+        },
+        {
+          "sourceRegionIndex": "interpreted-175-3",
+          "originalSourceRegionIndex": 175,
+          "sourceArea": 25.81398450007527,
+          "ring": [
+            [
+              1.9966319102269683,
+              13.35,
+              0.5577996104253856
+            ],
+            [
+              4.298267354827503,
+              13.35,
+              1.0893057270118334
+            ],
+            [
+              4.238672445362561,
+              13.35,
+              0.4003607000694842
+            ],
+            [
+              4.9344188705557555,
+              13.35,
+              -1.152315944883406
+            ],
+            [
+              5.145984793640979,
+              13.35,
+              -2.110505776915997
+            ],
+            [
+              2.7032154627703804,
+              13.35,
+              -2.642343237039874
+            ],
+            [
+              2.1277658054633766,
+              13.35,
+              -0.03611061489827461
+            ],
+            [
+              2.13798408241013,
+              13.35,
+              -0.0214456808313912
+            ],
+            [
+              2.123281964452909,
+              13.35,
+              -0.015803134364415654
+            ]
+          ],
+          "interpretation": "Exact original survey plan clipped at photo-supported center-projection boundaries; no terrace depth inferred from image. Height roles derived from currentphotos00330/00325 and original local survey bounds."
+        },
+        {
+          "sourceRegionIndex": "interpreted-175-4",
+          "originalSourceRegionIndex": 175,
+          "sourceArea": 25.81398450007527,
+          "ring": [
+            [
+              1.1425873656627912,
+              10.65,
+              0.36057902089282834
+            ],
+            [
+              1.9966319102269683,
+              10.65,
+              0.5577996104253856
+            ],
+            [
+              2.7032154627703804,
+              10.65,
+              -2.642343237039874
+            ],
+            [
+              1.017776678248453,
+              10.65,
+              -3.009295397043843
+            ],
+            [
+              -0.6430111924269482,
+              10.65,
+              -3.365671153348199
+            ],
+            [
+              -1.3390399182518138,
+              10.65,
+              -0.21333150354867436
+            ],
+            [
+              -1.1344663433125004,
+              10.65,
+              -0.16606990397519894
+            ],
+            [
+              -1.2024221938556987,
+              10.65,
+              -0.6178356962826115
+            ],
+            [
+              -0.957935896716409,
+              10.65,
+              -0.6215149156255961
+            ],
+            [
+              -0.8545041704088134,
+              10.65,
+              -0.382101563251922
+            ],
+            [
+              -0.6078515018033639,
+              10.65,
+              -0.21470777477105685
+            ],
+            [
+              0.2375302025135337,
+              10.65,
+              -0.6427272996165811
+            ],
+            [
+              0.5877864952262629,
+              10.65,
+              -0.6491334623129319
+            ],
+            [
+              1.1694073562675587,
+              10.65,
+              -1.411515053741823
+            ],
+            [
+              2.1277658054633766,
+              10.65,
+              -0.03611061489827461
+            ],
+            [
+              2.123281964452909,
+              10.65,
+              -0.015803134364415654
+            ]
+          ],
+          "interpretation": "Exact original survey plan clipped at photo-supported center-projection boundaries; no terrace depth inferred from image. Height roles derived from currentphotos00330/00325 and original local survey bounds."
+        },
+        {
+          "sourceRegionIndex": "interpreted-175-5",
+          "originalSourceRegionIndex": 175,
+          "sourceArea": 25.81398450007527,
+          "ring": [
+            [
+              -0.6430111924269482,
+              13.35,
+              -3.365671153348199
+            ],
+            [
+              -3.1750048858556004,
+              13.35,
+              -3.9089922983217207
+            ],
+            [
+              -3.608716419361121,
+              13.35,
+              -2.9202107570317906
+            ],
+            [
+              -3.737024720182397,
+              13.35,
+              -2.3390977525390904
+            ],
+            [
+              -3.6649445286903375,
+              13.35,
+              -2.2897992080632434
+            ],
+            [
+              -3.7658773012339126,
+              13.35,
+              -2.2084233538065394
+            ],
+            [
+              -4.067224630867554,
+              13.35,
+              -0.8436102357279008
+            ],
+            [
+              -1.3390399182518138,
+              13.35,
+              -0.21333150354867436
+            ]
+          ],
+          "interpretation": "Exact original survey plan clipped at photo-supported center-projection boundaries; no terrace depth inferred from image. Height roles derived from currentphotos00330/00325 and original local survey bounds."
+        },
+        {
+          "sourceRegionIndex": "interpreted-175-6",
+          "originalSourceRegionIndex": 175,
+          "sourceArea": 25.81398450007527,
+          "ring": [
+            [
+              -3.608716419361121,
+              10.65,
+              -2.9202107570317906
+            ],
+            [
+              -3.834399186260523,
+              10.65,
+              -2.4056960695995144
+            ],
+            [
+              -3.737024720182397,
+              10.65,
+              -2.3390977525390904
+            ],
+            [
+              -3.7658773012339126,
+              10.65,
+              -2.2084233538065394
+            ],
+            [
+              -4.005385857526831,
+              10.65,
+              -2.0153224126656255
+            ],
+            [
+              -4.478071752623605,
+              10.65,
+              -0.9385261707899417
+            ],
+            [
+              -4.067224630867553,
+              10.65,
+              -0.8436102357279008
+            ]
+          ],
+          "interpretation": "Exact original survey plan clipped at photo-supported center-projection boundaries; no terrace depth inferred from image. Height roles derived from currentphotos00330/00325 and original local survey bounds."
+        },
+        {
+          "sourceRegionIndex": "interpreted-166-6",
+          "originalSourceRegionIndex": 166,
+          "sourceArea": 16.270051499824202,
+          "ring": [
+            [
+              -12.209704886953746,
+              10.35,
+              -2.411227145298085
+            ],
+            [
+              -11.340154386210799,
+              10.35,
+              -1.6387980058021867
+            ],
+            [
+              -11.263981402962408,
+              10.35,
+              -1.5912963635787492
+            ],
+            [
+              -11.220392444645796,
+              10.35,
+              -1.6386198075710467
+            ],
+            [
+              -10.561533996808013,
+              10.35,
+              -2.3435033215898216
+            ],
+            [
+              -9.939791723899427,
+              10.35,
+              -2.1996961760422096
+            ],
+            [
+              -9.488677945615194,
+              10.35,
+              -5.265366333818804
+            ],
+            [
+              -11.525602964961504,
+              10.35,
+              -5.702612382164034
+            ],
+            [
+              -19.43895022483305,
+              10.35,
+              -7.623285017409103
+            ],
+            [
+              -19.579190295152312,
+              10.35,
+              -7.115061348592633
+            ],
+            [
+              -16.614276256216336,
+              10.35,
+              -5.532600092372206
+            ],
+            [
+              -11.70816830865695,
+              10.35,
+              -4.815904088765706
+            ]
+          ],
+          "interpretation": "Exact original survey plan clipped at photo-supported center-projection boundaries; no terrace depth inferred from image. Height roles derived from currentphotos00330/00325 and original local survey bounds."
+        },
+        {
+          "sourceRegionIndex": "interpreted-157-6",
+          "originalSourceRegionIndex": 157,
+          "sourceArea": 9.299036999999121,
+          "ring": [
+            [
+              -8.656327404341939,
+              10.35,
+              -1.9033515123257416
+            ],
+            [
+              -8.234279740219666,
+              10.35,
+              -1.6271057880965145
+            ],
+            [
+              -7.4448324846596385,
+              10.35,
+              -1.6235211441926367
+            ],
+            [
+              -7.242916678176628,
+              10.35,
+              -1.576882716414616
+            ],
+            [
+              -6.602545185142567,
+              10.35,
+              -3.9655035586037
+            ],
+            [
+              -6.430286959597543,
+              10.35,
+              -4.608015524448774
+            ],
+            [
+              -9.488677945615194,
+              10.35,
+              -5.265366333818804
+            ],
+            [
+              -9.939791723899427,
+              10.35,
+              -2.1996961760422096
+            ]
+          ],
+          "interpretation": "Exact original survey plan clipped at photo-supported center-projection boundaries; no terrace depth inferred from image. Height roles derived from currentphotos00330/00325 and original local survey bounds."
+        },
+        {
+          "sourceRegionIndex": "interpreted-151-2",
+          "originalSourceRegionIndex": 151,
+          "sourceArea": 6.629909000093161,
+          "ring": [
+            [
+              6.892725056744583,
+              10.65,
+              -1.7399433847589307
+            ],
+            [
+              6.863769996632034,
+              10.65,
+              -1.5956706864551506
+            ],
+            [
+              6.643891054744654,
+              10.65,
+              -1.64218641721817
+            ],
+            [
+              6.670898009952023,
+              10.65,
+              -1.7794421483688438
+            ],
+            [
+              5.343579076930171,
+              10.65,
+              -2.067485733872445
+            ],
+            [
+              5.132242394642333,
+              10.65,
+              -1.5937928315037198
+            ],
+            [
+              4.9344188705557555,
+              10.65,
+              -1.152315944883406
+            ],
+            [
+              4.43262645304148,
+              10.65,
+              1.1203203343511783
+            ],
+            [
+              6.293431045447974,
+              10.65,
+              1.5498567374373806
+            ],
+            [
+              6.774073175194677,
+              10.65,
+              -0.7005957785131045
+            ],
+            [
+              6.9906685238792665,
+              10.65,
+              -1.7196047320325647
+            ]
+          ],
+          "interpretation": "Exact original survey plan clipped at photo-supported center-projection boundaries; no terrace depth inferred from image. Height roles derived from currentphotos00330/00325 and original local survey bounds."
+        },
+        {
+          "sourceRegionIndex": "interpreted-151-3",
+          "originalSourceRegionIndex": 151,
+          "sourceArea": 6.629909000093161,
+          "ring": [
+            [
+              4.9344188705557555,
+              13.35,
+              -1.152315944883406
+            ],
+            [
+              4.238672445362561,
+              13.35,
+              0.4003607000694842
+            ],
+            [
+              4.298267354827503,
+              13.35,
+              1.0893057270118334
+            ],
+            [
+              4.43262645304148,
+              13.35,
+              1.1203203343511783
+            ]
+          ],
+          "interpretation": "Exact original survey plan clipped at photo-supported center-projection boundaries; no terrace depth inferred from image. Height roles derived from currentphotos00330/00325 and original local survey bounds."
+        },
+        {
+          "sourceRegionIndex": "interpreted-156-5",
+          "originalSourceRegionIndex": 156,
+          "sourceArea": 6.4161325000089855,
+          "ring": [
+            [
+              -3.7658773012339126,
+              13.35,
+              -2.2084233538065394
+            ],
+            [
+              -3.6649445286903375,
+              13.35,
+              -2.2897992080632434
+            ],
+            [
+              -3.737024720182397,
+              13.35,
+              -2.3390977525390904
+            ]
+          ],
+          "interpretation": "Exact original survey plan clipped at photo-supported center-projection boundaries; no terrace depth inferred from image. Height roles derived from currentphotos00330/00325 and original local survey bounds."
+        },
+        {
+          "sourceRegionIndex": "interpreted-156-6",
+          "originalSourceRegionIndex": 156,
+          "sourceArea": 6.4161325000089855,
+          "ring": [
+            [
+              -7.242916678176628,
+              10.65,
+              -1.576882716414616
+            ],
+            [
+              -4.478071752623605,
+              10.65,
+              -0.9385261707899417
+            ],
+            [
+              -4.005385857526831,
+              10.65,
+              -2.0153224126656255
+            ],
+            [
+              -3.7658773012339126,
+              10.65,
+              -2.2084233538065394
+            ],
+            [
+              -3.737024720182397,
+              10.65,
+              -2.3390977525390904
+            ],
+            [
+              -3.834399186260523,
+              10.65,
+              -2.4056960695995144
+            ],
+            [
+              -5.404556822223235,
+              10.65,
+              -3.4714700039208424
+            ],
+            [
+              -5.863775016203504,
+              10.65,
+              -3.783479285541489
+            ],
+            [
+              -6.602545185142567,
+              10.65,
+              -3.9655035586037
+            ]
+          ],
+          "interpretation": "Exact original survey plan clipped at photo-supported center-projection boundaries; no terrace depth inferred from image. Height roles derived from currentphotos00330/00325 and original local survey bounds."
+        },
+        {
+          "sourceRegionIndex": "interpreted-152-5",
+          "originalSourceRegionIndex": 152,
+          "sourceArea": 3.382093500095182,
+          "ring": [
+            [
+              -3.608716419361121,
+              13.35,
+              -2.9202107570317906
+            ],
+            [
+              -3.1750048858556004,
+              13.35,
+              -3.9089922983217207
+            ],
+            [
+              -3.380645873742577,
+              13.35,
+              -3.9531506303864656
+            ]
+          ],
+          "interpretation": "Exact original survey plan clipped at photo-supported center-projection boundaries; no terrace depth inferred from image. Height roles derived from currentphotos00330/00325 and original local survey bounds."
+        },
+        {
+          "sourceRegionIndex": "interpreted-152-6",
+          "originalSourceRegionIndex": 152,
+          "sourceArea": 3.382093500095182,
+          "ring": [
+            [
+              -5.863775016203504,
+              10.65,
+              -3.783479285541489
+            ],
+            [
+              -5.404556822223235,
+              10.65,
+              -3.4714700039208424
+            ],
+            [
+              -3.834399186260523,
+              10.65,
+              -2.4056960695995144
+            ],
+            [
+              -3.608716419361121,
+              10.65,
+              -2.9202107570317906
+            ],
+            [
+              -3.380645873742577,
+              10.65,
+              -3.9531506303864656
+            ],
+            [
+              -6.430286959597543,
+              10.65,
+              -4.608015524448774
+            ],
+            [
+              -6.602545185142567,
+              10.65,
+              -3.9655035586037
+            ]
+          ],
+          "interpretation": "Exact original survey plan clipped at photo-supported center-projection boundaries; no terrace depth inferred from image. Height roles derived from currentphotos00330/00325 and original local survey bounds."
+        },
+        {
+          "sourceRegionIndex": "interpreted-174-3",
+          "originalSourceRegionIndex": 174,
+          "sourceArea": 1.649530500015383,
+          "ring": [
+            [
+              2.123281964452909,
+              13.35,
+              -0.01580313436441566
+            ],
+            [
+              2.13798408241013,
+              13.35,
+              -0.0214456808313912
+            ],
+            [
+              2.1277658054633766,
+              13.35,
+              -0.03611061489827462
+            ]
+          ],
+          "interpretation": "Exact original survey plan clipped at photo-supported center-projection boundaries; no terrace depth inferred from image. Height roles derived from currentphotos00330/00325 and original local survey bounds."
+        },
+        {
+          "sourceRegionIndex": "interpreted-174-4",
+          "originalSourceRegionIndex": 174,
+          "sourceArea": 1.649530500015383,
+          "ring": [
+            [
+              0.7797338705516769,
+              10.65,
+              0.2760248567884105
+            ],
+            [
+              1.1425873656627912,
+              10.65,
+              0.36057902089282834
+            ],
+            [
+              2.123281964452909,
+              10.65,
+              -0.01580313436441566
+            ],
+            [
+              2.1277658054633766,
+              10.65,
+              -0.03611061489827462
+            ],
+            [
+              1.1694073562675587,
+              10.65,
+              -1.411515053741823
+            ],
+            [
+              0.5877864952262629,
+              10.65,
+              -0.6491334623129319
+            ],
+            [
+              0.40874792350991485,
+              10.65,
+              -0.41478485218817696
+            ]
+          ],
+          "interpretation": "Exact original survey plan clipped at photo-supported center-projection boundaries; no terrace depth inferred from image. Height roles derived from currentphotos00330/00325 and original local survey bounds."
+        }
+      ],
+      "galleryFrontage": {
+        "target": [
+          4.890942,
+          52.363041
+        ],
+        "distanceMetres": 38,
+        "targetHeightMetres": 7
+      },
+      "heightEvidence": "Every original LoD2.2 roof polygon transformed from whole.metadata transform via RD to native WGS84 local metres; groundNAP0.804 deducted. Front eaves12.45 /13.2\u201313.7 /10.3; rear15.8; tiny16.4 equipment local only.",
+      "sourceCommit": "9fc691744e03b91f70899896033acdb6cbbd1a18",
+      "retainedNeighborIds": [
+        "0363100012175010",
+        "0363100012175011",
+        "0363100012175013",
+        "0363100012175015",
+        "0363100012176231"
+      ],
+      "originalSurveyFrontRegions": [
+        {
+          "sourceRegionIndex": 150,
+          "sourceArea": 29.43221749988753,
+          "ring": [
+            [
+              14.61694865502998,
+              12.412500849723816,
+              3.4727591210688047
+            ],
+            [
+              15.358813513264614,
+              12.474500849723816,
+              0.014896066696223897
+            ],
+            [
+              6.9906685238792665,
+              12.493500849723816,
+              -1.7196047320325647
+            ],
+            [
+              6.774073175194677,
+              12.474500849723816,
+              -0.7005957785131045
+            ],
+            [
+              6.293431045447974,
+              12.434500849723815,
+              1.5498567374373806
+            ]
+          ],
+          "holes": []
+        },
+        {
+          "sourceRegionIndex": 175,
+          "sourceArea": 25.81398450007527,
+          "ring": [
+            [
+              1.1425873656627912,
+              13.327500849723815,
+              0.36057902089282834
+            ],
+            [
+              4.298267354827503,
+              13.392500849723815,
+              1.0893057270118334
+            ],
+            [
+              4.238672445362561,
+              13.439500849723816,
+              0.4003607000694842
+            ],
+            [
+              5.132242394642333,
+              13.616500849723815,
+              -1.5937928315037198
+            ],
+            [
+              5.343579076930171,
+              13.658500849723815,
+              -2.067485733872445
+            ],
+            [
+              1.017776678248453,
+              13.565500849723815,
+              -3.009295397043843
+            ],
+            [
+              -3.1750048858556004,
+              13.474500849723816,
+              -3.9089922983217207
+            ],
+            [
+              -3.834399186260523,
+              13.341500849723815,
+              -2.4056960695995144
+            ],
+            [
+              -3.6649445286903375,
+              13.339500849723816,
+              -2.2897992080632434
+            ],
+            [
+              -4.005385857526831,
+              13.306500849723815,
+              -2.0153224126656255
+            ],
+            [
+              -4.478071752623605,
+              13.211500849723816,
+              -0.9385261707899417
+            ],
+            [
+              -1.1344663433125004,
+              13.280500849723815,
+              -0.16606990397519894
+            ],
+            [
+              -1.2024221938556987,
+              13.310500849723816,
+              -0.6178356962826115
+            ],
+            [
+              -0.957935896716409,
+              13.319500849723816,
+              -0.6215149156255961
+            ],
+            [
+              -0.8545041704088134,
+              13.306500849723815,
+              -0.382101563251922
+            ],
+            [
+              -0.6078515018033639,
+              13.303500849723816,
+              -0.21470777477105685
+            ],
+            [
+              0.2375302025135337,
+              13.365500849723816,
+              -0.6427272996165811
+            ],
+            [
+              0.5877864952262629,
+              13.379500849723815,
+              -0.6491334623129319
+            ],
+            [
+              1.1694073562675587,
+              13.455500849723816,
+              -1.411515053741823
+            ],
+            [
+              2.13798408241013,
+              13.391500849723815,
+              -0.0214456808313912
+            ]
+          ],
+          "holes": []
+        },
+        {
+          "sourceRegionIndex": 166,
+          "sourceArea": 16.270051499824202,
+          "ring": [
+            [
+              -12.209704886953746,
+              10.291500849723816,
+              -2.411227145298085
+            ],
+            [
+              -11.340154386210799,
+              10.279500849723815,
+              -1.6387980058021867
+            ],
+            [
+              -11.263981402962408,
+              10.279500849723815,
+              -1.5912963635787492
+            ],
+            [
+              -11.220392444645796,
+              10.284500849723816,
+              -1.6386198075710467
+            ],
+            [
+              -10.561533996808013,
+              10.355500849723816,
+              -2.3435033215898216
+            ],
+            [
+              -9.939791723899427,
+              10.372500849723815,
+              -2.1996961760422096
+            ],
+            [
+              -9.488677945615194,
+              10.581500849723815,
+              -5.265366333818804
+            ],
+            [
+              -11.525602964961504,
+              10.523500849723815,
+              -5.702612382164034
+            ],
+            [
+              -19.43895022483305,
+              10.313500849723816,
+              -7.623285017409103
+            ],
+            [
+              -19.579190295152312,
+              10.275500849723816,
+              -7.115061348592633
+            ],
+            [
+              -16.614276256216336,
+              10.301500849723816,
+              -5.532600092372206
+            ],
+            [
+              -11.70816830865695,
+              10.461500849723816,
+              -4.815904088765706
+            ]
+          ],
+          "holes": []
+        },
+        {
+          "sourceRegionIndex": 157,
+          "sourceArea": 9.299036999999121,
+          "ring": [
+            [
+              -8.656327404341939,
+              13.125500849723815,
+              -1.9033515123257416
+            ],
+            [
+              -8.234279740219666,
+              13.121500849723816,
+              -1.6271057880965145
+            ],
+            [
+              -7.4448324846596385,
+              13.150500849723816,
+              -1.6235211441926367
+            ],
+            [
+              -7.242916678176628,
+              13.154500849723815,
+              -1.576882716414616
+            ],
+            [
+              -6.602545185142567,
+              13.350500849723815,
+              -3.9655035586037
+            ],
+            [
+              -6.430286959597543,
+              13.403500849723816,
+              -4.608015524448774
+            ],
+            [
+              -9.488677945615194,
+              13.337500849723815,
+              -5.265366333818804
+            ],
+            [
+              -9.939791723899427,
+              13.099500849723816,
+              -2.1996961760422096
+            ]
+          ],
+          "holes": []
+        },
+        {
+          "sourceRegionIndex": 151,
+          "sourceArea": 6.629909000093161,
+          "ring": [
+            [
+              6.892725056744583,
+              13.721500849723816,
+              -1.7399433847589307
+            ],
+            [
+              6.863769996632034,
+              13.548500849723816,
+              -1.5956706864551506
+            ],
+            [
+              6.643891054744654,
+              13.613500849723815,
+              -1.64218641721817
+            ],
+            [
+              6.670898009952023,
+              13.777500849723815,
+              -1.7794421483688438
+            ],
+            [
+              5.343579076930171,
+              14.178500849723816,
+              -2.067485733872445
+            ],
+            [
+              5.132242394642333,
+              13.616500849723815,
+              -1.5937928315037198
+            ],
+            [
+              4.238672445362561,
+              11.250500849723815,
+              0.4003607000694842
+            ],
+            [
+              4.298267354827503,
+              10.418500849723815,
+              1.0893057270118334
+            ],
+            [
+              6.293431045447974,
+              9.783500849723815,
+              1.5498567374373806
+            ],
+            [
+              6.774073175194677,
+              12.474500849723816,
+              -0.7005957785131045
+            ],
+            [
+              6.9906685238792665,
+              13.692500849723816,
+              -1.7196047320325647
+            ]
+          ],
+          "holes": []
+        },
+        {
+          "sourceRegionIndex": 156,
+          "sourceArea": 6.4161325000089855,
+          "ring": [
+            [
+              -7.242916678176628,
+              10.494500849723815,
+              -1.576882716414616
+            ],
+            [
+              -4.478071752623605,
+              10.490500849723816,
+              -0.9385261707899417
+            ],
+            [
+              -4.005385857526831,
+              10.641500849723815,
+              -2.0153224126656255
+            ],
+            [
+              -3.6649445286903375,
+              10.686500849723815,
+              -2.2897992080632434
+            ],
+            [
+              -3.834399186260523,
+              10.696500849723815,
+              -2.4056960695995144
+            ],
+            [
+              -5.404556822223235,
+              10.788500849723816,
+              -3.4714700039208424
+            ],
+            [
+              -5.863775016203504,
+              10.814500849723816,
+              -3.783479285541489
+            ],
+            [
+              -6.602545185142567,
+              10.817500849723816,
+              -3.9655035586037
+            ]
+          ],
+          "holes": []
+        },
+        {
+          "sourceRegionIndex": 152,
+          "sourceArea": 3.382093500095182,
+          "ring": [
+            [
+              -5.863775016203504,
+              10.040500849723815,
+              -3.783479285541489
+            ],
+            [
+              -5.404556822223235,
+              10.788500849723816,
+              -3.4714700039208424
+            ],
+            [
+              -3.834399186260523,
+              13.341500849723815,
+              -2.4056960695995144
+            ],
+            [
+              -3.1750048858556004,
+              13.474500849723816,
+              -3.9089922983217207
+            ],
+            [
+              -6.430286959597543,
+              8.907500849723816,
+              -4.608015524448774
+            ],
+            [
+              -6.602545185142567,
+              8.993500849723816,
+              -3.9655035586037
+            ]
+          ],
+          "holes": []
+        },
+        {
+          "sourceRegionIndex": 174,
+          "sourceArea": 1.649530500015383,
+          "ring": [
+            [
+              0.7797338705516769,
+              10.478500849723815,
+              0.2760248567884105
+            ],
+            [
+              1.1425873656627912,
+              10.482500849723815,
+              0.36057902089282834
+            ],
+            [
+              2.13798408241013,
+              10.505500849723816,
+              -0.0214456808313912
+            ],
+            [
+              1.1694073562675587,
+              10.516500849723815,
+              -1.411515053741823
+            ],
+            [
+              0.5877864952262629,
+              10.492500849723815,
+              -0.6491334623129319
+            ],
+            [
+              0.40874792350991485,
+              10.485500849723815,
+              -0.41478485218817696
+            ]
+          ],
+          "holes": []
+        }
+      ],
+      "roofInterpretation": {
+        "reason": "Survey front-height planar proxies span photographed open terraces and create false opaque/sloped front caps; currentphotos00330/00325 establish narrower centered top projections. Rear survey surfaces and local equipment retained, all replaced original front rings/heights stored unchanged as originalSurveyFrontRegions.",
+        "replacedFrontSourceRegionIds": [
+          150,
+          175,
+          151,
+          152,
+          156,
+          157,
+          174,
+          166
+        ],
+        "planConstraint": "Each interpreted ring is a clipped subset of its own original survey ring, using source-photo module width only; original survey depth retained.",
+        "frontHeightsMetres": [
+          10.65,
+          12.45,
+          13.35,
+          10.35
+        ],
+        "uncertainty": "Front profile widths photo-guided; survey height roles reliable but terrace/penthouse construction thickness not measured.",
+        "overrideEvidence": [
+          {
+            "sourceRegionIndex": 150,
+            "originalHeightRangeMetres": [
+              12.412500849723816,
+              12.493500849723816
+            ],
+            "originalPlanRing": [
+              [
+                14.61694865502998,
+                3.4727591210688047
+              ],
+              [
+                15.358813513264614,
+                0.014896066696223897
+              ],
+              [
+                6.9906685238792665,
+                -1.7196047320325647
+              ],
+              [
+                6.774073175194677,
+                -0.7005957785131045
+              ],
+              [
+                6.293431045447974,
+                1.5498567374373806
+              ]
+            ],
+            "interpretedRegions": [
+              {
+                "ring": [
+                  [
+                    14.61694865502998,
+                    10.65,
+                    3.4727591210688047
+                  ],
+                  [
+                    15.358813513264614,
+                    10.65,
+                    0.014896066696223897
+                  ],
+                  [
+                    12.861540537520138,
+                    10.65,
+                    -0.5027242633251814
+                  ],
+                  [
+                    12.111560398139389,
+                    10.65,
+                    2.8939633189729372
+                  ]
+                ],
+                "heightMetres": 10.65
+              },
+              {
+                "ring": [
+                  [
+                    12.861540537520138,
+                    12.45,
+                    -0.5027242633251814
+                  ],
+                  [
+                    9.630138039874367,
+                    12.45,
+                    -1.172510723800035
+                  ],
+                  [
+                    8.896278178368025,
+                    12.45,
+                    2.151167528245154
+                  ],
+                  [
+                    12.111560398139389,
+                    12.45,
+                    2.8939633189729372
+                  ]
+                ],
+                "heightMetres": 12.45
+              },
+              {
+                "ring": [
+                  [
+                    9.630138039874367,
+                    10.65,
+                    -1.172510723800035
+                  ],
+                  [
+                    6.9906685238792665,
+                    10.65,
+                    -1.7196047320325647
+                  ],
+                  [
+                    6.774073175194677,
+                    10.65,
+                    -0.7005957785131045
+                  ],
+                  [
+                    6.293431045447974,
+                    10.65,
+                    1.5498567374373806
+                  ],
+                  [
+                    8.896278178368025,
+                    10.65,
+                    2.151167528245154
+                  ]
+                ],
+                "heightMetres": 10.65
+              }
+            ],
+            "photoEvidence": [
+              "view-recording_2025-06-16_06-21-55_00330.jpg",
+              "view-recording_2025-06-16_06-21-55_00325.jpg"
+            ],
+            "heightStatus": "12.45m upper projection matches surveyed12.412\u201312.494m;10.65m terrace is photo-guided approximation",
+            "depthStatus": "Original plan extent belongs to this source roof polygon. It is not proof of the physical terrace/projection depth. Assigning the photographic profile through that plan depth remains an approximation pending actual source-camera GPU review."
+          },
+          {
+            "sourceRegionIndex": 175,
+            "originalHeightRangeMetres": [
+              13.211500849723816,
+              13.658500849723815
+            ],
+            "originalPlanRing": [
+              [
+                1.1425873656627912,
+                0.36057902089282834
+              ],
+              [
+                4.298267354827503,
+                1.0893057270118334
+              ],
+              [
+                4.238672445362561,
+                0.4003607000694842
+              ],
+              [
+                5.132242394642333,
+                -1.5937928315037198
+              ],
+              [
+                5.343579076930171,
+                -2.067485733872445
+              ],
+              [
+                1.017776678248453,
+                -3.009295397043843
+              ],
+              [
+                -3.1750048858556004,
+                -3.9089922983217207
+              ],
+              [
+                -3.834399186260523,
+                -2.4056960695995144
+              ],
+              [
+                -3.6649445286903375,
+                -2.2897992080632434
+              ],
+              [
+                -4.005385857526831,
+                -2.0153224126656255
+              ],
+              [
+                -4.478071752623605,
+                -0.9385261707899417
+              ],
+              [
+                -1.1344663433125004,
+                -0.16606990397519894
+              ],
+              [
+                -1.2024221938556987,
+                -0.6178356962826115
+              ],
+              [
+                -0.957935896716409,
+                -0.6215149156255961
+              ],
+              [
+                -0.8545041704088134,
+                -0.382101563251922
+              ],
+              [
+                -0.6078515018033639,
+                -0.21470777477105685
+              ],
+              [
+                0.2375302025135337,
+                -0.6427272996165811
+              ],
+              [
+                0.5877864952262629,
+                -0.6491334623129319
+              ],
+              [
+                1.1694073562675587,
+                -1.411515053741823
+              ],
+              [
+                2.13798408241013,
+                -0.0214456808313912
+              ]
+            ],
+            "interpretedRegions": [
+              {
+                "ring": [
+                  [
+                    4.9344188705557555,
+                    10.65,
+                    -1.152315944883406
+                  ],
+                  [
+                    5.132242394642333,
+                    10.65,
+                    -1.5937928315037198
+                  ],
+                  [
+                    5.343579076930171,
+                    10.65,
+                    -2.067485733872445
+                  ],
+                  [
+                    5.145984793640979,
+                    10.65,
+                    -2.110505776915997
+                  ]
+                ],
+                "heightMetres": 10.65
+              },
+              {
+                "ring": [
+                  [
+                    1.9966319102269683,
+                    13.35,
+                    0.5577996104253856
+                  ],
+                  [
+                    4.298267354827503,
+                    13.35,
+                    1.0893057270118334
+                  ],
+                  [
+                    4.238672445362561,
+                    13.35,
+                    0.4003607000694842
+                  ],
+                  [
+                    4.9344188705557555,
+                    13.35,
+                    -1.152315944883406
+                  ],
+                  [
+                    5.145984793640979,
+                    13.35,
+                    -2.110505776915997
+                  ],
+                  [
+                    2.7032154627703804,
+                    13.35,
+                    -2.642343237039874
+                  ],
+                  [
+                    2.1277658054633766,
+                    13.35,
+                    -0.03611061489827461
+                  ],
+                  [
+                    2.13798408241013,
+                    13.35,
+                    -0.0214456808313912
+                  ],
+                  [
+                    2.123281964452909,
+                    13.35,
+                    -0.015803134364415654
+                  ]
+                ],
+                "heightMetres": 13.35
+              },
+              {
+                "ring": [
+                  [
+                    1.1425873656627912,
+                    10.65,
+                    0.36057902089282834
+                  ],
+                  [
+                    1.9966319102269683,
+                    10.65,
+                    0.5577996104253856
+                  ],
+                  [
+                    2.7032154627703804,
+                    10.65,
+                    -2.642343237039874
+                  ],
+                  [
+                    1.017776678248453,
+                    10.65,
+                    -3.009295397043843
+                  ],
+                  [
+                    -0.6430111924269482,
+                    10.65,
+                    -3.365671153348199
+                  ],
+                  [
+                    -1.3390399182518138,
+                    10.65,
+                    -0.21333150354867436
+                  ],
+                  [
+                    -1.1344663433125004,
+                    10.65,
+                    -0.16606990397519894
+                  ],
+                  [
+                    -1.2024221938556987,
+                    10.65,
+                    -0.6178356962826115
+                  ],
+                  [
+                    -0.957935896716409,
+                    10.65,
+                    -0.6215149156255961
+                  ],
+                  [
+                    -0.8545041704088134,
+                    10.65,
+                    -0.382101563251922
+                  ],
+                  [
+                    -0.6078515018033639,
+                    10.65,
+                    -0.21470777477105685
+                  ],
+                  [
+                    0.2375302025135337,
+                    10.65,
+                    -0.6427272996165811
+                  ],
+                  [
+                    0.5877864952262629,
+                    10.65,
+                    -0.6491334623129319
+                  ],
+                  [
+                    1.1694073562675587,
+                    10.65,
+                    -1.411515053741823
+                  ],
+                  [
+                    2.1277658054633766,
+                    10.65,
+                    -0.03611061489827461
+                  ],
+                  [
+                    2.123281964452909,
+                    10.65,
+                    -0.015803134364415654
+                  ]
+                ],
+                "heightMetres": 10.65
+              },
+              {
+                "ring": [
+                  [
+                    -0.6430111924269482,
+                    13.35,
+                    -3.365671153348199
+                  ],
+                  [
+                    -3.1750048858556004,
+                    13.35,
+                    -3.9089922983217207
+                  ],
+                  [
+                    -3.608716419361121,
+                    13.35,
+                    -2.9202107570317906
+                  ],
+                  [
+                    -3.737024720182397,
+                    13.35,
+                    -2.3390977525390904
+                  ],
+                  [
+                    -3.6649445286903375,
+                    13.35,
+                    -2.2897992080632434
+                  ],
+                  [
+                    -3.7658773012339126,
+                    13.35,
+                    -2.2084233538065394
+                  ],
+                  [
+                    -4.067224630867554,
+                    13.35,
+                    -0.8436102357279008
+                  ],
+                  [
+                    -1.3390399182518138,
+                    13.35,
+                    -0.21333150354867436
+                  ]
+                ],
+                "heightMetres": 13.35
+              },
+              {
+                "ring": [
+                  [
+                    -3.608716419361121,
+                    10.65,
+                    -2.9202107570317906
+                  ],
+                  [
+                    -3.834399186260523,
+                    10.65,
+                    -2.4056960695995144
+                  ],
+                  [
+                    -3.737024720182397,
+                    10.65,
+                    -2.3390977525390904
+                  ],
+                  [
+                    -3.7658773012339126,
+                    10.65,
+                    -2.2084233538065394
+                  ],
+                  [
+                    -4.005385857526831,
+                    10.65,
+                    -2.0153224126656255
+                  ],
+                  [
+                    -4.478071752623605,
+                    10.65,
+                    -0.9385261707899417
+                  ],
+                  [
+                    -4.067224630867553,
+                    10.65,
+                    -0.8436102357279008
+                  ]
+                ],
+                "heightMetres": 10.65
+              }
+            ],
+            "photoEvidence": [
+              "view-recording_2025-06-16_06-21-55_00330.jpg",
+              "view-recording_2025-06-16_06-21-55_00325.jpg"
+            ],
+            "heightStatus": "13.35m upper projection lies inside surveyed13.211\u201313.659m;10.65m terrace is photo-guided approximation",
+            "depthStatus": "Original plan extent belongs to this source roof polygon. It is not proof of the physical terrace/projection depth. Assigning the photographic profile through that plan depth remains an approximation pending actual source-camera GPU review."
+          },
+          {
+            "sourceRegionIndex": 166,
+            "originalHeightRangeMetres": [
+              10.275500849723816,
+              10.581500849723815
+            ],
+            "originalPlanRing": [
+              [
+                -12.209704886953746,
+                -2.411227145298085
+              ],
+              [
+                -11.340154386210799,
+                -1.6387980058021867
+              ],
+              [
+                -11.263981402962408,
+                -1.5912963635787492
+              ],
+              [
+                -11.220392444645796,
+                -1.6386198075710467
+              ],
+              [
+                -10.561533996808013,
+                -2.3435033215898216
+              ],
+              [
+                -9.939791723899427,
+                -2.1996961760422096
+              ],
+              [
+                -9.488677945615194,
+                -5.265366333818804
+              ],
+              [
+                -11.525602964961504,
+                -5.702612382164034
+              ],
+              [
+                -19.43895022483305,
+                -7.623285017409103
+              ],
+              [
+                -19.579190295152312,
+                -7.115061348592633
+              ],
+              [
+                -16.614276256216336,
+                -5.532600092372206
+              ],
+              [
+                -11.70816830865695,
+                -4.815904088765706
+              ]
+            ],
+            "interpretedRegions": [
+              {
+                "ring": [
+                  [
+                    -12.209704886953746,
+                    10.35,
+                    -2.411227145298085
+                  ],
+                  [
+                    -11.340154386210799,
+                    10.35,
+                    -1.6387980058021867
+                  ],
+                  [
+                    -11.263981402962408,
+                    10.35,
+                    -1.5912963635787492
+                  ],
+                  [
+                    -11.220392444645796,
+                    10.35,
+                    -1.6386198075710467
+                  ],
+                  [
+                    -10.561533996808013,
+                    10.35,
+                    -2.3435033215898216
+                  ],
+                  [
+                    -9.939791723899427,
+                    10.35,
+                    -2.1996961760422096
+                  ],
+                  [
+                    -9.488677945615194,
+                    10.35,
+                    -5.265366333818804
+                  ],
+                  [
+                    -11.525602964961504,
+                    10.35,
+                    -5.702612382164034
+                  ],
+                  [
+                    -19.43895022483305,
+                    10.35,
+                    -7.623285017409103
+                  ],
+                  [
+                    -19.579190295152312,
+                    10.35,
+                    -7.115061348592633
+                  ],
+                  [
+                    -16.614276256216336,
+                    10.35,
+                    -5.532600092372206
+                  ],
+                  [
+                    -11.70816830865695,
+                    10.35,
+                    -4.815904088765706
+                  ]
+                ],
+                "heightMetres": 10.35
+              }
+            ],
+            "photoEvidence": [
+              "view-recording_2025-06-16_06-21-55_00330.jpg",
+              "view-recording_2025-06-16_06-21-55_00325.jpg"
+            ],
+            "heightStatus": "10.35m lies in surveyed10.275\u201310.582m column-front roof range",
+            "depthStatus": "Original plan extent belongs to this source roof polygon. It is not proof of the physical terrace/projection depth. Assigning the photographic profile through that plan depth remains an approximation pending actual source-camera GPU review."
+          },
+          {
+            "sourceRegionIndex": 157,
+            "originalHeightRangeMetres": [
+              13.099500849723816,
+              13.403500849723816
+            ],
+            "originalPlanRing": [
+              [
+                -8.656327404341939,
+                -1.9033515123257416
+              ],
+              [
+                -8.234279740219666,
+                -1.6271057880965145
+              ],
+              [
+                -7.4448324846596385,
+                -1.6235211441926367
+              ],
+              [
+                -7.242916678176628,
+                -1.576882716414616
+              ],
+              [
+                -6.602545185142567,
+                -3.9655035586037
+              ],
+              [
+                -6.430286959597543,
+                -4.608015524448774
+              ],
+              [
+                -9.488677945615194,
+                -5.265366333818804
+              ],
+              [
+                -9.939791723899427,
+                -2.1996961760422096
+              ]
+            ],
+            "interpretedRegions": [
+              {
+                "ring": [
+                  [
+                    -8.656327404341939,
+                    10.35,
+                    -1.9033515123257416
+                  ],
+                  [
+                    -8.234279740219666,
+                    10.35,
+                    -1.6271057880965145
+                  ],
+                  [
+                    -7.4448324846596385,
+                    10.35,
+                    -1.6235211441926367
+                  ],
+                  [
+                    -7.242916678176628,
+                    10.35,
+                    -1.576882716414616
+                  ],
+                  [
+                    -6.602545185142567,
+                    10.35,
+                    -3.9655035586037
+                  ],
+                  [
+                    -6.430286959597543,
+                    10.35,
+                    -4.608015524448774
+                  ],
+                  [
+                    -9.488677945615194,
+                    10.35,
+                    -5.265366333818804
+                  ],
+                  [
+                    -9.939791723899427,
+                    10.35,
+                    -2.1996961760422096
+                  ]
+                ],
+                "heightMetres": 10.35
+              }
+            ],
+            "photoEvidence": [
+              "view-recording_2025-06-16_06-21-55_00330.jpg",
+              "view-recording_2025-06-16_06-21-55_00325.jpg"
+            ],
+            "heightStatus": "Localized13.10\u201313.40m fitted proxy only0.47m behind low column-front: current2025 photos and actual source-camera GPU disproved visible fins. Flattened to adjacent source166 column-roof role10.35m; it is an interpretation, not a measured157 height",
+            "depthStatus": "Original plan extent belongs to this source roof polygon. It is not proof of the physical terrace/projection depth. Assigning the photographic profile through that plan depth remains an approximation pending actual source-camera GPU review."
+          },
+          {
+            "sourceRegionIndex": 151,
+            "originalHeightRangeMetres": [
+              9.783500849723815,
+              14.178500849723816
+            ],
+            "originalPlanRing": [
+              [
+                6.892725056744583,
+                -1.7399433847589307
+              ],
+              [
+                6.863769996632034,
+                -1.5956706864551506
+              ],
+              [
+                6.643891054744654,
+                -1.64218641721817
+              ],
+              [
+                6.670898009952023,
+                -1.7794421483688438
+              ],
+              [
+                5.343579076930171,
+                -2.067485733872445
+              ],
+              [
+                5.132242394642333,
+                -1.5937928315037198
+              ],
+              [
+                4.238672445362561,
+                0.4003607000694842
+              ],
+              [
+                4.298267354827503,
+                1.0893057270118334
+              ],
+              [
+                6.293431045447974,
+                1.5498567374373806
+              ],
+              [
+                6.774073175194677,
+                -0.7005957785131045
+              ],
+              [
+                6.9906685238792665,
+                -1.7196047320325647
+              ]
+            ],
+            "interpretedRegions": [
+              {
+                "ring": [
+                  [
+                    6.892725056744583,
+                    10.65,
+                    -1.7399433847589307
+                  ],
+                  [
+                    6.863769996632034,
+                    10.65,
+                    -1.5956706864551506
+                  ],
+                  [
+                    6.643891054744654,
+                    10.65,
+                    -1.64218641721817
+                  ],
+                  [
+                    6.670898009952023,
+                    10.65,
+                    -1.7794421483688438
+                  ],
+                  [
+                    5.343579076930171,
+                    10.65,
+                    -2.067485733872445
+                  ],
+                  [
+                    5.132242394642333,
+                    10.65,
+                    -1.5937928315037198
+                  ],
+                  [
+                    4.9344188705557555,
+                    10.65,
+                    -1.152315944883406
+                  ],
+                  [
+                    4.43262645304148,
+                    10.65,
+                    1.1203203343511783
+                  ],
+                  [
+                    6.293431045447974,
+                    10.65,
+                    1.5498567374373806
+                  ],
+                  [
+                    6.774073175194677,
+                    10.65,
+                    -0.7005957785131045
+                  ],
+                  [
+                    6.9906685238792665,
+                    10.65,
+                    -1.7196047320325647
+                  ]
+                ],
+                "heightMetres": 10.65
+              },
+              {
+                "ring": [
+                  [
+                    4.9344188705557555,
+                    13.35,
+                    -1.152315944883406
+                  ],
+                  [
+                    4.238672445362561,
+                    13.35,
+                    0.4003607000694842
+                  ],
+                  [
+                    4.298267354827503,
+                    13.35,
+                    1.0893057270118334
+                  ],
+                  [
+                    4.43262645304148,
+                    13.35,
+                    1.1203203343511783
+                  ]
+                ],
+                "heightMetres": 13.35
+              }
+            ],
+            "photoEvidence": [
+              "view-recording_2025-06-16_06-21-55_00330.jpg",
+              "view-recording_2025-06-16_06-21-55_00325.jpg"
+            ],
+            "heightStatus": "10.65m terrace role is photo-guided approximation; original narrow fitted proxy is retained separately",
+            "depthStatus": "Original plan extent belongs to this source roof polygon. It is not proof of the physical terrace/projection depth. Assigning the photographic profile through that plan depth remains an approximation pending actual source-camera GPU review."
+          },
+          {
+            "sourceRegionIndex": 156,
+            "originalHeightRangeMetres": [
+              10.490500849723816,
+              10.817500849723816
+            ],
+            "originalPlanRing": [
+              [
+                -7.242916678176628,
+                -1.576882716414616
+              ],
+              [
+                -4.478071752623605,
+                -0.9385261707899417
+              ],
+              [
+                -4.005385857526831,
+                -2.0153224126656255
+              ],
+              [
+                -3.6649445286903375,
+                -2.2897992080632434
+              ],
+              [
+                -3.834399186260523,
+                -2.4056960695995144
+              ],
+              [
+                -5.404556822223235,
+                -3.4714700039208424
+              ],
+              [
+                -5.863775016203504,
+                -3.783479285541489
+              ],
+              [
+                -6.602545185142567,
+                -3.9655035586037
+              ]
+            ],
+            "interpretedRegions": [
+              {
+                "ring": [
+                  [
+                    -3.7658773012339126,
+                    13.35,
+                    -2.2084233538065394
+                  ],
+                  [
+                    -3.6649445286903375,
+                    13.35,
+                    -2.2897992080632434
+                  ],
+                  [
+                    -3.737024720182397,
+                    13.35,
+                    -2.3390977525390904
+                  ]
+                ],
+                "heightMetres": 13.35
+              },
+              {
+                "ring": [
+                  [
+                    -7.242916678176628,
+                    10.65,
+                    -1.576882716414616
+                  ],
+                  [
+                    -4.478071752623605,
+                    10.65,
+                    -0.9385261707899417
+                  ],
+                  [
+                    -4.005385857526831,
+                    10.65,
+                    -2.0153224126656255
+                  ],
+                  [
+                    -3.7658773012339126,
+                    10.65,
+                    -2.2084233538065394
+                  ],
+                  [
+                    -3.737024720182397,
+                    10.65,
+                    -2.3390977525390904
+                  ],
+                  [
+                    -3.834399186260523,
+                    10.65,
+                    -2.4056960695995144
+                  ],
+                  [
+                    -5.404556822223235,
+                    10.65,
+                    -3.4714700039208424
+                  ],
+                  [
+                    -5.863775016203504,
+                    10.65,
+                    -3.783479285541489
+                  ],
+                  [
+                    -6.602545185142567,
+                    10.65,
+                    -3.9655035586037
+                  ]
+                ],
+                "heightMetres": 10.65
+              }
+            ],
+            "photoEvidence": [
+              "view-recording_2025-06-16_06-21-55_00330.jpg",
+              "view-recording_2025-06-16_06-21-55_00325.jpg"
+            ],
+            "heightStatus": "10.65m terrace role is photo-guided approximation; original narrow fitted proxy is retained separately",
+            "depthStatus": "Original plan extent belongs to this source roof polygon. It is not proof of the physical terrace/projection depth. Assigning the photographic profile through that plan depth remains an approximation pending actual source-camera GPU review."
+          },
+          {
+            "sourceRegionIndex": 152,
+            "originalHeightRangeMetres": [
+              8.907500849723816,
+              13.474500849723816
+            ],
+            "originalPlanRing": [
+              [
+                -5.863775016203504,
+                -3.783479285541489
+              ],
+              [
+                -5.404556822223235,
+                -3.4714700039208424
+              ],
+              [
+                -3.834399186260523,
+                -2.4056960695995144
+              ],
+              [
+                -3.1750048858556004,
+                -3.9089922983217207
+              ],
+              [
+                -6.430286959597543,
+                -4.608015524448774
+              ],
+              [
+                -6.602545185142567,
+                -3.9655035586037
+              ]
+            ],
+            "interpretedRegions": [
+              {
+                "ring": [
+                  [
+                    -3.608716419361121,
+                    13.35,
+                    -2.9202107570317906
+                  ],
+                  [
+                    -3.1750048858556004,
+                    13.35,
+                    -3.9089922983217207
+                  ],
+                  [
+                    -3.380645873742577,
+                    13.35,
+                    -3.9531506303864656
+                  ]
+                ],
+                "heightMetres": 13.35
+              },
+              {
+                "ring": [
+                  [
+                    -5.863775016203504,
+                    10.65,
+                    -3.783479285541489
+                  ],
+                  [
+                    -5.404556822223235,
+                    10.65,
+                    -3.4714700039208424
+                  ],
+                  [
+                    -3.834399186260523,
+                    10.65,
+                    -2.4056960695995144
+                  ],
+                  [
+                    -3.608716419361121,
+                    10.65,
+                    -2.9202107570317906
+                  ],
+                  [
+                    -3.380645873742577,
+                    10.65,
+                    -3.9531506303864656
+                  ],
+                  [
+                    -6.430286959597543,
+                    10.65,
+                    -4.608015524448774
+                  ],
+                  [
+                    -6.602545185142567,
+                    10.65,
+                    -3.9655035586037
+                  ]
+                ],
+                "heightMetres": 10.65
+              }
+            ],
+            "photoEvidence": [
+              "view-recording_2025-06-16_06-21-55_00330.jpg",
+              "view-recording_2025-06-16_06-21-55_00325.jpg"
+            ],
+            "heightStatus": "10.65m terrace role is photo-guided approximation; original narrow fitted proxy is retained separately",
+            "depthStatus": "Original plan extent belongs to this source roof polygon. It is not proof of the physical terrace/projection depth. Assigning the photographic profile through that plan depth remains an approximation pending actual source-camera GPU review."
+          },
+          {
+            "sourceRegionIndex": 174,
+            "originalHeightRangeMetres": [
+              10.478500849723815,
+              10.516500849723815
+            ],
+            "originalPlanRing": [
+              [
+                0.7797338705516769,
+                0.2760248567884105
+              ],
+              [
+                1.1425873656627912,
+                0.36057902089282834
+              ],
+              [
+                2.13798408241013,
+                -0.0214456808313912
+              ],
+              [
+                1.1694073562675587,
+                -1.411515053741823
+              ],
+              [
+                0.5877864952262629,
+                -0.6491334623129319
+              ],
+              [
+                0.40874792350991485,
+                -0.41478485218817696
+              ]
+            ],
+            "interpretedRegions": [
+              {
+                "ring": [
+                  [
+                    2.123281964452909,
+                    13.35,
+                    -0.01580313436441566
+                  ],
+                  [
+                    2.13798408241013,
+                    13.35,
+                    -0.0214456808313912
+                  ],
+                  [
+                    2.1277658054633766,
+                    13.35,
+                    -0.03611061489827462
+                  ]
+                ],
+                "heightMetres": 13.35
+              },
+              {
+                "ring": [
+                  [
+                    0.7797338705516769,
+                    10.65,
+                    0.2760248567884105
+                  ],
+                  [
+                    1.1425873656627912,
+                    10.65,
+                    0.36057902089282834
+                  ],
+                  [
+                    2.123281964452909,
+                    10.65,
+                    -0.01580313436441566
+                  ],
+                  [
+                    2.1277658054633766,
+                    10.65,
+                    -0.03611061489827462
+                  ],
+                  [
+                    1.1694073562675587,
+                    10.65,
+                    -1.411515053741823
+                  ],
+                  [
+                    0.5877864952262629,
+                    10.65,
+                    -0.6491334623129319
+                  ],
+                  [
+                    0.40874792350991485,
+                    10.65,
+                    -0.41478485218817696
+                  ]
+                ],
+                "heightMetres": 10.65
+              }
+            ],
+            "photoEvidence": [
+              "view-recording_2025-06-16_06-21-55_00330.jpg",
+              "view-recording_2025-06-16_06-21-55_00325.jpg"
+            ],
+            "heightStatus": "10.65m terrace role is photo-guided approximation; original narrow fitted proxy is retained separately",
+            "depthStatus": "Original plan extent belongs to this source roof polygon. It is not proof of the physical terrace/projection depth. Assigning the photographic profile through that plan depth remains an approximation pending actual source-camera GPU review."
+          }
+        ]
+      },
+      "updatedAt": "2026-10-08T01:30:34.576061+00:00"
     }
   ]
 }

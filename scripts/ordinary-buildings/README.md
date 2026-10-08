@@ -9,6 +9,8 @@ The shared `build.ts` creates native-footprint shells, original facade atlases a
 | `sloped-window-groups.mjs` | Flush window groups on measured sloped roof planes | Rokin northern block |
 | `barrel-vault.mjs` | Bounded circular vault mesh and original diamond-cassette pattern with glazing tapering toward an opaque crest | Rokin southern block |
 | `perforated-canopy.mjs` | Thin canopy strips with actual circular through-holes, fitted to the caller's native frame | Keizersgracht 603 / Vijzelstraat 79 |
+| `round-front-assemblies.mjs` | Rounded columns and circular door details, placed in the caller's native facade frame | Kerkstraat 206–210 (local integration) |
+| `roof-step-support.mjs` | Local supports below stepped roofs, subtracting existing coplanar walls to avoid overlapping surfaces | Kerkstraat 206–210 (local integration) |
 | `exact-index.mjs` | Exact attribute-tuple indexing of expanded static triangles, preserving IEEE bits, typed/normalized attributes, primitive order and materials | Rokin southern block |
 
 `build-rokin-north-details.mjs` and `build-rokin-south-details.mjs` place these components using the two individual recipes. They modify only their exact BAG identity, update only its catalogue entry and reject a second application. `rokin-roof-details.mjs` owns the southern building's source-specific roof/deck assembly. Roof and facade helper functions contain no BAG IDs; native placement stays in the building stage.
@@ -26,11 +28,12 @@ node scripts/ordinary-buildings/build-canal-belt-spui-details.mjs
 node scripts/ordinary-buildings/build-rokin-north-details.mjs
 node scripts/ordinary-buildings/build-rokin-south-details.mjs
 node scripts/ordinary-buildings/build-keizers603-details.mjs
+node scripts/ordinary-buildings/build-kerk206-details.mjs
 node --import tsx scripts/ordinary-buildings/check.ts
 npm run build:canal-signature-landmarks
 ```
 
-The full sequence reproduced all 27 retained model byte streams exactly during the Keizersgracht/Lange Leidsedwarsstraat integration; the previous 26 hashes stayed unchanged. The new Keizersgracht model fits the strict 500,000-byte / three-material budget. Exact indexing applies to these static expanded triangle assets, not arbitrary animated glTF files.
+The current local full sequence reproduced all 28 model byte streams exactly during the Kerkstraat integration; the previous 27 hashes stayed unchanged. Hosted acceptance still covers 27 until the Kerkstraat release and hosted verification complete. The new Keizersgracht model fits the strict 500,000-byte / three-material budget. Exact indexing applies to these static expanded triangle assets, not arbitrary animated glTF files.
 
 ## What this batch taught us
 
@@ -41,6 +44,12 @@ Box-shaped ground plans can have distinctive roofs. These two remain ordinary as
 Reuse geometry mechanisms after an actual source/render comparison. Reuse of a roof shape, window count, material color or height requires evidence for the next building. Check current official BAG geometry against installed candidates early: the next Amstel 130 candidate proved stale and covered neighboring facades, so it was held before authoring.
 
 The next two builds exposed two useful checks before generalizing another assembly. Keizersgracht's low southern wing belongs to the same native parent and needs its own three window tiers; a shared high facade grid missed it. Lange Leidsedwarsstraat has two different central fronts between modern wings: configuring one repeated grid lost their window groups, gable glazing and entrance proportions. Both first versions failed source review and were corrected. The completed Lange Leidsedwarsstraat model was subsequently deferred after the geographic audit placed it outside the target area; its recipe, builder and evidence are retained privately. The new canopy helper is reusable; the central profiled fronts remain source-specific until another building establishes which parameters should be shared.
+
+## Shared-component priorities
+
+Reuse source-sized assemblies rather than whole facades. Historic boxes most often need arched openings with brick surrounds, repeated window groups and cornices. Modern boxes need projecting window heads, separate upper-floor rhythms, double-height ground entrances and low wings. Keep each building's dimensions, counts, colors and arrangement in its recipe. Promote another shared assembly when a second researched building demonstrates the repeated mechanism.
+
+Kerkstraat exposed checks that should travel with the helpers: explicit nonmetallic materials for masonry and painted columns, subtraction of existing coplanar roof supports, first-hit visibility, and clear openings beneath low terraces. CPU geometry checks did not catch the black material appearance; actual rendered review remains necessary. These checks can reduce repeated debugging, but total authoring speed has not yet been measured.
 
 ## Next work
 

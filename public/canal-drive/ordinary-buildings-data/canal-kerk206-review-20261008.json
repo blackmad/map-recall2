@@ -1,0 +1,313 @@
+{
+  "atUTC": "2026-10-08T01:32:31.586129+00:00",
+  "modelId": "ordinary-0363100012175018",
+  "buildingId": "NL.IMBAG.Pand.0363100012175018",
+  "hash": "4d5eacd2c2aaec27cfbdbdd5477d9e18ccfa0f62df1839ef95fd453ce994e311",
+  "bytes": 396200,
+  "triangles": 5280,
+  "materials": 3,
+  "verdict": "Independent source/actual GPU gallery and root/independent native desktop-touch game PASS with limits; local manual28 PASS; hosted release pending",
+  "sourceCommit": "9fc691744e03b91f70899896033acdb6cbbd1a18",
+  "sourcePack": "experiments/canal-belt-continuation-20261007/kerk206-build/0363100012175018",
+  "rawSourcePack": "experiments/canal-belt-continuation-20261007/next-box-source-20/0363100012175018",
+  "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/kerk206-release28-26",
+  "criticalAssemblies": [
+    "Native modern row: eastern dark brick, central pale render, western warm brick and lower white round-column section; two paired-window/Juliet tiers plus centered upper projections.",
+    "Recessed red-orange entrance doors with vertical round portholes; loading shutters framed by real pale piers/transom glazing.",
+    "Low stepped street terrace roofs retain fitted survey heights; 15.8 m rear roof and localized16.4 m equipment never become full street cap."
+  ],
+  "independentGallery": {
+    "id": "0363100012175018",
+    "sha256": "4d5eacd2c2aaec27cfbdbdd5477d9e18ccfa0f62df1839ef95fd453ce994e311",
+    "reviewedOn": "2026-10-08",
+    "isolatedSourceGpuGalleryVerdict": "PASS",
+    "nativeGameVerdict": "PASS with recorded source and performance limits; see native-game-verdict.json",
+    "treatment": "landmark",
+    "standardTreatmentApproved": false,
+    "isPoi": false,
+    "checks": {
+      "ordinarySilhouette": false,
+      "repetitiveFacade": true,
+      "noDefiningDetailsLost": true,
+      "openSpacesUnderstood": true
+    },
+    "scope": "Full fidelity review of distinctive ordinary native parent; treatment does not create curated POI",
+    "bytes": 396200,
+    "triangles": 5280,
+    "materials": 3,
+    "sourcePackCommit": "fbb979079744b0f9014b87918fd36108253318a4",
+    "referenceImages": [
+      "view-recording_2025-06-16_06-21-55_00330.jpg",
+      "view-recording_2025-06-16_06-21-55_00325.jpg"
+    ],
+    "limits": [
+      "Front upper projection depth and widths photo-guided within surveyed ownership",
+      "Exact terrace thickness and hidden rear windows unmeasured",
+      "Tiny local rear join seams and bounded cornice corner nonblocking for isolated source recognition",
+      "Native desktop/touch evidence passes; target has no actual pyramid entries, touch is emulated on Apple M4 Pro, source-stage loading tasks125\u2013130ms and forced-failure reload158ms remain limits",
+      "Canonical derivative source publication and public release remain coordinator responsibilities"
+    ],
+    "reason": "Final source-angle GPU views retain alternating residential modules, paired window/Juliet groups, centered projections/open terraces, three-tier round columns, lintels and porthole portal. Large proxy fins, unsupported rear transmission, support overlap and metallic-black masonry are corrected; earlier failures remain in REVIEW.md."
+  },
+  "nativeGame": {
+    "id": "0363100012175018",
+    "sha256": "4d5eacd2c2aaec27cfbdbdd5477d9e18ccfa0f62df1839ef95fd453ce994e311",
+    "reviewedOn": "2026-10-08",
+    "verdict": "PASS with recorded source and performance limits",
+    "scope": "Independent review of root actual native-game desktop and touch captures; no browser launched",
+    "evidenceRoot": "/Users/blackmad/Code/map-recall2-worktrees/canal-kerk206-runtime/game/",
+    "devices": {
+      "desktop": {
+        "pageErrors": [],
+        "requestedExactHash": true,
+        "targetResident": 1,
+        "exactIdSuppression": true,
+        "shaderRanges": [
+          {
+            "key": "coarse:8414/5384",
+            "start": 325212,
+            "count": 94,
+            "first": 1,
+            "last": 1
+          }
+        ],
+        "spatialSuppression": false,
+        "pyramidRendererHiddenFlag": true,
+        "actualTargetPyramidEntries": [],
+        "requiredResidentNeighbors": [
+          {
+            "id": "NL.IMBAG.Pand.0363100012175010",
+            "hidden": false
+          },
+          {
+            "id": "NL.IMBAG.Pand.0363100012175011",
+            "hidden": false
+          },
+          {
+            "id": "NL.IMBAG.Pand.0363100012175013",
+            "hidden": false
+          },
+          {
+            "id": "NL.IMBAG.Pand.0363100012175015",
+            "hidden": false
+          },
+          {
+            "id": "NL.IMBAG.Pand.0363100012176231",
+            "hidden": false
+          }
+        ],
+        "ordinaryPoi": [],
+        "pick": {
+          "id": "NL.IMBAG.Pand.0363100012175018",
+          "landmarkId": "",
+          "footprintType": "Polygon",
+          "height": 16.428003311157227,
+          "screen": [
+            630.0000000113029,
+            359.9999999886972
+          ]
+        },
+        "phases": {
+          "delayed": {
+            "shown": false,
+            "suppressed": false,
+            "shaderHidden": false,
+            "pyramidHidden": false,
+            "spatialSuppression": false
+          },
+          "disabled": {
+            "shown": true,
+            "suppressed": false,
+            "shaderHidden": false,
+            "pyramidHidden": false,
+            "spatialSuppression": false
+          },
+          "restored": {
+            "shown": true,
+            "suppressed": true,
+            "shaderHidden": true,
+            "pyramidHidden": true,
+            "spatialSuppression": false
+          },
+          "loadFailure": {
+            "shown": false,
+            "suppressed": false,
+            "shaderHidden": false,
+            "pyramidHidden": false,
+            "spatialSuppression": false
+          }
+        },
+        "stationaryRiderMovementMetres": 9.188837922781672e-05,
+        "panChangedCameraCenter": true,
+        "warmFrameSampleCount": 90,
+        "warmFrameMedianMs": 16.699999999999818,
+        "warmFrameP95Ms": 16.700000000000728,
+        "sourceStageLongTasksMs": [
+          130
+        ],
+        "reloadSourceStageLongTasksMs": [
+          158
+        ],
+        "bootMs": 5463,
+        "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)"
+      },
+      "touch": {
+        "pageErrors": [],
+        "requestedExactHash": true,
+        "targetResident": 1,
+        "exactIdSuppression": true,
+        "shaderRanges": [
+          {
+            "key": "coarse:8414/5384",
+            "start": 325286,
+            "count": 94,
+            "first": 1,
+            "last": 1
+          }
+        ],
+        "spatialSuppression": false,
+        "pyramidRendererHiddenFlag": true,
+        "actualTargetPyramidEntries": [],
+        "requiredResidentNeighbors": [
+          {
+            "id": "NL.IMBAG.Pand.0363100012175010",
+            "hidden": false
+          },
+          {
+            "id": "NL.IMBAG.Pand.0363100012175011",
+            "hidden": false
+          },
+          {
+            "id": "NL.IMBAG.Pand.0363100012175013",
+            "hidden": false
+          },
+          {
+            "id": "NL.IMBAG.Pand.0363100012175015",
+            "hidden": false
+          },
+          {
+            "id": "NL.IMBAG.Pand.0363100012176231",
+            "hidden": false
+          }
+        ],
+        "ordinaryPoi": [],
+        "pick": {
+          "id": "NL.IMBAG.Pand.0363100012175018",
+          "landmarkId": "",
+          "footprintType": "Polygon",
+          "height": 16.428003311157227,
+          "screen": [
+            135,
+            301.9999999990425
+          ]
+        },
+        "phases": {
+          "delayed": {
+            "shown": false,
+            "suppressed": false,
+            "shaderHidden": false,
+            "pyramidHidden": false,
+            "spatialSuppression": false
+          },
+          "disabled": {
+            "shown": true,
+            "suppressed": false,
+            "shaderHidden": false,
+            "pyramidHidden": false,
+            "spatialSuppression": false
+          },
+          "restored": {
+            "shown": true,
+            "suppressed": true,
+            "shaderHidden": true,
+            "pyramidHidden": true,
+            "spatialSuppression": false
+          }
+        },
+        "stationaryRiderMovementMetres": 0.0006172959158314622,
+        "panChangedCameraCenter": true,
+        "warmFrameSampleCount": 90,
+        "warmFrameMedianMs": 16.699999999999818,
+        "warmFrameP95Ms": 16.800000000000182,
+        "sourceStageLongTasksMs": [
+          125
+        ],
+        "reloadSourceStageLongTasksMs": [
+          125
+        ],
+        "bootMs": 4601,
+        "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)"
+      }
+    },
+    "screenshotsInspected": [
+      "desktop-ordinary-0363100012175018-source-front.png",
+      "touch-ordinary-0363100012175018-source-front.png",
+      "desktop-ordinary-0363100012175018.png",
+      "touch-ordinary-0363100012175018.png",
+      "desktop-gesture.png",
+      "touch-gesture.png",
+      "desktop-wide.png",
+      "touch-wide.png",
+      "desktop-fallback.png",
+      "touch-fallback.png",
+      "desktop-load-failure.png"
+    ],
+    "visualFindings": [
+      "Native street-side frontage orientation and scale agree with surveyed scope; alternating residential fronts, white column band and orange-red portal remain recognizable where actual opposite-street roofs do not occlude them.",
+      "Higher/rear views retain local terrace/roof steps and tall rear mass without previous proxy fins, broad unsupported transmission or black material patches.",
+      "Stationary-rider camera pan and zoom-out views retain surrounding window and ground-floor facade identity on desktop and touch; no new blank-wall regression observed.",
+      "Fallback images restore an ordinary native building envelope while keeping surrounding geometry."
+    ],
+    "limits": [
+      "Source-front screenshots partly occluded by actual retained opposite-street roof; isolated source-camera gallery provides unobstructed critical-assembly comparison.",
+      "Target has no actual pyramidal-roof entries in this run; hidden/restore flags and exact shader mask are evidenced, but this flat target does not exercise a nonempty pyramid replacement.",
+      "Touch evidence uses an emulated touch viewport on the same Apple M4 Pro GPU, not physical phone GPU measurements.",
+      "Warm samples are 90 frames, median16.7ms/p95up to16.8ms. Source-stage tasks130msdesktop/125mstouch, plus desktop forced-failure reload158ms, prevent claiming stall-free loading.",
+      "Exact upper projection depths and hidden rear facade remain documented source approximations.",
+      "Canonical derivative source-pack publication and public commit/release remain root responsibilities."
+    ],
+    "treatment": "full landmark fidelity loop for distinctive ordinary parent",
+    "standardTreatmentApproved": false,
+    "isPoi": false,
+    "preservedFailedEvidence": "REVIEW.md retains initial proxy silhouette, support overlap/transmission and metallic material HOLDs"
+  },
+  "manualGallery": {
+    "desktopLoaded": 28,
+    "touchLoaded": 28,
+    "newestCard": "Kerkstraat 206\u2013210 ordinary modern row",
+    "feedbackCapturedPreview": true,
+    "submittedFeedback": false,
+    "filteredCards": 1,
+    "evidence": "manual28/capture.json"
+  },
+  "reproduction": {
+    "total": 28,
+    "exactHashes": 28,
+    "previous27Unchanged": true
+  },
+  "preservedFailures": [
+    "740700ff unsupported local roof fins and transmission",
+    "3d4e0826 coplanar support overlap and black/stippled strip",
+    "ea30dc0e material default metallicFactor1 made valid wall colors appear black; Float32 sliver support cleanup"
+  ],
+  "limits": [
+    "Front upper projection depth and widths photo-guided within surveyed ownership",
+    "Exact terrace thickness and hidden rear windows unmeasured",
+    "Tiny local rear join seams and bounded cornice corner nonblocking for isolated source recognition",
+    "Native desktop/touch evidence passes; target has no actual pyramid entries, touch is emulated on Apple M4 Pro, source-stage loading tasks125\u2013130ms and forced-failure reload158ms remain limits",
+    "Canonical derivative source publication and public release remain coordinator responsibilities",
+    "Source-front screenshots partly occluded by actual retained opposite-street roof; isolated source-camera gallery provides unobstructed critical-assembly comparison.",
+    "Target has no actual pyramidal-roof entries in this run; hidden/restore flags and exact shader mask are evidenced, but this flat target does not exercise a nonempty pyramid replacement.",
+    "Touch evidence uses an emulated touch viewport on the same Apple M4 Pro GPU, not physical phone GPU measurements.",
+    "Warm samples are 90 frames, median16.7ms/p95up to16.8ms. Source-stage tasks130msdesktop/125mstouch, plus desktop forced-failure reload158ms, prevent claiming stall-free loading.",
+    "Exact upper projection depths and hidden rear facade remain documented source approximations.",
+    "Canonical derivative source-pack publication and public commit/release remain root responsibilities."
+  ],
+  "ordinaryAsset": {
+    "curatedDestinationCreated": false,
+    "mappedPoiCreated": false,
+    "realSignageAdded": false
+  },
+  "ciLimit": "Previous public27 full e2e run37706014687 canceled after configured40-minute limit; smoke/check:canal and deployment passed. New release CI not yet run.",
+  "reviewEvidenceCommit": "fe2cb3f800f2c67c7e646aebf96af51462186bfe"
+}

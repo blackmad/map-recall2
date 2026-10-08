@@ -2024,29 +2024,30 @@
         "NL.IMBAG.Pand.0363100012175754",
         "NL.IMBAG.Pand.0363100012254471",
         "NL.IMBAG.Pand.0363100012243483",
-        "NL.IMBAG.Pand.0363100012167975"
+        "NL.IMBAG.Pand.0363100012167975",
+        "NL.IMBAG.Pand.0363100012175018"
       ],
       "latestBatch": [
-        "NL.IMBAG.Pand.0363100012167975"
+        "NL.IMBAG.Pand.0363100012175018"
       ],
-      "evidence": "ordinary-buildings-data/canal-keizers603-review-20261008.json",
+      "evidence": "ordinary-buildings-data/canal-kerk206-review-20261008.json",
       "handoff": "docs/performance/2026-10-06/canal-belt-continuation-handoff.md",
-      "nextAction": "Commit/push and verify Keizersgracht603 hosted27 release. Continue fresh Kerkstraat206\u2013210 build and independent visual/native review. LangeLeids12 remains outside-scope hold; do not include in canal-belt counts.",
-      "sourceCommit": "26f2679530ae6a0a9fe362c0043a8941887efd58",
+      "nextAction": "Publish verified Kerkstraat206\u2013210 local28 and verify actual hosted assets/manual page. Amstelstraat16\u201322 v03 independent low street-height gallery now PASS; port reproducible native builder and run actual native game checks. Source26 continues substantial inner-box research; Andaz/Lange holds retained.",
+      "sourceCommit": "9fc691744e03b91f70899896033acdb6cbbd1a18",
       "notes": "Ordinary assets/full architecture review for defining Rokin roof assemblies; no invented POI routes. Existing Nacarat basic inside-footprint click card retained. Both strict500k/three-material budgets pass.",
-      "localModelCount": 27,
+      "localModelCount": 28,
       "hostedVerification": {
-        "publicCommit": "bb31004d418c36599f319ae14903973e7592a6db",
-        "firebaseRun": "37698102176",
-        "verifiedAtUTC": "2026-10-07T22:48:24.706529+00:00",
-        "models": 26,
+        "publicCommit": "bc9087c8110a37c87507b65ea640f9e8e199c984",
+        "firebaseRun": "37706014665",
+        "verifiedAtUTC": "2026-10-08T00:24:40.599435+00:00",
+        "models": 27,
         "allAssetHashesExact": true,
-        "manualDesktopTouchLoaded": 26,
+        "manualDesktopTouchLoaded": 27,
         "feedbackPreview": true,
-        "sourceCommit": "fc7c606dbbe77bd9d92efb8111c4a11078fde7a9",
-        "sourcePack": "experiments/canal-belt-continuation-20261007/host26-14"
+        "sourceCommit": "defa8fd2d5642a460de63ae112a22306b7130304",
+        "sourcePack": "experiments/canal-belt-continuation-20261007/host27-24"
       },
-      "publicationSourceCommit": "fbb979079744b0f9014b87918fd36108253318a4"
+      "publicationSourceCommit": "fe2cb3f800f2c67c7e646aebf96af51462186bfe"
     },
     {
       "id": "amstel130-stale-native-candidate",

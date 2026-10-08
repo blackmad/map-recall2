@@ -18555,6 +18555,1027 @@
       },
       "treatment": "landmark",
       "updatedAt": "2026-10-08T00:02:22.785948+00:00"
+    },
+    {
+      "id": "ordinary-0363100012175018",
+      "buildingId": "NL.IMBAG.Pand.0363100012175018",
+      "name": "Kerkstraat 206\u2013210 ordinary modern row",
+      "anchor": [
+        4.89098,
+        52.363002900000005
+      ],
+      "cameraBearing": 11.68,
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.891209,
+              52.363005
+            ],
+            [
+              4.891084,
+              52.363021
+            ],
+            [
+              4.891084,
+              52.363019
+            ],
+            [
+              4.89108,
+              52.36302
+            ],
+            [
+              4.891081,
+              52.363021
+            ],
+            [
+              4.890998,
+              52.363032
+            ],
+            [
+              4.890813,
+              52.363056
+            ],
+            [
+              4.890675,
+              52.363077
+            ],
+            [
+              4.890621,
+              52.362924
+            ],
+            [
+              4.891155,
+              52.362854
+            ],
+            [
+              4.891209,
+              52.363005
+            ]
+          ]
+        ]
+      },
+      "height": 16.428003311157227,
+      "modelUrl": "./models/ordinary-buildings/0363100012175018.glb",
+      "bounds": {
+        "min": [
+          -24.4301700592041,
+          0,
+          -8.487066268920898
+        ],
+        "max": [
+          15.606244087219238,
+          16.428003311157227,
+          16.59314727783203
+        ]
+      },
+      "triangles": 5280,
+      "bytes": 396200,
+      "materials": 3,
+      "hash": "4d5eacd2c2aaec27cfbdbdd5477d9e18ccfa0f62df1839ef95fd453ce994e311",
+      "referenceImages": [
+        "./ordinary-buildings-data/references/0363100012175018/view-recording_2025-06-16_06-21-55_00330.jpg",
+        "./ordinary-buildings-data/references/0363100012175018/view-recording_2025-06-16_06-21-55_00325.jpg",
+        "./ordinary-buildings-data/references/0363100012175018/view-recording_2025-06-16_06-21-55_00328.jpg"
+      ],
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-box-source-20/0363100012175018",
+      "sourceUrls": [
+        "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/?ligtInPanden.identificatie=0363100012175018&_pageSize=100",
+        "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000448155?volgnummer=1",
+        "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000448156?volgnummer=1",
+        "https://api.data.amsterdam.nl/v1/bag/nummeraanduidingen/0363200000448157?volgnummer=1",
+        "https://api.data.amsterdam.nl/v1/bag/panden/?identificatie=0363100012175018&_pageSize=100",
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012175018",
+        "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.89098%2C52.363002900000005&radius=65&srid=4326&page_size=100",
+        "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.89098%2C52.363002900000005&page=2&page_size=100&radius=65&srid=4326",
+        "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.89098%2C52.363002900000005&page=3&page_size=100&radius=65&srid=4326",
+        "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-21-55_00328/equirectangular/panorama_8000.jpg",
+        "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241211_0954_Track18_Sphere_00017/equirectangular/panorama_8000.jpg",
+        "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-21-55_00330/equirectangular/panorama_8000.jpg",
+        "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-21-55_00325/equirectangular/panorama_8000.jpg"
+      ],
+      "traits": [
+        "Native modern row: eastern dark brick, central pale render, western warm brick and lower white round-column section; two paired-window/Juliet tiers plus centered upper projections.",
+        "Recessed red-orange entrance doors with vertical round portholes; loading shutters framed by real pale piers/transom glazing.",
+        "Low stepped street terrace roofs retain fitted survey heights; 15.8 m rear roof and localized16.4 m equipment never become full street cap."
+      ],
+      "simplifications": [
+        "Original procedural facade atlas; no copied photograph pixels.",
+        "Rear/side openings unobserved and deliberately blank; no invented POI or name signage.",
+        "Submodule transition on edge5 approximately6.4 m based on native/current ownership projections; native geometric edges are not architecture modules.",
+        "Thin round columns/Juliet rails and door portholes are original geometry; source-supported LAMER lettering omitted."
+      ],
+      "heightEvidence": "Every original LoD2.2 roof polygon transformed from whole.metadata transform via RD to native WGS84 local metres; groundNAP0.804 deducted. Front eaves12.45 /13.2\u201313.7 /10.3; rear15.8; tiny16.4 equipment local only.",
+      "facadeRecipe": {
+        "kind": "blank",
+        "levels": 0,
+        "frameWidthMetres": 0.09,
+        "edges": {
+          "0": {
+            "kind": "blank",
+            "wallColor": "#524a42",
+            "windowTiers": [
+              {
+                "startMetres": 0.55,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.9,
+                "heightMetres": 2.05,
+                "sillMetres": 5,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 3.05,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 2.6,
+                "heightMetres": 2.05,
+                "sillMetres": 5,
+                "panes": 2,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 7.249999999999998,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.9,
+                "heightMetres": 2.05,
+                "sillMetres": 5,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 0.55,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.9,
+                "heightMetres": 2.05,
+                "sillMetres": 8,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 3.05,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 2.6,
+                "heightMetres": 2.05,
+                "sillMetres": 8,
+                "panes": 2,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 7.249999999999998,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.9,
+                "heightMetres": 2.05,
+                "sillMetres": 8,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 3.5,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 1.65,
+                "heightMetres": 1.1,
+                "sillMetres": 10.9,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              }
+            ],
+            "bands": [
+              {
+                "bottomMetres": 3.7,
+                "heightMetres": 0.28,
+                "color": "#eeeae1"
+              },
+              {
+                "bottomMetres": 10.6,
+                "heightMetres": 0.16,
+                "color": "#bebfb8"
+              }
+            ],
+            "groundEntries": [
+              {
+                "kind": "loading",
+                "xMetres": 0.45,
+                "widthMetres": 3.6999999999999997,
+                "heightMetres": 2.8,
+                "color": "#819087",
+                "jointColor": "#56625d",
+                "jointPitchMetres": 0.2
+              },
+              {
+                "kind": "loading",
+                "xMetres": 4.5,
+                "widthMetres": 3.7499999999999996,
+                "heightMetres": 2.8,
+                "color": "#819087",
+                "jointColor": "#56625d",
+                "jointPitchMetres": 0.2
+              }
+            ],
+            "glazedAssemblies": [
+              {
+                "xMetres": 0.45,
+                "sillMetres": 2.8,
+                "widthMetres": 3.6999999999999997,
+                "heightMetres": 0.7,
+                "panes": 3
+              },
+              {
+                "xMetres": 4.5,
+                "sillMetres": 2.8,
+                "widthMetres": 3.7499999999999996,
+                "heightMetres": 0.7,
+                "panes": 3
+              }
+            ],
+            "sourceJuliets": [
+              {
+                "xMetres": 3.05,
+                "widthMetres": 2.6,
+                "bottomMetres": 5
+              },
+              {
+                "xMetres": 3.05,
+                "widthMetres": 2.6,
+                "bottomMetres": 8
+              }
+            ],
+            "sourcePiers": [
+              0.14,
+              4.35,
+              8.559999999999999
+            ],
+            "fixedFacadeTopMetres": 10.65,
+            "upperProjection": {
+              "start": 2.7,
+              "end": 6,
+              "bottom": 10.65,
+              "top": 12.45
+            }
+          },
+          "4": {
+            "kind": "blank",
+            "wallColor": "#deddd1",
+            "windowTiers": [
+              {
+                "startMetres": 0.55,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.9,
+                "heightMetres": 2.05,
+                "sillMetres": 5,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 1.59,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 2.6,
+                "heightMetres": 2.05,
+                "sillMetres": 5,
+                "panes": 2,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 4.33,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.9,
+                "heightMetres": 2.05,
+                "sillMetres": 5,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 0.55,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.9,
+                "heightMetres": 2.05,
+                "sillMetres": 8,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 1.59,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 2.6,
+                "heightMetres": 2.05,
+                "sillMetres": 8,
+                "panes": 2,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 4.33,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.9,
+                "heightMetres": 2.05,
+                "sillMetres": 8,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 2.18,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 1.42,
+                "heightMetres": 1.2,
+                "sillMetres": 11.05,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              }
+            ],
+            "bands": [
+              {
+                "bottomMetres": 3.7,
+                "heightMetres": 0.28,
+                "color": "#eeeae1"
+              },
+              {
+                "bottomMetres": 10.6,
+                "heightMetres": 0.16,
+                "color": "#bebfb8"
+              }
+            ],
+            "groundEntries": [
+              {
+                "kind": "glazed",
+                "xMetres": 0.4,
+                "widthMetres": 4.96,
+                "heightMetres": 3.3,
+                "panes": 4,
+                "glassColor": "#354348"
+              }
+            ],
+            "glazedAssemblies": [
+              {
+                "xMetres": 0.45,
+                "sillMetres": 2.8,
+                "widthMetres": 2.24,
+                "heightMetres": 0.7,
+                "panes": 3
+              },
+              {
+                "xMetres": 3.04,
+                "sillMetres": 2.8,
+                "widthMetres": 2.29,
+                "heightMetres": 0.7,
+                "panes": 3
+              }
+            ],
+            "sourceJuliets": [
+              {
+                "xMetres": 1.59,
+                "widthMetres": 2.6,
+                "bottomMetres": 5
+              },
+              {
+                "xMetres": 1.59,
+                "widthMetres": 2.6,
+                "bottomMetres": 8
+              }
+            ],
+            "sourcePiers": [
+              0.14,
+              1.55,
+              3,
+              4.45,
+              5.63
+            ],
+            "fixedFacadeTopMetres": 10.65,
+            "upperProjection": {
+              "start": 1.7,
+              "end": 4.2,
+              "bottom": 10.65,
+              "top": 13.35
+            },
+            "portDoors": [
+              {
+                "x": 1.71,
+                "width": 0.9
+              },
+              {
+                "x": 3.15,
+                "width": 0.9
+              }
+            ]
+          },
+          "5": {
+            "kind": "blank",
+            "wallColor": "#816d59",
+            "windowTiers": [
+              {
+                "startMetres": 0.55,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.9,
+                "heightMetres": 2.05,
+                "sillMetres": 5,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 1.9000000000000001,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 2.6,
+                "heightMetres": 2.05,
+                "sillMetres": 5,
+                "panes": 2,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 4.95,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.9,
+                "heightMetres": 2.05,
+                "sillMetres": 5,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 0.55,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.9,
+                "heightMetres": 2.05,
+                "sillMetres": 8,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 1.9000000000000001,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 2.6,
+                "heightMetres": 2.05,
+                "sillMetres": 8,
+                "panes": 2,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 4.95,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.9,
+                "heightMetres": 2.05,
+                "sillMetres": 8,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 2.38,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 1.4,
+                "heightMetres": 1.25,
+                "sillMetres": 11.05,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 6.75,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.45,
+                "sillMetres": 0.55,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 7.96,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.45,
+                "sillMetres": 0.55,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 9.17,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.45,
+                "sillMetres": 0.55,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 10.379999999999999,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.45,
+                "sillMetres": 0.55,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 11.59,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.45,
+                "sillMetres": 0.55,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 6.75,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 4.3,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 7.96,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 4.3,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 9.17,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 4.3,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 10.379999999999999,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 4.3,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 11.59,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 4.3,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 6.75,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 7.35,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 7.96,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 7.35,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 9.17,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 7.35,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 10.379999999999999,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 7.35,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 11.59,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 7.35,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              }
+            ],
+            "bands": [
+              {
+                "bottomMetres": 3.7,
+                "heightMetres": 0.28,
+                "color": "#eeeae1"
+              },
+              {
+                "bottomMetres": 10.6,
+                "heightMetres": 0.16,
+                "color": "#bebfb8"
+              },
+              {
+                "xMetres": 6.4,
+                "widthMetres": 6.5,
+                "bottomMetres": 0,
+                "heightMetres": 10.5,
+                "color": "#deddd0"
+              }
+            ],
+            "groundEntries": [
+              {
+                "kind": "loading",
+                "xMetres": 0.45,
+                "widthMetres": 2.5500000000000003,
+                "heightMetres": 2.8,
+                "color": "#819087",
+                "jointColor": "#56625d",
+                "jointPitchMetres": 0.2
+              },
+              {
+                "kind": "loading",
+                "xMetres": 3.35,
+                "widthMetres": 2.6,
+                "heightMetres": 2.8,
+                "color": "#819087",
+                "jointColor": "#56625d",
+                "jointPitchMetres": 0.2
+              }
+            ],
+            "glazedAssemblies": [
+              {
+                "xMetres": 0.45,
+                "sillMetres": 2.8,
+                "widthMetres": 2.5500000000000003,
+                "heightMetres": 0.7,
+                "panes": 3
+              },
+              {
+                "xMetres": 3.35,
+                "sillMetres": 2.8,
+                "widthMetres": 2.6,
+                "heightMetres": 0.7,
+                "panes": 3
+              }
+            ],
+            "sourceJuliets": [
+              {
+                "xMetres": 1.9000000000000001,
+                "widthMetres": 2.6,
+                "bottomMetres": 5
+              },
+              {
+                "xMetres": 1.9000000000000001,
+                "widthMetres": 2.6,
+                "bottomMetres": 8
+              }
+            ],
+            "sourcePiers": [
+              0.14,
+              3.2,
+              6.28
+            ],
+            "fixedFacadeTopMetres": 10.65,
+            "upperProjection": {
+              "start": 1.85,
+              "end": 4.65,
+              "bottom": 10.65,
+              "top": 13.35
+            },
+            "columnSection": {
+              "start": 6.6,
+              "end": 12.75,
+              "pitch": 1.21,
+              "radius": 0.17,
+              "levels": [
+                {
+                  "bottom": 0.12,
+                  "top": 3.6
+                },
+                {
+                  "bottom": 3.82,
+                  "top": 6.9
+                },
+                {
+                  "bottom": 7.12,
+                  "top": 10.22
+                }
+              ]
+            }
+          },
+          "6": {
+            "kind": "blank",
+            "wallColor": "#deddd0",
+            "windowTiers": [
+              {
+                "startMetres": 0.17,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.45,
+                "sillMetres": 0.55,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 1.38,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.45,
+                "sillMetres": 0.55,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 2.59,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.45,
+                "sillMetres": 0.55,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 3.8,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.45,
+                "sillMetres": 0.55,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 5.01,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.45,
+                "sillMetres": 0.55,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 6.22,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.45,
+                "sillMetres": 0.55,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 7.43,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.45,
+                "sillMetres": 0.55,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 8.639999999999999,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.45,
+                "sillMetres": 0.55,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 0.17,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 4.3,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 1.38,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 4.3,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 2.59,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 4.3,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 3.8,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 4.3,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 5.01,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 4.3,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 6.22,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 4.3,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 7.43,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 4.3,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 8.639999999999999,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 4.3,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 0.17,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 7.35,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 1.38,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 7.35,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 2.59,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 7.35,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 3.8,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 7.35,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 5.01,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 7.35,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 6.22,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 7.35,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 7.43,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 7.35,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              },
+              {
+                "startMetres": 8.639999999999999,
+                "count": 1,
+                "pitchMetres": 100,
+                "widthMetres": 0.78,
+                "heightMetres": 2.32,
+                "sillMetres": 7.35,
+                "panes": 1,
+                "endMarginMetres": 0.02
+              }
+            ],
+            "columnSection": {
+              "start": 0.02,
+              "end": 9.65,
+              "pitch": 1.21,
+              "radius": 0.17,
+              "levels": [
+                {
+                  "bottom": 0.12,
+                  "top": 3.6
+                },
+                {
+                  "bottom": 3.82,
+                  "top": 6.9
+                },
+                {
+                  "bottom": 7.12,
+                  "top": 10.22
+                }
+              ]
+            },
+            "fixedFacadeTopMetres": 10.35
+          }
+        }
+      },
+      "galleryFrontage": {
+        "target": [
+          4.890942,
+          52.363041
+        ],
+        "distanceMetres": 38,
+        "targetHeightMetres": 7
+      },
+      "generationMilliseconds": 23,
+      "reviewState": "Independent source/gallery and native desktop/touch checks passed with recorded limits; local release checks underway.",
+      "sourceCommit": "9fc691744e03b91f70899896033acdb6cbbd1a18",
+      "updatedAt": "2026-10-08T01:30:34.576061+00:00"
     }
   ]
 }
