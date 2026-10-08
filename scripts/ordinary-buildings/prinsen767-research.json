@@ -1,0 +1,90 @@
+{
+  "id": "NL.IMBAG.Pand.0363100012185424",
+  "canonicalModelId": "ordinary-0363100012185424",
+  "at": "2026-10-08T21:07:34.020701+00:00",
+  "state": "Full architecture/source scope research in progress; not author ready or standard approved",
+  "physicalScope": {
+    "nativeAreaMetres2": 1793.7770665825576,
+    "officialAreaMetres2": 1793.9276754996388,
+    "all15AddressParentsVerified": true,
+    "addresses": [
+      "Prinsengracht759",
+      "Prinsengracht761",
+      "Prinsengracht763",
+      "Prinsengracht765",
+      "Prinsengracht767",
+      "Prinsengracht769A\u2013E",
+      "Kerkstraat126A\u2013E"
+    ],
+    "exactSuppression": [
+      "NL.IMBAG.Pand.0363100012185424"
+    ],
+    "nativeSurveyOffsetMetres": 0.34523735884666695,
+    "courtyardHoles": 0,
+    "openSpace": "Reentrant rear gardens/gaps in exterior native ring remain open; no filled bounding-box suppression."
+  },
+  "sourceArchives": {
+    "existingPack": "experiments/canal-belt-continuation-20261007/next-large-box-source-26/0363100012185424",
+    "newPack": "experiments/canal-belt-continuation-20261007/next-source35-prinsen767/0363100012185424"
+  },
+  "architecturalAssertions": [
+    {
+      "part": "Prinsengrachtfront",
+      "source": "RCE518366 original register description",
+      "confidence": "register explicit; individual bay mapping pending end views",
+      "traits": [
+        "Nine-axis older hospital plus eight-axis left extension",
+        "Brick over stone/plastered basement plinth",
+        "Pale cornice/cordons and projecting one/three-axis sections",
+        "Rounded lower/first-upper windows, segmental second-upper and rectangular top windows",
+        "Red tile hipped roofs with separate transverse projecting-section roofs"
+      ]
+    },
+    {
+      "part": "Prinsengrachtcurrentfacade",
+      "source": "Municipal2025recording02645 cached source26",
+      "confidence": "root observed visible crop; wholefront count pending",
+      "traits": [
+        "Alternating brick/pale bands, pale deep window heads and projecting cornice",
+        "Dark cross frames; pale lower basement",
+        "Red/white striped small awnings on visible openings; ownership/complete counts pending"
+      ]
+    },
+    {
+      "part": "Kerkstraat126",
+      "source": "RCE518366 plus independently fetched municipal2024/2025 and earlier mission2022 photo (timestamp retained)",
+      "confidence": "root current/leaf-off comparison",
+      "traits": [
+        "Three facade volumes beneath different roof/attic assemblies",
+        "Ten-axis historical facade statement must be reconciled against native chain and current window groups",
+        "Three main storeys; arched lower groups on right volume, rectangular on first/second upper",
+        "Central stepped/tuit front and masonry dormer, pale sill/frieze accents",
+        "Iron front fence and recessed lower lightwell remain open",
+        "Source-supported real entrance lettering only after actual panel/letter-shape inspection"
+      ]
+    }
+  ],
+  "survey": {
+    "roofPlanes": 56,
+    "groundNAPMetres": 0.7149999737739563,
+    "roofRelativeMinMetres": 1.6520005450248716,
+    "roofRelativeMaxMetres": 19.844000545024873,
+    "lowPatches": "Seven low roof patches exist; retain supported major59.1m\u00b2/33.6m\u00b2 volumes rather than giving whole complex maxheight",
+    "rawSource": "existing raw/3dbag.json and processed roof-surfaces; do not treat equipment crest as wholebuilding height"
+  },
+  "accessState": {
+    "RCE": "OriginalHTML200cached",
+    "Beeldbank": "Bounded exactaddresssearch originalHTML200; JS shell not inspected catalogue/image evidence",
+    "AmsterdamRegister": "Webtool parsed page readable but directoriginalretrieval failed three TLS hostname checks. No original claimed cached.",
+    "Kerkstraat2025": "Scaffolding and parkedtruck occlude facade; preserved as failure/current evidence;2024leaf-off and earlier source crosschecked"
+  },
+  "nextAction": [
+    "Map both photographed native frontage chains against all adjacent actual BAG parents",
+    "Reconcile 17 Prinsengracht axes/three Kerkstraat volumes and all current door/window groups",
+    "Acquire wider Prinsengracht end/crown views and aerial roof ownership",
+    "Keep source pack synced/pushed, then author original texture-free critical assemblies and native roof/open-space geometry; independent/GPU/native/performance gates pending"
+  ],
+  "sourceCommit": "8867f24a00b43616b130abaf9ea9863951c25541",
+  "sourceBranch": "ordinary/source35-20261008",
+  "rawSourcePolicy": "Original sources in private companion repository; no downloaded photo pixels in model or public research record."
+}

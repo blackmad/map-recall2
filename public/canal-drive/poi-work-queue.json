@@ -2194,23 +2194,26 @@
       ],
       "evidence": "ordinary-buildings-data/canal-prinsen215-review-20261008.json",
       "handoff": "docs/performance/2026-10-06/canal-belt-continuation-handoff.md",
-      "nextAction": "Publish accepted34 and verify hosted exact fingerprints and desktop/touch gallery/manual. Then research next substantial in-scope ordinary candidate with full facade/roof ownership review; continuous queue remains active.",
+      "nextAction": "34 hosted assets verified. Continue full architectural source and native facade/roof ownership work on parent0363100012185424 (Prinsengracht759\u2013769 plusKerkstraat126); next model not authored/accepted. Continuous queue remains active.",
       "sourceCommit": "9fc691744e03b91f70899896033acdb6cbbd1a18",
       "notes": "Ordinary assets/full architecture review for defining Rokin roof assemblies; no invented POI routes. Existing Nacarat basic inside-footprint click card retained. Both strict500k/three-material budgets pass.",
       "localModelCount": 34,
       "hostedVerification": {
-        "publicCommit": "cb05b384ad5bd64150bebfd9ecb1ca75d71710e9",
-        "firebaseRun": "37814067483",
-        "verifiedAtUTC": "2026-10-08T17:12:36.445Z",
-        "models": 30,
+        "publicModelCommit": "fe3dbd7b0e9e82e28b4902a2b025f0838f6a5c6b",
+        "publicCommit": "025e5df61ef2c82c2e18111c4455bc035858f44c",
+        "firebaseRun": "37843611938",
+        "verifiedAtUTC": "2026-10-08T21:05:49.775086+00:00",
+        "models": 34,
         "allAssetHashesExact": true,
-        "manualDesktopTouchLoaded": 30,
+        "manualDesktopTouchLoaded": 34,
         "feedbackPreview": true,
-        "evidenceSourceCommit": "7a370560be2a05390823c3c74222ec2dbbb3062c",
-        "evidenceSourcePack": "experiments/canal-belt-continuation-20261007/host30-and-review46/canal-kerk136-host30"
+        "evidenceSourceCommit": "6515660e4d5b0cef3bdc0b940abb8fc1173fed66",
+        "evidenceSourcePack": "experiments/canal-belt-continuation-20261007/hosted34-20261008"
       },
       "publicationSourceCommit": "695ec2b222e9ad4eb41add25711dd8e5ae3ebfe5",
-      "pendingModels": [],
+      "pendingModels": [
+        "NL.IMBAG.Pand.0363100012185424"
+      ],
       "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/native34-resume-20261008",
       "reviewPreparationCommit": "396603d052c1dc892425ff4ed6da0d449144d61f",
       "reviewLimits": [
@@ -2399,6 +2402,21 @@
         "runDeadline": "2026-10-08T22:18:54Z"
       },
       "nextAction": "Draft is local and unpublished. Complete source repairs and gallery/native-game route, pin, physical card, exact suppression/neighbors and desktop/touch stationary-pan/performance acceptance. Browser launch currently restricted; do not treat CPU checks as visual acceptance."
+    },
+    {
+      "id": "prinsengracht-hospital-ordinary-treatment",
+      "task": "Model the native former hospital parent: Prinsengracht 759\u2013769 and Kerkstraat 126",
+      "priority": "high",
+      "status": "source-research-in-progress",
+      "buildingIds": [
+        "NL.IMBAG.Pand.0363100012185424"
+      ],
+      "scope": "One physical surveyed parent spans 15 official address units and both street fronts. Use the full architectural loop; preserve native garden reentrants and neighboring buildings. Do not create a curated POI automatically.",
+      "sourceCommit": "8867f24a00b43616b130abaf9ea9863951c25541",
+      "sourceBranch": "ordinary/source35-20261008",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-source35-prinsen767/0363100012185424",
+      "evidence": "../../scripts/ordinary-buildings/prinsen767-research.json",
+      "nextAction": "Map the 17 Prinsengracht axes and Kerkstraat facade volumes to actual frontage chains and adjacent parents. Acquire front-end and aerial views, then build the source-supported native facade and roof assemblies. Preserve the 2025 scaffolding view; compare with leaf-off 2024 and earlier references. No standard approval or model acceptance yet."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"
