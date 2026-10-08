@@ -17,7 +17,7 @@ from rasterio.features import rasterize
 from rasterio.warp import reproject, Resampling
 from rasterio.transform import from_bounds
 from pyproj import Transformer
-from scipy.ndimage import distance_transform_edt, label, find_objects
+from scipy.ndimage import distance_transform_edt, label, find_objects, gaussian_filter
 from PIL import Image
 from bridge_decks import insert_deck
 
@@ -136,15 +136,20 @@ def main():
                 dist,ix=distance_transform_edt(~donors,return_indices=True)
                 fill=holes&(dist<=200)
                 local=h[sl];local[fill]=local[ix[0][fill],ix[1][fill]];quality[sl][fill]=128
-            h[quality==0]=0;h[w]=0;quality[w]=254
-            # A heightfield cannot represent a vertical quay. A bounded 4m land-side
-            # transition avoids mesh sawteeth; recorded as a render approximation.
-            if w.any():
-                shore_distance=distance_transform_edt(~w)*.5
-                local_roads=[(g,1) for g,b in profile_shapes if b[0]<=rd[2] and b[2]>=rd[0] and b[1]<=rd[3] and b[3]>=rd[1]]
-                roads=rasterize(local_roads,out_shape=h.shape,transform=src.transform,fill=0).astype(bool) if local_roads else np.zeros(h.shape,bool)
-                shore=(~w)&(~roads)&(quality>0)&(shore_distance<4)
-                t=np.minimum(1,shore_distance[shore]/4);h[shore]*=t*t*(3-2*t);quality[shore]=128
+            # Smooth sensor-scale variation on land, with no water/nodata donors.
+            # Deck profiles are inserted afterwards so smoothing never flattens a ramp.
+            known=(quality>0)&(~w)
+            weights=gaussian_filter(known.astype(np.float32),2)
+            smooth=gaussian_filter(np.where(known,h,0),2)
+            h[known]=smooth[known]/np.maximum(weights[known],1e-6)
+            h[quality==0]=0
+            # The render proxy remains continuous at the shoreline. Separate
+            # vector-clipped terrain geometry removes water; the water plane and
+            # vertical bank meshes own the actual canal surface and quay edge.
+            if w.any() and known.any():
+                _,ix=distance_transform_edt(~known,return_indices=True)
+                h[w]=h[ix[0][w],ix[1][w]]
+            quality[w]=254
             # Native roads drape onto this proxy even when detailed bridge meshes
             # are disabled/unavailable. Ground-only AHN leaves bridge decks out.
             for bridge,b in deck_profiles:
@@ -160,7 +165,7 @@ def main():
             reproject(h,dst,src_transform=src.transform,src_crs=src.crs,dst_transform=tr,dst_crs='EPSG:3857',resampling=Resampling.bilinear)
             reproject(quality,q,src_transform=src.transform,src_crs=src.crs,dst_transform=tr,dst_crs='EPSG:3857',resampling=Resampling.nearest)
             # Keep water level exact after bilinear reprojection.
-            dst[q==254]=0;dst[q==0]=0
+            dst[q==0]=0
         image=Image.fromarray(encode(dst,q))
         # Derive all zooms within this parent from the same continuous raster.
         for z in range(BASE,a.maxzoom+1):
@@ -179,7 +184,7 @@ def main():
             try: source_records.append(job.result())
             except Exception as e:failures.append({'key':jobs[job],'error':str(e)});print('FAILED',jobs[job],str(e),flush=True)
             if i%5==0 or i==len(keys):print(f'terrain {i}/{len(keys)}; failures {len(failures)}',flush=True)
-    archive.joinpath('manifest.json').write_text(json.dumps({'version':1,'bounds':[west,south,east,north],'sources':sorted(source_records,key=lambda r:r['key']),'failures':failures,'water':{'file':str(water_path.relative_to(archive)),'sha256':hashlib.sha256(water_path.read_bytes()).hexdigest(),'source':'archived OpenFreeMap native z14 water polygons; source snapshot in raw/basemap-water/manifest.json'},'processing':'same-land-component nearest ground fill <=100m; mapped water 0 NAP; 4m land-side quay transition (render approximation), preserving measured bridge bank-road corridors; absolute-NAP DSM deck profiles override mapped water inside municipal footprints, DTM-connected narrow approaches blend at outer 8m; RD to EPSG:3857 bilinear; TerrainRGB 0.1m'},indent=2)+'\n')
+    archive.joinpath('manifest.json').write_text(json.dumps({'version':1,'bounds':[west,south,east,north],'sources':sorted(source_records,key=lambda r:r['key']),'failures':failures,'water':{'file':str(water_path.relative_to(archive)),'sha256':hashlib.sha256(water_path.read_bytes()).hexdigest(),'source':'archived OpenFreeMap native z14 water polygons; source snapshot in raw/basemap-water/manifest.json'},'processing':'same-land-component nearest ground fill <=100m; sigma 1m normalized Gaussian land smoothing; continuous nearest-land render proxy beneath mapped water; vector-conforming terrain topology removes canals and water crossings; absolute-NAP DSM water-crossing deck profiles with connected road approaches blending at outer 8m; overland lower roads retain DTM; RD to EPSG:3857 bilinear; TerrainRGB 0.1m'},indent=2)+'\n')
     if failures:raise RuntimeError(f'{len(failures)} acquisition failures; incomplete tiles are not publishable')
     # Overview levels blend decoded heights, never average RGB bytes.
     children=set(keys)
@@ -196,7 +201,7 @@ def main():
             dest=out/str(z)/str(x);dest.mkdir(parents=True,exist_ok=True);im=Image.fromarray(encode(hh,qq));im.putalpha(255);im.save(dest/f'{y}.png')
         children=parents
     fingerprint=hashlib.sha256(json.dumps(sorted((r['key'],r['sha256']) for r in source_records)).encode()+water_path.read_bytes()+processing_hash.encode()).hexdigest()[:16]
-    meta={'tilejson':'3.0.0','version':1,'name':'Amsterdam AHN ground and bridge surface proxy','scheme':'xyz','tiles':['{z}/{x}/{y}.png'],'minzoom':10,'maxzoom':a.maxzoom,'bounds':[west,south,east,north],'tileSize':256,'encoding':'mapbox','datum':'NAP','exaggeration':1,'fingerprint':fingerprint,'qualityTiles':['16/{x}/{y}.quality.png'],'qualityCodes':{'measured':255,'bridge':253,'interpolated':128,'water':254,'unknown':0},'waterFallbackNAP':0,'shoreTransitionM':4,'bridgeRoadProtection':bool(profile_bytes),'bridgeDeckProfiles':len(deck_profiles),'bridgeDeckRepresentation':'render proxy; separate water and bank geometry still required','attribution':'AHN / Rijkswaterstaat / PDOK; water © OpenStreetMap contributors'}
+    meta={'tilejson':'3.0.0','version':1,'name':'Amsterdam AHN ground and bridge surface proxy','scheme':'xyz','tiles':['{z}/{x}/{y}.png'],'minzoom':10,'maxzoom':a.maxzoom,'bounds':[west,south,east,north],'tileSize':256,'encoding':'mapbox','datum':'NAP','exaggeration':1,'fingerprint':fingerprint,'qualityTiles':['16/{x}/{y}.quality.png'],'qualityCodes':{'measured':255,'bridge':253,'interpolated':128,'water':254,'unknown':0},'waterFallbackNAP':0,'shoreTransitionM':0,'landSmoothingSigmaM':1,'waterRenderProxy':'nearest smooth land; actual water is separate geometry','bridgeRoadProtection':bool(profile_bytes),'bridgeDeckProfiles':len(deck_profiles),'bridgeDeckRepresentation':'water-crossing render proxy; separate generic deck geometry owns masked spans; overland lower roads retain ground','attribution':'AHN / Rijkswaterstaat / PDOK; water © OpenStreetMap contributors'}
     out.joinpath('tilejson.json').write_text(json.dumps(meta,indent=2)+'\n')
     print(json.dumps({'tiles':len(list(out.glob('*/*/*.png'))),'fingerprint':fingerprint,'sources':len(source_records)}),flush=True)
 if __name__=='__main__':main()

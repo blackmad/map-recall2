@@ -13,7 +13,7 @@ const archive=arg('archive');if(!archive)throw Error('--archive=private/source/p
 const input=arg('input',resolve(archive,'bridges/amsterdam-measured/raw/bridge-surfaces-v1.json'));
 const cache=arg('source-cache',resolve(archive,'bridges/amsterdam-measured/raw'));
 const ids=arg('ids','BRU0057,BRU0059,BRU0065').split(',');
-const root='public/data/extracts/amsterdam',terrain=`${root}/terrain`;
+const root=arg('extract-root','public/data/extracts/amsterdam'),terrain=`${root}/terrain`;
 const metadata=JSON.parse(await readFile(`${terrain}/tilejson.json`,'utf8'));
 const original=await readFile(input),legacy=JSON.parse(original.toString());
 const previousIndex=JSON.parse(await readFile(`${root}/measured-bridges/index.json`,'utf8').catch(()=>'{}'));

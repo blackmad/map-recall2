@@ -1,0 +1,1504 @@
+{
+  "version": 1,
+  "compression": "gzip",
+  "fingerprint": "3df3f0fd150540e5",
+  "terrainFingerprint": "634e7efd9b3b8050",
+  "extent": 8192,
+  "origin": [
+    4.9,
+    52.37
+  ],
+  "landSpacingM": 8,
+  "sourceWaterSha256": "0af067b31aadec4f4a659a9f2ae3ea1c37abb43eb538f3ce3478c1dd363cfbcb",
+  "sourceProfilesSha256": "bb440818ed4c8b50fb90f47e6a1bd5c03f8309e752bb32483089c2bdf310d5c0",
+  "referenceWaterLevel": {
+    "heightM": -0.4,
+    "source": "https://www.agv.nl/siteassets/werk-in-uitvoering/waterpeil/peilbesluitenamsterdam.pdf",
+    "scope": "connected pilot canal network; reference target, not a live water measurement"
+  },
+  "otherWaterLevels": "estimated below mapped bank; regional peilgebieden not yet integrated",
+  "tiles": [
+    {
+      "key": "14-8406-5379",
+      "bytes": 3297228,
+      "compressedBytes": 705856,
+      "landTriangles": 57784
+    },
+    {
+      "key": "14-8406-5380",
+      "bytes": 3792588,
+      "compressedBytes": 804121,
+      "landTriangles": 69484
+    },
+    {
+      "key": "14-8406-5381",
+      "bytes": 5053920,
+      "compressedBytes": 1091940,
+      "landTriangles": 82240
+    },
+    {
+      "key": "14-8406-5382",
+      "bytes": 5212776,
+      "compressedBytes": 1120346,
+      "landTriangles": 82751
+    },
+    {
+      "key": "14-8406-5383",
+      "bytes": 2923596,
+      "compressedBytes": 592072,
+      "landTriangles": 72549
+    },
+    {
+      "key": "14-8406-5384",
+      "bytes": 2332284,
+      "compressedBytes": 437670,
+      "landTriangles": 70393
+    },
+    {
+      "key": "14-8406-5385",
+      "bytes": 2053188,
+      "compressedBytes": 353426,
+      "landTriangles": 69996
+    },
+    {
+      "key": "14-8406-5386",
+      "bytes": 2036496,
+      "compressedBytes": 355122,
+      "landTriangles": 70037
+    },
+    {
+      "key": "14-8406-5387",
+      "bytes": 2145540,
+      "compressedBytes": 383087,
+      "landTriangles": 69698
+    },
+    {
+      "key": "14-8406-5388",
+      "bytes": 1979004,
+      "compressedBytes": 348105,
+      "landTriangles": 68426
+    },
+    {
+      "key": "14-8406-5389",
+      "bytes": 2520528,
+      "compressedBytes": 483234,
+      "landTriangles": 69874
+    },
+    {
+      "key": "14-8406-5390",
+      "bytes": 2609304,
+      "compressedBytes": 504990,
+      "landTriangles": 69670
+    },
+    {
+      "key": "14-8406-5391",
+      "bytes": 2215680,
+      "compressedBytes": 406653,
+      "landTriangles": 69472
+    },
+    {
+      "key": "14-8407-5379",
+      "bytes": 3406200,
+      "compressedBytes": 722092,
+      "landTriangles": 61237
+    },
+    {
+      "key": "14-8407-5380",
+      "bytes": 2676792,
+      "compressedBytes": 537985,
+      "landTriangles": 65432
+    },
+    {
+      "key": "14-8407-5381",
+      "bytes": 2574180,
+      "compressedBytes": 502808,
+      "landTriangles": 69636
+    },
+    {
+      "key": "14-8407-5382",
+      "bytes": 3507204,
+      "compressedBytes": 729610,
+      "landTriangles": 68513
+    },
+    {
+      "key": "14-8407-5383",
+      "bytes": 2431368,
+      "compressedBytes": 466286,
+      "landTriangles": 69252
+    },
+    {
+      "key": "14-8407-5384",
+      "bytes": 2040324,
+      "compressedBytes": 357062,
+      "landTriangles": 70057
+    },
+    {
+      "key": "14-8407-5385",
+      "bytes": 2485500,
+      "compressedBytes": 467070,
+      "landTriangles": 69841
+    },
+    {
+      "key": "14-8407-5386",
+      "bytes": 2086320,
+      "compressedBytes": 366777,
+      "landTriangles": 69176
+    },
+    {
+      "key": "14-8407-5387",
+      "bytes": 2149176,
+      "compressedBytes": 382650,
+      "landTriangles": 68762
+    },
+    {
+      "key": "14-8407-5388",
+      "bytes": 2000040,
+      "compressedBytes": 346230,
+      "landTriangles": 69451
+    },
+    {
+      "key": "14-8407-5389",
+      "bytes": 2258880,
+      "compressedBytes": 421449,
+      "landTriangles": 67990
+    },
+    {
+      "key": "14-8407-5390",
+      "bytes": 2553912,
+      "compressedBytes": 491570,
+      "landTriangles": 70992
+    },
+    {
+      "key": "14-8407-5391",
+      "bytes": 2855688,
+      "compressedBytes": 569333,
+      "landTriangles": 70477
+    },
+    {
+      "key": "14-8408-5379",
+      "bytes": 3468516,
+      "compressedBytes": 710665,
+      "landTriangles": 65389
+    },
+    {
+      "key": "14-8408-5380",
+      "bytes": 1337448,
+      "compressedBytes": 230429,
+      "landTriangles": 45317
+    },
+    {
+      "key": "14-8408-5381",
+      "bytes": 2311944,
+      "compressedBytes": 448487,
+      "landTriangles": 66289
+    },
+    {
+      "key": "14-8408-5382",
+      "bytes": 3034716,
+      "compressedBytes": 612840,
+      "landTriangles": 69670
+    },
+    {
+      "key": "14-8408-5383",
+      "bytes": 3225048,
+      "compressedBytes": 668883,
+      "landTriangles": 61192
+    },
+    {
+      "key": "14-8408-5384",
+      "bytes": 3508104,
+      "compressedBytes": 741536,
+      "landTriangles": 70574
+    },
+    {
+      "key": "14-8408-5385",
+      "bytes": 2975784,
+      "compressedBytes": 600452,
+      "landTriangles": 69004
+    },
+    {
+      "key": "14-8408-5386",
+      "bytes": 2663160,
+      "compressedBytes": 518487,
+      "landTriangles": 69037
+    },
+    {
+      "key": "14-8408-5387",
+      "bytes": 2301984,
+      "compressedBytes": 427516,
+      "landTriangles": 68931
+    },
+    {
+      "key": "14-8408-5388",
+      "bytes": 2040492,
+      "compressedBytes": 360136,
+      "landTriangles": 69608
+    },
+    {
+      "key": "14-8408-5389",
+      "bytes": 1839768,
+      "compressedBytes": 310503,
+      "landTriangles": 69199
+    },
+    {
+      "key": "14-8408-5390",
+      "bytes": 2675232,
+      "compressedBytes": 529293,
+      "landTriangles": 70059
+    },
+    {
+      "key": "14-8408-5391",
+      "bytes": 3383880,
+      "compressedBytes": 705904,
+      "landTriangles": 69124
+    },
+    {
+      "key": "14-8409-5379",
+      "bytes": 4331556,
+      "compressedBytes": 890430,
+      "landTriangles": 76443
+    },
+    {
+      "key": "14-8409-5380",
+      "bytes": 1470492,
+      "compressedBytes": 273718,
+      "landTriangles": 42843
+    },
+    {
+      "key": "14-8409-5381",
+      "bytes": 1196808,
+      "compressedBytes": 211049,
+      "landTriangles": 38011
+    },
+    {
+      "key": "14-8409-5382",
+      "bytes": 2298780,
+      "compressedBytes": 441912,
+      "landTriangles": 61740
+    },
+    {
+      "key": "14-8409-5383",
+      "bytes": 4269552,
+      "compressedBytes": 894632,
+      "landTriangles": 76510
+    },
+    {
+      "key": "14-8409-5384",
+      "bytes": 4655376,
+      "compressedBytes": 1019466,
+      "landTriangles": 76857
+    },
+    {
+      "key": "14-8409-5385",
+      "bytes": 2912388,
+      "compressedBytes": 589536,
+      "landTriangles": 70027
+    },
+    {
+      "key": "14-8409-5386",
+      "bytes": 2553744,
+      "compressedBytes": 500200,
+      "landTriangles": 68534
+    },
+    {
+      "key": "14-8409-5387",
+      "bytes": 2486628,
+      "compressedBytes": 469732,
+      "landTriangles": 71172
+    },
+    {
+      "key": "14-8409-5388",
+      "bytes": 1818624,
+      "compressedBytes": 303485,
+      "landTriangles": 69335
+    },
+    {
+      "key": "14-8409-5389",
+      "bytes": 1790160,
+      "compressedBytes": 292621,
+      "landTriangles": 69346
+    },
+    {
+      "key": "14-8409-5390",
+      "bytes": 2898840,
+      "compressedBytes": 576653,
+      "landTriangles": 68195
+    },
+    {
+      "key": "14-8409-5391",
+      "bytes": 3746796,
+      "compressedBytes": 793966,
+      "landTriangles": 71485
+    },
+    {
+      "key": "14-8410-5379",
+      "bytes": 3458280,
+      "compressedBytes": 666041,
+      "landTriangles": 71999
+    },
+    {
+      "key": "14-8410-5380",
+      "bytes": 1680972,
+      "compressedBytes": 325682,
+      "landTriangles": 47635
+    },
+    {
+      "key": "14-8410-5381",
+      "bytes": 1827108,
+      "compressedBytes": 320591,
+      "landTriangles": 64695
+    },
+    {
+      "key": "14-8410-5382",
+      "bytes": 2418672,
+      "compressedBytes": 469586,
+      "landTriangles": 69350
+    },
+    {
+      "key": "14-8410-5383",
+      "bytes": 3023508,
+      "compressedBytes": 605565,
+      "landTriangles": 70106
+    },
+    {
+      "key": "14-8410-5384",
+      "bytes": 2747184,
+      "compressedBytes": 550395,
+      "landTriangles": 68164
+    },
+    {
+      "key": "14-8410-5385",
+      "bytes": 2130924,
+      "compressedBytes": 395877,
+      "landTriangles": 63971
+    },
+    {
+      "key": "14-8410-5386",
+      "bytes": 3425628,
+      "compressedBytes": 700254,
+      "landTriangles": 70955
+    },
+    {
+      "key": "14-8410-5387",
+      "bytes": 2924448,
+      "compressedBytes": 589162,
+      "landTriangles": 69856
+    },
+    {
+      "key": "14-8410-5388",
+      "bytes": 2081592,
+      "compressedBytes": 366872,
+      "landTriangles": 69657
+    },
+    {
+      "key": "14-8410-5389",
+      "bytes": 2471076,
+      "compressedBytes": 465090,
+      "landTriangles": 68937
+    },
+    {
+      "key": "14-8410-5390",
+      "bytes": 3338268,
+      "compressedBytes": 683909,
+      "landTriangles": 68779
+    },
+    {
+      "key": "14-8410-5391",
+      "bytes": 2694072,
+      "compressedBytes": 532750,
+      "landTriangles": 70682
+    },
+    {
+      "key": "14-8411-5379",
+      "bytes": 2200392,
+      "compressedBytes": 423964,
+      "landTriangles": 59760
+    },
+    {
+      "key": "14-8411-5380",
+      "bytes": 1744500,
+      "compressedBytes": 336521,
+      "landTriangles": 50918
+    },
+    {
+      "key": "14-8411-5381",
+      "bytes": 1938240,
+      "compressedBytes": 377447,
+      "landTriangles": 52197
+    },
+    {
+      "key": "14-8411-5382",
+      "bytes": 1566948,
+      "compressedBytes": 287482,
+      "landTriangles": 49967
+    },
+    {
+      "key": "14-8411-5383",
+      "bytes": 2528004,
+      "compressedBytes": 480363,
+      "landTriangles": 69818
+    },
+    {
+      "key": "14-8411-5384",
+      "bytes": 1771332,
+      "compressedBytes": 345755,
+      "landTriangles": 49234
+    },
+    {
+      "key": "14-8411-5385",
+      "bytes": 2197164,
+      "compressedBytes": 408445,
+      "landTriangles": 64997
+    },
+    {
+      "key": "14-8411-5386",
+      "bytes": 2941656,
+      "compressedBytes": 585575,
+      "landTriangles": 70042
+    },
+    {
+      "key": "14-8411-5387",
+      "bytes": 2314392,
+      "compressedBytes": 477949,
+      "landTriangles": 40585
+    },
+    {
+      "key": "14-8411-5388",
+      "bytes": 2584716,
+      "compressedBytes": 506030,
+      "landTriangles": 64003
+    },
+    {
+      "key": "14-8411-5389",
+      "bytes": 2966184,
+      "compressedBytes": 595800,
+      "landTriangles": 65613
+    },
+    {
+      "key": "14-8411-5390",
+      "bytes": 2827680,
+      "compressedBytes": 563086,
+      "landTriangles": 69529
+    },
+    {
+      "key": "14-8411-5391",
+      "bytes": 2848536,
+      "compressedBytes": 566427,
+      "landTriangles": 70764
+    },
+    {
+      "key": "14-8412-5379",
+      "bytes": 2342568,
+      "compressedBytes": 432186,
+      "landTriangles": 66410
+    },
+    {
+      "key": "14-8412-5380",
+      "bytes": 1662876,
+      "compressedBytes": 324227,
+      "landTriangles": 43842
+    },
+    {
+      "key": "14-8412-5381",
+      "bytes": 2147664,
+      "compressedBytes": 436204,
+      "landTriangles": 54530
+    },
+    {
+      "key": "14-8412-5382",
+      "bytes": 2095656,
+      "compressedBytes": 375080,
+      "landTriangles": 69517
+    },
+    {
+      "key": "14-8412-5383",
+      "bytes": 2211228,
+      "compressedBytes": 405801,
+      "landTriangles": 68937
+    },
+    {
+      "key": "14-8412-5384",
+      "bytes": 2142540,
+      "compressedBytes": 391070,
+      "landTriangles": 67644
+    },
+    {
+      "key": "14-8412-5385",
+      "bytes": 2189520,
+      "compressedBytes": 397899,
+      "landTriangles": 66105
+    },
+    {
+      "key": "14-8412-5386",
+      "bytes": 2420196,
+      "compressedBytes": 467861,
+      "landTriangles": 64327
+    },
+    {
+      "key": "14-8412-5387",
+      "bytes": 2679588,
+      "compressedBytes": 539677,
+      "landTriangles": 51984
+    },
+    {
+      "key": "14-8412-5388",
+      "bytes": 2774304,
+      "compressedBytes": 540938,
+      "landTriangles": 68769
+    },
+    {
+      "key": "14-8412-5389",
+      "bytes": 2310096,
+      "compressedBytes": 451010,
+      "landTriangles": 55988
+    },
+    {
+      "key": "14-8412-5390",
+      "bytes": 2649396,
+      "compressedBytes": 514670,
+      "landTriangles": 70361
+    },
+    {
+      "key": "14-8412-5391",
+      "bytes": 3595404,
+      "compressedBytes": 746498,
+      "landTriangles": 76649
+    },
+    {
+      "key": "14-8413-5379",
+      "bytes": 3277320,
+      "compressedBytes": 666991,
+      "landTriangles": 68347
+    },
+    {
+      "key": "14-8413-5380",
+      "bytes": 2062704,
+      "compressedBytes": 417763,
+      "landTriangles": 47918
+    },
+    {
+      "key": "14-8413-5381",
+      "bytes": 1298100,
+      "compressedBytes": 253139,
+      "landTriangles": 34805
+    },
+    {
+      "key": "14-8413-5382",
+      "bytes": 2250816,
+      "compressedBytes": 458215,
+      "landTriangles": 54448
+    },
+    {
+      "key": "14-8413-5383",
+      "bytes": 2517132,
+      "compressedBytes": 493883,
+      "landTriangles": 66989
+    },
+    {
+      "key": "14-8413-5384",
+      "bytes": 2297400,
+      "compressedBytes": 447409,
+      "landTriangles": 64687
+    },
+    {
+      "key": "14-8413-5385",
+      "bytes": 2190924,
+      "compressedBytes": 403160,
+      "landTriangles": 66921
+    },
+    {
+      "key": "14-8413-5386",
+      "bytes": 1969056,
+      "compressedBytes": 350166,
+      "landTriangles": 67818
+    },
+    {
+      "key": "14-8413-5387",
+      "bytes": 2505156,
+      "compressedBytes": 457418,
+      "landTriangles": 68488
+    },
+    {
+      "key": "14-8413-5388",
+      "bytes": 2532060,
+      "compressedBytes": 478466,
+      "landTriangles": 70113
+    },
+    {
+      "key": "14-8413-5389",
+      "bytes": 2474904,
+      "compressedBytes": 467005,
+      "landTriangles": 69821
+    },
+    {
+      "key": "14-8413-5390",
+      "bytes": 2782524,
+      "compressedBytes": 550179,
+      "landTriangles": 70865
+    },
+    {
+      "key": "14-8413-5391",
+      "bytes": 4127820,
+      "compressedBytes": 876141,
+      "landTriangles": 77215
+    },
+    {
+      "key": "14-8414-5379",
+      "bytes": 3571812,
+      "compressedBytes": 748015,
+      "landTriangles": 58470
+    },
+    {
+      "key": "14-8414-5380",
+      "bytes": 3559692,
+      "compressedBytes": 739421,
+      "landTriangles": 69914
+    },
+    {
+      "key": "14-8414-5381",
+      "bytes": 1996440,
+      "compressedBytes": 370255,
+      "landTriangles": 59398
+    },
+    {
+      "key": "14-8414-5382",
+      "bytes": 1341360,
+      "compressedBytes": 275156,
+      "landTriangles": 25422
+    },
+    {
+      "key": "14-8414-5383",
+      "bytes": 2283888,
+      "compressedBytes": 464003,
+      "landTriangles": 53330
+    },
+    {
+      "key": "14-8414-5384",
+      "bytes": 2821068,
+      "compressedBytes": 598768,
+      "landTriangles": 65385
+    },
+    {
+      "key": "14-8414-5385",
+      "bytes": 2130564,
+      "compressedBytes": 396340,
+      "landTriangles": 67517
+    },
+    {
+      "key": "14-8414-5386",
+      "bytes": 2214144,
+      "compressedBytes": 412046,
+      "landTriangles": 67308
+    },
+    {
+      "key": "14-8414-5387",
+      "bytes": 2770860,
+      "compressedBytes": 528497,
+      "landTriangles": 65579
+    },
+    {
+      "key": "14-8414-5388",
+      "bytes": 4776828,
+      "compressedBytes": 1008771,
+      "landTriangles": 76213
+    },
+    {
+      "key": "14-8414-5389",
+      "bytes": 4742244,
+      "compressedBytes": 1007611,
+      "landTriangles": 77208
+    },
+    {
+      "key": "14-8414-5390",
+      "bytes": 3855012,
+      "compressedBytes": 817783,
+      "landTriangles": 73915
+    },
+    {
+      "key": "14-8414-5391",
+      "bytes": 4278336,
+      "compressedBytes": 907386,
+      "landTriangles": 75892
+    },
+    {
+      "key": "14-8415-5379",
+      "bytes": 3364788,
+      "compressedBytes": 665508,
+      "landTriangles": 61001
+    },
+    {
+      "key": "14-8415-5380",
+      "bytes": 4486188,
+      "compressedBytes": 897606,
+      "landTriangles": 74954
+    },
+    {
+      "key": "14-8415-5381",
+      "bytes": 3159360,
+      "compressedBytes": 594332,
+      "landTriangles": 67209
+    },
+    {
+      "key": "14-8415-5382",
+      "bytes": 2138916,
+      "compressedBytes": 398034,
+      "landTriangles": 63971
+    },
+    {
+      "key": "14-8415-5383",
+      "bytes": 1781568,
+      "compressedBytes": 347154,
+      "landTriangles": 47793
+    },
+    {
+      "key": "14-8415-5384",
+      "bytes": 2671644,
+      "compressedBytes": 568702,
+      "landTriangles": 57626
+    },
+    {
+      "key": "14-8415-5385",
+      "bytes": 1924920,
+      "compressedBytes": 345552,
+      "landTriangles": 62880
+    },
+    {
+      "key": "14-8415-5386",
+      "bytes": 1959336,
+      "compressedBytes": 362525,
+      "landTriangles": 61140
+    },
+    {
+      "key": "14-8415-5387",
+      "bytes": 3600312,
+      "compressedBytes": 754884,
+      "landTriangles": 71857
+    },
+    {
+      "key": "14-8415-5388",
+      "bytes": 4917480,
+      "compressedBytes": 1069747,
+      "landTriangles": 77731
+    },
+    {
+      "key": "14-8415-5389",
+      "bytes": 3922320,
+      "compressedBytes": 834549,
+      "landTriangles": 74681
+    },
+    {
+      "key": "14-8415-5390",
+      "bytes": 3925224,
+      "compressedBytes": 831455,
+      "landTriangles": 74289
+    },
+    {
+      "key": "14-8415-5391",
+      "bytes": 4603860,
+      "compressedBytes": 965785,
+      "landTriangles": 79053
+    },
+    {
+      "key": "14-8416-5379",
+      "bytes": 4386204,
+      "compressedBytes": 768998,
+      "landTriangles": 66426
+    },
+    {
+      "key": "14-8416-5380",
+      "bytes": 4303584,
+      "compressedBytes": 868373,
+      "landTriangles": 75750
+    },
+    {
+      "key": "14-8416-5381",
+      "bytes": 3392760,
+      "compressedBytes": 674261,
+      "landTriangles": 69731
+    },
+    {
+      "key": "14-8416-5382",
+      "bytes": 2481336,
+      "compressedBytes": 464988,
+      "landTriangles": 68415
+    },
+    {
+      "key": "14-8416-5383",
+      "bytes": 1394532,
+      "compressedBytes": 278356,
+      "landTriangles": 36534
+    },
+    {
+      "key": "14-8416-5384",
+      "bytes": 1994112,
+      "compressedBytes": 385866,
+      "landTriangles": 58938
+    },
+    {
+      "key": "14-8416-5385",
+      "bytes": 2281236,
+      "compressedBytes": 434022,
+      "landTriangles": 69454
+    },
+    {
+      "key": "14-8416-5386",
+      "bytes": 2782224,
+      "compressedBytes": 545864,
+      "landTriangles": 69960
+    },
+    {
+      "key": "14-8416-5387",
+      "bytes": 2687292,
+      "compressedBytes": 534779,
+      "landTriangles": 69168
+    },
+    {
+      "key": "14-8416-5388",
+      "bytes": 3280008,
+      "compressedBytes": 668731,
+      "landTriangles": 73127
+    },
+    {
+      "key": "14-8416-5389",
+      "bytes": 3572796,
+      "compressedBytes": 749131,
+      "landTriangles": 73544
+    },
+    {
+      "key": "14-8416-5390",
+      "bytes": 3019236,
+      "compressedBytes": 640320,
+      "landTriangles": 52054
+    },
+    {
+      "key": "14-8416-5391",
+      "bytes": 3786708,
+      "compressedBytes": 785998,
+      "landTriangles": 73640
+    },
+    {
+      "key": "14-8417-5379",
+      "bytes": 4603080,
+      "compressedBytes": 801194,
+      "landTriangles": 72653
+    },
+    {
+      "key": "14-8417-5380",
+      "bytes": 3729732,
+      "compressedBytes": 738746,
+      "landTriangles": 74197
+    },
+    {
+      "key": "14-8417-5381",
+      "bytes": 4544856,
+      "compressedBytes": 969670,
+      "landTriangles": 77160
+    },
+    {
+      "key": "14-8417-5382",
+      "bytes": 2862564,
+      "compressedBytes": 572269,
+      "landTriangles": 69712
+    },
+    {
+      "key": "14-8417-5383",
+      "bytes": 2086536,
+      "compressedBytes": 447384,
+      "landTriangles": 37391
+    },
+    {
+      "key": "14-8417-5384",
+      "bytes": 2088384,
+      "compressedBytes": 436069,
+      "landTriangles": 44299
+    },
+    {
+      "key": "14-8417-5385",
+      "bytes": 2988900,
+      "compressedBytes": 629342,
+      "landTriangles": 59280
+    },
+    {
+      "key": "14-8417-5386",
+      "bytes": 3032340,
+      "compressedBytes": 615106,
+      "landTriangles": 70675
+    },
+    {
+      "key": "14-8417-5387",
+      "bytes": 2334204,
+      "compressedBytes": 441851,
+      "landTriangles": 68832
+    },
+    {
+      "key": "14-8417-5388",
+      "bytes": 2210388,
+      "compressedBytes": 414364,
+      "landTriangles": 67699
+    },
+    {
+      "key": "14-8417-5389",
+      "bytes": 2496288,
+      "compressedBytes": 477860,
+      "landTriangles": 68816
+    },
+    {
+      "key": "14-8417-5390",
+      "bytes": 3680916,
+      "compressedBytes": 765943,
+      "landTriangles": 71992
+    },
+    {
+      "key": "14-8417-5391",
+      "bytes": 3931164,
+      "compressedBytes": 831087,
+      "landTriangles": 72048
+    },
+    {
+      "key": "14-8418-5379",
+      "bytes": 4667772,
+      "compressedBytes": 896941,
+      "landTriangles": 79076
+    },
+    {
+      "key": "14-8418-5380",
+      "bytes": 3844872,
+      "compressedBytes": 789739,
+      "landTriangles": 77790
+    },
+    {
+      "key": "14-8418-5381",
+      "bytes": 4965108,
+      "compressedBytes": 1057951,
+      "landTriangles": 79600
+    },
+    {
+      "key": "14-8418-5382",
+      "bytes": 4616040,
+      "compressedBytes": 988170,
+      "landTriangles": 77447
+    },
+    {
+      "key": "14-8418-5383",
+      "bytes": 4765608,
+      "compressedBytes": 1041316,
+      "landTriangles": 71364
+    },
+    {
+      "key": "14-8418-5384",
+      "bytes": 1053768,
+      "compressedBytes": 211074,
+      "landTriangles": 24833
+    },
+    {
+      "key": "14-8418-5385",
+      "bytes": 2484960,
+      "compressedBytes": 526260,
+      "landTriangles": 50005
+    },
+    {
+      "key": "14-8418-5386",
+      "bytes": 3949980,
+      "compressedBytes": 847614,
+      "landTriangles": 71569
+    },
+    {
+      "key": "14-8418-5387",
+      "bytes": 2924928,
+      "compressedBytes": 587557,
+      "landTriangles": 69030
+    },
+    {
+      "key": "14-8418-5388",
+      "bytes": 2227380,
+      "compressedBytes": 416612,
+      "landTriangles": 67330
+    },
+    {
+      "key": "14-8418-5389",
+      "bytes": 2251656,
+      "compressedBytes": 423378,
+      "landTriangles": 63711
+    },
+    {
+      "key": "14-8418-5390",
+      "bytes": 3627732,
+      "compressedBytes": 743584,
+      "landTriangles": 74372
+    },
+    {
+      "key": "14-8418-5391",
+      "bytes": 3575784,
+      "compressedBytes": 753158,
+      "landTriangles": 73262
+    },
+    {
+      "key": "14-8419-5379",
+      "bytes": 4433568,
+      "compressedBytes": 903669,
+      "landTriangles": 77677
+    },
+    {
+      "key": "14-8419-5380",
+      "bytes": 4584324,
+      "compressedBytes": 943714,
+      "landTriangles": 74576
+    },
+    {
+      "key": "14-8419-5381",
+      "bytes": 3850368,
+      "compressedBytes": 794474,
+      "landTriangles": 67402
+    },
+    {
+      "key": "14-8419-5382",
+      "bytes": 5378856,
+      "compressedBytes": 1114631,
+      "landTriangles": 82915
+    },
+    {
+      "key": "14-8419-5383",
+      "bytes": 4931856,
+      "compressedBytes": 1058777,
+      "landTriangles": 73020
+    },
+    {
+      "key": "14-8419-5384",
+      "bytes": 558096,
+      "compressedBytes": 121891,
+      "landTriangles": 7756
+    },
+    {
+      "key": "14-8419-5385",
+      "bytes": 1686576,
+      "compressedBytes": 338131,
+      "landTriangles": 40271
+    },
+    {
+      "key": "14-8419-5386",
+      "bytes": 3537084,
+      "compressedBytes": 776131,
+      "landTriangles": 54641
+    },
+    {
+      "key": "14-8419-5387",
+      "bytes": 4846440,
+      "compressedBytes": 1052636,
+      "landTriangles": 79340
+    },
+    {
+      "key": "14-8419-5388",
+      "bytes": 4119864,
+      "compressedBytes": 872071,
+      "landTriangles": 71473
+    },
+    {
+      "key": "14-8419-5389",
+      "bytes": 2646048,
+      "compressedBytes": 538533,
+      "landTriangles": 59435
+    },
+    {
+      "key": "14-8419-5390",
+      "bytes": 3894588,
+      "compressedBytes": 817645,
+      "landTriangles": 76638
+    },
+    {
+      "key": "14-8419-5391",
+      "bytes": 4175856,
+      "compressedBytes": 889354,
+      "landTriangles": 79671
+    },
+    {
+      "key": "14-8420-5379",
+      "bytes": 4289640,
+      "compressedBytes": 847993,
+      "landTriangles": 72169
+    },
+    {
+      "key": "14-8420-5380",
+      "bytes": 4531812,
+      "compressedBytes": 905704,
+      "landTriangles": 71479
+    },
+    {
+      "key": "14-8420-5381",
+      "bytes": 4948704,
+      "compressedBytes": 1000716,
+      "landTriangles": 73125
+    },
+    {
+      "key": "14-8420-5382",
+      "bytes": 2701488,
+      "compressedBytes": 542170,
+      "landTriangles": 39179
+    },
+    {
+      "key": "14-8420-5383",
+      "bytes": 977916,
+      "compressedBytes": 192811,
+      "landTriangles": 14717
+    },
+    {
+      "key": "14-8420-5384",
+      "bytes": 614640,
+      "compressedBytes": 131466,
+      "landTriangles": 10478
+    },
+    {
+      "key": "14-8420-5385",
+      "bytes": 1618932,
+      "compressedBytes": 294271,
+      "landTriangles": 51644
+    },
+    {
+      "key": "14-8420-5386",
+      "bytes": 2203884,
+      "compressedBytes": 440326,
+      "landTriangles": 54117
+    },
+    {
+      "key": "14-8420-5387",
+      "bytes": 3777648,
+      "compressedBytes": 798104,
+      "landTriangles": 67687
+    },
+    {
+      "key": "14-8420-5388",
+      "bytes": 3618672,
+      "compressedBytes": 761970,
+      "landTriangles": 70210
+    },
+    {
+      "key": "14-8420-5389",
+      "bytes": 3331716,
+      "compressedBytes": 690311,
+      "landTriangles": 68071
+    },
+    {
+      "key": "14-8420-5390",
+      "bytes": 3400752,
+      "compressedBytes": 712704,
+      "landTriangles": 73037
+    },
+    {
+      "key": "14-8420-5391",
+      "bytes": 3500064,
+      "compressedBytes": 746478,
+      "landTriangles": 66759
+    },
+    {
+      "key": "14-8421-5379",
+      "bytes": 4885920,
+      "compressedBytes": 1047839,
+      "landTriangles": 76395
+    },
+    {
+      "key": "14-8421-5380",
+      "bytes": 4803456,
+      "compressedBytes": 965920,
+      "landTriangles": 72872
+    },
+    {
+      "key": "14-8421-5381",
+      "bytes": 3159864,
+      "compressedBytes": 584380,
+      "landTriangles": 49113
+    },
+    {
+      "key": "14-8421-5382",
+      "bytes": 26340,
+      "compressedBytes": 4858,
+      "landTriangles": 637
+    },
+    {
+      "key": "14-8421-5383",
+      "bytes": 72,
+      "compressedBytes": 50,
+      "landTriangles": 0
+    },
+    {
+      "key": "14-8421-5384",
+      "bytes": 60132,
+      "compressedBytes": 11590,
+      "landTriangles": 851
+    },
+    {
+      "key": "14-8421-5385",
+      "bytes": 523884,
+      "compressedBytes": 101893,
+      "landTriangles": 11357
+    },
+    {
+      "key": "14-8421-5386",
+      "bytes": 390912,
+      "compressedBytes": 75669,
+      "landTriangles": 7033
+    },
+    {
+      "key": "14-8421-5387",
+      "bytes": 3481296,
+      "compressedBytes": 709427,
+      "landTriangles": 68425
+    },
+    {
+      "key": "14-8421-5388",
+      "bytes": 2678220,
+      "compressedBytes": 536570,
+      "landTriangles": 65271
+    },
+    {
+      "key": "14-8421-5389",
+      "bytes": 3101280,
+      "compressedBytes": 635918,
+      "landTriangles": 69994
+    },
+    {
+      "key": "14-8421-5390",
+      "bytes": 3624660,
+      "compressedBytes": 753197,
+      "landTriangles": 77514
+    },
+    {
+      "key": "14-8421-5391",
+      "bytes": 3567516,
+      "compressedBytes": 731841,
+      "landTriangles": 66133
+    },
+    {
+      "key": "14-8422-5379",
+      "bytes": 2843292,
+      "compressedBytes": 598314,
+      "landTriangles": 43832
+    },
+    {
+      "key": "14-8422-5380",
+      "bytes": 3968796,
+      "compressedBytes": 789249,
+      "landTriangles": 60272
+    },
+    {
+      "key": "14-8422-5381",
+      "bytes": 346380,
+      "compressedBytes": 65872,
+      "landTriangles": 5566
+    },
+    {
+      "key": "14-8422-5382",
+      "bytes": 72,
+      "compressedBytes": 49,
+      "landTriangles": 0
+    },
+    {
+      "key": "14-8422-5383",
+      "bytes": 72,
+      "compressedBytes": 50,
+      "landTriangles": 0
+    },
+    {
+      "key": "14-8422-5384",
+      "bytes": 102504,
+      "compressedBytes": 23829,
+      "landTriangles": 1142
+    },
+    {
+      "key": "14-8422-5385",
+      "bytes": 72,
+      "compressedBytes": 50,
+      "landTriangles": 0
+    },
+    {
+      "key": "14-8422-5386",
+      "bytes": 773976,
+      "compressedBytes": 155991,
+      "landTriangles": 10994
+    },
+    {
+      "key": "14-8422-5387",
+      "bytes": 3562548,
+      "compressedBytes": 749800,
+      "landTriangles": 68047
+    },
+    {
+      "key": "14-8422-5388",
+      "bytes": 3114036,
+      "compressedBytes": 639767,
+      "landTriangles": 70122
+    },
+    {
+      "key": "14-8422-5389",
+      "bytes": 2727660,
+      "compressedBytes": 544640,
+      "landTriangles": 67784
+    },
+    {
+      "key": "14-8422-5390",
+      "bytes": 3245928,
+      "compressedBytes": 687659,
+      "landTriangles": 66523
+    },
+    {
+      "key": "14-8422-5391",
+      "bytes": 2027256,
+      "compressedBytes": 387617,
+      "landTriangles": 39391
+    },
+    {
+      "key": "14-8423-5379",
+      "bytes": 851772,
+      "compressedBytes": 174263,
+      "landTriangles": 16346
+    },
+    {
+      "key": "14-8423-5380",
+      "bytes": 67644,
+      "compressedBytes": 14805,
+      "landTriangles": 681
+    },
+    {
+      "key": "14-8423-5381",
+      "bytes": 72,
+      "compressedBytes": 49,
+      "landTriangles": 0
+    },
+    {
+      "key": "14-8423-5382",
+      "bytes": 72,
+      "compressedBytes": 49,
+      "landTriangles": 0
+    },
+    {
+      "key": "14-8423-5383",
+      "bytes": 72,
+      "compressedBytes": 50,
+      "landTriangles": 0
+    },
+    {
+      "key": "14-8423-5384",
+      "bytes": 72,
+      "compressedBytes": 50,
+      "landTriangles": 0
+    },
+    {
+      "key": "14-8423-5385",
+      "bytes": 72,
+      "compressedBytes": 50,
+      "landTriangles": 0
+    },
+    {
+      "key": "14-8423-5386",
+      "bytes": 1573200,
+      "compressedBytes": 343056,
+      "landTriangles": 24384
+    },
+    {
+      "key": "14-8423-5387",
+      "bytes": 4631268,
+      "compressedBytes": 992127,
+      "landTriangles": 83048
+    },
+    {
+      "key": "14-8423-5388",
+      "bytes": 3798192,
+      "compressedBytes": 795160,
+      "landTriangles": 76775
+    },
+    {
+      "key": "14-8423-5389",
+      "bytes": 3780816,
+      "compressedBytes": 789300,
+      "landTriangles": 72868
+    },
+    {
+      "key": "14-8423-5390",
+      "bytes": 3447072,
+      "compressedBytes": 712418,
+      "landTriangles": 72570
+    },
+    {
+      "key": "14-8423-5391",
+      "bytes": 2724840,
+      "compressedBytes": 569836,
+      "landTriangles": 39912
+    },
+    {
+      "key": "14-8424-5379",
+      "bytes": 72,
+      "compressedBytes": 49,
+      "landTriangles": 0
+    },
+    {
+      "key": "14-8424-5380",
+      "bytes": 72,
+      "compressedBytes": 49,
+      "landTriangles": 0
+    },
+    {
+      "key": "14-8424-5381",
+      "bytes": 72,
+      "compressedBytes": 49,
+      "landTriangles": 0
+    },
+    {
+      "key": "14-8424-5382",
+      "bytes": 72,
+      "compressedBytes": 49,
+      "landTriangles": 0
+    },
+    {
+      "key": "14-8424-5383",
+      "bytes": 72,
+      "compressedBytes": 50,
+      "landTriangles": 0
+    },
+    {
+      "key": "14-8424-5384",
+      "bytes": 72,
+      "compressedBytes": 50,
+      "landTriangles": 0
+    },
+    {
+      "key": "14-8424-5385",
+      "bytes": 72,
+      "compressedBytes": 50,
+      "landTriangles": 0
+    },
+    {
+      "key": "14-8424-5386",
+      "bytes": 165036,
+      "compressedBytes": 35996,
+      "landTriangles": 2429
+    },
+    {
+      "key": "14-8424-5387",
+      "bytes": 2440692,
+      "compressedBytes": 503883,
+      "landTriangles": 56247
+    },
+    {
+      "key": "14-8424-5388",
+      "bytes": 4004508,
+      "compressedBytes": 857037,
+      "landTriangles": 73103
+    },
+    {
+      "key": "14-8424-5389",
+      "bytes": 2732976,
+      "compressedBytes": 559289,
+      "landTriangles": 47733
+    },
+    {
+      "key": "14-8424-5390",
+      "bytes": 3161664,
+      "compressedBytes": 640361,
+      "landTriangles": 65757
+    },
+    {
+      "key": "14-8424-5391",
+      "bytes": 3575592,
+      "compressedBytes": 748197,
+      "landTriangles": 60129
+    }
+  ]
+}

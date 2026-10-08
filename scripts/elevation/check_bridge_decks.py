@@ -23,4 +23,8 @@ def check(bank,crest):
     assert np.isfinite(h).all()
 check(1.5,3.2)
 check(-1.8,-.6)
-print('Bridge fallback: elevated deck, unchanged adjacent water, joined approaches, negative NAP passed')
+land=np.full((80,80),1.5,dtype=np.float32);quality=np.full(land.shape,255,dtype=np.uint8)
+samples=[{'s':s,'point':[s-24,0],'surfaceNAP':5} for s in [4,24,44]]
+assert insert_deck(land,quality,from_origin(-20,20,.5,.5),[[-5,-3],[5,-3],[5,3],[-5,3]],samples,[1,0],[0,0],lambda p:p)==0
+assert np.all(land==1.5), 'Overland viaducts must preserve the lower ground surface'
+print('Bridge fallback: elevated water crossing, unchanged adjacent water/lower roads, joined approaches, negative NAP passed')

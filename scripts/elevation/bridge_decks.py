@@ -30,6 +30,9 @@ def insert_deck(height, quality, transform, outline, samples, axis, origin_rd, l
     along /= np.linalg.norm(along)
     station = 24 + (east-origin_rd[0])*along[0] + (north-origin_rd[1])*along[1]
     mask = rasterize([({'type':'Polygon','coordinates':[[*map(local_to_rd,outline),local_to_rd(outline[0])]]},1)],out_shape=shape,transform=tr).astype(bool)
+    # An overland viaduct has two road levels. Do not turn the bare ground or
+    # its lower road into the upper deck. This proxy is for water crossings.
+    if np.count_nonzero(mask & (q == 254)) < 4: return 0
     stations = [s['s'] for s in samples]
     nap = [s['surfaceNAP'] for s in samples]
     h[mask] = np.interp(station[mask],stations,nap)

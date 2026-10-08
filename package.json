@@ -419,14 +419,16 @@
     "feedback:queue": "node scripts/feedback/queue.mjs",
     "test:feedback": "node --test scripts/feedback/queue.test.mjs",
     "test:feedback:rules": "npx --yes firebase-tools@15.28.2 emulators:exec --only firestore --project demo-canal-feedback --config firebase.feedback.json 'node scripts/feedback/rules.test.mjs'",
-    "build:canal-elevation": "esbuild src/canalRecall/groundElevationBrowser.ts --bundle --format=iife --outfile=public/canal-drive/js/ground-elevation.bundle.js --minify",
+    "build:canal-elevation": "esbuild src/canalRecall/groundElevationBrowser.ts --bundle --format=iife --outfile=public/canal-drive/js/ground-elevation.bundle.js --minify && esbuild src/canalRecall/surfaceTopologyWorker.ts --bundle --format=iife --outfile=public/canal-drive/js/surface-topology-worker.js --minify",
     "build:amsterdam-terrain": "uv run scripts/elevation/build-terrain.py",
-    "test:ground-elevation": "node --import tsx --test src/canalRecall/groundElevation.test.ts src/canalRecall/groundElevationLifecycle.test.ts src/canalRecall/terrainArchive.test.ts",
+    "test:ground-elevation": "node --import tsx --test src/canalRecall/groundElevation.test.ts src/canalRecall/groundElevationLifecycle.test.ts src/canalRecall/terrainArchive.test.ts src/canalRecall/surfaceTopology.test.ts src/canalRecall/surfaceWorldPayload.test.ts",
     "build:measured-bridges": "esbuild src/canalRecall/measuredBridgesBrowser.ts --bundle --format=iife --outfile=public/canal-drive/js/measured-bridges.bundle.js --minify",
     "bake:measured-bridges": "node --import tsx scripts/bridges/bake-measured.ts",
     "test:measured-bridges": "node --import tsx --test src/canalRecall/measuredBridgeScene.test.ts",
     "pack:amsterdam-terrain": "node scripts/elevation/pack-terrain.mjs",
-    "fetch:terrain-water": "node scripts/elevation/fetch-basemap-water.mjs"
+    "fetch:terrain-water": "node scripts/elevation/fetch-basemap-water.mjs",
+    "build:amsterdam-surfaces": "uv run scripts/elevation/build-surfaces.py",
+    "test:terrain-bridge-proxy": "uv run scripts/elevation/check_bridge_decks.py"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
@@ -452,7 +454,8 @@
     "react": "^19.0.1",
     "react-dom": "^19.0.1",
     "three": "^0.185.1",
-    "vite": "^6.2.3"
+    "vite": "^6.2.3",
+    "maplibre-gl": "5.24.0"
   },
   "devDependencies": {
     "@gltf-transform/core": "^4.5.0",
@@ -469,7 +472,7 @@
     "autoprefixer": "^10.4.21",
     "esbuild": "^0.25.0",
     "jpeg-js": "^0.4.4",
-    "maplibre-gl": "^5.24.0",
+    "maplibre-gl": "5.24.0",
     "meshoptimizer": "^1.2.0",
     "sharp": "^0.35.4",
     "storybook": "^10.5.10",

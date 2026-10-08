@@ -1,95 +1,121 @@
 # Amsterdam elevation experiment
 
-Branch: `feat/amsterdam-basemap-elevation`, isolated from the main working tree.
-Elevation remains opt-in with `?terrain=1`. Detailed bridge previews require
-`bridges3d=1`; no detailed bridge has been visually approved for normal gameplay.
-The local inspection page is `/canal-drive/elevation-demo.html`.
+Branch `feat/amsterdam-basemap-elevation` lives in the isolated
+`map-recall2-worktrees/basemap-elevation` worktree. Terrain is opt-in with
+`?terrain=1`; the inspection page is `/canal-drive/elevation-demo.html`.
+The main worktree and normal flat rendering are unchanged.
 
 ## Source and datum
 
-Render heights are metres NAP, including negative elevations. Building heights
-remain relative to their foundations. AHN DTM is bare ground: it deliberately
-does not provide bridge decks. The original ground-only integration incorrectly
-filled those gaps with mapped water height, making native roads descend through
-crossings. The terrain proxy now inserts absolute-NAP DSM deck profiles for 729
-crossings within their surveyed municipal outlines, with narrow connected DTM
-approaches fading into existing ground at their outer eight metres. Quality code
-253 distinguishes these driving surfaces from ground and mapped water.
+All scene elevations are metres NAP, including negative heights. Building
+heights remain relative to their foundations. AHN DTM describes bare ground and
+excludes bridge decks. Treating those gaps as water made roads dip at crossings.
+The terrain proxy now inserts measured DSM deck profiles inside surveyed
+municipal outlines only where the outline actually intersects mapped water.
+Overland viaducts leave the lower terrain intact. Connected approaches join the
+existing ground; quality code 253 distinguishes decks from ground and water.
 
-Raw sources are in private repository `blackmad/map-recall2-source-data`, branch
-`source/amsterdam-basemap-elevation`, commit
-`10c632417752b71e6737d73343812c759201be7d`:
+Raw sources are archived in private repository `blackmad/map-recall2-source-data`,
+branch `source/amsterdam-basemap-elevation`. Source commit: SOURCE_COMMIT_PENDING.
 
 - `terrain/amsterdam`: 247 cached AHN 0.5m RD GeoTIFFs, native basemap water tiles,
-  request/access metadata and processing manifest.
-- `bridges/amsterdam-measured`: the original 729 profiles, all 1,458 verified
-  DSM/DTM raster dependencies, municipal footprints and original routing inputs.
+  original water-level PDF, request/access metadata and processing manifests.
+- `bridges/amsterdam-measured`: original 729 profiles, 1,458 verified DSM/DTM
+  dependencies, municipal footprints and original routing inputs.
 
-Public terrain is a static TerrainRGB pyramid, zooms 10–18, in 248 indexed PNG
-packs with HTTP Range delivery. Native PNG bytes are retained; the browser does
-not decode GeoTIFFs or generate bridge geometry on camera changes.
+Public terrain contains zooms 10–18 in 248 indexed PNG packs with HTTP Range
+access. Water/bank/deck topology has 247 separately compressed source chunks.
+Fingerprints couple these datasets; mismatched chunks are rejected.
 
-## Scene integration
+The connected pilot canal network uses the published stadsboezem reference
+water target of −0.40m NAP from AGV's 2008
+[Amsterdam peilbesluiten](https://www.agv.nl/siteassets/werk-in-uitvoering/waterpeil/peilbesluitenamsterdam.pdf).
+This is a reference target, not a current gauge reading. Disconnected water
+levels remain explicitly estimated below their banks until regional peilgebieden
+are integrated. Do not infer citywide water-level accuracy from the three pilots.
 
-Ordinary building chunks have one foundation offset per footprint. Signature
-models, trees and separate roofs use the same ground service. Vehicles sample
-their contact points; a loaded detailed bridge owns its deck surface. Boats
-remain on the water plane. Mapped houseboats are intentionally in the canals.
+## Land, water and crossings
 
-The three detailed bridge pilots selectively port the measured-bridges branch
-(`799f82b4`), with pre-baked indexed meshes and a bounded spatial/asset cache.
-Their supports and railings are procedural interpretations, not exact historic
-surveys. Asset failure preserves the native crossing and deck-height proxy.
+Land fills missing data from nearby donors in the same connected land region,
+then receives a 1m Gaussian smoothing pass. Bridge profiles are inserted after
+smoothing so ramps survive. The former shoreline taper is removed: stretching
+terrain down at the bank made streets wiggly and cannot represent a quay wall.
 
-Water beneath an active detailed bridge draws at the explicit 0 NAP fallback,
-before other 3D objects. It clears the terrain proxy only inside the installed
-municipal deck outline. Terrain fills and lines are grouped before live 3D
-layers; ground POI locator lines must not be repeatedly raised across that group.
+Native terrain triangles now follow the vector land boundary and have genuine
+openings over canals and bridge spans. Independent flat water polygons and
+vertical bank faces occupy those openings. Generic measured deck caps keep
+crossings intact even with detailed models disabled. Terrain texture fills and
+lines share one pass before live 3D layers.
 
-## Evidence and remaining acceptance
+Ordinary buildings use a single foundation offset per footprint, sampled from
+land perimeter points. Signature buildings, trees and separate roofs use the
+same ground service. Vehicles sample contact points; detailed bridges own their
+deck surface when loaded. Boats and genuine mapped houseboats stay on the water.
+The inspection demo hides the player vehicle and freezes gameplay while allowing
+native camera gestures. It reports ready only once nearby topology is installed.
 
-`artifacts/elevation/fallback/{desktop,iphone}` records native bridge heights
-with detailed models disabled. For Papiermolensluis, Lekkeresluis and Berensluis,
-rendered centre heights were 3.1, 3.4 and 2.7 NAP, respectively, within 0.04m of
-the sampled profile values. This confirms the fallback heights, not visual
-acceptance. The regression also boots the actual game before capturing views.
+The three detailed bridge pilots selectively reuse measured-bridges branch
+`799f82b4`: Papiermolensluis, Lekkeresluis and Berensluis. Meshes are pre-baked,
+with bounded runtime caches. Supports and railings remain procedural
+interpretations. `approvedIds` is empty; these are previews rather than exact
+historic models. Asset failure preserves the generic crossing cap.
 
-User screenshots and failed shoreline views are retained under
-`artifacts/elevation/failures`. The initial 4m shoreline taper is an unsuccessful
-render approximation: native heightfields cannot represent vertical quay walls.
-Broader land/water separation needs smooth land elevations, independent level
-water polygons, vertical bank geometry and a visually checked generic deck
-fallback. It must not flatten bridge ramps or move genuine houseboats onto land.
+## Rendering cost and compatibility
 
-The latest desktop terrain pan still fails the 10% p95 frame-time budget
-(33.4ms versus 16.8ms baseline), while the touch run passes. The explicit pilot
-water-plane experiment also still shows deck clipping and stripes; it has not
-passed visual review. Keep the performance
-assertion and record fresh results after rendering changes. Successful numeric
-height tests do not override failed shoreline or bridge screenshots.
+MapLibre remains the map renderer, pinned to 5.24.0. An isolated adapter replaces
+its terrain mesh topology while preserving native DEM shading and map textures.
+This adapter uses private APIs and needs review on any MapLibre upgrade. It is
+not sufficient evidence to decide whether the whole renderer should be replaced.
 
-The repository-wide typecheck also fails in unchanged city-appearance/viewer
-files (unused TypeScript suppression directives and spread-argument errors).
-None of the elevation/bridge files appears in that failure log. This checkpoint
-is an experimental draft and does not satisfy the normal pre-commit gate.
+Elevation contact queries use the cached raster instead of repeatedly calling
+MapLibre's public terrain query, which recomputed tile coverage. Geometry arrival
+updates terrain depth without invalidating all map textures. Visible native meshes
+and source chunks are retained in bounded caches. Terrain texture quality is set
+before recreating the texture pool, avoiding an accidental 1024px pool.
 
-MapLibre replacement is deferred. First establish whether a single terrain pass
-plus explicit water/bank/deck geometry meets visual and performance requirements.
+## Verification and failed evidence
+
+Ground, lifecycle, pack delivery, topology and compressed-payload checks pass
+(16 tests); measured bridge geometry checks pass (4 tests). The Python proxy
+check covers elevated water crossings, joined approaches, negative NAP and
+unchanged lower ground under overland viaducts.
+
+Browser checks boot the actual game, wait for complete visible topology, inspect
+both banks of all three bridges, sample riding poses, compare terrain on/off frame
+times, and pan the camera away from a stationary rider using mouse/touch input.
+Generic-cap checks separately disable detailed models. Evidence is saved under
+`artifacts/elevation/{desktop,iphone,fallback}`.
+
+Final browser results: FINAL_BROWSER_RESULTS_PENDING.
+
+User screenshots and unsuccessful shoreline/deck versions remain under
+`artifacts/elevation/failures`. Results from the earlier double-decompressed
+payload run did not load topology; its timings and images are withdrawn and
+preserved under `failures/incomplete-topology`. Numeric bridge heights alone
+never establish visual acceptance.
+
+Repository-wide `npm run lint` still fails in unchanged city-appearance,
+point-cloud and preview files. No changed elevation/bridge file appears in the
+failure log. The branch checkpoint uses a command-scoped hook bypass for that
+existing baseline failure; the repository hook itself is unchanged.
 
 ## Reproduce
 
 ```sh
 uv run scripts/elevation/build-terrain.py --archive /path/to/source-pack/terrain/amsterdam
 node scripts/elevation/pack-terrain.mjs
+uv run scripts/elevation/build-surfaces.py --archive /path/to/source-pack
 npm run bake:measured-bridges -- --archive=/path/to/source-pack
 npm run build:canal-elevation
 npm run build:measured-bridges
-uv run scripts/elevation/check_bridge_decks.py
+npm run build:canal-three-buildings
+npm run test:terrain-bridge-proxy
 npm run test:ground-elevation
 npm run test:measured-bridges
-PW_PORT=4398 npx playwright test tests/e2e/bridge-terrain-fallback.spec.ts tests/e2e/basemap-elevation.spec.ts
+PW_PORT=4398 npx playwright test tests/e2e/bridge-terrain-fallback.spec.ts tests/e2e/basemap-elevation.spec.ts --project=desktop --project=iphone
 ```
 
-After acquisition, commit and push the private raw pack before committing model
-changes; record that source commit/path in public metadata. Do not enable terrain
-by default or populate `approvedIds` until actual scenes and performance pass.
+Commit and push the private source pack before the app checkpoint and record the
+source commit in public metadata. Keep terrain opt-in while regional water levels
+and broader compatibility are evaluated. Later land/water material exploration
+can build on this geometry rather than adding more heightfield shoreline hacks.

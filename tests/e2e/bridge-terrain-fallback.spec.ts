@@ -22,7 +22,8 @@ test('native bridge roads retain surveyed height without a detailed bridge model
   await page.evaluate(at=>{const vm=(window as any).canalRecallGame.vectorMap;vm.sync=()=>{};vm.map.jumpTo({center:at,zoom:20,pitch:60,bearing:120});},at);
   await expect.poll(()=>page.evaluate(at=>(window as any).canalRecallGame.vectorMap._elevation.sample(at).quality,at),{timeout:30000}).toBe('bridge');
   await expect.poll(()=>page.evaluate(at=>{const m=(window as any).canalRecallGame.vectorMap.map;const h=m.queryTerrainElevation({lng:at[0],lat:at[1]});return typeof h==='number'&&Math.abs(h)>0.1;},at),{timeout:30000}).toBe(true);
-  await page.waitForTimeout(1500);
+  await expect.poll(()=>page.evaluate(()=>{const s=(window as any).canalRecallGame.vectorMap._elevation.surfaces.status();return s.geometryReady&&s.visibleMeshes>0&&s.errors.length===0;}),{timeout:60000}).toBe(true);
+  await page.waitForTimeout(500);
   const result=await page.evaluate(at=>{const vm=(window as any).canalRecallGame.vectorMap;return {sample:vm._elevation.sample(at),rendered:vm.map.queryTerrainElevation({lng:at[0],lat:at[1]}),modelActive:Boolean(vm._measuredBridges?.activeIds?.size)};},at);
   reports.push({id:b.id,expected:s.surfaceNAP,...result});
   expect(result.modelActive).toBe(false);

@@ -2,7 +2,7 @@
   "version": 2,
   "renderHeightDatum": "NAP",
   "coordinateSpace": "east-north-up-metres@4.9,52.37",
-  "terrainFingerprint": "61b02c3250a9ed69",
+  "terrainFingerprint": "634e7efd9b3b8050",
   "approvedIds": [],
   "bridges": [
     {
@@ -622,7 +622,7 @@
           ],
           "rawNAP": 1.364,
           "surfaceNAP": 1.38,
-          "heightM": 1.3981952393894488,
+          "heightM": 1.3636725979134445,
           "validPixels": 21,
           "coverage": "dtm_05m"
         },
@@ -634,7 +634,7 @@
           ],
           "rawNAP": 1.299,
           "surfaceNAP": 1.364,
-          "heightM": 1.3345604209903614,
+          "heightM": 1.3353913240146915,
           "validPixels": 21,
           "coverage": "dtm_05m"
         }
@@ -691,7 +691,7 @@
         },
         "renderDatum": {
           "method": "absolute-NAP-deck-connected-road-8m-terrain-join",
-          "terrainFingerprint": "61b02c3250a9ed69"
+          "terrainFingerprint": "634e7efd9b3b8050"
         },
         "structure": {
           "source": "municipal material plus procedural family",
@@ -1478,7 +1478,7 @@
         },
         "renderDatum": {
           "method": "absolute-NAP-deck-connected-road-8m-terrain-join",
-          "terrainFingerprint": "61b02c3250a9ed69"
+          "terrainFingerprint": "634e7efd9b3b8050"
         },
         "structure": {
           "source": "municipal material plus procedural family",
@@ -1684,7 +1684,7 @@
           ],
           "rawNAP": 1.638,
           "surfaceNAP": 1.639,
-          "heightM": 1.622523798978181,
+          "heightM": 1.62389472833403,
           "validPixels": 21,
           "coverage": "dtm_05m"
         },
@@ -1696,7 +1696,7 @@
           ],
           "rawNAP": 1.642,
           "surfaceNAP": 1.644,
-          "heightM": 1.6398253059072205,
+          "heightM": 1.6415923536845654,
           "validPixels": 21,
           "coverage": "dtm_05m"
         },
@@ -2317,7 +2317,7 @@
         },
         "renderDatum": {
           "method": "absolute-NAP-deck-connected-road-8m-terrain-join",
-          "terrainFingerprint": "61b02c3250a9ed69"
+          "terrainFingerprint": "634e7efd9b3b8050"
         },
         "structure": {
           "source": "municipal material plus procedural family",
@@ -2445,10 +2445,5 @@
       }
     }
   ],
-  "deferred": [],
-  "sourceArchive": {
-    "repository": "blackmad/map-recall2-source-data",
-    "commit": "10c632417752b71e6737d73343812c759201be7d",
-    "path": "bridges/amsterdam-measured"
-  }
+  "deferred": []
 }

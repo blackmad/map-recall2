@@ -1,15 +1,14 @@
 import {bridgeLngLat,bridgeLocalPoint,insideBridgeOutline,validateBridgeSurfaceFile} from './bridgeSurface.js';
 import {BridgeSpatialIndex,measuredBridgeHeight,type InstalledBridge} from './measuredBridgeScene.js';
-import earcut from 'earcut';
 const {THREE}= (window as any).CanalRecallThree;
 export class MeasuredBridges {
  ready=false;enabled=true;bridges:InstalledBridge[]=[];activeIds=new Set<string>();debugPaints=0;debugTriangles=0;debugGeometryBytes=0;errors:string[]=[];
- private scene=new THREE.Scene();private waterScene=new THREE.Scene();private camera:any;private renderer:any;private generation=0;private controller=new AbortController();private root='';private terrainFingerprint='';
+ private scene=new THREE.Scene();private camera:any;private renderer:any;private generation=0;private controller=new AbortController();private root='';private terrainFingerprint='';
  private index=new BridgeSpatialIndex([]);private cache=new Map<string,any[]>();private pending=new Set<string>();private wanted=new Set<string>();private filters=new Map<string,{layer:any;original:any;ids?:string}>();private updateTimer:any;
- private onStyle=()=>this.syncWaterColour();
  private onMove=()=>this.schedule();private onGround=()=>this.schedule();
  layer:any;
  constructor(private map:any,private maplibregl:any,private preview=false) {
+  map._canalMeasuredBridges=this;
   this.scene.add(new THREE.HemisphereLight(0xfff7e9,0x596052,2));const sun=new THREE.DirectionalLight(0xffeed7,1.8);sun.position.set(-2,-1,4);this.scene.add(sun);
   this.layer={id:'measured-bridges',type:'custom',renderingMode:'3d',onAdd:(_:any,gl:any)=>{this.camera=new THREE.Camera();this.renderer=new THREE.WebGLRenderer({canvas:map.getCanvas(),context:gl,antialias:true});this.renderer.autoClear=false;},onRemove:()=>this.dispose(),render:(_:any,args:any)=>{
    if(!this.enabled||!this.ready||!this.activeIds.size)return;
@@ -17,16 +16,7 @@ export class MeasuredBridges {
    this.camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(new THREE.Matrix4().makeTranslation(origin.x,origin.y,0).scale(new THREE.Vector3(scale,-scale,scale)));
    this.renderer.resetState();this.renderer.render(this.scene,this.camera);this.debugPaints++;
   }};
-  const before=map.getStyle().layers.find((l:any)=>l.type==='custom')?.id;
-  map.addLayer({id:'measured-bridge-water-plane',type:'custom',renderingMode:'3d',render:(_:any,args:any)=>{
-   if(!this.renderer||!this.enabled||!this.ready||!this.activeIds.size)return;
-   const origin=maplibregl.MercatorCoordinate.fromLngLat([4.9,52.37],0),scale=origin.meterInMercatorCoordinateUnits();
-   this.camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(new THREE.Matrix4().makeTranslation(origin.x,origin.y,0).scale(new THREE.Vector3(scale,-scale,scale)));
-   // Clear only the exact installed deck's terrain proxy before other 3D objects
-   // draw. The bridge can then span level water instead of sharing the DEM top.
-   this.renderer.resetState();this.renderer.render(this.waterScene,this.camera);
-  }},before);
-  map.addLayer(this.layer);map.on('moveend',this.onMove);map.on('canal-ground-changed',this.onGround);map.on('sourcedata',this.onMove);map.on('styledata',this.onStyle);
+  map.addLayer(this.layer);map.on('moveend',this.onMove);map.on('canal-ground-changed',this.onGround);map.on('sourcedata',this.onMove);
  }
  async load(extractRoot:string) {
   const gen=++this.generation;this.controller.abort();this.controller=new AbortController();this.clear();this.ready=false;this.errors=[];this.bridges=[];this.index=new BridgeSpatialIndex([]);
@@ -51,7 +41,7 @@ export class MeasuredBridges {
   const previous=[...this.activeIds].sort().join(',');this.activeIds.clear();this.debugTriangles=0;
   for(const [id,meshes]of this.cache){const bridge=this.bridges.find(b=>b.id===id)!;
    const ends=[bridge.samples[0],bridge.samples.at(-1)!].map(s=>bridgeLngLat(bridge,s.point));
-   const grounded=ends.every(ll=>{const value=this.map._canalElevation?.sample(ll);return value?.ready&&value.quality!=='unknown'&&Number.isFinite(this.map.queryTerrainElevation({lng:ll[0],lat:ll[1]}));});
+   const grounded=ends.every(ll=>{const value=this.map._canalElevation?.sample(ll);return value?.ready&&value.quality!=='unknown';});
    const visible=this.wanted.has(id)&&grounded;for(const mesh of meshes)mesh.visible=visible;if(visible){this.activeIds.add(id);this.debugTriangles+=this.bridges.find(b=>b.id===id)!.review.triangles;}}
   if(previous!==[...this.activeIds].sort().join(',')){this.restoreFilters();}
   // Loading is asynchronous; only GPU-ready identities are suppressed or sampled.
@@ -68,19 +58,9 @@ export class MeasuredBridges {
     const material=new THREE.MeshStandardMaterial({color:batch.colour,roughness:.9,metalness:batch.kind==='railings'?.2:0,side:THREE.DoubleSide});
     const mesh=new THREE.Mesh(geometry,material);mesh.name=`${b.id}-${batch.kind}`;mesh.visible=false;this.scene.add(mesh);meshes.push(mesh);
    }
-   const coordinates=b.outline.map(p=>{const ll=bridgeLngLat(b,p),at=this.maplibregl.MercatorCoordinate.fromLngLat(ll,0);return[(at.x-origin.x)/scale,-(at.y-origin.y)/scale];});
-   const waterGeometry=new THREE.BufferGeometry();waterGeometry.setAttribute('position',new THREE.Float32BufferAttribute(coordinates.flatMap(p=>[p[0],p[1],0]),3));waterGeometry.setIndex(earcut(coordinates.flat()));
-   const nativeWater=this.map.getStyle().layers.find((l:any)=>l.type==='fill'&&l['source-layer']==='water');const colour=nativeWater?this.map.getPaintProperty(nativeWater.id,'fill-color'):'#9ebdff';
-   const waterMaterial=new THREE.MeshBasicMaterial({color:typeof colour==='string'?colour:'#9ebdff',side:THREE.DoubleSide,depthTest:true,depthFunc:THREE.AlwaysDepth,depthWrite:true});
-   const waterMesh=new THREE.Mesh(waterGeometry,waterMaterial);waterMesh.userData.waterClearance=true;waterMesh.visible=false;this.waterScene.add(waterMesh);meshes.push(waterMesh);
    this.cache.set(b.id,meshes);this.debugGeometryBytes+=b.review.geometryBytes;this.update();
   }catch(e:any){if(gen===this.generation&&e.name!=='AbortError'){this.errors.push(`${b.id}: ${e}`);this.wanted.delete(b.id);this.bridges=this.bridges.filter(candidate=>candidate.id!==b.id);}}
   finally{if(gen===this.generation){this.pending.delete(b.id);this.schedule();}}
- }
- private syncWaterColour(){
-  const water=this.map.getStyle().layers.find((l:any)=>l.type==='fill'&&l['source-layer']==='water');
-  const colour=water?this.map.getPaintProperty(water.id,'fill-color'):'#9ebaff';
-  if(typeof colour==='string')for(const meshes of this.cache.values())for(const mesh of meshes)if(mesh.userData.waterClearance)mesh.material.color.set(colour);
  }
  private suppress(){
   if(!this.activeIds.size)return;
@@ -102,6 +82,6 @@ export class MeasuredBridges {
  private restoreFilters(){for(const [id,{layer,original}]of this.filters)if(this.map.getLayer(id)===layer)this.map.setFilter(id,original);this.filters.clear();}
  private evict(){for(const[id,meshes]of this.cache){if(this.cache.size<=24&&this.debugGeometryBytes<=16000000)break;if(this.activeIds.has(id))continue;for(const mesh of meshes){mesh.parent?.remove(mesh);mesh.geometry.dispose();mesh.material.dispose();}this.cache.delete(id);this.debugGeometryBytes-=this.bridges.find(b=>b.id===id)?.review.geometryBytes||0;}}
  private clear(){this.restoreFilters();for(const meshes of this.cache.values())for(const mesh of meshes){mesh.parent?.remove(mesh);mesh.geometry.dispose();mesh.material.dispose();}this.cache.clear();this.pending.clear();this.activeIds.clear();this.debugGeometryBytes=0;this.debugTriangles=0;}
- dispose(){this.generation++;this.controller.abort();clearTimeout(this.updateTimer);this.clear();this.map.off('moveend',this.onMove);this.map.off('sourcedata',this.onMove);this.map.off('canal-ground-changed',this.onGround);this.map.off('styledata',this.onStyle);this.renderer?.dispose();}
+ dispose(){this.generation++;this.controller.abort();clearTimeout(this.updateTimer);this.clear();this.map.off('moveend',this.onMove);this.map.off('sourcedata',this.onMove);this.map.off('canal-ground-changed',this.onGround);this.renderer?.dispose();if(this.map._canalMeasuredBridges===this)delete this.map._canalMeasuredBridges;}
 }
 (window as any).CanalRecallMeasuredBridges={MeasuredBridges};

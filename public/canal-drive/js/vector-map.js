@@ -1882,8 +1882,10 @@ class VectorBasemap {
 
   setPlayerBoat(player, loader, visible) {
     if (!this._playerBoat || !player || !loader) return;
+    const lngLat = this.worldToLngLat(player.x, player.y, loader);
+    this._playerBoat.setAltitude((this._elevation?.enabled ? this._elevation.surfaces?.waterHeight(lngLat) ?? 0 : 0) + 0.22);
     this._playerBoat.update(
-      this.worldToLngLat(player.x, player.y, loader), player.angle, visible,
+      lngLat, player.angle, visible,
       player.steerInput || 0
     );
   }

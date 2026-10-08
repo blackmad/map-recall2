@@ -38,7 +38,7 @@ import { BuildingContextIndex } from './buildingContextIndex.js';
 
 type BuildOptions = { look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; contextFeatures?: readonly Feature[]; appearanceRevision: string; hostOpenings: readonly ChunkHostOpeningConfig[]; hostOpeningRevision: string };
 
-type MapLike = { getCanvas(): HTMLCanvasElement; triggerRepaint(): void; getZoom(): number; _canalElevation?: {enabled:boolean;revision:number;objectGround(g:any):number} };
+type MapLike = { getCanvas(): HTMLCanvasElement; triggerRepaint(): void; getZoom(): number; _canalElevation?: {enabled:boolean;revision:number;objectGround(g:any):number;surfaces?:{waterHeight(at:readonly[number,number]):number|null}|null} };
 type MaplibreLike = { MercatorCoordinate: { fromLngLat(lngLat: [number, number], altitude: number): { x: number; y: number; z: number; meterInMercatorCoordinateUnits(): number } } };
 
 const TILE_ZOOM = 14;
@@ -797,13 +797,22 @@ export class ThreeBuildings {
   }
 
   private groundChunk(key: string, chunk: any): void {
-    if (!chunk.mesh || key.startsWith(BOAT_PREFIX)) return;
+    if (!chunk.mesh) return;
     const service = this.map._canalElevation;
     const revision = service?.revision ?? -1;
     if (chunk.mesh.userData.groundRevision === revision) return;
     const attribute = chunk.mesh.geometry.getAttribute('ground');
     if (!attribute) return;
     let changed = false;
+    if(key.startsWith(BOAT_PREFIX)){
+      for(const boat of this.boatTiles.get(key.slice(BOAT_PREFIX.length))||[]){
+        const range=chunk.ranges.get(boat.id);if(!range||!boat.ring.length)continue;
+        const center=boat.ring.reduce((p,at)=>[p[0]+at[0]/boat.ring.length,p[1]+at[1]/boat.ring.length],[0,0]);
+        const height=service?.enabled?service.surfaces?.waterHeight(center as [number,number])??0:0;
+        if(Math.abs(attribute.array[range.start]-height)<.001)continue;
+        attribute.array.fill(height,range.start,range.start+range.count);changed=true;
+      }
+    }
     for (const feature of chunk.source) {
       const range = chunk.ranges.get(String(feature.properties.id));
       if (!range) continue;
