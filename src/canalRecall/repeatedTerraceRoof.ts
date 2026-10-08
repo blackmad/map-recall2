@@ -71,6 +71,13 @@ export function repeatedTerraceRoofTriangles(
       }
     }
   }
+  // The cross-gable shoulder stands above the main slope near the eave.
+  // Close both cheek walls until their valley meets the main roof; roof
+  // triangles alone leave a triangular opening at this height discontinuity.
+  const valleyV = ridge * shoulder / roofRise;
+  for (const sign of [-1, 1]) sink.flatPoly([
+    [sign * g, 0, 0], [sign * g, valleyV, shoulder], [sign * g, 0, shoulder],
+  ], 'plate', [sign, 0, 0], plan.wallHex);
   // Close the native roof volume at party edges too. Adjacent surveyed parents
   // can have different heights/depths; an omitted end exposes sky through the
   // higher roof. Neighbor geometry occludes shared interior portions naturally.

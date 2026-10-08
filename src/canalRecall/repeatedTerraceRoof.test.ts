@@ -15,8 +15,8 @@ function hit(origin:number[],direction:number[],t:RoofTri):number|undefined {
   const c=(a:number[],b:number[])=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
   const dot=(a:number[],b:number[])=>a.reduce((v,x,i)=>v+x*b[i],0),sub=(a:number[],b:number[])=>a.map((x,i)=>x-b[i]);
   const e1=sub(t.p[1],t.p[0]),e2=sub(t.p[2],t.p[0]),h=c(direction,e2),det=dot(e1,h);
-  if(Math.abs(det)<1e-9)return;const s=sub(origin,t.p[0]),u=dot(s,h)/det;if(u<0||u>1)return;
-  const q=c(s,e1),v=dot(direction,q)/det;if(v<0||u+v>1)return;const distance=dot(e2,q)/det;if(distance>0)return distance;
+  if(Math.abs(det)<1e-9)return;const s=sub(origin,t.p[0]),u=dot(s,h)/det;if(u< -1e-8||u>1+1e-8)return;
+  const q=c(s,e1),v=dot(direction,q)/det;if(v< -1e-8||u+v>1+1e-8)return;const distance=dot(e2,q)/det;if(distance>0)return distance;
 }
 
 test('eight native roofs retain upward slope winding, outline bounds, native crest and visible central window',()=>{
@@ -41,6 +41,15 @@ test('eight native roofs retain upward slope winding, outline bounds, native cre
           const signs=tri.map((a,i)=>{const b=tri[(i+1)%3];return (b[0]-a[0])*(p[1]-a[1])-(b[1]-a[1])*(p[0]-a[0]);});
           return signs.every(s=>s>=-1e-6)||signs.every(s=>s<=1e-6);
         }));
+      }
+    }
+    // Vertical coverage over each native triangular roof carrier: a closed
+    // source footprint must never reveal the ground through a roof valley.
+    for(let i=0;i<nativeIndices.length;i+=3){
+      const a=ring[nativeIndices[i]],b=ring[nativeIndices[i+1]],c=ring[nativeIndices[i+2]];
+      for(let u=1;u<12;u++)for(let v=1;v<12-u;v++){
+        const x=a[0]+(b[0]-a[0])*u/12+(c[0]-a[0])*v/12,y=a[1]+(b[1]-a[1])*u/12+(c[1]-a[1])*v/12;
+        assert(roof.some(t=>t.part==='slope'&&hit([x,y,parent.installedHeightMetres+1],[0,0,-1],t)!==undefined),`Open roof at parent${index}:${x},${y}`);
       }
     }
     const center=frontPoints[0].map((v:number,i:number)=>(v+frontPoints[1][i])/2);
@@ -74,4 +83,14 @@ test('raised crown masonry remains visible from behind the cross roof',()=>{
  const ray=[6.5,.5,13+2.4*.8];
  const hits=roof.map(t=>({t,d:hit(ray,[0,-1,0],t)})).filter(v=>v.d!==undefined&&v.t.n[1]>0).sort((a,b)=>a.d!-b.d!);
  assert(hits.length,'Raised masonry crown has no rear face');assert.equal(hits[0].t.part,'plate');assert.equal(hits[0].t.hex,'#8b7059');assert(Math.abs(hits[0].d!-.35)<1e-6);
+});
+
+test('cross-gable cheeks close the shoulder above the main roof valley',()=>{
+ const origin={lng:4.877,lat:52.375},kx=111320*Math.cos(origin.lat*Math.PI/180);
+ const outer=[[0,0],[12,0],[12,16],[0,16],[0,0]].map(([x,y])=>[origin.lng+x/kx,origin.lat+y/110540]);
+ const roof=repeatedTerraceRoofTriangles(outer,origin,{front:{start:[0,0],end:[12,0],normal:[0,-1]},widthM:3,gable:'spout',wallHex:'#8b7059'},13,2.4,{bayM:3,storeyM:3,cellM:1},kx);
+ for(const [ray,dir,nx]of[[[9,.7,13.55],[-1,0,0],1],[[3,.7,13.55],[1,0,0],-1]]as const){
+ const hits=roof.map(t=>({t,d:hit([...ray],[...dir],t)})).filter(v=>v.d!==undefined).sort((a,b)=>a.d!-b.d!);
+ assert(hits.length,'Cross-gable shoulder exposes street through open cheek');assert.equal(hits[0].t.part,'plate');assert.equal(hits[0].t.n[0],nx);assert(Math.abs(hits[0].d!-1.5)<1e-6);
+ }
 });
