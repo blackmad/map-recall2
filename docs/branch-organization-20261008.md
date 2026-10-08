@@ -7,7 +7,7 @@ The existing mixed root work has been preserved as four topic branches, with ori
 | Branch | Final commit | Captured paths |
 | --- | --- | --- |
 | `wip/street-rendering-20261008` | `db0512d02958` | 81 |
-| `wip/canalhouse-recipes-20261008` | `fcaeabb59c94` | 1760 |
+| `wip/canalhouse-recipes-20261008` | `d6f3e0d48ca1` | 1760 |
 | `wip/landmark-drafts-20261008` | `7844b6cbbac1` | 227 |
 | `fix/feedback-account-ui-20261008` | `1eee0bd83f14` | 7 |
 
@@ -56,3 +56,11 @@ Latest locally acquired upstream is `0abdd6a722b0c9d81190ef09dbc4a35f07ec0582`, 
 A main push triggers Firebase deployment. Refresh upstream, coordinate an exact SHA/file publication window with existing publishers, rebase the docs-only change additively, and use a normal push. Network attempts in this session failed GitHub DNS under the new restricted profile. Session-coordination messages were rejected because MCP calls require approval while policy is `never`. No main push or deployment is claimed.
 
 Root HEAD synchronization requires restored `.git` write access and an agreed author freeze. Before switching its baseline, snapshot all **current** retained changes, including changes since this cleanup. Semantically replay active changes over upstream and preserve root index ownership; do not reset the root tree to make it clean. The remaining root work and exact cleanup actions are recorded in `artifacts/branch-organization-20261008/`.
+
+## Completed filesystem cleanup checkpoint
+
+The verified relocation completed **1,822 actions**, predominantly removing duplicate untracked canalhouse/model/reference/report copies after their Git preservation. Hash guards skipped concurrent edits. Root untracked files dropped from about 1,982 to about 190; ongoing workers can change the count. Active/imported code, shared queues/metadata, npm dependencies and the ordinary publisher handoff remain. Root Git index and HEAD were unchanged.
+
+Root `npm run lint` passed after the cleanup. Relocated canalhouse package commands were removed from root while shared dependencies and unrelated active script changes were retained. The canalhouse branch lockfile was scoped to match its own dependency manifest; active-root-only canvas bindings remain with the active root work.
+
+The normal push of the docs-only reconciliation failed at GitHub DNS resolution. Exact local reconciliation SHA, failed push log, root status, preservation hashes and cleanup journal are saved under `artifacts/branch-organization-20261008/`. No deployment or root Git synchronization is claimed.
