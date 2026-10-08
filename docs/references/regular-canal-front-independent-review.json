@@ -1,0 +1,545 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-10-06T19:16:30.197838+00:00",
+  "scopeId": "regular-canal-left-raised-entry-20261006",
+  "reviewer": "independent worker regular_review",
+  "decision": "scoped body/entry and99cornice CPU visual capability improve; full critical crown/roof acceptance FAIL",
+  "prominentFailures": [
+    "85survey-supported roof/triangular front closure lacks photographed clock-shaped crown. Survey binding is not architectural crown acceptance; full85/99source-supported row mixture still FAIL.",
+    "99bracketed projecting ledge reads at row scale, but central hoist is only an ambiguous tiny dark mark in broad oblique view. Both near cameras exclude roof/cornice region: no positive crown/hoist detail visibility evidence.",
+    "99survey remains rejected:RMSE2.470m exceeds existing1m guard, exact native frame/year/courtyard compatibility absent. Keep native18.53m,null year and open courtyard; no guard relaxation.",
+    "85officialBAGgeometry,year and status investigations remain open; source envelope confidence moderate (AHN5 RMSE.913m). Current values corroborate bounded diagnostic compatibility, not resolved cadastral status.",
+    "No actual game/GPU,desktop/touch stationary-rider camera pan,streaming/profile-toggle,performance or fresh113positive transfer acceptance."
+  ],
+  "sampling": {
+    "exposedTrainingViewed": [
+      85,
+      99
+    ],
+    "transition95": "scaffold withheld, no positive classification",
+    "freshHeldout113": "NOT VIEWED; no source image/register inspection by reviewer",
+    "admissions": 0,
+    "transferAccepted": false
+  },
+  "evidence": {
+    "sourceScope": "docs/references/regular-canal-front-scope-20261006.json",
+    "workInventory": "public/canal-drive/street-rhythm-work.json",
+    "sources": [
+      {
+        "address": 85,
+        "captureDate": "2025-06-30",
+        "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/oudezijds-east-next-south/processed/transfer-challenge-20261006/85-full-front.jpg",
+        "sha256": "19fdfcf5682ca839307a2b3aaab6358c46f7067039a1771232f98187f517c14e",
+        "attribution": "Gemeente Amsterdam",
+        "rights": "CC BY4.0 per archived municipal acquisition manifest",
+        "inspection": "This worker personally inspected exposed crop; source99is training, never fresh heldout",
+        "limits": "Perspective and partial lower occlusion prevent metric door/stair inference; crop does not verify rear topology."
+      },
+      {
+        "address": 99,
+        "captureDate": "2025-06-30",
+        "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/oudezijds-east-next-south/processed/transfer-challenge-20261006/99-full-front.jpg",
+        "sha256": "731f68b56784fec317045a5fc1e20f0928ceb4d6369ed6b91558c021ffc4f4e5",
+        "attribution": "Gemeente Amsterdam",
+        "rights": "CC BY4.0 per archived municipal acquisition manifest",
+        "inspection": "This worker personally inspected exposed crop; source99is training, never fresh heldout",
+        "limits": "Perspective and partial lower occlusion prevent metric door/stair inference; crop does not verify rear topology."
+      }
+    ],
+    "renderReport": "artifacts/regular-canal-front/cycle-1/report.json",
+    "viewsPersonallyInspected": [
+      "artifacts/regular-canal-front/cycle-1/before-front.png",
+      "artifacts/regular-canal-front/cycle-1/after-front.png",
+      "artifacts/regular-canal-front/cycle-1/before-oblique.png",
+      "artifacts/regular-canal-front/cycle-1/after-oblique.png",
+      "artifacts/regular-canal-front/cycle-1/before-near85.png",
+      "artifacts/regular-canal-front/cycle-1/after-near85.png",
+      "artifacts/regular-canal-front/cycle-1/before-near99.png",
+      "artifacts/regular-canal-front/cycle-1/after-near99.png"
+    ],
+    "rendererSources": {
+      "src/canalRecall/threeBuildingMesh.ts": "d205c8fafa467fbb23034313f1fd2264f83b38ec511acbc4bdc4853ac6e4400f",
+      "src/canalRecall/threeBuildingFeatures.ts": "34238977296a25011afb6ecd595d20007371a9b30cfddcec70235bdd51dc32f9",
+      "src/canalRecall/compoundSourceCandidate.fixture.ts": "869d7c0e85e880142852cbc72343d3c2f54004a44c3286ccc24c8d2015e2a0d0",
+      "src/canalRecall/surveyedEnvelopeMeshBinding.ts": "3dcce7f6a2c85121b10873a322d6a10b1746970029d29f659ef8b0811e5b9187",
+      "src/canalRecall/regularCanalNative.fixture.ts": "641c07c3ed2509b5e18b0ce9a3ed4e2d7f4bade5cb5eed90de034fff1e34f608",
+      "src/canalRecall/regularCanalFrontage.ts": "8a055b980c17e4dd9187fec1e8e559b07e8183ef4de6d577cb6f6082e91eb4e1",
+      "src/canalRecall/streetAppearance.ts": "0d5a618b70622fc3874989976b88e5fcea3ea942b4bf846305953083dbb07096",
+      "scripts/street-appearance/render-regular-canal-preflight.ts": "ec9ce3363aebfbd8739d973e3c493bae65c80bd18222a42dc9ad76848b1f5a9a"
+    },
+    "reportViews": [
+      {
+        "phase": "before",
+        "view": "front",
+        "file": "artifacts/regular-canal-front/cycle-1/before-front.png",
+        "sha256": "3a4409207a0b6ae28ecab40b97e9edd5d2027f8aa383c9404d14b9b913961eba",
+        "triangles": 3958
+      },
+      {
+        "phase": "after",
+        "view": "front",
+        "file": "artifacts/regular-canal-front/cycle-1/after-front.png",
+        "sha256": "c3ba0841766c5c7880d216f7eea09a46433ef1af1f9a172830248490c435dc5d",
+        "triangles": 6134
+      },
+      {
+        "phase": "before",
+        "view": "oblique",
+        "file": "artifacts/regular-canal-front/cycle-1/before-oblique.png",
+        "sha256": "49a2f4971ec588f7a0e9f57482dcc1ee2625ee12155562d3a1fce25ff5fc389f",
+        "triangles": 3958
+      },
+      {
+        "phase": "after",
+        "view": "oblique",
+        "file": "artifacts/regular-canal-front/cycle-1/after-oblique.png",
+        "sha256": "3f017aafbece59a5f754583ec331722ed3bf4f047f5a2ed65152b95be665b1a7",
+        "triangles": 6134
+      },
+      {
+        "phase": "before",
+        "view": "near85",
+        "file": "artifacts/regular-canal-front/cycle-1/before-near85.png",
+        "sha256": "9005d58d66e0560785e7b18da52c9b63c6a0b96275b1eec142711c6e1759b491",
+        "triangles": 3958
+      },
+      {
+        "phase": "after",
+        "view": "near85",
+        "file": "artifacts/regular-canal-front/cycle-1/after-near85.png",
+        "sha256": "68d73caf534bbd8b89075160dc33e8967fac44c81038f615f7d493171feec40c",
+        "triangles": 6134
+      },
+      {
+        "phase": "before",
+        "view": "near99",
+        "file": "artifacts/regular-canal-front/cycle-1/before-near99.png",
+        "sha256": "a14797c64ddbf370f2a379cddf9d08aa0864185ea70206d10447dbf1a1c7b3e7",
+        "triangles": 3958
+      },
+      {
+        "phase": "after",
+        "view": "near99",
+        "file": "artifacts/regular-canal-front/cycle-1/after-near99.png",
+        "sha256": "402f8e27da6779a77780c28c7f81c42fd461d0a4c7c58d4ecb9dabf9963a3eaa",
+        "triangles": 6134
+      }
+    ],
+    "type": "CPU exact native geometry with runtime production atlas; not browser or game evidence"
+  },
+  "criticalDecisions": [
+    {
+      "trait": "three principal axes",
+      "decision": "PASS scoped CPU visual capability",
+      "evidence": "Both fronts visibly have three window axes, left entrance remains one axis, native narrower85 and wider99 retained. Corrects prior arbitrary bay count."
+    },
+    {
+      "trait": "tall ground and tapering upper tiers",
+      "decision": "PASS scoped CPU visual capability",
+      "evidence": "Tallground is visibly taller than first upper; upper fields shorten upward. Three main upper rows85 and four99 remain distinct. No exact attic/crown acceptance."
+    },
+    {
+      "trait": "left raised entry continuity",
+      "decision": "PASS scoped CPU visual capability",
+      "evidence": "Cycle3 near85/99 show source-supported single/double dark leaf with two/four readable raised panel fields, transom, connected stone landing/treads and thin open rails. One physical handle per leaf replaces cycle2 repeated atlas glyphs. Exact carving not demanded. Physical assembly remains recessed and distinguishes doors from glazed fields."
+    },
+    {
+      "trait": "pale basement with separate lower access",
+      "decision": "PASS scoped CPU visual capability",
+      "evidence": "Stone plinth remains different from brick, separate right lower door and middle basement pane stay open. Cycle3 lower access has readable one/two-leaf panels matching the bounded main-door structure. No full-width compound ground-band contamination."
+    },
+    {
+      "trait": "pale subdivided sash",
+      "decision": "PASS scoped CPU visual capability",
+      "evidence": "Individual perimeter frames and internal bars read at near and row views with substantial dark piers. 85 muted two-column sash differs from99 brighter three-column sash. Original99 two-column fixture mismatch corrected before first immutable cycle1 render."
+    },
+    {
+      "trait": "source-supported mixed crowns",
+      "decision": "PARTIAL99cornice;85clockcrown FAIL,99hoist unresolved",
+      "evidence": "Cycle5 front/oblique distinguish pitched85survey roof from straight99termination.99repeated brackets/pale ledge clearly read;85front triangular closure does not express source clock outline/trim.99central projecting hoist is not clearly identifiable at available resolution. Existing near85/99cameras cut off crown area."
+    },
+    {
+      "trait": "absence of balcony stack",
+      "decision": "PASS scoped CPU visual capability",
+      "evidence": "No stacked balcony slabs/canopy added to85/99. Entry rails visibly remain stair access, not balcony-frequency inference."
+    }
+  ],
+  "codeChecks": {
+    "inspected": [
+      "src/canalRecall/regularCanalFrontage.ts",
+      "src/canalRecall/regularCanalFrontage.test.ts",
+      "src/canalRecall/regularCanalNative.test.ts",
+      "src/canalRecall/regularCanalNative.fixture.ts",
+      "src/canalRecall/threeBuildingMesh.ts",
+      "src/canalRecall/streetAppearance.ts",
+      "src/canalRecall/streetFacadeRendering.ts"
+    ],
+    "testsRun": "node --import tsx --test src/canalRecall/regularCanalFrontage.test.ts src/canalRecall/regularCanalNative.test.ts",
+    "result": "17 planner/native tests passed independently at cycle5; includes cornice/hoist bounds and unchanged cuts/roof, combined walls+extras firsthits, courtyard preservation. Tests do not establish visible hoist/crown or game acceptance.",
+    "meaning": "Atomic invalid-fit fallback, first-hit pane/door layer/cuts, mirroring/winding, native wall complements, texture layer preservation and unchanged neighbors. None imply visual/game/performance acceptance.",
+    "streetSideBinding": "Confirmed streetWallBuilding admits recipes only street-facing; courtyard holes excluded."
+  },
+  "requiredNext": [
+    "Preserve cycle1flatleaf,cycle2repeatedhandles,cycle3missingcrowns,cycle4flat85roof andcycle5missingclockcrown/ambiguoushoist evidence.",
+    "Implement bounded source-supported85clockfront/trim with survey-supported roof closure; avoid covering existing last openings or inventing metric survey dimensions.",
+    "Add upper-front85/99near detail camera views for crown/roof attachment and central hoist readability.",
+    "Preserve99survey rejection/native open court andnull year; keep85openinvestigation uncertainty honest.",
+    "Freeze complete training before113photo/register challenge;113currently unseen by reviewer.",
+    "Verify actualgame/GPU anddesktop/touchpan/performance before scoped acceptance."
+  ],
+  "cycle1FailurePreserved": {
+    "decision": "body capability visibly improved; full critical acceptance FAIL",
+    "prominentFailures": [
+      "Mixed source-supported crowns/roof ownership remain unimplemented: 85 lacks observed clock crown; 99 lacks observed bracketed cornice and central hoist. This defeats full street-row rhythm acceptance.",
+      "Entrance/lower door leaves render as uniform dark rectangular patches. Door atlas-layer first hits do not demonstrate textured door identity; before panels are visible, after panels are absent. Requires useful panel identity or pixel proof plus visual re-review.",
+      "No actual game-scene/GPU, desktop/touch stationary-rider pan, streaming/profile-toggle or performance acceptance evidence."
+    ],
+    "criticalDecisions": [
+      {
+        "trait": "three principal axes",
+        "decision": "PASS scoped CPU visual capability",
+        "evidence": "Both fronts visibly have three window axes, left entrance remains one axis, native narrower85 and wider99 retained. Corrects prior arbitrary bay count."
+      },
+      {
+        "trait": "tall ground and tapering upper tiers",
+        "decision": "PASS scoped CPU visual capability",
+        "evidence": "Tallground is visibly taller than first upper; upper fields shorten upward. Three main upper rows85 and four99 remain distinct. No exact attic/crown acceptance."
+      },
+      {
+        "trait": "left raised entry continuity",
+        "decision": "PASS scoped CPU visual capability",
+        "evidence": "Cycle3 near85/99 show source-supported single/double dark leaf with two/four readable raised panel fields, transom, connected stone landing/treads and thin open rails. One physical handle per leaf replaces cycle2 repeated atlas glyphs. Exact carving not demanded. Physical assembly remains recessed and distinguishes doors from glazed fields."
+      },
+      {
+        "trait": "pale basement with separate lower access",
+        "decision": "PASS scoped CPU visual capability",
+        "evidence": "Stone plinth remains different from brick, separate right lower door and middle basement pane stay open. Cycle3 lower access has readable one/two-leaf panels matching the bounded main-door structure. No full-width compound ground-band contamination."
+      },
+      {
+        "trait": "pale subdivided sash",
+        "decision": "PASS scoped CPU visual capability",
+        "evidence": "Individual perimeter frames and internal bars read at near and row views with substantial dark piers. 85 muted two-column sash differs from99 brighter three-column sash. Original99 two-column fixture mismatch corrected before first immutable cycle1 render."
+      },
+      {
+        "trait": "source-supported mixed crowns",
+        "decision": "FAIL; unimplemented critical row relationship",
+        "evidence": "85 flat fallback does not express observed shaped clock crown,99 generic roof lip does not establish observed bracketed cornice/central hoist. Body relationship cannot stand in for mixed crown ownership."
+      },
+      {
+        "trait": "absence of balcony stack",
+        "decision": "PASS scoped CPU visual capability",
+        "evidence": "No stacked balcony slabs/canopy added to85/99. Entry rails visibly remain stair access, not balcony-frequency inference."
+      }
+    ],
+    "evidence": {
+      "sourceScope": "docs/references/regular-canal-front-scope-20261006.json",
+      "workInventory": "public/canal-drive/street-rhythm-work.json",
+      "sources": [
+        {
+          "address": 85,
+          "captureDate": "2025-06-30",
+          "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/oudezijds-east-next-south/processed/transfer-challenge-20261006/85-full-front.jpg",
+          "sha256": "19fdfcf5682ca839307a2b3aaab6358c46f7067039a1771232f98187f517c14e",
+          "attribution": "Gemeente Amsterdam",
+          "rights": "CC BY4.0 per archived municipal acquisition manifest",
+          "inspection": "This worker personally inspected exposed crop; source99is training, never fresh heldout",
+          "limits": "Perspective and partial lower occlusion prevent metric door/stair inference; crop does not verify rear topology."
+        },
+        {
+          "address": 99,
+          "captureDate": "2025-06-30",
+          "file": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/oudezijds-east-next-south/processed/transfer-challenge-20261006/99-full-front.jpg",
+          "sha256": "731f68b56784fec317045a5fc1e20f0928ceb4d6369ed6b91558c021ffc4f4e5",
+          "attribution": "Gemeente Amsterdam",
+          "rights": "CC BY4.0 per archived municipal acquisition manifest",
+          "inspection": "This worker personally inspected exposed crop; source99is training, never fresh heldout",
+          "limits": "Perspective and partial lower occlusion prevent metric door/stair inference; crop does not verify rear topology."
+        }
+      ],
+      "renderReport": "artifacts/regular-canal-front/cycle-1/report.json",
+      "viewsPersonallyInspected": [
+        "artifacts/regular-canal-front/cycle-1/before-front.png",
+        "artifacts/regular-canal-front/cycle-1/after-front.png",
+        "artifacts/regular-canal-front/cycle-1/before-oblique.png",
+        "artifacts/regular-canal-front/cycle-1/after-oblique.png",
+        "artifacts/regular-canal-front/cycle-1/before-near85.png",
+        "artifacts/regular-canal-front/cycle-1/after-near85.png",
+        "artifacts/regular-canal-front/cycle-1/before-near99.png",
+        "artifacts/regular-canal-front/cycle-1/after-near99.png"
+      ],
+      "rendererSources": {
+        "src/canalRecall/threeBuildingMesh.ts": "d205c8fafa467fbb23034313f1fd2264f83b38ec511acbc4bdc4853ac6e4400f",
+        "src/canalRecall/threeBuildingFeatures.ts": "34238977296a25011afb6ecd595d20007371a9b30cfddcec70235bdd51dc32f9",
+        "src/canalRecall/compoundSourceCandidate.fixture.ts": "869d7c0e85e880142852cbc72343d3c2f54004a44c3286ccc24c8d2015e2a0d0",
+        "src/canalRecall/surveyedEnvelopeMeshBinding.ts": "3dcce7f6a2c85121b10873a322d6a10b1746970029d29f659ef8b0811e5b9187",
+        "src/canalRecall/regularCanalNative.fixture.ts": "641c07c3ed2509b5e18b0ce9a3ed4e2d7f4bade5cb5eed90de034fff1e34f608",
+        "src/canalRecall/regularCanalFrontage.ts": "8a055b980c17e4dd9187fec1e8e559b07e8183ef4de6d577cb6f6082e91eb4e1",
+        "src/canalRecall/streetAppearance.ts": "0d5a618b70622fc3874989976b88e5fcea3ea942b4bf846305953083dbb07096",
+        "scripts/street-appearance/render-regular-canal-preflight.ts": "ec9ce3363aebfbd8739d973e3c493bae65c80bd18222a42dc9ad76848b1f5a9a"
+      },
+      "reportViews": [
+        {
+          "phase": "before",
+          "view": "front",
+          "file": "artifacts/regular-canal-front/cycle-1/before-front.png",
+          "sha256": "3a4409207a0b6ae28ecab40b97e9edd5d2027f8aa383c9404d14b9b913961eba",
+          "triangles": 3958
+        },
+        {
+          "phase": "after",
+          "view": "front",
+          "file": "artifacts/regular-canal-front/cycle-1/after-front.png",
+          "sha256": "c3ba0841766c5c7880d216f7eea09a46433ef1af1f9a172830248490c435dc5d",
+          "triangles": 6134
+        },
+        {
+          "phase": "before",
+          "view": "oblique",
+          "file": "artifacts/regular-canal-front/cycle-1/before-oblique.png",
+          "sha256": "49a2f4971ec588f7a0e9f57482dcc1ee2625ee12155562d3a1fce25ff5fc389f",
+          "triangles": 3958
+        },
+        {
+          "phase": "after",
+          "view": "oblique",
+          "file": "artifacts/regular-canal-front/cycle-1/after-oblique.png",
+          "sha256": "3f017aafbece59a5f754583ec331722ed3bf4f047f5a2ed65152b95be665b1a7",
+          "triangles": 6134
+        },
+        {
+          "phase": "before",
+          "view": "near85",
+          "file": "artifacts/regular-canal-front/cycle-1/before-near85.png",
+          "sha256": "9005d58d66e0560785e7b18da52c9b63c6a0b96275b1eec142711c6e1759b491",
+          "triangles": 3958
+        },
+        {
+          "phase": "after",
+          "view": "near85",
+          "file": "artifacts/regular-canal-front/cycle-1/after-near85.png",
+          "sha256": "68d73caf534bbd8b89075160dc33e8967fac44c81038f615f7d493171feec40c",
+          "triangles": 6134
+        },
+        {
+          "phase": "before",
+          "view": "near99",
+          "file": "artifacts/regular-canal-front/cycle-1/before-near99.png",
+          "sha256": "a14797c64ddbf370f2a379cddf9d08aa0864185ea70206d10447dbf1a1c7b3e7",
+          "triangles": 3958
+        },
+        {
+          "phase": "after",
+          "view": "near99",
+          "file": "artifacts/regular-canal-front/cycle-1/after-near99.png",
+          "sha256": "402f8e27da6779a77780c28c7f81c42fd461d0a4c7c58d4ecb9dabf9963a3eaa",
+          "triangles": 6134
+        }
+      ],
+      "type": "CPU exact native geometry with runtime production atlas; not browser or game evidence"
+    }
+  },
+  "cycle2FailurePreserved": {
+    "decision": "door panels improve identity but repeated atlas handles fail physical leaf ownership",
+    "personallyInspected": [
+      "artifacts/regular-canal-front/cycle-2-door-panels/after-near99.png"
+    ],
+    "finding": "The handle glyph repeats in each raised panel;99has four glyphs instead of one per leaf. Source precision not required to recognize this assembly defect."
+  },
+  "latestCycle": "cycle-5-survey-roof85",
+  "latestEvidence": {
+    "report": "artifacts/regular-canal-front/cycle-5-survey-roof85/report.json",
+    "afterViewsPersonallyInspected": [
+      {
+        "phase": "after",
+        "view": "front",
+        "file": "artifacts/regular-canal-front/cycle-5-survey-roof85/after-front.png",
+        "sha256": "5304327190441ddced57dc4ec59f1ea4830a4bf6250397db0cf016ebd5c1e172",
+        "triangles": 6744
+      },
+      {
+        "phase": "after",
+        "view": "oblique",
+        "file": "artifacts/regular-canal-front/cycle-5-survey-roof85/after-oblique.png",
+        "sha256": "b9ec4fb123c48d7a59b934e43d042cfddc177d12c8d8ea79b967009852a79fbd",
+        "triangles": 6744
+      },
+      {
+        "phase": "after",
+        "view": "near85",
+        "file": "artifacts/regular-canal-front/cycle-5-survey-roof85/after-near85.png",
+        "sha256": "a6840c60061f0d1f08ed532594693713f4e9a3e842c7bf9f740dd00ca592d3dd",
+        "triangles": 6744
+      },
+      {
+        "phase": "after",
+        "view": "near99",
+        "file": "artifacts/regular-canal-front/cycle-5-survey-roof85/after-near99.png",
+        "sha256": "36bb985291791b81768e6056464ed1997fcb94b78bc30b8b1bf7a910fbc26481",
+        "triangles": 6744
+      }
+    ],
+    "baseline": "Four before hashes identical to cycle1 inspected baseline; reused cached baseline views.",
+    "rendererSources": {
+      "src/canalRecall/threeBuildingMesh.ts": "495d37f3b6d21f72513c87b36b5aa21683a45aa0c084b199aff5a8ee53b346a8",
+      "src/canalRecall/threeBuildingFeatures.ts": "34238977296a25011afb6ecd595d20007371a9b30cfddcec70235bdd51dc32f9",
+      "src/canalRecall/compoundSourceCandidate.fixture.ts": "869d7c0e85e880142852cbc72343d3c2f54004a44c3286ccc24c8d2015e2a0d0",
+      "src/canalRecall/surveyedEnvelopeMeshBinding.ts": "3dcce7f6a2c85121b10873a322d6a10b1746970029d29f659ef8b0811e5b9187",
+      "src/canalRecall/regularCanalNative.fixture.ts": "b1630ebfc326edc8951846a5b500060e690c38c05cd422117dff0b2ff950f634",
+      "src/canalRecall/regularCanalFrontage.ts": "f65de7393600264d779926cd7b5e911069749044a840a6d32fca0b4ec440abc4",
+      "src/canalRecall/streetAppearance.ts": "0d5a618b70622fc3874989976b88e5fcea3ea942b4bf846305953083dbb07096",
+      "scripts/street-appearance/render-regular-canal-preflight.ts": "16764113b1e952eb92881c76225dbab9af2c67b7e55f4f601fe6c651905ced9c"
+    },
+    "type": "CPU actual native runtime geometry and atlas diagnostic only",
+    "85SourceBinding": {
+      "candidatePath": "src/canalRecall/fixtures/regular85SurveyEnvelope.json",
+      "sha256": "b9b6ef0721617ec74868f2c397a95187d35f3596df83ece1507c843ee672d9f9",
+      "appliesTo": "after only",
+      "nativeHeight": 16.23,
+      "nativeYear": 1746,
+      "scope": "validated official source envelope; photographic clock crown not inferred from survey"
+    },
+    "sourceReviewRead": "docs/references/regular-canal-roof-envelope-review.json",
+    "limits": "Near cameras retain good body/door/rail review but exclude allroof/cornice; no detail/firsthit sourcecrown acceptance."
+  },
+  "cycle3ReviewPreserved": {
+    "decision": "scoped body/entry CPU visual capability PASS; full critical acceptance FAIL",
+    "prominentFailures": [
+      "Mixed source-supported crowns/roof ownership remain unimplemented:85lacks observed clockcrown;99lacks observed bracketed cornice/central hoist. Full street-row rhythm remains FAIL.",
+      "No actual game-scene/GPU, desktop/touch stationary-rider pan, streaming/profile-toggle or performance acceptance evidence.",
+      "No fresh positive113heldout challenge;113source has not been viewed by this reviewer. No transfer or public admission."
+    ],
+    "criticalDecisions": [
+      {
+        "trait": "three principal axes",
+        "decision": "PASS scoped CPU visual capability",
+        "evidence": "Both fronts visibly have three window axes, left entrance remains one axis, native narrower85 and wider99 retained. Corrects prior arbitrary bay count."
+      },
+      {
+        "trait": "tall ground and tapering upper tiers",
+        "decision": "PASS scoped CPU visual capability",
+        "evidence": "Tallground is visibly taller than first upper; upper fields shorten upward. Three main upper rows85 and four99 remain distinct. No exact attic/crown acceptance."
+      },
+      {
+        "trait": "left raised entry continuity",
+        "decision": "PASS scoped CPU visual capability",
+        "evidence": "Cycle3 near85/99 show source-supported single/double dark leaf with two/four readable raised panel fields, transom, connected stone landing/treads and thin open rails. One physical handle per leaf replaces cycle2 repeated atlas glyphs. Exact carving not demanded. Physical assembly remains recessed and distinguishes doors from glazed fields."
+      },
+      {
+        "trait": "pale basement with separate lower access",
+        "decision": "PASS scoped CPU visual capability",
+        "evidence": "Stone plinth remains different from brick, separate right lower door and middle basement pane stay open. Cycle3 lower access has readable one/two-leaf panels matching the bounded main-door structure. No full-width compound ground-band contamination."
+      },
+      {
+        "trait": "pale subdivided sash",
+        "decision": "PASS scoped CPU visual capability",
+        "evidence": "Individual perimeter frames and internal bars read at near and row views with substantial dark piers. 85 muted two-column sash differs from99 brighter three-column sash. Original99 two-column fixture mismatch corrected before first immutable cycle1 render."
+      },
+      {
+        "trait": "source-supported mixed crowns",
+        "decision": "PARTIAL99cornice;85clockcrown FAIL,99hoist unresolved",
+        "evidence": "Cycle5 front/oblique distinguish pitched85survey roof from straight99termination.99repeated brackets/pale ledge clearly read;85front triangular closure does not express source clock outline/trim.99central projecting hoist is not clearly identifiable at available resolution. Existing near85/99cameras cut off crown area."
+      },
+      {
+        "trait": "absence of balcony stack",
+        "decision": "PASS scoped CPU visual capability",
+        "evidence": "No stacked balcony slabs/canopy added to85/99. Entry rails visibly remain stair access, not balcony-frequency inference."
+      }
+    ],
+    "latestEvidence": {
+      "report": "artifacts/regular-canal-front/cycle-3-door-hardware/report.json",
+      "afterViewsPersonallyInspected": [
+        {
+          "phase": "after",
+          "view": "front",
+          "file": "artifacts/regular-canal-front/cycle-3-door-hardware/after-front.png",
+          "sha256": "d7330e6fa9fe4bc0e5adb12de2c9cfb1ff28a640116e3a96a20162d991e32300",
+          "triangles": 6350
+        },
+        {
+          "phase": "after",
+          "view": "oblique",
+          "file": "artifacts/regular-canal-front/cycle-3-door-hardware/after-oblique.png",
+          "sha256": "aa093ed4f2136dda9d01b69cbc85c3ae16a649667630bdc6992dee6b39ac0d11",
+          "triangles": 6350
+        },
+        {
+          "phase": "after",
+          "view": "near85",
+          "file": "artifacts/regular-canal-front/cycle-3-door-hardware/after-near85.png",
+          "sha256": "28276f05d1deded5a12bc7dd956f8c493487b108876cce42c404e87f6ee47a58",
+          "triangles": 6350
+        },
+        {
+          "phase": "after",
+          "view": "near99",
+          "file": "artifacts/regular-canal-front/cycle-3-door-hardware/after-near99.png",
+          "sha256": "36bb985291791b81768e6056464ed1997fcb94b78bc30b8b1bf7a910fbc26481",
+          "triangles": 6350
+        }
+      ],
+      "baseline": "All four before hashes identical to cycle1 baseline already personally inspected; cached successful views reused.",
+      "rendererSources": {
+        "src/canalRecall/threeBuildingMesh.ts": "495d37f3b6d21f72513c87b36b5aa21683a45aa0c084b199aff5a8ee53b346a8",
+        "src/canalRecall/threeBuildingFeatures.ts": "34238977296a25011afb6ecd595d20007371a9b30cfddcec70235bdd51dc32f9",
+        "src/canalRecall/compoundSourceCandidate.fixture.ts": "869d7c0e85e880142852cbc72343d3c2f54004a44c3286ccc24c8d2015e2a0d0",
+        "src/canalRecall/surveyedEnvelopeMeshBinding.ts": "3dcce7f6a2c85121b10873a322d6a10b1746970029d29f659ef8b0811e5b9187",
+        "src/canalRecall/regularCanalNative.fixture.ts": "512cc5c543d814f917500c06d0831eab732abeb4be33d3024432bc904a902d41",
+        "src/canalRecall/regularCanalFrontage.ts": "d1fa3c3bcdbaca3550f7ca4488db49d819dc19cac0e4ed9e733c1b9f1a3a892d",
+        "src/canalRecall/streetAppearance.ts": "0d5a618b70622fc3874989976b88e5fcea3ea942b4bf846305953083dbb07096",
+        "scripts/street-appearance/render-regular-canal-preflight.ts": "ec9ce3363aebfbd8739d973e3c493bae65c80bd18222a42dc9ad76848b1f5a9a"
+      },
+      "type": "CPU actual runtime geometry and production atlas diagnostic only",
+      "textureLimit": "Verified door/panel atlas-layer binding and quiet timber crop in regularCanalTriangles, and CPU renderer samples production atlas pixels. Recognizable door structure is now physical relief and visible in pixels. No separate timber-variance threshold, full-scene GPU or actual-game texture gate claimed."
+    }
+  },
+  "cycle4ReviewPreserved": {
+    "personallyInspected": [
+      "artifacts/regular-canal-front/cycle-4-cornice/after-oblique.png"
+    ],
+    "decision": "99bracketed ledge reads;85flatfallback stillfails sourceclockcrown; no roof/hoist detail camera evidence."
+  },
+  "sourceConstraintsRead": {
+    "85officialInvestigationFlags": [
+      {
+        "identificatie": "0363100012178296.geometrie",
+        "beginGeldigheid": "2023-09-28T00:00:00",
+        "eindGeldigheid": null
+      },
+      {
+        "identificatie": "0363100012178296.oorspronkelijk bouwjaar",
+        "beginGeldigheid": "2023-09-28T00:00:00",
+        "eindGeldigheid": null
+      },
+      {
+        "identificatie": "0363100012178296.status",
+        "beginGeldigheid": "2023-09-28T00:00:00",
+        "eindGeldigheid": null
+      }
+    ],
+    "85eaveM": 14.934001241683958,
+    "85crestM": 18.08800124168396,
+    "85nativeAggregateM": 16.23,
+    "85nativeYear": 1746,
+    "85meaning": "Separate source-derived wall/roof shape, not overwritten aggregate wholeheight. Surveyed roof is not clockcrown.",
+    "99qualityRejection": {
+      "rmseM": 2.470017194747925,
+      "existingGuardMaxM": 1,
+      "validity": "[]",
+      "insufficient": false,
+      "interpretation": "Topologically valid and sufficient survey flag does not override high geometric RMSE."
+    },
+    "99metadataConflict": {
+      "source3DBAGYear": 1732,
+      "installedYear": null,
+      "decision": "Keep installed null unchanged. Survey source year is evidence conflict to research separately, not an automatic fact correction."
+    },
+    "archiveState": {
+      "repository": "blackmad/map-recall2-source-data",
+      "bodySourceCommit": "21434484d4cf7f4b0a28da22b691a615611c586b",
+      "freezeClarificationCommit": "c006cfb",
+      "roofRawCommit": "pending root archive sync",
+      "cacheRoot": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/oudezijds-east-next-south",
+      "rawLocationPolicy": "Private archive only; main artifacts contain processed extractions and diagnostics."
+    }
+  }
+}

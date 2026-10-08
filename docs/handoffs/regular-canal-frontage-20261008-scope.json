@@ -1,0 +1,415 @@
+{
+  "id": "regular-canal-left-raised-entry-20261006",
+  "status": "body-and-door-primary-pass-crown-failed",
+  "scope": "Observed regular canal-front groups; six-parent discovery inventory, exposed85/99 training. No district prior or new admissions.",
+  "sourceScope": "docs/references/regular-canal-front-scope-20261006.json",
+  "inventory": [
+    {
+      "address": 85,
+      "buildingId": "NL.IMBAG.Pand.0363100012178296",
+      "role": "representative-exposed-training",
+      "heightM": 16.23,
+      "constructionYear": 1746,
+      "rings": 1,
+      "frontageTarget": [
+        4.89846,
+        52.373672
+      ],
+      "officialIdentitySource": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/b90049bb-25fb-4115-b135-e791ce2d4a7c?_format=json",
+      "officialMonumentNumber": "6051",
+      "identityJoin": "municipal monument explicit bagPandIds; not proximity",
+      "pieces": [
+        "native footprint shell; preserve rear and courtyard",
+        "street-facing frontage grid",
+        "basement/plinth + raised bel-etage",
+        "left entrance + aligned landing/steps/open rail",
+        "upper regular window axes",
+        "independently sourced crown/roof"
+      ],
+      "camera": {
+        "panoramaId": "recording_2025-06-30_05-16-46_01757",
+        "date": "2025-06-30T06:08:28Z",
+        "position": [
+          4.898423356049586,
+          52.37370705112712
+        ],
+        "distanceM": 4.629,
+        "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01757/equirectangular/panorama_8000.jpg",
+        "selection": "newest in nearest+4m among archived four-page bounded catalogue; not exhaustive latest"
+      },
+      "sourceInspected": true,
+      "familyEligibility": "training supported"
+    },
+    {
+      "address": 95,
+      "buildingId": "NL.IMBAG.Pand.0363100012178300",
+      "role": "transition-frozen-uninspected-target",
+      "heightM": 12.71,
+      "constructionYear": 1905,
+      "rings": 1,
+      "frontageTarget": [
+        4.898213,
+        52.3734805
+      ],
+      "officialIdentitySource": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/9795279f-cadd-44eb-af68-51d10a9fb008?_format=json",
+      "officialMonumentNumber": "6052",
+      "identityJoin": "municipal monument explicit bagPandIds; not proximity",
+      "pieces": [
+        "native footprint shell; preserve rear and courtyard",
+        "street-facing frontage grid",
+        "basement/plinth + raised bel-etage",
+        "left entrance + aligned landing/steps/open rail",
+        "upper regular window axes",
+        "independently sourced crown/roof"
+      ],
+      "camera": {
+        "panoramaId": "recording_2025-06-30_05-16-46_01752",
+        "date": "2025-06-30T06:08:18Z",
+        "position": [
+          4.898193055748497,
+          52.37352580690053
+        ],
+        "distanceM": 5.222,
+        "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01752/equirectangular/panorama_8000.jpg",
+        "selection": "newest in nearest+4m among archived four-page bounded catalogue; not exhaustive latest",
+        "perspective": {
+          "headingDeg": 164.95723274624027,
+          "width": 1000,
+          "height": 1500,
+          "fovDeg": 100,
+          "pitchDeg": 25
+        }
+      },
+      "sourceInspected": true,
+      "familyEligibility": "WITHHELD:2025-06-30target largely hidden by scaffold/mesh; register crown assertion is historical, not current photographic acceptance"
+    },
+    {
+      "address": 97,
+      "buildingId": "NL.IMBAG.Pand.0363100012178299",
+      "role": "inventory-only-no-admission",
+      "heightM": 12.74,
+      "constructionYear": 1724,
+      "rings": 1,
+      "frontageTarget": [
+        4.898167,
+        52.373445
+      ],
+      "officialIdentitySource": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/d44ceb59-b1ec-4127-b0bd-3d397561f549?_format=json",
+      "officialMonumentNumber": "6053",
+      "identityJoin": "municipal monument explicit bagPandIds; not proximity",
+      "pieces": [
+        "native footprint shell; preserve rear and courtyard",
+        "street-facing frontage grid",
+        "basement/plinth + raised bel-etage",
+        "left entrance + aligned landing/steps/open rail",
+        "upper regular window axes",
+        "independently sourced crown/roof"
+      ],
+      "camera": {
+        "panoramaId": "recording_2025-06-30_05-16-46_01751",
+        "date": "2025-06-30T06:08:16Z",
+        "position": [
+          4.898147215436253,
+          52.37349069135834
+        ],
+        "distanceM": 5.261,
+        "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01751/equirectangular/panorama_8000.jpg",
+        "selection": "newest in nearest+4m among archived four-page bounded catalogue; not exhaustive latest"
+      },
+      "sourceInspected": false,
+      "familyEligibility": "unclassified; do not infer raised-entry grammar from address, year or crown"
+    },
+    {
+      "address": 99,
+      "buildingId": "NL.IMBAG.Pand.0363100012178291",
+      "role": "representative-exposed-taller-variant",
+      "heightM": 18.53,
+      "constructionYear": null,
+      "rings": 2,
+      "frontageTarget": [
+        4.898109,
+        52.3734
+      ],
+      "officialIdentitySource": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/67bac75f-0d13-4355-8c0a-819524bc41d4?_format=json",
+      "officialMonumentNumber": "6054",
+      "identityJoin": "municipal monument explicit bagPandIds; not proximity",
+      "pieces": [
+        "native footprint shell; preserve rear and courtyard",
+        "street-facing frontage grid",
+        "basement/plinth + raised bel-etage",
+        "left entrance + aligned landing/steps/open rail",
+        "upper regular window axes",
+        "independently sourced crown/roof"
+      ],
+      "camera": {
+        "panoramaId": "recording_2025-06-30_05-16-46_01749",
+        "date": "2025-06-30T06:08:11Z",
+        "position": [
+          4.898054269231004,
+          52.37342072462232
+        ],
+        "distanceM": 4.376,
+        "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01749/equirectangular/panorama_8000.jpg",
+        "selection": "newest in nearest+4m among archived four-page bounded catalogue; not exhaustive latest"
+      },
+      "sourceInspected": true,
+      "familyEligibility": "training supported"
+    },
+    {
+      "address": 103,
+      "buildingId": "NL.IMBAG.Pand.0363100012178289",
+      "role": "withheld-shared-original-exposure-risk",
+      "heightM": 15.33,
+      "constructionYear": 1693,
+      "rings": 1,
+      "frontageTarget": [
+        4.897986,
+        52.3733025
+      ],
+      "officialIdentitySource": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/34d7f9c4-d28f-4514-99aa-7f6cc8f2be9f?_format=json",
+      "officialMonumentNumber": "6056",
+      "identityJoin": "municipal monument explicit bagPandIds; not proximity",
+      "pieces": [
+        "native footprint shell; preserve rear and courtyard",
+        "street-facing frontage grid",
+        "basement/plinth + raised bel-etage",
+        "left entrance + aligned landing/steps/open rail",
+        "upper regular window axes",
+        "independently sourced crown/roof"
+      ],
+      "camera": {
+        "panoramaId": "recording_2025-06-30_05-16-46_01749",
+        "date": "2025-06-30T06:08:11Z",
+        "position": [
+          4.898054269231004,
+          52.37342072462232
+        ],
+        "distanceM": 13.954,
+        "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01749/equirectangular/panorama_8000.jpg",
+        "selection": "newest in nearest+4m among archived four-page bounded catalogue; not exhaustive latest"
+      },
+      "sourceInspected": false,
+      "familyEligibility": "unclassified; do not infer raised-entry grammar from address, year or crown"
+    },
+    {
+      "address": 113,
+      "buildingId": "NL.IMBAG.Pand.0363100012171881",
+      "role": "heldout-frozen-uninspected-target",
+      "heightM": 16.59,
+      "constructionYear": 1688,
+      "rings": 1,
+      "frontageTarget": [
+        4.897727,
+        52.373089
+      ],
+      "officialIdentitySource": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/18204116-0831-45ec-a794-ef282b12a70f?_format=json",
+      "identityJoin": "municipal monument explicit bagPandIds; installed stage-input source geometry",
+      "sourceInspected": false,
+      "camera": {
+        "panoramaId": "b_20250114_1026_Track02_Sphere_00175",
+        "date": "2025-01-14T09:52:26Z",
+        "position": [
+          4.897657654049882,
+          52.373103751890945
+        ],
+        "distanceM": 4.99,
+        "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20250114_1026_Track02_Sphere_00175/equirectangular/panorama_8000.jpg",
+        "selection": "Newest within nearest+4m among separately acquired bounded southern catalogue; not exhaustive latest",
+        "catalogueFile": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/oudezijds-east-next-south/raw/regular-canal-scope-20261006/discovery-113-1.json",
+        "catalogueSha256": "897c0faa1cc900e451eb71020cd0e55b3b811feb76154b05d45c40e49436efe2",
+        "catalogueCount": 65,
+        "nextPage": null,
+        "metadataFrozenAt": "2026-10-06T18:47:07.357888+00:00",
+        "perspective": {
+          "headingDeg": 109.21040766953001,
+          "width": 1000,
+          "height": 1500,
+          "fovDeg": 100,
+          "pitchDeg": 25
+        },
+        "rawImageAcquisition": "not performed by scopeworker; authorized root may acquire and save unviewed",
+        "imageInspection": "FORBIDDEN until training planner+criteria freeze"
+      },
+      "cameraAccess": "HTTP200 catalogue via root; original image remains unviewed",
+      "familyEligibility": "unknown until heldout challenge; no guarantee positive transfer",
+      "pieces": [
+        "native footprint shell, rear retained",
+        "street-facing grid/access/crown compatibility challenge"
+      ]
+    }
+  ],
+  "sampling": {
+    "frozenBeforeImplementation": false,
+    "trainingFreeze": "Traits and inventory frozen in this document; no renderer changes by this worker",
+    "representatives": [
+      85,
+      99
+    ],
+    "transitions": [
+      95,
+      "87-89compound-negative-control"
+    ],
+    "heldouts": [
+      113
+    ],
+    "heldoutSourceRule": "113identity frozen before photographic inspection or register-description reading. Select closest dated source camera from separately acquired bounded southern catalogue; distinct original from85/99mandatory. Freeze camera metadata before acquisition; do not inspect113before training planner/criteria freeze.103shares99original and is withheld, neverfresh.113camera metadata now frozen from distinct southern original; no sourceimage viewed.",
+    "heldoutApplicability": "Unclassified challenge: assess regular-body/entrance eligibility only after training implementation freeze. Incompatible source is a negative control, not a positive transfer success.",
+    "transitionRule": "95frozen2025source inspected, scaffold occluded; withheld. Retain target and dated failure; alternate historical/current source must be cross-checked before classification.",
+    "fixedViews": [
+      "front broad85–99native row",
+      "oblique broad85–99native row",
+      "near85leftentrance",
+      "near99leftentrance/tallground",
+      "target95transition front+oblique",
+      "target113heldout front+oblique after training freeze"
+    ],
+    "freezeEvidence": {
+      "scopeSha256Before95Inspection": "9846b68e9adee7f4875ade221f1ecde16cfeda2f46eafaa77f287310cac1dda9",
+      "meaning": "Original sample metadata+criteria freeze before95source inspection;103was replaced before any implementation or103view with113due shared-source exposure risk.113metadata acquired later must be frozen before rawimage view.",
+      "rendererEditsByWorker": 0,
+      "heldoutPhotographsViewedByWorker": 0
+    },
+    "freezeTimingCorrection": {
+      "reason": "113 replaced the provisional shared-original103 sample after the first generic planner prototype had been implemented. Its image remains unacquired/unviewed. Do not describe113 as fixed before that prototype.",
+      "validNextCycle": "113 identity/camera are now fixed before the forthcoming crown/roof improvement cycle; keep its image unviewed until that training freeze.",
+      "priorEvaluation": "Current body cycles contain exposed85/99 only; no fresh-heldout acceptance claimed."
+    }
+  },
+  "traits": [
+    {
+      "id": "regular-three-axis-grid",
+      "importance": "critical",
+      "relationship": "Three principal opening axes continue through upper tiers and ground field; left door occupies left axis. No independent right shaft, erker, or shaft-specific row count.",
+      "sources": [
+        85,
+        99
+      ],
+      "capability": "inadequate",
+      "module": "src/canalRecall/facadeLayout.ts",
+      "gap": "Nominal-bay rounding does not guarantee3source axes; narrow85 width5.061m makes each axis1.687m, below current2.4m door-bay eligibility. Need explicit source-relationship layout contract, not bayScale-only tuning."
+    },
+    {
+      "id": "tall-ground-and-tapering-upper-tiers",
+      "importance": "critical",
+      "relationship": "Raised ground/bel-etage is the tallest glazed field; upper openings shorten upward.85has3main upper rows plus shortened crown opening;99has4upper rows, shortening toward cornice. Keep variants distinct.",
+      "sources": [
+        85,
+        99
+      ],
+      "capability": "missing-joint-contract",
+      "module": "src/canalRecall/facadeLayout.ts",
+      "gap": "groundM exists but all upper rows share storeyM. Need per-tier heights/opening fractions, explicit basement/raised ground separation and no invented extra tier."
+    },
+    {
+      "id": "left-raised-entry-continuity",
+      "importance": "critical",
+      "relationship": "Left panel door, transom, raised landing and stone steps share one physical opening axis; thin open iron rail follows steps. Tall adjacent windows sit above the same basement. Lower basement access remains separate.",
+      "sources": [
+        85,
+        99
+      ],
+      "capability": "inadequate",
+      "module": "src/canalRecall/facadeEntranceAssemblies.ts",
+      "gap": "Preview stair/recess primitives exist and validate riser-to-door-bottom, but no rail/transom/panel/basement layout contract; a solid flat door patch or steps to generic glass fails. Reuse primitives with joint native facade openings rather than detached decoration."
+    },
+    {
+      "id": "pale-subdivided-window-framing",
+      "importance": "critical",
+      "relationship": "Individual light sash/perimeter frames and readable internal divisions against dark brick, with generous dark piers.85trim is more muted than99white framing; lower stone is distinct from upper brick.",
+      "sources": [
+        85,
+        99
+      ],
+      "capability": "supported-primitives-inadequate-joint-binding",
+      "module": "src/canalRecall/facadeCells.ts + facade layout/entrance binding",
+      "gap": "Retain textured window/door identity at normal gameplay distance; generic undersized repeating panes or connected compound whitegroundband contradict these fronts."
+    },
+    {
+      "id": "mixed-crowns-with-shared-body",
+      "importance": "critical-row",
+      "relationship": "Regular body grammar does not imply one crown.85shaped clock crown,99bracketed straight cornice/central hoist;95historic rollagentop and97cornice+attic are textual inventory controls pending source review.",
+      "sources": [
+        85,
+        99
+      ],
+      "capability": "supported-family-primitives-inadequate-source-binding",
+      "module": "src/canalRecall/roofMesh.ts + roofFootprint.ts + roof attachment/reconciliation",
+      "gap": "clock/cornice families exist. Bind sourced crown and roof ownership per physical frontage; preserve native heights, roof caps/normals/courtyards. Existing99 fallback uniform tier rhythm and85generic crown failed native-row review."
+    },
+    {
+      "id": "absence-of-balcony-stack",
+      "importance": "critical-boundary",
+      "relationship": "85/99show entrance rails, not stacked balcony slabs. Do not reinterpret stoop rails as balcony frequency or copy87/89canopy.",
+      "sources": [
+        85,
+        99
+      ],
+      "capability": "requires-inference-guard",
+      "module": "joint recipe admission",
+      "gap": "No balcony prior admitted from these2examples."
+    }
+  ],
+  "coverage": {
+    "accepted": [],
+    "withheld": [
+      95,
+      103,
+      113
+    ],
+    "failed": [
+      "2025source95scaffolding prevents architecture classification",
+      "Existing85–99 generic neighbor rhythm"
+    ]
+  },
+  "cycles": [
+    {
+      "cycle": 1,
+      "decision": "body improvement; FAIL flat doors and missing roof mixture",
+      "evidence": "artifacts/regular-canal-front/cycle-1/report.json"
+    },
+    {
+      "cycle": 2,
+      "decision": "FAIL repeated handles in door panel atlas crops; roofs still missing",
+      "evidence": "artifacts/regular-canal-front/cycle-2-door-panels/report.json"
+    },
+    {
+      "cycle": 3,
+      "decision": "Independent bounded body and paneled-door PASS; roof mixture FAIL, transfer/game/GPU pending",
+      "evidence": "artifacts/regular-canal-front/cycle-3-door-hardware/report.json",
+      "independentReview": "docs/references/regular-canal-front-independent-review.json",
+      "rootInspected": true,
+      "newAdmissions": 0
+    }
+  ],
+  "sourceFailures": [
+    {
+      "address": 95,
+      "kind": "photographicocclusion",
+      "state": "HTTP200butarchitectureunresolved",
+      "effect": "Nopositive transition acceptance; preserve evidence. Optional bounded older-camera acquisition may resolve, no unbounded searches."
+    }
+  ],
+  "capabilityModules": [
+    "src/canalRecall/regularCanalFrontage.ts"
+  ],
+  "publicAdmissions": 0,
+  "nextAction": "Resolve shaped crown85 and bracketed cornice99 without closing the native courtyard or inventing heights; freeze training before fresh113 challenge. Actual game/GPU/desktop-touch pans still required before acceptance.",
+  "demo": {
+    "page": "public/canal-drive/street-generator-demos.html",
+    "assets": "public/canal-drive/demo-assets/regular-canal/",
+    "status": "candidate with prominent failures",
+    "published": true,
+    "commit": "f1767d9a"
+  },
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "21434484d4cf7f4b0a28da22b691a615611c586b",
+    "path": "streets/oudezijds-east-next-south/processed/regular-canal-generator-20261006/",
+    "status": "pushed;113freeze timing clarification follows separately"
+  },
+  "roofSourceAcquisition": {
+    "path": "streets/oudezijds-east-next-south/raw/regular-canal-roofs-20261006/",
+    "access": "both HTTP200 originals saved before parsing; source checkpoint pending",
+    "architecturalAcceptance": false
+  }
+}
