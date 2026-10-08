@@ -2012,7 +2012,12 @@
       "modelId": "occii",
       "requestedOn": "2026-10-07",
       "nextAction": "Read fresh Firebase note063e3e2c-0627-48a8-b835-f407fee9cbe7 full evidence; conditionally claim beforecodefix. Compare currentexport daa84648 withoriginalfrontphotos and repair actual misaligned trim/window/ornament assemblies, then native/gallery/independent/hosted proof beforeconditionalresolution.",
-      "feedbackId": "063e3e2c-0627-48a8-b835-f407fee9cbe7"
+      "feedbackId": "063e3e2c-0627-48a8-b835-f407fee9cbe7",
+      "feedbackIds": [
+        "063e3e2c-0627-48a8-b835-f407fee9cbe7",
+        "d89b55f3-cc56-4e64-9faa-8cfa6e3d34c4"
+      ],
+      "notes": "Repeat hosted report 2026-10-08 on3e98ce4e, unchanged asset daa846481f1d3693: front offset trim/ornament. Root read complete saved evidence and inspected screenshot; unresolved, no cloud transition. Preserve original claim workflow."
     },
     {
       "id": "magna-plaza-native-fidelity-repair",
@@ -2066,7 +2071,7 @@
       ],
       "evidence": "ordinary-buildings-data/canal-amstelstraat16-review-20261008.json",
       "handoff": "docs/performance/2026-10-06/canal-belt-continuation-handoff.md",
-      "nextAction": "Continue NieuweSpiegel/Keizers555 nativeparent2167897 after actual v03 GPU HOLD: missing rear closure, central three-arch attic pavilion/source count and framed bank roof field. Authorcorrecting; full independent/native/game acceptance stillpending. Source31 finishes next substantial Kerkstraat136 parent0363100012177101 currentownership/roof handoff; do not narrow to smallhouses.",
+      "nextAction": "Kerkstraat136 native0363100012177101 author34 active from published frozen source31; prioritize broad repetitive ordinary facade and native rear notch. Bank2167897 author30 finishes bounded correction of v03 GPU HOLD; independent/native checks still required. No unaccepted draft counts as shipped.",
       "sourceCommit": "9fc691744e03b91f70899896033acdb6cbbd1a18",
       "notes": "Ordinary assets/full architecture review for defining Rokin roof assemblies; no invented POI routes. Existing Nacarat basic inside-footprint click card retained. Both strict500k/three-material budgets pass.",
       "localModelCount": 29,
@@ -2127,6 +2132,20 @@
       "nextAction": "Native original procedural geometry with source-specific open arcade, pilasters/arched openings and independently supported low/high roof families; actual gallery/independent/native game gates before acceptance.",
       "sourceCommit": "087986cc828b344e55303764e680ef2d9d4101f8",
       "notes": "Frozenv03source-front CPUfirsthit checks passed, but actual GPU rear has missingwallclosure/floatingplates/danglingstrips; fullsource rectification discoveredcentral three-arch atticpavilion omitted. CurrentPDOKaerialshowslargeframedroof field missingfromgrayproxy. V03held; authorfixes/independentreview/nativegamepending."
+    },
+    {
+      "id": "kerkstraat136-ordinary-treatment",
+      "task": "Model broad Kerkstraat136 brick ordinary frontage on native surveyed wings",
+      "status": "in-progress",
+      "priority": "high",
+      "buildingIds": [
+        "NL.IMBAG.Pand.0363100012177101"
+      ],
+      "owner": "kerk136_box_author_34",
+      "sourceCommit": "d1d1b4b64e2e2d48798292c85c9d29e20e174289",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/new-next-box-source-31/0363100012177101",
+      "scope": "Full ordinary loop due basic mapped hostel; no invented curated POI. Broad repetitive brick/dark lower/white stacked groups and attic rhythm. Exact native notch, bounded roof divisions, retain134/140/rear neighbors.",
+      "nextAction": "Freeze first source-specific procedural draft and source-position opening inventory; root GPU/independent/native checks before acceptance. Measure authoring time separately from waits."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"
