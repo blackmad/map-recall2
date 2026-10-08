@@ -7,7 +7,7 @@
   "triangles": 7535,
   "materials": 3,
   "textures": 0,
-  "verdict": "Source/gallery plus independent native desktop/touch PASS; hosted publication pending",
+  "verdict": "Source/gallery and independent native desktop/touch PASS; actual hosted30 hashes/manual/source gallery verified",
   "sourceCommit": "d1d1b4b64e2e2d48798292c85c9d29e20e174289",
   "sourcePack": "experiments/canal-belt-continuation-20261007/new-next-box-source-31/0363100012177101",
   "authorReviewCommit": "1888973a72660d896034bd030538130a6a74060c",
@@ -75,5 +75,16 @@
     "Route harness instrumentation chooses Rijksmuseum with origin override; actual clicked-building card checked separately."
   ],
   "publicationSourceCommit": "521938e6a04ab1d9f5550794867650002559bf1d",
-  "publicationSourcePack": "experiments/canal-belt-continuation-20261007/kerk136-public-port45"
+  "publicationSourcePack": "experiments/canal-belt-continuation-20261007/kerk136-public-port45",
+  "hostedVerification": {
+    "publicCommit": "cb05b384ad5bd64150bebfd9ecb1ca75d71710e9",
+    "firebaseRun": "37814067483",
+    "verifiedAtUTC": "2026-10-08T17:12:36.445Z",
+    "models": 30,
+    "allAssetHashesExact": true,
+    "manualDesktopTouchLoaded": 30,
+    "feedbackPreview": true,
+    "evidenceSourceCommit": "7a370560be2a05390823c3c74222ec2dbbb3062c",
+    "evidenceSourcePack": "experiments/canal-belt-continuation-20261007/host30-and-review46/canal-kerk136-host30"
+  }
 }

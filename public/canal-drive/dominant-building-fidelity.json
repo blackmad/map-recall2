@@ -918,6 +918,62 @@
         "No target pyramidal geometry exists; hidden-ID transitions tested only.",
         "Route harness instrumentation chooses Rijksmuseum with origin override; actual clicked-building card checked separately."
       ]
+    },
+    "NL.IMBAG.Pand.0363100012167897": {
+      "treatment": "landmark",
+      "reviewedOn": "2026-10-08",
+      "reason": "Full ordinary architecture loop: arcade, historic bank front, independent roof field and native walls.",
+      "checks": {
+        "ordinarySilhouette": true,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceUrls": [
+        "https://api.data.amsterdam.nl/v1/bag/panden/?identificatie=0363100012167897",
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012167897"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012167897/fullfront-0363100012167897-2025-00403-einitial.jpg",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-large-box-source-26-followup/0363100012167897",
+      "sourceCommit": "087986cc828b344e55303764e680ef2d9d4101f8",
+      "assetHash": "261193e0642c821035d086469bdc5f7e090b4cfcc13542f83adad43c9a7929f9",
+      "accepted": true,
+      "runtimeVerified": true,
+      "evidence": "ordinary-buildings-data/canal-bank555-review-20261008.json",
+      "limits": [
+        "Earlier v03 wall/roof gaps and v05 uppercount failure preserved; survey roof-plane interpretation remains approximate.",
+        "Touch emulated onM4Pro; warm90frames do not establish stall-free startup.",
+        "Complete CI pass not claimed."
+      ],
+      "reviewEvidenceCommit": "3d9b4e2cac5a1e7a05d65ad88b81a35f971df530"
+    },
+    "NL.IMBAG.Pand.0363100012169456": {
+      "treatment": "landmark",
+      "reviewedOn": "2026-10-08",
+      "reason": "Source-specific twin warehouse: rounded loading stacks/red shutters, separate211/213 lower openings and native low rear/notch.",
+      "checks": {
+        "ordinarySilhouette": true,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceUrls": [
+        "https://api.data.amsterdam.nl/v1/bag/panden/?identificatie=0363100012169456",
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169456"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012169456/fullfront-0363100012169456-2025-01975-einitial.jpg",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-box-source39/0363100012169456",
+      "sourceCommit": "ef64e81d6e6a762ff9fc39112ad5d2ea757ff73c",
+      "assetHash": "d920c307562b014c19414b3015e25b02c2492caa42d61425d89d3d4b37fa7e67",
+      "accepted": true,
+      "runtimeVerified": true,
+      "evidence": "ordinary-buildings-data/canal-prinsen211-review-20261008.json",
+      "limits": [
+        "32 first-hit overlaps remain preserved and independently classified;211 entry edge and apron proportions approximate.",
+        "Touch emulated onM4Pro; warm90frames do not establish stall-free startup.",
+        "Complete CI pass not claimed."
+      ],
+      "reviewEvidenceCommit": "3d9b4e2cac5a1e7a05d65ad88b81a35f971df530"
     }
   },
   "notes": [

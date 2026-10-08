@@ -1,0 +1,924 @@
+{
+  "modelId": "ordinary-0363100012167897",
+  "sha256": "261193e0642c821035d086469bdc5f7e090b4cfcc13542f83adad43c9a7929f9",
+  "bytes": 332168,
+  "triangles": 15305,
+  "materials": 2,
+  "sourceCommit": "087986cc828b344e55303764e680ef2d9d4101f8",
+  "sourcePack": "experiments/canal-belt-continuation-20261007/next-large-box-source-26-followup/0363100012167897",
+  "acceptedLocally": true,
+  "hostedVerified": false,
+  "reason": "Full ordinary architecture loop: arcade, historic bank front, independent roof field and native walls.",
+  "nativeReview": {
+    "status": "SCOPED_NATIVE_GAME_PASS",
+    "modelId": "NL.IMBAG.Pand.0363100012167897",
+    "sha256": "261193e0642c821035d086469bdc5f7e090b4cfcc13542f83adad43c9a7929f9",
+    "bytes": 332168,
+    "triangles": 15305,
+    "materials": 2,
+    "textures": 0,
+    "url": "http://localhost:49330/canal-drive/",
+    "sourceCommit": "087986cc828b344e55303764e680ef2d9d4101f8",
+    "sourcePack": "experiments/canal-belt-continuation-20261007/next-large-box-source-26-followup/0363100012167897",
+    "independentSupplement": {
+      "started": "2026-10-08T19:43:49.257Z",
+      "errors": [],
+      "views": [
+        {
+          "name": "street-full",
+          "from": [
+            -7.123765516230456,
+            -28.38306345955906
+          ],
+          "target": [
+            1.725555238789763,
+            -23.725862350011784
+          ],
+          "eye": 20,
+          "targetH": 11,
+          "view": {
+            "center": {
+              "lng": 4.890087461805535,
+              "lat": 52.364901516688235
+            },
+            "elevation": 11,
+            "zoom": 22.192674646718277,
+            "pitch": 47.98063285184003,
+            "bearing": 117.75696143467945
+          }
+        },
+        {
+          "name": "arcade-close",
+          "from": [
+            -9.126170399271668,
+            -18.13658237167466
+          ],
+          "target": [
+            -2.9316458707575155,
+            -14.876541594991565
+          ],
+          "eye": 4.2,
+          "targetH": 2,
+          "view": {
+            "center": {
+              "lng": 4.8900189490740615,
+              "lat": 52.36482202225099
+            },
+            "elevation": 2,
+            "zoom": 23.067877808173705,
+            "pitch": 72.53434372568753,
+            "bearing": 117.75691560828825
+          }
+        },
+        {
+          "name": "pavilion-close",
+          "from": [
+            -4.84167310786425,
+            -30.5721395751104
+          ],
+          "target": [
+            3.1227155716539468,
+            -26.38065857651785
+          ],
+          "eye": 19,
+          "targetH": 13,
+          "view": {
+            "center": {
+              "lng": 4.890108015624975,
+              "lat": 52.364925365019445
+            },
+            "elevation": 13,
+            "zoom": 22.507642338999833,
+            "pitch": 56.28005446488137,
+            "bearing": 117.75697306103011
+          }
+        },
+        {
+          "name": "historic-front",
+          "from": [
+            -21.304348344472373,
+            63.668955629729346
+          ],
+          "target": [
+            -6.868226366527608,
+            31.025451187989333
+          ],
+          "eye": 21,
+          "targetH": 12,
+          "view": {
+            "center": {
+              "lng": 4.8899610374923554,
+              "lat": 52.364409679520264
+            },
+            "elevation": 12,
+            "zoom": 20.74120564282561,
+            "pitch": 75.83284026457899,
+            "bearing": 23.856927650271466
+          }
+        },
+        {
+          "name": "rear-roof",
+          "from": [
+            64,
+            48
+          ],
+          "target": [
+            0,
+            4
+          ],
+          "eye": 74,
+          "targetH": 14,
+          "view": {
+            "center": {
+              "lng": 4.890062076923073,
+              "lat": 52.3646524521684
+            },
+            "elevation": 14,
+            "zoom": 19.325920578183798,
+            "pitch": 52.281656916729915,
+            "bearing": -55.4916184180172
+          }
+        }
+      ],
+      "requests": [
+        "http://localhost:49330/canal-drive/models/ordinary-buildings/0363100012167897.glb?asset=261193e0642c821035d086469bdc5f7e090b4cfcc13542f83adad43c9a7929f9"
+      ],
+      "physicalClick": {
+        "candidate": {
+          "x": 724.5231975694801,
+          "y": 524.1036733800411,
+          "hit": {
+            "id": "NL.IMBAG.Pand.0363100012167897",
+            "landmarkId": "",
+            "name": "Nieuwe Spiegelstraat3\u201317 / Keizersgracht555 historic office and arcade wing",
+            "lngLat": [
+              4.890062076923077,
+              52.364688384615384
+            ],
+            "depth": 0.9757897483875289,
+            "featureTarget": null,
+            "footprint": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    4.890464,
+                    52.365062
+                  ],
+                  [
+                    4.890453,
+                    52.365064
+                  ],
+                  [
+                    4.89046,
+                    52.365085
+                  ],
+                  [
+                    4.890293,
+                    52.36514
+                  ],
+                  [
+                    4.89026,
+                    52.365102
+                  ],
+                  [
+                    4.890243,
+                    52.365083
+                  ],
+                  [
+                    4.89016,
+                    52.364988
+                  ],
+                  [
+                    4.89012,
+                    52.364944
+                  ],
+                  [
+                    4.890098,
+                    52.364919
+                  ],
+                  [
+                    4.890076,
+                    52.364892
+                  ],
+                  [
+                    4.890064,
+                    52.364878
+                  ],
+                  [
+                    4.889978,
+                    52.364779
+                  ],
+                  [
+                    4.889961,
+                    52.364758
+                  ],
+                  [
+                    4.889902,
+                    52.364691
+                  ],
+                  [
+                    4.889905,
+                    52.36469
+                  ],
+                  [
+                    4.889875,
+                    52.364655
+                  ],
+                  [
+                    4.8899,
+                    52.364647
+                  ],
+                  [
+                    4.889838,
+                    52.364571
+                  ],
+                  [
+                    4.889835,
+                    52.364572
+                  ],
+                  [
+                    4.88976,
+                    52.364489
+                  ],
+                  [
+                    4.889763,
+                    52.364488
+                  ],
+                  [
+                    4.889741,
+                    52.364464
+                  ],
+                  [
+                    4.88976,
+                    52.364437
+                  ],
+                  [
+                    4.889804,
+                    52.364431
+                  ],
+                  [
+                    4.889804,
+                    52.364429
+                  ],
+                  [
+                    4.889955,
+                    52.364408
+                  ],
+                  [
+                    4.889955,
+                    52.36441
+                  ],
+                  [
+                    4.89015,
+                    52.364384
+                  ],
+                  [
+                    4.890187,
+                    52.364489
+                  ],
+                  [
+                    4.890168,
+                    52.364491
+                  ],
+                  [
+                    4.890179,
+                    52.364522
+                  ],
+                  [
+                    4.890198,
+                    52.364519
+                  ],
+                  [
+                    4.890226,
+                    52.364599
+                  ],
+                  [
+                    4.890146,
+                    52.364609
+                  ],
+                  [
+                    4.890137,
+                    52.364612
+                  ],
+                  [
+                    4.890141,
+                    52.364618
+                  ],
+                  [
+                    4.890165,
+                    52.364616
+                  ],
+                  [
+                    4.890187,
+                    52.364643
+                  ],
+                  [
+                    4.89011,
+                    52.364669
+                  ],
+                  [
+                    4.890464,
+                    52.365062
+                  ]
+                ]
+              ]
+            },
+            "height": 28.036548614501953
+          }
+        },
+        "result": {
+          "notice": {
+            "id": "clicked-poi-NL.IMBAG.Pand.0363100012167897",
+            "name": "AbrahamArt + 3 mapped places",
+            "type": "culture",
+            "detail": "AbrahamArt is mapped as a gallery at Nieuwe Spiegelstraat 7.",
+            "longDetail": "AbrahamArt is mapped as a gallery at Nieuwe Spiegelstraat 7.\n\nSilkwood is mapped as a clothing shop at Nieuwe Spiegelstraat 11A.\n\nZero Zero is mapped as a restaurant at Nieuwe Spiegelstraat 3A.\n\nCartel coffee & cocktails is mapped as a caf\u00e9 at Nieuwe Spiegelstraat 5A.",
+            "factTexts": [
+              "AbrahamArt is mapped as a gallery at Nieuwe Spiegelstraat 7.\nWebsite: https://www.abrahamart.com/\nMap source: https://www.openstreetmap.org/node/10899508449",
+              "Silkwood is mapped as a clothing shop at Nieuwe Spiegelstraat 11A.\nWebsite: https://silkwood.nl/\nMap source: https://www.openstreetmap.org/node/2736375336",
+              "Zero Zero is mapped as a restaurant at Nieuwe Spiegelstraat 3A.\nWebsite: https://www.zero-zero.store/\nMap source: https://www.openstreetmap.org/node/2736376828",
+              "Cartel coffee & cocktails is mapped as a caf\u00e9 at Nieuwe Spiegelstraat 5A.\nMap source: https://www.openstreetmap.org/node/2736377286"
+            ],
+            "sourceUrl": "https://www.openstreetmap.org/node/10899508449",
+            "lngLat": [
+              4.8902022,
+              52.3649434
+            ],
+            "featureTarget": null
+          },
+          "source": "click",
+          "active": {
+            "id": "clicked-poi-NL.IMBAG.Pand.0363100012167897",
+            "name": "AbrahamArt + 3 mapped places",
+            "type": "culture",
+            "detail": "AbrahamArt is mapped as a gallery at Nieuwe Spiegelstraat 7.",
+            "longDetail": "AbrahamArt is mapped as a gallery at Nieuwe Spiegelstraat 7.\n\nSilkwood is mapped as a clothing shop at Nieuwe Spiegelstraat 11A.\n\nZero Zero is mapped as a restaurant at Nieuwe Spiegelstraat 3A.\n\nCartel coffee & cocktails is mapped as a caf\u00e9 at Nieuwe Spiegelstraat 5A.",
+            "factTexts": [
+              "AbrahamArt is mapped as a gallery at Nieuwe Spiegelstraat 7.\nWebsite: https://www.abrahamart.com/\nMap source: https://www.openstreetmap.org/node/10899508449",
+              "Silkwood is mapped as a clothing shop at Nieuwe Spiegelstraat 11A.\nWebsite: https://silkwood.nl/\nMap source: https://www.openstreetmap.org/node/2736375336",
+              "Zero Zero is mapped as a restaurant at Nieuwe Spiegelstraat 3A.\nWebsite: https://www.zero-zero.store/\nMap source: https://www.openstreetmap.org/node/2736376828",
+              "Cartel coffee & cocktails is mapped as a caf\u00e9 at Nieuwe Spiegelstraat 5A.\nMap source: https://www.openstreetmap.org/node/2736377286"
+            ],
+            "sourceUrl": "https://www.openstreetmap.org/node/10899508449",
+            "lngLat": [
+              4.8902022,
+              52.3649434
+            ],
+            "featureTarget": null
+          }
+        }
+      },
+      "runtime": {
+        "neighbors": [
+          {
+            "id": "NL.IMBAG.Pand.0363100012167898",
+            "installed": 1,
+            "hidden": false
+          },
+          {
+            "id": "NL.IMBAG.Pand.0363100012176763",
+            "installed": 1,
+            "hidden": false
+          }
+        ],
+        "suppression": true,
+        "spatial": false,
+        "mapped": {
+          "id": "clicked-poi-NL.IMBAG.Pand.0363100012167897",
+          "name": "AbrahamArt + 3 mapped places",
+          "type": "culture",
+          "detail": "AbrahamArt is mapped as a gallery at Nieuwe Spiegelstraat 7.",
+          "longDetail": "AbrahamArt is mapped as a gallery at Nieuwe Spiegelstraat 7.\n\nSilkwood is mapped as a clothing shop at Nieuwe Spiegelstraat 11A.\n\nZero Zero is mapped as a restaurant at Nieuwe Spiegelstraat 3A.\n\nCartel coffee & cocktails is mapped as a caf\u00e9 at Nieuwe Spiegelstraat 5A.",
+          "factTexts": [
+            "AbrahamArt is mapped as a gallery at Nieuwe Spiegelstraat 7.\nWebsite: https://www.abrahamart.com/\nMap source: https://www.openstreetmap.org/node/10899508449",
+            "Silkwood is mapped as a clothing shop at Nieuwe Spiegelstraat 11A.\nWebsite: https://silkwood.nl/\nMap source: https://www.openstreetmap.org/node/2736375336",
+            "Zero Zero is mapped as a restaurant at Nieuwe Spiegelstraat 3A.\nWebsite: https://www.zero-zero.store/\nMap source: https://www.openstreetmap.org/node/2736376828",
+            "Cartel coffee & cocktails is mapped as a caf\u00e9 at Nieuwe Spiegelstraat 5A.\nMap source: https://www.openstreetmap.org/node/2736377286"
+          ],
+          "sourceUrl": "https://www.openstreetmap.org/node/10899508449",
+          "lngLat": [
+            4.8902022,
+            52.3649434
+          ]
+        },
+        "rider": {
+          "x": -3205.0385114743967,
+          "y": -6421.011693672548
+        }
+      },
+      "finished": "2026-10-08T19:44:10.704Z"
+    },
+    "mappedPointValidation": [
+      {
+        "id": "n10899508449",
+        "name": "AbrahamArt",
+        "position": [
+          4.8902022,
+          52.3649434
+        ],
+        "insideExactFootprint": true,
+        "website": "https://www.abrahamart.com/"
+      },
+      {
+        "id": "n2736375336",
+        "name": "Silkwood",
+        "position": [
+          4.8901265,
+          52.3648291
+        ],
+        "insideExactFootprint": true,
+        "website": "https://silkwood.nl/"
+      },
+      {
+        "id": "n2736376828",
+        "name": "Zero Zero",
+        "position": [
+          4.8903573,
+          52.3650987
+        ],
+        "insideExactFootprint": true,
+        "website": "https://www.zero-zero.store/"
+      },
+      {
+        "id": "n2736377286",
+        "name": "Cartel coffee & cocktails",
+        "position": [
+          4.8903004,
+          52.3650366
+        ],
+        "insideExactFootprint": true,
+        "website": ""
+      }
+    ],
+    "sharedNative58Summary": {
+      "desktop": {
+        "bootMs": 5999,
+        "errors": [],
+        "mainFrameMedian": 16.69999999999891,
+        "mainFrameP95": 16.799999999999272,
+        "riderGestureDisplacement": 0.00033563887368940053,
+        "wideMedian": 16.69999999999891,
+        "wideP95": 16.799999999999272,
+        "instrumentation": {
+          "stage": "ordinary-0363100012167897",
+          "longTasks": [
+            {
+              "stage": "startup",
+              "at": 867.7999999970198,
+              "ms": 139
+            },
+            {
+              "stage": "startup",
+              "at": 1250.1999999955297,
+              "ms": 71
+            },
+            {
+              "stage": "startup",
+              "at": 3699,
+              "ms": 108
+            },
+            {
+              "stage": "startup",
+              "at": 3876.10000000149,
+              "ms": 107
+            },
+            {
+              "stage": "startup",
+              "at": 4054.2999999970198,
+              "ms": 82
+            },
+            {
+              "stage": "startup",
+              "at": 4176,
+              "ms": 117
+            },
+            {
+              "stage": "startup",
+              "at": 4298.60000000149,
+              "ms": 57
+            },
+            {
+              "stage": "startup",
+              "at": 4425.39999999851,
+              "ms": 144
+            },
+            {
+              "stage": "ordinary-0363100012167897",
+              "at": 5959.19999999553,
+              "ms": 65
+            }
+          ]
+        },
+        "preReloadInstrumentation": {
+          "stage": "ordinary-0363100012167897",
+          "longTasks": [
+            {
+              "stage": "startup",
+              "at": 957.6000000014901,
+              "ms": 144
+            },
+            {
+              "stage": "startup",
+              "at": 3804.60000000149,
+              "ms": 118
+            },
+            {
+              "stage": "startup",
+              "at": 3992.2000000029802,
+              "ms": 95
+            },
+            {
+              "stage": "startup",
+              "at": 4165.20000000298,
+              "ms": 67
+            },
+            {
+              "stage": "startup",
+              "at": 4274.70000000298,
+              "ms": 110
+            },
+            {
+              "stage": "startup",
+              "at": 4479.89999999851,
+              "ms": 94
+            },
+            {
+              "stage": "startup",
+              "at": 5941,
+              "ms": 57
+            },
+            {
+              "stage": "ordinary-0363100012167897",
+              "at": 13754,
+              "ms": 148
+            }
+          ]
+        },
+        "models": {
+          "shown": true,
+          "suppressed": true,
+          "shaderHidden": true,
+          "shaderRanges": [
+            {
+              "key": "coarse:8414/5384",
+              "start": 348120,
+              "count": 557,
+              "first": 1,
+              "last": 1
+            }
+          ],
+          "pyramidHidden": true,
+          "pyramidEntries": [],
+          "spatialSuppression": false,
+          "neighbors": [
+            {
+              "id": "NL.IMBAG.Pand.0363100012167898",
+              "hidden": false
+            },
+            {
+              "id": "NL.IMBAG.Pand.0363100012176763",
+              "hidden": false
+            }
+          ]
+        },
+        "delayed": {
+          "shown": false,
+          "suppressed": false,
+          "shaderHidden": false,
+          "shaderRanges": [],
+          "pyramidHidden": false,
+          "pyramidEntries": [],
+          "spatialSuppression": false,
+          "neighbors": [
+            {
+              "id": "NL.IMBAG.Pand.0363100012167898",
+              "hidden": false
+            },
+            {
+              "id": "NL.IMBAG.Pand.0363100012176763",
+              "hidden": false
+            }
+          ]
+        },
+        "disabled": {
+          "shown": true,
+          "suppressed": false,
+          "shaderHidden": false,
+          "shaderRanges": [
+            {
+              "key": "coarse:8414/5384",
+              "start": 348042,
+              "count": 557,
+              "first": 0,
+              "last": 0
+            }
+          ],
+          "pyramidHidden": false,
+          "pyramidEntries": [],
+          "spatialSuppression": false,
+          "neighbors": [
+            {
+              "id": "NL.IMBAG.Pand.0363100012167898",
+              "hidden": false
+            },
+            {
+              "id": "NL.IMBAG.Pand.0363100012176763",
+              "hidden": false
+            }
+          ]
+        },
+        "restored": {
+          "shown": true,
+          "suppressed": true,
+          "shaderHidden": true,
+          "shaderRanges": [
+            {
+              "key": "coarse:8414/5384",
+              "start": 348042,
+              "count": 557,
+              "first": 1,
+              "last": 1
+            }
+          ],
+          "pyramidHidden": true,
+          "pyramidEntries": [],
+          "spatialSuppression": false,
+          "neighbors": [
+            {
+              "id": "NL.IMBAG.Pand.0363100012167898",
+              "hidden": false
+            },
+            {
+              "id": "NL.IMBAG.Pand.0363100012176763",
+              "hidden": false
+            }
+          ]
+        },
+        "loadFailure": {
+          "shown": false,
+          "suppressed": false,
+          "shaderHidden": false,
+          "shaderRanges": [
+            {
+              "key": "coarse:8414/5384",
+              "start": 347413,
+              "count": 557,
+              "first": 0,
+              "last": 0
+            }
+          ],
+          "pyramidHidden": false,
+          "pyramidEntries": [],
+          "spatialSuppression": false,
+          "neighbors": [
+            {
+              "id": "NL.IMBAG.Pand.0363100012167898",
+              "hidden": false
+            },
+            {
+              "id": "NL.IMBAG.Pand.0363100012176763",
+              "hidden": false
+            }
+          ]
+        }
+      },
+      "touch": {
+        "bootMs": 5346,
+        "errors": [],
+        "mainFrameMedian": 16.699999999999818,
+        "mainFrameP95": 16.700000000000728,
+        "riderGestureDisplacement": 0.0001465268265336919,
+        "wideMedian": 16.69999999999891,
+        "wideP95": 16.700000000000728,
+        "instrumentation": {
+          "stage": "ordinary-0363100012167897",
+          "longTasks": [
+            {
+              "stage": "startup",
+              "at": 995.6000000014901,
+              "ms": 140
+            },
+            {
+              "stage": "startup",
+              "at": 3632.10000000149,
+              "ms": 114
+            },
+            {
+              "stage": "startup",
+              "at": 3817.5,
+              "ms": 98
+            },
+            {
+              "stage": "startup",
+              "at": 3998.60000000149,
+              "ms": 127
+            },
+            {
+              "stage": "startup",
+              "at": 5290.79999999702,
+              "ms": 53
+            },
+            {
+              "stage": "ordinary-0363100012167897",
+              "at": 13192.89999999851,
+              "ms": 120
+            },
+            {
+              "stage": "ordinary-0363100012167897",
+              "at": 13353.10000000149,
+              "ms": 113
+            },
+            {
+              "stage": "ordinary-0363100012167897",
+              "at": 13550.5,
+              "ms": 108
+            }
+          ]
+        },
+        "preReloadInstrumentation": {
+          "stage": "ordinary-0363100012167897",
+          "longTasks": [
+            {
+              "stage": "startup",
+              "at": 995.6000000014901,
+              "ms": 140
+            },
+            {
+              "stage": "startup",
+              "at": 3632.10000000149,
+              "ms": 114
+            },
+            {
+              "stage": "startup",
+              "at": 3817.5,
+              "ms": 98
+            },
+            {
+              "stage": "startup",
+              "at": 3998.60000000149,
+              "ms": 127
+            },
+            {
+              "stage": "startup",
+              "at": 5290.79999999702,
+              "ms": 53
+            },
+            {
+              "stage": "ordinary-0363100012167897",
+              "at": 13192.89999999851,
+              "ms": 120
+            },
+            {
+              "stage": "ordinary-0363100012167897",
+              "at": 13353.10000000149,
+              "ms": 113
+            },
+            {
+              "stage": "ordinary-0363100012167897",
+              "at": 13550.5,
+              "ms": 108
+            }
+          ]
+        },
+        "models": {
+          "shown": true,
+          "suppressed": true,
+          "shaderHidden": true,
+          "shaderRanges": [
+            {
+              "key": "coarse:8414/5384",
+              "start": 348268,
+              "count": 557,
+              "first": 1,
+              "last": 1
+            }
+          ],
+          "pyramidHidden": true,
+          "pyramidEntries": [],
+          "spatialSuppression": false,
+          "neighbors": [
+            {
+              "id": "NL.IMBAG.Pand.0363100012167898",
+              "hidden": false
+            },
+            {
+              "id": "NL.IMBAG.Pand.0363100012176763",
+              "hidden": false
+            }
+          ]
+        },
+        "delayed": {
+          "shown": false,
+          "suppressed": false,
+          "shaderHidden": false,
+          "shaderRanges": [],
+          "pyramidHidden": false,
+          "pyramidEntries": [],
+          "spatialSuppression": false,
+          "neighbors": [
+            {
+              "id": "NL.IMBAG.Pand.0363100012167898",
+              "hidden": false
+            },
+            {
+              "id": "NL.IMBAG.Pand.0363100012176763",
+              "hidden": false
+            }
+          ]
+        },
+        "disabled": {
+          "shown": true,
+          "suppressed": false,
+          "shaderHidden": false,
+          "shaderRanges": [
+            {
+              "key": "coarse:8414/5384",
+              "start": 348042,
+              "count": 557,
+              "first": 0,
+              "last": 0
+            }
+          ],
+          "pyramidHidden": false,
+          "pyramidEntries": [],
+          "spatialSuppression": false,
+          "neighbors": [
+            {
+              "id": "NL.IMBAG.Pand.0363100012167898",
+              "hidden": false
+            },
+            {
+              "id": "NL.IMBAG.Pand.0363100012176763",
+              "hidden": false
+            }
+          ]
+        },
+        "restored": {
+          "shown": true,
+          "suppressed": true,
+          "shaderHidden": true,
+          "shaderRanges": [
+            {
+              "key": "coarse:8414/5384",
+              "start": 348042,
+              "count": 557,
+              "first": 1,
+              "last": 1
+            }
+          ],
+          "pyramidHidden": true,
+          "pyramidEntries": [],
+          "spatialSuppression": false,
+          "neighbors": [
+            {
+              "id": "NL.IMBAG.Pand.0363100012167898",
+              "hidden": false
+            },
+            {
+              "id": "NL.IMBAG.Pand.0363100012176763",
+              "hidden": false
+            }
+          ]
+        }
+      }
+    },
+    "limits": [
+      "Native recognition/runtime acceptance only; no full CI or exhaustive roof classification claim.",
+      "Earlier v03 missing-wall/roof-strip and v05 missing-window-axis failures remain preserved.",
+      "Roof survey/aerial correspondence, field classification (PV versus glazing), metric facade proportions and exact red-wing counts retain bounded source interpretation limits.",
+      "pavilion-close.png is failed camera evidence inside the retained across-street building. street-full.png supplies the successful central3arch view.",
+      "Physical click pixel crosses foreground tree; inspectBuilding and mouse event resolve exact2167897 and matching in-footprint places.",
+      "rear-roof.png has an unrelated automatic Anne Frank origin notice after mapped click was cleared; physical-click.png and recorded click source establish correct click result.",
+      "Pyramidal entries empty; hidden-ID transitions checked, not nonexistent roof geometry.",
+      "Touch is iPhone emulation on AppleM4Pro, not physical mobile.",
+      "No code/registry/git mutations, source publication or broad CI performed."
+    ],
+    "recommendedImages": [
+      "arcade-close.png",
+      "street-full.png",
+      "historic-front.png",
+      "rear-roof.png",
+      "physical-click.png",
+      "shared-native58/desktop-gesture.png",
+      "shared-native58/touch-gesture.png",
+      "shared-native58/desktop-wide.png",
+      "shared-native58/touch-wide.png",
+      "shared-native58/desktop-fallback.png",
+      "shared-native58/desktop-load-failure.png"
+    ]
+  },
+  "rootVisualReview": {
+    "inspectedActualImages": true,
+    "geometryStructuralChecks": true,
+    "all32ByteReproduction": true,
+    "previous30Unchanged": true
+  },
+  "limits": [
+    "Earlier v03 wall/roof gaps and v05 uppercount failure preserved; survey roof-plane interpretation remains approximate.",
+    "Touch emulated onM4Pro; warm90frames do not establish stall-free startup.",
+    "Complete CI pass not claimed."
+  ],
+  "reviewEvidenceCommit": "3d9b4e2cac5a1e7a05d65ad88b81a35f971df530",
+  "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/reviewed32-61"
+}
