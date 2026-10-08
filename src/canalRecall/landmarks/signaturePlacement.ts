@@ -76,7 +76,7 @@ export interface SignatureModelSpec {
   readonly surveyed?: SurveyedAnchor;
   /** Stable id for this placement, used in the manifest and in tests. */
   readonly id: string;
-  readonly assetKind?: 'building' | 'memorial' | 'ordinary-building';
+  readonly assetKind?: 'building' | 'memorial' | 'ordinary-building' | 'landscape';
   /** Exact native plan for ordinary replacement picking, including courtyard holes. */
   readonly buildingFootprint?: { readonly type: 'Polygon' | 'MultiPolygon'; readonly coordinates: unknown };
   /** Source-supported per-model palette overrides; decals retain their original colors. */

@@ -79,6 +79,10 @@ export class ClickPoiIndex {
     if (!building.footprint) return null;
     const places = this.contained(building.footprint);
     if (!places.length) return null;
+    // A mapped mall describes the physical complex; its tenant shops belong
+    // in the remaining information rather than naming the entire building.
+    const title = places.findIndex(row => row[1] === building.name || row[5] === 'a mall');
+    if (title > 0) places.unshift(...places.splice(title, 1));
     const summaries = places.slice(0, 8).map(row => `${row[1]} is mapped as ${row[5] || row[4]}${row[6] ? ` at ${row[6]}` : ''}.`
       + (row[8] ? ` ${row[8]}` : ''));
     const paragraphs = summaries.map((summary, i) => summary
