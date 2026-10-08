@@ -2066,20 +2066,20 @@
       ],
       "evidence": "ordinary-buildings-data/canal-amstelstraat16-review-20261008.json",
       "handoff": "docs/performance/2026-10-06/canal-belt-continuation-handoff.md",
-      "nextAction": "Publish verified Amstelstraat16\u201322 local29 and verify hosted assets/manual page. NieuweSpiegel3\u201317/Keizers5551507m\u00b2 native parent0363100012167897 now in isolated full architectural authoring after current VBO/roof/neighbor/source review; preserve open arcade and separate low/high roofs. Continuous goal remains active.",
+      "nextAction": "Continue NieuweSpiegel/Keizers555 nativeparent2167897 after actual v03 GPU HOLD: missing rear closure, central three-arch attic pavilion/source count and framed bank roof field. Authorcorrecting; full independent/native/game acceptance stillpending. Source31 finishes next substantial Kerkstraat136 parent0363100012177101 currentownership/roof handoff; do not narrow to smallhouses.",
       "sourceCommit": "9fc691744e03b91f70899896033acdb6cbbd1a18",
       "notes": "Ordinary assets/full architecture review for defining Rokin roof assemblies; no invented POI routes. Existing Nacarat basic inside-footprint click card retained. Both strict500k/three-material budgets pass.",
       "localModelCount": 29,
       "hostedVerification": {
-        "publicCommit": "0f31c976c6460c1d1218c733c5fefa02d93dfa42",
-        "firebaseRun": "37713643473",
-        "verifiedAtUTC": "2026-10-08T01:39:07.180Z",
-        "models": 28,
+        "publicCommit": "dfb3d25cbabf79577afaade29c45b0d1180f182c",
+        "firebaseRun": "37747137637",
+        "verifiedAtUTC": "2026-10-08T08:26:26.339Z",
+        "models": 29,
         "allAssetHashesExact": true,
-        "manualDesktopTouchLoaded": 28,
+        "manualDesktopTouchLoaded": 29,
         "feedbackPreview": true,
-        "sourceCommit": "bb15e86d69625b1d20b8fc241f39512d9d32cbcc",
-        "sourcePack": "experiments/canal-belt-continuation-20261007/host28-27"
+        "sourceCommit": "f2baec3ffd3818d4b569dbb3d9fdacf99e4c3465",
+        "sourcePack": "experiments/canal-belt-continuation-20261007/host29-32"
       },
       "publicationSourceCommit": "087986cc828b344e55303764e680ef2d9d4101f8",
       "pendingModels": []
@@ -2125,7 +2125,8 @@
       "scope": "Ordinary native parent with distinctive arcade/historic front requires full architecture loop; no invented curated destination. Northern Herengracht466/NS1 and southernKeizers557 are separate retained parents.",
       "sourcePack": "experiments/canal-belt-continuation-20261007/next-large-box-source-26-followup/0363100012167897",
       "nextAction": "Native original procedural geometry with source-specific open arcade, pilasters/arched openings and independently supported low/high roof families; actual gallery/independent/native game gates before acceptance.",
-      "sourceCommit": "087986cc828b344e55303764e680ef2d9d4101f8"
+      "sourceCommit": "087986cc828b344e55303764e680ef2d9d4101f8",
+      "notes": "Frozenv03source-front CPUfirsthit checks passed, but actual GPU rear has missingwallclosure/floatingplates/danglingstrips; fullsource rectification discoveredcentral three-arch atticpavilion omitted. CurrentPDOKaerialshowslargeframedroof field missingfromgrayproxy. V03held; authorfixes/independentreview/nativegamepending."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

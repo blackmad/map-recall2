@@ -1,13 +1,14 @@
 import * as T from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 import { openTopPrism, upwardRoofPlane } from '../../../scripts/landmarks/house-geometry';
 const base=new URL('.',document.baseURI),manifest=await fetch(new URL('ordinary-buildings-data/catalogue.json',base)).then(r=>r.json());
 const $=s=>document.querySelector(s),container=$('#scene'),renderer=new T.WebGLRenderer({antialias:true});
 renderer.setClearColor('#e5ecec');renderer.setPixelRatio(Math.min(devicePixelRatio,2));container.append(renderer.domElement);
 const scene=new T.Scene(),camera=new T.PerspectiveCamera(38,1,.1,2000),controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;
 scene.add(new T.HemisphereLight(0xffffff,0x909c98,2));const sun=new T.DirectionalLight(0xffffff,2);sun.position.set(50,100,-70);scene.add(sun);
-const loader=new GLTFLoader(),select=$('#building');let current=null,shell=null,entry=null,bare=false,token=0,distance=100;
+const loader=new GLTFLoader().setMeshoptDecoder(MeshoptDecoder),select=$('#building');let current=null,shell=null,entry=null,bare=false,token=0,distance=100;
 for(const m of manifest.models){const o=document.createElement('option');o.value=m.id;o.textContent=m.name;select.append(o);}
 function cleanup(group){if(!group)return;scene.remove(group);group.traverse(o=>{if(!o.isMesh)return;o.geometry?.dispose();for(const m of Array.isArray(o.material)?o.material:[o.material]){for(const v of Object.values(m||{}))if(v?.isTexture)v.dispose();m?.dispose();}});}
 function showReferences(images=entry.referenceImages){$('#references').replaceChildren(...images.slice(0,3).map(src=>{const img=document.createElement('img');img.src=new URL(src,base).href;img.alt='Municipal reference facade';return img;}));}
