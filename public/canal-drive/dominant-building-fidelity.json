@@ -841,6 +841,45 @@
         "Canonical derivative source-pack publication and public commit/release remain root responsibilities."
       ],
       "reviewEvidenceCommit": "fe2cb3f800f2c67c7e646aebf96af51462186bfe"
+    },
+    "NL.IMBAG.Pand.0363100012171370": {
+      "treatment": "landmark",
+      "reviewedOn": "2026-10-08",
+      "sourceUrls": [
+        "https://api.data.amsterdam.nl/v1/bag/panden/?identificatie=0363100012171370&_pageSize=100",
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012171370",
+        "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-19_03-28-47_02399/equirectangular/panorama_8000.jpg",
+        "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241211_0954_Track19_Sphere_00137/equirectangular/panorama_8000.jpg",
+        "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-19_03-28-47_02395/equirectangular/panorama_8000.jpg",
+        "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-19_03-28-47_02403/equirectangular/panorama_8000.jpg",
+        "https://archief.amsterdam/beeldbank/?q=Amstelstraat%2016"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012171370/fullfront-0363100012171370-2025-02399-einitial.jpg",
+      "reason": "Distinctive projecting window heads, asymmetric current ground-floor entrances and four supported roof-vent assemblies require full architectural review. Source/independent street-height and native desktop/touch game checks pass with retained AIR neighbor, west open gap and existing Willet replacement. Ordinary asset; no curated POI invented.",
+      "checks": {
+        "ordinarySilhouette": false,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-large-box-source-23/0363100012171370",
+      "sourceCommit": "9fc691744e03b91f70899896033acdb6cbbd1a18",
+      "assetHash": "40103a485cf91a26ac92811831e439ee7f0c9c01b97d0763e171e12a0f62954f",
+      "independentReview": "ordinary-buildings-data/canal-amstelstraat16-review-20261008.json",
+      "liveGameReview": "ordinary-buildings-data/canal-amstelstraat16-review-20261008.json",
+      "limits": [
+        "Facade opening widths/heights, vent relief and exposed west lower panes are photo-guided approximations.",
+        "Survey val3dity102: source planes clipped to unchanged native outline; centered fits retain millimetric residuals, tiny<0.3m\u00b2 source slivers and unrelated equipment surface132 omitted.",
+        "Beeldbank search produced JS shell only; current2006 facade is from2025/2024 photos.",
+        "Lowerfront native-u intervals from original panorama projections with2.8m assumedcameraheight; near-camera boundary uncertainty0.25-0.6m, far-grazing differences canapproach2m.",
+        "No actual pyramidal roof entries for this target; flags and fallback transitions verified, visual pyramidal-geometry behavior not exercised.",
+        "Touch is emulated on Apple M4 Pro, not physical mobile hardware.",
+        "90 warm frames per main/wide view do not establish stall-free startup; source-stage long tasks 86 ms desktop and 70 ms touch remain.",
+        "Other-street-front image has foreground occlusion; source-front/main/rear views carry recognition and neighbor conclusions.",
+        "West open gap/court remains visible; no claim that individual real fence rails are modeled.",
+        "Photo-guided facade/roof uncertainties from previous source/CPU and street-gallery reviews remain."
+      ],
+      "reviewEvidenceCommit": "087986cc828b344e55303764e680ef2d9d4101f8"
     }
   },
   "notes": [

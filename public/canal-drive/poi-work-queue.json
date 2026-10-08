@@ -2025,29 +2025,31 @@
         "NL.IMBAG.Pand.0363100012254471",
         "NL.IMBAG.Pand.0363100012243483",
         "NL.IMBAG.Pand.0363100012167975",
-        "NL.IMBAG.Pand.0363100012175018"
+        "NL.IMBAG.Pand.0363100012175018",
+        "NL.IMBAG.Pand.0363100012171370"
       ],
       "latestBatch": [
-        "NL.IMBAG.Pand.0363100012175018"
+        "NL.IMBAG.Pand.0363100012171370"
       ],
-      "evidence": "ordinary-buildings-data/canal-kerk206-review-20261008.json",
+      "evidence": "ordinary-buildings-data/canal-amstelstraat16-review-20261008.json",
       "handoff": "docs/performance/2026-10-06/canal-belt-continuation-handoff.md",
-      "nextAction": "Publish verified Kerkstraat206\u2013210 local28 and verify actual hosted assets/manual page. Amstelstraat16\u201322 v03 independent low street-height gallery now PASS; port reproducible native builder and run actual native game checks. Source26 continues substantial inner-box research; Andaz/Lange holds retained.",
+      "nextAction": "Publish verified Amstelstraat16\u201322 local29 and verify hosted assets/manual page. NieuweSpiegel3\u201317/Keizers5551507m\u00b2 native parent0363100012167897 now in isolated full architectural authoring after current VBO/roof/neighbor/source review; preserve open arcade and separate low/high roofs. Continuous goal remains active.",
       "sourceCommit": "9fc691744e03b91f70899896033acdb6cbbd1a18",
       "notes": "Ordinary assets/full architecture review for defining Rokin roof assemblies; no invented POI routes. Existing Nacarat basic inside-footprint click card retained. Both strict500k/three-material budgets pass.",
-      "localModelCount": 28,
+      "localModelCount": 29,
       "hostedVerification": {
-        "publicCommit": "bc9087c8110a37c87507b65ea640f9e8e199c984",
-        "firebaseRun": "37706014665",
-        "verifiedAtUTC": "2026-10-08T00:24:40.599435+00:00",
-        "models": 27,
+        "publicCommit": "0f31c976c6460c1d1218c733c5fefa02d93dfa42",
+        "firebaseRun": "37713643473",
+        "verifiedAtUTC": "2026-10-08T01:39:07.180Z",
+        "models": 28,
         "allAssetHashesExact": true,
-        "manualDesktopTouchLoaded": 27,
+        "manualDesktopTouchLoaded": 28,
         "feedbackPreview": true,
-        "sourceCommit": "defa8fd2d5642a460de63ae112a22306b7130304",
-        "sourcePack": "experiments/canal-belt-continuation-20261007/host27-24"
+        "sourceCommit": "bb15e86d69625b1d20b8fc241f39512d9d32cbcc",
+        "sourcePack": "experiments/canal-belt-continuation-20261007/host28-27"
       },
-      "publicationSourceCommit": "fe2cb3f800f2c67c7e646aebf96af51462186bfe"
+      "publicationSourceCommit": "087986cc828b344e55303764e680ef2d9d4101f8",
+      "pendingModels": []
     },
     {
       "id": "amstel130-stale-native-candidate",
@@ -2078,6 +2080,19 @@
       "nextAction": "Exclude this model from the next in-scope public catalogue release; retain frozen builder/source and failed evidence for later adjacent-area work.",
       "scopeSourceCommit": "fbb979079744b0f9014b87918fd36108253318a4",
       "preservedAssetPack": "experiments/canal-belt-continuation-20261007/lange-outside-scope-21"
+    },
+    {
+      "id": "nieuwespiegel-keizers555-ordinary-treatment",
+      "task": "Model substantial Nieuwe Spiegelstraat arcade wing and own Keizersgracht555 canal front",
+      "status": "in-progress",
+      "priority": "high",
+      "buildingIds": [
+        "NL.IMBAG.Pand.0363100012167897"
+      ],
+      "scope": "Ordinary native parent with distinctive arcade/historic front requires full architecture loop; no invented curated destination. Northern Herengracht466/NS1 and southernKeizers557 are separate retained parents.",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-large-box-source-26-followup/0363100012167897",
+      "nextAction": "Native original procedural geometry with source-specific open arcade, pilasters/arched openings and independently supported low/high roof families; actual gallery/independent/native game gates before acceptance.",
+      "sourceCommit": "087986cc828b344e55303764e680ef2d9d4101f8"
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

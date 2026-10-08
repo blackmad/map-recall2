@@ -19573,9 +19573,141 @@
         "targetHeightMetres": 7
       },
       "generationMilliseconds": 23,
-      "reviewState": "Independent source/gallery and native desktop/touch checks passed with recorded limits; local release checks underway.",
+      "reviewState": "Source-reviewed native building; hidden rear details remain approximate.",
       "sourceCommit": "9fc691744e03b91f70899896033acdb6cbbd1a18",
       "updatedAt": "2026-10-08T01:30:34.576061+00:00"
+    },
+    {
+      "id": "ordinary-0363100012171370",
+      "buildingId": "NL.IMBAG.Pand.0363100012171370",
+      "name": "Amstelstraat 16\u201322",
+      "anchor": [
+        4.899145714285715,
+        52.36600957142857
+      ],
+      "cameraBearing": 3.070187797486356,
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.899413,
+              52.366137
+            ],
+            [
+              4.898955,
+              52.366152
+            ],
+            [
+              4.898939,
+              52.365973
+            ],
+            [
+              4.898952,
+              52.365972
+            ],
+            [
+              4.898969,
+              52.365935
+            ],
+            [
+              4.899393,
+              52.36592
+            ],
+            [
+              4.899399,
+              52.365978
+            ],
+            [
+              4.899413,
+              52.366137
+            ]
+          ]
+        ]
+      },
+      "height": 16.405271530151367,
+      "modelUrl": "./models/ordinary-buildings/0363100012171370.glb",
+      "bounds": {
+        "min": [
+          -14.545639991760254,
+          9.536743306171047e-08,
+          -16.488889694213867
+        ],
+        "max": [
+          18.191421508789062,
+          16.405271530151367,
+          9.971091270446777
+        ]
+      },
+      "triangles": 5679,
+      "bytes": 445676,
+      "materials": 3,
+      "hash": "40103a485cf91a26ac92811831e439ee7f0c9c01b97d0763e171e12a0f62954f",
+      "referenceImages": [
+        "./ordinary-buildings-data/references/0363100012171370/fullfront-0363100012171370-2025-02399-einitial.jpg",
+        "./ordinary-buildings-data/references/0363100012171370/wide-0363100012171370-2025-02395-einitial.jpg",
+        "./ordinary-buildings-data/references/0363100012171370/wide-0363100012171370-2025-02403-einitial.jpg",
+        "./ordinary-buildings-data/references/0363100012171370/roof-plan.png"
+      ],
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-large-box-source-23/0363100012171370",
+      "traits": [
+        "Twelve front upper opening groups with projecting pale heads",
+        "Four front roof opening/vent groups; bounded steep metal slopes around flat high roof",
+        "AIR neighbor EAST retained; fence gap WEST retained",
+        "Low rear roof ~6.35m rather than full-height extrusion",
+        "Source-traced9 firstfloor groups; BasicFit entrance EAST nextAIR, plain service door+substantial~1m louver WEST nextfence; no wholesalev02 reflection."
+      ],
+      "simplifications": [
+        "Facade opening widths/heights, vent relief and exposed west lower panes are photo-guided approximations.",
+        "Survey val3dity102: source planes clipped to unchanged native outline; centered fits retain millimetric residuals, tiny<0.3m\u00b2 source slivers and unrelated equipment surface132 omitted.",
+        "Beeldbank search produced JS shell only; current2006 facade is from2025/2024 photos.",
+        "Lowerfront native-u intervals from original panorama projections with2.8m assumedcameraheight; near-camera boundary uncertainty0.25-0.6m, far-grazing differences canapproach2m."
+      ],
+      "heightEvidence": "Source3DBAG centered planes clipped to original native footprint; ground0.838NAP, mainflat16.27m, lowrear6.35m; bounded steep metal margins and four frontvents. Tiny survey slivers<0.3m\u00b2/equipment132 omitted; maximum16.405m is a localized plane flank.",
+      "galleryFrontage": {
+        "target": [
+          4.899184,
+          52.366144500000004
+        ],
+        "targetHeightMetres": 7.9,
+        "distanceMetres": 39,
+        "referenceImages": [
+          "./ordinary-buildings-data/references/0363100012171370/fullfront-0363100012171370-2025-02399-einitial.jpg",
+          "./ordinary-buildings-data/references/0363100012171370/wide-0363100012171370-2025-02395-einitial.jpg",
+          "./ordinary-buildings-data/references/0363100012171370/wide-0363100012171370-2025-02403-einitial.jpg"
+        ]
+      },
+      "gallerySecondary": {
+        "target": [
+          4.898947,
+          52.3660625
+        ],
+        "targetHeightMetres": 7.4,
+        "distanceMetres": 32,
+        "cameraBearing": 273.07018779748637,
+        "referenceImages": [
+          "./ordinary-buildings-data/references/0363100012171370/wide-0363100012171370-2025-02395-einitial.jpg"
+        ]
+      },
+      "reviewState": "Source-reviewed native building; doorway dimensions, roof relief and hidden rear details remain approximate.",
+      "sourceUrls": [
+        "https://api.data.amsterdam.nl/v1/bag/panden/?identificatie=0363100012171370&_pageSize=100",
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012171370",
+        "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-19_03-28-47_02399/equirectangular/panorama_8000.jpg",
+        "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241211_0954_Track19_Sphere_00137/equirectangular/panorama_8000.jpg",
+        "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-19_03-28-47_02395/equirectangular/panorama_8000.jpg",
+        "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-19_03-28-47_02403/equirectangular/panorama_8000.jpg",
+        "https://archief.amsterdam/beeldbank/?q=Amstelstraat%2016"
+      ],
+      "sourceCommit": "9fc691744e03b91f70899896033acdb6cbbd1a18",
+      "scale": 1,
+      "bearing": 0,
+      "suppressIds": [
+        "NL.IMBAG.Pand.0363100012171370"
+      ],
+      "coordinateConvention": "Existing ordinary native glTF metres: x=east111320cos(anchorLat), z=south111320; the unchanged lon/lat ring is authoritative. Local745.862m\u00b2 differs from747.004m\u00b2 RD/native admission by projection approximation, not scope change.",
+      "orientation": "edge0 east-to-west, outward north; AIR2182493 EAST; fence/open gap WEST",
+      "updatedAt": "2026-10-08T01:36:57.498718+00:00"
     }
   ]
 }

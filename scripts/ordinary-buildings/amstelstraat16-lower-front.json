@@ -1,0 +1,156 @@
+{
+  "axis": "nativeedge0 u metres from EAST/AIR to WEST/fence, length31.176689825",
+  "method": "Manual column/aperture trace on four original panorama rays projected onto native edge0 with1m grid. Use02403 nearestEAST,02399 middle,02395 nearestWEST;2024 crosscheck. Cameraheight2.8m approximate. Intervals express original geometry reconstruction ratherthan a cadastral facade survey.",
+  "crossStationUncertainty": "Native footprint vs actual recessed glass plane and near-grazing rays shift far-end boundaries up to~2m. Prefer near-camera anchors; middle uncertainty~0.3-0.6m. Pixel coordinates are on derived grid projections, whose original input/transform is recorded. No wholesale reflection ofv02.",
+  "floorGlazing": [
+    {
+      "id": "east-basicfit-narrow",
+      "interval": [
+        0.35,
+        2.8
+      ],
+      "station": "02403",
+      "uncertaintyMetres": 0.35,
+      "ground": "basicfit-entrance",
+      "groundDoor": [
+        0.55,
+        1.65
+      ],
+      "transomBottom": 2.7
+    },
+    {
+      "id": "east-basicfit-wide",
+      "interval": [
+        3.4,
+        6.85
+      ],
+      "station": "02403",
+      "uncertaintyMetres": 0.4,
+      "ground": "full-glazing"
+    },
+    {
+      "id": "east-middle-retail-entrance",
+      "interval": [
+        7.45,
+        9.25
+      ],
+      "station": "02403+02399",
+      "uncertaintyMetres": 0.6,
+      "ground": "retail-entrance",
+      "groundDoor": [
+        8.05,
+        9.15
+      ],
+      "transomBottom": 2.55
+    },
+    {
+      "id": "middle-retail-wide",
+      "interval": [
+        10.35,
+        14.35
+      ],
+      "station": "02399",
+      "uncertaintyMetres": 0.45,
+      "ground": "full-glazing"
+    },
+    {
+      "id": "middle-ramen-entrance",
+      "interval": [
+        15.05,
+        16.5
+      ],
+      "station": "02399",
+      "uncertaintyMetres": 0.35,
+      "ground": "retail-entrance",
+      "groundDoor": [
+        15.15,
+        16.4
+      ],
+      "transomBottom": 2.8
+    },
+    {
+      "id": "west-middle-ramen-wide",
+      "interval": [
+        17.2,
+        20.55
+      ],
+      "station": "02399",
+      "uncertaintyMetres": 0.45,
+      "ground": "full-glazing"
+    },
+    {
+      "id": "west-retail-entrance",
+      "interval": [
+        21.35,
+        22.85
+      ],
+      "station": "02399+02395",
+      "uncertaintyMetres": 0.6,
+      "ground": "retail-entrance",
+      "groundDoor": [
+        21.45,
+        22.75
+      ],
+      "transomBottom": 2.65
+    },
+    {
+      "id": "west-retail-wide",
+      "interval": [
+        24.3,
+        28.45
+      ],
+      "station": "02395",
+      "uncertaintyMetres": 0.45,
+      "ground": "full-glazing"
+    },
+    {
+      "id": "west-service",
+      "interval": [
+        29.05,
+        30.85
+      ],
+      "station": "02395",
+      "uncertaintyMetres": 0.25,
+      "ground": "plain-service-door-louver",
+      "groundDoor": [
+        29.15,
+        30.75
+      ],
+      "doorBottom": 0.2,
+      "doorTop": 2.65,
+      "louverBottom": 2.72,
+      "louverTop": 3.72
+    }
+  ],
+  "sourceRoleRegression": [
+    {
+      "id": "basicfit-door-east",
+      "u": 1.1,
+      "height": 1.65,
+      "material": "glass",
+      "source": "02403 eastcamera door nextAIR; source02399 corroborates leftmost narrow door"
+    },
+    {
+      "id": "service-door-west",
+      "u": 29.7,
+      "height": 1.55,
+      "material": "physical",
+      "source": "02395 westcamera, plain door immediately nextfence"
+    },
+    {
+      "id": "substantial-west-louver-low",
+      "u": 30.0,
+      "height": 2.85,
+      "material": "physical",
+      "source": "02395 substantialdark louver overwestservice doorway, approx1m tall"
+    },
+    {
+      "id": "substantial-west-louver-high",
+      "u": 30.0,
+      "height": 3.58,
+      "material": "physical",
+      "source": "02395 substantialdark louver overwestservice doorway, approx1m tall"
+    }
+  ],
+  "sourceEvidencePack": "experiments/canal-belt-continuation-20261007/amstelstraat16-build/lower-front-source-trace"
+}

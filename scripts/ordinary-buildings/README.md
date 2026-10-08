@@ -29,11 +29,12 @@ node scripts/ordinary-buildings/build-rokin-north-details.mjs
 node scripts/ordinary-buildings/build-rokin-south-details.mjs
 node scripts/ordinary-buildings/build-keizers603-details.mjs
 node scripts/ordinary-buildings/build-kerk206-details.mjs
+node --import tsx scripts/ordinary-buildings/build-amstelstraat16-details.ts
 node --import tsx scripts/ordinary-buildings/check.ts
 npm run build:canal-signature-landmarks
 ```
 
-The current local full sequence reproduced all 28 model byte streams exactly during the Kerkstraat integration; the previous 27 hashes stayed unchanged. Hosted acceptance still covers 27 until the Kerkstraat release and hosted verification complete. The new Keizersgracht model fits the strict 500,000-byte / three-material budget. Exact indexing applies to these static expanded triangle assets, not arbitrary animated glTF files.
+The current local full sequence reproduced all 29 model byte streams exactly during the Amstelstraat integration; the previous 28 hashes stayed unchanged. Hosted acceptance currently covers 28 until Amstelstraat release and hosted verification complete. The Amstelstraat native procedural stage uses existing BuildingTools/house-geometry primitives and replaces only its intermediate shell; its dimensions, lower-front trace and separate main/low roofs live in source-specific specs. The new Keizersgracht model fits the strict 500,000-byte / three-material budget. Exact indexing applies to these static expanded triangle assets, not arbitrary animated glTF files.
 
 ## What this batch taught us
 
@@ -54,3 +55,5 @@ Kerkstraat exposed checks that should travel with the helpers: explicit nonmetal
 ## Next work
 
 Measure source research, authoring, integration and visual-review time separately on the next comparable buildings. No measured speedup is established by this first shared-component integration. Start with a simple grounded native box and verified photo ownership; configure opening groups, top tier, ground entrances and roof roles before writing another bespoke stage. Extract another component only when a real building needs it. Keep independent gallery review, exact neighbor/fallback checks, stationary-rider desktop/touch camera pans and zoom-out evidence in the acceptance loop.
+
+Amstelstraat also showed why source roles need checks separate from pane visibility: an earlier version had visible doors but put the service entrance and louver at the wrong geographic end. The corrected source trace fixes every lower bay individually. Shared geometry can speed implementation; it cannot establish which end of the street owns each entrance.
