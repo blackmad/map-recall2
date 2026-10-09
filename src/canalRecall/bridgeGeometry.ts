@@ -10,7 +10,7 @@ export function buildBridgeGeometry(bridge:BridgeSurface,triangulate:Triangulate
   const timber=bridge.family==='wooden-deck',masonry=bridge.family==='masonry-arch';
   const deck=batch('deck',timber?'#8b785c':'#817b70'),stone=batch('coping',timber?'#9b8564':'#b7ad99');
   const colour=masonry?'#785142':timber?'#79634a':bridge.family==='concrete-deck'?'#979385':'#435a50';
-  const body=batch('structure',colour),soffit=batch('soffit',colour),iron=batch('railings',timber?'#695840':'#273f35'),approaches=batch('approach-sides',deck.colour);
+  const body=batch('structure',colour),soffit=batch('soffit',colour),iron=batch('railings',timber?'#695840':'#273f35'),approaches=batch('approach-sides','#c8d1bc');
   const triangle=(out:BridgeBatch,a:Point3,b:Point3,c:Point3)=>{const u=b.map((v,i)=>v-a[i]),v=c.map((n,i)=>n-a[i]);
     // Polygon clipping can leave virtually collinear triangles. Lifting those
     // onto a curved profile turns invisible planar slivers into vertical fins.
@@ -72,7 +72,8 @@ export function buildBridgeGeometry(bridge:BridgeSurface,triangulate:Triangulate
     for(let i=0;i<bank.length;i++){const a=bank[i],b=bank[(i+1)%bank.length],side=(v:Point)=>sign*((b[0]-a[0])*(v[1]-a[1])-(b[1]-a[1])*(v[0]-a[0])),u=side(p),v=side(q);
       if(u<0&&v<0)return null;if(u<0)lo=Math.max(lo,u/(u-v));if(v<0)hi=Math.min(hi,u/(u-v));}
     if(hi-lo<1e-7)return null;const at=(t:number):Point=>[p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t];return[at(lo),at(hi)] as [Point,Point];};
-  // Continuous aprons with explicit side walls replace the crumpled feather.
+  const shoulderToes=new Map<string,Point>();
+  // Shared shoulder vertices prevent cracks between adjacent ramp sections.
   for(let i=1;i<sections.length;i++){
     const a=sections[i-1],b=sections[i],pieces=banks.map(bank=>trim([a.left,b.left,b.right,a.right],bank)).filter(p=>p.length);
     for(const piece of pieces)for(const [a,b,c]of triangulate(piece))roadTriangle(piece[a],piece[b],piece[c]);
@@ -85,13 +86,26 @@ export function buildBridgeGeometry(bridge:BridgeSurface,triangulate:Triangulate
         const length=Math.hypot(v[0]-u[0],v[1]-u[1]);if(length<1e-7)continue;
         const nx=-(v[1]-u[1])/length*.05,ny=(v[0]-u[0])/length*.05;
         if(onRibbon([mid[0]+nx,mid[1]+ny])===onRibbon([mid[0]-nx,mid[1]-ny]))continue;
-        quad(approaches,[...u,-.75],[...v,-.75],[...v,bridgeHeightAtLocal(bridge,v)+.035],[...u,bridgeHeightAtLocal(bridge,u)+.035]);}
+        // A road ramp needs an earth shoulder, not a vertical wall hanging
+        // beneath the whole approach. Trim the toe to land outside the arch.
+        const sign=onRibbon([mid[0]+nx,mid[1]+ny])?-1:1;
+        const toe=(p:Point):Point=>{
+          const key=p.map(v=>Math.round(v*1e5)).join(',');
+          const cached=shoulderToes.get(key);if(cached)return cached;
+          const width=Math.min(2.5,(bridgeHeightAtLocal(bridge,p)+.035)*1.5);
+          const at=(t:number):Point=>[p[0]+sign*nx/.05*width*t,p[1]+sign*ny/.05*width*t];
+          let fraction=1;
+          while(fraction>.001&&!wallBanks.some(bank=>insideBridgeOutline(at(fraction),bank)))fraction*=.5;
+          const value=at(fraction);shoulderToes.set(key,value);return value;
+        };
+        const tu=toe(u),tv=toe(v);
+        quad(approaches,[...tu,0],[...tv,0],[...v,bridgeHeightAtLocal(bridge,v)+.035],[...u,bridgeHeightAtLocal(bridge,u)+.035]);}
     }
   }
   if(!masonry){const supports=batch('abutments',colour);for(const station of [start+.8,end-.8]){
     const pieces=deckTriangles.map(p=>split(p,...gate(station-.8),-1).inside).map(p=>split(p,...gate(station+.8),1).inside).filter(p=>p.length),top=Math.min(...pieces.flat().map(underside))-.03;
     for(const piece of pieces){for(const[a,b,c]of triangulate(piece)){triangle(supports,[...piece[a],top],[...piece[b],top],[...piece[c],top]);triangle(supports,[...piece[c],-.75],[...piece[b],-.75],[...piece[a],-.75]);}for(let i=0;i<piece.length;i++){const p=piece[i],q=piece[(i+1)%piece.length];quad(supports,[...p,-.75],[...q,-.75],[...q,top],[...p,top]);}}
   }}
-  for(const b of [deck,soffit])b.normals=smoothBridgeNormals(b.positions,b.indices);
+  for(const b of [deck,soffit,approaches])b.normals=smoothBridgeNormals(b.positions,b.indices);
   return[...batches.values()].filter(b=>b.indices.length);
 }

@@ -412,7 +412,7 @@
     "discover:bridge-surfaces": "node --import tsx scripts/build-bridge-surfaces.ts --scope=all --discover-only --report=public/data/extracts/amsterdam/bridge-surface-discovery.json",
     "build:canal-bridge-surfaces": "esbuild src/canalRecall/bridgeSurfacesBrowser.ts --bundle --format=iife --global-name=CanalRecallBridgeSurfaces --outfile=public/canal-drive/js/bridge-surfaces.bundle.js --minify",
     "build:bridge-pilot": "esbuild src/canalRecall/bridgePilotBrowser.ts --bundle --format=iife --outfile=public/canal-drive/js/bridge-pilot.bundle.js --minify",
-    "test:bridge-surfaces": "node --import tsx --test scripts/bridges/discovery.test.ts scripts/check-bridge-surfaces.test.ts"
+    "test:bridge-surfaces": "node --import tsx --test scripts/bridges/discovery.test.ts scripts/check-bridge-surfaces.test.ts scripts/bridges/review-context.test.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

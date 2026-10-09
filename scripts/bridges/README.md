@@ -66,8 +66,11 @@ not by accepting suspect profiles.
 
 Materials choose masonry arch, steel deck, concrete deck or wooden deck.
 Arch undersides use shared longitudinal sections across the entire width.
-Road aprons meet the actual bank-cap silhouettes; explicit retaining walls
-replace feathered shoulders. Preflight probes both the centreline and shoulders.
+Road aprons meet the bank-cap silhouettes. Their shared sloped shoulders
+end at game ground level rather than hanging below it. Gallery banks are
+illustrative parallel quays inferred from transverse deck caps, with water
+extending beneath the banks to avoid background gaps. They are not surveyed
+shorelines. Preflight probes both the centreline and shoulders.
 The browser review saves every masonry bridge from both banks, and the tunnel
 test checks clearance across the width. Gallery water is lowered for inspection;
 it is illustrative context, not a surveyed canal water-level measurement.

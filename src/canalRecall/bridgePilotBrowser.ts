@@ -1,3 +1,4 @@
+import { buildBridgeReviewContext } from './bridgeReviewContext.ts';
 import { buildBridgeGeometry } from './bridgeGeometry.ts';
 import { bridgeProfileAt, validateBridgeSurfaceFile, type BridgeSurface } from './bridgeSurface.ts';
 const { THREE }=window.CanalRecallThree;
@@ -19,15 +20,13 @@ function setView(value:string){view=value;if(!bridge)return;const angle=Math.ata
   document.querySelectorAll('[data-view]').forEach(el=>el.classList.toggle('active',(el as HTMLElement).dataset.view===value));render();}
 function show(index:number){bridge=bridges[index];for(const mesh of meshes){scene.remove(mesh);mesh.geometry.dispose();mesh.material.dispose();}meshes=[];
   const triangulate=(ring:[number,number][])=>THREE.ShapeUtils.triangulateShape(ring.map(p=>new THREE.Vector2(...p)),[]);
-  const batches=buildBridgeGeometry(bridge,triangulate);
+  const batches=[...buildBridgeGeometry(bridge,triangulate),...buildBridgeReviewContext(bridge)];
   for(const batch of batches){const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(batch.positions,3));geometry.setIndex(batch.indices);if(batch.normals)geometry.setAttribute('normal',new THREE.Float32BufferAttribute(batch.normals,3));else geometry.computeVertexNormals();const mesh=new THREE.Mesh(geometry,new THREE.MeshStandardMaterial({color:batch.colour,roughness:.9,metalness:batch.kind==='railings'?.2:0,side:THREE.DoubleSide}));scene.add(mesh);meshes.push(mesh);}
   const[start,end]=bridge.deckRangeM,center=(start+end)/2-24,axis=bridge.deckAxis;
   target.set(axis[0]*center,axis[1]*center,.7);
   const angle=Math.atan2(axis[1],axis[0]),length=end-start;
-  // Flat ground/water context makes the approach blend and open underpass easy to judge.
-  const canalWidth=length*.82;
-  for(const sign of [-1,1])plane(80,160,'#c8d1bc',[target.x+axis[0]*sign*(canalWidth/2+40),target.y+axis[1]*sign*(canalWidth/2+40),-.12],angle);
-  plane(canalWidth,160,'#8dabb5',[target.x,target.y,-.85],angle);
+  // Water extends beneath the banks: no background gaps at irregular caps.
+  plane(400,400,'#8dabb5',[target.x,target.y,-.85],angle);
   document.getElementById('facts')!.innerHTML=`<dt>Municipal number</dt><dd>${bridge.id.replace('BRU','')}</dd><dt>Deck length</dt><dd>${length.toFixed(1)} m</dd><dt>Average width</dt><dd>${bridge.widthM.toFixed(1)} m</dd><dt>Rise above approaches</dt><dd>${Math.max(...bridge.samples.map(p=>p.heightM)).toFixed(2)} m</dd><dt>Peak road grade</dt><dd>${Math.max(...bridge.samples.map(p=>Math.abs(bridgeProfileAt(bridge,p.s).grade)))*100|0}%</dd><dt>Structure family</dt><dd>${bridge.family.replaceAll('-',' ')}</dd><dt>Missing stations filled</dt><dd>${bridge.provenance.elevation.interpolatedStations}</dd>`;
   const total=bridge.samples.at(-1)!.s,x=(s:number)=>10+s/total*240,y=(h:number)=>95-h/2.5*75;
   const points=bridge.samples.map(p=>`${x(p.s)},${y(p.heightM)}`).join(' ');
