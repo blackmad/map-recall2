@@ -75,3 +75,7 @@ tmp/
 # Raw model sources are archived in the private map-recall2-source-data repo.
 # Keep existing tracked evidence; ignoring this directory does not untrack it.
 artifacts/
+
+# OS / local debug noise
+.DS_Store
+firestore-debug.log
