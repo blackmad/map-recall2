@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedOn": "2026-10-08",
+  "updatedOn": "2026-10-09",
   "primaryBuildingInventory": "./landmark-backlog.json",
   "agentMemory": "AGENTS.md (repository root)",
   "completionRequirements": [
@@ -2417,6 +2417,302 @@
       "sourcePack": "experiments/canal-belt-continuation-20261007/next-source35-prinsen767/0363100012185424",
       "evidence": "../../scripts/ordinary-buildings/prinsen767-research.json",
       "nextAction": "Map the 17 Prinsengracht axes and Kerkstraat facade volumes to actual frontage chains and adjacent parents. Acquire front-end and aerial views, then build the source-supported native facade and roof assemblies. Preserve the 2025 scaffolding view; compare with leaf-off 2024 and earlier references. No standard approval or model acceptance yet."
+    },
+    {
+      "id": "fire-station-hendrik",
+      "task": "Fire Station Hendrik — current Rozengracht/Marnixstraat station",
+      "priority": "high",
+      "status": "verified-scoped-local",
+      "requested": true,
+      "requestedOn": "2026-10-09",
+      "requestGroup": "amsterdam-firestations",
+      "nextAction": "Local scoped acceptance complete; prepare isolated fire-station release commit. Remaining requested stations stay queued/active.",
+      "address": "Marnixstraat 170",
+      "sourceUrls": [
+        "https://www.brandweer.nl/kazerne/amsterdam-hendrik/"
+      ],
+      "officialVBO": "0363010012583776",
+      "surveyedParents": [
+        "NL.IMBAG.Pand.0363100012169391"
+      ],
+      "inventorySourceArchive": {
+        "commit": "69186d12d",
+        "path": "firestations-inventory/"
+      },
+      "sourceArchive": {
+        "commit": "faa4982c39e897044f29862de5584135b3f1411d",
+        "path": "models/fire-station-hendrik/"
+      },
+      "validation": "Root and independent gallery/live source comparisons accepted; exact actual GLB, selected route, pin/card physical click, exact masks, retained neighbors and disable/load-failure fallback passed. Desktop/touch stationary-rider physical pans and 90-frame on/off/on passed (p50~16.7ms, p95<=18.6ms on Apple M4 Pro Metal). Rear remains explicit bounded approximation."
+    },
+    {
+      "id": "fire-station-dirk",
+      "task": "Fire Station Dirk — historic Honthorststraat station",
+      "priority": "high",
+      "status": "verified-scoped-local",
+      "requested": true,
+      "requestedOn": "2026-10-09",
+      "requestGroup": "amsterdam-firestations",
+      "nextAction": "Prepare isolated release commit; remaining requested fire stations preserved.",
+      "address": "Honthorststraat 27",
+      "sourceUrls": [
+        "https://www.brandweer.nl/kazerne/amsterdam-dirk/"
+      ],
+      "officialVBO": "0363010012073468",
+      "surveyedParents": [
+        "NL.IMBAG.Pand.0363100012162222"
+      ],
+      "inventorySourceArchive": {
+        "commit": "69186d12d",
+        "path": "firestations-inventory/"
+      },
+      "sourceArchive": {
+        "commit": "faa4982c39e897044f29862de5584135b3f1411d",
+        "path": "models/fire-station-dirk/"
+      },
+      "validation": "Root and independent source/gallery/live recognition passed. Selected destination and sourced forecourt arrival, pin/card physical click, exact masks, three drawn retained neighbors and disabled/load-failure fallback passed. Desktop/touch fixed-rider pans and90-frame on/off/on timings pass; rear openings remain approximate."
+    },
+    {
+      "id": "fire-station-anton",
+      "task": "Kazerne Anton — native fire-station model",
+      "priority": "normal",
+      "status": "in-progress",
+      "requested": true,
+      "requestedOn": "2026-10-09",
+      "requestGroup": "amsterdam-firestations",
+      "address": "Langbroekdreef 10",
+      "sourceUrls": [
+        "https://www.brandweer.nl/kazerne/amsterdam-anton/"
+      ],
+      "nextAction": "Source-derived original model and independent review underway; native scene and destination/pin/card acceptance pending.",
+      "officialVBO": "0363010012090209",
+      "surveyedParents": [
+        "NL.IMBAG.Pand.0363100012244404"
+      ],
+      "inventorySourceArchive": {
+        "commit": "69186d12d",
+        "path": "firestations-inventory/"
+      }
+    },
+    {
+      "id": "fire-station-ijsbrand",
+      "task": "Kazerne IJsbrand — native fire-station model",
+      "priority": "normal",
+      "status": "queued",
+      "requested": true,
+      "requestedOn": "2026-10-09",
+      "requestGroup": "amsterdam-firestations",
+      "address": "Displaystraat 1",
+      "sourceUrls": [
+        "https://www.brandweer.nl/kazerne/amsterdam-ijsbrand/"
+      ],
+      "nextAction": "Resolve exact current building footprint and public entrance, research facade/roof; model and verify destination/pin/card, source archive and gallery/live-game evidence.",
+      "officialVBO": "0363010001035955",
+      "surveyedParents": [
+        "NL.IMBAG.Pand.0363100012115117"
+      ],
+      "inventorySourceArchive": {
+        "commit": "69186d12d",
+        "path": "firestations-inventory/"
+      }
+    },
+    {
+      "id": "fire-station-nico",
+      "task": "Kazerne Nico — native fire-station model",
+      "priority": "normal",
+      "status": "in-progress",
+      "requested": true,
+      "requestedOn": "2026-10-09",
+      "requestGroup": "amsterdam-firestations",
+      "address": "IJ-Tunnel 4",
+      "sourceUrls": [
+        "https://www.brandweer.nl/kazerne/amsterdam-nico/"
+      ],
+      "nextAction": "Source-derived original model and independent review underway; native scene and destination/pin/card acceptance pending.",
+      "officialVBO": "0363010010914232",
+      "surveyedParents": [
+        "NL.IMBAG.Pand.0363100012165618"
+      ],
+      "inventorySourceArchive": {
+        "commit": "69186d12d",
+        "path": "firestations-inventory/"
+      }
+    },
+    {
+      "id": "fire-station-osdorp",
+      "task": "Kazerne Osdorp — native fire-station model",
+      "priority": "normal",
+      "status": "in-progress",
+      "requested": true,
+      "requestedOn": "2026-10-09",
+      "requestGroup": "amsterdam-firestations",
+      "address": "Ookmeerweg 2",
+      "sourceUrls": [
+        "https://www.brandweer.nl/kazerne/amsterdam-osdorp/"
+      ],
+      "nextAction": "Source-derived original model and independent review underway; native scene and destination/pin/card acceptance pending.",
+      "officialVBO": "0363010001035641",
+      "surveyedParents": [
+        "NL.IMBAG.Pand.0363100012096223"
+      ],
+      "inventorySourceArchive": {
+        "commit": "69186d12d",
+        "path": "firestations-inventory/"
+      }
+    },
+    {
+      "id": "fire-station-pieter",
+      "task": "Kazerne Pieter — native fire-station model",
+      "priority": "normal",
+      "status": "queued",
+      "requested": true,
+      "requestedOn": "2026-10-09",
+      "requestGroup": "amsterdam-firestations",
+      "address": "Poeldijkstraat 1020",
+      "sourceUrls": [
+        "https://www.brandweer.nl/kazerne/amsterdam-pieter/"
+      ],
+      "nextAction": "Resolve exact current building footprint and public entrance, research facade/roof; model and verify destination/pin/card, source archive and gallery/live-game evidence.",
+      "officialVBO": "0363010000778676",
+      "surveyedParents": [
+        "NL.IMBAG.Pand.0363100012088589"
+      ],
+      "inventorySourceArchive": {
+        "commit": "69186d12d",
+        "path": "firestations-inventory/"
+      }
+    },
+    {
+      "id": "fire-station-teunis",
+      "task": "Kazerne Teunis — native fire-station model",
+      "priority": "normal",
+      "status": "queued",
+      "requested": true,
+      "requestedOn": "2026-10-09",
+      "requestGroup": "amsterdam-firestations",
+      "address": "Vredenhofweg 3",
+      "sourceUrls": [
+        "https://www.brandweer.nl/kazerne/amsterdam-teunis/"
+      ],
+      "nextAction": "Resolve exact current building footprint and public entrance, research facade/roof; model and verify destination/pin/card, source archive and gallery/live-game evidence.",
+      "officialVBO": "0363010001994715",
+      "surveyedParents": [
+        "NL.IMBAG.Pand.0363100012241010"
+      ],
+      "inventorySourceArchive": {
+        "commit": "69186d12d",
+        "path": "firestations-inventory/"
+      }
+    },
+    {
+      "id": "fire-station-victor",
+      "task": "Kazerne Victor — native fire-station model",
+      "priority": "normal",
+      "status": "queued",
+      "requested": true,
+      "requestedOn": "2026-10-09",
+      "requestGroup": "amsterdam-firestations",
+      "address": "Dapperstraat 325",
+      "sourceUrls": [
+        "https://www.brandweer.nl/kazerne/amsterdam-victor/"
+      ],
+      "nextAction": "Resolve exact current building footprint and public entrance, research facade/roof; model and verify destination/pin/card, source archive and gallery/live-game evidence.",
+      "officialVBO": "0363010000615767",
+      "surveyedParents": [
+        "NL.IMBAG.Pand.0363100012103300"
+      ],
+      "inventorySourceArchive": {
+        "commit": "69186d12d",
+        "path": "firestations-inventory/"
+      }
+    },
+    {
+      "id": "fire-station-willem",
+      "task": "Kazerne Willem — native fire-station model",
+      "priority": "normal",
+      "status": "queued",
+      "requested": true,
+      "requestedOn": "2026-10-09",
+      "requestGroup": "amsterdam-firestations",
+      "address": "Ringdijk 98",
+      "sourceUrls": [
+        "https://www.brandweer.nl/kazerne/amsterdam-willem/"
+      ],
+      "nextAction": "Resolve exact current building footprint and public entrance, research facade/roof; model and verify destination/pin/card, source archive and gallery/live-game evidence.",
+      "officialVBO": "0363010000793612",
+      "surveyedParents": [
+        "NL.IMBAG.Pand.0363100012143776"
+      ],
+      "inventorySourceArchive": {
+        "commit": "69186d12d",
+        "path": "firestations-inventory/"
+      }
+    },
+    {
+      "id": "fire-station-zebra",
+      "task": "Kazerne Zebra — native fire-station model",
+      "priority": "normal",
+      "status": "queued",
+      "requested": true,
+      "requestedOn": "2026-10-09",
+      "requestGroup": "amsterdam-firestations",
+      "address": "IJdoornlaan 60",
+      "sourceUrls": [
+        "https://www.brandweer.nl/kazerne/amsterdam-zebra/"
+      ],
+      "nextAction": "Resolve exact current building footprint and public entrance, research facade/roof; model and verify destination/pin/card, source archive and gallery/live-game evidence.",
+      "officialVBO": "0363010000676132",
+      "surveyedParents": [
+        "NL.IMBAG.Pand.0363100012109022"
+      ],
+      "inventorySourceArchive": {
+        "commit": "69186d12d",
+        "path": "firestations-inventory/"
+      }
+    },
+    {
+      "id": "fire-station-driemond",
+      "task": "Kazerne Driemond — native fire-station model",
+      "priority": "normal",
+      "status": "queued",
+      "requested": true,
+      "requestedOn": "2026-10-09",
+      "requestGroup": "amsterdam-firestations",
+      "address": "Lentestraat 30",
+      "sourceUrls": [
+        "https://www.brandweer.nl/kazerne/driemond/"
+      ],
+      "nextAction": "Resolve exact current building footprint and public entrance, research facade/roof; model and verify destination/pin/card, source archive and gallery/live-game evidence.",
+      "officialVBO": "0363010000887484",
+      "surveyedParents": [
+        "NL.IMBAG.Pand.0363100012070690"
+      ],
+      "inventorySourceArchive": {
+        "commit": "69186d12d",
+        "path": "firestations-inventory/"
+      }
+    },
+    {
+      "id": "fire-station-weesp",
+      "task": "Kazerne Weesp — native fire-station model",
+      "priority": "normal",
+      "status": "queued",
+      "requested": true,
+      "requestedOn": "2026-10-09",
+      "requestGroup": "amsterdam-firestations",
+      "address": "Aetsveldselaan 65",
+      "sourceUrls": [
+        "https://www.brandweer.nl/kazerne/weesp/"
+      ],
+      "nextAction": "Resolve exact current building footprint and public entrance, research facade/roof; model and verify destination/pin/card, source archive and gallery/live-game evidence.",
+      "officialVBO": "0457010000059357",
+      "surveyedParents": [
+        "NL.IMBAG.Pand.0457100000062823"
+      ],
+      "inventorySourceArchive": {
+        "commit": "69186d12d",
+        "path": "firestations-inventory/"
+      }
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

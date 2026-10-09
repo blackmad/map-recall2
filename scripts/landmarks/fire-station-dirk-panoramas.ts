@@ -1,0 +1,3 @@
+import fs from 'node:fs';import {perspectiveCrop} from '../street-appearance/perspective';
+const root='../map-recall2-source-data/models/fire-station-dirk',out=root+'/processed';fs.mkdirSync(out,{recursive:true});
+for(const p of JSON.parse(fs.readFileSync(root+'/selected-panoramas.json','utf8'))){const target=[4.88591,52.357965],c=p.geometry.coordinates,heading=(Math.atan2((target[0]-c[0])*Math.cos(c[1]*Math.PI/180),target[1]-c[1])*180/Math.PI+360)%360;const settings={heading,width:1500,height:1100,fov:110,pitch:22};fs.writeFileSync(out+'/'+p.pano_id+'.jpg',perspectiveCrop(fs.readFileSync(root+'/raw/'+p.pano_id+'.jpg'),heading,1500,1100,110,22));fs.writeFileSync(out+'/'+p.pano_id+'.json',JSON.stringify({camera:p,target,settings},null,2));}

@@ -1,0 +1,63 @@
+{
+  "modelId": "fire-station-dirk",
+  "status": "verified-scoped-local",
+  "sourceArchiveCommit": "faa4982c39e897044f29862de5584135b3f1411d",
+  "nativeEvidence": "artifacts/firestations-review/final-dirk/fire-station-dirk",
+  "performanceEvidence": "artifacts/firestations-review/final-dirk-performance/fire-station-dirk/gameplay",
+  "checks": [
+    "root and independent source/gallery/live recognition",
+    "selected real destination and documented arrival",
+    "geographic pin and physical sourced card click",
+    "scale 1, exact masks including roofs, retained resident/drawn neighbors",
+    "disabled and failed-load ordinary fallback",
+    "actual desktop/touch stationary-rider pans",
+    "90-frame on/off/on same-scene timing"
+  ],
+  "performance": [
+    {
+      "mode": "desktop",
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.599999994039536,
+        16.69999998807907,
+        16.700000002980232
+      ],
+      "p95Ms": [
+        18.400000005960464,
+        18.200000002980232,
+        18.200000002980232
+      ],
+      "fixedGps": [
+        4.8891,
+        52.3586
+      ],
+      "riderFixed": false,
+      "physicalPan": true
+    },
+    {
+      "mode": "touch",
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.700000002980232,
+        16.700000002980232,
+        16.700000002980232
+      ],
+      "p95Ms": [
+        18.399999991059303,
+        18.200000002980232,
+        18.100000008940697
+      ],
+      "fixedGps": [
+        4.8891,
+        52.3586
+      ],
+      "riderFixed": false,
+      "physicalPan": true
+    }
+  ],
+  "limitations": [
+    "Source-specific rear openings remain bounded approximation",
+    "Performance is headless Chromium on Apple M4 Pro Metal; physical devices were not benchmarked"
+  ],
+  "failedEvidence": "Preserved first drafts, source/geometry failures and harness attempts under model docs and artifacts."
+}

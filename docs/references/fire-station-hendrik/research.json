@@ -1,0 +1,55 @@
+{
+  "id": "fire-station-hendrik",
+  "sourcePack": "../map-recall2-source-data/models/fire-station-hendrik",
+  "sourceCommit": "faa4982c39e897044f29862de5584135b3f1411d",
+  "identity": {
+    "address": "Marnixstraat1701016TGAmsterdam",
+    "requestedAddress": "Marnixstraat256misidentifiescurrentstation",
+    "vbo": "0363010012583776",
+    "pand": "0363100012169391",
+    "osmBuilding": "w57863800",
+    "poiNode": "n2743656824",
+    "BAGyear": 1900,
+    "stationOpened": 1985,
+    "usableArea2111": "VBOusablearea,notfootprint"
+  },
+  "architecturalAssertions": [
+    {
+      "feature": "five truck doors,five cream-framed upperwindowgroups,redcapitalBRANDWEERsign and redlogo on projectingcornerbay",
+      "source": "raw/opening.jpg",
+      "date": "2025-11",
+      "confidence": "high current inspected photo"
+    },
+    {
+      "feature": "continuous cream rooftop clerestory stepping above curved slatefront roof,solar arrays",
+      "source": "raw/opening.jpg",
+      "date": "2025-11",
+      "confidence": "high;banddimensionsphotoguided"
+    },
+    {
+      "feature": "rightwingtwo broad windowgroups repeated middle/ground tiers,new entrance at bay,three rows smalllights northsection",
+      "source": "processed/recording_2025-07-03_08-35-58_00368-front.jpg",
+      "date": "2025-07-03T08:50:56Z",
+      "confidence": "high aperturegroupplacement;wrappingoccludesframes"
+    },
+    {
+      "feature": "southwestendmostlyblank,smallpaired lights,lowgrille;SaintVictorportraitplaque onfronttip",
+      "source": "raw/opening.jpg",
+      "date": "2025-11",
+      "confidence": "high visible groups;lower parked vehicles occlude parts"
+    }
+  ],
+  "geometry": "NativeBagfootprint and13AHN5roofplanes;sourceground1.297mNAP. Minimumroofshell+upwardexplicitroofsurfaces. Tiny southwest stackmax17.34isnotwholebuildingheight. Front ridgefoot adjustedto1.42belowupperroofedgephoto-guided currentroofribbon;thisisnotclaimedmeasured. Cornerbayprojection1.2mapproximate.",
+  "signage": "Retain genuine definingBRANDWEERandAmsterdam-Amstelland source signs.NativevectorArialNarrowBold/ArialBold approximate exactfamilyunknown. Redcurrentphoto overridesgoldprojectrender.Noaddedstationnamewords.",
+  "failedEvidence": [
+    "Firstmassingdraft ec3ab477f854a4cdf67d37696dfc63a67c0aac3f4f5e55f13bb52663ce547a6a rejected floating/broken roof ribbon and generic southwest glazing;root artifacts/firestations-review/first-massing + hendrik-first-gallery preserved.",
+    "New baythirdface initialfractionalprobesfound6overlappingglasshits;failure retained failed-bay-third-face.json. Thirdface movedto actualrightreturn;600probesnowpass."
+  ],
+  "acceptance": "Root and independent final gallery/live-game recognition accepted with explicit rear approximation. Native route/pin/physical card, exact suppression and retained neighbors, disabled/failed-load fallback, compressed roof winding and desktop/touch 90-frame timing/pans passed. See local-acceptance.json.",
+  "simplifications": [
+    "ExacthistoricSaintVictorportrait/letteringreducedtoabstractrelief;noinventedtext.",
+    "Roofsolararrays simplifiedflatcolorednativeplanes;sourcephotoarraypositionsapproximate.",
+    "Cornerbayprojection1.2mandframecountsphotoguided,notas-builtmeasurements.",
+    "Rearunseenwindowsomitted;noinvented genericparty-wallglazing."
+  ]
+}

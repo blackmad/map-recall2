@@ -1,0 +1,108 @@
+{
+  "modelId": "fire-station-hendrik",
+  "reviewedOn": "2026-10-09",
+  "reviewer": "independent firestation_inventory worker",
+  "stage": "Source/builder audit plus first exported CPU views and5GPU gallery views",
+  "state": "failed-initial-visual-review",
+  "inspectedFiles": [
+    "scripts/landmarks/fire-station-hendrik-footprints.json",
+    "scripts/landmarks/fire-station-hendrik-builder.ts",
+    "../map-recall2-source-data/models/fire-station-hendrik/raw/opening.jpg",
+    "../map-recall2-source-data/models/fire-station-hendrik/raw/2023-facade.jpg",
+    "../map-recall2-source-data/models/fire-station-hendrik/raw/osm-map.xml",
+    "artifacts/firestations-review/first-massing/fire-station-hendrik.glb",
+    "artifacts/firestations-review/fire-station-hendrik-cpu-front.png",
+    "artifacts/firestations-review/fire-station-hendrik-cpu-rear.png",
+    "artifacts/firestations-review/fire-station-hendrik-cpu-side.png",
+    "artifacts/firestations-review/hendrik-first-gallery/default.png",
+    "artifacts/firestations-review/hendrik-first-gallery/angle-0.png",
+    "artifacts/firestations-review/hendrik-first-gallery/angle-1.png",
+    "artifacts/firestations-review/hendrik-first-gallery/angle-2.png",
+    "artifacts/firestations-review/hendrik-first-gallery/angle-3.png"
+  ],
+  "findings": [
+    {
+      "severity": "required-fix",
+      "id": "southwest-blank-end",
+      "evidence": "Post-renovation opening.jpg shows the exposed southwest brick end predominantly blank, with small sparse paired lights and a narrow lower grille.",
+      "builderRisk": "Automatic side/rear loop places wide windows on every >=4.6m perimeter edge, including southwest end edge near[-23.66,10.68]to[-12.83,22.13]. Three tiers with3m spacing contradict photographed blank wall.",
+      "requestedAction": "Exclude this edge from generic fenestration and author sparse source-supported lights. Confirm southwest gallery rotation against opening.jpg."
+    },
+    {
+      "severity": "review-required",
+      "id": "dated-sign-logo",
+      "evidence": "2023 photo shows white/red flame emblem beside fascia text. Post2025 opening.jpg shows red BRANDWEER lettering with white Amsterdam-Amstelland line and red emblem on projecting bay.",
+      "builderRisk": "Current builder correctly uses red fascia letters but has no visible bay emblem assembly. Avoid carrying2023central flame position into current2025facade.",
+      "requestedAction": "Prefer2025sign state and add subordinate approximate red emblem on bay only if clear source-supported native geometry can match it."
+    },
+    {
+      "severity": "review-required",
+      "id": "roof-facade-visibility",
+      "evidence": "Photographs show low broad slate front slope, cream eave edge, tall continuous cream clerestory band above slope, and panels mounted along slope. Five upper cream-framed groups align above five truck apertures.",
+      "builderRisk": "Source-survey roofs/sloped walls can bury inset clerestory. The first roof-part shell must not occlude first-hit panes; source fit alone does not establish visibility.",
+      "requestedAction": "Check all five front upper groups and clerestory first-hit visibility after export; view cream band along complete curved facade including south end."
+    },
+    {
+      "severity": "review-required",
+      "id": "curved-facade-bay-join",
+      "evidence": "2025 photo has broad five-bay vehicle facade then a projecting polygon glazed bay, then north brick return.",
+      "builderRisk": "Two bay strips at s35/38 approximate polygon: verify they form deliberate projecting faces and do not look like flat extra sixth/seventh truck-bay windows.",
+      "requestedAction": "Inspect low front and north-oblique render to ensure bay projection/opening proportions, cream division and adjacent return are recognizable."
+    }
+  ],
+  "supportedDecisions": [
+    "Exact official address/VBO links identify pand0363100012169391 and OSMw57863800. Current native ring includes curved street frontage plus northern return and narrow southwest annex; no polygon holes.",
+    "Frontage chain runs from southwest station end toward north along its east/southeast exterior, consistent with street Marnixstraat and street-side photographs. Builder normal points outward to that street. Change comment claiming Rozengracht front to Marnixstraat.",
+    "Five vehicle-door apertures and five aligned broad upper groups match both dated images. Current sources support red doors, brick main mass, cream trim, slate roof and contemporary roof solar panels.",
+    "Roof heights are distributed near10m front eave/13\u201316m roof crest, with small17.34mstack; do not turn stack into whole-building height.",
+    "BAG1900registered year differs from actual current station1985opening; retain distinction."
+  ],
+  "neighborsToRetain": [
+    {
+      "osmId": "w269085000",
+      "bagId": "0363100012169827",
+      "meaning": "Separate southwest historic corner apartment building visible to left in2023facade image; never merge into station or suppress."
+    },
+    {
+      "osmId": "w269085239",
+      "bagId": "0363100012168432",
+      "meaning": "Separate northern apartment building beyond station return; retain exact native identity."
+    }
+  ],
+  "frontageLengthM": 44.42757719795287,
+  "pending": [
+    "Correct confirmed visual failures and export again",
+    "Roof normals/support and first-hit panes checks",
+    "Native-scale gallery comparison",
+    "Live-game street view and exact neighbor suppression",
+    "Route destination/pin/card and physical click acceptance"
+  ],
+  "initialExportSha256Prefix": "ec3ab477",
+  "confirmedVisualFailures": [
+    {
+      "id": "floating-clerestory",
+      "evidence": "CPU front/rear and GPU angle0/2: cream/glass rectangular panes float off southwest roof end. Disconnected cream strips near north edge also float above slope."
+    },
+    {
+      "id": "incorrect-clerestory-silhouette",
+      "evidence": "CPU front/side and GPU angle0/1: thin incomplete glazing strip midway across broad slope, full-height brick fascia above; current source shows tall cream/glazed continuous ribbon forming upper visible roof edge, directly supported by front slope.",
+      "action": "Follow actual surveyed roof-ridge chain, support tall cream band at edge; no fixed-inset approximate ribbon."
+    },
+    {
+      "id": "bay-not-projecting",
+      "evidence": "CPU front/side and GPU angle0/1: right facade bay reads as flat glazing at same wall line, insufficient polygon projection/cream upright surround compared with opening.jpg."
+    },
+    {
+      "id": "southwest-window-invention",
+      "evidence": "GPU angle3 dense3tier ordinary windows on southwest end, source opening.jpg mostly blank brick end with sparse small paired openings."
+    },
+    {
+      "id": "red-identity-muted",
+      "evidence": "GPU angle0/1doors and BRANDWEER lettering read brick-brown, current source bright fire red. CPU red clearer; compare palette under gallery lighting before changing."
+    }
+  ],
+  "normalConcern": {
+    "state": "needs geometry check",
+    "evidence": "CPU/GPU top-plane visibility differs in front-oblique view; rear roofs remain visible inGPUangle2/3. Images alone do not prove winding."
+  }
+}
