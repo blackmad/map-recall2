@@ -1,0 +1,37 @@
+{
+  "scope": "scoped material, blind rear and inherited coarse height correction only; original native side-window layout not visually accepted",
+  "after": {
+    "completed": true,
+    "pageErrors": [],
+    "views": 8,
+    "cameras": "diagnostic MapLibre scene orbit with stationary rider, two bearings; desktop and emulated touch; not physical mobile or user drag validation"
+  },
+  "before": {
+    "views": 4,
+    "errors": [
+      "Error: Fatih selectable destination missing\n    at file:///Users/blackmad/Code/map-recall2-worktrees/fatih-side-texture/scripts/landmarks/review-fatih-side-material.mjs:14:16\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at process.processImmediate (node:internal/timers:541:9)"
+    ],
+    "status": "desktop evidence captured; touch route pool initialization failed and preserved"
+  },
+  "observations": [
+    "Before coarse nave reaches tower max37.31 and cap hides native roof; after preserves16m semantic eaves and visible slate roof.",
+    "Original masonry remains attached to nave/tower UVs and photo look returns after untextured round trip.",
+    "Surrounding building windows and ground-floor doors remain textured.",
+    "Long side tall-window assembly unchanged; no source-visible long-side elevation obtained.",
+    "Rear generic fill windows removed only from known nearly blind Bloemstraat edge."
+  ],
+  "frameTiming": {
+    "desktop": {
+      "samples": 180,
+      "medianMs": 16.600000001490116,
+      "p95Ms": 17.69999999552965,
+      "meaning": "headless RAF intervals diagnostic; not GPU timing or physical phone benchmark"
+    },
+    "touch": {
+      "samples": 180,
+      "medianMs": 16.600000001490116,
+      "p95Ms": 18.700000002980232,
+      "meaning": "headless RAF intervals diagnostic; not GPU timing or physical phone benchmark"
+    }
+  }
+}

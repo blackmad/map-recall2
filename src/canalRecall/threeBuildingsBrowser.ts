@@ -12,11 +12,11 @@
 // per style instead of one per style x colour, and walls laid out in whole bays
 // and storeys so openings line up with the building.
 
-import { CELL_LAYER_COUNT, CELL_PX, STYLE_DIMS, cellLayer, CELL_KINDS, CELL_VARIANTS, paintCell } from './facadeCells.js';
+import { CELL_LAYER_COUNT, CELL_PX, STYLE_DIMS, cellLayer, CELL_KINDS, CELL_VARIANTS, paintCell, paintFatihMasonryCell } from './facadeCells.js';
 import { ROOF_CELL_M, paintRoofLayers } from './roofCells.js';
 import { withMonumentGable } from './monumentGables.js';
 import { decorateRoof, exceptLandmarks as exceptLandmarksOf, fitRect, localOuterRing, planRoof, type RoofPlan } from './roofMesh.js';
-import { BAY_ENTRIES, BAY_LAYER_COUNT, bayLayer, bayLookFor, bayVariant } from './bayLook.js';
+import { BAY_ENTRIES, BAY_LAYER_COUNT, FATIH_MASONRY_LAYER, bayLayer, bayLookFor, bayVariant } from './bayLook.js';
 import { paintGlassBlockCell } from './glassBlockTexture.js';
 import { bayTextures, type Look } from './bayTextures.js';
 import { KIT_HIDE_IDS, KIT_MODELLED_IDS, KIT_PART_IDS, decorateKitRoof } from './landmarkKits.js';
@@ -224,6 +224,11 @@ export async function buildLookTextures(THREE: any, look: 'procedural' | Look, m
   const scratch = document.createElement('canvas'); scratch.width = scratch.height = size;
   const ctx = scratch.getContext('2d', { willReadFrequently: true })!;
   for (const entry of BAY_ENTRIES) {
+    if (entry.originalMasonry) {
+      copyCell(paintFatihMasonryCell(), look === 'procedural' ? PROCEDURAL_RECIPE_LAYER_OFFSET + entry.layer : entry.layer);
+      await yieldBudget();
+      continue;
+    }
     const bayLook = look === 'procedural' ? 'photo' : look;
     const painted = bayTextures(bayVariant(entry), brick, bayLook);
     const layer = look === 'procedural' ? PROCEDURAL_RECIPE_LAYER_OFFSET + entry.layer : entry.layer;
@@ -712,7 +717,7 @@ export class ThreeBuildings {
   private kitLayers(look: BuildingLook = this.look) {
     const cells = cellSetOf(look), roofBase = cells === 'procedural' ? CELL_LAYER_COUNT : BAY_LAYER_COUNT;
     const plain = this.look === 'untextured' ? roofBase + 3 : cells === 'procedural' ? cellLayer('canal', 'plain', 0) : bayLayer('canal', 0, 'plain');
-    return { plain, flat: roofBase + 3, slope: roofBase + 1 };
+    return { plain, flat: roofBase + 3, slope: roofBase + 1, fatihMasonry: look === 'photo' ? FATIH_MASONRY_LAYER : undefined };
   }
 
   private currentSource(key: string, source: readonly Feature[]): boolean {

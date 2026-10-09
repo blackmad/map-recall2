@@ -472,3 +472,11 @@ export function paintProceduralLayers(extra: Uint8ClampedArray[] = []): { layers
   }
   return { layers: total, colour, mask };
 }
+
+/** Original continuous brick cell for Fatih's existing 5 m / 3.1 m kit UVs.
+ * Course/brick sizes are display approximations, not survey measurements. */
+export function paintFatihMasonryCell(): Uint8ClampedArray {
+  const cell = new Cell(5, 3.1);
+  paintBrick(cell, 200454, { contrast: 0.55 });
+  return cell.data;
+}
