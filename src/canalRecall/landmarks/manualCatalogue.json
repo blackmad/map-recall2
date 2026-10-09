@@ -14058,8 +14058,6 @@
   },
   {
     "id": "haparandaweg-902-950",
-    "status": "held",
-    "heldReason": "Five identical gabled bays with symmetric window grids, HET PAKHUIS band and double-height glazed ground floor; model has scattered windows and invented setbacks (user review 2026-10-09).",
     "name": "Het Pakhuis, Haparandaweg 902-950",
     "modelUrl": "./models/haparandaweg-902-950.glb",
     "suppressOsmIds": [
@@ -14088,15 +14086,16 @@
     "materialOverrides": {
       "wall": "#43302c",
       "roof": "#58534f",
-      "frame": "#7a726a",
-      "glass": "#5d6f79",
+      "frame": "#5f5a54",
+      "glass": "#5f6f78",
       "slab": "#a9a398",
-      "rail": "#7b746b",
-      "glassRail": "#7f9097",
+      "rail": "#6b655d",
+      "glassRail": "#8a9aa0",
       "dark": "#2b2a2b",
-      "door": "#5a4f48",
+      "door": "#6b645c",
       "stone": "#d9d0bd",
-      "sign": "#d7d3c8"
+      "sign": "#d7d3c8",
+      "louvre": "#6e5a45"
     },
     "preservePositionPrecision": true,
     "attribution": {
@@ -14105,7 +14104,7 @@
       "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012244558",
       "licence": "Original project asset",
       "licenceUrl": "./LICENSE",
-      "modifications": "Original texture-free native metre geometry: exact 3DBAG LoD2.2 walls and roofs with facade systems laid out from Gemeente Amsterdam panoramas (CC BY 4.0) by the block kit (src/canalRecall/blockBuilding). 2277 triangles. Rear and party walls are unmeasured. No invented POI."
+      "modifications": "Original texture-free native metre geometry: exact 3DBAG LoD2.2 walls and roofs with facade systems laid out from Gemeente Amsterdam panoramas (CC BY 4.0) by the block kit (src/canalRecall/blockBuilding). 2817 triangles. Rear and party walls are unmeasured. No invented POI."
     },
     "buildingFootprint": {
       "type": "Polygon",
