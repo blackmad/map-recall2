@@ -60,15 +60,25 @@ function mercatorTransform(maplibregl, lng, lat) {
 }
 
 export class PyramidalRoofs {
-  constructor(map, maplibregl) {
+  constructor(map, maplibregl, options = {}) {
     this.map = map;
     this.maplibregl = maplibregl;
+    // `?sharedFrame=1`: caps live in a Mercator-space root of the page's one
+    // three.js frame (one draw pass for all of them, lit by its rig).
+    this.sharedFrame = options.sharedFrame || null;
     this.enabled = true;
     this._entries = [];
     this._hiddenIds = new Set();
     this._hiddenReasons = new Map([['surveyed-envelope', new Set(map._surveyedEnvelopeRoofIds || [])]]);
     this.layer = this._makeLayer();
-    if (!map.getLayer(this.layer.id)) map.addLayer(this.layer);
+    if (this.sharedFrame) {
+      this._sharedRoot = new THREE.Group();
+      this._sharedRoot.name = 'osm-pyramidal-roofs';
+      this.sharedFrame.register('pyramidal-roofs', {
+        root: this._sharedRoot,
+        beforeRender: () => this.enabled && this._entries.length > 0,
+      }, { order: options.sharedOrder ?? 40 });
+    } else if (!map.getLayer(this.layer.id)) map.addLayer(this.layer);
     map._pyramidalRoofs = this;
     this.setHiddenReason('surveyed-envelope', map._surveyedEnvelopeRoofIds || []);
   }
@@ -138,20 +148,35 @@ export class PyramidalRoofs {
       geometry.setIndex(new THREE.Uint16BufferAttribute(meshData.indices, 1));
       geometry.computeVertexNormals();
       geometry.computeBoundingSphere();
-      const material = new THREE.MeshBasicMaterial({
-        color: parseColour(meshData.colour),
-        side: THREE.DoubleSide,
-      });
+      // Lit inside the shared frame, like the facade roofs around it.
+      const material = this.sharedFrame
+        ? new THREE.MeshStandardMaterial({ color: parseColour(meshData.colour), side: THREE.DoubleSide, roughness: 0.9, metalness: 0, flatShading: true })
+        : new THREE.MeshBasicMaterial({
+          color: parseColour(meshData.colour),
+          side: THREE.DoubleSide,
+        });
       const mesh = new THREE.Mesh(geometry, material);
       const ids = [props.osmId, props.id].filter(id => id != null).map(String);
       mesh.visible = !ids.some(id => this._hiddenIds.has(id));
       mesh.frustumCulled = false;
-      const scene = new THREE.Scene();
-      scene.add(mesh);
+      const transform = mercatorTransform(this.maplibregl, meshData.originLng, meshData.originLat);
+      let scene = null, holder = null;
+      if (this.sharedFrame) {
+        holder = new THREE.Group();
+        holder.matrixAutoUpdate = false;
+        holder.matrix.copy(transform);
+        holder.add(mesh);
+        this.sharedFrame.constructor.setShadows(mesh, true, true);
+        this._sharedRoot.add(holder);
+      } else {
+        scene = new THREE.Scene();
+        scene.add(mesh);
+      }
       entries.push({
         mesh,
         scene,
-        transform: mercatorTransform(this.maplibregl, meshData.originLng, meshData.originLat),
+        holder,
+        transform,
         id: props.osmId || props.id || null,
         ids,
         maxRadius,
@@ -165,6 +190,7 @@ export class PyramidalRoofs {
 
   _disposeEntries() {
     for (const entry of this._entries) {
+      entry.holder?.parent?.remove(entry.holder);
       entry.mesh.geometry.dispose();
       entry.mesh.material.dispose();
     }
