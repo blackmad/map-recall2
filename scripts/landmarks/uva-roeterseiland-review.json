@@ -1,0 +1,805 @@
+{
+  "model": "uva-roeterseiland",
+  "status": "held-source-scope-and-native-review",
+  "accepted": false,
+  "latestDraft": {
+    "on": "2026-10-09T08:56:12.755047+00:00",
+    "status": "Independent upper-row source improvement; full acceptance held",
+    "draftSHA256": "6be9b289d621094d82538a78f200094e89212b44c67874a4c7078f50ff4a5dde",
+    "draftBytes": 434616,
+    "draftTriangles": 37232,
+    "newChangedAssemblies": 16,
+    "unchangedComparedWithPreviousDraft": 3142,
+    "independentUpperPaneChecks": 108,
+    "independentUpperPaneFailures": 0,
+    "decodedCombinedFirstHitChecks": 368,
+    "decodedCombinedFailures": 0,
+    "conditionalSourceRayFailures": 8,
+    "slotsApprox": [
+      4.9,
+      7.3
+    ],
+    "upperPairCentresApprox": [
+      11.45,
+      13.27,
+      14.92,
+      16.6
+    ],
+    "upperPairWidthApprox": 1.3,
+    "upperCentreApprox": 25.7,
+    "upperHeightApprox": 0.95,
+    "unknownFragment": "unmodeled; not reconstructed as rectangle",
+    "sourceObservations": {
+      "source": "Original00151; cached derived1200x900 projection",
+      "rawSHA256": "cf7e16ebd374138a20c9be21b7ba61751070390f28050327905317efc4da2d9d",
+      "projectionBasis": "/private/tmp/uva-finish-source-20261009/relative-allocation.json",
+      "observations": [
+        {
+          "x": 828,
+          "y": 325,
+          "kind": "shallow"
+        },
+        {
+          "x": 850,
+          "y": 319,
+          "kind": "shallow"
+        },
+        {
+          "x": 878,
+          "y": 310,
+          "kind": "partial \u2014 unknown"
+        },
+        {
+          "x": 899,
+          "y": 304,
+          "kind": "pair1"
+        },
+        {
+          "x": 919,
+          "y": 299,
+          "kind": "pair2"
+        },
+        {
+          "x": 938,
+          "y": 294,
+          "kind": "pair3"
+        },
+        {
+          "x": 958,
+          "y": 288,
+          "kind": "pair4"
+        }
+      ],
+      "decision": "two complete shallow slots, uncertain partial878 excluded, four complete paired groups; source upperrun staggered toward right relative main. Positions/count widths architectural approximation within fixed survey shell, not exactmetric pose.",
+      "allocationCaution": "last upperpair source ray conditionally lies beyondedge22(t~1.06); current calibration/plane association unresolved. Normalize/compressrun with .53mcornerreserve rather than expand shell or infer hidden plane.",
+      "remainingFailures": [
+        "source diagnostic8of24 failures",
+        "first two mainpairs partial foreground755 occlusion",
+        "broadtransition unknown",
+        "742/rear/courts unseen",
+        "native/gallery/live/performance pending"
+      ]
+    },
+    "independentReview": {
+      "decision": "approve bounded architectural upper-row improvement; full source/native acceptance remains held",
+      "candidateSHA256": "4a69cf4257fabcaa1db2144e41d36d1be333d6398f223c487e1ad5ca7b5b78c1",
+      "viewedLowCameraComparison": "/private/tmp/uva-upper-row-finish-20261009/source-before-after-low-crop.png",
+      "viewedOriginalEvidence": [
+        "/private/tmp/uva-upper-row-review-20261009/source-upper-nearest.png",
+        "/private/tmp/uva-upper-row-review-20261009/source-upper-observations.png"
+      ],
+      "supported": "Two shallow complete slots, uncertain transition omitted rather than invented, four complete shorter/narrower upright upper pairs grouped right. Candidate has distinct pale gaps and retained main/upper vertical separation.",
+      "candidateApproximation": "Slots4.9/7.3; fourpairs11.45/13.27/14.92/16.6 with1.3width. Normalized architectural layout, not calibrated photo pose. Finalupperpair center16.6 lies .3m right of finalmainpair16.3; actual upperframe ends17.25000079 beyond mainframe~17.05447 while remaining .52980399m inside edge22.",
+      "geometry": "108/108 independently sampled fractional firsthits hit actual upper pane; all actual pane/frame boundaries inside edge22 and below roof; 4 mullions establish fourpaired groups; all unaffected geometry/material hashes equal before.",
+      "preserved": "Six mainpairs, surveyed massing/heights/courts, approved upper/main/gap/roofmargin proportions.",
+      "failuresAndHolds": [
+        "Eight conditional source rays remain failed; localhits do not override them",
+        "First two mainpairs partly foreground755-occluded in diagnostic lowview",
+        "Broad maintransition unresolved",
+        "Unobserved742/rear/courts",
+        "Gallery/livegame/exact suppression/neighbors/routes/pins/cards/performance pending",
+        "Full source/native exact layout remains approximate; former qualitative endstagger defect corrected, not full calibrated alignment acceptance."
+      ],
+      "ownedFiles": [
+        "source-upper-nearest.png",
+        "source-upper-grid.png",
+        "source-upper-observations.png",
+        "source-observations.json",
+        "check-independent.mts",
+        "independent-geometry.json",
+        "review.json",
+        "superseded-aligned-review.json"
+      ],
+      "supersedesCandidateSHA256": "48799fc1d875b95660f9b2bdef757cdff928bdbe0c65d5aab7cff245bf8f5b9b",
+      "targetedReview": "Final shifted run inspected against original00151 low camera comparison. Qualitative rightward lastupper stagger is restored; fourpairedgroups remain separately readable with pale gaps. Height/gap proportions unchanged."
+    },
+    "privateArchiveLocalCommit": "9d6053ef0808471386a1cd0ded64a8c9200d70a7",
+    "privateArchiveSync": "unpublished; GitHub DNS failure",
+    "privateArchivePath": "models/uva-roeterseiland/checkpoints/upper-stagger-repair-20261009",
+    "privateArchiveBranch": "landmark-source-ratio-repair-20261009"
+  },
+  "historicalCycle16Review": {
+    "modelId": "uva-roeterseiland",
+    "date": "2026-10-07",
+    "phase": "cycle12-source755-edge2",
+    "status": "SOURCE-BOUNDED CPU DRAFT; BYTE-BUDGET HOLD; whole parent HELD/unregistered",
+    "builderSha256": "824667f737a37607f74fc2962fb1e583ba8b8cd1e5ad1af29fa013f1b6d5f7d4",
+    "sourceArchive": {
+      "path": "models/uva-roeterseiland",
+      "commit": "b0ac0437e7d29fde1fc7954cefbe471cb4a03a5a",
+      "initialCommit": "93d26c6",
+      "previousCommit": "4d7e01caf1b6765a86a6a69a7a0098c61709315d"
+    },
+    "evidenceDirectory": "artifacts/uva-roeterseiland-massing-20261006",
+    "sourceFacingComparisons": [
+      {
+        "render": "west-canal.png",
+        "reference": "../map-recall2-source-data/models/uva-roeterseiland/raw/399_UvA_Tim_Soar_1_.jpg",
+        "finding": "Raised40m cityroom lintel and five narrow office-window tiers read above canal opening. CPU orthographic view omits perspective/city context, so it does not recreate exact photograph. West facade bronze/graygreen is bounded palette approximation.",
+        "pending": "Fine bay counts/frames, low bank frontage rhythm, exact lower tier and east/west material allocation."
+      },
+      {
+        "render": "east-promenade.png",
+        "reference": "../map-recall2-source-data/models/uva-roeterseiland/raw/403_UvA_Tim_Soar_4_.jpg",
+        "finding": "Double-height glazing directly over exposed underside and narrow office slots reproduce critical source composition. Separate CREA remains absent from authored mesh and must be retained by runtime.",
+        "pending": "Actual CREA neighbor/first-hit occlusion checks require integrated city view; underside elevation and native40m cut need source-calibrated camera/section."
+      },
+      {
+        "render": "native-overview.png",
+        "reference": "../map-recall2-source-data/models/uva-roeterseiland/raw/12968_PRO_UvA_SitePlan.jpg",
+        "finding": "Long bar, separate western A tower and complex low-height north/south annexes follow survey. Distinct tower ribbon bays visible.",
+        "pending": "High A roof681 is modeled only as limited raised roof island, but current visual classification uncertain. Entrance/courtyard assembly still preliminary."
+      },
+      {
+        "render": "north-bank-entry.png",
+        "reference": "../map-recall2-source-data/models/uva-roeterseiland/raw/3437_06042_N104.jpg",
+        "finding": "Finite near-bank CPU perspective now shows deeply inset glazing, pale reveal/soffit, exposed supports, differentiated tower rhythms, timber widening and split stair/ramp. Near-camera triangles are clipped to a plane to exclude opposite-bank foreground from this local station.",
+        "pending": "Exact station alignment/proportions need independent review; generic low right frontage remains simplified. Stair rises and width estimates explicitly approximate."
+      },
+      {
+        "render": "east-crea-approach.png",
+        "reference": "../map-recall2-source-data/models/uva-roeterseiland/raw/403_UvA_Tim_Soar_4_.jpg",
+        "finding": "Retained CREA exact footprint surrogate stands at left; native promenade view sees ribbed underside, glazing and open passage. Surrogate uses median AHN elevation only and is not exported.",
+        "pending": "Live retained-neighbor rendering/clearance still required. Initial stationv22 intersected CREA and was moved to documented actual north promenadev15; no false scene acceptance from a blocked station."
+      },
+      {
+        "render": "north-bank-entry.png",
+        "reference": "../map-recall2-source-data/models/uva-roeterseiland/raw/3437_06042_N104.jpg",
+        "cycle": 3,
+        "finding": "The previouslyblank right-side low pavilion is now exposed curtain glazing on the actual surveyed base708 north corner/east return. This restores the conspicuous glazing beside the pale recessed portal while retaining the independent stair/ramp arrival.",
+        "pending": "Independent review and integrated nativeGLB/game still pending; curtain tier/bay dimensions photo-guided estimates, other annex faces remain unpictured/unresolved."
+      },
+      {
+        "render": "a-pavilion-canal-front.png",
+        "reference": "../map-recall2-source-data/models/uva-roeterseiland/raw/oct7-3438_06042_N105.jpg",
+        "cycle": 4,
+        "finding": "Full surveyed north708curtain frontage and alternating broad/clerestory A ribbon bands are now exposed. Opaque surveyed rooftop enclave is dark charcoal.",
+        "pending": "Independent review; sourcephoto proportions/as-built bay count; nativeGLB/game/neighbors still pending. CPU camera is finite perspective and clips rear-of-camera far north annexes, not altered exported geometry."
+      },
+      {
+        "render": "west-pavilion-street.png",
+        "reference": "../map-recall2-source-data/models/uva-roeterseiland/raw/oct7-pano-west.jpg",
+        "sourceCaptureDate": "2024-12-10T13:20:11Z",
+        "cycle": 5,
+        "finding": "Current weststreet source confirms curtain-glazed long708 return beneath A ribbon tower. Original geometry tracksactualsurveywesternboundaryat eachv.",
+        "pending": "Bay/tier dimensions are bounded photo-guided approximations; framing/perspective/nativecityindependentreview pending."
+      },
+      {
+        "cycle": 6,
+        "render": "b-south-end.png",
+        "reference": "../map-recall2-source-data/models/uva-roeterseiland/raw/oct7-facade-pilot-photo.jpg",
+        "finding": "Operator pilotphoto andsouthB drawing confirmverticalgrid on Bexposed southernend; model addsnativeedgegridaboveforeground8mroof.",
+        "pending": "Exact bay/floor calibration/independentreview; A SOUTHterminal remainsblank, lowannexfaces unresolved."
+      },
+      {
+        "cycle": 8,
+        "render": "north-annex-street.png",
+        "reference": "../map-recall2-source-data/models/uva-roeterseiland/processed/oct7-targeted-northlow-west-perspective.jpg",
+        "rawReference": "raw/oct7-targeted-northlow-west.jpg",
+        "finding": "Native734streetface nowwarmmasonry,groundglass,two broadwindowtiers,tallpaleglassblockgrid,thinclerestory andstraightdarkcap. Sourcepanorama perspectiveprojection removes apparentroofcurve artifact.",
+        "pending": "Independentnewassemblyreview; exactbaycount/panelnativeallocationmediumconfidence; othernorthfaces notobserved."
+      },
+      {
+        "cycle": 9,
+        "render": "north-annex-framing-close.png",
+        "contextRender": "north-annex-street.png",
+        "reference": "../map-recall2-source-data/models/uva-roeterseiland/processed/oct7-targeted-northlow-west-perspective.jpg",
+        "finding": "Approximateactualnearstreetstation reveals strong2x2glassblockhierarchy,verticallydividedbroaduppergroups andtallgrounddoorframes. Nativepanelposition/tiers/roofheldunchanged.",
+        "pending": "Independentcurrentreview; no compressedsource-facingGPU/game/suppression acceptance."
+      },
+      {
+        "render": "cycle10/735-edge30-source.png",
+        "reference": "/tmp/uva-remaining-faces-oct7/processed/735-east-alternate.jpg",
+        "finding": "Edge30 darkblanknearhalf plusclusterofnarrowupperglass/groundentries; exactsurveyedge30 only. Source/nativecamera comparison available incycle10/735-source-comparison.png.",
+        "pending": "Independent scopedreview; sourcearchive commit pending; physicalparent rest/GPU/gallery/live/neighbor/performance pending."
+      },
+      {
+        "render": "cycle11/735-source-comparison.png",
+        "reference": "Private sourcecommitb0ac0437e7d29fde1fc7954cefbe471cb4a03a5a/raw/2026-10-07-remaining-faces/735-east-00061.jpg",
+        "finding": "Warmdarkwall/darkgroundpanes nowcontrast withservicedoor/frame; source/low/closecomparisons preserve geometry.",
+        "pending": "Root/freshindependent affectedcolorreadability; wholeparentheld."
+      }
+    ],
+    "checks": {
+      "command": "node --import tsx scripts/check-uva-roeterseiland-geometry.ts --render",
+      "result": "pass",
+      "triangles": 35602,
+      "finiteNativeBounds": true,
+      "upwardRoofNormals": true,
+      "canalAndBankVoidRays": true,
+      "firstHitCityroomGlazingBothSides": true,
+      "raisedUndersideRays": true,
+      "northCourtOpenSouthernAtriaRoofed": true,
+      "scopedTypeScript": "pass: tsc --noEmit --skipLibCheck --module esnext --target es2021 --moduleResolution bundler --resolveJsonModule --allowSyntheticDefaultImports builder/check scripts",
+      "insetEntryGlass": "15 first-hit samples: visible glass18.68m behind v20 probe station",
+      "exposedPortalColumns": "2 first-hit support samples8\u201310m forward of station; glass remains behind",
+      "paleSoffit": "upward portal ray sees pale soffit first",
+      "adjacentPavilionFirstHit": "72 fractional north pane probes across6stations at3heights plus18east probes; all pass",
+      "roof681": "top/support ray and opaque dark side first-hit pass",
+      "westPavilionFirstHit": "36 pane fraction probes at6 native stations,3 heights pass",
+      "westBankStairFirstHit": "48 fraction probes; north uses2/18/30/42m; south uses14/18/30/42m. Lower southern2m probe failedagainst genuine9m survey689 and remains preserved, not accepted.",
+      "bSouthEnd": "24 fraction probes over4 native pane stations,3 heights; exposed terminal end above8.9m. Source drawnfamily, actual19m edge controlswidth.",
+      "aFacadeRoofBounds": "all actual north/side ribbon,clerestory,trim geometry starts above pavilion12.2195m and stays >0.4m belowAroof43.5845m; pass",
+      "northStreetAnnexFirstHit": "30 fractionalpaneprobes across5nativebays/3heights +2glassblockprobes allpass; sourceprojection actual63.98m surveyedge, actualmaterial family",
+      "fullRepositoryLint": {
+        "result": "pass: npm run lint underworktreeownfrozenpackage-lock dependencies",
+        "dependencySetup": "Replaced only isolatedworktree rootnode_modules symlink with npm ci --workspaces=false --ignore-scripts --no-audit --no-fund; root node_modules/lock untouched",
+        "priorMismatchedDependencyFailure": "25 untouchedsrc errors whenusingrootlinkeddeps; savedartifacts/uva-roeterseiland-massing-20261006/inherited-full-lint-failure.txt. These vanishedunderlockeddependencies.",
+        "checkpointHook": "Initialunpublishedlocalcheckpointskippedhook; corrected withlockeddependencyinstall/fullnormalgate andnormalhookamend beforehandoff/publication."
+      },
+      "northAnnexPrincipalFraming": "5first-hit rays: glassblockcentraldarkmullion+storeydivider; upperverticalmullion; grounddoorstile/head allPASS.",
+      "compressedDraftBudget": {
+        "model": "uva-roeterseiland",
+        "status": "unaccepted artifact only; no registration/version/suppression",
+        "file": "artifacts/uva-roeterseiland-massing-20261006/cycle11-unaccepted-draft.glb",
+        "sha256": "426c8e35e6e4e083b2dd3d9c93b1917c712477cc338650217ce31788db1fd77a",
+        "bytes": 499432,
+        "decodedTriangles": 35602,
+        "textures": 0,
+        "compression": "sameproduction weld/dedup/prune/meshopt medium",
+        "limit": "decoded budget/finiteness only; no compressed first-hit/render/live acceptance"
+      },
+      "backPruneViews": "8source-facingCPUviews pixel-identicalto fullboxframingrepair; Afront8pixels/nativeoverview9boundarypixels differ (<0.0012%). Exactcomparisons preserved. BroaderB/C/Asideribbon pruning discarded afterobliquevisible difference.",
+      "east735FirstHits": "57sourceedge fractionalglass/blank/framing samples pass in both nativebuilder andcompressedexport; edge30 tangents/height/extents pass",
+      "edge735ColorFirstHits": "ActualRGB wall39332d/glass-service202d2b/frame303b43 sampled nativeanddecoded; onlybrick/blue slots isolatededge30."
+    },
+    "failedOrLimitedEvidence": [
+      "Cycle1 deep portal failed: original glazing was essentially flush and ground-up survey shell728 flattened the hall; preserved before repair.",
+      "Cycle2 missed photographed right-side curtain-glazed pavilion; preserved cycle2 entry image before scoped base708 north-corner repair.",
+      "Current exposed bar bank faces and A north ribbons now have source-supported rhythm; other low annex facades still lack full source-confirmed identities. Full parent suppression remains withheld.",
+      "Source3439 slot/ribbon allocation to northern patch756 is an inference requiring independent native confirmation.",
+      "Source3438 supports opaque rectangular roof681 enclosure family; exact classification/equipment height remains medium confidence. Survey height retained; no claim of photo-measured roof.",
+      "Compressed draft CPU-only; no gallery/live context, pointer/card/route checks or GPU performance evidence.",
+      "Bridge final widths, six stair rises and height/ramp estimates are approximate; proposal sketches are not treated as built dimensions.",
+      "Cycle3 north pavilion only detailed18m corner, leaving observable west frontage blank; preserved before cycle4. Other annex faces remain unresolved.",
+      "Cycle5 source401 southern lowerbank curtain test hit survey689 atv27.2,y2 (3.53m away). Genuine9m annexe retained; southern stair glass limitedabove12.65m. Lowerbank facade unresolved.",
+      "Cycle6 initial Bterminal pane loop used wholeboundingbox33m width includingnorthspur; actual19m southendnativeedge correction preserved.",
+      "Independent cycle6 review FAILED: clerestory43.3\u201343.78/trim43.88 exceeded Aroof43.5845 and low ribbonphaseleft2.78m blankband; equal3.4m pavilion tiers missed shortground/tallupper proportions. Cycle7 sourceguided phase/tiercorrection independently passed within scope.",
+      "Independentcycle8 FAILED principal2x2glassblocksubdivision/upperverticalwindowmullions/grounddoorfamily; exact37142builder/CPU/reportpreserved ascycle8-* + independent-cycle8-review.json. Cycle9 observedframingfamily independently passed within scope; fullparent held.",
+      "Cycle9 firstproductionmediumdraftGLB521468bytes FAILED500000budget. Preserve originalfailure/GLB. Conservativeopaque-wall-back cleanupkeepscriticalexposedfront/sidefaces; final490076bytes. No changedcompressionlevel/detailreduction.",
+      "Root cycle10 sourcecomparison colorFAIL: coldcharcoalwall/brightbluegroundpanes/opaqueservice blendedwithwall. Frozen cycle10hash/screenshots/review preserved. Cycle11 materialonlyrepair pendingaffectedreadabilityreview."
+    ],
+    "independentReviewer": "Cycle9 scoped734PASS. Root reportscycle10 scoped112FrontSide geometryPASS/readerreleased; rootsourcecolorFAIL preserved. Cycle11 affectedmaterial/readabilityreview pending; wholeparentheld.",
+    "nextCycle": [
+      "Fresh independent affectededge30 color/readability andactualdecodedRGB review of frozen cycle11;112cycle10 geometryrays can bereused becauseall nativebuffers unchanged.",
+      "Root sourcecheckpoint b0ac0437e7d29fde1fc7954cefbe471cb4a03a5a nowpushed; maintain sourcecommit provenance beforepublicmodelcommit.",
+      "Remaining735edge32/otherfaces,742exposedupper,Aupperrear/courtyard remainunresolved;755allocation belongsroot.",
+      "Wholephysicalparent remainsheld; noGPU/gallery/live/neighbor/performance orroute-map-card acceptance."
+    ],
+    "preservedFailedEvidence": [
+      "cycle1-builder.ts",
+      "cycle1-review.json",
+      "cycle1-north-bank-entry-failed.png",
+      "cycle1-west-canal.png",
+      "cycle1-east-promenade.png",
+      "cycle1-native-overview.png",
+      "cycle1-geometry-report.json",
+      "cycle2-builder.ts",
+      "cycle2-review.json",
+      "cycle2-north-bank-entry.png",
+      "cycle2-east-crea-approach.png",
+      "cycle2-west-canal.png",
+      "cycle2-east-promenade.png",
+      "cycle2-native-overview.png",
+      "cycle2-geometry-report.json",
+      "cycle3-north-bank-entry.png",
+      "cycle3-native-overview.png",
+      "cycle3-west-canal.png",
+      "cycle3-east-promenade.png",
+      "cycle3-geometry-report.json",
+      "cycle5-stair-lower-failed.json",
+      "cycle6-end-invalid-bounds-failed.json",
+      "cycle6-builder.ts",
+      "cycle6-review.json",
+      "independent-draft-current-review.json",
+      "cycle8-builder.ts",
+      "cycle8-review.json",
+      "cycle8-geometry-report.json",
+      "cycle8-north-annex-street.png",
+      "cycle8-native-overview.png",
+      "independent-cycle8-review.json",
+      "cycle9-over-budget-failed.glb",
+      "cycle9-over-budget-failed.json",
+      "cycle9-broad-back-prune-visible-difference.json"
+    ],
+    "cpuCameras": {
+      "north-bank-entry": {
+        "nativeCampusTarget": [
+          -24.2,
+          34
+        ],
+        "targetHeight": 7,
+        "distance": 22,
+        "elevationRatio": -0.23,
+        "projection": "perspective with near clipping"
+      },
+      "east-crea-approach": {
+        "nativeCampusTarget": [
+          -5.8,
+          15
+        ],
+        "targetHeight": 18,
+        "distance": 58,
+        "elevationRatio": -0.28,
+        "projection": "perspective with near clipping"
+      },
+      "a-pavilion-canal-front": {
+        "nativeCampusTarget": [
+          -60,
+          28
+        ],
+        "targetHeight": 20,
+        "distance": 40,
+        "elevationRatio": -0.52,
+        "projection": "perspective with near clipping; approximate source-facing station"
+      }
+    },
+    "cycle4Corrections": [
+      "Source3438 shows full north canal-facing curtain pavilion; glazing extends native surveyed face rather than just 18m entry corner.",
+      "A facade now contains broad and thin clerestory ribbon per observed floor.",
+      "Roof681 remains a bounded surveyed rooftop enclosure; source3438 supports opaque charcoal family. Perspective obscures setback/base so photograph does not override surveyed 7.6m height."
+    ],
+    "unresolvedFacadeInventory": [
+      {
+        "roof": 742,
+        "height": 39.2,
+        "area": 325,
+        "location": "nativeu-23..4,v-50..-35; northmainbarbankextension",
+        "state": "currentlyblankofficefamilyunpictured; no sourceapproved full-height assembly"
+      },
+      {
+        "roofs": [
+          686,
+          747,
+          755,
+          745,
+          687
+        ],
+        "location": "northwest/northannexinner/rear",
+        "state": "734observedstreetfront nowmodeled; remainingfaces notadmittedbyautomaticpalettetransfer"
+      },
+      {
+        "roof": 735,
+        "height": 8.7,
+        "area": 1237,
+        "location": "nativeu4..42,v4..72; east/southeastlargeannex",
+        "state": "735edge30 targetedcycle10; edge32 andremainingexteriorfaces unresolved; CREAretained; no wholeparentacceptance."
+      },
+      {
+        "roofs": [
+          728,
+          750,
+          689,
+          690
+        ],
+        "location": "southrear/portalbanks",
+        "state": "entryportal observed; rear/courtyard/lowbankotherfacesunresolved"
+      },
+      {
+        "roof": 748,
+        "location": "A southterminal nativev61",
+        "state": "ribbonfamily presentnorth/westsides only; southterminal blank untilsourceconfirmation/independenttransferreview"
+      }
+    ],
+    "cycle7Corrections": {
+      "aRibbonBase": 12.65,
+      "aFloorPitch": 3.85,
+      "aHighestClerestory": [
+        42.35,
+        42.83
+      ],
+      "aHighestTrimTop": 42.93,
+      "aRoof": 43.5845,
+      "opaqueCapMetres": 0.65,
+      "pavilionTiers": [
+        {
+          "base": 0.4,
+          "height": 2.35
+        },
+        {
+          "base": 3.0,
+          "height": 4.25
+        },
+        {
+          "base": 7.5,
+          "height": 4.15
+        }
+      ],
+      "confidence": "photoguided proportions; approximate dimensions, not measuredasbuilt"
+    },
+    "cycle9Corrections": {
+      "glassblock": "darkouterframe/principalcentralvertical.16m+storeydivider.18m create2x2hierarchy abovefine.035m grid; existing7.8x7.3m panel/t22.5 retained",
+      "broadUpperWindows": "mainverticalmullion.08m plusnarrowheadtransoms at.72/.88 ofpaneband; no equal3horizontalstrip substitute",
+      "groundFamily": "tall doubleleaf/entrance stiles andhighhead; exactindividualdoorallocation notclaimed",
+      "confidence": "high sourceassembly hierarchy; medium inferredframewidths/transom heights/pane counts; no newhiddenregiontransfer"
+    },
+    "cycle9FrozenBefore735": {
+      "phase": "cycle9 734 framing correction and bounded wall-back pruning",
+      "builderSha256": "73031dfe9b43aad0569521b48f162580baf49b6806325fae284f96fd71ba121c",
+      "checkSha256": "e87fe8ad726a25401aa42f88cb45db210a1bb0db8392f1aea800242a4f623bf9",
+      "sourceArchiveCommit": "4d7e01caf1b6765a86a6a69a7a0098c61709315d",
+      "sourceArchivePath": "models/uva-roeterseiland",
+      "exportSha256": "bc00dc572f0dd977539d0e6043da0d1cca341f6ec15206f80b0f041ed35efa01",
+      "triangles": 35092,
+      "exportBytes": 490076,
+      "textures": 0
+    },
+    "cycle10": {
+      "builderSha256": "1272c46d4804c96d64e7b2acc1ca92ff149a6aecf46d47a597eea25ba09dff6b",
+      "checkSha256": "e032f1bfd8e4d10dddf817533acd93c79fcb597d1f60997660abd1007157d642",
+      "exportSha256": "b7c1cc47d6f94df62ac1860068c3fa054e1b713e00b7115e3fbbf35f9eea16cf",
+      "triangles": 35602,
+      "bytes": 497924,
+      "textures": 0,
+      "scope": "Only source-supported735edge30; no unrelated geometry pruning",
+      "evidenceDirectory": "artifacts/uva-roeterseiland-massing-20261006/cycle10",
+      "geometryCheck": "PASS35602tri; all inherited checks plus57 nativefirsthit/fractionalopening/blank/framing samples andnativeedgeextent/topbounds",
+      "decodedCheck": "PASS57 fractional materialfirsthits on actual compressedexport",
+      "lint": "npm run lint PASS",
+      "authorSourceComparison": "Inspected00061 source, source-facingrender andnativeclose. Broad nearblankfield andfaropeningcluster read correctly on edge30. Adjacentedge29 remains visiblypale; CREAcontext is plain exactfootprintsurrogate; these are retained unresolvedcontext, not acceptedarchitecture. Dark palette approximates observedcharcoal but is coolerthanphoto.",
+      "cpuRendererCorrection": "Perspective depth now interpolates reciprocalcamera depth. Initial directlinearz causedparentwall showthrough despite firsthits; rerenderedcycle10 removes artifact. Preserved all priorcycle9 frames/reports. No geometry/roofpruning performed incycle10.",
+      "camera": {
+        "nativeStation": [
+          75.81002963231316,
+          2.5,
+          67.65451527690118
+        ],
+        "target": [
+          55.3,
+          7,
+          36.1
+        ],
+        "horizontalFovApprox": 90,
+        "viewport": [
+          1200,
+          900
+        ],
+        "projection": "Sameworldaligned northcentre municipalpanorama projection; sourcefocal match approximate, notrectifiedmeasurements"
+      },
+      "sourceArchiveState": "new735original pendingrootprivatearchive; no publicmodelcommit authorized",
+      "reviewState": "fresh independent scopedreview pending; WHOLE PARENT HELD",
+      "failedEvidencePreserved": [
+        "cycle5-stair-lower-failed.json",
+        "cycle6-end-invalid-bounds-failed.json",
+        "independent-cycle7-review.json",
+        "independent-cycle8-review.json",
+        "cycle9-over-budget-failed.glb",
+        "cycle9-over-budget-failed.json",
+        "cycle9-broad-back-prune-visible-difference.json",
+        "cycle9-back-prune-render-comparison.json",
+        "cycle10/failed-linear-perspective-depth/735-edge30-source.png"
+      ]
+    },
+    "cycle11": {
+      "builderSha256": "824667f737a37607f74fc2962fb1e583ba8b8cd1e5ad1af29fa013f1b6d5f7d4",
+      "checkSha256": "38b41f9442ad1d8a849a0e857e3d43c32ba81d605272d05fbbe5d57ffe191a7e",
+      "specSha256": "9fdc0ac450d3a2c242801b1cfabfb939dd6dd6825a0e9f70d7e402684969edb0",
+      "exportSha256": "426c8e35e6e4e083b2dd3d9c93b1917c712477cc338650217ce31788db1fd77a",
+      "triangles": 35602,
+      "bytes": 499432,
+      "textures": 0,
+      "geometryUnchangedFromCycle10": true,
+      "sourceArchiveCommit": "b0ac0437e7d29fde1fc7954cefbe471cb4a03a5a",
+      "evidenceDirectory": "artifacts/uva-roeterseiland-massing-20261006/cycle11",
+      "scope": "Edge30 color/material only; all2995 geometry primitive position/normal/index buffers byte-identical tocycle10. No newpruning/frames/countchanges.",
+      "materialColors": {
+        "brick": "#39332d",
+        "blue": "#202d2b"
+      },
+      "reusedFrameRGB": "#303b43",
+      "firstHitColors": "nativeactualwall/glazing/service/frame RGB probes PASS; compressed57fractionalglass/blank/framing/service material+RGB firsthits PASS",
+      "sourceVisualReview": "Author reopenedsource/close/low/sourcecamera. Warmwall and darkservice/glazing nowreadagainstunchangeddarkframes; opaque service distinctfromwall. Darkopenings share flatopaque material color anddo notclaim serviceglass. Groundopenings no longer brightblue. Exactcolor/exposure/counts remain approximate. Root/freshindependent affectedcolor/readability review pending.",
+      "failedAttempts": [
+        {
+          "file": "cycle11/four-color-overbudget-failed.glb",
+          "bytes": 501116,
+          "finding": "Fourseparatecustomwall/glazing/service/frame materialgroups exceededbudget; original geometry/config preserved."
+        },
+        {
+          "file": "cycle11/three-color-overbudget-failed.glb",
+          "bytes": 500484,
+          "finding": "Merging service/frame stilloverbudget; no geometry/pruning attempted."
+        }
+      ],
+      "finalBudgetDecision": "Two previouslyunusedslots warmwall/darkopenings plus existingdarkframe; geometry/fulldetail retained;499432B only568B headroom.",
+      "geometryReviewReuse": "Root reports independentcycle10 scoped112FrontSide geometryPASS/readerrelease; sourcecolor/readabilityfailure correctedhere, freshaffectedmaterial review required. No claim ofwholescene/GPU acceptance."
+    },
+    "cycle12": {
+      "date": "2026-10-07",
+      "phase": "cycle12-source755-edge2",
+      "status": "SOURCE-BOUNDED CPU DRAFT; BYTE-BUDGET HOLD; whole parent HELD/unregistered",
+      "sourceDecision": "scripts/landmarks/uva-roeterseiland-755-source-decision-20261007.json",
+      "sourceArchiveCommit": "b0ac0437e7d29fde1fc7954cefbe471cb4a03a5a",
+      "sourceArchivePath": "models/uva-roeterseiland/raw/2026-10-07-remaining-faces/currentpack",
+      "processed755DecisionArchive": "root pending archival before checkpoint; no private index touched",
+      "evidenceDirectory": "artifacts/uva-roeterseiland-massing-20261006/cycle12",
+      "authoredScope": "Only surveyed755 edge2 length45.6777m/top14.13\u201314.15m; pale panels/joints, four rows at1.3/4.3/7.2/10.2m, paired upper panes, eastern three-bay ribbon, short strip boundedt\u2248.36..1",
+      "sourceLimits": [
+        "Full frontage bay count/dimensions approximate;13 separated groups plus ribbon are representation, not a measured count",
+        "Ground apertures meaningful, no exact doors/stoep inferred from occlusion",
+        "No756 height/upperrow transfer onto755; no unseen return/court treatment",
+        "Existing756 source-inference assemblies remain held; CPU image includes them without accepting them"
+      ],
+      "checks": {
+        "nativeFrontSideFirstHit": 250,
+        "decodedFrontSideFirstHit": 250,
+        "firstHitFailures": 0,
+        "materialsRGB": {
+          "glass": "#527787",
+          "dark": "#303b43",
+          "concrete": "#d4d5d0",
+          "frame": "#9daaa8"
+        },
+        "roofAndCourtTests": "Existing checker roof-up normals, raised canal void/underside, north court/south atria and prior facade rays pass",
+        "priorGeometry": "Exact pre-existing2995 geometrybuffers/order/palette retained;185new755meshes",
+        "nativeScale": "Survey roof/rings/holes retained; scale1 no height changes"
+      },
+      "standardExport": {
+        "model": "uva-roeterseiland",
+        "status": "unaccepted artifact only; no registration/version/suppression",
+        "file": "artifacts/uva-roeterseiland-massing-20261006/cycle12-unaccepted-draft.glb",
+        "sha256": "c1159f09939b60f5eaf5075da4036c52a0674e463b66774458eb86b5cbf29b42",
+        "bytes": 525832,
+        "decodedTriangles": 37452,
+        "textures": 0,
+        "compression": "sameproduction weld/dedup/prune/meshopt medium",
+        "budgetPass": false,
+        "limit": "unaccepted measured candidate; no compressed first-hit/render/live acceptance"
+      },
+      "losslessSharedPacking": {
+        "input": "artifacts/uva-roeterseiland-massing-20261006/cycle12-unaccepted-draft.glb",
+        "inputBytes": 525832,
+        "file": "artifacts/uva-roeterseiland-massing-20261006/cycle12-shared-lossless-draft.glb",
+        "bytes": 595008,
+        "uniqueVertices": 72603,
+        "decodedExact": true,
+        "sha256": "e073a1a89e74e0b293e11cc52fa85ed94f5d27f6eddb0460d33a1a92f9bf8a5d",
+        "budgetPass": false
+      },
+      "failedEvidence": [
+        "cycle12-unaccepted-draft.glb525832B",
+        "cycle12-shared-lossless-draft.glb595008B"
+      ],
+      "acceptanceGaps": [
+        "25,832byte standardexport overage; actual productionbudget remains unproven",
+        "Fresh independent source/composition/decoded review pending",
+        "Lit native gallery and actual livegame/retainedneighbor/performance review pending",
+        "Upper742,A rear and exposed courtyard sourcecoverage incomplete; fullparent suppression unsafe"
+      ]
+    }
+  },
+  "sourceRepairCheckpoint": {
+    "privateArchiveLocalCommit": "9d6053ef0808471386a1cd0ded64a8c9200d70a7",
+    "privateArchiveSync": "unpublished; GitHub DNS failure",
+    "privateArchivePath": "models/uva-roeterseiland/checkpoints/upper-stagger-repair-20261009",
+    "privateArchiveBranch": "landmark-source-ratio-repair-20261009"
+  },
+  "previousSourceRatioDraft": {
+    "on": "2026-10-09T06:50:15.961142+00:00",
+    "status": "Source-recognition improvement independently reviewed; full source/native/game acceptance still held.",
+    "changedAssemblies": 34,
+    "unaffectedAssembliesExact": 3124,
+    "draftSHA256": "136709a766eb778d6e451f1cf1026c244277aaa2a0dd842f555e04c14401619b",
+    "draftBytes": 434736,
+    "draftTriangles": 37232,
+    "conditionalSourceRayFailures": 8,
+    "decodedLocalFirstHitSamples": 368,
+    "decodedLocalFirstHitFailures": 0,
+    "privateArchiveLocalCommit": "53662059eee5d3a0f6128aaa310de4a0474b9dc5",
+    "privateArchiveSync": "not pushed: GitHub DNS failure; corrected scoped branch prepared, earlier push failedHTTP408",
+    "privateArchivePath": "models/uva-roeterseiland/checkpoints/source-ratio-repair-20261009",
+    "geometry": {
+      "sourceOriginalSHA256": "cf7e16ebd374138a20c9be21b7ba61751070390f28050327905317efc4da2d9d",
+      "sourceObservedGroups": 6,
+      "extentApprox": [
+        4.9,
+        16.3
+      ],
+      "extentUncertainty": "approximately\u00b11m in location/width; no accepted source-to-plane pose",
+      "edgeLength": 17.77980477958437,
+      "groups": [
+        {
+          "ratio": 0,
+          "widthRatio": 0.15487112728090943,
+          "at": 4.9,
+          "width": 1.7655308510023677
+        },
+        {
+          "ratio": 0.20916879951767256,
+          "widthRatio": 0.14636277461317987,
+          "at": 7.284524314501468,
+          "width": 1.6685356305902506
+        },
+        {
+          "ratio": 0.4168843341393486,
+          "widthRatio": 0.15586102427677268,
+          "at": 9.652481409188574,
+          "width": 1.7768156767552086
+        },
+        {
+          "ratio": 0.6133697552510128,
+          "widthRatio": 0.15575368443443782,
+          "at": 11.892415209861547,
+          "width": 1.775592002552591
+        },
+        {
+          "ratio": 0.8077139635912028,
+          "widthRatio": 0.13988601356466762,
+          "at": 14.107939184939713,
+          "width": 1.5947005546372106
+        },
+        {
+          "ratio": 1,
+          "widthRatio": 0.13236328367029457,
+          "at": 16.3,
+          "width": 1.508941433841358
+        }
+      ],
+      "firstOpeningStart": 4.017234574498817,
+      "lastOpeningEnd": 17.05447071692068,
+      "lastCornerReserve": 0.725334062663691,
+      "transition": "Broad left glazing family separate; full footprint/current state unresolved, not reconstructed",
+      "status": "approximate architectural candidate; source pixels no longer metric acceptance probes",
+      "vertical": {
+        "sourceMainHeightPixelsApprox": 26,
+        "sourceUpperHeightPixelsApprox": [
+          16,
+          18
+        ],
+        "sourceGapPixelsApprox": [
+          20,
+          21
+        ],
+        "mainCenterApprox": 23.4,
+        "mainHeightApprox": 1.5,
+        "upperCenterApprox": 25.7,
+        "upperHeightApprox": 0.95,
+        "upperMainRatio": 0.6333333333333333,
+        "gap": 1.075,
+        "gapMainRatio": 0.7166666666666667,
+        "surveyShellRoofUnchanged": true,
+        "roofTopApprox": 26.67,
+        "upperTop": 26.175,
+        "roofMarginApprox": 0.495,
+        "limits": "Relative architectural proportions only; not a calibrated aperture position. Existing shallow upper transitions remain.65m.",
+        "decision": "Keep full upright source recognition above the terrace; reduce upperheight and increase uppercentre to source-relative roofmargin .33mainheight. Rejectedlower22.8main was occluded by755 inCPU comparison; preservedfailure."
+      }
+    },
+    "independentReview": {
+      "sourceOriginalSHA256": "cf7e16ebd374138a20c9be21b7ba61751070390f28050327905317efc4da2d9d",
+      "yawSensitivityNormalized": [
+        {
+          "yawDeltaDegrees": -2,
+          "ratios": [
+            0.0,
+            0.21027,
+            0.41851,
+            0.615,
+            0.80881,
+            1.0
+          ]
+        },
+        {
+          "yawDeltaDegrees": -1,
+          "ratios": [
+            0.0,
+            0.20975,
+            0.41769,
+            0.61413,
+            0.80818,
+            1.0
+          ]
+        },
+        {
+          "yawDeltaDegrees": -0.5,
+          "ratios": [
+            0.0,
+            0.2094,
+            0.4173,
+            0.61373,
+            0.80799,
+            1.0
+          ]
+        },
+        {
+          "yawDeltaDegrees": 0,
+          "ratios": [
+            0.0,
+            0.20914,
+            0.41686,
+            0.61336,
+            0.80769,
+            1.0
+          ]
+        },
+        {
+          "yawDeltaDegrees": 0.5,
+          "ratios": [
+            0.0,
+            0.20885,
+            0.41643,
+            0.61297,
+            0.80741,
+            1.0
+          ]
+        },
+        {
+          "yawDeltaDegrees": 1,
+          "ratios": [
+            0.0,
+            0.20866,
+            0.41614,
+            0.61259,
+            0.80719,
+            1.0
+          ]
+        },
+        {
+          "yawDeltaDegrees": 2,
+          "ratios": [
+            0.0,
+            0.20809,
+            0.41533,
+            0.61185,
+            0.80674,
+            1.0
+          ]
+        }
+      ],
+      "horizontalDecision": "six-pair normalized architectural run approved within surveyed edge as approximation; absolute metric centers not approved",
+      "candidateExtent": [
+        4.9,
+        16.3
+      ],
+      "endReserveMetres": 0.725334062663691,
+      "sourceVerticalRatiosApprox": {
+        "upperHeightToMainHeight": [
+          0.6,
+          0.75
+        ],
+        "gapToMainHeight": [
+          0.65,
+          0.85
+        ]
+      },
+      "cpuLimit": "isolated CPU diagnostic only; no native/gallery/live acceptance",
+      "verticalDecision": "approve changed main23.4/h1.5 and upper25.7/h.95 as source-relative approximate architectural improvement; full source composition held",
+      "sourceProportionsCandidate": {
+        "gapMain": 0.7166666666666667,
+        "upperMain": 0.6333333333333333,
+        "roofMarginMain": 0.33
+      },
+      "remainingConcreteFailures": [
+        "first two mainpairs partly occluded by foreground755 in diagnostic eye2.5 CPU view",
+        "broad transition missing/unresolved, no invented replacement",
+        "upper count/layout still approximate",
+        "eight of24 conditional source rays fail; not removed or overridden by72localpanehits"
+      ],
+      "nativeStatus": "gallery/live-game/performance and exact source composition acceptance pending",
+      "viewedCandidate": "/private/tmp/uva-finish-source-20261009/source-before-after-low-crop.png",
+      "failedLowerDraft": "main22.8/h1.5 upper25.1/h.95 failed as mainpairs became slits behind755; worker preserved lower-main-failed-*",
+      "supersededVerticalFailure": "upper/main rows nearly touch; source has substantial pale separation band and shorter upper pairs"
+    },
+    "privateArchiveBranch": "landmark-source-ratio-repair-20261009"
+  }
+}

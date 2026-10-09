@@ -1,0 +1,55 @@
+{
+  "id": "uva-roeterseiland",
+  "name": "Roeterseiland (UvA)",
+  "landmarkId": "extract_landmarks_596580010",
+  "modelUrl": "./models/uva-roeterseiland.glb",
+  "status": "held-draft-upper-stagger-repair-20261009",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012185420",
+    "r3604223",
+    "w269006492"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.91212,
+      52.36334
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 211,
+    "widthMetres": 144
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.91212,
+      52.36334
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current2026-10-06 BAG composite parent + AHN5(2023)3DBAG top surfaces, native scale1. Semantic raised bridge requires separate bottom; parent not ground-fillable."
+  },
+  "attribution": {
+    "title": "UvA Roeterseiland native campus",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.ahmm.co.uk/projects/reuse/university-of-amsterdam/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original native textured-free flat-colour draft using surveyed footprint shells, exposed facade glazing and source-derived assemblies. No photo pixels or imported meshes. Draft notaccepted for full composite suppression."
+  },
+  "scopeWarning": "Suppression is planned only and unsafe until full composite physical parent is modeled and bridge/courtyard/annex acceptance complete. CREA Pand0363100012164972 retained. Do not register this source-only spec.",
+  "sourceArchive": {
+    "path": "models/uva-roeterseiland",
+    "commit": "16f519fc2559a58cfe855706b2b79d2758b8410b"
+  },
+  "materialOverrides": {
+    "brick": "#39332d",
+    "blue": "#202d2b"
+  },
+  "sourceRepairCheckpoint": {
+    "privateArchiveLocalCommit": "9d6053ef0808471386a1cd0ded64a8c9200d70a7",
+    "privateArchiveSync": "unpublished; GitHub DNS failure",
+    "privateArchivePath": "models/uva-roeterseiland/checkpoints/upper-stagger-repair-20261009",
+    "privateArchiveBranch": "landmark-source-ratio-repair-20261009"
+  }
+}
