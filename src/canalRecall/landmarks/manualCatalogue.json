@@ -15760,5 +15760,112 @@
       ]
     ]
   }
+},
+{
+  "id": "van-gendt-hallen",
+  "name": "Van Gendt Hallen",
+  "landmarkId": "extract_landmarks_1351046417",
+  "modelUrl": "./models/van-gendt-hallen.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012169224"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.925959578488882,
+      52.37151989007194
+    ],
+    "headingDegrees": 136,
+    "lengthMetres": 157.18,
+    "widthMetres": 84.65
+  },
+  "surveyed": {
+    "anchor": [
+      4.925959578488882,
+      52.37151989007194
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012169224 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#8a5a45",
+    "stone": "#b9ab94",
+    "slate": "#6f7478",
+    "glass": "#5f747c",
+    "dark": "#262626",
+    "frame": "#3c4a4c",
+    "green": "#8fa890",
+    "concrete": "#b4b6b4",
+    "greyBrick": "#4e3a33"
+  },
+  "attribution": {
+    "title": "Van Gendt Hallen",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Hallen_van_Stork",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; gable corbelling, arched window rhythm, pilasters and doors measured by eye from the 2018-2024 municipal panoramas, no pixels or meshes imported."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.926839247484612,
+          52.37145382365424
+        ],
+        [
+          4.926646343053337,
+          52.37157693286735
+        ],
+        [
+          4.9266422420107,
+          52.37157450821448
+        ],
+        [
+          4.926473552636307,
+          52.371681866031
+        ],
+        [
+          4.926477434827474,
+          52.3716841550227
+        ],
+        [
+          4.925999210525161,
+          52.37198855784856
+        ],
+        [
+          4.925543879591796,
+          52.37172084662873
+        ],
+        [
+          4.92552250479393,
+          52.37173445154321
+        ],
+        [
+          4.925478778882788,
+          52.37170873802337
+        ],
+        [
+          4.925500153681625,
+          52.37169513311671
+        ],
+        [
+          4.924334837718055,
+          52.37100995446291
+        ],
+        [
+          4.925177087665068,
+          52.37047577986767
+        ],
+        [
+          4.926839247484612,
+          52.37145382365424
+        ]
+      ]
+    ]
+  }
 }
 ]
