@@ -271,7 +271,7 @@
             "slot": "stone"
            },
            "rail": {
-            "kind": "bars",
+            "kind": "rods",
             "h": 0.4,
             "slot": "rail",
             "top": null
@@ -303,7 +303,7 @@
             "slot": "stone"
            },
            "rail": {
-            "kind": "bars",
+            "kind": "rods",
             "h": 0.4,
             "slot": "rail",
             "top": null
@@ -335,7 +335,7 @@
             "slot": "stone"
            },
            "rail": {
-            "kind": "bars",
+            "kind": "rods",
             "h": 0.4,
             "slot": "rail",
             "top": null
@@ -367,7 +367,7 @@
             "slot": "stone"
            },
            "rail": {
-            "kind": "bars",
+            "kind": "rods",
             "h": 0.4,
             "slot": "rail",
             "top": null
@@ -414,7 +414,7 @@
          "slot": "slab"
         },
         "rail": {
-         "kind": "bars",
+         "kind": "rods",
          "h": 1.2,
          "slot": "rail",
          "top": "slab"
@@ -439,7 +439,7 @@
          "slot": "slab"
         },
         "rail": {
-         "kind": "bars",
+         "kind": "rods",
          "h": 1.2,
          "slot": "rail",
          "top": "slab"
@@ -464,7 +464,7 @@
          "slot": "slab"
         },
         "rail": {
-         "kind": "bars",
+         "kind": "rods",
          "h": 1.2,
          "slot": "rail",
          "top": "slab"
@@ -535,7 +535,7 @@
          "slot": "slab"
         },
         "rail": {
-         "kind": "bars",
+         "kind": "rods",
          "h": 1.2,
          "slot": "rail",
          "top": "slab"
@@ -560,7 +560,7 @@
          "slot": "slab"
         },
         "rail": {
-         "kind": "bars",
+         "kind": "rods",
          "h": 1.2,
          "slot": "rail",
          "top": "slab"
@@ -585,7 +585,7 @@
          "slot": "slab"
         },
         "rail": {
-         "kind": "bars",
+         "kind": "rods",
          "h": 1.2,
          "slot": "rail",
          "top": "slab"
