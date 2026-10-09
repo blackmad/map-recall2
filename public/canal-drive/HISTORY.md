@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## Large-building tier replaces bare boxes (2026-10-09)
+
+The user spotted big flat-coloured boxes (e.g. the Anne Frank House museum
+building on Prinsengracht). Cause: `exceptLandmarks` in `roofMesh.ts` gave a
+listed landmark without a kit/model the house facade only if pre-1945 and
+≤26 m — a 2026-10-03 rule so Carré and the Oosterkerk would not read as
+nine-storey flats — and drew everything else bare. 118 such buildings
+(260k m²) city-wide. `largeBuildingTier.ts` now gives them a facade by BAG
+era (taller storeys, one entrance per street run, parapet + cornice, real
+shops from the shopfronts extract, grey flat roofs), reusing the merged
+per-tile meshes: ~68 triangles each, +18.7k city-wide, no new draw calls.
+Six visible ones are hand-tuned from panoramas (`LARGE_TIER_OVERRIDES`).
+Reviewed by the integrator at Westermarkt, Keizersgracht and Singel.
+
 ## Seven landmarks held back after review (2026-10-09)
 
 The user flagged the second batch: facades floating off their shells (Torture
