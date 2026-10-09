@@ -33,6 +33,20 @@ except storeys shifted ≤0.4 m by re-grounding. Kept opt-in behind
 (continuous ground and cornice line) does not need chunking. Unmeasured on a
 real phone GPU.
 
+## Zuiderkerk, Muiderkerk, Van Gendt Hallen; Palace and De Balie reworked (2026-10-10)
+
+Zuiderkerk replaces its procedural kit (the kit's OSM tower and roof ways are
+now in the model's suppression list; in-game shot shows one tower). The
+tower is 66 m by the photos, not the 79 m in the brief; the nave was sent
+back once for house-like square windows and now has tall stone-framed
+traceried windows. Muiderkerk (1892 tower front before a 1997 office
+block). Rework from the facade-gate audit: the Royal Palace Dam front now
+has its 21 axes, risalit, seven entrance arches and two storey groups; De
+Balie is pale stone with stepped gables (the photo shows two storeys over a
+basement); the Concertgebouw has its three arched doors. Vincentiuskerk
+was demolished in 1989. The "Zuiderkerk Tower" POI is covered by the
+church model.
+
 ## Facade comparison gate; Thomaskerk and Vrijburg; queue triage (2026-10-10)
 
 Het Pakhuis passed review with scattered windows on a front the photo shows
