@@ -1031,6 +1031,16 @@ class GameRouteRuntime {
   }
 
   _checkShareLink() {
+    if (new URLSearchParams(window.location.search).get('ferry') === 'F3') {
+      this._overlay.store.patchPrefs({ cityId: 'amsterdam', travelMode: 'car', viewMode: 'chase' }, this._overlayZoom());
+      this._ferryPreviewRef = 'F3';
+      this._launchPoiRoute(
+        { id: 'ferry-3980940', name: 'Centraal Station ferry terminal', lat: 52.380606, lng: 4.899643 },
+        { id: 'ferry-3980896', name: 'Buiksloterweg ferry terminal', lat: 52.382157, lng: 4.902990 },
+        { explicitDestination: true },
+      );
+      return;
+    }
     const hash = window.location.hash;
     if (!hash.startsWith('#race=')) return;
     const parts = hash.slice(6).split(',').map(Number);
@@ -1110,6 +1120,15 @@ class GameRouteRuntime {
       this.player.accel *= PLAYER_CAR_ACCEL_MULT;
       this.player.brakeForce *= PLAYER_CAR_BRAKE_MULT;
       this.player.liftOffBraking = PLAYER_CAR_LIFT_OFF_BRAKING;
+    }
+    if (this._ferryPreviewRef && this.travelMode === 'car') {
+      const link = this.track.segments.find(segment => segment.ferryLink?.ref === this._ferryPreviewRef)?.ferryLink;
+      if (link) {
+        this.player.x = link.from.land.x;
+        this.player.y = link.from.land.y;
+        this.player.angle = Math.atan2(link.from.y - link.from.land.y, link.from.x - link.from.land.x);
+      }
+      this._ferryPreviewRef = null;
     }
     this.cars.push(this.player);
     this.learnedStopNames = new Set();
@@ -1265,6 +1284,14 @@ class GameRouteRuntime {
         this.loadingProgress = 0.3;
         segments = await this.osmLoader.buildRoadSegmentsAsync(ways, lat, lng, stale);
         if (stale()) return;
+        if (this.travelMode === 'car' && this.osmLoader.ferryNetwork) {
+          const loader = this.osmLoader;
+          const project = (lat, lng) => ({
+            x: loader._lastOffsetX + (lng - loader._lastCenterLng) * 111320 * Math.cos(loader._lastCenterLat * Math.PI / 180) * PIXELS_PER_METER,
+            y: loader._lastOffsetY - (lat - loader._lastCenterLat) * 111320 * PIXELS_PER_METER,
+          });
+          segments.push(...CanalRecallFerry.ferrySegments(loader.ferryNetwork, segments, project));
+        }
 
         if (segments.length === 0) {
           this.loadingMessage = 'Could not build the canal network.';
