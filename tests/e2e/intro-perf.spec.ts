@@ -25,16 +25,33 @@ for (const [run, intro] of [true, false, true, false].entries()) {
       requestAnimationFrame(tick);
       // Phase marks: when the flight object appears and when it is cleared.
       w.__phase = {};
-      const poll = () => { const g = w.canalRecallGame; if (g) { if (g._intro && !w.__phase.flightStart) w.__phase.flightStart = performance.now(); if (w.__phase.flightStart && !g._intro && !w.__phase.flightEnd) w.__phase.flightEnd = performance.now(); } requestAnimationFrame(poll); };
+      // Pop-in proxy: basemap tiles still loading when the flight starts and
+      // when it lands, and how long after landing until the map is idle.
+      const loading = (g: any) => { const map = g.vectorMap?.map; if (!map?.style) return null; let n = 0; for (const cache of Object.values(map.style.sourceCaches || map.style.tileManagers || {}) as any[]) for (const tile of Object.values(cache._tiles || {}) as any[]) if (tile.state === 'loading' || tile.state === 'reloading') n++; return n; };
+      const poll = () => { const g = w.canalRecallGame; if (g) {
+        if (g._intro && !w.__phase.flightStart) { w.__phase.flightStart = performance.now(); w.__phase.loadingAtStart = loading(g); }
+        if (w.__phase.flightStart && !g._intro && !w.__phase.flightEnd) { w.__phase.flightEnd = performance.now(); w.__phase.loadingAtLanding = loading(g); g.vectorMap.map.once('idle', () => { w.__phase.idleAfterLanding = Math.round(performance.now() - w.__phase.flightEnd); }); }
+      } requestAnimationFrame(poll); };
       requestAnimationFrame(poll);
     }, intro);
     let bytes = 0;
     page.on('response', async r => { const len = Number(r.headers()['content-length'] || 0); bytes += len; });
+    const profiling = !!process.env.PERF_PROFILE && intro;
+    if (profiling) { await cdp.send('Profiler.enable'); await cdp.send('Profiler.setSamplingInterval', { interval: 500 }); }
     await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false });
+    if (profiling) await cdp.send('Profiler.start');
     const submitted = await page.evaluate(() => performance.now());
     const bytesAtSubmit = bytes;
     await page.waitForFunction(() => { const g = (window as any).canalRecallGame; return g.state === 4 && !g._intro; }, null, { timeout: 180_000, polling: 100 });
     const inControl = await page.evaluate(() => performance.now());
+    if (profiling) {
+      await page.waitForFunction(() => !!(window as any).__phase?.flightStart, null, { timeout: 60_000 });
+      const { profile } = await cdp.send('Profiler.stop') as any;
+      const self = new Map<string, number>(), dt = new Map<number, number>();
+      profile.samples.forEach((id: number, i: number) => dt.set(id, (dt.get(id) ?? 0) + (profile.timeDeltas[i] ?? 0) / 1000));
+      for (const node of profile.nodes) { const f = node.callFrame; const key = `${f.functionName || '(anon)'} ${f.url.split('/').pop()}:${f.lineNumber}`; self.set(key, (self.get(key) ?? 0) + (dt.get(node.id) ?? 0)); }
+      console.log('HOT', JSON.stringify([...self].sort((a, b) => b[1] - a[1]).slice(0, 30).map(([fn, ms]) => `${ms.toFixed(0)} ${fn}`)));
+    }
     await page.waitForTimeout(3000); // the first seconds of riding stream the neighbourhood
     const raw = await page.evaluate(([from, to]) => {
       const w = window as any;
@@ -42,7 +59,7 @@ for (const [run, intro] of [true, false, true, false].entries()) {
       const longs = w.__long.filter((e: any) => inWin(e.t));
       const frames = w.__frames.filter((f: any) => inWin(f.t)).map((f: any) => f.d).sort((a: number, b: number) => b - a);
       const ph = w.__phase;
-      const phase = { toFlight: ph.flightStart ? Math.round(ph.flightStart - from) : null, flight: ph.flightStart && ph.flightEnd ? Math.round(ph.flightEnd - ph.flightStart) : null,
+      const phase = { loadingAtStart: ph.loadingAtStart, loadingAtLanding: ph.loadingAtLanding, idleAfterLanding: ph.idleAfterLanding, toFlight: ph.flightStart ? Math.round(ph.flightStart - from) : null, flight: ph.flightStart && ph.flightEnd ? Math.round(ph.flightEnd - ph.flightStart) : null,
         longBeforeFlight: Math.round(longs.filter((e: any) => !ph.flightStart || e.t < ph.flightStart).reduce((s: number, e: any) => s + e.d, 0)),
         longInFlight: Math.round(longs.filter((e: any) => ph.flightStart && e.t >= ph.flightStart && (!ph.flightEnd || e.t < ph.flightEnd)).reduce((s: number, e: any) => s + e.d, 0)) };
       return { phase, longCount: longs.length, longTotal: Math.round(longs.reduce((s: number, e: any) => s + e.d, 0)), worstFrames: frames.slice(0, 5).map(Math.round), over100: frames.filter((d: number) => d > 100).length };
