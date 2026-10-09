@@ -26,6 +26,7 @@ import {
   type BuildingFeature, type Bounds, type LandmarkBuildingQuery
 } from './buildingTileSource.js';
 import { tileFor, tileKey, tilesCovering } from './slippyTiles.js';
+import { introLandingArea } from './game/introFlight.js';
 import { citywideBuildingGroundPrior, citywideBuildingRoofPrior, citywideBuildingWallPrior, materialWallDisplayPrior } from './cityAppearancePalette.js';
 
 type GeoJsonSource = {
@@ -258,11 +259,21 @@ export class BuildingTileStreamer {
 
   /** Warm a fixed landing neighbourhood during the intro, without chasing its wide camera. */
   preloadAt(lng: number, lat: number): void {
-    const signature = `${lng.toFixed(5)}/${lat.toFixed(5)}`;
+    this.preloadArea(introLandingArea(null, [lng, lat]));
+  }
+
+  /** The start flight's landing: the driving view the map showed before it
+   *  took off when that view contains the rider, else a box round the rider. */
+  preloadLanding(view: Bounds | null, lng: number, lat: number): void {
+    this.preloadArea(introLandingArea(view, [lng, lat]));
+  }
+
+  /** Hold exactly this area while suspended (see `introLandingArea`). */
+  preloadArea(area: Bounds): void {
+    const signature = [area.west, area.south, area.east, area.north].map(v => v.toFixed(5)).join('/');
     if (!this.available || !this.attached || this.disposed || signature === this.preloadSignature) return;
     this.preloadSignature = signature;
-    const radiusM = 600, dy = radiusM / 111320, dx = dy / Math.cos(lat * Math.PI / 180);
-    this.preloadBounds = { west: lng - dx, east: lng + dx, south: lat - dy, north: lat + dy };
+    this.preloadBounds = { ...area };
     this.update();
   }
 
