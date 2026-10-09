@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## Two churches under the raised bar (2026-10-09)
+
+After the held batch, the churches lane was told "recognisable next to the
+photo or skip". It installed Sint Olofskapel (massing rebuilt from BAG
+corners because 3DBAG's roof slabs were wrong; pointed tracery, 1644 portal,
+bell turret) and Nassaukerk (3DBAG shell, but the needle-like 3DBAG tower
+replaced with the photo's louvred shaft and green cap; street gable with
+three arched windows and canopy), withdrew Thomaskerk itself, and skipped
+Muiderkerk/Elthetokerk/Vincentiuskerk. The integrator viewed all sheets and
+held Koningskerk (grey shell, curved concrete grid hall missing).
+
 ## Large-building tier replaces bare boxes (2026-10-09)
 
 The user spotted big flat-coloured boxes (e.g. the Anne Frank House museum

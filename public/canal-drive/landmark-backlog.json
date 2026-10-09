@@ -21,9 +21,9 @@
     }
   ],
   "counts": {
-    "manual-model": 235,
+    "manual-model": 237,
     "procedural-kit": 15,
-    "pending": 131
+    "pending": 129
   },
   "destinations": [
     {
@@ -2237,8 +2237,9 @@
       "type": "landmark",
       "queueRank": 173,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "sint-olofskapel",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1291547717",
@@ -2568,8 +2569,9 @@
       "type": "landmark",
       "queueRank": 199,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "nassaukerk",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1363105980",

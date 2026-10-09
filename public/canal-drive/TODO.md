@@ -115,6 +115,14 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   handlers, led by inventory trees rebuilding (`inventory-trees-source.js`),
   then road labels (`road-network.js` `drawLabels`). Gate those on real view
   change.
+- **Unmerged landmark lanes awaiting rework (2026-10-09)**: integrator
+  viewed all 9 sheets; none installed. `landmark/historic-20261009c`
+  (Bellevue, West India House, West Indian Warehouse, Compagnietheater,
+  Rijksakademie, KIT) and `landmark/nightlife-20261009c` (Sea Palace,
+  Club Panama, Toekomstmuziek) are 3DBAG shells + generic windows missing
+  each building's signature (Bellevue lettering, pagoda upswept roofs,
+  PANAMA sign, KIT tower stages). Closest to the bar: Club Panama,
+  Compagnietheater, West India House. Koningskerk held for its grid hall.
 - **Large-tier follow-ups** (`src/canalRecall/largeBuildingTier.ts`,
   ranked list via `npm run audit:large-tier`): untuned buildings show a
   uniform window grid; tune next Roeterseiland/LLC, VU, Benno Premselahuis,
