@@ -472,8 +472,12 @@ class Game {
     const previousPlayerPosition = { x: this.player.x, y: this.player.y };
     this.sound.resume();
     this.player.handleInput(this.input);
-    this.player.update(dt, this.track);
-    if (this.travelMode === 'car' || this.travelMode === 'transit') {
+    const ferry = window.CanalRecallFerryTravel;
+    const onFerry = ferry.beginFrame(this);
+    this.player.update(dt, onFerry ? ferry.motionTrack(this) : this.track);
+    if (onFerry) {
+      ferry.afterMove(this, previousPlayerPosition);
+    } else if (this.travelMode === 'car' || this.travelMode === 'transit') {
       const guardRoad = (x, y) => (this.track.getGuardRoad
         ? this.track.getGuardRoad(x, y, this.player.angle)
         : this.track.getNearestRoad(x, y, this.player.angle));
@@ -569,8 +573,10 @@ class Game {
     if (this._zoomBadgeTimer > 0) this._zoomBadgeTimer -= dt;
     if (this._rerouteTimer > 0) this._rerouteTimer -= dt;
     this._updateLiveRouteLine();
-    this._updateBridgeQuiz(previousPlayerPosition);
-    this._updateCanalQuiz(dt);
+    if (!this.player.ferryOrigin) {
+      this._updateBridgeQuiz(previousPlayerPosition);
+      this._updateCanalQuiz(dt);
+    }
 
     this._updateLandmarks(dt);
     this._updateBoundaryCollisions();
@@ -581,7 +587,7 @@ class Game {
     this.camera.update(this.player, this._cameraDt || dt);
     this.sound.update(this.player.speed, this.player.throttle, this.player.maxSpeed);
 
-    if (this.track.getDistanceToFinish(this.player.x, this.player.y) < FINISH_RADIUS) {
+    if (!this.player.ferryOrigin && this.track.getDistanceToFinish(this.player.x, this.player.y) < FINISH_RADIUS) {
       if (typeof this._tryAdvanceTransitLeg === 'function' && this._tryAdvanceTransitLeg()) {
         this.player.finished = false;
         return;

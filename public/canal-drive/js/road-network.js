@@ -26,13 +26,15 @@ const routingSegmentsOf = segments => segments.map((segment, segmentIndex) => ({
 }));
 
 class RoadNetwork {
-  static prepareRoutingGraph(segments, cancelled) {
-    return GRAPH.buildRoadGraphAsync(routingSegmentsOf(segments),
+  static async prepareRoutingGraph(segments, cancelled) {
+    const land = segments.filter(s => s.type !== 'ferry');
+    const graph = await GRAPH.buildRoadGraphAsync(routingSegmentsOf(land),
       { mergeSize: 18, junctionStitchRadius: JUNCTION_STITCH_RADIUS }, { cancelled });
+    return window.CanalRecallFerry.connectFerryGraph(graph, segments);
   }
 
   static prepareSurfaceIndex(segments, routingGraph, cancelled) {
-    return SURFACE.buildRoadSpatialIndexAsync(segments, ROAD_GRID_CELL, routingGraph.connectors || [], { cancelled });
+    return SURFACE.buildRoadSpatialIndexAsync(segments.filter(s => s.type !== 'ferry'), ROAD_GRID_CELL, routingGraph.connectors || [], { cancelled });
   }
 
   constructor(segments, startPoint, finishPoint, tiles, routingGraph = null, surfaceIndex = null) {
@@ -108,7 +110,7 @@ class RoadNetwork {
     // Surface and router agree: every gap the routing graph bridges between
     // two ways (merged ends, stitched T-junctions) is rideable too.
     const connectors = this.segments.length ? (this._routingGraph().connectors || []) : [];
-    this.roadIndex = SURFACE.buildRoadSpatialIndex(this.segments, ROAD_GRID_CELL, connectors);
+    this.roadIndex = SURFACE.buildRoadSpatialIndex(this.segments.filter(s => s.type !== 'ferry'), ROAD_GRID_CELL, connectors);
   }
 
   _computeBounds() {
@@ -319,10 +321,10 @@ class RoadNetwork {
   // each candidate it tries.
   _routingGraph() {
     if (this._graphCache) return this._graphCache;
-    this._graphCache = GRAPH.buildRoadGraph(
-      routingSegmentsOf(this.segments),
+    this._graphCache = window.CanalRecallFerry.connectFerryGraph(GRAPH.buildRoadGraph(
+      routingSegmentsOf(this.segments.filter(s => s.type !== 'ferry')),
       { mergeSize: 18, junctionStitchRadius: JUNCTION_STITCH_RADIUS }
-    );
+    ), this.segments);
     return this._graphCache;
   }
 

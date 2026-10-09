@@ -211,6 +211,7 @@ export interface Renderer {
   drawSkidMarks(particles: ParticleSystem, camera: Camera): void;
   drawParticles(particles: ParticleSystem, camera: Camera): void;
   /** The boat glyph. */
+  drawFerry?(car: unknown, camera: Camera): void;
   drawCar(car: unknown, camera: Camera): void;
   /** The bike/car glyph. */
   drawPlayerCar(car: unknown, camera: Camera): void;
@@ -222,6 +223,9 @@ export interface VectorMap {
   setExtractRoot?(path: string): void;
   sync(camera: Camera, loader: OsmLoader, canvas: HTMLCanvasElement): void;
   setPlayerBike(player: unknown, loader: OsmLoader, visible: boolean, zoomScale?: number): void;
+  setFerryTerminals?(track: Track, loader: OsmLoader): void;
+  setPlayerFerry?(player: unknown, loader: OsmLoader, visible: boolean): void;
+  isPlayerFerryReady?(): boolean;
   setPlayerBoat(player: unknown, loader: OsmLoader, visible: boolean): void;
   setPlayerTransit?(player: unknown, loader: OsmLoader, visible: boolean, underground?: boolean): void;
   isPlayerBikeReady(): boolean;

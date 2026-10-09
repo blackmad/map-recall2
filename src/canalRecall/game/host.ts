@@ -31,6 +31,8 @@ import type { Bridge, BridgeCrossing, Landmark, LandmarkNotice, Neighborhood, Wo
 
 /** The player's boat or car. */
 export interface Vehicle extends WorldPoint {
+  ferryOrigin?: import('../ferry/network').Terminal | null;
+  ferryDestinations?: string;
   angle: number;
   speed: number;
   vx: number;
