@@ -1,0 +1,89 @@
+{
+  "modelId": "posthoornkerk",
+  "scope": "F1 distinct upper front crowns only",
+  "status": "frozen CPU/check draft; independent re-review and gallery/game pending",
+  "before": {
+    "path": "artifacts/posthoornkerk-repair/before/posthoornkerk-d232.glb",
+    "sha256": "d23292b9424df6587c1dc03c71cc67a77bc8191b4c95cff5709bd1563572a2ae",
+    "triangles": 38836,
+    "bytes": 443700,
+    "failure": "Identical generic post cages incorrectly erased documented difference between spire crowns."
+  },
+  "after": {
+    "path": "artifacts/posthoornkerk-draft/posthoornkerk.glb",
+    "sha256": "2922c6cd63110a204946a96a198cf7d4812ed33f1098cba44b3a9c2256443905",
+    "triangles": 39132,
+    "bytes": 448504,
+    "textures": 0,
+    "triangleBudget": 40000,
+    "budgetRemaining": 868
+  },
+  "changes": [
+    "Replaced clock tower generic cage with eight open pointed frames around existing needle.",
+    "Replaced non-clock generic cage with four slate gabled shoulders, pale pointed framing and narrow dark slits.",
+    "Retained primary tapers, needle geometry, native footprint, forecourt, aperture assemblies, crossing spire and64m total."
+  ],
+  "sources": [
+    {
+      "path": "raw/front-drawing.jpg",
+      "date": "undated",
+      "role": "Different crown framing silhouettes"
+    },
+    {
+      "path": "raw/roof-context-2014.webp",
+      "date": "2014-09",
+      "role": "Clear whole-roof individual crowns"
+    },
+    {
+      "path": "processed/02147.jpg",
+      "date": "2025-06-16",
+      "role": "Current family crosscheck; small crown detail"
+    },
+    {
+      "path": "raw/operator-history-languages.html",
+      "role": "Explicit statement both towers, especially spires, differ"
+    },
+    {
+      "path": "raw/municipal-address-history.html",
+      "role": "Published64m front-tower height"
+    }
+  ],
+  "checks": {
+    "command": "node --import tsx scripts/check-posthoornkerk-geometry.ts",
+    "authored": "pass",
+    "decodedCompressed": "pass",
+    "perPhase": {
+      "pointedClockFrameFirstHits": 8,
+      "openClockCrownFirstHits": 8,
+      "nonClockGableFirstHits": 8,
+      "outwardVerticalGableFaces": 4
+    },
+    "retained": [
+      "Fractional principal/aisle/transept/rear chapel glazing first hits",
+      "Entrance first hit",
+      "Open forecourt",
+      "Native bounds and exact suppression parent",
+      "All roof surfaces retain original upward winding threshold; four newly authored vertical crown walls have separate outward winding test"
+    ]
+  },
+  "CPUViews": [
+    "artifacts/posthoornkerk-repair/current/posthoornkerk-cpu-front.png",
+    "artifacts/posthoornkerk-repair/current/posthoornkerk-cpu-side.png",
+    "artifacts/posthoornkerk-repair/current/posthoornkerk-cpu-rear.png",
+    "artifacts/posthoornkerk-repair/current/posthoornkerk-cpu-crowns-front.png",
+    "artifacts/posthoornkerk-repair/current/posthoornkerk-cpu-crowns-side.png"
+  ],
+  "sourceComparison": "Focused front shows pointed open clock framing versus broad solid non-clock gables/slits. Full front/side preserve other facade and roof families. Orthographic crossing tower projection remains misleading about relative screen heights; actual unchanged front64m/crossing57.6m verified.",
+  "limitations": [
+    "Individual crown stage dimensions remain photographic approximations, not surveyed measurements.",
+    "Native linear framing simplifies fine curves/ironwork; no additional ornament expansion.",
+    "This repair author performed CPU comparison; independent re-review required.",
+    "No gallery/GPU/live game, resident-neighbor, destination/pin/card or performance acceptance in this leaf task."
+  ],
+  "ownedFiles": [
+    "scripts/landmarks/posthoornkerk-builder.ts",
+    "scripts/check-posthoornkerk-geometry.ts",
+    "scripts/landmarks/posthoornkerk-research.json",
+    "scripts/landmarks/posthoornkerk-repair-review.json"
+  ]
+}

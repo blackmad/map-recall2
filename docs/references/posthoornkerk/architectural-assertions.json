@@ -1,0 +1,66 @@
+[
+  {
+    "part": "whole church",
+    "assertion": "Three-aisled early Gothic basilica, double nave galleries, trefoil rear and crossing tower.",
+    "source": "register.html",
+    "date": "register text; registered 1974-07-23",
+    "confidence": "high",
+    "geometry": "Three roof levels; separate rear lobes and octagonal crossing tower"
+  },
+  {
+    "part": "street front",
+    "assertion": "Twin-tower front completed in 1889; later than the 1860\u20131863 church body.",
+    "source": "register.html",
+    "date": "1860\u20131863 / 1889",
+    "confidence": "high",
+    "geometry": "Different lower front and tall rear transepts"
+  },
+  {
+    "part": "street front",
+    "assertion": "Tall central triple light, single tower lancets, triple belfry lights, clock on left tower; lower central portal under steep gable.",
+    "source": "processed/02147.jpg + processed/02146.jpg",
+    "date": "2025-06-16",
+    "confidence": "high visible upper fronts; trees partly occlude portal",
+    "geometry": "Five full tall front lights, pointed portal, clock gables, source pale-brick patterns"
+  },
+  {
+    "part": "roof",
+    "assertion": "Grey steep slate spires; front spires break at open upper crowns; eight-sided crossing spire is continuous. Four small dormers along each long nave roof side.",
+    "source": "raw/roof-context-2014.webp + raw/roof-aerial-2026.jpg",
+    "date": "2014-09 / explicit 2026 ortho layer",
+    "confidence": "high silhouette/layout; needle dimensions approximate",
+    "geometry": "Separate two-stage twin spires and large octagonal rear spire"
+  },
+  {
+    "part": "public entrance",
+    "assertion": "Iron fence, two stone gate piers and recessed front forecourt separate portal from pavement.",
+    "source": "processed/02146.jpg + raw/front-2017.webp",
+    "date": "2025-06-16 / 2017-05",
+    "confidence": "high assembly; gate geographic point approximate within 2m",
+    "geometry": "Thin rail with gate opening detail; overhead forecourt probes remain empty"
+  },
+  {
+    "part": "rear neighbor",
+    "assertion": "Adjoining presbytery is an independent current BAG parent, not part of the church parent footprint.",
+    "source": "raw/bag-area.json + processed/02487.jpg",
+    "date": "retrieved 2026-10-08 / image2025-06-16",
+    "confidence": "high identity; rear tree occlusion",
+    "geometry": "Do not suppress 0363100012253921"
+  },
+  {
+    "part": "native roof levels",
+    "assertion": "3DBAG supports nave eave about20m and ridge27m above local terrain; side roofs about13.5\u201316.7m. Tall needle spires have incomplete survey capture and poor fitted planes.",
+    "source": "raw/3dbag.json",
+    "date": "retrieved 2026-10-08; AHN5 attributes",
+    "confidence": "high broad eave/ridge levels; do not treat b3 maximum as entire building height",
+    "geometry": "Original explicit supported roof profiles, no imported mesh or roof plates"
+  },
+  {
+    "part": "historical comparison",
+    "assertion": "Undated operator elevation drawing and archival roof photo agree with current main front/three-tower roof families; 2025 front glazing now has obvious rectangular transoms.",
+    "source": "raw/front-drawing.jpg + raw/historic-front-operator.jpg + processed/02147.jpg",
+    "date": "historical images undated / 2025-06-16",
+    "confidence": "high family consistency; historic exact ornament proposal not accepted blindly",
+    "geometry": "Current window transoms take precedence; small sculpture geometrically simplified"
+  }
+]
