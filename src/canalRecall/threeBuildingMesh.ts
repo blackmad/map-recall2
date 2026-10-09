@@ -11,6 +11,7 @@
 //     hidden by touching a few bytes instead of rebuilding the mesh.
 // Positions are metres east / north / up from a caller-supplied origin.
 
+import { sharedWallCuts, subtractWallCuts, subtractConvex, polygonArea, type Point2 } from './coplanarSurfaces.js';
 import { recipeBayOpenings, type Openings } from './facadeOpenings.js';
 import { streetWallBuilding, frontageLayoutScale, type StreetFacadeContext } from './streetFacadeRendering.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
@@ -341,7 +342,7 @@ export function wallRuns(rings: readonly (readonly Edge[])[], hidden: (e: Edge) 
  * `mode: 'extras'` builds only the facade extras (facadeExtras.ts) of these buildings: they are a
  * separate, near-camera chunk, too many triangles to draw across the whole resident city.
  */
-export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, mode: 'walls' | 'extras' = 'walls', streets?: Float32Array): Chunk {
+export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, mode: 'walls' | 'extras' = 'walls', streets?: Float32Array, context: readonly MeshBuilding[] = []): Chunk {
   type Prepared = { b: MeshBuilding; edges: Edge[]; top: number };
   const prepared: Prepared[] = [];
   const rings: Edge[][][] = [];
@@ -361,6 +362,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       list.push({ top: b.heightM, base: b.minHeightM });
     }
   }
+  const contextPrepared = context.map(b => ({ b, edges: b.polygons.flatMap(p => p.flatMap((ring, i) => ringEdges(ring, origin, i > 0))) }));
+  const wallCuts = sharedWallCuts([...prepared, ...contextPrepared]);
   const hiddenByNeighbour = (e: Edge, b: MeshBuilding) => {
     const others = shared.get(`${edgeKey(e.x1, e.y1)}>${edgeKey(e.x0, e.y0)}`);
     return !!others && others.some(o => o.top >= b.heightM && o.base <= b.minHeightM);
@@ -388,7 +391,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
   };
 
   const CORNICE_STYLES = new Set<string>(['canal', 'c19', 'school']);
-  type Quad = { accent: [number, number, number]; e: Edge; u0: number; u1: number; v1: number; layer: number; z0: number; z1: number; tint: [number, number, number, number]; along0: number; along1: number };
+  type Quad = { accent: [number, number, number]; e: Edge; u0: number; u1: number; v1: number; v0?: number; layer: number; z0: number; z1: number; tint: [number, number, number, number]; along0: number; along1: number };
   const quadsByBuilding: Array<{ b: MeshBuilding; quads: Quad[]; walls: number; roof: StreetCrownTri[]; lid: LidMesh | null; sign: SignTri[] }> = [];
   let signTotal = 0;
   let quadTotal = 0, wallTotal = 0, roofTotal = 0, lidVerts = 0, lidIndices = 0;
@@ -471,6 +474,12 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         if (layout.storeys > 0) quads.push({ e, u0: s / bw, u1: (s + e.len) / bw, v1: layout.storeys, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: top, tint, along0: 0, along1: 1 });
       });
     }
+    // Clip conflicting wall rectangles while retaining their original UV grid.
+    const visibleQuads = quads.flatMap(q => subtractWallCuts(q, wallCuts.get(q.e) ?? [], (p, r) => {
+      const u = (a: number) => p.u0 + (p.u1 - p.u0) * (a - p.along0) / (p.along1 - p.along0);
+      const v = (z: number) => (p.v0 ?? 0) + (p.v1 - (p.v0 ?? 0)) * (z - p.z0) / (p.z1 - p.z0);
+      return { ...p, ...r, u0: u(r.along0), u1: u(r.along1), v0: v(r.z0), v1: v(r.z1) };
+    }));
     let roof: StreetCrownTri[] = cornice;
     if (b.roof) {
       roof = roofTrianglesForOutline(b.polygons[0]?.[0] ?? [], origin, b.roof.plan, b.heightM, b.roof.dims, kxLocal);
@@ -496,13 +505,55 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       }
       sign.push(...extraSink.tris);
     }
-    if (!walled) { quads.length = 0; roof = []; }
+    if (!walled) { quads.length = 0; visibleQuads.length = 0; roof = []; }
     signTotal += sign.length;
-    quadsByBuilding.push({ b, quads, walls, roof, lid, sign });
-    quadTotal += quads.length; wallTotal += walls; roofTotal += roof.length;
+    quadsByBuilding.push({ b, quads: visibleQuads, walls, roof, lid, sign });
+    quadTotal += visibleQuads.length; wallTotal += walls; roofTotal += roof.length;
     if (lid) { lidVerts += lid.xy.length / 2; lidIndices += lid.index.length; }
   }
 
+  // Equal-height flat tops can overlap even when neither footprint contains the
+  // other (Centraal's mapped parts). Give the intersection one stable owner.
+  const lids = [
+    ...quadsByBuilding.filter(x => x.lid).map(x => ({...x, contextOnly:false, target:x})),
+    ...context.filter(b=>b.lid && (!b.roof || b.roof.plan.keepLid)).map(b => ({b,lid:lidMesh(b,origin),contextOnly:true,target:null})),
+  ].filter(x=>x.lid).sort((a,b)=>a.b.id.localeCompare(b.b.id));
+  type PriorLid = { z: number; tri: Point2[]; box: number[] };
+  const prior = new Map<string, PriorLid[]>();
+  const lidCells = (box: number[]) => {
+    const keys: string[] = [];
+    for(let x=Math.floor(box[0]/25);x<=Math.floor(box[2]/25);x++) for(let y=Math.floor(box[1]/25);y<=Math.floor(box[3]/25);y++) keys.push(`${x},${y}`);
+    return keys;
+  };
+  lidVerts = 0; lidIndices = 0;
+  for (const item of lids) {
+    const original = item.lid!, xy: number[] = [], index: number[] = [];
+    let changed = false;
+    for (let k = 0; k < original.index.length; k += 3) {
+      const tri = original.index.slice(k, k + 3).map(i => [original.xy[i * 2], original.xy[i * 2 + 1]] as Point2);
+      const box = [Math.min(...tri.map(p=>p[0])), Math.min(...tri.map(p=>p[1])), Math.max(...tri.map(p=>p[0])), Math.max(...tri.map(p=>p[1]))];
+      if(item.contextOnly) {
+        const record={z:item.b.heightM,tri,box};
+        for(const cell of lidCells(box)){const key=`${Math.floor(item.b.heightM/.002)}:${cell}`;const bucket=prior.get(key)??[];bucket.push(record);prior.set(key,bucket);}
+        continue;
+      }
+      let pieces = [tri];
+      for (const other of new Set(lidCells(box).flatMap(key=>[-1,0,1].flatMap(dz=>prior.get(`${Math.floor(item.b.heightM/.002)+dz}:${key}`) ?? [])))) {
+        if (Math.abs(other.z-item.b.heightM)>.002 || box[0]>=other.box[2] || box[2]<=other.box[0] || box[1]>=other.box[3] || box[3]<=other.box[1]) continue;
+        pieces = pieces.flatMap(p => subtractConvex(p, other.tri));
+      }
+      if(pieces.length!==1 || pieces[0]!==tri) changed=true;
+      for (const p of pieces) {
+        if (polygonArea(p)<1e-6) continue;
+        const start=xy.length/2; xy.push(...p.flat());
+        for(let j=1;j<p.length-1;j++) index.push(start,start+j,start+j+1);
+      }
+      // Also catch overlapping polygons/triangles within one mapped feature.
+      const record={z:item.b.heightM,tri,box};
+      for(const cell of lidCells(box)) { const key=`${Math.floor(item.b.heightM/.002)}:${cell}`; const bucket=prior.get(key) ?? [];bucket.push(record);prior.set(key,bucket); }
+    }
+    if(item.target){item.target.lid=changed?{xy,index}:original;lidVerts+=item.target.lid.xy.length/2;lidIndices+=item.target.lid.index.length;}
+  }
   const vertexCount = quadTotal * 4 + roofTotal * 3 + lidVerts + signTotal * 3;
   const positions = new Float32Array(vertexCount * 3), uvs = new Float32Array(vertexCount * 2);
   const layers = new Uint8Array(vertexCount), tints = new Uint8Array(vertexCount * 4), accents = new Uint8Array(vertexCount * 4);
@@ -518,7 +569,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       const ax = e.x0 + (e.x1 - e.x0) * quad.along0, ay = e.y0 + (e.y1 - e.y0) * quad.along0;
       const bx = e.x0 + (e.x1 - e.x0) * quad.along1, by = e.y0 + (e.y1 - e.y0) * quad.along1;
       const corners: Array<[number, number, number, number, number]> = [
-        [ax, ay, quad.z0, quad.u0, 0], [bx, by, quad.z0, quad.u1, 0], [bx, by, quad.z1, quad.u1, quad.v1], [ax, ay, quad.z1, quad.u0, quad.v1],
+        [ax, ay, quad.z0, quad.u0, quad.v0 ?? 0], [bx, by, quad.z0, quad.u1, quad.v0 ?? 0], [bx, by, quad.z1, quad.u1, quad.v1], [ax, ay, quad.z1, quad.u0, quad.v1],
       ];
       for (const [x, y, z, u, vv] of corners) {
         positions[v * 3] = x; positions[v * 3 + 1] = y; positions[v * 3 + 2] = z;

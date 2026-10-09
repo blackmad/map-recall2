@@ -111,7 +111,7 @@ export function paleMasonryAccents(c: ExtraContext, s: ExtraSink): void {
 /** A connected pale entrance assembly follows the quiet painted door rather than inventing a leaf. */
 export function restrainedDoorSurround(c: ExtraContext, s: ExtraSink, r: number): void {
   const d = doorSpan(c);
-  if (!d || c.shopfront || !c.recipe || c.recipe.family !== 'masonry') return;
+  if (!d || c.shopfront || !c.recipe || c.recipe.family !== 'masonry' || c.recipe.windowHead === 'segmental') return;
   const pale = c.recipe.frameHex ?? WHITE;
   const l = d.x - d.hw, right = d.x + d.hw, top = d.z1 + .025;
   const cap = Math.min(c.base + c.layout.groundM - .04, top + .10);
@@ -292,7 +292,7 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
   } },
   { id: 'white-lintels', styles: CANAL, p: { canal: 0.4, c19: 0.12 }, wide: true, group: 'window-head', build: (c, s, r) => {
     // A white flat arch over each window, with a keystone on the grander houses.
-    const o = openingsOf(c); if (o.ribbon) return;
+    const o = openingsOf(c); if (o.ribbon || c.recipe?.windowHead === 'segmental') return;
     const restrained = !!c.recipe && c.recipe.trimDensity !== 'ornate';
     const key = !restrained && r < 0.55, n = storeysThatFit(c, s, key ? 8 : 4, 5);
     for (let k = 0; k < n; k++) for (const w of windowSpans(c, k)) {
@@ -303,7 +303,7 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
   } },
   { id: 'stucco-hoods', styles: CANAL, p: { c19: 0.5, canal: 0.12 }, wide: true, group: 'window-head', build: (c, s, r) => {
     // 19th-century stucco hood mouldings: a cornice over each window with a sloped top.
-    if (openingsOf(c).ribbon) return;
+    if (openingsOf(c).ribbon || c.recipe?.windowHead === 'segmental') return;
     const restrained = !!c.recipe && c.recipe.trimDensity !== 'ornate';
     const hex = r < 0.6 ? WHITE : CREAM, n = storeysThatFit(c, s, 6, 5);
     for (let k = 0; k < n; k++) for (const w of windowSpans(c, k)) {
@@ -314,7 +314,7 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
   } },
   { id: 'white-window-frames', styles: CANAL, p: { canal: 0.3, c19: 0.35 }, wide: true, build: (c, s) => {
     // Painted frames standing proud of the brick: jambs and head round every window.
-    if (openingsOf(c).ribbon) return;
+    if (openingsOf(c).ribbon || c.recipe?.windowHead === 'segmental') return;
     const groundCost = windowSpans(c, -1).length * 12;
     const n = Math.max(0, Math.min(5, c.layout.storeys, Math.floor((s.room() - groundCost) / Math.max(12, windowSpans(c, 0).length * 12))));
     for (let k = -1; k < n; k++) for (const w of windowSpans(c, k)) {

@@ -33,7 +33,7 @@ for (const f of features) {
 }
 for (const look of ['photo','cartoon','storybook','procedural','untextured'] as const) {
   const chunk=buildFeatureChunk(features,look);
-  assert.equal(chunk.buildingCount,376);assert.equal(chunk.ranges.length,376);
+  assert.equal(chunk.buildingCount,376);assert.equal(chunk.ranges.filter(r=>!r.id.startsWith('allotment-garden:')).length,376);
   assert.ok(chunk.ranges.every(r=>r.start+r.count<=chunk.vertexCount));
   assert.equal(buildFeatureChunk(features,look,'extras').vertexCount,0,'houses have one mesh owner');
   assert.equal(buildFeatureChunk(features,look,'coarse').buildingCount,376);
