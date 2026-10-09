@@ -230,6 +230,8 @@
       if (!building.footprint) return null;
       const places = this.contained(building.footprint);
       if (!places.length) return null;
+      const title = places.findIndex((row) => row[1] === building.name || row[5] === "a mall");
+      if (title > 0) places.unshift(...places.splice(title, 1));
       const summaries = places.slice(0, 8).map((row) => `${row[1]} is mapped as ${row[5] || row[4]}${row[6] ? ` at ${row[6]}` : ""}.` + (row[8] ? ` ${row[8]}` : ""));
       const paragraphs = summaries.map((summary, i) => summary + (validPoiWebsite(places[i][7]) ? `
 Website: ${validPoiWebsite(places[i][7])}` : "") + `
@@ -33280,6 +33282,18 @@ Map source: ${osmUrl(places[i][0])}`);
 
   // src/canalRecall/game/manualPoiCatalog.ts
   var supplemental = new Map(manual_poi_data_default.map((fact) => [fact.modelId, fact]));
+  var additiveHostsByPoi = /* @__PURE__ */ new Map();
+  for (const model of SIGNATURE_MODELS) {
+    const hosts = new Set(model.hostWallOpenings?.map((opening) => opening.hostIdentity).filter((id) => !model.suppressOsmIds.includes(id)));
+    if (!hosts.size) continue;
+    for (const id of [model.landmarkId, ...model.relatedLandmarkIds ?? [], ...model.destinationLandmarkIds ?? []]) {
+      if (id) additiveHostsByPoi.set(id, hosts);
+    }
+  }
+  function manualPoiBuildingIds(landmarkId, ids) {
+    const hosts = additiveHostsByPoi.get(landmarkId);
+    return [...new Set(ids)].filter((id) => !hosts?.has(id));
+  }
   function mergeManualPoiFeatures(features, cityId = "amsterdam") {
     if (cityId !== "amsterdam") return [...features];
     const merged = new Map(features.map((feature) => [feature.id, { ...feature }]));
@@ -33308,7 +33322,7 @@ Map source: ${osmUrl(places[i][0])}`);
           researchDetail: specific?.funFact || specific?.description || existing?.researchDetail,
           manualPoi: true,
           modelId: model.id,
-          buildingIds: [.../* @__PURE__ */ new Set([...existing?.buildingIds ?? [], ...model.suppressOsmIds ?? []])],
+          buildingIds: manualPoiBuildingIds(id, [...existing?.buildingIds ?? [], ...model.suppressOsmIds ?? []]),
           prominenceScore: Math.max(existing?.prominenceScore ?? 0, 220)
         });
       }
@@ -33533,7 +33547,7 @@ Map source: ${osmUrl(places[i][0])}`);
       const rect = this.canvas.getBoundingClientRect();
       const building = this.vectorMap.inspectBuilding(clientX - rect.left, clientY - rect.top, rect);
       let nearest = building?.landmarkId ? this.landmarks.find((landmark) => landmark.id === building.landmarkId) ?? null : null;
-      const owner = building && building.id != null ? this.landmarks.find((landmark) => landmark.buildingIds?.includes(String(building.id))) : void 0;
+      const owner = building && building.id != null ? this.landmarks.find((landmark) => manualPoiBuildingIds(landmark.id, landmark.buildingIds ?? []).includes(String(building.id))) : void 0;
       if (owner && !nearest) nearest = owner;
       if (!nearest || !isWorthACard(nearest)) {
         if (building) nearest = this._cardForClickedBuilding(building);
@@ -33608,7 +33622,7 @@ Map source: ${osmUrl(places[i][0])}`);
     /** Exact researched owner first, then mapped places inside the actual plan. */
     _cardForClickedBuilding(building) {
       const buildingName = building.name || "";
-      const matched = this.landmarks.find((landmark) => landmark.id === String(building.id) || landmark.buildingIds?.includes(String(building.id)));
+      const matched = this.landmarks.find((landmark) => landmark.id === String(building.id) || manualPoiBuildingIds(landmark.id, landmark.buildingIds ?? []).includes(String(building.id)));
       if (matched && isWorthACard(matched)) return { ...matched, featureTarget: building.featureTarget };
       const mapped = this._clickPoiInfo?.card(building);
       if (mapped) return mapped;
@@ -33770,10 +33784,10 @@ Map source: ${osmUrl(places[i][0])}`);
           }
           if (brandedPois) this.vectorMap.setBrandedPois(brandedPois);
           if (landmarkBuildings?.buildings && this.landmarks === landmarks) {
-            for (const landmark of landmarks) landmark.buildingIds = [.../* @__PURE__ */ new Set([
+            for (const landmark of landmarks) landmark.buildingIds = manualPoiBuildingIds(landmark.id, [
               ...landmark.buildingIds ?? [],
               ...landmarkBuildings.buildings[landmark.id] ?? []
-            ])];
+            ]);
           }
         });
         const transitStops = this.osmLoader?.transitLoad?.stops || [];

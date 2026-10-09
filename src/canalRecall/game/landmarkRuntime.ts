@@ -47,7 +47,7 @@ import { buildRouteKnowledgeIndex, routeKnowledgeFor, shouldOfferStreetKnowledge
 import { canShowDriveByCard, canShowMiniMap, canShowTeachingCard } from './teachingSurface';
 import { isTransit } from './modes';
 import { BuildingFactStore, describeBuilding } from '../buildingFacts';
-import { mergeManualPoiFeatures } from './manualPoiCatalog';
+import { manualPoiBuildingIds, mergeManualPoiFeatures } from './manualPoiCatalog';
 import type { BridgeRegisterFile } from '../bridgeRegister';
 import { loadEntryCounts, postcardForLull, postcardOnEntry, recordEntry } from './postcardPacing';
 import { DRIVE_BY_RADIUS, driveByGapElapsed, mayReplaceNotice, pathAhead, pickDriveBy, type NoticeSource, type Rider } from './driveByTrigger';
@@ -94,7 +94,7 @@ export class GameLandmarkRuntime {
       ? this.landmarks.find(landmark => landmark.id === building.landmarkId) ?? null
       : null;
     const owner = building && building.id != null
-      ? this.landmarks.find(landmark => landmark.buildingIds?.includes(String(building.id)))
+      ? this.landmarks.find(landmark => manualPoiBuildingIds(landmark.id, landmark.buildingIds ?? []).includes(String(building.id)))
       : undefined;
     if (owner && !nearest) nearest = owner;
     if (!nearest || !isWorthACard(nearest)) {
@@ -192,7 +192,7 @@ export class GameLandmarkRuntime {
   _cardForClickedBuilding(building: BuildingHit): LandmarkNotice | null {
     const buildingName = building.name || '';
     const matched = this.landmarks.find(landmark => landmark.id === String(building.id)
-      || landmark.buildingIds?.includes(String(building.id)));
+      || manualPoiBuildingIds(landmark.id, landmark.buildingIds ?? []).includes(String(building.id)));
     if (matched && isWorthACard(matched)) return { ...matched, featureTarget: building.featureTarget };
     const mapped = this._clickPoiInfo?.card(building);
     if (mapped) return mapped;
@@ -372,9 +372,9 @@ export class GameLandmarkRuntime {
         // (a tree, a statue) and keeps its dot; without it, the map guesses.
         // The highlight reads buildingIds when it draws, so late is fine.
         if (landmarkBuildings?.buildings && this.landmarks === landmarks) {
-          for (const landmark of landmarks) landmark.buildingIds = [...new Set([
+          for (const landmark of landmarks) landmark.buildingIds = manualPoiBuildingIds(landmark.id, [
             ...(landmark.buildingIds ?? []), ...(landmarkBuildings.buildings[landmark.id] ?? []),
-          ])];
+          ]);
         }
       });
       // Everything the game can ask about, so no orientation label says it

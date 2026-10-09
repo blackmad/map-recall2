@@ -6,6 +6,23 @@ type SupplementalFact = Omit<typeof facts[number], 'destinations'> & {
   destinations?: readonly { landmarkId: string; name?: string; center?: number[]; description?: string; funFact?: string; sourceUrl?: string; preferDescription?: boolean; routeDestination?: { center: number[] }; destinationOverride?: { center: number[] } }[];
 };
 const supplemental = new Map<string, SupplementalFact>(facts.map(fact => [fact.modelId, fact]));
+const additiveHostsByPoi = new Map<string, Set<string>>();
+for (const model of SIGNATURE_MODELS) {
+  const hosts = new Set(model.hostWallOpenings?.map(opening => opening.hostIdentity)
+    .filter(id => !model.suppressOsmIds.includes(id)));
+  if (!hosts.size) continue;
+  for (const id of [model.landmarkId, ...(model.relatedLandmarkIds ?? []), ...(model.destinationLandmarkIds ?? [])]) {
+    if (id) additiveHostsByPoi.set(id, hosts);
+  }
+}
+
+/** An additive facade asset occupies its own mesh, not its entire host Pand.
+ * The extract's containment join can still identify the host; discard that
+ * association for physical building clicks and ordinary-building highlights. */
+export function manualPoiBuildingIds(landmarkId: string, ids: readonly string[]): string[] {
+  const hosts = additiveHostsByPoi.get(landmarkId);
+  return [...new Set(ids)].filter(id => !hosts?.has(id));
+}
 
 /** One physical asset may host several genuine venues; facade aliases are
  * identities for picking, not extra destinations. Existing extract content
@@ -40,7 +57,7 @@ export function mergeManualPoiFeatures(features: readonly LandmarkFeature[], cit
         researchDetail: specific?.funFact || specific?.description || existing?.researchDetail,
         manualPoi: true,
         modelId: model.id,
-        buildingIds: [...new Set([...(existing?.buildingIds ?? []), ...(model.suppressOsmIds ?? [])])],
+        buildingIds: manualPoiBuildingIds(id, [...(existing?.buildingIds ?? []), ...(model.suppressOsmIds ?? [])]),
         prominenceScore: Math.max(existing?.prominenceScore ?? 0, 220),
       });
     }
