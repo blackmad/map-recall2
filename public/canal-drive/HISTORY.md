@@ -1,5 +1,28 @@
 # Canal Recall — what is built
 
+## Recipe surrounds, quoins and awnings (2026-10-09)
+
+Intent fields `windowSurround` (stone-lintel / full-frame / keystone, optional
+`surroundStoreys`), `quoins` and `shopfront.awning` (straight or dutch, extent
+as a fraction of the front). Dressings are slabs sunk 5 mm into the wall
+(tested ≤1 cm off the plane); awnings are one extruded profile on the flat
+door slot so they are not brick-textured. Applied only with photo evidence:
+keystones on bilder-152669/153622/153782, top-storey lintels and a black
+awning on bilder-156287; +92–144 triangles each, all gates pass. Reviewing
+156287 against its photo exposed that the house itself is wrong (storeys,
+window size, balconies); see TODO re-review.
+
+## Acceptance checklist after Nassaukerk and Het Pakhuis (2026-10-09)
+
+Nassaukerk passed review twice with blank walls, and Het Pakhuis shipped with
+scattered windows where the building has five identical symmetric gabled bays.
+Both were judged from one photo by overall resemblance. The checklist in
+`docs/buildings-pipeline.md` now requires a per-wall rhythm spec from photos
+before modelling, a photo per visible face (else "inferred"), camera-matched
+photo/render comparison bay by bay, the blank-wall and facade-rhythm gates,
+and a street-level shot; lane-reported uncertainty blocks a merge. Het Pakhuis
+is held until a rebuild passes it.
+
 ## GLB quality audit; Nassaukerk windows (2026-10-09)
 
 `audit-glb-quality.ts` checks every landmark GLB for open shell holes,

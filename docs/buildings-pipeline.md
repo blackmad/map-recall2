@@ -169,6 +169,35 @@ brick reads as faint coursing; the roof tile reads well on steep red roofs.
   elevation, so only the first module gets a stoop.
 - Shared meshes are consumed by the ordinary layer (see *Shared meshes at runtime*), but only genuinely identical designs share: palette differences between neighbours, 0.3-0.5 m eaves steps and rear footprint notches keep most rows at one mesh per house.
 
+## Acceptance checklist (every building, every tier — 2026-10-09)
+
+Two models passed review while plainly wrong: Nassaukerk (blank walls where
+the photo has windows, accepted twice) and Het Pakhuis (five identical
+symmetric gabled bays modelled as scattered windows and invented setbacks).
+Both were judged as "recognisable from its best side". That is not the bar.
+
+1. **Rhythm spec before modelling.** Per visible wall, from photos: bay count,
+   which bays are identical, windows per bay per storey, symmetry axis,
+   ground-floor type, signage, gable/roof line, setbacks only if seen. Cite
+   the photo for each item. Store it next to the builder/recipe; for landmarks
+   the machine-checked part is `scripts/landmarks/<id>-elevations.json`
+   (counted blind from the photo, format in `docs/landmark-building-recipe.md` §7).
+2. **Evidence per face.** Every street- or water-facing wall has a photo from
+   that side (`pand-reference --prefer-bearing`), or is labelled
+   **inferred** on the sheet and in the report.
+3. **Camera-matched comparison.** Render the model from the panorama's own
+   position/heading/fov; photo, render and overlay side by side. Judge bay by
+   bay against the spec, not by overall impression.
+4. **Automated gates.** GLB audit (`audit:glb`, incl. blank-wall check),
+   facade-rhythm check against the spec (`npm run compare:facades -- --id=<id>`:
+   openings per storey, window axes, mirror symmetry, gable peaks), attachment ≤5 cm, height ±0.5 m vs
+   3DBAG, triangle budget.
+5. **Street-level in-game shot** from where riders actually pass it.
+6. **Uncertainty blocks acceptance.** Anything a lane lists as unverified or
+   uncertain is a hold until resolved; it is never merged "for now".
+7. **Integrator record.** On install, HISTORY notes which sheets were viewed,
+   which faces are inferred, and the gate results.
+
 ## For the integrator
 
 Suggested npm scripts (not added; integrator owns `package.json`):
@@ -243,6 +272,20 @@ roof artefacts). Changes:
 - Sheets: `sh scripts/building-recipes/street-sheets.sh artifacts/recipe-look/after`; in-game facade close-ups in
   `tests/e2e/recipe-street.spec.ts` (`in-game-<project>-facades-{a,b,c,oblique}.png`).
 
-Remaining gaps vs the procedural neighbours: no stone window surrounds/quoins, no awnings, no sign lettering; brick
+Remaining gaps vs the procedural neighbours: no sign lettering (surrounds/quoins/awnings: see below); brick
 banding is a stripe, not polychrome patterning (079721's diaper work); 153622's hip end still reads as a steep
 triangle above the cornice from straight on.
+
+## Stone surrounds, quoins, awnings (2026-10-09)
+
+Intent fields per front: `windowSurround: none|stone-lintel|full-frame|keystone` (+ `surroundStoreys`, default every window
+storey above a shopfront; colour = `palette.stone`), `quoins: none|stone` (alternating 0.5/0.28 m blocks up both edges,
+skipping any block that would touch an opening), and `shopfront.awning {style: none|fabric-straight|fabric-dutch, colour,
+extent {from,to}}` (fractions of the front width from the viewer's left). Fit emits `elevation.dressings`
+(`CanalhouseDressing`: `slab` or `awning`); the library builds slabs as boxes sunk 5 mm into the wall (depth <= 12 cm) and
+awnings as one extruded side profile (about 20-40 tris, back edge on the wall, <= 1.4 m projection, valance >= 2.0 m
+above ground). Awning colour is palette `awning` (falls back to shop/door) and exports on the flat `door` material slot,
+so it is not brick-textured. Cost: keystones ~12 tris per window, lintel+sill 24, full-frame 48; a 12-window front adds
+~150 tris. Houses using them (evidence = photo): bilder-153622, -153782, -152669 keystones (front.jpg); bilder-156287
+stone lintels on the top storey + black straight awning over the left shop (front-alt.jpg). Tests:
+`surroundsAwnings.test.ts`. Not used anywhere yet: `quoins`, `full-frame`, `fabric-dutch` (no photo evidence found).
