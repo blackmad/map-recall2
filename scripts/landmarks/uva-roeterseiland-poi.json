@@ -1,0 +1,27 @@
+{
+  "modelId": "uva-roeterseiland",
+  "landmarkId": "extract_landmarks_596580010",
+  "name": "Roeterseiland (UvA)",
+  "center": [
+    52.363558,
+    4.915006
+  ],
+  "genuineOsmIdentity": "w596580010",
+  "sourceUrl": "https://www.uva.nl/locaties/roeterseiland/rec-b-c-d-ingang-b-c.html",
+  "description": "Roeterseiland is an open city campus of the University of Amsterdam. Its postwar megastructure was renewed by Allford Hall Monaghan Morris: a four-storey opening reconnects the Nieuwe Achtergracht canal and campus, beneath the glazed event space De Brug and research offices. A separate pedestrian bridge leads into the shared entrance between buildings A and B. Building A houses the law faculty.",
+  "sourceLinks": [
+    {
+      "title": "AHMM: campus architecture",
+      "url": "https://www.ahmm.co.uk/projects/reuse/university-of-amsterdam/"
+    },
+    {
+      "title": "UvA: De Brug and B/C/D entrance127",
+      "url": "https://www.uva.nl/locaties/roeterseiland/rec-b-c-d-ingang-d.html"
+    },
+    {
+      "title": "Aronsohn: renovated REC A",
+      "url": "https://www.aronsohn.nl/project/roeterseilandcampus-gebouw-a-uva/"
+    }
+  ],
+  "destinationPinNotes": "Preserve existing campus identity. Current geographic campus pin is distant from requested parent; root may choose source-supported public entrance166 after actual accessible route evidence. BAG VBO centroid is not an exact entrance coordinate. Do not silently substitute another destination."
+}
