@@ -18148,6 +18148,199 @@
       "triangles": 831,
       "bytes": 20668,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "pathe-de-munt": {
+      "id": "pathe-de-munt",
+      "name": "Pathé de Munt",
+      "landmarkId": "extract_landmarks_257271103",
+      "modelUrl": "./models/pathe-de-munt.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012179384"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8934706,
+          52.3664519
+        ],
+        "headingDegrees": 114.5,
+        "lengthMetres": 40.38,
+        "widthMetres": 39.98
+      },
+      "surveyed": {
+        "anchor": [
+          4.8934706,
+          52.3664519
+        ],
+        "northOffsetDegrees": 0,
+        "source": "BAG pand 0363100012179384 with 3DBAG LoD2.2 roofs; native east/south metres, scale 1."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "brick": "#807a74",
+        "greyBrick": "#7a7570",
+        "stone": "#a9a69f",
+        "slate": "#6a6865",
+        "white": "#e7e5dd",
+        "glass": "#667c86",
+        "dark": "#25292c",
+        "gold": "#e0b030"
+      },
+      "attribution": {
+        "title": "Pathé de Munt",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Path%C3%A9_de_Munt",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free model on the BAG footprint (3DBAG LoD2.2 roof faces): grey-brick multiplex with notched pitched volumes, glazed slits, lower entrance bays and the vertical Pathé sign. Dimensions approximate, measured from 2025 panoramas. No imported mesh or photo textures."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.893385,
+              52.366544
+            ],
+            [
+              4.893385,
+              52.366547
+            ],
+            [
+              4.893343,
+              52.366368
+            ],
+            [
+              4.893511,
+              52.36635
+            ],
+            [
+              4.893501,
+              52.366312
+            ],
+            [
+              4.893619,
+              52.366295
+            ],
+            [
+              4.893617,
+              52.36629
+            ],
+            [
+              4.893711,
+              52.366261
+            ],
+            [
+              4.893683,
+              52.366227
+            ],
+            [
+              4.893789,
+              52.366216
+            ],
+            [
+              4.893801,
+              52.366251
+            ],
+            [
+              4.89402,
+              52.366523
+            ],
+            [
+              4.893929,
+              52.36655
+            ],
+            [
+              4.893931,
+              52.366552
+            ],
+            [
+              4.893901,
+              52.366561
+            ],
+            [
+              4.89389,
+              52.366547
+            ],
+            [
+              4.893862,
+              52.366556
+            ],
+            [
+              4.893862,
+              52.366555
+            ],
+            [
+              4.893799,
+              52.366574
+            ],
+            [
+              4.893792,
+              52.366576
+            ],
+            [
+              4.893776,
+              52.366557
+            ],
+            [
+              4.893706,
+              52.366576
+            ],
+            [
+              4.893692,
+              52.366556
+            ],
+            [
+              4.893635,
+              52.36657
+            ],
+            [
+              4.893606,
+              52.366572
+            ],
+            [
+              4.893597,
+              52.366528
+            ],
+            [
+              4.893385,
+              52.366544
+            ]
+          ]
+        ]
+      },
+      "bounds": {
+        "min": [
+          -9.62957763671875,
+          0,
+          -13.612000465393066
+        ],
+        "max": [
+          37.19499969482422,
+          24.274999618530273,
+          26.499000549316406
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8934706,
+          52.3664519
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 114.5,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 46.82457733154297,
+        "heightMetres": 24.274999618530273,
+        "depthMetres": 40.11100101470947,
+        "depthCoverage": 1.0032766636995867
+      },
+      "triangles": 1084,
+      "bytes": 28328,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
