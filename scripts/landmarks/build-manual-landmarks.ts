@@ -344,7 +344,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='keizersgrachtkerk')buildKeizersgrachtkerk(w,d,helpers);
     else if(id==='torture-museum')buildTortureMuseum(w,d,helpers);
     else if(id==='houseboat-museum')buildHouseboatMuseum(w,d,helpers);
-    else if(id==='pathe-de-munt')buildPatheDeMunt(w,d,helpers);
+    else if(id==='pathe-de-munt')buildPatheDeMunt(w,d,helpers,(g,hex)=>addDecal(g,hex));
     else if(id==='theo-thijssen-museum')buildTheoThijssenMuseum(w,d,helpers);
     else if(id==='this-is-holland')buildThisIsHolland(w,d,helpers);
     else if(id==='luther-museum')buildLutherMuseum(w,d,helpers);
