@@ -53,7 +53,7 @@ for (const id of ROW) test(`Bloemgracht 78–90 roof fidelity: ${id}`, () => {
   if (gabled) assert(r.nearRoofOverCrownM <= 0, `${id}: roof rises ${r.nearRoofOverCrownM.toFixed(2)} m above the crown near the front`);
 });
 
-test('Bloemgracht 86 neck gable: front roof closure above the crown becomes roof verge, not masonry', () => {
-  const built = compileBuilding(intent('bloemgracht-86'), facts('bloemgracht-86'));
-  assert(built.vergeTriangles > 0, 'neck gable needs a verge where the 3DBAG roof triangle passes the shoulders');
+test('Bloemgracht 88 cornice front: the 3DBAG gable triangle above the cornice becomes roof verge, not masonry', () => {
+  const built = compileBuilding(intent('bloemgracht-88'), facts('bloemgracht-88'));
+  assert(built.vergeTriangles > 0, 'the roof triangle behind a cornice front must read as roof, not a brick gable');
 });
