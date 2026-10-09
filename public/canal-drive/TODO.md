@@ -123,6 +123,13 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   each building's signature (Bellevue lettering, pagoda upswept roofs,
   PANAMA sign, KIT tower stages). Closest to the bar: Club Panama,
   Compagnietheater, West India House. Koningskerk held for its grid hall.
+- **Sculptures** (38 in the backlog's sculpture treatment): splats only where
+  30–60 recent multi-angle colour photos exist (mask the statue; auto-find
+  centre/ground; ~1 h per statue); otherwise impostors baked from a clean
+  mesh, with nearest-tile switching (blending doubles the figure). Untested
+  alternative: single-photo image-to-3D mesh generation, then decimate.
+  The Dokwerker hand model has wrong arms and a hat disc — fix as far LOD.
+  Needs a real-iPhone GPU check before any splat ships.
 - **Large-tier follow-ups** (`src/canalRecall/largeBuildingTier.ts`,
   ranked list via `npm run audit:large-tier`): untuned buildings show a
   uniform window grid; tune next Roeterseiland/LLC, VU, Benno Premselahuis,
