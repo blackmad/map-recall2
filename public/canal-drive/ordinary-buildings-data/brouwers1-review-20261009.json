@@ -1,0 +1,19 @@
+{
+  "id": "ordinary-0363100012171101",
+  "hash": "056e443a76e89238c8309e7f65819cddbad179b6cb3bb23f45020c233fcd3c4b",
+  "sourceCommit": "62af8c1d3642f1a50cda830ce7921c27006aac5d",
+  "sourcePack": "experiments/canal-belt-continuation-20261007/next-ordinary37-source42/0363100012171101",
+  "reviewEvidenceCommit": "1bb20d83f4fdc4e9d0e1829f6ca44371f40729ea",
+  "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/native36-37-review50",
+  "gallery": "Root + independent actual GPU PASS",
+  "native": "Root + independent local desktop and iPhone13 emulation PASS",
+  "hosted": "Pending",
+  "limits": [
+    "First draft corrected by source scope; actual GPU/native/performance review pending",
+    "VRIESLAND lettering omitted and ship carving simplified"
+  ],
+  "performance": "Warm90 rAF samples about16.7ms median/16.8ms P95 on M4 Pro; startup/target long tasks preserved. Not a physical phone or GPU timing benchmark.",
+  "fallback": "Individual delayed, disabled/restored and cold download failure checked for both assets; target pyramid mesh entries absent, ID state only.",
+  "cards": "Actual signature picks keep landmarkId empty, featureTarget null and no new card or route POI.",
+  "priorFailures": "Preserved privately in revised-ordinary36-37-review49 at91c37347d."
+}

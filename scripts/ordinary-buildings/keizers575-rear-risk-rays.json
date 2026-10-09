@@ -1,0 +1,100 @@
+{
+  "evidence": "Originalrawsource41/172 walls at actualv04failedrear pixels; v04MISS; structural return distinct fromgarden/overhang.",
+  "rays": [
+    {
+      "pixel": [
+        260,
+        493
+      ],
+      "camera": [
+        13.007125705314072,
+        41.2387678527832,
+        -60.16033904490268
+      ],
+      "direction": [
+        0.007760726887289506,
+        -0.38714663390400805,
+        0.9219854960762545
+      ],
+      "expectedColour": "brick",
+      "maximumFirstDistanceMetres": 61.55240312820237,
+      "rawWallIndex": 172
+    },
+    {
+      "pixel": [
+        263,
+        489
+      ],
+      "camera": [
+        13.007125705314072,
+        41.2387678527832,
+        -60.16033904490268
+      ],
+      "direction": [
+        0.004102848363878276,
+        -0.38335937826284716,
+        0.9235901438047216
+      ],
+      "expectedColour": "brick",
+      "maximumFirstDistanceMetres": 61.41205698631426,
+      "rawWallIndex": 172
+    },
+    {
+      "pixel": [
+        171,
+        536
+      ],
+      "camera": [
+        13.007125705314072,
+        41.2387678527832,
+        -60.16033904490268
+      ],
+      "direction": [
+        0.1059071761761626,
+        -0.4199350154363259,
+        0.9013535670561713
+      ],
+      "expectedColour": "brick",
+      "maximumFirstDistanceMetres": 57.48006457001609,
+      "rawWallIndex": 41
+    },
+    {
+      "pixel": [
+        172,
+        538
+      ],
+      "camera": [
+        13.007125705314072,
+        41.2387678527832,
+        -60.16033904490268
+      ],
+      "direction": [
+        0.10509731919990829,
+        -0.42200428906653015,
+        0.9004815009240584
+      ],
+      "expectedColour": "brick",
+      "maximumFirstDistanceMetres": 57.524977689922814,
+      "rawWallIndex": 41
+    },
+    {
+      "pixel": [
+        175,
+        538
+      ],
+      "camera": [
+        13.007125705314072,
+        41.2387678527832,
+        -60.16033904490268
+      ],
+      "direction": [
+        0.10202898279271867,
+        -0.4224030068042176,
+        0.9006474263067868
+      ],
+      "expectedColour": "brick",
+      "maximumFirstDistanceMetres": 57.468388211410776,
+      "rawWallIndex": 41
+    }
+  ]
+}

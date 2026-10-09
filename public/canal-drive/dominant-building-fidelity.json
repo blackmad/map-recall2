@@ -1020,6 +1020,57 @@
       "limits": [
         "Photo-guided front4m attic shoulders/depth and simplified entrance/panel joinery. Rear roof and low volume surveyed; rear window arrangement unobserved. Earlier gate/attic/downward-face failures preserved."
       ]
+    },
+    "NL.IMBAG.Pand.0363100012176752": {
+      "treatment": "landmark",
+      "reviewedOn": "2026-10-09",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012176752",
+        "https://data.amsterdam.nl/data/"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012176752/opposite-b_20250115_1329_Track12_Sphere_00032.jpg",
+      "reason": "Defining historic facades and varied source roofs require full architectural loop. Root and independent source/gallery/local native desktop-touch passed; ordinary identity retained, hosted verification pending.",
+      "checks": {
+        "ordinarySilhouette": false,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "4ec0a0d69e202f87d573b5543650c9446f20102f",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/keizers575-next-source37",
+      "independentReview": "experiments/canal-belt-continuation-20261007/native36-37-review50",
+      "liveGameReview": "experiments/canal-belt-continuation-20261007/native36-37-review50/native",
+      "limits": [
+        "Unobserved native rear-appendage18.537m\u00b2 remains without invented roof; prepare exits1 deliberately.",
+        "Current rear openings and low-covered-space usage unresolved.",
+        "Current BBVA lettering omitted pending faithful native font outlines.",
+        "Floral carvings and Ionic spirals are original low-relief approximations, not surveyed exact sculpture.",
+        "No POI/destination/trivia integration implied; ordinary treatment only."
+      ]
+    },
+    "NL.IMBAG.Pand.0363100012171101": {
+      "treatment": "landmark",
+      "reviewedOn": "2026-10-09",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012171101",
+        "https://data.amsterdam.nl/data/"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012171101/warehouse-wide-fullfront-0363100012171101-2025-01246-enorth-wide.jpg",
+      "reason": "Defining historic facades and varied source roofs require full architectural loop. Root and independent source/gallery/local native desktop-touch passed; ordinary identity retained, hosted verification pending.",
+      "checks": {
+        "ordinarySilhouette": false,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "62af8c1d3642f1a50cda830ce7921c27006aac5d",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-ordinary37-source42/0363100012171101",
+      "independentReview": "experiments/canal-belt-continuation-20261007/native36-37-review50",
+      "liveGameReview": "experiments/canal-belt-continuation-20261007/native36-37-review50/native",
+      "limits": [
+        "First draft corrected by source scope; actual GPU/native/performance review pending",
+        "VRIESLAND lettering omitted and ship carving simplified"
+      ]
     }
   },
   "notes": [
