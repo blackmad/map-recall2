@@ -1,3 +1,6 @@
+import {buildUilenburgerSynagoge} from './uilenburger-synagoge-builder';
+import {buildNieuwendammerkerk} from './nieuwendammerkerk-builder';
+import {buildMeerpadkerk} from './meerpadkerk-builder';
 import {buildFireStationAnton} from './fire-station-anton-builder';
 import {buildFireStationWeesp} from './fire-station-weesp-builder';
 import {buildFireStationDriemond} from './fire-station-driemond-builder';
@@ -308,7 +311,10 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   else if(id.startsWith('olvg-'))hospital(id);
   else {
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
-    if(id==='fire-station-nico')buildFireStationNico(w,d,helpers);
+    if(id==='uilenburger-synagoge')buildUilenburgerSynagoge(w,d,helpers);
+    else if(id==='nieuwendammerkerk')buildNieuwendammerkerk(w,d,helpers);
+    else if(id==='meerpadkerk')buildMeerpadkerk(w,d,helpers);
+    else if(id==='fire-station-nico')buildFireStationNico(w,d,helpers);
     else if(id==='fire-station-osdorp')buildFireStationOsdorp(w,d,helpers);
     else if(id==='fire-station-teunis')buildFireStationTeunis(w,d,helpers);
     else if(id==='fire-station-victor')buildFireStationVictor(w,d,helpers);
