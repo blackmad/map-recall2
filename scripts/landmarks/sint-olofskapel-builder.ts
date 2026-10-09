@@ -21,8 +21,8 @@ export function buildSintOlofskapel(_w: number, _d: number, b: BuildingTools) {
   const nwWall = wallBetween(N1, W1, EAVE, [-0.46, -0.883]);
   const seWall = wallBetween(C1, S1, EAVE, [0.57, 0.82]);
   // Gable windows: one tall pointed window per gable, with the stone portal beneath the east one.
-  for (const t of [neWall.length * 0.25, neWall.length * 0.75]) archWindow(b, neWall, t, 4.6, 3.0, 9.2, {pointed: true, mullions: 2});
-  for (const t of [swWall.length * 0.25, swWall.length * 0.75]) archWindow(b, swWall, t, 2.2, 3.0, 10.6, {pointed: true, mullions: 2});
+  for (const t of [neWall.length * 0.25, neWall.length * 0.75]) archWindow(b, neWall, t, 4.2, 4.4, 10.0, {pointed: true, mullions: 2});
+  for (const t of [swWall.length * 0.25, swWall.length * 0.75]) archWindow(b, swWall, t, 2.2, 4.4, 11.4, {pointed: true, mullions: 2});
   // Zeedijk portal (1644): stepped stone pilasters, round pediment with relief, lantern brackets.
   {
     const t = neWall.length * 0.75;
