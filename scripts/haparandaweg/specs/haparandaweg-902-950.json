@@ -1,50 +1,899 @@
 {
-  "id": "haparandaweg-902-950",
-  "pandId": "0363100012244558",
-  "name": "Het Pakhuis, Haparandaweg 902-950",
-  "palette": {
-    "wall": "#43302c", "roof": "#58534f", "frame": "#7a726a", "glass": "#5d6f79", "slab": "#a9a398",
-    "rail": "#7b746b", "glassRail": "#7f9097", "dark": "#2b2a2b", "door": "#5a4f48", "stone": "#d9d0bd", "sign": "#d7d3c8"
-  },
-  "levels": { "groundM": 8.8, "storeyM": 3.0 },
-  "default": "rear",
-  "rules": [ { "bearing": [290, 350], "system": "pakhuis" } ],
-  "systems": {
-    "pakhuis": {
-      "pitch": 3.9,
-      "ground": { "kind": "stack", "stack": [
-        { "v0": 0, "v1": 6.0, "row": { "kind": "glazed", "win": { "w": 0.7, "h": 5.2, "sill": 0.12, "mull": 2, "transom": 0.55, "surround": { "slot": "stone", "t": 0.26, "out": 0.12 } },
-          "door": { "bays": [0,1,2,3,4], "w": 1.0, "h": 2.2, "slot": "door" } } },
-        { "v0": 6.9, "v1": 8.7, "row": { "kind": "punched", "win": { "w": 0.55, "h": 1.0, "sill": 0.35, "mull": 1, "sillSlot": "stone" } } }
-      ] },
-      "typical": { "kind": "glazed", "win": { "w": 0.7, "h": 0.82, "sill": 0.2, "mull": 3, "transom": 0.5, "frame": "frame" } },
-      "rowOverrides": {
-        "1": { "kind": "balcony", "cycle": [
-          { "kind": "glazed", "win": { "w": 0.7, "h": 0.8, "sill": 0.2, "mull": 3, "transom": 0.5 } },
-          { "kind": "balcony", "balcony": { "depth": 1.5, "rail": { "kind": "bars", "h": 1.05 }, "back": { "w": 0.7, "h": 0.7, "sill": 0.4, "mull": 1 } } },
-          { "kind": "balcony", "balcony": { "depth": 1.5, "rail": { "kind": "bars", "h": 1.05 }, "back": { "w": 0.7, "h": 0.7, "sill": 0.4, "mull": 1 } } },
-          { "kind": "balcony", "balcony": { "depth": 1.5, "rail": { "kind": "bars", "h": 1.05 }, "back": { "w": 0.7, "h": 0.7, "sill": 0.4, "mull": 1 } } },
-          { "kind": "glazed", "win": { "w": 0.7, "h": 0.8, "sill": 0.2, "mull": 3, "transom": 0.5 } }
-        ] },
-        "2": { "kind": "balcony", "cycle": [
-          { "kind": "glazed", "win": { "w": 0.7, "h": 0.8, "sill": 0.2, "mull": 3, "transom": 0.5 } },
-          { "kind": "balcony", "balcony": { "depth": 1.5, "rail": { "kind": "bars", "h": 1.05 }, "back": { "w": 0.7, "h": 0.7, "sill": 0.4, "mull": 1 } } },
-          { "kind": "balcony", "balcony": { "depth": 1.5, "rail": { "kind": "bars", "h": 1.05 }, "back": { "w": 0.7, "h": 0.7, "sill": 0.4, "mull": 1 } } },
-          { "kind": "balcony", "balcony": { "depth": 1.5, "rail": { "kind": "bars", "h": 1.05 }, "back": { "w": 0.7, "h": 0.7, "sill": 0.4, "mull": 1 } } },
-          { "kind": "glazed", "win": { "w": 0.7, "h": 0.8, "sill": 0.2, "mull": 3, "transom": 0.5 } }
-        ] },
-        "5": { "kind": "gable", "gable": { "margin": 0.55, "sill": 0.8, "shoulder": 4.2, "apex": 3.6, "mull": 2 } },
-        "6": { "kind": "wall" },
-        "7": { "kind": "wall" },
-        "8": { "kind": "wall" }
+ "id": "haparandaweg-902-950",
+ "pandId": "0363100012244558",
+ "name": "Het Pakhuis, Haparandaweg 902-950",
+ "palette": {
+  "wall": "#43302c",
+  "roof": "#58534f",
+  "frame": "#5f5a54",
+  "glass": "#5f6f78",
+  "slab": "#a9a398",
+  "rail": "#6b655d",
+  "glassRail": "#8a9aa0",
+  "dark": "#2b2a2b",
+  "door": "#6b645c",
+  "stone": "#d9d0bd",
+  "sign": "#d7d3c8",
+  "louvre": "#6e5a45"
+ },
+ "levels": {
+  "groundM": 5.8,
+  "storeyM": 3.1
+ },
+ "default": "none",
+ "notes": "Front (bearing 320) laid out from scripts/haparandaweg/het-pakhuis-rhythm.json; side/rear walls are plain brick (no photo exists).",
+ "rules": [
+  {
+   "bearing": [
+    300,
+    340
+   ],
+   "system": "pakhuis"
+  }
+ ],
+ "systems": {
+  "pakhuis": {
+   "pitch": 3.92,
+   "bays": {
+    "first": 2.2,
+    "pitch": 3.92,
+    "count": 5
+   },
+   "ground": {
+    "kind": "wall",
+    "cycle": [
+     {
+      "kind": "shopfront",
+      "shopfront": {
+       "w": 2.75,
+       "top": 6.06,
+       "surround": {
+        "slot": "stone",
+        "t": 0.2,
+        "out": 0.1
+       },
+       "upper": {
+        "v0": 3.6,
+        "v1": 5.85,
+        "cols": 3,
+        "rows": 2,
+        "splitV": 4.5
+       },
+       "spandrel": {
+        "v0": 3.0,
+        "v1": 3.6
+       },
+       "lower": {
+        "v1": 3.0,
+        "cols": 3
+       },
+       "door": {
+        "w": 0.95,
+        "h": 2.3,
+        "offsets": [
+         0,
+         -0.45,
+         0.45,
+         -0.45,
+         0.45
+        ]
+       }
+      }
+     },
+     {
+      "kind": "shopfront",
+      "shopfront": {
+       "w": 2.75,
+       "top": 6.06,
+       "surround": {
+        "slot": "stone",
+        "t": 0.2,
+        "out": 0.1
+       },
+       "upper": {
+        "v0": 3.6,
+        "v1": 5.85,
+        "cols": 2,
+        "rows": 2,
+        "splitV": 4.5
+       },
+       "spandrel": {
+        "v0": 3.0,
+        "v1": 3.6
+       },
+       "lower": {
+        "v1": 3.0,
+        "cols": 2
+       },
+       "door": {
+        "w": 0.95,
+        "h": 2.3,
+        "offsets": [
+         0,
+         -0.45,
+         0.45,
+         -0.45,
+         0.45
+        ]
+       }
+      }
+     },
+     {
+      "kind": "shopfront",
+      "shopfront": {
+       "w": 2.75,
+       "top": 6.06,
+       "surround": {
+        "slot": "stone",
+        "t": 0.2,
+        "out": 0.1
+       },
+       "upper": {
+        "v0": 3.6,
+        "v1": 5.85,
+        "cols": 2,
+        "rows": 2,
+        "splitV": 4.5
+       },
+       "spandrel": {
+        "v0": 3.0,
+        "v1": 3.6
+       },
+       "lower": {
+        "v1": 3.0,
+        "cols": 2
+       },
+       "door": {
+        "w": 0.95,
+        "h": 2.3,
+        "offsets": [
+         0,
+         -0.45,
+         0.45,
+         -0.45,
+         0.45
+        ]
+       }
+      }
+     },
+     {
+      "kind": "shopfront",
+      "shopfront": {
+       "w": 2.75,
+       "top": 6.06,
+       "surround": {
+        "slot": "stone",
+        "t": 0.2,
+        "out": 0.1
+       },
+       "upper": {
+        "v0": 3.6,
+        "v1": 5.85,
+        "cols": 2,
+        "rows": 2,
+        "splitV": 4.5
+       },
+       "spandrel": {
+        "v0": 3.0,
+        "v1": 3.6
+       },
+       "lower": {
+        "v1": 3.0,
+        "cols": 2
+       },
+       "door": {
+        "w": 0.95,
+        "h": 2.3,
+        "offsets": [
+         0,
+         -0.45,
+         0.45,
+         -0.45,
+         0.45
+        ]
+       }
+      }
+     },
+     {
+      "kind": "shopfront",
+      "shopfront": {
+       "w": 2.75,
+       "top": 6.06,
+       "surround": {
+        "slot": "stone",
+        "t": 0.2,
+        "out": 0.1
+       },
+       "upper": {
+        "v0": 3.6,
+        "v1": 5.85,
+        "cols": 2,
+        "rows": 2,
+        "splitV": 4.5
+       },
+       "spandrel": {
+        "v0": 3.0,
+        "v1": 3.6
+       },
+       "lower": {
+        "v1": 3.0,
+        "cols": 2
+       },
+       "door": {
+        "w": 0.95,
+        "h": 2.3,
+        "offsets": [
+         0,
+         -0.45,
+         0.45,
+         -0.45,
+         0.45
+        ]
+       }
+      }
+     }
+    ]
+   },
+   "typical": {
+    "kind": "wall"
+   },
+   "rowOverrides": {
+    "1": {
+     "kind": "wall",
+     "cycle": [
+      {
+       "kind": "glazed",
+       "win": {
+        "w": 2.7,
+        "h": 1.25,
+        "sill": 1.65,
+        "mull": 3,
+        "sillSlot": "stone",
+        "sillH": 0.08,
+        "sillOut": 0.12,
+        "louvre": {
+         "w": 0.32
+        }
+       }
       },
-      "bands": [ { "slot": "slab", "h": 0.2, "out": 0.14, "fromFloor": 5 } ]
+      {
+       "kind": "stack",
+       "stack": [
+        {
+         "v0": 1.6,
+         "v1": 3.1,
+         "row": {
+          "kind": "balcony",
+          "balcony": {
+           "depth": 0.1,
+           "slab": {
+            "h": 0.08,
+            "slot": "stone"
+           },
+           "rail": {
+            "kind": "bars",
+            "h": 0.4,
+            "slot": "rail",
+            "top": null
+           },
+           "back": {
+            "w": 2.5,
+            "h": 1.2,
+            "sill": 0.14,
+            "mull": 2,
+            "glass": "glass"
+           }
+          }
+         }
+        }
+       ]
+      },
+      {
+       "kind": "stack",
+       "stack": [
+        {
+         "v0": 1.6,
+         "v1": 3.1,
+         "row": {
+          "kind": "balcony",
+          "balcony": {
+           "depth": 0.1,
+           "slab": {
+            "h": 0.08,
+            "slot": "stone"
+           },
+           "rail": {
+            "kind": "bars",
+            "h": 0.4,
+            "slot": "rail",
+            "top": null
+           },
+           "back": {
+            "w": 2.5,
+            "h": 1.2,
+            "sill": 0.14,
+            "mull": 2,
+            "glass": "glass"
+           }
+          }
+         }
+        }
+       ]
+      },
+      {
+       "kind": "stack",
+       "stack": [
+        {
+         "v0": 1.6,
+         "v1": 3.1,
+         "row": {
+          "kind": "balcony",
+          "balcony": {
+           "depth": 0.1,
+           "slab": {
+            "h": 0.08,
+            "slot": "stone"
+           },
+           "rail": {
+            "kind": "bars",
+            "h": 0.4,
+            "slot": "rail",
+            "top": null
+           },
+           "back": {
+            "w": 2.5,
+            "h": 1.2,
+            "sill": 0.14,
+            "mull": 2,
+            "glass": "glass"
+           }
+          }
+         }
+        }
+       ]
+      },
+      {
+       "kind": "stack",
+       "stack": [
+        {
+         "v0": 1.6,
+         "v1": 3.1,
+         "row": {
+          "kind": "balcony",
+          "balcony": {
+           "depth": 0.1,
+           "slab": {
+            "h": 0.08,
+            "slot": "stone"
+           },
+           "rail": {
+            "kind": "bars",
+            "h": 0.4,
+            "slot": "rail",
+            "top": null
+           },
+           "back": {
+            "w": 2.5,
+            "h": 1.2,
+            "sill": 0.14,
+            "mull": 2,
+            "glass": "glass"
+           }
+          }
+         }
+        }
+       ]
+      }
+     ]
     },
-    "rear": {
-      "pitch": 3.9,
-      "ground": { "kind": "glazed", "win": { "w": 0.7, "h": 3.0, "sill": 0.2, "mull": 2 }, "door": { "bays": [1], "w": 1.0, "h": 2.2 } },
-      "typical": { "kind": "punched", "win": { "w": 0.55, "h": 0.62, "sill": 0.55, "mull": 1, "sillSlot": "stone" } }
+    "2": {
+     "kind": "wall",
+     "cycle": [
+      {
+       "kind": "glazed",
+       "win": {
+        "w": 2.7,
+        "h": 2.65,
+        "sill": 0.35,
+        "mull": 4,
+        "rows": 1,
+        "sillSlot": "stone",
+        "sillH": 0.3,
+        "sillOut": 0.25,
+        "louvre": {
+         "w": 0.32
+        }
+       }
+      },
+      {
+       "kind": "balcony",
+       "balcony": {
+        "depth": 0.95,
+        "slab": {
+         "h": 1.0,
+         "slot": "slab"
+        },
+        "rail": {
+         "kind": "bars",
+         "h": 1.2,
+         "slot": "rail",
+         "top": "slab"
+        },
+        "back": {
+         "w": 2.4,
+         "h": 1.95,
+         "sill": 1.1,
+         "mull": 1,
+         "rows": 1,
+         "glass": "glass"
+        },
+        "w": 2.9
+       }
+      },
+      {
+       "kind": "balcony",
+       "balcony": {
+        "depth": 0.95,
+        "slab": {
+         "h": 1.0,
+         "slot": "slab"
+        },
+        "rail": {
+         "kind": "bars",
+         "h": 1.2,
+         "slot": "rail",
+         "top": "slab"
+        },
+        "back": {
+         "w": 2.4,
+         "h": 1.95,
+         "sill": 1.1,
+         "mull": 1,
+         "rows": 1,
+         "glass": "glass"
+        },
+        "w": 2.9
+       }
+      },
+      {
+       "kind": "balcony",
+       "balcony": {
+        "depth": 0.95,
+        "slab": {
+         "h": 1.0,
+         "slot": "slab"
+        },
+        "rail": {
+         "kind": "bars",
+         "h": 1.2,
+         "slot": "rail",
+         "top": "slab"
+        },
+        "back": {
+         "w": 2.4,
+         "h": 1.95,
+         "sill": 1.1,
+         "mull": 1,
+         "rows": 1,
+         "glass": "glass"
+        },
+        "w": 2.9
+       }
+      },
+      {
+       "kind": "balcony",
+       "balcony": {
+        "depth": 0.95,
+        "slab": {
+         "h": 1.0,
+         "slot": "slab"
+        },
+        "rail": {
+         "kind": "glass",
+         "h": 1.2,
+         "slot": "glassRail",
+         "top": "slab"
+        },
+        "back": {
+         "w": 2.4,
+         "h": 1.95,
+         "sill": 1.1,
+         "mull": 1,
+         "rows": 1,
+         "glass": "glass"
+        },
+        "w": 2.9
+       }
+      }
+     ]
+    },
+    "3": {
+     "kind": "wall",
+     "cycle": [
+      {
+       "kind": "glazed",
+       "win": {
+        "w": 2.7,
+        "h": 2.65,
+        "sill": 0.35,
+        "mull": 4,
+        "rows": 1,
+        "sillSlot": "stone",
+        "sillH": 0.3,
+        "sillOut": 0.25,
+        "louvre": {
+         "w": 0.32
+        }
+       }
+      },
+      {
+       "kind": "balcony",
+       "balcony": {
+        "depth": 0.95,
+        "slab": {
+         "h": 1.0,
+         "slot": "slab"
+        },
+        "rail": {
+         "kind": "bars",
+         "h": 1.2,
+         "slot": "rail",
+         "top": "slab"
+        },
+        "back": {
+         "w": 2.4,
+         "h": 1.95,
+         "sill": 1.1,
+         "mull": 1,
+         "rows": 1,
+         "glass": "glass"
+        },
+        "w": 2.9
+       }
+      },
+      {
+       "kind": "balcony",
+       "balcony": {
+        "depth": 0.95,
+        "slab": {
+         "h": 1.0,
+         "slot": "slab"
+        },
+        "rail": {
+         "kind": "bars",
+         "h": 1.2,
+         "slot": "rail",
+         "top": "slab"
+        },
+        "back": {
+         "w": 2.4,
+         "h": 1.95,
+         "sill": 1.1,
+         "mull": 1,
+         "rows": 1,
+         "glass": "glass"
+        },
+        "w": 2.9
+       }
+      },
+      {
+       "kind": "balcony",
+       "balcony": {
+        "depth": 0.95,
+        "slab": {
+         "h": 1.0,
+         "slot": "slab"
+        },
+        "rail": {
+         "kind": "bars",
+         "h": 1.2,
+         "slot": "rail",
+         "top": "slab"
+        },
+        "back": {
+         "w": 2.4,
+         "h": 1.95,
+         "sill": 1.1,
+         "mull": 1,
+         "rows": 1,
+         "glass": "glass"
+        },
+        "w": 2.9
+       }
+      },
+      {
+       "kind": "balcony",
+       "balcony": {
+        "depth": 0.95,
+        "slab": {
+         "h": 1.0,
+         "slot": "slab"
+        },
+        "rail": {
+         "kind": "glass",
+         "h": 1.2,
+         "slot": "glassRail",
+         "top": "slab"
+        },
+        "back": {
+         "w": 2.4,
+         "h": 1.95,
+         "sill": 1.1,
+         "mull": 1,
+         "rows": 1,
+         "glass": "glass"
+        },
+        "w": 2.9
+       }
+      }
+     ]
+    },
+    "4": {
+     "kind": "wall",
+     "cycle": [
+      {
+       "kind": "glazed",
+       "win": {
+        "w": 2.7,
+        "h": 2.65,
+        "sill": 0.35,
+        "mull": 4,
+        "rows": 1,
+        "sillSlot": "stone",
+        "sillH": 0.3,
+        "sillOut": 0.25,
+        "louvre": {
+         "w": 0.32
+        }
+       }
+      },
+      {
+       "kind": "glazed",
+       "win": {
+        "w": 2.6,
+        "h": 2.65,
+        "sill": 0.35,
+        "mull": 4,
+        "rows": 1,
+        "sillSlot": "stone",
+        "sillH": 0.3,
+        "sillOut": 0.25
+       }
+      },
+      {
+       "kind": "glazed",
+       "win": {
+        "w": 2.6,
+        "h": 2.65,
+        "sill": 0.35,
+        "mull": 4,
+        "rows": 1,
+        "sillSlot": "stone",
+        "sillH": 0.3,
+        "sillOut": 0.25
+       }
+      },
+      {
+       "kind": "glazed",
+       "win": {
+        "w": 2.6,
+        "h": 2.65,
+        "sill": 0.35,
+        "mull": 4,
+        "rows": 1,
+        "sillSlot": "stone",
+        "sillH": 0.3,
+        "sillOut": 0.25
+       }
+      },
+      {
+       "kind": "glazed",
+       "win": {
+        "w": 2.6,
+        "h": 2.65,
+        "sill": 0.35,
+        "mull": 4,
+        "rows": 1,
+        "sillSlot": "stone",
+        "sillH": 0.3,
+        "sillOut": 0.25
+       }
+      }
+     ]
+    },
+    "5": {
+     "kind": "wall",
+     "cycle": [
+      {
+       "kind": "glazed",
+       "win": {
+        "w": 2.7,
+        "h": 2.65,
+        "sill": 0.35,
+        "mull": 4,
+        "rows": 1,
+        "sillSlot": "stone",
+        "sillH": 0.3,
+        "sillOut": 0.25,
+        "louvre": {
+         "w": 0.32
+        }
+       }
+      },
+      {
+       "kind": "glazed",
+       "win": {
+        "w": 2.6,
+        "h": 2.65,
+        "sill": 0.35,
+        "mull": 4,
+        "rows": 1,
+        "sillSlot": "stone",
+        "sillH": 0.3,
+        "sillOut": 0.25
+       }
+      },
+      {
+       "kind": "glazed",
+       "win": {
+        "w": 2.6,
+        "h": 2.65,
+        "sill": 0.35,
+        "mull": 4,
+        "rows": 1,
+        "sillSlot": "stone",
+        "sillH": 0.3,
+        "sillOut": 0.25
+       }
+      },
+      {
+       "kind": "glazed",
+       "win": {
+        "w": 2.6,
+        "h": 2.65,
+        "sill": 0.35,
+        "mull": 4,
+        "rows": 1,
+        "sillSlot": "stone",
+        "sillH": 0.3,
+        "sillOut": 0.25
+       }
+      },
+      {
+       "kind": "glazed",
+       "win": {
+        "w": 2.6,
+        "h": 2.65,
+        "sill": 0.35,
+        "mull": 4,
+        "rows": 1,
+        "sillSlot": "stone",
+        "sillH": 0.3,
+        "sillOut": 0.25
+       }
+      }
+     ]
+    },
+    "6": {
+     "kind": "wall",
+     "cycle": [
+      {
+       "kind": "pointed",
+       "pointed": {
+        "w": 2.7,
+        "bottom": 1.0,
+        "shoulder": 5.9,
+        "apex": 7.9,
+        "ledge": {
+         "v0": 3.2,
+         "v1": 3.6,
+         "slot": "stone",
+         "out": 0.2
+        },
+        "lowerCols": 3,
+        "lowerRows": 2,
+        "upperCols": 3,
+        "upperRows": 3,
+        "frame": "stone"
+       }
+      },
+      {
+       "kind": "pointed",
+       "pointed": {
+        "w": 2.7,
+        "bottom": 1.0,
+        "shoulder": 5.9,
+        "apex": 7.9,
+        "ledge": {
+         "v0": 3.2,
+         "v1": 3.6,
+         "slot": "stone",
+         "out": 0.2
+        },
+        "lowerCols": 3,
+        "lowerRows": 2,
+        "upperCols": 3,
+        "upperRows": 3,
+        "frame": "stone"
+       }
+      },
+      {
+       "kind": "pointed",
+       "pointed": {
+        "w": 2.7,
+        "bottom": 1.0,
+        "shoulder": 5.9,
+        "apex": 7.9,
+        "ledge": {
+         "v0": 3.2,
+         "v1": 3.6,
+         "slot": "stone",
+         "out": 0.2
+        },
+        "lowerCols": 3,
+        "lowerRows": 2,
+        "upperCols": 3,
+        "upperRows": 3,
+        "frame": "stone"
+       }
+      },
+      {
+       "kind": "pointed",
+       "pointed": {
+        "w": 2.7,
+        "bottom": 1.0,
+        "shoulder": 5.9,
+        "apex": 7.9,
+        "ledge": {
+         "v0": 3.2,
+         "v1": 3.6,
+         "slot": "stone",
+         "out": 0.2
+        },
+        "lowerCols": 3,
+        "lowerRows": 2,
+        "upperCols": 3,
+        "upperRows": 3,
+        "frame": "stone"
+       }
+      },
+      {
+       "kind": "pointed",
+       "pointed": {
+        "w": 2.7,
+        "bottom": 1.0,
+        "shoulder": 5.9,
+        "apex": 7.9,
+        "ledge": {
+         "v0": 3.2,
+         "v1": 3.6,
+         "slot": "stone",
+         "out": 0.2
+        },
+        "lowerCols": 3,
+        "lowerRows": 2,
+        "upperCols": 3,
+        "upperRows": 3,
+        "frame": "stone"
+       }
+      }
+     ]
     }
-  },
-  "signs": [ { "text": "HET PAKHUIS", "at": [-5.8, -4.2], "v": 6.35, "height": 0.62, "slot": "sign", "span": 17.5 } ]
+   }
+  }
+ },
+ "signs": [
+  {
+   "text": "HET PAKHUIS",
+   "at": [
+    -5.8,
+    -4.2
+   ],
+   "v": 6.6,
+   "height": 0.5,
+   "slot": "sign",
+   "span": 17.9,
+   "stretch": 1.45
+  }
+ ]
 }
