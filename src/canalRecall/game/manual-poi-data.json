@@ -1943,5 +1943,17 @@
     "description": "The Woonbootmuseum, or Houseboat Museum, is dedicated to the history and culture of living on the water. It lies on the Prinsengracht, on the edge of the Jordaan, aboard the Hendrika Maria, a historic inland vessel from 1914.",
     "funFact": "It is the only museum in the world specifically focused on houseboat living.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Woonbootmuseum"
-  }
+  },
+{
+  "modelId": "sea-palace",
+  "landmarkId": "n13404202880",
+  "name": "Sea Palace",
+  "description": "Sea Palace is a Chinese restaurant that floats beside Oosterdokskade, a short walk from Amsterdam Centraal. Its pagoda architecture of stacked green-tiled roofs, red columns and dark balustrades rises through three floors to a roof terrace, and has been a landmark of the city centre for decades.",
+  "funFact": "Sea Palace describes itself as the first floating restaurant in Europe; about 600 seats are spread over its three floors, and it holds a Bib Gourmand for its Cantonese cooking and dim sum.",
+  "sourceUrl": "https://seapalace.nl/en/about-us/",
+  "additionalSources": [
+    "https://seapalace.nl/en/"
+  ],
+  "preferDescription": true
+}
 ]

@@ -1,0 +1,11 @@
+{
+  "name": "Sea Palace",
+  "landmarkId": "n13404202880",
+  "sourceUrl": "https://seapalace.nl/en/about-us/",
+  "suppressOsmIds": ["w454006714"],
+  "anchor": [4.906286, 52.375758],
+  "ringLngLat": [[4.905965, 52.375726], [4.905962, 52.375727], [4.905961, 52.375729], [4.905961, 52.375731], [4.905961, 52.375732], [4.906107, 52.375919], [4.906109, 52.37592], [4.906112, 52.375921], [4.906114, 52.375921], [4.906117, 52.375921], [4.906137, 52.375915], [4.906336, 52.375857], [4.906402, 52.375837], [4.9066, 52.375779], [4.90662, 52.375773], [4.906623, 52.375772], [4.906624, 52.375771], [4.906624, 52.375769], [4.906624, 52.375767], [4.906478, 52.375581], [4.906476, 52.375579], [4.906474, 52.375579], [4.906471, 52.375578], [4.906468, 52.375579], [4.905965, 52.375726]],
+  "materialOverrides": {"brick": "#6d3c2e", "red": "#a9241f", "green": "#4e7a60", "dark": "#24272a", "gold": "#c9a24b", "glass": "#3f5058", "white": "#e8e2d3", "stone": "#6b6a66"},
+  "surveySource": "Houseboat-extract outline w454006714 (the OSM way that contains the Sea Palace POI); native east/south metres from the POI, water level at y=0, scale 1. Heights from the 2025 municipal panorama and the OSM height tags; approximate.",
+  "modifications": "Original texture-free floating-pagoda model: pontoon on the real outline, three tiers with red columns, dark balustrades with gold medallions, green tiled eave skirts and a hipped roof, read from the 2025 street-level panorama. Heights approximate. No imported mesh or photo textures."
+}

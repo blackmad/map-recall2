@@ -1,14 +1,12 @@
 {
   "id": "n13404202880",
+  "modelId": "sea-palace",
   "name": "Sea Palace",
-  "draftStatus": "source-hold; coordinator must adapt genuine extract identity without duplicate destination",
-  "funFact": "Sea Palace has floated beside Oosterdokskade since 1984. Its three floors house Cantonese dining and private events, with a roof terrace reached from the top floor. The restaurant is known for handmade dim sum and its Chinese pavilion architecture.",
-  "sourceUrls": [
-    "https://seapalace.nl/en/",
-    "https://seapalace.nl/en/about-us/",
-    "https://seapalace.nl/en/directions/"
-  ],
+  "description": "Sea Palace is a Chinese restaurant that floats beside Oosterdokskade, a short walk from Amsterdam Centraal. Its pagoda architecture of stacked green-tiled roofs, red columns and dark balustrades rises through three floors to a roof terrace, and has been a landmark of the city centre for decades.",
+  "funFact": "Sea Palace describes itself as the first floating restaurant in Europe; about 600 seats are spread over its three floors, and it holds a Bib Gourmand for its Cantonese cooking and dim sum.",
+  "sourceUrl": "https://seapalace.nl/en/about-us/",
+  "additionalSources": ["https://seapalace.nl/en/"],
   "lat": 52.375758,
   "lng": 4.906286,
-  "pinNotes": "Existing mapped restaurant point only; this is not an accepted route-finish pin. Verify quay public gangway before integration."
+  "pinNotes": "Existing mapped restaurant point only; the quay gangway is not surveyed."
 }
