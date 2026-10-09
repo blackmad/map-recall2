@@ -346,7 +346,7 @@ export class SignatureLandmarks {
       const image = new Image();
       image.src = new URL('materials/ambientcg/Bricks057/colour.jpg', document.baseURI).href;
       this._recipeLookReady = image.decode().then(() => image, () => null)
-        .then(brick => { this._recipeLook = createRecipeLook(THREE, { brick, anisotropy: 4 }); return this._recipeLook; });
+        .then(brick => { this._recipeLook = createRecipeLook(THREE, { brick, anisotropy: window.matchMedia?.('(pointer: coarse)').matches ? 1 : 4 }); return this._recipeLook; });
     }
     return this._recipeLookReady.then(look => { look.apply(gltf.scene); gltf.scene.userData.recipeLook = true; return gltf; });
   }
