@@ -1,3 +1,4 @@
+import {buildAronSchusterSynagoge} from './aron-schuster-synagoge-builder';
 import {buildMuiderkerk} from './muiderkerk-builder';
 import {buildClubPanama} from './club-panama-builder';
 import {buildCompagnietheater} from './compagnietheater-builder';
@@ -338,7 +339,8 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   else if(id.startsWith('olvg-'))hospital(id);
   else {
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
-    if(id==='muiderkerk')buildMuiderkerk(w,d,helpers);
+    if(id==='aron-schuster-synagoge')buildAronSchusterSynagoge(w,d,helpers);
+    else if(id==='muiderkerk')buildMuiderkerk(w,d,helpers);
     else if(id==='nassaukerk')buildNassaukerk(w,d,helpers);
     else if(id==='koningskerk')buildKoningskerk(w,d,helpers);
     else if(id==='sint-olofskapel')buildSintOlofskapel(w,d,helpers);
