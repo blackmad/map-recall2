@@ -259,7 +259,9 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
   const read = <V>(field: Measured<V>, name: string): V => {
     if(field.source === 'default') throw new Error(`${name} is unobserved`);
     const category=name.split('/').at(-1)!;
-    const sources=category==='footprint'?['bag','3dbag','reviewed']:['roof','shellTopM'].includes(category)?['3dbag','ahn','reviewed']:['streetlevel-measured','reviewed'];
+    const sources=category==='footprint'?['bag','3dbag','reviewed']:['roof','shellTopM'].includes(category)?['3dbag','ahn','reviewed']:
+      // Survey-derived frontage datums (body eaves, plane tolerance) may come from 3DBAG/AHN.
+      ['bodyEavesM','frontageToleranceM','frontagePlan'].includes(category)?['3dbag','ahn','streetlevel-measured','reviewed']:['streetlevel-measured','reviewed'];
     // CanalHouse semantic fields retain their own authoritative competence audit.
     if(!['eavesHeightM','gable'].includes(category)&&!sources.includes(field.source))throw new Error(`${name} evidence violation: incompetent-source`);
     const issues = auditFields(recipe.house.pandId,{[name]:field},observations);
