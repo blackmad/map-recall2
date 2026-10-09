@@ -1,3 +1,6 @@
+import {buildClubPanama} from './club-panama-builder';
+import {buildCompagnietheater} from './compagnietheater-builder';
+import {buildWestIndiaHouse} from './west-india-house-builder';
 import {buildNassaukerk} from './nassaukerk-builder';
 import {buildKoningskerk} from './koningskerk-builder';
 import {buildSintOlofskapel} from './sint-olofskapel-builder';
@@ -188,7 +191,10 @@ import {buildSintAgneskerk} from './sint-agneskerk-builder';
 import {buildPetruskerk} from './petruskerk-builder';
 import {buildBoomkerk} from './boomkerk-builder';
 import hospitals from './hospital-footprints.json';
-import {MANUAL_LANDMARKS} from '../../src/canalRecall/landmarks/manualModels';
+import {MANUAL_LANDMARKS as ACTIVE_LANDMARKS} from '../../src/canalRecall/landmarks/manualModels';
+import heldCatalogue from '../../src/canalRecall/landmarks/manualCatalogue.json';
+// Held models are out of the game but must stay rebuildable: they load when named in --only.
+const MANUAL_LANDMARKS=[...ACTIVE_LANDMARKS,...(heldCatalogue as unknown as {id:string;status?:string}[]).filter(e=>e.status==='held'&&process.argv.join(' ').includes(e.id)&&!ACTIVE_LANDMARKS.some(a=>a.id===e.id))] as unknown as typeof ACTIVE_LANDMARKS;
 import {placementFor, scaledExtent} from '../../src/canalRecall/landmarks/signaturePlacement';
 const out=path.resolve('public/canal-drive/models');
 const palette={brick:'#9a5240',stone:'#cfc2a6',slate:'#4a525d',white:'#efe9db',gold:'#d9b24c',glass:'#527787',dark:'#303b43',frame:'#9daaa8',red:'#ac624e',blue:'#3f5f9a',pink:'#be9295',bronze:'#3d5148',copper:'#43888b',green:'#718b58',ochre:'#9f825c',concrete:'#d4d5d0',greyBrick:'#7d7871'};
@@ -344,6 +350,9 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='keizersgrachtkerk')buildKeizersgrachtkerk(w,d,helpers);
     else if(id==='torture-museum')buildTortureMuseum(w,d,helpers);
     else if(id==='houseboat-museum')buildHouseboatMuseum(w,d,helpers);
+    else if(id==='club-panama')buildClubPanama(w,d,helpers);
+    else if(id==='compagnietheater')buildCompagnietheater(w,d,helpers);
+    else if(id==='west-india-house')buildWestIndiaHouse(w,d,helpers);
     else if(id==='pathe-de-munt')buildPatheDeMunt(w,d,helpers,(g,hex)=>addDecal(g,hex));
     else if(id==='theo-thijssen-museum')buildTheoThijssenMuseum(w,d,helpers);
     else if(id==='this-is-holland')buildThisIsHolland(w,d,helpers);
