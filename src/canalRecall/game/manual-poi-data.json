@@ -1867,5 +1867,14 @@
     ],
     "note": "Lekstraat 61 approach derived from current BAG frontage and municipal panorama."
   }
+},
+{
+  "modelId": "petrus-en-paulus-kerk",
+  "landmarkId": "extract_landmarks_1828911806",
+  "name": "Sint-Petrus-en-Pauluskerk",
+  "description": "This Old Catholic church on Ruysdaelstraat was delivered in 1914 and, with its parsonage and schoolroom, forms one complex designed by Johan W.F. Hartkamp jr., a pupil of H.P. Berlage. It continues the hidden church De Ooievaar from the Barndesteeg.",
+  "funFact": "The church keeps a Dordrecht Rotating Tabernacle from 1789, a gift to the Amsterdam parish that reached it through De Ooievaar; one of its makers was Jacob van Strij.",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Sint-Petrus-en-Pauluskerk_%28Amsterdam%29",
+  "preferDescription": true
 }
 ]
