@@ -1,0 +1,46 @@
+{
+  "id": "luther-museum",
+  "name": "Luther Museum Amsterdam",
+  "landmarkId": "extract_landmarks_218084814",
+  "modelUrl": "./models/luther-museum.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012164939",
+    "r3604195",
+    "w269000350"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.9091,
+      52.3654
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 108.9,
+    "widthMetres": 64.7
+  },
+  "surveyed": {
+    "anchor": [
+      4.9091,
+      52.3654
+    ],
+    "northOffsetDegrees": 0
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 151,
+  "materialOverrides": {
+    "brick": "#806455",
+    "stone": "#b7b1a1",
+    "slate": "#655f57",
+    "white": "#eae7dc",
+    "copper": "#7da599",
+    "glass": "#63838c"
+  },
+  "attribution": {
+    "title": "Wittenberg / Luther Museum Amsterdam",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/525060",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native BAG parent with two courtyards and later wing; surveyed supported roof domains, photo-guided original apertures and stone entrances. Scale1. Window dimensions and trim depths approximate; no imported mesh or photo textures."
+  }
+}
