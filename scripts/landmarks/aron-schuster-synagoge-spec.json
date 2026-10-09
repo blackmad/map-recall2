@@ -1,0 +1,49 @@
+{
+  "id": "aron-schuster-synagoge",
+  "name": "Raw Aron Schuster Synagoge",
+  "landmarkId": "extract_landmarks_86609524",
+  "modelUrl": "./models/aron-schuster-synagoge.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012074574"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.877436130007154,
+      52.35262212080447
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 36,
+    "widthMetres": 33
+  },
+  "surveyed": {
+    "anchor": [
+      4.877436130007154,
+      52.35262212080447
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012074574 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#8a5a47",
+    "stone": "#c9bfa8",
+    "slate": "#4f4d4a",
+    "glass": "#6f8590",
+    "dark": "#2b2a2a",
+    "white": "#e4dfd0",
+    "frame": "#2f3436",
+    "concrete": "#cfcabd",
+    "greyBrick": "#7d6a60",
+    "gold": "#c9a64a"
+  },
+  "attribution": {
+    "title": "Raw Aron Schuster Synagoge",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Raw_Aron_Schuster_Synagoge",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
+  }
+}

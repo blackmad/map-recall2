@@ -1,0 +1,14 @@
+{
+  "id": "muiderkerk",
+  "bagPand": "NL.IMBAG.Pand.0363100012118480",
+  "retrieved": "2026-10-10",
+  "sources": [
+    {"url": "https://nl.wikipedia.org/wiki/Muiderkerk", "use": "history: church of 1892, burned 1989, tower kept, 1997 complex by Van Hoogevest, tower restored early 2010s, Wensplein voor vrede 2008", "licence": "CC BY-SA 4.0 (text, facts only)"},
+    {"url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012118480", "use": "LoD2.2 massing; roof 22.2 m, tower top 43.7 m", "licence": "CC BY 4.0 (3DBAG)"},
+    {"url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012118480&f=json", "use": "BAG footprint", "licence": "CC0 (BAG)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-19_10-17-35_00877/", "use": "ref-west.jpg: tower front (porch, first-floor window, rose, flank arched windows with gable shoulders), captured 2025-06-19", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-26_10-39-18_00199/", "use": "ref-south.jpg: 1997 block ground floors and granite cladding, captured 2025-09-26", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-19_10-17-35_00882/", "use": "ref-top.jpg: tower stages and lantern, captured 2025-06-19", "licence": "Amsterdam municipal panorama (CC0)"}
+  ],
+  "notes": "3DBAG renders the tower and the two flank bays as stepped needles up to 32-43 m; everything above the block roof (22.2 m) is dropped and rebuilt. Tower is a 6.5 m square projecting 4.4 m ahead of two 4 m flank bays whose brick gable shoulders rise to it. The brief's '1920s' description is wrong: tower 1892, block 1997. North face and east rear are inferred (no street photo; the north panorama hit a neighbouring building). Vincentiuskerk was demolished in 1989 (skipped)."
+}
