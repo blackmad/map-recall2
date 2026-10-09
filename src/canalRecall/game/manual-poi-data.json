@@ -1810,5 +1810,13 @@
       ],
       "note": "Public forecourt gate on Haarlemmerstraat; derived from current BAG frontage and inspected 2025 municipal panorama, approximate within 2m. Preserve original destination unless routing requires public-entrance correction."
     }
+  },
+  {
+    "modelId": "museum-amsterdam-noord",
+    "landmarkId": "extract_landmarks_2034905768",
+    "name": "Museum Amsterdam Noord",
+    "description": "Museum Amsterdam Noord is a cultural-history museum on the corner of Zamenhofstraat and Meeuwenlaan in Amsterdam-Noord. Since April 2009 it has occupied the municipal bath house that was built in 1919 for the garden village of Vogeldorp, whose houses had no bathrooms. It holds a modest historical collection and a space for exhibitions, lectures and film evenings.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Museum_Amsterdam_Noord",
+    "additionalSources": []
   }
 ]
