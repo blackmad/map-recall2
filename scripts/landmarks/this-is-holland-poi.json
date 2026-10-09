@@ -1,0 +1,9 @@
+{
+ "id":"extract_landmarks_1851417932","name":"This is Holland","lat":52.3842002,"lng":4.902329,
+ "sourceUrl":"https://www.damastarchitects.nl/this-is-holland-amsterdam",
+ "funFact":"The pavilion recalls the oil drums that once stood on Shell’s Overhoeks site. Its raised silver drum houses the flight experience above a six-metre-high sawtooth glass foyer, supported by mushroom-shaped columns rising from the underground garage.",
+ "description":"Opened in2017, This is Holland uses moving seats and a panoramic screen for a simulated flight over Dutch landscapes. Its circular pavilion stands between Eye and A’DAM Toren.",
+ "sources":["https://www.damastarchitects.nl/this-is-holland-amsterdam","https://cauberghuygen.nl/project/this-is-holland/","https://www.thisisholland.com/en/contact/"],
+ "publicEntrance":{"lat":52.3841332,"lng":4.9024943,"sourceUrl":"https://www.openstreetmap.org/node/11182027586"},
+ "rootIntegration":"Reuse existing genuine extract identity and researched opening date; enrich useful card. Retain supplied existing destination unless route reachability requires moving to sourced main entrance. Do not create duplicate POI. Actual physical click must hit this identity."
+}
