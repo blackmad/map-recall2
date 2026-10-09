@@ -1,0 +1,30 @@
+{
+  "id": "haparandaweg-65",
+  "pandId": "0363100012238475",
+  "name": "Haparandaweg 65",
+  "palette": {
+    "wall": "#9b958b", "roof": "#6e706f", "frame": "#d9d7cf", "glass": "#59666c", "slab": "#85807a",
+    "rail": "#7b756e", "glassRail": "#8aa0a3", "dark": "#2f3133", "door": "#d9d7cf", "stone": "#85807a", "sign": "#e0ddd2", "terracotta": "#8e3f3a"
+  },
+  "levels": { "groundM": 3.6, "storeyM": 3.0 },
+  "default": "render",
+  "rules": [ { "bearing": [130, 150], "minWidth": 30, "system": "terraLeft" }, { "bearing": [180, 300], "system": "terra" } ],
+  "systems": {
+    "terraLeft": {
+      "pitch": 3.2, "cladding": { "slot": "terracotta", "from": 3.6, "u": [0, 0.38] },
+      "ground": { "kind": "glazed", "win": { "w": 0.85, "h": 0.8, "sill": 0.15, "mull": 3, "transom": 0.62, "frame": "frame" }, "door": { "bays": [0, 2], "w": 1.1, "h": 2.2, "slot": "door" } },
+      "typical": { "kind": "punched", "win": { "w": 0.5, "h": 0.55, "sill": 0.8, "mull": 1, "frame": "frame" } }
+    },
+    "terra": {
+      "pitch": 3.2, "cladding": { "slot": "terracotta", "from": 3.6 },
+      "ground": { "kind": "glazed", "win": { "w": 0.85, "h": 0.8, "sill": 0.15, "mull": 3, "transom": 0.62, "frame": "frame" }, "door": { "bays": [0, 2], "w": 1.1, "h": 2.2, "slot": "door" } },
+      "typical": { "kind": "punched", "win": { "w": 0.5, "h": 0.55, "sill": 0.8, "mull": 1, "frame": "frame" } }
+    },
+    "render": {
+      "pitch": 3.2,
+      "ground": { "kind": "glazed", "win": { "w": 0.85, "h": 0.8, "sill": 0.15, "mull": 3, "transom": 0.62, "frame": "frame" }, "door": { "bays": [0, 2], "w": 1.1, "h": 2.2, "slot": "door" } },
+      "typical": { "kind": "punched", "win": { "w": 0.5, "h": 0.55, "sill": 0.8, "mull": 1, "frame": "frame" } }
+    }
+  },
+  "signs": []
+}
