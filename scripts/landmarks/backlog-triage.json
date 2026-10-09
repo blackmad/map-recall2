@@ -160,6 +160,18 @@
   "CEDLA Library": {
    "kind": "skip",
    "note": "Library occupies part of an ordinary building (reading room inside a university canal complex); BAG triage 2026-10-10, not photo-checked."
+  },
+  "Elthetokerk": {
+   "kind": "skip",
+   "note": "Demolished in 1992 (nl.wikipedia); every BAG pand within ~60 m is 1912–16 housing. Keep as a quiz POI only."
+  },
+  "Max Euwe Centrum": {
+   "kind": "skip",
+   "note": "Rooms inside the former Huis van Bewaring block (pand 0363100012168688), which De Balie models."
+  },
+  "Bijzondere Collecties": {
+   "kind": "skip",
+   "note": "University library inside a canal-house block (pand 0363100012168172), not a distinct building."
   }
  }
 }

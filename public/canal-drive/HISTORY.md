@@ -1,5 +1,34 @@
 # Canal Recall — what is built
 
+## Facade comparison gate; Thomaskerk and Vrijburg; queue triage (2026-10-10)
+
+Het Pakhuis passed review with scattered windows on a front the photo shows
+as five symmetric gabled bays, so "looks roughly right" is no longer
+acceptance. `npm run compare:facades -- --id=<id>` renders each declared
+facade of the GLB orthographically (material z-buffer; `glass` and `dark` on
+viewer-facing faces count as openings), boxes the openings, and compares
+openings per storey, window axes, mirror symmetry (IoU) and silhouette peaks
+with `<id>-elevations.json`, counted blind from the reference photo. It
+writes photo | elevation images per facade. On Pakhuis's rear it measures 9
+axes and symmetry 0.28. Calibration on 25 installed landmarks: blind counts
+by Haiku on oblique, obstructed panorama thumbnails were too noisy to gate on
+(every facade carried an obstruction note), so the counts stay out of the
+committed specs; the side-by-side images were the useful output and found
+the Royal Palace (no central risalit, no entrance arches, uniform grid) and
+De Balie (red brick and two storeys; the building is pale stone, three
+storeys) as clear misses.
+
+Installed after contact-sheet and elevation review: Thomaskerk (Sijmons
+1966) and Vrijburg (Diepenbrockstraat, 1931–33). Held: Willem de
+Zwijgerkerk (entrance wing missing; reworked on its branch since) and Van
+Gendt Hallen (gable corbel friezes, steel windows, 3DBAG gable artefacts).
+The OBA libraries, CEDLA, Max Euwe Centrum and Bijzondere Collecties are
+rooms in ordinary buildings, Elthetokerk was demolished in 1992; these and a
+Haiku triage of the review queue (duplicates, sculptures, areas) live in
+`scripts/landmarks/backlog-triage.json`. User-requested venues stay open.
+The source archiver now collects `artifacts/landmark-lanes/<id>/ref*`, and
+ten recent models were backfilled to the private source repository.
+
 ## Het Pakhuis v2 built from a rhythm spec, still held (2026-10-10)
 
 `scripts/haparandaweg/het-pakhuis-rhythm.json` cites a photo for every bay
