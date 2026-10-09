@@ -438,3 +438,13 @@ export class PlayerTransit3D extends Vehicle3D {
     });
   }
 }
+
+/** Double-ended IJ ferry at its real street-scene scale. */
+export class PlayerFerry3D extends Vehicle3D {
+  constructor(map, maplibregl) {
+    super(map, maplibregl, {
+      id: 'player-ferry-3d', modelUrl: assetUrl('./gvb-ferry-runtime.glb'),
+      label: 'IJ ferry', gameScale: 1, headingOffset: 0, normaliseTo: 33,
+    });
+  }
+}
