@@ -1,5 +1,20 @@
 # Canal Recall — what is built
 
+## Bilderdijkstraat: first street built from recipes, in the city look (2026-10-09)
+
+19 houses drafted from rectified panorama crops (~33 s per house from
+reference to first all-pass compile) and placed via shared-mesh instancing
+(17 meshes; mirrored instances flip winding; reference-counted cache). The
+first pass looked worse than the procedural neighbours (near-black brick and
+glass, flat roofs, 3DBAG roof spikes). `recipeLook.ts` now gives slot-tagged
+recipe materials the city's own shader (Bricks057 with coursing, reflective
+glass, pantile/slate textures, photo colours mapped into the city palette);
+new intent fields `archedStoreys`, `crownCapSpan`, `archRings`,
+`palette.band`; real shopfronts; `roofCleanup.ts` clamps small raised 3DBAG
+clusters and hips ridges run out to cornice fronts. Integrator review at
+street level: 10 houses better than their procedural neighbour, 9 the same.
+Phone ride perf unchanged (anisotropic filtering off on touch: it raised p95).
+
 ## Haparandaweg: eight more blocks, four installed (2026-10-09)
 
 User asked for every building on Haparandaweg. PDOK BAG lists 17 panden; 6

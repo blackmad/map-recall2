@@ -147,6 +147,11 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   650–706 (paired casements, stone bands), 708–744, 788–868 (glass bays);
   retry 940–950 with another photo source; 582–648 after scaffolding. The
   street sheet framing was poor (bike drawn over a roof) — reshoot.
+- **Recipe houses next**: stone window surrounds/quoins and awnings (the
+  procedural layer's remaining edge), shop-sign lettering, patterned banding,
+  per-house brick variation; fix `check-host-opening-availability` mock
+  (needs `SharedAssetCache`); then pilot street chunks (one mesh per block
+  face, party walls omitted) on Bilderdijkstraat.
 - **Large-tier follow-ups** (`src/canalRecall/largeBuildingTier.ts`,
   ranked list via `npm run audit:large-tier`): untuned buildings show a
   uniform window grid; tune next Roeterseiland/LLC, VU, Benno Premselahuis,
