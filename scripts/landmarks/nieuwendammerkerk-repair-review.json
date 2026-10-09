@@ -1,0 +1,42 @@
+{
+  "modelId": "nieuwendammerkerk",
+  "state": "source-recognition-repair-frozen-runtime-acceptance-pending",
+  "reviewedOn": "2026-10-08",
+  "assetSha256": "7dd13c274c3f51e29abd6c983bf69da2b6edad48b6a3cb5181fefb686294c295",
+  "triangles": 12289,
+  "bytes": 158008,
+  "sourceFiles": [
+    "models/nieuwendammerkerk/processed/00166.jpg",
+    "models/nieuwendammerkerk/raw/commons-Brede_Kerkepad_8.JPG"
+  ],
+  "cpuViews": [
+    "artifacts/nieuwendammerkerk-repair/current/nieuwendammerkerk-cpu-west-south.png",
+    "artifacts/nieuwendammerkerk-repair/current/nieuwendammerkerk-cpu-east-north.png"
+  ],
+  "findings": [
+    "Four narrow lower columns and nested arch recognizably match current00166 and2010Commons.",
+    "Nave assembly changes leave tower paired lights exposed and intact.",
+    "Source colors, gable/nave roof/spire proportions and original scope preserved.",
+    "East shoulder/projection and west gable all pass real FrontSide rays."
+  ],
+  "checks": {
+    "authoredAndDecoded": {
+      "fourColumnPaneHits": 24,
+      "uprightIronHits": 18,
+      "innerCurveHits": 24,
+      "outwardGableHits": 3
+    },
+    "existingSourcePaneSamples": 68,
+    "existingDecodedPaneSamples": 34,
+    "tinySlateTriangles": 0,
+    "textures": 0
+  },
+  "pending": [
+    "Independent affected-source comparison",
+    "Root actual gallery/live views",
+    "Route/pin/physical card",
+    "Resident neighbor/exact suppression",
+    "GPU/performance evidence"
+  ],
+  "preservedBefore": "artifacts/nieuwendammerkerk-repair/before/nieuwendammerkerk-10441.glb"
+}
