@@ -2190,30 +2190,30 @@
         "NL.IMBAG.Pand.0363100012185424",
         "NL.IMBAG.Pand.0363100012176752",
         "NL.IMBAG.Pand.0363100012171101",
-        "NL.IMBAG.Pand.0363100012172459"
+        "NL.IMBAG.Pand.0363100012172459",
+        "NL.IMBAG.Pand.0363100012169218"
       ],
       "latestBatch": [
-        "NL.IMBAG.Pand.0363100012172459"
+        "NL.IMBAG.Pand.0363100012169218"
       ],
       "evidence": "ordinary-buildings-data/prinsen767-review-20261009.json",
       "handoff": "docs/performance/2026-10-06/canal-belt-continuation-handoff.md",
-      "nextAction": "Publish accepted Leidsestraat/Kerkstraat ordinary38; continue repaired Keizersgracht 73 / Herengracht 54 through native game and next bounded source candidate. Continuous queue remains active.",
+      "nextAction": "Publish accepted Keizersgracht73/Herengracht54 ordinary39; continue authoring Herengracht204/208/216 full-architecture ordinary40. Continuous queue active.",
       "sourceCommit": "9fc691744e03b91f70899896033acdb6cbbd1a18",
       "notes": "Ordinary assets/full architecture review for defining Rokin roof assemblies; no invented POI routes. Existing Nacarat basic inside-footprint click card retained. Both strict500k/three-material budgets pass.",
-      "localModelCount": 38,
+      "localModelCount": 39,
       "hostedVerification": {
-        "publicModelCommit": "417684907ec5c961d09c1aeb46c5efe05c00673c",
-        "firebaseRun": "37891331087",
-        "verifiedAtUTC": "2026-10-09T06:08:52.188284+00:00",
-        "models": 35,
+        "publicModelCommit": "c50c1cc2fe7831e5043e1693110361257df98999",
+        "firebaseRun": 37921643001,
+        "models": 38,
         "allAssetHashesExact": true,
-        "manualDesktopTouchLoaded": 35,
-        "evidenceSourceCommit": "14f0cba144b311e1c961cb4997a262527873bc22",
-        "evidenceSourcePack": "experiments/canal-belt-continuation-20261007/hosted35-20261009"
+        "manualDesktopTouchLoaded": 38,
+        "evidenceSourceCommit": "c059bc7133cb7fe228780c35a95e897eb09cdcfc",
+        "evidenceSourcePack": "experiments/canal-belt-continuation-20261007/hosted38-review59"
       },
       "publicationSourceCommit": "695ec2b222e9ad4eb41add25711dd8e5ae3ebfe5",
       "pendingModels": [
-        "NL.IMBAG.Pand.0363100012172459"
+        "NL.IMBAG.Pand.0363100012169218"
       ],
       "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/native34-resume-20261008",
       "reviewPreparationCommit": "396603d052c1dc892425ff4ed6da0d449144d61f",
@@ -2505,7 +2505,7 @@
     {
       "id": "leids67-kerk52-ordinary-treatment",
       "task": "Model joined Leidsestraat67\u201371 / Kerkstraat50A/B,52 parent",
-      "status": "accepted-local-host-pending",
+      "status": "accepted-hosted",
       "priority": "high",
       "buildingIds": [
         "NL.IMBAG.Pand.0363100012172459"
@@ -2513,7 +2513,7 @@
       "sourceCommit": "e21680c666d878aa74d42fe74b7c9a103bfee5ca",
       "sourcePack": "experiments/canal-belt-continuation-20261007/next-ordinary38-source51",
       "scope": "One joined native parent with surviving Roobol broad-window frontage and historic double-neck-gable frontage; preserve external notches and existing Club Church basic mapped card. Full architectural loop, no new curated destination.",
-      "nextAction": "Final model/source review complete; publish and verify actual hosted asset, gallery and native game.",
+      "nextAction": "Scoped source/gallery/native/hosted review complete.",
       "draftHash": "bb1bcea2396bac298bcfbadbb55012c9a99f6aa2e75181cfc807cd648b114ce1",
       "gpuFailureEvidence": {
         "sourceCommit": "d6509d17f",
@@ -2522,12 +2522,18 @@
       },
       "assetHash": "bb1bcea2396bac298bcfbadbb55012c9a99f6aa2e75181cfc807cd648b114ce1",
       "reviewEvidenceCommit": "8732ed43c5291d04ef31b0803377d75978c8d073",
-      "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/leids67-final-native56/0363100012172459"
+      "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/leids67-final-native56/0363100012172459",
+      "hostedVerification": {
+        "publicCommit": "c50c1cc2fe7831e5043e1693110361257df98999",
+        "firebaseRun": 37921643001,
+        "sourceCommit": "c059bc7133cb7fe228780c35a95e897eb09cdcfc",
+        "sourcePack": "experiments/canal-belt-continuation-20261007/hosted38-review59"
+      }
     },
     {
       "id": "keizers73-heren54-ordinary-treatment",
       "task": "Model joined Keizersgracht 73/A\u2013F / Herengracht 54 native parent",
-      "status": "basement-repaired-gallery-review-pending",
+      "status": "accepted-local-host-pending",
       "priority": "high",
       "buildingIds": [
         "NL.IMBAG.Pand.0363100012169218"
@@ -2536,7 +2542,25 @@
       "sourcePack": "experiments/canal-belt-continuation-20261007/next-ordinary39-source55",
       "draftHash": "ddde83d49f2e2cee5b6bddcb45d6356fe1f083336a6df1940ec605c2291f2844",
       "priorFailures": "Outer-only roof extraction filled source holes; corrected all raw rings. Failed 704a front stairs buried upper basement door; sideways stair repair awaits actual GPU and native game review. Preserve survey val3dity 303 / RMSE 0.798 uncertainty and uncapped 23.26 m\u00b2 fringe.",
-      "nextAction": "Independent repaired GPU then root native desktop/touch, exact six neighbors, fallback, ordinary click policy and performance; private final archive before publication."
+      "nextAction": "Publish and verify actual hosted asset/gallery/native game; local source/gallery/runtime/performance all passed.",
+      "assetHash": "5f613466104de0eaf7c44cb749472d1c094fbcf7f68289e5c8d8b707059fabfe",
+      "reviewEvidenceCommit": "45bd88d9c1a49f79ba0a5990627a88d9995949f5",
+      "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/keizers73-final-review57/0363100012169218"
+    },
+    {
+      "id": "heren204-216-ordinary-treatment",
+      "task": "Model Herengracht204/208/216 parent, former bank206\u2013214 and distinct flank houses",
+      "status": "authoring",
+      "priority": "high",
+      "buildingIds": [
+        "NL.IMBAG.Pand.0363100012164992"
+      ],
+      "sourceCommit": "82d2b738eab30911ee7e8c965824eb70bd7b2d36",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-ordinary40-source58",
+      "independentSourceCommit": "45bd88d9c1a49f79ba0a5990627a88d9995949f5",
+      "scope": "Full architectural loop; seven-bay bank plus two narrow flanks, all34 original roofs and rear planted garden. No invented POI.",
+      "sourceCorrections": "204 door bank-adjacent viewer-left;216 mirrored viewer-right; both two upper3-window rows. Roof31 inner rings covered by raised5/14owners, not open wells.",
+      "nextAction": "Author original native geometry; independent decoded/source and root/independent gallery/live-game reviews before acceptance."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

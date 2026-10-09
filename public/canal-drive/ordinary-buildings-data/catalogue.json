@@ -21884,7 +21884,7 @@
         "Exact CHURCH sign typeface unresolved: Anton Regular approximate condensed bold grotesk outlines, measured source-guided panel/spacing; source word retained on both blade faces.",
         "Rear aperture counts unresolved; no invented ornate rear windows."
       ],
-      "reviewState": "Local source, gallery, desktop/touch gameplay and performance accepted; hosted verification pending.",
+      "reviewState": "Accepted and hosted; hashes/gallery/native desktop and touch verified.",
       "retainedNeighbors": [
         "NL.IMBAG.Pand.0363100012169041",
         "NL.IMBAG.Pand.0363100012172452",
@@ -21904,7 +21904,622 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012172459",
         "https://data.amsterdam.nl/data/"
       ],
-      "acceptance": "Scoped full architectural loop passed; hosted verification pending."
+      "acceptance": "Scoped full architectural loop passed; hosted verification pending.",
+      "hostedVerification": {
+        "publicCommit": "c50c1cc2fe7831e5043e1693110361257df98999",
+        "firebaseRun": 37921643001,
+        "sourceCommit": "c059bc7133cb7fe228780c35a95e897eb09cdcfc",
+        "sourcePack": "experiments/canal-belt-continuation-20261007/hosted38-review59"
+      }
+    },
+    {
+      "id": "ordinary-0363100012169218",
+      "bytes": 220380,
+      "sha256": "5f613466104de0eaf7c44cb749472d1c094fbcf7f68289e5c8d8b707059fabfe",
+      "materials": 3,
+      "textures": 0,
+      "triangles": 12228,
+      "bounds": {
+        "min": [
+          -42.53959274291992,
+          -0.0004990265588276088,
+          -21.237667083740234
+        ],
+        "max": [
+          54.630340576171875,
+          22.492752075195312,
+          35.722633361816406
+        ]
+      },
+      "scale": 1,
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012169218"
+      ],
+      "scope": "One native joined canal-house parent with distinct source-supported street fronts, low rear roofs and protected survey hole.",
+      "sourceCommit": "2da8260fedb128bd297b3d1f70fc93947e2c2a11",
+      "probes": 766,
+      "unresolvedRoofCoverage": [
+        {
+          "surface": -1,
+          "ring": [
+            [
+              31.420366990902657,
+              25.603959290070293
+            ],
+            [
+              27.060300273188787,
+              23.927567825995997
+            ],
+            [
+              30.95163887874123,
+              26.08816941187513
+            ]
+          ],
+          "holes": [],
+          "plane": [
+            0,
+            0,
+            0
+          ],
+          "areaMetres2": 1.4484801213302578,
+          "nearestOwnerDistance": 4.625870542632481
+        },
+        {
+          "surface": -1,
+          "ring": [
+            [
+              32.40694375898902,
+              23.78924946071976
+            ],
+            [
+              27.060300273188787,
+              23.927567825995997
+            ],
+            [
+              31.420366990902657,
+              25.603959290070293
+            ]
+          ],
+          "holes": [],
+          "plane": [
+            0,
+            0,
+            0
+          ],
+          "areaMetres2": 4.783072400966735,
+          "nearestOwnerDistance": 4.6712386070224845
+        },
+        {
+          "surface": -1,
+          "ring": [
+            [
+              31.788303627437717,
+              22.5218246246067
+            ],
+            [
+              31.66371985412195,
+              22.450425999898922
+            ],
+            [
+              31.766066565380374,
+              22.562779673927338
+            ]
+          ],
+          "holes": [],
+          "plane": [
+            0,
+            0,
+            0
+          ],
+          "areaMetres2": 0.003345015114567032,
+          "nearestOwnerDistance": 0.7454448613532738
+        },
+        {
+          "surface": -1,
+          "ring": [
+            [
+              31.289968534174648,
+              22.236230125775585
+            ],
+            [
+              31.16538476085888,
+              22.164831501067805
+            ],
+            [
+              31.267731472117305,
+              22.27718517509622
+            ]
+          ],
+          "holes": [],
+          "plane": [
+            0,
+            0,
+            0
+          ],
+          "areaMetres2": 0.003345015114567032,
+          "nearestOwnerDistance": 0.7454448613532745
+        },
+        {
+          "surface": -1,
+          "ring": [
+            [
+              31.267731472117305,
+              22.27718517509622
+            ],
+            [
+              30.85834462708361,
+              21.827770478982558
+            ],
+            [
+              30.76939637885424,
+              21.991590676265105
+            ]
+          ],
+          "holes": [],
+          "plane": [
+            0,
+            0,
+            0
+          ],
+          "areaMetres2": 0.0535202418330725,
+          "nearestOwnerDistance": 0.7454448613532745
+        },
+        {
+          "surface": -1,
+          "ring": [
+            [
+              31.766066565380374,
+              22.562779673927338
+            ],
+            [
+              31.356679720346676,
+              22.113364977813674
+            ],
+            [
+              31.267731472117305,
+              22.27718517509622
+            ]
+          ],
+          "holes": [],
+          "plane": [
+            0,
+            0,
+            0
+          ],
+          "areaMetres2": 0.0535202418330728,
+          "nearestOwnerDistance": 0.7454448613532745
+        },
+        {
+          "surface": -1,
+          "ring": [
+            [
+              32.17317347841369,
+              22.71554297406972
+            ],
+            [
+              32.162054947385016,
+              22.73602049873004
+            ],
+            [
+              32.224346834042905,
+              22.771719811083926
+            ]
+          ],
+          "holes": [],
+          "plane": [
+            0,
+            0,
+            0
+          ],
+          "areaMetres2": 0.0008362537786418026,
+          "nearestOwnerDistance": 0.7177742445443982
+        },
+        {
+          "surface": -1,
+          "ring": [
+            [
+              32.224346834042905,
+              22.771719811083926
+            ],
+            [
+              32.162054947385016,
+              22.73602049873004
+            ],
+            [
+              32.21322830301423,
+              22.792197335744248
+            ]
+          ],
+          "holes": [],
+          "plane": [
+            0,
+            0,
+            0
+          ],
+          "areaMetres2": 0.0008362537786419132,
+          "nearestOwnerDistance": 0.7177742445443982
+        },
+        {
+          "surface": -1,
+          "ring": [
+            [
+              32.26440165864344,
+              22.848374172758454
+            ],
+            [
+              31.855014813609746,
+              22.39895947664479
+            ],
+            [
+              31.766066565380374,
+              22.562779673927338
+            ]
+          ],
+          "holes": [],
+          "plane": [
+            0,
+            0,
+            0
+          ],
+          "areaMetres2": 0.0535202418330728,
+          "nearestOwnerDistance": 0.7454448613532738
+        },
+        {
+          "surface": -1,
+          "ring": [
+            [
+              30.76939637885424,
+              21.991590676265105
+            ],
+            [
+              30.791633440911582,
+              21.950635626944468
+            ],
+            [
+              30.667049667595816,
+              21.87923700223669
+            ]
+          ],
+          "holes": [],
+          "plane": [
+            0,
+            0,
+            0
+          ],
+          "areaMetres2": 0.0033450151145670314,
+          "nearestOwnerDistance": 0.7454448613532734
+        },
+        {
+          "surface": -1,
+          "ring": [
+            [
+              32.40694375898902,
+              23.78924946071976
+            ],
+            [
+              32.76273675190651,
+              23.13396867158957
+            ],
+            [
+              30.76939637885424,
+              21.991590676265105
+            ]
+          ],
+          "holes": [],
+          "plane": [
+            0,
+            0,
+            0
+          ],
+          "areaMetres2": 0.8563238693291624,
+          "nearestOwnerDistance": 1.4908885257973012
+        },
+        {
+          "surface": -1,
+          "ring": [
+            [
+              27.060300273188787,
+              23.927567825995997
+            ],
+            [
+              32.40694375898902,
+              23.78924946071976
+            ],
+            [
+              29.13184899871945,
+              20.19393189181045
+            ]
+          ],
+          "holes": [],
+          "plane": [
+            0,
+            0,
+            0
+          ],
+          "areaMetres2": 9.837943506278677,
+          "nearestOwnerDistance": 4.608131765643422
+        },
+        {
+          "surface": -1,
+          "ring": [
+            [
+              37.88307912357237,
+              13.95428941166216
+            ],
+            [
+              33.707120873220035,
+              11.946262922880635
+            ],
+            [
+              37.36888049956681,
+              14.001138825215662
+            ]
+          ],
+          "holes": [],
+          "plane": [
+            0,
+            0,
+            0
+          ],
+          "areaMetres2": 0.6140828262755526,
+          "nearestOwnerDistance": 2.215426325500248
+        },
+        {
+          "surface": -1,
+          "ring": [
+            [
+              36.15852753354573,
+              14.179550401613028
+            ],
+            [
+              33.707120873220035,
+              11.946262922880635
+            ],
+            [
+              33.77271603750071,
+              14.531131880280554
+            ]
+          ],
+          "holes": [],
+          "plane": [
+            0,
+            0,
+            0
+          ],
+          "areaMetres2": 3.0950360595929385,
+          "nearestOwnerDistance": 3.2269659516295017
+        },
+        {
+          "surface": -1,
+          "ring": [
+            [
+              33.707120873220035,
+              11.946262922880635
+            ],
+            [
+              37.88307912357237,
+              13.95428941166216
+            ],
+            [
+              32.65052129168531,
+              11.05996941185083
+            ]
+          ],
+          "holes": [],
+          "plane": [
+            0,
+            0,
+            0
+          ],
+          "areaMetres2": 0.7897223759307257,
+          "nearestOwnerDistance": 2.8237277195619312
+        },
+        {
+          "surface": -1,
+          "ring": [
+            [
+              33.707120873220035,
+              11.946262922880635
+            ],
+            [
+              36.15852753354573,
+              14.179550401613028
+            ],
+            [
+              37.36888049956681,
+              14.001138825215662
+            ]
+          ],
+          "holes": [],
+          "plane": [
+            0,
+            0,
+            0
+          ],
+          "areaMetres2": 1.5702127252605975,
+          "nearestOwnerDistance": 2.215426325500248
+        },
+        {
+          "surface": -1,
+          "ring": [
+            [
+              33.73991845536037,
+              13.238697401580595
+            ],
+            [
+              33.47127791110156,
+              13.723041670373775
+            ],
+            [
+              33.75631724643054,
+              13.884914640930575
+            ]
+          ],
+          "holes": [],
+          "plane": [
+            0,
+            0,
+            0
+          ],
+          "areaMetres2": 0.09077140567918922,
+          "nearestOwnerDistance": 0.9833383810714755
+        }
+      ],
+      "buildingId": "NL.IMBAG.Pand.0363100012169218",
+      "name": "Keizersgracht 73 / Herengracht 54",
+      "hash": "5f613466104de0eaf7c44cb749472d1c094fbcf7f68289e5c8d8b707059fabfe",
+      "anchor": [
+        4.889478529411765,
+        52.37795035294118
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.889583,
+              52.377982
+            ],
+            [
+              4.889561,
+              52.377958
+            ],
+            [
+              4.889336,
+              52.378035
+            ],
+            [
+              4.889188,
+              52.378085
+            ],
+            [
+              4.889153,
+              52.378047
+            ],
+            [
+              4.889103,
+              52.378065
+            ],
+            [
+              4.888889,
+              52.378138
+            ],
+            [
+              4.888874,
+              52.378121
+            ],
+            [
+              4.888891,
+              52.378115
+            ],
+            [
+              4.888861,
+              52.378082
+            ],
+            [
+              4.889518,
+              52.377857
+            ],
+            [
+              4.889934,
+              52.377716
+            ],
+            [
+              4.890174,
+              52.377632
+            ],
+            [
+              4.890275,
+              52.377742
+            ],
+            [
+              4.890036,
+              52.377825
+            ],
+            [
+              4.889959,
+              52.377851
+            ],
+            [
+              4.8898,
+              52.377905
+            ],
+            [
+              4.889583,
+              52.377982
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 22.5,
+      "height": 22.492752075195312,
+      "modelUrl": "./models/ordinary-buildings/0363100012169218.glb",
+      "cameraBearing": -71.08150389790471,
+      "galleryFrontage": {
+        "target": [
+          4.888996,
+          52.3781015
+        ],
+        "cameraBearing": -71.08150389790471,
+        "distanceMetres": 42,
+        "eyeHeightMetres": 6,
+        "targetHeightMetres": 11,
+        "referenceImages": [
+          "./ordinary-buildings-data/references/0363100012169218/fullfront-0363100012169218-2025-01739-ekeizers73.jpg"
+        ]
+      },
+      "gallerySecondary": {
+        "target": [
+          4.8902245,
+          52.377687
+        ],
+        "cameraBearing": 146.97478145668973,
+        "distanceMetres": 42,
+        "eyeHeightMetres": 6,
+        "targetHeightMetres": 11,
+        "referenceImages": [
+          "./ordinary-buildings-data/references/0363100012169218/topfront-0363100012169218-2025-01311-eheren54.jpg"
+        ]
+      },
+      "referenceImages": [
+        "./ordinary-buildings-data/references/0363100012169218/fullfront-0363100012169218-2025-01739-ekeizers73.jpg"
+      ],
+      "traits": [
+        "Keizers three-bay brick front and half-round crown/hoist",
+        "Herengracht five-bay pale facade, arched door, balcony and curved pediment",
+        "53 raw all-ring roof owners, low annexes and protected survey hole"
+      ],
+      "simplifications": [
+        "Survey val3dity303 and RMSE0.798 retained as uncertainty",
+        "Unresolved23.26m\u00b2 remains uncapped; not all gaps are known courtyards",
+        "Sculpted detail simplified; hidden rear apertures unverified"
+      ],
+      "reviewState": "Root and independent source/gallery/local desktop-touch gameplay accepted; hosted verification pending.",
+      "url": "/models/ordinary-buildings/0363100012169218.glb",
+      "builderSpec": "scripts/ordinary-buildings/keizers73-spec.json",
+      "builderStage": "scripts/ordinary-buildings/keizers73-export.ts",
+      "retainedNeighbors": [
+        "NL.IMBAG.Pand.0363100012175859",
+        "NL.IMBAG.Pand.0363100012175862",
+        "NL.IMBAG.Pand.0363100012167494",
+        "NL.IMBAG.Pand.0363100012175858",
+        "NL.IMBAG.Pand.0363100012169272",
+        "NL.IMBAG.Pand.0363100012175860"
+      ],
+      "updatedAt": "2026-10-09T11:20:49.793285+00:00",
+      "acceptance": "Scoped full architectural loop passed; hosted verification pending.",
+      "reviewEvidenceCommit": "45bd88d9c1a49f79ba0a5990627a88d9995949f5",
+      "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/keizers73-final-review57/0363100012169218",
+      "limitations": [
+        "Survey val3dity 303 and RMSE 0.798 remain uncertainty; 23.26 m\u00b2 fringe remains uncapped and is not all known courtyard.",
+        "Fine carvings and rails simplified; small native quantization offsets remain in cornices. Hidden rear apertures unresolved.",
+        "Touch uses iPhone 13 input/viewport emulation on Apple M4 Pro, not a physical phone.",
+        "Original zoom15.4 overview stippling is existing cityFade14\u201315.6 transition; clean zoom16.4 overview also reviewed."
+      ],
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169218",
+        "https://data.amsterdam.nl/data/"
+      ]
     }
   ]
 }

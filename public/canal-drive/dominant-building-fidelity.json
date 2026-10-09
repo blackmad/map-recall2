@@ -1103,6 +1103,37 @@
         "sourcePack": "experiments/canal-belt-continuation-20261007/leids67-failed-gallery54",
         "reason": "Missing native street masonry left floating windows; repaired explicit native walls and bounded survey-edge ownership."
       }
+    },
+    "NL.IMBAG.Pand.0363100012169218": {
+      "treatment": "landmark",
+      "reviewedOn": "2026-10-09",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169218",
+        "https://data.amsterdam.nl/data/"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012169218/fullfront-0363100012169218-2025-01739-ekeizers73.jpg",
+      "reason": "Full architectural loop retains plain three-bay Keizers73 front and separate pale five-bay Herengracht54, source stairs/basement and circle, original all-ring roof ownership and low rear roofs. Root and independent actual gallery/local native desktop-touch passed.",
+      "checks": {
+        "ordinarySilhouette": false,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "2da8260fedb128bd297b3d1f70fc93947e2c2a11",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-ordinary39-source55",
+      "independentReview": "experiments/canal-belt-continuation-20261007/keizers73-final-review57/0363100012169218/independent",
+      "liveGameReview": "experiments/canal-belt-continuation-20261007/keizers73-final-review57/0363100012169218/native39",
+      "limits": [
+        "Survey val3dity 303 and RMSE 0.798 remain uncertainty; 23.26 m\u00b2 fringe remains uncapped and is not all known courtyard.",
+        "Fine carvings and rails simplified; small native quantization offsets remain in cornices. Hidden rear apertures unresolved.",
+        "Touch uses iPhone 13 input/viewport emulation on Apple M4 Pro, not a physical phone.",
+        "Original zoom15.4 overview stippling is existing cityFade14\u201315.6 transition; clean zoom16.4 overview also reviewed."
+      ],
+      "failedEvidence": [
+        "Processed roof extraction discarded inner rings; corrected original all-ring source topology.",
+        "704a basement stair occluded upper door; sideways source stairs repaired and independently retested.",
+        "ddde83 circular transom buried in glass; exposed on correct plane and independently retested."
+      ]
     }
   },
   "notes": [

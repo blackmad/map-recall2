@@ -10,7 +10,13 @@
   "cards": "Physical mouse click selects genuine Club Church / Kerkstraat 52 / OSM 1760114383; no curated route POI added. Website HTTP 200 verified 2026-10-09.",
   "fallback": "Delayed and disabled keep ordinary fallback; restored hides exact parent. Desktop cold model failure retains fallback. Target pyramid entries absent; no claim of exercised target pyramid geometry.",
   "performance": "90 settled rAF frames median 16.7 ms/P95 16.8 ms desktop, P95 16.7 ms touch emulation. Startup long tasks preserved.",
-  "hosted": "Pending deployment and actual hosted checks.",
+  "hosted": {
+    "publicCommit": "c50c1cc2fe7831e5043e1693110361257df98999",
+    "firebaseRun": 37921643001,
+    "sourceCommit": "c059bc7133cb7fe228780c35a95e897eb09cdcfc",
+    "sourcePack": "experiments/canal-belt-continuation-20261007/hosted38-review59",
+    "checks": "Actual38 GLB hashes/bytes, manual desktop/touch38 loads and native desktop/touch passed; root inspected hosted gameplay and stationary pan screenshots."
+  },
   "priorFailures": {
     "failedHash": "8dabf6535996a914891df1d9393cb800f962105a4e8f4da1cd3d7a230da7f706",
     "sourceCommit": "d6509d17f",
