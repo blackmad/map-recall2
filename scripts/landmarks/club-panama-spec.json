@@ -1,0 +1,125 @@
+{
+  "id": "club-panama",
+  "name": "Club Panama",
+  "landmarkId": "n30170536",
+  "modelUrl": "./models/club-panama.glb",
+  "suppressOsmIds": [
+    "w57863961",
+    "NL.IMBAG.Pand.0363100012078164"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.930318879347794,
+      52.37492459300175
+    ],
+    "headingDegrees": 106.06937002107884,
+    "lengthMetres": 47.26,
+    "widthMetres": 30.21
+  },
+  "surveyed": {
+    "anchor": [
+      4.930259105100115,
+      52.37493509806862
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012078164 footprint (OSM w57863961) and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#7b4a3a",
+    "stone": "#b9a57e",
+    "slate": "#4b5058",
+    "glass": "#5f7681",
+    "frame": "#dcd9cf",
+    "dark": "#26282b"
+  },
+  "attribution": {
+    "title": "Club Panama",
+    "author": "Map Recall",
+    "sourceUrl": "https://arcam.nl/architectuur-gids/panama/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; the 2025 municipal panorama guided windows, cornice, entrance and the gable, no pixels or meshes imported."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.93069967806932,
+          52.37496471034672
+        ],
+        [
+          4.930322138924874,
+          52.37503012263864
+        ],
+        [
+          4.930218026175422,
+          52.3750481456418
+        ],
+        [
+          4.930223784830359,
+          52.375059348543495
+        ],
+        [
+          4.930228320018541,
+          52.375068147011994
+        ],
+        [
+          4.930234712209232,
+          52.37508057468297
+        ],
+        [
+          4.930046253029566,
+          52.37511373082168
+        ],
+        [
+          4.929961069042327,
+          52.374932336053135
+        ],
+        [
+          4.930072231646058,
+          52.374912776634964
+        ],
+        [
+          4.930051050767728,
+          52.3748676575824
+        ],
+        [
+          4.930048406148949,
+          52.374862083996206
+        ],
+        [
+          4.930055155372319,
+          52.37485411101399
+        ],
+        [
+          4.930079328002136,
+          52.37482552463353
+        ],
+        [
+          4.93011341458351,
+          52.374819589529906
+        ],
+        [
+          4.930467314344422,
+          52.37475796041885
+        ],
+        [
+          4.930510150060439,
+          52.37484645658807
+        ],
+        [
+          4.930633180507533,
+          52.374823778750226
+        ],
+        [
+          4.93069967806932,
+          52.37496471034672
+        ]
+      ]
+    ]
+  }
+}

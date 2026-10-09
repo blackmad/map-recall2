@@ -1,3 +1,5 @@
+import {buildToekomstmuziek} from './toekomstmuziek-builder';
+import {buildClubPanama} from './club-panama-builder';
 import {buildSeaPalace} from './sea-palace-builder';
 import {buildMaartenLutherkerk} from './maarten-lutherkerk-builder';
 import {buildPetrusEnPaulusKerk} from './petrus-en-paulus-kerk-builder';
@@ -332,7 +334,9 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   else if(id.startsWith('olvg-'))hospital(id);
   else {
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
-    if(id==='sea-palace')buildSeaPalace(w,d,helpers);
+    if(id==='toekomstmuziek')buildToekomstmuziek(w,d,helpers);
+    else if(id==='club-panama')buildClubPanama(w,d,helpers);
+    else if(id==='sea-palace')buildSeaPalace(w,d,helpers);
     else if(id==='maarten-lutherkerk')buildMaartenLutherkerk(w,d,helpers);
     else if(id==='petrus-en-paulus-kerk')buildPetrusEnPaulusKerk(w,d,helpers);
     else if(id==='lekstraat-synagoge')buildLekstraatSynagoge(w,d,helpers);

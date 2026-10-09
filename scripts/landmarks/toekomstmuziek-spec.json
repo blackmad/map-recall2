@@ -1,0 +1,110 @@
+{
+  "id": "toekomstmuziek",
+  "name": "Toekomstmuziek",
+  "landmarkId": "n2738399729",
+  "modelUrl": "./models/toekomstmuziek.glb",
+  "suppressOsmIds": [
+    "w268508568",
+    "NL.IMBAG.Pand.0363100012110275"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.875657494533266,
+      52.39666847068778
+    ],
+    "headingDegrees": 57.53067294674696,
+    "lengthMetres": 27.97,
+    "widthMetres": 16.5
+  },
+  "surveyed": {
+    "anchor": [
+      4.875582816057696,
+      52.396650278869856
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012110275 footprint (OSM w268508568) and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "concrete": "#cdc9bd",
+    "slate": "#5d6064",
+    "glass": "#4d5e66",
+    "dark": "#34363a",
+    "gold": "#e1b91e",
+    "ochre": "#cdc9bd",
+    "white": "#ecebe6"
+  },
+  "attribution": {
+    "title": "Toekomstmuziek",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.toekomstmuziek.nl/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; the 2025 municipal panorama guided windows and entrance, no pixels or meshes imported."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.8754212799639625,
+          52.396664493620676
+        ],
+        [
+          4.875418661880207,
+          52.39666346670148
+        ],
+        [
+          4.875426461655075,
+          52.39665599569265
+        ],
+        [
+          4.875496734732463,
+          52.39658860412363
+        ],
+        [
+          4.875537219626503,
+          52.396549781488666
+        ],
+        [
+          4.875608831530388,
+          52.39657767398391
+        ],
+        [
+          4.875620672506787,
+          52.39656631077769
+        ],
+        [
+          4.8757078604720485,
+          52.39660039109121
+        ],
+        [
+          4.875895897975358,
+          52.39667388626217
+        ],
+        [
+          4.875829459790218,
+          52.39673748384734
+        ],
+        [
+          4.8757772517313365,
+          52.39678765233642
+        ],
+        [
+          4.875504687385291,
+          52.396681157609265
+        ],
+        [
+          4.875493125594142,
+          52.396692513022224
+        ],
+        [
+          4.8754212799639625,
+          52.396664493620676
+        ]
+      ]
+    ]
+  }
+}

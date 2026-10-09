@@ -20107,6 +20107,303 @@
       "triangles": 6622,
       "bytes": 107540,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "club-panama": {
+      "id": "club-panama",
+      "name": "Club Panama",
+      "landmarkId": "n30170536",
+      "modelUrl": "./models/club-panama.glb",
+      "suppressOsmIds": [
+        "w57863961",
+        "NL.IMBAG.Pand.0363100012078164"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.930318879347794,
+          52.37492459300175
+        ],
+        "headingDegrees": 106.06937002107884,
+        "lengthMetres": 47.26,
+        "widthMetres": 30.21
+      },
+      "surveyed": {
+        "anchor": [
+          4.930259105100115,
+          52.37493509806862
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current BAG 0363100012078164 footprint (OSM w57863961) and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "brick": "#7b4a3a",
+        "stone": "#b9a57e",
+        "slate": "#4b5058",
+        "glass": "#5f7681",
+        "frame": "#dcd9cf",
+        "dark": "#26282b"
+      },
+      "attribution": {
+        "title": "Club Panama",
+        "author": "Map Recall",
+        "sourceUrl": "https://arcam.nl/architectuur-gids/panama/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; the 2025 municipal panorama guided windows, cornice, entrance and the gable, no pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.93069967806932,
+              52.37496471034672
+            ],
+            [
+              4.930322138924874,
+              52.37503012263864
+            ],
+            [
+              4.930218026175422,
+              52.3750481456418
+            ],
+            [
+              4.930223784830359,
+              52.375059348543495
+            ],
+            [
+              4.930228320018541,
+              52.375068147011994
+            ],
+            [
+              4.930234712209232,
+              52.37508057468297
+            ],
+            [
+              4.930046253029566,
+              52.37511373082168
+            ],
+            [
+              4.929961069042327,
+              52.374932336053135
+            ],
+            [
+              4.930072231646058,
+              52.374912776634964
+            ],
+            [
+              4.930051050767728,
+              52.3748676575824
+            ],
+            [
+              4.930048406148949,
+              52.374862083996206
+            ],
+            [
+              4.930055155372319,
+              52.37485411101399
+            ],
+            [
+              4.930079328002136,
+              52.37482552463353
+            ],
+            [
+              4.93011341458351,
+              52.374819589529906
+            ],
+            [
+              4.930467314344422,
+              52.37475796041885
+            ],
+            [
+              4.930510150060439,
+              52.37484645658807
+            ],
+            [
+              4.930633180507533,
+              52.374823778750226
+            ],
+            [
+              4.93069967806932,
+              52.37496471034672
+            ]
+          ]
+        ]
+      },
+      "bounds": {
+        "min": [
+          -20.14548110961914,
+          0.0010000000474974513,
+          -20.180627822875977
+        ],
+        "max": [
+          30.185028076171875,
+          12.454000473022461,
+          19.69556427001953
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.930259105100115,
+          52.37493509806862
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 106.06937002107884,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 50.330509185791016,
+        "heightMetres": 12.453000472974963,
+        "depthMetres": 39.87619209289551,
+        "depthCoverage": 1.3199666366400367
+      },
+      "triangles": 3694,
+      "bytes": 61012,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "toekomstmuziek": {
+      "id": "toekomstmuziek",
+      "name": "Toekomstmuziek",
+      "landmarkId": "n2738399729",
+      "modelUrl": "./models/toekomstmuziek.glb",
+      "suppressOsmIds": [
+        "w268508568",
+        "NL.IMBAG.Pand.0363100012110275"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.875657494533266,
+          52.39666847068778
+        ],
+        "headingDegrees": 57.53067294674696,
+        "lengthMetres": 27.97,
+        "widthMetres": 16.5
+      },
+      "surveyed": {
+        "anchor": [
+          4.875582816057696,
+          52.396650278869856
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current BAG 0363100012110275 footprint (OSM w268508568) and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "concrete": "#cdc9bd",
+        "slate": "#5d6064",
+        "glass": "#4d5e66",
+        "dark": "#34363a",
+        "gold": "#e1b91e",
+        "ochre": "#cdc9bd",
+        "white": "#ecebe6"
+      },
+      "attribution": {
+        "title": "Toekomstmuziek",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.toekomstmuziek.nl/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; the 2025 municipal panorama guided windows and entrance, no pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8754212799639625,
+              52.396664493620676
+            ],
+            [
+              4.875418661880207,
+              52.39666346670148
+            ],
+            [
+              4.875426461655075,
+              52.39665599569265
+            ],
+            [
+              4.875496734732463,
+              52.39658860412363
+            ],
+            [
+              4.875537219626503,
+              52.396549781488666
+            ],
+            [
+              4.875608831530388,
+              52.39657767398391
+            ],
+            [
+              4.875620672506787,
+              52.39656631077769
+            ],
+            [
+              4.8757078604720485,
+              52.39660039109121
+            ],
+            [
+              4.875895897975358,
+              52.39667388626217
+            ],
+            [
+              4.875829459790218,
+              52.39673748384734
+            ],
+            [
+              4.8757772517313365,
+              52.39678765233642
+            ],
+            [
+              4.875504687385291,
+              52.396681157609265
+            ],
+            [
+              4.875493125594142,
+              52.396692513022224
+            ],
+            [
+              4.8754212799639625,
+              52.396664493620676
+            ]
+          ]
+        ]
+      },
+      "bounds": {
+        "min": [
+          -10.95018196105957,
+          0,
+          -15.48810863494873
+        ],
+        "max": [
+          21.489185333251953,
+          6.756999969482422,
+          10.973845481872559
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.875582816057696,
+          52.396650278869856
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 57.53067294674696,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 32.43936729431152,
+        "heightMetres": 6.756999969482422,
+        "depthMetres": 26.46195411682129,
+        "depthCoverage": 1.603754794958866
+      },
+      "triangles": 1295,
+      "bytes": 28064,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

@@ -1,0 +1,10 @@
+{
+  "name": "Club Panama",
+  "landmarkId": "n30170536",
+  "sourceUrl": "https://arcam.nl/architectuur-gids/panama/",
+  "suppressOsmIds": ["w57863961", "NL.IMBAG.Pand.0363100012078164"],
+  "pandId": "0363100012078164",
+  "materialOverrides": {"brick": "#7b4a3a", "stone": "#b9a57e", "slate": "#4b5058", "glass": "#5f7681", "frame": "#dcd9cf", "dark": "#26282b"},
+  "surveySource": "Current BAG 0363100012078164 footprint (OSM w57863961) and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; the 2025 municipal panorama guided windows, cornice, entrance and the gable, no pixels or meshes imported."
+}

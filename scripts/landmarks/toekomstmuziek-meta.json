@@ -1,0 +1,10 @@
+{
+  "name": "Toekomstmuziek",
+  "landmarkId": "n2738399729",
+  "sourceUrl": "https://www.toekomstmuziek.nl/",
+  "suppressOsmIds": ["w268508568", "NL.IMBAG.Pand.0363100012110275"],
+  "pandId": "0363100012110275",
+  "materialOverrides": {"concrete": "#cdc9bd", "slate": "#5d6064", "glass": "#4d5e66", "dark": "#34363a", "gold": "#e1b91e", "ochre": "#cdc9bd", "white": "#ecebe6"},
+  "surveySource": "Current BAG 0363100012110275 footprint (OSM w268508568) and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; the 2025 municipal panorama guided windows and entrance, no pixels or meshes imported."
+}

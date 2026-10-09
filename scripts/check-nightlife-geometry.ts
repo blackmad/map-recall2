@@ -4,6 +4,8 @@ import * as T from 'three';
 import type {BuildingTools} from './landmarks/cultural-builders';
 import {toLocal} from './landmarks/nightlife-geometry';
 import {buildSeaPalace} from './landmarks/sea-palace-builder';
+import {buildClubPanama} from './landmarks/club-panama-builder';
+import {buildToekomstmuziek} from './landmarks/toekomstmuziek-builder';
 
 // Bounds/height against the surveyed outline (and 3DBAG LoD2.2 where the host is a BAG pand), no floating parts.
 type Case = {id: string; build: (w: number, d: number, b: BuildingTools) => void; ring: number[][]; minTop: number; maxTop: number; slack: number; minY?: number};
@@ -13,6 +15,14 @@ const cases: Case[] = [];
   const s = spec('sea-palace');
   cases.push({id: 'sea-palace', build: buildSeaPalace, ring: toLocal(s.buildingFootprint.coordinates[0], s.surveyed.anchor), minTop: 12, maxTop: 14, slack: 1.0, minY: -1.0});
 }
+// BAG/3DBAG hosts: ring and roof height come from the cached LoD2.2 shell.
+function shellCase(id: string, build: Case['build'], extra = 1.0): Case {
+  const f = JSON.parse(fs.readFileSync(`scripts/landmarks/${id}-footprints.json`, 'utf8'));
+  const top = Math.max(...f.surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1])));
+  return {id, build, ring: f.nativeRing, minTop: top - 0.2, maxTop: top + extra, slack: 0.7};
+}
+cases.push(shellCase('club-panama', buildClubPanama));
+cases.push(shellCase('toekomstmuziek', buildToekomstmuziek));
 for (const c of cases) {
   const parts: {g: T.BufferGeometry; colour: string}[] = [];
   const add: BuildingTools['add'] = (g, colour, x = 0, y = 0, z = 0, a = 0) => { g.rotateY(a); g.translate(x, y, z); parts.push({g, colour}); };
