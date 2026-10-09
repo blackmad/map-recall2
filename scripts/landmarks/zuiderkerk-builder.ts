@@ -1,7 +1,7 @@
 import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import {addShell, type Surface} from './worship-shell';
-import {facePoly, wallPoint} from './worship-kit';
+import {archWindow, facePoly, wallPoint} from './worship-kit';
 import {onWall, wallsOf, wallTop, type Wall} from './worship-walls';
 import source from './zuiderkerk-footprints.json';
 
@@ -76,19 +76,48 @@ export function buildZuiderkerk(_w: number, _d: number, b: BuildingTools) {
   buildTower(b);
 }
 
-/** Tall Renaissance window: white-framed lights with transoms, stone sill/lintel and alternating quoin blocks. */
+/**
+ * Tall aisle window as photographed on the east side: rectangular head, fine white lattice (about 5 lights wide, one pane
+ * every ~0.5 m), thick stone surround of alternating quoin blocks. Sill sits at 40% and head at 92% of the eaves height.
+ */
 function zkWindow(b: BuildingTools, w: Wall, t: number, y: number, wd: number, h: number) {
-  const quoin = 0.32;
-  onWall(b, w, t, y - 0.22, wd + 0.9, 0.22, 0.2, 'stone', 0); // sill
-  onWall(b, w, t, y + h, wd + 0.9, 0.3, 0.2, 'stone', 0); // lintel
+  onWall(b, w, t, y - 0.25, wd + 0.8, 0.25, 0.22, 'stone', 0); // sill
+  onWall(b, w, t, y + h, wd + 0.8, 0.28, 0.2, 'stone', 0); // lintel
   onWall(b, w, t, y, wd, h, 0.06, 'glass', 0.02, 'pane');
-  const rows = Math.max(2, Math.round(h / 0.95));
-  for (let k = 1; k < rows; k++) onWall(b, w, t, y + h * k / rows - 0.03, wd, 0.06, 0.1, 'frame', 0.02);
-  const cols = wd > 2.2 ? 3 : 2;
-  for (let k = 0; k <= cols; k++) onWall(b, w, t - wd / 2 + 0.03 + (wd - 0.06) * k / cols, y, 0.06, h, 0.1, 'frame', 0.02);
-  for (const sgn of [-1, 1]) for (let q = 0, yy = y - 0.1; yy < y + h + 0.1; q++, yy += 0.62) {
-    onWall(b, w, t + sgn * (wd / 2 + 0.14 + (q % 2 ? 0.2 : 0) / 2), yy, quoin + (q % 2 ? 0.2 : 0), 0.58, 0.16, 'stone', 0);
+  const rows = Math.max(3, Math.round(h / 0.5));
+  for (let k = 1; k < rows; k++) onWall(b, w, t, y + h * k / rows - 0.02, wd, 0.04, 0.09, 'frame', 0.02);
+  const cols = Math.max(3, Math.round(wd / 0.5));
+  for (let k = 0; k <= cols; k++) onWall(b, w, t - wd / 2 + 0.025 + (wd - 0.05) * k / cols, y, 0.05, h, 0.09, 'frame', 0.02);
+  for (const sgn of [-1, 1]) for (let q = 0, yy = y - 0.1; yy < y + h + 0.1; q++, yy += 0.6) {
+    const ex = q % 2 ? 0.22 : 0;
+    onWall(b, w, t + sgn * (wd / 2 + 0.17 + ex / 2), yy, 0.34 + ex, 0.56, 0.16, 'stone', 0);
   }
+}
+
+/** Large pointed window with stone surround, mullions and a tracery head (transept / end-gable window). */
+function pointedWindow(b: BuildingTools, w: Wall, t: number, y: number, wd: number, h: number) {
+  const rise = wd * 0.8, r0 = h - rise;
+  const outline = (grow: number) => {
+    const s = new T.Shape(), hw = wd / 2 + grow;
+    s.moveTo(-hw, 0); s.lineTo(hw, 0); s.lineTo(hw, r0);
+    s.quadraticCurveTo(hw, r0 + rise * 0.75 + grow, 0, h + grow);
+    s.quadraticCurveTo(-hw, r0 + rise * 0.75 + grow, -hw, r0); s.lineTo(-hw, 0);
+    return s;
+  };
+  const place = (g: T.BufferGeometry, colour: string, out: number, tag?: string) => {
+    g.rotateY(Math.atan2(w.n[0], w.n[1]));
+    const p = wallPoint(w, t, out);
+    g.translate(p[0], w.base + y, p[1]);
+    if (tag) g.userData.tag = tag;
+    b.add(g, colour as never);
+  };
+  place(new T.ExtrudeGeometry(outline(0.3), {depth: 0.12, bevelEnabled: false, curveSegments: 8}), 'stone', 0);
+  place(new T.ExtrudeGeometry(outline(0), {depth: 0.1, bevelEnabled: false, curveSegments: 8}), 'glass', 0.1, 'pane');
+  const cols = Math.max(4, Math.round(wd / 0.55));
+  for (let k = 1; k < cols; k++) onWall(b, w, t - wd / 2 + wd * k / cols, y, 0.05, r0 + rise * 0.55, 0.1, 'frame', 0.1);
+  const rows = Math.round(r0 / 0.55);
+  for (let k = 1; k < rows; k++) onWall(b, w, t, y + r0 * k / rows, wd, 0.04, 0.1, 'frame', 0.1);
+  onWall(b, w, t, y + r0, wd, 0.07, 0.1, 'frame', 0.1);
 }
 
 /** Dwarshuis: a brick dormer-gable flush with the aisle wall, stone cornice, scrolled pediment, one small window, slate flanks. */
@@ -110,11 +139,20 @@ function dwarshuis(b: BuildingTools, w: Wall, t: number, eave: number) {
     onWall(b, w, t + sg * (hw + 0.55), y0 + 0.35, 0.5, y1 - y0 - 0.2, 0.3, 'stone', 0.0);
     onWall(b, w, t + sg * (hw + 0.55), y1 - 0.1, 0.62, 0.22, 0.34, 'stone', 0.0);
   }
-  onWall(b, w, t, y0 + 0.75, 1.3, 1.9, 0.06, 'glass', 0.12, 'pane');
-  onWall(b, w, t, y0 + 0.55, 1.8, 0.2, 0.14, 'stone', 0.12);
-  onWall(b, w, t, y0 + 2.65, 1.8, 0.2, 0.14, 'stone', 0.12);
-  for (const x of [-0.65, 0, 0.65]) onWall(b, w, t + x, y0 + 0.75, 0.05, 1.9, 0.1, 'frame', 0.12);
-  onWall(b, w, t, y0 + 1.7, 1.3, 0.05, 0.1, 'frame', 0.12);
+  {
+    const aw = 1.6, ah = 2.55, ar = aw / 2;
+    const sh = new T.Shape(); sh.moveTo(-aw / 2, 0); sh.lineTo(aw / 2, 0); sh.lineTo(aw / 2, ah - ar); sh.absarc(0, ah - ar, ar, 0, Math.PI, false); sh.closePath();
+    const sur = new T.Shape(); const gw = aw / 2 + 0.22; sur.moveTo(-gw, 0); sur.lineTo(gw, 0); sur.lineTo(gw, ah - ar); sur.absarc(0, ah - ar, gw, 0, Math.PI, false); sur.closePath();
+    for (const [shape, col, out, dp, tag] of [[sur, 'stone', 0.12, 0.1, ''], [sh, 'glass', 0.2, 0.06, 'pane']] as const) {
+      const g = new T.ExtrudeGeometry(shape, {depth: dp, bevelEnabled: false, curveSegments: 6});
+      g.rotateY(Math.atan2(w.n[0], w.n[1]));
+      const pp = wallPoint(w, t, out); g.translate(pp[0], y0 + 0.4, pp[1]);
+      if (tag) g.userData.tag = tag;
+      b.add(g, col as never);
+    }
+    for (const x of [-0.4, 0, 0.4]) onWall(b, w, t + x, y0 + 0.4, 0.05, ah - ar, 0.1, 'frame', 0.2);
+    for (const yy of [0.7, 1.3, 1.9]) onWall(b, w, t, y0 + 0.4 + yy, aw, 0.04, 0.1, 'frame', 0.2);
+  }
   const P = (tt: number, y: number, o: number) => [w.origin[0] + w.tangent[0] * tt + w.n[0] * o, y, w.origin[1] + w.tangent[1] * tt + w.n[1] * o];
   facePoly(b, [P(t - hw - 0.3, y1, 0.42), P(t, apex, 0.42), P(t, apex, -depth), P(t - hw - 0.3, y1, -depth)], 'slate', [-w.tangent[0] * 0.5, 1, -w.tangent[1] * 0.5], 'roof');
   facePoly(b, [P(t + hw + 0.3, y1, 0.42), P(t, apex, 0.42), P(t, apex, -depth), P(t + hw + 0.3, y1, -depth)], 'slate', [w.tangent[0] * 0.5, 1, w.tangent[1] * 0.5], 'roof');
@@ -127,20 +165,32 @@ function addNaveWindows(b: BuildingTools, shell: {surfaces: Surface[]; nativeRin
     if (Math.hypot(mx - CX, mz - CZ) < 7.5) continue; // tower shaft has its own windows
     const top = Math.max(...w.poly.map(p => p[1]));
     if (w.base > 0.5 || w.length < 2.6 || top < 7) continue;
-    const eave = Math.min(top, 10.4), h = Math.max(3, eave - 2.1 - 1.8);
-    const n = w.length >= 8 ? 2 : 1, wd = Math.min(2.8, w.length / n - 1.4);
+    const eave = Math.min(top, 10.4), wy = 0.4 * eave, h = 0.52 * eave;
+    const n = w.length >= 8 ? 2 : 1, wd = Math.min(2.6, w.length / n - 1.7);
     if (wd < 1.0) continue;
     for (let i = 0; i < n; i++) {
       const t = w.length * (i + 0.5) / n;
-      if (wallTop(w, t - wd / 2 - 0.6) < 2.1 + h + 0.4 || wallTop(w, t + wd / 2 + 0.6) < 2.1 + h + 0.4) continue;
-      zkWindow(b, w, t, 2.1, wd, h);
+      if (wallTop(w, t - wd / 2 - 0.6) < wy + h + 0.4 || wallTop(w, t + wd / 2 + 0.6) < wy + h + 0.4) continue;
+      zkWindow(b, w, t, wy, wd, h);
     }
     const bearing = Math.round((Math.atan2(w.n[0], -w.n[1]) * 180 / Math.PI + 360) % 360);
-    if (w.length >= 4.4 && eave >= 9.5 && (bearing === 299 || bearing === 119)) {
+    if ((bearing === 119 && w.length >= 4.4 && eave >= 9.5) || (bearing === 299 && w.length >= 3 && eave >= 8.5)) { // west is inferred (mirror of the photographed east rhythm)
       const list = sides.get(bearing) ?? [];
       list.push({w, t: w.length / 2, eave});
       sides.set(bearing, list);
     }
+  }
+  // Low porches/annexes on the east side get an arched double door.
+  for (const w of wallsOf(shell)) {
+    const top = Math.max(...w.poly.map(p => p[1])), bearing = Math.round((Math.atan2(w.n[0], -w.n[1]) * 180 / Math.PI + 360) % 360);
+    if (w.base < 0.5 && bearing === 119 && top < 5 && w.length >= 4) archWindow(b, w, w.length / 2, 0, 1.5, Math.min(2.1, top - 0.35), {trim: 'stone', glass: 'dark', mullions: 1});
+  }
+  // Pointed traceried end-gable windows (inferred from the photographed transept window): north end wall and the nave's south gable.
+  for (const w of wallsOf(shell)) {
+    const top = Math.max(...w.poly.map(p => p[1])), bearing = Math.round((Math.atan2(w.n[0], -w.n[1]) * 180 / Math.PI + 360) % 360);
+    if (w.base > 0.5) continue;
+    if (bearing === 29 && w.length > 7 && top > 12) pointedWindow(b, w, w.length / 2, 3.2, 3.0, Math.min(8.2, top - 3.2 - 1.2));
+    if (bearing === 209 && w.length > 3.5 && w.length < 4.5 && top > 23) pointedWindow(b, w, w.length / 2, 14.5, 2.4, 7.5);
   }
   // dwarshuizen over every second bay of each long side, counted along the church axis
   for (const list of sides.values()) {
