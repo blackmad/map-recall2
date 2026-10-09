@@ -39,6 +39,10 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   core, ~10k houses): 13% have an adjoining near-twin (574 runs, longest 8),
   so shared meshes save ~8%; 67% share a coarse family signature, so the
   real win is drafting from the nearest done house, not GPU memory.
+  Long 19th-century rows (Marnixstraat, user Street View 2026-10-09) repeat
+  one module inside a single 30–60 m BAG parent, which that measure excludes:
+  recipes need `repeat` along a frontage, compiled once and instanced. Build
+  on the installed Marnixstraat pilot (`repeatedTerraceRoof.ts`).
 - **Perf cycle**: landmark layer renders one `THREE.Scene` per model with a
   `getBounds()` per entry per frame, no frustum cull, no eviction
   (`signature-landmarks-source.js`). Re-baseline against
