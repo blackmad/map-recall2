@@ -51,6 +51,12 @@ const targets = [
     globalName: 'CanalRecallSignature3D',
   },
   {
+    // Opt-in canal elevation (`?elevation=1`); vector-map.js loads it on demand.
+    entry: 'src/canalRecall/elevation/elevationBrowser.ts',
+    out: 'public/canal-drive/js/canal-elevation.bundle.js',
+    globalName: 'CanalRecallElevation',
+  },
+  {
     entry: 'public/canal-drive/js/pyramidal-roofs-source.js',
     out: 'public/canal-drive/js/pyramidal-roofs.bundle.js',
     globalName: 'CanalRecallPyramidalRoofs',

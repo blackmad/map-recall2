@@ -28,7 +28,7 @@ const FAMILY: Record<string, { thickness: number; fascia: string; parapet: strin
   'wooden-deck': { thickness: 0.3, fascia: '#7a5a3c', parapet: '#6a4c32' },
 };
 const DEFAULT_FAMILY = FAMILY['concrete-deck'];
-export const DECK_TOP = hexToRgb('#d9d4ca');
+export const DECK_TOP = hexToRgb('#ece8de');
 const SOFFIT = hexToRgb('#5d5650');
 const ABUTMENT = hexToRgb('#7b5a4a');
 
@@ -197,7 +197,27 @@ export interface FallbackDeck {
 export function decodeFallback(bridge: FallbackBridge, quant: number, toScene: ToScene = (x, y) => [x, y]): FallbackDeck {
   const ring: number[] = [];
   for (let i = 0; i + 1 < bridge.ring.length; i += 2) ring.push(...toScene(bridge.ring[i] * quant, bridge.ring[i + 1] * quant));
+  // Faces are built for a CCW ring (outward = right of each edge).
+  let area = 0;
+  for (let i = 0, n = ring.length / 2; i < n; i++) {
+    const j = (i + 1) % n;
+    area += ring[i * 2] * ring[j * 2 + 1] - ring[j * 2] * ring[i * 2 + 1];
+  }
+  if (area < 0) {
+    const points: number[][] = [];
+    for (let i = 0; i < ring.length; i += 2) points.push([ring[i], ring[i + 1]]);
+    ring.length = 0;
+    for (const point of points.reverse()) ring.push(point[0], point[1]);
+  }
   return { id: bridge.id, name: bridge.name, ring };
+}
+
+/** A measured deck this low reads as flat: draw it like an unmeasured footprint. */
+export const FLAT_DECK_MAX_M = 0.3;
+export function isFlatMeasured(bridge: MeasuredBridge): boolean {
+  if (bridge.outline.length < 6) return false;
+  for (let i = 3; i < bridge.p.length; i += 4) if (bridge.p[i] / 100 >= FLAT_DECK_MAX_M) return false;
+  return true;
 }
 
 /** Flat footprint deck: the road surface (drawn without depth so overlays stay on it). */

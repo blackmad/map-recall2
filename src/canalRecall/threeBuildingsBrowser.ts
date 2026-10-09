@@ -300,6 +300,7 @@ export class ThreeBuildings {
   private boatTiles = new Map<string, Houseboat[]>();
   private boatIds: ReadonlySet<string> = new Set();
   private boats: readonly Houseboat[] = [];
+  private waterLevel = 0;
   private lastFeatures: readonly Feature[] = [];
   private contextIndex?: BuildingContextIndex<Feature>;
   private detailTiles = new Set<string>();
@@ -735,6 +736,17 @@ export class ThreeBuildings {
     this.setFeatures(this.lastFeatures);
   }
 
+  /**
+   * Canal water height relative to the street (metres, ≤ 0). The opt-in
+   * elevation layer (`?elevation=1`) sinks canal water below the quays; boats
+   * follow it. Buildings, kits and trees stay at street level.
+   */
+  setWaterLevel(metres: number): void {
+    this.waterLevel = Number.isFinite(metres) ? Math.min(0, metres) : 0;
+    for (const [key, entry] of this.chunks) if (key.startsWith(BOAT_PREFIX) && entry.mesh) entry.mesh.position.z = this.waterLevel;
+    this.map.triggerRepaint();
+  }
+
   /** The drawn houseboat a landmark with no building is aboard, if any (see `boatForLandmark`). */
   boatForLandmark(lngLat: [number, number], type?: string): string | null {
     return boatForLandmark(this.boats, lngLat, type);
@@ -868,6 +880,7 @@ export class ThreeBuildings {
     mesh.userData.hostOpeningIds = chunk.hostOpeningIds ?? [];
     mesh.userData.appearanceRevision = options?.appearanceRevision;
     mesh.frustumCulled = true;
+    if (key.startsWith(BOAT_PREFIX)) mesh.position.z = this.waterLevel;
     const entry = { source, mesh, info: infoOf(chunk), ranges: new Map(chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }])) };
     this.chunks.set(key, entry);
     this.scene.add(mesh);

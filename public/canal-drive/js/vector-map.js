@@ -16,6 +16,12 @@ const BUILDING_FADE_IN = ['interpolate', ['linear'], ['zoom'], 15, 0, 15.6, 1];
 // `?trees3d=0` (or window.__canalRecallFacades / __canalRecallTrees3d = false
 // before load) bring back the old flat look for A/B comparison.
 const GENERIC_FACADES_DEFAULT = true;
+// Experiment (2026-10-09): canal water below quay level and measured bridge
+// decks (docs/elevation.md). Visual only — routing and physics stay 2D. Off by
+// default; `?elevation=1` or window.__canalRecallElevation = true. The bundle
+// is fetched only when the flag is on.
+const CANAL_ELEVATION_DEFAULT = false;
+const CANAL_ELEVATION_BUNDLE = 'js/canal-elevation.bundle.js';
 const STYLISED_TREES_DEFAULT = true;
 function canalRecallLookFlag(param, global, fallback) {
   try {
@@ -58,6 +64,9 @@ class VectorBasemap {
     this._treesVisible = false;
     this._facadesEnabled = canalRecallLookFlag('facades', '__canalRecallFacades', GENERIC_FACADES_DEFAULT);
     this._trees3dEnabled = canalRecallLookFlag('trees3d', '__canalRecallTrees3d', STYLISED_TREES_DEFAULT);
+    this._elevationEnabled = canalRecallLookFlag('elevation', '__canalRecallElevation', CANAL_ELEVATION_DEFAULT);
+    this._elevation = null;
+    this._riderSurfaceM = 0;
     this._rawTrees = null;
     this._treeRoute = null;
     this._facadeImages = null;
@@ -185,6 +194,7 @@ class VectorBasemap {
         if (PlayerTransit3D) this._playerTransit = new PlayerTransit3D(this.map, maplibregl);
       }
       this.ready = true;
+      if (this._elevationEnabled) void this._ensureElevation();
       if (window.CanalRecallInventoryTrees && this._trees3dEnabled) {
         this._inventoryTrees = new window.CanalRecallInventoryTrees.InventoryTrees(this.map, maplibregl, () => this._syncTreeVisibility());
         this._inventoryTrees.setEnabled(this._treesVisible);
@@ -205,6 +215,7 @@ class VectorBasemap {
   setExtractRoot(path) {
     if (!path || path === this._extractPath) return;
     this._extractPath = path;
+    if (this._elevation) void this._elevation.load(path).then(() => this._syncElevationConsumers());
     if (this._artisAnimals) this._artisAnimals.setExtractRoot(path);
     if (this._parkLandscape) this._parkLandscape.load(path);
     this._rawTrees = null;
@@ -915,6 +926,7 @@ class VectorBasemap {
     this._syncMaplibreBuildingVisibility();
     this._loadHouseboats();
     this._loadShopfronts();
+    if (this._elevation) this._syncElevationConsumers();
   }
 
   /** Where the city's shops, cafés and bars really are (shopfronts extract); re-decorates the resident tiles. */
@@ -1850,17 +1862,70 @@ class VectorBasemap {
     ]) this[alias] = list.find(layer => layer.areaId === active) || list[0] || null;
   }
 
+  /** Load the elevation bundle on demand (flag on only) and add its layer. */
+  async _ensureElevation() {
+    if (this._elevation || this._elevationLoading || !this.map) return;
+    this._elevationLoading = true;
+    try {
+      if (!window.CanalRecallElevation) {
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = CANAL_ELEVATION_BUNDLE;
+          script.onload = resolve;
+          script.onerror = () => reject(new Error(`${CANAL_ELEVATION_BUNDLE} failed to load`));
+          document.head.appendChild(script);
+        });
+      }
+      const api = window.CanalRecallElevation;
+      if (!api || !api.CanalElevation) throw new Error('CanalRecallElevation missing');
+      this._elevation = new api.CanalElevation(this.map, maplibregl, { beforeId: 'building' });
+      await this._elevation.load(this._extractPath);
+      this._syncElevationConsumers();
+    } catch (error) {
+      console.warn('Canal elevation unavailable; the flat map stays.', error);
+    } finally {
+      this._elevationLoading = false;
+    }
+  }
+
+  /** Houseboats float on the sunken water; everything else on land stays at z = 0. */
+  _syncElevationConsumers() {
+    const water = this._elevation ? this._elevation.waterLevelM() : 0;
+    if (this._threeBuildings && typeof this._threeBuildings.setWaterLevel === 'function') this._threeBuildings.setWaterLevel(water);
+  }
+
+  elevationStatus() {
+    return this._elevation ? this._elevation.stats() : { enabled: false, ready: false };
+  }
+
+  /** Ease the rider's visual surface height (deck ramps are continuous, footprint edges are not). */
+  _easeRiderSurface(target) {
+    const value = Number.isFinite(target) ? target : 0;
+    const delta = value - this._riderSurfaceM;
+    this._riderSurfaceM = Math.abs(delta) < 0.01 ? value : this._riderSurfaceM + delta * 0.35;
+    return this._riderSurfaceM;
+  }
+
   setPlayerBike(player, loader, visible, zoomScale = 1) {
     if (!this._playerBike || !player || !loader) return;
     this._playerBike.zoomScale = zoomScale;
+    const lngLat = this.worldToLngLat(player.x, player.y, loader);
+    if (this._elevation && visible) {
+      const pose = this._elevation.riderPose(lngLat, player.angle, this._playerBike.surfaceContactOffsets?.());
+      const height = this._easeRiderSurface(pose.heightM);
+      if (typeof this._playerBike.setSurfacePose === 'function') this._playerBike.setSurfacePose(height + 0.22, pose.pitch);
+    }
     this._playerBike.update(
-      this.worldToLngLat(player.x, player.y, loader), player.angle, visible,
+      lngLat, player.angle, visible,
       player.steerInput || 0, player.distancePx || 0
     );
   }
 
   setPlayerBoat(player, loader, visible) {
     if (!this._playerBoat || !player || !loader) return;
+    if (this._elevation && visible && typeof this._playerBoat.setAltitude === 'function') {
+      this._playerBoat.setAltitude(this._easeRiderSurface(this._elevation.waterLevelM()) + 0.22);
+    }
     this._playerBoat.update(
       this.worldToLngLat(player.x, player.y, loader), player.angle, visible,
       player.steerInput || 0
@@ -2338,7 +2403,11 @@ class VectorBasemap {
     }
     this._clearancePitchRequested = pitch;
     const appliedPitch = Math.min(pitch, this._clearancePitch);
-    this.map.jumpTo({ center: [lon, lat], zoom: mapZoom, bearing, pitch: appliedPitch });
+    // With elevation on, the camera centre rides at the rider's surface (a deck
+    // or the sunken water) so the cockpit eye never ends up inside a bridge.
+    const cameraOptions = { center: [lon, lat], zoom: mapZoom, bearing, pitch: appliedPitch };
+    if (this._elevation) cameraOptions.elevation = detached || introFlat > 0 ? 0 : this._riderSurfaceM;
+    this.map.jumpTo(cameraOptions);
     // Near detail (facade extras) follows the rider.
     if (this._threeBuildings && this._buildings3dEnabled && this._threeBuildings.setDetailCentre) this._threeBuildings.setDetailCentre(subject[0], subject[1]);
     this._syncFacadeZoom(mapZoom);
@@ -2750,5 +2819,6 @@ class VectorBasemap {
     } catch (_) {}
     if (this._parkLandscape) this._parkLandscape.setTheme(this.theme);
     if (this._inventoryTrees) this._inventoryTrees.setTheme(this.theme);
+    if (this._elevation) this._elevation.applyTheme();
   }
 }
