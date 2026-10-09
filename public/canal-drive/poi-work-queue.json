@@ -106,7 +106,7 @@
       "id": "oosterparkkerk",
       "task": "Oosterparkkerk — native church and linked caretaker house",
       "priority": "normal",
-      "status": "verified-native-awaiting-hosted",
+      "status": "verified-scoped-hosted",
       "existingExtractIdentity": "extract_landmarks_1606629595",
       "surveyedParent": "NL.IMBAG.Pand.0363100012236498",
       "currentOSMBuilding": "w252970298",
@@ -115,16 +115,23 @@
         "path": "models/oosterparkkerk/checkpoints/native-accepted-20261008"
       },
       "validation": "Independent source/CPU/gallery/game corrected production2ad382a7accepted; wingtop and6caretakerhead failures preserved and repaired. Root inspected actual front/north context, gallery and true stationary rider touch pan. Genuine selected route, reachable public entrance pin/label, physical useful card and sameidentity arrival; exact masks136neighbor rows/off andabort fallback/90frame timings pass. Source approximations/occluded diagnostic views explicit.",
-      "nextAction": "Publish accepted native candidate and verify canonical hosted all3surfaces."
+      "nextAction": "Retain recorded source limits; no further work for this verified scope.",
+      "hostedVerification": {
+        "publicCommit": "6789f77e786385be56b5151efc453f3f8f20a3cb",
+        "deploymentRun": "37814686127",
+        "sourceArchiveCommit": "924f84d5a5d2f55ed9c1386f088dacea150d59a9",
+        "sourceArchivePath": "checkpoints/landmark-batch-hosted-6789f77e-20261008",
+        "evidence": "Exact canonical before/after asset fingerprints, desktop/touch route/arrival/pin/label/physical card, neighbor retention and stationary-rider real camera pans checked. Ooster/OCCII disabled/aborted-load fallback and bounded on/off/on scene timings pass. Both OCCII immutable feedback cameras reproduced and root inspected; oversized overlay gone and assemblies aligned. Fatih material/height/pin scope only; long-side opening layout remains unaccepted."
+      }
     },
     {
       "id": "fatih-side-texture",
       "task": "Correct Fatih Mosque side-wall texture material",
       "priority": "high",
-      "status": "verified-native-awaiting-hosted",
+      "status": "verified-scoped-hosted",
       "requestedOn": "2026-10-08",
       "owner": "fatih_side_texture",
-      "nextAction": "Publish accepted scoped material/height/pin correction and verify canonical hosted scene; retain source architecture gap.",
+      "nextAction": "Retain recorded source limits; no further work for this verified scope.",
       "sourceArchive": {
         "commit": "ba81c5790",
         "path": "models/fatih-mosque/checkpoints/side-material-20261008"
@@ -133,6 +140,13 @@
       "integratedSourceArchive": {
         "commit": "88cb31157",
         "path": "models/fatih-mosque/checkpoints/integrated-accepted-20261008"
+      },
+      "hostedVerification": {
+        "publicCommit": "6789f77e786385be56b5151efc453f3f8f20a3cb",
+        "deploymentRun": "37814686127",
+        "sourceArchiveCommit": "924f84d5a5d2f55ed9c1386f088dacea150d59a9",
+        "sourceArchivePath": "checkpoints/landmark-batch-hosted-6789f77e-20261008",
+        "evidence": "Exact canonical before/after asset fingerprints, desktop/touch route/arrival/pin/label/physical card, neighbor retention and stationary-rider real camera pans checked. Ooster/OCCII disabled/aborted-load fallback and bounded on/off/on scene timings pass. Both OCCII immutable feedback cameras reproduced and root inspected; oversized overlay gone and assemblies aligned. Fatih material/height/pin scope only; long-side opening layout remains unaccepted."
       }
     },
     {
@@ -2103,16 +2117,23 @@
       "id": "occii-facade-alignment-feedback",
       "task": "OCCII remaining facade assembly alignment",
       "priority": "high",
-      "status": "queued-source-and-native-diagnosis",
+      "status": "verified-scoped-hosted",
       "modelId": "occii",
       "requestedOn": "2026-10-07",
-      "nextAction": "Read fresh Firebase note063e3e2c-0627-48a8-b835-f407fee9cbe7 full evidence; conditionally claim beforecodefix. Compare currentexport daa84648 withoriginalfrontphotos and repair actual misaligned trim/window/ornament assemblies, then native/gallery/independent/hosted proof beforeconditionalresolution.",
+      "nextAction": "Retain recorded source limits; no further work for this verified scope.",
       "feedbackId": "063e3e2c-0627-48a8-b835-f407fee9cbe7",
       "feedbackIds": [
         "063e3e2c-0627-48a8-b835-f407fee9cbe7",
         "d89b55f3-cc56-4e64-9faa-8cfa6e3d34c4"
       ],
-      "notes": "Repeat hosted report 2026-10-08 on3e98ce4e, unchanged asset daa846481f1d3693: front offset trim/ornament. Root read complete saved evidence and inspected screenshot; unresolved, no cloud transition. Preserve original claim workflow."
+      "notes": "Both immutable saved reports were conditionally resolved after independent/native/hosted correction proof and source-evidence push924f84d5a. Firebase final queue verification follows.",
+      "hostedVerification": {
+        "publicCommit": "6789f77e786385be56b5151efc453f3f8f20a3cb",
+        "deploymentRun": "37814686127",
+        "sourceArchiveCommit": "924f84d5a5d2f55ed9c1386f088dacea150d59a9",
+        "sourceArchivePath": "checkpoints/landmark-batch-hosted-6789f77e-20261008",
+        "evidence": "Exact canonical before/after asset fingerprints, desktop/touch route/arrival/pin/label/physical card, neighbor retention and stationary-rider real camera pans checked. Ooster/OCCII disabled/aborted-load fallback and bounded on/off/on scene timings pass. Both OCCII immutable feedback cameras reproduced and root inspected; oversized overlay gone and assemblies aligned. Fatih material/height/pin scope only; long-side opening layout remains unaccepted."
+      }
     },
     {
       "id": "magna-plaza-native-fidelity-repair",
@@ -2167,7 +2188,7 @@
       ],
       "evidence": "ordinary-buildings-data/canal-kerk136-review-20261008.json",
       "handoff": "docs/performance/2026-10-06/canal-belt-continuation-handoff.md",
-      "nextAction": "Publish verified Kerkstraat136 local30 and verify hosted catalogue/manual/source gallery. Prinsengracht211\u2013213 warehouse author43 frozen and under source/render review. Bank2167897 v06 count correction independently passes; full native review pending. Continue substantial ordinary queue.",
+      "nextAction": "Publish verified Kerkstraat136 local30 and verify hosted catalogue/manual/source gallery. Prinsengracht211–213 warehouse author43 frozen and under source/render review. Bank2167897 v06 count correction independently passes; full native review pending. Continue substantial ordinary queue.",
       "sourceCommit": "9fc691744e03b91f70899896033acdb6cbbd1a18",
       "notes": "Ordinary assets/full architecture review for defining Rokin roof assemblies; no invented POI routes. Existing Nacarat basic inside-footprint click card retained. Both strict500k/three-material budgets pass.",
       "localModelCount": 30,
@@ -2246,6 +2267,48 @@
       "nextAction": "Publish and verify actual hosted30 GLB hashes, manual desktop/touch feedback preview and source gallery; preserve153/162ms source-stage limits.",
       "assetHash": "aa98fe521fbbc9eb5731cf530bf7121ca5f2b8701efd0e436d909da0ef62bd23",
       "reviewEvidenceCommit": "ef64e81d6e6a762ff9fc39112ad5d2ea757ff73c"
+    },
+    {
+      "id": "keizersgrachtkerk-native-build",
+      "task": "Keizersgrachtkerk original surveyed church",
+      "priority": "normal",
+      "status": "source-frontage-failure-repair",
+      "modelId": "keizersgrachtkerk",
+      "existingExtractIdentity": "extract_landmarks_2099326007",
+      "surveyedParent": "0363100012177272",
+      "sourceArchive": {
+        "commit": "2bf5e6d29",
+        "path": "models/keizersgrachtkerk/checkpoints/corrected-source-cpu-20261008"
+      },
+      "validation": "Exact roof and first-glass checks passed scoped only; ROOT SOURCE REVIEW FAILED defining portal curve and upper tower six-lobed openings despite prior source approval. Failed production4e70294a preserved; no public model commit.",
+      "nextAction": "Repair photo-backed curved Gothic porch and dark six-lobed tower apertures, independent source/decoded comparison, then gallery/game acceptance."
+    },
+    {
+      "id": "gerard-dou-synagogue-native-build",
+      "task": "Gerard Dou Synagogue original surveyed building",
+      "priority": "normal",
+      "status": "source-cpu-verified-awaiting-native",
+      "modelId": "gerard-dou-synagogue",
+      "existingExtractIdentity": "extract_landmarks_25099441",
+      "surveyedParent": "0363100012140916",
+      "sourceArchive": {
+        "commit": "2bf5e6d29",
+        "path": "models/gerard-dou-synagogue/checkpoints/corrected-source-cpu-20261008"
+      },
+      "validation": "Corrected rectangular lower panes and concentric upper tracery after failed83eaffsource comparison. Exact productionecd62263 CPU roof/76facade probes pass; meaningful existing POI and actual entrance integrated locally.",
+      "nextAction": "Actual native gallery/game all3surfaces, exact masks/neighbors/fallback and stationary desktop/touch pans before publication."
+    },
+    {
+      "id": "lekstraat-synagogue-native-build",
+      "task": "Lekstraatsynagoge original surveyed complex",
+      "priority": "normal",
+      "status": "independent-source-cpu-verified-awaiting-native",
+      "modelId": "lekstraat-synagoge",
+      "existingExtractIdentity": "extract_landmarks_665340356",
+      "surveyedParent": "0363100012104516",
+      "currentOSMBuilding": "w277300134",
+      "validation": "Independent sourceCPU corrected3941f332 passes2080roof samples/200broad-pane samples after source-supported residence windows omission repaired. Extract numeral is not current OSMalias; exact genuine destination preserved.",
+      "nextAction": "Archive raw/code/failures, bounded current panorama check, integrate and independent gallery/game all3POIsurfaces/neighbor/fallback/pan/performance."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

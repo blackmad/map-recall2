@@ -14412,6 +14412,176 @@
       "triangles": 15534,
       "bytes": 196664,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "keizersgrachtkerk": {
+      "id": "keizersgrachtkerk",
+      "name": "Keizersgrachtkerk",
+      "modelUrl": "./models/keizersgrachtkerk.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012177272"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.888077939720203,
+          52.364601907267215
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 29,
+        "widthMetres": 15
+      },
+      "surveyed": {
+        "anchor": [
+          4.888077939720203,
+          52.364601907267215
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Exact current BAG0363100012177272 native east/south metres, single church footprint; frontage chain5→0 toward Keizersgracht; semantic AHN5 roof profiles; adjacent canal houses retained."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "attribution": {
+        "title": "Keizersgrachtkerk — original surveyed neo-Venetian church",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518347",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original native texture-free flat-color geometry; photos and survey evidence guide architectural construction."
+      },
+      "materialOverrides": {
+        "brick": "#986f5d",
+        "stone": "#d5cfbd",
+        "slate": "#707e86",
+        "glass": "#526362",
+        "white": "#e5dfcc",
+        "bronze": "#67583d"
+      },
+      "landmarkId": "extract_landmarks_2099326007",
+      "routeCenter": [
+        4.8881806276757915,
+        52.3646801235429
+      ],
+      "bounds": {
+        "min": [
+          -19.03947639465332,
+          -3.356933575560106e-7,
+          -12.756148338317871
+        ],
+        "max": [
+          11.436458587646484,
+          24.219999313354492,
+          18.501296997070312
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.888077939720203,
+          52.364601907267215
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 31.257445335388184,
+        "heightMetres": 24.21999964904785,
+        "depthMetres": 30.475934982299805,
+        "depthCoverage": 2.031728998819987
+      },
+      "triangles": 22999,
+      "bytes": 263136,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "gerard-dou-synagogue": {
+      "id": "gerard-dou-synagogue",
+      "name": "Gerard Dou Synagogue",
+      "modelUrl": "./models/gerard-dou-synagogue.glb",
+      "osmPoi": {
+        "type": "node",
+        "id": 25099441,
+        "coordinate": [
+          4.8978616,
+          52.3570574
+        ]
+      },
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012140916"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.897864665654482,
+          52.357009615706716
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 22,
+        "widthMetres": 20
+      },
+      "surveyed": {
+        "anchor": [
+          4.897864665654482,
+          52.357009615706716
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current PDOK BAG0363100012140916, native east/south metres; street frontage0→1→2→3. AHN4 2020 survey calibrated roof envelope, historic reference facade details."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "attribution": {
+        "title": "Gerard Dou Synagogue",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/527843",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original native-scale flat-colour geometry guided by survey and facade references, no imported meshes or pixels."
+      },
+      "materialOverrides": {
+        "brick": "#855346",
+        "white": "#e1e2d8",
+        "stone": "#d0d4c9",
+        "bronze": "#4b5555",
+        "slate": "#515453",
+        "glass": "#6e878b",
+        "dark": "#27332f",
+        "frame": "#9baba5"
+      },
+      "landmarkId": "extract_landmarks_25099441",
+      "routeCenter": [
+        4.897850161190556,
+        52.35709575612273
+      ],
+      "bounds": {
+        "min": [
+          -8.024511337280273,
+          -0.0004955444601364434,
+          -11.704974174499512
+        ],
+        "max": [
+          10.721364974975586,
+          17.06999969482422,
+          9.140902519226074
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.897864665654482,
+          52.357009615706716
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 90,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 20.845876693725586,
+        "heightMetres": 17.070495239284355,
+        "depthMetres": 18.74587631225586,
+        "depthCoverage": 0.937293815612793
+      },
+      "triangles": 5222,
+      "bytes": 90356,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

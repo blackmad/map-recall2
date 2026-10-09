@@ -9547,6 +9547,114 @@ Map source: ${osmUrl(places[i][0])}`);
         4.915873654538593,
         52.36005012574633
       ]
+    },
+    {
+      id: "keizersgrachtkerk",
+      name: "Keizersgrachtkerk",
+      modelUrl: "./models/keizersgrachtkerk.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012177272"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.888077939720203,
+          52.364601907267215
+        ],
+        headingDegrees: 0,
+        lengthMetres: 29,
+        widthMetres: 15
+      },
+      surveyed: {
+        anchor: [
+          4.888077939720203,
+          52.364601907267215
+        ],
+        northOffsetDegrees: 0,
+        source: "Exact current BAG0363100012177272 native east/south metres, single church footprint; frontage chain5\u21920 toward Keizersgracht; semantic AHN5 roof profiles; adjacent canal houses retained."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "Keizersgrachtkerk \u2014 original surveyed neo-Venetian church",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/518347",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original native texture-free flat-color geometry; photos and survey evidence guide architectural construction."
+      },
+      materialOverrides: {
+        brick: "#986f5d",
+        stone: "#d5cfbd",
+        slate: "#707e86",
+        glass: "#526362",
+        white: "#e5dfcc",
+        bronze: "#67583d"
+      },
+      landmarkId: "extract_landmarks_2099326007",
+      routeCenter: [
+        4.8881806276757915,
+        52.3646801235429
+      ]
+    },
+    {
+      id: "gerard-dou-synagogue",
+      name: "Gerard Dou Synagogue",
+      modelUrl: "./models/gerard-dou-synagogue.glb",
+      osmPoi: {
+        type: "node",
+        id: 25099441,
+        coordinate: [
+          4.8978616,
+          52.3570574
+        ]
+      },
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012140916"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.897864665654482,
+          52.357009615706716
+        ],
+        headingDegrees: 90,
+        lengthMetres: 22,
+        widthMetres: 20
+      },
+      surveyed: {
+        anchor: [
+          4.897864665654482,
+          52.357009615706716
+        ],
+        northOffsetDegrees: 0,
+        source: "Current PDOK BAG0363100012140916, native east/south metres; street frontage0\u21921\u21922\u21923. AHN4 2020 survey calibrated roof envelope, historic reference facade details."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "Gerard Dou Synagogue",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/527843",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original native-scale flat-colour geometry guided by survey and facade references, no imported meshes or pixels."
+      },
+      materialOverrides: {
+        brick: "#855346",
+        white: "#e1e2d8",
+        stone: "#d0d4c9",
+        bronze: "#4b5555",
+        slate: "#515453",
+        glass: "#6e878b",
+        dark: "#27332f",
+        frame: "#9baba5"
+      },
+      landmarkId: "extract_landmarks_25099441",
+      routeCenter: [
+        4.897850161190556,
+        52.35709575612273
+      ]
     }
   ];
 
@@ -33542,6 +33650,50 @@ Map source: ${osmUrl(places[i][0])}`);
             center: [
               52.36005012574633,
               4.915873654538593
+            ]
+          }
+        }
+      ]
+    },
+    {
+      modelId: "keizersgrachtkerk",
+      name: "Keizersgrachtkerk",
+      description: "Built in 1887\u20131888 for the Amsterdam Doleantie congregation, the Keizersgrachtkerk was designed by father and son G.B. and A. Salm. Its neo-Venetian facade places seven linked pointed windows below a large rose window, flanked by low towers. Inside, two galleries on cast-iron columns allowed a church planned for 1,600 worshippers to occupy a narrow canal-side plot. The organ of 1890 was D.G. Steenkuyl\u2019s last mechanical organ.",
+      sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/518347",
+      destinations: [
+        {
+          landmarkId: "extract_landmarks_2099326007",
+          name: "Keizersgrachtkerk",
+          center: [
+            52.3646801235429,
+            4.8881806276757915
+          ],
+          destinationOverride: {
+            center: [
+              52.3646801235429,
+              4.8881806276757915
+            ]
+          }
+        }
+      ]
+    },
+    {
+      modelId: "gerard-dou-synagogue",
+      name: "Gerard Dou Synagogue",
+      description: "The congregation Tesjoengat Israel (Hulpe Isra\xEBls) commissioned E.M. Rood to build this synagogue in 1891\u20131892. Its narrow street front conceals a prayer hall with galleries on three sides, originally seating 250 men and 70 women. The paired round-arched windows, David-star oculus and ceremonial doorway belong to its eclectic neo-Renaissance architecture.",
+      sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/527843",
+      destinations: [
+        {
+          landmarkId: "extract_landmarks_25099441",
+          name: "Gerard Dou Synagogue",
+          center: [
+            52.35709575612273,
+            4.897850161190556
+          ],
+          destinationOverride: {
+            center: [
+              52.35709575612273,
+              4.897850161190556
             ]
           }
         }

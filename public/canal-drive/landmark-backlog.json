@@ -21,9 +21,9 @@
     }
   ],
   "counts": {
-    "manual-model": 208,
+    "manual-model": 210,
     "procedural-kit": 15,
-    "pending": 127
+    "pending": 125
   },
   "destinations": [
     {
@@ -1998,14 +1998,15 @@
     {
       "id": "lm-extract_landmarks_25099441",
       "name": "Gerard Dou Synagogue",
-      "lat": 52.3570574,
-      "lng": 4.8978616,
+      "lat": 52.35709575612273,
+      "lng": 4.897850161190556,
       "prominence": 243,
       "type": "landmark",
       "queueRank": 155,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "gerard-dou-synagogue",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_2134910296",
@@ -2060,14 +2061,15 @@
     {
       "id": "lm-extract_landmarks_2099326007",
       "name": "Keizersgrachtkerk",
-      "lat": 52.364714,
-      "lng": 4.888084,
+      "lat": 52.3646801235429,
+      "lng": 4.8881806276757915,
       "prominence": 242,
       "type": "landmark",
       "queueRank": 160,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "keizersgrachtkerk",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1122909064",
