@@ -37,6 +37,7 @@ import { validateStreetAppearanceCatalog, type StreetAppearanceCatalog, type Str
 import type { ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import { PROCEDURAL_RECIPE_LAYER_OFFSET } from './streetFacadeRendering.js';
 import { buildingProjectionScale } from './buildingProjectionScale.js';
+import { createFacadeDepthMaterial, createLitFacadeMaterial } from './rendererShared/litFacadeMaterial.js';
 
 type BuildOptions = { surveyedEnvelopeData: EnvelopeTransport["envelopes"]; surveyedEnvelopeRevision: string; look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; contextFeatures?: readonly Feature[]; appearanceRevision: string; hostOpenings: readonly ChunkHostOpeningConfig[]; hostOpeningRevision: string };
 
@@ -381,7 +382,8 @@ export class ThreeBuildings {
   private bindLookMaterial(look: BuildingLook, set: { colour: any; mask: any }): void {
     let material = this.materials.get(look);
     if (!material) {
-      material = this.material.clone();
+      // The lit material's onBeforeCompile does not survive clone().
+      material = this.lit ? this.newMaterial() : this.material.clone();
       this.materials.set(look, material);
     }
     material.uniforms.cells.value = set.colour;
@@ -880,6 +882,14 @@ export class ThreeBuildings {
     mesh.userData.hostOpeningIds = chunk.hostOpeningIds ?? [];
     mesh.userData.appearanceRevision = options?.appearanceRevision;
     mesh.frustumCulled = true;
+    if (this.lit) {
+      // Coarse shells cover the whole city in a few huge meshes: drawing them
+      // into the shadow map would cost the full city per frame for a box
+      // that only spans the detailed tiles around the rider.
+      mesh.castShadow = !key.startsWith(COARSE_PREFIX);
+      mesh.receiveShadow = true;
+      mesh.customDepthMaterial = this.depthMaterial;
+    }
     if (key.startsWith(BOAT_PREFIX)) mesh.position.z = this.waterLevel;
     const entry = { source, mesh, info: infoOf(chunk), ranges: new Map(chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }])) };
     this.chunks.set(key, entry);
@@ -933,6 +943,104 @@ export class ThreeBuildings {
     for (const [key, entry] of this.chunks) if (key.startsWith(COARSE_PREFIX)) this.applyHidden(entry, changed);
   }
 
+  /** Set when the facades draw in the shared frame (`?sharedFrame=1`) instead of their own layer. */
+  private sharedFrame: any = null;
+  /** Lit material + sun shadows; only inside the shared frame (`?litFacades=0` keeps the unlit shader there). */
+  private lit = false;
+  private depthMaterial: any = null;
+
+  /** One set-up for both the legacy layer and the shared frame. */
+  private setup(map: MapLike, renderer: any, camera: any, scene: any): void {
+    const THREE = this.THREE;
+    if (!this.appearanceLoaded) void this.loadStreetAppearance();
+    this.camera = camera;
+    this.scene = scene;
+    this.renderer = renderer;
+    // CPU copies are freed after upload, so a restored context needs fresh meshes.
+    map.getCanvas().addEventListener('webglcontextrestored', () => {
+      this.ready = false;
+      this.textureSets.clear();
+      for (const key of [...this.chunks.keys()]) this.dropChunk(key);
+      for (const material of this.materials.values()) material.dispose();
+      this.materials.clear();
+      this.material.uniforms.cells.value = null;
+      void this.setLook(this.requestedLook);
+    });
+    this.material = this.newMaterial();
+    if (this.lit) this.depthMaterial = createFacadeDepthMaterial(THREE);
+    this.materials.set(this.look, this.material);
+    const initialLook = this.requestedLook, token = ++this.lookToken;
+    void this.texturesFor(cellSetOf(initialLook)).then(set => {
+      // A newer mode can finish before the initial atlas. Never overwrite it.
+      if (token !== this.lookToken) return;
+      this.look = initialLook;
+      this.bindLookMaterial(initialLook, set);
+      this.ready = true;
+      this.invalidateBuilds();
+      for (const [key, source] of this.sourceGroups) this.pending.push(key, () => this.rebuild(key, source));
+      this.pump();
+      this.map.triggerRepaint();
+    });
+    const c = this.maplibregl.MercatorCoordinate.fromLngLat([ORIGIN.lng, ORIGIN.lat], 0);
+    const scale = c.meterInMercatorCoordinateUnits();
+    this.transform = new THREE.Matrix4().makeTranslation(c.x, c.y, c.z).scale(new THREE.Vector3(...buildingProjectionScale(scale)));
+  }
+
+  private newMaterial(): any {
+    const THREE = this.THREE;
+    if (this.lit) {
+      const material = createLitFacadeMaterial(THREE);
+      material.uniforms.bands.value = this.look === 'cartoon' ? 3 : 0;
+      material.uniforms.flatColour.value = this.look === 'untextured' ? 1 : 0;
+      return material;
+    }
+    return new THREE.RawShaderMaterial({
+      glslVersion: THREE.GLSL3, vertexShader: VERTEX, fragmentShader: FRAGMENT,
+      uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: this.look === 'cartoon' ? 3 : 0 }, flatColour: { value: this.look === 'untextured' ? 1 : 0 }, cityFade: { value: 1 } }, side: THREE.FrontSide,
+    });
+  }
+
+  /** Per-frame state shared by both paths; false when nothing should draw. */
+  private prepareFrame(): boolean {
+    this.refreshSurveyedRoofOwnership();
+    if (!this.visible || !this.ready || !this.scene || !this.chunks.size || this.map.getZoom() < MIN_ZOOM) return false;
+    const fade = Math.max(0, Math.min(1, (this.map.getZoom() - MIN_ZOOM) / 1.6));
+    for (const material of this.materials.values()) material.uniforms.cityFade.value = fade;
+    return true;
+  }
+
+  /**
+   * Draw in the page's shared three.js frame instead of an own custom layer:
+   * one renderer, scene and light rig with the landmarks, trees and vehicles,
+   * plus (unless `lit: false`) the lit facade material and sun shadows. Call
+   * this instead of adding `layer` to the map.
+   */
+  attachToSharedFrame(frame: any, options: { lit?: boolean; order?: number } = {}): void {
+    if (this.sharedFrame) return;
+    const THREE = (window as any).CanalRecallThree?.THREE;
+    if (!THREE) { console.warn('three-building-facades: shared three.js missing'); return; }
+    this.THREE = THREE;
+    this.sharedFrame = frame;
+    this.lit = options.lit !== false;
+    const root = new THREE.Group();
+    root.name = 'three-building-facades';
+    const camera = new THREE.Camera();
+    frame.register('facades', {
+      root,
+      onAttach: (f: any) => this.setup(this.map, f.renderer, camera, root),
+      mercatorFromLocal: () => this.transform?.elements,
+      beforeRender: (ctx: any) => {
+        if (!this.prepareFrame()) return false;
+        // Picking (inspectAtScreen) raycasts world-space meshes with this projection.
+        camera.projectionMatrix.copy(ctx.clipFromWorld);
+        return true;
+      },
+    }, { order: options.order ?? 0 });
+  }
+
+  /** Whether this layer draws through the shared frame. */
+  get inSharedFrame(): boolean { return !!this.sharedFrame; }
+
   private makeLayer(): any {
     const owner = this;
     return {
@@ -941,47 +1049,12 @@ export class ThreeBuildings {
         const THREE = (window as any).CanalRecallThree?.THREE;
         if (!THREE) { console.warn('three-building-facades: shared three.js missing'); return; }
         owner.THREE = THREE;
-        if (!owner.appearanceLoaded) void owner.loadStreetAppearance();
-        owner.camera = new THREE.Camera();
-        owner.scene = new THREE.Scene();
-        owner.renderer = new THREE.WebGLRenderer({ canvas: map.getCanvas(), context: gl, antialias: true });
-        owner.renderer.autoClear = false;
-        // CPU copies are freed after upload, so a restored context needs fresh meshes.
-        map.getCanvas().addEventListener('webglcontextrestored', () => {
-          owner.ready = false;
-          owner.textureSets.clear();
-          for (const key of [...owner.chunks.keys()]) owner.dropChunk(key);
-          for (const material of owner.materials.values()) material.dispose();
-          owner.materials.clear();
-          owner.material.uniforms.cells.value = null;
-          void owner.setLook(owner.requestedLook);
-        });
-        owner.material = new THREE.RawShaderMaterial({
-          glslVersion: THREE.GLSL3, vertexShader: VERTEX, fragmentShader: FRAGMENT,
-          uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: owner.look === 'cartoon' ? 3 : 0 }, flatColour: { value: owner.look === 'untextured' ? 1 : 0 }, cityFade: { value: 1 } }, side: THREE.FrontSide,
-        });
-        owner.materials.set(owner.look, owner.material);
-        const initialLook = owner.requestedLook, token = ++owner.lookToken;
-        void owner.texturesFor(cellSetOf(initialLook)).then(set => {
-          // A newer mode can finish before the initial atlas. Never overwrite it.
-          if (token !== owner.lookToken) return;
-          owner.look = initialLook;
-          owner.bindLookMaterial(initialLook, set);
-          owner.ready = true;
-          owner.invalidateBuilds();
-          for (const [key, source] of owner.sourceGroups) owner.pending.push(key, () => owner.rebuild(key, source));
-          owner.pump();
-          owner.map.triggerRepaint();
-        });
-        const c = owner.maplibregl.MercatorCoordinate.fromLngLat([ORIGIN.lng, ORIGIN.lat], 0);
-        const scale = c.meterInMercatorCoordinateUnits();
-        owner.transform = new THREE.Matrix4().makeTranslation(c.x, c.y, c.z).scale(new THREE.Vector3(...buildingProjectionScale(scale)));
+        const renderer = new THREE.WebGLRenderer({ canvas: map.getCanvas(), context: gl, antialias: true });
+        renderer.autoClear = false;
+        owner.setup(map, renderer, new THREE.Camera(), new THREE.Scene());
       },
       render(_gl: WebGL2RenderingContext, args: any) {
-        owner.refreshSurveyedRoofOwnership();
-        if (!owner.visible || !owner.ready || !owner.scene || !owner.chunks.size || owner.map.getZoom() < MIN_ZOOM) return;
-        const fade = Math.max(0, Math.min(1, (owner.map.getZoom() - MIN_ZOOM) / 1.6));
-        for (const material of owner.materials.values()) material.uniforms.cityFade.value = fade;
+        if (!owner.prepareFrame()) return;
         owner.camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(owner.transform);
         owner.renderer.resetState();
         owner.renderer.render(owner.scene, owner.camera);
