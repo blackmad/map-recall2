@@ -4,10 +4,20 @@
 // looks wrong.
 
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import { CANAL_CITIES } from '../src/canalRecall/game/cities.ts';
 
 import {
   advanceLiveRoute,
+  capWeightShares,
+  HOME_MAX_SHARE,
+  mergeManualPoiFeatures,
+  pickReviewRoute,
+  readRecentDestinations,
+  recentDestinationFactor,
+  recentDestinationsKey,
+  recordRecentDestination,
+  rememberDestination,
   GPS_ORIGIN_ID,
   GpsOriginError,
   HOME_RADIUS_KNOWN_TO_EXPAND,
@@ -305,6 +315,126 @@ await assert.rejects(
   (error: unknown) => error instanceof GpsOriginError && error.code === 'unsupported',
 );
 checks.push('GPS start needs a secure context');
+
+// ---------------------------------------------------------------------------
+// Home destination variety (2026-10-09): the prod game kept picking De Dolphijn
+// from Da Costakade 13. Real Amsterdam POI pool, same filter as game-route.js.
+// ---------------------------------------------------------------------------
+const AMS = CANAL_CITIES.amsterdam;
+const AMS_FEATURES = mergeManualPoiFeatures(
+  JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/landmarks.json', 'utf8')), 'amsterdam') as any[];
+const AMS_POIS: RoutePoi[] = AMS.curatedPois.map(poi => ({ ...poi }));
+{
+  const seen = new Set(AMS_POIS.map(poi => poi.name.toLowerCase()));
+  for (const feature of AMS_FEATURES) {
+    const centre = feature.routeCenter || feature.center;
+    if (!centre || !feature.name || !isTeachableRouteDestination(feature)) continue;
+    if (seen.has(feature.name.toLowerCase())) continue;
+    const poi = { id: `lm-${feature.id}`, name: feature.name, lat: centre[0], lng: centre[1] };
+    if (!feature.manualPoi && kmBetween(poi, AMS.center) > 4) continue;
+    seen.add(feature.name.toLowerCase());
+    AMS_POIS.push(poi);
+  }
+}
+const DA_COSTAKADE = { lat: 52.3728, lng: 4.8737 };
+
+check('recentDestinationFactor: last ride never, older ones climb back', () => {
+  assert.equal(recentDestinationFactor(-1), 1);
+  assert.equal(recentDestinationFactor(0), 0);
+  assert.ok(recentDestinationFactor(1) < recentDestinationFactor(4));
+  assert.ok(recentDestinationFactor(7) < 0.5, 'still strongly down-weighted');
+  assert.equal(recentDestinationFactor(8), 1);
+});
+
+check('capWeightShares: a favourite cannot exceed the share cap', () => {
+  const weights = [100, ...Array.from({ length: 29 }, () => 1)];
+  const capped = capWeightShares(weights);
+  const total = capped.reduce((sum, weight) => sum + weight, 0);
+  assert.ok(capped[0] / total <= HOME_MAX_SHARE + 1e-3, `share ${capped[0] / total}`);
+  assert.deepEqual(capWeightShares([5, 1]), [5, 1], 'too few candidates to cap');
+  assert.deepEqual(capWeightShares([0, 0]), [0, 0]);
+});
+
+check('rememberDestination keeps most-recent-first, deduplicated and bounded', () => {
+  let recent: string[] = [];
+  for (const id of ['a', 'b', 'c', 'a']) recent = rememberDestination(recent, id, 3);
+  assert.deepEqual(recent, ['a', 'c', 'b']);
+  recent = rememberDestination(recent, 'd', 3);
+  assert.deepEqual(recent, ['d', 'a', 'c']);
+});
+
+check('recent destinations persist per city and home address', () => {
+  const data = new Map<string, string>();
+  const storage = { getItem: (k: string) => data.get(k) ?? null, setItem: (k: string, v: string) => void data.set(k, v) };
+  const home = recentDestinationsKey('amsterdam', '  Da Costakade 13-3 ');
+  assert.equal(home, recentDestinationsKey('amsterdam', 'da costakade 13-3'));
+  assert.deepEqual(readRecentDestinations(storage, home), []);
+  recordRecentDestination(storage, home, 'x');
+  recordRecentDestination(storage, home, 'y');
+  recordRecentDestination(storage, recentDestinationsKey('amsterdam', 'Elsewhere 1'), 'z');
+  assert.deepEqual(readRecentDestinations(storage, home), ['y', 'x']);
+  data.set('canalRecall.recentDestinations.v1', '{not json');
+  assert.deepEqual(readRecentDestinations(storage, home), [], 'corrupt storage reads as empty');
+  assert.deepEqual(readRecentDestinations(null, home), []);
+});
+
+check('home picks never repeat the previous destination and exclude recent ones', () => {
+  const recent = AMS_POIS.slice(0, 7).map(poi => poi.id);
+  for (let i = 0; i < 300; i += 1) {
+    const pick = pickHomeDestination(AMS_POIS, DA_COSTAKADE, [], undefined, null, [recent[0]]);
+    assert.notEqual(pick?.poi.id, recent[0]);
+  }
+});
+
+check('regression: 20 consecutive home picks from Da Costakade 13 are varied (empty and practised history)', () => {
+  let seed = 11;
+  const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const practised: MasterySample[] = [];
+  for (let i = 0; i < 400; i += 1) {
+    const angle = rnd() * Math.PI * 2, radius = Math.sqrt(rnd()) * 2.2;
+    practised.push({
+      lat: DA_COSTAKADE.lat + (radius * Math.sin(angle)) / 111,
+      lng: DA_COSTAKADE.lng + (radius * Math.cos(angle)) / 68,
+      mastery: rnd() < 0.6 ? 1 : 0.33,
+    });
+  }
+  for (const [label, samples] of [['empty', []], ['practised', practised]] as const) {
+    for (let trial = 0; trial < 25; trial += 1) {
+      let recent: string[] = [];
+      const ids: string[] = [];
+      for (let i = 0; i < 20; i += 1) {
+        const pick = pickHomeDestination(AMS_POIS, DA_COSTAKADE, samples, undefined, null, recent);
+        assert.ok(pick, 'a destination exists');
+        assert.notEqual(pick.poi.id, ids[ids.length - 1], `${label}: repeated ${pick.poi.name}`);
+        ids.push(pick.poi.id);
+        recent = rememberDestination(recent, pick.poi.id);
+      }
+      assert.ok(new Set(ids).size >= 8, `${label}: only ${new Set(ids).size} distinct in 20`);
+    }
+  }
+});
+
+check('regression: no landmark takes more than ~2x the share cap of independent home picks', () => {
+  const tally = new Map<string, number>();
+  const picks = 4000;
+  for (let i = 0; i < picks; i += 1) {
+    const pick = pickHomeDestination(AMS_POIS, DA_COSTAKADE, [])!;
+    tally.set(pick.poi.id, (tally.get(pick.poi.id) ?? 0) + 1);
+  }
+  const top = Math.max(...tally.values()) / picks;
+  assert.ok(top < HOME_MAX_SHARE + 0.02, `top share ${top}`);
+});
+
+check('review rides from home skip recently ridden destinations', () => {
+  const home: RoutePoi = { id: 'home', name: 'Home', ...DA_COSTAKADE };
+  const near = AMS_POIS.filter(poi => kmBetween(poi, home) >= 0.9 && kmBetween(poi, home) <= 2.5);
+  const due = near.slice(0, 20).map(poi => ({ name: `Street by ${poi.name}`, center: [poi.lat, poi.lng] as [number, number] }));
+  const first = pickReviewRoute({ pois: [home, ...near], due, from: home, maxKm: 3, chooseIndex: () => 0 });
+  assert.ok(first, 'a review ride exists');
+  const again = pickReviewRoute({ pois: [home, ...near], due, from: home, maxKm: 3, chooseIndex: () => 0, recentIds: [first.to.id] });
+  assert.ok(again);
+  assert.notEqual(again.to.id, first.to.id, 'same due set must not replay the same destination');
+});
 
 console.log(`Route selection OK: ${checks.length} checks.`);
 for (const name of checks) console.log(`  · ${name}`);
