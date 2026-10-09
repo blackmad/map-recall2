@@ -1999,5 +1999,14 @@
     "description": "The West India House on Herenmarkt was the Amsterdam headquarters of the Dutch West India Company. Built in 1617 as a meat market and militia waiting room, it was rented by the company from 1623 and extended with two wings around a courtyard, tripling its size by 1647. A fire in 1975 was followed by restoration in 1978-1981; it now holds offices, the John Adams Institute and a municipal wedding hall.",
     "funFact": "It was here in 1625 that the company directors ordered the building of a fort on Manhattan, the beginning of New Amsterdam and later New York. A bronze statue of Peter Stuyvesant stands in the courtyard.",
     "sourceUrl": "https://en.wikipedia.org/wiki/West-Indisch_Huis"
-  }
+  },
+{
+  "modelId": "vrijburg",
+  "landmarkId": "extract_landmarks_563908011",
+  "name": "Vrijburg",
+  "description": "Vrijburg, Diepenbrockstraat 46, is the Remonstrant church of Amsterdam-Zuid. It was built in 1931-1933 on a plot at the point of the Zuider Amstelkanaal, Boerenwetering and Verlengde Diepenbrockstraat, when the area was still empty building land. A tall red-brick gable with a round-arched entrance faces the street, and the side facade runs along Herman Gorterstraat.",
+  "funFact": "The Remonstrants already had their hidden church on the Keizersgracht, but built this second church for the new southern expansion of the city; it was tendered in the winter of 1931-32 for 105,500 guilders and opened on 18 June 1933.",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Diepenbrockstraat_46",
+  "preferDescription": true
+}
 ]
