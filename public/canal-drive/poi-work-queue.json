@@ -2187,14 +2187,17 @@
         "NL.IMBAG.Pand.0363100012169456",
         "NL.IMBAG.Pand.0363100012169457",
         "NL.IMBAG.Pand.0363100012174397",
-        "NL.IMBAG.Pand.0363100012185424"
+        "NL.IMBAG.Pand.0363100012185424",
+        "NL.IMBAG.Pand.0363100012176752",
+        "NL.IMBAG.Pand.0363100012171101"
       ],
       "latestBatch": [
-        "NL.IMBAG.Pand.0363100012185424"
+        "NL.IMBAG.Pand.0363100012176752",
+        "NL.IMBAG.Pand.0363100012171101"
       ],
       "evidence": "ordinary-buildings-data/prinsen767-review-20261009.json",
       "handoff": "docs/performance/2026-10-06/canal-belt-continuation-handoff.md",
-      "nextAction": "Correct Keizers36 failed v03 GPU roof junctions/corner4, then native-game acceptance. Fresh Brouwersgracht1\u20135/Singel16,22\u201326 ordinary37 author is active from pushed source42; independent roof/source reviewer active. Continuous queue remains open.",
+      "nextAction": "Hosted37 verified. Continue repaired full-architecture Leidsestraat67\u201371 / Kerkstraat50/52 ordinary38 through native game, exact neighbors, Club Church basic click identity, fallback and performance; queue stays active.",
       "sourceCommit": "9fc691744e03b91f70899896033acdb6cbbd1a18",
       "notes": "Ordinary assets/full architecture review for defining Rokin roof assemblies; no invented POI routes. Existing Nacarat basic inside-footprint click card retained. Both strict500k/three-material budgets pass.",
       "localModelCount": 35,
@@ -2440,13 +2443,13 @@
       "id": "keizers575-ordinary-treatment",
       "task": "Source and model native Keizersgracht575 parent0363100012176752",
       "priority": "high",
-      "status": "accepted-local-hosted-verification-pending",
+      "status": "accepted-hosted",
       "buildingIds": [
         "NL.IMBAG.Pand.0363100012176752"
       ],
       "scope": "One official parent includes distinct Venetian569\u2013571 and classical573\u2013575 fronts; one VBO main575/secondary569. Full architecture, no invented POI or standard approval.",
       "sourcePack": "experiments/canal-belt-continuation-20261007/keizers575-next-source37",
-      "nextAction": "Publish reviewed frozen asset and verify actual hosted fingerprints, gallery and game. Full local source/gallery/independent/native desktop-touch, both model-specific cold fallback and actual card policy passed. Preserve architectural/long-task/emulated-touch/empty-pyramid limits.",
+      "nextAction": "Scoped hosted source/gallery/game verification complete; preserve source and performance limits. Continue ordinary queue.",
       "sourceCommit": "4ec0a0d69e202f87d573b5543650c9446f20102f",
       "draftHash": "5ecc5194b38f88ad9aa4862a81565b0216f5010dfeb17054246a093c6aa796b9",
       "supplementarySourceCommit": "24ce200c61425e6ecc2d4f85a82a2c512cb18c55",
@@ -2462,20 +2465,27 @@
       "nativeReviewEvidence": {
         "sourceCommit": "1bb20d83f4fdc4e9d0e1829f6ca44371f40729ea",
         "sourcePack": "experiments/canal-belt-continuation-20261007/native36-37-review50"
+      },
+      "hostedVerification": {
+        "publicCommit": "e4c7f872d47573133e4a8f62ca7b01133fff2e62",
+        "firebaseRun": 37913112710,
+        "sourceCommit": "4d1e8cc90",
+        "sourcePack": "experiments/canal-belt-continuation-20261007/hosted37-and-next38-review53",
+        "modelCount": 37
       }
     },
     {
       "id": "brouwers1-singel26-ordinary-treatment",
       "task": "Model joined native Brouwersgracht1\u20135 / Singel16,22\u201326 parent",
       "priority": "high",
-      "status": "accepted-local-hosted-verification-pending",
+      "status": "accepted-hosted",
       "buildingIds": [
         "NL.IMBAG.Pand.0363100012171101"
       ],
       "scope": "One902m\u00b2 native parent with white doublewarehouse, hipped corner house and distinct cornice/ship-attic/neckgable fronts. Full architectural loop required; no invented POI. Preserve open C-shaped rear notch, low source roofs and exact neighbors.",
       "sourceCommit": "62af8c1d3642f1a50cda830ce7921c27006aac5d",
       "sourcePack": "experiments/canal-belt-continuation-20261007/next-ordinary37-source42",
-      "nextAction": "Publish reviewed frozen asset and verify actual hosted fingerprints, gallery and game. Full local source/gallery/independent/native desktop-touch, both model-specific cold fallback and actual card policy passed. Preserve architectural/long-task/emulated-touch/empty-pyramid limits.",
+      "nextAction": "Scoped hosted source/gallery/game verification complete; preserve source and performance limits. Continue ordinary queue.",
       "draftHash": "056e443a76e89238c8309e7f65819cddbad179b6cb3bb23f45020c233fcd3c4b",
       "revisedReviewEvidence": {
         "sourceCommit": "91c37347d8561e49f4efaded24f201d608b03050",
@@ -2484,12 +2494,19 @@
       "nativeReviewEvidence": {
         "sourceCommit": "1bb20d83f4fdc4e9d0e1829f6ca44371f40729ea",
         "sourcePack": "experiments/canal-belt-continuation-20261007/native36-37-review50"
+      },
+      "hostedVerification": {
+        "publicCommit": "e4c7f872d47573133e4a8f62ca7b01133fff2e62",
+        "firebaseRun": 37913112710,
+        "sourceCommit": "4d1e8cc90",
+        "sourcePack": "experiments/canal-belt-continuation-20261007/hosted37-and-next38-review53",
+        "modelCount": 37
       }
     },
     {
       "id": "leids67-kerk52-ordinary-treatment",
       "task": "Model joined Leidsestraat67\u201371 / Kerkstraat50A/B,52 parent",
-      "status": "authoring-full-architectural-draft",
+      "status": "gallery-repaired-native-review-pending",
       "priority": "high",
       "buildingIds": [
         "NL.IMBAG.Pand.0363100012172459"
@@ -2497,7 +2514,13 @@
       "sourceCommit": "e21680c666d878aa74d42fe74b7c9a103bfee5ca",
       "sourcePack": "experiments/canal-belt-continuation-20261007/next-ordinary38-source51",
       "scope": "One joined native parent with surviving Roobol broad-window frontage and historic double-neck-gable frontage; preserve external notches and existing Club Church basic mapped card. Full architectural loop, no new curated destination.",
-      "nextAction": "Fresh author and independent source reviewer active. Use raw17survey roof rings rather than preliminary handoff count18; preserve low19. Root actual gallery/native/neighbor/picking/performance acceptance pending."
+      "nextAction": "Root and independent actual GPU repair passed: explicit native masonry closes missing front walls. Severe failed8dabf653 images/code retained privately. Native gameplay, 6 neighbors, existing Club Church actual card, fallback and performance pending.",
+      "draftHash": "bb1bcea2396bac298bcfbadbb55012c9a99f6aa2e75181cfc807cd648b114ce1",
+      "gpuFailureEvidence": {
+        "sourceCommit": "d6509d17f",
+        "sourcePack": "experiments/canal-belt-continuation-20261007/leids67-failed-gallery54",
+        "failedHash": "8dabf6535996a914891df1d9393cb800f962105a4e8f4da1cd3d7a230da7f706"
+      }
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"
