@@ -1,0 +1,122 @@
+{
+  "version": 1,
+  "reviewer": "root-codex-native-image-inspection",
+  "method": "Individually viewed labelled full and ground source images; field-level development audit, not held-out accuracy or 3D acceptance.",
+  "entries": [
+    {
+      "index": 0,
+      "buildingId": "0363100012166570",
+      "observationId": "0363100012166570_e_0wwk20u",
+      "images": [
+        {
+          "kind": "full",
+          "sourceSha256": "7552484350c90e5dbd43bce12d22e239bfd1ca98bc735da1020f8f037a2a6f64",
+          "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7552484350c90e5dbd43bce12d22e239bfd1ca98bc735da1020f8f037a2a6f64.jpg"
+        },
+        {
+          "kind": "ground",
+          "sourceSha256": "603e13b8074ddf0b5da30d36da4a0a5b86e0fb9051b5b1c4e7c41bbe941e61f8",
+          "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/603e13b8074ddf0b5da30d36da4a0a5b86e0fb9051b5b1c4e7c41bbe941e61f8.jpg"
+        }
+      ],
+      "entranceFromFull": "visible",
+      "entranceFromGround": "visible",
+      "visibleOpeningLevelsFull": 4,
+      "groundBand": "A low grey stone plinth is visible; main ground wall remains brick. Do not colour the entire ground floor grey.",
+      "roofline": "Front cornice is broadly horizontal, with a small central raised element; complete roof mass is not established.",
+      "review": "Rich assessment misses the visible entrance and counts three rather than four opening levels. Ground-only assessment falsely says no entrance and misses visible low plinth. Paired red doors share an arched surround; exact doorway count needs a stated convention."
+    },
+    {
+      "index": 1,
+      "buildingId": "0363100012162796",
+      "observationId": "0363100012162796_e_13u2mzl",
+      "images": [
+        {
+          "kind": "full",
+          "sourceSha256": "e32641a5598fd1ac6382d2dbac7835fd195f37d7feae39abc18675a9bc34f262",
+          "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/e32641a5598fd1ac6382d2dbac7835fd195f37d7feae39abc18675a9bc34f262.jpg"
+        },
+        {
+          "kind": "ground",
+          "sourceSha256": "618e8e92b08f013f85fb3f45cebedf971f04176e04c93794960f75d8b22f59a8",
+          "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/618e8e92b08f013f85fb3f45cebedf971f04176e04c93794960f75d8b22f59a8.jpg"
+        }
+      ],
+      "entranceFromFull": "visible",
+      "entranceFromGround": "visible",
+      "visibleOpeningLevelsFull": null,
+      "groundBand": "Exposed brick continues around ground openings; car obscures the lowest band.",
+      "roofline": "Full image is overexposed at the top; do not infer roof shape.",
+      "review": "Ground image shows two unambiguous side doors. Central glazed pair could be another entrance, but threshold/handles are insufficiently clear. Ground-only count3 is not independently accepted; rich assessment unnecessarily withholds entrance presence."
+    },
+    {
+      "index": 11,
+      "buildingId": "0363100012127485",
+      "observationId": "0363100012127485_e_1w0ttzw",
+      "images": [
+        {
+          "kind": "full",
+          "sourceSha256": "9f03a4974454e96ff4b0ad831ee96ee15dc38dbfaf0b8d14e8596f2b916c6a30",
+          "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/9f03a4974454e96ff4b0ad831ee96ee15dc38dbfaf0b8d14e8596f2b916c6a30.jpg"
+        },
+        {
+          "kind": "ground",
+          "sourceSha256": "b0b79ea50578bdf9f6853ced109582edb30762210103769d8006f69fc552e9a1",
+          "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/b0b79ea50578bdf9f6853ced109582edb30762210103769d8006f69fc552e9a1.jpg"
+        }
+      ],
+      "entranceFromFull": "visible",
+      "entranceFromGround": "unknown",
+      "visibleOpeningLevelsFull": 5,
+      "groundBand": "Full view clearly shows grey masonry base and cream/ochre upper finish, with a stepped boundary around the right window. Ground view is mostly tree-obscured.",
+      "roofline": "Broadly flat front parapet with changes in height across the building; no gable shape supported.",
+      "review": "Rich entrance presence is supported by full photo, but four opening levels undercounts five. Ground-only entrance unknown is appropriate for this heavily occluded crop. Do not treat the ground crop alone as evidence of no storefront components."
+    },
+    {
+      "index": 13,
+      "buildingId": "0363100012173914",
+      "observationId": "0363100012173914_e_1un6nri",
+      "images": [
+        {
+          "kind": "full",
+          "sourceSha256": "6ac5d51a5abdd9569aea2d8b86dcbb861b4b785449e641104ce72a16ab799114",
+          "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/6ac5d51a5abdd9569aea2d8b86dcbb861b4b785449e641104ce72a16ab799114.jpg"
+        },
+        {
+          "kind": "ground",
+          "sourceSha256": "9d0ac687f89aeee328300bfa20b35f655c9a12c5870441467401b558192ae6bd",
+          "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/9d0ac687f89aeee328300bfa20b35f655c9a12c5870441467401b558192ae6bd.jpg"
+        }
+      ],
+      "entranceFromFull": "unknown",
+      "entranceFromGround": "unknown",
+      "visibleOpeningLevelsFull": 4,
+      "groundBand": "A distinct dark low plinth is exposed at left, below pale horizontally scored wall.",
+      "roofline": "A shallow tiled roof strip sits above front cornice; this side-facing crop does not establish a named gable.",
+      "review": "Both assessments claim absent entrance despite cropped/obscured right opening. Skip blocks lower half. Ground-only misses dark plinth and asserts painted brick where surface substrate is uncertain."
+    },
+    {
+      "index": 30,
+      "buildingId": "0363100012236796",
+      "observationId": "0363100012236796_e_1wk1kml",
+      "images": [
+        {
+          "kind": "full",
+          "sourceSha256": "fa9c3ab9bee42dd26531c6c1fdfd1328eaa8bd637e25a27815a0596893c3bf91",
+          "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/fa9c3ab9bee42dd26531c6c1fdfd1328eaa8bd637e25a27815a0596893c3bf91.jpg"
+        },
+        {
+          "kind": "ground",
+          "sourceSha256": "c6e6185e8382122c7222df35cdfd27323d98c55e3131186c3e63d450e03cb5c4",
+          "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/c6e6185e8382122c7222df35cdfd27323d98c55e3131186c3e63d450e03cb5c4.jpg"
+        }
+      ],
+      "entranceFromFull": "unknown",
+      "entranceFromGround": "unknown",
+      "visibleOpeningLevelsFull": 4,
+      "groundBand": "White upper finish continues around curved ground opening; vegetation prevents a reliable plinth assessment.",
+      "roofline": "Sloping ornate gable edges visible; crest extends beyond crop. Do not force complete silhouette or precise gable family.",
+      "review": "Ground-only says absent entrance although dense foliage obscures the opening. Unknown is required. Roofline geometry must remain partial, even if architectural style is recognizable."
+    }
+  ]
+}
