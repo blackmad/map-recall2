@@ -1,0 +1,22 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import * as T from 'three';
+import {assembleReference} from './assemble-reference.ts';
+import {compileCanalHouseRecipe} from '../../src/canalRecall/canalhouseRecipes.ts';
+test('source-selected glazed door shows glass behind the retained dark grid',async()=>{
+ const input=JSON.parse(await fs.readFile('docs/references/canalhouse-recipes/herengracht-507-509-recipe-input.json','utf8'));
+ const result=await assembleReference(input),o=result.entry.recipe.elevations[0].openings.value.find(o=>o.id==='cellar-axis2')!;
+ assert.equal(o.kind,'door');assert.equal(o.paneSurface,'glass');
+ const built=compileCanalHouseRecipe(result.entry.recipe);built.group.updateMatrixWorld(true);
+ const facade=built.group.getObjectByName('elevation/principal')!;
+ const origin=new T.Vector3(o.leftM+o.widthM*.42,o.bottomM+o.heightM*.57,2).applyMatrix4(facade.matrixWorld);
+ const direction=new T.Vector3(0,0,-1).transformDirection(facade.matrixWorld);
+ assert.equal(new T.Raycaster(origin,direction).intersectObject(built.group,true)[0].object.userData.surface,'glass');
+ const defaults=structuredClone(input);delete defaults.frameSets['glazed-cellar-gate'].overrides.paneSurface;
+ const old=await assembleReference(defaults),opaque=compileCanalHouseRecipe(old.entry.recipe);
+ const pane=opaque.group.getObjectByName('opening/cellar-axis2/pane')!;
+ assert.equal(pane.userData.surface,'door');
+ assert.deepEqual(result.entry.recipe.footprint,old.entry.recipe.footprint);
+ assert.deepEqual(result.entry.recipe.roof,old.entry.recipe.roof);
+});

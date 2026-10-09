@@ -1,0 +1,273 @@
+{
+  "schemaVersion": 1,
+  "id": "bloemgracht-102",
+  "admissionFile": "docs/references/canalhouse-recipes/bloemgracht-102-source-admission.json",
+  "surveyFile": "docs/references/canalhouse-recipes/bloemgracht-102-survey.json",
+  "lowerReferenceTier": "full",
+  "frameSets": {
+    "sash": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.055,
+        "frameDepthM": 0.12,
+        "frameSurface": "trim",
+        "barSurface": "door",
+        "horizontalBars": [
+          0.76
+        ],
+        "mullionWidthM": 0.028
+      }
+    },
+    "entry": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.07,
+        "frameDepthM": 0.16,
+        "frameSurface": "door",
+        "barSurface": "door",
+        "verticalBars": [
+          0.5
+        ],
+        "horizontalBars": [
+          0.78
+        ],
+        "mullionWidthM": 0.05
+      }
+    },
+    "transom": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.06,
+        "frameDepthM": 0.12,
+        "frameSurface": "door",
+        "barSurface": "door",
+        "verticalBars": [
+          0.5
+        ],
+        "mullionWidthM": 0.04
+      }
+    },
+    "glazedEntry": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.07,
+        "frameDepthM": 0.16,
+        "frameSurface": "door",
+        "barSurface": "door",
+        "verticalBars": [
+          0.5
+        ],
+        "horizontalBars": [
+          0.78
+        ],
+        "mullionWidthM": 0.05,
+        "paneSurface": "glass"
+      }
+    }
+  },
+  "baySets": {
+    "axes": {
+      "template": "regular",
+      "ids": [
+        "left",
+        "middle",
+        "right"
+      ],
+      "left": 0.085,
+      "width": 0.225,
+      "step": 0.3
+    }
+  },
+  "windowGroups": [
+    {
+      "id": "upperThree",
+      "baySet": "axes",
+      "tiers": [
+        {
+          "id": "first",
+          "bottom": 0.34,
+          "height": 0.215
+        },
+        {
+          "id": "second",
+          "bottom": 0.6,
+          "height": 0.175
+        },
+        {
+          "id": "third",
+          "bottom": 0.805,
+          "height": 0.13
+        }
+      ],
+      "frame": {
+        "use": "sash"
+      }
+    }
+  ],
+  "openingGroups": [],
+  "openings": [
+    {
+      "id": "pairedGroundEntry",
+      "kind": "door",
+      "left": 0.15,
+      "width": 0.46,
+      "bottom": 0.02,
+      "height": 0.2,
+      "frame": {
+        "use": "glazedEntry"
+      },
+      "transom": {
+        "id": "pairedGroundTransom",
+        "bottom": 0.225,
+        "height": 0.065,
+        "frame": {
+          "use": "transom"
+        }
+      }
+    },
+    {
+      "id": "rightDoor",
+      "kind": "door",
+      "left": 0.695,
+      "width": 0.22,
+      "bottom": 0.02,
+      "height": 0.2,
+      "frame": {
+        "use": "entry"
+      },
+      "transom": {
+        "id": "rightTransom",
+        "bottom": 0.225,
+        "height": 0.065,
+        "frame": {
+          "use": "transom"
+        }
+      }
+    }
+  ],
+  "palette": {
+    "wall": "#68483e",
+    "trim": "#d3cbb3",
+    "stone": "#aaa79b",
+    "door": "#28372f",
+    "glass": "#374348",
+    "roof": "#4e4c47"
+  },
+  "crown": {
+    "depthM": 0.06,
+    "trimWidthM": 0,
+    "shape": {
+      "family": "lijst",
+      "top": 1,
+      "neckWidth": 1,
+      "shoulder": 1
+    }
+  },
+  "cornice": {
+    "bottom": 0.95,
+    "height": 0.05,
+    "depthM": 0.32,
+    "brackets": 0,
+    "assembly": {
+      "template": "lip-frieze-cap"
+    },
+    "accents": [
+      {
+        "id": "console0",
+        "left": 0.025,
+        "width": 0.045,
+        "bottom": 0.95,
+        "height": 0.045,
+        "depthM": 0.3,
+        "surface": "trim",
+        "profile": "console"
+      },
+      {
+        "id": "console1",
+        "left": 0.32,
+        "width": 0.045,
+        "bottom": 0.95,
+        "height": 0.045,
+        "depthM": 0.3,
+        "surface": "trim",
+        "profile": "console"
+      },
+      {
+        "id": "console2",
+        "left": 0.62,
+        "width": 0.045,
+        "bottom": 0.95,
+        "height": 0.045,
+        "depthM": 0.3,
+        "surface": "trim",
+        "profile": "console"
+      },
+      {
+        "id": "console3",
+        "left": 0.935,
+        "width": 0.045,
+        "bottom": 0.95,
+        "height": 0.045,
+        "depthM": 0.3,
+        "surface": "trim",
+        "profile": "console"
+      }
+    ]
+  },
+  "groundFront": {
+    "id": "stoneGroundPortal",
+    "left": 0,
+    "width": 1,
+    "bottom": 0,
+    "height": 0.315,
+    "depthM": 0.06,
+    "surface": "stone",
+    "openingIds": [
+      "pairedGroundEntry",
+      "pairedGroundTransom",
+      "rightDoor",
+      "rightTransom"
+    ]
+  },
+  "bands": [],
+  "blocks": [],
+  "ornaments": [],
+  "simplifications": [
+    "Three explicit source axes and three upper tiers; uppermost tier shorter. Source102/104 aliases belong to one native owner.",
+    "Ground-level paired left opening and independent right door/transom; no souterrain or raised stoep observed. Opening proportions and ground threshold estimated from perspective photograph, not measured.",
+    "Four cornice consoles and layered lijst cornice reuse existing assembly; carved profiles and decorative brick lintels simplified.",
+    "Native roof17raised part, main18/19 and low rear16 retained; current ridge/roof profile not established by street image. Visible attic head and hoist deferred pending clear reference; no texture preset inferred.",
+    "Official104 suffix resolves through102owner; source native endpoints chosen explicitly, not false adjacency to earlier106drawing anchor.",
+    "Native right-end shallow jog retained in footprint; facade assembly spans explicitly reviewed near-straight frontage with0.3m maximum inset, rather than erasing native ground vertices.",
+    "Preserved first native-roof render exposes large front triangle not supported by street reference. Explicit existing symmetric-front-hip candidate keeps native main domains and rear16/raised17, with uncalibrated4.8m front hip. This is a source-facing inference, not an accepted/current measured roof reconstruction.",
+    "Shared hoist beam matches observed central projection and material family; mounting height, projection and slight rise are drawing estimates. Hidden hook/pulley/attachment hardware not inferred."
+  ],
+  "frontagePlan": {
+    "maxInsetM": 0.3,
+    "maxOutsetM": 0.1
+  },
+  "roofAssembly": {
+    "template": "symmetric-front-hip",
+    "fit": "native-envelope",
+    "surfaceIds": [
+      "NL.IMBAG.Pand.0363100012168158-0:lod22:roof:18",
+      "NL.IMBAG.Pand.0363100012168158-0:lod22:roof:19"
+    ],
+    "eavesM": 11.694,
+    "ridgeM": 16.5625,
+    "hipDepthM": 4.8
+  },
+  "hoists": [
+    {
+      "id": "centralBeam",
+      "center": 0.5,
+      "height": 1.035,
+      "widthM": 0.14,
+      "beamHeightM": 0.18,
+      "projectionM": 1.4,
+      "setbackM": 0.2,
+      "endRiseM": 0.08,
+      "surface": "door"
+    }
+  ]
+}

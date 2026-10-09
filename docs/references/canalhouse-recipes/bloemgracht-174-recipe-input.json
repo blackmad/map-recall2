@@ -1,0 +1,581 @@
+{
+  "schemaVersion": 1,
+  "id": "bloemgracht-174",
+  "admissionFile": "docs/references/canalhouse-recipes/bloemgracht-174-source-admission.json",
+  "surveyFile": "docs/references/canalhouse-recipes/bloemgracht-174-survey.json",
+  "frameSets": {
+    "bodySash": {
+      "template": "broad-dark-paired-sash",
+      "overrides": {
+        "trimWidthM": 0.075,
+        "frameDepthM": 0.14,
+        "horizontalBars": [
+          0.5,
+          0.75
+        ],
+        "mullionWidthM": 0.03
+      }
+    },
+    "groundBroadSash": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.07,
+        "frameDepthM": 0.14,
+        "verticalBars": [
+          0.3333,
+          0.6667
+        ],
+        "horizontalBars": [
+          0.25,
+          0.5,
+          0.75
+        ],
+        "mullionWidthM": 0.028,
+        "barSurface": "door"
+      }
+    },
+    "groundNarrowSash": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.07,
+        "frameDepthM": 0.14,
+        "verticalBars": [
+          0.5
+        ],
+        "horizontalBars": [
+          0.25,
+          0.5,
+          0.75
+        ],
+        "mullionWidthM": 0.028,
+        "barSurface": "door"
+      }
+    },
+    "entry": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.075,
+        "frameDepthM": 0.15
+      }
+    },
+    "entryTransom": {
+      "template": "diamond-transom",
+      "overrides": {
+        "trimWidthM": 0.065,
+        "frameDepthM": 0.15,
+        "verticalBars": [],
+        "horizontalBars": []
+      }
+    },
+    "crown": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.075,
+        "frameDepthM": 0.14
+      }
+    },
+    "upperSash": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.055,
+        "frameDepthM": 0.14,
+        "verticalBars": [
+          0.5
+        ],
+        "horizontalBars": [
+          0.38,
+          0.72
+        ],
+        "horizontalBarWidthsM": [
+          0.035,
+          0.065
+        ],
+        "barSurface": "door"
+      }
+    },
+    "glazedEntry": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.065,
+        "frameDepthM": 0.15,
+        "paneSurface": "glass",
+        "verticalBars": [
+          0.5
+        ],
+        "horizontalBars": [
+          0.52
+        ],
+        "barSurface": "door"
+      }
+    },
+    "groundTransom": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.065,
+        "frameDepthM": 0.15,
+        "verticalBars": [
+          0.5
+        ],
+        "horizontalBars": [
+          0.5
+        ],
+        "barSurface": "trim"
+      }
+    },
+    "solidEntry": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.075,
+        "frameDepthM": 0.15,
+        "verticalBars": [
+          0.5
+        ],
+        "horizontalBars": []
+      }
+    },
+    "basementSash": {
+      "template": "dark-cellar-frame",
+      "overrides": {
+        "trimWidthM": 0.065,
+        "frameDepthM": 0.12,
+        "verticalBars": [
+          0.5
+        ],
+        "horizontalBars": [
+          0.5
+        ],
+        "barSurface": "door",
+        "paneOffsetM": 0.03
+      }
+    }
+  },
+  "baySets": {
+    "threeAxes": [
+      {
+        "id": "left",
+        "left": 0.075,
+        "width": 0.235
+      },
+      {
+        "id": "center",
+        "left": 0.385,
+        "width": 0.235
+      },
+      {
+        "id": "right",
+        "left": 0.695,
+        "width": 0.235
+      }
+    ],
+    "belEtageAxes": [
+      {
+        "id": "middle",
+        "left": 0.385,
+        "width": 0.235
+      },
+      {
+        "id": "right",
+        "left": 0.695,
+        "width": 0.235
+      }
+    ]
+  },
+  "windowGroups": [
+    {
+      "id": "upperThree",
+      "baySet": "threeAxes",
+      "tiers": [
+        {
+          "id": "first",
+          "bottom": 0.395,
+          "height": 0.18
+        },
+        {
+          "id": "second",
+          "bottom": 0.635,
+          "height": 0.155
+        },
+        {
+          "id": "third",
+          "bottom": 0.835,
+          "height": 0.125
+        }
+      ],
+      "frame": {
+        "use": "upperSash"
+      }
+    },
+    {
+      "id": "belEtage",
+      "baySet": "belEtageAxes",
+      "tiers": [
+        {
+          "id": "raised",
+          "bottom": 0.145,
+          "height": 0.2
+        }
+      ],
+      "frame": {
+        "use": "upperSash"
+      }
+    }
+  ],
+  "openings": [
+    {
+      "id": "raisedEntry",
+      "kind": "door",
+      "left": 0.075,
+      "width": 0.235,
+      "bottom": 0.095,
+      "height": 0.17,
+      "frame": {
+        "use": "solidEntry"
+      },
+      "panels": [
+        {
+          "rect": [
+            0.08,
+            0.07,
+            0.36,
+            0.2
+          ],
+          "frameWidthM": 0.035,
+          "reliefM": 0.018,
+          "fieldReliefM": 0.004,
+          "frameSurface": "door"
+        },
+        {
+          "rect": [
+            0.08,
+            0.37,
+            0.36,
+            0.3
+          ],
+          "frameWidthM": 0.035,
+          "reliefM": 0.018,
+          "fieldReliefM": 0.004,
+          "frameSurface": "door"
+        },
+        {
+          "rect": [
+            0.08,
+            0.77,
+            0.36,
+            0.13
+          ],
+          "frameWidthM": 0.035,
+          "reliefM": 0.018,
+          "fieldReliefM": 0.004,
+          "frameSurface": "door"
+        },
+        {
+          "rect": [
+            0.56,
+            0.07,
+            0.36,
+            0.2
+          ],
+          "frameWidthM": 0.035,
+          "reliefM": 0.018,
+          "fieldReliefM": 0.004,
+          "frameSurface": "door"
+        },
+        {
+          "rect": [
+            0.56,
+            0.37,
+            0.36,
+            0.3
+          ],
+          "frameWidthM": 0.035,
+          "reliefM": 0.018,
+          "fieldReliefM": 0.004,
+          "frameSurface": "door"
+        },
+        {
+          "rect": [
+            0.56,
+            0.77,
+            0.36,
+            0.13
+          ],
+          "frameWidthM": 0.035,
+          "reliefM": 0.018,
+          "fieldReliefM": 0.004,
+          "frameSurface": "door"
+        }
+      ],
+      "transom": {
+        "id": "raisedEntryTransom",
+        "bottom": 0.27,
+        "height": 0.07,
+        "frame": {
+          "use": "entryTransom"
+        }
+      }
+    },
+    {
+      "id": "middleBasementWindow",
+      "kind": "window",
+      "left": 0.385,
+      "width": 0.235,
+      "bottom": 0.014,
+      "height": 0.071,
+      "frame": {
+        "use": "basementSash"
+      }
+    },
+    {
+      "id": "rightBasementEntry",
+      "kind": "door",
+      "left": 0.695,
+      "width": 0.235,
+      "bottom": 0.003,
+      "height": 0.086,
+      "frame": {
+        "use": "solidEntry"
+      },
+      "panels": [
+        {
+          "rect": [
+            0.08,
+            0.07,
+            0.36,
+            0.85
+          ],
+          "frameWidthM": 0.025,
+          "reliefM": 0.015,
+          "fieldReliefM": 0.003,
+          "frameSurface": "door"
+        },
+        {
+          "rect": [
+            0.56,
+            0.07,
+            0.36,
+            0.85
+          ],
+          "frameWidthM": 0.025,
+          "reliefM": 0.015,
+          "fieldReliefM": 0.003,
+          "frameSurface": "door"
+        }
+      ]
+    }
+  ],
+  "palette": {
+    "wall": "#946d56",
+    "roof": "#55534c",
+    "trim": "#e4e1cf",
+    "stone": "#b9b5a3",
+    "glass": "#46504d",
+    "door": "#293c32"
+  },
+  "crown": {
+    "depthM": 0.08,
+    "trimWidthM": 0.055,
+    "surface": "trim",
+    "shape": {
+      "family": "lijst",
+      "top": 1,
+      "neckWidth": 1,
+      "shoulder": 1,
+      "cap": "flat"
+    }
+  },
+  "cornice": {
+    "bottom": 0.962,
+    "height": 0.038,
+    "depthM": 0.28,
+    "brackets": 0,
+    "assembly": {
+      "template": "lip-frieze-cap"
+    }
+  },
+  "bands": [],
+  "detailGroups": [
+    {
+      "id": "upperSills",
+      "target": "bands",
+      "columns": [
+        {
+          "id": "left",
+          "left": 0.06899999999999999,
+          "width": 0.247
+        },
+        {
+          "id": "center",
+          "left": 0.379,
+          "width": 0.247
+        },
+        {
+          "id": "right",
+          "left": 0.689,
+          "width": 0.247
+        }
+      ],
+      "rows": [
+        {
+          "id": "first",
+          "bottom": 0.385,
+          "height": 0.01
+        },
+        {
+          "id": "second",
+          "bottom": 0.625,
+          "height": 0.01
+        },
+        {
+          "id": "third",
+          "bottom": 0.825,
+          "height": 0.01
+        }
+      ],
+      "depthM": 0.13,
+      "surface": "trim"
+    },
+    {
+      "id": "belEtageSills",
+      "target": "bands",
+      "columns": [
+        {
+          "id": "middle",
+          "left": 0.379,
+          "width": 0.247
+        },
+        {
+          "id": "right",
+          "left": 0.689,
+          "width": 0.247
+        }
+      ],
+      "rows": [
+        {
+          "id": "raised",
+          "bottom": 0.135,
+          "height": 0.01
+        }
+      ],
+      "depthM": 0.13,
+      "surface": "trim"
+    }
+  ],
+  "ornaments": [],
+  "simplifications": [
+    "Exact Pand0363100012174824, native5.188059mfront and0.125969m172seam retained afterautomaticrefusal; explicitsource-nativepoints, tolerance unchanged.",
+    "Root/independent source count:3axes x3UPPERtiers=9sashes, separate raisedbelEtageleftdoublepaneleddoor/decorativetransom+2tallwindows. Straightpalelijst, centralhoistomitted; no source dormer.",
+    "Actualfull2023view supports leftlanding andRIGHTdescendinglateralstoep withrail; neighborleftstairnotborrowed. Seven drawing divisions represent approximate steps, NOT current photographed tread count. Rise/railheight/depth normalizeddrawing estimates, not calibrateddimensions.",
+    "Middlebasementwindow partlyhiddenbyactualflight/bikes; explicit occludedOpeningIds marks onlythis aperture. Rightdoublebasemententry clear; palegroundbase carriesfullsize sourceopenings, no arbitrarytinyholes. Exactpane/stonepaneldetails held. LowerReferenceTierfull, oppositebankgroundcontextnot loweradmission.",
+    "Shallowfront21roofdepth0-3.49 retained separately from main22/24setback~3.45/ridge15.907; lower23~10.1retained. Nativecandidate roofgeometryunchanged; precise rearroofsymmetry/topology unverified and not accepted from photo. Wall14eaves13.521 not whole ridgeheight.",
+    "Existing opening/groups/doorpanels/groundFront/landing/rail components; newcompact steps-mode contour reusesexisting approach extrusion without custommesh. Carving/ovaltracery/hoist/stonepanels approximate or omitted. Municipal585description empty, no inventedhistoricassertion.",
+    "Candidate source-angle/front/stoep androwreview required; actualgame/GPU/performance and oldfailedheldouts remainheld.",
+    "Roof material is source-unverified; flat fallback retained rather than assigning ceramic tile across shallowfrontterrace andunseenrearroof."
+  ],
+  "frontagePlan": {
+    "maxInsetM": 0.15,
+    "maxOutsetM": 0.11
+  },
+  "lowerReferenceTier": "full",
+  "openingGroups": [],
+  "blocks": [],
+  "sourceBodyWallId": "NL.IMBAG.Pand.0363100012174824-0:lod22:wall:14",
+  "groundFront": {
+    "id": "souterrainBase",
+    "left": 0,
+    "width": 1,
+    "bottom": 0,
+    "height": 0.095,
+    "depthM": 0.065,
+    "surface": "stone",
+    "openingIds": [
+      "middleBasementWindow",
+      "rightBasementEntry"
+    ]
+  },
+  "landing": {
+    "left": 0.045,
+    "width": 0.285,
+    "top": 0.095,
+    "depthM": 0.95,
+    "thicknessM": 0.06,
+    "supportToGround": false
+  },
+  "approaches": [
+    {
+      "id": "rightFlight",
+      "input": {
+        "id": "rightDescentDrawing",
+        "topProfile": {
+          "from": [
+            0.33,
+            0
+          ],
+          "to": [
+            0.69,
+            -1
+          ],
+          "segments": 7,
+          "mode": "steps"
+        },
+        "railProfile": [
+          [
+            0.33,
+            0.8
+          ],
+          [
+            0.69,
+            -0.2
+          ]
+        ],
+        "posts": [
+          {
+            "x": 0.69,
+            "bottom": -1,
+            "top": -0.2
+          }
+        ],
+        "projectionDepthM": 0.95,
+        "exactCurrentTreadCount": null
+      },
+      "railWidthM": 0.035,
+      "postWidthM": 0.055,
+      "occludedOpeningIds": [
+        "middleBasementWindow"
+      ]
+    },
+    {
+      "id": "landingRail",
+      "input": {
+        "id": "horizontalLandingRail",
+        "topProfile": null,
+        "railProfile": [
+          [
+            0.065,
+            0.8
+          ],
+          [
+            0.33,
+            0.8
+          ]
+        ],
+        "posts": [
+          {
+            "x": 0.065,
+            "bottom": 0,
+            "top": 0.8
+          },
+          {
+            "x": 0.33,
+            "bottom": 0,
+            "top": 0.8
+          }
+        ],
+        "projectionDepthM": 0.95,
+        "exactCurrentTreadCount": null
+      },
+      "railWidthM": 0.035,
+      "postWidthM": 0.055,
+      "occludedOpeningIds": []
+    }
+  ]
+}

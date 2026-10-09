@@ -1,0 +1,468 @@
+{
+  "schemaVersion": 1,
+  "id": "herengracht-495-source-admission",
+  "observedOn": "2026-10-06",
+  "status": "bounded-row-composition-reviewed-gallery-candidate",
+  "officialIdentity": {
+    "address": "Herengracht495",
+    "pandId": "0363100012168339",
+    "vboId": "0363010011943715",
+    "vboSource": {
+      "rawPath": "/tmp/canalhouse-rough-batch-495-499-20261006/495-vbo.json",
+      "url": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010011943715?_format=json&volgnummer=2",
+      "sha256": "4e3cf37498b64fcae4b2240fb887681675de7c1ce55f7986b0d048ddd98cc681",
+      "bytes": 2557,
+      "status": 200,
+      "rawSavedBeforeExtraction": true,
+      "accessed": "2026-10-06; exact root HTTP timestamp unavailable",
+      "localFileSavedAt": "2026-10-06T12:54:12.226397+00:00"
+    },
+    "pandSource": {
+      "rawPath": "/tmp/canalhouse-rough-batch-495-499-20261006/495-pand.json",
+      "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012168339?_format=json&volgnummer=4",
+      "sha256": "7352e5ef5a44812481e7ef8af9009e9873ac0f769c0622ca49864941e7b451e1",
+      "bytes": 2956,
+      "status": 200,
+      "rawSavedBeforeExtraction": true,
+      "accessed": "2026-10-06; exact root HTTP timestamp unavailable",
+      "localFileSavedAt": "2026-10-06T12:55:07.488342+00:00"
+    },
+    "addressSuffixPolicy": "One distinct official Pand;497representativeA/E verifiedsamePand; aliases do notcreate additional shells."
+  },
+  "sourceProvenance": {
+    "raw3DBag": {
+      "rawPath": "/tmp/canalhouse-rough-batch-495-499-20261006/495-3dbag.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012168339",
+      "sha256": "6269c0615176a9a9cb3f272ac667fe6a80bbb0dd8b3f0adeaf70dc4837c7ddce",
+      "bytes": 20650,
+      "status": 200,
+      "rawSavedBeforeExtraction": true,
+      "accessed": "2026-10-06; exact root HTTP timestamp unavailable",
+      "localFileSavedAt": "2026-10-06T12:55:07.468532+00:00"
+    },
+    "rawBag": {
+      "rawPath": "/tmp/canalhouse-rough-batch-495-499-20261006/495-pand.json",
+      "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012168339?_format=json&volgnummer=4",
+      "sha256": "7352e5ef5a44812481e7ef8af9009e9873ac0f769c0622ca49864941e7b451e1",
+      "bytes": 2956,
+      "status": 200,
+      "rawSavedBeforeExtraction": true,
+      "accessed": "2026-10-06; exact root HTTP timestamp unavailable",
+      "localFileSavedAt": "2026-10-06T12:55:07.488342+00:00"
+    },
+    "privateLocalPack": "/tmp/canalhouse-rough-batch-495-499-20261006",
+    "sourceCommit": null,
+    "archiveSync": "local-commit-remote-push-pending",
+    "beeldbankSearch": {
+      "raw": {
+        "rawPath": "/tmp/canalhouse-rough-batch-495-499-20261006/495-beeldbank-search.html",
+        "url": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=herengracht%20495&rows=1&page=1",
+        "sha256": "f60ef929d710714ed950d7455887cc960a5a7e7b48477afb52f533197b1407d0",
+        "bytes": 12353,
+        "status": 200,
+        "rawSavedBeforeExtraction": true,
+        "accessed": "2026-10-06; exact root HTTP timestamp unavailable",
+        "localFileSavedAt": "2026-10-06T12:54:11.970056+00:00"
+      },
+      "status": "boundedHTTP200 viewer shell; no originalarchivephoto inspected"
+    },
+    "currentPhoto": {
+      "rawPath": "/tmp/canalhouse-rough-batch-495-499-20261006/495-current.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00477/equirectangular/panorama_4000.jpg",
+      "sha256": "67ac74490f31f35ed35b1ff8f27d00c8f2e1835aa13c1cc7c68d99c9b9f3c4bd",
+      "bytes": 1210140,
+      "status": 200,
+      "rawSavedBeforeExtraction": true,
+      "accessed": "2026-10-06; exact root HTTP timestamp unavailable",
+      "localFileSavedAt": "2026-10-06T12:55:07.663579+00:00"
+    },
+    "registerCache": {
+      "path": "/tmp/canalhouse-rough-batch-495-499-20261006/495-early-register-cache.json",
+      "cachedGeneration": "datasets/amsterdam-monument-register/2026-10-05T06-10-55-572Z-83107",
+      "privateArchiveReadOnly": true
+    },
+    "localArchiveCommit": "9c0c77306eb38271213025af9fbe53fdb03c5ea8",
+    "archiveModelManifestPath": "models/herengracht-495/manifest.json"
+  },
+  "native": {
+    "coordinateSystem": "EPSG28992/NAP",
+    "municipalBagGeometryRD": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            121236.658,
+            486545.588
+          ],
+          [
+            121239.003,
+            486555.716
+          ],
+          [
+            121237.442,
+            486556.064
+          ],
+          [
+            121236.765,
+            486553.141
+          ],
+          [
+            121223.89,
+            486556.015
+          ],
+          [
+            121222.434,
+            486549.725
+          ],
+          [
+            121217.526,
+            486528.422
+          ],
+          [
+            121221.331,
+            486527.565
+          ],
+          [
+            121222.891,
+            486527.213
+          ],
+          [
+            121226.695,
+            486526.355
+          ],
+          [
+            121228.256,
+            486526.003
+          ],
+          [
+            121231.932,
+            486525.174
+          ],
+          [
+            121236.658,
+            486545.588
+          ]
+        ]
+      ]
+    },
+    "surveyFootprintPolygonsRD": [
+      [
+        [
+          [
+            121223.891875,
+            486556.02150000003
+          ],
+          [
+            121224.587875,
+            486555.8655
+          ],
+          [
+            121227.362875,
+            486555.2465
+          ],
+          [
+            121228.38587499999,
+            486555.0175
+          ],
+          [
+            121233.703875,
+            486553.83050000004
+          ],
+          [
+            121235.097875,
+            486553.5195
+          ],
+          [
+            121236.766875,
+            486553.14650000003
+          ],
+          [
+            121236.778875,
+            486553.2015
+          ],
+          [
+            121237.443875,
+            486556.07050000003
+          ],
+          [
+            121239.003875,
+            486555.72150000004
+          ],
+          [
+            121238.333875,
+            486552.82550000004
+          ],
+          [
+            121237.516875,
+            486549.2965
+          ],
+          [
+            121233.281875,
+            486531.0035
+          ],
+          [
+            121232.677875,
+            486528.3945
+          ],
+          [
+            121232.448875,
+            486527.4045
+          ],
+          [
+            121232.248875,
+            486526.5415
+          ],
+          [
+            121231.932875,
+            486525.1805
+          ],
+          [
+            121225.827875,
+            486526.5565
+          ],
+          [
+            121224.334875,
+            486526.8935
+          ],
+          [
+            121217.527875,
+            486528.42850000004
+          ],
+          [
+            121217.821875,
+            486529.70550000004
+          ],
+          [
+            121218.102875,
+            486530.92350000003
+          ],
+          [
+            121218.487875,
+            486532.5905
+          ],
+          [
+            121218.793875,
+            486533.9215
+          ],
+          [
+            121219.298875,
+            486536.10850000003
+          ],
+          [
+            121219.829875,
+            486538.4105
+          ],
+          [
+            121220.976875,
+            486543.3835
+          ],
+          [
+            121222.642875,
+            486550.6065
+          ],
+          [
+            121223.137875,
+            486552.7535
+          ]
+        ]
+      ]
+    ],
+    "policy": "Originalnativegroundrings/semanticroofpatches unchanged; noaddedvertices"
+  },
+  "principalFront": {
+    "orientedLeftToRightAsSeenFromCanal": [
+      [
+        121217.527875,
+        486528.42850000004
+      ],
+      [
+        121231.932875,
+        486525.1805
+      ]
+    ],
+    "straightFrontSpanM": 14.76663566964749,
+    "facadePlaneToleranceM": 0.3,
+    "selectionEvidence": "Fullsouthernstreetfront endpoints are originalsurveyvertices; selectednativechain verifiedagainst currentnear-bankwidephoto three/six/threeaxes; sourcesequence495497499."
+  },
+  "heights": {
+    "groundNapM": 0.5,
+    "bodyEavesNominalM": 16.278501098632812,
+    "bodyEavesRangeM": [
+      16.17850109863281,
+      16.278501098632812
+    ],
+    "bodyEavesAdmission": "NL.IMBAG.Pand.0363100012168339-0:lod22:wall:47 broadprincipalfront top 16.778501098632812NAP; narrowcrest/roof/rearmaxexcluded",
+    "nativeRoofMaximumNapM": 22.940501098632815
+  },
+  "houses": [
+    {
+      "id": "herengracht-495",
+      "pandId": "0363100012168339",
+      "sampleRole": "rough-batch-frozen-library-candidate",
+      "sources": {
+        "principalImage": "/tmp/canalhouse-rough-batch-495-499-20261006/495-front.jpg",
+        "wideImage": "/tmp/canalhouse-rough-batch-495-499-20261006/495-wide.jpg",
+        "captureDate": "2025-06-16T06:56:54Z",
+        "projection": {
+          "headingDeg": 351.9387647573769,
+          "pitchDeg": 27,
+          "fovDeg": 75,
+          "width": 1100,
+          "height": 1500,
+          "camera": {
+            "_links": {
+              "self": {
+                "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_06-42-40_00477/"
+              },
+              "equirectangular_full": {
+                "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00477/equirectangular/panorama_8000.jpg"
+              },
+              "equirectangular_medium": {
+                "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00477/equirectangular/panorama_4000.jpg"
+              },
+              "equirectangular_small": {
+                "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00477/equirectangular/panorama_2000.jpg"
+              },
+              "cubic_img_preview": {
+                "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00477/cubic/preview.jpg"
+              },
+              "thumbnail": {
+                "href": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_06-42-40_00477/"
+              },
+              "adjacencies": {
+                "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_06-42-40_00477/adjacencies/"
+              }
+            },
+            "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00477/cubic/",
+            "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00477/cubic/{z}/{f}/{y}/{x}.jpg",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.891328591910868,
+                52.36554355267446,
+                0
+              ]
+            },
+            "pano_id": "recording_2025-06-16_06-42-40_00477",
+            "timestamp": "2025-06-16T06:56:54Z",
+            "filename": "recording_2025-06-16_06-42-40_00477.jpg",
+            "surface_type": "L",
+            "mission_distance": 5,
+            "mission_type": "bi",
+            "mission_year": "2025",
+            "tags": [
+              "mission-bi",
+              "mission-2025",
+              "mission-distance-5",
+              "surface-land"
+            ],
+            "roll": 0,
+            "pitch": 0,
+            "heading": 0
+          }
+        },
+        "wideProjection": {
+          "headingDeg": 351.9387647573769,
+          "pitchDeg": 42,
+          "fovDeg": 110,
+          "width": 1100,
+          "height": 1500
+        },
+        "nearCaptureDate": "2025-06-16T06:56:54Z",
+        "nearCamera": {
+          "_links": {
+            "self": {
+              "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_06-42-40_00477/"
+            },
+            "equirectangular_full": {
+              "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00477/equirectangular/panorama_8000.jpg"
+            },
+            "equirectangular_medium": {
+              "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00477/equirectangular/panorama_4000.jpg"
+            },
+            "equirectangular_small": {
+              "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00477/equirectangular/panorama_2000.jpg"
+            },
+            "cubic_img_preview": {
+              "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00477/cubic/preview.jpg"
+            },
+            "thumbnail": {
+              "href": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_06-42-40_00477/"
+            },
+            "adjacencies": {
+              "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_06-42-40_00477/adjacencies/"
+            }
+          },
+          "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00477/cubic/",
+          "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00477/cubic/{z}/{f}/{y}/{x}.jpg",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              4.891328591910868,
+              52.36554355267446,
+              0
+            ]
+          },
+          "pano_id": "recording_2025-06-16_06-42-40_00477",
+          "timestamp": "2025-06-16T06:56:54Z",
+          "filename": "recording_2025-06-16_06-42-40_00477.jpg",
+          "surface_type": "L",
+          "mission_distance": 5,
+          "mission_type": "bi",
+          "mission_year": "2025",
+          "tags": [
+            "mission-bi",
+            "mission-2025",
+            "mission-distance-5",
+            "surface-land"
+          ],
+          "roll": 0,
+          "pitch": 0,
+          "heading": 0
+        },
+        "rights": "GemeenteAmsterdam CC BY4.0",
+        "registerUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1661",
+        "registerDescription": [
+          "Dubbel huis met drie travee\u00ebn brede zandstenen gevel met middenrisaliet en geblokte hoeklisenen, versierde middentravee waarin marmeren balcon; rechte lijst met triglyfen en attiek (XVIIIa). 6 Louis XIV flesbalusters. Empire roedenverdeling met gesneden middendorpels op de hoofdverdieping; empire deur, -kalf en snijraam."
+        ],
+        "currentPhotoAccess": "Originalpreserved beforeprocessing; widecrown/currentfacade inspected",
+        "rootInspection": "pending",
+        "registerIdentityMatch": "ExactcurrentVBO matches existingRCE record"
+      },
+      "crown": {
+        "label": "lijst",
+        "profileNormalized": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "criticalTraits": [
+        "Palethree-axisdoublefront, THREEabovebasementtiers",
+        "Centralstoneentry/risalit andactualdeepmarblebalcony, cornerlisenes",
+        "Opposedraisedstoep andstraightatticcornice"
+      ],
+      "uncertainties": [
+        "Near-bankproportions are roughsourceobservations; nofinecarving/treadcount iteration.",
+        "Deepcentralbalconydimensions approximate; rootsharedprojectioninput pendingcompilation/visualreview."
+      ],
+      "registerAssertions": [
+        {
+          "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1661",
+          "passage": "Dubbel huis met drie travee\u00ebn brede zandstenen gevel met middenrisaliet en geblokte hoeklisenen, versierde middentravee waarin marmeren balcon; rechte lijst met triglyfen en attiek (XVIIIa). 6 Louis XIV flesbalusters. Empire roedenverdeling met gesneden middendorpels op de hoofdverdieping; empire deur, -kalf en snijraam.",
+          "part": "principalfacade",
+          "date": "descriptiondateunspecified; cached2026-10-05",
+          "confidence": "highnamedfeatures, dimensionsnotregister-derived"
+        }
+      ],
+      "capabilityGaps": [
+        "495deepbalcony describedinnewrootsharedprojectioninput; componentimplementation/rowrecognitionreviewpending."
+      ]
+    }
+  ]
+}

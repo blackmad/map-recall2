@@ -1,0 +1,339 @@
+{
+  "schemaVersion": 1,
+  "id": "bloemgracht-102-source-admission",
+  "observedOn": "2026-10-07",
+  "status": "human-source-screened;candidate-only",
+  "officialIdentity": {
+    "address": "Bloemgracht 102",
+    "pandId": "0363100012168158",
+    "vboId": "0363010010953862",
+    "vboSource": {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?bbox=4.876173334224242%2C52.365491736213876%2C4.888430726182581%2C52.38365058073888&cursor=lOb5%7CKrKMzA&f=json&limit=1000",
+      "rawPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/raw/addresses-24.json",
+      "sha256": "93ba76b4f2f6ab69e7dad27be8b8574b4736960e86d4cd151735e3c2481c56be"
+    },
+    "pandSource": {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?bbox=4.876173334224242%2C52.365491736213876%2C4.888430726182581%2C52.38365058073888&cursor=OqTb%7CKrKMzA&f=json&limit=1000",
+      "rawPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/raw/bag-1.json",
+      "sha256": "0fc623d8b04c12c75e9b175549d64e67d8eea31f141419e67d3ec213312de786"
+    },
+    "joinEvidence": {
+      "method": "Exact official Pand verblijfsobject.href joins reciprocal VBO pand.href UUID",
+      "pandFeatureId": "d5e1fa6e-5fb3-51c9-a167-51bb7a598188",
+      "vboFeatureIds": [
+        "94bfae21-4f9c-5deb-b716-ffc1c58dff98",
+        "4dbc0293-3ef0-51d8-aa86-7dc22b519dc4",
+        "2b886df7-cbee-595a-8ea7-d18c79839cc2"
+      ]
+    }
+  },
+  "sourceProvenance": {
+    "raw3DBag": {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/raw/3dbag-14.json",
+      "sha256": "92d632a1444d2a473a143fbef0461567cfe0bd0032aecce056ad53d076eb74ce",
+      "featureIds": [
+        "NL.IMBAG.Pand.0363100012168158"
+      ],
+      "state": "Cached exact owner feature; no new request",
+      "rawPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/raw/3dbag-14.json",
+      "url": "https://api.3dbag.nl/collections/pand/items?bbox=120193.15258458864,486517.5184435108,121041.91233257853,488543.7417092414&offset=1401&limit=100"
+    },
+    "sourceCommit": null,
+    "archiveSync": "local-verified;remote-push-server-error",
+    "archiveModelManifestPath": "models/bloemgracht-102/manifest.json",
+    "registerGeneration": "datasets/amsterdam-monument-register/2026-10-05T06-10-55-572Z-83107",
+    "registerMatches": [],
+    "processedReferences": [
+      {
+        "tier": "context",
+        "path": "/private/tmp/canalhouse-bloemgracht-102-nativefront-20261007/102-context-neighbor-perspective.jpg",
+        "sha256": "3c4abff7becfe95ca2c0732e2f70f9ab3bf1fc83bcf08d531b4cf6e40d70bb2f",
+        "captureDate": "2023-01-30T09:49:53.860620Z",
+        "panoramaId": "TMX7316010203-002950_pano_0002_000294",
+        "nativeDimensions": [
+          4000,
+          2000
+        ],
+        "manifestPath": "/private/tmp/canalhouse-bloemgracht-102-nativefront-20261007/102-neighbor-camera-manifest.json",
+        "originalPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/6deb2e79ce7960005383524abf2b232e2f82bd2fbc82389f1f4f45073e73032f/evidence/panoramas/TMX7316010203-002950_pano_0002_000294.jpg",
+        "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2023/01/30/TMX7316010203-002950/pano_0002_000294/equirectangular/panorama_4000.jpg",
+        "metricEligible": false,
+        "derivationKey": "7622c068158ccd48a8501890022c511056f81f311815c1c16bd03983ca780e70"
+      },
+      {
+        "tier": "full",
+        "path": "/private/tmp/canalhouse-bloemgracht-102-nativefront-20261007/102-full-neighbor-perspective.jpg",
+        "sha256": "3cf7937ecb499810a136a9f7a952d0c08eb2b1af65eb6ddfa910d07b071e4bdf",
+        "captureDate": "2023-01-30T09:49:53.860620Z",
+        "panoramaId": "TMX7316010203-002950_pano_0002_000294",
+        "nativeDimensions": [
+          4000,
+          2000
+        ],
+        "manifestPath": "/private/tmp/canalhouse-bloemgracht-102-nativefront-20261007/102-neighbor-camera-manifest.json",
+        "originalPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/6deb2e79ce7960005383524abf2b232e2f82bd2fbc82389f1f4f45073e73032f/evidence/panoramas/TMX7316010203-002950_pano_0002_000294.jpg",
+        "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2023/01/30/TMX7316010203-002950/pano_0002_000294/equirectangular/panorama_4000.jpg",
+        "metricEligible": false,
+        "derivationKey": "7622c068158ccd48a8501890022c511056f81f311815c1c16bd03983ca780e70"
+      },
+      {
+        "tier": "ground",
+        "path": "/private/tmp/canalhouse-bloemgracht-102-nativefront-20261007/102-ground-neighbor-perspective.jpg",
+        "sha256": "14fc6f564288a84f99dd9bbce162a3b3d3d85912e2383cbdf0a760d5ff1840aa",
+        "captureDate": "2025-07-03T09:10:59Z",
+        "panoramaId": "recording_2025-07-03_08-35-58_00668",
+        "nativeDimensions": [
+          4000,
+          2000
+        ],
+        "manifestPath": "/private/tmp/canalhouse-bloemgracht-102-nativefront-20261007/102-neighbor-camera-manifest.json",
+        "originalPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/6deb2e79ce7960005383524abf2b232e2f82bd2fbc82389f1f4f45073e73032f/evidence/panoramas/recording_2025-07-03_08-35-58_00668.jpg",
+        "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-03_08-35-58_00668/equirectangular/panorama_4000.jpg",
+        "metricEligible": false,
+        "derivationKey": "7622c068158ccd48a8501890022c511056f81f311815c1c16bd03983ca780e70"
+      },
+      {
+        "tier": "roof",
+        "path": "/private/tmp/canalhouse-bloemgracht-102-nativefront-20261007/102-roof-neighbor-perspective.jpg",
+        "sha256": "1725f7ba45c685bc8b4e7e20e18dcaafc9292d5c61e17898acd8143f70f51ce8",
+        "captureDate": "2023-01-30T09:49:53.860620Z",
+        "panoramaId": "TMX7316010203-002950_pano_0002_000294",
+        "nativeDimensions": [
+          4000,
+          2000
+        ],
+        "manifestPath": "/private/tmp/canalhouse-bloemgracht-102-nativefront-20261007/102-neighbor-camera-manifest.json",
+        "originalPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/6deb2e79ce7960005383524abf2b232e2f82bd2fbc82389f1f4f45073e73032f/evidence/panoramas/TMX7316010203-002950_pano_0002_000294.jpg",
+        "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2023/01/30/TMX7316010203-002950/pano_0002_000294/equirectangular/panorama_4000.jpg",
+        "metricEligible": false,
+        "derivationKey": "7622c068158ccd48a8501890022c511056f81f311815c1c16bd03983ca780e70"
+      }
+    ],
+    "privateLocalPack": "/tmp/canalhouse-bloemgracht-102-nativefront-20261007",
+    "beeldbankAccess": "No new fetch; municipal-first ordinary-house trial. Targeted archive questions deferred.",
+    "localArchiveCommit": "bf8f74cdb03007b2fd3d77de80f390e82375b5c5"
+  },
+  "native": {
+    "surveyFootprintPolygonsRD": [
+      [
+        [
+          [
+            120467.876,
+            487544.66575
+          ],
+          [
+            120465.828,
+            487550.49075
+          ],
+          [
+            120464.884,
+            487553.17374999996
+          ],
+          [
+            120462.771,
+            487559.18474999996
+          ],
+          [
+            120460.849,
+            487564.76074999996
+          ],
+          [
+            120459.919,
+            487567.45875
+          ],
+          [
+            120465.195,
+            487569.32175
+          ],
+          [
+            120466.037,
+            487566.92475
+          ],
+          [
+            120473.261,
+            487546.37374999997
+          ],
+          [
+            120473.068,
+            487546.50275
+          ],
+          [
+            120470.642,
+            487545.64475
+          ]
+        ]
+      ]
+    ],
+    "municipalBagGeometryWGS84": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.8800597770873555,
+            52.37490958389058
+          ],
+          [
+            4.8800366914949205,
+            52.37490448784515
+          ],
+          [
+            4.879982493278833,
+            52.37489250875226
+          ],
+          [
+            4.880025238483096,
+            52.37481831852712
+          ],
+          [
+            4.880040844169037,
+            52.37479175477674
+          ],
+          [
+            4.880101380116277,
+            52.37468867332367
+          ],
+          [
+            4.880101679661232,
+            52.374688162306846
+          ],
+          [
+            4.880177747025456,
+            52.37470499847966
+          ],
+          [
+            4.880180594471752,
+            52.3747038422697
+          ],
+          [
+            4.8800597770873555,
+            52.37490958389058
+          ]
+        ]
+      ]
+    }
+  },
+  "principalFront": {
+    "orientedLeftToRightAsSeenFromCanal": [
+      [
+        120467.876,
+        487544.66575
+      ],
+      [
+        120473.261,
+        487546.37374999997
+      ]
+    ],
+    "facadePlaneToleranceM": 0.1
+  },
+  "heights": {
+    "groundNapM": 0.4729999899864197,
+    "bodyEavesNominalM": 11.693500895023346,
+    "bodyEavesAdmission": "Lower exact native roof-end height; unequal ends retained. Photo positions uncalibrated.",
+    "sourceBodyWallId": null,
+    "endpointHeightCandidatesM": [
+      [
+        11.693500895023346
+      ],
+      [
+        11.694500895023346
+      ]
+    ]
+  },
+  "houses": [
+    {
+      "id": "bloemgracht-102",
+      "pandId": "0363100012168158",
+      "address": "Bloemgracht 102",
+      "crown": {
+        "label": "lijst",
+        "profileNormalized": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "criticalTraits": [
+        "Three equal-spaced upper axes over three tiers; short upper windows",
+        "Pale projecting lijst cornice and four consoles",
+        "Full-width pale stone ground portal with paired left opening and rightdoor/transoms",
+        "Ground-level threshold; no souterrain or raised stoep visible"
+      ],
+      "uncertainties": [
+        "Coarse photo proportions, source/native height registration uncalibrated",
+        "No cached register match"
+      ],
+      "sources": {
+        "captureDate": "2023-01-30T09:49:53.860620Z",
+        "nearCaptureDate": "2023-01-30T09:49:53.860620Z",
+        "projection": {
+          "camera": {
+            "pano_id": "TMX7316010203-002950_pano_0002_000294",
+            "timestamp": "2023-01-30T09:49:53.860620Z",
+            "_links": {
+              "equirectangular_medium": {
+                "href": "https://t1.data.amsterdam.nl/panorama/2023/01/30/TMX7316010203-002950/pano_0002_000294/equirectangular/panorama_4000.jpg"
+              }
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.8801282790723715,
+                52.37464675934256
+              ]
+            }
+          },
+          "type": "perspective",
+          "headingDeg": 9.521420145910202,
+          "pitchDeg": 22,
+          "fovDeg": 95
+        },
+        "nearCamera": {
+          "pano_id": "TMX7316010203-002950_pano_0002_000294",
+          "timestamp": "2023-01-30T09:49:53.860620Z",
+          "_links": {
+            "equirectangular_medium": {
+              "href": "https://t1.data.amsterdam.nl/panorama/2023/01/30/TMX7316010203-002950/pano_0002_000294/equirectangular/panorama_4000.jpg"
+            }
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              4.8801282790723715,
+              52.37464675934256
+            ]
+          }
+        },
+        "principalImage": "/private/tmp/canalhouse-bloemgracht-102-nativefront-20261007/102-full-neighbor-perspective.jpg",
+        "nearImage": "/private/tmp/canalhouse-bloemgracht-102-nativefront-20261007/102-full-neighbor-perspective.jpg",
+        "lowerReferenceTier": "full",
+        "registerUrl": null,
+        "registerDescription": [],
+        "nearWholeRootCrop": "/tmp/canalhouse-bloemgracht-102-nativefront-20261007/102-near-perspective.jpg",
+        "rootInspection": {
+          "inspectedOn": "2026-10-07",
+          "images": [
+            "full",
+            "roof"
+          ],
+          "geometry": "native frontage end points explicitly selected; source photo not metric",
+          "limits": "Rear roofs and small attic/hoist held"
+        },
+        "rights": "Amsterdam municipal panorama, CC BY 4.0"
+      },
+      "observedWindowGroups": [
+        {
+          "groupId": "upperThree",
+          "axes": 3,
+          "tiers": 3,
+          "openings": 9,
+          "sourceReview": "Full2023crop inspected by root and independent102source reviewer"
+        }
+      ]
+    }
+  ]
+}

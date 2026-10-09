@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 1,
+  "id": "bloemgracht-152-main",
+  "admissionFile": "docs/references/canalhouse-recipes/bloemgracht-152-main-source-admission.json",
+  "surveyFile": "docs/references/canalhouse-recipes/bloemgracht-152-survey.json",
+  "sourceBodyWallId": "NL.IMBAG.Pand.0363100012174830-0:lod22:wall:31",
+  "roofAssembly": {
+    "template": "front-slope",
+    "surfaceIds": [
+      "NL.IMBAG.Pand.0363100012174830-0:lod22:roof:60",
+      "NL.IMBAG.Pand.0363100012174830-0:lod22:roof:62"
+    ],
+    "eavesM": 7.1075,
+    "ridgeM": 9.94,
+    "frontRunM": 2.8
+  },
+  "roofMaterial": {
+    "preset": "grey-ceramic"
+  },
+  "frameSets": {
+    "sash": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.075,
+        "frameDepthM": 0.14,
+        "verticalBars": [
+          0.5
+        ],
+        "horizontalBars": [
+          0.72
+        ],
+        "horizontalBarWidthsM": [
+          0.07
+        ],
+        "barSurface": "door"
+      }
+    },
+    "storefront": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.095,
+        "frameDepthM": 0.15,
+        "verticalBars": [
+          0.5
+        ],
+        "horizontalBars": [
+          0.74
+        ],
+        "horizontalBarWidthsM": [
+          0.065
+        ],
+        "barSurface": "door"
+      }
+    }
+  },
+  "baySets": {
+    "upperAxes": [
+      {
+        "id": "axis0",
+        "left": 0.035,
+        "width": 0.225
+      },
+      {
+        "id": "axis1",
+        "left": 0.35,
+        "width": 0.225
+      },
+      {
+        "id": "axis2",
+        "left": 0.665,
+        "width": 0.225
+      }
+    ],
+    "groundStorefront": [
+      {
+        "id": "leftReturn",
+        "left": 0.005,
+        "width": 0.063
+      },
+      {
+        "id": "storefront",
+        "left": 0.33,
+        "width": 0.42
+      }
+    ]
+  },
+  "windowGroups": [
+    {
+      "id": "upper",
+      "baySet": "upperAxes",
+      "tiers": [
+        {
+          "id": "first",
+          "bottom": 0.6,
+          "height": 0.265
+        }
+      ],
+      "frame": {
+        "use": "sash"
+      }
+    },
+    {
+      "id": "ground",
+      "baySet": "groundStorefront",
+      "tiers": [
+        {
+          "id": "storefront",
+          "bottom": 0.025,
+          "height": 0.435
+        }
+      ],
+      "frame": {
+        "use": "storefront"
+      }
+    }
+  ],
+  "openings": [
+    {
+      "id": "leftEntry",
+      "kind": "door",
+      "left": 0.095,
+      "width": 0.145,
+      "bottom": 0.005,
+      "height": 0.345,
+      "frame": {
+        "template": "plain-frame",
+        "overrides": {
+          "trimWidthM": 0.08,
+          "frameDepthM": 0.15
+        }
+      },
+      "transom": {
+        "bottom": 0.365,
+        "height": 0.095,
+        "frame": {
+          "template": "plain-frame",
+          "overrides": {
+            "trimWidthM": 0.075,
+            "frameDepthM": 0.15
+          }
+        }
+      }
+    },
+    {
+      "id": "rightEntry",
+      "kind": "door",
+      "left": 0.835,
+      "width": 0.135,
+      "bottom": 0.005,
+      "height": 0.345,
+      "frame": {
+        "template": "plain-frame",
+        "overrides": {
+          "trimWidthM": 0.08,
+          "frameDepthM": 0.15
+        }
+      },
+      "transom": {
+        "bottom": 0.365,
+        "height": 0.095,
+        "frame": {
+          "template": "plain-frame",
+          "overrides": {
+            "trimWidthM": 0.075,
+            "frameDepthM": 0.15
+          }
+        }
+      }
+    }
+  ],
+  "palette": {
+    "wall": "#795346",
+    "roof": "#504d48",
+    "trim": "#e1dfcf",
+    "stone": "#aba694",
+    "glass": "#2f3e43",
+    "door": "#252c29"
+  },
+  "crown": {
+    "depthM": 0.1,
+    "trimWidthM": 0.055,
+    "surface": "trim",
+    "shape": {
+      "family": "lijst",
+      "top": 1,
+      "neckWidth": 1,
+      "shoulder": 1,
+      "cap": "flat"
+    }
+  },
+  "cornice": {
+    "bottom": 0.967,
+    "height": 0.033,
+    "depthM": 0.25,
+    "brackets": 0,
+    "assembly": {
+      "template": "lip-frieze-cap"
+    }
+  },
+  "dormers": [
+    {
+      "id": "leftPairedAttic",
+      "left": 0.012,
+      "width": 0.26,
+      "bottom": 1.025,
+      "height": 0.18,
+      "depthM": 1.35,
+      "roofRiseM": 0.33,
+      "wallSurface": "trim",
+      "roofSurface": "trim",
+      "trimWidthM": 0.1,
+      "setbackM": 0.08,
+      "verticalBars": [
+        0.5
+      ],
+      "horizontalBars": [
+        0.68
+      ]
+    },
+    {
+      "id": "rightPairedAttic",
+      "left": 0.565,
+      "width": 0.26,
+      "bottom": 1.025,
+      "height": 0.18,
+      "depthM": 1.35,
+      "roofRiseM": 0.33,
+      "wallSurface": "trim",
+      "roofSurface": "trim",
+      "trimWidthM": 0.1,
+      "setbackM": 0.08,
+      "verticalBars": [
+        0.5
+      ],
+      "horizontalBars": [
+        0.68
+      ]
+    }
+  ],
+  "bands": [
+    {
+      "id": "groundHeader",
+      "left": 0,
+      "width": 1,
+      "bottom": 0.475,
+      "height": 0.035,
+      "depthM": 0.15,
+      "surface": "trim"
+    },
+    {
+      "id": "headerLip",
+      "left": 0,
+      "width": 1,
+      "bottom": 0.51,
+      "height": 0.01,
+      "depthM": 0.2,
+      "surface": "trim"
+    }
+  ],
+  "detailGroups": [
+    {
+      "id": "upperSills",
+      "target": "bands",
+      "columns": [
+        {
+          "id": "axis0",
+          "left": 0.025,
+          "width": 0.245
+        },
+        {
+          "id": "axis1",
+          "left": 0.33999999999999997,
+          "width": 0.245
+        },
+        {
+          "id": "axis2",
+          "left": 0.655,
+          "width": 0.245
+        }
+      ],
+      "rows": [
+        {
+          "id": "first",
+          "bottom": 0.587,
+          "height": 0.013
+        }
+      ],
+      "depthM": 0.17,
+      "surface": "trim"
+    }
+  ],
+  "ornaments": [],
+  "simplifications": [
+    "One physical152/154owner: combined wall20jog and wall31main cover4upperaxes/1tier/2dormers. Prior right-half attribution rejected by native/camera/source challenge.",
+    "Separate observed facets share the same exact native shell/roof through existing compound assembly; roof uses common selected wall31 direction. Ground glazing at jog is approximated with adjacent aperture modules, not custom geometry.",
+    "All dimensions/coarse roof/dormer proportions remain approximate; no hidden souterrain/stairs inferred.156belongs tallgable nextdoor, not lowroofpair.",
+    "Current panorama count/owner selection checked with actual image dimensions; no source pixels in original assets. Exact roof/jog fitting and rear/game/performance remain held."
+  ],
+  "groundFront": {
+    "id": "pale-storefront",
+    "left": 0,
+    "width": 1,
+    "bottom": 0,
+    "height": 0.475,
+    "depthM": 0.1,
+    "surface": "trim",
+    "openingIds": [
+      "ground/storefront/leftReturn",
+      "ground/storefront/storefront",
+      "leftEntry",
+      "leftEntry-transom",
+      "rightEntry",
+      "rightEntry-transom"
+    ]
+  },
+  "roofFrontageRD": [
+    [
+      120340.848,
+      487498.293
+    ],
+    [
+      120347.359,
+      487500.706
+    ]
+  ]
+}

@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "id": "bloemgracht-110",
+  "admissionFile": "docs/references/canalhouse-recipes/bloemgracht-110-source-admission.json",
+  "surveyFile": "docs/references/canalhouse-recipes/bloemgracht-110-survey.json",
+  "frameSets": {
+    "sash": {
+      "template": "plain-frame",
+      "overrides": {
+        "verticalBars": [
+          0.5
+        ],
+        "horizontalBars": [
+          0.35,
+          0.7
+        ]
+      }
+    },
+    "door": {
+      "template": "plain-frame",
+      "overrides": {
+        "verticalBars": [],
+        "horizontalBars": []
+      }
+    },
+    "transom": {
+      "template": "plain-frame",
+      "overrides": {
+        "verticalBars": [],
+        "horizontalBars": []
+      }
+    }
+  },
+  "windowGroups": [
+    {
+      "id": "main",
+      "bays": [
+        {
+          "id": "axis0",
+          "left": 0.09,
+          "width": 0.35
+        },
+        {
+          "id": "axis1",
+          "left": 0.56,
+          "width": 0.35
+        }
+      ],
+      "tiers": [
+        {
+          "id": "tier0",
+          "bottom": 0.55,
+          "height": 0.24
+        },
+        {
+          "id": "tier1",
+          "bottom": 0.825,
+          "height": 0.135
+        }
+      ],
+      "frame": {
+        "use": "sash"
+      }
+    }
+  ],
+  "openings": [
+    {
+      "id": "crown-window",
+      "kind": "window",
+      "left": 0.355,
+      "bottom": 1.065,
+      "width": 0.29,
+      "height": 0.1,
+      "frame": {
+        "use": "sash"
+      }
+    },
+    {
+      "id": "entry",
+      "kind": "door",
+      "left": 0.565,
+      "bottom": 0.035,
+      "width": 0.35,
+      "height": 0.225,
+      "frame": {
+        "use": "door"
+      },
+      "transom": {
+        "bottom": 0.275,
+        "height": 0.255,
+        "frame": {
+          "use": "sash"
+        }
+      }
+    },
+    {
+      "id": "ground-window",
+      "kind": "window",
+      "left": 0.07,
+      "bottom": 0.08,
+      "width": 0.42,
+      "height": 0.45,
+      "frame": {
+        "use": "sash"
+      }
+    }
+  ],
+  "palette": {
+    "wall": "#39332d",
+    "roof": "#494744",
+    "trim": "#dbd9c9",
+    "stone": "#9c9b92",
+    "glass": "#293e42",
+    "door": "#26342f"
+  },
+  "crown": {
+    "depthM": 0.1,
+    "trimWidthM": 0.065,
+    "shape": {
+      "family": "klok",
+      "top": 1.31,
+      "neckWidth": 0.44,
+      "shoulder": 1.245,
+      "crestWidth": 0.38,
+      "cap": "rounded",
+      "capRise": 0.045,
+      "shoulderCurve": 2.4
+    }
+  },
+  "bands": [],
+  "ornaments": [],
+  "simplifications": [
+    "Original native ground and roof retained; source proportions are approximate.",
+    "Fine carving, existing decorative letters, benches/plants and exact pane/tread counts omitted.",
+    "No building-specific geometry builder; same frozen component library.",
+    "110native front corners disagree in height; roof/source comparison held."
+  ],
+  "groundFront": {
+    "id": "ground-frame",
+    "left": 0.015,
+    "bottom": 0,
+    "width": 0.97,
+    "height": 0.54,
+    "depthM": 0.06,
+    "surface": "trim",
+    "openingIds": [
+      "entry",
+      "entry-transom",
+      "ground-window"
+    ]
+  },
+  "cornice": {
+    "bottom": 0.525,
+    "height": 0.03,
+    "depthM": 0.17,
+    "brackets": 0,
+    "assembly": {
+      "template": "lip-frieze-cap"
+    }
+  }
+}
