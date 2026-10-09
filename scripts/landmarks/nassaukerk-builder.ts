@@ -33,7 +33,7 @@ function squareWindow(b: BuildingTools, w: Wall, t: number, y: number, wd: numbe
  *  - 224 low annex walls 67/19 and 314 low wall 58: ground-storey square windows;
  *  - 134 annex wall 97: four square windows (panorama), end wall 96 (SE arm): five tall narrow round-arched windows high up
  *    plus an arched doorway at the NE end;
- *  - 44 gable (3DBAG walls 179/32/108/44, apex about t=8.0) and 314 gable (walls 147/80, apex about t=4.8): three arched windows each.
+ *  - 44 gable (3DBAG walls 179/32/108/44, apex about t=8.0) and 314 gable (walls 147/80, apex about t=4.8): three arched windows (NE) and four (NW, split around a 3DBAG seam).
  */
 function addNassaukerkWindows(b: BuildingTools, front: Wall, mid: number) {
   // street front, right of the entrance and below the bay roof
@@ -62,10 +62,9 @@ function addNassaukerkWindows(b: BuildingTools, front: Wall, mid: number) {
   const ne = wallBetween([2.3, -12.7], [-5.7, -20.5], 17, [0.70, -0.72]);
   for (const dt of [-1.75, 0, 1.75]) archWindow(b, ne, 8.0 + dt, 9.0, 1.4, 3.0, {trim: 'stone', mullions: 1});
   // NW gable
-  const nw = wallBetween([-7.7, -8.5], [-17.9, 2.0], 18.5, [-0.74, -0.67]);
-  // 3DBAG leaves a 1.6 m seam at the apex (between walls 147 and 80): close it behind the centre window.
-  onWall(b, nw, 4.8, 7.8, 1.9, 8.2, 0.05, 'brick', 0);
-  for (const dt of [-1.9, 0, 1.9]) archWindow(b, nw, 4.8 + dt, 8.3, 1.5, 3.0, {trim: 'stone', mullions: 1});
+  const nw = wallBetween([-7.74, -8.545], [-17.9, 2.0], 18.5, [-0.7388, -0.6739]); // upper gable plane (walls 147/80) sits 8 cm proud of the low wall
+  // 3DBAG leaves a 1.6 m seam with a protruding sliver at the apex (between walls 147 and 80): four windows, none over the seam.
+  for (const dt of [-3.6, -1.8, 1.8, 3.6]) archWindow(b, nw, 4.8 + dt, 8.3, 1.2, 3.0, {trim: 'stone', mullions: 1});
 }
 
 export function buildNassaukerk(_w: number, _d: number, b: BuildingTools) {
