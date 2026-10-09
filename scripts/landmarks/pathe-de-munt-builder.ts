@@ -93,17 +93,20 @@ export function buildPatheDeMunt(_w:number,_d:number,b:BuildingTools,decal?:Deca
  poly([[U1,0,0],[U1,0,2.5],[U1,15.2,2.5],[U1,TOP,0]],'greyBrick',[1,0,0]);
 
  // ---- Glazing and doors.
- const warm='#f3c46a';
+ const warm='#ecbd68';
  // north gap: glass doors and the first-floor window on the back wall
  fbox(6.0,7.5,0,2.9,D-.06,D,'dark');fbox(6.1,7.4,.05,2.8,D-.09,D-.06,'glass');fbox(6.0,7.5,3.3,5.2,D-.06,D,'dark');fbox(6.1,7.4,3.4,5.1,D-.09,D-.06,'glass');
  // slot: warm lit glazing over the back wall and an angled glass screen at its foot
  light(quadOn(P(10.9,.05,DS),dirOf(SPLIT-.1-10.9,0,0),dirOf(0,10.6,0),dirOf(0,0,-1),.03),warm,'gold');
+ // curtain-wall mullions and transoms over the lit glazing
+ for(const U of [11.85,12.95])fbox(U-.04,U+.04,.05,10.65,DS-.1,DS,'frame');
+ for(let y=2.4;y<10.6;y+=2.1)fbox(10.9,SPLIT-.1,y,y+.08,DS-.1,DS,'frame');
  b.add(role(quadOn(P(10.8,0,DS),dirOf(SPLIT-10.8,0,0),dirOf(0,3.6,-1.9),dirOf(0,.3,-1),.0),'detail'),'glass');
  for(const U of [11.6,12.6,13.6])fbox(U-.05,U+.05,0,3.6,DS-1.9,DS,'frame');
  // white-framed doors (left block, middle fin)
  for(const [a,c,h] of [[4.1,5.2,3.5],[9.4,10.4,2.4]]){fbox(a,c,0,h,-.06,0,'white');fbox(a+.12,c-.12,0,h-.12,-.08,-.06,'dark')}
  // poster cases: lit posters in dark frames, left of the north gap and right of the slot
- const posterHex=['#2f5e8c','#c9772e','#8c2f2f','#d8b23a','#3c6f4f','#6b3f86'];
+ const posterHex=['#3a4d66','#8a5a32','#6a3434','#9a8040','#3f5a48','#55406a'];
  for(const [u0,u1] of [[1.0,3.0],[14.3,16.75]]){fbox(u0,u1,.8,3.15,-.12,0,'dark');const cw=(u1-u0-.2)/3;
   for(let r=0;r<2;r++)for(let k=0;k<3;k++)light(quadOn(P(u0+.1+k*cw+.04,.9+r*1.15,-.12),dirOf(cw-.08,0,0),dirOf(0,1.05,0),dirOf(0,0,-1),.01),posterHex[(r*3+k+(u0>10?2:0))%6],'gold')}
  for(const [U,y] of [[8.7,1.0],[13.1,1.0]])light(quadOn(P(U,y,0),dirOf(.6,0,0),dirOf(0,.85,0),dirOf(0,0,-1),.02),'#e8c43c','gold');
@@ -133,6 +136,8 @@ export function buildPatheDeMunt(_w:number,_d:number,b:BuildingTools,decal?:Deca
    const y=top-(j+1)*px;fbox(Ul+k*px,Ul+e*px,y,y+px,SD0-.05,SD0,'gold','sign');k=e}}
   if(ch==='E')fbox(Ul+2*px,Ul+4*px,top+.12,top+.12+px*.8,SD0-.05,SD0,'gold','sign'); // acute accent
   top-=step}
- // Pathé rooster-and-oval logo at the foot of the blade
- fbox(SU0+.25,SU1-.25,6.9,7.7,SD0-.04,SD0,'gold','sign');fbox(SU0+.4,SU1-.4,7.05,7.55,SD0-.07,SD0-.04,'dark','sign');
+ // Pathé rooster-and-oval logo at the foot of the blade: gold oval with a dark centre
+ const oval=(rx:number,ry:number,d0:number,d1:number,c:Colour)=>{const g=new T.CylinderGeometry(1,1,d1-d0,14);g.rotateX(Math.PI/2);g.scale(rx,ry,1);g.translate((SU0+SU1)/2,7.3,(d0+d1)/2);
+  const m=new T.Matrix4().makeBasis(dirOf(1,0,0),new T.Vector3(0,1,0),dirOf(0,0,1)).setPosition(P(0,0,0));g.applyMatrix4(m);const ix=g.index!.array;for(let i=0;i<ix.length;i+=3){const k=ix[i+1];ix[i+1]=ix[i+2];ix[i+2]=k}g.computeVertexNormals();b.add(role(g,'sign'),c)};
+ oval(.55,.42,SD0-.05,SD0,'gold');oval(.38,.27,SD0-.08,SD0-.05,'dark');
 }
