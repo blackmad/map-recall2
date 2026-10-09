@@ -17118,6 +17118,321 @@
           ]
         ]
       }
+    },
+    {
+      id: "zuiderkerk",
+      name: "Zuiderkerk",
+      landmarkId: "extract_landmarks_684653190",
+      modelUrl: "./models/zuiderkerk.glb",
+      suppressOsmIds: [
+        "w749385556",
+        "w749385557",
+        "w749385558",
+        "NL.IMBAG.Pand.0363100012171559"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.899794626631213,
+          52.37027264228956
+        ],
+        headingDegrees: 0,
+        lengthMetres: 52,
+        widthMetres: 48
+      },
+      surveyed: {
+        anchor: [
+          4.899794626631213,
+          52.37027264228956
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG 0363100012171559 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#8a5642",
+        stone: "#d6d0bf",
+        slate: "#555a62",
+        glass: "#7d9aa0",
+        dark: "#2e2a26",
+        white: "#e6e2d4",
+        frame: "#e8e4d6",
+        gold: "#d9b44a",
+        red: "#9c2a22",
+        bronze: "#4b4a42"
+      },
+      attribution: {
+        title: "Zuiderkerk",
+        author: "Map Recall",
+        sourceUrl: "https://nl.wikipedia.org/wiki/Zuiderkerk_(Amsterdam)",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.900092123622174,
+              52.37041719247819
+            ],
+            [
+              4.900007923161763,
+              52.37044565165169
+            ],
+            [
+              4.899734613313488,
+              52.37053805283545
+            ],
+            [
+              4.899728240731541,
+              52.370531357719244
+            ],
+            [
+              4.8997161551904,
+              52.37053544230727
+            ],
+            [
+              4.899706882247504,
+              52.37052543675935
+            ],
+            [
+              4.899724877914239,
+              52.370519354270634
+            ],
+            [
+              4.899685709052035,
+              52.37047593515836
+            ],
+            [
+              4.899667713397585,
+              52.370482017641194
+            ],
+            [
+              4.899658617463457,
+              52.370471940916474
+            ],
+            [
+              4.899676598432019,
+              52.37046585837451
+            ],
+            [
+              4.899639678170592,
+              52.37042493810035
+            ],
+            [
+              4.899621697213599,
+              52.37043102063676
+            ],
+            [
+              4.899517203545589,
+              52.37031523303813
+            ],
+            [
+              4.8995352139346355,
+              52.37030914165108
+            ],
+            [
+              4.899498279152037,
+              52.370268230258624
+            ],
+            [
+              4.899480283556357,
+              52.3702743127133
+            ],
+            [
+              4.899476453693474,
+              52.37027007271386
+            ],
+            [
+              4.899473756828061,
+              52.370270960375706
+            ],
+            [
+              4.89940777757261,
+              52.370195362578144
+            ],
+            [
+              4.899409810934946,
+              52.37019472384016
+            ],
+            [
+              4.899532726664496,
+              52.37015606172755
+            ],
+            [
+              4.899538002487672,
+              52.37016233890322
+            ],
+            [
+              4.89954591696347,
+              52.37015966619994
+            ],
+            [
+              4.899547846279934,
+              52.370161813220996
+            ],
+            [
+              4.899567528120085,
+              52.37016529163604
+            ],
+            [
+              4.89968245769979,
+              52.37012645267397
+            ],
+            [
+              4.899673492203362,
+              52.37011653826531
+            ],
+            [
+              4.8996920034873686,
+              52.370110287138175
+            ],
+            [
+              4.899700954303758,
+              52.37012020148496
+            ],
+            [
+              4.899777475707934,
+              52.37009433532817
+            ],
+            [
+              4.899768510196705,
+              52.37008442092666
+            ],
+            [
+              4.899785105368151,
+              52.37007882698722
+            ],
+            [
+              4.899792765219572,
+              52.37008729797913
+            ],
+            [
+              4.899810775379484,
+              52.37008121553702
+            ],
+            [
+              4.899821336271485,
+              52.37009293404436
+            ],
+            [
+              4.899804637726414,
+              52.370098581489565
+            ],
+            [
+              4.899840121637541,
+              52.3701379139662
+            ],
+            [
+              4.899858117128636,
+              52.370131831456554
+            ],
+            [
+              4.899862744999987,
+              52.370136946536114
+            ],
+            [
+              4.8998687798383544,
+              52.370143640255634
+            ],
+            [
+              4.899866716526682,
+              52.37014433280451
+            ],
+            [
+              4.899902766253387,
+              52.37018429673025
+            ],
+            [
+              4.8999048149821425,
+              52.370183595133064
+            ],
+            [
+              4.8999108498331925,
+              52.37019028885038
+            ],
+            [
+              4.899915463132491,
+              52.37019539488013
+            ],
+            [
+              4.899897467623411,
+              52.37020147739844
+            ],
+            [
+              4.899934373452094,
+              52.37024237955908
+            ],
+            [
+              4.899952383655708,
+              52.37023629709562
+            ],
+            [
+              4.899962596574228,
+              52.37024761869863
+            ],
+            [
+              4.8999446010503735,
+              52.370253701223994
+            ],
+            [
+              4.899981521451443,
+              52.37029462140468
+            ],
+            [
+              4.899999516986876,
+              52.37028853887374
+            ],
+            [
+              4.90000797460886,
+              52.37029791190472
+            ],
+            [
+              4.900056449034004,
+              52.37028152903174
+            ],
+            [
+              4.900095322652295,
+              52.37032510858661
+            ],
+            [
+              4.900047187284485,
+              52.37034136704256
+            ],
+            [
+              4.9000557318402445,
+              52.370350848280154
+            ],
+            [
+              4.900037750970182,
+              52.370356930879964
+            ],
+            [
+              4.900075803198656,
+              52.37039909599054
+            ],
+            [
+              4.900093784080633,
+              52.370393013385055
+            ],
+            [
+              4.900103982585609,
+              52.37040431694053
+            ],
+            [
+              4.900086016186078,
+              52.37041041758258
+            ],
+            [
+              4.900092123622174,
+              52.37041719247819
+            ]
+          ]
+        ]
+      }
     }
   ];
 
@@ -45762,6 +46077,15 @@
       description: "The Van Gendt Hallen, also called the Hallen van Stork or Werkspoorhallen, are five interlinked workshop halls of the former Werkspoor factory on Oostenburg. Designed by A.L. van Gendt and his brothers in functional brick with neo-Renaissance touches in the gables, they have stepped corbel friezes under shallow-arched gable tops, tall arched factory windows and long glazed roof lanterns. They have been a rijksmonument since 2001.",
       funFact: "The halls were built from 1898 to 1910 to satisfy an order for 40 locomotives and 400 wagons for South Africa; in 1903 one of them built the first cast-iron diesel ship engine, and halls 4 and 5 were partly burned in 1922 and rebuilt exactly to the original design.",
       sourceUrl: "https://nl.wikipedia.org/wiki/Hallen_van_Stork",
+      preferDescription: true
+    },
+    {
+      modelId: "zuiderkerk",
+      landmarkId: "extract_landmarks_684653190",
+      name: "Zuiderkerk",
+      description: "The Zuiderkerk (Southern Church) on Zuiderkerkhof was the first church built in Amsterdam specifically for the Protestant community. Hendrick de Keyser designed it and it was built between 1603 and 1611 as a Renaissance hall church of brick with sandstone dressings. Its tower, roughly 70 metres tall, rises in square and octagonal stages with clock faces, corner columns and a lead-covered lantern; the clock bears the date 1614. The church closed for worship in 1929 and now houses an information centre for urban development and a venue.",
+      funFact: "Rembrandt and Saskia's son Titus was baptised here in 1641, and Claude Monet painted the tower with the church behind it around 1874.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Zuiderkerk_(Amsterdam)",
       preferDescription: true
     }
   ];
