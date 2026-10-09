@@ -47,7 +47,7 @@
 // sixteen listed here finished loading.
 const { THREE: T, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
 const selectedIds = new Set((new URLSearchParams(location.search).get('only') || '').split(',').filter(Boolean));
-const catalogue = await fetch('./ordinary-buildings-data/catalogue.json').then(response => {
+const catalogue = await fetch('./ordinary-buildings-data/catalogue.json', { cache: 'no-cache' }).then(response => {
   if (!response.ok) throw new Error('Building catalogue unavailable');
   return response.json();
 }).catch(error => {
@@ -232,7 +232,7 @@ function build(spec) {
 
 for (const spec of MODELS) build(spec);
 sortModels();
-fetch('./models/model-dates.json').then(response => {
+fetch('./models/model-dates.json', { cache: 'no-cache' }).then(response => {
   if (!response.ok) throw new Error('Date metadata unavailable');
   return response.json();
 }).then(data => {

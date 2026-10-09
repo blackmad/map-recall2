@@ -3,7 +3,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 import { openTopPrism, upwardRoofPlane } from '../../../scripts/landmarks/house-geometry';
-const base=new URL('.',document.baseURI),manifest=await fetch(new URL('ordinary-buildings-data/catalogue.json',base)).then(r=>r.json());
+const base=new URL('.',document.baseURI),manifest=await fetch(new URL('ordinary-buildings-data/catalogue.json',base),{cache:'no-cache'}).then(r=>r.json());
 const $=s=>document.querySelector(s),container=$('#scene'),renderer=new T.WebGLRenderer({antialias:true});
 renderer.setClearColor('#e5ecec');renderer.setPixelRatio(Math.min(devicePixelRatio,2));container.append(renderer.domElement);
 const scene=new T.Scene(),camera=new T.PerspectiveCamera(38,1,.1,2000),controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;
