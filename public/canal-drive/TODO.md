@@ -27,6 +27,15 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   its panels too regular; Luther Museum roof uniformly dark, frames should be
   pale; Frankendael roof should read as tile; Nieuwendammerkerk nave roof
   reads khaki not red tile; Posthoornkerk is 39k tris (cap 40k) — reduce.
+- **Second landmark batch follow-ups (2026-10-09)**: Maarten Lutherkerk has
+  a ~20 m 3DBAG "tower" the photo does not show (spire is small on the ridge)
+  — check 3DBAG vs photo and remove; Gerard Dou Synagogue side/rear walls are
+  open (hollow from behind); Keizersgrachtkerk is 23k tris; Sint-Petrus-en-
+  Pauluskerk tower is a plain slab and renders dark; Levend Paardenmuseum is
+  placed on the Hollandsche Manege as its tenant without a cited source.
+  Skipped with reasons: Max Euwe Centrum and Bijzondere Collecties (tenants of
+  huge multi-wing panden — need the large-building tier), Schouwburgpoort (gate
+  no longer exists), Begijnhof (houses already rendered individually).
 - **Shared material textures (user, 2026-10-09)**: models are flat-shaded
   colour only, so brick and roofs read as plastic. Add one shared tiling set
   (brick bonds, roof tile, slate, stone, timber, glass) at 256–512 px with
