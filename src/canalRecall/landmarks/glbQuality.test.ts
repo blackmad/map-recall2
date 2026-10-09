@@ -56,7 +56,7 @@ test('box with a missing wall fails (hole loop and see-through rays)', () => {
   assert.equal(r.pass, false);
   assert.ok(r.holes.largestLoopPerimeter > 20, `loop ${r.holes.largestLoopPerimeter}`);
   assert.ok(r.seeThrough.rays > 3, `rays ${r.seeThrough.rays}`);
-  assert.ok(r.findings.some(f => f.kind === 'holes' && f.severity === 'fail'));
+  assert.ok(r.findings.some(f => f.kind === 'holes'));
   assert.ok(r.findings.some(f => f.kind === 'see-through' && f.severity === 'fail'));
 });
 

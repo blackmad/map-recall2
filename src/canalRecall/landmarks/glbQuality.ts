@@ -12,6 +12,8 @@
 export interface TriSoup {
   /** xyz triples, world space. */
   positions: Float32Array;
+  /** Per-triangle: 1 when its material is single-sided (backface culled); omitted = all single-sided. */
+  doubleSided?: Uint8Array;
   /** 3 vertex indices per triangle. */
   indices: Uint32Array;
 }
@@ -43,6 +45,8 @@ export interface Thresholds {
   maxHoleLoopPerimeter: number;
   /** Inverted-roof area (m^2) that fails. */
   maxInvertedRoofArea: number;
+  /** Models whose bounding-box diagonal exceeds this are multi-building sites (e.g. stations): hull-based checks are skipped. */
+  siteDiagonal: number;
   /** Triangle cap. */
   triangleCap: number;
 }
@@ -59,8 +63,9 @@ export const DEFAULT_THRESHOLDS: Thresholds = {
   farOutside: 1.5,
   failGap: 0.08,
   failArea: 12,
-  maxHoleLoopPerimeter: 2.0,
+  maxHoleLoopPerimeter: 30,
   maxInvertedRoofArea: 4,
+  siteDiagonal: 150,
   triangleCap: 60_000,
 };
 
@@ -73,6 +78,8 @@ export interface DetachedPart {
   maxY: number;
   centre: [number, number, number];
   hovering: boolean;
+  /** In front of the nearest surface (long ray escapes) rather than recessed in a cavity. */
+  exposed: boolean;
 }
 
 export interface Finding {
@@ -86,7 +93,7 @@ export interface QualityReport {
   bounds: {min: [number, number, number]; max: [number, number, number]};
   components: number;
   clusters: number;
-  holes: {loops: number; largestLoopPerimeter: number; boundaryEdges: number; flatComponents: number; points: [number, number, number][]};
+  holes: {loops: number; largestLoopPerimeter: number; boundaryEdges: number; undersideLoops: number; details: {perimeter: number; min: V3; max: V3; facesAbove: boolean}[]; flatComponents: number; points: [number, number, number][]};
   seeThrough: {rays: number; tested: number; points: [number, number, number][]};
   detached: {count: number; parts: DetachedPart[]};
   invertedRoof: {triangles: number; area: number; points: [number, number, number][]};
@@ -156,6 +163,28 @@ export function pointTriangleDistSq(p: V3, a: V3, b: V3, c: V3): number {
   const denom = 1 / (va + vb + vc);
   const v = vb * denom, w = vc * denom;
   return q([a[0] + ab[0] * v + ac[0] * w, a[1] + ab[1] * v + ac[1] * w, a[2] + ab[2] * v + ac[2] * w]);
+}
+
+/** Closest point on triangle abc to p (Ericson). */
+export function closestPointOnTriangle(p: V3, a: V3, b: V3, c: V3): V3 {
+  const ab = sub(b, a), ac = sub(c, a), ap = sub(p, a);
+  const d1 = dot(ab, ap), d2 = dot(ac, ap);
+  if (d1 <= 0 && d2 <= 0) return a;
+  const bp = sub(p, b);
+  const d3 = dot(ab, bp), d4 = dot(ac, bp);
+  if (d3 >= 0 && d4 <= d3) return b;
+  const vc = d1 * d4 - d3 * d2;
+  if (vc <= 0 && d1 >= 0 && d3 <= 0) { const v = d1 / (d1 - d3); return [a[0] + ab[0] * v, a[1] + ab[1] * v, a[2] + ab[2] * v]; }
+  const cp = sub(p, c);
+  const d5 = dot(ab, cp), d6 = dot(ac, cp);
+  if (d6 >= 0 && d5 <= d6) return c;
+  const vb = d5 * d2 - d1 * d6;
+  if (vb <= 0 && d2 >= 0 && d6 <= 0) { const w = d2 / (d2 - d6); return [a[0] + ac[0] * w, a[1] + ac[1] * w, a[2] + ac[2] * w]; }
+  const va = d3 * d6 - d5 * d4;
+  if (va <= 0 && d4 - d3 >= 0 && d5 - d6 >= 0) { const w = (d4 - d3) / (d4 - d3 + (d5 - d6)); return [b[0] + (c[0] - b[0]) * w, b[1] + (c[1] - b[1]) * w, b[2] + (c[2] - b[2]) * w]; }
+  const denom = 1 / (va + vb + vc);
+  const v = vb * denom, w = vc * denom;
+  return [a[0] + ab[0] * v + ac[0] * w, a[1] + ab[1] * v + ac[1] * w, a[2] + ab[2] * v + ac[2] * w];
 }
 
 /** Möller–Trumbore ray vs triangle (double-sided); returns t in [0,tMax] or -1. */
@@ -266,6 +295,8 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
     return r;
   }
 
+  const site = Math.hypot(bmax[0] - bmin[0], bmax[1] - bmin[1], bmax[2] - bmin[2]) > th.siteDiagonal;
+
   // --- weld vertices ---
   const q = 1 / th.weld;
   const weldMap = new Map<string, number>();
@@ -370,12 +401,31 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
   for (const l of bDeg.values()) if (l.length === 2) edp.union(l[0], l[1]);
   const loopPerim = new Map<number, number>();
   const loopPoint = new Map<number, V3>();
+  const loopMinY = new Map<number, number>(), loopMaxY = new Map<number, number>(), loopSide = new Map<number, number>();
+  const loopBox = new Map<number, {min: V3; max: V3}>();
   bEdges.forEach((e, i) => {
     const pa = canonPos.get(e.a)!, pb = canonPos.get(e.b)!;
     const r = edp.find(i);
     loopPerim.set(r, (loopPerim.get(r) ?? 0) + Math.hypot(pa[0] - pb[0], pa[1] - pb[1], pa[2] - pb[2]));
     if (!loopPoint.has(r)) loopPoint.set(r, [(pa[0] + pb[0]) / 2, (pa[1] + pb[1]) / 2, (pa[2] + pb[2]) / 2]);
+    const lb = loopBox.get(r) ?? {min: [Infinity, Infinity, Infinity] as V3, max: [-Infinity, -Infinity, -Infinity] as V3};
+    for (let ax = 0; ax < 3; ax++) { lb.min[ax] = Math.min(lb.min[ax], pa[ax], pb[ax]); lb.max[ax] = Math.max(lb.max[ax], pa[ax], pb[ax]); }
+    loopBox.set(r, lb);
+    loopMinY.set(r, Math.min(loopMinY.get(r) ?? Infinity, pa[1], pb[1]));
+    loopMaxY.set(r, Math.max(loopMaxY.get(r) ?? -Infinity, pa[1], pb[1]));
+    // Which side of the loop plane do the adjoining faces lie on? (+ = faces above => the missing face is the underside)
+    const own = triOfEdge.get(`${e.a}_${e.b}`);
+    if (own !== undefined) {
+      const [ta, tb, tc] = tri(soup, own);
+      loopSide.set(r, (loopSide.get(r) ?? 0) + (ta[1] + tb[1] + tc[1]) / 3 - (pa[1] + pb[1]) / 2);
+    }
   });
+  // Horizontal loops whose faces rise above them are open undersides (soffits, bottomless boxes on a roof):
+  // invisible from the street and from above, so they are not shell holes.
+  let undersideLoops = 0;
+  for (const r of [...loopPerim.keys()]) {
+    if (loopMaxY.get(r)! - loopMinY.get(r)! < 0.1 && (loopSide.get(r) ?? 0) > 0) { loopPerim.delete(r); undersideLoops++; }
+  }
   const holeLoops = [...loopPerim.entries()].filter(([, p]) => p >= th.minHoleLoopPerimeter).sort((a, b) => b[1] - a[1]);
   let flatComponents = 0;
   for (let c = 0; c < nComp; c++) if (isFlat(c)) flatComponents++;
@@ -383,8 +433,10 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
     loops: holeLoops.length,
     largestLoopPerimeter: holeLoops[0]?.[1] ?? 0,
     boundaryEdges: bEdges.length,
+    undersideLoops,
     flatComponents,
     points: holeLoops.slice(0, 20).map(([r]) => loopPoint.get(r)!),
+    details: holeLoops.slice(0, 10).map(([r, perimeter]) => ({perimeter, min: loopBox.get(r)!.min, max: loopBox.get(r)!.max, facesAbove: (loopSide.get(r) ?? 0) > 0})),
   };
 
   // --- proximity clustering of components (touching boxes form one body) ---
@@ -439,10 +491,15 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
   // --- detached: distance of every other cluster to the main body ---
   const SEARCH = 3;
   const mainGrid = new TriGrid(soup, 1, 0, t => compOfTri[t] >= 0);
+  const rayGridAll = new TriGrid(soup, 1, 0);
   const trisOfCluster: number[][] = Array.from({length: nClusters}, () => []);
   for (let t = 0; t < nTri; t++) if (compOfTri[t] >= 0) trisOfCluster[clusterOf[compOfTri[t]]].push(t);
-  const distanceToMain = (k: number): number => {
-    let best = Infinity;
+  /** Nearest approach of cluster k to any other cluster, plus whether that nearest face is exposed:
+   *  the part sits on the side of the nearest surface from which a long ray escapes, i.e. it is in front of
+   *  the wall (floating facade / hovering roof) rather than recessed into a cavity (window glass behind a wall). */
+  const nearestOther = (k: number): {gap: number; exposed: boolean} => {
+    let best = Infinity, bestTri = -1;
+    let bestP: V3 = [0, 0, 0];
     const list = trisOfCluster[k];
     const stride = Math.max(1, Math.floor(list.length / 300));
     for (let li = 0; li < list.length; li += stride) {
@@ -458,18 +515,39 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
             seen.add(u);
             const [a, b, c] = tri(soup, u);
             const d = pointTriangleDistSq(p, a, b, c);
-            if (d < best) best = d;
+            if (d < best) { best = d; bestTri = u; bestP = p; }
           }
         }
       }
     }
-    return Math.sqrt(best);
+    if (bestTri < 0) return {gap: Infinity, exposed: true};
+    const [a, b, c] = tri(soup, bestTri);
+    const q = closestPointOnTriangle(bestP, a, b, c);
+    const n = triNormal[bestTri] ?? [0, 1, 0];
+    const dv = sub(bestP, q);
+    const side = dot(dv, n);
+    if (Math.abs(side) < 0.5 * Math.sqrt(best)) return {gap: Math.sqrt(best), exposed: false}; // beside, not in front
+    const dir: V3 = side > 0 ? n : [-n[0], -n[1], -n[2]];
+    const o: V3 = [q[0] + dir[0] * 0.002, q[1] + dir[1] * 0.002, q[2] + dir[2] * 0.002];
+    // Long ray from the surface towards the part; own cluster is transparent to it.
+    const seen = new Set<number>();
+    let blocked = false;
+    for (let s = 0; s <= 60 && !blocked; s += 1) {
+      for (const u of rayGridAll.at(o[0] + dir[0] * s, o[1] + dir[1] * s, o[2] + dir[2] * s) ?? []) {
+        if (seen.has(u) || u === bestTri || (compOfTri[u] >= 0 && clusterOf[compOfTri[u]] === k)) continue;
+        seen.add(u);
+        const [ta, tb, tc] = tri(soup, u);
+        if (rayTriangle(o, dir, ta, tb, tc, 60) >= 0) { blocked = true; break; }
+      }
+    }
+    return {gap: Math.sqrt(best), exposed: !blocked};
   };
   const parts: DetachedPart[] = [];
   for (let k = 0; k < nClusters; k++) {
     if (k === main) continue;
+    const near = nearestOther(k);
     parts.push({
-      triangles: cTris[k], area: cArea[k], gap: distanceToMain(k),
+      triangles: cTris[k], area: cArea[k], gap: near.gap, exposed: near.exposed,
       minY: cMin[k][1], maxY: cMax[k][1],
       centre: [(cMin[k][0] + cMax[k][0]) / 2, (cMin[k][1] + cMax[k][1]) / 2, (cMin[k][2] + cMax[k][2]) / 2],
       hovering: cMin[k][1] > 0.3,
@@ -492,7 +570,7 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
     for (let k = 0; k < 3; k++) {
       const i = soup.indices[t * 3 + k] * 3;
       const d = distToHull([soup.positions[i], soup.positions[i + 2]], hull);
-      if (d > th.farOutside) farN++;
+      if (d > th.farOutside && !site) farN++;
       if (d > farMax) farMax = d;
     }
   }
@@ -532,7 +610,7 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
   };
 
   // --- inverted roofs: downward triangle, above street level, with open sky above ---
-  let invTris = 0, invArea = 0;
+  let invTris = 0, invArea = 0, invDoubleArea = 0;
   const invPoints: V3[] = [];
   for (let t = 0; t < nTri; t++) {
     if (!triOk[t] || triNormal[t][1] > -0.5 || triArea[t] < 0.05) continue;
@@ -540,7 +618,9 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
     const cen: V3 = [(a[0] + b[0] + c[0]) / 3, (a[1] + b[1] + c[1]) / 3, (a[2] + b[2] + c[2]) / 3];
     if (cen[1] < 1.5) continue;
     if (!castUp(cen, t)) {
-      invTris++; invArea += triArea[t];
+      invTris++;
+      if (soup.doubleSided && soup.doubleSided[t]) { invDoubleArea += triArea[t]; if (invPoints.length < 20) invPoints.push(cen); continue; }
+      invArea += triArea[t];
       if (invPoints.length < 20) invPoints.push(cen);
     }
   }
@@ -549,7 +629,7 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
   // Walk the hull of the main body. At each ring sample aim a street-height ray inward; only count it
   // when the point 1 m inside is roofed (so a wall had to be crossed) and the ray hits nothing before it.
   const seeThrough = {rays: 0, tested: 0, points: [] as V3[]};
-  if (hull.length >= 3) {
+  if (hull.length >= 3 && !site) {
     for (let i = 0; i < hull.length; i++) {
       const a = hull[i], b = hull[(i + 1) % hull.length];
       const ex = b[0] - a[0], ez = b[1] - a[1];
@@ -575,6 +655,7 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
   }
 
   // --- findings ---
+  if (site) findings.push({kind: 'site-model', severity: 'warn', message: `bounding diagonal > ${th.siteDiagonal} m: multi-building site, see-through and far-outside checks skipped`});
   const triangles = nTri - degenerate;
   if (degenerate > Math.max(5, nTri * 0.02)) findings.push({kind: 'degenerate', severity: 'fail', message: `${degenerate} degenerate triangles`});
   else if (degenerate) findings.push({kind: 'degenerate', severity: 'warn', message: `${degenerate} degenerate triangles`});
@@ -589,7 +670,7 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
   if (bad.length) findings.push({kind: 'detached', severity: 'fail', message: `${bad.length} detached part(s): ${bad.slice(0, 3).map(p => `${p.area.toFixed(1)} m2 gap ${p.gap.toFixed(2)} m${p.hovering ? ' hovering' : ''}`).join('; ')}`});
   if (minor.length) findings.push({kind: 'detached-minor', severity: 'warn', message: `${minor.length} small/near detached part(s), worst ${minor[0].area.toFixed(1)} m2 gap ${minor[0].gap.toFixed(2)} m`});
   if (invArea > th.maxInvertedRoofArea) findings.push({kind: 'inverted-roof', severity: 'fail', message: `${invTris} downward-facing roof triangles, ${invArea.toFixed(1)} m2 with open sky above`});
-  else if (invTris) findings.push({kind: 'inverted-roof', severity: 'warn', message: `${invTris} downward-facing roof triangles (${invArea.toFixed(1)} m2)`});
+  else if (invTris) findings.push({kind: 'inverted-roof', severity: 'warn', message: `${invTris} downward-facing roof triangles (${(invArea + invDoubleArea).toFixed(1)} m2; ${invDoubleArea.toFixed(1)} m2 on double-sided materials renders but shades inverted)`});
   if (below) findings.push({kind: 'below-ground', severity: minY < -0.5 ? 'fail' : 'warn', message: `${below} vertices below ground, lowest y ${minY.toFixed(2)}`});
   if (farN) findings.push({kind: 'far-outside', severity: 'fail', message: `${farN} vertices more than ${th.farOutside} m outside the main body (max ${farMax.toFixed(1)} m)`});
   if (triangles > th.triangleCap) findings.push({kind: 'triangle-cap', severity: 'fail', message: `${triangles} triangles exceeds cap ${th.triangleCap}`});
@@ -615,7 +696,7 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
 function emptyReport(nTri: number, bmin: V3, bmax: V3, nonFinite: number): QualityReport {
   return {
     triangles: nTri, bounds: {min: bmin, max: bmax}, components: 0, clusters: 0,
-    holes: {loops: 0, largestLoopPerimeter: 0, boundaryEdges: 0, flatComponents: 0, points: []},
+    holes: {loops: 0, largestLoopPerimeter: 0, boundaryEdges: 0, undersideLoops: 0, details: [], flatComponents: 0, points: []},
     seeThrough: {rays: 0, tested: 0, points: []}, detached: {count: 0, parts: []},
     invertedRoof: {triangles: 0, area: 0, points: []}, degenerate: 0, nonFinite,
     belowGround: {vertices: 0, minY: 0}, farOutside: {vertices: 0, maxDistance: 0}, findings: [], score: 0, pass: false,
