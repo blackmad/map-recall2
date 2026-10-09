@@ -1999,5 +1999,17 @@
     "description": "The West India House on Herenmarkt was the Amsterdam headquarters of the Dutch West India Company. Built in 1617 as a meat market and militia waiting room, it was rented by the company from 1623 and extended with two wings around a courtyard, tripling its size by 1647. A fire in 1975 was followed by restoration in 1978-1981; it now holds offices, the John Adams Institute and a municipal wedding hall.",
     "funFact": "It was here in 1625 that the company directors ordered the building of a fort on Manhattan, the beginning of New Amsterdam and later New York. A bronze statue of Peter Stuyvesant stands in the courtyard.",
     "sourceUrl": "https://en.wikipedia.org/wiki/West-Indisch_Huis"
-  }
+  },
+{
+  "modelId": "zevenlandenhuizen",
+  "landmarkId": "requested-zevenlandenhuizen",
+  "name": "Zevenlandenhuizen",
+  "description": "The Zevenlandenhuizen (Seven Countries Houses) are a row of seven houses at Roemer Visscherstraat 20-30a in the Vondelpark neighbourhood, designed by Tjeerd Kuipers in 1894 for the Amsterdam businessman Sam van Eeghen. Each house borrows the architecture of a different country: Germany (no. 20, pointed-arch Romantic windows), France (22, a Loire chateau), Spain (24, a Moorish villa in the manner of Granada), Italy (26, a palazzo), Russia (28, a church tower with an onion dome), the Netherlands (30, a Renaissance gabled house) and England (30a, a half-timbered cottage). The row is a national monument and a showpiece of the 19th-century taste for exotic styles.",
+  "funFact": "Every house carries its country's name carved into the facade, and the Russian house even has a little onion-domed tower rising over a Dutch street.",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Zevenlandenhuizen",
+  "additionalSources": [
+    "https://commons.wikimedia.org/wiki/Category:Zevenlandenhuizen"
+  ],
+  "preferDescription": true
+}
 ]
