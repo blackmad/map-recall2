@@ -14058,6 +14058,8 @@
   },
   {
     "id": "haparandaweg-902-950",
+    "status": "held",
+    "heldReason": "Five identical gabled bays with symmetric window grids, HET PAKHUIS band and double-height glazed ground floor; model has scattered windows and invented setbacks (user review 2026-10-09).",
     "name": "Het Pakhuis, Haparandaweg 902-950",
     "modelUrl": "./models/haparandaweg-902-950.glb",
     "suppressOsmIds": [
