@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+## GLB quality audit; Nassaukerk windows (2026-10-09)
+
+`audit-glb-quality.ts` checks every landmark GLB for open shell holes,
+street-height see-through rays, detached parts, far-outside and below-ground
+geometry, inverted roofs and triangle caps (synthetic fixtures in
+`glbQuality.test.ts`). First full run: 184/236 flag something; the noisiest
+check is detached parts, because recessed glazing and a floating facade look
+alike geometrically. A lane audit flagged Theo Thijssen and Torture Museum,
+but it had audited pre-rework GLBs; the current ones pass. Nassaukerk (user:
+"missing a bunch of windows") now has arched windows on all four gables,
+five tall arches and an arched door on the SE arm, low-wall squares and the
+re-entrant bay lights; louvre frames and clock discs that floated were fixed.
+
 ## Bilderdijkstraat: first street built from recipes, in the city look (2026-10-09)
 
 19 houses drafted from rectified panorama crops (~33 s per house from
