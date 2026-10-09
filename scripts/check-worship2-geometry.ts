@@ -3,7 +3,6 @@ import fs from 'node:fs';
 import * as T from 'three';
 import type {BuildingTools} from './landmarks/cultural-builders';
 import {buildKoningskerk} from './landmarks/koningskerk-builder';
-import {buildThomaskerk} from './landmarks/thomaskerk-builder';
 import {buildSintOlofskapel} from './landmarks/sint-olofskapel-builder';
 
 // Custom-massed worship lane: model must sit on the BAG ring bounds, reach the stated height, and have no floating parts.
@@ -11,7 +10,6 @@ import {buildSintOlofskapel} from './landmarks/sint-olofskapel-builder';
 const cases = [
   {id: 'sint-olofskapel', build: buildSintOlofskapel, minY: 24, maxY: 25.5},
   {id: 'koningskerk', build: buildKoningskerk, minY: 20, maxY: 20.6}, // photo-estimated 20 m tower over the 11 m hall
-  {id: 'thomaskerk', build: buildThomaskerk, minY: 14.7, maxY: 15.4}, // 3DBAG shell top + coping
 ];
 for (const c of cases) {
   const src = JSON.parse(fs.readFileSync(`scripts/landmarks/${c.id}-footprints.json`, 'utf8'));

@@ -1,5 +1,4 @@
 import {buildKoningskerk} from './koningskerk-builder';
-import {buildThomaskerk} from './thomaskerk-builder';
 import {buildSintOlofskapel} from './sint-olofskapel-builder';
 import {buildMaartenLutherkerk} from './maarten-lutherkerk-builder';
 import {buildPetrusEnPaulusKerk} from './petrus-en-paulus-kerk-builder';
@@ -335,7 +334,6 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   else {
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
     if(id==='koningskerk')buildKoningskerk(w,d,helpers);
-    else if(id==='thomaskerk')buildThomaskerk(w,d,helpers);
     else if(id==='sint-olofskapel')buildSintOlofskapel(w,d,helpers);
     else if(id==='maarten-lutherkerk')buildMaartenLutherkerk(w,d,helpers);
     else if(id==='petrus-en-paulus-kerk')buildPetrusEnPaulusKerk(w,d,helpers);
