@@ -95,7 +95,7 @@ test('recipe street: installed Bilderdijkstraat houses render in the game from t
   // camera 17 m out from the frontage at 9 m eye height, aimed 1 m inside the facade at 9 m.
   const facadeViews = [['a', sorted[2], 0], ['b', sorted[Math.floor(sorted.length / 2)], 0], ['c', sorted.at(-3)!, 0], ['oblique', sorted[Math.floor(sorted.length / 2)], 40]] as const;
   for (const [name, house, turn] of facadeViews) {
-    const eye = ahead(ahead(house.anchor, outward, 17), bearing, turn ? -16 : 0), target = ahead(house.anchor, outward, -1);
+    const back = info.project.name === 'iphone' ? 34 : 17, eye = ahead(ahead(house.anchor, outward, back), bearing, turn ? -back : 0), target = ahead(house.anchor, outward, -1);
     await page.evaluate(({ eye, target }) => {
       const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
       vm.sync = () => {}; map.stop(); map.setMaxPitch(85);
