@@ -2186,33 +2186,30 @@
         "NL.IMBAG.Pand.0363100012167897",
         "NL.IMBAG.Pand.0363100012169456",
         "NL.IMBAG.Pand.0363100012169457",
-        "NL.IMBAG.Pand.0363100012174397"
+        "NL.IMBAG.Pand.0363100012174397",
+        "NL.IMBAG.Pand.0363100012185424"
       ],
       "latestBatch": [
-        "NL.IMBAG.Pand.0363100012169457",
-        "NL.IMBAG.Pand.0363100012174397"
+        "NL.IMBAG.Pand.0363100012185424"
       ],
-      "evidence": "ordinary-buildings-data/canal-prinsen215-review-20261008.json",
+      "evidence": "ordinary-buildings-data/prinsen767-review-20261009.json",
       "handoff": "docs/performance/2026-10-06/canal-belt-continuation-handoff.md",
-      "nextAction": "Publish/verify accepted-local hospital35. Fresh Keizersgracht569\u2013575 native author is building from pushed private source37 in isolated checkout; both monument fronts/full architectural loop required. Continuous queue active.",
+      "nextAction": "Hospital35 hosted verified. Review corrected Keizers569\u201357536 actual GPU roof intersections/rear seams and native game; next substantial ordinary source screen active.",
       "sourceCommit": "9fc691744e03b91f70899896033acdb6cbbd1a18",
       "notes": "Ordinary assets/full architecture review for defining Rokin roof assemblies; no invented POI routes. Existing Nacarat basic inside-footprint click card retained. Both strict500k/three-material budgets pass.",
       "localModelCount": 35,
       "hostedVerification": {
-        "publicModelCommit": "fe3dbd7b0e9e82e28b4902a2b025f0838f6a5c6b",
-        "publicCommit": "025e5df61ef2c82c2e18111c4455bc035858f44c",
-        "firebaseRun": "37843611938",
-        "verifiedAtUTC": "2026-10-08T21:05:49.775086+00:00",
-        "models": 34,
+        "publicModelCommit": "417684907ec5c961d09c1aeb46c5efe05c00673c",
+        "firebaseRun": "37891331087",
+        "verifiedAtUTC": "2026-10-09T06:08:52.188284+00:00",
+        "models": 35,
         "allAssetHashesExact": true,
-        "manualDesktopTouchLoaded": 34,
-        "feedbackPreview": true,
-        "evidenceSourceCommit": "6515660e4d5b0cef3bdc0b940abb8fc1173fed66",
-        "evidenceSourcePack": "experiments/canal-belt-continuation-20261007/hosted34-20261008"
+        "manualDesktopTouchLoaded": 35,
+        "evidenceSourceCommit": "14f0cba144b311e1c961cb4997a262527873bc22",
+        "evidenceSourcePack": "experiments/canal-belt-continuation-20261007/hosted35-20261009"
       },
       "publicationSourceCommit": "695ec2b222e9ad4eb41add25711dd8e5ae3ebfe5",
       "pendingModels": [
-        "NL.IMBAG.Pand.0363100012185424",
         "NL.IMBAG.Pand.0363100012176752"
       ],
       "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/native34-resume-20261008",
@@ -2408,7 +2405,7 @@
       "id": "prinsengracht-hospital-ordinary-treatment",
       "task": "Model the native former hospital parent: Prinsengracht 759\u2013769 and Kerkstraat 126",
       "priority": "high",
-      "status": "verified-local-publication-pending",
+      "status": "verified-hosted",
       "buildingIds": [
         "NL.IMBAG.Pand.0363100012185424"
       ],
@@ -2417,7 +2414,7 @@
       "sourceBranch": "ordinary/source35-20261008",
       "sourcePack": "experiments/canal-belt-continuation-20261007/prinsen767-native-review40",
       "evidence": "ordinary-buildings-data/prinsen767-review-20261009.json",
-      "nextAction": "Publish accepted scoped native parent and verify actual hosted fingerprint/gallery/manual35. Preserve roof-spike failures and unobserved garden/rear details; ordinary model creates no POI route.",
+      "nextAction": "Preserve scoped source/visual limits and failed evidence; continue ordinary queue.",
       "draftAsset": {
         "sha256": "a680a2ac3c81fe9e4b5018ce088a1154dee3b00178a0fc9148fa0bf6c2d9fa5d",
         "bytes": 287136,
@@ -2425,21 +2422,33 @@
         "materials": 3,
         "textures": 0,
         "acceptedLocal": true,
-        "hostedVerified": false
+        "hostedVerified": true
+      },
+      "hostedVerification": {
+        "publicModelCommit": "417684907ec5c961d09c1aeb46c5efe05c00673c",
+        "firebaseRun": "37891331087",
+        "verifiedAtUTC": "2026-10-09T06:08:52.188284+00:00",
+        "models": 35,
+        "allAssetHashesExact": true,
+        "manualDesktopTouchLoaded": 35,
+        "evidenceSourceCommit": "14f0cba144b311e1c961cb4997a262527873bc22",
+        "evidenceSourcePack": "experiments/canal-belt-continuation-20261007/hosted35-20261009"
       }
     },
     {
       "id": "keizers575-ordinary-treatment",
       "task": "Source and model native Keizersgracht575 parent0363100012176752",
       "priority": "high",
-      "status": "model-draft-in-progress",
+      "status": "corrected-draft-gpu-review",
       "buildingIds": [
         "NL.IMBAG.Pand.0363100012176752"
       ],
       "scope": "One official parent includes distinct Venetian569\u2013571 and classical573\u2013575 fronts; one VBO main575/secondary569. Full architecture, no invented POI or standard approval.",
       "sourcePack": "experiments/canal-belt-continuation-20261007/keizers575-next-source37",
-      "nextAction": "Native builder draft owns both monument facades, independent roof levels and observed openings. Preserve held first-hit failures; root source/gallery/independent/native-game/performance review required.",
-      "sourceCommit": "4ec0a0d69e202f87d573b5543650c9446f20102f"
+      "nextAction": "v02 CPU source corrections pass; root GPU shows roof intersection gaps/rear seam for independent failure classification. Native/game/performance acceptance pending.",
+      "sourceCommit": "4ec0a0d69e202f87d573b5543650c9446f20102f",
+      "draftHash": "d4dc293c07343516bcdd7b7e724389c9135c6b5c3b027819a7bd1ef6c2e69e96",
+      "supplementarySourceCommit": "24ce200c61425e6ecc2d4f85a82a2c512cb18c55"
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

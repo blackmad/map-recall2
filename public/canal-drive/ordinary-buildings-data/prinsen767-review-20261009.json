@@ -1,8 +1,8 @@
 {
   "canonicalModelId": "ordinary-0363100012185424",
   "buildingId": "NL.IMBAG.Pand.0363100012185424",
-  "updatedAt": "2026-10-08T22:36:00.424222+00:00",
-  "state": "accepted-local-publication-pending",
+  "updatedAt": "2026-10-09T06:08:52.188284+00:00",
+  "state": "verified-hosted-scoped",
   "modelHash": "a680a2ac3c81fe9e4b5018ce088a1154dee3b00178a0fc9148fa0bf6c2d9fa5d",
   "sourceCommit": "2a8102e5dfcb1eddd9f5cd6b0ae4e78fc1d31c22",
   "sourcePath": "experiments/canal-belt-continuation-20261007/prinsen767-native-review40",
@@ -100,11 +100,11 @@
     "Original failed game frames/raw generator/report retained; overwritten original gallery PNG disclosed, roof condition replay explicitly labeled."
   ],
   "limits": [
-    "Unobserved garden coverage10.349m\u00b2 remains uncapped; includes original6.239m\u00b2 gap.",
+    "Unobserved garden coverage10.349m² remains uncapped; includes original6.239m² gap.",
     "Rear windows not independently researched; conservative blank rear source massing.",
     "Facade dimensions, solar module count and Archivo Black sign font are approximate.",
     "Touch is iPhone13 input/viewport emulation onM4Pro, not physical phone.",
-    "Cold game boots4.785\u20135.929s and initialization52\u2013196ms long tasks remain; steady-frame parity does not establish startup improvement."
+    "Cold game boots4.785–5.929s and initialization52–196ms long tasks remain; steady-frame parity does not establish startup improvement."
   ],
   "feedback": {
     "lastSuccessfulPull": "2026-10-08T22:36:00.424222+00:00",
@@ -112,5 +112,15 @@
     "inProgress": 1,
     "actionableOwn": 0,
     "otherClaim": "Melkweg26b15ccf-5dd2-46e9-abf3-a103dc2ab5d5"
+  },
+  "hostedVerification": {
+    "publicModelCommit": "417684907ec5c961d09c1aeb46c5efe05c00673c",
+    "firebaseRun": "37891331087",
+    "verifiedAtUTC": "2026-10-09T06:08:52.188284+00:00",
+    "models": 35,
+    "allAssetHashesExact": true,
+    "manualDesktopTouchLoaded": 35,
+    "evidenceSourceCommit": "14f0cba144b311e1c961cb4997a262527873bc22",
+    "evidenceSourcePack": "experiments/canal-belt-continuation-20261007/hosted35-20261009"
   }
 }

@@ -3547,7 +3547,7 @@
       "bounds": {
         "min": [
           -19.2172908782959,
-          -9.536743306171047e-8,
+          -9.536743306171047e-08,
           -13.932360649108887
         ],
         "max": [
@@ -9223,7 +9223,7 @@
       "bounds": {
         "min": [
           -19.893112182617188,
-          -9.536743306171047e-8,
+          -9.536743306171047e-08,
           -17.881860733032227
         ],
         "max": [
@@ -9887,7 +9887,7 @@
       "bounds": {
         "min": [
           -17.276670455932617,
-          -5.2452087118126656e-8,
+          -5.2452087118126656e-08,
           -19.4085750579834
         ],
         "max": [
@@ -19630,7 +19630,7 @@
       "bounds": {
         "min": [
           -14.545639991760254,
-          9.536743306171047e-8,
+          9.536743306171047e-08,
           -16.488889694213867
         ],
         "max": [
@@ -19727,7 +19727,7 @@
       "bounds": {
         "min": [
           -19.340869903564453,
-          -1.9073486612342094e-7,
+          -1.9073486612342094e-07,
           -29.3840274810791
         ],
         "max": [
@@ -19962,7 +19962,7 @@
       "bounds": {
         "min": [
           -22.37699317932129,
-          -1.9073486612342094e-7,
+          -1.9073486612342094e-07,
           -50.65300750732422
         ],
         "max": [
@@ -20177,7 +20177,7 @@
       "bounds": {
         "min": [
           -23.991369247436523,
-          -9.536743306171047e-8,
+          -9.536743306171047e-08,
           -15.057171821594238
         ],
         "max": [
@@ -20290,7 +20290,7 @@
       "bounds": {
         "min": [
           -14.917290687561035,
-          -3.814697322468419e-7,
+          -3.814697322468419e-07,
           -12.036028861999512
         ],
         "max": [
@@ -20394,7 +20394,7 @@
       "bounds": {
         "min": [
           -22.194652557373047,
-          -4.7683716530855236e-8,
+          -4.7683716530855236e-08,
           -8.861071586608887
         ],
         "max": [
@@ -20531,7 +20531,7 @@
       "suppress": [
         "NL.IMBAG.Pand.0363100012185424"
       ],
-      "scope": "Draft asset only. Independent/gallery/live/performance acceptance pending.",
+      "scope": "One native former hospital parent with both street fronts and garden reentrants; scoped architectural and hosted game acceptance.",
       "sourceCommit": "2a8102e5dfcb1eddd9f5cd6b0ae4e78fc1d31c22",
       "sourcePack": "experiments/canal-belt-continuation-20261007/next-large-box-source-26/0363100012185424",
       "unresolvedRoofCoverage": [
@@ -20810,7 +20810,7 @@
           ]
         }
       ],
-      "acceptance": "Author draft: roof-material/lettering/independent/gallery/live/performance checks pending",
+      "acceptance": "Root and independent source/gallery/native checks passed; actual hosted35 assets, desktop and emulated-touch gameplay verified. Recorded rear/source/startup limits remain.",
       "buildingId": "NL.IMBAG.Pand.0363100012185424",
       "name": "Prinsengracht 759–769 / Kerkstraat 126",
       "label": "Prinsengracht 759–769 / Kerkstraat 126",
@@ -21131,7 +21131,7 @@
         "Touch is iPhone13 input/viewport emulation onM4Pro, not physical phone.",
         "Cold game boots4.785–5.929s and initialization52–196ms long tasks remain; steady-frame parity does not establish startup improvement."
       ],
-      "reviewState": "Root/independent source, gallery and native desktop/touch accepted; hosted verification pending.",
+      "reviewState": "Root/independent source, gallery and native desktop/touch accepted; hosted35 verified.",
       "reviewEvidenceCommit": "2a8102e5dfcb1eddd9f5cd6b0ae4e78fc1d31c22",
       "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/prinsen767-native-review40",
       "updatedAt": "2026-10-08T22:36:00.424222+00:00",
@@ -21140,7 +21140,17 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012185424",
         "https://data.amsterdam.nl/"
       ],
-      "nativeHeight": 16.5
+      "nativeHeight": 16.5,
+      "hostedVerification": {
+        "publicModelCommit": "417684907ec5c961d09c1aeb46c5efe05c00673c",
+        "firebaseRun": "37891331087",
+        "verifiedAtUTC": "2026-10-09T06:08:52.188284+00:00",
+        "models": 35,
+        "allAssetHashesExact": true,
+        "manualDesktopTouchLoaded": 35,
+        "evidenceSourceCommit": "14f0cba144b311e1c961cb4997a262527873bc22",
+        "evidenceSourcePack": "experiments/canal-belt-continuation-20261007/hosted35-20261009"
+      }
     }
   ]
 }
