@@ -12,7 +12,7 @@ import { openTopPrism, upwardRoofPlane } from '../../scripts/landmarks/house-geo
 import { auditHouse, type CanalHouse, type GableType } from './facade/houseRecord.ts';
 import { auditFields, type Measured, type Observation } from './facade/evidence.ts';
 
-export const CANALHOUSE_COMPONENT_VERSIONS = Object.freeze({ shell: '3', roof: '11', frontage: '4', opening: '18', glazedBay: '1', facadeDetail: '10', ornament: '1', dormer: '6', nativeAperture: '1', cornice: '6', crown: '5', entrance: '9', hoist: '1' });
+export const CANALHOUSE_COMPONENT_VERSIONS = Object.freeze({ shell: '3', roof: '11', frontage: '4', opening: '19', glazedBay: '1', facadeDetail: '11', ornament: '2', dormer: '6', nativeAperture: '1', cornice: '6', crown: '5', entrance: '9', hoist: '1' });
 export type CanalhousePoint = [number, number];
 export interface CanalhousePolygon { outer: CanalhousePoint[]; holes: CanalhousePoint[][] }
 export interface CanalhouseDoorPanel {
@@ -26,9 +26,9 @@ export interface CanalhouseDoorPanel {
 }
 export interface CanalhouseOpening {
   id: string; kind: 'window' | 'door'; leftM: number; bottomM: number; widthM: number; heightM: number;
-  trimWidthM: number; head?: 'segmental' | 'oval'; headRiseM?: number; verticalBars?: number[]; horizontalBars?: number[];
+  trimWidthM: number; head?: 'segmental' | 'oval'; headRiseM?: number; /** Chord count of a segmental arc (default 16); runtime street houses use 4. */ headSegments?: number; verticalBars?: number[]; horizontalBars?: number[];
   /** Outer joinery and sash/grille materials independently reuse semantic palette slots. */
-  frameSurface?: 'trim' | 'door' | 'joinery'; barSurface?: 'trim' | 'door' | 'joinery';
+  frameSurface?: 'trim' | 'door' | 'joinery' | 'shop'; barSurface?: 'trim' | 'door' | 'joinery' | 'shop';
   /** Glazed or opaque leaf; trim selects pale painted panels. Omission preserves defaults. */
   paneSurface?: 'glass' | 'door' | 'trim';
  /** Source-selected frosted/leaded glass tone, restricted to glazed panes. */
@@ -59,7 +59,8 @@ export interface CanalhouseDormer {
   setbackM?:number;
   /** Explicit source-visible opening in a native wall covering this dormer. */
   hostAperture?:{depthM:number}; id: string; leftM: number; widthM: number; bottomM: number; heightM: number; depthM: number; roofRiseM: number; frontOverhangM?: number; trimWidthM?: number; verticalBars?: number[]; horizontalBars?: number[] }
-export interface CanalhouseFacadeBlock { id: string; leftM: number; bottomM: number; widthM: number; heightM: number; depthM: number; surface?: 'wall' | 'trim' | 'stone' }
+/** `accent` is a second masonry colour (banding, relieving arches); `shop` is the shopfront joinery/fascia paint. */
+export interface CanalhouseFacadeBlock { id: string; leftM: number; bottomM: number; widthM: number; heightM: number; depthM: number; surface?: 'wall' | 'trim' | 'stone' | 'accent' | 'shop' }
 export interface CanalhouseBalcony {
  id:string;openingId:string;heightM:number;depthM:number;barWidthM:number;posts:number;
  /** Explicit source-observed guard in front of this opening; checks still require exposed panes. */
@@ -71,7 +72,7 @@ export interface CanalhouseBalcony {
  infill?:{template:'cross';panels:number};
  projection?:{widthM:number;slabThicknessM:number;pierWidthM:number;supportHeightM?:number};
 }
-export interface CanalhouseOrnament { id: string; profile: CanalhousePoint[]; depthM: number; fill?: 'trim' | 'wall'; rimWidthM?: number }
+export interface CanalhouseOrnament { id: string; profile: CanalhousePoint[]; depthM: number; fill?: 'trim' | 'wall' | 'stone' | 'accent' | 'shop'; rimWidthM?: number }
 /** One reusable lateral flight, including its independently observed open rail. */
 export interface CanalhouseApproach {
   topProfile:CanalhousePoint[]|null; groundM:number; backM:number; depthM:number;
@@ -137,7 +138,7 @@ export interface CanalHouseRecipe {
   shellTopM?: Measured<number>;
   /** Local east/south metres; Y is vertical in the compiled Three group. */
   footprint: Measured<CanalhousePolygon[]>;
-  palette: Measured<{ wall: string; roof: string; trim: string; glass: string; door: string; stone?: string; joinery?: string }>;
+  palette: Measured<{ wall: string; roof: string; trim: string; glass: string; door: string; stone?: string; joinery?: string; accent?: string; shop?: string }>;
   /** Explicit surveyed roof partition. Planes are heightM + x*slopeX + z*slopeZ. */
   roof: Measured<{ polygon: CanalhousePolygon; plane: { heightM: number; slopeX: number; slopeZ: number }; generatedFragment?:'symmetric-roof'|'roof-envelope' }[]>;
   elevations: CanalhouseElevation[]; simplifications: string[];
@@ -279,7 +280,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
   if(!polygons.length) throw new Error('Missing surveyed footprint');
   if(Object.values(palette).some(c=>!/^#[\da-f]{6}$/i.test(c))) throw new Error('Invalid flat palette');
   const group=new T.Group(); group.name=recipe.id;
-  const materials=Object.fromEntries(Object.entries({...palette,stone:palette.stone??palette.trim,joinery:palette.joinery??palette.trim}).map(([k,c])=>[k,new T.MeshStandardMaterial({color:c,roughness:1})])) as Record<keyof typeof palette,T.MeshStandardMaterial>;
+  const materials=Object.fromEntries(Object.entries({...palette,stone:palette.stone??palette.trim,joinery:palette.joinery??palette.trim,accent:palette.accent??palette.wall,shop:palette.shop??palette.door}).map(([k,c])=>[k,new T.MeshStandardMaterial({color:c,roughness:1})])) as Record<keyof typeof palette,T.MeshStandardMaterial>;
   const facadeMaterials=new WeakMap<T.Group,typeof materials>();
   const add = (geometry:T.BufferGeometry,surface:keyof typeof palette,name:string,parent:T.Group=group) => {
     const mesh=new T.Mesh(geometry,(facadeMaterials.get(parent)??materials)[surface]); mesh.name=name; mesh.userData={component:name.split('/')[0],surface,pandId:recipe.house.pandId}; parent.add(mesh); return mesh;
@@ -398,7 +399,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
     if(elevation.palette){
       const colors=read(elevation.palette,`${elevation.id}/palette`);
       if(Object.values(colors).some(c=>!/^#[\da-f]{6}$/i.test(c)))throw new Error('Invalid frontage palette');
-      facadeMaterials.set(facade,Object.fromEntries(Object.entries({...colors,stone:colors.stone??colors.trim,joinery:colors.joinery??colors.trim}).map(([k,c])=>[k,new T.MeshStandardMaterial({color:c,roughness:1})])) as typeof materials);
+      facadeMaterials.set(facade,Object.fromEntries(Object.entries({...colors,stone:colors.stone??colors.trim,joinery:colors.joinery??colors.trim,accent:colors.accent??colors.wall,shop:colors.shop??colors.door}).map(([k,c])=>[k,new T.MeshStandardMaterial({color:c,roughness:1})])) as typeof materials);
     }
     facade.matrix.set(ux,0,nx,a[0]+nx*outward, 0,1,0,0, uz,0,nz,a[1]+nz*outward, 0,0,0,1);facade.matrixAutoUpdate=false;group.add(facade);
     const box=(x:number,y:number,w:number,h:number,d:number,depth:number,s:keyof typeof palette,name:string)=>{
@@ -463,7 +464,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
         }
       }
       const t=o.trimWidthM,name=`opening/${o.id}`;
-      for(const surface of [o.frameSurface,o.barSurface])if(surface!==undefined&&surface!=='trim'&&surface!=='door'&&surface!=='joinery')throw new Error('Unsupported opening joinery surface');
+      for(const surface of [o.frameSurface,o.barSurface])if(surface!==undefined&&surface!=='trim'&&surface!=='door'&&surface!=='joinery'&&surface!=='shop')throw new Error('Unsupported opening joinery surface');
       const frameSurface=o.frameSurface??'trim',barSurface=o.barSurface??'trim';
       const paneSurface=o.paneSurface??(o.kind==='door'?'door':'glass');
       if(o.paneTint!==undefined&&(paneSurface!=='glass'||!/^#[\da-f]{6}$/i.test(o.paneTint)))throw Error('Pane tint requires a valid glazed color');
@@ -474,6 +475,8 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
       }
       const frameDepth=o.frameDepthM??.12;finite(frameDepth);if(frameDepth<.08||frameDepth>.25)throw new Error('Unsupported opening frame depth');
       const paneOffset=o.paneOffsetM??.065;finite(paneOffset);if(paneOffset<.025||paneOffset>.065)throw new Error('Unsupported glazing setback');
+      const headSegments=o.headSegments??16;
+      if(!Number.isInteger(headSegments)||headSegments<2||headSegments>32)throw new Error('Unsupported head segment count');
       const barDepth=Math.min(.095,.015+frameDepth-.025);
       const openingShape=(x:number,y:number,w:number,h:number,rise=0,oval=false)=>{
         if(oval){
@@ -482,7 +485,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
           s.closePath();return s;
         }
         const s=new T.Shape();s.moveTo(x,y);s.lineTo(x+w,y);
-        if(rise){const radius=w*w/(8*rise)+rise/2,center=h-radius;s.lineTo(x+w,y+h-rise);for(let i=1;i<=16;i++){const u=w/2-w*i/16;s.lineTo(x+w/2+u,y+center+Math.sqrt(Math.max(0,radius*radius-u*u)));}}
+        if(rise){const radius=w*w/(8*rise)+rise/2,center=h-radius;s.lineTo(x+w,y+h-rise);for(let i=1;i<=headSegments;i++){const u=w/2-w*i/headSegments;s.lineTo(x+w/2+u,y+center+Math.sqrt(Math.max(0,radius*radius-u*u)));}}
         else{s.lineTo(x+w,y+h);s.lineTo(x,y+h);}
         s.closePath();return s;
       };
@@ -501,7 +504,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
         positive(o.headRiseM);if(o.headRiseM>Math.min(o.heightM,o.widthM/2))throw new Error('Invalid segmental head rise');
         const arch=(x:number,y:number,w:number,h:number,rise:number,d:number,depth:number,surface:keyof typeof palette,label:string)=>{
           const radius=w*w/(8*rise)+rise/2,center=h-radius,outline=new T.Shape();outline.moveTo(x,y);outline.lineTo(x+w,y);outline.lineTo(x+w,y+h-rise);
-          for(let i=1;i<=16;i++){const u=w/2-w*i/16;outline.lineTo(x+w/2+u,y+center+Math.sqrt(Math.max(0,radius*radius-u*u)));}
+          for(let i=1;i<=headSegments;i++){const u=w/2-w*i/headSegments;outline.lineTo(x+w/2+u,y+center+Math.sqrt(Math.max(0,radius*radius-u*u)));}
           outline.closePath();const g=new T.ExtrudeGeometry(outline,{depth:d,bevelEnabled:false});g.translate(0,0,depth-d/2);add(g,surface,label,facade);
         };
         frame(o.headRiseM);
@@ -805,7 +808,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
       for(const o of read(elevation.ornaments,`${elevation.id}/ornaments`)){
         positive(o.depthM);if(o.depthM>.3||!o.id.trim()||ids.has(o.id))throw new Error('Invalid facade ornament');ids.add(o.id);
         if(o.profile.length<3||Math.abs(area(o.profile))<EPS||o.profile.some(([x,y])=>!Number.isFinite(x)||!Number.isFinite(y)||x<0||x>length+EPS||y<0))throw new Error('Ornament escapes its facade');
-        if(o.fill!==undefined&&o.fill!=='trim'&&o.fill!=='wall')throw new Error('Unsupported ornament fill');
+        if(o.fill!==undefined&&!['trim','wall','stone','accent','shop'].includes(o.fill))throw new Error('Unsupported ornament fill');
         if(o.fill){const s=new T.Shape(o.profile.map(([x,y])=>new T.Vector2(x,y)));const g=new T.ExtrudeGeometry(s,{depth:o.depthM,bevelEnabled:false});g.translate(0,0,.09);add(g,o.fill,`ornament/${o.id}/field`,facade);}
         if(o.rimWidthM!==undefined){positive(o.rimWidthM);for(let i=0;i<o.profile.length;i++){
           const [x,y]=o.profile[i],[xx,yy]=o.profile[(i+1)%o.profile.length],distance=Math.hypot(xx-x,yy-y);if(distance<EPS)continue;
@@ -819,7 +822,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
         positive(d.widthM,d.heightM,d.depthM);finite(d.leftM,d.bottomM);
         if(!d.id.trim()||ids.has(d.id))throw new Error('Duplicate facade detail');ids.add(d.id);
         if(d.leftM<0||d.bottomM<0||d.leftM+d.widthM>length+EPS||!withinWall(d.leftM,d.widthM,d.bottomM+d.heightM))throw new Error('Facade detail escapes its supported wall');
-        if(d.surface!==undefined&&d.surface!=='wall'&&d.surface!=='trim'&&d.surface!=='stone')throw new Error('Unsupported facade detail surface');
+        if(d.surface!==undefined&&!['wall','trim','stone','accent','shop'].includes(d.surface))throw new Error('Unsupported facade detail surface');
         // A projected plinth/risalit is masonry around apertures, not an opaque
         // plate across them. Subtract opening rectangles into disjoint piers
         // and lintels; the separately authored frames own the aperture edges.

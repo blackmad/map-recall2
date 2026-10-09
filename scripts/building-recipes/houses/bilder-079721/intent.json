@@ -1,0 +1,49 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "bilder-079721",
+ "pandId": "0363100012079721",
+ "address": "Bilderdijkstraat (1894 yellow brick, scaffolded)",
+ "sources": [
+  {
+   "id": "pano-2025-07-31",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-31",
+   "image": "staging/pand-reference/0363100012079721/front-alt.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "fronts": [
+  {
+   "id": "front0",
+   "street": "Bilderdijkstraat",
+   "hoist": false,
+   "windows": "arched",
+   "basement": "none",
+   "cornice": "bracketed",
+   "gable": "cornice",
+   "storeys": 5,
+   "bays": 3,
+   "dormers": 1,
+   "doorBay": null,
+   "shopfront": {
+    "colour": "dark-brown",
+    "fascia": true
+   },
+   "bands": "lintel"
+  }
+ ],
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "yellow-brick",
+  "frame": "white",
+  "door": "dark-brown",
+  "stone": "cream",
+  "band": "#8c3b2c"
+ },
+ "notes": [
+  "2026-10-09 look pass: red brick banding and relieving arches on yellow brick (photo)."
+ ]
+}

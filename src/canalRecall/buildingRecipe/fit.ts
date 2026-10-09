@@ -8,12 +8,14 @@
  * so the same intent always fits the same geometry.
  */
 import type {CanalHouseRecipe, CanalhouseElevation, CanalhouseOpening, CanalhousePoint} from '../canalhouseRecipes.ts';
+import type {CanalhouseGlazedBay} from '../canalhouseGlazedBay.ts';
 import {canalhouseCrownProfile} from '../canalhouseRecipes.ts';
 import {surveyRecipe} from '../../../scripts/canalhouse-recipes/survey-recipe.ts';
 import {unobservedHouse, type GableType} from '../facade/houseRecord.ts';
 import {measured, type Observation} from '../facade/evidence.ts';
 import type {BuildingFacts, FrontFacts} from './facts.ts';
 import {swatch, type CanalHouseIntent, type FrontIntent, type GableIntent} from './intent.ts';
+import {cleanRoof, type RoofCleanupReport} from './roofCleanup.ts';
 
 export const ROOF_COLOURS: Record<CanalHouseIntent['roof']['material'], {steep: string; low: string; flat: string}> = {
   slate: {steep: '#3b4047', low: '#4b5056', flat: '#6a6c6c'},
@@ -38,6 +40,10 @@ const WINDOW_BARS: Record<FrontIntent['windows'], Pick<CanalhouseOpening, 'verti
 export interface FitReport {
   fronts: {id: string; widthM: number; eavesM: number; crownTopM: number; storeyHeightsM: number[]; mirrored: boolean; edge: [number, number]; frontageDeviationM: number; frontageOutsetM: number; polygonIndex: number}[];
   warnings: string[];
+  /** Height the model may exceed the LoD2.2 roof max by: 3DBAG LoD2.2 has no dormers, so declared dormers stand above it. */
+  roofAllowanceM?: number;
+  /** 3DBAG roof artefacts removed before the survey conversion (roofCleanup.ts). */
+  roofCleanup?: RoofCleanupReport;
 }
 
 const round = (v: number, d = 3) => Math.round(v * 10 ** d) / 10 ** d;
@@ -60,7 +66,10 @@ function splitChain(front: FrontFacts, shares: number[]): [number[], number[]][]
   return cuts.slice(1).map((c, i) => [chain[cuts[i]], chain[c]] as [number[], number[]]);
 }
 
-interface Layout { openings: CanalhouseOpening[]; storeyHeights: number[]; groundBase: number; doorLeft: number | null; doorWidth: number }
+interface Layout { openings: CanalhouseOpening[]; glazedBays: CanalhouseGlazedBay[]; balconies: {storey: number; bay: number}[]; storeyHeights: number[]; groundBase: number; doorLeft: number | null; doorWidth: number; shopSpans: [number, number][]; shopGlass: [number, number] | null }
+
+/** Shopfront proportions: pier width, stall riser top, fascia depth below the ground-storey top. */
+const SHOP = {pierM: 0.3, glassBottomM: 0.55, fasciaM: 0.62, fasciaGapM: 0.08};
 
 /** Regular bay grid fitted to width/height. `heightTop` is where full storeys end. */
 function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
@@ -71,8 +80,10 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
   const unit = (heightTop - basement) / factors.reduce((s, x) => s + x, 0);
   const heights = factors.map(x => x * unit);
   const bays = Array.isArray(f.bays) ? f.bays : Array(n).fill(f.bays);
-  const bars = WINDOW_BARS[f.windows], head = f.windows === 'arched' ? {head: 'segmental' as const, headRiseM: 0.18} : {};
-  const openings: CanalhouseOpening[] = [];
+  const bars = WINDOW_BARS[f.windows], segmental = f.windows === 'arched' ? {head: 'segmental' as const, headRiseM: 0.18, headSegments: 4} : {};
+  // Round-arched storeys: a semicircular head (rise = half the width).
+  const headFor = (s: number, w: number) => f.archedStoreys?.includes(s) ? {head: 'segmental' as const, headRiseM: Math.floor(w / 2 * 1000) / 1000, headSegments: 6} : segmental;
+  const openings: CanalhouseOpening[] = [], glazedBays: CanalhouseGlazedBay[] = [], balconies: Layout['balconies'] = [];
   const doorWidth = clamp(width * 0.2, 0.95, 1.4);
   let doorLeft: number | null = null;
   let y = basement;
@@ -91,16 +102,39 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
         continue;
       }
       if (s === 0 && f.shopfront) continue;
-      openings.push({id: `s${s}-b${b}`, kind: 'window', leftM: centre - winW / 2, bottomM: y + sill, widthM: winW, heightM: winH, trimWidthM: 0.07, ...bars, ...(s > 0 ? head : {}), frameSurface: 'trim', barSurface: 'trim'});
+      if (f.bayWindows?.bay === b && f.bayWindows.storeys.includes(s)) {
+        const bw = clamp(pitch * 1.05, 1.3, 2.7), bh = h * 0.74;
+        glazedBays.push({id: `bay-s${s}-b${b}`, leftM: centre - bw / 2, bottomM: y + h * 0.12, widthM: bw, heightM: bh, depthM: 0.55, frontWidthM: bw * 0.72, lowerPanelM: 0.28, upperPanelM: 0.22, frameWidthM: 0.05, frameDepthM: 0.06, glassDepthM: 0.02, verticalBars: [.5], horizontalBars: [.3]});
+        continue;
+      }
+      const balcony = f.balconies?.storeys.includes(s) && f.balconies.bays.includes(b);
+      if (balcony) {
+        balconies.push({storey: s, bay: b});
+        openings.push({id: `s${s}-b${b}`, kind: 'window', leftM: centre - winW / 2, bottomM: y + 0.04, widthM: winW, heightM: Math.min(h - 0.2, winH + sill - 0.04), trimWidthM: 0.07, ...bars, ...segmental, frameSurface: 'trim', barSurface: 'trim'});
+        continue;
+      }
+      const head = s > 0 || f.archedStoreys?.includes(s) ? headFor(s, winW) : {};
+      // A round head needs height for its arch above the sash rail.
+      const h2 = 'headRiseM' in head && head.headRiseM! > 0.3 ? Math.min(h - 0.25, Math.max(winH, head.headRiseM! / 0.42)) : winH;
+      openings.push({id: `s${s}-b${b}`, kind: 'window', leftM: centre - winW / 2, bottomM: y + Math.min(sill, h - 0.12 - h2), widthM: winW, heightM: h2, trimWidthM: 0.07, ...bars, ...head, frameSurface: 'trim', barSurface: 'trim'});
     }
     y += h;
   }
-  // Shopfront: glazing across the ground storey, around the door.
+  // Shopfront: piers at both ends, a stall riser, framed glazing with a transom and
+  // mullions, and (with a fascia) a sign band above, all in the shopfront paint.
+  const shopSpans: [number, number][] = [];
+  let shopGlass: [number, number] | null = null;
   if (f.shopfront) {
-    const h = heights[0], left = 0.25, right = width - 0.25, spans: [number, number][] = [];
-    if (doorLeft === null) spans.push([left, right]);
-    else { if (doorLeft - 0.1 - left > 0.6) spans.push([left, doorLeft - 0.1]); if (right - (doorLeft + doorWidth + 0.1) > 0.6) spans.push([doorLeft + doorWidth + 0.1, right]); }
-    spans.forEach(([a, b], i) => openings.push({id: `shop-${i}`, kind: 'window', leftM: a, bottomM: basement + 0.35, widthM: b - a, heightM: h * 0.72, trimWidthM: 0.09, verticalBars: (b - a) > 2.4 ? [.5] : [], frameSurface: 'door', barSurface: 'door'}));
+    const h = heights[0], left = SHOP.pierM + 0.02, right = width - SHOP.pierM - 0.02;
+    if (doorLeft === null) shopSpans.push([left, right]);
+    else { if (doorLeft - 0.1 - left > 0.6) shopSpans.push([left, doorLeft - 0.1]); if (right - (doorLeft + doorWidth + 0.1) > 0.6) shopSpans.push([doorLeft + doorWidth + 0.1, right]); }
+    const bottom = basement + SHOP.glassBottomM, top = basement + h - (f.shopfront.fascia ? SHOP.fasciaM + SHOP.fasciaGapM + 0.04 : 0.3);
+    shopGlass = [bottom, top];
+    shopSpans.forEach(([a, b], i) => {
+      const w = b - a, mullions = Math.max(0, Math.round(w / 1.6) - 1), glassH = top - bottom;
+      openings.push({id: `shop-${i}`, kind: 'window', leftM: a, bottomM: bottom, widthM: w, heightM: glassH, trimWidthM: 0.08,
+        verticalBars: Array.from({length: mullions}, (_, k) => round((k + 1) / (mullions + 1), 4)), horizontalBars: glassH > 1.9 ? [0.8] : [], frameSurface: 'shop', barSurface: 'shop'} as CanalhouseOpening);
+    });
   }
   // Basement lights below the ground-storey windows, away from the stoop.
   if (f.basement === 'windows' || f.basement === 'stoop-and-windows') {
@@ -111,7 +145,15 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
       openings.push({id: `basement-b${b}`, kind: 'window', leftM: centre - w / 2, bottomM: 0.12, widthM: w, heightM: Math.max(0.35, basement - 0.3), trimWidthM: 0.05, verticalBars: [.5], frameSurface: 'trim', barSurface: 'trim'});
     }
   }
-  return {openings, storeyHeights: [basement, ...heights].filter(h => h > 0).map(h => round(h)), groundBase: basement, doorLeft, doorWidth};
+  return {openings, glazedBays, balconies, storeyHeights: [basement, ...heights].filter(h => h > 0).map(h => round(h)), groundBase: basement, doorLeft, doorWidth, shopSpans, shopGlass};
+}
+
+/** A voussoir ring over a segmental/round head: outer arc left to right, inner arc back. */
+function archRing(left: number, top: number, w: number, rise: number, ringM: number): CanalhousePoint[] {
+  const radius = w * w / (8 * rise) + rise / 2, cx = left + w / 2, cy = top - radius;
+  const start = Math.asin(clamp((top - rise - cy) / radius, -1, 1)), n = rise < w * 0.3 ? 3 : 4;
+  const arc = (r: number) => Array.from({length: n + 1}, (_, i) => { const a = Math.PI - start - (Math.PI - 2 * start) * i / n; return [round(cx + r * Math.cos(a), 4), round(cy + r * Math.sin(a), 4)] as CanalhousePoint; });
+  return [...arc(radius + ringM), ...arc(radius + 0.005).reverse()];
 }
 
 function crownProfile(f: FrontIntent, width: number, eaves: number, top: number): CanalhousePoint[] | null {
@@ -124,15 +166,20 @@ function crownProfile(f: FrontIntent, width: number, eaves: number, top: number)
     case 'neck': case 'raised-neck': return canalhouseCrownProfile('hals', width, eaves, top, width * 0.5, eaves + rise * (f.gable === 'neck' ? 0.45 : 0.25), 0, {cap: f.crownCap ?? 'pediment', capRiseM: Math.min(0.45, rise * 0.1), crestWidthM: width * 0.5, shoulderCurve: 0.6});
     case 'bell': return canalhouseCrownProfile('klok', width, eaves, top, width * 0.46, eaves + rise * 0.55, 0, {cap: f.crownCap ?? 'rounded', capRiseM: Math.min(0.6, rise * 0.15), crestWidthM: width * 0.46});
     case 'cornice': {
-      if (f.crownCap && f.crownCap !== 'flat') return canalhouseCrownProfile('lijst', width, eaves, top, width * 0.3, eaves, 0, {cap: f.crownCap, capRiseM: Math.min(0.7, rise), crestWidthM: width * 0.3});
+      if (f.crownCap && f.crownCap !== 'flat') {
+        // Wide: a parapet over nearly the whole front with the cap across it (1900s fronts, 081118/087959).
+        const neck = f.crownCapSpan === 'wide' ? width * 0.94 : width * 0.3, crest = f.crownCapSpan === 'wide' ? width * 0.86 : width * 0.3;
+        return canalhouseCrownProfile('lijst', width, eaves, top, neck, eaves, 0, {cap: f.crownCap, capRiseM: Math.min(f.crownCapSpan === 'wide' ? 0.8 : 0.7, rise), crestWidthM: crest});
+      }
       return null;
     }
   }
   return null;
 }
 
-export function fitIntent(intent: CanalHouseIntent, facts: BuildingFacts): {recipe: CanalHouseRecipe; anchorRD: [number, number]; report: FitReport} {
-  if (intent.pandId !== facts.pandId) throw Error('Intent and facts describe different Pand');
+export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts): {recipe: CanalHouseRecipe; anchorRD: [number, number]; report: FitReport; facts: BuildingFacts} {
+  if (intent.pandId !== surveyFacts.pandId) throw Error('Intent and facts describe different Pand');
+  const cleanup = cleanRoof(surveyFacts, {horizontalFronts: intent.fronts.filter(f => f.gable === 'cornice' || f.gable === 'flat').map(f => f.street)}), facts = cleanup.facts;
   const warnings: string[] = [];
   const bagObservation: Observation = {id: '3dbag', pandId: intent.pandId, kind: 'registry-record', elevation: 'roof', capturedAt: facts.source.fetchedAt.length === 10 ? facts.source.fetchedAt : '2025-01-01', sourceUrl: facts.source.threeDBag, license: 'CC BY 4.0 (3DBAG)'};
   const photoObservations: Observation[] = intent.sources.map(s => ({id: s.id, pandId: intent.pandId, kind: s.kind === 'monument-record' ? 'monument-record' : s.kind === 'archive-photo' ? 'archive-photo' : s.kind === 'human-review' ? 'human-review' : 'street-panorama', elevation: 'front', capturedAt: s.capturedAt, sourceUrl: s.url ?? null, license: s.license ?? null}));
@@ -204,6 +251,7 @@ export function fitIntent(intent: CanalHouseIntent, facts: BuildingFacts): {reci
     const corniceH = {none: 0, simple: 0.35, bracketed: 0.55, heavy: 0.8}[front.cornice];
     const layout = layoutFront(front, mw, eaves - (gabled ? 0.2 : corniceH + 0.15));
     const moduleOpenings = Array.from({length: count}, (_, k) => layout.openings.map(o => ({...o, id: count > 1 ? `${o.id}-m${k}` : o.id, leftM: place(k, o.leftM, o.widthM)}))).flat();
+    let lintelBands: NonNullable<CanalhouseElevation['bands']>['value'] = [];
     const flipX = (x: number, w: number) => mirrored ? width - x - w : x;
     const flip = (o: CanalhouseOpening): CanalhouseOpening => ({...o, leftM: flipX(o.leftM, o.widthM)});
     const elevation: CanalhouseElevation = {
@@ -212,6 +260,37 @@ export function fitIntent(intent: CanalHouseIntent, facts: BuildingFacts): {reci
       openings: seen(moduleOpenings.map(flip).map(o => pieces.length > 1 ? {...o, id: `${front.id}-${o.id}`} : o)),
       ...(front.palette ? {palette: seen(paletteFor(intent, front))} : {}),
     };
+    // Relieving arches over arched heads: a brick-on-edge ring (band brick or stone dressing).
+    const ringSurface = front.archRings === 'none' ? null : front.archRings === 'stone' ? 'stone' as const : front.archRings === 'band' || (front.palette?.band ?? intent.palette.band) ? 'accent' as const : 'stone' as const;
+    if (ringSurface) {
+      const rings = elevation.openings.value.filter(o => o.head === 'segmental' && o.headRiseM && !o.id.includes('shop')).map(o => ({id: `arch-${o.id}`, profile: archRing(o.leftM, o.bottomM + o.heightM, o.widthM, o.headRiseM!, 0.13), depthM: 0.03, fill: ringSurface}));
+      if (rings.length) elevation.ornaments = seen(rings);
+    }
+    // Bay windows, balcony guards and masonry courses (street-house features).
+    const idFor = (k: number, base: string) => `${pieces.length > 1 ? `${front.id}-` : ''}${base}${count > 1 ? `-m${k}` : ''}`;
+    if (layout.glazedBays.length) elevation.glazedBays = seen(Array.from({length: count}, (_, k) => layout.glazedBays.map(g => ({...g, id: idFor(k, g.id), leftM: round(flipX(place(k, g.leftM!, g.widthM), g.widthM))}))).flat());
+    if (layout.balconies.length) {
+      const projecting = !!front.balconies?.projecting;
+      elevation.balconies = seen(Array.from({length: count}, (_, k) => layout.balconies.map(b => {
+        const opening = moduleOpenings.find(o => o.id === `${count > 1 ? '' : ''}s${b.storey}-b${b.bay}${count > 1 ? `-m${k}` : ''}`)!;
+        return {id: idFor(k, `rail-s${b.storey}-b${b.bay}`), openingId: pieces.length > 1 ? `${front.id}-${opening.id}` : opening.id, heightM: 0.9, depthM: projecting ? 0.6 : 0.12, barWidthM: 0.02, posts: projecting ? 9 : 7, ...(projecting ? {projection: {widthM: round(opening.widthM + 0.5), slabThicknessM: 0.12, pierWidthM: 0.06}} : {})};
+      })).flat());
+    }
+    const bandBrick = !!(front.palette?.band ?? intent.palette.band);
+    if (front.bands && front.bands !== 'none') {
+      const bottoms: number[] = []; let acc = layout.groundBase;
+      for (const h of layout.storeyHeights.slice(layout.groundBase > 0 ? 1 : 0)) { bottoms.push(acc); acc += h; }
+      const courses: NonNullable<CanalhouseElevation['bands']>['value'] = [];
+      bottoms.forEach((bottom, s) => {
+        if (s === 0) return;
+        if (front.bands === 'storey' || front.bands === 'both') courses.push({id: `course-s${s}`, leftM: 0, bottomM: round(bottom - 0.06), widthM: Math.floor(width * 1000) / 1000, heightM: 0.12, depthM: 0.04, surface: 'stone'});
+        // With a band brick in the palette, lintel courses are stripes of that brick (two-colour banding), not stone.
+        if (front.bands === 'lintel' || front.bands === 'both') courses.push(bandBrick
+          ? {id: `lintel-s${s}`, leftM: 0, bottomM: round(bottom + layout.storeyHeights[s + (layout.groundBase > 0 ? 1 : 0)] * 0.8), widthM: Math.floor(width * 1000) / 1000, heightM: 0.26, depthM: 0.02, surface: 'accent'}
+          : {id: `lintel-s${s}`, leftM: 0, bottomM: round(bottom + layout.storeyHeights[s + (layout.groundBase > 0 ? 1 : 0)] * 0.84), widthM: Math.floor(width * 1000) / 1000, heightM: 0.1, depthM: 0.035, surface: 'stone'});
+      });
+      lintelBands = courses;
+    }
     if (corniceH > 0) elevation.cornice = seen({bottomM: round(eaves - corniceH), heightM: corniceH, depthM: round(corniceH * 0.5), brackets: front.cornice === 'bracketed' ? Math.max(2, Math.round(width / 1.6)) : 0});
     // Non-straight frontages need an explicit wall top (the library only reads
     // roof edges lying on the chord); a flat crown at the eaves supplies it.
@@ -243,10 +322,19 @@ export function fitIntent(intent: CanalHouseIntent, facts: BuildingFacts): {reci
     elevation.bands = seen([{id: 'plinth', leftM: 0, bottomM: 0, widthM: Math.floor(width * 1000) / 1000, heightM: round(plinth), depthM: 0.06, surface: 'stone'}]);
     // A front with its own palette gets a thin masonry facing: the shell and
     // roof closures behind it are shared by the whole owner and keep the main colour.
+    elevation.bands.value.push(...lintelBands);
     if (front.palette?.brick) elevation.bands.value.push({id: 'facing', leftM: 0, bottomM: round(plinth), widthM: Math.floor(width * 1000) / 1000, heightM: round(eaves - plinth - 0.02), depthM: 0.03, surface: 'wall'});
-    if (front.shopfront?.fascia) {
-      const top = layout.groundBase + layout.storeyHeights[layout.groundBase > 0 ? 1 : 0];
-      elevation.bands.value.push({id: 'fascia', leftM: 0, bottomM: round(top - 0.45), widthM: Math.floor(width * 1000) / 1000, heightM: 0.4, depthM: 0.08, surface: 'trim'});
+    if (front.shopfront && layout.shopGlass) {
+      const top = layout.groundBase + layout.storeyHeights[layout.groundBase > 0 ? 1 : 0], full = Math.floor(width * 1000) / 1000;
+      // Piers and stall riser in the shopfront paint; the sign band carries a pale lettering panel.
+      const blocks = [{id: 'shop-pier-left', leftM: 0, bottomM: round(plinth), widthM: SHOP.pierM, heightM: round(top - plinth - 0.02), depthM: 0.1, surface: 'shop' as const},
+        {id: 'shop-pier-right', leftM: round(width - SHOP.pierM - 0.001), bottomM: round(plinth), widthM: SHOP.pierM, heightM: round(top - plinth - 0.02), depthM: 0.1, surface: 'shop' as const}];
+      elevation.blocks = seen([...(elevation.blocks?.value ?? []), ...blocks]);
+      elevation.bands.value.push({id: 'shop-riser', leftM: 0, bottomM: round(plinth), widthM: full, heightM: round(layout.shopGlass[0] - plinth - 0.01), depthM: 0.05, surface: 'shop'});
+      if (front.shopfront.fascia) {
+        elevation.bands.value.push({id: 'fascia', leftM: 0, bottomM: round(top - SHOP.fasciaM - SHOP.fasciaGapM), widthM: full, heightM: SHOP.fasciaM, depthM: 0.12, surface: 'shop'});
+        elevation.bands.value.push({id: 'fascia-lettering', leftM: round(width * 0.2), bottomM: round(top - SHOP.fasciaGapM - SHOP.fasciaM / 2 - 0.12), widthM: round(width * 0.6), heightM: 0.24, depthM: 0.135, surface: 'trim'});
+      }
     }
     mainEaves = Math.min(mainEaves, eaves);
     elevation.bodyEavesM = surveyed(round(eaves));
@@ -261,10 +349,12 @@ export function fitIntent(intent: CanalHouseIntent, facts: BuildingFacts): {reci
     roof: surveyed(survey.roof), elevations,
     simplifications: ['Facade metres fitted from intent counts and 3DBAG heights by fixed proportion rules; not rectified from photos.', ...warnings],
   };
-  return {recipe, anchorRD: anchor, report: {fronts: reports, warnings}};
+  return {recipe, anchorRD: anchor, facts, report: {fronts: reports, warnings, roofAllowanceM: intent.fronts.some(f => f.dormers) ? 1.9 : 0, ...(cleanup.report.actions.length ? {roofCleanup: cleanup.report} : {})}};
 }
 
 export function paletteFor(intent: CanalHouseIntent, front?: FrontIntent) {
   const p = {...intent.palette, ...(front?.palette ?? {})}, roof = ROOF_COLOURS[intent.roof.material];
-  return {wall: swatch(p.brick), roof: roof.steep, trim: swatch(p.frame), glass: GLASS, door: swatch(p.door), stone: swatch(p.stone ?? 'sandstone'), joinery: swatch(p.frame)};
+  const shop = (front ?? intent.fronts.find(f => f.shopfront))?.shopfront?.colour;
+  return {wall: swatch(p.brick), roof: roof.steep, trim: swatch(p.frame), glass: GLASS, door: swatch(p.door), stone: swatch(p.stone ?? 'sandstone'), joinery: swatch(p.frame),
+    ...(p.band ? {accent: swatch(p.band)} : {}), ...(shop ? {shop: swatch(shop)} : {})};
 }

@@ -1,0 +1,56 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "bilder-156287",
+ "pandId": "0363100012156287",
+ "address": "Bilderdijkstraat (1903 orange brick, stepped gable, balconies)",
+ "sources": [
+  {
+   "id": "pano-2024-11-29",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-29",
+   "image": "staging/pand-reference/0363100012156287/front-alt.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "fronts": [
+  {
+   "id": "front0",
+   "street": "Bilderdijkstraat",
+   "hoist": false,
+   "windows": "sash",
+   "basement": "none",
+   "cornice": "simple",
+   "gable": "step",
+   "storeys": 5,
+   "bays": 3,
+   "atticWindows": 2,
+   "doorBay": 2,
+   "shopfront": {
+    "colour": "dark-red",
+    "fascia": true
+   },
+   "balconies": {
+    "storeys": [
+     1,
+     2,
+     3
+    ],
+    "bays": [
+     1
+    ]
+   },
+   "bands": "both"
+  }
+ ],
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "orange-brick",
+  "frame": "dark-green",
+  "door": "dark-green",
+  "stone": "sandstone"
+ },
+ "notes": []
+}

@@ -33,6 +33,15 @@ export function metreBoxUvs(positions: ArrayLike<number>): number[] {
   }
   return uv;
 }
+/** Per-mesh 0..1 UVs: u along the wider horizontal extent, v up. */
+export function paneUvs(positions: ArrayLike<number>): number[] {
+  const min = [Infinity, Infinity, Infinity], max = [-Infinity, -Infinity, -Infinity];
+  for (let i = 0; i < positions.length; i++) { min[i % 3] = Math.min(min[i % 3], positions[i]); max[i % 3] = Math.max(max[i % 3], positions[i]); }
+  const axis = max[0] - min[0] >= max[2] - min[2] ? 0 : 2, w = Math.max(1e-6, max[axis] - min[axis]), h = Math.max(1e-6, max[1] - min[1]);
+  const uv: number[] = [];
+  for (let i = 0; i < positions.length; i += 3) uv.push((positions[i + axis] - min[axis]) / w, (positions[i + 1] - min[1]) / h);
+  return uv;
+}
 export interface CanalhouseGlb { bytes: Uint8Array; triangles: number; materials: number }
 
 /** Bucket every mesh by colour, bake world transforms, and write one-mesh GLB bytes. */
@@ -61,7 +70,14 @@ export async function canalhouseGroupToGlb(id: string, group: T.Object3D, option
     }
     if (!geometry.getAttribute('normal')) geometry.computeVertexNormals();
     if (preset) bucket.uvs.push(...Array.from(canalhouseRoofUvs(geometry, canalhouseRoofMaterialPresets[preset].widthM).array));
-    else if (options.metreUvs) bucket.uvs.push(...metreBoxUvs(geometry.getAttribute('position').array));
+    else if (options.metreUvs) {
+      const positions = geometry.getAttribute('position').array;
+      // Glass: 0..1 per pane so the shared pane texture (gradient + reflection) spans each window;
+      // roofs: eave/down-slope metres so tile courses run along the eaves on every slope.
+      if (slot === 'glass') bucket.uvs.push(...paneUvs(positions));
+      else if (surface === 'roof') bucket.uvs.push(...Array.from(canalhouseRoofUvs(geometry, 1).array));
+      else bucket.uvs.push(...metreBoxUvs(positions));
+    }
     bucket.positions.push(...Array.from(geometry.getAttribute('position').array));
     bucket.normals.push(...Array.from(geometry.getAttribute('normal').array)); geometry.dispose();
   });

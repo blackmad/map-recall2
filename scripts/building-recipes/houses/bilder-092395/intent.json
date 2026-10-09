@@ -1,0 +1,16 @@
+{
+ "sameAs": "bilder-092394",
+ "id": "bilder-092395",
+ "pandId": "0363100012092395",
+ "address": "Bilderdijkstraat (twin of 092394)",
+ "sources": [
+  {
+   "id": "pano-2019-12-09",
+   "kind": "street-panorama",
+   "capturedAt": "2019-12-09",
+   "image": "staging/pand-reference/0363100012092395/front.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "overrides": {}
+}

@@ -111,7 +111,10 @@ export function evaluateGates(tris: Tri[], facts: BuildingFacts, fit: FitReport,
   // Roof surfaces only: exact 3DBAG planes, so the max must match the survey.
   const roofY = tris.filter(t => t.surface === 'roof').flatMap(t => [t.a[1], t.b[1], t.c[1]]);
   const roofMax = Math.max(...roofY);
-  g('ridge-vs-3dbag', Math.abs(roofMax - facts.heights.roofMaxM) <= 0.3, {modelM: +roofMax.toFixed(2), threeDBagM: +facts.heights.roofMaxM.toFixed(2)}, '|Δ| <= 0.30 m (roof max vs LoD2.2 roof max)');
+  const cleanup = fit.roofCleanup;
+  g('ridge-vs-3dbag', roofMax - facts.heights.roofMaxM <= 0.3 + (fit.roofAllowanceM ?? 0) && facts.heights.roofMaxM - roofMax <= 0.3, {modelM: +roofMax.toFixed(2), threeDBagM: +facts.heights.roofMaxM.toFixed(2), ...(cleanup ? {surveyM: cleanup.surveyRoofMaxM, cleanup: cleanup.actions.map(a => `${a.kind} ${a.fromTopM}->${a.toTopM} m`)} : {})}, '|Δ| <= 0.30 m (roof max vs LoD2.2 roof max after roofCleanup.ts artefact removal); declared dormers may stand 1.9 m above it (LoD2.2 has none)');
+  // Clean-up removes artefacts, never the roof: at most a quarter of the surveyed roof area may be clamped.
+  if (cleanup) g('roof-cleanup', cleanup.removedAreaM2 <= cleanup.roofAreaM2 * 0.25, {removedM2: cleanup.removedAreaM2, roofM2: cleanup.roofAreaM2, actions: cleanup.actions.length}, 'clamped artefact area <= 25% of the LoD2.2 roof');
   for (const f of fit.fronts) {
     const ff = facts.fronts.find(x => Math.abs(x.widthM - f.widthM) < 0.05) ?? facts.fronts[0];
     g(`eaves-vs-3dbag/${f.id}`, Math.abs(f.eavesM - ff.eavesM) <= 0.3 || fit.fronts.length > 1, {modelM: f.eavesM, threeDBagM: +ff.eavesM.toFixed(2)}, '|Δ| <= 0.30 m');

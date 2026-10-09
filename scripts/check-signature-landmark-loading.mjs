@@ -1,9 +1,11 @@
 import assert from 'node:assert/strict';
 import * as THREE from 'three';
+import {SharedAssetCache} from '../src/canalRecall/landmarks/sharedAssetCache.ts';
 const requests=[];
-class Loader {setMeshoptDecoder(){}load(url,done,_progress,fail){requests.push({url,done,fail});}}
+const asyncRequests=[];
+class Loader {setMeshoptDecoder(){}load(url,done,_progress,fail){requests.push({url,done,fail});}loadAsync(url){return new Promise((resolve,reject)=>asyncRequests.push({url,resolve,reject}));}}
 class Renderer {dispose(){this.disposed=true;}}
-globalThis.window={location:{href:'http://localhost/canal-drive/'},CanalRecallThree:{THREE:{...THREE,WebGLRenderer:Renderer},GLTFLoader:Loader},CanalRecallSignatureLandmarks:{SIGNATURE_MODELS:[],placementFor:spec=>{if(spec.failPlacement)throw Error('Bad placement');return {anchor:spec.surveyed?.anchor||spec.footprint.centre,altitudeMetres:0,scale:1,modelRotationDegrees:0};},basemapBuildingFilter:ids=>ids}};
+globalThis.window={location:{href:'http://localhost/canal-drive/'},CanalRecallThree:{THREE:{...THREE,WebGLRenderer:Renderer},GLTFLoader:Loader},CanalRecallSignatureLandmarks:{SharedAssetCache,SIGNATURE_MODELS:[],placementFor:spec=>{if(spec.failPlacement)throw Error('Bad placement');return {anchor:spec.surveyed?.anchor||spec.footprint.centre,altitudeMetres:0,scale:1,modelRotationDegrees:0,...(spec.mirror?{mirror:true}:{})};},basemapBuildingFilter:ids=>ids}};
 const {SignatureLandmarks}=await import('../public/canal-drive/js/signature-landmarks-source.js');
 let lng=4.9;
 const listeners=new Map(),filters=[],callbacks=[];
@@ -40,4 +42,26 @@ console.warn=()=>{};
 requests[0].done({scene:imported()});requests[1].done({scene:imported()});console.warn=warn;
 assert.equal(broken.describe().length,0,'failed insertion is rolled back');assert.equal(broken.shown.size,0);assert.deepEqual(broken.shownSuppressOsmIds(),[]);assert.deepEqual(filters.at(-1),[],'failed placement and host callbacks restore extrusion');
 broken.layer.onRemove(map);
+// Shared meshes (recipe-pipeline houses): one decode per URL, a clone per instance, mirror flips X, resources freed with the last instance.
+{
+  const shared=(id,x,mirror)=>({...spec(id,x),modelUrl:'./models/ordinary-buildings/recipe-shared.glb',sharedModel:true,...(mirror?{mirror:true}:{})});
+  const group=new THREE.Group().add(new THREE.Mesh(new THREE.BoxGeometry(1,1,1),new THREE.MeshStandardMaterial()));
+  let geometryDisposed=0;group.children[0].geometry.addEventListener('dispose',()=>geometryDisposed++);
+  const instanced=new SignatureLandmarks(map,projection,{models:[shared('s1',4.9),shared('s2',4.9005,true)],loadVisibleOnly:true});
+  assert.equal(asyncRequests.length,1,'two instances of one shared GLB decode it once');
+  asyncRequests[0].resolve({scene:group});
+  await new Promise(resolve=>setTimeout(resolve,0));
+  assert.equal(instanced.shown.size,2,'both instances are placed from the one decode');
+  assert.equal(instanced._sharedAssets.size,1);
+  const entries=instanced._entries;
+  assert.equal(entries[0].group.scale.x>0,true,'plain instance keeps handedness');
+  assert.equal(entries[1].group.scale.x<0,true,'mirrored instance negates X so three.js flips triangle winding');
+  assert.notEqual(entries[0].group.children[0],entries[1].group.children[0],'each instance has its own scene graph');
+  assert.equal(entries[0].group.children[0].children[0].geometry,entries[1].group.children[0].children[0].geometry,'instances share geometry');
+  instanced._disposeModel(entries[0].group,entries[0].spec,entries[0].url);
+  assert.equal(geometryDisposed,0,'shared geometry survives while another instance uses it');
+  instanced._disposeModel(entries[1].group,entries[1].spec,entries[1].url);
+  assert.equal(geometryDisposed,1,'the last instance frees the shared geometry');
+  instanced._entries=[];instanced.layer.onRemove(map);
+}
 console.log('Passed: opt-in nearby loading, footprint extent, two concurrent loads, no duplicate/failure loops, loaded-only suppression, toggles, late disposal and eager demos.');
