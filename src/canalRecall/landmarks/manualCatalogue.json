@@ -10746,5 +10746,303 @@
     "licenceUrl": "./LICENSE",
     "modifications": "Original texture-free native BAG brick pavilion, coach-house wings, truncated grey hip roofs, rear polygonal projection, pale rococo surrounds, balustrade, dormers and entrance steps. No imported meshes or photo pixels."
   }
-}
+},
+  {
+    "id": "uilenburger-synagoge",
+    "name": "Uilenburger Synagoge",
+    "landmarkId": "extract_landmarks_452804039",
+    "modelUrl": "./models/uilenburger-synagoge.glb",
+    "suppressOsmIds": [
+      "w268782551",
+      "NL.IMBAG.Pand.0363100012181889"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.905340304026372,
+        52.370175529685945
+      ],
+      "headingDegrees": 145.64791589490176,
+      "lengthMetres": 22.2,
+      "widthMetres": 11.6
+    },
+    "surveyed": {
+      "anchor": [
+        4.905340304026372,
+        52.370175529685945
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Current municipal BAG address/VBO parent0363100012181889 and OSMw268782551; native east/south, scale1. AHN5 2023 semantic roof polygons inform original four-plane mansard roof. Front faces northwest into open forecourt; rear southeast faces canal. BAG geometry/status/year under investigation recorded, not silently omitted."
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "materialOverrides": {
+      "brick": "#685449",
+      "stone": "#b5ac94",
+      "white": "#e4e1cd",
+      "glass": "#657c7e",
+      "slate": "#665f58",
+      "dark": "#202f39",
+      "frame": "#9ba19c",
+      "greyBrick": "#7f8583"
+    },
+    "attribution": {
+      "title": "Uilenburger Synagoge",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.uilenburgersjoel.nl/the-uilenburger-synagogue/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free surveyed synagogue with bell gable, three oculi, white subdivided arched windows, stone doorcase, contrasting rendered rear and surveyed steep-lower/shallow-upper mansard. No downloaded mesh or photo textures."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.905178516607106,
+            52.370227202067795
+          ],
+          [
+            4.905364141030403,
+            52.37006552279786
+          ],
+          [
+            4.905404987289694,
+            52.37008341277186
+          ],
+          [
+            4.905409375114112,
+            52.37007959287597
+          ],
+          [
+            4.905465639375633,
+            52.37010422343142
+          ],
+          [
+            4.905461222285348,
+            52.370108034222596
+          ],
+          [
+            4.9055020688181985,
+            52.370125906188434
+          ],
+          [
+            4.905317333199509,
+            52.37028554009238
+          ],
+          [
+            4.905178516607106,
+            52.370227202067795
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "id": "nieuwendammerkerk",
+    "name": "Nieuwendammerkerk",
+    "landmarkId": "extract_landmarks_767085118",
+    "modelUrl": "./models/nieuwendammerkerk.glb",
+    "suppressOsmIds": [
+      "w280804509",
+      "NL.IMBAG.Pand.0363100012144206"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.940649007575467,
+        52.391768552805786
+      ],
+      "headingDegrees": 90,
+      "lengthMetres": 25,
+      "widthMetres": 12.7
+    },
+    "surveyed": {
+      "anchor": [
+        4.940649007575467,
+        52.391768552805786
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Current BAG 0363100012144206 polygon; geometry baked east/south in native metres. AHN5 2023 + 2025 Amsterdam panoramas; adjacent Kosterij retained."
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "materialOverrides": {
+      "brick": "#835744",
+      "ochre": "#b4a376",
+      "stone": "#b8b7a4",
+      "red": "#6b665c",
+      "slate": "#41494c",
+      "white": "#e9e4cd",
+      "green": "#284d43",
+      "frame": "#444c47",
+      "glass": "#6c8d96",
+      "dark": "#263438",
+      "gold": "#c3aa59"
+    },
+    "attribution": {
+      "title": "Nieuwendammerkerk",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/508536",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native-scale hall church, red tiled gable roof, paired iron-divided arched windows, peaked tower cornices, octagonal slate needle. No copied photo pixels or imported geometry."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.94096383774248,
+            52.39180424739721
+          ],
+          [
+            4.940689188312039,
+            52.39181944404881
+          ],
+          [
+            4.9406848090039235,
+            52.39178895941695
+          ],
+          [
+            4.940619238124669,
+            52.391792487022826
+          ],
+          [
+            4.9406179269107895,
+            52.39178264959333
+          ],
+          [
+            4.940614452631805,
+            52.39175712056433
+          ],
+          [
+            4.940613206179585,
+            52.39174814619301
+          ],
+          [
+            4.94067877699369,
+            52.39174461859037
+          ],
+          [
+            4.940674823623717,
+            52.39171414455102
+          ],
+          [
+            4.940948309713886,
+            52.39169915925469
+          ],
+          [
+            4.9409524357736565,
+            52.39172709043104
+          ],
+          [
+            4.940965679470506,
+            52.39172635840093
+          ],
+          [
+            4.940972955289465,
+            52.39177559317806
+          ],
+          [
+            4.940959711578018,
+            52.391776325208966
+          ],
+          [
+            4.94096383774248,
+            52.39180424739721
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "id": "meerpadkerk",
+    "name": "Meerpadkerk",
+    "landmarkId": "extract_landmarks_1566771183",
+    "modelUrl": "./models/meerpadkerk.glb",
+    "suppressOsmIds": [
+      "w280806252",
+      "NL.IMBAG.Pand.0363100012162810"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.934087,
+        52.392235
+      ],
+      "headingDegrees": 90,
+      "lengthMetres": 17.09306855713878,
+      "widthMetres": 9.714956039825182
+    },
+    "surveyed": {
+      "anchor": [
+        4.934087,
+        52.392235
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Meerpad 9 VBO 0363010000740655 proves BAG parent 0363100012162810. Exact current BAG hall/rear annex ring; local east/south metres, AHN5 2023 gabled main roof and lower flat annex. Entrance faces ENE toward Meerpad. Separate 9A/9B retained."
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "materialOverrides": {
+      "white": "#eeeade",
+      "dark": "#253731",
+      "glass": "#839390",
+      "frame": "#b7b4a5",
+      "slate": "#645e55",
+      "concrete": "#9b9e94"
+    },
+    "attribution": {
+      "title": "Meerpadkerk",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.doopsgezindamsterdam.nl/historie/meerpadkerk/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native-scale timber hall church, arched fanlight windows, horizontal white boards, profiled pediment/entry and gray tiled gable roof. Surveyed BAG parent includes lower rear annex. Separate 9A/9B retained. Photo-guided joinery; no imported mesh or photograph pixels."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.934188647204744,
+            52.39228143250166
+          ],
+          [
+            4.934019995026297,
+            52.39225275487275
+          ],
+          [
+            4.934025614975,
+            52.39224047228242
+          ],
+          [
+            4.933963345858521,
+            52.39222987126463
+          ],
+          [
+            4.933978478964986,
+            52.392195236842845
+          ],
+          [
+            4.9340407480364705,
+            52.39220583785267
+          ],
+          [
+            4.934046338684712,
+            52.392193546161515
+          ],
+          [
+            4.934214961274504,
+            52.392222223640616
+          ],
+          [
+            4.934188647204744,
+            52.39228143250166
+          ]
+        ]
+      ]
+    }
+  }
 ]
