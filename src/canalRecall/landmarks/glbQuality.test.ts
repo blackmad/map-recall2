@@ -119,7 +119,7 @@ test('windows on every face leave no blank walls (protruding and recessed glazin
 test('exempt bearings (party walls) are skipped, and a very large blank face fails', () => {
   const r = analyseSoup(soup(house(), ...southWindows()), {blankWallExemptBearings: [0, 90]});
   assert.deepEqual(r.blankWalls.map(w => Math.round(w.bearingDeg)), [270]);
-  const big = analyseSoup(soup(boxQuads(0, 0, 0, 20, 10, 10)));
+  const big = analyseSoup(soup(boxQuads(0, 0, 0, 30, 25, 10)));
   assert.ok(big.findings.some(f => f.kind === 'blank-wall' && f.severity === 'fail'), JSON.stringify(big.findings));
   assert.equal(big.pass, false);
 });

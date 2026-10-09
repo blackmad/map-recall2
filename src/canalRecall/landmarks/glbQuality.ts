@@ -61,7 +61,7 @@ export interface Thresholds {
    * 2 % is roughly one window on a 50 m2 wall.
    */
   blankWallMinOpeningFraction: number;
-  /** Blank walls are only a FAIL above this area (m^2): ~a 12 x 12 m face with nothing on it. Smaller ones may be genuine party walls, so they warn. */
+  /** Blank walls are only a FAIL above this area (m^2): ~a 20 x 30 m face. The GLB cannot tell party walls from blank ones (Het Pakhuis's two side walls are 497 m2 of genuine party wall), so anything smaller only warns. */
   blankWallFailArea: number;
   /** Compass bearings (deg, clockwise from north, -Z = north) of walls known to be party / blind walls; matches within 15 deg are exempt. */
   blankWallExemptBearings: number[];
@@ -86,7 +86,7 @@ export const DEFAULT_THRESHOLDS: Thresholds = {
   blankWallMinArea: 25,
   blankWallReach: 0.5,
   blankWallMinOpeningFraction: 0.02,
-  blankWallFailArea: 150,
+  blankWallFailArea: 600,
   blankWallExemptBearings: [],
 };
 
