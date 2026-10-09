@@ -39,10 +39,13 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   every contact sheet before un-holding; run `npm run audit:glb -- --id=<id>`
   and `scripts/check-landmark-attachment.ts`.
   Gerard Dou Synagogue: side/rear walls open (audit: 7/30 see-through rays).
-- **Facade gate follow-ups (2026-10-10)**: installed models with clear misses on
-  photo | elevation sheets: Royal Palace (no central risalit/entrance arches,
-  uniform window grid), De Balie (red brick, two storeys; real front is pale
-  stone, three storeys), Concertgebouw (entrance arches modelled as rectangles).
+- **Facade gate follow-ups (2026-10-10)**: Royal Palace, De Balie and the
+  Concertgebouw entrance were reworked and installed. Still open: the Palace's
+  N and S fronts are blank (audit blank-wall FAIL, 45 x 25 m each); De Balie's
+  front is straight where the real one is bowed; Concertgebouw has 151 open
+  loops and 24/42 see-through rays from its glass promenade. Aron Schuster
+  synagogue held (brick too dark; banded rounded volumes, pale roof edges,
+  garden wall missing; rework in flight).
   Elevation skeletons with photos exist for 25 landmarks
   (`scripts/landmarks/*-elevations.json`, photos in `artifacts/landmark-lanes/`);
   counts are not filled: Haiku blind counts were too noisy — use a stronger
