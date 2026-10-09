@@ -145,10 +145,11 @@ facade, and must pass `npm run compare:facades -- --id=<id>`:
   opening however many glazing bars it has; a glazed door counts; a tall window spanning two storeys
   counts once in the band where its centre lies. `columns` counts distinct vertical window axes.
 - `symmetric` asks whether the opening pattern mirrors about the facade centre (gate: IoU ≥ 0.70).
-- `gables` counts separate gable or peak tops on the silhouette (0 for a level cornice).
+- `gables` counts separate peaks on the silhouette: gables, towers, spires and hipped-roof tops alike
+  (0 for a level cornice or flat roof).
 - Optional: `span` (metres along the facade, viewer's left to right) when two wings face the same
-  way, `depthBand` (default 4 m from the front-most plane), `openings` (material names, default
-  `glass`), `tolerance`.
+  way, `depthBand` (default 10 m from the front-most plane), `openings` (material names, default
+  `glass` and `dark`, counted only on faces turned to the viewer), `tolerance`.
 
 **Count blind.** The inventory is written from the reference photo by someone who has not seen the
 model: the integrator dispatches a small counter agent with only the photo and the counting rules.
