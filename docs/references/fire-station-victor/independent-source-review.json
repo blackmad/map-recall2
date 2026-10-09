@@ -1,0 +1,148 @@
+{
+  "modelId": "fire-station-victor",
+  "reviewedOn": "2026-10-09",
+  "reviewer": "independent Victor failure-seeking worker",
+  "status": "PASS: repaired source-supported rear facade, gallery and actual native game visual review; performance remains pending",
+  "reviewedMesh": {
+    "sha256": "f211b4f92e22c9b3d110b280832e9523ac3519de8a647de95b95cecef91363d1",
+    "triangles": 16875,
+    "bytes": 213704
+  },
+  "inputsInspected": [
+    "artifacts/landmark-offline-preview/fire-station-victor-cpu-corner.png",
+    "artifacts/landmark-offline-preview/fire-station-victor-cpu-dapperstraat.png",
+    "../map-recall2-source-data/models/fire-station-victor/raw/architecture-photo-0.webp",
+    "../map-recall2-source-data/models/fire-station-victor/raw/architecture-photo-1.webp",
+    "../map-recall2-source-data/models/fire-station-victor/raw/architecture-photo-2.webp",
+    "../map-recall2-source-data/models/fire-station-victor/raw/architecture-photo-3.webp",
+    "../map-recall2-source-data/models/fire-station-victor/raw/architecture-photo-4.webp",
+    "../map-recall2-source-data/models/fire-station-victor/raw/architecture.html",
+    "../map-recall2-source-data/models/fire-station-victor/processed/recording_2025-09-26_09-39-19_02040.jpg",
+    "../map-recall2-source-data/models/fire-station-victor/processed/recording_2025-09-26_09-39-19_01842.jpg",
+    "../map-recall2-source-data/models/fire-station-victor/processed/2025-renovation-plan-page1.png",
+    "scripts/landmarks/fire-station-victor-builder.ts",
+    "scripts/landmarks/fire-station-victor-footprints.json",
+    "docs/references/fire-station-victor/geometry-check.json",
+    "docs/references/fire-station-victor/compressed-roof-check.json"
+  ],
+  "boundedFindings": [
+    {
+      "feature": "Height and roof family",
+      "result": "pass",
+      "evidence": "Inspected ENZO VO-B-12 explicitly labels Bestaande situatie and dates 30-09-2024; visible section datums 0, 4970, 9840, 13710, 17200 and 17580 support four-storey height and steep perimeter zinc slopes around a flat central roof. CPU retains that family. A 22.4 m thin strip against the taller retained school has no corroboration in these sections or inspected current photographs; exclusion is justified rather than indiscriminate numeric fidelity."
+    },
+    {
+      "feature": "Corner/frontage recognition",
+      "result": "pass",
+      "evidence": "CPU has two vehicle arches, four tall Dapperstraat opening groups plus paired corner bay, twin corner gables, two zinc dormers per exposed street frontage, side balcony with pale consoles and irregular secondary side-window groups. Street-facing corner composition is recognizable against both photographs and current panorama projections."
+    },
+    {
+      "feature": "Current apparatus door color",
+      "result": "correction requested",
+      "evidence": "2025-09-26 02040 shows the left apparatus door solid lower panel red and right panel dark green. CPU and builder render both dark green, consistent with the older photo but differing from current evidence.",
+      "scope": "Change the left lower solid panel only if the documented latest-state policy is retained; no whole-door or building palette change needed."
+    },
+    {
+      "feature": "Minor simplification",
+      "result": "bounded acceptable",
+      "evidence": "Gable crests are square blocks rather than rounded stone caps; narrow pane bars and ceramic plaque ornament are simplified. These do not erase the defining paired-gable/balcony/arch composition in the CPU views."
+    },
+    {
+      "feature": "Rear plot and neighbors",
+      "result": "pending actual scene",
+      "evidence": "Existing sections visibly depict an open gated rear plot beyond the main building. Source footprint/build code do not add a parcel-sized enclosing slab; the CPU frontage views cannot prove rear plot access or retained school/rear-neighbor visibility."
+    },
+    {
+      "feature": "Historical source description",
+      "result": "documentation correction requested",
+      "evidence": "architecture-photo-3.webp is the 1911 Publieke Werken elevation drawing, visibly titled Het bouwen van een brandweerpost and schaal 1 a 100; it is not a photograph. The drawing independently corroborates the 4+2 frontage groups, paired gables and open rear gate, but its original apparatus doors and dormers differ from current photographic evidence. The saved architecture page supports 1911 design/rationalist style and 1912 opening; current source-date distinction should be preserved."
+    }
+  ],
+  "geometryEvidenceLimits": "Inspected reports record 228 pane probes and 41 compressed upward roof faces passing. These support geometry correctness but do not replace visual acceptance, first-hit behavior in city context, suppression/fallback, physical card selection or routing.",
+  "pending": [
+    "Gameplay performance evidence remains pending outside this visual review."
+  ],
+  "finalVisualReview": {
+    "mesh": {
+      "sha256": "8d9f0e7603d4ccfb03230404eda5d16f5bbe56af7b9cc3093cae1c66c6bcd148",
+      "triangles": 16875,
+      "bytes": 213804
+    },
+    "imagesInspected": [
+      "artifacts/firestations-review/final-teunis-victor-willem/fire-station-victor/gallery.png",
+      "artifacts/firestations-review/final-teunis-victor-willem/fire-station-victor/gallery-angle-0.png",
+      "artifacts/firestations-review/final-teunis-victor-willem/fire-station-victor/gallery-angle-1.png",
+      "artifacts/firestations-review/final-teunis-victor-willem/fire-station-victor/gallery-angle-2.png",
+      "artifacts/firestations-review/final-teunis-victor-willem/fire-station-victor/gallery-angle-3.png",
+      "artifacts/firestations-review/final-teunis-victor-willem/fire-station-victor/live-rear.png",
+      "artifacts/firestations-review/final-teunis-victor-willem/fire-station-victor/live-front.png"
+    ],
+    "proofsInspected": [
+      "artifacts/firestations-review/final-teunis-victor-willem/fire-station-victor/received-asset-gallery.json",
+      "artifacts/firestations-review/final-teunis-victor-willem/fire-station-victor/placement-proof.json",
+      "artifacts/firestations-review/final-teunis-victor-willem/fire-station-victor/opposite-placement-proof.json",
+      "artifacts/firestations-review/final-teunis-victor-willem/fire-station-victor/physical-card-proof.json"
+    ],
+    "frontCorner": "Pass: gallery-angle-3 and live-rear (actual bearing 110) show the apparatus frontage and twin gables; side balcony and irregular openings remain recognizable. Left lower door panel is now red, matching 2025 current panorama. Roof silhouette remains bounded by the inspected existing section. Neighbor school remains drawn and taller.",
+    "failedRear": {
+      "status": "FAIL: acceptance withheld",
+      "images": [
+        "artifacts/firestations-review/final-teunis-victor-willem/fire-station-victor/gallery-angle-1.png",
+        "artifacts/firestations-review/final-teunis-victor-willem/fire-station-victor/gallery-angle-2.png"
+      ],
+      "evidence": "Both rear rotations expose entirely blank tall walls and the lower rear terrace walls. The inspected 1911 elevation drawing ACHTERGEVEL shows source-supported rear openings, independently corroborated by rear-wall openings in the 2024 Bestaande situatie sections A/B/E. Front-only facade treatment omits those assemblies; the default isolated gallery and rear city view cannot excuse them. Add bounded groups on the actual exposed rear faces using current section evidence, checking parent/party-wall geometry before placement. Preserve these failed views and re-review affected rear angles."
+    },
+    "placementAndInteraction": "Inspected proofs report scale 1, correct current fingerprint, geographic pin and route arrival [4.929157,52.360452], destination n26612532, physical pointer-selected sourced card, exact OSM/BAG suppression, and three resident/drawable retained parents. Actual screenshot shows station amid retained neighbors. Fallback passing is coordinator-reported, not independently inspected in this review.",
+    "limits": "Live-front is the opposite/rear camera at bearing -70 and applies yellow selection highlight, so it cannot establish unhighlighted rear materials. Screenshot filenames do not establish camera side; camera proof does. Performance evidence remains pending."
+  },
+  "resolvedEarlierFindings": [
+    {
+      "feature": "Current apparatus door color",
+      "resolution": "Left lower panel corrected and independently visible in gallery-angle-3."
+    },
+    {
+      "feature": "Historical source description",
+      "resolution": "Coordinator reports research/source assertions corrected to 1911 elevation drawing; retained earlier failure above."
+    }
+  ],
+  "rearRepairVisualReview": {
+    "result": "PASS",
+    "reviewedOn": "2026-10-09",
+    "mesh": {
+      "sha256": "93fb54f39ecc0262c2862e14d231fde9e1b5ce2bea3f28f82068f7f110065ac3",
+      "bytes": 260328,
+      "triangles": 21231
+    },
+    "hashVerification": "Independent shasum of public/canal-drive/models/fire-station-victor.glb agrees with both gallery/native received-asset receipts.",
+    "imagesInspected": [
+      "artifacts/firestations-review/gpu-next/main-native-recovery/fire-station-victor/gallery.png",
+      "artifacts/firestations-review/gpu-next/main-native-recovery/fire-station-victor/gallery-angle-0.png",
+      "artifacts/firestations-review/gpu-next/main-native-recovery/fire-station-victor/gallery-angle-1.png",
+      "artifacts/firestations-review/gpu-next/main-native-recovery/fire-station-victor/gallery-angle-2.png",
+      "artifacts/firestations-review/gpu-next/main-native-recovery/fire-station-victor/gallery-angle-3.png",
+      "artifacts/firestations-review/gpu-next/main-native-recovery/fire-station-victor/neutral-front.png",
+      "artifacts/firestations-review/gpu-next/main-native-recovery/fire-station-victor/live-rear.png",
+      "artifacts/firestations-review/gpu-next/main-native-recovery/fire-station-victor/live-front.png"
+    ],
+    "recordsInspected": [
+      "docs/references/fire-station-victor/rear-repair.json",
+      "docs/references/fire-station-victor/rear-repair-geometry-check.json",
+      "scripts/landmarks/fire-station-victor-builder.ts",
+      "artifacts/firestations-review/gpu-next/main-native-recovery/fire-station-victor/received-asset-gallery.json",
+      "artifacts/firestations-review/gpu-next/main-native-recovery/fire-station-victor/received-asset-native.json",
+      "artifacts/firestations-review/gpu-next/main-native-recovery/fire-station-victor/placement-proof.json",
+      "artifacts/firestations-review/gpu-next/main-native-recovery/fire-station-victor/disabled-fallback-proof.json",
+      "artifacts/firestations-review/gpu-next/main-native-recovery/fire-station-victor/failed-load-fallback-proof.json"
+    ],
+    "sourceComparison": "Re-inspected archived ENZO 2024 Bestaande situatie sections. Rear gallery-angle-1 now contains staggered stair-side openings, two limited arch-headed lights, and separate paired room/attic lights below and above the recessed 10 m terrace. This preserves current sectional floor/roof organization without resurrecting historical continuous glazed bands. Horizontal placement and exact widths remain bounded approximations, as the repair record correctly acknowledges; this pass does not claim a precise 2025 rear photo match.",
+    "nativeVisualComparison": "neutral-front.png at actual bearing -70 visibly shows attached, exposed rear stair lights beside Domselaerstraat frontage and the retained taller school. live-rear.png at actual bearing 110 preserves twin-gable apparatus frontage, street window rhythm and neighbors. Native plot space around the lower rear mass is not replaced by a parcel-size slab. No new floating/buried facade or unsupported roof blocker observed.",
+    "partyWall": "gallery-angle-2 blank face is the retained north party wall, not the exposed ACHTERGEVEL. Native city view corroborates its adjoining tall school; adding rear windows to that wall would be unsupported.",
+    "frontRegression": "Gallery-angle-3 retains paired apparatus arches, red left lower panel, four-plus-two opening rhythm, twin gables, dormers and real small BRANDWEER plaque. Side balcony remains visible in angle0/default. Front/corner recognition pass maintained.",
+    "fallbackEvidence": "Inspected disabled and load-failure proof JSON reports resident target BAG fallback drawable, exact aliases unhidden, actual ordinary-renderer first hit matching target identity, and all three recorded neighbors resident/drawable.",
+    "previousFailure": "The prior finalVisualReview.failedRear FAIL and its original SHA/screenshots remain above unchanged as historical failed evidence. The omission is resolved only for this exact repaired hash.",
+    "limitations": [
+      "Exact rear horizontal widths/positions approximate; current opening presence and floor/roof organization supported by existing-condition sections.",
+      "No independent game performance measurement performed by this reviewer; performance gate remains pending."
+    ]
+  }
+}

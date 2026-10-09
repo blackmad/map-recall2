@@ -1,0 +1,1474 @@
+{
+  "native": {
+    "isolatedReleasePassed": [
+      "nico",
+      "osdorp"
+    ],
+    "mainPassed": [
+      "ijsbrand",
+      "pieter",
+      "zebra",
+      "driemond",
+      "weesp",
+      "victor",
+      "willem"
+    ],
+    "antonExplicitFixedPassed": true,
+    "antonSeededSurpriseFailed": "180000ms actual gameplay route wait timeout",
+    "retainedInfrastructureFailures": [
+      "ENOSPC main-native Driemond/Weesp/Victor; Willem interrupted, successful independent recoveries",
+      "Anton explicit original30s destination admission timeout, successful90s recovery"
+    ]
+  },
+  "scope": "Technical acceptance only; all screenshots await root and independent visual review. Headless Chrome Apple Metal resident-scene 90frame on/off/on measurements, hidden custom group retains suppression masks; no physical-device performance claim.",
+  "performance": [
+    {
+      "id": "fire-station-teunis",
+      "mode": "desktop",
+      "pass": true,
+      "gps": [
+        4.8582,
+        52.384978
+      ],
+      "fixedOrigin": {
+        "routePattern": "here",
+        "gpsOrigin": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.384978,
+          "lng": 4.8582
+        },
+        "routeFrom": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.384978,
+          "lng": 4.8582
+        }
+      },
+      "stationaryRider": true,
+      "actualPanDegrees": 0.0009477601554191443,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.700000002980232,
+        16.799999997019768,
+        16.69999998807907
+      ],
+      "p95Ms": [
+        18.299999997019768,
+        18.200000002980232,
+        18.299999997019768
+      ],
+      "maxMs": [
+        18.69999998807907,
+        19.700000002980232,
+        20.600000008940697
+      ],
+      "errors": [],
+      "sha256": "78a5f49bd115750de5af0647a21ddbcf05af885151b4be8503164b9b2e5cf1db",
+      "reportPath": "artifacts/firestations-review/gpu-next/performance/fire-station-teunis/gameplay/desktop-report.json"
+    },
+    {
+      "id": "fire-station-teunis",
+      "mode": "touch",
+      "pass": true,
+      "gps": [
+        4.8582,
+        52.384978
+      ],
+      "fixedOrigin": {
+        "routePattern": "here",
+        "gpsOrigin": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.384978,
+          "lng": 4.8582
+        },
+        "routeFrom": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.384978,
+          "lng": 4.8582
+        }
+      },
+      "stationaryRider": true,
+      "actualPanDegrees": 0.0005862551716534896,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.599999994039536,
+        16.400000005960464,
+        16.69999998807907
+      ],
+      "p95Ms": [
+        21,
+        21.200000002980232,
+        20.5
+      ],
+      "maxMs": [
+        21.5,
+        21.700000002980232,
+        21.400000005960464
+      ],
+      "errors": [],
+      "sha256": "78a5f49bd115750de5af0647a21ddbcf05af885151b4be8503164b9b2e5cf1db",
+      "reportPath": "artifacts/firestations-review/gpu-next/performance/fire-station-teunis/gameplay/touch-report.json"
+    },
+    {
+      "id": "fire-station-victor",
+      "mode": "desktop",
+      "pass": true,
+      "gps": [
+        4.927806,
+        52.357391
+      ],
+      "fixedOrigin": {
+        "routePattern": "here",
+        "gpsOrigin": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.357391,
+          "lng": 4.927806
+        },
+        "routeFrom": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.357391,
+          "lng": 4.927806
+        }
+      },
+      "stationaryRider": true,
+      "actualPanDegrees": 0.0012564334865328617,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.700000002980232,
+        16.600000008940697,
+        16.599999994039536
+      ],
+      "p95Ms": [
+        18.200000002980232,
+        18.5,
+        18.400000005960464
+      ],
+      "maxMs": [
+        18.600000008940697,
+        19.099999994039536,
+        18.80000001192093
+      ],
+      "errors": [],
+      "sha256": "93fb54f39ecc0262c2862e14d231fde9e1b5ce2bea3f28f82068f7f110065ac3",
+      "reportPath": "artifacts/firestations-review/gpu-next/performance/fire-station-victor/gameplay/desktop-report.json"
+    },
+    {
+      "id": "fire-station-victor",
+      "mode": "touch",
+      "pass": true,
+      "gps": [
+        4.927806,
+        52.357391
+      ],
+      "fixedOrigin": {
+        "routePattern": "here",
+        "gpsOrigin": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.357391,
+          "lng": 4.927806
+        },
+        "routeFrom": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.357391,
+          "lng": 4.927806
+        }
+      },
+      "stationaryRider": true,
+      "actualPanDegrees": 0.0005711107985104761,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.599999994039536,
+        16.69999998807907,
+        16.69999998807907
+      ],
+      "p95Ms": [
+        18.30000001192093,
+        18,
+        18.299999997019768
+      ],
+      "maxMs": [
+        18.799999997019768,
+        18.799999997019768,
+        19.099999994039536
+      ],
+      "errors": [],
+      "sha256": "93fb54f39ecc0262c2862e14d231fde9e1b5ce2bea3f28f82068f7f110065ac3",
+      "reportPath": "artifacts/firestations-review/gpu-next/performance/fire-station-victor/gameplay/touch-report.json"
+    },
+    {
+      "id": "fire-station-willem",
+      "mode": "desktop",
+      "pass": true,
+      "gps": [
+        4.91365,
+        52.35196
+      ],
+      "fixedOrigin": {
+        "routePattern": "here",
+        "gpsOrigin": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.35196,
+          "lng": 4.91365
+        },
+        "routeFrom": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.35196,
+          "lng": 4.91365
+        }
+      },
+      "stationaryRider": true,
+      "actualPanDegrees": 0.0011763046893503997,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.700000002980232,
+        16.700000002980232,
+        16.700000002980232
+      ],
+      "p95Ms": [
+        18.399999991059303,
+        18.200000002980232,
+        18.299999997019768
+      ],
+      "maxMs": [
+        19.299999997019768,
+        18.5,
+        18.799999997019768
+      ],
+      "errors": [],
+      "sha256": "e694632ea4eb905c63272244d5413cc3bea180df5c7bbd67ca485c11f87ba252",
+      "reportPath": "artifacts/firestations-review/gpu-next/performance/fire-station-willem/gameplay/desktop-report.json"
+    },
+    {
+      "id": "fire-station-willem",
+      "mode": "touch",
+      "pass": true,
+      "gps": [
+        4.91365,
+        52.35196
+      ],
+      "fixedOrigin": {
+        "routePattern": "here",
+        "gpsOrigin": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.35196,
+          "lng": 4.91365
+        },
+        "routeFrom": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.35196,
+          "lng": 4.91365
+        }
+      },
+      "stationaryRider": true,
+      "actualPanDegrees": 0.0007018519764589915,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.599999994039536,
+        16.700000002980232,
+        16.599999994039536
+      ],
+      "p95Ms": [
+        18.799999997019768,
+        20.200000002980232,
+        18.30000001192093
+      ],
+      "maxMs": [
+        20.5,
+        20.799999997019768,
+        19.299999997019768
+      ],
+      "errors": [],
+      "sha256": "e694632ea4eb905c63272244d5413cc3bea180df5c7bbd67ca485c11f87ba252",
+      "reportPath": "artifacts/firestations-review/gpu-next/performance/fire-station-willem/gameplay/touch-report.json"
+    },
+    {
+      "id": "fire-station-ijsbrand",
+      "mode": "desktop",
+      "pass": true,
+      "gps": [
+        4.894336,
+        52.407625
+      ],
+      "fixedOrigin": {
+        "routePattern": "here",
+        "gpsOrigin": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.407625,
+          "lng": 4.894336
+        },
+        "routeFrom": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.407625,
+          "lng": 4.894336
+        }
+      },
+      "stationaryRider": true,
+      "actualPanDegrees": 0.0008761999136851814,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.69999998807907,
+        16.599999994039536,
+        16.599999994039536
+      ],
+      "p95Ms": [
+        18.100000008940697,
+        19.799999997019768,
+        20.5
+      ],
+      "maxMs": [
+        18.5,
+        21.899999991059303,
+        21.400000005960464
+      ],
+      "errors": [],
+      "sha256": "62db72acfe611233f517497579b9dc9e5c0a6bbf13561c851487085370e044c1",
+      "reportPath": "artifacts/firestations-review/gpu-next/performance/fire-station-ijsbrand/gameplay/desktop-report.json"
+    },
+    {
+      "id": "fire-station-ijsbrand",
+      "mode": "touch",
+      "pass": true,
+      "gps": [
+        4.894336,
+        52.407625
+      ],
+      "fixedOrigin": {
+        "routePattern": "here",
+        "gpsOrigin": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.407625,
+          "lng": 4.894336
+        },
+        "routeFrom": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.407625,
+          "lng": 4.894336
+        }
+      },
+      "stationaryRider": true,
+      "actualPanDegrees": 0.0005119606231483106,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.600000008940697,
+        16.799999997019768,
+        16.69999998807907
+      ],
+      "p95Ms": [
+        19.399999991059303,
+        20.399999991059303,
+        20.299999997019768
+      ],
+      "maxMs": [
+        20.700000002980232,
+        21,
+        21
+      ],
+      "errors": [],
+      "sha256": "62db72acfe611233f517497579b9dc9e5c0a6bbf13561c851487085370e044c1",
+      "reportPath": "artifacts/firestations-review/gpu-next/performance/fire-station-ijsbrand/gameplay/touch-report.json"
+    },
+    {
+      "id": "fire-station-pieter",
+      "mode": "desktop",
+      "pass": true,
+      "gps": [
+        4.839569,
+        52.346898
+      ],
+      "fixedOrigin": {
+        "routePattern": "here",
+        "gpsOrigin": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.346898,
+          "lng": 4.839569
+        },
+        "routeFrom": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.346898,
+          "lng": 4.839569
+        }
+      },
+      "stationaryRider": true,
+      "actualPanDegrees": 0.0008979851905508865,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.599999994039536,
+        16.700000002980232,
+        16.600000008940697
+      ],
+      "p95Ms": [
+        19.200000002980232,
+        18.799999997019768,
+        18.299999997019768
+      ],
+      "maxMs": [
+        20.80000001192093,
+        21.200000002980232,
+        19.799999997019768
+      ],
+      "errors": [],
+      "sha256": "b5e22ca8fc13de129b3c4a325e1261f24dea9bb8ae19f0349a541ca2ecd3607c",
+      "reportPath": "artifacts/firestations-review/gpu-next/performance/fire-station-pieter/gameplay/desktop-report.json"
+    },
+    {
+      "id": "fire-station-pieter",
+      "mode": "touch",
+      "pass": true,
+      "gps": [
+        4.839569,
+        52.346898
+      ],
+      "fixedOrigin": {
+        "routePattern": "here",
+        "gpsOrigin": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.346898,
+          "lng": 4.839569
+        },
+        "routeFrom": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.346898,
+          "lng": 4.839569
+        }
+      },
+      "stationaryRider": true,
+      "actualPanDegrees": 0.000543777339963099,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.5,
+        16.700000002980232,
+        16.400000005960464
+      ],
+      "p95Ms": [
+        18.5,
+        19.099999994039536,
+        19.200000002980232
+      ],
+      "maxMs": [
+        19.700000002980232,
+        19.900000005960464,
+        20.299999997019768
+      ],
+      "errors": [],
+      "sha256": "b5e22ca8fc13de129b3c4a325e1261f24dea9bb8ae19f0349a541ca2ecd3607c",
+      "reportPath": "artifacts/firestations-review/gpu-next/performance/fire-station-pieter/gameplay/touch-report.json"
+    },
+    {
+      "id": "fire-station-zebra",
+      "mode": "desktop",
+      "pass": true,
+      "gps": [
+        4.950382,
+        52.397757
+      ],
+      "fixedOrigin": {
+        "routePattern": "here",
+        "gpsOrigin": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.397757,
+          "lng": 4.950382
+        },
+        "routeFrom": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.397757,
+          "lng": 4.950382
+        }
+      },
+      "stationaryRider": true,
+      "actualPanDegrees": 0.0008870681226784314,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.400000005960464,
+        16.600000008940697,
+        16.599999994039536
+      ],
+      "p95Ms": [
+        19.799999997019768,
+        18.899999991059303,
+        19.600000008940697
+      ],
+      "maxMs": [
+        20.599999994039536,
+        19.900000005960464,
+        21
+      ],
+      "errors": [],
+      "sha256": "7aa607aea03ace00ff85195fe4348775f2d513f59003291bce12c74ccbde6421",
+      "reportPath": "artifacts/firestations-review/gpu-next/performance/fire-station-zebra/gameplay/desktop-report.json"
+    },
+    {
+      "id": "fire-station-zebra",
+      "mode": "touch",
+      "pass": true,
+      "gps": [
+        4.950382,
+        52.397757
+      ],
+      "fixedOrigin": {
+        "routePattern": "here",
+        "gpsOrigin": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.397757,
+          "lng": 4.950382
+        },
+        "routeFrom": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.397757,
+          "lng": 4.950382
+        }
+      },
+      "stationaryRider": true,
+      "actualPanDegrees": 0.00047367509197431565,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.69999998807907,
+        16.600000008940697,
+        16.600000008940697
+      ],
+      "p95Ms": [
+        19.400000005960464,
+        18.799999997019768,
+        18.899999991059303
+      ],
+      "maxMs": [
+        20.700000002980232,
+        20.799999997019768,
+        19.700000002980232
+      ],
+      "errors": [],
+      "sha256": "7aa607aea03ace00ff85195fe4348775f2d513f59003291bce12c74ccbde6421",
+      "reportPath": "artifacts/firestations-review/gpu-next/performance/fire-station-zebra/gameplay/touch-report.json"
+    },
+    {
+      "id": "fire-station-weesp",
+      "mode": "desktop",
+      "pass": true,
+      "gps": [
+        5.044159,
+        52.299583
+      ],
+      "fixedOrigin": {
+        "routePattern": "here",
+        "gpsOrigin": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.299583,
+          "lng": 5.044159
+        },
+        "routeFrom": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.299583,
+          "lng": 5.044159
+        }
+      },
+      "stationaryRider": true,
+      "actualPanDegrees": 0.0010466564789210952,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.599999994039536,
+        16.600000008940697,
+        16.700000002980232
+      ],
+      "p95Ms": [
+        18.099999994039536,
+        18.100000008940697,
+        17.899999991059303
+      ],
+      "maxMs": [
+        18.399999991059303,
+        19.5,
+        19.200000002980232
+      ],
+      "errors": [],
+      "sha256": "ae5e8066de6020f9d155663efe16ce9f0e3f82352d87ad42efa256976b69ba95",
+      "reportPath": "artifacts/firestations-review/gpu-next/performance-weesp-corrected/fire-station-weesp/gameplay/desktop-report.json",
+      "scope": "Same original fixedGPS after root Amsterdam bounding-box correction; old failures preserved"
+    },
+    {
+      "id": "fire-station-weesp",
+      "mode": "touch",
+      "pass": true,
+      "gps": [
+        5.044159,
+        52.299583
+      ],
+      "fixedOrigin": {
+        "routePattern": "here",
+        "gpsOrigin": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.299583,
+          "lng": 5.044159
+        },
+        "routeFrom": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.299583,
+          "lng": 5.044159
+        }
+      },
+      "stationaryRider": true,
+      "actualPanDegrees": 0.0006442181743655561,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.700000002980232,
+        16.700000002980232,
+        16.700000002980232
+      ],
+      "p95Ms": [
+        18.299999997019768,
+        18.200000002980232,
+        18.400000005960464
+      ],
+      "maxMs": [
+        19.100000008940697,
+        19.399999991059303,
+        19.299999997019768
+      ],
+      "errors": [],
+      "sha256": "ae5e8066de6020f9d155663efe16ce9f0e3f82352d87ad42efa256976b69ba95",
+      "reportPath": "artifacts/firestations-review/gpu-next/performance-weesp-corrected/fire-station-weesp/gameplay/touch-report.json",
+      "scope": "Same original fixedGPS after root Amsterdam bounding-box correction; old failures preserved"
+    },
+    {
+      "id": "fire-station-driemond",
+      "mode": "desktop",
+      "pass": true,
+      "gps": [
+        5.015244,
+        52.305149
+      ],
+      "fixedOrigin": {
+        "routePattern": "here",
+        "gpsOrigin": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.305149,
+          "lng": 5.015244
+        },
+        "routeFrom": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.305149,
+          "lng": 5.015244
+        }
+      },
+      "stationaryRider": true,
+      "actualPanDegrees": 0.0013463680373823016,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.599999994039536,
+        16.600000008940697,
+        16.599999994039536
+      ],
+      "p95Ms": [
+        21.30000001192093,
+        21.100000008940697,
+        21.100000008940697
+      ],
+      "maxMs": [
+        22.799999997019768,
+        22.600000008940697,
+        22.799999997019768
+      ],
+      "errors": [],
+      "sha256": "d6470dc788512bc5794025219ba5790bf5b9550666f4546ec7d0930f1651187a",
+      "reportPath": "artifacts/firestations-review/gpu-next/performance/fire-station-driemond/gameplay/desktop-report.json"
+    },
+    {
+      "id": "fire-station-driemond",
+      "mode": "touch",
+      "pass": true,
+      "gps": [
+        5.015244,
+        52.305149
+      ],
+      "fixedOrigin": {
+        "routePattern": "here",
+        "gpsOrigin": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.305149,
+          "lng": 5.015244
+        },
+        "routeFrom": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.305149,
+          "lng": 5.015244
+        }
+      },
+      "stationaryRider": true,
+      "actualPanDegrees": 0.0006320471249973497,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.600000008940697,
+        16.799999997019768,
+        16.700000002980232
+      ],
+      "p95Ms": [
+        20.799999997019768,
+        20.599999994039536,
+        20.399999991059303
+      ],
+      "maxMs": [
+        21.599999994039536,
+        21.399999991059303,
+        21.600000008940697
+      ],
+      "errors": [],
+      "sha256": "d6470dc788512bc5794025219ba5790bf5b9550666f4546ec7d0930f1651187a",
+      "reportPath": "artifacts/firestations-review/gpu-next/performance/fire-station-driemond/gameplay/touch-report.json"
+    },
+    {
+      "id": "fire-station-anton",
+      "mode": "desktop",
+      "pass": true,
+      "gps": [
+        4.972571,
+        52.310467
+      ],
+      "fixedOrigin": {
+        "routePattern": "here",
+        "gpsOrigin": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.310467,
+          "lng": 4.972571
+        },
+        "routeFrom": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.310467,
+          "lng": 4.972571
+        }
+      },
+      "stationaryRider": true,
+      "actualPanDegrees": 0.0012034797709883568,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.700000002980232,
+        16.799999997019768,
+        16.700000002980232
+      ],
+      "p95Ms": [
+        18.299999997019768,
+        18.299999997019768,
+        17.899999991059303
+      ],
+      "maxMs": [
+        18.700000002980232,
+        19.099999994039536,
+        19.099999994039536
+      ],
+      "errors": [],
+      "sha256": "ba76d5dc361a97255eb19ff5f9fb105bd7066f295367e9a90120de54d55ad88f",
+      "reportPath": "artifacts/firestations-review/gpu-next/anton-final-performance/fire-station-anton/gameplay/desktop-report.json",
+      "scope": "Final ba76d5dc361a9725 asset after geometry correction, same fixedKelbergen origin"
+    },
+    {
+      "id": "fire-station-anton",
+      "mode": "touch",
+      "pass": true,
+      "gps": [
+        4.972571,
+        52.310467
+      ],
+      "fixedOrigin": {
+        "routePattern": "here",
+        "gpsOrigin": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.310467,
+          "lng": 4.972571
+        },
+        "routeFrom": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.310467,
+          "lng": 4.972571
+        }
+      },
+      "stationaryRider": true,
+      "actualPanDegrees": 0.0007115553719887917,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.700000002980232,
+        16.69999998807907,
+        16.700000002980232
+      ],
+      "p95Ms": [
+        18.400000005960464,
+        18.099999994039536,
+        18.399999991059303
+      ],
+      "maxMs": [
+        19,
+        18.5,
+        19.099999994039536
+      ],
+      "errors": [],
+      "sha256": "ba76d5dc361a97255eb19ff5f9fb105bd7066f295367e9a90120de54d55ad88f",
+      "reportPath": "artifacts/firestations-review/gpu-next/anton-final-performance/fire-station-anton/gameplay/touch-report.json",
+      "scope": "Final ba76d5dc361a9725 asset after geometry correction, same fixedKelbergen origin"
+    }
+  ],
+  "priorWeespFailures": [
+    {
+      "id": "fire-station-weesp",
+      "mode": "desktop",
+      "pass": false,
+      "reason": "FixedGPS rejected as outside Amsterdam; no route/performance/pan acceptance",
+      "failurePath": "artifacts/firestations-review/gpu-next/performance/fire-station-weesp/gameplay/desktop-failed-route.json",
+      "failure": {
+        "state": 0,
+        "routeError": "You're outside Amsterdam. Switch city, or use Home / Surprise.",
+        "prefs": {
+          "cityId": "amsterdam",
+          "difficulty": "medium",
+          "answerMode": "multiple",
+          "line": false,
+          "arrow": true,
+          "minimap": true,
+          "travelMode": "car",
+          "controlMode": "relative",
+          "viewMode": "chase",
+          "themeMode": "clean",
+          "buildingLook": "photo",
+          "routePattern": "here",
+          "homeAddress": "",
+          "trees": true,
+          "measuredColoursOnly": false,
+          "detailed3d": false,
+          "googleTiles": false,
+          "reducedMotion": false,
+          "skipMastered": true,
+          "gamey": true,
+          "sound": false,
+          "zoom": 0.65,
+          "zoomDefaultVersion": 4,
+          "cameraTilt": 0,
+          "cameraBearing": 0
+        },
+        "player": false
+      }
+    },
+    {
+      "id": "fire-station-weesp",
+      "mode": "touch",
+      "pass": false,
+      "reason": "FixedGPS rejected as outside Amsterdam; no route/performance/pan acceptance",
+      "failurePath": "artifacts/firestations-review/gpu-next/performance-weesp-touch/fire-station-weesp/gameplay/touch-failed-route.json",
+      "failure": {
+        "state": 0,
+        "routeError": "You're outside Amsterdam. Switch city, or use Home / Surprise.",
+        "prefs": {
+          "cityId": "amsterdam",
+          "difficulty": "medium",
+          "answerMode": "multiple",
+          "line": false,
+          "arrow": true,
+          "minimap": true,
+          "travelMode": "car",
+          "controlMode": "relative",
+          "viewMode": "chase",
+          "themeMode": "clean",
+          "buildingLook": "photo",
+          "routePattern": "here",
+          "homeAddress": "",
+          "trees": true,
+          "measuredColoursOnly": false,
+          "detailed3d": false,
+          "googleTiles": false,
+          "reducedMotion": false,
+          "skipMastered": true,
+          "gamey": true,
+          "sound": false,
+          "zoom": 0.65,
+          "zoomDefaultVersion": 4,
+          "cameraTilt": 0,
+          "cameraBearing": 0
+        },
+        "player": false
+      }
+    }
+  ],
+  "antonExactSourceCamera": {
+    "directory": "artifacts/firestations-review/gpu-next/anton-exact-source-camera/fire-station-anton",
+    "views": [
+      {
+        "label": "source-road-eye3",
+        "sourceCamera": {
+          "label": "source-road-eye3",
+          "from": [
+            4.972976664584325,
+            52.306841399237065
+          ],
+          "fromAltitude": 3,
+          "to": [
+            4.97316,
+            52.30718
+          ],
+          "toAltitude": 0.8
+        },
+        "computed": {
+          "center": {
+            "lng": 4.973160000000007,
+            "lat": 52.30717999999999
+          },
+          "elevation": 0.8,
+          "zoom": 20.783750768281035,
+          "pitch": 86.82502095937626,
+          "bearing": 18.31758772412856
+        },
+        "actual": {
+          "center": [
+            4.973160000000007,
+            52.30717999999999
+          ],
+          "pitch": 85,
+          "bearing": 18.31758772412854,
+          "zoom": 20.783750768281035
+        },
+        "pitchClamped": true,
+        "specAltitude": -4.4,
+        "placementAltitude": -4.4
+      },
+      {
+        "label": "source-road-eye5_5",
+        "sourceCamera": {
+          "label": "source-road-eye5_5",
+          "from": [
+            4.972976664584325,
+            52.306841399237065
+          ],
+          "fromAltitude": 5.5,
+          "to": [
+            4.97316,
+            52.30718
+          ],
+          "toAltitude": 2
+        },
+        "computed": {
+          "center": {
+            "lng": 4.973160000000007,
+            "lat": 52.30717999999999
+          },
+          "elevation": 2,
+          "zoom": 20.780370982457015,
+          "pitch": 84.95679330029708,
+          "bearing": 18.31758772412856
+        },
+        "actual": {
+          "center": [
+            4.973160000000007,
+            52.30717999999999
+          ],
+          "pitch": 84.95679330029708,
+          "bearing": 18.31758772412854,
+          "zoom": 20.780370982457015
+        },
+        "pitchClamped": false,
+        "specAltitude": -4.4,
+        "placementAltitude": -4.4
+      }
+    ],
+    "scope": "Visual review pending. Eye3 pitchclamped85; eye5.5 unclamped84.95679. Both exact source horizontal camera position. Actualspec AND placement-4.4. Wide2100px view fully frames all3 apparatus bays and driveway mouth; striped foreground wall exposed above pale ground.",
+    "wideDirectory": "artifacts/firestations-review/gpu-next/anton-exact-source-camera-wide/fire-station-anton"
+  },
+  "priorAntonPerformance": [
+    {
+      "id": "fire-station-anton",
+      "mode": "desktop",
+      "pass": true,
+      "gps": [
+        4.972571,
+        52.310467
+      ],
+      "fixedOrigin": {
+        "routePattern": "here",
+        "gpsOrigin": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.310467,
+          "lng": 4.972571
+        },
+        "routeFrom": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.310467,
+          "lng": 4.972571
+        }
+      },
+      "stationaryRider": true,
+      "actualPanDegrees": 0.001203480263174849,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.600000008940697,
+        16.700000002980232,
+        16.700000002980232
+      ],
+      "p95Ms": [
+        18.299999997019768,
+        18.200000002980232,
+        18.399999991059303
+      ],
+      "maxMs": [
+        19.399999991059303,
+        18.600000008940697,
+        18.599999994039536
+      ],
+      "errors": [],
+      "sha256": "360780f74ef0c61b9b44cea3dc0a504e56bac444dd2dd944efe053bed4eb7dfe",
+      "reportPath": "artifacts/firestations-review/gpu-next/performance/fire-station-anton/gameplay/desktop-report.json"
+    },
+    {
+      "id": "fire-station-anton",
+      "mode": "touch",
+      "pass": true,
+      "gps": [
+        4.972571,
+        52.310467
+      ],
+      "fixedOrigin": {
+        "routePattern": "here",
+        "gpsOrigin": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.310467,
+          "lng": 4.972571
+        },
+        "routeFrom": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.310467,
+          "lng": 4.972571
+        }
+      },
+      "stationaryRider": true,
+      "actualPanDegrees": 0.0007115595551199867,
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.700000002980232,
+        16.700000002980232,
+        16.600000008940697
+      ],
+      "p95Ms": [
+        18.299999997019768,
+        18.100000008940697,
+        18.400000005960464
+      ],
+      "maxMs": [
+        19.5,
+        18.899999991059303,
+        19.200000002980232
+      ],
+      "errors": [],
+      "sha256": "360780f74ef0c61b9b44cea3dc0a504e56bac444dd2dd944efe053bed4eb7dfe",
+      "reportPath": "artifacts/firestations-review/gpu-next/performance/fire-station-anton/gameplay/touch-report.json"
+    }
+  ],
+  "priorAntonSourceCameraFailedEvidence": {
+    "directories": [
+      "artifacts/firestations-review/gpu-next/anton-exact-source-camera/fire-station-anton",
+      "artifacts/firestations-review/gpu-next/anton-exact-source-camera-wide/fire-station-anton"
+    ],
+    "reason": "Earlier current-4.4 placement exposed striped foreground wall; retained for failed visual comparison"
+  },
+  "antonFinalNative": {
+    "directory": "artifacts/firestations-review/gpu-next/anton-final-native/fire-station-anton",
+    "sha256": "ba76d5dc361a97255eb19ff5f9fb105bd7066f295367e9a90120de54d55ad88f",
+    "pass": true,
+    "sourceCameraViews": [
+      {
+        "sourceCamera": {
+          "label": "source-road-eye3",
+          "from": [
+            4.972976664584325,
+            52.306841399237065
+          ],
+          "fromAltitude": 3,
+          "to": [
+            4.97316,
+            52.30718
+          ],
+          "toAltitude": 0.8
+        },
+        "computed": {
+          "center": {
+            "lng": 4.973160000000007,
+            "lat": 52.30717999999999
+          },
+          "elevation": 0.8,
+          "zoom": 20.783750768281035,
+          "pitch": 86.82502095937626,
+          "bearing": 18.31758772412856
+        },
+        "actual": {
+          "center": [
+            4.973160000000007,
+            52.30717999999999
+          ],
+          "pitch": 85,
+          "bearing": 18.31758772412854,
+          "zoom": 20.783750768281035
+        },
+        "pitchClamped": true,
+        "maxPitch": 85,
+        "model": {
+          "specGroundAltitudeMetres": -4.4,
+          "placement": {
+            "anchor": [
+              4.973280003106436,
+              52.307333056443284
+            ],
+            "altitudeMetres": -4.4,
+            "modelRotationDegrees": 90,
+            "facadeBearingDegrees": 180,
+            "scale": 1
+          },
+          "groupPosition": [
+            0,
+            0,
+            0
+          ],
+          "groupScale": [
+            1,
+            1,
+            1
+          ],
+          "groupRotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "visible": true
+        },
+        "scope": "Same archived source camera horizontal position; road-relative eye/threshold heights are approximations; frozen actual -4.4 model specification. Pitch clamp explicitly recorded."
+      },
+      {
+        "sourceCamera": {
+          "label": "source-road-eye5_5",
+          "from": [
+            4.972976664584325,
+            52.306841399237065
+          ],
+          "fromAltitude": 5.5,
+          "to": [
+            4.97316,
+            52.30718
+          ],
+          "toAltitude": 2
+        },
+        "computed": {
+          "center": {
+            "lng": 4.973160000000007,
+            "lat": 52.30717999999999
+          },
+          "elevation": 2,
+          "zoom": 20.780370982457015,
+          "pitch": 84.95679330029708,
+          "bearing": 18.31758772412856
+        },
+        "actual": {
+          "center": [
+            4.973160000000007,
+            52.30717999999999
+          ],
+          "pitch": 84.95679330029708,
+          "bearing": 18.31758772412854,
+          "zoom": 20.780370982457015
+        },
+        "pitchClamped": false,
+        "maxPitch": 85,
+        "model": {
+          "specGroundAltitudeMetres": -4.4,
+          "placement": {
+            "anchor": [
+              4.973280003106436,
+              52.307333056443284
+            ],
+            "altitudeMetres": -4.4,
+            "modelRotationDegrees": 90,
+            "facadeBearingDegrees": 180,
+            "scale": 1
+          },
+          "groupPosition": [
+            0,
+            0,
+            0
+          ],
+          "groupScale": [
+            1,
+            1,
+            1
+          ],
+          "groupRotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "visible": true
+        },
+        "scope": "Same archived source camera horizontal position; road-relative eye/threshold heights are approximations; frozen actual -4.4 model specification. Pitch clamp explicitly recorded."
+      }
+    ],
+    "observations": "Former striped foreground wall absent; all3 red bay bottoms visible; narrow vertical strip and wide rightupper glazing group visible; final visual acceptance belongs to root+independentreview"
+  },
+  "isolatedFinalRelease": {
+    "url": "http://127.0.0.1:5347",
+    "checkout": "/private/tmp/map-recall2-firestations-release",
+    "directory": "artifacts/firestations-review/gpu-next/isolated-final-native",
+    "models": [
+      {
+        "id": "fire-station-teunis",
+        "pass": true,
+        "sha256": "78a5f49bd115750de5af0647a21ddbcf05af885151b4be8503164b9b2e5cf1db",
+        "version": "78a5f49bd115750d"
+      },
+      {
+        "id": "fire-station-victor",
+        "pass": true,
+        "sha256": "93fb54f39ecc0262c2862e14d231fde9e1b5ce2bea3f28f82068f7f110065ac3",
+        "version": "93fb54f39ecc0262"
+      },
+      {
+        "id": "fire-station-willem",
+        "pass": true,
+        "sha256": "e694632ea4eb905c63272244d5413cc3bea180df5c7bbd67ca485c11f87ba252",
+        "version": "e694632ea4eb905c"
+      },
+      {
+        "id": "fire-station-ijsbrand",
+        "pass": true,
+        "sha256": "62db72acfe611233f517497579b9dc9e5c0a6bbf13561c851487085370e044c1",
+        "version": "62db72acfe611233"
+      },
+      {
+        "id": "fire-station-pieter",
+        "pass": true,
+        "sha256": "b5e22ca8fc13de129b3c4a325e1261f24dea9bb8ae19f0349a541ca2ecd3607c",
+        "version": "b5e22ca8fc13de12"
+      },
+      {
+        "id": "fire-station-zebra",
+        "pass": true,
+        "sha256": "7aa607aea03ace00ff85195fe4348775f2d513f59003291bce12c74ccbde6421",
+        "version": "7aa607aea03ace00"
+      },
+      {
+        "id": "fire-station-driemond",
+        "pass": true,
+        "sha256": "d6470dc788512bc5794025219ba5790bf5b9550666f4546ec7d0930f1651187a",
+        "version": "d6470dc788512bc5"
+      },
+      {
+        "id": "fire-station-weesp",
+        "pass": true,
+        "sha256": "ae5e8066de6020f9d155663efe16ce9f0e3f82352d87ad42efa256976b69ba95",
+        "version": "ae5e8066de6020f9"
+      }
+    ],
+    "weespOrigin": {
+      "pattern": "here",
+      "gps": {
+        "id": "here",
+        "name": "Here",
+        "lat": 52.299583,
+        "lng": 5.044159
+      },
+      "from": {
+        "id": "here",
+        "name": "Here",
+        "lat": 52.299583,
+        "lng": 5.044159
+      }
+    },
+    "scope": "All8 fullnative integration checks passed, exactactualresponse bytes/native1/selecteddestination/pin/physicalcard/masks/neighbors/disabled+failedfallback. Weesp actualfixedGPS unchanged verified onrelease.",
+    "anton": {
+      "pass": true,
+      "directory": "artifacts/firestations-review/gpu-next/isolated-final-anton-native/fire-station-anton",
+      "sha256": "ba76d5dc361a97255eb19ff5f9fb105bd7066f295367e9a90120de54d55ad88f",
+      "nativeScale": 1,
+      "specAndPlacementAltitude": -4.4,
+      "fixedOrigin": {
+        "pattern": "here",
+        "gps": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.310467,
+          "lng": 4.972571
+        },
+        "from": {
+          "id": "here",
+          "name": "Here",
+          "lat": 52.310467,
+          "lng": 4.972571
+        }
+      },
+      "sourceCameraViews": [
+        {
+          "sourceCamera": {
+            "label": "source-road-eye3",
+            "from": [
+              4.972976664584325,
+              52.306841399237065
+            ],
+            "fromAltitude": 3,
+            "to": [
+              4.97316,
+              52.30718
+            ],
+            "toAltitude": 0.8
+          },
+          "computed": {
+            "center": {
+              "lng": 4.973160000000007,
+              "lat": 52.30717999999999
+            },
+            "elevation": 0.8,
+            "zoom": 20.783750768281035,
+            "pitch": 86.82502095937626,
+            "bearing": 18.31758772412856
+          },
+          "actual": {
+            "center": [
+              4.973160000000007,
+              52.30717999999999
+            ],
+            "pitch": 85,
+            "bearing": 18.31758772412854,
+            "zoom": 20.783750768281035
+          },
+          "pitchClamped": true,
+          "maxPitch": 85,
+          "model": {
+            "specGroundAltitudeMetres": -4.4,
+            "placement": {
+              "anchor": [
+                4.973280003106436,
+                52.307333056443284
+              ],
+              "altitudeMetres": -4.4,
+              "modelRotationDegrees": 90,
+              "facadeBearingDegrees": 180,
+              "scale": 1
+            },
+            "groupPosition": [
+              0,
+              0,
+              0
+            ],
+            "groupScale": [
+              1,
+              1,
+              1
+            ],
+            "groupRotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "visible": true
+          },
+          "scope": "Same archived source camera horizontal position; road-relative eye/threshold heights are approximations; frozen actual -4.4 model specification. Pitch clamp explicitly recorded."
+        },
+        {
+          "sourceCamera": {
+            "label": "source-road-eye5_5",
+            "from": [
+              4.972976664584325,
+              52.306841399237065
+            ],
+            "fromAltitude": 5.5,
+            "to": [
+              4.97316,
+              52.30718
+            ],
+            "toAltitude": 2
+          },
+          "computed": {
+            "center": {
+              "lng": 4.973160000000007,
+              "lat": 52.30717999999999
+            },
+            "elevation": 2,
+            "zoom": 20.780370982457015,
+            "pitch": 84.95679330029708,
+            "bearing": 18.31758772412856
+          },
+          "actual": {
+            "center": [
+              4.973160000000007,
+              52.30717999999999
+            ],
+            "pitch": 84.95679330029708,
+            "bearing": 18.31758772412854,
+            "zoom": 20.780370982457015
+          },
+          "pitchClamped": false,
+          "maxPitch": 85,
+          "model": {
+            "specGroundAltitudeMetres": -4.4,
+            "placement": {
+              "anchor": [
+                4.973280003106436,
+                52.307333056443284
+              ],
+              "altitudeMetres": -4.4,
+              "modelRotationDegrees": 90,
+              "facadeBearingDegrees": 180,
+              "scale": 1
+            },
+            "groupPosition": [
+              0,
+              0,
+              0
+            ],
+            "groupScale": [
+              1,
+              1,
+              1
+            ],
+            "groupRotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "visible": true
+          },
+          "scope": "Same archived source camera horizontal position; road-relative eye/threshold heights are approximations; frozen actual -4.4 model specification. Pitch clamp explicitly recorded."
+        }
+      ],
+      "scope": "Fullnative releasePASS, actualbytes/newSHA/card/pin/genuineselecteddestination/masks/residentneighbors/disabled+failedfallback; sourcecamera wide views captured. No additionalperformance because release bytes match fullytested main finalasset."
+    }
+  }
+}

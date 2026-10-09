@@ -1,0 +1,50 @@
+{
+  "id": "fire-station-weesp",
+  "name": "Kazerne Weesp",
+  "landmarkId": "n1618230174",
+  "modelUrl": "./models/fire-station-weesp.glb",
+  "suppressOsmIds": [
+    "w282072534",
+    "NL.IMBAG.Pand.0457100000062823"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      5.04486,
+      52.3027
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 45,
+    "widthMetres": 33
+  },
+  "surveyed": {
+    "anchor": [
+      5.04486,
+      52.3027
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Exact BAG native RD polygon and AHN5/3DBAG roof surfaces. Native east/south local coordinates."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 90,
+  "materialOverrides": {
+    "brick": "#60564a",
+    "stone": "#9b978a",
+    "slate": "#535b59",
+    "white": "#c8ccc4",
+    "glass": "#4d6971",
+    "dark": "#222e2e",
+    "frame": "#717975",
+    "copper": "#8e897b",
+    "bronze": "#b7a45d",
+    "greyBrick": "#b92b28"
+  },
+  "attribution": {
+    "title": "Kazerne Weesp",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.brandweer.nl/kazerne/weesp/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native surveyed geometry and source-observed curved garage frontage and trapezoidal upper glazing; no imported mesh or pixels."
+  }
+}

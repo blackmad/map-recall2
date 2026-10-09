@@ -1,0 +1,98 @@
+{
+  "id": "fire-station-willem",
+  "sourcePack": "../map-recall2-source-data/models/fire-station-willem",
+  "sourceCommit": "6d6fef5644ea0d4373e756e008e759754aa1cd45",
+  "identity": {
+    "address": "Ringdijk98Amsterdam",
+    "bag": "0363100012143776",
+    "osmBuilding": "w279842625",
+    "poi": "n2840294077",
+    "year": 1984
+  },
+  "sourceUrls": [
+    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012143776",
+    "https://api.openstreetmap.org/api/0.6/map?bbox=4.9137,52.3475,4.9162,52.3494",
+    "https://api.data.amsterdam.nl/panorama/panoramas/?bbox=4.9141,52.3486,4.9156,52.3492&page_size=100",
+    "https://www.zwarthout.org/nl/project/63/brandweerkazerne-willem-in-amsterdam",
+    "https://archief.amsterdam/beeldbank/?mode=gallery&q=Ringdijk%2098%20brandweerkazerne",
+    "https://www.brandweer.nl/wp-content/uploads/2024/03/SITRAP-150-jaar-BAA.pdf",
+    "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?service=WMS&request=GetMap&version=1.1.1&layers=2024_ortho25&styles=&srs=EPSG:28992&bbox=122750,484520,122900,484700&width=1000&height=1200&format=image/png",
+    "https://api.data.amsterdam.nl/panorama/panoramas/?bbox=4.9141,52.3486,4.9156,52.3492&page_size=100&page=2",
+    "https://www.zwarthout.org/uploads/headers/63_409153.jpg",
+    "https://www.zwarthout.org/uploads/images/large_386_347866.jpg",
+    "https://www.zwarthout.org/uploads/images/large_387_137802.jpg",
+    "https://www.zwarthout.org/uploads/images/large_388_837870.jpg",
+    "https://www.zwarthout.org/uploads/images/large_390_770494.jpg",
+    "https://www.zwarthout.org/uploads/images/large_391_895397.jpg",
+    "https://www.zwarthout.org/uploads/images/large_393_250137.jpg",
+    "https://www.zwarthout.org/uploads/images/large_394_512468.jpg",
+    "https://sampre.io/kennisbank/kazerne-willem"
+  ],
+  "nativeFootprint": "scripts/landmarks/fire-station-willem-footprints.json",
+  "architecturalAssertions": [
+    {
+      "feature": "Seven glazed vehicle bays, tall charred Marugame panel over each, pale brick dividing piers, lighting attached towoodpanels",
+      "source": "raw/large_386_347866.jpg,raw/large_387_137802.jpg,processed/recording_2025-06-20_12-01-53_01387.jpg",
+      "date": "Supplierundatedcrosschecked2025-06-20",
+      "confidence": "high"
+    },
+    {
+      "feature": "Western tall curtainwall groups, eastern red recessed lobby, real red BRANDWEER upper sign",
+      "source": "processed/recording_2025-06-20_12-01-53_01377.jpg,processed/recording_2024-10-02_13-17-06_02037.jpg",
+      "date": "2025-06-20and2024-10-02",
+      "confidence": "high"
+    },
+    {
+      "feature": "Native rear headquarters, mainroof17.89m; rooftopapparatus/panels and central inwardcourt/lowatrium",
+      "source": "raw/3dbag.json,raw/aerial2.png",
+      "date": "AHN5survey2023;PDOKortho2024",
+      "confidence": "highmassing;detailpositionsapproximate"
+    }
+  ],
+  "heightNotes": "BAG1984 original construction; official station history confirms Ringdijk relocation1984. AHN5 ground0.521m NAP. Principal native main roof17.89m aboveground; small equipment up to22.29m is not wholebuilding height. Main roof outer ring preserves inward court; roofholes are rooftop apparatus, supported from principalroof. Low inward atrium7.42m and source sloped glass faces distinct.",
+  "archiveSearch": {
+    "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=Ringdijk%2098%20brandweerkazerne",
+    "state": "HTTP200 JS shell, no inspected catalogue results; modern1984 complex. No national/municipal architectural-monument description found in bounded name/address search; internal firefighters memorial is distinct."
+  },
+  "approximationNotes": [
+    "Source-supported supplier vertical charred timber uses flat-color slats without wood textures.",
+    "Sign lettering approximately Arial Bold; elongated red sans matched to real panel, no invented buildingname signage.",
+    "Rear concrete window rhythm visible in aerial but detailed pane counts inferred bounded to surveyed perimeter.",
+    "Solar fields approximate modular positions guided by2024aerial, not exact panel inventory.",
+    "Roof triangles under25mm altitude removed before quantization to prevent decoded reversed slivers; failed draft preserved."
+  ],
+  "signage": "RealredBRANDWEERonly, sharednativeArialBoldoutlines match approximateboldsans,7.6x0.72m fitted onrealnorthwesternwall; noaddedstationnamewords.",
+  "failedEvidence": [
+    "Independent nativegallery roofFAIL:101of104rearPVpanels buried; photographicreinterpretation identifiescentralrearwhitegrid asrooflights,not solar. Failedrootpublic1f47758... mustremainarchived. FixreplacesfalsePVinterpretation ratherthanraisinginventedpanels.",
+    "18downwarddecodedrooftriangles in initialcompressedexport,preserved artifacts/fire-station-willem-failed/quantization-roof-slivers.glb. Sourceupward faces were reversed byquantizationofverythintriangles;25mmtrianglealtitude cutoff applied toroofsonly.",
+    "Latestgeneralzwarthout.comURL redirects tositehomepage, not architecturalproject. Originalzwarthout.orgproject andoriginalphotospreserved, knownTLShostnamegapexplicit.",
+    "FirstPDOKaerialrequestssuccessfullyreturnedblankwhiteimagery; current2024orthophoto verified and originalblankinputs retained."
+  ],
+  "geometry": "Corrected roofdraft34726tri488232B0textures;CPU/decodedchecks pass,rootacceptancepending.",
+  "acceptance": "Rootgallery+livegame+independentsourcecomparison+publicentrance/route/pin/card/performancepending. No visual acceptance claimed.",
+  "roofCorrection": {
+    "state": "Initial independent gallery review FAILED:101 of104 invented centralPV buried byaveraged roofparts; root publicfailed SHA1f47758 preserved. Corrected CPUonly; root nativegallery/live and independentreview pending.",
+    "source": "https://sampre.io/kennisbank/kazerne-willem",
+    "originals": [
+      "../map-recall2-source-data/models/fire-station-willem/raw/sampre-solar.html",
+      "../map-recall2-source-data/models/fire-station-willem/raw/sampre-solar-2.jpg",
+      "../map-recall2-source-data/models/fire-station-willem/raw/sampre-solar-3.jpg",
+      "../map-recall2-source-data/models/fire-station-willem/raw/aerial2.png",
+      "../map-recall2-source-data/models/fire-station-willem/raw/3dbag.json"
+    ],
+    "architecturalAssertions": [
+      {
+        "feature": "125 PVpanels onlongfrontstationwing, aroundinternalroofplant/court/skylight",
+        "confidence": "High for winglocation/material/count fromcontractor roofphotos/text. Modulecoordinates andgroupdimensions boundedapproximation, notsurveyed panelinventory."
+      },
+      {
+        "feature": "Rear HQ central white-framed darkgrid consists ofsloping glazedrooflighting, not PV",
+        "confidence": "Medium-high from2024orthophoto whiteframing/sawtoothpattern plusAHN5sloping RoofSurface topology. No contractor description ofrearroof glazing obtained; interpretation remainssourcebounded."
+      }
+    ],
+    "geometry": "24semantic rearRoofSurfaces use originalslopedsource vertices + whiteframes, replacing averageheightopaqueextrusions. Plane framing interpolates supportedtrianglehits. Part524 excluded after firsthitcheck identified itunder raised equipment. Previoussevenparts492/508/517/523/551/561/562 fullyexposed. AllrearPVremoved;125frontPVallcorners clipped tonativefootprint andequipment excluded;17.89m sourceplane supports625fractionalsamples.",
+    "cpuChecks": "1388facade samples pass;429rooflightfractional samples allglass/whiteframefirsthit;625PVfirsthits and625roofsupport samples pass;495of497 roofframes visible;allsource/decodedroofandframe facesupward.",
+    "cpuComparison": "artifacts/fire-station-willem-roof-fix/fire-station-willem-cpu-roof.png compared toraw/aerial2.png andSampre2/3: rearwhitegrid, front-onlyPV, nativecourt retained. CPUtwosidedgeometrydiagram; no visualacceptanceclaimed.",
+    "sourceCommit": "6d6fef5644ea0d4373e756e008e759754aa1cd45_NEW_SAMPRE_INPUTS"
+  }
+}

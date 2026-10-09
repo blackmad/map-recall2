@@ -1,0 +1,83 @@
+{
+  "modelId": "fire-station-dirk",
+  "privateManifest": "models/fire-station-dirk/source-manifest.json",
+  "sources": [
+    {
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1994",
+      "privateRawPath": "models/fire-station-dirk/raw/register.html",
+      "state": 200
+    },
+    {
+      "url": "https://www.pieters.net/nieuws/feestelijke-opening-brandweerkazerne-dirk/",
+      "privateRawPath": "models/fire-station-dirk/raw/pieters.html",
+      "state": 200
+    },
+    {
+      "url": "https://www.brandweernederland.nl/nieuws/verbouwing-kazerne-dirk/",
+      "privateRawPath": "models/fire-station-dirk/raw/brandweer.html",
+      "state": 200
+    },
+    {
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=Honthorststraat%2027",
+      "privateRawPath": "models/fire-station-dirk/raw/beeldbank.html",
+      "state": 200
+    },
+    {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?bbox=4.8857,52.3576,4.8872,52.3585&limit=100&f=json",
+      "privateRawPath": "models/fire-station-dirk/raw/bag.json",
+      "state": 200
+    },
+    {
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=4.8857,52.3576,4.8872,52.3585",
+      "privateRawPath": "models/fire-station-dirk/raw/osm.xml",
+      "state": 200
+    },
+    {
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012162222",
+      "privateRawPath": "models/fire-station-dirk/raw/3dbag.json",
+      "state": 200
+    }
+  ],
+  "assertions": [
+    {
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1994",
+      "part": "historic 1897 station",
+      "confidence": "high",
+      "features": [
+        "Red brick with darker horizontal bands, natural-stone plinth and lintels.",
+        "Transverse saddle roof with dormers, projecting wing hips and stone-decorated stepped gables.",
+        "Three round-arched central vehicle entrances, carved Brandweer plaque and flanking lanterns.",
+        "Amsterdam arms on wing gables; left-side bay reaching dormer."
+      ]
+    },
+    {
+      "url": "https://www.brandweernederland.nl/nieuws/verbouwing-kazerne-dirk/",
+      "part": "restoration 2023",
+      "confidence": "high",
+      "features": [
+        "Restoration exposed decorated original masonry in remise and staircases.",
+        "Renewed rear openings retain historic arched appearance."
+      ]
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-29_08-09-56_01639/",
+      "part": "current Honthorst front",
+      "confidence": "high",
+      "features": [
+        "Three dark subdivided closed arches;8 tall central upperlights plus paired wing lights.",
+        "Stone plaque carries thin carved Roman serif capitals; exact font unknown.",
+        "Two pale pointed front dormers; central small stepped gable; tall stepped wing gables."
+      ]
+    }
+  ],
+  "remainingUncertainties": [
+    "Exact cornice and gable ornament dimensions photo-guided; roof pitches approximated within survey envelope.",
+    "Rear window rhythm bounded reconstruction; north face no current front-on photograph yet.",
+    "Beeldbank exact address bounded search200 JavaScript shell; no catalogue/drawing inspected."
+  ],
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "path": "models/fire-station-dirk",
+    "commit": null
+  }
+}

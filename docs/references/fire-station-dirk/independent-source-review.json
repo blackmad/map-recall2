@@ -1,0 +1,57 @@
+{
+  "modelId": "fire-station-dirk",
+  "reviewedOn": "2026-10-09",
+  "reviewer": "independent firestation_inventory worker",
+  "stage": "Current-source/builder and first revised CPUfront/rear review; noGPU/live review",
+  "state": "changes-requested",
+  "inspectedFiles": [
+    "scripts/landmarks/fire-station-dirk-builder.ts",
+    "scripts/landmarks/fire-station-dirk-footprints.json",
+    "artifacts/firestations-review/fire-station-dirk-cpu-revised-front.png",
+    "artifacts/firestations-review/fire-station-dirk-cpu-revised-rear.png",
+    "../map-recall2-source-data/models/fire-station-dirk/processed/recording_2025-09-29_08-09-56_01639.jpg",
+    "../map-recall2-source-data/models/fire-station-dirk/processed/recording_2025-09-29_08-09-56_01632.jpg"
+  ],
+  "supportedDecisions": [
+    "Three dark round-arched vehicle doors, eight tall middle upper windows, paired wing openings and twin tall stepped wing gables give recognizable street facade.",
+    "Footprint-derived side lower projecting bays and lower coping match visible current side01632; exclude separate church behind station from replacement.",
+    "Main warm dark-brown tiled roof is supported by source01639; do not change to generic gray solely because builder material is named slate.",
+    "Thin engraved BRANDWEER plaque fits central genuine stone panel rather than painted building-name identifier.",
+    "No obvious front/entrance-side mismatch seen in source facade arrangement."
+  ],
+  "findings": [
+    {
+      "severity": "required-visual-correction",
+      "id": "dormer-profile",
+      "evidence": "Current source01639 shows pale-framed dormers with triangular front pediment, exposed pale columns, tall glazing and slim pointed metal crown. CPUfront two dormers read as dark rounded/hipped caps over very small square panes.",
+      "builderRisk": "Generic hiproof plus short cream box suppresses distinctive pointed dormer/crown assembly.",
+      "requestedAction": "Author slender triangular pediment and metal pointed crown with pale uprights; inspect lower-front view before acceptance."
+    },
+    {
+      "severity": "required-material-review",
+      "id": "dark-stone-and-window-trim",
+      "evidence": "Current2025photos show dark desaturated green-gray stone window surrounds, voussoirs and string courses contrasting red brick. CPU facade uses pale cream bands and bright pale window backing throughout.",
+      "builderRisk": "window() places white backing behind every pane and stone sill; repeated light outlines change defining material rhythm.",
+      "requestedAction": "Use source-matching darker gray-green stone around windows/arches/bands; retain genuine lighter base/cornice where observed. Verify gallery same-light source comparison."
+    },
+    {
+      "severity": "pending",
+      "id": "rear-evidence",
+      "evidence": "Supplied current photos cover main front and street-side return, not north/rear facade. Source file explicitly records rear rhythm as bounded reconstruction.",
+      "requestedAction": "Preserve uncertainty; CPUrear alone does not validate photographed rear openings or high rear middle blank projection. Confirm native physical scope/retained neighboring church in live view."
+    },
+    {
+      "severity": "review-required",
+      "id": "front-gable-ornament",
+      "evidence": "Current source center-gable crown/stone plaques and end-gable dark surround relief are more complex than uniform fourstep pyramids. Main stepped silhouette remains identifiable.",
+      "requestedAction": "Review low-front rendering for central broad-body crown and subordinate relief; avoid claiming exact ornament replication."
+    }
+  ],
+  "pending": [
+    "Correct/compare dormer assembly",
+    "Gallery native-scale rotations and source-matching trim colors",
+    "Roof upward-normal/support geometry check",
+    "Live-game replacement/neighbor church retention",
+    "Actual selected destination/map pin/useful card and pointer-click checks"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "n2793598969",
+  "name": "Kazerne Osdorp",
+  "lng": 4.802462823962739,
+  "lat": 52.3664870928522,
+  "category": "building",
+  "description": "Opened in 2005, Osdorp\u2019s station was designed by dietzsch + van der sanden around the rapid movement of crews and vehicles. Its transparent vehicle hall has a rolling sedum roof; a glazed corridor joins it to a quieter brick block containing the crew\u2019s living spaces. The station is also known as the Fanny Blankers-Koen kazerne.",
+  "facts": [
+    "The rolling hall roof expresses the onward movement of an emergency turnout.",
+    "A glazed corridor separates the vehicle hall from the brick accommodation wing.",
+    "The sedum roof responds to the landscaped side of the site."
+  ],
+  "sourceUrls": [
+    "https://arcam.nl/architectuur-gids/brandweerkazerne-osdorp/",
+    "https://www.brandweer.nl/kazerne/amsterdam-osdorp/",
+    "https://www.openstreetmap.org/node/2793598969"
+  ],
+  "routeDestination": {
+    "lng": 4.802471307901373,
+    "lat": 52.3664713021276
+  },
+  "destinationNote": "Main external pedestrian entrance under source-visible balcony, mapped on exact native southern facade, route pin1.85m outward into open forecourt. Station interiors not publicly accessible; preserve destination on route failure."
+}

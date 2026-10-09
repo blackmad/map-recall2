@@ -1,0 +1,158 @@
+{
+  "id": "fire-station-ijsbrand",
+  "name": "Brandweerkazerne IJsbrand",
+  "landmarkId": "n2847025649",
+  "modelUrl": "./models/fire-station-ijsbrand.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012115117",
+    "w44825777"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.88953,
+      52.40644
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 45,
+    "widthMetres": 40
+  },
+  "surveyed": {
+    "anchor": [
+      4.88953,
+      52.40644
+    ],
+    "northOffsetDegrees": 0,
+    "source": "CurrentBAG/3DBAG nativeeastX southZ"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 90,
+  "materialOverrides": {
+    "brick": "#695b50",
+    "stone": "#d1cec0",
+    "slate": "#8f9698",
+    "white": "#e0e0d6",
+    "glass": "#425d64",
+    "dark": "#3a4241",
+    "frame": "#515b5a",
+    "copper": "#6b8b86",
+    "bronze": "#d99768",
+    "greyBrick": "#696a65",
+    "red": "#a94a53"
+  },
+  "attribution": {
+    "title": "Brandweerkazerne IJsbrand",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-ijsbrand/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free reconstruction of surveyed stepped volumes, red metal upper facade, projecting louvred glazing, stair tower and three apparatus bays. No third-party geometry or pixels."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.889273422779614,
+          52.40637614913423
+        ],
+        [
+          4.889262510710573,
+          52.40636769981798
+        ],
+        [
+          4.889545716341373,
+          52.40623365267528
+        ],
+        [
+          4.889556029575157,
+          52.40624177589474
+        ],
+        [
+          4.8895794553282155,
+          52.40626131458115
+        ],
+        [
+          4.889588621542395,
+          52.406253803457915
+        ],
+        [
+          4.8896172612705975,
+          52.40626706369534
+        ],
+        [
+          4.889602133216058,
+          52.406279403110055
+        ],
+        [
+          4.889614912246696,
+          52.40628910951982
+        ],
+        [
+          4.889659958552024,
+          52.40626778228134
+        ],
+        [
+          4.889701718177424,
+          52.406300969290065
+        ],
+        [
+          4.889655963980211,
+          52.40632251826254
+        ],
+        [
+          4.8896719133261115,
+          52.406335194917176
+        ],
+        [
+          4.889675754486216,
+          52.40633338655602
+        ],
+        [
+          4.889682557170871,
+          52.406338744800486
+        ],
+        [
+          4.889809010164352,
+          52.40643848145003
+        ],
+        [
+          4.889809767643265,
+          52.40643907781512
+        ],
+        [
+          4.889632563254833,
+          52.40652323101776
+        ],
+        [
+          4.889711191803333,
+          52.4065854591664
+        ],
+        [
+          4.889519468055482,
+          52.4066760852475
+        ],
+        [
+          4.88951667575746,
+          52.40667740368914
+        ],
+        [
+          4.889246487362075,
+          52.406463620559975
+        ],
+        [
+          4.889301005991516,
+          52.40643765969461
+        ],
+        [
+          4.889241956664072,
+          52.40639078358411
+        ],
+        [
+          4.889273422779614,
+          52.40637614913423
+        ]
+      ]
+    ]
+  }
+}

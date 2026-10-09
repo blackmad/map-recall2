@@ -1,0 +1,22 @@
+{
+  "id": "n1618230174",
+  "name": "Kazerne Weesp",
+  "lng": 5.0449773,
+  "lat": 52.3025707,
+  "category": "building",
+  "description": "Weesp\u2019s volunteer fire station moved from the Achtergracht to the Aetsveldselaan in 2011. Its history began in 1888 in a former telegraph and post office with five hand pumps. The present station combines a curved four-bay appliance hall with a timber-faced upper volume and distinctive trapezoidal glazing.",
+  "facts": [
+    "Volunteer crews respond from home or work when their pager sounds.",
+    "The station occupied the Achtergracht from 1960 until its move here in 2011.",
+    "The original 1888 station used a former telegraph and post office."
+  ],
+  "sourceUrls": [
+    "https://www.brandweer.nl/kazerne/weesp/",
+    "https://www.openstreetmap.org/node/1618230174"
+  ],
+  "routeDestination": {
+    "lng": 5.044978,
+    "lat": 52.302535
+  },
+  "destinationNote": "Source-observed pedestrian door in the southern frontage, immediately right of the five-door group; pin on public forecourt, outside surveyed footprint. Verify root route reachability."
+}

@@ -1,0 +1,201 @@
+{
+  "scope": "13 official operational land firestations in Amsterdam municipality, including Driemond and Weesp",
+  "completedOn": "2026-10-09",
+  "branch": "firestations-native-20261009",
+  "deployed": false,
+  "stations": [
+    {
+      "modelId": "fire-station-hendrik",
+      "status": "verified-scoped-local",
+      "bytes": 143572,
+      "sha256": "a28a910251f361f8010cd852352eb8226cfb3d9add3de7260f367eb9d448925c",
+      "sourceArchive": {
+        "commit": "faa4982c39e897044f29862de5584135b3f1411d",
+        "path": "models/fire-station-hendrik/"
+      },
+      "acceptance": "docs/references/fire-station-hendrik/local-acceptance.json",
+      "nativeEvidence": "artifacts/firestations-review/final-hendrik/fire-station-hendrik",
+      "performanceEvidence": "artifacts/firestations-review/final-hendrik-valid-gps/fire-station-hendrik/gameplay"
+    },
+    {
+      "modelId": "fire-station-dirk",
+      "status": "verified-scoped-local",
+      "bytes": 229876,
+      "sha256": "cf63ed7a452b9c05c58770342350eca1a490038cd6ac4a10f936f4a561b3be6f",
+      "sourceArchive": {
+        "commit": "faa4982c39e897044f29862de5584135b3f1411d",
+        "path": "models/fire-station-dirk/"
+      },
+      "acceptance": "docs/references/fire-station-dirk/local-acceptance.json",
+      "nativeEvidence": "artifacts/firestations-review/final-dirk/fire-station-dirk",
+      "performanceEvidence": "artifacts/firestations-review/final-dirk-performance/fire-station-dirk/gameplay"
+    },
+    {
+      "modelId": "fire-station-nico",
+      "status": "verified-scoped-local",
+      "bytes": 396984,
+      "sha256": "f9dbc9b6d4d2ace3af2a2e9579214eddcc1618706f2400c7d516069112f9b8e8",
+      "sourceArchive": {
+        "commit": "acda02460c197118b05678b683b3743a6b8920a0",
+        "path": "models/fire-station-nico/"
+      },
+      "acceptance": "docs/references/fire-station-nico/local-acceptance.json",
+      "nativeEvidence": "artifacts/firestations-review/final-nico-osdorp/fire-station-nico",
+      "performanceEvidence": "artifacts/firestations-review/final-nico-valid-gps/fire-station-nico/gameplay"
+    },
+    {
+      "modelId": "fire-station-osdorp",
+      "status": "verified-scoped-local",
+      "bytes": 303552,
+      "sha256": "9edad63f86b9243db8f3e663bb5f6adbcd1fc274859daff8a24b55b7646e46a0",
+      "sourceArchive": {
+        "commit": "acda02460c197118b05678b683b3743a6b8920a0",
+        "path": "models/fire-station-osdorp/"
+      },
+      "acceptance": "docs/references/fire-station-osdorp/local-acceptance.json",
+      "nativeEvidence": "artifacts/firestations-review/final-teunis-victor-willem/fire-station-osdorp",
+      "performanceEvidence": "artifacts/firestations-review/final-osdorp-performance/fire-station-osdorp/gameplay"
+    },
+    {
+      "modelId": "fire-station-teunis",
+      "status": "verified-scoped-local",
+      "bytes": 74864,
+      "sha256": "78a5f49bd115750de5af0647a21ddbcf05af885151b4be8503164b9b2e5cf1db",
+      "sourceArchive": {
+        "commit": "2a64da08c7bb126572c59ac270af4d64ea156d99",
+        "path": "models/fire-station-teunis/"
+      },
+      "acceptance": "docs/references/fire-station-teunis/local-acceptance.json",
+      "nativeEvidence": "artifacts/firestations-review/final-teunis-victor-willem/fire-station-teunis",
+      "performanceEvidence": "artifacts/firestations-review/gpu-next/performance/fire-station-teunis/gameplay"
+    },
+    {
+      "modelId": "fire-station-victor",
+      "status": "verified-scoped-local",
+      "bytes": 260328,
+      "sha256": "93fb54f39ecc0262c2862e14d231fde9e1b5ce2bea3f28f82068f7f110065ac3",
+      "sourceArchive": {
+        "commit": "6d6fef5644ea0d4373e756e008e759754aa1cd45",
+        "path": "models/fire-station-victor/"
+      },
+      "acceptance": "docs/references/fire-station-victor/local-acceptance.json",
+      "nativeEvidence": "artifacts/firestations-review/gpu-next/main-native-recovery/fire-station-victor",
+      "performanceEvidence": "artifacts/firestations-review/gpu-next/performance/fire-station-victor/gameplay"
+    },
+    {
+      "modelId": "fire-station-willem",
+      "status": "verified-scoped-local",
+      "bytes": 488424,
+      "sha256": "e694632ea4eb905c63272244d5413cc3bea180df5c7bbd67ca485c11f87ba252",
+      "sourceArchive": {
+        "commit": "6d6fef5644ea0d4373e756e008e759754aa1cd45",
+        "path": "models/fire-station-willem/"
+      },
+      "acceptance": "docs/references/fire-station-willem/local-acceptance.json",
+      "nativeEvidence": "artifacts/firestations-review/gpu-next/main-native-recovery/fire-station-willem",
+      "performanceEvidence": "artifacts/firestations-review/gpu-next/performance/fire-station-willem/gameplay"
+    },
+    {
+      "modelId": "fire-station-ijsbrand",
+      "status": "verified-scoped-local",
+      "bytes": 129656,
+      "sha256": "62db72acfe611233f517497579b9dc9e5c0a6bbf13561c851487085370e044c1",
+      "sourceArchive": {
+        "commit": "6d6fef5644ea0d4373e756e008e759754aa1cd45",
+        "path": "models/fire-station-ijsbrand/"
+      },
+      "acceptance": "docs/references/fire-station-ijsbrand/local-acceptance.json",
+      "nativeEvidence": "artifacts/firestations-review/gpu-next/main-native/fire-station-ijsbrand",
+      "performanceEvidence": "artifacts/firestations-review/gpu-next/performance/fire-station-ijsbrand/gameplay"
+    },
+    {
+      "modelId": "fire-station-pieter",
+      "status": "verified-scoped-local",
+      "bytes": 100568,
+      "sha256": "b5e22ca8fc13de129b3c4a325e1261f24dea9bb8ae19f0349a541ca2ecd3607c",
+      "sourceArchive": {
+        "commit": "6d6fef5644ea0d4373e756e008e759754aa1cd45",
+        "path": "models/fire-station-pieter/"
+      },
+      "acceptance": "docs/references/fire-station-pieter/local-acceptance.json",
+      "nativeEvidence": "artifacts/firestations-review/gpu-next/main-native/fire-station-pieter",
+      "performanceEvidence": "artifacts/firestations-review/gpu-next/performance/fire-station-pieter/gameplay"
+    },
+    {
+      "modelId": "fire-station-zebra",
+      "status": "verified-scoped-local",
+      "bytes": 135812,
+      "sha256": "7aa607aea03ace00ff85195fe4348775f2d513f59003291bce12c74ccbde6421",
+      "sourceArchive": {
+        "commit": "b1cf02299a6713051fb6475003b27af07cb87033",
+        "path": "models/fire-station-zebra/"
+      },
+      "acceptance": "docs/references/fire-station-zebra/local-acceptance.json",
+      "nativeEvidence": "artifacts/firestations-review/gpu-next/main-native/fire-station-zebra",
+      "performanceEvidence": "artifacts/firestations-review/gpu-next/performance/fire-station-zebra/gameplay"
+    },
+    {
+      "modelId": "fire-station-driemond",
+      "status": "verified-scoped-local",
+      "bytes": 45644,
+      "sha256": "d6470dc788512bc5794025219ba5790bf5b9550666f4546ec7d0930f1651187a",
+      "sourceArchive": {
+        "commit": "88011e7ed8077cb10765450f4e1c7a0d654d91e2",
+        "path": "models/fire-station-driemond/"
+      },
+      "acceptance": "docs/references/fire-station-driemond/local-acceptance.json",
+      "nativeEvidence": "artifacts/firestations-review/gpu-next/main-native-recovery/fire-station-driemond",
+      "performanceEvidence": "artifacts/firestations-review/gpu-next/performance/fire-station-driemond/gameplay"
+    },
+    {
+      "modelId": "fire-station-weesp",
+      "status": "verified-scoped-local",
+      "bytes": 57896,
+      "sha256": "ae5e8066de6020f9d155663efe16ce9f0e3f82352d87ad42efa256976b69ba95",
+      "sourceArchive": {
+        "commit": "88011e7ed8077cb10765450f4e1c7a0d654d91e2",
+        "path": "models/fire-station-weesp/"
+      },
+      "acceptance": "docs/references/fire-station-weesp/local-acceptance.json",
+      "nativeEvidence": "artifacts/firestations-review/gpu-next/main-native-recovery/fire-station-weesp",
+      "performanceEvidence": "artifacts/firestations-review/gpu-next/performance-weesp-corrected/fire-station-weesp/gameplay"
+    },
+    {
+      "modelId": "fire-station-anton",
+      "status": "verified-scoped-local",
+      "bytes": 338280,
+      "sha256": "ba76d5dc361a97255eb19ff5f9fb105bd7066f295367e9a90120de54d55ad88f",
+      "sourceArchive": {
+        "commit": "6815ce3a8b7712c41bab39470fe2f23b5ce8348a",
+        "path": "models/fire-station-anton/"
+      },
+      "acceptance": "docs/references/fire-station-anton/local-acceptance.json",
+      "nativeEvidence": "artifacts/firestations-review/gpu-next/anton-final-native/fire-station-anton",
+      "performanceEvidence": "artifacts/firestations-review/gpu-next/anton-final-performance/fire-station-anton/gameplay"
+    }
+  ],
+  "checks": [
+    "Root source/render comparisons and independent failure-seeking reviews",
+    "Native gallery/game scale1, real destinations, pins and meaningful sourced cards",
+    "Exact replaced identities across ordinary building/roof layers, resident neighbors and failed/disabled replacement fallback",
+    "Actual mouse/touch stationary-rider pans with facade preservation and90-frame on/off/on timings",
+    "Combined isolated release current GLB receipt/route/card/mask/fallback checks"
+  ],
+  "combinedReleaseEvidence": "artifacts/firestations-review/gpu-next/isolated-final-native (8), isolated-final-anton-native (Anton); earlier isolated-release (Hendrik/Dirk/Nico/Osdorp).",
+  "performanceScope": "Headless Chrome, ANGLE Metal Apple M4 Pro; desktop/touch emulation; no physical-device performance claim.",
+  "failedEvidencePreserved": [
+    "Anton below-grade striped wall and earlier front-window grouping",
+    "Osdorp curtain mullion/soffit frame overrun",
+    "IJsbrand unsupported full-height red end volume",
+    "Victor blank rear facade",
+    "Willem roof plate/PV versus actual rooflight interpretation",
+    "Driemond reversed roof-wing heights",
+    "Weesp upper shoulder/canopy closure and original fixed GPS boundary rejection"
+  ],
+  "limitations": [
+    "Occluded rear/site details remain explicit bounded approximations in per-model research.",
+    "GPS routing uses sourced public approach points where building centroids are not road-reachable."
+  ],
+  "lastFeedbackPull": "2026-10-09T11:09:38.561Z",
+  "feedbackState": "0 open notes; pre-existing unrelated Melkweg in-progress claim left unchanged."
+}
