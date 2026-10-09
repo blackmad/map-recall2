@@ -2,11 +2,7 @@
 // Bounds/height vs 3DBAG roof extent, no floating parts, triangle cap, installed GLB present.
 import assert from 'node:assert/strict';import fs from 'node:fs';import * as T from 'three';
 import type {BuildingTools} from './landmarks/cultural-builders';
-import {buildTortureMuseum} from './landmarks/torture-museum-builder';
-import {buildTheoThijssenMuseum} from './landmarks/theo-thijssen-museum-builder';
-import {buildPatheDeMunt} from './landmarks/pathe-de-munt-builder';
-import {buildHouseboatMuseum} from './landmarks/houseboat-museum-builder';
-const builders:Record<string,(w:number,d:number,b:BuildingTools)=>void>={'houseboat-museum':buildHouseboatMuseum,'pathe-de-munt':buildPatheDeMunt,'torture-museum':buildTortureMuseum,'theo-thijssen-museum':buildTheoThijssenMuseum};
+import {museums2Builders as builders} from './landmarks/museums2-registry';
 const ids=process.argv.slice(2).length?process.argv.slice(2):Object.keys(builders);
 for(const id of ids){
  const build=builders[id];assert(build,`no builder for ${id}`);
