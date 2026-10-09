@@ -127,3 +127,42 @@ export function bar(b: BuildingTools, a: T.Vector3, c: T.Vector3, r: number, col
   const mid = a.clone().add(c).multiplyScalar(.5);
   b.add(g, col, mid.x, mid.y, mid.z);
 }
+
+export interface LodSurface { type: string; rings: number[][][] }
+/**
+ * 3DBAG LoD2.2 surfaces already converted to local metres (x east, y up above
+ * maaiveld, z south). The conversion mirrors handedness, so the stored winding
+ * is inverted: emit triangles against the Newell normal to face outward.
+ */
+export function lodSurfaces(b: BuildingTools, surfaces: LodSurface[], types: string[], c: Col) {
+  const pos: number[] = [];
+  for (const s of surfaces) {
+    if (!types.includes(s.type)) continue;
+    const outer = s.rings[0].map(p => new T.Vector3(p[0], p[1], p[2]));
+    const n = new T.Vector3();
+    for (let i = 0; i < outer.length; i++) {
+      const a = outer[i], q = outer[(i + 1) % outer.length];
+      n.x += (a.y - q.y) * (a.z + q.z); n.y += (a.z - q.z) * (a.x + q.x); n.z += (a.x - q.x) * (a.y + q.y);
+    }
+    if (n.lengthSq() < 1e-12) continue;
+    n.normalize();
+    const ref = Math.abs(n.y) < .9 ? new T.Vector3(0, 1, 0) : new T.Vector3(1, 0, 0);
+    const u = ref.clone().cross(n).normalize(), v = n.clone().cross(u);
+    const flat = (p: T.Vector3) => new T.Vector2(p.dot(u), p.dot(v));
+    const contour = outer.map(flat);
+    const holes = s.rings.slice(1).map(r => r.map(p => flat(new T.Vector3(p[0], p[1], p[2]))));
+    const all = [...outer, ...s.rings.slice(1).flatMap(r => r.map(p => new T.Vector3(p[0], p[1], p[2])))];
+    const tris = T.ShapeUtils.triangulateShape(contour, holes);
+    for (const [i, j, k] of tris) {
+      let tri = [all[i], all[j], all[k]];
+      const g = tri[1].clone().sub(tri[0]).cross(tri[2].clone().sub(tri[0]));
+      if (g.dot(n) < 0) tri = [tri[0], tri[2], tri[1]]; // calibrated: outward = +Newell of the mirrored ring
+      for (const p of tri) pos.push(p.x, p.y, p.z);
+    }
+  }
+  if (!pos.length) return;
+  const g = new T.BufferGeometry();
+  g.setAttribute('position', new T.Float32BufferAttribute(pos, 3));
+  g.computeVertexNormals();
+  b.add(g, c);
+}

@@ -1818,5 +1818,15 @@
     "description": "Museum Amsterdam Noord is a cultural-history museum on the corner of Zamenhofstraat and Meeuwenlaan in Amsterdam-Noord. Since April 2009 it has occupied the municipal bath house that was built in 1919 for the garden village of Vogeldorp, whose houses had no bathrooms. It holds a modest historical collection and a space for exhibitions, lectures and film evenings.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Museum_Amsterdam_Noord",
     "additionalSources": []
+  },
+  {
+    "modelId": "levend-paardenmuseum",
+    "landmarkId": "extract_landmarks_82936853",
+    "name": "Levend Paardenmuseum",
+    "description": "The Living Horse Museum (Levend Paardenmuseum) is housed in the Hollandsche Manege, the oldest riding school in the Netherlands. The school dates back to 1744; the present building, inspired by the Spanish Riding School in Vienna, was built in 1882. Its richly decorated interior has an iron roof frame, and the building has been a national monument since 1974.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hollandsche_Manege",
+    "additionalSources": [
+      "https://nl.wikipedia.org/wiki/Hollandsche_Manege"
+    ]
   }
 ]
