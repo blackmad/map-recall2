@@ -1,5 +1,10 @@
 "use strict";
 (() => {
+  // src/canalRecall/genericFacades.ts
+  var FACADE_STYLES = ["canal", "c19", "school", "postwar", "modern", "tower"];
+  var FACADE_PIXELS_PER_M = 8;
+  var FACADE_MAX_TILE_ZOOM = 16 + Math.log2(FACADE_PIXELS_PER_M);
+
   // src/canalRecall/roofSink.ts
   var sub = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
   var cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
@@ -3481,11 +3486,6 @@
     }
   };
   var proceduralOpenings = (style) => PROCEDURAL[style];
-
-  // src/canalRecall/genericFacades.ts
-  var FACADE_STYLES = ["canal", "c19", "school", "postwar", "modern", "tower"];
-  var FACADE_PIXELS_PER_M = 8;
-  var FACADE_MAX_TILE_ZOOM = 16 + Math.log2(FACADE_PIXELS_PER_M);
 
   // src/canalRecall/facadeCells.ts
   var CELL_KINDS = ["upper", "ground", "door", "plain", "shop"];

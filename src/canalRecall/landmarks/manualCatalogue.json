@@ -13127,6 +13127,8 @@
 },
 {
   "id": "koningskerk",
+  "status": "held",
+  "heldReason": "Grey shell; the curved concrete grid hall is not modelled, tower placement inferred (integrator review 2026-10-09).",
   "name": "Koningskerk",
   "landmarkId": "extract_landmarks_879972030",
   "modelUrl": "./models/koningskerk.glb",
