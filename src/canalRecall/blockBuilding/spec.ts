@@ -29,7 +29,7 @@ export interface BalconyParams {
   /** balcony width (m), centred on the bay; default fills the cell */
   w?: number;
   slab?: { h?: number; slot?: Slot };
-  rail?: { kind?: 'glass' | 'bars' | 'solid'; h?: number; slot?: Slot; top?: Slot | null };
+  rail?: { kind?: 'glass' | 'bars' | 'rods' | 'solid'; h?: number; slot?: Slot; top?: Slot | null };
   /** recessed glazing behind the balcony */
   back?: WinParams | null;
   /** side cheeks (m of wall each side, solid) */
