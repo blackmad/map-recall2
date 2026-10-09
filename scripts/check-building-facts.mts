@@ -69,7 +69,11 @@ const store = new BuildingFactStore('/data/amsterdam', async (url) => {
 });
 store.prefetchAround(4.8835, 52.3745);
 store.prefetchAround(4.8836, 52.3745);
-await new Promise(resolve => setTimeout(resolve, 20));
+// Wait for the async gunzip to land rather than a fixed 20 ms, which failed
+// 3 in 5 runs on a loaded machine (2026-10-09).
+for (const deadline = Date.now() + 2000; !store.lookup('NL.IMBAG.Pand.0363100012061542') && Date.now() < deadline;) {
+  await new Promise(resolve => setTimeout(resolve, 10));
+}
 assert.equal(requested.length, 9, 'nine tiles, once, however often the rider moves inside one');
 assert.deepEqual(store.lookup('NL.IMBAG.Pand.0363100012061542'), [1665, -1, 0]);
 assert.equal(store.lookup('w1'), null);

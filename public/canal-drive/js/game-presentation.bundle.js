@@ -12087,6 +12087,1632 @@
         ]
       },
       heightMetres: 8.27
+    },
+    {
+      id: "keizersgrachtkerk",
+      name: "Keizersgrachtkerk",
+      modelUrl: "./models/keizersgrachtkerk.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012177272"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.888077939720203,
+          52.364601907267215
+        ],
+        headingDegrees: 0,
+        lengthMetres: 29,
+        widthMetres: 15
+      },
+      surveyed: {
+        anchor: [
+          4.888077939720203,
+          52.364601907267215
+        ],
+        northOffsetDegrees: 0,
+        source: "Exact current BAG0363100012177272 native east/south metres, single church footprint; frontage chain5\u21920 toward Keizersgracht; semantic AHN5 roof profiles; adjacent canal houses retained."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "Keizersgrachtkerk \u2014 original surveyed neo-Venetian church",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/518347",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original native texture-free flat-color geometry; photos and survey evidence guide architectural construction."
+      },
+      materialOverrides: {
+        brick: "#986f5d",
+        stone: "#d5cfbd",
+        slate: "#707e86",
+        glass: "#526362",
+        white: "#e5dfcc",
+        bronze: "#67583d"
+      },
+      landmarkId: "extract_landmarks_2099326007",
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.888241685335008,
+              52.36462308359631
+            ],
+            [
+              4.88819475435939,
+              52.36464990289949
+            ],
+            [
+              4.8881895528529,
+              52.3646528828759
+            ],
+            [
+              4.888136046264016,
+              52.3646834492846
+            ],
+            [
+              4.888130829967449,
+              52.36468643818384
+            ],
+            [
+              4.888083381682339,
+              52.364713551857186
+            ],
+            [
+              4.887797857996435,
+              52.36452631082924
+            ],
+            [
+              4.887956161560617,
+              52.36443584294671
+            ],
+            [
+              4.8879711874636795,
+              52.36444570293165
+            ],
+            [
+              4.888241685335008,
+              52.36462308359631
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "gerard-dou-synagogue",
+      name: "Gerard Dou Synagogue",
+      modelUrl: "./models/gerard-dou-synagogue.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012140916"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.897864665654482,
+          52.357009615706716
+        ],
+        headingDegrees: 90,
+        lengthMetres: 22,
+        widthMetres: 20
+      },
+      surveyed: {
+        anchor: [
+          4.897864665654482,
+          52.357009615706716
+        ],
+        northOffsetDegrees: 0,
+        source: "Current PDOK BAG0363100012140916, native east/south metres; street frontage0\u21921\u21922\u21923. AHN4 2020 survey calibrated roof envelope, historic reference facade details."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "Gerard Dou Synagogue",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/527843",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original native-scale flat-colour geometry guided by survey and facade references, no imported meshes or pixels."
+      },
+      materialOverrides: {
+        brick: "#855346",
+        white: "#e1e2d8",
+        stone: "#d0d4c9",
+        bronze: "#4b5555",
+        slate: "#515453",
+        glass: "#6e878b",
+        dark: "#27332f",
+        frame: "#9baba5"
+      },
+      landmarkId: "extract_landmarks_25099441",
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.897907518089136,
+              52.357111946455746
+            ],
+            [
+              4.897792804291975,
+              52.357079565789725
+            ],
+            [
+              4.897794275314639,
+              52.35707795407927
+            ],
+            [
+              4.897749295235176,
+              52.35706489767303
+            ],
+            [
+              4.897827078629125,
+              52.35696524869016
+            ],
+            [
+              4.897856917348026,
+              52.356927021378546
+            ],
+            [
+              4.897880859120163,
+              52.35693368139289
+            ],
+            [
+              4.8979508843671224,
+              52.356953168629296
+            ],
+            [
+              4.89802235849498,
+              52.356973057271745
+            ],
+            [
+              4.897907518089136,
+              52.357111946455746
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "lekstraat-synagoge",
+      name: "Lekstraatsynagoge",
+      landmarkId: "extract_landmarks_665340356",
+      modelUrl: "./models/lekstraat-synagoge.glb",
+      suppressOsmIds: [
+        "w277300134",
+        "NL.IMBAG.Pand.0363100012104516"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.902905407824482,
+          52.34412940118549
+        ],
+        headingDegrees: 90,
+        lengthMetres: 41.68,
+        widthMetres: 40.38
+      },
+      surveyed: {
+        anchor: [
+          4.902905407824482,
+          52.34412940118549
+        ],
+        northOffsetDegrees: 0,
+        source: "Current3DBAG/ BAG native east/south surveyed shell with groundNAP0.339m"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        stone: "#d8d3bf",
+        ochre: "#c7bb91",
+        glass: "#8a9491",
+        concrete: "#b5b3a3",
+        slate: "#555951",
+        dark: "#41473f",
+        bronze: "#725b40",
+        white: "#dfdfc9",
+        copper: "#536c5e"
+      },
+      attribution: {
+        title: "Lekstraatsynagoge",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/526707",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native-survey reconstruction; register526707, dated exterior photos and3DBAG roof semantics. Hebrew inscription uses approximate Arial Bold outlines. No imported meshes/photo pixels. Draft requires nativegallery/live acceptance and sourcepack publication."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.903021666421927,
+              52.344057750169384
+            ],
+            [
+              4.903102909567585,
+              52.344087121941655
+            ],
+            [
+              4.903098041215613,
+              52.34409216213417
+            ],
+            [
+              4.903142901775154,
+              52.34410838876269
+            ],
+            [
+              4.903147770221814,
+              52.34410333958091
+            ],
+            [
+              4.903178174244833,
+              52.344114339110035
+            ],
+            [
+              4.903173320572729,
+              52.34411937936567
+            ],
+            [
+              4.903222741844785,
+              52.34413725139906
+            ],
+            [
+              4.903162880692317,
+              52.34419933666943
+            ],
+            [
+              4.90306509607802,
+              52.34430072302513
+            ],
+            [
+              4.902980737413736,
+              52.344270376792934
+            ],
+            [
+              4.90295268600559,
+              52.34426029460262
+            ],
+            [
+              4.902911756590326,
+              52.34424556696816
+            ],
+            [
+              4.902883690637252,
+              52.34423547571411
+            ],
+            [
+              4.902859147686695,
+              52.344226639180874
+            ],
+            [
+              4.902855000722515,
+              52.34423011844632
+            ],
+            [
+              4.902746204992828,
+              52.34419067529477
+            ],
+            [
+              4.902723694570719,
+              52.3441825121468
+            ],
+            [
+              4.902619064974938,
+              52.344144577898554
+            ],
+            [
+              4.902770712512189,
+              52.34398758045399
+            ],
+            [
+              4.902789755656663,
+              52.34396785837471
+            ],
+            [
+              4.902764909420386,
+              52.343958589167414
+            ],
+            [
+              4.902779158437077,
+              52.34394382668261
+            ],
+            [
+              4.902784576131115,
+              52.34393820454738
+            ],
+            [
+              4.9029235711812,
+              52.34398851160862
+            ],
+            [
+              4.90304582975117,
+              52.344032764196314
+            ],
+            [
+              4.903021666421927,
+              52.344057750169384
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "petrus-en-paulus-kerk",
+      name: "Sint-Petrus-en-Pauluskerk",
+      landmarkId: "extract_landmarks_1828911806",
+      modelUrl: "./models/petrus-en-paulus-kerk.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012097854"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.884583111087057,
+          52.35409934503864
+        ],
+        headingDegrees: 0,
+        lengthMetres: 24,
+        widthMetres: 36
+      },
+      surveyed: {
+        anchor: [
+          4.884583111087057,
+          52.35409934503864
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG 0363100012097854 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#7b6259",
+        stone: "#b9ad98",
+        slate: "#a2543f",
+        glass: "#4f6068",
+        dark: "#3a3330",
+        white: "#d8d2c2",
+        frame: "#5b524a",
+        bronze: "#6b5a3d"
+      },
+      attribution: {
+        title: "Sint-Petrus-en-Pauluskerk",
+        author: "Map Recall",
+        sourceUrl: "https://nl.wikipedia.org/wiki/Sint-Petrus-en-Pauluskerk_%28Amsterdam%29",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.884754266159741,
+              52.354077383889035
+            ],
+            [
+              4.8847503526888865,
+              52.35408466532819
+            ],
+            [
+              4.884697079211315,
+              52.35419149224096
+            ],
+            [
+              4.884619888834083,
+              52.35417697287419
+            ],
+            [
+              4.884625459414434,
+              52.354165941596825
+            ],
+            [
+              4.884591025723728,
+              52.35415931522717
+            ],
+            [
+              4.884589699975666,
+              52.35416102625761
+            ],
+            [
+              4.884586887878869,
+              52.35416048404
+            ],
+            [
+              4.884584591821121,
+              52.35416492322555
+            ],
+            [
+              4.88457516333646,
+              52.354167956999945
+            ],
+            [
+              4.88457187811539,
+              52.354169012592
+            ],
+            [
+              4.884558010577242,
+              52.35416611357787
+            ],
+            [
+              4.884557037152277,
+              52.35416522864511
+            ],
+            [
+              4.884549772345988,
+              52.354158663703416
+            ],
+            [
+              4.88455192549879,
+              52.35415388237732
+            ],
+            [
+              4.884529794045243,
+              52.35414968998275
+            ],
+            [
+              4.884525175534911,
+              52.354159601830425
+            ],
+            [
+              4.884524498449616,
+              52.35416106395791
+            ],
+            [
+              4.884462499949707,
+              52.35414916152212
+            ],
+            [
+              4.884462680356967,
+              52.354148784802945
+            ],
+            [
+              4.884467764168435,
+              52.35413796717138
+            ],
+            [
+              4.884446526130339,
+              52.35413394932287
+            ],
+            [
+              4.884441721290538,
+              52.3541447591507
+            ],
+            [
+              4.884441164067093,
+              52.354146006080875
+            ],
+            [
+              4.884403374236729,
+              52.35413892500203
+            ],
+            [
+              4.884508621815754,
+              52.35393122476792
+            ],
+            [
+              4.884509938722295,
+              52.35393158987049
+            ],
+            [
+              4.884538839769728,
+              52.35387460445446
+            ],
+            [
+              4.884697528451123,
+              52.353909395719405
+            ],
+            [
+              4.884737764422762,
+              52.3539182127362
+            ],
+            [
+              4.884707219154371,
+              52.35397783361752
+            ],
+            [
+              4.884691201190009,
+              52.35397429634753
+            ],
+            [
+              4.884644955690578,
+              52.35406193727061
+            ],
+            [
+              4.884665461563191,
+              52.35406579918353
+            ],
+            [
+              4.884667965230923,
+              52.35406117213509
+            ],
+            [
+              4.884754266159741,
+              52.354077383889035
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "maarten-lutherkerk",
+      name: "Maarten Lutherkerk",
+      landmarkId: "extract_landmarks_404188843",
+      modelUrl: "./models/maarten-lutherkerk.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012135926"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.895008844531905,
+          52.34139312338786
+        ],
+        headingDegrees: 0,
+        lengthMetres: 33,
+        widthMetres: 25
+      },
+      surveyed: {
+        anchor: [
+          4.895008844531905,
+          52.34139312338786
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG 0363100012135926 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#a08a62",
+        stone: "#bcb4a2",
+        slate: "#5f5b55",
+        glass: "#6d8388",
+        dark: "#2f2b27",
+        white: "#d9d5c8",
+        frame: "#5a4a38",
+        copper: "#6aa38c",
+        ochre: "#a9733f",
+        bronze: "#4b4a42"
+      },
+      attribution: {
+        title: "Maarten Lutherkerk",
+        author: "Map Recall",
+        sourceUrl: "https://nl.wikipedia.org/wiki/Maarten_Luther_Kerk_%28Amsterdam%29",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.8951739848152025,
+              52.34139190799625
+            ],
+            [
+              4.895160815594325,
+              52.34139250036336
+            ],
+            [
+              4.895162523238308,
+              52.341406573313414
+            ],
+            [
+              4.895175692463338,
+              52.34140598094613
+            ],
+            [
+              4.895176620567369,
+              52.34141359744065
+            ],
+            [
+              4.895163451240487,
+              52.3414141987954
+            ],
+            [
+              4.895165158985719,
+              52.34142826275802
+            ],
+            [
+              4.895178328217152,
+              52.341427670390445
+            ],
+            [
+              4.895179241648651,
+              52.34143528682388
+            ],
+            [
+              4.8951660723153685,
+              52.3414358881789
+            ],
+            [
+              4.895167793739646,
+              52.34145004207593
+            ],
+            [
+              4.89518096297751,
+              52.341449449708065
+            ],
+            [
+              4.895181662351707,
+              52.341455195796684
+            ],
+            [
+              4.8951852774420725,
+              52.341485176030226
+            ],
+            [
+              4.894910773349172,
+              52.34149799248358
+            ],
+            [
+              4.894887414742666,
+              52.34149908170071
+            ],
+            [
+              4.8948191154997955,
+              52.3415022578504
+            ],
+            [
+              4.894815203975776,
+              52.341471242778894
+            ],
+            [
+              4.89480830367305,
+              52.34147155560476
+            ],
+            [
+              4.894799893352342,
+              52.34140558637621
+            ],
+            [
+              4.894799812588262,
+              52.34140492993341
+            ],
+            [
+              4.89480730021596,
+              52.341404583600614
+            ],
+            [
+              4.894804046703753,
+              52.341379071777446
+            ],
+            [
+              4.894802019328951,
+              52.34136340665725
+            ],
+            [
+              4.894783799969828,
+              52.34136420266452
+            ],
+            [
+              4.894753057819015,
+              52.34136552177832
+            ],
+            [
+              4.894725530935812,
+              52.341366692484144
+            ],
+            [
+              4.894716710552727,
+              52.341290080028635
+            ],
+            [
+              4.894827239905399,
+              52.34128439230105
+            ],
+            [
+              4.894848791681642,
+              52.34128346634674
+            ],
+            [
+              4.894856287327907,
+              52.34134458736318
+            ],
+            [
+              4.894864392730763,
+              52.341338814987395
+            ],
+            [
+              4.8948926401838655,
+              52.34133750344256
+            ],
+            [
+              4.894907258415609,
+              52.34134518587586
+            ],
+            [
+              4.894910099287243,
+              52.341368215356866
+            ],
+            [
+              4.895136945831394,
+              52.34135762746118
+            ],
+            [
+              4.895135328460032,
+              52.34134467835641
+            ],
+            [
+              4.895138793373426,
+              52.341344513007606
+            ],
+            [
+              4.895144108130629,
+              52.34134426547234
+            ],
+            [
+              4.895144782235524,
+              52.34134964295791
+            ],
+            [
+              4.895195757152169,
+              52.34134724843679
+            ],
+            [
+              4.895197765310826,
+              52.34136333589489
+            ],
+            [
+              4.895200218651845,
+              52.34138294840709
+            ],
+            [
+              4.895173042138255,
+              52.34138428245335
+            ],
+            [
+              4.8951739848152025,
+              52.34139190799625
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "museum-amsterdam-noord",
+      name: "Museum Amsterdam Noord",
+      landmarkId: "extract_landmarks_2034905768",
+      modelUrl: "./models/museum-amsterdam-noord.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012158267"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.9260085,
+          52.3881895
+        ],
+        headingDegrees: 77.26611841345363,
+        lengthMetres: 10.097759873305435,
+        widthMetres: 9.874652274437953
+      },
+      surveyed: {
+        anchor: [
+          4.9260085,
+          52.3881895
+        ],
+        northOffsetDegrees: 0,
+        source: "BAG pand 0363100012158267 (Zamenhofstraat, Vogeldorp) exact ring in local east/south metres; 3DBAG LoD2.2 hipped roof, ridge about 6.7 m, chimney top about 9.4 m above ground. Anchor is the ring bounding-box centre."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#cdb985",
+        greyBrick: "#8d7f62",
+        slate: "#4b4a50",
+        white: "#f1efe8",
+        green: "#3f5f49",
+        glass: "#7f97a0",
+        dark: "#2e3a35",
+        stone: "#bdb6a3"
+      },
+      attribution: {
+        title: "Museum Amsterdam Noord",
+        author: "Map Recall",
+        sourceUrl: "https://nl.wikipedia.org/wiki/Museum_Amsterdam_Noord",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native-scale hipped-roof bath house on the exact BAG footprint; buff brick, pantile hip with white fascia and dormers, chimney. Openings simplified from one 2025 municipal panorama; no imported mesh or photograph pixels."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.926064,
+              52.388243
+            ],
+            [
+              4.92592,
+              52.388223
+            ],
+            [
+              4.925953,
+              52.388136
+            ],
+            [
+              4.926097,
+              52.388156
+            ],
+            [
+              4.926064,
+              52.388243
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "levend-paardenmuseum",
+      name: "Levend Paardenmuseum",
+      landmarkId: "extract_landmarks_82936853",
+      modelUrl: "./models/levend-paardenmuseum.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012074454"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8718745,
+          52.3612855
+        ],
+        headingDegrees: 157.84905435812124,
+        lengthMetres: 76.50001127828995,
+        widthMetres: 50.5914940932001
+      },
+      surveyed: {
+        anchor: [
+          4.8718745,
+          52.3612855
+        ],
+        northOffsetDegrees: 0,
+        source: "BAG pand 0363100012074454 (Hollandsche Manege, Vondelstraat 140): exact ring and 3DBAG LoD2.2 roof/wall solid (ridge about 17 m above ground) in local east/south metres. Anchor is the ring bounding-box centre. Vondelstraat 140 gateway on the edge nearest the BAG address point."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#b98f77",
+        slate: "#5b6168",
+        white: "#ece6d6",
+        stone: "#a9a496",
+        dark: "#3c342d",
+        ochre: "#8a5a34",
+        glass: "#7f97a0"
+      },
+      attribution: {
+        title: "Levend Paardenmuseum",
+        author: "Map Recall",
+        sourceUrl: "https://en.wikipedia.org/wiki/Hollandsche_Manege",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native-scale massing from the exact BAG footprint and 3DBAG LoD2.2 walls and roofs, plus an authored Vondelstraat 140 stucco gateway with arched timber doors from one 2025 municipal panorama. The Levend Paardenmuseum POI is placed on the manege because the museum is a tenant of that building. No imported mesh or photograph pixels."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.872213,
+              52.361257
+            ],
+            [
+              4.872169,
+              52.361246
+            ],
+            [
+              4.871923,
+              52.361621
+            ],
+            [
+              4.871658,
+              52.361555
+            ],
+            [
+              4.871698,
+              52.361495
+            ],
+            [
+              4.871569,
+              52.361463
+            ],
+            [
+              4.871687,
+              52.361285
+            ],
+            [
+              4.871434,
+              52.36122
+            ],
+            [
+              4.871526,
+              52.361081
+            ],
+            [
+              4.871739,
+              52.361135
+            ],
+            [
+              4.871773,
+              52.361081
+            ],
+            [
+              4.872076,
+              52.361158
+            ],
+            [
+              4.872226,
+              52.36095
+            ],
+            [
+              4.872315,
+              52.360974
+            ],
+            [
+              4.872244,
+              52.361073
+            ],
+            [
+              4.872243,
+              52.361073
+            ],
+            [
+              4.872165,
+              52.361182
+            ],
+            [
+              4.872249,
+              52.361202
+            ],
+            [
+              4.872213,
+              52.361257
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "oudemanhuispoort",
+      name: "Oudemanhuispoort",
+      landmarkId: "extract_landmarks_1122909064",
+      modelUrl: "./models/oudemanhuispoort.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012180206"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8952165,
+          52.36937
+        ],
+        headingDegrees: 102.15765033332445,
+        lengthMetres: 10.498461315831001,
+        widthMetres: 6.853699493229458
+      },
+      surveyed: {
+        anchor: [
+          4.8952165,
+          52.36937
+        ],
+        northOffsetDegrees: 0,
+        source: "BAG pand 0363100012180206 (gate-house at the Oudezijds Achterburgwal end of the Oudemanhuispoort passage): exact ring and 3DBAG LoD2.2 solid (about 17 m above ground) in local east/south metres. Anchor is the ring bounding-box centre."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#a2705b",
+        slate: "#585b61",
+        white: "#e9e6dc",
+        stone: "#a7a59d",
+        dark: "#2e2a28",
+        ochre: "#4a3a2b",
+        glass: "#6f858f"
+      },
+      attribution: {
+        title: "Oudemanhuispoort",
+        author: "Map Recall",
+        sourceUrl: "https://nl.wikipedia.org/wiki/Oudemanhuispoort",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native-scale model of the gate-house on the exact BAG footprint and 3DBAG LoD2.2 solid, with a sandstone portal from one 2025 municipal panorama. The surrounding university complex is not modelled. No imported mesh or photograph pixels."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.89518,
+              52.369408
+            ],
+            [
+              4.895178,
+              52.369407
+            ],
+            [
+              4.895175,
+              52.369408
+            ],
+            [
+              4.895171,
+              52.369403
+            ],
+            [
+              4.895174,
+              52.369402
+            ],
+            [
+              4.895132,
+              52.369352
+            ],
+            [
+              4.895283,
+              52.369332
+            ],
+            [
+              4.895301,
+              52.369385
+            ],
+            [
+              4.895194,
+              52.369398
+            ],
+            [
+              4.895195,
+              52.3694
+            ],
+            [
+              4.895191,
+              52.369401
+            ],
+            [
+              4.895192,
+              52.369403
+            ],
+            [
+              4.895191,
+              52.369403
+            ],
+            [
+              4.895191,
+              52.369405
+            ],
+            [
+              4.895191,
+              52.369406
+            ],
+            [
+              4.895192,
+              52.369407
+            ],
+            [
+              4.895188,
+              52.369408
+            ],
+            [
+              4.895181,
+              52.369407
+            ],
+            [
+              4.89518,
+              52.369408
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "torture-museum",
+      name: "Torture Museum",
+      landmarkId: "extract_landmarks_417591223",
+      modelUrl: "./models/torture-museum.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012175875"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8906653,
+          52.3672872
+        ],
+        headingDegrees: 150,
+        lengthMetres: 17.46,
+        widthMetres: 6.39
+      },
+      surveyed: {
+        anchor: [
+          4.8906653,
+          52.3672872
+        ],
+        northOffsetDegrees: 0,
+        source: "BAG pand 0363100012175875 with 3DBAG LoD2.2 roofs; native east/south metres, scale 1."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#6c5a50",
+        stone: "#8f8b84",
+        slate: "#5a5a5e",
+        white: "#e6e4da",
+        glass: "#5f7581",
+        dark: "#23272b",
+        red: "#9b2f27"
+      },
+      attribution: {
+        title: "Torture Museum",
+        author: "Map Recall",
+        sourceUrl: "https://en.wikipedia.org/wiki/Torture_Museum,_Amsterdam",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free model on the BAG footprint (3DBAG LoD2.2 roof faces): dark steel-and-glass shopfront, three brick storeys with white-framed windows, stone cornice and blade sign. Window positions approximate, measured from a 2025 street-level panorama. No imported mesh or photo textures."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.890607,
+              52.367417
+            ],
+            [
+              4.890526,
+              52.367389
+            ],
+            [
+              4.890627,
+              52.367281
+            ],
+            [
+              4.890705,
+              52.367271
+            ],
+            [
+              4.890715,
+              52.367302
+            ],
+            [
+              4.890607,
+              52.367417
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "theo-thijssen-museum",
+      name: "Theo Thijssen Museum",
+      landmarkId: "extract_landmarks_1824871810",
+      modelUrl: "./models/theo-thijssen-museum.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012168755"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8826878,
+          52.3755212
+        ],
+        headingDegrees: 69.5,
+        lengthMetres: 12.26,
+        widthMetres: 5.04
+      },
+      surveyed: {
+        anchor: [
+          4.8826878,
+          52.3755212
+        ],
+        northOffsetDegrees: 0,
+        source: "BAG pand 0363100012168755 with 3DBAG LoD2.2 roofs; native east/south metres, scale 1."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#7a5b4d",
+        stone: "#cfc6ae",
+        slate: "#5d5a58",
+        white: "#ebe8dc",
+        glass: "#5c717a",
+        dark: "#1f2326",
+        frame: "#e8e2cf"
+      },
+      attribution: {
+        title: "Theo Thijssen Museum",
+        author: "Map Recall",
+        sourceUrl: "https://nl.wikipedia.org/wiki/Theo_Thijssen_Museum",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free model on the BAG footprint (3DBAG LoD2.2 roof faces): brick corner house with bowed ground-floor shop window, cream cornice, white-framed upper windows and the birth plaque. Dimensions approximate, measured from a 2025 street-level panorama. No imported mesh or photo textures."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.882761,
+              52.37556
+            ],
+            [
+              4.882643,
+              52.375533
+            ],
+            [
+              4.882593,
+              52.375522
+            ],
+            [
+              4.882606,
+              52.375499
+            ],
+            [
+              4.882657,
+              52.375511
+            ],
+            [
+              4.882669,
+              52.375491
+            ],
+            [
+              4.882787,
+              52.375518
+            ],
+            [
+              4.882761,
+              52.37556
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "pathe-de-munt",
+      name: "Path\xE9 de Munt",
+      landmarkId: "extract_landmarks_257271103",
+      modelUrl: "./models/pathe-de-munt.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012179384"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8934706,
+          52.3664519
+        ],
+        headingDegrees: 114.5,
+        lengthMetres: 40.38,
+        widthMetres: 39.98
+      },
+      surveyed: {
+        anchor: [
+          4.8934706,
+          52.3664519
+        ],
+        northOffsetDegrees: 0,
+        source: "BAG pand 0363100012179384 with 3DBAG LoD2.2 roofs; native east/south metres, scale 1."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#807a74",
+        greyBrick: "#7a7570",
+        stone: "#a9a69f",
+        slate: "#6a6865",
+        white: "#e7e5dd",
+        glass: "#667c86",
+        dark: "#25292c",
+        gold: "#e0b030"
+      },
+      attribution: {
+        title: "Path\xE9 de Munt",
+        author: "Map Recall",
+        sourceUrl: "https://nl.wikipedia.org/wiki/Path%C3%A9_de_Munt",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free model on the BAG footprint (3DBAG LoD2.2 roof faces): grey-brick multiplex with notched pitched volumes, glazed slits, lower entrance bays and the vertical Path\xE9 sign. Dimensions approximate, measured from 2025 panoramas. No imported mesh or photo textures."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.893385,
+              52.366544
+            ],
+            [
+              4.893385,
+              52.366547
+            ],
+            [
+              4.893343,
+              52.366368
+            ],
+            [
+              4.893511,
+              52.36635
+            ],
+            [
+              4.893501,
+              52.366312
+            ],
+            [
+              4.893619,
+              52.366295
+            ],
+            [
+              4.893617,
+              52.36629
+            ],
+            [
+              4.893711,
+              52.366261
+            ],
+            [
+              4.893683,
+              52.366227
+            ],
+            [
+              4.893789,
+              52.366216
+            ],
+            [
+              4.893801,
+              52.366251
+            ],
+            [
+              4.89402,
+              52.366523
+            ],
+            [
+              4.893929,
+              52.36655
+            ],
+            [
+              4.893931,
+              52.366552
+            ],
+            [
+              4.893901,
+              52.366561
+            ],
+            [
+              4.89389,
+              52.366547
+            ],
+            [
+              4.893862,
+              52.366556
+            ],
+            [
+              4.893862,
+              52.366555
+            ],
+            [
+              4.893799,
+              52.366574
+            ],
+            [
+              4.893792,
+              52.366576
+            ],
+            [
+              4.893776,
+              52.366557
+            ],
+            [
+              4.893706,
+              52.366576
+            ],
+            [
+              4.893692,
+              52.366556
+            ],
+            [
+              4.893635,
+              52.36657
+            ],
+            [
+              4.893606,
+              52.366572
+            ],
+            [
+              4.893597,
+              52.366528
+            ],
+            [
+              4.893385,
+              52.366544
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "houseboat-museum",
+      name: "Houseboat Museum (Hendrika Maria)",
+      landmarkId: "extract_landmarks_941219842",
+      modelUrl: "./models/houseboat-museum.glb",
+      suppressOsmIds: [
+        "w174999382"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.882602,
+          52.3701526
+        ],
+        headingDegrees: 6.5,
+        lengthMetres: 23.5,
+        widthMetres: 4.36
+      },
+      surveyed: {
+        anchor: [
+          4.882602,
+          52.3701526
+        ],
+        northOffsetDegrees: 0,
+        source: "BAG pand w174999382 with 3DBAG LoD2.2 roofs; native east/south metres, scale 1."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        dark: "#1d2124",
+        white: "#e4e1d3",
+        stone: "#8a8f90",
+        glass: "#5b707a",
+        slate: "#4a3d36",
+        brick: "#8b5e48",
+        red: "#8d3b2a",
+        green: "#c7c78a"
+      },
+      attribution: {
+        title: "Houseboat Museum (Hendrika Maria)",
+        author: "Map Recall",
+        sourceUrl: "https://en.wikipedia.org/wiki/Woonbootmuseum",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free barge model: black steel hull with cream waterline band, cream cabin with portholes, dark hatch roof and mast. Proportions approximate, from a 2021 street-level panorama. No imported mesh or photo textures."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.882615,
+              52.37008
+            ],
+            [
+              4.882614,
+              52.370077
+            ],
+            [
+              4.882613,
+              52.370074
+            ],
+            [
+              4.882611,
+              52.370071
+            ],
+            [
+              4.882608,
+              52.370068
+            ],
+            [
+              4.882605,
+              52.370066
+            ],
+            [
+              4.882601,
+              52.370064
+            ],
+            [
+              4.882597,
+              52.370063
+            ],
+            [
+              4.882592,
+              52.370062
+            ],
+            [
+              4.882587,
+              52.370061
+            ],
+            [
+              4.882582,
+              52.370061
+            ],
+            [
+              4.882576,
+              52.370062
+            ],
+            [
+              4.882571,
+              52.370064
+            ],
+            [
+              4.882567,
+              52.370066
+            ],
+            [
+              4.882563,
+              52.370068
+            ],
+            [
+              4.88256,
+              52.370071
+            ],
+            [
+              4.882557,
+              52.370074
+            ],
+            [
+              4.882556,
+              52.370078
+            ],
+            [
+              4.882556,
+              52.370081
+            ],
+            [
+              4.882585,
+              52.370262
+            ],
+            [
+              4.882589,
+              52.370265
+            ],
+            [
+              4.882594,
+              52.370267
+            ],
+            [
+              4.8826,
+              52.370269
+            ],
+            [
+              4.882606,
+              52.37027
+            ],
+            [
+              4.882612,
+              52.370271
+            ],
+            [
+              4.882618,
+              52.370271
+            ],
+            [
+              4.882624,
+              52.37027
+            ],
+            [
+              4.88263,
+              52.370269
+            ],
+            [
+              4.882636,
+              52.370268
+            ],
+            [
+              4.882641,
+              52.370265
+            ],
+            [
+              4.882645,
+              52.370262
+            ],
+            [
+              4.882649,
+              52.370259
+            ],
+            [
+              4.882615,
+              52.37008
+            ]
+          ]
+        ]
+      }
     }
   ];
 
@@ -38404,6 +40030,139 @@
         ],
         note: "Public forecourt gate on Haarlemmerstraat; derived from current BAG frontage and inspected 2025 municipal panorama, approximate within 2m. Preserve original destination unless routing requires public-entrance correction."
       }
+    },
+    {
+      modelId: "keizersgrachtkerk",
+      landmarkId: "extract_landmarks_2099326007",
+      name: "Keizersgrachtkerk",
+      description: "Built in 1887\u20131888 for the Amsterdam Doleantie congregation, the Keizersgrachtkerk was designed by father and son G.B. and A. Salm. Its neo-Venetian facade places seven linked pointed windows below a large rose window, flanked by low towers. Inside, two galleries on cast-iron columns allowed a church planned for 1,600 worshippers to occupy a narrow canal-side plot. The organ of 1890 was D.G. Steenkuyl\u2019s last mechanical organ.",
+      sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/518347",
+      additionalSources: [
+        "https://www.keizersgrachtkerk.nl/geschiedenis-van-de-keizersgrachtkerk/"
+      ],
+      preferDescription: true,
+      routeDestination: {
+        center: [
+          52.3646801235429,
+          4.8881806276757915
+        ],
+        note: "Photo-supported public main porch, 1.8m outward from actual Keizersgracht frontage midpoint; candidate must pass live network reachability. Preserve chosen destination on route failure."
+      }
+    },
+    {
+      modelId: "gerard-dou-synagogue",
+      landmarkId: "extract_landmarks_25099441",
+      name: "Gerard Dou Synagogue",
+      description: "The congregation Tesjoengat Israel (Hulpe Isra\xEBls) commissioned E.M. Rood to build this synagogue in 1891\u20131892. Its narrow street front conceals a prayer hall with galleries on three sides, originally seating 250 men and 70 women. The paired round-arched windows, David-star oculus and ceremonial doorway belong to its eclectic neo-Renaissance architecture.",
+      funFact: "The congregation remained active in this concealed street building during the occupation, and the preserved synagogue hosted early services after liberation.",
+      sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/527843",
+      additionalSources: [
+        "https://www.nihs.nl/synagoges/gerard-dou/"
+      ],
+      preferDescription: true,
+      routeDestination: {
+        center: [
+          52.35709575612273,
+          4.897850161190556
+        ],
+        note: "Centre of the hall street frontage matched to the ceremonial door in the 2005 elevation and 2025 municipal panorama."
+      }
+    },
+    {
+      modelId: "lekstraat-synagoge",
+      landmarkId: "extract_landmarks_665340356",
+      name: "Lekstraatsynagoge",
+      description: "Abraham Elzas designed this restrained modernist synagogue complex, completed in 1937, with a stone-faced main hall and a lower yellow-brick synagogue and residence wing. The small synagogue remains in use; the main hall later housed the Resistance Museum and an auction house.",
+      funFact: "The Hebrew inscription on the otherwise largely blank front quotes 1 Kings 6:13. Elzas had worked with Le Corbusier; this modernist building stands among the Amsterdam School architecture of Plan Zuid.",
+      sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/526707",
+      additionalSources: [
+        "https://www.nihs.nl/synagoges/lekstraat/",
+        "https://lekstraatsynagoge.nl/about-us/"
+      ],
+      preferDescription: true,
+      routeDestination: {
+        center: [
+          52.34428997517323,
+          4.902942362182297
+        ],
+        note: "Lekstraat 61 approach derived from current BAG frontage and municipal panorama."
+      }
+    },
+    {
+      modelId: "petrus-en-paulus-kerk",
+      landmarkId: "extract_landmarks_1828911806",
+      name: "Sint-Petrus-en-Pauluskerk",
+      description: "This Old Catholic church on Ruysdaelstraat was delivered in 1914 and, with its parsonage and schoolroom, forms one complex designed by Johan W.F. Hartkamp jr., a pupil of H.P. Berlage. It continues the hidden church De Ooievaar from the Barndesteeg.",
+      funFact: "The church keeps a Dordrecht Rotating Tabernacle from 1789, a gift to the Amsterdam parish that reached it through De Ooievaar; one of its makers was Jacob van Strij.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Sint-Petrus-en-Pauluskerk_%28Amsterdam%29",
+      preferDescription: true
+    },
+    {
+      modelId: "maarten-lutherkerk",
+      landmarkId: "extract_landmarks_404188843",
+      name: "Maarten Lutherkerk",
+      description: "The Maarten Luther Kerk is an Evangelical-Lutheran church in the Rivierenbuurt of Amsterdam-Zuid, designed by the architect F. Jantzen in the Amsterdam School style. Tall narrow windows climb the brick walls of the hall above a low band of small lights, and a slim green spire rises from the roof.",
+      funFact: "The church's brick hall dates from 1937 according to the national building register (BAG), and it forms part of the Rivierenbuurt's Amsterdam School streetscape.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Maarten_Luther_Kerk_%28Amsterdam%29",
+      preferDescription: true
+    },
+    {
+      modelId: "museum-amsterdam-noord",
+      landmarkId: "extract_landmarks_2034905768",
+      name: "Museum Amsterdam Noord",
+      description: "Museum Amsterdam Noord is a cultural-history museum on the corner of Zamenhofstraat and Meeuwenlaan in Amsterdam-Noord. Since April 2009 it has occupied the municipal bath house that was built in 1919 for the garden village of Vogeldorp, whose houses had no bathrooms. It holds a modest historical collection and a space for exhibitions, lectures and film evenings.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Museum_Amsterdam_Noord",
+      additionalSources: []
+    },
+    {
+      modelId: "levend-paardenmuseum",
+      landmarkId: "extract_landmarks_82936853",
+      name: "Levend Paardenmuseum",
+      description: "The Living Horse Museum (Levend Paardenmuseum) is housed in the Hollandsche Manege, the oldest riding school in the Netherlands. The school dates back to 1744; the present building, inspired by the Spanish Riding School in Vienna, was built in 1882. Its richly decorated interior has an iron roof frame, and the building has been a national monument since 1974.",
+      sourceUrl: "https://en.wikipedia.org/wiki/Hollandsche_Manege",
+      additionalSources: [
+        "https://nl.wikipedia.org/wiki/Hollandsche_Manege"
+      ]
+    },
+    {
+      modelId: "oudemanhuispoort",
+      landmarkId: "extract_landmarks_1122909064",
+      name: "Oudemanhuispoort",
+      description: "The Oudemanhuispoort is a 17th-century complex between the Oudezijds Achterburgwal and the Kloveniersburgwal, built in a square plan as the Old Men's and Women's Hospital. It is now a main site of the University of Amsterdam's humanities faculty and a national monument. A covered passage through one wing links the two canals.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Oudemanhuispoort",
+      additionalSources: []
+    },
+    {
+      modelId: "torture-museum",
+      landmarkId: "extract_landmarks_417591223",
+      name: "Torture Museum",
+      description: "The Torture Museum stands on the Singel near the Bloemenmarkt, in a narrow brick canal house with a dark glass shopfront. It exhibits historical instruments of torture, though like many such museums it also shows devices that were seldom or never used in real history, such as the iron maiden, a literary invention of the 19th century.",
+      funFact: "The Daily Telegraph called it one of the world's most unusual museums. It is not connected with the separate Museum of Medieval Torture Instruments elsewhere in Amsterdam.",
+      sourceUrl: "https://en.wikipedia.org/wiki/Torture_Museum,_Amsterdam"
+    },
+    {
+      modelId: "theo-thijssen-museum",
+      landmarkId: "extract_landmarks_1824871810",
+      name: "Theo Thijssen Museum",
+      description: "The Theo Thijssen Museum is devoted to the writer, teacher and politician Theo Thijssen. It is run by the Stichting Theo Thijssen and occupies the ground floor of Thijssen's birthplace at Eerste Leliedwarsstraat 16, a brick corner house with a bowed shop window.",
+      funFact: "A plaque on the facade records that Theo Thijssen, author of Kees de Jongen, was born in this house.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Theo_Thijssen_Museum"
+    },
+    {
+      modelId: "pathe-de-munt",
+      landmarkId: "extract_landmarks_257271103",
+      name: "Path\xE9 de Munt",
+      description: "Path\xE9 de Munt is a large cinema in the centre of Amsterdam on the Vijzelstraat, close to Path\xE9 Tuschinski; the two cinemas border each other behind the shops on the Reguliersbreestraat. It has 13 screens on three floors with 1,829 seats in total, the largest room seating 318.",
+      funFact: "When Path\xE9 de Munt opened in November 2000 it was the first multiplex cinema in Amsterdam's inner city.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Path%C3%A9_de_Munt"
+    },
+    {
+      modelId: "houseboat-museum",
+      landmarkId: "extract_landmarks_941219842",
+      name: "Houseboat Museum",
+      description: "The Woonbootmuseum, or Houseboat Museum, is dedicated to the history and culture of living on the water. It lies on the Prinsengracht, on the edge of the Jordaan, aboard the Hendrika Maria, a historic inland vessel from 1914.",
+      funFact: "It is the only museum in the world specifically focused on houseboat living.",
+      sourceUrl: "https://en.wikipedia.org/wiki/Woonbootmuseum"
     }
   ];
 

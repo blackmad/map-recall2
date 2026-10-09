@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+## Twelve more landmarks from the backlog (2026-10-09)
+
+Three Sonnet lanes worked the "Needs work" queue: Keizersgrachtkerk, Gerard Dou
+Synagogue and Lekstraatsynagoge (salvaged from earlier unmerged drafts),
+Sint-Petrus-en-Pauluskerk and Maarten Lutherkerk (new, on a shared 3DBAG
+LoD2.2 shell builder `worship-shell.ts`), Torture Museum, Theo Thijssen
+Museum, Pathé de Munt, Houseboat Museum (a hull on the houseboat extract way),
+Museum Amsterdam Noord, Levend Paardenmuseum and the Oudemanhuispoort
+gate-house. Lanes took 70–150 min for 3–5 buildings each, including writing
+reusable tooling (`museums2-*`, `civic-kit.ts`, `worship-*`). Skips and
+follow-ups are in TODO. `check-building-facts` waited a fixed 20 ms for an
+async gunzip and failed 3 in 5 runs under load; it now polls.
+
 ## Recipe pipeline for ordinary houses lands; Marnixstraat at ~8 s a house (2026-10-09)
 
 Codex's unmerged canal-house component library (`wip/canalhouse-recipes-20261008`)
