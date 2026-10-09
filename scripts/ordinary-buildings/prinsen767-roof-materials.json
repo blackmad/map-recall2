@@ -1,0 +1,287 @@
+{
+  "sourceReview": "prinsen767-roof-review source overlay 2026-10-08; archived before model commit",
+  "surfaces": {
+    "350": {
+      "colour": "streetTile",
+      "family": "brown-weathered-Prinsen-street-slopes",
+      "confidence": "high"
+    },
+    "377": {
+      "colour": "streetTile",
+      "family": "brown-weathered-Prinsen-street-slopes",
+      "confidence": "high"
+    },
+    "338": {
+      "colour": "streetTile",
+      "family": "brown-weathered-Prinsen-street-slopes",
+      "confidence": "high"
+    },
+    "328": {
+      "colour": "streetTile",
+      "family": "brown-weathered-Prinsen-street-slopes",
+      "confidence": "high"
+    },
+    "358": {
+      "colour": "streetTile",
+      "family": "brown-weathered-Prinsen-street-slopes",
+      "confidence": "high"
+    },
+    "334": {
+      "colour": "streetTile",
+      "family": "brown-weathered-Prinsen-street-slopes",
+      "confidence": "high"
+    },
+    "335": {
+      "colour": "streetTile",
+      "family": "brown-weathered-Prinsen-street-slopes",
+      "confidence": "high"
+    },
+    "376": {
+      "colour": "streetTile",
+      "family": "brown-weathered-Prinsen-street-slopes",
+      "confidence": "high"
+    },
+    "361": {
+      "colour": "streetTile",
+      "family": "brown-weathered-Prinsen-street-slopes",
+      "confidence": "high"
+    },
+    "347": {
+      "colour": "redTile",
+      "family": "red-brown-inner-Prinsen-slopes",
+      "confidence": "high"
+    },
+    "351": {
+      "colour": "redTile",
+      "family": "red-brown-inner-Prinsen-slopes",
+      "confidence": "high"
+    },
+    "337": {
+      "colour": "redTile",
+      "family": "red-brown-inner-Prinsen-slopes",
+      "confidence": "high"
+    },
+    "370": {
+      "colour": "redTile",
+      "family": "red-brown-inner-Prinsen-slopes",
+      "confidence": "high"
+    },
+    "346": {
+      "colour": "redTile",
+      "family": "red-brown-inner-Prinsen-slopes",
+      "confidence": "high"
+    },
+    "326": {
+      "colour": "redTile",
+      "family": "red-brown-inner-Prinsen-slopes",
+      "confidence": "high"
+    },
+    "360": {
+      "colour": "redTile",
+      "family": "red-brown-inner-Prinsen-slopes",
+      "confidence": "high"
+    },
+    "331": {
+      "colour": "redTile",
+      "family": "red-brown-inner-Prinsen-slopes",
+      "confidence": "high"
+    },
+    "378": {
+      "colour": "roof",
+      "family": "gray-inner-deck-with-skylights-ducts",
+      "confidence": "high"
+    },
+    "339": {
+      "colour": "roof",
+      "family": "gray-inner-deck-with-skylights-ducts",
+      "confidence": "high"
+    },
+    "364": {
+      "colour": "roof",
+      "family": "gray-inner-deck-with-skylights-ducts",
+      "confidence": "high"
+    },
+    "380": {
+      "colour": "roof",
+      "family": "gray-skylight-equipment-facets",
+      "confidence": "medium"
+    },
+    "381": {
+      "colour": "roof",
+      "family": "gray-skylight-equipment-facets",
+      "confidence": "medium"
+    },
+    "344": {
+      "colour": "roof",
+      "family": "gray-skylight-equipment-facets",
+      "confidence": "medium"
+    },
+    "345": {
+      "colour": "roof",
+      "family": "gray-skylight-equipment-facets",
+      "confidence": "medium"
+    },
+    "379": {
+      "colour": "roof",
+      "family": "gray-skylight-equipment-facets",
+      "confidence": "medium"
+    },
+    "353": {
+      "colour": "whiteRoof",
+      "family": "beige-gray-flat-solar-white-wing",
+      "confidence": "high"
+    },
+    "374": {
+      "colour": "centralRoof",
+      "family": "brown-gray-flat-central-wing",
+      "confidence": "high"
+    },
+    "354": {
+      "colour": "redTile",
+      "family": "red-brown-Kerk-main-slopes",
+      "confidence": "high"
+    },
+    "371": {
+      "colour": "redTile",
+      "family": "red-brown-Kerk-main-slopes",
+      "confidence": "high"
+    },
+    "373": {
+      "colour": "redTile",
+      "family": "red-brown-Kerk-main-slopes",
+      "confidence": "high"
+    },
+    "375": {
+      "colour": "redTile",
+      "family": "red-brown-Kerk-main-slopes",
+      "confidence": "high"
+    },
+    "330": {
+      "colour": "redTile",
+      "family": "red-brown-Kerk-main-slopes",
+      "confidence": "high"
+    },
+    "342": {
+      "colour": "redTile",
+      "family": "red-brown-Kerk-main-slopes",
+      "confidence": "high"
+    },
+    "327": {
+      "colour": "slate",
+      "family": "dark-north-hip-tile-or-slate-uncertain",
+      "confidence": "medium"
+    },
+    "355": {
+      "colour": "slate",
+      "family": "dark-Kerk-small-pitches-slate-possible",
+      "confidence": "medium"
+    },
+    "343": {
+      "colour": "slate",
+      "family": "dark-Kerk-small-pitches-slate-possible",
+      "confidence": "medium"
+    },
+    "356": {
+      "colour": "slate",
+      "family": "dark-Kerk-small-pitches-slate-possible",
+      "confidence": "medium"
+    },
+    "340": {
+      "colour": "roof",
+      "family": "gray-flat-pad-dormer-parallax",
+      "confidence": "medium"
+    },
+    "333": {
+      "colour": "roof",
+      "family": "gray-flat-pad-dormer-parallax",
+      "confidence": "medium"
+    },
+    "332": {
+      "colour": "roof",
+      "family": "gray-flat-pad-dormer-parallax",
+      "confidence": "medium"
+    },
+    "363": {
+      "colour": "court",
+      "family": "nonroof-ground-court-height1.7m",
+      "confidence": "high"
+    },
+    "348": {
+      "colour": "slate",
+      "family": "unknown-obscured-low-assembly",
+      "confidence": "low"
+    },
+    "349": {
+      "colour": "slate",
+      "family": "unknown-obscured-low-assembly",
+      "confidence": "low"
+    },
+    "359": {
+      "colour": "slate",
+      "family": "unknown-obscured-low-assembly",
+      "confidence": "low"
+    },
+    "367": {
+      "colour": "slate",
+      "family": "unknown-obscured-low-assembly",
+      "confidence": "low"
+    },
+    "368": {
+      "colour": "slate",
+      "family": "unknown-obscured-low-assembly",
+      "confidence": "low"
+    },
+    "369": {
+      "colour": "slate",
+      "family": "unknown-obscured-low-assembly",
+      "confidence": "low"
+    },
+    "366": {
+      "colour": "slate",
+      "family": "unknown-obscured-low-assembly",
+      "confidence": "low"
+    },
+    "352": {
+      "colour": "redTile",
+      "family": "red-brown-inner-Prinsen-slopes",
+      "confidence": "high"
+    },
+    "365": {
+      "colour": "slate",
+      "family": "unknown-small-or-obscured",
+      "confidence": "low"
+    },
+    "357": {
+      "colour": "slate",
+      "family": "unknown-small-or-obscured",
+      "confidence": "low"
+    },
+    "372": {
+      "colour": "slate",
+      "family": "unknown-small-or-obscured",
+      "confidence": "low"
+    },
+    "341": {
+      "colour": "slate",
+      "family": "unknown-small-or-obscured",
+      "confidence": "low"
+    },
+    "336": {
+      "colour": "slate",
+      "family": "unknown-small-or-obscured",
+      "confidence": "low"
+    },
+    "329": {
+      "colour": "slate",
+      "family": "unknown-small-or-obscured",
+      "confidence": "low"
+    },
+    "362": {
+      "colour": "slate",
+      "family": "unknown-small-or-obscured",
+      "confidence": "low"
+    }
+  },
+  "courtyardSurface": 363,
+  "unresolvedVoid": "Uncapped; no positive source closure evidence"
+}
