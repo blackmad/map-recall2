@@ -24,7 +24,15 @@ const HALLS: {a: number; c: number; ridge: number; eave: number; big: boolean}[]
   {a: 51.2, c: 66.9, ridge: 18.0, eave: 10.5, big: false},
   {a: 66.9, c: 82.5, ridge: 13.5, eave: 9.5, big: true},
 ];
+// Gables are shallow segmental arcs (sagitta about 0.45 of the half-width, as in the panoramas); the crown keeps the 3DBAG ridge height.
+for (const h of HALLS) h.eave = +(h.ridge - 0.45 * (h.c - h.a) / 2).toFixed(2);
 const LONG = (ne.origin[0] + 110.43) * ne.n[0] + (ne.origin[1] - 56.77) * ne.n[1];   // distance between the two end planes
+const ARC = 10;
+/** Segmental-arc gable/roof profile: eave height at the hall edges, ridge at the crown; u is across the hall from its centre. */
+const arcY = (h: {c: number; a: number; ridge: number; eave: number}, u: number) => {
+  const half = (h.c - h.a) / 2, sag = h.ridge - h.eave, r = (half * half + sag * sag) / (2 * sag);
+  return h.ridge - r + Math.sqrt(Math.max(0, r * r - u * u));
+};
 const at = (w: Wall, t: number): P2 => [w.origin[0] + w.tangent[0] * t, w.origin[1] + w.tangent[1] * t];
 const NEW = 82.5;
 const nwCorner = at(ne, NEW), seCorner = at(ne, 0);
@@ -59,10 +67,10 @@ export function buildVanGendtHallen(_w: number, _d: number, b: BuildingTools & {
   const NSEG = Math.ceil(LONG / 15);
   const lerp = (p: P2, q: P2, u: number): P2 => [p[0] + (q[0] - p[0]) * u, p[1] + (q[1] - p[1]) * u];
   /** Panels between two lines running NE -> SW, each given as [NE point, height, SW point, height]. */
-  const panel = (lineA: [P2, number, P2, number], lineB: [P2, number, P2, number], colour: string, out: number[], role?: 'roof') => {
+  const panel = (lineA: [P2, number, P2, number], lineB: [P2, number, P2, number], colour: string, out: number[], role?: 'roof', seg = NSEG) => {
     // lineX = [NE point, height there, SW point, height there]; panels are cut along the ridge direction
-    for (let k = 0; k < NSEG; k++) {
-      const u0 = k / NSEG, u1 = (k + 1) / NSEG;
+    for (let k = 0; k < seg; k++) {
+      const u0 = k / seg, u1 = (k + 1) / seg;
       const a0 = lerp(lineA[0], lineA[2], u0), a1 = lerp(lineA[0], lineA[2], u1), b0 = lerp(lineB[0], lineB[2], u0), b1 = lerp(lineB[0], lineB[2], u1);
       const ya0 = lineA[1] + (lineA[3] - lineA[1]) * u0, ya1 = lineA[1] + (lineA[3] - lineA[1]) * u1, yb0 = lineB[1] + (lineB[3] - lineB[1]) * u0, yb1 = lineB[1] + (lineB[3] - lineB[1]) * u1;
       facePoly(b, [[a0[0], ya0, a0[1]], [a1[0], ya1, a1[1]], [b1[0], yb1, b1[1]], [b0[0], yb0, b0[1]]], colour, out, role);
@@ -73,13 +81,22 @@ export function buildVanGendtHallen(_w: number, _d: number, b: BuildingTools & {
     const sw2 = (q: P2): P2 => [q[0] - ne.n[0] * LONG, q[1] - ne.n[1] * LONG];
     const A2 = sw2(A), C2 = sw2(C), M2 = sw2(M);
     const nIn = [-ne.n[0], 0, -ne.n[1]];
-    // gable ends: rectangle to the eave plus the triangle to the ridge (NE faces +n, SW faces -n)
-    facePoly(b, [[A[0], 0, A[1]], [C[0], 0, C[1]], [C[0], h.eave, C[1]], [M[0], h.ridge, M[1]], [A[0], h.eave, A[1]]], 'brick', [ne.n[0], 0, ne.n[1]]);
-    facePoly(b, [[A2[0], 0, A2[1]], [A2[0], h.eave, A2[1]], [M2[0], h.ridge, M2[1]], [C2[0], h.eave, C2[1]], [C2[0], 0, C2[1]]], 'brick', nIn);
-    // roof planes
-    const tOut = [ne.tangent[0], 0.7, ne.tangent[1]], tIn = [-ne.tangent[0], 0.7, -ne.tangent[1]];
-    panel([A, h.eave, A2, h.eave], [M, h.ridge, M2, h.ridge], 'slate', tIn, 'roof');
-    panel([M, h.ridge, M2, h.ridge], [C, h.eave, C2, h.eave], 'slate', tOut, 'roof');
+    // gable ends: rectangle to the eave plus a segmental arc to the crown (NE faces +n, SW faces -n)
+    const half = (h.c - h.a) / 2, pts: {u: number; y: number}[] = [];
+    for (let k = 0; k <= ARC; k++) { const u = -half + (2 * half * k) / ARC; pts.push({u, y: arcY(h, u)}); }
+    const at3 = (E: P2, Mm: P2, u: number): P2 => [Mm[0] + ne.tangent[0] * u, Mm[1] + ne.tangent[1] * u];
+    const topNE = pts.map(q => { const c = at3(A, M, q.u); return [c[0], q.y, c[1]]; });
+    // u runs from the SE side (u = -half, towards A) to the NW side (towards C)
+    facePoly(b, [[A[0], 0, A[1]], [C[0], 0, C[1]], ...topNE.slice().reverse()], 'brick', [ne.n[0], 0, ne.n[1]]);
+    const topSW = pts.map(q => { const c = at3(A2, M2, q.u); return [c[0], q.y, c[1]]; });
+    facePoly(b, [[A2[0], 0, A2[1]], [C2[0], 0, C2[1]], ...topSW.slice().reverse()], 'brick', nIn);
+    // curved roof: ARC strips from eave to crown to eave
+    const roofSeg = Math.ceil(LONG / 26);
+    for (let k = 0; k < ARC; k++) {
+      const u0 = pts[k].u, u1 = pts[k + 1].u;
+      const p0 = at3(A, M, u0), p1 = at3(A, M, u1), q0 = at3(A2, M2, u0), q1 = at3(A2, M2, u1);
+      panel([p0, pts[k].y, q0, pts[k].y], [p1, pts[k + 1].y, q1, pts[k + 1].y], 'slate', [0, 1, 0], 'roof', roofSeg);
+    }
     // exterior long walls
     if (i === 0) panel([A, 0, A2, 0], [A, h.eave, A2, h.eave], 'brick', [-ne.tangent[0], 0, -ne.tangent[1]]);
     if (i === HALLS.length - 1) panel([C, 0, C2, 0], [C, h.eave, C2, h.eave], 'brick', [ne.tangent[0], 0, ne.tangent[1]]);
@@ -107,15 +124,15 @@ export function buildVanGendtHallen(_w: number, _d: number, b: BuildingTools & {
     const W = NEW;
     HALLS.forEach(h => {
       const [a, c] = mirror ? [W - h.c, W - h.a] : [h.a, h.c];
-      const mid = (a + c) / 2, half = (c - a) / 2, slope = (h.ridge - h.eave) / half;
-      const rake = (t: number) => h.ridge - slope * Math.abs(t - mid);
+      const mid = (a + c) / 2, half = (c - a) / 2;
+      const rake = (t: number) => arcY(h, Math.max(-half, Math.min(half, t - mid)));
       // stepped corbel frieze: two staircase courses following each rake
       for (const sgn of [-1, 1]) {
-        for (let s = 0.7; s < half - 1.0; s += 1.1) {
+        for (let s = 0.7; s < half - 1.0; s += 1.3) {
           const t = mid + sgn * s, base = rake(t + sgn * 0.45);
           for (const [drop, par] of [[0.75, 0], [1.6, 1]]) {
             const y = Math.round((base - drop - 0.1) / 0.3) * 0.3 + par * 0.15;
-            slab(b, fr, t, y, 1.1, 0.2, 0.14, 'greyBrick');
+            slab(b, fr, t, y, 1.3, 0.2, 0.14, 'greyBrick');
           }
         }
       }
@@ -148,7 +165,7 @@ export function buildVanGendtHallen(_w: number, _d: number, b: BuildingTools & {
     const f = nwF, L = LONG;
     longSlab(b, f, 0, L, 0, 0.7, 0.12, 'stone');
     longSlab(b, f, 0, L, 5.3, 0.14, 0.1, 'stone');
-    longSlab(b, f, 0, L, 9.0, 0.4, 0.2, 'greyBrick');
+    longSlab(b, f, 0, L, 9.55, 0.4, 0.2, 'greyBrick');
     const ts: number[] = [];
     for (let t = 2.0; t < L - 1.5; t += 3.6) ts.push(t);
     for (const t of ts) slab(b, f, t, 1.2, 1.9, 3.7, 0.1, 'dark', 0.02);
@@ -158,12 +175,12 @@ export function buildVanGendtHallen(_w: number, _d: number, b: BuildingTools & {
   {
     const f = seF, L = LONG, pitch = L / 26;
     longSlab(b, f, 0, L, 0, 0.6, 0.12, 'stone');
-    longSlab(b, f, 0, L, 5.9, 0.14, 0.1, 'stone');
-    longSlab(b, f, 0, L, 10.0, 0.4, 0.2, 'greyBrick');
+    longSlab(b, f, 0, L, 6.5, 0.14, 0.1, 'stone');
+    longSlab(b, f, 0, L, 12.3, 0.4, 0.2, 'greyBrick');
     const ts: number[] = [];
     for (let k = 0; k < 26; k++) ts.push((k + 0.5) * pitch);
-    archWindows(b, f, ts, {y: 1.4, w: 3.0, h: 4.4, frame: 'frame', bars: 1, rows: 2, sill: 'stone'});
-    archWindows(b, f, ts, {y: 6.9, w: 2.6, h: 2.5, frame: 'frame', bars: 1, rows: 0});
-    for (let k = 0; k <= 26; k++) slab(b, f, Math.min(L - 0.3, Math.max(0.3, k * pitch)), 0, 0.6, 9.8, 0.14, 'greyBrick');
+    archWindows(b, f, ts, {y: 1.4, w: 3.0, h: 4.8, frame: 'frame', bars: 1, rows: 2, sill: 'stone'});
+    archWindows(b, f, ts, {y: 7.5, w: 2.6, h: 3.6, frame: 'frame', bars: 1, rows: 0});
+    for (let k = 0; k <= 26; k++) slab(b, f, Math.min(L - 0.3, Math.max(0.3, k * pitch)), 0, 0.6, 12.2, 0.14, 'greyBrick');
   }
 }
