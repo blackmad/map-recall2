@@ -10016,6 +10016,262 @@ Map source: ${osmUrl(places[i][0])}`);
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native BAG reconstruction;2025 panorama-backed front arches/stepped gables/divided windows and roof families. Roof and ornament geometry approximated; no third-party pixels or mesh imported."
       }
+    },
+    {
+      id: "fire-station-nico",
+      name: "Brandweerkazerne Nico",
+      landmarkId: "n1139360975",
+      modelUrl: "./models/fire-station-nico.glb",
+      suppressOsmIds: [
+        "w268783309",
+        "NL.IMBAG.Pand.0363100012165618"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.90927401,
+          52.37005792
+        ],
+        headingDegrees: 90,
+        lengthMetres: 100,
+        widthMetres: 85
+      },
+      surveyed: {
+        anchor: [
+          4.90927401,
+          52.37005792
+        ],
+        northOffsetDegrees: 0,
+        source: "CurrentBAG/3DBAG nativeeastX southZ"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 90,
+      materialOverrides: {
+        brick: "#736e64",
+        stone: "#898b88",
+        slate: "#6b6f70",
+        white: "#e2e7e4",
+        glass: "#6d8992",
+        dark: "#30373a",
+        frame: "#929c9c",
+        copper: "#6b8b86",
+        bronze: "#bd8058",
+        greyBrick: "#726c65",
+        red: "#d21c26"
+      },
+      attribution: {
+        title: "Brandweerkazerne Nico",
+        author: "Map Recall",
+        sourceUrl: "https://www.oplarchitecten.nl/project/brandweerkazerne-nico/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texturefree nativeBAG/AHN5 reconstruction; current2022/2025facadesguidewindows/sectionaldoors; approximateboldsanssign. No thirdpartypixels/mesh."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.909096274055409,
+              52.37001928050359
+            ],
+            [
+              4.909081989988206,
+              52.37003262349087
+            ],
+            [
+              4.908918870092349,
+              52.369968646301956
+            ],
+            [
+              4.908978759958946,
+              52.36991183426339
+            ],
+            [
+              4.908969995483518,
+              52.369907601605256
+            ],
+            [
+              4.909079380973026,
+              52.369803318635945
+            ],
+            [
+              4.909088387919172,
+              52.36980685122425
+            ],
+            [
+              4.90929460625575,
+              52.36961025085909
+            ],
+            [
+              4.909457738125726,
+              52.36967440733941
+            ],
+            [
+              4.909454563292942,
+              52.36967743237324
+            ],
+            [
+              4.909385620935791,
+              52.3697432048134
+            ],
+            [
+              4.909367728847329,
+              52.36976027216008
+            ],
+            [
+              4.909392148387328,
+              52.3697697269087
+            ],
+            [
+              4.9093786628803535,
+              52.36978256085541
+            ],
+            [
+              4.90926053407699,
+              52.369895706633955
+            ],
+            [
+              4.909286939694405,
+              52.369906176043806
+            ],
+            [
+              4.9093183310776345,
+              52.3699186248906
+            ],
+            [
+              4.909240197754165,
+              52.36999379723779
+            ],
+            [
+              4.909260229716177,
+              52.37000709002625
+            ],
+            [
+              4.9092781186982695,
+              52.37001894511622
+            ],
+            [
+              4.909417169048832,
+              52.36994013589009
+            ],
+            [
+              4.909417464158429,
+              52.36994000226538
+            ],
+            [
+              4.909555144869268,
+              52.37003062355113
+            ],
+            [
+              4.909484111770076,
+              52.37007097937141
+            ],
+            [
+              4.9099079987986745,
+              52.370350561710346
+            ],
+            [
+              4.909947416077652,
+              52.37032813450123
+            ],
+            [
+              4.910007471263533,
+              52.37036780561018
+            ],
+            [
+              4.910038760423263,
+              52.37038844164887
+            ],
+            [
+              4.909857335804604,
+              52.37049151833761
+            ],
+            [
+              4.909383525535658,
+              52.37017902811573
+            ],
+            [
+              4.909307665806732,
+              52.37012899298815
+            ],
+            [
+              4.90928732547735,
+              52.37014840521869
+            ],
+            [
+              4.90921598272697,
+              52.37012070473319
+            ],
+            [
+              4.909231324861515,
+              52.37010591898091
+            ],
+            [
+              4.909256593572923,
+              52.37008154746592
+            ],
+            [
+              4.9092237370920415,
+              52.370068787107016
+            ],
+            [
+              4.909096274055409,
+              52.37001928050359
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "fire-station-osdorp",
+      name: "Kazerne Osdorp",
+      landmarkId: "n2793598969",
+      modelUrl: "./models/fire-station-osdorp.glb",
+      suppressOsmIds: [
+        "w31779761",
+        "NL.IMBAG.Pand.0363100012096223"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.802220583344287,
+          52.366559581066234
+        ],
+        headingDegrees: 90,
+        lengthMetres: 46,
+        widthMetres: 44
+      },
+      surveyed: {
+        anchor: [
+          4.802220583344287,
+          52.366559581066234
+        ],
+        northOffsetDegrees: 0,
+        source: "Exact current BAG, native E/S coordinates; curving original roof guided by AHN5 and primary ARCAM photographs."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 90,
+      materialOverrides: {
+        brick: "#694840",
+        stone: "#92978f",
+        slate: "#56645a",
+        white: "#c6cbc3",
+        glass: "#678b93",
+        dark: "#252e2e",
+        frame: "#616969",
+        copper: "#788650",
+        bronze: "#b98a44",
+        greyBrick: "#bf3e2f"
+      },
+      attribution: {
+        title: "Kazerne Osdorp",
+        author: "Map Recall",
+        sourceUrl: "https://arcam.nl/architectuur-gids/brandweerkazerne-osdorp/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native BAG geometry; curved sedum-roof glass hall, glazing connector, dark-brick open terrace accommodation block. No third-party mesh or pixels."
+      }
     }
   ];
 
@@ -34539,9 +34795,7 @@ Map source: ${osmUrl(places[i][0])}`);
       name: "Afrikahuis",
       description: "Architect Joop van Stigt designed Afrikahuis as five linked octagonal units, combining a church with neighborhood spaces. Its concrete base, limestone walls and glazed staircase bays express Amsterdam structuralism.",
       sourceUrl: "https://amsterdamopdekaart.nl/1966-1990/Van_Ostadestraat/Afrikahuis",
-      additionalSources: [
-        "https://erfgoedregister.amsterdam.nl/monument/34d28c9d-f6c7-44bc-affa-d3d2c055b7a9/"
-      ]
+      additionalSources: ["https://erfgoedregister.amsterdam.nl/monument/34d28c9d-f6c7-44bc-affa-d3d2c055b7a9/"]
     },
     {
       modelId: "cafe-kobalt",
@@ -34661,6 +34915,40 @@ Map source: ${osmUrl(places[i][0])}`);
         ],
         sourceUrl: "https://data.amsterdam.nl/",
         note: "Two metres outside surveyed central Honthorststraat vehicle arch, checked against archived 2025 municipal panorama; camera location is separate."
+      }
+    },
+    {
+      modelId: "fire-station-nico",
+      name: "Brandweerkazerne Nico",
+      description: "Nico retains the N of Nieuwmarkt: the station once operated from De Waag, then De Ruijterkade, before moving beside the IJtunnel in 1973. OPL renovated the station and its offices in 2017\u20132018. A 2025 roof renovation stripped the roof to its concrete structure and added 140 mm PIR insulation around the many aerials and installations.",
+      sourceUrl: "https://www.brandweer.nl/kazerne/amsterdam-nico/",
+      center: [
+        52.3702813,
+        4.9095912
+      ],
+      routeDestination: {
+        center: [
+          52.370273,
+          4.909458
+        ],
+        note: "Approximate northwest public apron frontage checked against exact native BAG edge and current photos"
+      }
+    },
+    {
+      modelId: "fire-station-osdorp",
+      name: "Kazerne Osdorp",
+      description: "Opened in 2005, Osdorp\u2019s station was designed by dietzsch + van der sanden around the rapid movement of crews and vehicles. Its transparent vehicle hall has a rolling sedum roof; a glazed corridor joins it to a quieter brick block containing the crew\u2019s living spaces. The station is also known as the Fanny Blankers-Koen kazerne.",
+      sourceUrl: "https://arcam.nl/architectuur-gids/brandweerkazerne-osdorp/",
+      center: [
+        52.3664870928522,
+        4.802462823962739
+      ],
+      routeDestination: {
+        center: [
+          52.3664713021276,
+          4.802471307901373
+        ],
+        note: "Main external pedestrian entrance under source-visible balcony, mapped on exact native southern facade, route pin1.85m outward into open forecourt. Station interiors not publicly accessible; preserve destination on route failure."
       }
     }
   ];

@@ -1,0 +1,61 @@
+{
+  "modelId": "fire-station-nico",
+  "status": "verified-scoped-local",
+  "sourceArchiveCommit": "acda02460c197118b05678b683b3743a6b8920a0",
+  "nativeEvidence": "artifacts/firestations-review/final-nico-osdorp/fire-station-nico",
+  "performanceEvidence": "artifacts/firestations-review/final-nico-valid-gps/fire-station-nico/gameplay",
+  "performance": [
+    {
+      "mode": "desktop",
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.599999994039536,
+        16.600000008940697,
+        16.599999994039536
+      ],
+      "p95Ms": [
+        20.799999997019768,
+        19.200000002980232,
+        19.19999998807907
+      ],
+      "fixedGps": [
+        4.914843,
+        52.370247
+      ],
+      "riderFixed": true,
+      "riderDriftPixels": 1.9555734386934272e-05,
+      "physicalPan": true
+    },
+    {
+      "mode": "touch",
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.799999997019768,
+        16.799999997019768,
+        16.700000002980232
+      ],
+      "p95Ms": [
+        17.700000002980232,
+        18.5,
+        18.30000001192093
+      ],
+      "fixedGps": [
+        4.914843,
+        52.370247
+      ],
+      "riderFixed": true,
+      "riderDriftPixels": 1.9081537745540743e-05,
+      "physicalPan": true
+    }
+  ],
+  "checks": [
+    "root and independent source/gallery/live recognition",
+    "selected genuine destination, geographic pin, physical sourced card",
+    "scale1 exact masks, resident neighbors, disable/load-failure fallback",
+    "actual stationary-rider desktop/touch pans and90-frame on/off/on"
+  ],
+  "limitations": [
+    "Rear opening counts approximate where source views are occluded.",
+    "Headless desktop/touch emulation; no physical-device performance claim."
+  ]
+}

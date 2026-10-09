@@ -1,0 +1,13 @@
+{
+  "file": "artifacts/landmark-next-batch/fire-station-nico.glb",
+  "sha256": "0928faa3da0d9be36048c835b6c5c4ca9a6ec5de28bc61f014b4ab72fe16ee31",
+  "triangles": 28464,
+  "roofSlopeFaces": 107,
+  "failed": [
+    {
+      "triangle": 400,
+      "ny": -1,
+      "area": 0.004776545735704296
+    }
+  ]
+}

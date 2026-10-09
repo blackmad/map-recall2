@@ -1,0 +1,32 @@
+{
+  "id": "n1139360975",
+  "name": "Brandweerkazerne Nico",
+  "center": [
+    52.3702813,
+    4.9095912
+  ],
+  "type": "fire station",
+  "cityId": "amsterdam",
+  "website": "https://www.brandweer.nl/kazerne/amsterdam-nico/",
+  "description": "A stepped grey brick firestation beside the IJtunnel entrance, with white sectional truck doors and a large white framed upper window panel.",
+  "funFact": "Nico retains the N of Nieuwmarkt: the station once operated from De Waag, then De Ruijterkade, before moving beside the IJtunnel in 1973. OPL renovated the station and its offices in 2017\u20132018. A 2025 roof renovation stripped the roof to its concrete structure and added 140 mm PIR insulation around the many aerials and installations.",
+  "sources": [
+    {
+      "title": "Officialcurrentstationaddress",
+      "url": "https://www.brandweer.nl/kazerne/amsterdam-nico/"
+    },
+    {
+      "title": "Brandweer150yearstationhistory",
+      "url": "https://www.brandweer.nl/wp-content/uploads/2024/03/SITRAP-150-jaar-BAA.pdf"
+    },
+    {
+      "title": "OPL2017\u20132018 renovation",
+      "url": "https://www.oplarchitecten.nl/project/brandweerkazerne-nico/"
+    },
+    {
+      "title": "BOKOroofrenovation",
+      "url": "https://www.boko.nl/projecten/brandweerkazerne-nico-amsterdam/"
+    }
+  ],
+  "sourceIdentity": "CurrentOSMn1139360975amenity=fire_station,2026-01-10; same genuine station, nofakeextract."
+}

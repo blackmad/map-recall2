@@ -2420,7 +2420,7 @@
     },
     {
       "id": "fire-station-hendrik",
-      "task": "Fire Station Hendrik — current Rozengracht/Marnixstraat station",
+      "task": "Fire Station Hendrik \u2014 current Rozengracht/Marnixstraat station",
       "priority": "high",
       "status": "verified-scoped-local",
       "requested": true,
@@ -2447,7 +2447,7 @@
     },
     {
       "id": "fire-station-dirk",
-      "task": "Fire Station Dirk — historic Honthorststraat station",
+      "task": "Fire Station Dirk \u2014 historic Honthorststraat station",
       "priority": "high",
       "status": "verified-scoped-local",
       "requested": true,
@@ -2474,7 +2474,7 @@
     },
     {
       "id": "fire-station-anton",
-      "task": "Kazerne Anton — native fire-station model",
+      "task": "Kazerne Anton \u2014 native fire-station model",
       "priority": "normal",
       "status": "in-progress",
       "requested": true,
@@ -2496,7 +2496,7 @@
     },
     {
       "id": "fire-station-ijsbrand",
-      "task": "Kazerne IJsbrand — native fire-station model",
+      "task": "Kazerne IJsbrand \u2014 native fire-station model",
       "priority": "normal",
       "status": "queued",
       "requested": true,
@@ -2518,9 +2518,9 @@
     },
     {
       "id": "fire-station-nico",
-      "task": "Kazerne Nico — native fire-station model",
+      "task": "Kazerne Nico \u2014 native fire-station model",
       "priority": "normal",
-      "status": "in-progress",
+      "status": "verified-scoped-local",
       "requested": true,
       "requestedOn": "2026-10-09",
       "requestGroup": "amsterdam-firestations",
@@ -2528,7 +2528,7 @@
       "sourceUrls": [
         "https://www.brandweer.nl/kazerne/amsterdam-nico/"
       ],
-      "nextAction": "Source-derived original model and independent review underway; native scene and destination/pin/card acceptance pending.",
+      "nextAction": "Accepted local visual/gameplay checkpoint; push isolatedfirestationsbranch then continue remaining stations.",
       "officialVBO": "0363010010914232",
       "surveyedParents": [
         "NL.IMBAG.Pand.0363100012165618"
@@ -2536,13 +2536,18 @@
       "inventorySourceArchive": {
         "commit": "69186d12d",
         "path": "firestations-inventory/"
-      }
+      },
+      "sourceArchive": {
+        "commit": "acda02460c197118b05678b683b3743a6b8920a0",
+        "path": "models/fire-station-nico/"
+      },
+      "validation": "Independent source/gallery/live pass; actual selected destination, pin/card, exact suppression, neighbors/fallback and desktop/touch physical pans/90frame performance passed."
     },
     {
       "id": "fire-station-osdorp",
-      "task": "Kazerne Osdorp — native fire-station model",
+      "task": "Kazerne Osdorp \u2014 native fire-station model",
       "priority": "normal",
-      "status": "in-progress",
+      "status": "verified-scoped-local",
       "requested": true,
       "requestedOn": "2026-10-09",
       "requestGroup": "amsterdam-firestations",
@@ -2550,7 +2555,7 @@
       "sourceUrls": [
         "https://www.brandweer.nl/kazerne/amsterdam-osdorp/"
       ],
-      "nextAction": "Source-derived original model and independent review underway; native scene and destination/pin/card acceptance pending.",
+      "nextAction": "Accepted local visual/gameplay checkpoint; push isolatedfirestationsbranch then continue remaining stations.",
       "officialVBO": "0363010001035641",
       "surveyedParents": [
         "NL.IMBAG.Pand.0363100012096223"
@@ -2558,11 +2563,16 @@
       "inventorySourceArchive": {
         "commit": "69186d12d",
         "path": "firestations-inventory/"
-      }
+      },
+      "sourceArchive": {
+        "commit": "acda02460c197118b05678b683b3743a6b8920a0",
+        "path": "models/fire-station-osdorp/"
+      },
+      "validation": "Independent source/gallery/live pass; actual selected destination, pin/card, exact suppression, neighbors/fallback and desktop/touch physical pans/90frame performance passed."
     },
     {
       "id": "fire-station-pieter",
-      "task": "Kazerne Pieter — native fire-station model",
+      "task": "Kazerne Pieter \u2014 native fire-station model",
       "priority": "normal",
       "status": "queued",
       "requested": true,
@@ -2584,7 +2594,7 @@
     },
     {
       "id": "fire-station-teunis",
-      "task": "Kazerne Teunis — native fire-station model",
+      "task": "Kazerne Teunis \u2014 native fire-station model",
       "priority": "normal",
       "status": "queued",
       "requested": true,
@@ -2606,7 +2616,7 @@
     },
     {
       "id": "fire-station-victor",
-      "task": "Kazerne Victor — native fire-station model",
+      "task": "Kazerne Victor \u2014 native fire-station model",
       "priority": "normal",
       "status": "queued",
       "requested": true,
@@ -2628,7 +2638,7 @@
     },
     {
       "id": "fire-station-willem",
-      "task": "Kazerne Willem — native fire-station model",
+      "task": "Kazerne Willem \u2014 native fire-station model",
       "priority": "normal",
       "status": "queued",
       "requested": true,
@@ -2650,7 +2660,7 @@
     },
     {
       "id": "fire-station-zebra",
-      "task": "Kazerne Zebra — native fire-station model",
+      "task": "Kazerne Zebra \u2014 native fire-station model",
       "priority": "normal",
       "status": "queued",
       "requested": true,
@@ -2672,7 +2682,7 @@
     },
     {
       "id": "fire-station-driemond",
-      "task": "Kazerne Driemond — native fire-station model",
+      "task": "Kazerne Driemond \u2014 native fire-station model",
       "priority": "normal",
       "status": "queued",
       "requested": true,
@@ -2694,7 +2704,7 @@
     },
     {
       "id": "fire-station-weesp",
-      "task": "Kazerne Weesp — native fire-station model",
+      "task": "Kazerne Weesp \u2014 native fire-station model",
       "priority": "normal",
       "status": "queued",
       "requested": true,
