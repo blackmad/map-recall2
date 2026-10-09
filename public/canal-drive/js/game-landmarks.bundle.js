@@ -13972,6 +13972,1255 @@ Map source: ${osmUrl(places[i][0])}`);
           ]
         ]
       }
+    },
+    {
+      id: "theater-bellevue",
+      name: "Theater Bellevue",
+      landmarkId: "extract_landmarks_374802612",
+      modelUrl: "./models/theater-bellevue.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012169852"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8804351,
+          52.3640966
+        ],
+        headingDegrees: 114.5,
+        lengthMetres: 44.75,
+        widthMetres: 30.71
+      },
+      surveyed: {
+        anchor: [
+          4.8804351,
+          52.3640966
+        ],
+        northOffsetDegrees: 0,
+        source: "BAG pand 0363100012169852 with 3DBAG LoD2.2 roofs; native east/south metres, scale 1."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#cfc8b3",
+        stone: "#9a968b",
+        slate: "#5b5e63",
+        white: "#ebe8de",
+        glass: "#4d616b",
+        dark: "#24282b"
+      },
+      attribution: {
+        title: "Theater Bellevue",
+        author: "Map Recall",
+        sourceUrl: "https://nl.wikipedia.org/wiki/Theater_Bellevue",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free model on the BAG footprint (3DBAG LoD2.2 roof faces): white-tiled ground floor with glazed doors, sweeping canopy and lettering around the Marnixstraat corner, cream upper floors and the mansarded east block. Openings approximate, from a 2025 street-level panorama. No imported mesh or photo textures."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.880038,
+              52.364261
+            ],
+            [
+              4.880067,
+              52.364257
+            ],
+            [
+              4.880039,
+              52.364184
+            ],
+            [
+              4.880038,
+              52.364181
+            ],
+            [
+              4.880037,
+              52.364178
+            ],
+            [
+              4.880038,
+              52.364174
+            ],
+            [
+              4.880038,
+              52.364171
+            ],
+            [
+              4.88004,
+              52.364167
+            ],
+            [
+              4.880042,
+              52.364163
+            ],
+            [
+              4.880045,
+              52.364159
+            ],
+            [
+              4.880048,
+              52.364156
+            ],
+            [
+              4.880053,
+              52.364153
+            ],
+            [
+              4.880058,
+              52.36415
+            ],
+            [
+              4.880064,
+              52.364148
+            ],
+            [
+              4.88007,
+              52.364146
+            ],
+            [
+              4.880267,
+              52.364097
+            ],
+            [
+              4.880274,
+              52.364101
+            ],
+            [
+              4.880347,
+              52.364083
+            ],
+            [
+              4.880342,
+              52.364077
+            ],
+            [
+              4.880523,
+              52.36402
+            ],
+            [
+              4.880686,
+              52.364209
+            ],
+            [
+              4.880626,
+              52.36425
+            ],
+            [
+              4.880635,
+              52.364259
+            ],
+            [
+              4.880636,
+              52.36426
+            ],
+            [
+              4.88057,
+              52.36431
+            ],
+            [
+              4.880213,
+              52.364364
+            ],
+            [
+              4.880209,
+              52.364354
+            ],
+            [
+              4.880106,
+              52.364367
+            ],
+            [
+              4.880076,
+              52.364361
+            ],
+            [
+              4.880038,
+              52.364261
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "west-india-house",
+      name: "West India House",
+      landmarkId: "extract_landmarks_1399359542",
+      modelUrl: "./models/west-india-house.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012167535"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.892066,
+          52.380013
+        ],
+        headingDegrees: 22.5,
+        lengthMetres: 34,
+        widthMetres: 30.04
+      },
+      surveyed: {
+        anchor: [
+          4.892066,
+          52.380013
+        ],
+        northOffsetDegrees: 0,
+        source: "BAG pand 0363100012167535 with 3DBAG LoD2.2 roofs; native east/south metres, scale 1."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#7a5849",
+        stone: "#cfc9b8",
+        slate: "#585a5e",
+        white: "#ece9df",
+        glass: "#566872",
+        dark: "#1f2326"
+      },
+      attribution: {
+        title: "West India House",
+        author: "Map Recall",
+        sourceUrl: "https://en.wikipedia.org/wiki/West-Indisch_Huis",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free model on the BAG footprint (3DBAG LoD2.2 roof faces): brown brick ranges around the open courtyard, white sash windows and the white pedimented doorcase on the Herenmarkt front. Openings approximate, from 2025 street-level panoramas. No imported mesh or photo textures."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.8916136,
+              52.3800465
+            ],
+            [
+              4.8916881,
+              52.3800269
+            ],
+            [
+              4.8916347,
+              52.3799512
+            ],
+            [
+              4.8916381,
+              52.3799503
+            ],
+            [
+              4.8919673,
+              52.379867
+            ],
+            [
+              4.892003,
+              52.3799178
+            ],
+            [
+              4.8920045,
+              52.3799174
+            ],
+            [
+              4.892025,
+              52.3799482
+            ],
+            [
+              4.8920235,
+              52.3799486
+            ],
+            [
+              4.8920455,
+              52.3799817
+            ],
+            [
+              4.8920468,
+              52.3799814
+            ],
+            [
+              4.8920502,
+              52.3799849
+            ],
+            [
+              4.8920513,
+              52.3799878
+            ],
+            [
+              4.8920498,
+              52.3799881
+            ],
+            [
+              4.8920617,
+              52.380006
+            ],
+            [
+              4.8920635,
+              52.3800056
+            ],
+            [
+              4.8920645,
+              52.3800078
+            ],
+            [
+              4.8920673,
+              52.3800122
+            ],
+            [
+              4.8920661,
+              52.3800125
+            ],
+            [
+              4.8921065,
+              52.3800733
+            ],
+            [
+              4.892108,
+              52.3800729
+            ],
+            [
+              4.8921554,
+              52.3801441
+            ],
+            [
+              4.8921434,
+              52.3801471
+            ],
+            [
+              4.8921428,
+              52.3801462
+            ],
+            [
+              4.892098,
+              52.3801578
+            ],
+            [
+              4.8920987,
+              52.3801587
+            ],
+            [
+              4.8920868,
+              52.3801618
+            ],
+            [
+              4.8920882,
+              52.3801638
+            ],
+            [
+              4.8920854,
+              52.3801646
+            ],
+            [
+              4.8918317,
+              52.3802319
+            ],
+            [
+              4.8918311,
+              52.380231
+            ],
+            [
+              4.8918203,
+              52.3802339
+            ],
+            [
+              4.8918197,
+              52.380233
+            ],
+            [
+              4.8917681,
+              52.3802468
+            ],
+            [
+              4.8917688,
+              52.3802477
+            ],
+            [
+              4.8917572,
+              52.3802504
+            ],
+            [
+              4.8916136,
+              52.3800465
+            ]
+          ],
+          [
+            [
+              4.8917977,
+              52.3799904
+            ],
+            [
+              4.891893,
+              52.3801246
+            ],
+            [
+              4.8920116,
+              52.3800938
+            ],
+            [
+              4.8920044,
+              52.3800836
+            ],
+            [
+              4.892025,
+              52.3800783
+            ],
+            [
+              4.8919368,
+              52.3799544
+            ],
+            [
+              4.8917977,
+              52.3799904
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "rijksakademie",
+      name: "Rijksakademie van beeldende kunsten",
+      landmarkId: "extract_landmarks_373035281",
+      modelUrl: "./models/rijksakademie.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012165748"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.9177925,
+          52.3629354
+        ],
+        headingDegrees: 67.5,
+        lengthMetres: 116.21,
+        widthMetres: 71.56
+      },
+      surveyed: {
+        anchor: [
+          4.9177925,
+          52.3629354
+        ],
+        northOffsetDegrees: 0,
+        source: "BAG pand 0363100012165748 with 3DBAG LoD2.2 roofs; native east/south metres, scale 1."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#7d5a46",
+        stone: "#cdc3a8",
+        slate: "#4a4d52",
+        white: "#e7e4d8",
+        glass: "#5b6f79",
+        dark: "#1f2326"
+      },
+      attribution: {
+        title: "Rijksakademie van beeldende kunsten",
+        author: "Map Recall",
+        sourceUrl: "https://en.wikipedia.org/wiki/Rijksakademie",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free model on the BAG footprint (3DBAG LoD2.2 roof faces): the former Kavallerie-Kazerne ring of ranges round its courtyard, brown brick with arched windows, a pedimented central gate bay and tiled hipped roofs. Openings approximate, from 2025 street-level panoramas. No imported mesh or photo textures."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.9171837,
+              52.3628249
+            ],
+            [
+              4.9171874,
+              52.362818
+            ],
+            [
+              4.917189,
+              52.3628183
+            ],
+            [
+              4.9174437,
+              52.3623523
+            ],
+            [
+              4.9174422,
+              52.362352
+            ],
+            [
+              4.9174459,
+              52.3623451
+            ],
+            [
+              4.917457,
+              52.3623474
+            ],
+            [
+              4.9174565,
+              52.3623483
+            ],
+            [
+              4.9178894,
+              52.362437
+            ],
+            [
+              4.9179009,
+              52.3623834
+            ],
+            [
+              4.9177746,
+              52.3623712
+            ],
+            [
+              4.9177759,
+              52.3623662
+            ],
+            [
+              4.917773,
+              52.3623659
+            ],
+            [
+              4.917785,
+              52.3623192
+            ],
+            [
+              4.9177879,
+              52.3623195
+            ],
+            [
+              4.9177892,
+              52.3623144
+            ],
+            [
+              4.9179941,
+              52.3623341
+            ],
+            [
+              4.9179928,
+              52.3623392
+            ],
+            [
+              4.9179957,
+              52.3623395
+            ],
+            [
+              4.9179837,
+              52.3623862
+            ],
+            [
+              4.9179808,
+              52.3623859
+            ],
+            [
+              4.9179795,
+              52.3623909
+            ],
+            [
+              4.9179273,
+              52.3623859
+            ],
+            [
+              4.917913,
+              52.3624419
+            ],
+            [
+              4.9186262,
+              52.3625879
+            ],
+            [
+              4.9186267,
+              52.362587
+            ],
+            [
+              4.9186392,
+              52.3625896
+            ],
+            [
+              4.9186355,
+              52.3625964
+            ],
+            [
+              4.918634,
+              52.3625961
+            ],
+            [
+              4.9185753,
+              52.3627035
+            ],
+            [
+              4.9186323,
+              52.362709
+            ],
+            [
+              4.9186544,
+              52.3626244
+            ],
+            [
+              4.9187856,
+              52.3626372
+            ],
+            [
+              4.9187588,
+              52.3627401
+            ],
+            [
+              4.9186276,
+              52.3627273
+            ],
+            [
+              4.9186287,
+              52.362723
+            ],
+            [
+              4.9185678,
+              52.3627171
+            ],
+            [
+              4.9185583,
+              52.3627346
+            ],
+            [
+              4.918757,
+              52.3627568
+            ],
+            [
+              4.9187995,
+              52.3627612
+            ],
+            [
+              4.91881,
+              52.3627226
+            ],
+            [
+              4.9189584,
+              52.3627371
+            ],
+            [
+              4.9189362,
+              52.3628222
+            ],
+            [
+              4.9188201,
+              52.3628109
+            ],
+            [
+              4.9188142,
+              52.3628218
+            ],
+            [
+              4.9188973,
+              52.3628386
+            ],
+            [
+              4.9188978,
+              52.3628377
+            ],
+            [
+              4.9189115,
+              52.3628405
+            ],
+            [
+              4.918911,
+              52.3628413
+            ],
+            [
+              4.9189124,
+              52.3628416
+            ],
+            [
+              4.9189089,
+              52.3628482
+            ],
+            [
+              4.9189074,
+              52.3628479
+            ],
+            [
+              4.9187206,
+              52.3631896
+            ],
+            [
+              4.9187222,
+              52.36319
+            ],
+            [
+              4.918718,
+              52.3631976
+            ],
+            [
+              4.9187165,
+              52.3631973
+            ],
+            [
+              4.918716,
+              52.3631982
+            ],
+            [
+              4.9187025,
+              52.3631955
+            ],
+            [
+              4.918703,
+              52.3631946
+            ],
+            [
+              4.9184443,
+              52.3631416
+            ],
+            [
+              4.9184438,
+              52.3631425
+            ],
+            [
+              4.9184298,
+              52.3631397
+            ],
+            [
+              4.9184303,
+              52.3631387
+            ],
+            [
+              4.9184288,
+              52.3631384
+            ],
+            [
+              4.918433,
+              52.3631307
+            ],
+            [
+              4.9184345,
+              52.3631311
+            ],
+            [
+              4.9185837,
+              52.362858
+            ],
+            [
+              4.9185002,
+              52.3628409
+            ],
+            [
+              4.9183792,
+              52.3630621
+            ],
+            [
+              4.9183808,
+              52.3630624
+            ],
+            [
+              4.918377,
+              52.3630693
+            ],
+            [
+              4.9183645,
+              52.3630667
+            ],
+            [
+              4.918365,
+              52.3630657
+            ],
+            [
+              4.9178853,
+              52.3629677
+            ],
+            [
+              4.9178827,
+              52.3629724
+            ],
+            [
+              4.9178722,
+              52.3629703
+            ],
+            [
+              4.9178727,
+              52.3629693
+            ],
+            [
+              4.9176848,
+              52.3629309
+            ],
+            [
+              4.9176843,
+              52.3629319
+            ],
+            [
+              4.9176736,
+              52.3629297
+            ],
+            [
+              4.9176762,
+              52.3629249
+            ],
+            [
+              4.9171968,
+              52.3628265
+            ],
+            [
+              4.9171963,
+              52.3628274
+            ],
+            [
+              4.9171837,
+              52.3628249
+            ]
+          ],
+          [
+            [
+              4.9174237,
+              52.3627506
+            ],
+            [
+              4.9179413,
+              52.3628566
+            ],
+            [
+              4.9179785,
+              52.3627166
+            ],
+            [
+              4.9178481,
+              52.3627038
+            ],
+            [
+              4.9178411,
+              52.3627304
+            ],
+            [
+              4.9178196,
+              52.3627283
+            ],
+            [
+              4.9178266,
+              52.3627017
+            ],
+            [
+              4.9177637,
+              52.3626955
+            ],
+            [
+              4.9177625,
+              52.3627001
+            ],
+            [
+              4.9175947,
+              52.3626836
+            ],
+            [
+              4.9175924,
+              52.3626925
+            ],
+            [
+              4.9175131,
+              52.3626847
+            ],
+            [
+              4.9175084,
+              52.3625956
+            ],
+            [
+              4.9174237,
+              52.3627506
+            ]
+          ],
+          [
+            [
+              4.9175244,
+              52.3625663
+            ],
+            [
+              4.9175666,
+              52.3625675
+            ],
+            [
+              4.9175677,
+              52.3625804
+            ],
+            [
+              4.9177776,
+              52.3626012
+            ],
+            [
+              4.9177847,
+              52.3625746
+            ],
+            [
+              4.9178247,
+              52.3625786
+            ],
+            [
+              4.917818,
+              52.3626039
+            ],
+            [
+              4.9178521,
+              52.3626073
+            ],
+            [
+              4.917862,
+              52.3625529
+            ],
+            [
+              4.917565,
+              52.3624921
+            ],
+            [
+              4.9175244,
+              52.3625663
+            ]
+          ],
+          [
+            [
+              4.9178738,
+              52.3626094
+            ],
+            [
+              4.9180757,
+              52.3626294
+            ],
+            [
+              4.9180682,
+              52.3626578
+            ],
+            [
+              4.9180537,
+              52.3626564
+            ],
+            [
+              4.9180522,
+              52.3626622
+            ],
+            [
+              4.91837,
+              52.3627189
+            ],
+            [
+              4.9184004,
+              52.3626632
+            ],
+            [
+              4.9178833,
+              52.3625573
+            ],
+            [
+              4.9178738,
+              52.3626094
+            ]
+          ],
+          [
+            [
+              4.9179609,
+              52.3628606
+            ],
+            [
+              4.9182592,
+              52.3629217
+            ],
+            [
+              4.9183623,
+              52.362733
+            ],
+            [
+              4.9180482,
+              52.3626772
+            ],
+            [
+              4.9180403,
+              52.3627227
+            ],
+            [
+              4.9180119,
+              52.3627199
+            ],
+            [
+              4.9180063,
+              52.3627412
+            ],
+            [
+              4.918116,
+              52.362752
+            ],
+            [
+              4.9180927,
+              52.3628407
+            ],
+            [
+              4.9179685,
+              52.3628285
+            ],
+            [
+              4.9179609,
+              52.3628606
+            ]
+          ],
+          [
+            [
+              4.9185141,
+              52.3628153
+            ],
+            [
+              4.9185977,
+              52.3628324
+            ],
+            [
+              4.9186208,
+              52.3627902
+            ],
+            [
+              4.9186192,
+              52.3627899
+            ],
+            [
+              4.9186228,
+              52.3627833
+            ],
+            [
+              4.9186243,
+              52.3627836
+            ],
+            [
+              4.9186249,
+              52.3627827
+            ],
+            [
+              4.918637,
+              52.3627852
+            ],
+            [
+              4.9186365,
+              52.3627861
+            ],
+            [
+              4.918743,
+              52.362808
+            ],
+            [
+              4.9187519,
+              52.3627754
+            ],
+            [
+              4.9185485,
+              52.3627525
+            ],
+            [
+              4.9185141,
+              52.3628153
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "compagnietheater",
+      name: "Compagnietheater",
+      landmarkId: "extract_landmarks_1455669716",
+      modelUrl: "./models/compagnietheater.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012171200"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.89771,
+          52.37036
+        ],
+        headingDegrees: 23.5,
+        lengthMetres: 44.3,
+        widthMetres: 29.33
+      },
+      surveyed: {
+        anchor: [
+          4.89771,
+          52.37036
+        ],
+        northOffsetDegrees: 0,
+        source: "BAG pand 0363100012171200 with 3DBAG LoD2.2 roofs; native east/south metres, scale 1."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#b9a78a",
+        stone: "#d9d1b9",
+        slate: "#575a5f",
+        white: "#ece9df",
+        glass: "#566872",
+        dark: "#1f2326"
+      },
+      attribution: {
+        title: "Compagnietheater",
+        author: "Map Recall",
+        sourceUrl: "https://nl.wikipedia.org/wiki/Compagnietheater",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free model on the BAG footprint (3DBAG LoD2.2 roof faces): the long Hollands-Classicist church hall with a rusticated stone ground floor, tall arched upper windows and a slate roof. Openings approximate, from 2025 street-level panoramas. No imported mesh or photo textures."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.897908,
+              52.370509
+            ],
+            [
+              4.897785,
+              52.370555
+            ],
+            [
+              4.897814,
+              52.370583
+            ],
+            [
+              4.897743,
+              52.370609
+            ],
+            [
+              4.897715,
+              52.370581
+            ],
+            [
+              4.897615,
+              52.370618
+            ],
+            [
+              4.897642,
+              52.370645
+            ],
+            [
+              4.8976,
+              52.370661
+            ],
+            [
+              4.8976,
+              52.370661
+            ],
+            [
+              4.897555,
+              52.370674
+            ],
+            [
+              4.897486,
+              52.370574
+            ],
+            [
+              4.897521,
+              52.370561
+            ],
+            [
+              4.897364,
+              52.370402
+            ],
+            [
+              4.897305,
+              52.370307
+            ],
+            [
+              4.897623,
+              52.370222
+            ],
+            [
+              4.897711,
+              52.370311
+            ],
+            [
+              4.897716,
+              52.370309
+            ],
+            [
+              4.897825,
+              52.370419
+            ],
+            [
+              4.89782,
+              52.37042
+            ],
+            [
+              4.897908,
+              52.370509
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "west-indian-warehouse",
+      name: "West Indian Warehouse",
+      landmarkId: "extract_landmarks_76787173",
+      modelUrl: "./models/west-indian-warehouse.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012170626"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.907724,
+          52.37222
+        ],
+        headingDegrees: 130,
+        lengthMetres: 24.17,
+        widthMetres: 7.58
+      },
+      surveyed: {
+        anchor: [
+          4.907724,
+          52.37222
+        ],
+        northOffsetDegrees: 0,
+        source: "BAG pand 0363100012170626 with 3DBAG LoD2.2 roofs; native east/south metres, scale 1."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#8a4f3d",
+        stone: "#cdbf9f",
+        slate: "#4f5256",
+        white: "#ebe7da",
+        glass: "#566872",
+        dark: "#23272a",
+        blue: "#7f93b3"
+      },
+      attribution: {
+        title: "West Indian Warehouse",
+        author: "Map Recall",
+        sourceUrl: "https://nl.wikipedia.org/wiki/West-Indisch_Pakhuis",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free model on the BAG footprint (3DBAG LoD2.2 roof faces): brick warehouse with cream string courses, barred ground-floor openings, board doors and shuttered upper windows. Openings approximate, from 2025 street-level panoramas. No imported mesh or photo textures."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.907727,
+              52.372222
+            ],
+            [
+              4.907634,
+              52.372183
+            ],
+            [
+              4.907632,
+              52.372182
+            ],
+            [
+              4.907903,
+              52.372043
+            ],
+            [
+              4.907967,
+              52.372088
+            ],
+            [
+              4.907914,
+              52.372116
+            ],
+            [
+              4.907922,
+              52.372121
+            ],
+            [
+              4.907727,
+              52.372222
+            ]
+          ]
+        ]
+      }
     }
   ];
 
@@ -40422,6 +41671,46 @@ Map source: ${osmUrl(places[i][0])}`);
       description: "The Woonbootmuseum, or Houseboat Museum, is dedicated to the history and culture of living on the water. It lies on the Prinsengracht, on the edge of the Jordaan, aboard the Hendrika Maria, a historic inland vessel from 1914.",
       funFact: "It is the only museum in the world specifically focused on houseboat living.",
       sourceUrl: "https://en.wikipedia.org/wiki/Woonbootmuseum"
+    },
+    {
+      modelId: "theater-bellevue",
+      landmarkId: "extract_landmarks_374802612",
+      name: "Theater Bellevue",
+      description: "Theater Bellevue stands at Leidsekade 90 on the corner of Marnixstraat. The core dates from around 1840, when it housed the societies Concordia and Bellevue; Eduard Cuypers enlarged it in 1881 and 1885, and a major renovation in 1938 turned it into an entertainment centre. Today it runs three halls for theatre, musical theatre, modern dance and cabaret.",
+      funFact: "On 15 December 1935 the final game of the world chess championship was played here, when Max Euwe beat Alexander Alekhine to become world champion.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Theater_Bellevue"
+    },
+    {
+      modelId: "west-india-house",
+      landmarkId: "extract_landmarks_1399359542",
+      name: "West India House",
+      description: "The West India House on Herenmarkt was the Amsterdam headquarters of the Dutch West India Company. Built in 1617 as a meat market and militia waiting room, it was rented by the company from 1623 and extended with two wings around a courtyard, tripling its size by 1647. A fire in 1975 was followed by restoration in 1978-1981; it now holds offices, the John Adams Institute and a municipal wedding hall.",
+      funFact: "It was here in 1625 that the company directors ordered the building of a fort on Manhattan, the beginning of New Amsterdam and later New York. A bronze statue of Peter Stuyvesant stands in the courtyard.",
+      sourceUrl: "https://en.wikipedia.org/wiki/West-Indisch_Huis"
+    },
+    {
+      modelId: "rijksakademie",
+      landmarkId: "extract_landmarks_373035281",
+      name: "Rijksakademie van beeldende kunsten",
+      description: "The Rijksakademie moved in 1992 into a former cavalry barracks at Sarphatistraat 470, whose gate still bears the name Kavallerie-Kazerne. It became an independent institution in November 1999 and offers a two-year residency for visual artists with studios, workshops and a library.",
+      funFact: "About 1,200 artists apply each year, and roughly 20 are accepted.",
+      sourceUrl: "https://en.wikipedia.org/wiki/Rijksakademie"
+    },
+    {
+      modelId: "compagnietheater",
+      landmarkId: "extract_landmarks_1455669716",
+      name: "Compagnietheater",
+      description: "The Compagnietheater at Kloveniersburgwal 50 was built in 1792-1793 as a church for the Restored Evangelical Lutheran congregation, designed by Abraham van der Hart on the site of a former madhouse (dolhuis). A Hollands-Classicist building with a sculptural group by Anthonie Ziesenis on its facade, it was converted to a theatre in 1995-1996 by Francine Houben of Mecanoo and is a national monument.",
+      funFact: "After the Lutheran congregations merged in 1952 the building briefly served as a bank archive before becoming a theatre.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Compagnietheater"
+    },
+    {
+      modelId: "west-indian-warehouse",
+      landmarkId: "extract_landmarks_76787173",
+      name: "West Indian Warehouse",
+      description: "The West-Indisch Pakhuis on the Rapenburg, where the Oudeschans meets the Oosterdok, was built in 1642 to store goods for the Dutch West India Company, including hides from New Amsterdam. The company ran its headquarters from here between 1647 and 1674, directing trade and the administration of New Amsterdam until 1664. Now a protected monument, it houses offices and an events venue.",
+      funFact: "The letters GWC on the facade stand for the company's official name, Geoctroyeerde West-Indische Compagnie.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/West-Indisch_Pakhuis"
     }
   ];
 
