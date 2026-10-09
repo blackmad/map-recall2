@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What's new in the city</title>
+<meta name="description" content="Newly completed buildings in the modelled Amsterdam of Map Recall, newest first, with interactive 3D turntables.">
+<style>
+  :root{
+    color-scheme:light dark;
+    --bg:#f1ede3;--ink:#26323a;--mut:#6a665d;--line:#d9d3c5;--card:#fbf9f3;--stage:#e6e1d3;--stage2:#f3efe5;
+    --accent:#b4532a;--accent-ink:#fff;--link:#2a5a86;--chip:#e7e1d1;--ok:#3d7a52;--wip:#a8741a;
+    --shadow:0 1px 2px rgba(40,30,10,.06),0 6px 18px rgba(40,30,10,.06);
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --bg:#15191c;--ink:#e6e3da;--mut:#9a978d;--line:#2b3236;--card:#1d2327;--stage:#242b30;--stage2:#2d363c;
+    --accent:#e08a5c;--accent-ink:#1a1006;--link:#8fb8e0;--chip:#2a3237;--ok:#7bc08f;--wip:#e0b25a;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.25);
+  }}
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden}
+  a{color:var(--link);text-underline-offset:3px}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 16px}
+  @media (min-width:700px){.wrap{padding:0 32px}}
+  nav.top{display:flex;flex-wrap:wrap;gap:4px 16px;padding:14px 0 0;font-size:13px;color:var(--mut)}
+  nav.top a{color:var(--mut)}
+  nav.top a:hover{color:var(--ink)}
+  .hero{padding:28px 0 20px}
+  .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0 0 8px}
+  h1{font:700 clamp(30px,6vw,52px)/1.05 Georgia,"Iowan Old Style","Times New Roman",serif;margin:0 0 10px;letter-spacing:-.01em}
+  .lede{margin:0;max-width:60ch;color:var(--mut);font-size:16px}
+  .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:22px}
+  @media (min-width:700px){.stats{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow)}
+  .stat b{display:block;font:700 clamp(24px,4.5vw,34px)/1.1 Georgia,serif;font-variant-numeric:tabular-nums}
+  .stat span{font-size:12.5px;color:var(--mut)}
+  .stat.fresh{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+  .stat.fresh span{color:inherit;opacity:.85}
+  .bar{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  @media (max-width:699px){.bar{position:static}}
+  .bar .wrap{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding-top:10px;padding-bottom:10px}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--card)}
+  .seg button{font:inherit;font-size:13px;border:0;background:none;color:var(--mut);padding:6px 14px;cursor:pointer;min-height:36px}
+  .seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+  .search{flex:1 1 180px;min-width:0}
+  .search input{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 14px;min-height:38px}
+  .search input:focus-visible,.seg button:focus-visible,.more:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .count{font-size:12.5px;color:var(--mut);margin-left:auto}
+  section.day{padding-top:26px}
+  .day-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 12px}
+  .day-head h2{font:700 22px/1.2 Georgia,serif;margin:0}
+  .day-head span{font-size:12.5px;color:var(--mut)}
+  .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr))}
+  article.card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow);min-width:0}
+  .stage{position:relative;aspect-ratio:4/3;background:radial-gradient(120% 90% at 50% 20%,var(--stage2),var(--stage))}
+  .stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y;cursor:grab}
+  .stage canvas.dragging{cursor:grabbing;touch-action:none}
+  .stage .ph{position:absolute;inset:0;display:grid;place-items:center;color:var(--mut);font-size:12px;pointer-events:none}
+  .stage .ph.hide{display:none}
+  .badge{position:absolute;top:8px;left:8px;font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--chip);color:var(--ink);pointer-events:none}
+  .badge.new{background:var(--accent);color:var(--accent-ink)}
+  .photo{position:absolute;right:8px;bottom:8px;width:76px;height:56px;border-radius:8px;border:2px solid var(--card);object-fit:cover;box-shadow:var(--shadow);background:var(--stage)}
+  .body{padding:10px 14px 4px}
+  .body h3{font-size:15.5px;line-height:1.3;margin:0 0 3px;overflow-wrap:anywhere}
+  .meta{margin:0;color:var(--mut);font-size:12.5px;font-variant-numeric:tabular-nums}
+  .links{margin-top:auto;display:flex;gap:6px 16px;flex-wrap:wrap;padding:8px 14px 12px;font-size:13px}
+  .links a.game{font-weight:600}
+  .empty{padding:40px 0;color:var(--mut)}
+  .more{display:block;margin:28px auto 0;font:inherit;font-weight:600;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:10px 22px;cursor:pointer;min-height:44px}
+  .more:hover{border-color:var(--accent)}
+  h2.sec{font:700 26px/1.2 Georgia,serif;margin:56px 0 6px}
+  .sec-note{margin:0 0 14px;color:var(--mut);max-width:70ch}
+  .wip-grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr))}
+  .wip{background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:12px 14px;min-width:0}
+  .wip h3{margin:0 0 4px;font-size:14.5px;line-height:1.3;overflow-wrap:anywhere}
+  .wip .st{display:inline-block;font-size:11px;font-weight:600;color:var(--wip);border:1px solid currentColor;border-radius:999px;padding:0 8px;margin-bottom:6px}
+  .wip p{margin:0;font-size:12.5px;color:var(--mut);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  footer{padding:40px 0 56px;color:var(--mut);font-size:12.5px}
+  noscript{display:block;padding:20px 0}
+  @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="top" aria-label="Galleries">
+    <a href="manual-landmarks.html">Landmark models</a>
+    <a href="manual-ordinary-buildings.html">Ordinary buildings</a>
+    <a href="landmark-queue.html">Building queue</a>
+    <a href="park-landscape.html">Park views</a>
+    <a href="index.html">Play the game</a>
+  </nav>
+  <header class="hero">
+    <p class="eyebrow">Map Recall &middot; the modelled city</p>
+    <h1>What's new in Amsterdam</h1>
+    <p class="lede">Buildings finished and placed in the game, newest first. Drag any model to turn it, or jump straight to it on the map.</p>
+    <div class="stats" id="stats" aria-live="polite">
+      <div class="stat"><b data-k="landmarks">&ndash;</b><span>landmarks modelled</span></div>
+      <div class="stat"><b data-k="ordinary">&ndash;</b><span>ordinary buildings</span></div>
+      <div class="stat"><b data-k="tris">&ndash;</b><span>triangles in total</span></div>
+      <div class="stat fresh"><b data-k="week">&ndash;</b><span id="weekNote">new this week</span></div>
+    </div>
+  </header>
+</div>
+<div class="bar">
+  <div class="wrap">
+    <div class="seg" role="group" aria-label="Kind">
+      <button type="button" data-kind="all" aria-pressed="true">All</button>
+      <button type="button" data-kind="landmark" aria-pressed="false">Landmarks</button>
+      <button type="button" data-kind="ordinary" aria-pressed="false">Ordinary</button>
+    </div>
+    <label class="search"><input id="q" type="search" placeholder="Search by name" aria-label="Search by name" autocomplete="off"></label>
+    <span class="count" id="count" role="status"></span>
+  </div>
+</div>
+<main class="wrap">
+  <div id="feed"></div>
+  <button type="button" class="more" id="more" hidden>Show older</button>
+
+  <h2 class="sec" id="wip-title">In progress</h2>
+  <p class="sec-note">Not finished. These are drafts waiting on review, or buildings being worked on right now, so they are not in the game yet.</p>
+  <div class="wip-grid" id="wip"></div>
+</main>
+<footer class="wrap">
+  Dates are when each model asset was last updated, not when the real building was built.
+  <span id="foot"></span>
+</footer>
+
+<script src="./js/three.bundle.js"></script>
+<script>
+(() => {
+'use strict';
+const { THREE: T, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
+const $ = (s, r = document) => r.querySelector(s);
+const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const PAGE_CARDS = 30;
+const MAX_LOADS = 3;
+
+const state = { kind: 'all', q: '', shown: PAGE_CARDS, items: [], tasks: [] };
+window.whatsNew = { ready: false, drawn: [], errors: [] };
+
+const fmt = n => n.toLocaleString('en');
+const dayKey = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+function dayLabel(key) {
+  const [y, m, d] = key.split('-').map(Number);
+  const date = new Date(y, m - 1, d), today = new Date(); today.setHours(0, 0, 0, 0);
+  const diff = Math.round((today - date) / 864e5);
+  const base = date.toLocaleDateString('en', { weekday: 'long', day: 'numeric', month: 'long' });
+  return diff === 0 ? `Today · ${base}` : diff === 1 ? `Yesterday · ${base}` : base;
+}
+const gameUrl = (lng, lat) => {
+  const f = n => n.toFixed(4);
+  return `./index.html#race=${f(lat)},${f(lng)},${f(lat)},${f(lng)},${f(lat + 0.004)},${f(lng)}`;
+};
+const fetchJson = u => fetch(u).then(r => { if (!r.ok) throw new Error(`${u} ${r.status}`); return r.json(); });
+
+// ---------- shared renderer: one WebGL context drawn into per-card 2D canvases
+let renderer = null;
+const loader = new GLTFLoader();
+if (MeshoptDecoder) loader.setMeshoptDecoder(MeshoptDecoder);
+function getRenderer() {
+  if (!renderer) renderer = new T.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: false });
+  return renderer;
+}
+const scene = new T.Scene();
+scene.add(new T.HemisphereLight(0xffffff, 0x88806e, 2));
+const sun = new T.DirectionalLight(0xffefce, 2.2);
+scene.add(sun);
+const camera = new T.PerspectiveCamera(32, 1, 0.1, 20000);
+
+function draw(c) {
+  if (!c.model) return;
+  const r = getRenderer();
+  const w = Math.max(1, c.canvas.clientWidth), h = Math.max(1, c.canvas.clientHeight);
+  const dpr = Math.min(devicePixelRatio || 1, 2);
+  const bw = Math.round(w * dpr), bh = Math.round(h * dpr);
+  if (c.canvas.width !== bw || c.canvas.height !== bh) { c.canvas.width = bw; c.canvas.height = bh; }
+  r.setPixelRatio(dpr); r.setSize(w, h, false);
+  r.setClearColor(0x000000, 0);
+  camera.aspect = w / h;
+  camera.near = Math.max(c.distance / 1000, 0.05); camera.far = c.distance * 50;
+  camera.updateProjectionMatrix();
+  camera.position.set(
+    c.target.x + c.distance * Math.sin(c.phi) * Math.sin(c.theta),
+    c.target.y + c.distance * Math.cos(c.phi),
+    c.target.z + c.distance * Math.sin(c.phi) * Math.cos(c.theta));
+  camera.lookAt(c.target);
+  sun.position.set(Math.sin(c.theta - .65) * 150, 200, Math.cos(c.theta - .65) * 150);
+  scene.add(c.model);
+  r.render(scene, camera);
+  scene.remove(c.model);
+  const ctx = c.canvas.getContext('2d');
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.clearRect(0, 0, bw, bh);
+  ctx.drawImage(r.domElement, 0, 0, bw, bh);
+  if (!c.drawn) { c.drawn = true; c.ph.classList.add('hide'); window.whatsNew.drawn.push(c.item.id); }
+}
+
+function disposeModel(model) {
+  model.traverse(o => {
+    if (o.geometry) o.geometry.dispose();
+    const mats = o.material ? (Array.isArray(o.material) ? o.material : [o.material]) : [];
+    for (const m of mats) {
+      for (const k in m) if (m[k] && m[k].isTexture) { m[k].dispose(); if (m[k].image && m[k].image.close) m[k].image.close(); }
+      m.dispose();
+    }
+  });
+}
+
+// ---------- lazy loading: only cards near the viewport hold a model
+const cards = new Map(); // element -> card
+const visible = new Set();
+const queue = [];
+let loading = 0;
+function pump() {
+  while (loading < MAX_LOADS && queue.length) {
+    const c = queue.shift();
+    if (!visible.has(c) || c.model || c.loading) continue;
+    c.loading = true; loading++;
+    const url = new URL(c.item.modelUrl, location.href);
+    if (c.item.version) url.searchParams.set('asset', c.item.version);
+    loader.load(url.href, gltf => {
+      loading--; c.loading = false;
+      if (!visible.has(c)) { disposeModel(gltf.scene); pump(); return; }
+      const model = gltf.scene;
+      const box = new T.Box3().setFromObject(model);
+      box.getCenter(c.target);
+      const size = box.getSize(new T.Vector3());
+      const aspect = Math.max(1, c.canvas.clientWidth) / Math.max(1, c.canvas.clientHeight);
+      const hv = 32 * Math.PI / 360, hf = Math.min(hv, Math.atan(Math.tan(hv) * aspect));
+      c.distance = Math.max(size.length() * .5 / Math.sin(hf) * .82, 1);
+      c.model = model;
+      draw(c); pump();
+    }, undefined, err => {
+      loading--; c.loading = false;
+      c.ph.textContent = 'Model unavailable';
+      window.whatsNew.errors.push({ id: c.item.id, error: String(err && err.message || err) });
+      pump();
+    });
+  }
+}
+function release(c) {
+  if (c.model) { disposeModel(c.model); c.model = null; }
+}
+const io = new IntersectionObserver(entries => {
+  for (const e of entries) {
+    const c = cards.get(e.target);
+    if (!c) continue;
+    if (e.isIntersecting) { visible.add(c); if (!c.model) { queue.push(c); } }
+    else { visible.delete(c); release(c); }
+  }
+  pump(); startLoop();
+}, { rootMargin: '200px 0px' });
+
+// ---------- gentle turntable for visible cards
+let raf = 0, last = 0;
+function startLoop() { if (!raf && !REDUCED) raf = requestAnimationFrame(tick); }
+function tick(t) {
+  raf = 0;
+  if (!visible.size) return;
+  if (t - last > 33) {
+    const dt = Math.min((t - last) / 1000, .1); last = t;
+    for (const c of visible) if (c.model && !c.dragging) { c.theta += dt * 0.35; draw(c); }
+  }
+  raf = requestAnimationFrame(tick);
+}
+document.addEventListener('visibilitychange', () => { if (document.hidden && raf) { cancelAnimationFrame(raf); raf = 0; } else startLoop(); });
+
+// ---------- DOM
+function makeCard(item, isNew) {
+  const art = document.createElement('article');
+  art.className = 'card';
+  const stage = document.createElement('div'); stage.className = 'stage';
+  const canvas = document.createElement('canvas');
+  canvas.setAttribute('role', 'img'); canvas.setAttribute('aria-label', `3D model of ${item.name}. Drag to rotate.`);
+  const ph = document.createElement('div'); ph.className = 'ph'; ph.textContent = 'Loading model…';
+  const badge = document.createElement('span'); badge.className = 'badge' + (isNew ? ' new' : '');
+  badge.textContent = isNew ? 'New' : item.kind === 'landmark' ? 'Landmark' : 'Ordinary';
+  stage.append(canvas, ph, badge);
+  if (item.photo) {
+    const img = document.createElement('img');
+    img.className = 'photo'; img.loading = 'lazy'; img.decoding = 'async'; img.alt = `Reference photo of ${item.name}`;
+    img.src = item.photo; img.onerror = () => img.remove();
+    stage.append(img);
+  }
+  const body = document.createElement('div'); body.className = 'body';
+  const h = document.createElement('h3'); h.textContent = item.name;
+  const meta = document.createElement('p'); meta.className = 'meta';
+  const when = item.date ? item.date.toLocaleTimeString('en', { hour: '2-digit', minute: '2-digit' }) + ' · ' : '';
+  meta.textContent = `${when}${item.kind === 'landmark' ? 'Landmark' : 'Ordinary building'} · ${fmt(item.triangles)} triangles`;
+  body.append(h, meta);
+  const links = document.createElement('div'); links.className = 'links';
+  const a1 = document.createElement('a'); a1.href = item.gallery; a1.textContent = 'Open in gallery';
+  links.append(a1);
+  if (item.lng != null) {
+    const a2 = document.createElement('a'); a2.className = 'game'; a2.href = gameUrl(item.lng, item.lat); a2.textContent = 'See it in the game →';
+    links.append(a2);
+  }
+  art.append(stage, body, links);
+  const c = { item, canvas, ph, el: art, model: null, drawn: false, loading: false, dragging: false,
+    target: new T.Vector3(), distance: 200, theta: 0.55 + (item.id.length % 7) * 0.3, phi: 1.02 };
+  if (REDUCED) c.theta = 0.55;
+  let lastP = null;
+  canvas.addEventListener('pointerdown', e => { lastP = [e.clientX, e.clientY]; c.dragging = true; canvas.classList.add('dragging'); canvas.setPointerCapture(e.pointerId); });
+  const end = () => { lastP = null; c.dragging = false; canvas.classList.remove('dragging'); };
+  canvas.addEventListener('pointerup', end); canvas.addEventListener('pointercancel', end);
+  canvas.addEventListener('pointermove', e => {
+    if (!lastP) return;
+    c.theta -= (e.clientX - lastP[0]) * 0.01;
+    c.phi = Math.max(0.1, Math.min(1.5, c.phi + (e.clientY - lastP[1]) * 0.01));
+    lastP = [e.clientX, e.clientY];
+    draw(c);
+  });
+  canvas.addEventListener('wheel', e => { if (!e.ctrlKey && !e.metaKey) return; e.preventDefault(); c.distance *= Math.exp(e.deltaY * 0.002); draw(c); }, { passive: false });
+  cards.set(art, c);
+  return art;
+}
+
+function filtered() {
+  const q = state.q.trim().toLowerCase();
+  return state.items.filter(i => (state.kind === 'all' || i.kind === state.kind) && (!q || i.name.toLowerCase().includes(q)));
+}
+
+function render() {
+  for (const [el, c] of cards) { io.unobserve(el); visible.delete(c); release(c); }
+  cards.clear(); queue.length = 0;
+  const feed = $('#feed'); feed.textContent = '';
+  const list = filtered();
+  $('#count').textContent = `${fmt(list.length)} model${list.length === 1 ? '' : 's'}`;
+  if (!list.length) { feed.innerHTML = '<p class="empty">No models match.</p>'; $('#more').hidden = true; renderWip(); return; }
+  const slice = list.slice(0, state.shown);
+  const weekAgo = Date.now() - 7 * 864e5;
+  let sec = null, grid = null, key = null;
+  for (const item of slice) {
+    const k = item.date ? dayKey(item.date) : 'undated';
+    if (k !== key) {
+      key = k;
+      sec = document.createElement('section'); sec.className = 'day'; sec.dataset.key = k;
+      sec.innerHTML = '<div class="day-head"><h2></h2><span></span></div><div class="grid"></div>';
+      sec.querySelector('h2').textContent = k === 'undated' ? 'Earlier (date not recorded)' : dayLabel(k);
+      grid = sec.querySelector('.grid');
+      feed.append(sec);
+    }
+    const el = makeCard(item, item.date && item.date.getTime() >= weekAgo);
+    grid.append(el); io.observe(el);
+  }
+  const totals = new Map();
+  for (const i of list) { const k = i.date ? dayKey(i.date) : 'undated'; totals.set(k, (totals.get(k) || 0) + 1); }
+  feed.querySelectorAll('section.day').forEach(s => {
+    const n = totals.get(s.dataset.key);
+    s.querySelector('.day-head span').textContent = `${n} model${n === 1 ? '' : 's'}`;
+  });
+  const more = $('#more');
+  more.hidden = slice.length >= list.length;
+  more.textContent = `Show older (${fmt(list.length - slice.length)} more)`;
+  renderWip();
+}
+
+function renderWip() {
+  const q = state.q.trim().toLowerCase();
+  const list = state.tasks.filter(t => !q || t.name.toLowerCase().includes(q));
+  const box = $('#wip'); box.textContent = '';
+  $('#wip-title').hidden = $('.sec-note').hidden = !state.tasks.length;
+  if (!list.length) { box.innerHTML = '<p class="empty">Nothing in progress matches.</p>'; return; }
+  for (const t of list) {
+    const d = document.createElement('div'); d.className = 'wip';
+    d.innerHTML = '<h3></h3><span class="st"></span><p></p>';
+    d.querySelector('h3').textContent = t.name;
+    d.querySelector('.st').textContent = t.label;
+    d.querySelector('p').textContent = t.next || '';
+    box.append(d);
+  }
+}
+
+// ---------- data
+function wipLabel(status) {
+  if (/draft/.test(status)) return 'Draft, awaiting review';
+  if (/review-pending|unaccepted|awaiting/.test(status)) return 'Awaiting review';
+  if (/in-progress/.test(status)) return 'Being built';
+  return status.replace(/-/g, ' ');
+}
+async function init() {
+  const [dates, sig, ord, queueJson] = await Promise.all([
+    fetchJson('./models/model-dates.json'), fetchJson('./models/signature-landmarks.json'),
+    fetchJson('./ordinary-buildings-data/catalogue.json'), fetchJson('./poi-work-queue.json').catch(() => ({ tasks: [] })),
+  ]);
+  const dm = dates.models || {};
+  const items = [];
+  for (const [id, m] of Object.entries(sig.models || {})) {
+    const iso = dm[id]?.updatedAt, anchor = m.placement?.anchor;
+    items.push({
+      id, kind: m.landmarkId ? 'landmark' : 'ordinary', name: m.name || id, modelUrl: m.modelUrl, version: dm[id]?.version,
+      triangles: m.triangles || 0, date: iso && Number.isFinite(Date.parse(iso)) ? new Date(iso) : null,
+      lng: anchor ? anchor[0] : null, lat: anchor ? anchor[1] : null,
+      gallery: `./manual-landmarks.html?only=${encodeURIComponent(id)}`,
+    });
+  }
+  for (const m of ord.models || []) {
+    const iso = m.updatedAt || dm[m.id]?.updatedAt || m.sourceTiming?.recipeCompletedAt;
+    items.push({
+      id: m.id, kind: 'ordinary', name: m.name || m.id, modelUrl: m.modelUrl, version: m.hash ? m.hash.slice(0, 16) : undefined,
+      triangles: m.triangles || 0, date: iso && Number.isFinite(Date.parse(iso)) ? new Date(iso) : null,
+      lng: m.anchor ? m.anchor[0] : null, lat: m.anchor ? m.anchor[1] : null,
+      photo: (m.referenceImages || [])[0],
+      gallery: `./manual-ordinary-buildings.html?only=${encodeURIComponent(m.id)}`,
+    });
+  }
+  items.sort((a, b) => (b.date ? b.date.getTime() : -Infinity) - (a.date ? a.date.getTime() : -Infinity) || a.name.localeCompare(b.name));
+  state.items = items;
+
+  const WIP = /draft|review-pending|unaccepted|awaiting|in-progress|generated/;
+  state.tasks = (queueJson.tasks || []).filter(t => WIP.test(t.status || '') && !/^verified|^hosted|^complete/.test(t.status))
+    .map(t => ({ name: t.task || t.id, label: wipLabel(t.status), next: t.nextAction, high: t.priority === 'high' }))
+    .sort((a, b) => Number(b.high) - Number(a.high));
+
+  const landmarks = items.filter(i => i.kind === 'landmark').length;
+  const week = items.filter(i => i.date && i.date.getTime() >= Date.now() - 7 * 864e5).length;
+  const set = (k, v) => { $(`[data-k="${k}"]`).textContent = v; };
+  set('landmarks', fmt(landmarks)); set('ordinary', fmt(items.length - landmarks));
+  set('tris', fmt(items.reduce((s, i) => s + i.triangles, 0))); set('week', fmt(week));
+  const midnight = new Date(); midnight.setHours(0, 0, 0, 0);
+  const today = items.filter(i => i.date && i.date >= midnight).length;
+  $('#weekNote').textContent = today ? `new this week \u00b7 ${fmt(today)} today` : 'new this week';
+  $('#foot').textContent = `${fmt(state.tasks.length)} items in progress.`;
+  render();
+  window.whatsNew.ready = true;
+}
+
+for (const b of document.querySelectorAll('.seg button')) b.addEventListener('click', () => {
+  state.kind = b.dataset.kind; state.shown = PAGE_CARDS;
+  document.querySelectorAll('.seg button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+  render();
+});
+let qTimer = 0;
+$('#q').addEventListener('input', e => { clearTimeout(qTimer); qTimer = setTimeout(() => { state.q = e.target.value; state.shown = PAGE_CARDS; render(); }, 150); });
+$('#more').addEventListener('click', () => { state.shown += PAGE_CARDS; render(); });
+
+init().catch(err => { $('#feed').innerHTML = '<p class="empty"></p>'; $('#feed p').textContent = `Could not load model data: ${err.message}`; window.whatsNew.errors.push({ error: String(err) }); });
+})();
+</script>
+</body>
+</html>
