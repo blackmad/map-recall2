@@ -29,10 +29,33 @@ export function buildTheaterLandmark(id:string,w:number,d:number,b:BuildingTools
   box(0,13.6,z,width+.4,.35,.7,'white');text('KLEINE KOMEDIE',0,4.3,z+.45,.22,'red');
   for(const x of [-width*.29,0,width*.29]){box(x,3.4,z+.5,2.8,.15,1.6,'glass');box(x,3.5,z+.5,2.9,.09,1.7,'frame');}
  }else if(id==='de-balie'){
-  box(0,0,0,width*.97,10.8,depth*.96,'brick');gable(0,10.8,0,width*.97,5.1,depth*.96,'slate');const z=front+.05;
-  for(const y of [.15,4.8,10.5])box(0,y,z,width,.25,.4,'stone');for(let i=0;i<8;i++){const x=(i-3.5)*width*.118;win(x,.7,z,2.4,3.7,true);win(x,5.6,z,2.35,4.05,true);}
-  // Two rising facade gables flank the stone-framed central courtroom portal.
-  for(const x of [-width*.34,width*.34]){gable(x,10.7,z,8.2,5.4,.8,'brick');gable(x,11,z+.45,7.3,4.8,.2,'stone');gable(x,11.35,z+.55,6.4,4.2,.2,'brick');win(x,11.3,z+.7,1.7,2.5,true);box(x,16,z,.25,1,.25,'stone');}
-  box(0,0,z+.25,4.6,5.2,.6,'stone');arch(0,.2,z+.61,3.4,4.4,'dark');box(0,4.9,z+.2,5.4,.3,.9,'stone');text('DE BALIE',0,5.3,z+.65,.25,'white');for(const x of [-4.7,4.7])box(x,3,z+.3,1.2,5.3,.12,'gold');
+  // Former Huis van Bewaring court building (1890s Dutch Renaissance Revival), read from the
+  // east panorama: pale sandstone, two storeys over a barred basement, seven axes (wide mullioned
+  // pavilion bays at both ends, five regular bays, central arched portal), a crowning cornice,
+  // two stepped gables, a steep slate roof with three dormers.
+  const wd=width*.98,zf=depth*.49,eave=10.6,s='stone' as C;
+  box(0,0,0,wd,eave,depth*.98,s);
+  for(const y of [1.1,5.3])box(0,y,zf+.12,wd+.2,.3,.24,s);box(0,eave-.5,zf+.22,wd+.4,.55,.44,s);box(0,0,zf+.07,wd+.1,1.1,.14,'concrete');
+  // Roof: pavilion gable roofs run back; the central hip is a prism whose ridge runs along the front.
+  const rd=depth*.98,ridgeH=14.3,hipHalf=rd/2;
+  for(const x of [-13.2,13.2]){const g=new T.Shape();g.moveTo(-3.3,0);g.lineTo(3.3,0);g.lineTo(0,5.7);g.closePath();add(new T.ExtrudeGeometry(g,{depth:rd,bevelEnabled:false}),'slate',x,eave,-rd/2);}
+  {const p=new T.Shape();p.moveTo(-hipHalf,0);p.lineTo(hipHalf,0);p.lineTo(hipHalf-6,ridgeH-eave);p.lineTo(-hipHalf+6,ridgeH-eave);p.closePath();const g=new T.ExtrudeGeometry(p,{depth:20.2,bevelEnabled:false});g.translate(0,0,-10.1);g.rotateY(Math.PI/2);add(g,'slate',0,eave,0);}
+  const axes=[-8.2,-4.4,0,3.9,7.8];
+  const row=(x:number,wide:boolean)=>{const ww=wide?4.4:2.5;
+   win(x,1.7,zf+.1,ww,3.1,true);win(x,6.2,zf+.1,ww,3.4,true);
+   box(x,.35,zf+.16,wide?3:1.6,.6,.1,'dark');};
+  row(-13.4,true);row(13.1,true);
+  for(const x of axes){if(x!==0)row(x,false);else{win(0,6.2,zf+.1,2.5,3.4,true);}}
+  // Central portal with small pediment and name plate
+  box(0,0,zf+.3,4.2,4.6,.5,s);arch(0,.9,zf+.56,2.5,3.4,'dark');box(0,4.5,zf+.35,4.8,.35,.8,s);gable(0,4.85,zf+.55,4.8,1.2,.5,s);
+  box(0,5.3,zf+.85,3.4,.55,.1,'dark');text('DE BALIE',0,5.33,zf+.93,.09,'white');
+  // Stepped Dutch-Renaissance gables above the pavilion bays
+  for(const x of [-13.2,13.2]){const g=new T.Shape(),pts:[number,number][]=[[3.3,0],[3.3,.8],[2.7,1.4],[2.7,2.4],[2.0,3.0],[2.0,3.9],[1.3,4.5],[1.3,5.3],[.6,5.9],[.6,6.7],[0,7.3]];
+   g.moveTo(3.3,0);for(const [px,py] of pts.slice(1))g.lineTo(px,py);for(const [px,py] of pts.slice(1,-1).reverse())g.lineTo(-px,py);g.lineTo(-3.3,0);g.closePath();
+   add(new T.ExtrudeGeometry(g,{depth:.7,bevelEnabled:false}),s,x,eave,zf-.2);
+   win(x,eave+.8,zf+.55,1.2,2.2,true);add(new T.CylinderGeometry(.45,.45,.12,10).rotateX(Math.PI/2),'dark',x,eave+4.2,zf+.55);
+   box(x,eave+7.2,zf+.2,.35,1.3,.35,s);box(x,eave+8.4,zf+.2,.08,.9,.08,'dark');}
+  // Three dormers on the central hip
+  for(const x of [-6,0,6]){const z=zf-2.3;box(x,eave+1.3,z,1.5,1.9,1.1,s);box(x,eave+1.7,z+.56,.9,1.2,.08,'dark');gable(x,eave+3.2,z,1.9,.9,1.2,'slate');}
  }else throw new Error(`No theatre builder for ${id}`);
 }
