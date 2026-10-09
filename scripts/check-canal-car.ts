@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { constrainCarToRoad, trackEdgeStall, type CarKinematics, type RoadContact } from '../src/canalRecall/carRoadGuard';
+import { ROUTE_QUIZ_SETTLE_METRES } from '../src/canalRecall/game/recallRules';
 import { coveringBuilding, initialCoverState, updateCoverState } from '../src/canalRecall/coveredPassage';
 
 const options = { edgeTolerance: 12 };
@@ -190,6 +191,22 @@ const junctionArms = routing.filter(street =>
     .some(point => metersBetween(point, stirumJunction) < 13));
 for (const name of ['Van Limburg Stirumstraat', 'De Wittenkade', 'Staatsliedenbrug']) {
   assert.ok(junctionArms.some(street => street.name === name), `${name} remains connected at the Stirumstraat roundabout`);
+}
+
+{
+  // Named regression (user report 2026-10-09, "asked me kinda too late"): the
+  // Noordsche Compagniebrug carries Herenstraat over the Keizersgracht onto
+  // Prinsenstraat, and its routing ways are its own ~40 m street. The route
+  // question settled on 0.65 s, which at cruise covered 33 m of it, so it was
+  // asked at the far quay. tests/e2e/turn-question-timing.spec.ts drives it;
+  // this pins the geometry that makes the time settle too long.
+  const ways = routing.filter(street => street.name === 'Noordsche Compagniebrug');
+  assert.ok(ways.some(street => street.bridge), 'Noordsche Compagniebrug is a routed bridge way');
+  const length = ways.flatMap(street => street.paths ?? (street.path ? [street.path] : []))
+    .reduce((sum, path) => sum + path.slice(1).reduce((m, point, i) => m + metersBetween(path[i], point), 0), 0);
+  assert.ok(length > 30 && length < 50, `the bridge way is ~40 m (${length.toFixed(1)} m)`);
+  assert.ok(ROUTE_QUIZ_SETTLE_METRES * 3 < length,
+    'the distance settle asks in the first third of the bridge, not at its end');
 }
 
 process.stdout.write(`Canal Recall car checks passed (6 simulations, including Keizersgracht canal edge; 4 Da Costakade approaches, Stirumstraat roundabout, ${bridgeSegments.length} bridge segments, routing-class coverage).\n`);
