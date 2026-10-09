@@ -21876,6 +21876,7 @@
     },
     "haparandaweg-746-786": {
       "id": "haparandaweg-746-786",
+      "held": true,
       "name": "Haparandaweg 746-786",
       "modelUrl": "./models/haparandaweg-746-786.glb",
       "suppressOsmIds": [
@@ -22208,6 +22209,7 @@
     },
     "haparandaweg-952-1002": {
       "id": "haparandaweg-952-1002",
+      "held": true,
       "name": "Haparandaweg 952-1002",
       "modelUrl": "./models/haparandaweg-952-1002.glb",
       "suppressOsmIds": [

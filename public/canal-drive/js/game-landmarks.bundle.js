@@ -15724,6 +15724,8 @@ Map source: ${osmUrl(places[i][0])}`);
     },
     {
       id: "haparandaweg-746-786",
+      status: "held",
+      heldReason: "Photo shows a flat stone-framed grid with recessed glass balconies; model has deep slab balconies projecting across the front and the SE side (review sheet 2026-10-10).",
       name: "Haparandaweg 746-786",
       modelUrl: "./models/haparandaweg-746-786.glb",
       suppressOsmIds: [
@@ -16042,6 +16044,8 @@ Map source: ${osmUrl(places[i][0])}`);
     },
     {
       id: "haparandaweg-952-1002",
+      status: "held",
+      heldReason: "Windows read as a random patchwork of panes and grey panels instead of a regular grid (user review 2026-10-10).",
       name: "Haparandaweg 952-1002",
       modelUrl: "./models/haparandaweg-952-1002.glb",
       suppressOsmIds: [
