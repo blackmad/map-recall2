@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sculpture Splat Pilot</title>
+<style>
+  :root { --bg:#f2efe8; --fg:#1d2a2c; --mut:#5d6b6d; --card:#fff; --line:#d9d3c6; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#14191a; --fg:#e6ecec; --mut:#97a6a8; --card:#1d2425; --line:#334042; } }
+  :root[data-theme="dark"] { --bg:#14191a; --fg:#e6ecec; --mut:#97a6a8; --card:#1d2425; --line:#334042; }
+  * { box-sizing:border-box }
+  body { margin:0; background:var(--bg); color:var(--fg); font:15px/1.45 system-ui,sans-serif; padding:16px }
+  h1 { font-size:20px; margin:0 0 4px }
+  p.sub { margin:0 0 12px; color:var(--mut) }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:12px }
+  .cell { background:var(--card); border:1px solid var(--line); border-radius:8px; overflow:hidden }
+  .cell h2 { font-size:14px; margin:0; padding:8px 10px; border-bottom:1px solid var(--line) }
+  .cell h2 span { color:var(--mut); font-weight:400 }
+  canvas { display:block; width:100%; height:420px; touch-action:none; background:linear-gradient(#cfd9dc,#e9e4d6) }
+  .stat { padding:6px 10px; font:12px ui-monospace,monospace; color:var(--mut); min-height:2.6em }
+  .bar { display:flex; gap:12px; flex-wrap:wrap; margin:10px 0; align-items:center }
+  .bar label { display:flex; gap:6px; align-items:center }
+  #err { color:#b3261e; white-space:pre-wrap }
+</style>
+</head>
+<body>
+<h1>Sculpture splat pilot: De Dokwerker</h1>
+<p class="sub">Left: Gaussian splat (near LOD). Right: 13-view baked impostor on a camera-facing quad (far LOD). Both are drawn at real scale (statue plus plinth 4.2 m). Drag to orbit, wheel or pinch to zoom.</p>
+<div class="bar">
+  <label>Orbit <input id="auto" type="checkbox" checked></label>
+  <label>Distance <input id="dist" type="range" min="4" max="60" value="12"></label>
+  <span id="distv"></span>
+</div>
+<div class="grid">
+  <div class="cell"><h2>Splat <span id="splatinfo"></span></h2><canvas id="c1"></canvas><div class="stat" id="s1"></div></div>
+  <div class="cell"><h2>Impostor <span id="impinfo"></span></h2><canvas id="c2"></canvas><div class="stat" id="s2"></div></div>
+  <div class="cell" id="cell3" hidden><h2>Current hand-built model <span id="glbinfo"></span></h2><canvas id="c3"></canvas><div class="stat" id="s3"></div></div>
+</div>
+<div id="err"></div>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/",
+  "@sparkjsdev/spark": "https://cdn.jsdelivr.net/npm/@sparkjsdev/spark@2.3.1/dist/spark.module.min.js"
+} }
+</script>
+<script type="module">
+import * as THREE from "three";
+import { SparkRenderer, SplatMesh } from "@sparkjsdev/spark";
+
+const Q = new URLSearchParams(location.search);
+const SPLAT_URL = Q.get("splat") || "./sculpture-splat/dokwerker.sog";
+const ATLAS_URL = "./sculpture-splat/dokwerker-impostor.png";
+const META_URL = "./sculpture-splat/dokwerker-impostor.json";
+const STATUE_H = 4.2;           // metres, figure plus plinth
+const err = (e) => { document.getElementById("err").textContent += String(e && e.stack || e) + "\n"; };
+window.addEventListener("error", (e) => err(e.message));
+window.addEventListener("unhandledrejection", (e) => err(e.reason));
+
+const ONLY = new Set((Q.get("only") || "splat,impostor,glb").split(","));
+const state = { az: Number(Q.get("az") ?? 35) * Math.PI / 180, el: Number(Q.get("el") ?? 10) * Math.PI / 180,
+  dist: Number(Q.get("dist") ?? 12), auto: Q.get("auto") !== "0" && !Q.has("bench") && !Q.has("bake") };
+document.getElementById("auto").checked = state.auto;
+document.getElementById("dist").value = state.dist;
+
+function mkView(canvasId, preserve) {
+  const canvas = document.getElementById(canvasId);
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: true, preserveDrawingBuffer: !!preserve,
+    powerPreference: "high-performance" });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setClearColor(0x000000, 0);
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 500);
+  const ground = new THREE.Mesh(new THREE.CircleGeometry(30, 48).rotateX(-Math.PI / 2),
+    new THREE.MeshBasicMaterial({ color: 0x9a9484 }));
+  ground.position.y = -0.02; ground.name = "ground";
+  scene.add(ground);
+  return { canvas, renderer, scene, camera, ground };
+}
+function placeCam(v, dist) {
+  const rect = v.canvas.getBoundingClientRect();
+  const w = Math.max(1, rect.width), h = Math.max(1, rect.height);
+  const dpr = v.renderer.getPixelRatio();
+  if (v.canvas.width !== Math.round(w * dpr) || v.canvas.height !== Math.round(h * dpr)) v.renderer.setSize(w, h, false);
+  v.camera.aspect = w / h; v.camera.updateProjectionMatrix();
+  const t = new THREE.Vector3(0, STATUE_H * 0.45, 0);
+  v.camera.position.set(t.x + dist * Math.sin(state.az) * Math.cos(state.el), t.y + dist * Math.sin(state.el),
+    t.z + dist * Math.cos(state.az) * Math.cos(state.el));
+  v.camera.lookAt(t);
+}
+
+const v1 = mkView("c1", Q.has("bake")), v2 = mkView("c2", false);
+const spark = new SparkRenderer({ renderer: v1.renderer }); v1.scene.add(spark);
+
+// ---- (a) splat
+let splat = null; let splatCount = 0;
+async function loadSplat() {
+  const t0 = performance.now();
+  splat = new SplatMesh({ url: SPLAT_URL });
+  await splat.initialized;
+  splatCount = splat.packedSplats?.numSplats ?? 0;
+  v1.scene.add(splat);
+  const bytes = await fetch(SPLAT_URL, { method: "HEAD" }).then((r) => Number(r.headers.get("content-length")) || 0).catch(() => 0);
+  document.getElementById("splatinfo").textContent = `${splatCount.toLocaleString()} gaussians, ${(bytes / 1024).toFixed(0)} KB, load ${(performance.now() - t0).toFixed(0)} ms`;
+}
+
+// ---- (b) impostor
+let impostor = null, impMeta = null;
+async function loadImpostor() {
+  impMeta = await fetch(META_URL).then((r) => r.json());
+  const tex = await new THREE.TextureLoader().loadAsync(ATLAS_URL);
+  tex.colorSpace = THREE.SRGBColorSpace; tex.minFilter = THREE.LinearMipmapLinearFilter; tex.generateMipmaps = true;
+  const { cols, rows, sideViews, extentM, centreY } = impMeta;
+  const mat = new THREE.ShaderMaterial({
+    transparent: true, depthWrite: false, side: THREE.DoubleSide,
+    uniforms: { atlas: { value: tex }, grid: { value: new THREE.Vector2(cols, rows) }, n: { value: sideViews },
+      az: { value: 0 }, topMix: { value: 0 } },
+    vertexShader: `varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.); }`,
+    fragmentShader: `
+      uniform sampler2D atlas; uniform vec2 grid; uniform float n; uniform float az; uniform float topMix; varying vec2 vUv;
+      vec4 tile(float i, vec2 uv){ float c=mod(i,grid.x); float r=floor(i/grid.x);
+        vec2 o=vec2(c,grid.y-1.-r); return texture2D(atlas,(o+clamp(uv,0.002,0.998))/grid); }
+      void main(){
+        float f=az/6.2831853*n; f=f-n*floor(f/n);
+        float i0=floor(f); float t=f-i0; float i1=mod(i0+1.,n);
+        vec4 a=tile(i0,vUv), b=tile(i1,vUv);
+        vec4 s=mix(a,b,t);
+        vec4 tp=tile(n,vUv);
+        vec4 c=mix(s,tp,topMix);
+        if(c.a<0.02) discard;
+        gl_FragColor=vec4(c.rgb,c.a);
+      }`
+  });
+  const g = new THREE.PlaneGeometry(extentM, extentM);
+  impostor = new THREE.Mesh(g, mat); impostor.position.y = centreY; v2.scene.add(impostor);
+  document.getElementById("impinfo").textContent = `${sideViews}+1 views, atlas ${impMeta.atlasPx}px`;
+}
+function updateImpostor() {
+  if (!impostor) return;
+  // cylindrical billboard: yaw only toward camera
+  impostor.rotation.set(0, state.az, 0);
+  impostor.material.uniforms.az.value = ((state.az % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+  const deg = state.el * 180 / Math.PI;
+  impostor.material.uniforms.topMix.value = Math.min(1, Math.max(0, (deg - 40) / 25));
+}
+
+// ---- (c) current hand-built GLB, for comparison (?compare=1)
+let v3 = null;
+async function loadGlb() {
+  document.getElementById("cell3").hidden = false;
+  v3 = mkView("c3", false);
+  const { GLTFLoader } = await import("three/addons/loaders/GLTFLoader.js");
+  const { MeshoptDecoder } = await import("three/addons/libs/meshopt_decoder.module.js");
+  const gl = new GLTFLoader(); gl.setMeshoptDecoder(MeshoptDecoder);
+  const gltf = await gl.loadAsync("./models/de-dokwerker.glb");
+  v3.scene.add(new THREE.HemisphereLight(0xffffff, 0x777766, 1.6));
+  const sun = new THREE.DirectionalLight(0xffffff, 2.2); sun.position.set(4, 8, 5); v3.scene.add(sun);
+  v3.scene.add(gltf.scene);
+  const bb = new THREE.Box3().setFromObject(gltf.scene);
+  document.getElementById("glbinfo").textContent = `height ${(bb.max.y - bb.min.y).toFixed(2)} m`;
+}
+
+// ---- interaction
+for (const v of [v1, v2]) {
+  let drag = null; const pts = new Map(); let pinch = 0;
+  v.canvas.addEventListener("pointerdown", (e) => { v.canvas.setPointerCapture(e.pointerId); pts.set(e.pointerId, e); drag = { x: e.clientX, y: e.clientY }; state.auto = false; document.getElementById("auto").checked = false; });
+  v.canvas.addEventListener("pointermove", (e) => {
+    if (!pts.has(e.pointerId)) return; pts.set(e.pointerId, e);
+    if (pts.size === 2) { const [a, b] = [...pts.values()]; const d = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY); if (pinch) setDist(state.dist * pinch / d); pinch = d; return; }
+    if (drag) { state.az -= (e.clientX - drag.x) * 0.008; state.el = Math.max(-0.1, Math.min(1.45, state.el + (e.clientY - drag.y) * 0.006)); drag = { x: e.clientX, y: e.clientY }; }
+  });
+  const up = (e) => { pts.delete(e.pointerId); pinch = 0; drag = pts.size ? drag : null; };
+  v.canvas.addEventListener("pointerup", up); v.canvas.addEventListener("pointercancel", up);
+  v.canvas.addEventListener("wheel", (e) => { e.preventDefault(); setDist(state.dist * Math.exp(e.deltaY * 0.001)); }, { passive: false });
+}
+function setDist(d) { state.dist = Math.max(4, Math.min(60, d)); document.getElementById("dist").value = state.dist; }
+document.getElementById("auto").addEventListener("change", (e) => (state.auto = e.target.checked));
+document.getElementById("dist").addEventListener("input", (e) => setDist(Number(e.target.value)));
+
+// ---- frame loop with timing
+const times = { c1: [], c2: [], c3: [] };
+const frameLog = []; let lastT = 0;
+window.__frames = frameLog;
+function frame(now) {
+  if (lastT) frameLog.push(now - lastT); lastT = now;
+  if (state.auto) state.az += 0.004;
+  document.getElementById("distv").textContent = state.dist.toFixed(1) + " m";
+  const run = (v, key, pre) => {
+    placeCam(v, state.dist); pre && pre();
+    const t = performance.now();
+    v.renderer.render(v.scene, v.camera);
+    if (Q.has("sync")) { const gl = v.renderer.getContext(); gl.readPixels(0, 0, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array(4)); } // force GPU completion
+    times[key].push(performance.now() - t); if (times[key].length > 120) times[key].shift();
+  };
+  if (splat && state.bake) bakeFrame();
+  else if (splat && ONLY.has("splat")) run(v1, "c1");
+  if (impostor && ONLY.has("impostor")) run(v2, "c2", updateImpostor);
+  if (v3 && ONLY.has("glb")) run(v3, "c3");
+  requestAnimationFrame(frame);
+}
+function bakeFrame() {
+  const B = state.bake, r = v1.renderer;
+  if (B.n === 0) { B.pr = r.getPixelRatio(); r.setPixelRatio(1); r.setSize(B.px, B.px, false); v1.ground.visible = false; }
+  const D = 60, c = new THREE.Vector3(0, STATUE_H * (B.el > 1.2 ? 0.35 : 0.5), 0);
+  const cam = new THREE.PerspectiveCamera(2 * Math.atan(B.extent / 2 / D) * 180 / Math.PI, 1, 1, 200); // long lens ~ orthographic
+  cam.position.set(c.x + D * Math.sin(B.az) * Math.cos(B.el), c.y + D * Math.sin(B.el), c.z + D * Math.cos(B.az) * Math.cos(B.el));
+  if (B.el > 1.2) cam.up.set(-Math.sin(B.az), 0, -Math.cos(B.az));
+  cam.lookAt(c); r.render(v1.scene, cam);
+  if (++B.n >= 8) {
+    const url = r.domElement.toDataURL("image/png");
+    v1.ground.visible = true; r.setPixelRatio(B.pr); state.bake = null; B.resolve(url);
+  }
+}
+function summary(a) { if (!a.length) return "n/a"; const s = [...a].sort((x, y) => x - y); return `cpu submit median ${s[s.length >> 1].toFixed(2)} ms, p95 ${s[Math.floor(s.length * .95)].toFixed(2)} ms`; }
+setInterval(() => { document.getElementById("s1").textContent = summary(times.c1); document.getElementById("s2").textContent = summary(times.c2); }, 500);
+
+// ---- test hooks (used by Playwright: baking, benchmarking, contact sheet)
+window.__demo = {
+  state, times, v1, v2, THREE, get splat() { return splat; }, get impostor() { return impostor; },
+  setView(az, el, dist) { state.auto = false; state.az = az; state.el = el; state.dist = dist; },
+  // render ortho tile of the splat into an offscreen canvas and return pixels
+  bakeTile(az, el, extent, px) {
+    return new Promise((resolve) => { state.bake = { az, el, extent, px, n: 0, resolve }; });
+  },
+};
+try {
+  const jobs = [loadSplat()];
+  if (!Q.has("bake")) jobs.push(loadImpostor());
+  if (Q.has("compare")) jobs.push(loadGlb());
+  await Promise.allSettled(jobs).then((rs) => rs.forEach((r) => r.status === "rejected" && err(r.reason)));
+} catch (e) { err(e); }
+window.__ready = true;
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>
