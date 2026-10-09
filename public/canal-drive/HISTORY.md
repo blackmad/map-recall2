@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## Floating facades: two shared-builder bugs (2026-10-09)
+
+Torture Museum and Theo Thijssen floated their facades because
+`museums2-shared.ts` placed `facadeFrame` on the BAG footprint edge, which
+sits 0.1–0.7 m off and slightly rotated from the 3DBAG shell wall, and
+`surveyShell` dropped the last vertex of every 3DBAG ring assuming rings were
+closed (they are not), deleting a real roof/wall corner. `wallFrame` now picks
+the wall from BAG but fits the line through the 3DBAG ground edges; the
+shell keeps unclosed rings. `scripts/check-facade-attachment.ts` fails any
+part more than 5 cm from the shell (transitively). Theo Thijssen re-installed
+after review; Torture Museum stays held (sign and shopfront only suggested);
+Pathé rebuilt with the fix, still held for user review. The GLB builder now
+reads `ALL_MANUAL_LANDMARKS`, so held models can be rebuilt.
+
 ## Home destinations remember where you went (2026-10-09)
 
 After the `#race=` replay fix, a lane measured the home picker on the real

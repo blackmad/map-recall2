@@ -13294,8 +13294,6 @@
     },
     {
       id: "theo-thijssen-museum",
-      status: "held",
-      heldReason: "Facade/cornice floats in front of the house body (user review 2026-10-09).",
       name: "Theo Thijssen Museum",
       landmarkId: "extract_landmarks_1824871810",
       modelUrl: "./models/theo-thijssen-museum.glb",
@@ -13323,8 +13321,8 @@
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
       materialOverrides: {
-        brick: "#7a5b4d",
-        stone: "#cfc6ae",
+        brick: "#8f5f4b",
+        stone: "#e4dac2",
         slate: "#5d5a58",
         white: "#ebe8dc",
         glass: "#5c717a",
@@ -16838,7 +16836,7 @@
 
   // src/canalRecall/landmarks/manualModels.ts
   var ownAttribution = (title, sourceUrl) => ({ title, author: "Map Recall", sourceUrl, licence: "Original project asset", licenceUrl: "./LICENSE", modifications: "Original low-poly reconstruction; reference used for silhouette only. Flat materials, no imported model geometry or image textures. Hospital footprints from OpenStreetMap (ODbL); heights and architectural details are approximate." });
-  var MANUAL_LANDMARKS = [
+  var ALL_MANUAL_LANDMARKS = [
     {
       id: "centraal-station",
       name: "Amsterdam Centraal \u2014 station complex",
@@ -16864,11 +16862,10 @@
       surveyed: { anchor: [4.91313365, 52.37829585], northOffsetDegrees: 15.8, source: "OSM main auditorium w755464132 rectangle centre / bearing" },
       attribution: ownAttribution("Muziekgebouw and Bimhuis", "https://www.studiocarchitecten.nl/en/bimhuis")
     },
-    // `status: 'held'` keeps a model in the catalogue (and its GLB in git) but
-    // out of the game and galleries until it passes review again.
-    ...manualCatalogue_default.filter((e) => e.status !== "held"),
+    ...manualCatalogue_default,
     ...hospital_footprints_default.sites.map((s) => ({ id: s.id, name: s.id === "olvg-west" ? "OLVG West" : "OLVG Oost", landmarkId: s.id, modelUrl: `./models/${s.id}.glb`, suppressOsmIds: s.buildings.filter((f) => f.properties.building !== "construction").flatMap((f) => [f.id, ...f.properties["ref:bag"] ? [`NL.IMBAG.Pand.${f.properties["ref:bag"]}`] : []]), spatialSuppression: false, groundAltitudeMetres: 0, facingOffsetDegrees: 0, surveyed: { anchor: s.id === "olvg-west" ? [4.8397, 52.37115] : [4.9153, 52.3582], northOffsetDegrees: 0, source: "OSM building rings; local east/south metres" }, attribution: ownAttribution(s.id === "olvg-west" ? "OLVG West" : "OLVG Oost", "https://www.olvg.nl/over-olvg/") }))
   ];
+  var MANUAL_LANDMARKS = ALL_MANUAL_LANDMARKS.filter((model) => model.status !== "held");
 
   // public/canal-drive/ordinary-buildings-data/catalogue.json
   var catalogue_default = {

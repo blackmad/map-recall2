@@ -2,14 +2,18 @@ import type {SignatureModelSpec} from './signaturePlacement';
 import culturalCatalogue from './manualCatalogue.json';
 import hospitals from '../../../scripts/landmarks/hospital-footprints.json';
 const ownAttribution=(title:string,sourceUrl:string)=>({title,author:'Map Recall',sourceUrl,licence:'Original project asset',licenceUrl:'./LICENSE',modifications:'Original low-poly reconstruction; reference used for silhouette only. Flat materials, no imported model geometry or image textures. Hospital footprints from OpenStreetMap (ODbL); heights and architectural details are approximate.'});
-export const MANUAL_LANDMARKS: readonly SignatureModelSpec[] = [
+/** Every catalogued model, held ones included: the GLB builder needs them. */
+export const ALL_MANUAL_LANDMARKS: readonly SignatureModelSpec[] = [
  {id:'centraal-station',name:'Amsterdam Centraal — station complex',landmarkId:'extract_landmarks_332626598',modelUrl:'./models/centraal-station.glb',suppressOsmIds:['w332626598','w57856845','w1239767708','w1239767706','w451533145','w451533147','w451533149','w506192827','NL.IMBAG.Pand.0363100012185598','NL.IMBAG.Pand.0363100012242112','NL.IMBAG.Pand.0363100012240304','NL.IMBAG.Pand.0363100012245758','NL.IMBAG.Pand.0363100012245759','NL.IMBAG.Pand.0363100012246251'],spatialSuppression:false,groundAltitudeMetres:0,facingOffsetDegrees:210.6533,
  footprint:{centre:[4.899750668752946,52.37855998792934],headingDegrees:120.65330083236796,lengthMetres:244.34798071019168,widthMetres:30.916412054875813},
  surveyed:{anchor:[4.899750668752946,52.37855998792934],northOffsetDegrees:30.65330083236796,source:'OSM Cuypersgebouw anchor/bearing; four exact current train/bus roof outlines. Zuidkap 23 m /50 frames per ProRail; other profiles and bus deck approximately reconstructed from architect photographs and 3DBAG.'},attribution:{...ownAttribution('Amsterdam Centraal','https://www.benthemcrouwel.com/projects/bus-station-amsterdam-cs'),modifications:'Original texture-free Cuypers facade and four arched roof structures. Current mapped roof perimeters retained at native scale; approximate interior roof profiles, frame details and raised bus deck. Published Zuidkap 23 m height and 50 frames. Colored AMSTERDAM glass panels follow architect photographs. No imported geometry or photo pixels. Metro, ferry piers, hotel/postal buildings and ground-level streets omitted.'}},
  {id:'muziekgebouw-bimhuis',name:'Muziekgebouw aan ’t IJ / Bimhuis',landmarkId:'extract_landmarks_1912967098',relatedLandmarkIds:['extract_landmarks_1651446989'],modelUrl:'./models/muziekgebouw-bimhuis.glb',suppressOsmIds:['w755464127','w755464129','w755464130','w755464132','w755504271','w755504272','w755504273','w755504274','w755504275','w755464126','w755464128'],groundAltitudeMetres:0,facingOffsetDegrees:196,
  surveyed:{anchor:[4.91313365,52.37829585],northOffsetDegrees:15.8,source:'OSM main auditorium w755464132 rectangle centre / bearing'},attribution:ownAttribution('Muziekgebouw and Bimhuis','https://www.studiocarchitecten.nl/en/bimhuis')},
- // `status: 'held'` keeps a model in the catalogue (and its GLB in git) but
- // out of the game and galleries until it passes review again.
- ...(culturalCatalogue as unknown as (SignatureModelSpec & {status?:string})[]).filter(e=>e.status!=='held'),
+ ...(culturalCatalogue as unknown as (SignatureModelSpec & {status?:string})[]),
  ...hospitals.sites.map(s=>({id:s.id,name:s.id==='olvg-west'?'OLVG West':'OLVG Oost',landmarkId:s.id,modelUrl:`./models/${s.id}.glb`,suppressOsmIds:s.buildings.filter(f=>f.properties.building!=='construction').flatMap(f=>[f.id,...(f.properties['ref:bag']?[`NL.IMBAG.Pand.${f.properties['ref:bag']}`]:[])]),spatialSuppression:false,groundAltitudeMetres:0,facingOffsetDegrees:0,surveyed:{anchor:(s.id==='olvg-west'?[4.8397,52.37115]:[4.9153,52.3582]) as [number,number],northOffsetDegrees:0,source:'OSM building rings; local east/south metres'},attribution:ownAttribution(s.id==='olvg-west'?'OLVG West':'OLVG Oost','https://www.olvg.nl/over-olvg/')})),
 ];
+
+// `status: 'held'` keeps a model in the catalogue (and its GLB in git) but
+// out of the game and galleries until it passes review again.
+export const MANUAL_LANDMARKS: readonly SignatureModelSpec[] =
+  ALL_MANUAL_LANDMARKS.filter(model => (model as {status?: string}).status !== 'held');
