@@ -1,5 +1,6 @@
 import {treeTypology} from '../da-costa-block/tree-typology.js';
 import {allotmentCanopyTrees,scopeAllotmentCrown} from './allotment-canopy.js';
+import {ViewResidency} from '../../../src/canalRecall/viewResidency.ts';
 const {THREE} = window.CanalRecallThree;
 const MIN_ZOOM = 15.5;
 const BUDGET = 12;
@@ -7,8 +8,7 @@ const BUDGET = 12;
 function crownBounds(map) {
   const bounds=map.getBounds(),lat=(bounds.getNorth()+bounds.getSouth())/2;
   const dy=24/111320,dx=dy/Math.max(.1,Math.cos(lat*Math.PI/180));
-  return {getWest:()=>bounds.getWest()-dx,getEast:()=>bounds.getEast()+dx,
-    getSouth:()=>bounds.getSouth()-dy,getNorth:()=>bounds.getNorth()+dy};
+  return {west:bounds.getWest()-dx,east:bounds.getEast()+dx,south:bounds.getSouth()-dy,north:bounds.getNorth()+dy};
 }
 
 /** Stream real municipal tree positions; at most seven instanced draws for the visible canopy. */
@@ -17,6 +17,9 @@ export class InventoryTrees {
     this.map=map; this.maplibregl=maplibregl; this.onReady=onReady;
     this.enabled=false; this.allotmentCanopyEnabled=true; this.ready=false; this.generation=0;
     this.tiles=new Map(); this.pending=new Map(); this.meshes=[]; this.theme='clean';
+    // `moveend` fires every riding frame (jumpTo); rebuild instances only when
+    // the view leaves the padded area last built, or the inputs change.
+    this.residency=new ViewResidency(.25,60);
     // Keep GPU geometry and shaders warm while streamed instance buffers change.
     this.geometries=new Map();this.materials=new Map();
     this.scene=new THREE.Scene();
@@ -57,7 +60,7 @@ export class InventoryTrees {
       this.ready=true;this.onReady(true);this.update();
     } catch (error) {console.warn('Municipal trees unavailable; retaining OSM trees.',error);}
   }
-  setAllotmentCanopyEnabled(value) {this.allotmentCanopyEnabled=!!value;if(this.enabled&&this.ready)this.rebuild();this.map.triggerRepaint();}
+  setAllotmentCanopyEnabled(value) {this.allotmentCanopyEnabled=!!value;this.residency.invalidate();if(this.enabled&&this.ready)this.rebuild();this.map.triggerRepaint();}
   setEnabled(value) {this.enabled=!!value;if(this.enabled)this.update();else this.clear();this.map.triggerRepaint();}
   setTheme(value) {
     this.theme=value;
@@ -68,7 +71,7 @@ export class InventoryTrees {
   }
   clear() {
     for (const c of this.pending.values()) c.abort();
-    this.pending.clear();this.tiles.clear();this.queue=[];this.disposeMeshes();
+    this.pending.clear();this.tiles.clear();this.queue=[];this.residency.invalidate();this.disposeMeshes();
   }
   disposeMeshes() {
     for(const m of this.meshes){this.scene.remove(m);m.dispose?.();}
@@ -79,15 +82,17 @@ export class InventoryTrees {
     if (this.map.getZoom()<MIN_ZOOM) {this.clear();return;}
     const b=crownBounds(this.map),c=this.map.getCenter();
     const tile=(lng,lat)=>[Math.floor((lng+180)/360*32768),Math.floor((1-Math.asinh(Math.tan(lat*Math.PI/180))/Math.PI)/2*32768)];
-    const [x0,y1]=tile(b.getWest(),b.getSouth()),[x1,y0]=tile(b.getEast(),b.getNorth()),[cx,cy]=tile(c.lng,c.lat);
+    const [x0,y1]=tile(b.west,b.south),[x1,y0]=tile(b.east,b.north),[cx,cy]=tile(c.lng,c.lat);
     const wanted=[];
     for(let x=x0;x<=x1;x++)for(let y=y0;y<=y1;y++){const key=`15/${x}/${y}`;if(this.meta.has(key))wanted.push({key,d:(x-cx)**2+(y-cy)**2});}
     wanted.sort((a,b)=>a.d-b.d);const keys=new Set(wanted.slice(0,BUDGET).map(t=>t.key));
-    for(const key of this.tiles.keys())if(!keys.has(key))this.tiles.delete(key);
+    for(const key of this.tiles.keys())if(!keys.has(key)){this.tiles.delete(key);this.residency.invalidate();}
     for(const [key,c] of this.pending)if(!keys.has(key)){c.abort();this.pending.delete(key);}
     this.queue=[...keys].filter(k=>!this.tiles.has(k)&&!this.pending.has(k));
-    this.rebuild();this.pump();
+    if(this.residency.needsRebuild(b,this.buildKey()))this.rebuild();
+    this.pump();
   }
+  buildKey() {return `${this.map.getZoom()>=18}|${this.allotmentCanopyEnabled}`;}
   pump() {
     while(this.pending.size<2&&this.queue?.length){const key=this.queue.shift();void this.fetchTile(key);}
   }
@@ -100,17 +105,17 @@ export class InventoryTrees {
       const text=bytes[0]===0x1f&&bytes[1]===0x8b ? await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).text() : new TextDecoder().decode(bytes);
       const data=JSON.parse(text);
       if(data.version!==1||data.key!==key||!Array.isArray(data.trees))throw Error('Invalid municipal tree tile');
-      if(!controller.signal.aborted&&generation===this.generation){this.tiles.set(key,data.trees);this.rebuild();}
+      if(!controller.signal.aborted&&generation===this.generation){this.tiles.set(key,data.trees);this.residency.invalidate();this.rebuild();}
     } catch(error){if(error.name!=='AbortError')console.warn(`Tree tile ${key} unavailable`,error);}
     finally{if(this.pending.get(key)===controller)this.pending.delete(key);this.pump();}
   }
   rebuild() {
     this.disposeMeshes();
-    const b=crownBounds(this.map),groups=new Map();let trees=0,authoredTrees=0;
+    const b=this.residency.built(crownBounds(this.map),this.buildKey()),groups=new Map();let trees=0,authoredTrees=0;
     const archetypes=new Set(), color=new THREE.Color();
     const append=(key,item)=>{if(!groups.has(key))groups.set(key,[]);groups.get(key).push(item);};
     for(const tile of [...this.tiles.values(),...(this.allotmentCanopyEnabled?[allotmentCanopyTrees]:[])])for(const tree of tile){
-      if(!Number.isFinite(tree.lng)||!Number.isFinite(tree.lat)||tree.lng<b.getWest()||tree.lng>b.getEast()||tree.lat<b.getSouth()||tree.lat>b.getNorth())continue;
+      if(!Number.isFinite(tree.lng)||!Number.isFinite(tree.lat)||tree.lng<b.west||tree.lng>b.east||tree.lat<b.south||tree.lat>b.north)continue;
       const point=this.maplibregl.MercatorCoordinate.fromLngLat([tree.lng,tree.lat],0);
       const x=(point.x-this.origin.x)/this.scale,south=(point.y-this.origin.y)/this.scale;
       const native=treeTypology({...tree,position:[x,south]});const t=this.allotmentCanopyEnabled?scopeAllotmentCrown(tree,native):native;if(!t)continue;
