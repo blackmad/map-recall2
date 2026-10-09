@@ -24,7 +24,7 @@ for (const k of partKeys) {
   const g = part.geometry.find(q => q.lod === '2.2') ?? part.geometry.at(-1);
   g.boundaries.forEach((shell, si) => shell.forEach((b, i) => {
     const type = g.semantics.surfaces[g.semantics.values[si][i]].type;
-    surfaces.push({type, rings: b.map(r => r.map(v => verts[v].map(n => +n.toFixed(3))))});
+    surfaces.push({type, part: partKeys.indexOf(k), rings: b.map(r => r.map(v => verts[v].map(n => +n.toFixed(3))))});
   }));
 }
 const out = {id, bagId: bag, anchor, groundNAP: ground, coordinateConvention: 'native east/south metres from anchor; y above local ground', attributes: {roofMaxNAP: attrs.b3_h_dak_max, roofMinNAP: attrs.b3_h_dak_min, ridgeNAP: attrs.b3_h_nok, floors: attrs.b3_bouwlagen}, nativeRing: ringLL.map(loc).map(p => p.map(n => +n.toFixed(3))), buildingFootprint: {type: 'Polygon', coordinates: [ringLL]}, surfaces};

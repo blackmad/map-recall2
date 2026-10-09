@@ -481,6 +481,7 @@
  "surfaces": [
   {
    "type": "GroundSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -966,6 +967,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -993,6 +995,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1020,6 +1023,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1052,6 +1056,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1079,6 +1084,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1106,6 +1112,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1138,6 +1145,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1165,6 +1173,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1197,6 +1206,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1224,6 +1234,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1256,6 +1267,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1283,6 +1295,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1310,6 +1323,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1337,6 +1351,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1364,6 +1379,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1391,6 +1407,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1418,6 +1435,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1445,6 +1463,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1472,6 +1491,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1499,6 +1519,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1526,6 +1547,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1553,6 +1575,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1585,6 +1608,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1612,6 +1636,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1639,6 +1664,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1666,6 +1692,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1693,6 +1720,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1720,6 +1748,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1747,6 +1776,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1774,6 +1804,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1801,6 +1832,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1833,6 +1865,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1860,6 +1893,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1887,6 +1921,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1914,6 +1949,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1946,6 +1982,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -1973,6 +2010,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2000,6 +2038,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2027,6 +2066,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2054,6 +2094,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2081,6 +2122,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2108,6 +2150,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2135,6 +2178,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2162,6 +2206,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2189,6 +2234,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2216,6 +2262,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2243,6 +2290,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2270,6 +2318,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2297,6 +2346,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2324,6 +2374,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2351,6 +2402,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2378,6 +2430,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2405,6 +2458,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2437,6 +2491,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2464,6 +2519,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2491,6 +2547,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2518,6 +2575,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2545,6 +2603,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2577,6 +2636,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2604,6 +2664,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2631,6 +2692,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2658,6 +2720,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2685,6 +2748,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2712,6 +2776,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2749,6 +2814,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2776,6 +2842,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2808,6 +2875,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2835,6 +2903,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2867,6 +2936,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2894,6 +2964,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2921,6 +2992,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2953,6 +3025,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -2980,6 +3053,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3012,6 +3086,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3039,6 +3114,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3066,6 +3142,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3093,6 +3170,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3120,6 +3198,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3147,6 +3226,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3174,6 +3254,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3201,6 +3282,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3228,6 +3310,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3255,6 +3338,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3282,6 +3366,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3314,6 +3399,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3341,6 +3427,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3373,6 +3460,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3405,6 +3493,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3432,6 +3521,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3459,6 +3549,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3481,6 +3572,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3503,6 +3595,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3530,6 +3623,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3557,6 +3651,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3584,6 +3679,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3611,6 +3707,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3638,6 +3735,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3665,6 +3763,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3697,6 +3796,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3724,6 +3824,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3756,6 +3857,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3793,6 +3895,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3820,6 +3923,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3847,6 +3951,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3874,6 +3979,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3901,6 +4007,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3933,6 +4040,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3960,6 +4068,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -3992,6 +4101,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4024,6 +4134,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4051,6 +4162,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4083,6 +4195,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4105,6 +4218,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4127,6 +4241,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4154,6 +4269,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4181,6 +4297,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4208,6 +4325,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4235,6 +4353,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4262,6 +4381,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4294,6 +4414,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4331,6 +4452,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4358,6 +4480,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4385,6 +4508,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4412,6 +4536,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4444,6 +4569,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4476,6 +4602,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4503,6 +4630,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4530,6 +4658,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4557,6 +4686,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4589,6 +4719,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4616,6 +4747,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4643,6 +4775,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4670,6 +4803,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4702,6 +4836,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4729,6 +4864,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4756,6 +4892,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4783,6 +4920,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4810,6 +4948,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4842,6 +4981,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4869,6 +5009,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4896,6 +5037,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4923,6 +5065,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4950,6 +5093,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -4977,6 +5121,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5004,6 +5149,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5031,6 +5177,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5063,6 +5210,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5100,6 +5248,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5137,6 +5286,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5164,6 +5314,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5191,6 +5342,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5218,6 +5370,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5245,6 +5398,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5272,6 +5426,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5299,6 +5454,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5331,6 +5487,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5358,6 +5515,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5390,6 +5548,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5417,6 +5576,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5449,6 +5609,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5481,6 +5642,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5508,6 +5670,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5535,6 +5698,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5562,6 +5726,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5589,6 +5754,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5616,6 +5782,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5643,6 +5810,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5670,6 +5838,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5702,6 +5871,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5729,6 +5899,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5756,6 +5927,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5788,6 +5960,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5815,6 +5988,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5847,6 +6021,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5879,6 +6054,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5906,6 +6082,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5938,6 +6115,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5970,6 +6148,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -5997,6 +6176,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6024,6 +6204,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6051,6 +6232,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6083,6 +6265,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6110,6 +6293,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6137,6 +6321,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6164,6 +6349,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6191,6 +6377,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6218,6 +6405,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6245,6 +6433,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6272,6 +6461,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6299,6 +6489,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6326,6 +6517,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6353,6 +6545,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6380,6 +6573,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6407,6 +6601,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6434,6 +6629,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6461,6 +6657,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6493,6 +6690,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6520,6 +6718,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6547,6 +6746,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6574,6 +6774,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6601,6 +6802,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6628,6 +6830,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6655,6 +6858,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6687,6 +6891,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6714,6 +6919,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6741,6 +6947,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6773,6 +6980,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6800,6 +7008,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6827,6 +7036,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6854,6 +7064,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6881,6 +7092,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6908,6 +7120,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6935,6 +7148,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6962,6 +7176,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -6989,6 +7204,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7016,6 +7232,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7043,6 +7260,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7075,6 +7293,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7102,6 +7321,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7134,6 +7354,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7161,6 +7382,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7188,6 +7410,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7215,6 +7438,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7237,6 +7461,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7264,6 +7489,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7291,6 +7517,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7318,6 +7545,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7345,6 +7573,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7372,6 +7601,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7399,6 +7629,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7426,6 +7657,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7458,6 +7690,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7490,6 +7723,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7517,6 +7751,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7544,6 +7779,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7571,6 +7807,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7608,6 +7845,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7635,6 +7873,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7662,6 +7901,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7689,6 +7929,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7716,6 +7957,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7743,6 +7985,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7770,6 +8013,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7797,6 +8041,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7824,6 +8069,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7851,6 +8097,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7878,6 +8125,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7905,6 +8153,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7932,6 +8181,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7964,6 +8214,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -7996,6 +8247,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8023,6 +8275,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8050,6 +8303,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8082,6 +8336,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8109,6 +8364,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8136,6 +8392,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8163,6 +8420,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8190,6 +8448,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8217,6 +8476,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8244,6 +8504,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8271,6 +8532,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8298,6 +8560,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8325,6 +8588,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8357,6 +8621,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8384,6 +8649,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8411,6 +8677,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8438,6 +8705,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8465,6 +8733,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8492,6 +8761,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8524,6 +8794,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8551,6 +8822,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8578,6 +8850,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8605,6 +8878,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8632,6 +8906,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8664,6 +8939,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8691,6 +8967,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8718,6 +8995,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8755,6 +9033,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8787,6 +9066,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8814,6 +9094,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8841,6 +9122,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8868,6 +9150,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8895,6 +9178,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8922,6 +9206,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8949,6 +9234,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -8976,6 +9262,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9008,6 +9295,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9035,6 +9323,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9067,6 +9356,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9094,6 +9384,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9121,6 +9412,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9148,6 +9440,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9175,6 +9468,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9207,6 +9501,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9234,6 +9529,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9261,6 +9557,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9288,6 +9585,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9315,6 +9613,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9342,6 +9641,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9374,6 +9674,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9401,6 +9702,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9433,6 +9735,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9460,6 +9763,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9487,6 +9791,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9514,6 +9819,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9541,6 +9847,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9568,6 +9875,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9595,6 +9903,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9622,6 +9931,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9654,6 +9964,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9681,6 +9992,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9708,6 +10020,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9735,6 +10048,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9762,6 +10076,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9789,6 +10104,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9816,6 +10132,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9848,6 +10165,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9875,6 +10193,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9902,6 +10221,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9929,6 +10249,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9956,6 +10277,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -9983,6 +10305,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10010,6 +10333,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10037,6 +10361,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10064,6 +10389,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10091,6 +10417,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10118,6 +10445,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10145,6 +10473,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10172,6 +10501,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10199,6 +10529,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10231,6 +10562,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10258,6 +10590,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10285,6 +10618,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10312,6 +10646,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10339,6 +10674,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10366,6 +10702,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10398,6 +10735,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10425,6 +10763,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10457,6 +10796,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10489,6 +10829,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10516,6 +10857,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10543,6 +10885,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10570,6 +10913,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10597,6 +10941,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10624,6 +10969,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10651,6 +10997,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10683,6 +11030,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10710,6 +11058,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10737,6 +11086,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10769,6 +11119,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10801,6 +11152,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10828,6 +11180,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10855,6 +11208,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10892,6 +11246,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10924,6 +11279,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10951,6 +11307,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -10978,6 +11335,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11010,6 +11368,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11037,6 +11396,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11064,6 +11424,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11091,6 +11452,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11123,6 +11485,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11150,6 +11513,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11182,6 +11546,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11209,6 +11574,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11236,6 +11602,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11263,6 +11630,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11290,6 +11658,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11317,6 +11686,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11344,6 +11714,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11371,6 +11742,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11403,6 +11775,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11430,6 +11803,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11457,6 +11831,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11484,6 +11859,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11511,6 +11887,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11538,6 +11915,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11570,6 +11948,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11602,6 +11981,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11629,6 +12009,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11661,6 +12042,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11688,6 +12070,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11715,6 +12098,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11742,6 +12126,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11769,6 +12154,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11796,6 +12182,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11823,6 +12210,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11850,6 +12238,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11882,6 +12271,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11909,6 +12299,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11936,6 +12327,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -11973,6 +12365,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12005,6 +12398,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12032,6 +12426,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12059,6 +12454,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12086,6 +12482,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12118,6 +12515,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12145,6 +12543,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12172,6 +12571,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12199,6 +12599,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12226,6 +12627,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12253,6 +12655,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12285,6 +12688,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12312,6 +12716,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12344,6 +12749,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12371,6 +12777,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12398,6 +12805,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12425,6 +12833,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12452,6 +12861,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12489,6 +12899,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12516,6 +12927,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12543,6 +12955,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12570,6 +12983,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12602,6 +13016,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12629,6 +13044,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12656,6 +13072,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12683,6 +13100,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12710,6 +13128,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12742,6 +13161,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12769,6 +13189,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12801,6 +13222,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12828,6 +13250,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12855,6 +13278,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12882,6 +13306,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12909,6 +13334,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12941,6 +13367,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12968,6 +13395,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -12995,6 +13423,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13022,6 +13451,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13049,6 +13479,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13076,6 +13507,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13113,6 +13545,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13145,6 +13578,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13172,6 +13606,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13199,6 +13634,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13226,6 +13662,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13253,6 +13690,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13280,6 +13718,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13307,6 +13746,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13334,6 +13774,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13361,6 +13802,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13388,6 +13830,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13415,6 +13858,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13442,6 +13886,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13469,6 +13914,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13496,6 +13942,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13528,6 +13975,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13555,6 +14003,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13582,6 +14031,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13609,6 +14059,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13641,6 +14092,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13668,6 +14120,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13695,6 +14148,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13722,6 +14176,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13754,6 +14209,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13781,6 +14237,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13813,6 +14270,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13840,6 +14298,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13867,6 +14326,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13894,6 +14354,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13921,6 +14382,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13948,6 +14410,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -13975,6 +14438,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14002,6 +14466,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14029,6 +14494,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14056,6 +14522,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14083,6 +14550,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14110,6 +14578,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14137,6 +14606,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14169,6 +14639,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14201,6 +14672,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14228,6 +14700,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14255,6 +14728,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14282,6 +14756,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14309,6 +14784,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14336,6 +14812,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14368,6 +14845,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14395,6 +14873,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14422,6 +14901,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14444,6 +14924,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14471,6 +14952,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14498,6 +14980,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14525,6 +15008,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14567,6 +15051,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14604,6 +15089,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14631,6 +15117,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14658,6 +15145,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14700,6 +15188,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14722,6 +15211,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14764,6 +15254,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14796,6 +15287,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14828,6 +15320,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14850,6 +15343,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14912,6 +15406,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -14969,6 +15464,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -15001,6 +15497,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -15043,6 +15540,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -15070,6 +15568,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -15122,6 +15621,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -15149,6 +15649,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -15176,6 +15677,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -15248,6 +15750,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -15270,6 +15773,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -15302,6 +15806,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -15354,6 +15859,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -15381,6 +15887,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -15408,6 +15915,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -15465,6 +15973,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -15492,6 +16001,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -15544,6 +16054,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -15581,6 +16092,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -15603,6 +16115,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -15695,6 +16208,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -15717,6 +16231,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -15744,6 +16259,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -15776,6 +16292,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -15798,6 +16315,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -15835,6 +16353,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -15932,6 +16451,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -15999,6 +16519,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -16096,6 +16617,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -16133,6 +16655,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -16185,6 +16708,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -16212,6 +16736,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -16244,6 +16769,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -16568,6 +17094,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -16680,6 +17207,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -16722,6 +17250,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -16759,6 +17288,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -16786,6 +17316,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -16808,6 +17339,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -17534,6 +18066,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -17556,6 +18089,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -17648,6 +18182,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -17745,6 +18280,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -17767,6 +18303,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -17804,6 +18341,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -18106,6 +18644,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -18148,6 +18687,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -18195,6 +18735,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -18247,6 +18788,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -18354,6 +18896,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -18533,6 +19076,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -18715,6 +19259,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -18762,6 +19307,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -18799,6 +19345,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -19076,6 +19623,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 0,
    "rings": [
     [
      [
@@ -19259,6 +19807,7 @@
   },
   {
    "type": "GroundSurface",
+   "part": 1,
    "rings": [
     [
      [
@@ -19286,6 +19835,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 1,
    "rings": [
     [
      [
@@ -19313,6 +19863,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 1,
    "rings": [
     [
      [
@@ -19340,6 +19891,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 1,
    "rings": [
     [
      [
@@ -19367,6 +19919,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 1,
    "rings": [
     [
      [
@@ -19394,6 +19947,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 1,
    "rings": [
     [
      [
@@ -19421,6 +19975,7 @@
   },
   {
    "type": "GroundSurface",
+   "part": 2,
    "rings": [
     [
      [
@@ -19468,6 +20023,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 2,
    "rings": [
     [
      [
@@ -19495,6 +20051,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 2,
    "rings": [
     [
      [
@@ -19522,6 +20079,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 2,
    "rings": [
     [
      [
@@ -19549,6 +20107,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 2,
    "rings": [
     [
      [
@@ -19576,6 +20135,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 2,
    "rings": [
     [
      [
@@ -19603,6 +20163,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 2,
    "rings": [
     [
      [
@@ -19635,6 +20196,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 2,
    "rings": [
     [
      [
@@ -19662,6 +20224,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 2,
    "rings": [
     [
      [
@@ -19694,6 +20257,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 2,
    "rings": [
     [
      [
@@ -19721,6 +20285,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 2,
    "rings": [
     [
      [
@@ -19758,6 +20323,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 2,
    "rings": [
     [
      [
@@ -19785,6 +20351,7 @@
   },
   {
    "type": "GroundSurface",
+   "part": 3,
    "rings": [
     [
      [
@@ -19812,6 +20379,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 3,
    "rings": [
     [
      [
@@ -19839,6 +20407,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 3,
    "rings": [
     [
      [
@@ -19866,6 +20435,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 3,
    "rings": [
     [
      [
@@ -19893,6 +20463,7 @@
   },
   {
    "type": "WallSurface",
+   "part": 3,
    "rings": [
     [
      [
@@ -19920,6 +20491,7 @@
   },
   {
    "type": "RoofSurface",
+   "part": 3,
    "rings": [
     [
      [

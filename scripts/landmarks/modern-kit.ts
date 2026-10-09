@@ -37,7 +37,7 @@ export function wallAwayFrom(s: Surface, index: number, centre: [number, number]
   if ((mx - centre[0]) * n[0] + (mz - centre[1]) * n[1] < 0) n = [-n[0], -n[1]];
   const tangent: [number, number] = [n[1], -n[0]];
   const ts = r.map(p => p[0] * tangent[0] + p[2] * tangent[1]);
-  const t0 = Math.min(...ts), d = mx * n[0] + mz * n[1];
+  const t0 = Math.min(...ts), d = Math.max(...r.map(p => p[0] * n[0] + p[2] * n[1]));   // outermost vertex: the plane the windows sit on
   return {n, origin: [n[0] * d + tangent[0] * t0, n[1] * d + tangent[1] * t0], tangent, length: Math.max(...ts) - t0, base: Math.min(...r.map(p => p[1])), poly: r.map((p, i) => [ts[i] - t0, p[1]] as [number, number]), index};
 }
 
@@ -90,4 +90,72 @@ export function windowRow(b: BuildingTools, w: Wall, o: {n: number; y: number; h
     slab(b, f, t, o.y - 0.12, o.wd + 0.3, o.h + 0.24, 0.1, o.frame);
     slab(b, f, t, o.y, o.wd, o.h, 0.16, o.glass);
   }
+}
+
+export type PunchedOptions = {
+  y0: number;                 // top of the ground storey (first window floor sits here)
+  pitch: number;              // floor-to-floor
+  colPitch: number;           // window axis spacing (the wall is divided into whole columns)
+  winW: number; winBottom: number; winH: number;
+  band: string;               // wall colour of the spandrel bands (same family as the wall)
+  stripe?: string;            // thin stripe along each band
+  darkStripe?: string; darkFloors?: number;   // lowest floors use this stripe colour
+  glass: string; ground?: string;
+  crenel?: string;            // merlons along a flat wall top
+  margin?: number; minTop?: number;
+};
+
+/**
+ * Punched masonry facade: one tall glazed strip per window axis, hidden between floors by a spandrel band
+ * across the wall, so each axis reads as a stack of storey-high windows between brick piers. Clipped to the
+ * wall outline; floors follow one grid (y0 + k * pitch) across stepped walls of the same building.
+ */
+export function punchedFacade(b: BuildingTools, w: Wall, o: PunchedOptions) {
+  const f = frameOf(w), m = o.margin ?? 0.8;
+  const n = Math.max(1, Math.round((w.length - 2 * m) / o.colPitch)), pitch = (w.length - 2 * m) / n;
+  const tc = (i: number) => m + pitch * (i + 0.5);
+  const top = (t: number) => { const v = wallTop(w, Math.max(0.01, Math.min(w.length - 0.01, t))); return Number.isFinite(v) ? v : 0; };
+  const topMax = Math.max(...w.poly.map(p => p[1]));
+  if (w.base < o.y0 - 0.5 && o.ground) slab(b, f, w.length / 2, w.base, w.length - 0.1, o.y0 - w.base - 0.05, 0.24, o.ground);
+  const kFirst = Math.max(0, Math.ceil((w.base - o.y0 - 0.05) / o.pitch));
+  // glazed strips
+  for (let i = 0; i < n; i++) {
+    const t = tc(i), lim = top(t) - 0.35;
+    let kLast = -1;
+    for (let k = kFirst; o.y0 + k * o.pitch + o.winBottom + o.winH <= lim; k++) kLast = k;
+    if (kLast < kFirst) continue;
+    const yb = o.y0 + kFirst * o.pitch + o.winBottom, yt = o.y0 + kLast * o.pitch + o.winBottom + o.winH;
+    slab(b, f, t, yb, o.winW, yt - yb, 0.1, o.glass);
+  }
+  // spandrel bands between and below windows, as runs of columns whose strip reaches that floor
+  for (let k = kFirst; ; k++) {
+    const yf = o.y0 + k * o.pitch, y1 = yf + o.winBottom + o.winH;
+    if (y1 > topMax - 0.3) break;
+    const bandY = y1, bandH = o.pitch - o.winH;
+    let run: number | null = null;
+    for (let i = 0; i <= n; i++) {
+      const ok = i < n && top(tc(i)) - 0.35 >= y1 + 0.2;
+      if (ok && run === null) run = i;
+      if (!ok && run !== null) {
+        const t0 = i === n ? w.length : tc(run) - pitch / 2, t1 = i === n ? w.length : tc(i - 1) + pitch / 2;
+        const a = run === 0 ? 0 : t0, c = i === n ? w.length : t1;
+        if (Math.min(top(a + 0.05), top(c - 0.05)) >= bandY + 0.4) {
+          const hh = Math.min(bandH, Math.min(top(a + 0.05), top(c - 0.05)) - bandY - 0.05);
+          slab(b, f, (a + c) / 2, bandY, c - a, hh, 0.14, o.band);
+          if (o.stripe) slab(b, f, (a + c) / 2, bandY + hh * 0.35, c - a, Math.min(0.4, hh * 0.3), 0.17, k < (o.darkFloors ?? 0) && o.darkStripe ? o.darkStripe : o.stripe);
+        }
+        run = null;
+      }
+    }
+  }
+  // crenellated parapet along a flat top
+  if (o.crenel && topMax < 100 && Math.abs(top(1) - top(w.length - 1)) < 0.3 && w.length > 6) {
+    for (let i = 0; i < n; i += 2) slab(b, f, tc(i), top(tc(i)) - 0.02, pitch * 0.6, 0.9, 0.3, o.crenel);
+  }
+}
+
+/** A rectangular virtual wall on a face plane, for facades that span several noisy 3DBAG wall pieces. */
+export function faceWall(origin: [number, number], bearingDeg: number, length: number, yBase: number, yTop: number, index = -1): Wall {
+  const f = frameFromBearing(origin, bearingDeg);
+  return {n: f.n, origin, tangent: f.tangent, length, base: yBase, poly: [[0, yBase], [length, yBase], [length, yTop], [0, yTop]], index};
 }
