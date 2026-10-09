@@ -37680,6 +37680,13 @@ Map source: ${osmUrl(places[i][0])}`);
       preferDescription: true
     },
     {
+      modelId: "oba-oosterdok",
+      name: "Amsterdam Public Library Oosterdok",
+      description: "Jo Coenen designed OBA Oosterdok, which opened on 7 July 2007. Its monumental pale stone frame encloses heavy wooden window frames; seven floors combine books and study spaces with cultural activities.",
+      sourceUrl: "https://arcam.nl/architectuur-gids/openbare-bibliotheek-amsterdam/",
+      preferDescription: true
+    },
+    {
       modelId: "fire-station-hendrik",
       name: "Brandweerkazerne Hendrik",
       center: [
