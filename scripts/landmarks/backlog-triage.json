@@ -172,6 +172,14 @@
   "Bijzondere Collecties": {
    "kind": "skip",
    "note": "University library inside a canal-house block (pand 0363100012168172), not a distinct building."
+  },
+  "Zuiderkerk Tower": {
+   "kind": "duplicate",
+   "note": "Covered by installed model zuiderkerk (church and tower are one BAG pand 0363100012171559)."
+  },
+  "Vincentiuskerk": {
+   "kind": "skip",
+   "note": "Demolished in 1989 and replaced by housing with a small ground-floor church space (Wikipedia)."
   }
  }
 }

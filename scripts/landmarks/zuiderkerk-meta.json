@@ -1,0 +1,9 @@
+{
+  "name": "Zuiderkerk",
+  "landmarkId": "extract_landmarks_684653190",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Zuiderkerk_(Amsterdam)",
+  "suppressOsmIds": ["NL.IMBAG.Pand.0363100012171559"],
+  "pandId": "0363100012171559",
+  "surveySource": "Current BAG 0363100012171559 footprint (church and tower are one pand) and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free geometry on the BAG/3DBAG massing; tower stages, aisle dormer gables and window rhythm measured by eye from Wikimedia Commons photographs, no pixels or meshes imported."
+}
