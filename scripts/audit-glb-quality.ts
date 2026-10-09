@@ -29,6 +29,7 @@ export async function loadSoup(file: string): Promise<TriSoup> {
 export function soupFromDocument(doc: import('@gltf-transform/core').Document): TriSoup {
   const pos: number[] = [];
   const idx: number[] = [];
+  const ds: number[] = [];
   for (const node of doc.getRoot().listNodes()) {
     const mesh = node.getMesh();
     if (!mesh) continue;
@@ -50,14 +51,16 @@ export function soupFromDocument(doc: import('@gltf-transform/core').Document): 
       const index = prim.getIndices();
       const n = index ? index.getCount() : position.getCount();
       // Mirrored transforms flip winding.
+      const doubleSided = prim.getMaterial()?.getDoubleSided() ? 1 : 0;
       const det = m[0] * (m[5] * m[10] - m[6] * m[9]) - m[4] * (m[1] * m[10] - m[2] * m[9]) + m[8] * (m[1] * m[6] - m[2] * m[5]);
       for (let i = 0; i + 2 < n; i += 3) {
         const a = index ? index.getScalar(i) : i, b = index ? index.getScalar(i + 1) : i + 1, c = index ? index.getScalar(i + 2) : i + 2;
         if (det < 0) idx.push(base + a, base + c, base + b); else idx.push(base + a, base + b, base + c);
+        ds.push(doubleSided);
       }
     }
   }
-  return {positions: new Float32Array(pos), indices: new Uint32Array(idx)};
+  return {positions: new Float32Array(pos), indices: new Uint32Array(idx), doubleSided: new Uint8Array(ds)};
 }
 
 export async function auditFile(file: string, th: Partial<Thresholds> = {}): Promise<QualityReport> {
