@@ -1,3 +1,8 @@
+import {buildMaartenLutherkerk} from './maarten-lutherkerk-builder';
+import {buildPetrusEnPaulusKerk} from './petrus-en-paulus-kerk-builder';
+import {buildLekstraatSynagoge} from './lekstraat-synagoge-builder';
+import {buildGerardDouSynagogue} from './gerard-dou-synagogue-builder';
+import {buildKeizersgrachtkerk} from './keizersgrachtkerk-builder';
 import {buildHuizeFrankendael} from './huize-frankendael-builder';
 import {buildLutherMuseum} from './luther-museum-builder';
 import {buildThisIsHolland} from './this-is-holland-builder';
@@ -319,7 +324,12 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   else if(id.startsWith('olvg-'))hospital(id);
   else {
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
-    if(id==='this-is-holland')buildThisIsHolland(w,d,helpers);
+    if(id==='maarten-lutherkerk')buildMaartenLutherkerk(w,d,helpers);
+    else if(id==='petrus-en-paulus-kerk')buildPetrusEnPaulusKerk(w,d,helpers);
+    else if(id==='lekstraat-synagoge')buildLekstraatSynagoge(w,d,helpers);
+    else if(id==='gerard-dou-synagogue')buildGerardDouSynagogue(w,d,helpers);
+    else if(id==='keizersgrachtkerk')buildKeizersgrachtkerk(w,d,helpers);
+    else if(id==='this-is-holland')buildThisIsHolland(w,d,helpers);
     else if(id==='luther-museum')buildLutherMuseum(w,d,helpers);
     else if(id==='huize-frankendael')buildHuizeFrankendael(w,d,helpers);
     else if(id==='uilenburger-synagoge')buildUilenburgerSynagoge(w,d,helpers);

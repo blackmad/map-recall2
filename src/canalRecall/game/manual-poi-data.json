@@ -1810,5 +1810,80 @@
       ],
       "note": "Public forecourt gate on Haarlemmerstraat; derived from current BAG frontage and inspected 2025 municipal panorama, approximate within 2m. Preserve original destination unless routing requires public-entrance correction."
     }
+  },
+{
+  "modelId": "keizersgrachtkerk",
+  "landmarkId": "extract_landmarks_2099326007",
+  "name": "Keizersgrachtkerk",
+  "description": "Built in 1887–1888 for the Amsterdam Doleantie congregation, the Keizersgrachtkerk was designed by father and son G.B. and A. Salm. Its neo-Venetian facade places seven linked pointed windows below a large rose window, flanked by low towers. Inside, two galleries on cast-iron columns allowed a church planned for 1,600 worshippers to occupy a narrow canal-side plot. The organ of 1890 was D.G. Steenkuyl’s last mechanical organ.",
+  "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518347",
+  "additionalSources": [
+    "https://www.keizersgrachtkerk.nl/geschiedenis-van-de-keizersgrachtkerk/"
+  ],
+  "preferDescription": true,
+  "routeDestination": {
+    "center": [
+      52.3646801235429,
+      4.8881806276757915
+    ],
+    "note": "Photo-supported public main porch, 1.8m outward from actual Keizersgracht frontage midpoint; candidate must pass live network reachability. Preserve chosen destination on route failure."
   }
+},
+{
+  "modelId": "gerard-dou-synagogue",
+  "landmarkId": "extract_landmarks_25099441",
+  "name": "Gerard Dou Synagogue",
+  "description": "The congregation Tesjoengat Israel (Hulpe Israëls) commissioned E.M. Rood to build this synagogue in 1891–1892. Its narrow street front conceals a prayer hall with galleries on three sides, originally seating 250 men and 70 women. The paired round-arched windows, David-star oculus and ceremonial doorway belong to its eclectic neo-Renaissance architecture.",
+  "funFact": "The congregation remained active in this concealed street building during the occupation, and the preserved synagogue hosted early services after liberation.",
+  "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/527843",
+  "additionalSources": [
+    "https://www.nihs.nl/synagoges/gerard-dou/"
+  ],
+  "preferDescription": true,
+  "routeDestination": {
+    "center": [
+      52.35709575612273,
+      4.897850161190556
+    ],
+    "note": "Centre of the hall street frontage matched to the ceremonial door in the 2005 elevation and 2025 municipal panorama."
+  }
+},
+{
+  "modelId": "lekstraat-synagoge",
+  "landmarkId": "extract_landmarks_665340356",
+  "name": "Lekstraatsynagoge",
+  "description": "Abraham Elzas designed this restrained modernist synagogue complex, completed in 1937, with a stone-faced main hall and a lower yellow-brick synagogue and residence wing. The small synagogue remains in use; the main hall later housed the Resistance Museum and an auction house.",
+  "funFact": "The Hebrew inscription on the otherwise largely blank front quotes 1 Kings 6:13. Elzas had worked with Le Corbusier; this modernist building stands among the Amsterdam School architecture of Plan Zuid.",
+  "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/526707",
+  "additionalSources": [
+    "https://www.nihs.nl/synagoges/lekstraat/",
+    "https://lekstraatsynagoge.nl/about-us/"
+  ],
+  "preferDescription": true,
+  "routeDestination": {
+    "center": [
+      52.34428997517323,
+      4.902942362182297
+    ],
+    "note": "Lekstraat 61 approach derived from current BAG frontage and municipal panorama."
+  }
+},
+{
+  "modelId": "petrus-en-paulus-kerk",
+  "landmarkId": "extract_landmarks_1828911806",
+  "name": "Sint-Petrus-en-Pauluskerk",
+  "description": "This Old Catholic church on Ruysdaelstraat was delivered in 1914 and, with its parsonage and schoolroom, forms one complex designed by Johan W.F. Hartkamp jr., a pupil of H.P. Berlage. It continues the hidden church De Ooievaar from the Barndesteeg.",
+  "funFact": "The church keeps a Dordrecht Rotating Tabernacle from 1789, a gift to the Amsterdam parish that reached it through De Ooievaar; one of its makers was Jacob van Strij.",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Sint-Petrus-en-Pauluskerk_%28Amsterdam%29",
+  "preferDescription": true
+},
+{
+  "modelId": "maarten-lutherkerk",
+  "landmarkId": "extract_landmarks_404188843",
+  "name": "Maarten Lutherkerk",
+  "description": "The Maarten Luther Kerk is an Evangelical-Lutheran church in the Rivierenbuurt of Amsterdam-Zuid, designed by the architect F. Jantzen in the Amsterdam School style. Tall narrow windows climb the brick walls of the hall above a low band of small lights, and a slim green spire rises from the roof.",
+  "funFact": "The church's brick hall dates from 1937 according to the national building register (BAG), and it forms part of the Rivierenbuurt's Amsterdam School streetscape.",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Maarten_Luther_Kerk_%28Amsterdam%29",
+  "preferDescription": true
+}
 ]
