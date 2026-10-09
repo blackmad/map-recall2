@@ -2186,33 +2186,34 @@
         "NL.IMBAG.Pand.0363100012167897",
         "NL.IMBAG.Pand.0363100012169456",
         "NL.IMBAG.Pand.0363100012169457",
-        "NL.IMBAG.Pand.0363100012174397"
+        "NL.IMBAG.Pand.0363100012174397",
+        "NL.IMBAG.Pand.0363100012185424",
+        "NL.IMBAG.Pand.0363100012176752",
+        "NL.IMBAG.Pand.0363100012171101",
+        "NL.IMBAG.Pand.0363100012172459"
       ],
       "latestBatch": [
-        "NL.IMBAG.Pand.0363100012169457",
-        "NL.IMBAG.Pand.0363100012174397"
+        "NL.IMBAG.Pand.0363100012172459"
       ],
-      "evidence": "ordinary-buildings-data/canal-prinsen215-review-20261008.json",
+      "evidence": "ordinary-buildings-data/prinsen767-review-20261009.json",
       "handoff": "docs/performance/2026-10-06/canal-belt-continuation-handoff.md",
-      "nextAction": "34 hosted assets verified. Continue full architectural source and native facade/roof ownership work on parent0363100012185424 (Prinsengracht759\u2013769 plusKerkstraat126); next model not authored/accepted. Continuous queue remains active.",
+      "nextAction": "Publish accepted Leidsestraat/Kerkstraat ordinary38; continue repaired Keizersgracht 73 / Herengracht 54 through native game and next bounded source candidate. Continuous queue remains active.",
       "sourceCommit": "9fc691744e03b91f70899896033acdb6cbbd1a18",
       "notes": "Ordinary assets/full architecture review for defining Rokin roof assemblies; no invented POI routes. Existing Nacarat basic inside-footprint click card retained. Both strict500k/three-material budgets pass.",
-      "localModelCount": 34,
+      "localModelCount": 38,
       "hostedVerification": {
-        "publicModelCommit": "fe3dbd7b0e9e82e28b4902a2b025f0838f6a5c6b",
-        "publicCommit": "025e5df61ef2c82c2e18111c4455bc035858f44c",
-        "firebaseRun": "37843611938",
-        "verifiedAtUTC": "2026-10-08T21:05:49.775086+00:00",
-        "models": 34,
+        "publicModelCommit": "417684907ec5c961d09c1aeb46c5efe05c00673c",
+        "firebaseRun": "37891331087",
+        "verifiedAtUTC": "2026-10-09T06:08:52.188284+00:00",
+        "models": 35,
         "allAssetHashesExact": true,
-        "manualDesktopTouchLoaded": 34,
-        "feedbackPreview": true,
-        "evidenceSourceCommit": "6515660e4d5b0cef3bdc0b940abb8fc1173fed66",
-        "evidenceSourcePack": "experiments/canal-belt-continuation-20261007/hosted34-20261008"
+        "manualDesktopTouchLoaded": 35,
+        "evidenceSourceCommit": "14f0cba144b311e1c961cb4997a262527873bc22",
+        "evidenceSourcePack": "experiments/canal-belt-continuation-20261007/hosted35-20261009"
       },
       "publicationSourceCommit": "695ec2b222e9ad4eb41add25711dd8e5ae3ebfe5",
       "pendingModels": [
-        "NL.IMBAG.Pand.0363100012185424"
+        "NL.IMBAG.Pand.0363100012172459"
       ],
       "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/native34-resume-20261008",
       "reviewPreparationCommit": "396603d052c1dc892425ff4ed6da0d449144d61f",
@@ -2407,16 +2408,135 @@
       "id": "prinsengracht-hospital-ordinary-treatment",
       "task": "Model the native former hospital parent: Prinsengracht 759\u2013769 and Kerkstraat 126",
       "priority": "high",
-      "status": "source-research-in-progress",
+      "status": "verified-hosted",
       "buildingIds": [
         "NL.IMBAG.Pand.0363100012185424"
       ],
       "scope": "One physical surveyed parent spans 15 official address units and both street fronts. Use the full architectural loop; preserve native garden reentrants and neighboring buildings. Do not create a curated POI automatically.",
-      "sourceCommit": "8867f24a00b43616b130abaf9ea9863951c25541",
+      "sourceCommit": "2a8102e5dfcb1eddd9f5cd6b0ae4e78fc1d31c22",
       "sourceBranch": "ordinary/source35-20261008",
-      "sourcePack": "experiments/canal-belt-continuation-20261007/next-source35-prinsen767/0363100012185424",
-      "evidence": "../../scripts/ordinary-buildings/prinsen767-research.json",
-      "nextAction": "Map the 17 Prinsengracht axes and Kerkstraat facade volumes to actual frontage chains and adjacent parents. Acquire front-end and aerial views, then build the source-supported native facade and roof assemblies. Preserve the 2025 scaffolding view; compare with leaf-off 2024 and earlier references. No standard approval or model acceptance yet."
+      "sourcePack": "experiments/canal-belt-continuation-20261007/prinsen767-native-review40",
+      "evidence": "ordinary-buildings-data/prinsen767-review-20261009.json",
+      "nextAction": "Preserve scoped source/visual limits and failed evidence; continue ordinary queue.",
+      "draftAsset": {
+        "sha256": "a680a2ac3c81fe9e4b5018ce088a1154dee3b00178a0fc9148fa0bf6c2d9fa5d",
+        "bytes": 287136,
+        "triangles": 10339,
+        "materials": 3,
+        "textures": 0,
+        "acceptedLocal": true,
+        "hostedVerified": true
+      },
+      "hostedVerification": {
+        "publicModelCommit": "417684907ec5c961d09c1aeb46c5efe05c00673c",
+        "firebaseRun": "37891331087",
+        "verifiedAtUTC": "2026-10-09T06:08:52.188284+00:00",
+        "models": 35,
+        "allAssetHashesExact": true,
+        "manualDesktopTouchLoaded": 35,
+        "evidenceSourceCommit": "14f0cba144b311e1c961cb4997a262527873bc22",
+        "evidenceSourcePack": "experiments/canal-belt-continuation-20261007/hosted35-20261009"
+      }
+    },
+    {
+      "id": "keizers575-ordinary-treatment",
+      "task": "Source and model native Keizersgracht575 parent0363100012176752",
+      "priority": "high",
+      "status": "accepted-hosted",
+      "buildingIds": [
+        "NL.IMBAG.Pand.0363100012176752"
+      ],
+      "scope": "One official parent includes distinct Venetian569\u2013571 and classical573\u2013575 fronts; one VBO main575/secondary569. Full architecture, no invented POI or standard approval.",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/keizers575-next-source37",
+      "nextAction": "Scoped hosted source/gallery/game verification complete; preserve source and performance limits. Continue ordinary queue.",
+      "sourceCommit": "4ec0a0d69e202f87d573b5543650c9446f20102f",
+      "draftHash": "5ecc5194b38f88ad9aa4862a81565b0216f5010dfeb17054246a093c6aa796b9",
+      "supplementarySourceCommit": "24ce200c61425e6ecc2d4f85a82a2c512cb18c55",
+      "gpuFailureEvidence": {
+        "sourceCommit": "a91eeb67bd38ee6340b73d8548c827383de57f88",
+        "sourcePack": "experiments/canal-belt-continuation-20261007/keizers575-v03-failed-review46",
+        "failedHash": "65d9adba08ba9796e9c9b27a0c9278447ce2cf4e74321051bb28cb51243ef4d6"
+      },
+      "revisedReviewEvidence": {
+        "sourceCommit": "91c37347d8561e49f4efaded24f201d608b03050",
+        "sourcePack": "experiments/canal-belt-continuation-20261007/revised-ordinary36-37-review49"
+      },
+      "nativeReviewEvidence": {
+        "sourceCommit": "1bb20d83f4fdc4e9d0e1829f6ca44371f40729ea",
+        "sourcePack": "experiments/canal-belt-continuation-20261007/native36-37-review50"
+      },
+      "hostedVerification": {
+        "publicCommit": "e4c7f872d47573133e4a8f62ca7b01133fff2e62",
+        "firebaseRun": 37913112710,
+        "sourceCommit": "4d1e8cc90",
+        "sourcePack": "experiments/canal-belt-continuation-20261007/hosted37-and-next38-review53",
+        "modelCount": 37
+      }
+    },
+    {
+      "id": "brouwers1-singel26-ordinary-treatment",
+      "task": "Model joined native Brouwersgracht1\u20135 / Singel16,22\u201326 parent",
+      "priority": "high",
+      "status": "accepted-hosted",
+      "buildingIds": [
+        "NL.IMBAG.Pand.0363100012171101"
+      ],
+      "scope": "One902m\u00b2 native parent with white doublewarehouse, hipped corner house and distinct cornice/ship-attic/neckgable fronts. Full architectural loop required; no invented POI. Preserve open C-shaped rear notch, low source roofs and exact neighbors.",
+      "sourceCommit": "62af8c1d3642f1a50cda830ce7921c27006aac5d",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-ordinary37-source42",
+      "nextAction": "Scoped hosted source/gallery/game verification complete; preserve source and performance limits. Continue ordinary queue.",
+      "draftHash": "056e443a76e89238c8309e7f65819cddbad179b6cb3bb23f45020c233fcd3c4b",
+      "revisedReviewEvidence": {
+        "sourceCommit": "91c37347d8561e49f4efaded24f201d608b03050",
+        "sourcePack": "experiments/canal-belt-continuation-20261007/revised-ordinary36-37-review49"
+      },
+      "nativeReviewEvidence": {
+        "sourceCommit": "1bb20d83f4fdc4e9d0e1829f6ca44371f40729ea",
+        "sourcePack": "experiments/canal-belt-continuation-20261007/native36-37-review50"
+      },
+      "hostedVerification": {
+        "publicCommit": "e4c7f872d47573133e4a8f62ca7b01133fff2e62",
+        "firebaseRun": 37913112710,
+        "sourceCommit": "4d1e8cc90",
+        "sourcePack": "experiments/canal-belt-continuation-20261007/hosted37-and-next38-review53",
+        "modelCount": 37
+      }
+    },
+    {
+      "id": "leids67-kerk52-ordinary-treatment",
+      "task": "Model joined Leidsestraat67\u201371 / Kerkstraat50A/B,52 parent",
+      "status": "accepted-local-host-pending",
+      "priority": "high",
+      "buildingIds": [
+        "NL.IMBAG.Pand.0363100012172459"
+      ],
+      "sourceCommit": "e21680c666d878aa74d42fe74b7c9a103bfee5ca",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-ordinary38-source51",
+      "scope": "One joined native parent with surviving Roobol broad-window frontage and historic double-neck-gable frontage; preserve external notches and existing Club Church basic mapped card. Full architectural loop, no new curated destination.",
+      "nextAction": "Final model/source review complete; publish and verify actual hosted asset, gallery and native game.",
+      "draftHash": "bb1bcea2396bac298bcfbadbb55012c9a99f6aa2e75181cfc807cd648b114ce1",
+      "gpuFailureEvidence": {
+        "sourceCommit": "d6509d17f",
+        "sourcePack": "experiments/canal-belt-continuation-20261007/leids67-failed-gallery54",
+        "failedHash": "8dabf6535996a914891df1d9393cb800f962105a4e8f4da1cd3d7a230da7f706"
+      },
+      "assetHash": "bb1bcea2396bac298bcfbadbb55012c9a99f6aa2e75181cfc807cd648b114ce1",
+      "reviewEvidenceCommit": "8732ed43c5291d04ef31b0803377d75978c8d073",
+      "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/leids67-final-native56/0363100012172459"
+    },
+    {
+      "id": "keizers73-heren54-ordinary-treatment",
+      "task": "Model joined Keizersgracht 73/A\u2013F / Herengracht 54 native parent",
+      "status": "basement-repaired-gallery-review-pending",
+      "priority": "high",
+      "buildingIds": [
+        "NL.IMBAG.Pand.0363100012169218"
+      ],
+      "sourceCommit": "2da8260fedb128bd297b3d1f70fc93947e2c2a11",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-ordinary39-source55",
+      "draftHash": "ddde83d49f2e2cee5b6bddcb45d6356fe1f083336a6df1940ec605c2291f2844",
+      "priorFailures": "Outer-only roof extraction filled source holes; corrected all raw rings. Failed 704a front stairs buried upper basement door; sideways stair repair awaits actual GPU and native game review. Preserve survey val3dity 303 / RMSE 0.798 uncertainty and uncapped 23.26 m\u00b2 fringe.",
+      "nextAction": "Independent repaired GPU then root native desktop/touch, exact six neighbors, fallback, ordinary click policy and performance; private final archive before publication."
     },
     {
       "id": "fire-station-hendrik",

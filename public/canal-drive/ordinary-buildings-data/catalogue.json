@@ -20507,6 +20507,1404 @@
         "evidenceSourceCommit": "6515660e4d5b0cef3bdc0b940abb8fc1173fed66",
         "evidenceSourcePack": "experiments/canal-belt-continuation-20261007/hosted34-20261008"
       }
+    },
+    {
+      "id": "ordinary-0363100012185424",
+      "bytes": 287136,
+      "sha256": "a680a2ac3c81fe9e4b5018ce088a1154dee3b00178a0fc9148fa0bf6c2d9fa5d",
+      "materials": 3,
+      "textures": 0,
+      "triangles": 10339,
+      "bounds": {
+        "min": [
+          -37.09305953979492,
+          0,
+          -35.518795013427734
+        ],
+        "max": [
+          43.53199005126953,
+          19.84423828125,
+          24.4276180267334
+        ]
+      },
+      "scale": 1,
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012185424"
+      ],
+      "scope": "One native former hospital parent with both street fronts and garden reentrants; scoped architectural and hosted game acceptance.",
+      "sourceCommit": "2a8102e5dfcb1eddd9f5cd6b0ae4e78fc1d31c22",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-large-box-source-26/0363100012185424",
+      "unresolvedRoofCoverage": [
+        {
+          "ring": [
+            [
+              -4.02370910812018,
+              -6.824635051775374
+            ],
+            [
+              -2.7020013096640794,
+              -5.462774820025655
+            ],
+            [
+              2.1231837189714327,
+              -9.931811164368236
+            ]
+          ],
+          "areaMetres2": 6.2389938946170815,
+          "nearestOwnerDistanceMetres": 1.8964220399841663,
+          "nearestSurface": 368,
+          "representativeLngLat": [
+            4.8870955635582405,
+            52.36386506896606
+          ]
+        },
+        {
+          "ring": [
+            [
+              1.4578818445498047,
+              -11.027249155653895
+            ],
+            [
+              1.751339564813179,
+              -11.048398693074876
+            ],
+            [
+              1.6305966720676799,
+              -11.182620034905494
+            ],
+            [
+              1.4578818445498025,
+              -11.027249155653925
+            ]
+          ],
+          "areaMetres2": 0.020970972656374064,
+          "nearestOwnerDistanceMetres": 0.7221547175098297,
+          "nearestSurface": 368,
+          "representativeLngLat": [
+            4.887123156966384,
+            52.363889658314385
+          ]
+        },
+        {
+          "ring": [
+            [
+              1.8377488560938617,
+              -11.340472819078494
+            ],
+            [
+              1.6547867526341775,
+              -11.32728671564162
+            ],
+            [
+              1.6682277217291799,
+              -11.140788256113284
+            ],
+            [
+              1.751339564813179,
+              -11.048398693074876
+            ],
+            [
+              1.8582434079774393,
+              -11.056103267449066
+            ]
+          ],
+          "areaMetres2": 0.04855780989829968,
+          "nearestOwnerDistanceMetres": 0.7879232331512921,
+          "nearestSurface": 368,
+          "representativeLngLat": [
+            4.887125069112947,
+            52.36389072306575
+          ]
+        },
+        {
+          "ring": [
+            [
+              1.5570295027043979,
+              -9.645627411647595
+            ],
+            [
+              2.1231837189714327,
+              -9.931811164368236
+            ],
+            [
+              2.0412055114371217,
+              -11.069289370885938
+            ],
+            [
+              0.5775086837596445,
+              -10.96380054339095
+            ],
+            [
+              0.4634932008970557,
+              -10.861234445996566
+            ]
+          ],
+          "areaMetres2": 1.4754705106965558,
+          "nearestOwnerDistanceMetres": 1.8009673900600964,
+          "nearestSurface": 368,
+          "representativeLngLat": [
+            4.8871211288417,
+            52.363883199577785
+          ]
+        },
+        {
+          "ring": [
+            [
+              0.6269064009002888,
+              -9.175462018335551
+            ],
+            [
+              1.5570295027043979,
+              -9.645627411647595
+            ],
+            [
+              0.4634932008970557,
+              -10.861234445996566
+            ],
+            [
+              -0.009945160560438064,
+              -10.43533855999651
+            ]
+          ],
+          "areaMetres2": 1.2562567281726693,
+          "nearestOwnerDistanceMetres": 1.6350908553744585,
+          "nearestSurface": 368,
+          "representativeLngLat": [
+            4.8871095090722925,
+            52.363880001232296
+          ]
+        },
+        {
+          "ring": [
+            [
+              -0.3032167009038147,
+              -8.70529662502351
+            ],
+            [
+              0.6269064009002888,
+              -9.175462018335551
+            ],
+            [
+              0.30848062016992933,
+              -9.805400289166023
+            ],
+            [
+              -0.7922961184644822,
+              -9.248971653789761
+            ]
+          ],
+          "areaMetres2": 0.8031177693969586,
+          "nearestOwnerDistanceMetres": 1.3625757128120453,
+          "nearestSurface": 368,
+          "representativeLngLat": [
+            4.887100798285572,
+            52.36387539022786
+          ]
+        },
+        {
+          "ring": [
+            [
+              -1.233339802707892,
+              -8.235131231711485
+            ],
+            [
+              -0.3032167009038147,
+              -8.70529662502351
+            ],
+            [
+              -0.6677288015062522,
+              -9.11049896980649
+            ],
+            [
+              -1.360710115000033,
+              -8.487106540043667
+            ]
+          ],
+          "areaMetres2": 0.401142452765026,
+          "nearestOwnerDistanceMetres": 1.0900605702496335,
+          "nearestSurface": 368,
+          "representativeLngLat": [
+            4.887086339871022,
+            52.363867027091054
+          ]
+        },
+        {
+          "ring": [
+            [
+              -1.4317398507928658,
+              -8.134842531796314
+            ],
+            [
+              -1.233339802707892,
+              -8.235131231711485
+            ],
+            [
+              -1.3288675369270078,
+              -8.424112712960643
+            ],
+            [
+              -1.5272675850119815,
+              -8.323824013045472
+            ]
+          ],
+          "areaMetres2": 0.04707428723767955,
+          "nearestOwnerDistanceMetres": 0.8175454276872284,
+          "nearestSurface": 368,
+          "representativeLngLat": [
+            4.887078968767447,
+            52.36386418192433
+          ]
+        },
+        {
+          "ring": [
+            [
+              -1.5277477167796274,
+              -8.08631177711969
+            ],
+            [
+              -1.4317398507928658,
+              -8.134842531796314
+            ],
+            [
+              -1.547425576940081,
+              -8.363702349998832
+            ],
+            [
+              -1.6744715420478544,
+              -8.249414285749594
+            ]
+          ],
+          "areaMetres2": 0.03253847797025687,
+          "nearestOwnerDistanceMetres": 0.7594165442271834,
+          "nearestSurface": 368,
+          "representativeLngLat": [
+            4.887076592760673,
+            52.36386339725658
+          ]
+        },
+        {
+          "ring": [
+            [
+              -1.686676513712707,
+              -8.005975292439635
+            ],
+            [
+              -1.5277477167796274,
+              -8.08631177711969
+            ],
+            [
+              -1.6500175711697682,
+              -8.222230534311224
+            ],
+            [
+              -1.7503616698587623,
+              -8.131962946605695
+            ]
+          ],
+          "areaMetres2": 0.024907478933162235,
+          "nearestOwnerDistanceMetres": 0.7312873673088306,
+          "nearestSurface": 368,
+          "representativeLngLat": [
+            4.887075096158031,
+            52.36386265173873
+          ]
+        }
+      ],
+      "acceptance": "Root and independent source/gallery/native checks passed; actual hosted35 assets, desktop and emulated-touch gameplay verified. Recorded rear/source/startup limits remain.",
+      "buildingId": "NL.IMBAG.Pand.0363100012185424",
+      "name": "Prinsengracht 759\u2013769 / Kerkstraat 126",
+      "label": "Prinsengracht 759\u2013769 / Kerkstraat 126",
+      "url": "/models/ordinary-buildings/0363100012185424.glb",
+      "modelUrl": "./models/ordinary-buildings/0363100012185424.glb",
+      "hash": "a680a2ac3c81fe9e4b5018ce088a1154dee3b00178a0fc9148fa0bf6c2d9fa5d",
+      "anchor": [
+        4.887099274193549,
+        52.363789806451614
+      ],
+      "bearing": 0,
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.887426,
+              52.363944
+            ],
+            [
+              4.887464,
+              52.363921
+            ],
+            [
+              4.887427,
+              52.363899
+            ],
+            [
+              4.887525,
+              52.363839
+            ],
+            [
+              4.887555,
+              52.363857
+            ],
+            [
+              4.887593,
+              52.363833
+            ],
+            [
+              4.887731,
+              52.363916
+            ],
+            [
+              4.887426,
+              52.364103
+            ],
+            [
+              4.887321,
+              52.364039
+            ],
+            [
+              4.887361,
+              52.364014
+            ],
+            [
+              4.887258,
+              52.363954
+            ],
+            [
+              4.887107,
+              52.364052
+            ],
+            [
+              4.88686,
+              52.363913
+            ],
+            [
+              4.886821,
+              52.363938
+            ],
+            [
+              4.886873,
+              52.363968
+            ],
+            [
+              4.886746,
+              52.364051
+            ],
+            [
+              4.886556,
+              52.363943
+            ],
+            [
+              4.886684,
+              52.363861
+            ],
+            [
+              4.886711,
+              52.363843
+            ],
+            [
+              4.88671,
+              52.363842
+            ],
+            [
+              4.886737,
+              52.363824
+            ],
+            [
+              4.886738,
+              52.363825
+            ],
+            [
+              4.886764,
+              52.363807
+            ],
+            [
+              4.886762,
+              52.363806
+            ],
+            [
+              4.88683,
+              52.363761
+            ],
+            [
+              4.886832,
+              52.363762
+            ],
+            [
+              4.886859,
+              52.363744
+            ],
+            [
+              4.886858,
+              52.363743
+            ],
+            [
+              4.886885,
+              52.363725
+            ],
+            [
+              4.886887,
+              52.363727
+            ],
+            [
+              4.886914,
+              52.363709
+            ],
+            [
+              4.886913,
+              52.363708
+            ],
+            [
+              4.88694,
+              52.36369
+            ],
+            [
+              4.886941,
+              52.363691
+            ],
+            [
+              4.886968,
+              52.363673
+            ],
+            [
+              4.886965,
+              52.363672
+            ],
+            [
+              4.887033,
+              52.363627
+            ],
+            [
+              4.887035,
+              52.363628
+            ],
+            [
+              4.887062,
+              52.36361
+            ],
+            [
+              4.887061,
+              52.36361
+            ],
+            [
+              4.887088,
+              52.363592
+            ],
+            [
+              4.88709,
+              52.363592
+            ],
+            [
+              4.887117,
+              52.363574
+            ],
+            [
+              4.887181,
+              52.363611
+            ],
+            [
+              4.887161,
+              52.363624
+            ],
+            [
+              4.887177,
+              52.363633
+            ],
+            [
+              4.887213,
+              52.363609
+            ],
+            [
+              4.887375,
+              52.363701
+            ],
+            [
+              4.887368,
+              52.363705
+            ],
+            [
+              4.887386,
+              52.363715
+            ],
+            [
+              4.887387,
+              52.363735
+            ],
+            [
+              4.887341,
+              52.363766
+            ],
+            [
+              4.887312,
+              52.363767
+            ],
+            [
+              4.887292,
+              52.363756
+            ],
+            [
+              4.887289,
+              52.363758
+            ],
+            [
+              4.887183,
+              52.363698
+            ],
+            [
+              4.887012,
+              52.363812
+            ],
+            [
+              4.887134,
+              52.363881
+            ],
+            [
+              4.887196,
+              52.363839
+            ],
+            [
+              4.887227,
+              52.363839
+            ],
+            [
+              4.887241,
+              52.363846
+            ],
+            [
+              4.887246,
+              52.363843
+            ],
+            [
+              4.887426,
+              52.363944
+            ]
+          ]
+        ]
+      },
+      "height": 19.84423828125,
+      "sourcePacks": [
+        "experiments/canal-belt-continuation-20261007/next-large-box-source-26/0363100012185424",
+        "experiments/canal-belt-continuation-20261007/next-source35-prinsen767/0363100012185424",
+        "experiments/canal-belt-continuation-20261007/prinsen767-front-source36",
+        "experiments/canal-belt-continuation-20261007/prinsen767-native-source36"
+      ],
+      "retainedNeighbors": [
+        "NL.IMBAG.Pand.0363100012169627",
+        "NL.IMBAG.Pand.0363100012169699"
+      ],
+      "treatment": "full",
+      "cameraBearing": 227.254,
+      "referenceImages": [
+        "./ordinary-buildings-data/references/0363100012185424/prinsen-brown-current-2024.jpg",
+        "./ordinary-buildings-data/references/0363100012185424/prinsen-white-current-2024.jpg"
+      ],
+      "galleryFrontage": {
+        "target": [
+          4.8868365,
+          52.3637585
+        ],
+        "distanceMetres": 65,
+        "targetHeightMetres": 8
+      },
+      "gallerySecondary": {
+        "target": [
+          4.88757,
+          52.36401
+        ],
+        "cameraBearing": 45,
+        "distanceMetres": 36,
+        "targetHeightMetres": 7,
+        "eyeHeightMetres": 2.1,
+        "referenceImages": [
+          "./ordinary-buildings-data/references/0363100012185424/kerk-current-captured-2023.jpg"
+        ]
+      },
+      "traits": [
+        "Seventeen brown Prinsengracht axes with pale cornices and crowned risalits; current two-axis rooftop glass box.",
+        "Same-parent white six-axis wing; Kerk two-axis tuit gable, central bowed bay, entrance arch with observed gold inscription.",
+        "Native survey roof partition, own solar field, open gardens and exact parent suppression."
+      ],
+      "simplifications": [
+        "Unobserved garden coverage10.349m\u00b2 remains uncapped; includes original6.239m\u00b2 gap.",
+        "Rear windows not independently researched; conservative blank rear source massing.",
+        "Facade dimensions, solar module count and Archivo Black sign font are approximate.",
+        "Touch is iPhone13 input/viewport emulation onM4Pro, not physical phone.",
+        "Cold game boots4.785\u20135.929s and initialization52\u2013196ms long tasks remain; steady-frame parity does not establish startup improvement."
+      ],
+      "reviewState": "Root/independent source, gallery and native desktop/touch accepted; hosted35 verified.",
+      "reviewEvidenceCommit": "2a8102e5dfcb1eddd9f5cd6b0ae4e78fc1d31c22",
+      "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/prinsen767-native-review40",
+      "updatedAt": "2026-10-08T22:36:00.424222+00:00",
+      "sourceUrls": [
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/518366",
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012185424",
+        "https://data.amsterdam.nl/"
+      ],
+      "nativeHeight": 16.5,
+      "hostedVerification": {
+        "publicModelCommit": "417684907ec5c961d09c1aeb46c5efe05c00673c",
+        "firebaseRun": "37891331087",
+        "verifiedAtUTC": "2026-10-09T06:08:52.188284+00:00",
+        "models": 35,
+        "allAssetHashesExact": true,
+        "manualDesktopTouchLoaded": 35,
+        "evidenceSourceCommit": "14f0cba144b311e1c961cb4997a262527873bc22",
+        "evidenceSourcePack": "experiments/canal-belt-continuation-20261007/hosted35-20261009"
+      },
+      "builderSpec": "scripts/ordinary-buildings/prinsen767-spec.json",
+      "builderStage": "scripts/ordinary-buildings/build-prinsen767.ts"
+    },
+    {
+      "id": "ordinary-0363100012176752",
+      "bytes": 459636,
+      "sha256": "5ecc5194b38f88ad9aa4862a81565b0216f5010dfeb17054246a093c6aa796b9",
+      "materials": 3,
+      "textures": 0,
+      "triangles": 26008,
+      "bounds": {
+        "min": [
+          -22.289783477783203,
+          -0.018351351842284203,
+          -25.190126419067383
+        ],
+        "max": [
+          20.460811614990234,
+          25.645999908447266,
+          19.848194122314453
+        ]
+      },
+      "scale": 1,
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012176752"
+      ],
+      "scope": "Original texture-free native ordinary building; no new curated POI, route destination or trivia.",
+      "sourceCommit": "4ec0a0d69e202f87d573b5543650c9446f20102f",
+      "unresolvedRoofCoverage": [
+        {
+          "ring": [
+            [
+              1.4954745673964105,
+              -26.85992571460787
+            ],
+            [
+              1.0182241261085754,
+              -24.664109931573375
+            ],
+            [
+              7.989785471026601,
+              -23.04092188331822
+            ]
+          ],
+          "areaMetres2": 8.041465822943549,
+          "nearestOwnerDistanceMetres": 2.2470814263690624,
+          "nearestSurface": 233,
+          "representativeLngLat": [
+            4.890989977695306,
+            52.364651137370714
+          ]
+        },
+        {
+          "ring": [
+            [
+              9.312727988053284,
+              -25.190125714868827
+            ],
+            [
+              1.4954745673964105,
+              -26.85992571460787
+            ],
+            [
+              7.989785471026601,
+              -23.04092188331822
+            ]
+          ],
+          "areaMetres2": 9.504960209231886,
+          "nearestOwnerDistanceMetres": 2.5237381030742294,
+          "nearestSurface": 233,
+          "representativeLngLat": [
+            4.891064962203651,
+            52.364636346730904
+          ]
+        },
+        {
+          "ring": [
+            [
+              9.312727988053284,
+              -25.190125714868827
+            ],
+            [
+              7.989785471026601,
+              -23.04092188331822
+            ],
+            [
+              8.022772917691691,
+              -23.03314415765442
+            ]
+          ],
+          "areaMetres2": 0.04059311536604682,
+          "nearestOwnerDistanceMetres": 2.394464047486654,
+          "nearestSurface": 214,
+          "representativeLngLat": [
+            4.891083407490361,
+            52.364636346730904
+          ]
+        },
+        {
+          "ring": [
+            [
+              9.312727988053284,
+              -25.190125714868827
+            ],
+            [
+              8.022772917691691,
+              -23.03314415765442
+            ],
+            [
+              8.691503497939802,
+              -22.877651237693044
+            ]
+          ],
+          "areaMetres2": 0.8215092044249852,
+          "nearestOwnerDistanceMetres": 2.394464047486654,
+          "nearestSurface": 214,
+          "representativeLngLat": [
+            4.89108612476226,
+            52.364636311796815
+          ]
+        },
+        {
+          "ring": [
+            [
+              8.776049914403039,
+              -22.778309276945485
+            ],
+            [
+              9.312727988053284,
+              -25.190125714868827
+            ],
+            [
+              8.691503497939802,
+              -22.877651237693044
+            ]
+          ],
+          "areaMetres2": 0.12861254456009263,
+          "nearestOwnerDistanceMetres": 2.394464047486654,
+          "nearestSurface": 214,
+          "representativeLngLat": [
+            4.891088822808738,
+            52.36463561339168
+          ]
+        }
+      ],
+      "buildingId": "NL.IMBAG.Pand.0363100012176752",
+      "name": "Keizersgracht 569\u2013575",
+      "anchor": [
+        4.890956,
+        52.36441971428571
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.891257,
+              52.364501
+            ],
+            [
+              4.89105,
+              52.364528
+            ],
+            [
+              4.891093,
+              52.364646
+            ],
+            [
+              4.890978,
+              52.364661
+            ],
+            [
+              4.890936,
+              52.364543
+            ],
+            [
+              4.89072,
+              52.364571
+            ],
+            [
+              4.890693,
+              52.364495
+            ],
+            [
+              4.890631,
+              52.364318
+            ],
+            [
+              4.890844,
+              52.364291
+            ],
+            [
+              4.890922,
+              52.36428
+            ],
+            [
+              4.890921,
+              52.364279
+            ],
+            [
+              4.891087,
+              52.364257
+            ],
+            [
+              4.891087,
+              52.364258
+            ],
+            [
+              4.891165,
+              52.364248
+            ],
+            [
+              4.891257,
+              52.364501
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 17.44,
+      "height": 25.645999908447266,
+      "modelUrl": "./models/ordinary-buildings/0363100012176752.glb",
+      "hash": "5ecc5194b38f88ad9aa4862a81565b0216f5010dfeb17054246a093c6aa796b9",
+      "cameraBearing": 192.2,
+      "referenceImages": [
+        "./ordinary-buildings-data/references/0363100012176752/opposite-b_20250115_1329_Track12_Sphere_00032.jpg"
+      ],
+      "traits": [
+        "paired round-headed upper windows",
+        "single central middle opening",
+        "ogee heads on tall main level",
+        "gothic tracery frieze",
+        "recessed center",
+        "low flat decorated attic",
+        "four Ionic giant pilasters",
+        "seven triglyphs",
+        "large floral triangle pediment",
+        "two roof dormers",
+        "four finial stacks",
+        "barred ground groups and three doors"
+      ],
+      "simplifications": [
+        "Unobserved native rear-appendage18.537m\u00b2 remains without invented roof; prepare exits1 deliberately.",
+        "Current rear openings and low-covered-space usage unresolved.",
+        "Current BBVA lettering omitted pending faithful native font outlines.",
+        "Floral carvings and Ionic spirals are original low-relief approximations, not surveyed exact sculpture.",
+        "No POI/destination/trivia integration implied; ordinary treatment only."
+      ],
+      "reviewState": "Accepted and hosted; native desktop/touch evidence in hosted37-and-next38-review53.",
+      "retainedNeighbors": [
+        "NL.IMBAG.Pand.0363100012176757",
+        "NL.IMBAG.Pand.0363100012176758"
+      ],
+      "galleryFrontage": {
+        "target": [
+          4.891004546462495,
+          52.36426969631949
+        ],
+        "distanceMetres": 42,
+        "targetHeightMetres": 11,
+        "eyeHeightMetres": 2.1
+      },
+      "gallerySecondary": {
+        "target": [
+          4.8907375409187726,
+          52.36430473045531
+        ],
+        "distanceMetres": 28,
+        "targetHeightMetres": 8.4,
+        "eyeHeightMetres": 2.1,
+        "cameraBearing": 191.7
+      },
+      "label": "Keizersgracht 569\u2013575",
+      "url": "/models/ordinary-buildings/0363100012176752.glb",
+      "treatment": "landmark",
+      "acceptance": "Scoped root and independent source/gallery/local native desktop and touch checks passed. Hosted verification pending; architectural and performance limits retained.",
+      "builderSpec": "scripts/ordinary-buildings/keizers575-spec.json",
+      "builderStage": "scripts/ordinary-buildings/keizers575-export.ts",
+      "reviewEvidenceCommit": "1bb20d83f4fdc4e9d0e1829f6ca44371f40729ea",
+      "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/native36-37-review50",
+      "updatedAt": "2026-10-09T09:35:56.861501+00:00",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/keizers575-next-source37",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012176752",
+        "https://data.amsterdam.nl/data/"
+      ]
+    },
+    {
+      "id": "ordinary-0363100012171101",
+      "bytes": 394296,
+      "sha256": "056e443a76e89238c8309e7f65819cddbad179b6cb3bb23f45020c233fcd3c4b",
+      "materials": 3,
+      "textures": 0,
+      "triangles": 15271,
+      "bounds": {
+        "min": [
+          -24.878433227539062,
+          -0.07000000029802322,
+          -21.253719329833984
+        ],
+        "max": [
+          26.735265731811523,
+          20.077795028686523,
+          22.865991592407227
+        ]
+      },
+      "scale": 1,
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012171101"
+      ],
+      "scope": "Original texture-free native ordinary building; no new curated POI, route destination or trivia.",
+      "sourceCommit": "62af8c1d3642f1a50cda830ce7921c27006aac5d",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-ordinary37-source42/0363100012171101",
+      "coverage": {
+        "nativeAreaMetres2": 900.6213825248683,
+        "surveyNativeIntersectionMetres2": 845.81836982025,
+        "fringeClosureMetres2": 16.160178384956303,
+        "largestFringeOwnerDistanceMetres": 0.6284545638334038,
+        "maxPlaneResidualMetres": 0.001440165584210451
+      },
+      "unresolvedRoofCoverage": [
+        {
+          "ring": [
+            [
+              -14.26650561726968,
+              -2.215035113156046
+            ],
+            [
+              -22.296175826625863,
+              -6.857592600626106
+            ],
+            [
+              -21.978577967875843,
+              -6.346706763077066
+            ]
+          ],
+          "areaMetres2": 1.3138892365025718,
+          "nearestOwnerDistanceMetres": 6.015372512925383,
+          "nearestSurface": 245,
+          "representativeLngLat": [
+            4.892926500747539,
+            52.378737853021356
+          ]
+        },
+        {
+          "ring": [
+            [
+              -14.26650561726968,
+              -2.215035113156046
+            ],
+            [
+              -21.978577967875843,
+              -6.346706763077066
+            ],
+            [
+              -21.97852097190477,
+              -6.346124824860622
+            ]
+          ],
+          "areaMetres2": 0.00212623049547922,
+          "nearestOwnerDistanceMetres": 6.015372512925383,
+          "nearestSurface": 245,
+          "representativeLngLat": [
+            4.8929244225948,
+            52.378737850407546
+          ]
+        },
+        {
+          "ring": [
+            [
+              -14.26650561726968,
+              -2.215035113156046
+            ],
+            [
+              -21.97852097190477,
+              -6.346124824860622
+            ],
+            [
+              -14.355955296116887,
+              -1.9665668169309924
+            ]
+          ],
+          "areaMetres2": 1.142857981814307,
+          "nearestOwnerDistanceMetres": 6.015372512925383,
+          "nearestSurface": 245,
+          "representativeLngLat": [
+            4.892922498742803,
+            52.378737850407546
+          ]
+        },
+        {
+          "ring": [
+            [
+              -21.97852097190477,
+              -6.346124824860622
+            ],
+            [
+              -14.44814500890372,
+              -1.9395701084323538
+            ],
+            [
+              -14.355955296116887,
+              -1.9665668169309924
+            ]
+          ],
+          "areaMetres2": 0.3047671892226411,
+          "nearestOwnerDistanceMetres": 5.768687971405384,
+          "nearestSurface": 245,
+          "representativeLngLat": [
+            4.892923251757187,
+            52.37873673439831
+          ]
+        }
+      ],
+      "acceptance": "Scoped root and independent source/gallery/local native desktop and touch checks passed. Hosted verification pending; architectural and performance limits retained.",
+      "buildingId": "NL.IMBAG.Pand.0363100012171101",
+      "name": "Brouwersgracht 1\u20135 / Singel 16, 22\u201326",
+      "anchor": [
+        4.893191106198877,
+        52.37869939747933
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.893485,
+              52.378713
+            ],
+            [
+              4.893576,
+              52.3788
+            ],
+            [
+              4.893576,
+              52.3788
+            ],
+            [
+              4.89345,
+              52.378828
+            ],
+            [
+              4.893267,
+              52.378868
+            ],
+            [
+              4.893175,
+              52.378888
+            ],
+            [
+              4.89307,
+              52.37871
+            ],
+            [
+              4.893005,
+              52.378724
+            ],
+            [
+              4.893008,
+              52.378729
+            ],
+            [
+              4.89299,
+              52.378732
+            ],
+            [
+              4.892982,
+              52.378719
+            ],
+            [
+              4.892863,
+              52.378761
+            ],
+            [
+              4.892825,
+              52.378721
+            ],
+            [
+              4.892876,
+              52.378702
+            ],
+            [
+              4.892832,
+              52.378658
+            ],
+            [
+              4.893248,
+              52.378501
+            ],
+            [
+              4.893294,
+              52.378542
+            ],
+            [
+              4.893295,
+              52.378543
+            ],
+            [
+              4.893346,
+              52.37859
+            ],
+            [
+              4.89336,
+              52.378584
+            ],
+            [
+              4.893376,
+              52.378597
+            ],
+            [
+              4.893361,
+              52.378604
+            ],
+            [
+              4.893393,
+              52.378632
+            ],
+            [
+              4.893196,
+              52.378688
+            ],
+            [
+              4.893214,
+              52.378718
+            ],
+            [
+              4.893183,
+              52.378725
+            ],
+            [
+              4.893211,
+              52.378773
+            ],
+            [
+              4.893485,
+              52.378713
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 17.1,
+      "height": 20.077795028686523,
+      "modelUrl": "./models/ordinary-buildings/0363100012171101.glb",
+      "hash": "056e443a76e89238c8309e7f65819cddbad179b6cb3bb23f45020c233fcd3c4b",
+      "cameraBearing": 19.667778496862923,
+      "referenceImages": [
+        "./ordinary-buildings-data/references/0363100012171101/warehouse-wide-fullfront-0363100012171101-2025-01246-enorth-wide.jpg"
+      ],
+      "galleryFrontage": {
+        "target": [
+          4.8933125,
+          52.378858
+        ],
+        "distanceMetres": 38,
+        "targetHeightMetres": 8.6,
+        "eyeHeightMetres": 2.1
+      },
+      "gallerySecondary": {
+        "target": [
+          4.8935305,
+          52.378756499999994
+        ],
+        "distanceMetres": 38,
+        "targetHeightMetres": 8.6,
+        "eyeHeightMetres": 2.1,
+        "cameraBearing": 122.55846977988072,
+        "referenceImages": [
+          "./ordinary-buildings-data/references/0363100012171101/fullfront-0363100012171101-2025-00899-eeast.jpg"
+        ]
+      },
+      "traits": [
+        "White six-axis warehouse on13.21m native2\u21923; separate brick/window-band6.64m3\u21924",
+        "Corner console cornice/hipped roof and raised Empire entry",
+        "Singel22cornice,24ship-attic,26neckgable; low rear/garden preserved"
+      ],
+      "simplifications": [
+        "First draft corrected by source scope; actual GPU/native/performance review pending",
+        "VRIESLAND lettering omitted and ship carving simplified"
+      ],
+      "reviewState": "Accepted and hosted; native desktop/touch evidence in hosted37-and-next38-review53.",
+      "retainedNeighbors": [
+        "NL.IMBAG.Pand.0363100012171079",
+        "NL.IMBAG.Pand.0363100012171110",
+        "NL.IMBAG.Pand.0363100012171111",
+        "NL.IMBAG.Pand.0363100012175366",
+        "NL.IMBAG.Pand.0363100012175367",
+        "NL.IMBAG.Pand.0363100012175374",
+        "NL.IMBAG.Pand.0363100012179485"
+      ],
+      "label": "Brouwersgracht 1\u20135 / Singel 16, 22\u201326",
+      "url": "/models/ordinary-buildings/0363100012171101.glb",
+      "treatment": "landmark",
+      "builderSpec": "scripts/ordinary-buildings/brouwers1-spec.json",
+      "builderStage": "scripts/ordinary-buildings/brouwers1-export.ts",
+      "reviewEvidenceCommit": "1bb20d83f4fdc4e9d0e1829f6ca44371f40729ea",
+      "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/native36-37-review50",
+      "updatedAt": "2026-10-09T09:35:56.861501+00:00",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012171101",
+        "https://data.amsterdam.nl/data/"
+      ]
+    },
+    {
+      "id": "ordinary-0363100012172459",
+      "bytes": 106156,
+      "sha256": "bb1bcea2396bac298bcfbadbb55012c9a99f6aa2e75181cfc807cd648b114ce1",
+      "materials": 3,
+      "textures": 0,
+      "triangles": 4187,
+      "bounds": {
+        "min": [
+          -21.665069580078125,
+          0,
+          -15.66756820678711
+        ],
+        "max": [
+          20.663288116455078,
+          23.41671371459961,
+          10.548523902893066
+        ]
+      },
+      "scale": 1,
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012172459"
+      ],
+      "scope": "One joined native parent; root and independent source/gallery/desktop-touch gameplay acceptance.",
+      "sourceCommit": "e21680c666d878aa74d42fe74b7c9a103bfee5ca",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-ordinary38-source51",
+      "limitations": [
+        "Bounded native/survey wall ownership bridge up to 0.868 m; rear apertures unresolved.",
+        "CHURCH blade lettering uses approximate Anton Regular outlines; exact typeface unknown.",
+        "Full native frontage exposure uses normal user camera tilt to 12 degrees; source gallery establishes proportions.",
+        "Touch checks use iPhone 13 browser emulation on Apple M4 Pro, not a physical phone."
+      ],
+      "buildingId": "NL.IMBAG.Pand.0363100012172459",
+      "name": "Leidsestraat 67\u201371 / Kerkstraat 50\u201352",
+      "hash": "bb1bcea2396bac298bcfbadbb55012c9a99f6aa2e75181cfc807cd648b114ce1",
+      "anchor": [
+        4.8853548,
+        52.3651711
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.885037,
+              52.365234
+            ],
+            [
+              4.885216,
+              52.365095
+            ],
+            [
+              4.88526,
+              52.365117
+            ],
+            [
+              4.885322,
+              52.365078
+            ],
+            [
+              4.885427,
+              52.365141
+            ],
+            [
+              4.885484,
+              52.365105
+            ],
+            [
+              4.885655,
+              52.365207
+            ],
+            [
+              4.88557,
+              52.36526
+            ],
+            [
+              4.88538,
+              52.365164
+            ],
+            [
+              4.885197,
+              52.36531
+            ],
+            [
+              4.885037,
+              52.365234
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 20.68,
+      "height": 23.41671371459961,
+      "modelUrl": "./models/ordinary-buildings/0363100012172459.glb",
+      "cameraBearing": -37.89006281019731,
+      "galleryFrontage": {
+        "target": [
+          4.885117006555844,
+          52.36527199831117
+        ],
+        "cameraBearing": -37.89006281019731,
+        "distanceMetres": 28,
+        "eyeHeightMetres": 6,
+        "targetHeightMetres": 10,
+        "referenceImages": [
+          "./ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00039-einitial.jpg"
+        ]
+      },
+      "gallerySecondary": {
+        "target": [
+          4.885612497832299,
+          52.36523349669421
+        ],
+        "cameraBearing": 45.567266409857936,
+        "distanceMetres": 28,
+        "eyeHeightMetres": 6,
+        "targetHeightMetres": 10,
+        "referenceImages": [
+          "./ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00180-ekerk50.jpg"
+        ]
+      },
+      "referenceImages": [
+        "./ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00039-einitial.jpg"
+      ],
+      "traits": [
+        "Current Leids broad glazing and tall stair pier",
+        "Kerk seven lower groups, six upper axes and two neckgables",
+        "Native17survey roof owners and open exterior notches"
+      ],
+      "simplifications": [
+        "Exact CHURCH sign typeface unresolved: Anton Regular approximate condensed bold grotesk outlines, measured source-guided panel/spacing; source word retained on both blade faces.",
+        "Rear aperture counts unresolved; no invented ornate rear windows."
+      ],
+      "reviewState": "Local source, gallery, desktop/touch gameplay and performance accepted; hosted verification pending.",
+      "retainedNeighbors": [
+        "NL.IMBAG.Pand.0363100012169041",
+        "NL.IMBAG.Pand.0363100012172452",
+        "NL.IMBAG.Pand.0363100012172458",
+        "NL.IMBAG.Pand.0363100012172460",
+        "NL.IMBAG.Pand.0363100012172461",
+        "NL.IMBAG.Pand.0363100012571533"
+      ],
+      "label": "Leidsestraat 67\u201371 / Kerkstraat 50\u201352",
+      "url": "/models/ordinary-buildings/0363100012172459.glb",
+      "builderSpec": "scripts/ordinary-buildings/leids67-spec.json",
+      "builderStage": "scripts/ordinary-buildings/leids67-export.ts",
+      "reviewEvidenceCommit": "8732ed43c5291d04ef31b0803377d75978c8d073",
+      "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/leids67-final-native56/0363100012172459",
+      "updatedAt": "2026-10-09T11:02:48.243728+00:00",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012172459",
+        "https://data.amsterdam.nl/data/"
+      ],
+      "acceptance": "Scoped full architectural loop passed; hosted verification pending."
     }
   ]
 }

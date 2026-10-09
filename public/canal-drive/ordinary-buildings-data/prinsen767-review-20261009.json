@@ -1,0 +1,126 @@
+{
+  "canonicalModelId": "ordinary-0363100012185424",
+  "buildingId": "NL.IMBAG.Pand.0363100012185424",
+  "updatedAt": "2026-10-09T06:08:52.188284+00:00",
+  "state": "verified-hosted-scoped",
+  "modelHash": "a680a2ac3c81fe9e4b5018ce088a1154dee3b00178a0fc9148fa0bf6c2d9fa5d",
+  "sourceCommit": "2a8102e5dfcb1eddd9f5cd6b0ae4e78fc1d31c22",
+  "sourcePath": "experiments/canal-belt-continuation-20261007/prinsen767-native-review40",
+  "treatment": "full",
+  "all15AddressParentsVerified": true,
+  "tests": {
+    "decodedFirstHitProbes": 210,
+    "decodedFailures": 0,
+    "decodedMainGardenVoidHits": 0,
+    "finiteDecodedGeometry": true,
+    "ownSolarRimContainment": true,
+    "original34FingerprintsUnchanged": true,
+    "existingNieuw555SharedDefaultRegeneratedExactly": true
+  },
+  "independent": {
+    "source": "roof-source-review",
+    "gallery": "gallery-review-revised40.json",
+    "native": "native-game-review40.json",
+    "result": "Scoped recognition/native visual/performance passes, no critical remaining failures."
+  },
+  "actualGame": {
+    "desktop": {
+      "bootMs": 5929,
+      "medianMs": 16.69999999999891,
+      "p95Ms": 16.700000000000728,
+      "fallbackMedianMs": 16.700000000000728,
+      "fallbackP95Ms": 16.700000000000728,
+      "exactSuppression": true,
+      "retainedNeighbors": [
+        {
+          "id": "NL.IMBAG.Pand.0363100012169627",
+          "installed": 1,
+          "hidden": false,
+          "pyramidHidden": false
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012169699",
+          "installed": 1,
+          "hidden": false,
+          "pyramidHidden": false
+        }
+      ],
+      "pick": {
+        "id": "NL.IMBAG.Pand.0363100012185424",
+        "landmarkId": "",
+        "footprintType": "Polygon",
+        "height": 19.84423828125,
+        "screen": [
+          659.9999999773944,
+          270.0000000028257
+        ]
+      },
+      "riderPanDeltaMetres": 0.0005180337408549679,
+      "pageErrors": []
+    },
+    "touch": {
+      "bootMs": 4785,
+      "medianMs": 16.699999999999818,
+      "p95Ms": 16.799999999999272,
+      "fallbackMedianMs": 16.69999999999709,
+      "fallbackP95Ms": 16.799999999999272,
+      "exactSuppression": true,
+      "retainedNeighbors": [
+        {
+          "id": "NL.IMBAG.Pand.0363100012169627",
+          "installed": 1,
+          "hidden": false,
+          "pyramidHidden": false
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012169699",
+          "installed": 1,
+          "hidden": false,
+          "pyramidHidden": false
+        }
+      ],
+      "pick": {
+        "id": "NL.IMBAG.Pand.0363100012185424",
+        "landmarkId": "",
+        "footprintType": "Polygon",
+        "height": 19.84423828125,
+        "screen": [
+          165,
+          272
+        ]
+      },
+      "riderPanDeltaMetres": 0.00037945647399714163,
+      "pageErrors": []
+    }
+  },
+  "failuresPreserved": [
+    "Initial10vertex tuit truncation and crown-glass cornice occlusion.",
+    "Failed Kerk roof spike from centroid-nearest fringe plane transfer and visibility-offset height extrapolation.",
+    "Courtyard ground363 was excluded from building roof ownership.",
+    "Original failed game frames/raw generator/report retained; overwritten original gallery PNG disclosed, roof condition replay explicitly labeled."
+  ],
+  "limits": [
+    "Unobserved garden coverage10.349m² remains uncapped; includes original6.239m² gap.",
+    "Rear windows not independently researched; conservative blank rear source massing.",
+    "Facade dimensions, solar module count and Archivo Black sign font are approximate.",
+    "Touch is iPhone13 input/viewport emulation onM4Pro, not physical phone.",
+    "Cold game boots4.785–5.929s and initialization52–196ms long tasks remain; steady-frame parity does not establish startup improvement."
+  ],
+  "feedback": {
+    "lastSuccessfulPull": "2026-10-08T22:36:00.424222+00:00",
+    "open": 0,
+    "inProgress": 1,
+    "actionableOwn": 0,
+    "otherClaim": "Melkweg26b15ccf-5dd2-46e9-abf3-a103dc2ab5d5"
+  },
+  "hostedVerification": {
+    "publicModelCommit": "417684907ec5c961d09c1aeb46c5efe05c00673c",
+    "firebaseRun": "37891331087",
+    "verifiedAtUTC": "2026-10-09T06:08:52.188284+00:00",
+    "models": 35,
+    "allAssetHashesExact": true,
+    "manualDesktopTouchLoaded": 35,
+    "evidenceSourceCommit": "14f0cba144b311e1c961cb4997a262527873bc22",
+    "evidenceSourcePack": "experiments/canal-belt-continuation-20261007/hosted35-20261009"
+  }
+}
