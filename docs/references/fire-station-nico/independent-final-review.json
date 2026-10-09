@@ -1,0 +1,72 @@
+{
+  "modelId": "fire-station-nico",
+  "reviewedOn": "2026-10-09",
+  "reviewer": "independent nico_osdorp_review",
+  "stage": "final corrected compressed CPU source comparison",
+  "state": "cpu-source-visual-pass-runtime-pending",
+  "assetSha256": "cc300998d8e778654bbc44dc4dcad2429434d74989d3e803e3388a160efff2cc",
+  "inspectedImages": [
+    "artifacts/landmark-offline-preview/fire-station-nico-cpu-opposite.png",
+    "artifacts/landmark-offline-preview/fire-station-nico-cpu-front.png",
+    "../map-recall2-source-data/models/fire-station-nico/raw/facade-2022.jpg",
+    "../map-recall2-source-data/models/fire-station-nico/raw/current-roof-photo.jpg"
+  ],
+  "findings": [],
+  "supportedDecisions": [
+    "Corrected CPU opposite is actual northwest principal front and matches tall white upper panel beneath six broad upper window groups.",
+    "Upper-left ribbon with upper-right narrow verticals and lower-left verticals with lower-right broad glazing preserve photographed asymmetric facade rhythm.",
+    "Nine white apparatus bays and source-supported red heavy sans BRANDWEER fascia remain visible and subordinate to the building.",
+    "Stepped flat-roof masonry mass and concave open frontage are retained; equipment remains separate rather than setting whole-building height.",
+    "CPU front now has bounded rear openings, resolving previous blank multi-storey rear regression without claiming photographed exact rear counts."
+  ],
+  "priorFailedEvidence": "docs/references/fire-station-nico/independent-source-review.json; failed-frontage-cpu.png and failed-blank-rear-cpu.png retained",
+  "limitations": [
+    "CPU isolated mesh rendering cannot establish geographic placement, exact suppression, retained neighbors, POI route/pin/card behavior or gameplay performance.",
+    "Palette and low-angle roof fascia/soffit visibility require actual gallery and live-game images.",
+    "Rear opening count remains bounded approximation; no clear complete rear source elevation is available.",
+    "2025 renovation scaffolding obscures right wing and final roof equipment.",
+    "Sign approximation is Arial Bold rather than a confirmed exact typeface."
+  ],
+  "pending": [
+    "Root performance review"
+  ],
+  "runtimeVisualReview": {
+    "reviewedOn": "2026-10-09",
+    "assetSha256": "f9dbc9b6d4d2ace3af2a2e9579214eddcc1618706f2400c7d516069112f9b8e8",
+    "bytes": 396984,
+    "state": "gallery-live-visual-pass",
+    "images": [
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-nico/gallery.png",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-nico/gallery-angle-0.png",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-nico/gallery-angle-1.png",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-nico/gallery-angle-2.png",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-nico/gallery-angle-3.png",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-nico/live-front.png",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-nico/live-rear.png",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-nico/neutral-front.png",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-nico/disabled-fallback.png",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-nico/failed-load-fallback.png"
+    ],
+    "findings": [
+      "Gallery and neutral live views retain source-derived main silhouette, exposed opening rhythm and distinct source material families. Gold selected-state rendering was separated from neutral material review.",
+      "Both live camera sides show the replacement and surrounding retained buildings; fallback images show ordinary building restored when disabled or unavailable.",
+      "Route destination marker and useful sourced card are visible; placement and physical-card receipts corroborate native scale1, exact source IDs, drawn neighbors and actual pointer selection.",
+      "Pale full-height upper panel beneath six groups, asymmetric window tiers and nine white apparatus doors remain visible. Grey-brown masonry and red BRANDWEER are supported by source photos.",
+      "No invented Nico-name lettering observed on building geometry; Nico appears in gallery/map/card labels.",
+      "Restored rear opening treatment is present in gallery and live rear; prior failure remains preserved."
+    ],
+    "requiredCorrections": [],
+    "limitations": [
+      "Rear exact opening counts remain source-uncertain as documented.",
+      "These screenshots cannot independently establish performance; root timing review is pending."
+    ],
+    "receipts": [
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-nico/received-asset-gallery.json",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-nico/received-asset-native.json",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-nico/placement-proof.json",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-nico/physical-card-proof.json",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-nico/disabled-fallback-proof.json",
+      "artifacts/firestations-review/final-nico-osdorp/fire-station-nico/failed-load-fallback-proof.json"
+    ]
+  }
+}

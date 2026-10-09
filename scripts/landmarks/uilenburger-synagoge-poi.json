@@ -1,0 +1,12 @@
+{
+  "modelId": "uilenburger-synagoge",
+  "landmarkId": "extract_landmarks_452804039",
+  "name": "Uilenburger Synagoge",
+  "description": "Built in 1766 for Amsterdam’s Ashkenazi Jewish community, the Uilenburgersjoel has a three-aisled synagogue hall above a lower room originally used for ritual slaughter. Its broad bell-shaped front gable faces a forecourt behind a street wall. The restored building now hosts Jewish cultural and social gatherings, concerts and other events.",
+  "sourceUrl": "https://www.uilenburgersjoel.nl/the-uilenburger-synagogue/",
+  "additionalSources": [
+    "https://monumentenregister.cultureelerfgoed.nl/monumenten/5798",
+    "https://www.uilenburgersjoel.nl/wp-content/uploads/2024/03/01.Uilenburgersjoel-informatie-en-catering.pdf"
+  ],
+  "integrationNote": "Reuse genuine existing extract_landmarks_452804039; preserve existing researched facts. No alias destination. Test physical pointer selection and actual route finish. Existing destination coordinates are not survey evidence."
+}

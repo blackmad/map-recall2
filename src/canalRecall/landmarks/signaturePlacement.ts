@@ -88,9 +88,9 @@ export interface SignatureModelSpec {
   readonly landmarkId: string;
   /** Other cards belonging to the same architectural complex. */
   readonly relatedLandmarkIds?: readonly string[];
-  /** Genuine independent venues hosted by this shared mesh. */
+  /** Genuine separate venues sharing this mesh; remaining related identities are facade aliases. */
   readonly destinationLandmarkIds?: readonly string[];
-  /** Keep graphics and their support positions exact while compressing ordinary geometry. */
+  /** Export precision for closely spaced printed graphics on large native assets. */
   readonly preservePositionPrecision?: boolean;
   /** Runtime GLB, relative to the Canal Recall page. */
   readonly modelUrl: string;

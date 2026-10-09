@@ -97,7 +97,7 @@
       "dateSource": "asset-update"
     },
     "beest-het-lab": {
-      "updatedAt": "2026-10-06T10:41:24.593Z",
+      "updatedAt": "2026-10-06T16:07:44.913Z",
       "version": "ec32672c79476dd7",
       "dateSource": "asset-update"
     },
@@ -107,12 +107,12 @@
       "dateSource": "git-history"
     },
     "beta-boulders": {
-      "updatedAt": "2026-10-06T06:24:28.029Z",
+      "updatedAt": "2026-10-06T10:56:06.881Z",
       "version": "511d00d50a24b288",
       "dateSource": "asset-update"
     },
     "blauwe-theehuis": {
-      "updatedAt": "2026-10-06T10:41:24.578Z",
+      "updatedAt": "2026-10-06T16:07:44.941Z",
       "version": "88d7c482fb829252",
       "dateSource": "asset-update"
     },
@@ -306,6 +306,71 @@
       "version": "dcb8aed0db97ae12",
       "dateSource": "git-history"
     },
+    "fire-station-anton": {
+      "updatedAt": "2026-10-09T10:58:03.717Z",
+      "version": "ba76d5dc361a9725",
+      "dateSource": "asset-update"
+    },
+    "fire-station-dirk": {
+      "updatedAt": "2026-10-09T06:45:37.558Z",
+      "version": "cf63ed7a452b9c05",
+      "dateSource": "asset-update"
+    },
+    "fire-station-driemond": {
+      "updatedAt": "2026-10-09T09:49:32.422Z",
+      "version": "d6470dc788512bc5",
+      "dateSource": "asset-update"
+    },
+    "fire-station-hendrik": {
+      "updatedAt": "2026-10-09T06:42:54.503Z",
+      "version": "a28a910251f361f8",
+      "dateSource": "asset-update"
+    },
+    "fire-station-ijsbrand": {
+      "updatedAt": "2026-10-09T10:02:42.530Z",
+      "version": "62db72acfe611233",
+      "dateSource": "asset-update"
+    },
+    "fire-station-nico": {
+      "updatedAt": "2026-10-09T09:11:20.743Z",
+      "version": "f9dbc9b6d4d2ace3",
+      "dateSource": "asset-update"
+    },
+    "fire-station-osdorp": {
+      "updatedAt": "2026-10-09T09:33:40.316Z",
+      "version": "9edad63f86b9243d",
+      "dateSource": "asset-update"
+    },
+    "fire-station-pieter": {
+      "updatedAt": "2026-10-09T10:02:42.555Z",
+      "version": "b5e22ca8fc13de12",
+      "dateSource": "asset-update"
+    },
+    "fire-station-teunis": {
+      "updatedAt": "2026-10-09T09:35:03.139Z",
+      "version": "78a5f49bd115750d",
+      "dateSource": "asset-update"
+    },
+    "fire-station-victor": {
+      "updatedAt": "2026-10-09T09:56:01.360Z",
+      "version": "93fb54f39ecc0262",
+      "dateSource": "asset-update"
+    },
+    "fire-station-weesp": {
+      "updatedAt": "2026-10-09T10:07:43.239Z",
+      "version": "ae5e8066de6020f9",
+      "dateSource": "asset-update"
+    },
+    "fire-station-willem": {
+      "updatedAt": "2026-10-09T10:05:57.194Z",
+      "version": "e694632ea4eb905c",
+      "dateSource": "asset-update"
+    },
+    "fire-station-zebra": {
+      "updatedAt": "2026-10-09T09:49:32.398Z",
+      "version": "7aa607aea03ace00",
+      "dateSource": "asset-update"
+    },
     "foam": {
       "updatedAt": "2026-10-04T02:25:47+02:00",
       "version": "1faf16397ccbe23b",
@@ -322,7 +387,7 @@
       "dateSource": "git-history"
     },
     "groot-melkhuis": {
-      "updatedAt": "2026-10-06T10:41:24.587Z",
+      "updatedAt": "2026-10-06T16:07:44.970Z",
       "version": "236cf1e655704a19",
       "dateSource": "asset-update"
     },
@@ -467,7 +532,7 @@
       "dateSource": "git-history"
     },
     "jeruzalemkerk": {
-      "updatedAt": "2026-10-06T11:39:49.126Z",
+      "updatedAt": "2026-10-06T16:07:44.999Z",
       "version": "202fbee82e35d0c0",
       "dateSource": "asset-update"
     },
@@ -502,7 +567,7 @@
       "dateSource": "git-history"
     },
     "kinderkookkafe": {
-      "updatedAt": "2026-10-06T06:24:27.978Z",
+      "updatedAt": "2026-10-06T10:56:06.897Z",
       "version": "2a100f055a7ab05f",
       "dateSource": "asset-update"
     },
@@ -512,7 +577,7 @@
       "dateSource": "git-history"
     },
     "klimmuur-centraal": {
-      "updatedAt": "2026-10-06T07:57:51.485Z",
+      "updatedAt": "2026-10-06T10:56:06.914Z",
       "version": "f8954acce2d6adc6",
       "dateSource": "asset-update"
     },
@@ -557,7 +622,7 @@
       "dateSource": "git-history"
     },
     "midwest": {
-      "updatedAt": "2026-10-06T11:39:49.126Z",
+      "updatedAt": "2026-10-06T16:07:45.085Z",
       "version": "0cf4c0abc070d609",
       "dateSource": "asset-update"
     },
@@ -582,7 +647,7 @@
       "dateSource": "git-history"
     },
     "mountain-network": {
-      "updatedAt": "2026-10-06T07:08:41.417Z",
+      "updatedAt": "2026-10-06T10:56:06.948Z",
       "version": "e816e9aece23222c",
       "dateSource": "asset-update"
     },
@@ -612,7 +677,7 @@
       "dateSource": "git-history"
     },
     "naco-house": {
-      "updatedAt": "2026-10-06T11:39:49.126Z",
+      "updatedAt": "2026-10-06T16:07:45.142Z",
       "version": "df4445c3f6b327bb",
       "dateSource": "asset-update"
     },
@@ -632,7 +697,7 @@
       "dateSource": "asset-update"
     },
     "ndsm-warehouse-complex": {
-      "updatedAt": "2026-10-06T10:03:55.100Z",
+      "updatedAt": "2026-10-06T10:56:06.968Z",
       "version": "ebf02ab7f8d789da",
       "dateSource": "asset-update"
     },
@@ -652,7 +717,7 @@
       "dateSource": "git-history"
     },
     "nikolaas-myrakerk": {
-      "updatedAt": "2026-10-06T11:39:49.126Z",
+      "updatedAt": "2026-10-06T16:07:45.169Z",
       "version": "c1750d621307d40f",
       "dateSource": "asset-update"
     },
@@ -782,7 +847,7 @@
       "dateSource": "asset-update"
     },
     "rem-eiland": {
-      "updatedAt": "2026-10-06T08:54:22.181Z",
+      "updatedAt": "2026-10-06T10:56:06.831Z",
       "version": "c1d915bb11c84795",
       "dateSource": "asset-update"
     },
@@ -797,9 +862,9 @@
       "dateSource": "git-history"
     },
     "rialto": {
-      "updatedAt": "2026-10-04T00:35:10+02:00",
+      "updatedAt": "2026-10-06T10:56:06.847Z",
       "version": "be9d5e860f1ae8b0",
-      "dateSource": "git-history"
+      "dateSource": "asset-update"
     },
     "rijksmuseum": {
       "updatedAt": "2026-10-04T09:03:59+02:00",
@@ -927,7 +992,7 @@
       "dateSource": "git-history"
     },
     "valley": {
-      "updatedAt": "2026-10-06T09:01:19.850Z",
+      "updatedAt": "2026-10-06T10:56:06.987Z",
       "version": "e00596e88da882b0",
       "dateSource": "asset-update"
     },

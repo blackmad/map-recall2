@@ -1,0 +1,20 @@
+{
+  "triangles": 10796,
+  "bounds": {
+    "min": [
+      -32.36106872558594,
+      -1.4495849143258965e-7,
+      -35.39617156982422
+    ],
+    "max": [
+      13.79544734954834,
+      17.340499877929688,
+      22.945180892944336
+    ]
+  },
+  "roofParts": 13,
+  "downwardRoofTriangles": 0,
+  "glassFaces": 75,
+  "fractionalFirstHitProbes": 600,
+  "nonFrameOcclusions": []
+}

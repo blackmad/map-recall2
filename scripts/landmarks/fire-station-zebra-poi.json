@@ -1,0 +1,24 @@
+{
+  "id": "n2848174313",
+  "name": "Kazerne Zebra",
+  "type": "fire station",
+  "cityId": "amsterdam",
+  "center": [
+    52.39614497764802,
+    4.954761362465582
+  ],
+  "website": "https://www.brandweer.nl/kazerne/amsterdam-zebra/",
+  "description": "Kazerne Zebra opened on IJdoornlaan in 1973 as Amsterdam-Noord grew. Its brick station has three red vehicle doors, ribbon windows and a separate tall hose tower.",
+  "funFact": "The Z came from the old fire post on Zamenhofstraat. The service chose Zebra from the English telephone alphabet because Zaandam could cause confusion in Amsterdam-Noord and Zulu was also unsuitable. The former Zamenhofstraat post now houses Noordje\u2019s art and language projects for young people.",
+  "sources": [
+    {
+      "title": "Official station and address",
+      "url": "https://www.brandweer.nl/kazerne/amsterdam-zebra/"
+    },
+    {
+      "title": "Brandweer Amsterdam-Amstelland: 150 years, station history",
+      "url": "https://www.brandweer.nl/wp-content/uploads/2024/03/SITRAP-150-jaar-BAA.pdf"
+    }
+  ],
+  "sourceIdentity": "Genuine OSM node2848174313. Pin is the street-facing southwest personnel entrance approach; exact route/pin/card integration pending coordinator."
+}

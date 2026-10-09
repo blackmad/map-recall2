@@ -1,0 +1,3 @@
+import fs from 'node:fs';import {perspectiveCrop} from '../street-appearance/perspective';
+const root='../map-recall2-source-data/models/fire-station-victor',out=root+'/processed';fs.mkdirSync(out,{recursive:true});
+for(const p of JSON.parse(fs.readFileSync(root+'/raw/selected-panoramas.json','utf8'))){const target=[4.92914,52.36045],c=p.geometry.coordinates,heading=(Math.atan2((target[0]-c[0])*Math.cos(c[1]*Math.PI/180),target[1]-c[1])*180/Math.PI+360)%360;const settings={heading,width:1500,height:1100,fov:75,pitch:17};fs.writeFileSync(out+'/'+p.pano_id+'.jpg',perspectiveCrop(fs.readFileSync(root+'/raw/'+p.pano_id+'.jpg'),heading,1500,1100,75,17));fs.writeFileSync(out+'/'+p.pano_id+'.json',JSON.stringify({camera:p,target,settings},null,2));}

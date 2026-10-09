@@ -1,0 +1,655 @@
+{
+  "reviewedOn": "2026-10-05T23:26:16.583Z",
+  "reviewer": "independent-artis-roof-winding-review",
+  "status": "failure-found-in-artis-gate-helper-branch; Micropia-roof-winding-passes",
+  "scope": "Read-only roof geometry review. Only this report written; no builders/assets/runtime registration changed.",
+  "builderPath": "scripts/landmarks/artis-entry-builders.ts",
+  "builderSha256": "e9cb37858347a4c56aa0ad4cffb01f0ebc97acdb75449d9f0c60869c0fef78e1",
+  "method": "Meshopt-decoded NodeIO POSITION and indices with world matrices; calculate cross(B-A,C-A), normalize and classify Y. Capture actual builder roof geometries independently through add callback. Separate roof slopes from horizontal slate box caps and vertical ribs.",
+  "finding": "Both Micropia pavilion hip roofs have upward winding in the exact isolated draft and current builder. Current ARTIS gate builder first roof (positive X) has six downward faces; its installed compressed GLB has four valid downward sloped faces after near-square ridge collapse. Negative X kiosk has six upward faces. Axis exchange when d>w reflects orientation, masking the helper defect in Micropia.",
+  "cause": "Original tri(p0,p1,r) ordering points downward before the turn branch. pt exchanges X/Z when turn=true, changing determinant sign and producing upward winding. Roof nearly-square width/depth branch controls failure.",
+  "boundedRecommendation": {
+    "requiredFor": "ARTIS positive-X kiosk and future non-turn callers",
+    "operation": "Reverse second/third triangle vertices only where geometric normal Y is negative before computing normals; alternatively emit original ordering when turn=true and reversed ordering when turn=false.",
+    "doNot": "Globally reverse Micropia triangles or change roof vertices, eaves/ridge heights, footprint, model scale, suppression, materials or native placement.",
+    "expectedResult": "All nondegenerate sloped roof faces upward, identical positions/bounds/silhouette. Re-export affected asset under coordinator ownership and rerun winding measurement."
+  },
+  "photosInspected": [
+    {
+      "path": "artifacts/landmarks/micropia-ledenlokalen/references/signage-leden-front.jpg",
+      "sha256": "46d7d1417e3de6526893567d9f86b7005687fbab8fbb0b06c2746d173d636dfa",
+      "observation": "Oblique street photo clearly shows low hipped pavilion roof with end slope, ridge and cornice; separate adjacent museum retained."
+    },
+    {
+      "path": "artifacts/landmarks/micropia-ledenlokalen/references/signage-leden-more.jpg",
+      "sha256": "fbd33668f8cb1c637a50f67662d662109b40fe7c4e7db60565446fff94ab164e",
+      "observation": "Garden short-end photo shows shallow roof above cornice and raised central roof window; image does not support a roof-scope or height redesign."
+    }
+  ],
+  "assets": [
+    {
+      "path": "artifacts/landmark-signage-drafts/micropia-ledenlokalen.glb",
+      "sha256": "102d54e33d08e49895bc620ac6315713d02a506f6583c01bbe24ec9b5eb01574",
+      "bytes": 125244,
+      "triangles": 9704,
+      "bounds": {
+        "min": [
+          -40.046016693115234,
+          -0.0008673980987179419,
+          -18.843019806673308
+        ],
+        "max": [
+          38.51071548461914,
+          14.450867016628989,
+          12.306845032503386
+        ]
+      },
+      "slopedRoofFaceFilter": {
+        "material": "slate",
+        "minVertexYGreaterThan": 12,
+        "absoluteNormalYBetween": [
+          0.00001,
+          0.99999
+        ]
+      },
+      "slopedRoofFaces": {
+        "upward": 12,
+        "downward": 0,
+        "vertical": 0,
+        "degenerate": 0,
+        "surfaceAreaSquareMetres": 530.7726694637187,
+        "minNormalY": 0.9360040456594237,
+        "maxNormalY": 0.9361151560909854
+      },
+      "roofGroups": {
+        "negativeXRoof": {
+          "upward": 6,
+          "downward": 0,
+          "vertical": 0,
+          "degenerate": 0,
+          "surfaceAreaSquareMetres": 264.8700731445567,
+          "minNormalY": 0.9360040456594237,
+          "maxNormalY": 0.9361151560909854
+        },
+        "positiveXRoof": {
+          "upward": 6,
+          "downward": 0,
+          "vertical": 0,
+          "degenerate": 0,
+          "surfaceAreaSquareMetres": 265.90259631916194,
+          "minNormalY": 0.9360040456594237,
+          "maxNormalY": 0.9361151560909854
+        }
+      },
+      "storedSlopedRoofNormalYRange": [
+        0.9354228339487899,
+        0.9354228339487899
+      ],
+      "horizontalSlateFaces": {
+        "upward": 326,
+        "downward": 326,
+        "vertical": 0,
+        "degenerate": 0,
+        "surfaceAreaSquareMetres": 1084.0014820624572,
+        "minNormalY": -1,
+        "maxNormalY": 1
+      },
+      "otherSlateFaces": {
+        "upward": 0,
+        "downward": 0,
+        "vertical": 1304,
+        "degenerate": 0,
+        "surfaceAreaSquareMetres": 176.8447447551125,
+        "minNormalY": 0,
+        "maxNormalY": 0
+      },
+      "materials": [
+        {
+          "name": "slate",
+          "doubleSided": true
+        }
+      ]
+    },
+    {
+      "path": "public/canal-drive/models/artis-entrance.glb",
+      "sha256": "a027602c839ce97140378ed914c701a8fd24f8e67c78eca8e8aaac3b2dbbda9c",
+      "bytes": 33996,
+      "triangles": 1882,
+      "bounds": {
+        "min": [
+          -13.731766700744629,
+          -0.00036277136658835474,
+          -1.6694304625061094
+        ],
+        "max": [
+          13.659893989562988,
+          5.550362866734019,
+          2.0789812485244807
+        ]
+      },
+      "slopedRoofFaceFilter": {
+        "material": "slate",
+        "minVertexYGreaterThan": 4.3,
+        "absoluteNormalYBetween": [
+          0.00001,
+          0.99999
+        ]
+      },
+      "slopedRoofFaces": {
+        "upward": 6,
+        "downward": 4,
+        "vertical": 0,
+        "degenerate": 0,
+        "surfaceAreaSquareMetres": 22.56545462882697,
+        "minNormalY": -0.9648258145230281,
+        "maxNormalY": 0.9646733614786707
+      },
+      "roofGroups": {
+        "positiveXRoof": {
+          "upward": 0,
+          "downward": 4,
+          "vertical": 0,
+          "degenerate": 0,
+          "surfaceAreaSquareMetres": 11.279882213905495,
+          "minNormalY": -0.9648258145230281,
+          "maxNormalY": -0.9647412383148507
+        },
+        "negativeXRoof": {
+          "upward": 6,
+          "downward": 0,
+          "vertical": 0,
+          "degenerate": 0,
+          "surfaceAreaSquareMetres": 11.285572414921477,
+          "minNormalY": 0.9646052919863151,
+          "maxNormalY": 0.9646733614786707
+        }
+      },
+      "storedSlopedRoofNormalYRange": [
+        -0.9647816400646992,
+        0.9647816400646992
+      ],
+      "horizontalSlateFaces": {
+        "upward": 0,
+        "downward": 0,
+        "vertical": 0,
+        "degenerate": 0,
+        "surfaceAreaSquareMetres": 0,
+        "minNormalY": 1,
+        "maxNormalY": -1
+      },
+      "otherSlateFaces": {
+        "upward": 0,
+        "downward": 0,
+        "vertical": 0,
+        "degenerate": 2,
+        "surfaceAreaSquareMetres": 0,
+        "minNormalY": 1,
+        "maxNormalY": -1
+      },
+      "materials": [
+        {
+          "name": "slate",
+          "doubleSided": true
+        }
+      ],
+      "compressionNote": "Positive X roof is nearly square. Builder ridge is near zero; mesh compression collapses its two extremely thin ridge triangles. Four valid slope triangles remain, all downward. Do not interpret a 4 versus 6 count as separate roof scope."
+    }
+  ],
+  "builder": [
+    {
+      "id": "micropia-ledenlokalen",
+      "roofs": [
+        {
+          "bounds": {
+            "min": [
+              -39.816017150878906,
+              12.100000381469727,
+              -8.488773345947266
+            ],
+            "max": [
+              -27.316015243530273,
+              14.449999809265137,
+              11.341865539550781
+            ]
+          },
+          "upward": 6,
+          "downward": 0,
+          "vertical": 0,
+          "degenerate": 0,
+          "surfaceAreaSquareMetres": 264.82631300767525,
+          "minNormalY": 0.9360211132338491,
+          "maxNormalY": 0.936021148615843
+        },
+        {
+          "bounds": {
+            "min": [
+              25.780715942382812,
+              12.100000381469727,
+              -7.624518871307373
+            ],
+            "max": [
+              38.28071594238281,
+              14.449999809265137,
+              12.28813648223877
+            ]
+          },
+          "upward": 6,
+          "downward": 0,
+          "vertical": 0,
+          "degenerate": 0,
+          "surfaceAreaSquareMetres": 265.92155730755803,
+          "minNormalY": 0.9360211088110977,
+          "maxNormalY": 0.9360211132338492
+        }
+      ]
+    },
+    {
+      "id": "artis-entrance",
+      "roofs": [
+        {
+          "bounds": {
+            "min": [
+              6.986510753631592,
+              4.400000095367432,
+              -1.6240737438201904
+            ],
+            "max": [
+              10.284893989562988,
+              4.849999904632568,
+              1.6740823984146118
+            ]
+          },
+          "upward": 6,
+          "downward": 0,
+          "vertical": 0,
+          "degenerate": 0,
+          "surfaceAreaSquareMetres": 11.276338840760808,
+          "minNormalY": 0.9647264938807407,
+          "maxNormalY": 0.9647265132130477
+        },
+        {
+          "bounds": {
+            "min": [
+              -10.28543758392334,
+              4.400000095367432,
+              -1.6697379350662231
+            ],
+            "max": [
+              -6.992055416107178,
+              4.849999904632568,
+              1.636884331703186
+            ]
+          },
+          "upward": 6,
+          "downward": 0,
+          "vertical": 0,
+          "degenerate": 0,
+          "surfaceAreaSquareMetres": 11.289277907974128,
+          "minNormalY": 0.9646295204011784,
+          "maxNormalY": 0.9646295398118252
+        }
+      ]
+    }
+  ],
+  "interpretation": {
+    "horizontalDownwardFaces": "Bottom faces of slate box caps/ribs are expected; not counted as hip roof failure.",
+    "doubleSided": "Existing exported slate material is double-sided. CPU renderer negates normals toward the eye. Neither appearance in CPU preview nor double-sided rendering proves upward winding.",
+    "nativeScale": "No transform/scale mutations; full decoded bounds and SHA recorded for exact reviewed bytes.",
+    "acceptance": "Geometry-only review. No gallery/live-game/GPU, suppression, neighbors, route/pin/card or performance acceptance inferred. Builder may be edited by independent pavilion worker after this snapshot."
+  },
+  "rechecks": [
+    {
+      "reviewedOn": "2026-10-05T23:28:51.140Z",
+      "status": "corrected-drafts-pass-bounded-roof-winding-and-position-check",
+      "builderSha256": "e9cb37858347a4c56aa0ad4cffb01f0ebc97acdb75449d9f0c60869c0fef78e1",
+      "changeReviewed": "Conditional per-triangle Y-cross-product guard swaps B/C only when upward<0. Original correct Micropia and negative-X gate ordering retained.",
+      "assets": [
+        {
+          "id": "artis-entrance",
+          "before": {
+            "path": "artifacts/landmarks/signage-audit/artis-roofs/before.glb",
+            "sha256": "a027602c839ce97140378ed914c701a8fd24f8e67c78eca8e8aaac3b2dbbda9c",
+            "bytes": 33996,
+            "bounds": {
+              "min": [
+                -13.731766700744629,
+                -0.00036277136658835474,
+                -1.6694304625061094
+              ],
+              "max": [
+                13.659893989562988,
+                5.550362866734019,
+                2.0789812485244807
+              ]
+            },
+            "roofBounds": {
+              "min": [
+                -10.285551874981113,
+                4.400092011609555,
+                -1.6694304625061094
+              ],
+              "max": [
+                10.28598906857292,
+                4.849834540720719,
+                1.6743801628557018
+              ]
+            },
+            "slopedRoofFaces": {
+              "upward": 6,
+              "downward": 4,
+              "degenerate": 0,
+              "minNormalY": -0.9648258145230281,
+              "maxNormalY": 0.9646733614786707
+            },
+            "roofGroups": {
+              "positiveXRoof": {
+                "upward": 0,
+                "downward": 4,
+                "degenerate": 0,
+                "minNormalY": -0.9648258145230281,
+                "maxNormalY": -0.9647412383148507
+              },
+              "negativeXRoof": {
+                "upward": 6,
+                "downward": 0,
+                "degenerate": 0,
+                "minNormalY": 0.9646052919863151,
+                "maxNormalY": 0.9646733614786707
+              }
+            },
+            "storedSlopedRoofNormalYRange": [
+              -0.9647816400646992,
+              0.9647816400646992
+            ]
+          },
+          "after": {
+            "path": "artifacts/landmark-signage-drafts/artis-entrance.glb",
+            "sha256": "8efcdbe0a63fa92f4667f916a455ba486cd07a544132e293203de2c1c264e643",
+            "bytes": 33992,
+            "bounds": {
+              "min": [
+                -13.731766700744629,
+                -0.00036277136658835474,
+                -1.6694304625061094
+              ],
+              "max": [
+                13.659893989562988,
+                5.550362866734019,
+                2.0789812485244807
+              ]
+            },
+            "roofBounds": {
+              "min": [
+                -10.285551874981113,
+                4.400092011609555,
+                -1.6694304625061094
+              ],
+              "max": [
+                10.28598906857292,
+                4.849834540720719,
+                1.6743801628557018
+              ]
+            },
+            "slopedRoofFaces": {
+              "upward": 10,
+              "downward": 0,
+              "degenerate": 0,
+              "minNormalY": 0.9646052919863151,
+              "maxNormalY": 0.9648258145230281
+            },
+            "roofGroups": {
+              "positiveXRoof": {
+                "upward": 4,
+                "downward": 0,
+                "degenerate": 0,
+                "minNormalY": 0.9647412383148507,
+                "maxNormalY": 0.9648258145230281
+              },
+              "negativeXRoof": {
+                "upward": 6,
+                "downward": 0,
+                "degenerate": 0,
+                "minNormalY": 0.9646052919863151,
+                "maxNormalY": 0.9646733614786707
+              }
+            },
+            "storedSlopedRoofNormalYRange": [
+              0.9647816400646992,
+              0.9647816400646992
+            ]
+          },
+          "preservedBeforeMatchesOriginalReview": true,
+          "afterMatchesDraftManifest": true,
+          "roofPositionComparison": {
+            "beforeUniqueVertices": 11,
+            "afterUniqueVertices": 11,
+            "maxBeforeToAfterMetres": 0,
+            "maxAfterToBeforeMetres": 0,
+            "toleranceMetres": 0.01,
+            "passes": true,
+            "interpretation": "Unordered bidirectional nearest vertex comparison permits compression quantization and winding/order changes; identical roof vertex locations expected."
+          },
+          "fullGatePositionComparison": {
+            "beforeUniqueVertices": 1275,
+            "afterUniqueVertices": 1275,
+            "maxBeforeToAfterMetres": 0,
+            "maxAfterToBeforeMetres": 0
+          },
+          "currentBuilderRoofs": [
+            {
+              "bounds": {
+                "min": [
+                  6.986510753631592,
+                  4.400000095367432,
+                  -1.6240737438201904
+                ],
+                "max": [
+                  10.284893989562988,
+                  4.849999904632568,
+                  1.6740823984146118
+                ]
+              },
+              "upward": 6,
+              "downward": 0,
+              "degenerate": 0,
+              "minNormalY": 0.9647264938807407,
+              "maxNormalY": 0.9647265132130477
+            },
+            {
+              "bounds": {
+                "min": [
+                  -10.28543758392334,
+                  4.400000095367432,
+                  -1.6697379350662231
+                ],
+                "max": [
+                  -6.992055416107178,
+                  4.849999904632568,
+                  1.636884331703186
+                ]
+              },
+              "upward": 6,
+              "downward": 0,
+              "degenerate": 0,
+              "minNormalY": 0.9646295204011784,
+              "maxNormalY": 0.9646295398118252
+            }
+          ],
+          "passesUpwardWinding": true,
+          "passesStoredNormals": true
+        },
+        {
+          "id": "micropia-ledenlokalen",
+          "before": {
+            "path": "artifacts/landmarks/signage-audit/micropia-pavilions/before.glb",
+            "sha256": "102d54e33d08e49895bc620ac6315713d02a506f6583c01bbe24ec9b5eb01574",
+            "bytes": 125244,
+            "bounds": {
+              "min": [
+                -40.046016693115234,
+                -0.0008673980987179419,
+                -18.843019806673308
+              ],
+              "max": [
+                38.51071548461914,
+                14.450867016628989,
+                12.306845032503386
+              ]
+            },
+            "roofBounds": {
+              "min": [
+                -39.815862993079755,
+                12.10138132876682,
+                -8.489699456639862
+              ],
+              "max": [
+                38.28056178458366,
+                14.450867016628989,
+                12.28766555750043
+              ]
+            },
+            "slopedRoofFaces": {
+              "upward": 12,
+              "downward": 0,
+              "degenerate": 0,
+              "minNormalY": 0.9360040456594237,
+              "maxNormalY": 0.9361151560909854
+            },
+            "roofGroups": {
+              "negativeXRoof": {
+                "upward": 6,
+                "downward": 0,
+                "degenerate": 0,
+                "minNormalY": 0.9360040456594237,
+                "maxNormalY": 0.9361151560909854
+              },
+              "positiveXRoof": {
+                "upward": 6,
+                "downward": 0,
+                "degenerate": 0,
+                "minNormalY": 0.9360040456594237,
+                "maxNormalY": 0.9361151560909854
+              }
+            },
+            "storedSlopedRoofNormalYRange": [
+              0.9354228339487899,
+              0.9354228339487899
+            ]
+          },
+          "after": {
+            "path": "artifacts/landmark-signage-drafts/micropia-ledenlokalen.glb",
+            "sha256": "c5d87fe14536f3b5c58dcbaeab258bf12b6d27b853ab9e105c66e227eee73008",
+            "bytes": 141576,
+            "bounds": {
+              "min": [
+                -39.96422576904297,
+                0.00022687692246492475,
+                -18.841670178405153
+              ],
+              "max": [
+                38.424560546875,
+                14.449772741607806,
+                12.729630612365115
+              ]
+            },
+            "roofBounds": {
+              "min": [
+                -39.815902616127325,
+                12.100525384137441,
+                -8.486561026866994
+              ],
+              "max": [
+                38.28102201179534,
+                14.449772741607806,
+                12.28944577145417
+              ]
+            },
+            "slopedRoofFaces": {
+              "upward": 12,
+              "downward": 0,
+              "degenerate": 0,
+              "minNormalY": 0.9360343062995007,
+              "maxNormalY": 0.9360564902818956
+            },
+            "roofGroups": {
+              "negativeXRoof": {
+                "upward": 6,
+                "downward": 0,
+                "degenerate": 0,
+                "minNormalY": 0.9360343062995008,
+                "maxNormalY": 0.9360564902818955
+              },
+              "positiveXRoof": {
+                "upward": 6,
+                "downward": 0,
+                "degenerate": 0,
+                "minNormalY": 0.9360343062995007,
+                "maxNormalY": 0.9360564902818956
+              }
+            },
+            "storedSlopedRoofNormalYRange": [
+              0.9354228339487899,
+              0.9354228339487899
+            ]
+          },
+          "preservedBeforeMatchesOriginalReview": true,
+          "afterMatchesDraftManifest": true,
+          "roofPositionComparison": {
+            "beforeUniqueVertices": 12,
+            "afterUniqueVertices": 12,
+            "maxBeforeToAfterMetres": 0.004862765826309596,
+            "maxAfterToBeforeMetres": 0.004862765826309596,
+            "toleranceMetres": 0.01,
+            "passes": true,
+            "interpretation": "Unordered bidirectional nearest vertex comparison permits compression quantization and winding/order changes; identical roof vertex locations expected."
+          },
+          "fullGatePositionComparison": null,
+          "currentBuilderRoofs": [
+            {
+              "bounds": {
+                "min": [
+                  -39.816017150878906,
+                  12.100000381469727,
+                  -8.488773345947266
+                ],
+                "max": [
+                  -27.316015243530273,
+                  14.449999809265137,
+                  11.341865539550781
+                ]
+              },
+              "upward": 6,
+              "downward": 0,
+              "degenerate": 0,
+              "minNormalY": 0.9360211132338491,
+              "maxNormalY": 0.936021148615843
+            },
+            {
+              "bounds": {
+                "min": [
+                  25.780715942382812,
+                  12.100000381469727,
+                  -7.624518871307373
+                ],
+                "max": [
+                  38.28071594238281,
+                  14.449999809265137,
+                  12.28813648223877
+                ]
+              },
+              "upward": 6,
+              "downward": 0,
+              "degenerate": 0,
+              "minNormalY": 0.9360211088110977,
+              "maxNormalY": 0.9360211132338492
+            }
+          ],
+          "passesUpwardWinding": true,
+          "passesStoredNormals": true
+        }
+      ],
+      "scope": "Roof winding and roof position comparison only. Original failure measurements and SHA preserved above. No broad native/gallery/live-game/GPU/suppression/neighbors/route/pin/card/performance acceptance."
+    }
+  ],
+  "currentStatus": "bounded-roof-defect-corrected-in-reviewed-isolated-drafts"
+}

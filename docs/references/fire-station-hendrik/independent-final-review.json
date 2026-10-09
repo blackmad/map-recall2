@@ -1,0 +1,30 @@
+{
+  "modelId": "fire-station-hendrik",
+  "reviewedOn": "2026-10-09",
+  "reviewer": "firestation_inventory independent worker",
+  "recordedBy": "root from worker delivered review; worker write failed ENOSPC",
+  "status": "passed-scoped-visual-recognition",
+  "sha256": "a28a910251f361f8010cd852352eb8226cfb3d9add3de7260f367eb9d448925c",
+  "triangles": 10796,
+  "bytes": 143572,
+  "views": [
+    "gallery plus four lower rotations",
+    "neutral-front",
+    "live-front",
+    "live-rear",
+    "disabled fallback",
+    "failed-load fallback"
+  ],
+  "findings": [
+    "Previous floating clerestory panes eliminated; continuous cream/glazed ribbon coherent",
+    "Five red doors and five upper window groups readable",
+    "Sparse southwest openings match current reference",
+    "Tiered right-wing openings, projecting bay and red emblem coherent",
+    "Neighbors retained visually and exact identity proofs agree"
+  ],
+  "limitations": [
+    "Rear plain approximation remains unverified",
+    "Performance review remains root pending"
+  ],
+  "evidencePath": "artifacts/firestations-review/final-hendrik/fire-station-hendrik/"
+}

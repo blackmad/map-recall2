@@ -1,0 +1,71 @@
+{
+  "id": "fire-station-willem",
+  "principalFacade": {
+    "nativeEdge": [
+      [
+        -47.85821417756275,
+        32.189897488119925
+      ],
+      [
+        4.327705020455245,
+        -5.509402386661009
+      ]
+    ],
+    "outwardNormal": [
+      -0.585587,
+      -0.81061
+    ],
+    "frontLocalAngleRadians": 0.6256042816734996,
+    "sourcePhotoVerified": true
+  },
+  "neighbors": [
+    "w279841003",
+    "NL.IMBAG.Pand.0363100012136198",
+    "w1443688220",
+    "NL.IMBAG.Pand.0363100012571499"
+  ],
+  "sourceImages": [
+    "../map-recall2-source-data/models/fire-station-willem/processed/recording_2025-06-20_12-01-53_01387.jpg",
+    "../map-recall2-source-data/models/fire-station-willem/processed/recording_2025-06-20_12-01-53_01377.jpg",
+    "../map-recall2-source-data/models/fire-station-willem/processed/recording_2024-10-02_13-17-06_02037.jpg",
+    "../map-recall2-source-data/models/fire-station-willem/raw/aerial2.png"
+  ],
+  "cameraNative": {
+    "position": [
+      -61,
+      25,
+      0
+    ],
+    "target": [
+      -22,
+      8,
+      16
+    ]
+  },
+  "gallery": [
+    "CorrectnorthwesternRingdijkfront showssevenbaysandcharredpanels; glazing exposed",
+    "Westerntallcurtainwalls/easternredlobbyandrealredsign",
+    "Overheadnativeinwardcourt/lowatrium, equipment notfullextrusions",
+    "OppositerearHQwindowsandsolarfields; adjacentlowwingremain"
+  ],
+  "game": [
+    "Suppressonlyw279842625andBAG0363100012143776afterGLBload",
+    "Lowneighborw279841003/BAG0363100012136198andconstructionneighborw1443688220/BAG0363100012571499preserved",
+    "Genuinen2840294077destination, proposedpublicpin from publicEntrancebeforeeasternredlobby needsroutecheck",
+    "PhysicalclickusefulPOIcardandvisiblemaplabel",
+    "Fallbackdisable/loadfailretainsordinaryshellandroof",
+    "Actualridercameraandperformance"
+  ],
+  "publicEntrance": {
+    "latLon": [
+      52.348947095579625,
+      4.914877307883409
+    ],
+    "native": [
+      -7.711340544030958,
+      -3.597370323955782
+    ],
+    "source": "2024/2025 red lobby entrance and actual northwestern streetfront",
+    "state": "Approximate 4m public apron from red lobby; root needs routenetwork review"
+  }
+}

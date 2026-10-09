@@ -1,0 +1,28 @@
+{
+  "id": "n2743656824",
+  "name": "Brandweerkazerne Hendrik",
+  "center": [
+    52.37250179,
+    4.87559942
+  ],
+  "type": "fire station",
+  "cityId": "amsterdam",
+  "website": "https://www.brandweer.nl/kazerne/amsterdam-hendrik/",
+  "description": "The curved brick station at Rozengracht and Marnixstraat has five red vehicle doors, a swept mansard roof and a long clerestory ribbon.",
+  "funFact": "Hendrik opened at this corner in1985. Its name retains the H of the Huiszittenhuis, the former station at Prinsengracht237. A1685 relief of Saint Victor remembers the mill that once stood here. After major renovation and energy upgrades, the station reopened on6November2025.",
+  "sources": [
+    {
+      "title": "Brandweer operator address",
+      "url": "https://www.brandweer.nl/kazerne/amsterdam-hendrik/"
+    },
+    {
+      "title": "Koninklijke Woudenberg November2025 reopening",
+      "url": "https://www.koninklijkewoudenberg.nl/nieuws/feestelijke-opening-van-de-gerenoveerde-brandweerkazerne-hendrik/"
+    },
+    {
+      "title": "Brandweer Amsterdam-Amstelland150years station name history",
+      "url": "https://www.brandweer.nl/wp-content/uploads/2024/03/SITRAP-150-jaar-BAA.pdf"
+    }
+  ],
+  "sourceIdentity": "Coordinator must replace placeholder with current genuine firestation extract identity; no invented duplicate destination."
+}

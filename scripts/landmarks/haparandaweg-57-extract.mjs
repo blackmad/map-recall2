@@ -1,0 +1,10 @@
+import fs from 'node:fs';import path from 'node:path';import proj4 from 'proj4';
+const pack=process.env.HAPARANDA57_RAW ?? 'artifacts/haparandaweg-57/raw',rd='+proj=sterea +lat_0=52.15616055555555 +lon_0=5.38763888888889 +k=0.9999079 +x_0=155000 +y_0=463000 +ellps=bessel +towgs84=565.4171,50.3319,465.5524,-0.398957,0.343988,-1.8774,4.0725 +units=m +no_defs';
+const survey=JSON.parse(fs.readFileSync(pack+'/3dbag.json')),bag=JSON.parse(fs.readFileSync(pack+'/bag.json')),anchor=[4.87638,52.39500],ground=.551;
+const llToLocal=p=>[(p[0]-anchor[0])*111320*Math.cos(anchor[1]*Math.PI/180),(anchor[1]-p[1])*111320];
+const t=survey.metadata.transform,world=survey.feature.vertices.map(v=>v.map((p,i)=>p*t.scale[i]+t.translate[i])),convert=p=>{const ll=proj4(rd,'EPSG:4326',p.slice(0,2)),xz=llToLocal(ll);return[xz[0],xz[1],p[2]-ground]};
+const geo=survey.feature.CityObjects['NL.IMBAG.Pand.0363100012071094-0'].geometry.find(g=>g.lod==='2.2'),roofs=[];
+for(let i=0;i<geo.boundaries[0].length;i++){const si=geo.semantics.values[0][i];if(geo.semantics.surfaces[si].type==='RoofSurface')roofs.push({sourceSurface:i,semanticIndex:si,rings:geo.boundaries[0][i].map(r=>r.map(j=>convert(world[j])))});}
+const outline=bag.geometry.coordinates.map(r=>r.map(llToLocal));
+fs.writeFileSync(new URL('./haparandaweg-57-footprints.json',import.meta.url),JSON.stringify({id:'haparandaweg-57',anchor,groundNap:ground,coordinateConvention:'X east,Z south,Y relative to0.551mNAP; RD roofvertices converted to same WGS84 local convention as runtime',bagId:'0363100012071094',buildingId:'NL.IMBAG.Pand.0363100012071094',constructionYear:1979,outline,roofs,parent:{geometry:bag.geometry},mustRetain:['NL.IMBAG.Pand.0363100012078289','NL.IMBAG.Pand.0363100012091590','NL.IMBAG.Pand.0363100012238475','NL.IMBAG.Pand.0363100012242823'],heightPolicy:'AHN5 2023 near-flat main top7.20–7.25m over0.551NAP; bounded central monitor8.20–8.27m, never whole-building maximum.'},null,2)+'\n');
+console.log(JSON.stringify({outline:outline[0].map((p,i)=>[i,...p.map(v=>+v.toFixed(2))]),roofs:roofs.map(r=>({i:r.sourceSurface,s:r.semanticIndex,b:r.rings[0].map(p=>p.map(v=>+v.toFixed(2)))}))}));

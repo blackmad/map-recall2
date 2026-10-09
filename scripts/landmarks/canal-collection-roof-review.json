@@ -1,0 +1,287 @@
+{
+  "reviewedOn": "2026-10-06",
+  "scope": "Roof winding only: Amsterdam Pipe Museum text-free draft and deployed Willet-Holthuysen asset; no recognition or live-game acceptance.",
+  "status": "builder-repaired-awaiting-isolated-export-and-independent-render-review",
+  "method": {
+    "glbDecode": "glTF-Transform NodeIO with ALL_EXTENSIONS and meshopt.decoder; normalized accessor getElement values transformed by node.getWorldMatrix",
+    "triangleClassification": "Cross product of POSITION edges in metre-scale Y-up coordinates; nonzero normal Y distinguishes top surfaces from vertical skirts. Roof helper constructs hip tops before separate skirts.",
+    "builderThresholds": {
+      "degenerateCrossLength": 1e-08,
+      "verticalAbsNormalizedY": 1e-06
+    },
+    "quantizationLimit": "Compressed GLBs can collapse or perturb small triangles. Their small upward slivers do not refute the downward orientation of broad hip planes; both raw geometric counts and area-aware totals retained."
+  },
+  "change": {
+    "path": "scripts/landmarks/canal-collection-builders.ts",
+    "beforeSha256": "c003bd14660951a979e443a664be58a597c51f2bd7c9825803920b63ae4cccc0",
+    "afterSha256": "9d3c3b54fe7ddfd08a0b5ec7a94678df799a8f36588447f97d60287e7aab6179",
+    "behavior": "Per-triangle cross-product guard reverses second and third vertices only when a triangulated hip top points downward, before skirt triangles are appended. RecomputeVertexNormals uses corrected winding.",
+    "unchanged": "Native vertex locations, face counts, clipping planes, rises, source outlines, court openings, vertical skirts, all non-roof builder calls, Pipe text removal and all Willet facade/ornament geometry."
+  },
+  "checks": {
+    "allBuilderRoofTopsUpwardAfter": true,
+    "allTriangleVertexSetsPreserved": true,
+    "verticalSkirtsAndDegenerateVertexOrderPreserved": true,
+    "nonRoofBuilderCallsByteIdentical": true,
+    "exportedGlbsUnmodifiedByWorker": true,
+    "gpuBrowserReview": "blocked per coordinator; not performed",
+    "independentReview": "pending coordinator",
+    "galleryLiveGameAcceptance": "pending; CPU geometry audit alone is insufficient"
+  },
+  "models": [
+    {
+      "id": "amsterdam-pipe-museum",
+      "beforeExactGlb": {
+        "path": "artifacts/landmark-signage-drafts/amsterdam-pipe-museum.glb",
+        "sha256": "4129807f96059ab262f993952c20446d7e972d381242c02572850789a1572f41",
+        "slatePrimitiveCounts": [
+          {
+            "triangles": 89,
+            "upwardTop": 1,
+            "downwardTop": 38,
+            "verticalSkirt": 19,
+            "degenerate": 31
+          }
+        ],
+        "areaAware": {
+          "counts": {
+            "downwardTop": 38,
+            "tinyOrDegenerate": 31,
+            "verticalSkirt": 19,
+            "upwardTop": 1
+          },
+          "areaSquareMetres": {
+            "downwardTop": 287.51298591122793,
+            "tinyOrDegenerate": 0.0,
+            "verticalSkirt": 1.7314278149909827,
+            "upwardTop": 0.0037565267913348584
+          },
+          "tinyAreaThresholdSquareMetres": 0.0001,
+          "verticalNormalYThreshold": 0.001
+        }
+      },
+      "beforeBuilderRoofCounts": [
+        {
+          "triangles": 19,
+          "upwardTop": 0,
+          "downwardTop": 9,
+          "verticalSkirt": 0,
+          "degenerate": 10
+        },
+        {
+          "triangles": 43,
+          "upwardTop": 0,
+          "downwardTop": 18,
+          "verticalSkirt": 14,
+          "degenerate": 11
+        },
+        {
+          "triangles": 27,
+          "upwardTop": 0,
+          "downwardTop": 13,
+          "verticalSkirt": 4,
+          "degenerate": 10
+        }
+      ],
+      "afterBuilderRoofCounts": [
+        {
+          "triangles": 19,
+          "upwardTop": 9,
+          "downwardTop": 0,
+          "verticalSkirt": 0,
+          "degenerate": 10
+        },
+        {
+          "triangles": 43,
+          "upwardTop": 18,
+          "downwardTop": 0,
+          "verticalSkirt": 14,
+          "degenerate": 11
+        },
+        {
+          "triangles": 27,
+          "upwardTop": 13,
+          "downwardTop": 0,
+          "verticalSkirt": 4,
+          "degenerate": 10
+        }
+      ],
+      "nonRoofBuilderCallsSha256": "aa9fa3f12f3535c798cc03382f3792cd0427a679076664420bde40f8555f083d",
+      "sourcePartAssertions": [
+        {
+          "source": "scripts/landmarks/canal-collection-footprints.json; canonical private pack files/canal-collection-footprints.json",
+          "part": "building envelope",
+          "assertion": "BAG-derived outline 0363100012169037 has an actual side courtyard notch retained by separately clipped front/middle/rear roof parts.",
+          "confidence": "inherited surveyed scope; clipping preservation verified mathematically",
+          "sourceDates": {
+            "footprint": "2014-02-11",
+            "3DBAGHeight": "2025-09-03"
+          }
+        },
+        {
+          "source": "scripts/landmarks/canal-collection-builders.ts roof()",
+          "part": "existing roof assemblies",
+          "assertion": "Front 13.4m + 2.0m rise, middle 4.1m + 0.2m, rear 9.4m + 2.0m; no new elevations introduced.",
+          "confidence": "exact implementation facts, not independently surveyed roof pitch"
+        }
+      ],
+      "approximationLimits": [
+        "Existing four-plane hipped roof profile, segment splits and eave/rise values are inherited modeling approximations. This audit does not newly validate pitch, photographic silhouette, exact attic geometry or monument assertions.",
+        "Private canonical source pack reused read-only; no new source captures, model exports, bundles, registration or acceptance mutations.",
+        "Pre-existing wall-colored shell caps and degenerate roof triangles were not changed; this bounded winding repair makes no claim about those separate issues."
+      ]
+    },
+    {
+      "id": "willet-holthuysen",
+      "beforeExactGlb": {
+        "path": "public/canal-drive/models/willet-holthuysen.glb",
+        "sha256": "c7f1f08ff67ab766046b28dba623ee87978426e4136010e4756dd891c7d11d89",
+        "slatePrimitiveCounts": [
+          {
+            "triangles": 185,
+            "upwardTop": 2,
+            "downwardTop": 77,
+            "verticalSkirt": 42,
+            "degenerate": 64
+          }
+        ],
+        "areaAware": {
+          "counts": {
+            "downwardTop": 76,
+            "tinyOrDegenerate": 65,
+            "verticalSkirt": 42,
+            "upwardTop": 2
+          },
+          "areaSquareMetres": {
+            "downwardTop": 368.22701846917363,
+            "tinyOrDegenerate": 2.562101887431366e-05,
+            "verticalSkirt": 4.4823312382205085,
+            "upwardTop": 0.0006637356269833972
+          },
+          "tinyAreaThresholdSquareMetres": 0.0001,
+          "verticalNormalYThreshold": 0.001
+        }
+      },
+      "beforeBuilderRoofCounts": [
+        {
+          "triangles": 50,
+          "upwardTop": 0,
+          "downwardTop": 20,
+          "verticalSkirt": 18,
+          "degenerate": 12
+        },
+        {
+          "triangles": 25,
+          "upwardTop": 0,
+          "downwardTop": 11,
+          "verticalSkirt": 2,
+          "degenerate": 12
+        },
+        {
+          "triangles": 48,
+          "upwardTop": 0,
+          "downwardTop": 20,
+          "verticalSkirt": 16,
+          "degenerate": 12
+        },
+        {
+          "triangles": 34,
+          "upwardTop": 0,
+          "downwardTop": 16,
+          "verticalSkirt": 8,
+          "degenerate": 10
+        },
+        {
+          "triangles": 14,
+          "upwardTop": 0,
+          "downwardTop": 6,
+          "verticalSkirt": 0,
+          "degenerate": 8
+        },
+        {
+          "triangles": 14,
+          "upwardTop": 0,
+          "downwardTop": 6,
+          "verticalSkirt": 0,
+          "degenerate": 8
+        }
+      ],
+      "afterBuilderRoofCounts": [
+        {
+          "triangles": 50,
+          "upwardTop": 20,
+          "downwardTop": 0,
+          "verticalSkirt": 18,
+          "degenerate": 12
+        },
+        {
+          "triangles": 25,
+          "upwardTop": 11,
+          "downwardTop": 0,
+          "verticalSkirt": 2,
+          "degenerate": 12
+        },
+        {
+          "triangles": 48,
+          "upwardTop": 20,
+          "downwardTop": 0,
+          "verticalSkirt": 16,
+          "degenerate": 12
+        },
+        {
+          "triangles": 34,
+          "upwardTop": 16,
+          "downwardTop": 0,
+          "verticalSkirt": 8,
+          "degenerate": 10
+        },
+        {
+          "triangles": 14,
+          "upwardTop": 6,
+          "downwardTop": 0,
+          "verticalSkirt": 0,
+          "degenerate": 8
+        },
+        {
+          "triangles": 14,
+          "upwardTop": 6,
+          "downwardTop": 0,
+          "verticalSkirt": 0,
+          "degenerate": 8
+        }
+      ],
+      "nonRoofBuilderCallsSha256": "2737d65b18823f53597221a647e3caa28d1a1eb481f9079cb0965aea160f3491",
+      "sourcePartAssertions": [
+        {
+          "source": "scripts/landmarks/canal-collection-footprints.json; canonical private pack files/canal-collection-footprints.json",
+          "part": "building envelope",
+          "assertion": "BAG-derived outline 0363100012171562 scopes main canal-side block, separate rear projections and open garden; source outline and component clipping retained.",
+          "confidence": "inherited surveyed scope; clipping preservation verified mathematically",
+          "sourceDates": {
+            "footprint": "2014-02-11",
+            "3DBAGHeight": "2025-09-03"
+          }
+        },
+        {
+          "source": "scripts/landmarks/canal-collection-builders.ts roof()",
+          "part": "existing roof assemblies",
+          "assertion": "Main 16.8m + 3.6m rise; rear projections 7.0/7.2m + 0.75m rise; dormers 19.85m + 0.4m rise; no new elevations introduced.",
+          "confidence": "exact implementation facts, not independently surveyed roof pitch"
+        }
+      ],
+      "approximationLimits": [
+        "Existing four-plane hipped roof profile, segment splits and eave/rise values are inherited modeling approximations. This audit does not newly validate pitch, photographic silhouette, exact attic geometry or monument assertions.",
+        "Private canonical source pack reused read-only; no new source captures, model exports, bundles, registration or acceptance mutations.",
+        "Pre-existing wall-colored shell caps and degenerate roof triangles were not changed; this bounded winding repair makes no claim about those separate issues."
+      ]
+    }
+  ],
+  "quantizationFollowup": {
+    "date": "2026-10-06",
+    "failureEvidence": "artifacts/landmarks/signage-audit/canal-collection-roofs/independent-review.json",
+    "finding": "Three downward compressed slivers and one apparent skirt inversion trace to near-degenerate roof top source triangles of area1.25e-7..4.71e-7m2.",
+    "change": "Omit only nominal top triangles with3D area<=1e-6m2 before skirts; preserve real roof planes and vertical skirts.",
+    "thresholdUnits": "One square millimetre; source clipping noise cleanup, not architectural simplification.",
+    "acceptance": "Independent final exact exports: zero valid downward tops; retained vertex positions unchanged, actual skirts/nonroof geometry retained. Original and intermediate failures preserved. Native/source sync still held."
+  }
+}

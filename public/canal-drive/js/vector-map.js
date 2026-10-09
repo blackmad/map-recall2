@@ -907,6 +907,7 @@ class VectorBasemap {
       this.map.addLayer(this._threeBuildings.layer, this.map.getLayer('osm-colored-building-roofs') ? 'osm-colored-building-roofs' : undefined);
       if (this._tileFeatures.length) this._threeBuildings.setFeatures(this._tileFeatures);
     }
+    this._syncHostWallOpenings();
     this._threeBuildings.setVisible(this._facadesActive() && this._buildings3dEnabled);
     this._syncHostWallOpenings();
     // The layer may arrive after the first facade-state pass: re-apply so MapLibre's buildings switch off.

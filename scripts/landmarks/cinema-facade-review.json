@@ -1,0 +1,29 @@
+{
+  "modelIds": [
+    "rialto",
+    "kriterion"
+  ],
+  "reviewedOn": "2026-10-05",
+  "status": "geometry-repaired-browser-game-review-pending",
+  "reportedDefects": {
+    "rialto": "Dark stripe: rear roof side and taller cream facade shared the same plane.",
+    "kriterion": "Lower pane visibility varied because auditorium wall sat in front of window assemblies."
+  },
+  "repairs": {
+    "rialto": "Rear roof stops at back of cream front; no coplanar front surfaces.",
+    "kriterion": "House volume, windows, entrance and existing sign use surveyed oblique street edge."
+  },
+  "evidence": "../../artifacts/cinema-facade-fix/",
+  "checks": [
+    "Exported GLB ray probes: 24 pane triangles and five roof/facade separation rays pass.",
+    "Preserved old GLB fails lower-window regression check.",
+    "Independent front and oblique CPU review accepted with no new visible regressions.",
+    "Shared manual asset and POI contract checks passed.",
+    "TypeScript lint passed."
+  ],
+  "independentReviewer": "cinema_repair_review",
+  "limitations": [
+    "Browser launch failed with Mach bootstrap_check_in Permission denied. GPU gallery and live-game validation remain pending.",
+    "Existing approximate architecture and auditorium roof interruption retained; this repair is not a surveyed full reconstruction."
+  ]
+}

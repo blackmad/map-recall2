@@ -1,0 +1,322 @@
+{
+  "modelId": "micropia-ledenlokalen",
+  "recordedOn": "2026-10-06",
+  "status": "bounded_geometry_repair_not_visual_acceptance",
+  "ownedFiles": [
+    "scripts/landmarks/artis-entry-builders.ts",
+    "scripts/landmarks/micropia-entrance-repair-review.json"
+  ],
+  "plan": "scripts/landmarks/micropia-entrance-repair-plan.json",
+  "sourceInspected": [
+    {
+      "path": "artifacts/landmarks/micropia-ledenlokalen/references/signage-leden-2.jpg",
+      "sha256": "116b417b35db696ee24c8462b05c6cb0ba811cabb270bab566267a6073b3a358",
+      "assertion": "Double-door leaves with narrow side glazing, separate transom below a level header, separate high clerestory; no street-side triangle at the repaired location."
+    },
+    {
+      "path": "artifacts/landmarks/micropia-ledenlokalen/references/signage-leden-front.jpg",
+      "sha256": "46d7d1417e3de6526893567d9f86b7005687fbab8fbb0b06c2746d173d636dfa",
+      "assertion": "Street-facing low hall between taller end pavilions; oblique/tree occlusion limits entrance detail."
+    }
+  ],
+  "geometryChanges": [
+    "Removed the unsupported street-side stone triangle only.",
+    "Replaced two intersecting generic sash groups and one central pier with a distinct entrance, retaining clipped outer window portions.",
+    "Added glazed double-door leaves, narrow sidelights, an unbroken central transom, broad piers, horizontal header and small door handles.",
+    "No lettering added."
+  ],
+  "dimensions": {
+    "authority": "Authored approximate dimensions inferred from photo relationships; not a rectified or surveyed elevation.",
+    "centreX": -0.767649607512962,
+    "openingWidth": 3.7,
+    "combinedDoorWidth": 2.1,
+    "sideLightWidthEach": 0.8,
+    "pierWidthEach": 0.55,
+    "totalOuterWidth": 4.8,
+    "thresholdBottomY": 0.3,
+    "doorGlazingY": [
+      0.7,
+      4.15
+    ],
+    "sideGlazingY": [
+      0.42,
+      4.15
+    ],
+    "transomGlazingY": [
+      4.25,
+      5.55
+    ],
+    "headerY": [
+      5.65,
+      5.9
+    ],
+    "retainedGlobalHeaderY": [
+      5.9,
+      6.4
+    ],
+    "retainedClerestoryY": [
+      6.8,
+      7.8
+    ],
+    "nativeScale": 1,
+    "facadePlaneWarning": "front=12.28813633987958 is the unchanged pavilion contour extremum; actual mapped low-hall perimeter is farther rearward. This correction does not establish a surveyed door wall or location."
+  },
+  "checks": {
+    "method": "Three.js DoubleSide exact builder geometry, runtime-equivalent box bottom-Y convention; first-hit rays, geometry/material/transform SHA-256 multiset comparison. No export or runtime mutation.",
+    "temporaryReproductionScript": "/tmp/check-micropia-entrance.mts",
+    "probeSetup": "Each named target cast from front+12m at horizontal offset 0 or +/-6m. Every low-hall glass pane also sampled at quarter-width/quarter-height away from authored mullions.",
+    "results": {
+      "beforeMeshes": 736,
+      "afterMeshes": 756,
+      "removedBoundedMeshes": 13,
+      "artisGateUnchanged": true,
+      "allOtherExistingMeshesUnchanged": true,
+      "exposedStreetLowPanes": 17,
+      "firstHitProbes": [
+        {
+          "name": "left-door",
+          "offset": 0,
+          "firstHit": "glass",
+          "point": [
+            -1.292649607512962,
+            2,
+            12.048136338985518
+          ]
+        },
+        {
+          "name": "left-door",
+          "offset": -6,
+          "firstHit": "glass",
+          "point": [
+            -1.31264960706593,
+            2,
+            12.048136338985518
+          ]
+        },
+        {
+          "name": "left-door",
+          "offset": 6,
+          "firstHit": "glass",
+          "point": [
+            -1.2726496079599925,
+            2,
+            12.048136338985518
+          ]
+        },
+        {
+          "name": "right-door",
+          "offset": 0,
+          "firstHit": "glass",
+          "point": [
+            -0.24264960751296194,
+            2,
+            12.048136338985518
+          ]
+        },
+        {
+          "name": "right-door",
+          "offset": -6,
+          "firstHit": "glass",
+          "point": [
+            -0.2626496070659309,
+            2,
+            12.048136338985518
+          ]
+        },
+        {
+          "name": "right-door",
+          "offset": 6,
+          "firstHit": "glass",
+          "point": [
+            -0.22264960795999345,
+            2,
+            12.048136338985518
+          ]
+        },
+        {
+          "name": "left-sidelight",
+          "offset": 0,
+          "firstHit": "glass",
+          "point": [
+            -2.217649607512962,
+            2,
+            12.048136338985518
+          ]
+        },
+        {
+          "name": "left-sidelight",
+          "offset": -6,
+          "firstHit": "glass",
+          "point": [
+            -2.237649607065931,
+            2,
+            12.048136338985518
+          ]
+        },
+        {
+          "name": "left-sidelight",
+          "offset": 6,
+          "firstHit": "glass",
+          "point": [
+            -2.1976496079599928,
+            2,
+            12.048136338985518
+          ]
+        },
+        {
+          "name": "right-sidelight",
+          "offset": 0,
+          "firstHit": "glass",
+          "point": [
+            0.682350392487038,
+            2,
+            12.048136338985518
+          ]
+        },
+        {
+          "name": "right-sidelight",
+          "offset": -6,
+          "firstHit": "glass",
+          "point": [
+            0.662350392934069,
+            2,
+            12.048136338985518
+          ]
+        },
+        {
+          "name": "right-sidelight",
+          "offset": 6,
+          "firstHit": "glass",
+          "point": [
+            0.7023503920400065,
+            2,
+            12.048136338985518
+          ]
+        },
+        {
+          "name": "left-transom",
+          "offset": 0,
+          "firstHit": "glass",
+          "point": [
+            -1.267649607512962,
+            5,
+            12.048136338985518
+          ]
+        },
+        {
+          "name": "left-transom",
+          "offset": -6,
+          "firstHit": "glass",
+          "point": [
+            -1.287649607065931,
+            5,
+            12.048136338985518
+          ]
+        },
+        {
+          "name": "left-transom",
+          "offset": 6,
+          "firstHit": "glass",
+          "point": [
+            -1.2476496079599935,
+            5,
+            12.048136338985518
+          ]
+        },
+        {
+          "name": "right-transom",
+          "offset": 0,
+          "firstHit": "glass",
+          "point": [
+            -0.26764960751296196,
+            5,
+            12.048136338985518
+          ]
+        },
+        {
+          "name": "right-transom",
+          "offset": -6,
+          "firstHit": "glass",
+          "point": [
+            -0.2876496070659309,
+            5,
+            12.048136338985518
+          ]
+        },
+        {
+          "name": "right-transom",
+          "offset": 6,
+          "firstHit": "glass",
+          "point": [
+            -0.24764960795999347,
+            5,
+            12.048136338985518
+          ]
+        },
+        {
+          "name": "clerestory",
+          "offset": 0,
+          "firstHit": "glass",
+          "point": [
+            -1.217649607512962,
+            7.3,
+            11.653136337495402
+          ]
+        },
+        {
+          "name": "clerestory",
+          "offset": -6,
+          "firstHit": "glass",
+          "point": [
+            -1.040149606320873,
+            7.3,
+            11.653136337495402
+          ]
+        },
+        {
+          "name": "clerestory",
+          "offset": 6,
+          "firstHit": "glass",
+          "point": [
+            -1.3951496087050517,
+            7.3,
+            11.653136337495402
+          ]
+        }
+      ]
+    },
+    "headerClearance": "Transom top 5.55 m; top frame extends to 5.65 m; local header underside 5.65 m. High clerestory starts 6.8 m separately.",
+    "unchangedScope": "All 13 removed mesh signatures are inside central x=cx +/-6 m, z>=front-0.601 m, y<=7.41 m. Every other old mesh remains byte-identical in geometry, material key and transform. Separate ARTIS gate branch geometry is identical. Footprint, pavilions, roof, exhibit box, conservatory and untouched neighboring assets retain their previous geometry."
+  },
+  "preservedFailures": [
+    {
+      "severity": "unresolved_preexisting_outside_bounded_scope",
+      "observation": "Broader first-hit low-street-pane sampling found an unchanged right end-pavilion window behind brick at x=36.06821624786359, y=2.5450000238418578.",
+      "interpretation": "Do not claim whole-building no-buried-glass acceptance from the repaired hall checks. Pavilion remains unchanged and requires separate investigation."
+    },
+    {
+      "severity": "probe_target_on_authored_mullion",
+      "observation": "Initial clerestory oblique target cx+0.4 landed on its retained frame rather than glass.",
+      "interpretation": "Retained expected mullion; repeated central glass target at cx-0.45 passed all three rays. This is not evidence of buried clerestory."
+    }
+  ],
+  "limitations": [
+    "Exact doorway position and dimensions remain inferred. Central placement clips the two original generic bays asymmetrically; no facade-wide bay-count claim is made.",
+    "Source URLs/rights/photo dates remain unresolved as recorded in the plan. Raw sources are staged but private source sync/commit is still required before publication.",
+    "No exact GLB export, CPU visual comparison, independent review, native gallery, live game, suppression/neighbor retention or GPU performance was run by this worker. Root owns these remaining stages."
+  ],
+  "acceptance": {
+    "geometryImplemented": true,
+    "firstHitRepairedAssemblies": true,
+    "unchangedGeometryOutsideCentralRepair": true,
+    "exportedMeshChecked": false,
+    "cpuVisualComparison": false,
+    "independentReview": false,
+    "nativeGallery": false,
+    "liveGame": false,
+    "neighborRetention": false,
+    "gpuPerformance": false,
+    "privateSourceSynced": false,
+    "fullVisualAcceptance": false
+  }
+}

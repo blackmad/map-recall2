@@ -585,15 +585,6 @@
     "repository": "blackmad/map-recall2-source-data",
     "branch": "source/jan-evertsen-canopy-rollout-20261006",
     "commit": "e8e9fbbd1011d161cf9b992cd4575ae6acbf2b03",
-    "path": "models/kesbeke/",
-    "currentReleaseCommit": "2aa18011ae2c26568f9170517064a6561e075b30",
-    "currentReleasePath": "models/kesbeke/"
-  },
-  "releaseCheckpoint": {
-    "sourceRepository": "blackmad/map-recall2-source-data",
-    "sourceCommit": "2aa18011ae2c26568f9170517064a6561e075b30",
-    "sourcePath": "models/kesbeke/",
-    "userDiagnosticRenderApproval": "2026-10-06; commit/push explicitly authorized",
-    "actualGameplayReview": "pending; prior failure evidence preserved"
+    "path": "models/kesbeke/"
   }
 }
