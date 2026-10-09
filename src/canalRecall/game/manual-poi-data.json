@@ -1943,5 +1943,32 @@
     "description": "The Woonbootmuseum, or Houseboat Museum, is dedicated to the history and culture of living on the water. It lies on the Prinsengracht, on the edge of the Jordaan, aboard the Hendrika Maria, a historic inland vessel from 1914.",
     "funFact": "It is the only museum in the world specifically focused on houseboat living.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Woonbootmuseum"
-  }
+  },
+{
+  "modelId": "sint-olofskapel",
+  "landmarkId": "extract_landmarks_35124042",
+  "name": "Sint Olofskapel",
+  "description": "The Sint Olofskapel, also called the Oudezijds Kapel, is a Gothic-inspired brick chapel between the Zeedijk and the Nieuwebrugsteeg. The first chapel was built around 1440-1450 against a city gate; the present three-aisled building with its asymmetrical plan results from an expansion in 1644. Tall pointed windows light the gables, and the stone portal from 1644 on the Zeedijk carries the motto Spes altera vitae.",
+  "funFact": "The chapel's old wooden bell tower, which received a clockwork in 1543, was lost to a fire in 1820; today the chapel serves as a congress centre of the Barbizon hotel.",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Sint-Olofskapel",
+  "preferDescription": true
+},
+{
+  "modelId": "koningskerk",
+  "landmarkId": "extract_landmarks_879972030",
+  "name": "Koningskerk",
+  "description": "The Koningskerk on the Van 't Hofflaan in Watergraafsmeer was designed by Wouter van de Kuilen and Cornelis Trappenburg and built between 1954 and 1956. A box-like hall with a striking freestanding tower, it is known for the early glass-in-concrete walls by Berend Hendriks, which to some observers give the facade the look of a crossword puzzle.",
+  "funFact": "The church was dedicated on 21 March 1956 as a Reformed church; since 1994 it has been used by the Evangelische Broedergemeente (Moravian Church).",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Koningskerk_(Amsterdam)",
+  "preferDescription": true
+},
+{
+  "modelId": "nassaukerk",
+  "landmarkId": "extract_landmarks_1101340298",
+  "name": "Nassaukerk",
+  "description": "The Nassaukerk at De Wittenkade 111 in the Staatsliedenbuurt is an Amsterdam School church by H.G. Krijgsman of Zeist, who won the 1924 design competition. Built in 1925-1926 for the Gereformeerde Kerk, it has a floor plan in the shape of a Greek cross, large red-brick surfaces and parabolic window and interior forms, under steep roofs around a green clock tower.",
+  "funFact": "The church needed more than 450 foundation piles and was designed to seat 924 worshippers; it opened on 18 June 1926.",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Nassaukerk_(Amsterdam)",
+  "preferDescription": true
+}
 ]

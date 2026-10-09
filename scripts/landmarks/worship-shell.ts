@@ -40,7 +40,17 @@ export function addShell(b: BuildingTools, src: ShellSource, colours: {wall: str
     if (s.type === 'GroundSurface' || colours.skip?.(s, i)) return;
     const g = planarPolygon(s.rings);
     if (!g) return;
-    if (s.type === 'RoofSurface') g.userData.role = 'roof';
+    if (s.type === 'RoofSurface') {
+      g.userData.role = 'roof';
+      // Warped (non-planar) LoD2 roof polygons can triangulate with a downward-facing sliver; roofs always face up.
+      const pos = g.getAttribute('position'), idx = g.getIndex()!;
+      const A = new T.Vector3(), B = new T.Vector3(), C = new T.Vector3();
+      for (let k = 0; k < idx.count; k += 3) {
+        A.fromBufferAttribute(pos, idx.getX(k)); B.fromBufferAttribute(pos, idx.getX(k + 1)); C.fromBufferAttribute(pos, idx.getX(k + 2));
+        if (B.sub(A).cross(C.sub(A)).y < 0) { const t = idx.getX(k + 1); idx.setX(k + 1, idx.getX(k + 2)); idx.setX(k + 2, t); }
+      }
+      g.computeVertexNormals();
+    }
     b.add(g, s.type === 'RoofSurface' ? (colours.roofFor?.(s, i) ?? colours.roof) as never : colours.wall as never);
   });
 }
