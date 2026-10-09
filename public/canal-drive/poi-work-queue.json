@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedOn": "2026-10-08",
+  "updatedOn": "2026-10-09",
   "primaryBuildingInventory": "./landmark-backlog.json",
   "agentMemory": "AGENTS.md (repository root)",
   "completionRequirements": [
@@ -2194,10 +2194,10 @@
       ],
       "evidence": "ordinary-buildings-data/canal-prinsen215-review-20261008.json",
       "handoff": "docs/performance/2026-10-06/canal-belt-continuation-handoff.md",
-      "nextAction": "34 hosted assets verified. Continue full architectural source and native facade/roof ownership work on parent0363100012185424 (Prinsengracht759\u2013769 plusKerkstraat126); next model not authored/accepted. Continuous queue remains active.",
+      "nextAction": "Publish/verify accepted-local hospital35. Fresh Keizersgracht569\u2013575 native author is building from pushed private source37 in isolated checkout; both monument fronts/full architectural loop required. Continuous queue active.",
       "sourceCommit": "9fc691744e03b91f70899896033acdb6cbbd1a18",
       "notes": "Ordinary assets/full architecture review for defining Rokin roof assemblies; no invented POI routes. Existing Nacarat basic inside-footprint click card retained. Both strict500k/three-material budgets pass.",
-      "localModelCount": 34,
+      "localModelCount": 35,
       "hostedVerification": {
         "publicModelCommit": "fe3dbd7b0e9e82e28b4902a2b025f0838f6a5c6b",
         "publicCommit": "025e5df61ef2c82c2e18111c4455bc035858f44c",
@@ -2212,7 +2212,8 @@
       },
       "publicationSourceCommit": "695ec2b222e9ad4eb41add25711dd8e5ae3ebfe5",
       "pendingModels": [
-        "NL.IMBAG.Pand.0363100012185424"
+        "NL.IMBAG.Pand.0363100012185424",
+        "NL.IMBAG.Pand.0363100012176752"
       ],
       "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/native34-resume-20261008",
       "reviewPreparationCommit": "396603d052c1dc892425ff4ed6da0d449144d61f",
@@ -2407,16 +2408,38 @@
       "id": "prinsengracht-hospital-ordinary-treatment",
       "task": "Model the native former hospital parent: Prinsengracht 759\u2013769 and Kerkstraat 126",
       "priority": "high",
-      "status": "source-research-in-progress",
+      "status": "verified-local-publication-pending",
       "buildingIds": [
         "NL.IMBAG.Pand.0363100012185424"
       ],
       "scope": "One physical surveyed parent spans 15 official address units and both street fronts. Use the full architectural loop; preserve native garden reentrants and neighboring buildings. Do not create a curated POI automatically.",
-      "sourceCommit": "8867f24a00b43616b130abaf9ea9863951c25541",
+      "sourceCommit": "2a8102e5dfcb1eddd9f5cd6b0ae4e78fc1d31c22",
       "sourceBranch": "ordinary/source35-20261008",
-      "sourcePack": "experiments/canal-belt-continuation-20261007/next-source35-prinsen767/0363100012185424",
-      "evidence": "../../scripts/ordinary-buildings/prinsen767-research.json",
-      "nextAction": "Map the 17 Prinsengracht axes and Kerkstraat facade volumes to actual frontage chains and adjacent parents. Acquire front-end and aerial views, then build the source-supported native facade and roof assemblies. Preserve the 2025 scaffolding view; compare with leaf-off 2024 and earlier references. No standard approval or model acceptance yet."
+      "sourcePack": "experiments/canal-belt-continuation-20261007/prinsen767-native-review40",
+      "evidence": "ordinary-buildings-data/prinsen767-review-20261009.json",
+      "nextAction": "Publish accepted scoped native parent and verify actual hosted fingerprint/gallery/manual35. Preserve roof-spike failures and unobserved garden/rear details; ordinary model creates no POI route.",
+      "draftAsset": {
+        "sha256": "a680a2ac3c81fe9e4b5018ce088a1154dee3b00178a0fc9148fa0bf6c2d9fa5d",
+        "bytes": 287136,
+        "triangles": 10339,
+        "materials": 3,
+        "textures": 0,
+        "acceptedLocal": true,
+        "hostedVerified": false
+      }
+    },
+    {
+      "id": "keizers575-ordinary-treatment",
+      "task": "Source and model native Keizersgracht575 parent0363100012176752",
+      "priority": "high",
+      "status": "model-draft-in-progress",
+      "buildingIds": [
+        "NL.IMBAG.Pand.0363100012176752"
+      ],
+      "scope": "One official parent includes distinct Venetian569\u2013571 and classical573\u2013575 fronts; one VBO main575/secondary569. Full architecture, no invented POI or standard approval.",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/keizers575-next-source37",
+      "nextAction": "Native builder draft owns both monument facades, independent roof levels and observed openings. Preserve held first-hit failures; root source/gallery/independent/native-game/performance review required.",
+      "sourceCommit": "4ec0a0d69e202f87d573b5543650c9446f20102f"
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

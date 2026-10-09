@@ -2,7 +2,7 @@
   "id": "NL.IMBAG.Pand.0363100012185424",
   "canonicalModelId": "ordinary-0363100012185424",
   "at": "2026-10-08T21:07:34.020701+00:00",
-  "state": "Full architecture/source scope research in progress; not author ready or standard approved",
+  "state": "Native original full-architecture model scoped accepted locally after corrected independent source/gallery/game checks; hosted pending",
   "physicalScope": {
     "nativeAreaMetres2": 1793.7770665825576,
     "officialAreaMetres2": 1793.9276754996388,
@@ -84,7 +84,23 @@
     "Acquire wider Prinsengracht end/crown views and aerial roof ownership",
     "Keep source pack synced/pushed, then author original texture-free critical assemblies and native roof/open-space geometry; independent/GPU/native/performance gates pending"
   ],
-  "sourceCommit": "8867f24a00b43616b130abaf9ea9863951c25541",
+  "sourceCommit": "2a8102e5dfcb1eddd9f5cd6b0ae4e78fc1d31c22",
   "sourceBranch": "ordinary/source35-20261008",
-  "rawSourcePolicy": "Original sources in private companion repository; no downloaded photo pixels in model or public research record."
+  "rawSourcePolicy": "Original sources in private companion repository; no downloaded photo pixels in model or public research record.",
+  "sourcePacks": [
+    "experiments/canal-belt-continuation-20261007/next-large-box-source-26/0363100012185424",
+    "experiments/canal-belt-continuation-20261007/next-source35-prinsen767/0363100012185424",
+    "experiments/canal-belt-continuation-20261007/prinsen767-front-source36",
+    "experiments/canal-belt-continuation-20261007/prinsen767-native-source36",
+    "experiments/canal-belt-continuation-20261007/prinsen767-native-review40"
+  ],
+  "modelHash": "a680a2ac3c81fe9e4b5018ce088a1154dee3b00178a0fc9148fa0bf6c2d9fa5d",
+  "reviewEvidence": "../../public/canal-drive/ordinary-buildings-data/prinsen767-review-20261009.json",
+  "sourceCorrections": [
+    "White same-parent wing6axes supersedes stale4axis prose.",
+    "Kerk tuit surveyedwidth4.22m/ridgeu2.01; uppercornice tiedto12.2m roofedge.",
+    "363 is pavedcourtyardground, not elevatedroof; onlymeasured lowerlevel supportsadjacentwalls.",
+    "Every nativefringe vertex bounded; heights followobservedrim without slopeextrapolation.",
+    "Native envelope visibilityoffset does not extrapolate its roofheight."
+  ]
 }
