@@ -17924,6 +17924,114 @@
       "triangles": 9605,
       "bytes": 147464,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "torture-museum": {
+      "id": "torture-museum",
+      "name": "Torture Museum",
+      "landmarkId": "extract_landmarks_417591223",
+      "modelUrl": "./models/torture-museum.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012175875"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8906653,
+          52.3672872
+        ],
+        "headingDegrees": 150,
+        "lengthMetres": 17.46,
+        "widthMetres": 6.39
+      },
+      "surveyed": {
+        "anchor": [
+          4.8906653,
+          52.3672872
+        ],
+        "northOffsetDegrees": 0,
+        "source": "BAG pand 0363100012175875 with 3DBAG LoD2.2 roofs; native east/south metres, scale 1."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "brick": "#6c5a50",
+        "stone": "#8f8b84",
+        "slate": "#5a5a5e",
+        "white": "#e6e4da",
+        "glass": "#5f7581",
+        "dark": "#23272b",
+        "red": "#9b2f27"
+      },
+      "attribution": {
+        "title": "Torture Museum",
+        "author": "Map Recall",
+        "sourceUrl": "https://en.wikipedia.org/wiki/Torture_Museum,_Amsterdam",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free model on the BAG footprint (3DBAG LoD2.2 roof faces): dark steel-and-glass shopfront, three brick storeys with white-framed windows, stone cornice and blade sign. Window positions approximate, measured from a 2025 street-level panorama. No imported mesh or photo textures."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.890607,
+              52.367417
+            ],
+            [
+              4.890526,
+              52.367389
+            ],
+            [
+              4.890627,
+              52.367281
+            ],
+            [
+              4.890705,
+              52.367271
+            ],
+            [
+              4.890715,
+              52.367302
+            ],
+            [
+              4.890607,
+              52.367417
+            ]
+          ]
+        ]
+      },
+      "bounds": {
+        "min": [
+          -7.802999973297119,
+          0,
+          -14.246000289916992
+        ],
+        "max": [
+          3.2200000286102295,
+          17.047000885009766,
+          2.724860191345215
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8906653,
+          52.3672872
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 150,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 16.970860481262207,
+        "heightMetres": 17.047000885009766,
+        "depthMetres": 11.023000001907349,
+        "depthCoverage": 1.7250391239291627
+      },
+      "triangles": 768,
+      "bytes": 20936,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
