@@ -1,3 +1,4 @@
+import {buildHaparandaweg57} from './haparandaweg-57-builder';
 import {buildPosthoornkerk} from './posthoornkerk-builder';
 import {buildHannekesBoom} from './hannekes-boom-builder';
 import {buildFireStationAnton} from './fire-station-anton-builder';
@@ -313,6 +314,8 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     if(id==='hannekes-boom')
       buildHannekesBoom(w,d,helpers);
     else if(id==='posthoornkerk')buildPosthoornkerk(w,d,helpers);
+    else if(id==='haparandaweg-57')
+      buildHaparandaweg57(w,d,helpers);
     else if(id==='fire-station-nico')buildFireStationNico(w,d,helpers);
     else if(id==='fire-station-osdorp')buildFireStationOsdorp(w,d,helpers);
     else if(id==='fire-station-teunis')buildFireStationTeunis(w,d,helpers);

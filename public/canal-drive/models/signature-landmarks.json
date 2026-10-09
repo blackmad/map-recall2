@@ -17176,6 +17176,118 @@
       "triangles": 39148,
       "bytes": 448812,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "haparandaweg-57": {
+      "id": "haparandaweg-57",
+      "name": "Haparandaweg 57",
+      "modelUrl": "./models/haparandaweg-57.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012071094",
+        "w57862438"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.87638,
+          52.395
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 44,
+        "widthMetres": 44
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.87638,
+          52.395
+        ],
+        "northOffsetDegrees": 0,
+        "source": "PDOK BAG0363100012071094/AHN5 2023"
+      },
+      "materialOverrides": {
+        "brick": "#815d50",
+        "stone": "#969f9c",
+        "ochre": "#98906b",
+        "gold": "#c3ae7d",
+        "copper": "#42788b",
+        "frame": "#53666b",
+        "white": "#c5c8ba",
+        "glass": "#718e91",
+        "concrete": "#a8aaa0",
+        "slate": "#727e7f",
+        "green": "#747d58",
+        "dark": "#588d9e",
+        "bronze": "#37798d"
+      },
+      "preservePositionPrecision": true,
+      "attribution": {
+        "title": "Haparandaweg 57 original architecture",
+        "author": "Map Recall",
+        "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012071094",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free native metre geometry. BAG/3DBAG and municipal panorama sources archived at private commit16d644906c974150de90690eca7a8918e154cd6c/models/haparandaweg-57. Ordinary requested industrial building; no invented POI. Native acceptance pending."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.876319169989764,
+              52.39521064052107
+            ],
+            [
+              4.876075115016229,
+              52.394908042035205
+            ],
+            [
+              4.876443942978793,
+              52.39479672983623
+            ],
+            [
+              4.876687475639284,
+              52.39509892086636
+            ],
+            [
+              4.876319169989764,
+              52.39521064052107
+            ]
+          ]
+        ]
+      },
+      "heightMetres": 8.27,
+      "bounds": {
+        "min": [
+          -21.677114486694336,
+          -2.3841858265427618e-8,
+          -23.555959701538086
+        ],
+        "max": [
+          20.994213104248047,
+          8.268000602722168,
+          22.798110961914062
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.87638,
+          52.395
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 46.35407066345215,
+        "heightMetres": 8.268000626564026,
+        "depthMetres": 42.67132759094238,
+        "depthCoverage": 0.969802899794145
+      },
+      "triangles": 9605,
+      "bytes": 147464,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
