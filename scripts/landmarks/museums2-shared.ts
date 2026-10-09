@@ -7,7 +7,7 @@ export interface SurveyData{ring:number[][][];roofs:SurveyFace[]}
 /** Native metres: X east, Y up (above ground), Z south. Roof polygons are 3DBAG LoD2.2
  * RoofSurface faces; walls are skirted from each roof edge to the ground (or to the lower
  * neighbouring roof where two roofs share an edge). */
-export function surveyShell(b:BuildingTools,data:SurveyData,wall:Colour,roof:Colour,opts:{ground?:number;skipRoof?:(i:number)=>boolean}={}){
+export function surveyShell(b:BuildingTools,data:SurveyData,wall:Colour,roof:Colour,opts:{ground?:number;skipRoof?:(i:number)=>boolean;skipWall?:(p:number[],q:number[])=>boolean}={}){
  const {add}=b,ground=opts.ground??0,key=(p:number[])=>`${Math.round(p[0]*20)},${Math.round(p[2]*20)}`;
  const faces=data.roofs.map(f=>f.rings[0].slice(0,-1));
  const edgeMap=new Map<string,{face:number;a:number[];b:number[]}[]>();
@@ -23,7 +23,7 @@ export function surveyShell(b:BuildingTools,data:SurveyData,wall:Colour,roof:Col
   let area=0;for(let i=0;i<ring.length;i++){const p=ring[i],q=ring[(i+1)%ring.length];area+=p[0]*q[2]-q[0]*p[2]}
   const sign=area>=0?1:-1;
   ring.forEach((p,i)=>{
-   const q=ring[(i+1)%ring.length],dx=q[0]-p[0],dz=q[2]-p[2];if(Math.hypot(dx,dz)<.02)return;
+   const q=ring[(i+1)%ring.length],dx=q[0]-p[0],dz=q[2]-p[2];if(Math.hypot(dx,dz)<.02||opts.skipWall?.(p,q))return;
    const out=new T.Vector3(dz*sign,0,-dx*sign).normalize();
    let lowP=ground,lowQ=ground;
    const other=edgeMap.get(key(q)+'>'+key(p))?.find(e=>e.face!==fi);
