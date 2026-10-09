@@ -1221,8 +1221,11 @@ grace before line/transfer asks; map idle settle on load. Still open: bus,
 GTFS-RT, dedicated mesh, OSM tunnel tagging in extract, GTFS `transfers.txt`
 merge when cached. Canal-belt teaching streets via `amsterdam-curation` +
 `ensure:amsterdam-teaching-streets`. Pedestrian `bicycle=no` corridors
-(Kalverstraat) playable with `bicycleRestricted`. Ferry water hops stay out of
-scope.
+(Kalverstraat) playable with `bicycleRestricted`. Bike ferries (GVB IJ
+F1–F9) are playable in bike mode (HISTORY 2026-10-09); open: no timetable or
+waiting, router treats crossings as plain distance, terminal accesses are
+projected (some 30–43 m, Sporenburg's over water), 33 m ferry overlaps the
+iPhone thumbstick in chase view, no Storybook visual baseline.
 
 **25. Large-letter postcard compositor (standalone).**
 Craft board: [`LARGE_LETTER_CRAFT.md`](LARGE_LETTER_CRAFT.md). **Check loop:**
