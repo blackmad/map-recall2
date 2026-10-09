@@ -1999,5 +1999,14 @@
     "description": "The West India House on Herenmarkt was the Amsterdam headquarters of the Dutch West India Company. Built in 1617 as a meat market and militia waiting room, it was rented by the company from 1623 and extended with two wings around a courtyard, tripling its size by 1647. A fire in 1975 was followed by restoration in 1978-1981; it now holds offices, the John Adams Institute and a municipal wedding hall.",
     "funFact": "It was here in 1625 that the company directors ordered the building of a fort on Manhattan, the beginning of New Amsterdam and later New York. A bronze statue of Peter Stuyvesant stands in the courtyard.",
     "sourceUrl": "https://en.wikipedia.org/wiki/West-Indisch_Huis"
-  }
+  },
+{
+  "modelId": "muiderkerk",
+  "landmarkId": "extract_landmarks_1055638541",
+  "name": "Muiderkerk",
+  "description": "The Muiderkerk is a Protestant church on the Linnaeusstraat at the edge of the Oosterpark in Amsterdam-Oost. The original church of 1892 burned down in 1989, but its brick tower survived, and the present church was built against that old tower as part of a 1997 housing and office complex designed by architect Van Hoogevest. The tower, with its stone porch, rose windows and arched belfry, is what makes the building recognisable.",
+  "funFact": "Although the church burned in 1989, the tower stayed standing; it was restored in the early 2010s to repair neglected maintenance and the remaining fire damage. In 2008 a small square with an art object, the Wensplein voor vrede (Wish Square for Peace), opened to its south.",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Muiderkerk",
+  "preferDescription": true
+}
 ]
