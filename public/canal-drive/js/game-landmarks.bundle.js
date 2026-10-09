@@ -16572,6 +16572,814 @@ Map source: ${osmUrl(places[i][0])}`);
         ]
       },
       heightMetres: 22.39
+    },
+    {
+      id: "thomaskerk",
+      name: "Thomaskerk",
+      landmarkId: "extract_landmarks_741771335",
+      modelUrl: "./models/thomaskerk.glb",
+      suppressOsmIds: [
+        "w57858409",
+        "NL.IMBAG.Pand.0363100012099552"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.874864933961887,
+          52.342078886753455
+        ],
+        headingDegrees: 0,
+        lengthMetres: 61,
+        widthMetres: 54
+      },
+      surveyed: {
+        anchor: [
+          4.874864933961887,
+          52.342078886753455
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG 0363100012099552 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#d2bc80",
+        stone: "#c9c8c0",
+        slate: "#6b6e70",
+        glass: "#7d9aa6",
+        dark: "#3a2e26",
+        white: "#e6e6df",
+        frame: "#5a554c",
+        copper: "#7fae96",
+        concrete: "#cfcfc8",
+        bronze: "#4b4a42"
+      },
+      attribution: {
+        title: "Thomaskerk",
+        author: "Map Recall",
+        sourceUrl: "https://nl.wikipedia.org/wiki/Thomaskerk_(Amsterdam)",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.87532808255464,
+              52.34208247103925
+            ],
+            [
+              4.875248861414052,
+              52.34207944101959
+            ],
+            [
+              4.875248098786051,
+              52.34209212845819
+            ],
+            [
+              4.875033620357234,
+              52.34212123759628
+            ],
+            [
+              4.875018361226619,
+              52.342079072821804
+            ],
+            [
+              4.8750420092050355,
+              52.3420758676629
+            ],
+            [
+              4.875035382090776,
+              52.342057566836964
+            ],
+            [
+              4.87486968502749,
+              52.34205073794826
+            ],
+            [
+              4.87485109834712,
+              52.34223716279585
+            ],
+            [
+              4.874895260546562,
+              52.34223783032824
+            ],
+            [
+              4.874895496827524,
+              52.34223897279843
+            ],
+            [
+              4.874919695027446,
+              52.34235723082847
+            ],
+            [
+              4.874653942049455,
+              52.342334275837835
+            ],
+            [
+              4.874647249591269,
+              52.342312748096745
+            ],
+            [
+              4.874503718600013,
+              52.342330587272414
+            ],
+            [
+              4.874560750148106,
+              52.342213085493356
+            ],
+            [
+              4.8746313028819515,
+              52.342215772845385
+            ],
+            [
+              4.8746053604049955,
+              52.342097417317696
+            ],
+            [
+              4.874638913304801,
+              52.34207263055381
+            ],
+            [
+              4.8746106215554335,
+              52.34205353482468
+            ],
+            [
+              4.874579800267872,
+              52.342066694244224
+            ],
+            [
+              4.874447032079195,
+              52.34203702565072
+            ],
+            [
+              4.874455851441809,
+              52.341954430256635
+            ],
+            [
+              4.87459852850038,
+              52.341876998492666
+            ],
+            [
+              4.874721003613184,
+              52.34196185222412
+            ],
+            [
+              4.874822743239703,
+              52.341965429482656
+            ],
+            [
+              4.874852329445027,
+              52.34196645634977
+            ],
+            [
+              4.874853936933338,
+              52.34194923374428
+            ],
+            [
+              4.874897135316447,
+              52.34195074195516
+            ],
+            [
+              4.874895527844843,
+              52.341967964561285
+            ],
+            [
+              4.8749438748022955,
+              52.341969656822464
+            ],
+            [
+              4.874944813598077,
+              52.3419595136881
+            ],
+            [
+              4.874968161151974,
+              52.341958176700835
+            ],
+            [
+              4.875054253203396,
+              52.34195326448723
+            ],
+            [
+              4.875063871754731,
+              52.34197429256583
+            ],
+            [
+              4.875338100896393,
+              52.34198483523614
+            ],
+            [
+              4.87532808255464,
+              52.34208247103925
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "willem-de-zwijgerkerk",
+      name: "Willem de Zwijgerkerk",
+      landmarkId: "extract_landmarks_1347119904",
+      modelUrl: "./models/willem-de-zwijgerkerk.glb",
+      suppressOsmIds: [
+        "w57855495",
+        "NL.IMBAG.Pand.0363100012098714"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.862945631219777,
+          52.34957556270561
+        ],
+        headingDegrees: 0,
+        lengthMetres: 34,
+        widthMetres: 41
+      },
+      surveyed: {
+        anchor: [
+          4.862945631219777,
+          52.34957556270561
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG 0363100012098714 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#7f4a3a",
+        stone: "#d8d2c0",
+        slate: "#45484d",
+        glass: "#7b93a0",
+        dark: "#3a2a24",
+        white: "#e4e1d4",
+        frame: "#e4e1d4",
+        copper: "#6aa38c",
+        gold: "#d9b44a",
+        greyBrick: "#4a342d",
+        concrete: "#cfc9b8"
+      },
+      attribution: {
+        title: "Willem de Zwijgerkerk",
+        author: "Map Recall",
+        sourceUrl: "https://nl.wikipedia.org/wiki/Willem_de_Zwijgerkerk_(Amsterdam)",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.863028896834387,
+              52.349676530883734
+            ],
+            [
+              4.863006431351607,
+              52.349708436833915
+            ],
+            [
+              4.862992428886073,
+              52.34970477072336
+            ],
+            [
+              4.862937648229874,
+              52.349690417293274
+            ],
+            [
+              4.8629217311118556,
+              52.349713409402966
+            ],
+            [
+              4.862919133414297,
+              52.349717127820306
+            ],
+            [
+              4.862917626446549,
+              52.34971672568325
+            ],
+            [
+              4.8629170892956415,
+              52.34971746928869
+            ],
+            [
+              4.862901417793086,
+              52.349713454239016
+            ],
+            [
+              4.862792577806197,
+              52.34968457070962
+            ],
+            [
+              4.86277719889273,
+              52.34968063782964
+            ],
+            [
+              4.862777915025673,
+              52.3496796523481
+            ],
+            [
+              4.862776188662424,
+              52.349679186322795
+            ],
+            [
+              4.862778800833433,
+              52.34967548594823
+            ],
+            [
+              4.862794652830262,
+              52.34965304182274
+            ],
+            [
+              4.862740501355821,
+              52.34963886185613
+            ],
+            [
+              4.862726132881968,
+              52.349635122189945
+            ],
+            [
+              4.862727446253249,
+              52.34963327652935
+            ],
+            [
+              4.8627224278640595,
+              52.34963194207756
+            ],
+            [
+              4.862691321261588,
+              52.349623787142974
+            ],
+            [
+              4.862717876985414,
+              52.349586075302305
+            ],
+            [
+              4.862706279756902,
+              52.34958256362015
+            ],
+            [
+              4.862745607657726,
+              52.34952717550248
+            ],
+            [
+              4.862783857104772,
+              52.34953697088195
+            ],
+            [
+              4.862907057964964,
+              52.349356494029784
+            ],
+            [
+              4.862966349381629,
+              52.34937163141576
+            ],
+            [
+              4.862949224927872,
+              52.3493949597179
+            ],
+            [
+              4.862951303293547,
+              52.34939544527542
+            ],
+            [
+              4.862951796942727,
+              52.349394656538266
+            ],
+            [
+              4.8631150696658185,
+              52.349437451358284
+            ],
+            [
+              4.863138711291662,
+              52.34944389241652
+            ],
+            [
+              4.863142277326853,
+              52.34943895594522
+            ],
+            [
+              4.863189607912187,
+              52.34945155963469
+            ],
+            [
+              4.863190997889689,
+              52.3494519252993
+            ],
+            [
+              4.863190298037159,
+              52.349452776038895
+            ],
+            [
+              4.863190896676895,
+              52.349453039334534
+            ],
+            [
+              4.863177423959145,
+              52.34947163829436
+            ],
+            [
+              4.863179018340456,
+              52.349472094741756
+            ],
+            [
+              4.863161543041058,
+              52.3494965539795
+            ],
+            [
+              4.863142923766589,
+              52.34952218554709
+            ],
+            [
+              4.863142227201514,
+              52.34952275768018
+            ],
+            [
+              4.863047718882545,
+              52.34965735345024
+            ],
+            [
+              4.863043241797945,
+              52.34965616521354
+            ],
+            [
+              4.863028896834387,
+              52.349676530883734
+            ]
+          ]
+        ]
+      },
+      status: "held",
+      heldReason: "Integrator 2026-10-10: entrance wing at the gable foot missing; lower aisle window proportions"
+    },
+    {
+      id: "vrijburg",
+      name: "Vrijburg",
+      landmarkId: "extract_landmarks_563908011",
+      modelUrl: "./models/vrijburg.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012127929"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.882560038896178,
+          52.345835087843064
+        ],
+        headingDegrees: 51,
+        lengthMetres: 41.65,
+        widthMetres: 28.17
+      },
+      surveyed: {
+        anchor: [
+          4.882560038896178,
+          52.345835087843064
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG 0363100012127929 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#6b3f33",
+        stone: "#c9b99a",
+        slate: "#3c3f45",
+        glass: "#6f8790",
+        dark: "#2c2118",
+        white: "#e3dfd2",
+        frame: "#e6e2d4",
+        copper: "#6aa38c"
+      },
+      attribution: {
+        title: "Vrijburg",
+        author: "Map Recall",
+        sourceUrl: "https://nl.wikipedia.org/wiki/Diepenbrockstraat_46",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; entrance arch, gable window group, side gables and spire measured by eye from the 2025 municipal panoramas, no pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.882761545662899,
+              52.345968118407
+            ],
+            [
+              4.882751361805223,
+              52.34597577751471
+            ],
+            [
+              4.882738855373542,
+              52.345969567591396
+            ],
+            [
+              4.882675652410619,
+              52.34593814659684
+            ],
+            [
+              4.882665276582716,
+              52.345932997316346
+            ],
+            [
+              4.882661278135605,
+              52.345931002963255
+            ],
+            [
+              4.8826558056970955,
+              52.34592828330536
+            ],
+            [
+              4.882641109009596,
+              52.3459391767356
+            ],
+            [
+              4.882632411195311,
+              52.34593487945552
+            ],
+            [
+              4.882622502517878,
+              52.34592994786914
+            ],
+            [
+              4.882614257381234,
+              52.34592585024841
+            ],
+            [
+              4.882559561449049,
+              52.345967158488584
+            ],
+            [
+              4.882552834020714,
+              52.34596381331921
+            ],
+            [
+              4.88254877856438,
+              52.34596683389113
+            ],
+            [
+              4.8824874884434335,
+              52.34593627478935
+            ],
+            [
+              4.882491469913591,
+              52.34593330783057
+            ],
+            [
+              4.882485370245835,
+              52.34593025294275
+            ],
+            [
+              4.882491838759377,
+              52.34592539118405
+            ],
+            [
+              4.882519208654007,
+              52.345904746163825
+            ],
+            [
+              4.882513853013422,
+              52.34590208092395
+            ],
+            [
+              4.882504732406158,
+              52.34589753916192
+            ],
+            [
+              4.882500048133129,
+              52.34589520034375
+            ],
+            [
+              4.882519824812549,
+              52.34588023916063
+            ],
+            [
+              4.88250947826385,
+              52.3458750989789
+            ],
+            [
+              4.882319943500458,
+              52.34578087178791
+            ],
+            [
+              4.8823147775352895,
+              52.34577830621337
+            ],
+            [
+              4.882311832301232,
+              52.345780486663564
+            ],
+            [
+              4.882306418295413,
+              52.34577779420187
+            ],
+            [
+              4.882285112532475,
+              52.34576719661426
+            ],
+            [
+              4.882280442755168,
+              52.34576487582464
+            ],
+            [
+              4.882298990399636,
+              52.34575088011314
+            ],
+            [
+              4.882276342029938,
+              52.34573962068948
+            ],
+            [
+              4.882323368622634,
+              52.345704238749846
+            ],
+            [
+              4.88234373656143,
+              52.34568890263182
+            ],
+            [
+              4.882363260765599,
+              52.345674201042506
+            ],
+            [
+              4.882383614104216,
+              52.34565885586753
+            ],
+            [
+              4.882430582235351,
+              52.34562343768485
+            ],
+            [
+              4.88245334726809,
+              52.34563476049117
+            ],
+            [
+              4.882471406754785,
+              52.34562109521803
+            ],
+            [
+              4.882503091908265,
+              52.34563651852434
+            ],
+            [
+              4.88249980549418,
+              52.34563902108381
+            ],
+            [
+              4.882795169251383,
+              52.34578585505573
+            ],
+            [
+              4.882802644687647,
+              52.34578019766047
+            ],
+            [
+              4.882826671309594,
+              52.34577866428132
+            ],
+            [
+              4.8828457299436705,
+              52.34578813771242
+            ],
+            [
+              4.882848233610816,
+              52.34580286135006
+            ],
+            [
+              4.88283501501477,
+              52.345812835363525
+            ],
+            [
+              4.882841260928499,
+              52.34581593579541
+            ],
+            [
+              4.882830825196331,
+              52.345823809543
+            ],
+            [
+              4.882904272584103,
+              52.345860316241755
+            ],
+            [
+              4.882761545662899,
+              52.345968118407
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "van-gendt-hallen",
+      name: "Van Gendt Hallen",
+      landmarkId: "extract_landmarks_1351046417",
+      modelUrl: "./models/van-gendt-hallen.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012169224"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.925959578488882,
+          52.37151989007194
+        ],
+        headingDegrees: 136,
+        lengthMetres: 157.18,
+        widthMetres: 84.65
+      },
+      surveyed: {
+        anchor: [
+          4.925959578488882,
+          52.37151989007194
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG 0363100012169224 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#8a5a45",
+        stone: "#b9ab94",
+        slate: "#6f7478",
+        glass: "#5f747c",
+        dark: "#262626",
+        frame: "#3c4a4c",
+        green: "#8fa890",
+        concrete: "#b4b6b4",
+        greyBrick: "#4e3a33"
+      },
+      attribution: {
+        title: "Van Gendt Hallen",
+        author: "Map Recall",
+        sourceUrl: "https://nl.wikipedia.org/wiki/Hallen_van_Stork",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; gable corbelling, arched window rhythm, pilasters and doors measured by eye from the 2018-2024 municipal panoramas, no pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.926839247484612,
+              52.37145382365424
+            ],
+            [
+              4.926646343053337,
+              52.37157693286735
+            ],
+            [
+              4.9266422420107,
+              52.37157450821448
+            ],
+            [
+              4.926473552636307,
+              52.371681866031
+            ],
+            [
+              4.926477434827474,
+              52.3716841550227
+            ],
+            [
+              4.925999210525161,
+              52.37198855784856
+            ],
+            [
+              4.925543879591796,
+              52.37172084662873
+            ],
+            [
+              4.92552250479393,
+              52.37173445154321
+            ],
+            [
+              4.925478778882788,
+              52.37170873802337
+            ],
+            [
+              4.925500153681625,
+              52.37169513311671
+            ],
+            [
+              4.924334837718055,
+              52.37100995446291
+            ],
+            [
+              4.925177087665068,
+              52.37047577986767
+            ],
+            [
+              4.926839247484612,
+              52.37145382365424
+            ]
+          ]
+        ]
+      },
+      status: "held",
+      heldReason: "Integrator 2026-10-10: gable corbel friezes, upper gable windows, rectangular steel windows, 3DBAG gable artefacts"
     }
   ];
 
@@ -41859,340 +42667,6 @@ Map source: ${osmUrl(places[i][0])}`);
         updatedAt: "2026-10-09T21:24:05.908Z"
       },
       {
-        id: "ordinary-0363100012152669",
-        buildingId: "NL.IMBAG.Pand.0363100012152669",
-        name: "Bilderdijkstraat (1894 arched windows, pedimented dormer)",
-        hash: "687137755d2df25499662e449a4ea6907d3433312958304c99182cf19925f532",
-        sha256: "687137755d2df25499662e449a4ea6907d3433312958304c99182cf19925f532",
-        bytes: 149324,
-        triangles: 2161,
-        materials: 8,
-        textures: 0,
-        scale: 1,
-        bounds: {
-          min: [
-            -2.817,
-            0,
-            -16.975
-          ],
-          max: [
-            2.547,
-            19.352,
-            0.275
-          ]
-        },
-        anchor: [
-          4.872303101531021,
-          52.36669201577279
-        ],
-        footprint: {
-          type: "Polygon",
-          coordinates: [
-            [
-              [
-                4.8723176,
-                52.3666709
-              ],
-              [
-                4.8722886,
-                52.3667131
-              ],
-              [
-                4.8721123,
-                52.3666642
-              ],
-              [
-                4.8721159,
-                52.366658
-              ],
-              [
-                4.8721147,
-                52.3666558
-              ],
-              [
-                4.8721113,
-                52.366655
-              ],
-              [
-                4.8720667,
-                52.3666426
-              ],
-              [
-                4.8720785,
-                52.3666264
-              ],
-              [
-                4.8721272,
-                52.3666395
-              ],
-              [
-                4.8721404,
-                52.3666227
-              ]
-            ]
-          ]
-        },
-        nativeHeight: 17.53,
-        height: 17.53,
-        modelUrl: "./models/ordinary-buildings/recipe-bilder-152669.glb",
-        suppress: [
-          "NL.IMBAG.Pand.0363100012152669"
-        ],
-        instance: {
-          anchor: [
-            4.872303101531021,
-            52.36669201577279
-          ],
-          northOffsetDegrees: 247.2476,
-          mirror: false
-        },
-        source: "building-recipes",
-        recipe: {
-          id: "bilder-152669",
-          mesh: "bilder-152669",
-          shared: false,
-          intentSources: [
-            "staging/pand-reference/0363100012152669/front.jpg"
-          ],
-          footprintIoU: 1,
-          frontZoneIoU: 1,
-          maxDimDeltaM: 0,
-          gates: [
-            "triangle-budget:pass",
-            "finite:pass",
-            "non-metallic:pass",
-            "footprint-vs-bag:pass",
-            "ridge-vs-3dbag:pass",
-            "eaves-vs-3dbag/front0:pass",
-            "storey-height/front0:pass",
-            "no-floating-parts:pass",
-            "open-edges:pass"
-          ]
-        },
-        scope: "Recipe-pipeline house on Bilderdijkstraat: facade classified from the rectified municipal panorama crop, metres fitted from 3DBAG LoD2.2; exact BAG host suppression.",
-        limitations: [
-          "Facade proportions are rule-fitted, not rectified from the photograph.",
-          "Roof is the 3DBAG LoD2.2 surface verbatim; dormers are declared, not measured."
-        ],
-        reviewState: "recipe-draft-gates-pass",
-        sourceUrls: [
-          "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012152669",
-          "https://data.amsterdam.nl/"
-        ],
-        updatedAt: "2026-10-09T21:24:05.908Z"
-      },
-      {
-        id: "ordinary-0363100012153622",
-        buildingId: "NL.IMBAG.Pand.0363100012153622",
-        name: "Bilderdijkstraat (1887 orange brick, white bosses)",
-        hash: "5d565f604998d3f1cdd531cb42083256e96066121fd5f3b8f2c370f266c601f0",
-        sha256: "5d565f604998d3f1cdd531cb42083256e96066121fd5f3b8f2c370f266c601f0",
-        bytes: 127320,
-        triangles: 1796,
-        materials: 9,
-        textures: 0,
-        scale: 1,
-        bounds: {
-          min: [
-            -2.937,
-            0,
-            -14.666
-          ],
-          max: [
-            2.738,
-            18.885,
-            0.336
-          ]
-        },
-        anchor: [
-          4.8729351266931165,
-          52.36647326015293
-        ],
-        footprint: {
-          type: "Polygon",
-          coordinates: [
-            [
-              [
-                4.8731473,
-                52.3665047
-              ],
-              [
-                4.8731167,
-                52.3665483
-              ],
-              [
-                4.872919,
-                52.3664958
-              ],
-              [
-                4.8729506,
-                52.3664506
-              ],
-              [
-                4.8730491,
-                52.3664778
-              ]
-            ]
-          ]
-        },
-        nativeHeight: 18.88,
-        height: 18.88,
-        modelUrl: "./models/ordinary-buildings/recipe-bilder-153622.glb",
-        suppress: [
-          "NL.IMBAG.Pand.0363100012153622"
-        ],
-        instance: {
-          anchor: [
-            4.8729351266931165,
-            52.36647326015293
-          ],
-          northOffsetDegrees: 67.3692,
-          mirror: false
-        },
-        source: "building-recipes",
-        recipe: {
-          id: "bilder-153622",
-          mesh: "bilder-153622",
-          shared: false,
-          intentSources: [
-            "staging/pand-reference/0363100012153622/front.jpg"
-          ],
-          footprintIoU: 1,
-          frontZoneIoU: 1,
-          maxDimDeltaM: 0,
-          gates: [
-            "triangle-budget:pass",
-            "finite:pass",
-            "non-metallic:pass",
-            "footprint-vs-bag:pass",
-            "ridge-vs-3dbag:pass",
-            "roof-cleanup:pass",
-            "eaves-vs-3dbag/front0:pass",
-            "storey-height/front0:pass",
-            "no-floating-parts:pass",
-            "open-edges:pass"
-          ]
-        },
-        scope: "Recipe-pipeline house on Bilderdijkstraat: facade classified from the rectified municipal panorama crop, metres fitted from 3DBAG LoD2.2; exact BAG host suppression.",
-        limitations: [
-          "Facade proportions are rule-fitted, not rectified from the photograph.",
-          "Roof is the 3DBAG LoD2.2 surface verbatim; dormers are declared, not measured."
-        ],
-        reviewState: "recipe-draft-gates-pass",
-        sourceUrls: [
-          "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012153622",
-          "https://data.amsterdam.nl/"
-        ],
-        updatedAt: "2026-10-09T21:24:05.908Z"
-      },
-      {
-        id: "ordinary-0363100012153782",
-        buildingId: "NL.IMBAG.Pand.0363100012153782",
-        name: "Bilderdijkstraat (1891 red brick, white bosses)",
-        hash: "42a5ddb6aead5f0eb15e6994658d7feb49b7df15bde47923c3b84686a1aea3f7",
-        sha256: "42a5ddb6aead5f0eb15e6994658d7feb49b7df15bde47923c3b84686a1aea3f7",
-        bytes: 100884,
-        triangles: 1430,
-        materials: 8,
-        textures: 0,
-        scale: 1,
-        bounds: {
-          min: [
-            -2.984,
-            0,
-            -12.65
-          ],
-          max: [
-            2.811,
-            17.473,
-            0.275
-          ]
-        },
-        anchor: [
-          4.872503576449586,
-          52.36709125970858
-        ],
-        footprint: {
-          type: "Polygon",
-          coordinates: [
-            [
-              [
-                4.8726898,
-                52.3671138
-              ],
-              [
-                4.8726658,
-                52.3671468
-              ],
-              [
-                4.8726341,
-                52.367138
-              ],
-              [
-                4.8726248,
-                52.3671521
-              ],
-              [
-                4.8724874,
-                52.3671145
-              ],
-              [
-                4.8725198,
-                52.367068
-              ]
-            ]
-          ]
-        },
-        nativeHeight: 15.97,
-        height: 15.97,
-        modelUrl: "./models/ordinary-buildings/recipe-bilder-153782.glb",
-        suppress: [
-          "NL.IMBAG.Pand.0363100012153782"
-        ],
-        instance: {
-          anchor: [
-            4.872503576449586,
-            52.36709125970858
-          ],
-          northOffsetDegrees: 66.9389,
-          mirror: false
-        },
-        source: "building-recipes",
-        recipe: {
-          id: "bilder-153782",
-          mesh: "bilder-153782",
-          shared: false,
-          intentSources: [
-            "staging/pand-reference/0363100012153782/front.jpg"
-          ],
-          footprintIoU: 1,
-          frontZoneIoU: 1,
-          maxDimDeltaM: 0,
-          gates: [
-            "triangle-budget:pass",
-            "finite:pass",
-            "non-metallic:pass",
-            "footprint-vs-bag:pass",
-            "ridge-vs-3dbag:pass",
-            "eaves-vs-3dbag/front0:pass",
-            "storey-height/front0:pass",
-            "no-floating-parts:pass",
-            "open-edges:pass"
-          ]
-        },
-        scope: "Recipe-pipeline house on Bilderdijkstraat: facade classified from the rectified municipal panorama crop, metres fitted from 3DBAG LoD2.2; exact BAG host suppression.",
-        limitations: [
-          "Facade proportions are rule-fitted, not rectified from the photograph.",
-          "Roof is the 3DBAG LoD2.2 surface verbatim; dormers are declared, not measured."
-        ],
-        reviewState: "recipe-draft-gates-pass",
-        sourceUrls: [
-          "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012153782",
-          "https://data.amsterdam.nl/"
-        ],
-        updatedAt: "2026-10-09T21:24:05.908Z"
-      },
-      {
         id: "ordinary-0363100012154127",
         buildingId: "NL.IMBAG.Pand.0363100012154127",
         name: "Bilderdijkstraat (1889 dark brick, shop window)",
@@ -42650,121 +43124,6 @@ Map source: ${osmUrl(places[i][0])}`);
         updatedAt: "2026-10-09T21:24:05.908Z"
       },
       {
-        id: "ordinary-0363100012156287",
-        buildingId: "NL.IMBAG.Pand.0363100012156287",
-        name: "Bilderdijkstraat (1903 orange brick, stepped gable, balconies)",
-        hash: "c3637abe8808b5fdc773e760ea2690afebb8070839d84b878c1d79746b6c737c",
-        sha256: "c3637abe8808b5fdc773e760ea2690afebb8070839d84b878c1d79746b6c737c",
-        bytes: 147520,
-        triangles: 2111,
-        materials: 9,
-        textures: 0,
-        scale: 1,
-        bounds: {
-          min: [
-            -3.011,
-            0,
-            -19.08
-          ],
-          max: [
-            3.073,
-            19.194,
-            0.176
-          ]
-        },
-        anchor: [
-          4.871280319334681,
-          52.368171734276956
-        ],
-        footprint: {
-          type: "Polygon",
-          coordinates: [
-            [
-              [
-                4.8712631,
-                52.3681967
-              ],
-              [
-                4.8710047,
-                52.3681305
-              ],
-              [
-                4.8710232,
-                52.3681036
-              ],
-              [
-                4.8710673,
-                52.3681146
-              ],
-              [
-                4.8710627,
-                52.3681205
-              ],
-              [
-                4.8710949,
-                52.3681276
-              ],
-              [
-                4.8711137,
-                52.3681004
-              ],
-              [
-                4.8712975,
-                52.3681468
-              ]
-            ]
-          ]
-        },
-        nativeHeight: 18.89,
-        height: 19.15,
-        modelUrl: "./models/ordinary-buildings/recipe-bilder-156287.glb",
-        suppress: [
-          "NL.IMBAG.Pand.0363100012156287"
-        ],
-        instance: {
-          anchor: [
-            4.871280319334681,
-            52.368171734276956
-          ],
-          northOffsetDegrees: 247.1759,
-          mirror: false
-        },
-        source: "building-recipes",
-        recipe: {
-          id: "bilder-156287",
-          mesh: "bilder-156287",
-          shared: false,
-          intentSources: [
-            "staging/pand-reference/0363100012156287/front-alt.jpg"
-          ],
-          footprintIoU: 1,
-          frontZoneIoU: 1,
-          maxDimDeltaM: 0,
-          gates: [
-            "triangle-budget:pass",
-            "finite:pass",
-            "non-metallic:pass",
-            "footprint-vs-bag:pass",
-            "ridge-vs-3dbag:pass",
-            "eaves-vs-3dbag/front0:pass",
-            "storey-height/front0:pass",
-            "no-floating-parts:pass",
-            "open-edges:pass"
-          ]
-        },
-        scope: "Recipe-pipeline house on Bilderdijkstraat: facade classified from the rectified municipal panorama crop, metres fitted from 3DBAG LoD2.2; exact BAG host suppression.",
-        limitations: [
-          "Facade proportions are rule-fitted, not rectified from the photograph.",
-          "Roof is the 3DBAG LoD2.2 surface verbatim; dormers are declared, not measured."
-        ],
-        reviewState: "recipe-draft-gates-pass",
-        sourceUrls: [
-          "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012156287",
-          "https://data.amsterdam.nl/"
-        ],
-        updatedAt: "2026-10-09T21:24:05.908Z"
-      },
-      {
         id: "ordinary-0363100012156732",
         buildingId: "NL.IMBAG.Pand.0363100012156732",
         name: "Bilderdijkstraat (1881 painted plum, heavy cornice)",
@@ -43077,6 +43436,455 @@ Map source: ${osmUrl(places[i][0])}`);
           "https://data.amsterdam.nl/"
         ],
         updatedAt: "2026-10-09T21:24:05.908Z"
+      },
+      {
+        id: "ordinary-0363100012152669",
+        buildingId: "NL.IMBAG.Pand.0363100012152669",
+        name: "Bilderdijkstraat (1894 arched windows, pedimented dormer)",
+        hash: "20bd54fca5fa1f0a43c3897767cd9f789c852c768a34230f08f66b40f3b16638",
+        sha256: "20bd54fca5fa1f0a43c3897767cd9f789c852c768a34230f08f66b40f3b16638",
+        bytes: 159408,
+        triangles: 2305,
+        materials: 8,
+        textures: 0,
+        scale: 1,
+        bounds: {
+          min: [
+            -2.817,
+            0,
+            -16.975
+          ],
+          max: [
+            2.547,
+            19.352,
+            0.275
+          ]
+        },
+        anchor: [
+          4.872303101531021,
+          52.36669201577279
+        ],
+        footprint: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [
+                4.8723176,
+                52.3666709
+              ],
+              [
+                4.8722886,
+                52.3667131
+              ],
+              [
+                4.8721123,
+                52.3666642
+              ],
+              [
+                4.8721159,
+                52.366658
+              ],
+              [
+                4.8721147,
+                52.3666558
+              ],
+              [
+                4.8721113,
+                52.366655
+              ],
+              [
+                4.8720667,
+                52.3666426
+              ],
+              [
+                4.8720785,
+                52.3666264
+              ],
+              [
+                4.8721272,
+                52.3666395
+              ],
+              [
+                4.8721404,
+                52.3666227
+              ]
+            ]
+          ]
+        },
+        nativeHeight: 17.53,
+        height: 17.53,
+        modelUrl: "./models/ordinary-buildings/recipe-bilder-152669.glb",
+        suppress: [
+          "NL.IMBAG.Pand.0363100012152669"
+        ],
+        instance: {
+          anchor: [
+            4.872303101531021,
+            52.36669201577279
+          ],
+          northOffsetDegrees: 247.2476,
+          mirror: false
+        },
+        source: "building-recipes",
+        recipe: {
+          id: "bilder-152669",
+          mesh: "bilder-152669",
+          shared: false,
+          intentSources: [
+            "staging/pand-reference/0363100012152669/front.jpg"
+          ],
+          footprintIoU: 1,
+          frontZoneIoU: 1,
+          maxDimDeltaM: 0,
+          gates: [
+            "triangle-budget:pass",
+            "finite:pass",
+            "non-metallic:pass",
+            "footprint-vs-bag:pass",
+            "ridge-vs-3dbag:pass",
+            "eaves-vs-3dbag/front0:pass",
+            "storey-height/front0:pass",
+            "no-floating-parts:pass",
+            "open-edges:pass"
+          ]
+        },
+        scope: "Recipe-pipeline house on Bilderdijkstraat: facade classified from the rectified municipal panorama crop, metres fitted from 3DBAG LoD2.2; exact BAG host suppression.",
+        limitations: [
+          "Facade proportions are rule-fitted, not rectified from the photograph.",
+          "Roof is the 3DBAG LoD2.2 surface verbatim; dormers are declared, not measured."
+        ],
+        reviewState: "recipe-draft-gates-pass",
+        sourceUrls: [
+          "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012152669",
+          "https://data.amsterdam.nl/"
+        ],
+        updatedAt: "2026-10-09T21:54:25.230Z"
+      },
+      {
+        id: "ordinary-0363100012153622",
+        buildingId: "NL.IMBAG.Pand.0363100012153622",
+        name: "Bilderdijkstraat (1887 orange brick, white bosses)",
+        hash: "a4019fa1f0bb82416a8f2650ac846fa33d948d286a63ec70fe4891bd9f05b687",
+        sha256: "a4019fa1f0bb82416a8f2650ac846fa33d948d286a63ec70fe4891bd9f05b687",
+        bytes: 137404,
+        triangles: 1940,
+        materials: 9,
+        textures: 0,
+        scale: 1,
+        bounds: {
+          min: [
+            -2.937,
+            0,
+            -14.666
+          ],
+          max: [
+            2.738,
+            18.885,
+            0.336
+          ]
+        },
+        anchor: [
+          4.8729351266931165,
+          52.36647326015293
+        ],
+        footprint: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [
+                4.8731473,
+                52.3665047
+              ],
+              [
+                4.8731167,
+                52.3665483
+              ],
+              [
+                4.872919,
+                52.3664958
+              ],
+              [
+                4.8729506,
+                52.3664506
+              ],
+              [
+                4.8730491,
+                52.3664778
+              ]
+            ]
+          ]
+        },
+        nativeHeight: 18.88,
+        height: 18.88,
+        modelUrl: "./models/ordinary-buildings/recipe-bilder-153622.glb",
+        suppress: [
+          "NL.IMBAG.Pand.0363100012153622"
+        ],
+        instance: {
+          anchor: [
+            4.8729351266931165,
+            52.36647326015293
+          ],
+          northOffsetDegrees: 67.3692,
+          mirror: false
+        },
+        source: "building-recipes",
+        recipe: {
+          id: "bilder-153622",
+          mesh: "bilder-153622",
+          shared: false,
+          intentSources: [
+            "staging/pand-reference/0363100012153622/front.jpg"
+          ],
+          footprintIoU: 1,
+          frontZoneIoU: 1,
+          maxDimDeltaM: 0,
+          gates: [
+            "triangle-budget:pass",
+            "finite:pass",
+            "non-metallic:pass",
+            "footprint-vs-bag:pass",
+            "ridge-vs-3dbag:pass",
+            "roof-cleanup:pass",
+            "eaves-vs-3dbag/front0:pass",
+            "storey-height/front0:pass",
+            "no-floating-parts:pass",
+            "open-edges:pass"
+          ]
+        },
+        scope: "Recipe-pipeline house on Bilderdijkstraat: facade classified from the rectified municipal panorama crop, metres fitted from 3DBAG LoD2.2; exact BAG host suppression.",
+        limitations: [
+          "Facade proportions are rule-fitted, not rectified from the photograph.",
+          "Roof is the 3DBAG LoD2.2 surface verbatim; dormers are declared, not measured."
+        ],
+        reviewState: "recipe-draft-gates-pass",
+        sourceUrls: [
+          "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012153622",
+          "https://data.amsterdam.nl/"
+        ],
+        updatedAt: "2026-10-09T21:54:25.230Z"
+      },
+      {
+        id: "ordinary-0363100012153782",
+        buildingId: "NL.IMBAG.Pand.0363100012153782",
+        name: "Bilderdijkstraat (1891 red brick, white bosses)",
+        hash: "296beaaf1e8134e483811d18c45139f9a409c2049ea9083527d2966f274cf80c",
+        sha256: "296beaaf1e8134e483811d18c45139f9a409c2049ea9083527d2966f274cf80c",
+        bytes: 110968,
+        triangles: 1574,
+        materials: 8,
+        textures: 0,
+        scale: 1,
+        bounds: {
+          min: [
+            -2.984,
+            0,
+            -12.65
+          ],
+          max: [
+            2.811,
+            17.473,
+            0.275
+          ]
+        },
+        anchor: [
+          4.872503576449586,
+          52.36709125970858
+        ],
+        footprint: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [
+                4.8726898,
+                52.3671138
+              ],
+              [
+                4.8726658,
+                52.3671468
+              ],
+              [
+                4.8726341,
+                52.367138
+              ],
+              [
+                4.8726248,
+                52.3671521
+              ],
+              [
+                4.8724874,
+                52.3671145
+              ],
+              [
+                4.8725198,
+                52.367068
+              ]
+            ]
+          ]
+        },
+        nativeHeight: 15.97,
+        height: 15.97,
+        modelUrl: "./models/ordinary-buildings/recipe-bilder-153782.glb",
+        suppress: [
+          "NL.IMBAG.Pand.0363100012153782"
+        ],
+        instance: {
+          anchor: [
+            4.872503576449586,
+            52.36709125970858
+          ],
+          northOffsetDegrees: 66.9389,
+          mirror: false
+        },
+        source: "building-recipes",
+        recipe: {
+          id: "bilder-153782",
+          mesh: "bilder-153782",
+          shared: false,
+          intentSources: [
+            "staging/pand-reference/0363100012153782/front.jpg"
+          ],
+          footprintIoU: 1,
+          frontZoneIoU: 1,
+          maxDimDeltaM: 0,
+          gates: [
+            "triangle-budget:pass",
+            "finite:pass",
+            "non-metallic:pass",
+            "footprint-vs-bag:pass",
+            "ridge-vs-3dbag:pass",
+            "eaves-vs-3dbag/front0:pass",
+            "storey-height/front0:pass",
+            "no-floating-parts:pass",
+            "open-edges:pass"
+          ]
+        },
+        scope: "Recipe-pipeline house on Bilderdijkstraat: facade classified from the rectified municipal panorama crop, metres fitted from 3DBAG LoD2.2; exact BAG host suppression.",
+        limitations: [
+          "Facade proportions are rule-fitted, not rectified from the photograph.",
+          "Roof is the 3DBAG LoD2.2 surface verbatim; dormers are declared, not measured."
+        ],
+        reviewState: "recipe-draft-gates-pass",
+        sourceUrls: [
+          "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012153782",
+          "https://data.amsterdam.nl/"
+        ],
+        updatedAt: "2026-10-09T21:54:25.230Z"
+      },
+      {
+        id: "ordinary-0363100012156287",
+        buildingId: "NL.IMBAG.Pand.0363100012156287",
+        name: "Bilderdijkstraat (1903 orange brick, stepped gable, balconies)",
+        hash: "cfd1206a67d9ecb5e22a91a29263275d045e19cb63b27a7d5c5d878ed3b8c047",
+        sha256: "cfd1206a67d9ecb5e22a91a29263275d045e19cb63b27a7d5c5d878ed3b8c047",
+        bytes: 154716,
+        triangles: 2203,
+        materials: 10,
+        textures: 0,
+        scale: 1,
+        bounds: {
+          min: [
+            -3.011,
+            0,
+            -19.08
+          ],
+          max: [
+            3.073,
+            19.194,
+            1.001
+          ]
+        },
+        anchor: [
+          4.871280319334681,
+          52.368171734276956
+        ],
+        footprint: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [
+                4.8712631,
+                52.3681967
+              ],
+              [
+                4.8710047,
+                52.3681305
+              ],
+              [
+                4.8710232,
+                52.3681036
+              ],
+              [
+                4.8710673,
+                52.3681146
+              ],
+              [
+                4.8710627,
+                52.3681205
+              ],
+              [
+                4.8710949,
+                52.3681276
+              ],
+              [
+                4.8711137,
+                52.3681004
+              ],
+              [
+                4.8712975,
+                52.3681468
+              ]
+            ]
+          ]
+        },
+        nativeHeight: 18.89,
+        height: 19.15,
+        modelUrl: "./models/ordinary-buildings/recipe-bilder-156287.glb",
+        suppress: [
+          "NL.IMBAG.Pand.0363100012156287"
+        ],
+        instance: {
+          anchor: [
+            4.871280319334681,
+            52.368171734276956
+          ],
+          northOffsetDegrees: 247.1759,
+          mirror: false
+        },
+        source: "building-recipes",
+        recipe: {
+          id: "bilder-156287",
+          mesh: "bilder-156287",
+          shared: false,
+          intentSources: [
+            "staging/pand-reference/0363100012156287/front-alt.jpg"
+          ],
+          footprintIoU: 1,
+          frontZoneIoU: 1,
+          maxDimDeltaM: 0,
+          gates: [
+            "triangle-budget:pass",
+            "finite:pass",
+            "non-metallic:pass",
+            "footprint-vs-bag:pass",
+            "ridge-vs-3dbag:pass",
+            "eaves-vs-3dbag/front0:pass",
+            "storey-height/front0:pass",
+            "no-floating-parts:pass",
+            "open-edges:pass"
+          ]
+        },
+        scope: "Recipe-pipeline house on Bilderdijkstraat: facade classified from the rectified municipal panorama crop, metres fitted from 3DBAG LoD2.2; exact BAG host suppression.",
+        limitations: [
+          "Facade proportions are rule-fitted, not rectified from the photograph.",
+          "Roof is the 3DBAG LoD2.2 surface verbatim; dormers are declared, not measured."
+        ],
+        reviewState: "recipe-draft-gates-pass",
+        sourceUrls: [
+          "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012156287",
+          "https://data.amsterdam.nl/"
+        ],
+        updatedAt: "2026-10-09T21:54:25.230Z"
       }
     ]
   };
@@ -44594,7 +45402,9 @@ Map source: ${osmUrl(places[i][0])}`);
       name: "Afrikahuis",
       description: "Architect Joop van Stigt designed Afrikahuis as five linked octagonal units, combining a church with neighborhood spaces. Its concrete base, limestone walls and glazed staircase bays express Amsterdam structuralism.",
       sourceUrl: "https://amsterdamopdekaart.nl/1966-1990/Van_Ostadestraat/Afrikahuis",
-      additionalSources: ["https://erfgoedregister.amsterdam.nl/monument/34d28c9d-f6c7-44bc-affa-d3d2c055b7a9/"]
+      additionalSources: [
+        "https://erfgoedregister.amsterdam.nl/monument/34d28c9d-f6c7-44bc-affa-d3d2c055b7a9/"
+      ]
     },
     {
       modelId: "cafe-kobalt",
@@ -45179,6 +45989,42 @@ Map source: ${osmUrl(places[i][0])}`);
       description: "The West India House on Herenmarkt was the Amsterdam headquarters of the Dutch West India Company. Built in 1617 as a meat market and militia waiting room, it was rented by the company from 1623 and extended with two wings around a courtyard, tripling its size by 1647. A fire in 1975 was followed by restoration in 1978-1981; it now holds offices, the John Adams Institute and a municipal wedding hall.",
       funFact: "It was here in 1625 that the company directors ordered the building of a fort on Manhattan, the beginning of New Amsterdam and later New York. A bronze statue of Peter Stuyvesant stands in the courtyard.",
       sourceUrl: "https://en.wikipedia.org/wiki/West-Indisch_Huis"
+    },
+    {
+      modelId: "thomaskerk",
+      landmarkId: "extract_landmarks_741771335",
+      name: "Thomaskerk",
+      description: "De Thomas, the Thomaskerk on Prinses Irenestraat in Amsterdam-Zuid, is a Protestant church designed by Karel Sijmons and built in 1966 for the Dutch Reformed congregation of the new Nieuw-Zuid district. Its low buff-brick volumes, ribbon windows and a bell frame of white concrete projecting from the facade are sober and entirely arranged around Word, Baptism and Communion. Sijmons took inspiration from Le Corbusier's chapel at Ronchamp, and the undulating roof inside recalls the sea the Israelites crossed. It is a municipal monument.",
+      funFact: "Sijmons paid for the 1967 stained-glass crucifixion window by the Spanish artist Antonio Saura himself because he insisted it belonged in the church.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Thomaskerk_(Amsterdam)",
+      preferDescription: true
+    },
+    {
+      modelId: "willem-de-zwijgerkerk",
+      landmarkId: "extract_landmarks_1347119904",
+      name: "Willem de Zwijgerkerk",
+      description: "The Willem de Zwijgerkerk at Olympiaweg 14 in the Stadionbuurt is a brick Amsterdam School church designed by Cornelis Kruyswijk and built in 1931 for the Dutch Reformed Church. A steep tiled nave roof with tall gables is flanked by lower pent-roofed aisles with clerestory windows, and a slender clock tower with a green copper top rises beside the entrance. Today it is a neighbourhood church of the Protestant Church in Amsterdam and a municipal monument.",
+      funFact: "The church was built in 1930-31 together with the Moria parish hall and an old people's home (now student housing) in the same city block; its stained-glass windows by Kees Kuiler show Christmas, Easter and Pentecost.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Willem_de_Zwijgerkerk_(Amsterdam)",
+      preferDescription: true
+    },
+    {
+      modelId: "vrijburg",
+      landmarkId: "extract_landmarks_563908011",
+      name: "Vrijburg",
+      description: "Vrijburg, Diepenbrockstraat 46, is the Remonstrant church of Amsterdam-Zuid. It was built in 1931-1933 on a plot at the point of the Zuider Amstelkanaal, Boerenwetering and Verlengde Diepenbrockstraat, when the area was still empty building land. A tall red-brick gable with a round-arched entrance faces the street, and the side facade runs along Herman Gorterstraat.",
+      funFact: "The Remonstrants already had their hidden church on the Keizersgracht, but built this second church for the new southern expansion of the city; it was tendered in the winter of 1931-32 for 105,500 guilders and opened on 18 June 1933.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Diepenbrockstraat_46",
+      preferDescription: true
+    },
+    {
+      modelId: "van-gendt-hallen",
+      landmarkId: "extract_landmarks_1351046417",
+      name: "Van Gendt Hallen",
+      description: "The Van Gendt Hallen, also called the Hallen van Stork or Werkspoorhallen, are five interlinked workshop halls of the former Werkspoor factory on Oostenburg. Designed by A.L. van Gendt and his brothers in functional brick with neo-Renaissance touches in the gables, they have stepped corbel friezes under shallow-arched gable tops, tall arched factory windows and long glazed roof lanterns. They have been a rijksmonument since 2001.",
+      funFact: "The halls were built from 1898 to 1910 to satisfy an order for 40 locomotives and 400 wagons for South Africa; in 1903 one of them built the first cast-iron diesel ship engine, and halls 4 and 5 were partly burned in 1922 and rebuilt exactly to the original design.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Hallen_van_Stork",
+      preferDescription: true
     }
   ];
 

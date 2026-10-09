@@ -487,8 +487,8 @@
       "dateSource": "asset-update"
     },
     "haparandaweg-902-950": {
-      "updatedAt": "2026-10-09T21:21:05.629Z",
-      "version": "22f8a6d6b3d09cf9",
+      "updatedAt": "2026-10-09T21:59:44.037Z",
+      "version": "de90b22a5d52b454",
       "dateSource": "asset-update"
     },
     "haparandaweg-952-1002": {
@@ -1136,6 +1136,11 @@
       "version": "3498cabee6eaae8d",
       "dateSource": "asset-update"
     },
+    "thomaskerk": {
+      "updatedAt": "2026-10-09T22:07:23.833Z",
+      "version": "b80127c8ba91dbcc",
+      "dateSource": "asset-update"
+    },
     "tobacco-theater": {
       "updatedAt": "2026-10-04T05:44:11+02:00",
       "version": "e77efef4eb4fd0a0",
@@ -1164,6 +1169,11 @@
     "valley": {
       "updatedAt": "2026-10-06T09:01:19.850Z",
       "version": "e00596e88da882b0",
+      "dateSource": "asset-update"
+    },
+    "van-gendt-hallen": {
+      "updatedAt": "2026-10-09T22:00:40.504Z",
+      "version": "5685ea4e1f7c6a36",
       "dateSource": "asset-update"
     },
     "van-gogh-museum": {
@@ -1196,6 +1206,11 @@
       "version": "15f1065728425196",
       "dateSource": "git-history"
     },
+    "vrijburg": {
+      "updatedAt": "2026-10-09T21:53:01.139Z",
+      "version": "1b37afe9c6f257d0",
+      "dateSource": "asset-update"
+    },
     "w139": {
       "updatedAt": "2026-10-05T19:26:31.549Z",
       "version": "885eb44012397f07",
@@ -1219,6 +1234,11 @@
     "westerkerk": {
       "updatedAt": "2026-10-07T20:57:57.615Z",
       "version": "b2efbdd4c34631b7",
+      "dateSource": "asset-update"
+    },
+    "willem-de-zwijgerkerk": {
+      "updatedAt": "2026-10-09T22:07:23.863Z",
+      "version": "50b84d44fa075174",
       "dateSource": "asset-update"
     },
     "willet-holthuysen": {
