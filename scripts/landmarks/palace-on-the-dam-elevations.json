@@ -1,0 +1,16 @@
+{
+  "id": "palace-on-the-dam",
+  "countedBy": "pending blind count",
+  "facades": [
+    {
+      "name": "east (Dam)",
+      "bearing": 92.5,
+      "photo": "artifacts/landmark-lanes/palace-on-the-dam/ref-east.jpg"
+    },
+    {
+      "name": "west",
+      "bearing": 272.5,
+      "photo": "artifacts/landmark-lanes/palace-on-the-dam/ref-west.jpg"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+{"id": "haparandaweg-902-950", "countedBy": "blind counter (haiku) from artifacts/haparandaweg/ref-front.jpg (= ref/0363100012244558/front.jpg), 2026-10-09; rows 7x5, columns 5, symmetric, gables 5. openings adds glassRail because the bay-5 balustrades are glass.", "facades": [
+  {"name": "front NW (Haparandaweg)", "bearing": 320, "photo": "artifacts/haparandaweg/ref-front.jpg",
+   "rows": [5, 5, 5, 5, 5, 5, 5], "columns": 5, "symmetric": true, "gables": 5, "openings": ["glass", "glassRail"]}
+]}

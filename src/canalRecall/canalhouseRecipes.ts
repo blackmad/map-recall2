@@ -72,6 +72,12 @@ export interface CanalhouseBalcony {
  infill?:{template:'cross';panels:number};
  projection?:{widthM:number;slabThicknessM:number;pierWidthM:number;supportHeightM?:number};
 }
+/** Stone dressings and fabric awnings attached to the wall plane (<= 1 cm gap, back face sunk into the wall).
+ * `slab`: a flat block (lintel, sill, jamb, keystone, quoin). `awning`: a thin sloped canopy whose back edge sits on
+ * the wall at `topM` and falls `dropM` over `projectM`, with a vertical `valanceM` skirt; `dutch` is the convex quarter-round hood. */
+export type CanalhouseDressing =
+  | {id: string; kind: 'slab'; leftM: number; bottomM: number; widthM: number; heightM: number; depthM: number; surface: 'stone' | 'trim' | 'accent' | 'wall'}
+  | {id: string; kind: 'awning'; style: 'straight' | 'dutch'; leftM: number; widthM: number; topM: number; dropM: number; projectM: number; valanceM: number; surface: 'awning'};
 export interface CanalhouseOrnament { id: string; profile: CanalhousePoint[]; depthM: number; fill?: 'trim' | 'wall' | 'stone' | 'accent' | 'shop'; rimWidthM?: number }
 /** One reusable lateral flight, including its independently observed open rail. */
 export interface CanalhouseApproach {
@@ -108,6 +114,7 @@ export interface CanalhouseElevation {
   bands?: Measured<CanalhouseFacadeBlock[]>;
   blocks?: Measured<CanalhouseFacadeBlock[]>;
   ornaments?: Measured<CanalhouseOrnament[]>;
+  dressings?: Measured<CanalhouseDressing[]>;
   /** Measured top outline, left-to-right in facade metres and height above ground. */
   crown?: Measured<{ profile: CanalhousePoint[]; depthM: number; trimWidthM: number; surface?: 'wall' | 'trim' | 'stone';
     /** A localized facing follows the shared head profile above this height. */
@@ -138,7 +145,7 @@ export interface CanalHouseRecipe {
   shellTopM?: Measured<number>;
   /** Local east/south metres; Y is vertical in the compiled Three group. */
   footprint: Measured<CanalhousePolygon[]>;
-  palette: Measured<{ wall: string; roof: string; trim: string; glass: string; door: string; stone?: string; joinery?: string; accent?: string; shop?: string }>;
+  palette: Measured<{ wall: string; roof: string; trim: string; glass: string; door: string; stone?: string; joinery?: string; accent?: string; shop?: string; awning?: string }>;
   /** Explicit surveyed roof partition. Planes are heightM + x*slopeX + z*slopeZ. */
   roof: Measured<{ polygon: CanalhousePolygon; plane: { heightM: number; slopeX: number; slopeZ: number }; generatedFragment?:'symmetric-roof'|'roof-envelope' }[]>;
   elevations: CanalhouseElevation[]; simplifications: string[];
@@ -280,7 +287,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
   if(!polygons.length) throw new Error('Missing surveyed footprint');
   if(Object.values(palette).some(c=>!/^#[\da-f]{6}$/i.test(c))) throw new Error('Invalid flat palette');
   const group=new T.Group(); group.name=recipe.id;
-  const materials=Object.fromEntries(Object.entries({...palette,stone:palette.stone??palette.trim,joinery:palette.joinery??palette.trim,accent:palette.accent??palette.wall,shop:palette.shop??palette.door}).map(([k,c])=>[k,new T.MeshStandardMaterial({color:c,roughness:1})])) as Record<keyof typeof palette,T.MeshStandardMaterial>;
+  const materials=Object.fromEntries(Object.entries({...palette,stone:palette.stone??palette.trim,joinery:palette.joinery??palette.trim,accent:palette.accent??palette.wall,shop:palette.shop??palette.door,awning:palette.awning??palette.shop??palette.door}).map(([k,c])=>[k,new T.MeshStandardMaterial({color:c,roughness:1})])) as Record<keyof typeof palette,T.MeshStandardMaterial>;
   const facadeMaterials=new WeakMap<T.Group,typeof materials>();
   const add = (geometry:T.BufferGeometry,surface:keyof typeof palette,name:string,parent:T.Group=group) => {
     const mesh=new T.Mesh(geometry,(facadeMaterials.get(parent)??materials)[surface]); mesh.name=name; mesh.userData={component:name.split('/')[0],surface,pandId:recipe.house.pandId}; parent.add(mesh); return mesh;
@@ -399,7 +406,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
     if(elevation.palette){
       const colors=read(elevation.palette,`${elevation.id}/palette`);
       if(Object.values(colors).some(c=>!/^#[\da-f]{6}$/i.test(c)))throw new Error('Invalid frontage palette');
-      facadeMaterials.set(facade,Object.fromEntries(Object.entries({...colors,stone:colors.stone??colors.trim,joinery:colors.joinery??colors.trim,accent:colors.accent??colors.wall,shop:colors.shop??colors.door}).map(([k,c])=>[k,new T.MeshStandardMaterial({color:c,roughness:1})])) as typeof materials);
+      facadeMaterials.set(facade,Object.fromEntries(Object.entries({...colors,stone:colors.stone??colors.trim,joinery:colors.joinery??colors.trim,accent:colors.accent??colors.wall,shop:colors.shop??colors.door,awning:colors.awning??colors.shop??colors.door}).map(([k,c])=>[k,new T.MeshStandardMaterial({color:c,roughness:1})])) as typeof materials);
     }
     facade.matrix.set(ux,0,nx,a[0]+nx*outward, 0,1,0,0, uz,0,nz,a[1]+nz*outward, 0,0,0,1);facade.matrixAutoUpdate=false;group.add(facade);
     const box=(x:number,y:number,w:number,h:number,d:number,depth:number,s:keyof typeof palette,name:string)=>{
@@ -814,6 +821,30 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
           const [x,y]=o.profile[i],[xx,yy]=o.profile[(i+1)%o.profile.length],distance=Math.hypot(xx-x,yy-y);if(distance<EPS)continue;
           const g=new T.BoxGeometry(distance,o.rimWidthM,o.depthM);g.rotateZ(Math.atan2(yy-y,xx-x));g.translate((x+xx)/2,(y+yy)/2,.1+o.depthM);add(g,'trim',`ornament/${o.id}/rim`,facade);
         }}
+      }
+    }
+    if(elevation.dressings){
+      const ids=new Set<string>();
+      for(const d of read(elevation.dressings,`${elevation.id}/dressings`)){
+        if(!d.id.trim()||ids.has(d.id))throw new Error('Duplicate facade dressing');ids.add(d.id);
+        positive(d.widthM);finite(d.leftM);
+        if(d.leftM<-EPS||d.leftM+d.widthM>length+EPS)throw new Error('Facade dressing escapes its wall');
+        if(d.kind==='slab'){
+          positive(d.heightM,d.depthM);finite(d.bottomM);
+          if(d.depthM>.12||d.bottomM<0||!['stone','trim','accent','wall'].includes(d.surface)||!withinWall(d.leftM,d.widthM,d.bottomM+d.heightM))throw new Error('Facade dressing escapes its supported wall');
+          box(d.leftM,d.bottomM,d.widthM,d.heightM,d.depthM,d.depthM/2-.005,d.surface,`dressing/${d.id}`);
+        }else if(d.kind==='awning'){
+          positive(d.dropM,d.projectM,d.valanceM);finite(d.topM);
+          if(d.projectM>1.4||d.surface!=='awning'||!['straight','dutch'].includes(d.style)||d.topM-d.dropM-d.valanceM<2||!withinWall(d.leftM,d.widthM,d.topM))throw new Error('Unsupported awning');
+          const P=d.projectM,T0=d.topM,thick=.03,top:[number,number][]=[];
+          // Upper surface from the wall to the front edge: a straight ramp, or a convex quarter-round hood.
+          const steps=d.style==='dutch'?4:1;
+          for(let i=0;i<=steps;i++){const t=i/steps;top.push(d.style==='dutch'?[-.005+(P+.005)*Math.sin(t*Math.PI/2),T0-d.dropM*(1-Math.cos(t*Math.PI/2))]:[-.005+(P+.005)*t,T0-d.dropM*t]);}
+          const front=top.at(-1)!,under=top.slice(0,-1).map(([z,y])=>[z-(z>0?thick:0),y-thick] as [number,number]).reverse();
+          const pts:[number,number][]=[...top,[front[0],front[1]-d.valanceM],[front[0]-thick,front[1]-d.valanceM],[front[0]-thick,front[1]-thick],...under.slice(0,-1),[-.005,T0-thick]];
+          const g=new T.ExtrudeGeometry(new T.Shape(pts.map(([z,y])=>new T.Vector2(z,y))),{depth:d.widthM,bevelEnabled:false});
+          g.rotateY(-Math.PI/2);g.translate(d.leftM+d.widthM,0,0);add(g,'awning',`dressing/${d.id}`,facade);
+        }else throw new Error('Unsupported facade dressing');
       }
     }
     for(const [component,field] of [['bands',elevation.bands],['blocks',elevation.blocks]] as const)if(field){

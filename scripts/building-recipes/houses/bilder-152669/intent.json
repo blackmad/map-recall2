@@ -30,7 +30,8 @@
     "colour": "black",
     "fascia": true
    },
-   "bands": "lintel"
+   "bands": "lintel",
+   "windowSurround": "keystone"
   }
  ],
  "roof": {
@@ -42,5 +43,7 @@
   "door": "dark-brown",
   "stone": "cream"
  },
- "notes": []
+ "notes": [
+  "2026-10-09 surrounds: cream keystones over the arched heads (front.jpg)."
+ ]
 }
