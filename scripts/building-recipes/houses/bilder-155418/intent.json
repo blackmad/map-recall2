@@ -1,0 +1,46 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "bilder-155418",
+ "pandId": "0363100012155418",
+ "address": "Bilderdijkstraat (1903 behind a tree, gabled)",
+ "sources": [
+  {
+   "id": "pano-2025-07-31",
+   "kind": "street-panorama",
+   "capturedAt": "2025-07-31",
+   "image": "staging/pand-reference/0363100012155418/front-alt.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "fronts": [
+  {
+   "id": "front0",
+   "street": "Bilderdijkstraat",
+   "hoist": false,
+   "windows": "sash",
+   "basement": "none",
+   "cornice": "simple",
+   "gable": "step",
+   "storeys": 5,
+   "bays": 3,
+   "atticWindows": 1,
+   "doorBay": 0,
+   "shopfront": {
+    "colour": "dark-blue",
+    "fascia": true
+   },
+   "bands": "lintel"
+  }
+ ],
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "orange-brick",
+  "frame": "cream-painted",
+  "door": "dark-green",
+  "stone": "cream"
+ },
+ "notes": []
+}

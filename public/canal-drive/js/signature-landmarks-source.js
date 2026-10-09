@@ -69,6 +69,8 @@ export class SignatureLandmarks {
     this.depthBiasEnabled = options.depthBiasEnabled !== false;
     this._pending = new Map();
     this._failed = new Set();
+    /** One decoded GLB per shared-mesh URL (recipe-pipeline houses); instances clone it and share geometry and materials. */
+    this._sharedAssets = new window.CanalRecallSignatureLandmarks.SharedAssetCache();
     this._generation = 0;
     this._removed = false;
     this._onMove = () => this._requestModels();
@@ -295,12 +297,13 @@ export class SignatureLandmarks {
         this._pending.delete(spec.id);
         this._requestModels();
       };
-      this._loader.load(assetUrl(spec.modelUrl, spec.id), gltf => {
+      const url = assetUrl(spec.modelUrl, spec.id), loader = this._loader;
+      const onLoaded = gltf => {
         if (this._removed || generation !== this._generation) {
-          this._disposeModel(gltf.scene);
+          this._disposeModel(gltf.scene, spec, url);
           return;
         }
-        try { this._add(this._lightScene, spec, gltf.scene, this.map); }
+        try { this._add(this._lightScene, spec, gltf.scene, this.map, url); }
         catch (error) {
           this._failed.add(spec.id);
           // Placement or the host callback can fail after insertion. Give the
@@ -308,20 +311,36 @@ export class SignatureLandmarks {
           this._entries = this._entries.filter(entry => entry.spec.id !== spec.id);
           this.shown.delete(spec.id);
           this._applySuppression();
-          this._disposeModel(gltf.scene);
+          this._disposeModel(gltf.scene, spec, url);
           console.warn(`Signature model for ${spec.name} could not be placed; keeping the OSM extrusion.`, error);
         }
         finally { finish(); }
-      }, undefined, error => {
+      };
+      const onError = error => {
         if (this._removed || generation !== this._generation) return;
         this._failed.add(spec.id);
         console.warn(`Signature model for ${spec.name} unavailable; keeping the OSM extrusion.`, error);
         finish();
-      });
+      };
+      if (spec.sharedModel) {
+        // Shared mesh: decode once, then clone per instance (geometry and materials stay shared).
+        this._sharedAssets.acquire(url, () => loader.loadAsync(url))
+          .then(gltf => onLoaded({ scene: gltf.scene.clone(true) }), onError);
+      } else loader.load(url, onLoaded, undefined, onError);
     }
   }
 
-  _disposeModel(group) {
+  /** Free a model's GPU resources. A shared-mesh clone only drops its reference; the master is freed with the last instance. */
+  _disposeModel(group, spec, url) {
+    if (spec?.sharedModel) {
+      const master = this._sharedAssets.release(url);
+      if (master) this._disposeResources(master.scene);
+      return;
+    }
+    this._disposeResources(group);
+  }
+
+  _disposeResources(group) {
     const geometries = new Set(), materials = new Set(), textures = new Set();
     group.traverse(child => {
       if (!child.isMesh) return;
@@ -392,7 +411,7 @@ export class SignatureLandmarks {
         owner.onHostWallOpeningsChanged();
         map.off('moveend', owner._onMove);
         owner._pending.clear();
-        for (const entry of owner._entries) owner._disposeModel(entry.group);
+        for (const entry of owner._entries) owner._disposeModel(entry.group, entry.spec, entry.url);
         owner._entries = [];
         owner.shown.clear();
         owner._loader = null;
@@ -418,7 +437,7 @@ export class SignatureLandmarks {
   /** Normalises a loaded model onto its anchor and builds its fixed transform.
    *  Buildings do not move, so the matrix is computed once here rather than
    *  every frame. */
-  _add(scene, spec, imported, map) {
+  _add(scene, spec, imported, map, url) {
     const bounds = new THREE.Box3().setFromObject(imported);
     const min = bounds.min;
     const max = bounds.max;
@@ -440,6 +459,8 @@ export class SignatureLandmarks {
     const group = new THREE.Group();
     group.add(imported);
     group.scale.setScalar(placement.scale);
+    // Mirrored shared-mesh instance: negating X gives the group a negative determinant, which three.js answers by flipping the front face, so winding stays correct.
+    if (placement.mirror) group.scale.x = -group.scale.x;
 
     // Each model gets its own scene: the transform below is baked into the
     // camera rather than the object, because MapLibre hands us a projection
@@ -473,7 +494,7 @@ export class SignatureLandmarks {
         .multiply(new THREE.Matrix4().makeRotationX(Math.PI / 2));
     }
 
-    this._entries.push({ spec, group, scene: modelScene, transform, highlighted: false, placement });
+    this._entries.push({ spec, group, scene: modelScene, transform, highlighted: false, placement, url });
     this.shown.add(spec.id);
     // Only now is it safe to take the grey box away.
     this._applySuppression();
