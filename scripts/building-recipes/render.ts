@@ -28,11 +28,19 @@ async function getPage(): Promise<Page> {
 }
 export async function closeRenderer() { await browser?.close(); browser = null; page = null; }
 
+/** The city's brick photo, for the recipe look (null = flat lit materials, `--flat`). */
+let brickUrl: string | null | undefined;
+export function useFlatMaterials() { brickUrl = null; }
+async function cityBrick() {
+  if (brickUrl === undefined) brickUrl = `data:image/jpeg;base64,${(await fs.readFile('public/canal-drive/materials/ambientcg/Bricks057/colour.jpg')).toString('base64')}`;
+  return brickUrl;
+}
 export async function renderModels(models: RenderModel[], views: RenderView[], textures?: Record<string, string>): Promise<Buffer[]> {
   const p = await getPage();
+  const brick = await cityBrick();
   const payload = await Promise.all(models.map(async m => ({...m, base64: (await fs.readFile(m.file)).toString('base64')})));
   const tex = textures ? Object.fromEntries(await Promise.all(Object.entries(textures).map(async ([k, f]) => [k, `data:image/png;base64,${(await fs.readFile(f)).toString('base64')}`]))) : undefined;
-  const urls: string[] = await p.evaluate(([m, v, t]) => (window as any).renderGlbs(m, v, t), [payload, views, tex] as const);
+  const urls: string[] = await p.evaluate(([m, v, t, b]) => (window as any).renderGlbs(m, v, t, b), [payload, views, tex, brick] as const);
   return urls.map(u => Buffer.from(u.split(',')[1], 'base64'));
 }
 
@@ -140,6 +148,7 @@ export async function columnsSheet(ids: string[], out: string, panel = {width: 3
 
 if (process.argv[1]?.endsWith('building-recipes/render.ts')) {
   const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
+  if (process.argv.includes('--flat')) useFlatMaterials();
   const textures = process.argv.includes('--textures') ? {brick: 'artifacts/building-recipes/textures/brick-256.png', roofTile: 'artifacts/building-recipes/textures/roof-tile-256.png', slate: 'artifacts/building-recipes/textures/roof-tile-256.png'} : undefined;
   try {
     if (arg('sheet')) console.log(await columnsSheet(arg('sheet')!.split(','), arg('out') ?? `${ARTIFACTS}/sheet.png`, undefined, textures));

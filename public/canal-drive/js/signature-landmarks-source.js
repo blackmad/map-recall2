@@ -11,6 +11,7 @@
 // download fails, keeps the grey box. There is never a hole on the Dam.
 //
 // three.js is shared across the 3D bundles — see three-runtime-source.js.
+import { createRecipeLook, RECIPE_LOOK_SHARED } from '../../../src/canalRecall/buildingRecipe/recipeLook.ts';
 const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
 const { SIGNATURE_MODELS, placementFor, basemapBuildingFilter } = window.CanalRecallSignatureLandmarks;
 
@@ -324,10 +325,30 @@ export class SignatureLandmarks {
       };
       if (spec.sharedModel) {
         // Shared mesh: decode once, then clone per instance (geometry and materials stay shared).
-        this._sharedAssets.acquire(url, () => loader.loadAsync(url))
+        this._sharedAssets.acquire(url, () => loader.loadAsync(url).then(gltf => this._dress(gltf) ?? gltf))
           .then(gltf => onLoaded({ scene: gltf.scene.clone(true) }), onError);
-      } else loader.load(url, onLoaded, undefined, onError);
+      } else loader.load(url, gltf => { const dressing = this._dress(gltf); if (dressing) dressing.then(onLoaded, onError); else onLoaded(gltf); }, undefined, onError);
     }
+  }
+
+  /**
+   * Recipe-pipeline GLBs tag materials with a `materialSlot`; they get the
+   * city's look (shared brick/glass/roof textures, palette mapping, fixed-light
+   * shade; see buildingRecipe/recipeLook.ts) so they sit with the procedural
+   * facades around them. Other models pass through untouched (returns null:
+   * they keep the synchronous load path).
+   */
+  _dress(gltf) {
+    let tagged = false;
+    gltf.scene.traverse(child => { if (child.isMesh && child.material?.userData?.materialSlot) tagged = true; });
+    if (!tagged) return null;
+    if (!this._recipeLookReady) {
+      const image = new Image();
+      image.src = new URL('materials/ambientcg/Bricks057/colour.jpg', document.baseURI).href;
+      this._recipeLookReady = image.decode().then(() => image, () => null)
+        .then(brick => { this._recipeLook = createRecipeLook(THREE, { brick, anisotropy: 4 }); return this._recipeLook; });
+    }
+    return this._recipeLookReady.then(look => { look.apply(gltf.scene); gltf.scene.userData.recipeLook = true; return gltf; });
   }
 
   /** Free a model's GPU resources. A shared-mesh clone only drops its reference; the master is freed with the last instance. */
@@ -346,7 +367,8 @@ export class SignatureLandmarks {
       if (!child.isMesh) return;
       if (child.geometry) geometries.add(child.geometry);
       for (const material of Array.isArray(child.material) ? child.material : [child.material]) {
-        if (!material) continue;
+        // The recipe look's materials and textures are shared by every recipe house.
+        if (!material || material.userData?.[RECIPE_LOOK_SHARED]) continue;
         materials.add(material);
         for (const value of Object.values(material)) if (value?.isTexture) textures.add(value);
       }
@@ -427,6 +449,7 @@ export class SignatureLandmarks {
           if (!owner._nearby(entry.spec, entry.placement.anchor) || !owner.canShowModel(entry.spec)) { entry.pickProjection = null; continue; }
           camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(entry.transform);
           entry.pickProjection = camera.projectionMatrix.clone();
+          if (entry.enuFromWorld && owner._recipeLook) owner._recipeLook.enuFromWorld.value.copy(entry.enuFromWorld);
           renderer.resetState();
           renderer.render(entry.scene, camera);
         }
@@ -494,7 +517,13 @@ export class SignatureLandmarks {
         .multiply(new THREE.Matrix4().makeRotationX(Math.PI / 2));
     }
 
-    this._entries.push({ spec, group, scene: modelScene, transform, highlighted: false, placement, url });
+    // Recipe look: world → east/north/up for its fixed-light shade. Mercator +Y runs south.
+    let enuFromWorld = null;
+    if (imported.userData.recipeLook) {
+      enuFromWorld = new THREE.Matrix3().setFromMatrix4(transform);
+      enuFromWorld.premultiply(new THREE.Matrix3().set(1, 0, 0, 0, -1, 0, 0, 0, 1)).multiplyScalar(1 / units);
+    }
+    this._entries.push({ spec, group, scene: modelScene, transform, highlighted: false, placement, url, enuFromWorld });
     this.shown.add(spec.id);
     // Only now is it safe to take the grey box away.
     this._applySuppression();

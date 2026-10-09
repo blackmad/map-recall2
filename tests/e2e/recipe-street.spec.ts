@@ -91,6 +91,19 @@ test('recipe street: installed Bilderdijkstraat houses render in the game from t
       await page.waitForTimeout(3000);
     }
   }
+  // Facade close-ups from the street, looking at the row (recipe houses with their procedural neighbours):
+  // camera 17 m out from the frontage at 9 m eye height, aimed 1 m inside the facade at 9 m.
+  const facadeViews = [['a', sorted[2], 0], ['b', sorted[Math.floor(sorted.length / 2)], 0], ['c', sorted.at(-3)!, 0], ['oblique', sorted[Math.floor(sorted.length / 2)], 40]] as const;
+  for (const [name, house, turn] of facadeViews) {
+    const eye = ahead(ahead(house.anchor, outward, 17), bearing, turn ? -16 : 0), target = ahead(house.anchor, outward, -1);
+    await page.evaluate(({ eye, target }) => {
+      const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+      vm.sync = () => {}; map.stop(); map.setMaxPitch(85);
+      map.jumpTo(map.calculateCameraOptionsFromTo({ lng: eye[0], lat: eye[1] }, 9, { lng: target[0], lat: target[1] }, 9));
+    }, { eye, target });
+    await page.waitForTimeout(5000);
+    await page.screenshot({ path: `${OUT}/in-game-${info.project.name}-facades-${name}.png` });
+  }
   const result = { ...(await stats()), houses: houses.length, uniqueMeshes: new Set(houses.map(h => h.modelUrl)).size, glbRequests: glbRequests.length, distinctGlbRequests: new Set(glbRequests).size, project: info.project.name };
   console.log('recipe-street', JSON.stringify(result));
   writeFileSync(`${OUT}/in-game-${info.project.name}.json`, JSON.stringify(result, null, 1));
