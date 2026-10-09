@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+## Het Pakhuis v2 released (2026-10-10)
+
+Released on user instruction after review of the v2 contact sheet.
+Integrator record: viewed the contact sheet (photo | front | 3/4); facade
+compare passes all checks on the NW street front against the recounted spec
+(9 rows × 5, 5 axes, symmetry 0.81, 5 gables, bays 1–3 identical); audit
+passes with warns (two party walls, inferred SE rear with no photo, 27 small
+open loops, 19 degenerate triangles); block-kit gates: height Δ 0.28 m, max
+gap 3.3 cm, 2,798 tris. Inferred faces: SE rear (enclosed courtyard), side
+party walls. Known differences: lettering lighter, balconies 0.95 m deep,
+bay 0 ~0.35 m narrow.
+
 ## Review harness: blank walls, per-bay rhythm, camera-matched sheets (2026-10-10)
 
 - `glbQuality.ts` + `wallPlanes.ts`: walls ≥25 m² whose openings (enclosed
