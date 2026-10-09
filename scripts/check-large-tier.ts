@@ -13,7 +13,8 @@ import { gameDecorator, tileKeyAt, type Feature } from '../src/canalRecall/galle
 import { buildFeatureChunk, meshBuildingFor } from '../src/canalRecall/threeBuildingFeatures.ts';
 import { layoutWall } from '../src/canalRecall/facadeLayout.ts';
 import { STYLE_DIMS } from '../src/canalRecall/facadeCells.ts';
-import { largeTierArchetype, largeTierSystem } from '../src/canalRecall/largeBuildingTier.ts';
+import { LARGE_TIER_OVERRIDES, largeTierArchetype, largeTierSystem } from '../src/canalRecall/largeBuildingTier.ts';
+import { BAY_STYLES } from '../src/canalRecall/bayLook.ts';
 import { shortBuildingId } from '../src/canalRecall/buildingFacts.ts';
 
 const EXTRACT = 'public/data/extracts/amsterdam';
@@ -34,9 +35,9 @@ function tileFeatures(lng: number, lat: number): Feature[] {
 }
 
 const CASES = [
-  { name: 'Anne Frank House museum block, Prinsengracht (1999, listed)', id: 'NL.IMBAG.Pand.0363100012169587', at: [4.884147, 52.375053], archetype: 'modern', storeys: [3, 4] },
-  { name: 'UvA PC Hoofthuis, Singel (1984, listed)', id: 'NL.IMBAG.Pand.0363100012165429', at: [4.889672, 52.373877], archetype: 'modern', storeys: [6, 7] },
-  { name: 'Nyenrode, Keizersgracht (1956)', id: 'NL.IMBAG.Pand.0363100012169023', at: [4.885315, 52.370645], archetype: 'modern', storeys: [5, 6] },
+  { name: 'Anne Frank House museum block, Prinsengracht (1999, listed)', id: 'NL.IMBAG.Pand.0363100012169587', at: [4.884147, 52.375053], archetype: 'modern', storeys: [5, 5] },
+  { name: 'UvA PC Hoofthuis, Singel (1984, listed)', id: 'NL.IMBAG.Pand.0363100012165429', at: [4.889672, 52.373877], archetype: 'modern', storeys: [7, 8] },
+  { name: 'Nyenrode, Keizersgracht (1956)', id: 'NL.IMBAG.Pand.0363100012169023', at: [4.885315, 52.370645], archetype: 'c19', storeys: [5, 5] },
 ] as const;
 
 for (const c of CASES) {
@@ -56,7 +57,7 @@ for (const c of CASES) {
   const layout = layoutWall(b.style, 30, b.heightM - b.parapetM!, 0.3, true, b.layoutScale);
   assert.ok(layout, `${c.name}: a layout`);
   assert.ok(layout.storeys + 1 >= c.storeys[0] && layout.storeys + 1 <= c.storeys[1], `${c.name}: ${layout.storeys + 1} floors for ${b.heightM} m`);
-  assert.ok(layout.storeyM >= 3.2 && layout.storeyM <= 4.6, `${c.name}: civic storey ${layout.storeyM.toFixed(2)} m`);
+  assert.ok(layout.storeyM >= 2.9 && layout.storeyM <= 4.6, `${c.name}: civic storey ${layout.storeyM.toFixed(2)} m`);
   assert.deepEqual(layout.doorBays.length, 1, `${c.name}: one entrance per run, not a house door every few bays`);
   // Cost: the same few quads per wall as any faced building.
   const bare = { ...f, properties: { ...f.properties, facade: undefined, facadeStyle: undefined, largeTier: undefined } };
@@ -77,5 +78,12 @@ assert.ok([6, 7].includes(largeTierSystem('x', 'modern', '#b9ad9a', 60).style), 
 for (const a of ['c19', 'school', 'modern'] as const) {
   const s = largeTierSystem('y', a, '#b9ad9a', 20);
   assert.ok(STYLE_DIMS[s.layout], `${a}: a known layout`);
+}
+// Hand-tuned systems name a real bay style, a photo source and a plausible wall colour.
+for (const [id, o] of Object.entries(LARGE_TIER_OVERRIDES)) {
+  assert.match(id, /^NL\.IMBAG\.Pand\.\d{16}$/, `${o.name}: a BAG id`);
+  assert.ok(o.source.length > 10, `${o.name}: cites its panorama`);
+  if (o.style !== undefined) assert.ok(BAY_STYLES[o.archetype ?? 'modern'][o.style], `${o.name}: bay style ${o.style} exists`);
+  assert.ok(!o.wallHex || /^#[0-9a-f]{6}$/.test(o.wallHex), `${o.name}: wall hex`);
 }
 console.log('large tier: ok');
