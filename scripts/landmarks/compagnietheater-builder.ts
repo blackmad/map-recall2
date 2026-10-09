@@ -65,7 +65,6 @@ export function buildCompagnietheater(_w: number, _d: number, b: BuildingTools &
     slab(b, f, c, 15.34, 2.0, 0.3, 0.36, 'white');                                  // seat / plinth
     put(b, f, new T.CylinderGeometry(0.3, 0.62, 1.5, 10).translate(0, 0.75, 0.3), c, 15.64, 0, 'white');   // seated figure
     put(b, f, new T.SphereGeometry(0.3, 10, 8).translate(0, 0, 0.3), c, 17.35, 0, 'white');                 // head
-    slab(b, f, c - 0.9, 16.0, 0.35, 0.8, 0.3, 'white');                                                    // raised arm
     for (const s of [-1, 1]) {
       put(b, f, new T.CylinderGeometry(0.22, 0.34, 0.75, 8).translate(0, 0.375, 0.2), c + s * 1.6, 15.34, 0, 'white');   // putto bodies
       put(b, f, new T.SphereGeometry(0.24, 10, 8).translate(0, 0, 0.2), c + s * 1.6, 16.35, 0, 'white');
