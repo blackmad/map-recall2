@@ -168,13 +168,14 @@ export function backJogs(group: T.Group, recipe: CanalHouseRecipe, fit: FitRepor
   return filled;
 }
 
-export interface CompiledBuilding { group: T.Group; recipe: CanalHouseRecipe; anchorRD: [number, number]; fit: FitReport; roofClasses: {steep: number; low: number; flat: number}; vergeTriangles: number }
+/** `facts` are the facts the fit used: the 3DBAG roof after roofCleanup.ts (gates compare against these). */
+export interface CompiledBuilding { group: T.Group; recipe: CanalHouseRecipe; anchorRD: [number, number]; fit: FitReport; roofClasses: {steep: number; low: number; flat: number}; vergeTriangles: number; facts: BuildingFacts }
 
 export function compileBuilding(intent: CanalHouseIntent, facts: BuildingFacts): CompiledBuilding {
-  const {recipe, anchorRD, report} = fitIntent(intent, facts);
+  const {recipe, anchorRD, report, facts: fitted} = fitIntent(intent, facts);
   const built = compileCanalHouseRecipe(recipe);
   backJogs(built.group, recipe, report);
   const vergeTriangles = crownVerges(built.group, recipe, intent.roof.material);
   const roofClasses = dressRoofs(built.group, intent.roof.material);
-  return {group: built.group, recipe, anchorRD, fit: report, roofClasses, vergeTriangles};
+  return {group: built.group, recipe, anchorRD, fit: report, roofClasses, vergeTriangles, facts: fitted};
 }

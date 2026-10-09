@@ -23,7 +23,22 @@ export interface RoofFidelity {
 export function roofFidelity(group: T.Group, facts: BuildingFacts, anchorRD: [number, number], crownTopM: number, frontIndex = 0, nearM = 2.5): RoofFidelity {
   group.updateMatrixWorld(true);
   const g = facts.heights.groundNAP, toRD = (x: number, z: number) => [x + anchorRD[0], anchorRD[1] - z];
-  const planes = facts.roofsRD.map(r => ({rings: r.ringsRD, h: fitPlane(r.ringsRD[0])}));
+  // Survey surface height: the plane fit for planar rings; for rings made non-planar by
+  // roofCleanup's front hip, the same ShapeUtils triangulation surveyRecipe compiles.
+  const planes = facts.roofsRD.map(r => {
+    const flat = r.ringsRD.flat(), plane = fitPlane(r.ringsRD[0]);
+    const planar = flat.every(v => Math.abs(plane(v[0], v[1]) - v[2]) < 0.02);
+    const tris = planar ? [] : T.ShapeUtils.triangulateShape(r.ringsRD[0].map(v => new T.Vector2(v[0] - anchorRD[0], anchorRD[1] - v[1])), r.ringsRD.slice(1).map(h => h.map(v => new T.Vector2(v[0] - anchorRD[0], anchorRD[1] - v[1])))).map(t => t.map(i => flat[i]));
+    const h = planar ? plane : (x: number, y: number) => {
+      for (const [A, B, C] of tris) {
+        const d = (B[1] - C[1]) * (A[0] - C[0]) + (C[0] - B[0]) * (A[1] - C[1]); if (Math.abs(d) < 1e-12) continue;
+        const l1 = ((B[1] - C[1]) * (x - C[0]) + (C[0] - B[0]) * (y - C[1])) / d, l2 = ((C[1] - A[1]) * (x - C[0]) + (A[0] - C[0]) * (y - C[1])) / d, l3 = 1 - l1 - l2;
+        if (l1 >= -1e-6 && l2 >= -1e-6 && l3 >= -1e-6) return l1 * A[2] + l2 * B[2] + l3 * C[2];
+      }
+      return plane(x, y);
+    };
+    return {rings: r.ringsRD, h};
+  });
   const surveyHeight = (p: number[]) => { let best: number | null = null; for (const r of planes) if (pointInRing(p, r.rings[0]) && !r.rings.slice(1).some(h => pointInRing(p, h))) { const z = r.h(p[0], p[1]) - g; if (best === null || Math.abs(z) > -Infinity) best = best === null ? z : Math.max(best, z); } return best; };
   const front = facts.fronts[frontIndex], [a, b] = front.endpointsRD, n = front.outwardNormalRD;
   let maxErr = 0, area = 0, near = -Infinity;

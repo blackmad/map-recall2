@@ -39,8 +39,9 @@ const ROW = ['bloemgracht-78', 'bloemgracht-80', 'bloemgracht-82', 'bloemgracht-
 for (const id of ROW) test(`Bloemgracht 78–90 roof fidelity: ${id}`, () => {
   const f = facts(id), built = compileBuilding(intent(id), f);
   const front = built.fit.fronts[0], gabled = !['cornice', 'flat'].includes(intent(id).fronts[0].gable);
-  const r = roofFidelity(built.group, f, built.anchorRD, gabled ? front.crownTopM : front.eavesM);
-  // Roof volume is the 3DBAG LoD2.2 planes themselves: no generated masses.
+  // Roof volume is the 3DBAG LoD2.2 planes themselves (after roofCleanup.ts artefact removal, which the fit reports): no generated masses.
+  const r = roofFidelity(built.group, built.facts, built.anchorRD, gabled ? front.crownTopM : front.eavesM);
+  assert.equal(built.facts === f, !built.fit.roofCleanup, 'clean-up is reported whenever it changed the facts');
   assert(r.maxPlaneErrorM < 0.1, `roof deviates ${r.maxPlaneErrorM.toFixed(3)} m from 3DBAG planes`);
   assert(Math.abs(r.coverage - 1) < 0.01, `roof covers ${r.coverage.toFixed(3)} of the footprint`);
   // Not one uniform mass: steep / low / flat classes are coloured apart when present.

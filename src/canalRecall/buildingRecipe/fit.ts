@@ -15,6 +15,7 @@ import {unobservedHouse, type GableType} from '../facade/houseRecord.ts';
 import {measured, type Observation} from '../facade/evidence.ts';
 import type {BuildingFacts, FrontFacts} from './facts.ts';
 import {swatch, type CanalHouseIntent, type FrontIntent, type GableIntent} from './intent.ts';
+import {cleanRoof, type RoofCleanupReport} from './roofCleanup.ts';
 
 export const ROOF_COLOURS: Record<CanalHouseIntent['roof']['material'], {steep: string; low: string; flat: string}> = {
   slate: {steep: '#3b4047', low: '#4b5056', flat: '#6a6c6c'},
@@ -41,6 +42,8 @@ export interface FitReport {
   warnings: string[];
   /** Height the model may exceed the LoD2.2 roof max by: 3DBAG LoD2.2 has no dormers, so declared dormers stand above it. */
   roofAllowanceM?: number;
+  /** 3DBAG roof artefacts removed before the survey conversion (roofCleanup.ts). */
+  roofCleanup?: RoofCleanupReport;
 }
 
 const round = (v: number, d = 3) => Math.round(v * 10 ** d) / 10 ** d;
@@ -145,8 +148,9 @@ function crownProfile(f: FrontIntent, width: number, eaves: number, top: number)
   return null;
 }
 
-export function fitIntent(intent: CanalHouseIntent, facts: BuildingFacts): {recipe: CanalHouseRecipe; anchorRD: [number, number]; report: FitReport} {
-  if (intent.pandId !== facts.pandId) throw Error('Intent and facts describe different Pand');
+export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts): {recipe: CanalHouseRecipe; anchorRD: [number, number]; report: FitReport; facts: BuildingFacts} {
+  if (intent.pandId !== surveyFacts.pandId) throw Error('Intent and facts describe different Pand');
+  const cleanup = cleanRoof(surveyFacts, {horizontalFronts: intent.fronts.filter(f => f.gable === 'cornice' || f.gable === 'flat').map(f => f.street)}), facts = cleanup.facts;
   const warnings: string[] = [];
   const bagObservation: Observation = {id: '3dbag', pandId: intent.pandId, kind: 'registry-record', elevation: 'roof', capturedAt: facts.source.fetchedAt.length === 10 ? facts.source.fetchedAt : '2025-01-01', sourceUrl: facts.source.threeDBag, license: 'CC BY 4.0 (3DBAG)'};
   const photoObservations: Observation[] = intent.sources.map(s => ({id: s.id, pandId: intent.pandId, kind: s.kind === 'monument-record' ? 'monument-record' : s.kind === 'archive-photo' ? 'archive-photo' : s.kind === 'human-review' ? 'human-review' : 'street-panorama', elevation: 'front', capturedAt: s.capturedAt, sourceUrl: s.url ?? null, license: s.license ?? null}));
@@ -298,7 +302,7 @@ export function fitIntent(intent: CanalHouseIntent, facts: BuildingFacts): {reci
     roof: surveyed(survey.roof), elevations,
     simplifications: ['Facade metres fitted from intent counts and 3DBAG heights by fixed proportion rules; not rectified from photos.', ...warnings],
   };
-  return {recipe, anchorRD: anchor, report: {fronts: reports, warnings, roofAllowanceM: intent.fronts.some(f => f.dormers) ? 1.9 : 0}};
+  return {recipe, anchorRD: anchor, facts, report: {fronts: reports, warnings, roofAllowanceM: intent.fronts.some(f => f.dormers) ? 1.9 : 0, ...(cleanup.report.actions.length ? {roofCleanup: cleanup.report} : {})}};
 }
 
 export function paletteFor(intent: CanalHouseIntent, front?: FrontIntent) {
