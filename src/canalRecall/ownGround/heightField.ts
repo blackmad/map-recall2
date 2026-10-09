@@ -112,6 +112,20 @@ export function pullPushFill(grid: Grid): number {
   return holes;
 }
 
+/**
+ * One pass of a 3×3 binomial ([1 2 1]²/16) filter, in place. Takes the 2 m
+ * cell-to-cell noise out of the DTM (kerbs, bollards, filled parked cars) that
+ * otherwise reads as rippled paving at a chase camera; slopes and ramps keep
+ * their shape. Edges clamp.
+ */
+export function smooth3(grid: Grid): void {
+  const { width: w, height: h, data } = grid, src = data.slice();
+  const at = (i: number, j: number) => src[Math.min(h - 1, Math.max(0, j)) * w + Math.min(w - 1, Math.max(0, i))];
+  for (let j = 0; j < h; j++) for (let i = 0; i < w; i++) {
+    data[j * w + i] = (at(i - 1, j - 1) + 2 * at(i, j - 1) + at(i + 1, j - 1) + 2 * at(i - 1, j) + 4 * at(i, j) + 2 * at(i + 1, j) + at(i - 1, j + 1) + 2 * at(i, j + 1) + at(i + 1, j + 1)) / 16;
+  }
+}
+
 /** Metres NAP → delta-coded int16 centimetres (see file header). */
 export function encodeTile(heights: Float32Array, n: number): Uint8Array {
   const out = new Int16Array(n * n);

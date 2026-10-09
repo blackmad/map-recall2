@@ -9,9 +9,9 @@
 //          --loader:.json=json --minify --outfile=public/canal-drive/js/own-ground.bundle.js
 // Page:  /canal-drive/own-ground.html?box=nassaukade   (or box=leidsegracht, or lat=&lng=)
 // Params: r (radius m), cam=chase|map, mapcam=lng,lat,zoom,pitch,bearing[,fov],
-//         rider=lng,lat,bearingDeg, auto=0|1, route=0|1, highlight=<street name>,
+//         cam=free&eye=lng,lat,z&look=lng,lat,z (scene z; water is −1.77), rider=lng,lat,bearingDeg, auto=0|1, route=0|1, highlight=<street name>,
 //         buildings=0|1, relief=1|0 (0 = flat z=0 everywhere, for A/B), exag=<relief exaggeration>,
-//         fx=0, shadows, ao, dpr, hud=0, land=<grid step m>.
+//         hide=<label prefixes, e.g. street:,land,area:> (debug), fx=0, shadows, ao, dpr, hud=0, land=<grid step m>.
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
@@ -37,9 +37,9 @@ import { decodeTile, fitLocalToRd, GroundField, type GroundIndex } from './heigh
 import { GroundSurface, riderPose, type Vec2 } from './surface.js';
 import { boxById } from './boxes.js';
 import type { OsmGroundExtract } from './osmGround.js';
-import { buildStreets, prepareWays, routeRibbon, streetTriangles, LIFT, type LocalWay } from './streets.js';
+import { buildStreets, isBridgeWay, prepareWays, routeRibbon, streetTriangles, LIFT, type LocalWay } from './streets.js';
 import { drapeTriangles, emptyMesh, reliefGrid, merge, triangleCount, type MeshArrays } from './drape.js';
-import { buildWaterMask, maskDistance, quayWallMesh, waterSurfaceMesh, type WaterGeometry } from './water.js';
+import { buildWaterMask, maskDistance, maskTexels, quayWallMesh, waterSurfaceMesh, type WaterGeometry } from './water.js';
 import { flatDeckBody, measuredDeckBody } from './decks.js';
 import { footprintBase, liftRanges } from './placement.js';
 import { routeAhead } from './route.js';
@@ -53,7 +53,7 @@ const fxOff = q.get('fx') === '0';
 const box = boxById(q.get('box') ?? 'nassaukade') ?? boxById('nassaukade')!;
 const opts = {
   lat: num('lat', box.lat), lng: num('lng', box.lng), radius: num('r', box.halfM),
-  cam: (q.get('cam') ?? 'chase') as 'chase' | 'map',
+  cam: (q.get('cam') ?? 'chase') as 'chase' | 'map' | 'free',
   auto: flag('auto', true), hud: flag('hud', true), route: flag('route', true), buildings: flag('buildings', true),
   relief: flag('relief', true), exag: num('exag', 1), highlight: q.get('highlight') ?? '',
   shadows: !fxOff && flag('shadows', true), ao: !fxOff && flag('ao', !coarsePointer),
@@ -153,15 +153,16 @@ const pavers = (base: [number, number, number], joint: string, metres: number, w
 });
 const maskUniforms = { waterMask: { value: null as THREE.Texture | null }, maskOrigin: { value: new THREE.Vector2() }, maskSize: { value: new THREE.Vector2(1, 1) } };
 /** Ground materials discard over water (the signed-distance mask), so canals open without a stencil. */
-function cutByWater<T extends THREE.Material>(m: T): T {
+/** Channel r cuts by water (land, parks); g by water minus bridge decks (street bands). */
+function cutByWater<T extends THREE.Material>(m: T, channel: 'r' | 'g' = 'r'): T {
   m.onBeforeCompile = shader => {
     Object.assign(shader.uniforms, maskUniforms);
     shader.vertexShader = shader.vertexShader.replace('#include <common>', '#include <common>\nvarying vec2 vMaskXY;')
       .replace('#include <begin_vertex>', '#include <begin_vertex>\nvMaskXY = (modelMatrix * vec4(transformed, 1.0)).xy;');
     shader.fragmentShader = shader.fragmentShader.replace('#include <common>', '#include <common>\nvarying vec2 vMaskXY;\nuniform sampler2D waterMask;\nuniform vec2 maskOrigin;\nuniform vec2 maskSize;')
-      .replace('#include <clipping_planes_fragment>', '#include <clipping_planes_fragment>\nif (texture2D(waterMask, (vMaskXY - maskOrigin) / maskSize).r < 0.5) discard;');
+      .replace('#include <clipping_planes_fragment>', `#include <clipping_planes_fragment>\nif (texture2D(waterMask, (vMaskXY - maskOrigin) / maskSize).${channel} < 0.5) discard;`);
   };
-  m.customProgramCacheKey = () => 'cutByWater';
+  m.customProgramCacheKey = () => `cutByWater-${channel}`;
   return m;
 }
 const surfaceMaterial = (map: THREE.Texture, roughness = 0.95) => new THREE.MeshStandardMaterial({ map, roughness, metalness: 0 });
@@ -190,6 +191,8 @@ const M = {
 // coarse park triangle never pokes through a finely sampled street on a slope.
 const layerOffset: [THREE.Material, number][] = [[M.park, 1], [M.wood, 1], [M.square, 1], [M.parking, 1], [M.klinker, 2], [M.asphalt, 2], [M.gravel, 3], [M.cycle, 3], [M.paving, 3], [M.paint, 4], [M.highlight, 5], [M.route, 6]];
 for (const [m, k] of layerOffset) Object.assign(m, { polygonOffset: true, polygonOffsetFactor: -k, polygonOffsetUnits: -2 * k });
+// Street bands: discarded over water except on bridge decks (mask channel g).
+for (const k of ['paving', 'klinker', 'asphalt', 'cycle', 'gravel', 'kerb', 'paint'] as const) cutByWater(M[k], 'g');
 {
   const s = 128, data = new Uint8Array(s * s * 4);
   for (let y = 0; y < s; y++) for (let x = 0; x < s; x++) {
@@ -203,8 +206,9 @@ for (const [m, k] of layerOffset) Object.assign(m, { polygonOffset: true, polygo
 }
 
 const stats = { triangles: {} as Record<string, number>, vertices: {} as Record<string, number>, geometryBytes: 0 };
+const hidden = (q.get('hide') ?? '').split(',').filter(Boolean);
 function meshFrom(label: string, data: MeshArrays, material: THREE.Material, o: { cast?: boolean; receive?: boolean; order?: number } = {}): THREE.Mesh | null {
-  if (!data.indices.length) return null;
+  if (!data.indices.length || hidden.some(h => label.startsWith(h))) return null;
   const g = new THREE.BufferGeometry();
   const pos = Float32Array.from(data.positions), uv = Float32Array.from(data.uvs), idx = Uint32Array.from(data.indices);
   g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
@@ -278,34 +282,44 @@ async function loadWater(surface: GroundSurface): Promise<{ geo: WaterGeometry; 
     for (const poly of cell.water) geo.polygons.push(poly.map(ring));
     for (const line of cell.shore) geo.shores.push(ring(line));
   }
-  const mask = await timed('waterMaskMs', () => buildWaterMask(geo, X0, Y0, X1, Y1, 1, 4));
-  const texels = new Uint8Array(mask.sdf.length);
-  for (let k = 0; k < texels.length; k++) texels[k] = Math.round(255 * Math.max(0, Math.min(1, 0.5 + mask.sdf[k] / (2 * mask.range))));
-  const tex = new THREE.DataTexture(texels, mask.width, mask.height, THREE.RedFormat, THREE.UnsignedByteType);
-  tex.minFilter = tex.magFilter = THREE.LinearFilter; tex.generateMipmaps = false; tex.needsUpdate = true;
-  maskUniforms.waterMask.value = tex; maskUniforms.maskOrigin.value.set(X0, Y0); maskUniforms.maskSize.value.set(mask.width * mask.res, mask.height * mask.res);
-  const overWater = (x: number, y: number) => maskDistance(mask, x, y) < 0;
-  proto.mask = mask; proto.maskDistance = (x: number, y: number) => maskDistance(mask, x, y);
-  // Decks: every measured profile in the area re-based on the relief, then the unmeasured footprints.
+  // Decks first (the street mask needs their footprints): every measured profile in the area placed on the relief.
   const inArea = (x: number, y: number) => { const [px, py] = toScene(x * quant, y * quant); return near(px, py, opts.radius + pad); };
   const measured = bridges.measured.filter(b => inArea(b.p[0], b.p[1]));
-  const deckBodies: MeshArrays[] = [];
   let endError = 0;
   for (const b of measured) {
-    const deck = surface.addDeck(decodeProfile(b, quant, toScene));
-    // Validation: our relief at the profile's own approach ends vs the AHN height the bridge pipeline recorded.
-    endError = Math.max(endError, Math.abs(deck.ends[0] + surface.datumNAP - b.endpointNAP[0]), Math.abs(deck.ends[1] + surface.datumNAP - b.endpointNAP[1]));
-    deckBodies.push(measuredDeckBody(deck, surface.ground, overWater, WATER_Z));
+    surface.addDeck(decodeProfile(b, quant, toScene));
+    // Validation: our relief at the profile's raw approach ends vs the AHN height the bridge pipeline recorded there.
+    const raw: { s: number; x: number; y: number }[] = [];
+    for (let i = 0; i + 3 < b.p.length; i += 4) { const [x, y] = toScene(b.p[i] * quant, b.p[i + 1] * quant); raw.push({ s: b.p[i + 2], x, y }); }
+    raw.sort((a, c) => a.s - c.s);
+    const e0 = raw[0], e1 = raw[raw.length - 1];
+    endError = Math.max(endError, Math.abs(surface.ground(e0.x, e0.y) + surface.datumNAP - b.endpointNAP[0]), Math.abs(surface.ground(e1.x, e1.y) + surface.datumNAP - b.endpointNAP[1]));
   }
-  const flatTops: MeshArrays[] = [], flatBodies: MeshArrays[] = [];
+  const flatRings: Vec2[][] = [];
   for (const b of bridges.fallback.filter(f => inArea(f.ring[0], f.ring[1]))) {
     const ring = decodeFallback(b, quant, toScene).ring, pts: Vec2[] = [];
     for (let i = 0; i < ring.length; i += 2) pts.push([ring[i], ring[i + 1]]);
+    flatRings.push(pts);
+  }
+  const deckRings = [...surface.decks.map(d => GroundSurface.footprint(d)), ...flatRings];
+  const mask = await timed('waterMaskMs', () => buildWaterMask(geo, X0, Y0, X1, Y1, 1, 4, deckRings));
+  const tex = new THREE.DataTexture(maskTexels(mask), mask.width, mask.height, THREE.RGFormat, THREE.UnsignedByteType);
+  tex.minFilter = tex.magFilter = THREE.LinearFilter; tex.generateMipmaps = false; tex.unpackAlignment = 2; tex.needsUpdate = true;
+  maskUniforms.waterMask.value = tex; maskUniforms.maskOrigin.value.set(X0, Y0); maskUniforms.maskSize.value.set(mask.width * mask.res, mask.height * mask.res);
+  const overWater = (x: number, y: number) => maskDistance(mask, x, y) < 0;
+  proto.mask = mask; proto.maskDistance = (x: number, y: number) => maskDistance(mask, x, y);
+  const deckBodies = surface.decks.map(deck => measuredDeckBody(deck, surface.ground, overWater, WATER_Z));
+  const flatTops: MeshArrays[] = [], flatBodies: MeshArrays[] = [];
+  for (const pts of flatRings) {
     const { top, body } = flatDeckBody(pts, surface.height, overWater);
     flatTops.push(top); flatBodies.push(body);
   }
   meshFrom('water', waterSurfaceMesh(geo, WATER_Z), M.water);
-  meshFrom('quay', quayWallMesh(geo, surface.ground, WATER_Z), M.quay);
+  // Wall tops follow the full riding surface, so they rise with a bridge's approach ramps and abutments.
+  // Only the shores inside the built area (the cells reach further), 4 m wall segments.
+  const inBuilt = (p: Vec2) => p[0] >= X0 && p[0] <= X1 && p[1] >= Y0 && p[1] <= Y1;
+  const shores = geo.shores.map(line => line.filter(inBuilt)).filter(line => line.length > 1);
+  meshFrom('quay', quayWallMesh({ polygons: [], shores }, surface.height, WATER_Z, 4), M.quay);
   meshFrom('decks', merge([...deckBodies, ...flatBodies]), M.deck, { cast: true });
   meshFrom('decks', merge(flatTops), M.deck);
   log('water', { cells: cells.length, measuredDecks: measured.length, flatDecks: flatTops.length, maxDeckEndErrorM: +endError.toFixed(2), mask: `${mask.width}x${mask.height}` });
@@ -328,15 +342,18 @@ async function loadGround(surface: GroundSurface): Promise<LocalWay[]> {
         const pts = r.slice(0, -1).map(project);
         if (pts.length < 3 || !pts.some(p => near(p[0], p[1], opts.radius + pad))) continue;
         const flat = pts.flatMap(p => [p[0], p[1]]);
-        drapeTriangles(target, flat, earcut(flat), surface.height, LIFT.area + (a.kind === 'square' || a.kind === 'paved' ? 0.004 : 0), 5);
+        drapeTriangles(target, flat, earcut(flat), surface.height, LIFT.area + (a.kind === 'square' || a.kind === 'paved' ? 0.004 : 0), 8);
       }
     }
   });
   for (const k of Object.keys(areas)) meshFrom(`area:${k}`, areas[k], (M as any)[k], { order: 1 });
   const ways = prepareWays(osm.ways, project).filter(w => w.points.some(p => near(p[0], p[1], opts.radius + pad)));
-  const streets = await timed('streetsMs', () => buildStreets(ways, surface.height, { step: 3 }));
-  for (const s of ['paving', 'klinker', 'asphalt', 'cycle', 'gravel', 'kerb', 'paint'] as const) meshFrom(`street:${s}`, streets[s], M[s], { order: 2 });
-  log('streets', { ...streets.stats, metres: Math.round(streets.stats.metres), triangles: streetTriangles(streets) });
+  // All street bands are cut by the water-minus-decks mask channel: a sidewalk never overhangs a quay,
+  // and over water a band survives only on a bridge deck. Bridge ways are sampled finer (decks hump over metres).
+  const streets = await timed('streetsMs', () => buildStreets(ways, surface.height, { step: 3, only: w => !isBridgeWay(w) }));
+  const onBridges = await timed('bridgeStreetsMs', () => buildStreets(ways, surface.height, { step: 1.5, only: isBridgeWay }));
+  for (const s of ['paving', 'klinker', 'asphalt', 'cycle', 'gravel', 'kerb', 'paint'] as const) meshFrom(`street:${s}`, merge([streets[s], onBridges[s]]), M[s], { order: 2 });
+  log('streets', { ...streets.stats, bridgeWays: onBridges.stats.ways, metres: Math.round(streets.stats.metres + onBridges.stats.metres), triangles: streetTriangles(streets) + streetTriangles(onBridges) });
   if (opts.highlight) {
     const lines = ways.filter(w => w.tags.name === opts.highlight && w.section.bands[0]?.kind === 'carriageway');
     const m = merge(lines.map(w => routeRibbon(w.points, surface.height, w.section.coreHalfWidth * 2 + 0.6, LIFT.route - 0.01)));
@@ -433,10 +450,14 @@ async function loadBuildings(surface: GroundSurface, suppressed: Set<string>, wa
     count++;
   }
   let chunks = 0, vertices = 0, lifted = 0;
+  const chunkErrors: string[] = [];
   for (const cell of cells.values()) {
+    // A detail chunk can throw on an odd feature in the game's decorator chain (seen once near the
+    // Leidsegracht: "reading 'c19'"); fall back to the coarse shell for that cell instead of failing the page.
+    const build = (features: Feature[], mode: 'walls' | 'extras' | 'coarse'): ReturnType<typeof buildFeatureChunk>[] => { try { return [buildFeatureChunk(features, opts.look, mode, streets)]; } catch (e) { chunkErrors.push(String(e)); return mode === 'extras' ? [] : mode === 'walls' ? build(features, 'coarse') : []; } };
     const parts = [
-      ...(cell.detail.length ? [buildFeatureChunk(cell.detail, opts.look, 'walls', streets), buildFeatureChunk(cell.detail, opts.look, 'extras', streets)] : []),
-      ...(cell.coarse.length ? [buildFeatureChunk(cell.coarse, opts.look, 'coarse', streets)] : []),
+      ...(cell.detail.length ? [...build(cell.detail, 'walls'), ...build(cell.detail, 'extras')] : []),
+      ...(cell.coarse.length ? build(cell.coarse, 'coarse') : []),
     ];
     for (const chunk of parts) {
       if (!chunk.vertexCount) continue;
@@ -450,7 +471,7 @@ async function loadBuildings(surface: GroundSurface, suppressed: Set<string>, wa
     }
   }
   const sample = [...bases.entries()].slice(0, 5).map(([id, z]) => `${id}:${z.toFixed(2)}`);
-  log('buildings', { features: count, chunks, vertices, liftedRanges: lifted, maxFootprintSpreadM: +spread.toFixed(2), sample, buildMs: Math.round(performance.now() - t0) });
+  log('buildings', { features: count, chunks, vertices, liftedRanges: lifted, chunkErrors: chunkErrors.slice(0, 3), maxFootprintSpreadM: +spread.toFixed(2), sample, buildMs: Math.round(performance.now() - t0) });
   proto.buildingBases = Object.fromEntries(bases);
 }
 
@@ -475,6 +496,7 @@ let distance = 0, riderPos: Vec2 = [cx, cy], riderDir: Vec2 = [0, 1];
 const riderParam = q.get('rider')?.split(',').map(Number);
 if (riderParam && riderParam.length >= 3) { riderPos = toLocal(riderParam[0], riderParam[1]); const b = riderParam[2] * Math.PI / 180; riderDir = [Math.sin(b), Math.cos(b)]; }
 const mapcam = q.get('mapcam')?.split(',').map(Number);
+const freeEye = q.get('eye')?.split(',').map(Number), freeLook = q.get('look')?.split(',').map(Number);
 const SPEED = 5.5;
 const camPos = new THREE.Vector3(), camLook = new THREE.Vector3();
 let camInit = false, surfaceRef: GroundSurface | null = null;
@@ -501,7 +523,11 @@ function updateCamera(dt: number): void {
   rider.rotation.z = Math.atan2(riderDir[1], riderDir[0]);
   const pg = rider.getObjectByName('pitch'); if (pg) pg.rotation.y = -pose.pitch;
   let eye: THREE.Vector3, look: THREE.Vector3;
-  if (opts.cam === 'map') {
+  if (opts.cam === 'free' && freeEye && freeLook) {
+    // eye/look = lng,lat,scene z (inspection shots: a bridge from the water at z ≈ −1, etc.).
+    const at = (v: number[]) => { const [x, y] = toLocal(v[0], v[1]); return new THREE.Vector3(x, y, v[2]); };
+    eye = at(freeEye); look = at(freeLook);
+  } else if (opts.cam === 'map') {
     const bearing = mapcam ? mapcam[4] : Math.atan2(riderDir[0], riderDir[1]) * 180 / Math.PI;
     const centre: Vec2 = mapcam ? toLocal(mapcam[0], mapcam[1]) : [riderPos[0] + riderDir[0] * 14, riderPos[1] + riderDir[1] * 14];
     const fov = mapcam?.[5] ?? 36.87; camera.fov = fov;

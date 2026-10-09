@@ -3,103 +3,104 @@
     "tiles": 10,
     "stepM": 2,
     "samplesPerTile": 250000,
-    "measuredFraction": 0.531,
+    "measuredFraction": 0.523,
+    "waterPixelsBlanked": 755286,
     "rawBytes": 5000000,
-    "gzBytes": 1810357,
-    "gzBytesPerKm2": 181036,
-    "buildMs": 35445,
+    "gzBytes": 1462004,
+    "gzBytesPerKm2": 146200,
+    "buildMs": 8996,
     "note": "gzBytes is what the browser downloads (tiles are served as gzip; DecompressionStream inflates them)."
   },
   "tiles": [
     {
       "tile": "120_485",
-      "measured": 0.613,
-      "filled": 0.387,
-      "minNAP": -7.02,
-      "maxNAP": 2.74,
-      "meanNAP": 0.31,
-      "gzBytes": 185390
+      "measured": 0.609,
+      "filled": 0.391,
+      "minNAP": -6.97,
+      "maxNAP": 2.72,
+      "meanNAP": 0.32,
+      "gzBytes": 150319
     },
     {
       "tile": "121_485",
-      "measured": 0.543,
-      "filled": 0.457,
-      "minNAP": -5.47,
-      "maxNAP": 3.19,
-      "meanNAP": 0.54,
-      "gzBytes": 170169
+      "measured": 0.538,
+      "filled": 0.462,
+      "minNAP": -5.17,
+      "maxNAP": 3.16,
+      "meanNAP": 0.56,
+      "gzBytes": 135667
     },
     {
       "tile": "118_486",
-      "measured": 0.697,
-      "filled": 0.303,
-      "minNAP": -3.09,
-      "maxNAP": 3.23,
-      "meanNAP": 0.07,
-      "gzBytes": 192299
+      "measured": 0.685,
+      "filled": 0.315,
+      "minNAP": -2.76,
+      "maxNAP": 3.06,
+      "meanNAP": 0.09,
+      "gzBytes": 155212
     },
     {
       "tile": "119_486",
-      "measured": 0.527,
-      "filled": 0.473,
-      "minNAP": -2.1,
-      "maxNAP": 3.28,
-      "meanNAP": 0.6,
-      "gzBytes": 179548
+      "measured": 0.522,
+      "filled": 0.478,
+      "minNAP": -1.67,
+      "maxNAP": 3.06,
+      "meanNAP": 0.61,
+      "gzBytes": 143235
     },
     {
       "tile": "120_486",
-      "measured": 0.463,
-      "filled": 0.537,
-      "minNAP": -2.15,
-      "maxNAP": 2.73,
-      "meanNAP": 0.71,
-      "gzBytes": 184445
+      "measured": 0.454,
+      "filled": 0.546,
+      "minNAP": -2.1,
+      "maxNAP": 2.68,
+      "meanNAP": 0.73,
+      "gzBytes": 147741
     },
     {
       "tile": "121_486",
-      "measured": 0.397,
-      "filled": 0.603,
-      "minNAP": -5.44,
-      "maxNAP": 4.5,
-      "meanNAP": 0.96,
-      "gzBytes": 173317
+      "measured": 0.387,
+      "filled": 0.613,
+      "minNAP": -4.57,
+      "maxNAP": 4.48,
+      "meanNAP": 0.99,
+      "gzBytes": 141333
     },
     {
       "tile": "118_487",
-      "measured": 0.672,
-      "filled": 0.328,
-      "minNAP": -2.75,
-      "maxNAP": 5.66,
-      "meanNAP": 0.51,
-      "gzBytes": 188630
+      "measured": 0.663,
+      "filled": 0.337,
+      "minNAP": -2.46,
+      "maxNAP": 5.36,
+      "meanNAP": 0.52,
+      "gzBytes": 154675
     },
     {
       "tile": "119_487",
-      "measured": 0.59,
-      "filled": 0.41,
-      "minNAP": -2.02,
-      "maxNAP": 4.77,
-      "meanNAP": 0.72,
-      "gzBytes": 185073
+      "measured": 0.583,
+      "filled": 0.417,
+      "minNAP": -1.75,
+      "maxNAP": 4.69,
+      "meanNAP": 0.74,
+      "gzBytes": 148976
     },
     {
       "tile": "120_487",
-      "measured": 0.438,
-      "filled": 0.562,
-      "minNAP": -0.76,
-      "maxNAP": 3.23,
-      "meanNAP": 0.83,
-      "gzBytes": 183037
+      "measured": 0.426,
+      "filled": 0.574,
+      "minNAP": -0.41,
+      "maxNAP": 3.13,
+      "meanNAP": 0.86,
+      "gzBytes": 146446
     },
     {
       "tile": "121_487",
-      "measured": 0.369,
-      "filled": 0.631,
-      "minNAP": -6.03,
-      "maxNAP": 6.7,
-      "meanNAP": 1.34,
-      "gzBytes": 168449
+      "measured": 0.361,
+      "filled": 0.639,
+      "minNAP": -5.91,
+      "maxNAP": 6.66,
+      "meanNAP": 1.36,
+      "gzBytes": 138400
     }
   ]
 }

@@ -17,8 +17,14 @@ export interface WaterGeometry { polygons: Vec2[][][]; shores: Vec2[][] }
 
 export interface WaterMask {
   x0: number; y0: number; res: number; width: number; height: number;
-  /** Signed distance to shore, metres, clamped to ±range (+ = land). */
+  /** Signed distance to shore, metres, clamped to ±range (+ = land). Cuts the land. */
   sdf: Float32Array;
+  /**
+   * The same for water *minus bridge decks*: + on land and on a deck. Cuts the
+   * street bands, so a bridge's sidewalks stop at the deck edge instead of
+   * overhanging the canal, while the land under the deck is still cut away.
+   */
+  sdfStreets: Float32Array;
   range: number;
 }
 
@@ -53,12 +59,34 @@ function rasterInside(geo: WaterGeometry, x0: number, y0: number, res: number, w
   return inside;
 }
 
-export function buildWaterMask(geo: WaterGeometry, x0: number, y0: number, x1: number, y1: number, res = 1, range = 4): WaterMask {
+/** `decks`: bridge deck footprints (closed rings, scene coords) that street bands may cross. */
+export function buildWaterMask(geo: WaterGeometry, x0: number, y0: number, x1: number, y1: number, res = 1, range = 4, decks: readonly (readonly Vec2[])[] = []): WaterMask {
   const width = Math.ceil((x1 - x0) / res), height = Math.ceil((y1 - y0) / res);
   const inside = rasterInside(geo, x0, y0, res, width, height);
   const dist = new Float32Array(width * height).fill(range);
-  for (const line of geo.shores) for (let s = 0; s + 1 < line.length; s++) {
-    const [ax, ay] = line[s], [bx, by] = line[s + 1], dx = bx - ax, dy = by - ay, l2 = dx * dx + dy * dy || 1e-9;
+  segmentDistances(dist, geo.shores, false, x0, y0, res, width, height, range);
+  const sdf = new Float32Array(width * height);
+  for (let k = 0; k < sdf.length; k++) sdf[k] = inside[k] ? -dist[k] : dist[k];
+  let sdfStreets = sdf;
+  if (decks.length) {
+    // Each deck rasterised on its own: overlapping footprints must not cancel under even-odd.
+    const onDeck = new Uint8Array(width * height);
+    for (const ring of decks) {
+      const r = rasterInside({ polygons: [[ring as Vec2[]]], shores: [] }, x0, y0, res, width, height);
+      for (let k = 0; k < r.length; k++) onDeck[k] |= r[k];
+    }
+    const d2 = dist.slice();
+    segmentDistances(d2, decks, true, x0, y0, res, width, height, range);
+    sdfStreets = new Float32Array(width * height);
+    for (let k = 0; k < sdf.length; k++) sdfStreets[k] = inside[k] && !onDeck[k] ? -d2[k] : d2[k];
+  }
+  return { x0, y0, res, width, height, sdf, sdfStreets, range };
+}
+
+/** Exact distance (clamped to `range`) from texel centres to polyline segments, min-accumulated into `dist`. */
+function segmentDistances(dist: Float32Array, lines: readonly (readonly Vec2[])[], closed: boolean, x0: number, y0: number, res: number, width: number, height: number, range: number): void {
+  for (const line of lines) for (let s = 0; s + 1 < line.length + (closed ? 1 : 0); s++) {
+    const [ax, ay] = line[s], [bx, by] = line[(s + 1) % line.length], dx = bx - ax, dy = by - ay, l2 = dx * dx + dy * dy || 1e-9;
     const i0 = Math.max(0, Math.floor((Math.min(ax, bx) - range - x0) / res)), i1 = Math.min(width - 1, Math.ceil((Math.max(ax, bx) + range - x0) / res));
     const j0 = Math.max(0, Math.floor((Math.min(ay, by) - range - y0) / res)), j1 = Math.min(height - 1, Math.ceil((Math.max(ay, by) + range - y0) / res));
     for (let j = j0; j <= j1; j++) for (let i = i0; i <= i1; i++) {
@@ -69,9 +97,6 @@ export function buildWaterMask(geo: WaterGeometry, x0: number, y0: number, x1: n
       if (d < dist[k]) dist[k] = d;
     }
   }
-  const sdf = new Float32Array(width * height);
-  for (let k = 0; k < sdf.length; k++) sdf[k] = inside[k] ? -dist[k] : dist[k];
-  return { x0, y0, res, width, height, sdf, range };
 }
 
 /** Bilinear signed distance at a scene point (+ land, − water). Outside the mask: land. */
@@ -83,13 +108,11 @@ export function maskDistance(m: WaterMask, x: number, y: number): number {
   return (s[j * w + i] * (1 - u) + s[j * w + i + 1] * u) * (1 - v) + (s[(j + 1) * w + i] * (1 - u) + s[(j + 1) * w + i + 1] * u) * v;
 }
 
-/** Mask as RGBA8 for a texture: R = 0.5 + d / (2·range). */
+/** Mask as RG8 texels: R cuts the land, G cuts street bands; 0.5 + d / (2·range), water < 0.5. */
 export function maskTexels(m: WaterMask): Uint8Array {
-  const out = new Uint8Array(m.width * m.height * 4);
-  for (let k = 0; k < m.sdf.length; k++) {
-    const v = Math.round(255 * Math.max(0, Math.min(1, 0.5 + m.sdf[k] / (2 * m.range))));
-    out[k * 4] = v; out[k * 4 + 1] = v; out[k * 4 + 2] = v; out[k * 4 + 3] = 255;
-  }
+  const out = new Uint8Array(m.width * m.height * 2);
+  const enc = (d: number) => Math.round(255 * Math.max(0, Math.min(1, 0.5 + d / (2 * m.range))));
+  for (let k = 0; k < m.sdf.length; k++) { out[k * 2] = enc(m.sdf[k]); out[k * 2 + 1] = enc(m.sdfStreets[k]); }
   return out;
 }
 

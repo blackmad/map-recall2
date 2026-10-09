@@ -144,26 +144,32 @@ test('local → RD quadratic fit is centimetre-exact over a prototype box', () =
 function syntheticDeck(): DeckProfile {
   // A 40 m bridge along +x at y = 0, humped 1.5 m in the middle, 8 m wide on the deck.
   const n = 81, x = new Float64Array(n), y = new Float64Array(n), s = new Float64Array(n), h = new Float64Array(n), hw = new Float64Array(n);
-  for (let i = 0; i < n; i++) { x[i] = i * 0.5; s[i] = i * 0.5; h[i] = 1.5 * Math.sin(Math.PI * i / (n - 1)); hw[i] = s[i] >= 8 && s[i] <= 32 ? 4 : 2; }
+  // Approach ramps 0–8 m and 32–40 m (relief carries them in reality), hump over the deck span 8–32 m.
+  for (let i = 0; i < n; i++) { x[i] = i * 0.5; s[i] = i * 0.5; h[i] = s[i] < 8 ? 0.3 * s[i] / 8 : s[i] > 32 ? 0.3 * (40 - s[i]) / 8 : 0.3 + 1.2 * Math.sin(Math.PI * (s[i] - 8) / 24); hw[i] = s[i] >= 8 && s[i] <= 32 ? 4 : 2; }
   return { id: 'T', name: 'test', family: 'masonry-arch', x, y, s, h, halfWidth: hw, water: [12, 28], deck: [8, 32], bbox: [-5, -9, 45, 9] };
 }
 
-test('a deck re-based on the relief meets the ground at its ends and humps between', () => {
+test('a deck placed on the relief meets the ground at its ends and humps between', () => {
   const field = flatField((x, y) => 1 + 0.01 * x, 2, 100, [[-1, -1], [0, -1], [-1, 0], [0, 0]]);
   const s = new GroundSurface(field, IDENTITY, 1);
   const deck = s.addDeck(syntheticDeck());
+  assert.deepEqual(deck.span, [8, 32]);
   assert.ok(Math.abs(deck.ends[0] - s.ground(0, 0)) < 1e-9 && Math.abs(deck.ends[1] - s.ground(40, 0)) < 1e-9);
-  assert.ok(Math.abs(s.height(0.01, 0) - s.ground(0.01, 0)) < 0.01, 'no step where the deck starts');
-  assert.ok(Math.abs(s.height(39.99, 0) - s.ground(39.99, 0)) < 0.01, 'no step where the deck ends');
-  assert.ok(Math.abs(s.height(20, 0) - (s.ground(20, 0) + 1.5)) < 0.02, 'crown is the measured hump above the re-based line');
+  assert.equal(s.height(4, 0), s.ground(4, 0), 'approaches are relief only');
+  for (const y of [0, 3.9]) {
+    assert.ok(Math.abs(s.height(8.01, y) - s.ground(8.01, y)) < 0.01, 'no step where the deck starts');
+    assert.ok(Math.abs(s.height(31.99, y) - s.ground(31.99, y)) < 0.01, 'no step where the deck ends');
+  }
+  assert.ok(Math.abs(s.height(20, 0) - (s.ground(20, 0) + 1.5)) < 0.02, 'crown is the measured height above the re-based approach chord');
   // Continuity along the axis: no jump bigger than the hump's slope allows.
-  let worst = 0; for (let x = -2; x < 42; x += 0.25) worst = Math.max(worst, Math.abs(s.height(x + 0.25, 1) - s.height(x, 1)));
-  assert.ok(worst < 0.07, `max step ${worst}`);
+  let worst = 0, at = 0; for (let x = -2; x < 42; x += 0.25) { const d = Math.abs(s.height(x + 0.25, 1) - s.height(x, 1)); if (d > worst) { worst = d; at = x; } }
+  // Continuous: the steepest 0.25 m step is the ease taking up the 0.3 m approach ramp this flat test relief lacks.
+  assert.ok(worst < 0.12, `max step ${worst} at x=${at}`);
   // Laterally: full height on the deck, blended to the ground within DECK_BLEND_M of the edge.
   assert.ok(Math.abs(s.height(20, 3.9) - s.height(20, 0)) < 1e-6);
-  assert.ok(Math.abs(s.height(20, 4 + DECK_BLEND_M + 0.01) - s.ground(20, 6.01)) < 1e-9);
+  assert.ok(Math.abs(s.height(20, 4 + DECK_BLEND_M + 0.01) - s.ground(20, 4 + DECK_BLEND_M + 0.01)) < 1e-9);
   assert.ok(s.height(20, -20) === s.ground(20, -20));
-  const pose = riderPose(s.height, 10, 0, [1, 0]);
+  const pose = riderPose(s.height, 12, 0, [1, 0]);
   assert.ok(pose.pitch > 0.05, 'nose up on the way up');
 });
 
@@ -259,9 +265,9 @@ test('raised sidewalks stop at a side street on their side only; bands drape ont
   // The carriageway over the deck carries the hump.
   const onDeck = faces(streets.klinker).filter(f => Math.abs(f.c[0] - 20) < 1 && Math.abs(f.c[1]) < 2);
   assert.ok(onDeck.length > 0 && onDeck.every(f => Math.abs(f.c[2] - (s.height(f.c[0], f.c[1]) + LIFT.carriageway)) < 0.05));
-  assert.ok(onDeck[0].c[2] > 1.4, 'carriageway is up on the crown');
+  assert.ok(onDeck[0].c[2] > 1.1, 'carriageway is up on the crown');
   const route = routeRibbon([[-30, 0], [50, 0]], s.height);
-  assert.ok(Math.max(...faces(route).map(f => f.c[2])) > 1.5, 'route ribbon rides over the hump');
+  assert.ok(Math.max(...faces(route).map(f => f.c[2])) > 1.2, 'route ribbon rides over the hump');
 });
 
 test('routeAhead leaves along the facing direction and prefers the named street', () => {
@@ -292,6 +298,13 @@ test('water mask: exact signed distance at the shore; quay walls face the water 
   assert.ok(Math.max(...tops) > 0.75 && Math.max(...tops) < 0.81, 'top follows the sloping bank');
   // A bank at water level gets no wall.
   assert.equal(quayWallMesh(geo, () => -1.7, -1.77).indices.length, 0);
+  // A bridge deck across the canal: the land channel still says water there, the street channel says deck.
+  const decked = buildWaterMask(geo, -60, -20, 60, 30, 1, 4, [[[-4, -2], [4, -2], [4, 12], [-4, 12]]]);
+  const fx = (m: typeof decked, x: number, y: number) => maskDistance({ ...m, sdf: m.sdfStreets }, x, y);
+  assert.ok(maskDistance(decked, 0, 5) < 0, 'land is cut under the deck');
+  assert.ok(fx(decked, 0, 5) > 0, 'street bands survive on the deck');
+  assert.ok(fx(decked, 5.5, 5) < 0 && Math.abs(fx(decked, 5.5, 5) + 1.5) < 0.1, 'and stop at its edge over water');
+  assert.ok(fx(decked, 20, 5) <= -4 + 1e-6);
   const surf = waterSurfaceMesh(geo, -1.77);
   assert.ok(faces(surf).every(x => x.n[2] > 0 && Math.abs(x.c[2] + 1.77) < 1e-9));
 });
@@ -324,14 +337,18 @@ function realDeck(s: GroundSurface, id: string) {
   const bridges = JSON.parse(readFileSync(`${EXTRACT}/elevation-v1/bridges.json`, 'utf8')) as BridgeExtract;
   const b = bridges.measured.find(m => m.id === id)!;
   const toScene = (x: number, y: number): Vec2 => { const [lng, lat] = localToLngLat(eIndex, x, y); return toLocal(lng, lat); };
-  return { bridge: b, deck: s.addDeck(decodeProfile(b, eIndex.quantization.xy, toScene)) };
+  // The raw approach ends (first / last station by s), for checking our relief against the bridge pipeline's AHN.
+  const q = eIndex.quantization.xy, st: { s: number; p: Vec2 }[] = [];
+  for (let i = 0; i + 3 < b.p.length; i += 4) st.push({ s: b.p[i + 2], p: toScene(b.p[i] * q, b.p[i + 1] * q) });
+  st.sort((a, c) => a.s - c.s);
+  return { bridge: b, deck: s.addDeck(decodeProfile(b, q, toScene)), rawEnds: [st[0].p, st[st.length - 1].p] as [Vec2, Vec2] };
 }
 
 test('regression: Nassaukade bridge over the Bilderdijkgracht mouth (BRU0166) joins the kade', { skip: !haveExtracts }, () => {
   const s = realSurface(4.8747, 52.3731);
-  const { bridge, deck } = realDeck(s, 'BRU0166');
-  // Our relief at the approach ends agrees with the AHN heights the bridge pipeline measured.
-  assert.ok(Math.abs(deck.ends[0] + s.datumNAP - bridge.endpointNAP[0]) < 0.4 && Math.abs(deck.ends[1] + s.datumNAP - bridge.endpointNAP[1]) < 0.4);
+  const { bridge, deck, rawEnds } = realDeck(s, 'BRU0166');
+  // Our relief at the approach ends agrees with the AHN heights the bridge pipeline measured there.
+  rawEnds.forEach((p, k) => { const err = s.ground(p[0], p[1]) + s.datumNAP - bridge.endpointNAP[k]; assert.ok(Math.abs(err) < 0.15, `approach end ${k}: relief vs bridge pipeline ${err.toFixed(2)} m`); });
   // Ride the deck axis: continuous, and it rises above the kade.
   const p = deck.profile;
   let worst = 0, crown = -Infinity;
@@ -340,7 +357,9 @@ test('regression: Nassaukade bridge over the Bilderdijkgracht mouth (BRU0166) jo
     crown = Math.max(crown, s.height(p.x[i], p.y[i]));
   }
   assert.ok(worst < 0.15, `largest 0.5 m step on the deck ${worst.toFixed(3)} m`);
-  assert.ok(crown - Math.max(...deck.ends) > 0.5, `deck crown ${crown.toFixed(2)} vs ends ${deck.ends.map(e => e.toFixed(2))}`);
+  // The crown sits where AHN measured it: the profile's maximum above the approach-end chord (0.83 m here).
+  const chord = (s.ground(rawEnds[0][0], rawEnds[0][1]) + s.ground(rawEnds[1][0], rawEnds[1][1])) / 2, maxH = Math.max(...bridge.p.filter((_, i) => i % 4 === 3)) / 100;
+  assert.ok(Math.abs(crown - chord - maxH) < 0.25, `crown ${(crown - chord).toFixed(2)} above the approaches vs AHN ${maxH}`);
   // The Nassaukade quay sits near the old flat street level (scene z ≈ 0), not metres off.
   const [qx, qy] = toLocal(4.87445, 52.37286);
   assert.ok(Math.abs(s.ground(qx, qy)) < 1.2, `kade z ${s.ground(qx, qy).toFixed(2)}`);
@@ -348,11 +367,15 @@ test('regression: Nassaukade bridge over the Bilderdijkgracht mouth (BRU0166) jo
 
 test('regression: Leidsegracht masonry arch (BRU0044) humps over the canal belt', { skip: !haveExtracts }, () => {
   const s = realSurface(4.8875, 52.3665);
-  const { deck } = realDeck(s, 'BRU0044');
+  const { bridge, deck, rawEnds } = realDeck(s, 'BRU0044');
   const p = deck.profile;
-  const mid = Math.floor(p.x.length / 2);
-  assert.ok(s.height(p.x[mid], p.y[mid]) - Math.max(...deck.ends) > 1.0, 'crown at least 1 m above both quays');
-  assert.ok(Math.abs(s.height(p.x[0], p.y[0]) - deck.ends[0]) < 0.02 && Math.abs(s.height(p.x[p.x.length - 1], p.y[p.y.length - 1]) - deck.ends[1]) < 0.02, 'ramps land on the street');
+  let crown = -Infinity;
+  for (let i = 0; i < p.x.length; i++) crown = Math.max(crown, s.height(p.x[i], p.y[i]));
+  // AHN puts this crown 1.64 m above the approach-end chord; the relief carries the ramps, the profile the deck span.
+  const chord = (s.ground(rawEnds[0][0], rawEnds[0][1]) + s.ground(rawEnds[1][0], rawEnds[1][1])) / 2, maxH = Math.max(...bridge.p.filter((_, i) => i % 4 === 3)) / 100;
+  assert.ok(Math.abs(crown - chord - maxH) < 0.3, `crown ${(crown - chord).toFixed(2)} above the approaches vs AHN ${maxH}`);
+  assert.ok(crown - chord > 1.2);
+  assert.equal(s.height(p.x[0], p.y[0]), s.ground(p.x[0], p.y[0]), 'approach ramps are relief');
 });
 
 test('regression: relief is present (Postjeskade polder side lower than the Herengracht quay)', { skip: !haveExtracts }, () => {

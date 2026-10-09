@@ -30,6 +30,8 @@ export interface LocalWay { id: number; tags: Record<string, string>; points: Ve
 
 const key = (p: Vec2) => `${Math.round(p[0] * 10)}:${Math.round(p[1] * 10)}`;
 const isCarriage = (w: LocalWay) => w.section.bands[0]?.kind === 'carriageway';
+/** A way that is (part of) a bridge: drawn over water, so never cut by the water mask. */
+export const isBridgeWay = (w: LocalWay) => !!w.tags.bridge && w.tags.bridge !== 'no';
 
 export function prepareWays(ways: readonly OsmWay[], project: (lngLat: [number, number]) => Vec2): LocalWay[] {
   const out: LocalWay[] = [];
@@ -92,12 +94,17 @@ function trimIntervals(w: LocalWay, band: Band, nodes: ReturnType<typeof nodeBra
   return cuts;
 }
 
-export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: { step?: number } = {}): StreetMeshes {
+/**
+ * `only` limits which ways emit geometry while the junction graph still sees
+ * all of them (the prototype builds bridge ways separately, uncut by the water mask).
+ */
+export function buildStreets(ways: readonly LocalWay[], height: HeightFn, opts: { step?: number; only?: (w: LocalWay) => boolean } = {}): StreetMeshes {
   const step = opts.step ?? 3;
   const out = { asphalt: emptyMesh(), klinker: emptyMesh(), cycle: emptyMesh(), paving: emptyMesh(), gravel: emptyMesh(), paint: emptyMesh(), kerb: emptyMesh(), stats: { ways: 0, bands: 0, metres: 0, widthFromTags: 0, sidewalkFromTags: 0, trims: 0 } } as StreetMeshes;
   const nodes = nodeBranches(ways);
   const discDone = new Set<string>();
   for (const w of ways) {
+    if (opts.only && !opts.only(w)) continue;
     out.stats.ways++;
     if (w.section.source.width !== 'prior') out.stats.widthFromTags++;
     if (w.section.source.sidewalk === 'tag') out.stats.sidewalkFromTags++;

@@ -225,10 +225,11 @@ export function reliefGrid(x0: number, y0: number, x1: number, y1: number, step:
 export function merge(meshes: readonly MeshArrays[]): MeshArrays {
   const out = emptyMesh(meshes.some(m => m.colors));
   for (const m of meshes) {
+    // Element-wise: spreading a few hundred thousand numbers into push() overflows the stack.
     const base = out.positions.length / 3;
-    out.positions.push(...m.positions);
-    out.uvs.push(...m.uvs);
-    if (out.colors) out.colors.push(...(m.colors ?? new Array(m.positions.length).fill(1)));
+    for (const v of m.positions) out.positions.push(v);
+    for (const v of m.uvs) out.uvs.push(v);
+    if (out.colors) { if (m.colors) for (const v of m.colors) out.colors.push(v); else for (let k = 0; k < m.positions.length; k++) out.colors.push(1); }
     for (const i of m.indices) out.indices.push(i + base);
   }
   return out;
