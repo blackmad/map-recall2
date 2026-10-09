@@ -1,3 +1,5 @@
+import {buildIjToren} from './ij-toren-builder';
+import {buildSymphony} from './symphony-builder';
 import {buildKlimhal} from './klimhal-builder';
 import {buildClubPanama} from './club-panama-builder';
 import {buildCompagnietheater} from './compagnietheater-builder';
@@ -338,7 +340,9 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   else if(id.startsWith('olvg-'))hospital(id);
   else {
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
-    if(id==='klimhal')buildKlimhal(w,d,helpers);
+    if(id==='ij-toren')buildIjToren(w,d,helpers);
+    else if(id==='symphony')buildSymphony(w,d,helpers);
+    else if(id==='klimhal')buildKlimhal(w,d,helpers);
     else if(id==='nassaukerk')buildNassaukerk(w,d,helpers);
     else if(id==='koningskerk')buildKoningskerk(w,d,helpers);
     else if(id==='sint-olofskapel')buildSintOlofskapel(w,d,helpers);

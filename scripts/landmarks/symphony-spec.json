@@ -1,0 +1,97 @@
+{
+  "id": "symphony",
+  "name": "Symphony",
+  "landmarkId": "requested-symphony",
+  "modelUrl": "./models/symphony.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012128931"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.873177378136285,
+      52.33571188018314
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 167,
+    "widthMetres": 117
+  },
+  "surveyed": {
+    "anchor": [
+      4.873177378136285,
+      52.33571188018314
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012128931 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "glass": "#6f8a99",
+    "frame": "#c9ccce",
+    "concrete": "#b9b8b2",
+    "dark": "#34393e",
+    "white": "#e6e4dc",
+    "stone": "#c8c1b3",
+    "slate": "#555b61"
+  },
+  "attribution": {
+    "title": "Symphony",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Zuidas",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.872494493605147,
+          52.33550342001315
+        ],
+        [
+          4.873089428164437,
+          52.335505287235655
+        ],
+        [
+          4.873089559890548,
+          52.33552305666388
+        ],
+        [
+          4.873184075326997,
+          52.33552328750139
+        ],
+        [
+          4.87318400032186,
+          52.3355323019264
+        ],
+        [
+          4.874943594851254,
+          52.33553567194285
+        ],
+        [
+          4.874935976311843,
+          52.33655344275087
+        ],
+        [
+          4.872515936227063,
+          52.33654463155876
+        ],
+        [
+          4.872525521252928,
+          52.33555313160548
+        ],
+        [
+          4.872494079941918,
+          52.3355530308029
+        ],
+        [
+          4.872494493605147,
+          52.33550342001315
+        ]
+      ]
+    ]
+  }
+}
