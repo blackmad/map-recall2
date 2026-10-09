@@ -39,8 +39,7 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   every contact sheet before un-holding; run `npm run audit:glb -- --id=<id>`
   and `scripts/check-landmark-attachment.ts`.
   Gerard Dou Synagogue: side/rear walls open (audit: 7/30 see-through rays).
-  Willem de Zwijgerkerk (entrance wing; rework at `landmark/churches-a-20261010`
-  ac8736cf awaits review) and Van Gendt Hallen (gable corbel friezes, steel
+  Van Gendt Hallen (gable corbel friezes, steel
   windows, 3DBAG gable artefacts; rework in flight).
 - **Facade gate follow-ups (2026-10-10)**: installed models with clear misses on
   photo | elevation sheets: Royal Palace (no central risalit/entrance arches,
