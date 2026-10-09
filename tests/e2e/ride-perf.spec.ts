@@ -12,7 +12,7 @@ import { openRoute } from './helpers';
 // throttled 4x on the iphone project, and records rAF deltas plus wrapper
 // timers around the map render, the signature-landmark layer and every
 // `moveend` dispatch (the game calls `jumpTo` each frame, so `moveend` fires
-// each frame too). Results go to test-results/ride-perf-<project>.json.
+// each frame too). Results go to artifacts/perf/ride-perf-<project>.json.
 test.skip(!process.env.PERF_RIDE, 'set PERF_RIDE=1 to measure');
 
 type Variant = { label: string; landmarks: 'default' | 'off' | 'all' };
@@ -115,8 +115,8 @@ for (const variant of variants) {
     };
     results.push(sample);
     console.log(JSON.stringify(sample));
-    mkdirSync('test-results', { recursive: true });
-    writeFileSync(`test-results/ride-perf-${info.project.name}.json`, JSON.stringify(results, null, 2));
+    mkdirSync('artifacts/perf', { recursive: true });
+    writeFileSync(`artifacts/perf/ride-perf-${info.project.name}.json`, JSON.stringify(results, null, 2));
     expect(frames.length).toBeGreaterThan(20);
   });
 }
