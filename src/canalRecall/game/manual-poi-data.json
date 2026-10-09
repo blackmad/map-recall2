@@ -1694,5 +1694,16 @@
     ],
     "note": "Public Langbroekdreef approach beside the station driveway,27.6m from the former isolated apron point. Current mapped road coordinates cross-checked against sourced station plot; actual chosen destination remains Anton."
   }
-}
+},
+  {
+    "modelId": "uilenburger-synagoge",
+    "landmarkId": "extract_landmarks_452804039",
+    "name": "Uilenburger Synagoge",
+    "description": "Built in 1766 for Amsterdam’s Ashkenazi Jewish community, the Uilenburgersjoel has a three-aisled synagogue hall above a lower room originally used for ritual slaughter. Its broad bell-shaped front gable faces a forecourt behind a street wall. The restored building now hosts Jewish cultural and social gatherings, concerts and other events.",
+    "sourceUrl": "https://www.uilenburgersjoel.nl/the-uilenburger-synagogue/",
+    "additionalSources": [
+      "https://monumentenregister.cultureelerfgoed.nl/monumenten/5798",
+      "https://www.uilenburgersjoel.nl/wp-content/uploads/2024/03/01.Uilenburgersjoel-informatie-en-catering.pdf"
+    ]
+  }
 ]

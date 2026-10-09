@@ -10594,5 +10594,96 @@
     "licenceUrl": "./LICENSE",
     "modifications": "Original texture-free BAG reconstruction; source-guided gray bands, timber terrace, red/white bays and entrance overhang. No reference pixels or third-party mesh imported."
   }
-}
+},
+  {
+    "id": "uilenburger-synagoge",
+    "name": "Uilenburger Synagoge",
+    "landmarkId": "extract_landmarks_452804039",
+    "modelUrl": "./models/uilenburger-synagoge.glb",
+    "suppressOsmIds": [
+      "w268782551",
+      "NL.IMBAG.Pand.0363100012181889"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.905340304026372,
+        52.370175529685945
+      ],
+      "headingDegrees": 145.64791589490176,
+      "lengthMetres": 22.2,
+      "widthMetres": 11.6
+    },
+    "surveyed": {
+      "anchor": [
+        4.905340304026372,
+        52.370175529685945
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Current municipal BAG address/VBO parent0363100012181889 and OSMw268782551; native east/south, scale1. AHN5 2023 semantic roof polygons inform original four-plane mansard roof. Front faces northwest into open forecourt; rear southeast faces canal. BAG geometry/status/year under investigation recorded, not silently omitted."
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "materialOverrides": {
+      "brick": "#685449",
+      "stone": "#b5ac94",
+      "white": "#e4e1cd",
+      "glass": "#657c7e",
+      "slate": "#665f58",
+      "dark": "#202f39",
+      "frame": "#9ba19c",
+      "greyBrick": "#7f8583"
+    },
+    "attribution": {
+      "title": "Uilenburger Synagoge",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.uilenburgersjoel.nl/the-uilenburger-synagogue/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free surveyed synagogue with bell gable, three oculi, white subdivided arched windows, stone doorcase, contrasting rendered rear and surveyed steep-lower/shallow-upper mansard. No downloaded mesh or photo textures."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.905178516607106,
+            52.370227202067795
+          ],
+          [
+            4.905364141030403,
+            52.37006552279786
+          ],
+          [
+            4.905404987289694,
+            52.37008341277186
+          ],
+          [
+            4.905409375114112,
+            52.37007959287597
+          ],
+          [
+            4.905465639375633,
+            52.37010422343142
+          ],
+          [
+            4.905461222285348,
+            52.370108034222596
+          ],
+          [
+            4.9055020688181985,
+            52.370125906188434
+          ],
+          [
+            4.905317333199509,
+            52.37028554009238
+          ],
+          [
+            4.905178516607106,
+            52.370227202067795
+          ]
+        ]
+      ]
+    }
+  }
 ]
