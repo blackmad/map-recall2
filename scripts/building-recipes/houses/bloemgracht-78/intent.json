@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "kind": "canal-house",
+  "id": "bloemgracht-78",
+  "pandId": "0363100012170045",
+  "address": "Bloemgracht 78",
+  "sources": [{"id": "pano-2023-02-27", "kind": "street-panorama", "capturedAt": "2023-02-27", "image": "artifacts/building-recipes/bloemgracht-78/photo-front0.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}],
+  "fronts": [{
+    "id": "front0", "street": "Bloemgracht",
+    "gable": "flat",
+    "storeys": 5, "bays": 3,
+    "doorBay": 2, "tallGround": true,
+    "basement": "none", "cornice": "none", "windows": "plain", "hoist": false,
+    "shopfront": {"colour": "dark-green", "fascia": false}
+  }],
+  "roof": {"material": "bitumen"},
+  "palette": {"brick": "orange-brick", "frame": "white", "door": "dark-green", "stone": "grey-painted"},
+  "notes": ["2001 infill: flat parapet, glazed two-level base with loggia (loggia not modelled)."]
+}

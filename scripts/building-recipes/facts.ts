@@ -12,6 +12,7 @@ import path from 'node:path';
 import {buildFacts, type BuildingFacts, type CityJsonItem, type RD, type StreetPath} from '../../src/canalRecall/buildingRecipe/facts.ts';
 import {lngLatToRd, rdToLngLat} from '../../src/canalRecall/facade/rdNew.ts';
 import {perspectiveCrop} from '../street-appearance/perspective.ts';
+import {loadIntent} from './compile.ts';
 
 const arg = (name: string) => process.argv.find(a => a.startsWith(`--${name}=`))?.slice(name.length + 3);
 export const HOUSES = 'scripts/building-recipes/houses';
@@ -52,8 +53,7 @@ export async function fetchPanorama(id: string, front: BuildingFacts['fronts'][n
     const month = Number(String(p.timestamp).slice(5, 7)), leafOff = month <= 4 || month >= 11;
     return {p, c, depth, score: lateral + 0.35 * Math.abs(depth - 14) - (leafOff ? 6 : 0) - (p.timestamp > '2023' ? 1 : 0)};
   }).filter((x: any) => x.depth > 4 && x.depth < 40).sort((x: any, y: any) => x.score - y.score);
-  const best = candidates[0];
-  if (!best) return null;
+  for (const best of candidates.slice(0, 4)) {
   const distance = Math.hypot(best.c[0] - mid[0], best.c[1] - mid[1]);
   const heading = (Math.atan2(mid[0] - best.c[0], mid[1] - best.c[1]) * 180 / Math.PI + 360) % 360;
   const height = Math.max(front.topM, 8) + 1.5;
@@ -62,16 +62,20 @@ export async function fetchPanorama(id: string, front: BuildingFacts['fronts'][n
   const fovV = 2 * Math.atan((height / 2 + 1.5) / distance) * 180 / Math.PI, aspect = 0.8;
   const fovH = Math.min(110, Math.max(2 * Math.atan((front.widthM / 2 + 1.5) / distance) * 180 / Math.PI, 2 * Math.atan(Math.tan(fovV * Math.PI / 360) * aspect) * 180 / Math.PI));
   const image = path.join(ARTIFACTS, id, `photo-${frontId}.jpg`);
-  const bytes = await fetchBytes(best.p._links.equirectangular_medium.href);
+  let bytes: Buffer;
+  try { bytes = await fetchBytes(best.p._links.equirectangular_medium.href); } catch { continue; }
   await fs.mkdir(path.dirname(image), {recursive: true});
   await fs.writeFile(image, perspectiveCrop(bytes, heading, 800, 1000, fovH, pitch));
   return {front: frontId, panoId: best.p.pano_id, timestamp: best.p.timestamp, url: best.p._links.equirectangular_medium.href, cameraRD: best.c, headingDeg: heading, fovDeg: fovH, pitchDeg: pitch, distanceM: distance, image, license: 'Gemeente Amsterdam panorama, CC BY 4.0'};
+  }
+  return null;
 }
 
 export async function prepareFacts(id: string, options: {pand?: string; streets?: string[]; refresh?: boolean; photo?: boolean} = {}) {
   const dir = path.join(HOUSES, id);
   await fs.mkdir(dir, {recursive: true});
-  const intent = await json<any>(path.join(dir, 'intent.json'));
+  let intent = await json<any>(path.join(dir, 'intent.json'));
+  if (intent?.sameAs) intent = (await loadIntent(id)).intent;
   const pandId: string = options.pand ?? intent?.pandId;
   const frontStreets: string[] = options.streets ?? intent?.fronts?.map((f: any) => f.street);
   if (!/^\d{16}$/.test(pandId ?? '') || !frontStreets?.length) throw Error(`${id}: need intent.json or --pand/--street`);

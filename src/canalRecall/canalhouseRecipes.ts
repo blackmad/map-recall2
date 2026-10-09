@@ -380,7 +380,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
     const ux=dx/length,uz=dz/length,sign=area(ring)>0?1:-1,nx=sign*uz,nz=-sign*ux;
     const plan=elevation.frontagePlan?read(elevation.frontagePlan,`${elevation.id}/frontagePlan`):null;
     if(plan&&(!Number.isFinite(plan.maxInsetM)||plan.maxInsetM<=0||plan.maxInsetM>1||elevation.endEdgeIndex===undefined))throw Error('Unsupported principal facade inset');
-    if(plan?.maxOutsetM!==undefined&&(!Number.isFinite(plan.maxOutsetM)||plan.maxOutsetM<0||plan.maxOutsetM>.3))throw Error('Unsupported principal facade outset');
+    if(plan?.maxOutsetM!==undefined&&(!Number.isFinite(plan.maxOutsetM)||plan.maxOutsetM<0||plan.maxOutsetM>.5))throw Error('Unsupported principal facade outset');
     if(elevation.endEdgeIndex!==undefined){
       const tolerance=elevation.frontageToleranceM?read(elevation.frontageToleranceM,`${elevation.id}/frontageToleranceM`):.03;
       if(!Number.isFinite(tolerance)||tolerance<0||tolerance>.3)throw new Error('Unsupported facade-plane approximation');

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "kind": "canal-house",
+  "id": "bloemgracht-88",
+  "pandId": "0363100012169913",
+  "address": "Bloemgracht 88",
+  "sources": [{"id": "pano-2023-03-13", "kind": "street-panorama", "capturedAt": "2023-03-13", "image": "artifacts/building-recipes/bloemgracht-88/photo-front0.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}],
+  "fronts": [{
+    "id": "front0", "street": "Bloemgracht",
+    "gable": "cornice", "crownCap": "flat",
+    "storeys": 4, "bays": 3,
+    "doorBay": 0, "tallGround": true,
+    "basement": "none", "cornice": "simple", "windows": "sash", "hoist": false
+  }],
+  "roof": {"material": "black-tile"},
+  "palette": {"brick": "dark-brown", "frame": "white", "door": "dark-green", "stone": "grey-painted"}
+}

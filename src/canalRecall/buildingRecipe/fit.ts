@@ -36,7 +36,7 @@ const WINDOW_BARS: Record<FrontIntent['windows'], Pick<CanalhouseOpening, 'verti
 };
 
 export interface FitReport {
-  fronts: {id: string; widthM: number; eavesM: number; crownTopM: number; storeyHeightsM: number[]; mirrored: boolean; edge: [number, number]; frontageDeviationM: number}[];
+  fronts: {id: string; widthM: number; eavesM: number; crownTopM: number; storeyHeightsM: number[]; mirrored: boolean; edge: [number, number]; frontageDeviationM: number; frontageOutsetM: number; polygonIndex: number}[];
   warnings: string[];
 }
 
@@ -121,7 +121,7 @@ function crownProfile(f: FrontIntent, width: number, eaves: number, top: number)
     case 'point': return canalhouseCrownProfile('punt', width, eaves, top, 0, eaves, 0);
     case 'spout': return canalhouseCrownProfile('tuit', width, eaves, top, width * 0.34, top - Math.min(0.7, rise * 0.15), 0);
     case 'step': return canalhouseCrownProfile('trap', width, eaves, top, width * 0.3, eaves, clamp(Math.round(rise / 1.4), 2, 5));
-    case 'neck': case 'raised-neck': return canalhouseCrownProfile('hals', width, eaves, top, width * 0.42, eaves + rise * (f.gable === 'neck' ? 0.38 : 0.2), 0, {cap: f.crownCap ?? 'pediment', capRiseM: Math.min(0.6, rise * 0.15), crestWidthM: width * 0.42, shoulderCurve: 0.6});
+    case 'neck': case 'raised-neck': return canalhouseCrownProfile('hals', width, eaves, top, width * 0.5, eaves + rise * (f.gable === 'neck' ? 0.45 : 0.25), 0, {cap: f.crownCap ?? 'pediment', capRiseM: Math.min(0.45, rise * 0.1), crestWidthM: width * 0.5, shoulderCurve: 0.6});
     case 'bell': return canalhouseCrownProfile('klok', width, eaves, top, width * 0.46, eaves + rise * 0.55, 0, {cap: f.crownCap ?? 'rounded', capRiseM: Math.min(0.6, rise * 0.15), crestWidthM: width * 0.46});
     case 'cornice': {
       if (f.crownCap && f.crownCap !== 'flat') return canalhouseCrownProfile('lijst', width, eaves, top, width * 0.3, eaves, 0, {cap: f.crownCap, capRiseM: Math.min(0.7, rise), crestWidthM: width * 0.3});
@@ -177,14 +177,21 @@ export function fitIntent(intent: CanalHouseIntent, facts: BuildingFacts): {reci
     // The facade x axis starts at ring[edgeIndex]; mirror authored left-to-right layouts when that is the viewer's right.
     const mirrored = !forward;
     const a = ring[edgeIndex], b = ring[endIndex], width = Math.hypot(b[0] - a[0], b[1] - a[1]);
-    let deviation = 0;
-    for (let i = (edgeIndex + 1) % n; i !== endIndex; i = (i + 1) % n) deviation = Math.max(deviation, Math.abs((ring[i][0] - a[0]) * (b[1] - a[1]) - (ring[i][1] - a[1]) * (b[0] - a[0])) / width);
+    // Signed offsets of intermediate frontage vertices, using the compiler's outward normal.
+    const ringSign = ring.reduce((s, p, i) => { const q = ring[(i + 1) % n]; return s + p[0] * q[1] - q[0] * p[1]; }, 0) > 0 ? 1 : -1;
+    const ux = (b[0] - a[0]) / width, uz = (b[1] - a[1]) / width, nx = ringSign * uz, nz = -ringSign * ux;
+    let deviation = 0, maxOut = 0, maxIn = 0;
+    for (let i = (edgeIndex + 1) % n; i !== endIndex; i = (i + 1) % n) {
+      const o = (ring[i][0] - a[0]) * nx + (ring[i][1] - a[1]) * nz;
+      deviation = Math.max(deviation, Math.abs(o)); maxOut = Math.max(maxOut, o); maxIn = Math.max(maxIn, -o);
+    }
+    if (maxOut > 0.5) warnings.push(`${front.id}: frontage vertex ${round(maxOut, 2)} m proud of the chord; facade plane approximated`);
     // Heights from the 3DBAG roof profile inside this piece of frontage.
     const along = ff.topProfile.filter(p => { const pt = [ff.endpointsRD[0][0] + (ff.endpointsRD[1][0] - ff.endpointsRD[0][0]) * p.alongM / ff.widthM, ff.endpointsRD[0][1] + (ff.endpointsRD[1][1] - ff.endpointsRD[0][1]) * p.alongM / ff.widthM];
       const t = ((pt[0] - endpoints[0][0]) * (endpoints[1][0] - endpoints[0][0]) + (pt[1] - endpoints[0][1]) * (endpoints[1][1] - endpoints[0][1])) / ((endpoints[1][0] - endpoints[0][0]) ** 2 + (endpoints[1][1] - endpoints[0][1]) ** 2);
       return t >= 0 && t <= 1; }).map(p => p.heightM).sort((x, y) => x - y);
     if (along.length < 3) throw Error(`${front.id}: no 3DBAG roof profile along this front`);
-    const eaves = along[Math.floor(along.length * 0.1)], profileTop = along.at(-1)!;
+    const eaves = round(along[Math.floor(along.length * 0.1)]), profileTop = along.at(-1)!;
     // Gabled crowns rise above the roof meeting line; their top is the higher
     // of the profile peak and a proportion of the width, capped by the ridge.
     const gabled = !['cornice', 'flat'].includes(front.gable);
@@ -194,20 +201,28 @@ export function fitIntent(intent: CanalHouseIntent, facts: BuildingFacts): {reci
     const flip = (o: CanalhouseOpening): CanalhouseOpening => mirrored ? {...o, leftM: width - o.leftM - o.widthM} : o;
     const elevation: CanalhouseElevation = {
       id: front.id, polygonIndex, edgeIndex, ...(endIndex !== (edgeIndex + 1) % n ? {endEdgeIndex: endIndex, frontageToleranceM: surveyed(round(Math.min(.3, deviation + .01)))} : {}),
-      ...(deviation > .3 ? {frontagePlan: surveyed({maxInsetM: round(Math.min(1, deviation + .02)), maxOutsetM: .3})} : {}),
+      ...(deviation > .3 ? {frontagePlan: surveyed({maxInsetM: round(Math.min(1, Math.max(maxIn, .01) + .02)), maxOutsetM: round(Math.min(.5, maxOut + .02))})} : {}),
       openings: seen(layout.openings.map(flip)),
       ...(front.palette ? {palette: seen(paletteFor(intent, front))} : {}),
     };
     if (corniceH > 0) elevation.cornice = seen({bottomM: round(eaves - corniceH), heightM: corniceH, depthM: round(corniceH * 0.5), brackets: front.cornice === 'bracketed' ? Math.max(2, Math.round(width / 1.6)) : 0});
-    const profile = crownProfile(front, width, eaves, crownTop);
+    // Non-straight frontages need an explicit wall top (the library only reads
+    // roof edges lying on the chord); a flat crown at the eaves supplies it.
+    const profile = crownProfile(front, width, eaves, crownTop) ?? (deviation > 0.03 ? [[0, eaves], [width, eaves]] as CanalhousePoint[] : null);
     if (profile) {
-      elevation.crown = seen({profile: profile.map(([x, y]) => [round(mirrored ? width - x : x, 4), round(y, 4)] as CanalhousePoint).sort((p, q) => p[0] - q[0]), depthM: 0.18, trimWidthM: 0.08, surface: 'wall'});
+      elevation.crown = seen({profile: profile.map(([x, y]) => [Math.min(width, Math.max(0, mirrored ? width - x : x)), Math.max(eaves, y)] as CanalhousePoint).sort((p, q) => p[0] - q[0]), depthM: 0.18, trimWidthM: 0.08, surface: 'wall'});
       // Attic windows inside the crown.
       const attic = front.atticWindows ?? 0, rise = crownTop - eaves;
       if (attic > 0 && rise > 1.2) {
         const w = clamp(width * 0.14, 0.5, 0.9), h = clamp(rise * 0.4, 0.6, 1.4), gap = w * 0.5, total = attic * w + (attic - 1) * gap;
-        for (let k = 0; k < attic; k++) elevation.openings.value.push({id: `attic-${k}`, kind: 'window', leftM: (width - total) / 2 + k * (w + gap), bottomM: eaves + 0.25, widthM: w, heightM: h, trimWidthM: 0.06, ...WINDOW_BARS[front.windows === 'shop' ? 'sash' : front.windows], frameSurface: 'trim', barSurface: 'trim'});
+        // Neck gables stack their attic lights up the neck; other crowns set them side by side.
+        const stack = front.gable === 'neck' || front.gable === 'raised-neck', hh = stack ? Math.min(h, (rise - 0.8) / attic - 0.3) : h;
+        for (let k = 0; k < attic; k++) elevation.openings.value.push({id: `attic-${k}`, kind: 'window', leftM: stack ? (width - w) / 2 : (width - total) / 2 + k * (w + gap), bottomM: eaves + 0.25 + (stack ? k * (hh + 0.3) : 0), widthM: w, heightM: stack ? hh : h, trimWidthM: 0.06, ...WINDOW_BARS[front.windows === 'shop' ? 'sash' : front.windows], frameSurface: 'trim', barSurface: 'trim'});
       }
+    }
+    if (front.dormers) {
+      const k = front.dormers, w = clamp(width / (k * 2.2), 0.9, 1.6), gap = (width - k * w) / (k + 1);
+      elevation.dormers = seen(Array.from({length: k}, (_, i) => ({id: `dormer-${i}`, leftM: round(gap + i * (w + gap)), widthM: round(w), bottomM: round(Math.max(eaves, survey.shellTopM) + 0.05), heightM: 1.45, depthM: 1.3, roofRiseM: 0.45, setbackM: 0.35, trimWidthM: 0.07, verticalBars: [.5], wallSurface: 'trim' as const, roofSurface: 'roof' as const})));
     }
     if (front.hoist) elevation.hoists = seen([{id: 'hoist', centerM: width / 2, heightM: round(gabled ? crownTop - 0.9 : eaves + 0.1), widthM: 0.14, beamHeightM: 0.18, projectionM: 1.1, setbackM: 0.1, surface: 'door'}]);
     if ((front.basement === 'stoop' || front.basement === 'stoop-and-windows') && layout.doorLeft !== null && layout.groundBase > 0) {
@@ -224,7 +239,7 @@ export function fitIntent(intent: CanalHouseIntent, facts: BuildingFacts): {reci
     mainEaves = Math.min(mainEaves, eaves);
     elevation.bodyEavesM = surveyed(round(eaves));
     elevations.push(elevation);
-    reports.push({id: front.id, widthM: round(width), eavesM: round(eaves), crownTopM: round(crownTop), storeyHeightsM: layout.storeyHeights, mirrored, edge: [edgeIndex, endIndex], frontageDeviationM: round(deviation)});
+    reports.push({id: front.id, widthM: round(width), eavesM: round(eaves), crownTopM: round(crownTop), storeyHeightsM: layout.storeyHeights, mirrored, edge: [edgeIndex, endIndex], frontageDeviationM: round(deviation), frontageOutsetM: round(maxOut, 4), polygonIndex});
   }
   house.eavesHeightM = surveyed(round(Math.max(mainEaves, survey.shellTopM)));
   house.gable = seen(GABLE_TYPE[intent.fronts[0].gable]);

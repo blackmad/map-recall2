@@ -1,0 +1,9 @@
+{
+  "sameAs": "bloemgracht-80",
+  "id": "bloemgracht-84",
+  "pandId": "0363100012169914",
+  "address": "Bloemgracht 84",
+  "sources": [{"id": "pano-2021-01-22", "kind": "street-panorama", "capturedAt": "2021-01-22", "image": "artifacts/building-recipes/bloemgracht-86/photo-front0.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}],
+  "overrides": {"fronts": [{"doorBay": 0}]},
+  "notes": ["Near-twin of 80 (cornice, single white dormer, cream ground with arched door) seen right of 86 in the 2021-01-22 panorama."]
+}
