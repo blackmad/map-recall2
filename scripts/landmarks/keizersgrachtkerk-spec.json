@@ -1,0 +1,45 @@
+{
+  "id": "keizersgrachtkerk",
+  "name": "Keizersgrachtkerk",
+  "modelUrl": "./models/keizersgrachtkerk.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012177272"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.888077939720203,
+      52.364601907267215
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 29,
+    "widthMetres": 15
+  },
+  "surveyed": {
+    "anchor": [
+      4.888077939720203,
+      52.364601907267215
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Exact current BAG0363100012177272 native east/south metres, single church footprint; frontage chain5\u21920 toward Keizersgracht; semantic AHN5 roof profiles; adjacent canal houses retained."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "Keizersgrachtkerk \u2014 original surveyed neo-Venetian church",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518347",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original native texture-free flat-color geometry; photos and survey evidence guide architectural construction."
+  },
+  "materialOverrides": {
+    "brick": "#986f5d",
+    "stone": "#d5cfbd",
+    "slate": "#707e86",
+    "glass": "#526362",
+    "white": "#e5dfcc",
+    "bronze": "#67583d"
+  },
+  "landmarkId": "extract_landmarks_2099326007"
+}
