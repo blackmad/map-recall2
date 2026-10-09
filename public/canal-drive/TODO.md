@@ -148,7 +148,10 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   minimap/overview, dropping the live OpenFreeMap dependency. Gaps: no road
   widths/sidewalks in our extracts (centrelines only), humped bridges render
   as grey slabs, no route line/labels/HUD in the spike.
-- **Haparandaweg held/skipped**: review 65 (needs the terracotta upper volume),
+- **Haparandaweg held/skipped**: Het Pakhuis (902–950) held 2026-10-09 by
+  user review — five identical gables with symmetric window grids, HET
+  PAKHUIS band, double-height glazed ground floor; the model scattered
+  windows and invented setbacks. Rebuild against a facade-rhythm spec. Review 65 (needs the terracotta upper volume),
   650–706 (paired casements, stone bands), 708–744, 788–868 (glass bays);
   retry 940–950 with another photo source; 582–648 after scaffolding. The
   street sheet framing was poor (bike drawn over a roof) — reshoot.

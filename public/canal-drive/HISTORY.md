@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## Acceptance checklist after Nassaukerk and Het Pakhuis (2026-10-09)
+
+Nassaukerk passed review twice with blank walls, and Het Pakhuis shipped with
+scattered windows where the building has five identical symmetric gabled bays.
+Both were judged from one photo by overall resemblance. The checklist in
+`docs/buildings-pipeline.md` now requires a per-wall rhythm spec from photos
+before modelling, a photo per visible face (else "inferred"), camera-matched
+photo/render comparison bay by bay, the blank-wall and facade-rhythm gates,
+and a street-level shot; lane-reported uncertainty blocks a merge. Het Pakhuis
+is held until a rebuild passes it.
+
 ## GLB quality audit; Nassaukerk windows (2026-10-09)
 
 `audit-glb-quality.ts` checks every landmark GLB for open shell holes,
