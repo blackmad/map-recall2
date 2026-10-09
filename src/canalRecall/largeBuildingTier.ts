@@ -64,10 +64,23 @@ export function largeTierProperties(p: Record<string, unknown>, wall: string, li
   const mapped = [p.sideColour, p.colour, p.color].find(v => typeof v === 'string' && HEX.test(v.trim())) as string | undefined;
   const wallHex = mapped && p.appearanceStyleSource !== 'citywide-identity-palette-v3-not-measured' ? mapped.trim() : wall;
   const style = heightM >= 30 && archetype === 'modern' ? 'tower' : LARGE_TIER_LAYOUT[archetype];
+  // A guessed flat-cap colour (terracotta, ochre) reads as a tiled roof on a 60 m slab: big flat
+  // roofs are bitumen, gravel or zinc grey unless a source says otherwise.
+  const roofGuessed = typeof p.roofAppearanceStyleSource === 'string' && p.roofAppearanceStyleSource.includes('not-measured');
+  const roof = roofGuessed || typeof p.roofColour !== 'string' ? LARGE_ROOF_GREYS[Math.floor(hash01(`${p.id}:roof`) * LARGE_ROOF_GREYS.length)] : p.roofColour;
   return {
-    ...p, largeTier: archetype, largeTierWall: wallHex, sideColour: wallHex, groundColour: wallHex,
+    ...p, largeTier: archetype, largeTierWall: wallHex, sideColour: wallHex, groundColour: wallHex, roofColour: roof,
     facade: facadeKey(style, snapWallColour(wallHex) ?? 'priorBrickBrown'), facadeStyle: style,
   };
+}
+
+const LARGE_ROOF_GREYS = ['#6f7378', '#7d7a74', '#62676c', '#86827a'];
+
+/** The plinth: the ground floor a shade darker and greyer than the wall, like a stone or rendered base. */
+export function plinthHex(wallHex: string): string {
+  if (!HEX.test(wallHex)) return wallHex;
+  const n = parseInt(wallHex.slice(1), 16), grey = [0x6a, 0x66, 0x61];
+  return '#' + [n >> 16 & 255, n >> 8 & 255, n & 255].map((c, i) => Math.round(c * 0.55 + grey[i] * 0.45 * 0.9).toString(16).padStart(2, '0')).join('');
 }
 
 const hash01 = (s: string) => { let h = 2166136261; for (const c of s) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return (h >>> 0) / 4294967296; };
