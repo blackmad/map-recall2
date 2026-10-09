@@ -50,7 +50,11 @@
   "limitations": [
     "greenhouse joinery/rear glazing estimates",
     "headless timing/touch emulation limitations",
-    "hosted check pending"
+    "hosted check pending",
+    "Greenhouse eave/crest dimensions and bay widths are photo-guided approximations because laser survey omits glass roofs.",
+    "Beeldbank search produced only a viewer shell; no archival drawing or catalogue photograph admitted.",
+    "Current north and northeast panes are documented by2025 municipal photographs. Western waterfront lower details use dated2015/2019 operator photos; current aerial confirms topology and the correct sign wall.",
+    "The actual southern short rear glazing ribbon remains approximate; source does not establish a complete lower opening count."
   ],
   "reportedRootChecks": {
     "assetSha256BeforeRoofColor": "9cd8202719e279f99933d785c59c0b846d5a25ebf0463e59dd0e1dd873c37184",
