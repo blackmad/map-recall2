@@ -1,0 +1,8 @@
+import fs from 'node:fs';
+import {rdToLngLat} from '../../src/canalRecall/facade/rdNew';
+const raw='/Users/blackmad/Code/map-recall2-worktrees/source-archive/models/westerkerk/checkpoints/final-source-cpu-and-production-1bfbeb49-20261007/artifacts/westerkerk-annex-durable/independent-raw/bag-2174413.json';
+const j=JSON.parse(fs.readFileSync(raw,'utf8')),t=j.metadata.transform,id='NL.IMBAG.Pand.0363100012174413',vs=j.feature.vertices.map((v:number[])=>v.map((n,i)=>n*t.scale[i]+t.translate[i]));
+const footprint=j.feature.CityObjects[id].geometry[0].boundaries[0][0].map((i:number)=>rdToLngLat({x:vs[i][0],y:vs[i][1]}));const anchor=footprint.reduce((a:number[],v:number[])=>a.map((n,i)=>n+v[i]/footprint.length),[0,0]);
+const ground=j.feature.CityObjects[id].attributes.b3_h_maaiveld;const local=vs.map((v:number[])=>{const ll=rdToLngLat({x:v[0],y:v[1]});return [(ll[0]-anchor[0])*111320*Math.cos(anchor[1]*Math.PI/180),v[2]-ground,(anchor[1]-ll[1])*111320]});
+const geom=j.feature.CityObjects[id+'-0'].geometry.find((g:any)=>g.lod==='2.2');const roofs=geom.boundaries[0].flatMap((r:any,index:number)=>geom.semantics.surfaces[geom.semantics.values[0][index]].type==='RoofSurface'?[{index,rings:r.map((r:number[])=>r.map(i=>local[i]))}]:[]);
+const out={raw,source:'https://api.3dbag.nl/collections/pand/items/'+id,anchor,groundNAP:ground,footprint,ring:j.feature.CityObjects[id].geometry[0].boundaries[0][0].map((i:number)=>[local[i][0],local[i][2]]),roofs};fs.writeFileSync('scripts/landmarks/wester-tours-neighbor-footprints.json',JSON.stringify(out,null,2)+'\n');console.log(JSON.stringify(out));

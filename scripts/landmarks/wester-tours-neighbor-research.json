@@ -1,0 +1,98 @@
+{
+  "id": "wester-tours-neighbor",
+  "status": "frozen CPU candidate; source archival, independent gallery/live-game and neighbor/fallback review pending root",
+  "identity": {
+    "bagId": "0363100012174413",
+    "osmId": "w266616392",
+    "classification": "ordinary exact neighbor repair; do not create curated destination",
+    "excludedChurchParents": [
+      "NL.IMBAG.Pand.0363100012174221",
+      "NL.IMBAG.Pand.0363100012164998"
+    ]
+  },
+  "referencePhotos": [
+    {
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_04-42-37_03246/equirectangular/panorama_2000.jpg",
+      "localPath": "/Users/blackmad/Code/map-recall2-worktrees/source-archive/models/westerkerk/annex-recovery-20261007/raw/recording_2025-06-16_04-42-37_03246.jpg",
+      "date": "2025-06-16",
+      "role": "principal east front and exposed north side; inspected original panorama",
+      "rights": "municipal panorama; retain source attribution and archive rights record"
+    },
+    {
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_04-42-37_03170/equirectangular/panorama_2000.jpg",
+      "localPath": "/Users/blackmad/Code/map-recall2-worktrees/source-archive/models/westerkerk/annex-recovery-20261007/raw/recording_2025-06-16_04-42-37_03170.jpg",
+      "date": "2025-06-16",
+      "role": "inspected church/tower and broader bank context; neighbor not shown, no facade assertions derived",
+      "rights": "municipal panorama; retain source attribution and archive rights record"
+    }
+  ],
+  "survey": {
+    "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012174413",
+    "localPath": "/Users/blackmad/Code/map-recall2-worktrees/source-archive/models/westerkerk/checkpoints/final-source-cpu-and-production-1bfbeb49-20261007/artifacts/westerkerk-annex-durable/independent-raw/bag-2174413.json",
+    "groundNAP": 0.9440000057220459,
+    "survey": "AHN5 2023",
+    "scope": "LOD0 physical outline and six LOD2.2 RoofSurfaces; no downloaded meshes",
+    "replayScript": "scripts/landmarks/wester-tours-neighbor-decode-survey.ts"
+  },
+  "assertions": [
+    {
+      "feature": "main roof",
+      "part": "main long volume",
+      "source": "3DBAG RoofSurfaces39/40 and panorama03246",
+      "confidence": "high",
+      "observed": "steep pitched dark roof; ridge8.72\u20138.88m above ground, north eaves4.72\u20135.08m; original surveyed boundary geometry"
+    },
+    {
+      "feature": "round attic window",
+      "part": "east gable",
+      "source": "panorama03246",
+      "confidence": "high presence, approximate size",
+      "observed": "circular white surround and white horizontal/vertical cross; modeled1.03m radius,6.64m center above ground"
+    },
+    {
+      "feature": "low glazed porch",
+      "part": "east footprint extension",
+      "source": "panorama03246 and RoofSurface36",
+      "confidence": "high massing, approximate opening subdivisions",
+      "observed": "glazed frontage under sloping low roof3.02\u20135.38m; central glazed door and pale spandrels"
+    },
+    {
+      "feature": "north openings",
+      "part": "exposed long north side",
+      "source": "panorama03246",
+      "confidence": "medium; distant rear is partially occluded",
+      "observed": "paired pale-framed shop windows with upper lights; six pairs represented, joinery and spacing approximate"
+    },
+    {
+      "feature": "low church-side roofs",
+      "part": "south attached volumes within same BAG parent",
+      "source": "RoofSurfaces35/37/38",
+      "confidence": "high massing, low opening confidence",
+      "observed": "distinct low levels3.19\u20133.77m, retained without flattening main roof; low joinery simplified"
+    },
+    {
+      "feature": "chimney and coping",
+      "part": "main roof/east gable",
+      "source": "panorama03246",
+      "confidence": "medium presence; placement/dimensions approximate",
+      "observed": "small dark capped flue and pale gable edge; subordinate simplified details"
+    }
+  ],
+  "omissions": [
+    "No invented building-name sign; no defining lettering is legibly supported by inspected reference.",
+    "No new destination, pin or trivia identity. Preserve existing mapped Pancakes place if found inside exact installed footprint.",
+    "No archival search for historic reconstruction: this is an ordinary current-neighbor source repair, not a new historic landmark."
+  ],
+  "cpuReview": {
+    "reference": "panorama03246",
+    "candidate": "artifacts/wester-tours-neighbor-cpu/views/corner.png",
+    "finding": "recognition traits present: pitched main roof, circular front window, glazed low porch, pale grouped side openings, lower church-side roof; exact context pending",
+    "geometryCheck": "artifacts/wester-tours-neighbor-cpu/geometry-check.json",
+    "failedEvidence": "artifacts/wester-tours-neighbor-cpu/failed-quantized-roof-sliver.glb",
+    "failureFix": "Four sub0.001m\u00b2 projected source-collinear roof triangles removed before quantization; decoded roof minimum normalY0.6979 and all41decoded roof faces upwards."
+  },
+  "integrationNotes": "Root registers separate manual asset and builder only. Suppress sole exact parent/OSM alias after successful model load, including independent pyramidal layer. Do not change Westerkerk suppression. Preserve fallback when disabled/unavailable. Native survey anchor and northOffset0; scale1. Public candidate GLB metallicFactor0 and no textures.",
+  "sourceArchive": {
+    "state": "existing raw source pack read-only, new canonical neighbor pack and source commit pending root ownership"
+  }
+}
