@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## The game kept replaying the last route on launch (2026-10-09)
+
+User: the signed-in prod game picked Da Costakade → De Dolphijn "EVERY time".
+The home picker is weighted-random with novelty from mastery samples; it never
+ran. Every ride wrote `#race=centre,start,finish` into the address bar with
+`history.replaceState`, and `_checkShareLink` replays any `#race=` on load,
+bypassing the menu and picker — so reloads, restored tabs and autocompleted
+URLs replayed the previous route forever. The hash now lives only in the
+copy/share URL, and a consumed share link clears itself.
+`tests/e2e/race-hash-not-sticky.spec.ts` pins both.
+
 ## Bike ferries across the IJ (2026-10-09)
 
 The `feat/bike-ferry-crossings` work (built 2026-10-07/08, ~15k lines left
