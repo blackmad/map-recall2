@@ -1,0 +1,33 @@
+{
+  "modelId": "rabozaal-companion",
+  "canonicalLandmarkId": "extract_landmarks_1939633952",
+  "canonicalExistingName": "Internationaal Theater Amsterdam",
+  "canonicalWikidata": "Q1817103",
+  "relatedLandmarkIds": [
+    "extract_landmarks_1586263374"
+  ],
+  "relatedExistingName": "Melkweg",
+  "relatedWikidata": "Q60481",
+  "createNewDestination": false,
+  "createNewPin": false,
+  "preserveExistingPinsAndEntrances": true,
+  "physicalCardIdentity": "Use existing ITA useful researched card for73457; preserve Melkweg useful card for8735. Add source-backed shared-hall fact to both rather than generic year-only info.",
+  "sourceBackedFact": "The Rabozaal opened in2009 as a connection between the Stadsschouwburg and Melkweg. Its slender glazed lower structure supports an8m corridor and a foyer at15m that projects over the Melkweg and Lijnbaansgracht. Orange corrugated aluminium and dark perforated steel form the upper theater exterior.",
+  "sourceUrls": [
+    "https://arcam.nl/architectuur-gids/rabozaal-melkweg/",
+    "https://ita.nl/nl/verhuur/nieuwe-foyer/"
+  ],
+  "exactSuppression": {
+    "melkweg": [
+      "w267565714",
+      "NL.IMBAG.Pand.0363100012168735"
+    ],
+    "rabozaal-companion": [
+      "NL.IMBAG.Pand.0363100012173457"
+    ],
+    "stadsschouwburg": [
+      "w57863115",
+      "NL.IMBAG.Pand.0363100012168738"
+    ]
+  }
+}

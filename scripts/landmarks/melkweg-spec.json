@@ -1,0 +1,62 @@
+{
+  "id": "melkweg",
+  "name": "Melkweg",
+  "landmarkId": "extract_landmarks_1586263374",
+  "modelUrl": "./models/melkweg.glb",
+  "suppressOsmIds": [
+    "w267565714",
+    "NL.IMBAG.Pand.0363100012168735"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.881240593154614,
+      52.364767044146966
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 73.6,
+    "widthMetres": 55.916
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.881240593154614,
+      52.364767044146966
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Official current Pand geometry, AHN4 2020 component heights; original photo-guided geometry, native east/south scale1."
+  },
+  "materialOverrides": {
+    "brick": "#996754",
+    "greyBrick": "#885d4e",
+    "stone": "#b7b2a0",
+    "dark": "#252b2b",
+    "slate": "#424747",
+    "white": "#d8d7c8",
+    "glass": "#5d777c",
+    "frame": "#818786",
+    "bronze": "#8d5b48",
+    "blue": "#73b2c5"
+  },
+  "attribution": {
+    "title": "Original surveyed Melkweg complex",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.melkweg.nl/en/practical-information/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free reconstruction of exact irregular Melkweg BAG parent including Marnix fronts and large eastern rear volume. Thin approximate source-supported cursive sign and flat gable stars. No freestanding roof crosses; neighboring parents retained."
+  },
+  "scopeWarning": "Native boundary precision strips reconciled to existing component heights. Outer shared foyer belongs to73457 companion; paired exact8738 historic candidate exported. Native independent/gallery/game acceptance pending.",
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "path": "models/melkweg",
+    "facadeSourceCommit": "a311883a",
+    "newSurveySourceCommit": "cb67adebb70c3c70e28fef91cb64398bd2f0c110",
+    "newSurveySourcePath": "models/melkweg/feedback-survey-20261007/3dbag-target.json",
+    "originalReferenceCommit": "999a83d778cd61615a3d1b2521d7605e4121437b",
+    "processedCheckpointCommit": "e01d259d564d87933995a5e6e51e8dc601312e9c",
+    "publishedDescendantCommit": "16d644906c974150de90690eca7a8918e154cd6c",
+    "recoveredOriginalCheckpoint": "models/melkweg/checkpoints/processed-production-56c06af8/production/scripts/landmarks"
+  }
+}

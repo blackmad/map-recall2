@@ -1,0 +1,20 @@
+{
+  "roofOverrides": {
+    "modern-glazed-lower-core": []
+  },
+  "shellBottomOwnedByCeiling": [
+    "east-high-hall-366",
+    "east-high-hall-375"
+  ],
+  "ledger": {
+    "coreRoofArea": 164.76601772672313,
+    "coreRoofRemovedArea": 164.76601772672316,
+    "coreRoofRemainingArea": 6.512959953651392e-15,
+    "ceilingSoleOwnerArea": 275.6927632412546,
+    "planesM": [
+      15,
+      18.3
+    ],
+    "rule": "15m dark cantilever floor replaces intersecting generic core roof; 18.3m explicit dark ceiling replaces matching high-shell bottom caps."
+  }
+}

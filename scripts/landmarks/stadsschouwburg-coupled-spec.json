@@ -1,0 +1,48 @@
+{
+  "id": "stadsschouwburg",
+  "name": "Stadsschouwburg Amsterdam",
+  "landmarkId": "extract_landmarks_1939633952",
+  "modelUrl": "./models/stadsschouwburg.glb",
+  "suppressOsmIds": [
+    "w57863115",
+    "NL.IMBAG.Pand.0363100012168738"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.881898232685734,
+      52.36435694049734
+    ],
+    "headingDegrees": 52.40783486526533,
+    "lengthMetres": 54.077617043745775,
+    "widthMetres": 104.27101523772704
+  },
+  "surveyed": {
+    "anchor": [
+      4.881898232685734,
+      52.36435694049734
+    ],
+    "northOffsetDegrees": -37.59216513473467
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 90,
+  "attribution": {
+    "title": "Stadsschouwburg Amsterdam",
+    "author": "Map Recall",
+    "sourceUrl": "https://ita.nl/nl/stadsschouwburg-amsterdam/geschiedenis-van-het-huis",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original native8738 footprint/roof-plane shells based on AHN5 3DBAG, currentPDOK aerial, RCE46503 roof families and officialITA current photographs. Source-family pitched/hipped/zinc/slate roofs and sidebay groups replace unsupported flat parent caps. Existing genuine venue identity retained; current sign uses licensed approximate outline font."
+  },
+  "relatedLandmarkIds": [
+    "extract_landmarks_1586263374"
+  ],
+  "scopeWarning": "Frozen original source-derived historic body/roof and front candidate; independent source/GPU/native/game acceptance pending. Shared Rabozaal companion owns73457; no broad spatial suppression.",
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "cachedRoofCommit": "b1cdb177e3766b694f08fe38afe4c0e730829d0e",
+    "cachedRoofPath": "models/stadsschouwburg/files/stadsschouwburg-current-3dbag.json",
+    "newSourcesAndCandidateManifest": "artifacts/melkweg-coupled/source-archive-manifest.json",
+    "newSourcePublication": "ROOT_PENDING"
+  }
+}

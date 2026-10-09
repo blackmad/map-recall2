@@ -1,0 +1,64 @@
+{
+  "id": "rabozaal-companion",
+  "name": "Rabozaal shared hall",
+  "landmarkId": "extract_landmarks_1939633952",
+  "modelUrl": "./models/rabozaal-companion.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012173457"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.881240593154614,
+      52.364767044146966
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 44.64,
+    "widthMetres": 37.74
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.881240593154614,
+      52.364767044146966
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Official current Pand geometry, AHN4 2020 component heights; original photo-guided geometry, native east/south scale1."
+  },
+  "materialOverrides": {
+    "brick": "#996754",
+    "greyBrick": "#885d4e",
+    "stone": "#b7b2a0",
+    "dark": "#252b2b",
+    "slate": "#424747",
+    "white": "#d8d7c8",
+    "glass": "#5d777c",
+    "frame": "#818786",
+    "bronze": "#8d5b48",
+    "blue": "#73b2c5"
+  },
+  "attribution": {
+    "title": "Original surveyed Rabozaal shared hall",
+    "author": "Map Recall",
+    "sourceUrl": "https://arcam.nl/architectuur-gids/rabozaal-melkweg/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original flat-color native-outline companion for exact Pand0363100012173457. Separates source roof-height zones, raised metal upper hall, inset glazed core and foyer. Original authored geometry, no imported mesh/photo pixels. Shares genuine Stadsschouwburg destination identity."
+  },
+  "scopeWarning": "Coupled source/CPU candidate covers exact73457 with15m thin floor-edge reconciliation. Paired Stadsschouwburg exact8738 candidate exported. Native gallery/game/independent acceptance pending.",
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "path": "models/melkweg",
+    "facadeSourceCommit": "a311883a",
+    "newSurveySourceCommit": "cb67adebb70c3c70e28fef91cb64398bd2f0c110",
+    "newSurveySourcePath": "models/melkweg/feedback-survey-20261007/3dbag-target.json",
+    "originalReferenceCommit": "999a83d778cd61615a3d1b2521d7605e4121437b",
+    "processedCheckpointCommit": "e01d259d564d87933995a5e6e51e8dc601312e9c",
+    "publishedDescendantCommit": "16d644906c974150de90690eca7a8918e154cd6c",
+    "recoveredOriginalCheckpoint": "models/melkweg/checkpoints/processed-production-56c06af8/production/scripts/landmarks"
+  },
+  "relatedLandmarkIds": [
+    "extract_landmarks_1586263374"
+  ]
+}
