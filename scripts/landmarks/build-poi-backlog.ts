@@ -99,6 +99,20 @@ const treatments:Record<string,{kind:string;note:string}>={
   'equestrian statue of queen wilhelmina':{kind:'memorial',note:'Author the horse, rider and pedestal at the mapped position.'},
   'plaquette 7 mei 1945':{kind:'memorial',note:'Use a small mapped wall plaque rather than replacing the host building.'},
 };
+// Statues and sculptural monuments are not boxes: they go to their own queue
+// for multi-image Gaussian splats / baked impostors (user, 2026-10-09), not to
+// the building builders. Flat plaques and stones stay `memorial`. Membership
+// is a reviewed name list; a lane may move an entry after looking at photos.
+const SCULPTURES=['de schreeuw','de dokwerker','equestrian statue of queen wilhelmina','monument indie nederland','anne frank','living by numbers',
+  'amsterdam memorial to the canadian liberators','de knoop','martin luther king','vondelmonument','rembrandtmonument','mama baranka moeder rots',
+  'ravensbruck memorial','samen spelen samen leven','thorbecke statue','kunstenaarsverzet','mahatma gandhi','sarphatimonument',
+  'monument voor gefusilleerde verzetstrijders','jewish ww2 resistance memorial','van buurenmonument','zigeunermonument hel en vuur',
+  'annick van hardeveld','p w janssen','monument walraven van hall','tranen','waterdraagster','de hongerwinter','albert','levensboom',
+  'nationaal monument slavernijverleden','koningin emma','simon carmiggelt','fusillade','multatuli','westerman monument','spanjemonument',
+  '1936 1939 no pasaran'];
+const sculptureNote='Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes.';
+for(const name of SCULPTURES)if(!treatments[name])treatments[name]={kind:'sculpture',note:sculptureNote};
+else treatments[name]={...treatments[name],kind:'sculpture'};
 for(const p of destinations){const task=treatments[normaliseAnswer(p.name)];
   if(task)Object.assign(p,{treatment:task.kind,taskNote:task.note});
   else Object.assign(p,{treatment:p.status==='landscape'?'landscape':p.status==='pending'&&!['museum','cinema','library','music venue'].includes((p as any).type)?'review':'building'});

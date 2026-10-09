@@ -65,8 +65,12 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   worship, civic lanes; pand-reference feed (ordinary); recipe pipeline.
   Next: triage the ~80 `review` items into building / splat / area, and a
   discovery pass (Arcam guide, monument register) to grow toward ~1,000.
+  When buildings run out: notable businesses and restaurants (user).
 - **Sculptures and statues → splats/impostors (user, 2026-10-09)**: De
   Dokwerker, Vondel-, Rembrandt- and Wilhelmina-monuments etc. are not boxes.
+  38 are now `treatment: sculpture` in the backlog (filter "Sculpture (splat)"
+  on `landmark-queue.html`; list in `build-poi-backlog.ts`), incl. Mama
+  Baranka; De Dokwerker's hand-built model should be replaced first.
   Capture a multi-image Gaussian splat (or photogrammetry mesh) from Commons
   photos + panorama crops; render the splat only within ~50 m and a baked
   8–16-view impostor beyond. Start from `docs/landmark-splat-reference-pilot.md`.

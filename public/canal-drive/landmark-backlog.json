@@ -859,7 +859,7 @@
       "queueRank": 66,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "memorial",
+      "treatment": "sculpture",
       "taskNote": "Author the sculpture at its mapped position; retain the surrounding park."
     },
     {
@@ -937,7 +937,7 @@
       "queueRank": 72,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "memorial",
+      "treatment": "sculpture",
       "taskNote": "Author the horse, rider and pedestal at the mapped position."
     },
     {
@@ -1040,7 +1040,7 @@
       "queueRank": 80,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "memorial",
+      "treatment": "sculpture",
       "taskNote": "Model the mapped monument and landscaped setting."
     },
     {
@@ -1054,7 +1054,7 @@
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "de-dokwerker",
-      "treatment": "memorial",
+      "treatment": "sculpture",
       "taskNote": "Author the statue and plinth at the mapped position."
     },
     {
@@ -1522,7 +1522,8 @@
       "queueRank": 117,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_454055879",
@@ -1547,7 +1548,8 @@
       "queueRank": 119,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_1698086177",
@@ -1610,7 +1612,8 @@
       "queueRank": 124,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_1683945502",
@@ -1622,7 +1625,8 @@
       "queueRank": 125,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_363043796",
@@ -1788,7 +1792,8 @@
       "queueRank": 138,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_1800555343",
@@ -2153,7 +2158,8 @@
       "queueRank": 167,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_202176253",
@@ -2165,7 +2171,8 @@
       "queueRank": 168,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_1917401076",
@@ -2215,7 +2222,8 @@
       "queueRank": 172,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_35124042",
@@ -2239,7 +2247,8 @@
       "queueRank": 174,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_1230133891",
@@ -2251,7 +2260,8 @@
       "queueRank": 175,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_741771335",
@@ -2275,7 +2285,8 @@
       "queueRank": 177,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_1865435867",
@@ -2287,7 +2298,8 @@
       "queueRank": 178,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_37868198",
@@ -2299,7 +2311,8 @@
       "queueRank": 179,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_174768079",
@@ -2311,7 +2324,8 @@
       "queueRank": 180,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_879972030",
@@ -2335,7 +2349,8 @@
       "queueRank": 182,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_1219850417",
@@ -2372,7 +2387,8 @@
       "queueRank": 185,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_1566771183",
@@ -2410,7 +2426,8 @@
       "queueRank": 188,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_630735672",
@@ -2472,7 +2489,8 @@
       "queueRank": 193,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_2147399332",
@@ -2484,7 +2502,8 @@
       "queueRank": 194,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_155371643",
@@ -2496,7 +2515,8 @@
       "queueRank": 195,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_1194604327",
@@ -2520,7 +2540,8 @@
       "queueRank": 197,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_1851417932",
@@ -2557,7 +2578,8 @@
       "queueRank": 200,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_1336248768",
@@ -2569,7 +2591,8 @@
       "queueRank": 201,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_1241141311",
@@ -2581,7 +2604,8 @@
       "queueRank": 202,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_1912579424",
@@ -2593,7 +2617,8 @@
       "queueRank": 203,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_1196280692",
@@ -4019,7 +4044,8 @@
       "queueRank": 310,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_1726437395",
@@ -4260,7 +4286,8 @@
       "queueRank": 330,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_373035281",
@@ -4284,7 +4311,8 @@
       "queueRank": 332,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_2047457033",
@@ -4296,7 +4324,8 @@
       "queueRank": 333,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_1055638541",
@@ -4356,7 +4385,8 @@
       "queueRank": 338,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_86609524",
@@ -4428,7 +4458,8 @@
       "queueRank": 344,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_1741145753",
@@ -4440,7 +4471,8 @@
       "queueRank": 345,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_728505227",
@@ -4512,7 +4544,8 @@
       "queueRank": 351,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "lm-extract_landmarks_331298783",
@@ -4524,7 +4557,8 @@
       "queueRank": 352,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Sculpture: capture a multi-image Gaussian splat (Commons photos + panorama crops); render the splat near and a baked multi-view impostor far. Do not hand-build boxes."
     },
     {
       "id": "centraal-station",
