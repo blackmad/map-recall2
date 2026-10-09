@@ -63,7 +63,7 @@ export async function compileHouse(id: string) {
   const t1 = performance.now();
   const glb = await canalhouseGroupToGlb(intent.id, built.group, {metreUvs: true, slotFor: slotFor(intent)});
   const tris = await decodeTriangles(glb.bytes);
-  const {gates, topology} = evaluateGates(tris, facts, built.fit, built.recipe.footprint.value.map(p => p.outer), built.anchorRD);
+  const {gates, topology} = evaluateGates(tris, built.facts, built.fit, built.recipe.footprint.value.map(p => p.outer), built.anchorRD);
   const out = path.join(ARTIFACTS, id);
   await fs.mkdir(out, {recursive: true});
   await fs.writeFile(path.join(out, 'model.glb'), glb.bytes);
@@ -74,7 +74,7 @@ export async function compileHouse(id: string) {
     gates, topology: {components: topology.components, floating: topology.floating, openEdges: topology.openEdges, openEdgeLengthM: +topology.openEdgeLengthM.toFixed(2)},
     passed: gates.every(g => g.pass), timings: {fitCompileMs: +(t1 - t0).toFixed(1), exportGateMs: +(performance.now() - t1).toFixed(1)}};
   await fs.writeFile(path.join(out, 'report.json'), JSON.stringify(report, null, 1) + '\n');
-  return {report, built, glb, facts, intent};
+  return {report, built, glb, facts: built.facts, intent};
 }
 
 /**

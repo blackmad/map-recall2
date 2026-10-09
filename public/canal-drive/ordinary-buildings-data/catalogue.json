@@ -21910,10 +21910,10 @@
       "id": "ordinary-0363100012079721",
       "buildingId": "NL.IMBAG.Pand.0363100012079721",
       "name": "Bilderdijkstraat (1894 yellow brick, scaffolded)",
-      "hash": "a9ab17f9db0ce5c58cef9f9c83c3222a7e45b44212683af266d1065d76093434",
-      "sha256": "a9ab17f9db0ce5c58cef9f9c83c3222a7e45b44212683af266d1065d76093434",
-      "bytes": 124948,
-      "triangles": 1803,
+      "hash": "e3bb6cbf90176b3c96862e61c8ef71792979f2838b2a25dc9a11e5fe0342b161",
+      "sha256": "e3bb6cbf90176b3c96862e61c8ef71792979f2838b2a25dc9a11e5fe0342b161",
+      "bytes": 124628,
+      "triangles": 1804,
       "materials": 8,
       "textures": 0,
       "scale": 1,
@@ -21925,7 +21925,7 @@
         ],
         "max": [
           3.139,
-          20.538,
+          18.017,
           0.276
         ]
       },
@@ -22000,8 +22000,8 @@
           ]
         ]
       },
-      "nativeHeight": 20.54,
-      "height": 20.54,
+      "nativeHeight": 18.02,
+      "height": 18.02,
       "modelUrl": "./models/ordinary-buildings/recipe-bilder-079721.glb",
       "suppress": [
         "NL.IMBAG.Pand.0363100012079721"
@@ -22031,6 +22031,7 @@
           "non-metallic:pass",
           "footprint-vs-bag:pass",
           "ridge-vs-3dbag:pass",
+          "roof-cleanup:pass",
           "eaves-vs-3dbag/front0:pass",
           "storey-height/front0:pass",
           "no-floating-parts:pass",
@@ -22047,7 +22048,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012079721",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-09T19:55:26.544Z"
+      "updatedAt": "2026-10-09T20:06:08.469Z"
     },
     {
       "id": "ordinary-0363100012080336",
@@ -22167,7 +22168,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012080336",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-09T19:55:26.544Z"
+      "updatedAt": "2026-10-09T20:06:08.469Z"
     },
     {
       "id": "ordinary-0363100012090492",
@@ -22267,17 +22268,17 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012090492",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-09T19:55:26.544Z"
+      "updatedAt": "2026-10-09T20:06:08.469Z"
     },
     {
       "id": "ordinary-0363100012081118",
       "buildingId": "NL.IMBAG.Pand.0363100012081118",
       "name": "Bilderdijkstraat (1909, arched top storey, balconies)",
-      "hash": "9177c82df50fd31e39d9117f303993bc7c6721cade43cff428c9233ded34abbf",
-      "sha256": "9177c82df50fd31e39d9117f303993bc7c6721cade43cff428c9233ded34abbf",
-      "bytes": 100048,
+      "hash": "fbabebfa1f0cb7e596daf3d4d3bf0f76074c54c79a8e2f032035417d7a28ec19",
+      "sha256": "fbabebfa1f0cb7e596daf3d4d3bf0f76074c54c79a8e2f032035417d7a28ec19",
+      "bytes": 98736,
       "triangles": 1379,
-      "materials": 8,
+      "materials": 7,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -22288,7 +22289,7 @@
         ],
         "max": [
           3.776,
-          18.742,
+          16.397,
           0.275
         ]
       },
@@ -22319,8 +22320,8 @@
           ]
         ]
       },
-      "nativeHeight": 18.74,
-      "height": 18.74,
+      "nativeHeight": 16.38,
+      "height": 16.38,
       "modelUrl": "./models/ordinary-buildings/recipe-bilder-081118.glb",
       "suppress": [
         "NL.IMBAG.Pand.0363100012081118"
@@ -22350,6 +22351,7 @@
           "non-metallic:pass",
           "footprint-vs-bag:pass",
           "ridge-vs-3dbag:pass",
+          "roof-cleanup:pass",
           "eaves-vs-3dbag/front0:pass",
           "storey-height/front0:pass",
           "no-floating-parts:pass",
@@ -22366,7 +22368,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012081118",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-09T19:55:26.544Z"
+      "updatedAt": "2026-10-09T20:06:08.469Z"
     },
     {
       "id": "ordinary-0363100012087959",
@@ -22465,7 +22467,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012087959",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-09T19:55:26.544Z"
+      "updatedAt": "2026-10-09T20:06:08.469Z"
     },
     {
       "id": "ordinary-0363100012092394",
@@ -22581,7 +22583,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012092394",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-09T19:55:26.544Z"
+      "updatedAt": "2026-10-09T20:06:08.469Z"
     },
     {
       "id": "ordinary-0363100012092395",
@@ -22681,7 +22683,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012092395",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-09T19:55:26.544Z"
+      "updatedAt": "2026-10-09T20:06:08.469Z"
     },
     {
       "id": "ordinary-0363100012152363",
@@ -22780,7 +22782,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012152363",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-09T19:55:26.544Z"
+      "updatedAt": "2026-10-09T20:06:08.469Z"
     },
     {
       "id": "ordinary-0363100012152669",
@@ -22903,17 +22905,17 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012152669",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-09T19:55:26.544Z"
+      "updatedAt": "2026-10-09T20:06:08.469Z"
     },
     {
       "id": "ordinary-0363100012153622",
       "buildingId": "NL.IMBAG.Pand.0363100012153622",
       "name": "Bilderdijkstraat (1887 orange brick, white bosses)",
-      "hash": "6f31e29a5ce301e66a81b0a5708d86b7ab3ceddc96be2611961d04a695bb5f10",
-      "sha256": "6f31e29a5ce301e66a81b0a5708d86b7ab3ceddc96be2611961d04a695bb5f10",
-      "bytes": 120420,
-      "triangles": 1722,
-      "materials": 7,
+      "hash": "d9a7deea73af8726a8f53e1a30a79f4f519fdb0ec55676b49eb52a7b79e9af40",
+      "sha256": "d9a7deea73af8726a8f53e1a30a79f4f519fdb0ec55676b49eb52a7b79e9af40",
+      "bytes": 121404,
+      "triangles": 1724,
+      "materials": 8,
       "textures": 0,
       "scale": 1,
       "bounds": {
@@ -22990,6 +22992,7 @@
           "non-metallic:pass",
           "footprint-vs-bag:pass",
           "ridge-vs-3dbag:pass",
+          "roof-cleanup:pass",
           "eaves-vs-3dbag/front0:pass",
           "storey-height/front0:pass",
           "no-floating-parts:pass",
@@ -23006,7 +23009,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012153622",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-09T19:55:26.544Z"
+      "updatedAt": "2026-10-09T20:06:08.469Z"
     },
     {
       "id": "ordinary-0363100012153782",
@@ -23113,7 +23116,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012153782",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-09T19:55:26.544Z"
+      "updatedAt": "2026-10-09T20:06:08.469Z"
     },
     {
       "id": "ordinary-0363100012154127",
@@ -23228,16 +23231,16 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012154127",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-09T19:55:26.544Z"
+      "updatedAt": "2026-10-09T20:06:08.469Z"
     },
     {
       "id": "ordinary-0363100012155417",
       "buildingId": "NL.IMBAG.Pand.0363100012155417",
       "name": "Bilderdijkstraat (1902 arched windows, balconies, mansard dormer)",
-      "hash": "b60a75724ea57407044e13a15e8474a53a35d3407966c110fe63e3b515daff67",
-      "sha256": "b60a75724ea57407044e13a15e8474a53a35d3407966c110fe63e3b515daff67",
-      "bytes": 143864,
-      "triangles": 2098,
+      "hash": "9f96804de877112ac4c0319c5b19d4ff461dae0857c981fda2536025bb97e8bf",
+      "sha256": "9f96804de877112ac4c0319c5b19d4ff461dae0857c981fda2536025bb97e8bf",
+      "bytes": 143772,
+      "triangles": 2099,
       "materials": 8,
       "textures": 0,
       "scale": 1,
@@ -23249,7 +23252,7 @@
         ],
         "max": [
           3.331,
-          18.805,
+          16.493,
           0.177
         ]
       },
@@ -23288,8 +23291,8 @@
           ]
         ]
       },
-      "nativeHeight": 18.8,
-      "height": 18.8,
+      "nativeHeight": 16.49,
+      "height": 16.49,
       "modelUrl": "./models/ordinary-buildings/recipe-bilder-155417.glb",
       "suppress": [
         "NL.IMBAG.Pand.0363100012155417"
@@ -23319,6 +23322,7 @@
           "non-metallic:pass",
           "footprint-vs-bag:pass",
           "ridge-vs-3dbag:pass",
+          "roof-cleanup:pass",
           "eaves-vs-3dbag/front0:pass",
           "storey-height/front0:pass",
           "no-floating-parts:pass",
@@ -23335,7 +23339,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012155417",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-09T19:55:26.544Z"
+      "updatedAt": "2026-10-09T20:06:08.469Z"
     },
     {
       "id": "ordinary-0363100012155418",
@@ -23438,7 +23442,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012155418",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-09T19:55:26.544Z"
+      "updatedAt": "2026-10-09T20:06:08.469Z"
     },
     {
       "id": "ordinary-0363100012156286",
@@ -23569,7 +23573,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012156286",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-09T19:55:26.544Z"
+      "updatedAt": "2026-10-09T20:06:08.469Z"
     },
     {
       "id": "ordinary-0363100012156287",
@@ -23684,7 +23688,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012156287",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-09T19:55:26.544Z"
+      "updatedAt": "2026-10-09T20:06:08.469Z"
     },
     {
       "id": "ordinary-0363100012156732",
@@ -23783,7 +23787,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012156732",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-09T19:55:26.544Z"
+      "updatedAt": "2026-10-09T20:06:08.469Z"
     },
     {
       "id": "ordinary-0363100012157154",
@@ -23890,15 +23894,15 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012157154",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-09T19:55:26.544Z"
+      "updatedAt": "2026-10-09T20:06:08.469Z"
     },
     {
       "id": "ordinary-0363100012157650",
       "buildingId": "NL.IMBAG.Pand.0363100012157650",
       "name": "Bilderdijkstraat (1908 dark red brick, big cross windows)",
-      "hash": "414e0f24d4e4b7a41a0a92734a306838f2a7f29fef37d686366f57f9b29aade6",
-      "sha256": "414e0f24d4e4b7a41a0a92734a306838f2a7f29fef37d686366f57f9b29aade6",
-      "bytes": 66452,
+      "hash": "80d196285c0a03e5c8bd15e587c8447be6662bffd1f07bf2e60b3fe046cbce33",
+      "sha256": "80d196285c0a03e5c8bd15e587c8447be6662bffd1f07bf2e60b3fe046cbce33",
+      "bytes": 66388,
       "triangles": 911,
       "materials": 7,
       "textures": 0,
@@ -23911,7 +23915,7 @@
         ],
         "max": [
           3.444,
-          19.733,
+          17.281,
           0.4
         ]
       },
@@ -23950,8 +23954,8 @@
           ]
         ]
       },
-      "nativeHeight": 19.73,
-      "height": 19.73,
+      "nativeHeight": 17.28,
+      "height": 17.28,
       "modelUrl": "./models/ordinary-buildings/recipe-bilder-157650.glb",
       "suppress": [
         "NL.IMBAG.Pand.0363100012157650"
@@ -23981,6 +23985,7 @@
           "non-metallic:pass",
           "footprint-vs-bag:pass",
           "ridge-vs-3dbag:pass",
+          "roof-cleanup:pass",
           "eaves-vs-3dbag/front0:pass",
           "storey-height/front0:pass",
           "no-floating-parts:pass",
@@ -23997,7 +24002,7 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012157650",
         "https://data.amsterdam.nl/"
       ],
-      "updatedAt": "2026-10-09T19:55:26.544Z"
+      "updatedAt": "2026-10-09T20:06:08.469Z"
     }
   ]
 }
