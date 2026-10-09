@@ -1,0 +1,848 @@
+{
+  "id": "haparandaweg-57",
+  "state": "Unaccepted CPU candidate; root and independent/gallery/live/performance acceptance pending",
+  "identity": {
+    "bagId": "0363100012071094",
+    "vboId": "0363010000658576",
+    "addressId": "0363200000120651",
+    "osmId": "w57862438",
+    "constructionYear": 1979,
+    "address": "Haparandaweg57,1013BD Amsterdam",
+    "officialRelationship": [
+      "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/19a66296-787c-5736-a521-41429246cb96"
+    ],
+    "bagStatus": "Pand in gebruik",
+    "vboUsableArea": 1044,
+    "surveyFootprintArea": 1049.11,
+    "areaPolicy": "VBO area is usable floor area, never footprint",
+    "poiAudit": {
+      "landmarks": {
+        "scanned": 420,
+        "inside": []
+      },
+      "branded-pois": {
+        "scanned": 2057,
+        "inside": []
+      },
+      "orientation-pois": {
+        "scanned": 5,
+        "inside": []
+      },
+      "shopfronts": {
+        "scanned": 6,
+        "inside": []
+      },
+      "facts": {
+        "scanned": 4,
+        "inside": []
+      },
+      "osmNodes": [
+        {
+          "id": "2738400405",
+          "tags": {
+            "addr:city": "Amsterdam",
+            "addr:housenumber": "57",
+            "addr:postcode": "1013BD",
+            "addr:street": "Haparandaweg",
+            "source": "BAG",
+            "source:date": "2014-02-11"
+          }
+        }
+      ]
+    },
+    "destinationPolicy": "Ordinary requested industrial building, no invented POI/trivia/route destination"
+  },
+  "sourceArchive": {
+    "commit": "16d644906c974150de90690eca7a8918e154cd6c",
+    "modelPath": "models/haparandaweg-57",
+    "status": "published-remote-verified"
+  },
+  "sources": [
+    {
+      "file": "artifacts/haparandaweg-57/raw/vbo.json",
+      "rawPath": "artifacts/haparandaweg-57/raw/vbo.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?identificatie=0363010000658576&f=json",
+      "sha256": "8db7f1f2ea126e451009a8cd51fc16b917cec4046062ec04ff04dac6fa483432",
+      "retrievedAt": "2026-10-07T16:04:37.915706+00:00",
+      "retrievalDateAuthority": "local file completion time; HTTP bodies saved before extraction",
+      "kind": "original-http-response-body",
+      "accessState": "HTTP200 logged",
+      "rights": "BAG/3DBAG open survey data; attribution retained",
+      "sourceDate": null
+    },
+    {
+      "file": "artifacts/haparandaweg-57/raw/3dbag.json",
+      "rawPath": "artifacts/haparandaweg-57/raw/3dbag.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012071094",
+      "sha256": "621d5e27967888a7a62b4f8bf08ca6942b48a73645e7b28e5662ec2b3e9f4582",
+      "retrievedAt": "2026-10-07T16:04:39.269679+00:00",
+      "retrievalDateAuthority": "local file completion time; HTTP bodies saved before extraction",
+      "kind": "original-http-response-body",
+      "accessState": "HTTP200 logged",
+      "rights": "BAG/3DBAG open survey data; attribution retained",
+      "sourceDate": null
+    },
+    {
+      "file": "artifacts/haparandaweg-57/raw/beeldbank.html",
+      "rawPath": "artifacts/haparandaweg-57/raw/beeldbank.html",
+      "url": "https://archief.amsterdam/beeldbank/?q=Haparandaweg%2057",
+      "sha256": "a45e805ef644e5817b24f32801f5d9ee1b59c8096b2746abfc092b03b8b8529d",
+      "retrievedAt": "2026-10-07T16:04:39.436931+00:00",
+      "retrievalDateAuthority": "local file completion time; HTTP bodies saved before extraction",
+      "kind": "original-http-response-body",
+      "accessState": "HTTP200 logged",
+      "rights": "Beeldbank shell only; rights unknown",
+      "sourceDate": null
+    },
+    {
+      "file": "artifacts/haparandaweg-57/raw/neighbors-bag.json",
+      "rawPath": "artifacts/haparandaweg-57/raw/neighbors-bag.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?bbox=4.8757,52.3946,4.8770,52.3955&f=json&limit=100",
+      "sha256": "b34755c8703bcf0d46bdce3e05e1d662c0a2a17ea8ef399a9a2792efba5e3d18",
+      "retrievedAt": "2026-10-07T16:04:39.681400+00:00",
+      "retrievalDateAuthority": "local file completion time; HTTP bodies saved before extraction",
+      "kind": "original-http-response-body",
+      "accessState": "HTTP200 logged",
+      "rights": "BAG/3DBAG open survey data; attribution retained",
+      "sourceDate": null
+    },
+    {
+      "file": "artifacts/haparandaweg-57/raw/osm-map.xml",
+      "rawPath": "artifacts/haparandaweg-57/raw/osm-map.xml",
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=4.8757,52.3946,4.8770,52.3955",
+      "sha256": "11a3dc76bdf302ec9f76a3147a9c33706062ee93277c559d64d3b7ec3c397b87",
+      "retrievedAt": "2026-10-07T16:04:40.000059+00:00",
+      "retrievalDateAuthority": "local file completion time; HTTP bodies saved before extraction",
+      "kind": "original-http-response-body",
+      "accessState": "HTTP200 logged",
+      "rights": "OSM ODbL",
+      "sourceDate": null
+    },
+    {
+      "file": "artifacts/haparandaweg-57/raw/panos.json",
+      "rawPath": "artifacts/haparandaweg-57/raw/panos.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.87638,52.3948&radius=100",
+      "sha256": "6daca26d22ee091a5fef8e7dde5704894b7ba72e8ccda1f4ca064e41fab7ab2e",
+      "retrievedAt": "2026-10-07T16:04:40.309476+00:00",
+      "retrievalDateAuthority": "local file completion time; HTTP bodies saved before extraction",
+      "kind": "original-http-response-body",
+      "accessState": "HTTP200 logged",
+      "rights": "Municipal panorama: reference only; reuse licence not independently inspected",
+      "sourceDate": null
+    },
+    {
+      "file": "artifacts/haparandaweg-57/raw/bag.json",
+      "rawPath": "artifacts/haparandaweg-57/raw/bag.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/19a66296-787c-5736-a521-41429246cb96?f=json",
+      "sha256": "43585cadd29bd01cf358a752a0201bafde21c8795740ee804fb4ac5f4b4dca65",
+      "retrievedAt": "2026-10-07T16:05:17.267487+00:00",
+      "retrievalDateAuthority": "local file completion time; HTTP bodies saved before extraction",
+      "kind": "original-http-response-body",
+      "accessState": "curl completed successfully; valid original JSON/JPEG body retained; status code not separately captured",
+      "rights": "BAG/3DBAG open survey data; attribution retained",
+      "sourceDate": null
+    },
+    {
+      "file": "artifacts/haparandaweg-57/raw/panos-front.json",
+      "rawPath": "artifacts/haparandaweg-57/raw/panos-front.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.87610,52.39472&radius=80",
+      "sha256": "9dd5477106a3f584ad02c1bd2d7ec6194966e3658fccba87d3a3bf4d76576611",
+      "retrievedAt": "2026-10-07T16:05:17.533719+00:00",
+      "retrievalDateAuthority": "local file completion time; HTTP bodies saved before extraction",
+      "kind": "original-http-response-body",
+      "accessState": "curl completed successfully; valid original JSON/JPEG body retained; status code not separately captured",
+      "rights": "Municipal panorama: reference only; reuse licence not independently inspected",
+      "sourceDate": null
+    },
+    {
+      "file": "artifacts/haparandaweg-57/raw/south2025-metadata.json",
+      "rawPath": "artifacts/haparandaweg-57/raw/south2025-metadata.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_07_54_42_00176/",
+      "sha256": "ac3d16d599ef028a229f769881e740e71d5d8ec6bf6188441070dc9af10c59eb",
+      "retrievedAt": "2026-10-07T16:05:17.720393+00:00",
+      "retrievalDateAuthority": "local file completion time; HTTP bodies saved before extraction",
+      "kind": "original-http-response-body",
+      "accessState": "curl completed successfully; valid original JSON/JPEG body retained; status code not separately captured",
+      "rights": "Municipal panorama: reference only; reuse licence not independently inspected",
+      "sourceDate": "2025-09-29T08:04:27Z"
+    },
+    {
+      "file": "artifacts/haparandaweg-57/raw/south2025-pano.jpg",
+      "rawPath": "artifacts/haparandaweg-57/raw/south2025-pano.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_09_29_07_54_42_00176/equirectangular/panorama_8000.jpg",
+      "sha256": "66bd6813794f70c66bdf0b2f1c2440c6ce159bb03f13dbdb4d3855b10c09da8b",
+      "retrievedAt": "2026-10-07T16:05:18.414668+00:00",
+      "retrievalDateAuthority": "local file completion time; HTTP bodies saved before extraction",
+      "kind": "original-http-response-body",
+      "accessState": "curl completed successfully; valid original JSON/JPEG body retained; status code not separately captured",
+      "rights": "Municipal panorama: reference only; reuse licence not independently inspected",
+      "sourceDate": null
+    },
+    {
+      "file": "artifacts/haparandaweg-57/raw/south2021-metadata.json",
+      "rawPath": "artifacts/haparandaweg-57/raw/south2021-metadata.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002366_pano_0003_000732/",
+      "sha256": "8f129c87f28eaa1feecc4c8633d18da0ae8cf18633ad69988dc08eb0be270760",
+      "retrievedAt": "2026-10-07T16:05:18.555454+00:00",
+      "retrievalDateAuthority": "local file completion time; HTTP bodies saved before extraction",
+      "kind": "original-http-response-body",
+      "accessState": "curl completed successfully; valid original JSON/JPEG body retained; status code not separately captured",
+      "rights": "Municipal panorama: reference only; reuse licence not independently inspected",
+      "sourceDate": "2021-12-30T09:32:08.309960Z"
+    },
+    {
+      "file": "artifacts/haparandaweg-57/raw/south2021-pano.jpg",
+      "rawPath": "artifacts/haparandaweg-57/raw/south2021-pano.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2021/12/30/TMX7316010203-002366/pano_0003_000732/equirectangular/panorama_8000.jpg",
+      "sha256": "0cc92360d643c6bd2e5d9a5747a4372285e6b1a60ac7aa36806d4cea6c479c7a",
+      "retrievedAt": "2026-10-07T16:05:19.057817+00:00",
+      "retrievalDateAuthority": "local file completion time; HTTP bodies saved before extraction",
+      "kind": "original-http-response-body",
+      "accessState": "curl completed successfully; valid original JSON/JPEG body retained; status code not separately captured",
+      "rights": "Municipal panorama: reference only; reuse licence not independently inspected",
+      "sourceDate": null
+    },
+    {
+      "file": "artifacts/haparandaweg-57/raw/west2025-metadata.json",
+      "rawPath": "artifacts/haparandaweg-57/raw/west2025-metadata.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_07_54_42_00182/",
+      "sha256": "df7bc9d4ee0b2d8c08b58b849f3922c8bf047525bb29217982c41b181ba040f8",
+      "retrievedAt": "2026-10-07T16:05:52.128705+00:00",
+      "retrievalDateAuthority": "local file completion time; HTTP bodies saved before extraction",
+      "kind": "original-http-response-body",
+      "accessState": "curl completed successfully; valid original JSON/JPEG body retained; status code not separately captured",
+      "rights": "Municipal panorama: reference only; reuse licence not independently inspected",
+      "sourceDate": "2025-09-29T08:04:31Z"
+    },
+    {
+      "file": "artifacts/haparandaweg-57/raw/west2025-pano.jpg",
+      "rawPath": "artifacts/haparandaweg-57/raw/west2025-pano.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_09_29_07_54_42_00182/equirectangular/panorama_8000.jpg",
+      "sha256": "266254dd444413182a3672785ad7e390547d22cef1a0aef5a87ed2ef530bf4d7",
+      "retrievedAt": "2026-10-07T16:05:53.035143+00:00",
+      "retrievalDateAuthority": "local file completion time; HTTP bodies saved before extraction",
+      "kind": "original-http-response-body",
+      "accessState": "curl completed successfully; valid original JSON/JPEG body retained; status code not separately captured",
+      "rights": "Municipal panorama: reference only; reuse licence not independently inspected",
+      "sourceDate": null
+    },
+    {
+      "file": "artifacts/haparandaweg-57/raw/west2021-metadata.json",
+      "rawPath": "artifacts/haparandaweg-57/raw/west2021-metadata.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002051_pano_0000_001227/",
+      "sha256": "388b17e0bb6451cd410bc0d09ea2125416944bdced7c91ce38aab68d221ee538",
+      "retrievedAt": "2026-10-07T16:05:53.193456+00:00",
+      "retrievalDateAuthority": "local file completion time; HTTP bodies saved before extraction",
+      "kind": "original-http-response-body",
+      "accessState": "curl completed successfully; valid original JSON/JPEG body retained; status code not separately captured",
+      "rights": "Municipal panorama: reference only; reuse licence not independently inspected",
+      "sourceDate": "2021-03-19T12:23:34.204480Z"
+    },
+    {
+      "file": "artifacts/haparandaweg-57/raw/west2021-pano.jpg",
+      "rawPath": "artifacts/haparandaweg-57/raw/west2021-pano.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2021/03/19/TMX7316010203-002051/pano_0000_001227/equirectangular/panorama_8000.jpg",
+      "sha256": "82285996d24225b596b563c22087068d2bdb4a7ed9a1dc788029e5cbd908f3c8",
+      "retrievedAt": "2026-10-07T16:05:53.851918+00:00",
+      "retrievalDateAuthority": "local file completion time; HTTP bodies saved before extraction",
+      "kind": "original-http-response-body",
+      "accessState": "curl completed successfully; valid original JSON/JPEG body retained; status code not separately captured",
+      "rights": "Municipal panorama: reference only; reuse licence not independently inspected",
+      "sourceDate": null
+    },
+    {
+      "file": "artifacts/haparandaweg-57/raw/panos-east.json",
+      "rawPath": "artifacts/haparandaweg-57/raw/panos-east.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.87685,52.39500&radius=80",
+      "sha256": "e2b9eba1b6f652c41327b7feb56d6900cef5e384d3cee7562e60a2e83057c877",
+      "retrievedAt": "2026-10-07T16:06:26.425594+00:00",
+      "retrievalDateAuthority": "local file completion time; HTTP bodies saved before extraction",
+      "kind": "original-http-response-body",
+      "accessState": "curl completed successfully; valid original JSON/JPEG body retained; status code not separately captured",
+      "rights": "Municipal panorama: reference only; reuse licence not independently inspected",
+      "sourceDate": null
+    },
+    {
+      "file": "artifacts/haparandaweg-57/raw/east2025-metadata.json",
+      "rawPath": "artifacts/haparandaweg-57/raw/east2025-metadata.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_29_07_54_42_00168/",
+      "sha256": "f94e68345e20617cf445204a0ce3fe6979b61b741a904ec80aa94dd8c269463a",
+      "retrievedAt": "2026-10-07T16:06:38.853588+00:00",
+      "retrievalDateAuthority": "local file completion time; HTTP bodies saved before extraction",
+      "kind": "original-http-response-body",
+      "accessState": "curl completed successfully; valid original JSON/JPEG body retained; status code not separately captured",
+      "rights": "Municipal panorama: reference only; reuse licence not independently inspected",
+      "sourceDate": "2025-09-29T08:04:24Z"
+    },
+    {
+      "file": "artifacts/haparandaweg-57/raw/east2025-pano.jpg",
+      "rawPath": "artifacts/haparandaweg-57/raw/east2025-pano.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_09_29_07_54_42_00168/equirectangular/panorama_8000.jpg",
+      "sha256": "b710f37373abb75b8b387799dd781b72b75ce564de5f9c4c54e65b6868e28930",
+      "retrievedAt": "2026-10-07T16:06:39.624829+00:00",
+      "retrievalDateAuthority": "local file completion time; HTTP bodies saved before extraction",
+      "kind": "original-http-response-body",
+      "accessState": "curl completed successfully; valid original JSON/JPEG body retained; status code not separately captured",
+      "rights": "Municipal panorama: reference only; reuse licence not independently inspected",
+      "sourceDate": null
+    },
+    {
+      "file": "artifacts/haparandaweg-57/raw/east2021-metadata.json",
+      "rawPath": "artifacts/haparandaweg-57/raw/east2021-metadata.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/TMX7316010203-002366_pano_0003_000724/",
+      "sha256": "5270a11cb0a6cf50ee137ae5858bffd7d98b3e2c679bf96d4172be5f98e7ae41",
+      "retrievedAt": "2026-10-07T16:06:39.867130+00:00",
+      "retrievalDateAuthority": "local file completion time; HTTP bodies saved before extraction",
+      "kind": "original-http-response-body",
+      "accessState": "curl completed successfully; valid original JSON/JPEG body retained; status code not separately captured",
+      "rights": "Municipal panorama: reference only; reuse licence not independently inspected",
+      "sourceDate": "2021-12-30T09:32:03.504910Z"
+    },
+    {
+      "file": "artifacts/haparandaweg-57/raw/east2021-pano.jpg",
+      "rawPath": "artifacts/haparandaweg-57/raw/east2021-pano.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2021/12/30/TMX7316010203-002366/pano_0003_000724/equirectangular/panorama_8000.jpg",
+      "sha256": "b14833ddd2547f557832e1182f7e5711756a9cb6ec6f785a065d4e500dd520fc",
+      "retrievedAt": "2026-10-07T16:06:40.472834+00:00",
+      "retrievalDateAuthority": "local file completion time; HTTP bodies saved before extraction",
+      "kind": "original-http-response-body",
+      "accessState": "curl completed successfully; valid original JSON/JPEG body retained; status code not separately captured",
+      "rights": "Municipal panorama: reference only; reuse licence not independently inspected",
+      "sourceDate": null
+    }
+  ],
+  "cameras": [
+    {
+      "name": "south2021",
+      "panoId": "TMX7316010203-002366_pano_0003_000732",
+      "sourceDate": "2021-12-30T09:32:08.309960Z",
+      "location": [
+        4.87653953484906,
+        52.3946370636559
+      ],
+      "nativePosition": [
+        10.837051709586467,
+        2.3,
+        40.40207382560823
+      ],
+      "headingDegrees": -15.0150148305732,
+      "pitchDegrees": 8,
+      "fovDegrees": 70,
+      "viewport": [
+        1600,
+        1050
+      ],
+      "processedReference": "artifacts/haparandaweg-57/processed/south2021.jpg",
+      "heightPolicy": "2.3m photo camera approximation; municipal third coordinate not used as actual ground/elevation"
+    },
+    {
+      "name": "south2025",
+      "panoId": "2025_09_29_07_54_42_00176",
+      "sourceDate": "2025-09-29T08:04:27Z",
+      "location": [
+        4.876545031542141,
+        52.39463780517857
+      ],
+      "nativePosition": [
+        11.210436882126208,
+        2.3,
+        40.319527522090084
+      ],
+      "headingDegrees": -15.538052044059475,
+      "pitchDegrees": 8,
+      "fovDegrees": 70,
+      "viewport": [
+        1600,
+        1050
+      ],
+      "processedReference": "artifacts/haparandaweg-57/processed/south2025.jpg",
+      "heightPolicy": "2.3m photo camera approximation; municipal third coordinate not used as actual ground/elevation"
+    },
+    {
+      "name": "west2021",
+      "panoId": "TMX7316010203-002051_pano_0000_001227",
+      "sourceDate": "2021-03-19T12:23:34.204480Z",
+      "location": [
+        4.87609806220377,
+        52.3945484866563
+      ],
+      "nativePosition": [
+        -19.151768373072866,
+        2.3,
+        50.2624654212741
+      ],
+      "headingDegrees": 20.858601547373063,
+      "pitchDegrees": 8,
+      "fovDegrees": 70,
+      "viewport": [
+        1600,
+        1050
+      ],
+      "processedReference": "artifacts/haparandaweg-57/processed/west2021.jpg",
+      "heightPolicy": "2.3m photo camera approximation; municipal third coordinate not used as actual ground/elevation"
+    },
+    {
+      "name": "west2025",
+      "panoId": "2025_09_29_07_54_42_00182",
+      "sourceDate": "2025-09-29T08:04:31Z",
+      "location": [
+        4.876113380719519,
+        52.39456583951804
+      ],
+      "nativePosition": [
+        -18.111196057580447,
+        2.3,
+        48.33074485242861
+      ],
+      "headingDegrees": 20.54270597523409,
+      "pitchDegrees": 8,
+      "fovDegrees": 70,
+      "viewport": [
+        1600,
+        1050
+      ],
+      "processedReference": "artifacts/haparandaweg-57/processed/west2025.jpg",
+      "heightPolicy": "2.3m photo camera approximation; municipal third coordinate not used as actual ground/elevation"
+    },
+    {
+      "name": "east2021",
+      "panoId": "TMX7316010203-002366_pano_0003_000724",
+      "sourceDate": "2021-12-30T09:32:03.504910Z",
+      "location": [
+        4.87702882366595,
+        52.3948542811271
+      ],
+      "nativePosition": [
+        44.07397919465092,
+        2.3,
+        16.22142493129502
+      ],
+      "headingDegrees": -69.79386533409233,
+      "pitchDegrees": 8,
+      "fovDegrees": 70,
+      "viewport": [
+        1600,
+        1050
+      ],
+      "processedReference": "artifacts/haparandaweg-57/processed/east2021.jpg",
+      "heightPolicy": "2.3m photo camera approximation; municipal third coordinate not used as actual ground/elevation"
+    },
+    {
+      "name": "east2025",
+      "panoId": "2025_09_29_07_54_42_00168",
+      "sourceDate": "2025-09-29T08:04:24Z",
+      "location": [
+        4.877021126922378,
+        52.39485013252794
+      ],
+      "nativePosition": [
+        43.551146668906455,
+        2.3,
+        16.683246989808822
+      ],
+      "headingDegrees": -69.03953727211267,
+      "pitchDegrees": 8,
+      "fovDegrees": 70,
+      "viewport": [
+        1600,
+        1050
+      ],
+      "processedReference": "artifacts/haparandaweg-57/processed/east2025.jpg",
+      "heightPolicy": "2.3m photo camera approximation; municipal third coordinate not used as actual ground/elevation"
+    }
+  ],
+  "frontage": {
+    "edge": [
+      1,
+      2
+    ],
+    "nativeVertices": [
+      [
+        -20.7105491625941,
+        10.236760641362252
+      ],
+      [
+        4.343586192761477,
+        22.62803463121969
+      ]
+    ],
+    "outwardNormal": [
+      -0.4435,
+      0.8963
+    ],
+    "sideEdge": [
+      2,
+      3
+    ],
+    "cameraPolicy": "Front edge confirmed by leaf-off loading canopy/57 doorway. South station sees both front1\u21922 and east2\u21923; west station resolves loading yard. Not inferred solely from centroid.",
+    "depthToStreet": "Front edge midpoint about34m from closest acquired streetcamera; loading yard remains open. Main footprint28mwide by37.5mdeep; canopy extends4m from front over loading apron.",
+    "retainedParents": [
+      "NL.IMBAG.Pand.0363100012078289",
+      "NL.IMBAG.Pand.0363100012091590",
+      "NL.IMBAG.Pand.0363100012238475",
+      "NL.IMBAG.Pand.0363100012242823"
+    ]
+  },
+  "apertureInventoryBeforeExport": {
+    "inspectedViews": [
+      "south2021",
+      "south2025",
+      "west2021",
+      "west2025",
+      "east2021",
+      "east2025"
+    ],
+    "front": [
+      {
+        "assembly": "two adjacent upper windows",
+        "uMetres": [
+          23.33,
+          26.17
+        ],
+        "state": "left partly shuttered, right glazing subdivided; two retained from union, not counted from leafy minimum"
+      },
+      {
+        "assembly": "two low windows",
+        "uMetres": [
+          23.03,
+          26.45
+        ],
+        "state": "left glazing, right closed shutter"
+      },
+      {
+        "assembly": "pedestrian doorway",
+        "uMetres": [
+          18.9
+        ],
+        "state": "upper glazing/lower blue panel"
+      },
+      {
+        "assembly": "large loading door",
+        "uMetres": [
+          14.9
+        ],
+        "state": "blue roller/shutter; approximate width/height under canopy"
+      }
+    ],
+    "east": [
+      {
+        "assembly": "two upper openings",
+        "uMetres": [
+          3.63,
+          9.8
+        ],
+        "state": "first partly shuttered in2021, second closed; latest tree-hidden minimum does not erase it"
+      },
+      {
+        "assembly": "three low windows",
+        "uMetres": [
+          4.39,
+          7.32,
+          10.99
+        ],
+        "state": "visible in south2021; parked vehicles hide them in east2021"
+      }
+    ],
+    "visibleMinimum": "Front2upper+2lower+2doors/east2upper+3lower. Full north/west aperture totals unknown.",
+    "policy": "No invented windows on unobserved rear/west. Pane subdivisions and approximate widths are simplified."
+  },
+  "assertions": [
+    {
+      "part": "scope",
+      "source": "Official BAG/VBO/currentOSM",
+      "date": "2026-10-07",
+      "confidence": "high",
+      "assertion": "Single 1979 rectangular industrial Pand with no hole or raised passage. Neighboring apartment and whitewarehouse are separate retained parents."
+    },
+    {
+      "part": "walls",
+      "source": "south2021/east2021; current2025",
+      "date": "2021-12-30 and2025-09-29",
+      "confidence": "high assembly; approximate color/detail",
+      "assertion": "Muted blue/teal vertically ribbed upper cladding, reddish-brown brick base, dark flat cornice and grey downpipes."
+    },
+    {
+      "part": "roof",
+      "source": "AHN5 2023 LoD2.2 three roofsurfaces",
+      "date": "2023",
+      "confidence": "survey",
+      "assertion": "Main bounded near-flat cap7.20\u20137.25m; central narrow asymmetric monitor up to8.27m. Cap excludes monitor footprint; source ridgeends closed. Maximum8.818NAP never becomes wholeheight."
+    },
+    {
+      "part": "canopy",
+      "source": "south2021/west2021/west2025",
+      "date": "2021/2025",
+      "confidence": "high recognition; dimensions approximate",
+      "assertion": "Large flat blue cantilever loading canopy on left front above roller door; approx17.8mwide/4mprojecting/5.45m underside with sparse steel braces. No unsupported columns invented."
+    }
+  ],
+  "access": {
+    "beeldbank": "Bounded exact-address query200 returns JavaScript shell only; no archival image inspected.",
+    "heritage": "BAG1979 industrial warehouse; no historic registration established or inferred. Historic monument prose requirement not applicable.",
+    "bouwdossiers": "Not inspected. Remaining uncertainty is photo-obscured rear/opening detail, not an invented historical assertion.",
+    "network": "All bounded curl acquisitions completed; initial6 statuses200 logged. Subsequent exact statuses not captured, valid original bodies retained."
+  },
+  "geometry": {
+    "sha256": "649ad9860aaa50589aef792550d0bbb995d6391a87b2ded737f50eeac5e40114",
+    "triangles": 9413,
+    "bytes": 144912,
+    "bounds": [
+      [
+        -21.676602420427944,
+        0.00037211235323209024,
+        -23.555959701538086
+      ],
+      [
+        20.993701037981655,
+        8.267628466527079,
+        22.798110961914062
+      ]
+    ],
+    "downwardRoofFaces": 0,
+    "roofSupportProbes": [
+      {
+        "point": [
+          -12.828393618265787,
+          7.243416786193848,
+          12.577684720357258
+        ],
+        "expected": "slate",
+        "firstHit": "slate",
+        "delta": 0
+      },
+      {
+        "point": [
+          -8.534201939900715,
+          7.231156349182129,
+          2.598693211873372
+        ],
+        "expected": "slate",
+        "firstHit": "slate",
+        "delta": 0
+      },
+      {
+        "point": [
+          -12.159968058268229,
+          7.231156349182129,
+          1.4950249989827473
+        ],
+        "expected": "slate",
+        "firstHit": "slate",
+        "delta": 0
+      },
+      {
+        "point": [
+          -6.647756417592366,
+          7.217009703318277,
+          -9.740181922912598
+        ],
+        "expected": "slate",
+        "firstHit": "slate",
+        "delta": 0
+      },
+      {
+        "point": [
+          2.307023207346598,
+          7.205692450205484,
+          -18.130749384562172
+        ],
+        "expected": "slate",
+        "firstHit": "slate",
+        "delta": 1.7763568394002505e-15
+      },
+      {
+        "point": [
+          3.6087435086568194,
+          7.20663563410441,
+          -17.429079691569008
+        ],
+        "expected": "slate",
+        "firstHit": "slate",
+        "delta": 0
+      },
+      {
+        "point": [
+          8.48129415512085,
+          7.20663563410441,
+          -16.077374776204426
+        ],
+        "expected": "slate",
+        "firstHit": "slate",
+        "delta": 1.7763568394002505e-15
+      },
+      {
+        "point": [
+          8.01445738474528,
+          7.220782279968262,
+          -3.2282797495524087
+        ],
+        "expected": "slate",
+        "firstHit": "slate",
+        "delta": 0
+      },
+      {
+        "point": [
+          6.564669609069824,
+          7.2339857419331866,
+          8.902169545491535
+        ],
+        "expected": "slate",
+        "firstHit": "slate",
+        "delta": 8.881784197001252e-16
+      },
+      {
+        "point": [
+          -3.0964953104654946,
+          7.2453029950459795,
+          17.262557665506996
+        ],
+        "expected": "slate",
+        "firstHit": "slate",
+        "delta": 8.881784197001252e-16
+      },
+      {
+        "point": [
+          -8.141870180765787,
+          7.2453029950459795,
+          15.648669560750324
+        ],
+        "expected": "slate",
+        "firstHit": "slate",
+        "delta": 8.881784197001252e-16
+      },
+      {
+        "point": [
+          -3.8490931193033853,
+          7.902647018432617,
+          4.136189778645833
+        ],
+        "expected": "stone",
+        "firstHit": "stone",
+        "delta": 0
+      },
+      {
+        "point": [
+          0.44509855906168616,
+          7.548982620239258,
+          -5.842801729838053
+        ],
+        "expected": "stone",
+        "firstHit": "stone",
+        "delta": 0
+      },
+      {
+        "point": [
+          3.14190673828125,
+          7.994128068288167,
+          -4.579984664916992
+        ],
+        "expected": "stone",
+        "firstHit": "stone",
+        "delta": 8.881784197001252e-16
+      },
+      {
+        "point": [
+          -2.454005241394043,
+          8.130878289540608,
+          4.6973371505737305
+        ],
+        "expected": "stone",
+        "firstHit": "stone",
+        "delta": 3.552713678800501e-15
+      }
+    ],
+    "firstHitGlazing": {
+      "checks": 96,
+      "failures": 0,
+      "denseChecks": 1152,
+      "unclassifiedTriangles": 0,
+      "denseFailureSamples": [],
+      "sampleFailures": [],
+      "failureGroups": []
+    },
+    "frontRecessAndNeighborOutsideScope": [
+      {
+        "from": [
+          -24,
+          1,
+          14
+        ],
+        "clear": true
+      },
+      {
+        "from": [
+          25,
+          1,
+          -14
+        ],
+        "clear": true
+      }
+    ],
+    "pending": "Independent/sourcecomparison/gallery/live neighbors/suppression/performance. CPU not acceptance."
+  },
+  "comparison": {
+    "sha256": "649ad9860aaa50589aef792550d0bbb995d6391a87b2ded737f50eeac5e40114",
+    "renderer": "Blender Cycles CPU12samples, native source-facing south/east2021 plus higher/opposite",
+    "finding": "Survey/native/photo perspective agrees for rectangle, blue upper/bricklower, leftcanopy and allvisible aperture groups. First higher view showed unclosedmonitor end; preserved failure then6vertexskirts repaired.",
+    "failureEvidence": "artifacts/haparandaweg-57/failed-monitor-end",
+    "limits": "CPU isolated render lacks neighborgeometry and cannot accept live suppression/performance.",
+    "pending": "Root sourcecomparison, independent failure review, native gallery and actual game scene/exact neighbor retention/performance"
+  },
+  "risks": [
+    "North/west walls unobserved; no asserted total aperture count.",
+    "Loading door dimensions/brace count/canopy projection approximated from photos.",
+    "Current2025 tree/shrub occlusion; union with2021leaf-off preserves apertures.",
+    "Some shutters change between dates; modeled2021 visible aperture state withcurrent assembly confirmation."
+  ],
+  "recoveryReview": {
+    "reviewedAt": "2026-10-07T16:24:45.200856+00:00",
+    "state": "Recovered unchanged draft; not native acceptance",
+    "candidateSha256": "649ad9860aaa50589aef792550d0bbb995d6391a87b2ded737f50eeac5e40114",
+    "sourceComparisons": [
+      "south2021 photograph vs cpu-south2021",
+      "east2021 photograph vs cpu-east2021",
+      "west2021 and west2025 frontage/context",
+      "south2025 and east2025 current assembly confirmation",
+      "cpu-higher and cpu-opposite",
+      "failed-monitor-end/cpu-higher preserved failure"
+    ],
+    "finding": "Visible warehouse silhouette, blue ribbed upper cladding, brick base, front canopy and front/east aperture groups agree at CPU preflight level. Closed monitor end present. Current leafy references cannot establish missing aperture counts. No evidence-supported geometry edit identified during recovery.",
+    "checks": "Decoded compressed candidate focused geometry check passed; 21 staged raw source bodies and acquisition originals match manifest checksums.",
+    "limitations": "Saved CPU images use uncompressed sibling, not a fresh decoded compressed render. RoofSupportProbes prove upward first-hit top ownership, not separately wall/roof support. Two outside-scope probes do not prove full loading apron or retained-neighbor visibility. Independent review, native gallery/live suppression/performance and shared checks pending.",
+    "sourcePublication": "Pending root scoped archive verify/private commit/push. Raw staging retained.",
+    "networkState": "CODEX_SANDBOX_NETWORK_DISABLED=1; cached successful responses reused.",
+    "feedbackOwnership": "Root owns session/batch feedback pull; worker did not claim or resolve notes."
+  },
+  "loadingDoorCorrection": {
+    "previousSHA256": "649ad9860aaa50589aef792550d0bbb995d6391a87b2ded737f50eeac5e40114",
+    "candidateSHA256": "49f42b57f712752910299611e2b60fc100356a7834fc6458cad8d6d80c8ff41f",
+    "bytes": 146960,
+    "triangles": 9605,
+    "source": "processed/south2021.jpg; recovery-independent-review/south2021-loading-door-crop.png",
+    "change": "Two rows of small glazing/light panels replace continuous opaque ribs at mid/lower loading-door height. Six panes per row are approximate; foreground fence obscures exact divisions.",
+    "currentStateLimit": "2025 south view obscured by foliage; historical visible assembly used, current glazing state unconfirmed.",
+    "firstHitSparse": 168,
+    "firstHitDense": 2016,
+    "failures": 0,
+    "status": "corrected-draft-independent-render-review-pending",
+    "preservedFailure": "artifacts/haparandaweg-57/failed-opaque-loading-door"
+  },
+  "monitorNormalCorrection": {
+    "previousSHA256": "49f42b57f712752910299611e2b60fc100356a7834fc6458cad8d6d80c8ff41f",
+    "candidateSHA256": "4ba9134c5c69e716e30ec981e4e1c2a6e08fc44fbed02089a7c0a13ecafcb18f",
+    "change": "Reverse monitor skirt winding for outward single-sided visibility; independent outward-probe regression pending.",
+    "failureEvidence": "recovery-independent-review/context-geometry.json",
+    "preservedFailure": "failed-inward-monitor-skirts",
+    "bytes": 146960,
+    "triangles": 9605
+  },
+  "productionCandidate": {
+    "sha256": "049b4419b135e58688f2cd270187efdb2ae8dd66881c357c9d7ceb39da4d1ad3",
+    "bytes": 147464,
+    "triangles": 9605,
+    "status": "production-generated-geometry-pass-native-pending",
+    "geometryReport": "artifacts/haparandaweg-57/geometry-review.json",
+    "sharedChecks": "193 manual landmarks, 213 models, 190 genuine destinations; TypeScript passed",
+    "sourceArchiveCommit": "16d644906c974150de90690eca7a8918e154cd6c"
+  }
+}
