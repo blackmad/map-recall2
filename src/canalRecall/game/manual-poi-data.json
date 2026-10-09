@@ -2038,13 +2038,31 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Hallen_van_Stork",
     "preferDescription": true
   },
-{
-  "modelId": "zuiderkerk",
-  "landmarkId": "extract_landmarks_684653190",
-  "name": "Zuiderkerk",
-  "description": "The Zuiderkerk (Southern Church) on Zuiderkerkhof was the first church built in Amsterdam specifically for the Protestant community. Hendrick de Keyser designed it and it was built between 1603 and 1611 as a Renaissance hall church of brick with sandstone dressings. Its tower, roughly 70 metres tall, rises in square and octagonal stages with clock faces, corner columns and a lead-covered lantern; the clock bears the date 1614. The church closed for worship in 1929 and now houses an information centre for urban development and a venue.",
-  "funFact": "Rembrandt and Saskia's son Titus was baptised here in 1641, and Claude Monet painted the tower with the church behind it around 1874.",
-  "sourceUrl": "https://nl.wikipedia.org/wiki/Zuiderkerk_(Amsterdam)",
-  "preferDescription": true
-}
+  {
+    "modelId": "zuiderkerk",
+    "landmarkId": "extract_landmarks_684653190",
+    "name": "Zuiderkerk",
+    "description": "The Zuiderkerk (Southern Church) on Zuiderkerkhof was the first church built in Amsterdam specifically for the Protestant community. Hendrick de Keyser designed it and it was built between 1603 and 1611 as a Renaissance hall church of brick with sandstone dressings. Its tower, roughly 70 metres tall, rises in square and octagonal stages with clock faces, corner columns and a lead-covered lantern; the clock bears the date 1614. The church closed for worship in 1929 and now houses an information centre for urban development and a venue.",
+    "funFact": "Rembrandt and Saskia's son Titus was baptised here in 1641, and Claude Monet painted the tower with the church behind it around 1874.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Zuiderkerk_(Amsterdam)",
+    "preferDescription": true
+  },
+  {
+    "modelId": "muiderkerk",
+    "landmarkId": "extract_landmarks_1055638541",
+    "name": "Muiderkerk",
+    "description": "The Muiderkerk is a Protestant church on the Linnaeusstraat at the edge of the Oosterpark in Amsterdam-Oost. The original church of 1892 burned down in 1989, but its brick tower survived, and the present church was built against that old tower as part of a 1997 housing and office complex designed by architect Van Hoogevest. The tower, with its stone porch, rose windows and arched belfry, is what makes the building recognisable.",
+    "funFact": "Although the church burned in 1989, the tower stayed standing; it was restored in the early 2010s to repair neglected maintenance and the remaining fire damage. In 2008 a small square with an art object, the Wensplein voor vrede (Wish Square for Peace), opened to its south.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Muiderkerk",
+    "preferDescription": true
+  },
+  {
+    "modelId": "aron-schuster-synagoge",
+    "landmarkId": "extract_landmarks_86609524",
+    "name": "Raw Aron Schuster Synagoge",
+    "description": "The Raw Aron Schuster Synagogue, also called the Obrechtsjoel, stands on the corner of Jacob Obrechtplein and Heinzestraat in Amsterdam-Zuid and is the largest Ashkenazi synagogue still in use in the city. Harry Elte, a pupil of H.P. Berlage, designed it, and it was inaugurated on 18 May 1928. Its stern brick blocks, tower, covered entrance and far-projecting roof slabs show the influence of Willem Dudok and Frank Lloyd Wright. It became a national monument in 1995 and was restored by 1997.",
+    "funFact": "The building was named after Chief Rabbi Aron Schuster (1907-1994) only in 1973, when he retired and left Amsterdam for Jerusalem; he had served here since 1942. The first service after the war was held on Rosh Hashanah 1945.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Raw_Aron_Schuster_Synagoge",
+    "preferDescription": true
+  }
 ]

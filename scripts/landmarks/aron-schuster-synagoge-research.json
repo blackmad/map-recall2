@@ -1,0 +1,14 @@
+{
+  "id": "aron-schuster-synagoge",
+  "bagPand": "NL.IMBAG.Pand.0363100012074574",
+  "retrieved": "2026-10-10",
+  "sources": [
+    {"url": "https://nl.wikipedia.org/wiki/Raw_Aron_Schuster_Synagoge", "use": "history (Harry Elte, inaugurated 18 May 1928, named after Aron Schuster in 1973, rijksmonument 1995, restored 1997) and style (Dudok/Wright influence, blocks, tower, covered entrance, projecting roofs)", "licence": "CC BY-SA 4.0 (text, facts only)"},
+    {"url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012074574", "use": "LoD2.2 massing; tower 22.6 m", "licence": "CC BY 4.0 (3DBAG)"},
+    {"url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012074574&f=json", "use": "BAG footprint", "licence": "CC0 (BAG)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-30_08-35-53_01385/", "use": "ref-north-entrance.jpg: canopy, strip windows, tower, captured 2025-07-30", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-30_08-35-53_01382/", "use": "ref-nw-wall.jpg: arched side door, tall steel-framed window pair, plaque, captured 2025-07-30", "licence": "Amsterdam municipal panorama (CC0)"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-30_08-35-53_01183/", "use": "ref-sw-overview.jpg: overall massing from the south-west, captured 2025-07-30", "licence": "Amsterdam municipal panorama (CC0)"}
+  ],
+  "notes": "Hebrew fascia inscription on the entrance canopy is not reproduced (plain dark strip). South and east faces are inferred (no clear street photo; they abut neighbouring blocks and trees). The wrought-iron entrance gate and low brick garden walls are not modelled. Backlog address 'Van Ostadestraat' is wrong: the synagogue is on Jacob Obrechtplein / Heinzestraat."
+}
