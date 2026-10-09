@@ -1694,5 +1694,58 @@
     ],
     "note": "Public Langbroekdreef approach beside the station driveway,27.6m from the former isolated apron point. Current mapped road coordinates cross-checked against sourced station plot; actual chosen destination remains Anton."
   }
+},
+{
+  "modelId": "this-is-holland",
+  "name": "This is Holland",
+  "description": "Opened in2017, This is Holland uses moving seats and a panoramic screen for a simulated flight over Dutch landscapes. Its circular pavilion stands between Eye and A’DAM Toren.",
+  "funFact": "The pavilion recalls the oil drums that once stood on Shell’s Overhoeks site. Its raised silver drum houses the flight experience above a six-metre-high sawtooth glass foyer, supported by mushroom-shaped columns rising from the underground garage.",
+  "sourceUrl": "https://www.damastarchitects.nl/this-is-holland-amsterdam",
+  "center": [
+    52.3842002,
+    4.902329
+  ],
+  "routeDestination": {
+    "center": [
+      52.3841332,
+      4.9024943
+    ],
+    "note": "OSM node 11182027586 public entrance on the southeast foyer; pin stays on the existing genuine extract."
+  }
+},
+{
+  "modelId": "luther-museum",
+  "name": "Luther Museum Amsterdam",
+  "description": "The museum occupies the historic regents’ rooms of Wittenberg, the former Lutheran Diaconiehuis. The building’s paired entrances once separated the elderly residents from the orphans; its two courtyards remain open within the large brick block.",
+  "funFact": "Wittenberg’s two grand canal-side entrances originally led to separate departments: one for elderly residents and one for orphaned children.",
+  "sourceUrl": "https://luthermuseum.nl/nl/over-het-museum",
+  "center": [
+    52.3655242,
+    4.9088495
+  ],
+  "routeDestination": {
+    "center": [
+      52.365537,
+      4.908862
+    ],
+    "note": "Current municipal2024panorama00113 and2025panorama02683 show museum banner and panel by west/photographic-right historic door; coordinate reconstructed on that surveyed frontage, exact address point preserved until route accessibility review."
+  }
+},
+{
+  "modelId": "huize-frankendael",
+  "name": "Huize Frankendael",
+  "description": "Frankendael is the last surviving country estate in the Watergraafsmeer, where wealthy Amsterdammers once built many summer retreats. Izaak Balde gave the house its present central pavilion and lower coach-house wings around 1733. Restaurant Merkelbach occupies a former coach house, named for city architect Ben Merkelbach, who moved into the house in 1957.",
+  "sourceUrl": "https://huizefrankendael.nl/nl/over/geschiedenis-huize-frankendael/",
+  "center": [
+    52.351122,
+    4.933403
+  ],
+  "routeDestination": {
+    "center": [
+      52.351191,
+      4.933559
+    ],
+    "note": "Existing center falls on rear bay; sourced public main entrance is northeast. Root should only relocate pin if routing requires or improves actual entrance."
+  }
 }
 ]
