@@ -18595,7 +18595,8 @@
       },
       "triangles": 2641,
       "bytes": 47616,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "held": true
     },
     "maarten-lutherkerk": {
       "id": "maarten-lutherkerk",
@@ -18862,7 +18863,8 @@
       },
       "triangles": 4005,
       "bytes": 67196,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "held": true
     },
     "museum-amsterdam-noord": {
       "id": "museum-amsterdam-noord",
@@ -19127,7 +19129,8 @@
       },
       "triangles": 802,
       "bytes": 23476,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "held": true
     },
     "oudemanhuispoort": {
       "id": "oudemanhuispoort",
@@ -19287,10 +19290,13 @@
       },
       "triangles": 221,
       "bytes": 11340,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "held": true
     },
     "torture-museum": {
       "id": "torture-museum",
+      "status": "held",
+      "heldReason": "Facade slab detached from the shell; low detail (user review 2026-10-09).",
       "name": "Torture Museum",
       "landmarkId": "extract_landmarks_417591223",
       "modelUrl": "./models/torture-museum.glb",
@@ -19367,14 +19373,14 @@
       },
       "bounds": {
         "min": [
-          -7.802999973297119,
-          0,
+          -9.64799976348877,
+          -5.9604645663569045e-9,
           -14.246000289916992
         ],
         "max": [
           3.2200000286102295,
           17.047000885009766,
-          2.724860191345215
+          3.0976243019104004
         ]
       },
       "placement": {
@@ -19388,14 +19394,15 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 16.970860481262207,
-        "heightMetres": 17.047000885009766,
-        "depthMetres": 11.023000001907349,
-        "depthCoverage": 1.7250391239291627
+        "widthMetres": 17.343624591827393,
+        "heightMetres": 17.04700089097023,
+        "depthMetres": 12.867999792098999,
+        "depthCoverage": 2.0137714854615023
       },
-      "triangles": 768,
-      "bytes": 20936,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "triangles": 1780,
+      "bytes": 34044,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "held": true
     },
     "theo-thijssen-museum": {
       "id": "theo-thijssen-museum",
@@ -19705,7 +19712,8 @@
       },
       "triangles": 1921,
       "bytes": 44792,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "held": true
     },
     "houseboat-museum": {
       "id": "houseboat-museum",
@@ -20436,7 +20444,8 @@
       },
       "triangles": 5528,
       "bytes": 89336,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "held": true
     },
     "nassaukerk": {
       "id": "nassaukerk",
@@ -20656,6 +20665,599 @@
       },
       "triangles": 2447,
       "bytes": 40140,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "club-panama": {
+      "id": "club-panama",
+      "name": "Club Panama",
+      "landmarkId": "n30170536",
+      "modelUrl": "./models/club-panama.glb",
+      "suppressOsmIds": [
+        "w57863961",
+        "NL.IMBAG.Pand.0363100012078164"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.930318879347794,
+          52.37492459300175
+        ],
+        "headingDegrees": 106.06937002107884,
+        "lengthMetres": 47.26,
+        "widthMetres": 30.21
+      },
+      "surveyed": {
+        "anchor": [
+          4.930259105100115,
+          52.37493509806862
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current BAG 0363100012078164 footprint (OSM w57863961) and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "brick": "#80513f",
+        "stone": "#cdbc90",
+        "slate": "#5f6157",
+        "glass": "#5f7681",
+        "frame": "#dcd9cf",
+        "dark": "#1f2123",
+        "white": "#e9e5d8",
+        "red": "#c5281c",
+        "greyBrick": "#6a4034",
+        "concrete": "#aeb6ba"
+      },
+      "attribution": {
+        "title": "Club Panama",
+        "author": "Map Recall",
+        "sourceUrl": "https://arcam.nl/architectuur-gids/panama/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; windows, awnings, entrance gable, machine-house gable details, clerestory and rooftop sign measured by eye from the 2021-2022 municipal panoramas, no pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.93069967806932,
+              52.37496471034672
+            ],
+            [
+              4.930322138924874,
+              52.37503012263864
+            ],
+            [
+              4.930218026175422,
+              52.3750481456418
+            ],
+            [
+              4.930223784830359,
+              52.375059348543495
+            ],
+            [
+              4.930228320018541,
+              52.375068147011994
+            ],
+            [
+              4.930234712209232,
+              52.37508057468297
+            ],
+            [
+              4.930046253029566,
+              52.37511373082168
+            ],
+            [
+              4.929961069042327,
+              52.374932336053135
+            ],
+            [
+              4.930072231646058,
+              52.374912776634964
+            ],
+            [
+              4.930051050767728,
+              52.3748676575824
+            ],
+            [
+              4.930048406148949,
+              52.374862083996206
+            ],
+            [
+              4.930055155372319,
+              52.37485411101399
+            ],
+            [
+              4.930079328002136,
+              52.37482552463353
+            ],
+            [
+              4.93011341458351,
+              52.374819589529906
+            ],
+            [
+              4.930467314344422,
+              52.37475796041885
+            ],
+            [
+              4.930510150060439,
+              52.37484645658807
+            ],
+            [
+              4.930633180507533,
+              52.374823778750226
+            ],
+            [
+              4.93069967806932,
+              52.37496471034672
+            ]
+          ]
+        ]
+      },
+      "bounds": {
+        "min": [
+          -20.148042678833008,
+          -4.7683716530855236e-8,
+          -20.1200008392334
+        ],
+        "max": [
+          30.92516326904297,
+          13.834540367126465,
+          19.87801170349121
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.930259105100115,
+          52.37493509806862
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 106.06937002107884,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 51.07320594787598,
+        "heightMetres": 13.834540414810181,
+        "depthMetres": 39.99801254272461,
+        "depthCoverage": 1.3239990911196493
+      },
+      "triangles": 20286,
+      "bytes": 254216,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "compagnietheater": {
+      "id": "compagnietheater",
+      "status": "held",
+      "heldReason": "Near-bar rework 2026-10-09: awaiting integrator review of artifacts/landmark-lanes/compagnietheater/contact.png",
+      "name": "Compagnietheater",
+      "landmarkId": "extract_landmarks_1455669716",
+      "modelUrl": "./models/compagnietheater.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012171200"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89771,
+          52.37036
+        ],
+        "headingDegrees": 23.5,
+        "lengthMetres": 44.3,
+        "widthMetres": 29.33
+      },
+      "surveyed": {
+        "anchor": [
+          4.89771,
+          52.37036
+        ],
+        "northOffsetDegrees": 0,
+        "source": "BAG pand 0363100012171200 with 3DBAG LoD2.2 roofs; native east/south metres, scale 1."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "brick": "#a0613f",
+        "stone": "#cdc3a6",
+        "slate": "#575a5f",
+        "white": "#f0ede3",
+        "glass": "#566872",
+        "dark": "#1f2326",
+        "concrete": "#aa9f84",
+        "greyBrick": "#6b5c4d"
+      },
+      "attribution": {
+        "title": "Compagnietheater",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Compagnietheater",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free model on the BAG footprint (3DBAG LoD2.2 roofs): the Hollands-Classicist canal front (rusticated stone, white sashes, tall arched windows in brick reveals between pilasters, entablature, pediment with a low-poly relief group after Ziesenis) and matching wings and flanks, positioned by eye from a rectified 2021 municipal panorama. No imported mesh or photo textures."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.897908,
+              52.370509
+            ],
+            [
+              4.897785,
+              52.370555
+            ],
+            [
+              4.897814,
+              52.370583
+            ],
+            [
+              4.897743,
+              52.370609
+            ],
+            [
+              4.897715,
+              52.370581
+            ],
+            [
+              4.897615,
+              52.370618
+            ],
+            [
+              4.897642,
+              52.370645
+            ],
+            [
+              4.8976,
+              52.370661
+            ],
+            [
+              4.8976,
+              52.370661
+            ],
+            [
+              4.897555,
+              52.370674
+            ],
+            [
+              4.897486,
+              52.370574
+            ],
+            [
+              4.897521,
+              52.370561
+            ],
+            [
+              4.897364,
+              52.370402
+            ],
+            [
+              4.897305,
+              52.370307
+            ],
+            [
+              4.897623,
+              52.370222
+            ],
+            [
+              4.897711,
+              52.370311
+            ],
+            [
+              4.897716,
+              52.370309
+            ],
+            [
+              4.897825,
+              52.370419
+            ],
+            [
+              4.89782,
+              52.37042
+            ],
+            [
+              4.897908,
+              52.370509
+            ]
+          ]
+        ]
+      },
+      "bounds": {
+        "min": [
+          -27.720108032226562,
+          0,
+          -34.67599868774414
+        ],
+        "max": [
+          13.59620189666748,
+          21.054000854492188,
+          15.8876953125
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89771,
+          52.37036
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 23.5,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 50.56369400024414,
+        "heightMetres": 21.054000854492188,
+        "depthMetres": 41.31630992889404,
+        "depthCoverage": 1.408670641967066
+      },
+      "triangles": 13564,
+      "bytes": 193688,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
+      "held": true
+    },
+    "west-india-house": {
+      "id": "west-india-house",
+      "name": "West India House",
+      "landmarkId": "extract_landmarks_1399359542",
+      "modelUrl": "./models/west-india-house.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012167535"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.892066,
+          52.380013
+        ],
+        "headingDegrees": 22.5,
+        "lengthMetres": 34,
+        "widthMetres": 30.04
+      },
+      "surveyed": {
+        "anchor": [
+          4.892066,
+          52.380013
+        ],
+        "northOffsetDegrees": 0,
+        "source": "BAG pand 0363100012167535 with 3DBAG LoD2.2 roofs; native east/south metres, scale 1."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "brick": "#7a5849",
+        "stone": "#8b8f91",
+        "slate": "#57544f",
+        "white": "#efeae0",
+        "glass": "#566872",
+        "dark": "#1d2023",
+        "concrete": "#c6c8c1",
+        "greyBrick": "#4c4944",
+        "bronze": "#4a4034",
+        "ochre": "#8a7e6e"
+      },
+      "attribution": {
+        "title": "West India House",
+        "author": "Map Recall",
+        "sourceUrl": "https://en.wikipedia.org/wiki/West-Indisch_Huis",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free model on the BAG footprint (3DBAG LoD2.2 roofs, sliver spikes removed): grey-plastered pedimented north front with arched door, brown-brick west front, sash-windowed south and east ranges and courtyard with a Peter Stuyvesant statue; window rhythm measured by eye from rectified 2021-25 municipal panoramas. No imported mesh or photo textures."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8916136,
+              52.3800465
+            ],
+            [
+              4.8916881,
+              52.3800269
+            ],
+            [
+              4.8916347,
+              52.3799512
+            ],
+            [
+              4.8916381,
+              52.3799503
+            ],
+            [
+              4.8919673,
+              52.379867
+            ],
+            [
+              4.892003,
+              52.3799178
+            ],
+            [
+              4.8920045,
+              52.3799174
+            ],
+            [
+              4.892025,
+              52.3799482
+            ],
+            [
+              4.8920235,
+              52.3799486
+            ],
+            [
+              4.8920455,
+              52.3799817
+            ],
+            [
+              4.8920468,
+              52.3799814
+            ],
+            [
+              4.8920502,
+              52.3799849
+            ],
+            [
+              4.8920513,
+              52.3799878
+            ],
+            [
+              4.8920498,
+              52.3799881
+            ],
+            [
+              4.8920617,
+              52.380006
+            ],
+            [
+              4.8920635,
+              52.3800056
+            ],
+            [
+              4.8920645,
+              52.3800078
+            ],
+            [
+              4.8920673,
+              52.3800122
+            ],
+            [
+              4.8920661,
+              52.3800125
+            ],
+            [
+              4.8921065,
+              52.3800733
+            ],
+            [
+              4.892108,
+              52.3800729
+            ],
+            [
+              4.8921554,
+              52.3801441
+            ],
+            [
+              4.8921434,
+              52.3801471
+            ],
+            [
+              4.8921428,
+              52.3801462
+            ],
+            [
+              4.892098,
+              52.3801578
+            ],
+            [
+              4.8920987,
+              52.3801587
+            ],
+            [
+              4.8920868,
+              52.3801618
+            ],
+            [
+              4.8920882,
+              52.3801638
+            ],
+            [
+              4.8920854,
+              52.3801646
+            ],
+            [
+              4.8918317,
+              52.3802319
+            ],
+            [
+              4.8918311,
+              52.380231
+            ],
+            [
+              4.8918203,
+              52.3802339
+            ],
+            [
+              4.8918197,
+              52.380233
+            ],
+            [
+              4.8917681,
+              52.3802468
+            ],
+            [
+              4.8917688,
+              52.3802477
+            ],
+            [
+              4.8917572,
+              52.3802504
+            ],
+            [
+              4.8916136,
+              52.3800465
+            ]
+          ],
+          [
+            [
+              4.8917977,
+              52.3799904
+            ],
+            [
+              4.891893,
+              52.3801246
+            ],
+            [
+              4.8920116,
+              52.3800938
+            ],
+            [
+              4.8920044,
+              52.3800836
+            ],
+            [
+              4.892025,
+              52.3800783
+            ],
+            [
+              4.8919368,
+              52.3799544
+            ],
+            [
+              4.8917977,
+              52.3799904
+            ]
+          ]
+        ]
+      },
+      "bounds": {
+        "min": [
+          -31.054357528686523,
+          -9.536743306171047e-8,
+          -26.5612850189209
+        ],
+        "max": [
+          6.389983654022217,
+          16.937000274658203,
+          16.56708335876465
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.892066,
+          52.380013
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 22.5,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 43.12836837768555,
+        "heightMetres": 16.937000370025636,
+        "depthMetres": 37.44434118270874,
+        "depthCoverage": 1.246482729118134
+      },
+      "triangles": 13668,
+      "bytes": 223968,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }

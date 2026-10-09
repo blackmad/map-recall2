@@ -176,9 +176,19 @@
       "version": "5a100909943d2d2d",
       "dateSource": "git-history"
     },
+    "club-panama": {
+      "updatedAt": "2026-10-09T21:18:03.125Z",
+      "version": "69c4ca0c0ace8b3e",
+      "dateSource": "asset-update"
+    },
     "collectie-six": {
       "updatedAt": "2026-10-08T12:28:07.417Z",
       "version": "7db65223df3f539b",
+      "dateSource": "asset-update"
+    },
+    "compagnietheater": {
+      "updatedAt": "2026-10-09T21:18:03.163Z",
+      "version": "2134878bcbafcc48",
       "dateSource": "asset-update"
     },
     "concertgebouw": {
@@ -1160,6 +1170,11 @@
       "updatedAt": "2026-10-04T02:58:21+02:00",
       "version": "f735821ca778afe2",
       "dateSource": "git-history"
+    },
+    "west-india-house": {
+      "updatedAt": "2026-10-09T21:18:03.240Z",
+      "version": "56f5d61aeb23686f",
+      "dateSource": "asset-update"
     },
     "westerkerk": {
       "updatedAt": "2026-10-07T20:57:57.615Z",
