@@ -1,0 +1,50 @@
+{
+  "id": "nassaukerk",
+  "name": "Nassaukerk",
+  "landmarkId": "extract_landmarks_1101340298",
+  "modelUrl": "./models/nassaukerk.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012237328"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.8771351038872215,
+      52.382675953008125
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 44,
+    "widthMetres": 48
+  },
+  "surveyed": {
+    "anchor": [
+      4.8771351038872215,
+      52.382675953008125
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012237328 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#7a4b3c",
+    "stone": "#cdc6b4",
+    "slate": "#4a4a4e",
+    "glass": "#7d9aa0",
+    "dark": "#35261c",
+    "white": "#dcd8ca",
+    "frame": "#e4e0d2",
+    "copper": "#6aa38c",
+    "gold": "#d9b44a",
+    "ochre": "#a9733f",
+    "bronze": "#4b4a42"
+  },
+  "attribution": {
+    "title": "Nassaukerk",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Nassaukerk_(Amsterdam)",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
+  }
+}

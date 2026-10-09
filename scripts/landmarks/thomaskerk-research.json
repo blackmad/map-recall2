@@ -1,0 +1,11 @@
+{
+  "id": "thomaskerk",
+  "bagPand": "NL.IMBAG.Pand.0363100012099552",
+  "sources": [
+    "https://nl.wikipedia.org/wiki/Thomaskerk_(Amsterdam)"
+  ],
+  "photo": "Amsterdam municipal panorama recording_2025-07-29_10-56-07_01492 (front, curved ribbon window, entrance canopy) and _00541 (rear volumes)",
+  "notes": "Massing is the 3DBAG LoD2.2 shell (flat roofs, clean). Ground 0.46 m NAP.",
+  "status": "skipped",
+  "skipReason": "A 3DBAG shell with window bays is not recognisable: the real building is defined by a curved yellow-brick front with a continuous ribbon window under a projecting cornice (Karel Sijmons, 1966, Ronchamp-inspired), which the faceted LoD2.2 walls do not capture. Needs a hand-modelled curved front before installing."
+}
