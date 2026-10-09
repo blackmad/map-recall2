@@ -79,6 +79,7 @@ export function buildIndustrialTheaterLandmark(id:string,w:number,d:number,b:Bui
   for(let x=-main/2;x<=main/2;x+=1.3){box(x,17.2,front+.5,.14,1.4,.25,'stone');}box(0,18.6,front+.5,main,.22,.4,'stone');
   // Rear stage house retains its industrial scale, with a glazed connector.
   box(0,22.5,-d*.25,w*.46,5,d*.27,'dark');box(0,27.5,-d*.25,w*.47,.35,d*.28,'slate');
-  for(let x of [-w*.42,w*.42])box(x,8.2,-d*.14,1.0,4.8,d*.43,'glass');
+  // The strips used to sit at +-.42w, 1-3.4 m clear of the surveyed stage-house flanks (measured by ray: dark flank x=+18.52/-20.89 at z=-22.5, drifting .02/.03 m per metre; flank spans about z=-33..-12 on both sides). Hug the flank at its own slope and stop where it stops, so they read as glazing on the wall, not floating planks.
+  for(const [x,a] of [[-20.89-.52,-.0337],[18.52+.52,-.0196]])box(x,8.2,-22.5,1.0,4.8,21,'glass',a);
  }else throw Error(`Unknown industrial theatre ${id}`);
 }
