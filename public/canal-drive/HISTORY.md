@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+## Sculpture splat pilot: De Dokwerker, no-go as-is (2026-10-09)
+
+COLMAP 4.2 (CPU) on 278 Commons images registered 214 (0.6 px), Brush 0.3
+(Metal) trained in ~10 min, cropped to 24k gaussians, SOG 320 KB via
+splat-transform, rendered with Spark 2.3 in `sculpture-splat-demo.html`
+alongside a 13-view impostor and the hand-built GLB. The figure reads from
+every side but is ghostly and the plinth smears: the photos are mostly
+1950s–80s black-and-white scans with crowds, only ~12 modern colour shots
+from one viewpoint, bronze is textureless, and nothing was masked. City
+panoramas are useless (28–36 m away, ~25 px tall). Impostor linear blending
+doubles the figure between azimuths. Tooling kept in `scripts/sculpture-splat/`.
+
 ## Two churches under the raised bar (2026-10-09)
 
 After the held batch, the churches lane was told "recognisable next to the
