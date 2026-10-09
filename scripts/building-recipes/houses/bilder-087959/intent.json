@@ -20,7 +20,7 @@
    "hoist": false,
    "windows": "sash",
    "basement": "none",
-   "cornice": "bracketed",
+   "cornice": "simple",
    "gable": "cornice",
    "storeys": 5,
    "bays": [
@@ -44,7 +44,12 @@
      1
     ]
    },
-   "bands": "storey"
+   "bands": "storey",
+   "archedStoreys": [
+    4
+   ],
+   "crownCap": "rounded",
+   "crownCapSpan": "wide"
   }
  ],
  "roof": {
@@ -56,5 +61,7 @@
   "door": "natural-wood",
   "stone": "sandstone"
  },
- "notes": []
+ "notes": [
+  "2026-10-09 look pass: round-arched top storey under a wide rounded parapet (photo)."
+ ]
 }

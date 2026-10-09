@@ -41,7 +41,7 @@
     ],
     "projecting": true
    },
-   "bands": "both"
+   "bands": "lintel"
   }
  ],
  "roof": {
@@ -51,7 +51,10 @@
   "brick": "yellow-brick",
   "frame": "white",
   "door": "dark-red",
-  "stone": "cream"
+  "stone": "cream",
+  "band": "#8c3b2c"
  },
- "notes": []
+ "notes": [
+  "2026-10-09 look pass: red brick banding and relieving arches on yellow brick (photo)."
+ ]
 }
