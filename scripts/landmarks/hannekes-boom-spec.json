@@ -1,0 +1,8 @@
+{
+  "id":"hannekes-boom", "name":"Hannekes Boom", "landmarkId":"local-food-395", "modelUrl":"./models/hannekes-boom.glb",
+  "suppressOsmIds":["NL.IMBAG.Pand.0363100012238899"], "spatialSuppression":false,
+  "footprint":{"centre":[4.9116163,52.3762934],"headingDegrees":90,"lengthMetres":18,"widthMetres":17},
+  "surveyed":{"anchor":[4.9116163,52.3762934],"northOffsetDegrees":0,"source":"BAG Pand0363100012238899; municipal official Dijksgracht4 VBO linkage; native AHN5/2023 roof heights cross-checked operator current facade/architect opposite views and PDOK aerial"},
+  "groundAltitudeMetres":0,"facingOffsetDegrees":90,
+  "attribution":{"title":"Hannekes Boom","author":"Map Recall","sourceUrl":"https://hannekesboom.nl/geschiedenis/","licence":"Original project asset","licenceUrl":"./LICENSE","modifications":"Original native flat-color timber pavilion with surveyed roof terrace, lower northern service wing and localized covered terrace bay. Photo-guided reclaimed-board parapet, corrugated awnings, glazing and stair. No reference pixels or third-party mesh; window divisions and stair tread count approximate."}
+}
