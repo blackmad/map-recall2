@@ -1,5 +1,32 @@
 # Canal Recall — what is built
 
+## Per-pand reference feed (2026-10-09)
+
+`scripts/pand-reference/` picks a building's street wall (longest exposed,
+nearest road, 6 m road-distance buckets so the front beats the rear), lists
+all panoramas within 35 m, prefers 8–25 m and low obliquity with an alternate
+from a different mission year, swaps in the alternate when the primary is
+washed out (scaffold sheeting) or leaf-green, and writes a rectified crop +
+aimed thumbnail + facts (`reference.json`). Marnixstraat: 8/8 usable (3
+scaffolded 2025 fronts auto-swapped). Bloemgracht 78–90: 4/7, trees.
+
+## Intro flight: stop city-wide streaming during the overview (2026-10-09)
+
+The route overview → rider flight took ~8.6 s to control (iPhone, 4x CPU)
+against ~2.3 s without it. Hypothesis "the overview builds 3D buildings" was
+wrong: extrusions/three.js draw nothing below z14 and the overview is ~z13.4.
+A streamer trace (`tests/e2e/intro-trace.spec.ts`) found four leaks:
+signature landmarks loaded ~70 models city-wide (12 ms each, and each kept the
+map from going idle so the settle wait hit its timeout); building tiles were
+planned by `jumpTo`'s synchronous `moveend` before suspension; the 600 m
+landing box straddled z14 corners and doubled the resident set before
+take-off; trees were cleared and rebuilt. Now the streamers suspend before
+the jump, the landing area is the captured driving view
+(`introLandingArea`), and landmarks/trees have `setSuspended`. Medians of 4:
+control 8570 → 7133 ms, pre-flight long tasks 1607 → 641 ms, worst frame
+733 → 442 ms, 7.6 → 5.4 MB; landing screenshots show no pop-in. Capping the
+overview at neighbourhood scale was also prototyped and showed no gain.
+
 ## Twelve more landmarks from the backlog (2026-10-09)
 
 Three Sonnet lanes worked the "Needs work" queue: Keizersgrachtkerk, Gerard Dou
