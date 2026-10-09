@@ -29,8 +29,11 @@ demand, so the flag-off path costs nothing. Built by `npm run build:canal-3d`
   (municipal material), parapets, a soffit, and masonry arches a spandrel and
   barrel vault down to the water.
 - **Unmeasured bridges over water** (891 municipal footprints, incl. 110
-  movable bridges such as the Magere Brug): a flat deck at street level with a
-  0.45 m fascia and soffit. Honest fallback; no invented hump.
+  movable bridges such as the Magere Brug), and measured decks whose hump stays
+  under 0.3 m: a flat deck at street level with a 0.45 m fascia and soffit,
+  drawn in a second small layer *under* the basemap's bridge roads, and cut out
+  of the water opening, so road paint, the route line and street highlights
+  stay on them. Honest fallback; no invented hump.
 - **Rider**: the bike model is lifted onto measured decks and pitched along the
   ramp (two contact points), eased so a footprint edge never snaps. A deck that
   does not cross water (a viaduct) lifts only a rider heading along it. The boat
@@ -55,8 +58,16 @@ A sunken point is visible exactly when its sight line crosses the water at
 street level, which the stencil encodes at any pitch (cockpit included).
 MapLibre uses the stencil for tile clipping; the layer clears it and resets the
 painter's `currentStencilSource`/`nextStencilID` (private fields, guarded —
-re-check on a MapLibre upgrade). Cells are 1 km, streamed within 1.6 km of the
-view centre (≤ 24 resident).
+re-check on a MapLibre upgrade). Cells are 1 km, streamed within 1 km of the
+view centre (≤ 9 resident), merged to one geometry per cell and pass, and
+installed one per frame.
+
+Cost (ride-perf, iphone project, 4× CPU throttle, 12 s chase ride, 2 runs
+each): frame median 16.7 ms / p95 33.4 ms with the flag on and off; map render
+median 11.6–13.5 ms on vs 12.3–13.5 ms off. A first version with one mesh per
+bridge and 24 cells doubled map render time (20–22 ms) — keep the merging.
+`CANAL_ELEVATION=1|0 PERF_RIDE=1 PW_PORT=4400 npx playwright test ride-perf
+--project=iphone -g default` reproduces it.
 
 ## Data
 
