@@ -1,4 +1,40 @@
-{"id": "haparandaweg-902-950", "countedBy": "blind counter (haiku) from artifacts/haparandaweg/ref-front.jpg (= ref/0363100012244558/front.jpg), 2026-10-09; rows 7x5, columns 5, symmetric, gables 5. openings adds glassRail because the bay-5 balustrades are glass.", "facades": [
-  {"name": "front NW (Haparandaweg)", "bearing": 320, "photo": "artifacts/haparandaweg/ref-front.jpg",
-   "rows": [5, 5, 5, 5, 5, 5, 5], "columns": 5, "symmetric": true, "gables": 5, "openings": ["glass", "glassRail"]}
-]}
+{
+  "id": "haparandaweg-902-950",
+  "source": "Gemeente Amsterdam panorama TMX7316010203-002216_pano_0002_000294 (2021), rectified front elevation in map-recall2-source-data/models/haparandaweg-902-950/files/ref-front.jpg",
+  "countedBy": "Two independent blind counts disagreed (7 vs 9 rows); integrator recount 2026-10-10 from the photo: gable window 2 glazed tiers, 5 window storeys, double-height ground floor 2 tiers (transom) = 9 rows of 5. Five identical gabled bays, each mirror-symmetric; no setbacks on the street front. openings adds glassRail because the bay-5 balustrades are glass.",
+  "facades": [
+    {
+      "name": "street front (NW)",
+      "bearing": 320,
+      "gables": 5,
+      "rows": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "columns": 5,
+      "symmetric": true,
+      "bays": 5,
+      "identicalBays": [
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "baySymmetric": false,
+      "openings": [
+        "glass",
+        "glassRail"
+      ],
+      "photo": "../map-recall2-source-data/models/haparandaweg-902-950/files/ref-front.jpg",
+      "note": "Photo: bay 0 has a louvre strip down its left side and an enclosed glass box; bay 4 has glass balustrades. So only bays 1-3 are identical and per-bay symmetry is not asserted for every bay (the field is all-or-nothing)."
+    }
+  ]
+}
