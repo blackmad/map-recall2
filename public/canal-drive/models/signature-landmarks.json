@@ -21262,6 +21262,7 @@
     },
     "haparandaweg-902-950": {
       "id": "haparandaweg-902-950",
+      "held": true,
       "name": "Het Pakhuis, Haparandaweg 902-950",
       "modelUrl": "./models/haparandaweg-902-950.glb",
       "suppressOsmIds": [
