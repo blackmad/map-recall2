@@ -1694,5 +1694,17 @@
     ],
     "note": "Public Langbroekdreef approach beside the station driveway,27.6m from the former isolated apron point. Current mapped road coordinates cross-checked against sourced station plot; actual chosen destination remains Anton."
   }
+},
+{
+  "modelId": "hannekes-boom",
+  "name": "Hannekes Boom",
+  "center": [
+    52.3762934,
+    4.9116163
+  ],
+  "description": "Hannekes Boom is a waterside cafe and cultural meeting place at the head of the Dijksgracht. Its name recalls the guarded harbour openings that once used floating timber barriers. The present venue reopened in 2011 after its foundation won a municipal competition to revive the site.",
+  "funFact": "Its name refers to the historic guarded harbour openings: floating tree trunks on chains closed these passages each evening, with bells announcing the opening and closing.",
+  "sourceUrl": "https://hannekesboom.nl/en/history/",
+  "preferDescription": true
 }
 ]
