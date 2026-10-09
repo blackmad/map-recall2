@@ -38,7 +38,7 @@ import { COLD_OPEN_ENABLED } from './coldOpenReview';
 import { isCar, isBoat, isTransit } from './modes';
 import { travelProfile } from './travelProfile';
 import { hudWithholdsRouteName } from './recallRules';
-import type { PresentationHost } from './host';
+import type { PresentationHost, Vehicle } from './host';
 import type { Landmark } from './worldTypes';
 import { canShowMiniMap, canShowPoiLabels, type TeachingGateInput } from './teachingSurface';
 import { bicycleRestrictionNotice } from '../routing/bikeAccess';
@@ -491,6 +491,28 @@ export class GamePresentationRuntime {
     if (typeof this._resize === 'function') this._resize();
   }
 
+  /**
+   * The aboard notice: departure pier and allowed destination(s). On a phone it
+   * sits below the plaque and minimap; on desktop between the top cards.
+   */
+  _renderFerryNotice(player: Pick<Vehicle, 'ferryOrigin' | 'ferryDestinations'>, showMiniMap: boolean): void {
+    if (!player.ferryOrigin) return;
+    const ctx = this.ctx;
+    const layout = this._hudRects();
+    const top = layout.mode === 'compact'
+      ? Math.max(layout.recall.y + layout.recall.height, showMiniMap ? layout.minimap.y + layout.minimap.height : 0) + 10
+      : 72;
+    const title = `Ferry from ${player.ferryOrigin.name}`;
+    const destination = `Dock at ${player.ferryDestinations || 'the connected terminal'}`;
+    ctx.save();
+    ctx.font = '600 15px sans-serif';
+    const width = Math.min(CANVAS_W - 24, Math.max(ctx.measureText(title).width, ctx.measureText(destination).width) + 28);
+    ctx.fillStyle = '#f3ecdd'; ctx.fillRect((CANVAS_W - width) / 2, top, width, 50);
+    ctx.fillStyle = '#243a47'; ctx.textAlign = 'center'; ctx.fillText(title, CANVAS_W / 2, top + 20, width - 16);
+    ctx.font = '13px sans-serif'; ctx.fillText(destination, CANVAS_W / 2, top + 39, width - 16);
+    ctx.restore();
+  }
+
   // ---- The frame ----
 
   _render(): void {
@@ -614,20 +636,7 @@ export class GamePresentationRuntime {
     this._syncHudLayout();
     const teaching = this._teachingGate();
     const showMiniMap = canShowMiniMap(this.showMiniMap, teaching);
-    if (byFerry && player.ferryOrigin) {
-      const layout = this._hudRects();
-      const top = layout.mode === 'compact'
-        ? Math.max(layout.recall.y + layout.recall.height, showMiniMap ? layout.minimap.y + layout.minimap.height : 0) + 10
-        : 72;
-      const title = `Ferry from ${player.ferryOrigin.name}`;
-      ctx.save(); ctx.font = '600 15px sans-serif';
-      const destination = `Dock at ${player.ferryDestinations || 'the connected terminal'}`;
-      const width = Math.min(CANVAS_W - 24, Math.max(ctx.measureText(title).width, ctx.measureText(destination).width) + 28);
-      ctx.fillStyle = '#f3ecdd'; ctx.fillRect((CANVAS_W-width)/2, top, width, 50);
-      ctx.fillStyle = '#243a47'; ctx.textAlign = 'center'; ctx.fillText(title, CANVAS_W/2, top+20, width-16);
-      ctx.font = '13px sans-serif'; ctx.fillText(destination, CANVAS_W/2, top+39, width-16);
-      ctx.restore();
-    }
+    if (byFerry) this._renderFerryNotice(player, showMiniMap);
     // Hide a new route name from the first candidate frame, not only after the
     // delayed question opens. Otherwise the HUD reveals the answer during the
     // turn-confirmation window. Transit keeps a sticky line plaque after the

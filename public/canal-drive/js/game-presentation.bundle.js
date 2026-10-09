@@ -40607,6 +40607,29 @@
       this._viewportKey = key;
       if (typeof this._resize === "function") this._resize();
     }
+    /**
+     * The aboard notice: departure pier and allowed destination(s). On a phone it
+     * sits below the plaque and minimap; on desktop between the top cards.
+     */
+    _renderFerryNotice(player, showMiniMap) {
+      if (!player.ferryOrigin) return;
+      const ctx = this.ctx;
+      const layout = this._hudRects();
+      const top = layout.mode === "compact" ? Math.max(layout.recall.y + layout.recall.height, showMiniMap ? layout.minimap.y + layout.minimap.height : 0) + 10 : 72;
+      const title = `Ferry from ${player.ferryOrigin.name}`;
+      const destination = `Dock at ${player.ferryDestinations || "the connected terminal"}`;
+      ctx.save();
+      ctx.font = "600 15px sans-serif";
+      const width = Math.min(CANVAS_W - 24, Math.max(ctx.measureText(title).width, ctx.measureText(destination).width) + 28);
+      ctx.fillStyle = "#f3ecdd";
+      ctx.fillRect((CANVAS_W - width) / 2, top, width, 50);
+      ctx.fillStyle = "#243a47";
+      ctx.textAlign = "center";
+      ctx.fillText(title, CANVAS_W / 2, top + 20, width - 16);
+      ctx.font = "13px sans-serif";
+      ctx.fillText(destination, CANVAS_W / 2, top + 39, width - 16);
+      ctx.restore();
+    }
     // ---- The frame ----
     _render() {
       this._syncViewportSize();
@@ -40715,23 +40738,7 @@
       this._syncHudLayout();
       const teaching = this._teachingGate();
       const showMiniMap = canShowMiniMap(this.showMiniMap, teaching);
-      if (byFerry && player.ferryOrigin) {
-        const layout = this._hudRects();
-        const top = layout.mode === "compact" ? Math.max(layout.recall.y + layout.recall.height, showMiniMap ? layout.minimap.y + layout.minimap.height : 0) + 10 : 72;
-        const title = `Ferry from ${player.ferryOrigin.name}`;
-        ctx.save();
-        ctx.font = "600 15px sans-serif";
-        const destination = `Dock at ${player.ferryDestinations || "the connected terminal"}`;
-        const width = Math.min(CANVAS_W - 24, Math.max(ctx.measureText(title).width, ctx.measureText(destination).width) + 28);
-        ctx.fillStyle = "#f3ecdd";
-        ctx.fillRect((CANVAS_W - width) / 2, top, width, 50);
-        ctx.fillStyle = "#243a47";
-        ctx.textAlign = "center";
-        ctx.fillText(title, CANVAS_W / 2, top + 20, width - 16);
-        ctx.font = "13px sans-serif";
-        ctx.fillText(destination, CANVAS_W / 2, top + 39, width - 16);
-        ctx.restore();
-      }
+      if (byFerry) this._renderFerryNotice(player, showMiniMap);
       const roadName = this.track.getRoadName(player.x, player.y, player.angle);
       let visibleRouteName = "";
       let routeAnswerHidden = false;
