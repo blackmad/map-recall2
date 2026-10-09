@@ -246,3 +246,61 @@ roof artefacts). Changes:
 Remaining gaps vs the procedural neighbours: no stone window surrounds/quoins, no awnings, no sign lettering; brick
 banding is a stripe, not polychrome patterning (079721's diaper work); 153622's hip end still reads as a steep
 triangle above the cornice from straight on.
+
+## Street chunks: one mesh per block face (pilot, 2026-10-09)
+
+`src/canalRecall/streetChunks/` compiles a block face (houses that share party walls and front the same way) into
+ONE glTF mesh, one primitive per material, from the houses' intent recipes + 3DBAG facts. Nothing is installed by
+default; the loader path is opt-in (`?streetChunks=1`).
+
+```sh
+node --import tsx scripts/street-chunks/build.ts [--prefix=bilder-] [--min=2] [--install]   # -> artifacts/street-chunks/
+node --import tsx scripts/street-chunks/compare.ts --chunk=bilder-081118-x7                  # control vs chunk renders + diff
+node --import tsx --test src/canalRecall/streetChunks/streetChunks.test.ts
+PW_PORT=<port> npx playwright test street-chunks --project=desktop --project=iphone         # needs --install first
+```
+
+What a chunk does that the individual houses do not:
+
+- **One frame, one street level.** Heights are re-grounded on the median 3DBAG ground of the face (`ground.ts`):
+  per-pand `b3_h_maaiveld` wobbles by up to a metre on a flat street, while absolute (NAP) eaves of true neighbours agree
+  to ~0.1 m (156286/156287/155418). Shifts above 1 m are not applied. Neighbouring eaves within 0.25 m (cluster spread
+  <= 0.45 m) snap to their median so the cornice is one line; real steps (e.g. 2.5 m between 157650 and 156287) stay.
+- **Party walls dropped** (`party.ts`). Shared footprint edges (3DBAG shares vertices: measured distance 0.000) become
+  contacts; the neighbour's wall profile on the shared plane is measured from its own triangles and everything it covers
+  is removed from the other house, so a lower neighbour leaves the exposed wall above it. A partly covered triangle is cut
+  only when the remainder is one triangle, otherwise it stays whole (the covered part is inside the neighbour): trimming
+  never adds triangles. Verified by renders: grounded-no-trim vs chunk differ by <= 0.04% of pixels in 4 cameras per chunk.
+- **Metadata** in glTF extras: `node.extras.streetChunk = {version, name, frame, pands[]}` with per pand BAG id, address,
+  recipe id and sources, frontage extent, bounds, footprint and `ranges[] = {primitive, firstTriangle, triangleCount}`;
+  `primitive.extras.pandRanges = [[pandIndex, firstTriangle, triangleCount], ...]` (what `GLTFLoader` hands to
+  `geometry.userData`, so a raycast `faceIndex` resolves to its pand via `pandIndexForFace`).
+
+### Loader contract (`chunks.json`, built by `buildChunkManifest`)
+
+`public/canal-drive/ordinary-buildings-data/chunks.json`: `{version: 1, generatedAt, chunks: [{id: "chunk-<name>", modelUrl
+(with ?asset=<sha16>), sha256, bytes, triangles, primitives, instance: {anchor, northOffsetDegrees, mirror: false}, bounds,
+height, suppress: [BAG pand ids], replaces: ["ordinary-<pand>", ...], footprint: MultiPolygon, pands: [...]}]}`.
+`src/canalRecall/landmarks/ordinaryChunks.ts` turns each entry into ONE `SignatureModelSpec` (surveyed placement in the
+chunk frame, `suppressOsmIds` = every covered pand, `chunkPands` for hover) and `applyStreetChunks` removes the per-house
+specs in `replaces` from the model list. `signature-landmarks-source.js` fetches the manifest only with `?streetChunks=1`,
+swaps the list, drops already-drawn replaced houses and answers `inspectAtScreen` with the pand under the cursor.
+Without the flag or the manifest nothing changes. Rebuild after merging: `npm run build:canal-signature-landmarks`,
+`npm run build:canal-3d`.
+
+### Measured (Bilderdijkstraat, 15 of 19 houses in 4 chunks; 4 houses stand alone, 5-12 m from a neighbour)
+
+| Chunk | Houses | Triangles (individual -> chunk) | Primitives = draw calls | Bytes | gzip |
+| --- | --- | --- | --- | --- | --- |
+| 081118-155417 | 7 | 14,486 -> 14,370 | 57 -> 23 | 1,002,012 -> 948,948 | 237,995 -> 204,790 |
+| 080336-090492 | 4 | 6,721 -> 6,697 | 31 -> 10 | 472,468 -> 452,640 | 106,957 -> 90,789 |
+| 079721-152669 | 2 | 4,385 -> 4,517 | 17 -> 12 | 298,680 -> 294,260 | 72,297 -> 67,341 |
+| 152363-156732 | 2 | 1,753 -> 1,750 | 15 -> 11 | 126,596 -> 124,932 | 29,919 -> 29,495 |
+
+Party walls are 2 triangles per quad, so dropping them saves only 0.2-0.4% of triangles (3-57 per chunk; ~2,900 m2 of wall
+on the 7-house face); the savings are in draw calls (-53%), GLB requests (15 houses = 13 shared meshes -> 4) and ~7% gzip.
+`079721`'s +132 triangles are the library's facade-detail pieces changing (80 -> 200) when its eaves move 0.16 m with the
+shared ground: re-grounding can flip discrete library decisions. In-game (`tests/e2e/street-chunks.spec.ts`, desktop and
+iPhone project, same camera): layer entries 7 -> 1, meshes 57 -> 23, custom-layer render() CPU 0.57 -> 0.42 ms (desktop),
+0.53 -> 0.39 ms (iPhone emulation on a Mac), page frame time 16.7 ms in both (vsync); all 7 pands resolve to their own BAG id
+under the cursor in chunk mode.
