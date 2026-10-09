@@ -1,4 +1,8 @@
 import {buildZuiderkerk} from './zuiderkerk-builder';
+import {buildWillemDeZwijgerkerk} from './willem-de-zwijgerkerk-builder';
+import {buildThomaskerk} from './thomaskerk-builder';
+import {buildVanGendtHallen} from './van-gendt-hallen-builder';
+import {buildVrijburg} from './vrijburg-builder';
 import {buildClubPanama} from './club-panama-builder';
 import {buildCompagnietheater} from './compagnietheater-builder';
 import {buildWestIndiaHouse} from './west-india-house-builder';
@@ -339,6 +343,10 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   else {
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
     if(id==='zuiderkerk')buildZuiderkerk(w,d,helpers);
+    else if(id==='willem-de-zwijgerkerk')buildWillemDeZwijgerkerk(w,d,helpers);
+    else if(id==='thomaskerk')buildThomaskerk(w,d,helpers);
+    else if(id==='van-gendt-hallen')buildVanGendtHallen(w,d,helpers);
+    else if(id==='vrijburg')buildVrijburg(w,d,helpers);
     else if(id==='nassaukerk')buildNassaukerk(w,d,helpers);
     else if(id==='koningskerk')buildKoningskerk(w,d,helpers);
     else if(id==='sint-olofskapel')buildSintOlofskapel(w,d,helpers);
