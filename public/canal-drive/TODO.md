@@ -32,6 +32,12 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   recipe → deterministic fit from BAG/3DBAG → library components → automated
   gates + contact sheet; batch deploys. Starts from the unmerged library on
   `wip/canalhouse-recipes-20261008`.
+  Tiers (user, 2026-10-09; landmarks will reach ~1,000): base (every
+  building: 3DBAG LoD2.2 + era facade grammar) → house recipe (row/canal
+  houses, ≤15 min, ≤3k tris) → **large building** (schools, blocks,
+  warehouses, offices, most landmarks: keep 3DBAG massing, recipe picks a
+  facade system per wall plus entrance/signage/roof plant, ~20–30 min, ≤12k
+  tris) → icon (~100 bespoke builders).
 - **Docs compaction**: ~135 markdown files across root, `docs/` and here.
 - `scripts/check-cinema-facade-surfaces.ts` fails on main (32 front pane
   triangles, expects 24); not in `check:canal`.
