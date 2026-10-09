@@ -1,0 +1,1453 @@
+{
+  "id": "dorus-theus-brug",
+  "state": "user-confirmed-helofytenfilter-erasmusgracht",
+  "requestedName": "Dorus Theus Brug",
+  "coordinateConvention": "WGS84 lon,lat; native localX=east,localZ=south metres relative to anchor",
+  "listedAddressPDOK": {
+    "bron": "BAG",
+    "woonplaatscode": "3594",
+    "type": "adres",
+    "woonplaatsnaam": "Amsterdam",
+    "wijkcode": "WK0363EE",
+    "huis_nlt": "98",
+    "openbareruimtetype": "Weg",
+    "buurtnaam": "Erasmusparkbuurt-Oost",
+    "gemeentecode": "0363",
+    "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/nummeraanduiding/0363200000496267",
+    "weergavenaam": "Joos Banckersplantsoen 98, 1056LD Amsterdam",
+    "straatnaam_verkort": "Joos Banckersplnts",
+    "id": "adr-327deac8174a9f2784de25318877f1cb",
+    "gekoppeld_perceel": [
+      "STN02-C-10601",
+      "STN02-C-10600"
+    ],
+    "gemeentenaam": "Amsterdam",
+    "buurtcode": "BU0363EE05",
+    "wijknaam": "Landlust",
+    "identificatie": "0363010001019946-0363200000496267",
+    "openbareruimte_id": "0363300000000942",
+    "waterschapsnaam": "Waterschap Amstel, Gooi en Vecht",
+    "provinciecode": "PV27",
+    "postcode": "1056LD",
+    "provincienaam": "Noord-Holland",
+    "centroide_ll": "POINT(4.85629205 52.37649211)",
+    "nummeraanduiding_id": "0363200000496267",
+    "waterschapscode": "11",
+    "adresseerbaarobject_id": "0363010001019946",
+    "huisnummer": 98,
+    "provincieafkorting": "NH",
+    "centroide_rd": "POINT(118848 487757)",
+    "straatnaam": "Joos Banckersplantsoen",
+    "gekoppeld_appartement": [
+      "STN02-C-10616-A-92"
+    ],
+    "score": 22.91335
+  },
+  "municipalCandidates": [
+    {
+      "distanceFromListedAddressMetresApprox": 160,
+      "municipalRecord": {
+        "type": "Feature",
+        "id": "brug.651528",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.853885302790226,
+                52.37662342624276
+              ],
+              [
+                4.853889396910192,
+                52.37661025968893
+              ],
+              [
+                4.853890203503796,
+                52.37661035319903
+              ],
+              [
+                4.853950718220213,
+                52.37641659871266
+              ],
+              [
+                4.85394997026164,
+                52.37641651445476
+              ],
+              [
+                4.853954094253214,
+                52.37640330309413
+              ],
+              [
+                4.853989148530184,
+                52.376407011104746
+              ],
+              [
+                4.853984904692151,
+                52.37642041965684
+              ],
+              [
+                4.853984523424362,
+                52.37642037300128
+              ],
+              [
+                4.853924372625106,
+                52.37661440776275
+              ],
+              [
+                4.853920233811756,
+                52.37662762804285
+              ],
+              [
+                4.853885302790226,
+                52.37662342624276
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "id": "651528",
+          "beheerder": "Gemeente",
+          "beheerderGedetailleerd": "R&E_VOR_Overbruggingen",
+          "beheergebied": "Bos en Lommer",
+          "eigenaar": "Gemeente",
+          "fundering": null,
+          "materiaal": "Staal",
+          "nenTypeBeheerobject": "Brug (vast)",
+          "objectnummer": "BRU0393",
+          "objectnaam": "Wil de Graaffbrug",
+          "objecttype": "Brug",
+          "beheerafspraak": null,
+          "type": "Vaste brug"
+        }
+      },
+      "requestedIdentityConfirmed": false
+    },
+    {
+      "distanceFromListedAddressMetresApprox": 210,
+      "municipalRecord": {
+        "type": "Feature",
+        "id": "brug.651529",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.853348316794166,
+                52.375851162715215
+              ],
+              [
+                4.853394703077361,
+                52.375935793565006
+              ],
+              [
+                4.853361085731218,
+                52.37594206823231
+              ],
+              [
+                4.853314619403087,
+                52.37585677191657
+              ],
+              [
+                4.853348316794166,
+                52.375851162715215
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "id": "651529",
+          "beheerder": "Gemeente",
+          "beheerderGedetailleerd": "R&E_VOR_Overbruggingen",
+          "beheergebied": "Bos en Lommer",
+          "eigenaar": "Gemeente",
+          "fundering": null,
+          "materiaal": "Beton",
+          "nenTypeBeheerobject": "Brug (vast)",
+          "objectnummer": "BRU0394",
+          "objectnaam": "Lof der Zotheidbrug",
+          "objecttype": "Brug",
+          "beheerafspraak": null,
+          "type": "Vaste brug"
+        }
+      },
+      "requestedIdentityConfirmed": false
+    },
+    {
+      "distanceFromListedAddressMetresApprox": 243,
+      "municipalRecord": {
+        "type": "Feature",
+        "id": "brug.651517",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.855433751951829,
+                52.37447780553649
+              ],
+              [
+                4.855435479387443,
+                52.37447722636068
+              ],
+              [
+                4.855492296336872,
+                52.374293448780456
+              ],
+              [
+                4.855516526581664,
+                52.374215049773106
+              ],
+              [
+                4.855515307686549,
+                52.37421417252274
+              ],
+              [
+                4.855514162444154,
+                52.374213258852556
+              ],
+              [
+                4.855513093754911,
+                52.37421231107646
+              ],
+              [
+                4.855512055659176,
+                52.37421128044
+              ],
+              [
+                4.855511108084359,
+                52.37421021764107
+              ],
+              [
+                4.855510253683224,
+                52.374209125655
+              ],
+              [
+                4.855696939345668,
+                52.37423033898771
+              ],
+              [
+                4.8556955818272,
+                52.374231127471155
+              ],
+              [
+                4.855694161963294,
+                52.37423187369084
+              ],
+              [
+                4.85569268326269,
+                52.37423257580269
+              ],
+              [
+                4.855691057326689,
+                52.37423326928793
+              ],
+              [
+                4.855689374018215,
+                52.37423390944647
+              ],
+              [
+                4.855687638001751,
+                52.37423449450441
+              ],
+              [
+                4.855606066595402,
+                52.374496381244285
+              ],
+              [
+                4.855607308594445,
+                52.37449727401355
+              ],
+              [
+                4.855608478098243,
+                52.374498202734436
+              ],
+              [
+                4.85560957233271,
+                52.37449916520393
+              ],
+              [
+                4.855610608548776,
+                52.374500179664494
+              ],
+              [
+                4.855611561142203,
+                52.37450122437826
+              ],
+              [
+                4.855612427760637,
+                52.37450229676532
+              ],
+              [
+                4.855426031016612,
+                52.3744813901843
+              ],
+              [
+                4.855427442834653,
+                52.37448058922442
+              ],
+              [
+                4.855428916692657,
+                52.374479831282294
+              ],
+              [
+                4.855430449095081,
+                52.374479118155556
+              ],
+              [
+                4.855432073798857,
+                52.37447843665708
+              ],
+              [
+                4.855433751951829,
+                52.37447780553649
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "id": "651517",
+          "beheerder": "Gemeente",
+          "beheerderGedetailleerd": "R&E_VOR_Overbruggingen",
+          "beheergebied": "Bos en Lommer",
+          "eigenaar": "Gemeente",
+          "fundering": "Funderingspalen van hout",
+          "materiaal": "Staal",
+          "nenTypeBeheerobject": "Brug (vast)",
+          "objectnummer": "BRU0381",
+          "objectnaam": "Vier Windstrekenbrug",
+          "objecttype": "Brug",
+          "beheerafspraak": "Scope PBK",
+          "type": "Vaste brug"
+        }
+      },
+      "requestedIdentityConfirmed": false
+    },
+    {
+      "distanceFromListedAddressMetresApprox": 418,
+      "municipalRecord": {
+        "type": "Feature",
+        "id": "brug.651531",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.852378902355301,
+                52.37359638627364
+              ],
+              [
+                4.852352859974528,
+                52.37365170497111
+              ],
+              [
+                4.8522471454887,
+                52.373633323833914
+              ],
+              [
+                4.852273746637757,
+                52.373575518081736
+              ],
+              [
+                4.852373467275545,
+                52.37359531015901
+              ],
+              [
+                4.852378902355301,
+                52.37359638627364
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "id": "651531",
+          "beheerder": "Gemeente",
+          "beheerderGedetailleerd": "R&E_VOR_Overbruggingen",
+          "beheergebied": "Bos en Lommer",
+          "eigenaar": "Gemeente",
+          "fundering": null,
+          "materiaal": "Metselwerk",
+          "nenTypeBeheerobject": "Brug (vast)",
+          "objectnummer": "BRU0396",
+          "objectnaam": "Desideriusbrug",
+          "objecttype": "Brug",
+          "beheerafspraak": null,
+          "type": "Vaste brug"
+        }
+      },
+      "requestedIdentityConfirmed": false
+    },
+    {
+      "distanceFromListedAddressMetresApprox": 444,
+      "municipalRecord": {
+        "type": "Feature",
+        "id": "brug.651519",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.862481149377275,
+                52.37752761666875
+              ],
+              [
+                4.862790760947894,
+                52.37757111368122
+              ],
+              [
+                4.862751101103103,
+                52.37767605838648
+              ],
+              [
+                4.862441732534943,
+                52.377633065662415
+              ],
+              [
+                4.862481149377275,
+                52.37752761666875
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "id": "651519",
+          "beheerder": "Gemeente",
+          "beheerderGedetailleerd": "R&E_VOR_Overbruggingen",
+          "beheergebied": "Bos en Lommer",
+          "eigenaar": "Gemeente",
+          "fundering": "Funderingspalen van hout",
+          "materiaal": "Staal",
+          "nenTypeBeheerobject": "Brug (vast)",
+          "objectnummer": "BRU0383",
+          "objectnaam": "Anna van Saksenbrug",
+          "objecttype": "Brug",
+          "beheerafspraak": "Scope PBK",
+          "type": "Vaste brug"
+        }
+      },
+      "requestedIdentityConfirmed": false
+    },
+    {
+      "distanceFromListedAddressMetresApprox": 520,
+      "municipalRecord": {
+        "type": "Feature",
+        "id": "brug.651530",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.849592899859224,
+                52.374089850613295
+              ],
+              [
+                4.849603010612285,
+                52.374071058231465
+              ],
+              [
+                4.849853494306791,
+                52.37411448253207
+              ],
+              [
+                4.849854183772302,
+                52.374135148458784
+              ],
+              [
+                4.849592899859224,
+                52.374089850613295
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "id": "651530",
+          "beheerder": "Gemeente",
+          "beheerderGedetailleerd": "R&E_VOR_Overbruggingen",
+          "beheergebied": "Bos en Lommer",
+          "eigenaar": "Gemeente",
+          "fundering": null,
+          "materiaal": "Beton",
+          "nenTypeBeheerobject": "Brug (vast)",
+          "objectnummer": "BRU0395",
+          "objectnaam": "Geert Geertsenbrug",
+          "objecttype": "Brug",
+          "beheerafspraak": null,
+          "type": "Vaste brug"
+        }
+      },
+      "requestedIdentityConfirmed": false
+    },
+    {
+      "distanceFromListedAddressMetresApprox": 563,
+      "municipalRecord": {
+        "type": "Feature",
+        "id": "brug.651518",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.864357273447459,
+                52.375293803751205
+              ],
+              [
+                4.864546809241512,
+                52.37532077340777
+              ],
+              [
+                4.864468738157543,
+                52.37552223931193
+              ],
+              [
+                4.864277051915696,
+                52.37549490004213
+              ],
+              [
+                4.864357273447459,
+                52.375293803751205
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "id": "651518",
+          "beheerder": "Gemeente",
+          "beheerderGedetailleerd": "R&E_VOR_Overbruggingen",
+          "beheergebied": "Westerpark",
+          "eigenaar": "Gemeente",
+          "fundering": "Funderingspalen van hout",
+          "materiaal": "Staal",
+          "nenTypeBeheerobject": "Brug (beweegbaar)",
+          "objectnummer": "BRU0382",
+          "objectnaam": null,
+          "objecttype": "Brug",
+          "beheerafspraak": "Scope PBK",
+          "type": "Beweegbare brug"
+        }
+      },
+      "requestedIdentityConfirmed": false
+    },
+    {
+      "distanceFromListedAddressMetresApprox": 599,
+      "municipalRecord": {
+        "type": "Feature",
+        "id": "brug.651497",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.856494163852737,
+                52.370968950741094
+              ],
+              [
+                4.856689837980012,
+                52.371002408195096
+              ],
+              [
+                4.856676017581614,
+                52.3710492981923
+              ],
+              [
+                4.856610403970004,
+                52.37127197187499
+              ],
+              [
+                4.856411779324222,
+                52.37123833928862
+              ],
+              [
+                4.856412741361765,
+                52.371235251821
+              ],
+              [
+                4.856494163852737,
+                52.370968950741094
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "id": "651497",
+          "beheerder": "Gemeente",
+          "beheerderGedetailleerd": "R&E_VOR_Overbruggingen",
+          "beheergebied": "Oud-West, De Baarsjes",
+          "eigenaar": "Gemeente",
+          "fundering": null,
+          "materiaal": "Staal",
+          "nenTypeBeheerobject": "Brug (vast)",
+          "objectnummer": "BRU0359",
+          "objectnaam": "Molenslootbrug",
+          "objecttype": "Brug",
+          "beheerafspraak": "Scope PBK",
+          "type": "Vaste brug"
+        }
+      },
+      "requestedIdentityConfirmed": false
+    }
+  ],
+  "osmCrossings": [
+    {
+      "osmId": "way/24980060",
+      "tags": {
+        "bicycle": "no",
+        "bridge": "yes",
+        "highway": "footway",
+        "image:streetsign": "db3b72d7-6caa-4f24-ad94-2d7c06864a88",
+        "layer": "1",
+        "lit": "no",
+        "loc_ref": "393",
+        "name": "Wil de Graaffbrug",
+        "surface": "metal",
+        "wikidata": "Q50385644",
+        "wikimedia_commons": "Category:Brug 393, Wil de Graaffbrug",
+        "wikipedia": "nl:Wil de Graaffbrug"
+      },
+      "coordinates": [
+        [
+          4.8539,
+          52.376634
+        ],
+        [
+          4.8539847,
+          52.3763717
+        ]
+      ],
+      "requestedIdentityConfirmed": false
+    },
+    {
+      "osmId": "way/30487082",
+      "tags": {
+        "bridge": "yes",
+        "foot": "yes",
+        "highway": "footway",
+        "layer": "1",
+        "lit": "no",
+        "name": "Lof der Zotheidbrug",
+        "surface": "asphalt",
+        "wikidata": "Q28849738",
+        "wikipedia": "nl:Lof der zotheidbrug"
+      },
+      "coordinates": [
+        [
+          4.8533894,
+          52.3759864
+        ],
+        [
+          4.853287,
+          52.3757943
+        ]
+      ],
+      "requestedIdentityConfirmed": false
+    },
+    {
+      "osmId": "way/35928211",
+      "tags": {
+        "bicycle": "no",
+        "bridge": "yes",
+        "bridge:ref": "396",
+        "highway": "footway",
+        "layer": "1",
+        "name": "Desideriusbrug",
+        "surface": "paving_stones",
+        "wikidata": "Q28849734",
+        "wikipedia": "nl:Desideriusbrug"
+      },
+      "coordinates": [
+        [
+          4.8522662,
+          52.3736978
+        ],
+        [
+          4.8523324,
+          52.3735589
+        ]
+      ],
+      "requestedIdentityConfirmed": false
+    },
+    {
+      "osmId": "way/38282940",
+      "tags": {
+        "bicycle": "use_sidepath",
+        "bridge": "yes",
+        "highway": "secondary",
+        "layer": "1",
+        "maxspeed": "30",
+        "name": "Jan van Galenstraat",
+        "name:etymology:wikidata": "Q71734",
+        "ref": "S105",
+        "surface": "asphalt"
+      },
+      "coordinates": [
+        [
+          4.8554744,
+          52.3743526
+        ],
+        [
+          4.8555457,
+          52.3743608
+        ],
+        [
+          4.8556438,
+          52.374372
+        ]
+      ],
+      "requestedIdentityConfirmed": false
+    },
+    {
+      "osmId": "way/45652030",
+      "tags": {
+        "bridge": "yes",
+        "highway": "cycleway",
+        "layer": "1",
+        "maxspeed": "30",
+        "mofa": "yes",
+        "moped": "no",
+        "traffic_sign": "NL:G11"
+      },
+      "coordinates": [
+        [
+          4.8555234,
+          52.3744312
+        ],
+        [
+          4.8555457,
+          52.3743608
+        ],
+        [
+          4.8555743,
+          52.3742707
+        ]
+      ],
+      "requestedIdentityConfirmed": false
+    },
+    {
+      "osmId": "way/128393920",
+      "tags": {
+        "bridge": "yes",
+        "highway": "cycleway",
+        "layer": "1",
+        "lit:indirect": "yes",
+        "oneway": "yes",
+        "smoothness": "intermediate",
+        "surface": "asphalt",
+        "surface:colour": "red",
+        "width": "2.10"
+      },
+      "coordinates": [
+        [
+          4.855622,
+          52.3744422
+        ],
+        [
+          4.8555234,
+          52.3744312
+        ],
+        [
+          4.8554527,
+          52.3744226
+        ]
+      ],
+      "requestedIdentityConfirmed": false
+    },
+    {
+      "osmId": "way/128393922",
+      "tags": {
+        "bridge": "yes",
+        "highway": "cycleway",
+        "layer": "1",
+        "lit:indirect": "yes",
+        "oneway": "no",
+        "smoothness": "good",
+        "surface": "asphalt",
+        "surface:colour": "red",
+        "width": "2.10"
+      },
+      "coordinates": [
+        [
+          4.8555025,
+          52.3742619
+        ],
+        [
+          4.8555743,
+          52.3742707
+        ],
+        [
+          4.8556719,
+          52.3742813
+        ]
+      ],
+      "requestedIdentityConfirmed": false
+    },
+    {
+      "osmId": "way/626223364",
+      "tags": {
+        "bridge": "yes",
+        "highway": "footway",
+        "layer": "1",
+        "lit": "no",
+        "surface": "wood"
+      },
+      "coordinates": [
+        [
+          4.8561089,
+          52.3767881
+        ],
+        [
+          4.8561444,
+          52.3767859
+        ]
+      ],
+      "requestedIdentityConfirmed": false
+    },
+    {
+      "osmId": "way/626223368",
+      "tags": {
+        "bridge": "yes",
+        "highway": "footway",
+        "layer": "1",
+        "lit": "yes",
+        "surface": "wood"
+      },
+      "coordinates": [
+        [
+          4.8563763,
+          52.3767554
+        ],
+        [
+          4.8563957,
+          52.3766882
+        ]
+      ],
+      "requestedIdentityConfirmed": false
+    },
+    {
+      "osmId": "way/626223378",
+      "tags": {
+        "bridge": "yes",
+        "highway": "footway",
+        "layer": "1",
+        "lit": "yes",
+        "surface": "wood"
+      },
+      "coordinates": [
+        [
+          4.8556794,
+          52.3768326
+        ],
+        [
+          4.855683,
+          52.3768146
+        ],
+        [
+          4.8558176,
+          52.3768062
+        ]
+      ],
+      "requestedIdentityConfirmed": false
+    }
+  ],
+  "sourceInventoryCount": 1837,
+  "municipalNameMatches": [],
+  "suppressionIds": [],
+  "notes": [
+    "User screenshot confirms entire two-bed water parklet, not municipal road bridge. Earlier candidate inventory retained as research history only.",
+    "No buildings/water polygons may be suppressed. Two grass polygons and exact pier/footwalk identities are landscape overlap candidates for root to evaluate."
+  ],
+  "anchor": [
+    4.856053,
+    52.376791
+  ],
+  "selectedFeatures": [
+    {
+      "id": "w626223362",
+      "tags": {
+        "highway": "footway",
+        "lit": "no",
+        "surface": "wood"
+      },
+      "wgs84": [
+        [
+          4.8561444,
+          52.3767859
+        ],
+        [
+          4.8563603,
+          52.3767725
+        ],
+        [
+          4.8563716,
+          52.3767718
+        ],
+        [
+          4.8563763,
+          52.3767554
+        ]
+      ],
+      "localEastSouthMetres": [
+        [
+          6.2113,
+          0.5677
+        ],
+        [
+          20.8832,
+          2.0594
+        ],
+        [
+          21.6511,
+          2.1373
+        ],
+        [
+          21.9705,
+          3.963
+        ]
+      ]
+    },
+    {
+      "id": "w626223364",
+      "tags": {
+        "bridge": "yes",
+        "highway": "footway",
+        "layer": "1",
+        "lit": "no",
+        "surface": "wood"
+      },
+      "wgs84": [
+        [
+          4.8561089,
+          52.3767881
+        ],
+        [
+          4.8561444,
+          52.3767859
+        ]
+      ],
+      "localEastSouthMetres": [
+        [
+          3.7988,
+          0.3228
+        ],
+        [
+          6.2113,
+          0.5677
+        ]
+      ]
+    },
+    {
+      "id": "w626223366",
+      "tags": {
+        "highway": "footway",
+        "lit": "no",
+        "surface": "wood"
+      },
+      "wgs84": [
+        [
+          4.8558176,
+          52.3768062
+        ],
+        [
+          4.8561089,
+          52.3767881
+        ]
+      ],
+      "localEastSouthMetres": [
+        [
+          -15.9971,
+          -1.6921
+        ],
+        [
+          3.7988,
+          0.3228
+        ]
+      ]
+    },
+    {
+      "id": "w626223368",
+      "tags": {
+        "bridge": "yes",
+        "highway": "footway",
+        "layer": "1",
+        "lit": "yes",
+        "surface": "wood"
+      },
+      "wgs84": [
+        [
+          4.8563763,
+          52.3767554
+        ],
+        [
+          4.8563957,
+          52.3766882
+        ]
+      ],
+      "localEastSouthMetres": [
+        [
+          21.9705,
+          3.963
+        ],
+        [
+          23.2889,
+          11.4437
+        ]
+      ]
+    },
+    {
+      "id": "w626223371",
+      "tags": {
+        "area": "yes",
+        "man_made": "pier"
+      },
+      "wgs84": [
+        [
+          4.8563569,
+          52.3767951
+        ],
+        [
+          4.8563877,
+          52.3767926
+        ],
+        [
+          4.8564083,
+          52.3767843
+        ],
+        [
+          4.8564275,
+          52.3767721
+        ],
+        [
+          4.8563763,
+          52.3767554
+        ],
+        [
+          4.8563636,
+          52.3767513
+        ],
+        [
+          4.8563603,
+          52.3767725
+        ],
+        [
+          4.8563569,
+          52.3767951
+        ]
+      ],
+      "localEastSouthMetres": [
+        [
+          20.6522,
+          -0.4564
+        ],
+        [
+          22.7452,
+          -0.1781
+        ],
+        [
+          24.1452,
+          0.7458
+        ],
+        [
+          25.4499,
+          2.1039
+        ],
+        [
+          21.9705,
+          3.963
+        ],
+        [
+          21.1075,
+          4.4194
+        ],
+        [
+          20.8832,
+          2.0594
+        ],
+        [
+          20.6522,
+          -0.4564
+        ]
+      ]
+    },
+    {
+      "id": "w626223373",
+      "tags": {
+        "landuse": "grass"
+      },
+      "wgs84": [
+        [
+          4.8563656,
+          52.3767379
+        ],
+        [
+          4.8563335,
+          52.3767345
+        ],
+        [
+          4.8562917,
+          52.376733
+        ],
+        [
+          4.856243,
+          52.3767366
+        ],
+        [
+          4.8562114,
+          52.3767434
+        ],
+        [
+          4.8561644,
+          52.3767596
+        ],
+        [
+          4.8561439,
+          52.3767768
+        ],
+        [
+          4.8561444,
+          52.3767859
+        ],
+        [
+          4.8561448,
+          52.3767919
+        ],
+        [
+          4.856161,
+          52.3768023
+        ],
+        [
+          4.8561849,
+          52.3768096
+        ],
+        [
+          4.8562174,
+          52.3768148
+        ],
+        [
+          4.8562601,
+          52.3768185
+        ],
+        [
+          4.8563156,
+          52.3768159
+        ],
+        [
+          4.8563549,
+          52.3768081
+        ],
+        [
+          4.8563569,
+          52.3767951
+        ],
+        [
+          4.8563636,
+          52.3767513
+        ],
+        [
+          4.8563656,
+          52.3767379
+        ]
+      ],
+      "localEastSouthMetres": [
+        [
+          21.2434,
+          5.9111
+        ],
+        [
+          19.062,
+          6.2896
+        ],
+        [
+          16.2214,
+          6.4566
+        ],
+        [
+          12.9118,
+          6.0558
+        ],
+        [
+          10.7644,
+          5.2988
+        ],
+        [
+          7.5704,
+          3.4954
+        ],
+        [
+          6.1773,
+          1.5807
+        ],
+        [
+          6.2113,
+          0.5677
+        ],
+        [
+          6.2385,
+          -0.1002
+        ],
+        [
+          7.3394,
+          -1.2579
+        ],
+        [
+          8.9635,
+          -2.0706
+        ],
+        [
+          11.1721,
+          -2.6494
+        ],
+        [
+          14.0739,
+          -3.0613
+        ],
+        [
+          17.8455,
+          -2.7719
+        ],
+        [
+          20.5162,
+          -1.9036
+        ],
+        [
+          20.6522,
+          -0.4564
+        ],
+        [
+          21.1075,
+          4.4194
+        ],
+        [
+          21.2434,
+          5.9111
+        ]
+      ]
+    },
+    {
+      "id": "w626223376",
+      "tags": {
+        "landuse": "grass"
+      },
+      "wgs84": [
+        [
+          4.855818,
+          52.3768135
+        ],
+        [
+          4.8558342,
+          52.376824
+        ],
+        [
+          4.8558581,
+          52.3768313
+        ],
+        [
+          4.8558906,
+          52.3768365
+        ],
+        [
+          4.8559333,
+          52.3768401
+        ],
+        [
+          4.8559889,
+          52.3768375
+        ],
+        [
+          4.8560281,
+          52.3768297
+        ],
+        [
+          4.8560965,
+          52.3768088
+        ],
+        [
+          4.8561093,
+          52.3767974
+        ],
+        [
+          4.8561089,
+          52.3767881
+        ],
+        [
+          4.8561084,
+          52.3767796
+        ],
+        [
+          4.8560948,
+          52.3767692
+        ],
+        [
+          4.8560572,
+          52.3767614
+        ],
+        [
+          4.8560068,
+          52.3767562
+        ],
+        [
+          4.8559649,
+          52.3767546
+        ],
+        [
+          4.8559162,
+          52.3767583
+        ],
+        [
+          4.8558846,
+          52.376765
+        ],
+        [
+          4.8558376,
+          52.3767812
+        ],
+        [
+          4.8558171,
+          52.3767984
+        ],
+        [
+          4.8558176,
+          52.3768062
+        ],
+        [
+          4.855818,
+          52.3768135
+        ]
+      ],
+      "localEastSouthMetres": [
+        [
+          -15.9699,
+          -2.5047
+        ],
+        [
+          -14.869,
+          -3.6736
+        ],
+        [
+          -13.2448,
+          -4.4862
+        ],
+        [
+          -11.0362,
+          -5.0651
+        ],
+        [
+          -8.1345,
+          -5.4658
+        ],
+        [
+          -4.356,
+          -5.1764
+        ],
+        [
+          -1.6921,
+          -4.3081
+        ],
+        [
+          2.9561,
+          -1.9815
+        ],
+        [
+          3.826,
+          -0.7124
+        ],
+        [
+          3.7988,
+          0.3228
+        ],
+        [
+          3.7648,
+          1.269
+        ],
+        [
+          2.8406,
+          2.4268
+        ],
+        [
+          0.2854,
+          3.2951
+        ],
+        [
+          -3.1396,
+          3.8739
+        ],
+        [
+          -5.987,
+          4.052
+        ],
+        [
+          -9.2965,
+          3.6402
+        ],
+        [
+          -11.444,
+          2.8943
+        ],
+        [
+          -14.638,
+          1.0909
+        ],
+        [
+          -16.0311,
+          -0.8238
+        ],
+        [
+          -15.9971,
+          -1.6921
+        ],
+        [
+          -15.9699,
+          -2.5047
+        ]
+      ]
+    },
+    {
+      "id": "w626223378",
+      "tags": {
+        "bridge": "yes",
+        "highway": "footway",
+        "layer": "1",
+        "lit": "yes",
+        "surface": "wood"
+      },
+      "wgs84": [
+        [
+          4.8556794,
+          52.3768326
+        ],
+        [
+          4.855683,
+          52.3768146
+        ],
+        [
+          4.8558176,
+          52.3768062
+        ]
+      ],
+      "localEastSouthMetres": [
+        [
+          -25.3888,
+          -4.6309
+        ],
+        [
+          -25.1441,
+          -2.6272
+        ],
+        [
+          -15.9971,
+          -1.6921
+        ]
+      ]
+    }
+  ],
+  "canonicalMappedIdentity": "w626223376",
+  "heightNotes": {
+    "waterSurfaceLocalY": -0.55,
+    "gabionRimTopLocalY": 0.02,
+    "woodDeckTopLocalY": 0.14,
+    "filterSurfaceLocalY": 0.045,
+    "status": "Photo-guided relative heights, not measured NAP or BGT elevations. Runtime waterfront pavement datum0; water/deck relation must be reviewed in live game.",
+    "sources": [
+      "weerproof-photo.jpg",
+      "north2024.jpg",
+      "north2025.jpg"
+    ],
+    "simplifications": "Bounded gabion shells, small stone chips, flat reeds; no below-water foundations invented."
+  }
+}

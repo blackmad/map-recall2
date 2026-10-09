@@ -1,0 +1,380 @@
+{
+  "id": "dorus-theus-brug",
+  "requestedName": "Dorus Theus Brug",
+  "date": "2026-10-08",
+  "state": "candidate-ready-native-review-pending",
+  "decision": "User screenshot confirms whole waterparklet, primary Weerproof identifies rainwater-filter landscape. Earlier name ambiguity preserved as superseded evidence, no clarification outstanding.",
+  "findings": [
+    {
+      "assertion": "Municipal bridge inventory contains1837 records and no case-insensitive Dorus or Theus match.",
+      "source": "bridges-curl.json",
+      "confidence": "high",
+      "qualification": "GISIB dataset frozen December2025; later/local aliases not excluded."
+    },
+    {
+      "assertion": "Listed Joos Banckersplantsoen98 resolves to1056LD, BAG address0363200000496267 and VBO0363010001019946,4.85629205,52.37649211.",
+      "source": "address-curl.json",
+      "confidence": "high"
+    },
+    {
+      "assertion": "Trip listing photo shows canal-side sidewalk/trees and no distinguishable bridge; web-extracted listing has1056LD but other search cache1055BJ.",
+      "source": "trip-photo.jpg",
+      "confidence": "high",
+      "qualification": "Secondary source identifies no number or surveyed bridge."
+    },
+    {
+      "assertion": "OSM has nearby official Wil de Graaffbrug/Lof der Zotheidbrug and three small unnamed wooden footbridges north of listed address.",
+      "source": "osm-area.xml",
+      "confidence": "high",
+      "qualification": "No candidate equated to requested name."
+    }
+  ],
+  "primaryDescription": "Municipal GISIB passport records read early. No official Dorus identity/monument register entry established, so no monument description claimed.",
+  "beeldbank": {
+    "queries": [
+      "Dorus Theus",
+      "Joos Banckersplantsoen"
+    ],
+    "state": "bounded searches downloaded JS viewer shells; catalogue results not inspected",
+    "rights": "unresolved"
+  },
+  "panorama": {
+    "id": "b_20241206_1245_Track02_Sphere_00007",
+    "timestamp": "2024-12-06T12:08:56Z",
+    "camera": [
+      4.85676841036588,
+      52.37676742628196
+    ],
+    "inspected": "Original4000px equirectangular; water-side wooden structures visible but requested identity not shown.",
+    "processedSelectionFile": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/raw/selected-panorama.json"
+  },
+  "remainingInput": null,
+  "sources": [
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/raw/osm-area.xml",
+      "url": "https://www.openstreetmap.org/api/0.6/map?bbox=4.851,52.373,4.859,52.378",
+      "retrievedAt": "2026-10-08T08:26:55.088000+00:00",
+      "sha256": "2607c72979e029464245c40c4fb47cfe55cb363233bbddca0cfc968b347051cc",
+      "kind": "original HTTP response",
+      "accessState": "downloaded and inspected",
+      "rights": "OSM ODbL"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/raw/beeldbank-address.raw",
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=Joos%20Banckersplantsoen",
+      "retrievedAt": "2026-10-08T08:11:37.390526+00:00",
+      "sha256": "a45e805ef644e5817b24f32801f5d9ee1b59c8096b2746abfc092b03b8b8529d",
+      "kind": "original HTTP response",
+      "accessState": "JavaScript viewer shell; no catalogue/image inspected",
+      "rights": "Source-specific rights unresolved; private research only"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/raw/panoramas.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.8563,52.3765&radius=90&srid=4326&page_size=100&timestamp_after=2024-01-01",
+      "retrievedAt": "2026-10-08T08:27:54.273454+00:00",
+      "sha256": "8a64bc9953470c1b5a0323a80e62ec4ed2e57654ba10529432f001c091d0d973",
+      "kind": "original HTTP response",
+      "accessState": "downloaded and inspected",
+      "rights": "Municipal open data; panorama privacy/attribution requirements retained"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/raw/trip.raw",
+      "url": "https://www.trip.com/travel-guide/attraction/amsterdam/dorus-theus-brug-146670945/",
+      "retrievedAt": "2026-10-08T08:11:36.705818+00:00",
+      "sha256": "45106f6f1a355a1f4c681c13a684d3f5dc1dccb7f4aade10ee30b7cc70c5e8d4",
+      "kind": "original HTTP response",
+      "accessState": "block/error response retained; not source content",
+      "rights": "Source-specific rights unresolved; private research only"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/raw/bridges-curl.json",
+      "url": "https://api.data.amsterdam.nl/v1/civieleconstructies/brug/?_format=geojson&_pageSize=2000",
+      "retrievedAt": "2026-10-08T08:10:59.819869+00:00",
+      "sha256": "cba5c14a72a8f1537f91c1bda82bf8f8ed268b5e02ab5e447e0978de5e303fce",
+      "kind": "original HTTP response",
+      "accessState": "downloaded and inspected",
+      "rights": "Source-specific rights unresolved; private research only"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/raw/selected-panorama.json",
+      "url": null,
+      "retrievedAt": "2026-10-08T08:28:04.125998+00:00",
+      "sha256": "e0f4e736448439e3519f0e3f41b415c2f4d721a94dc8654908e6fc4517fb498c",
+      "kind": "processed metadata selection from panoramas.json",
+      "accessState": "downloaded and inspected",
+      "rights": "Municipal open data; panorama privacy/attribution requirements retained"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/raw/address-curl.json",
+      "url": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Joos%20Banckersplantsoen%2098%20Amsterdam&fq=type:adres&rows=3",
+      "retrievedAt": "2026-10-08T08:10:59.010569+00:00",
+      "sha256": "b2e147a312a8ae89777233d9494afbdeb260be2cd4e183e5c446bf5af0aa73da",
+      "kind": "original HTTP response",
+      "accessState": "downloaded and inspected",
+      "rights": "Source-specific rights unresolved; private research only"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/raw/lof-der-zotheid-record.json",
+      "url": "https://api.data.amsterdam.nl/v1/civieleconstructies/brug/651529/",
+      "retrievedAt": "2026-10-08T08:28:28.300492+00:00",
+      "sha256": "d19f31113fcfc34f0b496fd8a27ba6d827d6afd3ae60879a71c6f2cfc485e05f",
+      "kind": "original HTTP response",
+      "accessState": "downloaded and inspected",
+      "rights": "Source-specific rights unresolved; private research only"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/raw/wil-de-graaff-record.json",
+      "url": "https://api.data.amsterdam.nl/v1/civieleconstructies/brug/651528/",
+      "retrievedAt": "2026-10-08T08:28:28.136737+00:00",
+      "sha256": "8dca2dc43f64f0fb645ef711e132b55f8ec27518a02d7ff9b494f20ef5eacc9b",
+      "kind": "original HTTP response",
+      "accessState": "downloaded and inspected",
+      "rights": "Source-specific rights unresolved; private research only"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/raw/trip-photo.jpg",
+      "url": "https://ak-d.tripcdn.com/images/0HJ0a12000ihkwb74AEA5.jpg",
+      "retrievedAt": "2026-10-08T08:27:24.786979+00:00",
+      "sha256": "e18bd6a36f26c21a72c51d891ed3edd60bca7ec1a47d86a57700055bf2719f40",
+      "kind": "original HTTP response",
+      "accessState": "downloaded and inspected",
+      "rights": "Source-specific rights unresolved; private research only"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/raw/municipal-bridge-map.json",
+      "url": "https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=BRUGGEN&THEMA=bruggen",
+      "retrievedAt": "2026-10-08T08:26:55.299461+00:00",
+      "sha256": "c1ebca775d0d8f7372189db173b094f9711b6afd4dff5897ffa21c2cd7361e24",
+      "kind": "original HTTP response",
+      "accessState": "block/error response retained; not source content",
+      "rights": "Source-specific rights unresolved; private research only"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/raw/trip-redirect.raw",
+      "url": "https://www.trip.com/travel-guide/attraction/amsterdam/city-146670945/?locale=en-XX&curr=USD",
+      "retrievedAt": "2026-10-08T08:28:27.713323+00:00",
+      "sha256": "45106f6f1a355a1f4c681c13a684d3f5dc1dccb7f4aade10ee30b7cc70c5e8d4",
+      "kind": "original HTTP response",
+      "accessState": "block/error response retained; not source content",
+      "rights": "Source-specific rights unresolved; private research only"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/raw/bridge-doc.raw",
+      "url": "https://api.data.amsterdam.nl/v1/docs/datasets/civieleconstructies.html",
+      "retrievedAt": "2026-10-08T08:11:37.119073+00:00",
+      "sha256": "f3e936bf847bb216dcec64ba2b869a50a6d03a2f202508f739358508e75f1cd9",
+      "kind": "original HTTP response",
+      "accessState": "downloaded and inspected",
+      "rights": "Source-specific rights unresolved; private research only"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/raw/beeldbank-name.raw",
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=Dorus%20Theus",
+      "retrievedAt": "2026-10-08T08:11:37.249164+00:00",
+      "sha256": "ea308a007fb654717e5a151c7c5c214ff3da628f39beca59824a6e2b2aa4e994",
+      "kind": "original HTTP response",
+      "accessState": "JavaScript viewer shell; no catalogue/image inspected",
+      "rights": "Source-specific rights unresolved; private research only"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/raw/context-panorama.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241206_1245_Track02_Sphere_00007/equirectangular/panorama_4000.jpg",
+      "retrievedAt": "2026-10-08T08:28:04.472426+00:00",
+      "sha256": "81569cc97a50266c2016f76f094f278cabe9f78aeaea3eb6582ecabff9cfc491",
+      "kind": "original HTTP response",
+      "accessState": "downloaded and inspected",
+      "rights": "Municipal open data; panorama privacy/attribution requirements retained"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/raw/weerproof.html",
+      "url": "https://weerproof.nl/project/helofytenfilter-erasmusgracht/",
+      "retrievedAt": "2026-10-08T09:12:56.145519+00:00",
+      "sha256": "fcfbc1df27bd882efacc35113121f0e26002b0420f8f4785c812b69276269b4c",
+      "kind": "original HTTP response",
+      "accessState": "downloaded and inspected",
+      "rights": "Source-specific reuse terms unresolved; private research only"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/raw/weerproof-photo.jpg",
+      "url": "https://weerproof.nl/app/uploads/2022/12/erasmusgracht-madeleine-dersu-klein.jpg",
+      "retrievedAt": "2026-10-08T09:13:09.997570+00:00",
+      "sha256": "8c04514d13ecc62350e5095c36726a20c02e6a3e6bdcffe828313b3c1ffad105",
+      "kind": "original HTTP response",
+      "accessState": "downloaded and inspected",
+      "rights": "Photo Madeleine d\u2019Ersu via Weerproof; exact licence unresolved, private reference only"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/raw/helofyten-study.pdf",
+      "url": "https://edepot.wur.nl/107663",
+      "retrievedAt": "2026-10-08T09:12:57.405206+00:00",
+      "sha256": "fbad694afa0ab75fc5b735e3210e563f0702e5d728ccfa979099ac9dc8c0ae56",
+      "kind": "original HTTP response",
+      "accessState": "downloaded and inspected",
+      "rights": "Source-specific reuse terms unresolved; private research only"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/raw/north2024.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/amsterdam_21112024_Track64_Sphere_00037/equirectangular/panorama_4000.jpg",
+      "retrievedAt": "2026-10-08T09:12:18.152326+00:00",
+      "sha256": "6da2f569d3a9f87be0dbc2e7839caaabae97b784e754d221ac866e035e250fd2",
+      "kind": "original HTTP response",
+      "accessState": "downloaded and inspected",
+      "rights": "Source-specific reuse terms unresolved; private research only"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/raw/north2024-metadata.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/terdam_21112024_Track64_Sphere_00037/",
+      "retrievedAt": "2026-10-08T09:12:17.229422+00:00",
+      "sha256": "40ae54c989421f1a8ca7facbd0d5e479d3704fcc4ffd0436a93bbbb5a720e6e7",
+      "kind": "processed selected entry from original panoramas.json",
+      "accessState": "downloaded and inspected",
+      "rights": "Source-specific reuse terms unresolved; private research only"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/raw/north2025.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/2025_09_25_12_21_54_00021/equirectangular/panorama_4000.jpg",
+      "retrievedAt": "2026-10-08T09:12:18.628346+00:00",
+      "sha256": "a51391378f3ad592d5a27c7e850317e178b66279ad9b9f211f2302a823fcf50e",
+      "kind": "original HTTP response",
+      "accessState": "downloaded and inspected",
+      "rights": "Source-specific reuse terms unresolved; private research only"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/raw/north2025-metadata.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/2025_09_25_12_21_54_00021/",
+      "retrievedAt": "2026-10-08T09:12:18.156188+00:00",
+      "sha256": "45a2dd78aba90b765ba7f4bd4f1d593ddc27de85b006eccce7c6342f11611d10",
+      "kind": "processed selected entry from original panoramas.json",
+      "accessState": "downloaded and inspected",
+      "rights": "Source-specific reuse terms unresolved; private research only"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/raw/user-target-screenshot.png",
+      "url": "user-provided screenshot 2026-10-08",
+      "kind": "original user attachment bytes",
+      "sha256": "4e275bf7406ef3c0dd969374c9819a46131e4229b3a73c74228acc6bced6d539",
+      "rights": "User supplied identification evidence; private archive only"
+    }
+  ],
+  "sourceAccessAttemptsFile": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/raw/manifest.json",
+  "sourceArchive": {
+    "state": "original source pack and user screenshot archived; new primary filter study/photo/panorama sources require root scoped sync before model commit",
+    "commit": "b72059931",
+    "path": "models/dorus-theus-brug/source-20261008"
+  },
+  "acceptance": {
+    "sourceIdentity": "user resolved scope, primary filter description and genuine OSM features",
+    "exportedGeometry": "Passed decoded compressed native probes:440 fractional walking surface/gabionrim/outsidewater rays plus6 focused probes; upwardtop normals;7 decoded materials metallic0 and roughness1.",
+    "typescript": "npm run lint passed after final export/probe code.",
+    "independentReview": "pending",
+    "gallery": "pending",
+    "liveGame": "pending",
+    "routePinCard": "pending",
+    "desktopTouchPans": "pending"
+  },
+  "identityResolution": {
+    "userSource": "artifacts/dorus-theus-brug-source/raw/user-target-screenshot.png",
+    "requestedAlias": "Dorus Theus Brug",
+    "primaryName": "Helofytenfilter Erasmusgracht",
+    "canonicalOSM": "w626223376",
+    "scopeOSM": [
+      "w626223362",
+      "w626223364",
+      "w626223366",
+      "w626223368",
+      "w626223371",
+      "w626223373",
+      "w626223376",
+      "w626223378"
+    ],
+    "noMunicipalBridgeNumberInvented": true
+  },
+  "criticalTraits": [
+    "Two rounded irregular planted beds with low gabion stone rims",
+    "Narrow timber walk along their middle axes; short middle gap remains water",
+    "Timber bridges connect west/north and east/south banks",
+    "Small surveyed polygonal timber pier on east end",
+    "Tall slender reeds in season, no island trees and no solid water-covering parcel slab"
+  ],
+  "newAssertions": [
+    {
+      "assertion": "Reed filter treats dirty local rainwater after settling basin; project carried out by Atelier GROENBLAUW for Waternet.",
+      "source": "https://weerproof.nl/project/helofytenfilter-erasmusgracht/",
+      "confidence": "high"
+    },
+    {
+      "assertion": "Two independently sampled filter beds; middle15m above canal water level, maximum filter drop0.2m in original2004 description.",
+      "source": "https://edepot.wur.nl/107663",
+      "confidence": "high",
+      "qualification": "Historic design, not asserted as exact current elevations."
+    },
+    {
+      "assertion": "Gabion stone cage perimeters and unrailed narrow timber footwalk visible in source photo; current municipal views retain paired planted footprint and footwalk.",
+      "source": "weerproof-photo.jpg,north2024.jpg,north2025.jpg",
+      "confidence": "high"
+    }
+  ],
+  "referenceViews": [
+    {
+      "original": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/raw/north2024.jpg",
+      "derived": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/processed/north2024-parklet.jpg",
+      "target": [
+        4.8561,
+        52.37679
+      ],
+      "viewport": [
+        1600,
+        1000
+      ],
+      "fov": 100,
+      "pitch": 15,
+      "heading": 152.713362885413,
+      "date": "2024-11-21T12:33:41Z",
+      "occlusions": "Tree trunk and parked van2025; lens raindrops/sun2024. Operator source provides close gabion/footwalk detail."
+    },
+    {
+      "original": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/raw/north2025.jpg",
+      "derived": "/Users/blackmad/Code/map-recall2-worktrees/dorus-theus-brug/artifacts/dorus-theus-brug-source/processed/north2025-parklet.jpg",
+      "target": [
+        4.8561,
+        52.37679
+      ],
+      "viewport": [
+        1600,
+        1000
+      ],
+      "fov": 100,
+      "pitch": 15,
+      "heading": 150.20984380830606,
+      "date": "2025-09-25T12:23:03Z",
+      "occlusions": "Tree trunk and parked van2025; lens raindrops/sun2024. Operator source provides close gabion/footwalk detail."
+    }
+  ],
+  "candidate": {
+    "glb": "artifacts/landmark-next-batch/dorus-theus-brug.glb",
+    "sha256": "579d132e67f67a3573e68b428e01070570ba16d64051cba643f42c8d3a67c679",
+    "triangles": 24250,
+    "bytes": 450236,
+    "geometryEvidence": "artifacts/landmark-next-batch/dorus-theus-brug-geometry-check.json",
+    "cpuPreviews": [
+      "artifacts/landmark-offline-preview/dorus-theus-brug-cpu-front.png",
+      "artifacts/landmark-offline-preview/dorus-theus-brug-cpu-opposite.png"
+    ],
+    "referenceComparison": "Recognizable two gabion-edged lens-shaped filter beds and central timber route. Seasonal reed fans simplified; height and exact gabion jointing photo-guided. Independent review remains pending.",
+    "limitations": [
+      "Native water/deck vertical datum requires live-game review.",
+      "No gallery or route/pin/card/pointer selection/fallback test performed by worker.",
+      "Existing ordinary landscape/footway layers require root overlap inspection, without building/water suppression."
+    ]
+  },
+  "preservedFailures": [
+    {
+      "file": "artifacts/landmark-next-batch/dorus-theus-brug-geometry-check-failed-missing-node-transform.json",
+      "reason": "First draft validation omitted meshoptquantizationnode transforms; native decoding corrected, not an asset geometry defect."
+    },
+    {
+      "file": "artifacts/landmark-next-batch/dorus-theus-brug-geometry-check-broad-before-clearance-fix.json",
+      "reason": "Broad first-hit rays caught2reedleafincursions at path edge; reed clearance widened to1m. Deliberate plank gaps reduced3mm; sourcepier classified as valid walk surface and notoutsidewater. Original failure retained."
+    }
+  ]
+}
