@@ -36,6 +36,14 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   Skipped with reasons: Max Euwe Centrum and Bijzondere Collecties (tenants of
   huge multi-wing panden — need the large-building tier), Schouwburgpoort (gate
   no longer exists), Begijnhof (houses already rendered individually).
+- **Intro/landmark streaming follow-ups (2026-10-09)**: the flight still runs
+  ~4.0 s vs 3.5 s designed (MapLibre intermediate-zoom tiles + three chunk
+  installs, ~0.47 s long tasks). 25–40 landmark models load during the spawn
+  settle because the pitched chase view's bounds reach the horizon — cap
+  `_nearby` by distance or make it pitch-aware. `setActiveLandmark(null)` fires
+  ~every 100 ms while riding, each with a GeoJSON `setData` — find the caller.
+  `scripts/check-building-look-transition.ts` fails on main
+  (`chunks.get(first.key).mesh` undefined) and is not in check:canal.
 - **Shared material textures (user, 2026-10-09)**: models are flat-shaded
   colour only, so brick and roofs read as plastic. Add one shared tiling set
   (brick bonds, roof tile, slate, stone, timber, glass) at 256–512 px with
@@ -99,21 +107,12 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   handlers, led by inventory trees rebuilding (`inventory-trees-source.js`),
   then road labels (`road-network.js` `drawLabels`). Gate those on real view
   change.
-- **Intro flight from the city overview** zooms in from the whole city, which
-  forces streaming far more than the rider's neighbourhood. Measure it; likely
-  start at the rider and stream outward.
-- **Intro flight costs ~6 s to control** (iphone 4x, `tests/e2e/intro-perf.spec.ts`):
-  3.0 s waiting for city-scale overview tiles behind the loading screen
-  (1.5 s of long tasks) + the 3.5 s designed flight; without it, control in
-  1.2–1.7 s. Hiding 3D layers during the flight was tried and measured no
-  gain (reverted). Options: skip the settle wait, start from a closer zoom,
-  shorten hold/flight, or drop it — user decision pending.
-- **Reference imagery for recipes** (`docs/research/amsterdam-open-sources-20261009.md`):
-  per-pand panorama selector + rectified frontal crop on the existing
-  rectifier (`scripts/pano-facades/build-pano-facade.ts`) with a second-year
-  occlusion fallback; Beeldbank OpenSearch by address (public-domain items
-  only); monument register facts (architect, year, function) into drafting.
-  `Amsterdam/panorama-textures` is the same maths we have (archived 2020).
+- **Pand reference feed follow-ups** (`npm run pand-reference`, merged
+  2026-10-09): street trees hide whole canal fronts in every year (Bloemgracht
+  3/7 unusable) — add a third laterally offset panorama or the per-pixel median
+  fusion from `build-pano-facade.ts`; washed-out/foliage thresholds (0.3) are
+  untuned; `roofShape` is null outside `buildings-colored.geojson`; Beeldbank
+  and monument-register facts are not yet joined in.
 - **Elevation for bridges (user, 2026-10-09):** bridges read flat because the
   city is flat. `feat/amsterdam-basemap-elevation` (84 behind main) has an
   opt-in elevation experiment, measured bridge-height fallback and a draft
