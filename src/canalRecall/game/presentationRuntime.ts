@@ -38,7 +38,7 @@ import { COLD_OPEN_ENABLED } from './coldOpenReview';
 import { isCar, isBoat, isTransit } from './modes';
 import { travelProfile } from './travelProfile';
 import { hudWithholdsRouteName } from './recallRules';
-import type { PresentationHost } from './host';
+import type { PresentationHost, Vehicle } from './host';
 import type { Landmark } from './worldTypes';
 import { canShowMiniMap, canShowPoiLabels, type TeachingGateInput } from './teachingSurface';
 import { bicycleRestrictionNotice } from '../routing/bikeAccess';
@@ -137,6 +137,7 @@ export class GamePresentationRuntime {
     for (let round = 0; round < 2; round++) {
       this._applyIntroCamera(from.x, from.y, from.zoom);
       this.vectorMap.sync(this.camera, this.osmLoader, this.canvas);
+    this.vectorMap.setFerryTerminals?.(this.track, this.osmLoader);
       const a = this.camera.worldToScreen(start.x, start.y);
       const b = this.camera.worldToScreen(finish.x, finish.y);
       const worldSpan = Math.hypot(finish.x - start.x, finish.y - start.y) * from.zoom;
@@ -162,6 +163,7 @@ export class GamePresentationRuntime {
     this.camera.introOverview = 1;
     this._applyIntroCamera(planned.plan.from.x, planned.plan.from.y, planned.plan.from.zoom);
     this.vectorMap.sync(this.camera, this.osmLoader, this.canvas);
+    this.vectorMap.setFerryTerminals?.(this.track, this.osmLoader);
     return true;
   }
 
@@ -489,6 +491,28 @@ export class GamePresentationRuntime {
     if (typeof this._resize === 'function') this._resize();
   }
 
+  /**
+   * The aboard notice: departure pier and allowed destination(s). On a phone it
+   * sits below the plaque and minimap; on desktop between the top cards.
+   */
+  _renderFerryNotice(player: Pick<Vehicle, 'ferryOrigin' | 'ferryDestinations'>, showMiniMap: boolean): void {
+    if (!player.ferryOrigin) return;
+    const ctx = this.ctx;
+    const layout = this._hudRects();
+    const top = layout.mode === 'compact'
+      ? Math.max(layout.recall.y + layout.recall.height, showMiniMap ? layout.minimap.y + layout.minimap.height : 0) + 10
+      : 72;
+    const title = `Ferry from ${player.ferryOrigin.name}`;
+    const destination = `Dock at ${player.ferryDestinations || 'the connected terminal'}`;
+    ctx.save();
+    ctx.font = '600 15px sans-serif';
+    const width = Math.min(CANVAS_W - 24, Math.max(ctx.measureText(title).width, ctx.measureText(destination).width) + 28);
+    ctx.fillStyle = '#f3ecdd'; ctx.fillRect((CANVAS_W - width) / 2, top, width, 50);
+    ctx.fillStyle = '#243a47'; ctx.textAlign = 'center'; ctx.fillText(title, CANVAS_W / 2, top + 20, width - 16);
+    ctx.font = '13px sans-serif'; ctx.fillText(destination, CANVAS_W / 2, top + 39, width - 16);
+    ctx.restore();
+  }
+
   // ---- The frame ----
 
   _render(): void {
@@ -534,15 +558,18 @@ export class GamePresentationRuntime {
 
     // Transparent game world over the live MapLibre vector basemap.
     this.vectorMap.sync(this.camera, this.osmLoader, this.canvas);
+    this.vectorMap.setFerryTerminals?.(this.track, this.osmLoader);
     // Both travel modes have a real model now; the canvas glyph stays only as
     // the loading fallback, and is not painted over a mesh that is ready.
     const pitched = this.viewMode === 'chase' || this.viewMode === 'cockpit';
+    const byFerry = !!player.ferryOrigin;
     const byBoat = isBoat(this.travelMode);
     const byTransit = isTransit(this.travelMode);
-    const showBike = !byBoat && !byTransit;
+    const showBike = !byBoat && !byTransit && !byFerry;
     this.vectorMap.setPlayerBike(player, this.osmLoader, pitched && showBike,
       vehicleZoomScale(this.camera.zoom, this._defaultZoom ?? this.camera.zoom));
     this.vectorMap.setPlayerBoat(player, this.osmLoader, pitched && byBoat);
+    this.vectorMap.setPlayerFerry?.(player, this.osmLoader, pitched && byFerry);
     if (typeof this.vectorMap.setPlayerTransit === 'function') {
       let underground = false;
       if (byTransit && this.track && typeof this.track.getNearestRoad === 'function') {
@@ -579,16 +606,19 @@ export class GamePresentationRuntime {
 
     this._renderBridgeLabels();
     const meshReady = pitched && (
-      byBoat ? this.vectorMap.isPlayerBoatReady()
+      byFerry ? this.vectorMap.isPlayerFerryReady?.()
+        : byBoat ? this.vectorMap.isPlayerBoatReady()
         : byTransit
           ? (typeof this.vectorMap.isPlayerTransitReady === 'function' && this.vectorMap.isPlayerTransitReady())
           : this.vectorMap.isPlayerBikeReady()
     );
     if (!meshReady) {
-      if (byBoat) this.renderer.drawCar(player, this.camera);
+      if (byFerry) this.renderer.drawFerry?.(player, this.camera);
+      else if (byBoat) this.renderer.drawCar(player, this.camera);
       else this.renderer.drawPlayerCar(player, this.camera);
     }
     this.renderer.drawParticles(this.particles, this.camera);
+
 
     // Streets stay named on the map once you have been told the name, in the
     // car as well as the boat — that is how the name sticks while you drive
@@ -606,6 +636,7 @@ export class GamePresentationRuntime {
     this._syncHudLayout();
     const teaching = this._teachingGate();
     const showMiniMap = canShowMiniMap(this.showMiniMap, teaching);
+    if (byFerry) this._renderFerryNotice(player, showMiniMap);
     // Hide a new route name from the first candidate frame, not only after the
     // delayed question opens. Otherwise the HUD reveals the answer during the
     // turn-confirmation window. Transit keeps a sticky line plaque after the

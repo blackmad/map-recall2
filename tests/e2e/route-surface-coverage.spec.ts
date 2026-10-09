@@ -45,6 +45,8 @@ test('every routing-graph edge lies on a rideable road surface', async ({ page }
         const pair = node.key < edge.node.key ? `${node.key}|${edge.node.key}` : `${edge.node.key}|${node.key}`;
         if (seen.has(pair)) continue;
         seen.add(pair);
+        // IJ ferry crossings are sailed, not ridden: no road surface by design.
+        if (edge.segmentMetadata.some((m: any) => m?.ferryId)) continue;
         edges++;
         const steps = Math.max(1, Math.ceil(edge.distance / 4));
         const heading = Math.atan2(edge.node.y - node.y, edge.node.x - node.x);
