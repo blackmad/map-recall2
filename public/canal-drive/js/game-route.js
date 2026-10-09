@@ -1053,6 +1053,8 @@ class GameRouteRuntime {
     const parts = hash.slice(6).split(',').map(Number);
     if (parts.length !== 6 || parts.some(n => !isFinite(n))) return;
     const [lat, lng, startLat, startLng, finishLat, finishLng] = parts;
+    // A share link plays once; the next load starts from the menu.
+    history.replaceState(null, '', window.location.pathname + window.location.search);
     // Bypass menu and map picker — load directly
     this._onLocationSelected(lat, lng, { lat: startLat, lng: startLng }, { lat: finishLat, lng: finishLng });
   }
@@ -1578,8 +1580,11 @@ class GameRouteRuntime {
       // Generate shareable URL
       if (startLL && finishLL) {
         const raceHash = `#race=${keyCenter.lat.toFixed(4)},${keyCenter.lng.toFixed(4)},${startLL.lat.toFixed(4)},${startLL.lng.toFixed(4)},${finishLL.lat.toFixed(4)},${finishLL.lng.toFixed(4)}`;
+        // Only the copy/share action gets the route. Writing it into the
+        // address bar made every reload, restored tab and autocompleted URL
+        // replay the last route and skip the destination picker (user,
+        // 2026-10-09: "the same destination EVERY time I start the game").
         this._shareUrl = `${window.location.origin}${window.location.pathname}${raceHash}`;
-        history.replaceState(null, '', raceHash);
       } else {
         this._shareUrl = null;
       }
