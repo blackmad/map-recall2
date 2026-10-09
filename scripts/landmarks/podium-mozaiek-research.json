@@ -1,0 +1,247 @@
+{
+  "id": "podium-mozaiek",
+  "identity": {
+    "extractLandmarkId": "extract_landmarks_943416488",
+    "osmWay": 57867539,
+    "bagPand": "0363100012122803",
+    "bagVbo": "0363010001021419",
+    "address": "Bos en Lommerweg 191",
+    "built": 1954,
+    "municipalMonument": 226015
+  },
+  "sources": [
+    {
+      "url": "https://podiummozaiek.nl/over-ons/overzicht",
+      "file": "artifacts/podium-mozaiek-source/operator.raw",
+      "status": "200",
+      "error": "",
+      "retrievedAt": "2026-10-08T07:32:34Z",
+      "sha256": "026b158b2bbfc272649c2dc9cd9cf9545c189d9361fb0d9e61a0208946f02507",
+      "rights": "Source copyright retained; private architectural research only; no pixels reused in asset"
+    },
+    {
+      "url": "https://data.amsterdam.nl/monumenten/f3d3ac3d-299c-4e46-9fdc-06abe8606e48",
+      "file": "artifacts/podium-mozaiek-source/monument.raw",
+      "status": "200",
+      "error": "",
+      "retrievedAt": "2026-10-08T07:32:34Z",
+      "sha256": "be97414e306c90dd13dbdd3eb7167323991f0a43d1cff58d174d4d41754460c5",
+      "rights": "Source copyright retained; private architectural research only; no pixels reused in asset"
+    },
+    {
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=Bos%20en%20Lommerweg%20191",
+      "file": "artifacts/podium-mozaiek-source/beeldbank.raw",
+      "status": "200",
+      "error": "",
+      "retrievedAt": "2026-10-08T07:32:34Z",
+      "sha256": "ea308a007fb654717e5a151c7c5c214ff3da628f39beca59824a6e2b2aa4e994",
+      "rights": "Source copyright retained; private architectural research only; no pixels reused in asset"
+    },
+    {
+      "url": "https://arcam.nl/architectuur-gids/pnielkerk/",
+      "file": "artifacts/podium-mozaiek-source/arcam.raw",
+      "status": "200",
+      "error": "",
+      "retrievedAt": "2026-10-08T07:32:35Z",
+      "sha256": "753d10feeb20dab888f34ba687b62ffa748475f2e28ef90e4b68cc741f01502d",
+      "rights": "Source copyright retained; private architectural research only; no pixels reused in asset"
+    },
+    {
+      "url": "https://arcam.nl/wp-content/uploads/2021/06/1-238.jpg",
+      "file": "artifacts/podium-mozaiek-source/front.jpg",
+      "status": "200",
+      "error": "",
+      "retrievedAt": "2026-10-08T07:32:35Z",
+      "sha256": "4581cc6ada2552b8cd4966be1c53a7dff5a660ee7525ef0a893a8559554a339e",
+      "rights": "Source copyright retained; private architectural research only; no pixels reused in asset"
+    },
+    {
+      "url": "https://static.contentecontent.com/platen_groot/2/2168.webp",
+      "file": "artifacts/podium-mozaiek-source/context.webp",
+      "status": "200",
+      "error": "",
+      "retrievedAt": "2026-10-08T07:32:36Z",
+      "sha256": "7581b05cbe64bbd7b7090d7a47de820feff2f172dc92407d1f588e8ed6d6190e",
+      "rights": "Source copyright retained; private architectural research only; no pixels reused in asset"
+    },
+    {
+      "url": "https://www.o-drie.nl/en/podium-mozaiek",
+      "file": "artifacts/podium-mozaiek-source/architect.raw",
+      "status": "200",
+      "error": "",
+      "retrievedAt": "2026-10-08T07:32:36Z",
+      "sha256": "82343893762f71540ab7b0a208b0586395e48f46e49b59e17aa25d95a44ebed3",
+      "rights": "Source copyright retained; private architectural research only; no pixels reused in asset"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001021419/",
+      "file": "artifacts/podium-mozaiek-source/vbo.raw",
+      "status": "200",
+      "error": "",
+      "retrievedAt": "2026-10-08T07:32:36Z",
+      "sha256": "c0cd00dd9ec52aad574e7ccac9b580e0a864a49de4dfa033fdb97d6e389b0573",
+      "rights": "Source copyright retained; private architectural research only; no pixels reused in asset"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012122803/",
+      "file": "artifacts/podium-mozaiek-source/pand.raw",
+      "status": "200",
+      "retrievedAt": "2026-10-08",
+      "sha256": "e1efcd5b137208b2e14ab092b0008ef098dd18167462f3164016ddd9bde7c1d1",
+      "rights": "Source copyright retained; private architectural research only; no pixels reused in asset"
+    },
+    {
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012122803",
+      "file": "artifacts/podium-mozaiek-source/3dbag.raw",
+      "status": "200",
+      "retrievedAt": "2026-10-08",
+      "sha256": "dbc28bf67cab8b7d1ec8a137b8e1f44b2fa0b380e045287fdb4b8933dcff7e54",
+      "rights": "Source copyright retained; private architectural research only; no pixels reused in asset"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.8543,52.3801&radius=100",
+      "file": "artifacts/podium-mozaiek-source/pano.raw",
+      "status": "200",
+      "retrievedAt": "2026-10-08",
+      "sha256": "8e7bf58f2c0e99a8a192b99d20d07793b0757dc5ebf2e2072aa12bb26043b918",
+      "rights": "Source copyright retained; private architectural research only; no pixels reused in asset"
+    },
+    {
+      "url": "https://www.openstreetmap.org/api/0.6/map.json?bbox=4.8537,52.3796,4.8550,52.3805",
+      "file": "artifacts/podium-mozaiek-source/osm-area.raw",
+      "status": "200",
+      "retrievedAt": "2026-10-08",
+      "sha256": "2f71bb14ee1da5db18ac8a92e1b9041e854047b2c1189c8f9a5c119a5746c8cd",
+      "rights": "Source copyright retained; private architectural research only; no pixels reused in asset"
+    },
+    {
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-17_08-04-10_01651/equirectangular/panorama_4000.jpg",
+      "file": "artifacts/podium-mozaiek-source/panorama.jpg",
+      "status": "200",
+      "capturedAt": "2025-06-17T08:22:38Z",
+      "rights": "Amsterdam municipal panorama; private research, exact reuse terms not confirmed",
+      "sha256": "56f6a149d47265fd1a1303d0bb4f609c0f5dd95cbb0b2d1b44d7a4a305c08d0f"
+    },
+    {
+      "file": "artifacts/podium-mozaiek-source/selected-panorama.json",
+      "sha256": "fb587a45ada81fcb85a0ca911c85d8fcc9e29519ca1c71dfb23bfb57467e6f97",
+      "kind": "raw-metadata"
+    },
+    {
+      "file": "artifacts/podium-mozaiek-source/panorama-front.jpg",
+      "sha256": "db821ccbe28de24118386c7ff597e18ad20bd0788041ba4de96ecd3d6b0e1fbd",
+      "kind": "derived"
+    },
+    {
+      "file": "artifacts/podium-mozaiek-source/address.raw",
+      "sha256": "978eea41eafc745b1e7b411d26e528ddc258c384ea346e56e1603ae209d68137",
+      "kind": "raw-metadata"
+    }
+  ],
+  "sourceArchive": {
+    "state": "ready for coordinator private archival",
+    "commit": null
+  },
+  "architecturalAssertions": [
+    {
+      "feature": "Diamond concrete panels; broad glass-block bands; two square-base steel upper belfries; four simple concrete entrance canopies; higher central hall, lower aisles",
+      "source": "https://data.amsterdam.nl/monumenten/f3d3ac3d-299c-4e46-9fdc-06abe8606e48",
+      "confidence": "high",
+      "part": "church exterior",
+      "date": "municipal record accessed 2026-10-08"
+    },
+    {
+      "feature": "Curved central roof, brown lower roofs, white facades with T-shaped diamond glazing fields, upper rectangular annex windows",
+      "source": "https://arcam.nl/architectuur-gids/pnielkerk/",
+      "confidence": "high visual",
+      "part": "visible exterior"
+    }
+  ],
+  "openingInventory": {
+    "minimumVisible": "ARCam corner shows long side 6 patterned groups and end3 patterned groups; opposite context shows annex upper rectangular windows, paired doorway canopies;2025 pano confirms contemporary rectangular facade alterations",
+    "completeCount": "Unresolved hidden east/rear openings; model avoids invented detailed interiors"
+  },
+  "archiveSearch": {
+    "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=Bos%20en%20Lommerweg%20191",
+    "state": "HTTP200 JavaScript shell; no inspected original archival photos/drawings",
+    "constructionDossier": "VBO/Pand heeftDossier null; targeted details supported by municipal text and contemporary views; no obtained drawings"
+  },
+  "panorama": {
+    "id": "recording_2025-06-17_08-04-10_01651",
+    "captureTimestamp": "2025-06-17T08:22:38Z",
+    "heading": 142.7483518834043,
+    "pitch": 15,
+    "fov": 85,
+    "viewport": [
+      1400,
+      1000
+    ],
+    "viewerUrl": "https://data.amsterdam.nl/data/geozoek?center=52.3800919%2C4.8543367&locatie=52.38028335%2C4.8540982&heading=142.748&pitch=15&fov=85&zoom=14",
+    "occlusion": "Leaf canopy obscures belfry and roof; vehicles and parasols obscure ground portions; use clearer dated ARCam/context photos together"
+  },
+  "uncertainties": [
+    "Main survey approximates curved hall roof with two planes; reconstruct curved shape from photos using measured edges/crest.",
+    "Glass-block openings visual count is bounded visible minimum; east service back less documented.",
+    "No unsupported name lettering will be added. Real removable narrow banners omitted."
+  ],
+  "nativeAxes": "east/south metres,glTF Y up;scale1",
+  "neighborRetention": [
+    {
+      "osmWay": 276252219,
+      "bagPand": "0363100012141104",
+      "position": "immediately northeast service-yard house; must remain visible"
+    },
+    {
+      "osmWay": 276252840,
+      "bagPand": "0363100012141124",
+      "position": "south residential block beyond public square; must remain visible"
+    }
+  ],
+  "sourceToModelDecisions": {
+    "state": "CPU provisional; native gallery independent and game acceptance pending",
+    "previewPaths": [
+      "artifacts/podium-mozaiek-cpu/cpu-northwest.png",
+      "artifacts/podium-mozaiek-cpu/cpu-southwest.png",
+      "artifacts/podium-mozaiek-cpu/cpu-east.png",
+      "artifacts/podium-mozaiek-cpu/cpu-high.png"
+    ],
+    "traits": "Distinct stepped white body, repeated diamond T-shaped glazing fields, low rectangular-glazed annex, brown shallow curved high roof and two square bases with braced steel belfries. Broad lower rectangular glass fields retained where2025 photograph records theatre alterations.",
+    "limitations": "CPU painter preview triangulation seams are rasterization artifacts. Curved roof approximates photo family within survey heights, not surveyed curve radius. No frozen rendered portal screenshot obtained; exact original municipal image+metadata and derived perspective retained."
+  },
+  "supportRepair": {
+    "previousCandidateSha256": "4440fedd438bda8758c3342ed91363878d6dda948085ca867ee273ac08407ee3",
+    "failedEvidence": "artifacts/podium-mozaiek-independent/report.md",
+    "preservedPreviousCodeAndGLB": "artifacts/podium-mozaiek-before-support-repair",
+    "problem": "Four of18 independent horizontal rays missed unsupported9–11m central-hall/eastern roof joining strips; all standalone materials metallicFactor1.",
+    "change": "Extend bounded actual central-hall footprint uncapped shell to lower7.70m annex roof datum. Measured lower aisle roofs own and obscure their lower portions; no footprint padding or filling public square. Export metallicFactor0. Clip108 diamonds physically covered by source-backed current facade replacements or structural solids.",
+    "sourceAuthority": [
+      "Municipal monument226015: higher central nave/lower aisles, sober closed exterior; no open wall strips described",
+      "BAG/3DBAG measured hall footprint and lower roof datum; current dated facade/context photos"
+    ],
+    "currentCandidateSha256": "7dd07cd31d60c713639378c334ad93e8ba838c260ff470eaec4dfc23875533eb",
+    "cpuChecks": {
+      "wallSupport": {
+        "passed": 18,
+        "count": 18,
+        "heightMetres": 10.3,
+        "originalMisses": 4
+      },
+      "allRemainingDiamonds": {
+        "visible": 1232,
+        "count": 1232
+      },
+      "removedOcclusionsByRole": {
+        "currentLowerRectangularWindows": 48,
+        "entranceDoors": 39,
+        "towerBases": 18,
+        "lowerRoofs": 3
+      },
+      "belfryOpenRaysBlockedByWallSolids": 0,
+      "belfryRayCount": 4,
+      "allFiveMaterialsMetallicFactor": 0,
+      "triangles": 21555,
+      "compressedBytes": 305200
+    },
+    "state": "corrected CPU candidate frozen; independent visual re-review and full integrated game acceptance remain"
+  }
+}
