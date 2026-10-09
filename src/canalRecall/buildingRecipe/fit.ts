@@ -7,7 +7,7 @@
  * width and the 3DBAG front eaves/top profile with fixed proportion rules,
  * so the same intent always fits the same geometry.
  */
-import type {CanalHouseRecipe, CanalhouseElevation, CanalhouseOpening, CanalhousePoint} from '../canalhouseRecipes.ts';
+import type {CanalHouseRecipe, CanalhouseDressing, CanalhouseElevation, CanalhouseOpening, CanalhousePoint} from '../canalhouseRecipes.ts';
 import type {CanalhouseGlazedBay} from '../canalhouseGlazedBay.ts';
 import {canalhouseCrownProfile} from '../canalhouseRecipes.ts';
 import {surveyRecipe} from '../../../scripts/canalhouse-recipes/survey-recipe.ts';
@@ -336,6 +336,44 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
         elevation.bands.value.push({id: 'fascia-lettering', leftM: round(width * 0.2), bottomM: round(top - SHOP.fasciaGapM - SHOP.fasciaM / 2 - 0.12), widthM: round(width * 0.6), heightM: 0.24, depthM: 0.135, surface: 'trim'});
       }
     }
+    // Stone dressings (window surrounds, quoins) and the shop awning: attached slabs/canopies, see CanalhouseDressing.
+    const dressings: CanalhouseDressing[] = [], full = Math.floor(width * 1000) / 1000;
+    if (front.windowSurround && front.windowSurround !== 'none') {
+      const wanted = front.surroundStoreys ?? Array.from({length: front.storeys}, (_, k) => k).filter(k => k > 0 || !front.shopfront);
+      for (const o of elevation.openings.value) {
+        const m = /(?:^|-)s(\d+)-b\d+(?:-m\d+)?$/.exec(o.id);
+        if (!m || o.kind !== 'window' || !wanted.includes(Number(m[1]))) continue;
+        const top = o.bottomM + o.heightM, ox = 0.07, oy = o.id;
+        if (front.windowSurround === 'keystone') {
+          const kw = clamp(o.widthM * 0.2, 0.15, 0.26);
+          dressings.push({id: `key-${oy}`, kind: 'slab', leftM: round(o.leftM + o.widthM / 2 - kw / 2), bottomM: round(top - 0.02), widthM: round(kw), heightM: 0.22, depthM: 0.06, surface: 'stone'});
+        } else {
+          const lw = o.widthM + 2 * ox + 0.12;
+          dressings.push({id: `lintel-${oy}`, kind: 'slab', leftM: round(o.leftM - ox - 0.06), bottomM: round(top - 0.04), widthM: round(lw), heightM: 0.14, depthM: 0.05, surface: 'stone'});
+          dressings.push({id: `sill-${oy}`, kind: 'slab', leftM: round(o.leftM - ox - 0.05), bottomM: round(o.bottomM - 0.07), widthM: round(o.widthM + 2 * ox + 0.1), heightM: 0.08, depthM: 0.07, surface: 'stone'});
+          if (front.windowSurround === 'full-frame') for (const [side, x] of [['l', o.leftM - ox - 0.06], ['r', o.leftM + o.widthM + ox - 0.02]] as const)
+            dressings.push({id: `jamb-${side}-${oy}`, kind: 'slab', leftM: round(x), bottomM: round(o.bottomM - 0.01), widthM: 0.08, heightM: round(o.heightM + 0.02), depthM: 0.045, surface: 'stone'});
+        }
+      }
+    }
+    if (front.quoins === 'stone') {
+      // Alternating long/short corner blocks from the plinth to the eaves; blocks that would cross an opening are skipped.
+      const base = layout.groundBase > 0 ? layout.groundBase : 0.3, pitch = 0.62, topLimit = eaves - corniceH - 0.2;
+      for (let row = 0, y = base + 0.1; y + 0.5 < topLimit; row++, y += pitch) for (const side of ['l', 'r'] as const) {
+        const w = (row + (side === 'l' ? 0 : 1)) % 2 ? 0.28 : 0.5, x = side === 'l' ? 0.02 : full - w - 0.02;
+        if (elevation.openings.value.some(o => x < o.leftM + o.widthM + 0.1 && x + w > o.leftM - 0.1 && y < o.bottomM + o.heightM + 0.1 && y + 0.5 > o.bottomM - 0.1)) continue;
+        dressings.push({id: `quoin-${side}${row}`, kind: 'slab', leftM: round(x), bottomM: round(y), widthM: w, heightM: 0.5, depthM: 0.04, surface: 'stone'});
+      }
+    }
+    const awning = front.shopfront?.awning;
+    if (awning && awning.style !== 'none' && layout.shopGlass) {
+      const from = (awning.extent?.from ?? 0) * width, to = (awning.extent?.to ?? 1) * width, left = Math.max(0.05, Math.min(from, to)), right = Math.min(width - 0.05, Math.max(from, to));
+      const top = layout.shopGlass[1] + 0.05, drop = awning.style === 'fabric-dutch' ? 0.6 : 0.5, valance = awning.style === 'fabric-dutch' ? 0.22 : 0.2;
+      // Never lower than 2.1 m at the valance: lift the attachment line instead.
+      const attach = Math.max(top, 2.1 + drop + valance);
+      dressings.push({id: 'awning', kind: 'awning', style: awning.style === 'fabric-dutch' ? 'dutch' : 'straight', leftM: round(left), widthM: round(right - left), topM: round(attach), dropM: drop, projectM: awning.style === 'fabric-dutch' ? 0.9 : 1.0, valanceM: valance, surface: 'awning'});
+    }
+    if (dressings.length) elevation.dressings = seen(dressings);
     mainEaves = Math.min(mainEaves, eaves);
     elevation.bodyEavesM = surveyed(round(eaves));
     elevations.push(elevation);
@@ -354,7 +392,8 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
 
 export function paletteFor(intent: CanalHouseIntent, front?: FrontIntent) {
   const p = {...intent.palette, ...(front?.palette ?? {})}, roof = ROOF_COLOURS[intent.roof.material];
-  const shop = (front ?? intent.fronts.find(f => f.shopfront))?.shopfront?.colour;
+  const shopFront = (front ?? intent.fronts.find(f => f.shopfront))?.shopfront, shop = shopFront?.colour;
+  const awningFront = (front ?? intent.fronts.find(f => f.shopfront?.awning && f.shopfront.awning.style !== 'none'))?.shopfront?.awning, awning = awningFront && awningFront.style !== 'none' ? awningFront.colour : undefined;
   return {wall: swatch(p.brick), roof: roof.steep, trim: swatch(p.frame), glass: GLASS, door: swatch(p.door), stone: swatch(p.stone ?? 'sandstone'), joinery: swatch(p.frame),
-    ...(p.band ? {accent: swatch(p.band)} : {}), ...(shop ? {shop: swatch(shop)} : {})};
+    ...(p.band ? {accent: swatch(p.band)} : {}), ...(shop ? {shop: swatch(shop)} : {}), ...(awning ? {awning: swatch(awning)} : {})};
 }
