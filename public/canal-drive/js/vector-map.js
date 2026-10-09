@@ -103,6 +103,7 @@ class VectorBasemap {
     this._activeLandmark = null;
     this._playerBike = null;
     this._playerBoat = null;
+    this._playerFerry = null;
     this._labelsVisible = false;
     this._lastCameraClearance = { constrained: false, reason: 'not-synchronised' };
     this._cameraClearanceCheck = null;
@@ -179,8 +180,9 @@ class VectorBasemap {
         this._signatureLandmarks.setEnabled(!this._detailedBuildingsVisible && !this._measuredColoursOnly);
       }
       if (window.CanalRecallVehicles) {
-        const { PlayerBike3D, PlayerBoat3D, PlayerTransit3D } = window.CanalRecallVehicles;
+        const { PlayerBike3D, PlayerBoat3D, PlayerFerry3D, PlayerTransit3D } = window.CanalRecallVehicles;
         if (PlayerBike3D) this._playerBike = new PlayerBike3D(this.map, maplibregl);
+        if (PlayerFerry3D) this._playerFerry = new PlayerFerry3D(this.map, maplibregl);
         if (PlayerBoat3D) this._playerBoat = new PlayerBoat3D(this.map, maplibregl);
         if (PlayerTransit3D) this._playerTransit = new PlayerTransit3D(this.map, maplibregl);
       }
@@ -1866,6 +1868,36 @@ class VectorBasemap {
       player.steerInput || 0
     );
   }
+
+  setFerryTerminals(track, loader) {
+    if (!this.ready || !this.map || this._ferryTerminalTrack === track) return;
+    this._ferryTerminalTrack = track;
+    const terminals = new Map();
+    for (const segment of track.segments) if (segment.ferryLink) {
+      for (const terminal of [segment.ferryLink.from, segment.ferryLink.to]) terminals.set(terminal.id, terminal);
+    }
+    const data = { type: 'FeatureCollection', features: [...terminals.values()].map(t => ({
+      type: 'Feature', properties: { name: `${t.name} ⛴` },
+      geometry: { type: 'Point', coordinates: this.worldToLngLat(t.x, t.y, loader) },
+    })) };
+    const source = this.map.getSource('cycling-ferry-terminals');
+    if (source) source.setData(data);
+    else {
+      this.map.addSource('cycling-ferry-terminals', { type: 'geojson', data });
+      this.map.addLayer({ id: 'cycling-ferry-terminal-pins', type: 'circle', source: 'cycling-ferry-terminals', paint: {
+        'circle-radius': 6, 'circle-color': '#008bce', 'circle-stroke-color': '#f2f0e7', 'circle-stroke-width': 2,
+      }});
+      this.map.addLayer({ id: 'cycling-ferry-terminal-labels', type: 'symbol', source: 'cycling-ferry-terminals', layout: {
+        'text-field': ['get', 'name'], 'text-size': 12, 'text-offset': [0, 1.4],
+      }, paint: { 'text-color': '#153c54', 'text-halo-color': '#f2f0e7', 'text-halo-width': 2 } });
+    }
+  }
+
+  setPlayerFerry(player, loader, visible) {
+    this._playerFerry?.update(this.worldToLngLat(player.x, player.y, loader), player.angle, visible);
+  }
+
+  isPlayerFerryReady() { return !!this._playerFerry?.ready; }
 
   setPlayerTransit(player, loader, visible, underground = false) {
     if (!this._playerTransit || !player || !loader) return;

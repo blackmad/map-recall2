@@ -96,6 +96,14 @@ class OSMLoader {
           });
         }
       }
+      this.ferryNetwork = null;
+      if (travelMode === 'car' && city.id === 'amsterdam') {
+        try {
+          const ferryResponse = await fetch(new URL(`${city.extractPath}/transit-network.json`, window.location.href));
+          if (!ferryResponse.ok) throw new Error(`Ferry network: HTTP ${ferryResponse.status}`);
+          this.ferryNetwork = await ferryResponse.json();
+        } catch (error) { console.warn('Ferry connections unavailable; cycling remains on land.', error); }
+      }
       console.log(`Loaded ${ways.length} curated ${city.name} ${dataset} paths`);
       return ways;
     } catch (localError) {
