@@ -179,7 +179,9 @@ Both were judged as "recognisable from its best side". That is not the bar.
 1. **Rhythm spec before modelling.** Per visible wall, from photos: bay count,
    which bays are identical, windows per bay per storey, symmetry axis,
    ground-floor type, signage, gable/roof line, setbacks only if seen. Cite
-   the photo for each item. Store it next to the builder/recipe.
+   the photo for each item. Store it next to the builder/recipe; for landmarks
+   the machine-checked part is `scripts/landmarks/<id>-elevations.json`
+   (counted blind from the photo, format in `docs/landmark-building-recipe.md` §7).
 2. **Evidence per face.** Every street- or water-facing wall has a photo from
    that side (`pand-reference --prefer-bearing`), or is labelled
    **inferred** on the sheet and in the report.
@@ -187,7 +189,8 @@ Both were judged as "recognisable from its best side". That is not the bar.
    position/heading/fov; photo, render and overlay side by side. Judge bay by
    bay against the spec, not by overall impression.
 4. **Automated gates.** GLB audit (`audit:glb`, incl. blank-wall check),
-   facade-rhythm check against the spec, attachment ≤5 cm, height ±0.5 m vs
+   facade-rhythm check against the spec (`npm run compare:facades -- --id=<id>`:
+   openings per storey, window axes, mirror symmetry, gable peaks), attachment ≤5 cm, height ±0.5 m vs
    3DBAG, triangle budget.
 5. **Street-level in-game shot** from where riders actually pass it.
 6. **Uncertainty blocks acceptance.** Anything a lane lists as unverified or
