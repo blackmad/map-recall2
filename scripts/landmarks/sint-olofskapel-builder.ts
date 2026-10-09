@@ -40,7 +40,7 @@ export function buildSintOlofskapel(_w: number, _d: number, b: BuildingTools) {
   for (const t of [4.5, 10.5, 16.5]) archWindow(b, seWall, t, 2.6, 1.6, 4.4, {});
   // Bell turret in the valley between the gables: square louvred stage, lantern and needle.
   const tx = 1.0, tz = 0.6;
-  b.box(tx, 14.0, tz, 1.4, 6.4, 1.4, 'stone');
+  b.box(tx, 9.1, tz, 1.4, 11.3, 1.4, 'stone');
   b.box(tx, 19.2, tz, 1.9, 0.3, 1.9, 'stone');
   const lantern = new T.CylinderGeometry(0.55, 0.7, 1.8, 8); b.add(lantern, 'white' as never, tx, 20.6, tz);
   const cone = new T.ConeGeometry(0.8, 3.4, 8); b.add(cone, 'slate' as never, tx, 23.2, tz);
