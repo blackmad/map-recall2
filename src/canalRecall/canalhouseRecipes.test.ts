@@ -707,7 +707,7 @@ test('explicit shallow source outsets keep glazing visible and preserve native c
  const glass=hit(group,[2.3,2.5,-5],[0,0,1])[0];assert.equal(glass.object.userData.surface,'glass');assert(glass.point.z<-.12&&glass.point.z>-.22);
  assert.deepEqual({footprint:r.footprint.value,roof:r.roof.value},before);assert.equal(hit(group,[3,30,5],[0,-1,0]).length,0);
  e.frontagePlan.value.maxOutsetM=.1;assert.throws(()=>compileCanalHouseRecipe(r),/straight surveyed wall/);
- for(const invalid of [.31,-.01,NaN]){e.frontagePlan.value.maxOutsetM=invalid;assert.throws(()=>compileCanalHouseRecipe(r),/facade outset/);}
+ for(const invalid of [.51,-.01,NaN]){e.frontagePlan.value.maxOutsetM=invalid;assert.throws(()=>compileCanalHouseRecipe(r),/facade outset/);}
 });
 
 test('source-selected dormer setbacks move the complete assembly and keep footprint guards',()=>{

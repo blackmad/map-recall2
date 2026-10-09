@@ -117,7 +117,7 @@ export async function rowSheet(ids: string[], out: string, textures?: Record<str
 
 if (process.argv[1]?.endsWith('building-recipes/render.ts')) {
   const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
-  const textures = process.argv.includes('--textures') ? {brick: 'scripts/building-recipes/textures/brick-256.png', roofTile: 'scripts/building-recipes/textures/roof-tile-256.png', slate: 'scripts/building-recipes/textures/roof-tile-256.png'} : undefined;
+  const textures = process.argv.includes('--textures') ? {brick: 'artifacts/building-recipes/textures/brick-256.png', roofTile: 'artifacts/building-recipes/textures/roof-tile-256.png', slate: 'artifacts/building-recipes/textures/roof-tile-256.png'} : undefined;
   try {
     if (arg('row')) console.log(await rowSheet(arg('row')!.split(','), arg('out') ?? `${ARTIFACTS}/row.png`, textures));
     for (const id of (arg('house') ?? '').split(',').filter(Boolean)) {
