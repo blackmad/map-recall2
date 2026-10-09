@@ -1,0 +1,129 @@
+{
+  "id": "levend-paardenmuseum",
+  "name": "Levend Paardenmuseum",
+  "landmarkId": "extract_landmarks_82936853",
+  "modelUrl": "./models/levend-paardenmuseum.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012074454"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.8718745,
+      52.3612855
+    ],
+    "headingDegrees": 157.84905435812124,
+    "lengthMetres": 76.50001127828995,
+    "widthMetres": 50.5914940932001
+  },
+  "surveyed": {
+    "anchor": [
+      4.8718745,
+      52.3612855
+    ],
+    "northOffsetDegrees": 0,
+    "source": "BAG pand 0363100012074454 (Hollandsche Manege, Vondelstraat 140): exact ring and 3DBAG LoD2.2 roof/wall solid (ridge about 17 m above ground) in local east/south metres. Anchor is the ring bounding-box centre. Vondelstraat 140 gateway on the edge nearest the BAG address point."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#b98f77",
+    "slate": "#5b6168",
+    "white": "#ece6d6",
+    "stone": "#a9a496",
+    "dark": "#3c342d",
+    "ochre": "#8a5a34",
+    "glass": "#7f97a0"
+  },
+  "attribution": {
+    "title": "Levend Paardenmuseum",
+    "author": "Map Recall",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hollandsche_Manege",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native-scale massing from the exact BAG footprint and 3DBAG LoD2.2 walls and roofs, plus an authored Vondelstraat 140 stucco gateway with arched timber doors from one 2025 municipal panorama. The Levend Paardenmuseum POI is placed on the manege because the museum is a tenant of that building. No imported mesh or photograph pixels."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.872213,
+          52.361257
+        ],
+        [
+          4.872169,
+          52.361246
+        ],
+        [
+          4.871923,
+          52.361621
+        ],
+        [
+          4.871658,
+          52.361555
+        ],
+        [
+          4.871698,
+          52.361495
+        ],
+        [
+          4.871569,
+          52.361463
+        ],
+        [
+          4.871687,
+          52.361285
+        ],
+        [
+          4.871434,
+          52.36122
+        ],
+        [
+          4.871526,
+          52.361081
+        ],
+        [
+          4.871739,
+          52.361135
+        ],
+        [
+          4.871773,
+          52.361081
+        ],
+        [
+          4.872076,
+          52.361158
+        ],
+        [
+          4.872226,
+          52.36095
+        ],
+        [
+          4.872315,
+          52.360974
+        ],
+        [
+          4.872244,
+          52.361073
+        ],
+        [
+          4.872243,
+          52.361073
+        ],
+        [
+          4.872165,
+          52.361182
+        ],
+        [
+          4.872249,
+          52.361202
+        ],
+        [
+          4.872213,
+          52.361257
+        ]
+      ]
+    ]
+  }
+}

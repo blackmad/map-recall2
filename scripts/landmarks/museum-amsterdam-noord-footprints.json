@@ -1,0 +1,71 @@
+{
+ "id": "museum-amsterdam-noord",
+ "anchor": [
+  4.9260085,
+  52.3881895
+ ],
+ "coordinateConvention": "local X east, Z south; lon scale 111320 cos(lat), lat scale 110540; metres",
+ "pands": [
+  {
+   "bagId": "0363100012158267",
+   "tileHeight": 6.66,
+   "ring": [
+    [
+     4.926064,
+     52.388243
+    ],
+    [
+     4.92592,
+     52.388223
+    ],
+    [
+     4.925953,
+     52.388136
+    ],
+    [
+     4.926097,
+     52.388156
+    ],
+    [
+     4.926064,
+     52.388243
+    ]
+   ],
+   "localRing": [
+    [
+     3.771,
+     -5.914
+    ],
+    [
+     -6.013,
+     -3.703
+    ],
+    [
+     -3.771,
+     5.914
+    ],
+    [
+     6.013,
+     3.703
+    ],
+    [
+     3.771,
+     -5.914
+    ]
+   ],
+   "3dbag": {
+    "b3_bouwlagen": null,
+    "b3_dak_type": "slanted",
+    "b3_h_dak_50p": 6.124000072479248,
+    "b3_h_dak_70p": 7.176000118255615,
+    "b3_h_dak_max": 9.925999641418457,
+    "b3_h_dak_min": 4.368000030517578,
+    "b3_h_maaiveld": 0.5210000276565552,
+    "b3_h_nok": 5.421924114227295,
+    "b3_volume_lod22": 582.8923950195312,
+    "oorspronkelijkbouwjaar": 1918,
+    "status": "Pand in gebruik"
+   }
+  }
+ ]
+}
