@@ -7,7 +7,13 @@
   "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/native36-37-review50",
   "gallery": "Root + independent actual GPU PASS",
   "native": "Root + independent local desktop and iPhone13 emulation PASS",
-  "hosted": "Pending",
+  "hosted": {
+    "publicCommit": "e4c7f872d47573133e4a8f62ca7b01133fff2e62",
+    "firebaseRun": 37913112710,
+    "sourceCommit": "4d1e8cc90",
+    "sourcePack": "experiments/canal-belt-continuation-20261007/hosted37-and-next38-review53",
+    "checks": "Actual37GLB hashes/bytes match; manual desktop/touch37 loads; native desktop and touch retry passed; root inspected live model and pan screenshots. First touch ENOSPC receipt retained as failed capture."
+  },
   "limits": [
     "First draft corrected by source scope; actual GPU/native/performance review pending",
     "VRIESLAND lettering omitted and ship carving simplified"
