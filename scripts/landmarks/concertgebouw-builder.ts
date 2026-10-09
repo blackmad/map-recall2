@@ -16,7 +16,7 @@ export function buildConcertgebouw(_w:number,_d:number,b:BuildingTools):void{
  // Main hall is separate from the oval Small Hall at the rear; neither
  // volume crosses the surveyed courts around z=-18m.
  b.box(8.1,13.4,10.3,31.0,5.4,45.0,'brick');
- b.box(6.2,13.4,-28.9,20.2,7.5,15.2,'brick');
+ b.box(6.2,13.4,-28.4,20.2,7.5,14.2,'brick');
  for(const z of[-12.2,32.8]){const g=new T.ExtrudeGeometry(new T.Shape([new T.Vector2(-15.5,0),new T.Vector2(15.5,0),new T.Vector2(0,6.75)]),{depth:.16,bevelEnabled:false});b.add(g,'brick',8.1,18.8,z)}
  // Roof surfaces use measured planar contours rebuilt here as original
  // triangle fans/triangulations, not a downloaded render mesh.
@@ -31,7 +31,16 @@ export function buildConcertgebouw(_w:number,_d:number,b:BuildingTools):void{
   // avoiding an unstable plane fit across centimetric sliver faces.
   for(let i=0;i<pos.count;i++){const x=pos.getX(i),z=pos.getY(i),q=clean.reduce((best,q)=>Math.hypot(q[0]-x,q[2]-z)<Math.hypot(best[0]-x,best[2]-z)?q:best);pos.setXYZ(i,x,q[1],z)}
   if(g.index)for(let i=0;i<g.index.count;i+=3){const v=g.index.getX(i+1);g.index.setX(i+1,g.index.getX(i+2));g.index.setX(i+2,v)}g.computeVertexNormals();
-  const x=clean.reduce((s,q)=>s+q[0]/clean.length,0),z=clean.reduce((s,q)=>s+q[2]/clean.length,0);b.add(g,x<-10&&z>-27&&z<29?'glass':'slate');
+  // Close each measured plane into a thin slab so the roof shell has no open boundary edges.
+  const tri=g.toNonIndexed().getAttribute('position'),slab:number[]=[],minY=Math.min(...clean.map(q=>q[1])),area=Math.abs(clean.reduce((t,q,i)=>{const n=clean[(i+1)%clean.length];return t+q[0]*n[2]-n[0]*q[2]},0))/2,th=area<30&&minY>16?minY-13.4:.3;
+  for(let i=0;i<tri.count;i++){slab.push(tri.getX(i),tri.getY(i),tri.getZ(i));}
+  for(let i=0;i<tri.count;i+=3)for(const k of[0,2,1])slab.push(tri.getX(i+k),tri.getY(i+k)-th,tri.getZ(i+k));
+  for(let i=0;i<clean.length;i++){const a=clean[i],c=clean[(i+1)%clean.length];if(Math.hypot(a[0]-c[0],a[2]-c[2])<.005)continue;slab.push(a[0],a[1],a[2],c[0],c[1],c[2],c[0],c[1]-th,c[2],a[0],a[1],a[2],c[0],c[1]-th,c[2],a[0],a[1]-th,a[2]);}
+  const sg=new T.BufferGeometry();sg.setAttribute('position',new T.Float32BufferAttribute(slab,3));sg.computeVertexNormals();
+  const x=clean.reduce((s,q)=>s+q[0]/clean.length,0),z=clean.reduce((s,q)=>s+q[2]/clean.length,0);
+  // Low rear/west annex roofs (x<-19 m, below 11 m) have no clipped body under them; back them with brick walls to the ground.
+  if(x<-19&&Math.max(...clean.map(q=>q[1]))<11&&!(x>-26&&x<-14&&z>-18&&z<35&&clean.length>12)){const wv:number[]=[];for(let i=0;i<clean.length;i++){const a=clean[i],c=clean[(i+1)%clean.length];if(Math.hypot(a[0]-c[0],a[2]-c[2])<.005)continue;wv.push(a[0],0,a[2],c[0],0,c[2],c[0],c[1]-th,c[2],a[0],0,a[2],c[0],c[1]-th,c[2],a[0],a[1]-th,a[2]);}const wg=new T.BufferGeometry();wg.setAttribute('position',new T.Float32BufferAttribute(wv,3));wg.computeVertexNormals();b.add(wg,'brick');}
+b.add(sg,x<-10&&z>-27&&z<29?'glass':'slate');
  }
  // Four pavilions follow the surveyed crown centers. Their slate mansards
  // support the roof silhouette, while fine iron cresting remains genuinely open.
@@ -71,7 +80,7 @@ export function buildConcertgebouw(_w:number,_d:number,b:BuildingTools):void{
  const ped=new T.Shape([new T.Vector2(-9.3,0),new T.Vector2(9.3,0),new T.Vector2(0,4.9)]),pg=new T.ExtrudeGeometry(ped,{depth:.55,bevelEnabled:false});b.add(pg,'stone',cx,17.4,front-.05);
  // Small faceted figures suggest the relief rather than a texture decal.
  for(let i=-3;i<=3;i++){const x=cx+i*1.85,y=18.0+(.9-Math.abs(i)*.13);b.box(x,y,front+.56,.48,.72,.12,'white');b.add(new T.IcosahedronGeometry(.22,0),'stone',x,y+.95,front+.63)}
- b.box(cx,5.55,front+1.0,19.2,.25,3.6,'frame');// Three round-arched entrance doors (photo: arches at about -4, 0, +4 m under the canopy).
+ b.box(cx,5.55,front+.4,19.2,.25,.8,'frame');// Three round-arched entrance doors (photo: arches at about -4, 0, +4 m under the canopy).
  const archGeo=(w:number,h:number)=>{const sh=new T.Shape();sh.moveTo(-w/2,0);sh.lineTo(w/2,0);sh.lineTo(w/2,h-w/2);sh.absarc(0,h-w/2,w/2,0,Math.PI,false);sh.closePath();return new T.ShapeGeometry(sh,8);};
  for(const dx of[-4,0,4]){const x=cx+dx;b.add(archGeo(3.2,4.5),'stone',x,.7,front+.02);b.add(archGeo(2.5,3.8),'dark',x,.7,front+.04);b.add(archGeo(2.2,3.5),'glass',x,.7,front+.06);b.box(x,.7,front+.09,.08,2.2,.06,'frame');b.box(x,2.2,front+.09,2.2,.07,.06,'frame');}
  // Golden open lyre, readable as an outline above the central hall gable.
