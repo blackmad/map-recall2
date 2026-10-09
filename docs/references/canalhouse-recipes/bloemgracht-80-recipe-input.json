@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "id": "bloemgracht-80",
+  "admissionFile": "docs/references/canalhouse-recipes/bloemgracht-80-source-admission.json",
+  "surveyFile": "docs/references/canalhouse-recipes/bloemgracht-80-survey.json",
+  "lowerReferenceTier": "full",
+  "bodyDatum": {
+    "heightM": 13.85,
+    "sourceReview": "Coarse cornice datum: native endpoint13.666\u201313.847m; no whole-building maximum used"
+  },
+  "frameSets": {
+    "sash": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.065,
+        "frameDepthM": 0.12,
+        "frameSurface": "trim",
+        "barSurface": "door",
+        "verticalBars": [
+          0.5
+        ],
+        "horizontalBars": [
+          0.5,
+          0.76
+        ],
+        "mullionWidthM": 0.035
+      }
+    },
+    "upper": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.06,
+        "frameSurface": "trim",
+        "barSurface": "door",
+        "verticalBars": [
+          0.5
+        ],
+        "horizontalBars": [
+          0.5
+        ],
+        "mullionWidthM": 0.035
+      }
+    },
+    "door": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.07,
+        "frameSurface": "trim",
+        "paneSurface": "door",
+        "barSurface": "door",
+        "verticalBars": [
+          0.5
+        ]
+      }
+    },
+    "transom": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.055,
+        "frameSurface": "trim",
+        "barSurface": "door"
+      }
+    },
+    "cellar": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.055,
+        "frameSurface": "trim",
+        "paneSurface": "door",
+        "verticalBars": [
+          0.5
+        ]
+      }
+    },
+    "glazedEntry": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.065,
+        "paneSurface": "glass",
+        "verticalBars": [
+          0.5
+        ],
+        "horizontalBars": [
+          0.5,
+          0.76
+        ],
+        "barSurface": "door"
+      }
+    }
+  },
+  "baySets": {
+    "three": {
+      "template": "regular",
+      "ids": [
+        "left",
+        "middle",
+        "right"
+      ],
+      "left": 0.075,
+      "width": 0.235,
+      "step": 0.31
+    }
+  },
+  "windowGroups": [
+    {
+      "id": "upperThree",
+      "baySet": "three",
+      "tiers": [
+        {
+          "id": "first",
+          "bottom": 0.32,
+          "height": 0.205
+        },
+        {
+          "id": "second",
+          "bottom": 0.58,
+          "height": 0.18
+        },
+        {
+          "id": "third",
+          "bottom": 0.81,
+          "height": 0.13
+        }
+      ],
+      "frame": {
+        "use": "sash"
+      }
+    }
+  ],
+  "openings": [
+    {
+      "id": "left-entry",
+      "kind": "door",
+      "left": 0.07,
+      "bottom": 0.01,
+      "width": 0.2,
+      "height": 0.225,
+      "frame": {
+        "use": "door"
+      },
+      "transom": {
+        "bottom": 0.24,
+        "height": 0.04,
+        "frame": {
+          "template": "plain-frame",
+          "overrides": {
+            "head": "segmental",
+            "headRiseM": 0.15
+          }
+        }
+      }
+    },
+    {
+      "id": "ground-middle",
+      "kind": "window",
+      "left": 0.37,
+      "bottom": 0.03,
+      "width": 0.235,
+      "height": 0.245,
+      "frame": {
+        "use": "sash"
+      }
+    },
+    {
+      "id": "right-entry",
+      "kind": "door",
+      "left": 0.68,
+      "bottom": 0.01,
+      "width": 0.235,
+      "height": 0.265,
+      "frame": {
+        "use": "glazedEntry"
+      }
+    }
+  ],
+  "palette": {
+    "wall": "#916344",
+    "trim": "#e4dfce",
+    "door": "#23312a",
+    "glass": "#31464a",
+    "stone": "#b3afa0",
+    "roof": "#514d47"
+  },
+  "crown": {
+    "depthM": 0.12,
+    "trimWidthM": 0.09
+  },
+  "bands": [
+    {
+      "id": "ground-cap",
+      "left": 0,
+      "bottom": 0.3,
+      "width": 1,
+      "height": 0.018,
+      "depthM": 0.12,
+      "surface": "trim"
+    }
+  ],
+  "ornaments": [],
+  "hoists": [
+    {
+      "id": "central-hoist",
+      "center": 0.5,
+      "height": 1.07,
+      "widthM": 0.14,
+      "beamHeightM": 0.17,
+      "projectionM": 1.2,
+      "surface": "trim"
+    }
+  ],
+  "simplifications": [
+    "Frozen existinglibrary transfer; 3axes\u00d73uppertiers source observed, 9 windows. No shared geometry changes.",
+    "Ground arched left entry, central tall glazing and right glazed entry represented coarsely. Fine yellowbrick ornament and exact lattice held.",
+    "Outer front-hip roof family register-supported; hidden pitch/depth inferred. Preserve native raised flat27, rear24/26 and exact footprint/annex.",
+    "Sourcearchive/gallery/game/performance acceptance pending root; no completion claim.",
+    "First CPU front preserved; one coarse repair makes source-visible right tall glazed entry transparent glass rather than solid door. CPU roof silhouette remains inferred and prominent; source-camera/gallery review required."
+  ],
+  "groundFront": {
+    "id": "white-ground",
+    "left": 0,
+    "bottom": 0,
+    "width": 1,
+    "height": 0.3,
+    "depthM": 0.06,
+    "surface": "trim",
+    "openingIds": [
+      "left-entry",
+      "left-entry-transom",
+      "ground-middle",
+      "right-entry"
+    ]
+  },
+  "cornice": {
+    "bottom": 0.975,
+    "height": 0.035,
+    "depthM": 0.25,
+    "brackets": 0
+  },
+  "roofVolume": {
+    "seedSurfaceIds": [
+      "NL.IMBAG.Pand.0363100012169916-0:lod22:roof:25"
+    ],
+    "depthM": [
+      -0.1,
+      9.3
+    ],
+    "minHeightM": 13.4,
+    "excludedSurfaceIds": [
+      "NL.IMBAG.Pand.0363100012169916-0:lod22:roof:27"
+    ],
+    "sourceReview": "Native front connected25/28/29; raised flat27 and distinct rear24/26 stay native. Register outer volumes front-hip supported; precise hidden geometry inferred."
+  },
+  "roofAssembly": {
+    "template": "symmetric-front-hip",
+    "surfaceIds": [
+      "NL.IMBAG.Pand.0363100012169916-0:lod22:roof:25",
+      "NL.IMBAG.Pand.0363100012169916-0:lod22:roof:28",
+      "NL.IMBAG.Pand.0363100012169916-0:lod22:roof:29"
+    ],
+    "eavesM": 13.85,
+    "ridgeM": 18.15,
+    "hipDepthM": 3,
+    "fit": "native-envelope"
+  }
+}

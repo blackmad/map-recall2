@@ -1,0 +1,2145 @@
+{
+  "schemaVersion": 1,
+  "id": "bloemgracht-106-source-admission",
+  "observedOn": "2026-10-06",
+  "status": "rough-candidate-source-screened-no-visual-acceptance",
+  "officialIdentity": {
+    "address": "Bloemgracht 106",
+    "pandId": "0363100012168157",
+    "vboId": "0363010000588678",
+    "vboSource": {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?bbox=4.876173334224242%2C52.365491736213876%2C4.888430726182581%2C52.38365058073888&cursor=KoE3%7CKrKMzA&f=json&limit=1000",
+      "rawPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/raw/addresses-1.json",
+      "sha256": "1fd646faaad295897fdd85543267f44e99dcca5649566ea1bc3b9ff9cfef01e5",
+      "selectionFeatureId": "f1dfe7f2-e737-52c8-87db-b68afbc5d3fb"
+    },
+    "pandSource": {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?bbox=4.876173334224242%2C52.365491736213876%2C4.888430726182581%2C52.38365058073888&cursor=OqTb%7CKrKMzA&f=json&limit=1000",
+      "rawPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/raw/bag-1.json",
+      "sha256": "0fc623d8b04c12c75e9b175549d64e67d8eea31f141419e67d3ec213312de786"
+    },
+    "joinEvidence": {
+      "method": "Explicit official Pand verblijfsobject.href joins address feature ID; reciprocal VBO pand.href matches official Pand feature ID.",
+      "pandFeatureId": "ce291b04-48ec-50f8-b86b-8f467a36f37f",
+      "vboFeatureIds": [
+        "f1dfe7f2-e737-52c8-87db-b68afbc5d3fb"
+      ],
+      "withdrawnAddressRecordsExcluded": []
+    }
+  },
+  "sourceProvenance": {
+    "raw3DBag": {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/raw/3dbag-14.json",
+      "sha256": "92d632a1444d2a473a143fbef0461567cfe0bd0032aecce056ad53d076eb74ce",
+      "featureIds": [
+        "NL.IMBAG.Pand.0363100012168157"
+      ],
+      "state": "originalcollectionpresent;scope/roofscreeningpending",
+      "url": "https://api.3dbag.nl/collections/pand/items?bbox=120193.15258458864,486517.5184435108,121041.91233257853,488543.7417092414&offset=1401&limit=100",
+      "rawPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/raw/3dbag-14.json"
+    },
+    "sourceCommit": null,
+    "archiveSync": "local-commit-remote-push-pending",
+    "archiveModelManifestPath": "models/bloemgracht-106/manifest.json",
+    "registerGeneration": "datasets/amsterdam-monument-register/2026-10-05T06-10-55-572Z-83107",
+    "registerMatches": [
+      {
+        "source": "rce",
+        "sourceId": "566",
+        "monumentNumber": "566",
+        "recordUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/566",
+        "sourceUris": [
+          "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/rijksmonument/57312"
+        ],
+        "status": [
+          "rijksmonument"
+        ],
+        "statusUris": [
+          "https://data.cultureelerfgoed.nl/term/id/rn/2/b2d9a59a-fe1e-4552-9a05-3c2acddff864"
+        ],
+        "descriptions": [
+          {
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/220230",
+            "text": "Huis (1644) met gevel (XVIII) onder punttop (XIX).",
+            "language": null
+          }
+        ],
+        "locations": [
+          {
+            "type": "literal",
+            "value": "Point (4.879970594559616 52.37470014405545)",
+            "datatype": "http://www.opengis.net/ont/geosparql#wktLiteral"
+          },
+          {
+            "type": "literal",
+            "value": "Point (4.879971254533401 52.3746994918748)",
+            "datatype": "http://www.opengis.net/ont/geosparql#wktLiteral"
+          }
+        ],
+        "bagPandIds": [],
+        "bagVboIds": [
+          "0363010000588678"
+        ],
+        "metadata": [
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/0273a12d-7259-4391-aee2-5dac264aebe9"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "o": {
+              "type": "uri",
+              "value": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/0273a12d-7259-4391-aee2-5dac264aebe9"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/2004/02/skos/core#prefLabel"
+            },
+            "o": {
+              "type": "literal",
+              "value": "rijksmonumentomschrijving"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/34478dea-bf4a-4507-95f8-18cadc4caaf9"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "o": {
+              "type": "uri",
+              "value": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/34478dea-bf4a-4507-95f8-18cadc4caaf9"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/2004/02/skos/core#prefLabel"
+            },
+            "o": {
+              "type": "literal",
+              "value": "BAG"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/34872608-58be-422c-86ad-48b02a3b05bc"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://schema.semantic-web.at/ppt/inScheme"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/3f786c78-e111-4545-be64-f79f495f73f5"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/34872608-58be-422c-86ad-48b02a3b05bc"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://schema.semantic-web.at/ppt/inSubtree"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/1eeb48df-adbb-44b2-bcf1-33e3fe902413"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/34872608-58be-422c-86ad-48b02a3b05bc"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "o": {
+              "type": "uri",
+              "value": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/34872608-58be-422c-86ad-48b02a3b05bc"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/2004/02/skos/core#broader"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/b964b9ca-8f5a-42de-b96c-ce8320db9e95"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/34872608-58be-422c-86ad-48b02a3b05bc"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/2004/02/skos/core#hiddenLabel"
+            },
+            "o": {
+              "type": "literal",
+              "value": "K1170_TFU",
+              "xml:lang": "nl"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/34872608-58be-422c-86ad-48b02a3b05bc"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/2004/02/skos/core#inScheme"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/3f786c78-e111-4545-be64-f79f495f73f5"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/34872608-58be-422c-86ad-48b02a3b05bc"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/2004/02/skos/core#notation"
+            },
+            "o": {
+              "type": "literal",
+              "value": "K1170_TFU",
+              "xml:lang": "nl"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/34872608-58be-422c-86ad-48b02a3b05bc"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/2004/02/skos/core#prefLabel"
+            },
+            "o": {
+              "type": "literal",
+              "value": "Woonhuis",
+              "xml:lang": "nl"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/34872608-58be-422c-86ad-48b02a3b05bc"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/2004/02/skos/core#prefLabel"
+            },
+            "o": {
+              "type": "literal",
+              "value": "Woonhuis"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/34872608-58be-422c-86ad-48b02a3b05bc"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/2004/02/skos/core#scopeNote"
+            },
+            "o": {
+              "type": "literal",
+              "value": "Woonhuizen zijn huizen waarin gewoond wordt.",
+              "xml:lang": "nl"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/34872608-58be-422c-86ad-48b02a3b05bc"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/id/rnce#codeAbr"
+            },
+            "o": {
+              "type": "literal",
+              "value": "K1170_TFU"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/34872608-58be-422c-86ad-48b02a3b05bc"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/id/rnce#hasConceptStatus"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/aad68581-3960-4faf-9758-8ff6d65810d3"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/34872608-58be-422c-86ad-48b02a3b05bc"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/id/rnce#hasSource"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/e8c4156b-36c3-4b7c-8ef6-f97470730c57"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/34872608-58be-422c-86ad-48b02a3b05bc"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/id/rnce#hasSourceHolder"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/1576adc6-1af1-44d0-9d46-593eb6bcad09"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/7731e08b-77bc-4eb9-b325-6849a8ea8b19"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "o": {
+              "type": "uri",
+              "value": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/7731e08b-77bc-4eb9-b325-6849a8ea8b19"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/2004/02/skos/core#prefLabel"
+            },
+            "o": {
+              "type": "literal",
+              "value": "globaal"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/a273be15-311e-4246-b99e-52c2efd97a77"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "o": {
+              "type": "uri",
+              "value": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/a273be15-311e-4246-b99e-52c2efd97a77"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/2004/02/skos/core#prefLabel"
+            },
+            "o": {
+              "type": "literal",
+              "value": "onbekend"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/b2d9a59a-fe1e-4552-9a05-3c2acddff864"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "o": {
+              "type": "uri",
+              "value": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/b2d9a59a-fe1e-4552-9a05-3c2acddff864"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/2004/02/skos/core#prefLabel"
+            },
+            "o": {
+              "type": "literal",
+              "value": "rijksmonument"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/c023fe7d-fc15-459f-8061-091ccbfbfd54"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "o": {
+              "type": "uri",
+              "value": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/c023fe7d-fc15-459f-8061-091ccbfbfd54"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/2004/02/skos/core#prefLabel"
+            },
+            "o": {
+              "type": "literal",
+              "value": "onbekend"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/f30ec8d9-bd22-40e1-bf32-026721041e47"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "o": {
+              "type": "uri",
+              "value": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/f30ec8d9-bd22-40e1-bf32-026721041e47"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/2004/02/skos/core#prefLabel"
+            },
+            "o": {
+              "type": "literal",
+              "value": "puntlocatie"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/fc966a68-8863-4970-a83e-110f96006c21"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "o": {
+              "type": "uri",
+              "value": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/fc966a68-8863-4970-a83e-110f96006c21"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/2004/02/skos/core#prefLabel"
+            },
+            "o": {
+              "type": "literal",
+              "value": "onroerend gebouwd"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/bagrelatie/74427"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#BAGRelatie"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/bagrelatie/74427"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#BAGRelatienummer"
+            },
+            "o": {
+              "type": "literal",
+              "value": "74427"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/bagrelatie/74427"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#heeftVerblijfsobject"
+            },
+            "o": {
+              "type": "uri",
+              "value": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0363010000588678"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/bagrelatie/74427"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#huisnummer"
+            },
+            "o": {
+              "type": "literal",
+              "value": "106"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/bagrelatie/74427"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#openbareRuimte"
+            },
+            "o": {
+              "type": "literal",
+              "value": "Bloemgracht"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/bagrelatie/74427"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#postcode"
+            },
+            "o": {
+              "type": "literal",
+              "value": "1015TN"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/bagrelatie/74427"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#verblijfsobjectIdentificatie"
+            },
+            "o": {
+              "type": "literal",
+              "value": "0363010000588678"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/bagrelatie/74427"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#volledigAdres"
+            },
+            "o": {
+              "type": "literal",
+              "value": "Bloemgracht 106"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/bagrelatie/74427"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#woonplaatsnaam"
+            },
+            "o": {
+              "type": "literal",
+              "value": "Amsterdam"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/basisregistratierelatie/67432"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#BasisregistratieRelatie"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/basisregistratierelatie/67432"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#generatedAtTime"
+            },
+            "o": {
+              "type": "literal",
+              "value": "2026-08-21",
+              "datatype": "http://www.w3.org/2001/XMLSchema#date"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/basisregistratierelatie/67432"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/ns/prov#wasDerivedFrom"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://data.kkg.kadaster.nl/id/perceel/11490365970000/1"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/basisregistratierelatie/67432"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/graph/kadastrale-gemeente-correctie#afstandTotMonumentpuntMeter"
+            },
+            "o": {
+              "type": "literal",
+              "value": "0",
+              "datatype": "http://www.w3.org/2001/XMLSchema#decimal"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/basisregistratierelatie/67432"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/graph/kadastrale-gemeente-correctie#betreftMonument"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/rijksmonument/57312"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/basisregistratierelatie/67432"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/graph/kadastrale-gemeente-correctie#zekerheid"
+            },
+            "o": {
+              "type": "literal",
+              "value": "HOOG (exacte punt-in-perceel match)"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/basisregistratierelatie/67432"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#basisregistratieRelatienummer"
+            },
+            "o": {
+              "type": "literal",
+              "value": "67432"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/basisregistratierelatie/67432"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#gemeentenaam"
+            },
+            "o": {
+              "type": "literal",
+              "value": "Amsterdam"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/basisregistratierelatie/67432"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#heeftBAGRelatie"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/bagrelatie/74427"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/basisregistratierelatie/67432"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#heeftBRKRelatie"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/brkrelatie/86401"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/basisregistratierelatie/67432"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#heeftGemeente"
+            },
+            "o": {
+              "type": "uri",
+              "value": "http://standaarden.overheid.nl/owms/terms/Amsterdam"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/basisregistratierelatie/67432"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#heeftProvincie"
+            },
+            "o": {
+              "type": "uri",
+              "value": "http://standaarden.overheid.nl/owms/terms/Noord-Holland"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/basisregistratierelatie/67432"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#kadastraleGemeentecode"
+            },
+            "o": {
+              "type": "literal",
+              "value": "1149"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/basisregistratierelatie/67432"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#perceelnummer"
+            },
+            "o": {
+              "type": "literal",
+              "value": "3659"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/basisregistratierelatie/67432"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#sectie"
+            },
+            "o": {
+              "type": "literal",
+              "value": "L"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/brkrelatie/86401"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#BRKRelatie"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/brkrelatie/86401"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#BRKRelatienummer"
+            },
+            "o": {
+              "type": "literal",
+              "value": "86401"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/brkrelatie/86401"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#gemeentecode"
+            },
+            "o": {
+              "type": "literal",
+              "value": "42"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/brkrelatie/86401"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#gemeentenaam"
+            },
+            "o": {
+              "type": "literal",
+              "value": "Amsterdam"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/brkrelatie/86401"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#perceelnummer"
+            },
+            "o": {
+              "type": "literal",
+              "value": "3659"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/brkrelatie/86401"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#provinciecode"
+            },
+            "o": {
+              "type": "literal",
+              "value": "NH"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/brkrelatie/86401"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#sectie"
+            },
+            "o": {
+              "type": "literal",
+              "value": "L"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/functie/10219557"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#Functie"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/functie/10219557"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#Kennisregistratie"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/functie/10219557"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#formeelStandpunt"
+            },
+            "o": {
+              "type": "literal",
+              "value": "true",
+              "datatype": "http://www.w3.org/2001/XMLSchema#boolean"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/functie/10219557"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#heeftBetrekkingOp"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/rijksmonument/57312"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/functie/10219557"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#heeftFunctieNaam"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/34872608-58be-422c-86ad-48b02a3b05bc"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/functie/10219557"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#hoofdfunctie"
+            },
+            "o": {
+              "type": "literal",
+              "value": "true",
+              "datatype": "http://www.w3.org/2001/XMLSchema#boolean"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/functie/10219557"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#kennisregistratienummer"
+            },
+            "o": {
+              "type": "literal",
+              "value": "10219557"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/functie/10219557"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#registratiedatum"
+            },
+            "o": {
+              "type": "literal",
+              "value": "1992-03-28",
+              "datatype": "http://www.w3.org/2001/XMLSchema#date"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/geometrie/56560"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.opengis.net/ont/geosparql#asWKT"
+            },
+            "o": {
+              "type": "literal",
+              "value": "Point (4.879970594559616 52.37470014405545)",
+              "datatype": "http://www.opengis.net/ont/geosparql#wktLiteral"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/geometrie/56560"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.opengis.net/ont/geosparql#asWKT"
+            },
+            "o": {
+              "type": "literal",
+              "value": "Point (4.879971254533401 52.3746994918748)",
+              "datatype": "http://www.opengis.net/ont/geosparql#wktLiteral"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/geometrie/56560"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#Geometrie"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/geometrie/56560"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#asWKT-RD"
+            },
+            "o": {
+              "type": "literal",
+              "value": "POINT(120459 487546)"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/geometrie/56560"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#geometrienummer"
+            },
+            "o": {
+              "type": "literal",
+              "value": "56560"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/geometrie/56560"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#heeftGeometrieKwaliteit"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/7731e08b-77bc-4eb9-b325-6849a8ea8b19"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/geometrie/56560"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#heeftGeometrieStatus"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/f30ec8d9-bd22-40e1-bf32-026721041e47"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/geometrie/56560"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#heeftHerkomst"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/34478dea-bf4a-4507-95f8-18cadc4caaf9"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/locatieaanduiding/38795"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#LocatieAanduiding"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/locatieaanduiding/38795"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#heeftLocatieAanduidingStatus"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/c023fe7d-fc15-459f-8061-091ccbfbfd54"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/locatieaanduiding/38795"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#locatieAanduidingnummer"
+            },
+            "o": {
+              "type": "literal",
+              "value": "38795"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/locatieaanduiding/38795"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#locatienaam"
+            },
+            "o": {
+              "type": "literal",
+              "value": "Amsterdam"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/220230"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#Kennisregistratie"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/220230"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#Omschrijving"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/220230"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#formeelStandpunt"
+            },
+            "o": {
+              "type": "literal",
+              "value": "true",
+              "datatype": "http://www.w3.org/2001/XMLSchema#boolean"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/220230"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#heeftBetrekkingOp"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/rijksmonument/57312"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/220230"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#heeftOmschrijvingstype"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/0273a12d-7259-4391-aee2-5dac264aebe9"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/220230"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#kennisregistratienummer"
+            },
+            "o": {
+              "type": "literal",
+              "value": "220230"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/220230"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#omschrijving"
+            },
+            "o": {
+              "type": "literal",
+              "value": "Huis (1644) met gevel (XVIII) onder punttop (XIX)."
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/220230"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#registratiedatum"
+            },
+            "o": {
+              "type": "literal",
+              "value": "1992-03-28",
+              "datatype": "http://www.w3.org/2001/XMLSchema#date"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/rijksmonument/57312"
+            },
+            "p": {
+              "type": "uri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#Rijksmonument"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/rijksmonument/57312"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#cultuurhistorischObjectnummer"
+            },
+            "o": {
+              "type": "literal",
+              "value": "57312"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/rijksmonument/57312"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#datumInschrijvingInMonumentenregister"
+            },
+            "o": {
+              "type": "literal",
+              "value": "1970-04-14",
+              "datatype": "http://www.w3.org/2001/XMLSchema#date"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/rijksmonument/57312"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#heeftBasisregistratieRelatie"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/basisregistratierelatie/67432"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/rijksmonument/57312"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#heeftBebouwdeKomType"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/a273be15-311e-4246-b99e-52c2efd97a77"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/rijksmonument/57312"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#heeftGeometrie"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/geometrie/56560"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/rijksmonument/57312"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#heeftJuridischeStatus"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/b2d9a59a-fe1e-4552-9a05-3c2acddff864"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/rijksmonument/57312"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#heeftKennisregistratie"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/functie/10219557"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/rijksmonument/57312"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#heeftKennisregistratie"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/220230"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/rijksmonument/57312"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#heeftLocatieAanduiding"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/locatieaanduiding/38795"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/rijksmonument/57312"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#heeftMonumentAard"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://data.cultureelerfgoed.nl/term/id/rn/2/fc966a68-8863-4970-a83e-110f96006c21"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/rijksmonument/57312"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#heeftOmschrijving"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/220230"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/rijksmonument/57312"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#heeftOorspronkelijkeFunctie"
+            },
+            "o": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/functie/10219557"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/rijksmonument/57312"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#kadasterdeel"
+            },
+            "o": {
+              "type": "literal",
+              "value": "82910"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/rijksmonument/57312"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#kadasterdeelnummer"
+            },
+            "o": {
+              "type": "literal",
+              "value": "119"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/rijksmonument/57312"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#registratiedatum"
+            },
+            "o": {
+              "type": "literal",
+              "value": "2021-11-25",
+              "datatype": "http://www.w3.org/2001/XMLSchema#date"
+            }
+          },
+          {
+            "s": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/rijksmonument/57312"
+            },
+            "p": {
+              "type": "uri",
+              "value": "https://linkeddata.cultureelerfgoed.nl/def/ceo#rijksmonumentnummer"
+            },
+            "o": {
+              "type": "literal",
+              "value": "566"
+            }
+          }
+        ]
+      },
+      {
+        "source": "amsterdam",
+        "sourceId": "02e04fe7-3b3f-40b1-a36e-973da52d86a3",
+        "monumentNumber": "566",
+        "recordUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/02e04fe7-3b3f-40b1-a36e-973da52d86a3?_format=json",
+        "status": "Rijksmonument",
+        "withdrawnAt": null,
+        "bagPandIds": [
+          "0363100012168157"
+        ],
+        "descriptions": [],
+        "metadata": {
+          "_links": {
+            "schema": "https://schemas.data.amsterdam.nl/datasets/monumenten/monumenten/v2",
+            "self": {
+              "href": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/02e04fe7-3b3f-40b1-a36e-973da52d86a3?_format=json",
+              "title": "Bloemgracht 106",
+              "identificatie": "02e04fe7-3b3f-40b1-a36e-973da52d86a3"
+            },
+            "betreftBagPand": [
+              {
+                "href": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012168157?_format=json&volgnummer=4",
+                "title": "0363100012168157",
+                "identificatie": "0363100012168157",
+                "volgnummer": 4,
+                "beginGeldigheid": "2023-09-28T02:00:00"
+              }
+            ],
+            "heeftMonumentenSitueringen": [
+              {
+                "href": "https://api.data.amsterdam.nl/v1/monumenten/situeringen/02e04fe7-3b3f-40b1-a36e-973da52d86a3.0363200000051101?_format=json",
+                "identificatie": "02e04fe7-3b3f-40b1-a36e-973da52d86a3.0363200000051101",
+                "title": "02e04fe7-3b3f-40b1-a36e-973da52d86a3.0363200000051101"
+              }
+            ]
+          },
+          "identificatie": "02e04fe7-3b3f-40b1-a36e-973da52d86a3",
+          "monumentnummer": 566,
+          "weergavenaam": "Bloemgracht 106",
+          "adressering": "Bloemgracht 106",
+          "naam": null,
+          "type": "Pand",
+          "status": "Rijksmonument",
+          "datumAanwijzing": null,
+          "datumAfvoeren": null,
+          "inOnderzoek": "N",
+          "architectOntwerp": null,
+          "opdrachtgeverBouw": null,
+          "jaarBeginVan": null,
+          "jaarBeginTot": null,
+          "oorspronkelijkeFunctie": "wonen",
+          "puntCoordinaten": {
+            "type": "Point",
+            "coordinates": [
+              120459,
+              487546
+            ]
+          },
+          "geometrie": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  120456.527,
+                  487557.917
+                ],
+                [
+                  120454.84,
+                  487557.3
+                ],
+                [
+                  120455.902,
+                  487554.281
+                ],
+                [
+                  120456.697,
+                  487553.976
+                ],
+                [
+                  120457.076,
+                  487552.9
+                ],
+                [
+                  120454.726,
+                  487552.04
+                ],
+                [
+                  120458.562,
+                  487541.128
+                ],
+                [
+                  120461.96,
+                  487542.389
+                ],
+                [
+                  120461.923,
+                  487542.475
+                ],
+                [
+                  120456.527,
+                  487557.917
+                ]
+              ]
+            ]
+          },
+          "contour": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    120456.527,
+                    487557.917
+                  ],
+                  [
+                    120454.84,
+                    487557.3
+                  ],
+                  [
+                    120455.902,
+                    487554.281
+                  ],
+                  [
+                    120456.697,
+                    487553.976
+                  ],
+                  [
+                    120457.076,
+                    487552.9
+                  ],
+                  [
+                    120454.726,
+                    487552.04
+                  ],
+                  [
+                    120458.562,
+                    487541.128
+                  ],
+                  [
+                    120461.96,
+                    487542.389
+                  ],
+                  [
+                    120461.923,
+                    487542.475
+                  ],
+                  [
+                    120456.527,
+                    487557.917
+                  ]
+                ]
+              ]
+            ]
+          },
+          "redengevendeOmschrijvingPubliek": null,
+          "beschrijvingPubliek": null,
+          "ligtInMonumentenComplexId": null,
+          "datumActueelTot": null
+        }
+      }
+    ],
+    "processedReferences": [
+      {
+        "tier": "context",
+        "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/cf1ccd7a6483fa64952b81df4d9ce2c4ca89d28ec0c11561932907b7ff61f6f5/evidence/images/0363100012168157_e_0ssn6fr-context.jpg",
+        "sha256": "7a23719a9a765509e98187fe659061d366776d644fcbb6b29b631cb5de482512",
+        "captureDate": "2023-02-13T09:37:00.371590Z",
+        "panoramaId": "TMX7316010203-002967_pano_0003_000121",
+        "nativeDimensions": [
+          4000,
+          2000
+        ],
+        "plane": {
+          "start": {
+            "x": 120456.18432306105,
+            "y": 487540.24559882464
+          },
+          "end": {
+            "x": 120464.3395227115,
+            "y": 487543.2719988742
+          },
+          "baseZ": -0.27199999913573264,
+          "topZ": 15.32
+        },
+        "datum": "published-minus-43.5m; track-unsolved",
+        "heightInferred": false,
+        "visibility": {
+          "version": "footprint-interior-traversal/v1",
+          "hiddenFraction": 0,
+          "rayBlockers": [
+            [],
+            [],
+            []
+          ]
+        },
+        "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/cf1ccd7a6483fa64952b81df4d9ce2c4ca89d28ec0c11561932907b7ff61f6f5/evidence/manifest.json",
+        "derivationKey": "10490bec957a1ac73783fcf31391a78bc630aed4c1810ca8c91d58399033f767",
+        "metricEligible": false,
+        "checksumVerified": true,
+        "originalCached": true,
+        "originalPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/cf1ccd7a6483fa64952b81df4d9ce2c4ca89d28ec0c11561932907b7ff61f6f5/evidence/panoramas/TMX7316010203-002967_pano_0003_000121.jpg",
+        "originalSha256": "3a370ba2c516bec6fa4f0d835ada1566d314b9546a36b1ccfec77c24a5b76e13",
+        "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2023/02/13/TMX7316010203-002967/pano_0003_000121/equirectangular/panorama_4000.jpg"
+      },
+      {
+        "tier": "full",
+        "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/cf1ccd7a6483fa64952b81df4d9ce2c4ca89d28ec0c11561932907b7ff61f6f5/evidence/images/0363100012168157_e_0ssn6fr-full.jpg",
+        "sha256": "2d5bda387dd7b0a9e91438e6d7a13399d77735c64142e636c8b40b561656e477",
+        "captureDate": "2023-02-13T09:37:00.371590Z",
+        "panoramaId": "TMX7316010203-002967_pano_0003_000121",
+        "nativeDimensions": [
+          4000,
+          2000
+        ],
+        "plane": {
+          "start": {
+            "x": 120458.49496296201,
+            "y": 487541.10307883867
+          },
+          "end": {
+            "x": 120462.02888281054,
+            "y": 487542.41451886017
+          },
+          "baseZ": -0.27199999913573264,
+          "topZ": 15.32
+        },
+        "datum": "published-minus-43.5m; track-unsolved",
+        "heightInferred": false,
+        "visibility": {
+          "version": "footprint-interior-traversal/v1",
+          "hiddenFraction": 0,
+          "rayBlockers": [
+            [],
+            [],
+            []
+          ]
+        },
+        "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/cf1ccd7a6483fa64952b81df4d9ce2c4ca89d28ec0c11561932907b7ff61f6f5/evidence/manifest.json",
+        "derivationKey": "10490bec957a1ac73783fcf31391a78bc630aed4c1810ca8c91d58399033f767",
+        "metricEligible": false,
+        "checksumVerified": true,
+        "originalCached": true,
+        "originalPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/cf1ccd7a6483fa64952b81df4d9ce2c4ca89d28ec0c11561932907b7ff61f6f5/evidence/panoramas/TMX7316010203-002967_pano_0003_000121.jpg",
+        "originalSha256": "3a370ba2c516bec6fa4f0d835ada1566d314b9546a36b1ccfec77c24a5b76e13",
+        "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2023/02/13/TMX7316010203-002967/pano_0003_000121/equirectangular/panorama_4000.jpg"
+      },
+      {
+        "tier": "ground",
+        "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/cf1ccd7a6483fa64952b81df4d9ce2c4ca89d28ec0c11561932907b7ff61f6f5/evidence/images/0363100012168157_e_0ssn6fr-ground.jpg",
+        "sha256": "1c8e88b6973cadb79f6d71d520db1a4dd6b5305576e4651613f4b42670221efa",
+        "captureDate": "2023-02-06T10:53:03.492350Z",
+        "panoramaId": "TMX7316010203-002961_pano_0003_000089",
+        "nativeDimensions": [
+          4000,
+          2000
+        ],
+        "plane": {
+          "start": {
+            "x": 120458.49496296201,
+            "y": 487541.10307883867
+          },
+          "end": {
+            "x": 120462.02888281054,
+            "y": 487542.41451886017
+          },
+          "baseZ": -0.27199999913573264,
+          "topZ": 4.628000000864267
+        },
+        "datum": "published-minus-43.5m; track-unsolved",
+        "heightInferred": false,
+        "visibility": {
+          "version": "footprint-interior-traversal/v1",
+          "hiddenFraction": 0,
+          "rayBlockers": [
+            [],
+            [],
+            []
+          ]
+        },
+        "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/cf1ccd7a6483fa64952b81df4d9ce2c4ca89d28ec0c11561932907b7ff61f6f5/evidence/manifest.json",
+        "derivationKey": "10490bec957a1ac73783fcf31391a78bc630aed4c1810ca8c91d58399033f767",
+        "metricEligible": false,
+        "checksumVerified": true,
+        "originalCached": true,
+        "originalPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/cf1ccd7a6483fa64952b81df4d9ce2c4ca89d28ec0c11561932907b7ff61f6f5/evidence/panoramas/TMX7316010203-002961_pano_0003_000089.jpg",
+        "originalSha256": "ef949bdf82060a30a99c55d82b0f2e6ef17327210060a127ddb5b802236878f7",
+        "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2023/02/06/TMX7316010203-002961/pano_0003_000089/equirectangular/panorama_4000.jpg"
+      },
+      {
+        "tier": "roof",
+        "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/cf1ccd7a6483fa64952b81df4d9ce2c4ca89d28ec0c11561932907b7ff61f6f5/evidence/images/0363100012168157_e_0ssn6fr-roof.jpg",
+        "sha256": "7c28bda77668369cc33c81eeddec4a5ca1d730c12d865b3bba70c5302106ec3a",
+        "captureDate": "2023-02-13T09:37:00.371590Z",
+        "panoramaId": "TMX7316010203-002967_pano_0003_000121",
+        "nativeDimensions": [
+          4000,
+          2000
+        ],
+        "plane": {
+          "start": {
+            "x": 120458.49496296201,
+            "y": 487541.10307883867
+          },
+          "end": {
+            "x": 120462.02888281054,
+            "y": 487542.41451886017
+          },
+          "baseZ": 7.120000000000001,
+          "topZ": 15.32
+        },
+        "datum": "published-minus-43.5m; track-unsolved",
+        "heightInferred": false,
+        "visibility": {
+          "version": "footprint-interior-traversal/v1",
+          "hiddenFraction": 0,
+          "rayBlockers": [
+            [],
+            [],
+            []
+          ]
+        },
+        "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/cf1ccd7a6483fa64952b81df4d9ce2c4ca89d28ec0c11561932907b7ff61f6f5/evidence/manifest.json",
+        "derivationKey": "10490bec957a1ac73783fcf31391a78bc630aed4c1810ca8c91d58399033f767",
+        "metricEligible": false,
+        "checksumVerified": true,
+        "originalCached": true,
+        "originalPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/cf1ccd7a6483fa64952b81df4d9ce2c4ca89d28ec0c11561932907b7ff61f6f5/evidence/panoramas/TMX7316010203-002967_pano_0003_000121.jpg",
+        "originalSha256": "3a370ba2c516bec6fa4f0d835ada1566d314b9546a36b1ccfec77c24a5b76e13",
+        "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2023/02/13/TMX7316010203-002967/pano_0003_000121/equirectangular/panorama_4000.jpg"
+      }
+    ],
+    "privateLocalPack": "/tmp/canalhouse-bloemgracht-five-front-trial-20261006",
+    "beeldbankAccess": "No new fetch; municipal-reference-first ordinary-house trial. Targeted unresolved archive research deferred.",
+    "localArchiveCommit": "5c4075851edf1e348fe6732517c2394a2ac83f63",
+    "processedCorrectionPath": "models/bloemgracht-106/processed/corrections/20261006-entry-transom/manifest.json"
+  },
+  "native": {
+    "surveyFootprintPolygonsRD": [
+      [
+        [
+          [
+            120461.964,
+            487542.37875
+          ],
+          [
+            120460.297,
+            487541.76074999996
+          ],
+          [
+            120458.566,
+            487541.11874999997
+          ],
+          [
+            120454.73,
+            487552.02975
+          ],
+          [
+            120456.364,
+            487552.62875
+          ],
+          [
+            120457.08,
+            487552.89074999996
+          ],
+          [
+            120456.701,
+            487553.96575
+          ],
+          [
+            120455.906,
+            487554.27174999996
+          ],
+          [
+            120454.843,
+            487557.28975
+          ],
+          [
+            120456.531,
+            487557.90774999995
+          ],
+          [
+            120458.097,
+            487553.43075
+          ]
+        ]
+      ]
+    ],
+    "municipalBagGeometryWGS84": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.879933724130799,
+            52.37480644920169
+          ],
+          [
+            4.879909014904343,
+            52.37480079792486
+          ],
+          [
+            4.879924920098437,
+            52.374773732160705
+          ],
+          [
+            4.879936625569332,
+            52.374771041055396
+          ],
+          [
+            4.879942301565033,
+            52.37476139459235
+          ],
+          [
+            4.879907881568911,
+            52.374753517699794
+          ],
+          [
+            4.87996533255906,
+            52.37465568989772
+          ],
+          [
+            4.880015100521756,
+            52.37466723658879
+          ],
+          [
+            4.880014548360899,
+            52.37466800716702
+          ],
+          [
+            4.879933724130799,
+            52.37480644920169
+          ]
+        ]
+      ]
+    }
+  },
+  "principalFront": {
+    "orientedLeftToRightAsSeenFromCanal": [
+      [
+        120458.566,
+        487541.11874999997
+      ],
+      [
+        120461.964,
+        487542.37875
+      ]
+    ],
+    "facadePlaneToleranceM": 0.3
+  },
+  "heights": {
+    "groundNapM": 0.02800000086426735,
+    "bodyEavesNominalM": 9.459500884145498,
+    "bodyEavesAdmission": "Lower original roof height at source-selected facade ends; crown peak excluded.110unequal corner heights explicitly held.",
+    "endpointHeightCandidatesM": [
+      [
+        9.459500884145498
+      ],
+      [
+        9.584500884145498
+      ]
+    ]
+  },
+  "houses": [
+    {
+      "id": "bloemgracht-106",
+      "pandId": "0363100012168157",
+      "address": "Bloemgracht 106",
+      "crown": {
+        "label": "punt",
+        "profileNormalized": [
+          [
+            0,
+            1
+          ],
+          [
+            0.5,
+            1.31
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "sources": {
+        "captureDate": "2023-02-13T09:37:00.371590Z",
+        "nearCaptureDate": "2023-02-06T10:53:03.492350Z",
+        "projection": {
+          "camera": {
+            "pano_id": "TMX7316010203-002967_pano_0003_000121",
+            "timestamp": "2023-02-13T09:37:00.371590Z",
+            "_links": {
+              "equirectangular_medium": {
+                "href": "https://t1.data.amsterdam.nl/panorama/2023/02/13/TMX7316010203-002967/pano_0003_000121/equirectangular/panorama_4000.jpg"
+              }
+            },
+            "poseAccess": "Processed cached projection metadata; original panorama and collection response retained.",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.880275298220886,
+                52.374503021161665,
+                0
+              ]
+            },
+            "poseFromCache": {
+              "x": 120479.55178267733,
+              "y": 487523.99396575126,
+              "z": 3.572885619476402,
+              "headingDeg": 246.997227134758,
+              "pitchDeg": -1.14049300412289,
+              "rollDeg": 0.568607395489678
+            }
+          },
+          "headingDeg": -47.36834058348947,
+          "pitchDeg": 12,
+          "fovDeg": 65
+        },
+        "nearCamera": {
+          "pano_id": "TMX7316010203-002961_pano_0003_000089",
+          "timestamp": "2023-02-06T10:53:03.492350Z",
+          "_links": {
+            "equirectangular_medium": {
+              "href": "https://t1.data.amsterdam.nl/panorama/2023/02/06/TMX7316010203-002961/pano_0003_000089/equirectangular/panorama_4000.jpg"
+            }
+          },
+          "poseAccess": "Processed cached projection metadata; original panorama and collection response retained.",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              4.8799998393752935,
+              52.37462868400117,
+              0
+            ]
+          },
+          "poseFromCache": {
+            "x": 120460.89187632524,
+            "y": 487538.1068379745,
+            "z": 2.7748356377706003,
+            "headingDeg": 67.3216228931736,
+            "pitchDeg": -0.628392058355215,
+            "rollDeg": 2.83933293646794
+          }
+        },
+        "principalImage": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/cf1ccd7a6483fa64952b81df4d9ce2c4ca89d28ec0c11561932907b7ff61f6f5/evidence/images/0363100012168157_e_0ssn6fr-full.jpg",
+        "nearImage": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/cf1ccd7a6483fa64952b81df4d9ce2c4ca89d28ec0c11561932907b7ff61f6f5/evidence/images/0363100012168157_e_0ssn6fr-ground.jpg",
+        "registerUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/566",
+        "registerDescription": [
+          "Huis (1644) met gevel (XVIII) onder punttop (XIX)."
+        ],
+        "nearWholeRootCrop": "/tmp/canalhouse-bloemgracht-five-front-trial-20261006/106-near-perspective.jpg",
+        "rootInspection": "Whole near-perspective,full/roof/ground sources inspected; dimensions drawing approximations.",
+        "rights": "Gemeente Amsterdam \u00b7 CC BY 4.0"
+      },
+      "criticalTraits": "Two main axes; dark masonry with pale frames; right entrance and tall left ground window.",
+      "uncertainties": [
+        "World-aligned cached source convention retained; source camera heights/metric registration not calibrated.",
+        "All recipe proportions are coarse visual choices, not surveyed window dimensions."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 1,
+  "id": "bloemgracht-120",
+  "admissionFile": "docs/references/canalhouse-recipes/bloemgracht-120-source-admission.json",
+  "surveyFile": "docs/references/canalhouse-recipes/bloemgracht-120-survey.json",
+  "frameSets": {
+    "sash": {
+      "template": "plain-frame",
+      "overrides": {
+        "verticalBars": [
+          0.5
+        ],
+        "horizontalBars": [
+          0.32,
+          0.68
+        ]
+      }
+    },
+    "upper": {
+      "template": "plain-frame",
+      "overrides": {
+        "verticalBars": [
+          0.5
+        ],
+        "horizontalBars": [
+          0.5
+        ]
+      }
+    },
+    "door": {
+      "template": "plain-frame",
+      "overrides": {
+        "verticalBars": [],
+        "horizontalBars": []
+      }
+    },
+    "transom": {
+      "template": "plain-frame",
+      "overrides": {
+        "verticalBars": [],
+        "horizontalBars": []
+      }
+    },
+    "paneled-leaf": {
+      "template": "four-panel-door"
+    }
+  },
+  "baySets": {
+    "axes": {
+      "template": "regular",
+      "ids": [
+        "axis0",
+        "axis1",
+        "axis2"
+      ],
+      "left": 0.06,
+      "width": 0.22,
+      "step": 0.33
+    }
+  },
+  "windowGroups": [
+    {
+      "id": "main",
+      "baySet": "axes",
+      "tiers": [
+        {
+          "id": "lower",
+          "bottom": 0.43848,
+          "height": 0.21924
+        },
+        {
+          "id": "middle",
+          "bottom": 0.7368899999999999,
+          "height": 0.17052
+        }
+      ],
+      "frame": {
+        "use": "sash"
+      }
+    },
+    {
+      "id": "upper",
+      "baySet": "axes",
+      "tiers": [
+        {
+          "id": "top",
+          "bottom": 0.9744,
+          "height": 0.14615999999999998
+        }
+      ],
+      "frame": {
+        "use": "upper"
+      }
+    }
+  ],
+  "openings": [
+    {
+      "id": "ground-window",
+      "kind": "window",
+      "left": 0.055,
+      "bottom": 0.13,
+      "width": 0.4,
+      "height": 0.235,
+      "frame": {
+        "use": "sash"
+      }
+    },
+    {
+      "id": "entry-left",
+      "kind": "door",
+      "left": 0.565,
+      "bottom": 0.13,
+      "width": 0.185,
+      "height": 0.2,
+      "frame": {
+        "use": "paneled-leaf"
+      },
+      "transom": {
+        "bottom": 0.345,
+        "height": 0.05,
+        "frame": {
+          "use": "transom"
+        }
+      }
+    },
+    {
+      "id": "entry-right",
+      "kind": "door",
+      "left": 0.755,
+      "bottom": 0.13,
+      "width": 0.185,
+      "height": 0.2,
+      "frame": {
+        "use": "paneled-leaf"
+      },
+      "transom": {
+        "bottom": 0.345,
+        "height": 0.05,
+        "frame": {
+          "use": "transom"
+        }
+      }
+    },
+    {
+      "id": "cellar-window",
+      "kind": "window",
+      "left": 0.055,
+      "bottom": 0.02,
+      "width": 0.22,
+      "height": 0.08,
+      "frame": {
+        "use": "sash"
+      }
+    },
+    {
+      "id": "cellar-door",
+      "kind": "door",
+      "left": 0.32,
+      "bottom": 0.005,
+      "width": 0.18,
+      "height": 0.105,
+      "frame": {
+        "use": "door"
+      }
+    }
+  ],
+  "palette": {
+    "wall": "#44312b",
+    "roof": "#494744",
+    "trim": "#d9d8cb",
+    "stone": "#858e89",
+    "glass": "#293e42",
+    "door": "#26342f"
+  },
+  "crown": {
+    "depthM": 0.1,
+    "trimWidthM": 0.065
+  },
+  "bands": [],
+  "ornaments": [],
+  "cornice": {
+    "bottom": 1.17537,
+    "height": 0.04263,
+    "depthM": 0.2,
+    "brackets": 0,
+    "assembly": {
+      "template": "lip-frieze-cap"
+    }
+  },
+  "simplifications": [
+    "Original native footprint/roof retained. Drawing proportions and camera height uncalibrated.",
+    "Fine carving, real text, plants/bicycles and exact stair counts omitted.",
+    "No custom geometry builder; frozen shared components.",
+    "120front-facing flight needs source-supported outward-depth contour; landing admitted, flight remains omitted/held rather than lateral fabricated stairs.",
+    "Straight principal facade top uses native front-wall crest as candidate datum, not equipment maximum; native/source height comparison held.",
+    "Front flight rise follows the candidate threshold; run and riser spacing are coarse visualization parameters, not calibrated dimensions or exact current tread count.",
+    "Dated2023/2026aerials support a longitudinal pitched roof with localized flat-topped front/middle insert. Shared raised-flat insert raises base roof locally without excavating ridge; native38 irregular fit mask is not assumed to be actual dormer outline. Wholemain38\u201342 coarse gable +sideinsert estimates eaves12.25/ridge15.3,insertcap14.65m, rectangle.25/2.4/.8/5.8m are uncalibrated drawing estimates. Excluded rear37/43/44/45 exact; visibleinsert/roofrelation reviewed separately; unseen windows/terrace access not invented."
+  ],
+  "landing": {
+    "left": 0.55,
+    "width": 0.405,
+    "top": 0.13,
+    "depthM": 1,
+    "thicknessM": 0.07
+  },
+  "groundFront": {
+    "id": "stone-base",
+    "left": 0,
+    "bottom": 0,
+    "width": 1,
+    "height": 0.13,
+    "depthM": 0.055,
+    "surface": "stone",
+    "openingIds": [
+      "cellar-window",
+      "cellar-door"
+    ]
+  },
+  "entrance": {
+    "left": 0.55,
+    "width": 0.405,
+    "rise": 0.13,
+    "runM": 1.25,
+    "approximateRiserM": 0.22,
+    "attachToLanding": true,
+    "rails": {
+      "heightM": 0.8,
+      "widthM": 0.04,
+      "sides": [
+        "left",
+        "right"
+      ]
+    },
+    "surface": "stone"
+  },
+  "roofAssembly": {
+    "template": "symmetric-gable",
+    "fit": "native-envelope",
+    "surfaceIds": [
+      "NL.IMBAG.Pand.0363100012168077-0:lod22:roof:38",
+      "NL.IMBAG.Pand.0363100012168077-0:lod22:roof:39",
+      "NL.IMBAG.Pand.0363100012168077-0:lod22:roof:40",
+      "NL.IMBAG.Pand.0363100012168077-0:lod22:roof:41",
+      "NL.IMBAG.Pand.0363100012168077-0:lod22:roof:42"
+    ],
+    "eavesM": 12.25,
+    "ridgeM": 15.3,
+    "raisedFlatInserts": [
+      {
+        "id": "flat-side-insert",
+        "leftM": 0.25,
+        "widthM": 2.4,
+        "nearM": 0.8,
+        "depthM": 5.8,
+        "topM": 14.65
+      }
+    ]
+  }
+}
