@@ -1,0 +1,547 @@
+{
+  "modelId": "zevenlandenhuizen",
+  "status": "source-hold",
+  "rceComplexId": 491876,
+  "poiIdentity": null,
+  "poiIdentityStatus": "No existing genuine ensemble POI found in installed landmarks.json/all.json; coordinator must research/assign one ensemble destination, not seven aliases.",
+  "coordinateConvention": "Installed GeoJSON WGS84 [longitude,latitude], native metres when projected; no placement/bearing accepted.",
+  "privateArchive": {
+    "target": "blackmad/map-recall2-source-data/models/zevenlandenhuizen",
+    "sourceCommit": null,
+    "state": "Local staging only; private writes and git unavailable in this session."
+  },
+  "buildings": [
+    {
+      "address": "Roemer Visscherstraat 20, Amsterdam",
+      "country": "Duitsland",
+      "rceMonumentId": 491879,
+      "bagPandId": "0363100012137523",
+      "identityEvidence": {
+        "source": "Gemeente Amsterdam, monumenten (api.data.amsterdam.nl/v1/monumenten)",
+        "fetched": "2026-09-29",
+        "join": "RCE address matched to municipal betreftBagPand mapping"
+      },
+      "installedFeature": {
+        "type": "Feature",
+        "properties": {
+          "id": "NL.IMBAG.Pand.0363100012137523",
+          "tier": 3,
+          "minHeight": 0,
+          "height": 15.18
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.877495,
+                52.361755
+              ],
+              [
+                4.877421,
+                52.361735
+              ],
+              [
+                4.877431,
+                52.361721
+              ],
+              [
+                4.877519,
+                52.361605
+              ],
+              [
+                4.877526,
+                52.361607
+              ],
+              [
+                4.877527,
+                52.361606
+              ],
+              [
+                4.87753,
+                52.361607
+              ],
+              [
+                4.877553,
+                52.361604
+              ],
+              [
+                4.877555,
+                52.361602
+              ],
+              [
+                4.877599,
+                52.361615
+              ],
+              [
+                4.877495,
+                52.361755
+              ]
+            ]
+          ]
+        }
+      },
+      "heightUse": "Installed shell maximum only; roof ridge/eaves/datum not verified. Do not use as whole-building height."
+    },
+    {
+      "address": "Roemer Visscherstraat 22, Amsterdam",
+      "country": "Frankrijk",
+      "rceMonumentId": 491886,
+      "bagPandId": "0363100012164367",
+      "identityEvidence": {
+        "source": "Gemeente Amsterdam, monumenten (api.data.amsterdam.nl/v1/monumenten)",
+        "fetched": "2026-09-29",
+        "join": "RCE address matched to municipal betreftBagPand mapping"
+      },
+      "installedFeature": {
+        "type": "Feature",
+        "properties": {
+          "id": "NL.IMBAG.Pand.0363100012164367",
+          "tier": 3,
+          "minHeight": 0,
+          "height": 15.15
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.877431,
+                52.361721
+              ],
+              [
+                4.877352,
+                52.361699
+              ],
+              [
+                4.877436,
+                52.361582
+              ],
+              [
+                4.877443,
+                52.361584
+              ],
+              [
+                4.877445,
+                52.361583
+              ],
+              [
+                4.877444,
+                52.36158
+              ],
+              [
+                4.877449,
+                52.36158
+              ],
+              [
+                4.87745,
+                52.361583
+              ],
+              [
+                4.877472,
+                52.361582
+              ],
+              [
+                4.877473,
+                52.361579
+              ],
+              [
+                4.877478,
+                52.36158
+              ],
+              [
+                4.877477,
+                52.361583
+              ],
+              [
+                4.877498,
+                52.361588
+              ],
+              [
+                4.877501,
+                52.361586
+              ],
+              [
+                4.877505,
+                52.361588
+              ],
+              [
+                4.877501,
+                52.36159
+              ],
+              [
+                4.877516,
+                52.361601
+              ],
+              [
+                4.87752,
+                52.361599
+              ],
+              [
+                4.877523,
+                52.361602
+              ],
+              [
+                4.877519,
+                52.361604
+              ],
+              [
+                4.877519,
+                52.361605
+              ],
+              [
+                4.877431,
+                52.361721
+              ]
+            ]
+          ]
+        }
+      },
+      "heightUse": "Installed shell maximum only; roof ridge/eaves/datum not verified. Do not use as whole-building height."
+    },
+    {
+      "address": "Roemer Visscherstraat 24, Amsterdam",
+      "country": "Spanje",
+      "rceMonumentId": 491894,
+      "bagPandId": "0363100012152737",
+      "identityEvidence": {
+        "source": "Gemeente Amsterdam, monumenten (api.data.amsterdam.nl/v1/monumenten)",
+        "fetched": "2026-09-29",
+        "join": "RCE address matched to municipal betreftBagPand mapping"
+      },
+      "installedFeature": {
+        "type": "Feature",
+        "properties": {
+          "id": "NL.IMBAG.Pand.0363100012152737",
+          "tier": 3,
+          "minHeight": 0,
+          "height": 14.95
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.877352,
+                52.361699
+              ],
+              [
+                4.87727,
+                52.361677
+              ],
+              [
+                4.877358,
+                52.361554
+              ],
+              [
+                4.877364,
+                52.361556
+              ],
+              [
+                4.877362,
+                52.361559
+              ],
+              [
+                4.87741,
+                52.361573
+              ],
+              [
+                4.877413,
+                52.361568
+              ],
+              [
+                4.877444,
+                52.361577
+              ],
+              [
+                4.877439,
+                52.361583
+              ],
+              [
+                4.877436,
+                52.361582
+              ],
+              [
+                4.877352,
+                52.361699
+              ]
+            ]
+          ]
+        }
+      },
+      "heightUse": "Installed shell maximum only; roof ridge/eaves/datum not verified. Do not use as whole-building height."
+    },
+    {
+      "address": "Roemer Visscherstraat 26, Amsterdam",
+      "country": "Italië",
+      "rceMonumentId": 491901,
+      "bagPandId": "0363100012158859",
+      "identityEvidence": {
+        "source": "Gemeente Amsterdam, monumenten (api.data.amsterdam.nl/v1/monumenten)",
+        "fetched": "2026-09-29",
+        "join": "RCE address matched to municipal betreftBagPand mapping"
+      },
+      "installedFeature": {
+        "type": "Feature",
+        "properties": {
+          "id": "NL.IMBAG.Pand.0363100012158859",
+          "tier": 3,
+          "minHeight": 0,
+          "height": 15.04
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.87727,
+                52.361677
+              ],
+              [
+                4.877194,
+                52.361656
+              ],
+              [
+                4.877282,
+                52.361533
+              ],
+              [
+                4.877293,
+                52.361536
+              ],
+              [
+                4.877292,
+                52.361537
+              ],
+              [
+                4.877353,
+                52.361554
+              ],
+              [
+                4.877354,
+                52.361553
+              ],
+              [
+                4.877358,
+                52.361554
+              ],
+              [
+                4.87727,
+                52.361677
+              ]
+            ]
+          ]
+        }
+      },
+      "heightUse": "Installed shell maximum only; roof ridge/eaves/datum not verified. Do not use as whole-building height."
+    },
+    {
+      "address": "Roemer Visscherstraat 28, Amsterdam",
+      "country": "Rusland",
+      "rceMonumentId": 491909,
+      "bagPandId": "0363100012166749",
+      "identityEvidence": {
+        "source": "Gemeente Amsterdam, monumenten (api.data.amsterdam.nl/v1/monumenten)",
+        "fetched": "2026-09-29",
+        "join": "RCE address matched to municipal betreftBagPand mapping"
+      },
+      "installedFeature": {
+        "type": "Feature",
+        "properties": {
+          "id": "NL.IMBAG.Pand.0363100012166749",
+          "tier": 3,
+          "minHeight": 0,
+          "height": 15.01
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.877194,
+                52.361656
+              ],
+              [
+                4.87711,
+                52.361632
+              ],
+              [
+                4.877199,
+                52.361509
+              ],
+              [
+                4.877235,
+                52.361519
+              ],
+              [
+                4.877231,
+                52.361524
+              ],
+              [
+                4.87728,
+                52.361537
+              ],
+              [
+                4.877194,
+                52.361656
+              ]
+            ]
+          ]
+        }
+      },
+      "heightUse": "Installed shell maximum only; roof ridge/eaves/datum not verified. Do not use as whole-building height."
+    },
+    {
+      "address": "Roemer Visscherstraat 30, Amsterdam",
+      "country": "Nederland",
+      "rceMonumentId": 491917,
+      "bagPandId": "0363100012237158",
+      "identityEvidence": {
+        "source": "Gemeente Amsterdam, monumenten (api.data.amsterdam.nl/v1/monumenten)",
+        "fetched": "2026-09-29",
+        "join": "RCE address matched to municipal betreftBagPand mapping"
+      },
+      "installedFeature": {
+        "type": "Feature",
+        "properties": {
+          "id": "NL.IMBAG.Pand.0363100012237158",
+          "tier": 3,
+          "minHeight": 0,
+          "height": 15.07
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.87711,
+                52.361632
+              ],
+              [
+                4.877096,
+                52.361651
+              ],
+              [
+                4.877018,
+                52.361629
+              ],
+              [
+                4.877124,
+                52.361488
+              ],
+              [
+                4.877199,
+                52.361509
+              ],
+              [
+                4.87711,
+                52.361632
+              ]
+            ]
+          ]
+        }
+      },
+      "heightUse": "Installed shell maximum only; roof ridge/eaves/datum not verified. Do not use as whole-building height."
+    },
+    {
+      "address": "Roemer Visscherstraat 30A, Amsterdam",
+      "country": "Engeland",
+      "rceMonumentId": 491924,
+      "bagPandId": "0363100012236664",
+      "identityEvidence": {
+        "source": "Gemeente Amsterdam, monumenten (api.data.amsterdam.nl/v1/monumenten)",
+        "fetched": "2026-09-29",
+        "join": "RCE address matched to municipal betreftBagPand mapping"
+      },
+      "installedFeature": {
+        "type": "Feature",
+        "properties": {
+          "id": "NL.IMBAG.Pand.0363100012236664",
+          "tier": 3,
+          "minHeight": 0,
+          "height": 17.89
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.877038,
+                52.361604
+              ],
+              [
+                4.87703,
+                52.361601
+              ],
+              [
+                4.877017,
+                52.36162
+              ],
+              [
+                4.87696,
+                52.361604
+              ],
+              [
+                4.876974,
+                52.361586
+              ],
+              [
+                4.876959,
+                52.361581
+              ],
+              [
+                4.877048,
+                52.361462
+              ],
+              [
+                4.877127,
+                52.361484
+              ],
+              [
+                4.877038,
+                52.361604
+              ]
+            ]
+          ]
+        }
+      },
+      "heightUse": "Installed shell maximum only; roof ridge/eaves/datum not verified. Do not use as whole-building height."
+    }
+  ],
+  "retainNeighborCandidates": [
+    "NL.IMBAG.Pand.0363100012163859",
+    "NL.IMBAG.Pand.0363100012155845"
+  ],
+  "neighborStatus": "Nearby footprint candidates only; official neighboring address joins and street-side frontage remain pending.",
+  "suppressIds": [],
+  "suppressionStatus": "Empty until native frontend/back scope and neighbors visually verified; seven Pand identities above are candidates for exact replacement.",
+  "sourceInputs": [
+    {
+      "sourcePath": "scripts/data/amsterdam-monuments.json",
+      "savedPath": "artifacts/landmarks/zevenlandenhuizen/source-stage/installed-cache/amsterdam-monuments.json",
+      "kind": "installed processed cache, original HTTP response unavailable",
+      "sha256": "9a5b757543f00790534e68f8f706ac2986353af445fe6225dfb3c2c95a921e55"
+    },
+    {
+      "sourcePath": "public/data/extracts/amsterdam/building-tiles/14/8413/5385.geojson.gz",
+      "savedPath": "artifacts/landmarks/zevenlandenhuizen/source-stage/installed-cache/5385.geojson.gz",
+      "kind": "installed processed cache, original HTTP response unavailable",
+      "sha256": "63e1d5952b4c8f05e9f2cc08fad097f3437baafade3d97ed35143a4db4dd5506"
+    },
+    {
+      "sourcePath": "public/data/extracts/amsterdam/building-facts/14/8413/5385.json.gz",
+      "savedPath": "artifacts/landmarks/zevenlandenhuizen/source-stage/installed-cache/5385.json.gz",
+      "kind": "installed processed cache, original HTTP response unavailable",
+      "sha256": "4b16f7df77c3e363818d2811b0a2c7b65333d1e2908205feaebb54f5212cda95"
+    }
+  ],
+  "gaps": [
+    "No inspected original current facade photographs: municipal linked image requests returned Cache miss.",
+    "No inspected Beeldbank photo/drawing: bounded address/name/drawing search completed; direct viewer inaccessible and indirect twelve-image link reloads same page.",
+    "No original register PDF/HTML bytes: processed web-tool outputs preserved separately.",
+    "No current BAG VBO-address parent API response/status; existing municipal RCE-to-Pand cache resolves seven exact Pand identities.",
+    "No AHN/3DBAG roof planes or ground datum verified.",
+    "No accepted facade boundary/street gap against retained neighboring footprints.",
+    "No private source commit, mesh, export, gallery/live game or performance review."
+  ]
+}

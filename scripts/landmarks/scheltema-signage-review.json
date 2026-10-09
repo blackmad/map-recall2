@@ -1,0 +1,244 @@
+{
+  "modelId": "scheltema",
+  "reviewedOn": "2026-10-06",
+  "status": "geometry_repaired_visual_acceptance_pending",
+  "scope": "Principal fixed storefront sign only; all pre-existing non-sign geometry retained.",
+  "sourcePack": {
+    "path": "models/scheltema",
+    "repository": "blackmad/map-recall2-source-data",
+    "observedHead": "9926aa1fba89e7758fc9e11d1b0dfde0fb4fc4aa",
+    "image": "files/scheltema-front.jpg",
+    "imageSha256": "527e27c6070e6bbbdf419cec9db06abc403081c2b876f10bed2dab1275346b2d",
+    "sourcePage": "https://commons.wikimedia.org/wiki/File:2022_Rokin_9-15,_Asd_(01).jpg",
+    "scopeSource": "scripts/landmarks/bookshops-station-footprints.json",
+    "bagParent": "0363100012167909",
+    "access": "Cached original photo inspected directly; no new download or archive mutation."
+  },
+  "assertions": [
+    {
+      "part": "central storefront fascia immediately over the entrance and cornice",
+      "observation": "White mixed-case Scheltema lettering sits on a narrow dark band within the central stone bay; its span is approximately three quarters of the band. The photo also shows separate blue-awning lettering and adjacent Lacoste signage.",
+      "confidence": "high for existence, placement and colors; medium for image-relative proportions",
+      "modelTreatment": "One principal white sign on a thin dark central fascia. Existing uppercase shared glyph vocabulary simplifies the observed mixed-case serif letters. No awning or neighboring retailer names added."
+    },
+    {
+      "part": "panel dimensions and relief",
+      "observation": "No surveyed sign dimensions are present in the photo/footprint sources.",
+      "confidence": "approximate",
+      "modelTreatment": "Panel width 4.45m follows the existing central stone bay, height 0.55m follows photo-relative narrow fascia proportions. Local y3.64..4.19 clears the lowest sash tier at y4.2. Panel front z2.695 is 0.02m beyond the upper cornice front z2.675, covering only its central face. These are inferred model coordinates, not field measurements."
+    }
+  ],
+  "priorFailure": {
+    "evidence": "artifacts/landmarks/signage-audit/bookshops-artis-review.json",
+    "description": "Old 7.56m nominal lettering width crossed the approximately 4.45m central bay; 0.959m letters floated above the cornice without a dark panel. This audit remains preserved."
+  },
+  "changedGeometry": {
+    "addedPanel": {
+      "centerX": 1.95,
+      "baseY": 3.64,
+      "centerZ": 2.645,
+      "width": 4.45,
+      "height": 0.55,
+      "depth": 0.1
+    },
+    "sign": {
+      "text": "SCHELTEMA",
+      "x": 1.95,
+      "baselineY": 3.695,
+      "z": 2.74,
+      "pixel": 0.064,
+      "maxWidth": 3.5,
+      "nominalLayoutWidth": 3.456
+    },
+    "actualGlyphBounds": {
+      "min": [
+        0.19480000436306,
+        3.694999933242798,
+        2.700000047683716
+      ],
+      "max": [
+        3.577199935913086,
+        4.133399963378906,
+        2.7799999713897705
+      ]
+    }
+  },
+  "checks": {
+    "method": "In-memory esbuild/Three.js builder capture against a pre-edit snapshot; actual shared glyph table and fittedSignLayout; geometry hashes and per-glyph +Z ray probes. No generated asset or runtime bundle changed.",
+    "unchangedNonSignMeshes": 641,
+    "addedPanelMeshes": 1,
+    "glyphMeshes": 139,
+    "glyphHorizontalAndVerticalContainment": "passed",
+    "occludedGlyphsFromFront": 0,
+    "roofWindowsDoorsAndFootprintUnchanged": "passed by complete ordered non-sign geometry hash comparison"
+  },
+  "pending": [
+    "Coordinator isolated export and exact draft reference/render comparison",
+    "Independent visual review of panel proportions and subordinate lettering",
+    "Native-scale gallery rotations and actual game-scene visibility, neighbor retention and GPU performance"
+  ],
+  "limitations": "Browser/GPU unavailable to this worker. First-hit rays cover the standalone generated facade from local +Z only; they do not establish city-context visibility or visual acceptance. The narrow panel overlaps the central upper cornice face to preserve all existing trim/window meshes. Photo date is the source's 2022 filename; present-day signage was not independently reverified.",
+  "entrance": {
+    "reviewedOn": "2026-10-06",
+    "status": "first_hit_geometry_repaired_visual_acceptance_pending",
+    "scope": "Central ground-floor pane replaced by flanking apertures/jambs, and central lower cornice/header raised above the unchanged arch crown. Neighboring lower trim spans, upper cornice, recessed arch, dark doorway, sign, upper facade, roofs and surveyed footprint retained.",
+    "reference": "Private original models/scheltema/files/scheltema-front.jpg inspected directly; sourcePack provenance/checksum above applies.",
+    "observation": "Central entrance has an exposed rounded arch and recessed doorway, flanked by narrow side apertures and pale stone framing. Continuous glass across the complete central bay is unsupported and hid the modeled entrance in the preserved CPU sign-after view.",
+    "priorFailureEvidence": "artifacts/landmark-offline-preview/scheltema-cpu-sign-after.png",
+    "approximations": "Side aperture widths/heights and jamb thickness/reveal depth are photo-relative approximations. Apertures are 0.7m wide, base y0.2, height3.05, centered x=-0.05 and3.95 at z2.22. Stone jambs are 0.25m wide, base y0.12, height3.35, centered x0.4 and3.5 at z1.47, depth1.5. Existing stone arch width2.7 at z0.72 and doorway z0.8 remain fixed; no streetward displacement or footprint change.",
+    "checks": {
+      "method": "In-memory esbuild/Three.js builder capture, FrontSide material raycasting from local +Z. Sign generation omitted equally in both captures; fascia box retained. Actual mesh geometry/transform/material hashes compared with pre-entrance snapshot.",
+      "meshCounts": {
+        "beforeExcludingSignGlyphs": 642,
+        "afterExcludingSignGlyphs": 647,
+        "exactRetained": 640,
+        "removedContinuousPane": 1,
+        "removedContinuousLowerLip": 1,
+        "addedFlankingAssemblies": 4,
+        "replacementLowerLipSpans": 3
+      },
+      "doorFirstHits": [
+        {
+          "xy": [
+            1.4,
+            1.2
+          ],
+          "material": "dark",
+          "z": 0.8
+        },
+        {
+          "xy": [
+            2.5,
+            1.2
+          ],
+          "material": "dark",
+          "z": 0.8
+        },
+        {
+          "xy": [
+            1.95,
+            3.15
+          ],
+          "material": "dark",
+          "z": 0.8
+        }
+      ],
+      "archFirstHits": [
+        {
+          "xy": [
+            0.67,
+            1.8
+          ],
+          "material": "stone",
+          "z": 0.72
+        },
+        {
+          "xy": [
+            3.23,
+            1.8
+          ],
+          "material": "stone",
+          "z": 0.72
+        },
+        {
+          "xy": [
+            0.85,
+            2.8
+          ],
+          "material": "stone",
+          "z": 0.72
+        },
+        {
+          "xy": [
+            3.05,
+            2.8
+          ],
+          "material": "stone",
+          "z": 0.72
+        },
+        {
+          "xy": [
+            1.95,
+            3.42
+          ],
+          "material": "stone",
+          "z": 0.72
+        },
+        {
+          "xy": [
+            1.95,
+            3.46
+          ],
+          "material": "stone",
+          "z": 0.72
+        }
+      ],
+      "sideApertureFirstHits": "Both glass apertures visible at x=-0.02/3.92,y1.5,z2.28.",
+      "parentShell": "No shell first-hit obstruction at the seven door/arch probes. Before edit all seven first-hit continuous glass z2.28.",
+      "nativeScopeAndExistingGeometry": "Exact mesh hashes retain 640 original meshes including shell, roofs, arch, door, upper cornice and fascia. Two original meshes replaced: continuous central glass and continuous lower cornice lip. Scale, source footprint and placement unchanged."
+    },
+    "remainingLimitation": "The arch/cornice relation now clears the original crown, but exact trim dimensions and the central height transition are inferred rather than measured. This bounded repair does not establish source-matched door pane subdivisions or city-context visual acceptance.",
+    "pending": [
+      "Coordinator isolated export and exact CPU source comparison",
+      "Independent failure-seeking review",
+      "Native-scale gallery and actual game-scene checks, neighbor retention and performance"
+    ],
+    "trimFollowup": {
+      "reason": "Independent recheck of the pane repair found the continuous lower cornice still clipped the crown. The previous failed state is preserved as prior evidence; the arch and its recess were not moved or lowered.",
+      "sourceObservation": "In the original photo, the rounded arch crown sits fully below the underside of the storefront cornice/header. There is a narrow intervening stone/sign strip above the crown; the cornice does not intersect the rounded opening. The source does not provide surveyed elevations or prove a raised central lip step.",
+      "inference": "To preserve the existing neighboring store fronts within this bounded correction, only the 4.45m central span follows the source-supported above-arch relation: lower lip base raised from3.28 to3.5, retaining height0.15, z2.76 and depth0.85. This is an explicitly approximate central header transition, not a claim that the real cornice has this precise step. Arch top remains y3.47 at z0.72; a0.03m clearance is a model allowance, not a source measurement.",
+      "neighborRetention": "Lower lip split at x=-0.275 and4.175, following central fascia endpoints. Left span x=-12.8..-0.275, right span x4.175..10.8 keep original y3.28..3.43, z2.335..3.185. The original full-width upper course y3.63..3.98 is hash-identical; central lower lip y3.5..3.65 joins it and stays below sign baseline3.695.",
+      "firstHitChecks": {
+        "crown": {
+          "xy": [
+            1.95,
+            3.42
+          ],
+          "before": "lower cornice stone z3.185",
+          "after": "arch stone z0.72"
+        },
+        "nearTip": {
+          "xy": [
+            1.95,
+            3.46
+          ],
+          "after": "arch stone z0.72"
+        },
+        "leftNeighbor": {
+          "xy": [
+            -3.9,
+            3.35
+          ],
+          "beforeAndAfter": "lower lip stone z3.185"
+        },
+        "rightNeighbor": {
+          "xy": [
+            7.7,
+            3.35
+          ],
+          "beforeAndAfter": "lower lip stone z3.185"
+        },
+        "raisedHeader": {
+          "xy": [
+            1.95,
+            3.56
+          ],
+          "after": "central lower lip stone z3.185"
+        }
+      },
+      "reproduction": "Temporary in-memory check /tmp/scheltema-entrance-trim-check.cjs; coordinator must verify exact exported CPU/GPU view. No generated asset or runtime bundle mutated by worker."
+    }
+  },
+  "reliefFollowup": {
+    "date": "2026-10-06",
+    "basis": "Independent reviewer flagged previous8cm relief unsupported by source; narrower subordinate letters inferred from photo.",
+    "authoredReliefMetres": 0.012,
+    "panelFrontGapMetres": 0.005,
+    "sourcePrecision": "Approximate, not measured sign construction; serif/mixed-case font remains simplified.",
+    "sharedDefault": "Other sign calls keep prior8cm default; only these two opt in.",
+    "pending": [
+      "Exact export/first-hit and independent review",
+      "Native gallery/game/source archive sync before publication"
+    ]
+  }
+}

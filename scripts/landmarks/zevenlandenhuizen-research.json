@@ -1,0 +1,36 @@
+{
+  "modelId": "zevenlandenhuizen",
+  "reviewState": "source-hold",
+  "reviewedOn": "2026-10-05",
+  "primaryRegister": "https://monumentenregister.cultureelerfgoed.nl/print/pdf/node/569760",
+  "complexUrl": "https://monumentenregister.cultureelerfgoed.nl/complexen/491876",
+  "registerAccess": "Full 16-page PDF text read through web tool, including all seven descriptions. Original PDF bytes unavailable; processed tool capture staged.",
+  "scope": "One ensemble of seven houses at Roemer Visscherstraat 20, 22, 24, 26, 28, 30 and 30A. Maintain the gently curved frontage and individually distinct crowns.",
+  "architecturalEvidence": [
+    {"address":"20", "part":"frontage and roof", "sourcePages":[2,3], "passage":"dwars pannen zadeldak", "assertion":"Red brick; gothic glazing, a two-storey timber bay and an oriel with onion cap distinguish Germany.", "confidence":"register-explicit; current appearance unverified"},
+    {"address":"22", "part":"frontage and roof", "sourcePages":[4,5], "passage":"steil schilddak", "assertion":"White three-sided projecting front, pilasters, French balconies and a steep shingled crown distinguish France.", "confidence":"register-explicit; current appearance unverified"},
+    {"address":"24", "part":"frontage and roof", "sourcePages":[6,7], "passage":"convex tentdak", "assertion":"White/pink bands, horseshoe arches, a balcony and a right-hand tower distinguish Spain.", "confidence":"register-explicit; current appearance unverified"},
+    {"address":"26", "part":"frontage", "sourcePages":[8,9], "passage":"symmetrische lijstgevel", "assertion":"Pink rusticated front, strong horizontal cornices, a semicircular balcony and crown ornaments distinguish Italy.", "confidence":"register-explicit; current appearance unverified"},
+    {"address":"28", "part":"frontage and tower", "sourcePages":[10,11], "passage":"Zwiebeldach", "assertion":"Yellow brick/stucco front, ogee arches and an octagonal onion tower distinguish Russia.", "confidence":"register-explicit; current appearance unverified"},
+    {"address":"30", "part":"frontage and roof", "sourcePages":[12,13], "passage":"neo-renaissancistische trapgevel", "assertion":"Brick stepped gable, pale bands, shutters and a central sundial distinguish the Netherlands.", "confidence":"register-explicit; current appearance unverified"},
+    {"address":"30A", "part":"frontage and roof", "sourcePages":[14,15], "passage":"symmetrische puntgevel", "assertion":"Brick front, crenellated bay, timber projecting gable and intersecting gable roof distinguish England.", "confidence":"register-explicit; current appearance unverified"}
+  ],
+  "sourceDate": "PDF labels its download 19 September 2026; register descriptions contain historic alterations and are not a 2026 measured facade survey.",
+  "historicalAlterationsToCheck": ["20: 1909 rear garden-room expansion and upper conservatory", "22: 1948 removal of rear veranda", "30: 1958 rear bay and later internal connection to 30A", "30A: 1925 roof conversion"],
+  "currentPhotoCandidates": [
+    {"url":"https://www.amsterdam.nl/publish/pages/1033906/image00006940.jpg", "part":"ensemble", "access":"Cache miss; not inspected or saved"},
+    {"url":"https://www.amsterdam.nl/publish/pages/1033906/80px/image00002.jpg", "part":"Spain", "access":"Cache miss; not inspected or saved"},
+    {"url":"https://www.amsterdam.nl/publish/pages/1033906/80px/image00003.jpg", "part":"Italy", "access":"Cache miss; not inspected or saved"},
+    {"url":"https://www.amsterdam.nl/publish/pages/1033906/80px/image00004.jpg", "part":"England", "access":"Cache miss; not inspected or saved"}
+  ],
+  "beeldbankSearch": {
+    "completedOn":"2026-10-05",
+    "boundedQueries":["site.archief.amsterdam Roemer Visscherstraat Zevenlandenhuizen", "site.archief.amsterdam/beeldbank Roemer Visscherstraat 20", "site.archief.amsterdam Roemer Visscherstraat bouwtekening"],
+    "directViewerUrl":"https://archief.amsterdam/beeldbank/?mode=gallery&q=Roemer%20Visscherstraat%2020",
+    "access":"Direct viewer inaccessible through web tool. No inspectable address-specific archival original found. Indirect Amsterdam op de kaart page lists twelve Stadsarchief images; click only reloads page, catalogue IDs unresolved.",
+    "indirectCandidate":"https://amsterdamopdekaart.nl/1850-1940/Roemer_Visscherstraat/De_Zeven_Landen"
+  },
+  "bouwdossiers": {"state":"Not searched: original 1894 construction predates 1905; current massing and photographed facades must be established first. Later alterations above may justify bounded 1905–2010 dossier retrieval."},
+  "nextRequiredEvidence": ["Archive original current ensemble/principal/low-front photos of all seven houses plus rear/context roof evidence", "Read official address/VBO/Pand relationships and present Pand status", "Extract native roof planes/eaves and verify pavement datum", "Identify true street frontage, adjacent retained Pand parents, open rear gardens and later additions", "Sync and commit private source pack before authoring/export/commit"],
+  "geometryDecision":"No builder authored. Register prose supports recognition criteria but cannot establish metric facade placement, current colors, opening proportions, roof heights or neighbor occlusion."
+}

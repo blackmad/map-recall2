@@ -1,0 +1,138 @@
+{
+  "modelId": "micropia-ledenlokalen",
+  "recordedOn": "2026-10-06",
+  "status": "bounded_source_plan_only_not_visual_acceptance",
+  "scope": "Central Plantage Kerklaan entrance and unsupported street-side pediment only. No builder, export, native review, private archive or git mutations.",
+  "inputs": [
+    "AGENTS.md",
+    "docs/landmark-building-recipe.md",
+    "scripts/landmarks/artis-entry-builders.ts",
+    "scripts/landmarks/artis-entry-footprints.json",
+    "scripts/landmarks/artis-entry-specs.json",
+    "artifacts/landmarks/signage-audit/draft-independent-review.json"
+  ],
+  "references": [
+    {
+      "path": "artifacts/landmarks/micropia-ledenlokalen/references/signage-leden-front.jpg",
+      "sha256": "46d7d1417e3de6526893567d9f86b7005687fbab8fbb0b06c2746d173d636dfa",
+      "access": "Cached unchanged bytes inspected directly with view_image",
+      "originalUrl": null,
+      "photoDate": null,
+      "rights": null
+    },
+    {
+      "path": "artifacts/landmarks/micropia-ledenlokalen/references/signage-leden-2.jpg",
+      "sha256": "116b417b35db696ee24c8462b05c6cb0ba811cabb270bab566267a6073b3a358",
+      "access": "Cached unchanged bytes inspected directly with view_image",
+      "originalUrl": null,
+      "photoDate": null,
+      "rights": null
+    },
+    {
+      "path": "artifacts/landmarks/micropia-ledenlokalen/references/signage-leden-more.jpg",
+      "sha256": "fbd33668f8cb1c637a50f67662d662109b40fe7c4e7db60565446fff94ab164e",
+      "access": "Cached unchanged bytes inspected directly with view_image",
+      "originalUrl": null,
+      "photoDate": null,
+      "rights": null
+    },
+    {
+      "path": "artifacts/landmarks/micropia-ledenlokalen/references/signage-leden-black.jpg",
+      "sha256": "88487cc22ec3626fd341a0adbb8581cd2ca799afabfb33acfcd9f506870773fd",
+      "access": "Cached unchanged bytes inspected directly with view_image",
+      "originalUrl": null,
+      "photoDate": null,
+      "rights": null
+    }
+  ],
+  "orientation": {
+    "sourceIdentity": {
+      "osmId": "w57857205",
+      "bagId": "0363100012170549",
+      "rceId": "518278"
+    },
+    "anchor": [
+      4.9124796703067215,
+      52.3667230808103
+    ],
+    "coordinateAuthority": "Existing builder survey transform h=209 degrees; currentBagGeometry outer ring, not stale OSM hall outline.",
+    "localPositiveXGeographicBearingDegrees": 209,
+    "streetFacingPositiveZGeographicBearingDegrees": 299,
+    "streetFacade": "Northwest-facing long edge on Plantage Kerklaan. +X runs southwest. A frontal street observer sees +X to image right.",
+    "oppositeFacade": "Garden/Artisplein conservatory is on -Z. signage-leden-more.jpg and signage-leden-black.jpg show that opposite glazed conservatory; its raised central roof feature does not justify a street-side triangle.",
+    "derivedExistingBuilderBoundsMetres": {
+      "xmin": -39.816015456929044,
+      "xmax": 38.28071624190312,
+      "frontMaxZ": 12.28813633987958,
+      "rearMinZ": -18.384311198665543
+    },
+    "derivedExistingHallCentreXMetres": -0.767649607512962,
+    "placementLimit": "Central street doorway belongs between the hall window groups, not on an end pavilion or conservatory. Existing hall cx is a bounded placement approximation. No surveyed entrance point or rectified elevation was inspected; exact doorway x, width and height remain unmeasured. BAG small perimeter offsets do not identify door leaves."
+  },
+  "observations": [
+    {
+      "feature": "doorway",
+      "source": "signage-leden-2.jpg",
+      "confidence": "high",
+      "assertion": "A wider rectangular central entrance opening is framed by broad stone piers. Within it, glazed double door leaves sit between narrow fixed glazed side strips; a separate rectangular glazed/dark transom sits above the leaves. Adjacent ordinary tall window bays lie outside the entrance piers. Door-bottom/pavement detail is partly hidden by bicycles and scooters."
+    },
+    {
+      "feature": "header_and_clerestory",
+      "source": "signage-leden-2.jpg",
+      "confidence": "high",
+      "assertion": "The doorway transom is below a level stone header/cornice. A separate clerestory glazed band is above that header, bounded by a horizontal pale upper frame, with the dark exhibit-box wall farther above. The doorway transom and high clerestory must remain separate assemblies."
+    },
+    {
+      "feature": "pediment",
+      "source": "signage-leden-2.jpg",
+      "confidence": "high_for_this_photographed_state",
+      "assertion": "The central header and upper frame are visible and horizontal. There is no triangular stone pediment across the central clerestory at the position authored by the street-side triangle. Thin branches do not conceal a solid triangle of that scope. White triangular shapes inside glazing read as interior/reflection pixels, not a stone facade pediment. Other rooflines and historical states are not exhaustively established."
+    },
+    {
+      "feature": "signage",
+      "source": "signage-leden-2.jpg",
+      "confidence": "high",
+      "assertion": "White DE PLANTAGE is present within the doorway transom below the cornice. This establishes the real sign location only; exact dimensions, current state and defining architectural status remain unresolved. Do not reinstate the removed lettering during the geometry repair."
+    },
+    {
+      "feature": "context",
+      "source": "signage-leden-front.jpg",
+      "confidence": "medium",
+      "assertion": "Wide street view supports low hall between taller end pavilions and the street-side alignment. Obliquity and trees limit central doorway subdivision evidence."
+    }
+  ],
+  "boundedCorrection": [
+    "Remove the existing stone triangle authored at cx +/- 2.8, y=6.3..7.4, z=front-.04; preserve the level hall header and clerestory. Its removal is supported for the inspected photographed street facade, not a historical absence claim.",
+    "Replace only the intersecting central generic sash/pilaster region with a distinct rectangular entrance: visible glazed double-door division, narrow fixed side glazing, separate transom, broad stone side piers and level header. Use original flat-color geometry, no photo pixels.",
+    "Choose a small central assembly consistent with photo relationships and existing scale; explicitly record any authored dimensions as approximate. Do not assert inferred facade-wide bay counts or measured door dimensions.",
+    "Keep the doorway transom below the lower stone header and preserve separate high clerestory glazing above it. Leave pavilions, exhibit box, footprint, conservatory, suppressions and neighboring Groote Museum unchanged."
+  ],
+  "exposureBlockers": [
+    "Existing sash loop uses l+2.2 then steps of 4.4; around cx=-0.76765 it creates panes centered approximately -3.11602 and +1.28398, and a generated pier centered approximately -1.01602. A new centered doorway would intersect this generic pane/pier assembly unless those local members are replaced or segmented.",
+    "sash puts its glass forward of its stone backing. An added door behind the unchanged pane would remain visually uniform glazing. Check first-hit visibility against every central glass/backing/pier mesh, not just the parent shell.",
+    "The triangle is farther streetward than the clerestory glazing and overlaps its central height range. Retaining it would hide part of the upper entrance composition.",
+    "front=max(ring.z) comes from an end-pavilion contour extremity; the hall perimeter is closer to z about 11.2..11.4. Existing facade parts use this max as a flat plane. This offset is preexisting and must be documented; do not pretend front is a surveyed doorway wall position or broaden this repair into whole-facade relocation.",
+    "Actual header clearance cannot be prescribed from unmeasured pixel proportions. Verify transom top, header underside and clerestory separately in the generated mesh; do not introduce a guessed stepped cornice merely to clear an overlap."
+  ],
+  "accessGaps": [
+    "Exact image download URLs, original retrieval dates, photo dates and reuse rights are unresolved. Existing spec associates references with https://www.rappange.nl/projecten/ledenlokalen-artis-micropia/ but no byte-to-URL mapping was independently verified.",
+    "signage-reference-backfill.json records local raw staging and unavailable sibling writes. This worker performed no private archive sync or source commit; sourceCommit remains unknown.",
+    "No new web search, monument-register page inspection, Beeldbank search, drawing or entrance survey was authorized in this bounded assignment. RCE 518278 is cached identity metadata only, not an architectural assertion read here.",
+    "Cached photographs do not independently establish present-day facade or signage state."
+  ],
+  "nextValidation": [
+    "Preserve current CPU/draft evidence before editing.",
+    "Expose the central assembly in exact before/after CPU comparisons against signage-leden-2.jpg; check distinct door/transom and level header.",
+    "Independent seek-failures review of central facade and pediment removal.",
+    "Native gallery front and oblique first-hit checks, live-game placement and exact neighbor/suppression review remain mandatory before acceptance."
+  ],
+  "acceptance": {
+    "sourcePlanComplete": true,
+    "geometryImplemented": false,
+    "nativeGallery": false,
+    "liveGame": false,
+    "neighborRetention": false,
+    "gpuPerformance": false,
+    "fullVisualAcceptance": false
+  }
+}

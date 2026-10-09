@@ -1,0 +1,630 @@
+{
+  "modelId": "micropia-ledenlokalen",
+  "recordedOn": "2026-10-06",
+  "status": "bounded_pavilion_geometry_repair_pending_independent_export_visual_review",
+  "ownedFiles": [
+    "scripts/landmarks/artis-entry-builders.ts",
+    "scripts/landmarks/micropia-pavilion-repair-review.json"
+  ],
+  "baseline": "Current entrance-repaired builder (756 meshes); entrance changes preserved, no hall/source footprint/roof/gate changes.",
+  "sourcesInspected": [
+    {
+      "path": "artifacts/landmarks/micropia-ledenlokalen/references/signage-leden-front.jpg",
+      "sha256": "46d7d1417e3de6526893567d9f86b7005687fbab8fbb0b06c2746d173d636dfa",
+      "assertion": "Street oblique view supports three short-end bays and five outer long-side bays, two tall glazed tiers, pale window surrounds and horizontal courses."
+    },
+    {
+      "path": "artifacts/landmarks/micropia-ledenlokalen/references/signage-leden-more.jpg",
+      "sha256": "fbd33668f8cb1c637a50f67662d662109b40fe7c4e7db60565446fff94ab164e",
+      "assertion": "Garden short end has three bays on both tiers, pale sill/header/surrounds, central roof dormer, level gallery join."
+    },
+    {
+      "path": "artifacts/landmarks/micropia-ledenlokalen/references/signage-leden-black.jpg",
+      "sha256": "88487cc22ec3626fd341a0adbb8581cd2ca799afabfb33acfcd9f506870773fd",
+      "assertion": "Garden context confirms historic short-end glazing flanking conservatory and contemporary dark box; inward-face details obscured."
+    }
+  ],
+  "diagnosis": {
+    "knownFailure": "Unchanged right pavilion glass at x36.06821624786359,y2.5450000238418578 was first-hit brick in earlier exact GLB review.",
+    "cause": "Whole-complex front extremum (z12.28813633987958) minus fixed window offsets put right panes inside the actual front around z12.14, while left front around z11.20 left glass floating forward. Outer and rear walls are also slightly oblique; min/max planes are not their wall planes.",
+    "sourceGeometry": "scripts/landmarks/artis-entry-footprints.json, currentBagGeometry, same native coordinate transform and clipping retained. Front/rear aperture intersections use actual native edges; exterior side intersections use native x extremum at each aperture z."
+  },
+  "changes": [
+    "Replaced extrema-based front/rear/outer-side sash placement with native wall intersection, tangent and outward normal. Each pane, backing, mullion and cap shares its local wall orientation.",
+    "Split front courses at actual native facade plane changes and attached corner relief to native front. Rear courses follow the native central rear edge.",
+    "Retained three front and three rear bays per tier; outer long sides have five bays per tier, supported by cached street photo. Existing prior six-per-side approximation removed.",
+    "Removed lower glazing on artificial inner clipped sides where the 5.5m hall joins the pavilion. Retained five upper bays per inner side on the modeled clipped pavilion boundary with explicit source uncertainty.",
+    "Dormer glazing/backing and corner pinnacles follow pavilion-local street wall instead of the complex extremum. Pavilion roof geometry unchanged."
+  ],
+  "placementAuthority": {
+    "native": "Exterior front/rear/outer-side wall planes derive from current BAG perimeter edges.",
+    "approximate": "Pavilion width/clip 12.5m, bay centres/height/width, inner upper partition, dormer architecture remain authored approximate dimensions. No new measured elevation claim.",
+    "assemblyNormalOffsetsMetres": {
+      "stoneBackingCentre": 0.03,
+      "stoneBackingDepth": 0.2,
+      "glassCentre": 0.18,
+      "glassDepth": 0.08,
+      "mullionCentre": 0.25,
+      "capCentre": 0.1
+    },
+    "reason": "Offsets describe a 0.2m pale surround with exposed glass in front of its outer face; they do not compensate for an incorrect source plane. Small 0.01m separation between backing outer face and glass inner face prevents burial."
+  },
+  "checks": {
+    "method": "Runtime-equivalent BuildingTools bottom-Y boxes, Three.js DoubleSide builder meshes. Four quarter-width/quarter-height probes per retained pavilion pane away from mullions, normal to each local wall. Mesh geometry/material/transform SHA multiset comparison against entrance-repaired baseline.",
+    "reproductionScripts": [
+      "/tmp/check-micropia-pavilions.mts",
+      "/tmp/check-micropia-pavilions-near.mts"
+    ],
+    "nearWall": {
+      "beforeMeshes": 756,
+      "afterMeshes": 834,
+      "removedMeshes": 322,
+      "addedMeshes": 400,
+      "paneCount": 56,
+      "probeCount": 224,
+      "failures": [],
+      "artisGateUnchanged": true,
+      "removedOutsidePavilions": []
+    },
+    "paneInventory": {
+      "perPavilion": {
+        "frontLower": 3,
+        "frontUpper": 3,
+        "rearLower": 3,
+        "rearUpper": 3,
+        "outerSideLower": 5,
+        "outerSideUpper": 5,
+        "innerSideLower": 0,
+        "innerSideUpper": 5,
+        "dormer": 1
+      },
+      "total": 56
+    },
+    "nearProbeDistanceMetres": 1,
+    "allNearPaneFirstHits": "224/224 own glass mesh; no brick/backing burial. All retained panes audited, not only known failing right front.",
+    "farProbeDistanceMetres": 12,
+    "farFailures": [
+      {
+        "index": 14,
+        "centre": [
+          -27.136015456929044,
+          8.969999999999999,
+          -6.488773410260496
+        ],
+        "normal": [
+          1,
+          0,
+          2.220446049250313e-16
+        ],
+        "target": [
+          -27.096015457823114,
+          7.945000023841857,
+          -6.07627341622096
+        ],
+        "firstHit": "dark",
+        "ownPane": false
+      },
+      {
+        "index": 14,
+        "centre": [
+          -27.136015456929044,
+          8.969999999999999,
+          -6.488773410260496
+        ],
+        "normal": [
+          1,
+          0,
+          2.220446049250313e-16
+        ],
+        "target": [
+          -27.096015457823114,
+          9.994999976158141,
+          -6.07627341622096
+        ],
+        "firstHit": "dark",
+        "ownPane": false
+      },
+      {
+        "index": 14,
+        "centre": [
+          -27.136015456929044,
+          8.969999999999999,
+          -6.488773410260496
+        ],
+        "normal": [
+          1,
+          0,
+          2.220446049250313e-16
+        ],
+        "target": [
+          -27.096015457823114,
+          7.945000023841857,
+          -6.9012734043000314
+        ],
+        "firstHit": "dark",
+        "ownPane": false
+      },
+      {
+        "index": 14,
+        "centre": [
+          -27.136015456929044,
+          8.969999999999999,
+          -6.488773410260496
+        ],
+        "normal": [
+          1,
+          0,
+          2.220446049250313e-16
+        ],
+        "target": [
+          -27.096015457823114,
+          9.994999976158141,
+          -6.9012734043000314
+        ],
+        "firstHit": "dark",
+        "ownPane": false
+      },
+      {
+        "index": 17,
+        "centre": [
+          -27.136015456929044,
+          8.969999999999999,
+          -2.531113769345745
+        ],
+        "normal": [
+          1,
+          0,
+          2.220446049250313e-16
+        ],
+        "target": [
+          -27.096015457823114,
+          7.945000023841857,
+          -2.1186137753062093
+        ],
+        "firstHit": "dark",
+        "ownPane": false
+      },
+      {
+        "index": 17,
+        "centre": [
+          -27.136015456929044,
+          8.969999999999999,
+          -2.531113769345745
+        ],
+        "normal": [
+          1,
+          0,
+          2.220446049250313e-16
+        ],
+        "target": [
+          -27.096015457823114,
+          9.994999976158141,
+          -2.1186137753062093
+        ],
+        "firstHit": "dark",
+        "ownPane": false
+      },
+      {
+        "index": 17,
+        "centre": [
+          -27.136015456929044,
+          8.969999999999999,
+          -2.531113769345745
+        ],
+        "normal": [
+          1,
+          0,
+          2.220446049250313e-16
+        ],
+        "target": [
+          -27.096015457823114,
+          7.945000023841857,
+          -2.9436137633852804
+        ],
+        "firstHit": "dark",
+        "ownPane": false
+      },
+      {
+        "index": 17,
+        "centre": [
+          -27.136015456929044,
+          8.969999999999999,
+          -2.531113769345745
+        ],
+        "normal": [
+          1,
+          0,
+          2.220446049250313e-16
+        ],
+        "target": [
+          -27.096015457823114,
+          9.994999976158141,
+          -2.9436137633852804
+        ],
+        "firstHit": "dark",
+        "ownPane": false
+      },
+      {
+        "index": 20,
+        "centre": [
+          -27.136015456929044,
+          8.969999999999999,
+          1.4265458715690063
+        ],
+        "normal": [
+          1,
+          0,
+          2.220446049250313e-16
+        ],
+        "target": [
+          -27.096015457823114,
+          7.945000023841857,
+          1.8390458656085418
+        ],
+        "firstHit": "dark",
+        "ownPane": false
+      },
+      {
+        "index": 20,
+        "centre": [
+          -27.136015456929044,
+          8.969999999999999,
+          1.4265458715690063
+        ],
+        "normal": [
+          1,
+          0,
+          2.220446049250313e-16
+        ],
+        "target": [
+          -27.096015457823114,
+          9.994999976158141,
+          1.8390458656085418
+        ],
+        "firstHit": "dark",
+        "ownPane": false
+      },
+      {
+        "index": 20,
+        "centre": [
+          -27.136015456929044,
+          8.969999999999999,
+          1.4265458715690063
+        ],
+        "normal": [
+          1,
+          0,
+          2.220446049250313e-16
+        ],
+        "target": [
+          -27.096015457823114,
+          7.945000023841857,
+          1.0140458775294707
+        ],
+        "firstHit": "dark",
+        "ownPane": false
+      },
+      {
+        "index": 20,
+        "centre": [
+          -27.136015456929044,
+          8.969999999999999,
+          1.4265458715690063
+        ],
+        "normal": [
+          1,
+          0,
+          2.220446049250313e-16
+        ],
+        "target": [
+          -27.096015457823114,
+          9.994999976158141,
+          1.0140458775294707
+        ],
+        "firstHit": "dark",
+        "ownPane": false
+      },
+      {
+        "index": 23,
+        "centre": [
+          -27.136015456929044,
+          8.969999999999999,
+          5.3842055124837565
+        ],
+        "normal": [
+          1,
+          0,
+          2.220446049250313e-16
+        ],
+        "target": [
+          -27.096015457823114,
+          7.945000023841857,
+          4.971705518444221
+        ],
+        "firstHit": "dark",
+        "ownPane": false
+      },
+      {
+        "index": 23,
+        "centre": [
+          -27.136015456929044,
+          8.969999999999999,
+          5.3842055124837565
+        ],
+        "normal": [
+          1,
+          0,
+          2.220446049250313e-16
+        ],
+        "target": [
+          -27.096015457823114,
+          9.994999976158141,
+          4.971705518444221
+        ],
+        "firstHit": "dark",
+        "ownPane": false
+      },
+      {
+        "index": 42,
+        "centre": [
+          25.600716241903122,
+          8.969999999999999,
+          -5.6245190737456126
+        ],
+        "normal": [
+          -1,
+          0,
+          2.220446049250313e-16
+        ],
+        "target": [
+          25.56071624279719,
+          7.945000023841857,
+          -6.037019067785148
+        ],
+        "firstHit": "dark",
+        "ownPane": false
+      },
+      {
+        "index": 42,
+        "centre": [
+          25.600716241903122,
+          8.969999999999999,
+          -5.6245190737456126
+        ],
+        "normal": [
+          -1,
+          0,
+          2.220446049250313e-16
+        ],
+        "target": [
+          25.56071624279719,
+          9.994999976158141,
+          -6.037019067785148
+        ],
+        "firstHit": "dark",
+        "ownPane": false
+      },
+      {
+        "index": 42,
+        "centre": [
+          25.600716241903122,
+          8.969999999999999,
+          -5.6245190737456126
+        ],
+        "normal": [
+          -1,
+          0,
+          2.220446049250313e-16
+        ],
+        "target": [
+          25.56071624279719,
+          7.945000023841857,
+          -5.212019079706077
+        ],
+        "firstHit": "dark",
+        "ownPane": false
+      },
+      {
+        "index": 42,
+        "centre": [
+          25.600716241903122,
+          8.969999999999999,
+          -5.6245190737456126
+        ],
+        "normal": [
+          -1,
+          0,
+          2.220446049250313e-16
+        ],
+        "target": [
+          25.56071624279719,
+          9.994999976158141,
+          -5.212019079706077
+        ],
+        "firstHit": "dark",
+        "ownPane": false
+      },
+      {
+        "index": 45,
+        "centre": [
+          25.600716241903122,
+          8.969999999999999,
+          -1.6463552203393128
+        ],
+        "normal": [
+          -1,
+          0,
+          2.220446049250313e-16
+        ],
+        "target": [
+          25.56071624279719,
+          7.945000023841857,
+          -2.0588552143788483
+        ],
+        "firstHit": "dark",
+        "ownPane": false
+      },
+      {
+        "index": 45,
+        "centre": [
+          25.600716241903122,
+          8.969999999999999,
+          -1.6463552203393128
+        ],
+        "normal": [
+          -1,
+          0,
+          2.220446049250313e-16
+        ],
+        "target": [
+          25.56071624279719,
+          9.994999976158141,
+          -2.0588552143788483
+        ],
+        "firstHit": "dark",
+        "ownPane": false
+      },
+      {
+        "index": 45,
+        "centre": [
+          25.600716241903122,
+          8.969999999999999,
+          -1.6463552203393128
+        ],
+        "normal": [
+          -1,
+          0,
+          2.220446049250313e-16
+        ],
+        "target": [
+          25.56071624279719,
+          7.945000023841857,
+          -1.2338552262997773
+        ],
+        "firstHit": "dark",
+        "ownPane": false
+      },
+      {
+        "index": 45,
+        "centre": [
+          25.600716241903122,
+          8.969999999999999,
+          -1.6463552203393128
+        ],
+        "normal": [
+          -1,
+          0,
+          2.220446049250313e-16
+        ],
+        "target": [
+          25.56071624279719,
+          9.994999976158141,
+          -1.2338552262997773
+        ],
+        "firstHit": "dark",
+        "ownPane": false
+      },
+      {
+        "index": 48,
+        "centre": [
+          25.600716241903122,
+          8.969999999999999,
+          2.331808633066987
+        ],
+        "normal": [
+          -1,
+          0,
+          2.220446049250313e-16
+        ],
+        "target": [
+          25.56071624279719,
+          7.945000023841857,
+          1.9193086390274514
+        ],
+        "firstHit": "dark",
+        "ownPane": false
+      },
+      {
+        "index": 48,
+        "centre": [
+          25.600716241903122,
+          8.969999999999999,
+          2.331808633066987
+        ],
+        "normal": [
+          -1,
+          0,
+          2.220446049250313e-16
+        ],
+        "target": [
+          25.56071624279719,
+          9.994999976158141,
+          1.9193086390274514
+        ],
+        "firstHit": "dark",
+        "ownPane": false
+      },
+      {
+        "index": 48,
+        "centre": [
+          25.600716241903122,
+          8.969999999999999,
+          2.331808633066987
+        ],
+        "normal": [
+          -1,
+          0,
+          2.220446049250313e-16
+        ],
+        "target": [
+          25.56071624279719,
+          7.945000023841857,
+          2.7443086271065225
+        ],
+        "firstHit": "dark",
+        "ownPane": false
+      },
+      {
+        "index": 48,
+        "centre": [
+          25.600716241903122,
+          8.969999999999999,
+          2.331808633066987
+        ],
+        "normal": [
+          -1,
+          0,
+          2.220446049250313e-16
+        ],
+        "target": [
+          25.56071624279719,
+          9.994999976158141,
+          2.7443086271065225
+        ],
+        "firstHit": "dark",
+        "ownPane": false
+      }
+    ],
+    "farFailureInterpretation": "26/224 inward-facing upper pane probes first-hit the unchanged contemporary dark box across the gap when origins are 12m inward. All these targets are first-hit their own glass at 1m. These contextual occlusions are preserved and must not be described as full no-occlusion acceptance.",
+    "unchanged": "Every removed baseline mesh has absolute centre x>=24.5m in the pavilion detail region. Native footprint bodies, all roof meshes, entire low hall including current entrance, modern exhibit box, conservatory and independent ARTIS gate retain geometry/material/transform signatures."
+  },
+  "preservedLimitations": [
+    "Inner upper facade is the authored clip plane, not an exterior BAG edge; cached photos do not establish its full window count. Keep this source-plane uncertainty in independent review.",
+    "Source URL/date/rights/private archival state inherited from existing source records; this worker did not mutate the private archive.",
+    "No GLB export, CPU comparison, native gallery, live game, exact neighbor suppression or GPU performance evidence produced here. Root owns isolated export and independent review; browser unavailable.",
+    "Front and rear pane attachments pass normal first-hit geometry checks; native-scale reference/render composition remains unaccepted.",
+    "Historical failed right-front GLB evidence remains in micropia-entrance-repair-review.json; it is not erased by this repair."
+  ],
+  "acceptance": {
+    "geometryImplemented": true,
+    "allRetainedPaneNearFirstHits": true,
+    "hallRoofFootprintGateUnchanged": true,
+    "exportedMeshChecked": false,
+    "independentReview": false,
+    "nativeGallery": false,
+    "liveGame": false,
+    "neighborRetention": false,
+    "gpuPerformance": false,
+    "fullVisualAcceptance": false
+  }
+}
