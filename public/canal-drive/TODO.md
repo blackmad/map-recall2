@@ -57,6 +57,17 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   warehouses, offices, most landmarks: keep 3DBAG massing, recipe picks a
   facade system per wall plus entrance/signage/roof plant, ~20–30 min, ≤12k
   tris) → icon (~100 bespoke builders).
+- **Continuous fan-out (user, 2026-10-09)**: landmark lanes pull from the
+  `pending` ("Needs work") list on `landmark-queue.html`; integrator merges,
+  reviews contact sheets, batch-deploys and relaunches. In flight: museums2,
+  worship, civic lanes; pand-reference feed (ordinary); recipe pipeline.
+  Next: triage the ~80 `review` items into building / splat / area, and a
+  discovery pass (Arcam guide, monument register) to grow toward ~1,000.
+- **Sculptures and statues → splats/impostors (user, 2026-10-09)**: De
+  Dokwerker, Vondel-, Rembrandt- and Wilhelmina-monuments etc. are not boxes.
+  Capture a multi-image Gaussian splat (or photogrammetry mesh) from Commons
+  photos + panorama crops; render the splat only within ~50 m and a baked
+  8–16-view impostor beyond. Start from `docs/landmark-splat-reference-pilot.md`.
 - **Docs compaction**: ~135 markdown files across root, `docs/` and here.
 - `scripts/check-cinema-facade-surfaces.ts` fails on main (32 front pane
   triangles, expects 24); not in `check:canal`.
