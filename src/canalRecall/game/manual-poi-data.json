@@ -1876,5 +1876,14 @@
   "funFact": "The church keeps a Dordrecht Rotating Tabernacle from 1789, a gift to the Amsterdam parish that reached it through De Ooievaar; one of its makers was Jacob van Strij.",
   "sourceUrl": "https://nl.wikipedia.org/wiki/Sint-Petrus-en-Pauluskerk_%28Amsterdam%29",
   "preferDescription": true
+},
+{
+  "modelId": "maarten-lutherkerk",
+  "landmarkId": "extract_landmarks_404188843",
+  "name": "Maarten Lutherkerk",
+  "description": "The Maarten Luther Kerk is an Evangelical-Lutheran church in the Rivierenbuurt of Amsterdam-Zuid, designed by the architect F. Jantzen in the Amsterdam School style. Tall narrow windows climb the brick walls of the hall above a low band of small lights, and a slim green spire rises from the roof.",
+  "funFact": "The church's brick hall dates from 1937 according to the national building register (BAG), and it forms part of the Rivierenbuurt's Amsterdam School streetscape.",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Maarten_Luther_Kerk_%28Amsterdam%29",
+  "preferDescription": true
 }
 ]
