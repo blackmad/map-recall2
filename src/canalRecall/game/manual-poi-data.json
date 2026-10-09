@@ -1970,5 +1970,34 @@
   "funFact": "The church needed more than 450 foundation piles and was designed to seat 924 worshippers; it opened on 18 June 1926.",
   "sourceUrl": "https://nl.wikipedia.org/wiki/Nassaukerk_(Amsterdam)",
   "preferDescription": true
-}
+},
+  {
+    "modelId": "club-panama",
+    "landmarkId": "n30170536",
+    "name": "Club Panama",
+    "description": "Club Panama occupies the former hydraulic harbour power station on Oostelijke Handelskade, built in 1885 in an eclectic neo-Gothic style. Its red brick walls are banded with natural stone and decorated with round-arch friezes, and the hall inside keeps an open roof of iron Polonceau trusses. Since 2001 it has been a nightclub, restaurant and theatre.",
+    "funFact": "The building first powered the cranes on the Handelskade; in 1899 its hydraulic system gave way to a direct-current plant and a new wing was added on the south side in the same style.",
+    "sourceUrl": "https://arcam.nl/architectuur-gids/panama/",
+    "additionalSources": [
+      "https://monumentenregister.cultureelerfgoed.nl/monumenten/523311",
+      "https://panama.nl/contact-us-2/"
+    ],
+    "preferDescription": true
+  },
+  {
+    "modelId": "compagnietheater",
+    "landmarkId": "extract_landmarks_1455669716",
+    "name": "Compagnietheater",
+    "description": "The Compagnietheater at Kloveniersburgwal 50 was built in 1792-1793 as a church for the Restored Evangelical Lutheran congregation, designed by Abraham van der Hart on the site of a former madhouse (dolhuis). A Hollands-Classicist building with a sculptural group by Anthonie Ziesenis on its facade, it was converted to a theatre in 1995-1996 by Francine Houben of Mecanoo and is a national monument.",
+    "funFact": "After the Lutheran congregations merged in 1952 the building briefly served as a bank archive before becoming a theatre.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Compagnietheater"
+  },
+  {
+    "modelId": "west-india-house",
+    "landmarkId": "extract_landmarks_1399359542",
+    "name": "West India House",
+    "description": "The West India House on Herenmarkt was the Amsterdam headquarters of the Dutch West India Company. Built in 1617 as a meat market and militia waiting room, it was rented by the company from 1623 and extended with two wings around a courtyard, tripling its size by 1647. A fire in 1975 was followed by restoration in 1978-1981; it now holds offices, the John Adams Institute and a municipal wedding hall.",
+    "funFact": "It was here in 1625 that the company directors ordered the building of a fort on Manhattan, the beginning of New Amsterdam and later New York. A bronze statue of Peter Stuyvesant stands in the courtyard.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/West-Indisch_Huis"
+  }
 ]
