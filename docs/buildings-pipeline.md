@@ -214,3 +214,35 @@ the last instance. Exact BAG-host suppression (`suppressOsmIds`) is unchanged.
 
 Browser bundles to rebuild after merging: `npm run build:canal-signature-landmarks`,
 `build:canal-game-landmarks`, `build:canal-game-presentation`, `build:canal-route-selection`, `build:canal-3d`.
+
+## Look pass: city look, components, roof clean-up (2026-10-09)
+
+Integrator review: the 19 Bilderdijkstraat recipe houses looked worse than the procedural facades around them
+(near-black flat brick, black windows, flat shop panels, flat grey roofs, missing arches/parapets/banding, 3DBAG
+roof artefacts). Changes:
+
+- **City look at runtime** (`src/canalRecall/buildingRecipe/recipeLook.ts`). GLB materials with a `materialSlot`
+  get one shared shader: the city's brick cell (Bricks057 neutralised and lifted like `calmBayLayers('photo')`, mortar
+  coursing, 3.36 m tile), the photo-look glass gradient with a reflection (0..1 pane UVs from the exporter), cream
+  frames, roof cells (pantile/slate/flat, eave-aligned UVs), and the city's fixed-light shade (`wallShade` / roof
+  formula) from the ENU normal; output is unlit sRGB like the city layer. Photo-sampled colours map into the city
+  palette range (`cityWallTint` etc.: dark 087959 brick #5e4033 → L 0.37; slate → ROOF_TONES). Materials/textures are
+  shared by every recipe house and skipped by per-model disposal. `signature-landmarks-source.js` dresses tagged GLBs
+  (untagged models keep the synchronous path) and sets the per-entry ENU frame before each render; anisotropy 1 on touch
+  devices (4 cost the iPhone ride p95 16.8 → 33.3 ms). The sheet renderer uses the same look (`--flat` for the old one).
+- **Components**: `archedStoreys` (semicircular heads), `crownCapSpan: wide` (parapet with a rounded/pediment cap across
+  the front), `archRings` (relieving arches over every arched head: stone or band brick), `palette.band` (second brick:
+  lintel bands become brick stripes), and real shopfronts (piers, stall riser, framed glazing with mullions/transom,
+  fascia with a pale lettering panel, all in `shopfront.colour`, which was previously ignored). Library: `accent` and
+  `shop` palette surfaces (facadeDetail 11, ornament 2, opening 19).
+- **Roof clean-up** (`roofCleanup.ts`, before the survey conversion): raised small clusters (each < 12 m², together
+  < 25 m², > 0.8 m above every surrounding surface) are clamped to the surrounding top, except at a gabled front;
+  a ridge LoD2.2 runs out to a cornice/flat front > 1 m above the eaves is hipped back at the roof's slope. Gates
+  compare against the cleaned max and report the survey max; `roof-cleanup` caps clamped area at 25%.
+  Regressions: `roofCleanup.test.ts` (079721 box, 155417 spike, 153622 front ridge, gabled crowns kept).
+- Sheets: `sh scripts/building-recipes/street-sheets.sh artifacts/recipe-look/after`; in-game facade close-ups in
+  `tests/e2e/recipe-street.spec.ts` (`in-game-<project>-facades-{a,b,c,oblique}.png`).
+
+Remaining gaps vs the procedural neighbours: no stone window surrounds/quoins, no awnings, no sign lettering; brick
+banding is a stripe, not polychrome patterning (079721's diaper work); 153622's hip end still reads as a steep
+triangle above the cornice from straight on.
