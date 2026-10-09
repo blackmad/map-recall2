@@ -1,0 +1,5 @@
+{"id": "klimhal", "facades": [
+  {"name": "south (entrance)", "bearing": 182.5, "photo": "artifacts/landmark-lanes/klimhal/ref-south.jpg"},
+  {"name": "west (Naritaweg)", "bearing": 272.5, "photo": "artifacts/landmark-lanes/klimhal/ref-west.jpg"},
+  {"name": "east (car park)", "bearing": 92.5, "photo": "artifacts/landmark-lanes/klimhal/ref-east.jpg"}
+]}
