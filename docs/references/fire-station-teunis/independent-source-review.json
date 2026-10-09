@@ -1,0 +1,100 @@
+{
+  "modelId": "fire-station-teunis",
+  "reviewedOn": "2026-10-09T09:17:54.596220+00:00",
+  "reviewer": "independent Codex source/CPU reviewer",
+  "inputGlb": "artifacts/fire-station-teunis-draft/fire-station-teunis.glb",
+  "inputSha256": "e1b3fe46ecf63cb426288eaed0322e8c89421f55f00c5be3c13ded2ef8cac461",
+  "decision": "independent source/gallery/live visual pass; coordinator performance gate pending",
+  "acceptanceScope": "Independent cached-source comparison against actual asset gallery and native live-game screenshots. Root owns automated route/pin/card/suppression/fallback and performance checks; no browser/GPU or model mutation performed by reviewer.",
+  "inspectedReferences": [
+    "models/fire-station-teunis/raw/brandbase-2018.jpg",
+    "models/fire-station-teunis/processed/2025_10_02_08_06_04_00483.jpg",
+    "models/fire-station-teunis/processed/2025_10_02_08_06_04_00479.jpg",
+    "models/fire-station-teunis/processed/2025_10_02_08_06_04_00481.jpg",
+    "docs/references/fire-station-teunis/research.json"
+  ],
+  "inspectedRenders": [
+    "artifacts/fire-station-teunis-preview/fire-station-teunis-cpu-front.png",
+    "artifacts/fire-station-teunis-preview/fire-station-teunis-cpu-low-front.png",
+    "artifacts/fire-station-teunis-preview/fire-station-teunis-cpu-rear.png"
+  ],
+  "findings": [
+    {
+      "severity": "pass",
+      "topic": "principal frontage",
+      "observation": "Model keeps three distinct vehicle doors under a single pale fascia, narrow separator piers, a separate tall pedestrian recess and two broad south-wing window ribbons. The arrangement matches the 2018 frontal photo and the current 2025 oblique views."
+    },
+    {
+      "severity": "pass-with-pending-view",
+      "topic": "terrace and canopy",
+      "observation": "Set-back upper glazing, open thin rail and thin projecting flat roof are visible in CPU front. Source bay doors are set back about the modeled 3 m and upper glazing about 4 m in the inspected builder. CPU cameras expose substantial roof area and hide most red soffit; request actual street-height front/oblique GPU views before final visual acceptance."
+    },
+    {
+      "severity": "pass",
+      "topic": "glazing",
+      "observation": "CPU front shows exposed blue-gray terrace, vehicle and south ribbon glass with red horizontal divisions. No obvious parent-wall burial is visible in these front images. Fractional first-hit checks are coordinator-supplied evidence, not independently rerun here."
+    },
+    {
+      "severity": "limitation",
+      "topic": "rear",
+      "observation": "CPU rear is predominantly plain stepped massing. Source record explicitly marks north/rear rhythm as inferred; no clear rear photo was provided. Do not claim exact rear fenestration matching. Inspect rotated gallery views for exposed side panes and retain stepped footprint."
+    },
+    {
+      "severity": "pass-with-pending-view",
+      "topic": "ground datum",
+      "observation": "Door and entrance bottoms align with shell base in isolated CPU images; references show level forecourt contact rather than raised stoep. CPU omits pavement, so actual game terrain contact remains pending."
+    },
+    {
+      "severity": "pass-with-approximation",
+      "topic": "signage",
+      "observation": "Real red BRANDWEER lettering and fire-service badge are supported by both source dates. Model uses curved sans outlines on north fascia rather than invented building-name lettering. Arial Bold is explicitly approximate and subordinate district line is omitted. Glyph size is subordinate in CPU front, but actual GPU wall clearance still needs inspection."
+    },
+    {
+      "severity": "pass-with-pending-lighting",
+      "topic": "source colors",
+      "observation": "Pale off-white/gray panel body, red door frames/soffit and dark glazing correspond to sources. CPU body reads warm gray under its simple lighting; no unsupported saturated wall color observed. Judge the red canopy visibility and realistic pale body under game lighting."
+    }
+  ],
+  "dateHandling": "Operator account of relocation in 2011 and BAG original construction year 2013 are distinct assertions; neither should silently override the other.",
+  "criticalConfirmedFailures": [],
+  "requiredNextEvidence": [
+    "Coordinator actual game performance evidence before completion"
+  ],
+  "finalVisualReview": {
+    "status": "pass-with-recorded-source-limitations",
+    "reviewedOn": "2026-10-09T09:49:52.723698+00:00",
+    "receivedAssetSha256": "78a5f49bd115750de5af0647a21ddbcf05af885151b4be8503164b9b2e5cf1db",
+    "receivedAssetBytes": 74864,
+    "gallery": [
+      "artifacts/firestations-review/final-teunis-victor-willem/fire-station-teunis/gallery.png",
+      "artifacts/firestations-review/final-teunis-victor-willem/fire-station-teunis/gallery-angle-0.png",
+      "artifacts/firestations-review/final-teunis-victor-willem/fire-station-teunis/gallery-angle-1.png",
+      "artifacts/firestations-review/final-teunis-victor-willem/fire-station-teunis/gallery-angle-2.png",
+      "artifacts/firestations-review/final-teunis-victor-willem/fire-station-teunis/gallery-angle-3.png",
+      "artifacts/firestations-review/supplement/fire-station-teunis-low-west-front.png"
+    ],
+    "live": [
+      "artifacts/firestations-review/final-teunis-victor-willem/fire-station-teunis/live-front.png",
+      "artifacts/firestations-review/final-teunis-victor-willem/fire-station-teunis/live-rear.png"
+    ],
+    "lowFrontSha256": "b0c665a1b69d54f2ee80d504a7df67b29ca93a0f1646e72530e732e10f5d0935",
+    "cameraClarification": "live-rear.png is the actual west principal frontage at bearing 70. live-front.png and default gallery show rear/side geometry. First low-west supplement used the wrong rear-facing theta and was explicitly rejected as principal-front evidence; corrected supplement was independently inspected.",
+    "findings": [
+      "The corrected low principal-front gallery exposes three red sectional vehicle bays behind pale narrow piers, a red underside to the garage canopy, a separate red-capped tall pedestrian recess and two right-side ribbon bands. No critical frontage omission compared with archived 2018/2025 evidence.",
+      "The corrected view shows an actual open rail across the upper terrace, recessed glazing behind the rail and the thin projecting roof. Canopy does not become a wall-colored closed upper box. Source-relative exact depth remains approximate; the view establishes the defining assembly.",
+      "Exposed pane fields and red divisions remain visible in the corrected low view and angle-3. Sign letters sit on the actual fascia and read as curved sans lettering; Arial Bold match and omitted district subline remain documented approximations.",
+      "Gallery color reads warm pale gray under its lighting; live unhighlighted west front reads a pale panel station with red details and dark roof. The gold tint in live-front is destination selection highlight rather than the model base color.",
+      "Live west front preserves adjoining ordinary buildings and frontage space. Building lower ends meet visible forecourt/pavement without a visible floating or sunken shell. Live images are elevated gameplay views, not street-eye photographic calibration; trees obscure portions of the garage frontage.",
+      "Rear/side gallery rotations preserve stepped massing and exposed upper side windows. Exact rear fenestration cannot be accepted against photos because reference coverage remains limited/inferred."
+    ],
+    "integrationEvidenceRead": [
+      "artifacts/firestations-review/final-teunis-victor-willem/fire-station-teunis/received-asset-gallery.json",
+      "artifacts/firestations-review/final-teunis-victor-willem/fire-station-teunis/placement-proof.json",
+      "artifacts/firestations-review/final-teunis-victor-willem/fire-station-teunis/physical-card-proof.json"
+    ],
+    "integrationEvidenceSummary": "Actual gallery response SHA matches asset version. Placement evidence shows native scale 1, exact w394471798/BAG suppression, resident drawable retained neighbors, genuine selected destination and geographic pin. Physical-card proof records n3974782727 with the operator source URL. These are coordinator-generated proofs, independently read here.",
+    "criticalConfirmedFailures": [],
+    "remainingGate": "Root actual performance check pending; visual pass does not independently establish FPS or timing."
+  },
+  "initialDecision": "source-and-CPU-conditional-pass; final gallery/live acceptance pending"
+}

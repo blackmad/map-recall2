@@ -10272,6 +10272,1398 @@ Map source: ${osmUrl(places[i][0])}`);
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native BAG geometry; curved sedum-roof glass hall, glazing connector, dark-brick open terrace accommodation block. No third-party mesh or pixels."
       }
+    },
+    {
+      id: "fire-station-teunis",
+      name: "Kazerne Teunis",
+      landmarkId: "n3974782727",
+      modelUrl: "./models/fire-station-teunis.glb",
+      suppressOsmIds: [
+        "w394471798",
+        "NL.IMBAG.Pand.0363100012241010"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.863303,
+          52.384564
+        ],
+        headingDegrees: 90,
+        lengthMetres: 38,
+        widthMetres: 37
+      },
+      surveyed: {
+        anchor: [
+          4.863303,
+          52.384564
+        ],
+        northOffsetDegrees: 0,
+        source: "Exact BAG native RD polygon, facade-axis rotation into native east/south; surveyed AHN5 roof family and current 2025 municipal panoramas."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 90,
+      materialOverrides: {
+        brick: "#c6c5b4",
+        stone: "#bbbdb1",
+        slate: "#606867",
+        white: "#d2d4c9",
+        glass: "#5a7881",
+        dark: "#222e2e",
+        frame: "#3c494a",
+        copper: "#616967",
+        bronze: "#b7a45d",
+        greyBrick: "#b92b28"
+      },
+      attribution: {
+        title: "Kazerne Teunis",
+        author: "Map Recall",
+        sourceUrl: "https://www.brandweer.nl/kazerne/amsterdam-teunis/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native surveyed footprint; recessed three-bay hall, red soffits and open upper terrace. No third-party mesh or pixels."
+      }
+    },
+    {
+      id: "fire-station-victor",
+      name: "Brandweerkazerne Victor",
+      landmarkId: "n26612532",
+      modelUrl: "./models/fire-station-victor.glb",
+      suppressOsmIds: [
+        "w278390874",
+        "NL.IMBAG.Pand.0363100012103300"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.92924015,
+          52.3604391
+        ],
+        headingDegrees: 90,
+        lengthMetres: 25,
+        widthMetres: 25
+      },
+      surveyed: {
+        anchor: [
+          4.92924015,
+          52.3604391
+        ],
+        northOffsetDegrees: 0,
+        source: "CurrentBAG/3DBAG nativeeastX southZ"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 90,
+      materialOverrides: {
+        brick: "#695b50",
+        stone: "#a7a69c",
+        slate: "#8f9698",
+        white: "#e0e0d6",
+        glass: "#536968",
+        dark: "#303c38",
+        frame: "#727d7b",
+        copper: "#6b8b86",
+        bronze: "#d9aa45",
+        greyBrick: "#726c65",
+        red: "#d21c26"
+      },
+      attribution: {
+        title: "Brandweerkazerne Victor",
+        author: "Map Recall",
+        sourceUrl: "https://www.brandweer.nl/kazerne/amsterdam-victor/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original native BAG/3DBAG texturefree reconstruction guided by2025 municipality views and2021 photographs. Exact roof surfaces, paired arched apparatus portals, twin corner gables, balcony and authentic small Roman-serif sign. No thirdparty meshes/pixels."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.929306774065596,
+              52.36053705936478
+            ],
+            [
+              4.9291052553477,
+              52.36048596655009
+            ],
+            [
+              4.929103190229935,
+              52.36048550018579
+            ],
+            [
+              4.9291072299662915,
+              52.36047955696568
+            ],
+            [
+              4.929144110799492,
+              52.36042515325624
+            ],
+            [
+              4.929164623442056,
+              52.36039488112375
+            ],
+            [
+              4.929391011570047,
+              52.36045012347231
+            ],
+            [
+              4.929359240743031,
+              52.3604973209011
+            ],
+            [
+              4.929337262669892,
+              52.36049178036114
+            ],
+            [
+              4.929306774065596,
+              52.36053705936478
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "fire-station-willem",
+      name: "Kazerne Willem",
+      landmarkId: "n2840294077",
+      modelUrl: "./models/fire-station-willem.glb",
+      suppressOsmIds: [
+        "w279842625",
+        "NL.IMBAG.Pand.0363100012143776"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.91499071,
+          52.34891478
+        ],
+        headingDegrees: 90,
+        lengthMetres: 125,
+        widthMetres: 100
+      },
+      surveyed: {
+        anchor: [
+          4.91499071,
+          52.34891478
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG/AHN5 native footprint and 2024/2025 panorama"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 90,
+      materialOverrides: {
+        brick: "#cacbc3",
+        dark: "#292c2d",
+        frame: "#373d40",
+        glass: "#536c78",
+        slate: "#686b6a",
+        stone: "#9ea39e",
+        white: "#e0e0d0",
+        red: "#b83832",
+        greyBrick: "#393c3e",
+        blue: "#354957"
+      },
+      attribution: {
+        title: "Kazerne Willem",
+        author: "Map Recall",
+        sourceUrl: "https://www.zwarthout.org/nl/project/63/brandweerkazerne-willem-in-amsterdam",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free reconstruction from exact BAG footprint, semantic AHN roof parts, current city panorama and supplier detail photos; no reference image pixels imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.914923350820159,
+              52.34790477746369
+            ],
+            [
+              4.915013300248877,
+              52.34791592163282
+            ],
+            [
+              4.915027370950456,
+              52.34791765847343
+            ],
+            [
+              4.915117467092142,
+              52.34792881213622
+            ],
+            [
+              4.915131552381953,
+              52.34793055801033
+            ],
+            [
+              4.915221487335652,
+              52.34794169297537
+            ],
+            [
+              4.915235572633681,
+              52.347943438837106
+            ],
+            [
+              4.915325522315445,
+              52.34795457378163
+            ],
+            [
+              4.9153395929460775,
+              52.347956319572475
+            ],
+            [
+              4.915429542680297,
+              52.34796745443795
+            ],
+            [
+              4.915443627994764,
+              52.34796920027493
+            ],
+            [
+              4.915533724346696,
+              52.3479803536209
+            ],
+            [
+              4.915547663104129,
+              52.34798208088595
+            ],
+            [
+              4.915545540142179,
+              52.34798850764829
+            ],
+            [
+              4.915542825635451,
+              52.34799673858913
+            ],
+            [
+              4.9155655270270575,
+              52.34800114316595
+            ],
+            [
+              4.915570354659296,
+              52.34799155450827
+            ],
+            [
+              4.915573518059466,
+              52.347985275695166
+            ],
+            [
+              4.915585513717019,
+              52.34798755245301
+            ],
+            [
+              4.915667535695979,
+              52.34800308650411
+            ],
+            [
+              4.9156777444682325,
+              52.348005023587426
+            ],
+            [
+              4.91567378799766,
+              52.34801273728225
+            ],
+            [
+              4.915646003656362,
+              52.348066822664705
+            ],
+            [
+              4.915643651077269,
+              52.34807137906389
+            ],
+            [
+              4.915641687702825,
+              52.34807521799444
+            ],
+            [
+              4.915614278481804,
+              52.34812852293012
+            ],
+            [
+              4.915609962420748,
+              52.34813692724594
+            ],
+            [
+              4.9155997540030825,
+              52.34813495420735
+            ],
+            [
+              4.9155910688010325,
+              52.34813327484486
+            ],
+            [
+              4.9155834859274234,
+              52.34814802047526
+            ],
+            [
+              4.915592171132069,
+              52.3481496998383
+            ],
+            [
+              4.9156023795527855,
+              52.34815167287754
+            ],
+            [
+              4.915598063678181,
+              52.348160059218166
+            ],
+            [
+              4.91557066902776,
+              52.34821336420119
+            ],
+            [
+              4.9155663382744414,
+              52.34822176845678
+            ],
+            [
+              4.915538988529739,
+              52.34827498373357
+            ],
+            [
+              4.915534672440098,
+              52.34828338804636
+            ],
+            [
+              4.915507262961221,
+              52.34833669295473
+            ],
+            [
+              4.91550294695504,
+              52.3483450882789
+            ],
+            [
+              4.915475492417334,
+              52.34839848287729
+            ],
+            [
+              4.915471176399099,
+              52.34840687820018
+            ],
+            [
+              4.915443736460505,
+              52.348460272848946
+            ],
+            [
+              4.915439420430218,
+              52.348468668170554
+            ],
+            [
+              4.915412055608953,
+              52.34852189234388
+            ],
+            [
+              4.915407739566645,
+              52.34853028766422
+            ],
+            [
+              4.915380284799151,
+              52.34858368223828
+            ],
+            [
+              4.915375968649258,
+              52.3485920865447
+            ],
+            [
+              4.915365760137415,
+              52.34859011348599
+            ],
+            [
+              4.915357074855243,
+              52.34858843410638
+            ],
+            [
+              4.91534949182566,
+              52.34860317972026
+            ],
+            [
+              4.915358177110428,
+              52.34860485910042
+            ],
+            [
+              4.915368385625323,
+              52.34860683215978
+            ],
+            [
+              4.915364069661978,
+              52.348615218491005
+            ],
+            [
+              4.91533724397712,
+              52.34866741120518
+            ],
+            [
+              4.915332898650256,
+              52.34867579741814
+            ],
+            [
+              4.915322704605863,
+              52.34867384238895
+            ],
+            [
+              4.915241094535337,
+              52.3486581120162
+            ],
+            [
+              4.915228483953329,
+              52.34865567998058
+            ],
+            [
+              4.915204830050907,
+              52.34865110976282
+            ],
+            [
+              4.914726522180797,
+              52.34855889261347
+            ],
+            [
+              4.914697211145825,
+              52.34861424793622
+            ],
+            [
+              4.914695983044961,
+              52.348616561870436
+            ],
+            [
+              4.914913257884696,
+              52.34865751436272
+            ],
+            [
+              4.915241390525198,
+              52.34880281579849
+            ],
+            [
+              4.915243041256827,
+              52.348803541399796
+            ],
+            [
+              4.915214293686194,
+              52.34882803519739
+            ],
+            [
+              4.915208348211392,
+              52.348825414032106
+            ],
+            [
+              4.9151768163049585,
+              52.34885226948054
+            ],
+            [
+              4.915182761685916,
+              52.34885489963476
+            ],
+            [
+              4.915175237796404,
+              52.34886131383872
+            ],
+            [
+              4.915169277643547,
+              52.34885869261296
+            ],
+            [
+              4.9151374049894,
+              52.34888584328731
+            ],
+            [
+              4.915143365144011,
+              52.34888846451467
+            ],
+            [
+              4.915106634585437,
+              52.34891974814144
+            ],
+            [
+              4.915054352748818,
+              52.348964271577316
+            ],
+            [
+              4.915051211950519,
+              52.3489628929123
+            ],
+            [
+              4.914945945580136,
+              52.348916554595874
+            ],
+            [
+              4.914934793243613,
+              52.34892603710181
+            ],
+            [
+              4.914891948109737,
+              52.34890712670517
+            ],
+            [
+              4.9149030708119,
+              52.34889767104819
+            ],
+            [
+              4.914896774654042,
+              52.3488949046641
+            ],
+            [
+              4.914895912790806,
+              52.34889452373993
+            ],
+            [
+              4.914900326285029,
+              52.34889077548851
+            ],
+            [
+              4.91485748119988,
+              52.34887186507932
+            ],
+            [
+              4.914850337957741,
+              52.3488687088395
+            ],
+            [
+              4.91480747823932,
+              52.3488497983536
+            ],
+            [
+              4.914800334908646,
+              52.348846651098114
+            ],
+            [
+              4.914757606837718,
+              52.34882778605807
+            ],
+            [
+              4.91475046351413,
+              52.34882463879956
+            ],
+            [
+              4.914707487047723,
+              52.34880567388459
+            ],
+            [
+              4.914700343826922,
+              52.348802517635704
+            ],
+            [
+              4.91465761574538,
+              52.34878366154685
+            ],
+            [
+              4.914650355602962,
+              52.34878045988941
+            ],
+            [
+              4.914607496055116,
+              52.348761549330945
+            ],
+            [
+              4.91460035284854,
+              52.34875839307601
+            ],
+            [
+              4.914557259677721,
+              52.34873937371344
+            ],
+            [
+              4.914552579420049,
+              52.348743363555926
+            ],
+            [
+              4.914547744098803,
+              52.34874124111606
+            ],
+            [
+              4.914540998870957,
+              52.34873792466745
+            ],
+            [
+              4.914474007724584,
+              52.348708321146496
+            ],
+            [
+              4.914465433001621,
+              52.34870453002417
+            ],
+            [
+              4.9144085506442465,
+              52.34867937982001
+            ],
+            [
+              4.914398427471748,
+              52.34867490842703
+            ],
+            [
+              4.914406854422512,
+              52.34866776987236
+            ],
+            [
+              4.91441188362786,
+              52.34865857752804
+            ],
+            [
+              4.914414788082027,
+              52.34865320547354
+            ],
+            [
+              4.914388087720753,
+              52.348648056695744
+            ],
+            [
+              4.914384592295707,
+              52.34865792924654
+            ],
+            [
+              4.914376179923356,
+              52.34866507684563
+            ],
+            [
+              4.914365865205477,
+              52.34866067658657
+            ],
+            [
+              4.914361060977138,
+              52.34865839248389
+            ],
+            [
+              4.914286912423822,
+              52.34862561455365
+            ],
+            [
+              4.914293405515895,
+              52.348612644224666
+            ],
+            [
+              4.91429772177696,
+              52.34860424894538
+            ],
+            [
+              4.914325207114969,
+              52.34855086372893
+            ],
+            [
+              4.914329538039782,
+              52.348542468507
+            ],
+            [
+              4.9143569634490225,
+              52.348489190896196
+            ],
+            [
+              4.914361294457511,
+              52.34848078668563
+            ],
+            [
+              4.914388719886017,
+              52.34842750007935
+            ],
+            [
+              4.914393050786707,
+              52.34841910485486
+            ],
+            [
+              4.914403273987209,
+              52.34842106906872
+            ],
+            [
+              4.914411944524551,
+              52.3484227484597
+            ],
+            [
+              4.914419558047512,
+              52.34840792213674
+            ],
+            [
+              4.914410887417049,
+              52.34840625173368
+            ],
+            [
+              4.914400664315347,
+              52.34840427853311
+            ],
+            [
+              4.914404980631465,
+              52.34839587426215
+            ],
+            [
+              4.91443233181025,
+              52.3483426592505
+            ],
+            [
+              4.914436633342882,
+              52.34833426390701
+            ],
+            [
+              4.914464119302752,
+              52.348280788781445
+            ],
+            [
+              4.91446839051476,
+              52.348272483193035
+            ],
+            [
+              4.914495816737987,
+              52.34821909769848
+            ],
+            [
+              4.914500088033798,
+              52.34821078312145
+            ],
+            [
+              4.914527514180542,
+              52.348157397618806
+            ],
+            [
+              4.914531830352785,
+              52.34814900233011
+            ],
+            [
+              4.914559211534702,
+              52.34809569752977
+            ],
+            [
+              4.914563527694913,
+              52.348087302239804
+            ],
+            [
+              4.914590923476109,
+              52.348033997489985
+            ],
+            [
+              4.914595239624286,
+              52.34802560219874
+            ],
+            [
+              4.914622665541461,
+              52.34797221667179
+            ],
+            [
+              4.91462699664025,
+              52.34796379447579
+            ],
+            [
+              4.914637219554982,
+              52.34796577664422
+            ],
+            [
+              4.914645890012326,
+              52.34796745601811
+            ],
+            [
+              4.914653413315694,
+              52.34795281806155
+            ],
+            [
+              4.9146447281853085,
+              52.34795113862962
+            ],
+            [
+              4.914634505177928,
+              52.347949165449194
+            ],
+            [
+              4.914638821309563,
+              52.3479407701562
+            ],
+            [
+              4.914672421378584,
+              52.347875392657926
+            ],
+            [
+              4.914676723011584,
+              52.3478669793301
+            ],
+            [
+              4.914686960581848,
+              52.34786896155284
+            ],
+            [
+              4.914769051290115,
+              52.34788488297588
+            ],
+            [
+              4.914780914607375,
+              52.34788717726279
+            ],
+            [
+              4.9147777071710275,
+              52.34789344689161
+            ],
+            [
+              4.914774905253015,
+              52.347898846328064
+            ],
+            [
+              4.914800448227785,
+              52.347903765707564
+            ],
+            [
+              4.914802814041594,
+              52.34789659394497
+            ],
+            [
+              4.914804952260447,
+              52.34789012231774
+            ],
+            [
+              4.914819022849972,
+              52.34789186817048
+            ],
+            [
+              4.9149092654511755,
+              52.34790304055216
+            ],
+            [
+              4.914923350820159,
+              52.34790477746369
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "fire-station-ijsbrand",
+      name: "Brandweerkazerne IJsbrand",
+      landmarkId: "n2847025649",
+      modelUrl: "./models/fire-station-ijsbrand.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012115117",
+        "w44825777"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.88953,
+          52.40644
+        ],
+        headingDegrees: 90,
+        lengthMetres: 45,
+        widthMetres: 40
+      },
+      surveyed: {
+        anchor: [
+          4.88953,
+          52.40644
+        ],
+        northOffsetDegrees: 0,
+        source: "CurrentBAG/3DBAG nativeeastX southZ"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 90,
+      materialOverrides: {
+        brick: "#695b50",
+        stone: "#d1cec0",
+        slate: "#8f9698",
+        white: "#e0e0d6",
+        glass: "#425d64",
+        dark: "#3a4241",
+        frame: "#515b5a",
+        copper: "#6b8b86",
+        bronze: "#d99768",
+        greyBrick: "#696a65",
+        red: "#a94a53"
+      },
+      attribution: {
+        title: "Brandweerkazerne IJsbrand",
+        author: "Map Recall",
+        sourceUrl: "https://www.brandweer.nl/kazerne/amsterdam-ijsbrand/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free reconstruction of surveyed stepped volumes, red metal upper facade, projecting louvred glazing, stair tower and three apparatus bays. No third-party geometry or pixels."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.889273422779614,
+              52.40637614913423
+            ],
+            [
+              4.889262510710573,
+              52.40636769981798
+            ],
+            [
+              4.889545716341373,
+              52.40623365267528
+            ],
+            [
+              4.889556029575157,
+              52.40624177589474
+            ],
+            [
+              4.8895794553282155,
+              52.40626131458115
+            ],
+            [
+              4.889588621542395,
+              52.406253803457915
+            ],
+            [
+              4.8896172612705975,
+              52.40626706369534
+            ],
+            [
+              4.889602133216058,
+              52.406279403110055
+            ],
+            [
+              4.889614912246696,
+              52.40628910951982
+            ],
+            [
+              4.889659958552024,
+              52.40626778228134
+            ],
+            [
+              4.889701718177424,
+              52.406300969290065
+            ],
+            [
+              4.889655963980211,
+              52.40632251826254
+            ],
+            [
+              4.8896719133261115,
+              52.406335194917176
+            ],
+            [
+              4.889675754486216,
+              52.40633338655602
+            ],
+            [
+              4.889682557170871,
+              52.406338744800486
+            ],
+            [
+              4.889809010164352,
+              52.40643848145003
+            ],
+            [
+              4.889809767643265,
+              52.40643907781512
+            ],
+            [
+              4.889632563254833,
+              52.40652323101776
+            ],
+            [
+              4.889711191803333,
+              52.4065854591664
+            ],
+            [
+              4.889519468055482,
+              52.4066760852475
+            ],
+            [
+              4.88951667575746,
+              52.40667740368914
+            ],
+            [
+              4.889246487362075,
+              52.406463620559975
+            ],
+            [
+              4.889301005991516,
+              52.40643765969461
+            ],
+            [
+              4.889241956664072,
+              52.40639078358411
+            ],
+            [
+              4.889273422779614,
+              52.40637614913423
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "fire-station-pieter",
+      name: "Kazerne Pieter",
+      landmarkId: "n8334401440",
+      modelUrl: "./models/fire-station-pieter.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012088589"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.84366381,
+          52.34880645
+        ],
+        headingDegrees: 90,
+        lengthMetres: 39,
+        widthMetres: 18
+      },
+      surveyed: {
+        anchor: [
+          4.84366381,
+          52.34880645
+        ],
+        northOffsetDegrees: 0,
+        source: "CurrentBAG3DBAG native eastX southZ"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 90,
+      materialOverrides: {
+        brick: "#b8b39a",
+        stone: "#bdbdae",
+        slate: "#717e80",
+        white: "#e3e2ca",
+        glass: "#3d5155",
+        dark: "#303c38",
+        frame: "#707f83",
+        copper: "#6b8b86",
+        bronze: "#d9aa45",
+        greyBrick: "#726c65",
+        red: "#b64442"
+      },
+      attribution: {
+        title: "Kazerne Pieter",
+        author: "Map Recall",
+        sourceUrl: "https://www.brandweer.nl/kazerne/amsterdam-pieter/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original native BAG/3DBAG texture-free reconstruction guided by2024/2025 municipal panoramas. Beige flat-roof composition, south balcony, five red glazed apparatus doors, setback top room, real operator sign."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.843704925692914,
+              52.34880349505072
+            ],
+            [
+              4.843712248789477,
+              52.348803537666306
+            ],
+            [
+              4.84371156312699,
+              52.34884395257592
+            ],
+            [
+              4.843704239803662,
+              52.34884392793484
+            ],
+            [
+              4.843680773674746,
+              52.348843784223654
+            ],
+            [
+              4.843677807463303,
+              52.34902968288054
+            ],
+            [
+              4.843677758120544,
+              52.34903251380534
+            ],
+            [
+              4.843645618580437,
+              52.34903232126882
+            ],
+            [
+              4.843644347836292,
+              52.34911211795067
+            ],
+            [
+              4.843521571408839,
+              52.34911140123898
+            ],
+            [
+              4.843499734160339,
+              52.34911126497473
+            ],
+            [
+              4.843500406537591,
+              52.34903121388693
+            ],
+            [
+              4.843468120351073,
+              52.34903101164075
+            ],
+            [
+              4.843471298230314,
+              52.348842282807205
+            ],
+            [
+              4.843450312309507,
+              52.34884215044442
+            ],
+            [
+              4.8434513130313555,
+              52.3487940074898
+            ],
+            [
+              4.843451917367347,
+              52.34876504264225
+            ],
+            [
+              4.843554351912638,
+              52.34876569295754
+            ],
+            [
+              4.843554245506619,
+              52.34877198391671
+            ],
+            [
+              4.843629090201827,
+              52.34877246249592
+            ],
+            [
+              4.843629196597238,
+              52.34876617153667
+            ],
+            [
+              4.843682028315174,
+              52.34876649505481
+            ],
+            [
+              4.843681430343899,
+              52.348803342217636
+            ],
+            [
+              4.843704925692914,
+              52.34880349505072
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "fire-station-zebra",
+      name: "Kazerne Zebra",
+      landmarkId: "n2848174313",
+      modelUrl: "./models/fire-station-zebra.glb",
+      suppressOsmIds: [
+        "w44892676",
+        "NL.IMBAG.Pand.0363100012109022"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.954980836729826,
+          52.39626393063666
+        ],
+        headingDegrees: 90,
+        lengthMetres: 38,
+        widthMetres: 34
+      },
+      surveyed: {
+        anchor: [
+          4.954980836729826,
+          52.39626393063666
+        ],
+        northOffsetDegrees: 0,
+        source: "Current native BAG outline; AHN5 2023 main roof 9.1m and tower17.4m; current municipal panorama-guided front office and clerestory."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 90,
+      materialOverrides: {
+        brick: "#a66443",
+        stone: "#a2a49c",
+        slate: "#555e5e",
+        white: "#bbc0bc",
+        glass: "#617f85",
+        dark: "#343c3b",
+        frame: "#676e6c",
+        copper: "#bb3a3b",
+        bronze: "#bd9145",
+        greyBrick: "#878f90"
+      },
+      attribution: {
+        title: "Kazerne Zebra",
+        author: "Map Recall",
+        sourceUrl: "https://www.brandweer.nl/kazerne/amsterdam-zebra/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native BAG brick station, three red truck doors, gray metal office bay and ribbon clerestory, offset hose tower. No third-party meshes or photo pixels."
+      }
+    },
+    {
+      id: "fire-station-weesp",
+      name: "Kazerne Weesp",
+      landmarkId: "n1618230174",
+      modelUrl: "./models/fire-station-weesp.glb",
+      suppressOsmIds: [
+        "w282072534",
+        "NL.IMBAG.Pand.0457100000062823"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          5.04486,
+          52.3027
+        ],
+        headingDegrees: 90,
+        lengthMetres: 45,
+        widthMetres: 33
+      },
+      surveyed: {
+        anchor: [
+          5.04486,
+          52.3027
+        ],
+        northOffsetDegrees: 0,
+        source: "Exact BAG native RD polygon and AHN5/3DBAG roof surfaces. Native east/south local coordinates."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 90,
+      materialOverrides: {
+        brick: "#60564a",
+        stone: "#9b978a",
+        slate: "#535b59",
+        white: "#c8ccc4",
+        glass: "#4d6971",
+        dark: "#222e2e",
+        frame: "#717975",
+        copper: "#8e897b",
+        bronze: "#b7a45d",
+        greyBrick: "#b92b28"
+      },
+      attribution: {
+        title: "Kazerne Weesp",
+        author: "Map Recall",
+        sourceUrl: "https://www.brandweer.nl/kazerne/weesp/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native surveyed geometry and source-observed curved garage frontage and trapezoidal upper glazing; no imported mesh or pixels."
+      }
+    },
+    {
+      id: "fire-station-driemond",
+      name: "Kazerne Driemond",
+      landmarkId: "n2862198151",
+      modelUrl: "./models/fire-station-driemond.glb",
+      suppressOsmIds: [
+        "w57853130",
+        "NL.IMBAG.Pand.0363100012070690"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          5.019411766782528,
+          52.307000143153786
+        ],
+        headingDegrees: 0,
+        lengthMetres: 24.5,
+        widthMetres: 16
+      },
+      surveyed: {
+        anchor: [
+          5.019411766782528,
+          52.307000143153786
+        ],
+        northOffsetDegrees: 0,
+        source: "CurrentBAG/3DBAG nativeeastX southZ"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#8d846b",
+        stone: "#b6b9ac",
+        slate: "#737b78",
+        white: "#d6dad0",
+        glass: "#415454",
+        dark: "#303c38",
+        frame: "#86908b",
+        copper: "#6b8b86",
+        bronze: "#d9aa45",
+        greyBrick: "#56574f",
+        red: "#a92627",
+        concrete: "#b4bdba"
+      },
+      attribution: {
+        title: "Kazerne Driemond",
+        author: "Map Recall",
+        sourceUrl: "https://www.brandweer.nl/kazerne/driemond/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original native BAG/3DBAG texture-free reconstruction guided by 2021/2022 municipal panoramas and current station photograph. Paired red glazed apparatus portals, taller brick/glazed office wing, ribbed canal rear and native low-slope roofs. No imported meshes or photo pixels."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              5.0194996921848425,
+              52.30711611592646
+            ],
+            [
+              5.019383409666717,
+              52.30710817774232
+            ],
+            [
+              5.019403028233344,
+              52.30700009800905
+            ],
+            [
+              5.019305445981546,
+              52.30699331439477
+            ],
+            [
+              5.01932285998092,
+              52.30689827804433
+            ],
+            [
+              5.019536592877855,
+              52.30691290051875
+            ],
+            [
+              5.0194996921848425,
+              52.30711611592646
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "fire-station-anton",
+      name: "Kazerne Anton",
+      landmarkId: "w819163075",
+      modelUrl: "./models/fire-station-anton.glb",
+      suppressOsmIds: [
+        "w416229378",
+        "w1381820314",
+        "NL.IMBAG.Pand.0363100012244404"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.973280003106436,
+          52.307333056443284
+        ],
+        headingDegrees: 90,
+        lengthMetres: 55,
+        widthMetres: 38
+      },
+      surveyed: {
+        anchor: [
+          4.973280003106436,
+          52.307333056443284
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG exact elbow; AHN5 levels and original architect photographs"
+      },
+      groundAltitudeMetres: -4.4,
+      facingOffsetDegrees: 90,
+      materialOverrides: {
+        brick: "#525255",
+        dark: "#303035",
+        greyBrick: "#878787",
+        white: "#deddd6",
+        stone: "#a3a2a0",
+        slate: "#56585b",
+        glass: "#4d6672",
+        frame: "#272b2e",
+        red: "#c43336",
+        bronze: "#af9273",
+        concrete: "#545658",
+        green: "#788665"
+      },
+      attribution: {
+        title: "Kazerne Anton",
+        author: "Map Recall",
+        sourceUrl: "https://www.me-2.nl/project/kazerne-anton-amsterdam-amstelland/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free BAG reconstruction; source-guided gray bands, timber terrace, red/white bays and entrance overhang. No reference pixels or third-party mesh imported."
+      }
     }
   ];
 
@@ -34949,6 +36341,124 @@ Map source: ${osmUrl(places[i][0])}`);
           4.802471307901373
         ],
         note: "Main external pedestrian entrance under source-visible balcony, mapped on exact native southern facade, route pin1.85m outward into open forecourt. Station interiors not publicly accessible; preserve destination on route failure."
+      }
+    },
+    {
+      modelId: "fire-station-teunis",
+      name: "Kazerne Teunis",
+      description: "Teunis began as the first professional fire station in Amsterdam-West, temporarily housed in the GVB garage on Jan Tooropstraat from 1959 to 1965. After several moves, the fire service records its arrival at Vredenhofweg in 2011; the present building has a BAG construction year of 2013. Its three vehicle bays sit beneath a red canopy and an open upper terrace.",
+      sourceUrl: "https://www.brandweer.nl/kazerne/amsterdam-teunis/",
+      center: [
+        52.3846258,
+        4.863427
+      ],
+      routeDestination: {
+        center: [
+          52.384554,
+          4.863296
+        ],
+        note: "Source-visible pedestrian entrance immediately south of three vehicle bays; destination2m outside native west wall on Vredenhofweg pavement. Building interior is operational fire-service space."
+      }
+    },
+    {
+      modelId: "fire-station-victor",
+      name: "Brandweerkazerne Victor",
+      description: "Victor was Amsterdam\u2019s first fire station without horse stables: its early electrically powered fire engines had a large charging station here. The V name dates from its former Pieter Vlamingstraat station. The original building combined fire station and living quarters; the whole building now serves the fire brigade.",
+      sourceUrl: "https://www.brandweer.nl/kazerne/amsterdam-victor/",
+      center: [
+        52.360452,
+        4.929157
+      ],
+      routeDestination: {
+        center: [
+          52.360452,
+          4.929157
+        ],
+        note: "Current Dapperstraat public pavement at twin apparatus portals; source footprint and photographs."
+      }
+    },
+    {
+      modelId: "fire-station-willem",
+      name: "Kazerne Willem",
+      description: "Willem preserves the W of Weesper: the station began at Weesperplein in 1873, moved to Nieuwe Achtergracht in 1909, and has operated from Ringdijk since 1984. The renovated panels above the fire-engine doors use charred Marugame wood selected by ENZO architects for its durability.",
+      sourceUrl: "https://www.brandweer.nl/kazerne/amsterdam-willem/",
+      center: [
+        52.348947095579625,
+        4.914877307883409
+      ]
+    },
+    {
+      modelId: "fire-station-ijsbrand",
+      name: "Brandweerkazerne IJsbrand",
+      description: "Built in 2001 on Displaystraat, IJsbrand is one of Amsterdam-Noord\u2019s two professional fire stations. It houses the crews of a fire engine and an aerial ladder: eight firefighters in total. The IJsbrand name reaches back to a 1916 fire post in a wooden emergency village near Grasweg. The current station, named for Cornelia Frida Katz, replaced both the Berberisstraat and Molenwijk stations in 2001.",
+      sourceUrl: "https://www.brandweer.nl/kazerne/amsterdam-ijsbrand/",
+      center: [
+        52.406279,
+        4.889718
+      ]
+    },
+    {
+      modelId: "fire-station-pieter",
+      name: "Kazerne Pieter",
+      description: "A beige concrete-and-brick fire station on Poeldijkstraat, with five red glazed fire-engine doors, a projecting glazed watchroom and a setback upper room. It opened on 10 May 1972 to replace the fire stations in Sloten and Oud Osdorp. Pieter gets its name from the code letter P for Poeldijkstraat. The station formerly housed a hose workshop, shoemaker and clothing depot; its current specialist role is responding to incidents involving hazardous substances.",
+      sourceUrl: "https://www.brandweer.nl/kazerne/amsterdam-pieter/",
+      center: [
+        52.348825,
+        4.84376
+      ]
+    },
+    {
+      modelId: "fire-station-zebra",
+      name: "Kazerne Zebra",
+      description: "Kazerne Zebra opened on IJdoornlaan in 1973 as Amsterdam-Noord grew. Its brick station has three red vehicle doors, ribbon windows and a separate tall hose tower. The Z came from the old fire post on Zamenhofstraat. The service chose Zebra from the English telephone alphabet because Zaandam could cause confusion in Amsterdam-Noord and Zulu was also unsuitable. The former Zamenhofstraat post now houses Noordje\u2019s art and language projects for young people.",
+      sourceUrl: "https://www.brandweer.nl/kazerne/amsterdam-zebra/",
+      center: [
+        52.39614497764802,
+        4.954761362465582
+      ]
+    },
+    {
+      modelId: "fire-station-weesp",
+      name: "Kazerne Weesp",
+      description: "Weesp\u2019s volunteer fire station moved from the Achtergracht to the Aetsveldselaan in 2011. Its history began in 1888 in a former telegraph and post office with five hand pumps. The present station combines a curved four-bay appliance hall with a timber-faced upper volume and distinctive trapezoidal glazing. ",
+      sourceUrl: "https://www.brandweer.nl/kazerne/weesp/",
+      center: [
+        52.3025707,
+        5.0449773
+      ],
+      routeDestination: {
+        center: [
+          52.302535,
+          5.044978
+        ],
+        note: "Source-supported public pedestrian entrance approach on southern frontage."
+      }
+    },
+    {
+      modelId: "fire-station-driemond",
+      name: "Kazerne Driemond",
+      description: "Driemond\u2019s fire station is also known as Kazerne Maxima. Its two red glazed apparatus doors stand beside a taller brick and glass office wing at Lentestraat 30. The station hosts local safety days with the emergency services. ",
+      sourceUrl: "https://www.brandweer.nl/kazerne/driemond/",
+      center: [
+        52.307008,
+        5.01935
+      ]
+    },
+    {
+      modelId: "fire-station-anton",
+      name: "Kazerne Anton",
+      description: "ME-2 architects designed this 2016 station as an elbow around a private rear yard. Four gray brick shades echo the layers of stone and surrounding traffic. Three response vehicles leave from the raised ground floor; sports rooms occupy the lower level and recreation space sits above. A deliberate clean/dirty route keeps soot from equipment out of the living rooms.",
+      sourceUrl: "https://www.brandweer.nl/kazerne/amsterdam-anton/",
+      center: [
+        52.307150805532515,
+        4.973277542354208
+      ],
+      routeDestination: {
+        center: [
+          52.306919,
+          4.97352
+        ],
+        note: "Public Langbroekdreef approach beside the station driveway,27.6m from the former isolated apron point. Current mapped road coordinates cross-checked against sourced station plot; actual chosen destination remains Anton."
       }
     }
   ];

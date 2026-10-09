@@ -1,3 +1,12 @@
+import {buildFireStationAnton} from './fire-station-anton-builder';
+import {buildFireStationWeesp} from './fire-station-weesp-builder';
+import {buildFireStationDriemond} from './fire-station-driemond-builder';
+import {buildFireStationZebra} from './fire-station-zebra-builder';
+import {buildFireStationPieter} from './fire-station-pieter-builder';
+import {buildFireStationIJsbrand} from './fire-station-ijsbrand-builder';
+import {buildFireStationWillem} from './fire-station-willem-builder';
+import {buildFireStationVictor} from './fire-station-victor-builder';
+import {buildFireStationTeunis} from './fire-station-teunis-builder';
 import {buildFireStationOsdorp} from './fire-station-osdorp-builder';
 import {buildFireStationNico} from './fire-station-nico-builder';
 import {buildFireStationHendrik} from './fire-station-hendrik-builder';
@@ -301,6 +310,15 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
     if(id==='fire-station-nico')buildFireStationNico(w,d,helpers);
     else if(id==='fire-station-osdorp')buildFireStationOsdorp(w,d,helpers);
+    else if(id==='fire-station-teunis')buildFireStationTeunis(w,d,helpers);
+    else if(id==='fire-station-victor')buildFireStationVictor(w,d,helpers);
+    else if(id==='fire-station-willem')buildFireStationWillem(w,d,helpers);
+    else if(id==='fire-station-ijsbrand')buildFireStationIJsbrand(w,d,helpers);
+    else if(id==='fire-station-pieter')buildFireStationPieter(w,d,helpers);
+    else if(id==='fire-station-zebra')buildFireStationZebra(w,d,helpers);
+    else if(id==='fire-station-driemond')buildFireStationDriemond(w,d,helpers);
+    else if(id==='fire-station-weesp')buildFireStationWeesp(w,d,helpers);
+    else if(id==='fire-station-anton')buildFireStationAnton(w,d,helpers);
     else if(id==='fire-station-hendrik')buildFireStationHendrik(w,d,helpers);
     else if(id==='fire-station-dirk')buildFireStationDirk(w,d,helpers);
     else if(id==='petruskerk')buildPetruskerk(w,d,helpers);

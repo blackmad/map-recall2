@@ -1,0 +1,40 @@
+{
+  "id": "fire-station-anton",
+  "draft": "artifacts/fire-station-anton-draft/fire-station-anton.glb",
+  "galleryViews": "Native scale high default plus four lower rotations",
+  "sourceFront": "../map-recall2-source-data/models/fire-station-anton/processed/recording_2025-09-23_12-27-52_00259.jpg",
+  "sourceRear": "../map-recall2-source-data/models/fire-station-anton/raw/photo-03.jpg",
+  "criticalFailures": [
+    "Truck doors five metres above a flat game street",
+    "Rear gym buried after front datum rebase",
+    "Open elbow yard filled by the replacement",
+    "Front masonry panel incorrectly replaced by timber screen",
+    "Panes buried by horizontal brick strips"
+  ],
+  "nativePublicEntrance": [
+    4.973277542354208,
+    52.307150805532515
+  ],
+  "retainedBuildingIds": [
+    "NL.IMBAG.Pand.0363100012064243",
+    "NL.IMBAG.Pand.0363100012067925"
+  ],
+  "poiIdentity": "w819163075",
+  "routePinCard": "Root integrates genuine current OSM site identity; currently absent from curated extract",
+  "signage": "Real BRANDWEER sans bold; Arial Bold approximate font; operator flame logo omitted",
+  "status": "Pending root visual acceptance",
+  "routeForecourt": [
+    4.973250036726173,
+    52.30710402097107
+  ],
+  "latestDraftSha256": "f3de57f687fa9799e436dae1641231e147181051b7acc78afa2ae29e4138d8d2",
+  "nativePlotTerrain": "AHN DTM-backed ground mesh within actual OSM station grounds; front/apron about5mNAP, rear court0mNAP",
+  "remainingBlocker": "Same-camera live review must confirm removal of foreground below-grade wall and corrected narrow-strip/broad-right-window assembly. Spec road-relative rebase is root-owned; no new invented ramp.",
+  "correctedSinceIndependentFailure": [
+    "Broad dark opaque upper-front panel between two glazed groups",
+    "Low gym exterior roof stair",
+    "Broad rear yard stair",
+    "Native graded site supports both source elevations"
+  ],
+  "finalFrontAudit": "docs/references/fire-station-anton/final-front-source-audit.json"
+}

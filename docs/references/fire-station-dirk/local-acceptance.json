@@ -31,8 +31,9 @@
         4.8891,
         52.3586
       ],
-      "riderFixed": false,
-      "physicalPan": true
+      "riderFixed": true,
+      "physicalPan": true,
+      "riderTolerancePixels": 0.1
     },
     {
       "mode": "touch",
@@ -51,8 +52,9 @@
         4.8891,
         52.3586
       ],
-      "riderFixed": false,
-      "physicalPan": true
+      "riderFixed": true,
+      "physicalPan": true,
+      "riderTolerancePixels": 0.1
     }
   ],
   "limitations": [

@@ -1,0 +1,92 @@
+{
+  "id": "fire-station-anton",
+  "reviewedOn": "2026-10-09",
+  "source": "../map-recall2-source-data/models/fire-station-anton/processed/recording_2025-09-23_12-27-52_00259.jpg",
+  "sourceCapture": "2025-09-23",
+  "failedLive": "artifacts/fire-station-anton-draft/before-ground-clip/failed-live.png",
+  "failedPublicMesh": "artifacts/fire-station-anton-draft/before-ground-clip/failed-live-public.glb",
+  "finding": "The broad opaque central panel interpretation from earlier independent review was applied incorrectly. Direct comparison with this exact panorama shows a narrow vertical glazing strip at the native front notch and one broad office window group to its right. The flat game ground also failed to occlude the five-metre below-grade shell.",
+  "architecturalAssertions": [
+    {
+      "feature": "Narrow vertical dark/glazed strip",
+      "evidencePixels": [
+        731,
+        507,
+        775,
+        758
+      ],
+      "nativeX": [
+        -2.92,
+        -1.12
+      ],
+      "confidence": "high; exact BAG notch corroborates photo position",
+      "implementation": "1.8m full-height dark strip with1.5m exposed vertical glazing"
+    },
+    {
+      "feature": "Broad upper right glazing",
+      "evidencePixels": [
+        869,
+        571,
+        1128,
+        634
+      ],
+      "nativeX": [
+        2.4,
+        12.1
+      ],
+      "confidence": "high for grouping; width approximate from native frontage mapping",
+      "implementation": "One9.65m window group; retain charcoal frames"
+    },
+    {
+      "feature": "Solid red truck door bottoms",
+      "evidencePixels": [
+        256,
+        737,
+        634,
+        759
+      ],
+      "confidence": "high, present on all three doors",
+      "implementation": "0.63m solid red lower panel; glazing begins above"
+    },
+    {
+      "feature": "High signage panel and short left terrace screen",
+      "evidencePixels": [
+        190,
+        507,
+        731,
+        599
+      ],
+      "nativeX": [
+        -23.3,
+        -2.9
+      ],
+      "confidence": "high for arrangement, approximate panel width",
+      "implementation": "Left7.8m timber screen; adjacent12.6m masonry panel ends at notch"
+    }
+  ],
+  "groundClipping": {
+    "authority": "Existing archived AHN DTM samples and native site surfaces",
+    "scope": "All open lower wall shells and decorative band runs clipped against shared fireStationAntonGroundHeight; no road, spec datum or plot-scope change",
+    "retention": "Rear low gym, stair assemblies, roof heights, open elbow, all genuine glazing preserved",
+    "verification": {
+      "wallVertices": 5490,
+      "belowGradeFrontProbes": 18,
+      "paneSamples": 174,
+      "decodedRoofAndSiteFaces": 2717,
+      "failures": 0
+    }
+  },
+  "draft": {
+    "path": "artifacts/fire-station-anton-draft/fire-station-anton.glb",
+    "sha256": "f3de57f687fa9799e436dae1641231e147181051b7acc78afa2ae29e4138d8d2",
+    "triangles": 23707,
+    "bytes": 338052
+  },
+  "cpuSourceView": {
+    "path": "artifacts/fire-station-anton-cpu/fire-station-anton-source-camera.png",
+    "sourceParameters": "Exact cached horizontal camera, heading, pitch and75degreeFOV; native eye6.6m approximated as4.4mroad+2.2m eye",
+    "finding": "Foreground striped wall removed; narrow strip and broad right group visible; red door bases visible",
+    "limits": "Isolated CPU mesh, approximate height and simple shading; does not establish GPU/game acceptance"
+  },
+  "acceptance": "Pending root same-camera live rerender, independent comparison and required performance checks"
+}

@@ -1,0 +1,45 @@
+{
+  "id": "fire-station-ijsbrand",
+  "status": "draft-unaccepted",
+  "referenceImages": [
+    "../map-recall2-source-data/models/fire-station-ijsbrand/processed/recording_2024-10-23_06-38-00_00867.jpg",
+    "../map-recall2-source-data/models/fire-station-ijsbrand/processed/recording_2025-09-22_07-53-54_01127.jpg",
+    "../map-recall2-source-data/models/fire-station-ijsbrand/processed/recording_2024-10-23_07-33-22_00293.jpg"
+  ],
+  "nativeFrontCamera": {
+    "lon": 4.889342729,
+    "lat": 52.406187157,
+    "target": [
+      4.8895,
+      52.40641
+    ]
+  },
+  "nativeEastCamera": {
+    "lon": 4.889967192,
+    "lat": 52.40634733,
+    "target": [
+      4.88961,
+      52.40641
+    ]
+  },
+  "required": [
+    "Independent failure-seeking reference/render comparison",
+    "Gallery high plus4 lower rotations",
+    "Live southwest and east street cameras",
+    "Exact BAG/OSM suppression plus retained adjacent installed neighbors",
+    "Actual selected destination/reachability, visible pin, pointer clicked meaningful card",
+    "Desktop/touch game performance and ordinary facade retention"
+  ],
+  "failedEvidence": [
+    "artifacts/fire-station-ijsbrand-geometry-failed-frame-probes.json",
+    "artifacts/landmark-offline-preview/fire-station-ijsbrand-failed-fullheight-red-front.png",
+    "artifacts/landmark-offline-preview/fire-station-ijsbrand-failed-fullheight-red-opposite.png",
+    "artifacts/landmark-next-batch/fire-station-ijsbrand-failed-fullheight-red.glb"
+  ],
+  "limitations": [
+    "No GPU/browser acceptance",
+    "Shallow garage roof slope flattened; heights photo/survey bounded",
+    "Source-supported facade script omitted rather than generic lettering"
+  ],
+  "correctedSourceFailure": "Full-height red end replaced with upper-only red cantilever, gray support and open eastern recess. Independent re-review and public/game export still pending."
+}

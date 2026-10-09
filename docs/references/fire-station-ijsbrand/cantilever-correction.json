@@ -1,0 +1,13 @@
+{
+  "state": "corrected-draft-pending-independent-review",
+  "draftSha256": "4a4efb15f9d31975c019490c2617aea26e2af04320c62610f7c638116858d6b3",
+  "triangles": 8284,
+  "bytes": 129504,
+  "tests": {
+    "fractionalFirstHitSamples": 504,
+    "redUpperMinY": 9.2,
+    "openRecessRays": 2,
+    "decodedUpwardRoofFaces": "pass"
+  },
+  "acceptance": "Not accepted: public export, independent review, gallery/game/performance pending"
+}

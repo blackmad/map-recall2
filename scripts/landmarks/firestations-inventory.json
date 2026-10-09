@@ -30,9 +30,9 @@
         "0363100012169391"
       ],
       "municipalVboSourceUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012583776/",
-      "identityState": "official current station with BAG address match; footprint/OSM scope pending",
-      "modeled": false,
-      "modeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "identityState": "BAG/OSM surveyed physical scope installed; genuine route/pin/sourced card verified",
+      "modeled": true,
+      "modeledAudit": "Original native model accepted after root and independent visual review and actual desktop/touch gameplay evidence.",
       "rawSourcePaths": [
         "firestations-inventory/amsterdam-hendrik.html",
         "firestations-inventory/amsterdam-hendrik-pdok.json",
@@ -298,7 +298,11 @@
             }
           }
         }
-      ]
+      ],
+      "initialModeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "modelId": "fire-station-hendrik",
+      "acceptancePath": "docs/references/fire-station-hendrik/local-acceptance.json",
+      "assetSha256": "a28a910251f361f8010cd852352eb8226cfb3d9add3de7260f367eb9d448925c"
     },
     {
       "name": "Kazerne Anton",
@@ -323,9 +327,9 @@
         "0363100012244404"
       ],
       "municipalVboSourceUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012090209/",
-      "identityState": "official current station with BAG address match; footprint/OSM scope pending",
-      "modeled": false,
-      "modeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "identityState": "BAG/OSM surveyed physical scope installed; genuine route/pin/sourced card verified",
+      "modeled": true,
+      "modeledAudit": "Original native model accepted after root and independent visual review and actual desktop/touch gameplay evidence.",
       "rawSourcePaths": [
         "firestations-inventory/amsterdam-anton.html",
         "firestations-inventory/amsterdam-anton-pdok.json",
@@ -411,7 +415,11 @@
             }
           }
         }
-      ]
+      ],
+      "initialModeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "modelId": "fire-station-anton",
+      "acceptancePath": "docs/references/fire-station-anton/local-acceptance.json",
+      "assetSha256": "ba76d5dc361a97255eb19ff5f9fb105bd7066f295367e9a90120de54d55ad88f"
     },
     {
       "name": "Kazerne Dirk",
@@ -436,9 +444,9 @@
         "0363100012162222"
       ],
       "municipalVboSourceUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012073468/",
-      "identityState": "official current station with BAG address match; footprint/OSM scope pending",
-      "modeled": false,
-      "modeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "identityState": "BAG/OSM surveyed physical scope installed; genuine route/pin/sourced card verified",
+      "modeled": true,
+      "modeledAudit": "Original native model accepted after root and independent visual review and actual desktop/touch gameplay evidence.",
       "rawSourcePaths": [
         "firestations-inventory/amsterdam-dirk.html",
         "firestations-inventory/amsterdam-dirk-pdok.json",
@@ -612,7 +620,11 @@
             }
           }
         }
-      ]
+      ],
+      "initialModeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "modelId": "fire-station-dirk",
+      "acceptancePath": "docs/references/fire-station-dirk/local-acceptance.json",
+      "assetSha256": "cf63ed7a452b9c05c58770342350eca1a490038cd6ac4a10f936f4a561b3be6f"
     },
     {
       "name": "Kazerne IJsbrand",
@@ -637,9 +649,9 @@
         "0363100012115117"
       ],
       "municipalVboSourceUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001035955/",
-      "identityState": "official current station with BAG address match; footprint/OSM scope pending",
-      "modeled": false,
-      "modeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "identityState": "BAG/OSM surveyed physical scope installed; genuine route/pin/sourced card verified",
+      "modeled": true,
+      "modeledAudit": "Original native model accepted after root and independent visual review and actual desktop/touch gameplay evidence.",
       "rawSourcePaths": [
         "firestations-inventory/amsterdam-ijsbrand.html",
         "firestations-inventory/amsterdam-ijsbrand-pdok.json",
@@ -761,7 +773,11 @@
             }
           }
         }
-      ]
+      ],
+      "initialModeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "modelId": "fire-station-ijsbrand",
+      "acceptancePath": "docs/references/fire-station-ijsbrand/local-acceptance.json",
+      "assetSha256": "62db72acfe611233f517497579b9dc9e5c0a6bbf13561c851487085370e044c1"
     },
     {
       "name": "Kazerne Nico",
@@ -786,9 +802,9 @@
         "0363100012165618"
       ],
       "municipalVboSourceUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010010914232/",
-      "identityState": "official current station with BAG address match; footprint/OSM scope pending",
-      "modeled": false,
-      "modeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "identityState": "BAG/OSM surveyed physical scope installed; genuine route/pin/sourced card verified",
+      "modeled": true,
+      "modeledAudit": "Original native model accepted after root and independent visual review and actual desktop/touch gameplay evidence.",
       "rawSourcePaths": [
         "firestations-inventory/amsterdam-nico.html",
         "firestations-inventory/amsterdam-nico-pdok.json",
@@ -930,7 +946,11 @@
             }
           }
         }
-      ]
+      ],
+      "initialModeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "modelId": "fire-station-nico",
+      "acceptancePath": "docs/references/fire-station-nico/local-acceptance.json",
+      "assetSha256": "f9dbc9b6d4d2ace3af2a2e9579214eddcc1618706f2400c7d516069112f9b8e8"
     },
     {
       "name": "Kazerne Osdorp",
@@ -955,9 +975,9 @@
         "0363100012096223"
       ],
       "municipalVboSourceUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001035641/",
-      "identityState": "official current station with BAG address match; footprint/OSM scope pending",
-      "modeled": false,
-      "modeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "identityState": "BAG/OSM surveyed physical scope installed; genuine route/pin/sourced card verified",
+      "modeled": true,
+      "modeledAudit": "Original native model accepted after root and independent visual review and actual desktop/touch gameplay evidence.",
       "rawSourcePaths": [
         "firestations-inventory/amsterdam-osdorp.html",
         "firestations-inventory/amsterdam-osdorp-pdok.json",
@@ -1043,7 +1063,11 @@
             }
           }
         }
-      ]
+      ],
+      "initialModeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "modelId": "fire-station-osdorp",
+      "acceptancePath": "docs/references/fire-station-osdorp/local-acceptance.json",
+      "assetSha256": "9edad63f86b9243db8f3e663bb5f6adbcd1fc274859daff8a24b55b7646e46a0"
     },
     {
       "name": "Kazerne Pieter",
@@ -1068,9 +1092,9 @@
         "0363100012088589"
       ],
       "municipalVboSourceUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000778676/",
-      "identityState": "official current station with BAG address match; footprint/OSM scope pending",
-      "modeled": false,
-      "modeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "identityState": "BAG/OSM surveyed physical scope installed; genuine route/pin/sourced card verified",
+      "modeled": true,
+      "modeledAudit": "Original native model accepted after root and independent visual review and actual desktop/touch gameplay evidence.",
       "rawSourcePaths": [
         "firestations-inventory/amsterdam-pieter.html",
         "firestations-inventory/amsterdam-pieter-pdok.json",
@@ -1180,7 +1204,11 @@
             }
           }
         }
-      ]
+      ],
+      "initialModeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "modelId": "fire-station-pieter",
+      "acceptancePath": "docs/references/fire-station-pieter/local-acceptance.json",
+      "assetSha256": "b5e22ca8fc13de129b3c4a325e1261f24dea9bb8ae19f0349a541ca2ecd3607c"
     },
     {
       "name": "Kazerne Teunis",
@@ -1205,9 +1233,9 @@
         "0363100012241010"
       ],
       "municipalVboSourceUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001994715/",
-      "identityState": "official current station with BAG address match; footprint/OSM scope pending",
-      "modeled": false,
-      "modeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "identityState": "BAG/OSM surveyed physical scope installed; genuine route/pin/sourced card verified",
+      "modeled": true,
+      "modeledAudit": "Original native model accepted after root and independent visual review and actual desktop/touch gameplay evidence.",
       "rawSourcePaths": [
         "firestations-inventory/amsterdam-teunis.html",
         "firestations-inventory/amsterdam-teunis-pdok.json",
@@ -1309,7 +1337,11 @@
             }
           }
         }
-      ]
+      ],
+      "initialModeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "modelId": "fire-station-teunis",
+      "acceptancePath": "docs/references/fire-station-teunis/local-acceptance.json",
+      "assetSha256": "78a5f49bd115750de5af0647a21ddbcf05af885151b4be8503164b9b2e5cf1db"
     },
     {
       "name": "Kazerne Victor",
@@ -1334,9 +1366,9 @@
         "0363100012103300"
       ],
       "municipalVboSourceUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000615767/",
-      "identityState": "official current station with BAG address match; footprint/OSM scope pending",
-      "modeled": false,
-      "modeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "identityState": "BAG/OSM surveyed physical scope installed; genuine route/pin/sourced card verified",
+      "modeled": true,
+      "modeledAudit": "Original native model accepted after root and independent visual review and actual desktop/touch gameplay evidence.",
       "rawSourcePaths": [
         "firestations-inventory/amsterdam-victor.html",
         "firestations-inventory/amsterdam-victor-pdok.json",
@@ -1398,7 +1430,11 @@
             }
           }
         }
-      ]
+      ],
+      "initialModeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "modelId": "fire-station-victor",
+      "acceptancePath": "docs/references/fire-station-victor/local-acceptance.json",
+      "assetSha256": "93fb54f39ecc0262c2862e14d231fde9e1b5ce2bea3f28f82068f7f110065ac3"
     },
     {
       "name": "Kazerne Willem",
@@ -1423,9 +1459,9 @@
         "0363100012143776"
       ],
       "municipalVboSourceUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000793612/",
-      "identityState": "official current station with BAG address match; footprint/OSM scope pending",
-      "modeled": false,
-      "modeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "identityState": "BAG/OSM surveyed physical scope installed; genuine route/pin/sourced card verified",
+      "modeled": true,
+      "modeledAudit": "Original native model accepted after root and independent visual review and actual desktop/touch gameplay evidence.",
       "rawSourcePaths": [
         "firestations-inventory/amsterdam-willem.html",
         "firestations-inventory/amsterdam-willem-pdok.json",
@@ -1703,7 +1739,11 @@
             }
           }
         }
-      ]
+      ],
+      "initialModeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "modelId": "fire-station-willem",
+      "acceptancePath": "docs/references/fire-station-willem/local-acceptance.json",
+      "assetSha256": "e694632ea4eb905c63272244d5413cc3bea180df5c7bbd67ca485c11f87ba252"
     },
     {
       "name": "Kazerne Zebra",
@@ -1728,9 +1768,9 @@
         "0363100012109022"
       ],
       "municipalVboSourceUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000676132/",
-      "identityState": "official current station with BAG address match; footprint/OSM scope pending",
-      "modeled": false,
-      "modeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "identityState": "BAG/OSM surveyed physical scope installed; genuine route/pin/sourced card verified",
+      "modeled": true,
+      "modeledAudit": "Original native model accepted after root and independent visual review and actual desktop/touch gameplay evidence.",
       "rawSourcePaths": [
         "firestations-inventory/amsterdam-zebra.html",
         "firestations-inventory/amsterdam-zebra-pdok.json",
@@ -1836,7 +1876,11 @@
             }
           }
         }
-      ]
+      ],
+      "initialModeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "modelId": "fire-station-zebra",
+      "acceptancePath": "docs/references/fire-station-zebra/local-acceptance.json",
+      "assetSha256": "7aa607aea03ace00ff85195fe4348775f2d513f59003291bce12c74ccbde6421"
     },
     {
       "name": "Kazerne Driemond",
@@ -1861,9 +1905,9 @@
         "0363100012070690"
       ],
       "municipalVboSourceUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000887484/",
-      "identityState": "official current station with BAG address match; footprint/OSM scope pending",
-      "modeled": false,
-      "modeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "identityState": "BAG/OSM surveyed physical scope installed; genuine route/pin/sourced card verified",
+      "modeled": true,
+      "modeledAudit": "Original native model accepted after root and independent visual review and actual desktop/touch gameplay evidence.",
       "rawSourcePaths": [
         "firestations-inventory/driemond.html",
         "firestations-inventory/driemond-pdok.json",
@@ -1925,7 +1969,11 @@
             }
           }
         }
-      ]
+      ],
+      "initialModeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "modelId": "fire-station-driemond",
+      "acceptancePath": "docs/references/fire-station-driemond/local-acceptance.json",
+      "assetSha256": "d6470dc788512bc5794025219ba5790bf5b9550666f4546ec7d0930f1651187a"
     },
     {
       "name": "Kazerne Weesp",
@@ -1950,9 +1998,9 @@
         "0457100000062823"
       ],
       "municipalVboSourceUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0457010000059357/",
-      "identityState": "official current station with BAG address match; footprint/OSM scope pending",
-      "modeled": false,
-      "modeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "identityState": "BAG/OSM surveyed physical scope installed; genuine route/pin/sourced card verified",
+      "modeled": true,
+      "modeledAudit": "Original native model accepted after root and independent visual review and actual desktop/touch gameplay evidence.",
       "rawSourcePaths": [
         "firestations-inventory/weesp.html",
         "firestations-inventory/weesp-pdok.json",
@@ -2078,7 +2126,11 @@
             }
           }
         }
-      ]
+      ],
+      "initialModeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "modelId": "fire-station-weesp",
+      "acceptancePath": "docs/references/fire-station-weesp/local-acceptance.json",
+      "assetSha256": "ae5e8066de6020f9d155663efe16ce9f0e3f82352d87ad42efa256976b69ba95"
     }
   ],
   "separateFacilities": [
@@ -2096,13 +2148,11 @@
     "Duivendrecht (Ouder-Amstel)",
     "Uithoorn"
   ],
-  "remainingChecks": [
-    "Fetch physical footprints/current OSM identity per station before authoring.",
-    "Check map/runtime coverage for peripheral Driemond and Weesp.",
-    "Inventory excludes logistics and training facilities not listed as current operational land stations."
-  ],
+  "remainingChecks": [],
   "sourceArchive": {
     "commit": "69186d12d",
     "path": "firestations-inventory/"
-  }
+  },
+  "completedOn": "2026-10-09",
+  "scopeLimit": "13 official current operational land stations in Amsterdam municipality, including Driemond/Weesp; fireboats/logistics/training facilities excluded."
 }

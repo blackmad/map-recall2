@@ -1,0 +1,58 @@
+{
+  "modelId": "fire-station-teunis",
+  "sourceComparison": [
+    "../map-recall2-source-data/models/fire-station-teunis/raw/brandbase-2018.jpg",
+    "../map-recall2-source-data/models/fire-station-teunis/processed/2025_10_02_08_06_04_00483.jpg",
+    "../map-recall2-source-data/models/fire-station-teunis/processed/2025_10_02_08_06_04_00479.jpg"
+  ],
+  "cpuDraft": "artifacts/fire-station-teunis-draft/fire-station-teunis.glb",
+  "streetView": {
+    "camera": [
+      4.8631730483,
+      52.384640913
+    ],
+    "target": [
+      4.86333,
+      52.38464
+    ],
+    "height": 4,
+    "side": "westVredenhofweg",
+    "criticalTraits": [
+      "three recessed red sectional bays",
+      "redsoffit",
+      "upperopen terrace and thin roof overhang",
+      "southernwindow ribbons"
+    ]
+  },
+  "exactSuppression": [
+    "w394471798",
+    "NL.IMBAG.Pand.0363100012241010"
+  ],
+  "retainedNeighbors": [
+    "NL.IMBAG.Pand.0363100012071479",
+    "NL.IMBAG.Pand.0363100012088027",
+    "NL.IMBAG.Pand.0363100012097894",
+    "NL.IMBAG.Pand.0363100012117105",
+    "NL.IMBAG.Pand.0363100012118325",
+    "NL.IMBAG.Pand.0363100012128671",
+    "NL.IMBAG.Pand.0363100012134484",
+    "NL.IMBAG.Pand.0363100012138472"
+  ],
+  "checks": [
+    "defaultnativegallery plus4lowrotations",
+    "source-comparisonbyindependentreviewer",
+    "westfrontinlivegame with residents settled",
+    "north/rearretainedadjacentPand visibility andnoexpanded suppression",
+    "actualpedestrianroute destination",
+    "visiblemap pin/label andphysicalcardclick",
+    "stationaryridercamera pan desktop/touch",
+    "actualgameperformance evidence"
+  ],
+  "pending": [
+    "Independentfailure-seeking review",
+    "GPUgallery",
+    "livegame",
+    "POIsurfaces/runtimeintegration",
+    "sourceprivatepush"
+  ]
+}

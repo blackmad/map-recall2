@@ -1,0 +1,23 @@
+{
+  "id": "n3974782727",
+  "name": "Kazerne Teunis",
+  "lng": 4.863427,
+  "lat": 52.3846258,
+  "category": "building",
+  "description": "Teunis began as the first professional fire station in Amsterdam-West, temporarily housed in the GVB garage on Jan Tooropstraat from 1959 to 1965. After several moves, the fire service records its arrival at Vredenhofweg in 2011; the present building has a BAG construction year of 2013. Its three vehicle bays sit beneath a red canopy and an open upper terrace.",
+  "facts": [
+    "The station name recalls the T watch associated with Jan Tooropstraat.",
+    "In its original GVB garage quarters, crews had to run from the canteen across the garage to reach the fire engine.",
+    "The current station has three recessed vehicle bays along Vredenhofweg."
+  ],
+  "sourceUrls": [
+    "https://www.brandweer.nl/kazerne/amsterdam-teunis/",
+    "https://www.brandweer.nl/wp-content/uploads/2024/03/SITRAP-150-jaar-BAA.pdf",
+    "https://www.openstreetmap.org/node/3974782727"
+  ],
+  "routeDestination": {
+    "lng": 4.863296,
+    "lat": 52.384554
+  },
+  "destinationNote": "Source-visible pedestrian entrance immediately south of three vehicle bays; destination2m outside native west wall on Vredenhofweg pavement. Building interior is operational fire-service space."
+}
