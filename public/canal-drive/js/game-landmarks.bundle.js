@@ -17010,9 +17010,7 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      },
-      status: "held",
-      heldReason: "Integrator 2026-10-10: entrance wing at the gable foot missing; lower aisle window proportions"
+      }
     },
     {
       id: "vrijburg",

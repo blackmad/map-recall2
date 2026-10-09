@@ -23227,8 +23227,6 @@
           ]
         ]
       },
-      "status": "held",
-      "heldReason": "Integrator 2026-10-10: entrance wing at the gable foot missing; lower aisle window proportions",
       "bounds": {
         "min": [
           -17.11400032043457,
@@ -23257,10 +23255,9 @@
         "depthMetres": 33.97700119018555,
         "depthCoverage": 0.8287073461020865
       },
-      "triangles": 3584,
-      "bytes": 58344,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "triangles": 3680,
+      "bytes": 59932,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "vrijburg": {
       "id": "vrijburg",
