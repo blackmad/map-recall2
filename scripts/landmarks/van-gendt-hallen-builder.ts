@@ -1,131 +1,186 @@
 import type {BuildingTools} from './cultural-builders';
-import {addShell} from './worship-shell';
-import {wallBetween} from './worship-kit';
-import {wallsOf, wallTop, type Wall} from './worship-walls';
-import {archBand, archWindows, frameOf, setSink, slab} from './nearbar-kit';
-import source from './van-gendt-hallen-footprints.json';
+import {facePoly, wallBetween} from './worship-kit';
+import type {Wall} from './worship-walls';
+import {archWindows, setSink, slab, type Frame} from './nearbar-kit';
 
 /**
  * Van Gendt Hallen (Hallen van Stork), Oostenburg: five parallel factory halls by A.L. van Gendt (1898-1910), 157 m long.
- * Massing is the 3DBAG LoD2.2 shell (native east/south metres). Detail read from the 2018-2024 municipal panoramas:
- *  - end gables (NE and SW), one per hall: stepped corbel friezes following the shallow rake, three bays divided by pilasters,
- *    tall round-arched factory windows, a big window over a loading door in the middle bay;
- *  - NW water front (hall 1): a regular run of tall boarded openings under small arched upper windows between plinth,
- *    string course and cornice;
- *  - SE front (hall 5): 26 bays of tall round-arched windows in two storeys between brick pilasters.
+ * The BAG pand (0363100012169224) is a 157 x 83 m rectangle; 3DBAG's roofs there are noisy (a bulging arc, a flat cut-off), so the
+ * halls are rebuilt as five clean gabled prisms on the BAG footprint, with ridge and eave heights read from the 3DBAG LoD2.2
+ * wall tops and roof samples (ground = 0). Detail follows the 2018-2024 municipal panoramas:
+ *  - end gables (NE and SW), one per hall: a stepped corbel frieze following the rake, pilasters, three tall rectangular
+ *    multi-pane steel windows at mid height, a group of three small windows near the apex and a green loading door;
+ *  - NW water front (hall 1): tall boarded openings under small arched upper windows between plinth, string course and cornice;
+ *  - SE front (hall 5): 26 bays of tall round-arched windows in two storeys between brick pilasters;
+ *  - a glazed lantern along every ridge.
  */
 type P2 = [number, number];
-const ne = wallBetween([2.69, -52.17], [59.79, 7.36], 20, [0.72, -0.69]);          // t = 0 at the east end
-const sw = wallBetween([-110.43, 56.77], [-53.18, 116.23], 20, [-0.72, 0.694]);    // t = 0 at the north-west end
-const nw = wallBetween([2.69, -52.17], [-110.43, 56.77], 9.5, [-0.693, -0.72]);   // t = 0 at the north-east end
-const se = wallBetween([59.79, 7.36], [-53.18, 116.23], 10, [0.693, 0.72]);       // t = 0 at the south-west end
-const NEHALLS: [number, number][] = [[0, 19], [19, 35.6], [35.6, 51.2], [51.2, 66.9], [66.9, 82.5]];
-const SWHALLS: [number, number][] = [[0, 15.6], [15.6, 31.2], [31.2, 46.8], [46.8, 63.4], [63.4, 82.4]];
+const ne = wallBetween([2.69, -52.17], [59.79, 7.36], 20, [0.7216, -0.6921]);          // t = 0 at the east end, towards the north-west
+/** Halls from the east (t along the NE end): span, ridge and eave heights. */
+const HALLS: {a: number; c: number; ridge: number; eave: number; big: boolean}[] = [
+  {a: 0, c: 19, ridge: 17.2, eave: 10.9, big: true},
+  {a: 19, c: 35.6, ridge: 17.9, eave: 10.5, big: false},
+  {a: 35.6, c: 51.2, ridge: 13.5, eave: 10.0, big: true},
+  {a: 51.2, c: 66.9, ridge: 18.0, eave: 10.5, big: false},
+  {a: 66.9, c: 82.5, ridge: 13.5, eave: 9.5, big: true},
+];
+// Gables are shallow segmental arcs (sagitta about 0.45 of the half-width, as in the panoramas); the crown keeps the 3DBAG ridge height.
+for (const h of HALLS) h.eave = +(h.ridge - 0.45 * (h.c - h.a) / 2).toFixed(2);
+const LONG = (ne.origin[0] + 110.43) * ne.n[0] + (ne.origin[1] - 56.77) * ne.n[1];   // distance between the two end planes
+const ARC = 10;
+/** Segmental-arc gable/roof profile: eave height at the hall edges, ridge at the crown; u is across the hall from its centre. */
+const arcY = (h: {c: number; a: number; ridge: number; eave: number}, u: number) => {
+  const half = (h.c - h.a) / 2, sag = h.ridge - h.eave, r = (half * half + sag * sag) / (2 * sag);
+  return h.ridge - r + Math.sqrt(Math.max(0, r * r - u * u));
+};
+const at = (w: Wall, t: number): P2 => [w.origin[0] + w.tangent[0] * t, w.origin[1] + w.tangent[1] * t];
+const NEW = 82.5;
+const nwCorner = at(ne, NEW), seCorner = at(ne, 0);
+/** Frames sit exactly on the prism walls: x along the wall, z out of it. */
+const neF: Frame = {origin: seCorner, tangent: ne.tangent, n: ne.n};
+const swF: Frame = {origin: [nwCorner[0] - ne.n[0] * LONG, nwCorner[1] - ne.n[1] * LONG], tangent: [-ne.tangent[0], -ne.tangent[1]], n: [-ne.n[0], -ne.n[1]]};
+const nwF: Frame = {origin: nwCorner, tangent: [-ne.n[0], -ne.n[1]], n: ne.tangent};
+const seF: Frame = {origin: [seCorner[0] - ne.n[0] * LONG, seCorner[1] - ne.n[1] * LONG], tangent: ne.n, n: [-ne.tangent[0], -ne.tangent[1]]};
 
-const pt = (w: Wall, t: number, out = 0): P2 => [w.origin[0] + w.tangent[0] * t + w.n[0] * out, w.origin[1] + w.tangent[1] * t + w.n[1] * out];
+/** A long thin slab cut into runs of at most 30 m (giant thin boxes are not welded by the GLB quality audit). */
+function longSlab(b: BuildingTools, f: Frame, t0: number, t1: number, y: number, h: number, d: number, colour: string, out = 0) {
+  const n = Math.ceil((t1 - t0) / 30), len = (t1 - t0) / n;
+  for (let k = 0; k < n; k++) slab(b, f, t0 + (k + 0.5) * len, y, len + 0.02, h, d, colour, out);
+}
+
+/** Rectangular multi-pane steel window: dark frame, glass, mullions, stone sill. */
+function steelWindow(b: BuildingTools, f: Frame, t: number, y: number, w: number, h: number, cols: number, rows: number) {
+  slab(b, f, t, y - 0.12, w + 0.5, 0.14, 0.2, 'stone');
+  slab(b, f, t, y, w, h, 0.08, 'glass', 0.02);
+  const fr = 0.07;
+  slab(b, f, t - w / 2 + fr / 2, y, fr, h, 0.12, 'frame', 0.02);
+  slab(b, f, t + w / 2 - fr / 2, y, fr, h, 0.12, 'frame', 0.02);
+  slab(b, f, t, y, w, fr, 0.12, 'frame', 0.02);
+  slab(b, f, t, y + h - fr, w, fr, 0.12, 'frame', 0.02);
+  for (let k = 1; k < cols; k++) slab(b, f, t - w / 2 + (w * k) / cols, y, 0.05, h, 0.1, 'frame', 0.02);
+  for (let k = 1; k < rows; k++) slab(b, f, t, y + (h * k) / rows - 0.025, w, 0.05, 0.1, 'frame', 0.02);
+}
 
 export function buildVanGendtHallen(_w: number, _d: number, b: BuildingTools & {mark?: (n: string) => void}) {
-  addShell(b, source as never, {wall: 'brick', roof: 'slate'});
-  b.mark?.('shell');
-  setSink(0.5);
-  const all = wallsOf(source as never);
-
-  /** Highest shell wall at tangent position t of an end frame (the gable profile), or null. */
-  const profile = (f: Wall, t: number, out = 0): number | null => {
-    const p = pt(f, t, out);
-    let best: number | null = null;
-    for (const w of all) {
-      if (w.n[0] * f.n[0] + w.n[1] * f.n[1] < 0.9) continue;
-      const d = (p[0] - w.origin[0]) * w.n[0] + (p[1] - w.origin[1]) * w.n[1];
-      if (Math.abs(d) > 1.0) continue;
-      const tw = (p[0] - w.origin[0]) * w.tangent[0] + (p[1] - w.origin[1]) * w.tangent[1];
-      if (tw < -0.05 || tw > w.length + 0.05) continue;
-      const h = wallTop(w, Math.min(w.length, Math.max(0, tw)));
-      if (Number.isFinite(h) && (best === null || h > best)) best = h;
+  // ---- five clean gabled prisms (ridges run from the NE end to the SW end) ----
+  // Long faces are cut into panels of at most 15 m: the GLB quality audit cannot weld details onto giant triangles.
+  const NSEG = Math.ceil(LONG / 15);
+  const lerp = (p: P2, q: P2, u: number): P2 => [p[0] + (q[0] - p[0]) * u, p[1] + (q[1] - p[1]) * u];
+  /** Panels between two lines running NE -> SW, each given as [NE point, height, SW point, height]. */
+  const panel = (lineA: [P2, number, P2, number], lineB: [P2, number, P2, number], colour: string, out: number[], role?: 'roof', seg = NSEG) => {
+    // lineX = [NE point, height there, SW point, height there]; panels are cut along the ridge direction
+    for (let k = 0; k < seg; k++) {
+      const u0 = k / seg, u1 = (k + 1) / seg;
+      const a0 = lerp(lineA[0], lineA[2], u0), a1 = lerp(lineA[0], lineA[2], u1), b0 = lerp(lineB[0], lineB[2], u0), b1 = lerp(lineB[0], lineB[2], u1);
+      const ya0 = lineA[1] + (lineA[3] - lineA[1]) * u0, ya1 = lineA[1] + (lineA[3] - lineA[1]) * u1, yb0 = lineB[1] + (lineB[3] - lineB[1]) * u0, yb1 = lineB[1] + (lineB[3] - lineB[1]) * u1;
+      facePoly(b, [[a0[0], ya0, a0[1]], [a1[0], ya1, a1[1]], [b1[0], yb1, b1[1]], [b0[0], yb0, b0[1]]], colour, out, role);
     }
-    return best;
   };
+  HALLS.forEach((h, i) => {
+    const A = at(ne, h.a), C = at(ne, h.c), M = at(ne, (h.a + h.c) / 2);
+    const sw2 = (q: P2): P2 => [q[0] - ne.n[0] * LONG, q[1] - ne.n[1] * LONG];
+    const A2 = sw2(A), C2 = sw2(C), M2 = sw2(M);
+    const nIn = [-ne.n[0], 0, -ne.n[1]];
+    // gable ends: rectangle to the eave plus a segmental arc to the crown (NE faces +n, SW faces -n)
+    const half = (h.c - h.a) / 2, pts: {u: number; y: number}[] = [];
+    for (let k = 0; k <= ARC; k++) { const u = -half + (2 * half * k) / ARC; pts.push({u, y: arcY(h, u)}); }
+    const at3 = (E: P2, Mm: P2, u: number): P2 => [Mm[0] + ne.tangent[0] * u, Mm[1] + ne.tangent[1] * u];
+    const topNE = pts.map(q => { const c = at3(A, M, q.u); return [c[0], q.y, c[1]]; });
+    // u runs from the SE side (u = -half, towards A) to the NW side (towards C)
+    facePoly(b, [[A[0], 0, A[1]], [C[0], 0, C[1]], ...topNE.slice().reverse()], 'brick', [ne.n[0], 0, ne.n[1]]);
+    const topSW = pts.map(q => { const c = at3(A2, M2, q.u); return [c[0], q.y, c[1]]; });
+    facePoly(b, [[A2[0], 0, A2[1]], [C2[0], 0, C2[1]], ...topSW.slice().reverse()], 'brick', nIn);
+    // curved roof: ARC strips from eave to crown to eave
+    const roofSeg = Math.ceil(LONG / 26);
+    for (let k = 0; k < ARC; k++) {
+      const u0 = pts[k].u, u1 = pts[k + 1].u;
+      const p0 = at3(A, M, u0), p1 = at3(A, M, u1), q0 = at3(A2, M2, u0), q1 = at3(A2, M2, u1);
+      panel([p0, pts[k].y, q0, pts[k].y], [p1, pts[k + 1].y, q1, pts[k + 1].y], 'slate', [0, 1, 0], 'roof', roofSeg);
+    }
+    // exterior long walls
+    if (i === 0) panel([A, 0, A2, 0], [A, h.eave, A2, h.eave], 'brick', [-ne.tangent[0], 0, -ne.tangent[1]]);
+    if (i === HALLS.length - 1) panel([C, 0, C2, 0], [C, h.eave, C2, h.eave], 'brick', [ne.tangent[0], 0, ne.tangent[1]]);
+    // wall between neighbouring halls of different eave height
+    const nx = HALLS[i + 1];
+    if (nx && Math.abs(nx.eave - h.eave) > 0.05) {
+      const lo = Math.min(h.eave, nx.eave), hi = Math.max(h.eave, nx.eave), taller = h.eave > nx.eave ? 1 : -1;
+      panel([C, lo, C2, lo], [C, hi, C2, hi], 'brick', [taller * ne.tangent[0], 0, taller * ne.tangent[1]]);
+    }
+  });
+  b.mark?.('shell');
+  setSink(0);
 
-  const endGables = (f: Wall, halls: [number, number][], doors: number[]) => {
-    halls.forEach(([a, c], i) => {
-      const mid = (a + c) / 2, W = c - a - 0.8;
-      // this hall's own gable plane: 3DBAG staggers the ends by up to a metre or two
-      const ds: number[] = [];
-      for (const w of all) {
-        if (w.n[0] * f.n[0] + w.n[1] * f.n[1] < 0.95 || w.base > 0.5 || w.length < 3) continue;
-        const m = pt(w, w.length / 2), tm = (m[0] - f.origin[0]) * f.tangent[0] + (m[1] - f.origin[1]) * f.tangent[1];
-        if (tm > a + 1 && tm < c - 1) ds.push((m[0] - f.origin[0]) * f.n[0] + (m[1] - f.origin[1]) * f.n[1]);
-      }
-      ds.sort((x, y) => x - y);
-      const dh = ds.length ? ds[Math.floor(ds.length / 2)] : 0;
-      const fr = {...frameOf(f), origin: [f.origin[0] + f.n[0] * dh, f.origin[1] + f.n[1] * dh] as [number, number]};
-      const profile2 = (t: number) => profile(f, t, dh - 0.0);
-      const ridge = profile2(mid) ?? 13, eave = Math.min(profile2(a + 0.6) ?? ridge, profile2(c - 0.6) ?? ridge);
-      // stepped corbel frieze following the rake, two courses
-      const half = W / 2;
+  // ---- glazed lanterns along the ridges ----
+  for (const h of HALLS) {
+    const f: Frame = {origin: at(ne, (h.a + h.c) / 2), tangent: [-ne.n[0], -ne.n[1]], n: [ne.tangent[0], ne.tangent[1]]};
+    // frame runs along the ridge: t = distance from the NE end, out = towards the north-west side
+    const L = LONG - 4;
+    longSlab(b, f, 2, L, h.ridge - 0.35, 1.5, 0.9, 'glass', -0.45);
+    longSlab(b, f, 2, L, h.ridge + 1.15, 0.12, 1.2, 'concrete', -0.6);
+  }
+
+  // ---- end gables ----
+  const endGables = (fr: Frame, mirror: boolean) => {
+    const W = NEW;
+    HALLS.forEach(h => {
+      const [a, c] = mirror ? [W - h.c, W - h.a] : [h.a, h.c];
+      const mid = (a + c) / 2, half = (c - a) / 2;
+      const rake = (t: number) => arcY(h, Math.max(-half, Math.min(half, t - mid)));
+      // stepped corbel frieze: two staircase courses following each rake
       for (const sgn of [-1, 1]) {
-        for (let s = 0.6; s < half - 2.0; s += 0.9) {
-          const t = mid + sgn * s, h = Math.min(profile2(t) ?? 99, profile2(t - 0.3) ?? 99, profile2(t + 0.3) ?? 99);
-          if (h > 90) continue;
-          const up = (Math.floor(s / 0.9) % 2) * 0.28;
-          slab(b, fr, t, h - 1.4 + up, 0.5, 0.26, 0.12, 'greyBrick', -0.12);
+        for (let s = 0.7; s < half - 1.0; s += 1.3) {
+          const t = mid + sgn * s, base = rake(t + sgn * 0.45);
+          for (const [drop, par] of [[0.75, 0], [1.6, 1]]) {
+            const y = Math.round((base - drop - 0.1) / 0.3) * 0.3 + par * 0.15;
+            slab(b, fr, t, y, 1.3, 0.2, 0.14, 'greyBrick');
+          }
         }
       }
-      // pilasters framing the three bays
-      for (const t of [a + 0.5, c - 0.5, mid - W * 0.2, mid + W * 0.2]) {
-        const top = Math.min(profile2(t) ?? eave, profile2(t - 0.5) ?? eave, profile2(t + 0.5) ?? eave, ridge) - 1.9;
-        slab(b, fr, t, 0, 0.55, top, 0.14, 'brick');
-        slab(b, fr, t, top - 0.15, 0.8, 0.2, 0.2, 'stone');
+      // pilasters
+      for (const t of [a + 0.45, c - 0.45]) {
+        slab(b, fr, t, 0, 0.55, h.eave - 0.3, 0.14, 'greyBrick');
+        slab(b, fr, t, h.eave - 0.45, 0.8, 0.18, 0.2, 'stone');
       }
-      slab(b, fr, mid, 5.6, W, 0.12, 0.1, 'stone');
-      // side bays: tall arched window over a small low window
-      const sideW = Math.min(2.2, W * 0.13);
-      for (const t of [mid - W * 0.36, mid + W * 0.36]) {
-        archWindows(b, fr, [t], {y: 3.2, w: sideW, h: Math.min(6.2, eave - 3.9), frame: 'frame', bars: 1, rows: 3, sill: 'stone'});
-        archWindows(b, fr, [t], {y: 0.9, w: sideW * 0.75, h: 2.4, frame: 'frame', bars: 1, rows: 2, sill: 'stone'});
-      }
-      // middle bay: big window over the loading door (or a small green door)
-      const wy = Math.max(5.0, ridge - 8.6);
-      archWindows(b, fr, [mid], {y: wy, w: 2.5, h: Math.min(4.6, ridge - wy - 1.9), frame: 'frame', bars: 1, rows: 3, sill: 'stone'});
-      if (doors.includes(i)) {
-        slab(b, fr, mid, 0, 4.6, 6.3, 0.1, 'dark', 0.02);
-        slab(b, fr, mid, 6.3, 5.2, 0.2, 0.2, 'stone');
-      } else {
-        slab(b, fr, mid, 0, 1.9, 3.1, 0.1, 'green', 0.02);
-        archBand(b, fr, mid, 3.0, 2.4, 0.9, 0.2, 0.1, 'greyBrick', 0);
-      }
+      slab(b, fr, mid, 3.5, c - a - 1.8, 0.1, 0.1, 'stone');
+      // three tall steel windows at mid height, loading door below the middle one
+      const ww = Math.min(2.0, (c - a) * 0.12);
+      steelWindow(b, fr, mid - (c - a) * 0.3, 4.3, ww, 4.4, 2, 4);
+      steelWindow(b, fr, mid + (c - a) * 0.3, 4.3, ww, 4.4, 2, 4);
+      steelWindow(b, fr, mid, 4.9, ww * 1.2, 4.0, 2, 4);
+      for (const s of [-1, 1]) steelWindow(b, fr, mid + s * (c - a) * 0.3, 1.0, ww * 0.85, 1.9, 2, 2);
+      slab(b, fr, mid, 0, 2.6, 3.4, 0.1, 'green', 0.02);
+      slab(b, fr, mid, 3.4, 3.0, 0.2, 0.18, 'stone');
+      // three small rectangular windows near the apex, the middle one larger
+      const ys = Math.min(h.ridge - 4.4, h.eave + 0.6);
+      steelWindow(b, fr, mid - 1.5, ys, 0.75, 1.3, 1, 2);
+      steelWindow(b, fr, mid + 1.5, ys, 0.75, 1.3, 1, 2);
+      steelWindow(b, fr, mid, ys, 1.0, 1.7, 1, 3);
     });
   };
-  endGables(ne, NEHALLS, [1, 3]);
-  endGables(sw, SWHALLS, [0, 2, 4]);
+  endGables(neF, false);
+  endGables(swF, true);
 
   // ---- NW water front: tall boarded openings, small arched upper windows ----
   {
-    const f = frameOf(nw), L = nw.length;
-    slab(b, f, L / 2, 0, L, 0.7, 0.12, 'stone');
-    slab(b, f, L / 2, 5.3, L, 0.14, 0.1, 'stone');
-    slab(b, f, L / 2, 9.0, L, 0.4, 0.2, 'greyBrick');
+    const f = nwF, L = LONG;
+    longSlab(b, f, 0, L, 0, 0.7, 0.12, 'stone');
+    longSlab(b, f, 0, L, 5.3, 0.14, 0.1, 'stone');
+    longSlab(b, f, 0, L, 9.55, 0.4, 0.2, 'greyBrick');
     const ts: number[] = [];
-    for (let t = 2.0; t < L - 1.5; t += 3.6) if (t < 41.5 || t > 48.5) ts.push(t);
-    for (const t of ts) {
-      slab(b, f, t, 1.2, 1.9, 3.7, 0.1, 'dark', 0.02);
-    }
+    for (let t = 2.0; t < L - 1.5; t += 3.6) ts.push(t);
+    for (const t of ts) slab(b, f, t, 1.2, 1.9, 3.7, 0.1, 'dark', 0.02);
     archWindows(b, f, ts.map(t => t + 1.8), {y: 6.7, w: 0.9, h: 1.4, frame: 'frame', bars: 0, rows: 0});
-    for (let t = 3.8; t < L - 1; t += 3.6) if (t < 41 || t > 49) slab(b, f, t, 0, 0.5, 9.0, 0.1, 'greyBrick');
   }
   // ---- SE front: two storeys of round-arched windows between pilasters ----
   {
-    const f = frameOf(se), L = se.length, pitch = L / 26;
-    slab(b, f, L / 2, 0, L, 0.6, 0.12, 'stone');
-    slab(b, f, L / 2, 5.9, L, 0.14, 0.1, 'stone');
-    slab(b, f, L / 2, 9.6, L, 0.4, 0.2, 'greyBrick');
+    const f = seF, L = LONG, pitch = L / 26;
+    longSlab(b, f, 0, L, 0, 0.6, 0.12, 'stone');
+    longSlab(b, f, 0, L, 6.5, 0.14, 0.1, 'stone');
+    longSlab(b, f, 0, L, 12.3, 0.4, 0.2, 'greyBrick');
     const ts: number[] = [];
     for (let k = 0; k < 26; k++) ts.push((k + 0.5) * pitch);
-    archWindows(b, f, ts, {y: 1.4, w: 3.0, h: 4.4, frame: 'frame', bars: 1, rows: 2, sill: 'stone'});
-    archWindows(b, f, ts, {y: 6.9, w: 2.6, h: 2.5, frame: 'frame', bars: 1, rows: 0});
-    for (let k = 0; k <= 26; k++) {
-      const t = k * pitch;
-      slab(b, f, Math.min(L - 0.3, Math.max(0.3, t)), 0, 0.6, 9.4, 0.14, 'greyBrick');
-    }
+    archWindows(b, f, ts, {y: 1.4, w: 3.0, h: 4.8, frame: 'frame', bars: 1, rows: 2, sill: 'stone'});
+    archWindows(b, f, ts, {y: 7.5, w: 2.6, h: 3.6, frame: 'frame', bars: 1, rows: 0});
+    for (let k = 0; k <= 26; k++) slab(b, f, Math.min(L - 0.3, Math.max(0.3, k * pitch)), 0, 0.6, 12.2, 0.14, 'greyBrick');
   }
 }
