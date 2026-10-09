@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## Nine landmark drafts installed in one afternoon (2026-10-09)
+
+Three Sonnet lanes finished the drafts earlier sessions left uncommitted:
+Uilenburger Synagoge, Nieuwendammerkerk, Meerpadkerk (~25 min for the
+lane), This is Holland, Luther Museum, Huize Frankendael (~50 min), Hannekes
+Boom, Posthoornkerk and Haparandaweg 57 (~1.5 h). Acceptance used the lighter
+process: geometry check, POI contract, and a contact sheet (reference |
+front | 3/4 | in game) reviewed by the integrator, with one batch deploy
+instead of per-building review agents. This is Holland's foyer glass went
+from alpha 0.18 to 0.3 (the exporter now honours `materialOpacity`
+generically); Luther Museum dropped hidden trim faces (26.6k → 14.6k tris).
+UvA Roeterseiland stays held (see TODO). The haparandaweg-57 "corrected
+candidate 4ba9134c" was a GLB hash prefix, not a commit.
+
 ## What's new page, and trees stop rebuilding every frame (2026-10-09)
 
 `whats-new.html` is the landing page for finished buildings: hero counts, a

@@ -19,11 +19,22 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 
-- **Landmark drafts not installed** (source committed under
-  `scripts/landmarks/`): Uilenburger synagoge, This is Holland, UvA
-  Roeterseiland, Luther Museum, Huize Frankendael, Hannekes Boom,
-  Posthoornkerk, Nieuwendammerkerk, Meerpadkerk, Haparandaweg 57. Finish,
-  install, contact-sheet review, one batch deploy.
+- **UvA Roeterseiland held**: builder simplified 37.2k → 21.9k tris but not
+  installed — its spec says `do-not-suppress` (composite BAG parent not
+  partitioned; bridge underside height estimated). Needs a suppression
+  scope decision, then a check against the Tim Soar photos.
+- **Landmark polish from contact sheets**: This is Holland sign is thin and
+  its panels too regular; Luther Museum roof uniformly dark, frames should be
+  pale; Frankendael roof should read as tile; Nieuwendammerkerk nave roof
+  reads khaki not red tile; Posthoornkerk is 39k tris (cap 40k) — reduce.
+- **Shared material textures (user, 2026-10-09)**: models are flat-shaded
+  colour only, so brick and roofs read as plastic. Add one shared tiling set
+  (brick bonds, roof tile, slate, stone, timber, glass) at 256–512 px with
+  mipmaps; the building compiler/kits emit box-projected UVs; distant LOD
+  keeps flat colour. Not per-building photo textures.
+- **Canal house reuse (user, 2026-10-09)**: identical/near-identical houses
+  should share one mesh (canonical recipe hash + dimension tolerance) and a
+  `sameAs`+overrides recipe for neighbours; runtime instancing follows.
 - **Perf cycle**: landmark layer renders one `THREE.Scene` per model with a
   `getBounds()` per entry per frame, no frustum cull, no eviction
   (`signature-landmarks-source.js`). Re-baseline against
