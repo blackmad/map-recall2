@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## Home destinations remember where you went (2026-10-09)
+
+After the `#race=` replay fix, a lane measured the home picker on the real
+pool (353 POIs, Da Costakade 13): no single POI dominated (top share 3.8%
+empty history, 1.1% practised), but nothing remembered past destinations, and
+with Plan review on, `pickReviewRoute` from a fixed home is near-deterministic
+(most due names, then within 1.3× of shortest) — the likely repeat for a
+signed-in rider. Also the first pick ran before the Firestore history pull.
+Now: `recentDestinations.ts` keeps 12 per city+home (localStorage); the last
+destination is never repeated and the last 8 are down-weighted; review rides
+prefer pairs avoiding them; closeness is flatter (1/(1.2+km)) with a 12% share
+cap; `recallStore.historyReady(1500)` is awaited with the home geocode.
+20 consecutive launches: 19–20 distinct, never the same twice in a row.
+
 ## The game kept replaying the last route on launch (2026-10-09)
 
 User: the signed-in prod game picked Da Costakade → De Dolphijn "EVERY time".

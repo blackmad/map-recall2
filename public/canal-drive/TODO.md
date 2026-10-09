@@ -130,6 +130,9 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   alternative: single-photo image-to-3D mesh generation, then decimate.
   The Dokwerker hand model has wrong arms and a hat disc — fix as far LOD.
   Needs a real-iPhone GPU check before any splat ships.
+- **Destination memory follow-ups**: recent destinations are per device
+  (localStorage) — sync them with the signed-in recall store; confirm the
+  review-ride repeat with a real due backlog (only the filter is tested).
 - **Large-tier follow-ups** (`src/canalRecall/largeBuildingTier.ts`,
   ranked list via `npm run audit:large-tier`): untuned buildings show a
   uniform window grid; tune next Roeterseiland/LLC, VU, Benno Premselahuis,
