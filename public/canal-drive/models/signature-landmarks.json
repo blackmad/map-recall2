@@ -20638,7 +20638,7 @@
       "bounds": {
         "min": [
           -17.899999618530273,
-          -5.9604645663569045e-9,
+          -4.7683716530855236e-8,
           -20.516000747680664
         ],
         "max": [
@@ -20659,12 +20659,12 @@
       },
       "extent": {
         "widthMetres": 47.56599998474121,
-        "heightMetres": 27.379999166727067,
+        "heightMetres": 27.379999208450318,
         "depthMetres": 43.17499923706055,
         "depthCoverage": 0.8994791507720947
       },
-      "triangles": 2447,
-      "bytes": 40140,
+      "triangles": 6751,
+      "bytes": 90824,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "club-panama": {
