@@ -169,6 +169,35 @@ brick reads as faint coursing; the roof tile reads well on steep red roofs.
   elevation, so only the first module gets a stoop.
 - Shared meshes are consumed by the ordinary layer (see *Shared meshes at runtime*), but only genuinely identical designs share: palette differences between neighbours, 0.3-0.5 m eaves steps and rear footprint notches keep most rows at one mesh per house.
 
+## Acceptance checklist (every building, every tier — 2026-10-09)
+
+Two models passed review while plainly wrong: Nassaukerk (blank walls where
+the photo has windows, accepted twice) and Het Pakhuis (five identical
+symmetric gabled bays modelled as scattered windows and invented setbacks).
+Both were judged as "recognisable from its best side". That is not the bar.
+
+1. **Rhythm spec before modelling.** Per visible wall, from photos: bay count,
+   which bays are identical, windows per bay per storey, symmetry axis,
+   ground-floor type, signage, gable/roof line, setbacks only if seen. Cite
+   the photo for each item. Store it next to the builder/recipe; for landmarks
+   the machine-checked part is `scripts/landmarks/<id>-elevations.json`
+   (counted blind from the photo, format in `docs/landmark-building-recipe.md` §7).
+2. **Evidence per face.** Every street- or water-facing wall has a photo from
+   that side (`pand-reference --prefer-bearing`), or is labelled
+   **inferred** on the sheet and in the report.
+3. **Camera-matched comparison.** Render the model from the panorama's own
+   position/heading/fov; photo, render and overlay side by side. Judge bay by
+   bay against the spec, not by overall impression.
+4. **Automated gates.** GLB audit (`audit:glb`, incl. blank-wall check),
+   facade-rhythm check against the spec (`npm run compare:facades -- --id=<id>`:
+   openings per storey, window axes, mirror symmetry, gable peaks), attachment ≤5 cm, height ±0.5 m vs
+   3DBAG, triangle budget.
+5. **Street-level in-game shot** from where riders actually pass it.
+6. **Uncertainty blocks acceptance.** Anything a lane lists as unverified or
+   uncertain is a hold until resolved; it is never merged "for now".
+7. **Integrator record.** On install, HISTORY notes which sheets were viewed,
+   which faces are inferred, and the gate results.
+
 ## For the integrator
 
 Suggested npm scripts (not added; integrator owns `package.json`):
