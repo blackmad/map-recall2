@@ -1,0 +1,504 @@
+{
+  "schemaVersion": 1,
+  "id": "herengracht-507-509",
+  "admissionFile": "docs/references/canalhouse-recipes/herengracht-507-509-source-admission.json",
+  "surveyFile": "docs/references/canalhouse-recipes/herengracht-507-509-survey.json",
+  "baySets": {
+    "principal": [
+      {
+        "id": "axis0",
+        "left": 0.045,
+        "width": 0.115
+      },
+      {
+        "id": "axis1",
+        "left": 0.24,
+        "width": 0.115
+      },
+      {
+        "id": "axis2",
+        "left": 0.4425,
+        "width": 0.115
+      },
+      {
+        "id": "axis3",
+        "left": 0.645,
+        "width": 0.115
+      },
+      {
+        "id": "axis4",
+        "left": 0.84,
+        "width": 0.115
+      }
+    ]
+  },
+  "windowGroups": [
+    {
+      "id": "upper",
+      "baySet": "principal",
+      "tiers": [
+        {
+          "id": "middle",
+          "bottom": 0.565,
+          "height": 0.19
+        },
+        {
+          "id": "top",
+          "bottom": 0.835,
+          "height": 0.095
+        }
+      ],
+      "frame": {
+        "use": "sash"
+      }
+    }
+  ],
+  "openings": [
+    {
+      "id": "raised-axis0",
+      "kind": "window",
+      "left": 0.045,
+      "width": 0.115,
+      "bottom": 0.21,
+      "height": 0.29,
+      "frame": {
+        "use": "sash"
+      }
+    },
+    {
+      "id": "cellar-axis0",
+      "kind": "window",
+      "left": 0.045,
+      "width": 0.115,
+      "bottom": 0.003,
+      "height": 0.13,
+      "frame": {
+        "use": "cellar"
+      }
+    },
+    {
+      "id": "raised-axis1",
+      "kind": "window",
+      "left": 0.24,
+      "width": 0.115,
+      "bottom": 0.21,
+      "height": 0.29,
+      "frame": {
+        "use": "sash"
+      }
+    },
+    {
+      "id": "cellar-axis1",
+      "kind": "window",
+      "left": 0.24,
+      "width": 0.115,
+      "bottom": 0.003,
+      "height": 0.13,
+      "frame": {
+        "use": "cellar"
+      }
+    },
+    {
+      "id": "raised-axis2",
+      "kind": "door",
+      "left": 0.4425,
+      "width": 0.115,
+      "bottom": 0.21,
+      "height": 0.22,
+      "frame": {
+        "use": "entry"
+      }
+    },
+    {
+      "id": "cellar-axis2",
+      "kind": "door",
+      "left": 0.4325,
+      "width": 0.135,
+      "bottom": 0.003,
+      "height": 0.175,
+      "frame": {
+        "use": "glazed-cellar-gate"
+      }
+    },
+    {
+      "id": "raised-axis3",
+      "kind": "window",
+      "left": 0.645,
+      "width": 0.115,
+      "bottom": 0.21,
+      "height": 0.29,
+      "frame": {
+        "use": "sash"
+      }
+    },
+    {
+      "id": "cellar-axis3",
+      "kind": "window",
+      "left": 0.645,
+      "width": 0.115,
+      "bottom": 0.003,
+      "height": 0.13,
+      "frame": {
+        "use": "cellar"
+      }
+    },
+    {
+      "id": "raised-axis4",
+      "kind": "window",
+      "left": 0.84,
+      "width": 0.115,
+      "bottom": 0.21,
+      "height": 0.29,
+      "frame": {
+        "use": "sash"
+      }
+    },
+    {
+      "id": "cellar-axis4",
+      "kind": "window",
+      "left": 0.84,
+      "width": 0.115,
+      "bottom": 0.003,
+      "height": 0.13,
+      "frame": {
+        "use": "cellar"
+      }
+    },
+    {
+      "id": "entry-transom",
+      "kind": "window",
+      "left": 0.4425,
+      "width": 0.115,
+      "bottom": 0.435,
+      "height": 0.065,
+      "frame": {
+        "use": "sash"
+      }
+    }
+  ],
+  "palette": {
+    "wall": "#b7b7a6",
+    "trim": "#dfdece",
+    "glass": "#384749",
+    "door": "#28322f",
+    "stone": "#a2a698",
+    "roof": "#484943"
+  },
+  "crown": {
+    "depthM": 0.1,
+    "trimWidthM": 0.055
+  },
+  "cornice": {
+    "bottom": 0.95,
+    "height": 0.05,
+    "depthM": 0.3,
+    "brackets": 0,
+    "assembly": {
+      "template": "lip-frieze-cap"
+    }
+  },
+  "bands": [
+    {
+      "id": "basecap",
+      "left": 0,
+      "width": 1,
+      "bottom": 0.18,
+      "height": 0.025,
+      "depthM": 0.14,
+      "surface": "stone"
+    },
+    {
+      "id": "entry-head",
+      "left": 0.41,
+      "width": 0.18,
+      "bottom": 0.505,
+      "height": 0.035,
+      "depthM": 0.2,
+      "surface": "stone"
+    }
+  ],
+  "ornaments": [],
+  "simplifications": [
+    "Zero custom builders: existing frame groups, aperture-aware ground front, cornice, pilaster bands and stoep profiles.",
+    "One canonical shared Pand asset, two real address/VBO aliases, one observed principal facade.",
+    "Native ground rings and roof planes untouched; no gallery/game/heldout acceptance yet.",
+    "Coarse source-backed fronton, stoep and framing; fine carving and exact tread count omitted.",
+    "Basement bottom continuation uncertain; review low-front crop before acceptance.",
+    "Register confirms two roof dormers; obscured behind fronton in current near-bank source and omitted with explicit capability/source gap.",
+    "Stoep source polyline subdivided for coarse drawing quality; original five anchors retained and no current tread count inferred.",
+    "Sweeping stoep spans both flanking basement positions on each side; explicit occlusion acknowledgment retains uncertain outer window continuation rather than shrinking/omitting the openings.",
+    "Source-supported glazed central cellar gate retains dark frame/grid and explicitly selects glass pane material; opaque door default remains unchanged elsewhere."
+  ],
+  "groundFront": {
+    "id": "stonebase",
+    "left": 0,
+    "bottom": 0,
+    "width": 1,
+    "height": 0.195,
+    "depthM": 0.085,
+    "surface": "stone",
+    "openingIds": [
+      "cellar-axis0",
+      "cellar-axis1",
+      "cellar-axis2",
+      "cellar-axis3",
+      "cellar-axis4"
+    ]
+  },
+  "landing": {
+    "left": 0.395,
+    "width": 0.21,
+    "top": 0.21,
+    "depthM": 1.4,
+    "thicknessM": 0.1,
+    "supportToGround": false
+  },
+  "approaches": [
+    {
+      "id": "coarse-left-flight",
+      "input": {
+        "id": "herengracht-507-509-left",
+        "topProfile": {
+          "points": [
+            [
+              0.1,
+              -1
+            ],
+            [
+              0.17,
+              -0.7
+            ],
+            [
+              0.25,
+              -0.37
+            ],
+            [
+              0.32,
+              -0.14
+            ],
+            [
+              0.395,
+              0
+            ]
+          ],
+          "segmentsPerSpan": 6
+        },
+        "railProfile": [
+          [
+            0.1,
+            -0.77
+          ],
+          [
+            0.17,
+            -0.47
+          ],
+          [
+            0.25,
+            -0.13999999999999999
+          ],
+          [
+            0.32,
+            0.09
+          ],
+          [
+            0.395,
+            0.23
+          ]
+        ],
+        "posts": [
+          {
+            "x": 0.1,
+            "bottom": -1,
+            "top": -0.77
+          },
+          {
+            "x": 0.25,
+            "bottom": -0.37,
+            "top": -0.13999999999999999
+          },
+          {
+            "x": 0.395,
+            "bottom": 0,
+            "top": 0.23
+          }
+        ],
+        "projectionDepthM": 1.4,
+        "exactCurrentTreadCount": null
+      },
+      "railWidthM": 0.05,
+      "postWidthM": 0.06,
+      "occludedOpeningIds": [
+        "cellar-axis0",
+        "cellar-axis1"
+      ]
+    },
+    {
+      "id": "coarse-right-flight",
+      "input": {
+        "id": "herengracht-507-509-right",
+        "topProfile": {
+          "points": [
+            [
+              0.605,
+              0
+            ],
+            [
+              0.68,
+              -0.14
+            ],
+            [
+              0.75,
+              -0.37
+            ],
+            [
+              0.83,
+              -0.7
+            ],
+            [
+              0.9,
+              -1
+            ]
+          ],
+          "segmentsPerSpan": 6
+        },
+        "railProfile": [
+          [
+            0.605,
+            0.23
+          ],
+          [
+            0.68,
+            0.09
+          ],
+          [
+            0.75,
+            -0.13999999999999999
+          ],
+          [
+            0.83,
+            -0.47
+          ],
+          [
+            0.9,
+            -0.77
+          ]
+        ],
+        "posts": [
+          {
+            "x": 0.605,
+            "bottom": 0,
+            "top": 0.23
+          },
+          {
+            "x": 0.75,
+            "bottom": -0.37,
+            "top": -0.13999999999999999
+          },
+          {
+            "x": 0.9,
+            "bottom": -1,
+            "top": -0.77
+          }
+        ],
+        "projectionDepthM": 1.4,
+        "exactCurrentTreadCount": null
+      },
+      "railWidthM": 0.05,
+      "postWidthM": 0.06,
+      "occludedOpeningIds": [
+        "cellar-axis3",
+        "cellar-axis4"
+      ]
+    }
+  ],
+  "frameSets": {
+    "sash": {
+      "template": "broad-sash-frame",
+      "overrides": {
+        "verticalBars": [
+          0.25,
+          0.5,
+          0.75
+        ],
+        "horizontalBars": [
+          0.2,
+          0.4,
+          0.6,
+          0.8
+        ],
+        "barSurface": "trim",
+        "mullionWidthM": 0.028
+      }
+    },
+    "entry": {
+      "template": "plain-frame",
+      "overrides": {
+        "frameSurface": "trim",
+        "barSurface": "trim"
+      }
+    },
+    "cellar": {
+      "template": "dark-cellar-frame",
+      "overrides": {
+        "verticalBars": [
+          0.25,
+          0.5,
+          0.75
+        ],
+        "horizontalBars": [
+          0.25,
+          0.5,
+          0.75
+        ],
+        "head": "segmental",
+        "headRiseM": 0.18
+      }
+    },
+    "glazed-cellar-gate": {
+      "template": "dark-cellar-frame",
+      "overrides": {
+        "verticalBars": [
+          0.25,
+          0.5,
+          0.75
+        ],
+        "horizontalBars": [
+          0.25,
+          0.5,
+          0.75
+        ],
+        "head": "segmental",
+        "headRiseM": 0.18,
+        "paneSurface": "glass"
+      }
+    }
+  },
+  "detailGroups": [
+    {
+      "id": "pilasters",
+      "target": "bands",
+      "columns": [
+        {
+          "id": "left",
+          "left": 0.365,
+          "width": 0.028
+        },
+        {
+          "id": "right",
+          "left": 0.607,
+          "width": 0.028
+        }
+      ],
+      "rows": [
+        {
+          "id": "body",
+          "bottom": 0.21,
+          "height": 0.73
+        }
+      ],
+      "depthM": 0.12,
+      "surface": "stone"
+    }
+  ],
+  "balconies": []
+}

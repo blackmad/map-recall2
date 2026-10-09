@@ -1,0 +1,878 @@
+{
+  "schemaVersion": 1,
+  "id": "herengracht-433",
+  "admissionFile": "docs/references/canalhouse-recipes/herengracht-433-source-admission.json",
+  "surveyFile": "docs/references/canalhouse-recipes/herengracht-433-survey.json",
+  "windowGroups": [
+    {
+      "id": "bel-etage",
+      "tiers": [
+        {
+          "id": "tier",
+          "bottom": 0.14,
+          "height": 0.225
+        }
+      ],
+      "frame": {
+        "template": "plain-frame",
+        "overrides": {
+          "verticalBars": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "horizontalBars": [
+            0.125,
+            0.25,
+            0.375,
+            0.5,
+            0.625,
+            0.75,
+            0.875
+          ],
+          "horizontalBarWidthsM": [
+            0.03,
+            0.03,
+            0.03,
+            0.075,
+            0.03,
+            0.03,
+            0.03
+          ]
+        }
+      },
+      "baySet": "principal-five-axis",
+      "omit": [
+        {
+          "bay": "axis-3",
+          "tier": "tier"
+        }
+      ]
+    },
+    {
+      "id": "first",
+      "tiers": [
+        {
+          "id": "tier",
+          "bottom": 0.44,
+          "height": 0.2
+        }
+      ],
+      "frame": {
+        "template": "plain-frame",
+        "overrides": {
+          "verticalBars": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "horizontalBars": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ]
+        }
+      },
+      "baySet": "principal-five-axis"
+    },
+    {
+      "id": "second",
+      "tiers": [
+        {
+          "id": "tier",
+          "bottom": 0.735,
+          "height": 0.125
+        }
+      ],
+      "frame": {
+        "template": "plain-frame",
+        "overrides": {
+          "verticalBars": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "horizontalBars": [
+            0.3333333333333333,
+            0.6666666666666666
+          ]
+        }
+      },
+      "baySet": "principal-five-axis"
+    }
+  ],
+  "openings": [
+    {
+      "id": "main-door",
+      "kind": "door",
+      "left": 0.455,
+      "bottom": 0.13,
+      "width": 0.095,
+      "height": 0.17,
+      "frame": {
+        "template": "four-panel-door"
+      }
+    },
+    {
+      "id": "arched-transom",
+      "kind": "window",
+      "left": 0.455,
+      "bottom": 0.305,
+      "width": 0.095,
+      "height": 0.075,
+      "frame": {
+        "template": "plain-frame",
+        "overrides": {
+          "head": "segmental",
+          "headRiseM": 0.55
+        }
+      }
+    },
+    {
+      "id": "basement-left",
+      "kind": "window",
+      "left": 0.06,
+      "bottom": 0.007,
+      "width": 0.195,
+      "height": 0.12,
+      "frame": {
+        "template": "dark-cellar-frame",
+        "overrides": {
+          "verticalBars": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ]
+        }
+      }
+    },
+    {
+      "id": "basement-right",
+      "kind": "window",
+      "left": 0.735,
+      "bottom": 0.007,
+      "width": 0.195,
+      "height": 0.12,
+      "frame": {
+        "template": "dark-cellar-frame",
+        "overrides": {
+          "verticalBars": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ]
+        }
+      }
+    },
+    {
+      "id": "basement-left-flight",
+      "kind": "window",
+      "left": 0.285,
+      "bottom": 0.007,
+      "width": 0.1,
+      "height": 0.11,
+      "frame": {
+        "template": "dark-cellar-frame"
+      }
+    },
+    {
+      "id": "basement-right-flight",
+      "kind": "window",
+      "left": 0.615,
+      "bottom": 0.007,
+      "width": 0.1,
+      "height": 0.11,
+      "frame": {
+        "template": "dark-cellar-frame"
+      }
+    }
+  ],
+  "palette": {
+    "wall": "#504035",
+    "trim": "#dddaca",
+    "glass": "#394745",
+    "door": "#282c26",
+    "stone": "#aaa99a",
+    "roof": "#4b4541"
+  },
+  "crown": {
+    "depthM": 0.2,
+    "trimWidthM": 0.09
+  },
+  "cornice": {
+    "bottom": 0.925,
+    "height": 0.065,
+    "depthM": 0.35,
+    "brackets": 0,
+    "layers": [
+      {
+        "bottom": 0.925,
+        "height": 0.007,
+        "depthM": 0.16
+      },
+      {
+        "bottom": 0.932,
+        "height": 0.05,
+        "depthM": 0.14
+      },
+      {
+        "bottom": 0.961,
+        "height": 0.011,
+        "depthM": 0.3
+      },
+      {
+        "bottom": 0.982,
+        "height": 0.008,
+        "depthM": 0.35
+      }
+    ],
+    "accents": [],
+    "accentGroups": [
+      {
+        "id": "broad-console",
+        "columns": [
+          {
+            "id": "broad-console-left-end",
+            "left": 0.009,
+            "width": 0.032
+          },
+          {
+            "id": "broad-console-left-center",
+            "left": 0.374,
+            "width": 0.032
+          },
+          {
+            "id": "broad-console-right-center",
+            "left": 0.614,
+            "width": 0.032
+          },
+          {
+            "id": "broad-console-right-end",
+            "left": 0.959,
+            "width": 0.032
+          }
+        ],
+        "rows": [
+          {
+            "id": "frieze",
+            "bottom": 0.945,
+            "height": 0.037
+          }
+        ],
+        "depthM": 0.44,
+        "profile": "console"
+      },
+      {
+        "id": "lip-pendant",
+        "columns": [
+          {
+            "id": "lip-pendant-1",
+            "left": 0.109,
+            "width": 0.022
+          },
+          {
+            "id": "lip-pendant-2",
+            "left": 0.199,
+            "width": 0.022
+          },
+          {
+            "id": "lip-pendant-3",
+            "left": 0.289,
+            "width": 0.022
+          },
+          {
+            "id": "lip-pendant-4",
+            "left": 0.434,
+            "width": 0.022
+          },
+          {
+            "id": "lip-pendant-5",
+            "left": 0.499,
+            "width": 0.022
+          },
+          {
+            "id": "lip-pendant-6",
+            "left": 0.559,
+            "width": 0.022
+          },
+          {
+            "id": "lip-pendant-7",
+            "left": 0.699,
+            "width": 0.022
+          },
+          {
+            "id": "lip-pendant-8",
+            "left": 0.789,
+            "width": 0.022
+          },
+          {
+            "id": "lip-pendant-9",
+            "left": 0.879,
+            "width": 0.022
+          }
+        ],
+        "rows": [
+          {
+            "id": "frieze",
+            "bottom": 0.964,
+            "height": 0.019
+          }
+        ],
+        "depthM": 0.4
+      },
+      {
+        "id": "historic-triglyph",
+        "columns": [
+          {
+            "id": "triglyph-left-end",
+            "left": 0.012000000000000002,
+            "width": 0.026
+          },
+          {
+            "id": "triglyph-left-intermediate",
+            "left": 0.19699999999999998,
+            "width": 0.026
+          },
+          {
+            "id": "triglyph-left-center",
+            "left": 0.377,
+            "width": 0.026
+          }
+        ],
+        "rows": [
+          {
+            "id": "lower-frieze",
+            "bottom": 0.928,
+            "height": 0.028
+          }
+        ],
+        "depthM": 0.205,
+        "profile": "triglyph"
+      }
+    ]
+  },
+  "ornaments": [
+    {
+      "id": "central-sandstone-surround",
+      "profile": [
+        [
+          0.425,
+          0.135
+        ],
+        [
+          0.425,
+          0.4
+        ],
+        [
+          0.58,
+          0.4
+        ],
+        [
+          0.58,
+          0.135
+        ]
+      ],
+      "depthM": 0.09,
+      "rimWidthM": 0.12
+    },
+    {
+      "id": "attic-center-field",
+      "profile": [
+        [
+          0.34,
+          1.035
+        ],
+        [
+          0.42,
+          1.1
+        ],
+        [
+          0.5,
+          1.115
+        ],
+        [
+          0.58,
+          1.1
+        ],
+        [
+          0.66,
+          1.035
+        ]
+      ],
+      "depthM": 0.1,
+      "rimWidthM": 0.1,
+      "fill": "trim"
+    }
+  ],
+  "bands": [
+    {
+      "id": "stone-basement",
+      "left": 0,
+      "bottom": 0,
+      "width": 1,
+      "height": 0.13,
+      "depthM": 0.065,
+      "surface": "stone"
+    },
+    {
+      "id": "attic-band",
+      "left": 0.08,
+      "bottom": 1,
+      "width": 0.84,
+      "height": 0.035,
+      "depthM": 0.1,
+      "surface": "trim"
+    },
+    {
+      "id": "portal-entablature-lower",
+      "left": 0.416,
+      "bottom": 0.393,
+      "width": 0.173,
+      "height": 0.008,
+      "depthM": 0.15,
+      "surface": "trim"
+    },
+    {
+      "id": "portal-entablature-cap",
+      "left": 0.408,
+      "bottom": 0.401,
+      "width": 0.189,
+      "height": 0.012,
+      "depthM": 0.22,
+      "surface": "trim"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "landing-support",
+      "left": 0.425,
+      "bottom": 0,
+      "width": 0.155,
+      "height": 0.127,
+      "depthM": 0.8,
+      "surface": "stone"
+    },
+    {
+      "id": "portal-stone-field",
+      "left": 0.425,
+      "bottom": 0.135,
+      "width": 0.155,
+      "height": 0.265,
+      "depthM": 0.09,
+      "surface": "trim"
+    }
+  ],
+  "landing": {
+    "left": 0.425,
+    "width": 0.155,
+    "top": 0.13,
+    "depthM": 0.8,
+    "thicknessM": 0.045,
+    "supportToGround": false
+  },
+  "approaches": [
+    {
+      "id": "left-flight",
+      "input": {
+        "id": "left-coarse-ascent",
+        "topProfile": [
+          [
+            0.23,
+            -1.0
+          ],
+          [
+            0.23,
+            -0.8571428571428572
+          ],
+          [
+            0.25785714285714284,
+            -0.8571428571428572
+          ],
+          [
+            0.25785714285714284,
+            -0.7142857142857143
+          ],
+          [
+            0.2857142857142857,
+            -0.7142857142857143
+          ],
+          [
+            0.2857142857142857,
+            -0.5714285714285714
+          ],
+          [
+            0.31357142857142856,
+            -0.5714285714285714
+          ],
+          [
+            0.31357142857142856,
+            -0.4285714285714286
+          ],
+          [
+            0.3414285714285714,
+            -0.4285714285714286
+          ],
+          [
+            0.3414285714285714,
+            -0.2857142857142857
+          ],
+          [
+            0.3692857142857143,
+            -0.2857142857142857
+          ],
+          [
+            0.3692857142857143,
+            -0.1428571428571429
+          ],
+          [
+            0.39714285714285713,
+            -0.1428571428571429
+          ],
+          [
+            0.39714285714285713,
+            0.0
+          ],
+          [
+            0.425,
+            0
+          ]
+        ],
+        "railProfile": [
+          [
+            0.23,
+            -0.57
+          ],
+          [
+            0.425,
+            0.43
+          ]
+        ],
+        "posts": [
+          {
+            "x": 0.23,
+            "bottom": -1,
+            "top": -0.57
+          },
+          {
+            "x": 0.425,
+            "bottom": 0,
+            "top": 0.43
+          }
+        ],
+        "projectionDepthM": 0.8,
+        "exactCurrentTreadCount": null
+      },
+      "railWidthM": 0.035,
+      "postWidthM": 0.065,
+      "occludedOpeningIds": [
+        "basement-left-flight",
+        "basement-left"
+      ]
+    },
+    {
+      "id": "right-flight",
+      "input": {
+        "id": "right-coarse-ascent",
+        "topProfile": [
+          [
+            0.58,
+            0
+          ],
+          [
+            0.6078571428571429,
+            0.0
+          ],
+          [
+            0.6078571428571429,
+            -0.1428571428571429
+          ],
+          [
+            0.6357142857142857,
+            -0.1428571428571429
+          ],
+          [
+            0.6357142857142857,
+            -0.2857142857142857
+          ],
+          [
+            0.6635714285714286,
+            -0.2857142857142857
+          ],
+          [
+            0.6635714285714286,
+            -0.4285714285714286
+          ],
+          [
+            0.6914285714285714,
+            -0.4285714285714286
+          ],
+          [
+            0.6914285714285714,
+            -0.5714285714285714
+          ],
+          [
+            0.7192857142857143,
+            -0.5714285714285714
+          ],
+          [
+            0.7192857142857143,
+            -0.7142857142857143
+          ],
+          [
+            0.7471428571428571,
+            -0.7142857142857143
+          ],
+          [
+            0.7471428571428571,
+            -0.8571428571428572
+          ],
+          [
+            0.775,
+            -0.8571428571428572
+          ],
+          [
+            0.775,
+            -1.0
+          ]
+        ],
+        "railProfile": [
+          [
+            0.58,
+            0.43
+          ],
+          [
+            0.775,
+            -0.57
+          ]
+        ],
+        "posts": [
+          {
+            "x": 0.775,
+            "bottom": -1,
+            "top": -0.57
+          },
+          {
+            "x": 0.58,
+            "bottom": 0,
+            "top": 0.43
+          }
+        ],
+        "projectionDepthM": 0.8,
+        "exactCurrentTreadCount": null
+      },
+      "railWidthM": 0.035,
+      "postWidthM": 0.065,
+      "occludedOpeningIds": [
+        "basement-right-flight",
+        "basement-right"
+      ]
+    },
+    {
+      "id": "landing-rail",
+      "input": {
+        "id": "landing-horizontal-rail",
+        "topProfile": null,
+        "railProfile": [
+          [
+            0.425,
+            0.43
+          ],
+          [
+            0.58,
+            0.43
+          ]
+        ],
+        "posts": [],
+        "projectionDepthM": 0.8,
+        "exactCurrentTreadCount": null
+      },
+      "railWidthM": 0.035,
+      "postWidthM": 0.065,
+      "occludedOpeningIds": []
+    }
+  ],
+  "simplifications": [
+    "Source-aware transfer candidate;433was exposed before authoring and is not a blind heldout.",
+    "Dimensions are bounded visual ratios against native principal frontage and front cornice semantic heights, not measured facade openings.",
+    "Shared native survey keeps allroofparts and exactgroundrings; lowflatfrontappendix remains separate from5-axis principalfront.",
+    "Two flight contours drawn coarsely; exact current treadcount, landingdepth and datum uncertain.",
+    "Corner-block cadence is coarse visible repetition; no exactcount assertion. Console/triglyph counts remain unmeasured; no invented stock brackets.",
+    "Segmental transom arch retained; curved iron scrolls and carved central attic relief simplified.",
+    "No hidden side/rear openings or invented permanent building-name signage.",
+    "Private source synchronization, root/independent comparison, game and performance evidence pending.",
+    "Attic band spans the low raised attic between corner shoulders; full-width cornice stays below it. Its previous full-width placement exceeded the admitted end-shoulder silhouette and is retained as failed attempt5.",
+    "Portal sandstone field and projecting entablature use shared aperture-cut masonry bands/blocks. Rusticated joint grooves, curved scrollwork and fine carving remain unresolved. Corner quoin width revised from .035 to .055 frontage fraction after current photo/independent review; course positions remain coarse source-informed drawing inputs, not exact stone measurements.",
+    "Source-visible horizontal landing rail connects the upper flight posts using the shared rail-only assembly; dimensions remain the same bounded drawing clearance/depth as the adjoining rails. No new stairs or hidden tread count are inferred.",
+    "Cornice groups use source-visible broad consoles, short lip pendants and three historical lower triglyph fragments from herengracht-433-frieze-observation.json. Current foliage and blur obscure parts of the left and lower-right frieze; no mirrored right triglyph count is inferred. Three grooves and section depths are coarse reusable drawing patterns, not exact measurements of carving.",
+    "Continuous shallow stone backing retained behind the projecting cornice lip and pendants; gaps between discrete ornaments are not holes into brown masonry. Triglyph shoulders use shallow beveled original geometry to expose relief in flat-color daylight."
+  ],
+  "workMetrics": {
+    "researchMinutesApprox": 12,
+    "assemblyMinutesApprox": 8,
+    "sharedComponentsReused": [
+      "native-survey",
+      "window-groups",
+      "named-frame-templates",
+      "segmental-opening",
+      "cornice",
+      "bands",
+      "ornaments",
+      "opposed-flights",
+      "aperture-aware-support"
+    ],
+    "customGeometryBuilders": 0,
+    "componentChange": "optional generic cornice passthrough supplied by root; existing compiler geometry reused",
+    "completedAuthoringAt": "2026-10-06T06:44:01.088541+00:00",
+    "elapsedMinutesApprox": 20,
+    "timingMethod": "Approximate worker wall time, not instrumented full-source research duration; existing cached pack avoids reacquisition."
+  },
+  "openingGroups": [
+    {
+      "id": "basement-central-door",
+      "kind": "door",
+      "bays": [
+        {
+          "id": "left-leaf",
+          "left": 0.443,
+          "width": 0.06
+        },
+        {
+          "id": "right-leaf",
+          "left": 0.503,
+          "width": 0.06
+        }
+      ],
+      "tiers": [
+        {
+          "id": "pair",
+          "bottom": 0.005,
+          "height": 0.12
+        }
+      ],
+      "frame": {
+        "template": "paneled-cellar-leaf"
+      }
+    }
+  ],
+  "detailGroups": [
+    {
+      "id": "corner-quoins",
+      "target": "bands",
+      "columns": [
+        {
+          "id": "left",
+          "left": 0,
+          "width": 0.055
+        },
+        {
+          "id": "right",
+          "left": 0.945,
+          "width": 0.055
+        }
+      ],
+      "rows": [
+        {
+          "id": "course-1",
+          "bottom": 0.13,
+          "height": 0.027
+        },
+        {
+          "id": "course-2",
+          "bottom": 0.186,
+          "height": 0.027
+        },
+        {
+          "id": "course-3",
+          "bottom": 0.242,
+          "height": 0.027
+        },
+        {
+          "id": "course-4",
+          "bottom": 0.29800000000000004,
+          "height": 0.027
+        },
+        {
+          "id": "course-5",
+          "bottom": 0.354,
+          "height": 0.027
+        },
+        {
+          "id": "course-6",
+          "bottom": 0.41000000000000003,
+          "height": 0.027
+        },
+        {
+          "id": "course-7",
+          "bottom": 0.466,
+          "height": 0.027
+        },
+        {
+          "id": "course-8",
+          "bottom": 0.522,
+          "height": 0.027
+        },
+        {
+          "id": "course-9",
+          "bottom": 0.5780000000000001,
+          "height": 0.027
+        },
+        {
+          "id": "course-10",
+          "bottom": 0.634,
+          "height": 0.027
+        },
+        {
+          "id": "course-11",
+          "bottom": 0.6900000000000001,
+          "height": 0.027
+        },
+        {
+          "id": "course-12",
+          "bottom": 0.746,
+          "height": 0.027
+        },
+        {
+          "id": "course-13",
+          "bottom": 0.802,
+          "height": 0.027
+        },
+        {
+          "id": "course-14",
+          "bottom": 0.858,
+          "height": 0.027
+        }
+      ],
+      "depthM": 0.09,
+      "surface": "trim"
+    }
+  ],
+  "baySets": {
+    "principal-five-axis": [
+      {
+        "id": "axis-1",
+        "left": 0.075,
+        "width": 0.095
+      },
+      {
+        "id": "axis-2",
+        "left": 0.265,
+        "width": 0.095
+      },
+      {
+        "id": "axis-3",
+        "left": 0.455,
+        "width": 0.095
+      },
+      {
+        "id": "axis-4",
+        "left": 0.645,
+        "width": 0.095
+      },
+      {
+        "id": "axis-5",
+        "left": 0.835,
+        "width": 0.095
+      }
+    ]
+  }
+}

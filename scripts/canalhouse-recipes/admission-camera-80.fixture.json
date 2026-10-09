@@ -1,0 +1,48 @@
+{
+  "source": "80-neighbor-camera-manifest.json, cached 2026-10-07; reduced camera-only fixture",
+  "records": [
+    {
+      "buildingId": "0363100012169916",
+      "images": {
+        "full": {
+          "panoramaId": "TMX7316010203-002923_pano_0000_000004",
+          "pose": {
+            "x": 120534.34121621744,
+            "y": 487563.8098356889,
+            "z": 4.172525034286103,
+            "headingDeg": 93.4700205497515,
+            "pitchDeg": 4.86530878002889,
+            "rollDeg": -5.21680161525018
+          },
+          "projection": {
+            "type": "perspective",
+            "headingDeg": -83.34270871712071,
+            "pitchDeg": 22,
+            "fovDeg": 95
+          },
+          "datum": "published-minus-43.5m; track-unsolved",
+          "heightInferred": false
+        },
+        "ground": {
+          "panoramaId": "recording_2025-07-03_08-35-58_00682",
+          "pose": {
+            "x": 120518.30391965926,
+            "y": 487536.8242991762,
+            "z": 2.93099999666214,
+            "headingDeg": 0,
+            "pitchDeg": 0,
+            "rollDeg": 0
+          },
+          "projection": {
+            "type": "perspective",
+            "headingDeg": 12.360016203038727,
+            "pitchDeg": -10,
+            "fovDeg": 95
+          },
+          "datum": "ground-plus-2.44m; approximate",
+          "heightInferred": true
+        }
+      }
+    }
+  ]
+}
