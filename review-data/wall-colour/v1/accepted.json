@@ -1,0 +1,166 @@
+{
+  "version": 1,
+  "measurementsSha256": "175371b180d48cbd1be9faf76bc809c480335c3d875f6a1a4e5740526bb38591",
+  "accepted": [
+    {
+      "observationId": "0363100012155538_e_1e95kee",
+      "buildingId": "0363100012155538",
+      "sourceSha256": "12fee26d810838d1d8a97fd3364cd5b76d66321a47f85e5a0c0d5b9c05b5b923",
+      "hex": "#83726e",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "grader": "gpt-6-sol",
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol"
+    },
+    {
+      "observationId": "0363100012156077_e_1yr2ovu",
+      "buildingId": "0363100012156077",
+      "sourceSha256": "efd7970d3197e5781a1f884e1204694ef1813324f38d00d9ec579e40d4dd32e8",
+      "hex": "#9c9a98",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "grader": "gpt-6-sol",
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol"
+    },
+    {
+      "observationId": "0363100012156920_e_0khzxj2",
+      "buildingId": "0363100012156920",
+      "sourceSha256": "a33a5437ee4d8ab8e51afcc66c1302a13050e5a50a8f5192d445686f8578daff",
+      "hex": "#aa9e86",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "grader": "gpt-6-sol",
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol"
+    },
+    {
+      "observationId": "0363100012156993_e_1tt83o3",
+      "buildingId": "0363100012156993",
+      "sourceSha256": "ed59adb27156705f150248cbe6e9e988d1d48fb671f581965ce12f5f388f11fb",
+      "hex": "#8b8a87",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "grader": "gpt-6-sol",
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol"
+    },
+    {
+      "observationId": "0363100012157742_e_11zk6wp",
+      "buildingId": "0363100012157742",
+      "sourceSha256": "14e58cdf419b0ccc9b0b405695310abbdb21c648527ab5bafc44451d2df641de",
+      "hex": "#373d3e",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "grader": "gpt-6-sol",
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol"
+    },
+    {
+      "observationId": "0363100012159112_e_0xfdv8v",
+      "buildingId": "0363100012159112",
+      "sourceSha256": "3c804a561288aa625e33b462780ee5a0b30a76daa218305df60c13240efb599c",
+      "hex": "#515c5f",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "grader": "gpt-6-sol",
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol"
+    },
+    {
+      "observationId": "0363100012159615_e_1woykk8",
+      "buildingId": "0363100012159615",
+      "sourceSha256": "a2b4e5832f69df8696f86bbcc88042bdbe0eb5c9d652e14f48d177ce5f17153c",
+      "hex": "#786e6a",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "grader": "gpt-6-sol",
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol"
+    },
+    {
+      "observationId": "0363100012161828_e_155wly3",
+      "buildingId": "0363100012161828",
+      "sourceSha256": "71ba3b7c2afe7799906b3197db7cb8a3d6412d927b16d67d88ea9300cbc1fc3e",
+      "hex": "#505051",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "grader": "gpt-6-sol",
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol"
+    },
+    {
+      "observationId": "0363100012164499_e_0krqk0t",
+      "buildingId": "0363100012164499",
+      "sourceSha256": "520281fa8da3e02b09f3dd68fac03c03c4e3fc63c127f915acf0d763e3485b8a",
+      "hex": "#404241",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "grader": "gpt-6-sol",
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol"
+    },
+    {
+      "observationId": "0363100012166409_e_0azpu0d",
+      "buildingId": "0363100012166409",
+      "sourceSha256": "3efae179aee5aae24762ffdd984c023f8e014018772f949e50e94a2d3dd3401b",
+      "hex": "#898b89",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "grader": "gpt-6-sol",
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol"
+    },
+    {
+      "observationId": "0363100012168552_e_02n3874",
+      "buildingId": "0363100012168552",
+      "sourceSha256": "0babebef1dbde103a05ddd67c703f78e8cf52b754e959d9fad88f41dd1818377",
+      "hex": "#524e54",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "grader": "gpt-6-sol",
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol"
+    },
+    {
+      "observationId": "0363100012169812_e_0il89qt",
+      "buildingId": "0363100012169812",
+      "sourceSha256": "917cdd7c7a3abc321a24fa67fdcf7a092c5a0c90cb1a40b83be19eb435b63b00",
+      "hex": "#504741",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "grader": "gpt-6-sol",
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol"
+    },
+    {
+      "observationId": "0363100012174167_e_1ea8uo3",
+      "buildingId": "0363100012174167",
+      "sourceSha256": "0e55b46a1b48d62118b1079863aa0d3db3c57438a14ec1285aa994ac461435e1",
+      "hex": "#434242",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "grader": "gpt-6-sol",
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol"
+    },
+    {
+      "observationId": "0363100012236141_e_041dz1t",
+      "buildingId": "0363100012236141",
+      "sourceSha256": "face6caa50336664aad5f58ea966055a7e36923589b79310df356d7d9da565eb",
+      "hex": "#4d4843",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "grader": "gpt-6-sol",
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol"
+    },
+    {
+      "observationId": "0363100012236796_e_1wk1kml",
+      "buildingId": "0363100012236796",
+      "sourceSha256": "fa9c3ab9bee42dd26531c6c1fdfd1328eaa8bd637e25a27815a0596893c3bf91",
+      "hex": "#d8e9e6",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "grader": "gpt-6-sol",
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol"
+    },
+    {
+      "observationId": "0363100012237236_e_07oi4ua",
+      "buildingId": "0363100012237236",
+      "sourceSha256": "769c58df33953cac54e174af017fab3bda718cdf0a132d042f49b4d36913d9ff",
+      "hex": "#c6d5d3",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "grader": "gpt-6-sol",
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol"
+    }
+  ]
+}
