@@ -463,6 +463,99 @@
         "browserErrors": [],
         "criticalMissing": "Window cadence, cornice/neck/bell mix and paired oculi, joint dark-masonry/pale-trim, correlated ground glazing/raised entrances, low incidental balcony frequency."
       }
+    },
+    {
+      "id": "sloterdijkermeer-nut-genoegen-mapped-garden-houses",
+      "status": "accepted-scoped-mapped-restoration",
+      "scope": "Only disjoint source-mapped small buildings wholly inside OSM allotment polygons w46349143 and w4827637; profiles apply to mapped garden-house groups, not surrounding neighborhoods.",
+      "completion": "376 mapped houses restored; root and independent desktop/touch review passed both parks and railway transition. Native source identity/geometry retained; low-rise architecture approximate by user authorization. Unmapped plots, photographic fidelity and physical-phone performance remain outside acceptance.",
+      "inventory": {
+        "boundarySource": "review-data/allotment-houses/park-boundaries.geojson",
+        "sourceInventory": "artifacts/sloterdijkermeer-review/source-report.json",
+        "eligibleFootprints": 376,
+        "parkCounts": {
+          "Tuingroep Sloterdijkermeer": 149,
+          "Tuinpark Nut & Genoegen": 227
+        },
+        "excludedLargerFootprints": 5,
+        "retainedInstalledFeatures": 7111,
+        "tiles": [
+          "14/8412/5383",
+          "14/8413/5383"
+        ],
+        "coverageLimit": "Partial mapped coverage. Sloterdijkermeer has 149 mapped restored small-building footprints versus 274 municipal garden plots reported in root research; plots and footprints are not necessarily one-to-one. No assertion that all houses or plots are modeled."
+      },
+      "userSizeOverride": "User authorized approximate garden-house sizes. Preserve source footprint positions and orientation. One-storey height, gable roofs, colors and openings are approximate display priors; no individually photographed-building match is asserted.",
+      "sources": [
+        "artifacts/sloterdijkermeer-review/user-reference-map.png",
+        "artifacts/sloterdijkermeer-review/user-empty-game.png",
+        "artifacts/sloterdijkermeer-review/source-provenance.json"
+      ],
+      "traits": [
+        {
+          "id": "repeated-small-native-footprints",
+          "importance": "critical",
+          "relationship": "Many small separated footprints repeat beside the mapped path and ditch grid; larger communal buildings and open paths remain distinct.",
+          "source": "user-reference-map.png plus cached OSM footprint inventory",
+          "generatorCapability": "accepted for scoped mapped restoration; source and actual game checks pass; individual architecture remains approximate"
+        },
+        {
+          "id": "low-house-scale",
+          "importance": "critical",
+          "relationship": "Single-storey small-house scale rather than ordinary urban multi-storey extrusions.",
+          "source": "user approximate-size authorization; architecture beyond small map footprints not verified",
+          "generatorCapability": "accepted for scoped mapped restoration; source and actual game checks pass; individual architecture remains approximate"
+        },
+        {
+          "id": "native-open-space-retention",
+          "importance": "critical",
+          "relationship": "Source footprints preserve separation, channels, paths and retained large-building neighbors.",
+          "source": "OSM polygons and installed-footprint overlap checks",
+          "generatorCapability": "accepted for scoped mapped restoration; source and actual game checks pass; individual architecture remains approximate"
+        }
+      ],
+      "sampling": {
+        "representativeIds": [
+          "w57864579",
+          "w57864454"
+        ],
+        "transitionIds": [
+          "w57866249",
+          "w57866574"
+        ],
+        "heldoutIds": [
+          "w1172766345",
+          "w1215276382"
+        ],
+        "gameViews": "Fix whole-park, front and pan views before deciding acceptance; inspect actual rendered source-covered rows in both parks and coarse-detail transition."
+      },
+      "capabilityGaps": [
+        "Unmapped plot houses are unfilled",
+        "Architectural roof/material/opening details are not individually surveyed",
+        "No extension to other allotment parks accepted"
+      ],
+      "cycles": [
+        {
+          "cycle": 1,
+          "technicalEvidence": "source-validation.json and independent-code-review.json",
+          "visualDecision": "limited-central-game-view-accepted; full scoped completion pending",
+          "failedEvidence": "Initial generator rejected all native MultiPolygon inputs; independently found and repaired before visual review. Preserve failure in independent-code-review.json.",
+          "renderEvidence": "artifacts/sloterdijkermeer-review/after",
+          "independentReview": "artifacts/sloterdijkermeer-review/independent-visual-review.json"
+        },
+        {
+          "cycle": 2,
+          "visualDecision": "accepted-scoped-mapped-restoration",
+          "renderEvidence": "artifacts/sloterdijkermeer-review/game",
+          "rootReview": "Root inspected the source map, restored wide actual scene, close Photo scene, interactive demo and touch Nut & Genoegen view; independent reviewer inspected all8 desktop/touch views.",
+          "performance": "Same-version on/off/repeat full-scene GPU timings and frame intervals recorded. 16.7ms median frames throughout; GPU variation prevents exact marginal-cost claim.",
+          "failedEvidence": "game/failed-idle-drift-report.json preserves first pan check with tiny idle rider drift. Corrected harness holds player fixed; all8 final stationary checks pass."
+        }
+      ],
+      "reviewerDecision": "Root and independent reviewer accept restoration of the376 mapped source houses across both parks and railway transition. Four looks plus eight desktop/touch captures and same-version performance evidence pass scoped gates. Unmapped plots and exact photographed architecture excluded.",
+      "nextAction": "Scoped mapped restoration complete; do not expand this prior to other parks without source inventory/review.",
+      "productionEvidence": "artifacts/sloterdijkermeer-review/game/report.json",
+      "independentReview": "artifacts/sloterdijkermeer-review/independent-visual-review.json"
     }
   ],
   "coverageInventory": [
@@ -711,6 +804,24 @@
         "bethaniendwarsstraat-left-13",
         "bethaniendwarsstraat-left-38",
         "bethaniendwarsstraat-left-63"
+      ]
+    },
+    {
+      "profileId": "sloterdijkermeer-nut-genoegen-mapped-garden-houses",
+      "scope": "Only disjoint source-mapped small buildings wholly inside OSM allotment polygons w46349143 and w4827637; profiles apply to mapped garden-house groups, not surrounding neighborhoods.",
+      "sourceBuildings": 381,
+      "mappedSmallBuildings": 376,
+      "parkCounts": {
+        "Tuingroep Sloterdijkermeer": 149,
+        "Tuinpark Nut & Genoegen": 227
+      },
+      "status": "reviewing-mapped-restoration",
+      "completion": "not-accepted",
+      "coverageLimit": "Partial mapped coverage. Sloterdijkermeer has 149 mapped restored small-building footprints versus 274 municipal garden plots reported in root research; plots and footprints are not necessarily one-to-one. No assertion that all houses or plots are modeled.",
+      "evidenceIds": [
+        "artifacts/sloterdijkermeer-review/user-reference-map.png",
+        "artifacts/sloterdijkermeer-review/user-empty-game.png",
+        "artifacts/sloterdijkermeer-review/source-provenance.json"
       ]
     }
   ]

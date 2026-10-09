@@ -1,0 +1,19 @@
+{
+  "pass": true,
+  "originalFeaturesRetainedExactly": 7111,
+  "sourceFootprintsAdded": 376,
+  "parkCounts": {
+    "Tuinpark Nut & Genoegen": 227,
+    "Tuingroep Sloterdijkermeer": 149
+  },
+  "geometryChecks": [
+    "hole exclusion",
+    "crossing-wall overlap",
+    "disjoint neighbors",
+    "mapped footprint equality",
+    "installed-property equality",
+    "compiler scoped admission",
+    "compiler marker propagation"
+  ],
+  "visualAcceptance": "pending root game-scene review"
+}

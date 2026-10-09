@@ -1,0 +1,4655 @@
+{
+  "mode": "write",
+  "source": ".cache/osm-source/derived/amsterdam-buildings.geojsonseq",
+  "scope": [
+    {
+      "@type": "way",
+      "@id": 4827637,
+      "landuse": "allotments",
+      "name": "Tuinpark Nut & Genoegen"
+    },
+    {
+      "@type": "way",
+      "@id": 46349143,
+      "landuse": "allotments",
+      "name": "Tuingroep Sloterdijkermeer"
+    }
+  ],
+  "sourceBuildings": 381,
+  "eligible": 376,
+  "added": 376,
+  "skipped": [],
+  "changes": [
+    {
+      "tile": "14/8413/5383",
+      "beforeHash": "3c24dd3f6e39e563dee05096394ccfe5205c3af00b12ab29ac7e1ed2c55861e4",
+      "afterHash": "174af77f92baab83b9e0c168b75e29a5cf4e1746b533f071cf557f85291172a0",
+      "features": 3940,
+      "originalFeaturesCount": 3715,
+      "originalFeaturesSha256": "5b88d91a5e1d762778e01a3ca9d8c69130b083fcb6ee83696186f66f2d04bba4"
+    },
+    {
+      "tile": "14/8412/5383",
+      "beforeHash": "657414fd5589975893ede0ca1ad45a2107df497ac12a559796f595b769159151",
+      "afterHash": "395335e89611a9309f78b926a23d9f3d8f12391723ac3ab5347f73f0267ca5e0",
+      "features": 3547,
+      "originalFeaturesCount": 3396,
+      "originalFeaturesSha256": "15dc7fe41a51803e32b230bc8dc637fe03bcc764e8ff2743ca4e0c5b07c1de05"
+    }
+  ],
+  "approximate": [
+    "height",
+    "eaves",
+    "roof form",
+    "material colours"
+  ],
+  "preserved": "All existing installed features retained verbatim; only disjoint mapped source footprints appended.",
+  "sourceInventory": [
+    {
+      "id": "w57864454",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57864454,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864459",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.47,
+      "tags": {
+        "@type": "way",
+        "@id": 57864459,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864490",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.64,
+      "tags": {
+        "@type": "way",
+        "@id": 57864490,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864508",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57864508,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864525",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.47,
+      "tags": {
+        "@type": "way",
+        "@id": 57864525,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864529",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.33,
+      "tags": {
+        "@type": "way",
+        "@id": 57864529,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864571",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.58,
+      "tags": {
+        "@type": "way",
+        "@id": 57864571,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864579",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.32,
+      "tags": {
+        "@type": "way",
+        "@id": 57864579,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864587",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57864587,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864598",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57864598,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864600",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.54,
+      "tags": {
+        "@type": "way",
+        "@id": 57864600,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864609",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.45,
+      "tags": {
+        "@type": "way",
+        "@id": 57864609,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864631",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57864631,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864637",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.22,
+      "tags": {
+        "@type": "way",
+        "@id": 57864637,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864646",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57864646,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864654",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.5,
+      "tags": {
+        "@type": "way",
+        "@id": 57864654,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864664",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57864664,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864674",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.56,
+      "tags": {
+        "@type": "way",
+        "@id": 57864674,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864689",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.47,
+      "tags": {
+        "@type": "way",
+        "@id": 57864689,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864694",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57864694,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864703",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.54,
+      "tags": {
+        "@type": "way",
+        "@id": 57864703,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864716",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57864716,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864755",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.53,
+      "tags": {
+        "@type": "way",
+        "@id": 57864755,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864765",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.54,
+      "tags": {
+        "@type": "way",
+        "@id": 57864765,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864768",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.41,
+      "tags": {
+        "@type": "way",
+        "@id": 57864768,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864775",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57864775,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864782",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.59,
+      "tags": {
+        "@type": "way",
+        "@id": 57864782,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864824",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.54,
+      "tags": {
+        "@type": "way",
+        "@id": 57864824,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864829",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57864829,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864836",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57864836,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864858",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.5,
+      "tags": {
+        "@type": "way",
+        "@id": 57864858,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864872",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57864872,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864892",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.48,
+      "tags": {
+        "@type": "way",
+        "@id": 57864892,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864954",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57864954,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864957",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.47,
+      "tags": {
+        "@type": "way",
+        "@id": 57864957,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864962",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57864962,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864969",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57864969,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864972",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.43,
+      "tags": {
+        "@type": "way",
+        "@id": 57864972,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864974",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57864974,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57864979",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.45,
+      "tags": {
+        "@type": "way",
+        "@id": 57864979,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865001",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.52,
+      "tags": {
+        "@type": "way",
+        "@id": 57865001,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865010",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.48,
+      "tags": {
+        "@type": "way",
+        "@id": 57865010,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865015",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57865015,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865018",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57865018,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865022",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.54,
+      "tags": {
+        "@type": "way",
+        "@id": 57865022,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865023",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.54,
+      "tags": {
+        "@type": "way",
+        "@id": 57865023,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865039",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.35,
+      "tags": {
+        "@type": "way",
+        "@id": 57865039,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865045",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.48,
+      "tags": {
+        "@type": "way",
+        "@id": 57865045,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865056",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57865056,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865064",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.54,
+      "tags": {
+        "@type": "way",
+        "@id": 57865064,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865072",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57865072,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865077",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57865077,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865084",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57865084,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865088",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57865088,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865095",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57865095,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865117",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57865117,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865125",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.59,
+      "tags": {
+        "@type": "way",
+        "@id": 57865125,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865130",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.5,
+      "tags": {
+        "@type": "way",
+        "@id": 57865130,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865132",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.35,
+      "tags": {
+        "@type": "way",
+        "@id": 57865132,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865134",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 38.59,
+      "tags": {
+        "@type": "way",
+        "@id": 57865134,
+        "building": "yes",
+        "building:levels": "1",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865154",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.56,
+      "tags": {
+        "@type": "way",
+        "@id": 57865154,
+        "building": "yes",
+        "ref": "49",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865172",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.54,
+      "tags": {
+        "@type": "way",
+        "@id": 57865172,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865179",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57865179,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865187",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.47,
+      "tags": {
+        "@type": "way",
+        "@id": 57865187,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865189",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57865189,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865209",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57865209,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865215",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57865215,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865220",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57865220,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865232",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57865232,
+        "building": "yes",
+        "ref": "17",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865235",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.61,
+      "tags": {
+        "@type": "way",
+        "@id": 57865235,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865240",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57865240,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865247",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57865247,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865248",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57865248,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865257",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57865257,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865266",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57865266,
+        "building": "yes",
+        "ref": "2",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865273",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57865273,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865286",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.43,
+      "tags": {
+        "@type": "way",
+        "@id": 57865286,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865291",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57865291,
+        "building": "yes",
+        "ref": "20",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865311",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.52,
+      "tags": {
+        "@type": "way",
+        "@id": 57865311,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865312",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57865312,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865326",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57865326,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865330",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57865330,
+        "building": "yes",
+        "ref": "39",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865331",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57865331,
+        "building": "yes",
+        "ref": "1",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865342",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57865342,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865344",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57865344,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865347",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57865347,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865354",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57865354,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865366",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.56,
+      "tags": {
+        "@type": "way",
+        "@id": 57865366,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865381",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.53,
+      "tags": {
+        "@type": "way",
+        "@id": 57865381,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865388",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.62,
+      "tags": {
+        "@type": "way",
+        "@id": 57865388,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865390",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.5,
+      "tags": {
+        "@type": "way",
+        "@id": 57865390,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865393",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57865393,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865395",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57865395,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865397",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.54,
+      "tags": {
+        "@type": "way",
+        "@id": 57865397,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865401",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57865401,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865408",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.53,
+      "tags": {
+        "@type": "way",
+        "@id": 57865408,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865419",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57865419,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865430",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57865430,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865434",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57865434,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865441",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.54,
+      "tags": {
+        "@type": "way",
+        "@id": 57865441,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865448",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.59,
+      "tags": {
+        "@type": "way",
+        "@id": 57865448,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865459",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57865459,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865465",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57865465,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865475",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.48,
+      "tags": {
+        "@type": "way",
+        "@id": 57865475,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865478",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 43.76,
+      "tags": {
+        "@type": "way",
+        "@id": 57865478,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865500",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57865500,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865507",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.53,
+      "tags": {
+        "@type": "way",
+        "@id": 57865507,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865521",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.43,
+      "tags": {
+        "@type": "way",
+        "@id": 57865521,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865526",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.4,
+      "tags": {
+        "@type": "way",
+        "@id": 57865526,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865541",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 76.29,
+      "tags": {
+        "@type": "way",
+        "@id": 57865541,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": false
+    },
+    {
+      "id": "w57865544",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.5,
+      "tags": {
+        "@type": "way",
+        "@id": 57865544,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865549",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57865549,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865594",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57865594,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865612",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.52,
+      "tags": {
+        "@type": "way",
+        "@id": 57865612,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865622",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57865622,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865642",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.5,
+      "tags": {
+        "@type": "way",
+        "@id": 57865642,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865644",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57865644,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865655",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.41,
+      "tags": {
+        "@type": "way",
+        "@id": 57865655,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865661",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.47,
+      "tags": {
+        "@type": "way",
+        "@id": 57865661,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865663",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57865663,
+        "building": "yes",
+        "ref": "47",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865697",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.5,
+      "tags": {
+        "@type": "way",
+        "@id": 57865697,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865705",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.43,
+      "tags": {
+        "@type": "way",
+        "@id": 57865705,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865723",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57865723,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865725",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57865725,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865736",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57865736,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865754",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.5,
+      "tags": {
+        "@type": "way",
+        "@id": 57865754,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865771",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.5,
+      "tags": {
+        "@type": "way",
+        "@id": 57865771,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865777",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57865777,
+        "building": "yes",
+        "ref": "28",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865792",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57865792,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865794",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.61,
+      "tags": {
+        "@type": "way",
+        "@id": 57865794,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865804",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.62,
+      "tags": {
+        "@type": "way",
+        "@id": 57865804,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865822",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 590.17,
+      "tags": {
+        "@type": "way",
+        "@id": 57865822,
+        "building": "yes",
+        "height": "5.2",
+        "name": "Kantine",
+        "ref:bag": "0363100012230952",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "source:height": "3DBAG",
+        "source:height:date": "2025-09-03",
+        "start_date": "1982"
+      },
+      "eligible": false
+    },
+    {
+      "id": "w57865827",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57865827,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865829",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57865829,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865834",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57865834,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865842",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57865842,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865844",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57865844,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865849",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.59,
+      "tags": {
+        "@type": "way",
+        "@id": 57865849,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865860",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.54,
+      "tags": {
+        "@type": "way",
+        "@id": 57865860,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865862",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57865862,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865875",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.54,
+      "tags": {
+        "@type": "way",
+        "@id": 57865875,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865881",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.43,
+      "tags": {
+        "@type": "way",
+        "@id": 57865881,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865883",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57865883,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865885",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57865885,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865889",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57865889,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865916",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57865916,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865926",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57865926,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865929",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57865929,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865937",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57865937,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865962",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57865962,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865970",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57865970,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865976",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57865976,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57865985",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57865985,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866024",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.5,
+      "tags": {
+        "@type": "way",
+        "@id": 57866024,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866033",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 34.67,
+      "tags": {
+        "@type": "way",
+        "@id": 57866033,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866035",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57866035,
+        "building": "yes",
+        "ref": "18",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866070",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 34,
+      "tags": {
+        "@type": "way",
+        "@id": 57866070,
+        "building": "yes",
+        "building:levels": "1",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866082",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57866082,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866094",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.41,
+      "tags": {
+        "@type": "way",
+        "@id": 57866094,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866107",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.47,
+      "tags": {
+        "@type": "way",
+        "@id": 57866107,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866109",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.52,
+      "tags": {
+        "@type": "way",
+        "@id": 57866109,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866142",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.5,
+      "tags": {
+        "@type": "way",
+        "@id": 57866142,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866186",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57866186,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866188",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57866188,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866190",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57866190,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866202",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.5,
+      "tags": {
+        "@type": "way",
+        "@id": 57866202,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866210",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57866210,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866223",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57866223,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866244",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57866244,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866249",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57866249,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866252",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.52,
+      "tags": {
+        "@type": "way",
+        "@id": 57866252,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866254",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57866254,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866278",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.47,
+      "tags": {
+        "@type": "way",
+        "@id": 57866278,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866285",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 32.72,
+      "tags": {
+        "@type": "way",
+        "@id": 57866285,
+        "addr:housenumber": "256",
+        "addr:street": "Tritomalaan",
+        "building": "yes",
+        "building:levels": "1",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866288",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.45,
+      "tags": {
+        "@type": "way",
+        "@id": 57866288,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866303",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57866303,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866306",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57866306,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866307",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.64,
+      "tags": {
+        "@type": "way",
+        "@id": 57866307,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866317",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.47,
+      "tags": {
+        "@type": "way",
+        "@id": 57866317,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866341",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57866341,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866355",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.54,
+      "tags": {
+        "@type": "way",
+        "@id": 57866355,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866363",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.43,
+      "tags": {
+        "@type": "way",
+        "@id": 57866363,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866365",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57866365,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866367",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.64,
+      "tags": {
+        "@type": "way",
+        "@id": 57866367,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866373",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.44,
+      "tags": {
+        "@type": "way",
+        "@id": 57866373,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866391",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.37,
+      "tags": {
+        "@type": "way",
+        "@id": 57866391,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866401",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57866401,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866410",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57866410,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866440",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 311.63,
+      "tags": {
+        "@type": "way",
+        "@id": 57866440,
+        "building": "yes",
+        "height": "3.5",
+        "ref:bag": "0363100012110356",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "source:height": "3DBAG",
+        "source:height:date": "2025-09-03",
+        "start_date": "1963"
+      },
+      "eligible": false
+    },
+    {
+      "id": "w57866445",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.4,
+      "tags": {
+        "@type": "way",
+        "@id": 57866445,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866448",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57866448,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866468",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57866468,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866473",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57866473,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866484",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57866484,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866496",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.43,
+      "tags": {
+        "@type": "way",
+        "@id": 57866496,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866519",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.62,
+      "tags": {
+        "@type": "way",
+        "@id": 57866519,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866533",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.43,
+      "tags": {
+        "@type": "way",
+        "@id": 57866533,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866542",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57866542,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866551",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57866551,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866552",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57866552,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866558",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.43,
+      "tags": {
+        "@type": "way",
+        "@id": 57866558,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866574",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57866574,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866581",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57866581,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866582",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57866582,
+        "building": "bungalow",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866588",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57866588,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866593",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57866593,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866620",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57866620,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866629",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57866629,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866632",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57866632,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866635",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 127.87,
+      "tags": {
+        "@type": "way",
+        "@id": 57866635,
+        "building": "yes",
+        "height": "3.6",
+        "ref:bag": "0363100012230951",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "source:height": "3DBAG",
+        "source:height:date": "2025-09-03",
+        "start_date": "1982"
+      },
+      "eligible": false
+    },
+    {
+      "id": "w57866639",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57866639,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866640",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57866640,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866674",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.41,
+      "tags": {
+        "@type": "way",
+        "@id": 57866674,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866686",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57866686,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866709",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57866709,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866719",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.54,
+      "tags": {
+        "@type": "way",
+        "@id": 57866719,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866729",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57866729,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866736",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 26.62,
+      "tags": {
+        "@type": "way",
+        "@id": 57866736,
+        "building": "yes",
+        "building:levels": "1",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866738",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 34.32,
+      "tags": {
+        "@type": "way",
+        "@id": 57866738,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866741",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57866741,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866746",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.5,
+      "tags": {
+        "@type": "way",
+        "@id": 57866746,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866748",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57866748,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866749",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57866749,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866771",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57866771,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866796",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57866796,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866826",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57866826,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866831",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57866831,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866848",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.47,
+      "tags": {
+        "@type": "way",
+        "@id": 57866848,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866854",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57866854,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866857",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57866857,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866859",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 48,
+      "tags": {
+        "@type": "way",
+        "@id": 57866859,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866873",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.47,
+      "tags": {
+        "@type": "way",
+        "@id": 57866873,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866898",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 49.69,
+      "tags": {
+        "@type": "way",
+        "@id": 57866898,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866902",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57866902,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866903",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57866903,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866907",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.35,
+      "tags": {
+        "@type": "way",
+        "@id": 57866907,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866914",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.59,
+      "tags": {
+        "@type": "way",
+        "@id": 57866914,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866917",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57866917,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866930",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.54,
+      "tags": {
+        "@type": "way",
+        "@id": 57866930,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866942",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57866942,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866949",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.48,
+      "tags": {
+        "@type": "way",
+        "@id": 57866949,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866961",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57866961,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866964",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.54,
+      "tags": {
+        "@type": "way",
+        "@id": 57866964,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866967",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.48,
+      "tags": {
+        "@type": "way",
+        "@id": 57866967,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866972",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.56,
+      "tags": {
+        "@type": "way",
+        "@id": 57866972,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866984",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57866984,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866987",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.45,
+      "tags": {
+        "@type": "way",
+        "@id": 57866987,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866989",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.4,
+      "tags": {
+        "@type": "way",
+        "@id": 57866989,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57866999",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.48,
+      "tags": {
+        "@type": "way",
+        "@id": 57866999,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867001",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57867001,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867004",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57867004,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867007",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57867007,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867021",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.48,
+      "tags": {
+        "@type": "way",
+        "@id": 57867021,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867028",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57867028,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867044",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57867044,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867060",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.54,
+      "tags": {
+        "@type": "way",
+        "@id": 57867060,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867063",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57867063,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867078",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57867078,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867085",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.35,
+      "tags": {
+        "@type": "way",
+        "@id": 57867085,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867090",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.45,
+      "tags": {
+        "@type": "way",
+        "@id": 57867090,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867103",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.56,
+      "tags": {
+        "@type": "way",
+        "@id": 57867103,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867114",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 35.85,
+      "tags": {
+        "@type": "way",
+        "@id": 57867114,
+        "building": "yes",
+        "building:levels": "1",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867118",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57867118,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867120",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57867120,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867128",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.54,
+      "tags": {
+        "@type": "way",
+        "@id": 57867128,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867136",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57867136,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867147",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57867147,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867148",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57867148,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867159",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.52,
+      "tags": {
+        "@type": "way",
+        "@id": 57867159,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867160",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57867160,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867173",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57867173,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867175",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 40.61,
+      "tags": {
+        "@type": "way",
+        "@id": 57867175,
+        "building": "yes",
+        "building:levels": "1",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867181",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 41.48,
+      "tags": {
+        "@type": "way",
+        "@id": 57867181,
+        "building": "yes",
+        "building:levels": "1",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867183",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57867183,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867208",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57867208,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867221",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57867221,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867226",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57867226,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867229",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57867229,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867239",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57867239,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867242",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.5,
+      "tags": {
+        "@type": "way",
+        "@id": 57867242,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867251",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.5,
+      "tags": {
+        "@type": "way",
+        "@id": 57867251,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867257",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57867257,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867262",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57867262,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867278",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57867278,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867282",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 37.83,
+      "tags": {
+        "@type": "way",
+        "@id": 57867282,
+        "building": "yes",
+        "building:levels": "1",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867286",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57867286,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867289",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.58,
+      "tags": {
+        "@type": "way",
+        "@id": 57867289,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867292",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57867292,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867295",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57867295,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867297",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.52,
+      "tags": {
+        "@type": "way",
+        "@id": 57867297,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867327",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.48,
+      "tags": {
+        "@type": "way",
+        "@id": 57867327,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867339",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57867339,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867341",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.41,
+      "tags": {
+        "@type": "way",
+        "@id": 57867341,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867346",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.52,
+      "tags": {
+        "@type": "way",
+        "@id": 57867346,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867348",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.56,
+      "tags": {
+        "@type": "way",
+        "@id": 57867348,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867351",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57867351,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867368",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.64,
+      "tags": {
+        "@type": "way",
+        "@id": 57867368,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867387",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57867387,
+        "building": "yes",
+        "ref": "51",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867390",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.54,
+      "tags": {
+        "@type": "way",
+        "@id": 57867390,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867398",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.52,
+      "tags": {
+        "@type": "way",
+        "@id": 57867398,
+        "building": "yes",
+        "ref": "30",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867406",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.54,
+      "tags": {
+        "@type": "way",
+        "@id": 57867406,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867413",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57867413,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867421",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57867421,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867422",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.54,
+      "tags": {
+        "@type": "way",
+        "@id": 57867422,
+        "building": "yes",
+        "ref": "34",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867431",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57867431,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867436",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.61,
+      "tags": {
+        "@type": "way",
+        "@id": 57867436,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867449",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.41,
+      "tags": {
+        "@type": "way",
+        "@id": 57867449,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867451",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.37,
+      "tags": {
+        "@type": "way",
+        "@id": 57867451,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867464",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.47,
+      "tags": {
+        "@type": "way",
+        "@id": 57867464,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867470",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57867470,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867477",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.5,
+      "tags": {
+        "@type": "way",
+        "@id": 57867477,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867500",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57867500,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867502",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57867502,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867506",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57867506,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867515",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57867515,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867519",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.43,
+      "tags": {
+        "@type": "way",
+        "@id": 57867519,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867522",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 533.7,
+      "tags": {
+        "@type": "way",
+        "@id": 57867522,
+        "building": "yes",
+        "height": "5.3",
+        "ref:bag": "0363100012229574",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "source:height": "3DBAG",
+        "source:height:date": "2025-09-03",
+        "start_date": "1963"
+      },
+      "eligible": false
+    },
+    {
+      "id": "w57867531",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.59,
+      "tags": {
+        "@type": "way",
+        "@id": 57867531,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867534",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57867534,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867536",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57867536,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867545",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.47,
+      "tags": {
+        "@type": "way",
+        "@id": 57867545,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867559",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 40.1,
+      "tags": {
+        "@type": "way",
+        "@id": 57867559,
+        "building": "yes",
+        "building:levels": "1",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867563",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57867563,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867571",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57867571,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867582",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57867582,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867608",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.43,
+      "tags": {
+        "@type": "way",
+        "@id": 57867608,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867624",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.33,
+      "tags": {
+        "@type": "way",
+        "@id": 57867624,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867637",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57867637,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867642",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57867642,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867644",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 66.04,
+      "tags": {
+        "@type": "way",
+        "@id": 57867644,
+        "building": "yes",
+        "building:levels": "1",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867648",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.54,
+      "tags": {
+        "@type": "way",
+        "@id": 57867648,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867660",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.41,
+      "tags": {
+        "@type": "way",
+        "@id": 57867660,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867670",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.47,
+      "tags": {
+        "@type": "way",
+        "@id": 57867670,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867680",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.5,
+      "tags": {
+        "@type": "way",
+        "@id": 57867680,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867683",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 39.07,
+      "tags": {
+        "@type": "way",
+        "@id": 57867683,
+        "building": "yes",
+        "building:levels": "1",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867696",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 26.98,
+      "tags": {
+        "@type": "way",
+        "@id": 57867696,
+        "building": "yes",
+        "building:levels": "1",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867701",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.48,
+      "tags": {
+        "@type": "way",
+        "@id": 57867701,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867706",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57867706,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867713",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.43,
+      "tags": {
+        "@type": "way",
+        "@id": 57867713,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867715",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57867715,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867726",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.59,
+      "tags": {
+        "@type": "way",
+        "@id": 57867726,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867734",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.47,
+      "tags": {
+        "@type": "way",
+        "@id": 57867734,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867736",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.56,
+      "tags": {
+        "@type": "way",
+        "@id": 57867736,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867738",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57867738,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867761",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.49,
+      "tags": {
+        "@type": "way",
+        "@id": 57867761,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867766",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57867766,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867778",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.5,
+      "tags": {
+        "@type": "way",
+        "@id": 57867778,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867781",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.53,
+      "tags": {
+        "@type": "way",
+        "@id": 57867781,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867785",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.59,
+      "tags": {
+        "@type": "way",
+        "@id": 57867785,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867794",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57867794,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867796",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.55,
+      "tags": {
+        "@type": "way",
+        "@id": 57867796,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867798",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.51,
+      "tags": {
+        "@type": "way",
+        "@id": 57867798,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867818",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 46.38,
+      "tags": {
+        "@type": "way",
+        "@id": 57867818,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867838",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.5,
+      "tags": {
+        "@type": "way",
+        "@id": 57867838,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w57867841",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 46.46,
+      "tags": {
+        "@type": "way",
+        "@id": 57867841,
+        "building": "yes",
+        "source": "3dShapes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w226135729",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 42.57,
+      "tags": {
+        "@type": "way",
+        "@id": 226135729,
+        "building": "yes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w226135730",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 47.42,
+      "tags": {
+        "@type": "way",
+        "@id": 226135730,
+        "building": "yes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w226135731",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 51.13,
+      "tags": {
+        "@type": "way",
+        "@id": 226135731,
+        "building": "yes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w226135732",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 47.91,
+      "tags": {
+        "@type": "way",
+        "@id": 226135732,
+        "building": "yes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w226135733",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 29.08,
+      "tags": {
+        "@type": "way",
+        "@id": 226135733,
+        "building": "yes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w226135734",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 34.65,
+      "tags": {
+        "@type": "way",
+        "@id": 226135734,
+        "building": "yes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w226135735",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 54.94,
+      "tags": {
+        "@type": "way",
+        "@id": 226135735,
+        "building": "yes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w226135736",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 43.43,
+      "tags": {
+        "@type": "way",
+        "@id": 226135736,
+        "building": "yes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w226135737",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 36.91,
+      "tags": {
+        "@type": "way",
+        "@id": 226135737,
+        "building": "yes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w226135738",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 32.8,
+      "tags": {
+        "@type": "way",
+        "@id": 226135738,
+        "building": "yes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w226135739",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 42.6,
+      "tags": {
+        "@type": "way",
+        "@id": 226135739,
+        "building": "yes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w226135740",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 38.76,
+      "tags": {
+        "@type": "way",
+        "@id": 226135740,
+        "building": "yes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w226135741",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 50.37,
+      "tags": {
+        "@type": "way",
+        "@id": 226135741,
+        "building": "yes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w226135742",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 38.04,
+      "tags": {
+        "@type": "way",
+        "@id": 226135742,
+        "building": "yes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w226135743",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 31.23,
+      "tags": {
+        "@type": "way",
+        "@id": 226135743,
+        "building": "yes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w1068482618",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 35.9,
+      "tags": {
+        "@type": "way",
+        "@id": 1068482618,
+        "building": "yes",
+        "building:levels": "1"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w1068482619",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 33.04,
+      "tags": {
+        "@type": "way",
+        "@id": 1068482619,
+        "building": "yes",
+        "building:levels": "1"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w1068482620",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 35.07,
+      "tags": {
+        "@type": "way",
+        "@id": 1068482620,
+        "building": "yes",
+        "building:levels": "1"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w1068482621",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 37.94,
+      "tags": {
+        "@type": "way",
+        "@id": 1068482621,
+        "building": "yes",
+        "building:levels": "3"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w1068482622",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 36.21,
+      "tags": {
+        "@type": "way",
+        "@id": 1068482622,
+        "building": "yes",
+        "building:levels": "1"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w1068482623",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 37.01,
+      "tags": {
+        "@type": "way",
+        "@id": 1068482623,
+        "building": "yes",
+        "building:levels": "1"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w1068482624",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 36.73,
+      "tags": {
+        "@type": "way",
+        "@id": 1068482624,
+        "building": "yes",
+        "building:levels": "1"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w1068482625",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 37.68,
+      "tags": {
+        "@type": "way",
+        "@id": 1068482625,
+        "building": "yes",
+        "building:levels": "1"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w1068482626",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 35,
+      "tags": {
+        "@type": "way",
+        "@id": 1068482626,
+        "building": "yes",
+        "building:levels": "1"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w1172766345",
+      "park": "Tuingroep Sloterdijkermeer",
+      "areaM2": 32.56,
+      "tags": {
+        "@type": "way",
+        "@id": 1172766345,
+        "building": "yes"
+      },
+      "eligible": true
+    },
+    {
+      "id": "w1215276382",
+      "park": "Tuinpark Nut & Genoegen",
+      "areaM2": 33.46,
+      "tags": {
+        "@type": "way",
+        "@id": 1215276382,
+        "building": "yes"
+      },
+      "eligible": true
+    }
+  ]
+}

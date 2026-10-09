@@ -2787,45 +2787,6 @@
       }
     },
     {
-      id: "ons-lieve-heer-op-solder",
-      name: "Ons\u2019 Lieve Heer op Solder \u2014 historic church and entrance",
-      landmarkId: "extract_landmarks_769225968",
-      modelUrl: "./models/ons-lieve-heer-op-solder.glb",
-      suppressOsmIds: [
-        "w266941199",
-        "NL.IMBAG.Pand.0363100012178021",
-        "w266940951",
-        "NL.IMBAG.Pand.0363100012178040"
-      ],
-      spatialSuppression: false,
-      footprint: {
-        centre: [
-          4.899258769422396,
-          52.375132921670925
-        ],
-        headingDegrees: 121.0851936786699,
-        lengthMetres: 23.644547311709523,
-        widthMetres: 21.08931723774654
-      },
-      surveyed: {
-        anchor: [
-          4.899258769422396,
-          52.375132921670925
-        ],
-        northOffsetDegrees: -59
-      },
-      groundAltitudeMetres: 0,
-      facingOffsetDegrees: -0.08519367866989569,
-      attribution: {
-        title: "Ons\u2019 Lieve Heer op Solder \u2014 historic church and entrance",
-        author: "Map Recall",
-        sourceUrl: "https://opsolder.nl/en/the-monument/",
-        licence: "Original project asset",
-        licenceUrl: "./LICENSE",
-        modifications: "Original texture-free reconstruction of precisely scoped historic canal museum buildings using actual OpenStreetMap/current BAG geometry and official museum/architect exterior photographs. Original window, gable, doorcase and stair geometry; rear courtyard/lightwell rings and the OnsSolder public alley preserved. Foam light courts represented with low glass covers as described by its architect. Dimensions and ornament approximate."
-      }
-    },
-    {
       id: "agnietenkapel",
       name: "Agnietenkapel (UvA)",
       landmarkId: "extract_landmarks_736156087",
@@ -5995,6 +5956,484 @@
         licenceUrl: "./LICENSE",
         modifications: "Original project-native pale-stone/red-brick classical facade, columned pediment, golden lyre, four roof pavilions and Pi de Bruijn glass promenade. No imported legacy mesh or textures; roof contours derived from open surveyed data."
       }
+    },
+    {
+      id: "stadhuis",
+      name: "Stadhuis / Nationale Opera & Ballet",
+      landmarkId: "extract_landmarks_1919682395",
+      modelUrl: "./models/stadhuis.glb",
+      suppressOsmIds: [
+        "w268782345",
+        "w751591420",
+        "w751559653",
+        "w751559654",
+        "w751559655",
+        "w751559656",
+        "w751559657",
+        "w751559658",
+        "w751559659",
+        "w751559660",
+        "w751559661",
+        "w751559663",
+        "w751559664",
+        "w751559665",
+        "w751567319",
+        "w751567320",
+        "w751567321",
+        "w751573304",
+        "w751573305",
+        "w751573306",
+        "w751591418",
+        "w751591419",
+        "w751612860",
+        "w751612861",
+        "w751612862",
+        "NL.IMBAG.Pand.0363100012186092"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.90086458624536,
+          52.367798989750916
+        ],
+        headingDegrees: 90,
+        lengthMetres: 209.20768610521935,
+        widthMetres: 198.1495999996173
+      },
+      surveyed: {
+        anchor: [
+          4.90086458624536,
+          52.367798989750916
+        ],
+        northOffsetDegrees: 0,
+        source: "Exact current two same-BAG parents and 23 mapped parts including recorded elevated volumes/glazed passage roofs; mapped heights5\u201322m, complex 3DBAG maximum not assigned to whole component."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "Stadhuis / Nationale Opera & Ballet",
+        author: "Map Recall",
+        sourceUrl: "https://www.operaballet.nl/stopera-amsterdam",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free shared-palette city-hall and opera ensemble, rebuilt against native current roof/part polygons. Curved marble foyer bays, brick auditorium, stepped office wings, glazed passage canopy and raised volumes preserve source apertures. No imported geometry/textures, whole-parcel cap or proposed future garden interiors."
+      }
+    },
+    {
+      id: "heineken-experience-amsterdam",
+      name: "Heineken Experience",
+      landmarkId: "extract_landmarks_914627337",
+      modelUrl: "./models/heineken-experience-amsterdam.glb",
+      suppressOsmIds: [
+        "w44451454",
+        "NL.IMBAG.Pand.0363100012166152"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.891634499471685,
+          52.35771184229546
+        ],
+        headingDegrees: 275.66,
+        lengthMetres: 96.73778031683932,
+        widthMetres: 44.705812770835806
+      },
+      surveyed: {
+        anchor: [
+          4.891634499471685,
+          52.35771184229546
+        ],
+        northOffsetDegrees: 185.66000000000003
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 90,
+      attribution: {
+        title: "Heineken Experience",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/complexen/527808",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original manual facade details and regional massing. AHN5 2023 roof-plane samples calibrate rebuilt roof patch surfaces; no imported asset mesh. Current single BAG parent encloses three surviving historic fronts and low museum wings; surrounding 1990s residences/retail stay outside exact suppression. BAG nominal 1886 does not date all present parts: RCE identifies 1911\u201313/1925/1933\u201334."
+      }
+    },
+    {
+      id: "faralda-crane-hotel",
+      name: "Faralda NDSM Crane Hotel Amsterdam",
+      landmarkId: "extract_landmarks_1759004236",
+      modelUrl: "./models/faralda-crane-hotel.glb",
+      suppressOsmIds: [
+        "w280619914",
+        "NL.IMBAG.Pand.0363100012241774"
+      ],
+      footprint: {
+        centre: [
+          4.894817040473574,
+          52.39937946222803
+        ],
+        headingDegrees: 101.98499708839654,
+        lengthMetres: 11.939848301110935,
+        widthMetres: 8.634885206243403
+      },
+      spatialSuppression: false,
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: -90.08499708839653,
+      surveyed: {
+        anchor: [
+          4.894841236019676,
+          52.39937627409353
+        ],
+        northOffsetDegrees: 11.900000000000006,
+        source: "Current in-use BAG 0363100012241774 crane base; canonical OSM w280619914. Original open steel structure constrained by primary IAA, operator and shipyard height/photographs. Native +X heading 101.9 degrees follows base edges; rotating crane boom is shown at a representative orientation. 3DBAG 14.925m roof is studio-only undersampling, not the true 50m crane."
+      },
+      attribution: {
+        title: "Faralda Crane Hotel",
+        author: "Map Recall",
+        sourceUrl: "https://www.iaa-architecten.nl/projecten/feralda-crane-hotel/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original project-native open steel crane, red hotel suites/lifts, yellow lattice boom and counterweight. No imported meshes/textures."
+      }
+    },
+    {
+      id: "ing-house",
+      name: "ING House / Infinity",
+      landmarkId: "osm-way-57856367",
+      modelUrl: "./models/ing-house.glb",
+      suppressOsmIds: [
+        "w57856367",
+        "NL.IMBAG.Pand.0363100012068127"
+      ],
+      footprint: {
+        centre: [
+          4.85519,
+          52.33717
+        ],
+        headingDegrees: 85,
+        lengthMetres: 137.75,
+        widthMetres: 28.62
+      },
+      spatialSuppression: false,
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      surveyed: {
+        anchor: [
+          4.85519,
+          52.33717
+        ],
+        northOffsetDegrees: 5,
+        source: "Current in-use BAG0363100012068127;OSMw57856367 exact surveyed outline. 138m longitudinal eastward85deg axis, roof profile measured from AHN5/3DBAG and calibrated against primary MVSA photos. Original native-scale reconstruction, not imported mesh."
+      },
+      attribution: {
+        title: "ING House / Infinity",
+        author: "Map Recall",
+        sourceUrl: "https://mvsa-architects.com/en/projects/ing-house/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free flat-color glass/aluminium wedge, rounded auditorium nose, 16steel supports, double-skin facade and ground lobby. Exact surveyed BAG boundary, open undercroft. Heights use real roof planes;equipment peaks excluded. No imported third-party meshes or image pixels."
+      }
+    },
+    {
+      id: "muiderpoort",
+      name: "Muiderpoort",
+      landmarkId: "extract_landmarks_1639856562",
+      modelUrl: "./models/muiderpoort.glb",
+      suppressOsmIds: [
+        "w45038672",
+        "NL.IMBAG.Pand.0363100012169095"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.9194747,
+          52.3637334
+        ],
+        headingDegrees: 56.7,
+        lengthMetres: 24.5,
+        widthMetres: 17.8
+      },
+      surveyed: {
+        anchor: [
+          4.9194747,
+          52.3637334
+        ],
+        northOffsetDegrees: 0,
+        source: "Current OSM w45038672/BAG0363100012169095 exact polygon retrieved2026-10-04. Nativeeast/southmetres; authoredaxes33.3degrees relativeeast. 28.2m OSM3DBAG maximum; subordinateheightstages estimated from ownerphotos."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "Muiderpoort",
+        author: "Map Recall",
+        sourceUrl: "https://stadsherstel.nl/monumenten/muiderpoort/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original surveyedtexture-free citygate with openarchedpassage, sandstoneDoricorders, heraldicpediments, brickwings, offsetoctagonal dome and clocklantern. Photos guideoriginalgeometry only; no downloadedmeshes or photopixels. Carvings/vault simplified; stageheights estimated."
+      }
+    },
+    {
+      id: "idfa-pavilion",
+      name: "IDFA Het Documentaire Paviljoen",
+      landmarkId: "osm-way-57857054",
+      modelUrl: "./models/idfa-pavilion.glb",
+      suppressOsmIds: [
+        "w57857054",
+        "NL.IMBAG.Pand.0363100012237216"
+      ],
+      footprint: {
+        centre: [
+          4.875,
+          52.36108
+        ],
+        headingDegrees: 116.4,
+        lengthMetres: 44.1,
+        widthMetres: 29.8
+      },
+      spatialSuppression: false,
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      surveyed: {
+        anchor: [
+          4.875,
+          52.36108
+        ],
+        northOffsetDegrees: 26.4,
+        source: "Current BAG parent0363100012237216; native facade xaxis116.4degrees/+Z206.4degrees. AHN5 surveyed roof planes relative to groundNAP-1.514m. RCE504833 and Arcam photographs guide original exposed loggias, domes and terrace."
+      },
+      attribution: {
+        title: "IDFA Het Documentaire Paviljoen",
+        author: "Map Recall",
+        sourceUrl: "https://www.idfa.nl/en/vondelpark/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free plaster/brick pavilion with exposed arched loggias, balustrades, corner domes, central classical facade and native surveyed roof contours. No imported mesh or photo pixels."
+      }
+    },
+    {
+      id: "social-history",
+      name: "International Institute of Social History",
+      landmarkId: "extract_landmarks_742782013",
+      modelUrl: "./models/social-history.glb",
+      suppressOsmIds: [
+        "w57859743",
+        "NL.IMBAG.Pand.0363100012164130"
+      ],
+      footprint: {
+        centre: [
+          4.939438,
+          52.369089
+        ],
+        headingDegrees: 90,
+        lengthMetres: 76.6,
+        widthMetres: 37.6
+      },
+      spatialSuppression: false,
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      surveyed: {
+        anchor: [
+          4.939438,
+          52.369089
+        ],
+        northOffsetDegrees: 0,
+        source: "Native current BAG0363100012164130 footprint, current OSMw57859743. Facade assemblies and relative vertical dimensions from AtelierPRO references."
+      },
+      attribution: {
+        title: "International Institute of Social History",
+        author: "Map Recall",
+        sourceUrl: "https://www.atelierpro.nl/projecten/internationaal-instituut-voor-sociale-geschiedenis",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free reconstruction of the1961 concrete cocoa warehouse transformed by AtelierPRO in1989; off-white vertical ribs, blind archives, raised entrance, library cantilever, tall harbour atrium and rounded glass pavilion. No imported meshes or image pixels. Exact BAG/OSM suppression preserves the adjacent historic warehouse and waterfront."
+      }
+    },
+    {
+      id: "dageraad",
+      name: "Museum De Dageraad",
+      landmarkId: "extract_landmarks_897347854",
+      modelUrl: "./models/dageraad.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012076951"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.898997149741256,
+          52.34985665994483
+        ],
+        headingDegrees: 90,
+        lengthMetres: 14.929,
+        widthMetres: 14.850999999999999
+      },
+      surveyed: {
+        anchor: [
+          4.898997149741256,
+          52.34985665994483
+        ],
+        northOffsetDegrees: 0,
+        source: "Current museum VBO/parent identity; native RD east/south surveyed footprint, 3DBAG2020 AHN4 semantic roof levels; museum occupies corner shop only."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "Museum De Dageraad",
+        author: "Map Recall",
+        sourceUrl: "https://www.hetschip.nl/de-dageraad",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free low-poly corner parent only, with rounded stepped brickwork, scalloped narrow tower crown, horizontal white window rods and green shop entrances. Native survey17.56m main roof and21.34m narrow tower. Museum-name lettering omitted. Operator/heritage photographs guide geometry; no imported mesh or photo pixels. Adjoining estate parents and court remain."
+      }
+    },
+    {
+      id: "ons-lieve-heer-op-solder",
+      name: "Ons\u2019 Lieve Heer op Solder \u2014 historic church and entrance",
+      landmarkId: "extract_landmarks_1791250152",
+      modelUrl: "./models/ons-lieve-heer-op-solder.glb",
+      suppressOsmIds: [
+        "w266941199",
+        "NL.IMBAG.Pand.0363100012178021",
+        "w266940951",
+        "NL.IMBAG.Pand.0363100012178040"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.899258769422396,
+          52.375132921670925
+        ],
+        headingDegrees: 121.0851936786699,
+        lengthMetres: 23.644547311709523,
+        widthMetres: 21.08931723774654
+      },
+      surveyed: {
+        anchor: [
+          4.899258769422396,
+          52.375132921670925
+        ],
+        northOffsetDegrees: -59
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: -0.08519367866989569,
+      attribution: {
+        title: "Ons\u2019 Lieve Heer op Solder \u2014 historic church and entrance",
+        author: "Map Recall",
+        sourceUrl: "https://opsolder.nl/en/the-monument/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free surveyed reconstruction of historic museum and separate modern entrance. Exact OSM/BAG identity suppression; open Heintje Hoekssteeg preserved. Photo-derived sash and modern facade assemblies, bounded upward roof planes and gables; dimensions above surveyed plan approximate."
+      },
+      relatedLandmarkIds: [
+        "extract_landmarks_769225968"
+      ]
+    },
+    {
+      id: "canals-museum",
+      name: "Museum of the Canals \u2014 Herengracht 386",
+      landmarkId: "extract_landmarks_915035378",
+      modelUrl: "./models/canals-museum.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012176537"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8861835,
+          52.3678965
+        ],
+        headingDegrees: 92.93335363117035,
+        lengthMetres: 21.784371314611192,
+        widthMetres: 14.711695885297168
+      },
+      surveyed: {
+        anchor: [
+          4.8861835,
+          52.3678965
+        ],
+        northOffsetDegrees: -87.06664636882965
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 180,
+      attribution: {
+        title: "Museum of the Canals",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/1828",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native BAG footprint model; source-supported pilaster facade and central pediment. Dimensions/ornament approximate. Current facade checked against operator photo; removed inter-pilaster festoons omitted."
+      }
+    },
+    {
+      id: "niod",
+      name: "NIOD Institute for War, Holocaust, and Genocide Studies",
+      landmarkId: "extract_landmarks_1742509310",
+      modelUrl: "./models/niod.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012169506"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.885957632081178,
+          52.36811466960355
+        ],
+        headingDegrees: 92.85016810608217,
+        lengthMetres: 17.310609999999997,
+        widthMetres: 54.51096
+      },
+      surveyed: {
+        anchor: [
+          4.885957632081178,
+          52.36811466960355
+        ],
+        northOffsetDegrees: -87.14983221643158,
+        source: "Exact current PDOK BAG parent; native metres/front axis from actual east frontage."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "NIOD Institute for War, Holocaust, and Genocide Studies",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/1826",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free sandstone French neo-Renaissance double house. Exact BAG perimeter at scale1 with separately low middle/rear roof zones. Salm1888drawing resolves window groups, carriage entry, dormer assemblies;2016municipalphoto overrides obsolete standing ridge figures and small dormers. AHN5roof levels guide heights; carved reliefs and skylight are visual approximations. No imported mesh or reference-photo pixels."
+      }
+    },
+    {
+      id: "multatuli",
+      name: "Multatuli Museum \u2014 Korsjespoortsteeg20",
+      landmarkId: "extract_landmarks_1273422573",
+      modelUrl: "./models/multatuli.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012167937"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.891125589486711,
+          52.37749205605756
+        ],
+        headingDegrees: 33.29545565140216,
+        lengthMetres: 11.661932831321346,
+        widthMetres: 4.646381856369287
+      },
+      surveyed: {
+        anchor: [
+          4.891125589486711,
+          52.37749205605756
+        ],
+        northOffsetDegrees: 33.29545565140216,
+        source: "PDOK exact VBO-to-Pand parent/current footprint, local facade basis"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 180,
+      attribution: {
+        title: "Multatuli Museum",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/3133",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native current BAG house, restrained bell gable and cream timber pui after2022facade photos. Coherent main gable and lower rear extensions informed by AHN5survey; facade details and fine ornament approximate. No photo pixels or third-party mesh."
+      }
     }
   ];
 
@@ -8781,6 +9220,254 @@
       name: "Royal Concertgebouw",
       sourceUrl: "https://www.concertgebouw.nl/en/our-history/history",
       description: "The Royal Concertgebouw was designed by Adolf Leonard van Gendt and opened on 11 April 1888. Its famous classical facade is crowned by a golden lyre. Pi de Bruijn\u2019s 1985\u20131988 renovation added the glass promenade beside the historic halls."
+    },
+    {
+      modelId: "heineken-experience-amsterdam",
+      landmarkId: "extract_landmarks_914627337",
+      name: "Heineken Experience",
+      description: "The brewery on Stadhouderskade made Heineken beer from 1867 until 1988. Its surviving street front combines a 1911\u201313 brew house with paired arched windows, a 1925 malt silo and the largely windowless 1933\u201334 cooling and storage building. Today the former brewery houses the Heineken Experience.",
+      sourceUrl: "https://www.heinekenexperience.com/en/about-the-experience",
+      additionalSources: [
+        "https://monumentenregister.cultureelerfgoed.nl/complexen/527808",
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/527809",
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/527810",
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/527811"
+      ]
+    },
+    {
+      modelId: "faralda-crane-hotel",
+      landmarkId: "extract_landmarks_1759004236",
+      name: "Faralda NDSM Crane Hotel Amsterdam",
+      description: "Faralda occupies NDSM\u2019s former Crane 13, built in 1950 and restored by Talsma in 2013. It opened as a hotel in 2014. Three suites sit at 35, 40 and 45 metres, with a rooftop jacuzzi above them; the restored steel is blue-gray and yellow, while new lifts and stairs are red.",
+      sourceUrl: "https://talsmashipyards.nl/en/projecten/specials-en/ndsm-cranehotel/",
+      additionalSources: [
+        "https://www.iaa-architecten.nl/projecten/feralda-crane-hotel/",
+        "https://www.faralda.com/hotels/"
+      ]
+    },
+    {
+      modelId: "ing-house",
+      landmarkId: "osm-way-57856367",
+      name: "ING House / Infinity",
+      sourceUrl: "https://mvsa-architects.com/en/projects/ing-house/",
+      sourceUrls: [
+        "https://mvsa-architects.com/en/projects/ing-house/",
+        "https://www.amsterdam.nl/stadsarchief/stukken/plannen/zuidas/",
+        "https://www.breeam.nl/projecten/infinity-amsterdam-16223",
+        "https://www.lexence.com/wp-content/uploads/2025/02/Routebeschrijving-2.pdf"
+      ],
+      wikidata: "Q645881",
+      wikipedia: "nl:Infinity (gebouw)",
+      address: "Amstelveenseweg 500, 1081 KL Amsterdam",
+      center: [
+        52.3369407,
+        4.8553107
+      ],
+      description: "Meyer and Van Schooten Architects completed ING House in 2002. Its glass-and-aluminium wedge rests on 16 inclined steel legs, 9\u201312 metres above ground, keeping a route open beneath its silver belly. The double-skin facade shields offices from A10 noise while drawing fresh air from the quieter south side. Six interior gardens form part of the design. ING moved out in 2015; the building became the multi-tenant Infinity offices.",
+      destinationNotes: "The arrival pin is the public bicycle approach on Sk\xFBtsjespad at mapped road/footway junction n6407529791, matching installed routing_7438. It marks the approach to the complex, not a door. From there the mapped footway and steps connect to the covered pedestrian passage beneath ING House. The separately recorded main entrance n1339449505, Amstelveenseweg 500, lies inside its exact current BAG footprint. Primary Lexence visitor directions confirm ground-floor lift and visitor access. Keep the selected ING House identity when routing fails; do not substitute the closer northern busway or another POI.",
+      entrance: {
+        center: [
+          52.3371561,
+          4.8560226
+        ],
+        sourceUrl: "https://www.openstreetmap.org/node/1339449505",
+        precision: "OSM entrance=main node n1339449505 with house number 500, last edited in 2019 as version 7. It lies within the current BAG parent and connects to the covered pedestrian passage. This is a mapped entrance location, not an independent door survey."
+      },
+      streetApproach: {
+        center: [
+          52.3369407,
+          4.8553107
+        ],
+        sourceUrl: "https://www.openstreetmap.org/way/7381220",
+        precision: "Actual mapped road node n6407529791 where footway w684001541 branches into steps to the covered passage. This is the public bicycle arrival approach, not a surveyed door."
+      }
+    },
+    {
+      modelId: "muiderpoort",
+      landmarkId: "extract_landmarks_1639856562",
+      name: "Muiderpoort",
+      description: "The Muiderpoort is a surviving gate of Amsterdam\u2019s former city wall. Cornelis Rauws designed the present classical gate after its predecessor collapsed in 1769; it was built in 1770\u20131771. Its two sculpted pediments show different city emblems: a medieval cog ship on the city side and the three Saint Andrew\u2019s crosses on the outer side. Napoleon entered Amsterdam through this gate in 1811. The open passage retains a brick vault beneath the octagonal dome and clock lantern.",
+      sourceUrl: "https://stadsherstel.nl/monumenten/muiderpoort/",
+      additionalSources: [
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/5139",
+        "https://erfgoedregister.amsterdam.nl/monument/f665a00b-f8e3-4242-8b0f-ce071282d956/?collection=2017-stad-en-land"
+      ]
+    },
+    {
+      modelId: "idfa-pavilion",
+      landmarkId: "osm-way-57857054",
+      name: "IDFA Het Documentaire Paviljoen",
+      center: [
+        52.36108,
+        4.875
+      ],
+      sourceUrl: "https://www.idfa.nl/en/vondelpark/",
+      description: "IDFA\u2019s year-round documentary home occupies Willem Hamer\u2019s Vondelparkpaviljoen, built in 1879\u20131881 as a caf\xE9-restaurant. Its Italian Renaissance facade combines open columned loggias, corner domes and a raised terrace. The historic pavilion previously housed the Nederlands Filmmuseum; today it brings documentary screenings, conversations and exhibitions to Vondelpark, with Caf\xE9 Vertigo downstairs.",
+      sourceLinks: [
+        {
+          title: "IDFA documentary pavilion",
+          url: "https://www.idfa.nl/en/vondelpark/"
+        },
+        {
+          title: "National heritage register 504833",
+          url: "https://monumentenregister.cultureelerfgoed.nl/monumenten/504833"
+        },
+        {
+          title: "IDFA practical information and Caf\xE9 Vertigo",
+          url: "https://www.idfa.nl/vondelpark/verhuur/praktische-informatie/"
+        },
+        {
+          title: "IDFA2023 annual report: pavilion opened March2024",
+          url: "https://www.idfa.nl/en/about-idfa/meet-the-team/annual-reports/annualreport-2023/het-documentaire-paviljoen/"
+        }
+      ]
+    },
+    {
+      modelId: "social-history",
+      landmarkId: "extract_landmarks_742782013",
+      name: "International Institute of Social History",
+      center: [
+        52.3690003,
+        4.9393848
+      ],
+      sourceUrl: "https://www.atelierpro.nl/projecten/internationaal-instituut-voor-sociale-geschiedenis",
+      description: "The IISG preserves archives of labour and social movements. Its Cruquiusweg home began as the massive concrete cocoa warehouse Koning Willem I in1961. AtelierPRO converted it into an archive and research centre in1989: the heavy structure carries the collections, while a great harbour window lights the atrium. The former loading platform supports the projecting reading room. The institute was founded in1935 by historian Nicolaas Posthumus.",
+      sourceLinks: [
+        {
+          title: "AtelierPRO: warehouse conversion and reading room",
+          url: "https://www.atelierpro.nl/projecten/internationaal-instituut-voor-sociale-geschiedenis"
+        },
+        {
+          title: "Arcam: cocoa warehouse, atrium and former press museum",
+          url: "https://arcam.nl/architectuur-gids/internationaal-instituut-voor-sociale-geschiedenis/"
+        },
+        {
+          title: "IISG: visiting the collections at Cruquiusweg31",
+          url: "https://iisg.amsterdam/nl/collecties/plan-uw-bezoek"
+        },
+        {
+          title: "KNAW: social history archive and research institute",
+          url: "https://www.knaw.nl/instituten/internationaal-instituut-voor-sociale-geschiedenis-iisg"
+        }
+      ]
+    },
+    {
+      id: "extract_landmarks_897347854",
+      name: "Museum De Dageraad",
+      center: [
+        52.3498616,
+        4.8990404
+      ],
+      description: "Museum De Dageraad occupies a former shop in the Amsterdam School housing complex designed by Michel de Klerk and Piet Kramer. Its exhibitions connect the expressive brick architecture with social housing and Berlage\u2019s Plan Zuid; guided walks reveal how the architects designed both street and rear facades as a total artwork.",
+      funFact: "De Klerk and Kramer designed the street facades, rear facades and home layouts together. The museum occupies a former corner shop, while the surrounding complex remains housing.",
+      sourceUrls: [
+        "https://www.hetschip.nl/de-dageraad",
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/1508",
+        "https://amsterdamse-school.nl/blog/museum-de-dageraad"
+      ],
+      website: "https://www.hetschip.nl/de-dageraad",
+      modelId: "dageraad",
+      landmarkId: "extract_landmarks_897347854",
+      sourceUrl: "https://www.hetschip.nl/de-dageraad"
+    },
+    {
+      modelId: "ons-lieve-heer-op-solder",
+      name: "Our Lord in the Attic",
+      sourceUrl: "https://opsolder.nl/en/the-monument/",
+      description: "Merchant Jan Hartman bought the canal house and two rear alley houses in 1661 and joined their attics to create a hidden Catholic church, when public Catholic worship was forbidden. The surviving church is an example of Amsterdam\u2019s tolerated private worship. The museum opened in 1888; its 2015 entrance at number 38 links to the historic house underground, leaving Heintje Hoekssteeg open.",
+      sourceUrls: [
+        "https://opsolder.nl/en/the-monument/",
+        "https://opsolder.nl/en/media-and-press/",
+        "https://www.nlbouwmeesters.nl/projecten/museum-ons-lieve-heer-op-solder/",
+        "https://vekemans.nl/2015/04/15/historische-gevel-opnieuw-opgebouwd/",
+        "https://opsolder.nl/wp-content/uploads/2024/04/haantje46.pdf"
+      ],
+      landmarkId: "extract_landmarks_1791250152"
+    },
+    {
+      modelId: "canals-museum",
+      landmarkId: "extract_landmarks_915035378",
+      name: "Museum of the Canals",
+      center: [
+        52.3678921,
+        4.8862198
+      ],
+      description: "The Museum of the Canals explains how Amsterdam's seventeenth-century canal belt was created, inside a double-width merchant's house at Herengracht 386. Karel Gerards commissioned Philips Vingboons in 1663; the museum dates the completed house to 1665. Its classical facade has stacked pilasters and a central triangular pediment. Later resident Jan Willink helped finance American independence through loans to John Adams.",
+      funFact: "The Andriessenkamer's landscape murals were painted in 1776 and probably moved here during a later alteration. Its apparently historic ceiling was actually painted by Pascal Amblard in 2022.",
+      sourceUrl: "https://grachten.museum/stijlkamers-en-gebouw/",
+      sourceLinks: [
+        {
+          title: "Museum house, residents and historic rooms",
+          url: "https://grachten.museum/stijlkamers-en-gebouw/"
+        },
+        {
+          title: "National heritage register 1828",
+          url: "https://monumentenregister.cultureelerfgoed.nl/monumenten/1828"
+        },
+        {
+          title: "Museum public address and entrance",
+          url: "https://grachten.museum/adres-en-route/"
+        }
+      ],
+      website: "https://grachten.museum/",
+      identityNotes: "Preserve existing genuine extract destination and center; this is one double house, not two invented POIs. Center lies inside BAG parent0363100012176537; existing canal-facing destination remains used."
+    },
+    {
+      modelId: "niod",
+      landmarkId: "extract_landmarks_1742509310",
+      name: "NIOD Institute for War, Holocaust, and Genocide Studies",
+      center: [
+        52.3680936,
+        4.8863164
+      ],
+      sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/1826",
+      description: "NIOD studies war, the Holocaust and genocide from this richly carved sandstone double house on the Herengracht. Abraham and G.B. Salm designed the French neo-Renaissance house, built in 1888\u20131890. Its right-hand carriage entrance and elaborate three-part dormer facade preserve the ambition of its original private residence. The house had an innovative glazed roof bringing daylight into its staircase, hall and bathroom.",
+      sourceLinks: [
+        {
+          title: "RCE: monument 1826, sandstone double house and pavement lanterns",
+          url: "https://monumentenregister.cultureelerfgoed.nl/monumenten/1826"
+        },
+        {
+          title: "NIOD: Als de muren konden spreken",
+          url: "https://www.niod.nl/longreads/als-de-muren-konden-spreken/"
+        },
+        {
+          title: "Amsterdam: ambitious building technology on the Herengracht",
+          url: "https://openresearch.amsterdam/nl/page/151733/erfgoed-van-de-week-ambitieuze-techniek-op-de-herengracht"
+        },
+        {
+          title: "NIOD: contact and public address",
+          url: "https://www.niod.nl/contact-en-bereikbaarheid/"
+        }
+      ]
+    },
+    {
+      modelId: "multatuli",
+      landmarkId: "extract_landmarks_1273422573",
+      name: "Multatuli Museum",
+      center: [
+        52.3774872,
+        4.8911258
+      ],
+      description: "This small house on Korsjespoortsteeg is the birthplace of Eduard Douwes Dekker, better known as Multatuli. His novel Max Havelaar challenged exploitation in the Dutch East Indies, where he had worked as a colonial civil servant. The museum preserves his workplace, furniture and books. The protected house has a bell gable and a memorial stone on its street facade.",
+      funFact: "Multatuli also argued for women\u2019s emancipation and voting rights, and for workers\u2019 rights; his campaigns reached beyond the colonial abuses exposed by Max Havelaar.",
+      sourceUrl: "https://www.multatuli-museum.nl/museum",
+      sourceLinks: [
+        {
+          title: "Museum and writer",
+          url: "https://www.multatuli-museum.nl/museum"
+        },
+        {
+          title: "National monument3133",
+          url: "https://monumentenregister.cultureelerfgoed.nl/monumenten/3133"
+        },
+        {
+          title: "Museum entrance at Korsjespoortsteeg20",
+          url: "https://www.multatuli-museum.nl/bezoekersinformatie"
+        }
+      ],
+      website: "https://www.multatuli-museum.nl/",
+      identityNotes: "Keep existing genuine museum destination; both museum and residence belong to same Pand, no duplicate residential POI."
     }
   ];
 

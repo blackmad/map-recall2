@@ -567,13 +567,13 @@
       halfHipSlopes(s, L, W, R, zc, ov);
       for (const e of [-1, 1]) {
         const f = e * L / 2;
-        if (cornice) {
+        if (cornice && plan.gableEnds?.[e < 0 ? 0 : 1] !== false) {
           const prof = gableProfile("cornice", W, R);
           gableSlab(s, prof, e, L, accents ? "trim" : "plate", trim);
           if (accents) gableAccents(s, { shape: "cornice", prof, f, e, W, R, trimHex: trim, shutterHex: "", shutters: false });
         } else {
           s.quad([f, -W / 2, 0], [f, W / 2, 0], [f, vc, zc], [f, -vc, zc], s.wallUv(-W / 2, 0), s.wallUv(W / 2, 0), s.wallUv(vc, zc), s.wallUv(-vc, zc), "plate", [e, 0, 0]);
-          if (accents) vergeBoards(s, f, e, [[[-W / 2, 0], [-vc, zc]], [[vc, zc], [W / 2, 0]]], trim);
+          if (accents && plan.gableEnds?.[e < 0 ? 0 : 1] !== false) vergeBoards(s, f, e, [[[-W / 2, 0], [-vc, zc]], [[vc, zc], [W / 2, 0]]], trim);
         }
       }
       const d = vc;
@@ -586,9 +586,10 @@
     chimney(s, plan, L, W, R, (_u, v) => surfV(v));
     for (const e of [-1, 1]) {
       const f = e * L / 2;
-      if (plan.kind === "pitched") {
+      const exterior = plan.gableEnds?.[e < 0 ? 0 : 1] !== false;
+      if (plan.kind === "pitched" || !exterior) {
         s.tri([f, -W / 2, 0], [f, W / 2, 0], [f, 0, R], s.wallUv(-W / 2, 0), s.wallUv(W / 2, 0), s.wallUv(0, R), "plate", [e, 0, 0]);
-        if (accents) vergeBoards(s, f, e, [[[-W / 2, 0], [0, R]], [[0, R], [W / 2, 0]]], trim);
+        if (accents && exterior) vergeBoards(s, f, e, [[[-W / 2, 0], [0, R]], [[0, R], [W / 2, 0]]], trim);
         continue;
       }
       const prof = gableProfile(plan.gable, W, R);
@@ -3200,35 +3201,6 @@
     return out;
   }
 
-  // src/canalRecall/genericFacades.ts
-  var FACADE_STYLES = ["canal", "c19", "school", "postwar", "modern", "tower"];
-  var FACADE_PIXELS_PER_M = 8;
-  var FACADE_MAX_TILE_ZOOM = 16 + Math.log2(FACADE_PIXELS_PER_M);
-
-  // src/canalRecall/facadeCells.ts
-  var CELL_KINDS = ["upper", "ground", "door", "plain", "shop"];
-  var CELL_VARIANTS = 2;
-  var CELL_LAYER_COUNT = FACADE_STYLES.length * CELL_VARIANTS * CELL_KINDS.length;
-  var hex = (value) => [1, 3, 5].map((i) => parseInt(value.slice(i, i + 2), 16));
-  var GLASS_TOP = hex("#7d93a0");
-  var GLASS_BOTTOM = hex("#1f2a33");
-  var STONE = hex("#b8ad98");
-  var STONE_LIGHT = hex("#cfc6b4");
-  var WHITE = hex("#ece8dd");
-  var CREAM = hex("#e2d9c2");
-  var DOOR_COLOURS = [hex("#2c4a3d"), hex("#3a2a22"), hex("#1f3b57"), hex("#5a2a24")];
-  var SHUTTER_COLOURS = [hex("#2f4a3a"), hex("#7a2f27"), hex("#27384f")];
-
-  // src/canalRecall/facadeExtraCore.ts
-  function hash012(text) {
-    let h = 2166136261;
-    for (const c of text) {
-      h ^= c.charCodeAt(0);
-      h = Math.imul(h, 16777619);
-    }
-    return (h >>> 0) / 4294967296;
-  }
-
   // src/canalRecall/wallBays.ts
   function hashSeed(value) {
     let hash = 2166136261;
@@ -3240,7 +3212,30 @@
   }
 
   // src/canalRecall/bayTextures.ts
+  var BAY_PX = 520;
+  var STOREY_PX = 310;
+  var GROUND_PX = 340;
   var SHOP_KINDS = ["groundShop", "shopCafe", "shopWindow", "shopBar", "shopDeli", "shopFlorist", "shopBike"];
+  function bayDoorGeometry(v) {
+    const quiet = v.trimDensity === "restrained";
+    if (v.entranceAssembly === "raised-plain") return { x: BAY_PX * 0.71, width: BAY_PX * 0.18, height: 222, bottom: 70, fanlight: false };
+    if (v.entranceAssembly === "raised-pilaster") return { x: BAY_PX * 0.115, width: BAY_PX * 0.18, height: 222, bottom: 52, fanlight: true };
+    if (v.facadeAssembly === "stacked-open-balcony") return { x: BAY_PX * (0.5 - 0.14), width: BAY_PX * 0.28, height: 274, bottom: 24, fanlight: false };
+    return { x: BAY_PX * 0.14, width: quiet ? 98 : 118, height: quiet ? 214 : 226, bottom: 24, fanlight: !quiet };
+  }
+  function bayDoorWindowGeometry(v, look = "photo") {
+    const quiet = v.trimDensity === "restrained";
+    if (v.entranceAssembly === "raised-plain") return { axis: 0.335, width: BAY_PX * 0.205, y: 78, height: 166 };
+    if (v.entranceAssembly === "raised-pilaster") return { axis: 0.68, width: BAY_PX * 0.205, y: 78, height: 166 };
+    if (quiet) return { axis: 0.66, width: v.family === "punched" ? 160 : 170, y: 88, height: 166 };
+    const g = bayWindowGeometry({ ...v, windows: 1 }, 76, 150, look);
+    return { axis: 0.64, ...g };
+  }
+  function bayWindowGeometry(v, y, h, look) {
+    const width = v.openingOccupancy !== void 0 ? BAY_PX * v.openingOccupancy / v.windows : (v.windows === 1 ? 150 : v.windows === 2 ? 112 : 82) * (v.proportions === "wide" ? 1.35 : v.proportions === "balanced" ? 1.12 : 1) * (look === "cartoon" ? 1.12 : 1);
+    const height = v.openingHeight !== void 0 ? Math.min((y === 70 || y === 76 ? GROUND_PX : STOREY_PX) * v.openingHeight, h * 1.18) : h * (v.proportions === "wide" ? 0.76 : v.proportions === "balanced" ? 0.88 : 1);
+    return { width, y: y + (h - height) / 2, height };
+  }
 
   // src/canalRecall/bayLook.ts
   var BAY_KINDS = ["upper", "ground", "groundDoor", ...SHOP_KINDS, "plain"];
@@ -3248,28 +3243,77 @@
   var BAY_STYLES = {
     // Canal houses: tall white-framed sashes under flat lintels; shutters only beside ground-floor windows.
     canal: [
+      { windows: 2, shape: "rect", shutters: false, paintedFrames: false, family: "masonry", openingOccupancy: 0.55, openingHeight: 0.62, sash: "plain", trimDensity: "restrained", lintel: "none" },
+      { windows: 2, shape: "rect", shutters: false, paintedFrames: false, family: "masonry", openingOccupancy: 0.55, openingHeight: 0.62, sash: "transom", trimDensity: "restrained", lintel: "none" },
+      { windows: 2, shape: "rect", shutters: false, paintedFrames: false, family: "masonry", openingOccupancy: 0.55, openingHeight: 0.62, sash: "transom", trimDensity: "restrained", lintel: "none", frameTone: "dark" },
       { windows: 2, shape: "rect", shutters: false, paintedFrames: false },
       { windows: 2, shape: "rect", shutters: true, paintedFrames: false },
       { windows: 3, shape: "rect", shutters: false, paintedFrames: true },
-      { windows: 2, shape: "rect", shutters: false, paintedFrames: true }
+      { windows: 2, shape: "rect", shutters: false, paintedFrames: true },
+      { windows: 2, shape: "rect", shutters: false, paintedFrames: false, family: "masonry", proportions: "tall", frameTone: "dark", lintel: "flat" },
+      { windows: 2, shape: "rect", shutters: false, paintedFrames: false, family: "masonry", proportions: "tall", paleAccents: true, lintel: "flat" },
+      { windows: 2, shape: "rect", shutters: false, paintedFrames: false, family: "masonry", openingOccupancy: 0.55, openingHeight: 0.68, sash: "paired-transom", trimDensity: "restrained", lintel: "none" }
     ],
-    // 1860-1914: segmental-arched windows under stucco hoods, string courses at every floor.
+    // 1860-1914: rectangular sashes under flat or segmental masonry heads.
     c19: [
-      { windows: 2, shape: "arch", shutters: false, paintedFrames: false },
-      { windows: 2, shape: "rect", shutters: false, paintedFrames: false }
+      { windows: 2, shape: "rect", shutters: false, paintedFrames: false, family: "masonry", openingOccupancy: 0.55, openingHeight: 0.7, sash: "plain", trimDensity: "restrained", lintel: "flat" },
+      { windows: 2, shape: "rect", shutters: false, paintedFrames: false, family: "masonry", openingOccupancy: 0.55, openingHeight: 0.7, sash: "transom", trimDensity: "restrained", lintel: "flat" },
+      { windows: 2, shape: "rect", shutters: false, paintedFrames: false, family: "masonry", openingOccupancy: 0.55, openingHeight: 0.7, sash: "transom", trimDensity: "restrained", lintel: "flat", paleAccents: true },
+      { windows: 2, shape: "rect", shutters: false, paintedFrames: false, family: "masonry", openingOccupancy: 0.55, openingHeight: 0.7, sash: "transom", trimDensity: "restrained", lintel: "arch", paleAccents: true },
+      { windows: 2, shape: "rect", shutters: false, paintedFrames: false, family: "masonry", openingOccupancy: 0.55, openingHeight: 0.7, sash: "transom", trimDensity: "restrained", lintel: "none", frameTone: "dark" },
+      { windows: 2, shape: "rect", shutters: false, paintedFrames: false, lintel: "arch" },
+      { windows: 2, shape: "rect", shutters: false, paintedFrames: false },
+      { windows: 2, shape: "rect", shutters: false, paintedFrames: false, family: "masonry", proportions: "tall", paleAccents: true, lintel: "arch" },
+      { windows: 2, shape: "rect", shutters: false, paintedFrames: false, family: "masonry", proportions: "balanced", paleAccents: true, lintel: "flat" },
+      { windows: 2, shape: "rect", shutters: false, paintedFrames: false, family: "masonry", proportions: "tall", frameTone: "dark", lintel: "flat" },
+      { windows: 3, shape: "rect", shutters: false, paintedFrames: false, family: "masonry", openingOccupancy: 0.615, openingHeight: 0.7, sash: "transom", trimDensity: "restrained", lintel: "arch", paleAccents: true, frameTone: "dark", entranceAssembly: "raised-pilaster" },
+      { windows: 3, shape: "rect", shutters: false, paintedFrames: false, family: "masonry", openingOccupancy: 0.615, openingHeight: 0.7, sash: "transom", trimDensity: "restrained", lintel: "flat", paleAccents: false, frameTone: "dark", entranceAssembly: "raised-plain" },
+      { windows: 1, shape: "rect", shutters: false, paintedFrames: false, family: "masonry", openingOccupancy: 0.32, openingHeight: 0.78, sash: "paired-transom", trimDensity: "restrained", lintel: "flat", paleAccents: false, facadeAssembly: "stacked-iron-balcony" }
     ],
     school: [
       { windows: 2, shape: "rect", shutters: false, paintedFrames: false },
       { windows: 2, shape: "rect", shutters: false, paintedFrames: true }
     ],
     modern: [
-      { windows: 1, shape: "rect", shutters: false, paintedFrames: false },
-      { windows: 1, shape: "rect", shutters: false, paintedFrames: true }
+      { windows: 2, shape: "rect", shutters: false, paintedFrames: false, family: "punched", openingOccupancy: 0.65, openingHeight: 0.52, sash: "plain", trimDensity: "restrained", lintel: "none", wallMaterial: "brick" },
+      { windows: 2, shape: "rect", shutters: false, paintedFrames: false, family: "punched", openingOccupancy: 0.65, openingHeight: 0.52, sash: "plain", trimDensity: "restrained", lintel: "none", frameTone: "dark", wallMaterial: "brick" },
+      { windows: 2, shape: "rect", shutters: false, paintedFrames: false, family: "punched", openingOccupancy: 0.65, openingHeight: 0.52, sash: "plain", trimDensity: "restrained", lintel: "none" },
+      { windows: 2, shape: "rect", shutters: false, paintedFrames: false, family: "punched", openingOccupancy: 0.65, openingHeight: 0.52, sash: "plain", trimDensity: "restrained", lintel: "none", frameTone: "dark" },
+      { windows: 2, shape: "rect", shutters: false, paintedFrames: false, family: "punched", proportions: "balanced", lintel: "none" },
+      { windows: 2, shape: "rect", shutters: false, paintedFrames: false, family: "punched", proportions: "wide", lintel: "none", frameTone: "dark" },
+      { windows: 1, shape: "rect", shutters: false, paintedFrames: false, family: "ribbon" },
+      { windows: 1, shape: "rect", shutters: false, paintedFrames: false, family: "curtain" },
+      { windows: 3, shape: "rect", shutters: false, paintedFrames: false, family: "punched", openingOccupancy: 0.57, openingHeight: 0.7, sash: "paired-transom", trimDensity: "restrained", lintel: "none", wallMaterial: "smooth", facadeAssembly: "stacked-open-balcony" }
     ]
   };
   var ARCHETYPES = Object.keys(BAY_STYLES);
-  var BAY_ENTRIES = ARCHETYPES.flatMap((archetype) => BAY_STYLES[archetype].flatMap((_, style) => BAY_KINDS.filter((kind) => !isShopKind(kind) || style === 0).map((kind) => ({ archetype, style, kind, layer: 0 })))).map((e, layer) => ({ ...e, layer }));
+  var entries = ARCHETYPES.flatMap((archetype) => BAY_STYLES[archetype].flatMap((_, style) => BAY_KINDS.filter((kind) => !isShopKind(kind) || style === 0).map((kind) => ({ archetype, style, kind }))));
+  entries.push(...ARCHETYPES.flatMap((archetype) => SHOP_KINDS.map((kind) => ({ archetype, style: 0, kind, restrainedShop: true }))));
+  var BAY_ENTRIES = entries.map((e, layer) => ({ ...e, layer }));
   var BAY_LAYER_COUNT = BAY_ENTRIES.length;
+  var DEFAULT_STYLE_INDICES = Object.fromEntries(ARCHETYPES.map((archetype) => [archetype, BAY_STYLES[archetype].flatMap((v, i) => v.openingOccupancy === void 0 && (!v.family || v.family === "masonry" || v.family === "punched") ? [i] : [])]));
+  var recipeStyles = /* @__PURE__ */ new Map();
+  function bayStyleForRecipe(id, archetype, recipe) {
+    const styles = BAY_STYLES[archetype], h = hashSeed(id);
+    if (!recipe) {
+      const candidates = DEFAULT_STYLE_INDICES[archetype];
+      return candidates[(h >>> 4) % candidates.length];
+    }
+    const proportion = recipe.windowProportions ?? (recipe.windowWidth && recipe.windowWidth > 0.3 ? "wide" : recipe.windowHeight && recipe.windowHeight < 0.5 ? "balanced" : "tall");
+    const dark = recipe.frameColor === "dark" || !!recipe.frameHex && parseInt(recipe.frameHex.slice(1, 3), 16) < 100;
+    const pale = recipe.paleAccents ?? ((recipe.trim?.lintels ?? 0) > 0.65 || (recipe.trim?.quoins ?? 0) > 0.5);
+    const lintel = recipe.lintel ?? ((recipe.trim?.arches ?? 0) > 0.5 ? "arch" : "flat");
+    const sash = recipe.sash ?? (recipe.family === "punched" ? "plain" : "transom"), trim = recipe.trimDensity ?? "restrained";
+    const material = recipe.wallMaterial ?? (archetype === "modern" ? "smooth" : "brick");
+    const key = `${archetype}|${recipe.facadeAssembly ?? "none"}|${recipe.entranceAssembly ?? "none"}|${material}|${recipe.family}|${proportion}|${dark}|${pale}|${lintel}|${sash}|${trim}`;
+    const cached = recipeStyles.get(key);
+    if (cached) return cached[(h >>> 4) % cached.length];
+    const scored = styles.map((v, i) => ({ i, score: ((v.entranceAssembly ?? "none") === (recipe.entranceAssembly ?? "none") ? 1e3 : 0) + ((v.facadeAssembly ?? "none") === (recipe.facadeAssembly ?? "none") ? 1e3 : 0) + ((v.wallMaterial ?? (archetype === "modern" ? "smooth" : "brick")) === material ? 25 : 0) + ((v.sash ?? "six-over-six") === sash ? 50 : 0) + (v.trimDensity === trim ? 40 : 0) + ((v.family ?? "masonry") === recipe.family ? 100 : 0) + ((v.proportions ?? "tall") === proportion ? 8 : 0) + (!!v.paleAccents === pale ? 12 : 0) + (v.frameTone === "dark" === dark ? 10 : 0) + ((v.lintel ?? "flat") === lintel ? 6 : 0) }));
+    const max = Math.max(...scored.map((v) => v.score)), ties = scored.filter((v) => v.score === max);
+    const indices = ties.map((v) => v.i);
+    recipeStyles.set(key, indices);
+    return indices[(h >>> 4) % indices.length];
+  }
 
   // src/canalRecall/facadeOpenings.ts
   var BAY_W = 520;
@@ -3281,23 +3325,45 @@
     sill: (H - y - h) / H,
     head: (H - y) / H
   });
-  var bayWidthPx = (n) => n === 1 ? 150 : n === 2 ? 112 : 82;
   var BAY_DOOR = { axis: (0.14 * BAY_W + 59) / BAY_W, width: 118 / BAY_W, bottom: 24 / GROUND_H, top: (24 + 226) / GROUND_H, fanlight: true };
-  function bayLookOpenings(id, style) {
-    if (style === "modern" || style === "postwar" || style === "tower") {
+  function bayVariantOpenings(v, look = "photo") {
+    if (v.family === "ribbon" || v.family === "curtain") {
+      const curtain = v.family === "curtain";
       return {
-        upper: { axes: [0.5], width: 0.9, sill: (STOREY_H - 210) / STOREY_H, head: (STOREY_H - 70) / STOREY_H },
+        upper: { axes: [0.5], width: 0.9, sill: curtain ? 16 / STOREY_H : 100 / STOREY_H, head: curtain ? 302 / STOREY_H : 240 / STOREY_H },
         ground: rowPx(1, 80, 140, GROUND_H, 140),
         doorWindow: null,
-        door: { axis: (0.62 * BAY_W + 59) / BAY_W, width: 118 / BAY_W, bottom: BAY_DOOR.bottom, top: BAY_DOOR.top, fanlight: true },
+        door: { ...BAY_DOOR, axis: (0.62 * BAY_W + 59) / BAY_W },
         ribbon: true
       };
     }
-    const archetype = style === "school" ? "school" : "canal";
-    const styles = BAY_STYLES[archetype], v = styles[(hashSeed(id) >>> 4) % styles.length];
-    const upper = archetype === "school" ? { axes: [0.3, 0.7], width: 76 / BAY_W, sill: (STOREY_H - 248) / STOREY_H, head: (STOREY_H - 68) / STOREY_H } : { ...rowPx(v.windows, 62, 188, STOREY_H, bayWidthPx(v.windows)), arch: v.shape === "arch" };
-    const doorWindow = { axes: [0.64], width: 150 / BAY_W, sill: (GROUND_H - 226) / GROUND_H, head: (GROUND_H - 76) / GROUND_H };
-    return { upper, ground: rowPx(v.windows, 70, 150, GROUND_H, bayWidthPx(v.windows)), doorWindow, door: BAY_DOOR };
+    const row = (n, y, h, H) => {
+      const g = bayWindowGeometry({ ...v, windows: n }, y, h, look);
+      return { ...rowPx(n, g.y, g.height, H, g.width), arch: v.shape === "arch" };
+    };
+    const upper = v.archetype === "school" && !v.proportions ? { axes: [0.3, 0.7], width: 76 / BAY_W, sill: (STOREY_H - 248) / STOREY_H, head: (STOREY_H - 68) / STOREY_H } : row(v.windows, 62, 188, STOREY_H);
+    const dw = bayDoorWindowGeometry(v, look), dg = bayDoorGeometry(v);
+    const doorWindow = { ...rowPx(1, dw.y, dw.height, GROUND_H, dw.width), axes: [dw.axis] };
+    const door = { axis: (dg.x + dg.width / 2) / BAY_W, width: dg.width / BAY_W, bottom: dg.bottom / GROUND_H, top: (dg.bottom + dg.height) / GROUND_H, fanlight: dg.fanlight };
+    if (v.entranceAssembly === "raised-plain") {
+      const ground = { axes: [0.2, 0.47, 0.8], width: dw.width / BAY_W, sill: (GROUND_H - dw.y - dw.height) / GROUND_H, head: (GROUND_H - dw.y) / GROUND_H };
+      return { upper: { ...upper, axes: [0.2, 0.47, 0.8] }, ground, doorWindow: { ...ground, axes: [0.2, 0.47] }, door };
+    }
+    if (v.entranceAssembly === "raised-pilaster") {
+      const ground = { axes: [0.53, 0.8], width: dw.width / BAY_W, sill: (GROUND_H - dw.y - dw.height) / GROUND_H, head: (GROUND_H - dw.y) / GROUND_H };
+      return { upper: { ...upper, axes: [0.205, 0.53, 0.8] }, ground: row(v.windows, 70, 150, GROUND_H), doorWindow: ground, door };
+    }
+    if (v.facadeAssembly === "stacked-open-balcony") {
+      const group = { axes: [0.17, 0.5, 0.83], width: 0.145, widths: [0.145, 0.28, 0.145] };
+      const ground = { ...row(v.windows, 70, 240, GROUND_H), ...group };
+      return { upper: { ...upper, ...group }, ground, doorWindow: { ...ground, axes: [0.17, 0.83], widths: [0.145, 0.145] }, door };
+    }
+    return { upper, ground: row(v.windows, 70, 150, GROUND_H), doorWindow, door };
+  }
+  function bayLookOpenings(id, style, look = "photo") {
+    const archetype = style === "school" ? "school" : style === "c19" ? "c19" : style === "modern" || style === "postwar" || style === "tower" ? "modern" : "canal";
+    const v = BAY_STYLES[archetype][bayStyleForRecipe(id, archetype)];
+    return bayVariantOpenings({ archetype, kind: "upper", ...v }, look);
   }
   var PROCEDURAL = {
     canal: {
@@ -3343,6 +3409,38 @@
   };
   var proceduralOpenings = (style) => PROCEDURAL[style];
 
+  // src/canalRecall/genericFacades.ts
+  var FACADE_STYLES = ["canal", "c19", "school", "postwar", "modern", "tower"];
+  var FACADE_PIXELS_PER_M = 8;
+  var FACADE_MAX_TILE_ZOOM = 16 + Math.log2(FACADE_PIXELS_PER_M);
+
+  // src/canalRecall/facadeCells.ts
+  var CELL_KINDS = ["upper", "ground", "door", "plain", "shop"];
+  var CELL_VARIANTS = 2;
+  var CELL_LAYER_COUNT = FACADE_STYLES.length * CELL_VARIANTS * CELL_KINDS.length;
+  var hex = (value) => [1, 3, 5].map((i) => parseInt(value.slice(i, i + 2), 16));
+  var GLASS_TOP = hex("#7d93a0");
+  var GLASS_BOTTOM = hex("#1f2a33");
+  var STONE = hex("#b8ad98");
+  var STONE_LIGHT = hex("#cfc6b4");
+  var WHITE = hex("#ece8dd");
+  var CREAM = hex("#e2d9c2");
+  var DOOR_COLOURS = [hex("#2c4a3d"), hex("#3a2a22"), hex("#1f3b57"), hex("#5a2a24")];
+  var SHUTTER_COLOURS = [hex("#2f4a3a"), hex("#7a2f27"), hex("#27384f")];
+
+  // src/canalRecall/streetFacadeRendering.ts
+  var PROCEDURAL_RECIPE_LAYER_OFFSET = CELL_LAYER_COUNT + 4;
+
+  // src/canalRecall/facadeExtraCore.ts
+  function hash012(text) {
+    let h = 2166136261;
+    for (const c of text) {
+      h ^= c.charCodeAt(0);
+      h = Math.imul(h, 16777619);
+    }
+    return (h >>> 0) / 4294967296;
+  }
+
   // src/canalRecall/facadeOrnaments.ts
   var WHITE2 = "#efece4";
   var CREAM2 = "#e4d9bf";
@@ -3369,7 +3467,7 @@
       const row = s >= 0 ? o.upper : doors.has(i) ? o.doorWindow : c.shopfront ? null : o.ground;
       if (!row) continue;
       const z = s >= 0 ? storeyZ(c, s) : c.base, h = s >= 0 ? l.storeyM : l.groundM;
-      for (const axis of row.axes) out.push({ x: (i + axis) * bw, hw: row.width * bw / 2, z0: z + row.sill * h, z1: z + row.head * h });
+      for (const [index, axis] of row.axes.entries()) out.push({ x: (i + axis) * bw, hw: (row.widths?.[index] ?? row.width) * bw / 2, z0: z + row.sill * h, z1: z + row.head * h });
     }
     return out;
   }
@@ -3397,8 +3495,22 @@
     return Math.max(1, Math.min(max, c.layout.storeys, Math.floor(s.room() / per)));
   }
   var CANAL = ["canal", "c19"];
+  function restrainedDoorSurround(c, s, r) {
+    const d = doorSpan(c);
+    if (!d || c.shopfront || !c.recipe || c.recipe.family !== "masonry") return;
+    const pale = c.recipe.frameHex ?? WHITE2;
+    const l = d.x - d.hw, right = d.x + d.hw, top = d.z1 + 0.025;
+    const cap = Math.min(c.base + c.layout.groundM - 0.04, top + 0.1);
+    if (l < 0.12 || right > c.f.len - 0.12 || cap <= top) return;
+    s.strip(c.f, l - 0.11, l - 5e-3, 0.04, d.z0, cap, pale);
+    s.strip(c.f, right + 5e-3, right + 0.11, 0.04, d.z0, cap, pale);
+    s.strip(c.f, l - 0.11, right + 0.11, 0.04, top, cap, pale);
+    s.strip(c.f, l - 0.12, right + 0.12, 0.06, d.z0 - 0.035, d.z0 + 0.015, pale);
+    if (c.recipe.period === "c19" && r < (c.recipe.trim?.arches ?? 0) * 0.7 && cap + 0.06 < c.base + c.layout.groundM) {
+      s.strip(c.f, d.x - 0.045, d.x + 0.045, 0.065, top - 0.025, cap + 0.06, pale);
+    }
+  }
   var ORNAMENT_COMPONENTS = [
-    // --- Crowns: one per wall, the strongest line on a facade --------------------------------
     { id: "kroonlijst", styles: CANAL, p: { canal: 0.6, c19: 0.15 }, wide: true, street: true, group: "crown", build: (c, s, r) => {
       if (c.roofKind === "gable") return;
       const t = c.top, hex2 = r < 0.75 ? WHITE2 : CREAM2;
@@ -3439,6 +3551,10 @@
     } },
     // --- Doors ------------------------------------------------------------------------------------
     { id: "door-surround", styles: CANAL, p: { canal: 0.5, c19: 0.4 }, street: true, group: "door-frame", build: (c, s, r) => {
+      if (c.recipe && c.recipe.trimDensity !== "ornate") {
+        restrainedDoorSurround(c, s, r);
+        return;
+      }
       const d = doorSpan(c);
       if (!d) return;
       const l = d.x - d.hw, rr = d.x + d.hw, top = d.z1 + 0.04;
@@ -3455,9 +3571,7 @@
     { id: "portiek", styles: CANAL, p: { c19: 0.35, canal: 0.06 }, street: true, group: "door-frame", build: (c, s) => {
       const d = doorSpan(c);
       if (!d || !c.groundLevel) return;
-      const l = d.x - d.hw - 0.05, rr = d.x + d.hw + 0.05, top = c.base + c.layout.groundM - 0.15;
-      s.strip(c.f, l, rr, 0.02, c.base, top - 0.25, "#5b4c42");
-      s.strip(c.f, d.x - d.hw + 0.12, d.x + d.hw - 0.12, 0.03, c.base + 0.8, top - 0.45, ["#2c4f33", "#1f3550", "#7a1f2b", "#3a3f45"][Math.floor(hash012(`${c.id}:pd`) * 4)]);
+      const l = d.x - d.hw - 0.05, rr = d.x + d.hw + 0.05, top = d.z1 + 0.3;
       s.box(c.f, l - 0.22, l, 0, 0.14, c.base, top, STONE2);
       s.box(c.f, rr, rr + 0.22, 0, 0.14, c.base, top, STONE2);
       s.box(c.f, l - 0.26, rr + 0.26, 0, 0.18, top - 0.3, top + 0.12, STONE2, true);
@@ -3500,32 +3614,37 @@
     { id: "white-lintels", styles: CANAL, p: { canal: 0.4, c19: 0.12 }, wide: true, group: "window-head", build: (c, s, r) => {
       const o = openingsOf(c);
       if (o.ribbon) return;
-      const key = r < 0.55, n = storeysThatFit(c, s, key ? 8 : 4, 5);
+      const restrained = !!c.recipe && c.recipe.trimDensity !== "ornate";
+      const key = !restrained && r < 0.55, n = storeysThatFit(c, s, key ? 8 : 4, 5);
       for (let k = 0; k < n; k++) for (const w of windowSpans(c, k)) {
         if (o.upper.arch) {
           s.strip(c.f, w.x - 0.1, w.x + 0.1, 0.07, w.z1 + 0.02, w.z1 + 0.26, WHITE2);
           continue;
         }
-        s.strip(c.f, w.x - w.hw - 0.1, w.x + w.hw + 0.1, 0.05, w.z1 + 0.03, w.z1 + 0.2, WHITE2);
+        s.strip(c.f, w.x - w.hw - (restrained ? 0.03 : 0.1), w.x + w.hw + (restrained ? 0.03 : 0.1), restrained ? 0.025 : 0.05, w.z1 + 0.02, w.z1 + (restrained ? 0.07 : 0.2), WHITE2);
         if (key) s.strip(c.f, w.x - 0.09, w.x + 0.09, 0.09, w.z1 + 0.01, w.z1 + 0.27, WHITE2);
       }
     } },
     { id: "stucco-hoods", styles: CANAL, p: { c19: 0.5, canal: 0.12 }, wide: true, group: "window-head", build: (c, s, r) => {
       if (openingsOf(c).ribbon) return;
+      const restrained = !!c.recipe && c.recipe.trimDensity !== "ornate";
       const hex2 = r < 0.6 ? WHITE2 : CREAM2, n = storeysThatFit(c, s, 6, 5);
       for (let k = 0; k < n; k++) for (const w of windowSpans(c, k)) {
-        const a0 = w.x - w.hw - 0.14, a1 = w.x + w.hw + 0.14;
-        s.strip(c.f, a0, a1, 0.14, w.z1 + 0.06, w.z1 + 0.2, hex2);
-        s.slope(c.f, a0, a1, 0, 0.14, w.z1 + 0.3, w.z1 + 0.2, hex2);
+        const a0 = w.x - w.hw - (restrained ? 0.04 : 0.14), a1 = w.x + w.hw + (restrained ? 0.04 : 0.14);
+        s.strip(c.f, a0, a1, restrained ? 0.04 : 0.14, w.z1 + 0.03, w.z1 + (restrained ? 0.09 : 0.2), hex2);
+        s.slope(c.f, a0, a1, 0, restrained ? 0.04 : 0.14, w.z1 + (restrained ? 0.12 : 0.3), w.z1 + (restrained ? 0.09 : 0.2), hex2);
       }
     } },
     { id: "white-window-frames", styles: CANAL, p: { canal: 0.3, c19: 0.35 }, wide: true, build: (c, s) => {
       if (openingsOf(c).ribbon) return;
-      const n = storeysThatFit(c, s, 12, 5);
+      const groundCost = windowSpans(c, -1).length * 12;
+      const n = Math.max(0, Math.min(5, c.layout.storeys, Math.floor((s.room() - groundCost) / Math.max(12, windowSpans(c, 0).length * 12))));
       for (let k = -1; k < n; k++) for (const w of windowSpans(c, k)) {
-        s.strip(c.f, w.x - w.hw - 0.07, w.x - w.hw + 0.01, 0.05, w.z0, w.z1 + 0.04, WHITE2);
-        s.strip(c.f, w.x + w.hw - 0.01, w.x + w.hw + 0.07, 0.05, w.z0, w.z1 + 0.04, WHITE2);
-        s.strip(c.f, w.x - w.hw - 0.07, w.x + w.hw + 0.07, 0.05, w.z1 - 0.02, w.z1 + 0.05, WHITE2);
+        const colour = c.recipe?.frameHex ?? WHITE2;
+        const restrained = !!c.recipe && c.recipe.trimDensity !== "ornate", frame = restrained ? 0.025 : 0.07, out = restrained ? 0.025 : 0.05;
+        s.strip(c.f, Math.max(0, w.x - w.hw - frame), w.x - w.hw + 0.01, out, w.z0, Math.min(c.top, w.z1 + 0.04), colour);
+        s.strip(c.f, w.x + w.hw - 0.01, Math.min(c.f.len, w.x + w.hw + frame), out, w.z0, Math.min(c.top, w.z1 + 0.04), colour);
+        s.strip(c.f, Math.max(0, w.x - w.hw - frame), Math.min(c.f.len, w.x + w.hw + frame), out, w.z1 - 0.02, Math.min(c.top, w.z1 + 0.05), colour);
       }
     } },
     { id: "school-window-bars", styles: ["school"], p: 0.4, wide: true, build: (c, s, r) => {
@@ -3648,6 +3767,69 @@
   ];
 
   // src/canalRecall/facadeExtras.ts
+  function openBalconyStack(c, s, depth = 0.85) {
+    if (!c.layout.storeys || c.recipe?.facadeAssembly && c.assemblyOwner === false) return;
+    const joint = c.recipe?.facadeAssembly === "stacked-open-balcony";
+    const historic = c.recipe?.facadeAssembly === "stacked-iron-balcony";
+    let candidates = windowSpans(c, 0).filter((w) => w.x - Math.max(0.6, w.hw + 0.08) >= 0.04 && w.x + Math.max(0.6, w.hw + 0.08) <= c.f.len - 0.04);
+    if (!candidates.length) return;
+    let preferred = c.f.len / 2;
+    if (joint) {
+      const widest = Math.max(...candidates.map((w) => w.hw)), narrowest = Math.min(...candidates.map((w) => w.hw));
+      if (widest > narrowest * 1.05) {
+        candidates = candidates.filter((w) => Math.abs(w.hw - widest) < 1e-3);
+      } else {
+        const row = openingsOf(c), axis = row.upper.axes.reduce((best, value) => Math.abs(value - row.door.axis) < Math.abs(best - row.door.axis) ? value : best, row.upper.axes[0]);
+        candidates = candidates.filter((w) => Math.abs(w.x / c.layout.bayWidthM - Math.floor(w.x / c.layout.bayWidthM) - axis) < 1e-3);
+      }
+      if (!candidates.length) return;
+      const doorBay = c.layout.doorBays.find((i) => candidates.some((w) => Math.floor(w.x / c.layout.bayWidthM) === i));
+      if (doorBay !== void 0) {
+        candidates = candidates.filter((w) => Math.floor(w.x / c.layout.bayWidthM) === doorBay);
+        preferred = (doorBay + openingsOf(c).door.axis) * c.layout.bayWidthM;
+      }
+    }
+    candidates.sort((a, b) => Math.abs(a.x - preferred) - Math.abs(b.x - preferred) || a.x - b.x);
+    const target = candidates[0];
+    const width = Math.min(2.6, c.layout.bayWidthM * 0.9, Math.max(1.2, target.hw * 2 + 0.16));
+    const a0 = target.x - width / 2, a1 = target.x + width / 2;
+    depth = Math.max(0.4, Math.min(1.2, depth));
+    const divided = historic || c.recipe?.sash === "paired-transom";
+    const railHex = joint ? c.recipe?.frameHex ?? WHITE3 : IRON2;
+    const sideBands = joint && a0 >= 0.11 && a1 <= c.f.len - 0.11;
+    const levels = Math.min(historic ? 3 : 8, c.layout.storeys, Math.floor((s.room() - (sideBands ? 8 : 0)) / (divided ? 56 : 52)));
+    if (levels < 1) return;
+    if (sideBands) {
+      const bottom = c.base + c.layout.groundM, top = c.top - 0.04;
+      for (const x of [a0 - 0.055, a1 + 0.055]) s.strip(c.f, x - 0.045, x + 0.045, 0.035, bottom, top, railHex, 0.02);
+    }
+    for (let k = 0; k < levels; k++) {
+      const opening2 = windowSpans(c, k).find((w) => Math.abs(w.x - target.x) < 1e-3);
+      if (!opening2) continue;
+      const deck = storeyZ2(c, k) + 0.04, rail = deck + 0.9;
+      if (deck < c.base + c.layout.groundM || rail + 0.04 > c.top) continue;
+      s.begin();
+      s.box(c.f, a0, a1, 0, depth, deck - 0.08, deck, CONCRETE, true);
+      const glass = Math.min(opening2.z0 + 8e-3, opening2.z1 - 0.04);
+      if (glass > deck + 0.05) {
+        const l = opening2.x - opening2.hw, right = opening2.x + opening2.hw, frame = c.recipe?.frameHex ?? WHITE3;
+        s.strip(c.f, l + 0.015, right - 0.015, 0.012, deck + 0.035, glass, GLASS2, 6e-3);
+        s.strip(c.f, l - 0.015, l + 0.015, 0.018, deck + 0.025, glass, frame, 0.01);
+        s.strip(c.f, right - 0.015, right + 0.015, 0.018, deck + 0.025, glass, frame, 0.01);
+        if (divided) s.strip(c.f, opening2.x - 0.015, opening2.x + 0.015, 0.02, deck + 0.035, glass, frame, 0.01);
+      }
+      s.strip(c.f, a0, a1, depth - 0.02, rail, rail + 0.04, railHex, 0.025);
+      for (let i = 0; i < 8; i++) {
+        const x = a0 + 0.035 + (a1 - a0 - 0.07) * i / 7;
+        s.slope(c.f, x - 0.01, x + 0.01, depth - 0.02, depth - 0.02, rail + 0.02, deck, railHex);
+      }
+      for (const [x, sign] of [[a0, -1], [a1, 1]]) {
+        const side = { x0: c.f.x0 + c.f.ux * x, y0: c.f.y0 + c.f.uy * x, ux: c.f.nx, uy: c.f.ny, nx: c.f.ux * sign, ny: c.f.uy * sign, len: depth };
+        s.strip(side, 0.02, depth - 0.02, 0.015, rail, rail + 0.04, railHex, 0.025);
+      }
+      s.commit();
+    }
+  }
   var STONE3 = "#cfc6b4";
   var IRON2 = "#26282b";
   var WOOD = "#5a4030";
@@ -3828,14 +4010,10 @@
       }
     } },
     // --- Postwar / modern ------------------------------------------------------------------
-    { id: "balcony-slabs", styles: ["postwar"], p: 0.5, build: (c, s) => {
-      for (let k = 0; k < Math.min(6, c.layout.storeys); k++) for (let i = 0; i < c.layout.bays; i += 2) {
-        const x = bayCentre(c.layout, i), z = storeyZ2(c, k) + 0.02;
-        s.box(c.f, x - 1.4, x + 1.4, 0, 1.2, z, z + 0.15, CONCRETE, true);
-        s.box(c.f, x - 1.4, x + 1.4, 1.15, 1.2, z + 0.15, z + 1, k % 2 ? "#d9d4c7" : "#c84b3c");
-      }
+    { id: "balcony-slabs", styles: ["postwar"], p: 0.5, street: true, group: "balcony", build: (c, s) => {
+      openBalconyStack(c, s, 1.1);
     } },
-    { id: "gallery-walkway", styles: ["postwar"], p: 0.18, build: (c, s) => {
+    { id: "gallery-walkway", styles: ["postwar"], p: 0.18, group: "balcony", build: (c, s) => {
       for (let k = 0; k < Math.min(8, c.layout.storeys); k++) {
         const z = storeyZ2(c, k) + 0.02;
         s.box(c.f, 0, c.f.len, 0, 1.5, z, z + 0.18, CONCRETE, true);
@@ -3853,12 +4031,11 @@
       if (x == null) return;
       s.box(c.f, x - 1.3, x + 1.3, 0, 1, c.base + 2.6, c.base + 2.75, CONCRETE, true);
     } },
-    { id: "glass-balconies", styles: ["modern", "tower"], p: 0.45, build: (c, s) => {
-      for (let k = 0; k < Math.min(8, c.layout.storeys); k++) {
-        const z = storeyZ2(c, k) + 0.02, x = c.f.len * (0.25 + 0.5 * (k % 2));
-        s.box(c.f, x - 1.5, x + 1.5, 0, 0.9, z, z + 0.08, CONCRETE, true);
-        s.box(c.f, x - 1.5, x + 1.5, 0.87, 0.9, z + 0.08, z + 1, "#c3d6de");
-      }
+    { id: "historic-balcony-stack", styles: ["c19", "canal"], p: 0, street: true, group: "balcony", build: (c, s) => {
+      if (c.recipe?.facadeAssembly === "stacked-iron-balcony") openBalconyStack(c, s, 0.5);
+    } },
+    { id: "glass-balconies", styles: ["modern", "tower"], p: 0.45, street: true, group: "balcony", build: (c, s) => {
+      openBalconyStack(c, s, 0.85);
     } },
     { id: "vertical-fins", styles: ["modern", "tower"], p: 0.25, build: (c, s) => {
       for (let x = 0.6; x < c.f.len - 0.3; x += 1.5) s.box(c.f, x - 0.05, x + 0.05, 0, 0.22, c.base + c.layout.groundM, c.top - 0.3, "#d6d2c8");
@@ -3975,6 +4152,8 @@
   ];
   var ALL_WALL = [...ORNAMENT_COMPONENTS, ...STREET_FURNITURE];
   var WALL_COMPONENTS = [...FIRST.map((id) => ALL_WALL.find((c) => c.id === id)), ...ALL_WALL.filter((c) => !FIRST.includes(c.id))];
+  var DEFINING_TRIM = /* @__PURE__ */ new Set(["white-window-frames", "white-lintels", "string-courses"]);
+  var PROFILE_COMPONENTS = [...WALL_COMPONENTS.filter((comp) => comp.id === "door-surround"), ...WALL_COMPONENTS.filter((comp) => DEFINING_TRIM.has(comp.id)), ...WALL_COMPONENTS.filter((comp) => comp.id !== "door-surround" && !DEFINING_TRIM.has(comp.id))];
   var ATOMIC = new Set(ORNAMENT_COMPONENTS.map((c) => c.id));
   var COMPONENT_COUNT = WALL_COMPONENTS.length + ROOF_COMPONENTS.length;
 
