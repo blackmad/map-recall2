@@ -1,0 +1,321 @@
+{
+  "modelId": "brouwerij-t-ij",
+  "status": "source-ready-hold-awaiting-current-facade-roof-evidence",
+  "poiIdentity": "n332059860",
+  "address": "Funenkade 7",
+  "parent": {
+    "bagId": "NL.IMBAG.Pand.0363100012169757",
+    "osmId": "w269052426",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.926325197032014,
+            52.36685691818503
+          ],
+          [
+            4.926311949718933,
+            52.366848795662776
+          ],
+          [
+            4.926356098144844,
+            52.3668221122635
+          ],
+          [
+            4.92629571854747,
+            52.366784461432516
+          ],
+          [
+            4.9262972848155675,
+            52.366783505845845
+          ],
+          [
+            4.926258524695401,
+            52.36675933082862
+          ],
+          [
+            4.926272251537632,
+            52.36675097178121
+          ],
+          [
+            4.926246926877887,
+            52.36673518066272
+          ],
+          [
+            4.9262643033810685,
+            52.36672459788783
+          ],
+          [
+            4.92621385844703,
+            52.36669313327769
+          ],
+          [
+            4.9262122538109745,
+            52.3666921293951
+          ],
+          [
+            4.92634281386061,
+            52.366612602193854
+          ],
+          [
+            4.926344941577925,
+            52.36661130725932
+          ],
+          [
+            4.926476087314565,
+            52.36669306647963
+          ],
+          [
+            4.926474166356158,
+            52.36669424538098
+          ],
+          [
+            4.926565482447014,
+            52.36675022556773
+          ],
+          [
+            4.926397355332019,
+            52.36685185136555
+          ],
+          [
+            4.926397492909429,
+            52.366852741683324
+          ],
+          [
+            4.926325197032014,
+            52.36685691818503
+          ]
+        ]
+      ]
+    },
+    "bagProperties": {
+      "aantal_verblijfsobjecten": 2,
+      "bouwjaar": 1905,
+      "documentdatum": "2023-09-21",
+      "documentnummer": "GV00007167_AC00AC",
+      "gebruiksdoel": "industriefunctie,woonfunctie",
+      "geconstateerd": "N",
+      "identificatie": "0363100012169757",
+      "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012169757",
+      "status": "Pand in gebruik",
+      "verblijfsobject.href": [
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/65f7d70a-48df-5f7c-9c6c-2fa2b898109c",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/53864cf8-7d5a-5d2e-8ced-53c216d47114"
+      ]
+    },
+    "osmGeometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.9265656,
+            52.3667506
+          ],
+          [
+            4.9264743,
+            52.3666947
+          ],
+          [
+            4.9264762,
+            52.3666935
+          ],
+          [
+            4.9263451,
+            52.3666117
+          ],
+          [
+            4.9262124,
+            52.3666926
+          ],
+          [
+            4.9262645,
+            52.366725
+          ],
+          [
+            4.9262471,
+            52.3667356
+          ],
+          [
+            4.9262724,
+            52.3667514
+          ],
+          [
+            4.9262587,
+            52.3667598
+          ],
+          [
+            4.9262974,
+            52.3667839
+          ],
+          [
+            4.9262959,
+            52.3667849
+          ],
+          [
+            4.9263563,
+            52.3668225
+          ],
+          [
+            4.9263121,
+            52.3668492
+          ],
+          [
+            4.9263254,
+            52.3668573
+          ],
+          [
+            4.9263977,
+            52.3668532
+          ],
+          [
+            4.9263975,
+            52.3668523
+          ],
+          [
+            4.9265656,
+            52.3667506
+          ]
+        ]
+      ]
+    },
+    "osmTags": {
+      "building": "retail",
+      "height": "18.2",
+      "ref:bag": "0363100012169757",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "source:height": "3DBAG",
+      "source:height:date": "2025-09-03",
+      "start_date": "1905"
+    }
+  },
+  "mustRetain": [
+    {
+      "bagId": "NL.IMBAG.Pand.0363100012169758",
+      "osmId": "w269052487",
+      "name": "De Gooyer mill",
+      "reason": "Independent neighboring structure and destination; no shared suppression"
+    },
+    {
+      "bagId": "NL.IMBAG.Pand.0363100012169759",
+      "name": "Separate neighboring building",
+      "reason": "Outside brewery source parent"
+    }
+  ],
+  "openSpaces": [
+    "Terrace and public approach outside BAG9757 must stay open",
+    "Canal must not be filled by building geometry"
+  ],
+  "heightNotes": [
+    "OSM way269052426 records height18.2 from3DBAG2025-09-03; semantic eaves/ridge heights have not been established. Do not turn18.2 into a full-height bathhouse block.",
+    "BAG construction year1905 identifies original registration, not all present annexes."
+  ],
+  "references": [
+    {
+      "url": "https://www.brouwerijhetij.nl/",
+      "path": "artifacts/landmarks/brouwerij-t-ij/references/operator-home.html",
+      "status": 200,
+      "retrievedAt": "2026-10-05",
+      "sha256": "bc64529ce7f7551bb1246183436bbc76a1fe4972bab1cfbfee841ac5ebf2159d",
+      "rights": "Operatorcopyright;referenceonly"
+    },
+    {
+      "url": "https://www.brouwerijhetij.nl/proeflokalen/proeflokaal-de-molen",
+      "path": "artifacts/landmarks/brouwerij-t-ij/references/operator-venue.html",
+      "status": 200,
+      "retrievedAt": "2026-10-05",
+      "sha256": "754a81602e25342b16eb6450ff543fa6d74818888aa31d3a9108e8b1b7bbec36",
+      "rights": "Operatorcopyright;referenceonly"
+    },
+    {
+      "url": "https://brouwerijhetij.nl/de-brouwerij",
+      "path": "artifacts/landmarks/brouwerij-t-ij/references/operator-history.html",
+      "status": 200,
+      "retrievedAt": "2026-10-05",
+      "sha256": "84c90e59b9c911e60cf4f06720563d1d85ef7b243da7411ef077623c01e1a3bc",
+      "rights": "Operatorcopyright;referenceonly"
+    },
+    {
+      "path": "artifacts/landmarks/de-gooyer/references/bag-nearby.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?bbox=4.9258,52.3664,4.9268,52.3672&f=json",
+      "accessState": "cached raw original",
+      "sha256": "91f70997efd6c29a3cdfc26ad188bd417b4750bbf799267d3ff897958fa31f15"
+    },
+    {
+      "path": "artifacts/landmarks/de-gooyer/references/osm-map.xml",
+      "url": "https://www.openstreetmap.org/api/0.6/map?bbox=4.9259,52.3666,4.9265,52.3670",
+      "accessState": "cached raw original",
+      "sha256": "ab209ff1692078ccbfc55a1ecbb9d4cb89b2199272ec861dd85e12786ab6574d"
+    },
+    {
+      "url": "https://stadsherstel.nl/wp-content/uploads/2020/05/4-molen-de-gooyer-2020.jpg",
+      "path": "artifacts/landmarks/de-gooyer/references/current-photo.jpg",
+      "status": 200,
+      "sha256": "c7dc31a4a4c4afd8a5942f1dea7c7040fc65c9b1a0eebd349a6355a0486bd74a",
+      "retrievedAt": "2026-10-05",
+      "rights": "Source copyright; reference only, no photo pixels in asset"
+    },
+    {
+      "url": "https://www.molendatabase.nl/files/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6NDExNjksInB1ciI6ImJsb2JfaWQifX0=--31d8265b1f881049ac8524eb29c44fe90173801c/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fbGltaXQiOlsxMTAwLG51bGxdfSwicHVyIjoidmFyaWF0aW9uIn19--8d3983cecbd440e5a4f1d1b18486ee05f5c1ccab/626-degooijer-1.jpg",
+      "path": "artifacts/landmarks/de-gooyer/references/full-front.jpg",
+      "sourcePage": "https://www.molendatabase.nl/molens/ten-bruggencate-nr-00699",
+      "retrievedAt": "2026-10-05",
+      "sha256": "d66337734fae9a9ddd32844e6a09b9df5d7b3c5a35eafc711293ba0f83f77da3",
+      "rights": "Attributedreferencephotoonly;nocopypixels",
+      "attribution": "J.vanHertum25March2012"
+    },
+    {
+      "url": "https://www.molendatabase.nl/files/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6NDExNzUsInB1ciI6ImJsb2JfaWQifX0=--5493b2f9e75a90bb93df8b3d04c91e63b7365437/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJ3ZWJwIiwicmVzaXplX3RvX2xpbWl0IjpbMTEwMCxudWxsXX0sInB1ciI6InZhcmlhdGlvbiJ9fQ==--86f764b02f0bdc654874ca1d7e9404500fea0d0f/636_7.webp",
+      "path": "artifacts/landmarks/de-gooyer/references/context-2022.webp",
+      "sourcePage": "https://www.molendatabase.nl/molens/ten-bruggencate-nr-00699",
+      "retrievedAt": "2026-10-05",
+      "sha256": "f1601c8f125c4402c7a454b0b357b4c9f4675f9f97a90e78a67303781ad2060b",
+      "rights": "Attributedreferencephotoonly;nocopypixels",
+      "attribution": "PietGlasbergen19September2022"
+    }
+  ],
+  "sourceArchive": {
+    "status": "Private source sync and commit pending coordinator; worker cannot write sibling archive",
+    "modelPath": "models/brouwerij-t-ij",
+    "localDirectory": "artifacts/landmarks/brouwerij-t-ij/references"
+  },
+  "accessGaps": [
+    "No cached current brewery principal facade/roof image yet",
+    "Mill Beeldbank search is forFunenkade5; exactFunenkade7 address/name search still required",
+    "No brewery monument-register description inspected; registration status unresolved",
+    "No actual installed feature found in cachedlocal-installed-buildings.json (empty array)"
+  ],
+  "visualEvidenceReview": [
+    {
+      "path": "artifacts/landmarks/de-gooyer/references/current-photo.jpg",
+      "finding": "2020 close upward mill view; no brewery facade/roof shown."
+    },
+    {
+      "path": "artifacts/landmarks/de-gooyer/references/full-front.jpg",
+      "finding": "25March2012 elevated mill context; brewery only tiny cropped right edge. Partial pitched roofs, stepped/gabled silhouettes and red/white terrace canopy visible, but complete facade rhythm and each wing roof cannot be assigned to native polygon. Insufficient current geometry authority."
+    },
+    {
+      "path": "artifacts/landmarks/de-gooyer/references/context-2022.webp",
+      "finding": "19September2022 close crop of mill cap and sails; no brewery architecture shown despite context filename."
+    }
+  ],
+  "nextBoundedSources": [
+    {
+      "url": "https://cms.brouwerijhetij.nl/storage/images/Proeflokalen/de-molen/Proeflokaal-de-Molen-Funenkade.jpg",
+      "discoveredIn": "artifacts/landmarks/brouwerij-t-ij/references/operator-venue.html",
+      "needed": "Original current exterior photo; inspect full bathhouse principal facade, roof families, side annex heights and entrance against exact source polygon",
+      "accessState": "URL discovered only; image not downloaded or inspected"
+    },
+    {
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=Funenkade%207",
+      "needed": "One bounded address/name reference search; retain raw search response and useful catalogue/currentness evidence",
+      "accessState": "Not accessed"
+    },
+    {
+      "url": "https://img.imageboss.me/brouwerij-het-ij-assets/cdn/format:auto/images/Proeflokalen/de-molen/Proeflokaal-de-Molen-buiten-onder-parasols.jpg",
+      "needed": "Terrace facade/window/door context; original may be available via cms storage equivalent",
+      "accessState": "URL discovered only; image not downloaded or inspected"
+    }
+  ]
+}

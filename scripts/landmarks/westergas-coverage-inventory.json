@@ -1,0 +1,989 @@
+{
+  "version": 1,
+  "auditedAt": "2026-10-06",
+  "scope": "Bounded cached source and static identity audit for requested all Westergas buildings; not visual or full scope acceptance",
+  "requestInventory": "public/canal-drive/poi-work-queue.json#westergas-other",
+  "method": {
+    "campusRegion": "cached OSM arts_centre Westergasfabriek a84516088; parent centre inside polygon excluding holes",
+    "scopeLimit": "Not a legal/exhaustive historic campus boundary. Centroid admission is discovery only; unresolved edge parents/current building parts require official address/BAG review. Do not widen suppression from this list.",
+    "cacheSearch": "Private model packs gashouder/ketelhuis/machinegebouw/de-wester/zuiveringshal-west plus immediate /private/tmp names matching westergas/westweelde/meterhuis/ladderhuis/espresso/bakkers. No new website retry or archival search in this pass."
+  },
+  "modeledCount": 7,
+  "modeled": [
+    {
+      "id": "gashouder",
+      "name": "Gashouder",
+      "landmarkId": "gashouder",
+      "modelUrl": "./models/gashouder.glb",
+      "suppressOsmIds": [
+        "w57865152",
+        "w1488057568",
+        "w1488057569",
+        "w1488057570",
+        "w1488057571",
+        "w1488057572",
+        "w1488057573"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.868872884498755,
+          52.386820591571
+        ],
+        "headingDegrees": 77.7474623915898,
+        "lengthMetres": 74.73646232909658,
+        "widthMetres": 65.55857175817337
+      },
+      "surveyed": {
+        "anchor": [
+          4.868872884498755,
+          52.386820591571
+        ],
+        "northOffsetDegrees": 0
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Gashouder",
+        "author": "Map Recall",
+        "sourceUrl": "https://gashouder.nl/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original flat-colour low-poly reconstruction using museum and venue photographs for architectural silhouette and OpenStreetMap polygons for placement. Includes the full mapped venue footprint; dimensions and roof ornament are approximate."
+      },
+      "staticPoiAudit": {
+        "modelId": "gashouder",
+        "poiId": "gashouder",
+        "name": "Gashouder",
+        "centerLatLng": [
+          52.386820591571,
+          4.868872884498755
+        ],
+        "buildingIds": [
+          "w57865152",
+          "w1488057568",
+          "w1488057569",
+          "w1488057570",
+          "w1488057571",
+          "w1488057572",
+          "w1488057573"
+        ],
+        "routeSelectable": true,
+        "pinEligible": true,
+        "cardMeaningful": true,
+        "detail": "The circular Gashouder is an industrial landmark at the former Westergas gasworks.",
+        "sourceUrl": "https://gashouder.nl/",
+        "retainsExtractIdentity": false,
+        "scope": "static merged POI data; no route traversal, physical click or rendered pin acceptance"
+      },
+      "acceptanceState": "Prior queue entries retain historical reported acceptance; this audit adds no gallery/live/physical click/performance acceptance"
+    },
+    {
+      "id": "ketelhuis",
+      "name": "Het Ketelhuis",
+      "landmarkId": "extract_landmarks_2037503288",
+      "modelUrl": "./models/ketelhuis.glb",
+      "suppressOsmIds": [
+        "w57860887",
+        "NL.IMBAG.Pand.0363100012135793"
+      ],
+      "footprint": {
+        "centre": [
+          4.873528379404577,
+          52.38635735977405
+        ],
+        "headingDegrees": 88.40235146891928,
+        "lengthMetres": 23.336638256284797,
+        "widthMetres": 18.16711235417388
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90.0,
+      "spatialSuppression": false,
+      "surveyed": {
+        "anchor": [
+          4.873528379404577,
+          52.38635735977405
+        ],
+        "northOffsetDegrees": -1.597648531080722,
+        "source": "Individual current PDOK BAG building polygon and OSM/2025 3DBAG height, native frontage faces named entrance street. No replacement of adjacent complex buildings."
+      },
+      "attribution": {
+        "title": "Het Ketelhuis",
+        "author": "Map Recall",
+        "sourceUrl": "https://westergas.nl/map/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction from primary venue/heritage references with individual current BAG plans; no imported meshes or textures."
+      },
+      "staticPoiAudit": {
+        "modelId": "ketelhuis",
+        "poiId": "extract_landmarks_2037503288",
+        "name": "Ketelhuis",
+        "centerLatLng": [
+          52.3863104,
+          4.8736349
+        ],
+        "buildingIds": [
+          "w57860887",
+          "NL.IMBAG.Pand.0363100012135793"
+        ],
+        "routeSelectable": true,
+        "pinEligible": true,
+        "cardMeaningful": true,
+        "detail": "Het Ketelhuis is a Dutch film theater that has been located in the Westergasfabriek cultural park in Amsterdam since 1999.",
+        "sourceUrl": "https://westergas.nl/map/",
+        "wikipediaUrl": "https://nl.wikipedia.org/wiki/Het_Ketelhuis",
+        "retainsExtractIdentity": true,
+        "scope": "static merged POI data; no route traversal, physical click or rendered pin acceptance"
+      },
+      "acceptanceState": "Prior queue entries retain historical reported acceptance; this audit adds no gallery/live/physical click/performance acceptance"
+    },
+    {
+      "id": "zuiveringshal-west",
+      "name": "Zuiveringshal West · Fabrique des Lumières",
+      "landmarkId": "fabrique-des-lumieres",
+      "modelUrl": "./models/zuiveringshal-west.glb",
+      "suppressOsmIds": [
+        "w274066572",
+        "NL.IMBAG.Pand.0363100012236268",
+        "w274066787",
+        "NL.IMBAG.Pand.0363100012236955",
+        "w274066816",
+        "NL.IMBAG.Pand.0363100012235891",
+        "w274066616",
+        "NL.IMBAG.Pand.0363100012236658",
+        "w274066838",
+        "NL.IMBAG.Pand.0363100012236031",
+        "w274066643",
+        "NL.IMBAG.Pand.0363100012236961",
+        "w274066620",
+        "NL.IMBAG.Pand.0363100012236221",
+        "w274066822",
+        "NL.IMBAG.Pand.0363100012236613",
+        "w274066793",
+        "NL.IMBAG.Pand.0363100012236642",
+        "w274066820",
+        "NL.IMBAG.Pand.0363100012235912",
+        "w274066812",
+        "NL.IMBAG.Pand.0363100012237038",
+        "w274066717",
+        "NL.IMBAG.Pand.0363100012236152",
+        "w274066798",
+        "NL.IMBAG.Pand.0363100012236665",
+        "w274066818",
+        "NL.IMBAG.Pand.0363100012236260",
+        "w274066824",
+        "NL.IMBAG.Pand.0363100012236412"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.872148914070394,
+          52.38597705909584
+        ],
+        "headingDegrees": 88.38277400738434,
+        "lengthMetres": 68.12957158750693,
+        "widthMetres": 41.41800754626077
+      },
+      "surveyed": {
+        "anchor": [
+          4.872149301126166,
+          52.3859766755098
+        ],
+        "northOffsetDegrees": -1.6200000000000045
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": -90.00277400738435,
+      "attribution": {
+        "title": "Zuiveringshal West · Fabrique des Lumières",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.fabrique-lumieres.com/en",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly Westergas hall ensemble authored against current disjoint BAG/OSM parents. High17.34m/17.9m halls retain separately mapped low~10.55m street/rear wings, gray pitched roofs and rooflights; primary venue photographs guide arched industrial windows and current entrance portals. AHN5/3DBAG roof envelopes calibrate native height hierarchy, not imported source mesh. Window rhythm and ornamental finial heights are approximate from visual references. Exact-only replacement excludes central connector2236902, existing Gashouder/Ketelhuis and all neighboring ensembles. Each independently operated venue retains its own route/card identity; Krakeling uses the current game identity at Pazzanistraat15, not its former city-center location."
+      },
+      "staticPoiAudit": {
+        "modelId": "zuiveringshal-west",
+        "poiId": "fabrique-des-lumieres",
+        "name": "Fabrique des Lumières",
+        "centerLatLng": [
+          52.3859766755098,
+          4.872149301126166
+        ],
+        "buildingIds": [
+          "w274066572",
+          "NL.IMBAG.Pand.0363100012236268",
+          "w274066787",
+          "NL.IMBAG.Pand.0363100012236955",
+          "w274066816",
+          "NL.IMBAG.Pand.0363100012235891",
+          "w274066616",
+          "NL.IMBAG.Pand.0363100012236658",
+          "w274066838",
+          "NL.IMBAG.Pand.0363100012236031",
+          "w274066643",
+          "NL.IMBAG.Pand.0363100012236961",
+          "w274066620",
+          "NL.IMBAG.Pand.0363100012236221",
+          "w274066822",
+          "NL.IMBAG.Pand.0363100012236613",
+          "w274066793",
+          "NL.IMBAG.Pand.0363100012236642",
+          "w274066820",
+          "NL.IMBAG.Pand.0363100012235912",
+          "w274066812",
+          "NL.IMBAG.Pand.0363100012237038",
+          "w274066717",
+          "NL.IMBAG.Pand.0363100012236152",
+          "w274066798",
+          "NL.IMBAG.Pand.0363100012236665",
+          "w274066818",
+          "NL.IMBAG.Pand.0363100012236260",
+          "w274066824",
+          "NL.IMBAG.Pand.0363100012236412"
+        ],
+        "routeSelectable": true,
+        "pinEligible": true,
+        "cardMeaningful": true,
+        "detail": "Fabrique des Lumières opened in 2022 in Zuiveringshal West.",
+        "sourceUrl": "https://westergas.nl/en/press-release-latelier-des-lumieres/",
+        "retainsExtractIdentity": false,
+        "scope": "static merged POI data; no route traversal, physical click or rendered pin acceptance"
+      },
+      "acceptanceState": "Prior queue entries retain historical reported acceptance; this audit adds no gallery/live/physical click/performance acceptance"
+    },
+    {
+      "id": "amsterdam-in-motion",
+      "name": "Amsterdam in Motion · Zuiveringshal Oost",
+      "landmarkId": "amsterdam-in-motion",
+      "modelUrl": "./models/amsterdam-in-motion.glb",
+      "suppressOsmIds": [
+        "w274066840",
+        "NL.IMBAG.Pand.0363100012236269",
+        "w274066772",
+        "NL.IMBAG.Pand.0363100012236486",
+        "w274066814",
+        "NL.IMBAG.Pand.0363100012236952",
+        "w274066625",
+        "NL.IMBAG.Pand.0363100012236651",
+        "w274066800",
+        "NL.IMBAG.Pand.0363100012237235",
+        "w274066776",
+        "NL.IMBAG.Pand.0363100012236699",
+        "w274066807",
+        "NL.IMBAG.Pand.0363100012236180",
+        "w274066632",
+        "NL.IMBAG.Pand.0363100012237241"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.873243911684909,
+          52.385996221555054
+        ],
+        "headingDegrees": 178.38518176963328,
+        "lengthMetres": 41.46894644246084,
+        "widthMetres": 32.87974491271963
+      },
+      "surveyed": {
+        "anchor": [
+          4.873240886305469,
+          52.385996206559895
+        ],
+        "northOffsetDegrees": -1.6200000000000045
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": -180.00518176963328,
+      "attribution": {
+        "title": "Amsterdam in Motion · Zuiveringshal Oost",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.amsterdammuseum.nl/tickets-en-bezoek/locaties/amsterdam-in-motion/228553",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly Westergas hall ensemble authored against current disjoint BAG/OSM parents. High17.34m/17.9m halls retain separately mapped low~10.55m street/rear wings, gray pitched roofs and rooflights; primary venue photographs guide arched industrial windows and current entrance portals. AHN5/3DBAG roof envelopes calibrate native height hierarchy, not imported source mesh. Window rhythm and ornamental finial heights are approximate from visual references. Exact-only replacement excludes central connector2236902, existing Gashouder/Ketelhuis and all neighboring ensembles. Each independently operated venue retains its own route/card identity; Krakeling uses the current game identity at Pazzanistraat15, not its former city-center location."
+      },
+      "staticPoiAudit": {
+        "modelId": "amsterdam-in-motion",
+        "poiId": "amsterdam-in-motion",
+        "name": "Amsterdam in Motion",
+        "centerLatLng": [
+          52.385996206559895,
+          4.873240886305469
+        ],
+        "buildingIds": [
+          "w274066840",
+          "NL.IMBAG.Pand.0363100012236269",
+          "w274066772",
+          "NL.IMBAG.Pand.0363100012236486",
+          "w274066814",
+          "NL.IMBAG.Pand.0363100012236952",
+          "w274066625",
+          "NL.IMBAG.Pand.0363100012236651",
+          "w274066800",
+          "NL.IMBAG.Pand.0363100012237235",
+          "w274066776",
+          "NL.IMBAG.Pand.0363100012236699",
+          "w274066807",
+          "NL.IMBAG.Pand.0363100012236180",
+          "w274066632",
+          "NL.IMBAG.Pand.0363100012237241"
+        ],
+        "routeSelectable": true,
+        "pinEligible": true,
+        "cardMeaningful": true,
+        "detail": "Amsterdam in Motion opened in 2025 for the city’s 750th anniversary.",
+        "sourceUrl": "https://www.amsterdammuseum.nl/tickets-en-bezoek/locaties/amsterdam-in-motion/228553",
+        "retainsExtractIdentity": false,
+        "scope": "static merged POI data; no route traversal, physical click or rendered pin acceptance"
+      },
+      "acceptanceState": "Prior queue entries retain historical reported acceptance; this audit adds no gallery/live/physical click/performance acceptance"
+    },
+    {
+      "id": "de-krakeling",
+      "name": "Theater De Krakeling",
+      "landmarkId": "extract_landmarks_1635482107",
+      "modelUrl": "./models/de-krakeling.glb",
+      "suppressOsmIds": [
+        "w274066580",
+        "NL.IMBAG.Pand.0363100012235989",
+        "w274066614",
+        "NL.IMBAG.Pand.0363100012236443",
+        "w274066641",
+        "NL.IMBAG.Pand.0363100012237301",
+        "w274066587",
+        "NL.IMBAG.Pand.0363100012236702",
+        "w274066806",
+        "NL.IMBAG.Pand.0363100012236527",
+        "w274066662",
+        "NL.IMBAG.Pand.0363100012236566"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.873736814604472,
+          52.38600465670549
+        ],
+        "headingDegrees": 88.39749239264023,
+        "lengthMetres": 52.10799579808097,
+        "widthMetres": 41.461485886013406
+      },
+      "surveyed": {
+        "anchor": [
+          4.873684349406492,
+          52.38600418652962
+        ],
+        "northOffsetDegrees": -1.6200000000000045
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": -90.01749239264024,
+      "attribution": {
+        "title": "Theater De Krakeling",
+        "author": "Map Recall",
+        "sourceUrl": "https://krakeling.nl/over-ons",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly Westergas hall ensemble authored against current disjoint BAG/OSM parents. High17.34m/17.9m halls retain separately mapped low~10.55m street/rear wings, gray pitched roofs and rooflights; primary venue photographs guide arched industrial windows and current entrance portals. AHN5/3DBAG roof envelopes calibrate native height hierarchy, not imported source mesh. Window rhythm and ornamental finial heights are approximate from visual references. Exact-only replacement excludes central connector2236902, existing Gashouder/Ketelhuis and all neighboring ensembles. Each independently operated venue retains its own route/card identity; Krakeling uses the current game identity at Pazzanistraat15, not its former city-center location."
+      },
+      "staticPoiAudit": {
+        "modelId": "de-krakeling",
+        "poiId": "extract_landmarks_1635482107",
+        "name": "De Krakeling",
+        "centerLatLng": [
+          52.386148,
+          4.8735482
+        ],
+        "buildingIds": [
+          "w274066580",
+          "NL.IMBAG.Pand.0363100012235989",
+          "w274066614",
+          "NL.IMBAG.Pand.0363100012236443",
+          "w274066641",
+          "NL.IMBAG.Pand.0363100012237301",
+          "w274066587",
+          "NL.IMBAG.Pand.0363100012236702",
+          "w274066806",
+          "NL.IMBAG.Pand.0363100012236527",
+          "w274066662",
+          "NL.IMBAG.Pand.0363100012236566"
+        ],
+        "routeSelectable": true,
+        "pinEligible": true,
+        "cardMeaningful": true,
+        "detail": "De Krakeling is a theater devoted to young audiences.",
+        "sourceUrl": "https://krakeling.nl/over-ons",
+        "wikipediaUrl": "https://nl.wikipedia.org/wiki/Jeugdtheater_De_Krakeling",
+        "retainsExtractIdentity": true,
+        "scope": "static merged POI data; no route traversal, physical click or rendered pin acceptance"
+      },
+      "acceptanceState": "Prior queue entries retain historical reported acceptance; this audit adds no gallery/live/physical click/performance acceptance"
+    },
+    {
+      "id": "machinegebouw",
+      "name": "Machinegebouw · Cantine",
+      "landmarkId": "cantine-de-caron",
+      "modelUrl": "./models/machinegebouw.glb",
+      "suppressOsmIds": [
+        "w42298030",
+        "NL.IMBAG.Pand.0363100012152471"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.872808548242466,
+          52.38634502299453
+        ],
+        "headingDegrees": 88.31856627968506,
+        "lengthMetres": 25.7027472649258,
+        "widthMetres": 17.955190280247155
+      },
+      "surveyed": {
+        "anchor": [
+          4.872808548242466,
+          52.38634502756621
+        ],
+        "northOffsetDegrees": -1.681433720314942
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Machinegebouw · Cantine",
+        "author": "Map Recall",
+        "sourceUrl": "https://cantine.nl/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly architecture. Exact current BAG/OSM outline and AHN5/3DBAG roof envelope guide manually authored walls and unequal roof levels; primary owner photographs and RCE descriptions guide original arched windows, masonry bands and current entrance. Window ornament is approximate. Machinegebouw retains two parallel unequal ridges at 12.8 and 10.15 metres; De Wester retains the 15.33-metre main hall and separate low western entrance roof. No imported mesh or textures, no vanished chimney or roof ventilator. Exact-only parent replacement preserves adjacent WestWeelde and all other Westergas buildings."
+      },
+      "staticPoiAudit": {
+        "modelId": "machinegebouw",
+        "poiId": "cantine-de-caron",
+        "name": "Cantine · Machinegebouw",
+        "centerLatLng": [
+          52.38634502756621,
+          4.872808548242466
+        ],
+        "buildingIds": [
+          "w42298030",
+          "NL.IMBAG.Pand.0363100012152471"
+        ],
+        "routeSelectable": true,
+        "pinEligible": true,
+        "cardMeaningful": true,
+        "detail": "Cantine occupies the freestanding Machinegebouw at Westergas.",
+        "sourceUrl": "https://cantine.nl/",
+        "retainsExtractIdentity": false,
+        "scope": "static merged POI data; no route traversal, physical click or rendered pin acceptance"
+      },
+      "acceptanceState": "Prior queue entries retain historical reported acceptance; this audit adds no gallery/live/physical click/performance acceptance"
+    },
+    {
+      "id": "de-wester",
+      "name": "De Wester · Transformatorhuis",
+      "landmarkId": "de-wester",
+      "modelUrl": "./models/de-wester.glb",
+      "suppressOsmIds": [
+        "w57867037",
+        "NL.IMBAG.Pand.0363100012166956"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.870118520583264,
+          52.38684718893202
+        ],
+        "headingDegrees": 88.6360509504791,
+        "lengthMetres": 48.010353075402364,
+        "widthMetres": 19.673421387625524
+      },
+      "surveyed": {
+        "anchor": [
+          4.870119186757984,
+          52.38685189098992
+        ],
+        "northOffsetDegrees": -1.3639490495208975
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 180,
+      "attribution": {
+        "title": "De Wester · Transformatorhuis",
+        "author": "Map Recall",
+        "sourceUrl": "https://westergas.nl/en/de-wester-as-event-venue/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly architecture. Exact current BAG/OSM outline and AHN5/3DBAG roof envelope guide manually authored walls and unequal roof levels; primary owner photographs and RCE descriptions guide original arched windows, masonry bands and current entrance. Window ornament is approximate. Machinegebouw retains two parallel unequal ridges at 12.8 and 10.15 metres; De Wester retains the 15.33-metre main hall and separate low western entrance roof. No imported mesh or textures, no vanished chimney or roof ventilator. Exact-only parent replacement preserves adjacent WestWeelde and all other Westergas buildings."
+      },
+      "staticPoiAudit": {
+        "modelId": "de-wester",
+        "poiId": "de-wester",
+        "name": "De Wester · Transformatorhuis",
+        "centerLatLng": [
+          52.38685189098992,
+          4.870119186757984
+        ],
+        "buildingIds": [
+          "w57867037",
+          "NL.IMBAG.Pand.0363100012166956"
+        ],
+        "routeSelectable": true,
+        "pinEligible": true,
+        "cardMeaningful": true,
+        "detail": "De Wester is an event venue in the former Westergas water-gas factory, built in 1904 and later used as a transformer workshop.",
+        "sourceUrl": "https://westergas.nl/en/de-wester-as-event-venue/",
+        "retainsExtractIdentity": false,
+        "scope": "static merged POI data; no route traversal, physical click or rendered pin acceptance"
+      },
+      "acceptanceState": "Prior queue entries retain historical reported acceptance; this audit adds no gallery/live/physical click/performance acceptance"
+    }
+  ],
+  "remainingNativeParents": [
+    {
+      "osmId": "w42298035",
+      "bagId": "0363100012163454",
+      "sourceName": "Oostelijk Meterhuis",
+      "sourceYear": "1885",
+      "mappedHeightMetres": 9.3,
+      "heightEvidence": "OSM tag sourced to 3DBAG 2025-09-03; roof planes/eave hierarchy not inspected",
+      "centroidClueLonLat": [
+        4.8731925,
+        52.3863528
+      ],
+      "status": "native_outline_cached_unmodeled",
+      "classification": "named_historic_parent"
+    },
+    {
+      "osmId": "w57863294",
+      "bagId": "0363100012236902",
+      "sourceName": "Zuiveringsgebouw",
+      "sourceYear": "1885",
+      "mappedHeightMetres": 10.1,
+      "heightEvidence": "OSM tag sourced to 3DBAG 2025-09-03; roof planes/eave hierarchy not inspected",
+      "centroidClueLonLat": [
+        4.87282796,
+        52.385970640000004
+      ],
+      "status": "native_outline_cached_unmodeled",
+      "classification": "named_historic_parent"
+    },
+    {
+      "osmId": "w57865138",
+      "bagId": "0363100012163965",
+      "sourceName": null,
+      "sourceYear": "1905",
+      "mappedHeightMetres": 10.7,
+      "heightEvidence": "OSM tag sourced to 3DBAG 2025-09-03; roof planes/eave hierarchy not inspected",
+      "centroidClueLonLat": [
+        4.866070125,
+        52.3860178
+      ],
+      "status": "native_outline_cached_unmodeled",
+      "classification": "modern_or_unnamed_scope_unresolved"
+    },
+    {
+      "osmId": "w57865640",
+      "bagId": "0363100012164485",
+      "sourceName": null,
+      "sourceYear": "2007",
+      "mappedHeightMetres": 5.6,
+      "heightEvidence": "OSM tag sourced to 3DBAG 2025-09-03; roof planes/eave hierarchy not inspected",
+      "centroidClueLonLat": [
+        4.866518341666667,
+        52.3859569375
+      ],
+      "status": "native_outline_cached_unmodeled",
+      "classification": "modern_or_unnamed_scope_unresolved"
+    },
+    {
+      "osmId": "w57865993",
+      "bagId": "0363100012163465",
+      "sourceName": null,
+      "sourceYear": "1885",
+      "mappedHeightMetres": 5.2,
+      "heightEvidence": "OSM tag sourced to 3DBAG 2025-09-03; roof planes/eave hierarchy not inspected",
+      "centroidClueLonLat": [
+        4.867683925,
+        52.386492575
+      ],
+      "status": "native_outline_cached_unmodeled",
+      "classification": "modern_or_unnamed_scope_unresolved"
+    },
+    {
+      "osmId": "w57866315",
+      "bagId": "0363100012161595",
+      "sourceName": "Westelijke Bazenwoning",
+      "sourceYear": "1885",
+      "mappedHeightMetres": 8.9,
+      "heightEvidence": "OSM tag sourced to 3DBAG 2025-09-03; roof planes/eave hierarchy not inspected",
+      "centroidClueLonLat": [
+        4.870427095,
+        52.3865191
+      ],
+      "status": "native_outline_cached_unmodeled",
+      "classification": "named_historic_parent"
+    },
+    {
+      "osmId": "w57867075",
+      "bagId": "0363100012156214",
+      "sourceName": null,
+      "sourceYear": "2007",
+      "mappedHeightMetres": 12.0,
+      "heightEvidence": "OSM tag sourced to 3DBAG 2025-09-03; roof planes/eave hierarchy not inspected",
+      "centroidClueLonLat": [
+        4.86563926,
+        52.38570718
+      ],
+      "status": "native_outline_cached_unmodeled",
+      "classification": "modern_or_unnamed_scope_unresolved"
+    },
+    {
+      "osmId": "w57867102",
+      "bagId": "0363100012167418",
+      "sourceName": "Oostelijke Bazenwoning",
+      "sourceYear": "1885",
+      "mappedHeightMetres": 9.0,
+      "heightEvidence": "OSM tag sourced to 3DBAG 2025-09-03; roof planes/eave hierarchy not inspected",
+      "centroidClueLonLat": [
+        4.87071902,
+        52.386524375
+      ],
+      "status": "native_outline_cached_unmodeled",
+      "classification": "named_historic_parent"
+    },
+    {
+      "osmId": "w57867144",
+      "bagId": "0363100012236561",
+      "sourceName": "Ladderhuis",
+      "sourceYear": "1902",
+      "mappedHeightMetres": null,
+      "heightEvidence": "missing",
+      "centroidClueLonLat": [
+        4.8704439,
+        52.387241835714285
+      ],
+      "status": "native_outline_cached_unmodeled",
+      "classification": "named_historic_parent"
+    },
+    {
+      "osmId": "w57867344",
+      "bagId": "0363100012166024",
+      "sourceName": null,
+      "sourceYear": "1885",
+      "mappedHeightMetres": 8.6,
+      "heightEvidence": "OSM tag sourced to 3DBAG 2025-09-03; roof planes/eave hierarchy not inspected",
+      "centroidClueLonLat": [
+        4.868054225,
+        52.386483
+      ],
+      "status": "native_outline_cached_unmodeled",
+      "classification": "modern_or_unnamed_scope_unresolved"
+    },
+    {
+      "osmId": "w57867409",
+      "bagId": "0363100012236420",
+      "sourceName": "Westelijk Meterhuis",
+      "sourceYear": "1885",
+      "mappedHeightMetres": 9.1,
+      "heightEvidence": "OSM tag sourced to 3DBAG 2025-09-03; roof planes/eave hierarchy not inspected",
+      "centroidClueLonLat": [
+        4.87245536,
+        52.386398199999995
+      ],
+      "status": "native_outline_cached_unmodeled",
+      "classification": "named_historic_parent"
+    },
+    {
+      "osmId": "w206171045",
+      "bagId": "0363100012112139",
+      "sourceName": "KunstENhuis",
+      "sourceYear": "2009",
+      "mappedHeightMetres": 8.8,
+      "heightEvidence": "OSM tag sourced to 3DBAG 2025-09-03; roof planes/eave hierarchy not inspected",
+      "centroidClueLonLat": [
+        4.8668938,
+        52.385727700000004
+      ],
+      "status": "native_outline_cached_unmodeled",
+      "classification": "modern_or_unnamed_scope_unresolved"
+    },
+    {
+      "osmId": "w206171047",
+      "bagId": "0363100012121463",
+      "sourceName": "KunstENhuis",
+      "sourceYear": "2009",
+      "mappedHeightMetres": 8.0,
+      "heightEvidence": "OSM tag sourced to 3DBAG 2025-09-03; roof planes/eave hierarchy not inspected",
+      "centroidClueLonLat": [
+        4.866080225,
+        52.385727975
+      ],
+      "status": "native_outline_cached_unmodeled",
+      "classification": "modern_or_unnamed_scope_unresolved"
+    },
+    {
+      "osmId": "w274066575",
+      "bagId": "0363100012237299",
+      "sourceName": null,
+      "sourceYear": "1904",
+      "mappedHeightMetres": 13.6,
+      "heightEvidence": "OSM tag sourced to 3DBAG 2025-09-03; roof planes/eave hierarchy not inspected",
+      "centroidClueLonLat": [
+        4.870071288888889,
+        52.386992505555554
+      ],
+      "status": "native_outline_cached_unmodeled",
+      "classification": "modern_or_unnamed_scope_unresolved"
+    },
+    {
+      "osmId": "w274066613",
+      "bagId": "0363100012236428",
+      "sourceName": null,
+      "sourceYear": "1885",
+      "mappedHeightMetres": 10.2,
+      "heightEvidence": "OSM tag sourced to 3DBAG 2025-09-03; roof planes/eave hierarchy not inspected",
+      "centroidClueLonLat": [
+        4.872710275,
+        52.385847299999995
+      ],
+      "status": "native_outline_cached_unmodeled",
+      "classification": "modern_or_unnamed_scope_unresolved"
+    },
+    {
+      "osmId": "w274066652",
+      "bagId": "0363100012236567",
+      "sourceName": null,
+      "sourceYear": "1885",
+      "mappedHeightMetres": 10.2,
+      "heightEvidence": "OSM tag sourced to 3DBAG 2025-09-03; roof planes/eave hierarchy not inspected",
+      "centroidClueLonLat": [
+        4.87283625,
+        52.385849549999996
+      ],
+      "status": "native_outline_cached_unmodeled",
+      "classification": "modern_or_unnamed_scope_unresolved"
+    },
+    {
+      "osmId": "w274066681",
+      "bagId": "0363100012237365",
+      "sourceName": null,
+      "sourceYear": "1885",
+      "mappedHeightMetres": 10.0,
+      "heightEvidence": "OSM tag sourced to 3DBAG 2025-09-03; roof planes/eave hierarchy not inspected",
+      "centroidClueLonLat": [
+        4.871410275000001,
+        52.386012575
+      ],
+      "status": "native_outline_cached_unmodeled",
+      "classification": "modern_or_unnamed_scope_unresolved"
+    },
+    {
+      "osmId": "w274066694",
+      "bagId": "0363100012235911",
+      "sourceName": null,
+      "sourceYear": "1885",
+      "mappedHeightMetres": 9.1,
+      "heightEvidence": "OSM tag sourced to 3DBAG 2025-09-03; roof planes/eave hierarchy not inspected",
+      "centroidClueLonLat": [
+        4.872441224999999,
+        52.38633735
+      ],
+      "status": "native_outline_cached_unmodeled",
+      "classification": "modern_or_unnamed_scope_unresolved"
+    },
+    {
+      "osmId": "w274066757",
+      "bagId": "0363100012237148",
+      "sourceName": null,
+      "sourceYear": "1885",
+      "mappedHeightMetres": 10.1,
+      "heightEvidence": "OSM tag sourced to 3DBAG 2025-09-03; roof planes/eave hierarchy not inspected",
+      "centroidClueLonLat": [
+        4.871414700000001,
+        52.38591735
+      ],
+      "status": "native_outline_cached_unmodeled",
+      "classification": "modern_or_unnamed_scope_unresolved"
+    },
+    {
+      "osmId": "w274066770",
+      "bagId": "0363100012236164",
+      "sourceName": null,
+      "sourceYear": "1885",
+      "mappedHeightMetres": 10.0,
+      "heightEvidence": "OSM tag sourced to 3DBAG 2025-09-03; roof planes/eave hierarchy not inspected",
+      "centroidClueLonLat": [
+        4.87159996,
+        52.38602175999999
+      ],
+      "status": "native_outline_cached_unmodeled",
+      "classification": "modern_or_unnamed_scope_unresolved"
+    },
+    {
+      "osmId": "w274066789",
+      "bagId": "0363100012236715",
+      "sourceName": null,
+      "sourceYear": "1885",
+      "mappedHeightMetres": 10.0,
+      "heightEvidence": "OSM tag sourced to 3DBAG 2025-09-03; roof planes/eave hierarchy not inspected",
+      "centroidClueLonLat": [
+        4.87160492,
+        52.38591441999999
+      ],
+      "status": "native_outline_cached_unmodeled",
+      "classification": "modern_or_unnamed_scope_unresolved"
+    },
+    {
+      "osmId": "w274066810",
+      "bagId": "0363100012235915",
+      "sourceName": null,
+      "sourceYear": "1885",
+      "mappedHeightMetres": 10.2,
+      "heightEvidence": "OSM tag sourced to 3DBAG 2025-09-03; roof planes/eave hierarchy not inspected",
+      "centroidClueLonLat": [
+        4.872976333333333,
+        52.385836616666666
+      ],
+      "status": "native_outline_cached_unmodeled",
+      "classification": "modern_or_unnamed_scope_unresolved"
+    },
+    {
+      "osmId": "w274066836",
+      "bagId": "0363100012236238",
+      "sourceName": null,
+      "sourceYear": "1904",
+      "mappedHeightMetres": 13.5,
+      "heightEvidence": "OSM tag sourced to 3DBAG 2025-09-03; roof planes/eave hierarchy not inspected",
+      "centroidClueLonLat": [
+        4.8699726000000005,
+        52.387151062499996
+      ],
+      "status": "native_outline_cached_unmodeled",
+      "classification": "modern_or_unnamed_scope_unresolved"
+    }
+  ],
+  "venueOwnership": {
+    "WestWeelde": {
+      "mappedPointId": "n2071654955",
+      "mappedPointLonLat": [
+        4.869988,
+        52.3871347
+      ],
+      "pointInsideParent": {
+        "osmId": "w274066836",
+        "bagId": "0363100012236238"
+      },
+      "adjacentUnmodeledParent": {
+        "osmId": "w274066575",
+        "bagId": "0363100012237299"
+      },
+      "note": "Point containment supports only containing parent. Do not infer entire WestWeelde venue scope or combine alias destinations; De Wester remains own genuine destination."
+    },
+    "Espressofabriek": {
+      "mappedPointId": "n1584693109",
+      "containingParent": "0363100012236658",
+      "alreadyInModel": "zuiveringshal-west",
+      "note": "Mapped cafe sits inside an already replaced Zuiveringshal West low wing; not automatically another physical-building task."
+    },
+    "Ketelhuis": {
+      "alreadyModeled": true,
+      "modelId": "ketelhuis",
+      "genuinePoiId": "extract_landmarks_2037503288"
+    },
+    "Meterhuisje": {
+      "note": "Cached operator map lists venue, but link to Oostelijk vs Westelijk Meterhuis unresolved; do not manufacture alias/parent assignment."
+    }
+  },
+  "nextCandidate": {
+    "name": "WestWeelde north/cross-wing ensemble",
+    "status": "blocked_source_gap_do_not_author_yet",
+    "canonicalModelId": "not assigned",
+    "nativeOutlineClues": [
+      "w274066836",
+      "w274066575"
+    ],
+    "bagIds": [
+      "0363100012236238",
+      "0363100012237299"
+    ],
+    "genuineIdentityClue": "OSM n2071654955; no matching curated extract destination found in current landmarks.json",
+    "cachedHeightCluesMetres": [
+      13.5,
+      13.6
+    ],
+    "recognitionReference": "/private/tmp/de-wester-primary.jpg shows only partial left-side neighboring wing; inspected 2026-10-06. It cannot establish full WestWeelde front/rear/roof geometry. Do not use De Wester parent photos as completeWestWeelde coverage.",
+    "requiredBeforeBuilder": [
+      "Current original principal/opposite/context photos of remaining north/cross-wing, cached privately with provenance/rights",
+      "Exact current PDOK BAG parents, VBO/address ownership and public entrance for mapped WestWeelde; retain De Wester separate",
+      "RCE register architectural description read/cached for exact remaining parts; bounded address-based Beeldbank search/cache",
+      "AHN/3DBAG roof planes with roof/eave/terrain hierarchy; OSM maximum height tags are clues",
+      "Resolve independently operated current venue scopes and genuine route/card/pin identity; do notcreate duplicate venue aliases"
+    ],
+    "decision": "No remaining candidate satisfies originalphotos plus nativeoutline plus height/context source bar in this bounded cache pass. Sourcegap staging is deliverable, not building completion."
+  },
+  "gaps": [
+    "No original remaining-parent facade photos found in bounded cache/private-pack search",
+    "Both Meterhuizen/Ladderhuis/both Bazenwoningen unmodeled; their architecture/register/address/height source packs not yet ready",
+    "Zuiveringsgebouw central connector intentionally retained unmodeled; distinguish preservation from campus completion",
+    "Seven additional unnamed1885 small parents near modeled purification halls remain outside replacement sets; ownership/facade scope unresolved",
+    "Priorarchive packs machinegebouw/de-wester/zuiveringshal-west contain no image files in inspected packs; existing temporary photos need archive reconciliation by root",
+    "GPU/privatearchive write/git blocked in parent task; staged cached sources not privately archived or committed"
+  ],
+  "sourceStaging": [
+    {
+      "cachedPath": "/private/tmp/westergas-all.geojson",
+      "stagedPath": "artifacts/landmarks/westergas-next-build/source-staging/westergas-all.geojson",
+      "sha256": "addbd3a95acd7bf78c961b6b47f0e6befc55c8679b86dfe6df57b003303e37c4",
+      "retrievalDate": "unknown from filename; original cached provenance not established",
+      "kind": "cached OSM conversion (processed)",
+      "sourceUrl": null
+    },
+    {
+      "cachedPath": "/private/tmp/westergas-buildings.geojson",
+      "stagedPath": "artifacts/landmarks/westergas-next-build/source-staging/westergas-buildings.geojson",
+      "sha256": "fb75219153d6983fac9fb1351b43a7dcfaa625eb542a5bbd797c53ae36fa92a5",
+      "retrievalDate": "unknown from filename; original cached provenance not established",
+      "kind": "cached OSM conversion (processed)",
+      "sourceUrl": null
+    },
+    {
+      "cachedPath": "/private/tmp/westergas-context.pbf",
+      "stagedPath": "artifacts/landmarks/westergas-next-build/source-staging/westergas-context.pbf",
+      "sha256": "0a9b03a490ee30486468e838c234084228f0f0200a8eebc75c788be553036f1f",
+      "retrievalDate": "unknown from filename; original cached provenance not established",
+      "kind": "cached OSM extract (original container)",
+      "sourceUrl": null
+    },
+    {
+      "cachedPath": "/private/tmp/westergas-buildings.pbf",
+      "stagedPath": "artifacts/landmarks/westergas-next-build/source-staging/westergas-buildings.pbf",
+      "sha256": "c65d2d144b7bcc19cb0eaca1ded10270026ee941f5ea80a94210686e08ef8b92",
+      "retrievalDate": "unknown from filename; original cached provenance not established",
+      "kind": "cached OSM extract (original container)",
+      "sourceUrl": null
+    },
+    {
+      "cachedPath": "/private/tmp/westergas-map-primary.html",
+      "stagedPath": "artifacts/landmarks/westergas-next-build/source-staging/westergas-map-primary.html",
+      "sha256": "dd0c80fcbaacdce1af43ccc3f85b238b4d321c2ce580a9c24b9094b1b8cda6b1",
+      "retrievalDate": "unknown from filename; original cached provenance not established",
+      "kind": "cached operator page body",
+      "sourceUrl": "https://westergas.nl/map/"
+    }
+  ],
+  "checks": {
+    "staticMergedPoiAudit": "artifacts/landmarks/westergas-next-build/poi-audit.json",
+    "staticResult": "All 7 registered models have genuine unique IDs, selectable routepredicate, eligible pin and meaningful card in currentdata",
+    "visualAcceptance": "pending actual current gallery/live comparisons and independent review",
+    "gameScenePerformance": "pending; no full scopecompletionclaim"
+  },
+  "referenceBackfill": {
+    "stagedOn": "2026-10-06",
+    "canonicalModels": [
+      "de-wester",
+      "zuiveringshal-west",
+      "amsterdam-in-motion",
+      "de-krakeling"
+    ],
+    "imageCount": 7,
+    "manifestPattern": "artifacts/landmarks/<modelId>/references/westergas-reference-backfill.json",
+    "scope": "Unchanged cached bytes with SHA256; original URL/date/rights unresolved; not new visual acceptance",
+    "privateSync": "Pending writable access; not committed"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "canonicalModelId": "club-panama",
+  "state": "source-hold-no-builder",
+  "researchedOn": "2026-10-05",
+  "destination": {
+    "genuineOsmId": "n30170536",
+    "name": "Club Panama",
+    "address": "Oostelijke Handelskade 4, 1019 BM Amsterdam"
+  },
+  "monument": {
+    "id": "523311",
+    "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/523311",
+    "descriptionRead": true,
+    "date": "register state accessed 2026-10-05",
+    "assertions": [
+      {
+        "part": "1885 machine house and boiler house",
+        "feature": "Perpendicular volumes, each gabled roof with raised central gabled clerestory; original clerestory glazing in four-pane groups",
+        "confidence": "high for registered historic state; current roof dimensions unresolved"
+      },
+      {
+        "part": "Machine-house end facades",
+        "feature": "Three fields divided by pilasters; raised central field matching clerestory; rose window above, three basket-arched windows below; north openings have fish-bladder tracery",
+        "confidence": "high for registered state; current alteration check pending"
+      },
+      {
+        "part": "Oostelijke Handelskade boiler-house facade",
+        "feature": "Eight bays with paired slightly arched windows and tall gable interrupting cornice at fourth bay",
+        "confidence": "high for registered state; current inspection pending"
+      },
+      {
+        "part": "South wing (1899)",
+        "feature": "One storey flat roof; six bays wide and three deep; straight termination, arch friezes and dentil cornice",
+        "confidence": "high for registered historic state"
+      },
+      {
+        "part": "South boiler-house junction",
+        "feature": "Tall masonry chimney described as remaining; accumulator building and southeast supervisor residence demolished",
+        "confidence": "high for register; current chimney presence/height needs inspection"
+      },
+      {
+        "part": "Facades",
+        "feature": "Brick with stone bands, water ledges and corner accents; yellow brick arch friezes",
+        "confidence": "high description; red brick confirmed by ARCAM"
+      }
+    ]
+  },
+  "currentArchitectureSource": {
+    "url": "https://arcam.nl/architectuur-gids/panama/",
+    "facts": "2001 conversion by VASD preserved the original character while adding large facade/interior windows; original 1885 hydraulics replaced by electricity in 1899.",
+    "photos": [
+      {
+        "url": "https://arcam.nl/wp-content/uploads/2021/06/image00015.jpeg",
+        "state": "web-click cache miss; original bytes unavailable; not inspected"
+      },
+      {
+        "url": "https://arcam.nl/wp-content/uploads/2021/06/1-6.jpeg",
+        "state": "web-click cache miss; original bytes unavailable; not inspected"
+      },
+      {
+        "url": "https://arcam.nl/wp-content/uploads/2021/06/3-2.jpeg",
+        "state": "web-click cache miss; original bytes unavailable; not inspected"
+      }
+    ]
+  },
+  "boundedArchiveSearch": {
+    "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=Oostelijke%20Handelskade%204",
+    "state": "2026-10-05 one bounded exact-address query inaccessible; no catalogue or scan inspected"
+  },
+  "roofSurvey": {
+    "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012078164",
+    "state": "web-open inaccessible; no cached Panama survey found"
+  },
+  "operator": {
+    "url": "https://panama.nl/contact-us-2/",
+    "read": true,
+    "addressConfirmed": true,
+    "brochure": "https://panama.nl/wp-content/uploads/2023/07/PANAMA-brochure-1.pdf",
+    "brochureAccess": "parsed text read; screenshot calls cache-miss; original PDF unavailable"
+  },
+  "archive": {
+    "privateSourceCommit": null,
+    "state": "processed web-tool text and local OSM extraction staged; original HTML/photos/PDF/survey unavailable; private sibling readonly in task"
+  },
+  "modelAcceptance": {
+    "builder": false,
+    "geometryChecks": false,
+    "gallery": false,
+    "liveGame": false,
+    "suppression": false,
+    "routePinCard": false
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "modelId": "micropia-ledenlokalen",
+  "reviewedOn": "2026-10-06",
+  "scope": "Remove two unsupported current sign placements only; preserve all existing architecture, glazing, cornices and panels.",
+  "policy": "Use map labels for names. Retain only source-supported defining architectural signage fitted to its actual panel and wall plane.",
+  "priorAudit": "artifacts/landmarks/signage-audit/bookshops-artis-review.json",
+  "decisions": [
+    {
+      "text": "DE PLANTAGE",
+      "action": "removed_current_call_without_replacement",
+      "sourceObservation": "The original close street photo clearly shows white DE PLANTAGE lettering inside the central dark/glazed doorway transom below the stone cornice. The modeled dark lettering above the entrance crossed cornice bands and did not occupy that real transom.",
+      "uncertainty": "Real lettering is established, but exact transom dimensions, present-day state and defining architectural status remain unverified. No guessed lettering or replacement panel is authored."
+    },
+    {
+      "text": "MICROPIA",
+      "action": "removed_current_call_without_replacement",
+      "sourceObservation": "The original close photo shows tiny MICROPIA markings low on several hall window panes. The wider street photo does not establish the large word sign on the right pavilion at the modeled position.",
+      "uncertainty": "Occlusions and photo scale do not prove absence of every real sign. The inspected evidence does not support the large pavilion placement; pane markings are not reconstructed."
+    }
+  ],
+  "references": [
+    {
+      "path": "artifacts/landmarks/micropia-ledenlokalen/references/signage-leden-2.jpg",
+      "sha256": "116b417b35db696ee24c8462b05c6cb0ba811cabb270bab566267a6073b3a358",
+      "originalCachePath": "/private/tmp/leden-2.jpg",
+      "role": "Original close street photo inspected with view_image; readable entrance transom and subordinate window labels."
+    },
+    {
+      "path": "artifacts/landmarks/micropia-ledenlokalen/references/signage-leden-front.jpg",
+      "sha256": "46d7d1417e3de6526893567d9f86b7005687fbab8fbb0b06c2746d173d636dfa",
+      "originalCachePath": "/private/tmp/leden-front.jpg",
+      "role": "Original wider street photo inspected with view_image; hall and right-pavilion context."
+    }
+  ],
+  "sourceArchive": {
+    "canonicalModelPath": "models/micropia-ledenlokalen",
+    "repository": "blackmad/map-recall2-source-data",
+    "state": "Original bytes staged locally in the project; this worker cannot write the private sibling. Private archival, sync and source commit linkage remain coordinator work.",
+    "sourceGap": "Exact original image download URLs, photo dates and rights have not been independently established. The prior audit associates restoration references with https://www.rappange.nl/projecten/ledenlokalen-artis-micropia/ but does not map these original image bytes to exact image URLs.",
+    "sourceCommit": null
+  },
+  "validation": {
+    "sourceInspection": "Both cached originals inspected; SHA-256 values match prior audit.",
+    "geometryScope": "Builder changes remove only the two sign calls and unused sign destructuring; all non-sign geometry is preserved.",
+    "acceptance": "Source/code correction only. Exact regenerated mesh comparison, independent review, gallery and live-game acceptance remain pending coordinator verification."
+  }
+}
