@@ -1,0 +1,16 @@
+{
+  "id": "concertgebouw",
+  "countedBy": "pending blind count",
+  "facades": [
+    {
+      "name": "west",
+      "bearing": 272.5,
+      "photo": "artifacts/landmark-lanes/concertgebouw/ref-w.jpg"
+    },
+    {
+      "name": "south (main front)",
+      "bearing": 182.5,
+      "photo": "artifacts/landmark-lanes/concertgebouw/ref-s.jpg"
+    }
+  ]
+}

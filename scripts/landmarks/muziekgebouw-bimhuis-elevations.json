@@ -1,0 +1,16 @@
+{
+  "id": "muziekgebouw-bimhuis",
+  "countedBy": "pending blind count",
+  "facades": [
+    {
+      "name": "north (IJ)",
+      "bearing": 2.5,
+      "photo": "artifacts/landmark-lanes/muziekgebouw-bimhuis/ref-n.jpg"
+    },
+    {
+      "name": "south (Bimhuis)",
+      "bearing": 182.5,
+      "photo": "artifacts/landmark-lanes/muziekgebouw-bimhuis/ref-s.jpg"
+    }
+  ]
+}

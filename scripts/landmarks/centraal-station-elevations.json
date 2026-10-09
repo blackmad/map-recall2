@@ -1,0 +1,11 @@
+{
+  "id": "centraal-station",
+  "countedBy": "pending blind count",
+  "facades": [
+    {
+      "name": "south (Stationsplein side)",
+      "bearing": 182.5,
+      "photo": "artifacts/landmark-lanes/centraal-station/ref-south.jpg"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "westerkerk",
+  "countedBy": "pending blind count",
+  "facades": [
+    {
+      "name": "east (Prinsengracht)",
+      "bearing": 87.5,
+      "photo": "artifacts/landmark-lanes/westerkerk/ref-e.jpg"
+    },
+    {
+      "name": "west (tower)",
+      "bearing": 267.5,
+      "photo": "artifacts/landmark-lanes/westerkerk/ref-w.jpg"
+    },
+    {
+      "name": "south",
+      "bearing": 177.5,
+      "photo": "artifacts/landmark-lanes/westerkerk/ref-s.jpg"
+    }
+  ]
+}
