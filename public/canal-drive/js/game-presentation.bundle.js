@@ -459,6 +459,7 @@
 
   // src/canalRecall/game/recallRules.ts
   var MAX_HEADING_OFF_ROAD = Math.PI / 4;
+  var ROUTE_QUIZ_TURN_RADIANS = Math.PI / 6;
   function hudWithholdsRouteName(input) {
     if (input.promptName) return true;
     if (input.candidateName && input.candidateName !== input.currentName) return true;

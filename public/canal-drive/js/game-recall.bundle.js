@@ -90,7 +90,9 @@
     }
     return null;
   }
-  var CLEARED = { candidateName: "", candidateSeconds: 0 };
+  var ROUTE_QUIZ_SETTLE_METRES = 8;
+  var ROUTE_QUIZ_RETEST_METRES = 4;
+  var CLEARED = { candidateName: "", candidateSeconds: 0, candidateMetres: 0 };
   var MAX_HEADING_OFF_ROAD = Math.PI / 4;
   var MIN_QUIZ_SPEED = 5;
   function advanceRouteQuiz(state, input, dt, recallStatus) {
@@ -106,15 +108,31 @@
       return { action: "idle", state: CLEARED };
     }
     if (roadName !== state.candidateName) {
-      return { action: "idle", state: { candidateName: roadName, candidateSeconds: 0 } };
+      return { action: "idle", state: { candidateName: roadName, candidateSeconds: 0, candidateMetres: 0 } };
     }
     const candidateSeconds = state.candidateSeconds + dt;
-    const settled = { candidateName: roadName, candidateSeconds };
+    const candidateMetres = (state.candidateMetres ?? 0) + Math.max(0, input.movedMetres ?? 0);
+    const settled = { candidateName: roadName, candidateSeconds, candidateMetres };
     const settleFor = input.alreadyRevealed ? input.retestSeconds : input.settleSeconds;
-    if (candidateSeconds < settleFor || Math.abs(input.speed) < MIN_QUIZ_SPEED) {
+    const settleMetres = (input.alreadyRevealed ? input.retestMetres : input.settleMetres) ?? Infinity;
+    const timeSettled = candidateSeconds >= settleFor;
+    const distanceSettled = candidateMetres >= settleMetres;
+    if (!timeSettled && !distanceSettled || Math.abs(input.speed) < MIN_QUIZ_SPEED) {
       return { action: "idle", state: settled };
     }
     return { action: "ask", name: roadName, state: settled };
+  }
+  var ROUTE_QUIZ_TURN_RADIANS = Math.PI / 6;
+  function routeQuizContext(input) {
+    if (input.onBridge) return "Crossing a waterway";
+    if (input.transit) return "Riding the corridor";
+    if (!input.hadCorridor) return "Where you set off";
+    if (input.corridorHeading === null) return "You made a turn";
+    const change = Math.abs(Math.atan2(
+      Math.sin(input.heading - input.corridorHeading),
+      Math.cos(input.heading - input.corridorHeading)
+    ));
+    return change > ROUTE_QUIZ_TURN_RADIANS ? "You made a turn" : "The street name changed";
   }
   function headingOffRoad(playerAngle, roadAngle) {
     let difference = Math.abs(playerAngle - roadAngle) % Math.PI;
@@ -695,22 +713,32 @@ Learned names, exploration collection, personal bests, route settings and the ho
       }
       const heading = this.player.angle;
       const name = this.track.getRoadName(this.player.x, this.player.y, heading);
+      if (name && name === this.quizCurrentName) this._quizCorridorHeading = heading;
       const interesting = !!name && name !== this.quizCurrentName;
       const nearestRoad = interesting ? this.track.getNearestRoad(this.player.x, this.player.y, heading) : null;
+      const transit = isTransit(this.travelMode);
       const decision = advanceRouteQuiz({
         candidateName: this.quizCandidateName,
-        candidateSeconds: this.quizCandidateTimer
+        candidateSeconds: this.quizCandidateTimer,
+        candidateMetres: this.quizCandidateMetres || 0
       }, {
         roadName: name,
         currentName: this.quizCurrentName,
         headingOffRoad: nearestRoad ? headingOffRoad(this.player.angle, nearestRoad.angle) : null,
         speed: this.player.speed,
         alreadyRevealed: this.revealedNames.has(name),
-        settleSeconds: isTransit(this.travelMode) ? Math.max(QUIZ_CANDIDATE_DELAY, 2.4) : QUIZ_CANDIDATE_DELAY,
-        retestSeconds: QUIZ_RETEST_DELAY
+        settleSeconds: transit ? Math.max(QUIZ_CANDIDATE_DELAY, 2.4) : QUIZ_CANDIDATE_DELAY,
+        retestSeconds: QUIZ_RETEST_DELAY,
+        // Street and water asks also settle on distance, so a fast rider is
+        // asked a few metres into the street rather than at its far end. Transit
+        // keeps its deliberate time-only pacing between line questions.
+        movedMetres: Math.abs(this.player.speed) * dt / PIXELS_PER_METER,
+        settleMetres: transit ? Infinity : ROUTE_QUIZ_SETTLE_METRES,
+        retestMetres: transit ? Infinity : ROUTE_QUIZ_RETEST_METRES
       }, dt, interesting ? this._recallStatusHere(name) : "none");
       this.quizCandidateName = decision.state.candidateName;
       this.quizCandidateTimer = decision.state.candidateSeconds;
+      this.quizCandidateMetres = decision.state.candidateMetres ?? 0;
       if (decision.action === "idle") return;
       const profile = travelProfile(this.travelMode);
       if (decision.action === "defer") {
@@ -759,7 +787,13 @@ Learned names, exploration collection, personal bests, route settings and the ho
         name: decision.name,
         subject: routeBridge ? "bridge" : profile.quizRouteSubject,
         question: routeBridge ? "Which bridge are you on?" : profile.quizRouteQuestion,
-        context: routeBridge ? "Crossing a waterway" : isTransit(this.travelMode) ? "Riding the corridor" : this.quizCurrentName ? "You made a turn" : "Where you set off",
+        context: routeQuizContext({
+          onBridge: !!routeBridge,
+          transit: isTransit(this.travelMode),
+          hadCorridor: !!this.quizCurrentName,
+          corridorHeading: this._quizCorridorHeading ?? null,
+          heading: this.player.angle
+        }),
         choices: routeBridge && bridgeAlternatives.length >= 2 ? [decision.name, ...bridgeAlternatives] : lineChoices,
         segmentIndex: quizRoad ? quizRoad.segIdx : -1,
         pointIndex: quizRoad ? quizRoad.ptIdx : 0
@@ -1343,6 +1377,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
       this.quizPromptKind = "route";
       this.quizCandidateName = "";
       this.quizCandidateTimer = 0;
+      this.quizCandidateMetres = 0;
       this.quizPromptName = "";
       this.quizPromptSubject = "";
       this.quizPromptSegmentIndex = -1;
