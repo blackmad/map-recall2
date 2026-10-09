@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import { SceneFrame, cellsNear, lngLatToLocal, localToLngLat, mercator, metreInMercator, validateIndex, type BridgeExtract, type ElevationIndex, type MeasuredBridge, type WaterCell } from './elevationData';
 import { quayWalls, shoreLength, waterSurface } from './canalGeometry';
-import { DeckIndex, decodeFallback, decodeProfile, fallbackDeckTop, fallbackDeckUnderside, measuredDeckMesh, pointInRing, surfacePose } from './bridgeDeck';
+import { DeckIndex, decodeFallback, decodeProfile, isFlatMeasured, fallbackDeckTop, fallbackDeckUnderside, measuredDeckMesh, pointInRing, surfacePose } from './bridgeDeck';
 import type { MeshData } from './meshBuilder';
 
 const frameIndex = { origin: [4.9, 52.37] as [number, number], metresPerDegree: [111320 * Math.cos(52.37 * Math.PI / 180), 111320] as [number, number] };
@@ -134,6 +134,15 @@ test('fallback footprint deck: flat top at street level, fascia below it', () =>
     if (Math.abs(nz) > 1e-9) { assert.ok(nz < 0 && cz < 0, 'soffit faces down'); continue; }
     assert.ok(nx * (cx - 5) + ny * (cy - 3) > 0, 'fascia faces out');
   }
+});
+
+test('clockwise footprints are normalised, near-flat measured decks join them', () => {
+  const cw = decodeFallback({ id: 'CW', name: '', type: '', ring: [0, 0, 0, 60, 100, 60, 100, 0] }, 0.1);
+  const under = fallbackDeckUnderside(cw);
+  for (const [nx, ny, nz, cx, cy] of faceNormals(under)) if (Math.abs(nz) < 1e-9) assert.ok(nx * (cx - 5) + ny * (cy - 3) > 0, 'fascia faces out');
+  const low = { ...humpBridge('steel-deck'), outline: [0, -30, 300, -30, 300, 30, 0, 30], p: humpBridge().p.map((v, i) => (i % 4 === 3 ? Math.min(v, 25) : v)) };
+  assert.ok(isFlatMeasured(low));
+  assert.ok(!isFlatMeasured({ ...humpBridge(), outline: low.outline }));
 });
 
 // Named regression locations against the published extract.

@@ -103,6 +103,8 @@ class Vehicle3D {
     this._scene = null;
     this._modelRoot = null;
     this.altitudeM = 0.22;
+    /** Nose-up pitch (radians) on a bridge ramp; visual only (see elevation/). */
+    this.surfacePitch = 0;
     /** Set per frame by the game for the camera zoom; see vehicleZoomScale.ts. */
     this.zoomScale = 1;
     this.layer = this._makeLayer();
@@ -125,6 +127,11 @@ class Vehicle3D {
   setAltitude(metres) {
     const value = Number(metres);
     this.altitudeM = Number.isFinite(value) ? value : 0.22;
+  }
+
+  setSurfacePose(metres, pitch) {
+    this.setAltitude(metres);
+    this.surfacePitch = Number.isFinite(pitch) ? pitch : 0;
   }
 
   update(lngLat, angle, visible) {
@@ -286,6 +293,8 @@ class Vehicle3D {
           .makeTranslation(coordinate.x, coordinate.y, coordinate.z)
           .scale(new THREE.Vector3(units, -units, units))
           .multiply(new THREE.Matrix4().makeRotationZ(headingOffset - owner.angle))
+          // In the Z-up map frame, negative Y rotation raises native +X (the bike's nose).
+          .multiply(new THREE.Matrix4().makeRotationY(-(owner.surfacePitch || 0)))
           .multiply(new THREE.Matrix4().makeRotationX(Math.PI / 2));
         camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(transform);
         renderer.resetState();
