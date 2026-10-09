@@ -77,8 +77,12 @@ export class InventoryTrees {
     for(const m of this.meshes){this.scene.remove(m);m.dispose?.();}
     this.meshes=[];this.debugTrees=0;
   }
+  // The start-of-ride flight holds the trees where it will land: its overview
+  // is below MIN_ZOOM (nothing draws), and planning each frame of the flight
+  // cleared the landing's trees, then rebuilt them as it touched down.
+  setSuspended(value) {if(this.suspended===!!value)return;this.suspended=!!value;if(!this.suspended)this.update();}
   update() {
-    if (!this.enabled || !this.ready) return;
+    if (!this.enabled || !this.ready || this.suspended) return;
     if (this.map.getZoom()<MIN_ZOOM) {this.clear();return;}
     const b=crownBounds(this.map),c=this.map.getCenter();
     const tile=(lng,lat)=>[Math.floor((lng+180)/360*32768),Math.floor((1-Math.asinh(Math.tan(lat*Math.PI/180))/Math.PI)/2*32768)];

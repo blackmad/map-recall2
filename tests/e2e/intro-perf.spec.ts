@@ -27,7 +27,7 @@ for (const [run, intro] of [true, false, true, false].entries()) {
       w.__phase = {};
       // Pop-in proxy: basemap tiles still loading when the flight starts and
       // when it lands, and how long after landing until the map is idle.
-      const loading = (g: any) => { const map = g.vectorMap?.map; if (!map?.style) return null; let n = 0; for (const cache of Object.values(map.style.sourceCaches || map.style.tileManagers || {}) as any[]) for (const tile of Object.values(cache._tiles || {}) as any[]) if (tile.state === 'loading' || tile.state === 'reloading') n++; return n; };
+      const loading = (g: any) => { const map = g.vectorMap?.map; if (!map?.style) return null; let n = 0; for (const cache of Object.values(map.style.sourceCaches || map.style.tileManagers || {}) as any[]) for (const tile of Object.values(cache._tiles || cache._inViewTiles?._tiles || {}) as any[]) if (tile.state === 'loading' || tile.state === 'reloading') n++; return n; };
       const poll = () => { const g = w.canalRecallGame; if (g) {
         if (g._intro && !w.__phase.flightStart) { w.__phase.flightStart = performance.now(); w.__phase.loadingAtStart = loading(g); }
         if (w.__phase.flightStart && !g._intro && !w.__phase.flightEnd) { w.__phase.flightEnd = performance.now(); w.__phase.loadingAtLanding = loading(g); g.vectorMap.map.once('idle', () => { w.__phase.idleAfterLanding = Math.round(performance.now() - w.__phase.flightEnd); }); }
