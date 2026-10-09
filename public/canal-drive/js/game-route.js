@@ -472,7 +472,13 @@ class GameRouteRuntime {
       if (!address) { this._setRouteError('Enter a home address first.'); return; }
       try {
         this._setRouteError('Finding your home base…');
+        // Learning history (signed-in cloud pull) must land before the first
+        // home pick, or novelty sees an empty past. Short, bounded wait that
+        // overlaps the geocode round trip.
+        const historyWait = this.recall && typeof this.recall.historyReady === 'function'
+          ? this.recall.historyReady(1500) : Promise.resolve();
         this.homeBase = await this._geocodeHomeAddress(address);
+        await historyWait;
         this.homeLeg = 'outbound';
       } catch (error) {
         this._homeLearningRadiusKm = null;
@@ -604,7 +610,8 @@ class GameRouteRuntime {
       this._homeLearningRadiusKm = Route.homeLearningRadiusKm(from, samples);
       maxKm = this._homeLearningRadiusKm * Route.HOME_RADIUS_OVERSHOOT;
     }
-    return Route.pickReviewRoute({ pois: from ? this.routePois : choices, due, from, maxKm });
+    const recentIds = this.routePattern === 'home' && !fromOverride ? this._recentHomeDestinationIds() : [];
+    return Route.pickReviewRoute({ pois: from ? this.routePois : choices, due, from, maxKm, recentIds });
   }
 
   /** Stretches of a review via's street for the planner to ride along,
@@ -680,13 +687,25 @@ class GameRouteRuntime {
     return CanalRecallRoute.pickDestinationNear(this.routePois, from, undefined, alsoExcludeId);
   }
 
+  /** Where recent rides from this home ended, most recent first. */
+  _recentHomeDestinationsKey() {
+    return CanalRecallRoute.recentDestinationsKey(
+      this.cityId || 'amsterdam', (this._prefs().homeAddress || '').trim());
+  }
+
+  _recentHomeDestinationIds() {
+    try {
+      return CanalRecallRoute.readRecentDestinations(localStorage, this._recentHomeDestinationsKey());
+    } catch (_) { return []; }
+  }
+
   /** Home pattern: closer + novel destinations inside an expanding learning ring. */
   _pickHomeDestination(from, alsoExcludeId = null) {
     const samples = this.recall && typeof this.recall.homeMasterySamples === 'function'
       ? this.recall.homeMasterySamples(this.cityId || 'amsterdam')
       : [];
     const picked = CanalRecallRoute.pickHomeDestination(
-      this.routePois, from, samples, undefined, alsoExcludeId);
+      this.routePois, from, samples, undefined, alsoExcludeId, this._recentHomeDestinationIds());
     if (picked) {
       this._homeLearningRadiusKm = picked.radiusKm;
       try {
@@ -975,6 +994,12 @@ class GameRouteRuntime {
   _launchPoiRoute(from, to, { explicitDestination = false } = {}) {
     this.routeFrom = from;
     this.routeTo = to;
+    // Remember outbound home rides so the next launch picks somewhere else.
+    if (this.routePattern === 'home' && this.homeBase && from === this.homeBase && to && to.id) {
+      try {
+        CanalRecallRoute.recordRecentDestination(localStorage, this._recentHomeDestinationsKey(), to.id);
+      } catch (_) { /* ignore */ }
+    }
     this._applyPrefsToRuntime(this._prefs());
     document.querySelector('#canal-card p').textContent = this.travelMode === 'car' ? 'Which street are you on now?' : 'Which waterway are you on now?';
     this._setRouteError('');
