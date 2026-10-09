@@ -411,6 +411,15 @@ def main():
         associations[path].update(groups.get(stem(path), set()))
         for token in [*path.parts, *path.stem.split('_')]:
             associations[path].update(groups.get(token, set()))
+    # Landmark lanes keep their reference photos as artifacts/landmark-lanes/<id>/ref*.jpg (renders and
+    # contact sheets beside them are ours, not sources).
+    lane_refs = [(d, sorted(p for p in d.glob('ref*') if p.is_file())) for d in (repo / 'artifacts/landmark-lanes').glob('*') if d.is_dir()]
+    for root, paths in lane_refs:
+        for path in paths:
+            if path.suffix.lower() in SOURCE_SUFFIXES and not RENDER_NAMES.search(path.name):
+                files[path] = 'cached-reference'
+                parsed[path] = None
+                associations[path].update(keys.get(root.name, set()))
     for root in (repo / 'artifacts/landmarks').glob('*/references'):
         for path in sorted(root.rglob('*')):
             if path.is_file() and path.suffix.lower() in SOURCE_SUFFIXES:
@@ -427,7 +436,7 @@ def main():
         for value in walk(data):
             if not isinstance(value, str) or len(value) > 500 or '\n' in value:
                 continue
-            if not (value.startswith('/tmp/') or value.startswith('docs/references/') or value.startswith('artifacts/landmarks/')):
+            if not (value.startswith('/tmp/') or value.startswith('docs/references/') or value.startswith('artifacts/landmarks/') or value.startswith('artifacts/landmark-lanes/')):
                 continue
             path = Path(value) if value.startswith('/') else repo / value
             if path.suffix.lower() not in SOURCE_SUFFIXES:
