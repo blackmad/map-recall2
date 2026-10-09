@@ -25,16 +25,24 @@ const routingSegmentsOf = segments => segments.map((segment, segmentIndex) => ({
   metadata: { segmentIndex, name: segment.name || '', wayId: segment.wayId || '' },
 }));
 
+// Ferry crossings are not street surface and must not be stitched to streets
+// they pass over; CanalRecallFerry.connectFerryGraph adds them afterwards.
+// Blank their geometry rather than filtering them out, so every other
+// segment keeps its index (graph edges and surface contacts carry indexes).
+const landOnly = segments => segments.map(segment => (segment.type === 'ferry' ? { ...segment, points: [] } : segment));
+const connectFerries = (graph, segments) => (window.CanalRecallFerry
+  ? window.CanalRecallFerry.connectFerryGraph(graph, segments)
+  : graph);
+
 class RoadNetwork {
   static async prepareRoutingGraph(segments, cancelled) {
-    const land = segments.filter(s => s.type !== 'ferry');
-    const graph = await GRAPH.buildRoadGraphAsync(routingSegmentsOf(land),
+    const graph = await GRAPH.buildRoadGraphAsync(routingSegmentsOf(landOnly(segments)),
       { mergeSize: 18, junctionStitchRadius: JUNCTION_STITCH_RADIUS }, { cancelled });
-    return window.CanalRecallFerry.connectFerryGraph(graph, segments);
+    return connectFerries(graph, segments);
   }
 
   static prepareSurfaceIndex(segments, routingGraph, cancelled) {
-    return SURFACE.buildRoadSpatialIndexAsync(segments.filter(s => s.type !== 'ferry'), ROAD_GRID_CELL, routingGraph.connectors || [], { cancelled });
+    return SURFACE.buildRoadSpatialIndexAsync(landOnly(segments), ROAD_GRID_CELL, routingGraph.connectors || [], { cancelled });
   }
 
   constructor(segments, startPoint, finishPoint, tiles, routingGraph = null, surfaceIndex = null) {
@@ -110,7 +118,7 @@ class RoadNetwork {
     // Surface and router agree: every gap the routing graph bridges between
     // two ways (merged ends, stitched T-junctions) is rideable too.
     const connectors = this.segments.length ? (this._routingGraph().connectors || []) : [];
-    this.roadIndex = SURFACE.buildRoadSpatialIndex(this.segments.filter(s => s.type !== 'ferry'), ROAD_GRID_CELL, connectors);
+    this.roadIndex = SURFACE.buildRoadSpatialIndex(landOnly(this.segments), ROAD_GRID_CELL, connectors);
   }
 
   _computeBounds() {
@@ -321,8 +329,8 @@ class RoadNetwork {
   // each candidate it tries.
   _routingGraph() {
     if (this._graphCache) return this._graphCache;
-    this._graphCache = window.CanalRecallFerry.connectFerryGraph(GRAPH.buildRoadGraph(
-      routingSegmentsOf(this.segments.filter(s => s.type !== 'ferry')),
+    this._graphCache = connectFerries(GRAPH.buildRoadGraph(
+      routingSegmentsOf(landOnly(this.segments)),
       { mergeSize: 18, junctionStitchRadius: JUNCTION_STITCH_RADIUS }
     ), this.segments);
     return this._graphCache;
