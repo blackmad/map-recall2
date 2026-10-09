@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import * as T from 'three';
 import type {BuildingTools} from './landmarks/cultural-builders';
+import {buildNassaukerk} from './landmarks/nassaukerk-builder';
 import {buildKoningskerk} from './landmarks/koningskerk-builder';
 import {buildSintOlofskapel} from './landmarks/sint-olofskapel-builder';
 
@@ -9,6 +10,7 @@ import {buildSintOlofskapel} from './landmarks/sint-olofskapel-builder';
 // maxY is the intended top above local ground (3DBAG eave/ridge reading, plus any turret/spire seen in photographs).
 const cases = [
   {id: 'sint-olofskapel', build: buildSintOlofskapel, minY: 24, maxY: 25.5},
+  {id: 'nassaukerk', build: buildNassaukerk, minY: 27.2, maxY: 27.6}, // weathervane finial, as 3DBAG's 27.4 m
   {id: 'koningskerk', build: buildKoningskerk, minY: 20, maxY: 20.6}, // photo-estimated 20 m tower over the 11 m hall
 ];
 for (const c of cases) {
