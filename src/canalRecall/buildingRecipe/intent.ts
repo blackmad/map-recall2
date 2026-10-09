@@ -66,6 +66,8 @@ export interface FrontIntent {
   hoist: boolean;
   shutters?: 'none' | 'ground' | 'all';
   shopfront?: { colour: string; fascia: boolean };
+  /** The same house module repeated along this front (rows built together, double fronts). */
+  repeat?: { count: number | 'fit'; mirrorAlternate?: boolean };
   /** Per-front palette when one owner has visibly different fronts. */
   palette?: Partial<PaletteIntent>;
 }
@@ -159,6 +161,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     oneOf(f.windows, WINDOWS, `${at}.windows`);
     if (typeof f.hoist !== 'boolean') problems.push(`${at}.hoist must be boolean`);
     if (f.shutters !== undefined) oneOf(f.shutters, ['none', 'ground', 'all'], `${at}.shutters`);
+    if (f.repeat) { if (f.repeat.count !== 'fit') count(f.repeat.count, `${at}.repeat.count`, 1, 20); }
     if (f.share !== undefined && !(f.share > 0 && f.share <= 1)) problems.push(`${at}.share must be in (0,1]`);
     if (f.shopfront) colour(f.shopfront.colour, `${at}.shopfront.colour`);
     for (const [k, v] of Object.entries(f.palette ?? {})) colour(v, `${at}.palette.${k}`);

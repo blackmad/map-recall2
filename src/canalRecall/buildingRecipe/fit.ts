@@ -195,43 +195,55 @@ export function fitIntent(intent: CanalHouseIntent, facts: BuildingFacts): {reci
     // Gabled crowns rise above the roof meeting line; their top is the higher
     // of the profile peak and a proportion of the width, capped by the ridge.
     const gabled = !['cornice', 'flat'].includes(front.gable);
-    const crownTop = gabled ? Math.max(profileTop + 0.3, Math.min(facts.heights.ridgeM + 0.3, eaves + width * (front.gable === 'step' ? 1 : 0.9))) : eaves + (front.crownCap && front.crownCap !== 'flat' ? 1.1 : 0);
+    // Repeated module: one house design laid out `count` times along this front
+    // (19th-century rows, double fronts). Layout is fitted once per module width.
+    const count = front.repeat ? (front.repeat.count === 'fit' ? Math.max(1, Math.round(width / 6)) : front.repeat.count) : 1;
+    const mw = width / count, alternate = !!front.repeat?.mirrorAlternate;
+    const place = (k: number, x: number, w = 0) => k * mw + (alternate && k % 2 ? mw - x - w : x);
+    const crownTop = gabled ? Math.max(profileTop + 0.3, Math.min(facts.heights.ridgeM + 0.3, eaves + mw * (front.gable === 'step' ? 1 : 0.9))) : eaves + (front.crownCap && front.crownCap !== 'flat' ? 1.1 : 0);
     const corniceH = {none: 0, simple: 0.35, bracketed: 0.55, heavy: 0.8}[front.cornice];
-    const layout = layoutFront(front, width, eaves - (gabled ? 0.2 : corniceH + 0.15));
-    const flip = (o: CanalhouseOpening): CanalhouseOpening => mirrored ? {...o, leftM: width - o.leftM - o.widthM} : o;
+    const layout = layoutFront(front, mw, eaves - (gabled ? 0.2 : corniceH + 0.15));
+    const moduleOpenings = Array.from({length: count}, (_, k) => layout.openings.map(o => ({...o, id: count > 1 ? `${o.id}-m${k}` : o.id, leftM: place(k, o.leftM, o.widthM)}))).flat();
+    const flipX = (x: number, w: number) => mirrored ? width - x - w : x;
+    const flip = (o: CanalhouseOpening): CanalhouseOpening => ({...o, leftM: flipX(o.leftM, o.widthM)});
     const elevation: CanalhouseElevation = {
       id: front.id, polygonIndex, edgeIndex, ...(endIndex !== (edgeIndex + 1) % n ? {endEdgeIndex: endIndex, frontageToleranceM: surveyed(round(Math.min(.3, deviation + .01)))} : {}),
       ...(deviation > .3 ? {frontagePlan: surveyed({maxInsetM: round(Math.min(1, Math.max(maxIn, .01) + .02)), maxOutsetM: round(Math.min(.5, maxOut + .02))})} : {}),
-      openings: seen(layout.openings.map(flip)),
+      openings: seen(moduleOpenings.map(flip).map(o => pieces.length > 1 ? {...o, id: `${front.id}-${o.id}`} : o)),
       ...(front.palette ? {palette: seen(paletteFor(intent, front))} : {}),
     };
     if (corniceH > 0) elevation.cornice = seen({bottomM: round(eaves - corniceH), heightM: corniceH, depthM: round(corniceH * 0.5), brackets: front.cornice === 'bracketed' ? Math.max(2, Math.round(width / 1.6)) : 0});
     // Non-straight frontages need an explicit wall top (the library only reads
     // roof edges lying on the chord); a flat crown at the eaves supplies it.
-    const profile = crownProfile(front, width, eaves, crownTop) ?? (deviation > 0.03 ? [[0, eaves], [width, eaves]] as CanalhousePoint[] : null);
+    const moduleProfile = crownProfile(front, mw, eaves, crownTop);
+    const profile = moduleProfile ? Array.from({length: count}, (_, k) => moduleProfile.map(([x, y]) => [place(k, x), y] as CanalhousePoint)).flat() : [[0, eaves], [width, eaves]] as CanalhousePoint[];
     if (profile) {
       elevation.crown = seen({profile: profile.map(([x, y]) => [Math.min(width, Math.max(0, mirrored ? width - x : x)), Math.max(eaves, y)] as CanalhousePoint).sort((p, q) => p[0] - q[0]), depthM: 0.18, trimWidthM: 0.08, surface: 'wall'});
       // Attic windows inside the crown.
       const attic = front.atticWindows ?? 0, rise = crownTop - eaves;
       if (attic > 0 && rise > 1.2) {
-        const w = clamp(width * 0.14, 0.5, 0.9), h = clamp(rise * 0.4, 0.6, 1.4), gap = w * 0.5, total = attic * w + (attic - 1) * gap;
+        const w = clamp(mw * 0.14, 0.5, 0.9), h = clamp(rise * 0.4, 0.6, 1.4), gap = w * 0.5, total = attic * w + (attic - 1) * gap;
         // Neck gables stack their attic lights up the neck; other crowns set them side by side.
         const stack = front.gable === 'neck' || front.gable === 'raised-neck', hh = stack ? Math.min(h, (rise - 0.8) / attic - 0.3) : h;
-        for (let k = 0; k < attic; k++) elevation.openings.value.push({id: `attic-${k}`, kind: 'window', leftM: stack ? (width - w) / 2 : (width - total) / 2 + k * (w + gap), bottomM: eaves + 0.25 + (stack ? k * (hh + 0.3) : 0), widthM: w, heightM: stack ? hh : h, trimWidthM: 0.06, ...WINDOW_BARS[front.windows === 'shop' ? 'sash' : front.windows], frameSurface: 'trim', barSurface: 'trim'});
+        for (let m = 0; m < count; m++) for (let k = 0; k < attic; k++) elevation.openings.value.push({id: `${pieces.length > 1 ? front.id + "-" : ""}attic-${k}${count > 1 ? `-m${m}` : ''}`, kind: 'window', leftM: flipX(place(m, stack ? (mw - w) / 2 : (mw - total) / 2 + k * (w + gap), w), w), bottomM: eaves + 0.25 + (stack ? k * (hh + 0.3) : 0), widthM: w, heightM: stack ? hh : h, trimWidthM: 0.06, ...WINDOW_BARS[front.windows === 'shop' ? 'sash' : front.windows], frameSurface: 'trim', barSurface: 'trim'});
       }
     }
     if (front.dormers) {
-      const k = front.dormers, w = clamp(width / (k * 2.2), 0.9, 1.6), gap = (width - k * w) / (k + 1);
-      elevation.dormers = seen(Array.from({length: k}, (_, i) => ({id: `dormer-${i}`, leftM: round(gap + i * (w + gap)), widthM: round(w), bottomM: round(Math.max(eaves, survey.shellTopM) + 0.05), heightM: 1.45, depthM: 1.3, roofRiseM: 0.45, setbackM: 0.35, trimWidthM: 0.07, verticalBars: [.5], wallSurface: 'trim' as const, roofSurface: 'roof' as const})));
+      const k = front.dormers, w = clamp(mw / (k * 2.2), 0.9, 1.6), gap = (mw - k * w) / (k + 1);
+      elevation.dormers = seen(Array.from({length: k * count}, (_, j) => ({id: `dormer-${j}`, leftM: round(flipX(place(Math.floor(j / k), gap + (j % k) * (w + gap), w), w)), widthM: round(w), bottomM: round(Math.max(eaves, survey.shellTopM) + 0.05), heightM: 1.45, depthM: 1.3, roofRiseM: 0.45, setbackM: 0.35, trimWidthM: 0.07, verticalBars: [.5], wallSurface: 'trim' as const, roofSurface: 'roof' as const})));
     }
-    if (front.hoist) elevation.hoists = seen([{id: 'hoist', centerM: width / 2, heightM: round(gabled ? crownTop - 0.9 : eaves + 0.1), widthM: 0.14, beamHeightM: 0.18, projectionM: 1.1, setbackM: 0.1, surface: 'door'}]);
+    if (front.hoist) elevation.hoists = seen(Array.from({length: count}, (_, m) => ({id: count > 1 ? `hoist-m${m}` : 'hoist', centerM: flipX(place(m, mw / 2), 0), heightM: round(gabled ? crownTop - 0.9 : eaves + 0.1), widthM: 0.14, beamHeightM: 0.18, projectionM: 1.1, setbackM: 0.1, surface: 'door' as const})));
     if ((front.basement === 'stoop' || front.basement === 'stoop-and-windows') && layout.doorLeft !== null && layout.groundBase > 0) {
-      const dl = mirrored ? width - layout.doorLeft - layout.doorWidth : layout.doorLeft;
+      // The library admits one entrance per elevation: the first module's stoop.
+      const dl = flipX(place(0, layout.doorLeft, layout.doorWidth), layout.doorWidth);
       elevation.entrance = seen({leftM: round(dl - 0.15), widthM: round(layout.doorWidth + 0.3), riseM: round(layout.groundBase), runM: round(Math.min(1.4, layout.groundBase * 1.4)), approximateRiserM: 0.18, surface: 'stone'});
     }
     // Stone plinth band under ground storey, or across a shopfront.
     const plinth = layout.groundBase > 0 ? layout.groundBase : 0.3;
     elevation.bands = seen([{id: 'plinth', leftM: 0, bottomM: 0, widthM: Math.floor(width * 1000) / 1000, heightM: round(plinth), depthM: 0.06, surface: 'stone'}]);
+    // A front with its own palette gets a thin masonry facing: the shell and
+    // roof closures behind it are shared by the whole owner and keep the main colour.
+    if (front.palette?.brick) elevation.bands.value.push({id: 'facing', leftM: 0, bottomM: round(plinth), widthM: Math.floor(width * 1000) / 1000, heightM: round(eaves - plinth - 0.02), depthM: 0.03, surface: 'wall'});
     if (front.shopfront?.fascia) {
       const top = layout.groundBase + layout.storeyHeights[layout.groundBase > 0 ? 1 : 0];
       elevation.bands.value.push({id: 'fascia', leftM: 0, bottomM: round(top - 0.45), widthM: Math.floor(width * 1000) / 1000, heightM: 0.4, depthM: 0.08, surface: 'trim'});

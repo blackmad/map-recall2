@@ -118,7 +118,8 @@ export function crownVerges(group: T.Group, recipe: CanalHouseRecipe, material: 
           if (slab.length < 3) continue;
           // Within a slab the crown is linear between its end heights.
           const xm0 = x0 + 1e-6, xm1 = x1 - 1e-6, y0 = crownAt(xm0), y1 = crownAt(xm1);
-          const line = (q: P2) => (Number.isFinite(y0) && Number.isFinite(y1) ? y0 + (y1 - y0) * (q[0] - xm0) / (xm1 - xm0) : -Infinity) - q[1];
+          // Outside this front's span the crown is unknown: keep masonry.
+          const line = (q: P2) => (Number.isFinite(y0) && Number.isFinite(y1) ? y0 + (y1 - y0) * (q[0] - xm0) / (xm1 - xm0) : Infinity) - q[1];
           for (const [part, sink] of [[clipHalf(slab, line), below], [clipHalf(slab, q => -line(q)), above]] as const) {
             for (let i = 1; i + 1 < part.length; i++) for (const q of [part[0], part[i], part[i + 1]]) { const w = toWorld(q); sink.push(w.x, w.y, w.z); }
           }

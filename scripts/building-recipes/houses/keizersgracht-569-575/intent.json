@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "kind": "canal-house",
+  "id": "keizersgracht-569-575",
+  "pandId": "0363100012176752",
+  "address": "Keizersgracht 569–575",
+  "sources": [
+    {"id": "pano-2023-03-27", "kind": "street-panorama", "capturedAt": "2023-03-27", "image": "artifacts/building-recipes/keizersgracht-569-575/photo-front0.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
+    {"id": "pano-2025-01-15", "kind": "street-panorama", "capturedAt": "2025-01-15", "image": "public/canal-drive/ordinary-buildings-data/references/0363100012176752/opposite-b_20250115_1329_Track12_Sphere_00032.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}
+  ],
+  "fronts": [
+    {
+      "id": "west", "street": "Keizersgracht", "share": 0.395,
+      "gable": "cornice",
+      "storeys": 4, "bays": 5,
+      "doorBay": 2, "tallGround": true,
+      "basement": "windows", "cornice": "heavy", "windows": "arched", "hoist": false
+    },
+    {
+      "id": "east", "street": "Keizersgracht", "share": 0.605,
+      "gable": "cornice", "crownCap": "pediment", "dormers": 2,
+      "storeys": 4, "bays": 5,
+      "doorBay": 0, "tallGround": true,
+      "basement": "none", "cornice": "heavy", "windows": "sash-small-panes", "hoist": false,
+      "palette": {"brick": "cream-painted", "stone": "sandstone"}
+    }
+  ],
+  "roof": {"material": "slate"},
+  "palette": {"brick": "orange-brick", "frame": "white", "door": "dark-brown", "stone": "sandstone"},
+  "notes": ["Two monument facades on one Pand: 1890s red-brick west front with arched windows; pale east front with pilasters, pediment and two dormers. Pilasters, festoons, finial stacks and the second/third doors are beyond the canal-house schema."]
+}
