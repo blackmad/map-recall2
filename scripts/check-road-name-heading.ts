@@ -27,8 +27,8 @@ import {
 } from '../src/canalRecall/routing/roadSurface.ts';
 
 // The runtime registers itself on `window` when loaded and reads the quiz
-// timing constants from the page's `constants.js`; give it both.
-Object.assign(globalThis, { window: globalThis, QUIZ_CANDIDATE_DELAY: 0.65, QUIZ_RETEST_DELAY: 0.3 });
+// timing constants and world scale from the page's `constants.js`; give it both.
+Object.assign(globalThis, { window: globalThis, QUIZ_CANDIDATE_DELAY: 0.65, QUIZ_RETEST_DELAY: 0.3, PIXELS_PER_METER: 3 });
 const { GameRecallRuntime } = await import('../src/canalRecall/game/recallRuntime.ts');
 
 // ---- 1. Behaviour ---------------------------------------------------------
