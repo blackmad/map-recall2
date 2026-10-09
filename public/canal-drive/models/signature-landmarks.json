@@ -17234,6 +17234,126 @@
       "triangles": 12289,
       "bytes": 158008,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "meerpadkerk": {
+      "id": "meerpadkerk",
+      "name": "Meerpadkerk",
+      "landmarkId": "extract_landmarks_1566771183",
+      "modelUrl": "./models/meerpadkerk.glb",
+      "suppressOsmIds": [
+        "w280806252",
+        "NL.IMBAG.Pand.0363100012162810"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.934087,
+          52.392235
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 17.09306855713878,
+        "widthMetres": 9.714956039825182
+      },
+      "surveyed": {
+        "anchor": [
+          4.934087,
+          52.392235
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Meerpad 9 VBO 0363010000740655 proves BAG parent 0363100012162810. Exact current BAG hall/rear annex ring; local east/south metres, AHN5 2023 gabled main roof and lower flat annex. Entrance faces ENE toward Meerpad. Separate 9A/9B retained."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "white": "#eeeade",
+        "dark": "#253731",
+        "glass": "#839390",
+        "frame": "#b7b4a5",
+        "slate": "#645e55",
+        "concrete": "#9b9e94"
+      },
+      "attribution": {
+        "title": "Meerpadkerk",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.doopsgezindamsterdam.nl/historie/meerpadkerk/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free native-scale timber hall church, arched fanlight windows, horizontal white boards, profiled pediment/entry and gray tiled gable roof. Surveyed BAG parent includes lower rear annex. Separate 9A/9B retained. Photo-guided joinery; no imported mesh or photograph pixels."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.934188647204744,
+              52.39228143250166
+            ],
+            [
+              4.934019995026297,
+              52.39225275487275
+            ],
+            [
+              4.934025614975,
+              52.39224047228242
+            ],
+            [
+              4.933963345858521,
+              52.39222987126463
+            ],
+            [
+              4.933978478964986,
+              52.392195236842845
+            ],
+            [
+              4.9340407480364705,
+              52.39220583785267
+            ],
+            [
+              4.934046338684712,
+              52.392193546161515
+            ],
+            [
+              4.934214961274504,
+              52.392222223640616
+            ],
+            [
+              4.934188647204744,
+              52.39228143250166
+            ]
+          ]
+        ]
+      },
+      "bounds": {
+        "min": [
+          -8.504905700683594,
+          -2.0980834847250662e-7,
+          -5.345852375030518
+        ],
+        "max": [
+          9.442448616027832,
+          7.67980432510376,
+          4.678685188293457
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.934087,
+          52.392235
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 90,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 17.947354316711426,
+        "heightMetres": 7.679804534912108,
+        "depthMetres": 10.024537563323975,
+        "depthCoverage": 1.0318664873242558
+      },
+      "triangles": 7086,
+      "bytes": 82004,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
