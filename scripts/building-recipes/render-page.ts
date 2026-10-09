@@ -1,6 +1,7 @@
 /** Browser side of render.ts: load GLBs into one scene and render named views. Bundled by esbuild at run time. */
 import * as T from 'three';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
+import {MeshoptDecoder} from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 
 interface Model { base64: string; position?: number[]; rotationY?: number; scale?: number[] }
 interface View { eye: number[]; target: number[]; fov: number; width: number; height: number }
@@ -16,7 +17,7 @@ async function render(models: Model[], views: View[], textures?: Record<string, 
   const sun = new T.DirectionalLight('#fff4e2', 2.2); sun.position.set(-30, 60, -40); scene.add(sun);
   const ground = new T.Mesh(new T.PlaneGeometry(400, 400), new T.MeshStandardMaterial({color: '#8d8b86', roughness: 1}));
   ground.rotation.x = -Math.PI / 2; ground.position.y = -0.02; scene.add(ground);
-  const loader = new GLTFLoader(), texLoader = new T.TextureLoader();
+  const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder), texLoader = new T.TextureLoader();
   const maps: Record<string, T.Texture> = {};
   for (const [slot, url] of Object.entries(textures ?? {})) {
     const t = await texLoader.loadAsync(url); t.wrapS = t.wrapT = T.RepeatWrapping; t.colorSpace = T.SRGBColorSpace; t.anisotropy = 8; maps[slot] = t;

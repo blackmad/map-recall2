@@ -43,16 +43,17 @@ export interface PanoramaReference { front: string; panoId: string; timestamp: s
 /** Choose the recent municipal panorama that sees the frontage most squarely, and crop it. */
 export async function fetchPanorama(id: string, front: BuildingFacts['fronts'][number], frontId: string): Promise<PanoramaReference | null> {
   const [a, b] = front.endpointsRD, mid: RD = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2], n = front.outwardNormalRD;
-  const [lng, lat] = rdToLngLat({x: mid[0] + n[0] * 12, y: mid[1] + n[1] * 12});
-  const listing = JSON.parse((await fetchBytes(`https://api.data.amsterdam.nl/panorama/panoramas/?near=${lng},${lat}&radius=25&page_size=200&timestamp_after=2019-01-01`)).toString());
+  const target = Math.min(35, Math.max(14, front.widthM * 0.9));
+  const [lng, lat] = rdToLngLat({x: mid[0] + n[0] * target, y: mid[1] + n[1] * target});
+  const listing = JSON.parse((await fetchBytes(`https://api.data.amsterdam.nl/panorama/panoramas/?near=${lng},${lat}&radius=30&page_size=250&timestamp_after=2019-01-01`)).toString());
   const candidates = (listing._embedded?.panoramas ?? []).map((p: any) => {
     const c = toRD(p.geometry.coordinates.slice(0, 2)), d = [c[0] - mid[0], c[1] - mid[1]];
     const depth = d[0] * n[0] + d[1] * n[1], lateral = Math.abs(d[0] * -n[1] + d[1] * n[0]);
     // Leaf-off months matter most on tree-lined canals; then a square view
     // at moderate distance; then recency.
     const month = Number(String(p.timestamp).slice(5, 7)), leafOff = month <= 4 || month >= 11;
-    return {p, c, depth, score: lateral + 0.35 * Math.abs(depth - 14) - (leafOff ? 6 : 0) - (p.timestamp > '2023' ? 1 : 0)};
-  }).filter((x: any) => x.depth > 4 && x.depth < 40).sort((x: any, y: any) => x.score - y.score);
+    return {p, c, depth, score: lateral + 0.35 * Math.abs(depth - target) - (leafOff ? 6 : 0) - (p.timestamp > '2023' ? 1 : 0)};
+  }).filter((x: any) => x.depth > 4 && x.depth < 50).sort((x: any, y: any) => x.score - y.score);
   for (const best of candidates.slice(0, 4)) {
   const distance = Math.hypot(best.c[0] - mid[0], best.c[1] - mid[1]);
   const heading = (Math.atan2(mid[0] - best.c[0], mid[1] - best.c[1]) * 180 / Math.PI + 360) % 360;

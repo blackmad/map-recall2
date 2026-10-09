@@ -137,28 +137,38 @@ export function findFrontage(ground: RD[][][], roofs: BuildingFacts['roofsRD'], 
   const all = ground.flatMap(p => open(p[0]));
   const centroid: RD = [all.reduce((s, p) => s + p[0], 0) / all.length, all.reduce((s, p) => s + p[1], 0) / all.length];
   const target = nearestStreetPoint(streets, street, toRD, centroid);
-  let seed: {score: number; a: RD; b: RD} | null = null;
+  // Every ground edge, to test that a candidate front sees the street unobstructed.
+  const allEdges = ground.flatMap(p => p.flatMap(r => { const ring = open(r); return ring.map((a, i) => [a, ring[(i + 1) % ring.length]] as [RD, RD]); }));
+  const crosses = (p: number[], q: number[], e: [RD, RD]) => {
+    const c = (a: number[], b: number[], x: number[]) => (b[0] - a[0]) * (x[1] - a[1]) - (b[1] - a[1]) * (x[0] - a[0]);
+    return c(p, q, e[0]) * c(p, q, e[1]) < 0 && c(e[0], e[1], p) * c(e[0], e[1], q) < 0;
+  };
+  let seed: {score: number; a: RD; b: RD; normal: RD} | null = null;
   for (const poly of ground) {
     const ring = open(poly[0]), sign = signedArea(ring) > 0 ? 1 : -1;
     for (let i = 0; i < ring.length; i++) {
       const a = ring[i], b = ring[(i + 1) % ring.length], len = dist(a, b);
       if (len < 1) continue;
       const normal: RD = [sign * (b[1] - a[1]) / len, -sign * (b[0] - a[0]) / len];
-      const mid: RD = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2], toStreet = [target.point[0] - mid[0], target.point[1] - mid[1]], d = Math.hypot(toStreet[0], toStreet[1]);
+      const mid: RD = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2], local = nearestStreetPoint(streets, street, toRD, mid).point;
+      const toStreet = [local[0] - mid[0], local[1] - mid[1]], d = Math.hypot(toStreet[0], toStreet[1]);
       const alignment = d ? (normal[0] * toStreet[0] + normal[1] * toStreet[1]) / d : 0;
       if (alignment < Math.cos(35 * Math.PI / 180)) continue;
+      // Courtyard and re-entrant edges: the sightline to the street crosses the footprint.
+      const start = [mid[0] + normal[0] * 0.05, mid[1] + normal[1] * 0.05];
+      if (allEdges.some(e => crosses(start, local, e))) continue;
       // Prefer the nearest, then longer and better-aligned edges.
       const score = d - 0.5 * Math.min(len, 6) - 3 * alignment;
-      if (!seed || score < seed.score) seed = {score, a, b};
+      if (!seed || score < seed.score) seed = {score, a, b, normal};
     }
   }
   if (!seed) throw Error(`No footprint edge faces ${street}`);
-  const streetNormal: RD = [target.point[0] - centroid[0], target.point[1] - centroid[1]];
-  let discovery = discoverCompleteFrontage(ground, [seed.a, seed.b], {streetNormalRD: streetNormal});
+  const streetNormal: RD = seed.normal;
+  let discovery = discoverCompleteFrontage(ground, [seed.a, seed.b], {streetNormalRD: streetNormal, maxAddedWidthM: 60, maxEdges: 64});
   // A near-parallel facade beyond a jog of at most 1 m is usually the same front
   // (the canalhouse 82/88 partial-front failures); retry with the bounded 1 m jog limit.
   if (discovery.possiblePartialFront) {
-    const wide = discoverCompleteFrontage(ground, [seed.a, seed.b], {streetNormalRD: streetNormal, maxJogM: 1});
+    const wide = discoverCompleteFrontage(ground, [seed.a, seed.b], {streetNormalRD: streetNormal, maxJogM: 1, maxAddedWidthM: 60, maxEdges: 64});
     if ((wide.candidate?.widthM ?? 0) > (discovery.candidate?.widthM ?? 0) + 0.3) { discovery = wide; uncertainty.push('Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).'); }
   }
   const chain = (discovery.candidate?.orderedVerticesRD ?? [seed.a, seed.b]) as RD[];
