@@ -2,7 +2,7 @@ import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import {addShell} from './worship-shell';
 import {onWall, wallsOf, wallTop, type Wall} from './worship-walls';
-import {wallPoint} from './worship-kit';
+import {wallBetween, wallPoint} from './worship-kit';
 import source from './thomaskerk-footprints.json';
 
 /**
@@ -32,12 +32,9 @@ function tileBase(b: BuildingTools, w: Wall, t0: number, t1: number, h: number) 
   onWall(b, w, (t0 + t1) / 2, 0, t1 - t0, h, 0.06, 'white', 0.01);
 }
 
-function addEntranceBlock() { /* placeholder replaced below */ }
-
 export function buildThomaskerk(_w: number, _d: number, b: BuildingTools) {
   addShell(b, source as never, {wall: 'brick', roof: 'slate'});
   (b as {mark?: (n: string) => void}).mark?.('shell');
-  void addEntranceBlock;
 
   // --- South facade, west part (wall 50, 4.8 m: slim window group, tile panel) and wall 48 ---
   const w50 = wall(50), w48 = wall(48);
@@ -60,7 +57,9 @@ export function buildThomaskerk(_w: number, _d: number, b: BuildingTools) {
   void w49; void w7;
 
   // --- Upper entrance block ribbon (walls 48, 19, 39): brick 3.0-4.8 band, ribbon 4.8-6.2, brick to 7.5, thin cornice ---
-  const w19 = wall(19), w39 = wall(39);
+  const w19 = wall(19);
+  // wall 39's registered normal points into the block (thin re-entrant seam); rebuild its outward south-facing plane explicitly
+  const w39 = wallBetween([5.55, 12.01], [13.19, 11.48], 7.5, [0.069, 0.998]);
   for (const w of [w48, w19, w39]) {
     const base = w === w39 ? 2.7 : 0;
     void base;
@@ -68,17 +67,25 @@ export function buildThomaskerk(_w: number, _d: number, b: BuildingTools) {
     onWall(b, w, w.length / 2, 7.3, w.length, 0.2, 0.32, 'concrete', 0); // projecting top cornice
   }
   // ribbon panes: dark-framed band with five lights across the block
-  opening(b, w48, 0.1, 2.9, 4.95, 6.2, 2, 'dark', false);
-  opening(b, w19, 0.15, 3.1, 4.95, 6.2, 2, 'dark', false);
-  onWall(b, w39, 3.9, 4.95, 7.4, 1.25, 0.05, 'dark', 0.01);
-  opening(b, w39, 0.3, 2.1, 4.95, 6.2, 1, 'dark', false);
-  opening(b, w39, 2.15, 4.2, 4.95, 6.2, 1, 'dark', false);
-  opening(b, w39, 5.4, 7.4, 4.95, 6.2, 1, 'dark', false);
+  onWall(b, w48, 1.5, 4.85, 3.0, 1.4, 0.05, 'dark', 0.01);
+  onWall(b, w19, 1.65, 4.85, 3.3, 1.4, 0.05, 'dark', 0.01);
+  onWall(b, w39, 3.83, 4.85, 7.66, 1.4, 0.05, 'dark', 0.01);
+  opening(b, w48, 0.2, 2.8, 4.95, 6.2, 2, 'dark', false);
+  opening(b, w19, 0.2, 1.4, 4.95, 6.2, 1, 'dark', false);
+  opening(b, w39, 0.3, 2.3, 4.95, 6.2, 1, 'dark', false);
+  opening(b, w39, 2.4, 4.4, 4.95, 6.2, 1, 'dark', false);
+  opening(b, w39, 5.2, 7.4, 4.95, 6.2, 2, 'dark', false);
+  opening(b, w19, 0.3, 2.9, 0.9, 2.9, 2, 'white'); // window right of the porch
+  const wMid = wallBetween([-0.68, 12.3], [2.26, 12.12], 7.5, [0.057, 0.998]); // block face above the porch
+  onWall(b, wMid, wMid.length / 2, 4.85, wMid.length, 1.4, 0.05, 'dark', 0.01);
+  opening(b, wMid, 0.5, 2.4, 4.95, 6.2, 1, 'dark', false);
+  onWall(b, wMid, wMid.length / 2, 4.75, wMid.length, 0.1, 0.18, 'concrete', 0);
+  onWall(b, wMid, wMid.length / 2, 7.3, wMid.length, 0.2, 0.32, 'concrete', 0);
   // screen wall in front of the block (wall 23, 2.7 m) with a white tile return, coping and the house number plate
   const w23 = wall(23);
   onWall(b, w23, w23.length / 2, 2.6, w23.length + 0.2, 0.12, 0.34, 'concrete', -0.05);
   // east return of the entrance block: tile
-  tileBase(b, w19, 0, w19.length, 3.0);
+  tileBase(b, w19, 0, 0.25, 3.0); tileBase(b, w19, 2.95, w19.length, 3.0);
 
   // --- East wing (wall 52 south, 33 east end, 9 north): white tile base, window ribbon, grey fascia, brick above ---
   const w52 = wall(52), w33 = wall(33);
@@ -102,12 +109,13 @@ export function buildThomaskerk(_w: number, _d: number, b: BuildingTools) {
   for (const t of [2.6, 6.2]) onWall(b, w16, t, 0.35, 0.9, 0.35, 0.1, 'frame', 0.01); // vent grilles at the foot of the west wall
 
   // --- Bell frame: hollow white concrete rectangle standing on the hall's south-east corner, bell inside ---
-  const cx = -1.0, cz = 4.6, top = 16.6, bot = 12.8, wd = 1.5, dp = 1.1, th = 0.32;
+  const cx = -1.0, cz = 4.0, top = 17.2, bot = 12.4, wd = 1.9, dp = 1.3, th = 0.4, foot = 7.5;
   b.box(cx, bot, cz, wd, th, dp, 'white');
   b.box(cx, top - th, cz, wd, th, dp, 'white');
-  for (const s of [-1, 1]) b.box(cx + s * (wd / 2 - th / 2), bot, cz, th, top - bot, dp, 'white');
+  // the piers run down to the entrance block's roof, so the frame is anchored to the hall wall and the roof below
+  for (const s of [-1, 1]) b.box(cx + s * (wd / 2 - th / 2), foot, cz, th, top - foot, dp, 'white');
   const bell = new T.LatheGeometry([[0.05, 0], [0.34, 0.05], [0.3, 0.35], [0.2, 0.55], [0.1, 0.62]].map(p => new T.Vector2(p[0], p[1])), 10);
   b.add(bell, 'bronze' as never, cx, bot + 1.6, cz);
-  b.box(cx, bot + 2.3, cz, 0.08, 0.06, dp, 'frame'); // headstock beam
+  b.box(cx, bot + 2.15, cz, wd - th, 0.12, 0.12, 'frame'); // headstock beam spanning the piers, bell hangs from it
   void wallPoint;
 }
