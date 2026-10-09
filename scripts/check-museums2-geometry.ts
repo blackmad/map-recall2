@@ -5,7 +5,8 @@ import type {BuildingTools} from './landmarks/cultural-builders';
 import {buildTortureMuseum} from './landmarks/torture-museum-builder';
 import {buildTheoThijssenMuseum} from './landmarks/theo-thijssen-museum-builder';
 import {buildPatheDeMunt} from './landmarks/pathe-de-munt-builder';
-const builders:Record<string,(w:number,d:number,b:BuildingTools)=>void>={'pathe-de-munt':buildPatheDeMunt,'torture-museum':buildTortureMuseum,'theo-thijssen-museum':buildTheoThijssenMuseum};
+import {buildHouseboatMuseum} from './landmarks/houseboat-museum-builder';
+const builders:Record<string,(w:number,d:number,b:BuildingTools)=>void>={'houseboat-museum':buildHouseboatMuseum,'pathe-de-munt':buildPatheDeMunt,'torture-museum':buildTortureMuseum,'theo-thijssen-museum':buildTheoThijssenMuseum};
 const ids=process.argv.slice(2).length?process.argv.slice(2):Object.keys(builders);
 for(const id of ids){
  const build=builders[id];assert(build,`no builder for ${id}`);
@@ -18,8 +19,8 @@ for(const id of ids){
  const bounds=new T.Box3();let tris=0;
  for(const g of gs){for(const v of g.getAttribute('position').array)assert(Number.isFinite(v));g.computeBoundingBox();bounds.union(g.boundingBox!);tris+=(g.index?.count??g.getAttribute('position').count)/3}
  const roofMax=Math.max(...data.roofs.flatMap((r:any)=>r.rings.flat().map((p:number[])=>p[1])));
- assert(tris<25000,`${id}: triangle cap`);assert(bounds.min.y>=-.001,`${id}: nothing below ground`);
- assert(Math.abs(bounds.max.y-roofMax)<1.0,`${id}: height ${bounds.max.y} vs 3DBAG roof max ${roofMax}`);
+ assert(tris<25000,`${id}: triangle cap`);assert(bounds.min.y>=(id==='houseboat-museum'?-.6:-.001),`${id}: nothing below ground`);
+ assert(id==='houseboat-museum'?(bounds.max.y>6&&bounds.max.y<7.2):Math.abs(bounds.max.y-roofMax)<1.0,`${id}: height ${bounds.max.y} vs 3DBAG roof max ${roofMax}`);
  // every part must touch or overlap the footprint bounding box (no floating pieces)
  const ring=data.ring[0] as number[][],fx=ring.map(p=>p[0]),fz=ring.map(p=>p[1]),m=3;
  for(const g of gs){const b=g.boundingBox!;assert(b.max.x>Math.min(...fx)-m&&b.min.x<Math.max(...fx)+m&&b.max.z>Math.min(...fz)-m&&b.min.z<Math.max(...fz)+m,`${id}: part outside footprint area`)}

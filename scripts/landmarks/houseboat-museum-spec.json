@@ -1,0 +1,186 @@
+{
+  "id": "houseboat-museum",
+  "name": "Houseboat Museum (Hendrika Maria)",
+  "landmarkId": "extract_landmarks_941219842",
+  "modelUrl": "./models/houseboat-museum.glb",
+  "suppressOsmIds": [
+    "w174999382"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.882602,
+      52.3701526
+    ],
+    "headingDegrees": 6.5,
+    "lengthMetres": 23.5,
+    "widthMetres": 4.36
+  },
+  "surveyed": {
+    "anchor": [
+      4.882602,
+      52.3701526
+    ],
+    "northOffsetDegrees": 0,
+    "source": "BAG pand w174999382 with 3DBAG LoD2.2 roofs; native east/south metres, scale 1."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "dark": "#1d2124",
+    "white": "#e4e1d3",
+    "stone": "#8a8f90",
+    "glass": "#5b707a",
+    "slate": "#4a3d36",
+    "brick": "#8b5e48",
+    "red": "#8d3b2a",
+    "green": "#c7c78a"
+  },
+  "attribution": {
+    "title": "Houseboat Museum (Hendrika Maria)",
+    "author": "Map Recall",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Woonbootmuseum",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free barge model: black steel hull with cream waterline band, cream cabin with portholes, dark hatch roof and mast. Proportions approximate, from a 2021 street-level panorama. No imported mesh or photo textures."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.882615,
+          52.37008
+        ],
+        [
+          4.882614,
+          52.370077
+        ],
+        [
+          4.882613,
+          52.370074
+        ],
+        [
+          4.882611,
+          52.370071
+        ],
+        [
+          4.882608,
+          52.370068
+        ],
+        [
+          4.882605,
+          52.370066
+        ],
+        [
+          4.882601,
+          52.370064
+        ],
+        [
+          4.882597,
+          52.370063
+        ],
+        [
+          4.882592,
+          52.370062
+        ],
+        [
+          4.882587,
+          52.370061
+        ],
+        [
+          4.882582,
+          52.370061
+        ],
+        [
+          4.882576,
+          52.370062
+        ],
+        [
+          4.882571,
+          52.370064
+        ],
+        [
+          4.882567,
+          52.370066
+        ],
+        [
+          4.882563,
+          52.370068
+        ],
+        [
+          4.88256,
+          52.370071
+        ],
+        [
+          4.882557,
+          52.370074
+        ],
+        [
+          4.882556,
+          52.370078
+        ],
+        [
+          4.882556,
+          52.370081
+        ],
+        [
+          4.882585,
+          52.370262
+        ],
+        [
+          4.882589,
+          52.370265
+        ],
+        [
+          4.882594,
+          52.370267
+        ],
+        [
+          4.8826,
+          52.370269
+        ],
+        [
+          4.882606,
+          52.37027
+        ],
+        [
+          4.882612,
+          52.370271
+        ],
+        [
+          4.882618,
+          52.370271
+        ],
+        [
+          4.882624,
+          52.37027
+        ],
+        [
+          4.88263,
+          52.370269
+        ],
+        [
+          4.882636,
+          52.370268
+        ],
+        [
+          4.882641,
+          52.370265
+        ],
+        [
+          4.882645,
+          52.370262
+        ],
+        [
+          4.882649,
+          52.370259
+        ],
+        [
+          4.882615,
+          52.37008
+        ]
+      ]
+    ]
+  }
+}
