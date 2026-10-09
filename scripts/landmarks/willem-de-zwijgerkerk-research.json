@@ -1,0 +1,76 @@
+{
+ "id": "willem-de-zwijgerkerk",
+ "bagPand": "NL.IMBAG.Pand.0363100012098714",
+ "osmWay": "w57855495",
+ "sources": [
+  "https://nl.wikipedia.org/wiki/Willem_de_Zwijgerkerk_(Amsterdam)",
+  "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012098714&f=json",
+  "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012098714"
+ ],
+ "references": [
+  {
+   "file": "artifacts/landmark-lanes/willem-de-zwijgerkerk/ref-north.jpg",
+   "panoramaId": "recording_2025-07-29_12-06-07_02930",
+   "captured": "2025-07-29",
+   "heading": 150,
+   "fov": 90,
+   "pitch": 20,
+   "licence": "Amsterdam municipal panorama thumbnail (api.data.amsterdam.nl/panorama), CC0 municipal open data",
+   "informs": "north gable: plinth, ground window row, 3-window group over ledge"
+  },
+  {
+   "file": "artifacts/landmark-lanes/willem-de-zwijgerkerk/ref-east.jpg",
+   "panoramaId": "recording_2025-07-29_13-09-56_00001",
+   "captured": "2025-07-29",
+   "heading": 265,
+   "fov": 90,
+   "pitch": 20,
+   "licence": "Amsterdam municipal panorama thumbnail (api.data.amsterdam.nl/panorama), CC0 municipal open data",
+   "informs": "east aisle wall: wide low windows, dark plinth, clerestory"
+  },
+  {
+   "file": "artifacts/landmark-lanes/willem-de-zwijgerkerk/ref-east-2.jpg",
+   "panoramaId": "recording_2025-07-29_13-09-56_00004",
+   "captured": "2025-07-29",
+   "heading": 298,
+   "licence": "Amsterdam municipal panorama thumbnail (api.data.amsterdam.nl/panorama), CC0 municipal open data"
+  },
+  {
+   "file": "artifacts/landmark-lanes/willem-de-zwijgerkerk/ref-south-entrance.jpg",
+   "panoramaId": "recording_2025-07-29_13-09-56_00010",
+   "captured": "2025-07-29",
+   "heading": 315,
+   "fov": 90,
+   "pitch": 30,
+   "licence": "Amsterdam municipal panorama thumbnail (api.data.amsterdam.nl/panorama), CC0 municipal open data",
+   "informs": "arched entrance at tower foot"
+  },
+  {
+   "file": "artifacts/landmark-lanes/willem-de-zwijgerkerk/ref-west-housing.jpg",
+   "panoramaId": "recording_2025-07-29_12-06-07_02917",
+   "captured": "2025-07-29",
+   "heading": 64,
+   "licence": "Amsterdam municipal panorama thumbnail (api.data.amsterdam.nl/panorama), CC0 municipal open data",
+   "informs": "west side is hidden behind housing block (inferred)"
+  },
+  {
+   "file": "artifacts/landmark-lanes/willem-de-zwijgerkerk/ref-southwest-housing.jpg",
+   "panoramaId": "recording_2025-07-29_13-09-56_00013",
+   "captured": "2025-07-29",
+   "heading": 347,
+   "licence": "Amsterdam municipal panorama thumbnail (api.data.amsterdam.nl/panorama), CC0 municipal open data"
+  },
+  {
+   "file": "artifacts/landmark-lanes/willem-de-zwijgerkerk/ref-south.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Olympiaweg,_Willem_de_Zwijgerkerk.jpg",
+   "retrieved": "2026-10-09",
+   "licence": "Wikimedia Commons (licence per file page; reference only, not imported)",
+   "informs": "south gable, tower, east aisle with clerestory"
+  }
+ ],
+ "architect": "Cornelis Kruyswijk",
+ "built": 1931,
+ "status": "modelled",
+ "west": "inferred (hidden behind housing; mirrored from east)",
+ "notes": "3DBAG tower needle cut at 31 m and rebuilt as cornice, copper clock drum and dome (top 36.1 m). Stained glass by Kees Kuiler (Wikipedia)."
+}

@@ -1,0 +1,6 @@
+{"id": "van-gendt-hallen", "facades": [
+  {"name": "northeast (gable ends)", "bearing": 47.5, "photo": "artifacts/landmark-lanes/van-gendt-hallen/ref-ne.jpg", "depthBand": 3},
+  {"name": "southwest (gable ends)", "bearing": 227.5, "photo": "artifacts/landmark-lanes/van-gendt-hallen/ref-sw.jpg", "depthBand": 3},
+  {"name": "northwest (water front)", "bearing": 317.5, "photo": "artifacts/landmark-lanes/van-gendt-hallen/ref-nw.jpg", "depthBand": 3},
+  {"name": "southeast (long side)", "bearing": 137.5, "photo": "artifacts/landmark-lanes/van-gendt-hallen/ref-se.jpg", "depthBand": 3}
+]}

@@ -30,13 +30,22 @@ export type FacadeInventory = {
   columns?: number;
   /** Is the opening pattern mirror-symmetric about the facade centre? */
   symmetric?: boolean;
-  /** Number of separate gable/peak tops in the facade silhouette (0 for a flat cornice line). */
+  /** Separate peaks in the facade silhouette: gables, towers, spires, hipped-roof tops (0 for a level cornice). */
   gables?: number;
-  /** Material names that count as openings (default glass). */
+  /** Number of equal-width bays across the facade silhouette (e.g. five gabled bays). Enables the per-bay checks below. */
+  bays?: number;
+  /** Groups of 0-based bay indexes the photo shows as identical, e.g. [[0,1,2,3,4]]. Opening masks of a group must match (IoU >= 0.6). */
+  identicalBays?: number[][];
+  /** Openings per bay per row (bottom row first); a single array applies to every bay, an array of arrays gives one per bay. */
+  bayRows?: number[] | number[][];
+  /** Every bay's own opening pattern is mirror-symmetric about the bay centre (IoU >= 0.7). */
+  baySymmetric?: boolean;
+  /** Material names that count as openings (default glass and dark: many kits glaze in `dark`). Only faces
+   * turned towards the viewer count, so dark roofs and plinth tops do not. */
   openings?: string[];
   /** Restrict to [t0, t1] metres along the facade (viewer's left → right) when other wings face the same way. */
   span?: [number, number];
-  /** Only geometry within this many metres of the facade's front-most plane counts (default 4). */
+  /** Only geometry within this many metres of the facade's front-most plane counts (default 10). */
   depthBand?: number;
   /** Allowed per-row count difference (default 0; rows with ≥ 12 openings allow 1). */
   tolerance?: number;
@@ -59,6 +68,10 @@ export type FacadeMeasure = {
   /** IoU of the opening mask with its mirror about the facade's silhouette centre. */
   symmetry: number;
   gables: number;
+  /** Per-bay measurements when the inventory declares `bays`. */
+  bays?: {t0: number; t1: number; rows: number[]; symmetry: number}[];
+  /** Pairwise opening-mask IoU between bays (bay-local frames), when `bays` is declared. */
+  bayIoU?: number[][];
   /** Rendered elevation: RGB bytes, `cols × rowsPx`, top row first. */
   image: {data: Uint8Array; width: number; height: number; cell: number; tMin: number; yMax: number};
 };
@@ -92,7 +105,7 @@ export function renderElevation(soup: MaterialSoup, f: FacadeInventory, cell = 0
   for (let v = 0; v < nv; v++) if (inSpan(T[v])) depths.push(D[v]);
   depths.sort((a, b) => a - b);
   const front = depths.length ? depths[Math.floor(depths.length * 0.98)] : 0;
-  const minDepth = front - (f.depthBand ?? 4);
+  const minDepth = front - (f.depthBand ?? 10);
 
   let tMin = Infinity, tMax = -Infinity, yMin = Infinity, yMax = -Infinity;
   for (let v = 0; v < nv; v++) {
@@ -106,6 +119,7 @@ export function renderElevation(soup: MaterialSoup, f: FacadeInventory, cell = 0
   const zbuf = new Float64Array(W * H).fill(-Infinity);
   const mat = new Int32Array(W * H).fill(-1);
   const shade = new Float32Array(W * H);
+  const facingPx = new Float32Array(W * H);
 
   for (let k = 0; k * 3 + 2 < I.length; k++) {
     const a = I[k * 3], b = I[k * 3 + 1], c = I[k * 3 + 2];
@@ -136,11 +150,11 @@ export function renderElevation(soup: MaterialSoup, f: FacadeInventory, cell = 0
         const d = w0 * D[a] + w1 * D[b] + w2 * D[c];
         if (d < minDepth) continue;
         const i = py * W + px;
-        if (d > zbuf[i] + 1e-4) { zbuf[i] = d; mat[i] = m; shade[i] = s; }
+        if (d > zbuf[i] + 1e-4) { zbuf[i] = d; mat[i] = m; shade[i] = s; facingPx[i] = facing; }
       }
     }
   }
-  return {W, H, cell, tMin, yMax, yMin, mat, shade};
+  return {W, H, cell, tMin, yMax, yMin, mat, shade, facing: facingPx};
 }
 
 /** 4-connected components of a boolean mask; returns pixel bounding boxes and areas. */
@@ -200,10 +214,10 @@ function cluster(values: number[], gap: number) {
 export function measureFacade(soup: MaterialSoup, f: FacadeInventory, cell = 0.1): FacadeMeasure {
   const r = renderElevation(soup, f, cell);
   const {W, H, mat, shade} = r;
-  const openingNames = new Set((f.openings ?? ['glass']).map(s => s.toLowerCase()));
+  const openingNames = new Set((f.openings ?? ['glass', 'dark']).map(s => s.toLowerCase()));
   const isOpening = soup.materials.map(m => openingNames.has(m.name.toLowerCase()));
   const raw = new Uint8Array(W * H);
-  for (let i = 0; i < W * H; i++) raw[i] = mat[i] >= 0 && isOpening[mat[i]] ? 1 : 0;
+  for (let i = 0; i < W * H; i++) raw[i] = mat[i] >= 0 && isOpening[mat[i]] && r.facing[i] >= 0.6 ? 1 : 0;
   const mask = close(raw, W, H, Math.max(1, Math.round(0.15 / cell)));
   const minArea = 0.15 / (cell * cell);
   const openings: Opening[] = components(mask, W, H)
@@ -240,6 +254,35 @@ export function measureFacade(soup: MaterialSoup, f: FacadeInventory, cell = 0.1
   }
   const gables = countPeaks(top, cell, 1.5);
 
+  let bays: FacadeMeasure['bays'], bayIoU: number[][] | undefined;
+  if (f.bays && f.bays > 0 && sx1 >= sx0) {
+    const n = f.bays, bw = (sx1 - sx0 + 1) / n;
+    const edge = (i: number) => Math.round(sx0 + i * bw);
+    bays = []; bayIoU = [];
+    const iou = (b0: number, b1: number, mirror: boolean, a1?: number) => {
+      const w = edge(b0 + 1) - edge(b0);
+      let inter = 0, un = 0;
+      for (let y = 0; y < H; y++) for (let dx = 0; dx < w; dx++) {
+        const a = mask[y * W + edge(b0) + dx];
+        const bx = mirror ? w - 1 - dx : dx;
+        const b = mask[y * W + (a1 ?? edge(b1)) + bx];
+        if (a && b) inter++;
+        if (a || b) un++;
+      }
+      return un ? inter / un : 1;
+    };
+    for (let b = 0; b < n; b++) {
+      const t0 = (edge(b) - sx0) * cell, t1 = (edge(b + 1) - sx0) * cell;
+      const rowsIn = rowGroups.map(() => 0);
+      openings.forEach((o, k) => {
+        const tc = (o.t0 + o.t1) / 2;
+        if (tc >= edge(b) * cell - 1e-9 && tc < edge(b + 1) * cell) rowsIn[rowGroups.findIndex(g => g.includes(centres[k]))]++;
+      });
+      bays.push({t0, t1, rows: rowsIn, symmetry: +iou(b, b, true, edge(b)).toFixed(2)});
+    }
+    for (let a = 0; a < n; a++) bayIoU.push(Array.from({length: n}, (_, b) => Math.min(edge(a + 1) - edge(a), edge(b + 1) - edge(b)) < 1 ? 0 : +iou(a, b, false).toFixed(2)));
+  }
+
   const data = new Uint8Array(W * H * 3);
   for (let i = 0; i < W * H; i++) {
     const m = mat[i];
@@ -248,7 +291,7 @@ export function measureFacade(soup: MaterialSoup, f: FacadeInventory, cell = 0.1
   }
   return {
     name: f.name, width: (sx1 - sx0 + 1) * cell, height: (r.yMax - r.yMin), openings, rows, rowHeights, columns,
-    symmetry: +symmetry.toFixed(2), gables,
+    symmetry: +symmetry.toFixed(2), gables, bays, bayIoU,
     image: {data, width: W, height: H, cell, tMin: r.tMin, yMax: r.yMax},
   };
 }
@@ -292,5 +335,30 @@ export function compare(f: FacadeInventory, m: FacadeMeasure): Check[] {
     out.push({facade: f.name, what: 'mirror symmetry (IoU)', expected: f.symmetric ? '≥ 0.70' : 'asymmetric (report only)', measured: m.symmetry.toFixed(2), pass});
   }
   if (f.gables !== undefined) out.push({facade: f.name, what: 'gable peaks', expected: String(f.gables), measured: String(m.gables), pass: f.gables === m.gables});
+  if (f.bays && m.bays) {
+    const per = (i: number) => Array.isArray(f.bayRows?.[0]) ? (f.bayRows as number[][])[i] : (f.bayRows as number[] | undefined);
+    if (f.bayRows) {
+      const diffs: string[] = [];
+      m.bays.forEach((b, i) => {
+        const want = per(i);
+        if (!want) return;
+        const ok = want.length === b.rows.length && want.every((n, k) => n === b.rows[k]);
+        if (!ok) diffs.push(`bay ${i}: expected ${want.join(',')} measured ${b.rows.join(',') || 'none'}`);
+      });
+      out.push({facade: f.name, what: 'openings per bay per row', expected: `${f.bays} bays`, measured: diffs.length ? diffs.join('; ') : 'all bays match', pass: !diffs.length});
+    }
+    if (f.baySymmetric) {
+      const bad = m.bays.map((b, i) => [i, b.symmetry] as const).filter(([, s]) => s < 0.7);
+      out.push({facade: f.name, what: 'per-bay mirror symmetry (IoU)', expected: '>= 0.70 each bay', measured: m.bays.map(b => b.symmetry.toFixed(2)).join(' '), pass: !bad.length});
+    }
+    for (const group of f.identicalBays ?? []) {
+      const lows: string[] = [];
+      for (let a = 0; a < group.length; a++) for (let b = a + 1; b < group.length; b++) {
+        const v = m.bayIoU?.[group[a]]?.[group[b]] ?? 0;
+        if (v < 0.6) lows.push(`${group[a]}~${group[b]}=${v.toFixed(2)}`);
+      }
+      out.push({facade: f.name, what: `identical bays [${group.join(',')}] (IoU)`, expected: '>= 0.60 pairwise', measured: lows.length ? `below: ${lows.join(' ')}` : 'all pairs match', pass: !lows.length});
+    }
+  }
   return out;
 }

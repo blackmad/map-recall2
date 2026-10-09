@@ -1,0 +1,15 @@
+{
+  "canonicalModelId": "van-gendt-hallen",
+  "researchedOn": "2026-10-10",
+  "destination": {"genuineOsmId": "extract_landmarks_1351046417", "name": "Van Gendt Hallen (Hallen van Stork)", "address": "Oostenburgervoorstraat, Amsterdam (rijksmonument since 2001)"},
+  "identity": "BAG pand 0363100012169224 (built 1900), one pand covering all five halls. Triage of the other lane items: Max Euwe Centrum (BAG pand 0363100012168688, 120 vertices, 1905) is rooms in the former Huis van Bewaring / De Balie block; Bijzondere Collecties (pand 0363100012168172, 187 vertices, 1643) is a university library inside a canal-house block. Both skipped.",
+  "sources": [
+    {"url": "https://nl.wikipedia.org/wiki/Hallen_van_Stork", "retrieved": "2026-10-10", "licence": "CC BY-SA 4.0 text; facts only", "informs": "history, designers, halls, 1922 fire"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001982_pano_0000_000756/?width=1600&fov=100&heading=129", "retrieved": "2026-10-10", "file": "artifacts/landmark-lanes/van-gendt-hallen/ref-nw.jpg", "capture": "2021", "licence": "Amsterdam open panorama data (CC0), reference only", "informs": "NW water front: boarded tall openings, small arched upper windows, string course"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001051_pano_0001_003762/?width=1600&fov=100&heading=330", "retrieved": "2026-10-10", "file": "artifacts/landmark-lanes/van-gendt-hallen/ref-se.jpg", "capture": "2018", "licence": "Amsterdam open panorama data (CC0)", "informs": "SE side: two storeys of round-arched windows between pilasters"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/b_20241204_1003_Track35_Sphere_00056/?width=1600&fov=100&heading=218", "retrieved": "2026-10-10", "file": "artifacts/landmark-lanes/van-gendt-hallen/ref-ne.jpg", "capture": "2024-12-04", "licence": "Amsterdam open panorama data (CC0)", "informs": "NE gable: stepped corbel frieze, three bays, big window over loading door"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001196_pano_0000_000351/?width=1600&fov=100&heading=50", "retrieved": "2026-10-10", "file": "artifacts/landmark-lanes/van-gendt-hallen/ref-sw.jpg", "capture": "2019", "licence": "Amsterdam open panorama data (CC0)", "informs": "SW gable end: small windows under the apex, doors, pilaster strips"},
+    {"url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169224", "retrieved": "2026-10-10", "file": "artifacts/landmark-lanes/van-gendt-hallen/3dbag.json", "licence": "3DBAG CC BY 4.0", "informs": "LoD2.2 massing"}
+  ],
+  "uncertainty": "Roof lanterns (glazed ridge lights) are not modelled; hall widths and window rhythm measured by eye from oblique panoramas; photos predate/partly show restoration scaffolding."
+}
