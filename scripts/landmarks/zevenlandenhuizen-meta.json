@@ -1,0 +1,44 @@
+{
+  "name": "Zevenlandenhuizen",
+  "landmarkId": "requested-zevenlandenhuizen",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Zevenlandenhuizen",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012137523",
+    "NL.IMBAG.Pand.0363100012164367",
+    "NL.IMBAG.Pand.0363100012152737",
+    "NL.IMBAG.Pand.0363100012158859",
+    "NL.IMBAG.Pand.0363100012166749",
+    "NL.IMBAG.Pand.0363100012237158",
+    "NL.IMBAG.Pand.0363100012236664"
+  ],
+  "pandIds": [
+    "0363100012137523",
+    "0363100012164367",
+    "0363100012152737",
+    "0363100012158859",
+    "0363100012166749",
+    "0363100012237158",
+    "0363100012236664"
+  ],
+  "materialOverrides": {
+    "brick": "#6e4033",
+    "red": "#9d4a38",
+    "greyBrick": "#4a4546",
+    "stone": "#ece7da",
+    "white": "#e7dfbd",
+    "concrete": "#e9e4d3",
+    "pink": "#b8606b",
+    "slate": "#585a60",
+    "glass": "#5c7480",
+    "frame": "#f3f0e8",
+    "dark": "#212325",
+    "bronze": "#566549",
+    "green": "#78967f",
+    "blue": "#8091a6",
+    "gold": "#caa24c",
+    "ochre": "#7d3a2c",
+    "copper": "#8c8b86"
+  },
+  "surveySource": "Seven current BAG panden (Roemer Visscherstraat 20, 22, 24, 26, 28, 30, 30a) and their 3DBAG LoD2.2 surfaces in one native east/south frame from the row centroid.",
+  "modifications": "Original texture-free geometry on the seven BAG footprints and 3DBAG LoD2.2 massing; the seven national front compositions (Germany, France, Spain, Italy, Russia, the Netherlands, England) measured by eye from RCE and Commons photographs, no pixels or meshes imported."
+}
