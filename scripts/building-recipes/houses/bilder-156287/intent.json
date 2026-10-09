@@ -28,7 +28,15 @@
    "doorBay": 2,
    "shopfront": {
     "colour": "dark-red",
-    "fascia": true
+    "fascia": true,
+    "awning": {
+     "style": "fabric-straight",
+     "colour": "black",
+     "extent": {
+      "from": 0.0,
+      "to": 0.58
+     }
+    }
    },
    "balconies": {
     "storeys": [
@@ -40,7 +48,11 @@
      1
     ]
    },
-   "bands": "both"
+   "bands": "both",
+   "windowSurround": "stone-lintel",
+   "surroundStoreys": [
+    4
+   ]
   }
  ],
  "roof": {
@@ -50,7 +62,9 @@
   "brick": "orange-brick",
   "frame": "dark-green",
   "door": "dark-green",
-  "stone": "sandstone"
+  "stone": "#b8b4a6"
  },
- "notes": []
+ "notes": [
+  "2026-10-09 surrounds: grey stone lintel slabs over the top-storey windows; black straight fabric awning over the left shop (front-alt.jpg)."
+ ]
 }
