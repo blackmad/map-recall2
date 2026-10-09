@@ -38,8 +38,28 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 - Street-appearance fingerprints (`public/data/street-appearance/*.json`)
   hash an older `signature-landmarks.json`; re-bake rather than hand-edit.
 - `/private/tmp/canal-heren208-author40` holds an uncommitted Herengracht 208
-  ordinary draft; ~100 other worktrees are live but mostly merged — prune
-  with the user's say-so.
+  ordinary draft. 27 merged+clean worktrees were removed 2026-10-09 (disk hit
+  100%); 87 remain (38 merged-but-dirty 24 GB, 49 unmerged 96 GB) — triage
+  each before removing.
+- **Perf findings (2026-10-09 baseline, `tests/e2e/ride-perf.spec.ts`,
+  iphone 4x throttle):** steady ride holds 16.7 ms median, p99 33 ms. Landmark
+  layer costs only 0.1–0.8 ms/frame even with 250 models resident. The game
+  calls `jumpTo` every frame, so `moveend` fires every frame: ~4.5 ms/frame of
+  handlers, led by inventory trees rebuilding (`inventory-trees-source.js`),
+  then road labels (`road-network.js` `drawLabels`). Gate those on real view
+  change.
+- **Intro flight from the city overview** zooms in from the whole city, which
+  forces streaming far more than the rider's neighbourhood. Measure it; likely
+  start at the rider and stream outward.
+- **Elevation for bridges (user, 2026-10-09):** bridges read flat because the
+  city is flat. `feat/amsterdam-basemap-elevation` (84 behind main) has an
+  opt-in elevation experiment, measured bridge-height fallback and a draft
+  separating canal water, banks and decks. Next: AHN (DTM) ground + 3DBAG/BGT
+  bridge decks → a smoothed terrain with canal cuts and ramped approaches; keep
+  routing physics 2D.
+- **P2: audit every installed GLB for holes** (open edges, missing faces,
+  flipped normals) with a batch mesh check over `public/canal-drive/models/`;
+  user has seen visible holes.
 
 ---
 
