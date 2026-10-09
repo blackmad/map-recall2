@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "test:canal-elevation": "node --import tsx --test src/canalRecall/elevation/elevation.test.ts",
     "pand-reference": "node --import tsx scripts/pand-reference/run.ts",
     "building:facts": "node --import tsx scripts/building-recipes/facts.ts",
     "building:compile": "node --import tsx scripts/building-recipes/compile.ts",
