@@ -27,23 +27,28 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   its panels too regular; Luther Museum roof uniformly dark, frames should be
   pale; Frankendael roof should read as tile; Nieuwendammerkerk nave roof
   reads khaki not red tile; Posthoornkerk is 39k tris (cap 40k) — reduce.
-- **P0 — seven landmarks held after user review (2026-10-09)**: Torture
-  Museum and Theo Thijssen (facade slab detached from / floating in front of
-  the shell), Pathé de Munt (grey 3DBAG lump), Sint-Petrus-en-Pauluskerk
-  (tower/gable wrong, dark), Maarten Lutherkerk (3DBAG tower the photo lacks),
-  Oudemanhuispoort and Levend Paardenmuseum (bare massing). `status: "held"`
-  in `manualCatalogue.json` keeps them and their GLBs but out of the game,
-  galleries and backlog counts (back to pending). Root cause: integrated on
-  lane self-reports after viewing 3 of 12 contact sheets, and no gate catches
-  facade parts detached from the shell. Fix the process before more installs:
-  a detached-part / gap gate over every GLB, and the integrator views every
-  contact sheet (front + 3/4 + in-game) before merging.
-  Still installed from the batch: Keizersgrachtkerk (23k tris), Gerard Dou
-  Synagogue (side/rear walls open — hidden by neighbours, audit it),
-  Lekstraatsynagoge, Houseboat Museum, Museum Amsterdam Noord.
-  Skipped with reasons: Max Euwe Centrum and Bijzondere Collecties (tenants of
-  huge multi-wing panden — large-building tier), Schouwburgpoort (gate gone),
-  Begijnhof (houses already rendered individually).
+- **Held landmarks (`status: "held"`, out of game/galleries/What's new)**:
+  Torture Museum (attached now, but sign/shopfront only suggested), Pathé de
+  Munt (rebuilt twice; awaiting the user's call on
+  `artifacts/landmark-lanes/pathe-de-munt/contact.png`; audit: 40 open shell
+  loops), Sint-Petrus-en-Pauluskerk (tower/gable wrong, dark), Maarten
+  Lutherkerk (3DBAG tower the photo lacks), Oudemanhuispoort and Levend
+  Paardenmuseum (bare massing), Koningskerk (curved grid hall missing),
+  Compagnietheater (faint wing windows, too brown), Haparandaweg 65,
+  650–706, 708–744, 788–868 (unreviewed/weak), mediamatic. Integrator views
+  every contact sheet before un-holding; run `npm run audit:glb -- --id=<id>`
+  and `scripts/check-landmark-attachment.ts`.
+  Gerard Dou Synagogue: side/rear walls open (audit: 7/30 see-through rays).
+- **GLB quality audit** (`npm run audit:glb`, `src/canalRecall/landmarks/glbQuality.ts`,
+  2026-10-09): 184 of 236 installed models flag at least one FAIL (detached
+  124, see-through 84, holes 61, far-outside 32). Detached-part detection is
+  noisy (recessed glazing vs floating facade is geometry-ambiguous) — keep it
+  a warning for installs and hard-fail holes/see-through/far-outside. Worst
+  15: de-bijenkorf, oude-kerk, beta-boulders, fire-station-willem,
+  mountain-network, centraal-station, rai-amsterdam, westerkerk, valley,
+  lab111, vredeskerk, scheepvaarthuis, dominicuskerk, magna-plaza,
+  madame-tussauds — review their contact images before fixing. Het Pakhuis
+  (live) has rear-step wall gaps in its 3DBAG shell. Ordinary set not audited.
 - **Intro/landmark streaming follow-ups (2026-10-09)**: the flight still runs
   ~4.0 s vs 3.5 s designed (MapLibre intermediate-zoom tiles + three chunk
   installs, ~0.47 s long tasks). 25–40 landmark models load during the spawn
