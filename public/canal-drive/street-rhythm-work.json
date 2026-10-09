@@ -826,7 +826,7 @@
     },
     {
       "id": "jan-evertsenstraat-north-canopy-pilot",
-      "status": "reviewing-unaccepted-pilot",
+      "status": "needs-improvement",
       "scope": "Five native geometry candidates around supplied Jan Evertsenstraat/Mercatorplein camera; no neighborhood-wide profile admission.",
       "scopeBoundary": [
         4.85175,
@@ -863,7 +863,7 @@
           "NL.IMBAG.Pand.0363100012072380",
           "NL.IMBAG.Pand.0363100012096804"
         ],
-        "sourceRole": "Native inventory frozen; heldout facade images not acquired or used for tuning.",
+        "sourceRole": "Official address/VBO/Pand inventory and2024/2025source archive acquired.124/126representatives inspected;122/119heldout images remain untuned and unaccepted.",
         "inventory": "../../docs/references/jan-evertsen-pilot/candidate-inventory.json"
       },
       "traits": [
@@ -882,10 +882,22 @@
         {
           "id": "upper-window-groups-and-roof",
           "importance": "critical",
-          "relationship": "Residential window groups and roof family must be source-derived before admitting the row.",
-          "generatorCapability": "inadequate-source-evidence",
-          "decision": "uncertain",
-          "reason": "Upper elevation and roof cropped; draft row counts and flat closures remain provisional."
+          "relationship": "Three residential rows of broad pale paired windows alternate flat groups and one projecting narrow leaf, mirrored across masonry piers; quiet roofline replaces guessed crowns.",
+          "generatorCapability": "supported-bounded-window-and-parapet-pilot",
+          "decision": "pass-narrow-existing-pilot-window-capability",
+          "reason": "Root and independent reviewers inspected corrected actual-game modes. Whole facade still fails recessed portico/shop access relationships; no heldout/row expansion or full performance acceptance.",
+          "sourceEvidence": [
+            "2025-09-26municipal pilot-north current panorama in private rollout archive"
+          ],
+          "implementation": "../../src/canalRecall/interwarFrontageLayout.ts"
+        },
+        {
+          "id": "recessed-shop-and-residential-entrance",
+          "importance": "critical",
+          "relationship": "Tall shop pane groups and separate recessed residential porticos align below the continuous canopy.",
+          "generatorCapability": "missing",
+          "decision": "fail",
+          "reason": "Stock ground template remains visible. Window-group improvement does not resolve the source entrance assembly."
         }
       ],
       "cycles": [
@@ -894,6 +906,18 @@
           "evidence": "../../docs/references/jan-evertsen-pilot/independent-review.json",
           "rootInspected": "Eight native GLB CPU views, procedural geometry views, supplied lower-facade photo.",
           "failedEvidence": "Original bend-gap and six-facet budget failures preserved in independent review; corrected geometry checks pass."
+        },
+        {
+          "id": "current-source-window-groups-20261006",
+          "evidence": "../../docs/references/jan-evertsen-pilot/window-group-review.json",
+          "rootInspected": [
+            "current municipal pilot-north.jpg",
+            "window-groups-game/overtoom-photo-street.png",
+            "window-groups-corrected-game/overtoom-photo-street.png",
+            "window-groups-final-game/overtoom-photo-street.png"
+          ],
+          "failedEvidence": "First actual-game projection sequence and extra texture muntins failed; immutable images retained in private pack. Corrected four cycles accepted narrowly for existing124/126window capability.",
+          "decision": "partial-capability-accepted-full-profile-withheld"
         }
       ],
       "coverage": {
@@ -905,27 +929,66 @@
           "NL.IMBAG.Pand.0363100012096804",
           "NL.IMBAG.Pand.0363100012118917"
         ],
-        "failed": []
+        "failed": [],
+        "inventory": "../../docs/references/jan-evertsen-pilot/bag-rollout-inventory.json",
+        "discoveredPhysicalBuildings": 65,
+        "newRuntimeAdmissions": 0
       },
       "productionEvidence": [
         "artifacts/jan-evertsen-pilot/game-control/report.json",
-        "artifacts/jan-evertsen-pilot/game-final/report.json"
+        "artifacts/jan-evertsen-pilot/game-final/report.json",
+        "artifacts/jan-evertsen-pilot/window-groups-final-game/report.json"
       ],
-      "reviewerDecision": "Bounded geometry repairs pass independent recheck; no facade-source, heldout, runtime or performance acceptance.",
+      "reviewerDecision": "Existing124/126window-group capability accepted narrowly after actual-game comparison; full facade/heldout transfer/production performance withheld.",
       "privateSourceArchive": {
         "commit": "65cf81b476c757a363f59aec86a76db824b48598",
         "path": "models/jan-evertsen-north-canopy-pilot/"
       },
       "preview": "./jan-evertsen-pilot.html",
-      "nextAction": "Two exact representative identities now receive the runtime canopy pilot. Gather fuller current facades/address links before expanding to transition, heldouts or neighborhood.",
+      "nextAction": "Review recessed ground assembly in actual game, run frozen128/122/119 transfer challenges and desktop/touch stationary-rider pans/GPU timing before accepting expansion.",
       "runtimePilot": {
         "status": "installed-bounded-pilot",
         "buildingIds": [
           "NL.IMBAG.Pand.0363100012118917",
           "NL.IMBAG.Pand.0363100012096187"
         ],
-        "independentReview": "docs/references/jan-evertsen-pilot/runtime-review.json",
-        "acceptedScope": "Canopy assembly presence and retained windows only; complete facade/neighborhood acceptance withheld."
+        "independentReview": "docs/references/jan-evertsen-pilot/window-group-review.json",
+        "acceptedScope": "Continuous canopy/glass-block band and corrected broad mirrored-leaf three-row windows on124/126only; full profile remains unaccepted."
+      },
+      "groundAssemblyProgress": {
+        "status": "implemented-game-review-pending",
+        "module": "src/canalRecall/interwarGroundFrontage.ts",
+        "details": [
+          "Complementary masonry leaves a genuine recessed entrance aperture.",
+          "Shop opening includes a source-selected customer door and quiet glass fields.",
+          "Defining geometry survives ordinary wall LOD; rejected plans retain unchanged fallback."
+        ],
+        "checks": {
+          "streetTests": {
+            "pass": 120,
+            "fail": 0
+          },
+          "nativeFirstHit": "Independent door rays first hit recessed backing at about0.64m for all3looks.",
+          "latestBrowserRetry": "artifacts/jan-evertsen-pilot/production-root-retry/failure.json",
+          "desktopTouchPanGpu": "not acquired; Chrome launch SIGABRT"
+        },
+        "acceptance": "withheld; no newbuildingIDs admitted"
+      },
+      "materialRepairCheckpoint": {
+        "status": "bounded-material-pass-full-facade-withheld",
+        "rootInspected": [
+          "artifacts/jan-evertsen-pilot/material-repair-cycle-20261006/cpu/after-front.png",
+          "artifacts/jan-evertsen-pilot/material-repair-cycle-20261006/cpu/after-oblique.png"
+        ],
+        "independentReview": "docs/references/jan-evertsen-pilot/material-repair-independent-review.json",
+        "failedEvidence": "artifacts/jan-evertsen-pilot/material-audit-20261006/report.json",
+        "remainingConcerns": [
+          "Projection hierarchy weak in CPU views",
+          "Upper blank masonry and stepped native roof differ from source",
+          "Actual game, transfer and GPU checks pending"
+        ],
+        "newAdmissions": 0,
+        "sourceArchiveCommit": "03f59c9b2f944f8ef0f116ad4f58c9a76beb36da"
       }
     },
     {
@@ -1028,7 +1091,8 @@
           "NL.IMBAG.Pand.0363100012173530"
         ],
         "withheld": [
-          "All other blocks and any broader repeated-terrace transfer"
+          "All other blocks and any broader repeated-terrace transfer",
+          "Normal game admission and transfer to other blocks"
         ],
         "failed": [
           "Cycle2: duplicate fallback context erased the masonry of parent0363100012174105; fixed and preserved.",
@@ -1060,6 +1124,1535 @@
         "cpuComparison": "artifacts/marnixstraat-review/cycle-4/report.json",
         "independentReview": "docs/references/marnixstraat-repeated-row/independent-review.json",
         "completion": "accepted fixed-eight installed pilot"
+      }
+    },
+    {
+      "id": "individual-canalhouse-recipes-herengracht-405-427",
+      "status": "pilot-envelope-and-style-review-required",
+      "scopeBoundary": {
+        "street": "Herengracht",
+        "side": "odd",
+        "addresses": [
+          405,
+          407,
+          409,
+          411,
+          413,
+          415,
+          417,
+          419,
+          421,
+          423,
+          425,
+          427
+        ],
+        "inventory": "docs/references/canalhouse-recipes/pilot-inventory.json"
+      },
+      "goal": "Recognizable individual houses composed entirely from evidence-backed reusable assemblies; bounded pilot before citywide expansion.",
+      "sampling": {
+        "representatives": [
+          "herengracht-405",
+          "herengracht-409",
+          "herengracht-417"
+        ],
+        "transitions": [
+          "herengracht-415"
+        ],
+        "heldouts": [
+          "herengracht-421",
+          "herengracht-425",
+          "herengracht-427"
+        ],
+        "heldoutPolicy": "Observe each heldout individually; freeze component code before compiling/reviewing heldouts. A heldout-driven component repair invalidates that challenge and requires fresh heldouts."
+      },
+      "traits": [
+        {
+          "id": "individual-frontage-and-window-groups",
+          "importance": "critical",
+          "sourceEvidence": [
+            "docs/references/canalhouse-recipes/facade-observations.json",
+            "docs/references/canalhouse-recipes/trim-repairs.json"
+          ],
+          "generatorCapability": "repairing",
+          "decision": "partial-or-failed-see-cycle3-review"
+        },
+        {
+          "id": "crown-and-roof-mixture",
+          "importance": "critical",
+          "sourceEvidence": [
+            "docs/references/canalhouse-recipes/facade-observations.json",
+            "docs/references/canalhouse-recipes/trim-repairs.json"
+          ],
+          "generatorCapability": "repairing",
+          "decision": "partial-or-failed-see-cycle3-review"
+        },
+        {
+          "id": "white-trim-and-cornices",
+          "importance": "critical",
+          "sourceEvidence": [
+            "docs/references/canalhouse-recipes/facade-observations.json",
+            "docs/references/canalhouse-recipes/trim-repairs.json"
+          ],
+          "generatorCapability": "repairing",
+          "decision": "partial-or-failed-see-cycle3-review"
+        },
+        {
+          "id": "ground-entrance-hierarchy",
+          "importance": "critical",
+          "sourceEvidence": [
+            "docs/references/canalhouse-recipes/facade-observations.json",
+            "docs/references/canalhouse-recipes/trim-repairs.json"
+          ],
+          "generatorCapability": "repairing",
+          "decision": "partial-or-failed-see-cycle3-review"
+        },
+        {
+          "id": "neo-renaissance-transition-415",
+          "importance": "critical",
+          "sourceEvidence": [
+            "docs/references/canalhouse-recipes/facade-observations.json",
+            "docs/references/canalhouse-recipes/trim-repairs.json"
+          ],
+          "generatorCapability": "repairing",
+          "decision": "partial-or-failed-see-cycle3-review"
+        },
+        {
+          "id": "risalit-and-triglyph-frieze-425",
+          "importance": "critical",
+          "sourceEvidence": [
+            "docs/references/canalhouse-recipes/facade-observations.json",
+            "docs/references/canalhouse-recipes/trim-repairs.json"
+          ],
+          "generatorCapability": "repairing",
+          "decision": "partial-or-failed-see-cycle3-review"
+        }
+      ],
+      "cycles": [
+        {
+          "cycle": 1,
+          "verdict": "rejected-needs-improvement",
+          "review": "docs/references/canalhouse-recipes/independent-review.json",
+          "evidence": "artifacts/canalhouse-recipes/cycle-1",
+          "criticalFailures": [
+            "415/427 buried glazing and crowns",
+            "423 compressed frontage",
+            "425 portal/risalit/frieze",
+            "421 ground grouping"
+          ],
+          "heldoutTransfer": "failed; no expansion"
+        },
+        {
+          "cycle": 2,
+          "verdict": "root-partial-repair-unaccepted",
+          "evidence": "artifacts/canalhouse-recipes/cycle-2-placement",
+          "changes": [
+            "Shared facade placement outside native shallow projections",
+            "Body height support from local roof eave endpoints"
+          ],
+          "heldoutTransfer": "same failed samples, no fresh transfer"
+        },
+        {
+          "cycle": 3,
+          "verdict": "rejected-needs-improvement",
+          "review": "docs/references/canalhouse-recipes/independent-review-cycle-3.json",
+          "evidence": "artifacts/canalhouse-recipes/cycle-3-assemblies",
+          "improvements": [
+            "415 paired arches and stepped silhouette",
+            "427 pane/attic/ground visibility",
+            "421 ground grouping",
+            "425 bounded risalit projection",
+            "423 exact BAG frontage"
+          ],
+          "criticalFailures": [
+            "423 high triangular roof projection conflicts with source photo",
+            "425 decorated transom and recognizable frieze",
+            "415 three-part ground assembly"
+          ],
+          "heldoutTransfer": "repaired heldouts are not fresh challenges; no expansion"
+        },
+        {
+          "cycle": 4,
+          "verdict": "repairs-recognized-in-cycle5",
+          "changes": [
+            "425 source-observed transom grille segments",
+            "415 register-supported divided central ground window"
+          ],
+          "heldoutTransfer": "unaccepted",
+          "evidence": "artifacts/canalhouse-recipes/cycle-4-ground"
+        },
+        {
+          "cycle": 5,
+          "verdict": "useful-bounded-visual-progress-acceptance-withheld",
+          "review": "docs/references/canalhouse-recipes/independent-review-cycle-5.json",
+          "evidence": "artifacts/canalhouse-recipes/cycle-5-front-roof",
+          "repairsRecognized": [
+            "415 three-part ground assembly",
+            "425 crossed portal grille",
+            "423 low-confidence front roof return"
+          ],
+          "criticalFailures": [
+            "425 observed console relief insufficiently legible"
+          ],
+          "heldoutTransfer": "withheld"
+        },
+        {
+          "cycle": 6,
+          "verdict": "425-console-repair-pass-bounded",
+          "review": "docs/references/canalhouse-recipes/independent-review-cycle-6.json",
+          "evidence": "artifacts/canalhouse-recipes/cycle-6-consoles",
+          "sourceCountLimit": "Only3source-observed console fragments; total/triglyphpositions unknown",
+          "heldoutTransfer": "same repaired heldout; no fresh transfer",
+          "retainedFailedEvidence": [
+            {
+              "path": "artifacts/canalhouse-recipes/cycle-6-game/report.json",
+              "failure": "Touch stationary rider drift1.034cm exceeds fixed1cm threshold; do not markstationarytouch passed."
+            }
+          ]
+        },
+        {
+          "cycle": 7,
+          "verdict": "light-frame-return-repair-pass-bounded",
+          "evidence": "artifacts/canalhouse-recipes/cycle-7-frame-returns",
+          "changes": [
+            "Real hollow frame returns with recessed glazing;12cm is a restrained drawing approximation, not surveyed source depth."
+          ],
+          "heldoutTransfer": "withheld",
+          "review": "docs/references/canalhouse-recipes/independent-review-cycle-7.json",
+          "actualGame": "artifacts/canalhouse-recipes/cycle-7-game/report.json"
+        },
+        {
+          "cycle": 8,
+          "verdict": "user-reported-envelope-and-style-failure",
+          "evidence": "artifacts/canalhouse-recipes/cycle-8-comparison",
+          "criticalFailures": [
+            "427 survey front-end triangle extends outside source-observed narrow gable",
+            "Independent facade and surveyed envelope still disagree",
+            "Flat facade materials differ from surrounding game building detail"
+          ],
+          "changes": [
+            "Gallery daylight matches game signature-landmarks layer",
+            "Pannable dated municipal source panorama added for row and selected house"
+          ],
+          "heldoutTransfer": "withheld",
+          "review": "docs/references/canalhouse-recipes/independent-review-cycle-8.json",
+          "viewerChecks": "artifacts/canalhouse-recipes/cycle-8-comparison/comparison-report.json",
+          "retainedModelFailures": true
+        },
+        {
+          "cycle": 9,
+          "verdict": "souterrain-shared-generator-repair-visual-review-pending",
+          "evidence": "artifacts/canalhouse-recipes/cycle-9-souterrain",
+          "review": "docs/references/canalhouse-recipes/independent-review-cycle-9.json",
+          "changes": [
+            "Shared facadeDetail2 subtracts aperture rectangles from projected plinths/blocks",
+            "11 source-supported souterrain windows/doors added to6 house recipes",
+            "5 partially observed fragments deferred with provenance; no hidden full apertures inferred",
+            "First-pass source checklist now covers pavement-to-crown and souterrain/raised entrance/stoep relationship"
+          ],
+          "checks": {
+            "geometryTests": 29,
+            "nativeFirstHitSamples": 22,
+            "pass": true
+          },
+          "retainedFailures": [
+            "Raised entrance landings/stoep still incomplete",
+            "427 roof/front envelope and material failures",
+            "Chrome blocked by current sandbox; no final visual/game/performance verification",
+            "Processed source archival sync pending: private sibling outside writable roots"
+          ],
+          "heldoutTransfer": "withheld"
+        },
+        {
+          "cycle": 10,
+          "verdict": "cycle9-lower-windows-rejected-new-assembly-candidate",
+          "evidence": "artifacts/canalhouse-recipes/cycle-10-lower-assemblies",
+          "review": "docs/references/canalhouse-recipes/independent-review-cycle-10.json",
+          "changes": [
+            "Separate source-approximate stone from painted window frames",
+            "Height-bounded narrow frames and shallow pane setbacks for lower openings",
+            "Source-supported central crossbars at423/425",
+            "Thin projecting landings tied to observed raised main-door thresholds at405407423425427; no hidden tread counts inferred"
+          ],
+          "rootInspected": [
+            "425 software geometry/source comparison",
+            "427 software geometry/source comparison"
+          ],
+          "checks": {
+            "geometryTests": 31,
+            "nativeApertureChecks": 11,
+            "pass": true
+          },
+          "limits": [
+            "Software orthographic projections are not Three/WebGL/game scene validation",
+            "Stair flights/rails and417landing unresolved",
+            "Existing roof/style failures and failed heldouts retained",
+            "Private processed source sync pending current sandbox access"
+          ],
+          "heldoutTransfer": "withheld"
+        },
+        {
+          "cycle": 11,
+          "verdict": "cycle10-rejected-basement-datum-correction-candidate",
+          "evidence": "artifacts/canalhouse-recipes/cycle-11-basement-datum",
+          "review": "docs/references/canalhouse-recipes/basement-datum-audit.json",
+          "criticalFinding": "427ground759wasforegroundocclusion; exposed8pxslotincorrectlyrepresentedwholeaperture",
+          "changes": [
+            "Original8000panoramas reprojected toward lower facade from8 archived station/target combinations",
+            "Whole427facade consistently rebased to bounded inferred785pavement; two basement apertures reconstructed as full tier with explicit occluded-bottom bounds",
+            "417basement height modestly extended, paired basement glazing reconstructed from current left aperture/fragment and1934historic evidence",
+            "425basement window modestly extended within current-view bound",
+            "Reusable source datum rebasing helper and source-pixel-invariance test",
+            "Basement close-up links/camera and aimed lower panorama added"
+          ],
+          "checks": {
+            "geometryTests": 32,
+            "nativeApertureSamples": 12,
+            "nativeAperturePass": true
+          },
+          "limits": [
+            "Pavement785is bounded inference780–790, not an exact survey",
+            "Occluded bottom and417middle grid explicitly inferred",
+            "Stoep flights/rails, roof/material failures and heldouts remain unresolved",
+            "WebGL/game/performance and processed source archival verification pending"
+          ],
+          "heldoutTransfer": "withheld",
+          "rootInspected": [
+            "417/425/427 new lower projections from archived original panoramas",
+            "1934 Beeldbank original lower row",
+            "427 software base comparison",
+            "417 software base v2"
+          ],
+          "independentCandidateReview": "docs/references/canalhouse-recipes/basement-datum-audit.json"
+        },
+        {
+          "cycle": 12,
+          "verdict": "427-bounded-front-return-integrated-candidate",
+          "review": "docs/references/canalhouse-recipes/front-return-inference.json",
+          "changes": [
+            "Generic source-bounded lower-envelope roof return with area/holes/source-retention and continuous-join guards",
+            "427only: body14.537,3mfrontstrip,slope1.25,confidence0.25; original rear roof/footprint retained"
+          ],
+          "checks": {
+            "geometryTests": 36
+          },
+          "limits": [
+            "Hidden hip/return section inferred, no visual or actual game acceptance",
+            "417front shoulder stilldeferred",
+            "Historic417stoep trace found implausible metric risers; not installed as current stairs"
+          ],
+          "heldoutTransfer": "withheld"
+        },
+        {
+          "cycle": 13,
+          "date": "2026-10-06",
+          "decision": "bounded-source-corrections-no-visual-or-transfer-acceptance",
+          "sourceEvidence": [
+            "docs/references/canalhouse-recipes/close-basement-source-review.json",
+            "docs/references/canalhouse-recipes/417-lower-door-placement.json",
+            "artifacts/canalhouse-recipes/cycle-13-close-stoep-sources/projections.json"
+          ],
+          "renderEvidence": [
+            "artifacts/canalhouse-recipes/cycle-13-installed-full-height",
+            "artifacts/canalhouse-recipes/cycle-13-relief-diagnostic"
+          ],
+          "independentReview": "docs/references/canalhouse-recipes/independent-review-cycle-13.json",
+          "changes": [
+            "417near-bank source confirms3column4row left basement and full-width interval, middle hidden bottom retained as inference",
+            "Separate417lower-right door below raised main entrance, source-backed existence with interval-bounded flat drawing placement",
+            "Reusable explicit doorpanel ring/field component; no automatic panel layout",
+            "417source-supported projecting landing with confidence0.3, uncertain retained threshold",
+            "Reusable CPUdepthbuffer diagnostic and systematic cached near-bank lower-source projection workflow"
+          ],
+          "checks": {
+            "geometryTests": 39,
+            "scopedTypeScript": "passed",
+            "triangles": 18397,
+            "bytes": 951316
+          },
+          "retainedFailures": [
+            "Uncertain0.77mheader gap and raisedthreshold",
+            "Complete currentstoep/rail/flight stillmissing",
+            "Raised-door visible molding stillmissing",
+            "Rejected6point photo homography extrapolation retained",
+            "Chrome180000mslaunch timeout/EPERM; no currentgallery/game/GPUacceptance",
+            "Prior failed heldouts remain; privateprocessed-source sync pending"
+          ],
+          "heldoutTransfer": "withheld"
+        },
+        {
+          "cycle": 14,
+          "date": "2026-10-06",
+          "decision": "bounded-source-assembly-repairs-production-withheld",
+          "sourceEvidence": [
+            "artifacts/canalhouse-recipes/cycle-14-systematic-lower-sources/metadata.json",
+            "docs/references/canalhouse-recipes/current-425-427-lower-observations.json",
+            "docs/references/canalhouse-recipes/current-425-stoep-profile.json"
+          ],
+          "renderEvidence": [
+            "artifacts/canalhouse-recipes/cycle-14-low-oblique",
+            "artifacts/canalhouse-recipes/cycle-14-thin-sash-relief"
+          ],
+          "independentReview": "docs/references/canalhouse-recipes/independent-review-cycle-14.json",
+          "changes": [
+            "24checksum-verified near-bank projections for12houses; reusable tool supports otherchunk input/station/archive packs",
+            "425current4x3windowtier complete, observed lateralflight/rails through sharednativeprofile component",
+            "427leftwindow/rightlowerdoor classification corrected",
+            "417partial upperdoor molding: visible top/sides only",
+            "source-selectedthin sashbars separate from perimeterframes",
+            "boundedsurveyfrontagejogs bridged forcontinuousassembly; exactshell/roofunchanged"
+          ],
+          "retainedFailures": [
+            "425rise1.936m remains uncertain/steep vsapparentsource1.3–1.7m",
+            "Cycle14 427approachwasmissing; nextcyclecandidate separatelyreviewed",
+            "417completeflight stillsource-obscured",
+            "Currentactualgame/GPU reviewunavailable; priorfailedheldouts retained"
+          ],
+          "heldoutTransfer": "withheld"
+        },
+        {
+          "cycle": 15,
+          "date": "2026-10-06",
+          "decision": "427bounded-connected-approach-progress-reviewed-no-production-or-transfer-acceptance",
+          "sourceEvidence": [
+            "docs/references/canalhouse-recipes/current-427-stoep-profile.json"
+          ],
+          "renderEvidence": [
+            "artifacts/canalhouse-recipes/cycle-15-intermediate-landing"
+          ],
+          "independentReview": "docs/references/canalhouse-recipes/independent-review-cycle-15.json",
+          "changes": [
+            "Source separates broadlanding from unchangedmain-doorfoot",
+            "Explicitfullcandidate1.72mplatform/depth1.2m, sixsourcecontourintervals maxdrop.2924m; no inventedextra stepcount",
+            "Sharedentrance4 supportsintermediatelanding, source-obscuredshortconnector andadmittedmasonrybody withoutclosinglowerapertures",
+            "Sharedopening9 narrow sashbars andpartial source-visible doorframes"
+          ],
+          "checks": {
+            "geometryTests": 47,
+            "globalLint": "passed",
+            "scopedTypeScript": "passed",
+            "triangles": 18709,
+            "bytes": 967284
+          },
+          "retainedFailures": [
+            "1.72mplatform and1.2mdepth are boundedsource inference; broadpixel/depthintervals retained",
+            "Coarse.392mthresholdconnector is notoneclaimedactualriser orfinecount",
+            "427finegrille/paneledmasonry/doorrelief andcomplete417approach remain",
+            "No currentWebGL/game/neighbors/GPUacceptance; privateprocessed-source syncpending",
+            "Independent25sample test: source-acknowledgedleftwindow only7–9panesamplesclear; source/frontdepth/perspectivevisibilitynotfullyresolved",
+            "Rightlowerdoor25/25clearsolidflight front/leftoblique;23/25rightoblique with2ownposthits"
+          ],
+          "heldoutTransfer": "withheld"
+        }
+      ],
+      "coverage": {
+        "accepted": [],
+        "withheld": [
+          "herengracht-405",
+          "herengracht-407",
+          "herengracht-409",
+          "herengracht-411",
+          "herengracht-413",
+          "herengracht-415",
+          "herengracht-417",
+          "herengracht-419",
+          "herengracht-421",
+          "herengracht-423",
+          "herengracht-425",
+          "herengracht-427"
+        ],
+        "failed": [
+          "herengracht-421",
+          "herengracht-425",
+          "herengracht-427"
+        ],
+        "previousFailedSamples": [
+          "herengracht-415",
+          "herengracht-421",
+          "herengracht-423",
+          "herengracht-425",
+          "herengracht-427"
+        ],
+        "withheldReasons": [
+          "Prior failed heldouts were repaired and are not fresh independent transfer challenges.",
+          "Remaining houses have not passed a complete new individual acceptance review.",
+          "423 hidden roof return is explicitly inferred; current/1934 sources constrain silhouette, not exact hidden section.",
+          "GPU samples are descriptive; unrelated global loaded-model inventories differ between some baseline/pilot pages."
+        ],
+        "failureMeaning": "Initial heldout transfers failed. Bounded repairs are recognized but do not constitute fresh transfer challenges; affected expansion remains withheld."
+      },
+      "productionEvidence": [
+        {
+          "cycle": 3,
+          "path": "artifacts/canalhouse-recipes/cycle-3-game/report.json",
+          "limits": "Frozen previouscandidate, loaded inventory differences and variable timings; no visual/performance completion."
+        },
+        {
+          "cycle": 5,
+          "path": "artifacts/canalhouse-recipes/cycle-5-game/report.json",
+          "rootInspected": [
+            "desktop/touchactualcamera andpan images",
+            "exact scoped12suppression/neighborretention"
+          ],
+          "limits": "Descriptive GPU samples; otherloadedglobalinventories sometimesdiffer."
+        },
+        {
+          "cycle": 6,
+          "path": "artifacts/canalhouse-recipes/cycle-6-game/report.json",
+          "limits": "Touch stationary threshold failed; preservedfailedreport. Currentwindowreturnscandidatehasnewgeometry."
+        },
+        {
+          "cycle": 7,
+          "path": "artifacts/canalhouse-recipes/cycle-7-game/report.json",
+          "rootInspected": [
+            "desktop actual rider view",
+            "touch actual pan away and recenter views"
+          ],
+          "observedChecks": [
+            "All12 updated models loaded",
+            "Exact scoped12suppression across signature/ordinary-shell/pyramidal-roof layers",
+            "Neighbor visibility retained",
+            "Desktop/touch real camera pan and recenter",
+            "Stationary rider within unchanged1cm threshold after placement on actual road",
+            "Surrounding windows/doors retained"
+          ],
+          "limits": "Single-round full-frame GPU timings are descriptive; no causal startup/overhead or performance budget acceptance. Prior cycle6failedtouch evidence remains preserved."
+        }
+      ],
+      "reviewerDecision": "Cycles13–15 independentlyconfirmboundedloweropening andconnected425/427approachprogress. Noacceptedwholepilot/heldouttransfer; large427windowocclusion andsourceheight/depthuncertainty,417fullapproach,currentgame/performance andprivateprocessed-source sync remain.",
+      "efficiency": {
+        "researchMinutes": null,
+        "recipeAuthoringMinutes": null,
+        "reviewReworkMinutes": null,
+        "componentDevelopmentMinutes": null,
+        "timePerAcceptedHouse": null,
+        "note": "Unmeasured timings remain null; component compile time alone is not authoring cost."
+      },
+      "nextAction": "Assemble next reference-backed row with compact sharedframe and approach inputs; measure source/authoring/review phases honestly. Keep allvisual failures, actualgame/GPU and sourcepush requirements open.",
+      "exploratoryNextChunk": {
+        "id": "herengracht-429-433-two-ordinary-frontages",
+        "status": "bounded-frieze-presence-improved-frontal-readability-unproven",
+        "userSteering": "User considers current result improved and asks why not expand; proceed with bounded candidate exploration while preserving acceptance gates.",
+        "representative": "herengracht-429",
+        "heldout": "future-independent-challenge-not-yet-frozen",
+        "context": "431church/forecourt retained as separate context; not another ordinary house slot",
+        "sourceInventory": "docs/references/canalhouse-recipes/next-two-source-inventory.json",
+        "frozenComponents": {
+          "opening": "9",
+          "entrance": "4"
+        },
+        "constraints": [
+          "Preserve prior failed heldouts and incomplete currentgame/performance review",
+          "Resolve exactofficialaddress/footprint/roof/photo beforemodeling",
+          "Candidateauthoring is notacceptedtransfer orautomaticliveadmission",
+          "Archiveoriginalsourcesprivately;syncprocessedpack beforemodelcommit"
+        ],
+        "prepared": "Official address/VBO/Pand joins, native semantic roof sources, Beeldbank originals and current full/near panoramas acquired; raw private sync pending.",
+        "authoringGaps": "433frontalfrieze/pairedleafreadability andsourcecompleteglyphlayout;429steepflight/capuncertainty; actualstreetrow/game/performance/privatearchivecommitpending.",
+        "sourceExposedCandidate": "herengracht-433",
+        "heldoutCorrection": "433 lower source was inspected to discover the opposed-flight capability. It is an exposed capability example, no longer a fresh blind challenge. Preserve previous failed heldouts and freeze a new challenge before transfer acceptance.",
+        "frozenComponentsStatus": "Historical initial freeze superseded during429 capability repairs; no successful transfer claim."
+      },
+      "componentLibraryProgress": {
+        "date": "2026-10-06",
+        "entranceVersion": "5",
+        "reusableAdditions": [
+          "Opposed flights share the existing landing/flight/rail compiler; no separate geometry builder",
+          "Window groups specify explicit bays and tiers once, with source-selected frame/pane pattern",
+          "Dark frame/bar materials and meetingrail widths; paired cellar panels/lattice reuse existing opening geometry",
+          "Named joinery templates reduce429 authoring input738→515lines; exactexpandedrecipe/GLB unchanged",
+          "Source-selected broad-sash-frame reused across64 windows in7 houses;3 narrower crown frames retained, no custom geometry or extra triangles.",
+          "Ground-front field/header tied to actual opening IDs, reused for415stone pui and409411glazed pui; existing aperture-cut geometry retained."
+        ],
+        "examples": "./canalhouse-recipes.html?library=components&house=library-opposed-flights&view=basement",
+        "recipeGenerator": "../../scripts/canalhouse-recipes/component-examples.ts",
+        "independentReview": "../../docs/references/canalhouse-recipes/entrance-5-component-review.json",
+        "acceptance": "Bounded shared component/candidate improvement; prior failed heldouts and actual game/performance remain open.",
+        "openingVersion": "10",
+        "openingTemplates": "../../src/canalRecall/canalhouseOpeningTemplates.ts",
+        "templateCheckpoint": "../../docs/references/canalhouse-recipes/opening-template-checkpoint.json",
+        "candidate429": "./canalhouse-recipes.html?chunk=next&house=herengracht-429&view=basement",
+        "independent429Review": "../../docs/references/canalhouse-recipes/herengracht-429-independent-review.json",
+        "checks": "66tests/scopedTypeScript pass; current live manifest verified. Global lint currently fails unrelated manualPoiCatalog routeCenter type. CPU bounded grouping improves,415fullrecess and game/performance/transfer remain open.",
+        "currentVersions": {
+          "shell": "2",
+          "roof": "3",
+          "frontage": "2",
+          "opening": "10",
+          "facadeDetail": "4",
+          "ornament": "1",
+          "dormer": "2",
+          "cornice": "4",
+          "crown": "1",
+          "entrance": "5"
+        },
+        "currentCandidate433": "./canalhouse-recipes.html?chunk=next&house=herengracht-433&view=basement",
+        "currentChecks": "63tests passed; HTTP433GLB/assemblymatchesdisk; source/root/independentcloseobliquereview; noGPU/game/performanceacceptance",
+        "criticalFailure433": "Blankconstructionrepairedwithsharedconsole/pendant/triglyphgroups; frontfriezereadability andpairedleaf/gamecontextremainunproven.",
+        "friezeCheckpoint": "../../docs/references/canalhouse-recipes/frieze-component-checkpoint.json",
+        "wholeRowAtticCheckpoint": "docs/references/canalhouse-recipes/grouped-attic-checkpoint.json",
+        "componentVersions": {
+          "shell": "2",
+          "roof": "3",
+          "frontage": "2",
+          "opening": "10",
+          "facadeDetail": "4",
+          "ornament": "1",
+          "dormer": "2",
+          "cornice": "4",
+          "crown": "1",
+          "entrance": "5"
+        },
+        "wholeRowReview": "docs/references/canalhouse-recipes/whole-row-library-review-20261006.json",
+        "wholeRowFrameCheckpoint": "docs/references/canalhouse-recipes/whole-row-frame-checkpoint.json",
+        "groundFrontCheckpoint": "docs/references/canalhouse-recipes/ground-front-checkpoint.json",
+        "freshChallenge": "docs/references/canalhouse-recipes/fresh-transfer-challenge-20261006.json"
+      },
+      "transfer443Checkpoint": "docs/references/canalhouse-recipes/443-transfer-checkpoint.json",
+      "latest443Progress": {
+        "recordedAt": "2026-10-06T10:11:16.974138+00:00",
+        "candidate": "./canalhouse-recipes.html?chunk=next&house=herengracht-443&view=front",
+        "checks": "69 tests, scoped TypeScript and latest global lint passed; independent six-view CPU review; no game/performance acceptance",
+        "criticalFailure": "High native roof patch is near the right front, not deep rear; ownership/alignment and neighbor context need verification",
+        "accepted": false,
+        "userSteering": "Prioritize whole-row composition and speed of reusable assembly over fine ornament details."
+      },
+      "rowFramingCheckpoint": "docs/references/canalhouse-recipes/row-composition-framing-checkpoint-20261006.json",
+      "roof443ScopeAudit": "docs/references/canalhouse-recipes/443-native-roof-scope-audit.json",
+      "corniceRowCheckpoint": "docs/references/canalhouse-recipes/cornice-row-component-checkpoint-20261006.json",
+      "sectionReferenceCheckpoint": "docs/references/canalhouse-recipes/section-reference-checkpoint-20261006.json",
+      "newCriticalHeightFailures": [
+        "419 likely double-counts cornice height: native front edge used as band bottom, then band added above it",
+        "413 maximum near-front vertex is an isolated central high point, not whole-front wall/cornice datum"
+      ],
+      "userSteeringLatest": "User considers work too focused on details. Prioritize rough additional reference-based houses with existing components and row-scale silhouette/window/base decisions; defer fine profile tuning.",
+      "deferredHeightCorrection": {
+        "status": "source-audited-not-implemented",
+        "houses": [
+          "herengracht-419",
+          "herengracht-413"
+        ],
+        "sourceReview": "docs/references/canalhouse-recipes/section-reference-independent-review-20261006.json",
+        "additional413Audit": "docs/references/canalhouse-recipes/front-datum-413-source-audit-20261006.json",
+        "reason": "Keep coarse failure visible; immediate work shifted to fast rough library reuse after user steering."
+      },
+      "rough449": {
+        "status": "corrected coarse recipe; bounded rough reuse reviewed; no whole-house or transfer acceptance",
+        "checkpoint": "docs/references/canalhouse-recipes/rough449-library-checkpoint-20261006.json",
+        "preview": "./canalhouse-recipes.html?chunk=next&house=herengracht-449&view=front",
+        "accepted": false
+      },
+      "roughPair449451": {
+        "checkpoint": "docs/references/canalhouse-recipes/rough-pair-449-451-checkpoint-20261006.json",
+        "preview": "./canalhouse-recipes.html?chunk=next&house=row-449-451&view=front",
+        "majorCompositionReview": "root+independent boundedroughpass",
+        "newGeometryComponents": 0,
+        "gameAcceptance": false
+      },
+      "roughBatch453457": {
+        "checkpoint": "docs/references/canalhouse-recipes/rough-row-449-457-checkpoint-20261006.json",
+        "preview": "./canalhouse-recipes.html?chunk=next&house=row-449-457&view=front",
+        "newHouses": 3,
+        "newGeometryComponents": 0,
+        "gameAcceptance": false,
+        "unresolved": "455relative-heightmagnitude; sourcefrontwallcheck supportsheight, photographicmagnitudeunaccepted"
+      },
+      "roughBatch477481": {
+        "checkpoint": "docs/references/canalhouse-recipes/rough-row-477-481-checkpoint-20261006.json",
+        "preview": "./canalhouse-recipes.html?chunk=next&house=row-477-481&view=front",
+        "newHouses": 3,
+        "newGeometryComponents": 0,
+        "gameAcceptance": false,
+        "unresolved": "481threshold/access; sourcearchivepushpending"
+      },
+      "compound473475": {
+        "checkpoint": "docs/references/canalhouse-recipes/compound473475-checkpoint-20261006.json",
+        "preview": "./canalhouse-recipes.html?chunk=next&house=herengracht-473-475&view=front",
+        "nativeOwners": 1,
+        "gameAcceptance": false
+      },
+      "bend483493": {
+        "checkpoint": "docs/references/canalhouse-recipes/bend483493-checkpoint-20261006.json",
+        "preview": "./canalhouse-recipes.html?chunk=next&house=row-485-493&view=front",
+        "newFacades": 6,
+        "customBuilders": 0,
+        "gameAcceptance": false,
+        "failures": "493extra row corrected;483photo/nativeheight conflict stillheld; batchthroughput52minutes not fast"
+      },
+      "compactAuthoring": {
+        "checkpoint": "docs/references/canalhouse-recipes/compact-authoring-checkpoint-20261006.json",
+        "inputReductionPercent": 33,
+        "assetFingerprintsChanged": false,
+        "endToEndSpeedProven": false
+      },
+      "latestRoughBatch": {
+        "checkpoint": "docs/references/canalhouse-recipes/compound507515-checkpoint-20261006.json",
+        "decision": "dated-compound-frontage-composition-passed;current-underpass-game-held",
+        "failuresRetained": [
+          "2025fronts scaffold-obscured; comparisonusesDec2024",
+          "Registered513leftgate/rearpassage actualopenunderpass unmodeled",
+          "Exactprojection/capdepths/coarsepane counts inference retained",
+          "Original heldouts,413/419heights,481access,483height conflict remainopen",
+          "Actualgame/GPU/performance andprivate source remotesync pending"
+        ]
+      },
+      "latestComponentCorrection": {
+        "checkpoint": "docs/references/canalhouse-recipes/505-oval-clock-checkpoint-20261006.json",
+        "decision": "505 bounded Dec2024 oval/clock comparison passed; current/game/transfer withheld",
+        "component": "opening11"
+      }
+    },
+    {
+      "id": "oudezijds-east-next-south-compound",
+      "status": "primary-pass-neighbor-row-failed-transfer-withheld",
+      "scope": "Observed broad compound facade at Oudezijds Voorburgwal87–89, with85 transition and99 fresh heldout; neighborhood is discovery context only.",
+      "scopeBoundary": {
+        "segment": [
+          [
+            4.898626,
+            52.373866
+          ],
+          [
+            4.898186,
+            52.373522
+          ]
+        ],
+        "side": 1,
+        "reachM": 20
+      },
+      "segments": [
+        {
+          "group": "broad-main-zone-with-independent-access-shaft",
+          "buildingIds": [
+            "NL.IMBAG.Pand.0363100012178298"
+          ],
+          "admitted": false
+        }
+      ],
+      "sampling": {
+        "representative": {
+          "address": "Oudezijds Voorburgwal 87–89",
+          "nativeCandidate": "NL.IMBAG.Pand.0363100012178298",
+          "native": {
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012178298",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 22.99
+            },
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    4.898437,
+                    52.373654
+                  ],
+                  [
+                    4.898342,
+                    52.373579
+                  ],
+                  [
+                    4.898549,
+                    52.373525
+                  ],
+                  [
+                    4.898542,
+                    52.373515
+                  ],
+                  [
+                    4.898557,
+                    52.373511
+                  ],
+                  [
+                    4.89859,
+                    52.373559
+                  ],
+                  [
+                    4.898847,
+                    52.373492
+                  ],
+                  [
+                    4.898848,
+                    52.373491
+                  ],
+                  [
+                    4.898896,
+                    52.373534
+                  ],
+                  [
+                    4.898437,
+                    52.373654
+                  ]
+                ]
+              ]
+            },
+            "installedTile": "public/data/extracts/amsterdam/building-tiles/14/8414/5384.geojson.gz",
+            "tileSha256": "1989e17f71e01244ef6db88449dfc0ee86b567124dada97ced783cc31fba3ff4"
+          },
+          "role": "exposed discovery representative; never fresh heldout",
+          "identityJoin": "confirmed via actual87/89 NUM→same VBO→same Pand, source candidate unchanged",
+          "source": "station-2",
+          "changePolicy": "Original pending candidate freeze retained in earlier handoff; current official join confirms it without width inference.",
+          "buildingId": "NL.IMBAG.Pand.0363100012178298"
+        },
+        "transition": {
+          "address": "Oudezijds Voorburgwal 85",
+          "buildingId": "NL.IMBAG.Pand.0363100012178296",
+          "official": {
+            "recordUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/b90049bb-25fb-4115-b135-e791ce2d4a7c?_format=json",
+            "sourceId": "b90049bb-25fb-4115-b135-e791ce2d4a7c",
+            "address": "Oudezijds Voorburgwal 85",
+            "officialPandIds": [
+              "0363100012178296"
+            ],
+            "cache": "scripts/data/amsterdam-monument-register/records.json.gz",
+            "cacheSha256": "5b73fb7b464fa18349803be34e7a838f000ad293835073ff839bed25f1c0d22d"
+          },
+          "native": {
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012178296",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 16.23
+            },
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    4.898483,
+                    52.37369
+                  ],
+                  [
+                    4.898437,
+                    52.373654
+                  ],
+                  [
+                    4.898765,
+                    52.373568
+                  ],
+                  [
+                    4.898792,
+                    52.373607
+                  ],
+                  [
+                    4.898483,
+                    52.37369
+                  ]
+                ]
+              ]
+            },
+            "installedTile": "public/data/extracts/amsterdam/building-tiles/14/8414/5384.geojson.gz",
+            "tileSha256": "1989e17f71e01244ef6db88449dfc0ee86b567124dada97ced783cc31fba3ff4"
+          },
+          "role": "neighbor narrow-three-window boundary; geometry/identity fixed beforecompoundcode",
+          "sourceRegistration": "Adjacent narrow front in station2 is context; exact photo-pixel-to-Pand registration still not asserted."
+        },
+        "heldout": {
+          "address": "Oudezijds Voorburgwal 99",
+          "buildingId": "NL.IMBAG.Pand.0363100012178291",
+          "official": {
+            "recordUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/67bac75f-0d13-4355-8c0a-819524bc41d4?_format=json",
+            "sourceId": "67bac75f-0d13-4355-8c0a-819524bc41d4",
+            "address": "Oudezijds Voorburgwal 99",
+            "officialPandIds": [
+              "0363100012178291"
+            ],
+            "cache": "scripts/data/amsterdam-monument-register/records.json.gz",
+            "cacheSha256": "5b73fb7b464fa18349803be34e7a838f000ad293835073ff839bed25f1c0d22d"
+          },
+          "native": {
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012178291",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 18.53
+            },
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    4.8980749,
+                    52.3733731
+                  ],
+                  [
+                    4.8982318,
+                    52.373328
+                  ],
+                  [
+                    4.8983096,
+                    52.3733056
+                  ],
+                  [
+                    4.8984073,
+                    52.3732775
+                  ],
+                  [
+                    4.8984537,
+                    52.3733384
+                  ],
+                  [
+                    4.8984274,
+                    52.3733459
+                  ],
+                  [
+                    4.8981431,
+                    52.3734274
+                  ],
+                  [
+                    4.8980749,
+                    52.3733731
+                  ]
+                ],
+                [
+                  [
+                    4.8983102,
+                    52.373338
+                  ],
+                  [
+                    4.8983232,
+                    52.3733551
+                  ],
+                  [
+                    4.8983805,
+                    52.3733387
+                  ],
+                  [
+                    4.8983586,
+                    52.37331
+                  ],
+                  [
+                    4.8983192,
+                    52.3733212
+                  ],
+                  [
+                    4.8983102,
+                    52.373338
+                  ]
+                ]
+              ]
+            },
+            "installedTile": "public/data/extracts/amsterdam/building-tiles/14/8414/5384.geojson.gz",
+            "tileSha256": "1989e17f71e01244ef6db88449dfc0ee86b567124dada97ced783cc31fba3ff4"
+          },
+          "role": "fresh untuned adjacent-next-south challenge/negative-control; subtype not inferred beforephotographicchallenge",
+          "photoState": "not acquired/inspected; keep unseen until candidate criteria/layout freeze; not compound transfer acceptance",
+          "nativeCaution": "Installedpolygon hascourtyardhole; preserveit. Sourceclass/prior mustnotfollowwidth or construction date.",
+          "segment": [
+            [
+              4.898186,
+              52.373522
+            ],
+            [
+              4.897619,
+              52.373084
+            ]
+          ],
+          "side": 1
+        }
+      },
+      "traits": [
+        {
+          "id": "unequal-linked-zones",
+          "critical": true,
+          "source": "station-2",
+          "assertion": "One broad left window field with three principal axes stacks beside independent narrow right access/erker shaft. Preserve unequal field hierarchy and a shared facade envelope; stock four equal columns fail.",
+          "confidence": "high visible/source register agreement",
+          "acceptance": "Broad and narrow fields read as different coupled zones at block and oblique scale, not four independently repeated windows."
+        },
+        {
+          "id": "shaft-and-sash-composition",
+          "critical": true,
+          "source": "station-2",
+          "assertion": "Right shaft has a broad principal pane with narrow pale side-light strips and shallow projection. Main left sash has quiet transoms and tall lower lights, not generic six-over-six texture. Shaft ground hasthree narrowvertical lights above its canopy and differs from upper shaft windows.",
+          "confidence": "high relationships; exact projection/dimensions unresolved",
+          "acceptance": "Distinct explicit upper/ground shaft opening profiles, visible first-hit projected/reveal geometry and source quiet sash; independent shaft floor/window axes not inferred from equal main-bay division."
+        },
+        {
+          "id": "connected-ground-surround-access-axis",
+          "critical": true,
+          "source": "station-2",
+          "assertion": "Raised mainzone has one connected pale three-opening surround with substantial sill/header/piers; separate dark right door has projecting pale canopy on same access axis and layered side corbels. Shared groundlayout aligns to its own upper zone, not stock left red fanlight door or full-width plinth.",
+          "confidence": "high assembly relationship; full pavement/approach cropped",
+          "acceptance": "Joined pale surround stays with the main three openings; independent dark access and white canopy stays with the shaft, openings visible and no wallplane burying framedglass/door."
+        },
+        {
+          "id": "quiet-top-and-neighbor-boundaries",
+          "critical": true,
+          "source": "station-2 and station-1",
+          "assertion": "Wide front quiet heavy cornice/roof zone contrasts with narrow neighbors gabled/corniced mixture. Source official description flat roof with steep front dakschild is metadata, not permission for unsurveyed full roof geometry. Preserve adjacent identity, native heights and open courts and local trim hierarchy.",
+          "confidence": "medium roofsurface; high neighbor contrast",
+          "acceptance": "Compound group does not flatten or repaint narrow neighbors; crown attachment remainsclosed and quiet broad top owns the supported native envelope."
+        },
+        {
+          "id": "masonry-pale-trim-low-balcony",
+          "critical": true,
+          "source": "station-2",
+          "assertion": "Gray/darkbrown masonry and pale opening trims establishstrong contrast; no repeated balcony stacks. Lower masonry differs from upper course in photograph/register, palette is secondary to missing assemblies.",
+          "confidence": "high trim/balcony relationship; medium color under lighting",
+          "acceptance": "Pale connected trim and glazing-shaft strip stay recognizable in all looks against masonry; no randomized balconydecorations or palette-only workaround."
+        }
+      ],
+      "coverage": {
+        "discoveredPhysicalParents": 10,
+        "inventoriedIds": [
+          "NL.IMBAG.Pand.0363100012178398",
+          "NL.IMBAG.Pand.0363100012177703",
+          "NL.IMBAG.Pand.0363100012177702",
+          "NL.IMBAG.Pand.0363100012177704",
+          "NL.IMBAG.Pand.0363100012177700",
+          "NL.IMBAG.Pand.0363100012178296",
+          "NL.IMBAG.Pand.0363100012178298",
+          "NL.IMBAG.Pand.0363100012178233",
+          "NL.IMBAG.Pand.0363100012178232",
+          "NL.IMBAG.Pand.0363100012178300"
+        ],
+        "candidatePhysicalParents": 1,
+        "newAdmissions": 0,
+        "neighborsExcludedUntilObserved": true
+      },
+      "cycles": [
+        {
+          "id": "unmeasured-native-capability-fixture-20261006",
+          "scope": "Nativegeometry/texture/first-hit diagnostics only; recipe dimensions are an illustrative fixture.",
+          "render": "artifacts/street-appearance/compound-native/report.json",
+          "rootDecision": "fail-source-fit-not-admitted",
+          "prominentFailures": [
+            "Large blank upper area: unmeasured row datums do not match the source facade/eave composition.",
+            "Installed22.99m roof-percentile height differs from measured street eave~19.3m; supported native roof regions need distinct treatment.",
+            "Initial light door ignored dark tint through atlas accent mask; repaired, failed image hashes reproduced exactly and preserved."
+          ],
+          "independentReview": "docs/references/compound-frontage-integration-review.json",
+          "gameScenePerformance": "not acquired"
+        },
+        {
+          "id": "source-envelope-cycle-1",
+          "scope": "Primary87/89 only; approximate source facade dimensions and official LoD2.2 roof on unchanged installed footprint",
+          "render": "artifacts/street-appearance/compound-native/source-envelope-cycle-1/report.json",
+          "rootDecision": "not-admitted-roof-perimeter-fails-source-material-review-pending",
+          "prominentFailures": [
+            "Measured roof/native wall joint max4.8149cm horizontal and5.5579cm vertical; physical perimeter test fails. Do not widen identity tolerances.",
+            "Fresh heldout99 remains unseen; actual candidate gameplay/performance is pending."
+          ],
+          "independentReview": "docs/references/compound-source-envelope-independent-review.json",
+          "gameScenePerformance": "not acquired"
+        },
+        {
+          "id": "source-envelope-cycle-2-material-repair",
+          "scope": "Primary87/89 material and facade composition only; boundary binding repair was in progress",
+          "render": "artifacts/street-appearance/compound-native/source-envelope-cycle-2/report.json",
+          "rootDecision": "bounded-material-improvement-pass-not-admitted",
+          "independentReview": "docs/references/compound-source-envelope-independent-review.json",
+          "materialEvidence": "artifacts/street-appearance/compound-native/material-sampling-repair/report.json",
+          "resolvedVisualFailures": [
+            "Opaque pale stripe inside glazing",
+            "Unsupported white fanlight mark on rectangular dark leaf"
+          ],
+          "remaining": [
+            "Frozen final boundary validation/render",
+            "Transition and fresh heldout source comparison",
+            "Actual game-scene and performance review"
+          ],
+          "gameScenePerformance": "Desktop attempt preserved browser-launch failure; no scene or GPU timings acquired",
+          "independentReviewField": "cycle2MaterialReview"
+        },
+        {
+          "id": "source-envelope-cycle-3-frozen",
+          "scope": "Primary87/89 source/render review only; unchanged native metadata and footprint",
+          "render": "artifacts/street-appearance/compound-native/source-envelope-cycle-3/report.json",
+          "rootDecision": "bounded-primary-source-fit-pass-no-runtime-admission",
+          "independentReview": "docs/references/compound-source-envelope-independent-review.json",
+          "geometryEvidence": "artifacts/street-appearance/compound-native/roof-joint-cycle2/joint-validation.json",
+          "strictJoinAudit": {
+            "samples": 179,
+            "maxDistanceM": 0.00107812,
+            "sameAuditBaselineMaxDistanceM": 0.0588033,
+            "nativeEdgeCount": 9,
+            "correctionCollarWidthM": 0.0559512,
+            "roofRegionsRetained": 18
+          },
+          "remaining": [
+            "Frozen transition and fresh heldout source challenge",
+            "Native street-row composition",
+            "Actual candidate game-scene and performance evidence"
+          ],
+          "gameScenePerformance": "not acquired",
+          "independentReviewField": "cycle3FinalFrozenPrimaryReview"
+        }
+      ],
+      "capabilityProgress": {
+        "implemented": [
+          "Independent main/shaft window axes and row datums",
+          "Three narrow ground lights independent of upper shaft pane/sidelights",
+          "Connected pale ground surround and aligned canopy/corbels",
+          "Real cut/recessed access with textured dark leaf",
+          "World-facing normalization, source-direction mirroring and whole-plan fit rejection"
+        ],
+        "module": "src/canalRecall/compoundFrontageLayout.ts",
+        "nativeChecks": "all3looks normal/coarseLOD; exactfailedfitfallback; ringreverse/tessellation; scopedneighborretention",
+        "visualAcceptance": false
+      },
+      "sourceNotes": {
+        "originalPandYear": 1650,
+        "sourceDescribedFacadeYear": 1920,
+        "usableAreaIsNotFootprint": true
+      },
+      "nextAction": "Repair recurring regular canal-front ground/roof rhythm as a separate observed group; find fresh positive compound examples before transfer. Validate opt-in diagnostic in actual game and GPU/pan checks; do not expand from primary or negative controls.",
+      "demo": {
+        "page": "public/canal-drive/street-generator-demos.html",
+        "status": "working-candidate-comparison-ready",
+        "sourceImages": "generated-native-geometry-only",
+        "acceptedExpansion": false,
+        "images": "public/canal-drive/demo-assets/compound-source/",
+        "reviewCycle": "source-envelope-cycle-3-frozen"
+      },
+      "sourceArchiveCheckpoint": {
+        "repository": "blackmad/map-recall2-source-data",
+        "commit": "228575192070e7ab64e96991c106e7929d6cbe61",
+        "path": "streets/oudezijds-east-next-south/",
+        "status": "pushed"
+      },
+      "transferChallenge": {
+        "review": "docs/references/compound-transfer-challenge-20261006.json",
+        "decision": "85 and99 negative controls; no positive compound transfer",
+        "rowDecision": "FAIL generic neighbor roof/raised-entry/row rhythm",
+        "rootInspected": true,
+        "positiveCompoundTransferCount": 0,
+        "newAdmissions": 0,
+        "heldout99State": "exposed; not reusable fresh after tuning"
+      },
+      "diagnosticRuntimeIntegration": {
+        "status": "implemented-independent-contract-pass-game-pending",
+        "review": "docs/references/surveyed-envelope-runtime-independent-review.json",
+        "tests": 8,
+        "priorFailures": [
+          "False roof ownership from source metadata tolerance",
+          "Late load after disposal",
+          "Roof suppression below drawing zoom"
+        ],
+        "publicDefaultAdmission": false
+      },
+      "runtimeChallengeSourceArchive": {
+        "repository": "blackmad/map-recall2-source-data",
+        "commit": "5407aa56a44f87216f23a3f1b748cd3550b61cf5",
+        "path": "streets/oudezijds-east-next-south/processed/runtime-and-challenge-20261006/",
+        "status": "pushed"
+      }
+    },
+    {
+      "id": "regular-canal-left-raised-entry-20261006",
+      "status": "body-and-door-primary-pass-crown-failed",
+      "scope": "Observed regular canal-front groups; six-parent discovery inventory, exposed85/99 training. No district prior or new admissions.",
+      "sourceScope": "docs/references/regular-canal-front-scope-20261006.json",
+      "inventory": [
+        {
+          "address": 85,
+          "buildingId": "NL.IMBAG.Pand.0363100012178296",
+          "role": "representative-exposed-training",
+          "heightM": 16.23,
+          "constructionYear": 1746,
+          "rings": 1,
+          "frontageTarget": [
+            4.89846,
+            52.373672
+          ],
+          "officialIdentitySource": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/b90049bb-25fb-4115-b135-e791ce2d4a7c?_format=json",
+          "officialMonumentNumber": "6051",
+          "identityJoin": "municipal monument explicit bagPandIds; not proximity",
+          "pieces": [
+            "native footprint shell; preserve rear and courtyard",
+            "street-facing frontage grid",
+            "basement/plinth + raised bel-etage",
+            "left entrance + aligned landing/steps/open rail",
+            "upper regular window axes",
+            "independently sourced crown/roof"
+          ],
+          "camera": {
+            "panoramaId": "recording_2025-06-30_05-16-46_01757",
+            "date": "2025-06-30T06:08:28Z",
+            "position": [
+              4.898423356049586,
+              52.37370705112712
+            ],
+            "distanceM": 4.629,
+            "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01757/equirectangular/panorama_8000.jpg",
+            "selection": "newest in nearest+4m among archived four-page bounded catalogue; not exhaustive latest"
+          },
+          "sourceInspected": true,
+          "familyEligibility": "training supported"
+        },
+        {
+          "address": 95,
+          "buildingId": "NL.IMBAG.Pand.0363100012178300",
+          "role": "transition-frozen-uninspected-target",
+          "heightM": 12.71,
+          "constructionYear": 1905,
+          "rings": 1,
+          "frontageTarget": [
+            4.898213,
+            52.3734805
+          ],
+          "officialIdentitySource": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/9795279f-cadd-44eb-af68-51d10a9fb008?_format=json",
+          "officialMonumentNumber": "6052",
+          "identityJoin": "municipal monument explicit bagPandIds; not proximity",
+          "pieces": [
+            "native footprint shell; preserve rear and courtyard",
+            "street-facing frontage grid",
+            "basement/plinth + raised bel-etage",
+            "left entrance + aligned landing/steps/open rail",
+            "upper regular window axes",
+            "independently sourced crown/roof"
+          ],
+          "camera": {
+            "panoramaId": "recording_2025-06-30_05-16-46_01752",
+            "date": "2025-06-30T06:08:18Z",
+            "position": [
+              4.898193055748497,
+              52.37352580690053
+            ],
+            "distanceM": 5.222,
+            "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01752/equirectangular/panorama_8000.jpg",
+            "selection": "newest in nearest+4m among archived four-page bounded catalogue; not exhaustive latest",
+            "perspective": {
+              "headingDeg": 164.95723274624027,
+              "width": 1000,
+              "height": 1500,
+              "fovDeg": 100,
+              "pitchDeg": 25
+            }
+          },
+          "sourceInspected": true,
+          "familyEligibility": "WITHHELD:2025-06-30target largely hidden by scaffold/mesh; register crown assertion is historical, not current photographic acceptance"
+        },
+        {
+          "address": 97,
+          "buildingId": "NL.IMBAG.Pand.0363100012178299",
+          "role": "inventory-only-no-admission",
+          "heightM": 12.74,
+          "constructionYear": 1724,
+          "rings": 1,
+          "frontageTarget": [
+            4.898167,
+            52.373445
+          ],
+          "officialIdentitySource": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/d44ceb59-b1ec-4127-b0bd-3d397561f549?_format=json",
+          "officialMonumentNumber": "6053",
+          "identityJoin": "municipal monument explicit bagPandIds; not proximity",
+          "pieces": [
+            "native footprint shell; preserve rear and courtyard",
+            "street-facing frontage grid",
+            "basement/plinth + raised bel-etage",
+            "left entrance + aligned landing/steps/open rail",
+            "upper regular window axes",
+            "independently sourced crown/roof"
+          ],
+          "camera": {
+            "panoramaId": "recording_2025-06-30_05-16-46_01751",
+            "date": "2025-06-30T06:08:16Z",
+            "position": [
+              4.898147215436253,
+              52.37349069135834
+            ],
+            "distanceM": 5.261,
+            "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01751/equirectangular/panorama_8000.jpg",
+            "selection": "newest in nearest+4m among archived four-page bounded catalogue; not exhaustive latest"
+          },
+          "sourceInspected": false,
+          "familyEligibility": "unclassified; do not infer raised-entry grammar from address, year or crown"
+        },
+        {
+          "address": 99,
+          "buildingId": "NL.IMBAG.Pand.0363100012178291",
+          "role": "representative-exposed-taller-variant",
+          "heightM": 18.53,
+          "constructionYear": null,
+          "rings": 2,
+          "frontageTarget": [
+            4.898109,
+            52.3734
+          ],
+          "officialIdentitySource": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/67bac75f-0d13-4355-8c0a-819524bc41d4?_format=json",
+          "officialMonumentNumber": "6054",
+          "identityJoin": "municipal monument explicit bagPandIds; not proximity",
+          "pieces": [
+            "native footprint shell; preserve rear and courtyard",
+            "street-facing frontage grid",
+            "basement/plinth + raised bel-etage",
+            "left entrance + aligned landing/steps/open rail",
+            "upper regular window axes",
+            "independently sourced crown/roof"
+          ],
+          "camera": {
+            "panoramaId": "recording_2025-06-30_05-16-46_01749",
+            "date": "2025-06-30T06:08:11Z",
+            "position": [
+              4.898054269231004,
+              52.37342072462232
+            ],
+            "distanceM": 4.376,
+            "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01749/equirectangular/panorama_8000.jpg",
+            "selection": "newest in nearest+4m among archived four-page bounded catalogue; not exhaustive latest"
+          },
+          "sourceInspected": true,
+          "familyEligibility": "training supported"
+        },
+        {
+          "address": 103,
+          "buildingId": "NL.IMBAG.Pand.0363100012178289",
+          "role": "withheld-shared-original-exposure-risk",
+          "heightM": 15.33,
+          "constructionYear": 1693,
+          "rings": 1,
+          "frontageTarget": [
+            4.897986,
+            52.3733025
+          ],
+          "officialIdentitySource": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/34d7f9c4-d28f-4514-99aa-7f6cc8f2be9f?_format=json",
+          "officialMonumentNumber": "6056",
+          "identityJoin": "municipal monument explicit bagPandIds; not proximity",
+          "pieces": [
+            "native footprint shell; preserve rear and courtyard",
+            "street-facing frontage grid",
+            "basement/plinth + raised bel-etage",
+            "left entrance + aligned landing/steps/open rail",
+            "upper regular window axes",
+            "independently sourced crown/roof"
+          ],
+          "camera": {
+            "panoramaId": "recording_2025-06-30_05-16-46_01749",
+            "date": "2025-06-30T06:08:11Z",
+            "position": [
+              4.898054269231004,
+              52.37342072462232
+            ],
+            "distanceM": 13.954,
+            "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01749/equirectangular/panorama_8000.jpg",
+            "selection": "newest in nearest+4m among archived four-page bounded catalogue; not exhaustive latest"
+          },
+          "sourceInspected": false,
+          "familyEligibility": "unclassified; do not infer raised-entry grammar from address, year or crown"
+        },
+        {
+          "address": 113,
+          "buildingId": "NL.IMBAG.Pand.0363100012171881",
+          "role": "heldout-frozen-uninspected-target",
+          "heightM": 16.59,
+          "constructionYear": 1688,
+          "rings": 1,
+          "frontageTarget": [
+            4.897727,
+            52.373089
+          ],
+          "officialIdentitySource": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/18204116-0831-45ec-a794-ef282b12a70f?_format=json",
+          "identityJoin": "municipal monument explicit bagPandIds; installed stage-input source geometry",
+          "sourceInspected": false,
+          "camera": {
+            "panoramaId": "b_20250114_1026_Track02_Sphere_00175",
+            "date": "2025-01-14T09:52:26Z",
+            "position": [
+              4.897657654049882,
+              52.373103751890945
+            ],
+            "distanceM": 4.99,
+            "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20250114_1026_Track02_Sphere_00175/equirectangular/panorama_8000.jpg",
+            "selection": "Newest within nearest+4m among separately acquired bounded southern catalogue; not exhaustive latest",
+            "catalogueFile": "/private/tmp/map-recall2-jan-evertsen-source-archive/streets/oudezijds-east-next-south/raw/regular-canal-scope-20261006/discovery-113-1.json",
+            "catalogueSha256": "897c0faa1cc900e451eb71020cd0e55b3b811feb76154b05d45c40e49436efe2",
+            "catalogueCount": 65,
+            "nextPage": null,
+            "metadataFrozenAt": "2026-10-06T18:47:07.357888+00:00",
+            "perspective": {
+              "headingDeg": 109.21040766953001,
+              "width": 1000,
+              "height": 1500,
+              "fovDeg": 100,
+              "pitchDeg": 25
+            },
+            "rawImageAcquisition": "not performed by scopeworker; authorized root may acquire and save unviewed",
+            "imageInspection": "FORBIDDEN until training planner+criteria freeze"
+          },
+          "cameraAccess": "HTTP200 catalogue via root; original image remains unviewed",
+          "familyEligibility": "unknown until heldout challenge; no guarantee positive transfer",
+          "pieces": [
+            "native footprint shell, rear retained",
+            "street-facing grid/access/crown compatibility challenge"
+          ]
+        }
+      ],
+      "sampling": {
+        "frozenBeforeImplementation": false,
+        "trainingFreeze": "Traits and inventory frozen in this document; no renderer changes by this worker",
+        "representatives": [
+          85,
+          99
+        ],
+        "transitions": [
+          95,
+          "87-89compound-negative-control"
+        ],
+        "heldouts": [
+          113
+        ],
+        "heldoutSourceRule": "113identity frozen before photographic inspection or register-description reading. Select closest dated source camera from separately acquired bounded southern catalogue; distinct original from85/99mandatory. Freeze camera metadata before acquisition; do not inspect113before training planner/criteria freeze.103shares99original and is withheld, neverfresh.113camera metadata now frozen from distinct southern original; no sourceimage viewed.",
+        "heldoutApplicability": "Unclassified challenge: assess regular-body/entrance eligibility only after training implementation freeze. Incompatible source is a negative control, not a positive transfer success.",
+        "transitionRule": "95frozen2025source inspected, scaffold occluded; withheld. Retain target and dated failure; alternate historical/current source must be cross-checked before classification.",
+        "fixedViews": [
+          "front broad85–99native row",
+          "oblique broad85–99native row",
+          "near85leftentrance",
+          "near99leftentrance/tallground",
+          "target95transition front+oblique",
+          "target113heldout front+oblique after training freeze"
+        ],
+        "freezeEvidence": {
+          "scopeSha256Before95Inspection": "9846b68e9adee7f4875ade221f1ecde16cfeda2f46eafaa77f287310cac1dda9",
+          "meaning": "Original sample metadata+criteria freeze before95source inspection;103was replaced before any implementation or103view with113due shared-source exposure risk.113metadata acquired later must be frozen before rawimage view.",
+          "rendererEditsByWorker": 0,
+          "heldoutPhotographsViewedByWorker": 0
+        },
+        "freezeTimingCorrection": {
+          "reason": "113 replaced the provisional shared-original103 sample after the first generic planner prototype had been implemented. Its image remains unacquired/unviewed. Do not describe113 as fixed before that prototype.",
+          "validNextCycle": "113 identity/camera are now fixed before the forthcoming crown/roof improvement cycle; keep its image unviewed until that training freeze.",
+          "priorEvaluation": "Current body cycles contain exposed85/99 only; no fresh-heldout acceptance claimed."
+        }
+      },
+      "traits": [
+        {
+          "id": "regular-three-axis-grid",
+          "importance": "critical",
+          "relationship": "Three principal opening axes continue through upper tiers and ground field; left door occupies left axis. No independent right shaft, erker, or shaft-specific row count.",
+          "sources": [
+            85,
+            99
+          ],
+          "capability": "inadequate",
+          "module": "src/canalRecall/facadeLayout.ts",
+          "gap": "Nominal-bay rounding does not guarantee3source axes; narrow85 width5.061m makes each axis1.687m, below current2.4m door-bay eligibility. Need explicit source-relationship layout contract, not bayScale-only tuning."
+        },
+        {
+          "id": "tall-ground-and-tapering-upper-tiers",
+          "importance": "critical",
+          "relationship": "Raised ground/bel-etage is the tallest glazed field; upper openings shorten upward.85has3main upper rows plus shortened crown opening;99has4upper rows, shortening toward cornice. Keep variants distinct.",
+          "sources": [
+            85,
+            99
+          ],
+          "capability": "missing-joint-contract",
+          "module": "src/canalRecall/facadeLayout.ts",
+          "gap": "groundM exists but all upper rows share storeyM. Need per-tier heights/opening fractions, explicit basement/raised ground separation and no invented extra tier."
+        },
+        {
+          "id": "left-raised-entry-continuity",
+          "importance": "critical",
+          "relationship": "Left panel door, transom, raised landing and stone steps share one physical opening axis; thin open iron rail follows steps. Tall adjacent windows sit above the same basement. Lower basement access remains separate.",
+          "sources": [
+            85,
+            99
+          ],
+          "capability": "inadequate",
+          "module": "src/canalRecall/facadeEntranceAssemblies.ts",
+          "gap": "Preview stair/recess primitives exist and validate riser-to-door-bottom, but no rail/transom/panel/basement layout contract; a solid flat door patch or steps to generic glass fails. Reuse primitives with joint native facade openings rather than detached decoration."
+        },
+        {
+          "id": "pale-subdivided-window-framing",
+          "importance": "critical",
+          "relationship": "Individual light sash/perimeter frames and readable internal divisions against dark brick, with generous dark piers.85trim is more muted than99white framing; lower stone is distinct from upper brick.",
+          "sources": [
+            85,
+            99
+          ],
+          "capability": "supported-primitives-inadequate-joint-binding",
+          "module": "src/canalRecall/facadeCells.ts + facade layout/entrance binding",
+          "gap": "Retain textured window/door identity at normal gameplay distance; generic undersized repeating panes or connected compound whitegroundband contradict these fronts."
+        },
+        {
+          "id": "mixed-crowns-with-shared-body",
+          "importance": "critical-row",
+          "relationship": "Regular body grammar does not imply one crown.85shaped clock crown,99bracketed straight cornice/central hoist;95historic rollagentop and97cornice+attic are textual inventory controls pending source review.",
+          "sources": [
+            85,
+            99
+          ],
+          "capability": "supported-family-primitives-inadequate-source-binding",
+          "module": "src/canalRecall/roofMesh.ts + roofFootprint.ts + roof attachment/reconciliation",
+          "gap": "clock/cornice families exist. Bind sourced crown and roof ownership per physical frontage; preserve native heights, roof caps/normals/courtyards. Existing99 fallback uniform tier rhythm and85generic crown failed native-row review."
+        },
+        {
+          "id": "absence-of-balcony-stack",
+          "importance": "critical-boundary",
+          "relationship": "85/99show entrance rails, not stacked balcony slabs. Do not reinterpret stoop rails as balcony frequency or copy87/89canopy.",
+          "sources": [
+            85,
+            99
+          ],
+          "capability": "requires-inference-guard",
+          "module": "joint recipe admission",
+          "gap": "No balcony prior admitted from these2examples."
+        }
+      ],
+      "coverage": {
+        "accepted": [],
+        "withheld": [
+          95,
+          103,
+          113
+        ],
+        "failed": [
+          "2025source95scaffolding prevents architecture classification",
+          "Existing85–99 generic neighbor rhythm"
+        ]
+      },
+      "cycles": [
+        {
+          "cycle": 1,
+          "decision": "body improvement; FAIL flat doors and missing roof mixture",
+          "evidence": "artifacts/regular-canal-front/cycle-1/report.json"
+        },
+        {
+          "cycle": 2,
+          "decision": "FAIL repeated handles in door panel atlas crops; roofs still missing",
+          "evidence": "artifacts/regular-canal-front/cycle-2-door-panels/report.json"
+        },
+        {
+          "cycle": 3,
+          "decision": "Independent bounded body and paneled-door PASS; roof mixture FAIL, transfer/game/GPU pending",
+          "evidence": "artifacts/regular-canal-front/cycle-3-door-hardware/report.json",
+          "independentReview": "docs/references/regular-canal-front-independent-review.json",
+          "rootInspected": true,
+          "newAdmissions": 0
+        }
+      ],
+      "sourceFailures": [
+        {
+          "address": 95,
+          "kind": "photographicocclusion",
+          "state": "HTTP200butarchitectureunresolved",
+          "effect": "Nopositive transition acceptance; preserve evidence. Optional bounded older-camera acquisition may resolve, no unbounded searches."
+        }
+      ],
+      "capabilityModules": [
+        "src/canalRecall/regularCanalFrontage.ts"
+      ],
+      "publicAdmissions": 0,
+      "nextAction": "Resolve shaped crown85 and bracketed cornice99 without closing the native courtyard or inventing heights; freeze training before fresh113 challenge. Actual game/GPU/desktop-touch pans still required before acceptance.",
+      "demo": {
+        "page": "public/canal-drive/street-generator-demos.html",
+        "assets": "public/canal-drive/demo-assets/regular-canal/",
+        "status": "candidate with prominent failures",
+        "published": true,
+        "commit": "f1767d9a"
+      },
+      "sourceArchive": {
+        "repository": "blackmad/map-recall2-source-data",
+        "commit": "21434484d4cf7f4b0a28da22b691a615611c586b",
+        "path": "streets/oudezijds-east-next-south/processed/regular-canal-generator-20261006/",
+        "status": "pushed;113freeze timing clarification follows separately"
+      },
+      "roofSourceAcquisition": {
+        "path": "streets/oudezijds-east-next-south/raw/regular-canal-roofs-20261006/",
+        "access": "both HTTP200 originals saved before parsing; source checkpoint pending",
+        "architecturalAcceptance": false
       }
     }
   ],
@@ -1379,6 +2972,61 @@
       "completion": "accepted-fixed-eight-installed-pilot",
       "heldout": false,
       "coverageLimit": "These eight observed parents only; no neighborhood or repeated-family transfer."
+    },
+    {
+      "profileId": "bloemgracht-102-116-explicit-native-recipes",
+      "streetName": "Bloemgracht",
+      "scope": "Photographed canal-side row, seven explicit native owners; no procedural neighborhood transfer",
+      "nativeFrontageRD": [
+        [
+          120442.826,
+          487535.19575
+        ],
+        [
+          120473.261,
+          487546.37375
+        ]
+      ],
+      "ownerIds": [
+        "0363100012168084",
+        "0363100012168078",
+        "0363100012168155",
+        "0363100012168156",
+        "0363100012168157",
+        "0363100012168162",
+        "0363100012168158"
+      ],
+      "status": "candidate-only-roof-and-stair-holds",
+      "completion": "not-accepted",
+      "samples": {
+        "representative": "bloemgracht-104",
+        "transition": "bloemgracht-102",
+        "heldout": "bloemgracht-116 existing modeled challenge; not blind"
+      },
+      "criticalTraits": [
+        "Narrow historic fronts contrast with broad104pairedaxes/shaft and102three-axis lijst front",
+        "Pale joinery and grouped windows retain floor relationships",
+        "Clock/neck/point/lijst fronts remain source-selected; roof-family correspondence unaccepted",
+        "104recessedentry/stoep and asymmetricbasement; sourceguards are not invented balconies"
+      ],
+      "capabilityGaps": [
+        "104fullstair-sidecheeks",
+        "104roof50/attic/drawing-body registration",
+        "102raisedattichead",
+        "Existingrownativehighfins",
+        "Actualgameandperformance"
+      ],
+      "decisions": [
+        "Initial104ordinaryatticclassification failed; two wide atticvolumes plusrecessedslot supported in independent correction review",
+        "104VBOspans8158and8162: keep exact physical owners distinct",
+        "Passing CPUprobes/GLBdecode does not accept row or transfer"
+      ],
+      "evidenceIds": [
+        "docs/references/canalhouse-recipes/bloemgracht-104-timing-checkpoint-20261007.json",
+        "docs/references/canalhouse-recipes/bloemgracht-104-slot-candidate-review-20261007.json"
+      ],
+      "game": false,
+      "performance": false
     }
   ],
   "janEvertsenCanopyRolloutDiscovery": {
@@ -1409,5 +3057,22 @@
     "prototypeReview": "docs/references/jan-evertsen-pilot/glassband-review.json",
     "failedEvidence": "Full facade comparison failed: stock narrow window groups, missing projecting erkers/recessed porticos, mismatched masonry and unsupported roof composition. Glass-band capability accepted narrowly; full profile and expansion withheld.",
     "nextAction": "Build separate source-supported flat and projecting paired-window groups and recessed shop/residential entrance module; preserve fixed124/126 representatives,128 transition,122/119 heldouts before considering expanded identities."
+  },
+  "demoRequirement": {
+    "requestedOn": "2026-10-06",
+    "userRequest": "Keep making demo pages to show what generator changes produce at checkpoints.",
+    "index": "public/canal-drive/street-generator-demos.html",
+    "expectations": [
+      "Before/after views of generated geometry",
+      "Interactive comparisons where useful",
+      "Clear candidate versus accepted rollout scope",
+      "Preserve failed evidence and link actual game/performance review when available",
+      "Do not publish raw third-party reference photos into the main repository"
+    ],
+    "latestPublishedCheckpoint": {
+      "commit": "f1767d9a",
+      "status": "pushed; deployment/browser display unverified",
+      "path": "public/canal-drive/street-generator-demos.html"
+    }
   }
 }
