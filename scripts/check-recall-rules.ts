@@ -7,6 +7,9 @@ import assert from 'node:assert/strict';
 
 import {
   advanceRouteQuiz,
+  ROUTE_QUIZ_RETEST_METRES,
+  ROUTE_QUIZ_SETTLE_METRES,
+  routeQuizContext,
   bridgeGate,
   crossingQuestionKind,
   findBridgeRouteAt,
@@ -273,6 +276,75 @@ check('an already-revealed name comes back sooner', () => {
   const unseen = advanceRouteQuiz(fresh, quizInput(), 0.1, 'none').state;
   assert.equal(advanceRouteQuiz(unseen, quizInput(), 0.35, 'none').action, 'idle',
     'a first question waits the full settle delay');
+});
+
+// Named regression (user report 2026-10-09, "asked me kinda too late"):
+// riding Herenstraat → Noordsche Compagniebrug → Prinsenstraat at cruise
+// (~55 m/s in world units), the 0.65 s settle covered 33 m of the 40 m
+// bridge way, so the question opened at the far quay of the Keizersgracht.
+check('a fast rider is asked a few metres into a short street, not at its end', () => {
+  const cruise = (overrides: Partial<RouteQuizInput> = {}) => quizInput({
+    roadName: 'Noordsche Compagniebrug',
+    currentName: 'Herenstraat',
+    speed: 165,
+    movedMetres: 55 / 60,
+    settleMetres: ROUTE_QUIZ_SETTLE_METRES,
+    retestMetres: ROUTE_QUIZ_RETEST_METRES,
+    ...overrides,
+  });
+  let state = advanceRouteQuiz(fresh, cruise(), 1 / 60, 'none').state;
+  let metres = 0;
+  let decision = advanceRouteQuiz(state, cruise(), 1 / 60, 'none');
+  while (decision.action === 'idle') {
+    metres += 55 / 60;
+    state = decision.state;
+    decision = advanceRouteQuiz(state, cruise(), 1 / 60, 'none');
+    assert.ok(metres < 40, 'the question opens before the 40 m bridge way ends');
+  }
+  assert.equal(decision.action, 'ask');
+  assert.ok(metres <= ROUTE_QUIZ_SETTLE_METRES + 1,
+    `asked ${metres.toFixed(1)} m in, not after the time settle (~36 m)`);
+
+  // Without the distance input, the old time-only settle is unchanged.
+  const timeOnly = quizInput({ movedMetres: 5 });
+  const nominated = advanceRouteQuiz(fresh, timeOnly, 0.1, 'none').state;
+  assert.equal(advanceRouteQuiz(nominated, timeOnly, 0.1, 'none').action, 'idle',
+    'a caller that passes no settle distance keeps the time settle');
+});
+
+check('the settle distance resets when the name under the rider changes', () => {
+  const input = (roadName: string) => quizInput({
+    roadName, movedMetres: 3, settleMetres: ROUTE_QUIZ_SETTLE_METRES,
+  });
+  let state = advanceRouteQuiz(fresh, input('Noordsche Compagniebrug'), 0.02, 'none').state;
+  state = advanceRouteQuiz(state, input('Noordsche Compagniebrug'), 0.02, 'none').state;
+  state = advanceRouteQuiz(state, input('Noordsche Compagniebrug'), 0.02, 'none').state;
+  assert.equal(state.candidateMetres, 6);
+  // The rider is off the bridge before it settled: the ask is about the
+  // street now under the bike, measured from where it began.
+  const moved = advanceRouteQuiz(state, input('Prinsenstraat'), 0.02, 'none');
+  assert.equal(moved.action, 'idle');
+  assert.deepEqual(moved.state, { candidateName: 'Prinsenstraat', candidateSeconds: 0, candidateMetres: 0 });
+});
+
+check('distance does not accrue while crossing a street at an angle', () => {
+  const crossing = quizInput({ headingOffRoad: Math.PI / 3, movedMetres: 20, settleMetres: 8 });
+  const decision = advanceRouteQuiz(fresh, crossing, 0.1, 'none');
+  assert.equal(decision.action, 'idle');
+  assert.equal(decision.state.candidateMetres, 0);
+});
+
+check('"You made a turn" only after a turn', () => {
+  const base = { onBridge: false, transit: false, hadCorridor: true, corridorHeading: 0.1, heading: 0.1 };
+  // Herenstraat straight on to the Noordsche Compagniebrug (2026-10-09).
+  assert.equal(routeQuizContext({ ...base, heading: 0.15 }), 'The street name changed');
+  assert.equal(routeQuizContext({ ...base, heading: 0.1 + Math.PI / 2 }), 'You made a turn');
+  assert.equal(routeQuizContext({ ...base, corridorHeading: Math.PI - 0.05, heading: -Math.PI + 0.05 }),
+    'The street name changed', 'the heading wraps at ±π');
+  assert.equal(routeQuizContext({ ...base, corridorHeading: null }), 'You made a turn');
+  assert.equal(routeQuizContext({ ...base, hadCorridor: false }), 'Where you set off');
+  assert.equal(routeQuizContext({ ...base, onBridge: true }), 'Crossing a waterway');
+  assert.equal(routeQuizContext({ ...base, transit: true }), 'Riding the corridor');
 });
 
 check('a name the player has proved they know is adopted, not asked', () => {
