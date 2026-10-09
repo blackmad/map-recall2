@@ -113,12 +113,15 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   fusion from `build-pano-facade.ts`; washed-out/foliage thresholds (0.3) are
   untuned; `roofShape` is null outside `buildings-colored.geojson`; Beeldbank
   and monument-register facts are not yet joined in.
-- **Elevation for bridges (user, 2026-10-09):** bridges read flat because the
-  city is flat. `feat/amsterdam-basemap-elevation` (84 behind main) has an
-  opt-in elevation experiment, measured bridge-height fallback and a draft
-  separating canal water, banks and decks. Next: AHN (DTM) ground + 3DBAG/BGT
-  bridge decks → a smoothed terrain with canal cuts and ramped approaches; keep
-  routing physics 2D.
+- **Elevation follow-ups** (`?elevation=1`, `docs/elevation.md`): no AHN
+  ground relief; one water level everywhere (polders, IJ shore get the same
+  quay wall); route line hidden on humped decks and ramps paint over ~20 m of
+  street; boats below street level not clipped at steep angles (boat mode not
+  reviewed); relies on MapLibre private stencil fields; no settings toggle —
+  decide default-on after a review drive.
+- **Bridge register gaps**: `bridges.json` has 300 bridges; 611 named bridge
+  ways (≈112 "brug"/"sluis", e.g. Noordsche Compagniebrug) get a street
+  question instead of a bridge question.
 - **P2: audit every installed GLB for holes** (open edges, missing faces,
   flipped normals) with a batch mesh check over `public/canal-drive/models/`;
   user has seen visible holes.

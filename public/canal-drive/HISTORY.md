@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+## Canal elevation behind a flag; earlier street questions (2026-10-09)
+
+`?elevation=1` sinks canal water 1.77 m below the quays (median measured
+approach of 143 canal-belt bridges, +1.37 m NAP, minus the −0.40 m NAP water
+reference), draws brick quay walls through a stencil window shaped like the
+water, and humps 729 AHN-measured bridge decks (891 more municipal bridge
+footprints get flat decks). Land stays at z = 0 so no building, tree or model
+is re-based; the old `feat/amsterdam-basemap-elevation` replaced MapLibre's
+terrain through private APIs with ~750 MB of data. Visual only; ride-perf
+unchanged with the flag on after merging meshes per 1 km cell.
+
+The "which street" question waited a fixed 0.65 s, ~33 m at cruise — most of
+the 40 m Noordsche Compagniebrug (Herenstraat over Keizersgracht). It now also
+opens after 8 m heading along the new street (4 m for re-tests), resetting
+whenever the name under the bike changes, so it never asks about a street the
+rider left. "You made a turn" only above a 30° heading change. Asks dropped
+from 17–34 m to 8–9 m in; pinned in `turn-question-timing.spec.ts`.
+
 ## Per-pand reference feed (2026-10-09)
 
 `scripts/pand-reference/` picks a building's street wall (longest exposed,
