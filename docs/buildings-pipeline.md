@@ -19,7 +19,16 @@ node --import tsx scripts/building-recipes/compile.ts --house=<id>[,<id>...] [--
 # 4. renders: per-house contact sheet, or a street row
 node --import tsx scripts/building-recipes/render.ts --house=<id> [--existing=<glb> --existing-anchor=<lng,lat>] [--textures]
 node --import tsx scripts/building-recipes/render.ts --row=<id>,<id>,... --out=artifacts/building-recipes/<row>/row.png
-# tests (schema, sameAs, Bloemgracht 78–90 roof regression)
+# street batch: reference crops -> facts -> intents -> compile/gates/share -> install -> in-game
+npm run pand-reference -- --name=bilderdijk --street="Bilderdijkstraat" --limit=30        # staging/pand-reference/<bagId>/front.jpg ...
+node --import tsx scripts/building-recipes/batch-facts.ts --street=Bilderdijkstraat --prefix=bilder --pands=<6-digit or 16-digit ids>
+node --import tsx scripts/building-recipes/refsheet.ts --pands=<ids> --out=artifacts/recipe-street/ref-1.png   # crops side by side to draft from
+node scripts/building-recipes/houses/bilder-draft.mjs                          # the drafting table -> houses/bilder-*/intent.json
+node --import tsx scripts/building-recipes/render.ts --sheet=<house ids> --out=artifacts/recipe-street/sheet-1.png   # crop | front | 3/4 columns
+node --import tsx scripts/building-recipes/install.ts --house=<ids> --tolerance=0.5   # compile + gates + share + catalogue + GLBs
+PW_PORT=4413 npx playwright test recipe-street --project=desktop --project=iphone   # in-game screenshots + runtime facts
+# tests (schema, sameAs, Bloemgracht 78–90 roof regression, street houses, mirror/frames, shared cache, runtime spec)
+node --import tsx --test src/canalRecall/buildingRecipe/streetHouses.test.ts
 node --import tsx --test src/canalRecall/buildingRecipe/buildingRecipe.test.ts
 ```
 
@@ -158,7 +167,7 @@ brick reads as faint coursing; the roof tile reads well on steep red roofs.
   streets (Leidsestraat: near-vertical crops); intents may cite better photos.
 - `repeat` modules share one elevation: the library admits one entrance per
   elevation, so only the first module gets a stoop.
-- Shared meshes (`instances.json`) are emitted but nothing consumes them.
+- Shared meshes are consumed by the ordinary layer (see *Shared meshes at runtime*), but only genuinely identical designs share: palette differences between neighbours, 0.3-0.5 m eaves steps and rear footprint notches keep most rows at one mesh per house.
 
 ## For the integrator
 
@@ -173,3 +182,67 @@ No browser bundle is needed for the pipeline. Runtime: the ordinary-buildings
 layer would need shared-geometry instancing (one GLB, N transforms from
 `instances.json`, optional mirror with winding flip) to profit from reuse, and
 a loader path for the shared tiling material set keyed by `materialSlot`.
+
+## Street batch: Bilderdijkstraat (2026-10-09)
+
+19 ordinary 19th/20th-century houses (1881-1939, 5-7 m fronts, shop ground floors) drafted from the
+pand-reference rectified crops (`front.jpg`, `front-alt.jpg` where trees/scaffolding hid the front),
+compiled, gated (all pass, 578-2,645 tris), and installed into the ordinary catalogue. Drafting table:
+`scripts/building-recipes/houses/bilder-draft.mjs`. Six more pands of the street were dropped because
+the reference wall (short side, a corner) is not the Bilderdijkstraat frontage the fit uses.
+
+Schema additions for this street (all validated, fitted, tested): `bayWindows {bay, storeys}` (erkers via the
+library's glazed bay), `balconies {storeys, bays, projecting?}` (French window + rail, optional slab),
+`bands: none|storey|lintel|both` (stone courses), segmental heads capped at 4 chords (`headSegments`),
+and `roofAllowanceM` on the fit report: declared dormers may stand 1.9 m above the LoD2.2 roof max
+(LoD2.2 has no dormers) in the ridge gate. Not added: stepped/neck crowns (existing `step`/`neck` were used),
+stoops on repeated modules (single-house parents here), brick banding in a second brick colour.
+
+### Shared meshes at runtime
+
+`compile.ts` groups houses whose canonical intent is equal **or the left-right mirror** (`instances.ts`
+`mirrorIntent`/`matchDesign`), fitted width/eaves/crown/roof-max within `--tolerance` (default 0.3 m;
+0.5 m used on this street, deltas recorded as `maxDimDeltaM`) and whose footprints agree: IoU >= 0.6
+overall and >= 0.9 in the first 8 m behind the front (`frontZoneIoU`; rear notches are invisible to the
+player). Each unique mesh is exported once **in its frontage frame** (origin = frontage midpoint, +X along
+the front, +Z outward). `instances.json`/the catalogue then carry per house `{anchor, northOffsetDegrees,
+mirror}`. Catalogue entries with `instance` become `sharedModel` specs (`ordinarySpecFor`); legacy entries
+are untouched. `signature-landmarks-source.js` decodes a shared URL once (`SharedAssetCache`, reference
+counted), clones the scene per instance (geometry/materials shared), applies `scale.x = -1` for mirrors
+(negative determinant: three.js flips the front face, so winding stays correct) and frees GPU resources with
+the last instance. Exact BAG-host suppression (`suppressOsmIds`) is unchanged.
+
+Browser bundles to rebuild after merging: `npm run build:canal-signature-landmarks`,
+`build:canal-game-landmarks`, `build:canal-game-presentation`, `build:canal-route-selection`, `build:canal-3d`.
+
+## Look pass: city look, components, roof clean-up (2026-10-09)
+
+Integrator review: the 19 Bilderdijkstraat recipe houses looked worse than the procedural facades around them
+(near-black flat brick, black windows, flat shop panels, flat grey roofs, missing arches/parapets/banding, 3DBAG
+roof artefacts). Changes:
+
+- **City look at runtime** (`src/canalRecall/buildingRecipe/recipeLook.ts`). GLB materials with a `materialSlot`
+  get one shared shader: the city's brick cell (Bricks057 neutralised and lifted like `calmBayLayers('photo')`, mortar
+  coursing, 3.36 m tile), the photo-look glass gradient with a reflection (0..1 pane UVs from the exporter), cream
+  frames, roof cells (pantile/slate/flat, eave-aligned UVs), and the city's fixed-light shade (`wallShade` / roof
+  formula) from the ENU normal; output is unlit sRGB like the city layer. Photo-sampled colours map into the city
+  palette range (`cityWallTint` etc.: dark 087959 brick #5e4033 → L 0.37; slate → ROOF_TONES). Materials/textures are
+  shared by every recipe house and skipped by per-model disposal. `signature-landmarks-source.js` dresses tagged GLBs
+  (untagged models keep the synchronous path) and sets the per-entry ENU frame before each render; anisotropy 1 on touch
+  devices (4 cost the iPhone ride p95 16.8 → 33.3 ms). The sheet renderer uses the same look (`--flat` for the old one).
+- **Components**: `archedStoreys` (semicircular heads), `crownCapSpan: wide` (parapet with a rounded/pediment cap across
+  the front), `archRings` (relieving arches over every arched head: stone or band brick), `palette.band` (second brick:
+  lintel bands become brick stripes), and real shopfronts (piers, stall riser, framed glazing with mullions/transom,
+  fascia with a pale lettering panel, all in `shopfront.colour`, which was previously ignored). Library: `accent` and
+  `shop` palette surfaces (facadeDetail 11, ornament 2, opening 19).
+- **Roof clean-up** (`roofCleanup.ts`, before the survey conversion): raised small clusters (each < 12 m², together
+  < 25 m², > 0.8 m above every surrounding surface) are clamped to the surrounding top, except at a gabled front;
+  a ridge LoD2.2 runs out to a cornice/flat front > 1 m above the eaves is hipped back at the roof's slope. Gates
+  compare against the cleaned max and report the survey max; `roof-cleanup` caps clamped area at 25%.
+  Regressions: `roofCleanup.test.ts` (079721 box, 155417 spike, 153622 front ridge, gabled crowns kept).
+- Sheets: `sh scripts/building-recipes/street-sheets.sh artifacts/recipe-look/after`; in-game facade close-ups in
+  `tests/e2e/recipe-street.spec.ts` (`in-game-<project>-facades-{a,b,c,oblique}.png`).
+
+Remaining gaps vs the procedural neighbours: no stone window surrounds/quoins, no awnings, no sign lettering; brick
+banding is a stripe, not polychrome patterning (079721's diaper work); 153622's hip end still reads as a steep
+triangle above the cornice from straight on.

@@ -1,0 +1,56 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "bilder-153622",
+ "pandId": "0363100012153622",
+ "address": "Bilderdijkstraat (1887 orange brick, white bosses)",
+ "sources": [
+  {
+   "id": "pano-2024-11-29",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-29",
+   "image": "staging/pand-reference/0363100012153622/front.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "fronts": [
+  {
+   "id": "front0",
+   "street": "Bilderdijkstraat",
+   "hoist": false,
+   "windows": "sash",
+   "basement": "none",
+   "cornice": "bracketed",
+   "gable": "cornice",
+   "storeys": 5,
+   "bays": 3,
+   "dormers": 1,
+   "doorBay": null,
+   "shopfront": {
+    "colour": "dark-blue",
+    "fascia": true
+   },
+   "bands": "lintel",
+   "balconies": {
+    "storeys": [
+     1,
+     2
+    ],
+    "bays": [
+     1,
+     2
+    ]
+   }
+  }
+ ],
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "orange-brick",
+  "frame": "white",
+  "door": "dark-green",
+  "stone": "cream"
+ },
+ "notes": []
+}

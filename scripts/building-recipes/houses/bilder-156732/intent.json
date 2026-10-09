@@ -1,0 +1,44 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "bilder-156732",
+ "pandId": "0363100012156732",
+ "address": "Bilderdijkstraat (1881 painted plum, heavy cornice)",
+ "sources": [
+  {
+   "id": "pano-2022-09-02",
+   "kind": "street-panorama",
+   "capturedAt": "2022-09-02",
+   "image": "staging/pand-reference/0363100012156732/front.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "fronts": [
+  {
+   "id": "front0",
+   "street": "Bilderdijkstraat",
+   "hoist": false,
+   "windows": "sash",
+   "basement": "none",
+   "cornice": "heavy",
+   "gable": "cornice",
+   "storeys": 4,
+   "bays": 2,
+   "doorBay": null,
+   "shopfront": {
+    "colour": "black",
+    "fascia": true
+   }
+  }
+ ],
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "#6a3038",
+  "frame": "white",
+  "door": "black",
+  "stone": "cream-painted"
+ },
+ "notes": []
+}

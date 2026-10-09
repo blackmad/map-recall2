@@ -48,6 +48,8 @@ export interface FrontIntent {
   gable: GableIntent;
   /** Crown top shape for neck/bell/cornice crowns. */
   crownCap?: typeof CROWN_CAPS[number];
+  /** Cornice crowns: the cap is a narrow centre piece (default) or a wide parapet across the front (1900s Bilderdijkstraat fronts). */
+  crownCapSpan?: 'narrow' | 'wide';
   /** Full storeys below the crown, including the ground storey. */
   storeys: number;
   /** Window bays per full storey (one number, or one per storey from the ground up). */
@@ -63,16 +65,27 @@ export interface FrontIntent {
   basement: typeof BASEMENTS[number];
   cornice: typeof CORNICES[number];
   windows: typeof WINDOWS[number];
+  /** 0-based storeys whose windows have round-arched heads (often the top storey under a parapet). */
+  archedStoreys?: number[];
+  /** Relieving arches over arched/segmental windows: stone dressing, the palette's band brick, or none. Default: band brick when the palette has one, else stone. */
+  archRings?: 'stone' | 'band' | 'none';
   hoist: boolean;
   shutters?: 'none' | 'ground' | 'all';
   shopfront?: { colour: string; fascia: boolean };
+  /** Iron/stone balcony guards on upper-storey windows. `storeys` are 0-based (ground = 0, so >= 1); the window becomes a full-height French window. */
+  balconies?: { storeys: number[]; bays: number[]; projecting?: boolean };
+  /** Glazed bay windows (erkers): the windows of these upper storeys in `bay` become one projecting three-face bay each. */
+  bayWindows?: { bay: number; storeys: number[] };
+  /** Horizontal masonry courses: a stone sill line at every upper storey and/or lintel bands (stripes of a different brick). */
+  bands?: 'none' | 'storey' | 'lintel' | 'both';
   /** The same house module repeated along this front (rows built together, double fronts). */
   repeat?: { count: number | 'fit'; mirrorAlternate?: boolean };
   /** Per-front palette when one owner has visibly different fronts. */
   palette?: Partial<PaletteIntent>;
 }
 
-export interface PaletteIntent { brick: string; frame: string; door: string; shutters?: string; stone?: string }
+/** `band`: a second brick colour for banding and relieving arches (lintel bands become brick stripes). */
+export interface PaletteIntent { brick: string; frame: string; door: string; shutters?: string; stone?: string; band?: string }
 
 /** Ordinary canal house: crown/gable family plus a regular bay grid per front. */
 export interface CanalHouseIntent {
@@ -161,6 +174,12 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     oneOf(f.windows, WINDOWS, `${at}.windows`);
     if (typeof f.hoist !== 'boolean') problems.push(`${at}.hoist must be boolean`);
     if (f.shutters !== undefined) oneOf(f.shutters, ['none', 'ground', 'all'], `${at}.shutters`);
+    if (f.balconies) { f.balconies.storeys.forEach(v => count(v, `${at}.balconies.storeys`, 1, f.storeys - 1)); f.balconies.bays.forEach(v => count(v, `${at}.balconies.bays`, 0, 15)); }
+    if (f.bayWindows) { count(f.bayWindows.bay, `${at}.bayWindows.bay`, 0, 15); f.bayWindows.storeys.forEach(v => count(v, `${at}.bayWindows.storeys`, 1, f.storeys - 1)); }
+    if (f.bands !== undefined) oneOf(f.bands, ['none', 'storey', 'lintel', 'both'], `${at}.bands`);
+    if (f.crownCapSpan !== undefined) oneOf(f.crownCapSpan, ['narrow', 'wide'], `${at}.crownCapSpan`);
+    if (f.archedStoreys !== undefined) { if (!Array.isArray(f.archedStoreys)) problems.push(`${at}.archedStoreys must be a list`); else f.archedStoreys.forEach(v => count(v, `${at}.archedStoreys`, 0, f.storeys - 1)); }
+    if (f.archRings !== undefined) oneOf(f.archRings, ['stone', 'band', 'none'], `${at}.archRings`);
     if (f.repeat) { if (f.repeat.count !== 'fit') count(f.repeat.count, `${at}.repeat.count`, 1, 20); }
     if (f.share !== undefined && !(f.share > 0 && f.share <= 1)) problems.push(`${at}.share must be in (0,1]`);
     if (f.shopfront) colour(f.shopfront.colour, `${at}.shopfront.colour`);
@@ -168,7 +187,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
   }
   oneOf(intent?.roof?.material, ROOF_MATERIALS, 'roof.material');
   for (const k of ['brick', 'frame', 'door'] as const) colour(intent?.palette?.[k], `palette.${k}`);
-  for (const k of ['shutters', 'stone'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
+  for (const k of ['shutters', 'stone', 'band'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
   if (problems.length) throw new Error(`Invalid intent ${intent?.id ?? '?'}:\n - ${problems.join('\n - ')}`);
   return intent;
 }

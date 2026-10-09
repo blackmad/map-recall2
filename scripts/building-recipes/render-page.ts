@@ -2,6 +2,7 @@
 import * as T from 'three';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 import {MeshoptDecoder} from 'three/examples/jsm/libs/meshopt_decoder.module.js';
+import {createRecipeLook, SOUTH_Z_ENU, type RecipeLook} from '../../src/canalRecall/buildingRecipe/recipeLook.ts';
 
 interface Model { base64: string; position?: number[]; rotationY?: number; scale?: number[] }
 interface View { eye: number[]; target: number[]; fov: number; width: number; height: number }
@@ -10,7 +11,18 @@ const renderer = new T.WebGLRenderer({antialias: true, preserveDrawingBuffer: tr
 document.body.appendChild(renderer.domElement);
 renderer.outputColorSpace = T.SRGBColorSpace;
 
-async function render(models: Model[], views: View[], textures?: Record<string, string>): Promise<string[]> {
+let look: RecipeLook | null = null;
+/** The game's recipe look (recipeLook.ts): same textures, palette mapping and fixed-light shade as the city layer. */
+async function cityLook(brickUrl?: string): Promise<RecipeLook> {
+  if (look) return look;
+  let brick: HTMLImageElement | null = null;
+  if (brickUrl) { brick = new Image(); brick.src = brickUrl; try { await brick.decode(); } catch { brick = null; } }
+  look = createRecipeLook(T, {brick, anisotropy: 8});
+  look.enuFromWorld.value.set(...SOUTH_Z_ENU);
+  return look;
+}
+
+async function render(models: Model[], views: View[], textures?: Record<string, string>, brickUrl?: string | null): Promise<string[]> {
   const scene = new T.Scene();
   scene.background = new T.Color('#c9d6e0');
   scene.add(new T.HemisphereLight('#eef3f8', '#6b6458', 1.6));
@@ -37,6 +49,7 @@ async function render(models: Model[], views: View[], textures?: Record<string, 
         mat.side = T.DoubleSide;
       }
     });
+    if (brickUrl !== null && !textures) (await cityLook(brickUrl)).apply(root);
     scene.add(root);
   }
   const out: string[] = [];

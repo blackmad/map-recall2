@@ -1,0 +1,67 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "bilder-081118",
+ "pandId": "0363100012081118",
+ "address": "Bilderdijkstraat (1909, arched top storey, balconies)",
+ "sources": [
+  {
+   "id": "pano-2024-11-29",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-29",
+   "image": "staging/pand-reference/0363100012081118/front.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "fronts": [
+  {
+   "id": "front0",
+   "street": "Bilderdijkstraat",
+   "hoist": false,
+   "windows": "sash",
+   "basement": "none",
+   "cornice": "simple",
+   "gable": "cornice",
+   "storeys": 5,
+   "bays": [
+    3,
+    3,
+    3,
+    3,
+    2
+   ],
+   "doorBay": null,
+   "shopfront": {
+    "colour": "black",
+    "fascia": true
+   },
+   "balconies": {
+    "storeys": [
+     2,
+     3
+    ],
+    "bays": [
+     1
+    ]
+   },
+   "bands": "storey",
+   "archedStoreys": [
+    4
+   ],
+   "crownCap": "rounded",
+   "crownCapSpan": "wide"
+  }
+ ],
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "red-brown",
+  "frame": "white",
+  "door": "black",
+  "stone": "sandstone"
+ },
+ "notes": [
+  "2026-10-09 look pass: round-arched top storey under a wide rounded parapet (photo)."
+ ]
+}
