@@ -1,0 +1,87 @@
+{
+  "id": "fire-station-driemond",
+  "name": "Kazerne Driemond",
+  "landmarkId": "n2862198151",
+  "modelUrl": "./models/fire-station-driemond.glb",
+  "suppressOsmIds": [
+    "w57853130",
+    "NL.IMBAG.Pand.0363100012070690"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      5.019411766782528,
+      52.307000143153786
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 24.5,
+    "widthMetres": 16
+  },
+  "surveyed": {
+    "anchor": [
+      5.019411766782528,
+      52.307000143153786
+    ],
+    "northOffsetDegrees": 0,
+    "source": "CurrentBAG/3DBAG nativeeastX southZ"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#8d846b",
+    "stone": "#b6b9ac",
+    "slate": "#737b78",
+    "white": "#d6dad0",
+    "glass": "#415454",
+    "dark": "#303c38",
+    "frame": "#86908b",
+    "copper": "#6b8b86",
+    "bronze": "#d9aa45",
+    "greyBrick": "#56574f",
+    "red": "#a92627",
+    "concrete": "#b4bdba"
+  },
+  "attribution": {
+    "title": "Kazerne Driemond",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.brandweer.nl/kazerne/driemond/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original native BAG/3DBAG texture-free reconstruction guided by 2021/2022 municipal panoramas and current station photograph. Paired red glazed apparatus portals, taller brick/glazed office wing, ribbed canal rear and native low-slope roofs. No imported meshes or photo pixels."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          5.0194996921848425,
+          52.30711611592646
+        ],
+        [
+          5.019383409666717,
+          52.30710817774232
+        ],
+        [
+          5.019403028233344,
+          52.30700009800905
+        ],
+        [
+          5.019305445981546,
+          52.30699331439477
+        ],
+        [
+          5.01932285998092,
+          52.30689827804433
+        ],
+        [
+          5.019536592877855,
+          52.30691290051875
+        ],
+        [
+          5.0194996921848425,
+          52.30711611592646
+        ]
+      ]
+    ]
+  }
+}

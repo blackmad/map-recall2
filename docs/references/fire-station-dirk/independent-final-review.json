@@ -1,0 +1,38 @@
+{
+  "modelId": "fire-station-dirk",
+  "reviewedOn": "2026-10-09",
+  "reviewer": "independent firestations_review_two",
+  "stage": "Final exported model gallery rotations and supplied live screenshots against current archived source photos",
+  "assetSha256": "cf63ed7a452b9c05c58770342350eca1a490038cd6ac4a10f936f4a561b3be6f16474",
+  "state": "visual-pass-with-documented-source-limits",
+  "inspectedImages": [
+    "artifacts/firestations-review/final-dirk/fire-station-dirk/gallery.png",
+    "artifacts/firestations-review/final-dirk/fire-station-dirk/gallery-angle-0.png",
+    "artifacts/firestations-review/final-dirk/fire-station-dirk/gallery-angle-1.png",
+    "artifacts/firestations-review/final-dirk/fire-station-dirk/gallery-angle-2.png",
+    "artifacts/firestations-review/final-dirk/fire-station-dirk/gallery-angle-3.png",
+    "artifacts/firestations-review/final-dirk/fire-station-dirk/neutral-front.png",
+    "artifacts/firestations-review/final-dirk/fire-station-dirk/live-front.png",
+    "artifacts/firestations-review/final-dirk/fire-station-dirk/live-rear.png",
+    "../map-recall2-source-data/models/fire-station-dirk/processed/recording_2025-09-29_08-09-56_01639.jpg",
+    "../map-recall2-source-data/models/fire-station-dirk/processed/recording_2025-09-29_08-09-56_01632.jpg"
+  ],
+  "findings": [],
+  "supportedDecisions": [
+    "Dark desaturated green-gray surrounds and masonry bands now retain the red-brick contrast visible in current photos.",
+    "Pale triangular-front dormers, three dark arched vehicle doors, eight tall central upper lights, paired wing openings and tall stepped wing gables form a recognizable principal front.",
+    "Four gallery angles show coherent roof support/silhouette without visible open-space closure or detached facade details; raised rear projection remains distinct from main roof.",
+    "Unhighlighted principal front in live-rear.png remains readable with neighboring ordinary buildings retained in supplied image."
+  ],
+  "limitations": [
+    "Fine gable relief, crest finials and dormer crown details remain simplified; no critical recognition failure observed at shown native-scale views.",
+    "Rear openings are bounded reconstruction; current archived photos do not establish complete rear rhythm.",
+    "Files named neutral-front/live-front actually show the rear and adjacent buildings occlude much of it. File named live-rear shows the principal front.",
+    "Review of supplied images cannot independently establish exact identity suppression, roof winding, actual destination/route/pin/card behavior or performance; root owns these checks."
+  ],
+  "supersedesVisualFailures": [
+    "dark-stone-and-window-trim",
+    "dormer-profile"
+  ],
+  "priorFailedEvidence": "docs/references/fire-station-dirk/independent-source-review.json"
+}

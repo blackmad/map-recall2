@@ -1,0 +1,13 @@
+{
+  "file": "artifacts/landmark-next-batch/fire-station-victor.glb",
+  "sha256": "68fa39899c45a84923853e2eb656f3c59f0acaf2ab7e786a016b800d9bb96c21",
+  "triangles": 16896,
+  "roofSlopeFaces": 42,
+  "failed": [
+    {
+      "triangle": 7575,
+      "ny": -1,
+      "area": 0.00027054723041765316
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "modelId": "fire-station-weesp",
+  "reviewedOn": "2026-10-09T10:01:05.197562+00:00",
+  "reviewer": "independent zebra_driemond_weesp_review worker",
+  "scope": "Failure-seeking archived-source and exact public compressed GLB CPU review; no browser/GPU/game/performance acceptance",
+  "sourceArchiveCommit": "b1cf022",
+  "sourceArchivePath": "models/fire-station-weesp/",
+  "result": "failure",
+  "acceptance": false,
+  "meshHashes": [
+    {
+      "path": "public/canal-drive/models/fire-station-weesp.glb",
+      "sha256": "05aaa9fe631e95806700649f37d8bfba3fa2d7bbc82b9e9098b4472f52c4d200"
+    },
+    {
+      "path": "artifacts/fire-station-weesp-draft/fire-station-weesp.glb",
+      "sha256": "25c92c329c2eb1faa4171336e937ccdd1894285d35e6e9f59a5b8d36d96ac9da"
+    }
+  ],
+  "meshEquivalence": "Fresh CPU renders decode the exact current public GLB. Worker draft hashes differ; geometry equivalence is suggested by matching triangle count and builder, not established by byte equality. This review applies to the public hash only.",
+  "cpuViews": {
+    "directory": "/tmp/firestation-independent-review",
+    "freshInputs": "public/canal-drive/models",
+    "anglesRadians": [
+      [
+        0.6,
+        "southeast"
+      ],
+      [
+        3.74,
+        "northwest"
+      ],
+      [
+        -1.45,
+        "west"
+      ],
+      [
+        0,
+        "south-low"
+      ],
+      [
+        -1.46,
+        "west-low"
+      ]
+    ],
+    "elevation": {
+      "high": 0.65,
+      "low": 0.12
+    },
+    "triangleCount": 3825
+  },
+  "exactSuppression": [
+    "w282072534",
+    "NL.IMBAG.Pand.0457100000062823"
+  ],
+  "spatialSuppression": false,
+  "nativeGroundNAP": -1.006,
+  "pending": [
+    "Root must inspect source/render comparisons and independently evaluate corrections",
+    "Gallery high and four low rotations including facade/roof attachment",
+    "Live game correct bearing, exact suppression including ordinary pyramidal roofs, retained neighbors after local residency",
+    "Explicit route destination and finish, visible geographic pin/label, physical mesh click selecting genuine useful sourced card",
+    "Actual desktop/touch gameplay camera pan and performance evidence"
+  ],
+  "failures": [
+    {
+      "severity": "blocking-visual-source-failure",
+      "finding": "Flat-topped rectangular timber face replaces clipped-gable silhouette. Builder timber facade at4.13m with4.60m rectangular height ends at8.73m uniformly; source2020 raised left shoulder descends to inset trapezoid top while right timber has a lower near-flat crown. 2025 current photograph again shows the tall left clipped shoulder. Fresh south-low public mesh exposes dark wall/roof silhouette behind flat timber rather than that architectural face.",
+      "requiredAction": "Author source-supported timber front crown polygon and supported roof transition; keep approximate raised parapet separate from survey roof plane. Preserve failed public hash and low CPU image; rereview current and2020 sources."
+    },
+    {
+      "severity": "blocking-visual-source-failure",
+      "finding": "Broad continuous white projecting canopy over four curved apparatus bays is absent as a surface. Builder adds only .045m-deep fascia rails at offset.84 and slender1.35m bars; CPU shows thin sticks. Both2020 and2025 source show a broad light cover/soffit and edge following curved facade.",
+      "requiredAction": "Add native curved/segmented source-supported canopy cover/soffit tied to existing brackets and facade, not an unsupported floating rectangle; review low views and underside."
+    }
+  ],
+  "limitations": [
+    "CPU two-sided shading cannot validate winding/backface visibility, city neighbors, route/card interactions or GPU performance",
+    "Reference facade dimensions and hidden apertures remain bounded approximations; successful geometry checks are not visual acceptance"
+  ],
+  "referencesInspected": [
+    "raw/Aetsveldselaan-65-te-Weesp-1.jpg (2025-09 publication path; actual capture date not established)",
+    "processed/TMX7316010203-001760_pano_0000_002466.jpg (2020-06-23 frontage)"
+  ],
+  "observations": [
+    "Four curved segmented apparatus bays plus lower fifth bay/pedestrian entry/horizontal window are correctly distinguishable",
+    "Inverted trapezoidal pane exposed in CPU; upper timber and roof silhouette fail actual source shape",
+    "Real BRANDWEER sign is sourced, approximate Arial Bold recorded; no station-name words added",
+    "Exact native BAG outline preserves external rear/side notches and low wings, with no courtyard holes. Rear window rhythm has no independent opposite reference and remains provisional",
+    "2025 photo obliquely confirms raised left timber shoulder and canopy; vehicles obscure garage door details; 2020 photo supplies complete door/trapezoid count. No observed evidence of removing silhouette between dates"
+  ],
+  "rootTargets": {
+    "frontCamera": "South forecourt/Aetsveldselaan; local+Z outward for four-bay curve; timber+Z frontage slightly east-facing",
+    "entranceClick": "Personnel door just right of lower fifth bay; canonical n1618230174. Pin[5.044978,52.302535] stays on public forecourt; root must prove reachability and clicking.",
+    "retainedNeighborExamples": "Source record only generic other BAG features in14/8421/5389. Root must select and record actual nearest retained IDs before final live acceptance."
+  },
+  "finalVisualReview": {
+    "reviewedOn": "2026-10-09T10:23:29.095103+00:00",
+    "result": "source-gallery-live-visual-pass-with-scoped-limitations",
+    "wholeTaskAcceptance": false,
+    "reasonWholeTaskPending": "Root performance/gameplay pan and source publication updates remain pending; independent reviewer did not operate browser or assert successful route completion solely from routeArrival coordinates.",
+    "publicAssetSha256": "ae5e8066de6020f9d155663efe16ce9f0e3f82352d87ad42efa256976b69ba95",
+    "receivedNative": {
+      "expectedSha256": "ae5e8066de6020f9d155663efe16ce9f0e3f82352d87ad42efa256976b69ba95",
+      "evidence": [
+        {
+          "modelId": "fire-station-weesp",
+          "phase": "native",
+          "url": "http://127.0.0.1:5346/canal-drive/models/fire-station-weesp.glb?asset=ae5e8066de6020f9",
+          "status": 200,
+          "bytes": 57896,
+          "sha256": "ae5e8066de6020f9d155663efe16ce9f0e3f82352d87ad42efa256976b69ba95"
+        }
+      ]
+    },
+    "visualEvidenceDirectory": "artifacts/firestations-review/gpu-next/main-native-recovery/fire-station-weesp",
+    "imagesInspected": [
+      "gallery.png",
+      "gallery-angle-0.png",
+      "gallery-angle-1.png",
+      "gallery-angle-2.png",
+      "gallery-angle-3.png",
+      "neutral-front.png",
+      "live-rear.png"
+    ],
+    "placementEvidenceInspected": {
+      "nativeScale": 1,
+      "exactAliasHidden": [
+        {
+          "id": "w282072534",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0457100000062823",
+          "hidden": true
+        }
+      ],
+      "retainedResidentDrawableNeighbors": [
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0457100000062103"
+          ],
+          "signatureId": null,
+          "signatureDrawable": false,
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        },
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0457100000062807"
+          ],
+          "signatureId": null,
+          "signatureDrawable": false,
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        }
+      ],
+      "chosenDestination": true,
+      "pin": true,
+      "physicalPointerCard": {
+        "notice": "n1618230174",
+        "source": "https://www.brandweer.nl/kazerne/weesp/",
+        "alpha": 1,
+        "drawn": true,
+        "active": "n1618230174"
+      }
+    },
+    "remainingChecks": [
+      "Root performance and actual gameplay camera pan away from stationary rider on desktop/touch",
+      "Root confirm source publication matches corrected current geometry and metadata",
+      "Root verify route completion and map label behavior from full harness results",
+      "Verify Politiebureau Weesp floating mapped label belongs to correct source use and firestation name/pin remains geographically clear."
+    ],
+    "observations": [
+      "Revised low/level CPU and GPU frontage show raised left clipped timber shoulder, asymmetric inverted trapezoid opening recessed into timber, exposed reveals and broad continuous white curved canopy top/soffit. Both original blocking source/render findings are resolved for received public meshae5e8066de6020f9\u2026.",
+      "Four apparatus bays/fifth lower door/personnel entry/horizontal low window remain recognizable; low wings attach to surveyed primary volumes and native rear external notches remain open. Supported shoulder cap replaces the earlier unsourced flat rectangle.",
+      "Four gallery rotations reveal no new roof/facade attachment failure. Rear glazing rhythm remains a documented simplification lacking independent rear photograph, not promoted to source-verified detail.",
+      "Live frontage physical-pointer proof selects genuine n1618230174, useful operator card, scale1 and exact aliases only; retained neighbors0457100000062103/0457100000062807 resident and drawn.",
+      "Live image includes floating mapped label Politiebureau Weesp over station while active card/header correctly show Kazerne Weesp. This could describe another mapped use in the complex; root should inspect label identity/placement before claiming clear station map labeling. Do not substitute police POI for the fire station."
+    ],
+    "cpuEvidenceDirectory": "artifacts/fire-station-weesp-revised-cpu",
+    "failedEvidencePreservedDirectory": "artifacts/fire-station-weesp-failed-review",
+    "resolvedPriorFailures": [
+      {
+        "finding": "Flat-topped rectangular timber face replaces clipped-gable silhouette. Builder timber facade at4.13m with4.60m rectangular height ends at8.73m uniformly; source2020 raised left shoulder descends to inset trapezoid top while right timber has a lower near-flat crown. 2025 current photograph again shows the tall left clipped shoulder. Fresh south-low public mesh exposes dark wall/roof silhouette behind flat timber rather than that architectural face.",
+        "resolution": "Corrected source-derived original geometry inspected in revised CPU and current gallery/live screenshots; failed evidence retained."
+      },
+      {
+        "finding": "Broad continuous white projecting canopy over four curved apparatus bays is absent as a surface. Builder adds only .045m-deep fascia rails at offset.84 and slender1.35m bars; CPU shows thin sticks. Both2020 and2025 source show a broad light cover/soffit and edge following curved facade.",
+        "resolution": "Corrected source-derived original geometry inspected in revised CPU and current gallery/live screenshots; failed evidence retained."
+      }
+    ]
+  }
+}

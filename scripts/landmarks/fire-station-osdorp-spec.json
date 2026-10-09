@@ -1,0 +1,50 @@
+{
+  "id": "fire-station-osdorp",
+  "name": "Kazerne Osdorp",
+  "landmarkId": "n2793598969",
+  "modelUrl": "./models/fire-station-osdorp.glb",
+  "suppressOsmIds": [
+    "w31779761",
+    "NL.IMBAG.Pand.0363100012096223"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.802220583344287,
+      52.366559581066234
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 46,
+    "widthMetres": 44
+  },
+  "surveyed": {
+    "anchor": [
+      4.802220583344287,
+      52.366559581066234
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Exact current BAG, native E/S coordinates; curving original roof guided by AHN5 and primary ARCAM photographs."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 90,
+  "materialOverrides": {
+    "brick": "#694840",
+    "stone": "#92978f",
+    "slate": "#56645a",
+    "white": "#c6cbc3",
+    "glass": "#678b93",
+    "dark": "#252e2e",
+    "frame": "#616969",
+    "copper": "#788650",
+    "bronze": "#b98a44",
+    "greyBrick": "#bf3e2f"
+  },
+  "attribution": {
+    "title": "Kazerne Osdorp",
+    "author": "Map Recall",
+    "sourceUrl": "https://arcam.nl/architectuur-gids/brandweerkazerne-osdorp/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native BAG geometry; curved sedum-roof glass hall, glazing connector, dark-brick open terrace accommodation block. No third-party mesh or pixels."
+  }
+}

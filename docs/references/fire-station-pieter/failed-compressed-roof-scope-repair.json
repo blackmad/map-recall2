@@ -1,0 +1,13 @@
+{
+  "file": "artifacts/fire-station-pieter/fire-station-pieter.glb",
+  "sha256": "9210e31b8014c9e09d84b2297a78d9c2f72b23a3c6ccf58a2ffcc5c3481e8253",
+  "triangles": 7220,
+  "roofSlopeFaces": 37,
+  "failed": [
+    {
+      "triangle": 175,
+      "ny": -0.2850321858532378,
+      "area": 0.024563070139656192
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "n8334401440",
+  "name": "Kazerne Pieter",
+  "center": [
+    52.348825,
+    4.84376
+  ],
+  "type": "fire station",
+  "cityId": "amsterdam",
+  "website": "https://www.brandweer.nl/kazerne/amsterdam-pieter/",
+  "description": "A beige concrete-and-brick fire station on Poeldijkstraat, with five red glazed fire-engine doors, a projecting glazed watchroom and a setback upper room. It opened on 10 May 1972 to replace the fire stations in Sloten and Oud Osdorp.",
+  "funFact": "Pieter gets its name from the code letter P for Poeldijkstraat. The station formerly housed a hose workshop, shoemaker and clothing depot; its current specialist role is responding to incidents involving hazardous substances.",
+  "sources": [
+    {
+      "title": "Official station history, address and current specialist role",
+      "url": "https://www.brandweer.nl/kazerne/amsterdam-pieter/"
+    }
+  ],
+  "sourceIdentity": "Genuine current OSM node8334401440 fire_station, updated2026-01-10. East Poeldijkstraat apparatus entrance pavement pin; fixed destination never substituted. Root route reachability still pending."
+}

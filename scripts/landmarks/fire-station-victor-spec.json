@@ -1,0 +1,98 @@
+{
+  "id": "fire-station-victor",
+  "name": "Brandweerkazerne Victor",
+  "landmarkId": "n26612532",
+  "modelUrl": "./models/fire-station-victor.glb",
+  "suppressOsmIds": [
+    "w278390874",
+    "NL.IMBAG.Pand.0363100012103300"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.92924015,
+      52.3604391
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 25,
+    "widthMetres": 25
+  },
+  "surveyed": {
+    "anchor": [
+      4.92924015,
+      52.3604391
+    ],
+    "northOffsetDegrees": 0,
+    "source": "CurrentBAG/3DBAG nativeeastX southZ"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 90,
+  "materialOverrides": {
+    "brick": "#695b50",
+    "stone": "#a7a69c",
+    "slate": "#8f9698",
+    "white": "#e0e0d6",
+    "glass": "#536968",
+    "dark": "#303c38",
+    "frame": "#727d7b",
+    "copper": "#6b8b86",
+    "bronze": "#d9aa45",
+    "greyBrick": "#726c65",
+    "red": "#d21c26"
+  },
+  "attribution": {
+    "title": "Brandweerkazerne Victor",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-victor/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original native BAG/3DBAG texturefree reconstruction guided by2025 municipality views and2021 photographs. Exact roof surfaces, paired arched apparatus portals, twin corner gables, balcony and authentic small Roman-serif sign. No thirdparty meshes/pixels. Rear stair/room and terrace opening groups follow2024existingsections A/B/E, crosscheckedagainst1911ACHTERGEVEL drawing; precisehorizontalproportions approximated. Northschoolpartywall remainsblank."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.929306774065596,
+          52.36053705936478
+        ],
+        [
+          4.9291052553477,
+          52.36048596655009
+        ],
+        [
+          4.929103190229935,
+          52.36048550018579
+        ],
+        [
+          4.9291072299662915,
+          52.36047955696568
+        ],
+        [
+          4.929144110799492,
+          52.36042515325624
+        ],
+        [
+          4.929164623442056,
+          52.36039488112375
+        ],
+        [
+          4.929391011570047,
+          52.36045012347231
+        ],
+        [
+          4.929359240743031,
+          52.3604973209011
+        ],
+        [
+          4.929337262669892,
+          52.36049178036114
+        ],
+        [
+          4.929306774065596,
+          52.36053705936478
+        ]
+      ]
+    ]
+  }
+}

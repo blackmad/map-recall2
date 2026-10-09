@@ -1,0 +1,50 @@
+{
+  "id": "fire-station-zebra",
+  "name": "Kazerne Zebra",
+  "landmarkId": "n2848174313",
+  "modelUrl": "./models/fire-station-zebra.glb",
+  "suppressOsmIds": [
+    "w44892676",
+    "NL.IMBAG.Pand.0363100012109022"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.954980836729826,
+      52.39626393063666
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 38,
+    "widthMetres": 34
+  },
+  "surveyed": {
+    "anchor": [
+      4.954980836729826,
+      52.39626393063666
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current native BAG outline; AHN5 2023 main roof 9.1m and tower17.4m; current municipal panorama-guided front office and clerestory."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 90,
+  "materialOverrides": {
+    "brick": "#a66443",
+    "stone": "#a2a49c",
+    "slate": "#555e5e",
+    "white": "#bbc0bc",
+    "glass": "#617f85",
+    "dark": "#343c3b",
+    "frame": "#676e6c",
+    "copper": "#bb3a3b",
+    "bronze": "#bd9145",
+    "greyBrick": "#878f90"
+  },
+  "attribution": {
+    "title": "Kazerne Zebra",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-zebra/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native BAG brick station, three red truck doors, gray metal office bay and ribbon clerestory, offset hose tower. No third-party meshes or photo pixels."
+  }
+}
