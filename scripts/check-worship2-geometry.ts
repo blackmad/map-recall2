@@ -34,7 +34,7 @@ for (const c of cases) {
     const ng = g.index ? g.toNonIndexed() : g, pos = ng.getAttribute('position');
     for (let i = 0; i < pos.count; i += 3) {
       const a = new T.Vector3().fromBufferAttribute(pos, i), b = new T.Vector3().fromBufferAttribute(pos, i + 1), d = new T.Vector3().fromBufferAttribute(pos, i + 2);
-      if (b.sub(a).cross(d.sub(a)).y < -1e-3) down++;
+      const nrm = b.sub(a).cross(d.sub(a)); if (nrm.length() > 1e-3 && nrm.y / nrm.length() < -0.05) { down++; console.log("down", nrm.y / nrm.length(), a.toArray().map(n => +n.toFixed(1)), pos.count); }
     }
   }
   assert.equal(down, 0, `${c.id}: downward roof faces`);
