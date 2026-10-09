@@ -2008,5 +2008,14 @@
   "funFact": "Although the church burned in 1989, the tower stayed standing; it was restored in the early 2010s to repair neglected maintenance and the remaining fire damage. In 2008 a small square with an art object, the Wensplein voor vrede (Wish Square for Peace), opened to its south.",
   "sourceUrl": "https://nl.wikipedia.org/wiki/Muiderkerk",
   "preferDescription": true
+},
+{
+  "modelId": "aron-schuster-synagoge",
+  "landmarkId": "extract_landmarks_86609524",
+  "name": "Raw Aron Schuster Synagoge",
+  "description": "The Raw Aron Schuster Synagogue, also called the Obrechtsjoel, stands on the corner of Jacob Obrechtplein and Heinzestraat in Amsterdam-Zuid and is the largest Ashkenazi synagogue still in use in the city. Harry Elte, a pupil of H.P. Berlage, designed it, and it was inaugurated on 18 May 1928. Its stern brick blocks, tower, covered entrance and far-projecting roof slabs show the influence of Willem Dudok and Frank Lloyd Wright. It became a national monument in 1995 and was restored by 1997.",
+  "funFact": "The building was named after Chief Rabbi Aron Schuster (1907-1994) only in 1973, when he retired and left Amsterdam for Jerusalem; he had served here since 1942. The first service after the war was held on Rosh Hashanah 1945.",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Raw_Aron_Schuster_Synagoge",
+  "preferDescription": true
 }
 ]

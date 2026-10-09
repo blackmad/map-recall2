@@ -15710,5 +15710,185 @@
       ]
     ]
   }
+},
+{
+  "id": "aron-schuster-synagoge",
+  "name": "Raw Aron Schuster Synagoge",
+  "landmarkId": "extract_landmarks_86609524",
+  "modelUrl": "./models/aron-schuster-synagoge.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012074574"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.877436130007154,
+      52.35262212080447
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 36,
+    "widthMetres": 33
+  },
+  "surveyed": {
+    "anchor": [
+      4.877436130007154,
+      52.35262212080447
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012074574 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#8a5a47",
+    "stone": "#c9bfa8",
+    "slate": "#4f4d4a",
+    "glass": "#6f8590",
+    "dark": "#2b2a2a",
+    "white": "#e4dfd0",
+    "frame": "#2f3436",
+    "concrete": "#cfcabd",
+    "greyBrick": "#7d6a60",
+    "gold": "#c9a64a"
+  },
+  "attribution": {
+    "title": "Raw Aron Schuster Synagoge",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Raw_Aron_Schuster_Synagoge",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.877587624020856,
+          52.35266303691128
+        ],
+        [
+          4.877581843694714,
+          52.35266152005738
+        ],
+        [
+          4.877467716028965,
+          52.35263150385977
+        ],
+        [
+          4.877454116491426,
+          52.35265391467973
+        ],
+        [
+          4.877447966662889,
+          52.352652620921845
+        ],
+        [
+          4.877435845949476,
+          52.35267279116973
+        ],
+        [
+          4.877426901978481,
+          52.35267068546716
+        ],
+        [
+          4.877428996310094,
+          52.35266725217701
+        ],
+        [
+          4.8773866875595395,
+          52.35265765977827
+        ],
+        [
+          4.877346614442353,
+          52.35272432910201
+        ],
+        [
+          4.877345387894298,
+          52.352726328087925
+        ],
+        [
+          4.8773363264998295,
+          52.352724221872734
+        ],
+        [
+          4.877335324444607,
+          52.35272584433988
+        ],
+        [
+          4.877332886643902,
+          52.35272978845087
+        ],
+        [
+          4.87730712314959,
+          52.35272373656527
+        ],
+        [
+          4.877304862401304,
+          52.3527276005486
+        ],
+        [
+          4.877181653773041,
+          52.35269973796838
+        ],
+        [
+          4.8772343385585915,
+          52.35261235233534
+        ],
+        [
+          4.87726877346822,
+          52.35261995153745
+        ],
+        [
+          4.877313914563698,
+          52.35255547910675
+        ],
+        [
+          4.877307285985254,
+          52.35255369794042
+        ],
+        [
+          4.877382643810342,
+          52.352444911198916
+        ],
+        [
+          4.877453240201059,
+          52.35246311885347
+        ],
+        [
+          4.8774696439223755,
+          52.352440639219104
+        ],
+        [
+          4.87750900685914,
+          52.35245110869203
+        ],
+        [
+          4.877670527043481,
+          52.35249404654498
+        ],
+        [
+          4.8776990763351185,
+          52.35250162927386
+        ],
+        [
+          4.877663078100853,
+          52.35255477169922
+        ],
+        [
+          4.87766440958705,
+          52.35255513694109
+        ],
+        [
+          4.8775885898203715,
+          52.35266329272657
+        ],
+        [
+          4.877587624020856,
+          52.35266303691128
+        ]
+      ]
+    ]
+  }
 }
 ]
