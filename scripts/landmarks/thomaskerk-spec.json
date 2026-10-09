@@ -1,0 +1,49 @@
+{
+  "id": "thomaskerk",
+  "name": "Thomaskerk",
+  "landmarkId": "extract_landmarks_741771335",
+  "modelUrl": "./models/thomaskerk.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012099552"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.874864933961887,
+      52.342078886753455
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 61,
+    "widthMetres": 54
+  },
+  "surveyed": {
+    "anchor": [
+      4.874864933961887,
+      52.342078886753455
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012099552 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#cdb98a",
+    "stone": "#b9b5aa",
+    "slate": "#6b6e70",
+    "glass": "#6d8388",
+    "dark": "#3a2a22",
+    "white": "#e6e4dc",
+    "frame": "#4a443c",
+    "copper": "#7fa896",
+    "ochre": "#a9733f",
+    "bronze": "#4b4a42"
+  },
+  "attribution": {
+    "title": "Thomaskerk",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Thomaskerk_(Amsterdam)",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
+  }
+}
