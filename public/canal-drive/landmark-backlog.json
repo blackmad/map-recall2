@@ -21,9 +21,9 @@
     }
   ],
   "counts": {
-    "manual-model": 237,
+    "manual-model": 238,
     "procedural-kit": 15,
-    "pending": 129
+    "pending": 128
   },
   "destinations": [
     {
@@ -2659,7 +2659,8 @@
       "type": "museum",
       "queueRank": 206,
       "origin": "POI Destinations",
-      "status": "pending",
+      "status": "manual-model",
+      "modelId": "theo-thijssen-museum",
       "treatment": "building"
     },
     {
