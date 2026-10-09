@@ -79,3 +79,6 @@ artifacts/
 # OS / local debug noise
 .DS_Store
 firestore-debug.log
+
+# Per-pand reference feed staging (scripts/pand-reference)
+/staging/
