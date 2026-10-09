@@ -17085,6 +17085,155 @@
       "triangles": 12822,
       "bytes": 169192,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "nieuwendammerkerk": {
+      "id": "nieuwendammerkerk",
+      "name": "Nieuwendammerkerk",
+      "landmarkId": "extract_landmarks_767085118",
+      "modelUrl": "./models/nieuwendammerkerk.glb",
+      "suppressOsmIds": [
+        "w280804509",
+        "NL.IMBAG.Pand.0363100012144206"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.940649007575467,
+          52.391768552805786
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 25,
+        "widthMetres": 12.7
+      },
+      "surveyed": {
+        "anchor": [
+          4.940649007575467,
+          52.391768552805786
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current BAG 0363100012144206 polygon; geometry baked east/south in native metres. AHN5 2023 + 2025 Amsterdam panoramas; adjacent Kosterij retained."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "brick": "#835744",
+        "ochre": "#b4a376",
+        "stone": "#b8b7a4",
+        "red": "#6b665c",
+        "slate": "#41494c",
+        "white": "#e9e4cd",
+        "green": "#284d43",
+        "frame": "#444c47",
+        "glass": "#6c8d96",
+        "dark": "#263438",
+        "gold": "#c3aa59"
+      },
+      "attribution": {
+        "title": "Nieuwendammerkerk",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/508536",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free native-scale hall church, red tiled gable roof, paired iron-divided arched windows, peaked tower cornices, octagonal slate needle. No copied photo pixels or imported geometry."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.94096383774248,
+              52.39180424739721
+            ],
+            [
+              4.940689188312039,
+              52.39181944404881
+            ],
+            [
+              4.9406848090039235,
+              52.39178895941695
+            ],
+            [
+              4.940619238124669,
+              52.391792487022826
+            ],
+            [
+              4.9406179269107895,
+              52.39178264959333
+            ],
+            [
+              4.940614452631805,
+              52.39175712056433
+            ],
+            [
+              4.940613206179585,
+              52.39174814619301
+            ],
+            [
+              4.94067877699369,
+              52.39174461859037
+            ],
+            [
+              4.940674823623717,
+              52.39171414455102
+            ],
+            [
+              4.940948309713886,
+              52.39169915925469
+            ],
+            [
+              4.9409524357736565,
+              52.39172709043104
+            ],
+            [
+              4.940965679470506,
+              52.39172635840093
+            ],
+            [
+              4.940972955289465,
+              52.39177559317806
+            ],
+            [
+              4.940959711578018,
+              52.391776325208966
+            ],
+            [
+              4.94096383774248,
+              52.39180424739721
+            ]
+          ]
+        ]
+      },
+      "bounds": {
+        "min": [
+          -3.465054988861084,
+          -5.9604645663569045e-9,
+          -6.036648273468018
+        ],
+        "max": [
+          22.009960174560547,
+          27.540000915527344,
+          8.12857723236084
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.940649007575467,
+          52.391768552805786
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 90,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 25.47501516342163,
+        "heightMetres": 27.54000092148781,
+        "depthMetres": 14.165225505828857,
+        "depthCoverage": 1.1153720870731385
+      },
+      "triangles": 12289,
+      "bytes": 158008,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
