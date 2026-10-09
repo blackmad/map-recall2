@@ -86,10 +86,30 @@
       "version": "e5ae0193173a6585",
       "dateSource": "git-history"
     },
+    "beest-boulders": {
+      "updatedAt": "2026-10-06T13:15:28.867Z",
+      "version": "05d2fc34067b8fe3",
+      "dateSource": "asset-update"
+    },
+    "beest-het-lab": {
+      "updatedAt": "2026-10-06T10:41:24.593Z",
+      "version": "ec32672c79476dd7",
+      "dateSource": "asset-update"
+    },
     "begijnhofkapel": {
       "updatedAt": "2026-10-04T04:37:05+02:00",
       "version": "6f9418891f76b644",
       "dateSource": "git-history"
+    },
+    "beta-boulders": {
+      "updatedAt": "2026-10-06T06:24:28.029Z",
+      "version": "511d00d50a24b288",
+      "dateSource": "asset-update"
+    },
+    "blauwe-theehuis": {
+      "updatedAt": "2026-10-06T10:41:24.578Z",
+      "version": "88d7c482fb829252",
+      "dateSource": "asset-update"
     },
     "boom-chicago": {
       "updatedAt": "2026-10-06T21:08:45.801Z",
@@ -131,6 +151,11 @@
       "version": "83293771e9c194c6",
       "dateSource": "git-history"
     },
+    "centrale-markthal": {
+      "updatedAt": "2026-10-06T21:18:12.497Z",
+      "version": "6f4927d135dfb1ab",
+      "dateSource": "asset-update"
+    },
     "cinecenter": {
       "updatedAt": "2026-10-04T03:30:16+02:00",
       "version": "5a100909943d2d2d",
@@ -140,6 +165,11 @@
       "updatedAt": "2026-10-04T19:03:47+02:00",
       "version": "cb142773c572e558",
       "dateSource": "git-history"
+    },
+    "conservatorium": {
+      "updatedAt": "2026-10-05T19:25:36.610Z",
+      "version": "fb2225321c56c3b1",
+      "dateSource": "asset-update"
     },
     "dageraad": {
       "updatedAt": "2026-10-05T18:07:25+02:00",
@@ -170,6 +200,11 @@
       "updatedAt": "2026-10-04T04:54:22+02:00",
       "version": "209671bcce9bab36",
       "dateSource": "git-history"
+    },
+    "de-gooyer": {
+      "updatedAt": "2026-10-06T20:56:05.297Z",
+      "version": "2ba75a134a27a8e7",
+      "dateSource": "asset-update"
     },
     "de-hallen": {
       "updatedAt": "2026-10-04T01:16:17+02:00",
@@ -250,6 +285,11 @@
       "updatedAt": "2026-10-04T00:34:55+02:00",
       "version": "a61e26dbacb806f0",
       "dateSource": "git-history"
+    },
+    "groot-melkhuis": {
+      "updatedAt": "2026-10-06T10:41:24.587Z",
+      "version": "236cf1e655704a19",
+      "dateSource": "asset-update"
     },
     "groote-museum": {
       "updatedAt": "2026-10-04T03:31:34+02:00",
@@ -381,20 +421,45 @@
       "version": "16cfd90fbaaa8913",
       "dateSource": "git-history"
     },
+    "keith-haring-mural": {
+      "updatedAt": "2026-10-06T08:06:43.794Z",
+      "version": "8a50d19e865f7a58",
+      "dateSource": "asset-update"
+    },
+    "kesbeke-shop": {
+      "updatedAt": "2026-10-06T13:16:17.525Z",
+      "version": "1d1ff32df01de1c5",
+      "dateSource": "asset-update"
+    },
+    "kesbeke": {
+      "updatedAt": "2026-10-06T13:16:17.495Z",
+      "version": "e2acae9a946ddee1",
+      "dateSource": "asset-update"
+    },
     "ketelhuis": {
       "updatedAt": "2026-10-04T02:55:04+02:00",
       "version": "ae7a77d4b2cfa278",
       "dateSource": "git-history"
+    },
+    "kinderkookkafe": {
+      "updatedAt": "2026-10-06T06:24:27.978Z",
+      "version": "2a100f055a7ab05f",
+      "dateSource": "asset-update"
     },
     "kleine-komedie": {
       "updatedAt": "2026-10-04T00:07:10+02:00",
       "version": "4b55df2562dcf809",
       "dateSource": "git-history"
     },
+    "klimmuur-centraal": {
+      "updatedAt": "2026-10-06T07:57:51.485Z",
+      "version": "f8954acce2d6adc6",
+      "dateSource": "asset-update"
+    },
     "kriterion": {
-      "updatedAt": "2026-10-04T00:35:10+02:00",
-      "version": "452d0da753f4c034",
-      "dateSource": "git-history"
+      "updatedAt": "2026-10-07T08:28:12.141Z",
+      "version": "d069a17f44212a81",
+      "dateSource": "asset-update"
     },
     "lab111": {
       "updatedAt": "2026-10-04T02:55:04+02:00",
@@ -426,6 +491,11 @@
       "version": "6d8e4969e328569f",
       "dateSource": "git-history"
     },
+    "midwest": {
+      "updatedAt": "2026-10-06T11:39:49.126Z",
+      "version": "0cf4c0abc070d609",
+      "dateSource": "asset-update"
+    },
     "moco-museum": {
       "updatedAt": "2026-10-04T20:43:07+02:00",
       "version": "58c8b2145a387663",
@@ -436,10 +506,20 @@
       "version": "da4a8d9ed9d84bfc",
       "dateSource": "git-history"
     },
+    "monk-amsterdam": {
+      "updatedAt": "2026-10-06T21:05:23.847Z",
+      "version": "931e573ff99f3f64",
+      "dateSource": "asset-update"
+    },
     "montelbaanstoren-amsterdam": {
       "updatedAt": "2026-10-04T10:58:02+02:00",
       "version": "cd253f9546f3b5fb",
       "dateSource": "git-history"
+    },
+    "mountain-network": {
+      "updatedAt": "2026-10-06T07:08:41.417Z",
+      "version": "e816e9aece23222c",
+      "dateSource": "asset-update"
     },
     "muiderpoort": {
       "updatedAt": "2026-10-04T23:51:03+02:00",
@@ -481,10 +561,25 @@
       "version": "aeac99d45ed7c5f6",
       "dateSource": "git-history"
     },
+    "ndsm-container-arch": {
+      "updatedAt": "2026-10-06T16:03:55.204Z",
+      "version": "e833366969413fe3",
+      "dateSource": "asset-update"
+    },
+    "ndsm-warehouse-complex": {
+      "updatedAt": "2026-10-06T10:03:55.100Z",
+      "version": "ebf02ab7f8d789da",
+      "dateSource": "asset-update"
+    },
     "nemo": {
       "updatedAt": "2026-10-04T13:28:28+02:00",
       "version": "31386d84a4793626",
       "dateSource": "git-history"
+    },
+    "nieuw-dakota": {
+      "updatedAt": "2026-10-06T20:56:05.320Z",
+      "version": "1579cea94e829e38",
+      "dateSource": "asset-update"
     },
     "nieuwe-kerk": {
       "updatedAt": "2026-10-04T19:03:47+02:00",
@@ -581,6 +676,11 @@
       "version": "260f0e47a725d8d7",
       "dateSource": "git-history"
     },
+    "pllek": {
+      "updatedAt": "2026-10-06T21:05:23.826Z",
+      "version": "dc5d3ef35f825449",
+      "dateSource": "asset-update"
+    },
     "pontsteiger": {
       "updatedAt": "2026-10-03T23:34:10+02:00",
       "version": "7eceb598c7d77e8b",
@@ -590,6 +690,21 @@
       "updatedAt": "2026-10-04T01:37:22+02:00",
       "version": "f7c67aca9592d33d",
       "dateSource": "git-history"
+    },
+    "pulitzer-amsterdam": {
+      "updatedAt": "2026-10-06T19:37:22.159Z",
+      "version": "46da427f4defad48",
+      "dateSource": "asset-update"
+    },
+    "rai-amsterdam": {
+      "updatedAt": "2026-10-06T19:37:22.038Z",
+      "version": "de6b20d6761ca79d",
+      "dateSource": "asset-update"
+    },
+    "rasphuispoort": {
+      "updatedAt": "2026-10-06T21:05:24.027Z",
+      "version": "a5285cde46a71818",
+      "dateSource": "asset-update"
     },
     "rem-eiland": {
       "updatedAt": "2026-10-06T08:54:22.181Z",
@@ -696,6 +811,11 @@
       "version": "cad040a76b7e50a6",
       "dateSource": "git-history"
     },
+    "straat-museum": {
+      "updatedAt": "2026-10-06T21:05:23.873Z",
+      "version": "1208ef710c5cffee",
+      "dateSource": "asset-update"
+    },
     "studiok": {
       "updatedAt": "2026-10-04T03:30:16+02:00",
       "version": "c41ea486ca160306",
@@ -705,6 +825,11 @@
       "updatedAt": "2026-10-03T23:59:52+02:00",
       "version": "81b65535e377b947",
       "dateSource": "git-history"
+    },
+    "the-rock": {
+      "updatedAt": "2026-10-06T17:58:05.595Z",
+      "version": "c42ec5e34493fc8b",
+      "dateSource": "asset-update"
     },
     "theater-amsterdam": {
       "updatedAt": "2026-10-04T04:57:51+02:00",
@@ -716,10 +841,20 @@
       "version": "e77efef4eb4fd0a0",
       "dateSource": "git-history"
     },
+    "treehouse-ndsm": {
+      "updatedAt": "2026-10-06T21:05:23.950Z",
+      "version": "16a70ba7c3f5215f",
+      "dateSource": "asset-update"
+    },
     "tuschinski": {
       "updatedAt": "2026-10-04T00:48:21+02:00",
       "version": "40d1ef278d608881",
       "dateSource": "git-history"
+    },
+    "valley": {
+      "updatedAt": "2026-10-06T09:01:19.850Z",
+      "version": "e00596e88da882b0",
+      "dateSource": "asset-update"
     },
     "van-gogh-museum": {
       "updatedAt": "2026-10-03T23:34:10+02:00",
@@ -736,10 +871,20 @@
       "version": "5067ef40e3266e95",
       "dateSource": "git-history"
     },
+    "vondeltuin": {
+      "updatedAt": "2026-10-06T21:05:23.959Z",
+      "version": "cc3f4c61eef67258",
+      "dateSource": "asset-update"
+    },
     "vredeskerk": {
       "updatedAt": "2026-10-04T03:32:54+02:00",
       "version": "15f1065728425196",
       "dateSource": "git-history"
+    },
+    "w139": {
+      "updatedAt": "2026-10-05T19:26:31.549Z",
+      "version": "885eb44012397f07",
+      "dateSource": "asset-update"
     },
     "walloon-church": {
       "updatedAt": "2026-10-04T06:15:19+02:00",
@@ -770,151 +915,6 @@
       "updatedAt": "2026-10-04T13:28:28+02:00",
       "version": "5978f719de17ff3e",
       "dateSource": "git-history"
-    },
-    "w139": {
-      "updatedAt": "2026-10-05T19:26:31.549Z",
-      "version": "885eb44012397f07",
-      "dateSource": "asset-update"
-    },
-    "conservatorium": {
-      "updatedAt": "2026-10-05T19:25:36.610Z",
-      "version": "fb2225321c56c3b1",
-      "dateSource": "asset-update"
-    },
-    "kinderkookkafe": {
-      "updatedAt": "2026-10-06T06:24:27.978Z",
-      "version": "2a100f055a7ab05f",
-      "dateSource": "asset-update"
-    },
-    "beta-boulders": {
-      "updatedAt": "2026-10-06T06:24:28.029Z",
-      "version": "511d00d50a24b288",
-      "dateSource": "asset-update"
-    },
-    "beest-boulders": {
-      "updatedAt": "2026-10-06T13:15:28.867Z",
-      "version": "05d2fc34067b8fe3",
-      "dateSource": "asset-update"
-    },
-    "klimmuur-centraal": {
-      "updatedAt": "2026-10-06T07:57:51.485Z",
-      "version": "f8954acce2d6adc6",
-      "dateSource": "asset-update"
-    },
-    "mountain-network": {
-      "updatedAt": "2026-10-06T07:08:41.417Z",
-      "version": "e816e9aece23222c",
-      "dateSource": "asset-update"
-    },
-    "keith-haring-mural": {
-      "updatedAt": "2026-10-06T08:06:43.794Z",
-      "version": "8a50d19e865f7a58",
-      "dateSource": "asset-update"
-    },
-    "valley": {
-      "updatedAt": "2026-10-06T09:01:19.850Z",
-      "version": "e00596e88da882b0",
-      "dateSource": "asset-update"
-    },
-    "ndsm-warehouse-complex": {
-      "updatedAt": "2026-10-06T10:03:55.100Z",
-      "version": "ebf02ab7f8d789da",
-      "dateSource": "asset-update"
-    },
-    "midwest": {
-      "updatedAt": "2026-10-06T11:39:49.126Z",
-      "version": "0cf4c0abc070d609",
-      "dateSource": "asset-update"
-    },
-    "beest-het-lab": {
-      "updatedAt": "2026-10-06T10:41:24.593Z",
-      "version": "ec32672c79476dd7",
-      "dateSource": "asset-update"
-    },
-    "blauwe-theehuis": {
-      "updatedAt": "2026-10-06T10:41:24.578Z",
-      "version": "88d7c482fb829252",
-      "dateSource": "asset-update"
-    },
-    "groot-melkhuis": {
-      "updatedAt": "2026-10-06T10:41:24.587Z",
-      "version": "236cf1e655704a19",
-      "dateSource": "asset-update"
-    },
-    "kesbeke-shop": {
-      "updatedAt": "2026-10-06T13:16:17.525Z",
-      "version": "1d1ff32df01de1c5",
-      "dateSource": "asset-update"
-    },
-    "kesbeke": {
-      "updatedAt": "2026-10-06T13:16:17.495Z",
-      "version": "e2acae9a946ddee1",
-      "dateSource": "asset-update"
-    },
-    "ndsm-container-arch": {
-      "updatedAt": "2026-10-06T16:03:55.204Z",
-      "version": "e833366969413fe3",
-      "dateSource": "asset-update"
-    },
-    "the-rock": {
-      "updatedAt": "2026-10-06T17:58:05.595Z",
-      "version": "c42ec5e34493fc8b",
-      "dateSource": "asset-update"
-    },
-    "rai-amsterdam": {
-      "updatedAt": "2026-10-06T19:37:22.038Z",
-      "version": "de6b20d6761ca79d",
-      "dateSource": "asset-update"
-    },
-    "pulitzer-amsterdam": {
-      "updatedAt": "2026-10-06T19:37:22.159Z",
-      "version": "46da427f4defad48",
-      "dateSource": "asset-update"
-    },
-    "de-gooyer": {
-      "updatedAt": "2026-10-06T20:56:05.297Z",
-      "version": "2ba75a134a27a8e7",
-      "dateSource": "asset-update"
-    },
-    "nieuw-dakota": {
-      "updatedAt": "2026-10-06T20:56:05.320Z",
-      "version": "1579cea94e829e38",
-      "dateSource": "asset-update"
-    },
-    "treehouse-ndsm": {
-      "updatedAt": "2026-10-06T21:05:23.950Z",
-      "version": "16a70ba7c3f5215f",
-      "dateSource": "asset-update"
-    },
-    "centrale-markthal": {
-      "updatedAt": "2026-10-06T21:18:12.497Z",
-      "version": "6f4927d135dfb1ab",
-      "dateSource": "asset-update"
-    },
-    "rasphuispoort": {
-      "updatedAt": "2026-10-06T21:05:24.027Z",
-      "version": "a5285cde46a71818",
-      "dateSource": "asset-update"
-    },
-    "vondeltuin": {
-      "updatedAt": "2026-10-06T21:05:23.959Z",
-      "version": "cc3f4c61eef67258",
-      "dateSource": "asset-update"
-    },
-    "monk-amsterdam": {
-      "updatedAt": "2026-10-06T21:05:23.847Z",
-      "version": "931e573ff99f3f64",
-      "dateSource": "asset-update"
-    },
-    "straat-museum": {
-      "updatedAt": "2026-10-06T21:05:23.873Z",
-      "version": "1208ef710c5cffee",
-      "dateSource": "asset-update"
-    },
-    "pllek": {
-      "updatedAt": "2026-10-06T21:05:23.826Z",
-      "version": "dc5d3ef35f825449",
-      "dateSource": "asset-update"
     }
   }
 }

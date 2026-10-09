@@ -1,0 +1,145 @@
+{
+  "modelId": "kriterion",
+  "feedbackId": "1d79b5b9-8491-4c91-b99f-9f9820b69e5b",
+  "reviewedOn": "2026-10-07",
+  "status": "local-geometry-gallery-game-and-independent-review-passed-root-visual-accepted-hosted-verification-pending",
+  "originalEvidence": {
+    "note": "bottom ewindows brown",
+    "reportedFingerprint": "452d0da753f4c034",
+    "reportedCameraTheta": -0.5255468749999995,
+    "privateSourcePath": "models/kriterion/raw/2026-10-07-glazing-feedback"
+  },
+  "historicalInitialRepair": {
+    "source": {
+      "osmId": "w268999077",
+      "bagId": "0363100012181099",
+      "currentOsmVersion": 4,
+      "currentOsmTimestamp": "2026-06-22T08:15:17Z",
+      "currentFootprintComparison": "Same coordinate set; ring order and winding differ. Retained installed footprint.",
+      "localStreetVertices": [
+        [
+          -22.612171563268518,
+          15.273916771403842
+        ],
+        [
+          -13.459892151256183,
+          15.11943432599705
+        ],
+        [
+          -10.090935301480283,
+          15.052854003256499
+        ]
+      ],
+      "streetLengthMetres": 12.523187544350742,
+      "facadeRotationDegrees": 1.0114534707294363,
+      "dimensionsMetres": {
+        "installedEnvelopeLength": 45.2242965083953,
+        "installedEnvelopeWidth": 30.547694670912293,
+        "existingFrontHouseWidth": 12.1,
+        "existingFrontHouseTop": 17.8,
+        "existingAuditoriumHeight": 9.2
+      },
+      "dimensionConfidence": "Street chain from OSM/BAG-linked footprint; facade width/heights and window layout are existing approximate reconstruction, not newly surveyed measurements."
+    },
+    "fix": "Rotate house mass, pane assemblies, entrance, trim, roof and existing real sign onto the same surveyed street plane. Preserve existing sign seven-row glyph shapes, dimensions, spacing and color. Optional window emitter leaves Rialto behavior unchanged.",
+    "output": {
+      "triangles": 2513,
+      "bytes": 40712,
+      "sha256": "5c892996ccafd5960d28199a959e9affc5641565f27fc8212803cbfde2da17c3"
+    },
+    "checks": {
+      "decodedGlbFractionalPaneChecks": {
+        "faces": 12,
+        "samples": 1296,
+        "anglesDegrees": [
+          -30,
+          0,
+          30
+        ],
+        "baselineMasonryFailures": 234,
+        "repairedMasonryFailures": 0
+      },
+      "manualAssets": "183 passed",
+      "lint": "Fails in pre-existing cityAppearance/pointCloud/renderingSpike files on this base with shared current node_modules; no reported error in owned builder or check."
+    },
+    "warning": "Historical single-body intermediate; superseded by current two-Pand geometry and native font outlines. Earlier failed visual evidence remains preserved."
+  },
+  "currentSource": {
+    "pandIds": [
+      "0363100012253901",
+      "0363100012181099"
+    ],
+    "runtimeSuppressionAliases": [
+      "w268999077",
+      "NL.IMBAG.Pand.0363100012253901",
+      "NL.IMBAG.Pand.0363100012181099"
+    ],
+    "nativeRoofFiles": [
+      "kriterion-front-roof-zones.json",
+      "kriterion-rear-roof-zones.json"
+    ],
+    "sourceArchive": {
+      "repository": "blackmad/map-recall2-source-data",
+      "commit": "4efb05ece660bfcee13bae3cedf317f27b786f90",
+      "path": "models/kriterion",
+      "state": "committed and pushed before public model"
+    }
+  },
+  "fix": "Repair exposed lower glazing; replace inherited OSM rectangular body with current surveyed front and rear Pand shells and bounded upward roof planes; preserve real KRITERION and Vriendenkring signs as source-family native font contours fitted to their panels.",
+  "signage": {
+    "front": {
+      "fontApproximation": "Poiret One Regular",
+      "record": "kriterion-front-lettering.json"
+    },
+    "canal": {
+      "fontApproximation": "Cormorant Garamond",
+      "record": "kriterion-vriendenkring-lettering.json"
+    },
+    "policy": "Original native geometry; no copied photograph pixels or identifying invented name signage."
+  },
+  "checks": {
+    "decodedGlbFractionalPaneChecks": {
+      "faces": 12,
+      "samples": 1296,
+      "masonryFailures": 0
+    },
+    "currentDecodedGroundScope": {
+      "officialUnionMetres2": 699.520697224193,
+      "coveredFraction": 0.9995737453637146,
+      "missingMetres2": 0.2981739403695573,
+      "outsideUnionMetres2": 0.03779131301550664
+    },
+    "manualAssets": "183 passed",
+    "poiContract": "196 models / 185 independent destinations passed",
+    "lockedDependencyLint": "npm ci --workspaces=false --ignore-scripts on isolated exact package-lock.json; npm run lint passed; shared root dependencies reproduce unrelated baseline type errors",
+    "runtime": "Chosen Kriterion route finish retained; meaningful researched card physically selected; geographic pin/destination present; scale1 exact3alias loaded masks and two resident drawn external neighbors retained",
+    "fallback": "Actual game disable/re-enable restores all three exact aliases; current three-alias load-failure fixture passed; shared streamed/static and independent pyramidal fallback tests passed"
+  },
+  "output": {
+    "triangles": 7690,
+    "bytes": 84128,
+    "sha256": "d069a17f44212a81df0a10389ff4be681c7aed2404274298bed507c17d2b0abe",
+    "assetVersion": "d069a17f44212a81"
+  },
+  "failedEvidence": [
+    "artifacts/kriterion-feedback-oct7/failed-initial-native-review",
+    "artifacts/kriterion-feedback-oct7/front-only-native-scope-review",
+    "artifacts/kriterion-feedback-oct7/full-scope-independent-review.json (historical d2 held)",
+    "artifacts/kriterion-feedback-oct7/failed-obstructed-current-font-review",
+    "artifacts/landmark-release-check/kriterion-review/live-canal-context12.png (canopy obstructed)",
+    "artifacts/landmark-release-check/kriterion-review/live-canal-context15.png (canopy obstructed)",
+    "artifacts/kriterion-feedback-oct7/failed-canopy-close-performance.json (current default Chromium scene absolute slow timings preserved)"
+  ],
+  "performanceLimitation": "Default headless Playwright Chromium current actual scene is slow: canopy-close visible p50 158ms/p95 274.6ms; hidden p50 110.1ms/p95 162.8ms; repeat p50 170.3ms/p95 258.2ms. A subsequent default Chromium front scene is also slow (~115\u2013129ms p50). Final installed Chrome front scene visible p50 16.7ms/p95 18.4ms, hidden16.6/18.7, repeat16.7/18.5; model-enabled/disabled isolation only. Exact WebGL backend identity was not recorded; these results suggest a browser/backend difference but do not establish its mechanism or erase slow runs. No whole-game performance acceptance claimed.",
+  "visualEvidence": "artifacts/landmark-release-check/kriterion-review current exact asset gallery four rotations, front, canal close, complementary low/high west and roof context captures",
+  "pending": [
+    "Root public integration-base rebuild/regression and scoped commit/push",
+    "Hosted reported-angle page verification before cloud feedback resolution"
+  ],
+  "feedbackStatus": "claimed unresolved; never resolve from local-only evidence",
+  "independentReview": {
+    "path": "artifacts/kriterion-feedback-oct7/d069-independent-final-review.json",
+    "assetSha256": "d069a17f44212a81df0a10389ff4be681c7aed2404274298bed507c17d2b0abe",
+    "decision": "bounded visual pass"
+  }
+}

@@ -835,7 +835,9 @@
     "landmarkId": "extract_landmarks_1605152135",
     "modelUrl": "./models/kriterion.glb",
     "suppressOsmIds": [
-      "w268999077"
+      "w268999077",
+      "NL.IMBAG.Pand.0363100012253901",
+      "NL.IMBAG.Pand.0363100012181099"
     ],
     "footprint": {
       "centre": [
@@ -854,7 +856,7 @@
       "sourceUrl": "https://www.stichtingkriterion.nl/geschiedenis",
       "licence": "Original project asset",
       "licenceUrl": "./LICENSE",
-      "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+      "modifications": "Original texture-free native reconstruction of the current cinema and shared residential/hall parents. Surveyed roof zones and current municipal panorama references guide the original facade geometry, concrete entrance and approximate real-sign lettering."
     },
     "surveyed": {
       "anchor": [
@@ -864,7 +866,11 @@
       "northOffsetDegrees": 251.44363710419276,
       "source": "OSM building w268999077 polygon, east-facing Roetersstraat street house"
     },
-    "spatialSuppression": false
+    "spatialSuppression": false,
+    "materialOverrides": {
+      "greyBrick": "#756b5c",
+      "concrete": "#8c918a"
+    }
   },
   {
     "id": "de-bijenkorf",
