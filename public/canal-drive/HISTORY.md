@@ -19,8 +19,8 @@ De Balie (red brick and two storeys; the building is pale stone, three
 storeys) as clear misses.
 
 Installed after contact-sheet and elevation review: Thomaskerk (Sijmons
-1966) and Vrijburg (Diepenbrockstraat, 1931–33). Held: Willem de
-Zwijgerkerk (entrance wing missing; reworked on its branch since) and Van
+1966) and Vrijburg (Diepenbrockstraat, 1931–33). Willem de Zwijgerkerk
+was held for its missing entrance wing and installed after rework; held: Van
 Gendt Hallen (gable corbel friezes, steel windows, 3DBAG gable artefacts).
 The OBA libraries, CEDLA, Max Euwe Centrum and Bijzondere Collecties are
 rooms in ordinary buildings, Elthetokerk was demolished in 1992; these and a
