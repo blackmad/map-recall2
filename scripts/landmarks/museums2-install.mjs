@@ -14,7 +14,7 @@ const CONFIG={
   sourceUrl:'https://nl.wikipedia.org/wiki/Path%C3%A9_de_Munt',
   mods:'Original texture-free model on the BAG footprint (3DBAG LoD2.2 roof faces): grey-brick multiplex with notched pitched volumes, glazed slits, lower entrance bays and the vertical Pathé sign. Dimensions approximate, measured from 2025 panoramas. No imported mesh or photo textures.',
   colours:{brick:'#807a74',greyBrick:'#7a7570',stone:'#a9a69f',slate:'#6a6865',white:'#e7e5dd',glass:'#667c86',dark:'#25292c',gold:'#e0b030'}},
- 'houseboat-museum':{name:'Houseboat Museum (Hendrika Maria)',landmarkId:'extract_landmarks_941219842',suppress:[],
+ 'houseboat-museum':{name:'Houseboat Museum (Hendrika Maria)',landmarkId:'extract_landmarks_941219842',suppress:['w174999382'],
   sourceUrl:'https://en.wikipedia.org/wiki/Woonbootmuseum',
   mods:'Original texture-free barge model: black steel hull with cream waterline band, cream cabin with portholes, dark hatch roof and mast. Proportions approximate, from a 2021 street-level panorama. No imported mesh or photo textures.',
   colours:{dark:'#1d2124',white:'#e4e1d3',stone:'#8a8f90',glass:'#5b707a',slate:'#4a3d36',brick:'#8b5e48',red:'#8d3b2a',green:'#c7c78a'}},

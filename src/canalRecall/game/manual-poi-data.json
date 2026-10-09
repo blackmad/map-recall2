@@ -1834,5 +1834,13 @@
     "description": "Pathé de Munt is a large cinema in the centre of Amsterdam on the Vijzelstraat, close to Pathé Tuschinski; the two cinemas border each other behind the shops on the Reguliersbreestraat. It has 13 screens on three floors with 1,829 seats in total, the largest room seating 318.",
     "funFact": "When Pathé de Munt opened in November 2000 it was the first multiplex cinema in Amsterdam's inner city.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Path%C3%A9_de_Munt"
+  },
+  {
+    "modelId": "houseboat-museum",
+    "landmarkId": "extract_landmarks_941219842",
+    "name": "Houseboat Museum",
+    "description": "The Woonbootmuseum, or Houseboat Museum, is dedicated to the history and culture of living on the water. It lies on the Prinsengracht, on the edge of the Jordaan, aboard the Hendrika Maria, a historic inland vessel from 1914.",
+    "funFact": "It is the only museum in the world specifically focused on houseboat living.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Woonbootmuseum"
   }
 ]

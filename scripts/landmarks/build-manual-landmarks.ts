@@ -1,3 +1,4 @@
+import {buildHouseboatMuseum} from './houseboat-museum-builder';
 import {buildPatheDeMunt} from './pathe-de-munt-builder';
 import {buildTheoThijssenMuseum} from './theo-thijssen-museum-builder';
 import {buildTortureMuseum} from './torture-museum-builder';
@@ -323,6 +324,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   else {
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
     if(id==='torture-museum')buildTortureMuseum(w,d,helpers);
+    else if(id==='houseboat-museum')buildHouseboatMuseum(w,d,helpers);
     else if(id==='pathe-de-munt')buildPatheDeMunt(w,d,helpers);
     else if(id==='theo-thijssen-museum')buildTheoThijssenMuseum(w,d,helpers);
     else if(id==='this-is-holland')buildThisIsHolland(w,d,helpers);
