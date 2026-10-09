@@ -1961,5 +1961,14 @@
   "funFact": "Inside, the sandstone floor recalls the Israelites' journey through the desert, the undulating roof stands for the sea, and twelve square window panes refer to the apostles.",
   "sourceUrl": "https://nl.wikipedia.org/wiki/Thomaskerk_(Amsterdam)",
   "preferDescription": true
+},
+{
+  "modelId": "koningskerk",
+  "landmarkId": "extract_landmarks_879972030",
+  "name": "Koningskerk",
+  "description": "The Koningskerk on the Van 't Hofflaan in Watergraafsmeer was designed by Wouter van de Kuilen and Cornelis Trappenburg and built between 1954 and 1956. A box-like hall with a striking freestanding tower, it is known for the early glass-in-concrete walls by Berend Hendriks, which to some observers give the facade the look of a crossword puzzle.",
+  "funFact": "The church was dedicated on 21 March 1956 as a Reformed church; since 1994 it has been used by the Evangelische Broedergemeente (Moravian Church).",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Koningskerk_(Amsterdam)",
+  "preferDescription": true
 }
 ]
