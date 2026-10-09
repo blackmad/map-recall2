@@ -85,3 +85,20 @@ export class MeshBuilder {
 }
 
 export type MeshData = ReturnType<MeshBuilder['build']>;
+
+/** Concatenate meshes into one (one draw call per cell and pass). */
+export function mergeMeshes(meshes: readonly MeshData[]): MeshData {
+  let vertices = 0, indices = 0;
+  for (const m of meshes) { vertices += m.positions.length; indices += m.indices.length; }
+  const positions = new Float32Array(vertices), colors = new Float32Array(vertices), index = new Uint32Array(indices);
+  let v = 0, i = 0;
+  for (const m of meshes) {
+    positions.set(m.positions, v);
+    colors.set(m.colors, v);
+    const base = v / 3;
+    for (let k = 0; k < m.indices.length; k++) index[i + k] = m.indices[k] + base;
+    v += m.positions.length;
+    i += m.indices.length;
+  }
+  return { positions, colors, indices: index };
+}

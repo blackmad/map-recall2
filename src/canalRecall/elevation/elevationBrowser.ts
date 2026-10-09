@@ -25,7 +25,7 @@ import {
   DeckIndex, decodeFallback, isFlatMeasured, decodeProfile, fallbackDeckTop, fallbackDeckUnderside, measuredDeckMesh, surfacePose,
   type DeckProfile, type FallbackDeck,
 } from './bridgeDeck.js';
-import type { MeshData } from './meshBuilder.js';
+import { mergeMeshes, type MeshData } from './meshBuilder.js';
 
 export * from './elevationData.js';
 export { surfacePose } from './bridgeDeck.js';
@@ -47,9 +47,9 @@ type MapLike = {
 export const LAYER_ID = 'canal-elevation';
 const EXTRACT_DIR = 'elevation-v1';
 const MIN_ZOOM = 14.5;
-const RESIDENT_RADIUS_M = 1600;
-const RESIDENCY_STEP_M = 200;
-const MAX_RESIDENT_CELLS = 24;
+const RESIDENT_RADIUS_M = 1000;
+const RESIDENCY_STEP_M = 150;
+const MAX_RESIDENT_CELLS = 9;
 /** Faces are wound counter-clockwise seen from their stated normal (meshBuilder). */
 const FRONT = THREE.FrontSide;
 
@@ -123,6 +123,8 @@ export class CanalElevation {
   private deckIndex: DeckIndex | null = null;
   private fallbackDecks: FallbackDeck[] = [];
   private residencyCentre: [number, number] | null = null;
+  private installQueue: string[] = [];
+  private wanted = new Set<string>();
   private lastRenderMs = 0;
 
   constructor(private readonly map: MapLike, private readonly maplibregl: MaplibreLike, options: { beforeId?: string } = {}) {
@@ -231,6 +233,7 @@ export class CanalElevation {
     this.root = root;
     this.ready = false;
     this.clearCells();
+    this.installQueue = [];
     this.cellData.clear();
     this.deckIndex = null;
     if (!root.endsWith('/amsterdam')) return;
@@ -311,6 +314,8 @@ export class CanalElevation {
       .map(key => { const [cx, cy] = key.split('_').map(Number); return { key, d: Math.hypot((cx + 0.5) * this.index!.cellSizeM - x, (cy + 0.5) * this.index!.cellSizeM - y) }; })
       .sort((a, b) => a.d - b.d).slice(0, MAX_RESIDENT_CELLS).map(c => c.key);
     const keep = new Set(wanted);
+    this.wanted = keep;
+    this.installQueue = this.installQueue.filter(key => keep.has(key));
     for (const key of [...this.cells.keys()]) if (!keep.has(key)) this.dropCell(key);
     for (const key of wanted) if (!this.cells.has(key)) void this.loadCell(key);
   }
@@ -335,7 +340,9 @@ export class CanalElevation {
       this.cellData.set(key, data);
     }
     if (this.cells.has(key) || !this.residencyCentre) return;
-    this.installCell(key, data);
+    // Mesh building is synchronous; install one cell per frame (see draw).
+    if (!this.installQueue.includes(key)) this.installQueue.push(key);
+    this.map.triggerRepaint();
   }
 
   private installCell(key: string, data: WaterCell): void {
@@ -357,17 +364,24 @@ export class CanalElevation {
       add(this.scenes.restore, opening, this.materials.restore);
       add(this.scenes.sunken, geometryOf(waterSurface(data, index.cellSizeM, quant, -freeboard, [1, 1, 1], toScene)), this.materials.water);
     }
-    if (data.shore.length) add(this.scenes.sunken, geometryOf(quayWalls(data, index.cellSizeM, quant, freeboard, toScene)), this.materials.walls);
-    for (const profile of this.profilesByCell.get(key) ?? []) {
-      const deck = geometryOf(measuredDeckMesh(profile, freeboard));
-      add(this.scenes.sunken, deck, this.materials.deckBelow);
-      add(this.scenes.upper, deck, this.materials.deckAbove);
+    // One geometry per cell and pass: hundreds of per-bridge meshes cost more
+    // CPU in three's render loop than all their triangles (ride-perf, iphone).
+    const flatDecks = this.fallbackByCell.get(key) ?? [];
+    const walls = [
+      ...(data.shore.length ? [quayWalls(data, index.cellSizeM, quant, freeboard, toScene)] : []),
+      ...flatDecks.map(deck => fallbackDeckUnderside(deck)),
+    ];
+    if (walls.length) add(this.scenes.sunken, geometryOf(mergeMeshes(walls)), this.materials.walls);
+    const profiles = this.profilesByCell.get(key) ?? [];
+    if (profiles.length) {
+      const decks = geometryOf(mergeMeshes(profiles.map(profile => measuredDeckMesh(profile, freeboard))));
+      add(this.scenes.sunken, decks, this.materials.deckBelow);
+      add(this.scenes.upper, decks, this.materials.deckAbove);
     }
-    for (const deck of this.fallbackByCell.get(key) ?? []) {
-      add(this.scenes.sunken, geometryOf(fallbackDeckUnderside(deck)), this.materials.walls);
-      const top = geometryOf(fallbackDeckTop(deck));
-      add(this.scenes.flat, top, this.materials.deckFlatTop);
-      add(this.scenes.opening, top, this.materials.openingCut).renderOrder = 1;
+    if (flatDecks.length) {
+      const tops = geometryOf(mergeMeshes(flatDecks.map(deck => fallbackDeckTop(deck))));
+      add(this.scenes.flat, tops, this.materials.deckFlatTop);
+      add(this.scenes.opening, tops, this.materials.openingCut).renderOrder = 1;
     }
     this.cells.set(key, { key, meshes });
     this.map.triggerRepaint();
@@ -390,10 +404,18 @@ export class CanalElevation {
     if (!this.visibleNow()) return;
     const renderer = this.renderer!;
     this.updateResidency();
+    const next = this.installQueue.shift();
+    if (next) {
+      const data = this.cellData.get(next);
+      if (data && !this.cells.has(next) && this.wanted.has(next)) this.installCell(next, data);
+      if (this.installQueue.length) this.map.triggerRepaint();
+    }
     if (!this.cells.size) return;
     const t0 = performance.now();
     this.setCamera(args);
-    const depthRange = gl.getParameter(gl.DEPTH_RANGE) as Float32Array;
+    // MapLibre's cached depth range (avoids a GL state query each frame).
+    const cached = (this.map.painter as any)?.context?.depthRange?.current as [number, number] | undefined;
+    const depthRange = cached ?? (gl.getParameter(gl.DEPTH_RANGE) as Float32Array);
     renderer.resetState();
     gl.stencilMask(0xff);
     gl.clearStencil(0);
