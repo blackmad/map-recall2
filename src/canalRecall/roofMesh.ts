@@ -23,6 +23,7 @@
 // to a flat deck. Concave wings roof inscribed rectangles over a flat lid.
 
 import earcut from 'earcut';
+import { largeTierProperties } from './largeBuildingTier.js';
 import { RoofSink, type V2, type V3 } from './roofSink.js';
 import { findChamfer, inscribedRects, insetRing, openRing, parapetRingOk, perimeterRoofInset, signedArea } from './roofFootprint.js';
 import { gableAccents, outlineBand, vergeBoards } from './gableTrim.js';
@@ -938,6 +939,9 @@ export function exceptLandmarks<T extends GeoFeature>(decorate: (feature: T) => 
     const old = (dated && year < 1945) || listed.has(id);
     const guessed = typeof p.appearanceStyleSource === 'string' && p.appearanceStyleSource.includes('not-measured');
     const wall = old ? UNMODELLED_OLD_WALL : UNMODELLED_NEW_WALL;
-    return guessed ? { ...feature, properties: { ...p, sideColour: wall, groundColour: wall } } : feature;
+    // Not a bare box either (user 2026-10-09: big flat-coloured blocks between modelled canal
+    // houses): the large-building tier gives it civic storeys, a plinth and a parapet in that colour.
+    const coloured = guessed ? { ...p, sideColour: wall, groundColour: wall } : p;
+    return { ...feature, properties: largeTierProperties(coloured, wall, listed.has(id)) as T['properties'] };
   };
 }

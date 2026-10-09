@@ -53,6 +53,10 @@ const SPOTS = [
   { name: 'rvg-knsm-piraeus', at: [4.94206, 52.37416], face: [4.9433, 52.3752] }, // modern harbour housing
   { name: 'rvg-borneo-sporenburg', at: [4.94317, 52.372], face: [4.9445, 52.3724] }, // modern, Borneo island
   { name: 'rvg-brouwersgracht', at: [4.88665, 52.38185], face: [4.8878, 52.3823] }, // canal corner, Jordaan edge
+  // Large-building tier (user 2026-10-09: "big buildings with colors as untextured"): unmodelled landmarks drew as blank boxes.
+  { name: 'lt-westermarkt-anne-frank', at: [4.88311, 52.37525], face: [4.88415, 52.37505] }, // Prinsengracht, the 1999 Anne Frank museum block
+  { name: 'lt-singel-pc-hoofthuis', at: [4.89095, 52.37395], face: [4.88967, 52.37388] }, // Singel, UvA PC Hoofthuis (1984)
+  { name: 'lt-keizersgracht-nyenrode', at: [4.88395, 52.37075], face: [4.88531, 52.37064] }, // Keizersgracht, Nyenrode (1956)
   { name: 'rvg-bijlmer-kelbergenpad', at: [4.96953, 52.31627], face: [4.9705, 52.3164] }, // late-20th c. low-rise
 ] as const;
 
