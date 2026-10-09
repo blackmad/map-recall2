@@ -1,0 +1,65 @@
+{
+  "specPath": "/Users/blackmad/Code/map-recall2-vinoly-finish-oct7/scripts/landmarks/vinoly-spec.json",
+  "neighbors": [
+    [
+      "NL.IMBAG.Pand.0363100012109184",
+      "w37804729"
+    ],
+    [
+      "w754894015",
+      "w277373193",
+      "NL.IMBAG.Pand.0363100012112073",
+      "w754852672",
+      "w754852671",
+      "w754852670"
+    ]
+  ],
+  "sourceCamera": {
+    "from": [
+      4.87305,
+      52.33815
+    ],
+    "fromAltitude": 58,
+    "to": [
+      4.8726,
+      52.33777
+    ],
+    "toAltitude": 17
+  },
+  "oppositeBearing": 180,
+  "oppositeZoom": 18.2,
+  "sourceReadyChecks": [
+    "Current tile14/8413/5386 contains west BAG9184 and actual south part w754894015",
+    "Current asset SHAe25e62032c28211db0729dec875b2d783fe8a9d37a34e78d61ae729ed30cd7e1; require actual loaded runtime e25e62032c28211d",
+    "Physical pointer must open sourced genuine osm_building_27653949 card; preserve destination on routing failure",
+    "All six exact replaced aliases hidden only after load; west/south installed features must remain drawn",
+    "Concealed18m transit and glass-covered fourth/fifth-floor patio remain source gaps; no complete exterior-path/patio acceptance"
+  ],
+  "expectedPin": [
+    4.872403,
+    52.337767
+  ],
+  "expectedRouteCenter": [
+    52.33768,
+    4.87262
+  ],
+  "cameraPreparation": {
+    "status": "CPU-derived candidate; no GPU acceptance",
+    "referenceSide": "north/northeast current-context facade plus podium eastward relation",
+    "coordinatesStatus": "inferred source-side elevated inspection; not a surveyed photo pose",
+    "comparisonSource": "models/vinoly/raw/current-front.jpg",
+    "privateSourceCommit": "fa73c85693429a169df717b11b6b5cbb9cd97507",
+    "from": [
+      4.87305,
+      52.33815
+    ],
+    "fromAltitude": 58,
+    "to": [
+      4.8726,
+      52.33777
+    ],
+    "toAltitude": 17,
+    "estimatedGroundDistanceMetres": 52.21,
+    "estimatedRequestedPitchDegrees": 51.86
+  }
+}

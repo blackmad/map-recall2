@@ -8294,6 +8294,48 @@ Map source: ${osmUrl(places[i][0])}`);
         rawSourceCommit: "b9ecc5f2",
         acceptedCheckpointCommit: "b48b9e9e33a15680e2cccacc02cacae5b2305604"
       }
+    },
+    {
+      id: "vinoly",
+      name: "Vi\xF1oly",
+      landmarkId: "osm_building_27653949",
+      modelUrl: "./models/vinoly.glb",
+      suppressOsmIds: [
+        "w27653949",
+        "w754894011",
+        "w754894012",
+        "w754894013",
+        "w754894014",
+        "NL.IMBAG.Pand.0363100012107681"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.872403,
+          52.337767
+        ],
+        headingDegrees: 0,
+        lengthMetres: 91,
+        widthMetres: 34
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      surveyed: {
+        anchor: [
+          4.872403,
+          52.337767
+        ],
+        northOffsetDegrees: 0,
+        source: "Native WGS84 OSM part rings checked against BAG0363100012107681, metre east/south axes, scale1; broad91.29NAP crown rebase0.333NAP. Exact identities only."
+      },
+      attribution: {
+        title: "Vi\xF1oly/Mahler4 Amsterdam",
+        author: "Map Recall",
+        sourceUrl: "https://vinoly.com/works/mahler-4-office-tower/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free surveyed-footprint reconstruction with photo-guided sculptural stair recesses and aluminium fins; no third-party render mesh/photo pixels."
+      }
     }
   ];
 
@@ -16875,6 +16917,18 @@ Map source: ${osmUrl(places[i][0])}`);
       description: "Brouwerij \u2019t IJ began in 1985 when musician Kaspar Peterson turned the former Funen municipal bathhouse into a brewery. The bathhouse opened in 1911, providing showers for homes without bathrooms. The brewery and its tasting room occupy the separate brick bathhouse beside De Gooyer windmill; the mill itself remains a distinct historic building.",
       sourceUrl: "https://www.brouwerijhetij.nl/de-brouwerij",
       preferDescription: true
+    },
+    {
+      modelId: "vinoly",
+      name: "Vi\xF1oly",
+      description: "Vi\xF1oly is Rafael Vi\xF1oly Architects\u2019 2005 Mahler4 office tower in Zuidas. An exterior stair spirals through notches cut into its glass and aluminium facade, tying the offset podium, middle volume and tower into one composition. The planned public rooftop stair access was closed for safety before opening. Its podium contains independently serviced ground-floor retail and a glass-covered two-story patio.",
+      sourceUrl: "https://vinoly.com/works/mahler-4-office-tower/",
+      routeDestination: {
+        center: [
+          52.33768,
+          4.87262
+        ]
+      }
     }
   ];
 

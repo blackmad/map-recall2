@@ -1,0 +1,298 @@
+{
+  "modelId": "vinoly",
+  "checkedOn": "2026-10-07",
+  "scope": "source/installed identity proof; drawn-residency/visibility pending current runtime",
+  "source": {
+    "privatePath": "models/vinoly/raw/current-zuidas-osm-map.xml",
+    "sha256": "92dbf446a58474c937e9139942efc5b42c3180fadc37e1f1efc2089909889739",
+    "provenancePath": "models/vinoly/raw/current-zuidas-osm-map-provenance.json"
+  },
+  "tile": {
+    "path": "public/data/extracts/amsterdam/building-tiles/14/8413/5386.geojson.gz",
+    "sha256": "879276019cb3e6ed35ccb5d6992b0d8687171730d8905485bdfc307c3184bb13"
+  },
+  "retainedNeighbors": [
+    {
+      "role": "west Baker & McKenzie House",
+      "bag": "0363100012109184",
+      "osmOutline": "w37804729",
+      "installedId": "NL.IMBAG.Pand.0363100012109184",
+      "aliases": [
+        "NL.IMBAG.Pand.0363100012109184",
+        "w37804729"
+      ],
+      "installedFeature": {
+        "type": "Feature",
+        "properties": {
+          "id": "NL.IMBAG.Pand.0363100012109184",
+          "tier": 3,
+          "minHeight": 0,
+          "height": 29.63,
+          "roofShape": "flat"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.871227,
+                52.33753
+              ],
+              [
+                4.871336,
+                52.337544
+              ],
+              [
+                4.871391,
+                52.337551
+              ],
+              [
+                4.871374,
+                52.337604
+              ],
+              [
+                4.871355,
+                52.337602
+              ],
+              [
+                4.871368,
+                52.337641
+              ],
+              [
+                4.871426,
+                52.337634
+              ],
+              [
+                4.871507,
+                52.33788
+              ],
+              [
+                4.871333,
+                52.337874
+              ],
+              [
+                4.871334,
+                52.337858
+              ],
+              [
+                4.871245,
+                52.337855
+              ],
+              [
+                4.871243,
+                52.33787
+              ],
+              [
+                4.870911,
+                52.337857
+              ],
+              [
+                4.870912,
+                52.337842
+              ],
+              [
+                4.870823,
+                52.337839
+              ],
+              [
+                4.870821,
+                52.337854
+              ],
+              [
+                4.870646,
+                52.337847
+              ],
+              [
+                4.870794,
+                52.337578
+              ],
+              [
+                4.870833,
+                52.337586
+              ],
+              [
+                4.870858,
+                52.337539
+              ],
+              [
+                4.870839,
+                52.337536
+              ],
+              [
+                4.870858,
+                52.337483
+              ],
+              [
+                4.871039,
+                52.337506
+              ],
+              [
+                4.871022,
+                52.337559
+              ],
+              [
+                4.871012,
+                52.337558
+              ],
+              [
+                4.871008,
+                52.337597
+              ],
+              [
+                4.8712,
+                52.337604
+              ],
+              [
+                4.871202,
+                52.337582
+              ],
+              [
+                4.871191,
+                52.337581
+              ],
+              [
+                4.871209,
+                52.337528
+              ],
+              [
+                4.871227,
+                52.33753
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "role": "south across Claude Debussylaan",
+      "bag": "0363100012112073",
+      "osmOutline": "w277373193",
+      "buildingRelation": "r10402579",
+      "relationMembers": [
+        {
+          "type": "way",
+          "ref": "277373193",
+          "role": "outline"
+        },
+        {
+          "type": "way",
+          "ref": "754852672",
+          "role": "part"
+        },
+        {
+          "type": "way",
+          "ref": "754852671",
+          "role": "part"
+        },
+        {
+          "type": "way",
+          "ref": "754852670",
+          "role": "part"
+        },
+        {
+          "type": "way",
+          "ref": "754894015",
+          "role": "part"
+        }
+      ],
+      "installedId": "w754894015",
+      "aliases": [
+        "w754894015",
+        "w277373193",
+        "NL.IMBAG.Pand.0363100012112073",
+        "w754852672",
+        "w754852671",
+        "w754852670"
+      ],
+      "installedFeature": {
+        "type": "Feature",
+        "properties": {
+          "id": "w754894015",
+          "tier": 2,
+          "minHeight": 0,
+          "height": 26
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.8717843,
+                52.3374694
+              ],
+              [
+                4.8718574,
+                52.3368364
+              ],
+              [
+                4.8726985,
+                52.3368415
+              ],
+              [
+                4.8726752,
+                52.3370638
+              ],
+              [
+                4.8722206,
+                52.3370452
+              ],
+              [
+                4.8721868,
+                52.3373639
+              ],
+              [
+                4.8726446,
+                52.3373814
+              ],
+              [
+                4.8726286,
+                52.3375278
+              ],
+              [
+                4.8725606,
+                52.3375251
+              ],
+              [
+                4.8725617,
+                52.337514
+              ],
+              [
+                4.8723267,
+                52.3375044
+              ],
+              [
+                4.8723259,
+                52.3375125
+              ],
+              [
+                4.8721506,
+                52.3374983
+              ],
+              [
+                4.8721432,
+                52.3374795
+              ],
+              [
+                4.8720962,
+                52.3374845
+              ],
+              [
+                4.8721017,
+                52.3375053
+              ],
+              [
+                4.8721032,
+                52.3375109
+              ],
+              [
+                4.8717843,
+                52.3374694
+              ]
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "finding": "South BAG parent is absent as direct installed ID; the actual installed w754894015 is a part of the explicit relation whose outline carries this BAG parent. Retain actual part plus aliases, never substitute a different neighbor."
+}

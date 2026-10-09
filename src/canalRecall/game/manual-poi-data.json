@@ -1352,5 +1352,17 @@
     "description": "Brouwerij ’t IJ began in 1985 when musician Kaspar Peterson turned the former Funen municipal bathhouse into a brewery. The bathhouse opened in 1911, providing showers for homes without bathrooms. The brewery and its tasting room occupy the separate brick bathhouse beside De Gooyer windmill; the mill itself remains a distinct historic building.",
     "sourceUrl": "https://www.brouwerijhetij.nl/de-brouwerij",
     "preferDescription": true
+  },
+  {
+    "modelId": "vinoly",
+    "name": "Vi\u00f1oly",
+    "description": "Vi\u00f1oly is Rafael Vi\u00f1oly Architects\u2019 2005 Mahler4 office tower in Zuidas. An exterior stair spirals through notches cut into its glass and aluminium facade, tying the offset podium, middle volume and tower into one composition. The planned public rooftop stair access was closed for safety before opening. Its podium contains independently serviced ground-floor retail and a glass-covered two-story patio.",
+    "sourceUrl": "https://vinoly.com/works/mahler-4-office-tower/",
+    "routeDestination": {
+      "center": [
+        52.33768,
+        4.87262
+      ]
+    }
   }
 ]

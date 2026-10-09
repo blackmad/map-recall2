@@ -1,0 +1,38 @@
+{
+  "specPath": "/Users/blackmad/Code/map-recall2-vinoly-finish-oct7/scripts/landmarks/vinoly-spec.json",
+  "neighbors": [
+    [
+      "NL.IMBAG.Pand.0363100012109184",
+      "w37804729"
+    ],
+    [
+      "w754894015",
+      "w277373193",
+      "NL.IMBAG.Pand.0363100012112073",
+      "w754852672",
+      "w754852671",
+      "w754852670"
+    ]
+  ],
+  "sourceCamera": {
+    "from": [
+      4.87313,
+      52.33829
+    ],
+    "fromAltitude": 12,
+    "to": [
+      4.87215,
+      52.33778
+    ],
+    "toAltitude": 48
+  },
+  "oppositeBearing": 180,
+  "oppositeZoom": 18.2,
+  "sourceReadyChecks": [
+    "Current tile14/8413/5386 contains west BAG9184 and actual south part w754894015",
+    "Current asset SHAe25e62032c28211db0729dec875b2d783fe8a9d37a34e78d61ae729ed30cd7e1; require actual loaded runtime e25e62032c28211d",
+    "Physical pointer must open sourced genuine osm_building_27653949 card; preserve destination on routing failure",
+    "All six exact replaced aliases hidden only after load; west/south installed features must remain drawn",
+    "Concealed18m transit and glass-covered fourth/fifth-floor patio remain source gaps; no complete exterior-path/patio acceptance"
+  ]
+}

@@ -1,0 +1,24 @@
+/** Run only after root grants GPU ownership. Preserves shared harness unchanged. */
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {createHash} from 'node:crypto';
+import {spawnSync} from 'node:child_process';
+const expected='e25e62032c28211db0729dec875b2d783fe8a9d37a34e78d61ae729ed30cd7e1';
+const root=fileURLToPath(new URL('../..',import.meta.url));
+const model=path.join(root,'public/canal-drive/models/vinoly.glb');
+const digest=()=>createHash('sha256').update(fs.readFileSync(model)).digest('hex');
+assert.equal(digest(),expected,'frozen comparison mesh differs from prepared source review');
+const plan=process.argv[2];assert.ok(plan,'Supply one absolute native plan path');
+const spec=JSON.parse(fs.readFileSync(JSON.parse(fs.readFileSync(plan,'utf8')).specPath,'utf8'));
+assert.equal(spec.id,'vinoly');
+const shared=process.env.LANDMARK_REVIEW_HARNESS || '/Users/blackmad/Code/map-recall2/scripts/landmarks/review-manual-pois.mjs';
+const run=spawnSync(process.execPath,[shared,plan],{stdio:'inherit',env:process.env});
+if(run.error)throw run.error;
+assert.equal(digest(),expected,'frozen mesh changed during review');
+assert.equal(run.status,0,'shared native review failed; preserve its evidence');
+const proof=JSON.parse(fs.readFileSync('artifacts/vinoly-review/placement-proof.json','utf8'));
+assert.equal(proof.assetVersion,expected.slice(0,16),'game loaded a different mesh fingerprint');
+fs.writeFileSync('frozen-comparison-proof.json',JSON.stringify({modelSha256:expected,gameFingerprint:proof.assetVersion,sourceCommit:'fa73c85693429a169df717b11b6b5cbb9cd97507',sourcePath:'models/vinoly/raw/',visualAcceptance:'pending root and independent source/render inspection'},null,2)+'\n');
+console.log('Viñoly frozen mesh and game fingerprint agree; visual inspection still required.');

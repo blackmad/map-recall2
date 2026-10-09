@@ -1,0 +1,150 @@
+{
+  "modelId": "vinoly",
+  "status": "current-e25-source-and-game-evidence-complete-bounded-independent-review-root-release-pending",
+  "draftSha256": "e25e62032c28211db0729dec875b2d783fe8a9d37a34e78d61ae729ed30cd7e1",
+  "triangles": 22942,
+  "bytes": 322440,
+  "geometryChecks": {
+    "command": "node --import tsx scripts/check-vinoly-geometry.ts public/canal-drive/models/vinoly.glb",
+    "passedOn": "2026-10-07",
+    "exposedPaneRays": 36,
+    "recessRays": 5,
+    "concreteFlightSupportRays": 50,
+    "concreteCornerLandingSupportRays": 8,
+    "joinedNativeCorners": 8,
+    "upwardMainRoofTriangles": 4,
+    "finiteNativeBounds": true
+  },
+  "cpuComparison": {
+    "images": [
+      "artifacts/landmark-offline-preview/vinoly-cpu-front.png",
+      "artifacts/landmark-offline-preview/vinoly-cpu-opposite.png"
+    ],
+    "references": [
+      "../map-recall2-source-data/models/vinoly/raw/front.jpg",
+      "../map-recall2-source-data/models/vinoly/raw/side.jpg",
+      "../map-recall2-source-data/models/vinoly/raw/current-context.jpg",
+      "../map-recall2-source-data/models/vinoly/raw/current-front.jpg"
+    ],
+    "findings": [
+      "Unequal podium/middle/crown footprint steps and west tower/east podium native relationship preserved.",
+      "Two tower diagonal bands are actual2.3m recesses with dark backing, stairs and rail; continuous vertical fins are clipped at opening.",
+      "Source main crown91m and small supported roof plant preserved; facade provider110m not applied."
+    ],
+    "limitations": [
+      "No city context/GPU camera accepted.",
+      "Spiral endpoint levels and podium breach are approximate photo-guided; require independent failure-seeking comparison.",
+      "Source-defined glass-covered fourth/fifth-floor patio not inserted without geographic match; underreview."
+    ]
+  },
+  "preservedFailure": {
+    "file": "artifacts/landmark-next-batch/vinoly-overbudget-53956.glb",
+    "triangles": 53956,
+    "bytes": 752480,
+    "reason": "Per-bay floor bars exceededbudget; consolidated same visible floor rhythm."
+  },
+  "pending": [
+    "root final actual-source/native visual acceptance",
+    "root integration into current publish tree and route smoke/release",
+    "concealed approximately18m terrace transit/glass-covered patio remain unlocated; no complete exterior-path/patio acceptance"
+  ],
+  "spiralRepair": {
+    "date": "2026-10-06",
+    "failedEvidencePreserved": "artifacts/landmark-continuation-20261006/vinoly-independent-review/review.json and vinoly-current-gallery/",
+    "change": "Replace repeated reversing corner waves with source-traced ordered podium\u2192middle and upper-visible flights, including flat notch-return landings. Podium26.19 now meets lower tower26.19; source-visible middle ascent reaches46 and62.2. North upper remainsNE76.5\u2192NW89.3 as current-context photo.",
+    "geometryCheck": "Actual decoded concrete floor support at5 fractions of every flight; adjacent flight native corner/elevation joins; existing pane/recess/roof/budget checks retained.",
+    "sourceComparison": "Viewed original sketch/front/side/current-context/current-front files; current archive closure is private commit fa73c85693429a169df717b11b6b5cbb9cd97507. Lower north direction and upper north opposite rise direction preserved. Concealed/oblique endpoints are approximate; no drawings establish exact rear terrace link.",
+    "unresolved": "Same-height lowerNE62.2\u2192upperSE62.2 terrace transit is unmodeled because a matched roof plan/walkable alignment is absent. No claimed complete continuous exterior path or patio/open-space acceptance.",
+    "acceptance": "Current selective export and decoded geometry passed; current GPU/native/card/neighbor/performance acceptance pending.",
+    "authoredChecks": {
+      "command": "node --import tsx scripts/check-vinoly-geometry.ts --authored",
+      "triangles": 22942,
+      "exposedPaneRays": 36,
+      "recessRays": 5,
+      "concreteFlightSupportRays": 50,
+      "concreteCornerLandingSupportRays": 8,
+      "joinedNativeCorners": 8,
+      "upwardRoofFaces": 4
+    },
+    "priorRoofCapFailure": {
+      "triangles": 19372,
+      "bytes": 282084,
+      "finding": "Installed intermediate repair still sealed the last podium landing with slate26.191; preserved by root before roofcut/explicit corner landings."
+    }
+  },
+  "historicalGalleryEvidence": {
+    "sha256": "1004d3b7389f91af7d8f37c1a6904ede506e2d0ca2808a833ebd6c036aa38738",
+    "independentVerdict": "visible-flight-and-massing-recognition-pass-full-acceptance-pending",
+    "path": "artifacts/landmark-continuation-20261006/vinoly-independent-review/post-repair-review.json",
+    "hashEquality": false,
+    "limitation": "Historical gallery export differs from current clean-base selective export; fresh current GPU review required."
+  },
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "fa73c85693429a169df717b11b6b5cbb9cd97507",
+    "modelPath": "models/vinoly/",
+    "checkpointPath": "models/vinoly/validation/draft-cpu-only-20261007/checkpoint.json",
+    "scope": "Raw-source closure plus CPU-only current draft; no GPU acceptance"
+  },
+  "runtimeReview": {
+    "date": "2026-10-07",
+    "sha256": "e25e62032c28211db0729dec875b2d783fe8a9d37a34e78d61ae729ed30cd7e1",
+    "fingerprint": "e25e62032c28211d",
+    "evidenceRoot": "artifacts/vinoly-release-review-20261007/",
+    "sourceCommit": "fa73c85693429a169df717b11b6b5cbb9cd97507",
+    "gallery": [
+      "fulltower/artifacts/vinoly-review/gallery.png",
+      "fulltower/artifacts/vinoly-review/gallery-angle-0.png",
+      "fulltower/artifacts/vinoly-review/gallery-angle-1.png",
+      "fulltower/artifacts/vinoly-review/gallery-angle-2.png",
+      "fulltower/artifacts/vinoly-review/gallery-angle-3.png"
+    ],
+    "usefulNativeViews": [
+      "wide/artifacts/vinoly-review/neutral-front.png",
+      "runtime/desktop/south-opposite.png",
+      "runtime/desktop/south-frontage.png",
+      "runtime-followup/street-eye-south-doors.png"
+    ],
+    "chosenRoutePinPhysicalCard": [
+      "wide/artifacts/vinoly-review/placement-proof.json",
+      "wide/artifacts/vinoly-review/physical-card-proof.json",
+      "wide/frozen-comparison-proof.json"
+    ],
+    "fallback": "runtime-followup/actual-network-failure-proof.json",
+    "disabledVertexMasks": "runtime/desktop/proof.json",
+    "independentPyramidalScope": "All six replaced aliases removed/restored in renderer hidden-ID set; no target independent pyramid entries exist in installed Vi\u00f1oly scene, so no visible target cone restoration claim.",
+    "retainedNeighbors": [
+      "NL.IMBAG.Pand.0363100012109184/w37804729",
+      "w754894015 (source relation r10402579 links BAG0363100012112073)"
+    ],
+    "stationaryTouchProof": "runtime-followup/touch-stationary/proof.json",
+    "stationaryTouchScope": "Actual paused state6, actual camera.pan/update and game draw/sync; exact rider coordinates unchanged; pause overlay hidden only; no per-frame coordinate writes.",
+    "desktopPanScope": "Actual gameplay pan and retained textured ordinary frontages/doors; original unpaused rider drift 0.001097 world units within driver0.01 tolerance, not an exact stationary assertion.",
+    "performance": "runtime-followup/report.json viOnlyComparison: four90-frame samples;29 other signature entries invariant; current Vi replacement versus restored ordinary fallback; median16.7ms andp95~16.8ms both. Scene/VSync-limited comparison, not standalone model GPU timing.",
+    "streetEyeScope": "Requested1.8m public Claude Debussylaan eye, actualpitch87.96 andzoom22; transient diagnostic maxPitch89; doors exposed without foreground neighbor. Zoom max clamp means pose approximate, not calibrated photograph match or default gameplay camera setting.",
+    "independentReview": "docs/landmarks/vinoly-independent-current-e25e6203-20261007.md",
+    "terminal": "Shared fulltower/wide/near native wrappers and affected followup exit0/browser closed; first runtime exit1/browserclosed preserved."
+  },
+  "preservedCurrentFailures": [
+    {
+      "path": "fulltower/artifacts/vinoly-review/neutral-front.png",
+      "finding": "Initial native framing cropped crown/podium; wider capture repairs it."
+    },
+    {
+      "path": "near-facade/artifacts/vinoly-review/neutral-front.png",
+      "finding": "Roof-dominated view did not establish street notch/doors; later south/eye-level captures repair coverage."
+    },
+    {
+      "path": "wide/artifacts/vinoly-review/live-rear.png",
+      "finding": "Plan oppositeBearing180 was nearly same north viewing side; real bearing22 south view repairs coverage."
+    },
+    {
+      "path": "runtime/desktop/original-camera-clamp.json",
+      "finding": "Original requested112.35-degree upward camera clamps to60-degree default max."
+    },
+    {
+      "path": "runtime/report.json",
+      "finding": "Unpaused touch rider moved during camera pan; script exit1. Exact paused followup passes and original failure remains."
+    }
+  ]
+}

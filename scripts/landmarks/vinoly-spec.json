@@ -1,0 +1,42 @@
+{
+  "id": "vinoly",
+  "name": "Vi\u00f1oly",
+  "landmarkId": "osm_building_27653949",
+  "modelUrl": "./models/vinoly.glb",
+  "suppressOsmIds": [
+    "w27653949",
+    "w754894011",
+    "w754894012",
+    "w754894013",
+    "w754894014",
+    "NL.IMBAG.Pand.0363100012107681"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.872403,
+      52.337767
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 91,
+    "widthMetres": 34
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.872403,
+      52.337767
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Native WGS84 OSM part rings checked against BAG0363100012107681, metre east/south axes, scale1; broad91.29NAP crown rebase0.333NAP. Exact identities only."
+  },
+  "attribution": {
+    "title": "Vi\u00f1oly/Mahler4 Amsterdam",
+    "author": "Map Recall",
+    "sourceUrl": "https://vinoly.com/works/mahler-4-office-tower/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free surveyed-footprint reconstruction with photo-guided sculptural stair recesses and aluminium fins; no third-party render mesh/photo pixels."
+  }
+}
