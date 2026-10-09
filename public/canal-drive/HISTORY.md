@@ -1,5 +1,20 @@
 # Canal Recall — what is built
 
+## Street chunks pilot: no-go as a performance change (2026-10-10)
+
+`src/canalRecall/streetChunks/` compiles one mesh per block face (15 of the
+19 Bilderdijkstraat recipe houses → 4 chunks), one street level, eaves within
+0.25 m snapped to one cornice, party walls trimmed where a neighbour covers
+them, per-pand BAG id/address/triangle ranges in glTF extras so hover and
+suppression still resolve each pand. Measured: triangles 27,581 → 27,570
+(party walls are 2 tris per quad), draw calls 121 → 58, GLB requests
+13 → 4, layer CPU 0.57 → 0.42 ms per frame (Mac, iPhone emulation similar);
+frame time unchanged (vsync-capped). Renders match the individual houses
+except storeys shifted ≤0.4 m by re-grounding. Kept opt-in behind
+`?streetChunks=1` (`ordinary-buildings-data/chunks.json`); the visual win
+(continuous ground and cornice line) does not need chunking. Unmeasured on a
+real phone GPU.
+
 ## Facade comparison gate; Thomaskerk and Vrijburg; queue triage (2026-10-10)
 
 Het Pakhuis passed review with scattered windows on a front the photo shows

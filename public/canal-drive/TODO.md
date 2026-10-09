@@ -178,8 +178,9 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   ambiguous; quoins, full-frame and dutch awnings have no house yet.
 - **Recipe houses next**: shop-sign lettering, patterned banding,
   per-house brick variation; fix `check-host-opening-availability` mock
-  (needs `SharedAssetCache`); then pilot street chunks (one mesh per block
-  face, party walls omitted) on Bilderdijkstraat.
+  (needs `SharedAssetCache`); street chunks are piloted (opt-in `?streetChunks=1`, see HISTORY); next
+  apply the shared ground line + eaves snap to the per-house path and re-run
+  the fidelity gates on shifted facts.
 - **Large-tier follow-ups** (`src/canalRecall/largeBuildingTier.ts`,
   ranked list via `npm run audit:large-tier`): untuned buildings show a
   uniform window grid; tune next Roeterseiland/LLC, VU, Benno Premselahuis,

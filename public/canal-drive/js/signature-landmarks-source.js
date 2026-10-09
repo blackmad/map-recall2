@@ -82,6 +82,38 @@ export class SignatureLandmarks {
     this.activeLandmarkId = null;
     this.layer = this._makeLayer();
     map.addLayer(this.layer);
+    this._loadStreetChunks();
+  }
+
+  /**
+   * `?streetChunks=1`: draw each block face as ONE chunk model (one mesh,
+   * per-pand ranges in glTF extras; see streetChunks/manifest.ts) instead of its
+   * houses. The houses a chunk replaces leave the model list, and any already
+   * drawn are dropped, so nothing is drawn twice. No flag or no manifest: no change.
+   */
+  _loadStreetChunks() {
+    const { streetChunksEnabled, applyStreetChunks } = window.CanalRecallSignatureLandmarks;
+    if (!streetChunksEnabled?.(window.location.search)) return;
+    fetch(new URL('./ordinary-buildings-data/chunks.json', window.location.href), { cache: 'no-cache' })
+      .then(response => response.ok ? response.json() : Promise.reject(new Error(`chunks.json ${response.status}`)))
+      .then(manifest => {
+        if (this._removed) return;
+        const { models, replaced } = applyStreetChunks(this.models, manifest);
+        this.models = models;
+        this._dropEntries(replaced);
+        this._requestModels();
+      })
+      .catch(error => console.warn('Street chunks unavailable; keeping per-house models.', error));
+  }
+
+  /** Remove drawn models by spec id, freeing their resources and giving back their extrusions. */
+  _dropEntries(ids) {
+    const dropped = (this._entries || []).filter(entry => ids.has(entry.spec.id));
+    if (!dropped.length) return;
+    this._entries = this._entries.filter(entry => !ids.has(entry.spec.id));
+    for (const entry of dropped) { this.shown.delete(entry.spec.id); this._disposeModel(entry.group, entry.spec, entry.url); }
+    this._applySuppression();
+    this.map.triggerRepaint();
   }
 
   /**
@@ -122,10 +154,13 @@ export class SignatureLandmarks {
       if (!hit) continue;
       const depth = hit.point.clone().applyMatrix4(entry.pickProjection).z;
       if (depth < -1 || depth > 1 || result && depth >= result.depth) continue;
-      result = { id: entry.spec.suppressOsmIds?.[0] || entry.spec.landmarkId,
-        landmarkId: entry.spec.landmarkId, name: entry.spec.name,
+      // A street chunk is one mesh for several panden: the face under the cursor says which one.
+      const pand = entry.spec.chunkPands?.[window.CanalRecallSignatureLandmarks.pandIndexForFace(hit.object.geometry?.userData?.pandRanges, hit.faceIndex)];
+      result = { id: pand?.buildingId || entry.spec.suppressOsmIds?.[0] || entry.spec.landmarkId,
+        landmarkId: entry.spec.landmarkId, name: pand?.address || entry.spec.name,
         lngLat: entry.placement.anchor, depth, featureTarget: null,
-        ...(entry.spec.buildingFootprint ? { footprint: entry.spec.buildingFootprint, height: entry.spec.heightMetres } : {}) };
+        ...(pand?.footprint ? { footprint: { type: 'Polygon', coordinates: pand.footprint }, height: entry.spec.heightMetres }
+          : entry.spec.buildingFootprint ? { footprint: entry.spec.buildingFootprint, height: entry.spec.heightMetres } : {}) };
     }
     return result;
   }
@@ -317,6 +352,8 @@ export class SignatureLandmarks {
           this._disposeModel(gltf.scene, spec, url);
           return;
         }
+        // Replaced by a street chunk while it was loading.
+        if (!this.models.includes(spec)) { this._disposeModel(gltf.scene, spec, url); finish(); return; }
         try { this._add(this._lightScene, spec, gltf.scene, this.map, url); }
         catch (error) {
           this._failed.add(spec.id);
