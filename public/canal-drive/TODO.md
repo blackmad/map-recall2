@@ -133,6 +133,16 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 - **Destination memory follow-ups**: recent destinations are per device
   (localStorage) — sync them with the signed-in recall store; confirm the
   review-ride repeat with a real due backlog (only the filter is tested).
+- **Renderer: give three.js the frame** (`docs/research/own-renderer-spike-20261009.md`,
+  `renderer-spike.html`): spike shows lighting is the visible gap — shadows,
+  sky, fog, tone mapping, sunken water — at ~2.6 ms CPU per throttled phone
+  frame vs 7.1 ms for MapLibre's render. Phase 1 (days, reversible): merge
+  the ~dozen three.js layers into one shared lit frame with shadows inside
+  MapLibre. Phase 2–3 (4–6 weeks, flagged, after a real-iPhone GPU test):
+  three.js owns ground, overlays, labels and camera; MapLibre only for
+  minimap/overview, dropping the live OpenFreeMap dependency. Gaps: no road
+  widths/sidewalks in our extracts (centrelines only), humped bridges render
+  as grey slabs, no route line/labels/HUD in the spike.
 - **Large-tier follow-ups** (`src/canalRecall/largeBuildingTier.ts`,
   ranked list via `npm run audit:large-tier`): untuned buildings show a
   uniform window grid; tune next Roeterseiland/LLC, VU, Benno Premselahuis,
