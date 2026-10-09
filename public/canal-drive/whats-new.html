@@ -380,14 +380,19 @@ function wipLabel(status) {
   return status.replace(/-/g, ' ');
 }
 async function init() {
-  const [dates, sig, ord, queueJson] = await Promise.all([
-    fetchJson('./models/model-dates.json'), fetchJson('./models/signature-landmarks.json'),
+  const [dates, firstAddedJson, sig, ord, queueJson] = await Promise.all([
+    fetchJson('./models/model-dates.json'), fetchJson('./models/model-first-added.json').catch(() => ({ models: {} })),
+    fetchJson('./models/signature-landmarks.json'),
     fetchJson('./ordinary-buildings-data/catalogue.json'), fetchJson('./poi-work-queue.json').catch(() => ({ tasks: [] })),
   ]);
   const dm = dates.models || {};
+  // First install date (scripts/build-model-first-added.ts); model-dates only
+  // records the latest re-export, which every rebuild touches.
+  const firstAdded = firstAddedJson.models || {};
+  const installed = url => url ? firstAdded[url.replace(/^\.\//, '').split('?')[0]] : undefined;
   const items = [];
   for (const [id, m] of Object.entries(sig.models || {})) {
-    const iso = dm[id]?.updatedAt, anchor = m.placement?.anchor;
+    const iso = installed(m.modelUrl) || dm[id]?.updatedAt, anchor = m.placement?.anchor;
     items.push({
       id, kind: m.landmarkId ? 'landmark' : 'ordinary', name: m.name || id, modelUrl: m.modelUrl, version: dm[id]?.version,
       triangles: m.triangles || 0, date: iso && Number.isFinite(Date.parse(iso)) ? new Date(iso) : null,
@@ -396,7 +401,7 @@ async function init() {
     });
   }
   for (const m of ord.models || []) {
-    const iso = m.updatedAt || dm[m.id]?.updatedAt || m.sourceTiming?.recipeCompletedAt;
+    const iso = installed(m.modelUrl) || m.updatedAt || dm[m.id]?.updatedAt || m.sourceTiming?.recipeCompletedAt;
     items.push({
       id: m.id, kind: 'ordinary', name: m.name || m.id, modelUrl: m.modelUrl, version: m.hash ? m.hash.slice(0, 16) : undefined,
       triangles: m.triangles || 0, date: iso && Number.isFinite(Date.parse(iso)) ? new Date(iso) : null,

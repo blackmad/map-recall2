@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "build:model-first-added": "node --import tsx scripts/build-model-first-added.ts",
     "build:building-overview": "node --import tsx scripts/build-building-overview.ts",
     "test:city-startup": "node --import tsx --test src/canalRecall/viewResidency.test.ts src/canalRecall/roadSetupAsync.test.ts src/canalRecall/chunkBuildQueue.test.ts src/canalRecall/osm/roadSnapIndex.test.ts src/canalRecall/routing/roadGraphAsync.test.ts && node --import tsx scripts/check-building-look-transition.ts && node --import tsx scripts/check-road-setup-adapter.ts",
     "test:building-context": "node --import tsx --test src/canalRecall/buildingContextIndex.test.ts",
