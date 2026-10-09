@@ -1,0 +1,7 @@
+{
+  "id": "zuiderkerk",
+  "facades": [
+    {"name": "east (long side, tower behind)", "bearing": 117.5, "photo": "artifacts/landmark-lanes/zuiderkerk/ref-east.jpg"},
+    {"name": "south (tower front)", "bearing": 207.5, "photo": "artifacts/landmark-lanes/zuiderkerk/ref-south.jpg"}
+  ]
+}

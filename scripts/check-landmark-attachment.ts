@@ -9,6 +9,7 @@ import {measureAttachment} from './landmarks/attachment';
 import {buildClubPanama} from './landmarks/club-panama-builder';
 import {buildCompagnietheater} from './landmarks/compagnietheater-builder';
 import {buildNassaukerk} from './landmarks/nassaukerk-builder';
+import {buildZuiderkerk} from './landmarks/zuiderkerk-builder';
 import {buildWestIndiaHouse} from './landmarks/west-india-house-builder';
 
 const cases: Record<string, {build: (w: number, d: number, b: never) => void; ring: () => number[][]; top: () => number; topSlack: number}> = {
@@ -16,6 +17,7 @@ const cases: Record<string, {build: (w: number, d: number, b: never) => void; ri
   'compagnietheater': {build: buildCompagnietheater, ring: () => JSON.parse(fs.readFileSync('scripts/landmarks/compagnietheater-footprints.json', 'utf8')).ring[0], top: () => Math.max(...JSON.parse(fs.readFileSync('scripts/landmarks/compagnietheater-footprints.json', 'utf8')).roofs.flatMap((r: any) => r.rings.flat().map((p: number[]) => p[1]))), topSlack: 1.0},
   'west-india-house': {build: buildWestIndiaHouse, ring: () => JSON.parse(fs.readFileSync('scripts/landmarks/west-india-house-footprints.json', 'utf8')).ring[0], top: () => Math.max(...JSON.parse(fs.readFileSync('scripts/landmarks/west-india-house-footprints.json', 'utf8')).roofs.flatMap((r: any) => r.rings.flat().map((p: number[]) => p[1]))), topSlack: 1.0},
   'nassaukerk': {build: buildNassaukerk, ring: () => JSON.parse(fs.readFileSync('scripts/landmarks/nassaukerk-footprints.json', 'utf8')).nativeRing, top: () => Math.max(...JSON.parse(fs.readFileSync('scripts/landmarks/nassaukerk-footprints.json', 'utf8')).surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))), topSlack: 1.0},
+  'zuiderkerk': {build: buildZuiderkerk, ring: () => JSON.parse(fs.readFileSync('scripts/landmarks/zuiderkerk-footprints.json', 'utf8')).nativeRing, top: () => Math.max(...JSON.parse(fs.readFileSync('scripts/landmarks/zuiderkerk-footprints.json', 'utf8')).surfaces.flatMap((s: any) => s.rings.flat().map((v: number[]) => v[1]))), topSlack: 7.0},
 };
 const ids = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(cases);
 for (const id of ids) {
@@ -41,7 +43,7 @@ for (const id of ids) {
   const m = 1.0;
   assert(bounds.min.x >= Math.min(...xs) - m && bounds.max.x <= Math.max(...xs) + m && bounds.min.z >= Math.min(...zs) - m && bounds.max.z <= Math.max(...zs) + m, `${id}: parts outside footprint +${m} m`);
   const r = measureAttachment(gs.slice(0, shellCount), gs.slice(shellCount), Number(process.env.TOL ?? 0.05));
-  console.log(JSON.stringify({id, triangles: tris, details: r.parts, maxGapCm: +(r.max * 100).toFixed(2), height: +bounds.max.y.toFixed(2), worst: r.worst.slice(0, 8)}));
+  console.log(JSON.stringify({id, triangles: tris, details: r.parts, maxGapCm: +(r.max * 100).toFixed(2), height: +bounds.max.y.toFixed(2), worst: r.worst.slice(0, Number(process.env.WORST ?? 8))}));
   assert(r.max <= 0.05, `${id}: ${r.worst.length} floating detail part(s), max gap ${(r.max * 100).toFixed(1)} cm`);
   const glb = `public/canal-drive/models/${id}.glb`;
   assert(fs.existsSync(glb), `${id}: GLB missing`);

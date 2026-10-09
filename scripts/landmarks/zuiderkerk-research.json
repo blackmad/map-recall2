@@ -1,0 +1,27 @@
+{
+  "id": "zuiderkerk",
+  "retrieved": "2026-10-10",
+  "identity": {
+    "poi": "extract_landmarks_684653190 (Zuiderkerk); the separate backlog POI 'Zuiderkerk Tower' (extract_landmarks_1713342225) is the same BAG pand",
+    "bagPand": "NL.IMBAG.Pand.0363100012171559 (church and tower are one pand, bouwjaar 1611)",
+    "source": "PDOK BAG OGC API pand bbox query; 3DBAG item https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012171559"
+  },
+  "sources": [
+    {"url": "https://nl.wikipedia.org/wiki/Zuiderkerk_(Amsterdam)", "informs": "history, dates 1603-1611 church, tower 1614, upper tower dark grey since 2017 restoration", "licence": "CC BY-SA 4.0"},
+    {"url": "https://commons.wikimedia.org/wiki/File:Zuiderkerk_c%C3%B4t%C3%A9.jpg", "file": "artifacts/landmark-lanes/zuiderkerk/ref.jpg (also ref-east.jpg)", "informs": "east long side: window rhythm, aisle roof, dwarshuis gables, tower stages (identified as the SE side: tower stands at the left end)", "licence": "see Commons file page"},
+    {"url": "https://commons.wikimedia.org/wiki/File:2024_Zuiderkerk_tower_gf205.jpg", "file": "artifacts/landmark-lanes/zuiderkerk/ref-south.jpg", "informs": "tower from the south: stage widths, clock stage, onion dome, crown, vane", "licence": "CC BY-NC-SA 4.0 (Gillfoto)"},
+    {"url": "https://commons.wikimedia.org/wiki/File:Gezicht_op_de_Zuiderkerk_in_Amsterdam,_gezien_vanaf_de_Groenburgwal,_RP-F-F19537.jpg", "file": "artifacts/landmark-lanes/zuiderkerk/ref-tower-print.jpg", "informs": "frontal c.1900 view: stage heights and widths measured in pixels against the 10.4 m cornice", "licence": "Rijksmuseum, public domain"},
+    {"url": "https://commons.wikimedia.org/wiki/File:Amsterdam,_the_tower_of_the_Zuiderkerk.jpg", "file": "artifacts/landmark-lanes/zuiderkerk/Amsterdam__the_tower_of_the_Zuiderkerk.jpg", "informs": "stage 1/clock stage detail, corner columns, dials, balustrade", "licence": "see Commons file page"},
+    {"url": "https://commons.wikimedia.org/wiki/File:Zuiderkerk-Bell_tower-Amsterdam.jpg", "file": "artifacts/landmark-lanes/zuiderkerk/Zuiderkerk-Bell_tower-Amsterdam.jpg", "informs": "belfry arches, vases with gilt finials, octagonal balustrade", "licence": "see Commons file page"}
+  ],
+  "measured": {
+    "tower": "9.5 m square shaft rotated 26.3 degrees, brick to 30.2 m (3DBAG flat top); stage 1 cream 30.8-38.5, clock stage 39.4-43.4, lead octagon 43.8-47.1, balustrade, belfry 48.5-55, onion dome 55.9, crown, needle; top about 66 m in the model. Photos give about 66-70 m; the 3DBAG lidar top (dome) is 60.5 m. A figure near 80 m is often quoted but is not supported by the photographs.",
+    "stairTurret": "3DBAG walls show a 3.2 m stair turret on the north face of the shaft, to 30.2 m",
+    "nave": "3DBAG ridge 24.6 m, aisle eaves about 10.4 m"
+  },
+  "limitations": [
+    "east side photo shows about five window bays and a large pointed transept window; the 3DBAG shell yields four bays and no transept window (held as a limitation)",
+    "west side and north end have no reference photo (inferred)",
+    "in-game shot not representative: the running bundle still draws the old procedural kit until the integrator rebuilds bundles"
+  ]
+}
