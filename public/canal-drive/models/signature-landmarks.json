@@ -23654,18 +23654,16 @@
           ]
         ]
       },
-      "status": "held",
-      "heldReason": "Integrator 2026-10-10: gable corbel friezes, upper gable windows, rectangular steel windows, 3DBAG gable artefacts",
       "bounds": {
         "min": [
-          -110.59967041015625,
-          -2.0549771306832554e-7,
-          -52.456947326660156
+          -110.80618286132812,
+          -4.7683716530855236e-8,
+          -52.33192825317383
         ],
         "max": [
-          60.086212158203125,
-          19.382999420166016,
-          116.37409973144531
+          59.9356575012207,
+          19.270000457763672,
+          116.22157287597656
         ]
       },
       "placement": {
@@ -23679,15 +23677,14 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 170.68588256835938,
-        "heightMetres": 19.38299962566373,
-        "depthMetres": 168.83104705810547,
-        "depthCoverage": 1.9944600951932128
+        "widthMetres": 170.74184036254883,
+        "heightMetres": 19.27000050544739,
+        "depthMetres": 168.5535011291504,
+        "depthCoverage": 1.991181348247494
       },
-      "triangles": 29542,
-      "bytes": 365884,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "triangles": 29766,
+      "bytes": 376256,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

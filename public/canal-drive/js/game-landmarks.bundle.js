@@ -17375,9 +17375,7 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      },
-      status: "held",
-      heldReason: "Integrator 2026-10-10: gable corbel friezes, upper gable windows, rectangular steel windows, 3DBAG gable artefacts"
+      }
     }
   ];
 
