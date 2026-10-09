@@ -21,7 +21,7 @@
     }
   ],
   "counts": {
-    "manual-model": 244,
+    "manual-model": 243,
     "procedural-kit": 15,
     "pending": 126
   },
@@ -210,7 +210,8 @@
       "queueRank": 16,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "skip",
+      "taskNote": "Academy of arts; occupies rooms in buildings near Weesperplein, no own landmark building. BAG pand shared with Academie voor Theater en Dans."
     },
     {
       "id": "lm-extract_landmarks_1988238017",
@@ -457,7 +458,8 @@
       "queueRank": 35,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "December murders memorial near Plantage; memorial object, not a building."
     },
     {
       "id": "lm-extract_landmarks_1939633952",
@@ -535,7 +537,8 @@
       "queueRank": 41,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "skip",
+      "taskNote": "Film and Television Academy; school occupying rooms in an ordinary building."
     },
     {
       "id": "lm-extract_landmarks_1198118755",
@@ -847,7 +850,8 @@
       "queueRank": 65,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "skip",
+      "taskNote": "Academy of Architecture; school in ordinary building, no BAG pand matched at point."
     },
     {
       "id": "lm-extract_landmarks_889547307",
@@ -925,7 +929,8 @@
       "queueRank": 71,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "skip",
+      "taskNote": "Academy of Theatre and Dance; shares pand 0363100012185844 with AHK."
     },
     {
       "id": "lm-extract_landmarks_1386134518",
@@ -976,7 +981,8 @@
       "queueRank": 75,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "skip",
+      "taskNote": "De Ateliers studio complex; organisation in mixed-use building."
     },
     {
       "id": "lm-extract_landmarks_736156087",
@@ -1600,7 +1606,8 @@
       "queueRank": 123,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "area",
+      "taskNote": "Street (Warmoesstraat)."
     },
     {
       "id": "lm-extract_landmarks_1774408670",
@@ -1638,7 +1645,8 @@
       "queueRank": 126,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "area",
+      "taskNote": "Ambiguous quay name; treat as public place/quayside, not a building. Verify name."
     },
     {
       "id": "lm-extract_landmarks_366321397",
@@ -1741,7 +1749,8 @@
       "queueRank": 134,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Memorial stone (gedenksteen)."
     },
     {
       "id": "lm-extract_landmarks_154293883",
@@ -1805,7 +1814,8 @@
       "queueRank": 139,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "duplicate",
+      "taskNote": "Covered by installed model oost-indisch-huis. Covered by oost-indisch-huis (Oost-Indisch Huis and Bushuis); point is ~15 m from its footprint centre. BAG pand 0363100012165008 (bouwjaar 1606)."
     },
     {
       "id": "lm-extract_landmarks_760984505",
@@ -1947,7 +1957,8 @@
       "queueRank": 150,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Bevrijdingslinde: commemorative lime tree, memorial object."
     },
     {
       "id": "lm-extract_landmarks_665340356",
@@ -1998,7 +2009,8 @@
       "queueRank": 154,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "duplicate",
+      "taskNote": "Covered by installed model petrus-en-paulus-kerk. Same landmark as petrus-en-paulus-kerk (identical extract id)."
     },
     {
       "id": "lm-extract_landmarks_25099441",
@@ -2036,7 +2048,8 @@
       "queueRank": 157,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Nationaal Holocaust Namenmonument: memorial, not covered by national-holocaust-museum (different site)."
     },
     {
       "id": "lm-extract_landmarks_604950476",
@@ -2048,7 +2061,8 @@
       "queueRank": 158,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Schouwburg gateway (poort) fragment, memorial/monument element rather than a full building. Verify."
     },
     {
       "id": "lm-extract_landmarks_1606629595",
@@ -2086,7 +2100,8 @@
       "queueRank": 161,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "duplicate",
+      "taskNote": "Covered by installed model oudemanhuispoort. Same landmark as oudemanhuispoort (identical extract id)."
     },
     {
       "id": "lm-extract_landmarks_767085118",
@@ -2149,7 +2164,8 @@
       "queueRank": 166,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "duplicate",
+      "taskNote": "Covered by installed model maarten-lutherkerk. Same landmark as maarten-lutherkerk (identical extract id)."
     },
     {
       "id": "lm-extract_landmarks_1159979789",
@@ -2341,7 +2357,8 @@
       "queueRank": 181,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "duplicate",
+      "taskNote": "Covered by installed model koningskerk. Same landmark as koningskerk (identical extract id)."
     },
     {
       "id": "lm-extract_landmarks_529083075",
@@ -2366,7 +2383,8 @@
       "queueRank": 183,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Harbour crane Kraan 2868: preserved industrial object/monument, not a building."
     },
     {
       "id": "lm-extract_landmarks_1448080990",
@@ -2532,7 +2550,8 @@
       "queueRank": 196,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Memorial for 7 May 1945 Dam victims; memorial object. Not the same as national-monument-on-the-dam (checked by name, ~90 m apart). Verify."
     },
     {
       "id": "lm-extract_landmarks_2141455457",
@@ -2635,7 +2654,8 @@
       "queueRank": 204,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Plaque for Chet Baker."
     },
     {
       "id": "lm-extract_landmarks_1742509310",
@@ -4043,7 +4063,8 @@
       "queueRank": 309,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "duplicate",
+      "taskNote": "Covered by installed model compagnietheater. Same landmark as compagnietheater (identical extract id). BAG bouwjaar on that pand reads 1005, which is suspect."
     },
     {
       "id": "lm-extract_landmarks_257271103",
@@ -4092,7 +4113,8 @@
       "queueRank": 313,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "building"
+      "treatment": "skip",
+      "taskNote": "Library occupies part of an ordinary building (ground floor of a 2005 block); BAG triage 2026-10-10, not photo-checked."
     },
     {
       "id": "lm-extract_landmarks_1709488528",
@@ -4116,7 +4138,8 @@
       "queueRank": 315,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "building"
+      "treatment": "skip",
+      "taskNote": "Library occupies part of an ordinary building (2011 new-build block); BAG triage 2026-10-10, not photo-checked."
     },
     {
       "id": "lm-extract_landmarks_845955",
@@ -4128,7 +4151,8 @@
       "queueRank": 316,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "building"
+      "treatment": "skip",
+      "taskNote": "Library occupies part of an ordinary building (ground floor in a 2005 block); BAG triage 2026-10-10, not photo-checked."
     },
     {
       "id": "lm-extract_landmarks_149588563",
@@ -4140,7 +4164,8 @@
       "queueRank": 317,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "building"
+      "treatment": "skip",
+      "taskNote": "Library occupies part of an ordinary building (ordinary 1927 perimeter-block corner); BAG triage 2026-10-10, not photo-checked."
     },
     {
       "id": "lm-extract_landmarks_1660060322",
@@ -4152,7 +4177,8 @@
       "queueRank": 318,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "building"
+      "treatment": "skip",
+      "taskNote": "Library occupies part of an ordinary building (reading room inside a university canal complex); BAG triage 2026-10-10, not photo-checked."
     },
     {
       "id": "lm-extract_landmarks_2090706815",
@@ -4164,7 +4190,8 @@
       "queueRank": 319,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "building"
+      "treatment": "skip",
+      "taskNote": "Library occupies part of an ordinary building (1981 infill); BAG triage 2026-10-10, not photo-checked."
     },
     {
       "id": "lm-extract_landmarks_780437483",
@@ -4176,7 +4203,8 @@
       "queueRank": 320,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "building"
+      "treatment": "skip",
+      "taskNote": "Library occupies part of an ordinary building (ground-floor unit in small 1940 panden); BAG triage 2026-10-10, not photo-checked."
     },
     {
       "id": "lm-extract_landmarks_880030623",
@@ -4188,7 +4216,8 @@
       "queueRank": 321,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "building"
+      "treatment": "skip",
+      "taskNote": "Library occupies part of an ordinary building (ordinary 1916 block ground floor); BAG triage 2026-10-10, not photo-checked."
     },
     {
       "id": "lm-extract_landmarks_132707368",
@@ -4200,7 +4229,8 @@
       "queueRank": 322,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "building"
+      "treatment": "skip",
+      "taskNote": "Library occupies part of an ordinary building (small 1923 block unit); BAG triage 2026-10-10, not photo-checked."
     },
     {
       "id": "lm-extract_landmarks_862375982",
@@ -4212,7 +4242,8 @@
       "queueRank": 323,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "building"
+      "treatment": "skip",
+      "taskNote": "Library occupies part of an ordinary building (part of the 2018 Amstel campus complex); BAG triage 2026-10-10, not photo-checked."
     },
     {
       "id": "lm-extract_landmarks_1447049474",
@@ -4224,7 +4255,8 @@
       "queueRank": 324,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "duplicate",
+      "taskNote": "Covered by installed model wereldmuseum-amsterdam. Royal Tropical Institute is covered by wereldmuseum-amsterdam (KIT complex). Per user note."
     },
     {
       "id": "lm-extract_landmarks_994708838",
@@ -4260,7 +4292,8 @@
       "queueRank": 327,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "area",
+      "taskNote": "Vrijburg: multi-building complex/area, not a single building."
     },
     {
       "id": "lm-extract_landmarks_76787173",
@@ -4322,7 +4355,8 @@
       "queueRank": 332,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "skip",
+      "taskNote": "Rijksakademie: school occupying rooms in an existing building (pand 0363100012165748, 1865)."
     },
     {
       "id": "lm-extract_landmarks_718756081",
@@ -4372,7 +4406,8 @@
       "queueRank": 336,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Grenspaal: boundary marker monument."
     },
     {
       "id": "lm-extract_landmarks_1897367071",
@@ -4384,7 +4419,8 @@
       "queueRank": 337,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Anthony Winkler Prins: statue/sculpture."
     },
     {
       "id": "lm-extract_landmarks_634569928",
@@ -4457,7 +4493,8 @@
       "queueRank": 343,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "area",
+      "taskNote": "Westerwijk: neighbourhood/quarter."
     },
     {
       "id": "lm-extract_landmarks_1294795881",
@@ -4469,7 +4506,8 @@
       "queueRank": 344,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "duplicate",
+      "taskNote": "Covered by installed model hortus-greenhouses. Driekliman (three-climate) glasshouse is part of the Hortus greenhouse complex covered by hortus-greenhouses; ~70 m from that catalogue centre. Verify footprint covers it."
     },
     {
       "id": "lm-extract_landmarks_1627709377",
@@ -4507,7 +4545,8 @@
       "queueRank": 347,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "sculpture",
+      "taskNote": "Wind phone installation (Hoftuin); art installation."
     },
     {
       "id": "lm-extract_landmarks_369277545",
@@ -4555,7 +4594,8 @@
       "queueRank": 351,
       "origin": "POI Destinations",
       "status": "pending",
-      "treatment": "review"
+      "treatment": "duplicate",
+      "taskNote": "Covered by installed model westerkerk. Westertoren is the tower of westerkerk (Westerkerk / Westertoren). Pand 0363100012174221."
     },
     {
       "id": "lm-extract_landmarks_1299755268",
@@ -4896,22 +4936,11 @@
       "treatment": "building"
     },
     {
-      "id": "haparandaweg-902-950",
-      "name": "Het Pakhuis, Haparandaweg 902-950",
-      "lat": 52.3951,
-      "lng": 4.878,
-      "queueRank": 382,
-      "origin": "Landmark catalogue",
-      "status": "manual-model",
-      "modelId": "haparandaweg-902-950",
-      "treatment": "building"
-    },
-    {
       "id": "haparandaweg-746-786",
       "name": "Haparandaweg 746-786",
       "lat": 52.3947,
       "lng": 4.8775,
-      "queueRank": 383,
+      "queueRank": 382,
       "origin": "Landmark catalogue",
       "status": "manual-model",
       "modelId": "haparandaweg-746-786",
@@ -4922,7 +4951,7 @@
       "name": "Haparandaweg 870-900",
       "lat": 52.3948,
       "lng": 4.878,
-      "queueRank": 384,
+      "queueRank": 383,
       "origin": "Landmark catalogue",
       "status": "manual-model",
       "modelId": "haparandaweg-870-900",
@@ -4933,7 +4962,7 @@
       "name": "Haparandaweg 952-1002",
       "lat": 52.3952,
       "lng": 4.8786,
-      "queueRank": 385,
+      "queueRank": 384,
       "origin": "Landmark catalogue",
       "status": "manual-model",
       "modelId": "haparandaweg-952-1002",

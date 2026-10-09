@@ -16,6 +16,9 @@ export const CROWN_CAPS = ['flat', 'rounded', 'pediment'] as const;
 export const BASEMENTS = ['none', 'windows', 'stoop', 'stoop-and-windows'] as const;
 export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop'] as const;
 export const ROOF_MATERIALS = ['slate', 'black-tile', 'red-tile', 'bitumen', 'zinc', 'copper'] as const;
+export const WINDOW_SURROUNDS = ['none', 'stone-lintel', 'full-frame', 'keystone'] as const;
+export const QUOINS = ['none', 'stone'] as const;
+export const AWNING_STYLES = ['none', 'fabric-straight', 'fabric-dutch'] as const;
 export const SOURCE_KINDS = ['street-panorama', 'archive-photo', 'monument-record', 'human-review'] as const;
 
 /** Named swatches keep colour a classification; `#rrggbb` is accepted when a
@@ -71,7 +74,13 @@ export interface FrontIntent {
   archRings?: 'stone' | 'band' | 'none';
   hoist: boolean;
   shutters?: 'none' | 'ground' | 'all';
-  shopfront?: { colour: string; fascia: boolean };
+  shopfront?: { colour: string; fascia: boolean; awning?: ShopAwningIntent };
+  /** Stone dressing around the upper windows (colour: the palette's `stone`): a lintel slab, lintel + sill + jambs, or a keystone block over each head. Default none. */
+  windowSurround?: typeof WINDOW_SURROUNDS[number];
+  /** 0-based storeys carrying the surround; default every window storey above the shopfront. */
+  surroundStoreys?: number[];
+  /** Alternating long/short stone corner blocks up both edges of the front. Default none. */
+  quoins?: typeof QUOINS[number];
   /** Iron/stone balcony guards on upper-storey windows. `storeys` are 0-based (ground = 0, so >= 1); the window becomes a full-height French window. */
   balconies?: { storeys: number[]; bays: number[]; projecting?: boolean };
   /** Glazed bay windows (erkers): the windows of these upper storeys in `bay` become one projecting three-face bay each. */
@@ -83,6 +92,9 @@ export interface FrontIntent {
   /** Per-front palette when one owner has visibly different fronts. */
   palette?: Partial<PaletteIntent>;
 }
+
+/** Fabric awning over the shop glass: `extent` is the covered share of the front width, as fractions from the viewer's left (default the whole shop front). */
+export interface ShopAwningIntent { style: typeof AWNING_STYLES[number]; colour: string; extent?: { from: number; to: number } }
 
 /** `band`: a second brick colour for banding and relieving arches (lintel bands become brick stripes). */
 export interface PaletteIntent { brick: string; frame: string; door: string; shutters?: string; stone?: string; band?: string }
@@ -183,6 +195,15 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (f.repeat) { if (f.repeat.count !== 'fit') count(f.repeat.count, `${at}.repeat.count`, 1, 20); }
     if (f.share !== undefined && !(f.share > 0 && f.share <= 1)) problems.push(`${at}.share must be in (0,1]`);
     if (f.shopfront) colour(f.shopfront.colour, `${at}.shopfront.colour`);
+    if (f.windowSurround !== undefined) oneOf(f.windowSurround, WINDOW_SURROUNDS, `${at}.windowSurround`);
+    if (f.surroundStoreys !== undefined) { if (!Array.isArray(f.surroundStoreys)) problems.push(`${at}.surroundStoreys must be a list`); else f.surroundStoreys.forEach(v => count(v, `${at}.surroundStoreys`, 0, f.storeys - 1)); }
+    if (f.quoins !== undefined) oneOf(f.quoins, QUOINS, `${at}.quoins`);
+    const aw = f.shopfront?.awning;
+    if (aw) {
+      oneOf(aw.style, AWNING_STYLES, `${at}.shopfront.awning.style`);
+      colour(aw.colour, `${at}.shopfront.awning.colour`);
+      if (aw.extent && !(aw.extent.from >= 0 && aw.extent.to <= 1 && aw.extent.to - aw.extent.from >= 0.15)) problems.push(`${at}.shopfront.awning.extent: need 0 <= from < to <= 1 covering at least 0.15`);
+    } else if ((f as {awning?: unknown}).awning !== undefined) problems.push(`${at}.awning: awnings belong under shopfront.awning`);
     for (const [k, v] of Object.entries(f.palette ?? {})) colour(v, `${at}.palette.${k}`);
   }
   oneOf(intent?.roof?.material, ROOF_MATERIALS, 'roof.material');
