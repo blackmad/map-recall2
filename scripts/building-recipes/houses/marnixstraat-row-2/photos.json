@@ -1,0 +1,18 @@
+[
+ {
+  "front": "front0",
+  "panoId": "TMX7316010203-002996_pano_0011_000260",
+  "timestamp": "2023-03-13T11:33:28.374100Z",
+  "url": "https://t1.data.amsterdam.nl/panorama/2023/03/13/TMX7316010203-002996/pano_0011_000260/equirectangular/panorama_4000.jpg",
+  "cameraRD": [
+   120278.40855135178,
+   487647.6884798156
+  ],
+  "headingDeg": 291.3608846526171,
+  "fovDeg": 74.78968779622954,
+  "pitchDeg": 30.476988313550752,
+  "distanceM": 10.89874386158876,
+  "image": "artifacts/building-recipes/marnixstraat-row-2/photo-front0.jpg",
+  "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+ }
+]
