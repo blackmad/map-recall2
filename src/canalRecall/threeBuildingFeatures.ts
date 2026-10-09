@@ -69,14 +69,15 @@ function applyLargeTier(building: MeshBuilding, p: Record<string, unknown>, look
     building.style = system.layout;
     // A real shop in the building (shopfronts extract) keeps its shop windows; otherwise a ground floor of windows.
     const front = shopfrontOf(p);
-    const ground = front && front !== 'quiet' ? bayLayer(system.archetype, 0, front) : bayLayer(system.archetype, system.style, 'ground');
+    const shopCell = !system.tuned && front && front !== 'quiet' ? front : system.groundShop;
+    const ground = shopCell ? bayLayer(system.archetype, 0, shopCell) : bayLayer(system.archetype, system.style, 'ground');
     building.layers = { upper: bayLayer(system.archetype, system.style, 'upper'), ground, door: bayLayer(system.archetype, system.style, 'groundDoor') };
     building.plainLayer = bayLayer(system.archetype, system.style, 'plain');
     building.openings = bayVariantOpenings({ archetype: system.archetype, kind: 'upper', ...BAY_STYLES[system.archetype][system.style] }, bayLook);
     building.accentHex = paletteFor(id, system.archetype, bayLook).accent;
     building.wallHex = lookHex(wall, bayLook);
     // A darker plinth under the window grid (the shop paint keeps its own colour).
-    building.groundHex = front && front !== 'quiet' ? undefined : lookHex(plinthHex(wall), bayLook);
+    building.groundHex = shopCell ? undefined : lookHex(plinthHex(wall), bayLook);
   } else building.wallHex = wall;
   building.shop = false;
   building.layoutScale = { bay: system.bayM / nominal.bay, storey: system.storeyM / nominal.storey, ground: system.groundM / nominal.ground, doorEvery: 1000 };

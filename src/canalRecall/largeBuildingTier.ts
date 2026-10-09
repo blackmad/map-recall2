@@ -25,7 +25,35 @@
 // keeps that instead.
 
 import { facadeKey, facadeStyleFor, footprintAreaM2, snapWallColour, type FacadeStyle } from './genericFacades.js';
-import type { Archetype } from './bayTextures.js';
+import type { Archetype, ShopKind } from './bayTextures.js';
+
+/**
+ * Hand-tuned systems for the most visible large-tier buildings (audit ranking,
+ * scripts/large-tier/audit.ts), read off Gemeente Amsterdam panoramas (CC BY 4.0,
+ * `npm run pand-reference`) with BAG/3DBAG heights. Values are display choices
+ * from a photo, not measurements; `source` names the panorama.
+ */
+export type LargeTierOverride = {
+  name: string; source: string;
+  archetype?: Archetype; wallHex?: string; style?: number;
+  storeyM?: number; groundM?: number; parapetM?: number;
+  /** A glazed or shop ground floor drawn with this shop cell. */
+  groundShop?: ShopKind;
+};
+export const LARGE_TIER_OVERRIDES: Readonly<Record<string, LargeTierOverride>> = {
+  // Prinsengracht 267 (Westermarkt): dark brown brick, three punched windows a floor over a glazed ground floor.
+  'NL.IMBAG.Pand.0363100012169587': { name: 'Anne Frank House museum block', source: 'TMX7316010203-002045_pano_0001_002852 (2021-03-17)', archetype: 'modern', wallHex: '#4e3b34', style: 1, storeyM: 3.1, groundM: 4.4, parapetM: 0.6, groundShop: 'shopWindow' },
+  // Spuistraat/Singel: pale grey concrete bands with ribbon glazing, seven storeys over a colonnade.
+  'NL.IMBAG.Pand.0363100012165429': { name: 'UvA PC Hoofthuis', source: 'TMX7316010203-001054_pano_0000_001042 (2019-01-15)', archetype: 'modern', wallHex: '#a9a59b', style: 6, storeyM: 3.2, groundM: 4.2, parapetM: 0.8 },
+  // Keizersgracht: brown brick, white-framed sashes, a stone plinth and a central entrance; an attic of dormers above.
+  'NL.IMBAG.Pand.0363100012169023': { name: 'Nyenrode, Keizersgracht', source: 'TMX7316010203-001975_pano_0000_000186 (2021-01-22)', archetype: 'c19', wallHex: '#6e4a3e', style: 1, storeyM: 3.9, groundM: 4.3, parapetM: 1.6 },
+  // Kalverstraat/Singel: beige stone grid of punched windows over shop arcades.
+  'NL.IMBAG.Pand.0363100012165086': { name: 'Kalvertoren', source: 'TMX7316010203-001530_pano_0004_000014 (2019-12-20)', archetype: 'modern', wallHex: '#bfb3a0', style: 2, storeyM: 3.6, groundM: 5.0, parapetM: 1.0, groundShop: 'groundShop' },
+  // Spui 25 / Voetboogstraat: red brick with stone dressings and big glazed ground-floor windows.
+  'NL.IMBAG.Pand.0363100012167925': { name: 'UvA Spui 25', source: 'TMX7316010203-002538_pano_0000_001530 (2022-04-22)', archetype: 'c19', wallHex: '#8e4e3a', style: 7, storeyM: 4.0, groundM: 4.8, parapetM: 1.2, groundShop: 'shopWindow' },
+  // Singel/Handboogstraat: ochre-brown old brick with an arched entrance.
+  'NL.IMBAG.Pand.0363100012175031': { name: 'UvA, Singel / Handboogstraat', source: 'TMX7316060226-000019_pano_0000_003725 (2016-08-15)', archetype: 'c19', wallHex: '#8a6a4f', style: 9, storeyM: 4.2, groundM: 4.6, parapetM: 1.0 },
+};
 
 /** Why the decoration chain left a decorated feature without a facade (audit). */
 export function largeTierReason(p: Record<string, unknown>, geometry?: unknown): string {
@@ -60,9 +88,10 @@ export function largeTierProperties(p: Record<string, unknown>, wall: string, li
   const heightM = Number(p.height);
   if (!Number.isFinite(heightM) || heightM - (Number(p.minHeight) || 0) < 2.6) return p;
   const year = p.constructionYear != null && Number.isFinite(Number(p.constructionYear)) ? Number(p.constructionYear) : null;
-  const archetype = largeTierArchetype(year, listed, heightM);
+  const tuned = LARGE_TIER_OVERRIDES[String(p.id ?? '')];
+  const archetype = tuned?.archetype ?? largeTierArchetype(year, listed, heightM);
   const mapped = [p.sideColour, p.colour, p.color].find(v => typeof v === 'string' && HEX.test(v.trim())) as string | undefined;
-  const wallHex = mapped && p.appearanceStyleSource !== 'citywide-identity-palette-v3-not-measured' ? mapped.trim() : wall;
+  const wallHex = tuned?.wallHex ?? (mapped && p.appearanceStyleSource !== 'citywide-identity-palette-v3-not-measured' ? mapped.trim() : wall);
   const style = heightM >= 30 && archetype === 'modern' ? 'tower' : LARGE_TIER_LAYOUT[archetype];
   // A guessed flat-cap colour (terracotta, ochre) reads as a tiled roof on a 60 m slab: big flat
   // roofs are bitumen, gravel or zinc grey unless a source says otherwise.
@@ -96,6 +125,9 @@ export type LargeTierSystem = {
   storeyM: number; groundM: number; bayM: number;
   /** Plain band between the top window row and the roof. */
   parapetM: number;
+  groundShop?: ShopKind;
+  /** Hand-tuned from a photo: its ground floor wins over the shopfronts extract. */
+  tuned?: boolean;
 };
 
 /**
@@ -103,6 +135,12 @@ export type LargeTierSystem = {
  * post-war wall takes punched windows, and a tall one ribbon or curtain glazing.
  */
 export function largeTierSystem(id: string, archetype: Archetype, wallHex: string, heightM: number): LargeTierSystem {
+  const base = genericSystem(id, archetype, wallHex, heightM), tuned = LARGE_TIER_OVERRIDES[id];
+  if (!tuned) return base;
+  return { ...base, style: tuned.style ?? base.style, storeyM: tuned.storeyM ?? base.storeyM, groundM: tuned.groundM ?? base.groundM, parapetM: tuned.parapetM ?? base.parapetM, groundShop: tuned.groundShop, tuned: true };
+}
+
+function genericSystem(id: string, archetype: Archetype, wallHex: string, heightM: number): LargeTierSystem {
   const h = hash01(`${id}:large`);
   if (archetype === 'c19') return { archetype, style: [7, 9, 1][Math.floor(h * 3)], layout: 'c19', storeyM: 4.2, groundM: 4.8, bayM: 4.8, parapetM: 1.0 };
   if (archetype === 'school') return { archetype, style: Math.floor(h * 2), layout: 'school', storeyM: 3.8, groundM: 4.4, bayM: 4.8, parapetM: 0.9 };
