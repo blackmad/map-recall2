@@ -4,7 +4,8 @@ import assert from 'node:assert/strict';import fs from 'node:fs';import * as T f
 import type {BuildingTools} from './landmarks/cultural-builders';
 import {buildTortureMuseum} from './landmarks/torture-museum-builder';
 import {buildTheoThijssenMuseum} from './landmarks/theo-thijssen-museum-builder';
-const builders:Record<string,(w:number,d:number,b:BuildingTools)=>void>={'torture-museum':buildTortureMuseum,'theo-thijssen-museum':buildTheoThijssenMuseum};
+import {buildPatheDeMunt} from './landmarks/pathe-de-munt-builder';
+const builders:Record<string,(w:number,d:number,b:BuildingTools)=>void>={'pathe-de-munt':buildPatheDeMunt,'torture-museum':buildTortureMuseum,'theo-thijssen-museum':buildTheoThijssenMuseum};
 const ids=process.argv.slice(2).length?process.argv.slice(2):Object.keys(builders);
 for(const id of ids){
  const build=builders[id];assert(build,`no builder for ${id}`);

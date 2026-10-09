@@ -1826,5 +1826,13 @@
     "description": "The Theo Thijssen Museum is devoted to the writer, teacher and politician Theo Thijssen. It is run by the Stichting Theo Thijssen and occupies the ground floor of Thijssen's birthplace at Eerste Leliedwarsstraat 16, a brick corner house with a bowed shop window.",
     "funFact": "A plaque on the facade records that Theo Thijssen, author of Kees de Jongen, was born in this house.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Theo_Thijssen_Museum"
+  },
+  {
+    "modelId": "pathe-de-munt",
+    "landmarkId": "extract_landmarks_257271103",
+    "name": "Pathé de Munt",
+    "description": "Pathé de Munt is a large cinema in the centre of Amsterdam on the Vijzelstraat, close to Pathé Tuschinski; the two cinemas border each other behind the shops on the Reguliersbreestraat. It has 13 screens on three floors with 1,829 seats in total, the largest room seating 318.",
+    "funFact": "When Pathé de Munt opened in November 2000 it was the first multiplex cinema in Amsterdam's inner city.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Path%C3%A9_de_Munt"
   }
 ]
