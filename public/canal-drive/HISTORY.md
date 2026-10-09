@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+## Review harness: blank walls, per-bay rhythm, camera-matched sheets (2026-10-10)
+
+- `glbQuality.ts` + `wallPlanes.ts`: walls ≥25 m² whose openings (enclosed
+  holes on a 25 cm raster, or non-horizontal geometry within 0.5 m of the
+  plane) cover <2% are `blank-wall` warns; ≥600 m² fails, because a GLB alone
+  cannot tell a party wall from a blank one (`blankWallExemptBearings`). Full
+  audit: 167 of 247 landmarks have ≥1 blank wall (1,216 walls, 34 ≥600 m²);
+  the warn list is noisy where glass is coplanar with the wall.
+- `facadeCompare.ts` gained `bays`, `identicalBays`, `bayRows`, `baySymmetric`.
+- `npm run review:sheet -- --id=<id>`: per exposed BAG wall, the best
+  panorama rectified with the repo's own camera model, a GLB render from that
+  panorama's pose, a 50% overlay, red INFERRED tiles for walls with no photo,
+  and an in-game shot. Needs a catalogue entry (not ordinary houses yet).
+- Het Pakhuis row count: two blind counts disagreed (7 vs 9); integrator
+  recount from the photo is 9 (gable 2 tiers, 5 storeys, ground floor 2
+  tiers). Bay 0 (louvre strip, glass box) and bay 4 (glass balustrades) differ
+  in the photo, so only bays 1–3 are asserted identical. v2 passes all checks.
+
 ## Street chunks pilot: no-go as a performance change (2026-10-10)
 
 `src/canalRecall/streetChunks/` compiles one mesh per block face (15 of the

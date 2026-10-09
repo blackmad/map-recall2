@@ -169,6 +169,11 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   650–706 (paired casements, stone bands), 708–744, 788–868 (glass bays);
   retry 940–950 with another photo source; 582–648 after scaffolding. The
   street sheet framing was poor (bike drawn over a roof) — reshoot.
+- **Review harness follow-ups**: `review-sheet.ts` needs ordinary-house
+  support (no catalogue entry/anchor) before Bilderdijkstraat re-review; ground
+  NAP offset not applied to the matched camera; record party-wall bearings per
+  model so blank-wall warns become signal; triage the 34 ≥600 m² blank walls
+  (Viñoly, The Rock, DeLaMar, Palace on the Dam first).
 - **Re-review the 19 Bilderdijkstraat recipe houses** under the new
   acceptance checklist: bilder-156287 has 4 upper storeys and small 4-pane
   windows where the photo shows 3 storeys + gable, large 1-over-1 windows,

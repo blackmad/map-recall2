@@ -32,6 +32,14 @@ export type FacadeInventory = {
   symmetric?: boolean;
   /** Separate peaks in the facade silhouette: gables, towers, spires, hipped-roof tops (0 for a level cornice). */
   gables?: number;
+  /** Number of equal-width bays across the facade silhouette (e.g. five gabled bays). Enables the per-bay checks below. */
+  bays?: number;
+  /** Groups of 0-based bay indexes the photo shows as identical, e.g. [[0,1,2,3,4]]. Opening masks of a group must match (IoU >= 0.6). */
+  identicalBays?: number[][];
+  /** Openings per bay per row (bottom row first); a single array applies to every bay, an array of arrays gives one per bay. */
+  bayRows?: number[] | number[][];
+  /** Every bay's own opening pattern is mirror-symmetric about the bay centre (IoU >= 0.7). */
+  baySymmetric?: boolean;
   /** Material names that count as openings (default glass and dark: many kits glaze in `dark`). Only faces
    * turned towards the viewer count, so dark roofs and plinth tops do not. */
   openings?: string[];
@@ -60,6 +68,10 @@ export type FacadeMeasure = {
   /** IoU of the opening mask with its mirror about the facade's silhouette centre. */
   symmetry: number;
   gables: number;
+  /** Per-bay measurements when the inventory declares `bays`. */
+  bays?: {t0: number; t1: number; rows: number[]; symmetry: number}[];
+  /** Pairwise opening-mask IoU between bays (bay-local frames), when `bays` is declared. */
+  bayIoU?: number[][];
   /** Rendered elevation: RGB bytes, `cols × rowsPx`, top row first. */
   image: {data: Uint8Array; width: number; height: number; cell: number; tMin: number; yMax: number};
 };
@@ -242,6 +254,35 @@ export function measureFacade(soup: MaterialSoup, f: FacadeInventory, cell = 0.1
   }
   const gables = countPeaks(top, cell, 1.5);
 
+  let bays: FacadeMeasure['bays'], bayIoU: number[][] | undefined;
+  if (f.bays && f.bays > 0 && sx1 >= sx0) {
+    const n = f.bays, bw = (sx1 - sx0 + 1) / n;
+    const edge = (i: number) => Math.round(sx0 + i * bw);
+    bays = []; bayIoU = [];
+    const iou = (b0: number, b1: number, mirror: boolean, a1?: number) => {
+      const w = edge(b0 + 1) - edge(b0);
+      let inter = 0, un = 0;
+      for (let y = 0; y < H; y++) for (let dx = 0; dx < w; dx++) {
+        const a = mask[y * W + edge(b0) + dx];
+        const bx = mirror ? w - 1 - dx : dx;
+        const b = mask[y * W + (a1 ?? edge(b1)) + bx];
+        if (a && b) inter++;
+        if (a || b) un++;
+      }
+      return un ? inter / un : 1;
+    };
+    for (let b = 0; b < n; b++) {
+      const t0 = (edge(b) - sx0) * cell, t1 = (edge(b + 1) - sx0) * cell;
+      const rowsIn = rowGroups.map(() => 0);
+      openings.forEach((o, k) => {
+        const tc = (o.t0 + o.t1) / 2;
+        if (tc >= edge(b) * cell - 1e-9 && tc < edge(b + 1) * cell) rowsIn[rowGroups.findIndex(g => g.includes(centres[k]))]++;
+      });
+      bays.push({t0, t1, rows: rowsIn, symmetry: +iou(b, b, true, edge(b)).toFixed(2)});
+    }
+    for (let a = 0; a < n; a++) bayIoU.push(Array.from({length: n}, (_, b) => Math.min(edge(a + 1) - edge(a), edge(b + 1) - edge(b)) < 1 ? 0 : +iou(a, b, false).toFixed(2)));
+  }
+
   const data = new Uint8Array(W * H * 3);
   for (let i = 0; i < W * H; i++) {
     const m = mat[i];
@@ -250,7 +291,7 @@ export function measureFacade(soup: MaterialSoup, f: FacadeInventory, cell = 0.1
   }
   return {
     name: f.name, width: (sx1 - sx0 + 1) * cell, height: (r.yMax - r.yMin), openings, rows, rowHeights, columns,
-    symmetry: +symmetry.toFixed(2), gables,
+    symmetry: +symmetry.toFixed(2), gables, bays, bayIoU,
     image: {data, width: W, height: H, cell, tMin: r.tMin, yMax: r.yMax},
   };
 }
@@ -294,5 +335,30 @@ export function compare(f: FacadeInventory, m: FacadeMeasure): Check[] {
     out.push({facade: f.name, what: 'mirror symmetry (IoU)', expected: f.symmetric ? '≥ 0.70' : 'asymmetric (report only)', measured: m.symmetry.toFixed(2), pass});
   }
   if (f.gables !== undefined) out.push({facade: f.name, what: 'gable peaks', expected: String(f.gables), measured: String(m.gables), pass: f.gables === m.gables});
+  if (f.bays && m.bays) {
+    const per = (i: number) => Array.isArray(f.bayRows?.[0]) ? (f.bayRows as number[][])[i] : (f.bayRows as number[] | undefined);
+    if (f.bayRows) {
+      const diffs: string[] = [];
+      m.bays.forEach((b, i) => {
+        const want = per(i);
+        if (!want) return;
+        const ok = want.length === b.rows.length && want.every((n, k) => n === b.rows[k]);
+        if (!ok) diffs.push(`bay ${i}: expected ${want.join(',')} measured ${b.rows.join(',') || 'none'}`);
+      });
+      out.push({facade: f.name, what: 'openings per bay per row', expected: `${f.bays} bays`, measured: diffs.length ? diffs.join('; ') : 'all bays match', pass: !diffs.length});
+    }
+    if (f.baySymmetric) {
+      const bad = m.bays.map((b, i) => [i, b.symmetry] as const).filter(([, s]) => s < 0.7);
+      out.push({facade: f.name, what: 'per-bay mirror symmetry (IoU)', expected: '>= 0.70 each bay', measured: m.bays.map(b => b.symmetry.toFixed(2)).join(' '), pass: !bad.length});
+    }
+    for (const group of f.identicalBays ?? []) {
+      const lows: string[] = [];
+      for (let a = 0; a < group.length; a++) for (let b = a + 1; b < group.length; b++) {
+        const v = m.bayIoU?.[group[a]]?.[group[b]] ?? 0;
+        if (v < 0.6) lows.push(`${group[a]}~${group[b]}=${v.toFixed(2)}`);
+      }
+      out.push({facade: f.name, what: `identical bays [${group.join(',')}] (IoU)`, expected: '>= 0.60 pairwise', measured: lows.length ? `below: ${lows.join(' ')}` : 'all pairs match', pass: !lows.length});
+    }
+  }
   return out;
 }

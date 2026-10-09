@@ -94,3 +94,49 @@ test('triangle cap is enforced', () => {
   const r = analyseSoup(soup(house()), {triangleCap: 10});
   assert.ok(r.findings.some(f => f.kind === 'triangle-cap'));
 });
+
+// --- blank walls ---
+/** Three 1.2 x 1.5 m window boxes protruding 0.1 m from the south (+z) face of the 10 x 8 x 10 house. */
+const southWindows = () => [1.5, 4.4, 7.3].map(x => boxQuads(x, 3, 10, x + 1.2, 4.5, 10.1, ['bottom']));
+
+test('box with windows on the south face only flags the other three faces as blank', () => {
+  const r = analyseSoup(soup(house(), ...southWindows()));
+  const blank = r.blankWalls.map(w => Math.round(w.bearingDeg)).sort((a, b) => a - b);
+  assert.deepEqual(blank, [0, 90, 270], JSON.stringify(r.blankWalls));
+  assert.ok(r.findings.filter(f => f.kind === 'blank-wall').every(f => f.severity === 'warn'), '80 m2 blank walls warn, they do not fail');
+  assert.equal(r.pass, true);
+  assert.ok(r.blankWalls.every(w => Math.abs(w.area - 80) < 1), JSON.stringify(r.blankWalls));
+});
+
+test('windows on every face leave no blank walls (protruding and recessed glazing both count)', () => {
+  const all: Record<string, Quad>[] = [];
+  for (const x of [1.5, 4.4, 7.3]) all.push(boxQuads(x, 3, 10, x + 1.2, 4.5, 10.1, ['bottom']), boxQuads(x, 3, -0.1, x + 1.2, 4.5, 0.1, ['bottom']));
+  for (const z of [1.5, 4.4, 7.3]) all.push(boxQuads(10, 3, z, 10.1, 4.5, z + 1.2, ['bottom']), boxQuads(-0.1, 3, z, 0.1, 4.5, z + 1.2, ['bottom']));
+  const r = analyseSoup(soup(house(), ...all));
+  assert.equal(r.blankWalls.length, 0, JSON.stringify(r.blankWalls));
+});
+
+test('exempt bearings (party walls) are skipped, and a very large blank face fails', () => {
+  const r = analyseSoup(soup(house(), ...southWindows()), {blankWallExemptBearings: [0, 90]});
+  assert.deepEqual(r.blankWalls.map(w => Math.round(w.bearingDeg)), [270]);
+  const big = analyseSoup(soup(boxQuads(0, 0, 0, 30, 25, 10)));
+  assert.ok(big.findings.some(f => f.kind === 'blank-wall' && f.severity === 'fail'), JSON.stringify(big.findings));
+  assert.equal(big.pass, false);
+});
+
+test('small walls are not examined', () => {
+  const r = analyseSoup(soup(boxQuads(0, 0, 0, 4, 3, 4)));
+  assert.equal(r.blankWalls.length, 0);
+});
+
+test('openings cut through the wall count as openings', () => {
+  // South face built from four quads around a 2 x 2 m hole.
+  const wall = {
+    a: [[0, 0, 10], [10, 0, 10], [10, 3, 10], [0, 3, 10]] as Quad,
+    b: [[0, 5, 10], [10, 5, 10], [10, 8, 10], [0, 8, 10]] as Quad,
+    c: [[0, 3, 10], [4, 3, 10], [4, 5, 10], [0, 5, 10]] as Quad,
+    d: [[6, 3, 10], [10, 3, 10], [10, 5, 10], [6, 5, 10]] as Quad,
+  };
+  const r = analyseSoup(soup(house(['south']), wall));
+  assert.ok(!r.blankWalls.some(w => Math.round(w.bearingDeg) === 180), JSON.stringify(r.blankWalls));
+});
