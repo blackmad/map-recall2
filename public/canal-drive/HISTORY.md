@@ -1,5 +1,93 @@
 # Canal Recall — what is built
 
+## Review harness: blank walls, per-bay rhythm, camera-matched sheets (2026-10-10)
+
+- `glbQuality.ts` + `wallPlanes.ts`: walls ≥25 m² whose openings (enclosed
+  holes on a 25 cm raster, or non-horizontal geometry within 0.5 m of the
+  plane) cover <2% are `blank-wall` warns; ≥600 m² fails, because a GLB alone
+  cannot tell a party wall from a blank one (`blankWallExemptBearings`). Full
+  audit: 167 of 247 landmarks have ≥1 blank wall (1,216 walls, 34 ≥600 m²);
+  the warn list is noisy where glass is coplanar with the wall.
+- `facadeCompare.ts` gained `bays`, `identicalBays`, `bayRows`, `baySymmetric`.
+- `npm run review:sheet -- --id=<id>`: per exposed BAG wall, the best
+  panorama rectified with the repo's own camera model, a GLB render from that
+  panorama's pose, a 50% overlay, red INFERRED tiles for walls with no photo,
+  and an in-game shot. Needs a catalogue entry (not ordinary houses yet).
+- Het Pakhuis row count: two blind counts disagreed (7 vs 9); integrator
+  recount from the photo is 9 (gable 2 tiers, 5 storeys, ground floor 2
+  tiers). Bay 0 (louvre strip, glass box) and bay 4 (glass balustrades) differ
+  in the photo, so only bays 1–3 are asserted identical. v2 passes all checks.
+
+## Street chunks pilot: no-go as a performance change (2026-10-10)
+
+`src/canalRecall/streetChunks/` compiles one mesh per block face (15 of the
+19 Bilderdijkstraat recipe houses → 4 chunks), one street level, eaves within
+0.25 m snapped to one cornice, party walls trimmed where a neighbour covers
+them, per-pand BAG id/address/triangle ranges in glTF extras so hover and
+suppression still resolve each pand. Measured: triangles 27,581 → 27,570
+(party walls are 2 tris per quad), draw calls 121 → 58, GLB requests
+13 → 4, layer CPU 0.57 → 0.42 ms per frame (Mac, iPhone emulation similar);
+frame time unchanged (vsync-capped). Renders match the individual houses
+except storeys shifted ≤0.4 m by re-grounding. Kept opt-in behind
+`?streetChunks=1` (`ordinary-buildings-data/chunks.json`); the visual win
+(continuous ground and cornice line) does not need chunking. Unmeasured on a
+real phone GPU.
+
+## Facade comparison gate; Thomaskerk and Vrijburg; queue triage (2026-10-10)
+
+Het Pakhuis passed review with scattered windows on a front the photo shows
+as five symmetric gabled bays, so "looks roughly right" is no longer
+acceptance. `npm run compare:facades -- --id=<id>` renders each declared
+facade of the GLB orthographically (material z-buffer; `glass` and `dark` on
+viewer-facing faces count as openings), boxes the openings, and compares
+openings per storey, window axes, mirror symmetry (IoU) and silhouette peaks
+with `<id>-elevations.json`, counted blind from the reference photo. It
+writes photo | elevation images per facade. On Pakhuis's rear it measures 9
+axes and symmetry 0.28. Calibration on 25 installed landmarks: blind counts
+by Haiku on oblique, obstructed panorama thumbnails were too noisy to gate on
+(every facade carried an obstruction note), so the counts stay out of the
+committed specs; the side-by-side images were the useful output and found
+the Royal Palace (no central risalit, no entrance arches, uniform grid) and
+De Balie (red brick and two storeys; the building is pale stone, three
+storeys) as clear misses.
+
+Installed after contact-sheet and elevation review: Thomaskerk (Sijmons
+1966) and Vrijburg (Diepenbrockstraat, 1931–33). Willem de Zwijgerkerk
+was held for its missing entrance wing and installed after rework; held: Van
+Gendt Hallen (gable corbel friezes, steel windows, 3DBAG gable artefacts).
+The OBA libraries, CEDLA, Max Euwe Centrum and Bijzondere Collecties are
+rooms in ordinary buildings, Elthetokerk was demolished in 1992; these and a
+Haiku triage of the review queue (duplicates, sculptures, areas) live in
+`scripts/landmarks/backlog-triage.json`. User-requested venues stay open.
+The source archiver now collects `artifacts/landmark-lanes/<id>/ref*`, and
+ten recent models were backfilled to the private source repository.
+
+## Het Pakhuis v2 built from a rhythm spec, still held (2026-10-10)
+
+`scripts/haparandaweg/het-pakhuis-rhythm.json` cites a photo for every bay
+item; the block-kit spec now places five identical gabled bays, the HET
+PAKHUIS band, a double-height glazed ground floor and balcony storeys.
+Audit score 17.8 (see-through) → 0.9 pass; height Δ 0.28 m; 2,798 tris.
+Held for user review: rear wall inferred (enclosed courtyard, no photo),
+balconies 0.95 m vs ~1.2 m to avoid a hull see-through false positive,
+lettering lighter than the photo, facade-compare row count 9 vs 7 (the
+ground floor and gable window are split glazed fields). The lane's first
+version rewrote `rail.kind: 'bars'` and silently changed 870-900 on rebuild;
+thin rods are now `'rods'`, and `test:block-kit-installed` (in check:canal)
+rebuilds every block-kit spec and requires byte-identical installed GLBs.
+
+## Recipe surrounds, quoins and awnings (2026-10-09)
+
+Intent fields `windowSurround` (stone-lintel / full-frame / keystone, optional
+`surroundStoreys`), `quoins` and `shopfront.awning` (straight or dutch, extent
+as a fraction of the front). Dressings are slabs sunk 5 mm into the wall
+(tested ≤1 cm off the plane); awnings are one extruded profile on the flat
+door slot so they are not brick-textured. Applied only with photo evidence:
+keystones on bilder-152669/153622/153782, top-storey lintels and a black
+awning on bilder-156287; +92–144 triangles each, all gates pass. Reviewing
+156287 against its photo exposed that the house itself is wrong (storeys,
+window size, balconies); see TODO re-review.
+
 ## Acceptance checklist after Nassaukerk and Het Pakhuis (2026-10-09)
 
 Nassaukerk passed review twice with blank walls, and Het Pakhuis shipped with

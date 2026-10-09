@@ -1,0 +1,25 @@
+{
+  "name": "Willem de Zwijgerkerk",
+  "landmarkId": "extract_landmarks_1347119904",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Willem_de_Zwijgerkerk_(Amsterdam)",
+  "suppressOsmIds": [
+    "w57855495",
+    "NL.IMBAG.Pand.0363100012098714"
+  ],
+  "pandId": "0363100012098714",
+  "materialOverrides": {
+    "brick": "#7f4a3a",
+    "stone": "#d8d2c0",
+    "slate": "#45484d",
+    "glass": "#7b93a0",
+    "dark": "#3a2a24",
+    "white": "#e4e1d4",
+    "frame": "#e4e1d4",
+    "copper": "#6aa38c",
+    "gold": "#d9b44a",
+    "greyBrick": "#4a342d",
+    "concrete": "#cfc9b8"
+  },
+  "surveySource": "Current BAG 0363100012098714 footprint (OSM w57855495) and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; clock tower top, entrance arch, gable windows, aisle and clerestory windows placed by eye from the 2025 municipal panoramas and a Wikimedia Commons view, no pixels or meshes imported."
+}

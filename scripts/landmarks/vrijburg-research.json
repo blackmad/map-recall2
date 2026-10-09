@@ -1,0 +1,16 @@
+{
+  "canonicalModelId": "vrijburg",
+  "researchedOn": "2026-10-10",
+  "destination": {"genuineOsmId": "extract_landmarks_563908011", "name": "Vrijburg (Remonstrant church, Diepenbrockstraat 46)", "address": "Diepenbrockstraat 46, 1077 Amsterdam"},
+  "identity": "BAG pand 0363100012127929 (built 1933, in use). A freestanding church with its own street frontage, not the hidden Remonstrant church on the Keizersgracht.",
+  "sources": [
+    {"url": "https://nl.wikipedia.org/wiki/Diepenbrockstraat_46", "retrieved": "2026-10-10", "licence": "CC BY-SA 4.0 text; used for history facts only", "informs": "POI text, build dates, tender price"},
+    {"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/2023_Diepenbrockstraat_46%2C_Asd_%2801%29.jpg/960px-2023_Diepenbrockstraat_46%2C_Asd_%2801%29.jpg", "retrieved": "2026-10-10", "file": "artifacts/landmark-lanes/vrijburg/ref-sw.jpg", "licence": "Wikimedia Commons, see file page (CC licence); reference only, no pixels imported", "informs": "SW street gable: arch entrance, slit-window group, apex louvre, tower"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-15_11-16-59_00491/?width=1600&fov=75&heading=105", "retrieved": "2026-10-10", "file": "artifacts/landmark-lanes/vrijburg/ref-nw.jpg", "capture": "2025-07-15", "licence": "Amsterdam open panorama data (CC0), reference only", "informs": "NW side: gabled porch, aisle windows, dormers, tower base"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-14_12-49-24_01956/?width=1600&fov=75&heading=60", "retrieved": "2026-10-10", "file": "artifacts/landmark-lanes/vrijburg/sw-alt.jpg", "capture": "2025-07-14", "licence": "Amsterdam open panorama data (CC0)", "informs": "tower shaft with louvres and tall copper spire"},
+    {"url": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-07-14_12-49-24_01153/?width=1200&fov=50&heading=10", "retrieved": "2026-10-10", "file": "artifacts/landmark-lanes/vrijburg/se-recording_2025-07-14_12-49-24_01153.jpg", "capture": "2025-07-14", "licence": "Amsterdam open panorama data (CC0)", "informs": "SE side is hidden behind a house row (facade inferred)"},
+    {"url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012127929", "retrieved": "2026-10-10", "file": "artifacts/landmark-lanes/vrijburg/3dbag.json", "licence": "3DBAG CC BY 4.0", "informs": "LoD2.2 massing"},
+    {"url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012127929&f=json", "retrieved": "2026-10-10", "licence": "BAG open data", "informs": "footprint ring"}
+  ],
+  "uncertainty": "SE long side and the NE wing window pattern are inferred; dormer count (3 per side) estimated from one oblique view; spire height estimated from distant panoramas."
+}
