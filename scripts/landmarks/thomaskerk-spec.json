@@ -28,7 +28,7 @@
   "groundAltitudeMetres": 0,
   "facingOffsetDegrees": 0,
   "materialOverrides": {
-    "brick": "#c8ab68",
+    "brick": "#d2bc80",
     "stone": "#c9c8c0",
     "slate": "#6b6e70",
     "glass": "#7d9aa6",
@@ -36,7 +36,8 @@
     "white": "#e6e6df",
     "frame": "#5a554c",
     "copper": "#7fae96",
-    "concrete": "#cfcfc8"
+    "concrete": "#cfcfc8",
+    "bronze": "#4b4a42"
   },
   "attribution": {
     "title": "Thomaskerk",

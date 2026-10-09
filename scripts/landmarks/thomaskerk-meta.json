@@ -1,0 +1,24 @@
+{
+  "name": "Thomaskerk",
+  "landmarkId": "extract_landmarks_741771335",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Thomaskerk_(Amsterdam)",
+  "suppressOsmIds": [
+    "w57858409",
+    "NL.IMBAG.Pand.0363100012099552"
+  ],
+  "pandId": "0363100012099552",
+  "materialOverrides": {
+    "brick": "#d2bc80",
+    "stone": "#c9c8c0",
+    "slate": "#6b6e70",
+    "glass": "#7d9aa6",
+    "dark": "#3a2e26",
+    "white": "#e6e6df",
+    "frame": "#5a554c",
+    "copper": "#7fae96",
+    "concrete": "#cfcfc8",
+    "bronze": "#4b4a42"
+  },
+  "surveySource": "Current BAG 0363100012099552 footprint (OSM w57858409) and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; entrance block ribbon windows, porch, tile bases, east-wing window ribbon, copper coping and bell frame placed by eye from the 2025 municipal panoramas and an RCE photograph, no pixels or meshes imported."
+}
