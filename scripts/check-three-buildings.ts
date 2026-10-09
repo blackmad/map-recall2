@@ -267,7 +267,8 @@ for (const c of [0.64, 1.4]) {
     assert.ok(wrapped(house(roofed)).properties.roofPlanned, 'before the landmark list loads it decorates');
     ids.add(roofed);
     const f = house(roofed);
-    assert.equal(wrapped(f), f, 'a landmark building is returned untouched, and the list is read at call time');
+    assert.equal(wrapped(f).properties.roofPlanned, undefined, 'a landmark building keeps its own form (no generic roof), and the list is read at call time');
+    assert.equal(wrapped(f).properties.largeTier, 'modern', 'an undated, unlisted landmark takes the post-war large tier instead of a bare box');
     // Unmodelled landmarks: an old one the size of a house takes the generic period facade and roof;
     // a big one keeps its bare form but loses a palette-guess colour; a kit-modelled one is untouched.
     const old = { ...f, properties: { ...f.properties, constructionYear: 1788 } };
@@ -278,8 +279,13 @@ for (const c of [0.64, 1.4]) {
     assert.equal(wrapped({ ...big, properties: { ...big.properties, constructionYear: 1972 } }).properties.sideColour, '#b9ad9a', 'a modern one is concrete');
     const restored = { ...big, properties: { ...big.properties, constructionYear: 1990 } };
     assert.equal(exceptLandmarks(decorateRoof, ids, new Set(), new Set([roofed]))(restored).properties.sideColour, '#7a4535', 'a listed landmark with a restoration year is still old brick (Carré)');
-    const measuredBig = { ...big, properties: { ...big.properties, appearanceStyleSource: 'measured-photo' } };
-    assert.equal(wrapped(measuredBig), measuredBig, 'a measured colour is kept');
+    const measuredBig = { ...big, properties: { ...big.properties, appearanceStyleSource: 'measured-photo', sideColour: '#5a6b7c' } };
+    assert.equal(wrapped(measuredBig).properties.sideColour, measuredBig.properties.sideColour, 'a measured colour is kept');
+    // Large tier (user 2026-10-09, the Anne Frank museum block on the Prinsengracht as a blank brown box):
+    // a big unmodelled landmark gets a facade system, never a bare extrusion.
+    assert.equal(wrapped(big).properties.largeTier, 'c19', 'an 1888 landmark is drawn as 19th-century masonry');
+    assert.equal(wrapped({ ...big, properties: { ...big.properties, constructionYear: 1972 } }).properties.largeTier, 'modern');
+    assert.match(String(wrapped(big).properties.facade), /^tower-|^c19-/, 'and carries a facade key, so the mesh does not draw it bare');
     const kitWrapped = exceptLandmarks(decorateRoof, ids, new Set([roofed]));
     assert.equal(kitWrapped(old), old, 'a kit-modelled landmark is never decorated');
     const beurs = house('w749918651');
