@@ -10,6 +10,9 @@ import type { WorldPoint } from './worldTypes';
 import { isWorthACard } from './landmarkData';
 export { mergeManualPoiFeatures, manualPoiForCuratedId } from './manualPoiCatalog';
 
+import { HOME_RECENT_WINDOW } from './recentDestinations';
+export * from './recentDestinations';
+
 export interface RoutePoi {
   id: string;
   name: string;
@@ -149,7 +152,10 @@ export function scoreHomeDestination(
   const km = kmBetween(poi, home);
   if (km < HOME_MIN_TRIP_KM) return 0;
   if (km > radiusKm * HOME_RADIUS_OVERSHOOT) return 0;
-  const closeness = 1 / (0.35 + km);
+  // Gentle falloff: nearer is better, but a 1.1 km ride must stay a live
+  // option next to a 0.3 km one (1/(0.35+km) made the nearest landmark ~2x
+  // likelier and let a favourite dominate).
+  const closeness = 1 / (1.2 + km);
   const novelty = 1 - localFamiliarity(poi, samples);
   return closeness * (0.35 + 0.65 * novelty);
 }
@@ -174,6 +180,39 @@ function pickWeighted<T>(
   return positive[positive.length - 1]?.item ?? null;
 }
 
+/** No single landmark may take more than this share of a home pick. */
+export const HOME_MAX_SHARE = 0.12;
+
+/**
+ * Weight of a destination that was ridden `rank` rides ago (0 = the ride
+ * just finished, -1 = not recent). The last one is never offered again; older
+ * ones climb back linearly over the window.
+ */
+export function recentDestinationFactor(rank: number, window = HOME_RECENT_WINDOW): number {
+  if (rank < 0) return 1;
+  if (rank === 0) return 0;
+  if (rank >= window) return 1;
+  return 0.05 + 0.4 * (rank / window);
+}
+
+/** Clamp heavy weights so none exceeds `maxShare` of the total (when enough
+ *  candidates exist for that to be satisfiable). */
+export function capWeightShares(weights: readonly number[], maxShare = HOME_MAX_SHARE): number[] {
+  const out = weights.slice();
+  const positive = out.filter(weight => weight > 0).length;
+  if (positive === 0 || positive * maxShare < 1) return out;
+  for (let pass = 0; pass < 40; pass += 1) {
+    const total = out.reduce((sum, weight) => sum + weight, 0);
+    const limit = total * maxShare;
+    let clamped = false;
+    for (let i = 0; i < out.length; i += 1) {
+      if (out[i] > limit * 1.0001) { out[i] = limit; clamped = true; }
+    }
+    if (!clamped) break;
+  }
+  return out;
+}
+
 export interface HomeDestinationPick {
   poi: RoutePoi;
   radiusKm: number;
@@ -190,18 +229,23 @@ export function pickHomeDestination(
   samples: readonly MasterySample[] = [],
   chooseUnit: ChooseUnit = randomUnit,
   alsoExcludeId: string | null = null,
+  recentIds: readonly string[] = [],
 ): HomeDestinationPick | null {
   const radiusKm = homeLearningRadiusKm(home, samples);
   const homeId = home.id ?? 'home';
   const candidates = pois.filter(poi => poi.id !== homeId && poi.id !== alsoExcludeId);
   if (candidates.length === 0) return null;
 
-  const scored = candidates.map(poi => ({
-    item: poi,
-    weight: scoreHomeDestination(poi, home, radiusKm, samples),
-  }));
+  const raw = candidates.map(poi =>
+    scoreHomeDestination(poi, home, radiusKm, samples) * recentDestinationFactor(recentIds.indexOf(poi.id)));
+  const capped = capWeightShares(raw);
+  const scored = candidates.map((poi, i) => ({ item: poi, weight: capped[i] }));
   const picked = pickWeighted(scored, chooseUnit);
   if (picked) return { poi: picked, radiusKm };
+  // Everything in the ring was ridden recently: keep only the very last out.
+  if (recentIds.length > 1) {
+    return pickHomeDestination(pois, home, samples, chooseUnit, alsoExcludeId, recentIds.slice(0, 1));
+  }
 
   const chooseIndex: ChooseIndex = count => Math.min(count - 1, Math.floor(chooseUnit() * count));
   const fallback = pickDestinationNear(
@@ -296,6 +340,8 @@ export interface ReviewRouteInput {
   maxKm?: number;
   chooseIndex?: ChooseIndex;
   excludeId?: string | null;
+  /** Destinations ridden lately; skipped unless nothing else qualifies. */
+  recentIds?: readonly string[];
 }
 
 export interface ReviewRoutePick {
@@ -328,6 +374,15 @@ function kmToSegment(point: { lat: number; lng: number }, a: { lat: number; lng:
 
 /** The pair passing the most due names, or null when no pair passes any. */
 export function pickReviewRoute(input: ReviewRouteInput): ReviewRoutePick | null {
+  const recent = new Set(input.recentIds ?? []);
+  if (recent.size > 0 && input.from) {
+    const fresh = pickReviewRouteUnfiltered({ ...input, pois: input.pois.filter(poi => !recent.has(poi.id)), recentIds: [] });
+    if (fresh) return fresh;
+  }
+  return pickReviewRouteUnfiltered(input);
+}
+
+function pickReviewRouteUnfiltered(input: ReviewRouteInput): ReviewRoutePick | null {
   const maxKm = input.maxKm ?? ROUTE_POI_MAX_PAIR_KM;
   const chooseIndex = input.chooseIndex ?? randomIndex;
   const due = input.due.filter(place => place.name && Number.isFinite(place.center[0]) && Number.isFinite(place.center[1]))

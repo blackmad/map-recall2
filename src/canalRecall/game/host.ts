@@ -197,6 +197,7 @@ export interface RecallStore extends AnswerRecallStore {
   }>;
   routeMastery(cityId: string): Record<string, number>;
   routeReviewDue?(cityId: string): Record<string, true>;
+  historyReady?(timeoutMs?: number): Promise<void>;
   homeMasterySamples?(cityId: string): Array<{ lat: number; lng: number; mastery: number }>;
   /** Makes every place-local chunk for one named item due without logging a quiz result. */
   queueForPractice(itemKey: string): number;
