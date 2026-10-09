@@ -62,6 +62,8 @@ const results: Record<string, unknown>[] = [];
 for (const variant of variants) {
   test(`ride frame cost: ${variant.label}`, async ({ page }, info) => {
     test.setTimeout(300_000);
+    // CANAL_ELEVATION=1|0 forces the opt-in elevation layer on or off (docs/elevation.md).
+    if (process.env.CANAL_ELEVATION) await page.addInitScript((on: boolean) => { (window as any).__canalRecallElevation = on; }, process.env.CANAL_ELEVATION === '1');
     await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false });
     await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 90_000 });
     await page.evaluate(async (mode) => {
@@ -116,7 +118,7 @@ for (const variant of variants) {
     results.push(sample);
     console.log(JSON.stringify(sample));
     mkdirSync('artifacts/perf', { recursive: true });
-    writeFileSync(`artifacts/perf/ride-perf-${info.project.name}.json`, JSON.stringify(results, null, 2));
+    writeFileSync(`artifacts/perf/ride-perf-${info.project.name}${process.env.CANAL_ELEVATION ? `-elevation${process.env.CANAL_ELEVATION}` : ''}.json`, JSON.stringify(results, null, 2));
     expect(frames.length).toBeGreaterThan(20);
   });
 }
