@@ -15,8 +15,8 @@ test.skip(!process.env.OWN_GROUND, 'set OWN_GROUND=1');
 const OUT = 'artifacts/own-ground';
 // Nassaukade (way 1194778589), heading up the kade toward bridge way 7373504.
 const RIDER = { lng: 4.87445, lat: 52.37286, bearing: 40 };
-// Leidsegracht at the Herengracht, heading south-west along the Herengracht.
-const RIDER_B = { lng: 4.88655, lat: 52.36720, bearing: 215 };
+// Leidsegracht (way 7372771, one-way south-west) toward the Abel Weetnietbrug (BRU0044, masonry arch).
+const RIDER_B = { lng: 4.88557, lat: 52.36728, bearing: 240 };
 
 const pick = (values: number[], q: number) => { const s = [...values].sort((a, b) => a - b); return s[Math.min(s.length - 1, Math.floor(q * s.length))] ?? 0; };
 const summary = (v: number[]) => ({ n: v.length, median: +pick(v, 0.5).toFixed(2), p95: +pick(v, 0.95).toFixed(2), p99: +pick(v, 0.99).toFixed(2), over50: v.filter(f => f > 50).length });
@@ -75,12 +75,16 @@ test('canal belt: Herengracht / Leidsegracht', async ({ page }, info) => {
   test.setTimeout(300_000);
   mkdirSync(OUT, { recursive: true });
   const rider = `rider=${RIDER_B.lng},${RIDER_B.lat},${RIDER_B.bearing}`;
-  const status = await openProto(page, `box=leidsegracht&auto=0&hud=0&${rider}&cam=chase&prefer=Herengracht&highlight=Leidsegracht`);
+  const status = await openProto(page, `box=leidsegracht&auto=0&hud=0&${rider}&cam=chase&prefer=Leidsegracht&highlight=Herengracht`);
   await page.waitForTimeout(2500);
   await page.screenshot({ path: `${OUT}/${info.project.name}-5-leidsegracht-chase.png` });
-  await openProto(page, `box=leidsegracht&auto=0&hud=0&${rider}&cam=map&mapcam=${RIDER_B.lng},${RIDER_B.lat},18.6,60,${RIDER_B.bearing},36.87&prefer=Herengracht&highlight=Leidsegracht`);
+  await openProto(page, `box=leidsegracht&auto=0&hud=0&${rider}&cam=map&mapcam=${RIDER_B.lng},${RIDER_B.lat},18.6,60,${RIDER_B.bearing},36.87&prefer=Leidsegracht&highlight=Herengracht`);
   await page.waitForTimeout(2500);
   await page.screenshot({ path: `${OUT}/${info.project.name}-6-leidsegracht-map.png` });
+  // The arch bridge from the water: deck, parapets and vault meeting the quay walls.
+  await openProto(page, `box=leidsegracht&auto=0&hud=0&${rider}&cam=free&eye=4.88432,52.36668,-0.9&look=4.88458,52.36679,0.0`);
+  await page.waitForTimeout(2500);
+  await page.screenshot({ path: `${OUT}/${info.project.name}-7-arch-from-water.png` });
   writeFileSync(`${OUT}/${info.project.name}-leidsegracht.json`, JSON.stringify(status, null, 2));
 });
 
@@ -114,3 +118,20 @@ for (const v of variants) {
     expect(raw.frames.length).toBeGreaterThan(20);
   });
 }
+
+// Ground build under the throttle (the ride-cost runs throttle only after loading).
+test('build cost: ground under CPU throttle', async ({ page }, info) => {
+  test.setTimeout(300_000);
+  const throttle = info.project.name === 'iphone' ? 4 : 1;
+  const cdp = await page.context().newCDPSession(page);
+  await cdp.send('Emulation.setCPUThrottlingRate', { rate: throttle });
+  const out: Record<string, unknown>[] = [];
+  for (const box of ['nassaukade', 'leidsegracht']) {
+    const status = await openProto(page, `box=${box}&auto=0&hud=0&buildings=0`);
+    const build = await page.evaluate(() => ({ build: (window as any).__ownGround.build, groundBuildMs: (window as any).__ownGround.groundBuildMs, groundHeapMB: (window as any).__ownGround.groundHeapMB }));
+    out.push({ box, throttle, ...build, ground: status.ground, relief: status.relief });
+  }
+  await cdp.send('Emulation.setCPUThrottlingRate', { rate: 1 });
+  console.log(JSON.stringify(out));
+  writeFileSync(`${OUT}/build-${info.project.name}.json`, JSON.stringify(out, null, 2));
+});

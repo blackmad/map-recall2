@@ -6,11 +6,15 @@
 // freeboard the flat elevation layer uses), so the canal belt's quays stay near
 // z = 0 and the water sits at z = −1.77 as before.
 //
-// Decks join the roads by construction: a measured profile stores the deck
-// height relative to the straight line between its two approach ends. Here
-// that line is re-based on *our* relief at those ends, so where the profile
-// returns to zero the deck height equals the ground the street ribbons and the
-// quay walls are draped on — no seam, no step.
+// Decks join the roads by construction. A measured profile stores the deck
+// height relative to the straight line between its two approach ends; that
+// line is re-based on *our* relief at those ends (which agrees with the bridge
+// pipeline's AHN to ~0.1 m), so the crown lands at the measured height. The
+// approach ramps are ground the DTM already carries, so only the deck span
+// (`profile.deck`, the DSM-only part) lifts the surface, eased from the relief
+// over DECK_EASE_M at each end. Where the deck starts the riding surface is
+// the relief itself — no seam, no step — and the quay walls, street ribbons
+// and route ribbon all sample this one function.
 
 import { applyLocalToRd, type GroundField, type LocalToRd } from './heightField.js';
 import type { DeckProfile } from '../elevation/bridgeDeck.js';
@@ -19,15 +23,19 @@ export type Vec2 = [number, number];
 export type HeightFn = (x: number, y: number) => number;
 
 /** Lateral blend from a deck edge back to the ground, metres. */
-export const DECK_BLEND_M = 2;
+export const DECK_BLEND_M = 0.75;
+/** Longitudinal ease from the relief onto the deck at each deck end, metres. */
+export const DECK_EASE_M = 2.5;
 const BUCKET_M = 25;
 
 export interface DeckSurface {
   profile: DeckProfile;
-  /** Scene z of the deck top per station. */
+  /** Scene z of the deck top per station (on the centreline, ease included). */
   z: Float64Array;
-  /** Ground z at the two ends the deck was re-based on. */
+  /** Relief z at the two approach ends the profile was re-based on. */
   ends: [number, number];
+  /** The deck span in stations (the profile's `deck`, clamped to its stations). */
+  span: [number, number];
 }
 
 const smoothstep = (t: number) => (t <= 0 ? 0 : t >= 1 ? 1 : t * t * (3 - 2 * t));
@@ -47,14 +55,35 @@ export class GroundSurface {
     return h === h ? h - this.datumNAP : this.fallbackZ;
   };
 
-  /** Re-base a measured profile on the relief and index it for `height`. */
+  /** Stations → (x, y, hump above the deck-end chord) at station s. */
+  private static at(p: DeckProfile, s: number): { x: number; y: number; h: number } {
+    const n = p.s.length;
+    let i = 0;
+    while (i < n - 2 && p.s[i + 1] < s) i++;
+    const t = Math.max(0, Math.min(1, (s - p.s[i]) / ((p.s[i + 1] - p.s[i]) || 1)));
+    return { x: p.x[i] + (p.x[i + 1] - p.x[i]) * t, y: p.y[i] + (p.y[i + 1] - p.y[i]) * t, h: p.h[i] + (p.h[i + 1] - p.h[i]) * t };
+  }
+
+  /** Deck-top z at station s on the centreline, before the ease: approach chord on the relief + measured height. */
+  private static deckZ(p: DeckProfile, ends: [number, number], s: number): number {
+    const n = p.s.length, u = (s - p.s[0]) / ((p.s[n - 1] - p.s[0]) || 1);
+    return ends[0] + (ends[1] - ends[0]) * u + GroundSurface.at(p, s).h;
+  }
+
+  /** Place a measured profile's deck on the relief and index it for `height`. */
   addDeck(profile: DeckProfile): DeckSurface {
     const n = profile.x.length;
-    const g0 = this.ground(profile.x[0], profile.y[0]), g1 = this.ground(profile.x[n - 1], profile.y[n - 1]);
-    const s0 = profile.s[0], span = (profile.s[n - 1] - s0) || 1;
+    const span: [number, number] = [Math.max(profile.s[0], profile.deck[0]), Math.min(profile.s[n - 1], profile.deck[1])];
+    const ends: [number, number] = [this.ground(profile.x[0], profile.y[0]), this.ground(profile.x[n - 1], profile.y[n - 1])];
     const z = new Float64Array(n);
-    for (let i = 0; i < n; i++) z[i] = g0 + (g1 - g0) * ((profile.s[i] - s0) / span) + profile.h[i];
-    const deck: DeckSurface = { profile, z, ends: [g0, g1] };
+    for (let i = 0; i < n; i++) {
+      const s = profile.s[i];
+      if (s <= span[0] || s >= span[1]) { z[i] = this.ground(profile.x[i], profile.y[i]); continue; }
+      const w = smoothstep(Math.min(s - span[0], span[1] - s) / DECK_EASE_M);
+      const g = this.ground(profile.x[i], profile.y[i]);
+      z[i] = g + w * (GroundSurface.deckZ(profile, ends, s) - g);
+    }
+    const deck: DeckSurface = { profile, z, ends, span };
     this.decks.push(deck);
     const [x0, y0, x1, y1] = profile.bbox, pad = DECK_BLEND_M;
     for (let bx = Math.floor((x0 - pad) / BUCKET_M); bx <= Math.floor((x1 + pad) / BUCKET_M); bx++)
@@ -63,6 +92,18 @@ export class GroundSurface {
         (this.buckets.get(k) ?? this.buckets.set(k, []).get(k)!).push(deck);
       }
     return deck;
+  }
+
+  /** The deck span's footprint as a closed ring (left edge out, right edge back), scene coords. */
+  static footprint(deck: DeckSurface): Vec2[] {
+    const p = deck.profile, left: Vec2[] = [], right: Vec2[] = [];
+    for (let i = 0; i < p.s.length; i++) {
+      if (p.s[i] < deck.span[0] - 0.5 || p.s[i] > deck.span[1] + 0.5) continue;
+      const a = Math.max(0, i - 1), b = Math.min(p.s.length - 1, i + 1), dx = p.x[b] - p.x[a], dy = p.y[b] - p.y[a], l = Math.hypot(dx, dy) || 1;
+      const nx = -dy / l, ny = dx / l, hw = p.halfWidth[i];
+      left.push([p.x[i] + nx * hw, p.y[i] + ny * hw]); right.push([p.x[i] - nx * hw, p.y[i] - ny * hw]);
+    }
+    return [...left, ...right.reverse()];
   }
 
   /** Where (x, y) sits relative to a deck: station index/fraction, lateral distance, deck z there. */
@@ -76,9 +117,10 @@ export class GroundSurface {
       if (d2 < best) { best = d2; bi = i; bt = t; }
     }
     const lerp = (arr: Float64Array) => arr[bi] + (arr[Math.min(n - 1, bi + 1)] - arr[bi]) * bt;
-    // Beyond either end the point is not on the deck at all.
-    const beyond = (bi === 0 && bt === 0) || (bi === n - 2 && bt === 1);
-    return { d: beyond ? Infinity : Math.sqrt(best), z: lerp(deck.z), halfWidth: lerp(p.halfWidth), s: lerp(p.s) };
+    const s = lerp(p.s);
+    // Only the deck span lifts the surface; the approaches are relief.
+    const off = s <= deck.span[0] || s >= deck.span[1];
+    return { d: off ? Infinity : Math.sqrt(best), z: lerp(deck.z), halfWidth: lerp(p.halfWidth), s };
   }
 
   /** Riding-surface z: relief, lifted onto any measured deck within its width (blended over DECK_BLEND_M). */
@@ -94,8 +136,13 @@ export class GroundSurface {
       if (at.d === Infinity) continue;
       const w = 1 - smoothstep((at.d - at.halfWidth) / DECK_BLEND_M);
       if (w <= 0) continue;
+      // The ease toward each deck end uses this point's own relief, so the deck
+      // corners meet sloping ground as exactly as the centreline does.
+      const p = deck.profile;
+      const e = smoothstep(Math.min(at.s - deck.span[0], deck.span[1] - at.s) / DECK_EASE_M);
+      const top = e >= 1 ? at.z : g + e * (GroundSurface.deckZ(p, deck.ends, at.s) - g);
       // Never pull the surface below the relief: a deck only adds height.
-      z = Math.max(z, g + w * (at.z - g));
+      z = Math.max(z, g + w * (top - g));
     }
     return z;
   };
