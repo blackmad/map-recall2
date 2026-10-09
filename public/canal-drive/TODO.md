@@ -39,6 +39,21 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   every contact sheet before un-holding; run `npm run audit:glb -- --id=<id>`
   and `scripts/check-landmark-attachment.ts`.
   Gerard Dou Synagogue: side/rear walls open (audit: 7/30 see-through rays).
+  Willem de Zwijgerkerk (entrance wing; rework at `landmark/churches-a-20261010`
+  ac8736cf awaits review) and Van Gendt Hallen (gable corbel friezes, steel
+  windows, 3DBAG gable artefacts; rework in flight).
+- **Facade gate follow-ups (2026-10-10)**: installed models with clear misses on
+  photo | elevation sheets: Royal Palace (no central risalit/entrance arches,
+  uniform window grid), De Balie (red brick, two storeys; real front is pale
+  stone, three storeys), Concertgebouw (entrance arches modelled as rectangles).
+  Elevation skeletons with photos exist for 25 landmarks
+  (`scripts/landmarks/*-elevations.json`, photos in `artifacts/landmark-lanes/`);
+  counts are not filled: Haiku blind counts were too noisy — use a stronger
+  counter or rectified `pand-reference` crops. `check-manual-landmarks.ts`
+  fails on main: eight Haparandaweg manifest entries have no `bytes`.
+  Lane runs of `archive-model-sources.py` into the private repo are sometimes
+  denied by the auto-mode classifier; refs for vrijburg, van-gendt-hallen and
+  the 25 elevation photos are not archived yet.
 - **GLB quality audit** (`npm run audit:glb`, `src/canalRecall/landmarks/glbQuality.ts`,
   2026-10-09): 184 of 236 installed models flag at least one FAIL (detached
   124, see-through 84, holes 61, far-outside 32). Detached-part detection is
