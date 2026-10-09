@@ -1,0 +1,50 @@
+{
+  "id": "fire-station-dirk",
+  "name": "Kazerne Dirk",
+  "landmarkId": "n2816456151",
+  "modelUrl": "./models/fire-station-dirk.glb",
+  "suppressOsmIds": [
+    "w44508781",
+    "NL.IMBAG.Pand.0363100012162222"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.88591,
+      52.357965
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 39,
+    "widthMetres": 38
+  },
+  "surveyed": {
+    "anchor": [
+      4.88591,
+      52.357965
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG exact ground outline/OSM identity; native east X/south Z"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 90,
+  "materialOverrides": {
+    "brick": "#b75b3e",
+    "stone": "#797d78",
+    "slate": "#7d5144",
+    "white": "#d1cec0",
+    "glass": "#536b70",
+    "dark": "#252e2e",
+    "frame": "#404b48",
+    "copper": "#689487",
+    "bronze": "#807856",
+    "greyBrick": "#a4afad"
+  },
+  "attribution": {
+    "title": "Kazerne Dirk",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1994",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native BAG reconstruction;2025 panorama-backed front arches/stepped gables/divided windows and roof families. Roof and ornament geometry approximated; no third-party pixels or mesh imported."
+  }
+}

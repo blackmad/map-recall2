@@ -1,0 +1,63 @@
+{
+  "modelId": "fire-station-hendrik",
+  "status": "verified-scoped-local",
+  "sourceArchiveCommit": "faa4982c39e897044f29862de5584135b3f1411d",
+  "nativeEvidence": "artifacts/firestations-review/final-hendrik/fire-station-hendrik",
+  "performanceEvidence": "artifacts/firestations-review/final-hendrik-valid-gps/fire-station-hendrik/gameplay",
+  "checks": [
+    "root and independent source/gallery/live recognition",
+    "selected real destination and documented arrival",
+    "geographic pin and physical sourced card click",
+    "scale 1, exact masks including roofs, retained resident/drawn neighbors",
+    "disabled and failed-load ordinary fallback",
+    "actual desktop/touch stationary-rider pans",
+    "90-frame on/off/on same-scene timing"
+  ],
+  "performance": [
+    {
+      "mode": "desktop",
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.700000002980232,
+        16.700000002980232,
+        16.599999994039536
+      ],
+      "p95Ms": [
+        18.5,
+        18.5,
+        17.900000005960464
+      ],
+      "fixedGps": [
+        4.8815,
+        52.37215
+      ],
+      "riderFixed": false,
+      "physicalPan": true
+    },
+    {
+      "mode": "touch",
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+      "p50Ms": [
+        16.700000002980232,
+        16.600000008940697,
+        16.700000002980232
+      ],
+      "p95Ms": [
+        18.200000002980232,
+        18.5,
+        18.599999994039536
+      ],
+      "fixedGps": [
+        4.8815,
+        52.37215
+      ],
+      "riderFixed": false,
+      "physicalPan": true
+    }
+  ],
+  "limitations": [
+    "Source-specific rear openings remain bounded approximation",
+    "Performance is headless Chromium on Apple M4 Pro Metal; physical devices were not benchmarked"
+  ],
+  "failedEvidence": "Preserved first drafts, source/geometry failures and harness attempts under model docs and artifacts."
+}

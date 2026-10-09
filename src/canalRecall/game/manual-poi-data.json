@@ -1507,5 +1507,33 @@
     "funFact": "Mediamatic transformed former municipal bridge-maintenance buildings at Dijksgracht into a bio-art laboratory and added 360 m² of greenhouse space around them. Its experiments bring artists, designers and living organisms together.",
     "sourceUrl": "https://www.mediamatic.net/nl/page/73377/mediamatic-has-moved-to-dijkspark-in-2014",
     "preferDescription": true
+  },
+  {
+    "modelId": "fire-station-hendrik",
+    "name": "Brandweerkazerne Hendrik",
+    "center": [
+      52.37250179,
+      4.87559942
+    ],
+    "description": "Hendrik has occupied the curved station at the Rozengracht–Marnixstraat corner since 1985. Its name retains the H of the Huiszittenhuis, the former station on Prinsengracht. The building reopened on 6 November 2025 after renovation and energy upgrades.",
+    "sourceUrl": "https://www.koninklijkewoudenberg.nl/nieuws/feestelijke-opening-van-de-gerenoveerde-brandweerkazerne-hendrik/"
+  },
+  {
+    "modelId": "fire-station-dirk",
+    "name": "Kazerne Dirk",
+    "center": [
+      52.357901091,
+      4.885977871
+    ],
+    "description": "Designed by Hendrik Leguyt, Dirk opened in 1897 beside the Museumplein. Three arched vehicle entrances, stepped brick gables and Amsterdam’s arms distinguish the working fire station. Its 2021–2023 renovation restored decorated masonry and made the monument gas-free. The name preserves D for Duivelseiland from the earlier station.",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1994",
+    "routeDestination": {
+      "center": [
+        52.35788662,
+        4.885995529
+      ],
+      "sourceUrl": "https://data.amsterdam.nl/",
+      "note": "Two metres outside surveyed central Honthorststraat vehicle arch, checked against archived 2025 municipal panorama; camera location is separate."
+    }
   }
 ]

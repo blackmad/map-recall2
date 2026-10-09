@@ -1,0 +1,2108 @@
+{
+  "version": 1,
+  "researchedOn": "2026-10-09",
+  "scope": "Current land firestations of the Amsterdam municipality, including Driemond and Weesp. Operator index is region-wide; exclude neighboring municipalities.",
+  "sourceUrls": [
+    "https://www.brandweer.nl/amsterdam-amstelland/kazernes/"
+  ],
+  "sourceArchivePath": "firestations-inventory/",
+  "stations": [
+    {
+      "name": "Kazerne Hendrik",
+      "proposedModelId": "fire-station-hendrik",
+      "officialName": "Amsterdam Hendrik",
+      "address": "Marnixstraat 170",
+      "postcodeCity": "1016 TG Amsterdam",
+      "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-hendrik/",
+      "addressMatch": "Marnixstraat 170, 1016TG Amsterdam",
+      "municipality": "Amsterdam",
+      "centerLatLon": [
+        52.37250179,
+        4.87559942
+      ],
+      "coordinateMeaning": "BAG address/VBO centroid from PDOK; public entrance and physical footprint still require verification",
+      "bag": {
+        "nummeraanduiding_id": "0363200013043882",
+        "adresseerbaarobject_id": "0363010012583776",
+        "id": "adr-c725631b70e17b73cffe6a1db8060d06"
+      },
+      "bagPandIds": [
+        "0363100012169391"
+      ],
+      "municipalVboSourceUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012583776/",
+      "identityState": "official current station with BAG address match; footprint/OSM scope pending",
+      "modeled": false,
+      "modeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "rawSourcePaths": [
+        "firestations-inventory/amsterdam-hendrik.html",
+        "firestations-inventory/amsterdam-hendrik-pdok.json",
+        "firestations-inventory/amsterdam-hendrik-vbo.json",
+        "firestations-inventory/amsterdam-hendrik-pand-0363100012169391.json"
+      ],
+      "installedBuildingIds": [
+        "NL.IMBAG.Pand.0363100012169391"
+      ],
+      "installedTilePaths": [
+        "public/data/extracts/amsterdam/building-tiles/14/8413/5384.geojson.gz"
+      ],
+      "mapExtractCoverage": "present",
+      "nativeTileFeatures": [
+        {
+          "tile": "public/data/extracts/amsterdam/building-tiles/14/8413/5384.geojson.gz",
+          "feature": {
+            "type": "Feature",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012169391",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 14.42
+            },
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    4.875764,
+                    52.372668
+                  ],
+                  [
+                    4.875798,
+                    52.372781
+                  ],
+                  [
+                    4.875451,
+                    52.37282
+                  ],
+                  [
+                    4.875417,
+                    52.372707
+                  ],
+                  [
+                    4.875511,
+                    52.372697
+                  ],
+                  [
+                    4.875505,
+                    52.372681
+                  ],
+                  [
+                    4.875499,
+                    52.372665
+                  ],
+                  [
+                    4.875492,
+                    52.37265
+                  ],
+                  [
+                    4.875484,
+                    52.372635
+                  ],
+                  [
+                    4.875476,
+                    52.37262
+                  ],
+                  [
+                    4.875467,
+                    52.372605
+                  ],
+                  [
+                    4.875447,
+                    52.37261
+                  ],
+                  [
+                    4.875411,
+                    52.372562
+                  ],
+                  [
+                    4.875431,
+                    52.372556
+                  ],
+                  [
+                    4.875422,
+                    52.372545
+                  ],
+                  [
+                    4.875413,
+                    52.372536
+                  ],
+                  [
+                    4.875404,
+                    52.372527
+                  ],
+                  [
+                    4.875396,
+                    52.372519
+                  ],
+                  [
+                    4.875388,
+                    52.372511
+                  ],
+                  [
+                    4.875379,
+                    52.372503
+                  ],
+                  [
+                    4.875368,
+                    52.372495
+                  ],
+                  [
+                    4.875358,
+                    52.372486
+                  ],
+                  [
+                    4.875347,
+                    52.372478
+                  ],
+                  [
+                    4.875334,
+                    52.372468
+                  ],
+                  [
+                    4.875321,
+                    52.372459
+                  ],
+                  [
+                    4.875308,
+                    52.372449
+                  ],
+                  [
+                    4.875275,
+                    52.37243
+                  ],
+                  [
+                    4.875269,
+                    52.372433
+                  ],
+                  [
+                    4.875133,
+                    52.372449
+                  ],
+                  [
+                    4.875123,
+                    52.372417
+                  ],
+                  [
+                    4.875246,
+                    52.372403
+                  ],
+                  [
+                    4.875251,
+                    52.372406
+                  ],
+                  [
+                    4.875411,
+                    52.372303
+                  ],
+                  [
+                    4.875446,
+                    52.372323
+                  ],
+                  [
+                    4.875465,
+                    52.372335
+                  ],
+                  [
+                    4.875475,
+                    52.372341
+                  ],
+                  [
+                    4.875499,
+                    52.372357
+                  ],
+                  [
+                    4.875528,
+                    52.372377
+                  ],
+                  [
+                    4.875555,
+                    52.372398
+                  ],
+                  [
+                    4.875581,
+                    52.37242
+                  ],
+                  [
+                    4.875603,
+                    52.372441
+                  ],
+                  [
+                    4.875624,
+                    52.372462
+                  ],
+                  [
+                    4.875644,
+                    52.372484
+                  ],
+                  [
+                    4.875663,
+                    52.372507
+                  ],
+                  [
+                    4.875676,
+                    52.372503
+                  ],
+                  [
+                    4.875693,
+                    52.372525
+                  ],
+                  [
+                    4.875679,
+                    52.372529
+                  ],
+                  [
+                    4.875691,
+                    52.372546
+                  ],
+                  [
+                    4.8757,
+                    52.372559
+                  ],
+                  [
+                    4.875708,
+                    52.372573
+                  ],
+                  [
+                    4.875716,
+                    52.372587
+                  ],
+                  [
+                    4.875722,
+                    52.372598
+                  ],
+                  [
+                    4.875728,
+                    52.37261
+                  ],
+                  [
+                    4.875733,
+                    52.372622
+                  ],
+                  [
+                    4.875737,
+                    52.372631
+                  ],
+                  [
+                    4.875742,
+                    52.372645
+                  ],
+                  [
+                    4.87575,
+                    52.37267
+                  ],
+                  [
+                    4.875764,
+                    52.372668
+                  ]
+                ]
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Kazerne Anton",
+      "proposedModelId": "fire-station-anton",
+      "officialName": "Amsterdam Anton",
+      "address": "Langbroekdreef 10",
+      "postcodeCity": "1108 EB Amsterdam",
+      "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-anton/",
+      "addressMatch": "Langbroekdreef 10, 1108EB Amsterdam",
+      "municipality": "Amsterdam",
+      "centerLatLon": [
+        52.3071692,
+        4.97316629
+      ],
+      "coordinateMeaning": "BAG address/VBO centroid from PDOK; public entrance and physical footprint still require verification",
+      "bag": {
+        "nummeraanduiding_id": "0363200012091596",
+        "adresseerbaarobject_id": "0363010012090209",
+        "id": "adr-9254f152e4bd551c5be8d0fe248dd1e4"
+      },
+      "bagPandIds": [
+        "0363100012244404"
+      ],
+      "municipalVboSourceUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012090209/",
+      "identityState": "official current station with BAG address match; footprint/OSM scope pending",
+      "modeled": false,
+      "modeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "rawSourcePaths": [
+        "firestations-inventory/amsterdam-anton.html",
+        "firestations-inventory/amsterdam-anton-pdok.json",
+        "firestations-inventory/amsterdam-anton-vbo.json",
+        "firestations-inventory/amsterdam-anton-pand-0363100012244404.json"
+      ],
+      "installedBuildingIds": [
+        "NL.IMBAG.Pand.0363100012244404"
+      ],
+      "installedTilePaths": [
+        "public/data/extracts/amsterdam/building-tiles/14/8418/5389.geojson.gz"
+      ],
+      "mapExtractCoverage": "present",
+      "nativeTileFeatures": [
+        {
+          "tile": "public/data/extracts/amsterdam/building-tiles/14/8418/5389.geojson.gz",
+          "feature": {
+            "type": "Feature",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012244404",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 13.88
+            },
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    4.973602,
+                    52.307563
+                  ],
+                  [
+                    4.973421,
+                    52.307602
+                  ],
+                  [
+                    4.973258,
+                    52.307321
+                  ],
+                  [
+                    4.973038,
+                    52.307369
+                  ],
+                  [
+                    4.972949,
+                    52.307388
+                  ],
+                  [
+                    4.972927,
+                    52.307349
+                  ],
+                  [
+                    4.97285,
+                    52.307218
+                  ],
+                  [
+                    4.973132,
+                    52.307157
+                  ],
+                  [
+                    4.973133,
+                    52.307158
+                  ],
+                  [
+                    4.973158,
+                    52.307153
+                  ],
+                  [
+                    4.973157,
+                    52.307151
+                  ],
+                  [
+                    4.97334,
+                    52.307111
+                  ],
+                  [
+                    4.973602,
+                    52.307563
+                  ]
+                ]
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Kazerne Dirk",
+      "proposedModelId": "fire-station-dirk",
+      "officialName": "Amsterdam Dirk",
+      "address": "Honthorststraat 27",
+      "postcodeCity": "1071 DC Amsterdam",
+      "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-dirk/",
+      "addressMatch": "Honthorststraat 27, 1071DC Amsterdam",
+      "municipality": "Amsterdam",
+      "centerLatLon": [
+        52.35792513,
+        4.88595865
+      ],
+      "coordinateMeaning": "BAG address/VBO centroid from PDOK; public entrance and physical footprint still require verification",
+      "bag": {
+        "nummeraanduiding_id": "0363200012073804",
+        "adresseerbaarobject_id": "0363010012073468",
+        "id": "adr-8621173cf2b215992ee3990c7ce73f0c"
+      },
+      "bagPandIds": [
+        "0363100012162222"
+      ],
+      "municipalVboSourceUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012073468/",
+      "identityState": "official current station with BAG address match; footprint/OSM scope pending",
+      "modeled": false,
+      "modeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "rawSourcePaths": [
+        "firestations-inventory/amsterdam-dirk.html",
+        "firestations-inventory/amsterdam-dirk-pdok.json",
+        "firestations-inventory/amsterdam-dirk-vbo.json",
+        "firestations-inventory/amsterdam-dirk-pand-0363100012162222.json"
+      ],
+      "installedBuildingIds": [
+        "NL.IMBAG.Pand.0363100012162222"
+      ],
+      "installedTilePaths": [
+        "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz"
+      ],
+      "mapExtractCoverage": "present",
+      "nativeTileFeatures": [
+        {
+          "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5385.geojson.gz",
+          "feature": {
+            "type": "Feature",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012162222",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 14.07
+            },
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    4.886188,
+                    52.35799
+                  ],
+                  [
+                    4.886148,
+                    52.358022
+                  ],
+                  [
+                    4.886166,
+                    52.358031
+                  ],
+                  [
+                    4.886122,
+                    52.358066
+                  ],
+                  [
+                    4.886118,
+                    52.358065
+                  ],
+                  [
+                    4.8861,
+                    52.358079
+                  ],
+                  [
+                    4.886104,
+                    52.358081
+                  ],
+                  [
+                    4.88606,
+                    52.358116
+                  ],
+                  [
+                    4.886042,
+                    52.358108
+                  ],
+                  [
+                    4.886018,
+                    52.358128
+                  ],
+                  [
+                    4.885936,
+                    52.35809
+                  ],
+                  [
+                    4.885944,
+                    52.358083
+                  ],
+                  [
+                    4.885868,
+                    52.358048
+                  ],
+                  [
+                    4.885851,
+                    52.358062
+                  ],
+                  [
+                    4.885768,
+                    52.358024
+                  ],
+                  [
+                    4.885785,
+                    52.35801
+                  ],
+                  [
+                    4.885709,
+                    52.357975
+                  ],
+                  [
+                    4.885701,
+                    52.357981
+                  ],
+                  [
+                    4.885619,
+                    52.357944
+                  ],
+                  [
+                    4.885685,
+                    52.35789
+                  ],
+                  [
+                    4.885676,
+                    52.357886
+                  ],
+                  [
+                    4.885675,
+                    52.35788
+                  ],
+                  [
+                    4.885688,
+                    52.357869
+                  ],
+                  [
+                    4.885699,
+                    52.357868
+                  ],
+                  [
+                    4.885707,
+                    52.357872
+                  ],
+                  [
+                    4.885789,
+                    52.357806
+                  ],
+                  [
+                    4.885871,
+                    52.357843
+                  ],
+                  [
+                    4.885862,
+                    52.357851
+                  ],
+                  [
+                    4.885896,
+                    52.357867
+                  ],
+                  [
+                    4.885897,
+                    52.357866
+                  ],
+                  [
+                    4.886063,
+                    52.357943
+                  ],
+                  [
+                    4.886062,
+                    52.357943
+                  ],
+                  [
+                    4.886097,
+                    52.357959
+                  ],
+                  [
+                    4.886106,
+                    52.357952
+                  ],
+                  [
+                    4.886188,
+                    52.35799
+                  ]
+                ]
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Kazerne IJsbrand",
+      "proposedModelId": "fire-station-ijsbrand",
+      "officialName": "Amsterdam IJsbrand",
+      "address": "Displaystraat 1",
+      "postcodeCity": "1033 RZ Amsterdam",
+      "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-ijsbrand/",
+      "addressMatch": "Displaystraat 1, 1033RZ Amsterdam",
+      "municipality": "Amsterdam",
+      "centerLatLon": [
+        52.40627801,
+        4.88957344
+      ],
+      "coordinateMeaning": "BAG address/VBO centroid from PDOK; public entrance and physical footprint still require verification",
+      "bag": {
+        "nummeraanduiding_id": "0363200000485730",
+        "adresseerbaarobject_id": "0363010001035955",
+        "id": "adr-9855cec2198d5fbf6230a35cce941827"
+      },
+      "bagPandIds": [
+        "0363100012115117"
+      ],
+      "municipalVboSourceUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001035955/",
+      "identityState": "official current station with BAG address match; footprint/OSM scope pending",
+      "modeled": false,
+      "modeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "rawSourcePaths": [
+        "firestations-inventory/amsterdam-ijsbrand.html",
+        "firestations-inventory/amsterdam-ijsbrand-pdok.json",
+        "firestations-inventory/amsterdam-ijsbrand-vbo.json",
+        "firestations-inventory/amsterdam-ijsbrand-pand-0363100012115117.json"
+      ],
+      "installedBuildingIds": [
+        "NL.IMBAG.Pand.0363100012115117"
+      ],
+      "installedTilePaths": [
+        "public/data/extracts/amsterdam/building-tiles/14/8414/5381.geojson.gz"
+      ],
+      "mapExtractCoverage": "present",
+      "nativeTileFeatures": [
+        {
+          "tile": "public/data/extracts/amsterdam/building-tiles/14/8414/5381.geojson.gz",
+          "feature": {
+            "type": "Feature",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012115117",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 10.42
+            },
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    4.889273,
+                    52.406376
+                  ],
+                  [
+                    4.889263,
+                    52.406368
+                  ],
+                  [
+                    4.889546,
+                    52.406234
+                  ],
+                  [
+                    4.889556,
+                    52.406242
+                  ],
+                  [
+                    4.889579,
+                    52.406261
+                  ],
+                  [
+                    4.889589,
+                    52.406254
+                  ],
+                  [
+                    4.889617,
+                    52.406267
+                  ],
+                  [
+                    4.889602,
+                    52.406279
+                  ],
+                  [
+                    4.889615,
+                    52.406289
+                  ],
+                  [
+                    4.88966,
+                    52.406268
+                  ],
+                  [
+                    4.889702,
+                    52.406301
+                  ],
+                  [
+                    4.889656,
+                    52.406322
+                  ],
+                  [
+                    4.889672,
+                    52.406335
+                  ],
+                  [
+                    4.889676,
+                    52.406333
+                  ],
+                  [
+                    4.88981,
+                    52.406439
+                  ],
+                  [
+                    4.889633,
+                    52.406523
+                  ],
+                  [
+                    4.889711,
+                    52.406585
+                  ],
+                  [
+                    4.889517,
+                    52.406677
+                  ],
+                  [
+                    4.889246,
+                    52.406464
+                  ],
+                  [
+                    4.889301,
+                    52.406438
+                  ],
+                  [
+                    4.889242,
+                    52.406391
+                  ],
+                  [
+                    4.889273,
+                    52.406376
+                  ]
+                ]
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Kazerne Nico",
+      "proposedModelId": "fire-station-nico",
+      "officialName": "Amsterdam Nico",
+      "address": "IJ-Tunnel 4",
+      "postcodeCity": "1011 TA Amsterdam",
+      "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-nico/",
+      "addressMatch": "IJ-tunnel 4, 1011TA Amsterdam",
+      "municipality": "Amsterdam",
+      "centerLatLon": [
+        52.37005792,
+        4.90927401
+      ],
+      "coordinateMeaning": "BAG address/VBO centroid from PDOK; public entrance and physical footprint still require verification",
+      "bag": {
+        "nummeraanduiding_id": "0363200010914209",
+        "adresseerbaarobject_id": "0363010010914232",
+        "id": "adr-ef0fdf36bec265e9ec153628a03c48a1"
+      },
+      "bagPandIds": [
+        "0363100012165618"
+      ],
+      "municipalVboSourceUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010010914232/",
+      "identityState": "official current station with BAG address match; footprint/OSM scope pending",
+      "modeled": false,
+      "modeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "rawSourcePaths": [
+        "firestations-inventory/amsterdam-nico.html",
+        "firestations-inventory/amsterdam-nico-pdok.json",
+        "firestations-inventory/amsterdam-nico-vbo.json",
+        "firestations-inventory/amsterdam-nico-pand-0363100012165618.json"
+      ],
+      "installedBuildingIds": [
+        "NL.IMBAG.Pand.0363100012165618"
+      ],
+      "installedTilePaths": [
+        "public/data/extracts/amsterdam/building-tiles/14/8415/5384.geojson.gz"
+      ],
+      "mapExtractCoverage": "present",
+      "nativeTileFeatures": [
+        {
+          "tile": "public/data/extracts/amsterdam/building-tiles/14/8415/5384.geojson.gz",
+          "feature": {
+            "type": "Feature",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012165618",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 19.82
+            },
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    4.909096,
+                    52.370019
+                  ],
+                  [
+                    4.909082,
+                    52.370032
+                  ],
+                  [
+                    4.908919,
+                    52.369969
+                  ],
+                  [
+                    4.908979,
+                    52.369912
+                  ],
+                  [
+                    4.90897,
+                    52.369907
+                  ],
+                  [
+                    4.909079,
+                    52.369803
+                  ],
+                  [
+                    4.909088,
+                    52.369807
+                  ],
+                  [
+                    4.909295,
+                    52.36961
+                  ],
+                  [
+                    4.909458,
+                    52.369674
+                  ],
+                  [
+                    4.909368,
+                    52.36976
+                  ],
+                  [
+                    4.909392,
+                    52.36977
+                  ],
+                  [
+                    4.909261,
+                    52.369896
+                  ],
+                  [
+                    4.909318,
+                    52.369918
+                  ],
+                  [
+                    4.90924,
+                    52.369994
+                  ],
+                  [
+                    4.909278,
+                    52.370019
+                  ],
+                  [
+                    4.909417,
+                    52.36994
+                  ],
+                  [
+                    4.909555,
+                    52.370031
+                  ],
+                  [
+                    4.909484,
+                    52.370071
+                  ],
+                  [
+                    4.909908,
+                    52.37035
+                  ],
+                  [
+                    4.909947,
+                    52.370328
+                  ],
+                  [
+                    4.910039,
+                    52.370388
+                  ],
+                  [
+                    4.909857,
+                    52.370491
+                  ],
+                  [
+                    4.909308,
+                    52.370129
+                  ],
+                  [
+                    4.909287,
+                    52.370148
+                  ],
+                  [
+                    4.909216,
+                    52.370121
+                  ],
+                  [
+                    4.909257,
+                    52.370081
+                  ],
+                  [
+                    4.909096,
+                    52.370019
+                  ]
+                ]
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Kazerne Osdorp",
+      "proposedModelId": "fire-station-osdorp",
+      "officialName": "Amsterdam Osdorp",
+      "address": "Ookmeerweg 2",
+      "postcodeCity": "1068 ZX Amsterdam",
+      "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-osdorp/",
+      "addressMatch": "Ookmeerweg 2, 1068ZX Amsterdam",
+      "municipality": "Amsterdam",
+      "centerLatLon": [
+        52.36653182,
+        4.80248253
+      ],
+      "coordinateMeaning": "BAG address/VBO centroid from PDOK; public entrance and physical footprint still require verification",
+      "bag": {
+        "nummeraanduiding_id": "0363200000500455",
+        "adresseerbaarobject_id": "0363010001035641",
+        "id": "adr-7a6bbca84c9a426fe2e9287f541bcf9d"
+      },
+      "bagPandIds": [
+        "0363100012096223"
+      ],
+      "municipalVboSourceUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001035641/",
+      "identityState": "official current station with BAG address match; footprint/OSM scope pending",
+      "modeled": false,
+      "modeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "rawSourcePaths": [
+        "firestations-inventory/amsterdam-osdorp.html",
+        "firestations-inventory/amsterdam-osdorp-pdok.json",
+        "firestations-inventory/amsterdam-osdorp-vbo.json",
+        "firestations-inventory/amsterdam-osdorp-pand-0363100012096223.json"
+      ],
+      "installedBuildingIds": [
+        "NL.IMBAG.Pand.0363100012096223"
+      ],
+      "installedTilePaths": [
+        "public/data/extracts/amsterdam/building-tiles/14/8410/5384.geojson.gz"
+      ],
+      "mapExtractCoverage": "present",
+      "nativeTileFeatures": [
+        {
+          "tile": "public/data/extracts/amsterdam/building-tiles/14/8410/5384.geojson.gz",
+          "feature": {
+            "type": "Feature",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012096223",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 10.56
+            },
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    4.802518,
+                    52.366628
+                  ],
+                  [
+                    4.802244,
+                    52.366573
+                  ],
+                  [
+                    4.802274,
+                    52.366518
+                  ],
+                  [
+                    4.802203,
+                    52.366503
+                  ],
+                  [
+                    4.802064,
+                    52.366763
+                  ],
+                  [
+                    4.801854,
+                    52.366721
+                  ],
+                  [
+                    4.802053,
+                    52.366349
+                  ],
+                  [
+                    4.802261,
+                    52.36639
+                  ],
+                  [
+                    4.802214,
+                    52.366481
+                  ],
+                  [
+                    4.802287,
+                    52.366496
+                  ],
+                  [
+                    4.802305,
+                    52.366459
+                  ],
+                  [
+                    4.802578,
+                    52.366514
+                  ],
+                  [
+                    4.802518,
+                    52.366628
+                  ]
+                ]
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Kazerne Pieter",
+      "proposedModelId": "fire-station-pieter",
+      "officialName": "Amsterdam Pieter",
+      "address": "Poeldijkstraat 1020",
+      "postcodeCity": "1059 VM Amsterdam",
+      "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-pieter/",
+      "addressMatch": "Poeldijkstraat 1020, 1059VM Amsterdam",
+      "municipality": "Amsterdam",
+      "centerLatLon": [
+        52.34880645,
+        4.84366381
+      ],
+      "coordinateMeaning": "BAG address/VBO centroid from PDOK; public entrance and physical footprint still require verification",
+      "bag": {
+        "nummeraanduiding_id": "0363200000238585",
+        "adresseerbaarobject_id": "0363010000778676",
+        "id": "adr-d810b2c60061d76f806a8a2810e90cad"
+      },
+      "bagPandIds": [
+        "0363100012088589"
+      ],
+      "municipalVboSourceUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000778676/",
+      "identityState": "official current station with BAG address match; footprint/OSM scope pending",
+      "modeled": false,
+      "modeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "rawSourcePaths": [
+        "firestations-inventory/amsterdam-pieter.html",
+        "firestations-inventory/amsterdam-pieter-pdok.json",
+        "firestations-inventory/amsterdam-pieter-vbo.json",
+        "firestations-inventory/amsterdam-pieter-pand-0363100012088589.json"
+      ],
+      "installedBuildingIds": [
+        "NL.IMBAG.Pand.0363100012088589"
+      ],
+      "installedTilePaths": [
+        "public/data/extracts/amsterdam/building-tiles/14/8412/5385.geojson.gz"
+      ],
+      "mapExtractCoverage": "present",
+      "nativeTileFeatures": [
+        {
+          "tile": "public/data/extracts/amsterdam/building-tiles/14/8412/5385.geojson.gz",
+          "feature": {
+            "type": "Feature",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012088589",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 14.43
+            },
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    4.843712,
+                    52.348803
+                  ],
+                  [
+                    4.843712,
+                    52.348844
+                  ],
+                  [
+                    4.843681,
+                    52.348844
+                  ],
+                  [
+                    4.843678,
+                    52.349032
+                  ],
+                  [
+                    4.843646,
+                    52.349032
+                  ],
+                  [
+                    4.843644,
+                    52.349112
+                  ],
+                  [
+                    4.8435,
+                    52.349111
+                  ],
+                  [
+                    4.8435,
+                    52.349031
+                  ],
+                  [
+                    4.843468,
+                    52.349031
+                  ],
+                  [
+                    4.843471,
+                    52.348842
+                  ],
+                  [
+                    4.84345,
+                    52.348842
+                  ],
+                  [
+                    4.843452,
+                    52.348765
+                  ],
+                  [
+                    4.843554,
+                    52.348766
+                  ],
+                  [
+                    4.843554,
+                    52.348772
+                  ],
+                  [
+                    4.843629,
+                    52.348772
+                  ],
+                  [
+                    4.843629,
+                    52.348766
+                  ],
+                  [
+                    4.843682,
+                    52.348766
+                  ],
+                  [
+                    4.843681,
+                    52.348803
+                  ],
+                  [
+                    4.843712,
+                    52.348803
+                  ]
+                ]
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Kazerne Teunis",
+      "proposedModelId": "fire-station-teunis",
+      "officialName": "Amsterdam Teunis",
+      "address": "Vredenhofweg 3",
+      "postcodeCity": "1051 LM Amsterdam",
+      "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-teunis/",
+      "addressMatch": "Vredenhofweg 3, 1051LM Amsterdam",
+      "municipality": "Amsterdam",
+      "centerLatLon": [
+        52.38456141,
+        4.86333819
+      ],
+      "coordinateMeaning": "BAG address/VBO centroid from PDOK; public entrance and physical footprint still require verification",
+      "bag": {
+        "nummeraanduiding_id": "0363200001993646",
+        "adresseerbaarobject_id": "0363010001994715",
+        "id": "adr-9110bc5cfd980dbf82ee5ed259dbec11"
+      },
+      "bagPandIds": [
+        "0363100012241010"
+      ],
+      "municipalVboSourceUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010001994715/",
+      "identityState": "official current station with BAG address match; footprint/OSM scope pending",
+      "modeled": false,
+      "modeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "rawSourcePaths": [
+        "firestations-inventory/amsterdam-teunis.html",
+        "firestations-inventory/amsterdam-teunis-pdok.json",
+        "firestations-inventory/amsterdam-teunis-vbo.json",
+        "firestations-inventory/amsterdam-teunis-pand-0363100012241010.json"
+      ],
+      "installedBuildingIds": [
+        "NL.IMBAG.Pand.0363100012241010"
+      ],
+      "installedTilePaths": [
+        "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz"
+      ],
+      "mapExtractCoverage": "present",
+      "nativeTileFeatures": [
+        {
+          "tile": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz",
+          "feature": {
+            "type": "Feature",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012241010",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 10.24
+            },
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    4.863821,
+                    52.384576
+                  ],
+                  [
+                    4.863754,
+                    52.384756
+                  ],
+                  [
+                    4.863283,
+                    52.384748
+                  ],
+                  [
+                    4.863286,
+                    52.384719
+                  ],
+                  [
+                    4.863333,
+                    52.38472
+                  ],
+                  [
+                    4.863347,
+                    52.384591
+                  ],
+                  [
+                    4.8633,
+                    52.384589
+                  ],
+                  [
+                    4.863303,
+                    52.384564
+                  ],
+                  [
+                    4.863324,
+                    52.384558
+                  ],
+                  [
+                    4.863326,
+                    52.38454
+                  ],
+                  [
+                    4.863306,
+                    52.384539
+                  ],
+                  [
+                    4.863318,
+                    52.384427
+                  ],
+                  [
+                    4.863458,
+                    52.384445
+                  ],
+                  [
+                    4.863452,
+                    52.384504
+                  ],
+                  [
+                    4.86364,
+                    52.384511
+                  ],
+                  [
+                    4.863634,
+                    52.384568
+                  ],
+                  [
+                    4.863821,
+                    52.384576
+                  ]
+                ]
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Kazerne Victor",
+      "proposedModelId": "fire-station-victor",
+      "officialName": "Amsterdam Victor",
+      "address": "Dapperstraat 325",
+      "postcodeCity": "1093 BS Amsterdam",
+      "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-victor/",
+      "addressMatch": "Dapperstraat 325, 1093BS Amsterdam",
+      "municipality": "Amsterdam",
+      "centerLatLon": [
+        52.3604391,
+        4.92924015
+      ],
+      "coordinateMeaning": "BAG address/VBO centroid from PDOK; public entrance and physical footprint still require verification",
+      "bag": {
+        "nummeraanduiding_id": "0363200000077945",
+        "adresseerbaarobject_id": "0363010000615767",
+        "id": "adr-d2b828f08d3390a5522ddf0e8b5bffde"
+      },
+      "bagPandIds": [
+        "0363100012103300"
+      ],
+      "municipalVboSourceUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000615767/",
+      "identityState": "official current station with BAG address match; footprint/OSM scope pending",
+      "modeled": false,
+      "modeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "rawSourcePaths": [
+        "firestations-inventory/amsterdam-victor.html",
+        "firestations-inventory/amsterdam-victor-pdok.json",
+        "firestations-inventory/amsterdam-victor-vbo.json",
+        "firestations-inventory/amsterdam-victor-pand-0363100012103300.json"
+      ],
+      "installedBuildingIds": [
+        "NL.IMBAG.Pand.0363100012103300"
+      ],
+      "installedTilePaths": [
+        "public/data/extracts/amsterdam/building-tiles/14/8416/5385.geojson.gz"
+      ],
+      "mapExtractCoverage": "present",
+      "nativeTileFeatures": [
+        {
+          "tile": "public/data/extracts/amsterdam/building-tiles/14/8416/5385.geojson.gz",
+          "feature": {
+            "type": "Feature",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012103300",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 17.27
+            },
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    4.929307,
+                    52.360537
+                  ],
+                  [
+                    4.929103,
+                    52.360486
+                  ],
+                  [
+                    4.929165,
+                    52.360395
+                  ],
+                  [
+                    4.929391,
+                    52.36045
+                  ],
+                  [
+                    4.929359,
+                    52.360497
+                  ],
+                  [
+                    4.929337,
+                    52.360492
+                  ],
+                  [
+                    4.929307,
+                    52.360537
+                  ]
+                ]
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Kazerne Willem",
+      "proposedModelId": "fire-station-willem",
+      "officialName": "Amsterdam Willem",
+      "address": "Ringdijk 98",
+      "postcodeCity": "1097 AH Amsterdam",
+      "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-willem/",
+      "addressMatch": "Ringdijk 98, 1097AH Amsterdam",
+      "municipality": "Amsterdam",
+      "centerLatLon": [
+        52.34891478,
+        4.91499071
+      ],
+      "coordinateMeaning": "BAG address/VBO centroid from PDOK; public entrance and physical footprint still require verification",
+      "bag": {
+        "nummeraanduiding_id": "0363200000252879",
+        "adresseerbaarobject_id": "0363010000793612",
+        "id": "adr-39e1c175a1962d35576fff7326e68562"
+      },
+      "bagPandIds": [
+        "0363100012143776"
+      ],
+      "municipalVboSourceUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000793612/",
+      "identityState": "official current station with BAG address match; footprint/OSM scope pending",
+      "modeled": false,
+      "modeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "rawSourcePaths": [
+        "firestations-inventory/amsterdam-willem.html",
+        "firestations-inventory/amsterdam-willem-pdok.json",
+        "firestations-inventory/amsterdam-willem-vbo.json",
+        "firestations-inventory/amsterdam-willem-pand-0363100012143776.json"
+      ],
+      "installedBuildingIds": [
+        "NL.IMBAG.Pand.0363100012143776"
+      ],
+      "installedTilePaths": [
+        "public/data/extracts/amsterdam/building-tiles/14/8415/5386.geojson.gz"
+      ],
+      "mapExtractCoverage": "present",
+      "nativeTileFeatures": [
+        {
+          "tile": "public/data/extracts/amsterdam/building-tiles/14/8415/5386.geojson.gz",
+          "feature": {
+            "type": "Feature",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012143776",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 18.11
+            },
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    4.915548,
+                    52.347982
+                  ],
+                  [
+                    4.915543,
+                    52.347997
+                  ],
+                  [
+                    4.915566,
+                    52.348001
+                  ],
+                  [
+                    4.915574,
+                    52.347985
+                  ],
+                  [
+                    4.915678,
+                    52.348005
+                  ],
+                  [
+                    4.91561,
+                    52.348137
+                  ],
+                  [
+                    4.915591,
+                    52.348133
+                  ],
+                  [
+                    4.915584,
+                    52.348148
+                  ],
+                  [
+                    4.915602,
+                    52.348152
+                  ],
+                  [
+                    4.915376,
+                    52.348592
+                  ],
+                  [
+                    4.915357,
+                    52.348588
+                  ],
+                  [
+                    4.91535,
+                    52.348603
+                  ],
+                  [
+                    4.915368,
+                    52.348607
+                  ],
+                  [
+                    4.915333,
+                    52.348676
+                  ],
+                  [
+                    4.914727,
+                    52.348559
+                  ],
+                  [
+                    4.914696,
+                    52.348617
+                  ],
+                  [
+                    4.914913,
+                    52.348658
+                  ],
+                  [
+                    4.915243,
+                    52.348804
+                  ],
+                  [
+                    4.915214,
+                    52.348828
+                  ],
+                  [
+                    4.915208,
+                    52.348825
+                  ],
+                  [
+                    4.915177,
+                    52.348852
+                  ],
+                  [
+                    4.915183,
+                    52.348855
+                  ],
+                  [
+                    4.915175,
+                    52.348861
+                  ],
+                  [
+                    4.915169,
+                    52.348859
+                  ],
+                  [
+                    4.915137,
+                    52.348886
+                  ],
+                  [
+                    4.915143,
+                    52.348888
+                  ],
+                  [
+                    4.915054,
+                    52.348964
+                  ],
+                  [
+                    4.914946,
+                    52.348917
+                  ],
+                  [
+                    4.914935,
+                    52.348926
+                  ],
+                  [
+                    4.914892,
+                    52.348907
+                  ],
+                  [
+                    4.914903,
+                    52.348898
+                  ],
+                  [
+                    4.914896,
+                    52.348895
+                  ],
+                  [
+                    4.9149,
+                    52.348891
+                  ],
+                  [
+                    4.914557,
+                    52.348739
+                  ],
+                  [
+                    4.914553,
+                    52.348743
+                  ],
+                  [
+                    4.914548,
+                    52.348741
+                  ],
+                  [
+                    4.914541,
+                    52.348738
+                  ],
+                  [
+                    4.914398,
+                    52.348675
+                  ],
+                  [
+                    4.914407,
+                    52.348668
+                  ],
+                  [
+                    4.914415,
+                    52.348653
+                  ],
+                  [
+                    4.914388,
+                    52.348648
+                  ],
+                  [
+                    4.914385,
+                    52.348658
+                  ],
+                  [
+                    4.914376,
+                    52.348665
+                  ],
+                  [
+                    4.914366,
+                    52.348661
+                  ],
+                  [
+                    4.914361,
+                    52.348658
+                  ],
+                  [
+                    4.914287,
+                    52.348626
+                  ],
+                  [
+                    4.914293,
+                    52.348613
+                  ],
+                  [
+                    4.914393,
+                    52.348419
+                  ],
+                  [
+                    4.914412,
+                    52.348423
+                  ],
+                  [
+                    4.91442,
+                    52.348408
+                  ],
+                  [
+                    4.914401,
+                    52.348404
+                  ],
+                  [
+                    4.914627,
+                    52.347964
+                  ],
+                  [
+                    4.914646,
+                    52.347967
+                  ],
+                  [
+                    4.914653,
+                    52.347953
+                  ],
+                  [
+                    4.914635,
+                    52.347949
+                  ],
+                  [
+                    4.914677,
+                    52.347867
+                  ],
+                  [
+                    4.914781,
+                    52.347887
+                  ],
+                  [
+                    4.914775,
+                    52.347899
+                  ],
+                  [
+                    4.9148,
+                    52.347904
+                  ],
+                  [
+                    4.914805,
+                    52.34789
+                  ],
+                  [
+                    4.915548,
+                    52.347982
+                  ]
+                ]
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Kazerne Zebra",
+      "proposedModelId": "fire-station-zebra",
+      "officialName": "Amsterdam Zebra",
+      "address": "IJdoornlaan 60",
+      "postcodeCity": "1024 KV Amsterdam",
+      "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-zebra/",
+      "addressMatch": "IJdoornlaan 60, 1024KV Amsterdam",
+      "municipality": "Amsterdam",
+      "centerLatLon": [
+        52.39617137,
+        4.95481742
+      ],
+      "coordinateMeaning": "BAG address/VBO centroid from PDOK; public entrance and physical footprint still require verification",
+      "bag": {
+        "nummeraanduiding_id": "0363200000138050",
+        "adresseerbaarobject_id": "0363010000676132",
+        "id": "adr-12749452351fb4996eb3ffa922b77cb6"
+      },
+      "bagPandIds": [
+        "0363100012109022"
+      ],
+      "municipalVboSourceUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000676132/",
+      "identityState": "official current station with BAG address match; footprint/OSM scope pending",
+      "modeled": false,
+      "modeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "rawSourcePaths": [
+        "firestations-inventory/amsterdam-zebra.html",
+        "firestations-inventory/amsterdam-zebra-pdok.json",
+        "firestations-inventory/amsterdam-zebra-vbo.json",
+        "firestations-inventory/amsterdam-zebra-pand-0363100012109022.json"
+      ],
+      "installedBuildingIds": [
+        "NL.IMBAG.Pand.0363100012109022"
+      ],
+      "installedTilePaths": [
+        "public/data/extracts/amsterdam/building-tiles/14/8417/5382.geojson.gz"
+      ],
+      "mapExtractCoverage": "present",
+      "nativeTileFeatures": [
+        {
+          "tile": "public/data/extracts/amsterdam/building-tiles/14/8417/5382.geojson.gz",
+          "feature": {
+            "type": "Feature",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012109022",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 9.08
+            },
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    4.955143,
+                    52.396424
+                  ],
+                  [
+                    4.955015,
+                    52.396389
+                  ],
+                  [
+                    4.955064,
+                    52.396322
+                  ],
+                  [
+                    4.954785,
+                    52.396245
+                  ],
+                  [
+                    4.954773,
+                    52.396262
+                  ],
+                  [
+                    4.954774,
+                    52.396262
+                  ],
+                  [
+                    4.954744,
+                    52.396303
+                  ],
+                  [
+                    4.954707,
+                    52.396293
+                  ],
+                  [
+                    4.954737,
+                    52.396252
+                  ],
+                  [
+                    4.954739,
+                    52.396253
+                  ],
+                  [
+                    4.954751,
+                    52.396236
+                  ],
+                  [
+                    4.954721,
+                    52.396228
+                  ],
+                  [
+                    4.954722,
+                    52.396227
+                  ],
+                  [
+                    4.954808,
+                    52.39611
+                  ],
+                  [
+                    4.955154,
+                    52.396205
+                  ],
+                  [
+                    4.955139,
+                    52.396225
+                  ],
+                  [
+                    4.955264,
+                    52.39626
+                  ],
+                  [
+                    4.955143,
+                    52.396424
+                  ]
+                ]
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Kazerne Driemond",
+      "proposedModelId": "fire-station-driemond",
+      "officialName": "Driemond",
+      "address": "Lentestraat 30",
+      "postcodeCity": "1109 AT Driemond",
+      "sourceUrl": "https://www.brandweer.nl/kazerne/driemond/",
+      "addressMatch": "Lentestraat 30, 1109AT Amsterdam",
+      "municipality": "Amsterdam",
+      "centerLatLon": [
+        52.30697998,
+        5.01937991
+      ],
+      "coordinateMeaning": "BAG address/VBO centroid from PDOK; public entrance and physical footprint still require verification",
+      "bag": {
+        "nummeraanduiding_id": "0363200000345320",
+        "adresseerbaarobject_id": "0363010000887484",
+        "id": "adr-8268de5fa5f2ac8d73fb7d133933a66b"
+      },
+      "bagPandIds": [
+        "0363100012070690"
+      ],
+      "municipalVboSourceUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000887484/",
+      "identityState": "official current station with BAG address match; footprint/OSM scope pending",
+      "modeled": false,
+      "modeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "rawSourcePaths": [
+        "firestations-inventory/driemond.html",
+        "firestations-inventory/driemond-pdok.json",
+        "firestations-inventory/driemond-vbo.json",
+        "firestations-inventory/driemond-pand-0363100012070690.json"
+      ],
+      "installedBuildingIds": [
+        "NL.IMBAG.Pand.0363100012070690"
+      ],
+      "installedTilePaths": [
+        "public/data/extracts/amsterdam/building-tiles/14/8420/5389.geojson.gz"
+      ],
+      "mapExtractCoverage": "present",
+      "nativeTileFeatures": [
+        {
+          "tile": "public/data/extracts/amsterdam/building-tiles/14/8420/5389.geojson.gz",
+          "feature": {
+            "type": "Feature",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0363100012070690",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 7.03
+            },
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    5.0195,
+                    52.307116
+                  ],
+                  [
+                    5.019383,
+                    52.307108
+                  ],
+                  [
+                    5.019403,
+                    52.307
+                  ],
+                  [
+                    5.019305,
+                    52.306993
+                  ],
+                  [
+                    5.019323,
+                    52.306898
+                  ],
+                  [
+                    5.019537,
+                    52.306913
+                  ],
+                  [
+                    5.0195,
+                    52.307116
+                  ]
+                ]
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Kazerne Weesp",
+      "proposedModelId": "fire-station-weesp",
+      "officialName": "Weesp",
+      "address": "Aetsveldselaan 65",
+      "postcodeCity": "1381 CZ Weesp",
+      "sourceUrl": "https://www.brandweer.nl/kazerne/weesp/",
+      "addressMatch": "Aetsveldselaan 65, 1381CZ Weesp",
+      "municipality": "Amsterdam",
+      "centerLatLon": [
+        52.30257071,
+        5.04497727
+      ],
+      "coordinateMeaning": "BAG address/VBO centroid from PDOK; public entrance and physical footprint still require verification",
+      "bag": {
+        "nummeraanduiding_id": "0457200000198751",
+        "adresseerbaarobject_id": "0457010000059357",
+        "id": "adr-4918fb19bd34410de84b370bf458f4c0"
+      },
+      "bagPandIds": [
+        "0457100000062823"
+      ],
+      "municipalVboSourceUrl": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0457010000059357/",
+      "identityState": "official current station with BAG address match; footprint/OSM scope pending",
+      "modeled": false,
+      "modeledAudit": "No firestation-name entry in manualCatalogue at inventory research time",
+      "rawSourcePaths": [
+        "firestations-inventory/weesp.html",
+        "firestations-inventory/weesp-pdok.json",
+        "firestations-inventory/weesp-vbo.json",
+        "firestations-inventory/weesp-pand-0457100000062823.json"
+      ],
+      "installedBuildingIds": [
+        "NL.IMBAG.Pand.0457100000062823"
+      ],
+      "installedTilePaths": [
+        "public/data/extracts/amsterdam/building-tiles/14/8421/5389.geojson.gz"
+      ],
+      "mapExtractCoverage": "present",
+      "nativeTileFeatures": [
+        {
+          "tile": "public/data/extracts/amsterdam/building-tiles/14/8421/5389.geojson.gz",
+          "feature": {
+            "type": "Feature",
+            "properties": {
+              "id": "NL.IMBAG.Pand.0457100000062823",
+              "tier": 3,
+              "minHeight": 0,
+              "height": 8.23
+            },
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    5.044711,
+                    52.302816
+                  ],
+                  [
+                    5.044669,
+                    52.302695
+                  ],
+                  [
+                    5.0446,
+                    52.302706
+                  ],
+                  [
+                    5.044548,
+                    52.302599
+                  ],
+                  [
+                    5.044633,
+                    52.302586
+                  ],
+                  [
+                    5.044706,
+                    52.302578
+                  ],
+                  [
+                    5.044792,
+                    52.302573
+                  ],
+                  [
+                    5.044871,
+                    52.302572
+                  ],
+                  [
+                    5.044872,
+                    52.302556
+                  ],
+                  [
+                    5.044947,
+                    52.302558
+                  ],
+                  [
+                    5.045019,
+                    52.302563
+                  ],
+                  [
+                    5.045106,
+                    52.302573
+                  ],
+                  [
+                    5.0451,
+                    52.30259
+                  ],
+                  [
+                    5.045191,
+                    52.302603
+                  ],
+                  [
+                    5.045136,
+                    52.30271
+                  ],
+                  [
+                    5.045051,
+                    52.302696
+                  ],
+                  [
+                    5.04505,
+                    52.302739
+                  ],
+                  [
+                    5.045051,
+                    52.30274
+                  ],
+                  [
+                    5.045021,
+                    52.302818
+                  ],
+                  [
+                    5.045004,
+                    52.302848
+                  ],
+                  [
+                    5.044864,
+                    52.302847
+                  ],
+                  [
+                    5.044864,
+                    52.302817
+                  ],
+                  [
+                    5.044711,
+                    52.302816
+                  ]
+                ]
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "separateFacilities": [
+    {
+      "name": "Blusboot Jan van der Heyde IV",
+      "kind": "fireboat/boathouse; not a land firestation",
+      "sourceUrl": "https://www.brandweer.nl/kazerne/jan-van-der-heyde/",
+      "state": "Official index lists separately; land-building scope not admitted"
+    }
+  ],
+  "excludedMunicipalities": [
+    "Aalsmeer",
+    "Amstelveen",
+    "Diemen",
+    "Duivendrecht (Ouder-Amstel)",
+    "Uithoorn"
+  ],
+  "remainingChecks": [
+    "Fetch physical footprints/current OSM identity per station before authoring.",
+    "Check map/runtime coverage for peripheral Driemond and Weesp.",
+    "Inventory excludes logistics and training facilities not listed as current operational land stations."
+  ],
+  "sourceArchive": {
+    "commit": "69186d12d",
+    "path": "firestations-inventory/"
+  }
+}

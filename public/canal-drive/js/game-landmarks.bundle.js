@@ -9597,6 +9597,425 @@ Map source: ${osmUrl(places[i][0])}`);
         frame: "#9ca7a6",
         dark: "#404946"
       }
+    },
+    {
+      id: "fire-station-hendrik",
+      name: "Brandweerkazerne Hendrik",
+      landmarkId: "n2743656824",
+      modelUrl: "./models/fire-station-hendrik.glb",
+      suppressOsmIds: [
+        "w57863800",
+        "NL.IMBAG.Pand.0363100012169391"
+      ],
+      spatialSuppression: false,
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.875764431553914,
+              52.3726679212328
+            ],
+            [
+              4.875764383564923,
+              52.37266826255885
+            ],
+            [
+              4.875797180560655,
+              52.37277849479153
+            ],
+            [
+              4.875797901351324,
+              52.37278093357662
+            ],
+            [
+              4.8757276185619345,
+              52.372788817806004
+            ],
+            [
+              4.875450883307167,
+              52.372819878981836
+            ],
+            [
+              4.875450185473673,
+              52.37281799753242
+            ],
+            [
+              4.8754173387691475,
+              52.372707054957246
+            ],
+            [
+              4.875510585572203,
+              52.372696834483335
+            ],
+            [
+              4.875505040770143,
+              52.37268104606097
+            ],
+            [
+              4.875498760541724,
+              52.37266536231264
+            ],
+            [
+              4.875491759467721,
+              52.37264979228896
+            ],
+            [
+              4.875484224289756,
+              52.37263469630564
+            ],
+            [
+              4.875476012007411,
+              52.37261974119893
+            ],
+            [
+              4.875467137304996,
+              52.37260492703216
+            ],
+            [
+              4.875446684093955,
+              52.372609826816905
+            ],
+            [
+              4.875411158944927,
+              52.37256176872134
+            ],
+            [
+              4.875431105156162,
+              52.372556264574136
+            ],
+            [
+              4.875429801148739,
+              52.37255474001323
+            ],
+            [
+              4.875421626149441,
+              52.372545465302444
+            ],
+            [
+              4.875413112080861,
+              52.37253630596582
+            ],
+            [
+              4.875404258943142,
+              52.3725272620033
+            ],
+            [
+              4.875396025385077,
+              52.37251924531832
+            ],
+            [
+              4.875387526383175,
+              52.37251132635025
+            ],
+            [
+              4.875378761833818,
+              52.372503514086304
+            ],
+            [
+              4.875368421822271,
+              52.372494796239295
+            ],
+            [
+              4.875357830740598,
+              52.372486203134095
+            ],
+            [
+              4.875346974008908,
+              52.372477725719875
+            ],
+            [
+              4.875334162635478,
+              52.37246811638956
+            ],
+            [
+              4.875321041043984,
+              52.37245866749566
+            ],
+            [
+              4.8753075796597445,
+              52.37244939688563
+            ],
+            [
+              4.875275322849021,
+              52.37242989787591
+            ],
+            [
+              4.875269263968733,
+              52.372433215111506
+            ],
+            [
+              4.875164009767555,
+              52.37244563938637
+            ],
+            [
+              4.875136747789811,
+              52.3724488559322
+            ],
+            [
+              4.875133204049952,
+              52.372449272016894
+            ],
+            [
+              4.875123237895705,
+              52.37241707984
+            ],
+            [
+              4.8752462900014155,
+              52.37240333946143
+            ],
+            [
+              4.875251297651353,
+              52.372405859699775
+            ],
+            [
+              4.875410605747975,
+              52.37230300088444
+            ],
+            [
+              4.875415288904945,
+              52.37230564554138
+            ],
+            [
+              4.8754199424878735,
+              52.372308308045746
+            ],
+            [
+              4.875424596071362,
+              52.372310970549925
+            ],
+            [
+              4.875429278607846,
+              52.37231366912994
+            ],
+            [
+              4.875433931777687,
+              52.37231636758284
+            ],
+            [
+              4.87543858474071,
+              52.372319084010094
+            ],
+            [
+              4.875445877810102,
+              52.37232333976058
+            ],
+            [
+              4.8754556784201295,
+              52.37232917021169
+            ],
+            [
+              4.875465375521639,
+              52.372335063128666
+            ],
+            [
+              4.875474954327331,
+              52.37234102743533
+            ],
+            [
+              4.875483161377595,
+              52.37234624881966
+            ],
+            [
+              4.875491279705993,
+              52.37235152374629
+            ],
+            [
+              4.875499309416203,
+              52.37235684322797
+            ],
+            [
+              4.87552795800196,
+              52.372377261306944
+            ],
+            [
+              4.875555173904466,
+              52.372398401193195
+            ],
+            [
+              4.87558094306133,
+              52.37242020890062
+            ],
+            [
+              4.8756033625416615,
+              52.37244088765171
+            ],
+            [
+              4.875624469289266,
+              52.372462073026604
+            ],
+            [
+              4.875644219459293,
+              52.37248374686112
+            ],
+            [
+              4.8756633050143545,
+              52.37250702662268
+            ],
+            [
+              4.8756764616843595,
+              52.3725032546942
+            ],
+            [
+              4.875692804663358,
+              52.37252496772685
+            ],
+            [
+              4.875678529023126,
+              52.372528995466865
+            ],
+            [
+              4.875691285181332,
+              52.372545947487886
+            ],
+            [
+              4.875699925766546,
+              52.37255942145624
+            ],
+            [
+              4.875708080551503,
+              52.372573001177926
+            ],
+            [
+              4.8757157494321754,
+              52.37258669564032
+            ],
+            [
+              4.875721927348822,
+              52.372598523203564
+            ],
+            [
+              4.875727752134405,
+              52.37261041215505
+            ],
+            [
+              4.875733194317613,
+              52.372622371355234
+            ],
+            [
+              4.875733895165424,
+              52.37262399217219
+            ],
+            [
+              4.875736765861428,
+              52.372631006006124
+            ],
+            [
+              4.875739489410303,
+              52.372638046167516
+            ],
+            [
+              4.875742036444551,
+              52.37264511252952
+            ],
+            [
+              4.875744506952092,
+              52.37265244819246
+            ],
+            [
+              4.875746815628623,
+              52.37265981011946
+            ],
+            [
+              4.875748947893975,
+              52.372667189259815
+            ],
+            [
+              4.875749871972486,
+              52.372669826653194
+            ],
+            [
+              4.875764431553914,
+              52.3726679212328
+            ]
+          ]
+        ]
+      },
+      footprint: {
+        centre: [
+          4.87559942,
+          52.37250179
+        ],
+        headingDegrees: 0,
+        lengthMetres: 57.6,
+        widthMetres: 46
+      },
+      surveyed: {
+        anchor: [
+          4.87559942,
+          52.37250179
+        ],
+        northOffsetDegrees: 0,
+        source: "Native current BAG ring and2023AHN5 roof planes; RD converted to true east/south metres."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "Brandweerkazerne Hendrik",
+        author: "Map Recall",
+        sourceUrl: "https://www.koninklijkewoudenberg.nl/nieuws/feestelijke-opening-van-de-gerenoveerde-brandweerkazerne-hendrik/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free surveyed curved station and contemporary2025 renovated facade; five vehicle doors, cream frames, mansard clerestory and roof panels."
+      },
+      materialOverrides: {
+        red: "#cb1724",
+        brick: "#985849",
+        white: "#eee8d6",
+        slate: "#4b5053",
+        glass: "#415763",
+        blue: "#263e53"
+      }
+    },
+    {
+      id: "fire-station-dirk",
+      name: "Kazerne Dirk",
+      landmarkId: "n2816456151",
+      modelUrl: "./models/fire-station-dirk.glb",
+      suppressOsmIds: [
+        "w44508781",
+        "NL.IMBAG.Pand.0363100012162222"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.88591,
+          52.357965
+        ],
+        headingDegrees: 90,
+        lengthMetres: 39,
+        widthMetres: 38
+      },
+      surveyed: {
+        anchor: [
+          4.88591,
+          52.357965
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG exact ground outline/OSM identity; native east X/south Z"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 90,
+      materialOverrides: {
+        brick: "#b75b3e",
+        stone: "#797d78",
+        slate: "#7d5144",
+        white: "#d1cec0",
+        glass: "#536b70",
+        dark: "#252e2e",
+        frame: "#404b48",
+        copper: "#689487",
+        bronze: "#807856",
+        greyBrick: "#a4afad"
+      },
+      attribution: {
+        title: "Kazerne Dirk",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/1994",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native BAG reconstruction;2025 panorama-backed front arches/stepped gables/divided windows and roof families. Roof and ornament geometry approximated; no third-party pixels or mesh imported."
+      }
     }
   ];
 
@@ -32000,6 +32419,611 @@ Map source: ${osmUrl(places[i][0])}`);
           "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00230/equirectangular/panorama_8000.jpg"
         ],
         updatedAt: "2026-10-08T15:29:13.555963+00:00"
+      },
+      {
+        name: "Nieuwe Spiegelstraat3\u201317 / Keizersgracht555 historic office and arcade wing",
+        cameraBearing: 297.758,
+        referenceImages: [
+          "./ordinary-buildings-data/references/0363100012167897/fullfront-0363100012167897-2025-00403-einitial.jpg",
+          "./ordinary-buildings-data/references/0363100012167897/fullfront-0363100012167897-2025-00390-esouth.jpg",
+          "./ordinary-buildings-data/references/0363100012167897/fullfront-0363100012167897-2025-00415-enorth.jpg"
+        ],
+        traits: [
+          "Long red-brick lower street wing: white window surrounds, layered cornice, true recessed ground arcade and arched attic end projections.",
+          "Taller historic Keizers555: pale rusticated base, iron-grilled shallow arches, eighteen-pane historic sashes, fluted pilasters, portico/frontons and west balustrade.",
+          "Native irregular footprint, independent low/high source roof families, retained reentrant perimeter and neighboring Pand identities."
+        ],
+        simplifications: [
+          "Earlier v03 wall/roof gaps and v05 uppercount failure preserved; survey roof-plane interpretation remains approximate.",
+          "Hidden rear openings unobserved; no invented rear facade inventory."
+        ],
+        galleryFrontage: {
+          target: [
+            4.890084,
+            52.364897
+          ],
+          distanceMetres: 83,
+          targetHeightMetres: 7,
+          referenceImages: [
+            "./ordinary-buildings-data/references/0363100012167897/fullfront-0363100012167897-2025-00403-einitial.jpg",
+            "./ordinary-buildings-data/references/0363100012167897/fullfront-0363100012167897-2025-00415-enorth.jpg"
+          ]
+        },
+        gallerySecondary: {
+          target: [
+            4.889967,
+            52.36441
+          ],
+          cameraBearing: 192.55,
+          distanceMetres: 43,
+          targetHeightMetres: 12,
+          referenceImages: [
+            "./ordinary-buildings-data/references/0363100012167897/fullfront-0363100012167897-2025-00390-esouth.jpg"
+          ]
+        },
+        sourcePack: "experiments/canal-belt-continuation-20261007/next-large-box-source-26-followup/0363100012167897",
+        reviewState: "Independent source/gallery and native desktop/touch PASS; startup/source-stage pauses and approximation limits preserved.",
+        id: "ordinary-0363100012167897",
+        buildingId: "NL.IMBAG.Pand.0363100012167897",
+        modelUrl: "./models/ordinary-buildings/0363100012167897.glb",
+        anchor: [
+          4.890062076923077,
+          52.364688384615384
+        ],
+        bearing: 0,
+        scale: 1,
+        hash: "261193e0642c821035d086469bdc5f7e090b4cfcc13542f83adad43c9a7929f9",
+        bytes: 332168,
+        materials: 2,
+        triangles: 15305,
+        bounds: {
+          min: [
+            -22.37699317932129,
+            -19073486612342094e-23,
+            -50.65300750732422
+          ],
+          max: [
+            27.321002960205078,
+            28.036548614501953,
+            34.734642028808594
+          ]
+        },
+        height: 28.036548614501953,
+        footprint: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [
+                4.890464,
+                52.365062
+              ],
+              [
+                4.890453,
+                52.365064
+              ],
+              [
+                4.89046,
+                52.365085
+              ],
+              [
+                4.890293,
+                52.36514
+              ],
+              [
+                4.89026,
+                52.365102
+              ],
+              [
+                4.890243,
+                52.365083
+              ],
+              [
+                4.89016,
+                52.364988
+              ],
+              [
+                4.89012,
+                52.364944
+              ],
+              [
+                4.890098,
+                52.364919
+              ],
+              [
+                4.890076,
+                52.364892
+              ],
+              [
+                4.890064,
+                52.364878
+              ],
+              [
+                4.889978,
+                52.364779
+              ],
+              [
+                4.889961,
+                52.364758
+              ],
+              [
+                4.889902,
+                52.364691
+              ],
+              [
+                4.889905,
+                52.36469
+              ],
+              [
+                4.889875,
+                52.364655
+              ],
+              [
+                4.8899,
+                52.364647
+              ],
+              [
+                4.889838,
+                52.364571
+              ],
+              [
+                4.889835,
+                52.364572
+              ],
+              [
+                4.88976,
+                52.364489
+              ],
+              [
+                4.889763,
+                52.364488
+              ],
+              [
+                4.889741,
+                52.364464
+              ],
+              [
+                4.88976,
+                52.364437
+              ],
+              [
+                4.889804,
+                52.364431
+              ],
+              [
+                4.889804,
+                52.364429
+              ],
+              [
+                4.889955,
+                52.364408
+              ],
+              [
+                4.889955,
+                52.36441
+              ],
+              [
+                4.89015,
+                52.364384
+              ],
+              [
+                4.890187,
+                52.364489
+              ],
+              [
+                4.890168,
+                52.364491
+              ],
+              [
+                4.890179,
+                52.364522
+              ],
+              [
+                4.890198,
+                52.364519
+              ],
+              [
+                4.890226,
+                52.364599
+              ],
+              [
+                4.890146,
+                52.364609
+              ],
+              [
+                4.890137,
+                52.364612
+              ],
+              [
+                4.890141,
+                52.364618
+              ],
+              [
+                4.890165,
+                52.364616
+              ],
+              [
+                4.890187,
+                52.364643
+              ],
+              [
+                4.89011,
+                52.364669
+              ],
+              [
+                4.890464,
+                52.365062
+              ]
+            ]
+          ]
+        },
+        sourceCommit: "087986cc828b344e55303764e680ef2d9d4101f8",
+        sourcePath: "experiments/canal-belt-continuation-20261007/next-large-box-source-26-followup/0363100012167897",
+        sourceUrls: [
+          "https://api.data.amsterdam.nl/v1/bag/panden/?identificatie=0363100012167897",
+          "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012167897"
+        ],
+        suppress: [
+          "NL.IMBAG.Pand.0363100012167897"
+        ],
+        retainedNeighbors: [
+          "NL.IMBAG.Pand.0363100012167898",
+          "NL.IMBAG.Pand.0363100012176763"
+        ],
+        treatment: "full",
+        status: "draft-pending-source-render-independent-native-game-performance",
+        updatedAt: "2026-10-08T19:49:48.773502+00:00"
+      },
+      {
+        id: "ordinary-0363100012169456",
+        buildingId: "NL.IMBAG.Pand.0363100012169456",
+        label: "Prinsengracht 211\u2013213",
+        url: "/models/ordinary-buildings/0363100012169456.glb",
+        anchor: [
+          4.885985777777778,
+          52.37702211111111
+        ],
+        bearing: 0,
+        scale: 1,
+        suppress: [
+          "NL.IMBAG.Pand.0363100012169456"
+        ],
+        hash: "d920c307562b014c19414b3015e25b02c2492caa42d61425d89d3d4b37fa7e67",
+        bytes: 471396,
+        triangles: 6982,
+        materials: 3,
+        bounds: {
+          min: [
+            -23.991369247436523,
+            -9536743306171047e-23,
+            -15.057171821594238
+          ],
+          max: [
+            20.062335968017578,
+            17.627357482910156,
+            17.712249755859375
+          ]
+        },
+        height: 17.627357482910156,
+        sourceCommit: "ef64e81d6e6a762ff9fc39112ad5d2ea757ff73c",
+        modelUrl: "./models/ordinary-buildings/0363100012169456.glb",
+        name: "Prinsengracht 211\u2013213",
+        cameraBearing: 299.37,
+        footprint: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [
+                4.886083,
+                52.377036
+              ],
+              [
+                4.885732,
+                52.377157
+              ],
+              [
+                4.885731,
+                52.377156
+              ],
+              [
+                4.885636,
+                52.377051
+              ],
+              [
+                4.886184,
+                52.376863
+              ],
+              [
+                4.886281,
+                52.376968
+              ],
+              [
+                4.886124,
+                52.377022
+              ],
+              [
+                4.886071,
+                52.376966
+              ],
+              [
+                4.88603,
+                52.37698
+              ],
+              [
+                4.886083,
+                52.377036
+              ]
+            ]
+          ]
+        },
+        nativeHeight: 15.19,
+        referenceImages: [
+          "./ordinary-buildings-data/references/0363100012169456/fullfront-0363100012169456-2025-01975-einitial.jpg",
+          "./ordinary-buildings-data/references/0363100012169456/roofwide-0363100012169456-2025-01975-einitial.jpg",
+          "./ordinary-buildings-data/references/0363100012169456/fullfront-0363100012169456-2024-00560-einitial.jpg"
+        ],
+        traits: [
+          "Twin warehouse loading stacks with rounded windows and red open shutters.",
+          "Pointed gables, thin pale caps and hoist beams.",
+          "Native rear notch and low rear annex."
+        ],
+        simplifications: [
+          "32 first-hit overlaps remain preserved and independently classified;211 entry edge and apron proportions approximate.",
+          "Hidden rear openings unobserved; no invented rear facade inventory."
+        ],
+        reviewState: "Independent source/gallery and native desktop/touch PASS; startup/source-stage pauses and approximation limits preserved.",
+        galleryFrontage: {
+          target: [
+            4.8856835,
+            52.3771035
+          ],
+          distanceMetres: 38,
+          targetHeightMetres: 8
+        },
+        sourcePack: "experiments/canal-belt-continuation-20261007/next-box-source39/0363100012169456",
+        sourceUrls: [
+          "https://api.data.amsterdam.nl/v1/bag/panden/?identificatie=0363100012169456",
+          "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169456"
+        ],
+        updatedAt: "2026-10-08T19:49:48.773502+00:00"
+      },
+      {
+        id: "ordinary-0363100012169457",
+        buildingId: "NL.IMBAG.Pand.0363100012169457",
+        label: "Prinsengracht 215\u2013217",
+        url: "/models/ordinary-buildings/0363100012169457.glb",
+        anchor: [
+          4.88576725,
+          52.37694425
+        ],
+        bearing: 0,
+        scale: 1,
+        suppress: [
+          "NL.IMBAG.Pand.0363100012169457"
+        ],
+        hash: "ae5cf7506a801ca73cea95583e1f44e6cadc2581175e6f79cede9725e255da0e",
+        bytes: 474556,
+        triangles: 6939,
+        materials: 3,
+        bounds: {
+          min: [
+            -14.917290687561035,
+            -3814697322468419e-22,
+            -12.036028861999512
+          ],
+          max: [
+            14.797602653503418,
+            17.690000534057617,
+            11.939069747924805
+          ]
+        },
+        height: 17.690000534057617,
+        sourceCommit: "93ddc84522c52600ee49555848da55aa48375a15",
+        modelUrl: "./models/ordinary-buildings/0363100012169457.glb",
+        name: "Prinsengracht 215\u2013217",
+        cameraBearing: 299,
+        footprint: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [
+                4.885636,
+                52.377051
+              ],
+              [
+                4.885551,
+                52.376957
+              ],
+              [
+                4.885897,
+                52.376837
+              ],
+              [
+                4.885985,
+                52.376932
+              ],
+              [
+                4.885636,
+                52.377051
+              ]
+            ]
+          ]
+        },
+        nativeHeight: 16,
+        referenceImages: [
+          "./ordinary-buildings-data/references/0363100012169457/fullfront-0363100012169457-2025-01972-e0.jpg",
+          "./ordinary-buildings-data/references/0363100012169457/roofwide-0363100012169457-2024-00557-e0.jpg",
+          "./ordinary-buildings-data/references/0363100012169457/fullfront-0363100012169457-2024-00557-e0.jpg"
+        ],
+        traits: [
+          "Twin round-headed loading stacks with black guard rails and red shutters.",
+          "215 white glazed doors and open black shutters;217 black plank closure and right arch.",
+          "Own high rear survey roof planes."
+        ],
+        simplifications: [
+          "Photo-guided opening dimensions and shutter angles.28 original first-hit overlaps retained:24 photographed shutter overlaps and4 guardrail hits. Rear roof divisions surveyed; rear window arrangement unobserved. Hoist proportions approximate."
+        ],
+        reviewState: "Source/gallery and independent native desktop/touch accepted; hosted fingerprint/gallery/manual verification complete.",
+        galleryFrontage: {
+          target: [
+            4.885593500000001,
+            52.377004
+          ],
+          distanceMetres: 35,
+          targetHeightMetres: 8
+        },
+        sourcePack: "experiments/canal-belt-continuation-20261007/next-box-source49/0363100012169457",
+        updatedAt: "2026-10-08T20:55:53.403013+00:00",
+        scope: "Original native ordinary building; no curated destination or trivia identity invented.",
+        reviewEvidencePack: "experiments/canal-belt-continuation-20261007/native34-resume-20261008",
+        sourceUrls: [
+          "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169457",
+          "https://data.amsterdam.nl/data/geozoek?center=52.37694425,4.88576725&lagen=pano-pano2025bi"
+        ],
+        reviewEvidenceCommit: "695ec2b222e9ad4eb41add25711dd8e5ae3ebfe5",
+        hostedVerification: {
+          publicModelCommit: "fe3dbd7b0e9e82e28b4902a2b025f0838f6a5c6b",
+          publicCommit: "025e5df61ef2c82c2e18111c4455bc035858f44c",
+          firebaseRun: "37843611938",
+          verifiedAtUTC: "2026-10-08T21:05:49.775086+00:00",
+          models: 34,
+          allAssetHashesExact: true,
+          manualDesktopTouchLoaded: 34,
+          feedbackPreview: true,
+          evidenceSourceCommit: "6515660e4d5b0cef3bdc0b940abb8fc1173fed66",
+          evidenceSourcePack: "experiments/canal-belt-continuation-20261007/hosted34-20261008"
+        }
+      },
+      {
+        buildingId: "NL.IMBAG.Pand.0363100012174397",
+        id: "ordinary-0363100012174397",
+        url: "/models/ordinary-buildings/0363100012174397.glb",
+        anchor: [
+          4.8833109,
+          52.3695874
+        ],
+        scale: 1,
+        bearing: 0,
+        bytes: 259396,
+        sha256: "1e4892e3cdeb045bedb4cb0c415e1eb6a701c31b262e423b406a0676dacc47b6",
+        materials: 3,
+        textures: 0,
+        triangles: 3572,
+        bounds: {
+          min: [
+            -22.194652557373047,
+            -47683716530855236e-24,
+            -8.861071586608887
+          ],
+          max: [
+            22.02848243713379,
+            18.036617279052734,
+            10.731247901916504
+          ]
+        },
+        suppress: [
+          "NL.IMBAG.Pand.0363100012174397"
+        ],
+        scope: "Original native ordinary building; no curated destination or trivia identity invented.",
+        sourceCommit: "9280ea7fd9a4e199c9a52e80a73a9f4e9b55c644",
+        hash: "1e4892e3cdeb045bedb4cb0c415e1eb6a701c31b262e423b406a0676dacc47b6",
+        modelUrl: "./models/ordinary-buildings/0363100012174397.glb",
+        name: "Prinsengracht485\u2013487",
+        label: "Prinsengracht485\u2013487",
+        cameraBearing: 267.2,
+        footprint: {
+          type: "Polygon",
+          coordinates: [
+            [
+              [
+                4.883635,
+                52.369609
+              ],
+              [
+                4.883503,
+                52.369613
+              ],
+              [
+                4.883506,
+                52.369649
+              ],
+              [
+                4.883001,
+                52.369667
+              ],
+              [
+                4.883001,
+                52.369666
+              ],
+              [
+                4.882993,
+                52.369566
+              ],
+              [
+                4.882992,
+                52.369565
+              ],
+              [
+                4.883429,
+                52.36955
+              ],
+              [
+                4.883424,
+                52.369498
+              ],
+              [
+                4.883625,
+                52.369491
+              ],
+              [
+                4.883635,
+                52.369609
+              ]
+            ]
+          ]
+        },
+        nativeHeight: 17.47,
+        height: 18.036617279052734,
+        referenceImages: [
+          "./ordinary-buildings-data/references/0363100012174397/frontwide-0363100012174397-2025-02279-einitial.jpg",
+          "./ordinary-buildings-data/references/0363100012174397/frontwide-0363100012174397-2025-02320-einitial.jpg"
+        ],
+        galleryFrontage: {
+          target: [
+            4.882997,
+            52.369616
+          ],
+          distanceMetres: 34,
+          targetHeightMetres: 9
+        },
+        traits: [
+          "Six white-trim upper window bays and own twin attic blocks.",
+          "Two dark garage portals and right entrance.",
+          "Native low rear and separate surveyed principal roofs."
+        ],
+        reviewState: "Source/gallery and independent native desktop/touch accepted; hosted fingerprint/gallery/manual verification complete.",
+        simplifications: [
+          "Photo-guided front4m attic shoulders/depth and simplified entrance/panel joinery. Rear roof and low volume surveyed; rear window arrangement unobserved. Earlier gate/attic/downward-face failures preserved."
+        ],
+        sourcePack: "experiments/canal-belt-continuation-20261007/next-box-source56/0363100012174397",
+        updatedAt: "2026-10-08T20:55:53.403013+00:00",
+        reviewEvidencePack: "experiments/canal-belt-continuation-20261007/native34-resume-20261008",
+        sourceUrls: [
+          "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012174397",
+          "https://data.amsterdam.nl/data/geozoek?center=52.3695874,4.8833109&lagen=pano-pano2025bi"
+        ],
+        reviewEvidenceCommit: "695ec2b222e9ad4eb41add25711dd8e5ae3ebfe5",
+        hostedVerification: {
+          publicModelCommit: "fe3dbd7b0e9e82e28b4902a2b025f0838f6a5c6b",
+          publicCommit: "025e5df61ef2c82c2e18111c4455bc035858f44c",
+          firebaseRun: "37843611938",
+          verifiedAtUTC: "2026-10-08T21:05:49.775086+00:00",
+          models: 34,
+          allAssetHashesExact: true,
+          manualDesktopTouchLoaded: 34,
+          feedbackPreview: true,
+          evidenceSourceCommit: "6515660e4d5b0cef3bdc0b940abb8fc1173fed66",
+          evidenceSourcePack: "experiments/canal-belt-continuation-20261007/hosted34-20261008"
+        }
       }
     ]
   };
@@ -33610,6 +34634,34 @@ Map source: ${osmUrl(places[i][0])}`);
       funFact: "Mediamatic transformed former municipal bridge-maintenance buildings at Dijksgracht into a bio-art laboratory and added 360 m\xB2 of greenhouse space around them. Its experiments bring artists, designers and living organisms together.",
       sourceUrl: "https://www.mediamatic.net/nl/page/73377/mediamatic-has-moved-to-dijkspark-in-2014",
       preferDescription: true
+    },
+    {
+      modelId: "fire-station-hendrik",
+      name: "Brandweerkazerne Hendrik",
+      center: [
+        52.37250179,
+        4.87559942
+      ],
+      description: "Hendrik has occupied the curved station at the Rozengracht\u2013Marnixstraat corner since 1985. Its name retains the H of the Huiszittenhuis, the former station on Prinsengracht. The building reopened on 6 November 2025 after renovation and energy upgrades.",
+      sourceUrl: "https://www.koninklijkewoudenberg.nl/nieuws/feestelijke-opening-van-de-gerenoveerde-brandweerkazerne-hendrik/"
+    },
+    {
+      modelId: "fire-station-dirk",
+      name: "Kazerne Dirk",
+      center: [
+        52.357901091,
+        4.885977871
+      ],
+      description: "Designed by Hendrik Leguyt, Dirk opened in 1897 beside the Museumplein. Three arched vehicle entrances, stepped brick gables and Amsterdam\u2019s arms distinguish the working fire station. Its 2021\u20132023 renovation restored decorated masonry and made the monument gas-free. The name preserves D for Duivelseiland from the earlier station.",
+      sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/1994",
+      routeDestination: {
+        center: [
+          52.35788662,
+          4.885995529
+        ],
+        sourceUrl: "https://data.amsterdam.nl/",
+        note: "Two metres outside surveyed central Honthorststraat vehicle arch, checked against archived 2025 municipal panorama; camera location is separate."
+      }
     }
   ];
 
