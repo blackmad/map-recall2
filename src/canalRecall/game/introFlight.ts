@@ -108,3 +108,36 @@ export function introFrame(plan: IntroPlan, to: IntroCamera, elapsed: number): I
     done: false,
   };
 }
+
+/** A lng/lat box, west/south/east/north in degrees. */
+export type LngLatBounds = { west: number; south: number; east: number; north: number };
+
+/** Fallback landing box when the map has not shown the driving view yet. */
+export const INTRO_LANDING_RADIUS_M = 600;
+/** A view wider than this is not a street-scale driving view. */
+export const INTRO_LANDING_MAX_SPAN_M = 4000;
+
+/**
+ * The only buildings the start flight may stream: where it lands.
+ *
+ * The overview is flat and city-scale; it shows no buildings, so nothing is
+ * loaded for it. Before the flight the map has normally just settled on the
+ * driving view at the rider (the loading screen's spawn wait), and that view's
+ * bounds are exactly what the landing needs. A fixed 600 m box around the
+ * rider, used before, straddled z14 tile corners and doubled the resident
+ * set (6.7k → 13.3k buildings on the measured route), all of it rebuilt in
+ * the second before the flight. The box remains the fallback when the last
+ * view is elsewhere (riding on, replay) or not street scale.
+ */
+export function introLandingArea(view: LngLatBounds | null | undefined, rider: [number, number], radiusM = INTRO_LANDING_RADIUS_M): LngLatBounds {
+  const [lng, lat] = rider;
+  const metresPerDegLat = 111320;
+  const metresPerDegLng = metresPerDegLat * Math.cos(lat * Math.PI / 180);
+  if (view && [view.west, view.south, view.east, view.north].every(Number.isFinite)) {
+    const contains = lng >= view.west && lng <= view.east && lat >= view.south && lat <= view.north;
+    const span = Math.max((view.east - view.west) * metresPerDegLng, (view.north - view.south) * metresPerDegLat);
+    if (contains && span > 0 && span <= INTRO_LANDING_MAX_SPAN_M) return { ...view };
+  }
+  const dy = radiusM / metresPerDegLat, dx = radiusM / metresPerDegLng;
+  return { west: lng - dx, east: lng + dx, south: lat - dy, north: lat + dy };
+}

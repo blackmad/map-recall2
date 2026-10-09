@@ -2338,6 +2338,26 @@ class VectorBasemap {
     }
     this._clearancePitchRequested = pitch;
     const appliedPitch = Math.min(pitch, this._clearancePitch);
+    // The start flight streams no buildings for its flat overview, only for
+    // where it lands. Suspend before the jump: `jumpTo` fires `moveend`
+    // synchronously, and the streamer used to plan the overview's first frame.
+    // The landing is the driving view the map shows right now, before the
+    // first overview jump (`introLandingArea`); a 600 m box round the rider
+    // pulled in two extra z14 tiles (~6.5k buildings) before take-off.
+    const city = this._completeCity;
+    if (introFlat > 0 && city && typeof city.setSuspended === 'function') {
+      if (!this._introLandingView) this._introLandingView = this._mapBounds() || 'none';
+      city.setSuspended(true);
+      const view = this._introLandingView === 'none' ? null : this._introLandingView;
+      if (typeof city.preloadLanding === 'function') city.preloadLanding(view, subject[0], subject[1]);
+      else if (typeof city.preloadAt === 'function') city.preloadAt(subject[0], subject[1]);
+    }
+    if (introFlat === 0) this._introLandingView = null;
+    // Landmark models and street trees hold what the driving view loaded too:
+    // "visible" at city scale is every landmark in Amsterdam.
+    for (const streamer of [this._signatureLandmarks, this._inventoryTrees]) {
+      if (introFlat > 0 && streamer && typeof streamer.setSuspended === 'function') streamer.setSuspended(true);
+    }
     this.map.jumpTo({ center: [lon, lat], zoom: mapZoom, bearing, pitch: appliedPitch });
     // Near detail (facade extras) follows the rider.
     if (this._threeBuildings && this._buildings3dEnabled && this._threeBuildings.setDetailCentre) this._threeBuildings.setDetailCentre(subject[0], subject[1]);
@@ -2349,10 +2369,12 @@ class VectorBasemap {
     // followCamera no-ops until the centre tile / zoom bucket changes.
     // Not during the start flight: every half-step of zoom re-planned and
     // re-flushed the building tiles, which is where the flight stuttered. The
-    // landing area preloads once; the first frame after landing resumes camera planning.
-    if (this._completeCity && typeof this._completeCity.setSuspended === 'function') {
-      this._completeCity.setSuspended(introFlat > 0);
-      if (introFlat > 0 && typeof this._completeCity.preloadAt === 'function') this._completeCity.preloadAt(subject[0], subject[1]);
+    // landing area preloads once (above, before the jump); the first frame
+    // after landing resumes camera planning from the landed view.
+    if (introFlat === 0) {
+      for (const streamer of [this._completeCity, this._signatureLandmarks, this._inventoryTrees]) {
+        if (streamer && typeof streamer.setSuspended === 'function') streamer.setSuspended(false);
+      }
     }
     if (introFlat === 0 && this._completeCity && typeof this._completeCity.followCamera === 'function') {
       this._completeCity.followCamera();
@@ -2375,6 +2397,14 @@ class VectorBasemap {
    * see-through, and comes back once the rider is out. The decision and its
    * hysteresis live in `src/canalRecall/coveredPassage.ts`.
    */
+  /** The map's current view as a lng/lat box, or null before it can say. */
+  _mapBounds() {
+    try {
+      const b = this.map.getBounds();
+      return { west: b.getWest(), south: b.getSouth(), east: b.getEast(), north: b.getNorth() };
+    } catch (_) { return null; }
+  }
+
   _updateRiderCover(rider, active) {
     const helpers = window.CanalRecallBuildings;
     if (!helpers || typeof helpers.coveringBuilding !== 'function' || !this.map) return;

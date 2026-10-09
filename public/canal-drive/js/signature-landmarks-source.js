@@ -81,6 +81,19 @@ export class SignatureLandmarks {
     map.addLayer(this.layer);
   }
 
+  /**
+   * Hold model loading while the camera sweeps (the start-of-ride flight).
+   * Its overview frames the whole city, so "visible" became every landmark in
+   * Amsterdam: ~70 GLBs parsed and placed during the overview and flight on
+   * the measured route, each one also restyling the map. Models already shown
+   * stay; loading resumes for wherever the camera lands.
+   */
+  setSuspended(suspended) {
+    if (this._suspended === !!suspended) return;
+    this._suspended = !!suspended;
+    if (!this._suspended) this._requestModels();
+  }
+
   setEnabled(enabled) {
     this.enabled = !!enabled;
     // A hidden model must give its extrusion back, or the Dam has a hole in it.
@@ -276,7 +289,7 @@ export class SignatureLandmarks {
   }
 
   _requestModels() {
-    if (this._removed || !this.enabled || !this._loader || this._pending.size >= 2) return;
+    if (this._removed || !this.enabled || this._suspended || !this._loader || this._pending.size >= 2) return;
     const candidates = this.models.filter(spec => !this.shown.has(spec.id) && !this._pending.has(spec.id) &&
       !this._failed.has(spec.id) && (!this.loadVisibleOnly || this._nearby(spec)));
     const bounds = this.map.getBounds();
