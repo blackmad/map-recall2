@@ -62,9 +62,23 @@ export function buildPatheDeMunt(_w:number,_d:number,b:BuildingTools,decal?:Deca
  const G0=[U0,12.8,D],G1=[5.9,9.0,D],G2=[7.6,8.0,D],G3=[10.8,5.9,D],SL=[10.8,11,DS],SR=[SPLIT,11,DS];
  const T0=[U0,TOP,0],Ta=[4.5,TOP,0],Tb=[9.0,TOP,0],T1=[SPLIT,TOP,0];
  const leftTop=(U:number)=>14.3+(U-U0)*(10.5-14.3)/(5.9-U0),midTop=(U:number)=>9.2+(U-7.6)*(7.1-9.2)/(10.8-7.6),lowTop=(U:number)=>5.9+(U-11.7)*(4.9-5.9)/(SPLIT-11.7);
- // Big folded facets from the parapet line down into the recess (face the street and down).
- const fold=(a:number[],c:number[],e:number[])=>poly([a,c,e],'greyBrick',[0,-.4,-1]);
- fold(T0,G0,G1);fold(T0,G1,Ta);fold(Ta,G1,G2);fold(Ta,G2,Tb);fold(Tb,G2,G3);fold(Tb,G3,SL);fold(Tb,SL,T1);fold(T1,SL,SR);
+ // One broad, gently canted plane from the parapet down to the block tops / slot head (smooth normals, shared edges).
+ const bottomA:number[][]=[G0,G1,G2,G3],bottomB:number[][]=[SL,SR];
+ const lerpB=(pts:number[][],U:number)=>{for(let i=0;i+1<pts.length;i++){const p=pts[i],q=pts[i+1];if(U<=q[0]+1e-9){const k=(U-p[0])/(q[0]-p[0]);return [p[1]+(q[1]-p[1])*k,p[2]+(q[2]-p[2])*k]}}const l=pts[pts.length-1];return [l[1],l[2]]};
+ const SROW=[0,.34,.67,1];
+ // surface point at U (segment pts) and fraction s from the parapet (0) to the lower edge (1); mid rows bow slightly outward
+ const surf=(pts:number[][],U:number,s:number)=>{const [yb,db]=lerpB(pts,U);const bow=.18*Math.sin(Math.PI*s);return [U,TOP+(yb-TOP)*s,db*s-bow]};
+ const strip=(pts:number[][],Ua:number,Ub:number)=>{
+  const us:number[]=[];const n=Math.max(1,Math.round((Ub-Ua)/1.0));for(let i=0;i<=n;i++)us.push(Ua+(Ub-Ua)*i/n);
+  for(const p of pts)if(p[0]>Ua+1e-6&&p[0]<Ub-1e-6)us.push(p[0]);us.sort((x,y)=>x-y);
+  const pos:number[]=[];for(const U of us)for(const s of SROW){const q=surf(pts,U,s);const v=P(q[0],q[1],q[2]);pos.push(v.x,v.y,v.z)}
+  const R=SROW.length,idx:number[]=[];for(let i=0;i+1<us.length;i++)for(let j=0;j+1<R;j++){const a=i*R+j,c=(i+1)*R+j,d=(i+1)*R+j+1,e=i*R+j+1;idx.push(a,c,d,a,d,e)}
+  const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(pos,3));g.setIndex(idx);
+  const h=dirOf(0,-.4,-1),pa=new T.Vector3(pos[0],pos[1],pos[2]),pb=new T.Vector3(pos[3*R],pos[3*R+1],pos[3*R+2]),pc=new T.Vector3(pos[3*R+3],pos[3*R+4],pos[3*R+5]);
+  if(pb.clone().sub(pa).cross(pc.clone().sub(pb)).dot(h)<0){const ix=g.index!.array as Uint32Array|Uint16Array;for(let i=0;i<ix.length;i+=3){const k=ix[i+1];ix[i+1]=ix[i+2];ix[i+2]=k}}
+  g.computeVertexNormals();b.add(role(g,'facade'),'greyBrick')};
+ strip(bottomA,U0,10.8);strip(bottomB,10.8,SPLIT);
+ poly([[10.8,TOP,0],G3,SL],'greyBrick',[1,0,-.4]);
  // North end closure against the neighbour (party wall plane).
  poly([[U0,0,0],[U0,0,D],G0,T0],'greyBrick',[-1,0,0]);
  // Left block: front, sloping top (falls back to the fold), south side.
@@ -96,8 +110,10 @@ export function buildPatheDeMunt(_w:number,_d:number,b:BuildingTools,decal?:Deca
  const warm='#ecbd68';
  // north gap: glass doors and the first-floor window on the back wall
  fbox(6.0,7.5,0,2.9,D-.06,D,'dark');fbox(6.1,7.4,.05,2.8,D-.09,D-.06,'glass');fbox(6.0,7.5,3.3,5.2,D-.06,D,'dark');fbox(6.1,7.4,3.4,5.1,D-.09,D-.06,'glass');
- // slot: warm lit glazing over the back wall and an angled glass screen at its foot
- light(quadOn(P(10.9,.05,DS),dirOf(SPLIT-.1-10.9,0,0),dirOf(0,10.6,0),dirOf(0,0,-1),.03),warm,'gold');
+ // slot: dark blue-grey glazing over the back wall and an angled glass screen at its foot
+ light(quadOn(P(10.9,.05,DS),dirOf(SPLIT-.1-10.9,0,0),dirOf(0,10.6,0),dirOf(0,0,-1),.03),'#34465a','dark');
+ // narrow warm strip: the lit foyer at lobby level only
+ light(quadOn(P(10.9,.3,DS),dirOf(SPLIT-.1-10.9,0,0),dirOf(0,1.9,0),dirOf(0,0,-1),.05),warm,'gold');
  // curtain-wall mullions and transoms over the lit glazing
  for(const U of [11.85,12.95])fbox(U-.04,U+.04,.05,10.65,DS-.1,DS,'frame');
  for(let y=2.4;y<10.6;y+=2.1)fbox(10.9,SPLIT-.1,y,y+.08,DS-.1,DS,'frame');
@@ -106,9 +122,9 @@ export function buildPatheDeMunt(_w:number,_d:number,b:BuildingTools,decal?:Deca
  // white-framed doors (left block, middle fin)
  for(const [a,c,h] of [[4.1,5.2,3.5],[9.4,10.4,2.4]]){fbox(a,c,0,h,-.06,0,'white');fbox(a+.12,c-.12,0,h-.12,-.08,-.06,'dark')}
  // poster cases: lit posters in dark frames, left of the north gap and right of the slot
- const posterHex=['#3a4d66','#8a5a32','#6a3434','#9a8040','#3f5a48','#55406a'];
- for(const [u0,u1] of [[1.0,3.0],[14.3,16.75]]){fbox(u0,u1,.8,3.15,-.12,0,'dark');const cw=(u1-u0-.2)/3;
-  for(let r=0;r<2;r++)for(let k=0;k<3;k++)light(quadOn(P(u0+.1+k*cw+.04,.9+r*1.15,-.12),dirOf(cw-.08,0,0),dirOf(0,1.05,0),dirOf(0,0,-1),.01),posterHex[(r*3+k+(u0>10?2:0))%6],'gold')}
+ const posterHex=['#5f6e7e','#8c7c58','#7a7a7c','#4f5e70','#80705a','#696e69'];
+ for(const [u0,u1,cols] of [[1.0,3.0,2],[14.3,16.75,3]] as number[][]){fbox(u0,u1,.8,3.15,-.12,0,'dark');const m=.1,g=.06,cw=(u1-u0-2*m-(cols-1)*g)/cols,ch=(2.35-2*m-g)/2;
+  for(let r=0;r<2;r++)for(let k=0;k<cols;k++)light(quadOn(P(u0+m+k*(cw+g),.8+m+r*(ch+g),-.12),dirOf(cw,0,0),dirOf(0,ch,0),dirOf(0,0,-1),.01),posterHex[(r*cols+k+(u0>10?2:0))%6],'gold')}
  for(const [U,y] of [[8.7,1.0],[13.1,1.0]])light(quadOn(P(U,y,0),dirOf(.6,0,0),dirOf(0,.85,0),dirOf(0,0,-1),.02),'#e8c43c','gold');
 
  // ---- Diagonal rows of point lights following the facet slopes.
@@ -117,13 +133,10 @@ export function buildPatheDeMunt(_w:number,_d:number,b:BuildingTools,decal?:Deca
   for(let row=1;;row++){const drop=row*1.25;if(top(Ua)-drop<yMin&&top(Ub)-drop<yMin)break;
    for(let U=Ua+.45+(row%2)*.35;U<Ub-.3;U+=.7){const y=top(U)-drop;if(y<yMin)continue;light(quadOn(P(U,y,0),dirOf(dot,0,0),dirOf(0,dot,0),dirOf(0,0,-1),.02),lampHex,'white')}}};
  dotsOnFront(U0,5.9,leftTop,4.2);dotsOnFront(7.6,10.8,midTop,3.0);
- // and across the folded facets above, rows parallel to their lower edges
- const dotsOnFacet=(a:number[],c:number[],e:number[],rows:number)=>{const pa=P(a[0],a[1],a[2]),pc=P(c[0],c[1],c[2]),pe=P(e[0],e[1],e[2]);
-  for(let r=1;r<=rows;r++){const s=r/(rows+1);const l0=pe.clone().lerp(pa,s),l1=pe.clone().lerp(pc,s),len=l0.distanceTo(l1),n=Math.floor(len/.8);
-   for(let i=1;i<n;i++){const p=l0.clone().lerp(l1,i/n),e1=l1.clone().sub(l0).setLength(dot),e2=pe.clone().sub(p).setLength(dot);
-    light(quadOn(p,e1,e2,dirOf(0,-.4,-1),.02),lampHex,'white')}}};
- // rows run parallel to the fold edge (G-side), stepping up toward the parapet apex
- dotsOnFacet(G1,G0,T0,3);dotsOnFacet(G2,G1,Ta,4);dotsOnFacet(G3,G2,Tb,4);dotsOnFacet(SL,G3,Tb,3);
+ // and in a few regular rows along the canted plane
+ const dotsOnPlane=(pts:number[][],Ua:number,Ub:number)=>{for(const sr of [.3,.55,.8])for(let U=Ua+.5;U<Ub-.3;U+=.9){const q=surf(pts,U,sr),q2=surf(pts,U+.05,sr),q3=surf(pts,U,sr+.02);
+  const p=P(q[0],q[1],q[2]);const e1=P(q2[0],q2[1],q2[2]).sub(p).setLength(dot),e2=P(q3[0],q3[1],q3[2]).sub(p).setLength(dot);light(quadOn(p,e1,e2,dirOf(0,-.4,-1),.03),lampHex,'white')}};
+ dotsOnPlane(bottomA,U0,10.8);dotsOnPlane(bottomB,10.8,SPLIT);
 
  // ---- Vertical PATHÉ blade sign on brackets in front of the south block.
  const SU0=16.0,SU1=17.4,SY0=6.1,SY1=22.6,SD0=-.85,SD1=-.5;
