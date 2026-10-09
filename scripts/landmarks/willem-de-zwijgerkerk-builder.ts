@@ -63,7 +63,15 @@ export function buildWillemDeZwijgerkerk(_w: number, _d: number, b: BuildingTool
 
   // --- South gable (walls 15 + 84 form one plane; apex 20.8 m at t=6.6): tall narrow window and apex slit ---
   const sg = wallBetween([0.96, 19.74], [11.7, 15.13], 21, [0.394, 0.919]);
-  win(b, sg, 6.6, 8.2, 1.0, 5.6, 2, 0.14, true);
+  win(b, sg, 6.6, 4.7, 1.0, 3.4, 2, 0.14, true); // tall window above the entrance wing's roof
+  // Low brick entrance wing in front of the gable foot: flat pale canopy, double doors, slim side window
+  onWall(b, sg, 3.9, 0, 5.0, 3.0, 2.0, 'brick', 0);
+  onWall(b, sg, 3.9, 3.0, 5.6, 0.3, 2.7, 'stone', 0); // pale concrete roof slab, overhanging the front and sides
+  onWall(b, sg, 3.9, 2.55, 3.0, 0.4, 0.5, 'stone', 1.95); // flat canopy fascia over the doors
+  onWall(b, sg, 3.2, 0, 1.7, 2.45, 0.06, 'dark', 2.0, 'pane'); // double doors
+  for (const t of [2.2, 4.2]) onWall(b, sg, t, 0, 0.14, 2.6, 0.1, 'stone', 2.0); // door surround
+  onWall(b, sg, 5.2, 0.9, 0.6, 1.7, 0.05, 'glass', 2.04, 'pane'); // slim side window
+  onWall(b, sg, 5.2, 0.8, 0.8, 1.9, 0.05, 'frame', 2.0);
   onWall(b, sg, 6.6, 17.4, 0.4, 1.7, 0.06, 'dark', 0.01);
   onWall(b, sg, 6.6, 15.6, 0.7, 1.3, 0.05, 'stone', 0.01);
 
@@ -80,7 +88,7 @@ export function buildWillemDeZwijgerkerk(_w: number, _d: number, b: BuildingTool
   // --- East side: six wide low windows in the aisle wall (48), nine clerestory windows (18 + 43 plane), dark plinth ---
   const ea = wall(48);
   onWall(b, ea, ea.length / 2, 0, ea.length, 1.7, 0.05, 'greyBrick', 0.0);
-  for (let k = 0; k < 6; k++) win(b, ea, 1.9 + k * 2.55, 1.9, 1.7, 1.1, 1, 0.13);
+  for (let k = 0; k < 6; k++) win(b, ea, 1.9 + k * 2.55, 1.9, 1.6, 1.05, 1, 0.2);
   const ec = wallBetween([3.06, -10.43], [10.46, 6.78], 10.6, [0.92, -0.39]);
   ec.origin = [ec.origin[0] - ec.n[0] * 0.09, ec.origin[1] - ec.n[1] * 0.09]; // the shell's two clerestory walls sit 9 cm behind the chord between their ends
   for (let k = 0; k < 9; k++) win(b, ec, 1.2 + k * 2.0, 8.85, 1.0, 1.35, 1, 0.08);
