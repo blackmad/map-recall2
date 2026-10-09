@@ -1,3 +1,4 @@
+import {buildSintOlofskapel} from './sint-olofskapel-builder';
 import {buildMaartenLutherkerk} from './maarten-lutherkerk-builder';
 import {buildPetrusEnPaulusKerk} from './petrus-en-paulus-kerk-builder';
 import {buildLekstraatSynagoge} from './lekstraat-synagoge-builder';
@@ -331,7 +332,8 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   else if(id.startsWith('olvg-'))hospital(id);
   else {
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
-    if(id==='maarten-lutherkerk')buildMaartenLutherkerk(w,d,helpers);
+    if(id==='sint-olofskapel')buildSintOlofskapel(w,d,helpers);
+    else if(id==='maarten-lutherkerk')buildMaartenLutherkerk(w,d,helpers);
     else if(id==='petrus-en-paulus-kerk')buildPetrusEnPaulusKerk(w,d,helpers);
     else if(id==='lekstraat-synagoge')buildLekstraatSynagoge(w,d,helpers);
     else if(id==='gerard-dou-synagogue')buildGerardDouSynagogue(w,d,helpers);

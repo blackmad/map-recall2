@@ -506,6 +506,11 @@
       "version": "f7824a049c315a4f",
       "dateSource": "git-history"
     },
+    "houseboat-museum": {
+      "updatedAt": "2026-10-09T18:14:30.919Z",
+      "version": "ba60fd8e992e345f",
+      "dateSource": "asset-update"
+    },
     "houten-huys": {
       "updatedAt": "2026-10-04T04:37:05+02:00",
       "version": "ea52102890367c71",
@@ -621,6 +626,11 @@
       "version": "353b5a50df1cd690",
       "dateSource": "asset-update"
     },
+    "levend-paardenmuseum": {
+      "updatedAt": "2026-10-09T18:10:45.787Z",
+      "version": "a80ef13d5b245978",
+      "dateSource": "asset-update"
+    },
     "luther-museum": {
       "updatedAt": "2026-10-09T16:23:49.203Z",
       "version": "9d206ae339330815",
@@ -710,6 +720,11 @@
       "updatedAt": "2026-10-04T12:49:59+02:00",
       "version": "d25c5e03036cf9a0",
       "dateSource": "git-history"
+    },
+    "museum-amsterdam-noord": {
+      "updatedAt": "2026-10-09T18:05:31.444Z",
+      "version": "e88894aaab904dc3",
+      "dateSource": "asset-update"
     },
     "museum-van-loon": {
       "updatedAt": "2026-10-04T20:43:07+02:00",
@@ -831,6 +846,11 @@
       "version": "2e6def813b1db07e",
       "dateSource": "git-history"
     },
+    "oudemanhuispoort": {
+      "updatedAt": "2026-10-09T18:13:07.286Z",
+      "version": "764350d7441638ae",
+      "dateSource": "asset-update"
+    },
     "palace-on-the-dam": {
       "updatedAt": "2026-10-04T17:40:44+02:00",
       "version": "dc1eb61b42c88dd2",
@@ -845,6 +865,11 @@
       "updatedAt": "2026-10-04T00:48:21+02:00",
       "version": "07c1b888cb76da4d",
       "dateSource": "git-history"
+    },
+    "pathe-de-munt": {
+      "updatedAt": "2026-10-09T18:12:25.841Z",
+      "version": "6af9c8627182968c",
+      "dateSource": "asset-update"
     },
     "petrus-en-paulus-kerk": {
       "updatedAt": "2026-10-09T18:13:53.937Z",
@@ -986,6 +1011,11 @@
       "version": "273d5ac92f039827",
       "dateSource": "git-history"
     },
+    "sint-olofskapel": {
+      "updatedAt": "2026-10-09T18:41:31.768Z",
+      "version": "01a86c2e09c9ab2a",
+      "dateSource": "asset-update"
+    },
     "sloterdijk-station": {
       "updatedAt": "2026-10-04T17:40:44+02:00",
       "version": "38d256e4825dfc69",
@@ -1036,6 +1066,11 @@
       "version": "ee5101d708768c42",
       "dateSource": "git-history"
     },
+    "theo-thijssen-museum": {
+      "updatedAt": "2026-10-09T18:10:43.125Z",
+      "version": "0e3449f1f1fc5392",
+      "dateSource": "asset-update"
+    },
     "this-is-holland": {
       "updatedAt": "2026-10-09T16:21:41.489Z",
       "version": "3498cabee6eaae8d",
@@ -1045,6 +1080,11 @@
       "updatedAt": "2026-10-04T05:44:11+02:00",
       "version": "e77efef4eb4fd0a0",
       "dateSource": "git-history"
+    },
+    "torture-museum": {
+      "updatedAt": "2026-10-09T18:06:21.474Z",
+      "version": "1782e43fe2be1586",
+      "dateSource": "asset-update"
     },
     "treehouse-ndsm": {
       "updatedAt": "2026-10-06T21:05:23.950Z",
@@ -1130,41 +1170,6 @@
       "updatedAt": "2026-10-04T13:28:28+02:00",
       "version": "5978f719de17ff3e",
       "dateSource": "git-history"
-    },
-    "levend-paardenmuseum": {
-      "updatedAt": "2026-10-09T18:10:45.787Z",
-      "version": "a80ef13d5b245978",
-      "dateSource": "asset-update"
-    },
-    "museum-amsterdam-noord": {
-      "updatedAt": "2026-10-09T18:05:31.444Z",
-      "version": "e88894aaab904dc3",
-      "dateSource": "asset-update"
-    },
-    "oudemanhuispoort": {
-      "updatedAt": "2026-10-09T18:13:07.286Z",
-      "version": "764350d7441638ae",
-      "dateSource": "asset-update"
-    },
-    "houseboat-museum": {
-      "updatedAt": "2026-10-09T18:14:30.919Z",
-      "version": "ba60fd8e992e345f",
-      "dateSource": "asset-update"
-    },
-    "pathe-de-munt": {
-      "updatedAt": "2026-10-09T18:12:25.841Z",
-      "version": "6af9c8627182968c",
-      "dateSource": "asset-update"
-    },
-    "theo-thijssen-museum": {
-      "updatedAt": "2026-10-09T18:10:43.125Z",
-      "version": "0e3449f1f1fc5392",
-      "dateSource": "asset-update"
-    },
-    "torture-museum": {
-      "updatedAt": "2026-10-09T18:06:21.474Z",
-      "version": "1782e43fe2be1586",
-      "dateSource": "asset-update"
     }
   }
 }
