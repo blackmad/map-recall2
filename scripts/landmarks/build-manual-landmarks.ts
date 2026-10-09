@@ -187,6 +187,12 @@ import {buildBoomkerk} from './boomkerk-builder';
 import hospitals from './hospital-footprints.json';
 import {MANUAL_LANDMARKS} from '../../src/canalRecall/landmarks/manualModels';
 import {placementFor, scaledExtent} from '../../src/canalRecall/landmarks/signaturePlacement';
+import {buildTheaterBellevue} from './theater-bellevue-builder';
+import {buildRoyalTropicalInstitute} from './royal-tropical-institute-builder';
+import {buildWestIndianWarehouse} from './west-indian-warehouse-builder';
+import {buildCompagnietheater} from './compagnietheater-builder';
+import {buildRijksakademie} from './rijksakademie-builder';
+import {buildWestIndiaHouse} from './west-india-house-builder';
 const out=path.resolve('public/canal-drive/models');
 const palette={brick:'#9a5240',stone:'#cfc2a6',slate:'#4a525d',white:'#efe9db',gold:'#d9b24c',glass:'#527787',dark:'#303b43',frame:'#9daaa8',red:'#ac624e',blue:'#3f5f9a',pink:'#be9295',bronze:'#3d5148',copper:'#43888b',green:'#718b58',ochre:'#9f825c',concrete:'#d4d5d0',greyBrick:'#7d7871'};
 type Colour=keyof typeof palette;
@@ -501,6 +507,12 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='haparandaweg-13')buildHaparandaweg13(w,d,helpers);
     else if(id==='valley')buildValley(w,d,helpers);
     else if(id==='ndsm-warehouse-complex')buildNdsmWarehouseComplex(w,d,helpers);
+    else if(id==='theater-bellevue')buildTheaterBellevue(w,d,helpers);
+    else if(id==='west-india-house')buildWestIndiaHouse(w,d,helpers);
+    else if(id==='rijksakademie')buildRijksakademie(w,d,helpers);
+    else if(id==='compagnietheater')buildCompagnietheater(w,d,helpers);
+    else if(id==='west-indian-warehouse')buildWestIndianWarehouse(w,d,helpers);
+    else if(id==='royal-tropical-institute')buildRoyalTropicalInstitute(w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   manifest.models[id]=await save(id);

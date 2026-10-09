@@ -21,6 +21,9 @@ for(const[oid,obj]of Object.entries(survey.feature.CityObjects)){const g=obj.geo
 const z=14,n=2**z,tx=Math.floor((anchor[0]+180)/360*n),ty=Math.floor((1-Math.log(Math.tan(anchor[1]*Math.PI/180)+1/Math.cos(anchor[1]*Math.PI/180))/Math.PI)/2*n);
 let tile=null;for(const dx of[-1,0,1])for(const dy of[-1,0,1]){const f=`public/data/extracts/amsterdam/building-tiles/14/${tx+dx}/${ty+dy}.geojson.gz`;if(!fs.existsSync(f))continue;
  for(const ft of JSON.parse(zlib.gunzipSync(fs.readFileSync(f))).features)if(ft.properties.id.endsWith(pand))tile=ft;}
+if(!tile){// not in the public tiles (OSM-composited): fall back to the PDOK BAG WFS pand polygon
+ const q=`https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&typeNames=bag:pand&outputFormat=application/json&srsName=EPSG:4326&filter=${encodeURIComponent(`<Filter><PropertyIsEqualTo><PropertyName>identificatie</PropertyName><Literal>${pand}</Literal></PropertyIsEqualTo></Filter>`)}`;
+ const w=await (await fetch(q)).json();tile={geometry:w.features[0].geometry,properties:{id:'NL.IMBAG.Pand.'+pand,source:'pdok-bag-wfs'}};}
 const ringWGS=(tile.geometry.type==='Polygon'?tile.geometry.coordinates:tile.geometry.coordinates[0]);
 const ring=ringWGS.map(rg=>rg.map(local).map(p=>p.map(v=>+v.toFixed(3))));
 const out={id,anchor,groundNap:ground,coordinateConvention:'X east, Y above ground, Z south, metres from anchor (native runtime)',bagId:pand,bagAttributes:att,tileProperties:tile.properties,ringWGS84:ringWGS,ring,roofs,walls,grounds};

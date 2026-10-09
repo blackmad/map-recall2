@@ -1,0 +1,172 @@
+{
+  "id": "theater-bellevue",
+  "name": "Theater Bellevue",
+  "landmarkId": "extract_landmarks_374802612",
+  "modelUrl": "./models/theater-bellevue.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012169852"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.8804351,
+      52.3640966
+    ],
+    "headingDegrees": 114.5,
+    "lengthMetres": 44.75,
+    "widthMetres": 30.71
+  },
+  "surveyed": {
+    "anchor": [
+      4.8804351,
+      52.3640966
+    ],
+    "northOffsetDegrees": 0,
+    "source": "BAG pand 0363100012169852 with 3DBAG LoD2.2 roofs; native east/south metres, scale 1."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#cfc8b3",
+    "stone": "#9a968b",
+    "slate": "#5b5e63",
+    "white": "#ebe8de",
+    "glass": "#4d616b",
+    "dark": "#24282b"
+  },
+  "attribution": {
+    "title": "Theater Bellevue",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Theater_Bellevue",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free model on the BAG footprint (3DBAG LoD2.2 roof faces): white-tiled ground floor with glazed doors, sweeping canopy and lettering around the Marnixstraat corner, cream upper floors and the mansarded east block. Openings approximate, from a 2025 street-level panorama. No imported mesh or photo textures."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.880038,
+          52.364261
+        ],
+        [
+          4.880067,
+          52.364257
+        ],
+        [
+          4.880039,
+          52.364184
+        ],
+        [
+          4.880038,
+          52.364181
+        ],
+        [
+          4.880037,
+          52.364178
+        ],
+        [
+          4.880038,
+          52.364174
+        ],
+        [
+          4.880038,
+          52.364171
+        ],
+        [
+          4.88004,
+          52.364167
+        ],
+        [
+          4.880042,
+          52.364163
+        ],
+        [
+          4.880045,
+          52.364159
+        ],
+        [
+          4.880048,
+          52.364156
+        ],
+        [
+          4.880053,
+          52.364153
+        ],
+        [
+          4.880058,
+          52.36415
+        ],
+        [
+          4.880064,
+          52.364148
+        ],
+        [
+          4.88007,
+          52.364146
+        ],
+        [
+          4.880267,
+          52.364097
+        ],
+        [
+          4.880274,
+          52.364101
+        ],
+        [
+          4.880347,
+          52.364083
+        ],
+        [
+          4.880342,
+          52.364077
+        ],
+        [
+          4.880523,
+          52.36402
+        ],
+        [
+          4.880686,
+          52.364209
+        ],
+        [
+          4.880626,
+          52.36425
+        ],
+        [
+          4.880635,
+          52.364259
+        ],
+        [
+          4.880636,
+          52.36426
+        ],
+        [
+          4.88057,
+          52.36431
+        ],
+        [
+          4.880213,
+          52.364364
+        ],
+        [
+          4.880209,
+          52.364354
+        ],
+        [
+          4.880106,
+          52.364367
+        ],
+        [
+          4.880076,
+          52.364361
+        ],
+        [
+          4.880038,
+          52.364261
+        ]
+      ]
+    ]
+  }
+}

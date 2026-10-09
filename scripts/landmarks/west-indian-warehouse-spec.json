@@ -1,0 +1,85 @@
+{
+  "id": "west-indian-warehouse",
+  "name": "West Indian Warehouse",
+  "landmarkId": "extract_landmarks_76787173",
+  "modelUrl": "./models/west-indian-warehouse.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012170626"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.907724,
+      52.37222
+    ],
+    "headingDegrees": 130,
+    "lengthMetres": 24.17,
+    "widthMetres": 7.58
+  },
+  "surveyed": {
+    "anchor": [
+      4.907724,
+      52.37222
+    ],
+    "northOffsetDegrees": 0,
+    "source": "BAG pand 0363100012170626 with 3DBAG LoD2.2 roofs; native east/south metres, scale 1."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#8a4f3d",
+    "stone": "#cdbf9f",
+    "slate": "#4f5256",
+    "white": "#ebe7da",
+    "glass": "#566872",
+    "dark": "#23272a",
+    "blue": "#7f93b3"
+  },
+  "attribution": {
+    "title": "West Indian Warehouse",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/West-Indisch_Pakhuis",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free model on the BAG footprint (3DBAG LoD2.2 roof faces): brick warehouse with cream string courses, barred ground-floor openings, board doors and shuttered upper windows. Openings approximate, from 2025 street-level panoramas. No imported mesh or photo textures."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.907727,
+          52.372222
+        ],
+        [
+          4.907634,
+          52.372183
+        ],
+        [
+          4.907632,
+          52.372182
+        ],
+        [
+          4.907903,
+          52.372043
+        ],
+        [
+          4.907967,
+          52.372088
+        ],
+        [
+          4.907914,
+          52.372116
+        ],
+        [
+          4.907922,
+          52.372121
+        ],
+        [
+          4.907727,
+          52.372222
+        ]
+      ]
+    ]
+  }
+}

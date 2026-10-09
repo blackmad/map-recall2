@@ -10,4 +10,4 @@ for(const dx of[-1,0,1])for(const dy of[-1,0,1]){const f=`public/data/extracts/a
   let inside=false;for(let i=0,j=loc.length-1;i<loc.length;j=i++){const[a,b]=loc[i],[c,e]=loc[j];if((b>0)!==(e>0)&&0<(c-a)*(0-b)/(e-b)+a)inside=!inside}
   if(inside||d<rad)out.push({id:ft.properties.id,inside,d:+d.toFixed(1),props:ft.properties,ring,loc:loc.map(p=>p.map(v=>+v.toFixed(2)))});}}
 out.sort((a,b)=>(b.inside-a.inside)||a.d-b.d);
-for(const o of out.slice(0,12))console.log(JSON.stringify({id:o.id,inside:o.inside,d:o.d,props:o.props,n:o.loc.length,loc:o.inside?o.loc:undefined}));
+for(const o of out.slice(0,Number(process.env.N||12)))console.log(JSON.stringify({id:o.id,inside:o.inside,d:o.d,props:o.props,n:o.loc.length,loc:o.inside?o.loc:undefined}));

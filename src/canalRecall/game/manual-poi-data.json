@@ -1943,5 +1943,53 @@
     "description": "The Woonbootmuseum, or Houseboat Museum, is dedicated to the history and culture of living on the water. It lies on the Prinsengracht, on the edge of the Jordaan, aboard the Hendrika Maria, a historic inland vessel from 1914.",
     "funFact": "It is the only museum in the world specifically focused on houseboat living.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Woonbootmuseum"
+  },
+  {
+    "modelId": "theater-bellevue",
+    "landmarkId": "extract_landmarks_374802612",
+    "name": "Theater Bellevue",
+    "description": "Theater Bellevue stands at Leidsekade 90 on the corner of Marnixstraat. The core dates from around 1840, when it housed the societies Concordia and Bellevue; Eduard Cuypers enlarged it in 1881 and 1885, and a major renovation in 1938 turned it into an entertainment centre. Today it runs three halls for theatre, musical theatre, modern dance and cabaret.",
+    "funFact": "On 15 December 1935 the final game of the world chess championship was played here, when Max Euwe beat Alexander Alekhine to become world champion.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Theater_Bellevue"
+  },
+  {
+    "modelId": "west-india-house",
+    "landmarkId": "extract_landmarks_1399359542",
+    "name": "West India House",
+    "description": "The West India House on Herenmarkt was the Amsterdam headquarters of the Dutch West India Company. Built in 1617 as a meat market and militia waiting room, it was rented by the company from 1623 and extended with two wings around a courtyard, tripling its size by 1647. A fire in 1975 was followed by restoration in 1978-1981; it now holds offices, the John Adams Institute and a municipal wedding hall.",
+    "funFact": "It was here in 1625 that the company directors ordered the building of a fort on Manhattan, the beginning of New Amsterdam and later New York. A bronze statue of Peter Stuyvesant stands in the courtyard.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/West-Indisch_Huis"
+  },
+  {
+    "modelId": "rijksakademie",
+    "landmarkId": "extract_landmarks_373035281",
+    "name": "Rijksakademie van beeldende kunsten",
+    "description": "The Rijksakademie moved in 1992 into a former cavalry barracks at Sarphatistraat 470, whose gate still bears the name Kavallerie-Kazerne. It became an independent institution in November 1999 and offers a two-year residency for visual artists with studios, workshops and a library.",
+    "funFact": "About 1,200 artists apply each year, and roughly 20 are accepted.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rijksakademie"
+  },
+  {
+    "modelId": "compagnietheater",
+    "landmarkId": "extract_landmarks_1455669716",
+    "name": "Compagnietheater",
+    "description": "The Compagnietheater at Kloveniersburgwal 50 was built in 1792-1793 as a church for the Restored Evangelical Lutheran congregation, designed by Abraham van der Hart on the site of a former madhouse (dolhuis). A Hollands-Classicist building with a sculptural group by Anthonie Ziesenis on its facade, it was converted to a theatre in 1995-1996 by Francine Houben of Mecanoo and is a national monument.",
+    "funFact": "After the Lutheran congregations merged in 1952 the building briefly served as a bank archive before becoming a theatre.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Compagnietheater"
+  },
+  {
+    "modelId": "west-indian-warehouse",
+    "landmarkId": "extract_landmarks_76787173",
+    "name": "West Indian Warehouse",
+    "description": "The West-Indisch Pakhuis on the Rapenburg, where the Oudeschans meets the Oosterdok, was built in 1642 to store goods for the Dutch West India Company, including hides from New Amsterdam. The company ran its headquarters from here between 1647 and 1674, directing trade and the administration of New Amsterdam until 1664. Now a protected monument, it houses offices and an events venue.",
+    "funFact": "The letters GWC on the facade stand for the company's official name, Geoctroyeerde West-Indische Compagnie.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/West-Indisch_Pakhuis"
+  },
+  {
+    "modelId": "royal-tropical-institute",
+    "landmarkId": "extract_landmarks_1447049474",
+    "name": "Royal Tropical Institute",
+    "description": "The Royal Tropical Institute (KIT) complex by Johannes van Nieukerken, completed by his sons, was built between 1915 and 1926 in a neo-Renaissance style using one brick colour and one natural stone. It includes the octagonal Marble Hall, a large auditorium and the museum Hall of Light, with a tall bell tower on the corner of Linnaeusstraat and Mauritskade. It housed the Tropenmuseum until the museum became independent in 2014.",
+    "funFact": "Queen Wilhelmina opened the complex on 9 October 1926; delays came from material shortages in the First World War, strikes and weather.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Royal_Tropical_Institute"
   }
 ]

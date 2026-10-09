@@ -1,0 +1,132 @@
+{
+  "id": "compagnietheater",
+  "name": "Compagnietheater",
+  "landmarkId": "extract_landmarks_1455669716",
+  "modelUrl": "./models/compagnietheater.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012171200"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.89771,
+      52.37036
+    ],
+    "headingDegrees": 23.5,
+    "lengthMetres": 44.3,
+    "widthMetres": 29.33
+  },
+  "surveyed": {
+    "anchor": [
+      4.89771,
+      52.37036
+    ],
+    "northOffsetDegrees": 0,
+    "source": "BAG pand 0363100012171200 with 3DBAG LoD2.2 roofs; native east/south metres, scale 1."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#b9a78a",
+    "stone": "#d9d1b9",
+    "slate": "#575a5f",
+    "white": "#ece9df",
+    "glass": "#566872",
+    "dark": "#1f2326"
+  },
+  "attribution": {
+    "title": "Compagnietheater",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Compagnietheater",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free model on the BAG footprint (3DBAG LoD2.2 roof faces): the long Hollands-Classicist church hall with a rusticated stone ground floor, tall arched upper windows and a slate roof. Openings approximate, from 2025 street-level panoramas. No imported mesh or photo textures."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.897908,
+          52.370509
+        ],
+        [
+          4.897785,
+          52.370555
+        ],
+        [
+          4.897814,
+          52.370583
+        ],
+        [
+          4.897743,
+          52.370609
+        ],
+        [
+          4.897715,
+          52.370581
+        ],
+        [
+          4.897615,
+          52.370618
+        ],
+        [
+          4.897642,
+          52.370645
+        ],
+        [
+          4.8976,
+          52.370661
+        ],
+        [
+          4.8976,
+          52.370661
+        ],
+        [
+          4.897555,
+          52.370674
+        ],
+        [
+          4.897486,
+          52.370574
+        ],
+        [
+          4.897521,
+          52.370561
+        ],
+        [
+          4.897364,
+          52.370402
+        ],
+        [
+          4.897305,
+          52.370307
+        ],
+        [
+          4.897623,
+          52.370222
+        ],
+        [
+          4.897711,
+          52.370311
+        ],
+        [
+          4.897716,
+          52.370309
+        ],
+        [
+          4.897825,
+          52.370419
+        ],
+        [
+          4.89782,
+          52.37042
+        ],
+        [
+          4.897908,
+          52.370509
+        ]
+      ]
+    ]
+  }
+}
