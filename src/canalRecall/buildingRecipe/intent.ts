@@ -54,6 +54,8 @@ export interface FrontIntent {
   bays: number | number[];
   /** Windows inside the gable/crown above the top full storey. */
   atticWindows?: number;
+  /** Roof dormers standing on the eaves line behind a cornice/flat front. */
+  dormers?: number;
   /** 0-based bay (left-to-right, as seen from the street) holding the main door; null = no door. */
   doorBay: number | null;
   /** Ground storey noticeably taller than upper storeys (bel-etage / shop level). */
@@ -150,6 +152,7 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     bays.forEach((b, i) => count(b, `${at}.bays[${i}]`, 0, 16));
     if (Array.isArray(f.bays) && f.bays.length !== f.storeys) problems.push(`${at}.bays: one entry per storey (${f.storeys})`);
     if (f.atticWindows !== undefined) count(f.atticWindows, `${at}.atticWindows`, 0, 6);
+    if (f.dormers !== undefined) count(f.dormers, `${at}.dormers`, 0, 8);
     if (f.doorBay !== null) count(f.doorBay, `${at}.doorBay`, 0, Math.max(0, bays[0] - 1));
     oneOf(f.basement, BASEMENTS, `${at}.basement`);
     oneOf(f.cornice, CORNICES, `${at}.cornice`);

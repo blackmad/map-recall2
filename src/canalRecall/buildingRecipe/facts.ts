@@ -154,22 +154,33 @@ export function findFrontage(ground: RD[][][], roofs: BuildingFacts['roofsRD'], 
   }
   if (!seed) throw Error(`No footprint edge faces ${street}`);
   const streetNormal: RD = [target.point[0] - centroid[0], target.point[1] - centroid[1]];
-  const discovery = discoverCompleteFrontage(ground, [seed.a, seed.b], {streetNormalRD: streetNormal});
+  let discovery = discoverCompleteFrontage(ground, [seed.a, seed.b], {streetNormalRD: streetNormal});
+  // A near-parallel facade beyond a jog of at most 1 m is usually the same front
+  // (the canalhouse 82/88 partial-front failures); retry with the bounded 1 m jog limit.
+  if (discovery.possiblePartialFront) {
+    const wide = discoverCompleteFrontage(ground, [seed.a, seed.b], {streetNormalRD: streetNormal, maxJogM: 1});
+    if ((wide.candidate?.widthM ?? 0) > (discovery.candidate?.widthM ?? 0) + 0.3) { discovery = wide; uncertainty.push('Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).'); }
+  }
   const chain = (discovery.candidate?.orderedVerticesRD ?? [seed.a, seed.b]) as RD[];
   if (!discovery.candidate) uncertainty.push('Frontage discovery found no complete candidate; seed edge only.');
   uncertainty.push(...discovery.uncertainty.filter((u: string) => !u.startsWith('Candidate requires')));
   // Order left-to-right as seen from the street: viewer looks along -normal.
   let [a, b] = [chain[0], chain.at(-1)!];
   const tangent = [b[0] - a[0], b[1] - a[1]], n = discovery.streetNormalRD;
-  // Viewer facing the building looks along -n; their right-hand direction is (−n.y, n.x) rotated: right = (n.y, -n.x)·(-1)... compute: facing f=-n, right = (f.y, -f.x).
+  // A viewer facing the building looks along f = -n; their right hand points along (f.y, -f.x).
   const right = [-n[1], n[0]];
   const ordered = tangent[0] * right[0] + tangent[1] * right[1] >= 0 ? chain : [...chain].reverse();
   [a, b] = [ordered[0], ordered.at(-1)!];
   const width = dist(a, b), u = [(b[0] - a[0]) / width, (b[1] - a[1]) / width];
   const ground0 = groundNAP;
   const topProfile: FrontFacts['topProfile'] = [];
+  // Sample along the frontage polyline (not the chord, which can leave the footprint at jogs).
+  const segs = ordered.slice(1).map((q, i) => ({p: ordered[i], q, len: dist(ordered[i], q)})), total = segs.reduce((s, x) => s + x.len, 0);
   for (let k = 0; k <= 40; k++) {
-    const along = width * (0.01 + 0.98 * k / 40), p = [a[0] + u[0] * along - n[0] * 0.05, a[1] + u[1] * along - n[1] * 0.05];
+    let t = total * (0.01 + 0.98 * k / 40), seg = segs[0];
+    for (seg of segs) { if (t <= seg.len) break; t -= seg.len; }
+    const f = seg.len ? Math.min(1, t / seg.len) : 0, on = [seg.p[0] + (seg.q[0] - seg.p[0]) * f, seg.p[1] + (seg.q[1] - seg.p[1]) * f];
+    const p = [on[0] - n[0] * 0.08, on[1] - n[1] * 0.08], along = (on[0] - a[0]) * u[0] + (on[1] - a[1]) * u[1];
     const h = roofHeightAt(roofs, p, ground0);
     if (h !== null) topProfile.push({alongM: along, heightM: h});
   }
@@ -188,7 +199,7 @@ export function buildFacts(pandId: string, item: CityJsonItem, streets: StreetPa
   const unique = [...new Set(frontStreets)];
   return {
     schemaVersion: 1, pandId, source: meta, attributes, bagFootprintRD: bag, surveyFootprintPolygonsRD: ground, roofsRD: roofs,
-    heights: {groundNAP: g, roofMinM: Math.min(...roofZ), roofMaxM: Math.max(...roofZ), ridgeM: rel(attributes.b3_h_nok), dak50pM: rel(attributes.b3_h_dak_50p), dak70pM: rel(attributes.b3_h_dak_70p),
+    heights: {groundNAP: g, roofMinM: Math.min(...roofZ), roofMaxM: Math.max(...roofZ), ridgeM: Number.isFinite(Number(attributes.b3_h_nok)) && attributes.b3_h_nok !== null ? Math.max(rel(attributes.b3_h_nok), rel(attributes.b3_h_dak_max)) : rel(attributes.b3_h_dak_max), dak50pM: rel(attributes.b3_h_dak_50p), dak70pM: rel(attributes.b3_h_dak_70p),
       storeys: Number.isFinite(Number(attributes.b3_bouwlagen)) ? Number(attributes.b3_bouwlagen) : null, builtYear: Number.isFinite(Number(attributes.oorspronkelijkbouwjaar)) ? Number(attributes.oorspronkelijkbouwjaar) : null},
     fronts: unique.map(s => findFrontage(ground, roofs, g, streets, s, toRD)),
   };

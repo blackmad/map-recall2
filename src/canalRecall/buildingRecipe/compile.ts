@@ -77,8 +77,11 @@ export function crownVerges(group: T.Group, recipe: CanalHouseRecipe, material: 
   const verge = new T.MeshStandardMaterial({color: ROOF_COLOURS[material].low, roughness: 1});
   let moved = 0;
   for (const e of recipe.elevations) {
-    const crown = e.crown?.value; if (!crown) continue;
     const facade = group.getObjectByName(`elevation/${e.id}`); if (!facade) continue;
+    // Cornice/flat fronts: everything above the cornice top is roof seen behind it.
+    const bodyTop = (e.cornice?.value ? e.cornice.value.bottomM + e.cornice.value.heightM : (e.bodyEavesM?.value ?? recipe.house.eavesHeightM.value)) + 0.05;
+    const length = (() => { const ring = recipe.footprint.value[e.polygonIndex].outer, a = ring[e.edgeIndex], b = ring[e.endEdgeIndex ?? (e.edgeIndex + 1) % ring.length]; return Math.hypot(b[0] - a[0], b[1] - a[1]); })();
+    const crown = e.crown?.value ?? {profile: [[0, bodyTop], [length, bodyTop]] as [number, number][]};
     const m = facade.matrixWorld.elements, u = new T.Vector3(m[0], m[1], m[2]).normalize(), nrm = new T.Vector3(m[8], m[9], m[10]).normalize(), origin = new T.Vector3(m[12], m[13], m[14]);
     const profile = crown.profile;
     const crownAt = (x: number) => { // highest crown height at x (vertical steps take the upper value)
@@ -96,9 +99,17 @@ export function crownVerges(group: T.Group, recipe: CanalHouseRecipe, material: 
       if (!pts.every(v => Math.abs(v.clone().sub(origin).dot(nrm)) < 0.25)) continue;
       const below: number[] = [], above: number[] = [];
       for (let t = 0; t < pts.length; t += 3) {
-        const tri = pts.slice(t, t + 3), depth = tri[0].clone().sub(origin).dot(nrm);
+        const tri = pts.slice(t, t + 3);
         const local: P2[] = tri.map(v => [v.clone().sub(origin).dot(u), v.y]);
-        const toWorld = ([x, y]: P2) => origin.clone().addScaledVector(u, x).addScaledVector(nrm, depth).setY(y);
+        const det = (local[1][0] - local[0][0]) * (local[2][1] - local[0][1]) - (local[2][0] - local[0][0]) * (local[1][1] - local[0][1]);
+        // Jog closures seen edge-on stay masonry.
+        if (Math.abs(det) < 1e-6) { for (const v of tri) below.push(v.x, v.y, v.z); continue; }
+        // Barycentric map back onto the original triangle keeps jogged closures exact.
+        const toWorld = ([x, y]: P2) => {
+          const l1 = ((x - local[0][0]) * (local[2][1] - local[0][1]) - (local[2][0] - local[0][0]) * (y - local[0][1])) / det;
+          const l2 = ((local[1][0] - local[0][0]) * (y - local[0][1]) - (x - local[0][0]) * (local[1][1] - local[0][1])) / det;
+          return tri[0].clone().multiplyScalar(1 - l1 - l2).addScaledVector(tri[1], l1).addScaledVector(tri[2], l2);
+        };
         const minX = Math.min(...local.map(q => q[0])), maxX = Math.max(...local.map(q => q[0]));
         const cuts = [minX, ...breaks.filter(b => b > minX && b < maxX), maxX];
         for (let k = 0; k + 1 < cuts.length; k++) {
@@ -124,11 +135,44 @@ export function crownVerges(group: T.Group, recipe: CanalHouseRecipe, material: 
   return moved;
 }
 
+/**
+ * Frontages with shallow native jogs: the library mounts facade details on the
+ * outermost plane, which leaves them floating over recessed segments. Fill the
+ * plan sliver between the native frontage polyline and that plane with masonry
+ * up to the body eaves, so every detail is backed (the jog is flattened, ≤ 0.5 m).
+ */
+export function backJogs(group: T.Group, recipe: CanalHouseRecipe, fit: FitReport): number {
+  let filled = 0;
+  const shell = group.getObjectByName('shell/0') as T.Mesh | undefined;
+  for (const f of fit.fronts) {
+    if (f.frontageDeviationM <= 0.03) continue;
+    const ring = recipe.footprint.value[f.polygonIndex].outer, n = ring.length, [i0, i1] = f.edge;
+    const a = ring[i0], b = ring[i1], len = Math.hypot(b[0] - a[0], b[1] - a[1]), ux = (b[0] - a[0]) / len, uz = (b[1] - a[1]) / len;
+    const sign = ring.reduce((s, p, i) => { const q = ring[(i + 1) % n]; return s + p[0] * q[1] - q[0] * p[1]; }, 0) > 0 ? 1 : -1, nx = sign * uz, nz = -sign * ux;
+    const chain: [number, number][] = [];
+    for (let i = i0; ; i = (i + 1) % n) { chain.push(ring[i]); if (i === i1) break; }
+    const out = Math.max(0, f.frontageOutsetM) + 0.001;
+    const plane = chain.map(p => { const along = (p[0] - a[0]) * ux + (p[1] - a[1]) * uz; return [a[0] + ux * along + nx * out, a[1] + uz * along + nz * out] as [number, number]; });
+    const poly = [...chain, ...plane.reverse()].map(p => new T.Vector2(p[0], p[1]));
+    const top = recipe.elevations.find(e => e.id === f.id)?.bodyEavesM?.value ?? f.eavesM;
+    const values: number[] = [];
+    const push = (...pts: number[][]) => pts.forEach(p => values.push(p[0], p[1], p[2]));
+    for (const [x, y, z] of T.ShapeUtils.triangulateShape(poly, [])) push([poly[x].x, top, poly[x].y], [poly[y].x, top, poly[y].y], [poly[z].x, top, poly[z].y]);
+    for (let k = 0; k < poly.length; k++) { const p = poly[k], q = poly[(k + 1) % poly.length]; push([p.x, 0, p.y], [q.x, 0, q.y], [q.x, top, q.y], [p.x, 0, p.y], [q.x, top, q.y], [p.x, top, p.y]); }
+    const g = new T.BufferGeometry(); g.setAttribute('position', new T.Float32BufferAttribute(values, 3)); g.computeVertexNormals();
+    const mesh = new T.Mesh(g, (shell?.material as T.Material) ?? new T.MeshStandardMaterial({color: recipe.palette.value.wall}));
+    mesh.name = `shell/jog-backing-${f.id}`; mesh.userData = {component: 'shell', surface: 'wall', pandId: recipe.house.pandId};
+    group.add(mesh); filled++;
+  }
+  return filled;
+}
+
 export interface CompiledBuilding { group: T.Group; recipe: CanalHouseRecipe; anchorRD: [number, number]; fit: FitReport; roofClasses: {steep: number; low: number; flat: number}; vergeTriangles: number }
 
 export function compileBuilding(intent: CanalHouseIntent, facts: BuildingFacts): CompiledBuilding {
   const {recipe, anchorRD, report} = fitIntent(intent, facts);
   const built = compileCanalHouseRecipe(recipe);
+  backJogs(built.group, recipe, report);
   const vergeTriangles = crownVerges(built.group, recipe, intent.roof.material);
   const roofClasses = dressRoofs(built.group, intent.roof.material);
   return {group: built.group, recipe, anchorRD, fit: report, roofClasses, vergeTriangles};

@@ -60,13 +60,13 @@ function topology(tris: Tri[]) {
   const ids = new Map<string, number>(), parent: number[] = [];
   const vid = (p: number[]) => { const k = key(p); if (!ids.has(k)) { ids.set(k, parent.length); parent.push(parent.length); } return ids.get(k)!; };
   const find = (i: number): number => parent[i] === i ? i : (parent[i] = find(parent[i]));
-  const edges = new Map<string, {n: number; a: number[]; b: number[]}>();
-  const triV = tris.map(t => {
+  const edges = new Map<string, {n: number; a: number[]; b: number[]; tri: number}>();
+  const triV = tris.map((t, ti) => {
     const v = [vid(t.a), vid(t.b), vid(t.c)];
     parent[find(v[1])] = find(v[0]); parent[find(v[2])] = find(v[0]);
     for (const [i, j, p, q] of [[v[0], v[1], t.a, t.b], [v[1], v[2], t.b, t.c], [v[2], v[0], t.c, t.a]] as const) {
       if (i === j) continue;
-      const k = i < j ? `${i}|${j}` : `${j}|${i}`, e = edges.get(k) ?? {n: 0, a: p, b: q}; e.n++; edges.set(k, e);
+      const k = i < j ? `${i}|${j}` : `${j}|${i}`, e = edges.get(k) ?? {n: 0, a: p, b: q, tri: ti}; e.n++; edges.set(k, e);
     }
     return v;
   });
@@ -91,9 +91,8 @@ function topology(tris: Tri[]) {
   for (const e of edges.values()) {
     if (e.n !== 1 || Math.max(e.a[1], e.b[1]) <= 0.05) continue;
     const samples = [0.25, 0.5, 0.75].map(t => e.a.map((v, i) => v + (e.b[i] - v) * t));
-    const covered = samples.every(q => tris.some(t => {
-      const onOwn = [t.a, t.b, t.c].filter(v => Math.hypot(v[0] - e.a[0], v[1] - e.a[1], v[2] - e.a[2]) < 0.01 || Math.hypot(v[0] - e.b[0], v[1] - e.b[1], v[2] - e.b[2]) < 0.01).length === 2;
-      return !onOwn && pointTriangleDistance(q, t) < 0.01;
+    const covered = samples.every(q => tris.some((t, ti) => {
+      return ti !== e.tri && pointTriangleDistance(q, t) < 0.02;
     }));
     if (covered) continue;
     openCount++; openLength += Math.hypot(e.a[0] - e.b[0], e.a[1] - e.b[1], e.a[2] - e.b[2]);
