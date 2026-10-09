@@ -473,7 +473,7 @@ class Game {
     this.sound.resume();
     this.player.handleInput(this.input);
     const ferry = window.CanalRecallFerryTravel;
-    const onFerry = ferry.beginFrame(this);
+    const onFerry = !!ferry && ferry.beginFrame(this);
     this.player.update(dt, onFerry ? ferry.motionTrack(this) : this.track);
     if (onFerry) {
       ferry.afterMove(this, previousPlayerPosition);
