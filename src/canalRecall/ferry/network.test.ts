@@ -10,6 +10,9 @@ const land:Segment[] = piers.filter(s=>s.inAmsterdamBbox).map(s=>{const p=projec
 const added=ferrySegments(net,land,project), links=added.flatMap(s=>s.ferryLink?[s.ferryLink]:[]);
 assert.equal(links.length,8,'Amsterdam-bbox ferry connections');
 const f3=links.find(l=>l.ref==='F3')!;
+// A named ferry or access segment would become a street question, distractor and router novelty target.
+assert.deepEqual(added.filter(s=>s.name).map(s=>s.label),[],'ferry segments carry no street name');
+assert.ok(added.every(s=>s.label),'ferry segments keep a display label');
 assert.deepEqual(connectedTerminals(f3.from.id,links).map(t=>t.name),['Buiksloterweg']);
 assert.ok(!connectedTerminals(f3.from.id,links).some(t=>t.name==='NDSM-werf'),'parent Centraal station does not merge piers');
 const segments=[...land,...added], graph=connectFerryGraph(buildRoadGraph(segments.filter(s=>s.type!=='ferry').map(s=>({points:s.points,width:s.width})),{mergeSize:2,junctionStitchRadius:8}),segments);

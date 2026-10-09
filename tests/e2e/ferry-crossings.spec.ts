@@ -37,6 +37,51 @@ test('cycling boards an IJ ferry, rejects another pier, and docks at its connect
     await touch.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:c.x,y:c.y}]});
     await touch.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:c.x,y:c.y-c.delta}]});
   };
+  // Every pier must have rendered water within boarding reach. The water mask
+  // is rendered, so visit each pier with the camera before probing it.
+  const piers = await page.evaluate(()=>{
+    const g=(window as any).canalRecallGame;
+    g._updateCanalQuiz=()=>{}; g._updateBridgeQuiz=()=>{};
+    const seen=new Map();
+    for (const s of g.track.segments) if (s.type==='ferry-access') seen.set(s.ferryTerminal.id, s.ferryTerminal);
+    return [...seen.values()].map((t:any)=>({id:t.id,name:t.name}));
+  });
+  const shores: Array<{name:string,distance:number|null}> = [];
+  for (const pier of piers) {
+    await page.evaluate((id)=>{
+      const g=(window as any).canalRecallGame, p=g.player;
+      const t=g.track.segments.find((s:any)=>s.ferryTerminal?.id===id).ferryTerminal;
+      // Stand at the pier end facing the water, as a boarding rider does.
+      p.x=t.x; p.y=t.y; p.angle=Math.atan2(t.y-t.land.y,t.x-t.land.x); p.speed=0; p.vx=0; p.vy=0;
+    }, pier.id);
+    // The mask follows the chase camera and tile loading; give each pier time.
+    const probe = () => page.evaluate((id)=>{
+      const g=(window as any).canalRecallGame;
+      const t=g.track.segments.find((s:any)=>s.ferryTerminal?.id===id).ferryTerminal;
+      const w=(window as any).CanalRecallFerry.nearestWater(t,(x:number,y:number)=>g.vectorMap.isWater(x,y,g.osmLoader));
+      return {name:t.name,distance:w?w.distance:null};
+    }, pier.id);
+    let shore = await probe();
+    for (let attempt = 0; shore.distance === null && attempt < 20; attempt++) {
+      await page.waitForTimeout(300);
+      shore = await probe();
+    }
+    shores.push(shore);
+  }
+  console.log(JSON.stringify({project:testInfo.project.name,shores}));
+  expect(shores.filter(s=>s.distance===null), 'piers without water in boarding reach').toEqual([]);
+
+  // Ride to the Centraal F3 pier and turn towards the water, as a player does.
+  await page.evaluate(()=>{
+    const g=(window as any).canalRecallGame, p=g.player;
+    const t=g.track.segments.find((s:any)=>s.ferryLink?.ref==='F3').ferryLink.from;
+    p.x=t.land.x; p.y=t.land.y; p.angle=Math.atan2(t.y-t.land.y,t.x-t.land.x); p.speed=0; p.vx=0; p.vy=0;
+  });
+  await expect.poll(()=>page.evaluate(()=>{
+    const g=(window as any).canalRecallGame;
+    const t=g.track.segments.find((s:any)=>s.ferryLink?.ref==='F3').ferryLink.from;
+    return !!(window as any).CanalRecallFerry.nearestWater(t,(x:number,y:number)=>g.vectorMap.isWater(x,y,g.osmLoader));
+  }),{timeout:8000}).toBe(true);
   const inventory = await page.evaluate(() => {
     const g = (window as any).canalRecallGame;
     const links = g.track.segments.filter((s:any)=>s.ferryLink).map((s:any)=>s.ferryLink);
@@ -44,16 +89,24 @@ test('cycling boards an IJ ferry, rejects another pier, and docks at its connect
     if (!f3) return { refs: links.map((l:any)=>l.ref), boarded: false };
     g.quizPromptName = ''; g._prompt.style.display = 'none'; g.quizCurrentName = '';
     const p = g.player, t = f3.from;
-    p.x=t.x; p.y=t.y; p.angle=Math.atan2(t.y-t.land.y,t.x-t.land.x);
+    const shore=(window as any).CanalRecallFerry.nearestWater(t,(x:number,y:number)=>g.vectorMap.isWater(x,y,g.osmLoader));
+    p.x=t.x; p.y=t.y; p.angle=shore.angle ?? Math.atan2(t.y-t.land.y,t.x-t.land.x);
     p.speed=20; p.vx=Math.cos(p.angle)*20; p.vy=Math.sin(p.angle)*20;
-    g._updateCanalQuiz=()=>{}; g._updateBridgeQuiz=()=>{};
-    return {refs:links.map((l:any)=>l.ref), boarded:true, accessLength:Math.hypot(t.x-t.land.x,t.y-t.land.y)};
+    return {refs:links.map((l:any)=>l.ref), boarded:true, accessLength:Math.hypot(t.x-t.land.x,t.y-t.land.y), shoreDistance:shore.distance};
   });
   expect(inventory.boarded, JSON.stringify(inventory)).toBe(true);
   await forward(true);
   await expect.poll(()=>page.evaluate(()=>!!(window as any).canalRecallGame.player.ferryOrigin)).toBe(true);
   await forward(false);
   await expect.poll(()=>page.evaluate(()=>!!(window as any).canalRecallGame.vectorMap._playerFerry?.ready)).toBe(true);
+  const boarded = await page.evaluate(()=>{
+    const g=(window as any).canalRecallGame, p=g.player;
+    return {water:g.vectorMap.isWater(p.x,p.y,g.osmLoader), bike:g.vectorMap._playerBike.visible, ferry:g.vectorMap._playerFerry.visible,
+      quiz:g._prompt.style.display};
+  });
+  expect(boarded).toMatchObject({water:true,bike:false,ferry:true});
+  await page.waitForTimeout(900); // let the chase camera settle on the launched vessel
+  await page.screenshot({path:testInfo.outputPath('ferry-boarding.png')});
   // Put the vessel in the middle of its real GTFS crossing for visual review.
   await page.evaluate(()=>{
     const g=(window as any).canalRecallGame, p=g.player;

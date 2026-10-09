@@ -4,7 +4,12 @@ import type { RoadGraph, RoadGraphNode } from '../routing/roadGraph';
 export type Point = { x: number; y: number };
 export type Terminal = Point & { id: string; name: string; land: Point };
 export type FerryLink = { id: string; ref: string; from: Terminal; to: Terminal; points: Point[] };
-export type Segment = { points: Point[]; width: number; type: string; name: string; ferryLink?: FerryLink; ferryTerminal?: Terminal };
+/**
+ * Ferry and terminal-access segments carry an empty `name`: a name on a
+ * segment makes it a street question, a distractor, a novelty target for the
+ * learning router and a spoiler candidate. `label` is for display only.
+ */
+export type Segment = { points: Point[]; width: number; type: string; name: string; label?: string; ferryLink?: FerryLink; ferryTerminal?: Terminal };
 const distance = (a: Point, b: Point) => Math.hypot(a.x - b.x, a.y - b.y);
 
 export function nearestOnLand(point: Point, segments: readonly Segment[]): Point & { distance: number } {
@@ -54,11 +59,11 @@ export function ferrySegments(network: TransitNetwork, land: readonly Segment[],
       if (a > b) middle.reverse();
       const points = [from, ...middle, to];
       const ferryLink = { id: `${line.ref}:${from.id}:${to.id}`, ref: line.ref, from, to, points };
-      links.push({ points, type: 'ferry', width: 45, name: `${line.ref} · ${from.name} – ${to.name}`, ferryLink });
+      links.push({ points, type: 'ferry', width: 45, name: '', label: `${line.ref} · ${from.name} – ${to.name}`, ferryLink });
     }
   }
   const used = new Map(links.flatMap(s => [s.ferryLink!.from, s.ferryLink!.to]).map(t => [t.id, t]));
-  const accesses: Segment[] = [...used.values()].map(t => ({ points: [t.land, t], type: 'ferry-access', width: 18, ferryTerminal: t, name: `${t.name} ferry terminal` }));
+  const accesses: Segment[] = [...used.values()].map(t => ({ points: [t.land, t], type: 'ferry-access', width: 18, ferryTerminal: t, name: '', label: `${t.name} ferry terminal` }));
   return [...accesses, ...links];
 }
 
@@ -75,7 +80,7 @@ export function connectFerryGraph<T>(graph: RoadGraph<T>, segments: readonly Seg
       const node: RoadGraphNode<T> = { ...p, key: `ferry:${segmentIndex}:${i}`, edges: [] };
       nodes.set(node.key, node); allNodes.push(node); return node;
     }), ends[1]];
-    const metadata = { segmentIndex, name: segment.name, ferryId: segment.ferryLink.id } as T;
+    const metadata = { segmentIndex, name: '', ferryId: segment.ferryLink.id } as T;
     for (let i = 1; i < chain.length; i++) {
       const a = chain[i - 1]!, b = chain[i]!;
       if (a === b) continue;

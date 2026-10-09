@@ -428,8 +428,8 @@
     "test:feedback:rules": "npx --yes firebase-tools@15.28.2 emulators:exec --only firestore --project demo-canal-feedback --config firebase.feedback.json 'node scripts/feedback/rules.test.mjs'",
     "build:ordinary-buildings-gallery": "esbuild src/canalRecall/ordinaryBuildings/gallery.mjs --bundle --format=esm --outfile=public/canal-drive/js/ordinary-buildings-gallery.bundle.js --minify",
     "test:street-rendering-core": "node --import tsx --test src/canalRecall/surveyedBuildingEnvelope.test.ts src/canalRecall/surveyedEnvelopeMeshBinding.test.ts src/canalRecall/surveyedEnvelopeNative.test.ts src/canalRecall/surveyedEnvelopeTransport.test.ts src/canalRecall/compoundFrontageLayout.test.ts src/canalRecall/compoundNativeFrontage.test.ts src/canalRecall/regularCanalFrontage.test.ts src/canalRecall/regularCanalNative.test.ts src/canalRecall/interwarFrontageLayout.test.ts src/canalRecall/interwarGroundFrontage.test.ts src/canalRecall/interwarNativeFrontage.test.ts src/canalRecall/repeatedTerraceFrontage.test.ts src/canalRecall/repeatedTerraceRoof.test.ts",
-    "build:canal-ferry": "esbuild src/canalRecall/ferry/network.ts --bundle --format=iife --global-name=CanalRecallFerry --outfile=public/canal-drive/js/ferry-network.bundle.js --minify",
-    "test:ferry": "node --import tsx src/canalRecall/ferry/network.test.ts",
+    "build:canal-ferry": "esbuild src/canalRecall/ferry/index.ts --bundle --format=iife --global-name=CanalRecallFerry --outfile=public/canal-drive/js/ferry-network.bundle.js --minify",
+    "test:ferry": "node --import tsx src/canalRecall/ferry/network.test.ts && node --import tsx src/canalRecall/ferry/travel.test.ts",
     "build:ferry-model": "node scripts/build-ferry-model.mjs"
   },
   "dependencies": {
