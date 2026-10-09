@@ -13558,5 +13558,1458 @@
       ]
     ]
   }
-}
+},
+  {
+    "id": "haparandaweg-902-950",
+    "status": "held",
+    "heldReason": "Block-kit draft awaiting integrator review of artifacts/haparandaweg/haparandaweg-902-950/contact.png (2026-10-09).",
+    "name": "Het Pakhuis, Haparandaweg 902-950",
+    "modelUrl": "./models/haparandaweg-902-950.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012244558"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.878,
+        52.3951
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 26.9,
+      "widthMetres": 26.8
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.878,
+        52.3951
+      ],
+      "northOffsetDegrees": 0,
+      "source": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012244558 (ground 0.78 m NAP)"
+    },
+    "materialOverrides": {
+      "wall": "#43302c",
+      "roof": "#58534f",
+      "frame": "#7a726a",
+      "glass": "#5d6f79",
+      "slab": "#a9a398",
+      "rail": "#7b746b",
+      "glassRail": "#7f9097",
+      "dark": "#2b2a2b",
+      "door": "#5a4f48",
+      "stone": "#d9d0bd",
+      "sign": "#d7d3c8"
+    },
+    "preservePositionPrecision": true,
+    "attribution": {
+      "title": "Het Pakhuis, Haparandaweg 902-950 original architecture",
+      "author": "Map Recall",
+      "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012244558",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native metre geometry: exact 3DBAG LoD2.2 walls and roofs with facade systems laid out from Gemeente Amsterdam panoramas (CC BY 4.0) by the block kit (src/canalRecall/blockBuilding). 2277 triangles. Rear and party walls are unmeasured. No invented POI."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.878164421912388,
+            52.39509666726554
+          ],
+          [
+            4.878198015860285,
+            52.39507239489759
+          ],
+          [
+            4.878164628010228,
+            52.3950550485088
+          ],
+          [
+            4.878149685916838,
+            52.39504729608336
+          ],
+          [
+            4.878147624938439,
+            52.395048778296804
+          ],
+          [
+            4.878145181206909,
+            52.395044951491194
+          ],
+          [
+            4.878110350671972,
+            52.39502686848724
+          ],
+          [
+            4.87806200600725,
+            52.3950017606899
+          ],
+          [
+            4.8780590764736695,
+            52.39500388070427
+          ],
+          [
+            4.87804158759983,
+            52.39499511318721
+          ],
+          [
+            4.878043089169806,
+            52.39499195113187
+          ],
+          [
+            4.877972883412784,
+            52.39495549766439
+          ],
+          [
+            4.877941895130434,
+            52.39497787459576
+          ],
+          [
+            4.877801984139715,
+            52.39507895256917
+          ],
+          [
+            4.8778251701467,
+            52.39509099892203
+          ],
+          [
+            4.877847708417616,
+            52.39510269493353
+          ],
+          [
+            4.877868789282379,
+            52.39511363636363
+          ],
+          [
+            4.877890974242713,
+            52.3951251527129
+          ],
+          [
+            4.877912393696785,
+            52.39513628278836
+          ],
+          [
+            4.877934666984764,
+            52.39514783507007
+          ],
+          [
+            4.8779564103068696,
+            52.39515913582465
+          ],
+          [
+            4.87797844805446,
+            52.395170571325906
+          ],
+          [
+            4.8780011335381195,
+            52.39518234818541
+          ],
+          [
+            4.878027146029765,
+            52.39519584980237
+          ],
+          [
+            4.878125763846139,
+            52.395124595759974
+          ],
+          [
+            4.878164421912388,
+            52.39509666726554
+          ]
+        ]
+      ]
+    },
+    "heightMetres": 30.25
+  },
+  {
+    "id": "haparandaweg-650-706",
+    "status": "held",
+    "heldReason": "Block-kit draft awaiting integrator review of artifacts/haparandaweg/haparandaweg-650-706/contact.png (2026-10-09).",
+    "name": "Haparandaweg 650-706",
+    "modelUrl": "./models/haparandaweg-650-706.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012242823"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.8771,
+        52.3945
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 48.4,
+      "widthMetres": 52.1
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.8771,
+        52.3945
+      ],
+      "northOffsetDegrees": 0,
+      "source": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012242823 (ground 0.78 m NAP)"
+    },
+    "materialOverrides": {
+      "wall": "#8a867c",
+      "roof": "#6f6c68",
+      "frame": "#a7a99f",
+      "glass": "#7b878a",
+      "slab": "#7a746a",
+      "rail": "#6b665d",
+      "glassRail": "#8aa0a3",
+      "dark": "#2e2f30",
+      "door": "#4d5456",
+      "stone": "#9a9488",
+      "sign": "#d8d4c8"
+    },
+    "preservePositionPrecision": true,
+    "attribution": {
+      "title": "Haparandaweg 650-706 original architecture",
+      "author": "Map Recall",
+      "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012242823",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native metre geometry: exact 3DBAG LoD2.2 walls and roofs with facade systems laid out from Gemeente Amsterdam panoramas (CC BY 4.0) by the block kit (src/canalRecall/blockBuilding). 4833 triangles. Rear and party walls are unmeasured. No invented POI."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.877197276857871,
+            52.39428268954366
+          ],
+          [
+            4.877186442147309,
+            52.394277048149476
+          ],
+          [
+            4.877133225464318,
+            52.39424938016529
+          ],
+          [
+            4.877125364410731,
+            52.39424529284944
+          ],
+          [
+            4.877121168904604,
+            52.394248320158106
+          ],
+          [
+            4.877024863637626,
+            52.394317768595045
+          ],
+          [
+            4.876941292099773,
+            52.39437800934244
+          ],
+          [
+            4.876903694476438,
+            52.3944051203737
+          ],
+          [
+            4.876886838846556,
+            52.394417274523896
+          ],
+          [
+            4.876854820510316,
+            52.394440352137984
+          ],
+          [
+            4.876887486573818,
+            52.39445706970895
+          ],
+          [
+            4.876831620097483,
+            52.39449681997844
+          ],
+          [
+            4.876798939312908,
+            52.39448009342436
+          ],
+          [
+            4.876736948869734,
+            52.394525
+          ],
+          [
+            4.876739657547375,
+            52.394526616960114
+          ],
+          [
+            4.8767385976300375,
+            52.39452732662594
+          ],
+          [
+            4.8767468119894035,
+            52.39453171038448
+          ],
+          [
+            4.876803517566963,
+            52.39456129177147
+          ],
+          [
+            4.876840982700632,
+            52.394580470715056
+          ],
+          [
+            4.87690637371193,
+            52.394614453826804
+          ],
+          [
+            4.876914632234519,
+            52.39461821775063
+          ],
+          [
+            4.876916398763415,
+            52.39461913402803
+          ],
+          [
+            4.876917826707605,
+            52.39461987064319
+          ],
+          [
+            4.876913616480404,
+            52.3946229338843
+          ],
+          [
+            4.877088017045656,
+            52.39471359144808
+          ],
+          [
+            4.877105726497838,
+            52.39470083542939
+          ],
+          [
+            4.8772405568158215,
+            52.39460366510959
+          ],
+          [
+            4.877257073860998,
+            52.394591771469635
+          ],
+          [
+            4.87725892871634,
+            52.39459274164571
+          ],
+          [
+            4.877265141009623,
+            52.39458823212361
+          ],
+          [
+            4.877270602528127,
+            52.39458429752066
+          ],
+          [
+            4.877439939043878,
+            52.39446201940352
+          ],
+          [
+            4.877437554229868,
+            52.394460797700326
+          ],
+          [
+            4.877435920190639,
+            52.394461983471075
+          ],
+          [
+            4.877411969003025,
+            52.3944495418613
+          ],
+          [
+            4.877408259292344,
+            52.39444761049228
+          ],
+          [
+            4.877449978816436,
+            52.39441752605102
+          ],
+          [
+            4.877445518330974,
+            52.39441143550126
+          ],
+          [
+            4.877438643589354,
+            52.39440785123967
+          ],
+          [
+            4.877325070502419,
+            52.3943489310097
+          ],
+          [
+            4.877319638426063,
+            52.394346119295726
+          ],
+          [
+            4.877276858984633,
+            52.39437703018326
+          ],
+          [
+            4.87727428279666,
+            52.3943788986705
+          ],
+          [
+            4.87721444163031,
+            52.394347808120735
+          ],
+          [
+            4.877222022983488,
+            52.394342355371904
+          ],
+          [
+            4.877223745349162,
+            52.39434110671937
+          ],
+          [
+            4.8772597530964905,
+            52.394315163492635
+          ],
+          [
+            4.877249963582193,
+            52.39431007905139
+          ],
+          [
+            4.877197276857871,
+            52.39428268954366
+          ]
+        ]
+      ]
+    },
+    "heightMetres": 29.85
+  },
+  {
+    "id": "haparandaweg-708-744",
+    "status": "held",
+    "heldReason": "Block-kit draft awaiting integrator review of artifacts/haparandaweg/haparandaweg-708-744/contact.png (2026-10-09).",
+    "name": "De Rede, Haparandaweg 708-744",
+    "modelUrl": "./models/haparandaweg-708-744.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012243292"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.8774,
+        52.3946
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 36.3,
+      "widthMetres": 37.4
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.8774,
+        52.3946
+      ],
+      "northOffsetDegrees": 0,
+      "source": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012243292 (ground 0.68 m NAP)"
+    },
+    "materialOverrides": {
+      "wall": "#e6eaea",
+      "roof": "#8a8e90",
+      "frame": "#f7f9f9",
+      "glass": "#b0c3cd",
+      "slab": "#d4d7d2",
+      "rail": "#4a4d4a",
+      "glassRail": "#a6bec6",
+      "dark": "#34383a",
+      "door": "#3d4547",
+      "stone": "#c9ccc6",
+      "sign": "#2f3a3d",
+      "moss": "#7d8a58"
+    },
+    "preservePositionPrecision": true,
+    "attribution": {
+      "title": "De Rede, Haparandaweg 708-744 original architecture",
+      "author": "Map Recall",
+      "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012243292",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native metre geometry: exact 3DBAG LoD2.2 walls and roofs with facade systems laid out from Gemeente Amsterdam panoramas (CC BY 4.0) by the block kit (src/canalRecall/blockBuilding). 2030 triangles. Rear and party walls are unmeasured. No invented POI."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.877468673966439,
+            52.39447322134387
+          ],
+          [
+            4.877463403809958,
+            52.394470481494785
+          ],
+          [
+            4.87745224521048,
+            52.39447850341358
+          ],
+          [
+            4.877433578846183,
+            52.39446885555156
+          ],
+          [
+            4.877441778503055,
+            52.39446296263025
+          ],
+          [
+            4.877439938364619,
+            52.39446201940352
+          ],
+          [
+            4.8772769020991715,
+            52.394579743083
+          ],
+          [
+            4.877262372366079,
+            52.394590235357526
+          ],
+          [
+            4.877258927626927,
+            52.3945927416457
+          ],
+          [
+            4.877257072767383,
+            52.394591771469635
+          ],
+          [
+            4.8772415125567665,
+            52.394602982393096
+          ],
+          [
+            4.877092093315747,
+            52.39471077075098
+          ],
+          [
+            4.877167686202706,
+            52.39475012576356
+          ],
+          [
+            4.877236463216898,
+            52.39478594143011
+          ],
+          [
+            4.8773852347291875,
+            52.394678889687384
+          ],
+          [
+            4.877394347094723,
+            52.39467233201581
+          ],
+          [
+            4.877404563543322,
+            52.39466497484728
+          ],
+          [
+            4.877414426685339,
+            52.39465783327344
+          ],
+          [
+            4.877508052928973,
+            52.394589911965504
+          ],
+          [
+            4.877528044192944,
+            52.39457542220625
+          ],
+          [
+            4.877530105147993,
+            52.39457391304347
+          ],
+          [
+            4.877539850521151,
+            52.394566924182534
+          ],
+          [
+            4.87762593955775,
+            52.39450506647503
+          ],
+          [
+            4.877598160827917,
+            52.39449063061444
+          ],
+          [
+            4.877572973013002,
+            52.39447754222062
+          ],
+          [
+            4.8775480796202375,
+            52.394464615522814
+          ],
+          [
+            4.8775196237194605,
+            52.394449838303984
+          ],
+          [
+            4.8774794645382284,
+            52.39447881782249
+          ],
+          [
+            4.877468673966439,
+            52.39447322134387
+          ]
+        ]
+      ]
+    },
+    "heightMetres": 30.73
+  },
+  {
+    "id": "haparandaweg-746-786",
+    "status": "held",
+    "heldReason": "Block-kit draft awaiting integrator review of artifacts/haparandaweg/haparandaweg-746-786/contact.png (2026-10-09).",
+    "name": "Haparandaweg 746-786",
+    "modelUrl": "./models/haparandaweg-746-786.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012242477"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.8775,
+        52.3947
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 38.8,
+      "widthMetres": 41.5
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.8775,
+        52.3947
+      ],
+      "northOffsetDegrees": 0,
+      "source": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012242477 (ground 0.67 m NAP)"
+    },
+    "materialOverrides": {
+      "wall": "#cdcbc3",
+      "roof": "#8a8e90",
+      "frame": "#e7e8e4",
+      "glass": "#7b949b",
+      "slab": "#d7d5cd",
+      "rail": "#a9b9bb",
+      "glassRail": "#a8d0d1",
+      "dark": "#2f3436",
+      "door": "#50585a",
+      "stone": "#c2c0b8",
+      "sign": "#e7e8e4",
+      "column": "#e1e0d9"
+    },
+    "preservePositionPrecision": true,
+    "attribution": {
+      "title": "Haparandaweg 746-786 original architecture",
+      "author": "Map Recall",
+      "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012242477",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native metre geometry: exact 3DBAG LoD2.2 walls and roofs with facade systems laid out from Gemeente Amsterdam panoramas (CC BY 4.0) by the block kit (src/canalRecall/blockBuilding). 5055 triangles. Rear and party walls are unmeasured. No invented POI."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.8774018099905545,
+            52.39466696011498
+          ],
+          [
+            4.877391151884582,
+            52.39467464965864
+          ],
+          [
+            4.877236462136567,
+            52.394785941430115
+          ],
+          [
+            4.877325186452449,
+            52.39483187208049
+          ],
+          [
+            4.8773289845067875,
+            52.39483399209486
+          ],
+          [
+            4.877418106293471,
+            52.39487990477902
+          ],
+          [
+            4.877577639296825,
+            52.394765621631336
+          ],
+          [
+            4.877586560308178,
+            52.39475919870643
+          ],
+          [
+            4.877587487740051,
+            52.39475788717212
+          ],
+          [
+            4.877645076843042,
+            52.39471640316206
+          ],
+          [
+            4.87770886354633,
+            52.394670454545455
+          ],
+          [
+            4.877727942144867,
+            52.394656710384474
+          ],
+          [
+            4.877807495190001,
+            52.394599407114626
+          ],
+          [
+            4.877671869319383,
+            52.39452909629896
+          ],
+          [
+            4.87767076523382,
+            52.394528521379804
+          ],
+          [
+            4.877666790525791,
+            52.39452643729788
+          ],
+          [
+            4.877623510371702,
+            52.39450680919871
+          ],
+          [
+            4.877530104733031,
+            52.39457391304348
+          ],
+          [
+            4.877405284179794,
+            52.39466446280992
+          ],
+          [
+            4.8774018099905545,
+            52.39466696011498
+          ]
+        ]
+      ]
+    },
+    "heightMetres": 31.72
+  },
+  {
+    "id": "haparandaweg-870-900",
+    "status": "held",
+    "heldReason": "Block-kit draft awaiting integrator review of artifacts/haparandaweg/haparandaweg-870-900/contact.png (2026-10-09).",
+    "name": "Haparandaweg 870-900",
+    "modelUrl": "./models/haparandaweg-870-900.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012243309"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.878,
+        52.3948
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 41.8,
+      "widthMetres": 44.1
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.878,
+        52.3948
+      ],
+      "northOffsetDegrees": 0,
+      "source": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012243309 (ground 0.69 m NAP)"
+    },
+    "materialOverrides": {
+      "wall": "#44484a",
+      "roof": "#6d7072",
+      "frame": "#2a2d2f",
+      "glass": "#5b676c",
+      "slab": "#585c5d",
+      "rail": "#2c2f31",
+      "glassRail": "#6e7c80",
+      "dark": "#1d1f20",
+      "door": "#26292b",
+      "stone": "#505455",
+      "sign": "#d8d6cd",
+      "red": "#7e3a33"
+    },
+    "preservePositionPrecision": true,
+    "attribution": {
+      "title": "Haparandaweg 870-900 original architecture",
+      "author": "Map Recall",
+      "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012243309",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native metre geometry: exact 3DBAG LoD2.2 walls and roofs with facade systems laid out from Gemeente Amsterdam panoramas (CC BY 4.0) by the block kit (src/canalRecall/blockBuilding). 2630 triangles. Rear and party walls are unmeasured. No invented POI."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.8777428652501875,
+            52.39484186130075
+          ],
+          [
+            4.877574366690254,
+            52.39496360043118
+          ],
+          [
+            4.877801985485789,
+            52.395078952569165
+          ],
+          [
+            4.877951596779219,
+            52.39497087675171
+          ],
+          [
+            4.877965287471228,
+            52.394960986345666
+          ],
+          [
+            4.877996231379404,
+            52.39493861839741
+          ],
+          [
+            4.878035595799224,
+            52.39491018684872
+          ],
+          [
+            4.878044767090753,
+            52.39490355731225
+          ],
+          [
+            4.878099603464661,
+            52.39486394178943
+          ],
+          [
+            4.878184073562241,
+            52.394802919511314
+          ],
+          [
+            4.878182601444821,
+            52.3948019134028
+          ],
+          [
+            4.878189299579083,
+            52.3947970984549
+          ],
+          [
+            4.878134433762827,
+            52.39476900826446
+          ],
+          [
+            4.8781317250667735,
+            52.394767597915916
+          ],
+          [
+            4.878081643632133,
+            52.39474162773985
+          ],
+          [
+            4.878079523783048,
+            52.39474310995328
+          ],
+          [
+            4.878025217371411,
+            52.39471469637082
+          ],
+          [
+            4.878027086960534,
+            52.39471333093783
+          ],
+          [
+            4.877974340993363,
+            52.394685959396334
+          ],
+          [
+            4.877972500846588,
+            52.39468712720086
+          ],
+          [
+            4.877964330594905,
+            52.39468284225656
+          ],
+          [
+            4.877963388439756,
+            52.39468365073661
+          ],
+          [
+            4.877964404200776,
+            52.39468436040244
+          ],
+          [
+            4.877867259172207,
+            52.39475248832195
+          ],
+          [
+            4.877856394945645,
+            52.394760114983825
+          ],
+          [
+            4.877802117976357,
+            52.39479817642831
+          ],
+          [
+            4.877746442495519,
+            52.39483721703198
+          ],
+          [
+            4.8777421291914775,
+            52.394840244340635
+          ],
+          [
+            4.877743866290033,
+            52.394841160618036
+          ],
+          [
+            4.8777428652501875,
+            52.39484186130075
+          ]
+        ]
+      ]
+    },
+    "heightMetres": 31.88
+  },
+  {
+    "id": "haparandaweg-952-1002",
+    "status": "held",
+    "heldReason": "Block-kit draft awaiting integrator review of artifacts/haparandaweg/haparandaweg-952-1002/contact.png (2026-10-09).",
+    "name": "Haparandaweg 952-1002",
+    "modelUrl": "./models/haparandaweg-952-1002.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012244592"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.8786,
+        52.3952
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 49.5,
+      "widthMetres": 50.9
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.8786,
+        52.3952
+      ],
+      "northOffsetDegrees": 0,
+      "source": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012244592 (ground 0.73 m NAP)"
+    },
+    "materialOverrides": {
+      "wall": "#7b1422",
+      "roof": "#6a6d70",
+      "frame": "#7b1422",
+      "glass": "#3b434c",
+      "slab": "#6e1220",
+      "rail": "#6e1220",
+      "glassRail": "#5a6269",
+      "dark": "#2a2c30",
+      "door": "#661020",
+      "stone": "#6e1220",
+      "sign": "#e8e2d8",
+      "glass2": "#5c646c"
+    },
+    "preservePositionPrecision": true,
+    "attribution": {
+      "title": "Haparandaweg 952-1002 original architecture",
+      "author": "Map Recall",
+      "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012244592",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native metre geometry: exact 3DBAG LoD2.2 walls and roofs with facade systems laid out from Gemeente Amsterdam panoramas (CC BY 4.0) by the block kit (src/canalRecall/blockBuilding). 2249 triangles. Rear and party walls are unmeasured. No invented POI."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.878686958764192,
+            52.39505572224219
+          ],
+          [
+            4.87868454446974,
+            52.395054266978086
+          ],
+          [
+            4.878589753969886,
+            52.39512285303629
+          ],
+          [
+            4.878590755018806,
+            52.395123392023
+          ],
+          [
+            4.878590018953424,
+            52.39512390406037
+          ],
+          [
+            4.87855296542211,
+            52.395150359324475
+          ],
+          [
+            4.878469834197902,
+            52.39520968379447
+          ],
+          [
+            4.878459617610404,
+            52.3952169690981
+          ],
+          [
+            4.878456025611341,
+            52.3952195742005
+          ],
+          [
+            4.878295504472903,
+            52.395335689902986
+          ],
+          [
+            4.87839830336411,
+            52.39538908551923
+          ],
+          [
+            4.87840054100287,
+            52.39538759432268
+          ],
+          [
+            4.878428673421758,
+            52.395402317642834
+          ],
+          [
+            4.878426524110844,
+            52.3954037459576
+          ],
+          [
+            4.87863415343371,
+            52.39551157024793
+          ],
+          [
+            4.878795881719374,
+            52.395395131153435
+          ],
+          [
+            4.878661387852833,
+            52.39532529644269
+          ],
+          [
+            4.878670662276641,
+            52.39531861300755
+          ],
+          [
+            4.878756325565762,
+            52.39525683614804
+          ],
+          [
+            4.878761080548128,
+            52.39525340459936
+          ],
+          [
+            4.878794439031226,
+            52.39522933884298
+          ],
+          [
+            4.878929035946921,
+            52.39529924541861
+          ],
+          [
+            4.879024209200773,
+            52.39523074020841
+          ],
+          [
+            4.878879130714043,
+            52.39515545274884
+          ],
+          [
+            4.878862613406878,
+            52.395146882860224
+          ],
+          [
+            4.878783206673502,
+            52.395105677326626
+          ],
+          [
+            4.878690742140254,
+            52.39505768954366
+          ],
+          [
+            4.878686958764192,
+            52.39505572224219
+          ]
+        ]
+      ]
+    },
+    "heightMetres": 32.22
+  },
+  {
+    "id": "haparandaweg-788-868",
+    "status": "held",
+    "heldReason": "Block-kit draft awaiting integrator review of artifacts/haparandaweg/haparandaweg-788-868/contact.png (2026-10-09).",
+    "name": "Haparandaweg 788-868",
+    "modelUrl": "./models/haparandaweg-788-868.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012243162"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.8776,
+        52.3948
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 37.2,
+      "widthMetres": 38.3
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.8776,
+        52.3948
+      ],
+      "northOffsetDegrees": 0,
+      "source": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012243162 (ground 0.67 m NAP)"
+    },
+    "materialOverrides": {
+      "wall": "#8b4a38",
+      "roof": "#6f6c68",
+      "frame": "#e9e7e0",
+      "glass": "#7d95a2",
+      "slab": "#cfcbc0",
+      "rail": "#b9b7ae",
+      "glassRail": "#7f9fb0",
+      "dark": "#2d3033",
+      "door": "#40464a",
+      "stone": "#bdb9ae",
+      "sign": "#e9e7e0"
+    },
+    "preservePositionPrecision": true,
+    "attribution": {
+      "title": "Haparandaweg 788-868 original architecture",
+      "author": "Map Recall",
+      "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012243162",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native metre geometry: exact 3DBAG LoD2.2 walls and roofs with facade systems laid out from Gemeente Amsterdam panoramas (CC BY 4.0) by the block kit (src/canalRecall/blockBuilding). 2622 triangles. Rear and party walls are unmeasured. No invented POI."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.877742118215761,
+            52.394840244340635
+          ],
+          [
+            4.877860726716318,
+            52.394757069708945
+          ],
+          [
+            4.877964407946234,
+            52.39468436040244
+          ],
+          [
+            4.877963392185214,
+            52.39468365073661
+          ],
+          [
+            4.877965850621306,
+            52.394681557671575
+          ],
+          [
+            4.877847301005445,
+            52.3946199604743
+          ],
+          [
+            4.877753056048194,
+            52.39468770212001
+          ],
+          [
+            4.877751171737896,
+            52.39468904060366
+          ],
+          [
+            4.8777115717792885,
+            52.39466855012576
+          ],
+          [
+            4.877590549006161,
+            52.394755686309736
+          ],
+          [
+            4.877586044326855,
+            52.39475892022996
+          ],
+          [
+            4.877574650138022,
+            52.39476777757815
+          ],
+          [
+            4.8774180315656706,
+            52.394880551563055
+          ],
+          [
+            4.877441835704357,
+            52.394893181818176
+          ],
+          [
+            4.877436315264031,
+            52.394897188286016
+          ],
+          [
+            4.87745665992678,
+            52.39490775242544
+          ],
+          [
+            4.8774619595494935,
+            52.394903934602944
+          ],
+          [
+            4.877497732002809,
+            52.394922933884295
+          ],
+          [
+            4.877492756245927,
+            52.39492649119655
+          ],
+          [
+            4.877512953696935,
+            52.39493700143729
+          ],
+          [
+            4.877517738078551,
+            52.394933533956156
+          ],
+          [
+            4.877529883047269,
+            52.39493997484728
+          ],
+          [
+            4.877525157550349,
+            52.39494332554796
+          ],
+          [
+            4.877545502213099,
+            52.394953889687386
+          ],
+          [
+            4.877552494770845,
+            52.39494882321236
+          ],
+          [
+            4.877568688062469,
+            52.394957330219185
+          ],
+          [
+            4.877566067693461,
+            52.39495919870643
+          ],
+          [
+            4.8775743704357115,
+            52.39496360043118
+          ],
+          [
+            4.877729060534242,
+            52.39485184153791
+          ],
+          [
+            4.877743855314317,
+            52.394841160618036
+          ],
+          [
+            4.877742118215761,
+            52.394840244340635
+          ]
+        ]
+      ]
+    },
+    "heightMetres": 29.16
+  },
+  {
+    "id": "haparandaweg-65",
+    "status": "held",
+    "heldReason": "Block-kit draft awaiting integrator review of artifacts/haparandaweg/haparandaweg-65/contact.png (2026-10-09).",
+    "name": "Haparandaweg 65",
+    "modelUrl": "./models/haparandaweg-65.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012238475"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.8771,
+        52.3951
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 57.3,
+      "widthMetres": 57.7
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.8771,
+        52.3951
+      ],
+      "northOffsetDegrees": 0,
+      "source": "3DBAG LoD2.2 NL.IMBAG.Pand.0363100012238475 (ground 0.49 m NAP)"
+    },
+    "materialOverrides": {
+      "wall": "#9b958b",
+      "roof": "#6e706f",
+      "frame": "#d9d7cf",
+      "glass": "#59666c",
+      "slab": "#85807a",
+      "rail": "#7b756e",
+      "glassRail": "#8aa0a3",
+      "dark": "#2f3133",
+      "door": "#d9d7cf",
+      "stone": "#85807a",
+      "sign": "#e0ddd2",
+      "terracotta": "#8e3f3a"
+    },
+    "preservePositionPrecision": true,
+    "attribution": {
+      "title": "Haparandaweg 65 original architecture",
+      "author": "Map Recall",
+      "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012238475",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native metre geometry: exact 3DBAG LoD2.2 walls and roofs with facade systems laid out from Gemeente Amsterdam panoramas (CC BY 4.0) by the block kit (src/canalRecall/blockBuilding). 2382 triangles. Rear and party walls are unmeasured. No invented POI."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.877593030196774,
+            52.39530630614445
+          ],
+          [
+            4.877524061026792,
+            52.39527075098814
+          ],
+          [
+            4.877550544599214,
+            52.3952514552641
+          ],
+          [
+            4.877058059089588,
+            52.39499820337765
+          ],
+          [
+            4.8770319582702975,
+            52.395017427236795
+          ],
+          [
+            4.877029529260041,
+            52.39501622349982
+          ],
+          [
+            4.877020475676362,
+            52.39501176787639
+          ],
+          [
+            4.877018017223558,
+            52.395013573481855
+          ],
+          [
+            4.876976459066277,
+            52.394992382321234
+          ],
+          [
+            4.8769793885998585,
+            52.394990235357525
+          ],
+          [
+            4.876951845095688,
+            52.39497577254761
+          ],
+          [
+            4.876948488645153,
+            52.394978063241105
+          ],
+          [
+            4.876906621341113,
+            52.39495653072224
+          ],
+          [
+            4.876909801136356,
+            52.39495423104563
+          ],
+          [
+            4.876893328030441,
+            52.39494565217391
+          ],
+          [
+            4.876784316994429,
+            52.395025
+          ],
+          [
+            4.8767799447759685,
+            52.395029994610134
+          ],
+          [
+            4.876777236061502,
+            52.39503194394538
+          ],
+          [
+            4.876749030099989,
+            52.39505216492993
+          ],
+          [
+            4.876772392762265,
+            52.39506436399569
+          ],
+          [
+            4.876887586733473,
+            52.395124505928855
+          ],
+          [
+            4.87681314124946,
+            52.39517761408552
+          ],
+          [
+            4.877373138522915,
+            52.395464067553
+          ],
+          [
+            4.877478351470165,
+            52.39538774703557
+          ],
+          [
+            4.877482223165299,
+            52.395384935321594
+          ],
+          [
+            4.877483960275664,
+            52.395385546173195
+          ],
+          [
+            4.877500683643241,
+            52.39537338303988
+          ],
+          [
+            4.877509958046035,
+            52.39536664570607
+          ],
+          [
+            4.877593030196774,
+            52.39530630614445
+          ]
+        ]
+      ]
+    },
+    "heightMetres": 22.39
+  }
 ]

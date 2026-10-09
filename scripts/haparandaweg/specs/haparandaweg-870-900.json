@@ -1,0 +1,27 @@
+{
+  "id": "haparandaweg-870-900",
+  "pandId": "0363100012243309",
+  "name": "Haparandaweg 870-900",
+  "palette": {
+    "wall": "#44484a", "roof": "#6d7072", "frame": "#2a2d2f", "glass": "#5b676c", "slab": "#585c5d",
+    "rail": "#2c2f31", "glassRail": "#6e7c80", "dark": "#1d1f20", "door": "#26292b", "stone": "#505455", "sign": "#d8d6cd", "red": "#7e3a33"
+  },
+  "levels": { "groundM": 4.2, "storeyM": 3.0 },
+  "default": "dark",
+  "systems": {
+    "dark": {
+      "pitch": 6.6,
+      "ground": { "kind": "glazed", "win": { "w": 0.9, "h": 0.9, "sill": 0.1, "mull": 4, "transom": 0.55, "frame": "frame" },
+        "door": { "bays": [0, 1, 2], "w": 1.2, "h": 2.4, "slot": "door" } },
+      "typical": { "kind": "ribbon", "pier": 0.5, "win": { "h": 0.85, "sill": 0.15, "mull": 3, "frame": "frame" },
+        "cycle": [
+          { "kind": "ribbon", "pier": 0.5, "win": { "h": 0.85, "sill": 0.12, "mull": 3, "frame": "frame" } },
+          { "kind": "balcony", "balcony": { "depth": 0.4, "slab": { "h": 0.25, "slot": "slab" }, "rail": { "kind": "bars", "h": 1.05, "slot": "rail" }, "back": { "w": 0.95, "h": 0.7, "sill": 0.35, "mull": 0, "frame": "frame", "glass": "dark" } } },
+          { "kind": "ribbon", "pier": 0.5, "win": { "h": 0.85, "sill": 0.12, "mull": 3, "frame": "frame" } }
+        ] },
+      "bands": [ { "slot": "slab", "h": 0.3, "out": 0.2 } ],
+      "piers": { "w": 0.45, "out": 0.25, "slot": "slab" }
+    }
+  },
+  "signs": []
+}
