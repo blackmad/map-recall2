@@ -1,0 +1,64 @@
+{
+  "modelId": "occii",
+  "feedbackIds": [
+    "063e3e2c-0627-48a8-b835-f407fee9cbe7",
+    "d89b55f3-cc56-4e64-9faa-8cfa6e3d34c4"
+  ],
+  "date": "2026-10-08",
+  "baseCommit": "64377be8",
+  "baselineSha256": "daa846481f1d36932a0b64008446f8b0694949a3a27358b6cd14865f0988357b",
+  "candidateSha256": "89ac812d7b80642ba9e93b92853f8dc84195700a16ababf106ccd34fc3fa9830",
+  "sourceArchive": {
+    "priorAcceptedCommit": "cb67adebb70c3c70e28fef91cb64398bd2f0c110",
+    "path": "models/occii/checkpoints/accepted-daa84648",
+    "newCheckpointStatus": "Coordinator private archive before public model commit required"
+  },
+  "sources": [
+    {
+      "url": "https://occii.org/wp-content/uploads/2014/09/occii-gevel.jpg",
+      "originalCachedPath": "/Users/blackmad/Code/map-recall2-worktrees/source-archive/models/occii/files/operator-2014-facade.jpg",
+      "sha256": "8a43877de4d9e0ddfbd012b026abd391e284d554f54d3c25be4e9c2345fe1fe3",
+      "retrievalDate": "2026-10-07",
+      "dateConfidence": "2014 operator article label; photo capture date not EXIF verified",
+      "rights": "Existing private source pack; no pixels copied to asset"
+    }
+  ],
+  "assertions": [
+    {
+      "part": "facade sign",
+      "observation": "White horizontal banner with red narrow Gothic/blackletter OCCII, beneath upper sill and over central doors. Previous gold bitmap letters spanned two cornices and upper windows.",
+      "confidence": "high",
+      "dimensions": "Photo-guided approximate width2.25m, height.76m, y3.38\u20134.14m; not surveyed",
+      "geometry": "Native original continuous angular outlines with open O counter and narrow I diamond terminals, regular .10m tracking; approximate unidentified Gothic lettering family."
+    },
+    {
+      "part": "street-side windows and doors",
+      "observation": "Frames, glazing and trim are attached to same street facade tangent. Existing geometry used axis-aligned local details on f(x)=31.93+.12(x-cx).",
+      "confidence": "high",
+      "geometry": "-atan(.12) Y rotation for all repaired local faces; beam endpoints/mullions use their own facade x coordinate."
+    },
+    {
+      "part": "upper fan",
+      "observation": "Previous accepted repair preserved exactly at source builder level.",
+      "confidence": "high",
+      "geometry": "All243 prior first-hit rays compared to accepted baseline, unchanged positions within7mm compressed quantization."
+    }
+  ],
+  "checks": {
+    "decodedFirstHitProbes": 339,
+    "status": "passed",
+    "bytes": 27164,
+    "triangles": 1559,
+    "unchanged": "Surveyed footprint, brick/roof positions, suppression identities, native placement scale1, existing route/pin/card contracts",
+    "limitations": [
+      "CPU front before/after show identical inherited rear-roof gap/overhang; no roof acceptance claimed.",
+      "Gallery rotations, actual game/frontage/neighbors, independent review and hosted feedback cameras pending."
+    ]
+  },
+  "evidence": {
+    "immutableFeedback": "artifacts/occii-facade-offset/feedback-immutable",
+    "cpuBefore": "artifacts/occii-facade-offset/baseline",
+    "cpuCandidate": "artifacts/occii-facade-offset/candidate",
+    "decodedReport": "artifacts/occii-facade-offset/decoded-checks.json"
+  }
+}
