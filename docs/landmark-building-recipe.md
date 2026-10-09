@@ -126,6 +126,37 @@ The generator updates the GLB, asset manifest and content fingerprints. Rebuild 
 
 ## 7. Keep the same acceptance checks
 
+### Structured facade comparison (required for every principal facade)
+
+"Looks roughly right" on a contact sheet is not acceptance. On 2026-10-10 the Het Pakhuis rear passed
+review with scattered, off-centre windows on a front the photo shows as five symmetric gabled bays.
+Every model now carries `scripts/landmarks/<id>-elevations.json`, a photo inventory per principal
+facade, and must pass `npm run compare:facades -- --id=<id>`:
+
+```json
+{"id": "<id>", "countedBy": "blind counter (haiku) from ref-north.jpg, 2026-10-10", "facades": [
+  {"name": "north (street)", "bearing": 317.5, "photo": "artifacts/landmark-lanes/<id>/ref-north.jpg",
+   "rows": [5, 5, 5, 5, 5, 5, 5], "columns": 5, "symmetric": true, "gables": 5}
+]}
+```
+
+- `bearing` is the compass direction the facade faces (`--probe` lists the model's big facing directions).
+- `rows` counts openings per storey band from the bottom, as seen on the photo: one window is one
+  opening however many glazing bars it has; a glazed door counts; a tall window spanning two storeys
+  counts once in the band where its centre lies. `columns` counts distinct vertical window axes.
+- `symmetric` asks whether the opening pattern mirrors about the facade centre (gate: IoU ≥ 0.70).
+- `gables` counts separate gable or peak tops on the silhouette (0 for a level cornice).
+- Optional: `span` (metres along the facade, viewer's left to right) when two wings face the same
+  way, `depthBand` (default 4 m from the front-most plane), `openings` (material names, default
+  `glass`), `tolerance`.
+
+**Count blind.** The inventory is written from the reference photo by someone who has not seen the
+model: the integrator dispatches a small counter agent with only the photo and the counting rules.
+A lane must not edit counts to match its model; if it disputes a count, it flags it to the integrator
+with the photo region. The tool renders an orthographic material elevation of the GLB (only visible
+glazing counts), boxes every detected opening, and writes `artifacts/landmark-lanes/<id>/elevations/
+<facade>.png` with the photo beside it. Look at those images, not just the PASS lines.
+
 Run focused geometry checks, the shared asset check, POI contract and TypeScript check. Test real risks: finite bounds, native scale, roof support/winding, actual first-hit glazing/column visibility, open-space rays and exact source identities. Avoid tests that merely repeat constants from the implementation.
 
 For angled or narrow glazing, sample fractions across the actual face endpoints at several heights. Fixed metre offsets around a bounding-box centre can miss covered pane edges or leave the face entirely. Treat deliberately modeled mullions separately from masonry occlusion; preserve both near-pane failures and wider context occlusions. Markthal's 2026-10-06 fractional check exposed six masonry overlaps that the earlier fixed-offset checks missed. A passing old probe set must not override that failed evidence or the reference/render comparison.
