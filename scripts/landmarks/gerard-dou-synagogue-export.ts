@@ -1,0 +1,12 @@
+import * as T from 'three';
+import fs from 'node:fs/promises';
+import {Document,NodeIO} from '@gltf-transform/core';
+import {weld,dedup,prune,meshopt} from '@gltf-transform/functions';
+import {ALL_EXTENSIONS} from '@gltf-transform/extensions';
+import {MeshoptEncoder} from 'meshoptimizer';
+import {buildGerardDouSynagogue} from './gerard-dou-synagogue-builder';
+import spec from './gerard-dou-synagogue-spec.json';
+import type {BuildingTools} from './cultural-builders';
+const doc=new Document(),buf=doc.createBuffer(),scene=doc.createScene(),colours:Record<string,string>={brick:'#9a5240',stone:'#cfc2a6',slate:'#4a525d',white:'#efe9db',glass:'#527787',dark:'#303b43',red:'#ac624e',bronze:'#3d5148',green:'#718b58',frame:'#9baba5'},materials=new Map<string,ReturnType<Document['createMaterial']>>();let triangles=0;
+const b={add(g:T.BufferGeometry,c:string){const material=materials.get(c)??doc.createMaterial(c).setBaseColorFactor([...new T.Color(spec.materialOverrides[c as keyof typeof spec.materialOverrides]??colours[c]).toArray(),1]).setRoughnessFactor(1);materials.set(c,material);const p=g.getAttribute('position'),n=g.getAttribute('normal'),prim=doc.createPrimitive().setAttribute('POSITION',doc.createAccessor().setType('VEC3').setArray(new Float32Array(p.array)).setBuffer(buf)).setAttribute('NORMAL',doc.createAccessor().setType('VEC3').setArray(new Float32Array(n.array)).setBuffer(buf)).setMaterial(material).setExtras({role:g.userData.role??'detail'});if(g.index)prim.setIndices(doc.createAccessor().setType('SCALAR').setArray(new Uint32Array(g.index.array)).setBuffer(buf));scene.addChild(doc.createNode().setMesh(doc.createMesh().addPrimitive(prim)));triangles+=(g.index?.count??p.count)/3;}} as BuildingTools;
+buildGerardDouSynagogue(0,0,b);await fs.mkdir('artifacts/gerard-dou-synagogue-cpu',{recursive:true});await new NodeIO().write('artifacts/gerard-dou-synagogue-cpu/gerard-dou-synagogue.glb',doc);await MeshoptEncoder.ready;await doc.transform(weld(),dedup(),prune(),meshopt({encoder:MeshoptEncoder,level:'medium'}));await new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({'meshopt.encoder':MeshoptEncoder}).write('artifacts/gerard-dou-synagogue-cpu/gerard-dou-synagogue-compressed.glb',doc);console.log({triangles,bytes:(await fs.stat('artifacts/gerard-dou-synagogue-cpu/gerard-dou-synagogue-compressed.glb')).size});

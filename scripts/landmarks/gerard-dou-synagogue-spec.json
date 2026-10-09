@@ -1,0 +1,55 @@
+{
+  "id": "gerard-dou-synagogue",
+  "name": "Gerard Dou Synagogue",
+  "modelUrl": "./models/gerard-dou-synagogue.glb",
+  "osmPoi": {
+    "type": "node",
+    "id": 25099441,
+    "coordinate": [
+      4.8978616,
+      52.3570574
+    ]
+  },
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012140916"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.897864665654482,
+      52.357009615706716
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 22,
+    "widthMetres": 20
+  },
+  "surveyed": {
+    "anchor": [
+      4.897864665654482,
+      52.357009615706716
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current PDOK BAG0363100012140916, native east/south metres; street frontage0\u21921\u21922\u21923. AHN4 2020 survey calibrated roof envelope, historic reference facade details."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "Gerard Dou Synagogue",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/527843",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original native-scale flat-colour geometry guided by survey and facade references, no imported meshes or pixels."
+  },
+  "materialOverrides": {
+    "brick": "#855346",
+    "white": "#e1e2d8",
+    "stone": "#d0d4c9",
+    "bronze": "#4b5555",
+    "slate": "#515453",
+    "glass": "#6e878b",
+    "dark": "#27332f",
+    "frame": "#9baba5"
+  },
+  "landmarkId": "extract_landmarks_25099441"
+}

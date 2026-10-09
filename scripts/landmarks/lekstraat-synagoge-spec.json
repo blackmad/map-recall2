@@ -1,0 +1,53 @@
+{
+  "id": "lekstraat-synagoge",
+  "name": "Lekstraatsynagoge",
+  "landmarkId": "extract_landmarks_665340356",
+  "modelUrl": "./models/lekstraat-synagoge.glb",
+  "suppressOsmIds": [
+    "w277300134",
+    "NL.IMBAG.Pand.0363100012104516"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.902905407824482,
+      52.34412940118549
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 41.68,
+    "widthMetres": 40.38
+  },
+  "surveyed": {
+    "anchor": [
+      4.902905407824482,
+      52.34412940118549
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current3DBAG/ BAG native east/south surveyed shell with groundNAP0.339m"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "routeCenter": [
+    4.902942362182297,
+    52.34428997517323
+  ],
+  "materialOverrides": {
+    "stone": "#d8d3bf",
+    "ochre": "#c7bb91",
+    "glass": "#8a9491",
+    "concrete": "#b5b3a3",
+    "slate": "#555951",
+    "dark": "#41473f",
+    "bronze": "#725b40",
+    "white": "#dfdfc9",
+    "copper": "#536c5e"
+  },
+  "attribution": {
+    "title": "Lekstraatsynagoge",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/526707",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native-survey reconstruction; register526707, dated exterior photos and3DBAG roof semantics. Hebrew inscription uses approximate Arial Bold outlines. No imported meshes/photo pixels. Draft requires nativegallery/live acceptance and sourcepack publication."
+  }
+}

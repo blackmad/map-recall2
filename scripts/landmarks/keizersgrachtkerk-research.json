@@ -1,0 +1,267 @@
+{
+  "id": "keizersgrachtkerk",
+  "sources": [
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/keizersgrachtkerk/artifacts/keizersgrachtkerk/raw/register.html",
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518347",
+      "retrievedAt": "2026-10-08T15:12:37.445302+00:00",
+      "httpStatus": "200",
+      "sha256": "2a529f9bc8411cdc0e800f936901843c7c76192b24a57bc6ed1fdfefc04d6341",
+      "accessState": "downloaded",
+      "kind": "original HTTP response"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/keizersgrachtkerk/artifacts/keizersgrachtkerk/raw/operator.html",
+      "url": "https://www.keizersgrachtkerk.nl/geschiedenis-van-de-keizersgrachtkerk/",
+      "retrievedAt": "2026-10-08T15:12:38.047499+00:00",
+      "httpStatus": "200",
+      "sha256": "6be6ee5c76c3bbe9028a04edc514f463ec07c66661ddd831d7989feebd715b8a",
+      "accessState": "downloaded",
+      "kind": "original HTTP response"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/keizersgrachtkerk/artifacts/keizersgrachtkerk/raw/monumentenstad.html",
+      "url": "https://www.amsterdam-monumentenstad.nl/database/grachtenboek_objecten.php?id=2764",
+      "retrievedAt": "2026-10-08T15:12:38.047404+00:00",
+      "httpStatus": "200",
+      "sha256": "d240e7c205ab70de08f40ad53bd282024235d4d4678621904f62d675825521fb",
+      "accessState": "downloaded",
+      "kind": "original HTTP response"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/keizersgrachtkerk/artifacts/keizersgrachtkerk/raw/beeldbank.html",
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=Keizersgracht%20566",
+      "retrievedAt": "2026-10-08T15:12:37.483807+00:00",
+      "httpStatus": "200",
+      "sha256": "ea308a007fb654717e5a151c7c5c214ff3da628f39beca59824a6e2b2aa4e994",
+      "accessState": "downloaded",
+      "kind": "original HTTP response"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/keizersgrachtkerk/artifacts/keizersgrachtkerk/raw/pand.json",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012177272&f=json",
+      "retrievedAt": "2026-10-08T15:12:37.394006+00:00",
+      "httpStatus": "200",
+      "sha256": "f2bbbef04b61a933744df0964e2eef74cfef5c664047c1f892b8aa832a9d8846",
+      "accessState": "downloaded",
+      "kind": "original HTTP response"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/keizersgrachtkerk/artifacts/keizersgrachtkerk/raw/3dbag.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012177272",
+      "retrievedAt": "2026-10-08T15:12:37.483732+00:00",
+      "httpStatus": "200",
+      "sha256": "f9e2da7bdb17a3b0c9b7077acdd9f5a8af3715c57da3a63ea716b320773b41bf",
+      "accessState": "downloaded",
+      "kind": "original HTTP response"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/keizersgrachtkerk/artifacts/keizersgrachtkerk/raw/commons-front.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Amsterdam_-_Keizersgracht_566.JPG",
+      "retrievedAt": "2026-10-08T15:12:38.317632+00:00",
+      "httpStatus": "200",
+      "sha256": "d71e7812b93f22b4295e857ce9c9b3ba3c72e93bfddaf5b6c46569b50b5692e6",
+      "accessState": "downloaded",
+      "kind": "original HTTP response"
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/keizersgrachtkerk/artifacts/keizersgrachtkerk/raw/front2019.jpg",
+      "url": "https://www.amsterdam-monumentenstad.nl/database/pics/2/20190724-26.jpg",
+      "retrievedAt": "2026-10-08T15:28:12.655846+00:00",
+      "httpStatus": 200,
+      "sha256": "54d76fcaad0c647b9bfd9a4e868c0ad69859ccd3f50c938031fd8c4e5a883818",
+      "kind": "original HTTP response",
+      "rights": "Walther Schoonenberg copyright for Monumentenstad photos; visual reference only. Amsterdam panorama municipal source, exact reuse terms not independently established."
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/keizersgrachtkerk/artifacts/keizersgrachtkerk/raw/side44.jpg",
+      "url": "https://www.amsterdam-monumentenstad.nl/database/pics/2/20190724-44.jpg",
+      "retrievedAt": "2026-10-08T15:28:12.656083+00:00",
+      "httpStatus": 200,
+      "sha256": "d4f93771659f4b1381a1fc9f12080f4c468f2ea48a02b8f7a2b654c423efaa06",
+      "kind": "original HTTP response",
+      "rights": "Walther Schoonenberg copyright for Monumentenstad photos; visual reference only. Amsterdam panorama municipal source, exact reuse terms not independently established."
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/keizersgrachtkerk/artifacts/keizersgrachtkerk/raw/side45.jpg",
+      "url": "https://www.amsterdam-monumentenstad.nl/database/pics/2/20190724-45.jpg",
+      "retrievedAt": "2026-10-08T15:28:12.656220+00:00",
+      "httpStatus": 200,
+      "sha256": "2c9d204f415d446a22ed6eaf0940227266774de0f5edc384c4f72a3609d0f170",
+      "kind": "original HTTP response",
+      "rights": "Walther Schoonenberg copyright for Monumentenstad photos; visual reference only. Amsterdam panorama municipal source, exact reuse terms not independently established."
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/keizersgrachtkerk/artifacts/keizersgrachtkerk/raw/side-observed.jpg",
+      "url": "https://www.amsterdam-monumentenstad.nl/database/pics/2/20180802-19.jpg",
+      "retrievedAt": "2026-10-08T15:28:12.656300+00:00",
+      "httpStatus": 200,
+      "sha256": "056b22b9cdbdbbdd113270ef1547221365b020657f4a0f1732126637bb7ad07b",
+      "kind": "original HTTP response",
+      "rights": "Walther Schoonenberg copyright for Monumentenstad photos; visual reference only. Amsterdam panorama municipal source, exact reuse terms not independently established."
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/keizersgrachtkerk/artifacts/keizersgrachtkerk/raw/side2019.jpg",
+      "url": "https://www.amsterdam-monumentenstad.nl/database/pics/2/20190719-18.jpg",
+      "retrievedAt": "2026-10-08T15:28:12.656412+00:00",
+      "httpStatus": 200,
+      "sha256": "c7c613ba7fe29ea79a5f1b65eb7118286c0ae45b9221f47e476616fc4a919cf1",
+      "kind": "original HTTP response",
+      "rights": "Walther Schoonenberg copyright for Monumentenstad photos; visual reference only. Amsterdam panorama municipal source, exact reuse terms not independently established."
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/keizersgrachtkerk/artifacts/keizersgrachtkerk/raw/panoramas.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.88817,52.36468&radius=40&srid=4326&page_size=20&timestamp_after=2024-01-01",
+      "retrievedAt": "2026-10-08T15:28:12.656461+00:00",
+      "httpStatus": 200,
+      "sha256": "78a5a565c4ade3e6605b9158e40c31ce1fd2597f509028dd391336e59a2f8d47",
+      "kind": "original HTTP response",
+      "rights": "Walther Schoonenberg copyright for Monumentenstad photos; visual reference only. Amsterdam panorama municipal source, exact reuse terms not independently established."
+    },
+    {
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/keizersgrachtkerk/artifacts/keizersgrachtkerk/raw/panorama2024.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241203_0939_Track09_Sphere_00390/equirectangular/panorama_4000.jpg",
+      "retrievedAt": "2026-10-08T15:28:12.656508+00:00",
+      "httpStatus": 200,
+      "sha256": "b5b2ca58b38efd9fceb44439efc31b77fc0f69891eff7340a526e272681cc7fa",
+      "kind": "original HTTP response",
+      "rights": "Walther Schoonenberg copyright for Monumentenstad photos; visual reference only. Amsterdam panorama municipal source, exact reuse terms not independently established."
+    }
+  ],
+  "canonicalId": "extract_landmarks_2099326007",
+  "identity": {
+    "currentBagParent": "0363100012177272",
+    "register": 518347,
+    "extractSuppressionMapping": [
+      "NL.IMBAG.Pand.0363100012177272"
+    ],
+    "duplicateAudit": "No existing manual mesh/catalogue entry; preexisting genuine extract POI retained."
+  },
+  "criticalTraits": [
+    {
+      "source": "RCE518347 description + original facade photos",
+      "part": "Keizersgracht front",
+      "confidence": "high",
+      "assertions": [
+        "symmetrical front gable between two low four-sided tent-roof towers",
+        "seven linked pointed gallery windows",
+        "geometric large rose window with six petals",
+        "cream tiled triangular field and stone/brick bands",
+        "recessed glass main door above nine steps",
+        "paired lower side lights with carved ledges"
+      ]
+    },
+    {
+      "source": "Monumentenstad20180802-19 side photograph",
+      "part": "hall roof slope",
+      "confidence": "high",
+      "assertions": [
+        "broad white timber glazed roof-light band",
+        "five broad arch-topped glazing groups",
+        "pale rendered side wall",
+        "square timber ventilator with metal tent cap"
+      ]
+    }
+  ],
+  "roofDecision": {
+    "groundDatumMetres": 0.383,
+    "mainRoof": "Retained current3DBAG semantic hall roof regions; centered full-ring least squares; upward winding after handedness conversion. Roof survey interpreted as height/profile observations, original surfaces authored.",
+    "rejectedSurveyRegions": [
+      0,
+      4,
+      5,
+      10,
+      11,
+      12,
+      13
+    ],
+    "rejectionReason": "Initial exact roof fits made unsupported tower fin; preserved CPU failed evidence. Tower surfaces instead photo-supported bounded square tent roofs at18.55\u219223.65m and piron24.22m. These calibrated heights are approximate; equipment maxima are not wall heights.",
+    "junctionClosure": {
+      "sourceRegions": [
+        4,
+        5,
+        10,
+        12,
+        13
+      ],
+      "plan": "Triangulated original roof-region plan polygons subtract bounded explicit tent rectangles; only surviving junction strips added. Exact BAG/open-space/suppression unchanged.",
+      "height": "Inner junctions continue adjacent mainhall region9/14 centered fitted plane; outer tent shoulder follows supported eave18.55m. No parent-wide cap or tall tower fit restored.",
+      "areaMetres2": 2.813913902441743,
+      "boundaryTolerance": "3mm overlap within existing tent support prevents shared-edge floating-point/quantization cracks; no change to source parent perimeter."
+    }
+  },
+  "openSpace": "Current BAG parent is a single polygon without court holes. Only exact parent suppressed; no padded parcel, courtyard fill, or neighbor removal. Porch steps project1.7m into documented public entry; live scene pending.",
+  "referenceAccess": {
+    "beeldbank": "Bounded exact-address search200 returned viewer shell. No inspected catalogue result or archived image falsely claimed. External exact-name/address search did not expose usable official catalogue records.",
+    "bouwdossiers": "Not requested: current facade and roof reference sufficiently resolve this bounded draft; drawings remain unqueried.",
+    "currentPhoto": "Municipal panorama2024-12-03 inspected and original cached; facade aligns with2019 and Commons photo.",
+    "commons": "Original filename photo downloaded; exact author/date/license not independently established in draft.",
+    "sourceArchive": "Root coordinator must sync/verify/commit/push raw pack before model commit."
+  },
+  "limitations": [
+    "Gallery/live game + independent visual review pending",
+    "Exact suppression and adjacent current building layers pending",
+    "Native pin/route/trivia pointer contract pending",
+    "Tower heights and miniature relief are photo/survey calibrated simplifications",
+    "Photo-supported roof-light semicircle tracery now modeled; tile relief and remaining tiny joinery require final review"
+  ],
+  "failedEvidence": [
+    "artifacts/landmark-offline-preview/keizersgrachtkerk-cpu-front-correct.png",
+    "artifacts/keizersgrachtkerk/keizersgrachtkerk-v4-failed.glb",
+    "artifacts/keizersgrachtkerk/v4-independent-report.json",
+    "artifacts/keizersgrachtkerk/keizersgrachtkerk-v5-failed-portal-roundel.glb",
+    "artifacts/keizersgrachtkerk/builder-v5-failed-portal-roundel.ts"
+  ],
+  "reviewViews": [
+    "artifacts/landmark-offline-preview/keizersgrachtkerk-cpu-front-v6.png",
+    "artifacts/landmark-offline-preview/keizersgrachtkerk-cpu-side-v6.png"
+  ],
+  "draftRevision": "v6 repairs independent source failures: sampled two-circle Gothic portal shoulders/shallow pointed apex; tower sixfoil dark openings with perimeter only, removed false internal pale wheel. Roof junctions/exactBAG/facadeplacement retained.",
+  "v5DecodedCpuEvidence": {
+    "report": "artifacts/keizersgrachtkerk/v5-report.json",
+    "frontFineReport": "artifacts/keizersgrachtkerk/v5-roof-holes.json",
+    "coarseRoofSamples": 1624,
+    "coarseSlateFirstHits": 1624,
+    "downwardFirstHitRoofFaces": 0,
+    "denseFrontageRoofGaps": 0,
+    "sideGlassProbes": 120,
+    "frontLowerAndTowerGlassProbes": 16,
+    "status": "Passing CPU checks only. Root independent rerun and gallery/live game still required."
+  },
+  "v6SourceCorrections": {
+    "portal": {
+      "source": "RCE518347 + Commons original facade photograph and front2019 photograph",
+      "part": "main entrance",
+      "widthMetres": [
+        5.8,
+        5.18,
+        4.72
+      ],
+      "topMetres": [
+        6.65,
+        6.35,
+        6.0
+      ],
+      "shape": "24 samples per circular shoulder, two arcs meet at pointed apex. Rise/width0.56 gives a gently curved Gothic arch and shallow apex, replacing straight triangular shoulders. Native source-calibrated approximate proportions; no exact measured photogrammetric claim.",
+      "comparisonCrop": "artifacts/keizersgrachtkerk/portal-reference-crop.jpg"
+    },
+    "roundels": {
+      "source": "RCE zeslobbig upper tower rose description + Commons close crop",
+      "part": "two upper tower roundels",
+      "shape": "Six joined rounded lobes forming one dark glass opening; pale perimeter follows external silhouette only. No central pale circle, overlapping internal rings, or wheel spokes.",
+      "comparisonCrop": "artifacts/keizersgrachtkerk/tower-reference-crop.jpg"
+    },
+    "regression": "10 first-hit glass probes at curved portal shoulders and upper roundel centres, alongside existing facade/roof grid."
+  },
+  "v6DecodedCpuEvidence": {
+    "report": "artifacts/keizersgrachtkerk/v6-report.json",
+    "frontFineReport": "artifacts/keizersgrachtkerk/v6-roof-holes.json",
+    "coarseRoofSamples": 1624,
+    "coarseSlateFirstHits": 1624,
+    "downwardFirstHitRoofFaces": 0,
+    "denseFrontageRoofGaps": 0,
+    "sideGlassProbes": 120,
+    "frontLowerAndTowerGlassProbes": 16,
+    "status": "Passing CPU checks only. Root independent review and gallery/live game still required."
+  }
+}
