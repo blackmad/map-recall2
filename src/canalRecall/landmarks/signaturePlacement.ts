@@ -76,6 +76,10 @@ export interface SignatureModelSpec {
   readonly surveyed?: SurveyedAnchor;
   /** Stable id for this placement, used in the manifest and in tests. */
   readonly id: string;
+  /** One GLB (in its frontage frame) shared by several placements: the runtime loads it once and clones per instance. */
+  readonly sharedModel?: boolean;
+  /** Left-right mirror of the shared mesh (X negated; the runtime's negative determinant flips triangle winding). */
+  readonly mirror?: boolean;
   readonly assetKind?: 'building' | 'memorial' | 'ordinary-building' | 'landscape';
   /** Exact native plan for ordinary replacement picking, including courtyard holes. */
   readonly buildingFootprint?: { readonly type: 'Polygon' | 'MultiPolygon'; readonly coordinates: unknown };
@@ -159,6 +163,8 @@ export interface SignaturePlacement {
   /** Single uniform factor. Non-uniform scaling would stretch a facade's
    *  windows and is never correct for a real building. */
   readonly scale: number;
+  /** Mirror the model in its own X axis (shared-mesh instances only). */
+  readonly mirror?: boolean;
 }
 
 /** Metres per degree of longitude at a latitude. */
@@ -441,6 +447,7 @@ function surveyedPlacement(
       ? normaliseBearing(spec.footprint.headingDegrees + spec.facingOffsetDegrees)
       : normaliseBearing(spec.facingOffsetDegrees),
     scale: 1,
+    ...(spec.mirror ? { mirror: true } : {}),
   };
 }
 

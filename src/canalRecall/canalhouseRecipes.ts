@@ -26,7 +26,7 @@ export interface CanalhouseDoorPanel {
 }
 export interface CanalhouseOpening {
   id: string; kind: 'window' | 'door'; leftM: number; bottomM: number; widthM: number; heightM: number;
-  trimWidthM: number; head?: 'segmental' | 'oval'; headRiseM?: number; verticalBars?: number[]; horizontalBars?: number[];
+  trimWidthM: number; head?: 'segmental' | 'oval'; headRiseM?: number; /** Chord count of a segmental arc (default 16); runtime street houses use 4. */ headSegments?: number; verticalBars?: number[]; horizontalBars?: number[];
   /** Outer joinery and sash/grille materials independently reuse semantic palette slots. */
   frameSurface?: 'trim' | 'door' | 'joinery'; barSurface?: 'trim' | 'door' | 'joinery';
   /** Glazed or opaque leaf; trim selects pale painted panels. Omission preserves defaults. */
@@ -474,6 +474,8 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
       }
       const frameDepth=o.frameDepthM??.12;finite(frameDepth);if(frameDepth<.08||frameDepth>.25)throw new Error('Unsupported opening frame depth');
       const paneOffset=o.paneOffsetM??.065;finite(paneOffset);if(paneOffset<.025||paneOffset>.065)throw new Error('Unsupported glazing setback');
+      const headSegments=o.headSegments??16;
+      if(!Number.isInteger(headSegments)||headSegments<2||headSegments>32)throw new Error('Unsupported head segment count');
       const barDepth=Math.min(.095,.015+frameDepth-.025);
       const openingShape=(x:number,y:number,w:number,h:number,rise=0,oval=false)=>{
         if(oval){
@@ -482,7 +484,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
           s.closePath();return s;
         }
         const s=new T.Shape();s.moveTo(x,y);s.lineTo(x+w,y);
-        if(rise){const radius=w*w/(8*rise)+rise/2,center=h-radius;s.lineTo(x+w,y+h-rise);for(let i=1;i<=16;i++){const u=w/2-w*i/16;s.lineTo(x+w/2+u,y+center+Math.sqrt(Math.max(0,radius*radius-u*u)));}}
+        if(rise){const radius=w*w/(8*rise)+rise/2,center=h-radius;s.lineTo(x+w,y+h-rise);for(let i=1;i<=headSegments;i++){const u=w/2-w*i/headSegments;s.lineTo(x+w/2+u,y+center+Math.sqrt(Math.max(0,radius*radius-u*u)));}}
         else{s.lineTo(x+w,y+h);s.lineTo(x,y+h);}
         s.closePath();return s;
       };
@@ -501,7 +503,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
         positive(o.headRiseM);if(o.headRiseM>Math.min(o.heightM,o.widthM/2))throw new Error('Invalid segmental head rise');
         const arch=(x:number,y:number,w:number,h:number,rise:number,d:number,depth:number,surface:keyof typeof palette,label:string)=>{
           const radius=w*w/(8*rise)+rise/2,center=h-radius,outline=new T.Shape();outline.moveTo(x,y);outline.lineTo(x+w,y);outline.lineTo(x+w,y+h-rise);
-          for(let i=1;i<=16;i++){const u=w/2-w*i/16;outline.lineTo(x+w/2+u,y+center+Math.sqrt(Math.max(0,radius*radius-u*u)));}
+          for(let i=1;i<=headSegments;i++){const u=w/2-w*i/headSegments;outline.lineTo(x+w/2+u,y+center+Math.sqrt(Math.max(0,radius*radius-u*u)));}
           outline.closePath();const g=new T.ExtrudeGeometry(outline,{depth:d,bevelEnabled:false});g.translate(0,0,depth-d/2);add(g,surface,label,facade);
         };
         frame(o.headRiseM);

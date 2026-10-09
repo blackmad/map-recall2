@@ -1,0 +1,52 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "bilder-090492",
+ "pandId": "0363100012090492",
+ "address": "Bilderdijkstraat (1939 bay-window block, bay right)",
+ "sources": [
+  {
+   "id": "pano-2022-04-29",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-29",
+   "image": "staging/pand-reference/0363100012090492/front-alt.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "fronts": [
+  {
+   "id": "front0",
+   "street": "Bilderdijkstraat",
+   "hoist": false,
+   "windows": "cross",
+   "basement": "none",
+   "cornice": "simple",
+   "gable": "cornice",
+   "storeys": 5,
+   "bays": 2,
+   "doorBay": 0,
+   "shopfront": {
+    "colour": "dark-brown",
+    "fascia": false
+   },
+   "bayWindows": {
+    "bay": 1,
+    "storeys": [
+     1,
+     2,
+     3
+    ]
+   }
+  }
+ ],
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "red-brown",
+  "frame": "cream-painted",
+  "door": "dark-red",
+  "stone": "sandstone"
+ },
+ "notes": []
+}

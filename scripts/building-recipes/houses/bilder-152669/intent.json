@@ -1,0 +1,46 @@
+{
+ "schemaVersion": 1,
+ "kind": "canal-house",
+ "id": "bilder-152669",
+ "pandId": "0363100012152669",
+ "address": "Bilderdijkstraat (1894 arched windows, pedimented dormer)",
+ "sources": [
+  {
+   "id": "pano-2022-04-29",
+   "kind": "street-panorama",
+   "capturedAt": "2022-04-29",
+   "image": "staging/pand-reference/0363100012152669/front.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "fronts": [
+  {
+   "id": "front0",
+   "street": "Bilderdijkstraat",
+   "hoist": false,
+   "windows": "arched",
+   "basement": "none",
+   "cornice": "bracketed",
+   "gable": "cornice",
+   "storeys": 5,
+   "bays": 3,
+   "dormers": 1,
+   "doorBay": 2,
+   "shopfront": {
+    "colour": "black",
+    "fascia": true
+   },
+   "bands": "lintel"
+  }
+ ],
+ "roof": {
+  "material": "slate"
+ },
+ "palette": {
+  "brick": "red-brown",
+  "frame": "cream-painted",
+  "door": "dark-brown",
+  "stone": "cream"
+ },
+ "notes": []
+}

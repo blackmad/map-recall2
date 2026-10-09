@@ -115,10 +115,34 @@ export async function rowSheet(ids: string[], out: string, textures?: Record<str
   return out;
 }
 
+/** Review sheet for a handful of houses: one column per house, rows = reference crop | recipe front | recipe 3/4. */
+export async function columnsSheet(ids: string[], out: string, panel = {width: 300, height: 440}, textures?: Record<string, string>) {
+  const cols: Buffer[] = [];
+  for (const id of ids) {
+    const facts: BuildingFacts = JSON.parse(await fs.readFile(path.join(HOUSES, id, 'facts.json'), 'utf8'));
+    const report = JSON.parse(await fs.readFile(path.join(ARTIFACTS, id, 'report.json'), 'utf8'));
+    const intent = JSON.parse(await fs.readFile(path.join(HOUSES, id, 'intent.json'), 'utf8'));
+    const ff = facts.fronts[0], mid = [(ff.endpointsRD[0][0] + ff.endpointsRD[1][0]) / 2, (ff.endpointsRD[0][1] + ff.endpointsRD[1][1]) / 2];
+    const height = Math.max(...report.fit.fronts.map((f: any) => f.crownTopM), facts.heights.roofMaxM) + 1;
+    const views = frontViews(rdToRecipeLocal(mid, report.anchorRD), [ff.outwardNormalRD[0], -ff.outwardNormalRD[1]], ff.widthM, height, {width: panel.width * 2, height: panel.height * 2});
+    const [front, three] = await renderModels([{file: path.join(ARTIFACTS, id, 'model.glb')}], [views.front, views.threeQuarter], textures);
+    const cited = intent.sources?.[0]?.image;
+    const photo = cited ? await fs.readFile(cited).catch(() => null) : null;
+    const tiles = [photo ?? await sharp({create: {width: 4, height: 5, channels: 3, background: '#dddddd'}}).png().toBuffer(), front, three];
+    const labels = [`${id.replace('bilder-', '')} reference`, `${report.triangles} tris ${report.passed ? 'pass' : 'GATE FAIL'}${report.sameAs ? ' · sameAs' : ''}`, '3/4'];
+    const parts = await Promise.all(tiles.map((t, i) => label(t, labels[i], panel.width, panel.height)));
+    cols.push(await sharp({create: {width: panel.width, height: (panel.height + 34) * 3, channels: 3, background: '#fff'}}).composite(parts.map((input, i) => ({input, left: 0, top: i * (panel.height + 34)}))).png().toBuffer());
+  }
+  await fs.mkdir(path.dirname(out), {recursive: true});
+  await sharp({create: {width: cols.length * (panel.width + 6), height: (panel.height + 34) * 3, channels: 3, background: '#f4f4f2'}}).composite(cols.map((input, i) => ({input, left: i * (panel.width + 6), top: 0}))).png().toFile(out);
+  return out;
+}
+
 if (process.argv[1]?.endsWith('building-recipes/render.ts')) {
   const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
   const textures = process.argv.includes('--textures') ? {brick: 'artifacts/building-recipes/textures/brick-256.png', roofTile: 'artifacts/building-recipes/textures/roof-tile-256.png', slate: 'artifacts/building-recipes/textures/roof-tile-256.png'} : undefined;
   try {
+    if (arg('sheet')) console.log(await columnsSheet(arg('sheet')!.split(','), arg('out') ?? `${ARTIFACTS}/sheet.png`, undefined, textures));
     if (arg('row')) console.log(await rowSheet(arg('row')!.split(','), arg('out') ?? `${ARTIFACTS}/row.png`, textures));
     for (const id of (arg('house') ?? '').split(',').filter(Boolean)) {
       const ex = arg('existing'), anchor = arg('existing-anchor')?.split(',').map(Number);
