@@ -53,8 +53,10 @@ storeys) as clear misses.
 
 Installed after contact-sheet and elevation review: Thomaskerk (Sijmons
 1966) and Vrijburg (Diepenbrockstraat, 1931–33). Willem de Zwijgerkerk
-was held for its missing entrance wing and installed after rework; held: Van
-Gendt Hallen (gable corbel friezes, steel windows, 3DBAG gable artefacts).
+was held for its missing entrance wing and installed after rework; Van Gendt
+Hallen likewise (segmental-arc gables with corbel friezes following the
+arc, steel windows; the integrator first misread the arcs as 3DBAG
+artefacts and asked for triangles — the photos win).
 The OBA libraries, CEDLA, Max Euwe Centrum and Bijzondere Collecties are
 rooms in ordinary buildings, Elthetokerk was demolished in 1992; these and a
 Haiku triage of the review queue (duplicates, sculptures, areas) live in
