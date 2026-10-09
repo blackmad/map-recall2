@@ -1,0 +1,34 @@
+{
+  "name": "Gerard Dou Synagogue",
+  "landmarkId": "extract_landmarks_25099441",
+  "osmType": "node",
+  "osmId": 25099441,
+  "address": "Gerard Doustraat 238, 1073 XC Amsterdam",
+  "website": "https://www.nihs.nl/synagoges/gerard-dou/",
+  "description": "The congregation Tesjoengat Israel (Hulpe Israëls) commissioned E.M. Rood to build this synagogue in 1891–1892. Its narrow street front conceals a prayer hall with galleries on three sides, originally seating 250 men and 70 women. The paired round-arched windows, David-star oculus and ceremonial doorway belong to its eclectic neo-Renaissance architecture.",
+  "facts": [
+    {
+      "text": "E.M. Rood designed the 1891–1892 building for the Ashkenazi congregation Hulpe Israëls, with 250 seats for men and 70 for women.",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/527843"
+    },
+    {
+      "text": "The tall left part contains the prayer hall and ceremonial door; the recessed lower right part has a secondary entrance.",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/527843"
+    },
+    {
+      "text": "The congregation remained active in this concealed street building during the occupation, and the preserved synagogue hosted early services after liberation.",
+      "sourceUrl": "https://www.nihs.nl/synagoges/gerard-dou/"
+    }
+  ],
+  "researchSourceUrls": [
+    "https://monumentenregister.cultureelerfgoed.nl/monumenten/527843",
+    "https://www.nihs.nl/synagoges/gerard-dou/"
+  ],
+  "publicEntranceCandidate": {
+    "coordinate": [
+      4.897850161190556,
+      52.35709575612273
+    ],
+    "source": "Center of current native hall street frontage matched to ceremonial door in 2005 elevation and 2025 municipal panorama; candidate for root routing verification, not current POI replacement."
+  }
+}

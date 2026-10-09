@@ -17924,6 +17924,449 @@
       "triangles": 9605,
       "bytes": 147464,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "keizersgrachtkerk": {
+      "id": "keizersgrachtkerk",
+      "name": "Keizersgrachtkerk",
+      "modelUrl": "./models/keizersgrachtkerk.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012177272"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.888077939720203,
+          52.364601907267215
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 29,
+        "widthMetres": 15
+      },
+      "surveyed": {
+        "anchor": [
+          4.888077939720203,
+          52.364601907267215
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Exact current BAG0363100012177272 native east/south metres, single church footprint; frontage chain5→0 toward Keizersgracht; semantic AHN5 roof profiles; adjacent canal houses retained."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "attribution": {
+        "title": "Keizersgrachtkerk — original surveyed neo-Venetian church",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518347",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original native texture-free flat-color geometry; photos and survey evidence guide architectural construction."
+      },
+      "materialOverrides": {
+        "brick": "#986f5d",
+        "stone": "#d5cfbd",
+        "slate": "#707e86",
+        "glass": "#526362",
+        "white": "#e5dfcc",
+        "bronze": "#67583d"
+      },
+      "landmarkId": "extract_landmarks_2099326007",
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.888241685335008,
+              52.36462308359631
+            ],
+            [
+              4.88819475435939,
+              52.36464990289949
+            ],
+            [
+              4.8881895528529,
+              52.3646528828759
+            ],
+            [
+              4.888136046264016,
+              52.3646834492846
+            ],
+            [
+              4.888130829967449,
+              52.36468643818384
+            ],
+            [
+              4.888083381682339,
+              52.364713551857186
+            ],
+            [
+              4.887797857996435,
+              52.36452631082924
+            ],
+            [
+              4.887956161560617,
+              52.36443584294671
+            ],
+            [
+              4.8879711874636795,
+              52.36444570293165
+            ],
+            [
+              4.888241685335008,
+              52.36462308359631
+            ]
+          ]
+        ]
+      },
+      "bounds": {
+        "min": [
+          -19.03947639465332,
+          -3.356933575560106e-7,
+          -12.756148338317871
+        ],
+        "max": [
+          11.436458587646484,
+          24.219999313354492,
+          18.501296997070312
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.888077939720203,
+          52.364601907267215
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 31.257445335388184,
+        "heightMetres": 24.21999964904785,
+        "depthMetres": 30.475934982299805,
+        "depthCoverage": 2.031728998819987
+      },
+      "triangles": 22999,
+      "bytes": 263136,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "gerard-dou-synagogue": {
+      "id": "gerard-dou-synagogue",
+      "name": "Gerard Dou Synagogue",
+      "modelUrl": "./models/gerard-dou-synagogue.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012140916"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.897864665654482,
+          52.357009615706716
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 22,
+        "widthMetres": 20
+      },
+      "surveyed": {
+        "anchor": [
+          4.897864665654482,
+          52.357009615706716
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current PDOK BAG0363100012140916, native east/south metres; street frontage0→1→2→3. AHN4 2020 survey calibrated roof envelope, historic reference facade details."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "attribution": {
+        "title": "Gerard Dou Synagogue",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/527843",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original native-scale flat-colour geometry guided by survey and facade references, no imported meshes or pixels."
+      },
+      "materialOverrides": {
+        "brick": "#855346",
+        "white": "#e1e2d8",
+        "stone": "#d0d4c9",
+        "bronze": "#4b5555",
+        "slate": "#515453",
+        "glass": "#6e878b",
+        "dark": "#27332f",
+        "frame": "#9baba5"
+      },
+      "landmarkId": "extract_landmarks_25099441",
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.897907518089136,
+              52.357111946455746
+            ],
+            [
+              4.897792804291975,
+              52.357079565789725
+            ],
+            [
+              4.897794275314639,
+              52.35707795407927
+            ],
+            [
+              4.897749295235176,
+              52.35706489767303
+            ],
+            [
+              4.897827078629125,
+              52.35696524869016
+            ],
+            [
+              4.897856917348026,
+              52.356927021378546
+            ],
+            [
+              4.897880859120163,
+              52.35693368139289
+            ],
+            [
+              4.8979508843671224,
+              52.356953168629296
+            ],
+            [
+              4.89802235849498,
+              52.356973057271745
+            ],
+            [
+              4.897907518089136,
+              52.357111946455746
+            ]
+          ]
+        ]
+      },
+      "bounds": {
+        "min": [
+          -8.024511337280273,
+          -0.0004955444601364434,
+          -11.704974174499512
+        ],
+        "max": [
+          10.721364974975586,
+          17.06999969482422,
+          9.140902519226074
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.897864665654482,
+          52.357009615706716
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 90,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 20.845876693725586,
+        "heightMetres": 17.070495239284355,
+        "depthMetres": 18.74587631225586,
+        "depthCoverage": 0.937293815612793
+      },
+      "triangles": 5222,
+      "bytes": 90356,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "lekstraat-synagoge": {
+      "id": "lekstraat-synagoge",
+      "name": "Lekstraatsynagoge",
+      "landmarkId": "extract_landmarks_665340356",
+      "modelUrl": "./models/lekstraat-synagoge.glb",
+      "suppressOsmIds": [
+        "w277300134",
+        "NL.IMBAG.Pand.0363100012104516"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.902905407824482,
+          52.34412940118549
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 41.68,
+        "widthMetres": 40.38
+      },
+      "surveyed": {
+        "anchor": [
+          4.902905407824482,
+          52.34412940118549
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current3DBAG/ BAG native east/south surveyed shell with groundNAP0.339m"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "stone": "#d8d3bf",
+        "ochre": "#c7bb91",
+        "glass": "#8a9491",
+        "concrete": "#b5b3a3",
+        "slate": "#555951",
+        "dark": "#41473f",
+        "bronze": "#725b40",
+        "white": "#dfdfc9",
+        "copper": "#536c5e"
+      },
+      "attribution": {
+        "title": "Lekstraatsynagoge",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/526707",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free native-survey reconstruction; register526707, dated exterior photos and3DBAG roof semantics. Hebrew inscription uses approximate Arial Bold outlines. No imported meshes/photo pixels. Draft requires nativegallery/live acceptance and sourcepack publication."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.903021666421927,
+              52.344057750169384
+            ],
+            [
+              4.903102909567585,
+              52.344087121941655
+            ],
+            [
+              4.903098041215613,
+              52.34409216213417
+            ],
+            [
+              4.903142901775154,
+              52.34410838876269
+            ],
+            [
+              4.903147770221814,
+              52.34410333958091
+            ],
+            [
+              4.903178174244833,
+              52.344114339110035
+            ],
+            [
+              4.903173320572729,
+              52.34411937936567
+            ],
+            [
+              4.903222741844785,
+              52.34413725139906
+            ],
+            [
+              4.903162880692317,
+              52.34419933666943
+            ],
+            [
+              4.90306509607802,
+              52.34430072302513
+            ],
+            [
+              4.902980737413736,
+              52.344270376792934
+            ],
+            [
+              4.90295268600559,
+              52.34426029460262
+            ],
+            [
+              4.902911756590326,
+              52.34424556696816
+            ],
+            [
+              4.902883690637252,
+              52.34423547571411
+            ],
+            [
+              4.902859147686695,
+              52.344226639180874
+            ],
+            [
+              4.902855000722515,
+              52.34423011844632
+            ],
+            [
+              4.902746204992828,
+              52.34419067529477
+            ],
+            [
+              4.902723694570719,
+              52.3441825121468
+            ],
+            [
+              4.902619064974938,
+              52.344144577898554
+            ],
+            [
+              4.902770712512189,
+              52.34398758045399
+            ],
+            [
+              4.902789755656663,
+              52.34396785837471
+            ],
+            [
+              4.902764909420386,
+              52.343958589167414
+            ],
+            [
+              4.902779158437077,
+              52.34394382668261
+            ],
+            [
+              4.902784576131115,
+              52.34393820454738
+            ],
+            [
+              4.9029235711812,
+              52.34398851160862
+            ],
+            [
+              4.90304582975117,
+              52.344032764196314
+            ],
+            [
+              4.903021666421927,
+              52.344057750169384
+            ]
+          ]
+        ]
+      },
+      "bounds": {
+        "min": [
+          -20.092735290527344,
+          -2.5177001816700795e-7,
+          -19.102642059326172
+        ],
+        "max": [
+          21.58052635192871,
+          14.9399995803833,
+          21.27168083190918
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.902905407824482,
+          52.34412940118549
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 90,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 41.673261642456055,
+        "heightMetres": 14.939999832153319,
+        "depthMetres": 40.37432289123535,
+        "depthCoverage": 0.9998594079057789
+      },
+      "triangles": 13844,
+      "bytes": 188020,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
