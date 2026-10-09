@@ -11664,6 +11664,688 @@ Map source: ${osmUrl(places[i][0])}`);
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free BAG reconstruction; source-guided gray bands, timber terrace, red/white bays and entrance overhang. No reference pixels or third-party mesh imported."
       }
+    },
+    {
+      id: "this-is-holland",
+      name: "This is Holland",
+      landmarkId: "extract_landmarks_1851417932",
+      modelUrl: "./models/this-is-holland.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012246118",
+        "w490967874",
+        "w1206726843"
+      ],
+      spatialSuppression: false,
+      groundAltitudeMetres: 0,
+      footprint: {
+        centre: [
+          4.902355,
+          52.384213
+        ],
+        headingDegrees: 90,
+        lengthMetres: 29,
+        widthMetres: 29
+      },
+      facingOffsetDegrees: 0,
+      surveyed: {
+        anchor: [
+          4.902355,
+          52.384213
+        ],
+        northOffsetDegrees: 0,
+        source: "Current in-use BAG0363100012246118 and OSM metal/glass pavilion outlines. Native X east/Z south at scale1; six-metre sawtooth foyer,approximately25.2m metal drum from broad AHN5 2023 roof115 (older OSM24m approximate), near-flat roof with separately modeled solar equipment. Public entrance OSMnode11182027586 southeast, not destination centre."
+      },
+      attribution: {
+        title: "This is Holland pavilion",
+        author: "Map Recall",
+        sourceUrl: "https://www.damastarchitects.nl/this-is-holland-amsterdam",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original native surveyed faceted metal drum, sawtooth glass foyer, mushroom columns, roof solar field and source-visible smooth sans-serif signs; no imported meshes or image textures. Approximate Arial Bold/Arial Regular source signage match."
+      },
+      materialOverrides: {
+        concrete: "#8c9091",
+        frame: "#929c9c",
+        glass: "#52777b",
+        blue: "#334e68",
+        slate: "#606969",
+        white: "#efefea"
+      },
+      galleryView: {
+        theta: 0.8,
+        phi: 1.2
+      },
+      materialOpacity: {
+        glass: 0.3
+      }
+    },
+    {
+      id: "luther-museum",
+      name: "Luther Museum Amsterdam",
+      landmarkId: "extract_landmarks_218084814",
+      modelUrl: "./models/luther-museum.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012164939",
+        "r3604195",
+        "w269000350"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.9091,
+          52.3654
+        ],
+        headingDegrees: 90,
+        lengthMetres: 108.9,
+        widthMetres: 64.7
+      },
+      surveyed: {
+        anchor: [
+          4.9091,
+          52.3654
+        ],
+        northOffsetDegrees: 0
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 151,
+      materialOverrides: {
+        brick: "#806455",
+        stone: "#b7b1a1",
+        slate: "#655f57",
+        white: "#eae7dc",
+        copper: "#7da599",
+        glass: "#63838c"
+      },
+      attribution: {
+        title: "Wittenberg / Luther Museum Amsterdam",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/525060",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native BAG parent with two courtyards and later wing; surveyed supported roof domains, photo-guided original apertures and stone entrances. Scale1. Window dimensions and trim depths approximate; no imported mesh or photo textures."
+      }
+    },
+    {
+      id: "huize-frankendael",
+      name: "Huize Frankendael",
+      landmarkId: "extract_landmarks_746892406",
+      modelUrl: "./models/huize-frankendael.glb",
+      suppressOsmIds: [
+        "w44980011",
+        "NL.IMBAG.Pand.0363100012162192",
+        "w1562613213",
+        "w1562613214",
+        "w1562613215",
+        "w1562613216"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.9335095,
+          52.351162
+        ],
+        headingDegrees: 316.086,
+        lengthMetres: 32.46,
+        widthMetres: 12.91
+      },
+      surveyed: {
+        anchor: [
+          4.9335095,
+          52.351162
+        ],
+        northOffsetDegrees: 226.086,
+        source: "Current BAG0363100012162192 / OSM w44980011 and four exact mapped parts. Native original reconstruction; AHN5 2023 roof semantics and RCE422420."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 90,
+      materialOverrides: {
+        brick: "#766a65",
+        stone: "#d8d1b8",
+        white: "#eee7d5",
+        slate: "#4a555b",
+        glass: "#465d62",
+        frame: "#292d28",
+        dark: "#23392c",
+        concrete: "#888980"
+      },
+      attribution: {
+        title: "Huize Frankendael",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/422420",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native BAG brick pavilion, coach-house wings, truncated grey hip roofs, rear polygonal projection, pale rococo surrounds, balustrade, dormers and entrance steps. No imported meshes or photo pixels."
+      }
+    },
+    {
+      id: "uilenburger-synagoge",
+      name: "Uilenburger Synagoge",
+      landmarkId: "extract_landmarks_452804039",
+      modelUrl: "./models/uilenburger-synagoge.glb",
+      suppressOsmIds: [
+        "w268782551",
+        "NL.IMBAG.Pand.0363100012181889"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.905340304026372,
+          52.370175529685945
+        ],
+        headingDegrees: 145.64791589490176,
+        lengthMetres: 22.2,
+        widthMetres: 11.6
+      },
+      surveyed: {
+        anchor: [
+          4.905340304026372,
+          52.370175529685945
+        ],
+        northOffsetDegrees: 0,
+        source: "Current municipal BAG address/VBO parent0363100012181889 and OSMw268782551; native east/south, scale1. AHN5 2023 semantic roof polygons inform original four-plane mansard roof. Front faces northwest into open forecourt; rear southeast faces canal. BAG geometry/status/year under investigation recorded, not silently omitted."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#685449",
+        stone: "#b5ac94",
+        white: "#e4e1cd",
+        glass: "#657c7e",
+        slate: "#665f58",
+        dark: "#202f39",
+        frame: "#9ba19c",
+        greyBrick: "#7f8583"
+      },
+      attribution: {
+        title: "Uilenburger Synagoge",
+        author: "Map Recall",
+        sourceUrl: "https://www.uilenburgersjoel.nl/the-uilenburger-synagogue/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free surveyed synagogue with bell gable, three oculi, white subdivided arched windows, stone doorcase, contrasting rendered rear and surveyed steep-lower/shallow-upper mansard. No downloaded mesh or photo textures."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.905178516607106,
+              52.370227202067795
+            ],
+            [
+              4.905364141030403,
+              52.37006552279786
+            ],
+            [
+              4.905404987289694,
+              52.37008341277186
+            ],
+            [
+              4.905409375114112,
+              52.37007959287597
+            ],
+            [
+              4.905465639375633,
+              52.37010422343142
+            ],
+            [
+              4.905461222285348,
+              52.370108034222596
+            ],
+            [
+              4.9055020688181985,
+              52.370125906188434
+            ],
+            [
+              4.905317333199509,
+              52.37028554009238
+            ],
+            [
+              4.905178516607106,
+              52.370227202067795
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "nieuwendammerkerk",
+      name: "Nieuwendammerkerk",
+      landmarkId: "extract_landmarks_767085118",
+      modelUrl: "./models/nieuwendammerkerk.glb",
+      suppressOsmIds: [
+        "w280804509",
+        "NL.IMBAG.Pand.0363100012144206"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.940649007575467,
+          52.391768552805786
+        ],
+        headingDegrees: 90,
+        lengthMetres: 25,
+        widthMetres: 12.7
+      },
+      surveyed: {
+        anchor: [
+          4.940649007575467,
+          52.391768552805786
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG 0363100012144206 polygon; geometry baked east/south in native metres. AHN5 2023 + 2025 Amsterdam panoramas; adjacent Kosterij retained."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#835744",
+        ochre: "#b4a376",
+        stone: "#b8b7a4",
+        red: "#6b665c",
+        slate: "#41494c",
+        white: "#e9e4cd",
+        green: "#284d43",
+        frame: "#444c47",
+        glass: "#6c8d96",
+        dark: "#263438",
+        gold: "#c3aa59"
+      },
+      attribution: {
+        title: "Nieuwendammerkerk",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/508536",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native-scale hall church, red tiled gable roof, paired iron-divided arched windows, peaked tower cornices, octagonal slate needle. No copied photo pixels or imported geometry."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.94096383774248,
+              52.39180424739721
+            ],
+            [
+              4.940689188312039,
+              52.39181944404881
+            ],
+            [
+              4.9406848090039235,
+              52.39178895941695
+            ],
+            [
+              4.940619238124669,
+              52.391792487022826
+            ],
+            [
+              4.9406179269107895,
+              52.39178264959333
+            ],
+            [
+              4.940614452631805,
+              52.39175712056433
+            ],
+            [
+              4.940613206179585,
+              52.39174814619301
+            ],
+            [
+              4.94067877699369,
+              52.39174461859037
+            ],
+            [
+              4.940674823623717,
+              52.39171414455102
+            ],
+            [
+              4.940948309713886,
+              52.39169915925469
+            ],
+            [
+              4.9409524357736565,
+              52.39172709043104
+            ],
+            [
+              4.940965679470506,
+              52.39172635840093
+            ],
+            [
+              4.940972955289465,
+              52.39177559317806
+            ],
+            [
+              4.940959711578018,
+              52.391776325208966
+            ],
+            [
+              4.94096383774248,
+              52.39180424739721
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "meerpadkerk",
+      name: "Meerpadkerk",
+      landmarkId: "extract_landmarks_1566771183",
+      modelUrl: "./models/meerpadkerk.glb",
+      suppressOsmIds: [
+        "w280806252",
+        "NL.IMBAG.Pand.0363100012162810"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.934087,
+          52.392235
+        ],
+        headingDegrees: 90,
+        lengthMetres: 17.09306855713878,
+        widthMetres: 9.714956039825182
+      },
+      surveyed: {
+        anchor: [
+          4.934087,
+          52.392235
+        ],
+        northOffsetDegrees: 0,
+        source: "Meerpad 9 VBO 0363010000740655 proves BAG parent 0363100012162810. Exact current BAG hall/rear annex ring; local east/south metres, AHN5 2023 gabled main roof and lower flat annex. Entrance faces ENE toward Meerpad. Separate 9A/9B retained."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        white: "#eeeade",
+        dark: "#253731",
+        glass: "#839390",
+        frame: "#b7b4a5",
+        slate: "#645e55",
+        concrete: "#9b9e94"
+      },
+      attribution: {
+        title: "Meerpadkerk",
+        author: "Map Recall",
+        sourceUrl: "https://www.doopsgezindamsterdam.nl/historie/meerpadkerk/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native-scale timber hall church, arched fanlight windows, horizontal white boards, profiled pediment/entry and gray tiled gable roof. Surveyed BAG parent includes lower rear annex. Separate 9A/9B retained. Photo-guided joinery; no imported mesh or photograph pixels."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.934188647204744,
+              52.39228143250166
+            ],
+            [
+              4.934019995026297,
+              52.39225275487275
+            ],
+            [
+              4.934025614975,
+              52.39224047228242
+            ],
+            [
+              4.933963345858521,
+              52.39222987126463
+            ],
+            [
+              4.933978478964986,
+              52.392195236842845
+            ],
+            [
+              4.9340407480364705,
+              52.39220583785267
+            ],
+            [
+              4.934046338684712,
+              52.392193546161515
+            ],
+            [
+              4.934214961274504,
+              52.392222223640616
+            ],
+            [
+              4.934188647204744,
+              52.39228143250166
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "hannekes-boom",
+      name: "Hannekes Boom",
+      landmarkId: "local-food-395",
+      modelUrl: "./models/hannekes-boom.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012238899"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.9116163,
+          52.3762934
+        ],
+        headingDegrees: 90,
+        lengthMetres: 18,
+        widthMetres: 17
+      },
+      surveyed: {
+        anchor: [
+          4.9116163,
+          52.3762934
+        ],
+        northOffsetDegrees: 0,
+        source: "BAG Pand0363100012238899; municipal official Dijksgracht4 VBO linkage; native AHN5/2023 roof heights cross-checked operator current facade/architect opposite views and PDOK aerial"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 90,
+      attribution: {
+        title: "Hannekes Boom",
+        author: "Map Recall",
+        sourceUrl: "https://hannekesboom.nl/geschiedenis/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original native flat-color timber pavilion with surveyed roof terrace, lower northern service wing and localized covered terrace bay. Photo-guided reclaimed-board parapet, corrugated awnings, glazing and stair. No reference pixels or third-party mesh; window divisions and stair tread count approximate."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.911693,
+              52.376243
+            ],
+            [
+              4.911666,
+              52.376341
+            ],
+            [
+              4.911725,
+              52.376347
+            ],
+            [
+              4.911718,
+              52.37637
+            ],
+            [
+              4.911604,
+              52.376357
+            ],
+            [
+              4.911607,
+              52.376349
+            ],
+            [
+              4.911589,
+              52.376347
+            ],
+            [
+              4.911587,
+              52.376353
+            ],
+            [
+              4.911565,
+              52.376351
+            ],
+            [
+              4.911567,
+              52.376344
+            ],
+            [
+              4.911501,
+              52.376337
+            ],
+            [
+              4.911506,
+              52.376316
+            ],
+            [
+              4.911489,
+              52.376314
+            ],
+            [
+              4.911516,
+              52.376224
+            ],
+            [
+              4.911693,
+              52.376243
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "posthoornkerk",
+      name: "Posthoornkerk",
+      landmarkId: "extract_landmarks_213091641",
+      modelUrl: "./models/posthoornkerk.glb",
+      suppressOsmIds: [
+        "w43040630",
+        "NL.IMBAG.Pand.0363100012167529"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.89063,
+          52.381275
+        ],
+        headingDegrees: 90,
+        lengthMetres: 55,
+        widthMetres: 55
+      },
+      surveyed: {
+        anchor: [
+          4.89063,
+          52.381275
+        ],
+        northOffsetDegrees: 0,
+        source: "Native current BAG parent and 3DBAG roof semantics; east/south geometry baked by builder"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#88705f",
+        greyBrick: "#75665b",
+        stone: "#c7b994",
+        slate: "#535b65",
+        glass: "#869a9e",
+        dark: "#333b3c",
+        ochre: "#a87c42"
+      },
+      attribution: {
+        title: "Posthoornkerk",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/1289",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native church reconstruction from BAG/3DBAG and operator/register references, cross-checked against dated 2025 municipal panoramas. Adjacent presbytery, school and street buildings retained; no name lettering."
+      }
+    },
+    {
+      id: "haparandaweg-57",
+      name: "Haparandaweg 57",
+      modelUrl: "./models/haparandaweg-57.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012071094",
+        "w57862438"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.87638,
+          52.395
+        ],
+        headingDegrees: 0,
+        lengthMetres: 44,
+        widthMetres: 44
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      surveyed: {
+        anchor: [
+          4.87638,
+          52.395
+        ],
+        northOffsetDegrees: 0,
+        source: "PDOK BAG0363100012071094/AHN5 2023"
+      },
+      materialOverrides: {
+        brick: "#815d50",
+        stone: "#969f9c",
+        ochre: "#98906b",
+        gold: "#c3ae7d",
+        copper: "#42788b",
+        frame: "#53666b",
+        white: "#c5c8ba",
+        glass: "#718e91",
+        concrete: "#a8aaa0",
+        slate: "#727e7f",
+        green: "#747d58",
+        dark: "#588d9e",
+        bronze: "#37798d"
+      },
+      preservePositionPrecision: true,
+      attribution: {
+        title: "Haparandaweg 57 original architecture",
+        author: "Map Recall",
+        sourceUrl: "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012071094",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native metre geometry. BAG/3DBAG and municipal panorama sources archived at private commit16d644906c974150de90690eca7a8918e154cd6c/models/haparandaweg-57. Ordinary requested industrial building; no invented POI. Native acceptance pending."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.876319169989764,
+              52.39521064052107
+            ],
+            [
+              4.876075115016229,
+              52.394908042035205
+            ],
+            [
+              4.876443942978793,
+              52.39479672983623
+            ],
+            [
+              4.876687475639284,
+              52.39509892086636
+            ],
+            [
+              4.876319169989764,
+              52.39521064052107
+            ]
+          ]
+        ]
+      },
+      heightMetres: 8.27
     }
   ];
 
@@ -37864,6 +38546,122 @@ Map source: ${osmUrl(places[i][0])}`);
           4.97352
         ],
         note: "Public Langbroekdreef approach beside the station driveway,27.6m from the former isolated apron point. Current mapped road coordinates cross-checked against sourced station plot; actual chosen destination remains Anton."
+      }
+    },
+    {
+      modelId: "this-is-holland",
+      name: "This is Holland",
+      description: "Opened in2017, This is Holland uses moving seats and a panoramic screen for a simulated flight over Dutch landscapes. Its circular pavilion stands between Eye and A\u2019DAM Toren.",
+      funFact: "The pavilion recalls the oil drums that once stood on Shell\u2019s Overhoeks site. Its raised silver drum houses the flight experience above a six-metre-high sawtooth glass foyer, supported by mushroom-shaped columns rising from the underground garage.",
+      sourceUrl: "https://www.damastarchitects.nl/this-is-holland-amsterdam",
+      center: [
+        52.3842002,
+        4.902329
+      ],
+      routeDestination: {
+        center: [
+          52.3841332,
+          4.9024943
+        ],
+        note: "OSM node 11182027586 public entrance on the southeast foyer; pin stays on the existing genuine extract."
+      }
+    },
+    {
+      modelId: "luther-museum",
+      name: "Luther Museum Amsterdam",
+      description: "The museum occupies the historic regents\u2019 rooms of Wittenberg, the former Lutheran Diaconiehuis. The building\u2019s paired entrances once separated the elderly residents from the orphans; its two courtyards remain open within the large brick block.",
+      funFact: "Wittenberg\u2019s two grand canal-side entrances originally led to separate departments: one for elderly residents and one for orphaned children.",
+      sourceUrl: "https://luthermuseum.nl/nl/over-het-museum",
+      center: [
+        52.3655242,
+        4.9088495
+      ],
+      routeDestination: {
+        center: [
+          52.365537,
+          4.908862
+        ],
+        note: "Current municipal2024panorama00113 and2025panorama02683 show museum banner and panel by west/photographic-right historic door; coordinate reconstructed on that surveyed frontage, exact address point preserved until route accessibility review."
+      }
+    },
+    {
+      modelId: "huize-frankendael",
+      name: "Huize Frankendael",
+      description: "Frankendael is the last surviving country estate in the Watergraafsmeer, where wealthy Amsterdammers once built many summer retreats. Izaak Balde gave the house its present central pavilion and lower coach-house wings around 1733. Restaurant Merkelbach occupies a former coach house, named for city architect Ben Merkelbach, who moved into the house in 1957.",
+      sourceUrl: "https://huizefrankendael.nl/nl/over/geschiedenis-huize-frankendael/",
+      center: [
+        52.351122,
+        4.933403
+      ],
+      routeDestination: {
+        center: [
+          52.351191,
+          4.933559
+        ],
+        note: "Existing center falls on rear bay; sourced public main entrance is northeast. Root should only relocate pin if routing requires or improves actual entrance."
+      }
+    },
+    {
+      modelId: "uilenburger-synagoge",
+      landmarkId: "extract_landmarks_452804039",
+      name: "Uilenburger Synagoge",
+      description: "Built in 1766 for Amsterdam\u2019s Ashkenazi Jewish community, the Uilenburgersjoel has a three-aisled synagogue hall above a lower room originally used for ritual slaughter. Its broad bell-shaped front gable faces a forecourt behind a street wall. The restored building now hosts Jewish cultural and social gatherings, concerts and other events.",
+      sourceUrl: "https://www.uilenburgersjoel.nl/the-uilenburger-synagogue/",
+      additionalSources: [
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/5798",
+        "https://www.uilenburgersjoel.nl/wp-content/uploads/2024/03/01.Uilenburgersjoel-informatie-en-catering.pdf"
+      ]
+    },
+    {
+      modelId: "nieuwendammerkerk",
+      landmarkId: "extract_landmarks_767085118",
+      name: "Nieuwendammerkerk",
+      description: "Hidden behind the Nieuwendammerdijk, this village church stands on Brede Kerkepad with its surrounding graveyard. The present hall church opened in 1849; its tower preserves a bell cast in Kampen in 1644 for the earlier church.",
+      funFact: "A water-level stone inside recalls the 1916 flood. The timber roof uses a hammerbeam-like structure, while the tower bell is two centuries older than the present church.",
+      sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/508536",
+      additionalSources: [
+        "https://nieuwendammerkerk.nl/gebouwen-nieuwendammerkerk/"
+      ]
+    },
+    {
+      modelId: "meerpadkerk",
+      landmarkId: "extract_landmarks_1566771183",
+      name: "Meerpadkerk",
+      description: "This small white timber Mennonite meeting house in Nieuwendam was built by local carpenter Pieter Kater Gzn and opened on 9 July 1843. Its towerless hall, arched fanlight windows and classical doorway survive beside the Meerpad. It belongs to the United Mennonite Congregation of Amsterdam and is protected as Rijksmonument 6695.",
+      sourceUrl: "https://www.doopsgezindamsterdam.nl/historie/meerpadkerk/",
+      additionalSources: [
+        "https://kennis.cultureelerfgoed.nl/index.php/Monumenten/6695"
+      ]
+    },
+    {
+      modelId: "hannekes-boom",
+      name: "Hannekes Boom",
+      center: [
+        52.3762934,
+        4.9116163
+      ],
+      description: "Hannekes Boom is a waterside cafe and cultural meeting place at the head of the Dijksgracht. Its name recalls the guarded harbour openings that once used floating timber barriers. The present venue reopened in 2011 after its foundation won a municipal competition to revive the site.",
+      funFact: "Its name refers to the historic guarded harbour openings: floating tree trunks on chains closed these passages each evening, with bells announcing the opening and closing.",
+      sourceUrl: "https://hannekesboom.nl/en/history/",
+      preferDescription: true
+    },
+    {
+      modelId: "posthoornkerk",
+      name: "Posthoornkerk",
+      center: [
+        52.381461,
+        4.890663
+      ],
+      description: "Pierre Cuypers designed this early Gothic revival basilica in 1860. Its narrow site led to two galleries above each side aisle; the twin-tower street front was added in 1887\u20131889. The former church now hosts cultural events and offices.",
+      funFact: "The name came from an earlier concealed Catholic church behind Prinsengracht 7, at a former Haarlem post-coach premises. Residents organized to save the Posthoornkerk from demolition; restoration preserved its great central space for public activities.",
+      sourceUrl: "https://stadsherstel.nl/monumenten/de-posthoornkerk/",
+      preferDescription: true,
+      routeDestination: {
+        center: [
+          52.3810493226956,
+          4.890236419908126
+        ],
+        note: "Public forecourt gate on Haarlemmerstraat; derived from current BAG frontage and inspected 2025 municipal panorama, approximate within 2m. Preserve original destination unless routing requires public-entrance correction."
       }
     }
   ];
