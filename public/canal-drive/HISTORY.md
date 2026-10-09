@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+## Club Panama and West India House to the bar; held models off What's new (2026-10-09)
+
+The near-bar lane rebuilt three rejected shells from panoramas. Installed
+after integrator review: Club Panama (quay front was the south wall, not the
+north one decorated before: six arched bays with black awnings, wheel-window
+gable, clerestory, red rooftop PANAMA sign) and West India House (the real
+Herenmarkt front is the grey-plastered pedimented north front, not brown
+brick; slate-coursed roofs; 3DBAG sliver spike removed). Compagnietheater
+stays held (wing windows faint, colours too brown). `whats-new.html` read
+every manifest entry, so held models were still advertised there; the
+builder now flags `held` in `signature-landmarks.json` and the page skips it.
+
 ## Floating facades: two shared-builder bugs (2026-10-09)
 
 Torture Museum and Theo Thijssen floated their facades because

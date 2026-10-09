@@ -1,3 +1,6 @@
+import {buildClubPanama} from './club-panama-builder';
+import {buildCompagnietheater} from './compagnietheater-builder';
+import {buildWestIndiaHouse} from './west-india-house-builder';
 import {buildNassaukerk} from './nassaukerk-builder';
 import {buildKoningskerk} from './koningskerk-builder';
 import {buildSintOlofskapel} from './sint-olofskapel-builder';
@@ -344,6 +347,9 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='keizersgrachtkerk')buildKeizersgrachtkerk(w,d,helpers);
     else if(id==='torture-museum')buildTortureMuseum(w,d,helpers);
     else if(id==='houseboat-museum')buildHouseboatMuseum(w,d,helpers);
+    else if(id==='club-panama')buildClubPanama(w,d,helpers);
+    else if(id==='compagnietheater')buildCompagnietheater(w,d,helpers);
+    else if(id==='west-india-house')buildWestIndiaHouse(w,d,helpers);
     else if(id==='pathe-de-munt')buildPatheDeMunt(w,d,helpers,(g,hex)=>addDecal(g,hex));
     else if(id==='theo-thijssen-museum')buildTheoThijssenMuseum(w,d,helpers);
     else if(id==='this-is-holland')buildThisIsHolland(w,d,helpers);
@@ -511,6 +517,9 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   }
   manifest.models[id]=await save(id);
 }
+// Held models keep their manifest entry (rebuildable) but are flagged so
+// listing pages like whats-new.html leave them out.
+for(const spec of MANUAL_LANDMARKS){const entry=manifest.models?.[spec.id];if(!entry)continue;if((spec as {status?:string}).status==='held')entry.held=true;else delete entry.held;}
 fs.writeFileSync(path.join(out,'signature-landmarks.json'),JSON.stringify(manifest,null,2)+'\n');
 // Model URLs stay stable; a content fingerprint prevents a cached old imported
 // mesh being loaded with the new original model's native placement.

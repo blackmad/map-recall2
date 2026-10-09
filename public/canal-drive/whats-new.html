@@ -392,6 +392,7 @@ async function init() {
   const installed = url => url ? firstAdded[url.replace(/^\.\//, '').split('?')[0]] : undefined;
   const items = [];
   for (const [id, m] of Object.entries(sig.models || {})) {
+    if (m.held) continue; // status: held in the catalogue — out of the game until re-reviewed
     const iso = installed(m.modelUrl) || dm[id]?.updatedAt, anchor = m.placement?.anchor;
     items.push({
       id, kind: m.landmarkId ? 'landmark' : 'ordinary', name: m.name || id, modelUrl: m.modelUrl, version: dm[id]?.version,
