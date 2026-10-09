@@ -11044,5 +11044,237 @@
         ]
       ]
     }
+  },
+  {
+    "id": "hannekes-boom",
+    "name": "Hannekes Boom",
+    "landmarkId": "local-food-395",
+    "modelUrl": "./models/hannekes-boom.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012238899"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.9116163,
+        52.3762934
+      ],
+      "headingDegrees": 90,
+      "lengthMetres": 18,
+      "widthMetres": 17
+    },
+    "surveyed": {
+      "anchor": [
+        4.9116163,
+        52.3762934
+      ],
+      "northOffsetDegrees": 0,
+      "source": "BAG Pand0363100012238899; municipal official Dijksgracht4 VBO linkage; native AHN5/2023 roof heights cross-checked operator current facade/architect opposite views and PDOK aerial"
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Hannekes Boom",
+      "author": "Map Recall",
+      "sourceUrl": "https://hannekesboom.nl/geschiedenis/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original native flat-color timber pavilion with surveyed roof terrace, lower northern service wing and localized covered terrace bay. Photo-guided reclaimed-board parapet, corrugated awnings, glazing and stair. No reference pixels or third-party mesh; window divisions and stair tread count approximate."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.911693,
+            52.376243
+          ],
+          [
+            4.911666,
+            52.376341
+          ],
+          [
+            4.911725,
+            52.376347
+          ],
+          [
+            4.911718,
+            52.37637
+          ],
+          [
+            4.911604,
+            52.376357
+          ],
+          [
+            4.911607,
+            52.376349
+          ],
+          [
+            4.911589,
+            52.376347
+          ],
+          [
+            4.911587,
+            52.376353
+          ],
+          [
+            4.911565,
+            52.376351
+          ],
+          [
+            4.911567,
+            52.376344
+          ],
+          [
+            4.911501,
+            52.376337
+          ],
+          [
+            4.911506,
+            52.376316
+          ],
+          [
+            4.911489,
+            52.376314
+          ],
+          [
+            4.911516,
+            52.376224
+          ],
+          [
+            4.911693,
+            52.376243
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "id": "posthoornkerk",
+    "name": "Posthoornkerk",
+    "landmarkId": "extract_landmarks_213091641",
+    "modelUrl": "./models/posthoornkerk.glb",
+    "suppressOsmIds": [
+      "w43040630",
+      "NL.IMBAG.Pand.0363100012167529"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.89063,
+        52.381275
+      ],
+      "headingDegrees": 90,
+      "lengthMetres": 55,
+      "widthMetres": 55
+    },
+    "surveyed": {
+      "anchor": [
+        4.89063,
+        52.381275
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Native current BAG parent and 3DBAG roof semantics; east/south geometry baked by builder"
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "materialOverrides": {
+      "brick": "#88705f",
+      "greyBrick": "#75665b",
+      "stone": "#c7b994",
+      "slate": "#535b65",
+      "glass": "#869a9e",
+      "dark": "#333b3c",
+      "ochre": "#a87c42"
+    },
+    "attribution": {
+      "title": "Posthoornkerk",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1289",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native church reconstruction from BAG/3DBAG and operator/register references, cross-checked against dated 2025 municipal panoramas. Adjacent presbytery, school and street buildings retained; no name lettering."
+    }
+  },
+  {
+    "id": "haparandaweg-57",
+    "name": "Haparandaweg 57",
+    "modelUrl": "./models/haparandaweg-57.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012071094",
+      "w57862438"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.87638,
+        52.395
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 44,
+      "widthMetres": 44
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.87638,
+        52.395
+      ],
+      "northOffsetDegrees": 0,
+      "source": "PDOK BAG0363100012071094/AHN5 2023"
+    },
+    "materialOverrides": {
+      "brick": "#815d50",
+      "stone": "#969f9c",
+      "ochre": "#98906b",
+      "gold": "#c3ae7d",
+      "copper": "#42788b",
+      "frame": "#53666b",
+      "white": "#c5c8ba",
+      "glass": "#718e91",
+      "concrete": "#a8aaa0",
+      "slate": "#727e7f",
+      "green": "#747d58",
+      "dark": "#588d9e",
+      "bronze": "#37798d"
+    },
+    "preservePositionPrecision": true,
+    "attribution": {
+      "title": "Haparandaweg 57 original architecture",
+      "author": "Map Recall",
+      "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012071094",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native metre geometry. BAG/3DBAG and municipal panorama sources archived at private commit16d644906c974150de90690eca7a8918e154cd6c/models/haparandaweg-57. Ordinary requested industrial building; no invented POI. Native acceptance pending."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.876319169989764,
+            52.39521064052107
+          ],
+          [
+            4.876075115016229,
+            52.394908042035205
+          ],
+          [
+            4.876443942978793,
+            52.39479672983623
+          ],
+          [
+            4.876687475639284,
+            52.39509892086636
+          ],
+          [
+            4.876319169989764,
+            52.39521064052107
+          ]
+        ]
+      ]
+    },
+    "heightMetres": 8.27
   }
 ]

@@ -1779,5 +1779,36 @@
     "additionalSources": [
       "https://kennis.cultureelerfgoed.nl/index.php/Monumenten/6695"
     ]
+  },
+  {
+    "modelId": "hannekes-boom",
+    "name": "Hannekes Boom",
+    "center": [
+      52.3762934,
+      4.9116163
+    ],
+    "description": "Hannekes Boom is a waterside cafe and cultural meeting place at the head of the Dijksgracht. Its name recalls the guarded harbour openings that once used floating timber barriers. The present venue reopened in 2011 after its foundation won a municipal competition to revive the site.",
+    "funFact": "Its name refers to the historic guarded harbour openings: floating tree trunks on chains closed these passages each evening, with bells announcing the opening and closing.",
+    "sourceUrl": "https://hannekesboom.nl/en/history/",
+    "preferDescription": true
+  },
+  {
+    "modelId": "posthoornkerk",
+    "name": "Posthoornkerk",
+    "center": [
+      52.381461,
+      4.890663
+    ],
+    "description": "Pierre Cuypers designed this early Gothic revival basilica in 1860. Its narrow site led to two galleries above each side aisle; the twin-tower street front was added in 1887–1889. The former church now hosts cultural events and offices.",
+    "funFact": "The name came from an earlier concealed Catholic church behind Prinsengracht 7, at a former Haarlem post-coach premises. Residents organized to save the Posthoornkerk from demolition; restoration preserved its great central space for public activities.",
+    "sourceUrl": "https://stadsherstel.nl/monumenten/de-posthoornkerk/",
+    "preferDescription": true,
+    "routeDestination": {
+      "center": [
+        52.3810493226956,
+        4.890236419908126
+      ],
+      "note": "Public forecourt gate on Haarlemmerstraat; derived from current BAG frontage and inspected 2025 municipal panorama, approximate within 2m. Preserve original destination unless routing requires public-entrance correction."
+    }
   }
 ]

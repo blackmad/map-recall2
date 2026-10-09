@@ -26,6 +26,25 @@ function clip(ring: number[][], bound: number, above: boolean): number[][] {
 function omitWallBack(g:T.BoxGeometry,face:number):T.BoxGeometry {
  const indices=Array.from(g.index!.array);g.setIndex(indices.filter((_v,i)=>Math.floor(i/6)!==face));g.clearGroups();return g;
 }
+/** Thin plates (glazing panes, frames, trim) only ever show their two broad
+ * faces at game distances; drop the four hairline edge faces. Cuts ~2/3 of the
+ * triangles of these boxes so the campus fits the landmark triangle budget. */
+function cullThinEdges(g:T.BoxGeometry):T.BoxGeometry {
+ const {width:w,height:h,depth:d}=g.parameters,dims=[w,h,d],t=Math.min(...dims),axis=dims.indexOf(t);
+ const others=dims.filter((_v,i)=>i!==axis);
+ const longAxis=dims.indexOf(Math.max(...dims)),mid=[...dims].sort((p,q)=>p-q)[1];
+ const plate=t<=.3&&t<=.45*Math.min(...others),bar=!plate&&mid<=.3&&dims[longAxis]>=3*mid;
+ if(!plate&&!bar)return g;
+ const dropAxis=plate?-1:longAxis,keepAxis=plate?axis:-1;
+ const pos=g.getAttribute('position'),idx=Array.from(g.index!.array),keep:number[]=[];
+ for(let i=0;i<idx.length;i+=3){
+  const a=idx[i],b=idx[i+1],c=idx[i+2],ux=pos.getX(b)-pos.getX(a),uy=pos.getY(b)-pos.getY(a),uz=pos.getZ(b)-pos.getZ(a),vx=pos.getX(c)-pos.getX(a),vy=pos.getY(c)-pos.getY(a),vz=pos.getZ(c)-pos.getZ(a);
+  const n=[Math.abs(uy*vz-uz*vy),Math.abs(uz*vx-ux*vz),Math.abs(ux*vy-uy*vx)];
+  const f=n.indexOf(Math.max(...n));
+  if(plate?f===keepAxis:f!==dropAxis)keep.push(a,b,c);
+ }
+ g.setIndex(keep);g.clearGroups();return g;
+}
 /** First source/photo-informed native massing cycle; not a suppression-ready asset. */
 export function buildUvaRoeterseiland(_w: number, _d: number, b: BuildingTools): void {
  function shell(rings: number[][][], bottom: number, top: number, colour: Colour, role: string) {
@@ -47,7 +66,7 @@ export function buildUvaRoeterseiland(_w: number, _d: number, b: BuildingTools):
   else if(role.startsWith('entry-pavilion-west-'))back=0;
   else if(role==='b-south-end-office-glazing')back=5;
   if(back!==undefined)omitWallBack(g,back);
-  g.userData.role=role;b.add(g,colour,x,y+h/2,z,theta);
+  cullThinEdges(g);g.userData.role=role;b.add(g,colour,x,y+h/2,z,theta);
  }
  const main=source.roofs.find(r=>r.index===722)!;
  // Roof survey does not see the underside. Architect's four-storey/40m cut controls
