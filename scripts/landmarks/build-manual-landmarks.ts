@@ -1,3 +1,5 @@
+import {buildWillemDeZwijgerkerk} from './willem-de-zwijgerkerk-builder';
+import {buildThomaskerk} from './thomaskerk-builder';
 import {buildClubPanama} from './club-panama-builder';
 import {buildCompagnietheater} from './compagnietheater-builder';
 import {buildWestIndiaHouse} from './west-india-house-builder';
@@ -337,7 +339,9 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   else if(id.startsWith('olvg-'))hospital(id);
   else {
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
-    if(id==='nassaukerk')buildNassaukerk(w,d,helpers);
+    if(id==='willem-de-zwijgerkerk')buildWillemDeZwijgerkerk(w,d,helpers);
+    else if(id==='thomaskerk')buildThomaskerk(w,d,helpers);
+    else if(id==='nassaukerk')buildNassaukerk(w,d,helpers);
     else if(id==='koningskerk')buildKoningskerk(w,d,helpers);
     else if(id==='sint-olofskapel')buildSintOlofskapel(w,d,helpers);
     else if(id==='maarten-lutherkerk')buildMaartenLutherkerk(w,d,helpers);

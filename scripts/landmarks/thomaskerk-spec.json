@@ -4,6 +4,7 @@
   "landmarkId": "extract_landmarks_741771335",
   "modelUrl": "./models/thomaskerk.glb",
   "suppressOsmIds": [
+    "w57858409",
     "NL.IMBAG.Pand.0363100012099552"
   ],
   "spatialSuppression": false,
@@ -27,15 +28,15 @@
   "groundAltitudeMetres": 0,
   "facingOffsetDegrees": 0,
   "materialOverrides": {
-    "brick": "#cdb98a",
-    "stone": "#b9b5aa",
+    "brick": "#d2bc80",
+    "stone": "#c9c8c0",
     "slate": "#6b6e70",
-    "glass": "#6d8388",
-    "dark": "#3a2a22",
-    "white": "#e6e4dc",
-    "frame": "#4a443c",
-    "copper": "#7fa896",
-    "ochre": "#a9733f",
+    "glass": "#7d9aa6",
+    "dark": "#3a2e26",
+    "white": "#e6e6df",
+    "frame": "#5a554c",
+    "copper": "#7fae96",
+    "concrete": "#cfcfc8",
     "bronze": "#4b4a42"
   },
   "attribution": {
