@@ -1,0 +1,20 @@
+{
+  "id": "haparandaweg-902-950",
+  "source": "Gemeente Amsterdam panorama TMX7316010203-002216_pano_0002_000294 (2021), rectified front elevation in map-recall2-source-data/models/haparandaweg-902-950/files/ref-front.jpg",
+  "countedBy": "integrator review 2026-10-09 from the photo, not from the model: five identical gabled bays, each a symmetric grid with one wide window axis; ground floor is five glazed double-height entrance bays under the HET PAKHUIS lettering; no setbacks on the street front",
+  "facades": [
+    {
+      "name": "street front (NW)",
+      "bearing": 320,
+      "gables": 5,
+      "rows": [5, 5, 5, 5, 5, 5, 5, 5, 5],
+      "columns": 5,
+      "symmetric": true,
+      "bays": 5,
+      "identicalBays": [[0, 1, 2, 3, 4]],
+      "baySymmetric": true,
+      "photo": "../map-recall2-source-data/models/haparandaweg-902-950/files/ref-front.jpg",
+      "note": "Photo: balconies differ slightly in bays 0 and 4 (flush loggias); the frame, gable and window axis are identical."
+    }
+  ]
+}
