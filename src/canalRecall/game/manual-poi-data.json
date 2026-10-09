@@ -1999,5 +1999,14 @@
     "description": "The West India House on Herenmarkt was the Amsterdam headquarters of the Dutch West India Company. Built in 1617 as a meat market and militia waiting room, it was rented by the company from 1623 and extended with two wings around a courtyard, tripling its size by 1647. A fire in 1975 was followed by restoration in 1978-1981; it now holds offices, the John Adams Institute and a municipal wedding hall.",
     "funFact": "It was here in 1625 that the company directors ordered the building of a fort on Manhattan, the beginning of New Amsterdam and later New York. A bronze statue of Peter Stuyvesant stands in the courtyard.",
     "sourceUrl": "https://en.wikipedia.org/wiki/West-Indisch_Huis"
-  }
+  },
+{
+  "modelId": "thomaskerk",
+  "landmarkId": "extract_landmarks_741771335",
+  "name": "Thomaskerk",
+  "description": "De Thomas, the Thomaskerk on Prinses Irenestraat in Amsterdam-Zuid, is a Protestant church designed by Karel Sijmons and built in 1966 for the Dutch Reformed congregation of the new Nieuw-Zuid district. Its low buff-brick volumes, ribbon windows and a bell frame of white concrete projecting from the facade are sober and entirely arranged around Word, Baptism and Communion. Sijmons took inspiration from Le Corbusier's chapel at Ronchamp, and the undulating roof inside recalls the sea the Israelites crossed. It is a municipal monument.",
+  "funFact": "Sijmons paid for the 1967 stained-glass crucifixion window by the Spanish artist Antonio Saura himself because he insisted it belonged in the church.",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Thomaskerk_(Amsterdam)",
+  "preferDescription": true
+}
 ]
