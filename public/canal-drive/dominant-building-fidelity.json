@@ -1071,6 +1071,38 @@
         "First draft corrected by source scope; actual GPU/native/performance review pending",
         "VRIESLAND lettering omitted and ship carving simplified"
       ]
+    },
+    "NL.IMBAG.Pand.0363100012172459": {
+      "treatment": "landmark",
+      "reviewedOn": "2026-10-09",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012172459",
+        "https://data.amsterdam.nl/data/"
+      ],
+      "referenceImage": "./ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00039-einitial.jpg",
+      "reason": "Distinctive joined historic and modern facades reviewed through full architectural loop; root and independent gallery/native desktop and touch passed. Exact exterior notches and low roof owners retained.",
+      "checks": {
+        "ordinarySilhouette": false,
+        "repetitiveFacade": true,
+        "noDefiningDetailsLost": true,
+        "openSpacesUnderstood": true
+      },
+      "sourceCommit": "e21680c666d878aa74d42fe74b7c9a103bfee5ca",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-ordinary38-source51",
+      "independentReview": "experiments/canal-belt-continuation-20261007/leids67-final-native56/0363100012172459/independent/NATIVE-v04.md",
+      "liveGameReview": "experiments/canal-belt-continuation-20261007/leids67-final-native56/0363100012172459/model-and-native/native38",
+      "limits": [
+        "Bounded native/survey wall ownership bridge up to 0.868 m; rear apertures unresolved.",
+        "CHURCH blade lettering uses approximate Anton Regular outlines; exact typeface unknown.",
+        "Full native frontage exposure uses normal user camera tilt to 12 degrees; source gallery establishes proportions.",
+        "Touch checks use iPhone 13 browser emulation on Apple M4 Pro, not a physical phone."
+      ],
+      "failedEvidence": {
+        "failedHash": "8dabf6535996a914891df1d9393cb800f962105a4e8f4da1cd3d7a230da7f706",
+        "sourceCommit": "d6509d17f",
+        "sourcePack": "experiments/canal-belt-continuation-20261007/leids67-failed-gallery54",
+        "reason": "Missing native street masonry left floating windows; repaired explicit native walls and bounded survey-edge ownership."
+      }
     }
   },
   "notes": [

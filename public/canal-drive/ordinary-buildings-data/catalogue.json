@@ -21398,7 +21398,7 @@
         "Floral carvings and Ionic spirals are original low-relief approximations, not surveyed exact sculpture.",
         "No POI/destination/trivia integration implied; ordinary treatment only."
       ],
-      "reviewState": "Source, independent gallery and local native desktop/touch accepted; hosted verification pending.",
+      "reviewState": "Accepted and hosted; native desktop/touch evidence in hosted37-and-next38-review53.",
       "retainedNeighbors": [
         "NL.IMBAG.Pand.0363100012176757",
         "NL.IMBAG.Pand.0363100012176758"
@@ -21729,7 +21729,7 @@
         "First draft corrected by source scope; actual GPU/native/performance review pending",
         "VRIESLAND lettering omitted and ship carving simplified"
       ],
-      "reviewState": "Source, independent gallery and local native desktop/touch accepted; hosted verification pending.",
+      "reviewState": "Accepted and hosted; native desktop/touch evidence in hosted37-and-next38-review53.",
       "retainedNeighbors": [
         "NL.IMBAG.Pand.0363100012171079",
         "NL.IMBAG.Pand.0363100012171110",
@@ -21751,6 +21751,160 @@
         "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012171101",
         "https://data.amsterdam.nl/data/"
       ]
+    },
+    {
+      "id": "ordinary-0363100012172459",
+      "bytes": 106156,
+      "sha256": "bb1bcea2396bac298bcfbadbb55012c9a99f6aa2e75181cfc807cd648b114ce1",
+      "materials": 3,
+      "textures": 0,
+      "triangles": 4187,
+      "bounds": {
+        "min": [
+          -21.665069580078125,
+          0,
+          -15.66756820678711
+        ],
+        "max": [
+          20.663288116455078,
+          23.41671371459961,
+          10.548523902893066
+        ]
+      },
+      "scale": 1,
+      "suppress": [
+        "NL.IMBAG.Pand.0363100012172459"
+      ],
+      "scope": "One joined native parent; root and independent source/gallery/desktop-touch gameplay acceptance.",
+      "sourceCommit": "e21680c666d878aa74d42fe74b7c9a103bfee5ca",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-ordinary38-source51",
+      "limitations": [
+        "Bounded native/survey wall ownership bridge up to 0.868 m; rear apertures unresolved.",
+        "CHURCH blade lettering uses approximate Anton Regular outlines; exact typeface unknown.",
+        "Full native frontage exposure uses normal user camera tilt to 12 degrees; source gallery establishes proportions.",
+        "Touch checks use iPhone 13 browser emulation on Apple M4 Pro, not a physical phone."
+      ],
+      "buildingId": "NL.IMBAG.Pand.0363100012172459",
+      "name": "Leidsestraat 67\u201371 / Kerkstraat 50\u201352",
+      "hash": "bb1bcea2396bac298bcfbadbb55012c9a99f6aa2e75181cfc807cd648b114ce1",
+      "anchor": [
+        4.8853548,
+        52.3651711
+      ],
+      "footprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.885037,
+              52.365234
+            ],
+            [
+              4.885216,
+              52.365095
+            ],
+            [
+              4.88526,
+              52.365117
+            ],
+            [
+              4.885322,
+              52.365078
+            ],
+            [
+              4.885427,
+              52.365141
+            ],
+            [
+              4.885484,
+              52.365105
+            ],
+            [
+              4.885655,
+              52.365207
+            ],
+            [
+              4.88557,
+              52.36526
+            ],
+            [
+              4.88538,
+              52.365164
+            ],
+            [
+              4.885197,
+              52.36531
+            ],
+            [
+              4.885037,
+              52.365234
+            ]
+          ]
+        ]
+      },
+      "nativeHeight": 20.68,
+      "height": 23.41671371459961,
+      "modelUrl": "./models/ordinary-buildings/0363100012172459.glb",
+      "cameraBearing": -37.89006281019731,
+      "galleryFrontage": {
+        "target": [
+          4.885117006555844,
+          52.36527199831117
+        ],
+        "cameraBearing": -37.89006281019731,
+        "distanceMetres": 28,
+        "eyeHeightMetres": 6,
+        "targetHeightMetres": 10,
+        "referenceImages": [
+          "./ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00039-einitial.jpg"
+        ]
+      },
+      "gallerySecondary": {
+        "target": [
+          4.885612497832299,
+          52.36523349669421
+        ],
+        "cameraBearing": 45.567266409857936,
+        "distanceMetres": 28,
+        "eyeHeightMetres": 6,
+        "targetHeightMetres": 10,
+        "referenceImages": [
+          "./ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00180-ekerk50.jpg"
+        ]
+      },
+      "referenceImages": [
+        "./ordinary-buildings-data/references/0363100012172459/fullfront-0363100012172459-2025-00039-einitial.jpg"
+      ],
+      "traits": [
+        "Current Leids broad glazing and tall stair pier",
+        "Kerk seven lower groups, six upper axes and two neckgables",
+        "Native17survey roof owners and open exterior notches"
+      ],
+      "simplifications": [
+        "Exact CHURCH sign typeface unresolved: Anton Regular approximate condensed bold grotesk outlines, measured source-guided panel/spacing; source word retained on both blade faces.",
+        "Rear aperture counts unresolved; no invented ornate rear windows."
+      ],
+      "reviewState": "Local source, gallery, desktop/touch gameplay and performance accepted; hosted verification pending.",
+      "retainedNeighbors": [
+        "NL.IMBAG.Pand.0363100012169041",
+        "NL.IMBAG.Pand.0363100012172452",
+        "NL.IMBAG.Pand.0363100012172458",
+        "NL.IMBAG.Pand.0363100012172460",
+        "NL.IMBAG.Pand.0363100012172461",
+        "NL.IMBAG.Pand.0363100012571533"
+      ],
+      "label": "Leidsestraat 67\u201371 / Kerkstraat 50\u201352",
+      "url": "/models/ordinary-buildings/0363100012172459.glb",
+      "builderSpec": "scripts/ordinary-buildings/leids67-spec.json",
+      "builderStage": "scripts/ordinary-buildings/leids67-export.ts",
+      "reviewEvidenceCommit": "8732ed43c5291d04ef31b0803377d75978c8d073",
+      "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/leids67-final-native56/0363100012172459",
+      "updatedAt": "2026-10-09T11:02:48.243728+00:00",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012172459",
+        "https://data.amsterdam.nl/data/"
+      ],
+      "acceptance": "Scoped full architectural loop passed; hosted verification pending."
     }
   ]
 }
