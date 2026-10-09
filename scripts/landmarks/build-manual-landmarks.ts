@@ -4,6 +4,9 @@ import {buildThisIsHolland} from './this-is-holland-builder';
 import {buildUilenburgerSynagoge} from './uilenburger-synagoge-builder';
 import {buildNieuwendammerkerk} from './nieuwendammerkerk-builder';
 import {buildMeerpadkerk} from './meerpadkerk-builder';
+import {buildHaparandaweg57} from './haparandaweg-57-builder';
+import {buildPosthoornkerk} from './posthoornkerk-builder';
+import {buildHannekesBoom} from './hannekes-boom-builder';
 import {buildFireStationAnton} from './fire-station-anton-builder';
 import {buildFireStationWeesp} from './fire-station-weesp-builder';
 import {buildFireStationDriemond} from './fire-station-driemond-builder';
@@ -322,6 +325,11 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='uilenburger-synagoge')buildUilenburgerSynagoge(w,d,helpers);
     else if(id==='nieuwendammerkerk')buildNieuwendammerkerk(w,d,helpers);
     else if(id==='meerpadkerk')buildMeerpadkerk(w,d,helpers);
+    else if(id==='hannekes-boom')
+      buildHannekesBoom(w,d,helpers);
+    else if(id==='posthoornkerk')buildPosthoornkerk(w,d,helpers);
+    else if(id==='haparandaweg-57')
+      buildHaparandaweg57(w,d,helpers);
     else if(id==='fire-station-nico')buildFireStationNico(w,d,helpers);
     else if(id==='fire-station-osdorp')buildFireStationOsdorp(w,d,helpers);
     else if(id==='fire-station-teunis')buildFireStationTeunis(w,d,helpers);
