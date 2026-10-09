@@ -1952,5 +1952,14 @@
   "funFact": "The chapel's old wooden bell tower, which received a clockwork in 1543, was lost to a fire in 1820; today the chapel serves as a congress centre of the Barbizon hotel.",
   "sourceUrl": "https://nl.wikipedia.org/wiki/Sint-Olofskapel",
   "preferDescription": true
+},
+{
+  "modelId": "thomaskerk",
+  "landmarkId": "extract_landmarks_741771335",
+  "name": "Thomaskerk",
+  "description": "The Thomaskerk at Prinses Irenestraat 34 in Amsterdam-Zuid is a Protestant church designed by Karel Sijmons and built in 1966. A cluster of pale brick volumes with a curved, ribbon-windowed front, it is a sober building laid out entirely for Protestant worship, inspired by the curved roof of Le Corbusier's chapel at Ronchamp.",
+  "funFact": "Inside, the sandstone floor recalls the Israelites' journey through the desert, the undulating roof stands for the sea, and twelve square window panes refer to the apostles.",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Thomaskerk_(Amsterdam)",
+  "preferDescription": true
 }
 ]

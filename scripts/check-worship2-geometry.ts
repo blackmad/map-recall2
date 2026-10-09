@@ -2,12 +2,14 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import * as T from 'three';
 import type {BuildingTools} from './landmarks/cultural-builders';
+import {buildThomaskerk} from './landmarks/thomaskerk-builder';
 import {buildSintOlofskapel} from './landmarks/sint-olofskapel-builder';
 
 // Custom-massed worship lane: model must sit on the BAG ring bounds, reach the stated height, and have no floating parts.
 // maxY is the intended top above local ground (3DBAG eave/ridge reading, plus any turret/spire seen in photographs).
 const cases = [
   {id: 'sint-olofskapel', build: buildSintOlofskapel, minY: 24, maxY: 25.5},
+  {id: 'thomaskerk', build: buildThomaskerk, minY: 14.7, maxY: 15.4}, // 3DBAG shell top + coping
 ];
 for (const c of cases) {
   const src = JSON.parse(fs.readFileSync(`scripts/landmarks/${c.id}-footprints.json`, 'utf8'));
