@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+## Root worktree landed and branches integrated (2026-10-09)
+
+Earlier agent sessions left 44 modified and ~420 untracked files in root.
+The whole tree was first preserved as `wip/root-dirty-20261009` (pushed),
+then lifted onto `main` as topical commits. `firestations-native-20261009`
+(13 fire stations, Weesp GPS origin) and `ordinary/next35-20261008`
+(Prinsengracht hospital, Keizers 569–575, Brouwers 1/Singel 26, Leidsestraat
+67/Kerkstraat 50) merged normally; `poi-work-queue.json` was merged by task
+id (189 tasks, no per-task conflict) and every generated bundle was rebuilt
+from merged source rather than hand-resolved. Several committed bundles had
+been stale (the Weesp viewbox had not reached `game-recall`).
+
+Snapshot residue that was older than main was dropped on purpose: model
+metadata with lower triangle counts and earlier dates for REM-eiland,
+Klimmuur and MidWest; removal of `galleryView` in `manual-landmarks.html`;
+a duplicate `_syncHostWallOpenings()` call. Ten landmark drafts were
+committed as source only, not installed. 33 dead worktree records pruned.
+
 ## Courtyard complexes, civic landmarks and six tree crowns: 106 original landmarks (2026-10-04)
 
 The Amsterdam Dungeon replaces its two verified building parents: the chapel
