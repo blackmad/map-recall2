@@ -220,6 +220,8 @@ function drawBalcony(c: Ctx, b: BalconyParams, cell: Cell, seed: number) {
   const rv0 = v0 - 0.02 + sh;
   const rslot = rail.slot ?? (rail.kind === 'glass' ? 'glassRail' : rail.kind === 'solid' ? 'slab' : 'rail');
   if (rail.kind === 'bars') {
+    c.quad(rail.slot ?? 'rail', a0 + 0.05, rv0, a1 - 0.05, rv0 + rh, depth - 0.03, part);
+  } else if (rail.kind === 'rods') {
     const rs = rail.slot ?? 'rail', n = Math.max(2, Math.round((a1 - a0) / 0.13));
     for (let k = 0; k <= n; k++) { const u = a0 + 0.04 + (a1 - a0 - 0.08) * k / n; c.quad(rs, u - 0.012, rv0, u + 0.012, rv0 + rh, depth - 0.03, part); }
     c.quad(rs, a0, rv0 + 0.05, a1, rv0 + 0.1, depth - 0.03, part);
