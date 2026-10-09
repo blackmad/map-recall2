@@ -92,6 +92,9 @@ for (let progress = true; progress && pending.length;) {
 const floating = pending.map(p => ({role: p.role, colour: p.colour, gap: +gapTo(p, attached).toFixed(3), at: p.box.getCenter(new T.Vector3()).toArray().map(n => +n.toFixed(2))}));
 assert.deepEqual(floating, [], 'detached / floating parts');
 // Facade facets must touch the shell or a neighbouring facet (shared edges, no slivers).
+// Report each part's final gap to the nearest other attached surface (BFS order can overstate it).
+for (const p of gaps.keys()) gaps.set(p, gapTo(p, attached.filter(q => q !== p)));
+if (process.env.DEBUG) for (const [p, g] of gaps) if (g > 0.01) console.log('gap', p.role, p.colour, g.toFixed(3), p.box.getCenter(new T.Vector3()).toArray().map(n => +n.toFixed(2)));
 const maxGap = (role: string) => Math.max(0, ...[...gaps].filter(([p]) => p.role === role).map(([, g]) => g));
 
 // Folded facets stay below the surveyed parapet roof: from above, the front zone shows shell roof first.

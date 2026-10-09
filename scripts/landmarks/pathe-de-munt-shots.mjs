@@ -8,7 +8,7 @@ const glb = fs.readFileSync('public/canal-drive/models/pathe-de-munt.glb').toStr
 // Native metres: X east, Y up, Z south. Front wall midpoint and outward (west) normal from the BAG ring.
 const mid = [-7.2455, -0.6235], outward = [-0.9899, -0.1418], along = [-0.1418, 0.9899];
 const views = {
-  front: {pos: [mid[0] + outward[0] * 15, 1.7, mid[1] + outward[1] * 15], look: [mid[0], 9.5, mid[1]], fov: 72},
+  front: {pos: [mid[0] + outward[0] * 30, 1.7, mid[1] + outward[1] * 30], look: [mid[0], 10.5, mid[1]], fov: 46},
   threeQuarter: {pos: [mid[0] + outward[0] * 17 - along[0] * 16, 2.2, mid[1] + outward[1] * 17 - along[1] * 16], look: [mid[0], 8, mid[1]], fov: 66},
   aerial: {pos: [mid[0] + outward[0] * 38 - along[0] * 22, 34, mid[1] + outward[1] * 38 - along[1] * 22], look: [mid[0] + 12, 6, mid[1]], fov: 50},
 };
