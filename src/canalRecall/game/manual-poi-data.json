@@ -1999,5 +1999,28 @@
     "description": "The West India House on Herenmarkt was the Amsterdam headquarters of the Dutch West India Company. Built in 1617 as a meat market and militia waiting room, it was rented by the company from 1623 and extended with two wings around a courtyard, tripling its size by 1647. A fire in 1975 was followed by restoration in 1978-1981; it now holds offices, the John Adams Institute and a municipal wedding hall.",
     "funFact": "It was here in 1625 that the company directors ordered the building of a fort on Manhattan, the beginning of New Amsterdam and later New York. A bronze statue of Peter Stuyvesant stands in the courtyard.",
     "sourceUrl": "https://en.wikipedia.org/wiki/West-Indisch_Huis"
-  }
+  },
+{
+  "modelId": "klimhal",
+  "landmarkId": "requested-klimhal-amsterdam",
+  "name": "Klimhal Amsterdam",
+  "description": "Klimhal Amsterdam is a climbing hall on Naritaweg beside Sloterdijk station, built in 1996. Its steel frame is clad in dark brown standing-seam panels that lean in from both flanks to a ridge about 21 m up, so the whole hall reads as a curved, pointed sail. The glazed ends carry a white climbing wall standing proud of the glass; the interior offers several thousand square metres of climbing surface, among the largest in the Benelux.",
+  "funFact": "The hall is about 21 m tall, so its climbing routes are as high as a seven-storey building.",
+  "sourceUrl": "https://www.fijnuit.nl/3680/klimhal-amsterdam",
+  "preferDescription": true,
+  "center": [
+    52.38817,
+    4.82791
+  ],
+  "additionalSources": [
+    {
+      "title": "Klimhal Amsterdam (Fijn Uit)",
+      "url": "https://www.fijnuit.nl/3680/klimhal-amsterdam"
+    },
+    {
+      "title": "BAG pand 0363100012150166 (built 1996, sports use)",
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012150166&f=json"
+    }
+  ]
+}
 ]

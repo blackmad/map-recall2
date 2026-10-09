@@ -1,0 +1,46 @@
+{
+  "id": "klimhal",
+  "name": "Klimhal Amsterdam",
+  "landmarkId": "requested-klimhal-amsterdam",
+  "modelUrl": "./models/klimhal.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012150166"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.82790838404145,
+      52.38817512669936
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 21,
+    "widthMetres": 33
+  },
+  "surveyed": {
+    "anchor": [
+      4.82790838404145,
+      52.38817512669936
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012150166 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "bronze": "#4a3629",
+    "glass": "#7f959b",
+    "frame": "#e4e2da",
+    "white": "#ece8dc",
+    "concrete": "#aab0ad",
+    "dark": "#3a3f43",
+    "red": "#a8261f"
+  },
+  "attribution": {
+    "title": "Klimhal Amsterdam",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.fijnuit.nl/3680/klimhal-amsterdam",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "modelId": "klimhal",
+  "landmarkId": "requested-klimhal-amsterdam",
+  "name": "Klimhal Amsterdam",
+  "center": [52.38817, 4.82791],
+  "sourceUrl": "https://www.fijnuit.nl/3680/klimhal-amsterdam",
+  "description": "Klimhal Amsterdam is a climbing hall on Naritaweg beside Sloterdijk station, built in 1996. Its steel frame is clad in dark brown standing-seam panels that lean in from both flanks to a ridge about 21 m up, so the whole hall reads as a curved, pointed sail. The glazed ends carry a white climbing wall standing proud of the glass; the interior offers several thousand square metres of climbing surface, among the largest in the Benelux.",
+  "funFact": "The hall is about 21 m tall, so its climbing routes are as high as a seven-storey building.",
+  "sourceLinks": [
+    {"title": "Klimhal Amsterdam (Fijn Uit)", "url": "https://www.fijnuit.nl/3680/klimhal-amsterdam"},
+    {"title": "BAG pand 0363100012150166 (built 1996, sports use)", "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012150166&f=json"}
+  ],
+  "identityNote": "Existing requested-klimhal-amsterdam identity. BAG pand 0363100012150166 has no separate OSM building way in the extract, so only the pand id is suppressed."
+}
