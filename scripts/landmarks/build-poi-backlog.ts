@@ -99,6 +99,10 @@ const treatments:Record<string,{kind:string;note:string}>={
   'equestrian statue of queen wilhelmina':{kind:'memorial',note:'Author the horse, rider and pedestal at the mapped position.'},
   'plaquette 7 mei 1945':{kind:'memorial',note:'Use a small mapped wall plaque rather than replacing the host building.'},
 };
+// Reviewed triage of the pending queue (duplicates of installed models, organisations
+// without a building of their own, sculptures, areas). Requested venues stay open.
+const triage=JSON.parse(fs.readFileSync('scripts/landmarks/backlog-triage.json','utf8')).treatments as Record<string,{kind:string;note:string}>;
+for(const [name,task] of Object.entries(triage))treatments[normaliseAnswer(name)]??=task;
 // Statues and sculptural monuments are not boxes: they go to their own queue
 // for multi-image Gaussian splats / baked impostors (user, 2026-10-09), not to
 // the building builders. Flat plaques and stones stay `memorial`. Membership

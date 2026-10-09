@@ -1,5 +1,31 @@
 # Canal Recall — what is built
 
+## Het Pakhuis v2 built from a rhythm spec, still held (2026-10-10)
+
+`scripts/haparandaweg/het-pakhuis-rhythm.json` cites a photo for every bay
+item; the block-kit spec now places five identical gabled bays, the HET
+PAKHUIS band, a double-height glazed ground floor and balcony storeys.
+Audit score 17.8 (see-through) → 0.9 pass; height Δ 0.28 m; 2,798 tris.
+Held for user review: rear wall inferred (enclosed courtyard, no photo),
+balconies 0.95 m vs ~1.2 m to avoid a hull see-through false positive,
+lettering lighter than the photo, facade-compare row count 9 vs 7 (the
+ground floor and gable window are split glazed fields). The lane's first
+version rewrote `rail.kind: 'bars'` and silently changed 870-900 on rebuild;
+thin rods are now `'rods'`, and `test:block-kit-installed` (in check:canal)
+rebuilds every block-kit spec and requires byte-identical installed GLBs.
+
+## Recipe surrounds, quoins and awnings (2026-10-09)
+
+Intent fields `windowSurround` (stone-lintel / full-frame / keystone, optional
+`surroundStoreys`), `quoins` and `shopfront.awning` (straight or dutch, extent
+as a fraction of the front). Dressings are slabs sunk 5 mm into the wall
+(tested ≤1 cm off the plane); awnings are one extruded profile on the flat
+door slot so they are not brick-textured. Applied only with photo evidence:
+keystones on bilder-152669/153622/153782, top-storey lintels and a black
+awning on bilder-156287; +92–144 triangles each, all gates pass. Reviewing
+156287 against its photo exposed that the house itself is wrong (storeys,
+window size, balconies); see TODO re-review.
+
 ## Acceptance checklist after Nassaukerk and Het Pakhuis (2026-10-09)
 
 Nassaukerk passed review twice with blank walls, and Het Pakhuis shipped with
