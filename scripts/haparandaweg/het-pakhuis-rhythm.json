@@ -1,0 +1,91 @@
+{
+  "id": "haparandaweg-902-950",
+  "building": "Het Pakhuis, Haparandaweg 902-950 (single pand NL.IMBAG.Pand.0363100012244558, 2015, 3DBAG ridge 30.5 m)",
+  "units": "metres; u from the NE end of the wall looking at it from outside (left in the photo), v above 3DBAG ground. Photo heights = (1517 - y_px) / 50 * 1.027 (the 1.027 reconciles the panorama crop with the 3DBAG ridge 30.5 and valley 28.2; ground row is y=1517 because the crop base is -0.14 m NAP and 3DBAG ground is +0.78 m NAP).",
+  "evidence": {
+    "front": "artifacts/haparandaweg/ref/0363100012244558/front.jpg (rectified 2021-07 panorama, 50 px/m, 1005 x 1563)",
+    "threeQuarter": "artifacts/haparandaweg/ref/0363100012244558/thumb.jpg (same pano, heading 140, fov 94)",
+    "footprint": "scripts/haparandaweg/data/0363100012244558.surfaces.json (3DBAG LoD2.2: five gable ridges perpendicular to the front, ridge 30.5, valleys 28.2, slope ~49 deg)",
+    "neighbours": "artifacts/haparandaweg/plan.png (neighbouring pands 32.3 m NE and 28.4 m SW are flush party walls; the SE side steps down to 25.1 / 16 / 13 m)"
+  },
+  "scope": "902-950 is ONE pand; the wings with balconies and large glass to the left and right in thumb.jpg are different pands (3DBAG ids ...4730 NE, ...3162 SW) and are not modelled here.",
+  "walls": [
+    {
+      "name": "front (street, Haparandaweg)",
+      "bearing": 320,
+      "widthM": 20.1,
+      "evidence": ["front.jpg", "thumb.jpg"],
+      "photographed": true,
+      "storeysAbove": "ground floor double height, then 7 storeys of ~3.1 m including the gable storey",
+      "bays": {
+        "count": 5,
+        "centresM": [2.35, 6.27, 10.19, 14.11, 18.03],
+        "pitchM": 3.92,
+        "source": "3DBAG ridge positions (front.jpg apexes agree within 0.3 m: 2.36 6.24 10.10 13.94 17.76)",
+        "symmetry": "each bay symmetric about its own centre; whole front symmetric about u=10.05 within 0.3 m",
+        "identical": "bays 2-5 identical in plan (same widths, same piers); bay 1 is ~0.35 m wider on every storey (front.jpg: glazing x 48-195 px vs 255-385 px) and has enclosed glass boxes where bays 2-4 have open balconies; bay 5 differs from 2-4 only by glass instead of bar balcony railings (storeys 3-4)"
+      },
+      "gable": {
+        "shape": "sharp pointed brick gable per bay, ridge 30.5, valley/shoulder 28.2 (3DBAG), no stepping, no parapet",
+        "evidence": ["front.jpg y 30-150", "3DBAG roof planes"]
+      },
+      "storeys": [
+        {
+          "name": "ground (double height)", "v": [0, 6.06],
+          "bays": "all five bays: tall cream-stone surround (0.2 m wide, ~0.1 m proud) around one glazed opening; 2.75 m outer width in bays 2-5, ~3.1 m in bay 1",
+          "detail": "upper glazing v 3.6-5.9 in 2 columns x 2 rows (rows split near v 4.5); grey transom/spandrel panel v 3.0-3.6; lower glazing + entrance door v 0-3.0; door 0.95 x 2.3 m; bay 1 is one tall 3-column glazed block with a door low in the middle",
+          "doorPosition": "bay 1 centre, bay 2 left of centre, bay 3 right, bay 4 left, bay 5 right",
+          "evidence": "front.jpg y 1222-1525"
+        },
+        {
+          "name": "sign band", "v": [6.06, 7.4],
+          "signage": "HET PAKHUIS, widely tracked light-grey sans capitals, height ~0.5 m, baseline v 6.6, spans u 1.0-18.9; word gap between HET and PAKHUIS; centred on the wall",
+          "evidence": "front.jpg y 1172-1196, x 52-947"
+        },
+        {
+          "name": "storey 2 (set-back French windows)", "v": [7.4, 8.9],
+          "bays": "bays 2-5: one recessed glazed opening 2.5 m wide, v 7.6-8.8, with a low bar balustrade at its foot (v 7.4-7.8) and a cream sill; bay 1: glazed box with a louvre strip on its left edge",
+          "evidence": "front.jpg y 1085-1160"
+        },
+        {
+          "name": "storeys 3-4 (open balconies)", "v": [8.9, 15.1],
+          "bays": "bays 2-4: concrete balcony slab (~0.5 m fascia, projecting ~1.3 m) with 1.1 m vertical-bar railing and dark glazed doors behind; bay 5: same but glass railing; bay 1: enclosed glass box 2.9 m wide with cream ledge and left louvre strip",
+          "slabBottoms": [8.9, 12.0],
+          "evidence": "front.jpg y 640-1080 (mid.png)"
+        },
+        {
+          "name": "storeys 5-6 (enclosed winter gardens)", "v": [15.1, 21.3],
+          "bays": "all five bays: floor-to-slab glazed box (2.6 m wide, bay 1 2.95 m) with 4 vertical glazing bars + 1 horizontal bar and a cream ledge (0.3 m fascia, ~0.25 m proud) at each floor; bay 1 has the left louvre strip",
+          "slabBottoms": [15.1, 18.2],
+          "evidence": "front.jpg y 480-780"
+        },
+        {
+          "name": "gable storeys", "v": [21.3, 30.5],
+          "bays": "all five bays: one cream-framed pointed window (2.7 m wide, bay 1 3.05 m) from v 22.3 up to a shoulder at v 27.2 and an apex at v 29.2; a cream ledge at v 24.5-24.9 splits it: lower pane 3 columns x 2 rows, upper 3 columns x 3 rows; brick pier ~1.2 m between windows",
+          "evidence": "front.jpg y 90-435"
+        }
+      ],
+      "windowsPerBayPerStorey": {
+        "ground": "1 opening (4-6 panes) + door",
+        "2": 1, "3": 1, "4": 1, "5": 1, "6": 1, "gable": 1,
+        "note": "one opening per bay per storey, centred on the bay axis; no off-centre or scattered windows anywhere on the front"
+      },
+      "setbacks": "none on the facade plane except the recessed storey-2 windows (~0.3 m) and the projecting balcony slabs (~1.3 m) / cream ledges (~0.25 m)"
+    },
+    {
+      "name": "NE side", "bearing": 50, "photographed": false,
+      "inferred": "flush party wall against the 32.3 m neighbour (taller than this building): fully hidden, plain brick",
+      "evidence": ["artifacts/haparandaweg/plan.png"]
+    },
+    {
+      "name": "SW side", "bearing": 230, "photographed": false,
+      "inferred": "flush party wall against the 28.4 m neighbour; only the top ~2 m above it is exposed: plain brick",
+      "evidence": ["artifacts/haparandaweg/plan.png"]
+    },
+    {
+      "name": "rear / courtyard (SE, stepping 25.1 / 16 / 13 m)", "bearing": 140, "photographed": false,
+      "inferred": "no panorama exists (inner courtyard); brief assumed a water-side facade but the footprint plan shows only a block courtyard. Left as plain brick with no invented openings.",
+      "evidence": ["artifacts/haparandaweg/plan.png"]
+    }
+  ]
+}

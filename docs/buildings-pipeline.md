@@ -272,6 +272,20 @@ roof artefacts). Changes:
 - Sheets: `sh scripts/building-recipes/street-sheets.sh artifacts/recipe-look/after`; in-game facade close-ups in
   `tests/e2e/recipe-street.spec.ts` (`in-game-<project>-facades-{a,b,c,oblique}.png`).
 
-Remaining gaps vs the procedural neighbours: no stone window surrounds/quoins, no awnings, no sign lettering; brick
+Remaining gaps vs the procedural neighbours: no sign lettering (surrounds/quoins/awnings: see below); brick
 banding is a stripe, not polychrome patterning (079721's diaper work); 153622's hip end still reads as a steep
 triangle above the cornice from straight on.
+
+## Stone surrounds, quoins, awnings (2026-10-09)
+
+Intent fields per front: `windowSurround: none|stone-lintel|full-frame|keystone` (+ `surroundStoreys`, default every window
+storey above a shopfront; colour = `palette.stone`), `quoins: none|stone` (alternating 0.5/0.28 m blocks up both edges,
+skipping any block that would touch an opening), and `shopfront.awning {style: none|fabric-straight|fabric-dutch, colour,
+extent {from,to}}` (fractions of the front width from the viewer's left). Fit emits `elevation.dressings`
+(`CanalhouseDressing`: `slab` or `awning`); the library builds slabs as boxes sunk 5 mm into the wall (depth <= 12 cm) and
+awnings as one extruded side profile (about 20-40 tris, back edge on the wall, <= 1.4 m projection, valance >= 2.0 m
+above ground). Awning colour is palette `awning` (falls back to shop/door) and exports on the flat `door` material slot,
+so it is not brick-textured. Cost: keystones ~12 tris per window, lintel+sill 24, full-frame 48; a 12-window front adds
+~150 tris. Houses using them (evidence = photo): bilder-153622, -153782, -152669 keystones (front.jpg); bilder-156287
+stone lintels on the top storey + black straight awning over the left shop (front-alt.jpg). Tests:
+`surroundsAwnings.test.ts`. Not used anywhere yet: `quoins`, `full-frame`, `fabric-dutch` (no photo evidence found).

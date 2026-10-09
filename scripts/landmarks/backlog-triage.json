@@ -1,0 +1,165 @@
+{
+ "source": "Haiku triage of pending review items + OBA lane triage, 2026-10-10. Kinds: duplicate (covered by an installed model), skip (no building of its own), sculpture, area.",
+ "treatments": {
+  "Amsterdamse Hogeschool voor de Kunsten": {
+   "kind": "skip",
+   "note": "Academy of arts; occupies rooms in buildings near Weesperplein, no own landmark building. BAG pand shared with Academie voor Theater en Dans."
+  },
+  "Decembermoorden": {
+   "kind": "sculpture",
+   "note": "December murders memorial near Plantage; memorial object, not a building."
+  },
+  "Nederlandse Film en Televisie Academie": {
+   "kind": "skip",
+   "note": "Film and Television Academy; school occupying rooms in an ordinary building."
+  },
+  "Academie van Bouwkunst": {
+   "kind": "skip",
+   "note": "Academy of Architecture; school in ordinary building, no BAG pand matched at point."
+  },
+  "Academie voor Theater en Dans": {
+   "kind": "skip",
+   "note": "Academy of Theatre and Dance; shares pand 0363100012185844 with AHK."
+  },
+  "De Ateliers": {
+   "kind": "skip",
+   "note": "De Ateliers studio complex; organisation in mixed-use building."
+  },
+  "Warmoesstraat": {
+   "kind": "area",
+   "note": "Street (Warmoesstraat)."
+  },
+  "Shadow quay": {
+   "kind": "area",
+   "note": "Ambiguous quay name; treat as public place/quayside, not a building. Verify name."
+  },
+  "Gedenksteen": {
+   "kind": "sculpture",
+   "note": "Memorial stone (gedenksteen)."
+  },
+  "Dutch East Indian Company": {
+   "kind": "duplicate",
+   "note": "Covered by installed model oost-indisch-huis. Covered by oost-indisch-huis (Oost-Indisch Huis and Bushuis); point is ~15 m from its footprint centre. BAG pand 0363100012165008 (bouwjaar 1606)."
+  },
+  "Bevrijdingslinde": {
+   "kind": "sculpture",
+   "note": "Bevrijdingslinde: commemorative lime tree, memorial object."
+  },
+  "Sint-Petrus-en-Pauluskerk": {
+   "kind": "duplicate",
+   "note": "Covered by installed model petrus-en-paulus-kerk. Same landmark as petrus-en-paulus-kerk (identical extract id)."
+  },
+  "Nationaal Holocaust Namenmonument": {
+   "kind": "sculpture",
+   "note": "Nationaal Holocaust Namenmonument: memorial, not covered by national-holocaust-museum (different site)."
+  },
+  "Voormalige Schouwburgpoort": {
+   "kind": "sculpture",
+   "note": "Schouwburg gateway (poort) fragment, memorial/monument element rather than a full building. Verify."
+  },
+  "Oudemanhuispoort": {
+   "kind": "duplicate",
+   "note": "Covered by installed model oudemanhuispoort. Same landmark as oudemanhuispoort (identical extract id)."
+  },
+  "Maarten Lutherkerk": {
+   "kind": "duplicate",
+   "note": "Covered by installed model maarten-lutherkerk. Same landmark as maarten-lutherkerk (identical extract id)."
+  },
+  "Koningskerk": {
+   "kind": "duplicate",
+   "note": "Covered by installed model koningskerk. Same landmark as koningskerk (identical extract id)."
+  },
+  "Kraan 2868": {
+   "kind": "sculpture",
+   "note": "Harbour crane Kraan 2868: preserved industrial object/monument, not a building."
+  },
+  "Monument voor Damslachtoffers 7 mei 1945": {
+   "kind": "sculpture",
+   "note": "Memorial for 7 May 1945 Dam victims; memorial object. Not the same as national-monument-on-the-dam (checked by name, ~90 m apart). Verify."
+  },
+  "Plaquette Chet Baker": {
+   "kind": "sculpture",
+   "note": "Plaque for Chet Baker."
+  },
+  "Compagnietheater": {
+   "kind": "duplicate",
+   "note": "Covered by installed model compagnietheater. Same landmark as compagnietheater (identical extract id). BAG bouwjaar on that pand reads 1005, which is suspect."
+  },
+  "Royal Tropical Institute": {
+   "kind": "duplicate",
+   "note": "Covered by installed model wereldmuseum-amsterdam. Royal Tropical Institute is covered by wereldmuseum-amsterdam (KIT complex). Per user note."
+  },
+  "Vrijburg": {
+   "kind": "area",
+   "note": "Vrijburg: multi-building complex/area, not a single building."
+  },
+  "Rijksakademie van beeldende kunsten": {
+   "kind": "skip",
+   "note": "Rijksakademie: school occupying rooms in an existing building (pand 0363100012165748, 1865)."
+  },
+  "Grenspaal": {
+   "kind": "sculpture",
+   "note": "Grenspaal: boundary marker monument."
+  },
+  "Anthony Winkler Prins": {
+   "kind": "sculpture",
+   "note": "Anthony Winkler Prins: statue/sculpture."
+  },
+  "Westerwijk": {
+   "kind": "area",
+   "note": "Westerwijk: neighbourhood/quarter."
+  },
+  "Three-climate Greenhouse": {
+   "kind": "duplicate",
+   "note": "Covered by installed model hortus-greenhouses. Driekliman (three-climate) glasshouse is part of the Hortus greenhouse complex covered by hortus-greenhouses; ~70 m from that catalogue centre. Verify footprint covers it."
+  },
+  "Wind phone Hoftuin": {
+   "kind": "sculpture",
+   "note": "Wind phone installation (Hoftuin); art installation."
+  },
+  "Westertoren": {
+   "kind": "duplicate",
+   "note": "Covered by installed model westerkerk. Westertoren is the tower of westerkerk (Westerkerk / Westertoren). Pand 0363100012174221."
+  },
+  "OBA Olympisch Kwartier": {
+   "kind": "skip",
+   "note": "Library occupies part of an ordinary building (ground floor of a 2005 block); BAG triage 2026-10-10, not photo-checked."
+  },
+  "OBA Javaplein": {
+   "kind": "skip",
+   "note": "Library occupies part of an ordinary building (2011 new-build block); BAG triage 2026-10-10, not photo-checked."
+  },
+  "OBA Staatsliedenbuurt": {
+   "kind": "skip",
+   "note": "Library occupies part of an ordinary building (ground floor in a 2005 block); BAG triage 2026-10-10, not photo-checked."
+  },
+  "OBA Mercatorplein": {
+   "kind": "skip",
+   "note": "Library occupies part of an ordinary building (ordinary 1927 perimeter-block corner); BAG triage 2026-10-10, not photo-checked."
+  },
+  "OBA Spaarndammerbuurt": {
+   "kind": "skip",
+   "note": "Library occupies part of an ordinary building (1981 infill); BAG triage 2026-10-10, not photo-checked."
+  },
+  "OBA Bos en Lommer": {
+   "kind": "skip",
+   "note": "Library occupies part of an ordinary building (ground-floor unit in small 1940 panden); BAG triage 2026-10-10, not photo-checked."
+  },
+  "OBA Linnaeus": {
+   "kind": "skip",
+   "note": "Library occupies part of an ordinary building (ordinary 1916 block ground floor); BAG triage 2026-10-10, not photo-checked."
+  },
+  "OBA Van der Pek": {
+   "kind": "skip",
+   "note": "Library occupies part of an ordinary building (small 1923 block unit); BAG triage 2026-10-10, not photo-checked."
+  },
+  "OBA CC Amstel": {
+   "kind": "skip",
+   "note": "Library occupies part of an ordinary building (part of the 2018 Amstel campus complex); BAG triage 2026-10-10, not photo-checked."
+  },
+  "CEDLA Library": {
+   "kind": "skip",
+   "note": "Library occupies part of an ordinary building (reading room inside a university canal complex); BAG triage 2026-10-10, not photo-checked."
+  }
+ }
+}
