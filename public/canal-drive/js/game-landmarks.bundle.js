@@ -17691,6 +17691,396 @@ Map source: ${osmUrl(places[i][0])}`);
           ]
         ]
       }
+    },
+    {
+      id: "muiderkerk",
+      name: "Muiderkerk",
+      landmarkId: "extract_landmarks_1055638541",
+      modelUrl: "./models/muiderkerk.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012118480"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.92456757055646,
+          52.36173861588029
+        ],
+        headingDegrees: 0,
+        lengthMetres: 42,
+        widthMetres: 47
+      },
+      surveyed: {
+        anchor: [
+          4.92456757055646,
+          52.36173861588029
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG 0363100012118480 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#6e4636",
+        ochre: "#cdb98a",
+        pink: "#b98e80",
+        concrete: "#8d8a84",
+        green: "#2f6068",
+        red: "#b36b5a",
+        slate: "#4a4a4e",
+        stone: "#d6cdb5",
+        glass: "#7d9aa0",
+        white: "#e6e0d0",
+        dark: "#35261c",
+        frame: "#d8d3c4",
+        copper: "#6aa38c",
+        gold: "#d9b44a"
+      },
+      attribution: {
+        title: "Muiderkerk",
+        author: "Map Recall",
+        sourceUrl: "https://nl.wikipedia.org/wiki/Muiderkerk",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.924874224114083,
+              52.36175422543304
+            ],
+            [
+              4.9248502070331455,
+              52.36179501673368
+            ],
+            [
+              4.9248216913673994,
+              52.36184344798866
+            ],
+            [
+              4.924749071547502,
+              52.36196680826912
+            ],
+            [
+              4.92473815910244,
+              52.36196442883742
+            ],
+            [
+              4.924737800406403,
+              52.36196503860052
+            ],
+            [
+              4.924424444906776,
+              52.36189674782195
+            ],
+            [
+              4.924377338422664,
+              52.36188647946322
+            ],
+            [
+              4.924441103101637,
+              52.36177612596142
+            ],
+            [
+              4.924401934287789,
+              52.361767722131695
+            ],
+            [
+              4.924400035312553,
+              52.361771031173426
+            ],
+            [
+              4.924403082139239,
+              52.361771681211515
+            ],
+            [
+              4.924400465203225,
+              52.36177626370152
+            ],
+            [
+              4.924397418376263,
+              52.361775613663426
+            ],
+            [
+              4.924396880140002,
+              52.361776546281234
+            ],
+            [
+              4.924382745146638,
+              52.3617734801405
+            ],
+            [
+              4.924386931534231,
+              52.361766216460865
+            ],
+            [
+              4.92438835260773,
+              52.36176650063532
+            ],
+            [
+              4.924407379494625,
+              52.36173266438329
+            ],
+            [
+              4.924345416073471,
+              52.36171959668051
+            ],
+            [
+              4.924375798998048,
+              52.36166390177973
+            ],
+            [
+              4.924438010038746,
+              52.36167715018907
+            ],
+            [
+              4.924457376461194,
+              52.36164312651388
+            ],
+            [
+              4.9244558530049884,
+              52.36164280598924
+            ],
+            [
+              4.924460070415607,
+              52.36163538064932
+            ],
+            [
+              4.9244721400604705,
+              52.36163799831057
+            ],
+            [
+              4.924471601921183,
+              52.361638921941406
+            ],
+            [
+              4.924475014806598,
+              52.36163966328552
+            ],
+            [
+              4.924471202385054,
+              52.361646263339495
+            ],
+            [
+              4.9245109539068235,
+              52.361655091846536
+            ],
+            [
+              4.9245744801323355,
+              52.36154501595666
+            ],
+            [
+              4.924934842082694,
+              52.36162307979081
+            ],
+            [
+              4.92493452846253,
+              52.36162359086575
+            ],
+            [
+              4.92496059687708,
+              52.36162966947943
+            ],
+            [
+              4.924909897477341,
+              52.361714863751786
+            ],
+            [
+              4.924898839126448,
+              52.36171240287551
+            ],
+            [
+              4.924874224114083,
+              52.36175422543304
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      id: "aron-schuster-synagoge",
+      name: "Raw Aron Schuster Synagoge",
+      landmarkId: "extract_landmarks_86609524",
+      modelUrl: "./models/aron-schuster-synagoge.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012074574"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.877436130007154,
+          52.35262212080447
+        ],
+        headingDegrees: 0,
+        lengthMetres: 36,
+        widthMetres: 33
+      },
+      surveyed: {
+        anchor: [
+          4.877436130007154,
+          52.35262212080447
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG 0363100012074574 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      materialOverrides: {
+        brick: "#8a5a47",
+        stone: "#c9bfa8",
+        slate: "#4f4d4a",
+        glass: "#6f8590",
+        dark: "#2b2a2a",
+        white: "#e4dfd0",
+        frame: "#2f3436",
+        concrete: "#cfcabd",
+        greyBrick: "#7d6a60",
+        gold: "#c9a64a"
+      },
+      attribution: {
+        title: "Raw Aron Schuster Synagoge",
+        author: "Map Recall",
+        sourceUrl: "https://nl.wikipedia.org/wiki/Raw_Aron_Schuster_Synagoge",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
+      },
+      buildingFootprint: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [
+              4.877587624020856,
+              52.35266303691128
+            ],
+            [
+              4.877581843694714,
+              52.35266152005738
+            ],
+            [
+              4.877467716028965,
+              52.35263150385977
+            ],
+            [
+              4.877454116491426,
+              52.35265391467973
+            ],
+            [
+              4.877447966662889,
+              52.352652620921845
+            ],
+            [
+              4.877435845949476,
+              52.35267279116973
+            ],
+            [
+              4.877426901978481,
+              52.35267068546716
+            ],
+            [
+              4.877428996310094,
+              52.35266725217701
+            ],
+            [
+              4.8773866875595395,
+              52.35265765977827
+            ],
+            [
+              4.877346614442353,
+              52.35272432910201
+            ],
+            [
+              4.877345387894298,
+              52.352726328087925
+            ],
+            [
+              4.8773363264998295,
+              52.352724221872734
+            ],
+            [
+              4.877335324444607,
+              52.35272584433988
+            ],
+            [
+              4.877332886643902,
+              52.35272978845087
+            ],
+            [
+              4.87730712314959,
+              52.35272373656527
+            ],
+            [
+              4.877304862401304,
+              52.3527276005486
+            ],
+            [
+              4.877181653773041,
+              52.35269973796838
+            ],
+            [
+              4.8772343385585915,
+              52.35261235233534
+            ],
+            [
+              4.87726877346822,
+              52.35261995153745
+            ],
+            [
+              4.877313914563698,
+              52.35255547910675
+            ],
+            [
+              4.877307285985254,
+              52.35255369794042
+            ],
+            [
+              4.877382643810342,
+              52.352444911198916
+            ],
+            [
+              4.877453240201059,
+              52.35246311885347
+            ],
+            [
+              4.8774696439223755,
+              52.352440639219104
+            ],
+            [
+              4.87750900685914,
+              52.35245110869203
+            ],
+            [
+              4.877670527043481,
+              52.35249404654498
+            ],
+            [
+              4.8776990763351185,
+              52.35250162927386
+            ],
+            [
+              4.877663078100853,
+              52.35255477169922
+            ],
+            [
+              4.87766440958705,
+              52.35255513694109
+            ],
+            [
+              4.8775885898203715,
+              52.35266329272657
+            ],
+            [
+              4.877587624020856,
+              52.35266303691128
+            ]
+          ]
+        ]
+      },
+      status: "held",
+      heldReason: "Integrator 2026-10-10: brick too dark, banded rounded volumes and pale roof edges missing, bumpy 3DBAG roof"
     }
   ];
 
@@ -46344,6 +46734,24 @@ Map source: ${osmUrl(places[i][0])}`);
       description: "The Zuiderkerk (Southern Church) on Zuiderkerkhof was the first church built in Amsterdam specifically for the Protestant community. Hendrick de Keyser designed it and it was built between 1603 and 1611 as a Renaissance hall church of brick with sandstone dressings. Its tower, roughly 70 metres tall, rises in square and octagonal stages with clock faces, corner columns and a lead-covered lantern; the clock bears the date 1614. The church closed for worship in 1929 and now houses an information centre for urban development and a venue.",
       funFact: "Rembrandt and Saskia's son Titus was baptised here in 1641, and Claude Monet painted the tower with the church behind it around 1874.",
       sourceUrl: "https://nl.wikipedia.org/wiki/Zuiderkerk_(Amsterdam)",
+      preferDescription: true
+    },
+    {
+      modelId: "muiderkerk",
+      landmarkId: "extract_landmarks_1055638541",
+      name: "Muiderkerk",
+      description: "The Muiderkerk is a Protestant church on the Linnaeusstraat at the edge of the Oosterpark in Amsterdam-Oost. The original church of 1892 burned down in 1989, but its brick tower survived, and the present church was built against that old tower as part of a 1997 housing and office complex designed by architect Van Hoogevest. The tower, with its stone porch, rose windows and arched belfry, is what makes the building recognisable.",
+      funFact: "Although the church burned in 1989, the tower stayed standing; it was restored in the early 2010s to repair neglected maintenance and the remaining fire damage. In 2008 a small square with an art object, the Wensplein voor vrede (Wish Square for Peace), opened to its south.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Muiderkerk",
+      preferDescription: true
+    },
+    {
+      modelId: "aron-schuster-synagoge",
+      landmarkId: "extract_landmarks_86609524",
+      name: "Raw Aron Schuster Synagoge",
+      description: "The Raw Aron Schuster Synagogue, also called the Obrechtsjoel, stands on the corner of Jacob Obrechtplein and Heinzestraat in Amsterdam-Zuid and is the largest Ashkenazi synagogue still in use in the city. Harry Elte, a pupil of H.P. Berlage, designed it, and it was inaugurated on 18 May 1928. Its stern brick blocks, tower, covered entrance and far-projecting roof slabs show the influence of Willem Dudok and Frank Lloyd Wright. It became a national monument in 1995 and was restored by 1997.",
+      funFact: "The building was named after Chief Rabbi Aron Schuster (1907-1994) only in 1973, when he retired and left Amsterdam for Jerusalem; he had served here since 1942. The first service after the war was held on Rosh Hashanah 1945.",
+      sourceUrl: "https://nl.wikipedia.org/wiki/Raw_Aron_Schuster_Synagoge",
       preferDescription: true
     }
   ];
