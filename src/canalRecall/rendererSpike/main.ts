@@ -45,7 +45,8 @@ const opts = {
   auto: flag('auto', true), hud: flag('hud', true),
   shadows: !fxOff && flag('shadows', true), ao: !fxOff && flag('ao', !coarsePointer),
   sky: !fxOff, fog: !fxOff, tone: !fxOff,
-  dpr: num('dpr', Math.min(window.devicePixelRatio || 1, coarsePointer ? 2 : 1.5)),
+  // Same pixel ratio rule as vector-map.js: phones cap at 1.5, desktop uses the device ratio.
+  dpr: num('dpr', coarsePointer ? Math.min(window.devicePixelRatio || 1, 1.5) : window.devicePixelRatio || 1),
   look: (q.get('look') ?? 'photo') as BuildingLook,
   shadowSize: num('shadowmap', coarsePointer ? 1024 : 2048),
   detailM: num('detail', 380),
@@ -158,7 +159,7 @@ const M = {
   opening: new THREE.MeshBasicMaterial({ colorWrite: false, depthWrite: false, depthTest: false, side: THREE.DoubleSide, stencilWrite: true, stencilRef: 1, stencilFunc: THREE.AlwaysStencilFunc, stencilZPass: THREE.ReplaceStencilOp, stencilFail: THREE.ReplaceStencilOp, stencilZFail: THREE.ReplaceStencilOp }),
   openingCut: new THREE.MeshBasicMaterial({ colorWrite: false, depthWrite: false, depthTest: false, side: THREE.DoubleSide, stencilWrite: true, stencilRef: 0, stencilFunc: THREE.AlwaysStencilFunc, stencilZPass: THREE.ReplaceStencilOp, stencilFail: THREE.ReplaceStencilOp, stencilZFail: THREE.ReplaceStencilOp }),
   quay: new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.95 }),
-  deck: new THREE.MeshStandardMaterial({ vertexColors: true, color: '#8f877c', roughness: 0.85 }),
+  deck: new THREE.MeshStandardMaterial({ vertexColors: true, color: '#77726b', roughness: 0.85 }),
   water: new THREE.MeshStandardMaterial({ color: '#304b4d', roughness: 0.1, metalness: 0, envMapIntensity: 2.2, side: THREE.DoubleSide }),
   trunk: new THREE.MeshStandardMaterial({ color: '#4a3b2f', roughness: 1 }),
   crown: new THREE.MeshStandardMaterial({ color: '#ffffff', roughness: 0.95, flatShading: true }),
@@ -240,7 +241,7 @@ async function loadWaterAndBridges(): Promise<void> {
   meshFrom(mergeMeshes(surfaces), M.water);
   meshFrom(mergeMeshes([...walls, ...flatDecks.map(d => fallbackDeckUnderside(d))]), M.quay);
   if (decks.length) meshFrom(mergeMeshes(decks), M.deck, { cast: true });
-  if (flatDecks.length) meshFrom(mergeMeshes(flatDecks.map(d => fallbackDeckTop(d))), M.deck);
+  // Flat decks need no top of their own: the stencil cut lets the paved ground and street ribbons draw there.
   log('water', { cells: cells.length, humpedDecks: humped.length, flatDecks: flatDecks.length, freeboard });
 }
 
@@ -277,7 +278,7 @@ async function loadTrees(): Promise<void> {
   const trunks = new THREE.InstancedMesh(trunkGeo, M.trunk, trees.length);
   const crowns = new THREE.InstancedMesh(crownGeo, M.crown, trees.length);
   const m4 = new THREE.Matrix4(), q4 = new THREE.Quaternion(), colour = new THREE.Color();
-  const greens = ['#4f6b33', '#5d7a3a', '#465f2e', '#6b8441'];
+  const greens = ['#3f5a2a', '#4b6830', '#384f26', '#566f35'];
   trees.forEach((t, i) => {
     const h = Math.max(5, Math.min(27, t.h)), r = Math.max(1.8, h * 0.3), trunkH = h * 0.45;
     m4.compose(new THREE.Vector3(t.p[0], t.p[1], 0), q4.identity(), new THREE.Vector3(1 + h / 30, 1 + h / 30, trunkH));
