@@ -1,0 +1,27 @@
+{
+  "id": "haparandaweg-708-744",
+  "pandId": "0363100012243292",
+  "name": "De Rede, Haparandaweg 708-744",
+  "palette": {
+    "wall": "#e6eaea", "roof": "#8a8e90", "frame": "#f7f9f9", "glass": "#b0c3cd", "slab": "#d4d7d2",
+    "rail": "#4a4d4a", "glassRail": "#a6bec6", "dark": "#34383a", "door": "#3d4547", "stone": "#c9ccc6", "sign": "#2f3a3d", "moss": "#7d8a58"
+  },
+  "levels": { "groundM": 4.0, "storeyM": 3.0 },
+  "default": "rede",
+  "systems": {
+    "rede": {
+      "pitch": 4.2,
+      "ground": { "kind": "glazed", "win": { "w": 0.82, "h": 0.78, "sill": 0.15, "mull": 2, "transom": 0.6, "frame": "frame" },
+        "door": { "bays": [0, 2, 4], "w": 1.1, "h": 2.3, "slot": "door" } },
+      "typical": { "kind": "ribbon", "pier": 0.55, "win": { "w": 1, "h": 0.8, "sill": 0.2, "mull": 3, "frame": "frame" },
+        "cycle": [
+          { "kind": "ribbon", "pier": 0.5, "win": { "h": 0.8, "sill": 0.2, "mull": 3, "frame": "frame" } },
+          { "kind": "balcony", "balcony": { "depth": 0.9, "slab": { "h": 0.22, "slot": "moss" }, "rail": { "kind": "solid", "slot": "moss", "h": 0.2 }, "back": { "w": 0.85, "h": 0.8, "sill": 0.3, "mull": 3, "frame": "frame" } } },
+          { "kind": "ribbon", "pier": 0.5, "win": { "h": 0.8, "sill": 0.2, "mull": 2, "frame": "frame" } },
+          { "kind": "punched", "win": { "w": 0.55, "h": 0.8, "sill": 0.15, "mull": 2, "frame": "frame" } }
+        ], "shift": 1 },
+      "bands": [ { "slot": "slab", "h": 0.16, "out": 0.12 } ]
+    }
+  },
+  "signs": []
+}

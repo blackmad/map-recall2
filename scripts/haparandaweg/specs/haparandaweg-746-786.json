@@ -1,0 +1,22 @@
+{
+  "id": "haparandaweg-746-786",
+  "pandId": "0363100012242477",
+  "name": "Haparandaweg 746-786",
+  "palette": {
+    "wall": "#cdcbc3", "roof": "#8a8e90", "frame": "#e7e8e4", "glass": "#7b949b", "slab": "#d7d5cd",
+    "rail": "#a9b9bb", "glassRail": "#a8d0d1", "dark": "#2f3436", "door": "#50585a", "stone": "#c2c0b8", "sign": "#e7e8e4", "column": "#e1e0d9"
+  },
+  "levels": { "groundM": 4.2, "storeyM": 3.05 },
+  "default": "balconies",
+  "systems": {
+    "balconies": {
+      "pitch": 3.6,
+      "ground": { "kind": "glazed", "win": { "w": 0.86, "h": 0.8, "sill": 0.12, "mull": 3, "transom": 0.65, "frame": "frame" },
+        "door": { "bays": [1, 3], "w": 1.1, "h": 2.3, "slot": "door" } },
+      "typical": { "kind": "balcony", "balcony": { "depth": 1.7, "slab": { "h": 0.28, "slot": "slab" }, "rail": { "kind": "glass", "h": 1.05, "slot": "glassRail", "top": "frame" },
+        "back": { "w": 0.78, "h": 0.74, "sill": 0.4, "mull": 2, "frame": "frame", "glass": "glass" } } },
+      "piers": { "w": 0.35, "out": 0.15, "slot": "column" }
+    }
+  },
+  "signs": []
+}
