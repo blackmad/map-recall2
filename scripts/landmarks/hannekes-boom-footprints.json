@@ -1,0 +1,961 @@
+{
+  "modelId": "hannekes-boom",
+  "status": "physical-source-confirmed-build-in-progress",
+  "nativeScale": 1,
+  "coordinateConvention": "GeoJSON [longitude,latitude]; local east/north metres relative to anchor. Approximate local metres, not RD survey conversion.",
+  "genuinePoi": {
+    "id": "local-food-395",
+    "name": "Hannekes Boom",
+    "kind": "local-food",
+    "amenity": "restaurant",
+    "center": [
+      52.3762934,
+      4.9116163
+    ],
+    "orientationScore": 8
+  },
+  "landmarkExtractIdentity": null,
+  "identityNotes": "No Hannekes Boom record found in landmarks.json or current landmark backlog. Existing branded-pois local-food-395 is preserved; coordinator must audit promotion into route/map/card contracts without fabricating extract identity.",
+  "anchorLatLon": [
+    52.3762934,
+    4.9116163
+  ],
+  "candidateReplacedIds": [
+    "NL.IMBAG.Pand.0363100012238899"
+  ],
+  "acceptedReplacedIds": [
+    "NL.IMBAG.Pand.0363100012238899"
+  ],
+  "scopeConfidence": "PDOK Dijksgracht4 address maps VBO0363010012061677; municipal VBO explicit ligtInPanden maps exactly Pand0363100012238899, reciprocal Pand VBO link. Current aerial/operator photos agree pavilion scope.",
+  "mainCandidateFeature": {
+    "type": "Feature",
+    "properties": {
+      "id": "NL.IMBAG.Pand.0363100012238899",
+      "tier": 3,
+      "minHeight": 0,
+      "height": 3.83
+    },
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.911693,
+            52.376243
+          ],
+          [
+            4.911666,
+            52.376341
+          ],
+          [
+            4.911725,
+            52.376347
+          ],
+          [
+            4.911718,
+            52.37637
+          ],
+          [
+            4.911604,
+            52.376357
+          ],
+          [
+            4.911607,
+            52.376349
+          ],
+          [
+            4.911589,
+            52.376347
+          ],
+          [
+            4.911587,
+            52.376353
+          ],
+          [
+            4.911565,
+            52.376351
+          ],
+          [
+            4.911567,
+            52.376344
+          ],
+          [
+            4.911501,
+            52.376337
+          ],
+          [
+            4.911506,
+            52.376316
+          ],
+          [
+            4.911489,
+            52.376314
+          ],
+          [
+            4.911516,
+            52.376224
+          ],
+          [
+            4.911693,
+            52.376243
+          ]
+        ]
+      ]
+    }
+  },
+  "derivedFootprintAreaM2": 167.14,
+  "heightNotes": {
+    "terrainNAP": 0.5820000171661377,
+    "source": "3DBAG AHN5, capture2023",
+    "mainTerraceMAboveGround": 3.8,
+    "northernServiceRoofMAboveGround": 3.15,
+    "localizedCanopyMAboveGround": "5.7\u20136.02",
+    "equipmentMaxNAP": 6.546999931335449,
+    "semanticState": "Main deck\u22484.38NAP minus0.582terrain. High planes localized covered windscreen pavilion on NW terrace; steep plane is not supported evidence of whole-building pitched roof. Small central high plane excluded as equipment."
+  },
+  "retainedNeighbors": [
+    {
+      "distanceFromAnchorM": 38.08,
+      "feature": {
+        "type": "Feature",
+        "properties": {
+          "id": "NL.IMBAG.Pand.0363100012170819",
+          "tier": 3,
+          "minHeight": 0,
+          "height": 13.56
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.911723,
+                52.376602
+              ],
+              [
+                4.911763,
+                52.376606
+              ],
+              [
+                4.911754,
+                52.376637
+              ],
+              [
+                4.911742,
+                52.376636
+              ],
+              [
+                4.91174,
+                52.376646
+              ],
+              [
+                4.911781,
+                52.376651
+              ],
+              [
+                4.911772,
+                52.376678
+              ],
+              [
+                4.911703,
+                52.37667
+              ],
+              [
+                4.911691,
+                52.376713
+              ],
+              [
+                4.911306,
+                52.376673
+              ],
+              [
+                4.911349,
+                52.376527
+              ],
+              [
+                4.911734,
+                52.376567
+              ],
+              [
+                4.911723,
+                52.376602
+              ]
+            ]
+          ]
+        }
+      },
+      "treatment": "retain; not proven to belong to pavilion"
+    },
+    {
+      "distanceFromAnchorM": 55.13,
+      "feature": {
+        "type": "Feature",
+        "properties": {
+          "id": "NL.IMBAG.Pand.0363100012170821",
+          "tier": 3,
+          "minHeight": 0,
+          "height": 2.48
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.912131,
+                52.376642
+              ],
+              [
+                4.912168,
+                52.376634
+              ],
+              [
+                4.912193,
+                52.376678
+              ],
+              [
+                4.912157,
+                52.376685
+              ],
+              [
+                4.912131,
+                52.376642
+              ]
+            ]
+          ]
+        }
+      },
+      "treatment": "retain; not proven to belong to pavilion"
+    },
+    {
+      "distanceFromAnchorM": 63.49,
+      "feature": {
+        "type": "Feature",
+        "properties": {
+          "id": "NL.IMBAG.Pand.0363100012180471",
+          "tier": 3,
+          "minHeight": 0,
+          "height": 5.78
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.912605,
+                52.37644
+              ],
+              [
+                4.912445,
+                52.376424
+              ],
+              [
+                4.912475,
+                52.376317
+              ],
+              [
+                4.912635,
+                52.376334
+              ],
+              [
+                4.912605,
+                52.37644
+              ]
+            ]
+          ]
+        }
+      },
+      "treatment": "retain; not proven to belong to pavilion"
+    },
+    {
+      "distanceFromAnchorM": 66.35,
+      "feature": {
+        "type": "Feature",
+        "properties": {
+          "id": "NL.IMBAG.Pand.0363100012170822",
+          "tier": 3,
+          "minHeight": 0,
+          "height": 8.12
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.912371,
+                52.376736
+              ],
+              [
+                4.912278,
+                52.376729
+              ],
+              [
+                4.912291,
+                52.376663
+              ],
+              [
+                4.912384,
+                52.37667
+              ],
+              [
+                4.912371,
+                52.376736
+              ]
+            ]
+          ]
+        }
+      },
+      "treatment": "retain; not proven to belong to pavilion"
+    },
+    {
+      "distanceFromAnchorM": 67.7,
+      "feature": {
+        "type": "Feature",
+        "properties": {
+          "id": "NL.IMBAG.Pand.0363100012180474",
+          "tier": 3,
+          "minHeight": 0,
+          "height": 2.52
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.912245,
+                52.37676
+              ],
+              [
+                4.912249,
+                52.376738
+              ],
+              [
+                4.9123,
+                52.376742
+              ],
+              [
+                4.912296,
+                52.376764
+              ],
+              [
+                4.912245,
+                52.37676
+              ]
+            ]
+          ]
+        }
+      },
+      "treatment": "retain; not proven to belong to pavilion"
+    },
+    {
+      "distanceFromAnchorM": 71.56,
+      "feature": {
+        "type": "Feature",
+        "properties": {
+          "id": "NL.IMBAG.Pand.0363100012170823",
+          "tier": 3,
+          "minHeight": 0,
+          "height": 7.89
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.912371,
+                52.376736
+              ],
+              [
+                4.912384,
+                52.37667
+              ],
+              [
+                4.912476,
+                52.376677
+              ],
+              [
+                4.912463,
+                52.376742
+              ],
+              [
+                4.912371,
+                52.376736
+              ]
+            ]
+          ]
+        }
+      },
+      "treatment": "retain; not proven to belong to pavilion"
+    },
+    {
+      "distanceFromAnchorM": 76.95,
+      "feature": {
+        "type": "Feature",
+        "properties": {
+          "id": "w269088193",
+          "tier": 2,
+          "minHeight": 0,
+          "height": 9
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.9105189,
+                52.3764999
+              ],
+              [
+                4.9105247,
+                52.3764789
+              ],
+              [
+                4.9105431,
+                52.3764809
+              ],
+              [
+                4.9105373,
+                52.3765018
+              ],
+              [
+                4.9105189,
+                52.3764999
+              ]
+            ]
+          ]
+        }
+      },
+      "treatment": "retain; not proven to belong to pavilion"
+    },
+    {
+      "distanceFromAnchorM": 81.69,
+      "feature": {
+        "type": "Feature",
+        "properties": {
+          "id": "NL.IMBAG.Pand.0363100012209294",
+          "tier": 3,
+          "minHeight": 0,
+          "height": 2.48
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.912553,
+                52.376783
+              ],
+              [
+                4.912502,
+                52.37678
+              ],
+              [
+                4.912507,
+                52.376757
+              ],
+              [
+                4.912558,
+                52.376761
+              ],
+              [
+                4.912553,
+                52.376783
+              ]
+            ]
+          ]
+        }
+      },
+      "treatment": "retain; not proven to belong to pavilion"
+    }
+  ],
+  "openSpaceRules": [
+    "Do not extrude the whole waterfront parcel or terrace.",
+    "Preserve open water and surrounding paths.",
+    "Keep Hannekes Boot separate from pavilion building suppression.",
+    "Roof terrace needs exposed roof surface and supported railing; canopy/tree support needs current photo and geographic alignment."
+  ],
+  "provenance": [
+    {
+      "path": "public/data/extracts/amsterdam/building-tiles/14/8415/5383.geojson.gz",
+      "sha256": "3c832bfcf9d3ee06e7728403c1c1309425a023dda2ee853ca8a06e6f2d0ae7a9",
+      "captureKind": "installed source bytes; selected feature extraction below is processed, not an original API response"
+    },
+    {
+      "path": "public/data/extracts/amsterdam/branded-pois.json",
+      "sha256": "441ad711e4f177f0aec36d339973f4c40b5ce6326b2664134e9a7a5b4f7414af",
+      "captureKind": "installed source bytes; selected feature extraction below is processed, not an original API response"
+    }
+  ],
+  "privateArchive": {
+    "status": "raw acquired in private companion repo; root publisher must sync/commit",
+    "modelPath": "models/hannekes-boom/raw",
+    "sourceCommit": null
+  },
+  "missingAcceptanceEvidence": [
+    "Source publisher private commit before model commit.",
+    "Native-scale gallery and actual game placement, resident neighbor retention, route destination, geographic map pin and physical-click card review."
+  ],
+  "officialBag": {
+    "pand": {
+      "_links": {
+        "schema": "https://schemas.data.amsterdam.nl/datasets/bag/panden/v1",
+        "self": {
+          "href": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012238899?volgnummer=5",
+          "title": "0363100012238899",
+          "identificatie": "0363100012238899",
+          "volgnummer": 5
+        },
+        "bevatVerblijfsobjecten": [
+          {
+            "href": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010012061677?volgnummer=4",
+            "title": "0363010012061677",
+            "identificatie": "0363010012061677",
+            "volgnummer": 4
+          }
+        ],
+        "ligtInBouwblok": {
+          "href": "https://api.data.amsterdam.nl/v1/gebieden/bouwblokken/03630012101888?volgnummer=1",
+          "title": "CJ17",
+          "identificatie": "03630012101888",
+          "volgnummer": 1
+        },
+        "ligtInBuurt": {
+          "href": "https://api.data.amsterdam.nl/v1/gebieden/buurten/03630980000080?volgnummer=1",
+          "title": "Marine-Etablissement",
+          "identificatie": "03630980000080",
+          "volgnummer": 1
+        },
+        "heeftDossier": null,
+        "heeftOnderzoeken": []
+      },
+      "identificatie": "0363100012238899",
+      "volgnummer": 5,
+      "plusvolgnummer": 23,
+      "registratiedatum": "2017-02-07T15:50:58",
+      "geconstateerd": false,
+      "geometrie": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              122617.807,
+              487702.429
+            ],
+            [
+              122620.05,
+              487702.793
+            ],
+            [
+              122619.808,
+              487704.295
+            ],
+            [
+              122618.785,
+              487710.643
+            ],
+            [
+              122618.277,
+              487713.793
+            ],
+            [
+              122622.342,
+              487714.457
+            ],
+            [
+              122621.883,
+              487716.975
+            ],
+            [
+              122614.124,
+              487715.531
+            ],
+            [
+              122614.301,
+              487714.671
+            ],
+            [
+              122613.047,
+              487714.42
+            ],
+            [
+              122612.901,
+              487715.131
+            ],
+            [
+              122611.458,
+              487714.876
+            ],
+            [
+              122611.578,
+              487714.172
+            ],
+            [
+              122607.064,
+              487713.428
+            ],
+            [
+              122607.424,
+              487711.043
+            ],
+            [
+              122606.242,
+              487710.834
+            ],
+            [
+              122608.008,
+              487700.839
+            ],
+            [
+              122617.807,
+              487702.429
+            ]
+          ]
+        ]
+      },
+      "oorspronkelijkBouwjaar": 2011,
+      "statusCode": null,
+      "statusOmschrijving": "Pand in gebruik",
+      "beginGeldigheid": "2017-02-07T00:00:00",
+      "eindGeldigheid": null,
+      "documentdatum": "2017-02-07",
+      "documentnummer": "SA01835853_OV00GM",
+      "naam": null,
+      "liggingCode": null,
+      "liggingOmschrijving": "Vrijstaand gebouw",
+      "typeWoonobject": null,
+      "ligtInBouwblokId": "03630012101888",
+      "ligtInBuurtId": "03630980000080",
+      "aantalBouwlagen": 1,
+      "hoogsteBouwlaag": 0,
+      "laagsteBouwlaag": 0,
+      "heeftDossierId": null,
+      "bagprocesCode": null,
+      "bagprocesOmschrijving": "Beschikbaar komen ingemeten geometrie",
+      "datumActueelTot": null
+    },
+    "vboIdentity": "0363010012061677",
+    "vboUsableAreaM2": 300,
+    "note": "VBO300m\u00b2 usable floor area is not footprint area. Original full HTTP bodies archived privately."
+  },
+  "roofPlanes": [
+    {
+      "sourceSurface": 32,
+      "semantics": {
+        "b3_azimut": 58.92049026489258,
+        "b3_h_dak_50p": 5.47207498550415,
+        "b3_h_dak_70p": 5.512386322021484,
+        "b3_h_dak_max": 6.572521209716797,
+        "b3_h_dak_min": 5.378627777099609,
+        "b3_hellingshoek": 8.876572608947754,
+        "type": "RoofSurface"
+      },
+      "rings": [
+        [
+          [
+            -1.2764,
+            4.8605,
+            -2.5627
+          ],
+          [
+            -1.9444,
+            4.9545,
+            -2.4958
+          ],
+          [
+            -1.3374,
+            5.0035,
+            -0.8877
+          ],
+          [
+            -1.2594,
+            5.0095,
+            -0.6788
+          ],
+          [
+            -0.3204,
+            4.8635,
+            -0.9377
+          ],
+          [
+            -0.2054,
+            4.8015,
+            -1.5187
+          ],
+          [
+            -1.0904,
+            4.9015,
+            -1.7467
+          ]
+        ]
+      ]
+    },
+    {
+      "sourceSurface": 33,
+      "semantics": {
+        "b3_azimut": 353.1428527832031,
+        "b3_h_dak_50p": 3.7202975749969482,
+        "b3_h_dak_70p": 3.7767441272735596,
+        "b3_h_dak_max": 4.392626762390137,
+        "b3_h_dak_min": 3.5473289489746094,
+        "b3_hellingshoek": 5.997701168060303,
+        "type": "RoofSurface"
+      },
+      "rings": [
+        [
+          [
+            -0.7704,
+            3.1335,
+            -5.9458
+          ],
+          [
+            -2.0234,
+            3.1445,
+            -5.6958
+          ],
+          [
+            -1.5044,
+            3.3735,
+            -3.5598
+          ],
+          [
+            3.2386,
+            3.2965,
+            -4.8678
+          ],
+          [
+            3.2066,
+            3.2755,
+            -5.0688
+          ],
+          [
+            7.2706,
+            3.2565,
+            -5.7328
+          ],
+          [
+            6.8116,
+            2.9885,
+            -8.2508
+          ],
+          [
+            -0.9464,
+            3.0415,
+            -6.8057
+          ]
+        ]
+      ]
+    },
+    {
+      "sourceSurface": 34,
+      "semantics": {
+        "b3_azimut": 173.35427856445312,
+        "b3_h_dak_50p": 6.021305084228516,
+        "b3_h_dak_70p": 6.408284664154053,
+        "b3_h_dak_max": 7.128415107727051,
+        "b3_h_dak_min": 4.8390302658081055,
+        "b3_hellingshoek": 65.83804321289062,
+        "type": "RoofSurface"
+      },
+      "rings": [
+        [
+          [
+            -4.1824,
+            3.7745,
+            0.4582
+          ],
+          [
+            -2.6894,
+            5.9775,
+            -0.7108
+          ],
+          [
+            -8.4484,
+            5.7955,
+            0.0422
+          ],
+          [
+            -8.2884,
+            3.7455,
+            0.9493
+          ]
+        ]
+      ]
+    },
+    {
+      "sourceSurface": 35,
+      "semantics": {
+        "b3_azimut": 289.0196533203125,
+        "b3_h_dak_50p": 4.379002094268799,
+        "b3_h_dak_70p": 4.396388530731201,
+        "b3_h_dak_max": 6.870428562164307,
+        "b3_h_dak_min": 4.313625335693359,
+        "b3_hellingshoek": 0.45606890320777893,
+        "type": "RoofSurface"
+      },
+      "rings": [
+        [
+          [
+            -8.4374,
+            3.7355,
+            -2.1788
+          ],
+          [
+            -8.4364,
+            3.7365,
+            -1.8408
+          ],
+          [
+            -1.9444,
+            3.7835,
+            -2.4958
+          ],
+          [
+            -1.2764,
+            3.7885,
+            -2.5627
+          ],
+          [
+            -1.0904,
+            3.7925,
+            -1.7467
+          ],
+          [
+            -0.2054,
+            3.7995,
+            -1.5187
+          ],
+          [
+            -0.3204,
+            3.8005,
+            -0.9377
+          ],
+          [
+            -1.2594,
+            3.7935,
+            -0.6788
+          ],
+          [
+            -1.3374,
+            3.7925,
+            -0.8877
+          ],
+          [
+            -2.6894,
+            3.7825,
+            -0.7108
+          ],
+          [
+            -4.1824,
+            3.7745,
+            0.4582
+          ],
+          [
+            -8.2884,
+            3.7455,
+            0.9493
+          ],
+          [
+            -7.0634,
+            3.7725,
+            7.8852
+          ],
+          [
+            4.9786,
+            3.8575,
+            5.9312
+          ],
+          [
+            3.2386,
+            3.8165,
+            -4.8678
+          ],
+          [
+            -1.5044,
+            3.7845,
+            -3.5598
+          ],
+          [
+            -2.0234,
+            3.7755,
+            -5.6958
+          ],
+          [
+            -2.1694,
+            3.7725,
+            -6.4068
+          ],
+          [
+            -3.6124,
+            3.7615,
+            -6.1518
+          ],
+          [
+            -3.4934,
+            3.7645,
+            -5.4477
+          ],
+          [
+            -8.0074,
+            3.7325,
+            -4.7037
+          ],
+          [
+            -7.6464,
+            3.7415,
+            -2.3188
+          ]
+        ]
+      ]
+    },
+    {
+      "sourceSurface": 36,
+      "semantics": {
+        "b3_azimut": 318.9409484863281,
+        "b3_h_dak_50p": 6.426623821258545,
+        "b3_h_dak_70p": 6.479618072509766,
+        "b3_h_dak_max": 7.128415107727051,
+        "b3_h_dak_min": 6.29106330871582,
+        "b3_hellingshoek": 3.2382450103759766,
+        "type": "RoofSurface"
+      },
+      "rings": [
+        [
+          [
+            -8.4364,
+            5.7155,
+            -1.8408
+          ],
+          [
+            -8.4374,
+            5.7005,
+            -2.1788
+          ],
+          [
+            -8.8284,
+            5.6895,
+            -2.1098
+          ],
+          [
+            -8.4484,
+            5.7955,
+            0.0422
+          ],
+          [
+            -2.6894,
+            5.9775,
+            -0.7108
+          ],
+          [
+            -1.3374,
+            6.0195,
+            -0.8877
+          ],
+          [
+            -1.9444,
+            5.9285,
+            -2.4958
+          ]
+        ]
+      ]
+    }
+  ]
+}

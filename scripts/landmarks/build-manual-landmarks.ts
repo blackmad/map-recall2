@@ -1,3 +1,10 @@
+import {buildUilenburgerSynagoge} from './uilenburger-synagoge-builder';
+import {buildHuizeFrankendael} from './huize-frankendael-builder';
+import {buildThisIsHolland} from './this-is-holland-builder';
+import {buildNieuwendammerkerk} from './nieuwendammerkerk-builder';
+import {buildMeerpadkerk} from './meerpadkerk-builder';
+import {buildMediamatic} from './mediamatic-builder';
+import {buildHannekesBoom} from './hannekes-boom-builder';
 import {buildHaparandaweg13} from './haparandaweg-13-builder';
 import {buildHaparandaweg11} from './haparandaweg-11-builder';
 import {buildHaparandaweg9} from './haparandaweg-9-builder';
@@ -294,7 +301,14 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   else if(id.startsWith('olvg-'))hospital(id);
   else {
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
-    if(id==='petruskerk')buildPetruskerk(w,d,helpers);
+    if(id==='meerpadkerk')buildMeerpadkerk(w,d,helpers);
+    else if(id==='nieuwendammerkerk')buildNieuwendammerkerk(w,d,helpers);
+    else if(id==='this-is-holland')buildThisIsHolland(w,d,helpers);
+    else if(id==='huize-frankendael')buildHuizeFrankendael(w,d,helpers);
+    else if(id==='uilenburger-synagoge')buildUilenburgerSynagoge(w,d,helpers);
+    else if(id==='mediamatic')buildMediamatic(w,d,helpers);
+    else if(id==='hannekes-boom')buildHannekesBoom(w,d,helpers);
+    else if(id==='petruskerk')buildPetruskerk(w,d,helpers);
     else if(id==='kinderkookkafe')buildKinderkookkafe(w,d,helpers);
     else if(id==='beta-boulders')buildBetaBoulders(w,d,helpers);
     else if(id==='beest-boulders')buildWillemDeZwijgerFrontage(w,d,helpers,addDecal);

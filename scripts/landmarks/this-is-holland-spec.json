@@ -1,0 +1,51 @@
+{
+  "id": "this-is-holland",
+  "name": "This is Holland",
+  "landmarkId": "extract_landmarks_1851417932",
+  "modelUrl": "./models/this-is-holland.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012246118",
+    "w490967874",
+    "w1206726843"
+  ],
+  "spatialSuppression": false,
+  "groundAltitudeMetres": 0,
+  "footprint": {
+    "centre": [
+      4.902355,
+      52.384213
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 29,
+    "widthMetres": 29
+  },
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.902355,
+      52.384213
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current in-use BAG0363100012246118 and OSM metal/glass pavilion outlines. Native X east/Z south at scale1; six-metre sawtooth foyer,approximately25.2m metal drum from broad AHN5 2023 roof115 (older OSM24m approximate), near-flat roof with separately modeled solar equipment. Public entrance OSMnode11182027586 southeast, not destination centre."
+  },
+  "attribution": {
+    "title": "This is Holland pavilion",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.damastarchitects.nl/this-is-holland-amsterdam",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original native surveyed faceted metal drum, sawtooth glass foyer, mushroom columns, roof solar field and source-visible smooth sans-serif signs; no imported meshes or image textures. Approximate Arial Bold/Arial Regular source signage match."
+  },
+  "materialOverrides": {
+    "concrete": "#bec2c2",
+    "frame": "#929c9c",
+    "glass": "#52777b",
+    "blue": "#334e68",
+    "slate": "#606969",
+    "white": "#efefea"
+  },
+  "galleryView": {
+    "theta": 0.8,
+    "phi": 1.2
+  }
+}

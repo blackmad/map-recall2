@@ -1,0 +1,20 @@
+{
+  "id": "extract_landmarks_767085118",
+  "name": "Nieuwendammerkerk",
+  "lat": 52.391749,
+  "lng": 4.940613,
+  "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/508536",
+  "website": "https://nieuwendammerkerk.nl/",
+  "description": "Hidden behind the Nieuwendammerdijk, this village church stands on Brede Kerkepad with its surrounding graveyard. The present hall church opened in 1849; its tower preserves a bell cast in Kampen in 1644 for the earlier church.",
+  "funFact": "A water-level stone inside recalls the 1916 flood. The timber roof uses a hammerbeam-like structure, while the tower bell is two centuries older than the present church.",
+  "sourceUrls": [
+    "https://monumentenregister.cultureelerfgoed.nl/monumenten/508536",
+    "https://nieuwendammerkerk.nl/gebouwen-nieuwendammerkerk/"
+  ],
+  "publicEntrance": {
+    "lat": 52.391769,
+    "lng": 4.940611,
+    "evidence": "West tower double door observed in municipal panorama recording_2025-09-24_14-41-27_00171; retain existing genuine destination pin unless routing requires entrance."
+  },
+  "preserveExistingFacts": true
+}

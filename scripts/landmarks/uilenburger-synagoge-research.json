@@ -1,0 +1,457 @@
+{
+  "id": "uilenburger-synagoge",
+  "status": "isolated-draft-geometry-passed-visual-acceptance-pending",
+  "retrievedAt": "2026-10-08",
+  "identity": {
+    "poiId": "extract_landmarks_452804039",
+    "osmId": "w268782551",
+    "bagId": "0363100012181889",
+    "vbo": "0363010000758197",
+    "monument": "5798",
+    "address": "Nieuwe Uilenburgerstraat91",
+    "scope": "Current freestanding parent only; retain open forecourt and all recorded adjacent parents."
+  },
+  "assertions": [
+    {
+      "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/5798",
+      "part": "whole/front",
+      "date": "read2026-10-08",
+      "confidence": "high",
+      "features": "1766 rectangular building behind a wall on an inner courtyard; lower former ritual slaughter room; three-aisled upper hall; centre risalit, bell-shaped front top, framed doorway. Register states no roof pitch, window dimensions or pane counts."
+    },
+    {
+      "source": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000758197/",
+      "part": "identity",
+      "date": "2026-10-08",
+      "confidence": "high",
+      "features": "Address91 VBO explicitly belongs to pand0363100012181889.665m\u00b2 is usable floor area, not254m\u00b2 footprint. Current parent records free-standing synagogue and active geometry/year/status investigations."
+    },
+    {
+      "source": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012181889",
+      "part": "roof",
+      "date": "AHN5 2023",
+      "confidence": "high-survey",
+      "features": "Four semantic roof planes: lower57.38/60.09\u00b0,upper12.22/14.36\u00b0. GroundNAP0.785m; roof ridge15.03m aboveground. b3_h_nok16.97m bounds approximate17m bell gable, not wholebuilding roof plate."
+    },
+    {
+      "source": "https://www.uilenburgersjoel.nl/wp-content/uploads/2024/03/01.Uilenburgersjoel-informatie-en-catering.pdf",
+      "part": "front",
+      "date": "brochureMarch2024; photo date unstated",
+      "confidence": "high-form/medium-dimensions",
+      "features": "Brown brick; three upper arched windows with raised centre; two lower gridded windows; pale stone doorcase, fanlight, dark double doors; three oculi and outer stone volutes. Current restored photo agrees2016 source. Native facade dimensions remain photo-guided approximations."
+    },
+    {
+      "source": "https://www.amsterdam-monumentenstad.nl/database/pics/3/20210912-35.jpg",
+      "part": "rear",
+      "date": "filename2021-09-12",
+      "confidence": "high-form/medium-dimensions",
+      "features": "Rendered stonegray face with stepped peaked crest. Glazed centre upper arch, blind outer arches, lower white gridded windows and two darkglass doors with steps. Distinct from brick front."
+    },
+    {
+      "source": "https://www.amsterdam-monumentenstad.nl/database/pics/2/OSIM00001004038.jpg",
+      "part": "historic roof/context",
+      "date": "historic; exact capture date unresolved",
+      "confidence": "medium",
+      "features": "Historic photo confirms mansard break, tiled roof and longside arched windows. Low rear annex/chimneys/roofrails are historical state, not copied into current2023/2021 building."
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012181889",
+      "retrievedAt": "2026-10-08T19:23:18.762953+00:00",
+      "status": 200,
+      "sha256": "a5cb7d375d746dde8cd7011e7af694be18ef372723a51c19ea2d829e9c0e42e3",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 7202,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/3dbag.json",
+      "path": "raw/3dbag.json",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Nieuwe%20Uilenburgerstraat%2091%20Amsterdam&rows=5",
+      "retrievedAt": "2026-10-08T19:22:38.731014+00:00",
+      "status": 200,
+      "sha256": "3601ce7674ae2ce28c4b011a658cc65617fdc45836a4366e0a6bfce6af0d865c",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 4677,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/address.json",
+      "path": "raw/address.json",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?service=WMS&request=GetMap&version=1.1.1&layers=2024_orthoHR&styles=&srs=EPSG:28992&bbox=122145,487000,122220,487065&width=1000&height=900&format=image/jpeg",
+      "retrievedAt": "2026-10-08T19:36:32.128960+00:00",
+      "status": 200,
+      "sha256": "53d6f0c0a0d4306420f6964cbdf5f4fc1a8cecf366cc0acc14eace77783ad6a0",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 5670,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/aerial-2024.jpg",
+      "path": "raw/aerial-2024.jpg",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?SERVICE=WMS&REQUEST=GetMap&VERSION=1.1.1&LAYERS=2025_orthoHR&STYLES=&SRS=EPSG:28992&BBOX=122145,487000,122220,487065&WIDTH=1000&HEIGHT=900&FORMAT=image/jpeg",
+      "retrievedAt": "2026-10-08T19:36:43.004470+00:00",
+      "status": 200,
+      "sha256": "53d6f0c0a0d4306420f6964cbdf5f4fc1a8cecf366cc0acc14eace77783ad6a0",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 5670,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/aerial-2025-caps.jpg",
+      "path": "raw/aerial-2025-caps.jpg",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?service=WMS&request=GetMap&version=1.3.0&layers=2025_orthoHR&styles=&crs=EPSG:28992&bbox=122145,487000,122220,487065&width=1000&height=900&format=image/jpeg",
+      "retrievedAt": "2026-10-08T19:36:32.068858+00:00",
+      "status": 200,
+      "sha256": "53d6f0c0a0d4306420f6964cbdf5f4fc1a8cecf366cc0acc14eace77783ad6a0",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 5670,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/aerial-2025.jpg",
+      "path": "raw/aerial-2025.jpg",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?service=WMS&request=GetCapabilities",
+      "retrievedAt": "2026-10-08T19:36:19.930386+00:00",
+      "status": 200,
+      "sha256": "30e411329dc093e2a06868bdd617517fcdcfb21c51483d6d5d10191488ec0aa6",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 43331,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/aerial-capabilities.xml",
+      "path": "raw/aerial-capabilities.xml",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?service=WMS&request=GetMap&version=1.1.1&layers=Actueel_ortho25&styles=&srs=EPSG:28992&bbox=122145,487000,122220,487065&width=1000&height=900&format=image/jpeg",
+      "retrievedAt": "2026-10-08T19:36:10.410396+00:00",
+      "status": 200,
+      "sha256": "53d6f0c0a0d4306420f6964cbdf5f4fc1a8cecf366cc0acc14eace77783ad6a0",
+      "rights": "PDOK current aerial imagery; reference-only",
+      "bytes": 5670,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/aerial-current-25.jpg",
+      "path": "raw/aerial-current-25.jpg",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?service=WMS&request=GetMap&version=1.3.0&layers=Actueel_orthoHR&styles=&crs=EPSG:28992&bbox=122145,487000,122220,487065&width=1000&height=900&format=image/jpeg",
+      "retrievedAt": "2026-10-08T19:35:30.424500+00:00",
+      "status": 200,
+      "sha256": "53d6f0c0a0d4306420f6964cbdf5f4fc1a8cecf366cc0acc14eace77783ad6a0",
+      "rights": "PDOK current aerial imagery; see service terms; private reference",
+      "bytes": 5670,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/aerial-current.jpg",
+      "path": "raw/aerial-current.jpg",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=Nieuwe%20Uilenburgerstraat%2091",
+      "retrievedAt": "2026-10-08T19:22:38.526366+00:00",
+      "status": 200,
+      "sha256": "d69558a926e5cd6630f698bd44ba331eb03dd2d3d37e2b2f2766ab36f8f85cf6",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 17924,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/beeldbank-search.html",
+      "path": "raw/beeldbank-search.html",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://beta.archief.amsterdam/handleiding/bouwdossiers",
+      "retrievedAt": "2026-10-08T19:37:11.402642+00:00",
+      "status": 200,
+      "sha256": "4bbe00cc4e6b388b94846e0ce749fcd8560208b00af090dfa01cd9d3a27e0a0f",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 41816,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/bouwdossiers-access.html",
+      "path": "raw/bouwdossiers-access.html",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Uilenburg_Synagoge.JPG",
+      "retrievedAt": "2026-10-08T19:27:23.410080+00:00",
+      "status": 200,
+      "sha256": "2e2a5d3d7e00031bf9ad25bbdd760ce41ad86a3663d1200fb2067442999cfb1b",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 151340,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/commons-front.jpg",
+      "path": "raw/commons-front.jpg",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://www.amsterdam-monumentenstad.nl/database/pics/1/20160308-13.jpg",
+      "retrievedAt": "2026-10-08T19:23:18.715803+00:00",
+      "status": 200,
+      "sha256": "086515f5b51c4662f33667068c71206c118d908e7ae2524ef5ca91fe9a3cec31",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 40103,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/entry2016.jpg",
+      "path": "raw/entry2016.jpg",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://www.amsterdam-monumentenstad.nl/database/pics/1/20160308-1.jpg",
+      "retrievedAt": "2026-10-08T19:23:18.741784+00:00",
+      "status": 200,
+      "sha256": "2c8ef170f57aa450e451a433898c5d523d64a45684f9a6544a5c3f6add0f1789",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 57803,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/front2016.jpg",
+      "path": "raw/front2016.jpg",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://www.amsterdam-monumentenstad.nl/database/pics/2/OSIM00001004038.jpg",
+      "retrievedAt": "2026-10-08T19:37:11.387826+00:00",
+      "status": 200,
+      "sha256": "0ae72df04c08f8b2d17cb77c91159fb71f27bc1d7ca41ae5daab04f7a7763aee",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 50813,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/historic-rear.jpg",
+      "path": "raw/historic-rear.jpg",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://www.amsterdam-monumentenstad.nl/database/pics/1/Uilenburgerstraat%20oud.jpg",
+      "retrievedAt": "2026-10-08T19:37:11.353411+00:00",
+      "status": 200,
+      "sha256": "331ef2d4f7bbad29232fe32f56fc25ced535f6e9098c4f752c9ec03c76c5b87c",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 60317,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/historic-street.jpg",
+      "path": "raw/historic-street.jpg",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://www.amsterdam-monumentenstad.nl/database/grachtenboek_objecten.php?id=6156",
+      "retrievedAt": "2026-10-08T19:22:40.844405+00:00",
+      "status": 200,
+      "sha256": "0a7b04c211d3a1043e26a2f09e4627ae863bd57f86292922afecb93bf3f7ab4a",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 32186,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/monumentenstad.html",
+      "path": "raw/monumentenstad.html",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://www.uilenburgersjoel.nl/wp-content/uploads/2024/03/01.Uilenburgersjoel-informatie-en-catering.pdf",
+      "retrievedAt": "2026-10-08T19:23:19.112569+00:00",
+      "status": 200,
+      "sha256": "ecbca2641d3eff6a8657f998d72467973a2a3107d71f5335dad40c351d8a20d5",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 1840699,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/operator-brochure.pdf",
+      "path": "raw/operator-brochure.pdf",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://www.uilenburgersjoel.nl/the-uilenburger-synagogue/",
+      "retrievedAt": "2026-10-08T19:22:40.482634+00:00",
+      "status": 200,
+      "sha256": "8b709892866e248b4df355f2c7df3ee1dfa0591d33b3071c26ea9094268094b4",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 38124,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/operator-history.html",
+      "path": "raw/operator-history.html",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://www.uilenburgersjoel.nl/",
+      "retrievedAt": "2026-10-08T19:22:40.499971+00:00",
+      "status": 200,
+      "sha256": "2e6333d063545a86ee6498daaf0b071092035c16e97ec174471b20a6b1a1194a",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 50609,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/operator.html",
+      "path": "raw/operator.html",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://overpass.private.coffee/api/interpreter?data=%5Bout%3Ajson%5D%5Btimeout%3A20%5D%3Bway%5Bbuilding%5D%2852.3698%2C4.9049%2C52.3705%2C4.9059%29%3Bout%20body%20geom%3B",
+      "retrievedAt": "2026-10-08T19:23:40.535211+00:00",
+      "status": 200,
+      "sha256": "ec6896a5ad63f202efa68280dc4f6581bc9afe9c98c26b1a76abe72a8d7e843b",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 17300,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/osm3.json",
+      "path": "raw/osm3.json",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012181889/",
+      "retrievedAt": "2026-10-08T19:23:18.807341+00:00",
+      "status": 200,
+      "sha256": "4d524ef44ab7aa9f04b8462de40caddbcd7bf3d63997dadadcf5c3214b45969f",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 2783,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/pand.json",
+      "path": "raw/pand.json",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.90510,52.37015&radius=25&page_size=100",
+      "retrievedAt": "2026-10-08T19:27:23.366770+00:00",
+      "status": 200,
+      "sha256": "81338ea0e908755d8498202d4f070a4e7bbb7f0bd91fa8b2173d86611e18b459",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 211,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/panoramas-front.json",
+      "path": "raw/panoramas-front.json",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.90525,52.37015&radius=55&page_size=100",
+      "retrievedAt": "2026-10-08T19:23:40.845986+00:00",
+      "status": 200,
+      "sha256": "9fecc7bd09a190bdb70feefebc1c123a0908db3d2e5b5c81b24ab4e0436ba2c4",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 166587,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/panoramas-local.json",
+      "path": "raw/panoramas-local.json",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.90505,52.37018&radius=40&page_size=15",
+      "retrievedAt": "2026-10-08T19:23:18.909222+00:00",
+      "status": 200,
+      "sha256": "aff4abb92935b31897f176ce996220e92c20a3563f7b6da0ae49785aaf2e0bcd",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 25237,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/panoramas-street.json",
+      "path": "raw/panoramas-street.json",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.9053,52.3702&radius=90&page_size=8",
+      "retrievedAt": "2026-10-08T19:22:59.816569+00:00",
+      "status": 200,
+      "sha256": "1144d3fc00d27df8c129e92d438cbf3b8c9564b9b2242c58be529062282c37c7",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 13639,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/panoramas.json",
+      "path": "raw/panoramas.json",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://t1.data.amsterdam.nl/panorama/2021/01/25/TMX7316010203-001981/pano_0000_000589/equirectangular/panorama_4000.jpg",
+      "retrievedAt": "2026-10-08T19:27:23.920759+00:00",
+      "status": 200,
+      "sha256": "84e128d3006ad205cb176fdc28ef689ba99892970ac7f80a725a6e9617ccef5b",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 713358,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/photo-0.jpg",
+      "path": "raw/photo-0.jpg",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-19_03-28-47_03817/equirectangular/panorama_4000.jpg",
+      "retrievedAt": "2026-10-08T19:27:23.835220+00:00",
+      "status": 200,
+      "sha256": "d0d7e1cd8a8adf62e8bfc164332d362290fd350a0e5e6fac52ead695ba015e9c",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 1015966,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/photo-1.jpg",
+      "path": "raw/photo-1.jpg",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://www.amsterdam-monumentenstad.nl/database/pics/3/20210912-35.jpg",
+      "retrievedAt": "2026-10-08T19:23:18.734974+00:00",
+      "status": 200,
+      "sha256": "a5a235cc748d15d99ecedebf2931601a077ac5ba6e900efc4cc395cb03a2e34b",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 40925,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/rear2021.jpg",
+      "path": "raw/rear2021.jpg",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/5798",
+      "retrievedAt": "2026-10-08T19:22:38.680457+00:00",
+      "status": 200,
+      "sha256": "33ac12b1373a082f8c129ad9604d4bf09d3ac19182b68315f04093ed592c9e89",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 24724,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/register5798.html",
+      "path": "raw/register5798.html",
+      "checksumVerified": true
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000758197/",
+      "retrievedAt": "2026-10-08T19:22:59.883196+00:00",
+      "status": 200,
+      "sha256": "ee545ad9cc94cf277c8233fd5c55dd058e2e04446f4110e588b563ab1a627856",
+      "rights": "Unknown; reference-only private archive",
+      "bytes": 2520,
+      "original": true,
+      "rawPath": "/Users/blackmad/Code/map-recall2-source-data/models/uilenburger-synagoge/raw/vbo.json",
+      "path": "raw/vbo.json",
+      "checksumVerified": true
+    }
+  ],
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "path": "models/uilenburger-synagoge",
+    "commit": null,
+    "publicationOwner": "coordinator"
+  },
+  "criticalRecognition": [
+    "bell-shaped brick front",
+    "raised centre arch and three oculi",
+    "white subdivided side arches",
+    "mansard break",
+    "rendered blind-arch rear",
+    "open forecourt"
+  ],
+  "access": {
+    "Beeldbank": {
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=Nieuwe%20Uilenburgerstraat%2091",
+      "state": "Bounded exact-address search returned JS viewer shell. No catalogue record/drawing inspected."
+    },
+    "Bouwdossiers": {
+      "url": "https://beta.archief.amsterdam/handleiding/bouwdossiers",
+      "state": "Guidance captured; no building-specific drawing downloaded; no email request sent."
+    },
+    "aerial": "PDOK2024/2025/current responses200 but white images. Explicit access gap; not inspected roof photos. Roof planes available from AHN5; historic photo cross-check inspected.",
+    "panorama": "2021 canal rear inspected.2025 street photo too distant/occluded to resolve front;2024 operator brochure supplies clear restored front.",
+    "network": "Two Overpass endpoints failed with bounded retries; third succeeded. Failed attempts preserved as transient failures, not permanent unavailability."
+  },
+  "uncertainties": [
+    "Photo dates/rights unresolved where catalogue does not specify.",
+    "BAG geometry/year/status active investigations retained.",
+    "Exact gable/profile dimensions, rear crest and five-bay side spacing are photo-guided; root independent comparison required.",
+    "Current roof photo access gap remains explicit; semantic survey and historic mansard reference support modeled roof."
+  ],
+  "review": {
+    "worker": "CPU source/render inspected; found and fixed buried central front arch. Failed PNG and initial mullion probe samples preserved.",
+    "acceptance": "Pending independent/gallery/live both sides/loaded suppression and neighbors/route/pin/physical sourced card/performance."
+  }
+}

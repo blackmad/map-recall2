@@ -14412,6 +14412,558 @@
       "triangles": 15534,
       "bytes": 196664,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "hannekes-boom": {
+      "id": "hannekes-boom",
+      "name": "Hannekes Boom",
+      "landmarkId": "local-food-395",
+      "modelUrl": "./models/hannekes-boom.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012238899"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.9116163,
+          52.3762934
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 18,
+        "widthMetres": 17
+      },
+      "surveyed": {
+        "anchor": [
+          4.9116163,
+          52.3762934
+        ],
+        "northOffsetDegrees": 0,
+        "source": "BAG Pand0363100012238899; municipal official Dijksgracht4 VBO linkage; native AHN5/2023 roof heights cross-checked operator current facade/architect opposite views and PDOK aerial"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Hannekes Boom",
+        "author": "Map Recall",
+        "sourceUrl": "https://hannekesboom.nl/geschiedenis/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original native flat-color timber pavilion with surveyed roof terrace, lower northern service wing and localized covered terrace bay. Photo-guided reclaimed-board parapet, corrugated awnings, glazing and stair. No reference pixels or third-party mesh; window divisions and stair tread count approximate."
+      },
+      "bounds": {
+        "min": [
+          -9.644282341003418,
+          3.5762786065873797e-9,
+          -8.577977180480957
+        ],
+        "max": [
+          7.497598648071289,
+          6.019499778747559,
+          8.666422843933105
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9116163,
+          52.3762934
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 180,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 17.244400024414062,
+        "heightMetres": 6.01949977517128,
+        "depthMetres": 17.141880989074707,
+        "depthCoverage": 1.0083459405338062
+      },
+      "triangles": 7552,
+      "bytes": 130832,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "mediamatic": {
+      "id": "mediamatic",
+      "name": "Mediamatic Biotoop Dijkspark",
+      "landmarkId": "extract_landmarks_32851647",
+      "status": "authored-pending-visual-review",
+      "modelUrl": "./models/mediamatic.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012180473"
+      ],
+      "footprint": {
+        "centre": [
+          4.9131485,
+          52.376516
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 31.838,
+        "widthMetres": 45.328
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "spatialSuppression": false,
+      "surveyed": {
+        "anchor": [
+          4.9131485,
+          52.376516
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Native installed BAG parent; 2015 operator plan partitions,2025 municipal panoramas and decoded3DBAG main/portakabin roof heights. Greenhouse heights approximate."
+      },
+      "attribution": {
+        "title": "Mediamatic Biotoop Dijkspark",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.mediamatic.net/en/page/86200/mediamatic-biotoop",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original surveyed/native1 flat-colour geometry with separate greenhouse/office zones. No reference photo pixels or imported mesh. Approximate greenhouse heights and bay cadence; visual/game acceptance pending."
+      },
+      "heightMetres": 10.65,
+      "galleryView": {
+        "theta": 3.8,
+        "phi": 1.22
+      },
+      "materialOverrides": {
+        "ochre": "#91886b",
+        "glass": "#668389",
+        "white": "#d3d4cb",
+        "frame": "#9ca7a6",
+        "dark": "#404946"
+      },
+      "bounds": {
+        "min": [
+          -22.663829803466797,
+          2.6822091214739885e-9,
+          -15.918760299682617
+        ],
+        "max": [
+          22.663829803466797,
+          10.649999618530273,
+          15.918760299682617
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9131485,
+          52.376516
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 45.327659606933594,
+        "heightMetres": 10.649999615848063,
+        "depthMetres": 31.837520599365234,
+        "depthCoverage": 0.702380881560299
+      },
+      "triangles": 21326,
+      "bytes": 268380,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "meerpadkerk": {
+      "id": "meerpadkerk",
+      "name": "Meerpadkerk",
+      "landmarkId": "extract_landmarks_1566771183",
+      "modelUrl": "./models/meerpadkerk.glb",
+      "suppressOsmIds": [
+        "w280806252",
+        "NL.IMBAG.Pand.0363100012162810"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.934087,
+          52.392235
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 17.09306855713878,
+        "widthMetres": 9.714956039825182
+      },
+      "surveyed": {
+        "anchor": [
+          4.934087,
+          52.392235
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Meerpad 9 VBO 0363010000740655 proves BAG parent 0363100012162810. Exact current BAG hall/rear annex ring; local east/south metres, AHN5 2023 gabled main roof and lower flat annex. Entrance faces ENE toward Meerpad. Separate 9A/9B retained."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "white": "#eeeade",
+        "dark": "#253731",
+        "glass": "#839390",
+        "frame": "#b7b4a5",
+        "slate": "#645e55",
+        "concrete": "#9b9e94"
+      },
+      "attribution": {
+        "title": "Meerpadkerk",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.doopsgezindamsterdam.nl/historie/meerpadkerk/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free native-scale timber hall church, arched fanlight windows, horizontal white boards, profiled pediment/entry and gray tiled gable roof. Surveyed BAG parent includes lower rear annex. Separate 9A/9B retained. Photo-guided joinery; no imported mesh or photograph pixels."
+      },
+      "bounds": {
+        "min": [
+          -8.504905700683594,
+          -2.0980834847250662e-7,
+          -5.345852375030518
+        ],
+        "max": [
+          9.442448616027832,
+          7.67980432510376,
+          4.678685188293457
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.934087,
+          52.392235
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 90,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 17.947354316711426,
+        "heightMetres": 7.679804534912108,
+        "depthMetres": 10.024537563323975,
+        "depthCoverage": 1.0318664873242558
+      },
+      "triangles": 7086,
+      "bytes": 81912,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "nieuwendammerkerk": {
+      "id": "nieuwendammerkerk",
+      "name": "Nieuwendammerkerk",
+      "landmarkId": "extract_landmarks_767085118",
+      "modelUrl": "./models/nieuwendammerkerk.glb",
+      "suppressOsmIds": [
+        "w280804509",
+        "NL.IMBAG.Pand.0363100012144206"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.940649007575467,
+          52.391768552805786
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 25,
+        "widthMetres": 12.7
+      },
+      "surveyed": {
+        "anchor": [
+          4.940649007575467,
+          52.391768552805786
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current BAG 0363100012144206 polygon; geometry baked east/south in native metres. AHN5 2023 + 2025 Amsterdam panoramas; adjacent Kosterij retained."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "brick": "#835744",
+        "ochre": "#b4a376",
+        "stone": "#b8b7a4",
+        "red": "#6b665c",
+        "slate": "#41494c",
+        "white": "#e9e4cd",
+        "green": "#284d43",
+        "frame": "#444c47",
+        "glass": "#6c8d96",
+        "dark": "#263438",
+        "gold": "#c3aa59"
+      },
+      "attribution": {
+        "title": "Nieuwendammerkerk",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/508536",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free native-scale hall church, red tiled gable roof, paired iron-divided arched windows, peaked tower cornices, octagonal slate needle. No copied photo pixels or imported geometry."
+      },
+      "bounds": {
+        "min": [
+          -3.465054988861084,
+          -5.9604645663569045e-9,
+          -6.036648273468018
+        ],
+        "max": [
+          22.009960174560547,
+          27.540000915527344,
+          8.12857723236084
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.940649007575467,
+          52.391768552805786
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 90,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 25.47501516342163,
+        "heightMetres": 27.54000092148781,
+        "depthMetres": 14.165225505828857,
+        "depthCoverage": 1.1153720870731385
+      },
+      "triangles": 10441,
+      "bytes": 138388,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "this-is-holland": {
+      "id": "this-is-holland",
+      "name": "This is Holland",
+      "landmarkId": "extract_landmarks_1851417932",
+      "modelUrl": "./models/this-is-holland.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012246118",
+        "w490967874",
+        "w1206726843"
+      ],
+      "spatialSuppression": false,
+      "groundAltitudeMetres": 0,
+      "footprint": {
+        "centre": [
+          4.902355,
+          52.384213
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 29,
+        "widthMetres": 29
+      },
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.902355,
+          52.384213
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current in-use BAG0363100012246118 and OSM metal/glass pavilion outlines. Native X east/Z south at scale1; six-metre sawtooth foyer,approximately25.2m metal drum from broad AHN5 2023 roof115 (older OSM24m approximate), near-flat roof with separately modeled solar equipment. Public entrance OSMnode11182027586 southeast, not destination centre."
+      },
+      "attribution": {
+        "title": "This is Holland pavilion",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.damastarchitects.nl/this-is-holland-amsterdam",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original native surveyed faceted metal drum, sawtooth glass foyer, mushroom columns, roof solar field and source-visible smooth sans-serif signs; no imported meshes or image textures. Approximate Arial Bold/Arial Regular source signage match."
+      },
+      "materialOverrides": {
+        "concrete": "#bec2c2",
+        "frame": "#929c9c",
+        "glass": "#52777b",
+        "blue": "#334e68",
+        "slate": "#606969",
+        "white": "#efefea"
+      },
+      "galleryView": {
+        "theta": 0.8,
+        "phi": 1.2
+      },
+      "bounds": {
+        "min": [
+          -14.429842948913574,
+          4.7683716530855236e-8,
+          -14.421333312988281
+        ],
+        "max": [
+          14.445416450500488,
+          25.221784591674805,
+          14.459373474121094
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.902355,
+          52.384213
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 90,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 28.880706787109375,
+        "heightMetres": 25.221784543991088,
+        "depthMetres": 28.875259399414062,
+        "depthCoverage": 0.9956985999797953
+      },
+      "triangles": 17007,
+      "bytes": 308192,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "huize-frankendael": {
+      "id": "huize-frankendael",
+      "name": "Huize Frankendael",
+      "landmarkId": "extract_landmarks_746892406",
+      "modelUrl": "./models/huize-frankendael.glb",
+      "suppressOsmIds": [
+        "w44980011",
+        "NL.IMBAG.Pand.0363100012162192",
+        "w1562613213",
+        "w1562613214",
+        "w1562613215",
+        "w1562613216"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.9335095,
+          52.351162
+        ],
+        "headingDegrees": 316.086,
+        "lengthMetres": 32.46,
+        "widthMetres": 12.91
+      },
+      "surveyed": {
+        "anchor": [
+          4.9335095,
+          52.351162
+        ],
+        "northOffsetDegrees": 226.086,
+        "source": "Current BAG0363100012162192 / OSM w44980011 and four exact mapped parts. Native original reconstruction; AHN5 2023 roof semantics and RCE422420."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "materialOverrides": {
+        "brick": "#766a65",
+        "stone": "#d8d1b8",
+        "white": "#eee7d5",
+        "slate": "#4a555b",
+        "glass": "#465d62",
+        "frame": "#292d28",
+        "dark": "#23392c",
+        "concrete": "#888980"
+      },
+      "attribution": {
+        "title": "Huize Frankendael",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/422420",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free native BAG brick pavilion, coach-house wings, truncated grey hip roofs, rear polygonal projection, pale rococo surrounds, balustrade, dormers and entrance steps. No imported meshes or photo pixels."
+      },
+      "bounds": {
+        "min": [
+          -16.604999542236328,
+          -3.814697322468419e-7,
+          -8.635000228881836
+        ],
+        "max": [
+          16.53999900817871,
+          16.6299991607666,
+          6.954999923706055
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9335095,
+          52.351162
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 316.086,
+        "facadeBearingDegrees": 46.08600000000001,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 33.14499855041504,
+        "heightMetres": 16.629999542236334,
+        "depthMetres": 15.59000015258789,
+        "depthCoverage": 1.2075910265366299
+      },
+      "triangles": 16407,
+      "bytes": 187676,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "uilenburger-synagoge": {
+      "id": "uilenburger-synagoge",
+      "name": "Uilenburger Synagoge",
+      "landmarkId": "extract_landmarks_452804039",
+      "modelUrl": "./models/uilenburger-synagoge.glb",
+      "suppressOsmIds": [
+        "w268782551",
+        "NL.IMBAG.Pand.0363100012181889"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.905340304026372,
+          52.370175529685945
+        ],
+        "headingDegrees": 145.64791589490176,
+        "lengthMetres": 22.2,
+        "widthMetres": 11.6
+      },
+      "surveyed": {
+        "anchor": [
+          4.905340304026372,
+          52.370175529685945
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current municipal BAG address/VBO parent0363100012181889 and OSMw268782551; native east/south, scale1. AHN5 2023 semantic roof polygons inform original four-plane mansard roof. Front faces northwest into open forecourt; rear southeast faces canal. BAG geometry/status/year under investigation recorded, not silently omitted."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "brick": "#685449",
+        "stone": "#b5ac94",
+        "white": "#e4e1cd",
+        "glass": "#657c7e",
+        "slate": "#665f58",
+        "dark": "#202f39",
+        "frame": "#9ba19c",
+        "greyBrick": "#7f8583"
+      },
+      "attribution": {
+        "title": "Uilenburger Synagoge",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.uilenburgersjoel.nl/the-uilenburger-synagogue/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free surveyed synagogue with bell gable, three oculi, white subdivided arched windows, stone doorcase, contrasting rendered rear and surveyed steep-lower/shallow-upper mansard. No downloaded mesh or photo textures."
+      },
+      "bounds": {
+        "min": [
+          -11.224993705749512,
+          -1.5258788721439487e-7,
+          -12.43669319152832
+        ],
+        "max": [
+          11.22284984588623,
+          16.998958587646484,
+          12.321640014648438
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.905340304026372,
+          52.370175529685945
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 145.64791589490176,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 24.758333206176758,
+        "heightMetres": 16.99895874023437,
+        "depthMetres": 22.447843551635742,
+        "depthCoverage": 1.9351589268651503
+      },
+      "triangles": 12786,
+      "bytes": 168656,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

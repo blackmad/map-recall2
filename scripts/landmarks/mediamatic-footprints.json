@@ -1,0 +1,531 @@
+{
+  "id": "mediamatic",
+  "status": "authored-pending-visual-review",
+  "landmarkId": "extract_landmarks_32851647",
+  "anchorLonLat": [
+    4.9131485,
+    52.376516
+  ],
+  "coordinateConvention": "local X east, local Z south, metres; latitude conversion111320, longitude111320*cos(anchor latitude); native scale1",
+  "source": {
+    "installedTile": "public/data/extracts/amsterdam/building-tiles/14/8415/5383.geojson.gz",
+    "cachedOriginalContainer": "artifacts/landmarks/mediamatic/references/8415-5383.geojson.gz",
+    "installedTileSha256": "3c832bfcf9d3ee06e7728403c1c1309425a023dda2ee853ca8a06e6f2d0ae7a9",
+    "contextLocalPath": "artifacts/landmarks/mediamatic/references/installed-nearby-footprints.json",
+    "identityJoin": "Existing landmark-buildings.json directly links extract_landmarks_32851647 to this single installed BAG parent. This is not an address guessed from a nearby POI."
+  },
+  "parts": [
+    {
+      "id": "NL.IMBAG.Pand.0363100012180473",
+      "geojson": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.913412,
+              52.376659
+            ],
+            [
+              4.913235,
+              52.376641
+            ],
+            [
+              4.912841,
+              52.3766
+            ],
+            [
+              4.91285,
+              52.376572
+            ],
+            [
+              4.912815,
+              52.376568
+            ],
+            [
+              4.912823,
+              52.376538
+            ],
+            [
+              4.913079,
+              52.376565
+            ],
+            [
+              4.913118,
+              52.376424
+            ],
+            [
+              4.913125,
+              52.376425
+            ],
+            [
+              4.913139,
+              52.376373
+            ],
+            [
+              4.913482,
+              52.376408
+            ],
+            [
+              4.913417,
+              52.376641
+            ],
+            [
+              4.913412,
+              52.376659
+            ]
+          ]
+        ]
+      },
+      "localOuter": [
+        [
+          17.9068,
+          -15.91876
+        ],
+        [
+          5.87832,
+          -13.915
+        ],
+        [
+          -20.89693,
+          -9.35088
+        ],
+        [
+          -20.28531,
+          -6.23392
+        ],
+        [
+          -22.66383,
+          -5.78864
+        ],
+        [
+          -22.12017,
+          -2.44904
+        ],
+        [
+          -4.72305,
+          -5.45468
+        ],
+        [
+          -2.0727,
+          10.24144
+        ],
+        [
+          -1.597,
+          10.13012
+        ],
+        [
+          -0.6456,
+          15.91876
+        ],
+        [
+          22.66383,
+          12.02256
+        ],
+        [
+          18.24659,
+          -13.915
+        ],
+        [
+          17.9068,
+          -15.91876
+        ]
+      ],
+      "netFootprintAreaM2": 787.92,
+      "sourceHeightM": 10.66,
+      "heightTreatment": "Separate current zones: main roof10.65m above adopted grade supported by 3DBAG main near-flat roof (~10.97m NAP minus0.327m terrain). Portakabin roof6.4m approximate near source6.56m; greenhouse eave3.05m/crest4.02m are photo-guided approximations, not equipment maxima.",
+      "physicalPartTreatment": "Operator site plan20Nov2015 at1:500 establishes main/portakabin/greenhouse topology. Native installed perimeter retained, low greenhouse additions wrap west/north/south; separate Sluisdeurenloods stays outside scope."
+    }
+  ],
+  "retainedNeighbors": [
+    {
+      "id": "NL.IMBAG.Pand.0363100012170821",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.912131,
+              52.376642
+            ],
+            [
+              4.912168,
+              52.376634
+            ],
+            [
+              4.912193,
+              52.376678
+            ],
+            [
+              4.912157,
+              52.376685
+            ],
+            [
+              4.912131,
+              52.376642
+            ]
+          ]
+        ]
+      },
+      "sourceHeightM": 2.48
+    },
+    {
+      "id": "NL.IMBAG.Pand.0363100012170822",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.912371,
+              52.376736
+            ],
+            [
+              4.912278,
+              52.376729
+            ],
+            [
+              4.912291,
+              52.376663
+            ],
+            [
+              4.912384,
+              52.37667
+            ],
+            [
+              4.912371,
+              52.376736
+            ]
+          ]
+        ]
+      },
+      "sourceHeightM": 8.12
+    },
+    {
+      "id": "NL.IMBAG.Pand.0363100012170823",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.912371,
+              52.376736
+            ],
+            [
+              4.912384,
+              52.37667
+            ],
+            [
+              4.912476,
+              52.376677
+            ],
+            [
+              4.912463,
+              52.376742
+            ],
+            [
+              4.912371,
+              52.376736
+            ]
+          ]
+        ]
+      },
+      "sourceHeightM": 7.89
+    },
+    {
+      "id": "NL.IMBAG.Pand.0363100012180471",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.912605,
+              52.37644
+            ],
+            [
+              4.912445,
+              52.376424
+            ],
+            [
+              4.912475,
+              52.376317
+            ],
+            [
+              4.912635,
+              52.376334
+            ],
+            [
+              4.912605,
+              52.37644
+            ]
+          ]
+        ]
+      },
+      "sourceHeightM": 5.78
+    },
+    {
+      "id": "NL.IMBAG.Pand.0363100012180474",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.912245,
+              52.37676
+            ],
+            [
+              4.912249,
+              52.376738
+            ],
+            [
+              4.9123,
+              52.376742
+            ],
+            [
+              4.912296,
+              52.376764
+            ],
+            [
+              4.912245,
+              52.37676
+            ]
+          ]
+        ]
+      },
+      "sourceHeightM": 2.52
+    },
+    {
+      "id": "NL.IMBAG.Pand.0363100012181724",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.913626,
+              52.376573
+            ],
+            [
+              4.913657,
+              52.376462
+            ],
+            [
+              4.913952,
+              52.376493
+            ],
+            [
+              4.91392,
+              52.376604
+            ],
+            [
+              4.913626,
+              52.376573
+            ]
+          ]
+        ]
+      },
+      "sourceHeightM": 6.77
+    },
+    {
+      "id": "NL.IMBAG.Pand.0363100012209294",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.912553,
+              52.376783
+            ],
+            [
+              4.912502,
+              52.37678
+            ],
+            [
+              4.912507,
+              52.376757
+            ],
+            [
+              4.912558,
+              52.376761
+            ],
+            [
+              4.912553,
+              52.376783
+            ]
+          ]
+        ]
+      },
+      "sourceHeightM": 2.48
+    }
+  ],
+  "openSpaceProbes": [
+    {
+      "name": "concave west/south apron",
+      "lonLat": [
+        4.91298,
+        52.37646
+      ],
+      "mustRemainOpen": true
+    },
+    {
+      "name": "gap to east neighboring shed",
+      "lonLat": [
+        4.91355,
+        52.3765
+      ],
+      "mustRemainOpen": true
+    }
+  ],
+  "sourceUrls": [
+    "https://www.mediamatic.net/en/page/86200/mediamatic-biotoop",
+    "https://www.mediamatic.net/nl/page/73377/mediamatic-has-moved-to-dijkspark-in-2014",
+    "https://www.mediamatic.net/en/page/27700/how-to-get-to-mediamatic",
+    "https://www.mediamatic.net/en/page/392738/open-friday-tour",
+    "https://archief.amsterdam/beeldbank/?mode=gallery&q=Dijksgracht%206"
+  ],
+  "references": [
+    {
+      "id": "operator-biotoop",
+      "url": "https://www.mediamatic.net/en/page/86200/mediamatic-biotoop",
+      "accessState": "web text inspected; original HTML unavailable via shell DNS; images unavailable",
+      "featureInformed": "bio-art operation, historical office scope and former two-storey/one-storey configuration"
+    },
+    {
+      "id": "operator-move",
+      "url": "https://www.mediamatic.net/nl/page/73377/mediamatic-has-moved-to-dijkspark-in-2014",
+      "accessState": "web text inspected; processed capture saved; original HTML unavailable",
+      "featureInformed": "360 square metre greenhouse addition surrounding former DIVV buildings; move late2014"
+    },
+    {
+      "id": "operator-route",
+      "url": "https://www.mediamatic.net/en/page/27700/how-to-get-to-mediamatic",
+      "accessState": "search text inspected; direct open timeout; original HTML unavailable",
+      "featureInformed": "Dijksgracht6, waterfront public access via greenhouse; exact entrance coordinates unverified"
+    },
+    {
+      "id": "operator-current-restaurant",
+      "url": "https://www.mediamatic.net/en/page/392738/open-friday-tour",
+      "accessState": "web text inspected; processed capture saved; original HTML unavailable",
+      "featureInformed": "TestTafel restaurant and herbs/edible flowers in Hydroponics Greenhouse"
+    },
+    {
+      "id": "beeldbank",
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=Dijksgracht%206",
+      "accessState": "bounded address/name search produced no usable result; direct viewer inaccessible",
+      "featureInformed": "none; no historical image inspected"
+    },
+    {
+      "id": "operator-site-plan",
+      "url": "https://www.mediamatic.net/image/2017/3/27/00_area.pdf",
+      "privateRawPath": "models/mediamatic/raw/00_area.pdf",
+      "date": "2015-11-20",
+      "accessState": "raw PDF retrieved and rendered/inspected",
+      "featureInformed": "main/portakabin and wrapping greenhouse arrangement, separate neighboring shed"
+    },
+    {
+      "id": "roof-survey",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012180473",
+      "privateRawPath": "models/mediamatic/raw/3dbag.json",
+      "date": "2014 AHN selection",
+      "accessState": "raw JSON retrieved and decoded",
+      "featureInformed": "main10.65m relative roof and lower portakabin near6.56m; poor survey quality, greenhouse absent"
+    },
+    {
+      "id": "north-current-panorama",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/b_20250130_0915_Track01_Sphere_00118/",
+      "privateRawPath": "models/mediamatic/raw/north-panorama.jpg",
+      "metadataPath": "models/mediamatic/raw/north-panorama.json",
+      "date": "2025-01-30T08:43:05Z",
+      "accessState": "original8000px panorama bytes retrieved, perspective inspected",
+      "featureInformed": "five north low apertures, two ventilation slots, broad tan brick wall and glazed roof storey"
+    },
+    {
+      "id": "east-current-panorama",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-19_08-46-57_00409/",
+      "privateRawPath": "models/mediamatic/raw/east-panorama.jpg",
+      "metadataPath": "models/mediamatic/raw/east-panorama.json",
+      "date": "2025-06-19T08:55:43Z",
+      "accessState": "original8000px panorama bytes retrieved, perspective inspected",
+      "featureInformed": "portakabin light panel/glass elevation; historical red screens not current default"
+    },
+    {
+      "id": "current-orthophoto",
+      "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=Actueel_orthoHR&STYLES=&SRS=EPSG:28992&BBOX=122650,487650,122800,487800&WIDTH=750&HEIGHT=750&FORMAT=image/jpeg",
+      "privateRawPath": "models/mediamatic/raw/ortho-context.jpg",
+      "metadataPath": "models/mediamatic/raw/ortho-context.metadata.json",
+      "accessState": "originalWMSGetMapJPEGbytesretrievedandinspected",
+      "featureInformed": "southwrapexists; westbasinapronexposed; establishescorrectphotoaxis"
+    }
+  ],
+  "assertions": [
+    {
+      "sourceId": "operator-move",
+      "part": "greenhouse addition",
+      "assertion": "Operator records360m\u00b2 of greenhouse added around the preexisting buildings. This is floor area evidence, not a surveyed footprint polygon.",
+      "confidence": "high text, unknown currentgeometry"
+    },
+    {
+      "sourceId": "operator-biotoop",
+      "part": "former DIVV offices",
+      "assertion": "Operator dates maintenance occupation1957\u20132014; caption says main building was historically two storeys and portakabin annex one storey. Do not infer current heights from historical caption.",
+      "confidence": "high historical text"
+    },
+    {
+      "sourceId": "operator-current-restaurant",
+      "part": "venue usage",
+      "assertion": "TestTafel is named as the restaurant; hydroponics greenhouse supplies herbs and edible flowers. Retain Mediamatic as canonical venue identity.",
+      "confidence": "high current operator text"
+    },
+    {
+      "sourceId": "north-current-panorama",
+      "part": "main north facade",
+      "assertion": "Five white-framed low windows beneath wide plain brick wall; two narrow ventilation slots; glazed roof-storey with slim dark mullions and shallow overhanging flat roof.",
+      "confidence": "high visible current photo"
+    },
+    {
+      "sourceId": "east-current-panorama",
+      "part": "portakabin",
+      "assertion": "Two-storey glazed/pale panel wing with thin dark frame grid; older operator images with red blinds are not a permanent red material specification.",
+      "confidence": "high visible current photo"
+    },
+    {
+      "sourceId": "operator-site-plan",
+      "part": "complex",
+      "assertion": "Greenhouse surrounds separate main and portakabin blocks; Sluisdeurenloods is a separate building east of this scoped BAG parent.",
+      "confidence": "high plan/topology, approximate partition coordinates"
+    },
+    {
+      "sourceId": "operator-biotoop",
+      "part": "WEST waterfront frontage",
+      "assertion": "Full2019operatorwaterfrontphotoLEFTedgeiscropped; glazedlongfrontageadjoinslastwesternbrickpier carryingstackedMed/iam/atic. CurrentPDOKaerialwestbasinterraceandsouthwrapfixfaceaxis; prior2/3southshortfaceinterpretationrejected.",
+      "confidence": "high visible dated2019 photo, current screens uncertain"
+    },
+    {
+      "sourceId": "north-current-panorama",
+      "part": "north roofstorey glazing",
+      "assertion": "Large real Mediamatic italic highcontrast serif lettering spans glazing beneath flatroof. Times New Roman Italic approximates family; exact typeface not established.",
+      "confidence": "high current placement, approximatefont"
+    },
+    {
+      "sourceId": "current-orthophoto",
+      "part": "main and portakabin flat roof tops",
+      "assertion": "Current official aerial shows dark gray membrane over the main office roof and a gray/dark portakabin top. Light concrete trim belongs to the fascia, not the whole roof top. Use separate upward slate planes owning the roofs; no pale wall-colored caps overlap.",
+      "confidence": "high visible current aerial roof color; simplified flat palette"
+    }
+  ],
+  "privateSourceArchive": {
+    "status": "raw-acquired-pending-root-publication",
+    "repository": "blackmad/map-recall2-source-data",
+    "canonicalModelPath": "models/mediamatic",
+    "commit": null,
+    "gap": "Current raw photos/HTTP pages, plan and surveys now saved; root owns source publication."
+  },
+  "missingEvidence": [
+    "Greenhouse exact eave/crest dimensions and bay widths: current surveyed laser roof misses glass; photo-guided approximations explicit.",
+    "No usable Beeldbank photograph or drawing admitted: downloaded viewer shell only.",
+    "Waterfront exact current glazing/screen details partially rely on2015/2019 operator images; no southern municipal street station in bounded discovery.",
+    "Source archive commit and gallery/live/physical POI-surface review pending root."
+  ],
+  "sourceCorrections": [
+    "north/south acquisition target naming does not prove camera side: north-current and south-current both show north end. Use original metadata and explicit geographic camera positions.",
+    "Rejected initial south copy of north lowwindowrow; retained in review record, corrected from actual operatorwaterfront source.",
+    "Currentofficialaerialresolvedcroppedoperatorphotoaxis: westernlongwallcornerlettering, notsouthernshortend. Preserve historicalfalseinterpretation inreviewrecord."
+  ]
+}

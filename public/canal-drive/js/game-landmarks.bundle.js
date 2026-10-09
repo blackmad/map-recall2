@@ -9547,6 +9547,93 @@ Map source: ${osmUrl(places[i][0])}`);
         4.915873654538593,
         52.36005012574633
       ]
+    },
+    {
+      id: "hannekes-boom",
+      name: "Hannekes Boom",
+      landmarkId: "local-food-395",
+      modelUrl: "./models/hannekes-boom.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012238899"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.9116163,
+          52.3762934
+        ],
+        headingDegrees: 90,
+        lengthMetres: 18,
+        widthMetres: 17
+      },
+      surveyed: {
+        anchor: [
+          4.9116163,
+          52.3762934
+        ],
+        northOffsetDegrees: 0,
+        source: "BAG Pand0363100012238899; municipal official Dijksgracht4 VBO linkage; native AHN5/2023 roof heights cross-checked operator current facade/architect opposite views and PDOK aerial"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 90,
+      attribution: {
+        title: "Hannekes Boom",
+        author: "Map Recall",
+        sourceUrl: "https://hannekesboom.nl/geschiedenis/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original native flat-color timber pavilion with surveyed roof terrace, lower northern service wing and localized covered terrace bay. Photo-guided reclaimed-board parapet, corrugated awnings, glazing and stair. No reference pixels or third-party mesh; window divisions and stair tread count approximate."
+      }
+    },
+    {
+      id: "mediamatic",
+      name: "Mediamatic Biotoop Dijkspark",
+      landmarkId: "extract_landmarks_32851647",
+      status: "authored-pending-visual-review",
+      modelUrl: "./models/mediamatic.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012180473"
+      ],
+      footprint: {
+        centre: [
+          4.9131485,
+          52.376516
+        ],
+        headingDegrees: 0,
+        lengthMetres: 31.838,
+        widthMetres: 45.328
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      spatialSuppression: false,
+      surveyed: {
+        anchor: [
+          4.9131485,
+          52.376516
+        ],
+        northOffsetDegrees: 0,
+        source: "Native installed BAG parent; 2015 operator plan partitions,2025 municipal panoramas and decoded3DBAG main/portakabin roof heights. Greenhouse heights approximate."
+      },
+      attribution: {
+        title: "Mediamatic Biotoop Dijkspark",
+        author: "Map Recall",
+        sourceUrl: "https://www.mediamatic.net/en/page/86200/mediamatic-biotoop",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original surveyed/native1 flat-colour geometry with separate greenhouse/office zones. No reference photo pixels or imported mesh. Approximate greenhouse heights and bay cadence; visual/game acceptance pending."
+      },
+      heightMetres: 10.65,
+      galleryView: {
+        theta: 3.8,
+        phi: 1.22
+      },
+      materialOverrides: {
+        ochre: "#91886b",
+        glass: "#668389",
+        white: "#d3d4cb",
+        frame: "#9ca7a6",
+        dark: "#404946"
+      }
     }
   ];
 
@@ -33465,7 +33552,9 @@ Map source: ${osmUrl(places[i][0])}`);
       name: "Afrikahuis",
       description: "Architect Joop van Stigt designed Afrikahuis as five linked octagonal units, combining a church with neighborhood spaces. Its concrete base, limestone walls and glazed staircase bays express Amsterdam structuralism.",
       sourceUrl: "https://amsterdamopdekaart.nl/1966-1990/Van_Ostadestraat/Afrikahuis",
-      additionalSources: ["https://erfgoedregister.amsterdam.nl/monument/34d28c9d-f6c7-44bc-affa-d3d2c055b7a9/"]
+      additionalSources: [
+        "https://erfgoedregister.amsterdam.nl/monument/34d28c9d-f6c7-44bc-affa-d3d2c055b7a9/"
+      ]
     },
     {
       modelId: "cafe-kobalt",
@@ -33546,6 +33635,30 @@ Map source: ${osmUrl(places[i][0])}`);
           }
         }
       ]
+    },
+    {
+      modelId: "hannekes-boom",
+      name: "Hannekes Boom",
+      center: [
+        52.3762934,
+        4.9116163
+      ],
+      description: "Hannekes Boom is a waterside cafe and cultural meeting place at the head of the Dijksgracht. Its name recalls the guarded harbour openings that once used floating timber barriers. The present venue reopened in 2011 after its foundation won a municipal competition to revive the site.",
+      funFact: "The foundation won Amsterdam's 2010 competition to create a temporary hospitality and cultural location on the Kop van de Dijksgracht; Hannekes Boom opened again in 2011.",
+      sourceUrl: "https://hannekesboom.nl/en/history/",
+      preferDescription: true
+    },
+    {
+      modelId: "mediamatic",
+      name: "Mediamatic Biotoop Dijkspark",
+      center: [
+        52.376368,
+        4.913118
+      ],
+      description: "This waterfront biotope hosts laboratories, workshops and gardens. The operator describes its Hydroponics Greenhouse as growing herbs and edible flowers for restaurant TestTafel, a partnership with De Sering.",
+      funFact: "Mediamatic transformed former municipal bridge-maintenance buildings at Dijksgracht into a bio-art laboratory and added 360 m\xB2 of greenhouse space around them. Its experiments bring artists, designers and living organisms together.",
+      sourceUrl: "https://www.mediamatic.net/nl/page/73377/mediamatic-has-moved-to-dijkspark-in-2014",
+      preferDescription: true
     }
   ];
 
