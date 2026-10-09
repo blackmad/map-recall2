@@ -1,0 +1,145 @@
+{
+  "modelId": "this-is-holland",
+  "destinationId": "extract_landmarks_1851417932",
+  "researchDate": "2026-10-08",
+  "acceptance": "pending root serial GPU and gameplay review",
+  "privateArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "path": "models/this-is-holland",
+    "manifest": "models/this-is-holland/manifest.json",
+    "commit": null,
+    "publicationOwner": "root"
+  },
+  "identity": {
+    "bagPand": "0363100012246118",
+    "currentVbo": "0363010012103650",
+    "address": "Overhoeksplein51,1031KS Amsterdam",
+    "bagConstructionYear": 2018,
+    "operatorOpeningYear": 2017,
+    "obsoleteVbo": "0363010012098471 is not realised, not current address authority"
+  },
+  "assertions": [
+    {
+      "part": "whole pavilion",
+      "claim": "Circular oil-drum concept refers to the site's prewar Shell oil tanks; raised volume above glass foyer makes the Overhoeksplein/Oeverpark visually continuous.",
+      "confidence": "high",
+      "source": "https://www.damastarchitects.nl/this-is-holland-amsterdam",
+      "raw": "models/this-is-holland/files/architect.html"
+    },
+    {
+      "part": "foyer",
+      "claim": "Architect publishes six-metre high bonded-glass sawtooth facade and mushroom columns rising from the garage to support the upper closed flight volume.",
+      "confidence": "high for assembly; column positions approximate",
+      "source": "https://www.damastarchitects.nl/this-is-holland-amsterdam"
+    },
+    {
+      "part": "metal facade",
+      "claim": "Contemporary completed-building photos and24Sept2023 Commons photo show silver-grey faceted rhomboid cladding with slanted joints, near-cylindrical walls and bevelled underside above recessed glass.",
+      "confidence": "high for recognition; panel count24x8 and phase approximate",
+      "source": "https://commons.wikimedia.org/wiki/File:2023_Overhoeksplein,_Asd-This_is_Holland.jpg",
+      "raw": "models/this-is-holland/files/commons-2023.jpg"
+    },
+    {
+      "part": "roof",
+      "claim": "AHN5 2023 roof115 is a near-flat508.8m\u00b2 central region at25.17\u201325.24m relative to1.698mNAP. This broad primary plane revises older OSM24m. Peripheral fitted minima/maxima are not whole-building height or roof profile.",
+      "confidence": "high broad level; deck/PV split approximate within0.2m",
+      "source": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012246118",
+      "raw": "models/this-is-holland/files/3dbag.json"
+    },
+    {
+      "part": "roof equipment",
+      "claim": "Current PDOK aerial shows a dense rectilinear solar field inside the circular roof perimeter. Modules/frame native geometry; no imported pixels. Module count, grid and pitch approximate.",
+      "confidence": "high presence/layout family, medium dimensions",
+      "source": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0",
+      "raw": "models/this-is-holland/files/roof-aerial.jpg"
+    },
+    {
+      "part": "main entrance",
+      "claim": "Current OSMmain customer entrance node11182027586 is southeast at52.3841332,4.9024943. Detailed ground outline belongs to same BAG parent as metal outline; this is one genuine destination.",
+      "confidence": "high mapped identity; compare physical door in root review",
+      "source": "https://www.openstreetmap.org/node/11182027586",
+      "raw": "models/this-is-holland/files/osm-map.xml"
+    },
+    {
+      "part": "signs",
+      "claim": "Real stacked THIS IS / HOLLAND signs visible on southeast and northwest facades. Upper solid bold sans, lower outline channel lettering. Native smooth glyph outlines approximate Arial Bold/Arial Regular; exact font unknown. Mounted35\u201365mm proud of actual panel mesh, no generic pixel lettering.",
+      "confidence": "high existence/weight contrast; positions/font approximate",
+      "source": "https://www.damastarchitects.nl/this-is-holland-amsterdam",
+      "raw": "models/this-is-holland/files/f10ab09d77c24ead8d5f2946a8f6f80d.jpg"
+    }
+  ],
+  "referenceViews": [
+    {
+      "role": "2023 southeast facade/entry/context",
+      "archivePath": "models/this-is-holland/files/commons-2023.jpg",
+      "captureDate": "2023-09-24",
+      "author": "Ceescamel",
+      "rights": "CC0"
+    },
+    {
+      "role": "southeast full facade",
+      "archivePath": "models/this-is-holland/files/f10ab09d77c24ead8d5f2946a8f6f80d.jpg",
+      "captureDate": "unstated, completed pavilion",
+      "rights": "DAMAST/StijnPoelstra research reference only"
+    },
+    {
+      "role": "northwest opposite/context",
+      "archivePath": "models/this-is-holland/files/fe024b_ac33b68c0c3e45908f836ee3a978d60e~mv2.jpg",
+      "captureDate": "unstated, completed pavilion",
+      "rights": "DAMAST/StijnPoelstra research reference only"
+    },
+    {
+      "role": "glass folds/columns/stairs/overhang",
+      "archivePaths": [
+        "models/this-is-holland/files/f0b5df16111e45218e93de619902e61b.jpg",
+        "models/this-is-holland/files/7776568a99a748f1a48065e017163deb.jpg",
+        "models/this-is-holland/files/fe024b_2d43c547889c40dcb030d26c65f432f3~mv2.jpg",
+        "models/this-is-holland/files/fe024b_911568d5b262452c9a2261240137d1d1~mv2.jpg"
+      ]
+    },
+    {
+      "role": "current roof/opposite surroundings",
+      "archivePath": "models/this-is-holland/files/roof-aerial.jpg",
+      "captureDate": "latest Actueel_orthoHR layer; exact flightdate unresolved",
+      "requestMetadata": "models/this-is-holland/files/roof-aerial-request.json"
+    },
+    {
+      "role": "historical oil tanks, conceptual evidence only",
+      "archivePath": "models/this-is-holland/files/a5a32f203b12472db2afa0289f61cf0c.jpg",
+      "captureDate": "historical prewar view on architect page, exact date unstated",
+      "use": "not facade geometry authority"
+    }
+  ],
+  "access": {
+    "beeldbank": {
+      "url": "https://archief.amsterdam/beeldbank/?query=This%20is%20Holland",
+      "result": "HTTP200JavaScript shell; no inspected catalogue records. Bounded name search archived."
+    },
+    "monumentRegister": "Modern2018 pavilion; no historic-monument description required or asserted.",
+    "osm": "OverpassGET406, kumiPOST500, OverpassPOST429. Successfully recovered originalcurrentOSMXML through mapAPI; no permanent-unavailability claim.",
+    "commons": "Initial403 recovered by bounded retry with browser User-Agent/Referer; original2023photo archived and inspected."
+  },
+  "deliberateSimplifications": [
+    "Native primary BAG circle envelope; detailedOSM sawtooth glass ring inset below metal volume.",
+    "Photo-guided mushroom-column locations, simplified central service core/stair; no claimed exact interior survey.",
+    "No surrounding plaza, trees, bicycle racks or street fixtures included; retained ordinary neighboring buildings own their own geometry.",
+    "Broad measured roof plane supports near-flat deck/PV assembly; noisy peripheral roof fits retained as evidence but not unsupported plates."
+  ],
+  "validation": {
+    "focusedGeometry": "passed",
+    "compressedBudget": {
+      "triangles": 17007,
+      "bytes": 308192,
+      "textures": 0
+    },
+    "cpuComparisons": "Four lower rotations and upper roof view inspected against original private sources; source family recognizable, glass style is opaque flat colour. GPU/game acceptance pending.",
+    "failedEvidence": "artifacts/this-is-holland-draft/failed-buried-panel.glb and failed-buried-panel-southeast.png preserved; backing covered twisted panels. Fixed inward backing and576 first-hit probes."
+  },
+  "rootPending": [
+    "Source scoped sync/verify then private commit/push; write source commit into records before model commit.",
+    "Catalogue/dispatcher registration, current GLB export and versioned runtime/gallery bundles.",
+    "Useful card supplement from this-is-holland-poi.json without replacing genuine identity.",
+    "Lower gallery rotations, both live sides, loaded exact ordinary/pyramidal suppression and resident drawn retained neighbors.",
+    "Chosen canonical destination/actual finish/visible pin and physical pointer sourced card; preserve clear failure if unreached."
+  ]
+}
