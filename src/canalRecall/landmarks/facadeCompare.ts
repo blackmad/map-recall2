@@ -30,13 +30,14 @@ export type FacadeInventory = {
   columns?: number;
   /** Is the opening pattern mirror-symmetric about the facade centre? */
   symmetric?: boolean;
-  /** Number of separate gable/peak tops in the facade silhouette (0 for a flat cornice line). */
+  /** Separate peaks in the facade silhouette: gables, towers, spires, hipped-roof tops (0 for a level cornice). */
   gables?: number;
-  /** Material names that count as openings (default glass). */
+  /** Material names that count as openings (default glass and dark: many kits glaze in `dark`). Only faces
+   * turned towards the viewer count, so dark roofs and plinth tops do not. */
   openings?: string[];
   /** Restrict to [t0, t1] metres along the facade (viewer's left → right) when other wings face the same way. */
   span?: [number, number];
-  /** Only geometry within this many metres of the facade's front-most plane counts (default 4). */
+  /** Only geometry within this many metres of the facade's front-most plane counts (default 10). */
   depthBand?: number;
   /** Allowed per-row count difference (default 0; rows with ≥ 12 openings allow 1). */
   tolerance?: number;
@@ -92,7 +93,7 @@ export function renderElevation(soup: MaterialSoup, f: FacadeInventory, cell = 0
   for (let v = 0; v < nv; v++) if (inSpan(T[v])) depths.push(D[v]);
   depths.sort((a, b) => a - b);
   const front = depths.length ? depths[Math.floor(depths.length * 0.98)] : 0;
-  const minDepth = front - (f.depthBand ?? 4);
+  const minDepth = front - (f.depthBand ?? 10);
 
   let tMin = Infinity, tMax = -Infinity, yMin = Infinity, yMax = -Infinity;
   for (let v = 0; v < nv; v++) {
@@ -106,6 +107,7 @@ export function renderElevation(soup: MaterialSoup, f: FacadeInventory, cell = 0
   const zbuf = new Float64Array(W * H).fill(-Infinity);
   const mat = new Int32Array(W * H).fill(-1);
   const shade = new Float32Array(W * H);
+  const facingPx = new Float32Array(W * H);
 
   for (let k = 0; k * 3 + 2 < I.length; k++) {
     const a = I[k * 3], b = I[k * 3 + 1], c = I[k * 3 + 2];
@@ -136,11 +138,11 @@ export function renderElevation(soup: MaterialSoup, f: FacadeInventory, cell = 0
         const d = w0 * D[a] + w1 * D[b] + w2 * D[c];
         if (d < minDepth) continue;
         const i = py * W + px;
-        if (d > zbuf[i] + 1e-4) { zbuf[i] = d; mat[i] = m; shade[i] = s; }
+        if (d > zbuf[i] + 1e-4) { zbuf[i] = d; mat[i] = m; shade[i] = s; facingPx[i] = facing; }
       }
     }
   }
-  return {W, H, cell, tMin, yMax, yMin, mat, shade};
+  return {W, H, cell, tMin, yMax, yMin, mat, shade, facing: facingPx};
 }
 
 /** 4-connected components of a boolean mask; returns pixel bounding boxes and areas. */
@@ -200,10 +202,10 @@ function cluster(values: number[], gap: number) {
 export function measureFacade(soup: MaterialSoup, f: FacadeInventory, cell = 0.1): FacadeMeasure {
   const r = renderElevation(soup, f, cell);
   const {W, H, mat, shade} = r;
-  const openingNames = new Set((f.openings ?? ['glass']).map(s => s.toLowerCase()));
+  const openingNames = new Set((f.openings ?? ['glass', 'dark']).map(s => s.toLowerCase()));
   const isOpening = soup.materials.map(m => openingNames.has(m.name.toLowerCase()));
   const raw = new Uint8Array(W * H);
-  for (let i = 0; i < W * H; i++) raw[i] = mat[i] >= 0 && isOpening[mat[i]] ? 1 : 0;
+  for (let i = 0; i < W * H; i++) raw[i] = mat[i] >= 0 && isOpening[mat[i]] && r.facing[i] >= 0.6 ? 1 : 0;
   const mask = close(raw, W, H, Math.max(1, Math.round(0.15 / cell)));
   const minArea = 0.15 / (cell * cell);
   const openings: Opening[] = components(mask, W, H)
