@@ -16963,6 +16963,141 @@
       "triangles": 23707,
       "bytes": 338280,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "hannekes-boom": {
+      "id": "hannekes-boom",
+      "name": "Hannekes Boom",
+      "landmarkId": "local-food-395",
+      "modelUrl": "./models/hannekes-boom.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012238899"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.9116163,
+          52.3762934
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 18,
+        "widthMetres": 17
+      },
+      "surveyed": {
+        "anchor": [
+          4.9116163,
+          52.3762934
+        ],
+        "northOffsetDegrees": 0,
+        "source": "BAG Pand0363100012238899; municipal official Dijksgracht4 VBO linkage; native AHN5/2023 roof heights cross-checked operator current facade/architect opposite views and PDOK aerial"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Hannekes Boom",
+        "author": "Map Recall",
+        "sourceUrl": "https://hannekesboom.nl/geschiedenis/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original native flat-color timber pavilion with surveyed roof terrace, lower northern service wing and localized covered terrace bay. Photo-guided reclaimed-board parapet, corrugated awnings, glazing and stair. No reference pixels or third-party mesh; window divisions and stair tread count approximate."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.911693,
+              52.376243
+            ],
+            [
+              4.911666,
+              52.376341
+            ],
+            [
+              4.911725,
+              52.376347
+            ],
+            [
+              4.911718,
+              52.37637
+            ],
+            [
+              4.911604,
+              52.376357
+            ],
+            [
+              4.911607,
+              52.376349
+            ],
+            [
+              4.911589,
+              52.376347
+            ],
+            [
+              4.911587,
+              52.376353
+            ],
+            [
+              4.911565,
+              52.376351
+            ],
+            [
+              4.911567,
+              52.376344
+            ],
+            [
+              4.911501,
+              52.376337
+            ],
+            [
+              4.911506,
+              52.376316
+            ],
+            [
+              4.911489,
+              52.376314
+            ],
+            [
+              4.911516,
+              52.376224
+            ],
+            [
+              4.911693,
+              52.376243
+            ]
+          ]
+        ]
+      },
+      "bounds": {
+        "min": [
+          -9.644282341003418,
+          3.5762786065873797e-9,
+          -8.577977180480957
+        ],
+        "max": [
+          7.497598648071289,
+          6.019499778747559,
+          8.666422843933105
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9116163,
+          52.3762934
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 180,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 17.244400024414062,
+        "heightMetres": 6.01949977517128,
+        "depthMetres": 17.141880989074707,
+        "depthCoverage": 1.0083459405338062
+      },
+      "triangles": 7552,
+      "bytes": 130832,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
