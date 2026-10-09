@@ -1,0 +1,314 @@
+{
+  "id": "gerard-dou-synagogue",
+  "baseCommit": "7f9e5bd9",
+  "sources": [
+    {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?bbox=4.89745,52.3568,4.89825,52.35735&limit=100&f=json",
+      "bytes": 34290,
+      "sha256": "d0940dc7b0bac75a64b5122e7d61e54a90f7e4cf3ab154a9742c0709d0e2cae8",
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/gerard-dou-synagogue/artifacts/gerard-dou-synagogue/raw/bag-pands.json",
+      "kind": "original HTTP response",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-08T15:23:08Z",
+      "rights": "PDOK BAG open data",
+      "informs": "Exact current parent footprint/address/VBO relationship and retain-neighbor outlines"
+    },
+    {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?identificatie=0363010000644226&f=json",
+      "bytes": 1861,
+      "sha256": "772e7c5463d3054f9b7d185fdae8558e015411389d6ae12d172061432c359fe3",
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/gerard-dou-synagogue/artifacts/gerard-dou-synagogue/raw/bag-vbo.json",
+      "kind": "original HTTP response",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-08T15:23:08Z",
+      "rights": "PDOK BAG open data",
+      "informs": "Exact current parent footprint/address/VBO relationship and retain-neighbor outlines"
+    },
+    {
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012140916",
+      "bytes": 7361,
+      "sha256": "aa98345f35084d3673e78e410c6e48cf7f0bf9403b2d626653e4e58bd3f8dcba",
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/gerard-dou-synagogue/artifacts/gerard-dou-synagogue/raw/3dbag.json",
+      "kind": "original HTTP response",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-08T15:23:08Z",
+      "date": "AHN4/2020",
+      "rights": "3DBAG open dataset",
+      "informs": "Roof planes and semantic low annex/front bay versus steep hall, terrain datum"
+    },
+    {
+      "url": "https://www.nihs.nl/wp-content/uploads/2024/02/2.jpg",
+      "bytes": 35454,
+      "sha256": "591edac2a93d89967cdbe61933e5ccefa841113d3590c365d502d0c1673505c9",
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/gerard-dou-synagogue/artifacts/gerard-dou-synagogue/raw/operator-photo.jpg",
+      "kind": "original HTTP response",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-08T15:23:08Z",
+      "rights": "NIHS page photo, copyright not established",
+      "informs": "Operator identity and interior ark; not copied into geometry"
+    },
+    {
+      "url": "https://www.openstreetmap.org/api/0.6/node/25099441.json",
+      "bytes": 422,
+      "sha256": "89081157d2e30ee16f39feea39cbc9cab1669b25bf307c4b0e34607f1ae92eba",
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/gerard-dou-synagogue/artifacts/gerard-dou-synagogue/raw/osm.json",
+      "kind": "original HTTP response",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-08T15:23:08Z"
+    },
+    {
+      "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=2025_orthoHR&STYLES=&CRS=EPSG:28992&BBOX=121630,485540,121700,485605&WIDTH=1000&HEIGHT=930&FORMAT=image/jpeg",
+      "bytes": 5859,
+      "sha256": "ca3187befbb716d27e24a6ead21280a1f974fd66f9e4836a1c809eb7feb258d9",
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/gerard-dou-synagogue/artifacts/gerard-dou-synagogue/raw/aerial2025-13.jpg",
+      "kind": "original HTTP response",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-08T15:29:50Z",
+      "accessState": "HTTP200 but blank white image; not usable roof evidence"
+    },
+    {
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-29_09-14-27_01862/equirectangular/panorama_8000.jpg",
+      "bytes": 4464064,
+      "sha256": "6be44ccc0b5f9d2ab30ae2cc3186e0a6e92689afc920dc5178a10278411a3a4b",
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/gerard-dou-synagogue/artifacts/gerard-dou-synagogue/raw/panorama2025.jpg",
+      "kind": "original HTTP response",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-08T15:24:11Z",
+      "date": "2025-09-29",
+      "author": "Gemeente Amsterdam /360geo",
+      "rights": "Municipal panorama reference; precise reuse terms not established, original pixels private only",
+      "informs": "Current lower facade, street contact and side-neighbor retention; upper facade occluded by trees"
+    },
+    {
+      "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=2025_orthoHR&STYLES=&SRS=EPSG:28992&BBOX=121630,485540,121700,485605&WIDTH=1000&HEIGHT=930&FORMAT=image/jpeg",
+      "bytes": 5859,
+      "sha256": "ca3187befbb716d27e24a6ead21280a1f974fd66f9e4836a1c809eb7feb258d9",
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/gerard-dou-synagogue/artifacts/gerard-dou-synagogue/raw/aerial2025.jpg",
+      "kind": "original HTTP response",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-08T15:24:10Z",
+      "accessState": "HTTP200 but blank white image; not usable roof evidence"
+    },
+    {
+      "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?SERVICE=WMS&REQUEST=GetCapabilities",
+      "bytes": 43331,
+      "sha256": "30e411329dc093e2a06868bdd617517fcdcfb21c51483d6d5d10191488ec0aa6",
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/gerard-dou-synagogue/artifacts/gerard-dou-synagogue/raw/aerial-capabilities.xml",
+      "kind": "original HTTP response",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-08T15:29:24Z"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/v1/bouwdossiers/bouwdossiers/?_format=json&adres=Gerard%20Doustraat%20238",
+      "error": "HTTP Error 404: Not Found",
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/gerard-dou-synagogue/artifacts/gerard-dou-synagogue/raw/bouwdossiers.json",
+      "kind": "original HTTP response",
+      "httpStatus": "failed",
+      "retrievedAt": "2026-10-08T15:31:27.911834+00:00"
+    },
+    {
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/527843",
+      "bytes": 30468,
+      "sha256": "5ff49ccae3d0d7189622e11523490f3615659e35ab507ed1095376a46482c6b8",
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/gerard-dou-synagogue/artifacts/gerard-dou-synagogue/raw/register.html",
+      "kind": "original HTTP response",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-08T15:22:15Z"
+    },
+    {
+      "url": "https://www.monumenten.nl/monument/527843",
+      "bytes": 672101,
+      "sha256": "9eef4ca1e4bfb8c382c36eee03c402af39b6221826191f53993b28b9189fa0c9",
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/gerard-dou-synagogue/artifacts/gerard-dou-synagogue/raw/description.html",
+      "kind": "original HTTP response",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-08T15:22:15Z"
+    },
+    {
+      "url": "https://www.nihs.nl/synagoges/gerard-dou/",
+      "bytes": 119006,
+      "sha256": "fa3804effdf92071b33b748acffd7a879712f2c8a4b912702ef0833786bbaf1d",
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/gerard-dou-synagogue/artifacts/gerard-dou-synagogue/raw/operator.html",
+      "kind": "original HTTP response",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-08T15:22:15Z"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Synagoge_Gerard_Doustraat.JPG",
+      "bytes": 112594,
+      "sha256": "07fd107e8112427781736e7de9d25cea989156f509e9c8cc83c31483c6848fa1",
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/gerard-dou-synagogue/artifacts/gerard-dou-synagogue/raw/commons.html",
+      "kind": "original HTTP response",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-08T15:22:16Z"
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Synagoge_Gerard_Doustraat.JPG",
+      "bytes": 1059384,
+      "sha256": "82468392accd91bcc4f8517bcfaeafd7b905b8e8eac86e8bc5517424ee802435",
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/gerard-dou-synagogue/artifacts/gerard-dou-synagogue/raw/facade-2005.jpg",
+      "kind": "original HTTP response",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-08T15:22:21Z",
+      "date": "2005-11-22",
+      "author": "SanderK",
+      "rights": "CC BY-SA2.5",
+      "informs": "Full current-style street facade, clear masonry/window/star/crown/entrance assemblies; compared with 2025 lower facade"
+    },
+    {
+      "url": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Gerard%20Doustraat%20238%20Amsterdam",
+      "bytes": 8415,
+      "sha256": "01e2a8182084a749977df9970dbb6c5ace435bc23471690185ac69dee0015565",
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/gerard-dou-synagogue/artifacts/gerard-dou-synagogue/raw/bag-address.json",
+      "kind": "original HTTP response",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-08T15:22:15Z",
+      "rights": "PDOK BAG open data",
+      "informs": "Exact current parent footprint/address/VBO relationship and retain-neighbor outlines"
+    },
+    {
+      "url": "https://archief.amsterdam/beeldbank/?search=Gerard%20Doustraat%20238",
+      "bytes": 17923,
+      "sha256": "517a6fc9353af159c0830f1ea3237017e4a32e6c96e15d48b3015ef565face72",
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/gerard-dou-synagogue/artifacts/gerard-dou-synagogue/raw/beeldbank.html",
+      "kind": "original HTTP response",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-08T15:22:15Z",
+      "accessState": "HTML shell; bounded exact-address Beeldbank search completed, no photograph inspected",
+      "rights": "Unestablished viewer records; no reuse inferred"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?near=4.89785,52.35711&radius=35&srid=4326&page_size=100&timestamp_after=2024-01-01",
+      "bytes": 43719,
+      "sha256": "3451dac63beff9074e4c75956ab4687f0d91401fb172b8967b1380d5b2f9f189",
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/gerard-dou-synagogue/artifacts/gerard-dou-synagogue/raw/panoramas.json",
+      "kind": "original HTTP response",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-08T15:23:49Z"
+    },
+    {
+      "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=Actueel_orthoHR&STYLES=&SRS=EPSG:28992&BBOX=121630,485540,121700,485605&WIDTH=1000&HEIGHT=930&FORMAT=image/jpeg",
+      "bytes": 5859,
+      "sha256": "ca3187befbb716d27e24a6ead21280a1f974fd66f9e4836a1c809eb7feb258d9",
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/gerard-dou-synagogue/artifacts/gerard-dou-synagogue/raw/aerial.jpg",
+      "kind": "original HTTP response",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-08T15:23:50Z",
+      "accessState": "HTTP200 but blank white image; not usable roof evidence"
+    },
+    {
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-29_09-14-27_01864/equirectangular/panorama_8000.jpg",
+      "bytes": 2883139,
+      "sha256": "9693339e66cab0f52ecd0e058c8b2dd03c8c4deaa04d91d0b47a5c4817d5a937",
+      "file": "/Users/blackmad/Code/map-recall2-worktrees/gerard-dou-synagogue/artifacts/gerard-dou-synagogue/raw/panorama2025-ne.jpg",
+      "kind": "original HTTP response",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-08T15:30:11Z",
+      "date": "2025-09-29",
+      "author": "Gemeente Amsterdam /360geo",
+      "rights": "Municipal panorama reference; precise reuse terms not established, original pixels private only",
+      "informs": "Current lower facade, street contact and side-neighbor retention; upper facade occluded by trees"
+    }
+  ],
+  "rawSourceArchive": {
+    "state": "Root must scoped-sync/verify/commit/push before model commit",
+    "modelPath": "models/gerard-dou-synagogue",
+    "commit": null
+  },
+  "criticalAssertions": [
+    {
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/527843",
+      "part": "principal facade",
+      "confidence": "high",
+      "date": "historic register description read2026-10-08",
+      "assertions": [
+        "Rectangular site in closed street row, tall left hall and recessed low right access bay",
+        "Red-brown brick with pale bands, corner/keystones and consoles",
+        "Hall tiled gable roof, paired tall round-arched windows, tuit gable and central David-star oculus",
+        "Ceremonial doorway with aedicula, text stone, pediment and ornamental balls",
+        "Right bay straight cornice on four slender consoles; segmental upstairs window",
+        "Rear hall high semicircular glazed window; rear Sukkot room has opening roof window"
+      ]
+    }
+  ],
+  "heightSemantics": {
+    "mainEaves": "9.21–9.52 m above AHN4 terrain; tall tiled ridge16.26–16.40 m",
+    "lowerFront": "flat roof7.72–7.77 m behind straight cornice",
+    "rearAnnex": "4.30–4.37 m; not whole-hall roof height",
+    "surveyUncertainty": "LoD2.2 RMSE1.19m; gable finials/tuit above ridge are photograph-guided"
+  },
+  "frontage": {
+    "nativeIndices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "outwardNormal": [
+      -0.417,
+      -0.909
+    ],
+    "cameraBearingDegrees": 335,
+    "street": "Gerard Doustraat north side of installed footprint",
+    "principalHall": [
+      0,
+      1
+    ],
+    "recessedRightBay": [
+      1,
+      2,
+      3
+    ],
+    "neighborPolicy": "Suppress exact BAG0363100012140916 only; all others in footprint neighbor inventory retained"
+  },
+  "recognitionReview": {
+    "state": "Draft source comparison by worker, independent/root gallery/live acceptance pending",
+    "reference": "artifacts/gerard-dou-synagogue/raw/facade-2005.jpg",
+    "currentReference": "artifacts/gerard-dou-synagogue/panorama2025-front.png",
+    "renders": "artifacts/gerard-dou-synagogue-cpu/views-final",
+    "findings": "Bounded source-fidelity corrections after independent FAIL: principal lower glazing now rectangular below separate blind brick arched spare fields; high windows now concentric medium/small round framing with short inter-ring bars. Native walls, roof surfaces and envelope unchanged. New source-front-low CPU image inspected alongside preserved2005 source crops. Independent acceptance and gallery/live check remain pending.",
+    "failuresPreserved": [
+      "artifacts/gerard-dou-synagogue-cpu/views-wrong-camera",
+      "artifacts/gerard-dou-synagogue-cpu/views",
+      "Blank HTTP200 aerial captures",
+      "artifacts/gerard-dou-synagogue-cpu/failed-83eafffc"
+    ]
+  },
+  "remainingUncertainty": [
+    "2025 tree cover occludes upper front; clear 2005 photo supports historic assembly, no current change asserted",
+    "PDOK aerial GetMap returned blank white images in bounded3 attempts including1.3.0; roof evidence currently AHN4/2020 plus source elevation",
+    "Bouwdossiers API request404 after bounded retries; no architectural sheet acquired; email access not invoked",
+    "Beeldbank exact-address query returns viewer shell, no usable catalogue/photo observed",
+    "Small source Hebrew inscription preserved as actual dark inset panel with no invented lettering; accurate lettering pending source legibility and native Hebrew font tracing",
+    "Rear stained-glass colors and roof-opening equipment simplified; no invented machinery",
+    "No gallery/live-game GPU, neighbor-render or route/pin/card acceptance performed by worker"
+  ],
+  "checks": {
+    "geometry": "pass: 5,222 triangles, 18 upward roof triangles, 70 source-front/rear/window-assembly probes",
+    "compressedBytes": 195244,
+    "compressedSha256": "f922bf4a7525d1cf2d8f7a5146c0dbd7ab028058acc0b8ed46c12ed230ac947e",
+    "typescript": "Full noEmit check fails in existing unrelated city appearance files; no new builder error shown. Source builder execution/export succeed."
+  },
+  "boundedRepair": {
+    "requestedBy": "Root independent source-fidelity review2026-10-08",
+    "reviewPath": "/Users/blackmad/Code/map-recall2/artifacts/gerard-dou-synagogue-independent/review.json",
+    "failedGlbSha256": "83eafffcfd6a3257d9526c4bcfc2e6cdb499249d0ca706ce75c249a85fdc7867",
+    "repairs": [
+      "Rectangular lower glass/grilles with flat white lintel, independent blind arched brick/tile field above",
+      "Concentric medium and small high-window arches; radial Y framing removed, short ring connectors retained",
+      "Corrected four original file paths and currentReference accidental spaces before2025; verified both full manifests"
+    ],
+    "sourceFidelityLimit": "Inner curve spacing photograph-guided approximation in native geometry, not measured joinery. Actual inscription panel still has no invented Hebrew lettering.",
+    "geometryReport": "artifacts/gerard-dou-synagogue-cpu/geometry-report.json",
+    "reviewerProbeReplay": "artifacts/gerard-dou-synagogue-cpu/repaired-independent-probes/probe-report.json",
+    "replayedChecks": {
+      "roofGridRays": 3188,
+      "roofMissing": 0,
+      "upwardRoofTriangles": 18,
+      "frontGlassSamples": 70,
+      "frontGlassFailed": 0
+    },
+    "sourceVerification": "artifacts/gerard-dou-synagogue-cpu/provenance-verification.json",
+    "status": "corrected-draft-await-independent-source-comparison"
+  }
+}
