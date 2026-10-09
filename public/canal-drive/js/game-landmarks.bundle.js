@@ -13640,7 +13640,7 @@ Map source: ${osmUrl(places[i][0])}`);
     {
       id: "pathe-de-munt",
       status: "held",
-      heldReason: "Reads as a grey 3DBAG lump; needs real facade work (user review 2026-10-09).",
+      heldReason: "Facade rebuilt as folded brick planes, entrance slot and PATH\xC9 blade (2026-10-09); held until the user reviews artifacts/landmark-lanes/pathe-de-munt/contact.png.",
       name: "Path\xE9 de Munt",
       landmarkId: "extract_landmarks_257271103",
       modelUrl: "./models/pathe-de-munt.glb",
@@ -13668,14 +13668,13 @@ Map source: ${osmUrl(places[i][0])}`);
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 0,
       materialOverrides: {
-        brick: "#807a74",
-        greyBrick: "#7a7570",
-        stone: "#a9a69f",
-        slate: "#6a6865",
-        white: "#e7e5dd",
-        glass: "#667c86",
-        dark: "#25292c",
-        gold: "#e0b030"
+        greyBrick: "#9a9893",
+        slate: "#5e5f61",
+        white: "#eceeec",
+        glass: "#4f6670",
+        dark: "#2a2d30",
+        gold: "#e3a21a",
+        frame: "#9a9c9c"
       },
       attribution: {
         title: "Path\xE9 de Munt",
@@ -13683,7 +13682,7 @@ Map source: ${osmUrl(places[i][0])}`);
         sourceUrl: "https://nl.wikipedia.org/wiki/Path%C3%A9_de_Munt",
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
-        modifications: "Original texture-free model on the BAG footprint (3DBAG LoD2.2 roof faces): grey-brick multiplex with notched pitched volumes, glazed slits, lower entrance bays and the vertical Path\xE9 sign. Dimensions approximate, measured from 2025 panoramas. No imported mesh or photo textures."
+        modifications: "Original texture-free model. Massing: BAG pand 0363100012179384 with 3DBAG LoD2.2 roof faces. Vijzelstraat frontage authored from the rectified 2022 municipal panorama: stepped sloping-top grey-brick blocks, triangular facets folding from the 17.3 m parapet into the recess, a warm-lit glazed entrance slot, poster cases, rows of point lights and the vertical PATH\xC9 blade sign. No imported mesh or photo textures."
       },
       buildingFootprint: {
         type: "Polygon",

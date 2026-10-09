@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## Bike ferries across the IJ (2026-10-09)
+
+The `feat/bike-ferry-crossings` work (built 2026-10-07/08, ~15k lines left
+uncommitted in its worktree, 138 commits behind) was snapshotted to
+`wip/bike-ferry-snapshot-20261009` and ported. Cycling routes may use GVB
+F1–F9: ride onto a terminal access toward the water to become the ferry,
+steer across, dock at a connected pier and return to the bike on its land
+access. On current main the Centraal F3 stop sits on the quay, so boarding
+became "within 3 m of the stop, moving, heading within 60° of the nearest
+rendered water (≤30 m)" in typed `ferry/travel.ts`. Ferry and access segments
+carry `name: ''` plus a display `label`, so they never become street
+questions, distractors, novelty or spoilers; `road-network.js` blanks their
+geometry (`landOnly`) instead of filtering, keeping segment indexes valid.
+
 ## Sculpture splat pilot: De Dokwerker, no-go as-is (2026-10-09)
 
 COLMAP 4.2 (CPU) on 278 Commons images registered 214 (0.6 px), Brush 0.3
