@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+## Haparandaweg: eight more blocks, four installed (2026-10-09)
+
+User asked for every building on Haparandaweg. PDOK BAG lists 17 panden; 6
+were modelled. A new typed block kit (`src/canalRecall/blockBuilding/`,
+tooling `scripts/haparandaweg/`) puts per-building facade systems on exact
+3DBAG LoD2.2 walls and roofs (2.0–5.1k tris, heights within 0.3 m, all parts
+within 5 cm). Installed after integrator review: Het Pakhuis (902–950,
+sawtooth gables + lettering), 746–786, 870–900, 952–1002. Held: 65 (reads as
+plain grey render), 650–706, 708–744, 788–868. Skipped: 582–648 (only
+scaffolding in panoramas), 940–950 (no tile/panorama), 444–576 (permit only,
+not built). These models are not built by `build-manual-landmarks.ts`, so
+their manifest entries were added from the catalogue.
+
 ## Club Panama and West India House to the bar; held models off What's new (2026-10-09)
 
 The near-bar lane rebuilt three rejected shells from panoramas. Installed

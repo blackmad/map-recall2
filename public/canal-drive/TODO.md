@@ -143,6 +143,10 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   minimap/overview, dropping the live OpenFreeMap dependency. Gaps: no road
   widths/sidewalks in our extracts (centrelines only), humped bridges render
   as grey slabs, no route line/labels/HUD in the spike.
+- **Haparandaweg held/skipped**: review 65 (needs the terracotta upper volume),
+  650–706 (paired casements, stone bands), 708–744, 788–868 (glass bays);
+  retry 940–950 with another photo source; 582–648 after scaffolding. The
+  street sheet framing was poor (bike drawn over a roof) — reshoot.
 - **Large-tier follow-ups** (`src/canalRecall/largeBuildingTier.ts`,
   ranked list via `npm run audit:large-tier`): untuned buildings show a
   uniform window grid; tune next Roeterseiland/LLC, VU, Benno Premselahuis,

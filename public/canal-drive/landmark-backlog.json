@@ -21,7 +21,7 @@
     }
   ],
   "counts": {
-    "manual-model": 240,
+    "manual-model": 244,
     "procedural-kit": 15,
     "pending": 126
   },
@@ -4893,6 +4893,50 @@
       "origin": "Landmark catalogue",
       "status": "manual-model",
       "modelId": "haparandaweg-57",
+      "treatment": "building"
+    },
+    {
+      "id": "haparandaweg-902-950",
+      "name": "Het Pakhuis, Haparandaweg 902-950",
+      "lat": 52.3951,
+      "lng": 4.878,
+      "queueRank": 382,
+      "origin": "Landmark catalogue",
+      "status": "manual-model",
+      "modelId": "haparandaweg-902-950",
+      "treatment": "building"
+    },
+    {
+      "id": "haparandaweg-746-786",
+      "name": "Haparandaweg 746-786",
+      "lat": 52.3947,
+      "lng": 4.8775,
+      "queueRank": 383,
+      "origin": "Landmark catalogue",
+      "status": "manual-model",
+      "modelId": "haparandaweg-746-786",
+      "treatment": "building"
+    },
+    {
+      "id": "haparandaweg-870-900",
+      "name": "Haparandaweg 870-900",
+      "lat": 52.3948,
+      "lng": 4.878,
+      "queueRank": 384,
+      "origin": "Landmark catalogue",
+      "status": "manual-model",
+      "modelId": "haparandaweg-870-900",
+      "treatment": "building"
+    },
+    {
+      "id": "haparandaweg-952-1002",
+      "name": "Haparandaweg 952-1002",
+      "lat": 52.3952,
+      "lng": 4.8786,
+      "queueRank": 385,
+      "origin": "Landmark catalogue",
+      "status": "manual-model",
+      "modelId": "haparandaweg-952-1002",
       "treatment": "building"
     }
   ]
