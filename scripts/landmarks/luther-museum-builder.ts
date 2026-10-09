@@ -34,7 +34,7 @@ export function buildLutherMuseum(_w:number,_d:number,b:BuildingTools){
  // source roof-domain shells above retain all lower annex and chimney steps.
  const baseShell=openTopPrism(shape(outline),0,2.0);baseShell.userData={role:'bag-base'};add(baseShell,'brick');
  function facade(a:number[],c:number[],normalSign:number=1){const dx=c[0]-a[0],dz=c[1]-a[1],L=Math.hypot(dx,dz),tx=dx/L,tz=dz/L,nx=normalSign*tz,nz=-normalSign*tx,angle=Math.atan2(nx,nz);
-  function panel(u:number,y:number,w:number,h:number,d:number,colour:Colour,out=.12){box(a[0]+tx*u+nx*out,y,a[1]+tz*u+nz*out,w,h,d,colour,angle);}
+  function panel(u:number,y:number,w:number,h:number,d:number,colour:Colour,out=.12){const g=new T.BoxGeometry(w,h,d),ix=Array.from(g.index!.array);/* drop the faces pressed against the wall (-z) , the downward face (-y) and slivers under 0.05 m2: invisible at game range */const keep=[h*d>=.05,h*d>=.05,w*d>=.05,false,true,false];g.setIndex(ix.filter((_,k)=>keep[Math.floor(k/6)]));add(g,colour,a[0]+tx*u+nx*out,y+h/2,a[1]+tz*u+nz*out,angle);}
   function glazed(u:number,y:number,w:number,h:number,rows:number=4,cols:number=3){
    // Thin exposed glass lies in front of masonry. Surrounding frames do not
    //cover fractional pane probes; muntins are tested separately from masonry.
