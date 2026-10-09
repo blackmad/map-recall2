@@ -1,0 +1,32 @@
+{
+  "id": "huize-frankendael",
+  "status": "bounded-source-audit-and-assembly-checks-ready-native-review-pending",
+  "builderEdits": "Existing current rounded dormer/transom corrections preserved; no additional speculative geometry.",
+  "draftSha256": "cd98dbde362ad43a53ac305d22340f729e7279cb56d8531bfe8a72fa5686ce1c",
+  "bytes": 209608,
+  "triangles": 19141,
+  "textures": 0,
+  "failedSha256": "a21743bd6949741ba28db45dee28971769a7aaebd657f4c3b0d7f4454eb4c692",
+  "failedPreservedPath": "artifacts/huize-frankendael-repair/failed-a21743bd.glb",
+  "failedProbeLog": "artifacts/huize-frankendael-repair/failed-assembly-check.log",
+  "checks": {
+    "authoredFrontSide": true,
+    "decodedFrontSide": true,
+    "roundedHighPanesExposed": true,
+    "rectangleCornerGlazingExcluded": true,
+    "broadConnectedCheeksExposed": true,
+    "connectedCrownExposed": true,
+    "previousGlazingRoofOpenSpaceChecks": true
+  },
+  "cpuComparison": "artifacts/huize-frankendael-repair/; low front full elevation and central dormer close-up agree with cached operator and2022 front rounded-head/broad-cheek silhouette.",
+  "northwestConfidence": {
+    "endDoorHalfRound": "Register-derived provisional assembly already present; current end-photo corroboration absent.",
+    "rearExtraSash": "Not added; current survival and placement unknown."
+  },
+  "sourceResearchPath": "docs/references/huize-frankendael/research.json",
+  "nativeAcceptance": false,
+  "pending": [
+    "Exact coordinator export and repeated decoded checks.",
+    "Independent final source/render comparison and gallery/live/route/pin/card/neighbors/performance."
+  ]
+}

@@ -1,0 +1,981 @@
+{
+  "addressParent": {
+    "type": "Feature",
+    "id": "verblijfsobject.340cc3d6-7c74-462d-b0c8-78d2032db493",
+    "properties": {
+      "identificatie": "0363010000743675",
+      "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0363010000743675",
+      "oppervlakte": 705,
+      "status": "Verblijfsobject in gebruik",
+      "gebruiksdoel": "bijeenkomstfunctie",
+      "openbare_ruimte": "Middenweg",
+      "huisnummer": 72,
+      "huisletter": "",
+      "toevoeging": "",
+      "postcode": "1097BS",
+      "woonplaats": "Amsterdam",
+      "bouwjaar": 1700,
+      "pandidentificatie": "0363100012162192",
+      "pandstatus": "Pand in gebruik"
+    },
+    "bbox": [
+      4.933518154201251,
+      52.351153364100774,
+      4.933518154201251,
+      52.351153364100774
+    ],
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        4.933518154201251,
+        52.351153364100774
+      ]
+    }
+  },
+  "modelId": "huize-frankendael",
+  "retrievedOn": "2026-10-08",
+  "bag": {
+    "type": "Feature",
+    "id": "pand.8a04ca17-8f91-4f58-b113-032600ec90fa",
+    "properties": {
+      "identificatie": "0363100012162192",
+      "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012162192",
+      "bouwjaar": 1700,
+      "status": "Pand in gebruik",
+      "gebruiksdoel": "bijeenkomstfunctie",
+      "oppervlakte_min": 705,
+      "oppervlakte_max": 705,
+      "aantal_verblijfsobjecten": 1
+    },
+    "bbox": [
+      4.933298809586894,
+      52.351030006225365,
+      4.933715794455024,
+      52.35129090917341
+    ],
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.9335731604048645,
+            52.35117959436845
+          ],
+          [
+            4.933540275635452,
+            52.351200454655896
+          ],
+          [
+            4.933494390646317,
+            52.351229551779504
+          ],
+          [
+            4.933487227783621,
+            52.35122528211996
+          ],
+          [
+            4.933383742540387,
+            52.35129090917341
+          ],
+          [
+            4.933298809586894,
+            52.35124027025647
+          ],
+          [
+            4.9334425659460255,
+            52.3511491197547
+          ],
+          [
+            4.933403017131745,
+            52.35112554613985
+          ],
+          [
+            4.933401812084552,
+            52.3511213891938
+          ],
+          [
+            4.933441123099182,
+            52.35109645518068
+          ],
+          [
+            4.933447927166522,
+            52.35109705647857
+          ],
+          [
+            4.933487623756494,
+            52.35112053178011
+          ],
+          [
+            4.933630345546488,
+            52.351030006225365
+          ],
+          [
+            4.933715794455024,
+            52.35108042219031
+          ],
+          [
+            4.9336939159230395,
+            52.35109427831665
+          ],
+          [
+            4.933683707967138,
+            52.35110073732517
+          ],
+          [
+            4.933658298828024,
+            52.351116817859015
+          ],
+          [
+            4.93361234061981,
+            52.35114591474772
+          ],
+          [
+            4.933619547603551,
+            52.351150175581026
+          ],
+          [
+            4.9335731604048645,
+            52.35117959436845
+          ]
+        ]
+      ]
+    }
+  },
+  "osm": [
+    {
+      "type": "way",
+      "id": 44980011,
+      "bounds": {
+        "minlat": 52.3510299,
+        "minlon": 4.9332996,
+        "maxlat": 52.3512908,
+        "maxlon": 4.9337166
+      },
+      "nodes": [
+        2830252643,
+        2830252641,
+        2830252640,
+        14158405599,
+        14158405602,
+        14158405597,
+        570248690,
+        14158405593,
+        570248691,
+        14158405326,
+        570248683,
+        570248679,
+        2830252636,
+        570248685,
+        2830252639,
+        570248681,
+        14220655153,
+        14220655154,
+        570248741,
+        570248739,
+        14158405619,
+        14158405620,
+        14220655155,
+        2830252644,
+        2830252646,
+        14158405611,
+        9896003657,
+        14158405604,
+        14158405605,
+        14158405610,
+        14158405603,
+        2830252643
+      ],
+      "geometry": [
+        {
+          "lat": 52.3511795,
+          "lon": 4.9335739
+        },
+        {
+          "lat": 52.3511501,
+          "lon": 4.9336203
+        },
+        {
+          "lat": 52.3511459,
+          "lon": 4.9336131
+        },
+        {
+          "lat": 52.3511168,
+          "lon": 4.9336591
+        },
+        {
+          "lat": 52.3511005,
+          "lon": 4.9336847
+        },
+        {
+          "lat": 52.3510941,
+          "lon": 4.9336949
+        },
+        {
+          "lat": 52.3510804,
+          "lon": 4.9337166
+        },
+        {
+          "lat": 52.3510625,
+          "lon": 4.9336863
+        },
+        {
+          "lat": 52.3510299,
+          "lon": 4.9336311
+        },
+        {
+          "lat": 52.3510956,
+          "lon": 4.9335275
+        },
+        {
+          "lat": 52.3511205,
+          "lon": 4.9334883
+        },
+        {
+          "lat": 52.351097,
+          "lon": 4.9334488
+        },
+        {
+          "lat": 52.3510964,
+          "lon": 4.9334419
+        },
+        {
+          "lat": 52.3511213,
+          "lon": 4.9334026
+        },
+        {
+          "lat": 52.3511254,
+          "lon": 4.9334038
+        },
+        {
+          "lat": 52.351149,
+          "lon": 4.9334434
+        },
+        {
+          "lat": 52.3511745,
+          "lon": 4.9334031
+        },
+        {
+          "lat": 52.3511818,
+          "lon": 4.9333917
+        },
+        {
+          "lat": 52.3512401,
+          "lon": 4.9332996
+        },
+        {
+          "lat": 52.3512908,
+          "lon": 4.9333845
+        },
+        {
+          "lat": 52.3512634,
+          "lon": 4.9334277
+        },
+        {
+          "lat": 52.3512398,
+          "lon": 4.933465
+        },
+        {
+          "lat": 52.351232,
+          "lon": 4.9334772
+        },
+        {
+          "lat": 52.3512252,
+          "lon": 4.933488
+        },
+        {
+          "lat": 52.3512295,
+          "lon": 4.9334952
+        },
+        {
+          "lat": 52.351223,
+          "lon": 4.9335053
+        },
+        {
+          "lat": 52.3512003,
+          "lon": 4.9335411
+        },
+        {
+          "lat": 52.3512081,
+          "lon": 4.9335541
+        },
+        {
+          "lat": 52.3512046,
+          "lon": 4.9335597
+        },
+        {
+          "lat": 52.3511903,
+          "lon": 4.9335821
+        },
+        {
+          "lat": 52.3511872,
+          "lon": 4.933587
+        },
+        {
+          "lat": 52.3511795,
+          "lon": 4.9335739
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "height": "16.6",
+        "heritage": "2",
+        "heritage:operator": "rce",
+        "heritage:website": "https://www.monumenten.nl/monument/422420",
+        "historic": "manor",
+        "name": "Huize Frankendael",
+        "ref:bag": "0363100012162192",
+        "ref:rce": "422420",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "source:height": "3DBAG",
+        "source:height:date": "2025-09-03",
+        "start_date": "1733",
+        "wikidata": "Q17298850",
+        "wikimedia_commons": "Category:Frankendael House"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1562613213,
+      "bounds": {
+        "minlat": 52.3510964,
+        "minlon": 4.9334026,
+        "maxlat": 52.351149,
+        "maxlon": 4.9334883
+      },
+      "nodes": [
+        570248681,
+        570248683,
+        570248679,
+        2830252636,
+        570248685,
+        2830252639,
+        570248681
+      ],
+      "geometry": [
+        {
+          "lat": 52.351149,
+          "lon": 4.9334434
+        },
+        {
+          "lat": 52.3511205,
+          "lon": 4.9334883
+        },
+        {
+          "lat": 52.351097,
+          "lon": 4.9334488
+        },
+        {
+          "lat": 52.3510964,
+          "lon": 4.9334419
+        },
+        {
+          "lat": 52.3511213,
+          "lon": 4.9334026
+        },
+        {
+          "lat": 52.3511254,
+          "lon": 4.9334038
+        },
+        {
+          "lat": 52.351149,
+          "lon": 4.9334434
+        }
+      ],
+      "tags": {
+        "building:colour": "#70666e",
+        "building:levels": "2",
+        "building:part": "yes",
+        "height": "11.60",
+        "roof:colour": "#c7c7c9",
+        "roof:shape": "flat"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1562613214,
+      "bounds": {
+        "minlat": 52.3510956,
+        "minlon": 4.9334031,
+        "maxlat": 52.3512295,
+        "maxlon": 4.9336203
+      },
+      "nodes": [
+        2830252644,
+        2830252646,
+        14158405611,
+        9896003657,
+        2830252643,
+        2830252641,
+        2830252640,
+        14158405326,
+        570248683,
+        570248681,
+        14220655153,
+        2830252644
+      ],
+      "geometry": [
+        {
+          "lat": 52.3512252,
+          "lon": 4.933488
+        },
+        {
+          "lat": 52.3512295,
+          "lon": 4.9334952
+        },
+        {
+          "lat": 52.351223,
+          "lon": 4.9335053
+        },
+        {
+          "lat": 52.3512003,
+          "lon": 4.9335411
+        },
+        {
+          "lat": 52.3511795,
+          "lon": 4.9335739
+        },
+        {
+          "lat": 52.3511501,
+          "lon": 4.9336203
+        },
+        {
+          "lat": 52.3511459,
+          "lon": 4.9336131
+        },
+        {
+          "lat": 52.3510956,
+          "lon": 4.9335275
+        },
+        {
+          "lat": 52.3511205,
+          "lon": 4.9334883
+        },
+        {
+          "lat": 52.351149,
+          "lon": 4.9334434
+        },
+        {
+          "lat": 52.3511745,
+          "lon": 4.9334031
+        },
+        {
+          "lat": 52.3512252,
+          "lon": 4.933488
+        }
+      ],
+      "tags": {
+        "building:colour": "#70666e",
+        "building:levels": "2",
+        "building:part": "yes",
+        "height": "14.60",
+        "note": "eigenlijk is het een Flat-topped mansard roof",
+        "roof:colour": "4a555b",
+        "roof:height": "3.00",
+        "roof:levels": "1",
+        "roof:shape": "mansard"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1562613215,
+      "bounds": {
+        "minlat": 52.3511745,
+        "minlon": 4.9332996,
+        "maxlat": 52.3512908,
+        "maxlon": 4.933488
+      },
+      "nodes": [
+        14220655155,
+        2830252644,
+        14220655153,
+        14220655154,
+        570248741,
+        570248739,
+        14158405619,
+        14158405620,
+        14220655155
+      ],
+      "geometry": [
+        {
+          "lat": 52.351232,
+          "lon": 4.9334772
+        },
+        {
+          "lat": 52.3512252,
+          "lon": 4.933488
+        },
+        {
+          "lat": 52.3511745,
+          "lon": 4.9334031
+        },
+        {
+          "lat": 52.3511818,
+          "lon": 4.9333917
+        },
+        {
+          "lat": 52.3512401,
+          "lon": 4.9332996
+        },
+        {
+          "lat": 52.3512908,
+          "lon": 4.9333845
+        },
+        {
+          "lat": 52.3512634,
+          "lon": 4.9334277
+        },
+        {
+          "lat": 52.3512398,
+          "lon": 4.933465
+        },
+        {
+          "lat": 52.351232,
+          "lon": 4.9334772
+        }
+      ],
+      "tags": {
+        "building:colour": "#70666e",
+        "building:levels": "2",
+        "building:part": "yes",
+        "height": "8.60",
+        "note": "eigenlijk is het een Flat-topped mansard roof",
+        "roof:colour": "4a555b",
+        "roof:height": "2.60",
+        "roof:levels": "1",
+        "roof:shape": "mansard"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1562613216,
+      "timestamp": "2026-09-26T21:48:56Z",
+      "version": 1,
+      "changeset": 189606998,
+      "user": "OttoR",
+      "uid": 4123522,
+      "nodes": [
+        2830252640,
+        14158405326,
+        570248691,
+        14158405593,
+        570248690,
+        14158405597,
+        14158405602,
+        14158405599,
+        2830252640
+      ],
+      "tags": {
+        "building:colour": "#70666e",
+        "building:levels": "2",
+        "building:part": "yes",
+        "height": "8.60",
+        "note": "eigenlijk is het een Flat-topped mansard roof",
+        "roof:colour": "4a555b",
+        "roof:height": "2.60",
+        "roof:levels": "1",
+        "roof:shape": "mansard"
+      },
+      "geometry": [
+        {
+          "lon": 4.9336131,
+          "lat": 52.3511459
+        },
+        {
+          "lon": 4.9335275,
+          "lat": 52.3510956
+        },
+        {
+          "lon": 4.9336311,
+          "lat": 52.3510299
+        },
+        {
+          "lon": 4.9336863,
+          "lat": 52.3510625
+        },
+        {
+          "lon": 4.9337166,
+          "lat": 52.3510804
+        },
+        {
+          "lon": 4.9336949,
+          "lat": 52.3510941
+        },
+        {
+          "lon": 4.9336847,
+          "lat": 52.3511005
+        },
+        {
+          "lon": 4.9336591,
+          "lat": 52.3511168
+        },
+        {
+          "lon": 4.9336131,
+          "lat": 52.3511459
+        }
+      ],
+      "sourceNote": "Official OSM current small-map/full-way endpoint; absent from earlier Overpass response, which must not establish exhaustive parts"
+    }
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.9335731604048645,
+          52.35117959436845
+        ],
+        [
+          4.933540275635452,
+          52.351200454655896
+        ],
+        [
+          4.933494390646317,
+          52.351229551779504
+        ],
+        [
+          4.933487227783621,
+          52.35122528211996
+        ],
+        [
+          4.933383742540387,
+          52.35129090917341
+        ],
+        [
+          4.933298809586894,
+          52.35124027025647
+        ],
+        [
+          4.9334425659460255,
+          52.3511491197547
+        ],
+        [
+          4.933403017131745,
+          52.35112554613985
+        ],
+        [
+          4.933401812084552,
+          52.3511213891938
+        ],
+        [
+          4.933441123099182,
+          52.35109645518068
+        ],
+        [
+          4.933447927166522,
+          52.35109705647857
+        ],
+        [
+          4.933487623756494,
+          52.35112053178011
+        ],
+        [
+          4.933630345546488,
+          52.351030006225365
+        ],
+        [
+          4.933715794455024,
+          52.35108042219031
+        ],
+        [
+          4.9336939159230395,
+          52.35109427831665
+        ],
+        [
+          4.933683707967138,
+          52.35110073732517
+        ],
+        [
+          4.933658298828024,
+          52.351116817859015
+        ],
+        [
+          4.93361234061981,
+          52.35114591474772
+        ],
+        [
+          4.933619547603551,
+          52.351150175581026
+        ],
+        [
+          4.9335731604048645,
+          52.35117959436845
+        ]
+      ]
+    ]
+  },
+  "localRing": [
+    [
+      -1.6012,
+      4.4672
+    ],
+    [
+      1.6108,
+      4.4557
+    ],
+    [
+      6.0918,
+      4.439
+    ],
+    [
+      6.0896,
+      3.7607
+    ],
+    [
+      16.196,
+      3.7232
+    ],
+    [
+      16.1691,
+      -4.3195
+    ],
+    [
+      2.131,
+      -4.2662
+    ],
+    [
+      2.119,
+      -8.0107
+    ],
+    [
+      1.8448,
+      -8.3885
+    ],
+    [
+      -1.9947,
+      -8.3745
+    ],
+    [
+      -2.2677,
+      -7.9951
+    ],
+    [
+      -2.2705,
+      -4.2509
+    ],
+    [
+      -16.21,
+      -4.2003
+    ],
+    [
+      -16.2251,
+      3.8506
+    ],
+    [
+      -14.09,
+      3.8412
+    ],
+    [
+      -13.0942,
+      3.8364
+    ],
+    [
+      -10.6154,
+      3.8246
+    ],
+    [
+      -6.1309,
+      3.8043
+    ],
+    [
+      -6.1315,
+      4.484
+    ],
+    [
+      -1.6012,
+      4.4672
+    ]
+  ],
+  "coordinateConvention": "Local +X northwest bearing316.086; +Z northeast front bearing46.086, Y up, native metres. 111320cos(lat)/110540 geographic approximation.",
+  "anchor": [
+    4.9335095,
+    52.351162
+  ],
+  "retainedNeighbors": [
+    {
+      "id": "w278698882",
+      "bagId": "NL.IMBAG.Pand.0363100012098251",
+      "name": "De Bron southeast"
+    },
+    {
+      "id": "w278699069",
+      "bagId": "NL.IMBAG.Pand.0363100012214449",
+      "name": "De Bron outbuilding southeast"
+    },
+    {
+      "id": "w278613028",
+      "bagId": "NL.IMBAG.Pand.0363100012152512",
+      "name": "Middenweg opposite northeast"
+    }
+  ],
+  "heightNotes": {
+    "groundNap": -3.746,
+    "source": "3DBAG AHN5 2023 and OSM parts current 2026-10-08",
+    "wingEaves": 6.0,
+    "wingTruncatedHipTop": 8.6,
+    "centralEaves": 11.6,
+    "centralTruncatedHipTop": 14.6,
+    "rearProjectionAttic": 11.6,
+    "upperSilhouette": 16.6,
+    "warning": "3DBAG roof statistics in NAP. Front corner chimney planes are maxima, not full-building crest or walls. Dormers and balustrade dimensioned approximately from photos."
+  },
+  "publicEntrance": {
+    "position": [
+      4.933559,
+      52.351191
+    ],
+    "evidence": "NO facade central door: RCE422420 and operator front photograph. Projected from central surveyed front edge; approximate threshold.",
+    "frontOutwardNormalEastNorth": [
+      0.7209,
+      0.693
+    ],
+    "streetGapMetresApprox": null,
+    "streetGapEvidence": "Front forecourt visible in photographs; no calibrated road-edge survey; do not infer a parcel suppression mask"
+  },
+  "references": [
+    {
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/422420",
+      "cached": "../map-recall2-source-data/models/huize-frankendael/raw/register.html",
+      "access": "downloaded original HTTP body",
+      "sha256": "80f8a924448086e754ccf79c9b14250ec064a3462fba7ce2916864c76700da86"
+    },
+    {
+      "url": "https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&typeNames=bag:pand&outputFormat=application/json&srsName=EPSG:4326&bbox=52.3507,4.9328,52.3516,4.9342,EPSG:4326",
+      "cached": "../map-recall2-source-data/models/huize-frankendael/raw/bag.json",
+      "access": "downloaded original HTTP body",
+      "sha256": "04a90836c31833da7b83f24fa23116a1b7dd21a898870d8247f13305d0ed8368"
+    },
+    {
+      "url": "https://huizefrankendael.nl/nl/thuis/",
+      "cached": "../map-recall2-source-data/models/huize-frankendael/raw/operator.html",
+      "access": "downloaded original HTTP body",
+      "sha256": "16ded334acdfff1de55152d4f5fd459920bbf5f5fea070e74d5d96486103f98d"
+    },
+    {
+      "url": "https://huizefrankendael.nl/nl/over/geschiedenis-huize-frankendael/",
+      "cached": "../map-recall2-source-data/models/huize-frankendael/raw/history.html",
+      "access": "downloaded original HTTP body",
+      "sha256": "8ba08272a64f7a49472cdae411edd927f191c7211ed73c9922689bf8bcc0f457"
+    },
+    {
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=Frankendael%20Middenweg%2072",
+      "cached": "../map-recall2-source-data/models/huize-frankendael/raw/beeldbank-search.html",
+      "access": "downloaded original HTTP body",
+      "sha256": "d69558a926e5cd6630f698bd44ba331eb03dd2d3d37e2b2f2766ab36f8f85cf6"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/Category:Frankendael_House",
+      "cached": "../map-recall2-source-data/models/huize-frankendael/raw/commons-category.html",
+      "access": "downloaded original HTTP body",
+      "sha256": "8c5fec266c4bad8a298b06bc1c756b619f856a458a925ae2501466d58274cc46"
+    },
+    {
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012162192",
+      "cached": "../map-recall2-source-data/models/huize-frankendael/raw/3dbag.json",
+      "access": "downloaded original HTTP body",
+      "sha256": "820b7ef360e83b34adef48187bc35eaf69d22298bc3dfd906e814c8cc088ac37"
+    },
+    {
+      "url": "https://overpass-api.de/api/interpreter?data=%5Bout%3Ajson%5D%5Btimeout%3A25%5D%3B%28way%28around%3A80%2C52.35116%2C4.93350%29%5Bbuilding%5D%3Bway%28around%3A80%2C52.35116%2C4.93350%29%5B%22building%3Apart%22%5D%3Bnode%28around%3A45%2C52.35116%2C4.93350%29%5Bentrance%5D%3B%29%3Bout%20geom%3B",
+      "cached": "../map-recall2-source-data/models/huize-frankendael/raw/osm.json",
+      "access": "downloaded original HTTP body",
+      "sha256": "e2c5a58491bb481a8e4856a86e7068a16f77b040cbc90a15a5218669c02d155d"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Frankendael_Amsterdam.jpg",
+      "cached": "../map-recall2-source-data/models/huize-frankendael/raw/commons-front.html",
+      "access": "downloaded original HTTP body",
+      "sha256": "db6877e15ba26bc46e15a5bc4950ad1a67b9d7998f45d2f9ecbcea928e9f481d"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Frankendael_achterzijde_huis_(3).JPG",
+      "cached": "../map-recall2-source-data/models/huize-frankendael/raw/commons-rear.html",
+      "access": "downloaded original HTTP body",
+      "sha256": "2c3f9ecbbe608873dcae95a4d29c335f03f80c66d329221f71a552861410664b"
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Frankendael_Amsterdam.jpg",
+      "cached": "../map-recall2-source-data/models/huize-frankendael/raw/front.jpg",
+      "access": "downloaded original HTTP body",
+      "sha256": "aafc4dd84224ed1b4161bc4a1ac8f19a0a8e631e507cd069f7d817fdc100cbdd"
+    },
+    {
+      "url": "https://huizefrankendael.nl/nl/",
+      "cached": "../map-recall2-source-data/models/huize-frankendael/raw/operator-nl.html",
+      "access": "downloaded original HTTP body",
+      "sha256": "12e77a20f05022a78687ca21e77a89757e47b8b17cf8680b85a9300f16578909"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Frankendael,_Amsterdam,_Voorzijde.jpg",
+      "cached": "../map-recall2-source-data/models/huize-frankendael/raw/commons-front-large.html",
+      "access": "downloaded original HTTP body",
+      "sha256": "a732b090d86f2f4d4ab4cc7c5d17d2690cf7be8023c0f4e6bf149748d5f799a6"
+    },
+    {
+      "url": "https://huizefrankendael.nl/wp-content/uploads/2016/12/Vooraanzicht-zomer.jpg",
+      "cached": "../map-recall2-source-data/models/huize-frankendael/raw/operator-front.jpg",
+      "access": "downloaded original HTTP body",
+      "sha256": "a0310481041eed28743658ef07faff0b77144854a9d27f85b501ae4d6b3f2004"
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Frankendael_achterzijde_huis_%283%29.JPG/960px-Frankendael_achterzijde_huis_%283%29.JPG",
+      "cached": "../map-recall2-source-data/models/huize-frankendael/raw/rear-thumb.jpg",
+      "access": "downloaded original HTTP body",
+      "sha256": "3b5688aef18a1ff6af1b658ff84e8ea81c359e3be17b410435b54a68faa6ad84"
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Frankendael%2C_Amsterdam%2C_Voorzijde.jpg/1920px-Frankendael%2C_Amsterdam%2C_Voorzijde.jpg",
+      "cached": "../map-recall2-source-data/models/huize-frankendael/raw/front-2022-thumb.jpg",
+      "access": "downloaded original HTTP body",
+      "sha256": "4de72c2af67b2b77f6787d61bb36d3d9c5fd3f32ce33d4435c7371862586d106"
+    },
+    {
+      "url": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Middenweg%2072%20Amsterdam&rows=3",
+      "cached": "../map-recall2-source-data/models/huize-frankendael/raw/address.json",
+      "access": "downloaded original HTTP body",
+      "sha256": "2641c73dddd7d1a716a39ad2d608b6ad162d226ed74baeba54155ca043247a48"
+    },
+    {
+      "url": "https://service.pdok.nl/lv/bag/wfs/v2_0?service=WFS&version=2.0.0&request=GetFeature&typeNames=bag:verblijfsobject&outputFormat=application/json&srsName=EPSG:4326&bbox=52.35114,4.93349,52.35117,4.93354,EPSG:4326&count=10",
+      "cached": "../map-recall2-source-data/models/huize-frankendael/raw/vbo-bounded.json",
+      "access": "downloaded original HTTP body",
+      "sha256": "cd25d9af8ba35cd8892227909643c5ec78c66a695bb62eaf25ee52ccd49b8c27"
+    },
+    {
+      "url": "https://api.openstreetmap.org/api/0.6/way/1562613215/relations.json",
+      "cached": "../map-recall2-source-data/models/huize-frankendael/raw/osm-wing-parent-relations.json",
+      "access": "downloaded original HTTP body",
+      "sha256": "78154e5a92d267a0a0811f53ffaa8821c2a126d2830546bafc05ddd1e240daf5"
+    },
+    {
+      "url": "https://api.openstreetmap.org/api/0.6/way/44980011/relations.json",
+      "cached": "../map-recall2-source-data/models/huize-frankendael/raw/osm-house-parent-relations.json",
+      "access": "downloaded original HTTP body",
+      "sha256": "81ead93dab48f1acd4ae7bd0d1224340fa361ba8d1cf8646ea5314c5da7bfadc"
+    },
+    {
+      "url": "https://api.openstreetmap.org/api/0.6/map.json?bbox=4.93328,52.35102,4.93374,52.35131",
+      "cached": "../map-recall2-source-data/models/huize-frankendael/raw/osm-small-map.json",
+      "access": "downloaded original HTTP body",
+      "sha256": "052ea6f26b85ebc166b8dbc2d565eb4b5dd3ac7d572d08fb59a0ff8519d356af"
+    },
+    {
+      "url": "https://api.openstreetmap.org/api/0.6/way/1562613216/full.json",
+      "cached": "../map-recall2-source-data/models/huize-frankendael/raw/osm-se-wing-full.json",
+      "access": "downloaded original HTTP body",
+      "sha256": "65fc7f78c0e97d2c8bcd380fc7baa4e95e5feed86761c1bc48ead442e8a3e6be"
+    }
+  ],
+  "openSpaces": [
+    "No courtyard hole in current BAG parent. Surrounding forecourt, rear garden and both end setbacks remain empty; gate/fountain detached and excluded."
+  ],
+  "archiveSearch": {
+    "url": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=Frankendael%20Middenweg%2072",
+    "access": "HTTP200 JavaScript mediabank shell, no drawing inspected"
+  },
+  "uncertainties": [
+    "Current operator page photo upload2016 capture unknown; inspected clearer front2022-04-17. Rear2014-03-14 compared to current BAG and2023 roof survey.",
+    "Fine rococo ornament and pierced balusters simplified as original geometric relief. No calibrated facade drawing.",
+    "No exact public entrance OSM node returned; sourced NO door projected from BAG front edge."
+  ]
+}
