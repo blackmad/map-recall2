@@ -35,6 +35,10 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 - **Canal house reuse (user, 2026-10-09)**: identical/near-identical houses
   should share one mesh (canonical recipe hash + dimension tolerance) and a
   `sameAs`+overrides recipe for neighbours; runtime instancing follows.
+  Measured (massing only, `scripts/analysis/canal-belt-reuse.ts`, canal-belt
+  core, ~10k houses): 13% have an adjoining near-twin (574 runs, longest 8),
+  so shared meshes save ~8%; 67% share a coarse family signature, so the
+  real win is drafting from the nearest done house, not GPU memory.
 - **Perf cycle**: landmark layer renders one `THREE.Scene` per model with a
   `getBounds()` per entry per frame, no frustum cull, no eviction
   (`signature-landmarks-source.js`). Re-baseline against
