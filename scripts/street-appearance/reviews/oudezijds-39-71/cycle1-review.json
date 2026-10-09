@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "independent failure-seeking row_visual_review agent",
+  "cycle": 1,
+  "scope": "Six fixed primary 2025 municipal station crops and cycle1 candidate row; source labels are station roles, not exact Pand joins. No heldout inspection.",
+  "method": "Direct view_image inspection of all six source photographs, all six candidate photo-source-row views, cornice-upper/neck-middle/bell-lower photo-block views and cornice-upper/neck-middle/bell-lower/lower-unmatched opposite obliques. Broad rhythm and gross component contradictions take priority over exact photographed-house matching.",
+  "decision": "needs-improvement; crown and entrance assemblies fail despite useful glazing/material improvement",
+  "worstView": {
+    "image": "bell-lower-photo-source-row.png",
+    "reason": "Detached triangular roof plate intrudes across sky, admitted central fronts remain flat without bell silhouette or paired oculi, and foreground stock black awning contradicts source-supported tall ground glazing/raised side-entry mixture."
+  },
+  "criteria": [
+    {
+      "id": "window-column-cadence-and-hierarchy",
+      "importance": "critical",
+      "decision": "pass-bounded-primary-groups",
+      "reason": "Admitted dark fronts now visibly use broad separate two/three-column groups instead of dense skinny panes. Ground panes are taller and upper/attic panes shorten; late-year-neck is visibly three-column rather than six skinny columns. Surrounds remain pale with restrained dark bars. Ordinary protruding orange/green-framed context still has skinny historic window grammar, so this is not whole-block acceptance.",
+      "renderEvidence": [
+        "neck-middle-photo-source-row.png",
+        "late-year-neck-photo-source-row.png",
+        "lower-unmatched-photo-source-row.png"
+      ],
+      "remainingLimit": "Window subdivision is highly uniform and upper surrounds rather thin, but these do not outweigh the useful group-spacing improvement; exact individual pane counts remain secondary."
+    },
+    {
+      "id": "crown-family-mixture-and-paired-oculi",
+      "importance": "critical",
+      "decision": "fail",
+      "reason": "No convincing bell crest or paired round crown openings appears in the six reviewed source-row views. Neck-middle reads largely as flat stepped wall heights/generic pitched rear caps. Late-year-neck is a bare wall top, lacking the source flat cornice/neck mixture. Cornice-upper still has a visible sky slit beneath the center white beam, and bell-lower/lower-unmatched show a detached broad triangular roof plate. These are silhouette/assembly failures, not missing crown curls.",
+      "renderEvidence": [
+        "cornice-upper-photo-source-row.png",
+        "neck-middle-photo-source-row.png",
+        "bell-lower-photo-source-row.png",
+        "late-year-neck-photo-source-row.png",
+        "lower-unmatched-photo-source-row.png"
+      ],
+      "nextImprovement": "Make crown-owned wall/roof geometry actually visible, close roof/wall gaps and remove detached plates; add a clearly readable bounded neck/bell/cornice distribution with paired oculi integrated inside at least one compatible bell family."
+    },
+    {
+      "id": "joint-material-trim-and-exception",
+      "importance": "critical",
+      "decision": "pass-bounded-admitted-fronts; uncertain-whole-block",
+      "reason": "Admitted fronts read as dark charcoal/brown masonry with pale surrounds and dark sash. Upper-unmatched now includes a pale front with dark frames, retaining the visible exception. Broad row/obliques still alternate with numerous bright orange fronts and a dark green protruding facade; without exact source-to-Pand registration their ownership is unresolved and the photographed dark row is not yet convincingly reproduced across all context.",
+      "renderEvidence": [
+        "upper-unmatched-photo-source-row.png",
+        "neck-middle-photo-block.png",
+        "cornice-upper-photo-block.png"
+      ],
+      "nextImprovement": "Review exposed front-run admission and priority so ordinary facade treatments do not dominate the observed row; preserve native geometry and avoid building-ID appearance overrides."
+    },
+    {
+      "id": "ground-opening-and-raised-entry-rhythm",
+      "importance": "critical",
+      "decision": "fail",
+      "reason": "Tall glazing is a clear improvement, but many admitted fronts finish as three tall glass rectangles down to the pavement with no readable side entrance, raised base or aligned stoop/rails. The opposite obliques expose long repeated glass-only ground fronts. Ordinary context instead repeats small green fanlight doors and modest neighboring panes. This loses the source alternation of tall ground sash/side raised entry and broader commercial fronts.",
+      "renderEvidence": [
+        "neck-middle-photo-block.png",
+        "bell-lower-photo-block.png",
+        "neck-middle-photo-opposite-oblique.png",
+        "cornice-upper-photo-opposite-oblique.png"
+      ],
+      "nextImprovement": "Add connected side-entry/tall-ground-pane assemblies with meaningful raised bases and stairs/rails, plus bounded commercial variants. Do not make every tall ground opening the same glass-only module."
+    },
+    {
+      "id": "low-balcony-frequency-and-supported-extras",
+      "importance": "critical",
+      "decision": "partial-pass-balcony-frequency; fail-supported-extras",
+      "reason": "No repeating open residential balcony stack dominates the admitted primary dark fronts. However the broad black scalloped shop awning/fascia on the protruding gray front and disconnected black cross-like facade hardware are prominent in bell-lower/lower-unmatched context; the awning conflicts with the restrained source canopy/stoop grammar. Detached roof pieces independently violate the no-gap/slab allowance.",
+      "renderEvidence": [
+        "bell-lower-photo-block.png",
+        "lower-unmatched-photo-source-row.png",
+        "lower-unmatched-photo-opposite-oblique.png"
+      ],
+      "nextImprovement": "Keep low balcony frequency and constrain optional generic ground extras inside observed frontage cohorts; resolve generic shop override ownership before treating offline primary pass as actual-game success."
+    }
+  ],
+  "nextAction": "Cycle2 should first correct crown visibility/roof continuity and a connected raised side-entry ground assembly, then re-review broad row and obliques. Avoid more palette tuning until these assemblies are visibly present.",
+  "boundaries": [
+    "Heldouts entirely untouched.",
+    "No exact source-station-to-building identity claims.",
+    "Only six fixed primary source crops visually inspected; not exhaustive twenty-frontage coverage.",
+    "No game-scene or performance evidence reviewed; offline screenshots cannot establish scoped production completion.",
+    "The prior 17m Bethanien source class is separate and supplies no acceptance for this canal row."
+  ]
+}

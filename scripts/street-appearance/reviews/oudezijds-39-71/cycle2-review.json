@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "independent failure-seeking row_visual_review agent",
+  "cycle": 2,
+  "scope": "Six fixed primary 2025 municipal station crops and cycle1 candidate row; source labels are station roles, not exact Pand joins. No heldout inspection.",
+  "method": "Direct inspection of all six cycle2 source-row renders, cornice-upper/neck-middle/bell-lower block renders and neck-middle/bell-lower opposite obliques against six source photos already inspected in cycle1. CPU ray-to-native-footprint projection used only for approximate rendered-strip ownership, not source-photo identity registration.",
+  "decision": "rejected-cycle2: critical crown/roof-continuity and raised-entry failures remain; shared visible-return admission gap interrupts row rhythm",
+  "worstView": {
+    "image": "bell-lower-photo-source-row.png",
+    "reason": "Large thin triangular roof projection still spans sky at left, second projection at right; shaped cap is low/shallow and no paired oculi read. Prominent ordinary gray shop return with black scalloped awning remains."
+  },
+  "criteria": [
+    {
+      "id": "window-column-cadence-and-hierarchy",
+      "importance": "critical",
+      "decision": "pass-bounded-primary-groups",
+      "reason": "Admitted dark fronts now visibly use broad separate two/three-column groups instead of dense skinny panes. Ground panes are taller and upper/attic panes shorten; late-year-neck is visibly three-column rather than six skinny columns. Surrounds remain pale with restrained dark bars. Ordinary protruding orange/green-framed context still has skinny historic window grammar, so this is not whole-block acceptance.",
+      "renderEvidence": [
+        "neck-middle-photo-source-row.png",
+        "late-year-neck-photo-source-row.png",
+        "lower-unmatched-photo-source-row.png"
+      ],
+      "remainingLimit": "Window subdivision is highly uniform and upper surrounds rather thin, but these do not outweigh the useful group-spacing improvement; exact individual pane counts remain secondary."
+    },
+    {
+      "id": "crown-family-mixture-and-paired-oculi",
+      "importance": "critical",
+      "decision": "fail",
+      "reason": "Cycle2 adds pale cornice strips and low framed crown caps, but neck-middle still reads as wall-height steps plus shallow roof caps rather than narrowed rising neck fronts. No visibly paired oculi in six reviewed stations. Late-year-neck center remains bare wall top. Cornice-upper retains center sky slit under the floating beam. Bell-lower and lower-unmatched retain enormous thin sky triangles; source-backed silhouette mixture is not achieved.",
+      "renderEvidence": [
+        "cornice-upper-photo-source-row.png",
+        "neck-middle-photo-source-row.png",
+        "bell-lower-photo-source-row.png",
+        "late-year-neck-photo-source-row.png",
+        "lower-unmatched-photo-source-row.png"
+      ],
+      "nextImprovement": "Make crown-owned wall/roof geometry actually visible, close roof/wall gaps and remove detached plates; add a clearly readable bounded neck/bell/cornice distribution with paired oculi integrated inside at least one compatible bell family."
+    },
+    {
+      "id": "joint-material-trim-and-exception",
+      "importance": "critical",
+      "decision": "pass-bounded-main-fronts; fail-visible-row-returns",
+      "reason": "Dark main fronts/pale frames and bounded pale exception remain useful. Repeated orange/green generic protruding returns between them interrupt dark row composition, disproportionately affecting block/oblique views. CPU projection locates several returns on the same genuine buildings already admitted to the canal cohort, so this is a visible exposed-edge treatment gap rather than unrelated distant context. Exact return dimensions/photographed corner matching remain secondary.",
+      "renderEvidence": [
+        "upper-unmatched-photo-source-row.png",
+        "neck-middle-photo-block.png",
+        "cornice-upper-photo-block.png"
+      ],
+      "nextImprovement": "Review exposed front-run admission and priority so ordinary facade treatments do not dominate the observed row; preserve native geometry and avoid building-ID appearance overrides."
+    },
+    {
+      "id": "ground-opening-and-raised-entry-rhythm",
+      "importance": "critical",
+      "decision": "fail",
+      "reason": "Ground treatment is unchanged from cycle1: tall glazing improves opening hierarchy, but admitted main fronts have repeated glass-only ground openings at pavement, without readable side entry/raised base/connected stairs and rails. Ordinary returns instead retain stock green fanlight doors or generic broad shop awning. This is still a critical assembly failure; proposed cycle3 fixes are not credited to this frozen cycle2.",
+      "renderEvidence": [
+        "neck-middle-photo-block.png",
+        "bell-lower-photo-block.png",
+        "neck-middle-photo-opposite-oblique.png",
+        "cornice-upper-photo-opposite-oblique.png"
+      ],
+      "nextImprovement": "Add connected side-entry/tall-ground-pane assemblies with meaningful raised bases and stairs/rails, plus bounded commercial variants. Do not make every tall ground opening the same glass-only module."
+    },
+    {
+      "id": "low-balcony-frequency-and-supported-extras",
+      "importance": "critical",
+      "decision": "partial-pass-balcony-frequency; fail-supported-extras",
+      "reason": "No repeating open residential balcony stack dominates the admitted primary dark fronts. However the broad black scalloped shop awning/fascia on the protruding gray front and disconnected black cross-like facade hardware are prominent in bell-lower/lower-unmatched context; the awning conflicts with the restrained source canopy/stoop grammar. Detached roof pieces independently violate the no-gap/slab allowance.",
+      "renderEvidence": [
+        "bell-lower-photo-block.png",
+        "lower-unmatched-photo-source-row.png",
+        "lower-unmatched-photo-opposite-oblique.png"
+      ],
+      "nextImprovement": "Keep low balcony frequency and constrain optional generic ground extras inside observed frontage cohorts; resolve generic shop override ownership before treating offline primary pass as actual-game success."
+    }
+  ],
+  "nextAction": "Cycle3 must make native-height neck/bell/cornice fronts visibly rise from their parent walls, remove thin sky triangles and demonstrate paired oculi; add connected raised side entrances and improve cohort treatment of visible street-side returns. Re-review all six sources plus broad blocks/obliques before any heldout or production acceptance.",
+  "boundaries": [
+    "Heldouts entirely untouched.",
+    "No exact source-station-to-building identity claims.",
+    "Only six fixed primary source crops visually inspected; not exhaustive twenty-frontage coverage.",
+    "No game-scene or performance evidence reviewed; offline screenshots cannot establish scoped production completion.",
+    "The prior 17m Bethanien source class is separate and supplies no acceptance for this canal row."
+  ],
+  "catalogRevision": "1fba4a85e826205b",
+  "visibleReturnOwnership": {
+    "method": "Approximate first positive CPU ray/footprint wall intersection at saved source-row pixel, using report matrixWorld/vfov/viewport and native stage input. Hit requires native-height vertical interval. No browser or code modifications.",
+    "input": "artifacts/street-appearance/stage-inputs/oudezijds-voorburgwal-east-39-71-discovery.json",
+    "hits": [
+      {
+        "station": "neck-middle",
+        "pixel": [
+          870,
+          600
+        ],
+        "buildingId": "NL.IMBAG.Pand.0363100012177971",
+        "edge": [
+          [
+            4.899194,
+            52.374276
+          ],
+          [
+            4.899181,
+            52.374265
+          ]
+        ],
+        "trait": "orange/red narrow return with skinny glazing"
+      },
+      {
+        "station": "upper-unmatched",
+        "pixel": [
+          760,
+          600
+        ],
+        "buildingId": "NL.IMBAG.Pand.0363100012177969",
+        "edge": [
+          [
+            4.899326,
+            52.374393
+          ],
+          [
+            4.899315,
+            52.374381
+          ]
+        ],
+        "trait": "green narrow return"
+      },
+      {
+        "station": "bell-lower",
+        "pixel": [
+          470,
+          600
+        ],
+        "buildingId": "NL.IMBAG.Pand.0363100012172010",
+        "edge": [
+          [
+            4.898855,
+            52.374016
+          ],
+          [
+            4.898869,
+            52.37401
+          ]
+        ],
+        "trait": "gray narrow return and generic shop"
+      }
+    ],
+    "finding": "All three hit identities already appear in surveyed canal profile frontages, but hit wall edges differ from the surveyed assigned main-front segments. Consistent visible-return cohort treatment is a meaningful shared rhythm improvement; blanket whole-building facade overriding may incorrectly alter unrelated rear edges."
+  }
+}

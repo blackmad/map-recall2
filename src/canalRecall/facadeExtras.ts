@@ -12,7 +12,7 @@
 import type { FacadeStyle } from './genericFacades.js';
 import type { WallLayout } from './facadeLayout.js';
 import { ExtraSink, chanceFor, hash01, type ExtraContext, type RoofComponent, type RoofContext, type WallComponent } from './facadeExtraCore.js';
-import { ORNAMENT_COMPONENTS, paleMasonryAccents, raisedPilasterEntrance, raisedPlainEntrance, isStreetWall, openingsOf, windowSpans } from './facadeOrnaments.js';
+import { ORNAMENT_COMPONENTS, paleMasonryAccents, raisedPilasterEntrance, raisedPlainEntrance, canalSideEntrance, isStreetWall, openingsOf, windowSpans } from './facadeOrnaments.js';
 
 export { ExtraSink, hash01, chanceFor } from './facadeExtraCore.js';
 export type { V3, FlatTri, WallFrame, ExtraContext, RoofContext, WallComponent, RoofComponent, Chance } from './facadeExtraCore.js';
@@ -301,7 +301,7 @@ export const extraUsage: { record: null | ((c: ExtraContext, used: readonly stri
 /** Only observed defining assemblies can exceed the ordinary building allowance. */
 export const DEFINING_BUILDING_CEILING = 540;
 type DressingState = { used: string[]; groups: Set<string>; spent: number };
-const definingWall = (c: ExtraContext) => isStreetWall(c) && !!(c.recipe?.facadeAssembly && c.assemblyOwner !== false || c.recipe?.entranceAssembly && !c.shopfront);
+const definingWall = (c: ExtraContext) => isStreetWall(c) && !!(c.recipe?.facadeAssembly && c.assemblyOwner !== false || (c.recipe?.entranceAssembly || c.recipe?.groundAssembly === 'tall-side-entry') && !c.shopfront);
 
 /** Give every supported face its defining assembly before spending on optional trim. */
 export function buildingWallExtras(contexts: readonly ExtraContext[], sink: ExtraSink): void {
@@ -334,12 +334,13 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
   const reserve = street || streetDressed.has(sink) ? 0 : EXTRA_BUDGET.streetReserve;
   const remaining = Math.max(0, (street ? EXTRA_BUDGET.wall : EXTRA_BUDGET.sideWall) - state.spent);
   sink.budget = Math.max(sink.tris.length, Math.min(outer - reserve, sink.tris.length + remaining));
-  const raisedEntry = street && !!c.recipe?.entranceAssembly && !c.shopfront;
+  const raisedEntry = street && !!(c.recipe?.entranceAssembly || c.recipe?.groundAssembly === 'tall-side-entry') && !c.shopfront;
   if (raisedEntry && phase !== 'optional') {
     const before = sink.tris.length;
-    if (c.recipe?.entranceAssembly === 'raised-plain') raisedPlainEntrance(c, sink);
+    if(c.recipe?.groundAssembly === 'tall-side-entry') canalSideEntrance(c,sink);
+    else if (c.recipe?.entranceAssembly === 'raised-plain') raisedPlainEntrance(c, sink);
     else raisedPilasterEntrance(c, sink);
-    if (sink.tris.length > before) { used.push(`${c.recipe!.entranceAssembly}-entrance`); groups.add('door-frame'); groups.add('stoop'); }
+    if (sink.tris.length > before) { used.push(`${c.recipe!.entranceAssembly ?? c.recipe!.groundAssembly}-entrance`); groups.add('door-frame'); groups.add('stoop'); }
   }
   if (phase !== 'defining' && street && !raisedEntry && c.recipe?.facadeAssembly !== 'stacked-iron-balcony' && c.recipe && hash01(`${c.id}:pale-masonry-accents`) < (c.recipe.trim?.quoins ?? 0)) {
     const before = sink.tris.length; paleMasonryAccents(c, sink);

@@ -14,7 +14,12 @@
     "Construction year is a factual input, not reliable visual-period evidence for retained or rebuilt historic fronts. Independent station views can justify a locally observed frontage class; width alone cannot identify it.",
     "Test actual native neighbor geometry and dispatch budgets: isolated assembly tests passed while another wall starved the defining facade.",
     "A building-wide ornament cap is a safety limit, not a fidelity target. Prioritize architectural relationships and evaluate near-detail budgets with actual LOD ownership, visual contradictions and full-scene GPU measurements.",
-    "User steering2026-10-04: rhythm, not perfection. Prioritize distributions and relationships across a street row—frontage widths, white trim, window groups, roof families and balcony frequency. Exact corner wrapping or photo registration is secondary unless its absence changes the overall street character."
+    "User steering2026-10-04: rhythm, not perfection. Prioritize distributions and relationships across a street row—frontage widths, white trim, window groups, roof families and balcony frequency. Exact corner wrapping or photo registration is secondary unless its absence changes the overall street character.",
+    "Official address-to-Pand monument descriptions corrected legacy crown assignments. Use explicit source identities for known crown families; use joint row priors for unsourced neighbors.",
+    "Final native geometry and camera projections expose approximate roof closures that unit roof bounds cannot catch. Review the actual whole-row mesh before acceptance.",
+    "A heldout can expose a shared roof-fitting defect independently of recipe inference. Repair geometry across families, retain the failed challenge, and require a fresh challenge before admitting new style transfer.",
+    "Short visible returns belong to the row grammar: inherit coherent masonry and one quiet window column; blank fins and unrelated stock shop templates both break continuity.",
+    "Window groups and doors must share the same physical axes as stairs/rails. A step leading to generic glass is not a completed entrance assembly."
   ],
   "workflow": [
     {
@@ -408,13 +413,13 @@
     },
     {
       "id": "oudezijds-voorburgwal-east-39-71",
-      "status": "primary-observed-capability-review",
+      "status": "complete-scoped",
       "scope": "100.15m east-bank street-side row plus 48.38m adjacent heldout",
       "inventory": "scripts/data/amsterdam-monument-register/rhythm-next-plan.json#nextCanalRow",
       "nativeFrontages": 20,
       "explicitMonumentLinks": 10,
-      "nextAction": "Capture valid native whole-row baseline with all neighbors; implement joint reusable recipes and only defining missing components, then three review/improvement cycles and untouched heldout challenge. Row remains unpublished.",
-      "completion": "No runtime coverage yet; historical descriptions alone are not current-facade measurements.",
+      "nextAction": "Observe the broad compound frontage as a new bounded source group; add shared asymmetric window/access assembly, freeze a fresh adjacent challenge before expansion.",
+      "completion": "accepted scoped observed row; source/runtime/touch/performance gates passed",
       "sources": {
         "archiveCommit": "1b32bd4",
         "primarySamples": 6,
@@ -427,31 +432,31 @@
           "id": "narrow-window-groups",
           "claim": "Closely packed narrow masonry fronts read as repeated two- and three-column groups of tall separate windows. Broad ground glazing does not turn the upper floors into ribbon glazing. Upper/attic openings tend to shorten while the ground floor can be markedly taller.",
           "generatorImplication": "Preserve surveyed frontage widths and per-front two/three-bay cadence; ground and upper groups need distinct proportions.",
-          "acceptance": "pending baseline/candidate comparison"
+          "acceptance": "pass-bounded-primary; scripts/street-appearance/reviews/oudezijds-39-71/final-review.json"
         },
         {
           "id": "dark-masonry-pale-trim",
           "claim": "Dark brown/charcoal brick dominates these current samples, with bright cream/white window surrounds, cornices and ground door surrounds. Some side fronts use tan lintel/sill bands. One pale rendered front has dark frame surrounds, so white trim and dark masonry are a common combination rather than a universal palette.",
           "generatorImplication": "Use joint material/trim combinations; preserve pale rendered exception and banded brick exceptions. Do not sample blue reflections as facade color.",
-          "acceptance": "pending baseline/candidate comparison"
+          "acceptance": "pass-bounded-primary; scripts/street-appearance/reviews/oudezijds-39-71/final-review.json"
         },
         {
           "id": "crown-mixture-and-oculi",
           "claim": "Flat projecting cornices coexist with narrow raised neck fronts and a shaped bell-like crest. Paired round/oval pale-trimmed crown openings are visibly present in bell-lower. Neck-middle and late-year-neck show narrowed upper silhouettes alongside plain cornices. White crown accents and hoisting beams contribute to the row silhouette.",
           "generatorImplication": "Generic attic windows cannot substitute for visibly paired oculi. Maintain crown family mixture instead of a homogeneous neck row.",
-          "acceptance": "pending baseline/candidate comparison"
+          "acceptance": "pass-bounded-primary; scripts/street-appearance/reviews/oudezijds-39-71/final-review.json"
         },
         {
           "id": "ground-stoops-and-large-openings",
           "claim": "Ground floors alternate between tall individual sash-like glazing with side entrances, pale door surrounds, raised stoops with iron handrails, and broader commercial glazing. These differ from the regular smaller upper rows and are visible contributors to canal frontage rhythm.",
           "generatorImplication": "Keep ground doors and glazing plus plausible raised-entry assemblies; do not identify buildings with copied shop names.",
-          "acceptance": "pending baseline/candidate comparison"
+          "acceptance": "pass-bounded-primary; scripts/street-appearance/reviews/oudezijds-39-71/final-review.json"
         },
         {
           "id": "low-balcony-frequency",
           "claim": "These six sampled central fronts show window boxes, stoop railings and a projecting small ground canopy; no repeating open residential balcony stacks are evident. Window-box supports and entry railings should not be counted as stacked balconies.",
           "generatorImplication": "Do not transfer the Bethaniën stacked-balcony prior into this new canal row. Frequency remains a sampled-row observation, not a citywide estimate.",
-          "acceptance": "pending baseline/candidate comparison"
+          "acceptance": "pass-bounded-primary; scripts/street-appearance/reviews/oudezijds-39-71/final-review.json"
         }
       ],
       "baselineDecision": {
@@ -462,7 +467,214 @@
         "views": 24,
         "browserErrors": [],
         "criticalMissing": "Window cadence, cornice/neck/bell mix and paired oculi, joint dark-masonry/pale-trim, correlated ground glazing/raised entrances, low incidental balcony frequency."
-      }
+      },
+      "cycles": [
+        {
+          "id": 1,
+          "status": "rejected",
+          "review": "artifacts/street-appearance/rows/oudezijds-39-71/cycle1/independent-review.json",
+          "improved": [
+            "two/three-column hierarchy",
+            "dark masonry and pale surrounds",
+            "low balconies"
+          ],
+          "criticalFailures": [
+            "missing readable neck/bell crowns and oculi",
+            "detached roof plates",
+            "generic tall-glass ground floor without connected side entrances"
+          ]
+        },
+        {
+          "id": 2,
+          "status": "rejected",
+          "evidence": "artifacts/street-appearance/rows/oudezijds-39-71/cycle2/index.html",
+          "criticalFailures": [
+            "approximate roof end closures cross visible source frontage",
+            "crown silhouette too shallow",
+            "ordinary narrow protruding facets interrupt scoped palette"
+          ],
+          "nextChanges": [
+            "clip approximate roof behind surveyed front",
+            "native-height bounded taller crown envelope",
+            "stronger recipe-colored surrounds",
+            "connected raised-entry assembly"
+          ],
+          "review": "scripts/street-appearance/reviews/oudezijds-39-71/cycle2-review.json"
+        },
+        {
+          "id": 3,
+          "status": "rejected",
+          "review": "scripts/street-appearance/reviews/oudezijds-39-71/cycle3-review.json",
+          "improved": [
+            "readable crown family mixture and paired oculi",
+            "roof blades removed",
+            "stronger recipe-colored surrounds",
+            "connected stairs and rails"
+          ],
+          "criticalFailures": [
+            "cornice sky slit on a concave averaged frontage",
+            "blank return walls interrupt facade rhythm",
+            "steps lead to undifferentiated glazing"
+          ]
+        },
+        {
+          "id": 4,
+          "status": "admitted-traits-pass-context-roof-fail",
+          "review": "scripts/street-appearance/reviews/oudezijds-39-71/cycle4-review.json"
+        },
+        {
+          "id": 5,
+          "status": "primary-visual-pass-production-pending",
+          "review": "scripts/street-appearance/reviews/oudezijds-39-71/cycle5-review.json"
+        }
+      ],
+      "publication": "Accepted observed100.15m,18fronts; next-south transfer withheld",
+      "productionEvidence": [
+        "scripts/street-appearance/reviews/oudezijds-39-71/production-review.json"
+      ],
+      "heldoutDecision": {
+        "status": "failed-transfer-withheld",
+        "review": "scripts/street-appearance/reviews/oudezijds-east-next-south/failed-transfer-review.json",
+        "scope": "48m next-south extension; seven eligible fronts",
+        "failure": "Existing generic roof/crown fitting creates detached wings and sky gaps. Shared facade fields compatible in bounded views, but overall transfer not accepted.",
+        "crownPolicy": "Official crown metadata and source-visual construction-date overrides intentionally did not transfer.",
+        "nextAction": "Observe the broad compound frontage as a new bounded source group; add shared asymmetric window/access assembly, freeze a fresh adjacent challenge before expansion.",
+        "rendererRepair": "scripts/street-appearance/reviews/oudezijds-east-next-south/renderer-repair-review.json"
+      },
+      "coverage": {
+        "accepted": [
+          {
+            "profileId": "oudezijds-voorburgwal-east-39-71-discovery",
+            "lengthM": 100.15,
+            "fronts": 18
+          }
+        ],
+        "withheld": [
+          {
+            "id": "oudezijds-east-next-south",
+            "lengthM": 48.38,
+            "reason": "Wider compound frontage/access assembly gap; failed original heldout retained"
+          }
+        ],
+        "failed": [
+          "Original south-row transfer scene; roof attachment subsequently repaired as regression, not fresh transfer acceptance"
+        ]
+      },
+      "finalVisualDecision": "scripts/street-appearance/reviews/oudezijds-39-71/final-review.json",
+      "demo": "http://127.0.0.1:5197/rows/oudezijds-39-71/index.html"
+    },
+    {
+      "id": "sloterdijkermeer-nut-genoegen-mapped-garden-houses",
+      "status": "accepted-scoped-mapped-restoration",
+      "scope": "Only disjoint source-mapped small buildings wholly inside OSM allotment polygons w46349143 and w4827637; profiles apply to mapped garden-house groups, not surrounding neighborhoods.",
+      "completion": "376 mapped houses restored; root and independent desktop/touch review passed both parks and railway transition. Native source identity/geometry retained; low-rise architecture approximate by user authorization. Unmapped plots, photographic fidelity and physical-phone performance remain outside acceptance.",
+      "inventory": {
+        "boundarySource": "review-data/allotment-houses/park-boundaries.geojson",
+        "sourceInventory": "artifacts/sloterdijkermeer-review/source-report.json",
+        "eligibleFootprints": 376,
+        "parkCounts": {
+          "Tuingroep Sloterdijkermeer": 149,
+          "Tuinpark Nut & Genoegen": 227
+        },
+        "excludedLargerFootprints": 5,
+        "retainedInstalledFeatures": 7111,
+        "tiles": [
+          "14/8412/5383",
+          "14/8413/5383"
+        ],
+        "coverageLimit": "Partial mapped coverage. Sloterdijkermeer has 149 mapped restored small-building footprints versus 274 municipal garden plots reported in root research; plots and footprints are not necessarily one-to-one. No assertion that all houses or plots are modeled."
+      },
+      "userSizeOverride": "User authorized approximate garden-house sizes. Preserve source footprint positions and orientation. One-storey height, gable roofs, colors and openings are approximate display priors; no individually photographed-building match is asserted.",
+      "sources": [
+        "artifacts/sloterdijkermeer-review/user-reference-map.png",
+        "artifacts/sloterdijkermeer-review/user-empty-game.png",
+        "artifacts/sloterdijkermeer-review/source-provenance.json"
+      ],
+      "traits": [
+        {
+          "id": "repeated-small-native-footprints",
+          "importance": "critical",
+          "relationship": "Many small separated footprints repeat beside the mapped path and ditch grid; larger communal buildings and open paths remain distinct.",
+          "source": "user-reference-map.png plus cached OSM footprint inventory",
+          "generatorCapability": "accepted for scoped mapped restoration; source and actual game checks pass; individual architecture remains approximate"
+        },
+        {
+          "id": "low-house-scale",
+          "importance": "critical",
+          "relationship": "Single-storey small-house scale rather than ordinary urban multi-storey extrusions.",
+          "source": "user approximate-size authorization; architecture beyond small map footprints not verified",
+          "generatorCapability": "accepted for scoped mapped restoration; source and actual game checks pass; individual architecture remains approximate"
+        },
+        {
+          "id": "native-open-space-retention",
+          "importance": "critical",
+          "relationship": "Source footprints preserve separation, channels, paths and retained large-building neighbors.",
+          "source": "OSM polygons and installed-footprint overlap checks",
+          "generatorCapability": "accepted for scoped mapped restoration; source and actual game checks pass; individual architecture remains approximate"
+        }
+      ],
+      "sampling": {
+        "representativeIds": [
+          "w57864579",
+          "w57864454"
+        ],
+        "transitionIds": [
+          "w57866249",
+          "w57866574"
+        ],
+        "heldoutIds": [
+          "w1172766345",
+          "w1215276382"
+        ],
+        "gameViews": "Fix whole-park, front and pan views before deciding acceptance; inspect actual rendered source-covered rows in both parks and coarse-detail transition."
+      },
+      "capabilityGaps": [
+        "Unmapped plot houses are unfilled",
+        "Architectural roof/material/opening details are not individually surveyed",
+        "No extension to other allotment parks accepted"
+      ],
+      "cycles": [
+        {
+          "cycle": 1,
+          "technicalEvidence": "source-validation.json and independent-code-review.json",
+          "visualDecision": "limited-central-game-view-accepted; full scoped completion pending",
+          "failedEvidence": "Initial generator rejected all native MultiPolygon inputs; independently found and repaired before visual review. Preserve failure in independent-code-review.json.",
+          "renderEvidence": "artifacts/sloterdijkermeer-review/after",
+          "independentReview": "artifacts/sloterdijkermeer-review/independent-visual-review.json"
+        },
+        {
+          "cycle": 2,
+          "visualDecision": "accepted-scoped-mapped-restoration",
+          "renderEvidence": "artifacts/sloterdijkermeer-review/game",
+          "rootReview": "Root inspected the source map, restored wide actual scene, close Photo scene, interactive demo and touch Nut & Genoegen view; independent reviewer inspected all8 desktop/touch views.",
+          "performance": "Same-version on/off/repeat full-scene GPU timings and frame intervals recorded. 16.7ms median frames throughout; GPU variation prevents exact marginal-cost claim.",
+          "failedEvidence": "game/failed-idle-drift-report.json preserves first pan check with tiny idle rider drift. Corrected harness holds player fixed; all8 final stationary checks pass."
+        }
+      ],
+      "reviewerDecision": "Root and independent reviewer accept restoration of the376 mapped source houses across both parks and railway transition. Four looks plus eight desktop/touch captures and same-version performance evidence pass scoped gates. Unmapped plots and exact photographed architecture excluded.",
+      "nextAction": "Scoped mapped restoration complete; do not expand this prior to other parks without source inventory/review.",
+      "productionEvidence": "artifacts/sloterdijkermeer-review/game/report.json",
+      "independentReview": "artifacts/sloterdijkermeer-review/independent-visual-review.json"
+    },
+    {
+      "id": "oudezijds-next-south-compound-frontage",
+      "status": "capability-gap",
+      "scope": "48m adjacent south row, originally failed heldout; now an exposed counterexample, not a fresh validation set",
+      "sources": [
+        "scripts/street-appearance/reviews/oudezijds-east-next-south/evaluation-plan.json"
+      ],
+      "capabilityGap": "Asymmetric wider facade with three broad main windows beside a narrow entrance/access tower; coherent connected ground hierarchy.",
+      "nextAction": "Freeze this group as discovery, inventory nearby street-side rows from cached BAG/register data, acquire one bounded municipal sample group and select a fresh independent challenge before implementing shared asymmetric grouping.",
+      "coverage": {
+        "accepted": [],
+        "withheld": [
+          "oudezijds-east-next-south"
+        ],
+        "failed": [
+          "original heldout"
+        ]
+      },
+      "completion": "not-accepted"
     }
   ],
   "coverageInventory": [
@@ -537,7 +749,7 @@
       ],
       "side": -1,
       "reachM": 12,
-      "lengthM": 63.0,
+      "lengthM": 63,
       "heldout": false,
       "learnedFrom": null,
       "frontageAssignments": 7,
@@ -564,7 +776,7 @@
       ],
       "side": 1,
       "reachM": 12,
-      "lengthM": 63.0,
+      "lengthM": 63,
       "heldout": false,
       "learnedFrom": null,
       "frontageAssignments": 9,
@@ -712,6 +924,46 @@
         "bethaniendwarsstraat-left-38",
         "bethaniendwarsstraat-left-63"
       ]
+    },
+    {
+      "profileId": "sloterdijkermeer-nut-genoegen-mapped-garden-houses",
+      "scope": "Only disjoint source-mapped small buildings wholly inside OSM allotment polygons w46349143 and w4827637; profiles apply to mapped garden-house groups, not surrounding neighborhoods.",
+      "sourceBuildings": 381,
+      "mappedSmallBuildings": 376,
+      "parkCounts": {
+        "Tuingroep Sloterdijkermeer": 149,
+        "Tuinpark Nut & Genoegen": 227
+      },
+      "status": "reviewing-mapped-restoration",
+      "completion": "not-accepted",
+      "coverageLimit": "Partial mapped coverage. Sloterdijkermeer has 149 mapped restored small-building footprints versus 274 municipal garden plots reported in root research; plots and footprints are not necessarily one-to-one. No assertion that all houses or plots are modeled.",
+      "evidenceIds": [
+        "artifacts/sloterdijkermeer-review/user-reference-map.png",
+        "artifacts/sloterdijkermeer-review/user-empty-game.png",
+        "artifacts/sloterdijkermeer-review/source-provenance.json"
+      ]
+    },
+    {
+      "profileId": "oudezijds-voorburgwal-east-39-71-discovery",
+      "streetName": "Oudezijds Voorburgwal",
+      "segment": [
+        [
+          4.89949,
+          52.3746
+        ],
+        [
+          4.898626,
+          52.373866
+        ]
+      ],
+      "side": 1,
+      "reachM": 20,
+      "lengthM": 100.15,
+      "heldout": false,
+      "frontageAssignments": 18,
+      "status": "complete-scoped",
+      "completion": "accepted-observed-row",
+      "learnedFrom": null
     }
   ]
 }
