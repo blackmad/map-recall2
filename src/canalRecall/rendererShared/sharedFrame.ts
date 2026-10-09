@@ -43,6 +43,8 @@ export interface FrameParticipant {
   mercatorFromLocal?(ctx: FrameContext): Mat4 | null | undefined;
   /** Per-frame update; return false to skip this participant this pass. */
   beforeRender?(ctx: FrameContext): boolean | void;
+  /** Changes whenever something that casts changes without adding/removing root children (e.g. suppressed walls). */
+  revision?(): number | string;
   /** Overlay only: drawn first with this override, then normally (the vehicle x-ray). */
   xrayMaterial?(): any | null;
   /** Called once the renderer exists (immediately if it already does). */
@@ -57,6 +59,10 @@ export type SharedFrameOptions = {
   beforeId?: () => string | undefined;
   /** Minimum map zoom for shadows; below it the box would be too coarse to read. */
   shadowMinZoom?: number;
+  /** Shadow box step while following the view, metres (default 16). */
+  shadowSnapM?: number;
+  /** Redraw the shadow map at least this often, frames (default 120), for changes no signature catches. */
+  shadowRefreshFrames?: number;
 };
 
 type Handle = { wrapper: any; participant: FrameParticipant; attached: boolean };
@@ -86,6 +92,11 @@ export class SharedFrame {
   private keepOverlayOnTop: (() => void) | null = null;
   private removedLayers = 0;
   private shadowsOn = true;
+  /** Shadow-map reuse: the box and caster signature it was drawn for, and its age in frames. */
+  private shadowKey = '';
+  private shadowAge = 0;
+  /** Frames whose main pass redrew the shadow map (diagnostics / perf). */
+  shadowRedraws = 0;
 
   constructor(THREE: any, map: any, options: SharedFrameOptions = {}) {
     this.THREE = THREE;
@@ -216,6 +227,20 @@ export class SharedFrame {
     };
   }
 
+  /** Cheap fingerprint of what casts: which roots draw, their direct children and visibility, participant revisions. */
+  private casterSignature(drawn: Handle[]): string {
+    let sig = '';
+    for (const handle of drawn) {
+      let sum = 0;
+      for (const child of handle.participant.root.children) sum += child.visible ? child.id : child.id * 3;
+      sig += `${handle.wrapper.id}:${handle.participant.root.children.length}:${sum}:${handle.participant.revision?.() ?? ''};`;
+    }
+    return sig;
+  }
+
+  /** Force the shadow map to be redrawn next frame. */
+  invalidateShadows(): void { this.shadowKey = ''; this.map.triggerRepaint?.(); }
+
   /** Absolute ENU metres (fixed anchor) of a Mercator point; the shadow snap frame. */
   private absOf(p: Vec3): Vec3 {
     if (!this.anchor) { this.anchor = [p[0], p[1], 0]; this.anchorUnits = mercatorUnitsPerMetre(p[1]); }
@@ -276,12 +301,23 @@ export class SharedFrame {
       // its contribution is zeroed instead.
       const shadows = this.rig.options.shadows && this.shadowsOn && ctx.zoom >= (this.options.shadowMinZoom ?? 15);
       this.rig.sun.shadow.intensity = shadows ? 1 : 0;
+      let redraw = false;
       if (shadows) {
         const c = this.map.getCenter();
         const focus = this.absOf(mercatorOfLngLat(c.lng, c.lat, 0));
-        this.rig.follow(focus, ctx.zoom, abs => worldOfMercator(fm, this.mercatorOfAbs(abs)));
-      }
-      renderer.shadowMap.needsUpdate = shadows;
+        const fit = this.rig.follow(focus, ctx.zoom, abs => worldOfMercator(fm, this.mercatorOfAbs(abs)), this.options.shadowSnapM ?? 16);
+        // The scene is static and the box moves in coarse steps, so the map is
+        // redrawn only when the box, the casters or the age say so. Between
+        // redraws only the shadow matrix follows the moving (eye-relative) world.
+        const key = `${fit.targetAbs.map(v => v.toFixed(3)).join(',')}|${fit.right}|${this.casterSignature(drawn)}`;
+        redraw = key !== this.shadowKey || ++this.shadowAge >= (this.options.shadowRefreshFrames ?? 120);
+        if (redraw) { this.shadowKey = key; this.shadowAge = 0; this.shadowRedraws++; }
+        else {
+          this.rig.sun.updateMatrixWorld();
+          this.rig.sun.shadow.updateMatrices(this.rig.sun);
+        }
+      } else this.shadowKey = '';
+      renderer.shadowMap.needsUpdate = redraw;
       renderer.render(this.scene, this.camera);
     } else {
       renderer.shadowMap.needsUpdate = false;
