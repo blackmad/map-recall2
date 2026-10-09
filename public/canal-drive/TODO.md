@@ -27,15 +27,23 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   its panels too regular; Luther Museum roof uniformly dark, frames should be
   pale; Frankendael roof should read as tile; Nieuwendammerkerk nave roof
   reads khaki not red tile; Posthoornkerk is 39k tris (cap 40k) — reduce.
-- **Second landmark batch follow-ups (2026-10-09)**: Maarten Lutherkerk has
-  a ~20 m 3DBAG "tower" the photo does not show (spire is small on the ridge)
-  — check 3DBAG vs photo and remove; Gerard Dou Synagogue side/rear walls are
-  open (hollow from behind); Keizersgrachtkerk is 23k tris; Sint-Petrus-en-
-  Pauluskerk tower is a plain slab and renders dark; Levend Paardenmuseum is
-  placed on the Hollandsche Manege as its tenant without a cited source.
+- **P0 — seven landmarks held after user review (2026-10-09)**: Torture
+  Museum and Theo Thijssen (facade slab detached from / floating in front of
+  the shell), Pathé de Munt (grey 3DBAG lump), Sint-Petrus-en-Pauluskerk
+  (tower/gable wrong, dark), Maarten Lutherkerk (3DBAG tower the photo lacks),
+  Oudemanhuispoort and Levend Paardenmuseum (bare massing). `status: "held"`
+  in `manualCatalogue.json` keeps them and their GLBs but out of the game,
+  galleries and backlog counts (back to pending). Root cause: integrated on
+  lane self-reports after viewing 3 of 12 contact sheets, and no gate catches
+  facade parts detached from the shell. Fix the process before more installs:
+  a detached-part / gap gate over every GLB, and the integrator views every
+  contact sheet (front + 3/4 + in-game) before merging.
+  Still installed from the batch: Keizersgrachtkerk (23k tris), Gerard Dou
+  Synagogue (side/rear walls open — hidden by neighbours, audit it),
+  Lekstraatsynagoge, Houseboat Museum, Museum Amsterdam Noord.
   Skipped with reasons: Max Euwe Centrum and Bijzondere Collecties (tenants of
-  huge multi-wing panden — need the large-building tier), Schouwburgpoort (gate
-  no longer exists), Begijnhof (houses already rendered individually).
+  huge multi-wing panden — large-building tier), Schouwburgpoort (gate gone),
+  Begijnhof (houses already rendered individually).
 - **Intro/landmark streaming follow-ups (2026-10-09)**: the flight still runs
   ~4.0 s vs 3.5 s designed (MapLibre intermediate-zoom tiles + three chunk
   installs, ~0.47 s long tasks). 25–40 landmark models load during the spawn

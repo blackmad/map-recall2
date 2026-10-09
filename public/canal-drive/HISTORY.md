@@ -1,5 +1,15 @@
 # Canal Recall — what is built
 
+## Seven landmarks held back after review (2026-10-09)
+
+The user flagged the second batch: facades floating off their shells (Torture
+Museum, Theo Thijssen), a grey lump (Pathé de Munt), wrong tower and dark
+render (Petrus en Paulus), and bare 3DBAG massings. The integrator had merged
+on lane reports after viewing only 3 of 12 contact sheets. Rather than delete
+work, the catalogue gained `status: "held"` (+ `heldReason`), filtered in
+`manualModels.ts`, so a model leaves the game and galleries and returns to the
+backlog as pending until it passes review again.
+
 ## Canal elevation behind a flag; earlier street questions (2026-10-09)
 
 `?elevation=1` sinks canal water 1.77 m below the quays (median measured

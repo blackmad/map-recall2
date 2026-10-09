@@ -12699,6 +12699,8 @@ Map source: ${osmUrl(places[i][0])}`);
     },
     {
       id: "petrus-en-paulus-kerk",
+      status: "held",
+      heldReason: "Tower and gable do not match the photo; renders dark (user review 2026-10-09).",
       name: "Sint-Petrus-en-Pauluskerk",
       landmarkId: "extract_landmarks_1828911806",
       modelUrl: "./models/petrus-en-paulus-kerk.glb",
@@ -12897,6 +12899,8 @@ Map source: ${osmUrl(places[i][0])}`);
     },
     {
       id: "maarten-lutherkerk",
+      status: "held",
+      heldReason: "3DBAG tower block not in the photo; spire placement wrong (2026-10-09).",
       name: "Maarten Lutherkerk",
       landmarkId: "extract_landmarks_404188843",
       modelUrl: "./models/maarten-lutherkerk.glb",
@@ -13207,6 +13211,8 @@ Map source: ${osmUrl(places[i][0])}`);
     },
     {
       id: "levend-paardenmuseum",
+      status: "held",
+      heldReason: "Plain 3DBAG massing plus a gateway; needs facade detail (user review 2026-10-09).",
       name: "Levend Paardenmuseum",
       landmarkId: "extract_landmarks_82936853",
       modelUrl: "./models/levend-paardenmuseum.glb",
@@ -13336,6 +13342,8 @@ Map source: ${osmUrl(places[i][0])}`);
     },
     {
       id: "oudemanhuispoort",
+      status: "held",
+      heldReason: "Gate-house only, single-slope LoD roof, little detail (user review 2026-10-09).",
       name: "Oudemanhuispoort",
       landmarkId: "extract_landmarks_1122909064",
       modelUrl: "./models/oudemanhuispoort.glb",
@@ -13465,6 +13473,8 @@ Map source: ${osmUrl(places[i][0])}`);
     },
     {
       id: "torture-museum",
+      status: "held",
+      heldReason: "Facade slab detached from the shell; low detail (user review 2026-10-09).",
       name: "Torture Museum",
       landmarkId: "extract_landmarks_417591223",
       modelUrl: "./models/torture-museum.glb",
@@ -13542,6 +13552,8 @@ Map source: ${osmUrl(places[i][0])}`);
     },
     {
       id: "theo-thijssen-museum",
+      status: "held",
+      heldReason: "Facade/cornice floats in front of the house body (user review 2026-10-09).",
       name: "Theo Thijssen Museum",
       landmarkId: "extract_landmarks_1824871810",
       modelUrl: "./models/theo-thijssen-museum.glb",
@@ -13627,6 +13639,8 @@ Map source: ${osmUrl(places[i][0])}`);
     },
     {
       id: "pathe-de-munt",
+      status: "held",
+      heldReason: "Reads as a grey 3DBAG lump; needs real facade work (user review 2026-10-09).",
       name: "Path\xE9 de Munt",
       landmarkId: "extract_landmarks_257271103",
       modelUrl: "./models/pathe-de-munt.glb",
@@ -16466,7 +16480,9 @@ Map source: ${osmUrl(places[i][0])}`);
       surveyed: { anchor: [4.91313365, 52.37829585], northOffsetDegrees: 15.8, source: "OSM main auditorium w755464132 rectangle centre / bearing" },
       attribution: ownAttribution("Muziekgebouw and Bimhuis", "https://www.studiocarchitecten.nl/en/bimhuis")
     },
-    ...manualCatalogue_default,
+    // `status: 'held'` keeps a model in the catalogue (and its GLB in git) but
+    // out of the game and galleries until it passes review again.
+    ...manualCatalogue_default.filter((e) => e.status !== "held"),
     ...hospital_footprints_default.sites.map((s) => ({ id: s.id, name: s.id === "olvg-west" ? "OLVG West" : "OLVG Oost", landmarkId: s.id, modelUrl: `./models/${s.id}.glb`, suppressOsmIds: s.buildings.filter((f) => f.properties.building !== "construction").flatMap((f) => [f.id, ...f.properties["ref:bag"] ? [`NL.IMBAG.Pand.${f.properties["ref:bag"]}`] : []]), spatialSuppression: false, groundAltitudeMetres: 0, facingOffsetDegrees: 0, surveyed: { anchor: s.id === "olvg-west" ? [4.8397, 52.37115] : [4.9153, 52.3582], northOffsetDegrees: 0, source: "OSM building rings; local east/south metres" }, attribution: ownAttribution(s.id === "olvg-west" ? "OLVG West" : "OLVG Oost", "https://www.olvg.nl/over-olvg/") }))
   ];
 

@@ -11629,6 +11629,8 @@
 },
 {
   "id": "petrus-en-paulus-kerk",
+  "status": "held",
+  "heldReason": "Tower and gable do not match the photo; renders dark (user review 2026-10-09).",
   "name": "Sint-Petrus-en-Pauluskerk",
   "landmarkId": "extract_landmarks_1828911806",
   "modelUrl": "./models/petrus-en-paulus-kerk.glb",
@@ -11827,6 +11829,8 @@
 },
 {
   "id": "maarten-lutherkerk",
+  "status": "held",
+  "heldReason": "3DBAG tower block not in the photo; spire placement wrong (2026-10-09).",
   "name": "Maarten Lutherkerk",
   "landmarkId": "extract_landmarks_404188843",
   "modelUrl": "./models/maarten-lutherkerk.glb",
@@ -12137,6 +12141,8 @@
   },
   {
     "id": "levend-paardenmuseum",
+    "status": "held",
+    "heldReason": "Plain 3DBAG massing plus a gateway; needs facade detail (user review 2026-10-09).",
     "name": "Levend Paardenmuseum",
     "landmarkId": "extract_landmarks_82936853",
     "modelUrl": "./models/levend-paardenmuseum.glb",
@@ -12266,6 +12272,8 @@
   },
   {
     "id": "oudemanhuispoort",
+    "status": "held",
+    "heldReason": "Gate-house only, single-slope LoD roof, little detail (user review 2026-10-09).",
     "name": "Oudemanhuispoort",
     "landmarkId": "extract_landmarks_1122909064",
     "modelUrl": "./models/oudemanhuispoort.glb",
@@ -12395,6 +12403,8 @@
   },
   {
     "id": "torture-museum",
+    "status": "held",
+    "heldReason": "Facade slab detached from the shell; low detail (user review 2026-10-09).",
     "name": "Torture Museum",
     "landmarkId": "extract_landmarks_417591223",
     "modelUrl": "./models/torture-museum.glb",
@@ -12472,6 +12482,8 @@
   },
   {
     "id": "theo-thijssen-museum",
+    "status": "held",
+    "heldReason": "Facade/cornice floats in front of the house body (user review 2026-10-09).",
     "name": "Theo Thijssen Museum",
     "landmarkId": "extract_landmarks_1824871810",
     "modelUrl": "./models/theo-thijssen-museum.glb",
@@ -12557,6 +12569,8 @@
   },
   {
     "id": "pathe-de-munt",
+    "status": "held",
+    "heldReason": "Reads as a grey 3DBAG lump; needs real facade work (user review 2026-10-09).",
     "name": "Pathé de Munt",
     "landmarkId": "extract_landmarks_257271103",
     "modelUrl": "./models/pathe-de-munt.glb",
