@@ -1535,5 +1535,39 @@
       "sourceUrl": "https://data.amsterdam.nl/",
       "note": "Two metres outside surveyed central Honthorststraat vehicle arch, checked against archived 2025 municipal panorama; camera location is separate."
     }
+  },
+{
+  "modelId": "fire-station-nico",
+  "name": "Brandweerkazerne Nico",
+  "description": "Nico retains the N of Nieuwmarkt: the station once operated from De Waag, then De Ruijterkade, before moving beside the IJtunnel in 1973. OPL renovated the station and its offices in 2017\u20132018. A 2025 roof renovation stripped the roof to its concrete structure and added 140 mm PIR insulation around the many aerials and installations.",
+  "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-nico/",
+  "center": [
+    52.3702813,
+    4.9095912
+  ],
+  "routeDestination": {
+    "center": [
+      52.370273,
+      4.909458
+    ],
+    "note": "Approximate northwest public apron frontage checked against exact native BAG edge and current photos"
   }
+},
+{
+  "modelId": "fire-station-osdorp",
+  "name": "Kazerne Osdorp",
+  "description": "Opened in 2005, Osdorp\u2019s station was designed by dietzsch + van der sanden around the rapid movement of crews and vehicles. Its transparent vehicle hall has a rolling sedum roof; a glazed corridor joins it to a quieter brick block containing the crew\u2019s living spaces. The station is also known as the Fanny Blankers-Koen kazerne.",
+  "sourceUrl": "https://arcam.nl/architectuur-gids/brandweerkazerne-osdorp/",
+  "center": [
+    52.3664870928522,
+    4.802462823962739
+  ],
+  "routeDestination": {
+    "center": [
+      52.3664713021276,
+      4.802471307901373
+    ],
+    "note": "Main external pedestrian entrance under source-visible balcony, mapped on exact native southern facade, route pin1.85m outward into open forecourt. Station interiors not publicly accessible; preserve destination on route failure."
+  }
+}
 ]

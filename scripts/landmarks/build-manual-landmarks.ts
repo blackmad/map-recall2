@@ -1,3 +1,5 @@
+import {buildFireStationOsdorp} from './fire-station-osdorp-builder';
+import {buildFireStationNico} from './fire-station-nico-builder';
 import {buildFireStationHendrik} from './fire-station-hendrik-builder';
 import {buildFireStationDirk} from './fire-station-dirk-builder';
 import {buildMediamatic} from './mediamatic-builder';
@@ -297,7 +299,9 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   else if(id.startsWith('olvg-'))hospital(id);
   else {
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
-    if(id==='fire-station-hendrik')buildFireStationHendrik(w,d,helpers);
+    if(id==='fire-station-nico')buildFireStationNico(w,d,helpers);
+    else if(id==='fire-station-osdorp')buildFireStationOsdorp(w,d,helpers);
+    else if(id==='fire-station-hendrik')buildFireStationHendrik(w,d,helpers);
     else if(id==='fire-station-dirk')buildFireStationDirk(w,d,helpers);
     else if(id==='petruskerk')buildPetruskerk(w,d,helpers);
     else if(id==='kinderkookkafe')buildKinderkookkafe(w,d,helpers);
