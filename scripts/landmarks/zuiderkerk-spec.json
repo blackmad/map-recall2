@@ -1,0 +1,43 @@
+{
+  "id": "zuiderkerk",
+  "name": "Zuiderkerk",
+  "landmarkId": "extract_landmarks_684653190",
+  "modelUrl": "./models/zuiderkerk.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012171559"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [4.899794626631213, 52.37027264228956],
+    "headingDegrees": 0,
+    "lengthMetres": 52,
+    "widthMetres": 48
+  },
+  "surveyed": {
+    "anchor": [4.899794626631213, 52.37027264228956],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012171559 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#8a5642",
+    "stone": "#d6d0bf",
+    "slate": "#555a62",
+    "glass": "#7d9aa0",
+    "dark": "#2e2a26",
+    "white": "#e6e2d4",
+    "frame": "#e8e4d6",
+    "gold": "#d9b44a",
+    "red": "#9c2a22",
+    "bronze": "#4b4a42"
+  },
+  "attribution": {
+    "title": "Zuiderkerk",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Zuiderkerk_(Amsterdam)",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
+  }
+}
