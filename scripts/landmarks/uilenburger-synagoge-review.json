@@ -1,0 +1,36 @@
+{
+  "id": "uilenburger-synagoge",
+  "status": "plinth-corrected-pending-exact-root-export-and-native-review",
+  "reviewedOn": "2026-10-08T20:05:42.358904+00:00",
+  "correction": "Gray material owns the0..0.63m lower wall. The brick shell starts at0.63m; projecting front outer piers and centre risalit use the same gray/brick split, retaining their original upper heights. Apertures, roof survey and native placement remain unchanged.",
+  "failedExport": {
+    "sha256": "dc9f423318a03616ac5bb1a7e9ac6573ad0342d2b80bf2d6a3e71d56ec03e699",
+    "preservedPath": "artifacts/uilenburger-synagoge-draft/failed-plinth-dc9f4233.glb",
+    "reason": "Coincident gray and brick lower shells lost gray visibility. The old export fails new lower-wall material ownership probes."
+  },
+  "correctedDraft": {
+    "sha256": "70bcb0717f0ca43a3471a858c5653d8e5cf3ddd77984db3e5a7c343869d714e4",
+    "path": "artifacts/uilenburger-synagoge-draft/uilenburger-synagoge.glb",
+    "triangles": 12822,
+    "bytes": 135532,
+    "textures": 0
+  },
+  "checks": {
+    "authoredFrontSide": true,
+    "decodedFrontSide": true,
+    "plinthProbes": 48,
+    "lowerFirstHitMaterial": "greyBrick",
+    "coincidentBrickAtFirstHitRejected": true,
+    "upperBandMaterial": "brick",
+    "priorGlazingChecks": true,
+    "decodedUpwardRoofTriangles": 18,
+    "openForecourtAndSideGaps": true
+  },
+  "checkCommand": "node --import tsx scripts/check-uilenburger-synagoge-geometry.ts [actual-compressed-glb-path]",
+  "nativeAcceptance": false,
+  "pending": [
+    "Root generation through shared dispatcher and repeated exact-export check.",
+    "Independent revised CPU comparison, native gallery/front/rear and actual game-surface acceptance."
+  ],
+  "sourceEvidence": "Existing archived front2016.jpg, commons-front.jpg and March2024 operator brochure; no new source acquisition."
+}
