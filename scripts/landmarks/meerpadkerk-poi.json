@@ -1,0 +1,46 @@
+{
+  "id": "extract_landmarks_1566771183",
+  "name": "Meerpadkerk",
+  "coordinates": [
+    4.9341123,
+    52.392239
+  ],
+  "destinationCoordinates": null,
+  "website": "https://www.doopsgezindamsterdam.nl/historie/meerpadkerk/",
+  "description": "This small white timber Mennonite meeting house in Nieuwendam was built by local carpenter Pieter Kater Gzn and opened on 9 July 1843. Its towerless hall, arched fanlight windows and classical doorway survive beside the Meerpad. It belongs to the United Mennonite Congregation of Amsterdam and is protected as Rijksmonument 6695.",
+  "facts": [
+    {
+      "text": "The congregation bought land at Meerpad in 1843 and commissioned Nieuwendam carpenter Pieter Kater Gzn. The church opened on 9 July that year.",
+      "source": "https://www.doopsgezindamsterdam.nl/historie/meerpadkerk/"
+    },
+    {
+      "text": "The timber church was modeled after the Mennonite church in Knollendam.",
+      "source": "https://www.doopsgezindamsterdam.nl/historie/meerpadkerk/"
+    },
+    {
+      "text": "The heritage register describes a rectangular wooden hall church without a tower, with arched windows in rectangular surrounds and a framed door.",
+      "source": "https://kennis.cultureelerfgoed.nl/index.php/Monumenten/6695"
+    }
+  ],
+  "preserveExistingFacts": true,
+  "identityNotes": {
+    "canonicalExistingId": "extract_landmarks_1566771183",
+    "bagParent": "0363100012162810",
+    "vbo": "0363010000740655",
+    "address": "Meerpad 9",
+    "separateRetainedParents": {
+      "9A": "0363100012162692",
+      "9B": "0363100012241594"
+    },
+    "yearConflict": "BAG reports 1924; operator dates timber church to 1843. Do not overwrite researched construction date with BAG year."
+  },
+  "publicEntrance": {
+    "lonLat": [
+      4.934201804239624,
+      52.39225182807114
+    ],
+    "source": "BAG edge 0\u20137 midpoint, matched to 2025 front municipal panorama. Door at east gable; three front steps. Photo-derived location, no surveyed door point.",
+    "routeNote": "Keep given genuine destination coordinate unless root establishes a reachability issue. Never switch POI silently."
+  },
+  "integrationState": "Original native-scale draft complete; pending source-pack publication, root registration/export and all gallery/live route-pin-pointer acceptance."
+}

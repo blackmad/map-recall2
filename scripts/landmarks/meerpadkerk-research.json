@@ -1,0 +1,205 @@
+{
+  "id": "meerpadkerk",
+  "status": "native-draft-ready-root-visual-acceptance-pending",
+  "researchedOn": "2026-10-08",
+  "privateSourcePath": "../map-recall2-source-data/models/meerpadkerk/",
+  "privateSourceCommit": null,
+  "sourcePublication": "Root owns both git indices and must verify/commit/push private pack before model commit; worker did not stage/commit/push.",
+  "identity": {
+    "address": "Meerpad 9, 1025LA Amsterdam",
+    "landmarkId": "extract_landmarks_1566771183",
+    "bagParent": "0363100012162810",
+    "vbo": "0363010000740655",
+    "osmWay": "280806252",
+    "monumentId": "6695",
+    "relationship": "Official Meerpad 9 VBO links directly to church parent. Adjacent 9A and 9B are separate retained parents, even though operator shares site."
+  },
+  "assertions": [
+    {
+      "part": "whole church",
+      "claim": "Rectangular timber hall without a tower; arched windows in rectangular surrounds; framed entrance.",
+      "sourceUrl": "https://kennis.cultureelerfgoed.nl/index.php/Monumenten/6695",
+      "rawFile": "raw/register.html",
+      "date": "page updated 2026-03-03; retrieved 2026-10-08",
+      "confidence": "high",
+      "treatment": "White boarded hall, no invented tower/spire."
+    },
+    {
+      "part": "historic church",
+      "claim": "Commissioned from local carpenter Pieter Kater Gzn; first service 9 July 1843; inspired by the Knollendam Mennonite church.",
+      "sourceUrl": "https://www.doopsgezindamsterdam.nl/historie/meerpadkerk/",
+      "rawFile": "raw/operator-history.html",
+      "date": "undated operator history, retrieved 2026-10-08",
+      "confidence": "high",
+      "treatment": "1843 retained in trivia; BAG's 1924 field recorded separately."
+    },
+    {
+      "part": "principal east gable",
+      "claim": "Two tall rectangular surrounds contain arched fanlight windows; central raised dark double panel doors have arched upper wood panels, white pilasters and slender uppercase serif fascia DOOPSGEZINDE GEMEENTE; three exterior stair risers.",
+      "sourceUrl": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-24_14-13-19_00767/",
+      "rawFiles": [
+        "raw/panorama-near.json",
+        "raw/panorama-original.jpg",
+        "raw/panorama-front.jpg"
+      ],
+      "date": "2025-09-24T14:33:18Z",
+      "confidence": "high for assembly, moderate for photo-estimated joinery dimensions",
+      "treatment": "Original texture-free geometry; Times New Roman Regular outline is an approximate Roman-serif match, not known exact typeface. Painted glyph plane 6mm ahead of actual fascia, no generic pixel letters."
+    },
+    {
+      "part": "north/south walls",
+      "claim": "Three tall arched fanlight windows on each long wall; shallow white cornice and horizontal boards.",
+      "sourceUrls": [
+        "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-24_14-13-19_00766/",
+        "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-24_14-13-19_00768/",
+        "https://kennis.cultureelerfgoed.nl/images/rce/b/b1/Amsterdam%2C_Meerpadkerkje.jpg"
+      ],
+      "rawFiles": [
+        "raw/panorama-side-original.jpg",
+        "raw/panorama-north-original.jpg",
+        "raw/rce-2005.jpg"
+      ],
+      "date": "municipal captures 2025-09-24; RCE June 2005",
+      "confidence": "high for three north openings in clear 2005 image; south 2025 partially shrub-occluded",
+      "treatment": "Three each retained across dated views; no deleted openings from vegetation occlusion. Rear annex apertures unknown and not invented."
+    },
+    {
+      "part": "roof and rear annex",
+      "claim": "Main gray tiled gable roof with no tower; lower small rectangular flat-roofed west annex, all inside the single church BAG parent.",
+      "sourceUrls": [
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012162810",
+        "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0"
+      ],
+      "rawFiles": [
+        "raw/3dbag.json",
+        "raw/aerial.jpg"
+      ],
+      "date": "AHN5 2023; PDOK Actueel_orthoHR retrieved 2026-10-08, imagery acquisition year not resolved",
+      "confidence": "high",
+      "treatment": "Ridge 7.589m above local terrain NAP -1.1m; main eaves simplified to 5.58m (survey near 5.55\u20135.61m), annex 4.03m. Own explicit upward roof planes, no opaque parcel or wall caps."
+    }
+  ],
+  "referenceViews": [
+    {
+      "path": "../map-recall2-source-data/models/meerpadkerk/raw/operator-front.jpg",
+      "sourceUrl": "https://www.doopsgezindamsterdam.nl/wp-content/uploads/2016/03/01Meerpadkerkje_YW_DSC6175-online.jpg",
+      "date": "published path 2016-03, capture date unknown",
+      "rights": "Yvonne Witte copyright; private reference only",
+      "inspected": true
+    },
+    {
+      "path": "../map-recall2-source-data/models/meerpadkerk/raw/panorama-front.jpg",
+      "sourceUrl": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-24_14-13-19_00767/?width=1600&fov=100&aspect=1.6&horizon=0.35&heading=255",
+      "parameters": {
+        "width": 1600,
+        "fov": 100,
+        "aspect": 1.6,
+        "horizon": 0.35,
+        "heading": 255
+      },
+      "date": "2025-09-24T14:33:18Z",
+      "inspected": true,
+      "occlusion": "flagpole hides part of left window, car/fence below"
+    },
+    {
+      "path": "../map-recall2-source-data/models/meerpadkerk/raw/panorama-side.jpg",
+      "sourceUrl": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-24_14-13-19_00766/?width=1600&fov=100&aspect=1.6&horizon=0.35&heading=282",
+      "date": "2025-09-24T14:33:17Z",
+      "inspected": true,
+      "occlusion": "shrubs partly hide south lower wall and rear opening"
+    },
+    {
+      "path": "../map-recall2-source-data/models/meerpadkerk/raw/panorama-north.jpg",
+      "sourceUrl": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-24_14-13-19_00768/?width=1600&fov=100&aspect=1.6&horizon=0.35&heading=236",
+      "date": "2025-09-24T14:33:19Z",
+      "inspected": true,
+      "occlusion": "street lamp obscures right front window; north side recedes"
+    },
+    {
+      "path": "../map-recall2-source-data/models/meerpadkerk/raw/rce-2005.jpg",
+      "sourceUrl": "https://kennis.cultureelerfgoed.nl/images/rce/b/b1/Amsterdam%2C_Meerpadkerkje.jpg",
+      "date": "June 2005",
+      "rights": "RCE CC BY-SA 4.0 per knowledge page",
+      "inspected": true,
+      "comparison": "Same pediment, doorway and three north openings as newer references. Commons title says west facade; current georeferenced view and BAG prove public entrance faces east/ENE, so title is not orientation authority."
+    },
+    {
+      "path": "../map-recall2-source-data/models/meerpadkerk/raw/aerial.jpg",
+      "sourceUrl": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&LAYERS=Actueel_orthoHR&STYLES=&CRS=EPSG:28992&BBOX=124120,489440,124190,489510&WIDTH=1000&HEIGHT=1000&FORMAT=image/jpeg",
+      "date": "retrieved 2026-10-08; exact imagery acquisition year unknown",
+      "inspected": true,
+      "comparison": "Gray gable church roof, flat small rear annex, orange roof of 9A separate to north, southern house and 9B separate."
+    }
+  ],
+  "archiveSearch": {
+    "boundedAmsterdamBeeldbankUrl": "https://archief.amsterdam/beeldbank/?mode=gallery&q=Meerpad%209",
+    "rawFile": "raw/beeldbank-search.html",
+    "state": "HTTP 200 JavaScript/viewer shell; no catalogue result or drawing inspected. Bounded address search completed; not evidence no images exist.",
+    "registerUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6695",
+    "registerRawFile": "raw/monument-register.html",
+    "registerReadEarly": true
+  },
+  "accessGaps": [
+    "Commons original RCE photograph URL returned HTTP429 on three bounded retries; cached RCE knowledge image used instead with its own provenance.",
+    "Thumb-host original-style URL returned HTTP200 HTML; saved as historic-side-image-url-response.html and explicitly not counted as a photograph.",
+    "Amsterdam Beeldbank search shell only; no historic drawing dimensions established."
+  ],
+  "simplifications": [
+    "Main roof regularized to one symmetric gable: preserves surveyed ridge/eave heights, gray material and exact footprint; thin survey north-rear fitting artifacts omitted.",
+    "Board/trim, window and doorway dimensions photo-estimated, not measured architectural drawing.",
+    "Pane colour represents curtain-muted glazing; no photo textures/interior content.",
+    "Rear annex door/window layout not visible and left unknown; no invented apertures.",
+    "Trees, historic streetlamp, street fence and adjoining 9A/9B left to retained environment; no parcel-wide pad."
+  ],
+  "acceptance": {
+    "geometry": "passed authored and decoded compressed roof/glazing/plan checks",
+    "cpu": "front/rear/north/south inspected; correction recorded for first crossed-trim failure",
+    "independentReview": "pending root",
+    "lowerGalleryRotations": "pending root serial GPU",
+    "liveBothSides": "pending root serial GPU",
+    "loadedExactSuppressionAndNeighbors": "pending root",
+    "genuineChosenRouteAndPin": "pending root",
+    "physicalPointerSourcedCard": "pending root",
+    "performance": "pending root"
+  },
+  "windowRecognitionRepair20261008": {
+    "state": "existing completed leaf correction preserved and independently reverified",
+    "sources": [
+      "models/meerpadkerk/raw/panorama-front.jpg",
+      "models/meerpadkerk/raw/panorama-side.jpg",
+      "models/meerpadkerk/raw/panorama-north.jpg",
+      "models/meerpadkerk/raw/operator-front.jpg",
+      "models/meerpadkerk/raw/rce-2005.jpg"
+    ],
+    "sourceDates": [
+      "Municipal2025-09-24T14:33:18Z front; adjacent day captures14:33:17/19",
+      "Operator published2016-03, capture date unknown",
+      "RCEJune2005"
+    ],
+    "frontEstimates": {
+      "widthM": 1.4,
+      "bottomM": 1.65,
+      "headM": 4.93,
+      "eaveGapM": 0.65
+    },
+    "sideEstimates": {
+      "widthM": 1.05,
+      "bottomM": 1.68,
+      "headM": 4.93,
+      "eaveGapM": 0.65
+    },
+    "dimensionalStatus": "Photo-fraction estimates, not calibrated survey or drawings; lower certainty for partly obscured/oblique side dimensions. Surveyed roof/eave heights unchanged.",
+    "comparison": "2025 front and clearer operator joinery show tall rectangular surrounds with heads close to cornice; updated native front removes former excessive1.18m blank band. RCE2005 clear north-side and current side views support taller sideheads approximately aligned with fronts; no exact side dimensions claimed. Original source fanlight curve/divisions preserved.",
+    "failedBefore": {
+      "path": "artifacts/meerpadkerk-repair/before/meerpadkerk-acbf289f.glb",
+      "sha256": "acbf289f3d84cff8cad387ec63c42ade1e80620806abe3998f79dfa2b652fc4e",
+      "reason": "1.22m\u00d72.75m front windows top4.4 left excessive1.18m blankband under surveyed5.58eave."
+    },
+    "frozenAfter": {
+      "sha256": "d2424aeb57d930034fe6e7598294e8145dc4718ef2105ab87c6167c45f46eb77",
+      "triangles": 7086,
+      "bytes": 82004
+    },
+    "verification": "Author and exact compressed FrontSide rays:48rectangular pane,96fanlightsector,32frame/surround extent,24boarded-gap/roofclearance samples each;6upward compressed roof faces. Source-native CPU front and bothside views inspected. Root independent/GPU/game gates still pending."
+  }
+}
