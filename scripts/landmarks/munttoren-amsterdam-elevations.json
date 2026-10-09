@@ -1,0 +1,16 @@
+{
+  "id": "munttoren-amsterdam",
+  "countedBy": "pending blind count",
+  "facades": [
+    {
+      "name": "north (Muntplein)",
+      "bearing": 357.5,
+      "photo": "artifacts/landmark-lanes/munttoren-amsterdam/ref-n.jpg"
+    },
+    {
+      "name": "east",
+      "bearing": 87.5,
+      "photo": "artifacts/landmark-lanes/munttoren-amsterdam/ref-e.jpg"
+    }
+  ]
+}

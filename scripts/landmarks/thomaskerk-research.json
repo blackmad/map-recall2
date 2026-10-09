@@ -1,11 +1,61 @@
 {
-  "id": "thomaskerk",
-  "bagPand": "NL.IMBAG.Pand.0363100012099552",
-  "sources": [
-    "https://nl.wikipedia.org/wiki/Thomaskerk_(Amsterdam)"
-  ],
-  "photo": "Amsterdam municipal panorama recording_2025-07-29_10-56-07_01492 (front, curved ribbon window, entrance canopy) and _00541 (rear volumes)",
-  "notes": "Massing is the 3DBAG LoD2.2 shell (flat roofs, clean). Ground 0.46 m NAP.",
-  "status": "skipped",
-  "skipReason": "A 3DBAG shell with window bays is not recognisable: the real building is defined by a curved yellow-brick front with a continuous ribbon window under a projecting cornice (Karel Sijmons, 1966, Ronchamp-inspired), which the faceted LoD2.2 walls do not capture. Needs a hand-modelled curved front before installing."
+ "id": "thomaskerk",
+ "bagPand": "NL.IMBAG.Pand.0363100012099552",
+ "osmWay": "w57858409",
+ "sources": [
+  "https://nl.wikipedia.org/wiki/Thomaskerk_(Amsterdam)",
+  "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012099552&f=json",
+  "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012099552"
+ ],
+ "references": [
+  {
+   "file": "artifacts/landmark-lanes/thomaskerk/ref-south.jpg",
+   "panoramaId": "recording_2025-07-29_10-56-07_00527",
+   "captured": "2025-07-29",
+   "heading": 355,
+   "fov": 100,
+   "pitch": 15,
+   "licence": "Amsterdam municipal panorama thumbnail (api.data.amsterdam.nl/panorama), CC0 municipal open data",
+   "informs": "south facade bands, entrance block ribbon, porch, bell frame, nave profile"
+  },
+  {
+   "file": "artifacts/landmark-lanes/thomaskerk/ref-east.jpg",
+   "panoramaId": "TMX7316010203-001163_pano_0000_002571",
+   "captured": "2019-05-06",
+   "heading": 267,
+   "fov": 100,
+   "pitch": 15,
+   "licence": "Amsterdam municipal panorama thumbnail (api.data.amsterdam.nl/panorama), CC0 municipal open data",
+   "informs": "east wing end: tile base, window ribbon, fascia"
+  },
+  {
+   "file": "artifacts/landmark-lanes/thomaskerk/ref-west.jpg",
+   "panoramaId": "recording_2025-07-29_10-56-07_00541",
+   "captured": "2025-07-29",
+   "heading": 95,
+   "fov": 100,
+   "pitch": 15,
+   "licence": "Amsterdam municipal panorama thumbnail (api.data.amsterdam.nl/panorama), CC0 municipal open data",
+   "informs": "west wing windowless brick box, copper coping, vents"
+  },
+  {
+   "file": "artifacts/landmark-lanes/thomaskerk/ref-entrance-pano.jpg",
+   "panoramaId": "recording_2025-07-29_10-56-07_01492",
+   "captured": "2025-07-29",
+   "licence": "Amsterdam municipal panorama thumbnail (api.data.amsterdam.nl/panorama), CC0 municipal open data",
+   "informs": "entrance canopy and lettering band"
+  },
+  {
+   "file": "artifacts/landmark-lanes/thomaskerk/ref-south-rce.jpg",
+   "url": "https://commons.wikimedia.org/wiki/File:Overzicht_van_de_zuidgevel_-_Amsterdam_-_20419017_-_RCE.jpg",
+   "retrieved": "2026-10-09",
+   "licence": "Wikimedia Commons RCE photograph (CC BY-SA/CC0 per file page; not imported into the asset)",
+   "informs": "overall south elevation"
+  }
+ ],
+ "architect": "Karel Sijmons",
+ "built": 1966,
+ "status": "modelled",
+ "north": "inferred (no street-side photo; wall left as 3DBAG brick)",
+ "notes": "Earlier skip reason (curved front) was a panorama projection artifact: the walls are straight. Features placed on 3DBAG wall planes; wall 39 normal flipped by the shell test so its outward plane is rebuilt explicitly."
 }

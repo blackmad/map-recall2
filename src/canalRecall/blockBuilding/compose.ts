@@ -45,7 +45,7 @@ const frac = (x: number | undefined, total: number, dflt: number) => { const v =
 function drawOpening(c: Ctx, u0: number, u1: number, v0: number, v1: number, w: WinParams, seed: number) {
   const frameSlot = w.frame ?? 'frame', glassSlot = w.glass ?? 'glass', fw = w.frameW ?? 0.07;
   if (u1 - u0 < 0.3 || v1 - v0 < 0.3) return;
-  if (!fitsPanel(c.p, rectPoly(u0 - (w.surround?.t ?? 0), u1 + (w.surround?.t ?? 0), v0 - (w.sillSlot ? 0.05 : 0), v1 + (w.surround?.t ?? 0)))) return;
+  if (!fitsPanel(c.p, rectPoly(u0 - (w.surround?.t ?? 0), u1 + (w.surround?.t ?? 0), v0 - (w.sillSlot ? (w.sillH ?? 0.05) : 0), v1 + (w.surround?.t ?? 0)))) return;
   if (w.surround) {
     const t = w.surround.t, out = w.surround.out ?? 0.06, part = c.part();
     c.box(w.surround.slot, u0 - t, u0, v0 - t, v1 + t, 0, out, part);
@@ -67,7 +67,18 @@ function drawOpening(c: Ctx, u0: number, u1: number, v0: number, v1: number, w: 
     const v = v0 + (v1 - v0) * w.transom;
     c.quad(frameSlot, u0 + fw, v - fw / 2, u1 - fw, v + fw / 2, 0.05, part);
   }
-  if (w.sillSlot) { part = c.part(); c.box(w.sillSlot, u0 - 0.08, u1 + 0.08, v0 - 0.07, v0, 0, 0.12, part); }
+  const rn = w.rows ?? 0;
+  if (rn > 0) {
+    part = c.part();
+    for (let k = 1; k <= rn; k++) { const v = v0 + (v1 - v0) * k / (rn + 1); c.quad(frameSlot, u0 + fw, v - fw / 2, u1 - fw, v + fw / 2, 0.05, part); }
+  }
+  if (w.louvre) {
+    const lw = w.louvre.w, a = w.louvre.side === 'right' ? u1 - fw - lw : u0 + fw, slot = w.louvre.slot ?? 'louvre';
+    part = c.part();
+    c.quad(slot, a, v0 + fw, a + lw, v1 - fw, 0.06, part);
+    for (let v = v0 + 0.25; v < v1 - 0.2; v += 0.14) c.quad(frameSlot, a, v, a + lw, v + 0.025, 0.075, part);
+  }
+  if (w.sillSlot) { part = c.part(); const sh = w.sillH ?? 0.07; c.box(w.sillSlot, u0 - 0.08, u1 + 0.08, v0 - sh, v0, 0, w.sillOut ?? 0.12, part); }
   if (w.headSlot) { part = c.part(); c.box(w.headSlot, u0 - 0.06, u1 + 0.06, v1, v1 + 0.12, 0, 0.08, part); }
   void seed;
 }
@@ -127,6 +138,8 @@ function drawRow(c: Ctx, row: Row, cell: Cell, seed: number) {
       });
       return;
     }
+    case 'shopfront': return drawShopfront(c, row.shopfront!, cell);
+    case 'pointed': return drawPointed(c, row.pointed!, cell);
     case 'gable': {
       const g = row.gable ?? {}, cw = u1 - u0, uc = (u0 + u1) / 2, m = g.margin ?? 0.35, ww = cw - 2 * m, ch = v1 - v0;
       const base = v0 + (g.sill ?? 0.6), shoulder = base + (g.shoulder ?? ch * 0.55), apex = shoulder + (g.apex ?? ww * 0.45);
@@ -145,11 +158,61 @@ function drawRow(c: Ctx, row: Row, cell: Cell, seed: number) {
   }
 }
 
+function glazedPanel(c: Ctx, u0: number, u1: number, v0: number, v1: number, cols: number, rows: number, frame: Slot, glass: Slot, splitV?: number) {
+  const fw = 0.06;
+  let part = c.part();
+  c.quad(frame, u0, v0, u1, v1, 0.02, part);
+  part = c.part();
+  c.quad(glass, u0 + fw, v0 + fw, u1 - fw, v1 - fw, 0.035, part);
+  part = c.part();
+  for (let k = 1; k < cols; k++) { const u = u0 + (u1 - u0) * k / cols; c.quad(frame, u - 0.03, v0 + fw, u + 0.03, v1 - fw, 0.05, part); }
+  for (let k = 1; k < rows; k++) { const v = splitV !== undefined && rows === 2 ? splitV : v0 + (v1 - v0) * k / rows; c.quad(frame, u0 + fw, v - 0.03, u1 - fw, v + 0.03, 0.05, part); }
+}
+
+function drawShopfront(c: Ctx, s: import('./spec.ts').ShopfrontParams, cell: Cell) {
+  const uc = (cell.u0 + cell.u1) / 2, t = s.surround.t, out = s.surround.out ?? 0.1, W = s.w, v0 = cell.v0;
+  const a = uc - W / 2 + t, b = uc + W / 2 - t, vt = v0 + s.top - t, frame = s.frame ?? 'frame', glass = s.glass ?? 'glass';
+  if (!fitsPanel(c.p, rectPoly(a - t, b + t, v0, vt + t))) return;
+  let part = c.part();
+  c.box(s.surround.slot, a - t, a, v0, vt + t, 0, out, part); c.box(s.surround.slot, b, b + t, v0, vt + t, 0, out, part); c.box(s.surround.slot, a, b, vt, vt + t, 0, out, part);
+  const up = s.upper, sp = s.spandrel, lo = s.lower;
+  glazedPanel(c, a, b, v0 + up.v0, v0 + up.v1, up.cols, up.rows, frame, glass, up.splitV !== undefined ? v0 + up.splitV : undefined);
+  part = c.part();
+  c.quad(sp.slot ?? frame, a, v0 + sp.v0, b, v0 + sp.v1, 0.03, part);
+  glazedPanel(c, a, b, v0 + 0.08, v0 + lo.v1, lo.cols, 1, frame, glass);
+  const dw = s.door.w, dh = s.door.h, du = uc + s.door.offsets[cell.bay % s.door.offsets.length];
+  part = c.part();
+  c.quad(frame, du - dw / 2 - 0.05, v0 + 0.08, du + dw / 2 + 0.05, v0 + dh + 0.05, 0.055, part);
+  c.quad(s.door.slot ?? 'door', du - dw / 2, v0 + 0.08, du + dw / 2, v0 + dh, 0.065, part);
+}
+
+function drawPointed(c: Ctx, g: import('./spec.ts').PointedParams, cell: Cell) {
+  const uc = (cell.u0 + cell.u1) / 2, hw = g.w / 2, v0 = cell.v0, bot = v0 + g.bottom, sh = v0 + g.shoulder, ap = v0 + g.apex, frame = g.frame ?? 'frame', glass = g.glass ?? 'glass';
+  const l0 = v0 + g.ledge.v0, l1 = v0 + g.ledge.v1, lo = g.ledge.out ?? 0.2, t = g.surround?.t ?? 0;
+  const outline: [number, number][] = [[uc - hw - t, bot - t], [uc + hw + t, bot - t], [uc + hw + t, sh], [uc, ap + t * 1.5], [uc - hw - t, sh]];
+  if (!fitsPanel(c.p, outline)) return;
+  let part = c.part();
+  if (g.surround) c.poly(g.surround.slot, outline, 0.015, part);
+  glazedPanel(c, uc - hw, uc + hw, bot, l0, g.lowerCols, g.lowerRows, frame, glass);
+  const up: [number, number][] = [[uc - hw, l1], [uc + hw, l1], [uc + hw, sh], [uc, ap], [uc - hw, sh]];
+  part = c.part(); c.poly(frame, up, 0.02, part);
+  const fw = 0.06, inner: [number, number][] = [[uc - hw + fw, l1 + fw], [uc + hw - fw, l1 + fw], [uc + hw - fw, sh], [uc, ap - fw * 1.5], [uc - hw + fw, sh]];
+  part = c.part(); c.poly(glass, inner, 0.035, part);
+  part = c.part();
+  for (let k = 1; k < g.upperCols; k++) {
+    const u = uc - hw + g.w * k / g.upperCols, top = sh + (ap - sh) * (1 - Math.abs(u - uc) / hw) - fw * 1.5;
+    c.quad(frame, u - 0.03, l1 + fw, u + 0.03, top, 0.05, part);
+  }
+  for (let k = 1; k < g.upperRows; k++) { const v = l1 + (sh - l1) * k / g.upperRows; c.quad(frame, uc - hw + fw, v - 0.03, uc + hw - fw, v + 0.03, 0.05, part); }
+  part = c.part();
+  c.box(g.ledge.slot ?? 'stone', uc - hw - t, uc + hw + t, l0, l1, 0, lo, part);
+}
+
 function drawBalcony(c: Ctx, b: BalconyParams, cell: Cell, seed: number) {
   const { u0, u1, v0, v1 } = cell, depth = b.depth ?? 1.4, sh = b.slab?.h ?? 0.2, slab = b.slab?.slot ?? 'slab';
   const rail = b.rail ?? {}, rh = rail.h ?? 1.05;
   const inner = b.piers ? b.piers.w : 0;
-  const a0 = u0 + inner, a1 = u1 - inner;
+  const ucb = (u0 + u1) / 2, a0 = b.w ? ucb - b.w / 2 : u0 + inner, a1 = b.w ? ucb + b.w / 2 : u1 - inner;
   if (!fitsPanel(c.p, rectPoly(a0, a1, v0 - 0.01, Math.min(v1, v0 + sh + rh)))) return;
   let part = c.part();
   c.box(slab, a0, a1, v0 - 0.02, v0 - 0.02 + sh, 0, depth, part);
@@ -158,6 +221,10 @@ function drawBalcony(c: Ctx, b: BalconyParams, cell: Cell, seed: number) {
   const rslot = rail.slot ?? (rail.kind === 'glass' ? 'glassRail' : rail.kind === 'solid' ? 'slab' : 'rail');
   if (rail.kind === 'bars') {
     c.quad(rail.slot ?? 'rail', a0 + 0.05, rv0, a1 - 0.05, rv0 + rh, depth - 0.03, part);
+  } else if (rail.kind === 'rods') {
+    const rs = rail.slot ?? 'rail', n = Math.max(2, Math.round((a1 - a0) / 0.13));
+    for (let k = 0; k <= n; k++) { const u = a0 + 0.04 + (a1 - a0 - 0.08) * k / n; c.quad(rs, u - 0.012, rv0, u + 0.012, rv0 + rh, depth - 0.03, part); }
+    c.quad(rs, a0, rv0 + 0.05, a1, rv0 + 0.1, depth - 0.03, part);
   } else c.quad(rslot, a0, rv0, a1, rv0 + rh, depth - 0.03, part);
   // side cheeks join the slab to the wall so the rail is supported on both ends
   part = c.part();
@@ -252,15 +319,18 @@ export function compose(set: SurfaceSet, spec: BlockSpec, opts: ComposeOptions =
     const c = new Ctx(mesh, p, panels);
     // storey boundaries
     const levels: number[] = [0, g]; for (let L = g + s; L < p.vMax - 1.0; L += s) levels.push(L); levels.push(Math.max(p.vMax, levels[levels.length - 1] + 0.01));
-    const floors = levels.length - 1, nb = Math.max(1, Math.round(W / sys.pitch));
+    const floors = levels.length - 1, nb = Math.max(1, Math.round(W / sys.pitch)), nbays = sys.bays ? sys.bays.count : nb;
     for (let f = 0; f < floors; f++) {
       const v0 = levels[f], v1 = levels[f + 1];
       if (v1 <= p.vMin + 0.5 || v0 < p.partyH - 0.3) continue;
       if (f === floors - 1 && v1 - v0 < 1.8) continue;
       const topRow = sys.top && f >= floors - (sys.topCount ?? 1) && f > 0;
       const row = sys.rowOverrides?.[String(f)] ?? (f === 0 ? sys.ground : topRow ? sys.top! : sys.typical);
-      for (let b = 0; b < nb; b++) {
-        const cell: Cell = { u0: p.uMin + W * b / nb, u1: p.uMin + W * (b + 1) / nb, v0: Math.max(v0, p.vMin), v1, bay: b, floor: f, bays: nb };
+      for (let b = 0; b < nbays; b++) {
+        const lay = sys.bays;
+        const cell: Cell = lay
+          ? { u0: p.uMin + lay.first + lay.pitch * (b - 0.5), u1: p.uMin + lay.first + lay.pitch * (b + 0.5), v0: Math.max(v0, p.vMin), v1, bay: b, floor: f, bays: nbays }
+          : { u0: p.uMin + W * b / nb, u1: p.uMin + W * (b + 1) / nb, v0: Math.max(v0, p.vMin), v1, bay: b, floor: f, bays: nb };
         drawRow(c, row, cell, p.index * 31 + 7);
       }
     }
@@ -291,8 +361,8 @@ function drawSign(mesh: MeshBuilder, panels: Panel[], sign: Sign, shaper: TextSh
   const uAt = (sign.at[0] - p.o[0]) * p.r[0] + (sign.at[1] - p.o[2]) * p.r[2];
   // glyph run: each character shaped alone so tracking can be spread to a target span
   const chars = [...sign.text], glyphs = chars.map(ch => (ch === ' ' ? null : shaper(ch, sign.font)));
-  const full = shaper(chars.filter(ch => ch !== ' ').join(''), sign.font), sc = sign.height / full.ascent;
-  const wsum = glyphs.reduce((t, g) => t + (g ? g.width * sc : 0), 0);
+  const full = shaper(chars.filter(ch => ch !== ' ').join(''), sign.font), sc = sign.height / full.ascent, scx = sc * (sign.stretch ?? 1);
+  const wsum = glyphs.reduce((t, g) => t + (g ? g.width * scx : 0), 0);
   let gap = (sign.letterSpacing ?? 0.12) * sign.height, wordGap = 3 * gap;
   const gapsN = chars.reduce((n, ch, i) => n + (i > 0 && ch !== ' ' && chars[i - 1] !== ' ' ? 1 : 0), 0), wordsN = chars.filter(ch => ch === ' ').length;
   if (sign.span) { const unit = (sign.span - wsum) / Math.max(1, gapsN + 3 * wordsN); gap = unit; wordGap = 3 * unit; }
@@ -301,11 +371,11 @@ function drawSign(mesh: MeshBuilder, panels: Panel[], sign: Sign, shaper: TextSh
   const part = c.part();
   chars.forEach((ch, i) => {
     if (ch === ' ') { u += wordGap; return; }
-    const g = glyphs[i]!, w = g.width * sc;
+    const g = glyphs[i]!, w = g.width * scx;
     for (const shape of g.shapes) {
       const geo = new T.ShapeGeometry(shape, 3), pos = geo.getAttribute('position'), idx = geo.index!;
       for (let k = 0; k < idx.count; k += 3) {
-        const q = [0, 1, 2].map(m => { const j = idx.getX(k + m); return c.P(u + pos.getX(j) * sc, sign.v + pos.getY(j) * sc, 0.035); });
+        const q = [0, 1, 2].map(m => { const j = idx.getX(k + m); return c.P(u + pos.getX(j) * scx, sign.v + pos.getY(j) * sc, 0.035); });
         mesh.tri(sign.slot, q[0], q[1], q[2], part, p.n);
       }
       geo.dispose();

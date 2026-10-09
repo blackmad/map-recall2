@@ -40,7 +40,8 @@
      1,
      2
     ]
-   }
+   },
+   "windowSurround": "keystone"
   }
  ],
  "roof": {
@@ -52,5 +53,7 @@
   "door": "dark-green",
   "stone": "cream"
  },
- "notes": []
+ "notes": [
+  "2026-10-09 surrounds: cream keystone bosses over every upper window head (front.jpg)."
+ ]
 }

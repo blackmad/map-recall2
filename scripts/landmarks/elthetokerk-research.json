@@ -1,0 +1,12 @@
+{
+  "id": "elthetokerk",
+  "landmarkId": "extract_landmarks_634569928",
+  "sources": [
+    "https://nl.wikipedia.org/wiki/Elthetokerk",
+    "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?bbox=4.9366,52.3632,4.9378,52.3641&f=json"
+  ],
+  "retrieved": "2026-10-10",
+  "status": "skipped",
+  "skipReason": "The Elthetokerk (Cornelis Kruyswijk, 1929, Amsterdam School, 850 seats) was closed and demolished in 1992 (Wikipedia, nl). No church building stands at the POI: every BAG pand within about 60 m was built 1912-1916 housing, so there is no 3DBAG shell or present facade to model. Only a historic photo (Stadsarchief Amsterdam OSIM00004001397, 1932) exists; modelling a lost building into the current street would put a non-existent landmark on the map. The POI should stay as a plain quiz destination or be retired.",
+  "referenceNote": "Historic photograph listed on Wikipedia: Stadsarchief Amsterdam, Afb OSIM00004001397 (not downloaded)."
+}

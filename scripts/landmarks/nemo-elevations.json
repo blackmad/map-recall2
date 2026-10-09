@@ -1,0 +1,16 @@
+{
+  "id": "nemo",
+  "countedBy": "pending blind count",
+  "facades": [
+    {
+      "name": "east",
+      "bearing": 92.5,
+      "photo": "artifacts/landmark-lanes/nemo/ref-e.jpg"
+    },
+    {
+      "name": "west",
+      "bearing": 272.5,
+      "photo": "artifacts/landmark-lanes/nemo/ref-w.jpg"
+    }
+  ]
+}
