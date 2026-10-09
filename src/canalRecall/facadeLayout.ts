@@ -35,13 +35,13 @@ export const MIN_FACADE_WALL_M = 2.6;
  * door goes at; `groundLevel` is false for a part that floats above the street.
  */
 /** Per-building multipliers on the style's nominal bay width, storey and ground-floor height. */
-export type LayoutScale = { bay: number; storey: number; ground: number };
+export type LayoutScale = { bay: number; storey: number; ground: number; /** Bays between doors on a long wall (large tier: one entrance per run). */ doorEvery?: number };
 const NO_SCALE: LayoutScale = { bay: 1, storey: 1, ground: 1 };
 
 export function layoutWall(style: FacadeStyle, lengthM: number, exposedM: number, seed: number, groundLevel = true, scale: LayoutScale = NO_SCALE): WallLayout | null {
   if (!(lengthM >= MIN_FACADE_EDGE_M) || !(exposedM >= MIN_FACADE_WALL_M)) return null;
   const nominal = STYLE_DIMS[style];
-  const dims = { ...nominal, bay: nominal.bay * scale.bay, storey: nominal.storey * scale.storey, ground: nominal.ground * scale.ground };
+  const dims = { ...nominal, bay: nominal.bay * scale.bay, storey: nominal.storey * scale.storey, ground: nominal.ground * scale.ground, doorEvery: scale.doorEvery ?? nominal.doorEvery };
   const bays = Math.max(1, Math.round(lengthM / dims.bay));
   const bayWidthM = lengthM / bays;
   // Ground floor: nominal height, but never more than the wall allows, and a
