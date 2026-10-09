@@ -1,0 +1,38 @@
+{
+  "modelId": "meerpadkerk",
+  "reviewedOn": "2026-10-08",
+  "state": "window-head-source-recognition-correction-verified-locally-runtime-pending",
+  "preservedExistingLeafEdits": true,
+  "after": {
+    "sha256": "d2424aeb57d930034fe6e7598294e8145dc4718ef2105ab87c6167c45f46eb77",
+    "triangles": 7086,
+    "bytes": 82004
+  },
+  "before": {
+    "path": "artifacts/meerpadkerk-repair/before/meerpadkerk-acbf289f.glb",
+    "sha256": "acbf289f3d84cff8cad387ec63c42ade1e80620806abe3998f79dfa2b652fc4e",
+    "reason": "1.22m\u00d72.75m front windows top4.4 left excessive1.18m blankband under surveyed5.58eave."
+  },
+  "sourceComparison": "2025 front and clearer operator joinery show tall rectangular surrounds with heads close to cornice; updated native front removes former excessive1.18m blank band. RCE2005 clear north-side and current side views support taller sideheads approximately aligned with fronts; no exact side dimensions claimed. Original source fanlight curve/divisions preserved.",
+  "dimensionalStatus": "Photo-fraction estimates, not calibrated survey or drawings; lower certainty for partly obscured/oblique side dimensions. Surveyed roof/eave heights unchanged.",
+  "cpuViews": [
+    "artifacts/meerpadkerk-repair/current/meerpadkerk-cpu-native-front.png",
+    "artifacts/meerpadkerk-repair/current/meerpadkerk-cpu-native-side.png",
+    "artifacts/meerpadkerk-repair/current/meerpadkerk-cpu-opposite-side.png"
+  ],
+  "checksEachAuthoredAndDecoded": {
+    "rectangularPaneFirstHits": 48,
+    "fanlightSectorFirstHits": 96,
+    "physicalFrameExtentFirstHits": 32,
+    "aboveWindowAndRoofClearance": 24,
+    "upwardRoofFaces": 6
+  },
+  "pending": [
+    "Root independent updated-source comparison",
+    "High/fourlow gallery rotations",
+    "Native actual game bothsides",
+    "Exact loaded ordinary/pyramidal suppression and resident drawnneighbors",
+    "Genuine selected destination/pin/physical sourced card",
+    "Route smoke/performance"
+  ]
+}
