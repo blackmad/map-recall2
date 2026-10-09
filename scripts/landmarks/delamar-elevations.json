@@ -1,0 +1,11 @@
+{
+  "id": "delamar",
+  "countedBy": "pending blind count",
+  "facades": [
+    {
+      "name": "east (front)",
+      "bearing": 92.5,
+      "photo": "artifacts/landmark-lanes/delamar/ref-e.jpg"
+    }
+  ]
+}
