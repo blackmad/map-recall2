@@ -19288,6 +19288,640 @@
       "triangles": 221,
       "bytes": 11340,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "torture-museum": {
+      "id": "torture-museum",
+      "name": "Torture Museum",
+      "landmarkId": "extract_landmarks_417591223",
+      "modelUrl": "./models/torture-museum.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012175875"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8906653,
+          52.3672872
+        ],
+        "headingDegrees": 150,
+        "lengthMetres": 17.46,
+        "widthMetres": 6.39
+      },
+      "surveyed": {
+        "anchor": [
+          4.8906653,
+          52.3672872
+        ],
+        "northOffsetDegrees": 0,
+        "source": "BAG pand 0363100012175875 with 3DBAG LoD2.2 roofs; native east/south metres, scale 1."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "brick": "#6c5a50",
+        "stone": "#8f8b84",
+        "slate": "#5a5a5e",
+        "white": "#e6e4da",
+        "glass": "#5f7581",
+        "dark": "#23272b",
+        "red": "#9b2f27"
+      },
+      "attribution": {
+        "title": "Torture Museum",
+        "author": "Map Recall",
+        "sourceUrl": "https://en.wikipedia.org/wiki/Torture_Museum,_Amsterdam",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free model on the BAG footprint (3DBAG LoD2.2 roof faces): dark steel-and-glass shopfront, three brick storeys with white-framed windows, stone cornice and blade sign. Window positions approximate, measured from a 2025 street-level panorama. No imported mesh or photo textures."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.890607,
+              52.367417
+            ],
+            [
+              4.890526,
+              52.367389
+            ],
+            [
+              4.890627,
+              52.367281
+            ],
+            [
+              4.890705,
+              52.367271
+            ],
+            [
+              4.890715,
+              52.367302
+            ],
+            [
+              4.890607,
+              52.367417
+            ]
+          ]
+        ]
+      },
+      "bounds": {
+        "min": [
+          -7.802999973297119,
+          0,
+          -14.246000289916992
+        ],
+        "max": [
+          3.2200000286102295,
+          17.047000885009766,
+          2.724860191345215
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8906653,
+          52.3672872
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 150,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 16.970860481262207,
+        "heightMetres": 17.047000885009766,
+        "depthMetres": 11.023000001907349,
+        "depthCoverage": 1.7250391239291627
+      },
+      "triangles": 768,
+      "bytes": 20936,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "theo-thijssen-museum": {
+      "id": "theo-thijssen-museum",
+      "name": "Theo Thijssen Museum",
+      "landmarkId": "extract_landmarks_1824871810",
+      "modelUrl": "./models/theo-thijssen-museum.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012168755"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8826878,
+          52.3755212
+        ],
+        "headingDegrees": 69.5,
+        "lengthMetres": 12.26,
+        "widthMetres": 5.04
+      },
+      "surveyed": {
+        "anchor": [
+          4.8826878,
+          52.3755212
+        ],
+        "northOffsetDegrees": 0,
+        "source": "BAG pand 0363100012168755 with 3DBAG LoD2.2 roofs; native east/south metres, scale 1."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "brick": "#7a5b4d",
+        "stone": "#cfc6ae",
+        "slate": "#5d5a58",
+        "white": "#ebe8dc",
+        "glass": "#5c717a",
+        "dark": "#1f2326",
+        "frame": "#e8e2cf"
+      },
+      "attribution": {
+        "title": "Theo Thijssen Museum",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Theo_Thijssen_Museum",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free model on the BAG footprint (3DBAG LoD2.2 roof faces): brick corner house with bowed ground-floor shop window, cream cornice, white-framed upper windows and the birth plaque. Dimensions approximate, measured from a 2025 street-level panorama. No imported mesh or photo textures."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.882761,
+              52.37556
+            ],
+            [
+              4.882643,
+              52.375533
+            ],
+            [
+              4.882593,
+              52.375522
+            ],
+            [
+              4.882606,
+              52.375499
+            ],
+            [
+              4.882657,
+              52.375511
+            ],
+            [
+              4.882669,
+              52.375491
+            ],
+            [
+              4.882787,
+              52.375518
+            ],
+            [
+              4.882761,
+              52.37556
+            ]
+          ]
+        ]
+      },
+      "bounds": {
+        "min": [
+          -6.6570000648498535,
+          0,
+          -4.618412017822266
+        ],
+        "max": [
+          7.215969562530518,
+          13.510000228881836,
+          3.5950000286102295
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8826878,
+          52.3755212
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 69.5,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 13.872969627380371,
+        "heightMetres": 13.510000228881836,
+        "depthMetres": 8.213412046432495,
+        "depthCoverage": 1.6296452473080347
+      },
+      "triangles": 831,
+      "bytes": 20668,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "pathe-de-munt": {
+      "id": "pathe-de-munt",
+      "name": "Pathé de Munt",
+      "landmarkId": "extract_landmarks_257271103",
+      "modelUrl": "./models/pathe-de-munt.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012179384"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8934706,
+          52.3664519
+        ],
+        "headingDegrees": 114.5,
+        "lengthMetres": 40.38,
+        "widthMetres": 39.98
+      },
+      "surveyed": {
+        "anchor": [
+          4.8934706,
+          52.3664519
+        ],
+        "northOffsetDegrees": 0,
+        "source": "BAG pand 0363100012179384 with 3DBAG LoD2.2 roofs; native east/south metres, scale 1."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "brick": "#807a74",
+        "greyBrick": "#7a7570",
+        "stone": "#a9a69f",
+        "slate": "#6a6865",
+        "white": "#e7e5dd",
+        "glass": "#667c86",
+        "dark": "#25292c",
+        "gold": "#e0b030"
+      },
+      "attribution": {
+        "title": "Pathé de Munt",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Path%C3%A9_de_Munt",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free model on the BAG footprint (3DBAG LoD2.2 roof faces): grey-brick multiplex with notched pitched volumes, glazed slits, lower entrance bays and the vertical Pathé sign. Dimensions approximate, measured from 2025 panoramas. No imported mesh or photo textures."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.893385,
+              52.366544
+            ],
+            [
+              4.893385,
+              52.366547
+            ],
+            [
+              4.893343,
+              52.366368
+            ],
+            [
+              4.893511,
+              52.36635
+            ],
+            [
+              4.893501,
+              52.366312
+            ],
+            [
+              4.893619,
+              52.366295
+            ],
+            [
+              4.893617,
+              52.36629
+            ],
+            [
+              4.893711,
+              52.366261
+            ],
+            [
+              4.893683,
+              52.366227
+            ],
+            [
+              4.893789,
+              52.366216
+            ],
+            [
+              4.893801,
+              52.366251
+            ],
+            [
+              4.89402,
+              52.366523
+            ],
+            [
+              4.893929,
+              52.36655
+            ],
+            [
+              4.893931,
+              52.366552
+            ],
+            [
+              4.893901,
+              52.366561
+            ],
+            [
+              4.89389,
+              52.366547
+            ],
+            [
+              4.893862,
+              52.366556
+            ],
+            [
+              4.893862,
+              52.366555
+            ],
+            [
+              4.893799,
+              52.366574
+            ],
+            [
+              4.893792,
+              52.366576
+            ],
+            [
+              4.893776,
+              52.366557
+            ],
+            [
+              4.893706,
+              52.366576
+            ],
+            [
+              4.893692,
+              52.366556
+            ],
+            [
+              4.893635,
+              52.36657
+            ],
+            [
+              4.893606,
+              52.366572
+            ],
+            [
+              4.893597,
+              52.366528
+            ],
+            [
+              4.893385,
+              52.366544
+            ]
+          ]
+        ]
+      },
+      "bounds": {
+        "min": [
+          -9.62957763671875,
+          0,
+          -13.612000465393066
+        ],
+        "max": [
+          37.19499969482422,
+          24.274999618530273,
+          26.499000549316406
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8934706,
+          52.3664519
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 114.5,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 46.82457733154297,
+        "heightMetres": 24.274999618530273,
+        "depthMetres": 40.11100101470947,
+        "depthCoverage": 1.0032766636995867
+      },
+      "triangles": 1084,
+      "bytes": 28328,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "houseboat-museum": {
+      "id": "houseboat-museum",
+      "name": "Houseboat Museum (Hendrika Maria)",
+      "landmarkId": "extract_landmarks_941219842",
+      "modelUrl": "./models/houseboat-museum.glb",
+      "suppressOsmIds": [
+        "w174999382"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.882602,
+          52.3701526
+        ],
+        "headingDegrees": 6.5,
+        "lengthMetres": 23.5,
+        "widthMetres": 4.36
+      },
+      "surveyed": {
+        "anchor": [
+          4.882602,
+          52.3701526
+        ],
+        "northOffsetDegrees": 0,
+        "source": "BAG pand w174999382 with 3DBAG LoD2.2 roofs; native east/south metres, scale 1."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "dark": "#1d2124",
+        "white": "#e4e1d3",
+        "stone": "#8a8f90",
+        "glass": "#5b707a",
+        "slate": "#4a3d36",
+        "brick": "#8b5e48",
+        "red": "#8d3b2a",
+        "green": "#c7c78a"
+      },
+      "attribution": {
+        "title": "Houseboat Museum (Hendrika Maria)",
+        "author": "Map Recall",
+        "sourceUrl": "https://en.wikipedia.org/wiki/Woonbootmuseum",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free barge model: black steel hull with cream waterline band, cream cabin with portholes, dark hatch roof and mast. Proportions approximate, from a 2021 street-level panorama. No imported mesh or photo textures."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.882615,
+              52.37008
+            ],
+            [
+              4.882614,
+              52.370077
+            ],
+            [
+              4.882613,
+              52.370074
+            ],
+            [
+              4.882611,
+              52.370071
+            ],
+            [
+              4.882608,
+              52.370068
+            ],
+            [
+              4.882605,
+              52.370066
+            ],
+            [
+              4.882601,
+              52.370064
+            ],
+            [
+              4.882597,
+              52.370063
+            ],
+            [
+              4.882592,
+              52.370062
+            ],
+            [
+              4.882587,
+              52.370061
+            ],
+            [
+              4.882582,
+              52.370061
+            ],
+            [
+              4.882576,
+              52.370062
+            ],
+            [
+              4.882571,
+              52.370064
+            ],
+            [
+              4.882567,
+              52.370066
+            ],
+            [
+              4.882563,
+              52.370068
+            ],
+            [
+              4.88256,
+              52.370071
+            ],
+            [
+              4.882557,
+              52.370074
+            ],
+            [
+              4.882556,
+              52.370078
+            ],
+            [
+              4.882556,
+              52.370081
+            ],
+            [
+              4.882585,
+              52.370262
+            ],
+            [
+              4.882589,
+              52.370265
+            ],
+            [
+              4.882594,
+              52.370267
+            ],
+            [
+              4.8826,
+              52.370269
+            ],
+            [
+              4.882606,
+              52.37027
+            ],
+            [
+              4.882612,
+              52.370271
+            ],
+            [
+              4.882618,
+              52.370271
+            ],
+            [
+              4.882624,
+              52.37027
+            ],
+            [
+              4.88263,
+              52.370269
+            ],
+            [
+              4.882636,
+              52.370268
+            ],
+            [
+              4.882641,
+              52.370265
+            ],
+            [
+              4.882645,
+              52.370262
+            ],
+            [
+              4.882649,
+              52.370259
+            ],
+            [
+              4.882615,
+              52.37008
+            ]
+          ]
+        ]
+      },
+      "bounds": {
+        "min": [
+          -3.1379599571228027,
+          -0.5500000715255737,
+          -13.226754188537598
+        ],
+        "max": [
+          3.207319974899292,
+          7.099999904632568,
+          10.243753433227539
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.882602,
+          52.3701526
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 6.5,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 23.470507621765137,
+        "heightMetres": 7.649999976158142,
+        "depthMetres": 6.345279932022095,
+        "depthCoverage": 1.4553394339500216
+      },
+      "triangles": 656,
+      "bytes": 14440,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

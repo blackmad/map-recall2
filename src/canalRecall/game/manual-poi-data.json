@@ -1911,5 +1911,37 @@
     "description": "The Oudemanhuispoort is a 17th-century complex between the Oudezijds Achterburgwal and the Kloveniersburgwal, built in a square plan as the Old Men's and Women's Hospital. It is now a main site of the University of Amsterdam's humanities faculty and a national monument. A covered passage through one wing links the two canals.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Oudemanhuispoort",
     "additionalSources": []
+  },
+  {
+    "modelId": "torture-museum",
+    "landmarkId": "extract_landmarks_417591223",
+    "name": "Torture Museum",
+    "description": "The Torture Museum stands on the Singel near the Bloemenmarkt, in a narrow brick canal house with a dark glass shopfront. It exhibits historical instruments of torture, though like many such museums it also shows devices that were seldom or never used in real history, such as the iron maiden, a literary invention of the 19th century.",
+    "funFact": "The Daily Telegraph called it one of the world's most unusual museums. It is not connected with the separate Museum of Medieval Torture Instruments elsewhere in Amsterdam.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Torture_Museum,_Amsterdam"
+  },
+  {
+    "modelId": "theo-thijssen-museum",
+    "landmarkId": "extract_landmarks_1824871810",
+    "name": "Theo Thijssen Museum",
+    "description": "The Theo Thijssen Museum is devoted to the writer, teacher and politician Theo Thijssen. It is run by the Stichting Theo Thijssen and occupies the ground floor of Thijssen's birthplace at Eerste Leliedwarsstraat 16, a brick corner house with a bowed shop window.",
+    "funFact": "A plaque on the facade records that Theo Thijssen, author of Kees de Jongen, was born in this house.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Theo_Thijssen_Museum"
+  },
+  {
+    "modelId": "pathe-de-munt",
+    "landmarkId": "extract_landmarks_257271103",
+    "name": "Pathé de Munt",
+    "description": "Pathé de Munt is a large cinema in the centre of Amsterdam on the Vijzelstraat, close to Pathé Tuschinski; the two cinemas border each other behind the shops on the Reguliersbreestraat. It has 13 screens on three floors with 1,829 seats in total, the largest room seating 318.",
+    "funFact": "When Pathé de Munt opened in November 2000 it was the first multiplex cinema in Amsterdam's inner city.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Path%C3%A9_de_Munt"
+  },
+  {
+    "modelId": "houseboat-museum",
+    "landmarkId": "extract_landmarks_941219842",
+    "name": "Houseboat Museum",
+    "description": "The Woonbootmuseum, or Houseboat Museum, is dedicated to the history and culture of living on the water. It lies on the Prinsengracht, on the edge of the Jordaan, aboard the Hendrika Maria, a historic inland vessel from 1914.",
+    "funFact": "It is the only museum in the world specifically focused on houseboat living.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Woonbootmuseum"
   }
 ]
