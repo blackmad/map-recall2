@@ -110,6 +110,20 @@ test('shadow box snaps to light-space texels and covers the focus', () => {
   }
 });
 
+test('a coarse snap step is a whole number of texels', () => {
+  const toSun = sunDirection(215, 40);
+  const fit = fitShadowCamera({ focusAbs: [333.3, 77.7, 0], toSun, halfSizeM: 160, mapSize: 1024, snapStepM: 8 });
+  const { right, up } = lightBasis(toSun);
+  const step = Math.round(8 / fit.texelM) * fit.texelM;
+  for (const axis of [right, up]) {
+    const t = (fit.targetAbs[0] * axis[0] + fit.targetAbs[1] * axis[1] + fit.targetAbs[2] * axis[2]) / step;
+    close(t, Math.round(t), 1e-6, 'step multiple');
+  }
+  // Within a step the box does not move.
+  const moved = fitShadowCamera({ focusAbs: [333.3 + right[0] * 2, 77.7 + right[1] * 2, right[2] * 2], toSun, halfSizeM: 160, mapSize: 1024, snapStepM: 8 });
+  for (let i = 0; i < 3; i++) close(moved.targetAbs[i], fit.targetAbs[i], 1e-6);
+});
+
 test('shadow box size steps with zoom and is clamped', () => {
   assert.equal(shadowHalfSizeForZoom(18), 160);
   assert.equal(shadowHalfSizeForZoom(18.7), 160);
@@ -237,6 +251,16 @@ test('shared frame: two passes, one renderer, participants placed by their own l
   const atTarget = new THREE.Vector3(0, 0, 0).applyMatrix4(wrapper.matrix);
   const expected = worldOfMercator(frame.lastFrame!, [target[0], target[1], 0]);
   close(atTarget.x, expected[0], 1e-6); close(atTarget.y, expected[1], 1e-6); close(atTarget.z, expected[2], 1e-6);
+  log.length = 0;
+  // Same view, same casters: the shadow map is reused, only its matrix follows.
+  frame.mainLayer.render(gl, { defaultProjectionData: { mainMatrix: clip } });
+  assert.deepEqual(log, ['reset', 'render facades']);
+  // A new caster under a root forces a redraw.
+  frame.scene.getObjectByName('shared-frame/facades')!.children[0].add(new THREE.Mesh());
+  log.length = 0;
+  frame.mainLayer.render(gl, { defaultProjectionData: { mainMatrix: clip } });
+  assert.deepEqual(log, ['reset', 'render[shadow] facades']);
+  assert.equal(frame.shadowRedraws, 2);
   log.length = 0;
   frame.overlayLayer.render(gl, { defaultProjectionData: { mainMatrix: clip } });
   assert.deepEqual(log, ['reset', 'render[xray] bike', 'render bike'], 'x-ray first, no shadow redraw in the overlay');

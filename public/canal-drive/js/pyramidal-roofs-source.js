@@ -77,6 +77,7 @@ export class PyramidalRoofs {
       this.sharedFrame.register('pyramidal-roofs', {
         root: this._sharedRoot,
         beforeRender: () => this.enabled && this._entries.length > 0,
+        revision: () => this._hiddenRevision,
       }, { order: options.sharedOrder ?? 40 });
     } else if (!map.getLayer(this.layer.id)) map.addLayer(this.layer);
     map._pyramidalRoofs = this;
@@ -97,6 +98,7 @@ export class PyramidalRoofs {
   setHiddenReason(reason, ids) {
     this._hiddenReasons.set(reason, new Set([...ids].map(String)));
     this._hiddenIds = new Set([...this._hiddenReasons.values()].flatMap(values => [...values]));
+    this._hiddenRevision = (this._hiddenRevision || 0) + 1;
     for (const entry of this._entries) {
       entry.mesh.visible = !entry.ids.some(id => this._hiddenIds.has(id));
     }

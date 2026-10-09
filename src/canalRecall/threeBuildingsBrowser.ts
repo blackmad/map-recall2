@@ -912,7 +912,7 @@ export class ThreeBuildings {
       attribute.array.fill(this.hidden.has(id) || entry.mesh.userData.coarse && this.installedDetailIds.has(id) ? 1 : this.highlighted.has(id) ? 2 : 0, range.start, range.start + range.count);
       touched = true;
     }
-    if (touched) attribute.needsUpdate = true;
+    if (touched) { attribute.needsUpdate = true; this.hiddenRevision++; }
   }
 
   private dropChunk(key: string): void {
@@ -948,6 +948,8 @@ export class ThreeBuildings {
   /** Lit material + sun shadows; only inside the shared frame (`?litFacades=0` keeps the unlit shader there). */
   private lit = false;
   private depthMaterial: any = null;
+  /** Bumped whenever suppressed/answer walls change (they cast differently). */
+  private hiddenRevision = 0;
 
   /** One set-up for both the legacy layer and the shared frame. */
   private setup(map: MapLike, renderer: any, camera: any, scene: any): void {
@@ -1029,6 +1031,7 @@ export class ThreeBuildings {
       root,
       onAttach: (f: any) => this.setup(this.map, f.renderer, camera, root),
       mercatorFromLocal: () => this.transform?.elements,
+      revision: () => this.hiddenRevision,
       beforeRender: (ctx: any) => {
         if (!this.prepareFrame()) return false;
         // Picking (inspectAtScreen) raycasts world-space meshes with this projection.

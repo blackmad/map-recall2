@@ -48,7 +48,7 @@ export type LightRig = {
   readonly options: Required<LightRigOptions>;
   readonly objects: any[];
   /** Fit the sun's shadow box around a focus. Positions are world (eye-relative) metres; `toWorld` maps absolute → world. */
-  follow(focusAbs: Vec3, zoom: number, toWorld: (abs: Vec3) => Vec3): ShadowFit;
+  follow(focusAbs: Vec3, zoom: number, toWorld: (abs: Vec3) => Vec3, snapStepM?: number): ShadowFit;
   /** Move the sun (time of day, debugging). Takes effect on the next follow(). */
   setSun(azimuthDeg: number, elevationDeg: number): void;
 };
@@ -74,9 +74,9 @@ export function createLightRig(THREE: any, overrides: LightRigOptions = {}): Lig
   const rig: LightRig = {
     sun, sky, toSun, options,
     objects: [sky, sun, sun.target],
-    follow(focusAbs, zoom, toWorld) {
+    follow(focusAbs, zoom, toWorld, snapStepM) {
       const halfSizeM = shadowHalfSizeForZoom(zoom);
-      const fit = fitShadowCamera({ focusAbs, toSun, halfSizeM, mapSize: options.shadowMapSize });
+      const fit = fitShadowCamera({ focusAbs, toSun, halfSizeM, mapSize: options.shadowMapSize, snapStepM });
       const target = toWorld(fit.targetAbs), light = toWorld(fit.lightAbs);
       sun.target.position.set(target[0], target[1], target[2]);
       sun.position.set(light[0], light[1], light[2]);

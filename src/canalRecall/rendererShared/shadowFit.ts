@@ -24,6 +24,13 @@ export type ShadowFitInput = {
   mapSize: number;
   /** Tallest caster we must catch above the focus (Westerkerk ~87 m). */
   maxCasterHeightM?: number;
+  /**
+   * Move the box only in steps of about this many metres (rounded to whole
+   * texels). The box is far larger than the view near the rider, so a coarse
+   * step costs nothing visible and lets the shadow map be reused for many
+   * frames while riding (see SharedFrame).
+   */
+  snapStepM?: number;
 };
 
 export type ShadowFit = {
@@ -59,10 +66,12 @@ export function fitShadowCamera(input: ShadowFitInput): ShadowFit {
   const maxHeight = input.maxCasterHeightM ?? 120;
   const { right, up, forward } = lightBasis(input.toSun);
   const texelM = (2 * halfSizeM) / mapSize;
-  // Snap the focus in light-space right/up; keep its depth component.
-  const r = Math.round(dot(focusAbs, right) / texelM) * texelM;
-  const u = Math.round(dot(focusAbs, up) / texelM) * texelM;
-  const f = dot(focusAbs, forward);
+  const step = Math.max(1, Math.round((input.snapStepM ?? 0) / texelM)) * texelM;
+  // Snap the focus in light space (right/up set the texel grid).
+  const r = Math.round(dot(focusAbs, right) / step) * step;
+  const u = Math.round(dot(focusAbs, up) / step) * step;
+  // Depth along the sun is snapped too: a cached map is only valid for the exact light position it was drawn from.
+  const f = Math.round(dot(focusAbs, forward) / step) * step;
   const targetAbs: Vec3 = [
     right[0] * r + up[0] * u + forward[0] * f,
     right[1] * r + up[1] * u + forward[1] * f,
