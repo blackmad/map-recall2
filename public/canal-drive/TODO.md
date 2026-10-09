@@ -115,6 +115,12 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   handlers, led by inventory trees rebuilding (`inventory-trees-source.js`),
   then road labels (`road-network.js` `drawLabels`). Gate those on real view
   change.
+- **Large-tier follow-ups** (`src/canalRecall/largeBuildingTier.ts`,
+  ranked list via `npm run audit:large-tier`): untuned buildings show a
+  uniform window grid; tune next Roeterseiland/LLC, VU, Benno Premselahuis,
+  IJ-toren; roof shapes for tuned entries (Nyenrode's mansard); per-wall
+  front vs blind walls; Nyenrode shows a Jumbo shopfront its panorama does
+  not support — shopfront assignment can contradict photos.
 - **Pand reference feed follow-ups** (`npm run pand-reference`, merged
   2026-10-09): street trees hide whole canal fronts in every year (Bloemgracht
   3/7 unusable) — add a third laterally offset panorama or the per-pixel median
