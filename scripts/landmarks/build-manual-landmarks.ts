@@ -1,3 +1,6 @@
+import {buildHuizeFrankendael} from './huize-frankendael-builder';
+import {buildLutherMuseum} from './luther-museum-builder';
+import {buildThisIsHolland} from './this-is-holland-builder';
 import {buildFireStationAnton} from './fire-station-anton-builder';
 import {buildFireStationWeesp} from './fire-station-weesp-builder';
 import {buildFireStationDriemond} from './fire-station-driemond-builder';
@@ -256,6 +259,8 @@ async function save(id:string){
   const rgb=new T.Color(group.hex),material=doc.createMaterial(name).setBaseColorFactor([rgb.r,rgb.g,rgb.b,1]).setMetallicFactor(0).setRoughnessFactor(.9).setDoubleSided(true);
   if(group.unlit)material.setExtension('KHR_materials_unlit',unlitExtension!.createUnlit());
   if(id==='conservatorium'&&!name.startsWith('decal-')&&group.colour==='glass')material.setBaseColorFactor([rgb.r,rgb.g,rgb.b,.28]).setAlphaMode('BLEND');
+  const opacity=(spec as {materialOpacity?:Record<string,number>}).materialOpacity?.[group.colour];
+  if(opacity!==undefined&&id!=='conservatorium'&&!name.startsWith('decal-'))material.setBaseColorFactor([rgb.r,rgb.g,rgb.b,opacity]).setAlphaMode('BLEND');
   (group.precise?preciseMesh!:mesh).addPrimitive(doc.createPrimitive().setExtras(spec.preservePositionPrecision?{positionPrecision:group.precise?'exact':'ordinary'}:{}).setAttribute('POSITION',doc.createAccessor().setType('VEC3').setArray(positions).setBuffer(buffer)).setAttribute('NORMAL',doc.createAccessor().setType('VEC3').setArray(normals).setBuffer(buffer)).setMaterial(material));
  }
  const ordinaryNode=doc.createNode(id).setMesh(mesh);scene.addChild(ordinaryNode);
@@ -308,7 +313,10 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
   else if(id.startsWith('olvg-'))hospital(id);
   else {
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
-    if(id==='fire-station-nico')buildFireStationNico(w,d,helpers);
+    if(id==='this-is-holland')buildThisIsHolland(w,d,helpers);
+    else if(id==='luther-museum')buildLutherMuseum(w,d,helpers);
+    else if(id==='huize-frankendael')buildHuizeFrankendael(w,d,helpers);
+    else if(id==='fire-station-nico')buildFireStationNico(w,d,helpers);
     else if(id==='fire-station-osdorp')buildFireStationOsdorp(w,d,helpers);
     else if(id==='fire-station-teunis')buildFireStationTeunis(w,d,helpers);
     else if(id==='fire-station-victor')buildFireStationVictor(w,d,helpers);
