@@ -20436,6 +20436,226 @@
       "triangles": 5528,
       "bytes": 89336,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "nassaukerk": {
+      "id": "nassaukerk",
+      "name": "Nassaukerk",
+      "landmarkId": "extract_landmarks_1101340298",
+      "modelUrl": "./models/nassaukerk.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012237328"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8771351038872215,
+          52.382675953008125
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 44,
+        "widthMetres": 48
+      },
+      "surveyed": {
+        "anchor": [
+          4.8771351038872215,
+          52.382675953008125
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current BAG 0363100012237328 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the anchor."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "materialOverrides": {
+        "brick": "#7a4b3c",
+        "stone": "#cdc6b4",
+        "slate": "#4a4a4e",
+        "glass": "#7d9aa0",
+        "dark": "#35261c",
+        "white": "#dcd8ca",
+        "frame": "#e4e0d2",
+        "copper": "#6aa38c",
+        "gold": "#d9b44a",
+        "ochre": "#a9733f",
+        "bronze": "#4b4a42"
+      },
+      "attribution": {
+        "title": "Nassaukerk",
+        "author": "Map Recall",
+        "sourceUrl": "https://nl.wikipedia.org/wiki/Nassaukerk_(Amsterdam)",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free flat-colour geometry from BAG/3DBAG massing; reference photographs guided architectural detail, no pixels or meshes imported."
+      },
+      "buildingFootprint": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.877166435970603,
+              52.38278784195688
+            ],
+            [
+              4.877048139369861,
+              52.38285814649637
+            ],
+            [
+              4.877041460964453,
+              52.382853920470694
+            ],
+            [
+              4.877027652062876,
+              52.382845187851785
+            ],
+            [
+              4.876954423055014,
+              52.38279884634399
+            ],
+            [
+              4.87702626643158,
+              52.3827562575793
+            ],
+            [
+              4.8769970902142505,
+              52.38273765317152
+            ],
+            [
+              4.876970707318562,
+              52.382753285953406
+            ],
+            [
+              4.876967455887726,
+              52.382751204773434
+            ],
+            [
+              4.876931353710822,
+              52.38272819349822
+            ],
+            [
+              4.876928102283676,
+              52.38272611231719
+            ],
+            [
+              4.8769544851781506,
+              52.382710479544684
+            ],
+            [
+              4.876922042909823,
+              52.38268979387459
+            ],
+            [
+              4.876867481686565,
+              52.38265500105309
+            ],
+            [
+              4.876879769976559,
+              52.38264780992129
+            ],
+            [
+              4.8771502595615015,
+              52.3824894884934
+            ],
+            [
+              4.877152876937287,
+              52.38248795388205
+            ],
+            [
+              4.8771709302035315,
+              52.38249926626181
+            ],
+            [
+              4.8771893994226465,
+              52.38248846169947
+            ],
+            [
+              4.877171346259441,
+              52.38247714033527
+            ],
+            [
+              4.87725042840887,
+              52.38243085271445
+            ],
+            [
+              4.877334394294556,
+              52.38248354064933
+            ],
+            [
+              4.877504407693068,
+              52.38259059700854
+            ],
+            [
+              4.877401331731559,
+              52.382650415849895
+            ],
+            [
+              4.877390892071012,
+              52.382643737985155
+            ],
+            [
+              4.877372215667629,
+              52.38265467650215
+            ],
+            [
+              4.877362359151796,
+              52.382648378628794
+            ],
+            [
+              4.877284060207747,
+              52.38269422929828
+            ],
+            [
+              4.877304356278518,
+              52.38270721403856
+            ],
+            [
+              4.877221960842016,
+              52.38275548269518
+            ],
+            [
+              4.877201650086313,
+              52.38274249787767
+            ],
+            [
+              4.877146256469677,
+              52.38277493858455
+            ],
+            [
+              4.877166435970603,
+              52.38278784195688
+            ]
+          ]
+        ]
+      },
+      "bounds": {
+        "min": [
+          -17.899999618530273,
+          -5.9604645663569045e-9,
+          -20.516000747680664
+        ],
+        "max": [
+          25.274999618530273,
+          27.3799991607666,
+          27.049999237060547
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8771351038872215,
+          52.382675953008125
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 47.56599998474121,
+        "heightMetres": 27.379999166727067,
+        "depthMetres": 43.17499923706055,
+        "depthCoverage": 0.8994791507720947
+      },
+      "triangles": 2447,
+      "bytes": 40136,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
