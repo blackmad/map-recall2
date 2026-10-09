@@ -1,0 +1,701 @@
+{
+  "schemaVersion": 1,
+  "id": "rozengracht-249",
+  "name": "Rozengracht balcony terrace reserve",
+  "address": "Rozengracht 249",
+  "caseId": "case-25",
+  "synthetic": false,
+  "buildingId": "0363100012169813",
+  "geometryRevision": "85c58506971767aa54c4020e80c2c998766799da921ea9f947c3eb1b91e51724",
+  "sourceBundle": "rozengracht-249.json",
+  "sourceBundlePath": "artifacts/building-library/expansion/evidence/rozengracht-249.json",
+  "footprint": [
+    [
+      -0.006861368982834723,
+      -0.018786208124124987
+    ],
+    [
+      5.44394591067768,
+      -0.018786208124125015
+    ],
+    [
+      5.450385323813971,
+      9.996849494813505
+    ],
+    [
+      -0.00042195584654347584,
+      9.996849494813505
+    ]
+  ],
+  "height": 13.951000046730043,
+  "storeys": [
+    {
+      "id": "ground",
+      "bottom": 0,
+      "top": 3.9
+    },
+    {
+      "id": "upper_1",
+      "bottom": 3.9,
+      "top": 7.250333348910014
+    },
+    {
+      "id": "upper_2",
+      "bottom": 7.250333348910014,
+      "top": 10.600666697820028
+    },
+    {
+      "id": "upper_3",
+      "bottom": 10.600666697820028,
+      "top": 13.951000046730043
+    }
+  ],
+  "roof": {
+    "kind": "flat",
+    "eaves": 13.951000046730043,
+    "top": 14.101000046730043,
+    "status": "inferred",
+    "setback": 0.24
+  },
+  "gable": {
+    "profile": [
+      [
+        0.0,
+        13.951000046730043
+      ],
+      [
+        5.450807279660515,
+        13.951000046730043
+      ]
+    ],
+    "status": "inferred"
+  },
+  "frontages": [
+    {
+      "id": "street",
+      "origin": [
+        0,
+        0
+      ],
+      "rotation": 0,
+      "width": 5.450807279660515,
+      "openings": [
+        {
+          "id": "full:w1",
+          "x": 1.1855505833261621,
+          "z": 12.275833372275034,
+          "width": 0.8775799720253429,
+          "height": 2.0124000000000004,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.4,
+          "storey": "upper_3",
+          "frameColour": "#ece7d6",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d",
+            "reason": "Visually checked bay/row hypothesis; original crop registration unresolved; metric dimensions are not observed."
+          },
+          "mullions": [
+            0.5
+          ]
+        },
+        {
+          "id": "full:w2",
+          "x": 2.8098911526649952,
+          "z": 12.275833372275034,
+          "width": 0.8775799720253429,
+          "height": 2.0124000000000004,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.4,
+          "storey": "upper_3",
+          "frameColour": "#ece7d6",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d",
+            "reason": "Visually checked bay/row hypothesis; original crop registration unresolved; metric dimensions are not observed."
+          },
+          "mullions": [
+            0.5
+          ]
+        },
+        {
+          "id": "full:w3",
+          "x": 4.43423172200383,
+          "z": 12.275833372275034,
+          "width": 0.8775799720253431,
+          "height": 2.0124000000000004,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.4,
+          "storey": "upper_3",
+          "frameColour": "#ece7d6",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d",
+            "reason": "Visually checked bay/row hypothesis; original crop registration unresolved; metric dimensions are not observed."
+          },
+          "mullions": [
+            0.5
+          ]
+        },
+        {
+          "id": "full:w4",
+          "x": 1.1855505833261621,
+          "z": 8.925500023365021,
+          "width": 0.8775799720253429,
+          "height": 2.3219999999999996,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.31,
+          "storey": "upper_2",
+          "frameColour": "#ece7d6",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d",
+            "reason": "Visually checked bay/row hypothesis; original crop registration unresolved; metric dimensions are not observed."
+          },
+          "mullions": [
+            0.5
+          ]
+        },
+        {
+          "id": "full:w5",
+          "x": 2.8098911526649952,
+          "z": 8.925500023365021,
+          "width": 0.8775799720253429,
+          "height": 2.3219999999999996,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.31,
+          "storey": "upper_2",
+          "frameColour": "#ece7d6",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d",
+            "reason": "Visually checked bay/row hypothesis; original crop registration unresolved; metric dimensions are not observed."
+          },
+          "mullions": [
+            0.5
+          ]
+        },
+        {
+          "id": "full:w6",
+          "x": 4.43423172200383,
+          "z": 8.925500023365021,
+          "width": 0.8775799720253431,
+          "height": 2.3219999999999996,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.31,
+          "storey": "upper_2",
+          "frameColour": "#ece7d6",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d",
+            "reason": "Visually checked bay/row hypothesis; original crop registration unresolved; metric dimensions are not observed."
+          },
+          "mullions": [
+            0.5
+          ]
+        },
+        {
+          "id": "full:w7",
+          "x": 1.1855505833261621,
+          "z": 5.575166674455007,
+          "width": 0.8775799720253429,
+          "height": 2.3220000000000005,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.31,
+          "storey": "upper_1",
+          "frameColour": "#ece7d6",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d",
+            "reason": "Visually checked bay/row hypothesis; original crop registration unresolved; metric dimensions are not observed."
+          },
+          "mullions": [
+            0.5
+          ]
+        },
+        {
+          "id": "full:w8",
+          "x": 2.8098911526649952,
+          "z": 5.575166674455007,
+          "width": 0.8775799720253429,
+          "height": 2.3220000000000005,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.31,
+          "storey": "upper_1",
+          "frameColour": "#ece7d6",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d",
+            "reason": "Visually checked bay/row hypothesis; original crop registration unresolved; metric dimensions are not observed."
+          },
+          "mullions": [
+            0.5
+          ]
+        },
+        {
+          "id": "full:w9",
+          "x": 4.43423172200383,
+          "z": 5.575166674455007,
+          "width": 0.8775799720253431,
+          "height": 2.3220000000000005,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.31,
+          "storey": "upper_1",
+          "frameColour": "#ece7d6",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d",
+            "reason": "Visually checked bay/row hypothesis; original crop registration unresolved; metric dimensions are not observed."
+          },
+          "mullions": [
+            0.5
+          ]
+        },
+        {
+          "id": "ground:review:broad-ground-window",
+          "x": 3.345607673253169,
+          "z": 1.8199999999999998,
+          "width": 2.3934634529278545,
+          "height": 2.6909090909090905,
+          "kind": "window",
+          "head": "segmental",
+          "transom": 0.35,
+          "storey": "ground",
+          "frameColour": "#c9c8b4",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "fb12026a15af8788dc27dece8d92f4f615971536da6426ae462c16799f0310d9",
+            "reason": "Visual ground assembly proposal, street threshold hypothesis; independent registration unresolved."
+          },
+          "mullions": [
+            0.25,
+            0.5,
+            0.65
+          ]
+        },
+        {
+          "id": "ground:review:left-entrance",
+          "x": 1.0919085095473788,
+          "z": 1.460909090909091,
+          "width": 0.838585735332387,
+          "height": 2.6818181818181817,
+          "kind": "door",
+          "head": "rectangular",
+          "transom": 0.18,
+          "storey": "ground",
+          "frameColour": "#a6a795",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "fb12026a15af8788dc27dece8d92f4f615971536da6426ae462c16799f0310d9",
+            "reason": "Visual ground assembly proposal, street threshold hypothesis; independent registration unresolved."
+          }
+        }
+      ],
+      "storefront": {
+        "anchor": 2.7254036398302577,
+        "height": 3.9,
+        "finishColour": "#745546",
+        "signs": [],
+        "awnings": []
+      },
+      "components": [
+        {
+          "id": "upper_1-pale-sill-course",
+          "kind": "stringcourse",
+          "z": 4.334166674455006,
+          "height": 0.11,
+          "projection": 0.065,
+          "material": "limestone",
+          "colour": "#d2cbb5",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d",
+            "reason": "Dated facade images support the component presence and relative layout; dimensions remain authored hypotheses without independent metric registration.",
+            "reviewedContactSheet": "artifacts/building-library/expansion/rozengracht-249-dated-full.jpg",
+            "captureDates": [
+              "2022-12-15",
+              "2025-07-03"
+            ]
+          }
+        },
+        {
+          "id": "upper_2-pale-sill-course",
+          "kind": "stringcourse",
+          "z": 7.684500023365022,
+          "height": 0.11,
+          "projection": 0.065,
+          "material": "limestone",
+          "colour": "#d2cbb5",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d",
+            "reason": "Dated facade images support the component presence and relative layout; dimensions remain authored hypotheses without independent metric registration.",
+            "reviewedContactSheet": "artifacts/building-library/expansion/rozengracht-249-dated-full.jpg",
+            "captureDates": [
+              "2022-12-15",
+              "2025-07-03"
+            ]
+          }
+        },
+        {
+          "id": "upper_3-pale-sill-course",
+          "kind": "stringcourse",
+          "z": 11.189633372275035,
+          "height": 0.11,
+          "projection": 0.065,
+          "material": "limestone",
+          "colour": "#d2cbb5",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d",
+            "reason": "Dated facade images support the component presence and relative layout; dimensions remain authored hypotheses without independent metric registration.",
+            "reviewedContactSheet": "artifacts/building-library/expansion/rozengracht-249-dated-full.jpg",
+            "captureDates": [
+              "2022-12-15",
+              "2025-07-03"
+            ]
+          }
+        },
+        {
+          "id": "pale-deep-cornice",
+          "kind": "cornice",
+          "z": 13.781000046730043,
+          "height": 0.42,
+          "projection": 0.38,
+          "material": "limestone",
+          "colour": "#d2cbb5",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d",
+            "reason": "Dated facade images support the component presence and relative layout; dimensions remain authored hypotheses without independent metric registration.",
+            "reviewedContactSheet": "artifacts/building-library/expansion/rozengracht-249-dated-full.jpg",
+            "captureDates": [
+              "2022-12-15",
+              "2025-07-03"
+            ]
+          }
+        },
+        {
+          "id": "observed-projecting-balcony",
+          "kind": "balcony",
+          "x": 2.8098911526649952,
+          "z": 7.714500023365022,
+          "width": 1.55,
+          "depth": 0.72,
+          "height": 0.85,
+          "material": "limestone",
+          "frameMaterial": "iron",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d",
+            "reason": "Dated facade images support the component presence and relative layout; dimensions remain authored hypotheses without independent metric registration.",
+            "reviewedContactSheet": "artifacts/building-library/expansion/rozengracht-249-dated-full.jpg",
+            "captureDates": [
+              "2022-12-15",
+              "2025-07-03"
+            ]
+          }
+        }
+      ],
+      "materialZones": [
+        {
+          "id": "upper_1-pale-pier-band",
+          "material": "limestone",
+          "colour": "#d2cbb5",
+          "x": 2.7254036398302577,
+          "z": 6.456166674455007,
+          "width": 5.450807279660515,
+          "height": 0.11,
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d",
+            "reason": "Dated facade images support the component presence and relative layout; dimensions remain authored hypotheses without independent metric registration.",
+            "reviewedContactSheet": "artifacts/building-library/expansion/rozengracht-249-dated-full.jpg",
+            "captureDates": [
+              "2022-12-15",
+              "2025-07-03"
+            ]
+          }
+        },
+        {
+          "id": "upper_2-pale-pier-band",
+          "material": "limestone",
+          "colour": "#d2cbb5",
+          "x": 2.7254036398302577,
+          "z": 9.806500023365022,
+          "width": 5.450807279660515,
+          "height": 0.11,
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d",
+            "reason": "Dated facade images support the component presence and relative layout; dimensions remain authored hypotheses without independent metric registration.",
+            "reviewedContactSheet": "artifacts/building-library/expansion/rozengracht-249-dated-full.jpg",
+            "captureDates": [
+              "2022-12-15",
+              "2025-07-03"
+            ]
+          }
+        },
+        {
+          "id": "upper_3-pale-pier-band",
+          "material": "limestone",
+          "colour": "#d2cbb5",
+          "x": 2.7254036398302577,
+          "z": 13.002033372275035,
+          "width": 5.450807279660515,
+          "height": 0.11,
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d",
+            "reason": "Dated facade images support the component presence and relative layout; dimensions remain authored hypotheses without independent metric registration.",
+            "reviewedContactSheet": "artifacts/building-library/expansion/rozengracht-249-dated-full.jpg",
+            "captureDates": [
+              "2022-12-15",
+              "2025-07-03"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "materials": {
+    "wall": "redbrick",
+    "wallColour": "#745546",
+    "roof": "slate",
+    "frame": "ivorytimber"
+  },
+  "details": {},
+  "placement": {
+    "anchor": [
+      4.875088686885922,
+      52.37187919025146
+    ],
+    "xAxisBearingDegrees": 249.93606876437434,
+    "frontageLocal": [
+      [
+        181.75,
+        -287.9
+      ],
+      [
+        176.63,
+        -286.03
+      ]
+    ],
+    "inputFrameDeterminant": -0.9999999999999998,
+    "axes": "glTF x=along frontage,y=up,z=towards street",
+    "sourceRDFrame": {
+      "anchorRD": [
+        120124.29917002577,
+        487234.5220474554
+      ],
+      "xAxisRD": [
+        -0.939310406204434,
+        -0.3430684491410731
+      ],
+      "yAxisRD": [
+        0.34306844914107304,
+        -0.9393104062044337
+      ],
+      "geometryRevision": "85c58506971767aa54c4020e80c2c998766799da921ea9f947c3eb1b91e51724",
+      "buildingId": "0363100012169813",
+      "source": "Frozen 3DBAG coordinateFrame.originRD and ordered physical frontage; normalized source vertices checked within 1 mm."
+    }
+  },
+  "sourceShell": {
+    "surfaces": [
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              0.0,
+              0.0,
+              13.951000046730043
+            ],
+            [
+              0.0,
+              0.0,
+              0.001000046730041504
+            ],
+            [
+              5.4508072796605145,
+              0.0,
+              0.001000046730041504
+            ],
+            [
+              5.4508072796605145,
+              0.0,
+              13.931000046730041
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              0.006439413136271721,
+              10.015635702937576,
+              13.901000046730042
+            ],
+            [
+              0.006439413136271721,
+              10.015635702937576,
+              0.001000046730041504
+            ],
+            [
+              0.0,
+              0.0,
+              0.001000046730041504
+            ],
+            [
+              0.0,
+              0.0,
+              13.951000046730043
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              5.4508072796605145,
+              0.0,
+              13.931000046730041
+            ],
+            [
+              5.4508072796605145,
+              0.0,
+              0.001000046730041504
+            ],
+            [
+              5.457246692796787,
+              10.015635702937576,
+              0.001000046730041504
+            ],
+            [
+              5.457246692796787,
+              10.015635702937576,
+              13.881000046730042
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              5.457246692796787,
+              10.015635702937576,
+              13.881000046730042
+            ],
+            [
+              5.457246692796787,
+              10.015635702937576,
+              0.001000046730041504
+            ],
+            [
+              0.006439413136271721,
+              10.015635702937576,
+              0.001000046730041504
+            ],
+            [
+              0.006439413136271721,
+              10.015635702937576,
+              13.901000046730042
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              5.457246692796787,
+              10.015635702937576,
+              13.881000046730042
+            ],
+            [
+              0.006439413136271721,
+              10.015635702937576,
+              13.901000046730042
+            ],
+            [
+              0.0,
+              0.0,
+              13.951000046730043
+            ],
+            [
+              5.4508072796605145,
+              0.0,
+              13.931000046730041
+            ]
+          ]
+        ]
+      }
+    ],
+    "groundNAP": 1.7489999532699585,
+    "sourceOffsetNAP": 0.65,
+    "source": "3DBAG LoD2.2",
+    "pointCloudYear": 2023
+  },
+  "heightEvidence": [
+    {
+      "source": "3DBAG LoD2.2",
+      "year": 2023,
+      "datum": "NAP",
+      "groundNAP": 1.7489999532699585,
+      "roofStatisticRelativeM": 13.98,
+      "frontWallTopCandidates": [
+        {
+          "index": 0,
+          "width": 5.4508072796605145,
+          "tops": [
+            13.951000046730043,
+            13.931000046730041
+          ]
+        }
+      ],
+      "diagnosticNearFrontWalls": [],
+      "lineage": "AHN-derived3DBAG; not independent height evidence"
+    }
+  ],
+  "heightChoice": {
+    "value": 13.951000046730043,
+    "eavesM": 13.951000046730043,
+    "roofPeakM": 14.101000046730043,
+    "reportedRoofStatisticM": 13.98,
+    "reason": "Dominant selected-front 3DBAG wall top. Roof statistic retained separately; roof shape inferred."
+  },
+  "targetAppearanceDate": "2022-12-15T09:04:08.001450Z",
+  "authoringStatus": "ordinary-pilot-common-components-metric-unregistered",
+  "visualObservations": [
+    "Three rows of three windows, pale stone bands and projecting balcony at upper_2.",
+    "Left narrow entrance and broad right arched display at street level.",
+    "Dark red brick with ivory joinery and a straight cornice."
+  ],
+  "assumptions": [
+    "Draft staged for review; no independently registered image features.",
+    "Exact owner footprint and semantic source shell retained. Generated side/rear shell currently uses one eaves extrusion; complex rear volumes require reconstruction.",
+    "Roof volume is a hypothesis; no hidden-side openings or invented businesses added.",
+    "Reserve adds less architectural diversity than the held apartment/gable candidates.",
+    "2022 ground source and2025 full require dated review before combining appearance.",
+    "Arched broad ground display retains its visually inferred layout; balcony presence is photo-supported while its metric dimensions remain inferred.",
+    "New pale masonry courses and balcony are corroborated across the 2022 and 2025 dated sheets; widths, projection and heights remain inferred rather than registered measurements."
+  ],
+  "style": "simple"
+}

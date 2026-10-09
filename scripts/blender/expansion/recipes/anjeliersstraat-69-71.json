@@ -1,0 +1,1069 @@
+{
+  "schemaVersion": 1,
+  "id": "anjeliersstraat-69-71",
+  "name": "Anjeliersstraat 69/71 curved dormers",
+  "address": "Anjeliersstraat 69/71",
+  "buildingId": "0363100012165031",
+  "synthetic": false,
+  "geometryRevision": "21ac82296c55c6e1ee35529f5c449ebefba292bb4ccc7e919ad954b936292874",
+  "sourceBundle": "anjeliersstraat-69-71.json",
+  "footprint": [
+    [
+      -4.948424386690413e-05,
+      -0.005057541059041019
+    ],
+    [
+      0.19307587962812398,
+      -0.003447004086148578
+    ],
+    [
+      7.5737529247894,
+      -0.0009260857755037932
+    ],
+    [
+      8.171828910820636,
+      -0.0031877074660231486
+    ],
+    [
+      8.72903945873028,
+      10.234708385252418
+    ],
+    [
+      8.909938972174425,
+      13.503006928230858
+    ],
+    [
+      7.4000791354314845,
+      13.498182677949943
+    ],
+    [
+      6.524696364561832,
+      9.49865708052414
+    ],
+    [
+      4.556042937011503,
+      9.496738176013569
+    ],
+    [
+      0.5145967609195021,
+      9.50031668841452
+    ]
+  ],
+  "height": 6.737999985218049,
+  "storeys": [
+    {
+      "id": "ground",
+      "bottom": 0,
+      "top": 3.4
+    },
+    {
+      "id": "upper_1",
+      "bottom": 3.4,
+      "top": 6.737999985218049
+    }
+  ],
+  "roof": {
+    "kind": "flat",
+    "eaves": 6.737999985218049,
+    "top": 6.737999985218049,
+    "setback": 0.24,
+    "status": "inferred"
+  },
+  "gable": {
+    "profile": [
+      [
+        0,
+        6.737999985218049
+      ],
+      [
+        8.171168783336732,
+        6.737999985218049
+      ]
+    ],
+    "status": "inferred source-bounded flat parapet"
+  },
+  "frontages": [
+    {
+      "id": "street",
+      "origin": [
+        0,
+        0
+      ],
+      "rotation": 0,
+      "width": 8.171168783336732,
+      "openings": [
+        {
+          "id": "door-0",
+          "x": 0.63,
+          "z": 1.56,
+          "width": 0.81,
+          "height": 3.03,
+          "storey": "ground",
+          "kind": "door",
+          "head": "rectangular",
+          "mullions": [],
+          "transom": 0.23,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Visible feature presence in dated unregistered owner evidence; dimensions are authored proportions.",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/images/0363100012165031_e_11wifm5-ground.jpg",
+            "sourceHash": "9a21cf6228ad0cead6031bc23e5435268f5b5a554971ac9bd5b83612e8f4619b",
+            "captureDate": "2025-07-03T08:31:02Z",
+            "cropPlane": {
+              "start": {
+                "x": 120752.43271746753,
+                "y": 487902.6072611319
+              },
+              "end": {
+                "x": 120744.4871178055,
+                "y": 487899.59334108676
+              },
+              "baseZ": 0.22200001478195192,
+              "topZ": 5.1220000147819515
+            }
+          },
+          "frameColour": "#bec6bb",
+          "lowerPanel": {
+            "height": 1.48,
+            "colour": "#414b43"
+          },
+          "handleColour": "#7e8377"
+        },
+        {
+          "id": "door-1",
+          "x": 7.55,
+          "z": 1.56,
+          "width": 0.81,
+          "height": 3.03,
+          "storey": "ground",
+          "kind": "door",
+          "head": "rectangular",
+          "mullions": [],
+          "transom": 0.23,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Visible feature presence in dated unregistered owner evidence; dimensions are authored proportions.",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/images/0363100012165031_e_11wifm5-ground.jpg",
+            "sourceHash": "9a21cf6228ad0cead6031bc23e5435268f5b5a554971ac9bd5b83612e8f4619b",
+            "captureDate": "2025-07-03T08:31:02Z",
+            "cropPlane": {
+              "start": {
+                "x": 120752.43271746753,
+                "y": 487902.6072611319
+              },
+              "end": {
+                "x": 120744.4871178055,
+                "y": 487899.59334108676
+              },
+              "baseZ": 0.22200001478195192,
+              "topZ": 5.1220000147819515
+            }
+          },
+          "frameColour": "#bec6bb",
+          "lowerPanel": {
+            "height": 1.48,
+            "colour": "#414b43"
+          },
+          "handleColour": "#7e8377"
+        },
+        {
+          "id": "ground-display-0",
+          "x": 2.77,
+          "z": 1.68,
+          "width": 2.45,
+          "height": 2.79,
+          "storey": "ground",
+          "kind": "window",
+          "head": "rectangular",
+          "mullions": [
+            0.5
+          ],
+          "transom": 0.29,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Visible feature presence in dated unregistered owner evidence; dimensions are authored proportions.",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/images/0363100012165031_e_11wifm5-ground.jpg",
+            "sourceHash": "9a21cf6228ad0cead6031bc23e5435268f5b5a554971ac9bd5b83612e8f4619b",
+            "captureDate": "2025-07-03T08:31:02Z",
+            "cropPlane": {
+              "start": {
+                "x": 120752.43271746753,
+                "y": 487902.6072611319
+              },
+              "end": {
+                "x": 120744.4871178055,
+                "y": 487899.59334108676
+              },
+              "baseZ": 0.22200001478195192,
+              "topZ": 5.1220000147819515
+            }
+          },
+          "upperLightBars": [
+            0.52
+          ],
+          "frameColour": "#bec6bb"
+        },
+        {
+          "id": "ground-display-1",
+          "x": 5.47,
+          "z": 1.68,
+          "width": 2.45,
+          "height": 2.79,
+          "storey": "ground",
+          "kind": "window",
+          "head": "rectangular",
+          "mullions": [
+            0.5
+          ],
+          "transom": 0.29,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Visible feature presence in dated unregistered owner evidence; dimensions are authored proportions.",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/images/0363100012165031_e_11wifm5-ground.jpg",
+            "sourceHash": "9a21cf6228ad0cead6031bc23e5435268f5b5a554971ac9bd5b83612e8f4619b",
+            "captureDate": "2025-07-03T08:31:02Z",
+            "cropPlane": {
+              "start": {
+                "x": 120752.43271746753,
+                "y": 487902.6072611319
+              },
+              "end": {
+                "x": 120744.4871178055,
+                "y": 487899.59334108676
+              },
+              "baseZ": 0.22200001478195192,
+              "topZ": 5.1220000147819515
+            }
+          },
+          "upperLightBars": [
+            0.52
+          ],
+          "frameColour": "#bec6bb"
+        },
+        {
+          "id": "upper-0",
+          "x": 0.95,
+          "z": 4.99,
+          "width": 1.47,
+          "height": 1.93,
+          "storey": "upper_1",
+          "kind": "window",
+          "head": "rectangular",
+          "mullions": [],
+          "transom": 0.3,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Visible feature presence in dated unregistered owner evidence; dimensions are authored proportions.",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/images/0363100012165031_e_11wifm5-full.jpg",
+            "sourceHash": "dbf316a0f889679bc2eb86a0b328f131445693b679ae96313b155f3883af19ab",
+            "captureDate": "2023-01-16T10:49:16.405960Z",
+            "cropPlane": {
+              "start": {
+                "x": 120752.43271746753,
+                "y": 487902.6072611319
+              },
+              "end": {
+                "x": 120744.4871178055,
+                "y": 487899.59334108676
+              },
+              "baseZ": 0.22200001478195192,
+              "topZ": 12.81
+            }
+          },
+          "frameColour": "#bec6bb"
+        },
+        {
+          "id": "upper-1",
+          "x": 2.91,
+          "z": 4.99,
+          "width": 1.47,
+          "height": 1.93,
+          "storey": "upper_1",
+          "kind": "window",
+          "head": "rectangular",
+          "mullions": [],
+          "transom": 0.3,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Visible feature presence in dated unregistered owner evidence; dimensions are authored proportions.",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/images/0363100012165031_e_11wifm5-full.jpg",
+            "sourceHash": "dbf316a0f889679bc2eb86a0b328f131445693b679ae96313b155f3883af19ab",
+            "captureDate": "2023-01-16T10:49:16.405960Z",
+            "cropPlane": {
+              "start": {
+                "x": 120752.43271746753,
+                "y": 487902.6072611319
+              },
+              "end": {
+                "x": 120744.4871178055,
+                "y": 487899.59334108676
+              },
+              "baseZ": 0.22200001478195192,
+              "topZ": 12.81
+            }
+          },
+          "frameColour": "#bec6bb"
+        },
+        {
+          "id": "upper-2",
+          "x": 5.2,
+          "z": 4.99,
+          "width": 1.47,
+          "height": 1.93,
+          "storey": "upper_1",
+          "kind": "window",
+          "head": "rectangular",
+          "mullions": [],
+          "transom": 0.3,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Visible feature presence in dated unregistered owner evidence; dimensions are authored proportions.",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/images/0363100012165031_e_11wifm5-full.jpg",
+            "sourceHash": "dbf316a0f889679bc2eb86a0b328f131445693b679ae96313b155f3883af19ab",
+            "captureDate": "2023-01-16T10:49:16.405960Z",
+            "cropPlane": {
+              "start": {
+                "x": 120752.43271746753,
+                "y": 487902.6072611319
+              },
+              "end": {
+                "x": 120744.4871178055,
+                "y": 487899.59334108676
+              },
+              "baseZ": 0.22200001478195192,
+              "topZ": 12.81
+            }
+          },
+          "frameColour": "#bec6bb"
+        },
+        {
+          "id": "upper-3",
+          "x": 7.18,
+          "z": 4.99,
+          "width": 1.47,
+          "height": 1.93,
+          "storey": "upper_1",
+          "kind": "window",
+          "head": "rectangular",
+          "mullions": [],
+          "transom": 0.3,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Visible feature presence in dated unregistered owner evidence; dimensions are authored proportions.",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/images/0363100012165031_e_11wifm5-full.jpg",
+            "sourceHash": "dbf316a0f889679bc2eb86a0b328f131445693b679ae96313b155f3883af19ab",
+            "captureDate": "2023-01-16T10:49:16.405960Z",
+            "cropPlane": {
+              "start": {
+                "x": 120752.43271746753,
+                "y": 487902.6072611319
+              },
+              "end": {
+                "x": 120744.4871178055,
+                "y": 487899.59334108676
+              },
+              "baseZ": 0.22200001478195192,
+              "topZ": 12.81
+            }
+          },
+          "frameColour": "#bec6bb"
+        }
+      ],
+      "storefront": {
+        "height": 3.4,
+        "anchor": 4.085584391668366,
+        "finishColour": "#796452",
+        "signs": [],
+        "awnings": [],
+        "cornice": false
+      },
+      "eavesCornice": false,
+      "components": [
+        {
+          "id": "ground-header",
+          "kind": "stringcourse",
+          "provenance": {
+            "status": "inferred",
+            "basis": "Visible feature presence in dated unregistered owner evidence; dimensions are authored proportions.",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/images/0363100012165031_e_11wifm5-full.jpg",
+            "sourceHash": "dbf316a0f889679bc2eb86a0b328f131445693b679ae96313b155f3883af19ab",
+            "captureDate": "2023-01-16T10:49:16.405960Z",
+            "cropPlane": {
+              "start": {
+                "x": 120752.43271746753,
+                "y": 487902.6072611319
+              },
+              "end": {
+                "x": 120744.4871178055,
+                "y": 487899.59334108676
+              },
+              "baseZ": 0.22200001478195192,
+              "topZ": 12.81
+            }
+          },
+          "z": 3.29,
+          "height": 0.14,
+          "projection": 0.15,
+          "colour": "#b4baaa"
+        },
+        {
+          "id": "roof-cornice",
+          "kind": "cornice",
+          "provenance": {
+            "status": "inferred",
+            "basis": "Visible feature presence in dated unregistered owner evidence; dimensions are authored proportions.",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/images/0363100012165031_e_11wifm5-full.jpg",
+            "sourceHash": "dbf316a0f889679bc2eb86a0b328f131445693b679ae96313b155f3883af19ab",
+            "captureDate": "2023-01-16T10:49:16.405960Z",
+            "cropPlane": {
+              "start": {
+                "x": 120752.43271746753,
+                "y": 487902.6072611319
+              },
+              "end": {
+                "x": 120744.4871178055,
+                "y": 487899.59334108676
+              },
+              "baseZ": 0.22200001478195192,
+              "topZ": 12.81
+            }
+          },
+          "z": 6.657999985218049,
+          "height": 0.23,
+          "projection": 0.32,
+          "colour": "#aaa997"
+        }
+      ]
+    }
+  ],
+  "materials": {
+    "wall": "redbrick",
+    "wallColour": "#796452",
+    "roof": "slate",
+    "frame": "ivorytimber",
+    "glassColour": "#54605b"
+  },
+  "details": {
+    "sourceDormers": [
+      {
+        "id": "curved-dormer-0",
+        "sourceSurfaceIndices": [
+          13
+        ],
+        "x": 1.83,
+        "y": 0.25,
+        "width": 1.67,
+        "height": 1.9320000830302808,
+        "depth": 0.65,
+        "capRise": 0.31,
+        "provenance": {
+          "status": "inferred",
+          "basis": "Visible feature presence in dated unregistered owner evidence; dimensions are authored proportions.",
+          "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/images/0363100012165031_e_11wifm5-roof.jpg",
+          "sourceHash": "460bfe90e4e31f2558d06e27a756d1a328c30af91a7c018a40455178fdf7580f",
+          "captureDate": "2023-01-16T10:49:16.405960Z",
+          "cropPlane": {
+            "start": {
+              "x": 120752.43271746753,
+              "y": 487902.6072611319
+            },
+            "end": {
+              "x": 120744.4871178055,
+              "y": 487899.59334108676
+            },
+            "baseZ": 4.610000000000001,
+            "topZ": 12.81
+          }
+        }
+      },
+      {
+        "id": "curved-dormer-1",
+        "sourceSurfaceIndices": [
+          13
+        ],
+        "x": 6.07,
+        "y": 0.25,
+        "width": 1.67,
+        "height": 1.8871401626095867,
+        "depth": 0.65,
+        "capRise": 0.31,
+        "provenance": {
+          "status": "inferred",
+          "basis": "Visible feature presence in dated unregistered owner evidence; dimensions are authored proportions.",
+          "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/images/0363100012165031_e_11wifm5-roof.jpg",
+          "sourceHash": "460bfe90e4e31f2558d06e27a756d1a328c30af91a7c018a40455178fdf7580f",
+          "captureDate": "2023-01-16T10:49:16.405960Z",
+          "cropPlane": {
+            "start": {
+              "x": 120752.43271746753,
+              "y": 487902.6072611319
+            },
+            "end": {
+              "x": 120744.4871178055,
+              "y": 487899.59334108676
+            },
+            "baseZ": 4.610000000000001,
+            "topZ": 12.81
+          }
+        }
+      }
+    ]
+  },
+  "placement": {
+    "frontageLocal": [
+      [
+        809.7307474482513,
+        -955.9272536756471
+      ],
+      [
+        802.0907477732399,
+        -953.0292536322377
+      ]
+    ],
+    "inputFrameDeterminant": -1.0000000000000002,
+    "xAxisBearingDegrees": 249.2272920768603,
+    "axes": "glTF x=along frontage,y=up,z=towards street",
+    "sourceRDFrame": {
+      "anchorRD": [
+        120752.27991747402,
+        487902.54930113105
+      ],
+      "xAxisRD": [
+        -0.9349947207786924,
+        -0.35466163045355675
+      ],
+      "yAxisRD": [
+        0.35466163045355675,
+        -0.9349947207786924
+      ],
+      "buildingId": "0363100012165031",
+      "geometryRevision": "21ac82296c55c6e1ee35529f5c449ebefba292bb4ccc7e919ad954b936292874",
+      "source": "Frozen owner source origin RD and ordered physical frontage; original normalized source vertices retained."
+    },
+    "anchor": [
+      4.884241552169657,
+      52.37792227966147
+    ]
+  },
+  "sourceShell": {
+    "surfaces": [
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              8.168282294516105,
+              -0.012537654673801413,
+              6.737999985218049
+            ],
+            [
+              8.168282294516105,
+              -0.012537654673801413,
+              -0.0020000147819518865
+            ],
+            [
+              8.239868158870308,
+              1.2758238877608896,
+              -0.0020000147819518865
+            ],
+            [
+              8.239868158870308,
+              1.2758238877608896,
+              9.17799998521805
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              7.396532519126952,
+              13.488832730742166,
+              9.377999985218048
+            ],
+            [
+              7.396532519126952,
+              13.488832730742166,
+              -0.0020000147819518865
+            ],
+            [
+              6.5211497482573,
+              9.489307133316363,
+              -0.0020000147819518865
+            ],
+            [
+              6.5211497482573,
+              9.489307133316363,
+              9.317999985218048
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              -0.003596100548399246,
+              -0.01440748826681944,
+              6.647999985218048
+            ],
+            [
+              -0.003596100548399246,
+              -0.01440748826681944,
+              -0.0020000147819518865
+            ],
+            [
+              8.168282294516105,
+              -0.012537654673801413,
+              -0.0020000147819518865
+            ],
+            [
+              8.168282294516105,
+              -0.012537654673801413,
+              6.737999985218049
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              0.07056956721744195,
+              1.3371469700236067,
+              9.207999985218049
+            ],
+            [
+              0.07056956721744195,
+              1.3371469700236067,
+              -0.0020000147819518865
+            ],
+            [
+              -0.003596100548399246,
+              -0.01440748826681944,
+              -0.0020000147819518865
+            ],
+            [
+              -0.003596100548399246,
+              -0.01440748826681944,
+              6.647999985218048
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              8.789662385357882,
+              11.409580659487736,
+              9.33799998521805
+            ],
+            [
+              8.789662385357882,
+              11.409580659487736,
+              -0.0020000147819518865
+            ],
+            [
+              8.902845739565361,
+              13.484307033815302,
+              -0.0020000147819518865
+            ],
+            [
+              8.902845739565361,
+              13.484307033815302,
+              9.367999985218049
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              8.902845739565361,
+              13.484307033815302,
+              9.367999985218049
+            ],
+            [
+              8.902845739565361,
+              13.484307033815302,
+              -0.0020000147819518865
+            ],
+            [
+              7.396532519126952,
+              13.488832730742166,
+              -0.0020000147819518865
+            ],
+            [
+              7.396532519126952,
+              13.488832730742166,
+              9.377999985218048
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              6.5211497482573,
+              9.489307133316363,
+              9.317999985218048
+            ],
+            [
+              6.5211497482573,
+              9.489307133316363,
+              -0.0020000147819518865
+            ],
+            [
+              0.5110501446149698,
+              9.49096674120674,
+              -0.0020000147819518865
+            ],
+            [
+              0.5110501446149698,
+              9.49096674120674,
+              9.33799998521805
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              8.127421763486064,
+              10.847942556486458,
+              10.937999985218049
+            ],
+            [
+              8.127421763486064,
+              10.847942556486458,
+              9.327999985218048
+            ],
+            [
+              8.111938035924528,
+              9.84846256460032,
+              9.317999985218048
+            ],
+            [
+              8.111938035924528,
+              9.84846256460032,
+              11.08799998521805
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              8.789662385357882,
+              11.409580659487736,
+              10.747999985218048
+            ],
+            [
+              8.789662385357882,
+              11.409580659487736,
+              9.33799998521805
+            ],
+            [
+              8.127421763486064,
+              10.847942556486458,
+              9.327999985218048
+            ],
+            [
+              8.127421763486064,
+              10.847942556486458,
+              10.937999985218049
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              8.111938035924528,
+              9.84846256460032,
+              11.08799998521805
+            ],
+            [
+              8.111938035924528,
+              9.84846256460032,
+              9.317999985218048
+            ],
+            [
+              8.70904720906291,
+              9.900043911557864,
+              9.317999985218048
+            ],
+            [
+              8.70904720906291,
+              9.900043911557864,
+              10.977999985218048
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              8.239868158870308,
+              1.2758238877608896,
+              9.17799998521805
+            ],
+            [
+              8.239868158870308,
+              1.2758238877608896,
+              -0.0020000147819518865
+            ],
+            [
+              8.70904720906291,
+              9.900043911557864,
+              -0.0020000147819518865
+            ],
+            [
+              8.70904720906291,
+              9.900043911557864,
+              9.317999985218048
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              8.70904720906291,
+              9.900043911557864,
+              10.977999985218048
+            ],
+            [
+              8.70904720906291,
+              9.900043911557864,
+              9.317999985218048
+            ],
+            [
+              8.70904720906291,
+              9.900043911557864,
+              -0.0020000147819518865
+            ],
+            [
+              8.789662385357882,
+              11.409580659487736,
+              -0.0020000147819518865
+            ],
+            [
+              8.789662385357882,
+              11.409580659487736,
+              9.33799998521805
+            ],
+            [
+              8.789662385357882,
+              11.409580659487736,
+              10.747999985218048
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              0.5110501446149698,
+              9.49096674120674,
+              9.33799998521805
+            ],
+            [
+              0.5110501446149698,
+              9.49096674120674,
+              -0.0020000147819518865
+            ],
+            [
+              0.07056956721744195,
+              1.3371469700236067,
+              -0.0020000147819518865
+            ],
+            [
+              0.07056956721744195,
+              1.3371469700236067,
+              9.207999985218049
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              0.07056956721744195,
+              1.3371469700236067,
+              9.207999985218049
+            ],
+            [
+              -0.003596100548399246,
+              -0.01440748826681944,
+              6.647999985218048
+            ],
+            [
+              8.168282294516105,
+              -0.012537654673801413,
+              6.737999985218049
+            ],
+            [
+              8.239868158870308,
+              1.2758238877608896,
+              9.17799998521805
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              8.70904720906291,
+              9.900043911557864,
+              10.977999985218048
+            ],
+            [
+              8.789662385357882,
+              11.409580659487736,
+              10.747999985218048
+            ],
+            [
+              8.127421763486064,
+              10.847942556486458,
+              10.937999985218049
+            ],
+            [
+              8.111938035924528,
+              9.84846256460032,
+              11.08799998521805
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              0.5110501446149698,
+              9.49096674120674,
+              9.33799998521805
+            ],
+            [
+              0.07056956721744195,
+              1.3371469700236067,
+              9.207999985218049
+            ],
+            [
+              8.239868158870308,
+              1.2758238877608896,
+              9.17799998521805
+            ],
+            [
+              8.70904720906291,
+              9.900043911557864,
+              9.317999985218048
+            ],
+            [
+              8.111938035924528,
+              9.84846256460032,
+              9.317999985218048
+            ],
+            [
+              8.127421763486064,
+              10.847942556486458,
+              9.327999985218048
+            ],
+            [
+              8.789662385357882,
+              11.409580659487736,
+              9.33799998521805
+            ],
+            [
+              8.902845739565361,
+              13.484307033815302,
+              9.367999985218049
+            ],
+            [
+              7.396532519126952,
+              13.488832730742166,
+              9.377999985218048
+            ],
+            [
+              6.5211497482573,
+              9.489307133316363,
+              9.317999985218048
+            ]
+          ]
+        ]
+      }
+    ],
+    "groundNAP": 0.5220000147819519,
+    "sourceOffsetNAP": 0.65,
+    "source": "3DBAG LoD2.2",
+    "pointCloudYear": 2023
+  },
+  "heightEvidence": [
+    {
+      "source": "3DBAG LoD2.2",
+      "year": 2023,
+      "groundNAP": 0.5220000147819519,
+      "selectedWallHeightRaw": {
+        "surfaceIndex": 2,
+        "planeErrorM": 0.01440748824662303,
+        "overlapM": 8.168282294503804,
+        "bottom": -0.13,
+        "top": 6.61,
+        "heightM": 6.74,
+        "status": "selected-coplanar-source-wall; feature registration unresolved"
+      },
+      "selectedWallTopRelativeM": 6.737999985218049,
+      "roofStatisticRelativeM": 9.27,
+      "lineage": "AHN-derived3DBAG; not independent height evidence"
+    }
+  ],
+  "heightChoice": {
+    "value": 6.737999985218049,
+    "eavesM": 6.737999985218049,
+    "roofPeakM": 6.737999985218049,
+    "reportedRoofStatisticM": 9.27,
+    "reason": "Selected wall top normalized by source offsetNAP-groundNAP; rear roof percentile is not substituted for frontage eaves."
+  },
+  "targetAppearanceDate": "2025-07-03T08:31:02Z",
+  "authoringStatus": "reviewed simplified candidate; photographic registration and hidden appearance unresolved",
+  "assumptions": [
+    "Photographic features unregistered; opening dimensions remain inferred author proportions.",
+    "Seed geometry fingerprint is a cache digest, not an externally certified revision.",
+    "Exact owner footprint and all semantic surfaces retained; stock flat roof placeholder must not replace source-derived rear volumes in a promoted reconstruction.",
+    "No source crop datum or pixel height is treated as an independent measurement.",
+    "The paired ground entrances, two broad ground bays and four upper windows follow dated evidence. Each supported source-roof dormer has a segmental cap and matching arched opening. Dormer widths, peak at 9.10 m and depth are explicitly inferred rather than measured.",
+    "The source front roof slope, tall rear roof return and footprint remain exact. Rear appearance and photographic registration remain unresolved."
+  ],
+  "massing": {
+    "mode": "source-derived"
+  },
+  "geometryMode": "apertures",
+  "style": "simple"
+}

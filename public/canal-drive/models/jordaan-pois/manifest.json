@@ -1,0 +1,252 @@
+{
+  "version": 1,
+  "units": "metres",
+  "axes": "glTF x=along frontage,y=up,z=towards street",
+  "models": [
+    {
+      "id": "rozengracht-158",
+      "name": "Tobacco shop",
+      "address": "Rozengracht 158",
+      "caseId": "case-01",
+      "buildingId": "0363100012167878",
+      "modelUrl": "./models/jordaan-pois/rozengracht-158.glb",
+      "widthMetres": 3.489326582594426,
+      "depthMetres": 9.335297006157703,
+      "heightMetres": 14.57,
+      "anchor": [
+        4.878378902561053,
+        52.37295942652386
+      ],
+      "xAxisBearingDegrees": 68.65597126762475,
+      "interiorSide": "negative glTF Z (positive Blender Y)",
+      "frontageLocal": [
+        [
+          406.659,
+          -406.532
+        ],
+        [
+          409.909,
+          -407.802
+        ]
+      ],
+      "geometryRevision": "74abfa6aa50b578d07a286fb3495c5d88f47920ea05ee13e3666c95355c85083",
+      "sourcePhotos": {
+        "full": {
+          "url": "./models/jordaan-pois/rozengracht-158-full.jpg",
+          "sha256": "8d873cf946f8a85908523a369b6ce36dfd7aad931ad0e087888872c72c70c0b5",
+          "captureDate": "2025-01-20T10:11:20Z"
+        },
+        "ground": {
+          "url": "./models/jordaan-pois/rozengracht-158-ground.jpg",
+          "sha256": "d19bec5045a7dca3205d18a5c372de45de736980bda1059415566abdccbf50e2",
+          "captureDate": "2022-04-25T10:21:38.037840Z"
+        }
+      },
+      "status": "modelled-candidate",
+      "limitations": [
+        "Opening positions inferred from photo crops; registration is approximate.",
+        "Unseen roof backs and side finishes inferred; rear windows not asserted.",
+        "Business identity reflects the dated reference photos."
+      ],
+      "drawCalls": 12,
+      "approxTriangles": 4612,
+      "bytes": 439100
+    },
+    {
+      "id": "elandsgracht-96",
+      "name": "Key Color Fotolab",
+      "address": "Elandsgracht 96",
+      "caseId": "case-03",
+      "buildingId": "0363100012168954",
+      "modelUrl": "./models/jordaan-pois/elandsgracht-96.glb",
+      "widthMetres": 4.021765781345312,
+      "depthMetres": 16.157579414846744,
+      "heightMetres": 19.479999999999997,
+      "anchor": [
+        4.879957579963344,
+        52.36952318452921
+      ],
+      "xAxisBearingDegrees": 61.96941431418281,
+      "interiorSide": "negative glTF Z (positive Blender Y)",
+      "frontageLocal": [
+        [
+          511.489,
+          -23.452
+        ],
+        [
+          515.039,
+          -25.342
+        ]
+      ],
+      "geometryRevision": "d92d9e81ad45e41bad9fef3eb856864128be2bb38805981965607b628921e30c",
+      "sourcePhotos": {
+        "full": {
+          "url": "./models/jordaan-pois/elandsgracht-96-full.jpg",
+          "sha256": "0d9ef2fc124a0a2f403df39ef1801e091139543cb38925d4dba985ab90d56b82",
+          "captureDate": "2024-12-16T09:28:07Z"
+        },
+        "ground": {
+          "url": "./models/jordaan-pois/elandsgracht-96-ground.jpg",
+          "sha256": "a2cc557bfd294d5df1152174cb360c89868ebd5fb386cea435307c17ec038758",
+          "captureDate": "2025-07-03T10:39:46Z"
+        }
+      },
+      "status": "modelled-candidate",
+      "limitations": [
+        "Opening positions inferred from photo crops; registration is approximate.",
+        "Unseen roof backs and side finishes inferred; rear windows not asserted.",
+        "Business identity reflects the dated reference photos."
+      ],
+      "drawCalls": 12,
+      "approxTriangles": 7734,
+      "bytes": 379620
+    },
+    {
+      "id": "rozengracht-160",
+      "name": "Bar Theo",
+      "address": "Rozengracht 160",
+      "caseId": "case-12",
+      "buildingId": "0363100012167877",
+      "modelUrl": "./models/jordaan-pois/rozengracht-160.glb",
+      "widthMetres": 5.802732115133345,
+      "depthMetres": 11.540477601120669,
+      "heightMetres": 11.77,
+      "anchor": [
+        4.878218448420361,
+        52.37291685413139
+      ],
+      "xAxisBearingDegrees": 66.21796957677886,
+      "interiorSide": "negative glTF Z (positive Blender Y)",
+      "frontageLocal": [
+        [
+          395.699,
+          -401.872
+        ],
+        [
+          401.009,
+          -404.212
+        ]
+      ],
+      "geometryRevision": "29c2098a257b717d79bc5ed16d40574d9c2fac6f0e8f59236e5d1ee66efd563a",
+      "sourcePhotos": {
+        "full": {
+          "url": "./models/jordaan-pois/rozengracht-160-full.jpg",
+          "sha256": "2a78e9b4fdb0d8fda52198952942c456722872a43abdf165b06204bdbed6e660",
+          "captureDate": "2023-03-13T11:32:17.314580Z"
+        },
+        "ground": {
+          "url": "./models/jordaan-pois/rozengracht-160-ground.jpg",
+          "sha256": "f7cbba0528efe8f9960f4421af6e8932a39889291b0e32c1e0d8322d29e1e7d0",
+          "captureDate": "2023-02-13T09:46:38.181700Z"
+        }
+      },
+      "status": "modelled-candidate",
+      "limitations": [
+        "Opening positions inferred from photo crops; registration is approximate.",
+        "Unseen roof backs and side finishes inferred; rear windows not asserted.",
+        "Business identity reflects the dated reference photos."
+      ],
+      "drawCalls": 13,
+      "approxTriangles": 4956,
+      "bytes": 336320
+    },
+    {
+      "id": "lauriergracht-50",
+      "name": "De Fietsenmaker",
+      "address": "Lauriergracht 50",
+      "caseId": "case-21",
+      "buildingId": "0363100012173919",
+      "modelUrl": "./models/jordaan-pois/lauriergracht-50.glb",
+      "widthMetres": 5.679031607589398,
+      "depthMetres": 18.07160218352131,
+      "heightMetres": 17.700000000000003,
+      "anchor": [
+        4.8816148666858155,
+        52.37175455389139
+      ],
+      "xAxisBearingDegrees": 65.55604521958361,
+      "interiorSide": "negative glTF Z (positive Blender Y)",
+      "frontageLocal": [
+        [
+          626.089,
+          -270.932
+        ],
+        [
+          631.259,
+          -273.282
+        ]
+      ],
+      "geometryRevision": "dfd18f9c8f4c0a146aaef25b9812035cc388cb16c2fd671cda7019949afcc28e",
+      "sourcePhotos": {
+        "full": {
+          "url": "./models/jordaan-pois/lauriergracht-50-full.jpg",
+          "sha256": "dbe58c60985bce1f18b3d3680c2434ead2f5cc0d115e0238a1fc27fae0d7b9c5",
+          "captureDate": "2023-02-13T10:59:09.853930Z"
+        },
+        "ground": {
+          "url": "./models/jordaan-pois/lauriergracht-50-ground.jpg",
+          "sha256": "9658823697aedc0a7554101ef617d14a3330481b10250a8b4035fb23f3b16ab9",
+          "captureDate": "2025-07-03T09:50:55Z"
+        }
+      },
+      "status": "modelled-candidate",
+      "limitations": [
+        "Opening positions inferred from photo crops; registration is approximate.",
+        "Unseen roof backs and side finishes inferred; rear windows not asserted.",
+        "Business identity reflects the dated reference photos."
+      ],
+      "drawCalls": 15,
+      "approxTriangles": 4274,
+      "bytes": 405516
+    },
+    {
+      "id": "rozengracht-212",
+      "name": "Bianco",
+      "address": "Rozengracht 212",
+      "caseId": "case-30",
+      "buildingId": "0363100012174564",
+      "modelUrl": "./models/jordaan-pois/rozengracht-212.glb",
+      "widthMetres": 4.42512146725941,
+      "depthMetres": 10.047972768426094,
+      "heightMetres": 16.25,
+      "anchor": [
+        4.8770607904449745,
+        52.37263107778729
+      ],
+      "xAxisBearingDegrees": 68.24667760224285,
+      "interiorSide": "negative glTF Z (positive Blender Y)",
+      "frontageLocal": [
+        [
+          316.64,
+          -370.63
+        ],
+        [
+          320.75,
+          -372.27
+        ]
+      ],
+      "geometryRevision": "bf8576feba216baf768086e2ec7068d0ad3e16dc2edff15623cf4113bee3ae9e",
+      "sourcePhotos": {
+        "full": {
+          "url": "./models/jordaan-pois/rozengracht-212-full.jpg",
+          "sha256": "410f61590e953b0982563bfebf25d247f7f9b228ce0005ca0f07ecd1aa5403b7",
+          "captureDate": "2023-03-20T11:11:48.788250Z"
+        },
+        "ground": {
+          "url": "./models/jordaan-pois/rozengracht-212-ground.jpg",
+          "sha256": "b07ef9008924fe9b89dd1f989c1f6c6eceedd9feb412c09a775f8c955f6ecda4",
+          "captureDate": "2023-02-13T09:46:47.281620Z"
+        }
+      },
+      "status": "modelled-candidate",
+      "limitations": [
+        "Opening positions inferred from photo crops; registration is approximate.",
+        "Unseen roof backs and side finishes inferred; rear windows not asserted.",
+        "Business identity reflects the dated reference photos."
+      ],
+      "drawCalls": 13,
+      "approxTriangles": 4686,
+      "bytes": 511052
+    }
+  ]
+}

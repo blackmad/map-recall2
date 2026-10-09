@@ -1,0 +1,796 @@
+{
+  "schemaVersion": 1,
+  "materials": [
+    {
+      "id": "redbrick",
+      "label": "Red brick",
+      "family": "brick",
+      "baseColour": "#8c6252",
+      "mortarColour": "#836458",
+      "seed": 101,
+      "tileMetres": [
+        0.96,
+        0.24
+      ],
+      "roughness": 0.85,
+      "normalStrength": 0.3,
+      "bond": "running",
+      "colourSpace": {
+        "colour": "sRGB",
+        "roughness": "Non-Color",
+        "normal": "Non-Color"
+      },
+      "source": {
+        "kind": "original-procedural",
+        "license": "repository license",
+        "presetSource": "src/canalRecall/facade/wallMaterialLibrary.ts"
+      },
+      "permittedUses": [
+        "preview",
+        "runtime"
+      ],
+      "roughnessRange": [
+        0.77,
+        0.9299999999999999
+      ]
+    },
+    {
+      "id": "brownbrick",
+      "label": "Brown brick",
+      "family": "brick",
+      "baseColour": "#6b554a",
+      "mortarColour": "#6b584e",
+      "seed": 103,
+      "tileMetres": [
+        0.96,
+        0.24
+      ],
+      "roughness": 0.85,
+      "normalStrength": 0.3,
+      "bond": "running",
+      "colourSpace": {
+        "colour": "sRGB",
+        "roughness": "Non-Color",
+        "normal": "Non-Color"
+      },
+      "source": {
+        "kind": "original-procedural",
+        "license": "repository license",
+        "presetSource": "src/canalRecall/facade/wallMaterialLibrary.ts"
+      },
+      "permittedUses": [
+        "preview",
+        "runtime"
+      ],
+      "roughnessRange": [
+        0.77,
+        0.9299999999999999
+      ]
+    },
+    {
+      "id": "darkbrick",
+      "label": "Dark brick",
+      "family": "brick",
+      "baseColour": "#514641",
+      "mortarColour": "#514a45",
+      "seed": 107,
+      "tileMetres": [
+        0.96,
+        0.24
+      ],
+      "roughness": 0.85,
+      "normalStrength": 0.3,
+      "bond": "running",
+      "colourSpace": {
+        "colour": "sRGB",
+        "roughness": "Non-Color",
+        "normal": "Non-Color"
+      },
+      "source": {
+        "kind": "original-procedural",
+        "license": "repository license",
+        "presetSource": "src/canalRecall/facade/wallMaterialLibrary.ts"
+      },
+      "permittedUses": [
+        "preview",
+        "runtime"
+      ],
+      "roughnessRange": [
+        0.77,
+        0.9299999999999999
+      ]
+    },
+    {
+      "id": "buffbrick",
+      "label": "Buff brick",
+      "family": "brick",
+      "baseColour": "#b8996f",
+      "mortarColour": "#a9997e",
+      "seed": 109,
+      "tileMetres": [
+        0.96,
+        0.24
+      ],
+      "roughness": 0.85,
+      "normalStrength": 0.3,
+      "bond": "running",
+      "colourSpace": {
+        "colour": "sRGB",
+        "roughness": "Non-Color",
+        "normal": "Non-Color"
+      },
+      "source": {
+        "kind": "original-procedural",
+        "license": "repository license",
+        "presetSource": "src/canalRecall/facade/wallMaterialLibrary.ts"
+      },
+      "permittedUses": [
+        "preview",
+        "runtime"
+      ],
+      "roughnessRange": [
+        0.77,
+        0.9299999999999999
+      ]
+    },
+    {
+      "id": "greybrick",
+      "label": "Grey brick",
+      "family": "brick",
+      "baseColour": "#827d76",
+      "mortarColour": "#807d77",
+      "seed": 113,
+      "tileMetres": [
+        0.96,
+        0.24
+      ],
+      "roughness": 0.85,
+      "normalStrength": 0.3,
+      "bond": "running",
+      "colourSpace": {
+        "colour": "sRGB",
+        "roughness": "Non-Color",
+        "normal": "Non-Color"
+      },
+      "source": {
+        "kind": "original-procedural",
+        "license": "repository license",
+        "presetSource": "src/canalRecall/facade/wallMaterialLibrary.ts"
+      },
+      "permittedUses": [
+        "preview",
+        "runtime"
+      ],
+      "roughnessRange": [
+        0.77,
+        0.9299999999999999
+      ]
+    },
+    {
+      "id": "paintedcreambrick",
+      "label": "Cream painted brick",
+      "family": "painted-brick",
+      "baseColour": "#c9bea5",
+      "mortarColour": "#c3bba9",
+      "seed": 127,
+      "tileMetres": [
+        0.96,
+        0.24
+      ],
+      "roughness": 0.85,
+      "normalStrength": 0.3,
+      "bond": "running",
+      "colourSpace": {
+        "colour": "sRGB",
+        "roughness": "Non-Color",
+        "normal": "Non-Color"
+      },
+      "source": {
+        "kind": "original-procedural",
+        "license": "repository license",
+        "presetSource": "src/canalRecall/facade/wallMaterialLibrary.ts"
+      },
+      "permittedUses": [
+        "preview",
+        "runtime"
+      ],
+      "roughnessRange": [
+        0.77,
+        0.9299999999999999
+      ]
+    },
+    {
+      "id": "paintedwhitebrick",
+      "label": "White painted brick",
+      "family": "painted-brick",
+      "baseColour": "#d9d8ce",
+      "mortarColour": "#d0d0ca",
+      "seed": 131,
+      "tileMetres": [
+        0.96,
+        0.24
+      ],
+      "roughness": 0.85,
+      "normalStrength": 0.3,
+      "bond": "running",
+      "colourSpace": {
+        "colour": "sRGB",
+        "roughness": "Non-Color",
+        "normal": "Non-Color"
+      },
+      "source": {
+        "kind": "original-procedural",
+        "license": "repository license",
+        "presetSource": "src/canalRecall/facade/wallMaterialLibrary.ts"
+      },
+      "permittedUses": [
+        "preview",
+        "runtime"
+      ],
+      "roughnessRange": [
+        0.77,
+        0.9299999999999999
+      ]
+    },
+    {
+      "id": "creamrender",
+      "label": "Cream render",
+      "family": "render",
+      "baseColour": "#dfd2b6",
+      "seed": 137,
+      "tileMetres": [
+        1,
+        1
+      ],
+      "roughness": 0.8,
+      "normalStrength": 0.1,
+      "colourSpace": {
+        "colour": "sRGB",
+        "roughness": "Non-Color",
+        "normal": "Non-Color"
+      },
+      "source": {
+        "kind": "original-procedural",
+        "license": "repository license",
+        "presetSource": "src/canalRecall/facade/wallMaterialLibrary.ts"
+      },
+      "permittedUses": [
+        "preview",
+        "runtime"
+      ],
+      "roughnessRange": [
+        0.7200000000000001,
+        0.88
+      ]
+    },
+    {
+      "id": "palecreamrender",
+      "label": "Pale yellow cream render",
+      "family": "render",
+      "baseColour": "#ece8c8",
+      "seed": 137,
+      "tileMetres": [
+        1,
+        1
+      ],
+      "roughness": 0.8,
+      "normalStrength": 0.1,
+      "colourSpace": {
+        "colour": "sRGB",
+        "roughness": "Non-Color",
+        "normal": "Non-Color"
+      },
+      "source": {
+        "kind": "original-procedural",
+        "license": "repository license",
+        "presetSource": "src/canalRecall/facade/wallMaterialLibrary.ts"
+      },
+      "permittedUses": [
+        "preview",
+        "runtime"
+      ],
+      "roughnessRange": [
+        0.7200000000000001,
+        0.88
+      ]
+    },
+    {
+      "id": "whiterender",
+      "label": "White render",
+      "family": "render",
+      "baseColour": "#dbd9ce",
+      "seed": 139,
+      "tileMetres": [
+        1,
+        1
+      ],
+      "roughness": 0.8,
+      "normalStrength": 0.1,
+      "colourSpace": {
+        "colour": "sRGB",
+        "roughness": "Non-Color",
+        "normal": "Non-Color"
+      },
+      "source": {
+        "kind": "original-procedural",
+        "license": "repository license",
+        "presetSource": "src/canalRecall/facade/wallMaterialLibrary.ts"
+      },
+      "permittedUses": [
+        "preview",
+        "runtime"
+      ],
+      "roughnessRange": [
+        0.7200000000000001,
+        0.88
+      ]
+    },
+    {
+      "id": "concrete",
+      "label": "Concrete",
+      "family": "concrete",
+      "baseColour": "#aaa9a2",
+      "seed": 151,
+      "tileMetres": [
+        1,
+        1
+      ],
+      "roughness": 0.8,
+      "normalStrength": 0.1,
+      "colourSpace": {
+        "colour": "sRGB",
+        "roughness": "Non-Color",
+        "normal": "Non-Color"
+      },
+      "source": {
+        "kind": "original-procedural",
+        "license": "repository license",
+        "presetSource": "src/canalRecall/facade/wallMaterialLibrary.ts"
+      },
+      "permittedUses": [
+        "preview",
+        "runtime"
+      ],
+      "roughnessRange": [
+        0.7200000000000001,
+        0.88
+      ]
+    },
+    {
+      "id": "unknownneutral",
+      "label": "Neutral unknown",
+      "family": "unknown",
+      "baseColour": "#aaa49a",
+      "seed": 157,
+      "tileMetres": [
+        1,
+        1
+      ],
+      "roughness": 0.8,
+      "normalStrength": 0.1,
+      "colourSpace": {
+        "colour": "sRGB",
+        "roughness": "Non-Color",
+        "normal": "Non-Color"
+      },
+      "source": {
+        "kind": "original-procedural",
+        "license": "repository license",
+        "presetSource": "src/canalRecall/facade/wallMaterialLibrary.ts"
+      },
+      "permittedUses": [
+        "preview",
+        "runtime"
+      ],
+      "roughnessRange": [
+        0.7200000000000001,
+        0.88
+      ]
+    },
+    {
+      "id": "greystone",
+      "label": "Cut grey stone",
+      "family": "stone",
+      "baseColour": "#99968e",
+      "seed": 163,
+      "tileMetres": [
+        1.92,
+        0.96
+      ],
+      "roughness": 0.82,
+      "normalStrength": 0.15,
+      "colourSpace": {
+        "colour": "sRGB",
+        "roughness": "Non-Color",
+        "normal": "Non-Color"
+      },
+      "source": {
+        "kind": "original-procedural",
+        "license": "repository license",
+        "presetSource": "src/canalRecall/facade/wallMaterialLibrary.ts"
+      },
+      "permittedUses": [
+        "preview",
+        "runtime"
+      ],
+      "roughnessRange": [
+        0.74,
+        0.8999999999999999
+      ]
+    },
+    {
+      "id": "bluestone",
+      "label": "Bluestone plinth",
+      "family": "stone",
+      "baseColour": "#484a45",
+      "seed": 164,
+      "tileMetres": [
+        1.92,
+        0.96
+      ],
+      "roughness": 0.72,
+      "normalStrength": 0.15,
+      "colourSpace": {
+        "colour": "sRGB",
+        "roughness": "Non-Color",
+        "normal": "Non-Color"
+      },
+      "source": {
+        "kind": "original-procedural",
+        "license": "repository license",
+        "presetSource": "building library original"
+      },
+      "permittedUses": [
+        "preview",
+        "runtime"
+      ],
+      "roughnessRange": [
+        0.64,
+        0.7999999999999999
+      ]
+    },
+    {
+      "id": "slate",
+      "label": "Dark slate",
+      "family": "slate",
+      "baseColour": "#414649",
+      "seed": 165,
+      "tileMetres": [
+        1.2,
+        1.2
+      ],
+      "roughness": 0.83,
+      "normalStrength": 0.15,
+      "colourSpace": {
+        "colour": "sRGB",
+        "roughness": "Non-Color",
+        "normal": "Non-Color"
+      },
+      "source": {
+        "kind": "original-procedural",
+        "license": "repository license",
+        "presetSource": "building library original"
+      },
+      "permittedUses": [
+        "preview",
+        "runtime"
+      ],
+      "roughnessRange": [
+        0.75,
+        0.9099999999999999
+      ]
+    },
+    {
+      "id": "claytiles",
+      "label": "Red clay roof",
+      "family": "clay-tile",
+      "baseColour": "#88594c",
+      "seed": 166,
+      "tileMetres": [
+        1.2,
+        1.2
+      ],
+      "roughness": 0.85,
+      "normalStrength": 0.15,
+      "colourSpace": {
+        "colour": "sRGB",
+        "roughness": "Non-Color",
+        "normal": "Non-Color"
+      },
+      "source": {
+        "kind": "original-procedural",
+        "license": "repository license",
+        "presetSource": "building library original"
+      },
+      "permittedUses": [
+        "preview",
+        "runtime"
+      ],
+      "roughnessRange": [
+        0.77,
+        0.9299999999999999
+      ]
+    },
+    {
+      "id": "zincroof",
+      "label": "Standing seam zinc",
+      "family": "metal-roof",
+      "baseColour": "#7b8588",
+      "seed": 167,
+      "tileMetres": [
+        2,
+        2
+      ],
+      "roughness": 0.48,
+      "normalStrength": 0.15,
+      "colourSpace": {
+        "colour": "sRGB",
+        "roughness": "Non-Color",
+        "normal": "Non-Color"
+      },
+      "source": {
+        "kind": "original-procedural",
+        "license": "repository license",
+        "presetSource": "building library original"
+      },
+      "permittedUses": [
+        "preview",
+        "runtime"
+      ],
+      "roughnessRange": [
+        0.39999999999999997,
+        0.5599999999999999
+      ]
+    },
+    {
+      "id": "bitumen",
+      "label": "Flat bituminous roof",
+      "family": "bitumen",
+      "baseColour": "#3b4140",
+      "seed": 168,
+      "tileMetres": [
+        1,
+        1
+      ],
+      "roughness": 0.92,
+      "normalStrength": 0.15,
+      "colourSpace": {
+        "colour": "sRGB",
+        "roughness": "Non-Color",
+        "normal": "Non-Color"
+      },
+      "source": {
+        "kind": "original-procedural",
+        "license": "repository license",
+        "presetSource": "building library original"
+      },
+      "permittedUses": [
+        "preview",
+        "runtime"
+      ],
+      "roughnessRange": [
+        0.8400000000000001,
+        1
+      ]
+    },
+    {
+      "id": "ivorytimber",
+      "label": "Painted ivory timber",
+      "family": "timber",
+      "baseColour": "#dcdacf",
+      "seed": 169,
+      "tileMetres": [
+        0.3,
+        2
+      ],
+      "roughness": 0.65,
+      "normalStrength": 0.15,
+      "colourSpace": {
+        "colour": "sRGB",
+        "roughness": "Non-Color",
+        "normal": "Non-Color"
+      },
+      "source": {
+        "kind": "original-procedural",
+        "license": "repository license",
+        "presetSource": "building library original"
+      },
+      "permittedUses": [
+        "preview",
+        "runtime"
+      ],
+      "roughnessRange": [
+        0.5700000000000001,
+        0.73
+      ]
+    },
+    {
+      "id": "weatheredtimber",
+      "label": "Weathered timber",
+      "family": "timber",
+      "baseColour": "#80796c",
+      "seed": 170,
+      "tileMetres": [
+        0.3,
+        2
+      ],
+      "roughness": 0.8,
+      "normalStrength": 0.15,
+      "colourSpace": {
+        "colour": "sRGB",
+        "roughness": "Non-Color",
+        "normal": "Non-Color"
+      },
+      "source": {
+        "kind": "original-procedural",
+        "license": "repository license",
+        "presetSource": "building library original"
+      },
+      "permittedUses": [
+        "preview",
+        "runtime"
+      ],
+      "roughnessRange": [
+        0.7200000000000001,
+        0.88
+      ]
+    },
+    {
+      "id": "iron",
+      "label": "Painted iron",
+      "family": "metal",
+      "baseColour": "#323734",
+      "seed": 171,
+      "tileMetres": [
+        1,
+        1
+      ],
+      "roughness": 0.62,
+      "normalStrength": 0.15,
+      "colourSpace": {
+        "colour": "sRGB",
+        "roughness": "Non-Color",
+        "normal": "Non-Color"
+      },
+      "source": {
+        "kind": "original-procedural",
+        "license": "repository license",
+        "presetSource": "building library original"
+      },
+      "permittedUses": [
+        "preview",
+        "runtime"
+      ],
+      "roughnessRange": [
+        0.54,
+        0.7
+      ]
+    },
+    {
+      "id": "brass",
+      "label": "Brass fittings",
+      "family": "metal",
+      "baseColour": "#a89b65",
+      "seed": 172,
+      "tileMetres": [
+        1,
+        1
+      ],
+      "roughness": 0.4,
+      "normalStrength": 0.15,
+      "colourSpace": {
+        "colour": "sRGB",
+        "roughness": "Non-Color",
+        "normal": "Non-Color"
+      },
+      "source": {
+        "kind": "original-procedural",
+        "license": "repository license",
+        "presetSource": "building library original"
+      },
+      "permittedUses": [
+        "preview",
+        "runtime"
+      ],
+      "roughnessRange": [
+        0.32,
+        0.48000000000000004
+      ]
+    },
+    {
+      "id": "glass",
+      "label": "Opaque mobile glazing",
+      "family": "glass",
+      "baseColour": "#263b3b",
+      "seed": 173,
+      "tileMetres": [
+        1,
+        1
+      ],
+      "roughness": 0.25,
+      "normalStrength": 0.15,
+      "colourSpace": {
+        "colour": "sRGB",
+        "roughness": "Non-Color",
+        "normal": "Non-Color"
+      },
+      "source": {
+        "kind": "original-procedural",
+        "license": "repository license",
+        "presetSource": "building library original"
+      },
+      "permittedUses": [
+        "preview",
+        "runtime"
+      ],
+      "roughnessRange": [
+        0.16999999999999998,
+        0.33
+      ]
+    },
+    {
+      "id": "limestone",
+      "label": "Limestone coping",
+      "family": "stone",
+      "baseColour": "#bdb6a5",
+      "seed": 174,
+      "tileMetres": [
+        1.92,
+        0.96
+      ],
+      "roughness": 0.8,
+      "normalStrength": 0.15,
+      "colourSpace": {
+        "colour": "sRGB",
+        "roughness": "Non-Color",
+        "normal": "Non-Color"
+      },
+      "source": {
+        "kind": "original-procedural",
+        "license": "repository license",
+        "presetSource": "building library original"
+      },
+      "permittedUses": [
+        "preview",
+        "runtime"
+      ],
+      "roughnessRange": [
+        0.7200000000000001,
+        0.88
+      ]
+    }
+  ],
+  "attributedImageSources": {
+    "schemaVersion": 1,
+    "license": "CC0 1.0",
+    "assets": [
+      {
+        "id": "polyhaven-brick-wall-003",
+        "source": "Poly Haven",
+        "sourceUrl": "https://polyhaven.com/a/brick_wall_003",
+        "file": "polyhaven-brick-wall-003.jpg",
+        "map": "diffuse",
+        "resolution": "1k",
+        "use": [
+          "cream",
+          "yellow",
+          "light-brown"
+        ]
+      },
+      {
+        "id": "ambientcg-bricks104",
+        "source": "ambientCG",
+        "sourceUrl": "https://ambientcg.com/a/Bricks104",
+        "file": "Bricks104_1K-JPG_Color.jpg",
+        "map": "color",
+        "resolution": "1k",
+        "use": [
+          "red",
+          "brown",
+          "orange"
+        ]
+      }
+    ]
+  },
+  "note": "Attributed source images catalogued; portable original maps are used in this slice. No claim these sprites are existing PBR maps."
+}

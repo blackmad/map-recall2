@@ -1,0 +1,269 @@
+{
+  "schemaVersion": 1,
+  "id": "synthetic-grouped-bays",
+  "name": "Continuous projecting grouped windows",
+  "synthetic": true,
+  "style": "simple",
+  "footprint": [
+    [
+      0,
+      0
+    ],
+    [
+      10,
+      0
+    ],
+    [
+      10,
+      8
+    ],
+    [
+      0,
+      8
+    ]
+  ],
+  "storeys": [
+    {
+      "id": "ground",
+      "bottom": 0,
+      "top": 3
+    },
+    {
+      "id": "upper_1",
+      "bottom": 3,
+      "top": 6
+    },
+    {
+      "id": "upper_2",
+      "bottom": 6,
+      "top": 9
+    }
+  ],
+  "roof": {
+    "kind": "hip",
+    "eaves": 9,
+    "top": 11.2,
+    "hipEndRun": 2.2,
+    "setback": 0.24,
+    "status": "synthetic"
+  },
+  "gable": {
+    "family": "straight",
+    "rise": 1,
+    "status": "synthetic"
+  },
+  "materials": {
+    "wall": "brownbrick",
+    "wallColour": "#6f5848",
+    "roof": "slate",
+    "frame": "ivorytimber"
+  },
+  "details": {
+    "coveringThickness": 0.08,
+    "gutters": true
+  },
+  "assumptions": [
+    "Synthetic component fixture; all dimensions authored. Continuous bays with front groups and true glazed side returns use the common IR compiler."
+  ],
+  "frontages": [
+    {
+      "id": "street",
+      "width": 10,
+      "origin": [
+        0,
+        0
+      ],
+      "rotation": 0,
+      "openings": [
+        {
+          "id": "left-upper_1",
+          "x": 2,
+          "z": 4.5,
+          "width": 2.2,
+          "height": 2.1,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_1",
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "transom": 0.27,
+          "upperLights": [
+            0.16666666666666666,
+            0.5,
+            0.8333333333333334
+          ],
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "left-upper_2",
+          "x": 2,
+          "z": 7.5,
+          "width": 2.2,
+          "height": 2.1,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_2",
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "transom": 0.27,
+          "upperLights": [
+            0.16666666666666666,
+            0.5,
+            0.8333333333333334
+          ],
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "right-upper_1",
+          "x": 8,
+          "z": 4.5,
+          "width": 2.2,
+          "height": 2.1,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_1",
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "transom": 0.27,
+          "upperLights": [
+            0.16666666666666666,
+            0.5,
+            0.8333333333333334
+          ],
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "right-upper_2",
+          "x": 8,
+          "z": 7.5,
+          "width": 2.2,
+          "height": 2.1,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_2",
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "transom": 0.27,
+          "upperLights": [
+            0.16666666666666666,
+            0.5,
+            0.8333333333333334
+          ],
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "centre-upper_1",
+          "x": 5,
+          "z": 4.5,
+          "width": 1.05,
+          "height": 1.65,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_1",
+          "transom": 0.28,
+          "mullions": [
+            0.5
+          ],
+          "upperLights": [
+            0.25,
+            0.75
+          ],
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "centre-upper_2",
+          "x": 5,
+          "z": 7.5,
+          "width": 1.05,
+          "height": 1.65,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_2",
+          "transom": 0.28,
+          "mullions": [
+            0.5
+          ],
+          "upperLights": [
+            0.25,
+            0.75
+          ],
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "entry",
+          "x": 5,
+          "z": 1.2,
+          "width": 1,
+          "height": 2.4,
+          "kind": "door",
+          "head": "rectangular",
+          "storey": "ground",
+          "provenance": {
+            "status": "synthetic"
+          }
+        }
+      ],
+      "groupedBays": [
+        {
+          "id": "left-stack",
+          "x": 2,
+          "width": 2.7,
+          "projection": 0.6,
+          "returnInset": 0.14,
+          "bottom": 3,
+          "top": 9,
+          "openingIds": [
+            "left-upper_1",
+            "left-upper_2"
+          ],
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "right-stack",
+          "x": 8,
+          "width": 2.7,
+          "projection": 0.65,
+          "returnInset": 0,
+          "bottom": 3,
+          "top": 9,
+          "openingIds": [
+            "right-upper_1",
+            "right-upper_2"
+          ],
+          "provenance": {
+            "status": "synthetic"
+          }
+        }
+      ],
+      "storefront": {
+        "height": 3,
+        "anchor": 5,
+        "finishColour": "#6f5848",
+        "signs": [],
+        "awnings": []
+      }
+    }
+  ]
+}

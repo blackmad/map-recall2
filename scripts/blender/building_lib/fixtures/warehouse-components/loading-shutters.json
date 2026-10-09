@@ -1,0 +1,300 @@
+{
+  "schemaVersion": 1,
+  "id": "synthetic-warehouse-shutters",
+  "name": "Synthetic warehouse loading shutters and hoist",
+  "synthetic": true,
+  "height": 12.1,
+  "footprint": [
+    [
+      0,
+      0
+    ],
+    [
+      6,
+      0
+    ],
+    [
+      6,
+      10
+    ],
+    [
+      0,
+      10
+    ]
+  ],
+  "frontages": [
+    {
+      "id": "street",
+      "width": 6,
+      "origin": [
+        0,
+        0
+      ],
+      "rotation": 0,
+      "openings": [
+        {
+          "id": "ground-loading",
+          "x": 3,
+          "z": 1.48,
+          "width": 1.6,
+          "height": 2.72,
+          "storey": "ground",
+          "kind": "door",
+          "head": "segmental",
+          "archRise": 0.23,
+          "warehouse": {
+            "shutters": {
+              "angle": 0,
+              "style": "panel",
+              "colour": "#466b57"
+            },
+            "provenance": {
+              "status": "synthetic",
+              "basis": "authored component fixture"
+            }
+          },
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "ground-light-0.75",
+          "x": 0.75,
+          "z": 1.48,
+          "width": 0.65,
+          "height": 1.8224000000000002,
+          "storey": "ground",
+          "kind": "window",
+          "head": "segmental",
+          "archRise": 0.14,
+          "mullions": [],
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "ground-light-5.25",
+          "x": 5.25,
+          "z": 1.48,
+          "width": 0.65,
+          "height": 1.8224000000000002,
+          "storey": "ground",
+          "kind": "window",
+          "head": "segmental",
+          "archRise": 0.14,
+          "mullions": [],
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_1-loading",
+          "x": 3,
+          "z": 4.43,
+          "width": 1.6,
+          "height": 2.26,
+          "storey": "upper_1",
+          "kind": "door",
+          "head": "segmental",
+          "archRise": 0.23,
+          "warehouse": {
+            "shutters": {
+              "angle": 90,
+              "style": "plank",
+              "colour": "#466b57"
+            },
+            "provenance": {
+              "status": "synthetic",
+              "basis": "authored component fixture"
+            }
+          },
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_1-light-0.75",
+          "x": 0.75,
+          "z": 4.43,
+          "width": 0.65,
+          "height": 1.5142,
+          "storey": "upper_1",
+          "kind": "window",
+          "head": "segmental",
+          "archRise": 0.14,
+          "mullions": [],
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_1-light-5.25",
+          "x": 5.25,
+          "z": 4.43,
+          "width": 0.65,
+          "height": 1.5142,
+          "storey": "upper_1",
+          "kind": "window",
+          "head": "segmental",
+          "archRise": 0.14,
+          "mullions": [],
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_2-loading",
+          "x": 3,
+          "z": 7.3,
+          "width": 1.6,
+          "height": 2.22,
+          "storey": "upper_2",
+          "kind": "door",
+          "head": "segmental",
+          "archRise": 0.23,
+          "warehouse": {
+            "shutters": {
+              "angle": 180,
+              "style": "panel",
+              "colour": "#466b57"
+            },
+            "provenance": {
+              "status": "synthetic",
+              "basis": "authored component fixture"
+            }
+          },
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_2-light-0.75",
+          "x": 0.75,
+          "z": 7.3,
+          "width": 0.65,
+          "height": 1.4874000000000003,
+          "storey": "upper_2",
+          "kind": "window",
+          "head": "segmental",
+          "archRise": 0.14,
+          "mullions": [],
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_2-light-5.25",
+          "x": 5.25,
+          "z": 7.3,
+          "width": 0.65,
+          "height": 1.4874000000000003,
+          "storey": "upper_2",
+          "kind": "window",
+          "head": "segmental",
+          "archRise": 0.14,
+          "mullions": [],
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "attic-loading",
+          "x": 3,
+          "z": 9.82,
+          "width": 1.15,
+          "height": 1.3,
+          "storey": "attic",
+          "kind": "door",
+          "head": "segmental",
+          "archRise": 0.18,
+          "warehouse": {
+            "shutters": {
+              "angle": 45,
+              "style": "plank",
+              "colour": "#466b57"
+            },
+            "provenance": {
+              "status": "synthetic",
+              "basis": "authored component fixture"
+            }
+          },
+          "provenance": {
+            "status": "synthetic"
+          }
+        }
+      ],
+      "storefront": {
+        "height": 3,
+        "anchor": 3.0,
+        "finishColour": "#8a4c3b",
+        "signs": [],
+        "awnings": []
+      },
+      "warehouseHoists": [
+        {
+          "id": "central-hoist",
+          "x": 3,
+          "z": 10.95,
+          "projection": 1.25,
+          "provenance": {
+            "status": "synthetic"
+          }
+        }
+      ]
+    }
+  ],
+  "storeys": [
+    {
+      "id": "ground",
+      "bottom": 0,
+      "top": 3
+    },
+    {
+      "id": "upper_1",
+      "bottom": 3,
+      "top": 5.85
+    },
+    {
+      "id": "upper_2",
+      "bottom": 5.85,
+      "top": 8.7
+    }
+  ],
+  "roof": {
+    "kind": "gambrel",
+    "eaves": 8.7,
+    "top": 11.84,
+    "setback": 0.24,
+    "status": "synthetic",
+    "frontTransition": 1,
+    "gableClearance": 0.06,
+    "kneeSpan": [
+      1.08,
+      4.92
+    ],
+    "kneeHeight": 10.943999999999999
+  },
+  "gable": {
+    "status": "synthetic",
+    "family": "gambrel",
+    "raised": 0,
+    "rise": 3.2
+  },
+  "materials": {
+    "wall": "buffbrick",
+    "roof": "slate",
+    "frame": "ivorytimber",
+    "wallColour": "#8a4c3b"
+  },
+  "assumptions": [
+    "Synthetic editable architectural component fixture; no real building measurements asserted.",
+    "Facade silhouette and roof volume are authored independently; optional details attach to actual roof surfaces.",
+    "Synthetic warehouse fixture demonstrates loading openings, paired arched plank/panel leaves at 0/45/90/180 degrees and a separate timber hoist. It is not a photographic reconstruction.",
+    "Authored gambrel facade and roof use parallel steep lower and shallow upper planes with 0.06 m masonry clearance, retaining explicit independent structural knees."
+  ],
+  "details": {
+    "gutters": true,
+    "coveringThickness": 0.08,
+    "ridgeCap": true
+  }
+}

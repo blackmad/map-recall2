@@ -1,0 +1,396 @@
+{
+  "schemaVersion": 1,
+  "id": "anjeliersstraat-69-71",
+  "ownerId": "0363100012165031",
+  "geometryRevision": "21ac82296c55c6e1ee35529f5c449ebefba292bb4ccc7e919ad954b936292874",
+  "physicalFacade": {
+    "frontage": [
+      [
+        809.7307474482513,
+        -955.9272536756471
+      ],
+      [
+        802.0907477732399,
+        -953.0292536322377
+      ]
+    ],
+    "orderedFrontageRD": [
+      {
+        "x": 120752.27991747402,
+        "y": 487902.54930113105
+      },
+      {
+        "x": 120744.63991779901,
+        "y": 487899.65130108764
+      }
+    ],
+    "elevationId": "0363100012165031:e:11wifm5",
+    "identityStatus": "visually plausible; metric registration unresolved",
+    "plane": {
+      "start": {
+        "x": 120752.27991747402,
+        "y": 487902.54930113105
+      },
+      "end": {
+        "x": 120744.63991779901,
+        "y": 487899.65130108764
+      }
+    }
+  },
+  "targetAppearanceDate": "2025-07-03T08:31:02Z",
+  "derived": [
+    {
+      "tier": "full",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/images/0363100012165031_e_11wifm5-full.jpg",
+      "sha256": "dbf316a0f889679bc2eb86a0b328f131445693b679ae96313b155f3883af19ab",
+      "captureDate": "2023-01-16T10:49:16.405960Z",
+      "panoramaId": "TMX7316010203-002938_pano_0005_000010",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120752.43271746753,
+          "y": 487902.6072611319
+        },
+        "end": {
+          "x": 120744.4871178055,
+          "y": 487899.59334108676
+        },
+        "baseZ": 0.22200001478195192,
+        "topZ": 12.81
+      },
+      "datum": "published-minus-43.5m; track-unsolved",
+      "heightInferred": false,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/manifest.json",
+      "derivationKey": "b086ff0de1c46a103ab134e6684d81e49abc9db6a34197a9fa9f430dd1c21d2c",
+      "metricEligible": false,
+      "captureKey": "TMX7316010203-002938_pano_0005_000010|2023-01-16T10:49:16.405960Z",
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "registration": {
+        "status": "unregistered",
+        "metricEligible": false
+      },
+      "selectedReason": "Cached selected-facade evidence; separate full/roof crops are not independent captures.",
+      "sourceUrlBeforePreview": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/images/0363100012165031_e_11wifm5-full.jpg",
+      "url": "./models/building-library/evidence/anjeliersstraat-69-71-full-20230116-dbf316a0f889679bc2eb86a0.jpg"
+    },
+    {
+      "tier": "roof",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/images/0363100012165031_e_11wifm5-roof.jpg",
+      "sha256": "460bfe90e4e31f2558d06e27a756d1a328c30af91a7c018a40455178fdf7580f",
+      "captureDate": "2023-01-16T10:49:16.405960Z",
+      "panoramaId": "TMX7316010203-002938_pano_0005_000010",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120752.43271746753,
+          "y": 487902.6072611319
+        },
+        "end": {
+          "x": 120744.4871178055,
+          "y": 487899.59334108676
+        },
+        "baseZ": 4.610000000000001,
+        "topZ": 12.81
+      },
+      "datum": "published-minus-43.5m; track-unsolved",
+      "heightInferred": false,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/manifest.json",
+      "derivationKey": "b086ff0de1c46a103ab134e6684d81e49abc9db6a34197a9fa9f430dd1c21d2c",
+      "metricEligible": false,
+      "captureKey": "TMX7316010203-002938_pano_0005_000010|2023-01-16T10:49:16.405960Z",
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "registration": {
+        "status": "unregistered",
+        "metricEligible": false
+      },
+      "selectedReason": "Cached selected-facade evidence; separate full/roof crops are not independent captures.",
+      "sourceUrlBeforePreview": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/images/0363100012165031_e_11wifm5-roof.jpg",
+      "url": "./models/building-library/evidence/anjeliersstraat-69-71-roof-20230116-460bfe90e4e31f2558d06e27.jpg"
+    },
+    {
+      "tier": "ground",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/images/0363100012165031_e_11wifm5-ground.jpg",
+      "sha256": "9a21cf6228ad0cead6031bc23e5435268f5b5a554971ac9bd5b83612e8f4619b",
+      "captureDate": "2025-07-03T08:31:02Z",
+      "panoramaId": "recording_2025-07-03_07-31-54_01316",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120752.43271746753,
+          "y": 487902.6072611319
+        },
+        "end": {
+          "x": 120744.4871178055,
+          "y": 487899.59334108676
+        },
+        "baseZ": 0.22200001478195192,
+        "topZ": 5.1220000147819515
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "heightInferred": true,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/manifest.json",
+      "derivationKey": "b086ff0de1c46a103ab134e6684d81e49abc9db6a34197a9fa9f430dd1c21d2c",
+      "metricEligible": false,
+      "captureKey": "recording_2025-07-03_07-31-54_01316|2025-07-03T08:31:02Z",
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "registration": {
+        "status": "unregistered",
+        "metricEligible": false
+      },
+      "selectedReason": "Cached selected-facade evidence; separate full/roof crops are not independent captures.",
+      "sourceUrlBeforePreview": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/images/0363100012165031_e_11wifm5-ground.jpg",
+      "url": "./models/building-library/evidence/anjeliersstraat-69-71-ground-20250703-9a21cf6228ad0cead6031bc2.jpg"
+    }
+  ],
+  "candidates": [
+    {
+      "tier": "context",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/images/0363100012165031_e_11wifm5-context.jpg",
+      "sha256": "37284f5c5816800d312760a6638a029d09cc8593d9ff19d103e8d1e54ef9db8e",
+      "captureDate": "2023-01-16T10:49:16.405960Z",
+      "panoramaId": "TMX7316010203-002938_pano_0005_000010",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120757.62791724653,
+          "y": 487904.57790116145
+        },
+        "end": {
+          "x": 120739.2919180265,
+          "y": 487897.62270105723
+        },
+        "baseZ": 0.22200001478195192,
+        "topZ": 12.81
+      },
+      "datum": "published-minus-43.5m; track-unsolved",
+      "heightInferred": false,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/manifest.json",
+      "derivationKey": "b086ff0de1c46a103ab134e6684d81e49abc9db6a34197a9fa9f430dd1c21d2c",
+      "metricEligible": false
+    },
+    {
+      "tier": "full",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/images/0363100012165031_e_11wifm5-full.jpg",
+      "sha256": "dbf316a0f889679bc2eb86a0b328f131445693b679ae96313b155f3883af19ab",
+      "captureDate": "2023-01-16T10:49:16.405960Z",
+      "panoramaId": "TMX7316010203-002938_pano_0005_000010",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120752.43271746753,
+          "y": 487902.6072611319
+        },
+        "end": {
+          "x": 120744.4871178055,
+          "y": 487899.59334108676
+        },
+        "baseZ": 0.22200001478195192,
+        "topZ": 12.81
+      },
+      "datum": "published-minus-43.5m; track-unsolved",
+      "heightInferred": false,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/manifest.json",
+      "derivationKey": "b086ff0de1c46a103ab134e6684d81e49abc9db6a34197a9fa9f430dd1c21d2c",
+      "metricEligible": false
+    },
+    {
+      "tier": "roof",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/images/0363100012165031_e_11wifm5-roof.jpg",
+      "sha256": "460bfe90e4e31f2558d06e27a756d1a328c30af91a7c018a40455178fdf7580f",
+      "captureDate": "2023-01-16T10:49:16.405960Z",
+      "panoramaId": "TMX7316010203-002938_pano_0005_000010",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120752.43271746753,
+          "y": 487902.6072611319
+        },
+        "end": {
+          "x": 120744.4871178055,
+          "y": 487899.59334108676
+        },
+        "baseZ": 4.610000000000001,
+        "topZ": 12.81
+      },
+      "datum": "published-minus-43.5m; track-unsolved",
+      "heightInferred": false,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/manifest.json",
+      "derivationKey": "b086ff0de1c46a103ab134e6684d81e49abc9db6a34197a9fa9f430dd1c21d2c",
+      "metricEligible": false
+    },
+    {
+      "tier": "ground",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/images/0363100012165031_e_11wifm5-ground.jpg",
+      "sha256": "9a21cf6228ad0cead6031bc23e5435268f5b5a554971ac9bd5b83612e8f4619b",
+      "captureDate": "2025-07-03T08:31:02Z",
+      "panoramaId": "recording_2025-07-03_07-31-54_01316",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120752.43271746753,
+          "y": 487902.6072611319
+        },
+        "end": {
+          "x": 120744.4871178055,
+          "y": 487899.59334108676
+        },
+        "baseZ": 0.22200001478195192,
+        "topZ": 5.1220000147819515
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "heightInferred": true,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/manifest.json",
+      "derivationKey": "b086ff0de1c46a103ab134e6684d81e49abc9db6a34197a9fa9f430dd1c21d2c",
+      "metricEligible": false
+    }
+  ],
+  "coverage": [
+    {
+      "year": "2023",
+      "ground": {
+        "captures": [],
+        "crops": 0,
+        "registered": 0,
+        "visible": "visually reviewed; unregistered seed crop"
+      },
+      "upper": {
+        "captures": [
+          "TMX7316010203-002938_pano_0005_000010|2023-01-16T10:49:16.405960Z"
+        ],
+        "crops": 1,
+        "registered": 0,
+        "visible": "visually reviewed; unregistered seed crop"
+      },
+      "roof": {
+        "captures": [
+          "TMX7316010203-002938_pano_0005_000010|2023-01-16T10:49:16.405960Z"
+        ],
+        "crops": 1,
+        "registered": 0,
+        "visible": "visually reviewed; unregistered seed crop"
+      }
+    },
+    {
+      "year": "2025",
+      "ground": {
+        "captures": [
+          "recording_2025-07-03_07-31-54_01316|2025-07-03T08:31:02Z"
+        ],
+        "crops": 1,
+        "registered": 0,
+        "visible": "visually reviewed; unregistered seed crop"
+      },
+      "upper": {
+        "captures": [],
+        "crops": 0,
+        "registered": 0,
+        "visible": "visually reviewed; unregistered seed crop"
+      },
+      "roof": {
+        "captures": [],
+        "crops": 0,
+        "registered": 0,
+        "visible": "visually reviewed; unregistered seed crop"
+      }
+    }
+  ],
+  "policy": "Original cached images retained; source fingerprint is a cache geometry digest, not externally certified revision.",
+  "gaps": [
+    "No independent feature registration.",
+    "Only two independent captures in this seed; tier crop duplicates are not new observations."
+  ],
+  "previewSourceBundle": "artifacts/jordaan-building-library/authored-evidence/anjeliersstraat-69-71.json"
+}

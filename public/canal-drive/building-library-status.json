@@ -1,0 +1,177 @@
+{
+  "updatedAt": "2026-10-02T21:23:53.065212+00:00",
+  "summary": "Photo fidelity recovery remains active: 200 isolated drafts, not 200 accepted reconstructions. Recent corrections separate street cornices/roof lights, brick walls/door leaves and target/neighbor bays. Reviewed library remains45; registration and GPU confidence gates remain open.",
+  "baseline": {
+    "models": 45,
+    "realCandidates": 20,
+    "syntheticStudies": 25,
+    "note": "45 built, 0 failed. All 46 GLBs, browser previews and roundtrips pass; actual placement passes for all 20 real owners. 166,582 building triangles, 11,393,784 bytes, maximum 20 draws. Photographic registration and unseen appearance remain unresolved."
+  },
+  "milestones": [
+    {
+      "id": "warehouse",
+      "title": "Warehouse loading openings and shutters",
+      "state": "complete",
+      "detail": "Paired arched shutters and hoist integrated and reviewed. Seven pure + eight Blender checks pass. Final synthetic fixture: 7,690 triangles, 10 draws, 523,504 bytes."
+    },
+    {
+      "id": "evidence-binding",
+      "title": "Physical frontage evidence binding",
+      "state": "complete",
+      "detail": "Both nonzero physical frontage endpoint sets are now required. Nine batch checks pass; all 21 baseline recipes validate."
+    },
+    {
+      "id": "combined-review",
+      "title": "Combined rebuild and visual review",
+      "state": "complete",
+      "detail": "45 built, 0 failed. All 46 GLBs, browser previews and roundtrips pass; actual placement passes for all 20 real owners. 166,582 building triangles, 11,393,784 bytes, maximum 20 draws. Photographic registration and unseen appearance remain unresolved."
+    },
+    {
+      "id": "roof-correction",
+      "title": "Raised neck, raised bell and gambrel correction",
+      "state": "complete",
+      "detail": "Independent four-view review clears revised neck/bell silhouettes, gambrel slope breaks and the symmetric Rozengracht 158 gable with coherent inferred roof return."
+    },
+    {
+      "id": "storefront-correction",
+      "title": "Rozengracht 158 storefront",
+      "state": "complete",
+      "detail": "Dated-source shop assembly reviewed: dark glazing, curved transom/grille, continuous pane, blue lower panel and unobstructed glass lettering."
+    },
+    {
+      "id": "self-critique",
+      "title": "Independent visual critique",
+      "state": "complete",
+      "detail": "Five affected models independently inspected in all four views, plus five existing shopfronts checked for regressions. Rejected iterations and findings preserved; shared door-panel seam repaired."
+    },
+    {
+      "id": "grouped-bays",
+      "title": "Stacked projecting window bays",
+      "state": "complete",
+      "detail": "Reusable bays, upper pane grids, measured-roof dormers and terrace rails pass fixture checks and independent visual review. Lauriergracht 67/69 ground floor repaired from dated sources and integrated."
+    },
+    {
+      "id": "infrastructure",
+      "title": "Preflight and compound building massing",
+      "state": "in_progress",
+      "detail": "Compound massing, open-frame cuts and roof attachments reviewed. Exact RD projection keeps tested placement drift under 1 mm. Seventy-eight pure checks pass, plus targeted Blender geometry checks. Audited exact-duplicate normalization preserves original sources."
+    },
+    {
+      "id": "jordaan-inventory",
+      "title": "Jordaan coverage and next real cohort",
+      "state": "in_progress",
+      "detail": "Frozen municipal boundary identifies 3,189 cached Jordaan BAG owners; 2,606 have cached facade evidence and 3,137 source shells. Preparing a diverse multi-year cohort; these are inventory counts, not reconstructed buildings."
+    },
+    {
+      "id": "lauriergracht-37-scope",
+      "title": "Lauriergracht 37 full frontage correction",
+      "state": "complete",
+      "detail": "Local preview updated: all five window groups across 20.9749 m, corrected band, proportions, grids and entrance, measured compound massing and exact anchor. Four-view critique, public GLB checks and targeted browser/mobile checks pass; rear appearance and metric feature registration remain unresolved."
+    },
+    {
+      "id": "moeders-name",
+      "title": "Moeders identity",
+      "state": "complete",
+      "detail": "Readable pale moeders lettering is integrated on the upper dark fascia. Dated source comparison, four-view critique and browser review pass."
+    },
+    {
+      "id": "next-real-cases",
+      "title": "Next ordinary buildings",
+      "state": "in_progress",
+      "detail": "Brouwersgracht 907\u2013925 and Derde Goudsbloemdwarsstraat 31\u201339 are reviewed and integrated. Derde Leliedwarsstraat remains held for blank long street appearance and its secondary gate. Derde Egelantiersdwarsstraat remains held for an unresolved source roof height."
+    },
+    {
+      "id": "district-batching",
+      "title": "District rendering budget",
+      "state": "complete",
+      "detail": "Isolated actual 11-owner benchmark: 142 to 6 draws, unchanged 52,547 triangles, matching images and owner picking. Payload grows 6.56%. Bounded tile loading, unload/reload, cancellation and GPU disposal checks pass. Full district LOD and triangle budgets still needed."
+    },
+    {
+      "id": "sol-takeover",
+      "title": "Saved candidates and patch contracts",
+      "state": "complete",
+      "detail": "Brouwers v4 and Goudsbloem v5 integrated with circular, tapered-bay and source-patch fixtures. Seven patch tests pass in Python and Blender. Isolated placement distinguishes retained measured roofs from inferred replacements; errors under 0.04 mm. All common integration checks pass."
+    },
+    {
+      "id": "overnight-forms",
+      "title": "Overnight forms and ordinary cohort",
+      "state": "complete",
+      "detail": "Corbels, blind pilaster panels, curved source-roof dormers, keyhole apertures, explicit inset balconies and mailbox banks reviewed and tested; five new real candidates and three studies integrated."
+    },
+    {
+      "id": "confidence-gate-20",
+      "title": "Practical 20-owner confidence gate",
+      "state": "complete",
+      "detail": "20 diverse real owners, including 13 visually confirmed ordinary buildings; source binding, reviewed inference, exported geometry and actual placement verified. Full photographic registration remains separate."
+    },
+    {
+      "id": "fine-render-chunks",
+      "title": "Fine whole-owner rendering chunks",
+      "state": "in_progress",
+      "detail": "20-owner proof: 3 coarse tiles versus 16 fine chunks. Largest payload falls from 49,254 to 13,396 triangles and 3.63 MB to 0.97 MB. Original geometry, ownership, normals and picking retained. Enforced 20,000 resident triangle cap passes; LOD and viewport selection remain."
+    },
+    {
+      "id": "viewport-streaming",
+      "title": "Bounded viewport admission and atomic representation changes",
+      "state": "in_progress",
+      "detail": "Actual 20-owner full-detail chunks pass 16 camera cases, nearest visible admission, cancellation and shared budgets. Synthetic valid-payload fixture checks LOD replacement and failed replacement preservation. Actual lighter building assets and browser proof remain pending."
+    },
+    {
+      "id": "semantic-lod-pilot",
+      "title": "Exact retained-geometry distance LOD pilot",
+      "state": "in_progress",
+      "detail": "Five real owners, two lighter representations each. Saved component roles recovered without Blender; exact retained triangle attributes, material/winding, exported bounds and native anchors verified. Far representations reduce 38,003 to 14,171 triangles. Four-view CPU projection review passes; isolated only, GPU/browser gate pending. All three actual lighter-asset chunk variants compile; real streaming passes 20 camera cases and 1,214 picking checks, including failed replacement preservation. Peak resident use: 15,733 triangles / 1.12 MB."
+    },
+    {
+      "id": "all-real-semantic-lod",
+      "title": "All 20 real owners: semantic delivery study",
+      "state": "in_progress",
+      "detail": "40 lighter candidates, three compiled representations, 64 real camera cases and 12,052 picking checks pass. All 16 software projection contacts reviewed. Exact retained attributes, source anchors, bounds and owner identities preserved. Isolated pending actual GPU/browser and transition review."
+    },
+    {
+      "id": "portable-draft-preview",
+      "title": "Portable source-derived caf\u00e9 preview",
+      "state": "in_progress",
+      "detail": "Isolated two-front caf\u00e9 GLB: 3277 triangles, six draws, source peak retained. Slab tests and independent 6312-corner joinery comparison pass; real chunk compiler retains geometry/picking. CPU views identify decorative gable mismatch and missing dressing. Unpromoted; verified model count stays 45."
+    },
+    {
+      "id": "photo-fidelity-recovery",
+      "title": "Photo fidelity and shared generator recovery",
+      "state": "in_progress",
+      "detail": "Driehoekstraat36\u201348 now has shared solid recessed entrance lining, pierced rear wall, smaller dark rear door and connected threshold. Brouwers153/155 unequal flat fronts remain delivered.200 draft exports pass; actual corrected asset/recipe/published preview hashes and normal/roundtrip/source checks verified.49 scale200 holds retained; frozen45 unchanged and GPU confidence gate open."
+    },
+    {
+      "id": "partial-frontage-diagnosis",
+      "title": "Scoped frontage extraction and alternate identity checks",
+      "state": "in_progress",
+      "detail": "Brouwers131 coverage split into low offset extension and angled upper source wall;5 hashed wall/alternate diagnostic views delivered. Width-independent angle check detects missed upper wall. Incompatible alternate facade rejected for authoring and labelled in gallery.131 model correction remains held for owner/photo alignment; no geometry or reviewed-cohort promotion."
+    },
+    {
+      "id": "source-clipping-arched-entries",
+      "title": "Source roof clipping and arched timber entrances",
+      "state": "in_progress",
+      "detail": "Scale-aware polygon triangulation restores Anjeliersstraat 149 without modifying immutable source geometry; dated-photo layout now two upper rows, three bays, right arched panelled entry, cornice and stepped attic. Shared arched-transom door leaves added. Pilot 40 current assets, zero failures; scale cohort 200 current assets, zero failures. CPU views and published PNG bytes checked; likeness, registration and GPU gate remain open."
+    },
+    {
+      "id": "clipped-partial-ground-finish",
+      "title": "Partial ground finishes around open doors and windows",
+      "state": "in_progress",
+      "detail": "Shared closed clipped finish zones now follow lower masonry/render bands without colouring an entire storey. Actual Anjeliers149 aligned arches produce identical geometry in both builder paths and retain three ground aperture sightlines. Four regression tests pass; pilot40 and scale200 rebuild without failures. Current asset/published preview verified; photo proportions and registration remain inferred."
+    },
+    {
+      "id": "scale200-cpu-district-delivery",
+      "title": "200-draft CPU district delivery study",
+      "state": "in_progress",
+      "detail": "Actual map-consumer placement checked for 1,117,245 vertices across 200 owners; maximum projection error 0.138mm. Whole-owner zoom20 chunks preserve all geometry, asset hashes, colours, normals, picking identity and 49 evidence holds. 108 real viewport cases pass with\u226430,000 triangles/4MB resident budgets; two target chunks require 8 m fallback due missing LOD. No GPU, likeness or production acceptance."
+    },
+    {
+      "id": "scale200-construction-lods",
+      "title": "200-draft construction-role LOD delivery",
+      "state": "in_progress",
+      "detail": "200 owners /400 lighter variants.275,263 facade and234,343 massing triangles versus372,415 detail. All108 target chunks admitted at35m within30k triangles/4MB.432 CPU transition cases and108 corrupted replacement checks pass;49 evidence holds retained. GPU and likeness acceptance pending.",
+      "evidence": "artifacts/building-batch-scale-200/semantic-lods/summary.json"
+    }
+  ],
+  "next": "Complete actual render and projected-size transition review before LOD promotion; continue CPU-safe frozen-cohort preparation and library improvements.",
+  "nextAction": "Reconcile caf\u00e9 decorative gable under explicit source-wall ownership and add observed dressing through shared generators; portable preview now allows concrete CPU critique, with actual browser acceptance still pending."
+}

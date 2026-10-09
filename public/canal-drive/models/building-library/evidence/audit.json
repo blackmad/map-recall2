@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "cacheRoot": ".worktrees/amsterdam-facade-rebuild/.cache",
+  "manifestCount": 52,
+  "models": [
+    {
+      "id": "rozengracht-158",
+      "years": [
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "searchedYears": [
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "independentCaptures": 4,
+      "derivedCrops": 12,
+      "registered": 0
+    },
+    {
+      "id": "elandsgracht-96",
+      "years": [
+        "2022",
+        "2024",
+        "2025"
+      ],
+      "searchedYears": [
+        "2022",
+        "2024",
+        "2025"
+      ],
+      "independentCaptures": 3,
+      "derivedCrops": 9,
+      "registered": 0
+    },
+    {
+      "id": "rozengracht-160",
+      "years": [
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "searchedYears": [
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "independentCaptures": 5,
+      "derivedCrops": 15,
+      "registered": 0
+    },
+    {
+      "id": "lauriergracht-50",
+      "years": [
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "searchedYears": [
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "independentCaptures": 4,
+      "derivedCrops": 12,
+      "registered": 0
+    },
+    {
+      "id": "rozengracht-212",
+      "years": [
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "searchedYears": [
+        "2022",
+        "2023",
+        "2024"
+      ],
+      "independentCaptures": 4,
+      "derivedCrops": 12,
+      "registered": 0
+    }
+  ],
+  "downloads": 0,
+  "recoveredFeatures": 0
+}

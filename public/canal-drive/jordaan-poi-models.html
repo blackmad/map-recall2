@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Five Jordaan buildings — Blender study</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#e8e3d8;color:#292d29;font:14px/1.5 system-ui,sans-serif}
+    header{padding:18px 24px;background:#f7f3eb;border-bottom:1px solid #c8c5b9;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    h1{font-size:19px;margin:0}select,button,a.download{font:inherit;border:1px solid #abae9f;border-radius:5px;background:#fffdf8;color:inherit;padding:7px 10px;cursor:pointer}
+    main{display:grid;grid-template-columns:minmax(0,1fr) 360px;height:calc(100vh - 85px);min-height:600px}
+    #stage{position:relative;min-width:0;background:#d9dbd2;touch-action:none}canvas{display:block;width:100%;height:100%}
+    #hint{position:absolute;bottom:15px;left:20px;color:#4c514a;pointer-events:none}
+    aside{padding:20px;background:#f7f3eb;overflow:auto;border-left:1px solid #c8c5b9}h2{font-size:18px;margin:0 0 4px}p{margin:8px 0 16px}.photos{display:flex;align-items:flex-start;gap:8px}.photos img{max-height:420px;max-width:100%;object-fit:contain}.photos a{width:50%}.photos a:last-child{width:65%}
+    #metrics{color:#666c5e;font-size:12px}#error{color:#933}a{color:#41674f}button[aria-pressed=true]{background:#d9e5d2}
+    @media(max-width:850px){main{grid-template-columns:1fr;height:auto;min-height:0}#stage{height:65vh}aside{border-left:0;border-top:1px solid #c8c5b9}.photos img{max-height:300px}}
+  </style>
+</head>
+<body>
+  <header><h1>Five Jordaan buildings</h1><select id="building" aria-label="Building"></select><button id="front">Front</button><button id="orbit">Whole building</button><button id="roof">Roof</button><button id="wire" aria-pressed="false">Wireframe</button></header>
+  <main><div id="stage"><div id="hint">Drag to orbit · scroll to zoom</div></div><aside><h2 id="name">Loading…</h2><div id="address"></div><p id="metrics"></p><a class="download" id="download">Download GLB</a><p>Full building models with rooflines, upper floors, and storefront details. Compare the dated reference photos below.</p><div class="photos"><a id="full-link"><img id="full" src="./models/jordaan-pois/rozengracht-158-full.jpg" alt="Full building reference"></a><a id="ground-link"><img id="ground" src="./models/jordaan-pois/rozengracht-158-ground.jpg" alt="Storefront reference"></a></div><p id="dates"></p><p>Roof backs and unseen side finishes are inferred. These are candidates for review; opening positions are approximate.</p><p id="error" role="alert"></p></aside></main>
+  <script src="./js/three.bundle.js"></script>
+  <script type="module" src="./js/jordaan-poi-models-preview.js"></script>
+</body>
+</html>

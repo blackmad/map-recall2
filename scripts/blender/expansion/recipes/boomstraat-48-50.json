@@ -1,0 +1,2246 @@
+{
+  "schemaVersion": 1,
+  "id": "boomstraat-48-50",
+  "name": "Boomstraat paired balcony house",
+  "address": "Boomstraat 48/50",
+  "buildingId": "0363100012169371",
+  "synthetic": false,
+  "geometryRevision": "b9e694d40ad76ca84b2ed00d6c3bc28c3067795068a833c3cc1e5f712d1edb77",
+  "sourceBundle": "boomstraat-48-50.json",
+  "footprint": [
+    [
+      -4.488164776565185,
+      -0.0016725351716404546
+    ],
+    [
+      -4.488085160166768,
+      -0.4481028137833012
+    ],
+    [
+      -0.0018312177074541192,
+      -0.44304675130388743
+    ],
+    [
+      -0.001910834105932041,
+      0.0033835273075541405
+    ],
+    [
+      4.772855394066346,
+      0.0006510730634552431
+    ],
+    [
+      4.927626133716246,
+      0.07168640334494136
+    ],
+    [
+      4.830742412231775,
+      9.514801013711065
+    ],
+    [
+      4.826084431744567,
+      11.768903563112515
+    ],
+    [
+      2.749164759714703,
+      11.766741172006126
+    ],
+    [
+      -4.995381697710542,
+      11.767152002346945
+    ],
+    [
+      -5.228785601875833,
+      11.749190445610399
+    ],
+    [
+      -5.46345741542067,
+      0.0003935225239943829
+    ]
+  ],
+  "height": 11.59500000834465,
+  "storeys": [
+    {
+      "id": "ground",
+      "bottom": 0,
+      "top": 2.8
+    },
+    {
+      "id": "upper_1",
+      "bottom": 2.8,
+      "top": 5.5
+    },
+    {
+      "id": "upper_2",
+      "bottom": 5.5,
+      "top": 8.32
+    },
+    {
+      "id": "upper_3",
+      "bottom": 8.32,
+      "top": 11.59500000834465
+    }
+  ],
+  "roof": {
+    "kind": "flat",
+    "eaves": 11.59500000834465,
+    "top": 11.59500000834465,
+    "setback": 0.24,
+    "status": "inferred"
+  },
+  "gable": {
+    "profile": [
+      [
+        0,
+        11.59500000834465
+      ],
+      [
+        4.772413557056207,
+        11.59500000834465
+      ]
+    ],
+    "status": "source-supported"
+  },
+  "frontages": [
+    {
+      "id": "boom-right",
+      "origin": [
+        0.0,
+        0.0
+      ],
+      "rotation": 0.0,
+      "width": 4.772413557056207,
+      "eaves": 11.59500000834465,
+      "openings": [
+        {
+          "id": "boom-right-top-left",
+          "x": 0.7344997351878053,
+          "z": 9.969426477763,
+          "width": 1.1889994703756108,
+          "height": 1.4323235304425737,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_3",
+          "frameColour": "#c6c9bb",
+          "transom": 0.2,
+          "mullions": [
+            0.5
+          ],
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/images/0363100012169371_e_0dfxj68-full.jpg",
+            "sourceHash": "e85e20acb23af570be161ad64b3b39d2109b4306233a5e42adefe112ec97f36e",
+            "captureDate": "2023-01-16T10:51:15.999880Z",
+            "pixelBounds": [
+              7,
+              105,
+              64,
+              168
+            ],
+            "cropPixelWidth": 223,
+            "cropPlane": {
+              "start": {
+                "x": 120790.65897953727,
+                "y": 488048.91566159367
+              },
+              "end": {
+                "x": 120795.43985932058,
+                "y": 488050.2489416242
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 13.209999999999999
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 65,
+              "groundPixel": 575,
+              "heightM": 11.59500000834465
+            },
+            "reason": "Source supports feature presence/layout; exact padded crop plane retained for x mapping. Unregistered source crops are not measurements."
+          }
+        },
+        {
+          "id": "boom-right-middle-left",
+          "x": 0.7344997351878053,
+          "z": 7.218455887547895,
+          "width": 1.1889994703756108,
+          "height": 1.5687352952466291,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_2",
+          "frameColour": "#c6c9bb",
+          "transom": 0.2,
+          "mullions": [
+            0.5
+          ],
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/images/0363100012169371_e_0dfxj68-full.jpg",
+            "sourceHash": "e85e20acb23af570be161ad64b3b39d2109b4306233a5e42adefe112ec97f36e",
+            "captureDate": "2023-01-16T10:51:15.999880Z",
+            "pixelBounds": [
+              7,
+              223,
+              64,
+              292
+            ],
+            "cropPixelWidth": 223,
+            "cropPlane": {
+              "start": {
+                "x": 120790.65897953727,
+                "y": 488048.91566159367
+              },
+              "end": {
+                "x": 120795.43985932058,
+                "y": 488050.2489416242
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 13.209999999999999
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 65,
+              "groundPixel": 575,
+              "heightM": 11.59500000834465
+            },
+            "reason": "Source supports feature presence/layout; exact padded crop plane retained for x mapping. Unregistered source crops are not measurements."
+          }
+        },
+        {
+          "id": "boom-right-top-balcony",
+          "x": 2.5531342482375834,
+          "z": 9.469250006814798,
+          "width": 1.5579897173035775,
+          "height": 2.2053235309988857,
+          "kind": "door",
+          "head": "rectangular",
+          "storey": "upper_3",
+          "frameColour": "#c6c9bb",
+          "transom": 0.15,
+          "mullions": [
+            0.5
+          ],
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/images/0363100012169371_e_0dfxj68-full.jpg",
+            "sourceHash": "e85e20acb23af570be161ad64b3b39d2109b4306233a5e42adefe112ec97f36e",
+            "captureDate": "2023-01-16T10:51:15.999880Z",
+            "pixelBounds": [
+              84,
+              110,
+              154,
+              207
+            ],
+            "cropPixelWidth": 223,
+            "cropPlane": {
+              "start": {
+                "x": 120790.65897953727,
+                "y": 488048.91566159367
+              },
+              "end": {
+                "x": 120795.43985932058,
+                "y": 488050.2489416242
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 13.209999999999999
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 65,
+              "groundPixel": 575,
+              "heightM": 11.59500000834465
+            },
+            "reason": "Source supports feature presence/layout; exact padded crop plane retained for x mapping. Unregistered source crops are not measurements."
+          },
+          "glassColour": "#424c4e",
+          "lowerPanel": {
+            "height": 0.1,
+            "colour": "#626c65"
+          }
+        },
+        {
+          "id": "boom-right-middle-balcony",
+          "x": 2.575391244191461,
+          "z": 6.763750004867713,
+          "width": 1.5579897172879413,
+          "height": 2.205323530998885,
+          "kind": "door",
+          "head": "rectangular",
+          "storey": "upper_2",
+          "frameColour": "#c6c9bb",
+          "transom": 0.15,
+          "mullions": [
+            0.5
+          ],
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/images/0363100012169371_e_0dfxj68-full.jpg",
+            "sourceHash": "e85e20acb23af570be161ad64b3b39d2109b4306233a5e42adefe112ec97f36e",
+            "captureDate": "2023-01-16T10:51:15.999880Z",
+            "pixelBounds": [
+              85,
+              229,
+              155,
+              326
+            ],
+            "cropPixelWidth": 223,
+            "cropPlane": {
+              "start": {
+                "x": 120790.65897953727,
+                "y": 488048.91566159367
+              },
+              "end": {
+                "x": 120795.43985932058,
+                "y": 488050.2489416242
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 13.209999999999999
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 65,
+              "groundPixel": 575,
+              "heightM": 11.59500000834465
+            },
+            "reason": "Source supports feature presence/layout; exact padded crop plane retained for x mapping. Unregistered source crops are not measurements."
+          },
+          "glassColour": "#424c4e",
+          "lowerPanel": {
+            "height": 0.1,
+            "colour": "#626c65"
+          }
+        },
+        {
+          "id": "boom-right-low-window",
+          "x": 2.363949782559399,
+          "z": 4.342441179595742,
+          "width": 1.9808726405520656,
+          "height": 1.5005294128446018,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_1",
+          "frameColour": "#c6c9bb",
+          "transom": 0.2,
+          "mullions": [
+            0.5
+          ],
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/images/0363100012169371_e_0dfxj68-full.jpg",
+            "sourceHash": "e85e20acb23af570be161ad64b3b39d2109b4306233a5e42adefe112ec97f36e",
+            "captureDate": "2023-01-16T10:51:15.999880Z",
+            "pixelBounds": [
+              66,
+              351,
+              155,
+              417
+            ],
+            "cropPixelWidth": 223,
+            "cropPlane": {
+              "start": {
+                "x": 120790.65897953727,
+                "y": 488048.91566159367
+              },
+              "end": {
+                "x": 120795.43985932058,
+                "y": 488050.2489416242
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 13.209999999999999
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 65,
+              "groundPixel": 575,
+              "heightM": 11.59500000834465
+            },
+            "reason": "Source supports feature presence/layout; exact padded crop plane retained for x mapping. Unregistered source crops are not measurements."
+          }
+        },
+        {
+          "id": "boom-right-paired-entry",
+          "x": 1.9135105785928617,
+          "z": 1.295,
+          "width": 1.8180623074474678,
+          "height": 2.35,
+          "kind": "door",
+          "head": "rectangular",
+          "storey": "ground",
+          "frameColour": "#c6c9bb",
+          "transom": 0.2,
+          "mullions": [
+            0.5
+          ],
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/images/0363100012169371_e_0dfxj68-ground.jpg",
+            "sourceHash": "582cf809a87eab4d5b3bb753df75a399d28d8f53edfb5b1c112c7b340bcd086e",
+            "captureDate": "2022-01-27T09:28:21.838680Z",
+            "pixelBounds": [
+              121,
+              344,
+              321,
+              529
+            ],
+            "cropPixelWidth": 546,
+            "cropPlane": {
+              "start": {
+                "x": 120790.65897953727,
+                "y": 488048.91566159367
+              },
+              "end": {
+                "x": 120795.43985932058,
+                "y": 488050.2489416242
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 5.014999991655349
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": -765,
+              "groundPixel": 529,
+              "heightM": 11.59500000834465
+            },
+            "reason": "Source supports feature presence/layout; exact padded crop plane retained for x mapping. Unregistered source crops are not measurements.",
+            "verticalOverride": {
+              "heightM": 2.35,
+              "centreM": 1.295,
+              "basis": "Visual full/context threshold and opening proportions; cropped ground image datum is unsolved, so direct ground crop pixel scale is not promoted."
+            }
+          },
+          "glassColour": "#252e31",
+          "lowerPanel": {
+            "height": 0.2,
+            "colour": "#454b43"
+          },
+          "handleFractions": [
+            0.45,
+            0.55
+          ]
+        }
+      ],
+      "storefront": {
+        "height": 2.8,
+        "anchor": 2.3862067785281034,
+        "finishColour": "#81553f",
+        "cornice": false,
+        "signs": [],
+        "awnings": []
+      },
+      "components": [
+        {
+          "id": "boom-right-top-balcony-rail",
+          "kind": "balcony",
+          "x": 2.5531342482375834,
+          "z": 8.366588241315355,
+          "width": 1.6779897173035776,
+          "depth": 0.48,
+          "height": 0.88,
+          "material": "limestone",
+          "colour": "#a5a793",
+          "frameMaterial": "iron",
+          "frameColour": "#273333",
+          "balusterSpacing": 0.18,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/images/0363100012169371_e_0dfxj68-full.jpg",
+            "sourceHash": "e85e20acb23af570be161ad64b3b39d2109b4306233a5e42adefe112ec97f36e",
+            "captureDate": "2023-01-16T10:51:15.999880Z",
+            "pixelBounds": [
+              84,
+              110,
+              154,
+              207
+            ],
+            "cropPixelWidth": 223,
+            "cropPlane": {
+              "start": {
+                "x": 120790.65897953727,
+                "y": 488048.91566159367
+              },
+              "end": {
+                "x": 120795.43985932058,
+                "y": 488050.2489416242
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 13.209999999999999
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 65,
+              "groundPixel": 575,
+              "heightM": 11.59500000834465
+            },
+            "reason": "Source supports feature presence/layout; exact padded crop plane retained for x mapping. Unregistered source crops are not measurements."
+          }
+        },
+        {
+          "id": "boom-right-middle-balcony-rail",
+          "kind": "balcony",
+          "x": 2.575391244191461,
+          "z": 5.66108823936827,
+          "width": 1.6779897172879412,
+          "depth": 0.48,
+          "height": 0.88,
+          "material": "limestone",
+          "colour": "#a5a793",
+          "frameMaterial": "iron",
+          "frameColour": "#273333",
+          "balusterSpacing": 0.18,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/images/0363100012169371_e_0dfxj68-full.jpg",
+            "sourceHash": "e85e20acb23af570be161ad64b3b39d2109b4306233a5e42adefe112ec97f36e",
+            "captureDate": "2023-01-16T10:51:15.999880Z",
+            "pixelBounds": [
+              85,
+              229,
+              155,
+              326
+            ],
+            "cropPixelWidth": 223,
+            "cropPlane": {
+              "start": {
+                "x": 120790.65897953727,
+                "y": 488048.91566159367
+              },
+              "end": {
+                "x": 120795.43985932058,
+                "y": 488050.2489416242
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 13.209999999999999
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 65,
+              "groundPixel": 575,
+              "heightM": 11.59500000834465
+            },
+            "reason": "Source supports feature presence/layout; exact padded crop plane retained for x mapping. Unregistered source crops are not measurements."
+          }
+        }
+      ],
+      "warehouseHoists": [
+        {
+          "id": "boom-right-hoist",
+          "x": 2.5531342482375834,
+          "z": 11.41500000834465,
+          "projection": 1.25,
+          "width": 0.16,
+          "height": 0.18,
+          "colour": "#554439",
+          "bracketDrop": 0.45,
+          "tipRise": 0.95,
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "e85e20acb23af570be161ad64b3b39d2109b4306233a5e42adefe112ec97f36e",
+            "captureDate": "2023-01-16T10:51:15.999880Z",
+            "reason": "Dated roof/full source supports upward sloping projecting timber over balcony stack. Generic tipRise reproduces the visible skyline; rise, projection and mounting dimensions remain inferred."
+          }
+        }
+      ]
+    },
+    {
+      "id": "boom-left",
+      "origin": [
+        -4.482635910791878,
+        -0.4462442044393782
+      ],
+      "rotation": 0.0014620346753737366,
+      "width": 4.484600692711047,
+      "eaves": 11.59500000834465,
+      "openings": [
+        {
+          "id": "boom-left-top-left",
+          "x": 0.8024847798056736,
+          "z": 10.358859282508332,
+          "width": 1.3249695596113473,
+          "height": 1.4339232419701275,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_3",
+          "frameColour": "#c6c9bb",
+          "transom": 0.2,
+          "mullions": [
+            0.5
+          ],
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/images/0363100012169371_e_1kjn2y6-full.jpg",
+            "sourceHash": "a930a692b08e9aa3313b3609357113b27494c3f893b47bf6db9a5d50efef6f32",
+            "captureDate": "2024-11-21T13:26:55Z",
+            "pixelBounds": [
+              8,
+              110,
+              70,
+              168
+            ],
+            "cropPixelWidth": 210,
+            "cropPlane": {
+              "start": {
+                "x": 120786.46655971467,
+                "y": 488047.2830815661
+              },
+              "end": {
+                "x": 120790.95727951097,
+                "y": 488048.54252159386
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 13.209999999999999
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 89,
+              "groundPixel": 558,
+              "heightM": 11.59500000834465
+            },
+            "reason": "Source supports feature presence/layout; exact padded crop plane retained for x mapping. Unregistered source crops are not measurements."
+          }
+        },
+        {
+          "id": "boom-left-middle-left",
+          "x": 0.8024847798056736,
+          "z": 7.491012798568079,
+          "width": 1.3249695596113473,
+          "height": 1.5822601290704847,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_2",
+          "frameColour": "#c6c9bb",
+          "transom": 0.2,
+          "mullions": [
+            0.5
+          ],
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/images/0363100012169371_e_1kjn2y6-full.jpg",
+            "sourceHash": "a930a692b08e9aa3313b3609357113b27494c3f893b47bf6db9a5d50efef6f32",
+            "captureDate": "2024-11-21T13:26:55Z",
+            "pixelBounds": [
+              8,
+              223,
+              70,
+              287
+            ],
+            "cropPixelWidth": 210,
+            "cropPlane": {
+              "start": {
+                "x": 120786.46655971467,
+                "y": 488047.2830815661
+              },
+              "end": {
+                "x": 120790.95727951097,
+                "y": 488048.54252159386
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 13.209999999999999
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 89,
+              "groundPixel": 558,
+              "heightM": 11.59500000834465
+            },
+            "reason": "Source supports feature presence/layout; exact padded crop plane retained for x mapping. Unregistered source crops are not measurements."
+          }
+        },
+        {
+          "id": "boom-left-low-left",
+          "x": 0.8135895053373075,
+          "z": 4.672611943661277,
+          "width": 1.3471790106746147,
+          "height": 1.5328145000370328,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_1",
+          "frameColour": "#c6c9bb",
+          "transom": 0.2,
+          "mullions": [
+            0.5
+          ],
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/images/0363100012169371_e_1kjn2y6-full.jpg",
+            "sourceHash": "a930a692b08e9aa3313b3609357113b27494c3f893b47bf6db9a5d50efef6f32",
+            "captureDate": "2024-11-21T13:26:55Z",
+            "pixelBounds": [
+              8,
+              338,
+              71,
+              400
+            ],
+            "cropPixelWidth": 210,
+            "cropPlane": {
+              "start": {
+                "x": 120786.46655971467,
+                "y": 488047.2830815661
+              },
+              "end": {
+                "x": 120790.95727951097,
+                "y": 488048.54252159386
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 13.209999999999999
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 89,
+              "groundPixel": 558,
+              "heightM": 11.59500000834465
+            },
+            "reason": "Source supports feature presence/layout; exact padded crop plane retained for x mapping. Unregistered source crops are not measurements."
+          }
+        },
+        {
+          "id": "boom-left-top-balcony",
+          "x": 2.6864893673551986,
+          "z": 9.827318770398717,
+          "width": 1.3325670629920183,
+          "height": 2.645341153289717,
+          "kind": "door",
+          "head": "rectangular",
+          "storey": "upper_3",
+          "frameColour": "#c6c9bb",
+          "transom": 0.16,
+          "mullions": [
+            0.5
+          ],
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/images/0363100012169371_e_1kjn2y6-full.jpg",
+            "sourceHash": "a930a692b08e9aa3313b3609357113b27494c3f893b47bf6db9a5d50efef6f32",
+            "captureDate": "2024-11-21T13:26:55Z",
+            "pixelBounds": [
+              95,
+              107,
+              155,
+              214
+            ],
+            "cropPixelWidth": 210,
+            "cropPlane": {
+              "start": {
+                "x": 120786.46655971467,
+                "y": 488047.2830815661
+              },
+              "end": {
+                "x": 120790.95727951097,
+                "y": 488048.54252159386
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 13.209999999999999
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 89,
+              "groundPixel": 558,
+              "heightM": 11.59500000834465
+            },
+            "reason": "Source supports feature presence/layout; exact padded crop plane retained for x mapping. Unregistered source crops are not measurements."
+          },
+          "glassColour": "#48534c",
+          "lowerPanel": {
+            "height": 0.1,
+            "colour": "#5a6359"
+          }
+        },
+        {
+          "id": "boom-left-middle-balcony",
+          "x": 2.6864893673551986,
+          "z": 6.984195100975189,
+          "width": 1.3325670629920183,
+          "height": 2.645341153289718,
+          "kind": "door",
+          "head": "rectangular",
+          "storey": "upper_2",
+          "frameColour": "#c6c9bb",
+          "transom": 0.16,
+          "mullions": [
+            0.5
+          ],
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/images/0363100012169371_e_1kjn2y6-full.jpg",
+            "sourceHash": "a930a692b08e9aa3313b3609357113b27494c3f893b47bf6db9a5d50efef6f32",
+            "captureDate": "2024-11-21T13:26:55Z",
+            "pixelBounds": [
+              95,
+              222,
+              155,
+              329
+            ],
+            "cropPixelWidth": 210,
+            "cropPlane": {
+              "start": {
+                "x": 120786.46655971467,
+                "y": 488047.2830815661
+              },
+              "end": {
+                "x": 120790.95727951097,
+                "y": 488048.54252159386
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 13.209999999999999
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 89,
+              "groundPixel": 558,
+              "heightM": 11.59500000834465
+            },
+            "reason": "Source supports feature presence/layout; exact padded crop plane retained for x mapping. Unregistered source crops are not measurements."
+          },
+          "glassColour": "#48534c",
+          "lowerPanel": {
+            "height": 0.1,
+            "colour": "#5a6359"
+          }
+        },
+        {
+          "id": "boom-left-low-balcony",
+          "x": 2.6864893673551986,
+          "z": 4.314131133168745,
+          "width": 1.3325670629920183,
+          "height": 2.2992217500555485,
+          "kind": "door",
+          "head": "rectangular",
+          "storey": "upper_1",
+          "frameColour": "#c6c9bb",
+          "transom": 0.16,
+          "mullions": [
+            0.5
+          ],
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/images/0363100012169371_e_1kjn2y6-full.jpg",
+            "sourceHash": "a930a692b08e9aa3313b3609357113b27494c3f893b47bf6db9a5d50efef6f32",
+            "captureDate": "2024-11-21T13:26:55Z",
+            "pixelBounds": [
+              95,
+              337,
+              155,
+              430
+            ],
+            "cropPixelWidth": 210,
+            "cropPlane": {
+              "start": {
+                "x": 120786.46655971467,
+                "y": 488047.2830815661
+              },
+              "end": {
+                "x": 120790.95727951097,
+                "y": 488048.54252159386
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 13.209999999999999
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 89,
+              "groundPixel": 558,
+              "heightM": 11.59500000834465
+            },
+            "reason": "Source supports feature presence/layout; exact padded crop plane retained for x mapping. Unregistered source crops are not measurements."
+          },
+          "glassColour": "#48534c",
+          "lowerPanel": {
+            "height": 0.1,
+            "colour": "#5a6359"
+          }
+        },
+        {
+          "id": "boom-left-ground-display",
+          "x": 1.6604387048260028,
+          "z": 1.225,
+          "width": 2.4092708594892156,
+          "height": 2.15,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "ground",
+          "frameColour": "#c6c9bb",
+          "transom": 0.18,
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/images/0363100012169371_e_1kjn2y6-ground.jpg",
+            "sourceHash": "69e2760110a100efeaea2e96456080520119e303c7dc9e46fcdf48fabbb7b189",
+            "captureDate": "2022-01-27T09:28:20.588690Z",
+            "pixelBounds": [
+              60,
+              357,
+              325,
+              523
+            ],
+            "cropPixelWidth": 513,
+            "cropPlane": {
+              "start": {
+                "x": 120786.46655971467,
+                "y": 488047.2830815661
+              },
+              "end": {
+                "x": 120790.95727951097,
+                "y": 488048.54252159386
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 5.014999991655349
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": -734,
+              "groundPixel": 523,
+              "heightM": 11.59500000834465
+            },
+            "reason": "Source supports feature presence/layout; exact padded crop plane retained for x mapping. Unregistered source crops are not measurements.",
+            "verticalOverride": {
+              "heightM": 2.15,
+              "centreM": 1.225,
+              "basis": "Visual full/context threshold and opening proportions; cropped ground image datum is unsolved, so direct ground crop pixel scale is not promoted."
+            }
+          }
+        },
+        {
+          "id": "boom-left-narrow-entry",
+          "x": 3.8742404191005626,
+          "z": 1.395,
+          "width": 0.7455102282123254,
+          "height": 2.55,
+          "kind": "door",
+          "head": "rectangular",
+          "storey": "ground",
+          "frameColour": "#c6c9bb",
+          "transom": 0.2,
+          "mullions": [],
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/images/0363100012169371_e_1kjn2y6-ground.jpg",
+            "sourceHash": "69e2760110a100efeaea2e96456080520119e303c7dc9e46fcdf48fabbb7b189",
+            "captureDate": "2022-01-27T09:28:20.588690Z",
+            "pixelBounds": [
+              395,
+              114,
+              477,
+              529
+            ],
+            "cropPixelWidth": 513,
+            "cropPlane": {
+              "start": {
+                "x": 120786.46655971467,
+                "y": 488047.2830815661
+              },
+              "end": {
+                "x": 120790.95727951097,
+                "y": 488048.54252159386
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 5.014999991655349
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": -734,
+              "groundPixel": 529,
+              "heightM": 11.59500000834465
+            },
+            "reason": "Source supports feature presence/layout; exact padded crop plane retained for x mapping. Unregistered source crops are not measurements.",
+            "verticalOverride": {
+              "heightM": 2.55,
+              "centreM": 1.395,
+              "basis": "Visual full/context threshold and opening proportions; cropped ground image datum is unsolved, so direct ground crop pixel scale is not promoted."
+            }
+          },
+          "glassColour": "#414947",
+          "lowerPanel": {
+            "height": 0.48,
+            "colour": "#626457"
+          }
+        },
+        {
+          "id": "boom-left-narrow-entry-upper",
+          "x": 3.8742404191005626,
+          "z": 4.05,
+          "width": 0.7455102282123254,
+          "height": 2.5,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_1",
+          "frameColour": "#c6c9bb",
+          "transom": 0.33,
+          "mullions": [],
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/images/0363100012169371_e_1kjn2y6-ground.jpg",
+            "sourceHash": "69e2760110a100efeaea2e96456080520119e303c7dc9e46fcdf48fabbb7b189",
+            "captureDate": "2022-01-27T09:28:20.588690Z",
+            "pixelBounds": [
+              395,
+              114,
+              477,
+              529
+            ],
+            "cropPixelWidth": 513,
+            "cropPlane": {
+              "start": {
+                "x": 120786.46655971467,
+                "y": 488047.2830815661
+              },
+              "end": {
+                "x": 120790.95727951097,
+                "y": 488048.54252159386
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 5.014999991655349
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": -734,
+              "groundPixel": 529,
+              "heightM": 11.59500000834465
+            },
+            "reason": "Same-owner narrow entry/light stack is corroborated in ground and neighboring-plane context crop. Split at the floor into two apertures with continuous alignment; dimensions inferred.",
+            "verticalOverride": {
+              "heightM": 2.5,
+              "centreM": 4.05,
+              "basis": "Visible tall narrow entry/light stack; split at storey boundary through common opening IR."
+            }
+          },
+          "glassColour": "#414947"
+        }
+      ],
+      "storefront": {
+        "height": 2.8,
+        "anchor": 2.2423003463555236,
+        "finishColour": "#81553f",
+        "cornice": false,
+        "signs": [],
+        "awnings": []
+      },
+      "components": [
+        {
+          "id": "boom-left-top-balcony-rail",
+          "kind": "balcony",
+          "x": 2.6864893673551986,
+          "z": 8.504648193753859,
+          "width": 1.4525670629920184,
+          "depth": 0.48,
+          "height": 0.88,
+          "material": "limestone",
+          "colour": "#a5a793",
+          "frameMaterial": "iron",
+          "frameColour": "#273333",
+          "balusterSpacing": 0.18,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/images/0363100012169371_e_1kjn2y6-full.jpg",
+            "sourceHash": "a930a692b08e9aa3313b3609357113b27494c3f893b47bf6db9a5d50efef6f32",
+            "captureDate": "2024-11-21T13:26:55Z",
+            "pixelBounds": [
+              95,
+              107,
+              155,
+              214
+            ],
+            "cropPixelWidth": 210,
+            "cropPlane": {
+              "start": {
+                "x": 120786.46655971467,
+                "y": 488047.2830815661
+              },
+              "end": {
+                "x": 120790.95727951097,
+                "y": 488048.54252159386
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 13.209999999999999
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 89,
+              "groundPixel": 558,
+              "heightM": 11.59500000834465
+            },
+            "reason": "Source supports feature presence/layout; exact padded crop plane retained for x mapping. Unregistered source crops are not measurements."
+          }
+        },
+        {
+          "id": "boom-left-middle-balcony-rail",
+          "kind": "balcony",
+          "x": 2.6864893673551986,
+          "z": 5.66152452433033,
+          "width": 1.4525670629920184,
+          "depth": 0.48,
+          "height": 0.88,
+          "material": "limestone",
+          "colour": "#a5a793",
+          "frameMaterial": "iron",
+          "frameColour": "#273333",
+          "balusterSpacing": 0.18,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/images/0363100012169371_e_1kjn2y6-full.jpg",
+            "sourceHash": "a930a692b08e9aa3313b3609357113b27494c3f893b47bf6db9a5d50efef6f32",
+            "captureDate": "2024-11-21T13:26:55Z",
+            "pixelBounds": [
+              95,
+              222,
+              155,
+              329
+            ],
+            "cropPixelWidth": 210,
+            "cropPlane": {
+              "start": {
+                "x": 120786.46655971467,
+                "y": 488047.2830815661
+              },
+              "end": {
+                "x": 120790.95727951097,
+                "y": 488048.54252159386
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 13.209999999999999
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 89,
+              "groundPixel": 558,
+              "heightM": 11.59500000834465
+            },
+            "reason": "Source supports feature presence/layout; exact padded crop plane retained for x mapping. Unregistered source crops are not measurements."
+          }
+        },
+        {
+          "id": "boom-left-low-balcony-rail",
+          "kind": "balcony",
+          "x": 2.6864893673551986,
+          "z": 3.164520258140971,
+          "width": 1.4525670629920184,
+          "depth": 0.48,
+          "height": 0.88,
+          "material": "limestone",
+          "colour": "#a5a793",
+          "frameMaterial": "iron",
+          "frameColour": "#273333",
+          "balusterSpacing": 0.18,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/images/0363100012169371_e_1kjn2y6-full.jpg",
+            "sourceHash": "a930a692b08e9aa3313b3609357113b27494c3f893b47bf6db9a5d50efef6f32",
+            "captureDate": "2024-11-21T13:26:55Z",
+            "pixelBounds": [
+              95,
+              337,
+              155,
+              430
+            ],
+            "cropPixelWidth": 210,
+            "cropPlane": {
+              "start": {
+                "x": 120786.46655971467,
+                "y": 488047.2830815661
+              },
+              "end": {
+                "x": 120790.95727951097,
+                "y": 488048.54252159386
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 13.209999999999999
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 89,
+              "groundPixel": 558,
+              "heightM": 11.59500000834465
+            },
+            "reason": "Source supports feature presence/layout; exact padded crop plane retained for x mapping. Unregistered source crops are not measurements."
+          }
+        }
+      ],
+      "warehouseHoists": [
+        {
+          "id": "boom-left-hoist",
+          "x": 2.6864893673551986,
+          "z": 11.41500000834465,
+          "projection": 1.25,
+          "width": 0.16,
+          "height": 0.18,
+          "colour": "#554439",
+          "bracketDrop": 0.45,
+          "tipRise": 0.95,
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "a930a692b08e9aa3313b3609357113b27494c3f893b47bf6db9a5d50efef6f32",
+            "captureDate": "2024-11-21T13:26:55Z",
+            "reason": "Dated roof/full source supports upward sloping projecting timber over balcony stack. Generic tipRise reproduces the visible skyline; rise, projection and mounting dimensions remain inferred."
+          }
+        }
+      ]
+    },
+    {
+      "id": "boom-side",
+      "origin": [
+        -5.2310417901727035,
+        11.753197926088118
+      ],
+      "rotation": -1.5901511838236833,
+      "width": 11.75507402046222,
+      "eaves": 11.59500000834465,
+      "openings": [
+        {
+          "id": "side-upper-1-1",
+          "x": 1.85,
+          "z": 3.9749999999999996,
+          "width": 1.4,
+          "height": 1.65,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_1",
+          "frameColour": "#c6c9bb",
+          "transom": 0.18,
+          "mullions": [
+            0.5
+          ],
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": "artifacts/jordaan-building-library/boomstraat-48-50/side-2024.jpg",
+            "sourceHash": "c1ae534aec7b2a945fae1630e0954b805cc3acbd1ba96b8c1822135741247ac3",
+            "captureDate": "2024-11-21T13:26:55Z",
+            "cropPlane": {
+              "start": {
+                "x": 120782.55492024722,
+                "y": 488058.8573015643
+              },
+              "end": {
+                "x": 120785.4929197719,
+                "y": 488047.47530156345
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 13.21
+            },
+            "pixelBounds": [
+              70,
+              630,
+              190,
+              755
+            ],
+            "cropPlaneMappedXBounds": [
+              0.8753778526102611,
+              2.3760255998800615
+            ],
+            "authoredXBounds": [
+              1.1500000000000001,
+              2.55
+            ],
+            "reason": "2024 grazing context supports three side window columns; upper exposure obscures exact bounds. 2025 near-corner column corroborates three floors but pixel-plane x differs about 1.5m. Positions and sizes are explicit visual hypotheses on the unchanged exact side11 plane, not metrics."
+          }
+        },
+        {
+          "id": "side-upper-1-2",
+          "x": 6.75,
+          "z": 3.9749999999999996,
+          "width": 1.5,
+          "height": 1.65,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_1",
+          "frameColour": "#c6c9bb",
+          "transom": 0.18,
+          "mullions": [
+            0.5
+          ],
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": "artifacts/jordaan-building-library/boomstraat-48-50/side-2024.jpg",
+            "sourceHash": "c1ae534aec7b2a945fae1630e0954b805cc3acbd1ba96b8c1822135741247ac3",
+            "captureDate": "2024-11-21T13:26:55Z",
+            "cropPlane": {
+              "start": {
+                "x": 120782.55492024722,
+                "y": 488058.8573015643
+              },
+              "end": {
+                "x": 120785.4929197719,
+                "y": 488047.47530156345
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 13.21
+            },
+            "pixelBounds": [
+              430,
+              630,
+              560,
+              755
+            ],
+            "cropPlaneMappedXBounds": [
+              5.377321094483297,
+              7.00302282069846
+            ],
+            "authoredXBounds": [
+              6.0,
+              7.5
+            ],
+            "reason": "2024 grazing context supports three side window columns; upper exposure obscures exact bounds. 2025 near-corner column corroborates three floors but pixel-plane x differs about 1.5m. Positions and sizes are explicit visual hypotheses on the unchanged exact side11 plane, not metrics."
+          }
+        },
+        {
+          "id": "side-upper-1-3",
+          "x": 10.3,
+          "z": 3.9749999999999996,
+          "width": 1.6,
+          "height": 1.65,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_1",
+          "frameColour": "#c6c9bb",
+          "transom": 0.18,
+          "mullions": [
+            0.5
+          ],
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": "artifacts/jordaan-building-library/boomstraat-48-50/side-2024.jpg",
+            "sourceHash": "c1ae534aec7b2a945fae1630e0954b805cc3acbd1ba96b8c1822135741247ac3",
+            "captureDate": "2024-11-21T13:26:55Z",
+            "cropPlane": {
+              "start": {
+                "x": 120782.55492024722,
+                "y": 488058.8573015643
+              },
+              "end": {
+                "x": 120785.4929197719,
+                "y": 488047.47530156345
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 13.21
+            },
+            "pixelBounds": [
+              680,
+              630,
+              855,
+              755
+            ],
+            "cropPlaneMappedXBounds": [
+              8.503670567971897,
+              10.692115199437552
+            ],
+            "authoredXBounds": [
+              9.5,
+              11.100000000000001
+            ],
+            "reason": "2024 grazing context supports three side window columns; upper exposure obscures exact bounds. 2025 near-corner column corroborates three floors but pixel-plane x differs about 1.5m. Positions and sizes are explicit visual hypotheses on the unchanged exact side11 plane, not metrics."
+          }
+        },
+        {
+          "id": "side-upper-2-1",
+          "x": 1.85,
+          "z": 7.25,
+          "width": 1.4,
+          "height": 1.6,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_2",
+          "frameColour": "#c6c9bb",
+          "transom": 0.18,
+          "mullions": [
+            0.5
+          ],
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": "artifacts/jordaan-building-library/boomstraat-48-50/side-2024.jpg",
+            "sourceHash": "c1ae534aec7b2a945fae1630e0954b805cc3acbd1ba96b8c1822135741247ac3",
+            "captureDate": "2024-11-21T13:26:55Z",
+            "cropPlane": {
+              "start": {
+                "x": 120782.55492024722,
+                "y": 488058.8573015643
+              },
+              "end": {
+                "x": 120785.4929197719,
+                "y": 488047.47530156345
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 13.21
+            },
+            "pixelBounds": [
+              70,
+              430,
+              190,
+              550
+            ],
+            "cropPlaneMappedXBounds": [
+              0.8753778526102611,
+              2.3760255998800615
+            ],
+            "authoredXBounds": [
+              1.1500000000000001,
+              2.55
+            ],
+            "reason": "2024 grazing context supports three side window columns; upper exposure obscures exact bounds. 2025 near-corner column corroborates three floors but pixel-plane x differs about 1.5m. Positions and sizes are explicit visual hypotheses on the unchanged exact side11 plane, not metrics."
+          }
+        },
+        {
+          "id": "side-upper-2-2",
+          "x": 6.75,
+          "z": 7.25,
+          "width": 1.5,
+          "height": 1.6,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_2",
+          "frameColour": "#c6c9bb",
+          "transom": 0.18,
+          "mullions": [
+            0.5
+          ],
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": "artifacts/jordaan-building-library/boomstraat-48-50/side-2024.jpg",
+            "sourceHash": "c1ae534aec7b2a945fae1630e0954b805cc3acbd1ba96b8c1822135741247ac3",
+            "captureDate": "2024-11-21T13:26:55Z",
+            "cropPlane": {
+              "start": {
+                "x": 120782.55492024722,
+                "y": 488058.8573015643
+              },
+              "end": {
+                "x": 120785.4929197719,
+                "y": 488047.47530156345
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 13.21
+            },
+            "pixelBounds": [
+              430,
+              430,
+              560,
+              550
+            ],
+            "cropPlaneMappedXBounds": [
+              5.377321094483297,
+              7.00302282069846
+            ],
+            "authoredXBounds": [
+              6.0,
+              7.5
+            ],
+            "reason": "2024 grazing context supports three side window columns; upper exposure obscures exact bounds. 2025 near-corner column corroborates three floors but pixel-plane x differs about 1.5m. Positions and sizes are explicit visual hypotheses on the unchanged exact side11 plane, not metrics."
+          }
+        },
+        {
+          "id": "side-upper-2-3",
+          "x": 10.3,
+          "z": 7.25,
+          "width": 1.6,
+          "height": 1.6,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_2",
+          "frameColour": "#c6c9bb",
+          "transom": 0.18,
+          "mullions": [
+            0.5
+          ],
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": "artifacts/jordaan-building-library/boomstraat-48-50/side-2024.jpg",
+            "sourceHash": "c1ae534aec7b2a945fae1630e0954b805cc3acbd1ba96b8c1822135741247ac3",
+            "captureDate": "2024-11-21T13:26:55Z",
+            "cropPlane": {
+              "start": {
+                "x": 120782.55492024722,
+                "y": 488058.8573015643
+              },
+              "end": {
+                "x": 120785.4929197719,
+                "y": 488047.47530156345
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 13.21
+            },
+            "pixelBounds": [
+              680,
+              430,
+              855,
+              550
+            ],
+            "cropPlaneMappedXBounds": [
+              8.503670567971897,
+              10.692115199437552
+            ],
+            "authoredXBounds": [
+              9.5,
+              11.100000000000001
+            ],
+            "reason": "2024 grazing context supports three side window columns; upper exposure obscures exact bounds. 2025 near-corner column corroborates three floors but pixel-plane x differs about 1.5m. Positions and sizes are explicit visual hypotheses on the unchanged exact side11 plane, not metrics."
+          }
+        },
+        {
+          "id": "side-upper-3-1",
+          "x": 1.85,
+          "z": 9.925,
+          "width": 1.4,
+          "height": 1.55,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_3",
+          "frameColour": "#c6c9bb",
+          "transom": 0.18,
+          "mullions": [
+            0.5
+          ],
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": "artifacts/jordaan-building-library/boomstraat-48-50/side-2024.jpg",
+            "sourceHash": "c1ae534aec7b2a945fae1630e0954b805cc3acbd1ba96b8c1822135741247ac3",
+            "captureDate": "2024-11-21T13:26:55Z",
+            "cropPlane": {
+              "start": {
+                "x": 120782.55492024722,
+                "y": 488058.8573015643
+              },
+              "end": {
+                "x": 120785.4929197719,
+                "y": 488047.47530156345
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 13.21
+            },
+            "pixelBounds": [
+              70,
+              260,
+              190,
+              385
+            ],
+            "cropPlaneMappedXBounds": [
+              0.8753778526102611,
+              2.3760255998800615
+            ],
+            "authoredXBounds": [
+              1.1500000000000001,
+              2.55
+            ],
+            "reason": "2024 grazing context supports three side window columns; upper exposure obscures exact bounds. 2025 near-corner column corroborates three floors but pixel-plane x differs about 1.5m. Positions and sizes are explicit visual hypotheses on the unchanged exact side11 plane, not metrics."
+          }
+        },
+        {
+          "id": "side-upper-3-2",
+          "x": 6.75,
+          "z": 9.925,
+          "width": 1.5,
+          "height": 1.55,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_3",
+          "frameColour": "#c6c9bb",
+          "transom": 0.18,
+          "mullions": [
+            0.5
+          ],
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": "artifacts/jordaan-building-library/boomstraat-48-50/side-2024.jpg",
+            "sourceHash": "c1ae534aec7b2a945fae1630e0954b805cc3acbd1ba96b8c1822135741247ac3",
+            "captureDate": "2024-11-21T13:26:55Z",
+            "cropPlane": {
+              "start": {
+                "x": 120782.55492024722,
+                "y": 488058.8573015643
+              },
+              "end": {
+                "x": 120785.4929197719,
+                "y": 488047.47530156345
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 13.21
+            },
+            "pixelBounds": [
+              430,
+              260,
+              560,
+              385
+            ],
+            "cropPlaneMappedXBounds": [
+              5.377321094483297,
+              7.00302282069846
+            ],
+            "authoredXBounds": [
+              6.0,
+              7.5
+            ],
+            "reason": "2024 grazing context supports three side window columns; upper exposure obscures exact bounds. 2025 near-corner column corroborates three floors but pixel-plane x differs about 1.5m. Positions and sizes are explicit visual hypotheses on the unchanged exact side11 plane, not metrics."
+          }
+        },
+        {
+          "id": "side-upper-3-3",
+          "x": 10.3,
+          "z": 9.925,
+          "width": 1.6,
+          "height": 1.55,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_3",
+          "frameColour": "#c6c9bb",
+          "transom": 0.18,
+          "mullions": [
+            0.5
+          ],
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": "artifacts/jordaan-building-library/boomstraat-48-50/side-2024.jpg",
+            "sourceHash": "c1ae534aec7b2a945fae1630e0954b805cc3acbd1ba96b8c1822135741247ac3",
+            "captureDate": "2024-11-21T13:26:55Z",
+            "cropPlane": {
+              "start": {
+                "x": 120782.55492024722,
+                "y": 488058.8573015643
+              },
+              "end": {
+                "x": 120785.4929197719,
+                "y": 488047.47530156345
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 13.21
+            },
+            "pixelBounds": [
+              680,
+              260,
+              855,
+              385
+            ],
+            "cropPlaneMappedXBounds": [
+              8.503670567971897,
+              10.692115199437552
+            ],
+            "authoredXBounds": [
+              9.5,
+              11.100000000000001
+            ],
+            "reason": "2024 grazing context supports three side window columns; upper exposure obscures exact bounds. 2025 near-corner column corroborates three floors but pixel-plane x differs about 1.5m. Positions and sizes are explicit visual hypotheses on the unchanged exact side11 plane, not metrics."
+          }
+        },
+        {
+          "id": "side-rear-entry",
+          "x": 2.4,
+          "z": 1.295,
+          "width": 1.3,
+          "height": 2.35,
+          "kind": "door",
+          "head": "rectangular",
+          "storey": "ground",
+          "frameColour": "#c6c9bb",
+          "mullions": [],
+          "transom": 0.18,
+          "glassColour": "#434d4a",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": "artifacts/jordaan-building-library/boomstraat-48-50/side-2024.jpg",
+            "sourceHash": "c1ae534aec7b2a945fae1630e0954b805cc3acbd1ba96b8c1822135741247ac3",
+            "captureDate": "2024-11-21T13:26:55Z",
+            "pixelBounds": [
+              170,
+              805,
+              295,
+              1035
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120782.55492024722,
+                "y": 488058.8573015643
+              },
+              "end": {
+                "x": 120785.4929197719,
+                "y": 488047.47530156345
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 13.21
+            },
+            "cropPlaneMappedXBounds": [
+              2.125917641992974,
+              3.6890923787390926
+            ],
+            "authoredXBounds": [
+              1.75,
+              3.05
+            ],
+            "reason": "2024 alternate side crop supports rear entry; 2025 side crop supports two front ground windows with partial shrub occlusion. Source camera/crop registration disagreement preserved; Side window head retained approximately, with square opening and inferred brick sill1.07m from clear2025crop; authored threshold/layout inferred."
+          },
+          "lowerPanel": {
+            "height": 0.4,
+            "colour": "#626457"
+          }
+        },
+        {
+          "id": "side-ground-middle",
+          "x": 7.7,
+          "z": 1.82,
+          "width": 1.5,
+          "height": 1.5,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "ground",
+          "frameColour": "#c6c9bb",
+          "mullions": [
+            0.5
+          ],
+          "transom": 0.18,
+          "glassColour": "#434d4a",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/images/0363100012169371_e_0zzbh2b-ground.jpg",
+            "sourceHash": "b0700442960649ce2f4fb980e92accd06de2b8f6cb5d7445f7a168e72b008689",
+            "captureDate": "2025-07-03T07:37:22Z",
+            "pixelBounds": [
+              800,
+              208,
+              965,
+              389
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120782.49616025672,
+                "y": 488059.0849415643
+              },
+              "end": {
+                "x": 120785.5516797624,
+                "y": 488047.24766156345
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 5.014999991655349
+            },
+            "cropPlaneMappedXBounds": [
+              7.0364387314845,
+              8.53619390021637
+            ],
+            "authoredXBounds": [
+              6.95,
+              8.45
+            ],
+            "reason": "2024 alternate side crop supports rear entry; 2025 side crop supports two front ground windows with partial shrub occlusion. Source camera/crop registration disagreement preserved; Side window head retained approximately, with square opening and inferred brick sill1.07m from clear2025crop; authored threshold/layout inferred."
+          }
+        },
+        {
+          "id": "side-ground-front",
+          "x": 10.35,
+          "z": 1.82,
+          "width": 1.5,
+          "height": 1.5,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "ground",
+          "frameColour": "#c6c9bb",
+          "mullions": [
+            0.5
+          ],
+          "transom": 0.18,
+          "glassColour": "#434d4a",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/images/0363100012169371_e_0zzbh2b-ground.jpg",
+            "sourceHash": "b0700442960649ce2f4fb980e92accd06de2b8f6cb5d7445f7a168e72b008689",
+            "captureDate": "2025-07-03T07:37:22Z",
+            "pixelBounds": [
+              1080,
+              205,
+              1243,
+              384
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120782.49616025672,
+                "y": 488059.0849415643
+              },
+              "end": {
+                "x": 120785.5516797624,
+                "y": 488047.24766156345
+              },
+              "baseZ": 0.11499999165534974,
+              "topZ": 5.014999991655349
+            },
+            "cropPlaneMappedXBounds": [
+              9.581477805666024,
+              11.063054123860354
+            ],
+            "authoredXBounds": [
+              9.6,
+              11.1
+            ],
+            "reason": "2024 alternate side crop supports rear entry; 2025 side crop supports two front ground windows with partial shrub occlusion. Source camera/crop registration disagreement preserved; Side window head retained approximately, with square opening and inferred brick sill1.07m from clear2025crop; authored threshold/layout inferred."
+          }
+        }
+      ],
+      "storefront": {
+        "height": 2.8,
+        "anchor": 5.87753701023111,
+        "finishColour": "#81553f",
+        "cornice": false,
+        "signs": [],
+        "awnings": []
+      }
+    }
+  ],
+  "materials": {
+    "wall": "redbrick",
+    "wallColour": "#81553f",
+    "roof": "slate",
+    "frame": "ivorytimber",
+    "glassColour": "#566466"
+  },
+  "details": {},
+  "placement": {
+    "frontageLocal": [
+      [
+        848.2017495073378,
+        -1102.3192541388562
+      ],
+      [
+        852.7987492989778,
+        -1103.6012541681994
+      ]
+    ],
+    "inputFrameDeterminant": -0.9999999999999999,
+    "xAxisBearingDegrees": 74.41740719283676,
+    "axes": "glTF x=along frontage,y=up,z=towards street",
+    "anchor": [
+      4.8847916126848,
+      52.3792403425629
+    ],
+    "sourceRDFrame": {
+      "anchorRD": [
+        120790.75091953311,
+        488048.94130159426
+      ],
+      "xAxisRD": [
+        0.9632442236367221,
+        0.268627187065063
+      ],
+      "yAxisRD": [
+        -0.268627187065063,
+        0.9632442236367221
+      ],
+      "buildingId": "0363100012169371",
+      "geometryRevision": "b9e694d40ad76ca84b2ed00d6c3bc28c3067795068a833c3cc1e5f712d1edb77",
+      "source": "Exact frozen seed originRD and ordered frontage; anchor converted by src/canalRecall/facade/rdNew.ts rdToLngLat, feature registration unresolved"
+    }
+  },
+  "sourceShell": {
+    "surfaces": [
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              -4.48539888829612,
+              -0.4384703715469427,
+              11.59500000834465
+            ],
+            [
+              -4.48539888829612,
+              -0.4384703715469427,
+              -0.0049999916553497
+            ],
+            [
+              0.0035413260338422597,
+              -0.42378186683117053,
+              -0.0049999916553497
+            ],
+            [
+              0.0035413260338422597,
+              -0.42378186683117053,
+              11.59500000834465
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              0.0035413260338422597,
+              -0.42378186683117053,
+              11.59500000834465
+            ],
+            [
+              0.0035413260338422597,
+              -0.42378186683117053,
+              -0.0049999916553497
+            ],
+            [
+              0.0007754377647772245,
+              0.013015969544131617,
+              -0.0049999916553497
+            ],
+            [
+              0.0007754377647772245,
+              0.013015969544131617,
+              11.59500000834465
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              4.775541665936994,
+              0.01028351529981375,
+              11.59500000834465
+            ],
+            [
+              4.775541665936994,
+              0.01028351529981375,
+              -0.0049999916553497
+            ],
+            [
+              4.930312405586894,
+              0.08131884558129987,
+              -0.0049999916553497
+            ],
+            [
+              4.930312405586894,
+              0.08131884558129987,
+              11.59500000834465
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              -4.485478504694537,
+              0.00795990706471783,
+              11.59500000834465
+            ],
+            [
+              -4.485478504694537,
+              0.00795990706471783,
+              -0.0049999916553497
+            ],
+            [
+              -4.48539888829612,
+              -0.4384703715469427,
+              -0.0049999916553497
+            ],
+            [
+              -4.48539888829612,
+              -0.4384703715469427,
+              11.59500000834465
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              -4.992695425839894,
+              11.776784444583305,
+              11.58500000834465
+            ],
+            [
+              -4.992695425839894,
+              11.776784444583305,
+              -0.0049999916553497
+            ],
+            [
+              -5.2260993300051855,
+              11.758822887846758,
+              -0.0049999916553497
+            ],
+            [
+              -5.2260993300051855,
+              11.758822887846758,
+              11.58500000834465
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              0.0007754377647772245,
+              0.013015969544131617,
+              11.59500000834465
+            ],
+            [
+              0.0007754377647772245,
+              0.013015969544131617,
+              -0.0049999916553497
+            ],
+            [
+              4.775541665936994,
+              0.01028351529981375,
+              -0.0049999916553497
+            ],
+            [
+              4.775541665936994,
+              0.01028351529981375,
+              11.59500000834465
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              4.833969281879019,
+              9.005203537939956,
+              11.59500000834465
+            ],
+            [
+              4.833969281879019,
+              9.005203537939956,
+              -0.0049999916553497
+            ],
+            [
+              3.477829534553866,
+              9.279584633726158,
+              -0.0049999916553497
+            ],
+            [
+              3.477829534553866,
+              9.279584633726158,
+              11.59500000834465
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              4.930312405586894,
+              0.08131884558129987,
+              11.59500000834465
+            ],
+            [
+              4.930312405586894,
+              0.08131884558129987,
+              -0.0049999916553497
+            ],
+            [
+              4.833969281879019,
+              9.005203537939956,
+              -0.0049999916553497
+            ],
+            [
+              4.833969281879019,
+              9.005203537939956,
+              11.59500000834465
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              2.172140188289055,
+              11.782318205453311,
+              11.58500000834465
+            ],
+            [
+              2.172140188289055,
+              11.782318205453311,
+              -0.0049999916553497
+            ],
+            [
+              -4.992695425839894,
+              11.776784444583305,
+              -0.0049999916553497
+            ],
+            [
+              -4.992695425839894,
+              11.776784444583305,
+              11.58500000834465
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              3.477829534553866,
+              9.279584633726158,
+              11.59500000834465
+            ],
+            [
+              3.477829534553866,
+              9.279584633726158,
+              -0.0049999916553497
+            ],
+            [
+              2.172140188289055,
+              11.782318205453311,
+              -0.0049999916553497
+            ],
+            [
+              2.172140188289055,
+              11.782318205453311,
+              11.58500000834465
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              -5.460771143550022,
+              0.01002596476035289,
+              11.59500000834465
+            ],
+            [
+              -5.460771143550022,
+              0.01002596476035289,
+              -0.0049999916553497
+            ],
+            [
+              -4.485478504694537,
+              0.00795990706471783,
+              -0.0049999916553497
+            ],
+            [
+              -4.485478504694537,
+              0.00795990706471783,
+              11.59500000834465
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              -5.2260993300051855,
+              11.758822887846758,
+              11.58500000834465
+            ],
+            [
+              -5.2260993300051855,
+              11.758822887846758,
+              -0.0049999916553497
+            ],
+            [
+              -5.460771143550022,
+              0.01002596476035289,
+              -0.0049999916553497
+            ],
+            [
+              -5.460771143550022,
+              0.01002596476035289,
+              11.59500000834465
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              -5.2260993300051855,
+              11.758822887846758,
+              11.58500000834465
+            ],
+            [
+              -5.460771143550022,
+              0.01002596476035289,
+              11.59500000834465
+            ],
+            [
+              -4.485478504694537,
+              0.00795990706471783,
+              11.59500000834465
+            ],
+            [
+              -4.48539888829612,
+              -0.4384703715469427,
+              11.59500000834465
+            ],
+            [
+              0.0035413260338422597,
+              -0.42378186683117053,
+              11.59500000834465
+            ],
+            [
+              0.0007754377647772245,
+              0.013015969544131617,
+              11.59500000834465
+            ],
+            [
+              4.775541665936994,
+              0.01028351529981375,
+              11.59500000834465
+            ],
+            [
+              4.930312405586894,
+              0.08131884558129987,
+              11.59500000834465
+            ],
+            [
+              4.833969281879019,
+              9.005203537939956,
+              11.59500000834465
+            ],
+            [
+              3.477829534553866,
+              9.279584633726158,
+              11.59500000834465
+            ],
+            [
+              2.172140188289055,
+              11.782318205453311,
+              11.58500000834465
+            ],
+            [
+              -4.992695425839894,
+              11.776784444583305,
+              11.58500000834465
+            ]
+          ]
+        ]
+      }
+    ],
+    "groundNAP": 0.41499999165534973,
+    "sourceOffsetNAP": 0.65,
+    "source": "3DBAG LoD2.2",
+    "pointCloudYear": 2023
+  },
+  "heightEvidence": [
+    {
+      "source": "3DBAG LoD2.2",
+      "year": 2023,
+      "groundNAP": 0.41499999165534973,
+      "selectedWallHeightRaw": {
+        "surfaceIndex": 5,
+        "planeErrorM": 0.013015969540896065,
+        "overlapM": 4.771638119299295,
+        "bottom": -0.24,
+        "top": 11.36,
+        "heightM": 11.6,
+        "status": "selected-coplanar-source-wall; feature registration unresolved"
+      },
+      "selectedWallTopRelativeM": 11.59500000834465,
+      "roofStatisticRelativeM": 11.59,
+      "lineage": "AHN-derived3DBAG; not independent height evidence"
+    }
+  ],
+  "heightChoice": {
+    "value": 11.59500000834465,
+    "eavesM": 11.59500000834465,
+    "roofPeakM": 11.59500000834465,
+    "reportedRoofStatisticM": 11.59,
+    "reason": "Selected wall top normalized by source offsetNAP-groundNAP; rear roof percentile is not substituted for frontage eaves."
+  },
+  "targetAppearanceDate": "2022-01-27T09:28:21.838680Z",
+  "authoringStatus": "isolated-three-front-source-supported-review-pending",
+  "assumptions": [
+    "Photographic features unregistered; opening dimensions remain inferred author proportions.",
+    "Seed geometry fingerprint is a cache digest, not an externally certified revision.",
+    "Exact owner footprint and unmodified source surfaces retained. Authored frontage apertures replace explicitly owned wall patches; source-derived rear volumes remain separate from any inferred details.",
+    "No source crop datum or pixel height is treated as an independent measurement.",
+    "Owner includes TWO offset parallel Boomstraat front planes plus an Eerste Boomdwarsstraat side plane; no single-plane whole-owner acceptance.",
+    "The exact per-crop plane and pixel bounds are retained. Cropped source registration varies with height; feature positions are stylized source-supported hypotheses, not independent metric registration.",
+    "Street-side surface 11 now has source-supported three-column windows and ground entry/windows; 2025 images partially blocked, recovered 2024 panorama grazing/overexposed. Crop-plane disagreement retained, positions inferred; unseen rear unknown.",
+    "Structural layout combines 2022 ground, 2023 right upper/roof and 2024 left upper/roof captures. This is an explicit multiyear structural hypothesis, not one complete dated capture.",
+    "Flat semantic roof retained; sloping hoist presence is source-supported, while beam projection, tipRise and mount position remain inferred."
+  ],
+  "massing": {
+    "mode": "source-derived"
+  },
+  "sourceBundlePath": "artifacts/jordaan-building-library/authored-evidence/boomstraat-48-50.json"
+}

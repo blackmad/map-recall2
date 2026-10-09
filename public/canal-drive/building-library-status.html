@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Building library · progress</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#eeeee7;color:#24332c;font:16px/1.5 system-ui,sans-serif}main{max-width:760px;margin:auto;padding:28px 20px}h1{font-size:28px;line-height:1.2;margin:0 0 12px}h2{font-size:20px;margin:0 0 10px}p{margin:10px 0}nav{display:flex;flex-wrap:wrap;gap:12px;margin:22px 0}a{color:#284f3c}section{background:#fafbf6;border:1px solid #bdc5b8;border-radius:8px;padding:18px;margin:16px 0}ol{padding:0;list-style:none;margin:0}li{border-top:1px solid #d5dacf;padding:14px 0}li:last-child{padding-bottom:0}.row{display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}.state{font-size:13px;padding:3px 8px;border-radius:4px;background:#e1e5dc}.state.in_progress{background:#fff0c6}.state.complete{background:#d7ead7}.detail,.muted{font-size:14px;color:#536157}#refresh-error{color:#973b27}@media(max-width:480px){main{padding:20px 14px}h1{font-size:24px}section{padding:14px}}
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Building library progress</h1>
+    <p id="summary">Loading current progress…</p>
+    <p class="muted">Last updated: <time id="updated">Waiting for status</time></p>
+    <nav aria-label="Building previews"><a href="./building-library.html">Open building library</a><a href="./building-library-review.html">Visual review</a><a href="./gable-block.html">Open roof &amp; gable study</a></nav>
+    <section aria-labelledby="baseline-heading"><h2 id="baseline-heading">Verified baseline</h2><p id="baseline"></p><p id="baseline-note" class="detail"></p></section>
+    <section aria-labelledby="milestones-heading"><h2 id="milestones-heading">Current work</h2><ol id="milestones"></ol></section>
+    <p id="next"></p>
+    <p class="muted">Progress refreshes every 30 seconds. The timestamp changes when a milestone is recorded.</p>
+    <p id="refresh-error" role="status"></p>
+  </main>
+  <script>
+    const labels={in_progress:'In progress',pending:'Pending',complete:'Complete'};
+    async function refresh(){
+      try{
+        const response=await fetch('./building-library-status.json',{cache:'no-store'});
+        if(!response.ok)throw new Error('Status unavailable');
+        const status=await response.json();
+        document.getElementById('summary').textContent=status.summary;
+        const time=document.getElementById('updated');
+        const date=new Date(status.updatedAt);
+        time.dateTime=status.updatedAt;
+        time.textContent=Number.isNaN(date.getTime())?status.updatedAt:date.toLocaleString(undefined,{dateStyle:'medium',timeStyle:'long'});
+        const baseline=status.baseline;
+        document.getElementById('baseline').textContent=`${baseline.models} models: ${baseline.realCandidates} real candidates and ${baseline.syntheticStudies} synthetic studies.`;
+        document.getElementById('baseline-note').textContent=baseline.note;
+        const items=status.milestones.map(milestone=>{
+          const item=document.createElement('li');
+          const row=document.createElement('div');row.className='row';
+          const title=document.createElement('strong');title.textContent=milestone.title;
+          const state=document.createElement('span');state.className='state '+(labels[milestone.state]?milestone.state:'pending');state.textContent=labels[milestone.state]||milestone.state;
+          const detail=document.createElement('p');detail.className='detail';detail.textContent=milestone.detail;
+          row.append(title,state);item.append(row,detail);return item;
+        });
+        document.getElementById('milestones').replaceChildren(...items);
+        document.getElementById('next').textContent=status.next;
+        document.getElementById('refresh-error').textContent='';
+      }catch(error){document.getElementById('refresh-error').textContent='Could not refresh progress. Retrying in 30 seconds; any displayed status is the last successful update.';}
+    }
+    refresh();setInterval(refresh,30000);
+  </script>
+</body>
+</html>

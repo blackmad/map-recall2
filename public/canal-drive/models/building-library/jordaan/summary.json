@@ -1,0 +1,308 @@
+{
+  "schemaVersion": 1,
+  "scope": "Cached exact municipal Jordaan owner inventory, not a certified live total",
+  "boundary": {
+    "source": {
+      "name": "Gemeente Amsterdam Datapunt gebieden: buurten GeoJSON",
+      "revision": "2024-01-25T20:36:51 feature registration timestamp",
+      "retrievedAt": "2026-09-12T11:08:55Z",
+      "url": "https://api.data.amsterdam.nl/v1/gebieden/buurten?_format=geojson",
+      "snapshot": "amsterdam-buurten-da-costa-jordaan-2024-01-25.geojson",
+      "snapshotSha256": "6c8be63b47a96645b10f9dde2323dd8647103d734ba939fc41ccbb51311aec5d",
+      "snapshotScope": "eight exact municipal features cached from the live public endpoint; public geometry acquisition is separately recorded in each area cache"
+    },
+    "sha256": "6c8be63b47a96645b10f9dde2323dd8647103d734ba939fc41ccbb51311aec5d",
+    "featureIds": [
+      "03630980000026",
+      "03630980000027",
+      "03630980000029",
+      "03630980000031",
+      "03630980000034",
+      "03630980000035"
+    ],
+    "featureNames": [
+      "Driehoekbuurt",
+      "Anjeliersbuurt-Noord",
+      "Anjeliersbuurt-Zuid",
+      "Bloemgrachtbuurt",
+      "Elandsgrachtbuurt",
+      "Passeerdersgrachtbuurt"
+    ],
+    "selectionRule": "Frozen publisher membership: exact municipal footprint intersection; area priority assigns each BAG owner once; exclude acquisition halo. One owner may have multiple addresses/facades.",
+    "implementationPath": ".worktrees/amsterdam-facade-rebuild/scripts/city-appearance/merge-district-blocks.ts"
+  },
+  "geometrySource": {
+    "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/districts/da-costa-jordaan-v1/e7a51599312c472206b3f4e202f9196166aae1584b579df1ba26f43a46cbbfa7/block.json",
+    "sha256": "e7a51599312c472206b3f4e202f9196166aae1584b579df1ba26f43a46cbbfa7",
+    "originRD": {
+      "x": 119942.54917002577,
+      "y": 486946.6220474554
+    }
+  },
+  "counts": {
+    "cachedMergedOwners": 7395,
+    "jordaanPrimaryOwners": 3189,
+    "jordaanIntersectingOwners": 3189,
+    "mergedAcquisitionHaloOwners": 3240,
+    "footprintOwners": 3189,
+    "sourceShellOwners": 3137,
+    "ownerHeightOwners": 3189,
+    "cachedEvidenceOwners": 2606,
+    "cachedDistinctPhysicalFacades": 3252,
+    "selectedCoplanarWallHeightOwners": 2402,
+    "existingRecipeOwners": 11,
+    "evidenceTaskEligibleNewOwners": 2397,
+    "namedMultiyearCohortEligibleOwners": 1803,
+    "frozenNextCohort": 20,
+    "nextCohortLaterInfillHeuristic": 12,
+    "visuallyAcceptedMetricReconstructions": 0
+  },
+  "existingRealRecipesOutsideExactJordaan": [
+    {
+      "id": "rozengracht-249",
+      "recipePath": "scripts/blender/expansion/recipes/rozengracht-249.json"
+    },
+    {
+      "id": "rozengracht-251",
+      "recipePath": "scripts/blender/expansion/recipes/rozengracht-251.json"
+    }
+  ],
+  "confidenceGate": {
+    "status": "not-ready-for-district-reconstruction",
+    "requiredRealPilotOwners": 20,
+    "requiredVisuallyConfirmedOrdinaryOwners": 12,
+    "requirements": [
+      "Freeze visually verified primary frontage identity and ordered endpoints for each owner; wrong owner/plane blocks authoring",
+      "Use source-bound footprint and selected-wall height, reviewed stylized resemblance and honest unseen inference; full pane-level photogrammetric registration is not required",
+      "Record unregistered opening proportions as inferred rather than survey measurements",
+      "Resolve evidenced missing architecture with reusable components and generic fixtures",
+      "Verify export/render under actual placement transforms and measured footprints/selected wall heights",
+      "Independent four-view critique, repair loop and audited retained/failed outcomes"
+    ],
+    "districtGoal": "All exact Jordaan owners after confidence gate; 200 is an intermediate batch, not district completion.",
+    "publicRealCandidateOwners": 13
+  },
+  "warnings": [
+    "Cached massing family is not confirmed architectural classification. The 12 ordinary target requires visual review.",
+    "Cached physical facades are not an exhaustive street-visible side count. Primary identity is not inferred from owner ID alone.",
+    "Source snapshots are frozen; no live endpoint refresh, downloads or paid vision calls occurred."
+  ],
+  "evidenceManifestSources": [
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/apollobuurt-v1/panorama-audit/70ddd2d4a19b94d103595e529ef42d4c2ae526be895c09a4e567c59295ee580b/evidence/manifest.json",
+      "sha256": "c405446e141d18987b7f4dae464e583e1cc772f80b332b1d90de5a8f649d1b49"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costa-expansion-550m-v1/panorama-audit/35e8d2f29c4634cbd07d6afa0d624f6a971f518e2e056859cf988030dedea61a/evidence/manifest.json",
+      "sha256": "731e1913c6c04309154aea1fb96afbb71ae8f4a25ecf6a31203b5b68ab9e9c53"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costa-tranche-400m-v1/panorama-audit/be950e97c54cab9950c80fa33846ca8bbc2a2477fe4284977d91dc481128f783/evidence/manifest.json",
+      "sha256": "d4dd5737a9c756c26b3dfd121275b1c07772eb4e8a5b6067d739b88db18ea027"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/00c71ef325601953dfb7e22f6028105fd9d77e01dbb84c3ac8f35474316e1878/evidence/manifest.json",
+      "sha256": "cb916ba6fe41200fb2af37f9738e9578cd175b6e354e074ba67d6b9b91e82394"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/2213231ccba36fe7bf0bc7c4b5f0dea02c008f403098e40f2da2f6ec557c521c/evidence/manifest.json",
+      "sha256": "42bc82f35555b55ff12d51b5b759df05a0f0d27c19ec14ae338e30de6848a77f"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/3f2ec76c39394add2c9195ddb1df39b6589a3fd01a91d21efae00557e89fc2bc/evidence/manifest.json",
+      "sha256": "e413503ddf9a5a963714b83d4a38c03bf5cca861b8a7fcfcd49845db8b3fdf90"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/3f92db8d4da2d7b08094b280657246cbf711d1857474672462acee907540e7d8/evidence/manifest.json",
+      "sha256": "4ae5445c296af66c6e372ebad2b2ff00a05cd445ddf413a5be02f6a8ceda8202"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/42e2558682004bd88e765f1147f44be7dc2b58be02dffcc15b7e9462585953fe/evidence/manifest.json",
+      "sha256": "439414aeac75cdeeb83e8abf8e9b37601ed3db4deeadd4c120144a4838b8455b"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/5e1858c484d2184a8b40e7bf582aab8323ff18ad67a14a547ad47021209ea31a/evidence/manifest.json",
+      "sha256": "097de31c6138ff3fd77861d51db9033a2dc8f5a656501401654f37605fe92d0d"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/61772bf5c34fdc627171c4ce74da72af0b055a648a98bfbf236b1dc0593102a5/evidence/manifest.json",
+      "sha256": "2ec636d3cf7fe87b45bf996208edf21b1a3751b5c7d3485818703e6dbd2d12e7"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/75d13e46b7d00e29cee0d9840b8fb9789cfda8a7140bc67c5d81cdc18b4709b0/evidence/manifest.json",
+      "sha256": "452a98ffbc2a39cb01f6632ded52bbc396788c33c9d0aeed90373e304219e127"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/88900deff4b114b95176f2f230be6abe81b4409a5371402816358ad81c4f57c5/evidence/manifest.json",
+      "sha256": "191b38631b8f827c2b773b2150939db7440a9c3066c81f30fe926dde0b652963"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/manifest.json",
+      "sha256": "e4488fdb56f69335de808a92776851665e24926b858132bd0e113abf86fc01c6"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/manifest.json",
+      "sha256": "b882f1733d09811c95c0d634236a207e31f4341d08486bdf2f3eba6fdb3b04f9"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/e5d88c3256c63dc90fdfeb3c4a9d061eaf52cd41416dcd8658e27a3a12d2abf3/evidence/manifest.json",
+      "sha256": "da30621598e7a990916906ba9979c237142ffad09b94a3e368a724f285abc8ad"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/eed1a3717110b47ad24defb123df88dff2b96c9de52a65279fb13398d21b5045/evidence/manifest.json",
+      "sha256": "c9bc443e4401747dddae7335a9eecdc9a8c4a65120d13b9ff95ef4e750dd1687"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/manifest.json",
+      "sha256": "b983655b6ed5518859997cd1e060084fe3a465a0373e1492a202109a71d819df"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/15cc14e544469be45acfb4adaee0017f74456d8c0d1da5a35037e2b8b7a5379d/evidence/manifest.json",
+      "sha256": "1a1ab9603a206f69a2a07a49cf5c5cf3c3b47a4bb5dfda95acfc3ce36524b28b"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/234ee0d618476e9ce5ac72e175239e03ac33b6484dd7e331d7ab39c1f5a2251e/evidence/manifest.json",
+      "sha256": "413e84a2d9e94c783de5a35f34571206b7c6f1f47535812b4756b74f32c8416e"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/23cbe284fa0f2bcd7f796758c9be37dd3bc52fb26943c5ceaab8dfef02fa8843/evidence/manifest.json",
+      "sha256": "3009f7cb096f7f6cfa392235d82e3429b36cea6d9fb5cd85574cfb547ad2b25b"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/manifest.json",
+      "sha256": "57ec51426b1bcd05b5779496926e6846e27214888eb203ce83090e1eca345c60"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/2d60454dc62ff8e2fce0e634fd9da7a1454b02471b77e79e7cb465dfec0ef2bd/evidence/manifest.json",
+      "sha256": "c593eb2200170db98248d3d1e73295e8bca1a003a58d4b43e54784a45fc2321e"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3cfeb5fcf2cce32d47a2d566613ab916fb68bbaf7fb5421f438e750aaa99d88f/evidence/manifest.json",
+      "sha256": "ed53ae92732ce78d33ce5f64d6cf3ad32aba58d90682d344268c39a62193957f"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/manifest.json",
+      "sha256": "904d4b1885a0d2e199e926e995f83e7a8d1bb36312f19f483c125d3a3cbf8896"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/42955f2314209a86242e7b38bda434cd3b147f4cf815bf9bacf8ad182e32ded3/evidence/manifest.json",
+      "sha256": "6c2b3453f23165a7e9564c46cc9a434a3f4a7682d38a537d5741ecd4e19fa7a2"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4a8eecdbd77dc0c08df411f4090078a051343ff0fca0733c9029ebf785a2b355/evidence/manifest.json",
+      "sha256": "184eaa9f2406f95aaba2085c3d442cf0ece4293702b43aac9b2dd0c0d0ea64e7"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/manifest.json",
+      "sha256": "799d0a6102dfa14a99926c7ef707356f8843bd7c5afb01f3244dfe225415db69"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/6deb2e79ce7960005383524abf2b232e2f82bd2fbc82389f1f4f45073e73032f/evidence/manifest.json",
+      "sha256": "98c2ff9bc68498490507d5c6e44853ae2cb1016065b970b178a1439d27c5bc8b"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/6f8e044a9684f917daf0ba347be37c48dc648ca4b63e4f0b4d425f852d1ed695/evidence/manifest.json",
+      "sha256": "59829586d00aeff0bab7926dc79acf1a5e17320c72218ab5b9355f15911ac514"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/7187629ffe09b31a4d32dbe0dc3388276c0b7702d7678425adc66f5998c291e1/evidence/manifest.json",
+      "sha256": "bcb395b31882c9daffffc53edf52779bb75142ccc3e8809396b7b6a44984dd83"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/761703bfedf0e6e46b1cb24a2dba894cad28eac52ac830992a04ee465ac8ac40/evidence/manifest.json",
+      "sha256": "4de32e569b3e2027af8a7c7e971a573f9e184d92dcbec1eed16e345a598ce693"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/7b82323496ec1f82bf5f306374e0a44e21fd8a4760362dd3848fd6f77df71190/evidence/manifest.json",
+      "sha256": "b3a5872f4b085e2b2cb1202445c7e45f7ce78f525af6d5cd3da195e25e6023e8"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/827e646ddd248e35798b72edffdee5cd2972048a404f408cdc890e35c1e31564/evidence/manifest.json",
+      "sha256": "3d1d5d60926dda2981e8202bd2570e304cbafe9aec4d8c96aecbfe7456c91465"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/8b84b5990efff411d1f31a4478e57a5ab4249891d18ffc126e30b20091b79b4f/evidence/manifest.json",
+      "sha256": "e4cac7dced1401a9a7efd09f90dd9ba2d1c43f388e4f6bcecb565ca457e32d8a"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/9374d9c0a05722ea5fca36fcc2dd753c265de0b262e7e60379e8e2d448ca445b/evidence/manifest.json",
+      "sha256": "b444b08fc9b88d7bbd905383a6e1155a1533a0392fb28d1d25a1dd5e72d50799"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/963da98752058408ec606a8d4a3ca6c4a4f7ceeca2dd9cd2e63dc054a7d55d9d/evidence/manifest.json",
+      "sha256": "9a1df4d3744f0156d37f45ed6bf81556d282d689d204f28f96a47a199373178f"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/9ab38efb54f0c860c3986d74978b84baf47d15b83183f7fe0f1d87b014f13495/evidence/manifest.json",
+      "sha256": "518668fee125de80cc9ce1ff6a1ab26a794297d8e0c8ff0baa72e4237ae8b97a"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/ad6e2fc77eda895a2bd8f6bb16be7aca0365bc76c685aaae0708e6231cb40942/evidence/manifest.json",
+      "sha256": "3b04116a3fa3918a80dc0f3f6fc816958665e9096d012c35e7f5cf7ec3afc32f"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/ba3a3613c80d7303001b3e98c6632f49bb37c8e0b6a1b39fef19e302153ae8fc/evidence/manifest.json",
+      "sha256": "a3f714f3891fdb3d1ef765705ecc0e640b7287fa96fe89a0288c563d41e6ffa5"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/c3f8d1a1f6685fb7608a9de97e7554c2c111d82338b2aab360cace5016595361/evidence/manifest.json",
+      "sha256": "939df620ef2266cd3294e24bed578e45202c0865718575fa3d71524a8b81ea2d"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/c8d875cf27b43b916038ec46fdaa1d107fdd061d668b16e3a5ee2438a212fd32/evidence/manifest.json",
+      "sha256": "bcbc7ba4a24bea6d05688db7425180b2b36f50fd3d72746e2f92f3b42081c647"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/c919e767a882fff9fb74902a6b7fb036b8713223b1f6ec57e12b50e58f7e12b5/evidence/manifest.json",
+      "sha256": "b0861ab595da5af44508c993a844ec15b8610b1128c1d780636d52ab025ba5d7"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/caa097123df68accd5cd9aa5f04a742ce4b82b1405162f48325e158dfade6697/evidence/manifest.json",
+      "sha256": "1e4abc16f42900a3432fdfee3b84a2de425b96e9454891249b16a295e56e4be5"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/ce585f1f4e4b5a27d08f035ba9bad65688af73c20c7ed50144b7ae5f5f4e15ec/evidence/manifest.json",
+      "sha256": "8a83c12b7f1e97c2d4c5954531f13d693a563068c934b33d73baabd3aa73bbd7"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/cf1ccd7a6483fa64952b81df4d9ce2c4ca89d28ec0c11561932907b7ff61f6f5/evidence/manifest.json",
+      "sha256": "20b3a3c29fafc34321380a78f9beb1cd454ba70e89a3714f33c7b82e75768a86"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/e0cb73b9e50ea806fa6ffa9aafc89efd70a8b27d3ecfd17ad9fb075b517e5b1a/evidence/manifest.json",
+      "sha256": "53306b6deaa493da4b9c6e75491f8cfac6e7cdcd2acce36a35116b5c81646088"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/e74ac5321aa2fa6e7f34a5511f2a30fe97a28aa94ae1edec8e5609dcc075a688/evidence/manifest.json",
+      "sha256": "95949fc6c874332609bd9e1b0a9ec04e5245ce8c157ae4c06706846a23b33957"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/e89f6531cc292f7ed8ecb4ea3f357a9e6bb8b4be16413f77fce658cce6b86eb7/evidence/manifest.json",
+      "sha256": "878a1fe95c79d35c65a0c034420a7549df7abe9c7aa2d4f4581c4f93e4d93504"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/f2a7ce860cd122399521a9bacc9ba7ccab42be151c7ba25aebfdd23aa06b3de0/evidence/manifest.json",
+      "sha256": "2487dcc49fb5fcbfe2990c3f9daf1140e6e533d16d9d42c500daad2c725e93c9"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/f580b5dc7f47ebfe3f2a1922a0d1d1e55fb1ef075cd0997a8f417a84f60a175b/evidence/manifest.json",
+      "sha256": "662be201a571ae3852377d4ac252fb98120f7f8ec13e94f1cd236c78647b7e37"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/fca4fdfeadb628bf8bfbedefff322b5052044a3da4002742bfb1091834f44d38/evidence/manifest.json",
+      "sha256": "8aca6b2b9eeaca00654e7b75bed12a18da478382c1c3d926a0225b808a689807"
+    },
+    {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/tuindorp-nieuwendam-v1/panorama-audit/02fea156a4f7e8c854c8380c3eab3229d21f6ca3587671124ee1466c45296a6e/evidence/manifest.json",
+      "sha256": "a077ee962bcaa5c3deaeca3d526e874a776451d16cd08fc99e2d97e84d34858f"
+    }
+  ],
+  "publicationReview": {
+    "updatedAt": "2026-10-01T18:24:38.046957+00:00",
+    "manifest": "../manifest.json",
+    "publicRealCandidates": 13,
+    "insideBoundary": 11,
+    "metricAccepted": 0,
+    "note": "Current public candidates overlaid on the frozen evidence inventory; cohort selection and acquisition counts are unchanged."
+  }
+}

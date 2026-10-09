@@ -1,0 +1,396 @@
+{
+  "schemaVersion": 1,
+  "id": "akoleienstraat-2",
+  "ownerId": "0363100012174639",
+  "geometryRevision": "a9d9097e82a60881b48bc4daeec794466f87b06a8a0020708d0fd7003866326d",
+  "physicalFacade": {
+    "frontage": [
+      [
+        382.531755998265,
+        -450.62725037225755
+      ],
+      [
+        378.2447561819863,
+        -449.0462503459421
+      ]
+    ],
+    "orderedFrontageRD": [
+      {
+        "x": 120325.08092602403,
+        "y": 487397.24929782766
+      },
+      {
+        "x": 120320.79392620776,
+        "y": 487395.66829780134
+      }
+    ],
+    "elevationId": "0363100012174639:e:0bivoqg",
+    "identityStatus": "visually plausible; metric registration unresolved",
+    "plane": {
+      "start": {
+        "x": 120325.08092602403,
+        "y": 487397.24929782766
+      },
+      "end": {
+        "x": 120320.79392620776,
+        "y": 487395.66829780134
+      }
+    }
+  },
+  "targetAppearanceDate": "2025-07-03T09:01:05Z",
+  "derived": [
+    {
+      "tier": "full",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/fca4fdfeadb628bf8bfbedefff322b5052044a3da4002742bfb1091834f44d38/evidence/images/0363100012174639_e_0bivoqg-full.jpg",
+      "sha256": "e6d954a04331bbfe4439336a5d436203e9db9d1ee561b3c67ece50f46f83280e",
+      "captureDate": "2023-02-13T09:46:22.766800Z",
+      "panoramaId": "TMX7316010203-002967_pano_0005_000030",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120325.16666602036,
+          "y": 487397.2809178282
+        },
+        "end": {
+          "x": 120320.70818621143,
+          "y": 487395.6366778008
+        },
+        "baseZ": 0.04299999475479127,
+        "topZ": 14.31
+      },
+      "datum": "published-minus-43.5m; track-unsolved",
+      "heightInferred": false,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/fca4fdfeadb628bf8bfbedefff322b5052044a3da4002742bfb1091834f44d38/evidence/manifest.json",
+      "derivationKey": "c88efc3920e9106a1fc9a33eb6067fdc4317c126915cf50aa724c0a32ffe7c40",
+      "metricEligible": false,
+      "captureKey": "TMX7316010203-002967_pano_0005_000030|2023-02-13T09:46:22.766800Z",
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "registration": {
+        "status": "unregistered",
+        "metricEligible": false
+      },
+      "selectedReason": "Cached selected-facade evidence; separate full/roof crops are not independent captures.",
+      "sourceUrlBeforePreview": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/fca4fdfeadb628bf8bfbedefff322b5052044a3da4002742bfb1091834f44d38/evidence/images/0363100012174639_e_0bivoqg-full.jpg",
+      "url": "./models/building-library/evidence/akoleienstraat-2-full-20230213-e6d954a04331bbfe4439336a.jpg"
+    },
+    {
+      "tier": "roof",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/fca4fdfeadb628bf8bfbedefff322b5052044a3da4002742bfb1091834f44d38/evidence/images/0363100012174639_e_0bivoqg-roof.jpg",
+      "sha256": "66e491ded96a3a47cf3a002c05d23b976b1573e3aee2b715063b309a1a978e55",
+      "captureDate": "2023-02-13T09:46:22.766800Z",
+      "panoramaId": "TMX7316010203-002967_pano_0005_000030",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120325.16666602036,
+          "y": 487397.2809178282
+        },
+        "end": {
+          "x": 120320.70818621143,
+          "y": 487395.6366778008
+        },
+        "baseZ": 6.110000000000001,
+        "topZ": 14.31
+      },
+      "datum": "published-minus-43.5m; track-unsolved",
+      "heightInferred": false,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/fca4fdfeadb628bf8bfbedefff322b5052044a3da4002742bfb1091834f44d38/evidence/manifest.json",
+      "derivationKey": "c88efc3920e9106a1fc9a33eb6067fdc4317c126915cf50aa724c0a32ffe7c40",
+      "metricEligible": false,
+      "captureKey": "TMX7316010203-002967_pano_0005_000030|2023-02-13T09:46:22.766800Z",
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "registration": {
+        "status": "unregistered",
+        "metricEligible": false
+      },
+      "selectedReason": "Cached selected-facade evidence; separate full/roof crops are not independent captures.",
+      "sourceUrlBeforePreview": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/fca4fdfeadb628bf8bfbedefff322b5052044a3da4002742bfb1091834f44d38/evidence/images/0363100012174639_e_0bivoqg-roof.jpg",
+      "url": "./models/building-library/evidence/akoleienstraat-2-roof-20230213-66e491ded96a3a47cf3a002c.jpg"
+    },
+    {
+      "tier": "ground",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/fca4fdfeadb628bf8bfbedefff322b5052044a3da4002742bfb1091834f44d38/evidence/images/0363100012174639_e_0bivoqg-ground.jpg",
+      "sha256": "a34d34d309f6ee3bcae6bfcde51cb3bc41e1d515f0a2552776e00b65059a66f1",
+      "captureDate": "2025-07-03T09:01:05Z",
+      "panoramaId": "recording_2025-07-03_08-35-58_00569",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120325.16666602036,
+          "y": 487397.2809178282
+        },
+        "end": {
+          "x": 120320.70818621143,
+          "y": 487395.6366778008
+        },
+        "baseZ": 0.04299999475479127,
+        "topZ": 4.942999994754791
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "heightInferred": true,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/fca4fdfeadb628bf8bfbedefff322b5052044a3da4002742bfb1091834f44d38/evidence/manifest.json",
+      "derivationKey": "c88efc3920e9106a1fc9a33eb6067fdc4317c126915cf50aa724c0a32ffe7c40",
+      "metricEligible": false,
+      "captureKey": "recording_2025-07-03_08-35-58_00569|2025-07-03T09:01:05Z",
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "registration": {
+        "status": "unregistered",
+        "metricEligible": false
+      },
+      "selectedReason": "Cached selected-facade evidence; separate full/roof crops are not independent captures.",
+      "sourceUrlBeforePreview": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/fca4fdfeadb628bf8bfbedefff322b5052044a3da4002742bfb1091834f44d38/evidence/images/0363100012174639_e_0bivoqg-ground.jpg",
+      "url": "./models/building-library/evidence/akoleienstraat-2-ground-20250703-a34d34d309f6ee3bcae6bfcd.jpg"
+    }
+  ],
+  "candidates": [
+    {
+      "tier": "context",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/fca4fdfeadb628bf8bfbedefff322b5052044a3da4002742bfb1091834f44d38/evidence/images/0363100012174639_e_0bivoqg-context.jpg",
+      "sha256": "5f93a50323eba9a183678c5264e2d43e4b6d5c910eb3dfa22f8d4fdefd891887",
+      "captureDate": "2023-02-13T09:46:22.766800Z",
+      "panoramaId": "TMX7316010203-002967_pano_0005_000030",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120328.08182589542,
+          "y": 487398.35599784605
+        },
+        "end": {
+          "x": 120317.79302633637,
+          "y": 487394.56159778294
+        },
+        "baseZ": 0.04299999475479127,
+        "topZ": 14.31
+      },
+      "datum": "published-minus-43.5m; track-unsolved",
+      "heightInferred": false,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/fca4fdfeadb628bf8bfbedefff322b5052044a3da4002742bfb1091834f44d38/evidence/manifest.json",
+      "derivationKey": "c88efc3920e9106a1fc9a33eb6067fdc4317c126915cf50aa724c0a32ffe7c40",
+      "metricEligible": false
+    },
+    {
+      "tier": "full",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/fca4fdfeadb628bf8bfbedefff322b5052044a3da4002742bfb1091834f44d38/evidence/images/0363100012174639_e_0bivoqg-full.jpg",
+      "sha256": "e6d954a04331bbfe4439336a5d436203e9db9d1ee561b3c67ece50f46f83280e",
+      "captureDate": "2023-02-13T09:46:22.766800Z",
+      "panoramaId": "TMX7316010203-002967_pano_0005_000030",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120325.16666602036,
+          "y": 487397.2809178282
+        },
+        "end": {
+          "x": 120320.70818621143,
+          "y": 487395.6366778008
+        },
+        "baseZ": 0.04299999475479127,
+        "topZ": 14.31
+      },
+      "datum": "published-minus-43.5m; track-unsolved",
+      "heightInferred": false,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/fca4fdfeadb628bf8bfbedefff322b5052044a3da4002742bfb1091834f44d38/evidence/manifest.json",
+      "derivationKey": "c88efc3920e9106a1fc9a33eb6067fdc4317c126915cf50aa724c0a32ffe7c40",
+      "metricEligible": false
+    },
+    {
+      "tier": "roof",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/fca4fdfeadb628bf8bfbedefff322b5052044a3da4002742bfb1091834f44d38/evidence/images/0363100012174639_e_0bivoqg-roof.jpg",
+      "sha256": "66e491ded96a3a47cf3a002c05d23b976b1573e3aee2b715063b309a1a978e55",
+      "captureDate": "2023-02-13T09:46:22.766800Z",
+      "panoramaId": "TMX7316010203-002967_pano_0005_000030",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120325.16666602036,
+          "y": 487397.2809178282
+        },
+        "end": {
+          "x": 120320.70818621143,
+          "y": 487395.6366778008
+        },
+        "baseZ": 6.110000000000001,
+        "topZ": 14.31
+      },
+      "datum": "published-minus-43.5m; track-unsolved",
+      "heightInferred": false,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/fca4fdfeadb628bf8bfbedefff322b5052044a3da4002742bfb1091834f44d38/evidence/manifest.json",
+      "derivationKey": "c88efc3920e9106a1fc9a33eb6067fdc4317c126915cf50aa724c0a32ffe7c40",
+      "metricEligible": false
+    },
+    {
+      "tier": "ground",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/fca4fdfeadb628bf8bfbedefff322b5052044a3da4002742bfb1091834f44d38/evidence/images/0363100012174639_e_0bivoqg-ground.jpg",
+      "sha256": "a34d34d309f6ee3bcae6bfcde51cb3bc41e1d515f0a2552776e00b65059a66f1",
+      "captureDate": "2025-07-03T09:01:05Z",
+      "panoramaId": "recording_2025-07-03_08-35-58_00569",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120325.16666602036,
+          "y": 487397.2809178282
+        },
+        "end": {
+          "x": 120320.70818621143,
+          "y": 487395.6366778008
+        },
+        "baseZ": 0.04299999475479127,
+        "topZ": 4.942999994754791
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "heightInferred": true,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/fca4fdfeadb628bf8bfbedefff322b5052044a3da4002742bfb1091834f44d38/evidence/manifest.json",
+      "derivationKey": "c88efc3920e9106a1fc9a33eb6067fdc4317c126915cf50aa724c0a32ffe7c40",
+      "metricEligible": false
+    }
+  ],
+  "coverage": [
+    {
+      "year": "2023",
+      "ground": {
+        "captures": [],
+        "crops": 0,
+        "registered": 0,
+        "visible": "visually reviewed; unregistered seed crop"
+      },
+      "upper": {
+        "captures": [
+          "TMX7316010203-002967_pano_0005_000030|2023-02-13T09:46:22.766800Z"
+        ],
+        "crops": 1,
+        "registered": 0,
+        "visible": "visually reviewed; unregistered seed crop"
+      },
+      "roof": {
+        "captures": [
+          "TMX7316010203-002967_pano_0005_000030|2023-02-13T09:46:22.766800Z"
+        ],
+        "crops": 1,
+        "registered": 0,
+        "visible": "visually reviewed; unregistered seed crop"
+      }
+    },
+    {
+      "year": "2025",
+      "ground": {
+        "captures": [
+          "recording_2025-07-03_08-35-58_00569|2025-07-03T09:01:05Z"
+        ],
+        "crops": 1,
+        "registered": 0,
+        "visible": "visually reviewed; unregistered seed crop"
+      },
+      "upper": {
+        "captures": [],
+        "crops": 0,
+        "registered": 0,
+        "visible": "visually reviewed; unregistered seed crop"
+      },
+      "roof": {
+        "captures": [],
+        "crops": 0,
+        "registered": 0,
+        "visible": "visually reviewed; unregistered seed crop"
+      }
+    }
+  ],
+  "policy": "Original cached images retained; source fingerprint is a cache geometry digest, not externally certified revision.",
+  "gaps": [
+    "No independent feature registration.",
+    "Only two independent captures in this seed; tier crop duplicates are not new observations."
+  ],
+  "previewSourceBundle": "artifacts/jordaan-building-library/authored-evidence/akoleienstraat-2.json"
+}

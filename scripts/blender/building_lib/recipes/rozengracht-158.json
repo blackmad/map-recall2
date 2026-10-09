@@ -1,0 +1,674 @@
+{
+  "schemaVersion": 1,
+  "id": "rozengracht-158",
+  "name": "Tobacco shop",
+  "address": "Rozengracht 158",
+  "caseId": "case-01",
+  "synthetic": false,
+  "buildingId": "0363100012167878",
+  "geometryRevision": "74abfa6aa50b578d07a286fb3495c5d88f47920ea05ee13e3666c95355c85083",
+  "sourceBundle": "rozengracht-158.json",
+  "footprint": [
+    [
+      -0.45335395313539806,
+      9.335297006157703
+    ],
+    [
+      -0.7117419195979516,
+      0.7612643692483312
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      1.149476813092623,
+      0.001748188326781308
+    ],
+    [
+      3.4893265825944266,
+      0.0
+    ],
+    [
+      3.7668586441764433,
+      9.19999869319519
+    ]
+  ],
+  "height": 14.488999991416932,
+  "storeys": [
+    {
+      "id": "ground",
+      "bottom": 0,
+      "top": 3.2
+    },
+    {
+      "id": "upper_1",
+      "bottom": 3.2,
+      "top": 6.23854999756813
+    },
+    {
+      "id": "upper_2",
+      "bottom": 6.23854999756813,
+      "top": 9.277099995136261
+    },
+    {
+      "id": "upper_3",
+      "bottom": 9.277099995136261,
+      "top": 12.315649992704392
+    }
+  ],
+  "roof": {
+    "kind": "pitched",
+    "eaves": 12.315649992704392,
+    "top": 14.038999991416933,
+    "status": "inferred",
+    "setback": 0.24,
+    "frontTransition": 1,
+    "gableClearance": 0.06,
+    "frontJoin": "hip",
+    "frontHipRun": 1.45,
+    "joinProvenance": {
+      "status": "inferred",
+      "basis": "Coherent single transverse front return behind decorative stone gable; hidden roof shape is unregistered and not established by front photo. Main top/eaves retained."
+    }
+  },
+  "gable": {
+    "profile": [
+      [
+        0.0,
+        12.315649992704392
+      ],
+      [
+        0.6978653165188853,
+        12.315649992704392
+      ],
+      [
+        0.6978653165188853,
+        12.415649992704392
+      ],
+      [
+        0.7850984810837459,
+        12.765649992704391
+      ],
+      [
+        0.9770114431264394,
+        13.085649992704392
+      ],
+      [
+        1.081691240604272,
+        13.765649992704391
+      ],
+      [
+        0.9770114431264394,
+        13.765649992704391
+      ],
+      [
+        0.9770114431264394,
+        13.925649992704392
+      ],
+      [
+        1.744663291297213,
+        14.271664992704393
+      ],
+      [
+        2.5123151394679866,
+        13.925649992704392
+      ],
+      [
+        2.5123151394679866,
+        13.765649992704391
+      ],
+      [
+        2.407635341990154,
+        13.765649992704391
+      ],
+      [
+        2.5123151394679866,
+        13.085649992704392
+      ],
+      [
+        2.7042281015106804,
+        12.765649992704391
+      ],
+      [
+        2.791461266075541,
+        12.415649992704392
+      ],
+      [
+        2.791461266075541,
+        12.315649992704392
+      ],
+      [
+        3.489326582594426,
+        12.315649992704392
+      ]
+    ],
+    "status": "inferred",
+    "material": "whiterender",
+    "colour": "#d8d3c4",
+    "provenance": {
+      "status": "inferred",
+      "sources": [
+        "rozengracht-158-2022-04-25-roof-58647187.jpg",
+        "rozengracht-158-2023-02-13-roof-1f880fd7.jpg",
+        "rozengracht-158-2024-12-16-roof-7d6bdeba.jpg"
+      ],
+      "basis": "Centered pale shoulders and broad pediment observed across dated crops; explicit mirrored knots remain unregistered proportions, not measured coordinates."
+    }
+  },
+  "frontages": [
+    {
+      "id": "street",
+      "origin": [
+        0,
+        0
+      ],
+      "rotation": 0,
+      "width": 3.489326582594426,
+      "openings": [
+        {
+          "id": "Upper full:window_r1_b1",
+          "x": 0.9630541367960617,
+          "z": 10.796374993920328,
+          "width": 1.2003283444124826,
+          "height": 2.1877559982490538,
+          "kind": "window",
+          "head": "segmental",
+          "transom": 0.23,
+          "storey": "upper_3",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "8d873cf946f8a85908523a369b6ce36dfd7aad931ad0e087888872c72c70c0b5",
+            "reason": "Prototype photo feature; metric registration unresolved"
+          },
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Upper full:window_r1_b2",
+          "x": 2.4338052913596124,
+          "z": 10.796374993920328,
+          "width": 1.2177749773254547,
+          "height": 2.1877559982490538,
+          "kind": "window",
+          "head": "segmental",
+          "transom": 0.23,
+          "storey": "upper_3",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "8d873cf946f8a85908523a369b6ce36dfd7aad931ad0e087888872c72c70c0b5",
+            "reason": "Prototype photo feature; metric registration unresolved"
+          },
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Upper full:window_r2_b1",
+          "x": 0.9630541367960617,
+          "z": 7.757824996352196,
+          "width": 1.2003283444124826,
+          "height": 2.1877559982490538,
+          "kind": "window",
+          "head": "segmental",
+          "transom": 0.23,
+          "storey": "upper_2",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "8d873cf946f8a85908523a369b6ce36dfd7aad931ad0e087888872c72c70c0b5",
+            "reason": "Prototype photo feature; metric registration unresolved"
+          },
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Upper full:window_r2_b2",
+          "x": 2.4338052913596124,
+          "z": 7.757824996352196,
+          "width": 1.2177749773254547,
+          "height": 2.1877559982490538,
+          "kind": "window",
+          "head": "segmental",
+          "transom": 0.23,
+          "storey": "upper_2",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "8d873cf946f8a85908523a369b6ce36dfd7aad931ad0e087888872c72c70c0b5",
+            "reason": "Prototype photo feature; metric registration unresolved"
+          },
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Upper full:window_r3_b1",
+          "x": 0.9717774532525476,
+          "z": 4.719274998784066,
+          "width": 1.2177749773254547,
+          "height": 2.1877559982490538,
+          "kind": "window",
+          "head": "segmental",
+          "transom": 0.23,
+          "storey": "upper_1",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "8d873cf946f8a85908523a369b6ce36dfd7aad931ad0e087888872c72c70c0b5",
+            "reason": "Prototype photo feature; metric registration unresolved"
+          },
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Upper full:window_r3_b2",
+          "x": 2.4652092306029623,
+          "z": 4.719274998784066,
+          "width": 1.2177749773254551,
+          "height": 2.1877559982490538,
+          "kind": "window",
+          "head": "segmental",
+          "transom": 0.23,
+          "storey": "upper_1",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "8d873cf946f8a85908523a369b6ce36dfd7aad931ad0e087888872c72c70c0b5",
+            "reason": "Prototype photo feature; metric registration unresolved"
+          },
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Upper full:review:roof-dormer-opening",
+          "x": 1.744663291297213,
+          "z": 12.990649992704393,
+          "width": 0.6208004349401126,
+          "height": 1.3,
+          "kind": "window",
+          "head": "segmental",
+          "transom": 0.23,
+          "storey": "attic",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "8d873cf946f8a85908523a369b6ce36dfd7aad931ad0e087888872c72c70c0b5",
+            "reason": "Dated 2022/2023/2024 roof crops show two tall leaves, shallow arched head and a sill on the main cornice. Increased opening height keeps the sill grounded; unregistered proportions remain inferred."
+          },
+          "glazingDepth": 0.1,
+          "archRise": 0.075,
+          "mullions": [
+            0.5
+          ]
+        },
+        {
+          "id": "Shop ground:window-1",
+          "x": 1.343390734298854,
+          "z": 1.0926500000000003,
+          "width": 1.6050902279934358,
+          "height": 1.9452999999999996,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.25,
+          "storey": "ground",
+          "frameColour": "#fcfcfc",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "d19bec5045a7dca3205d18a5c372de45de736980bda1059415566abdccbf50e2",
+            "reason": "Target-date 2022-04-25 ground crop shows rectangular shop frame, curved internal transom, upper grille, continuous display glazing and blue lower display zone; simplified proportions with unresolved metric registration."
+          },
+          "glazingDepth": 0.1,
+          "glassColour": "#405653",
+          "mullions": [],
+          "transomArch": {
+            "rise": 0.2
+          },
+          "upperLights": [
+            0.16,
+            0.33,
+            0.5,
+            0.67,
+            0.84
+          ],
+          "lowerPanel": {
+            "height": 0.28,
+            "colour": "#263d56"
+          }
+        },
+        {
+          "id": "Shop ground:door-1",
+          "x": 2.8891624103881846,
+          "z": 1.0926500000000003,
+          "width": 0.5862068658758635,
+          "height": 1.9452999999999996,
+          "kind": "door",
+          "head": "rectangular",
+          "transom": 0.25,
+          "storey": "ground",
+          "frameColour": "#fcfcfc",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "d19bec5045a7dca3205d18a5c372de45de736980bda1059415566abdccbf50e2",
+            "reason": "Cropped feature interpreted; threshold set to street datum; dark lower door panel and upper grille simplified from target-date crop, partly occluded."
+          },
+          "glazingDepth": 0.1,
+          "glassColour": "#405653",
+          "upperLights": [
+            0.33,
+            0.67
+          ],
+          "lowerPanel": {
+            "height": 0.58,
+            "colour": "#304440"
+          }
+        }
+      ],
+      "storefront": {
+        "anchor": 1.744663291297213,
+        "finishColour": "#e4e0d4",
+        "height": 3.2,
+        "signs": [
+          {
+            "id": "ground:fascia-1",
+            "x": 1.343390734298854,
+            "z": 0.57,
+            "width": 1.2840721823947487,
+            "height": 0.15,
+            "colour": "#ff8c00",
+            "text": "TABAK & CIGARETTEN",
+            "anchor": "explicit",
+            "substrate": false,
+            "letteringColour": "#eee8d8",
+            "provenance": {
+              "status": "inferred",
+              "source": "rozengracht-158-2022-04-25-ground-4fa29fa7.jpg",
+              "reason": "Target-date crop shows small pale tobacco lettering near lower shop glazing, not a second orange fascia over the window head; retained existing transcription, exact metric placement unregistered."
+            },
+            "letteringDepth": 0.095
+          }
+        ],
+        "awnings": [
+          {
+            "x": 1.343390734298854,
+            "z": 1.67,
+            "width": 1.705090227993436,
+            "height": 0.09,
+            "projection": 0.43,
+            "colour": "#b76725",
+            "text": ""
+          }
+        ]
+      },
+      "components": [
+        {
+          "id": "attic-pediment-base-moulding",
+          "kind": "cornice",
+          "x": 1.744663291297213,
+          "z": 13.74,
+          "width": 1.57,
+          "height": 0.2,
+          "projection": 0.14,
+          "overhang": 0,
+          "material": "whiterender",
+          "colour": "#d8d3c4",
+          "provenance": {
+            "status": "inferred",
+            "basis": "Repeated moulded horizontal pediment base visible above the attic opening in dated 2022/2023/2024 crops; illustrative unregistered dimensions."
+          }
+        }
+      ]
+    }
+  ],
+  "materials": {
+    "wall": "redbrick",
+    "wallColour": "#704538",
+    "roof": "slate",
+    "frame": "ivorytimber"
+  },
+  "details": {
+    "chimney": {
+      "x": 2.686781468597708,
+      "y": 6.814766814495123,
+      "status": "inferred"
+    },
+    "bicycleSign": false
+  },
+  "placement": {
+    "anchor": [
+      4.878378902561053,
+      52.37295942652386
+    ],
+    "xAxisBearingDegrees": 68.65597126762475,
+    "frontageLocal": [
+      [
+        406.659,
+        -406.532
+      ],
+      [
+        409.909,
+        -407.802
+      ]
+    ],
+    "inputFrameDeterminant": -1.0,
+    "axes": "glTF x=along frontage,y=up,z=towards street",
+    "sourceRDFrame": {
+      "anchorRD": [
+        120349.20817002577,
+        487353.1540474554
+      ],
+      "xAxisRD": [
+        0.9314118134461122,
+        0.3639670778697226
+      ],
+      "yAxisRD": [
+        -0.3639670778697226,
+        0.9314118134461122
+      ],
+      "geometryRevision": "74abfa6aa50b578d07a286fb3495c5d88f47920ea05ee13e3666c95355c85083",
+      "buildingId": "0363100012167878",
+      "source": "Frozen 3DBAG coordinateFrame.originRD and ordered physical frontage; normalized source vertices checked within 1 mm."
+    }
+  },
+  "sourceShell": {
+    "surfaces": [
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              -0.7190212611553601,
+              0.742636132979373,
+              14.39899999141693
+            ],
+            [
+              -0.7190212611553601,
+              0.742636132979373,
+              -0.0010000085830688121
+            ],
+            [
+              -0.007279341557387831,
+              -0.018628236268905304,
+              -0.0010000085830688121
+            ],
+            [
+              -0.007279341557387831,
+              -0.018628236268905304,
+              14.408999991416932
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              -0.007279341557387831,
+              -0.018628236268905304,
+              14.408999991416932
+            ],
+            [
+              -0.007279341557387831,
+              -0.018628236268905304,
+              -0.0010000085830688121
+            ],
+            [
+              3.482047241037018,
+              -0.018628236268958265,
+              -0.0010000085830688121
+            ],
+            [
+              3.482047241037018,
+              -0.018628236268958265,
+              14.488999991416932
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              -0.447679505779639,
+              9.322343217244557,
+              14.448999991416931
+            ],
+            [
+              -0.447679505779639,
+              9.322343217244557,
+              -0.0010000085830688121
+            ],
+            [
+              -0.7190212611553601,
+              0.742636132979373,
+              -0.0010000085830688121
+            ],
+            [
+              -0.7190212611553601,
+              0.742636132979373,
+              14.39899999141693
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              3.7632189733977492,
+              9.190684575060736,
+              14.538999991416931
+            ],
+            [
+              3.7632189733977492,
+              9.190684575060736,
+              -0.0010000085830688121
+            ],
+            [
+              -0.447679505779639,
+              9.322343217244557,
+              -0.0010000085830688121
+            ],
+            [
+              -0.447679505779639,
+              9.322343217244557,
+              14.448999991416931
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              3.482047241037018,
+              -0.018628236268958265,
+              14.488999991416932
+            ],
+            [
+              3.482047241037018,
+              -0.018628236268958265,
+              -0.0010000085830688121
+            ],
+            [
+              3.7632189733977492,
+              9.190684575060736,
+              -0.0010000085830688121
+            ],
+            [
+              3.7632189733977492,
+              9.190684575060736,
+              14.538999991416931
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              3.482047241037018,
+              -0.018628236268958265,
+              14.488999991416932
+            ],
+            [
+              3.7632189733977492,
+              9.190684575060736,
+              14.538999991416931
+            ],
+            [
+              -0.447679505779639,
+              9.322343217244557,
+              14.448999991416931
+            ],
+            [
+              -0.7190212611553601,
+              0.742636132979373,
+              14.39899999141693
+            ],
+            [
+              -0.007279341557387831,
+              -0.018628236268905304,
+              14.408999991416932
+            ]
+          ]
+        ]
+      }
+    ],
+    "groundNAP": 0.29100000858306885,
+    "sourceOffsetNAP": 0.65,
+    "source": "3DBAG LoD2.2",
+    "pointCloudYear": 2023
+  },
+  "heightEvidence": [
+    {
+      "source": "3DBAG LoD2.2",
+      "year": 2023,
+      "datum": "NAP",
+      "groundNAP": 0.29100000858306885,
+      "roofStatisticRelativeM": 14.57,
+      "rawSurfaceExtentM": 14.54,
+      "frontWallTopRelativeM": 14.488999991416932,
+      "eavesChoiceM": 12.315649992704392,
+      "uncertainty": "frontwall binding <=0.08m; source roof shape uncertain; ground datum from cached model",
+      "lineage": "AHN-derived 3DBAG, not independent AHN evidence"
+    }
+  ],
+  "heightChoice": {
+    "value": 14.488999991416932,
+    "reportedRoofStatisticM": 14.57,
+    "surfaceRange": 14.54,
+    "frontWallTopM": 14.488999991416932,
+    "eavesM": 12.315649992704392,
+    "reason": "Front wall anchors dimensions. Shaped front-wall minimum top anchors shoulders; flat uncertain 3DBAG roofs use explicit photo-inferred eaves fractions. Key Color roof peak remains inferred from roof statistic, not trusted eaves; no maximum-surface stretching."
+  },
+  "targetAppearanceDate": "2022-04-25T10:21:38.037840Z",
+  "assumptions": [
+    "Metric crop registration unresolved; opening dimensions remain illustrative; geometry uses through-wall apertures, not verified photographic measurements.",
+    "Unseen side/rear windows not asserted; roof volume and chimney inferred.",
+    "Source years must be reviewed per region before authoring geometry.",
+    "Source footprint is exact; generated side/rear walls currently use one eaves extrusion. Exact 3DBAG semantic walls are retained in SOURCE overlay; multiple rear roof/body volumes need reconstruction before acceptance.",
+    "Glazing darkened as matte opaque approximation of dark glass/interior visible in 2022 ground and later sources; not an interior reconstruction. Orange awning centered over shop; lower-glazing lettering uses existing target-date transcription with uncertain metric registration.",
+    "Gable asymmetry from earlier unregistered feature interpretation removed: dated 2022/2023/2024 crops support centered pale gable and mirrored shoulders; proportions remain inferred and metric registration unresolved. Roof eaves/top and exact owner footprint preserved.",
+    "Shop curved transom, upper grille, blue lower panel and orange valance below arch interpreted from 2022-04-25 target ground crop; dimensions remain approximate and no hidden interior or occluded doorway recovered.",
+    "Unseen front roof return uses one explicit planar hip inference (1.45 m run), instead of folding the covering along decorative shoulder knots. Rear pitched roof may remain visible outside the narrow stone gable; this is a roof-volume inference, not measured photographic reconstruction.",
+    "Attic refinement preserves the photographed low sill at the cornice and adds the observed moulded pediment base; opening proportions and dressing dimensions remain inferred."
+  ],
+  "construction": {
+    "apertures": "through-wall",
+    "glazing": "recessed opaque fallback",
+    "dimensions": "authored within source storey datums; photographic registration unresolved"
+  }
+}

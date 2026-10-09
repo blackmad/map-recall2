@@ -1,0 +1,3159 @@
+{
+  "schemaVersion": 1,
+  "id": "lauriergracht-67-69",
+  "ownerId": "0363100012168980",
+  "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+  "physicalFacade": {
+    "plane": {
+      "start": {
+        "x": 120449.63817002578,
+        "y": 487137.1540474554
+      },
+      "end": {
+        "x": 120440.72817002577,
+        "y": 487133.4040474554
+      },
+      "baseZ": 0.33899999856948854,
+      "topZ": 20.409999999999997
+    },
+    "frontage": [
+      [
+        507.089,
+        -190.532
+      ],
+      [
+        498.179,
+        -186.782
+      ]
+    ],
+    "originalObservationPlane": {
+      "start": {
+        "x": 120449.82281208361,
+        "y": 487137.243398106
+      },
+      "end": {
+        "x": 120440.05201248793,
+        "y": 487133.1301980409
+      },
+      "baseZ": 0.33899999856948854,
+      "topZ": 20.409999999999997
+    },
+    "associationDiscrepancy": true
+  },
+  "targetAppearanceDate": "2025-07-03T09:49:09Z",
+  "candidates": [
+    {
+      "sha256": "523ac0f0313ab10724a1ce262c031f1909ceeacea1fd75d5a6933016bcb487bf",
+      "captureDate": "2022-04-29T08:33:10.203160Z",
+      "tier": "ground",
+      "captureKey": "TMX7316010203-002550_pano_0000_000698|2022-04-29T08:33:10.203160Z",
+      "panoramaId": "TMX7316010203-002550_pano_0000_000698",
+      "panoramaSha256": "3f1f8c0ce54262990a562bdbbddadd4f0c84cf4f63fa12d7ce58af745c8aff1d",
+      "width": 1062,
+      "height": 539,
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "plane": {
+        "start": {
+          "x": 120440.17099248865,
+          "y": 487133.3816380421
+        },
+        "end": {
+          "x": 120443.75483204621,
+          "y": 487124.4199580458
+        },
+        "baseZ": 0.33899999856948854,
+        "topZ": 5.238999998569488
+      },
+      "pose": {
+        "x": 120439.1442318612,
+        "y": 487126.14157526253,
+        "z": 4.800590658560402,
+        "headingDeg": 339.421979122966,
+        "pitchDeg": 3.65166558364626,
+        "rollDeg": 1.39580939025964
+      },
+      "wall": {
+        "elevationId": "0363100012168980:e:0jl3yud",
+        "index": 0,
+        "start": {
+          "x": 120440.23991248014,
+          "y": 487133.2092980422
+        },
+        "end": {
+          "x": 120443.68591205472,
+          "y": 487124.59229804575
+        },
+        "midpoint": {
+          "x": 120441.96291226742,
+          "y": 487128.90079804393
+        },
+        "normal": {
+          "x": -0.9285064285903201,
+          "y": -0.3713163234581113
+        },
+        "lengthM": 9.280495784505367,
+        "facingDeg": 248.20317871597268,
+        "sourceVertexRange": {
+          "vertexIndices": [
+            1,
+            2
+          ],
+          "edgeIndices": [
+            1
+          ]
+        },
+        "sourcePolygonIndex": 0,
+        "sourceRingIndex": 0,
+        "sourceRingRole": "exterior"
+      },
+      "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012168980_e_0jl3yud-ground.jpg",
+      "reviewPath": "artifacts/building-library/expansion/cached-evidence/lauriergracht-67-69-ground-523ac0f0313a.jpg",
+      "sourceAvailable": true,
+      "wholePanoramaAvailable": true,
+      "wholePanoramaPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/panoramas/TMX7316010203-002550_pano_0000_000698.jpg",
+      "registration": {
+        "status": "rejected-for-metric-transfer",
+        "reason": "same-owner-context-width-or-plane-disagreement",
+        "endpointErrorM": 10.192560660954179,
+        "reverseErrorM": 13.900608734330184
+      },
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "rectificationDerivationKey": "ca01d30231487f5fee3819f2294fe99dc600e80f9bbb3ae74f061921fdba24e4",
+      "coverage": [
+        "ground"
+      ],
+      "occlusion": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "sha256": "6a8b891279de3ff548a977a3bbcdf3c6946adc3bb9759327b9b3ea6623d2743e",
+      "captureDate": "2022-04-29T08:33:10.203160Z",
+      "tier": "ground",
+      "captureKey": "TMX7316010203-002550_pano_0000_000698|2022-04-29T08:33:10.203160Z",
+      "panoramaId": "TMX7316010203-002550_pano_0000_000698",
+      "panoramaSha256": "e0d3f7e72821b377efda3873354978fb99c8b4d4d2a814db5c3cda1549529c13",
+      "width": 1062,
+      "height": 539,
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120440.17099248865,
+          "y": 487133.3816380421
+        },
+        "end": {
+          "x": 120443.75483204621,
+          "y": 487124.4199580458
+        },
+        "baseZ": 0.33899999856948854,
+        "topZ": 5.238999998569488
+      },
+      "pose": {
+        "x": 120439.1442318612,
+        "y": 487126.14157526253,
+        "z": 4.800590658560402,
+        "headingDeg": 339.421979122966,
+        "pitchDeg": 3.65166558364626,
+        "rollDeg": 1.39580939025964
+      },
+      "wall": {
+        "elevationId": "0363100012168980:e:0jl3yud",
+        "index": 0,
+        "start": {
+          "x": 120440.23991248014,
+          "y": 487133.2092980422
+        },
+        "end": {
+          "x": 120443.68591205472,
+          "y": 487124.59229804575
+        },
+        "midpoint": {
+          "x": 120441.96291226742,
+          "y": 487128.90079804393
+        },
+        "normal": {
+          "x": -0.9285064285903201,
+          "y": -0.3713163234581113
+        },
+        "lengthM": 9.280495784505367,
+        "facingDeg": 248.20317871597268,
+        "sourceVertexRange": {
+          "vertexIndices": [
+            1,
+            2
+          ],
+          "edgeIndices": [
+            1
+          ]
+        },
+        "sourcePolygonIndex": 0,
+        "sourceRingIndex": 0,
+        "sourceRingRole": "exterior"
+      },
+      "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/caa097123df68accd5cd9aa5f04a742ce4b82b1405162f48325e158dfade6697/evidence/images/0363100012168980_e_0jl3yud-ground.jpg",
+      "reviewPath": "artifacts/building-library/expansion/cached-evidence/lauriergracht-67-69-ground-6a8b891279de.jpg",
+      "sourceAvailable": true,
+      "wholePanoramaAvailable": true,
+      "wholePanoramaPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/caa097123df68accd5cd9aa5f04a742ce4b82b1405162f48325e158dfade6697/evidence/panoramas/TMX7316010203-002550_pano_0000_000698.jpg",
+      "registration": {
+        "status": "rejected-for-metric-transfer",
+        "reason": "same-owner-context-width-or-plane-disagreement",
+        "endpointErrorM": 10.192560660954179,
+        "reverseErrorM": 13.900608734330184
+      },
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "rectificationDerivationKey": "1bdc1348c05cf9653e6a89122d7644ba2608b23dd338cd16895cd6c48e7e2710",
+      "coverage": [
+        "ground"
+      ],
+      "occlusion": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "sha256": "b31b69f0ce11d61aacc0fda42cbe1ccbd78f898844fffde6a3010114c9a8817b",
+      "captureDate": "2023-02-27T10:57:58.065390Z",
+      "tier": "context",
+      "captureKey": "TMX7316010203-002985_pano_0006_000004|2023-02-27T10:57:58.065390Z",
+      "panoramaId": "TMX7316010203-002985_pano_0006_000004",
+      "panoramaSha256": "3537510f7a66067df6f698b1d43caac4998d8781361f8d4633b827bda57ee23f",
+      "width": 1002,
+      "height": 903,
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "plane": {
+        "start": {
+          "x": 120437.82771277794,
+          "y": 487139.2411980397
+        },
+        "end": {
+          "x": 120446.09811175692,
+          "y": 487118.56039804826
+        },
+        "baseZ": 0.33899999856948854,
+        "topZ": 20.409999999999997
+      },
+      "pose": {
+        "x": 120406.63008010201,
+        "y": 487145.6538837827,
+        "z": 3.5364865232259035,
+        "headingDeg": 65.3827015864959,
+        "pitchDeg": 0.284466641547626,
+        "rollDeg": -2.05903848924872
+      },
+      "wall": {
+        "elevationId": "0363100012168980:e:0jl3yud",
+        "index": 0,
+        "start": {
+          "x": 120440.23991248014,
+          "y": 487133.2092980422
+        },
+        "end": {
+          "x": 120443.68591205472,
+          "y": 487124.59229804575
+        },
+        "midpoint": {
+          "x": 120441.96291226742,
+          "y": 487128.90079804393
+        },
+        "normal": {
+          "x": -0.9285064285903201,
+          "y": -0.3713163234581113
+        },
+        "lengthM": 9.280495784505367,
+        "facingDeg": 248.20317871597268,
+        "sourceVertexRange": {
+          "vertexIndices": [
+            1,
+            2
+          ],
+          "edgeIndices": [
+            1
+          ]
+        },
+        "sourcePolygonIndex": 0,
+        "sourceRingIndex": 0,
+        "sourceRingRole": "exterior"
+      },
+      "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012168980_e_0jl3yud-context.jpg",
+      "reviewPath": "artifacts/building-library/expansion/cached-evidence/lauriergracht-67-69-context-b31b69f0ce11.jpg",
+      "sourceAvailable": true,
+      "wholePanoramaAvailable": true,
+      "wholePanoramaPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/panoramas/TMX7316010203-002985_pano_0006_000004.jpg",
+      "registration": {
+        "status": "rejected-for-metric-transfer",
+        "reason": "same-owner-context-width-or-plane-disagreement",
+        "endpointErrorM": 10.192560660954179,
+        "reverseErrorM": 13.900608734330184
+      },
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "rectificationDerivationKey": "ca01d30231487f5fee3819f2294fe99dc600e80f9bbb3ae74f061921fdba24e4",
+      "coverage": [
+        "context"
+      ],
+      "occlusion": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "sha256": "00283033f2e5e835914277a2397b9b9f6d862e1efe0f1677e22922cfb135b2ac",
+      "captureDate": "2023-02-27T10:57:58.065390Z",
+      "tier": "context",
+      "captureKey": "TMX7316010203-002985_pano_0006_000004|2023-02-27T10:57:58.065390Z",
+      "panoramaId": "TMX7316010203-002985_pano_0006_000004",
+      "panoramaSha256": "dab3038f1476fe1a8ec376dd2c13050af4e5e74e5612ef4a2baa1950e9262b19",
+      "width": 1002,
+      "height": 903,
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120437.82771277794,
+          "y": 487139.2411980397
+        },
+        "end": {
+          "x": 120446.09811175692,
+          "y": 487118.56039804826
+        },
+        "baseZ": 0.33899999856948854,
+        "topZ": 20.409999999999997
+      },
+      "pose": {
+        "x": 120406.63008010201,
+        "y": 487145.6538837827,
+        "z": 3.5364865232259035,
+        "headingDeg": 65.3827015864959,
+        "pitchDeg": 0.284466641547626,
+        "rollDeg": -2.05903848924872
+      },
+      "wall": {
+        "elevationId": "0363100012168980:e:0jl3yud",
+        "index": 0,
+        "start": {
+          "x": 120440.23991248014,
+          "y": 487133.2092980422
+        },
+        "end": {
+          "x": 120443.68591205472,
+          "y": 487124.59229804575
+        },
+        "midpoint": {
+          "x": 120441.96291226742,
+          "y": 487128.90079804393
+        },
+        "normal": {
+          "x": -0.9285064285903201,
+          "y": -0.3713163234581113
+        },
+        "lengthM": 9.280495784505367,
+        "facingDeg": 248.20317871597268,
+        "sourceVertexRange": {
+          "vertexIndices": [
+            1,
+            2
+          ],
+          "edgeIndices": [
+            1
+          ]
+        },
+        "sourcePolygonIndex": 0,
+        "sourceRingIndex": 0,
+        "sourceRingRole": "exterior"
+      },
+      "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/caa097123df68accd5cd9aa5f04a742ce4b82b1405162f48325e158dfade6697/evidence/images/0363100012168980_e_0jl3yud-context.jpg",
+      "reviewPath": "artifacts/building-library/expansion/cached-evidence/lauriergracht-67-69-context-00283033f2e5.jpg",
+      "sourceAvailable": true,
+      "wholePanoramaAvailable": true,
+      "wholePanoramaPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/caa097123df68accd5cd9aa5f04a742ce4b82b1405162f48325e158dfade6697/evidence/panoramas/TMX7316010203-002985_pano_0006_000004.jpg",
+      "registration": {
+        "status": "rejected-for-metric-transfer",
+        "reason": "same-owner-context-width-or-plane-disagreement",
+        "endpointErrorM": 10.192560660954179,
+        "reverseErrorM": 13.900608734330184
+      },
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "rectificationDerivationKey": "1bdc1348c05cf9653e6a89122d7644ba2608b23dd338cd16895cd6c48e7e2710",
+      "coverage": [
+        "context"
+      ],
+      "occlusion": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "sha256": "993c3a69cc83f33f5778a172f4b9d5b0ff4bcbb0240b04c280b4a6d2c15080e3",
+      "captureDate": "2023-02-27T10:57:58.065390Z",
+      "tier": "full",
+      "captureKey": "TMX7316010203-002985_pano_0006_000004|2023-02-27T10:57:58.065390Z",
+      "panoramaId": "TMX7316010203-002985_pano_0006_000004",
+      "panoramaSha256": "3537510f7a66067df6f698b1d43caac4998d8781361f8d4633b827bda57ee23f",
+      "width": 434,
+      "height": 903,
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "plane": {
+        "start": {
+          "x": 120440.17099248865,
+          "y": 487133.3816380421
+        },
+        "end": {
+          "x": 120443.75483204621,
+          "y": 487124.4199580458
+        },
+        "baseZ": 0.33899999856948854,
+        "topZ": 20.409999999999997
+      },
+      "pose": {
+        "x": 120406.63008010201,
+        "y": 487145.6538837827,
+        "z": 3.5364865232259035,
+        "headingDeg": 65.3827015864959,
+        "pitchDeg": 0.284466641547626,
+        "rollDeg": -2.05903848924872
+      },
+      "wall": {
+        "elevationId": "0363100012168980:e:0jl3yud",
+        "index": 0,
+        "start": {
+          "x": 120440.23991248014,
+          "y": 487133.2092980422
+        },
+        "end": {
+          "x": 120443.68591205472,
+          "y": 487124.59229804575
+        },
+        "midpoint": {
+          "x": 120441.96291226742,
+          "y": 487128.90079804393
+        },
+        "normal": {
+          "x": -0.9285064285903201,
+          "y": -0.3713163234581113
+        },
+        "lengthM": 9.280495784505367,
+        "facingDeg": 248.20317871597268,
+        "sourceVertexRange": {
+          "vertexIndices": [
+            1,
+            2
+          ],
+          "edgeIndices": [
+            1
+          ]
+        },
+        "sourcePolygonIndex": 0,
+        "sourceRingIndex": 0,
+        "sourceRingRole": "exterior"
+      },
+      "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012168980_e_0jl3yud-full.jpg",
+      "reviewPath": "artifacts/building-library/expansion/cached-evidence/lauriergracht-67-69-full-993c3a69cc83.jpg",
+      "sourceAvailable": true,
+      "wholePanoramaAvailable": true,
+      "wholePanoramaPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/panoramas/TMX7316010203-002985_pano_0006_000004.jpg",
+      "registration": {
+        "status": "rejected-for-metric-transfer",
+        "reason": "same-owner-context-width-or-plane-disagreement",
+        "endpointErrorM": 10.192560660954179,
+        "reverseErrorM": 13.900608734330184
+      },
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "rectificationDerivationKey": "ca01d30231487f5fee3819f2294fe99dc600e80f9bbb3ae74f061921fdba24e4",
+      "coverage": [
+        "ground",
+        "upper",
+        "roof"
+      ],
+      "occlusion": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "sha256": "f809d59f820f91d9b0de22de00c9c4bd84bb6c20453c14f535dc60849f8b62e0",
+      "captureDate": "2023-02-27T10:57:58.065390Z",
+      "tier": "full",
+      "captureKey": "TMX7316010203-002985_pano_0006_000004|2023-02-27T10:57:58.065390Z",
+      "panoramaId": "TMX7316010203-002985_pano_0006_000004",
+      "panoramaSha256": "dab3038f1476fe1a8ec376dd2c13050af4e5e74e5612ef4a2baa1950e9262b19",
+      "width": 434,
+      "height": 903,
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120440.17099248865,
+          "y": 487133.3816380421
+        },
+        "end": {
+          "x": 120443.75483204621,
+          "y": 487124.4199580458
+        },
+        "baseZ": 0.33899999856948854,
+        "topZ": 20.409999999999997
+      },
+      "pose": {
+        "x": 120406.63008010201,
+        "y": 487145.6538837827,
+        "z": 3.5364865232259035,
+        "headingDeg": 65.3827015864959,
+        "pitchDeg": 0.284466641547626,
+        "rollDeg": -2.05903848924872
+      },
+      "wall": {
+        "elevationId": "0363100012168980:e:0jl3yud",
+        "index": 0,
+        "start": {
+          "x": 120440.23991248014,
+          "y": 487133.2092980422
+        },
+        "end": {
+          "x": 120443.68591205472,
+          "y": 487124.59229804575
+        },
+        "midpoint": {
+          "x": 120441.96291226742,
+          "y": 487128.90079804393
+        },
+        "normal": {
+          "x": -0.9285064285903201,
+          "y": -0.3713163234581113
+        },
+        "lengthM": 9.280495784505367,
+        "facingDeg": 248.20317871597268,
+        "sourceVertexRange": {
+          "vertexIndices": [
+            1,
+            2
+          ],
+          "edgeIndices": [
+            1
+          ]
+        },
+        "sourcePolygonIndex": 0,
+        "sourceRingIndex": 0,
+        "sourceRingRole": "exterior"
+      },
+      "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/caa097123df68accd5cd9aa5f04a742ce4b82b1405162f48325e158dfade6697/evidence/images/0363100012168980_e_0jl3yud-full.jpg",
+      "reviewPath": "artifacts/building-library/expansion/cached-evidence/lauriergracht-67-69-full-f809d59f820f.jpg",
+      "sourceAvailable": true,
+      "wholePanoramaAvailable": true,
+      "wholePanoramaPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/caa097123df68accd5cd9aa5f04a742ce4b82b1405162f48325e158dfade6697/evidence/panoramas/TMX7316010203-002985_pano_0006_000004.jpg",
+      "registration": {
+        "status": "rejected-for-metric-transfer",
+        "reason": "same-owner-context-width-or-plane-disagreement",
+        "endpointErrorM": 10.192560660954179,
+        "reverseErrorM": 13.900608734330184
+      },
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "rectificationDerivationKey": "1bdc1348c05cf9653e6a89122d7644ba2608b23dd338cd16895cd6c48e7e2710",
+      "coverage": [
+        "ground",
+        "upper",
+        "roof"
+      ],
+      "occlusion": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "sha256": "856f730f5cc1a897b5bbabe45dabd4ca7886e0e090e0caeb0e5c17a26c4e1170",
+      "captureDate": "2023-02-27T10:57:58.065390Z",
+      "tier": "roof",
+      "captureKey": "TMX7316010203-002985_pano_0006_000004|2023-02-27T10:57:58.065390Z",
+      "panoramaId": "TMX7316010203-002985_pano_0006_000004",
+      "panoramaSha256": "3537510f7a66067df6f698b1d43caac4998d8781361f8d4633b827bda57ee23f",
+      "width": 434,
+      "height": 369,
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "plane": {
+        "start": {
+          "x": 120440.17099248865,
+          "y": 487133.3816380421
+        },
+        "end": {
+          "x": 120443.75483204621,
+          "y": 487124.4199580458
+        },
+        "baseZ": 12.209999999999997,
+        "topZ": 20.409999999999997
+      },
+      "pose": {
+        "x": 120406.63008010201,
+        "y": 487145.6538837827,
+        "z": 3.5364865232259035,
+        "headingDeg": 65.3827015864959,
+        "pitchDeg": 0.284466641547626,
+        "rollDeg": -2.05903848924872
+      },
+      "wall": {
+        "elevationId": "0363100012168980:e:0jl3yud",
+        "index": 0,
+        "start": {
+          "x": 120440.23991248014,
+          "y": 487133.2092980422
+        },
+        "end": {
+          "x": 120443.68591205472,
+          "y": 487124.59229804575
+        },
+        "midpoint": {
+          "x": 120441.96291226742,
+          "y": 487128.90079804393
+        },
+        "normal": {
+          "x": -0.9285064285903201,
+          "y": -0.3713163234581113
+        },
+        "lengthM": 9.280495784505367,
+        "facingDeg": 248.20317871597268,
+        "sourceVertexRange": {
+          "vertexIndices": [
+            1,
+            2
+          ],
+          "edgeIndices": [
+            1
+          ]
+        },
+        "sourcePolygonIndex": 0,
+        "sourceRingIndex": 0,
+        "sourceRingRole": "exterior"
+      },
+      "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012168980_e_0jl3yud-roof.jpg",
+      "reviewPath": "artifacts/building-library/expansion/cached-evidence/lauriergracht-67-69-roof-856f730f5cc1.jpg",
+      "sourceAvailable": true,
+      "wholePanoramaAvailable": true,
+      "wholePanoramaPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/panoramas/TMX7316010203-002985_pano_0006_000004.jpg",
+      "registration": {
+        "status": "rejected-for-metric-transfer",
+        "reason": "same-owner-context-width-or-plane-disagreement",
+        "endpointErrorM": 10.192560660954179,
+        "reverseErrorM": 13.900608734330184
+      },
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "rectificationDerivationKey": "ca01d30231487f5fee3819f2294fe99dc600e80f9bbb3ae74f061921fdba24e4",
+      "coverage": [
+        "roof"
+      ],
+      "occlusion": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "sha256": "78f557a9305f493fcb6765d8ea10d6319eeb1c0ffec9091fb6c5bc55a8b3e1fe",
+      "captureDate": "2023-02-27T10:57:58.065390Z",
+      "tier": "roof",
+      "captureKey": "TMX7316010203-002985_pano_0006_000004|2023-02-27T10:57:58.065390Z",
+      "panoramaId": "TMX7316010203-002985_pano_0006_000004",
+      "panoramaSha256": "dab3038f1476fe1a8ec376dd2c13050af4e5e74e5612ef4a2baa1950e9262b19",
+      "width": 434,
+      "height": 369,
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120440.17099248865,
+          "y": 487133.3816380421
+        },
+        "end": {
+          "x": 120443.75483204621,
+          "y": 487124.4199580458
+        },
+        "baseZ": 12.209999999999997,
+        "topZ": 20.409999999999997
+      },
+      "pose": {
+        "x": 120406.63008010201,
+        "y": 487145.6538837827,
+        "z": 3.5364865232259035,
+        "headingDeg": 65.3827015864959,
+        "pitchDeg": 0.284466641547626,
+        "rollDeg": -2.05903848924872
+      },
+      "wall": {
+        "elevationId": "0363100012168980:e:0jl3yud",
+        "index": 0,
+        "start": {
+          "x": 120440.23991248014,
+          "y": 487133.2092980422
+        },
+        "end": {
+          "x": 120443.68591205472,
+          "y": 487124.59229804575
+        },
+        "midpoint": {
+          "x": 120441.96291226742,
+          "y": 487128.90079804393
+        },
+        "normal": {
+          "x": -0.9285064285903201,
+          "y": -0.3713163234581113
+        },
+        "lengthM": 9.280495784505367,
+        "facingDeg": 248.20317871597268,
+        "sourceVertexRange": {
+          "vertexIndices": [
+            1,
+            2
+          ],
+          "edgeIndices": [
+            1
+          ]
+        },
+        "sourcePolygonIndex": 0,
+        "sourceRingIndex": 0,
+        "sourceRingRole": "exterior"
+      },
+      "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/caa097123df68accd5cd9aa5f04a742ce4b82b1405162f48325e158dfade6697/evidence/images/0363100012168980_e_0jl3yud-roof.jpg",
+      "reviewPath": "artifacts/building-library/expansion/cached-evidence/lauriergracht-67-69-roof-78f557a9305f.jpg",
+      "sourceAvailable": true,
+      "wholePanoramaAvailable": true,
+      "wholePanoramaPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/caa097123df68accd5cd9aa5f04a742ce4b82b1405162f48325e158dfade6697/evidence/panoramas/TMX7316010203-002985_pano_0006_000004.jpg",
+      "registration": {
+        "status": "rejected-for-metric-transfer",
+        "reason": "same-owner-context-width-or-plane-disagreement",
+        "endpointErrorM": 10.192560660954179,
+        "reverseErrorM": 13.900608734330184
+      },
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "rectificationDerivationKey": "1bdc1348c05cf9653e6a89122d7644ba2608b23dd338cd16895cd6c48e7e2710",
+      "coverage": [
+        "roof"
+      ],
+      "occlusion": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "sha256": "60098924697abc334d211005266894231e2b9d2476c8858efaa2b1638042549c",
+      "captureDate": "2023-02-27T10:59:42.189530Z",
+      "tier": "context",
+      "captureKey": "TMX7316010203-002985_pano_0007_000000|2023-02-27T10:59:42.189530Z",
+      "panoramaId": "TMX7316010203-002985_pano_0007_000000",
+      "panoramaSha256": "669afd0dc7e23b2888a6f08c0901af109fb2f34cb5038bfeb76eb92f881a15a8",
+      "width": 1101,
+      "height": 903,
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "plane": {
+        "start": {
+          "x": 120456.21141181927,
+          "y": 487139.9327981486
+        },
+        "end": {
+          "x": 120433.66341275227,
+          "y": 487130.44079799834
+        },
+        "baseZ": 0.33899999856948854,
+        "topZ": 20.409999999999997
+      },
+      "pose": {
+        "x": 120430.90061428545,
+        "y": 487146.86183903366,
+        "z": 4.602534025907502,
+        "headingDeg": 328.731006874716,
+        "pitchDeg": -2.27329446446078,
+        "rollDeg": 0.848342386485359
+      },
+      "wall": {
+        "elevationId": "0363100012168980:e:1o2cn0o",
+        "index": 7,
+        "start": {
+          "x": 120449.6349120914,
+          "y": 487137.16429810476
+        },
+        "end": {
+          "x": 120440.23991248014,
+          "y": 487133.2092980422
+        },
+        "midpoint": {
+          "x": 120444.93741228577,
+          "y": 487135.18679807347
+        },
+        "normal": {
+          "x": -0.3879912322484226,
+          "y": 0.9216630640848913
+        },
+        "lengthM": 10.193529476607427,
+        "facingDeg": 337.1704343818538,
+        "sourceVertexRange": {
+          "vertexIndices": [
+            0,
+            1
+          ],
+          "edgeIndices": [
+            0
+          ]
+        },
+        "sourcePolygonIndex": 0,
+        "sourceRingIndex": 0,
+        "sourceRingRole": "exterior"
+      },
+      "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012168980_e_1o2cn0o-context.jpg",
+      "reviewPath": "artifacts/building-library/expansion/cached-evidence/lauriergracht-67-69-context-60098924697a.jpg",
+      "sourceAvailable": true,
+      "wholePanoramaAvailable": true,
+      "wholePanoramaPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/panoramas/TMX7316010203-002985_pano_0007_000000.jpg",
+      "registration": {
+        "status": "rejected-for-metric-transfer",
+        "reason": "same-owner-context-width-or-plane-disagreement",
+        "endpointErrorM": 0.5256641178716345,
+        "reverseErrorM": 10.192560660954179
+      },
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "rectificationDerivationKey": "e4508df0bf10f332157303e869cd307d638899b59ca84c13f0d1f16e226ed18c",
+      "coverage": [
+        "context"
+      ],
+      "occlusion": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "sha256": "d81b97927631b5f46c7e7d4b16d7b8c13e45ab17513e817bb5fefff3a3c0a672",
+      "captureDate": "2023-02-27T10:59:42.189530Z",
+      "tier": "context",
+      "captureKey": "TMX7316010203-002985_pano_0007_000000|2023-02-27T10:59:42.189530Z",
+      "panoramaId": "TMX7316010203-002985_pano_0007_000000",
+      "panoramaSha256": "4f762535bde31b0b45ae6e13fb6cf1e1854ff5eee36725419f07f0db1d1949db",
+      "width": 1101,
+      "height": 903,
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120456.21141181927,
+          "y": 487139.9327981486
+        },
+        "end": {
+          "x": 120433.66341275227,
+          "y": 487130.44079799834
+        },
+        "baseZ": 0.33899999856948854,
+        "topZ": 20.409999999999997
+      },
+      "pose": {
+        "x": 120430.90061428545,
+        "y": 487146.86183903366,
+        "z": 4.602534025907502,
+        "headingDeg": 328.731006874716,
+        "pitchDeg": -2.27329446446078,
+        "rollDeg": 0.848342386485359
+      },
+      "wall": {
+        "elevationId": "0363100012168980:e:1o2cn0o",
+        "index": 7,
+        "start": {
+          "x": 120449.6349120914,
+          "y": 487137.16429810476
+        },
+        "end": {
+          "x": 120440.23991248014,
+          "y": 487133.2092980422
+        },
+        "midpoint": {
+          "x": 120444.93741228577,
+          "y": 487135.18679807347
+        },
+        "normal": {
+          "x": -0.3879912322484226,
+          "y": 0.9216630640848913
+        },
+        "lengthM": 10.193529476607427,
+        "facingDeg": 337.1704343818538,
+        "sourceVertexRange": {
+          "vertexIndices": [
+            0,
+            1
+          ],
+          "edgeIndices": [
+            0
+          ]
+        },
+        "sourcePolygonIndex": 0,
+        "sourceRingIndex": 0,
+        "sourceRingRole": "exterior"
+      },
+      "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/caa097123df68accd5cd9aa5f04a742ce4b82b1405162f48325e158dfade6697/evidence/images/0363100012168980_e_1o2cn0o-context.jpg",
+      "reviewPath": "artifacts/building-library/expansion/cached-evidence/lauriergracht-67-69-context-d81b97927631.jpg",
+      "sourceAvailable": true,
+      "wholePanoramaAvailable": true,
+      "wholePanoramaPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/caa097123df68accd5cd9aa5f04a742ce4b82b1405162f48325e158dfade6697/evidence/panoramas/TMX7316010203-002985_pano_0007_000000.jpg",
+      "registration": {
+        "status": "rejected-for-metric-transfer",
+        "reason": "same-owner-context-width-or-plane-disagreement",
+        "endpointErrorM": 0.5256641178716345,
+        "reverseErrorM": 10.192560660954179
+      },
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "rectificationDerivationKey": "2f733c470631c49c68db674fbdbcad33279ad201cc19fe047d565e80b1b660ca",
+      "coverage": [
+        "context"
+      ],
+      "occlusion": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "sha256": "9f518a1ebd8a637fbd7e8183ce638210d480d3296644ea26d45e7df922b5f1a4",
+      "captureDate": "2023-02-27T10:59:42.189530Z",
+      "tier": "full",
+      "captureKey": "TMX7316010203-002985_pano_0007_000000|2023-02-27T10:59:42.189530Z",
+      "panoramaId": "TMX7316010203-002985_pano_0007_000000",
+      "panoramaSha256": "669afd0dc7e23b2888a6f08c0901af109fb2f34cb5038bfeb76eb92f881a15a8",
+      "width": 477,
+      "height": 903,
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "plane": {
+        "start": {
+          "x": 120449.82281208361,
+          "y": 487137.243398106
+        },
+        "end": {
+          "x": 120440.05201248793,
+          "y": 487133.1301980409
+        },
+        "baseZ": 0.33899999856948854,
+        "topZ": 20.409999999999997
+      },
+      "pose": {
+        "x": 120430.90061428545,
+        "y": 487146.86183903366,
+        "z": 4.602534025907502,
+        "headingDeg": 328.731006874716,
+        "pitchDeg": -2.27329446446078,
+        "rollDeg": 0.848342386485359
+      },
+      "wall": {
+        "elevationId": "0363100012168980:e:1o2cn0o",
+        "index": 7,
+        "start": {
+          "x": 120449.6349120914,
+          "y": 487137.16429810476
+        },
+        "end": {
+          "x": 120440.23991248014,
+          "y": 487133.2092980422
+        },
+        "midpoint": {
+          "x": 120444.93741228577,
+          "y": 487135.18679807347
+        },
+        "normal": {
+          "x": -0.3879912322484226,
+          "y": 0.9216630640848913
+        },
+        "lengthM": 10.193529476607427,
+        "facingDeg": 337.1704343818538,
+        "sourceVertexRange": {
+          "vertexIndices": [
+            0,
+            1
+          ],
+          "edgeIndices": [
+            0
+          ]
+        },
+        "sourcePolygonIndex": 0,
+        "sourceRingIndex": 0,
+        "sourceRingRole": "exterior"
+      },
+      "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012168980_e_1o2cn0o-full.jpg",
+      "reviewPath": "artifacts/building-library/expansion/cached-evidence/lauriergracht-67-69-full-9f518a1ebd8a.jpg",
+      "sourceAvailable": true,
+      "wholePanoramaAvailable": true,
+      "wholePanoramaPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/panoramas/TMX7316010203-002985_pano_0007_000000.jpg",
+      "registration": {
+        "status": "rejected-for-metric-transfer",
+        "reason": "same-owner-context-width-or-plane-disagreement",
+        "endpointErrorM": 0.5256641178716345,
+        "reverseErrorM": 10.192560660954179
+      },
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "rectificationDerivationKey": "e4508df0bf10f332157303e869cd307d638899b59ca84c13f0d1f16e226ed18c",
+      "coverage": [
+        "ground",
+        "upper",
+        "roof"
+      ],
+      "occlusion": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "sha256": "2a36563f940b275697d7eba2287456875ac6472fef263f293b3658e15f2a990c",
+      "captureDate": "2023-02-27T10:59:42.189530Z",
+      "tier": "full",
+      "captureKey": "TMX7316010203-002985_pano_0007_000000|2023-02-27T10:59:42.189530Z",
+      "panoramaId": "TMX7316010203-002985_pano_0007_000000",
+      "panoramaSha256": "4f762535bde31b0b45ae6e13fb6cf1e1854ff5eee36725419f07f0db1d1949db",
+      "width": 477,
+      "height": 903,
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120449.82281208361,
+          "y": 487137.243398106
+        },
+        "end": {
+          "x": 120440.05201248793,
+          "y": 487133.1301980409
+        },
+        "baseZ": 0.33899999856948854,
+        "topZ": 20.409999999999997
+      },
+      "pose": {
+        "x": 120430.90061428545,
+        "y": 487146.86183903366,
+        "z": 4.602534025907502,
+        "headingDeg": 328.731006874716,
+        "pitchDeg": -2.27329446446078,
+        "rollDeg": 0.848342386485359
+      },
+      "wall": {
+        "elevationId": "0363100012168980:e:1o2cn0o",
+        "index": 7,
+        "start": {
+          "x": 120449.6349120914,
+          "y": 487137.16429810476
+        },
+        "end": {
+          "x": 120440.23991248014,
+          "y": 487133.2092980422
+        },
+        "midpoint": {
+          "x": 120444.93741228577,
+          "y": 487135.18679807347
+        },
+        "normal": {
+          "x": -0.3879912322484226,
+          "y": 0.9216630640848913
+        },
+        "lengthM": 10.193529476607427,
+        "facingDeg": 337.1704343818538,
+        "sourceVertexRange": {
+          "vertexIndices": [
+            0,
+            1
+          ],
+          "edgeIndices": [
+            0
+          ]
+        },
+        "sourcePolygonIndex": 0,
+        "sourceRingIndex": 0,
+        "sourceRingRole": "exterior"
+      },
+      "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/caa097123df68accd5cd9aa5f04a742ce4b82b1405162f48325e158dfade6697/evidence/images/0363100012168980_e_1o2cn0o-full.jpg",
+      "reviewPath": "artifacts/building-library/expansion/cached-evidence/lauriergracht-67-69-full-2a36563f940b.jpg",
+      "sourceAvailable": true,
+      "wholePanoramaAvailable": true,
+      "wholePanoramaPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/caa097123df68accd5cd9aa5f04a742ce4b82b1405162f48325e158dfade6697/evidence/panoramas/TMX7316010203-002985_pano_0007_000000.jpg",
+      "registration": {
+        "status": "rejected-for-metric-transfer",
+        "reason": "same-owner-context-width-or-plane-disagreement",
+        "endpointErrorM": 0.5256641178716345,
+        "reverseErrorM": 10.192560660954179
+      },
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "rectificationDerivationKey": "2f733c470631c49c68db674fbdbcad33279ad201cc19fe047d565e80b1b660ca",
+      "coverage": [
+        "ground",
+        "upper",
+        "roof"
+      ],
+      "occlusion": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "sha256": "b6bddcfad7990067d4d791a06d15bdc5f481d428300bba0340f3ac73118d4dae",
+      "captureDate": "2023-02-27T10:59:42.189530Z",
+      "tier": "roof",
+      "captureKey": "TMX7316010203-002985_pano_0007_000000|2023-02-27T10:59:42.189530Z",
+      "panoramaId": "TMX7316010203-002985_pano_0007_000000",
+      "panoramaSha256": "669afd0dc7e23b2888a6f08c0901af109fb2f34cb5038bfeb76eb92f881a15a8",
+      "width": 477,
+      "height": 369,
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "plane": {
+        "start": {
+          "x": 120449.82281208361,
+          "y": 487137.243398106
+        },
+        "end": {
+          "x": 120440.05201248793,
+          "y": 487133.1301980409
+        },
+        "baseZ": 12.209999999999997,
+        "topZ": 20.409999999999997
+      },
+      "pose": {
+        "x": 120430.90061428545,
+        "y": 487146.86183903366,
+        "z": 4.602534025907502,
+        "headingDeg": 328.731006874716,
+        "pitchDeg": -2.27329446446078,
+        "rollDeg": 0.848342386485359
+      },
+      "wall": {
+        "elevationId": "0363100012168980:e:1o2cn0o",
+        "index": 7,
+        "start": {
+          "x": 120449.6349120914,
+          "y": 487137.16429810476
+        },
+        "end": {
+          "x": 120440.23991248014,
+          "y": 487133.2092980422
+        },
+        "midpoint": {
+          "x": 120444.93741228577,
+          "y": 487135.18679807347
+        },
+        "normal": {
+          "x": -0.3879912322484226,
+          "y": 0.9216630640848913
+        },
+        "lengthM": 10.193529476607427,
+        "facingDeg": 337.1704343818538,
+        "sourceVertexRange": {
+          "vertexIndices": [
+            0,
+            1
+          ],
+          "edgeIndices": [
+            0
+          ]
+        },
+        "sourcePolygonIndex": 0,
+        "sourceRingIndex": 0,
+        "sourceRingRole": "exterior"
+      },
+      "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012168980_e_1o2cn0o-roof.jpg",
+      "reviewPath": "artifacts/building-library/expansion/cached-evidence/lauriergracht-67-69-roof-b6bddcfad799.jpg",
+      "sourceAvailable": true,
+      "wholePanoramaAvailable": true,
+      "wholePanoramaPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/panoramas/TMX7316010203-002985_pano_0007_000000.jpg",
+      "registration": {
+        "status": "rejected-for-metric-transfer",
+        "reason": "same-owner-context-width-or-plane-disagreement",
+        "endpointErrorM": 0.5256641178716345,
+        "reverseErrorM": 10.192560660954179
+      },
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "rectificationDerivationKey": "e4508df0bf10f332157303e869cd307d638899b59ca84c13f0d1f16e226ed18c",
+      "coverage": [
+        "roof"
+      ],
+      "occlusion": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "sha256": "970d9e330167e8ef62ed9316c88fd17afac96ad3d3316ae64fec81d62f146188",
+      "captureDate": "2023-02-27T10:59:42.189530Z",
+      "tier": "roof",
+      "captureKey": "TMX7316010203-002985_pano_0007_000000|2023-02-27T10:59:42.189530Z",
+      "panoramaId": "TMX7316010203-002985_pano_0007_000000",
+      "panoramaSha256": "4f762535bde31b0b45ae6e13fb6cf1e1854ff5eee36725419f07f0db1d1949db",
+      "width": 477,
+      "height": 369,
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120449.82281208361,
+          "y": 487137.243398106
+        },
+        "end": {
+          "x": 120440.05201248793,
+          "y": 487133.1301980409
+        },
+        "baseZ": 12.209999999999997,
+        "topZ": 20.409999999999997
+      },
+      "pose": {
+        "x": 120430.90061428545,
+        "y": 487146.86183903366,
+        "z": 4.602534025907502,
+        "headingDeg": 328.731006874716,
+        "pitchDeg": -2.27329446446078,
+        "rollDeg": 0.848342386485359
+      },
+      "wall": {
+        "elevationId": "0363100012168980:e:1o2cn0o",
+        "index": 7,
+        "start": {
+          "x": 120449.6349120914,
+          "y": 487137.16429810476
+        },
+        "end": {
+          "x": 120440.23991248014,
+          "y": 487133.2092980422
+        },
+        "midpoint": {
+          "x": 120444.93741228577,
+          "y": 487135.18679807347
+        },
+        "normal": {
+          "x": -0.3879912322484226,
+          "y": 0.9216630640848913
+        },
+        "lengthM": 10.193529476607427,
+        "facingDeg": 337.1704343818538,
+        "sourceVertexRange": {
+          "vertexIndices": [
+            0,
+            1
+          ],
+          "edgeIndices": [
+            0
+          ]
+        },
+        "sourcePolygonIndex": 0,
+        "sourceRingIndex": 0,
+        "sourceRingRole": "exterior"
+      },
+      "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/caa097123df68accd5cd9aa5f04a742ce4b82b1405162f48325e158dfade6697/evidence/images/0363100012168980_e_1o2cn0o-roof.jpg",
+      "reviewPath": "artifacts/building-library/expansion/cached-evidence/lauriergracht-67-69-roof-970d9e330167.jpg",
+      "sourceAvailable": true,
+      "wholePanoramaAvailable": true,
+      "wholePanoramaPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/caa097123df68accd5cd9aa5f04a742ce4b82b1405162f48325e158dfade6697/evidence/panoramas/TMX7316010203-002985_pano_0007_000000.jpg",
+      "registration": {
+        "status": "rejected-for-metric-transfer",
+        "reason": "same-owner-context-width-or-plane-disagreement",
+        "endpointErrorM": 0.5256641178716345,
+        "reverseErrorM": 10.192560660954179
+      },
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "rectificationDerivationKey": "2f733c470631c49c68db674fbdbcad33279ad201cc19fe047d565e80b1b660ca",
+      "coverage": [
+        "roof"
+      ],
+      "occlusion": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "sha256": "9cf6eb7e4114fcb745b4b8bc5c2f08b19a5704f48b5e22dd3c5927daaf18ddcf",
+      "captureDate": "2025-07-03T09:49:09Z",
+      "tier": "ground",
+      "captureKey": "recording_2025-07-03_08-35-58_01620|2025-07-03T09:49:09Z",
+      "panoramaId": "recording_2025-07-03_08-35-58_01620",
+      "panoramaSha256": "67a6cab08eb0b31a014394dc6947ede71407e4c821c82b97bd1d8f6d746be5b3",
+      "width": 1166,
+      "height": 539,
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "plane": {
+        "start": {
+          "x": 120449.82281208361,
+          "y": 487137.243398106
+        },
+        "end": {
+          "x": 120440.05201248793,
+          "y": 487133.1301980409
+        },
+        "baseZ": 0.33899999856948854,
+        "topZ": 5.238999998569488
+      },
+      "pose": {
+        "x": 120444.79491240779,
+        "y": 487139.2612980773,
+        "z": 3.0789999985694885,
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0
+      },
+      "wall": {
+        "elevationId": "0363100012168980:e:1o2cn0o",
+        "index": 7,
+        "start": {
+          "x": 120449.6349120914,
+          "y": 487137.16429810476
+        },
+        "end": {
+          "x": 120440.23991248014,
+          "y": 487133.2092980422
+        },
+        "midpoint": {
+          "x": 120444.93741228577,
+          "y": 487135.18679807347
+        },
+        "normal": {
+          "x": -0.3879912322484226,
+          "y": 0.9216630640848913
+        },
+        "lengthM": 10.193529476607427,
+        "facingDeg": 337.1704343818538,
+        "sourceVertexRange": {
+          "vertexIndices": [
+            0,
+            1
+          ],
+          "edgeIndices": [
+            0
+          ]
+        },
+        "sourcePolygonIndex": 0,
+        "sourceRingIndex": 0,
+        "sourceRingRole": "exterior"
+      },
+      "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012168980_e_1o2cn0o-ground.jpg",
+      "reviewPath": "artifacts/building-library/expansion/cached-evidence/lauriergracht-67-69-ground-9cf6eb7e4114.jpg",
+      "sourceAvailable": true,
+      "wholePanoramaAvailable": true,
+      "wholePanoramaPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/panoramas/recording_2025-07-03_08-35-58_01620.jpg",
+      "registration": {
+        "status": "rejected-for-metric-transfer",
+        "reason": "same-owner-context-width-or-plane-disagreement",
+        "endpointErrorM": 0.5256641178716345,
+        "reverseErrorM": 10.192560660954179
+      },
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "rectificationDerivationKey": "e4508df0bf10f332157303e869cd307d638899b59ca84c13f0d1f16e226ed18c",
+      "coverage": [
+        "ground"
+      ],
+      "occlusion": {
+        "status": "unreviewed"
+      }
+    },
+    {
+      "sha256": "5fbaa094e7c27c7105bbeeccca37beac4dc54cf22a214a1e376b8c29c7b4844e",
+      "captureDate": "2025-07-03T09:49:09Z",
+      "tier": "ground",
+      "captureKey": "recording_2025-07-03_08-35-58_01620|2025-07-03T09:49:09Z",
+      "panoramaId": "recording_2025-07-03_08-35-58_01620",
+      "panoramaSha256": "5e3186e7cb5af07427851c524fddbde6c4d60b42db30a008cfd324ba86dc453b",
+      "width": 1166,
+      "height": 539,
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120449.82281208361,
+          "y": 487137.243398106
+        },
+        "end": {
+          "x": 120440.05201248793,
+          "y": 487133.1301980409
+        },
+        "baseZ": 0.33899999856948854,
+        "topZ": 5.238999998569488
+      },
+      "pose": {
+        "x": 120444.79491240779,
+        "y": 487139.2612980773,
+        "z": 3.0789999985694885,
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0
+      },
+      "wall": {
+        "elevationId": "0363100012168980:e:1o2cn0o",
+        "index": 7,
+        "start": {
+          "x": 120449.6349120914,
+          "y": 487137.16429810476
+        },
+        "end": {
+          "x": 120440.23991248014,
+          "y": 487133.2092980422
+        },
+        "midpoint": {
+          "x": 120444.93741228577,
+          "y": 487135.18679807347
+        },
+        "normal": {
+          "x": -0.3879912322484226,
+          "y": 0.9216630640848913
+        },
+        "lengthM": 10.193529476607427,
+        "facingDeg": 337.1704343818538,
+        "sourceVertexRange": {
+          "vertexIndices": [
+            0,
+            1
+          ],
+          "edgeIndices": [
+            0
+          ]
+        },
+        "sourcePolygonIndex": 0,
+        "sourceRingIndex": 0,
+        "sourceRingRole": "exterior"
+      },
+      "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/caa097123df68accd5cd9aa5f04a742ce4b82b1405162f48325e158dfade6697/evidence/images/0363100012168980_e_1o2cn0o-ground.jpg",
+      "reviewPath": "artifacts/building-library/expansion/cached-evidence/lauriergracht-67-69-ground-5fbaa094e7c2.jpg",
+      "sourceAvailable": true,
+      "wholePanoramaAvailable": true,
+      "wholePanoramaPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/caa097123df68accd5cd9aa5f04a742ce4b82b1405162f48325e158dfade6697/evidence/panoramas/recording_2025-07-03_08-35-58_01620.jpg",
+      "registration": {
+        "status": "rejected-for-metric-transfer",
+        "reason": "same-owner-context-width-or-plane-disagreement",
+        "endpointErrorM": 0.5256641178716345,
+        "reverseErrorM": 10.192560660954179
+      },
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "rectificationDerivationKey": "2f733c470631c49c68db674fbdbcad33279ad201cc19fe047d565e80b1b660ca",
+      "coverage": [
+        "ground"
+      ],
+      "occlusion": {
+        "status": "unreviewed"
+      }
+    }
+  ],
+  "derived": [
+    {
+      "id": "a1cbebf8ea4c0b64156153ed08998154348a54cc55f8efbf6bfa2473fff37825",
+      "ownerId": "0363100012168980",
+      "physicalFacadeId": "0363100012168980:selected-primary",
+      "captureKey": "recording_2025-07-03_08-35-58_01620|2025-07-03T09:49:09Z",
+      "captureDate": "2025-07-03T09:49:09Z",
+      "tier": "full",
+      "panoramaId": "recording_2025-07-03_08-35-58_01620",
+      "panoramaSha256": "67a6cab08eb0b31a014394dc6947ede71407e4c821c82b97bd1d8f6d746be5b3",
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "width": 694,
+      "height": 1441,
+      "nativeAngularWidthPx": 2250.205471514658,
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "plane": {
+        "start": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "end": {
+          "x": 120440.72817002577,
+          "y": 487133.4040474554
+        },
+        "baseZ": 0.33899999856948854,
+        "topZ": 20.409999999999997
+      },
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.013929373274108418,
+        "zMetresPerPixel": 0.013928521860812289,
+        "origin": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "topNAP": 20.409999999999997
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "Projected onto selected physical shell/BAG plane using cached camera pose; independent visual-anchor and geometry registration still required."
+      },
+      "occlusion": {
+        "status": "region-dependent",
+        "note": "Full-photo contact sheet inspected; derived tier crops are not independently visibility-masked. No registered geometry recovery."
+      },
+      "coverage": [
+        "ground",
+        "upper",
+        "roof"
+      ],
+      "path": "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2025-07-03-full-a1cbebf8.jpg",
+      "url": "./models/building-library/evidence/lauriergracht-67-69-2025-07-03-full-a1cbebf8.jpg",
+      "sourceAvailable": true,
+      "sourceObservationFacadeId": "0363100012168980:e:1o2cn0o",
+      "cameraFit": {
+        "standoff": 3.8210278498364545,
+        "distance": 4.0011328387698795,
+        "angle": 17.256460543071647
+      },
+      "selectedReason": "Two best frontal native-resolution cached cameras per year; independent panorama acquisition keys.",
+      "rectifier": "src/canalRecall/facade/rectify.ts:AMSTERDAM_WORLD_ALIGNED",
+      "datum": "ground-plus-2.44m; approximate",
+      "pose": {
+        "x": 120444.79491240779,
+        "y": 487139.2612980773,
+        "z": 3.0789999985694885,
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0
+      },
+      "visualReview": {
+        "inspectedSheet": "artifacts/building-library/expansion/lauriergracht-67-69-dated-full.jpg",
+        "sourceIdentity": "selected facade visually consistent across inspected full captures; independent geometric anchors unresolved",
+        "status": "appearance-only-inspected",
+        "preferredRegions": [
+          "upper",
+          "ground"
+        ]
+      },
+      "sourceUrlBeforePreview": "./lauriergracht-67-69-2025-07-03-full-a1cbebf8.jpg"
+    },
+    {
+      "id": "44ace59e16dc5468244ab08d3e0d9c6914ba9faaa18a8f6a389223ceeec19c95",
+      "ownerId": "0363100012168980",
+      "physicalFacadeId": "0363100012168980:selected-primary",
+      "captureKey": "recording_2025-07-03_08-35-58_01620|2025-07-03T09:49:09Z",
+      "captureDate": "2025-07-03T09:49:09Z",
+      "tier": "roof",
+      "panoramaId": "recording_2025-07-03_08-35-58_01620",
+      "panoramaSha256": "67a6cab08eb0b31a014394dc6947ede71407e4c821c82b97bd1d8f6d746be5b3",
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "width": 773,
+      "height": 656,
+      "nativeAngularWidthPx": 2250.205471514658,
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "plane": {
+        "start": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "end": {
+          "x": 120440.72817002577,
+          "y": 487133.4040474554
+        },
+        "baseZ": 12.209999999999997,
+        "topZ": 20.409999999999997
+      },
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.01250580213742722,
+        "zMetresPerPixel": 0.012499999999999999,
+        "origin": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "topNAP": 20.409999999999997
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "Projected onto selected physical shell/BAG plane using cached camera pose; independent visual-anchor and geometry registration still required."
+      },
+      "occlusion": {
+        "status": "region-dependent",
+        "note": "Full-photo contact sheet inspected; derived tier crops are not independently visibility-masked. No registered geometry recovery."
+      },
+      "coverage": [
+        "roof"
+      ],
+      "path": "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2025-07-03-roof-44ace59e.jpg",
+      "url": "./models/building-library/evidence/lauriergracht-67-69-2025-07-03-roof-44ace59e.jpg",
+      "sourceAvailable": true,
+      "sourceObservationFacadeId": "0363100012168980:e:1o2cn0o",
+      "cameraFit": {
+        "standoff": 3.8210278498364545,
+        "distance": 4.0011328387698795,
+        "angle": 17.256460543071647
+      },
+      "selectedReason": "Two best frontal native-resolution cached cameras per year; independent panorama acquisition keys.",
+      "rectifier": "src/canalRecall/facade/rectify.ts:AMSTERDAM_WORLD_ALIGNED",
+      "datum": "ground-plus-2.44m; approximate",
+      "pose": {
+        "x": 120444.79491240779,
+        "y": 487139.2612980773,
+        "z": 3.0789999985694885,
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0
+      },
+      "visualReview": {
+        "inspectedSheet": "artifacts/building-library/expansion/lauriergracht-67-69-dated-full.jpg",
+        "sourceIdentity": "selected facade visually consistent across inspected full captures; independent geometric anchors unresolved",
+        "status": "appearance-only-inspected",
+        "preferredRegions": [
+          "upper",
+          "ground"
+        ]
+      },
+      "sourceUrlBeforePreview": "./lauriergracht-67-69-2025-07-03-roof-44ace59e.jpg"
+    },
+    {
+      "id": "dfcac73e6fe365f480531fe194e56779f1315f9f76c22cb7e2048bfd17dc8fc4",
+      "ownerId": "0363100012168980",
+      "physicalFacadeId": "0363100012168980:selected-primary",
+      "captureKey": "recording_2025-07-03_08-35-58_01620|2025-07-03T09:49:09Z",
+      "captureDate": "2025-07-03T09:49:09Z",
+      "tier": "ground",
+      "panoramaId": "recording_2025-07-03_08-35-58_01620",
+      "panoramaSha256": "67a6cab08eb0b31a014394dc6947ede71407e4c821c82b97bd1d8f6d746be5b3",
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "width": 773,
+      "height": 392,
+      "nativeAngularWidthPx": 2250.205471514658,
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "plane": {
+        "start": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "end": {
+          "x": 120440.72817002577,
+          "y": 487133.4040474554
+        },
+        "baseZ": 0.33899999856948854,
+        "topZ": 5.238999998569488
+      },
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.01250580213742722,
+        "zMetresPerPixel": 0.012499999999999999,
+        "origin": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "topNAP": 5.238999998569488
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "Projected onto selected physical shell/BAG plane using cached camera pose; independent visual-anchor and geometry registration still required."
+      },
+      "occlusion": {
+        "status": "region-dependent",
+        "note": "Full-photo contact sheet inspected; derived tier crops are not independently visibility-masked. No registered geometry recovery."
+      },
+      "coverage": [
+        "ground"
+      ],
+      "path": "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2025-07-03-ground-dfcac73e.jpg",
+      "url": "./models/building-library/evidence/lauriergracht-67-69-2025-07-03-ground-dfcac73e.jpg",
+      "sourceAvailable": true,
+      "sourceObservationFacadeId": "0363100012168980:e:1o2cn0o",
+      "cameraFit": {
+        "standoff": 3.8210278498364545,
+        "distance": 4.0011328387698795,
+        "angle": 17.256460543071647
+      },
+      "selectedReason": "Two best frontal native-resolution cached cameras per year; independent panorama acquisition keys.",
+      "rectifier": "src/canalRecall/facade/rectify.ts:AMSTERDAM_WORLD_ALIGNED",
+      "datum": "ground-plus-2.44m; approximate",
+      "pose": {
+        "x": 120444.79491240779,
+        "y": 487139.2612980773,
+        "z": 3.0789999985694885,
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0
+      },
+      "visualReview": {
+        "inspectedSheet": "artifacts/building-library/expansion/lauriergracht-67-69-dated-full.jpg",
+        "sourceIdentity": "selected facade visually consistent across inspected full captures; independent geometric anchors unresolved",
+        "status": "appearance-only-inspected",
+        "preferredRegions": [
+          "upper",
+          "ground"
+        ]
+      },
+      "sourceUrlBeforePreview": "./lauriergracht-67-69-2025-07-03-ground-dfcac73e.jpg"
+    },
+    {
+      "id": "e69e3f837e44cdc1f53dbfe7f0cba58818acaf24c7657f5e9eaf5aaa5a91a457",
+      "ownerId": "0363100012168980",
+      "physicalFacadeId": "0363100012168980:selected-primary",
+      "captureKey": "recording_2025-07-03_08-35-58_01708|2025-07-03T09:52:11Z",
+      "captureDate": "2025-07-03T09:52:11Z",
+      "tier": "full",
+      "panoramaId": "recording_2025-07-03_08-35-58_01708",
+      "panoramaSha256": "e3bc8ac1883d9cca55776a0905963c01652af4dd1ddd355f42552013e20a3a6f",
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "width": 694,
+      "height": 1441,
+      "nativeAngularWidthPx": 466.9884878856392,
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "plane": {
+        "start": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "end": {
+          "x": 120440.72817002577,
+          "y": 487133.4040474554
+        },
+        "baseZ": 0.33899999856948854,
+        "topZ": 20.409999999999997
+      },
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.013929373274108418,
+        "zMetresPerPixel": 0.013928521860812289,
+        "origin": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "topNAP": 20.409999999999997
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "Projected onto selected physical shell/BAG plane using cached camera pose; independent visual-anchor and geometry registration still required."
+      },
+      "occlusion": {
+        "status": "region-dependent",
+        "note": "Full-photo contact sheet inspected; derived tier crops are not independently visibility-masked. No registered geometry recovery."
+      },
+      "coverage": [
+        "ground",
+        "upper",
+        "roof"
+      ],
+      "path": "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2025-07-03-full-e69e3f83.jpg",
+      "url": "./models/building-library/evidence/lauriergracht-67-69-2025-07-03-full-e69e3f83.jpg",
+      "sourceAvailable": true,
+      "sourceObservationFacadeId": "0363100012174821:e:19molap",
+      "cameraFit": {
+        "standoff": 24.970318544080747,
+        "distance": 25.528892181043016,
+        "angle": 12.007619690436142
+      },
+      "selectedReason": "Two best frontal native-resolution cached cameras per year; independent panorama acquisition keys.",
+      "rectifier": "src/canalRecall/facade/rectify.ts:AMSTERDAM_WORLD_ALIGNED",
+      "datum": "ground-plus-2.44m; approximate",
+      "pose": {
+        "x": 120440.39191323453,
+        "y": 487160.3542980893,
+        "z": 2.989000024795532,
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0
+      },
+      "visualReview": {
+        "inspectedSheet": "artifacts/building-library/expansion/lauriergracht-67-69-dated-full.jpg",
+        "sourceIdentity": "selected facade visually consistent across inspected full captures; independent geometric anchors unresolved",
+        "status": "appearance-only-inspected",
+        "preferredRegions": [
+          "upper",
+          "ground"
+        ]
+      },
+      "sourceUrlBeforePreview": "./lauriergracht-67-69-2025-07-03-full-e69e3f83.jpg"
+    },
+    {
+      "id": "2216a49bf4f596629cdab1c85998a700c43f4ce3ab01768196815996ac5964d3",
+      "ownerId": "0363100012168980",
+      "physicalFacadeId": "0363100012168980:selected-primary",
+      "captureKey": "recording_2025-07-03_08-35-58_01708|2025-07-03T09:52:11Z",
+      "captureDate": "2025-07-03T09:52:11Z",
+      "tier": "roof",
+      "panoramaId": "recording_2025-07-03_08-35-58_01708",
+      "panoramaSha256": "e3bc8ac1883d9cca55776a0905963c01652af4dd1ddd355f42552013e20a3a6f",
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "width": 773,
+      "height": 656,
+      "nativeAngularWidthPx": 466.9884878856392,
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "plane": {
+        "start": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "end": {
+          "x": 120440.72817002577,
+          "y": 487133.4040474554
+        },
+        "baseZ": 12.209999999999997,
+        "topZ": 20.409999999999997
+      },
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.01250580213742722,
+        "zMetresPerPixel": 0.012499999999999999,
+        "origin": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "topNAP": 20.409999999999997
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "Projected onto selected physical shell/BAG plane using cached camera pose; independent visual-anchor and geometry registration still required."
+      },
+      "occlusion": {
+        "status": "region-dependent",
+        "note": "Full-photo contact sheet inspected; derived tier crops are not independently visibility-masked. No registered geometry recovery."
+      },
+      "coverage": [
+        "roof"
+      ],
+      "path": "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2025-07-03-roof-2216a49b.jpg",
+      "url": "./models/building-library/evidence/lauriergracht-67-69-2025-07-03-roof-2216a49b.jpg",
+      "sourceAvailable": true,
+      "sourceObservationFacadeId": "0363100012174821:e:19molap",
+      "cameraFit": {
+        "standoff": 24.970318544080747,
+        "distance": 25.528892181043016,
+        "angle": 12.007619690436142
+      },
+      "selectedReason": "Two best frontal native-resolution cached cameras per year; independent panorama acquisition keys.",
+      "rectifier": "src/canalRecall/facade/rectify.ts:AMSTERDAM_WORLD_ALIGNED",
+      "datum": "ground-plus-2.44m; approximate",
+      "pose": {
+        "x": 120440.39191323453,
+        "y": 487160.3542980893,
+        "z": 2.989000024795532,
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0
+      },
+      "visualReview": {
+        "inspectedSheet": "artifacts/building-library/expansion/lauriergracht-67-69-dated-full.jpg",
+        "sourceIdentity": "selected facade visually consistent across inspected full captures; independent geometric anchors unresolved",
+        "status": "appearance-only-inspected",
+        "preferredRegions": [
+          "upper",
+          "ground"
+        ]
+      },
+      "sourceUrlBeforePreview": "./lauriergracht-67-69-2025-07-03-roof-2216a49b.jpg"
+    },
+    {
+      "id": "524773d29814dade1cb9c9141a2f18b240c393cb6eab77b5fa4b5c5befcd0c56",
+      "ownerId": "0363100012168980",
+      "physicalFacadeId": "0363100012168980:selected-primary",
+      "captureKey": "recording_2025-07-03_08-35-58_01708|2025-07-03T09:52:11Z",
+      "captureDate": "2025-07-03T09:52:11Z",
+      "tier": "ground",
+      "panoramaId": "recording_2025-07-03_08-35-58_01708",
+      "panoramaSha256": "e3bc8ac1883d9cca55776a0905963c01652af4dd1ddd355f42552013e20a3a6f",
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "width": 773,
+      "height": 392,
+      "nativeAngularWidthPx": 466.9884878856392,
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "plane": {
+        "start": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "end": {
+          "x": 120440.72817002577,
+          "y": 487133.4040474554
+        },
+        "baseZ": 0.33899999856948854,
+        "topZ": 5.238999998569488
+      },
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.01250580213742722,
+        "zMetresPerPixel": 0.012499999999999999,
+        "origin": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "topNAP": 5.238999998569488
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "Projected onto selected physical shell/BAG plane using cached camera pose; independent visual-anchor and geometry registration still required."
+      },
+      "occlusion": {
+        "status": "region-dependent",
+        "note": "Full-photo contact sheet inspected; derived tier crops are not independently visibility-masked. No registered geometry recovery."
+      },
+      "coverage": [
+        "ground"
+      ],
+      "path": "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2025-07-03-ground-524773d2.jpg",
+      "url": "./models/building-library/evidence/lauriergracht-67-69-2025-07-03-ground-524773d2.jpg",
+      "sourceAvailable": true,
+      "sourceObservationFacadeId": "0363100012174821:e:19molap",
+      "cameraFit": {
+        "standoff": 24.970318544080747,
+        "distance": 25.528892181043016,
+        "angle": 12.007619690436142
+      },
+      "selectedReason": "Two best frontal native-resolution cached cameras per year; independent panorama acquisition keys.",
+      "rectifier": "src/canalRecall/facade/rectify.ts:AMSTERDAM_WORLD_ALIGNED",
+      "datum": "ground-plus-2.44m; approximate",
+      "pose": {
+        "x": 120440.39191323453,
+        "y": 487160.3542980893,
+        "z": 2.989000024795532,
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0
+      },
+      "visualReview": {
+        "inspectedSheet": "artifacts/building-library/expansion/lauriergracht-67-69-dated-full.jpg",
+        "sourceIdentity": "selected facade visually consistent across inspected full captures; independent geometric anchors unresolved",
+        "status": "appearance-only-inspected",
+        "preferredRegions": [
+          "upper",
+          "ground"
+        ]
+      },
+      "sourceUrlBeforePreview": "./lauriergracht-67-69-2025-07-03-ground-524773d2.jpg"
+    },
+    {
+      "id": "72f7755793c7c437cec40bac5c6e93ae6a1d1b49a0fe7515d455964eefd277da",
+      "ownerId": "0363100012168980",
+      "physicalFacadeId": "0363100012168980:selected-primary",
+      "captureKey": "TMX7316010203-002985_pano_0007_000001|2023-02-27T10:59:43.619490Z",
+      "captureDate": "2023-02-27T10:59:43.619490Z",
+      "tier": "full",
+      "panoramaId": "TMX7316010203-002985_pano_0007_000001",
+      "panoramaSha256": "48f2942a803dcbdf4cfb8339ffacf400d21f55b5cd17ba072e92965fb2a0faf1",
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "width": 694,
+      "height": 1441,
+      "nativeAngularWidthPx": 690.5091003494344,
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "plane": {
+        "start": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "end": {
+          "x": 120440.72817002577,
+          "y": 487133.4040474554
+        },
+        "baseZ": 0.33899999856948854,
+        "topZ": 20.409999999999997
+      },
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.013929373274108418,
+        "zMetresPerPixel": 0.013928521860812289,
+        "origin": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "topNAP": 20.409999999999997
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "Projected onto selected physical shell/BAG plane using cached camera pose; independent visual-anchor and geometry registration still required."
+      },
+      "occlusion": {
+        "status": "region-dependent",
+        "note": "Full-photo contact sheet inspected; derived tier crops are not independently visibility-masked. No registered geometry recovery."
+      },
+      "coverage": [
+        "ground",
+        "upper",
+        "roof"
+      ],
+      "path": "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2023-02-27-full-72f77557.jpg",
+      "url": "./models/building-library/evidence/lauriergracht-67-69-2023-02-27-full-72f77557.jpg",
+      "sourceAvailable": true,
+      "sourceObservationFacadeId": "0363100012174821:e:19molap",
+      "cameraFit": {
+        "standoff": 11.146074953034633,
+        "distance": 14.218692089642145,
+        "angle": 38.380670098827395
+      },
+      "selectedReason": "Two best frontal native-resolution cached cameras per year; independent panorama acquisition keys.",
+      "rectifier": "src/canalRecall/facade/rectify.ts:AMSTERDAM_WORLD_ALIGNED",
+      "datum": "published-minus-43.5m; track-unsolved",
+      "pose": {
+        "x": 120432.72255385795,
+        "y": 487142.1277151695,
+        "z": 4.615568791516097,
+        "headingDeg": 336.641718811669,
+        "pitchDeg": 2.77229832733862,
+        "rollDeg": 0.268812263856302
+      },
+      "visualReview": {
+        "inspectedSheet": "artifacts/building-library/expansion/lauriergracht-67-69-dated-full.jpg",
+        "sourceIdentity": "selected facade visually consistent across inspected full captures; independent geometric anchors unresolved",
+        "status": "appearance-only-inspected",
+        "preferredRegions": [
+          "roof"
+        ]
+      },
+      "sourceUrlBeforePreview": "./lauriergracht-67-69-2023-02-27-full-72f77557.jpg"
+    },
+    {
+      "id": "ce0a68496160640c41c633c12ca2217930cc471fc3e3ad82ac4bf33fe84405e2",
+      "ownerId": "0363100012168980",
+      "physicalFacadeId": "0363100012168980:selected-primary",
+      "captureKey": "TMX7316010203-002985_pano_0007_000001|2023-02-27T10:59:43.619490Z",
+      "captureDate": "2023-02-27T10:59:43.619490Z",
+      "tier": "roof",
+      "panoramaId": "TMX7316010203-002985_pano_0007_000001",
+      "panoramaSha256": "48f2942a803dcbdf4cfb8339ffacf400d21f55b5cd17ba072e92965fb2a0faf1",
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "width": 773,
+      "height": 656,
+      "nativeAngularWidthPx": 690.5091003494344,
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "plane": {
+        "start": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "end": {
+          "x": 120440.72817002577,
+          "y": 487133.4040474554
+        },
+        "baseZ": 12.209999999999997,
+        "topZ": 20.409999999999997
+      },
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.01250580213742722,
+        "zMetresPerPixel": 0.012499999999999999,
+        "origin": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "topNAP": 20.409999999999997
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "Projected onto selected physical shell/BAG plane using cached camera pose; independent visual-anchor and geometry registration still required."
+      },
+      "occlusion": {
+        "status": "region-dependent",
+        "note": "Full-photo contact sheet inspected; derived tier crops are not independently visibility-masked. No registered geometry recovery."
+      },
+      "coverage": [
+        "roof"
+      ],
+      "path": "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2023-02-27-roof-ce0a6849.jpg",
+      "url": "./models/building-library/evidence/lauriergracht-67-69-2023-02-27-roof-ce0a6849.jpg",
+      "sourceAvailable": true,
+      "sourceObservationFacadeId": "0363100012174821:e:19molap",
+      "cameraFit": {
+        "standoff": 11.146074953034633,
+        "distance": 14.218692089642145,
+        "angle": 38.380670098827395
+      },
+      "selectedReason": "Two best frontal native-resolution cached cameras per year; independent panorama acquisition keys.",
+      "rectifier": "src/canalRecall/facade/rectify.ts:AMSTERDAM_WORLD_ALIGNED",
+      "datum": "published-minus-43.5m; track-unsolved",
+      "pose": {
+        "x": 120432.72255385795,
+        "y": 487142.1277151695,
+        "z": 4.615568791516097,
+        "headingDeg": 336.641718811669,
+        "pitchDeg": 2.77229832733862,
+        "rollDeg": 0.268812263856302
+      },
+      "visualReview": {
+        "inspectedSheet": "artifacts/building-library/expansion/lauriergracht-67-69-dated-full.jpg",
+        "sourceIdentity": "selected facade visually consistent across inspected full captures; independent geometric anchors unresolved",
+        "status": "appearance-only-inspected",
+        "preferredRegions": [
+          "roof"
+        ]
+      },
+      "sourceUrlBeforePreview": "./lauriergracht-67-69-2023-02-27-roof-ce0a6849.jpg"
+    },
+    {
+      "id": "8846756ee7bcf71a6f022b27fedb64d78731ccc8eedfdfc922d5bbdd5ac819d2",
+      "ownerId": "0363100012168980",
+      "physicalFacadeId": "0363100012168980:selected-primary",
+      "captureKey": "TMX7316010203-002985_pano_0007_000001|2023-02-27T10:59:43.619490Z",
+      "captureDate": "2023-02-27T10:59:43.619490Z",
+      "tier": "ground",
+      "panoramaId": "TMX7316010203-002985_pano_0007_000001",
+      "panoramaSha256": "48f2942a803dcbdf4cfb8339ffacf400d21f55b5cd17ba072e92965fb2a0faf1",
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "width": 773,
+      "height": 392,
+      "nativeAngularWidthPx": 690.5091003494344,
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "plane": {
+        "start": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "end": {
+          "x": 120440.72817002577,
+          "y": 487133.4040474554
+        },
+        "baseZ": 0.33899999856948854,
+        "topZ": 5.238999998569488
+      },
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.01250580213742722,
+        "zMetresPerPixel": 0.012499999999999999,
+        "origin": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "topNAP": 5.238999998569488
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "Projected onto selected physical shell/BAG plane using cached camera pose; independent visual-anchor and geometry registration still required."
+      },
+      "occlusion": {
+        "status": "region-dependent",
+        "note": "Full-photo contact sheet inspected; derived tier crops are not independently visibility-masked. No registered geometry recovery."
+      },
+      "coverage": [
+        "ground"
+      ],
+      "path": "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2023-02-27-ground-8846756e.jpg",
+      "url": "./models/building-library/evidence/lauriergracht-67-69-2023-02-27-ground-8846756e.jpg",
+      "sourceAvailable": true,
+      "sourceObservationFacadeId": "0363100012174821:e:19molap",
+      "cameraFit": {
+        "standoff": 11.146074953034633,
+        "distance": 14.218692089642145,
+        "angle": 38.380670098827395
+      },
+      "selectedReason": "Two best frontal native-resolution cached cameras per year; independent panorama acquisition keys.",
+      "rectifier": "src/canalRecall/facade/rectify.ts:AMSTERDAM_WORLD_ALIGNED",
+      "datum": "published-minus-43.5m; track-unsolved",
+      "pose": {
+        "x": 120432.72255385795,
+        "y": 487142.1277151695,
+        "z": 4.615568791516097,
+        "headingDeg": 336.641718811669,
+        "pitchDeg": 2.77229832733862,
+        "rollDeg": 0.268812263856302
+      },
+      "visualReview": {
+        "inspectedSheet": "artifacts/building-library/expansion/lauriergracht-67-69-dated-full.jpg",
+        "sourceIdentity": "selected facade visually consistent across inspected full captures; independent geometric anchors unresolved",
+        "status": "appearance-only-inspected",
+        "preferredRegions": [
+          "roof"
+        ]
+      },
+      "sourceUrlBeforePreview": "./lauriergracht-67-69-2023-02-27-ground-8846756e.jpg"
+    },
+    {
+      "id": "032ef4bbc7c9b7cbc3130cebb61a1dc72077956ee5a5cb95e5461b0796c93743",
+      "ownerId": "0363100012168980",
+      "physicalFacadeId": "0363100012168980:selected-primary",
+      "captureKey": "TMX7316010203-002985_pano_0007_000097|2023-02-27T11:01:19.238890Z",
+      "captureDate": "2023-02-27T11:01:19.238890Z",
+      "tier": "full",
+      "panoramaId": "TMX7316010203-002985_pano_0007_000097",
+      "panoramaSha256": "9dabb9f30b4ea8a46a16099958008481d45c09b4f8cdd4f6e3237d3275749335",
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "width": 694,
+      "height": 1441,
+      "nativeAngularWidthPx": 643.5569220458037,
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "plane": {
+        "start": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "end": {
+          "x": 120440.72817002577,
+          "y": 487133.4040474554
+        },
+        "baseZ": 0.33899999856948854,
+        "topZ": 20.409999999999997
+      },
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.013929373274108418,
+        "zMetresPerPixel": 0.013928521860812289,
+        "origin": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "topNAP": 20.409999999999997
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "Projected onto selected physical shell/BAG plane using cached camera pose; independent visual-anchor and geometry registration still required."
+      },
+      "occlusion": {
+        "status": "region-dependent",
+        "note": "Full-photo contact sheet inspected; derived tier crops are not independently visibility-masked. No registered geometry recovery."
+      },
+      "coverage": [
+        "ground",
+        "upper",
+        "roof"
+      ],
+      "path": "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2023-02-27-full-032ef4bb.jpg",
+      "url": "./models/building-library/evidence/lauriergracht-67-69-2023-02-27-full-032ef4bb.jpg",
+      "sourceAvailable": true,
+      "sourceObservationFacadeId": "0363100012174886:e:0hlwydw",
+      "cameraFit": {
+        "standoff": 14.320908480189823,
+        "distance": 16.538625219846665,
+        "angle": 30.01358515674897
+      },
+      "selectedReason": "Two best frontal native-resolution cached cameras per year; independent panorama acquisition keys.",
+      "rectifier": "src/canalRecall/facade/rectify.ts:AMSTERDAM_WORLD_ALIGNED",
+      "datum": "published-minus-43.5m; track-unsolved",
+      "pose": {
+        "x": 120432.00292426556,
+        "y": 487145.2694050998,
+        "z": 4.297381755895898,
+        "headingDeg": 335.892753055918,
+        "pitchDeg": 0.500916409963139,
+        "rollDeg": 0.349329239026663
+      },
+      "visualReview": {
+        "inspectedSheet": "artifacts/building-library/expansion/lauriergracht-67-69-dated-full.jpg",
+        "sourceIdentity": "selected facade visually consistent across inspected full captures; independent geometric anchors unresolved",
+        "status": "appearance-only-inspected",
+        "preferredRegions": [
+          "roof"
+        ]
+      },
+      "sourceUrlBeforePreview": "./lauriergracht-67-69-2023-02-27-full-032ef4bb.jpg"
+    },
+    {
+      "id": "343687115edc60698a5f0f5f3c0031086cc10a9318d5d38175fef0d8781e44c0",
+      "ownerId": "0363100012168980",
+      "physicalFacadeId": "0363100012168980:selected-primary",
+      "captureKey": "TMX7316010203-002985_pano_0007_000097|2023-02-27T11:01:19.238890Z",
+      "captureDate": "2023-02-27T11:01:19.238890Z",
+      "tier": "roof",
+      "panoramaId": "TMX7316010203-002985_pano_0007_000097",
+      "panoramaSha256": "9dabb9f30b4ea8a46a16099958008481d45c09b4f8cdd4f6e3237d3275749335",
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "width": 773,
+      "height": 656,
+      "nativeAngularWidthPx": 643.5569220458037,
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "plane": {
+        "start": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "end": {
+          "x": 120440.72817002577,
+          "y": 487133.4040474554
+        },
+        "baseZ": 12.209999999999997,
+        "topZ": 20.409999999999997
+      },
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.01250580213742722,
+        "zMetresPerPixel": 0.012499999999999999,
+        "origin": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "topNAP": 20.409999999999997
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "Projected onto selected physical shell/BAG plane using cached camera pose; independent visual-anchor and geometry registration still required."
+      },
+      "occlusion": {
+        "status": "region-dependent",
+        "note": "Full-photo contact sheet inspected; derived tier crops are not independently visibility-masked. No registered geometry recovery."
+      },
+      "coverage": [
+        "roof"
+      ],
+      "path": "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2023-02-27-roof-34368711.jpg",
+      "url": "./models/building-library/evidence/lauriergracht-67-69-2023-02-27-roof-34368711.jpg",
+      "sourceAvailable": true,
+      "sourceObservationFacadeId": "0363100012174886:e:0hlwydw",
+      "cameraFit": {
+        "standoff": 14.320908480189823,
+        "distance": 16.538625219846665,
+        "angle": 30.01358515674897
+      },
+      "selectedReason": "Two best frontal native-resolution cached cameras per year; independent panorama acquisition keys.",
+      "rectifier": "src/canalRecall/facade/rectify.ts:AMSTERDAM_WORLD_ALIGNED",
+      "datum": "published-minus-43.5m; track-unsolved",
+      "pose": {
+        "x": 120432.00292426556,
+        "y": 487145.2694050998,
+        "z": 4.297381755895898,
+        "headingDeg": 335.892753055918,
+        "pitchDeg": 0.500916409963139,
+        "rollDeg": 0.349329239026663
+      },
+      "visualReview": {
+        "inspectedSheet": "artifacts/building-library/expansion/lauriergracht-67-69-dated-full.jpg",
+        "sourceIdentity": "selected facade visually consistent across inspected full captures; independent geometric anchors unresolved",
+        "status": "appearance-only-inspected",
+        "preferredRegions": [
+          "roof"
+        ]
+      },
+      "sourceUrlBeforePreview": "./lauriergracht-67-69-2023-02-27-roof-34368711.jpg"
+    },
+    {
+      "id": "3fd5a00dd85e3787574f36468f33099855ce066a8c940a146c2f6f19989cf9a7",
+      "ownerId": "0363100012168980",
+      "physicalFacadeId": "0363100012168980:selected-primary",
+      "captureKey": "TMX7316010203-002985_pano_0007_000097|2023-02-27T11:01:19.238890Z",
+      "captureDate": "2023-02-27T11:01:19.238890Z",
+      "tier": "ground",
+      "panoramaId": "TMX7316010203-002985_pano_0007_000097",
+      "panoramaSha256": "9dabb9f30b4ea8a46a16099958008481d45c09b4f8cdd4f6e3237d3275749335",
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "width": 773,
+      "height": 392,
+      "nativeAngularWidthPx": 643.5569220458037,
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "plane": {
+        "start": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "end": {
+          "x": 120440.72817002577,
+          "y": 487133.4040474554
+        },
+        "baseZ": 0.33899999856948854,
+        "topZ": 5.238999998569488
+      },
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.01250580213742722,
+        "zMetresPerPixel": 0.012499999999999999,
+        "origin": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "topNAP": 5.238999998569488
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "Projected onto selected physical shell/BAG plane using cached camera pose; independent visual-anchor and geometry registration still required."
+      },
+      "occlusion": {
+        "status": "region-dependent",
+        "note": "Full-photo contact sheet inspected; derived tier crops are not independently visibility-masked. No registered geometry recovery."
+      },
+      "coverage": [
+        "ground"
+      ],
+      "path": "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2023-02-27-ground-3fd5a00d.jpg",
+      "url": "./models/building-library/evidence/lauriergracht-67-69-2023-02-27-ground-3fd5a00d.jpg",
+      "sourceAvailable": true,
+      "sourceObservationFacadeId": "0363100012174886:e:0hlwydw",
+      "cameraFit": {
+        "standoff": 14.320908480189823,
+        "distance": 16.538625219846665,
+        "angle": 30.01358515674897
+      },
+      "selectedReason": "Two best frontal native-resolution cached cameras per year; independent panorama acquisition keys.",
+      "rectifier": "src/canalRecall/facade/rectify.ts:AMSTERDAM_WORLD_ALIGNED",
+      "datum": "published-minus-43.5m; track-unsolved",
+      "pose": {
+        "x": 120432.00292426556,
+        "y": 487145.2694050998,
+        "z": 4.297381755895898,
+        "headingDeg": 335.892753055918,
+        "pitchDeg": 0.500916409963139,
+        "rollDeg": 0.349329239026663
+      },
+      "visualReview": {
+        "inspectedSheet": "artifacts/building-library/expansion/lauriergracht-67-69-dated-full.jpg",
+        "sourceIdentity": "selected facade visually consistent across inspected full captures; independent geometric anchors unresolved",
+        "status": "appearance-only-inspected",
+        "preferredRegions": [
+          "roof"
+        ]
+      },
+      "sourceUrlBeforePreview": "./lauriergracht-67-69-2023-02-27-ground-3fd5a00d.jpg"
+    },
+    {
+      "id": "bc12f9f96581fc0aa1f6c60b91029289648702ff43d54fecd52953f04fb486aa",
+      "ownerId": "0363100012168980",
+      "physicalFacadeId": "0363100012168980:selected-primary",
+      "captureKey": "TMX7316010203-002445_pano_0005_000010|2022-01-27T08:49:20.859300Z",
+      "captureDate": "2022-01-27T08:49:20.859300Z",
+      "tier": "full",
+      "panoramaId": "TMX7316010203-002445_pano_0005_000010",
+      "panoramaSha256": "269600a1fcf7aa96334dc751a0071d6b5f780ca462720efb87694ba6905c33ff",
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "width": 694,
+      "height": 1441,
+      "nativeAngularWidthPx": 365.8483207476984,
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "plane": {
+        "start": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "end": {
+          "x": 120440.72817002577,
+          "y": 487133.4040474554
+        },
+        "baseZ": 0.33899999856948854,
+        "topZ": 20.409999999999997
+      },
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.013929373274108418,
+        "zMetresPerPixel": 0.013928521860812289,
+        "origin": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "topNAP": 20.409999999999997
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "Projected onto selected physical shell/BAG plane using cached camera pose; independent visual-anchor and geometry registration still required."
+      },
+      "occlusion": {
+        "status": "region-dependent",
+        "note": "Full-photo contact sheet inspected; derived tier crops are not independently visibility-masked. No registered geometry recovery."
+      },
+      "coverage": [
+        "ground",
+        "upper",
+        "roof"
+      ],
+      "path": "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2022-01-27-full-bc12f9f9.jpg",
+      "url": "./models/building-library/evidence/lauriergracht-67-69-2022-01-27-full-bc12f9f9.jpg",
+      "sourceAvailable": true,
+      "sourceObservationFacadeId": "0363100012174820:e:007m5ol",
+      "cameraFit": {
+        "standoff": 24.406429911828017,
+        "distance": 28.6662736359039,
+        "angle": 31.635865973594075
+      },
+      "selectedReason": "Two best frontal native-resolution cached cameras per year; independent panorama acquisition keys.",
+      "rectifier": "src/canalRecall/facade/rectify.ts:AMSTERDAM_WORLD_ALIGNED",
+      "datum": "published-minus-43.5m; track-unsolved",
+      "pose": {
+        "x": 120421.85687867252,
+        "y": 487151.9415615476,
+        "z": 3.520787957124398,
+        "headingDeg": 65.1724961404668,
+        "pitchDeg": 5.10640383208042,
+        "rollDeg": -5.62398228622733
+      },
+      "visualReview": {
+        "inspectedSheet": "artifacts/building-library/expansion/lauriergracht-67-69-dated-full.jpg",
+        "sourceIdentity": "selected facade visually consistent across inspected full captures; independent geometric anchors unresolved",
+        "status": "appearance-only-inspected",
+        "preferredRegions": [
+          "roof"
+        ]
+      },
+      "sourceUrlBeforePreview": "./lauriergracht-67-69-2022-01-27-full-bc12f9f9.jpg"
+    },
+    {
+      "id": "c26914b1b2f04b3f5fa081f71e2fb81c5e4fb26444253fc7bba8f4d1b273cba7",
+      "ownerId": "0363100012168980",
+      "physicalFacadeId": "0363100012168980:selected-primary",
+      "captureKey": "TMX7316010203-002445_pano_0005_000010|2022-01-27T08:49:20.859300Z",
+      "captureDate": "2022-01-27T08:49:20.859300Z",
+      "tier": "roof",
+      "panoramaId": "TMX7316010203-002445_pano_0005_000010",
+      "panoramaSha256": "269600a1fcf7aa96334dc751a0071d6b5f780ca462720efb87694ba6905c33ff",
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "width": 773,
+      "height": 656,
+      "nativeAngularWidthPx": 365.8483207476984,
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "plane": {
+        "start": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "end": {
+          "x": 120440.72817002577,
+          "y": 487133.4040474554
+        },
+        "baseZ": 12.209999999999997,
+        "topZ": 20.409999999999997
+      },
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.01250580213742722,
+        "zMetresPerPixel": 0.012499999999999999,
+        "origin": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "topNAP": 20.409999999999997
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "Projected onto selected physical shell/BAG plane using cached camera pose; independent visual-anchor and geometry registration still required."
+      },
+      "occlusion": {
+        "status": "region-dependent",
+        "note": "Full-photo contact sheet inspected; derived tier crops are not independently visibility-masked. No registered geometry recovery."
+      },
+      "coverage": [
+        "roof"
+      ],
+      "path": "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2022-01-27-roof-c26914b1.jpg",
+      "url": "./models/building-library/evidence/lauriergracht-67-69-2022-01-27-roof-c26914b1.jpg",
+      "sourceAvailable": true,
+      "sourceObservationFacadeId": "0363100012174820:e:007m5ol",
+      "cameraFit": {
+        "standoff": 24.406429911828017,
+        "distance": 28.6662736359039,
+        "angle": 31.635865973594075
+      },
+      "selectedReason": "Two best frontal native-resolution cached cameras per year; independent panorama acquisition keys.",
+      "rectifier": "src/canalRecall/facade/rectify.ts:AMSTERDAM_WORLD_ALIGNED",
+      "datum": "published-minus-43.5m; track-unsolved",
+      "pose": {
+        "x": 120421.85687867252,
+        "y": 487151.9415615476,
+        "z": 3.520787957124398,
+        "headingDeg": 65.1724961404668,
+        "pitchDeg": 5.10640383208042,
+        "rollDeg": -5.62398228622733
+      },
+      "visualReview": {
+        "inspectedSheet": "artifacts/building-library/expansion/lauriergracht-67-69-dated-full.jpg",
+        "sourceIdentity": "selected facade visually consistent across inspected full captures; independent geometric anchors unresolved",
+        "status": "appearance-only-inspected",
+        "preferredRegions": [
+          "roof"
+        ]
+      },
+      "sourceUrlBeforePreview": "./lauriergracht-67-69-2022-01-27-roof-c26914b1.jpg"
+    },
+    {
+      "id": "bbbdccfacfe1da8178906075e094331cd42b5615ed816c32400d26f645ebac2a",
+      "ownerId": "0363100012168980",
+      "physicalFacadeId": "0363100012168980:selected-primary",
+      "captureKey": "TMX7316010203-002445_pano_0005_000010|2022-01-27T08:49:20.859300Z",
+      "captureDate": "2022-01-27T08:49:20.859300Z",
+      "tier": "ground",
+      "panoramaId": "TMX7316010203-002445_pano_0005_000010",
+      "panoramaSha256": "269600a1fcf7aa96334dc751a0071d6b5f780ca462720efb87694ba6905c33ff",
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "width": 773,
+      "height": 392,
+      "nativeAngularWidthPx": 365.8483207476984,
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "plane": {
+        "start": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "end": {
+          "x": 120440.72817002577,
+          "y": 487133.4040474554
+        },
+        "baseZ": 0.33899999856948854,
+        "topZ": 5.238999998569488
+      },
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.01250580213742722,
+        "zMetresPerPixel": 0.012499999999999999,
+        "origin": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "topNAP": 5.238999998569488
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "Projected onto selected physical shell/BAG plane using cached camera pose; independent visual-anchor and geometry registration still required."
+      },
+      "occlusion": {
+        "status": "region-dependent",
+        "note": "Full-photo contact sheet inspected; derived tier crops are not independently visibility-masked. No registered geometry recovery."
+      },
+      "coverage": [
+        "ground"
+      ],
+      "path": "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2022-01-27-ground-bbbdccfa.jpg",
+      "url": "./models/building-library/evidence/lauriergracht-67-69-2022-01-27-ground-bbbdccfa.jpg",
+      "sourceAvailable": true,
+      "sourceObservationFacadeId": "0363100012174820:e:007m5ol",
+      "cameraFit": {
+        "standoff": 24.406429911828017,
+        "distance": 28.6662736359039,
+        "angle": 31.635865973594075
+      },
+      "selectedReason": "Two best frontal native-resolution cached cameras per year; independent panorama acquisition keys.",
+      "rectifier": "src/canalRecall/facade/rectify.ts:AMSTERDAM_WORLD_ALIGNED",
+      "datum": "published-minus-43.5m; track-unsolved",
+      "pose": {
+        "x": 120421.85687867252,
+        "y": 487151.9415615476,
+        "z": 3.520787957124398,
+        "headingDeg": 65.1724961404668,
+        "pitchDeg": 5.10640383208042,
+        "rollDeg": -5.62398228622733
+      },
+      "visualReview": {
+        "inspectedSheet": "artifacts/building-library/expansion/lauriergracht-67-69-dated-full.jpg",
+        "sourceIdentity": "selected facade visually consistent across inspected full captures; independent geometric anchors unresolved",
+        "status": "appearance-only-inspected",
+        "preferredRegions": [
+          "roof"
+        ]
+      },
+      "sourceUrlBeforePreview": "./lauriergracht-67-69-2022-01-27-ground-bbbdccfa.jpg"
+    },
+    {
+      "id": "326caf57babb495ba2e453ceb417c475cc41769efaeede752631297e9f2b97ac",
+      "ownerId": "0363100012168980",
+      "physicalFacadeId": "0363100012168980:selected-primary",
+      "captureKey": "b_20241216_0911_Track21_Sphere_00054|2024-12-16T10:48:17Z",
+      "captureDate": "2024-12-16T10:48:17Z",
+      "tier": "full",
+      "panoramaId": "b_20241216_0911_Track21_Sphere_00054",
+      "panoramaSha256": "db5bac1540ae56b9d5f5ce58c74c1ca13c26e7d9f0df7d011d4c7345bf282a7f",
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "width": 694,
+      "height": 1441,
+      "nativeAngularWidthPx": 2123.4399257013774,
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "plane": {
+        "start": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "end": {
+          "x": 120440.72817002577,
+          "y": 487133.4040474554
+        },
+        "baseZ": 0.33899999856948854,
+        "topZ": 20.409999999999997
+      },
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.013929373274108418,
+        "zMetresPerPixel": 0.013928521860812289,
+        "origin": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "topNAP": 20.409999999999997
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "Projected onto selected physical shell/BAG plane using cached camera pose; independent visual-anchor and geometry registration still required."
+      },
+      "occlusion": {
+        "status": "region-dependent",
+        "note": "Full-photo contact sheet inspected; derived tier crops are not independently visibility-masked. No registered geometry recovery."
+      },
+      "coverage": [
+        "ground",
+        "upper",
+        "roof"
+      ],
+      "path": "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2024-12-16-full-326caf57.jpg",
+      "url": "./models/building-library/evidence/lauriergracht-67-69-2024-12-16-full-326caf57.jpg",
+      "sourceAvailable": true,
+      "sourceObservationFacadeId": "0363100012174521:e:06zkfqe",
+      "cameraFit": {
+        "standoff": 3.8632053579900814,
+        "distance": 4.441917557978763,
+        "angle": 29.57438329804268
+      },
+      "selectedReason": "Two best frontal native-resolution cached cameras per year; independent panorama acquisition keys.",
+      "rectifier": "src/canalRecall/facade/rectify.ts:AMSTERDAM_WORLD_ALIGNED",
+      "datum": "ground-plus-2.44m; approximate",
+      "pose": {
+        "x": 120441.66391253861,
+        "y": 487137.9892980584,
+        "z": 2.9969999814033508,
+        "headingDeg": 69.43238678633413,
+        "pitchDeg": 3.1679778999727675,
+        "rollDeg": -1.9368681320861612
+      },
+      "visualReview": {
+        "inspectedSheet": "artifacts/building-library/expansion/lauriergracht-67-69-dated-full.jpg",
+        "sourceIdentity": "selected facade visually consistent across inspected full captures; independent geometric anchors unresolved",
+        "status": "appearance-only-inspected",
+        "preferredRegions": [
+          "upper"
+        ]
+      },
+      "sourceUrlBeforePreview": "./lauriergracht-67-69-2024-12-16-full-326caf57.jpg"
+    },
+    {
+      "id": "b6b6a6caec49bcafa053ddeaa3eddd869f1c88cd1766d6fdb766b5a7e4278f97",
+      "ownerId": "0363100012168980",
+      "physicalFacadeId": "0363100012168980:selected-primary",
+      "captureKey": "b_20241216_0911_Track21_Sphere_00054|2024-12-16T10:48:17Z",
+      "captureDate": "2024-12-16T10:48:17Z",
+      "tier": "roof",
+      "panoramaId": "b_20241216_0911_Track21_Sphere_00054",
+      "panoramaSha256": "db5bac1540ae56b9d5f5ce58c74c1ca13c26e7d9f0df7d011d4c7345bf282a7f",
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "width": 773,
+      "height": 656,
+      "nativeAngularWidthPx": 2123.4399257013774,
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "plane": {
+        "start": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "end": {
+          "x": 120440.72817002577,
+          "y": 487133.4040474554
+        },
+        "baseZ": 12.209999999999997,
+        "topZ": 20.409999999999997
+      },
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.01250580213742722,
+        "zMetresPerPixel": 0.012499999999999999,
+        "origin": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "topNAP": 20.409999999999997
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "Projected onto selected physical shell/BAG plane using cached camera pose; independent visual-anchor and geometry registration still required."
+      },
+      "occlusion": {
+        "status": "region-dependent",
+        "note": "Full-photo contact sheet inspected; derived tier crops are not independently visibility-masked. No registered geometry recovery."
+      },
+      "coverage": [
+        "roof"
+      ],
+      "path": "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2024-12-16-roof-b6b6a6ca.jpg",
+      "url": "./models/building-library/evidence/lauriergracht-67-69-2024-12-16-roof-b6b6a6ca.jpg",
+      "sourceAvailable": true,
+      "sourceObservationFacadeId": "0363100012174521:e:06zkfqe",
+      "cameraFit": {
+        "standoff": 3.8632053579900814,
+        "distance": 4.441917557978763,
+        "angle": 29.57438329804268
+      },
+      "selectedReason": "Two best frontal native-resolution cached cameras per year; independent panorama acquisition keys.",
+      "rectifier": "src/canalRecall/facade/rectify.ts:AMSTERDAM_WORLD_ALIGNED",
+      "datum": "ground-plus-2.44m; approximate",
+      "pose": {
+        "x": 120441.66391253861,
+        "y": 487137.9892980584,
+        "z": 2.9969999814033508,
+        "headingDeg": 69.43238678633413,
+        "pitchDeg": 3.1679778999727675,
+        "rollDeg": -1.9368681320861612
+      },
+      "visualReview": {
+        "inspectedSheet": "artifacts/building-library/expansion/lauriergracht-67-69-dated-full.jpg",
+        "sourceIdentity": "selected facade visually consistent across inspected full captures; independent geometric anchors unresolved",
+        "status": "appearance-only-inspected",
+        "preferredRegions": [
+          "upper"
+        ]
+      },
+      "sourceUrlBeforePreview": "./lauriergracht-67-69-2024-12-16-roof-b6b6a6ca.jpg"
+    },
+    {
+      "id": "a5b65d7272fce3a31c79c97bb6ee0b74da8b20b32fd2fa911158c8dcd89e07fd",
+      "ownerId": "0363100012168980",
+      "physicalFacadeId": "0363100012168980:selected-primary",
+      "captureKey": "b_20241216_0911_Track21_Sphere_00054|2024-12-16T10:48:17Z",
+      "captureDate": "2024-12-16T10:48:17Z",
+      "tier": "ground",
+      "panoramaId": "b_20241216_0911_Track21_Sphere_00054",
+      "panoramaSha256": "db5bac1540ae56b9d5f5ce58c74c1ca13c26e7d9f0df7d011d4c7345bf282a7f",
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "width": 773,
+      "height": 392,
+      "nativeAngularWidthPx": 2123.4399257013774,
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "geometryRevisionVerified": false,
+      "plane": {
+        "start": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "end": {
+          "x": 120440.72817002577,
+          "y": 487133.4040474554
+        },
+        "baseZ": 0.33899999856948854,
+        "topZ": 5.238999998569488
+      },
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.01250580213742722,
+        "zMetresPerPixel": 0.012499999999999999,
+        "origin": {
+          "x": 120449.63817002578,
+          "y": 487137.1540474554
+        },
+        "topNAP": 5.238999998569488
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "Projected onto selected physical shell/BAG plane using cached camera pose; independent visual-anchor and geometry registration still required."
+      },
+      "occlusion": {
+        "status": "region-dependent",
+        "note": "Full-photo contact sheet inspected; derived tier crops are not independently visibility-masked. No registered geometry recovery."
+      },
+      "coverage": [
+        "ground"
+      ],
+      "path": "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2024-12-16-ground-a5b65d72.jpg",
+      "url": "./models/building-library/evidence/lauriergracht-67-69-2024-12-16-ground-a5b65d72.jpg",
+      "sourceAvailable": true,
+      "sourceObservationFacadeId": "0363100012174521:e:06zkfqe",
+      "cameraFit": {
+        "standoff": 3.8632053579900814,
+        "distance": 4.441917557978763,
+        "angle": 29.57438329804268
+      },
+      "selectedReason": "Two best frontal native-resolution cached cameras per year; independent panorama acquisition keys.",
+      "rectifier": "src/canalRecall/facade/rectify.ts:AMSTERDAM_WORLD_ALIGNED",
+      "datum": "ground-plus-2.44m; approximate",
+      "pose": {
+        "x": 120441.66391253861,
+        "y": 487137.9892980584,
+        "z": 2.9969999814033508,
+        "headingDeg": 69.43238678633413,
+        "pitchDeg": 3.1679778999727675,
+        "rollDeg": -1.9368681320861612
+      },
+      "visualReview": {
+        "inspectedSheet": "artifacts/building-library/expansion/lauriergracht-67-69-dated-full.jpg",
+        "sourceIdentity": "selected facade visually consistent across inspected full captures; independent geometric anchors unresolved",
+        "status": "appearance-only-inspected",
+        "preferredRegions": [
+          "upper"
+        ]
+      },
+      "sourceUrlBeforePreview": "./lauriergracht-67-69-2024-12-16-ground-a5b65d72.jpg"
+    }
+  ],
+  "coverage": [
+    {
+      "year": "2022",
+      "ground": {
+        "captures": [
+          "TMX7316010203-002445_pano_0005_000010|2022-01-27T08:49:20.859300Z"
+        ],
+        "crops": 2,
+        "registered": 0,
+        "visible": "unreviewed"
+      },
+      "upper": {
+        "captures": [
+          "TMX7316010203-002445_pano_0005_000010|2022-01-27T08:49:20.859300Z"
+        ],
+        "crops": 1,
+        "registered": 0,
+        "visible": "unreviewed"
+      },
+      "roof": {
+        "captures": [
+          "TMX7316010203-002445_pano_0005_000010|2022-01-27T08:49:20.859300Z"
+        ],
+        "crops": 2,
+        "registered": 0,
+        "visible": "unreviewed"
+      }
+    },
+    {
+      "year": "2023",
+      "ground": {
+        "captures": [
+          "TMX7316010203-002985_pano_0007_000001|2023-02-27T10:59:43.619490Z",
+          "TMX7316010203-002985_pano_0007_000097|2023-02-27T11:01:19.238890Z"
+        ],
+        "crops": 4,
+        "registered": 0,
+        "visible": "unreviewed"
+      },
+      "upper": {
+        "captures": [
+          "TMX7316010203-002985_pano_0007_000001|2023-02-27T10:59:43.619490Z",
+          "TMX7316010203-002985_pano_0007_000097|2023-02-27T11:01:19.238890Z"
+        ],
+        "crops": 2,
+        "registered": 0,
+        "visible": "unreviewed"
+      },
+      "roof": {
+        "captures": [
+          "TMX7316010203-002985_pano_0007_000001|2023-02-27T10:59:43.619490Z",
+          "TMX7316010203-002985_pano_0007_000097|2023-02-27T11:01:19.238890Z"
+        ],
+        "crops": 4,
+        "registered": 0,
+        "visible": "unreviewed"
+      }
+    },
+    {
+      "year": "2024",
+      "ground": {
+        "captures": [
+          "b_20241216_0911_Track21_Sphere_00054|2024-12-16T10:48:17Z"
+        ],
+        "crops": 2,
+        "registered": 0,
+        "visible": "unreviewed"
+      },
+      "upper": {
+        "captures": [
+          "b_20241216_0911_Track21_Sphere_00054|2024-12-16T10:48:17Z"
+        ],
+        "crops": 1,
+        "registered": 0,
+        "visible": "unreviewed"
+      },
+      "roof": {
+        "captures": [
+          "b_20241216_0911_Track21_Sphere_00054|2024-12-16T10:48:17Z"
+        ],
+        "crops": 2,
+        "registered": 0,
+        "visible": "unreviewed"
+      }
+    },
+    {
+      "year": "2025",
+      "ground": {
+        "captures": [
+          "recording_2025-07-03_08-35-58_01620|2025-07-03T09:49:09Z",
+          "recording_2025-07-03_08-35-58_01708|2025-07-03T09:52:11Z"
+        ],
+        "crops": 4,
+        "registered": 0,
+        "visible": "unreviewed"
+      },
+      "upper": {
+        "captures": [
+          "recording_2025-07-03_08-35-58_01620|2025-07-03T09:49:09Z",
+          "recording_2025-07-03_08-35-58_01708|2025-07-03T09:52:11Z"
+        ],
+        "crops": 2,
+        "registered": 0,
+        "visible": "unreviewed"
+      },
+      "roof": {
+        "captures": [
+          "recording_2025-07-03_08-35-58_01620|2025-07-03T09:49:09Z",
+          "recording_2025-07-03_08-35-58_01708|2025-07-03T09:52:11Z"
+        ],
+        "crops": 4,
+        "registered": 0,
+        "visible": "unreviewed"
+      }
+    }
+  ],
+  "searchedYears": [
+    "2022",
+    "2023",
+    "2024",
+    "2025"
+  ],
+  "searchedLocations": [
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/apollobuurt-v1/panorama-audit/70ddd2d4a19b94d103595e529ef42d4c2ae526be895c09a4e567c59295ee580b/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costa-expansion-550m-v1/panorama-audit/35e8d2f29c4634cbd07d6afa0d624f6a971f518e2e056859cf988030dedea61a/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costa-tranche-400m-v1/panorama-audit/be950e97c54cab9950c80fa33846ca8bbc2a2477fe4284977d91dc481128f783/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/00c71ef325601953dfb7e22f6028105fd9d77e01dbb84c3ac8f35474316e1878/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/2213231ccba36fe7bf0bc7c4b5f0dea02c008f403098e40f2da2f6ec557c521c/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/3f2ec76c39394add2c9195ddb1df39b6589a3fd01a91d21efae00557e89fc2bc/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/3f92db8d4da2d7b08094b280657246cbf711d1857474672462acee907540e7d8/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/42e2558682004bd88e765f1147f44be7dc2b58be02dffcc15b7e9462585953fe/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/5e1858c484d2184a8b40e7bf582aab8323ff18ad67a14a547ad47021209ea31a/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/61772bf5c34fdc627171c4ce74da72af0b055a648a98bfbf236b1dc0593102a5/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/75d13e46b7d00e29cee0d9840b8fb9789cfda8a7140bc67c5d81cdc18b4709b0/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/88900deff4b114b95176f2f230be6abe81b4409a5371402816358ad81c4f57c5/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/e5d88c3256c63dc90fdfeb3c4a9d061eaf52cd41416dcd8658e27a3a12d2abf3/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/eed1a3717110b47ad24defb123df88dff2b96c9de52a65279fb13398d21b5045/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/15cc14e544469be45acfb4adaee0017f74456d8c0d1da5a35037e2b8b7a5379d/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/234ee0d618476e9ce5ac72e175239e03ac33b6484dd7e331d7ab39c1f5a2251e/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/23cbe284fa0f2bcd7f796758c9be37dd3bc52fb26943c5ceaab8dfef02fa8843/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/2d60454dc62ff8e2fce0e634fd9da7a1454b02471b77e79e7cb465dfec0ef2bd/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3cfeb5fcf2cce32d47a2d566613ab916fb68bbaf7fb5421f438e750aaa99d88f/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/42955f2314209a86242e7b38bda434cd3b147f4cf815bf9bacf8ad182e32ded3/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4a8eecdbd77dc0c08df411f4090078a051343ff0fca0733c9029ebf785a2b355/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/6deb2e79ce7960005383524abf2b232e2f82bd2fbc82389f1f4f45073e73032f/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/6f8e044a9684f917daf0ba347be37c48dc648ca4b63e4f0b4d425f852d1ed695/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/7187629ffe09b31a4d32dbe0dc3388276c0b7702d7678425adc66f5998c291e1/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/761703bfedf0e6e46b1cb24a2dba894cad28eac52ac830992a04ee465ac8ac40/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/7b82323496ec1f82bf5f306374e0a44e21fd8a4760362dd3848fd6f77df71190/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/827e646ddd248e35798b72edffdee5cd2972048a404f408cdc890e35c1e31564/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/8b84b5990efff411d1f31a4478e57a5ab4249891d18ffc126e30b20091b79b4f/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/9374d9c0a05722ea5fca36fcc2dd753c265de0b262e7e60379e8e2d448ca445b/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/963da98752058408ec606a8d4a3ca6c4a4f7ceeca2dd9cd2e63dc054a7d55d9d/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/9ab38efb54f0c860c3986d74978b84baf47d15b83183f7fe0f1d87b014f13495/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/ad6e2fc77eda895a2bd8f6bb16be7aca0365bc76c685aaae0708e6231cb40942/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/ba3a3613c80d7303001b3e98c6632f49bb37c8e0b6a1b39fef19e302153ae8fc/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/c3f8d1a1f6685fb7608a9de97e7554c2c111d82338b2aab360cace5016595361/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/c8d875cf27b43b916038ec46fdaa1d107fdd061d668b16e3a5ee2438a212fd32/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/c919e767a882fff9fb74902a6b7fb036b8713223b1f6ec57e12b50e58f7e12b5/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/caa097123df68accd5cd9aa5f04a742ce4b82b1405162f48325e158dfade6697/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/ce585f1f4e4b5a27d08f035ba9bad65688af73c20c7ed50144b7ae5f5f4e15ec/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/cf1ccd7a6483fa64952b81df4d9ce2c4ca89d28ec0c11561932907b7ff61f6f5/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/e0cb73b9e50ea806fa6ffa9aafc89efd70a8b27d3ecfd17ad9fb075b517e5b1a/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/e74ac5321aa2fa6e7f34a5511f2a30fe97a28aa94ae1edec8e5609dcc075a688/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/e89f6531cc292f7ed8ecb4ea3f357a9e6bb8b4be16413f77fce658cce6b86eb7/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/f2a7ce860cd122399521a9bacc9ba7ccab42be151c7ba25aebfdd23aa06b3de0/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/f580b5dc7f47ebfe3f2a1922a0d1d1e55fb1ef075cd0997a8f417a84f60a175b/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/fca4fdfeadb628bf8bfbedefff322b5052044a3da4002742bfb1091834f44d38/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/tuindorp-nieuwendam-v1/panorama-audit/02fea156a4f7e8c854c8380c3eab3229d21f6ca3587671124ee1466c45296a6e/evidence/manifest.json"
+  ],
+  "gaps": [
+    "Visual source identity, visibility and independent metric anchors require review.",
+    "No multiyear hidden-feature recovery performed; no metric-registration acceptance."
+  ],
+  "policy": "Owner AND physical facade binding required; only cached whole panoramas are reprojected. Native upsampling is not source resolution.",
+  "visualReview": {
+    "reviewDate": "2026-10-01",
+    "inspectedPhotoPaths": [
+      "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2025-07-03-full-a1cbebf8.jpg",
+      "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2025-07-03-full-e69e3f83.jpg",
+      "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2023-02-27-full-72f77557.jpg",
+      "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2023-02-27-full-032ef4bb.jpg",
+      "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2022-01-27-full-bc12f9f9.jpg",
+      "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2024-12-16-full-326caf57.jpg"
+    ],
+    "inspectedSheet": "artifacts/building-library/expansion/lauriergracht-67-69-dated-full.jpg",
+    "observations": [
+      "Three upper rows; broad outer grouped windows and two narrower middle windows.",
+      "Dark grey plinth; recessed central residential entrance with a short stoop.",
+      "Hip-like roof silhouette and dormer visible behind bare branches; hidden roof portions unresolved."
+    ],
+    "metricRegistration": "ambiguous; no metric source fusion",
+    "regionSelection": {
+      "roof": [
+        "2022-01-27",
+        "2023-02-27"
+      ],
+      "upper": [
+        "2024-12-16",
+        "2025-07-03"
+      ],
+      "ground": [
+        "2025-07-03"
+      ]
+    },
+    "draftReadiness": "draft-photos-reviewed-metric-unregistered"
+  },
+  "featureProposals": [
+    {
+      "status": "inferred",
+      "disposition": "visual-draft-only",
+      "observation": "Three upper rows; broad outer grouped windows and two narrower middle windows.",
+      "sourceReview": "artifacts/building-library/expansion/dated-visual-review.json",
+      "metricRegistered": false
+    },
+    {
+      "status": "inferred",
+      "disposition": "visual-draft-only",
+      "observation": "Dark grey plinth; recessed central residential entrance with a short stoop.",
+      "sourceReview": "artifacts/building-library/expansion/dated-visual-review.json",
+      "metricRegistered": false
+    },
+    {
+      "status": "inferred",
+      "disposition": "visual-draft-only",
+      "observation": "Hip-like roof silhouette and dormer visible behind bare branches; hidden roof portions unresolved.",
+      "sourceReview": "artifacts/building-library/expansion/dated-visual-review.json",
+      "metricRegistered": false
+    }
+  ],
+  "previewSourceBundle": "artifacts/building-library/expansion/evidence/lauriergracht-67-69.json"
+}

@@ -1,0 +1,710 @@
+{
+  "schemaVersion": 1,
+  "id": "rozengracht-212",
+  "name": "Bianco",
+  "address": "Rozengracht 212",
+  "caseId": "case-30",
+  "synthetic": false,
+  "buildingId": "0363100012174564",
+  "geometryRevision": "bf8576feba216baf768086e2ec7068d0ad3e16dc2edff15623cf4113bee3ae9e",
+  "sourceBundle": "rozengracht-212.json",
+  "footprint": [
+    [
+      4.418545376588115,
+      10.047972768426094
+    ],
+    [
+      -0.01028220362687815,
+      10.038684887787252
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      4.425121467259409,
+      0.0
+    ]
+  ],
+  "height": 16.253000009059903,
+  "storeys": [
+    {
+      "id": "ground",
+      "bottom": 0,
+      "top": 4.0
+    },
+    {
+      "id": "upper_1",
+      "bottom": 4.0,
+      "top": 6.892446669022242
+    },
+    {
+      "id": "upper_2",
+      "bottom": 6.892446669022242,
+      "top": 9.784893338044483
+    },
+    {
+      "id": "upper_3",
+      "bottom": 9.784893338044483,
+      "top": 12.677340007066725
+    }
+  ],
+  "roof": {
+    "kind": "pitched",
+    "eaves": 12.677340007066725,
+    "top": 15.803000009059904,
+    "status": "inferred",
+    "setback": 0.24
+  },
+  "gable": {
+    "profile": [
+      [
+        0.0,
+        12.677340007066725
+      ],
+      [
+        0.5310145760711291,
+        12.677340007066725
+      ],
+      [
+        0.8407730787792879,
+        13.652520007610319
+      ],
+      [
+        1.1062803668148524,
+        14.790230008244514
+      ],
+      [
+        1.4602900841956052,
+        15.602880008697507
+      ],
+      [
+        1.9028022309215462,
+        16.090470008969305
+      ],
+      [
+        2.5223192363378635,
+        16.090470008969305
+      ],
+      [
+        2.9648313830638044,
+        15.602880008697507
+      ],
+      [
+        3.3188411004445575,
+        14.790230008244514
+      ],
+      [
+        3.584348388480122,
+        13.652520007610319
+      ],
+      [
+        3.8941068911882804,
+        12.677340007066725
+      ],
+      [
+        4.42512146725941,
+        12.677340007066725
+      ]
+    ],
+    "status": "inferred"
+  },
+  "frontages": [
+    {
+      "id": "street",
+      "origin": [
+        0,
+        0
+      ],
+      "rotation": 0,
+      "width": 4.42512146725941,
+      "openings": [
+        {
+          "id": "Upper full:window_1",
+          "x": 2.212560733629705,
+          "z": 14.14712550755143,
+          "width": 0.8097972285084718,
+          "height": 1.7220410008788107,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.23,
+          "storey": "attic",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "410f61590e953b0982563bfebf25d247f7f9b228ce0005ca0f07ecd1aa5403b7",
+            "reason": "Prototype photo feature; metric registration unresolved"
+          },
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Upper full:window_2",
+          "x": 0.7522706494340997,
+          "z": 11.231116672555604,
+          "width": 1.0177779374696643,
+          "height": 2.082561601696014,
+          "kind": "window",
+          "head": "segmental",
+          "transom": 0.23,
+          "storey": "upper_3",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "410f61590e953b0982563bfebf25d247f7f9b228ce0005ca0f07ecd1aa5403b7",
+            "reason": "Prototype photo feature; metric registration unresolved"
+          },
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Upper full:door_1",
+          "x": 2.212560733629705,
+          "z": 11.231116672555604,
+          "width": 1.0177779374696643,
+          "height": 2.082561601696014,
+          "kind": "door",
+          "head": "rectangular",
+          "transom": 0.23,
+          "storey": "upper_3",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "410f61590e953b0982563bfebf25d247f7f9b228ce0005ca0f07ecd1aa5403b7",
+            "reason": "Prototype photo feature; metric registration unresolved"
+          },
+          "balcony": true,
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Upper full:window_3",
+          "x": 3.6728508178253105,
+          "z": 11.231116672555604,
+          "width": 1.0177779374696643,
+          "height": 2.082561601696014,
+          "kind": "window",
+          "head": "segmental",
+          "transom": 0.23,
+          "storey": "upper_3",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "410f61590e953b0982563bfebf25d247f7f9b228ce0005ca0f07ecd1aa5403b7",
+            "reason": "Prototype photo feature; metric registration unresolved"
+          },
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Upper full:window_4",
+          "x": 0.7522706494340997,
+          "z": 8.338670003533363,
+          "width": 1.0177779374696643,
+          "height": 2.082561601696014,
+          "kind": "window",
+          "head": "segmental",
+          "transom": 0.23,
+          "storey": "upper_2",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "410f61590e953b0982563bfebf25d247f7f9b228ce0005ca0f07ecd1aa5403b7",
+            "reason": "Prototype photo feature; metric registration unresolved"
+          },
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Upper full:door_2",
+          "x": 2.212560733629705,
+          "z": 8.338670003533363,
+          "width": 1.0177779374696643,
+          "height": 2.082561601696014,
+          "kind": "door",
+          "head": "rectangular",
+          "transom": 0.23,
+          "storey": "upper_2",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "410f61590e953b0982563bfebf25d247f7f9b228ce0005ca0f07ecd1aa5403b7",
+            "reason": "Prototype photo feature; metric registration unresolved"
+          },
+          "balcony": true,
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Upper full:window_5",
+          "x": 3.6728508178253105,
+          "z": 8.338670003533363,
+          "width": 1.0177779374696643,
+          "height": 2.082561601696014,
+          "kind": "window",
+          "head": "segmental",
+          "transom": 0.23,
+          "storey": "upper_2",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "410f61590e953b0982563bfebf25d247f7f9b228ce0005ca0f07ecd1aa5403b7",
+            "reason": "Prototype photo feature; metric registration unresolved"
+          },
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Upper full:window_6",
+          "x": 0.7522706494340997,
+          "z": 5.446223334511121,
+          "width": 1.0177779374696643,
+          "height": 2.082561601696014,
+          "kind": "window",
+          "head": "segmental",
+          "transom": 0.23,
+          "storey": "upper_1",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "410f61590e953b0982563bfebf25d247f7f9b228ce0005ca0f07ecd1aa5403b7",
+            "reason": "Prototype photo feature; metric registration unresolved"
+          },
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Upper full:door_3",
+          "x": 2.212560733629705,
+          "z": 5.446223334511121,
+          "width": 1.0177779374696643,
+          "height": 2.082561601696014,
+          "kind": "door",
+          "head": "rectangular",
+          "transom": 0.23,
+          "storey": "upper_1",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "410f61590e953b0982563bfebf25d247f7f9b228ce0005ca0f07ecd1aa5403b7",
+            "reason": "Prototype photo feature; metric registration unresolved"
+          },
+          "balcony": true,
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Upper full:window_7",
+          "x": 3.6728508178253105,
+          "z": 5.446223334511121,
+          "width": 1.0177779374696643,
+          "height": 2.082561601696014,
+          "kind": "window",
+          "head": "segmental",
+          "transom": 0.23,
+          "storey": "upper_1",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "410f61590e953b0982563bfebf25d247f7f9b228ce0005ca0f07ecd1aa5403b7",
+            "reason": "Prototype photo feature; metric registration unresolved"
+          },
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Shop ground:door-1",
+          "x": 0.7080194347615055,
+          "z": 1.3695,
+          "width": 0.7080194347615055,
+          "height": 2.4989999999999997,
+          "kind": "door",
+          "head": "rectangular",
+          "transom": 0.2,
+          "storey": "ground",
+          "frameColour": "#c6c6b2",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "b07ef9008924fe9b89dd1f989c1f6c6eceedd9feb412c09a775f8c955f6ecda4",
+            "reason": "Cropped feature interpreted; threshold set to street datum"
+          },
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Shop ground:door-2",
+          "x": 3.717102032497904,
+          "z": 1.3695,
+          "width": 0.7080194347615055,
+          "height": 2.4989999999999997,
+          "kind": "door",
+          "head": "rectangular",
+          "transom": 0.2,
+          "storey": "ground",
+          "frameColour": "#c6c6b2",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "b07ef9008924fe9b89dd1f989c1f6c6eceedd9feb412c09a775f8c955f6ecda4",
+            "reason": "Cropped feature interpreted; threshold set to street datum"
+          },
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Shop ground:review:central-display",
+          "x": 2.212560733629705,
+          "z": 1.684159090909091,
+          "width": 2.0355558749393285,
+          "height": 3.128318181818182,
+          "kind": "window",
+          "head": "segmental",
+          "transom": 0.2,
+          "storey": "ground",
+          "frameColour": "#d6d4bc",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "b07ef9008924fe9b89dd1f989c1f6c6eceedd9feb412c09a775f8c955f6ecda4",
+            "reason": "Cropped feature interpreted; threshold set to street datum"
+          },
+          "glazingDepth": 0.1
+        }
+      ],
+      "storefront": {
+        "anchor": 2.212560733629705,
+        "finishColour": "#c7c5b8",
+        "height": 4.0,
+        "signs": [
+          {
+            "id": "ground:fascia-1",
+            "x": 2.212560733629705,
+            "z": 2.08,
+            "width": 1.9470534455941402,
+            "height": 0.34299999999999986,
+            "colour": "#263d32",
+            "text": "BIANCO",
+            "anchor": "storefront"
+          }
+        ],
+        "awnings": []
+      }
+    }
+  ],
+  "materials": {
+    "wall": "redbrick",
+    "wallColour": "#744b3e",
+    "roof": "slate",
+    "frame": "ivorytimber"
+  },
+  "details": {
+    "chimney": {
+      "x": 3.4073435297897454,
+      "y": 7.335020120951048,
+      "status": "inferred"
+    },
+    "bicycleSign": false
+  },
+  "placement": {
+    "anchor": [
+      4.8770607904449745,
+      52.37263107778729
+    ],
+    "xAxisBearingDegrees": 68.24667760224285,
+    "frontageLocal": [
+      [
+        316.64,
+        -370.63
+      ],
+      [
+        320.75,
+        -372.27
+      ]
+    ],
+    "inputFrameDeterminant": -0.9999999999999999,
+    "axes": "glTF x=along frontage,y=up,z=towards street",
+    "sourceRDFrame": {
+      "anchorRD": [
+        120259.18917002577,
+        487317.2520474554
+      ],
+      "xAxisRD": [
+        0.9287880638778129,
+        0.37061129556194533
+      ],
+      "yAxisRD": [
+        -0.3706112955619453,
+        0.9287880638778128
+      ],
+      "geometryRevision": "bf8576feba216baf768086e2ec7068d0ad3e16dc2edff15623cf4113bee3ae9e",
+      "buildingId": "0363100012174564",
+      "source": "Frozen 3DBAG coordinateFrame.originRD and ordered physical frontage; normalized source vertices checked within 1 mm."
+    }
+  },
+  "sourceShell": {
+    "surfaces": [
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              3.6163527076943214,
+              10.034300827339814,
+              15.683000009059906
+            ],
+            [
+              3.6163527076943214,
+              10.034300827339814,
+              0.0030000090599060503
+            ],
+            [
+              -0.013988316582494331,
+              10.02939700714848,
+              0.0030000090599060503
+            ],
+            [
+              -0.013988316582494331,
+              10.02939700714848,
+              15.733000009059907
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              -0.013988316582494331,
+              10.02939700714848,
+              15.733000009059907
+            ],
+            [
+              -0.013988316582494331,
+              10.02939700714848,
+              0.0030000090599060503
+            ],
+            [
+              -0.0037061129556160825,
+              -0.009287880638769681,
+              0.0030000090599060503
+            ],
+            [
+              -0.0037061129556160825,
+              -0.009287880638769681,
+              16.253000009059903
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              -0.0037061129556160825,
+              -0.009287880638769681,
+              16.253000009059903
+            ],
+            [
+              -0.0037061129556160825,
+              -0.009287880638769681,
+              0.0030000090599060503
+            ],
+            [
+              1.2664511113343129,
+              -0.010078819379323145,
+              0.0030000090599060503
+            ],
+            [
+              1.2664511113343129,
+              -0.010078819379323145,
+              16.243000009059905
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              4.411133150676862,
+              10.029397007148502,
+              13.453000009059906
+            ],
+            [
+              4.411133150676862,
+              10.029397007148502,
+              0.0030000090599060503
+            ],
+            [
+              3.6163527076943214,
+              10.034300827339814,
+              0.0030000090599060503
+            ],
+            [
+              3.6163527076943214,
+              10.034300827339814,
+              15.683000009059906
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              1.2664511113343129,
+              -0.010078819379323145,
+              16.243000009059905
+            ],
+            [
+              1.2664511113343129,
+              -0.010078819379323145,
+              0.0030000090599060503
+            ],
+            [
+              3.327275897156067,
+              0.4596032029963064,
+              0.0030000090599060503
+            ],
+            [
+              3.327275897156067,
+              0.4596032029963064,
+              16.193000009059904
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              3.327275897156067,
+              0.4596032029963064,
+              16.193000009059904
+            ],
+            [
+              3.327275897156067,
+              0.4596032029963064,
+              0.0030000090599060503
+            ],
+            [
+              4.415246032127693,
+              0.7037772913223286,
+              0.0030000090599060503
+            ],
+            [
+              4.415246032127693,
+              0.7037772913223286,
+              13.133000009059906
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              4.415246032127693,
+              0.7037772913223286,
+              13.133000009059906
+            ],
+            [
+              4.415246032127693,
+              0.7037772913223286,
+              0.0030000090599060503
+            ],
+            [
+              4.411133150676862,
+              10.029397007148502,
+              0.0030000090599060503
+            ],
+            [
+              4.411133150676862,
+              10.029397007148502,
+              13.453000009059906
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              1.2664511113343129,
+              -0.010078819379323145,
+              16.243000009059905
+            ],
+            [
+              3.327275897156067,
+              0.4596032029963064,
+              16.193000009059904
+            ],
+            [
+              3.6163527076943214,
+              10.034300827339814,
+              15.683000009059906
+            ],
+            [
+              -0.013988316582494331,
+              10.02939700714848,
+              15.733000009059907
+            ],
+            [
+              -0.0037061129556160825,
+              -0.009287880638769681,
+              16.253000009059903
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              4.415246032127693,
+              0.7037772913223286,
+              13.133000009059906
+            ],
+            [
+              4.411133150676862,
+              10.029397007148502,
+              13.453000009059906
+            ],
+            [
+              3.6163527076943214,
+              10.034300827339814,
+              15.683000009059906
+            ],
+            [
+              3.327275897156067,
+              0.4596032029963064,
+              16.193000009059904
+            ]
+          ]
+        ]
+      }
+    ],
+    "groundNAP": 0.796999990940094,
+    "sourceOffsetNAP": 0.65,
+    "source": "3DBAG LoD2.2",
+    "pointCloudYear": 2023
+  },
+  "heightEvidence": [
+    {
+      "source": "3DBAG LoD2.2",
+      "year": 2023,
+      "datum": "NAP",
+      "groundNAP": 0.796999990940094,
+      "roofStatisticRelativeM": 16.02,
+      "rawSurfaceExtentM": 16.25,
+      "frontWallTopRelativeM": 16.253000009059903,
+      "eavesChoiceM": 12.677340007066725,
+      "uncertainty": "frontwall binding <=0.08m; source roof shape uncertain; ground datum from cached model",
+      "lineage": "AHN-derived 3DBAG, not independent AHN evidence"
+    }
+  ],
+  "heightChoice": {
+    "value": 16.253000009059903,
+    "reportedRoofStatisticM": 16.02,
+    "surfaceRange": 16.25,
+    "frontWallTopM": 16.253000009059903,
+    "eavesM": 12.677340007066725,
+    "reason": "Front wall anchors dimensions. Shaped front-wall minimum top anchors shoulders; flat uncertain 3DBAG roofs use explicit photo-inferred eaves fractions. Key Color roof peak remains inferred from roof statistic, not trusted eaves; no maximum-surface stretching."
+  },
+  "targetAppearanceDate": "2023-02-13T09:46:47.281620Z",
+  "assumptions": [
+    "Metric crop registration unresolved; opening dimensions remain illustrative; geometry uses through-wall apertures, not verified photographic measurements.",
+    "Unseen side/rear windows not asserted; roof volume and chimney inferred.",
+    "Source years must be reviewed per region before authoring geometry.",
+    "Source footprint is exact; generated side/rear walls currently use one eaves extrusion. Exact 3DBAG semantic walls are retained in SOURCE overlay; multiple rear roof/body volumes need reconstruction before acceptance."
+  ],
+  "construction": {
+    "apertures": "through-wall",
+    "glazing": "recessed opaque fallback",
+    "dimensions": "authored within source storey datums; photographic registration unresolved"
+  }
+}

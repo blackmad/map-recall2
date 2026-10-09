@@ -1,0 +1,739 @@
+{
+  "updatedAt": "2026-10-01T20:30:00+02:00",
+  "referencePaths": [
+    "artifacts/gable-block/three-quarter.png",
+    "artifacts/building-library/visual-critique/before/user-r158.png"
+  ],
+  "reviewCriteria": [
+    "Inspect front, oblique, roof and ground renders independently.",
+    "Compare silhouette, roof-body join and material style to approved gable block.",
+    "Record visible defects separately from geometry/browser test results.",
+    "For R158 allow source-supported visible roof behind narrow stone shoulders; require a coherent planar roof return without separate ramp patches."
+  ],
+  "models": [
+    {
+      "id": "raised-neck-pitched",
+      "status": "reviewed_visual_improvement",
+      "before": {
+        "paths": {
+          "front": "artifacts/building-library/visual-critique/before/raised-neck-pitched-front.png",
+          "oblique": "artifacts/building-library/visual-critique/before/raised-neck-pitched-oblique.png",
+          "roof": "artifacts/building-library/visual-critique/before/raised-neck-pitched-roof.png",
+          "ground": "artifacts/building-library/visual-critique/before/raised-neck-pitched-ground.png"
+        },
+        "findings": [
+          "Roof triangles extend above the narrow shoulder silhouette in front view; gable reads applied to an exposed roof wedge.",
+          "Stepped crown reads castellated; compare neck proportions and continuous coping against approved neck house."
+        ]
+      },
+      "revised": {
+        "iteration": "roof-v1",
+        "status": "reviewed_visual_improvement",
+        "paths": {
+          "front": "artifacts/building-library/visual-critique/roof-v1/raised-neck-pitched-front.png",
+          "oblique": "artifacts/building-library/visual-critique/roof-v1/raised-neck-pitched-oblique.png",
+          "roof": "artifacts/building-library/visual-critique/roof-v1/raised-neck-pitched-roof.png",
+          "ground": "artifacts/building-library/visual-critique/roof-v1/raised-neck-pitched-ground.png"
+        },
+        "sha256": {
+          "front": "609316e8d9ecc52874bf2a9e71aae165288f72ecab71778c85e4dbcbe8e8fb08",
+          "oblique": "1aedd8033f6a9afbd4479a655d10d60be43c823e5a6a7a8bc51374f406dd20d6",
+          "roof": "74666076529fcd03527fcbe64ab5d5b019d9f78bd87e4959b78d86851e88b2c8",
+          "ground": "051cfaefd5592f86d7a74e4b1dbd5d7dceda6b90120a3716d1e14698c4939afa"
+        },
+        "reviewedViews": [
+          "front",
+          "oblique",
+          "roof",
+          "ground"
+        ],
+        "findings": [
+          "Front silhouette now screens roof at shoulders; neck crown and curved shoulders read clearly.",
+          "Oblique and roof views show clean gable/roof join with no prior triangular intrusions.",
+          "Ground view unchanged; no new visible joinery defect."
+        ]
+      },
+      "history": [
+        {
+          "iteration": "roof-v1",
+          "status": "reviewed_visual_improvement",
+          "paths": {
+            "front": "artifacts/building-library/visual-critique/roof-v1/raised-neck-pitched-front.png",
+            "oblique": "artifacts/building-library/visual-critique/roof-v1/raised-neck-pitched-oblique.png",
+            "roof": "artifacts/building-library/visual-critique/roof-v1/raised-neck-pitched-roof.png",
+            "ground": "artifacts/building-library/visual-critique/roof-v1/raised-neck-pitched-ground.png"
+          },
+          "sha256": {
+            "front": "609316e8d9ecc52874bf2a9e71aae165288f72ecab71778c85e4dbcbe8e8fb08",
+            "oblique": "1aedd8033f6a9afbd4479a655d10d60be43c823e5a6a7a8bc51374f406dd20d6",
+            "roof": "74666076529fcd03527fcbe64ab5d5b019d9f78bd87e4959b78d86851e88b2c8",
+            "ground": "051cfaefd5592f86d7a74e4b1dbd5d7dceda6b90120a3716d1e14698c4939afa"
+          },
+          "reviewedViews": [
+            "front",
+            "oblique",
+            "roof",
+            "ground"
+          ],
+          "findings": [
+            "Front silhouette now screens roof at shoulders; neck crown and curved shoulders read clearly.",
+            "Oblique and roof views show clean gable/roof join with no prior triangular intrusions.",
+            "Ground view unchanged; no new visible joinery defect."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "raised-bell-pitched",
+      "status": "reviewed_visual_improvement",
+      "before": {
+        "paths": {
+          "front": "artifacts/building-library/visual-critique/before/raised-bell-pitched-front.png",
+          "oblique": "artifacts/building-library/visual-critique/before/raised-bell-pitched-oblique.png",
+          "roof": "artifacts/building-library/visual-critique/before/raised-bell-pitched-roof.png",
+          "ground": "artifacts/building-library/visual-critique/before/raised-bell-pitched-ground.png"
+        },
+        "findings": [
+          "Roof triangles extend above the bell shoulder silhouette; roof cuts through the intended ornamental outline.",
+          "Broad horizontal eaves bar and thin shoulders make the bell look mounted on a shelf."
+        ]
+      },
+      "revised": {
+        "iteration": "roof-v1",
+        "status": "reviewed_visual_improvement",
+        "paths": {
+          "front": "artifacts/building-library/visual-critique/roof-v1/raised-bell-pitched-front.png",
+          "oblique": "artifacts/building-library/visual-critique/roof-v1/raised-bell-pitched-oblique.png",
+          "roof": "artifacts/building-library/visual-critique/roof-v1/raised-bell-pitched-roof.png",
+          "ground": "artifacts/building-library/visual-critique/roof-v1/raised-bell-pitched-ground.png"
+        },
+        "sha256": {
+          "front": "a9731745f2096b578ab9b18aaf8c478a8aeaf46cb4c8405af6d2790be7a64043",
+          "oblique": "889c87375627791c777808e591e6e7804c8dc498c7a529cf305dfc7af55136e0",
+          "roof": "e0d1a13e538ce37bd20a097d6a33b860266571d6959b996aa16676519615c55e",
+          "ground": "0692040015e85a928ec5341d61664b0eba6aabc9e6162a967ce9ab03e5c20eed"
+        },
+        "reviewedViews": [
+          "front",
+          "oblique",
+          "roof",
+          "ground"
+        ],
+        "findings": [
+          "Broader bell shoulders screen roof in front; coping follows a clear bell silhouette.",
+          "Oblique and roof views show clean roof planes behind gable without prior shoulder patches.",
+          "Ground view unchanged; no new visible joinery defect."
+        ]
+      },
+      "history": [
+        {
+          "iteration": "roof-v1",
+          "status": "reviewed_visual_improvement",
+          "paths": {
+            "front": "artifacts/building-library/visual-critique/roof-v1/raised-bell-pitched-front.png",
+            "oblique": "artifacts/building-library/visual-critique/roof-v1/raised-bell-pitched-oblique.png",
+            "roof": "artifacts/building-library/visual-critique/roof-v1/raised-bell-pitched-roof.png",
+            "ground": "artifacts/building-library/visual-critique/roof-v1/raised-bell-pitched-ground.png"
+          },
+          "sha256": {
+            "front": "a9731745f2096b578ab9b18aaf8c478a8aeaf46cb4c8405af6d2790be7a64043",
+            "oblique": "889c87375627791c777808e591e6e7804c8dc498c7a529cf305dfc7af55136e0",
+            "roof": "e0d1a13e538ce37bd20a097d6a33b860266571d6959b996aa16676519615c55e",
+            "ground": "0692040015e85a928ec5341d61664b0eba6aabc9e6162a967ce9ab03e5c20eed"
+          },
+          "reviewedViews": [
+            "front",
+            "oblique",
+            "roof",
+            "ground"
+          ],
+          "findings": [
+            "Broader bell shoulders screen roof in front; coping follows a clear bell silhouette.",
+            "Oblique and roof views show clean roof planes behind gable without prior shoulder patches.",
+            "Ground view unchanged; no new visible joinery defect."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gambrel-warehouse",
+      "status": "reviewed_visual_improvement",
+      "before": {
+        "paths": {
+          "front": "artifacts/building-library/visual-critique/before/gambrel-warehouse-front.png",
+          "oblique": "artifacts/building-library/visual-critique/before/gambrel-warehouse-oblique.png",
+          "roof": "artifacts/building-library/visual-critique/before/gambrel-warehouse-roof.png",
+          "ground": "artifacts/building-library/visual-critique/before/gambrel-warehouse-ground.png"
+        },
+        "findings": [
+          "Upper and lower roof slopes lack the distinct visual break of the approved gambrel; long side reads nearly a single plane.",
+          "Confirm front outline and roof break share the same geometry rather than a facade-only silhouette."
+        ]
+      },
+      "revised": {
+        "iteration": "roof-v1",
+        "status": "reviewed_visual_improvement",
+        "paths": {
+          "front": "artifacts/building-library/visual-critique/roof-v1/gambrel-warehouse-front.png",
+          "oblique": "artifacts/building-library/visual-critique/roof-v1/gambrel-warehouse-oblique.png",
+          "roof": "artifacts/building-library/visual-critique/roof-v1/gambrel-warehouse-roof.png",
+          "ground": "artifacts/building-library/visual-critique/roof-v1/gambrel-warehouse-ground.png"
+        },
+        "sha256": {
+          "front": "bf7f973813ae09a9a8d1f3dbd17ee63d4e74b0bf98efda222e50021e733e51e5",
+          "oblique": "cbd63d5d83522adc928670a5e87f6765f741d028c1ef523fa113e95773cb710c",
+          "roof": "301f9e1737e8aa71eb4329df13476a0c869a3c0b6e36d0bf04ce99997b592f41",
+          "ground": "c2cf08729b24911cb2c331250c8504a985a17fbaa2aca303a5946978edb85a3e"
+        },
+        "reviewedViews": [
+          "front",
+          "oblique",
+          "roof",
+          "ground"
+        ],
+        "findings": [
+          "Lower/upper slope break is clearer in roof and oblique views and agrees with front outline.",
+          "Break remains low contrast under neutral lighting; no visible roof tearing in these views.",
+          "Ground view unchanged; no new visible joinery defect."
+        ]
+      },
+      "history": [
+        {
+          "iteration": "roof-v1",
+          "status": "reviewed_visual_improvement",
+          "paths": {
+            "front": "artifacts/building-library/visual-critique/roof-v1/gambrel-warehouse-front.png",
+            "oblique": "artifacts/building-library/visual-critique/roof-v1/gambrel-warehouse-oblique.png",
+            "roof": "artifacts/building-library/visual-critique/roof-v1/gambrel-warehouse-roof.png",
+            "ground": "artifacts/building-library/visual-critique/roof-v1/gambrel-warehouse-ground.png"
+          },
+          "sha256": {
+            "front": "bf7f973813ae09a9a8d1f3dbd17ee63d4e74b0bf98efda222e50021e733e51e5",
+            "oblique": "cbd63d5d83522adc928670a5e87f6765f741d028c1ef523fa113e95773cb710c",
+            "roof": "301f9e1737e8aa71eb4329df13476a0c869a3c0b6e36d0bf04ce99997b592f41",
+            "ground": "c2cf08729b24911cb2c331250c8504a985a17fbaa2aca303a5946978edb85a3e"
+          },
+          "reviewedViews": [
+            "front",
+            "oblique",
+            "roof",
+            "ground"
+          ],
+          "findings": [
+            "Lower/upper slope break is clearer in roof and oblique views and agrees with front outline.",
+            "Break remains low contrast under neutral lighting; no visible roof tearing in these views.",
+            "Ground view unchanged; no new visible joinery defect."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "synthetic-warehouse-shutters",
+      "status": "reviewed_visual_improvement",
+      "before": {
+        "paths": {
+          "front": "artifacts/building-library/visual-critique/before/synthetic-warehouse-shutters-front.png",
+          "oblique": "artifacts/building-library/visual-critique/before/synthetic-warehouse-shutters-oblique.png",
+          "roof": "artifacts/building-library/visual-critique/before/synthetic-warehouse-shutters-roof.png",
+          "ground": "artifacts/building-library/visual-critique/before/synthetic-warehouse-shutters-ground.png"
+        },
+        "findings": [
+          "Shares weak gambrel slope break with the plain warehouse fixture.",
+          "Shutter styles and three opening angles are visually distinct in the oblique view; full revised four-view inspection still required."
+        ]
+      },
+      "revised": {
+        "iteration": "roof-v1",
+        "status": "reviewed_visual_improvement",
+        "paths": {
+          "front": "artifacts/building-library/visual-critique/roof-v1/synthetic-warehouse-shutters-front.png",
+          "oblique": "artifacts/building-library/visual-critique/roof-v1/synthetic-warehouse-shutters-oblique.png",
+          "roof": "artifacts/building-library/visual-critique/roof-v1/synthetic-warehouse-shutters-roof.png",
+          "ground": "artifacts/building-library/visual-critique/roof-v1/synthetic-warehouse-shutters-ground.png"
+        },
+        "sha256": {
+          "front": "d31fc7010b77f1f379e4152daf69af9732cac3019cb7aa79275bd5ae58155d02",
+          "oblique": "f67c55939ddf4601f226194cd4389f197ce58eaec712e96da20ae4e1b9e6dedc",
+          "roof": "e6fde6018161c165c422288e3cc1e6267001804053a2aab540e2441c9dc514b8",
+          "ground": "4488703bab0ee66c3e8cbf3d060dc45d7bbedeeb3a2540ce22bf6fec8a860ceb"
+        },
+        "reviewedViews": [
+          "front",
+          "oblique",
+          "roof",
+          "ground"
+        ],
+        "findings": [
+          "Gambrel break is clearer in roof/oblique; no tearing at facade join.",
+          "Front and ground show closed paired doors and open/edge-on shutters distinctly; oblique reveals leaf depth and hoist.",
+          "Slope contrast remains subtle in oblique lighting."
+        ]
+      },
+      "history": [
+        {
+          "iteration": "roof-v1",
+          "status": "reviewed_visual_improvement",
+          "paths": {
+            "front": "artifacts/building-library/visual-critique/roof-v1/synthetic-warehouse-shutters-front.png",
+            "oblique": "artifacts/building-library/visual-critique/roof-v1/synthetic-warehouse-shutters-oblique.png",
+            "roof": "artifacts/building-library/visual-critique/roof-v1/synthetic-warehouse-shutters-roof.png",
+            "ground": "artifacts/building-library/visual-critique/roof-v1/synthetic-warehouse-shutters-ground.png"
+          },
+          "sha256": {
+            "front": "d31fc7010b77f1f379e4152daf69af9732cac3019cb7aa79275bd5ae58155d02",
+            "oblique": "f67c55939ddf4601f226194cd4389f197ce58eaec712e96da20ae4e1b9e6dedc",
+            "roof": "e6fde6018161c165c422288e3cc1e6267001804053a2aab540e2441c9dc514b8",
+            "ground": "4488703bab0ee66c3e8cbf3d060dc45d7bbedeeb3a2540ce22bf6fec8a860ceb"
+          },
+          "reviewedViews": [
+            "front",
+            "oblique",
+            "roof",
+            "ground"
+          ],
+          "findings": [
+            "Gambrel break is clearer in roof/oblique; no tearing at facade join.",
+            "Front and ground show closed paired doors and open/edge-on shutters distinctly; oblique reveals leaf depth and hoist.",
+            "Slope contrast remains subtle in oblique lighting."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rozengracht-158",
+      "status": "reviewed_visual_improvement",
+      "before": {
+        "paths": {
+          "front": "artifacts/building-library/visual-critique/before/rozengracht-158-front.png",
+          "oblique": "artifacts/building-library/visual-critique/before/rozengracht-158-oblique.png",
+          "roof": "artifacts/building-library/visual-critique/before/rozengracht-158-roof.png",
+          "ground": "artifacts/building-library/visual-critique/before/rozengracht-158-ground.png"
+        },
+        "findings": [
+          "Orange canopy and TABAK sign overlap at different heights; canopy ends partway across sign.",
+          "Fascia crosses shop glazing and obscures clean shop/door joinery.",
+          "Roof triangles flank the narrow raised gable; review shared gable correction separately."
+        ]
+      },
+      "revised": {
+        "iteration": "combined-v2",
+        "status": "reviewed_visual_improvement",
+        "paths": {
+          "front": "artifacts/building-library/visual-critique/combined-v2/rozengracht-158-front.png",
+          "oblique": "artifacts/building-library/visual-critique/combined-v2/rozengracht-158-oblique.png",
+          "roof": "artifacts/building-library/visual-critique/combined-v2/rozengracht-158-roof.png",
+          "ground": "artifacts/building-library/visual-critique/combined-v2/rozengracht-158-ground.png"
+        },
+        "sha256": {
+          "front": "6c59a8e6ff1a9723cd081f48ef334ca99153c497253ed504d067bed600496cbd",
+          "oblique": "ff7521880e965f67a5d23a471348404e30e2b26c508ff59682d5ae76b0559a85",
+          "roof": "8a1b398db58f8d6fcd71e053b0edad0457d63efb4592a1411f188a383b33fc12",
+          "ground": "062d240b3c77d0ab5ec32ad1766667d0fa39c27e967cd992c0901940c5d989fa"
+        },
+        "reviewedViews": [
+          "front",
+          "oblique",
+          "roof",
+          "ground"
+        ],
+        "findings": [
+          "Single coherent transverse front roof return now meets longitudinal pitches symmetrically; separate shoulder ramps are removed.",
+          "Source-supported dark roof remains visible behind narrow stone shoulders; no visible roof tearing or join blocker in the four reviewed views.",
+          "Storefront matches simplified dated2022 motif: rectangular frame, curved gridded transom, valance below arch, uninterrupted shop glass, blue base and clear lettering.",
+          "Dark lower residence-door panel removes prior pale mismatch; no duplicated panel or visible ground collision.",
+          "Real reconstruction remains a candidate: metric feature registration, unseen rear details and inferred roof depth/topology are unresolved. Visual improvement is not photographic reconstruction acceptance."
+        ]
+      },
+      "history": [
+        {
+          "iteration": 1,
+          "status": "changes_requested",
+          "paths": {
+            "front": "artifacts/building-library/visual-critique/revision-1/rozengracht-158-front.png",
+            "oblique": "artifacts/building-library/visual-critique/revision-1/rozengracht-158-oblique.png",
+            "roof": "artifacts/building-library/visual-critique/revision-1/rozengracht-158-roof.png",
+            "ground": "artifacts/building-library/visual-critique/revision-1/rozengracht-158-ground.png"
+          },
+          "sha256": {
+            "front": "756d4fb9a24ced679d38c45ece1d1014c38f1ba16e6a6a7f57f60e84944a30f4",
+            "oblique": "6f1eaad6eb3ac1fd6db60993cc0adfca47fe77b96daa6640ec68a88b99c21380",
+            "roof": "672f296fac16d661b39266baa99f431033a88611cd1d26462caff8ab6a18feb3",
+            "ground": "61ecaefcde3cc592dedf84786870c28417cffc4dc641093aa9c4f0d072e45d94"
+          },
+          "reviewedViews": [
+            "front",
+            "oblique",
+            "roof",
+            "ground"
+          ],
+          "findings": [
+            "Orange sign/window collision corrected; storefront and door are visually separated.",
+            "Center mullion bisects lettering; binding agent removing it and moving lettering nearer glass.",
+            "Roof view still shows ramp-like triangular shoulder patches.",
+            "Dated 2022 ground evidence shows gridded upper transom, valance below arch and blue lower shop zone; simplified joinery still differs, and metric registration remains unresolved."
+          ]
+        },
+        {
+          "iteration": "roof-v1",
+          "status": "changes_requested",
+          "paths": {
+            "front": "artifacts/building-library/visual-critique/roof-v1/rozengracht-158-front.png",
+            "oblique": "artifacts/building-library/visual-critique/roof-v1/rozengracht-158-oblique.png",
+            "roof": "artifacts/building-library/visual-critique/roof-v1/rozengracht-158-roof.png",
+            "ground": "artifacts/building-library/visual-critique/roof-v1/rozengracht-158-ground.png"
+          },
+          "sha256": {
+            "front": "1df15795282c5f6529b97d85854c1eb223d4c89d196446313c3c5d73d9f0e6b9",
+            "oblique": "f0bbdbc7b69a4d4b0f15523c694e0d235778ace35b78b4fdc0f50c1a4711c48f",
+            "roof": "4c3eb65e1dc0ed255b1a69fa1cfcbb3c629c82d6399351906682c25459cddeae",
+            "ground": "175fdef7876c922ac315e1018364f664cabd089cf304616c3b6273f203802949"
+          },
+          "reviewedViews": [
+            "front",
+            "oblique",
+            "roof",
+            "ground"
+          ],
+          "findings": [
+            "Rejected roof join: triangular ramp-like patches persist either side of narrow gable in roof/oblique, with exposed front shoulder wedges.",
+            "Ground lettering is no longer bisected by a center mullion and orange sign/glazing collision is removed.",
+            "Storefront remains an intermediate simplified assembly pending dated-source transom, awning and lower-zone revision; registration unresolved."
+          ]
+        },
+        {
+          "iteration": "storefront-v3",
+          "status": "storefront_reviewed_roof_changes_requested",
+          "paths": {
+            "front": "artifacts/building-library/visual-critique/storefront-v3/rozengracht-158-front.png",
+            "oblique": "artifacts/building-library/visual-critique/storefront-v3/rozengracht-158-oblique.png",
+            "roof": "artifacts/building-library/visual-critique/storefront-v3/rozengracht-158-roof.png",
+            "ground": "artifacts/building-library/visual-critique/storefront-v3/rozengracht-158-ground.png"
+          },
+          "sha256": {
+            "front": "414bff4cb3844faa0b1d0bafae004b7b2e7f8d1b58a2b9d056cdb209e8f31d64",
+            "oblique": "f2a432a1fabf3a24727dd3a805345101c4e94ff1e7c1b6c4d9b97aed2f3b0590",
+            "roof": "9ac1ba581bfbdc80ed6a9196f7b775753f5d03f0057207374945f85a7ae8f358",
+            "ground": "963d0ad9d5b658ae342647d884b721d9e1840d804f0c0ab18550c80460d50167"
+          },
+          "reviewedViews": [
+            "front",
+            "oblique",
+            "roof",
+            "ground"
+          ],
+          "findings": [
+            "Source-supported storefront motif now coherent: rectangular outer frame, curved gridded transom, orange valance below arch, continuous display pane and blue lower zone.",
+            "Lettering has clear margins and no center mullion collision. No visible ground-view blocker.",
+            "Pale lower residence-door panel is a remaining simplification relative to dark dated source; metric registration remains inferred.",
+            "Roof retains individual shoulder ramps; awaits coherent planar front return. Visible roof behind narrow stone shoulders is source-supported and is not itself a defect."
+          ]
+        },
+        {
+          "iteration": "combined-v2",
+          "status": "reviewed_visual_improvement",
+          "paths": {
+            "front": "artifacts/building-library/visual-critique/combined-v2/rozengracht-158-front.png",
+            "oblique": "artifacts/building-library/visual-critique/combined-v2/rozengracht-158-oblique.png",
+            "roof": "artifacts/building-library/visual-critique/combined-v2/rozengracht-158-roof.png",
+            "ground": "artifacts/building-library/visual-critique/combined-v2/rozengracht-158-ground.png"
+          },
+          "sha256": {
+            "front": "6c59a8e6ff1a9723cd081f48ef334ca99153c497253ed504d067bed600496cbd",
+            "oblique": "ff7521880e965f67a5d23a471348404e30e2b26c508ff59682d5ae76b0559a85",
+            "roof": "8a1b398db58f8d6fcd71e053b0edad0457d63efb4592a1411f188a383b33fc12",
+            "ground": "062d240b3c77d0ab5ec32ad1766667d0fa39c27e967cd992c0901940c5d989fa"
+          },
+          "reviewedViews": [
+            "front",
+            "oblique",
+            "roof",
+            "ground"
+          ],
+          "findings": [
+            "Single coherent transverse front roof return now meets longitudinal pitches symmetrically; separate shoulder ramps are removed.",
+            "Source-supported dark roof remains visible behind narrow stone shoulders; no visible roof tearing or join blocker in the four reviewed views.",
+            "Storefront matches simplified dated2022 motif: rectangular frame, curved gridded transom, valance below arch, uninterrupted shop glass, blue base and clear lettering.",
+            "Dark lower residence-door panel removes prior pale mismatch; no duplicated panel or visible ground collision.",
+            "Real reconstruction remains a candidate: metric feature registration, unseen rear details and inferred roof depth/topology are unresolved. Visual improvement is not photographic reconstruction acceptance."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lauriergracht-37",
+      "status": "primary_front_stylized_reviewed",
+      "before": {
+        "paths": {
+          "front": "artifacts/building-library/visual-critique/lauriergracht-37/before-front.png",
+          "oblique": "artifacts/building-library/visual-critique/lauriergracht-37/before-oblique.png",
+          "roof": "artifacts/building-library/visual-critique/lauriergracht-37/before-roof.png",
+          "ground": "artifacts/building-library/visual-critique/lauriergracht-37/before-ground.png"
+        },
+        "findings": [
+          "A single 14.78 m wall was wrongly treated as the whole owner front; the full facade includes a same-owner left wing and five bay groups.",
+          "Prior three-bay layout omitted two complete groups; nearest-vertex placement anchor was about 3.112 m from the selected source origin."
+        ]
+      },
+      "revised": {
+        "iteration": "scope-v3",
+        "status": "primary_front_stylized_reviewed",
+        "paths": {
+          "front": "artifacts/building-library/visual-critique/lauriergracht-37/scope-v3/lauriergracht-37-front.png",
+          "oblique": "artifacts/building-library/visual-critique/lauriergracht-37/scope-v3/lauriergracht-37-oblique.png",
+          "roof": "artifacts/building-library/visual-critique/lauriergracht-37/scope-v3/lauriergracht-37-roof.png",
+          "ground": "artifacts/building-library/visual-critique/lauriergracht-37/scope-v3/lauriergracht-37-ground.png"
+        },
+        "sha256": {
+          "front": "427bda8cb38d5e10b77c7f2fecdda00e63faae6bc36554aa8ca7ec49fac0704b",
+          "oblique": "ae36b7e31b75a7e6b5871cf83569ec189f61c7bb474e13dad7cfa06a25fa12aa",
+          "roof": "9cb936328e22a76b6eeebe3149b8f4e84135dd627b61e9d7c2d945493b5de9bb",
+          "ground": "d767a8fff9e600041e99520aa7450beccc3d6386820a24de751eae31ad73ec7e"
+        },
+        "reviewedViews": [
+          "front",
+          "oblique",
+          "roof",
+          "ground"
+        ],
+        "findings": [
+          "Full same-owner five-bay front restored; exact 20.975 m composite envelope maps original padded crop rather than stretching the narrow crop.",
+          "Band crosses upper half of highest windows; middle windows shortened, ground windows raised, and dark entrance gains flanking glazing and canopy.",
+          "Unsupported horizontal ground course removed; shared horizontal upper-light grid bars added.",
+          "Exact source-derived compound rear/roof volumes retained; rear appearance and independent metric registration remain unknown.",
+          "Exact source anchor passes independent audit; actual game placement transform remains unverified.",
+          "Coordinator independently reviewed all four v3 views and approved simplified primary-front likeness. Whole-owner rear appearance remains unreviewed.",
+          "Canonical public export integrated; coordinator GLB and browser checks passed."
+        ]
+      },
+      "history": [
+        {
+          "iteration": "scope-v1",
+          "status": "changes_requested",
+          "paths": {
+            "front": "artifacts/building-library/visual-critique/lauriergracht-37/scope-v1/lauriergracht-37-front.png",
+            "oblique": "artifacts/building-library/visual-critique/lauriergracht-37/scope-v1/lauriergracht-37-oblique.png",
+            "roof": "artifacts/building-library/visual-critique/lauriergracht-37/scope-v1/lauriergracht-37-roof.png",
+            "ground": "artifacts/building-library/visual-critique/lauriergracht-37/scope-v1/lauriergracht-37-ground.png"
+          },
+          "reviewedViews": [
+            "front",
+            "oblique",
+            "roof",
+            "ground"
+          ],
+          "findings": [
+            "Composite five-bay front and compound source volumes restored.",
+            "Appearance rejected: pale band above windows, incorrect uniform row proportions, low ground windows and generic pale entrance."
+          ]
+        },
+        {
+          "iteration": "scope-v2",
+          "status": "changes_requested",
+          "paths": {
+            "front": "artifacts/building-library/visual-critique/lauriergracht-37/scope-v2/lauriergracht-37-front.png",
+            "oblique": "artifacts/building-library/visual-critique/lauriergracht-37/scope-v2/lauriergracht-37-oblique.png",
+            "roof": "artifacts/building-library/visual-critique/lauriergracht-37/scope-v2/lauriergracht-37-roof.png",
+            "ground": "artifacts/building-library/visual-critique/lauriergracht-37/scope-v2/lauriergracht-37-ground.png"
+          },
+          "reviewedViews": [
+            "front",
+            "oblique",
+            "roof",
+            "ground"
+          ],
+          "findings": [
+            "Pale band, row proportions and entrance improved.",
+            "Unsupported long course above ground remained; upper lights lacked the photographed horizontal grid bars."
+          ]
+        }
+      ],
+      "scope": "Primary visible front under review; source-derived rear geometry retained, rear appearance unknown.",
+      "placementAuditPath": "artifacts/building-library/placement-audit.json"
+    },
+    {
+      "id": "rozengracht-251",
+      "status": "lettering_reviewed",
+      "scope": "Storefront business lettering; primary-front identity/metric registration and unseen rear appearance remain existing caveats.",
+      "before": {
+        "paths": {
+          "front": "artifacts/moeders-sign-review/v1/rozengracht-251-front.png",
+          "ground": "artifacts/moeders-sign-review/v1/rozengracht-251-ground.png",
+          "oblique": "artifacts/moeders-sign-review/v1/rozengracht-251-oblique.png",
+          "roof": "artifacts/moeders-sign-review/v1/rozengracht-251-roof.png"
+        },
+        "findings": [
+          "Pale lowercase moeders belongs centered on upper dark fascia, consistent across dated sources.",
+          "Shortname renders too small because generic .22m font default does not grow to fascia bounds; explicit reusable font size needed.",
+          "All4 reviewed: no new overlaps, detached lettering or roof changes."
+        ]
+      },
+      "revised": {
+        "iteration": "sign-v2",
+        "paths": {
+          "front": "artifacts/moeders-sign-review/v2/rozengracht-251-front.png",
+          "ground": "artifacts/moeders-sign-review/v2/rozengracht-251-ground.png",
+          "oblique": "artifacts/moeders-sign-review/v2/rozengracht-251-oblique.png",
+          "roof": "artifacts/moeders-sign-review/v2/rozengracht-251-roof.png"
+        },
+        "findings": [
+          "Readable pale lowercase moeders centered on photo-supported upper dark fascia; clear margins and no substrate/text overlap.",
+          "Front/ground/oblique clearly identify business; roofview introduces no geometry regression.",
+          "Simplified font omits original logo flourishes; owner footprint/height/roof/other openings unchanged.",
+          "Coordinator independently reviewed all four renders and accepted the readable attached name."
+        ]
+      },
+      "history": []
+    },
+    {
+      "id": "boomstraat-48-50",
+      "status": "visible_street_faces_stylized_reviewed",
+      "scope": "All three evidenced street fronts reviewed, including raised side sills and wide three-pane front ground glazing. Crop registration disagreement and unseen rear remain explicit.",
+      "before": {
+        "paths": {
+          "front": "artifacts/jordaan-building-library/boomstraat-48-50/v5/boomstraat-48-50-front.png",
+          "ground": "artifacts/jordaan-building-library/boomstraat-48-50/v5/boomstraat-48-50-ground.png",
+          "oblique": "artifacts/jordaan-building-library/boomstraat-48-50/v5/boomstraat-48-50-oblique.png",
+          "roof": "artifacts/jordaan-building-library/boomstraat-48-50/v5/boomstraat-48-50-roof.png"
+        },
+        "findings": [
+          "Earlier iteration retained for the self-critique history; see durable critique artifacts for rejected details."
+        ]
+      },
+      "revised": {
+        "paths": {
+          "front": "artifacts/jordaan-building-library/boomstraat-48-50/v6/boomstraat-48-50-front.png",
+          "ground": "artifacts/jordaan-building-library/boomstraat-48-50/v6/boomstraat-48-50-ground.png",
+          "oblique": "artifacts/jordaan-building-library/boomstraat-48-50/v6/boomstraat-48-50-oblique.png",
+          "roof": "artifacts/jordaan-building-library/boomstraat-48-50/v6/boomstraat-48-50-roof.png"
+        },
+        "findings": [
+          "All three evidenced street fronts reviewed, including raised side sills and wide three-pane front ground glazing. Crop registration disagreement and unseen rear remain explicit."
+        ]
+      },
+      "history": []
+    },
+    {
+      "id": "bloemstraat-3-5-7",
+      "status": "visible_street_faces_stylized_reviewed",
+      "scope": "Source-supported open upper atrium and stepped facade reviewed. Explicit basal closure, owned aperture cuts and inferred atrium cut are recorded; ground entrance remains occluded and unresolved.",
+      "before": {
+        "paths": {
+          "front": "artifacts/open-atrium-pilot/v1/build/bloemstraat-3-5-7-front.png",
+          "ground": "artifacts/open-atrium-pilot/v1/build/bloemstraat-3-5-7-ground.png",
+          "oblique": "artifacts/open-atrium-pilot/v1/build/bloemstraat-3-5-7-oblique.png",
+          "roof": "artifacts/open-atrium-pilot/v1/build/bloemstraat-3-5-7-roof.png"
+        },
+        "findings": [
+          "Earlier iteration retained for the self-critique history; see durable critique artifacts for rejected details."
+        ]
+      },
+      "revised": {
+        "paths": {
+          "front": "artifacts/building-library/bloemstraat-3-5-7-front.png",
+          "ground": "artifacts/building-library/bloemstraat-3-5-7-ground.png",
+          "oblique": "artifacts/building-library/bloemstraat-3-5-7-oblique.png",
+          "roof": "artifacts/building-library/bloemstraat-3-5-7-roof.png"
+        },
+        "findings": [
+          "Source-supported open upper atrium and stepped facade reviewed. Explicit basal closure, owned aperture cuts and inferred atrium cut are recorded; ground entrance remains occluded and unresolved."
+        ]
+      },
+      "history": []
+    }
+  ],
+  "additionalFixtureReviews": [
+    {
+      "id": "synthetic-shop-transom",
+      "status": "reviewed_visual_improvement",
+      "paths": {
+        "front": "artifacts/r158-ground-review/fixture-build/synthetic-shop-transom-front.png",
+        "oblique": "artifacts/r158-ground-review/fixture-build/synthetic-shop-transom-oblique.png",
+        "roof": "artifacts/r158-ground-review/fixture-build/synthetic-shop-transom-roof.png",
+        "ground": "artifacts/r158-ground-review/fixture-build/synthetic-shop-transom-ground.png"
+      },
+      "reviewedViews": [
+        "front",
+        "oblique",
+        "roof",
+        "ground"
+      ],
+      "findings": [
+        "Narrow shop bay preserves curved gridded transom, valance and blue base with clear lettering.",
+        "No visible collision with neighboring raised entrance; simple roof join clean."
+      ]
+    }
+  ],
+  "finalGroundRegression": {
+    "updatedAt": "2026-10-01T14:40:51.744337+00:00",
+    "scope": "Focused independent visual regression of sign fitting, lower door seams and glazing in five original real candidates; not photographic acceptance.",
+    "models": [
+      {
+        "id": "elandsgracht-96",
+        "view": "ground",
+        "status": "no_new_visible_regression",
+        "path": "artifacts/building-library/visual-critique/final-ground-regression/elandsgracht-96-ground.png",
+        "sha256": "0a0cd8ca41972bd1b8a004d7291355ff991e3fc497868107d903d3beb9347a0b",
+        "findings": [
+          "Both upper signs and awning lettering remain legible with margins; storefront glazing unchanged and clean."
+        ]
+      },
+      {
+        "id": "lauriergracht-50",
+        "view": "ground",
+        "status": "no_new_visible_regression",
+        "path": "artifacts/building-library/visual-critique/final-ground-regression/lauriergracht-50-ground.png",
+        "sha256": "0af9959bfef8f7d7b6e0429097bbd8ef288a754f3ef7aa7dcfbb04ed1b4ed71b",
+        "findings": [
+          "DE FIETSENMAKER fascia and OPEN plaque remain legible; both dark lower doors show no open kick-panel seam."
+        ]
+      },
+      {
+        "id": "rozengracht-158",
+        "view": "ground",
+        "status": "no_new_visible_regression",
+        "path": "artifacts/building-library/visual-critique/final-ground-regression/rozengracht-158-ground.png",
+        "sha256": "3b60cfcaba1fca82ba826f3cea546742587c1a0f948f6b63a91f6693b77757ec",
+        "findings": [
+          "Corrected source-motif storefront retained, lettering unobstructed; dark lower residence panel clean."
+        ]
+      },
+      {
+        "id": "rozengracht-160",
+        "view": "ground",
+        "status": "no_new_visible_regression",
+        "path": "artifacts/building-library/visual-critique/final-ground-regression/rozengracht-160-ground.png",
+        "sha256": "4313caffbd00706b829f84a2d606b7b510349892685e3744a252ed442e3421a1",
+        "findings": [
+          "BAR THEO fascia stays centered and legible; dark lower door has no visible open seam."
+        ]
+      },
+      {
+        "id": "rozengracht-212",
+        "view": "ground",
+        "status": "no_new_visible_regression",
+        "path": "artifacts/building-library/visual-critique/final-ground-regression/rozengracht-212-ground.png",
+        "sha256": "1673f207181509d927069f10ff6fb46beffd93066d8d0526b71f608143b3e67c",
+        "findings": [
+          "BIANCO lettering stays centered inside dark sign with clear margins; pale door panels and glazing remain clean."
+        ]
+      }
+    ]
+  },
+  "verifiedPublicBaseline": {
+    "buildings": 32,
+    "realCandidates": 13,
+    "syntheticStudies": 19,
+    "selectorEntries": 33,
+    "trianglesExcludingGallery": 117333,
+    "bytesExcludingGallery": 7954768,
+    "GLBIntegrity": "passed",
+    "roundtrip": "passed",
+    "browser": "passed",
+    "errors": [],
+    "mobileOverflow": false,
+    "actualConsumerPlacementsChecked": 13,
+    "maxFootprintErrorM": 0.000281432,
+    "maxRoofErrorM": 0.000562305,
+    "maxDrawCalls": 20
+  }
+}

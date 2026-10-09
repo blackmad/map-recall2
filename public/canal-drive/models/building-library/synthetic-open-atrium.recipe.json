@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "id": "synthetic-open-atrium",
+  "name": "Open atrium structural frame study",
+  "synthetic": true,
+  "style": "simple",
+  "footprint": [
+    [
+      0,
+      0
+    ],
+    [
+      10,
+      0
+    ],
+    [
+      10,
+      8
+    ],
+    [
+      0,
+      8
+    ]
+  ],
+  "storeys": [
+    {
+      "id": "ground",
+      "bottom": 0,
+      "top": 3
+    },
+    {
+      "id": "upper_1",
+      "bottom": 3,
+      "top": 9.5
+    }
+  ],
+  "roof": {
+    "kind": "flat",
+    "eaves": 9.5,
+    "top": 9.5,
+    "hipEndRun": 2.2,
+    "setback": 0.24,
+    "status": "synthetic"
+  },
+  "gable": {
+    "family": "straight",
+    "rise": 1,
+    "profile": [
+      [
+        0,
+        9.5
+      ],
+      [
+        10,
+        9.5
+      ]
+    ],
+    "provenance": {
+      "basis": "inferred",
+      "note": "Parameterized silhouette; not measured knots"
+    }
+  },
+  "materials": {
+    "wall": "brownbrick",
+    "wallColour": "#6f5848",
+    "roof": "slate",
+    "frame": "ivorytimber"
+  },
+  "details": {
+    "coveringThickness": 0.08,
+    "gutters": true
+  },
+  "assumptions": [
+    "Synthetic component fixture; all dimensions authored. Continuous bays with front groups and true glazed side returns use the common IR compiler."
+  ],
+  "frontages": [
+    {
+      "id": "street",
+      "width": 10,
+      "origin": [
+        0,
+        0
+      ],
+      "rotation": 0,
+      "openings": [
+        {
+          "id": "entry",
+          "x": 5,
+          "z": 1.2,
+          "width": 1,
+          "height": 2.4,
+          "kind": "door",
+          "head": "rectangular",
+          "storey": "ground",
+          "provenance": {
+            "status": "synthetic"
+          }
+        }
+      ],
+      "storefront": {
+        "height": 3,
+        "anchor": 5,
+        "finishColour": "#6f5848",
+        "signs": [],
+        "awnings": []
+      },
+      "openFrames": [
+        {
+          "id": "open-upper-frame",
+          "x": 5,
+          "width": 8,
+          "bottom": 6.5,
+          "top": 9.5,
+          "depth": 2.8,
+          "pierWidth": 0.42,
+          "headHeight": 0.42,
+          "crossBeams": [
+            {
+              "axis": "across",
+              "height": 7.3,
+              "setback": 0.04
+            },
+            {
+              "axis": "across",
+              "height": 8.3,
+              "setback": 0.04
+            },
+            {
+              "axis": "depth",
+              "height": 8.3,
+              "xFraction": 0.5
+            }
+          ],
+          "provenance": {
+            "status": "inferred",
+            "sourceDate": "2023-01-16",
+            "basis": "Source photo shows open left upper atrium, perimeter piers/head and exposed crossbeams; right street face steps down with recessed dark panel. Dimensions inferred from unregistered crop; source datum and owner preserved."
+          }
+        }
+      ]
+    }
+  ],
+  "height": 9.9
+}

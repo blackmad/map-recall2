@@ -1,0 +1,795 @@
+{
+  "version": 1,
+  "units": "metres",
+  "facade": {
+    "cornice": {
+      "material": "limestone",
+      "height": 0.26,
+      "projection": 0.3,
+      "overhang": 0.08,
+      "profile": "stepped",
+      "recipePath": "frontages[].components[]",
+      "parameters": [
+        "id",
+        "x",
+        "z",
+        "width",
+        "height",
+        "projection",
+        "overhang",
+        "profile",
+        "material",
+        "colour"
+      ]
+    },
+    "stringcourse": {
+      "material": "limestone",
+      "height": 0.12,
+      "projection": 0.09,
+      "overhang": 0,
+      "recipePath": "frontages[].components[]",
+      "required": [
+        "z"
+      ]
+    },
+    "lintel": {
+      "material": "limestone",
+      "height": 0.18,
+      "projection": 0.08,
+      "margin": 0.15,
+      "recipePath": "frontages[].components[]",
+      "required": [
+        "openingId"
+      ]
+    },
+    "sill": {
+      "material": "bluestone",
+      "height": 0.1,
+      "projection": 0.22,
+      "margin": 0.12,
+      "drop": 0.05,
+      "recipePath": "frontages[].components[]",
+      "required": [
+        "openingId"
+      ]
+    },
+    "quoins": {
+      "material": "limestone",
+      "width": 0.34,
+      "alternateWidth": 0.48,
+      "height": 0.27,
+      "spacing": 0.42,
+      "projection": 0.065,
+      "bottom": 0.35,
+      "edges": [
+        "left",
+        "right"
+      ],
+      "recipePath": "frontages[].components[]"
+    },
+    "pilaster": {
+      "material": "limestone",
+      "width": 0.3,
+      "projection": 0.1,
+      "bottom": 0,
+      "recipePath": "frontages[].components[]",
+      "required": [
+        "x"
+      ],
+      "parameters": [
+        "x",
+        "width",
+        "bottom",
+        "top",
+        "projection",
+        "panels"
+      ],
+      "note": "Optional panels have ordered bottom/top bounds, side margin and positive inset smaller than projection; recessed shaft retains its solid back."
+    },
+    "corbel": {
+      "material": "limestone",
+      "width": 0.15,
+      "height": 0.42,
+      "projection": 0.3,
+      "recipePath": "frontages[].components[]",
+      "required": [
+        "x"
+      ],
+      "note": "Closed faceted concave bracket beneath a cornice; explicit width, height and projection, default top at eaves. Shape is an authoring preset."
+    },
+    "mailboxes": {
+      "material": "greystone",
+      "width": 0.75,
+      "height": 1.05,
+      "projection": 0.065,
+      "rows": 4,
+      "columns": 2,
+      "recipePath": "frontages[].components[]",
+      "parameters": [
+        "id",
+        "x",
+        "z",
+        "width",
+        "height",
+        "projection",
+        "rows",
+        "columns",
+        "material",
+        "colour",
+        "provenance"
+      ],
+      "note": "Bounded grid of opaque face plates, dark slots and pale labels; cannot overlap an authored facade opening. Cell count and dimensions are presets.",
+      "required": [
+        "x",
+        "z"
+      ]
+    },
+    "dressing": {
+      "material": "limestone",
+      "width": 0.13,
+      "projection": 0.07,
+      "recipePath": "frontages[].components[]",
+      "required": [
+        "openingId"
+      ]
+    },
+    "balcony": {
+      "material": "limestone",
+      "frameMaterial": "iron",
+      "depth": 0.7,
+      "height": 0.9,
+      "slabThickness": 0.12,
+      "balusterSpacing": 0.28,
+      "railThickness": 0.035,
+      "recipePath": "frontages[].components[]",
+      "required": [
+        "x",
+        "z",
+        "width"
+      ],
+      "note": "z is walking/slab TOP datum; height is front and side railing height above it; explicit width may span several bays"
+    }
+  },
+  "site": {
+    "table": {
+      "material": "weatheredtimber",
+      "frameMaterial": "iron",
+      "width": 0.78,
+      "depth": 0.7,
+      "height": 0.73,
+      "shape": "square",
+      "recipePath": "siteComponents[]",
+      "required": [
+        "id",
+        "position"
+      ],
+      "parameters": [
+        "width",
+        "depth",
+        "height",
+        "rotation",
+        "material",
+        "colour"
+      ]
+    },
+    "chair": {
+      "material": "weatheredtimber",
+      "frameMaterial": "iron",
+      "width": 0.44,
+      "depth": 0.48,
+      "height": 0.83,
+      "seatHeight": 0.43,
+      "recipePath": "siteComponents[]",
+      "required": [
+        "id",
+        "position"
+      ],
+      "parameters": [
+        "width",
+        "depth",
+        "height",
+        "rotation",
+        "material",
+        "colour"
+      ]
+    },
+    "planter": {
+      "material": "greystone",
+      "soilMaterial": "brownbrick",
+      "plantMaterial": "creamrender",
+      "plantColour": "#5d7955",
+      "width": 0.65,
+      "depth": 0.48,
+      "height": 0.44,
+      "plantHeight": 0.35,
+      "recipePath": "siteComponents[]",
+      "required": [
+        "id",
+        "position"
+      ],
+      "parameters": [
+        "width",
+        "depth",
+        "height",
+        "rotation",
+        "material",
+        "colour"
+      ]
+    }
+  },
+  "openFrames": {
+    "open-atrium-frame": {
+      "recipePath": "frontages[].openFrames[]",
+      "parameters": [
+        "id",
+        "x",
+        "width",
+        "bottom",
+        "top",
+        "depth",
+        "pierWidth",
+        "headHeight",
+        "backInsetLeft",
+        "backInsetRight",
+        "crossBeams",
+        "beamMaterial",
+        "beamColour",
+        "sourceRoofOpening",
+        "sourceSideOpening",
+        "provenance"
+      ],
+      "note": "True unglazed facade/roof void, perimeter posts/head, supported crossbeam/uprights and tapered deck. Source roof/side ownership requires exact revision, indices, provenance and support audit."
+    },
+    "recessed-upper-panel": {
+      "recipePath": "frontages[].recessedUpperPanels[]",
+      "parameters": [
+        "id",
+        "x",
+        "width",
+        "bottom",
+        "top",
+        "setback",
+        "cutFacade",
+        "colour",
+        "openings",
+        "provenance"
+      ],
+      "note": "Closed setback wall with real recessed apertures, composed in the same facade frame"
+    }
+  },
+  "openings": {
+    "rectangular": {
+      "label": "Rectangular aperture",
+      "recipePath": "frontages[].openings[]",
+      "parameters": [
+        "x",
+        "z",
+        "width",
+        "height",
+        "kind",
+        "storey",
+        "mullions",
+        "transom",
+        "transomArch",
+        "upperLights",
+        "upperLightBars",
+        "lowerPanel",
+        "lowerPanel.divisions",
+        "lowerPanel.louvreCount",
+        "handleFractions",
+        "handleColour",
+        "glassColour",
+        "glazingDepth"
+      ],
+      "head": "rectangular"
+    },
+    "segmental": {
+      "label": "Circular segment arch",
+      "recipePath": "frontages[].openings[]",
+      "head": "segmental",
+      "parameters": [
+        "archRise",
+        "archSegments"
+      ],
+      "note": "archRise is circular sag, no greater than half the span"
+    },
+    "rounded": {
+      "label": "Rounded or elliptical head",
+      "recipePath": "frontages[].openings[]",
+      "head": "rounded",
+      "parameters": [
+        "archRise",
+        "archSegments"
+      ],
+      "note": "archRise equal to width/2 gives a semicircle; other positive rises give an ellipse"
+    },
+    "circular": {
+      "label": "Full circular oculus",
+      "recipePath": "frontages[].openings[]",
+      "head": "circular",
+      "parameters": [
+        "x",
+        "z",
+        "width",
+        "height",
+        "archSegments",
+        "mullions",
+        "transom",
+        "glazingDepth"
+      ],
+      "note": "Equal width/height; true through-wall circle with shared reveal/frame/pane and clipped sash chords. Window only; no rectangular sill, kickpanel or shutters."
+    },
+    "keyhole": {
+      "label": "Circular bulb with narrow stem",
+      "recipePath": "frontages[].openings[]",
+      "head": "keyhole",
+      "parameters": [
+        "x",
+        "z",
+        "width",
+        "height",
+        "stemWidth",
+        "archSegments",
+        "mullions",
+        "transom",
+        "glazingDepth"
+      ],
+      "note": "True keyhole void, continuous mitered frame/reveal rings and outline-clipped sash. Width is bulb diameter; height includes the stem. Window only."
+    }
+  },
+  "warehouse": {
+    "paired-shutters": {
+      "recipePath": "frontages[].openings[].warehouse",
+      "parameters": [
+        "leafGap",
+        "shutters.angle",
+        "shutters.style",
+        "shutters.material",
+        "shutters.colour",
+        "shutters.thickness",
+        "shutters.plankWidth",
+        "shutters.hingeDepth"
+      ],
+      "styles": [
+        "plank",
+        "panel"
+      ],
+      "note": "Exact aperture arch halves; angle 0 closed, 90 streetward, 180 folded back. Defaults omit residential sash and single-door hardware."
+    },
+    "hoist": {
+      "recipePath": "frontages[].warehouseHoists[]",
+      "required": [
+        "id",
+        "x",
+        "z"
+      ],
+      "parameters": [
+        "projection",
+        "width",
+        "height",
+        "material",
+        "colour",
+        "ironMaterial",
+        "bracketDrop",
+        "rearDepth",
+        "tipRise"
+      ],
+      "note": "Separate frontage-local timber beam with iron brace and suspended eye; defaults are authored presets."
+    }
+  },
+  "groupedBays": {
+    "projecting-group": {
+      "recipePath": "frontages[].groupedBays[]",
+      "required": [
+        "id",
+        "x",
+        "width",
+        "bottom",
+        "top",
+        "openingIds"
+      ],
+      "parameters": [
+        "projection",
+        "returnInset",
+        "baseRise",
+        "sideWindows",
+        "sillDepth",
+        "sillProjection",
+        "capHeight",
+        "capProjection",
+        "material",
+        "colour",
+        "frameMaterial",
+        "frameColour",
+        "glassMaterial",
+        "glassColour"
+      ],
+      "note": "Continuous projecting masonry volume across storeys, linked actual front apertures and optional glazed angled side returns. returnInset controls the angle; optional baseRise slopes the supported underside upwards towards the projecting face (default0 is flat). Dimensions remain authored unless registered."
+    }
+  },
+  "roofs": {
+    "flat": {
+      "parameters": [
+        "eaves",
+        "top",
+        "setback"
+      ],
+      "topology": "concave simple exterior ring; top equals covering eaves",
+      "recipePath": "roof"
+    },
+    "shed": {
+      "parameters": [
+        "eaves",
+        "top",
+        "setback"
+      ],
+      "topology": "concave simple exterior ring; pitch follows frontage x",
+      "recipePath": "roof"
+    },
+    "pitched": {
+      "parameters": [
+        "eaves",
+        "top",
+        "pitchSpan",
+        "ridgeX",
+        "setback",
+        "frontTransition",
+        "gableClearance",
+        "frontJoin",
+        "frontHipRun"
+      ],
+      "topology": "concave simple exterior ring",
+      "recipePath": "roof"
+    },
+    "gambrel": {
+      "parameters": [
+        "eaves",
+        "top",
+        "pitchSpan",
+        "ridgeX",
+        "kneeSpan",
+        "kneeHeight"
+      ],
+      "required": [
+        "kneeSpan",
+        "kneeHeight"
+      ],
+      "topology": "concave simple exterior ring; steep lower and shallow upper pitches",
+      "recipePath": "roof"
+    },
+    "hip": {
+      "parameters": [
+        "eaves",
+        "top",
+        "hipEndRun",
+        "ridgeX"
+      ],
+      "required": [
+        "hipEndRun"
+      ],
+      "topology": "axis-aligned actual rectangular footprint",
+      "recipePath": "roof"
+    },
+    "mansard": {
+      "parameters": [
+        "eaves",
+        "top",
+        "kneeInset",
+        "topInset",
+        "kneeHeight"
+      ],
+      "required": [
+        "kneeInset",
+        "topInset",
+        "kneeHeight"
+      ],
+      "topology": "axis-aligned actual rectangular footprint with nested broken pitches",
+      "recipePath": "roof"
+    }
+  },
+  "gables": {
+    "straight": {
+      "builder": "building_lib.gables.profile",
+      "recipePath": "gable.family (resolved to gable.profile by IR)",
+      "parameters": [
+        "width",
+        "eaves",
+        "rise",
+        "material",
+        "colour"
+      ],
+      "note": "Author a silhouette independently of the roof; preset ratios are synthetic",
+      "aliases": [
+        "cornice"
+      ]
+    },
+    "triangular": {
+      "builder": "building_lib.gables.profile",
+      "recipePath": "gable.family (resolved to gable.profile by IR)",
+      "parameters": [
+        "width",
+        "eaves",
+        "rise",
+        "material",
+        "colour"
+      ],
+      "note": "Author a silhouette independently of the roof; preset ratios are synthetic",
+      "aliases": [
+        "punt"
+      ]
+    },
+    "spout": {
+      "builder": "building_lib.gables.profile",
+      "recipePath": "gable.family (resolved to gable.profile by IR)",
+      "parameters": [
+        "width",
+        "eaves",
+        "rise",
+        "material",
+        "colour"
+      ],
+      "note": "Author a silhouette independently of the roof; preset ratios are synthetic",
+      "aliases": [
+        "tuit"
+      ]
+    },
+    "stepped": {
+      "builder": "building_lib.gables.profile",
+      "recipePath": "gable.family (resolved to gable.profile by IR)",
+      "parameters": [
+        "width",
+        "eaves",
+        "rise",
+        "material",
+        "colour"
+      ],
+      "note": "Author a silhouette independently of the roof; preset ratios are synthetic",
+      "aliases": [
+        "trap"
+      ]
+    },
+    "neck": {
+      "builder": "building_lib.gables.profile",
+      "recipePath": "gable.family (resolved to gable.profile by IR)",
+      "parameters": [
+        "width",
+        "eaves",
+        "rise",
+        "material",
+        "colour",
+        "raised"
+      ],
+      "note": "raised is a complete parapet base below an unchanged decorative silhouette, never extra height stretched through its shoulders",
+      "aliases": [
+        "hals"
+      ]
+    },
+    "bell": {
+      "builder": "building_lib.gables.profile",
+      "recipePath": "gable.family (resolved to gable.profile by IR)",
+      "parameters": [
+        "width",
+        "eaves",
+        "rise",
+        "material",
+        "colour",
+        "raised"
+      ],
+      "note": "raised is a complete parapet base below an unchanged decorative silhouette, never extra height stretched through its shoulders",
+      "aliases": [
+        "klok"
+      ]
+    },
+    "gambrel": {
+      "builder": "building_lib.gables.profile",
+      "recipePath": "gable.family (resolved to gable.profile by IR)",
+      "parameters": [
+        "width",
+        "eaves",
+        "rise",
+        "material",
+        "colour"
+      ],
+      "note": "Author a silhouette independently of the roof; preset ratios are synthetic"
+    }
+  },
+  "retail": {
+    "recessed-storefront": {
+      "recipePath": "frontages[].storefront.recessedAssemblies[]",
+      "parameters": [
+        "id",
+        "x",
+        "width",
+        "sill",
+        "head",
+        "recess",
+        "sideReturn",
+        "frontDepth"
+      ],
+      "note": "One aperture owner with angled returns, opaque recessed glass, threshold floor and soffit"
+    },
+    "entrance-steps": {
+      "builder": "building_lib.ground_floors.entrance_steps",
+      "recipePath": "frontages[].storefront.entranceSteps[]",
+      "parameters": [
+        "id",
+        "x",
+        "width",
+        "rise",
+        "run"
+      ],
+      "note": "Integrated assembly; use only with an explicitly raised entrance datum"
+    },
+    "entry-door": {
+      "recipePath": "frontages[].openings[]",
+      "kind": "door",
+      "parameters": [
+        "x",
+        "z",
+        "width",
+        "height",
+        "head",
+        "glazingDepth"
+      ],
+      "note": "Threshold is z minus height/2, independent of image crop bounds"
+    }
+  },
+  "signage": {
+    "sign": {
+      "recipePath": "frontages[].storefront.signs[]",
+      "parameters": [
+        "id",
+        "x",
+        "z",
+        "width",
+        "height",
+        "text",
+        "colour",
+        "anchor",
+        "substrate",
+        "letteringColour",
+        "letteringDepth",
+        "fontSize"
+      ],
+      "note": "anchor=storefront uses the parent assembly anchor"
+    },
+    "awning": {
+      "recipePath": "frontages[].storefront.awnings[]",
+      "parameters": [
+        "x",
+        "z",
+        "width",
+        "height",
+        "projection",
+        "colour",
+        "text"
+      ],
+      "note": "Sloping canopy, front valance and optional bounded lettering"
+    },
+    "bicycle-sign": {
+      "recipePath": "frontages[].bicycleSign",
+      "value": true,
+      "note": "Optional bicycle silhouette and bracket follow selected translated/rotated frontage; details.bicycleSign is a primary-frontage alias"
+    }
+  },
+  "roofDetails": {
+    "source-roof-rail": {
+      "recipePath": "details.sourceRails[]",
+      "parameters": [
+        "id",
+        "sourceSurfaceIndices",
+        "supportMode",
+        "sourcePatchId",
+        "derivedSurfaceIndices",
+        "points",
+        "height",
+        "postSpacing",
+        "thickness",
+        "railLevels",
+        "provenance"
+      ],
+      "note": "Exact retained selected semantic roof triangle support; every polyline interval audited before scene mutation"
+    },
+    "source-roof-dormer": {
+      "recipePath": "details.sourceDormers[]",
+      "parameters": [
+        "id",
+        "sourceSurfaceIndices",
+        "supportMode",
+        "sourcePatchId",
+        "derivedSurfaceIndices",
+        "x",
+        "y",
+        "width",
+        "height",
+        "depth",
+        "capRise",
+        "provenance"
+      ],
+      "note": "Default flat or optional segmental curved cap, closed cheeks and real recessed aperture; whole footprint supported by selected retained semantic roof, with rear spring clearance"
+    },
+    "covering-thickness": {
+      "recipePath": "details.coveringThickness",
+      "parameters": [
+        "thickness"
+      ],
+      "note": "Positive layer behind the covering"
+    },
+    "gutters": {
+      "recipePath": "details.gutters",
+      "parameters": [
+        "downpipes"
+      ],
+      "downpipeParameters": [
+        "x",
+        "y",
+        "bottom"
+      ],
+      "note": "Gutters follow actual horizontal covering boundary edges"
+    },
+    "chimney": {
+      "recipePath": "details.chimney",
+      "parameters": [
+        "x",
+        "y",
+        "size",
+        "height"
+      ],
+      "note": "Footprint corner queries bury the base in the actual covering"
+    },
+    "dormer": {
+      "recipePath": "details.dormers[]",
+      "parameters": [
+        "x",
+        "y",
+        "width",
+        "height"
+      ],
+      "note": "Whole 0.85m-deep footprint must be roof-supported; head clears rear support; checked before scene mutation"
+    },
+    "ridge-cap": {
+      "recipePath": "details.ridgeCap",
+      "value": true,
+      "roofKinds": [
+        "pitched",
+        "gambrel",
+        "hip"
+      ],
+      "note": "Positive rise and uninterrupted nonzero ridge span at roof top; checked before scene mutation"
+    }
+  },
+  "materialZones": {
+    "rectangular": {
+      "recipePath": "frontages[].materialZones[]",
+      "parameters": [
+        "id",
+        "x",
+        "z",
+        "width",
+        "height",
+        "material",
+        "colour",
+        "frontDepth",
+        "thickness"
+      ],
+      "note": "Exterior finish inside the wall body, cut by the same openings and recessed storefronts"
+    }
+  },
+  "materialStyles": {
+    "simple": {
+      "textures": false,
+      "roughness": 0.86,
+      "glassColour": "#91a6a3"
+    },
+    "textured": {
+      "textures": true,
+      "note": "Cached portable original maps; opaque glass fallback"
+    }
+  },
+  "contracts": [
+    "facade components use the selected frontage frame",
+    "site positions use the building frame",
+    "defaults are authored presets, not measurements",
+    "material zones share aperture cutters"
+  ]
+}

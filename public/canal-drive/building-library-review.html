@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Building library · visual review</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#eeeee7;color:#24332c;font:15px/1.5 system-ui}main{max-width:1040px;margin:auto;padding:22px 16px}h1{font-size:25px;margin:0}h2{font-size:19px;margin:0}a{color:#284f3c}nav{display:flex;gap:16px;flex-wrap:wrap;margin:12px 0 20px}article{background:#fafbf6;border:1px solid #bdc5b8;border-radius:7px;padding:16px;margin:16px 0}.state{font-size:13px;color:#665529}.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px}.images{display:grid;grid-template-columns:1fr 1fr;gap:8px}figure{margin:0}img{display:block;width:100%;background:#e1e4dc}figcaption{font-size:12px}h3{font-size:15px;margin:10px 0}.links{display:flex;gap:10px;flex-wrap:wrap;font-size:13px}.pending{padding:25px 10px;background:#e8ebe3;color:#536157}ul{padding-left:20px}@media(max-width:650px){.compare{grid-template-columns:1fr}article{padding:12px}}</style></head>
+<body><main><h1>Building library visual review</h1><p>Before and revised renders with concrete self-critique. Geometry checks and visual review are recorded separately.</p><nav><a href="./building-library-status.html">Progress</a><a href="./building-library.html">Building library</a><a href="./gable-block.html">Approved style study</a></nav><p id="baseline"></p><p id="updated"></p><div id="models">Loading critique…</div><p id="error" role="status"></p></main>
+<script>
+const base='./models/building-library/review/';
+const views=['front','oblique','roof','ground'];
+function element(tag,text){const node=document.createElement(tag);if(text)node.textContent=text;return node}
+function panel(model,phase){
+  const section=element('section');section.append(element('h3',phase==='before'?'Before':'Revised'));
+  if(!model[phase].paths.front){const pending=element('p','Revised renders pending.');pending.className='pending';section.append(pending);return section}
+  const images=element('div');images.className='images';
+  for(const view of ['front','oblique']){const figure=element('figure');const a=element('a');a.href=base+phase+'/'+model.id+'-'+view+'.png';const img=element('img');img.src=a.href;img.alt=model.id+' '+phase+' '+view+' view';img.loading='lazy';a.append(img);figure.append(a,element('figcaption',view));images.append(figure)}
+  const links=element('p');links.className='links';for(const view of views){const a=element('a',view);a.href=base+phase+'/'+model.id+'-'+view+'.png';links.append(a)}section.append(images,links);return section;
+}
+async function refresh(){try{
+  const response=await fetch(base+'critique.json',{cache:'no-store'});if(!response.ok)throw Error();const data=await response.json();
+  const baseline=data.verifiedPublicBaseline;if(baseline)document.getElementById('baseline').textContent='Verified public library: '+baseline.buildings+' buildings ('+baseline.realCandidates+' real candidates, '+baseline.syntheticStudies+' synthetic studies), plus material gallery. All '+baseline.selectorEntries+' export, roundtrip and browser checks pass.';
+  document.getElementById('updated').textContent='Critique updated: '+new Date(data.updatedAt).toLocaleString();
+  const articles=data.models.map(model=>{const article=element('article');article.append(element('h2',model.id.replaceAll('-',' ')));const state=element('p',model.status.replaceAll('_',' '));state.className='state';article.append(state);if(model.scope)article.append(element("p",model.scope));const compare=element('div');compare.className='compare';compare.append(panel(model,'before'),panel(model,'revised'));article.append(compare);for(const phase of ['before','revised']){if(!model[phase].findings.length)continue;article.append(element('h3',phase==='before'?'Before findings':'Revised findings'));const list=element('ul');for(const finding of model[phase].findings)list.append(element('li',finding));article.append(list)}const earlier=(model.history||[]).filter(revision=>revision.iteration!==model.revised.iteration);for(const latest of earlier){const details=element('details');details.append(element('summary','Earlier revision '+latest.iteration+' · '+latest.status.replaceAll('_',' ')));const list=element('ul');for(const finding of latest.findings)list.append(element('li',finding));details.append(list);article.append(details)}return article});document.getElementById('models').replaceChildren(...articles);document.getElementById('error').textContent='';
+}catch(error){document.getElementById('error').textContent='Could not refresh critique. Retrying in 30 seconds.'}}
+refresh();setInterval(refresh,30000);
+</script></body></html>

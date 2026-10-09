@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "recipes": [
+    "spout-pitched.json",
+    "raised-neck-pitched.json",
+    "raised-bell-pitched.json",
+    "hip-cornice.json",
+    "gambrel-warehouse.json",
+    "mansard-dormers.json",
+    "flat-cornice.json",
+    "shed-cornice.json"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "ir-ordinary-shop-terrace",
+  "name": "Ordinary shop terrace from compact IR",
+  "synthetic": true,
+  "style": "simple",
+  "footprint": [[0,0],[8,0],[8,10],[0,10]],
+  "roof": {"kind":"flat","eaves":9.6,"top":9.6,"setback":0.24,"status":"synthetic"},
+  "gable": {"family":"straight"},
+  "storeyLayout": {"groundTop":3.2,"upperCount":2},
+  "materials": {"wall":"redbrick","wallColour":"#98745e","roof":"bitumen","frame":"ivorytimber"},
+  "frontages": [{
+    "id":"street","width":8,"origin":[0,0],"rotation":0,
+    "storefront":{"height":3.2,"anchor":4,"finishColour":"#b6b9ac","signs":[],"awnings":[]},
+    "openings":[
+      {"id":"display","storey":"ground","kind":"window","head":"rectangular","x":2.5,"z":1.55,"width":3.7,"height":2.4,"mullions":[0.5],"transom":0.2},
+      {"id":"entry","storey":"ground","kind":"door","head":"rectangular","x":6.4,"z":1.3,"width":1.1,"height":2.6,"mullions":[],"transom":0.25}
+    ],
+    "openingRows":[
+      {"id":"first","storey":"upper_1","centres":[1.6,4,6.4],"sill":0.6,"width":1.4,"height":1.95,"template":{"mullions":[0.5],"transom":0.3}},
+      {"id":"second","storey":"upper_2","centres":[1.6,4,6.4],"sill":0.6,"width":1.4,"height":1.95,"template":{"mullions":[0.5],"transom":0.3}}
+    ]
+  }],
+  "assumptions":["Synthetic ordinary terrace demonstrating compact floor and opening-row generators. No real address, date or measured architectural feature is asserted."]
+}

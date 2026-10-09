@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Dutch roof and gable study</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #ece8df; color: #26383d; font: 15px system-ui, sans-serif; }
+    header { padding: 18px 24px 14px; border-bottom: 1px solid #c9c5ba; }
+    h1 { margin: 0 0 5px; font-size: 23px; font-weight: 650; }
+    p { margin: 5px 0 14px; line-height: 1.5; }
+    nav { display: flex; flex-wrap: wrap; gap: 7px; align-items: center; }
+    button, select, .button { font: inherit; color: inherit; background: #faf9f4; border: 1px solid #b8bcb3; border-radius: 5px; padding: 8px 12px; }
+    button { cursor: pointer; }
+    button[aria-pressed="true"] { background: #d8e4df; }
+    a { color: #28594e; }
+    #stage { height: calc(100vh - 190px); min-height: 400px; touch-action: none; }
+    canvas { display: block; }
+    footer { padding: 10px 24px; font-size: 13px; }
+    #error { color: #9c3128; }
+    @media(max-width: 680px) { header { padding: 12px; } h1 { font-size: 20px; } #stage { height: 62vh; min-height: 340px; } footer { padding: 12px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Dutch roof and gable study</h1>
+    <p>Low-poly architectural examples: complete roofs, distinct gables, dormers, doors and windows. These are design samples, not surveyed addresses.</p>
+    <nav>
+      <select id="building" aria-label="Focus building"><option value="all">Whole block</option></select>
+      <button data-view="oblique">Street perspective</button>
+      <button data-view="front">Fronts</button>
+      <button data-view="roof">Roofs</button>
+      <button id="orbit" aria-pressed="false">Slow orbit</button>
+      <a class="button" href="./models/gable-block/block.glb" download>Download block</a>
+    </nav>
+  </header>
+  <div id="stage" aria-label="Interactive architectural block"></div>
+  <footer><span id="description">Loading the block…</span><span id="error"></span><br>Drag to orbit · scroll to zoom · <a href="./building-library.html">Building library</a></footer>
+  <script src="./js/three.bundle.js"></script>
+  <script type="module" src="./js/gable-block-preview.js"></script>
+</body>
+</html>

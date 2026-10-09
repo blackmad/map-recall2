@@ -1,0 +1,1712 @@
+{
+  "schemaVersion": 1,
+  "id": "elandsgracht-96",
+  "ownerId": "0363100012168954",
+  "geometryRevision": "d92d9e81ad45e41bad9fef3eb856864128be2bb38805981965607b628921e30c",
+  "physicalFacade": {
+    "id": "0363100012168954:primary:d05d952880a9",
+    "plane": {
+      "start": {
+        "x": 120454.03817002577,
+        "y": 486970.0740474554
+      },
+      "end": {
+        "x": 120457.58817002577,
+        "y": 486971.9640474554
+      },
+      "baseZ": -0.047000008821487416,
+      "topZ": 20.929999999999996
+    },
+    "wall": {
+      "start": {
+        "x": 120454.03817002577,
+        "y": 486970.0740474554
+      },
+      "end": {
+        "x": 120457.58817002577,
+        "y": 486971.9640474554
+      },
+      "elevationId": "0363100012168954:primary-frontage",
+      "lengthM": 4.021765781354438
+    },
+    "frontage": [
+      [
+        511.489,
+        -23.452
+      ],
+      [
+        515.039,
+        -25.342
+      ]
+    ],
+    "originalObservationPlane": {
+      "start": {
+        "x": 120453.96480716647,
+        "y": 486970.0355778373
+      },
+      "end": {
+        "x": 120457.66200702485,
+        "y": 486971.997017861
+      },
+      "baseZ": -0.047000008821487416,
+      "topZ": 20.929999999999996
+    },
+    "originalObservationFacadeId": "0363100012168954:e:1i374do",
+    "associationDiscrepancy": false
+  },
+  "targetAppearanceDate": "2025-07-03T10:39:46Z",
+  "searchedYears": [
+    "2022",
+    "2024",
+    "2025"
+  ],
+  "searchedLocations": [
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/apollobuurt-v1/panorama-audit/70ddd2d4a19b94d103595e529ef42d4c2ae526be895c09a4e567c59295ee580b/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costa-expansion-550m-v1/panorama-audit/35e8d2f29c4634cbd07d6afa0d624f6a971f518e2e056859cf988030dedea61a/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costa-tranche-400m-v1/panorama-audit/be950e97c54cab9950c80fa33846ca8bbc2a2477fe4284977d91dc481128f783/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/00c71ef325601953dfb7e22f6028105fd9d77e01dbb84c3ac8f35474316e1878/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/2213231ccba36fe7bf0bc7c4b5f0dea02c008f403098e40f2da2f6ec557c521c/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/3f2ec76c39394add2c9195ddb1df39b6589a3fd01a91d21efae00557e89fc2bc/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/3f92db8d4da2d7b08094b280657246cbf711d1857474672462acee907540e7d8/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/42e2558682004bd88e765f1147f44be7dc2b58be02dffcc15b7e9462585953fe/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/5e1858c484d2184a8b40e7bf582aab8323ff18ad67a14a547ad47021209ea31a/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/61772bf5c34fdc627171c4ce74da72af0b055a648a98bfbf236b1dc0593102a5/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/75d13e46b7d00e29cee0d9840b8fb9789cfda8a7140bc67c5d81cdc18b4709b0/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/88900deff4b114b95176f2f230be6abe81b4409a5371402816358ad81c4f57c5/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/c4071f5bf58e46c6f683ca8e8c9913bba128f5d1c702aef5db01ab0789e72b3f/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/e5d88c3256c63dc90fdfeb3c4a9d061eaf52cd41416dcd8658e27a3a12d2abf3/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/eed1a3717110b47ad24defb123df88dff2b96c9de52a65279fb13398d21b5045/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/15cc14e544469be45acfb4adaee0017f74456d8c0d1da5a35037e2b8b7a5379d/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/234ee0d618476e9ce5ac72e175239e03ac33b6484dd7e331d7ab39c1f5a2251e/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/23cbe284fa0f2bcd7f796758c9be37dd3bc52fb26943c5ceaab8dfef02fa8843/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/251205c7211eed05d84de6ad1cff78f00bb64fde9150a25a6bde35f43d594e06/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/2d60454dc62ff8e2fce0e634fd9da7a1454b02471b77e79e7cb465dfec0ef2bd/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3cfeb5fcf2cce32d47a2d566613ab916fb68bbaf7fb5421f438e750aaa99d88f/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/42955f2314209a86242e7b38bda434cd3b147f4cf815bf9bacf8ad182e32ded3/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4a8eecdbd77dc0c08df411f4090078a051343ff0fca0733c9029ebf785a2b355/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/6deb2e79ce7960005383524abf2b232e2f82bd2fbc82389f1f4f45073e73032f/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/6f8e044a9684f917daf0ba347be37c48dc648ca4b63e4f0b4d425f852d1ed695/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/7187629ffe09b31a4d32dbe0dc3388276c0b7702d7678425adc66f5998c291e1/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/761703bfedf0e6e46b1cb24a2dba894cad28eac52ac830992a04ee465ac8ac40/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/7b82323496ec1f82bf5f306374e0a44e21fd8a4760362dd3848fd6f77df71190/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/827e646ddd248e35798b72edffdee5cd2972048a404f408cdc890e35c1e31564/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/8b84b5990efff411d1f31a4478e57a5ab4249891d18ffc126e30b20091b79b4f/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/9374d9c0a05722ea5fca36fcc2dd753c265de0b262e7e60379e8e2d448ca445b/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/963da98752058408ec606a8d4a3ca6c4a4f7ceeca2dd9cd2e63dc054a7d55d9d/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/9ab38efb54f0c860c3986d74978b84baf47d15b83183f7fe0f1d87b014f13495/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/ad6e2fc77eda895a2bd8f6bb16be7aca0365bc76c685aaae0708e6231cb40942/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/ba3a3613c80d7303001b3e98c6632f49bb37c8e0b6a1b39fef19e302153ae8fc/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/c3f8d1a1f6685fb7608a9de97e7554c2c111d82338b2aab360cace5016595361/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/c8d875cf27b43b916038ec46fdaa1d107fdd061d668b16e3a5ee2438a212fd32/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/c919e767a882fff9fb74902a6b7fb036b8713223b1f6ec57e12b50e58f7e12b5/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/caa097123df68accd5cd9aa5f04a742ce4b82b1405162f48325e158dfade6697/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/ce585f1f4e4b5a27d08f035ba9bad65688af73c20c7ed50144b7ae5f5f4e15ec/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/cf1ccd7a6483fa64952b81df4d9ce2c4ca89d28ec0c11561932907b7ff61f6f5/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/e0cb73b9e50ea806fa6ffa9aafc89efd70a8b27d3ecfd17ad9fb075b517e5b1a/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/e74ac5321aa2fa6e7f34a5511f2a30fe97a28aa94ae1edec8e5609dcc075a688/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/e89f6531cc292f7ed8ecb4ea3f357a9e6bb8b4be16413f77fce658cce6b86eb7/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/f2a7ce860cd122399521a9bacc9ba7ccab42be151c7ba25aebfdd23aa06b3de0/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/f580b5dc7f47ebfe3f2a1922a0d1d1e55fb1ef075cd0997a8f417a84f60a175b/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/fca4fdfeadb628bf8bfbedefff322b5052044a3da4002742bfb1091834f44d38/evidence/manifest.json",
+    ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/tuindorp-nieuwendam-v1/panorama-audit/02fea156a4f7e8c854c8380c3eab3229d21f6ca3587671124ee1466c45296a6e/evidence/manifest.json"
+  ],
+  "candidates": [
+    {
+      "id": "0d9ef2fc124a0a2f403df39ef1801e091139543cb38925d4dba985ab90d56b82",
+      "ownerId": "0363100012168954",
+      "physicalFacadeId": "0363100012168954:e:1i374do",
+      "captureKey": "b_20241216_0911_Track04_Sphere_00205|2024-12-16T09:28:07Z",
+      "panoramaId": "b_20241216_0911_Track04_Sphere_00205",
+      "panoramaSha256": "3fcf6c808fe919422f3a5bb1e10fb2a185fa75eb60576298714dadae53d65014",
+      "captureDate": "2024-12-16T09:28:07Z",
+      "tier": "full",
+      "width": 188,
+      "height": 944,
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "nativeResolution": [
+        8000,
+        4000
+      ],
+      "plane": {
+        "start": {
+          "x": 120453.96480716647,
+          "y": 486970.0355778373
+        },
+        "end": {
+          "x": 120457.66200702485,
+          "y": 486971.997017861
+        },
+        "baseZ": -0.047000008821487416,
+        "topZ": 20.929999999999996
+      },
+      "wall": {
+        "elevationId": "0363100012168954:e:1i374do",
+        "index": 1,
+        "start": {
+          "x": 120454.03590716375,
+          "y": 486970.07329783775
+        },
+        "end": {
+          "x": 120457.59090702757,
+          "y": 486971.95929786057
+        },
+        "midpoint": {
+          "x": 120455.81340709566,
+          "y": 486971.0162978491
+        },
+        "normal": {
+          "x": 0.4686525104128881,
+          "y": -0.883382603679571
+        },
+        "lengthM": 4.024303681109953,
+        "facingDeg": 152.05313643043826,
+        "sourceVertexRange": {
+          "vertexIndices": [
+            6,
+            7
+          ],
+          "edgeIndices": [
+            6
+          ]
+        },
+        "sourcePolygonIndex": 0,
+        "sourceRingIndex": 0,
+        "sourceRingRole": "exterior"
+      },
+      "geometryRevision": "d92d9e81ad45e41bad9fef3eb856864128be2bb38805981965607b628921e30c",
+      "geometryRevisionVerified": false,
+      "rectificationDerivationKey": "d5bfe64c12651bc3e55c9aca43156f18cb1957ffde07080d81403ff2cfa67921",
+      "pose": {
+        "x": 120448.2969067026,
+        "y": 486942.79129775433,
+        "z": 2.8190000081062316,
+        "headingDeg": 61.183130168271774,
+        "pitchDeg": 1.2695376985020357,
+        "rollDeg": 2.489573089091408
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "obliquity": 42.859011890439724,
+      "coverage": [
+        "ground",
+        "upper",
+        "roof"
+      ],
+      "occlusion": {
+        "status": "tree-obscured",
+        "note": "Footprint hiddenFraction is not a tree/pixel visibility measure"
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "unreviewed-metric-registration",
+        "endpointErrorM": 0.005481772518102527
+      },
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012168954_e_1i374do-full.jpg",
+      "sourceAvailable": true,
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.022262105469869283,
+        "zMetresPerPixel": 0.022221398314429538,
+        "origin": {
+          "x": 120453.96480716647,
+          "y": 486970.0355778373
+        },
+        "topNAP": 20.929999999999996
+      },
+      "url": "./models/building-library/evidence/elandsgracht-96-cached-0d9ef2fc124a.jpg"
+    },
+    {
+      "id": "a2cc557bfd294d5df1152174cb360c89868ebd5fb386cea435307c17ec038758",
+      "ownerId": "0363100012168954",
+      "physicalFacadeId": "0363100012168954:e:1i374do",
+      "captureKey": "recording_2025-07-03_10-31-52_00170|2025-07-03T10:39:46Z",
+      "panoramaId": "recording_2025-07-03_10-31-52_00170",
+      "panoramaSha256": "b3059483781e8f699d4b4895c849da212ce9a80854fb8f7b75fa0546f54663f9",
+      "captureDate": "2025-07-03T10:39:46Z",
+      "tier": "ground",
+      "width": 460,
+      "height": 539,
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "nativeResolution": [
+        8000,
+        4000
+      ],
+      "plane": {
+        "start": {
+          "x": 120453.96480716647,
+          "y": 486970.0355778373
+        },
+        "end": {
+          "x": 120457.66200702485,
+          "y": 486971.997017861
+        },
+        "baseZ": -0.047000008821487416,
+        "topZ": 4.852999991178512
+      },
+      "wall": {
+        "elevationId": "0363100012168954:e:1i374do",
+        "index": 1,
+        "start": {
+          "x": 120454.03590716375,
+          "y": 486970.07329783775
+        },
+        "end": {
+          "x": 120457.59090702757,
+          "y": 486971.95929786057
+        },
+        "midpoint": {
+          "x": 120455.81340709566,
+          "y": 486971.0162978491
+        },
+        "normal": {
+          "x": 0.4686525104128881,
+          "y": -0.883382603679571
+        },
+        "lengthM": 4.024303681109953,
+        "facingDeg": 152.05313643043826,
+        "sourceVertexRange": {
+          "vertexIndices": [
+            6,
+            7
+          ],
+          "edgeIndices": [
+            6
+          ]
+        },
+        "sourcePolygonIndex": 0,
+        "sourceRingIndex": 0,
+        "sourceRingRole": "exterior"
+      },
+      "geometryRevision": "d92d9e81ad45e41bad9fef3eb856864128be2bb38805981965607b628921e30c",
+      "geometryRevisionVerified": false,
+      "rectificationDerivationKey": "d5bfe64c12651bc3e55c9aca43156f18cb1957ffde07080d81403ff2cfa67921",
+      "pose": {
+        "x": 120458.46290678145,
+        "y": 486964.84629785473,
+        "z": 2.669000002145767,
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "obliquity": 4.707380761808288,
+      "coverage": [
+        "ground"
+      ],
+      "occlusion": {
+        "status": "unreviewed",
+        "note": "Footprint hiddenFraction is not a tree/pixel visibility measure"
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "unreviewed-metric-registration",
+        "endpointErrorM": 0.005481772518102527
+      },
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012168954_e_1i374do-ground.jpg",
+      "sourceAvailable": true,
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.009098425713772663,
+        "zMetresPerPixel": 0.00909090909090909,
+        "origin": {
+          "x": 120453.96480716647,
+          "y": 486970.0355778373
+        },
+        "topNAP": 4.852999991178512
+      },
+      "url": "./models/building-library/evidence/elandsgracht-96-cached-a2cc557bfd29.jpg"
+    },
+    {
+      "id": "05be50443dde4902fc480406535ae230fda0342884f276a7ff08eeef03e5e248",
+      "ownerId": "0363100012168954",
+      "physicalFacadeId": "0363100012168954:e:1i374do",
+      "captureKey": "b_20241216_0911_Track04_Sphere_00205|2024-12-16T09:28:07Z",
+      "panoramaId": "b_20241216_0911_Track04_Sphere_00205",
+      "panoramaSha256": "3fcf6c808fe919422f3a5bb1e10fb2a185fa75eb60576298714dadae53d65014",
+      "captureDate": "2024-12-16T09:28:07Z",
+      "tier": "roof",
+      "width": 188,
+      "height": 369,
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "nativeResolution": [
+        8000,
+        4000
+      ],
+      "plane": {
+        "start": {
+          "x": 120453.96480716647,
+          "y": 486970.0355778373
+        },
+        "end": {
+          "x": 120457.66200702485,
+          "y": 486971.997017861
+        },
+        "baseZ": 12.729999999999997,
+        "topZ": 20.929999999999996
+      },
+      "wall": {
+        "elevationId": "0363100012168954:e:1i374do",
+        "index": 1,
+        "start": {
+          "x": 120454.03590716375,
+          "y": 486970.07329783775
+        },
+        "end": {
+          "x": 120457.59090702757,
+          "y": 486971.95929786057
+        },
+        "midpoint": {
+          "x": 120455.81340709566,
+          "y": 486971.0162978491
+        },
+        "normal": {
+          "x": 0.4686525104128881,
+          "y": -0.883382603679571
+        },
+        "lengthM": 4.024303681109953,
+        "facingDeg": 152.05313643043826,
+        "sourceVertexRange": {
+          "vertexIndices": [
+            6,
+            7
+          ],
+          "edgeIndices": [
+            6
+          ]
+        },
+        "sourcePolygonIndex": 0,
+        "sourceRingIndex": 0,
+        "sourceRingRole": "exterior"
+      },
+      "geometryRevision": "d92d9e81ad45e41bad9fef3eb856864128be2bb38805981965607b628921e30c",
+      "geometryRevisionVerified": false,
+      "rectificationDerivationKey": "d5bfe64c12651bc3e55c9aca43156f18cb1957ffde07080d81403ff2cfa67921",
+      "pose": {
+        "x": 120448.2969067026,
+        "y": 486942.79129775433,
+        "z": 2.8190000081062316,
+        "headingDeg": 61.183130168271774,
+        "pitchDeg": 1.2695376985020357,
+        "rollDeg": 2.489573089091408
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "obliquity": 42.859011890439724,
+      "coverage": [
+        "roof"
+      ],
+      "occlusion": {
+        "status": "tree-obscured",
+        "note": "Footprint hiddenFraction is not a tree/pixel visibility measure"
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "unreviewed-metric-registration",
+        "endpointErrorM": 0.005481772518102527
+      },
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012168954_e_1i374do-roof.jpg",
+      "sourceAvailable": true,
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.022262105469869283,
+        "zMetresPerPixel": 0.02222222222222222,
+        "origin": {
+          "x": 120453.96480716647,
+          "y": 486970.0355778373
+        },
+        "topNAP": 20.929999999999996
+      },
+      "url": "./models/building-library/evidence/elandsgracht-96-cached-05be50443dde.jpg"
+    },
+    {
+      "id": "62768fbf570da76ac030d1f822c86cb2762ae8717a2c6589186f9503abd47a3f",
+      "ownerId": "0363100012168954",
+      "physicalFacadeId": "0363100012168954:e:1i374do",
+      "captureKey": "b_20241216_0911_Track04_Sphere_00205|2024-12-16T09:28:07Z",
+      "panoramaId": "b_20241216_0911_Track04_Sphere_00205",
+      "panoramaSha256": "3fcf6c808fe919422f3a5bb1e10fb2a185fa75eb60576298714dadae53d65014",
+      "captureDate": "2024-12-16T09:28:07Z",
+      "tier": "context",
+      "width": 435,
+      "height": 944,
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "nativeResolution": [
+        8000,
+        4000
+      ],
+      "plane": {
+        "start": {
+          "x": 120451.54740725907,
+          "y": 486968.7530978218
+        },
+        "end": {
+          "x": 120460.07940693224,
+          "y": 486973.27949787653
+        },
+        "baseZ": -0.047000008821487416,
+        "topZ": 20.929999999999996
+      },
+      "wall": {
+        "elevationId": "0363100012168954:e:1i374do",
+        "index": 1,
+        "start": {
+          "x": 120454.03590716375,
+          "y": 486970.07329783775
+        },
+        "end": {
+          "x": 120457.59090702757,
+          "y": 486971.95929786057
+        },
+        "midpoint": {
+          "x": 120455.81340709566,
+          "y": 486971.0162978491
+        },
+        "normal": {
+          "x": 0.4686525104128881,
+          "y": -0.883382603679571
+        },
+        "lengthM": 4.024303681109953,
+        "facingDeg": 152.05313643043826,
+        "sourceVertexRange": {
+          "vertexIndices": [
+            6,
+            7
+          ],
+          "edgeIndices": [
+            6
+          ]
+        },
+        "sourcePolygonIndex": 0,
+        "sourceRingIndex": 0,
+        "sourceRingRole": "exterior"
+      },
+      "geometryRevision": "d92d9e81ad45e41bad9fef3eb856864128be2bb38805981965607b628921e30c",
+      "geometryRevisionVerified": false,
+      "rectificationDerivationKey": "d5bfe64c12651bc3e55c9aca43156f18cb1957ffde07080d81403ff2cfa67921",
+      "pose": {
+        "x": 120448.2969067026,
+        "y": 486942.79129775433,
+        "z": 2.8190000081062316,
+        "headingDeg": 61.183130168271774,
+        "pitchDeg": 1.2695376985020357,
+        "rollDeg": 2.489573089091408
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "obliquity": 42.859011890439724,
+      "coverage": [],
+      "occlusion": {
+        "status": "tree-obscured",
+        "note": "Footprint hiddenFraction is not a tree/pixel visibility measure"
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "unreviewed-metric-registration",
+        "endpointErrorM": 0.005481772518102527
+      },
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012168954_e_1i374do-context.jpg",
+      "sourceAvailable": true,
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.02220305479234188,
+        "zMetresPerPixel": 0.022221398314429538,
+        "origin": {
+          "x": 120451.54740725907,
+          "y": 486968.7530978218
+        },
+        "topNAP": 20.929999999999996
+      },
+      "url": "./models/building-library/evidence/elandsgracht-96-cached-62768fbf570d.jpg"
+    },
+    {
+      "id": "e8dfe2cf1d64929e12a2d2859064f260a6f9ea4f662efd73fbcc4e4cd2d1c069",
+      "ownerId": "0363100012168954",
+      "physicalFacadeId": "0363100012168954:e:1i374do",
+      "captureKey": "b_20241216_0911_Track04_Sphere_00205|2024-12-16T09:28:07Z",
+      "panoramaId": "b_20241216_0911_Track04_Sphere_00205",
+      "panoramaSha256": "44f50a5ca65b471b165ceceabd64a7f743d503b36887b722a692c94c9da496a5",
+      "captureDate": "2024-12-16T09:28:07Z",
+      "tier": "full",
+      "width": 188,
+      "height": 944,
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "nativeResolution": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120453.96480716647,
+          "y": 486970.0355778373
+        },
+        "end": {
+          "x": 120457.66200702485,
+          "y": 486971.997017861
+        },
+        "baseZ": -0.047000008821487416,
+        "topZ": 20.929999999999996
+      },
+      "wall": {
+        "elevationId": "0363100012168954:e:1i374do",
+        "index": 1,
+        "start": {
+          "x": 120454.03590716375,
+          "y": 486970.07329783775
+        },
+        "end": {
+          "x": 120457.59090702757,
+          "y": 486971.95929786057
+        },
+        "midpoint": {
+          "x": 120455.81340709566,
+          "y": 486971.0162978491
+        },
+        "normal": {
+          "x": 0.4686525104128881,
+          "y": -0.883382603679571
+        },
+        "lengthM": 4.024303681109953,
+        "facingDeg": 152.05313643043826,
+        "sourceVertexRange": {
+          "vertexIndices": [
+            6,
+            7
+          ],
+          "edgeIndices": [
+            6
+          ]
+        },
+        "sourcePolygonIndex": 0,
+        "sourceRingIndex": 0,
+        "sourceRingRole": "exterior"
+      },
+      "geometryRevision": "d92d9e81ad45e41bad9fef3eb856864128be2bb38805981965607b628921e30c",
+      "geometryRevisionVerified": false,
+      "rectificationDerivationKey": "9eed5ccbf7226baad06b46f9fc1244b495f1f1b22bdd5eb6496dc275ed6a3bf2",
+      "pose": {
+        "x": 120448.2969067026,
+        "y": 486942.79129775433,
+        "z": 2.8190000081062316,
+        "headingDeg": 61.183130168271774,
+        "pitchDeg": 1.2695376985020357,
+        "rollDeg": 2.489573089091408
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "obliquity": 42.859011890439724,
+      "coverage": [
+        "ground",
+        "upper",
+        "roof"
+      ],
+      "occlusion": {
+        "status": "tree-obscured",
+        "note": "Footprint hiddenFraction is not a tree/pixel visibility measure"
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "unreviewed-metric-registration",
+        "endpointErrorM": 0.005481772518102527
+      },
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/ba3a3613c80d7303001b3e98c6632f49bb37c8e0b6a1b39fef19e302153ae8fc/evidence/images/0363100012168954_e_1i374do-full.jpg",
+      "sourceAvailable": true,
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.022262105469869283,
+        "zMetresPerPixel": 0.022221398314429538,
+        "origin": {
+          "x": 120453.96480716647,
+          "y": 486970.0355778373
+        },
+        "topNAP": 20.929999999999996
+      },
+      "url": "./models/building-library/evidence/elandsgracht-96-cached-e8dfe2cf1d64.jpg"
+    },
+    {
+      "id": "89c5337fbdbad47b9092259f1cf0e88cbf7a1db1e3088bfddfb37550eff25a80",
+      "ownerId": "0363100012168954",
+      "physicalFacadeId": "0363100012168954:e:1i374do",
+      "captureKey": "recording_2025-07-03_10-31-52_00170|2025-07-03T10:39:46Z",
+      "panoramaId": "recording_2025-07-03_10-31-52_00170",
+      "panoramaSha256": "9e7774e3dfe0230348335cf13e215d1d9a896eb2e51c9f4f16cc134ba2b87df7",
+      "captureDate": "2025-07-03T10:39:46Z",
+      "tier": "ground",
+      "width": 460,
+      "height": 539,
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "nativeResolution": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120453.96480716647,
+          "y": 486970.0355778373
+        },
+        "end": {
+          "x": 120457.66200702485,
+          "y": 486971.997017861
+        },
+        "baseZ": -0.047000008821487416,
+        "topZ": 4.852999991178512
+      },
+      "wall": {
+        "elevationId": "0363100012168954:e:1i374do",
+        "index": 1,
+        "start": {
+          "x": 120454.03590716375,
+          "y": 486970.07329783775
+        },
+        "end": {
+          "x": 120457.59090702757,
+          "y": 486971.95929786057
+        },
+        "midpoint": {
+          "x": 120455.81340709566,
+          "y": 486971.0162978491
+        },
+        "normal": {
+          "x": 0.4686525104128881,
+          "y": -0.883382603679571
+        },
+        "lengthM": 4.024303681109953,
+        "facingDeg": 152.05313643043826,
+        "sourceVertexRange": {
+          "vertexIndices": [
+            6,
+            7
+          ],
+          "edgeIndices": [
+            6
+          ]
+        },
+        "sourcePolygonIndex": 0,
+        "sourceRingIndex": 0,
+        "sourceRingRole": "exterior"
+      },
+      "geometryRevision": "d92d9e81ad45e41bad9fef3eb856864128be2bb38805981965607b628921e30c",
+      "geometryRevisionVerified": false,
+      "rectificationDerivationKey": "9eed5ccbf7226baad06b46f9fc1244b495f1f1b22bdd5eb6496dc275ed6a3bf2",
+      "pose": {
+        "x": 120458.46290678145,
+        "y": 486964.84629785473,
+        "z": 2.669000002145767,
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "obliquity": 4.707380761808288,
+      "coverage": [
+        "ground"
+      ],
+      "occlusion": {
+        "status": "unreviewed",
+        "note": "Footprint hiddenFraction is not a tree/pixel visibility measure"
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "unreviewed-metric-registration",
+        "endpointErrorM": 0.005481772518102527
+      },
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/ba3a3613c80d7303001b3e98c6632f49bb37c8e0b6a1b39fef19e302153ae8fc/evidence/images/0363100012168954_e_1i374do-ground.jpg",
+      "sourceAvailable": true,
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.009098425713772663,
+        "zMetresPerPixel": 0.00909090909090909,
+        "origin": {
+          "x": 120453.96480716647,
+          "y": 486970.0355778373
+        },
+        "topNAP": 4.852999991178512
+      },
+      "url": "./models/building-library/evidence/elandsgracht-96-cached-89c5337fbdba.jpg"
+    },
+    {
+      "id": "40fd6610c941a8bf29b76129deeec0ca6dc104aa17c774536d703564ae2c7ebd",
+      "ownerId": "0363100012168954",
+      "physicalFacadeId": "0363100012168954:e:1i374do",
+      "captureKey": "b_20241216_0911_Track04_Sphere_00205|2024-12-16T09:28:07Z",
+      "panoramaId": "b_20241216_0911_Track04_Sphere_00205",
+      "panoramaSha256": "44f50a5ca65b471b165ceceabd64a7f743d503b36887b722a692c94c9da496a5",
+      "captureDate": "2024-12-16T09:28:07Z",
+      "tier": "roof",
+      "width": 188,
+      "height": 369,
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "nativeResolution": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120453.96480716647,
+          "y": 486970.0355778373
+        },
+        "end": {
+          "x": 120457.66200702485,
+          "y": 486971.997017861
+        },
+        "baseZ": 12.729999999999997,
+        "topZ": 20.929999999999996
+      },
+      "wall": {
+        "elevationId": "0363100012168954:e:1i374do",
+        "index": 1,
+        "start": {
+          "x": 120454.03590716375,
+          "y": 486970.07329783775
+        },
+        "end": {
+          "x": 120457.59090702757,
+          "y": 486971.95929786057
+        },
+        "midpoint": {
+          "x": 120455.81340709566,
+          "y": 486971.0162978491
+        },
+        "normal": {
+          "x": 0.4686525104128881,
+          "y": -0.883382603679571
+        },
+        "lengthM": 4.024303681109953,
+        "facingDeg": 152.05313643043826,
+        "sourceVertexRange": {
+          "vertexIndices": [
+            6,
+            7
+          ],
+          "edgeIndices": [
+            6
+          ]
+        },
+        "sourcePolygonIndex": 0,
+        "sourceRingIndex": 0,
+        "sourceRingRole": "exterior"
+      },
+      "geometryRevision": "d92d9e81ad45e41bad9fef3eb856864128be2bb38805981965607b628921e30c",
+      "geometryRevisionVerified": false,
+      "rectificationDerivationKey": "9eed5ccbf7226baad06b46f9fc1244b495f1f1b22bdd5eb6496dc275ed6a3bf2",
+      "pose": {
+        "x": 120448.2969067026,
+        "y": 486942.79129775433,
+        "z": 2.8190000081062316,
+        "headingDeg": 61.183130168271774,
+        "pitchDeg": 1.2695376985020357,
+        "rollDeg": 2.489573089091408
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "obliquity": 42.859011890439724,
+      "coverage": [
+        "roof"
+      ],
+      "occlusion": {
+        "status": "tree-obscured",
+        "note": "Footprint hiddenFraction is not a tree/pixel visibility measure"
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "unreviewed-metric-registration",
+        "endpointErrorM": 0.005481772518102527
+      },
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/ba3a3613c80d7303001b3e98c6632f49bb37c8e0b6a1b39fef19e302153ae8fc/evidence/images/0363100012168954_e_1i374do-roof.jpg",
+      "sourceAvailable": true,
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.022262105469869283,
+        "zMetresPerPixel": 0.02222222222222222,
+        "origin": {
+          "x": 120453.96480716647,
+          "y": 486970.0355778373
+        },
+        "topNAP": 20.929999999999996
+      },
+      "url": "./models/building-library/evidence/elandsgracht-96-cached-40fd6610c941.jpg"
+    },
+    {
+      "id": "b86777e4cd98e24d7df53a7672fc704abf9a023b1371088c1d5252f962e7ff87",
+      "ownerId": "0363100012168954",
+      "physicalFacadeId": "0363100012168954:e:1i374do",
+      "captureKey": "b_20241216_0911_Track04_Sphere_00205|2024-12-16T09:28:07Z",
+      "panoramaId": "b_20241216_0911_Track04_Sphere_00205",
+      "panoramaSha256": "44f50a5ca65b471b165ceceabd64a7f743d503b36887b722a692c94c9da496a5",
+      "captureDate": "2024-12-16T09:28:07Z",
+      "tier": "context",
+      "width": 435,
+      "height": 944,
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "nativeResolution": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120451.54740725907,
+          "y": 486968.7530978218
+        },
+        "end": {
+          "x": 120460.07940693224,
+          "y": 486973.27949787653
+        },
+        "baseZ": -0.047000008821487416,
+        "topZ": 20.929999999999996
+      },
+      "wall": {
+        "elevationId": "0363100012168954:e:1i374do",
+        "index": 1,
+        "start": {
+          "x": 120454.03590716375,
+          "y": 486970.07329783775
+        },
+        "end": {
+          "x": 120457.59090702757,
+          "y": 486971.95929786057
+        },
+        "midpoint": {
+          "x": 120455.81340709566,
+          "y": 486971.0162978491
+        },
+        "normal": {
+          "x": 0.4686525104128881,
+          "y": -0.883382603679571
+        },
+        "lengthM": 4.024303681109953,
+        "facingDeg": 152.05313643043826,
+        "sourceVertexRange": {
+          "vertexIndices": [
+            6,
+            7
+          ],
+          "edgeIndices": [
+            6
+          ]
+        },
+        "sourcePolygonIndex": 0,
+        "sourceRingIndex": 0,
+        "sourceRingRole": "exterior"
+      },
+      "geometryRevision": "d92d9e81ad45e41bad9fef3eb856864128be2bb38805981965607b628921e30c",
+      "geometryRevisionVerified": false,
+      "rectificationDerivationKey": "9eed5ccbf7226baad06b46f9fc1244b495f1f1b22bdd5eb6496dc275ed6a3bf2",
+      "pose": {
+        "x": 120448.2969067026,
+        "y": 486942.79129775433,
+        "z": 2.8190000081062316,
+        "headingDeg": 61.183130168271774,
+        "pitchDeg": 1.2695376985020357,
+        "rollDeg": 2.489573089091408
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "obliquity": 42.859011890439724,
+      "coverage": [],
+      "occlusion": {
+        "status": "tree-obscured",
+        "note": "Footprint hiddenFraction is not a tree/pixel visibility measure"
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "unreviewed-metric-registration",
+        "endpointErrorM": 0.005481772518102527
+      },
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/ba3a3613c80d7303001b3e98c6632f49bb37c8e0b6a1b39fef19e302153ae8fc/evidence/images/0363100012168954_e_1i374do-context.jpg",
+      "sourceAvailable": true,
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.02220305479234188,
+        "zMetresPerPixel": 0.022221398314429538,
+        "origin": {
+          "x": 120451.54740725907,
+          "y": 486968.7530978218
+        },
+        "topNAP": 20.929999999999996
+      },
+      "url": "./models/building-library/evidence/elandsgracht-96-cached-b86777e4cd98.jpg"
+    }
+  ],
+  "derived": [
+    {
+      "id": "868aa62a4ef0a9305a3c441037da485c4eacdaaf534848ef3fbb4b2a9dd22dd1",
+      "ownerId": "0363100012168954",
+      "physicalFacadeId": "0363100012168954:primary:d05d952880a9",
+      "captureKey": "b_20241216_0911_Track04_Sphere_00205|2024-12-16T09:28:07Z",
+      "panoramaId": "b_20241216_0911_Track04_Sphere_00205",
+      "panoramaSha256": "3fcf6c808fe919422f3a5bb1e10fb2a185fa75eb60576298714dadae53d65014",
+      "captureDate": "2024-12-16T09:28:07Z",
+      "tier": "full",
+      "width": 322,
+      "height": 1678,
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "nativeAngularWidthPx": 128.50075905008634,
+      "geometryRevision": "d92d9e81ad45e41bad9fef3eb856864128be2bb38805981965607b628921e30c",
+      "geometryRevisionVerified": false,
+      "plane": {
+        "start": {
+          "x": 120454.03817002577,
+          "y": 486970.0740474554
+        },
+        "end": {
+          "x": 120457.58817002577,
+          "y": 486971.9640474554
+        },
+        "baseZ": -0.047000008821487416,
+        "topZ": 20.929999999999996
+      },
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.012489955842715646,
+        "zMetresPerPixel": 0.012501191900370372,
+        "origin": {
+          "x": 120454.03817002577,
+          "y": 486970.0740474554
+        },
+        "topNAP": 20.929999999999996
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "Same physical plane projected with existing municipal convention; independently measured anchors and geometry revision alignment still required"
+      },
+      "occlusion": {
+        "status": "tree-obscured",
+        "note": "2024 source obscures upper bays; 2025 supplies clearer appearance evidence"
+      },
+      "coverage": [
+        "ground",
+        "upper",
+        "roof"
+      ],
+      "url": "./models/building-library/evidence/elandsgracht-96-2024-12-16-full-868aa62a.jpg",
+      "path": "public/canal-drive/models/building-library/evidence/elandsgracht-96-2024-12-16-full-868aa62a.jpg",
+      "sourceAvailable": true,
+      "sourceObservationFacadeId": "0363100012168954:e:1i374do",
+      "cameraFit": {
+        "standoff": 21.3843317670804,
+        "angle": 42.94089681235818,
+        "distance": 29.211300339580607,
+        "eligible": true
+      },
+      "selectedReason": "Independent capture year; known owner capture or best cached frontal/native-resolution candidate for missing year",
+      "rectifier": "src/canalRecall/facade/rectify.ts:AMSTERDAM_WORLD_ALIGNED",
+      "datum": "ground-plus-2.44m; approximate",
+      "pose": {
+        "x": 120448.2969067026,
+        "y": 486942.79129775433,
+        "z": 2.8190000081062316,
+        "headingDeg": 61.183130168271774,
+        "pitchDeg": 1.2695376985020357,
+        "rollDeg": 2.489573089091408
+      }
+    },
+    {
+      "id": "7d9187144c64fd1d15dcc29306e5cd225c9c154fc8359f5fd8fb2a0a7c08bb56",
+      "ownerId": "0363100012168954",
+      "physicalFacadeId": "0363100012168954:primary:d05d952880a9",
+      "captureKey": "b_20241216_0911_Track04_Sphere_00205|2024-12-16T09:28:07Z",
+      "panoramaId": "b_20241216_0911_Track04_Sphere_00205",
+      "panoramaSha256": "3fcf6c808fe919422f3a5bb1e10fb2a185fa75eb60576298714dadae53d65014",
+      "captureDate": "2024-12-16T09:28:07Z",
+      "tier": "roof",
+      "width": 322,
+      "height": 656,
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "nativeAngularWidthPx": 128.50075905008634,
+      "geometryRevision": "d92d9e81ad45e41bad9fef3eb856864128be2bb38805981965607b628921e30c",
+      "geometryRevisionVerified": false,
+      "plane": {
+        "start": {
+          "x": 120454.03817002577,
+          "y": 486970.0740474554
+        },
+        "end": {
+          "x": 120457.58817002577,
+          "y": 486971.9640474554
+        },
+        "baseZ": 12.729999999999997,
+        "topZ": 20.929999999999996
+      },
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.012489955842715646,
+        "zMetresPerPixel": 0.012499999999999999,
+        "origin": {
+          "x": 120454.03817002577,
+          "y": 486970.0740474554
+        },
+        "topNAP": 20.929999999999996
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "Same physical plane projected with existing municipal convention; independently measured anchors and geometry revision alignment still required"
+      },
+      "occlusion": {
+        "status": "tree-obscured",
+        "note": "2024 source obscures upper bays; 2025 supplies clearer appearance evidence"
+      },
+      "coverage": [
+        "roof"
+      ],
+      "url": "./models/building-library/evidence/elandsgracht-96-2024-12-16-roof-7d918714.jpg",
+      "path": "public/canal-drive/models/building-library/evidence/elandsgracht-96-2024-12-16-roof-7d918714.jpg",
+      "sourceAvailable": true,
+      "sourceObservationFacadeId": "0363100012168954:e:1i374do",
+      "cameraFit": {
+        "standoff": 21.3843317670804,
+        "angle": 42.94089681235818,
+        "distance": 29.211300339580607,
+        "eligible": true
+      },
+      "selectedReason": "Independent capture year; known owner capture or best cached frontal/native-resolution candidate for missing year",
+      "rectifier": "src/canalRecall/facade/rectify.ts:AMSTERDAM_WORLD_ALIGNED",
+      "datum": "ground-plus-2.44m; approximate",
+      "pose": {
+        "x": 120448.2969067026,
+        "y": 486942.79129775433,
+        "z": 2.8190000081062316,
+        "headingDeg": 61.183130168271774,
+        "pitchDeg": 1.2695376985020357,
+        "rollDeg": 2.489573089091408
+      }
+    },
+    {
+      "id": "22f60561689ad9bdcab8a372de76a6ec3909b82d22aeb525bb3c81e707d278f5",
+      "ownerId": "0363100012168954",
+      "physicalFacadeId": "0363100012168954:primary:d05d952880a9",
+      "captureKey": "b_20241216_0911_Track04_Sphere_00205|2024-12-16T09:28:07Z",
+      "panoramaId": "b_20241216_0911_Track04_Sphere_00205",
+      "panoramaSha256": "3fcf6c808fe919422f3a5bb1e10fb2a185fa75eb60576298714dadae53d65014",
+      "captureDate": "2024-12-16T09:28:07Z",
+      "tier": "ground",
+      "width": 322,
+      "height": 392,
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "nativeAngularWidthPx": 128.50075905008634,
+      "geometryRevision": "d92d9e81ad45e41bad9fef3eb856864128be2bb38805981965607b628921e30c",
+      "geometryRevisionVerified": false,
+      "plane": {
+        "start": {
+          "x": 120454.03817002577,
+          "y": 486970.0740474554
+        },
+        "end": {
+          "x": 120457.58817002577,
+          "y": 486971.9640474554
+        },
+        "baseZ": -0.047000008821487416,
+        "topZ": 4.852999991178512
+      },
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.012489955842715646,
+        "zMetresPerPixel": 0.012499999999999999,
+        "origin": {
+          "x": 120454.03817002577,
+          "y": 486970.0740474554
+        },
+        "topNAP": 4.852999991178512
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "Same physical plane projected with existing municipal convention; independently measured anchors and geometry revision alignment still required"
+      },
+      "occlusion": {
+        "status": "tree-obscured",
+        "note": "2024 source obscures upper bays; 2025 supplies clearer appearance evidence"
+      },
+      "coverage": [
+        "ground"
+      ],
+      "url": "./models/building-library/evidence/elandsgracht-96-2024-12-16-ground-22f60561.jpg",
+      "path": "public/canal-drive/models/building-library/evidence/elandsgracht-96-2024-12-16-ground-22f60561.jpg",
+      "sourceAvailable": true,
+      "sourceObservationFacadeId": "0363100012168954:e:1i374do",
+      "cameraFit": {
+        "standoff": 21.3843317670804,
+        "angle": 42.94089681235818,
+        "distance": 29.211300339580607,
+        "eligible": true
+      },
+      "selectedReason": "Independent capture year; known owner capture or best cached frontal/native-resolution candidate for missing year",
+      "rectifier": "src/canalRecall/facade/rectify.ts:AMSTERDAM_WORLD_ALIGNED",
+      "datum": "ground-plus-2.44m; approximate",
+      "pose": {
+        "x": 120448.2969067026,
+        "y": 486942.79129775433,
+        "z": 2.8190000081062316,
+        "headingDeg": 61.183130168271774,
+        "pitchDeg": 1.2695376985020357,
+        "rollDeg": 2.489573089091408
+      }
+    },
+    {
+      "id": "3c05a3ff56a22fbc130b9e44e6315397aa4742a840637b8ba6daf84bc4ca714f",
+      "ownerId": "0363100012168954",
+      "physicalFacadeId": "0363100012168954:primary:d05d952880a9",
+      "captureKey": "recording_2025-07-03_10-31-52_00170|2025-07-03T10:39:46Z",
+      "panoramaId": "recording_2025-07-03_10-31-52_00170",
+      "panoramaSha256": "b3059483781e8f699d4b4895c849da212ce9a80854fb8f7b75fa0546f54663f9",
+      "captureDate": "2025-07-03T10:39:46Z",
+      "tier": "full",
+      "width": 322,
+      "height": 1678,
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "nativeAngularWidthPx": 738.625346240271,
+      "geometryRevision": "d92d9e81ad45e41bad9fef3eb856864128be2bb38805981965607b628921e30c",
+      "geometryRevisionVerified": false,
+      "plane": {
+        "start": {
+          "x": 120454.03817002577,
+          "y": 486970.0740474554
+        },
+        "end": {
+          "x": 120457.58817002577,
+          "y": 486971.9640474554
+        },
+        "baseZ": -0.047000008821487416,
+        "topZ": 20.929999999999996
+      },
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.012489955842715646,
+        "zMetresPerPixel": 0.012501191900370372,
+        "origin": {
+          "x": 120454.03817002577,
+          "y": 486970.0740474554
+        },
+        "topNAP": 20.929999999999996
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "Same physical plane projected with existing municipal convention; independently measured anchors and geometry revision alignment still required"
+      },
+      "occlusion": {
+        "status": "primary-facade-visible",
+        "note": "Visual observations from alternate-year-visual-review.json; metric registration remains ambiguous"
+      },
+      "coverage": [
+        "ground",
+        "upper",
+        "roof"
+      ],
+      "url": "./models/building-library/evidence/elandsgracht-96-2025-07-03-full-3c05a3ff.jpg",
+      "path": "public/canal-drive/models/building-library/evidence/elandsgracht-96-2025-07-03-full-3c05a3ff.jpg",
+      "sourceAvailable": true,
+      "sourceObservationFacadeId": "0363100012168954:e:1i374do",
+      "cameraFit": {
+        "standoff": 6.693891443274503,
+        "angle": 4.798498659467285,
+        "distance": 6.717435709178214,
+        "eligible": true
+      },
+      "selectedReason": "Independent capture year; known owner capture or best cached frontal/native-resolution candidate for missing year",
+      "rectifier": "src/canalRecall/facade/rectify.ts:AMSTERDAM_WORLD_ALIGNED",
+      "datum": "ground-plus-2.44m; approximate",
+      "pose": {
+        "x": 120458.46290678145,
+        "y": 486964.84629785473,
+        "z": 2.669000002145767,
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0
+      },
+      "visualReview": "artifacts/jordaan-pois/alternate-year-visual-review.json"
+    },
+    {
+      "id": "60e087079491f46c54ad37a21d88b885487ac7024df0ca317f051a62f1ab70b5",
+      "ownerId": "0363100012168954",
+      "physicalFacadeId": "0363100012168954:primary:d05d952880a9",
+      "captureKey": "recording_2025-07-03_10-31-52_00170|2025-07-03T10:39:46Z",
+      "panoramaId": "recording_2025-07-03_10-31-52_00170",
+      "panoramaSha256": "b3059483781e8f699d4b4895c849da212ce9a80854fb8f7b75fa0546f54663f9",
+      "captureDate": "2025-07-03T10:39:46Z",
+      "tier": "roof",
+      "width": 322,
+      "height": 656,
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "nativeAngularWidthPx": 738.625346240271,
+      "geometryRevision": "d92d9e81ad45e41bad9fef3eb856864128be2bb38805981965607b628921e30c",
+      "geometryRevisionVerified": false,
+      "plane": {
+        "start": {
+          "x": 120454.03817002577,
+          "y": 486970.0740474554
+        },
+        "end": {
+          "x": 120457.58817002577,
+          "y": 486971.9640474554
+        },
+        "baseZ": 12.729999999999997,
+        "topZ": 20.929999999999996
+      },
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.012489955842715646,
+        "zMetresPerPixel": 0.012499999999999999,
+        "origin": {
+          "x": 120454.03817002577,
+          "y": 486970.0740474554
+        },
+        "topNAP": 20.929999999999996
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "Same physical plane projected with existing municipal convention; independently measured anchors and geometry revision alignment still required"
+      },
+      "occlusion": {
+        "status": "primary-facade-visible",
+        "note": "Visual observations from alternate-year-visual-review.json; metric registration remains ambiguous"
+      },
+      "coverage": [
+        "roof"
+      ],
+      "url": "./models/building-library/evidence/elandsgracht-96-2025-07-03-roof-60e08707.jpg",
+      "path": "public/canal-drive/models/building-library/evidence/elandsgracht-96-2025-07-03-roof-60e08707.jpg",
+      "sourceAvailable": true,
+      "sourceObservationFacadeId": "0363100012168954:e:1i374do",
+      "cameraFit": {
+        "standoff": 6.693891443274503,
+        "angle": 4.798498659467285,
+        "distance": 6.717435709178214,
+        "eligible": true
+      },
+      "selectedReason": "Independent capture year; known owner capture or best cached frontal/native-resolution candidate for missing year",
+      "rectifier": "src/canalRecall/facade/rectify.ts:AMSTERDAM_WORLD_ALIGNED",
+      "datum": "ground-plus-2.44m; approximate",
+      "pose": {
+        "x": 120458.46290678145,
+        "y": 486964.84629785473,
+        "z": 2.669000002145767,
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0
+      },
+      "visualReview": "artifacts/jordaan-pois/alternate-year-visual-review.json"
+    },
+    {
+      "id": "ef247702f58eb6ed79db7f86bf6ff296b92432af511c9967dba1f82f43e66244",
+      "ownerId": "0363100012168954",
+      "physicalFacadeId": "0363100012168954:primary:d05d952880a9",
+      "captureKey": "recording_2025-07-03_10-31-52_00170|2025-07-03T10:39:46Z",
+      "panoramaId": "recording_2025-07-03_10-31-52_00170",
+      "panoramaSha256": "b3059483781e8f699d4b4895c849da212ce9a80854fb8f7b75fa0546f54663f9",
+      "captureDate": "2025-07-03T10:39:46Z",
+      "tier": "ground",
+      "width": 322,
+      "height": 392,
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "nativeAngularWidthPx": 738.625346240271,
+      "geometryRevision": "d92d9e81ad45e41bad9fef3eb856864128be2bb38805981965607b628921e30c",
+      "geometryRevisionVerified": false,
+      "plane": {
+        "start": {
+          "x": 120454.03817002577,
+          "y": 486970.0740474554
+        },
+        "end": {
+          "x": 120457.58817002577,
+          "y": 486971.9640474554
+        },
+        "baseZ": -0.047000008821487416,
+        "topZ": 4.852999991178512
+      },
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.012489955842715646,
+        "zMetresPerPixel": 0.012499999999999999,
+        "origin": {
+          "x": 120454.03817002577,
+          "y": 486970.0740474554
+        },
+        "topNAP": 4.852999991178512
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "Same physical plane projected with existing municipal convention; independently measured anchors and geometry revision alignment still required"
+      },
+      "occlusion": {
+        "status": "primary-facade-visible",
+        "note": "Visual observations from alternate-year-visual-review.json; metric registration remains ambiguous"
+      },
+      "coverage": [
+        "ground"
+      ],
+      "url": "./models/building-library/evidence/elandsgracht-96-2025-07-03-ground-ef247702.jpg",
+      "path": "public/canal-drive/models/building-library/evidence/elandsgracht-96-2025-07-03-ground-ef247702.jpg",
+      "sourceAvailable": true,
+      "sourceObservationFacadeId": "0363100012168954:e:1i374do",
+      "cameraFit": {
+        "standoff": 6.693891443274503,
+        "angle": 4.798498659467285,
+        "distance": 6.717435709178214,
+        "eligible": true
+      },
+      "selectedReason": "Independent capture year; known owner capture or best cached frontal/native-resolution candidate for missing year",
+      "rectifier": "src/canalRecall/facade/rectify.ts:AMSTERDAM_WORLD_ALIGNED",
+      "datum": "ground-plus-2.44m; approximate",
+      "pose": {
+        "x": 120458.46290678145,
+        "y": 486964.84629785473,
+        "z": 2.669000002145767,
+        "headingDeg": 0,
+        "pitchDeg": 0,
+        "rollDeg": 0
+      },
+      "visualReview": "artifacts/jordaan-pois/alternate-year-visual-review.json"
+    },
+    {
+      "id": "fc3f1ab1c50cf046077ca7ca83c1744a2065c763d4b0cffc3885f9495cfb5a32",
+      "ownerId": "0363100012168954",
+      "physicalFacadeId": "0363100012168954:primary:d05d952880a9",
+      "captureKey": "TMX7316010203-002445_pano_0006_000000|2022-01-27T08:54:59.891690Z",
+      "panoramaId": "TMX7316010203-002445_pano_0006_000000",
+      "panoramaSha256": "e505d63a6a71dc8f73081af9ab9c099270fbf7de21f69832cba1ebe8285981a2",
+      "captureDate": "2022-01-27T08:54:59.891690Z",
+      "tier": "full",
+      "width": 322,
+      "height": 1678,
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "nativeAngularWidthPx": 401.954843077212,
+      "geometryRevision": "d92d9e81ad45e41bad9fef3eb856864128be2bb38805981965607b628921e30c",
+      "geometryRevisionVerified": false,
+      "plane": {
+        "start": {
+          "x": 120454.03817002577,
+          "y": 486970.0740474554
+        },
+        "end": {
+          "x": 120457.58817002577,
+          "y": 486971.9640474554
+        },
+        "baseZ": -0.047000008821487416,
+        "topZ": 20.929999999999996
+      },
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.012489955842715646,
+        "zMetresPerPixel": 0.012501191900370372,
+        "origin": {
+          "x": 120454.03817002577,
+          "y": 486970.0740474554
+        },
+        "topNAP": 20.929999999999996
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "Same physical plane projected with existing municipal convention; independently measured anchors and geometry revision alignment still required"
+      },
+      "occlusion": {
+        "status": "unreviewed",
+        "note": "Inspect new dated crop; no invisible-feature recovery inferred"
+      },
+      "coverage": [
+        "ground",
+        "upper",
+        "roof"
+      ],
+      "url": "./models/building-library/evidence/elandsgracht-96-2022-01-27-full-fc3f1ab1.jpg",
+      "path": "public/canal-drive/models/building-library/evidence/elandsgracht-96-2022-01-27-full-fc3f1ab1.jpg",
+      "sourceAvailable": true,
+      "sourceObservationFacadeId": "0363100012168950:e:1b8u2ic",
+      "cameraFit": {
+        "standoff": 6.286066166962601,
+        "angle": 45.850284448544535,
+        "distance": 9.024758663773646,
+        "eligible": true
+      },
+      "selectedReason": "Independent capture year; known owner capture or best cached frontal/native-resolution candidate for missing year",
+      "rectifier": "src/canalRecall/facade/rectify.ts:AMSTERDAM_WORLD_ALIGNED",
+      "datum": "published-minus-43.5m; track-unsolved",
+      "pose": {
+        "x": 120464.48313393936,
+        "y": 486968.51345477573,
+        "z": 2.1594733381644033,
+        "headingDeg": 61.1846839328483,
+        "pitchDeg": -0.515954272505606,
+        "rollDeg": -0.724764176912283
+      }
+    },
+    {
+      "id": "7c80043209c9d0e675cc9a6c911b997aa6c392ac98ece1e3a4d4bcb81a5d20c6",
+      "ownerId": "0363100012168954",
+      "physicalFacadeId": "0363100012168954:primary:d05d952880a9",
+      "captureKey": "TMX7316010203-002445_pano_0006_000000|2022-01-27T08:54:59.891690Z",
+      "panoramaId": "TMX7316010203-002445_pano_0006_000000",
+      "panoramaSha256": "e505d63a6a71dc8f73081af9ab9c099270fbf7de21f69832cba1ebe8285981a2",
+      "captureDate": "2022-01-27T08:54:59.891690Z",
+      "tier": "roof",
+      "width": 322,
+      "height": 656,
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "nativeAngularWidthPx": 401.954843077212,
+      "geometryRevision": "d92d9e81ad45e41bad9fef3eb856864128be2bb38805981965607b628921e30c",
+      "geometryRevisionVerified": false,
+      "plane": {
+        "start": {
+          "x": 120454.03817002577,
+          "y": 486970.0740474554
+        },
+        "end": {
+          "x": 120457.58817002577,
+          "y": 486971.9640474554
+        },
+        "baseZ": 12.729999999999997,
+        "topZ": 20.929999999999996
+      },
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.012489955842715646,
+        "zMetresPerPixel": 0.012499999999999999,
+        "origin": {
+          "x": 120454.03817002577,
+          "y": 486970.0740474554
+        },
+        "topNAP": 20.929999999999996
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "Same physical plane projected with existing municipal convention; independently measured anchors and geometry revision alignment still required"
+      },
+      "occlusion": {
+        "status": "unreviewed",
+        "note": "Inspect new dated crop; no invisible-feature recovery inferred"
+      },
+      "coverage": [
+        "roof"
+      ],
+      "url": "./models/building-library/evidence/elandsgracht-96-2022-01-27-roof-7c800432.jpg",
+      "path": "public/canal-drive/models/building-library/evidence/elandsgracht-96-2022-01-27-roof-7c800432.jpg",
+      "sourceAvailable": true,
+      "sourceObservationFacadeId": "0363100012168950:e:1b8u2ic",
+      "cameraFit": {
+        "standoff": 6.286066166962601,
+        "angle": 45.850284448544535,
+        "distance": 9.024758663773646,
+        "eligible": true
+      },
+      "selectedReason": "Independent capture year; known owner capture or best cached frontal/native-resolution candidate for missing year",
+      "rectifier": "src/canalRecall/facade/rectify.ts:AMSTERDAM_WORLD_ALIGNED",
+      "datum": "published-minus-43.5m; track-unsolved",
+      "pose": {
+        "x": 120464.48313393936,
+        "y": 486968.51345477573,
+        "z": 2.1594733381644033,
+        "headingDeg": 61.1846839328483,
+        "pitchDeg": -0.515954272505606,
+        "rollDeg": -0.724764176912283
+      }
+    },
+    {
+      "id": "75cb2718d97e1c517300bec904e25b5ca44082a8d61a70dda76e45443af2953f",
+      "ownerId": "0363100012168954",
+      "physicalFacadeId": "0363100012168954:primary:d05d952880a9",
+      "captureKey": "TMX7316010203-002445_pano_0006_000000|2022-01-27T08:54:59.891690Z",
+      "panoramaId": "TMX7316010203-002445_pano_0006_000000",
+      "panoramaSha256": "e505d63a6a71dc8f73081af9ab9c099270fbf7de21f69832cba1ebe8285981a2",
+      "captureDate": "2022-01-27T08:54:59.891690Z",
+      "tier": "ground",
+      "width": 322,
+      "height": 392,
+      "sourceDimensions": [
+        8000,
+        4000
+      ],
+      "nativeAngularWidthPx": 401.954843077212,
+      "geometryRevision": "d92d9e81ad45e41bad9fef3eb856864128be2bb38805981965607b628921e30c",
+      "geometryRevisionVerified": false,
+      "plane": {
+        "start": {
+          "x": 120454.03817002577,
+          "y": 486970.0740474554
+        },
+        "end": {
+          "x": 120457.58817002577,
+          "y": 486971.9640474554
+        },
+        "baseZ": -0.047000008821487416,
+        "topZ": 4.852999991178512
+      },
+      "pixelToMetres": {
+        "xMetresPerPixel": 0.012489955842715646,
+        "zMetresPerPixel": 0.012499999999999999,
+        "origin": {
+          "x": 120454.03817002577,
+          "y": 486970.0740474554
+        },
+        "topNAP": 4.852999991178512
+      },
+      "registration": {
+        "status": "ambiguous",
+        "reason": "Same physical plane projected with existing municipal convention; independently measured anchors and geometry revision alignment still required"
+      },
+      "occlusion": {
+        "status": "unreviewed",
+        "note": "Inspect new dated crop; no invisible-feature recovery inferred"
+      },
+      "coverage": [
+        "ground"
+      ],
+      "url": "./models/building-library/evidence/elandsgracht-96-2022-01-27-ground-75cb2718.jpg",
+      "path": "public/canal-drive/models/building-library/evidence/elandsgracht-96-2022-01-27-ground-75cb2718.jpg",
+      "sourceAvailable": true,
+      "sourceObservationFacadeId": "0363100012168950:e:1b8u2ic",
+      "cameraFit": {
+        "standoff": 6.286066166962601,
+        "angle": 45.850284448544535,
+        "distance": 9.024758663773646,
+        "eligible": true
+      },
+      "selectedReason": "Independent capture year; known owner capture or best cached frontal/native-resolution candidate for missing year",
+      "rectifier": "src/canalRecall/facade/rectify.ts:AMSTERDAM_WORLD_ALIGNED",
+      "datum": "published-minus-43.5m; track-unsolved",
+      "pose": {
+        "x": 120464.48313393936,
+        "y": 486968.51345477573,
+        "z": 2.1594733381644033,
+        "headingDeg": 61.1846839328483,
+        "pitchDeg": -0.515954272505606,
+        "rollDeg": -0.724764176912283
+      }
+    }
+  ],
+  "coverage": [
+    {
+      "year": "2022",
+      "ground": {
+        "captures": [
+          "TMX7316010203-002445_pano_0006_000000|2022-01-27T08:54:59.891690Z"
+        ],
+        "crops": 2,
+        "registered": 0,
+        "visible": "unreviewed; crop coverage is not visibility"
+      },
+      "upper": {
+        "captures": [
+          "TMX7316010203-002445_pano_0006_000000|2022-01-27T08:54:59.891690Z"
+        ],
+        "crops": 1,
+        "registered": 0,
+        "visible": "unreviewed; crop coverage is not visibility"
+      },
+      "roof": {
+        "captures": [
+          "TMX7316010203-002445_pano_0006_000000|2022-01-27T08:54:59.891690Z"
+        ],
+        "crops": 2,
+        "registered": 0,
+        "visible": "unreviewed; crop coverage is not visibility"
+      }
+    },
+    {
+      "year": "2024",
+      "ground": {
+        "captures": [
+          "b_20241216_0911_Track04_Sphere_00205|2024-12-16T09:28:07Z"
+        ],
+        "crops": 4,
+        "registered": 0,
+        "visible": "unreviewed; crop coverage is not visibility"
+      },
+      "upper": {
+        "captures": [
+          "b_20241216_0911_Track04_Sphere_00205|2024-12-16T09:28:07Z"
+        ],
+        "crops": 3,
+        "registered": 0,
+        "visible": "unreviewed; crop coverage is not visibility"
+      },
+      "roof": {
+        "captures": [
+          "b_20241216_0911_Track04_Sphere_00205|2024-12-16T09:28:07Z"
+        ],
+        "crops": 6,
+        "registered": 0,
+        "visible": "unreviewed; crop coverage is not visibility"
+      }
+    },
+    {
+      "year": "2025",
+      "ground": {
+        "captures": [
+          "recording_2025-07-03_10-31-52_00170|2025-07-03T10:39:46Z"
+        ],
+        "crops": 4,
+        "registered": 0,
+        "visible": "unreviewed; crop coverage is not visibility"
+      },
+      "upper": {
+        "captures": [
+          "recording_2025-07-03_10-31-52_00170|2025-07-03T10:39:46Z"
+        ],
+        "crops": 1,
+        "registered": 0,
+        "visible": "unreviewed; crop coverage is not visibility"
+      },
+      "roof": {
+        "captures": [
+          "recording_2025-07-03_10-31-52_00170|2025-07-03T10:39:46Z"
+        ],
+        "crops": 2,
+        "registered": 0,
+        "visible": "unreviewed; crop coverage is not visibility"
+      }
+    }
+  ],
+  "visualReview": {
+    "buildingId": "0363100012168954",
+    "recipe": "elandsgracht-96",
+    "image": "public/canal-drive/models/building-library/evidence/elandsgracht-96-2025-07-03-full-aa035125.jpg",
+    "findings": [
+      "Three upper storeys with two window bays each are visible",
+      "Straight street cornice; prototype triangular front gable is unsupported",
+      "Upper sash has narrow vertical lights, lower sash has a larger pane",
+      "Storefront has fascia and projecting awning"
+    ],
+    "uncertainty": [
+      "Hidden roof volume remains uncertain",
+      "Rectification registration is still ambiguous; no precise new dimensions inferred from pixels"
+    ]
+  },
+  "featureProposals": [],
+  "policy": "Multiple years of rectified samples are required; ambiguous crops cannot derive metric geometry or recover hidden features. Business details use target-date ground appearance.",
+  "gaps": [
+    "Independent anchor registration remains required; no registered feature fusion performed.",
+    "Unseen roof and tree-obscured windows require dated visibility review."
+  ],
+  "acquisitionTasks": [
+    {
+      "region": "upper/roof",
+      "action": "Inspect dated full/roof crops, annotate common anchors and occlusion. If unresolved, select another cached municipal capture year/position and run this same rectifier; acquire only missing candidates."
+    }
+  ]
+}

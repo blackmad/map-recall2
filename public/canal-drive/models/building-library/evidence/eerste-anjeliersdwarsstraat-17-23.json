@@ -1,0 +1,396 @@
+{
+  "schemaVersion": 1,
+  "id": "eerste-anjeliersdwarsstraat-17-23",
+  "ownerId": "0363100012174317",
+  "geometryRevision": "848396f2e53b2a44ec766d308822c5a5136b61b158c264934e26f35884eaed60",
+  "physicalFacade": {
+    "frontage": [
+      [
+        759.7157505915966,
+        -973.1542534151231
+      ],
+      [
+        763.0857501395949,
+        -963.4252534226398
+      ]
+    ],
+    "orderedFrontageRD": [
+      {
+        "x": 120702.26492061737,
+        "y": 487919.7763008705
+      },
+      {
+        "x": 120705.63492016536,
+        "y": 487910.04730087804
+      }
+    ],
+    "elevationId": "0363100012174317:e:16tm9wb",
+    "identityStatus": "visually plausible; metric registration unresolved",
+    "plane": {
+      "start": {
+        "x": 120702.26492061737,
+        "y": 487919.7763008705
+      },
+      "end": {
+        "x": 120705.63492016536,
+        "y": 487910.04730087804
+      }
+    }
+  },
+  "targetAppearanceDate": "2022-04-29T08:08:36.445350Z",
+  "derived": [
+    {
+      "tier": "ground",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/6f8e044a9684f917daf0ba347be37c48dc648ca4b63e4f0b4d425f852d1ed695/evidence/images/0363100012174317_e_16tm9wb-ground.jpg",
+      "sha256": "cafc403787446c4d40ce384060366be2635cdfce013f7b9a1fc62639cc5b8b7e",
+      "captureDate": "2022-04-29T08:08:36.445350Z",
+      "panoramaId": "TMX7316010203-002549_pano_0000_004078",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120702.1975206264,
+          "y": 487919.97088087036
+        },
+        "end": {
+          "x": 120705.70232015633,
+          "y": 487909.8527208782
+        },
+        "baseZ": 0.05400000214576722,
+        "topZ": 4.954000002145767
+      },
+      "datum": "published-minus-43.5m; track-unsolved",
+      "heightInferred": false,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/6f8e044a9684f917daf0ba347be37c48dc648ca4b63e4f0b4d425f852d1ed695/evidence/manifest.json",
+      "derivationKey": "850a4efb7a071878871876566c8218c14c99c4fe794e54e562f33eaa2b89dcd8",
+      "metricEligible": false,
+      "captureKey": "TMX7316010203-002549_pano_0000_004078|2022-04-29T08:08:36.445350Z",
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "registration": {
+        "status": "unregistered",
+        "metricEligible": false
+      },
+      "selectedReason": "Cached selected-facade evidence; separate full/roof crops are not independent captures.",
+      "sourceUrlBeforePreview": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/6f8e044a9684f917daf0ba347be37c48dc648ca4b63e4f0b4d425f852d1ed695/evidence/images/0363100012174317_e_16tm9wb-ground.jpg",
+      "url": "./models/building-library/evidence/eerste-anjeliersdwarsstraat-17-23-ground-20220429-cafc403787446c4d40ce3840.jpg"
+    },
+    {
+      "tier": "full",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/6f8e044a9684f917daf0ba347be37c48dc648ca4b63e4f0b4d425f852d1ed695/evidence/images/0363100012174317_e_16tm9wb-full.jpg",
+      "sha256": "321a2d2cdd1d090eaea19935f77750591a5d4ef6ed68da4af4f467ff58525ec8",
+      "captureDate": "2024-12-16T11:19:13Z",
+      "panoramaId": "b_20241216_0911_Track32_Sphere_00066",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120702.1975206264,
+          "y": 487919.97088087036
+        },
+        "end": {
+          "x": 120705.70232015633,
+          "y": 487909.8527208782
+        },
+        "baseZ": 0.05400000214576722,
+        "topZ": 13.68
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "heightInferred": true,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/6f8e044a9684f917daf0ba347be37c48dc648ca4b63e4f0b4d425f852d1ed695/evidence/manifest.json",
+      "derivationKey": "850a4efb7a071878871876566c8218c14c99c4fe794e54e562f33eaa2b89dcd8",
+      "metricEligible": false,
+      "captureKey": "b_20241216_0911_Track32_Sphere_00066|2024-12-16T11:19:13Z",
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "registration": {
+        "status": "unregistered",
+        "metricEligible": false
+      },
+      "selectedReason": "Cached selected-facade evidence; separate full/roof crops are not independent captures.",
+      "sourceUrlBeforePreview": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/6f8e044a9684f917daf0ba347be37c48dc648ca4b63e4f0b4d425f852d1ed695/evidence/images/0363100012174317_e_16tm9wb-full.jpg",
+      "url": "./models/building-library/evidence/eerste-anjeliersdwarsstraat-17-23-full-20241216-321a2d2cdd1d090eaea19935.jpg"
+    },
+    {
+      "tier": "roof",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/6f8e044a9684f917daf0ba347be37c48dc648ca4b63e4f0b4d425f852d1ed695/evidence/images/0363100012174317_e_16tm9wb-roof.jpg",
+      "sha256": "5ae80265fee9440a0d106f42d01bac6189052c5d16985ee28990387f90e45069",
+      "captureDate": "2024-12-16T11:19:13Z",
+      "panoramaId": "b_20241216_0911_Track32_Sphere_00066",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120702.1975206264,
+          "y": 487919.97088087036
+        },
+        "end": {
+          "x": 120705.70232015633,
+          "y": 487909.8527208782
+        },
+        "baseZ": 5.48,
+        "topZ": 13.68
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "heightInferred": true,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/6f8e044a9684f917daf0ba347be37c48dc648ca4b63e4f0b4d425f852d1ed695/evidence/manifest.json",
+      "derivationKey": "850a4efb7a071878871876566c8218c14c99c4fe794e54e562f33eaa2b89dcd8",
+      "metricEligible": false,
+      "captureKey": "b_20241216_0911_Track32_Sphere_00066|2024-12-16T11:19:13Z",
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "registration": {
+        "status": "unregistered",
+        "metricEligible": false
+      },
+      "selectedReason": "Cached selected-facade evidence; separate full/roof crops are not independent captures.",
+      "sourceUrlBeforePreview": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/6f8e044a9684f917daf0ba347be37c48dc648ca4b63e4f0b4d425f852d1ed695/evidence/images/0363100012174317_e_16tm9wb-roof.jpg",
+      "url": "./models/building-library/evidence/eerste-anjeliersdwarsstraat-17-23-roof-20241216-5ae80265fee9440a0d106f42.jpg"
+    }
+  ],
+  "candidates": [
+    {
+      "tier": "ground",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/6f8e044a9684f917daf0ba347be37c48dc648ca4b63e4f0b4d425f852d1ed695/evidence/images/0363100012174317_e_16tm9wb-ground.jpg",
+      "sha256": "cafc403787446c4d40ce384060366be2635cdfce013f7b9a1fc62639cc5b8b7e",
+      "captureDate": "2022-04-29T08:08:36.445350Z",
+      "panoramaId": "TMX7316010203-002549_pano_0000_004078",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120702.1975206264,
+          "y": 487919.97088087036
+        },
+        "end": {
+          "x": 120705.70232015633,
+          "y": 487909.8527208782
+        },
+        "baseZ": 0.05400000214576722,
+        "topZ": 4.954000002145767
+      },
+      "datum": "published-minus-43.5m; track-unsolved",
+      "heightInferred": false,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/6f8e044a9684f917daf0ba347be37c48dc648ca4b63e4f0b4d425f852d1ed695/evidence/manifest.json",
+      "derivationKey": "850a4efb7a071878871876566c8218c14c99c4fe794e54e562f33eaa2b89dcd8",
+      "metricEligible": false
+    },
+    {
+      "tier": "context",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/6f8e044a9684f917daf0ba347be37c48dc648ca4b63e4f0b4d425f852d1ed695/evidence/images/0363100012174317_e_16tm9wb-context.jpg",
+      "sha256": "8cf92bc12a9f8cbdfc8ba443cda298ecf070e8a6a4b2733f753d9a5c43348917",
+      "captureDate": "2024-12-16T11:19:13Z",
+      "panoramaId": "b_20241216_0911_Track32_Sphere_00066",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120699.90592093377,
+          "y": 487926.58660086524
+        },
+        "end": {
+          "x": 120707.99391984896,
+          "y": 487903.2370008833
+        },
+        "baseZ": 0.05400000214576722,
+        "topZ": 13.68
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "heightInferred": true,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/6f8e044a9684f917daf0ba347be37c48dc648ca4b63e4f0b4d425f852d1ed695/evidence/manifest.json",
+      "derivationKey": "850a4efb7a071878871876566c8218c14c99c4fe794e54e562f33eaa2b89dcd8",
+      "metricEligible": false
+    },
+    {
+      "tier": "full",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/6f8e044a9684f917daf0ba347be37c48dc648ca4b63e4f0b4d425f852d1ed695/evidence/images/0363100012174317_e_16tm9wb-full.jpg",
+      "sha256": "321a2d2cdd1d090eaea19935f77750591a5d4ef6ed68da4af4f467ff58525ec8",
+      "captureDate": "2024-12-16T11:19:13Z",
+      "panoramaId": "b_20241216_0911_Track32_Sphere_00066",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120702.1975206264,
+          "y": 487919.97088087036
+        },
+        "end": {
+          "x": 120705.70232015633,
+          "y": 487909.8527208782
+        },
+        "baseZ": 0.05400000214576722,
+        "topZ": 13.68
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "heightInferred": true,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/6f8e044a9684f917daf0ba347be37c48dc648ca4b63e4f0b4d425f852d1ed695/evidence/manifest.json",
+      "derivationKey": "850a4efb7a071878871876566c8218c14c99c4fe794e54e562f33eaa2b89dcd8",
+      "metricEligible": false
+    },
+    {
+      "tier": "roof",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/6f8e044a9684f917daf0ba347be37c48dc648ca4b63e4f0b4d425f852d1ed695/evidence/images/0363100012174317_e_16tm9wb-roof.jpg",
+      "sha256": "5ae80265fee9440a0d106f42d01bac6189052c5d16985ee28990387f90e45069",
+      "captureDate": "2024-12-16T11:19:13Z",
+      "panoramaId": "b_20241216_0911_Track32_Sphere_00066",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120702.1975206264,
+          "y": 487919.97088087036
+        },
+        "end": {
+          "x": 120705.70232015633,
+          "y": 487909.8527208782
+        },
+        "baseZ": 5.48,
+        "topZ": 13.68
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "heightInferred": true,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/6f8e044a9684f917daf0ba347be37c48dc648ca4b63e4f0b4d425f852d1ed695/evidence/manifest.json",
+      "derivationKey": "850a4efb7a071878871876566c8218c14c99c4fe794e54e562f33eaa2b89dcd8",
+      "metricEligible": false
+    }
+  ],
+  "coverage": [
+    {
+      "year": "2022",
+      "ground": {
+        "captures": [
+          "TMX7316010203-002549_pano_0000_004078|2022-04-29T08:08:36.445350Z"
+        ],
+        "crops": 1,
+        "registered": 0,
+        "visible": "visually reviewed; unregistered seed crop"
+      },
+      "upper": {
+        "captures": [],
+        "crops": 0,
+        "registered": 0,
+        "visible": "visually reviewed; unregistered seed crop"
+      },
+      "roof": {
+        "captures": [],
+        "crops": 0,
+        "registered": 0,
+        "visible": "visually reviewed; unregistered seed crop"
+      }
+    },
+    {
+      "year": "2024",
+      "ground": {
+        "captures": [],
+        "crops": 0,
+        "registered": 0,
+        "visible": "visually reviewed; unregistered seed crop"
+      },
+      "upper": {
+        "captures": [
+          "b_20241216_0911_Track32_Sphere_00066|2024-12-16T11:19:13Z"
+        ],
+        "crops": 1,
+        "registered": 0,
+        "visible": "visually reviewed; unregistered seed crop"
+      },
+      "roof": {
+        "captures": [
+          "b_20241216_0911_Track32_Sphere_00066|2024-12-16T11:19:13Z"
+        ],
+        "crops": 1,
+        "registered": 0,
+        "visible": "visually reviewed; unregistered seed crop"
+      }
+    }
+  ],
+  "policy": "Original cached images retained; source fingerprint is a cache geometry digest, not externally certified revision.",
+  "gaps": [
+    "No independent feature registration.",
+    "Only two independent captures in this seed; tier crop duplicates are not new observations."
+  ],
+  "previewSourceBundle": "artifacts/jordaan-building-library/authored-evidence/eerste-anjeliersdwarsstraat-17-23.json"
+}

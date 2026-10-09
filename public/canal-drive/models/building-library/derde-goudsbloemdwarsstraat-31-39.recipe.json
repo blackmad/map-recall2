@@ -1,0 +1,2338 @@
+{
+  "schemaVersion": 1,
+  "id": "derde-goudsbloemdwarsstraat-31-39",
+  "name": "Derde Goudsbloemdwarsstraat stepped corner block",
+  "address": "Derde Goudsbloemdwarsstraat 31/33/35/37/39",
+  "buildingId": "0363100012168615",
+  "synthetic": false,
+  "geometryRevision": "b9ac59246ebcb44e0d5ddbd43039d87f35ca9885de8d39a70ca676eda8efb377",
+  "sourceBundle": "derde-goudsbloemdwarsstraat-31-39.json",
+  "footprint": [
+    [
+      -0.5076920013305803,
+      5.751881096971873
+    ],
+    [
+      -0.4968122709616471,
+      0.5343738730700567
+    ],
+    [
+      -0.005021705297053412,
+      -0.000642051480945523
+    ],
+    [
+      12.293303383917333,
+      -0.0006415798075325441
+    ],
+    [
+      12.295889091265058,
+      0.2759326672175577
+    ],
+    [
+      13.341218388581906,
+      1.2857775365767443
+    ],
+    [
+      13.617792635606996,
+      1.2831918292290205
+    ],
+    [
+      13.623321669838878,
+      5.819354241420749
+    ]
+  ],
+  "height": 15.35800000190735,
+  "storeys": [
+    {
+      "id": "ground",
+      "bottom": 0,
+      "top": 4.4
+    },
+    {
+      "id": "upper_1",
+      "bottom": 4.4,
+      "top": 7.82
+    },
+    {
+      "id": "upper_2",
+      "bottom": 7.82,
+      "top": 9.53
+    },
+    {
+      "id": "upper_3",
+      "bottom": 9.53,
+      "top": 12.8
+    },
+    {
+      "id": "upper_4",
+      "bottom": 12.8,
+      "top": 15.35800000190735
+    }
+  ],
+  "roof": {
+    "kind": "flat",
+    "eaves": 15.35800000190735,
+    "top": 15.35800000190735,
+    "setback": 0.24,
+    "status": "inferred"
+  },
+  "gable": {
+    "profile": [
+      [
+        0,
+        12.888000001907349
+      ],
+      [
+        0.58,
+        12.888000001907349
+      ],
+      [
+        0.58,
+        15.36800000190735
+      ],
+      [
+        4.359,
+        15.36800000190735
+      ],
+      [
+        4.359,
+        13.43800000190735
+      ],
+      [
+        7.52,
+        13.43800000190735
+      ],
+      [
+        7.52,
+        15.35800000190735
+      ],
+      [
+        12.298324981713728,
+        15.35800000190735
+      ]
+    ],
+    "status": "source-supported"
+  },
+  "frontages": [
+    {
+      "id": "long-street",
+      "origin": [
+        0.0,
+        0.0
+      ],
+      "rotation": 3.6109731244732506e-17,
+      "width": 12.298324981713728,
+      "eaves": 15.35800000190735,
+      "openings": [
+        {
+          "id": "long-street-middle-1",
+          "x": 6.95,
+          "z": 11.35,
+          "width": 1.1,
+          "height": 1.63,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_3",
+          "frameColour": "#c4c7bd",
+          "mullions": [],
+          "transom": 0.2,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-full.jpg",
+            "sourceHash": "fd82df6e164a83d4a54386c8852240a68153eb6120bea950bbd4fa9e4c570984",
+            "captureDate": "2025-07-03T07:07:29Z",
+            "cropPlane": {
+              "start": {
+                "x": 120636.97433060975,
+                "y": 488152.2189008638
+              },
+              "end": {
+                "x": 120639.86553010665,
+                "y": 488139.7597008618
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 16.92
+            },
+            "pixelBounds": [
+              265,
+              184,
+              315,
+              261
+            ],
+            "cropPlaneMappedXBounds": [
+              5.638440383964129,
+              6.748705833699612
+            ],
+            "authoredXBounds": [
+              6.4,
+              7.5
+            ],
+            "reason": "Selected low middle wall18 supports ordinary window column; padded crop plane mapping retained, datum unsolved; visual placement stays within its measured wall patch."
+          }
+        },
+        {
+          "id": "long-street-middle-2",
+          "x": 6.95,
+          "z": 8.7,
+          "width": 1.1,
+          "height": 1.63,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_2",
+          "frameColour": "#c4c7bd",
+          "mullions": [],
+          "transom": 0.2,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-full.jpg",
+            "sourceHash": "fd82df6e164a83d4a54386c8852240a68153eb6120bea950bbd4fa9e4c570984",
+            "captureDate": "2025-07-03T07:07:29Z",
+            "cropPlane": {
+              "start": {
+                "x": 120636.97433060975,
+                "y": 488152.2189008638
+              },
+              "end": {
+                "x": 120639.86553010665,
+                "y": 488139.7597008618
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 16.92
+            },
+            "pixelBounds": [
+              265,
+              309,
+              315,
+              383
+            ],
+            "cropPlaneMappedXBounds": [
+              5.638440383964129,
+              6.748705833699612
+            ],
+            "authoredXBounds": [
+              6.4,
+              7.5
+            ],
+            "reason": "Selected low middle wall18 supports ordinary window column; padded crop plane mapping retained, datum unsolved; visual placement stays within its measured wall patch."
+          }
+        },
+        {
+          "id": "long-street-middle-3",
+          "x": 6.95,
+          "z": 6.1,
+          "width": 1.1,
+          "height": 1.63,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_1",
+          "frameColour": "#c4c7bd",
+          "mullions": [],
+          "transom": 0.2,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-full.jpg",
+            "sourceHash": "fd82df6e164a83d4a54386c8852240a68153eb6120bea950bbd4fa9e4c570984",
+            "captureDate": "2025-07-03T07:07:29Z",
+            "cropPlane": {
+              "start": {
+                "x": 120636.97433060975,
+                "y": 488152.2189008638
+              },
+              "end": {
+                "x": 120639.86553010665,
+                "y": 488139.7597008618
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 16.92
+            },
+            "pixelBounds": [
+              265,
+              430,
+              315,
+              505
+            ],
+            "cropPlaneMappedXBounds": [
+              5.638440383964129,
+              6.748705833699612
+            ],
+            "authoredXBounds": [
+              6.4,
+              7.5
+            ],
+            "reason": "Selected low middle wall18 supports ordinary window column; padded crop plane mapping retained, datum unsolved; visual placement stays within its measured wall patch."
+          }
+        },
+        {
+          "id": "long-street-middle-4",
+          "x": 6.95,
+          "z": 3.5,
+          "width": 1.1,
+          "height": 1.63,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "ground",
+          "frameColour": "#c4c7bd",
+          "mullions": [],
+          "transom": 0.2,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-full.jpg",
+            "sourceHash": "fd82df6e164a83d4a54386c8852240a68153eb6120bea950bbd4fa9e4c570984",
+            "captureDate": "2025-07-03T07:07:29Z",
+            "cropPlane": {
+              "start": {
+                "x": 120636.97433060975,
+                "y": 488152.2189008638
+              },
+              "end": {
+                "x": 120639.86553010665,
+                "y": 488139.7597008618
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 16.92
+            },
+            "pixelBounds": [
+              265,
+              552,
+              315,
+              625
+            ],
+            "cropPlaneMappedXBounds": [
+              5.638440383964129,
+              6.748705833699612
+            ],
+            "authoredXBounds": [
+              6.4,
+              7.5
+            ],
+            "reason": "Selected low middle wall18 supports ordinary window column; padded crop plane mapping retained, datum unsolved; visual placement stays within its measured wall patch."
+          }
+        },
+        {
+          "id": "long-street-narrow-1",
+          "x": 11.12,
+          "z": 14.1,
+          "width": 0.4,
+          "height": 1.15,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_4",
+          "frameColour": "#c4c7bd",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-full.jpg",
+            "sourceHash": "fd82df6e164a83d4a54386c8852240a68153eb6120bea950bbd4fa9e4c570984",
+            "captureDate": "2025-07-03T07:07:29Z",
+            "cropPlane": {
+              "start": {
+                "x": 120636.97433060975,
+                "y": 488152.2189008638
+              },
+              "end": {
+                "x": 120639.86553010665,
+                "y": 488139.7597008618
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 16.92
+            },
+            "pixelBounds": [
+              438,
+              80,
+              454,
+              138
+            ],
+            "reason": "Visible feature presence and proportions on the identified owner surface. Heights and positions are bounded visual hypotheses, not photo registration."
+          }
+        },
+        {
+          "id": "long-street-narrow-2",
+          "x": 11.12,
+          "z": 11.35,
+          "width": 0.4,
+          "height": 1.63,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_3",
+          "frameColour": "#c4c7bd",
+          "mullions": [],
+          "transom": 0.27,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-full.jpg",
+            "sourceHash": "fd82df6e164a83d4a54386c8852240a68153eb6120bea950bbd4fa9e4c570984",
+            "captureDate": "2025-07-03T07:07:29Z",
+            "cropPlane": {
+              "start": {
+                "x": 120636.97433060975,
+                "y": 488152.2189008638
+              },
+              "end": {
+                "x": 120639.86553010665,
+                "y": 488139.7597008618
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 16.92
+            },
+            "pixelBounds": [
+              438,
+              185,
+              454,
+              260
+            ],
+            "reason": "Visible feature presence and proportions on the identified owner surface. Heights and positions are bounded visual hypotheses, not photo registration."
+          }
+        },
+        {
+          "id": "long-street-narrow-3",
+          "x": 11.12,
+          "z": 8.7,
+          "width": 0.4,
+          "height": 1.63,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_2",
+          "frameColour": "#c4c7bd",
+          "mullions": [],
+          "transom": 0.27,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-full.jpg",
+            "sourceHash": "fd82df6e164a83d4a54386c8852240a68153eb6120bea950bbd4fa9e4c570984",
+            "captureDate": "2025-07-03T07:07:29Z",
+            "cropPlane": {
+              "start": {
+                "x": 120636.97433060975,
+                "y": 488152.2189008638
+              },
+              "end": {
+                "x": 120639.86553010665,
+                "y": 488139.7597008618
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 16.92
+            },
+            "pixelBounds": [
+              438,
+              309,
+              454,
+              382
+            ],
+            "reason": "Visible feature presence and proportions on the identified owner surface. Heights and positions are bounded visual hypotheses, not photo registration."
+          }
+        },
+        {
+          "id": "long-street-narrow-4",
+          "x": 11.12,
+          "z": 6.1,
+          "width": 0.4,
+          "height": 1.63,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_1",
+          "frameColour": "#c4c7bd",
+          "mullions": [],
+          "transom": 0.27,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-full.jpg",
+            "sourceHash": "fd82df6e164a83d4a54386c8852240a68153eb6120bea950bbd4fa9e4c570984",
+            "captureDate": "2025-07-03T07:07:29Z",
+            "cropPlane": {
+              "start": {
+                "x": 120636.97433060975,
+                "y": 488152.2189008638
+              },
+              "end": {
+                "x": 120639.86553010665,
+                "y": 488139.7597008618
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 16.92
+            },
+            "pixelBounds": [
+              438,
+              430,
+              454,
+              505
+            ],
+            "reason": "Visible feature presence and proportions on the identified owner surface. Heights and positions are bounded visual hypotheses, not photo registration."
+          }
+        },
+        {
+          "id": "long-street-narrow-5",
+          "x": 11.12,
+          "z": 3.5,
+          "width": 0.4,
+          "height": 1.55,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "ground",
+          "frameColour": "#c4c7bd",
+          "mullions": [],
+          "transom": 0.27,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-full.jpg",
+            "sourceHash": "fd82df6e164a83d4a54386c8852240a68153eb6120bea950bbd4fa9e4c570984",
+            "captureDate": "2025-07-03T07:07:29Z",
+            "cropPlane": {
+              "start": {
+                "x": 120636.97433060975,
+                "y": 488152.2189008638
+              },
+              "end": {
+                "x": 120639.86553010665,
+                "y": 488139.7597008618
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 16.92
+            },
+            "pixelBounds": [
+              438,
+              553,
+              454,
+              625
+            ],
+            "reason": "Visible feature presence and proportions on the identified owner surface. Heights and positions are bounded visual hypotheses, not photo registration."
+          }
+        },
+        {
+          "id": "long-street-narrow-6",
+          "x": 11.12,
+          "z": 1.1,
+          "width": 0.4,
+          "height": 0.62,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "ground",
+          "frameColour": "#c4c7bd",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-full.jpg",
+            "sourceHash": "fd82df6e164a83d4a54386c8852240a68153eb6120bea950bbd4fa9e4c570984",
+            "captureDate": "2025-07-03T07:07:29Z",
+            "cropPlane": {
+              "start": {
+                "x": 120636.97433060975,
+                "y": 488152.2189008638
+              },
+              "end": {
+                "x": 120639.86553010665,
+                "y": 488139.7597008618
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 16.92
+            },
+            "pixelBounds": [
+              438,
+              674,
+              454,
+              710
+            ],
+            "reason": "Visible feature presence and proportions on the identified owner surface. Heights and positions are bounded visual hypotheses, not photo registration."
+          }
+        },
+        {
+          "id": "long-street-left-bay-1",
+          "x": 3.45,
+          "z": 13.9,
+          "width": 1.55,
+          "height": 1.75,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_4",
+          "frameColour": "#c4c7bd",
+          "mullions": [],
+          "transom": 0.18,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": "artifacts/jordaan-building-library/derde-goudsbloemdwarsstraat-31-39/long-2022.jpg",
+            "sourceHash": "d2d624e9fa700ea989d169741fa9afacc29c3340525e91ada4d937691d0fc759",
+            "captureDate": "2022-04-29T07:26:49.661430Z",
+            "cropPlane": {
+              "start": {
+                "x": 120637.02993060008,
+                "y": 488151.97930086375
+              },
+              "end": {
+                "x": 120639.80993011632,
+                "y": 488139.99930086185
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 24
+            },
+            "pixelBounds": [
+              205,
+              450,
+              354,
+              650
+            ],
+            "reason": "Visible feature presence and proportions on the identified owner surface. Heights and positions are bounded visual hypotheses, not photo registration."
+          }
+        },
+        {
+          "id": "long-street-left-bay-2",
+          "x": 3.45,
+          "z": 10.5,
+          "width": 1.55,
+          "height": 1.9,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_3",
+          "frameColour": "#c4c7bd",
+          "mullions": [],
+          "transom": 0.18,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": "artifacts/jordaan-building-library/derde-goudsbloemdwarsstraat-31-39/long-2022.jpg",
+            "sourceHash": "d2d624e9fa700ea989d169741fa9afacc29c3340525e91ada4d937691d0fc759",
+            "captureDate": "2022-04-29T07:26:49.661430Z",
+            "cropPlane": {
+              "start": {
+                "x": 120637.02993060008,
+                "y": 488151.97930086375
+              },
+              "end": {
+                "x": 120639.80993011632,
+                "y": 488139.99930086185
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 24
+            },
+            "pixelBounds": [
+              205,
+              800,
+              354,
+              1020
+            ],
+            "reason": "Visible feature presence and proportions on the identified owner surface. Heights and positions are bounded visual hypotheses, not photo registration."
+          }
+        },
+        {
+          "id": "long-street-left-bay-3",
+          "x": 3.45,
+          "z": 7.0,
+          "width": 1.55,
+          "height": 1.6,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_1",
+          "frameColour": "#c4c7bd",
+          "mullions": [],
+          "transom": 0.18,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": "artifacts/jordaan-building-library/derde-goudsbloemdwarsstraat-31-39/long-2022.jpg",
+            "sourceHash": "d2d624e9fa700ea989d169741fa9afacc29c3340525e91ada4d937691d0fc759",
+            "captureDate": "2022-04-29T07:26:49.661430Z",
+            "cropPlane": {
+              "start": {
+                "x": 120637.02993060008,
+                "y": 488151.97930086375
+              },
+              "end": {
+                "x": 120639.80993011632,
+                "y": 488139.99930086185
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 24
+            },
+            "pixelBounds": [
+              205,
+              1150,
+              354,
+              1335
+            ],
+            "reason": "Visible feature presence and proportions on the identified owner surface. Heights and positions are bounded visual hypotheses, not photo registration."
+          }
+        },
+        {
+          "id": "long-street-left-ground",
+          "x": 3.45,
+          "z": 3.5,
+          "width": 1.12,
+          "height": 1.5,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "ground",
+          "frameColour": "#c4c7bd",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-ground.jpg",
+            "sourceHash": "39d42cfe9bd3331a75a3f2d48fe6d32496ffec31d51b3913e422003b18257f2f",
+            "captureDate": "2022-04-29T07:26:49.661430Z",
+            "cropPlane": {
+              "start": {
+                "x": 120636.97433060975,
+                "y": 488152.2189008638
+              },
+              "end": {
+                "x": 120639.86553010665,
+                "y": 488139.7597008618
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 4.951999998092651
+            },
+            "pixelBounds": [
+              429,
+              0,
+              569,
+              154
+            ],
+            "reason": "Visible feature presence and proportions on the identified owner surface. Heights and positions are bounded visual hypotheses, not photo registration."
+          }
+        }
+      ],
+      "eavesCornice": false,
+      "storefront": {
+        "height": 4.2,
+        "anchor": 6.149162490856864,
+        "finishColour": "#706154",
+        "cornice": false,
+        "signs": [],
+        "awnings": []
+      },
+      "materialZones": [],
+      "components": [
+        {
+          "id": "course-9.62",
+          "kind": "stringcourse",
+          "x": 6.149162490856864,
+          "z": 9.62,
+          "width": 12.298324981713728,
+          "height": 0.17,
+          "projection": 0.025,
+          "material": "whiterender",
+          "colour": "#b8bcb0",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "fd82df6e164a83d4a54386c8852240a68153eb6120bea950bbd4fa9e4c570984",
+            "note": "Dated upper/full confirms pale middle course and dark ground course; elevations inferred."
+          }
+        },
+        {
+          "id": "course-4.28",
+          "kind": "stringcourse",
+          "x": 6.149162490856864,
+          "z": 4.28,
+          "width": 12.298324981713728,
+          "height": 0.25,
+          "projection": 0.025,
+          "material": "whiterender",
+          "colour": "#303c3c",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "fd82df6e164a83d4a54386c8852240a68153eb6120bea950bbd4fa9e4c570984",
+            "note": "Dated upper/full confirms pale middle course and dark ground course; elevations inferred."
+          }
+        }
+      ],
+      "groupedBays": [
+        {
+          "id": "left-pale-bay",
+          "x": 3.45,
+          "width": 1.94,
+          "projection": 0.48,
+          "returnInset": 0.1,
+          "bottom": 4.3,
+          "top": 15.3,
+          "baseRise": 0.5,
+          "openingIds": [
+            "long-street-left-bay-1",
+            "long-street-left-bay-2",
+            "long-street-left-bay-3"
+          ],
+          "sideWindows": true,
+          "sillDepth": 0.14,
+          "sillProjection": 0.1,
+          "material": "whiterender",
+          "colour": "#bcc3b6",
+          "provenance": {
+            "status": "inferred",
+            "sources": [
+              "d2d624e9fa700ea989d169741fa9afacc29c3340525e91ada4d937691d0fc759"
+            ],
+            "note": "Recovered2022 shows projecting pale bay with three visible window groups through full roof/cap and angled side lights; tapered underside is photo-supported, projection/rise and height bounds inferred, exact measured base footprint unchanged."
+          }
+        }
+      ]
+    },
+    {
+      "id": "short-street",
+      "origin": [
+        13.623040245853193,
+        1.2848074200437547
+      ],
+      "rotation": 1.569990885324234,
+      "width": 4.53249326871015,
+      "eaves": 15.35800000190735,
+      "openings": [
+        {
+          "id": "short-street-corner-light-1",
+          "x": 0.45,
+          "z": 14.1,
+          "width": 0.61,
+          "height": 1.5,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_4",
+          "frameColour": "#c4c7bd",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0uq1e3g-full.jpg",
+            "sourceHash": "078905abce7467b95147836323f0be0d518c3226a6bc0996eb16768813ad1815",
+            "captureDate": "2024-12-16T12:04:53Z",
+            "cropPlane": {
+              "start": {
+                "x": 120641.27261000997,
+                "y": 488138.97888087115
+              },
+              "end": {
+                "x": 120645.86524979536,
+                "y": 488140.0407208984
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 16.92
+            },
+            "pixelBounds": [
+              0,
+              80,
+              45,
+              150
+            ],
+            "reason": "Visible feature presence and proportions on the identified owner surface. Heights and positions are bounded visual hypotheses, not photo registration."
+          }
+        },
+        {
+          "id": "short-street-corner-light-2",
+          "x": 0.45,
+          "z": 11.35,
+          "width": 0.61,
+          "height": 1.5,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_3",
+          "frameColour": "#c4c7bd",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0uq1e3g-full.jpg",
+            "sourceHash": "078905abce7467b95147836323f0be0d518c3226a6bc0996eb16768813ad1815",
+            "captureDate": "2024-12-16T12:04:53Z",
+            "cropPlane": {
+              "start": {
+                "x": 120641.27261000997,
+                "y": 488138.97888087115
+              },
+              "end": {
+                "x": 120645.86524979536,
+                "y": 488140.0407208984
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 16.92
+            },
+            "pixelBounds": [
+              0,
+              200,
+              45,
+              270
+            ],
+            "reason": "Visible feature presence and proportions on the identified owner surface. Heights and positions are bounded visual hypotheses, not photo registration."
+          }
+        },
+        {
+          "id": "short-street-corner-light-3",
+          "x": 0.45,
+          "z": 8.7,
+          "width": 0.61,
+          "height": 1.5,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_2",
+          "frameColour": "#c4c7bd",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0uq1e3g-full.jpg",
+            "sourceHash": "078905abce7467b95147836323f0be0d518c3226a6bc0996eb16768813ad1815",
+            "captureDate": "2024-12-16T12:04:53Z",
+            "cropPlane": {
+              "start": {
+                "x": 120641.27261000997,
+                "y": 488138.97888087115
+              },
+              "end": {
+                "x": 120645.86524979536,
+                "y": 488140.0407208984
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 16.92
+            },
+            "pixelBounds": [
+              0,
+              320,
+              45,
+              390
+            ],
+            "reason": "Visible feature presence and proportions on the identified owner surface. Heights and positions are bounded visual hypotheses, not photo registration."
+          }
+        },
+        {
+          "id": "short-street-corner-light-4",
+          "x": 0.45,
+          "z": 6.1,
+          "width": 0.61,
+          "height": 1.5,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_1",
+          "frameColour": "#c4c7bd",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0uq1e3g-full.jpg",
+            "sourceHash": "078905abce7467b95147836323f0be0d518c3226a6bc0996eb16768813ad1815",
+            "captureDate": "2024-12-16T12:04:53Z",
+            "cropPlane": {
+              "start": {
+                "x": 120641.27261000997,
+                "y": 488138.97888087115
+              },
+              "end": {
+                "x": 120645.86524979536,
+                "y": 488140.0407208984
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 16.92
+            },
+            "pixelBounds": [
+              0,
+              440,
+              45,
+              510
+            ],
+            "reason": "Visible feature presence and proportions on the identified owner surface. Heights and positions are bounded visual hypotheses, not photo registration."
+          }
+        },
+        {
+          "id": "short-street-corner-light-5",
+          "x": 0.45,
+          "z": 3.1,
+          "width": 0.61,
+          "height": 2.1,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "ground",
+          "frameColour": "#c4c7bd",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0uq1e3g-full.jpg",
+            "sourceHash": "078905abce7467b95147836323f0be0d518c3226a6bc0996eb16768813ad1815",
+            "captureDate": "2024-12-16T12:04:53Z",
+            "cropPlane": {
+              "start": {
+                "x": 120641.27261000997,
+                "y": 488138.97888087115
+              },
+              "end": {
+                "x": 120645.86524979536,
+                "y": 488140.0407208984
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 16.92
+            },
+            "pixelBounds": [
+              0,
+              560,
+              45,
+              630
+            ],
+            "reason": "Visible feature presence and proportions on the identified owner surface. Heights and positions are bounded visual hypotheses, not photo registration."
+          }
+        },
+        {
+          "id": "short-street-balcony-stack-1",
+          "x": 3.2,
+          "z": 11.35,
+          "width": 1.52,
+          "height": 1.85,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_3",
+          "frameColour": "#c4c7bd",
+          "mullions": [
+            0.5
+          ],
+          "transom": 0.16,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0uq1e3g-full.jpg",
+            "sourceHash": "078905abce7467b95147836323f0be0d518c3226a6bc0996eb16768813ad1815",
+            "captureDate": "2024-12-16T12:04:53Z",
+            "cropPlane": {
+              "start": {
+                "x": 120641.27261000997,
+                "y": 488138.97888087115
+              },
+              "end": {
+                "x": 120645.86524979536,
+                "y": 488140.0407208984
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 16.92
+            },
+            "pixelBounds": [
+              115,
+              185,
+              193,
+              280
+            ],
+            "reason": "Visible feature presence and proportions on the identified owner surface. Heights and positions are bounded visual hypotheses, not photo registration."
+          },
+          "glassColour": "#44564e"
+        },
+        {
+          "id": "short-street-balcony-stack-2",
+          "x": 3.2,
+          "z": 8.7,
+          "width": 1.52,
+          "height": 1.65,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_2",
+          "frameColour": "#c4c7bd",
+          "mullions": [
+            0.5
+          ],
+          "transom": 0.16,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0uq1e3g-full.jpg",
+            "sourceHash": "078905abce7467b95147836323f0be0d518c3226a6bc0996eb16768813ad1815",
+            "captureDate": "2024-12-16T12:04:53Z",
+            "cropPlane": {
+              "start": {
+                "x": 120641.27261000997,
+                "y": 488138.97888087115
+              },
+              "end": {
+                "x": 120645.86524979536,
+                "y": 488140.0407208984
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 16.92
+            },
+            "pixelBounds": [
+              115,
+              310,
+              193,
+              405
+            ],
+            "reason": "Visible feature presence and proportions on the identified owner surface. Heights and positions are bounded visual hypotheses, not photo registration."
+          },
+          "glassColour": "#44564e"
+        },
+        {
+          "id": "short-street-balcony-stack-3",
+          "x": 3.2,
+          "z": 6.05,
+          "width": 1.52,
+          "height": 2.15,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_1",
+          "frameColour": "#c4c7bd",
+          "mullions": [
+            0.5
+          ],
+          "transom": 0.16,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0uq1e3g-full.jpg",
+            "sourceHash": "078905abce7467b95147836323f0be0d518c3226a6bc0996eb16768813ad1815",
+            "captureDate": "2024-12-16T12:04:53Z",
+            "cropPlane": {
+              "start": {
+                "x": 120641.27261000997,
+                "y": 488138.97888087115
+              },
+              "end": {
+                "x": 120645.86524979536,
+                "y": 488140.0407208984
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 16.92
+            },
+            "pixelBounds": [
+              115,
+              435,
+              193,
+              530
+            ],
+            "reason": "Visible feature presence and proportions on the identified owner surface. Heights and positions are bounded visual hypotheses, not photo registration."
+          },
+          "glassColour": "#44564e"
+        },
+        {
+          "id": "short-street-balcony-stack-4",
+          "x": 3.2,
+          "z": 3.05,
+          "width": 1.52,
+          "height": 2.2,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "ground",
+          "frameColour": "#c4c7bd",
+          "mullions": [
+            0.5
+          ],
+          "transom": 0.16,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0uq1e3g-full.jpg",
+            "sourceHash": "078905abce7467b95147836323f0be0d518c3226a6bc0996eb16768813ad1815",
+            "captureDate": "2024-12-16T12:04:53Z",
+            "cropPlane": {
+              "start": {
+                "x": 120641.27261000997,
+                "y": 488138.97888087115
+              },
+              "end": {
+                "x": 120645.86524979536,
+                "y": 488140.0407208984
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 16.92
+            },
+            "pixelBounds": [
+              115,
+              560,
+              193,
+              655
+            ],
+            "reason": "Visible feature presence and proportions on the identified owner surface. Heights and positions are bounded visual hypotheses, not photo registration."
+          },
+          "glassColour": "#44564e"
+        }
+      ],
+      "eavesCornice": false,
+      "storefront": {
+        "height": 4.2,
+        "anchor": 2.266246634355075,
+        "finishColour": "#706154",
+        "cornice": false,
+        "signs": [],
+        "awnings": []
+      },
+      "materialZones": [
+        {
+          "id": "pale-corner-side",
+          "x": 0.44,
+          "z": 7.679000000953675,
+          "width": 0.85,
+          "height": 15.35800000190735,
+          "material": "whiterender",
+          "colour": "#bcc3b6",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "078905abce7467b95147836323f0be0d518c3226a6bc0996eb16768813ad1815",
+            "note": "Pale corner finish continues onto short side; width inferred."
+          }
+        }
+      ],
+      "components": [
+        {
+          "id": "short-balcony-1",
+          "kind": "balcony",
+          "x": 3.2,
+          "z": 10.424999999999999,
+          "width": 1.7,
+          "depth": 0.52,
+          "height": 0.93,
+          "material": "limestone",
+          "colour": "#7a8070",
+          "frameMaterial": "iron",
+          "frameColour": "#26332b",
+          "balusterSpacing": 0.18,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0uq1e3g-full.jpg",
+            "sourceHash": "078905abce7467b95147836323f0be0d518c3226a6bc0996eb16768813ad1815",
+            "captureDate": "2024-12-16T12:04:53Z",
+            "cropPlane": {
+              "start": {
+                "x": 120641.27261000997,
+                "y": 488138.97888087115
+              },
+              "end": {
+                "x": 120645.86524979536,
+                "y": 488140.0407208984
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 16.92
+            },
+            "pixelBounds": [
+              115,
+              185,
+              193,
+              280
+            ],
+            "reason": "Visible feature presence and proportions on the identified owner surface. Heights and positions are bounded visual hypotheses, not photo registration."
+          }
+        },
+        {
+          "id": "short-balcony-2",
+          "kind": "balcony",
+          "x": 3.2,
+          "z": 7.874999999999999,
+          "width": 1.7,
+          "depth": 0.52,
+          "height": 0.93,
+          "material": "limestone",
+          "colour": "#7a8070",
+          "frameMaterial": "iron",
+          "frameColour": "#26332b",
+          "balusterSpacing": 0.18,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0uq1e3g-full.jpg",
+            "sourceHash": "078905abce7467b95147836323f0be0d518c3226a6bc0996eb16768813ad1815",
+            "captureDate": "2024-12-16T12:04:53Z",
+            "cropPlane": {
+              "start": {
+                "x": 120641.27261000997,
+                "y": 488138.97888087115
+              },
+              "end": {
+                "x": 120645.86524979536,
+                "y": 488140.0407208984
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 16.92
+            },
+            "pixelBounds": [
+              115,
+              310,
+              193,
+              405
+            ],
+            "reason": "Visible feature presence and proportions on the identified owner surface. Heights and positions are bounded visual hypotheses, not photo registration."
+          }
+        },
+        {
+          "id": "side-course-9.62",
+          "kind": "stringcourse",
+          "x": 2.266246634355075,
+          "z": 9.62,
+          "width": 4.53249326871015,
+          "height": 0.17,
+          "projection": 0.025,
+          "material": "whiterender",
+          "colour": "#b8bcb0",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "078905abce7467b95147836323f0be0d518c3226a6bc0996eb16768813ad1815",
+            "note": "Source-supported continuous horizontal course."
+          }
+        },
+        {
+          "id": "side-course-4.28",
+          "kind": "stringcourse",
+          "x": 2.266246634355075,
+          "z": 4.28,
+          "width": 4.53249326871015,
+          "height": 0.25,
+          "projection": 0.025,
+          "material": "whiterender",
+          "colour": "#303c3c",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "078905abce7467b95147836323f0be0d518c3226a6bc0996eb16768813ad1815",
+            "note": "Source-supported continuous horizontal course."
+          }
+        }
+      ]
+    },
+    {
+      "id": "beveled-corner",
+      "origin": [
+        12.286147927310044,
+        0.27819313725747463
+      ],
+      "rotation": 0.7681339806039613,
+      "width": 1.4534441853748665,
+      "eaves": 15.35800000190735,
+      "openings": [
+        {
+          "id": "beveled-corner-wrap-window-1",
+          "x": 0.7267220926874333,
+          "z": 14.1,
+          "width": 1.1334441853748665,
+          "height": 1.5,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_4",
+          "frameColour": "#c4c7bd",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-full.jpg",
+            "sourceHash": "fd82df6e164a83d4a54386c8852240a68153eb6120bea950bbd4fa9e4c570984",
+            "captureDate": "2025-07-03T07:07:29Z",
+            "cropPlane": {
+              "start": {
+                "x": 120636.97433060975,
+                "y": 488152.2189008638
+              },
+              "end": {
+                "x": 120639.86553010665,
+                "y": 488139.7597008618
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 16.92
+            },
+            "pixelBounds": [
+              551,
+              80,
+              575,
+              150
+            ],
+            "reason": "Visible feature presence and proportions on the identified owner surface. Heights and positions are bounded visual hypotheses, not photo registration."
+          }
+        },
+        {
+          "id": "beveled-corner-wrap-window-2",
+          "x": 0.7267220926874333,
+          "z": 11.35,
+          "width": 1.1334441853748665,
+          "height": 1.5,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_3",
+          "frameColour": "#c4c7bd",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-full.jpg",
+            "sourceHash": "fd82df6e164a83d4a54386c8852240a68153eb6120bea950bbd4fa9e4c570984",
+            "captureDate": "2025-07-03T07:07:29Z",
+            "cropPlane": {
+              "start": {
+                "x": 120636.97433060975,
+                "y": 488152.2189008638
+              },
+              "end": {
+                "x": 120639.86553010665,
+                "y": 488139.7597008618
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 16.92
+            },
+            "pixelBounds": [
+              551,
+              200,
+              575,
+              270
+            ],
+            "reason": "Visible feature presence and proportions on the identified owner surface. Heights and positions are bounded visual hypotheses, not photo registration."
+          }
+        },
+        {
+          "id": "beveled-corner-wrap-window-3",
+          "x": 0.7267220926874333,
+          "z": 8.7,
+          "width": 1.1334441853748665,
+          "height": 1.5,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_2",
+          "frameColour": "#c4c7bd",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-full.jpg",
+            "sourceHash": "fd82df6e164a83d4a54386c8852240a68153eb6120bea950bbd4fa9e4c570984",
+            "captureDate": "2025-07-03T07:07:29Z",
+            "cropPlane": {
+              "start": {
+                "x": 120636.97433060975,
+                "y": 488152.2189008638
+              },
+              "end": {
+                "x": 120639.86553010665,
+                "y": 488139.7597008618
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 16.92
+            },
+            "pixelBounds": [
+              551,
+              320,
+              575,
+              390
+            ],
+            "reason": "Visible feature presence and proportions on the identified owner surface. Heights and positions are bounded visual hypotheses, not photo registration."
+          }
+        },
+        {
+          "id": "beveled-corner-wrap-window-4",
+          "x": 0.7267220926874333,
+          "z": 6.1,
+          "width": 1.1334441853748665,
+          "height": 1.5,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_1",
+          "frameColour": "#c4c7bd",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-full.jpg",
+            "sourceHash": "fd82df6e164a83d4a54386c8852240a68153eb6120bea950bbd4fa9e4c570984",
+            "captureDate": "2025-07-03T07:07:29Z",
+            "cropPlane": {
+              "start": {
+                "x": 120636.97433060975,
+                "y": 488152.2189008638
+              },
+              "end": {
+                "x": 120639.86553010665,
+                "y": 488139.7597008618
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 16.92
+            },
+            "pixelBounds": [
+              551,
+              440,
+              575,
+              510
+            ],
+            "reason": "Visible feature presence and proportions on the identified owner surface. Heights and positions are bounded visual hypotheses, not photo registration."
+          }
+        },
+        {
+          "id": "beveled-corner-wrap-window-5",
+          "x": 0.7267220926874333,
+          "z": 3.1,
+          "width": 1.1334441853748665,
+          "height": 2.1,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "ground",
+          "frameColour": "#c4c7bd",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-full.jpg",
+            "sourceHash": "fd82df6e164a83d4a54386c8852240a68153eb6120bea950bbd4fa9e4c570984",
+            "captureDate": "2025-07-03T07:07:29Z",
+            "cropPlane": {
+              "start": {
+                "x": 120636.97433060975,
+                "y": 488152.2189008638
+              },
+              "end": {
+                "x": 120639.86553010665,
+                "y": 488139.7597008618
+              },
+              "baseZ": 0.05199999809265138,
+              "topZ": 16.92
+            },
+            "pixelBounds": [
+              551,
+              560,
+              575,
+              630
+            ],
+            "reason": "Visible feature presence and proportions on the identified owner surface. Heights and positions are bounded visual hypotheses, not photo registration."
+          }
+        }
+      ],
+      "eavesCornice": false,
+      "storefront": {
+        "height": 4.2,
+        "anchor": 0.7267220926874333,
+        "finishColour": "#706154",
+        "cornice": false,
+        "signs": [],
+        "awnings": []
+      },
+      "materialZones": [
+        {
+          "id": "pale-bevel",
+          "x": 0.7267220926874333,
+          "z": 7.679000000953675,
+          "width": 1.4534441853748665,
+          "height": 15.35800000190735,
+          "material": "whiterender",
+          "colour": "#bcc3b6",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "fd82df6e164a83d4a54386c8852240a68153eb6120bea950bbd4fa9e4c570984",
+            "note": "Primary context shows pale corner strip wrapping across exact source bevelwall7."
+          }
+        }
+      ],
+      "components": []
+    }
+  ],
+  "materials": {
+    "wall": "redbrick",
+    "wallColour": "#706154",
+    "roof": "slate",
+    "frame": "ivorytimber",
+    "glassColour": "#536168"
+  },
+  "details": {},
+  "placement": {
+    "frontageLocal": [
+      [
+        694.4807605743117,
+        -1205.3572534083505
+      ],
+      [
+        697.2607600905467,
+        -1193.3772534064483
+      ]
+    ],
+    "inputFrameDeterminant": -1.0,
+    "xAxisBearingDegrees": 166.9355466059955,
+    "axes": "glTF x=along frontage,y=up,z=towards street",
+    "anchor": [
+      4.882523541026736,
+      52.380156772950066
+    ],
+    "sourceRDFrame": {
+      "anchorRD": [
+        120637.02993060008,
+        488151.97930086375
+      ],
+      "xAxisRD": [
+        0.22604700399188693,
+        -0.9741163955022479
+      ],
+      "yAxisRD": [
+        0.9741163955022479,
+        0.22604700399188693
+      ],
+      "buildingId": "0363100012168615",
+      "geometryRevision": "b9ac59246ebcb44e0d5ddbd43039d87f35ca9885de8d39a70ca676eda8efb377",
+      "source": "Frozen ordered physical frontage and exact seed originRD; RD\u2192WGS via repo rdNew.ts; appearance registration unresolved"
+    }
+  },
+  "sourceShell": {
+    "surfaces": [
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              -0.5162945988716743,
+              0.5388948131498904,
+              12.738000001907348
+            ],
+            [
+              -0.5162945988716743,
+              0.5388948131498904,
+              -0.001999998092651334
+            ],
+            [
+              -0.014762869252067032,
+              0.0016184185589712904,
+              -0.001999998092651334
+            ],
+            [
+              -0.014762869252067032,
+              0.0016184185589712904,
+              12.798000001907349
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              -0.5196936353255368,
+              5.744400403056666,
+              2.9080000019073484
+            ],
+            [
+              -0.5196936353255368,
+              5.744400403056666,
+              -0.001999998092651334
+            ],
+            [
+              -0.5098710441251497,
+              2.7342669314807146,
+              -0.001999998092651334
+            ],
+            [
+              -0.5098710441251497,
+              2.7342669314807146,
+              2.6580000019073484
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              12.28356221996232,
+              0.0016188902323843735,
+              15.35800000190735
+            ],
+            [
+              12.28356221996232,
+              0.0016188902323843735,
+              -0.001999998092651334
+            ],
+            [
+              12.286147927310044,
+              0.27819313725747463,
+              -0.001999998092651334
+            ],
+            [
+              12.286147927310044,
+              0.27819313725747463,
+              15.35800000190735
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              13.331477224626893,
+              1.2880380066166612,
+              15.35800000190735
+            ],
+            [
+              13.331477224626893,
+              1.2880380066166612,
+              -0.001999998092651334
+            ],
+            [
+              13.608051471651983,
+              1.2854522992689374,
+              -0.001999998092651334
+            ],
+            [
+              13.608051471651983,
+              1.2854522992689374,
+              15.35800000190735
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              13.608051471651983,
+              1.2854522992689374,
+              15.35800000190735
+            ],
+            [
+              13.608051471651983,
+              1.2854522992689374,
+              -0.001999998092651334
+            ],
+            [
+              13.613580505883865,
+              5.821614711460666,
+              -0.001999998092651334
+            ],
+            [
+              13.613580505883865,
+              5.821614711460666,
+              15.34800000190735
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              -0.014762869252067032,
+              0.0016184185589712904,
+              12.798000001907349
+            ],
+            [
+              -0.014762869252067032,
+              0.0016184185589712904,
+              -0.001999998092651334
+            ],
+            [
+              0.5796107506583317,
+              -0.0028537123410702914,
+              -0.001999998092651334
+            ],
+            [
+              0.5796107506583317,
+              -0.0028537123410702914,
+              12.888000001907349
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              0.5796107506583317,
+              -0.0028537123410702914,
+              15.36800000190735
+            ],
+            [
+              0.5796107506583317,
+              -0.0028537123410702914,
+              12.888000001907349
+            ],
+            [
+              0.5796107506583317,
+              -0.0028537123410702914,
+              -0.001999998092651334
+            ],
+            [
+              4.35875950953947,
+              0.003033413100769322,
+              -0.001999998092651334
+            ],
+            [
+              4.35875950953947,
+              0.003033413100769322,
+              13.378000001907349
+            ],
+            [
+              4.35875950953947,
+              0.003033413100769322,
+              15.36800000190735
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              12.286147927310044,
+              0.27819313725747463,
+              15.35800000190735
+            ],
+            [
+              12.286147927310044,
+              0.27819313725747463,
+              -0.001999998092651334
+            ],
+            [
+              13.331477224626893,
+              1.2880380066166612,
+              -0.001999998092651334
+            ],
+            [
+              13.331477224626893,
+              1.2880380066166612,
+              15.35800000190735
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              0.016233000854584567,
+              5.753491092396288,
+              3.0180000019073487
+            ],
+            [
+              0.016233000854584567,
+              5.753491092396288,
+              -0.001999998092651334
+            ],
+            [
+              -0.5196936353255368,
+              5.744400403056666,
+              -0.001999998092651334
+            ],
+            [
+              -0.5196936353255368,
+              5.744400403056666,
+              2.9080000019073484
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              0.016233000854584567,
+              5.753491092396288,
+              12.50800000190735
+            ],
+            [
+              0.016233000854584567,
+              5.753491092396288,
+              3.0180000019073487
+            ],
+            [
+              0.2582335315509694,
+              3.2130313420473606,
+              2.8580000019073486
+            ],
+            [
+              0.2582335315509694,
+              3.2130313420473606,
+              12.92800000190735
+            ],
+            [
+              0.2582335315509694,
+              3.2130313420473606,
+              13.43800000190735
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              1.4351091379650993,
+              5.763004637403131,
+              15.34800000190735
+            ],
+            [
+              1.4351091379650993,
+              5.763004637403131,
+              -0.001999998092651334
+            ],
+            [
+              0.016233000854584567,
+              5.753491092396288,
+              -0.001999998092651334
+            ],
+            [
+              0.016233000854584567,
+              5.753491092396288,
+              3.0180000019073487
+            ],
+            [
+              0.016233000854584567,
+              5.753491092396288,
+              12.50800000190735
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              7.519531380520767,
+              -0.001568718387756629,
+              15.35800000190735
+            ],
+            [
+              7.519531380520767,
+              -0.001568718387756629,
+              13.43800000190735
+            ],
+            [
+              7.519531380520767,
+              -0.001568718387756629,
+              -0.001999998092651334
+            ],
+            [
+              12.28356221996232,
+              0.0016188902323843735,
+              -0.001999998092651334
+            ],
+            [
+              12.28356221996232,
+              0.0016188902323843735,
+              15.35800000190735
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              7.519531380520767,
+              -0.001568718387756629,
+              13.43800000190735
+            ],
+            [
+              7.519531380520767,
+              -0.001568718387756629,
+              15.35800000190735
+            ],
+            [
+              8.059393482459324,
+              0.7765372582570773,
+              15.35800000190735
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              -0.5098710441251497,
+              2.7342669314807146,
+              12.798000001907349
+            ],
+            [
+              -0.5098710441251497,
+              2.7342669314807146,
+              2.6580000019073484
+            ],
+            [
+              -0.5098710441251497,
+              2.7342669314807146,
+              -0.001999998092651334
+            ],
+            [
+              -0.5162945988716743,
+              0.5388948131498904,
+              -0.001999998092651334
+            ],
+            [
+              -0.5162945988716743,
+              0.5388948131498904,
+              12.738000001907348
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              0.2582335315509694,
+              3.2130313420473606,
+              15.35800000190735
+            ],
+            [
+              0.2582335315509694,
+              3.2130313420473606,
+              13.43800000190735
+            ],
+            [
+              0.2582335315509694,
+              3.2130313420473606,
+              12.92800000190735
+            ],
+            [
+              0.5796107506583317,
+              -0.0028537123410702914,
+              12.888000001907349
+            ],
+            [
+              0.5796107506583317,
+              -0.0028537123410702914,
+              15.36800000190735
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              0.2582335315509694,
+              3.2130313420473606,
+              12.92800000190735
+            ],
+            [
+              0.2582335315509694,
+              3.2130313420473606,
+              2.8580000019073486
+            ],
+            [
+              -0.5098710441251497,
+              2.7342669314807146,
+              2.6580000019073484
+            ],
+            [
+              -0.5098710441251497,
+              2.7342669314807146,
+              12.798000001907349
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              0.2582335315509694,
+              3.2130313420473606,
+              13.43800000190735
+            ],
+            [
+              0.2582335315509694,
+              3.2130313420473606,
+              15.35800000190735
+            ],
+            [
+              1.2761119510812053,
+              3.839149160876145,
+              15.35800000190735
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              13.613580505883865,
+              5.821614711460666,
+              15.34800000190735
+            ],
+            [
+              13.613580505883865,
+              5.821614711460666,
+              -0.001999998092651334
+            ],
+            [
+              1.4351091379650993,
+              5.763004637403131,
+              -0.001999998092651334
+            ],
+            [
+              1.4351091379650993,
+              5.763004637403131,
+              15.34800000190735
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              4.35875950953947,
+              0.003033413100769322,
+              13.378000001907349
+            ],
+            [
+              4.35875950953947,
+              0.003033413100769322,
+              -0.001999998092651334
+            ],
+            [
+              7.519531380520767,
+              -0.001568718387756629,
+              -0.001999998092651334
+            ],
+            [
+              7.519531380520767,
+              -0.001568718387756629,
+              13.43800000190735
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              4.35875950953947,
+              0.003033413100769322,
+              15.36800000190735
+            ],
+            [
+              4.35875950953947,
+              0.003033413100769322,
+              13.378000001907349
+            ],
+            [
+              5.048560727087941,
+              0.8079397929167982,
+              15.35800000190735
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              0.2582335315509694,
+              3.2130313420473606,
+              12.92800000190735
+            ],
+            [
+              -0.5098710441251497,
+              2.7342669314807146,
+              12.798000001907349
+            ],
+            [
+              -0.5162945988716743,
+              0.5388948131498904,
+              12.738000001907348
+            ],
+            [
+              -0.014762869252067032,
+              0.0016184185589712904,
+              12.798000001907349
+            ],
+            [
+              0.5796107506583317,
+              -0.0028537123410702914,
+              12.888000001907349
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              -0.5098710441251497,
+              2.7342669314807146,
+              2.6580000019073484
+            ],
+            [
+              0.2582335315509694,
+              3.2130313420473606,
+              2.8580000019073486
+            ],
+            [
+              0.016233000854584567,
+              5.753491092396288,
+              3.0180000019073487
+            ],
+            [
+              -0.5196936353255368,
+              5.744400403056666,
+              2.9080000019073484
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              0.2582335315509694,
+              3.2130313420473606,
+              13.43800000190735
+            ],
+            [
+              1.2761119510812053,
+              3.839149160876145,
+              15.35800000190735
+            ],
+            [
+              1.4351091379650993,
+              5.763004637403131,
+              15.34800000190735
+            ],
+            [
+              0.016233000854584567,
+              5.753491092396288,
+              12.50800000190735
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              4.35875950953947,
+              0.003033413100769322,
+              15.36800000190735
+            ],
+            [
+              5.048560727087941,
+              0.8079397929167982,
+              15.35800000190735
+            ],
+            [
+              8.059393482459324,
+              0.7765372582570773,
+              15.35800000190735
+            ],
+            [
+              7.519531380520767,
+              -0.001568718387756629,
+              15.35800000190735
+            ],
+            [
+              12.28356221996232,
+              0.0016188902323843735,
+              15.35800000190735
+            ],
+            [
+              12.286147927310044,
+              0.27819313725747463,
+              15.35800000190735
+            ],
+            [
+              13.331477224626893,
+              1.2880380066166612,
+              15.35800000190735
+            ],
+            [
+              13.608051471651983,
+              1.2854522992689374,
+              15.35800000190735
+            ],
+            [
+              13.613580505883865,
+              5.821614711460666,
+              15.34800000190735
+            ],
+            [
+              1.4351091379650993,
+              5.763004637403131,
+              15.34800000190735
+            ],
+            [
+              1.2761119510812053,
+              3.839149160876145,
+              15.35800000190735
+            ],
+            [
+              0.2582335315509694,
+              3.2130313420473606,
+              15.35800000190735
+            ],
+            [
+              0.5796107506583317,
+              -0.0028537123410702914,
+              15.36800000190735
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              5.048560727087941,
+              0.8079397929167982,
+              15.35800000190735
+            ],
+            [
+              4.35875950953947,
+              0.003033413100769322,
+              13.378000001907349
+            ],
+            [
+              7.519531380520767,
+              -0.001568718387756629,
+              13.43800000190735
+            ],
+            [
+              8.059393482459324,
+              0.7765372582570773,
+              15.35800000190735
+            ]
+          ]
+        ]
+      }
+    ],
+    "groundNAP": 0.35199999809265137,
+    "sourceOffsetNAP": 0.65,
+    "source": "3DBAG LoD2.2",
+    "pointCloudYear": 2023
+  },
+  "heightEvidence": [
+    {
+      "source": "3DBAG LoD2.2",
+      "year": 2023,
+      "groundNAP": 0.35199999809265137,
+      "selectedWallHeightRaw": {
+        "surfaceIndex": 11,
+        "planeErrorM": 0.0016188902360041446,
+        "overlapM": 4.764030839455671,
+        "bottom": -0.3,
+        "top": 15.06,
+        "heightM": 15.360000000000001,
+        "status": "selected-coplanar-source-wall; feature registration unresolved"
+      },
+      "selectedWallTopRelativeM": 15.35800000190735,
+      "roofStatisticRelativeM": 15.36,
+      "lineage": "AHN-derived3DBAG; not independent height evidence"
+    }
+  ],
+  "heightChoice": {
+    "value": 15.35800000190735,
+    "eavesM": 15.35800000190735,
+    "roofPeakM": 15.35800000190735,
+    "reportedRoofStatisticM": 15.36,
+    "reason": "Selected wall top normalized by source offsetNAP-groundNAP; rear roof percentile is not substituted for frontage eaves."
+  },
+  "targetAppearanceDate": "2022-04-29T07:26:49.661430Z",
+  "authoringStatus": "reviewed simplified candidate; metric registration and hidden appearance unresolved",
+  "assumptions": [
+    "Photographic features unregistered; opening dimensions remain inferred author proportions.",
+    "Seed geometry fingerprint is a cache digest, not an externally certified revision.",
+    "Exact owner footprint and unmodified source surfaces retained; owned facade apertures and explicit inferred cuts alter selected wall surfaces, while measured roof steps and rear volumes remain.",
+    "No source crop datum or pixel height is treated as an independent measurement.",
+    "The owner covers all five addresses: 31/33/35/37/39. The selected 12.298 m long street plane spans different measured wall heights; semantic steps and source rear roofs are retained.",
+    "The 2025 foreground neighboring owner obscures the left primary patch. Recovered full-height evidence from 2022 supports the projecting pale bay and its three window groups. Projection, tapered base rise and vertical positions remain inferred.",
+    "A hedge and bicycles obscure lower entrances in 2022. Exposed windows are authored from the evidence; entrance topology remains unresolved.",
+    "The short side from 2024 and long side from 2025 are separately dated physical frontage observations. Thin lights, corner cladding width and course elevations are visual inferences.",
+    "Corner light strip is authored across three true planes; glazing divisions and cladding dimensions are simplified, not independently measured. Rear appearance unknown."
+  ],
+  "massing": {
+    "mode": "source-derived"
+  },
+  "sourceBundlePath": "artifacts/jordaan-building-library/authored-evidence/derde-goudsbloemdwarsstraat-31-39.json"
+}

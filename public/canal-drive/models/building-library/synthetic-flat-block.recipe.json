@@ -1,0 +1,521 @@
+{
+  "schemaVersion": 1,
+  "id": "synthetic-flat-block",
+  "name": "Synthetic apartment block",
+  "synthetic": true,
+  "height": 15,
+  "footprint": [
+    [
+      0,
+      0
+    ],
+    [
+      18,
+      0
+    ],
+    [
+      18,
+      12
+    ],
+    [
+      0,
+      12
+    ]
+  ],
+  "frontages": [
+    {
+      "id": "street",
+      "width": 18,
+      "origin": [
+        0,
+        0
+      ],
+      "rotation": 0,
+      "openings": [
+        {
+          "id": "ground bay1",
+          "x": 1.5,
+          "z": 1.4999999999999998,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "ground",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": false,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "ground bay2",
+          "x": 4.5,
+          "z": 1.4999999999999998,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "ground",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": false,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "ground bay3",
+          "x": 7.5,
+          "z": 1.4999999999999998,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "ground",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": false,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "ground bay4",
+          "x": 10.5,
+          "z": 1.42,
+          "width": 1.71,
+          "height": 2.6,
+          "storey": "ground",
+          "kind": "door",
+          "head": "rectangular",
+          "balcony": false,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "ground bay5",
+          "x": 13.5,
+          "z": 1.4999999999999998,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "ground",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": false,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "ground bay6",
+          "x": 16.5,
+          "z": 1.4999999999999998,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "ground",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": false,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_1 bay1",
+          "x": 1.5,
+          "z": 4.5,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "upper_1",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": true,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_1 bay2",
+          "x": 4.5,
+          "z": 4.5,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "upper_1",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": true,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_1 bay3",
+          "x": 7.5,
+          "z": 4.5,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "upper_1",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": true,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_1 bay4",
+          "x": 10.5,
+          "z": 4.5,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "upper_1",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": true,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_1 bay5",
+          "x": 13.5,
+          "z": 4.5,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "upper_1",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": true,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_1 bay6",
+          "x": 16.5,
+          "z": 4.5,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "upper_1",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": true,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_2 bay1",
+          "x": 1.5,
+          "z": 7.5,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "upper_2",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": true,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_2 bay2",
+          "x": 4.5,
+          "z": 7.5,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "upper_2",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": true,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_2 bay3",
+          "x": 7.5,
+          "z": 7.5,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "upper_2",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": true,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_2 bay4",
+          "x": 10.5,
+          "z": 7.5,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "upper_2",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": true,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_2 bay5",
+          "x": 13.5,
+          "z": 7.5,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "upper_2",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": true,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_2 bay6",
+          "x": 16.5,
+          "z": 7.5,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "upper_2",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": true,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_3 bay1",
+          "x": 1.5,
+          "z": 10.5,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "upper_3",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": true,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_3 bay2",
+          "x": 4.5,
+          "z": 10.5,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "upper_3",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": true,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_3 bay3",
+          "x": 7.5,
+          "z": 10.5,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "upper_3",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": true,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_3 bay4",
+          "x": 10.5,
+          "z": 10.5,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "upper_3",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": true,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_3 bay5",
+          "x": 13.5,
+          "z": 10.5,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "upper_3",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": true,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_3 bay6",
+          "x": 16.5,
+          "z": 10.5,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "upper_3",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": true,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_4 bay1",
+          "x": 1.5,
+          "z": 13.5,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "upper_4",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": true,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_4 bay2",
+          "x": 4.5,
+          "z": 13.5,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "upper_4",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": true,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_4 bay3",
+          "x": 7.5,
+          "z": 13.5,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "upper_4",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": true,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_4 bay4",
+          "x": 10.5,
+          "z": 13.5,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "upper_4",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": true,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_4 bay5",
+          "x": 13.5,
+          "z": 13.5,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "upper_4",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": true,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_4 bay6",
+          "x": 16.5,
+          "z": 13.5,
+          "width": 1.71,
+          "height": 2.0999999999999996,
+          "storey": "upper_4",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": true,
+          "provenance": {
+            "status": "synthetic"
+          }
+        }
+      ],
+      "storefront": {
+        "height": 3,
+        "anchor": 9.0,
+        "finishColour": "#c8c3b6",
+        "signs": [],
+        "awnings": []
+      }
+    }
+  ],
+  "storeys": [
+    {
+      "id": "ground",
+      "bottom": 0,
+      "top": 3
+    },
+    {
+      "id": "upper_1",
+      "bottom": 3,
+      "top": 6.0
+    },
+    {
+      "id": "upper_2",
+      "bottom": 6.0,
+      "top": 9.0
+    },
+    {
+      "id": "upper_3",
+      "bottom": 9.0,
+      "top": 12.0
+    },
+    {
+      "id": "upper_4",
+      "bottom": 12.0,
+      "top": 15.0
+    }
+  ],
+  "roof": {
+    "kind": "flat",
+    "eaves": 15,
+    "top": 15,
+    "setback": 0.24,
+    "status": "synthetic"
+  },
+  "gable": {
+    "profile": [
+      [
+        0,
+        15
+      ],
+      [
+        18,
+        15
+      ]
+    ],
+    "status": "synthetic"
+  },
+  "materials": {
+    "wall": "concrete",
+    "roof": "bitumen",
+    "frame": "ivorytimber"
+  },
+  "assumptions": [
+    "Synthetic fixture; no real building identity or photo evidence asserted.",
+    "Window panels and generic roof volumes demonstrate composition, not production architectural completeness."
+  ]
+}

@@ -1,0 +1,274 @@
+{
+  "schemaVersion": 1,
+  "id": "synthetic-shop-transom",
+  "name": "Synthetic curved shop transom and glazing lettering",
+  "synthetic": true,
+  "height": 11.2,
+  "footprint": [
+    [
+      0,
+      0
+    ],
+    [
+      6,
+      0
+    ],
+    [
+      6,
+      10
+    ],
+    [
+      0,
+      10
+    ]
+  ],
+  "frontages": [
+    {
+      "id": "street",
+      "width": 6,
+      "origin": [
+        0,
+        0
+      ],
+      "rotation": 0,
+      "openings": [
+        {
+          "id": "ground bay1",
+          "x": 1.0,
+          "z": 1.4999999999999998,
+          "width": 1.14,
+          "height": 2.0999999999999996,
+          "storey": "ground",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": false,
+          "provenance": {
+            "status": "synthetic"
+          },
+          "mullions": [],
+          "transom": 0.25,
+          "transomArch": {
+            "rise": 0.2
+          },
+          "upperLights": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "glassColour": "#405653",
+          "lowerPanel": {
+            "height": 0.3,
+            "colour": "#263d56"
+          }
+        },
+        {
+          "id": "ground bay2",
+          "x": 3.0,
+          "z": 1.6600000000000001,
+          "width": 1.14,
+          "height": 2.6,
+          "storey": "ground",
+          "kind": "door",
+          "head": "rectangular",
+          "balcony": false,
+          "provenance": {
+            "status": "synthetic"
+          },
+          "mullions": [
+            0.5
+          ]
+        },
+        {
+          "id": "ground bay3",
+          "x": 5.0,
+          "z": 1.4999999999999998,
+          "width": 1.14,
+          "height": 2.0999999999999996,
+          "storey": "ground",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": false,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_1 bay1",
+          "x": 1.0,
+          "z": 4.425,
+          "width": 1.14,
+          "height": 1.9949999999999997,
+          "storey": "upper_1",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": false,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_1 bay2",
+          "x": 3.0,
+          "z": 4.425,
+          "width": 1.14,
+          "height": 1.9949999999999997,
+          "storey": "upper_1",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": false,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_1 bay3",
+          "x": 5.0,
+          "z": 4.425,
+          "width": 1.14,
+          "height": 1.9949999999999997,
+          "storey": "upper_1",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": false,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_2 bay1",
+          "x": 1.0,
+          "z": 7.2749999999999995,
+          "width": 1.14,
+          "height": 1.9949999999999997,
+          "storey": "upper_2",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": false,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_2 bay2",
+          "x": 3.0,
+          "z": 7.2749999999999995,
+          "width": 1.14,
+          "height": 1.9949999999999997,
+          "storey": "upper_2",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": false,
+          "provenance": {
+            "status": "synthetic"
+          }
+        },
+        {
+          "id": "upper_2 bay3",
+          "x": 5.0,
+          "z": 7.2749999999999995,
+          "width": 1.14,
+          "height": 1.9949999999999997,
+          "storey": "upper_2",
+          "kind": "window",
+          "head": "rectangular",
+          "balcony": false,
+          "provenance": {
+            "status": "synthetic"
+          }
+        }
+      ],
+      "storefront": {
+        "height": 3,
+        "anchor": 3.0,
+        "finishColour": "#c8c3b6",
+        "signs": [
+          {
+            "id": "display-lettering",
+            "x": 1.0,
+            "z": 0.95,
+            "width": 0.9119999999999999,
+            "height": 0.13,
+            "text": "DISPLAY",
+            "substrate": false,
+            "letteringDepth": 0.095
+          }
+        ],
+        "awnings": [
+          {
+            "x": 1.0,
+            "z": 2.15,
+            "width": 1.24,
+            "height": 0.09,
+            "projection": 0.43,
+            "colour": "#b76725",
+            "text": ""
+          }
+        ],
+        "entranceSteps": [
+          {
+            "id": "Entry / explicit threshold steps",
+            "openingId": "ground bay2",
+            "x": 3.0,
+            "width": 1.14,
+            "rise": 0.36,
+            "run": 0.6,
+            "provenance": {
+              "status": "synthetic",
+              "reason": "Explicit two-step raised entrance; no photographic inference"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "storeys": [
+    {
+      "id": "ground",
+      "bottom": 0,
+      "top": 3
+    },
+    {
+      "id": "upper_1",
+      "bottom": 3,
+      "top": 5.85
+    },
+    {
+      "id": "upper_2",
+      "bottom": 5.85,
+      "top": 8.7
+    }
+  ],
+  "roof": {
+    "kind": "pitched",
+    "eaves": 8.7,
+    "top": 11.2,
+    "setback": 0.24,
+    "status": "synthetic"
+  },
+  "gable": {
+    "profile": [
+      [
+        0,
+        8.7
+      ],
+      [
+        3.0,
+        11.2
+      ],
+      [
+        6,
+        8.7
+      ]
+    ],
+    "status": "synthetic"
+  },
+  "materials": {
+    "wall": "buffbrick",
+    "roof": "claytiles",
+    "frame": "ivorytimber"
+  },
+  "assumptions": [
+    "Synthetic reusable joinery and display-sign study; not a photographic reconstruction."
+  ]
+}

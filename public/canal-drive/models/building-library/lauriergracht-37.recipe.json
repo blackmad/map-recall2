@@ -1,0 +1,6484 @@
+{
+  "schemaVersion": 1,
+  "id": "lauriergracht-37",
+  "name": "Lauriergracht apartment building",
+  "address": "Lauriergracht 37",
+  "caseId": "case-23",
+  "synthetic": false,
+  "buildingId": "0363100012169605",
+  "geometryRevision": "a6894daad4aa3de37825094f939fcc775aa6b0ab96cb1b92e87d48c599c31331",
+  "sourceBundle": "lauriergracht-37.json",
+  "sourceBundlePath": "artifacts/building-library/expansion/evidence/lauriergracht-37.json",
+  "footprint": [
+    [
+      12.584227545326616,
+      15.461723425552188
+    ],
+    [
+      11.588921320876054,
+      15.474588866473391
+    ],
+    [
+      11.544399589991162,
+      10.087073872018232
+    ],
+    [
+      5.883767924624251,
+      10.128896701258828
+    ],
+    [
+      5.876381456966071,
+      8.282726221564296
+    ],
+    [
+      -0.1926163489334165,
+      8.336257819592767
+    ],
+    [
+      -0.26786091507802645,
+      -0.01879084904262429
+    ],
+    [
+      3.073886632962269,
+      -0.013961235573770159
+    ],
+    [
+      16.886012963998848,
+      -0.02209852549393787
+    ],
+    [
+      20.89085832431222,
+      -0.018405291664795875
+    ],
+    [
+      20.970952796419304,
+      -0.00919249958562407
+    ],
+    [
+      21.02815733578329,
+      7.0590482745162575
+    ],
+    [
+      35.43379851865329,
+      7.014303326202107
+    ],
+    [
+      35.10465427300435,
+      20.16586840666139
+    ],
+    [
+      34.96979036076129,
+      23.66120983850673
+    ],
+    [
+      36.16729099110859,
+      23.714051491753906
+    ],
+    [
+      36.02323457927989,
+      27.213329667351122
+    ],
+    [
+      38.325012124529884,
+      27.304544425932605
+    ],
+    [
+      38.06329983500245,
+      33.78050819030859
+    ],
+    [
+      36.83428496214636,
+      33.73028426873147
+    ],
+    [
+      36.66112911454336,
+      38.02527170205889
+    ],
+    [
+      12.767245544802932,
+      38.21717781371744
+    ]
+  ],
+  "height": 18.722000007629394,
+  "storeys": [
+    {
+      "id": "ground",
+      "bottom": 0,
+      "top": 4.12019830881324
+    },
+    {
+      "id": "upper_1",
+      "bottom": 4.12019830881324,
+      "top": 7.8895006078099685
+    },
+    {
+      "id": "upper_2",
+      "bottom": 7.8895006078099685,
+      "top": 11.183395409635938
+    },
+    {
+      "id": "upper_3",
+      "bottom": 11.183395409635938,
+      "top": 14.533886342077473
+    },
+    {
+      "id": "upper_4",
+      "bottom": 14.533886342077473,
+      "top": 18.722000007629394
+    }
+  ],
+  "roof": {
+    "kind": "flat",
+    "eaves": 18.722000007629394,
+    "top": 18.872000007629392,
+    "status": "inferred",
+    "setback": 0.24
+  },
+  "gable": {
+    "profile": [
+      [
+        0,
+        18.722000007629394
+      ],
+      [
+        20.974889540171205,
+        18.722000007629394
+      ]
+    ],
+    "status": "inferred"
+  },
+  "frontages": [
+    {
+      "id": "street",
+      "origin": [
+        0,
+        0
+      ],
+      "rotation": 0,
+      "width": 20.974889540171205,
+      "openings": [
+        {
+          "id": "full-front-row-1-bay-1",
+          "x": 2.8069970839883736,
+          "z": 16.243089486667582,
+          "width": 1.8045724784999,
+          "height": 2.06009915440662,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.52,
+          "mullions": [
+            0.5
+          ],
+          "upperLights": [
+            0.25,
+            0.5,
+            0.75
+          ],
+          "storey": "upper_4",
+          "frameColour": "#e5e3d1",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              116.82,
+              170.61,
+              198,
+              242.99
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                222,
+                313
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          },
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full-front-row-1-bay-2",
+          "x": 6.702232799805763,
+          "z": 16.243089486667582,
+          "width": 1.8045724784998995,
+          "height": 2.06009915440662,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.52,
+          "mullions": [
+            0.5
+          ],
+          "upperLights": [
+            0.25,
+            0.5,
+            0.75
+          ],
+          "storey": "upper_4",
+          "frameColour": "#e5e3d1",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              292.05,
+              170.61,
+              373.23,
+              242.99
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                222,
+                313
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          },
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full-front-row-1-bay-3",
+          "x": 10.399405682609988,
+          "z": 16.243089486667582,
+          "width": 1.8045724784998995,
+          "height": 2.06009915440662,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.52,
+          "mullions": [
+            0.5
+          ],
+          "upperLights": [
+            0.25,
+            0.5,
+            0.75
+          ],
+          "storey": "upper_4",
+          "frameColour": "#e5e3d1",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              458.37,
+              170.61,
+              539.55,
+              242.99
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                222,
+                313
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          },
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full-front-row-1-bay-4",
+          "x": 14.294641398427377,
+          "z": 16.243089486667582,
+          "width": 1.8045724784998995,
+          "height": 2.06009915440662,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.52,
+          "mullions": [
+            0.5
+          ],
+          "upperLights": [
+            0.25,
+            0.5,
+            0.75
+          ],
+          "storey": "upper_4",
+          "frameColour": "#e5e3d1",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              633.6,
+              170.61,
+              714.78,
+              242.99
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                222,
+                313
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          },
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full-front-row-1-bay-5",
+          "x": 18.101849188463255,
+          "z": 16.243089486667582,
+          "width": 1.8045724784998995,
+          "height": 2.06009915440662,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.52,
+          "mullions": [
+            0.5
+          ],
+          "upperLights": [
+            0.25,
+            0.5,
+            0.75
+          ],
+          "storey": "upper_4",
+          "frameColour": "#e5e3d1",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              804.87,
+              170.61,
+              886.05,
+              242.99
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                222,
+                313
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          },
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full-front-row-2-bay-1",
+          "x": 2.7189691582020945,
+          "z": 12.836002423610479,
+          "width": 2.6408377734433195,
+          "height": 2.0374607021603937,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.48,
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "upperLights": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "storey": "upper_3",
+          "frameColour": "#e5e3d1",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              94.05,
+              370.172,
+              212.85,
+              460.13
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                373,
+                463
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          },
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full-front-row-2-bay-2",
+          "x": 6.614204874012796,
+          "z": 12.836002423610479,
+          "width": 2.6408377734299435,
+          "height": 2.0374607021603937,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.48,
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "upperLights": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "storey": "upper_3",
+          "frameColour": "#e5e3d1",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              269.28,
+              370.172,
+              388.08,
+              460.13
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                373,
+                463
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          },
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full-front-row-2-bay-3",
+          "x": 10.44341964550551,
+          "z": 12.836002423610479,
+          "width": 2.6408377734433213,
+          "height": 2.0374607021603937,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.48,
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "upperLights": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "storey": "upper_3",
+          "frameColour": "#e5e3d1",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              441.54,
+              370.172,
+              560.34,
+              460.13
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                373,
+                463
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          },
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full-front-row-2-bay-4",
+          "x": 14.250627435529934,
+          "z": 12.836002423610479,
+          "width": 2.6408377734204045,
+          "height": 2.0374607021603937,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.48,
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "upperLights": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "storey": "upper_3",
+          "frameColour": "#e5e3d1",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              612.81,
+              370.172,
+              731.61,
+              460.13
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                373,
+                463
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          },
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full-front-row-2-bay-5",
+          "x": 18.057835225565814,
+          "z": 12.836002423610479,
+          "width": 2.640837773420408,
+          "height": 2.0374607021603937,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.48,
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "upperLights": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "storey": "upper_3",
+          "frameColour": "#e5e3d1",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              784.08,
+              370.172,
+              902.88,
+              460.13
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                373,
+                463
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          },
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full-front-row-3-bay-1",
+          "x": 2.7189691582020945,
+          "z": 9.530788395661396,
+          "width": 2.6408377734433195,
+          "height": 2.0374607021603937,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.48,
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "upperLights": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "storey": "upper_2",
+          "frameColour": "#e5e3d1",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              94.05,
+              514.932,
+              212.85,
+              604.89
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                519,
+                609
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          },
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full-front-row-3-bay-2",
+          "x": 6.614204874012796,
+          "z": 9.530788395661396,
+          "width": 2.6408377734299435,
+          "height": 2.0374607021603937,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.48,
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "upperLights": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "storey": "upper_2",
+          "frameColour": "#e5e3d1",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              269.28,
+              514.932,
+              388.08,
+              604.89
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                519,
+                609
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          },
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full-front-row-3-bay-3",
+          "x": 10.44341964550551,
+          "z": 9.530788395661396,
+          "width": 2.6408377734433213,
+          "height": 2.0374607021603937,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.48,
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "upperLights": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "storey": "upper_2",
+          "frameColour": "#e5e3d1",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              441.54,
+              514.932,
+              560.34,
+              604.89
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                519,
+                609
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          },
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full-front-row-3-bay-4",
+          "x": 14.250627435529934,
+          "z": 9.530788395661396,
+          "width": 2.6408377734204045,
+          "height": 2.0374607021603937,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.48,
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "upperLights": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "storey": "upper_2",
+          "frameColour": "#e5e3d1",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              612.81,
+              514.932,
+              731.61,
+              604.89
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                519,
+                609
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          },
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full-front-row-3-bay-5",
+          "x": 18.057835225565814,
+          "z": 9.530788395661396,
+          "width": 2.640837773420408,
+          "height": 2.0374607021603937,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.48,
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "upperLights": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "storey": "upper_2",
+          "frameColour": "#e5e3d1",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              784.08,
+              514.932,
+              902.88,
+              604.89
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                519,
+                609
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          },
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full-front-row-4-bay-1",
+          "x": 2.7189691581954065,
+          "z": 6.021828297496274,
+          "width": 2.8168936249929626,
+          "height": 2.4902297470849253,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.48,
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "upperLights": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "storey": "upper_1",
+          "frameColour": "#e5e3d1",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              90.09,
+              659.692,
+              216.81,
+              767.228
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                664,
+                774
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          },
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full-front-row-4-bay-2",
+          "x": 6.614204874012796,
+          "z": 6.021828297496274,
+          "width": 2.8168936249929626,
+          "height": 2.4902297470849253,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.48,
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "upperLights": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "storey": "upper_1",
+          "frameColour": "#e5e3d1",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              265.32,
+              659.692,
+              392.04,
+              767.228
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                664,
+                774
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          },
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full-front-row-4-bay-3",
+          "x": 10.44341964550551,
+          "z": 6.021828297496274,
+          "width": 2.8168936250063403,
+          "height": 2.4902297470849253,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.48,
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "upperLights": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "storey": "upper_1",
+          "frameColour": "#e5e3d1",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              437.58,
+              659.692,
+              564.3,
+              767.228
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                664,
+                774
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          },
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full-front-row-4-bay-4",
+          "x": 14.250627435548079,
+          "z": 6.021828297496274,
+          "width": 2.8168936249929626,
+          "height": 2.4902297470849253,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.48,
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "upperLights": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "storey": "upper_1",
+          "frameColour": "#e5e3d1",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              608.85,
+              659.692,
+              735.57,
+              767.228
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                664,
+                774
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          },
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full-front-row-4-bay-5",
+          "x": 18.057835225561043,
+          "z": 6.021828297496274,
+          "width": 2.816893624992961,
+          "height": 2.4902297470849253,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.48,
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "upperLights": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "storey": "upper_1",
+          "frameColour": "#e5e3d1",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              780.12,
+              659.692,
+              906.84,
+              767.228
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                664,
+                774
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          },
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full-front-row-5-bay-1",
+          "x": 2.7739866118179233,
+          "z": 2.241206772376433,
+          "width": 2.926928532237996,
+          "height": 2.444952842592472,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.52,
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "upperLights": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "storey": "ground",
+          "frameColour": "#e5e3d1",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              90.09,
+              827.2,
+              221.76,
+              934.736
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                832,
+                940
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          },
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full-front-row-5-bay-2",
+          "x": 6.669222327628625,
+          "z": 2.241206772376433,
+          "width": 2.92692853222462,
+          "height": 2.444952842592472,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.52,
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "upperLights": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "storey": "ground",
+          "frameColour": "#e5e3d1",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              265.32,
+              827.2,
+              396.99,
+              934.736
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                832,
+                940
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          },
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full-front-row-5-bay-3",
+          "x": 10.498437099109882,
+          "z": 2.241206772376433,
+          "width": 2.926928532215081,
+          "height": 2.444952842592472,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.52,
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "upperLights": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "storey": "ground",
+          "frameColour": "#e5e3d1",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              437.58,
+              827.2,
+              569.25,
+              934.736
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                832,
+                940
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          },
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full-front-row-5-bay-4",
+          "x": 14.30564488915245,
+          "z": 2.241206772376433,
+          "width": 2.926928532201705,
+          "height": 2.444952842592472,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.52,
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "upperLights": [
+            0.2,
+            0.4,
+            0.6,
+            0.8
+          ],
+          "storey": "ground",
+          "frameColour": "#e5e3d1",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              608.85,
+              827.2,
+              740.52,
+              934.736
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                832,
+                940
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          },
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full-front-row-5-bay-5",
+          "x": 18.057835225561043,
+          "z": 1.2677533257886893,
+          "width": 0.95,
+          "height": 2.5355066515773785,
+          "kind": "door",
+          "head": "rectangular",
+          "transom": null,
+          "storey": "ground",
+          "frameColour": "#514032",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              780.12,
+              842.71,
+              906.84,
+              982.3
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                832,
+                940
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          },
+          "glassColour": "#4c5550",
+          "mullions": [],
+          "lowerPanel": {
+            "height": 2.155180653840772,
+            "colour": "#554031"
+          }
+        },
+        {
+          "id": "full-front-row-5-bay-5-left-glass",
+          "x": 17.107835225561043,
+          "z": 1.4149032653891622,
+          "width": 0.58,
+          "height": 2.1506529633915266,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.2,
+          "storey": "ground",
+          "frameColour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              780.12,
+              842.71,
+              906.84,
+              982.3
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                832,
+                940
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          },
+          "glassColour": "#4c5550",
+          "mullions": []
+        },
+        {
+          "id": "full-front-row-5-bay-5-right-glass",
+          "x": 19.007835225561042,
+          "z": 1.4149032653891622,
+          "width": 0.58,
+          "height": 2.1506529633915266,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.2,
+          "storey": "ground",
+          "frameColour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              780.12,
+              842.71,
+              906.84,
+              982.3
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                832,
+                940
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          },
+          "glassColour": "#4c5550",
+          "mullions": []
+        }
+      ],
+      "storefront": {
+        "anchor": 10.487444770085602,
+        "height": 4.12019830881324,
+        "finishColour": "#5c4d42",
+        "signs": [],
+        "awnings": [],
+        "cornice": false
+      },
+      "components": [
+        {
+          "id": "plain-overhanging-cornice",
+          "kind": "cornice",
+          "profile": "flat",
+          "z": 18.642000007629395,
+          "height": 0.15,
+          "projection": 0.36,
+          "material": "bluestone",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": "artifacts/building-library/expansion/evidence/lauriergracht-37-2024-12-16-full-b77f1f50.jpg",
+            "sourceHash": "b77f1f504911c6b1500d6ee8eb619439c41d32e501f30540370d72559bd2ae18",
+            "reason": "Dated facade images support component presence and relative layout; dimensions remain authored hypotheses without independent metric registration.",
+            "reviewedContactSheet": "artifacts/building-library/expansion/lauriergracht-37-dated-full.jpg",
+            "captureDates": [
+              "2022-01-27",
+              "2024-12-16",
+              "2025-07-03"
+            ]
+          }
+        },
+        {
+          "id": "full-front-row-1-bay-1-sill",
+          "kind": "sill",
+          "openingId": "full-front-row-1-bay-1",
+          "height": 0.11,
+          "projection": 0.18,
+          "margin": 0.04,
+          "drop": 0.025,
+          "material": "limestone",
+          "colour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              116.82,
+              170.61,
+              198,
+              242.99
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                222,
+                313
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          }
+        },
+        {
+          "id": "full-front-row-1-bay-2-sill",
+          "kind": "sill",
+          "openingId": "full-front-row-1-bay-2",
+          "height": 0.11,
+          "projection": 0.18,
+          "margin": 0.04,
+          "drop": 0.025,
+          "material": "limestone",
+          "colour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              292.05,
+              170.61,
+              373.23,
+              242.99
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                222,
+                313
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          }
+        },
+        {
+          "id": "full-front-row-1-bay-3-sill",
+          "kind": "sill",
+          "openingId": "full-front-row-1-bay-3",
+          "height": 0.11,
+          "projection": 0.18,
+          "margin": 0.04,
+          "drop": 0.025,
+          "material": "limestone",
+          "colour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              458.37,
+              170.61,
+              539.55,
+              242.99
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                222,
+                313
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          }
+        },
+        {
+          "id": "full-front-row-1-bay-4-sill",
+          "kind": "sill",
+          "openingId": "full-front-row-1-bay-4",
+          "height": 0.11,
+          "projection": 0.18,
+          "margin": 0.04,
+          "drop": 0.025,
+          "material": "limestone",
+          "colour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              633.6,
+              170.61,
+              714.78,
+              242.99
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                222,
+                313
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          }
+        },
+        {
+          "id": "full-front-row-1-bay-5-sill",
+          "kind": "sill",
+          "openingId": "full-front-row-1-bay-5",
+          "height": 0.11,
+          "projection": 0.18,
+          "margin": 0.04,
+          "drop": 0.025,
+          "material": "limestone",
+          "colour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              804.87,
+              170.61,
+              886.05,
+              242.99
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                222,
+                313
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          }
+        },
+        {
+          "id": "full-front-row-2-bay-1-sill",
+          "kind": "sill",
+          "openingId": "full-front-row-2-bay-1",
+          "height": 0.11,
+          "projection": 0.18,
+          "margin": 0.04,
+          "drop": 0.025,
+          "material": "limestone",
+          "colour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              94.05,
+              370.172,
+              212.85,
+              460.13
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                373,
+                463
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          }
+        },
+        {
+          "id": "full-front-row-2-bay-2-sill",
+          "kind": "sill",
+          "openingId": "full-front-row-2-bay-2",
+          "height": 0.11,
+          "projection": 0.18,
+          "margin": 0.04,
+          "drop": 0.025,
+          "material": "limestone",
+          "colour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              269.28,
+              370.172,
+              388.08,
+              460.13
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                373,
+                463
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          }
+        },
+        {
+          "id": "full-front-row-2-bay-3-sill",
+          "kind": "sill",
+          "openingId": "full-front-row-2-bay-3",
+          "height": 0.11,
+          "projection": 0.18,
+          "margin": 0.04,
+          "drop": 0.025,
+          "material": "limestone",
+          "colour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              441.54,
+              370.172,
+              560.34,
+              460.13
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                373,
+                463
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          }
+        },
+        {
+          "id": "full-front-row-2-bay-4-sill",
+          "kind": "sill",
+          "openingId": "full-front-row-2-bay-4",
+          "height": 0.11,
+          "projection": 0.18,
+          "margin": 0.04,
+          "drop": 0.025,
+          "material": "limestone",
+          "colour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              612.81,
+              370.172,
+              731.61,
+              460.13
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                373,
+                463
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          }
+        },
+        {
+          "id": "full-front-row-2-bay-5-sill",
+          "kind": "sill",
+          "openingId": "full-front-row-2-bay-5",
+          "height": 0.11,
+          "projection": 0.18,
+          "margin": 0.04,
+          "drop": 0.025,
+          "material": "limestone",
+          "colour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              784.08,
+              370.172,
+              902.88,
+              460.13
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                373,
+                463
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          }
+        },
+        {
+          "id": "full-front-row-3-bay-1-sill",
+          "kind": "sill",
+          "openingId": "full-front-row-3-bay-1",
+          "height": 0.11,
+          "projection": 0.18,
+          "margin": 0.04,
+          "drop": 0.025,
+          "material": "limestone",
+          "colour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              94.05,
+              514.932,
+              212.85,
+              604.89
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                519,
+                609
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          }
+        },
+        {
+          "id": "full-front-row-3-bay-2-sill",
+          "kind": "sill",
+          "openingId": "full-front-row-3-bay-2",
+          "height": 0.11,
+          "projection": 0.18,
+          "margin": 0.04,
+          "drop": 0.025,
+          "material": "limestone",
+          "colour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              269.28,
+              514.932,
+              388.08,
+              604.89
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                519,
+                609
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          }
+        },
+        {
+          "id": "full-front-row-3-bay-3-sill",
+          "kind": "sill",
+          "openingId": "full-front-row-3-bay-3",
+          "height": 0.11,
+          "projection": 0.18,
+          "margin": 0.04,
+          "drop": 0.025,
+          "material": "limestone",
+          "colour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              441.54,
+              514.932,
+              560.34,
+              604.89
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                519,
+                609
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          }
+        },
+        {
+          "id": "full-front-row-3-bay-4-sill",
+          "kind": "sill",
+          "openingId": "full-front-row-3-bay-4",
+          "height": 0.11,
+          "projection": 0.18,
+          "margin": 0.04,
+          "drop": 0.025,
+          "material": "limestone",
+          "colour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              612.81,
+              514.932,
+              731.61,
+              604.89
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                519,
+                609
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          }
+        },
+        {
+          "id": "full-front-row-3-bay-5-sill",
+          "kind": "sill",
+          "openingId": "full-front-row-3-bay-5",
+          "height": 0.11,
+          "projection": 0.18,
+          "margin": 0.04,
+          "drop": 0.025,
+          "material": "limestone",
+          "colour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              784.08,
+              514.932,
+              902.88,
+              604.89
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                519,
+                609
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          }
+        },
+        {
+          "id": "full-front-row-4-bay-1-sill",
+          "kind": "sill",
+          "openingId": "full-front-row-4-bay-1",
+          "height": 0.11,
+          "projection": 0.18,
+          "margin": 0.04,
+          "drop": 0.025,
+          "material": "limestone",
+          "colour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              90.09,
+              659.692,
+              216.81,
+              767.228
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                664,
+                774
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          }
+        },
+        {
+          "id": "full-front-row-4-bay-2-sill",
+          "kind": "sill",
+          "openingId": "full-front-row-4-bay-2",
+          "height": 0.11,
+          "projection": 0.18,
+          "margin": 0.04,
+          "drop": 0.025,
+          "material": "limestone",
+          "colour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              265.32,
+              659.692,
+              392.04,
+              767.228
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                664,
+                774
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          }
+        },
+        {
+          "id": "full-front-row-4-bay-3-sill",
+          "kind": "sill",
+          "openingId": "full-front-row-4-bay-3",
+          "height": 0.11,
+          "projection": 0.18,
+          "margin": 0.04,
+          "drop": 0.025,
+          "material": "limestone",
+          "colour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              437.58,
+              659.692,
+              564.3,
+              767.228
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                664,
+                774
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          }
+        },
+        {
+          "id": "full-front-row-4-bay-4-sill",
+          "kind": "sill",
+          "openingId": "full-front-row-4-bay-4",
+          "height": 0.11,
+          "projection": 0.18,
+          "margin": 0.04,
+          "drop": 0.025,
+          "material": "limestone",
+          "colour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              608.85,
+              659.692,
+              735.57,
+              767.228
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                664,
+                774
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          }
+        },
+        {
+          "id": "full-front-row-4-bay-5-sill",
+          "kind": "sill",
+          "openingId": "full-front-row-4-bay-5",
+          "height": 0.11,
+          "projection": 0.18,
+          "margin": 0.04,
+          "drop": 0.025,
+          "material": "limestone",
+          "colour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              780.12,
+              659.692,
+              906.84,
+              767.228
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                664,
+                774
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          }
+        },
+        {
+          "id": "full-front-row-5-bay-1-sill",
+          "kind": "sill",
+          "openingId": "full-front-row-5-bay-1",
+          "height": 0.11,
+          "projection": 0.18,
+          "margin": 0.04,
+          "drop": 0.025,
+          "material": "limestone",
+          "colour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              90.09,
+              827.2,
+              221.76,
+              934.736
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                832,
+                940
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          }
+        },
+        {
+          "id": "full-front-row-5-bay-2-sill",
+          "kind": "sill",
+          "openingId": "full-front-row-5-bay-2",
+          "height": 0.11,
+          "projection": 0.18,
+          "margin": 0.04,
+          "drop": 0.025,
+          "material": "limestone",
+          "colour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              265.32,
+              827.2,
+              396.99,
+              934.736
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                832,
+                940
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          }
+        },
+        {
+          "id": "full-front-row-5-bay-3-sill",
+          "kind": "sill",
+          "openingId": "full-front-row-5-bay-3",
+          "height": 0.11,
+          "projection": 0.18,
+          "margin": 0.04,
+          "drop": 0.025,
+          "material": "limestone",
+          "colour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              437.58,
+              827.2,
+              569.25,
+              934.736
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                832,
+                940
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          }
+        },
+        {
+          "id": "full-front-row-5-bay-4-sill",
+          "kind": "sill",
+          "openingId": "full-front-row-5-bay-4",
+          "height": 0.11,
+          "projection": 0.18,
+          "margin": 0.04,
+          "drop": 0.025,
+          "material": "limestone",
+          "colour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              608.85,
+              827.2,
+              740.52,
+              934.736
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                832,
+                940
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          }
+        },
+        {
+          "id": "full-front-row-5-bay-5-left-glass-sill",
+          "kind": "sill",
+          "openingId": "full-front-row-5-bay-5-left-glass",
+          "height": 0.11,
+          "projection": 0.18,
+          "margin": 0.04,
+          "drop": 0.025,
+          "material": "limestone",
+          "colour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              780.12,
+              842.71,
+              906.84,
+              982.3
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                832,
+                940
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          }
+        },
+        {
+          "id": "full-front-row-5-bay-5-right-glass-sill",
+          "kind": "sill",
+          "openingId": "full-front-row-5-bay-5-right-glass",
+          "height": 0.11,
+          "projection": 0.18,
+          "margin": 0.04,
+          "drop": 0.025,
+          "material": "limestone",
+          "colour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              780.12,
+              842.71,
+              906.84,
+              982.3
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                832,
+                940
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          }
+        },
+        {
+          "id": "entrance-pale-canopy",
+          "kind": "cornice",
+          "profile": "flat",
+          "x": 18.057835225561043,
+          "z": 2.6381451038236055,
+          "width": 3.25,
+          "height": 0.16,
+          "projection": 0.42,
+          "material": "limestone",
+          "colour": "#bcbcac",
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              780.12,
+              842.71,
+              906.84,
+              982.3
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                832,
+                940
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Five complete groups visually confirmed on full-owner facade. X mapped via original padded crop plane into source frame. Z inferred from visually selected facade-top/ground anchors and unchanged source wall height; not independent metric registration."
+          }
+        }
+      ],
+      "materialZones": [
+        {
+          "id": "pale-top-fascia",
+          "material": "whiterender",
+          "colour": "#b5b7ad",
+          "x": 10.487444770085602,
+          "z": 16.729816209961452,
+          "width": 20.974889540171205,
+          "height": 1.0413688033264235,
+          "provenance": {
+            "status": "inferred",
+            "sourcePath": ".worktrees/amsterdam-facade-rebuild/public/data/city-expansion/evidence/7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23.jpg",
+            "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+            "captureDate": "2023-03-13T08:55:21.331730Z",
+            "pixelBounds": [
+              116.82,
+              170.61,
+              198,
+              242.99
+            ],
+            "cropPlane": {
+              "start": {
+                "x": 120555.73000770177,
+                "y": 487181.8267587908
+              },
+              "end": {
+                "x": 120535.49680853494,
+                "y": 487173.17083865905
+              },
+              "baseZ": 0.10799999237060548,
+              "topZ": 23.089999999999996
+            },
+            "verticalAnchorInference": {
+              "facadeTopPixel": 158,
+              "groundPixel": 985,
+              "authoredRowPixels": [
+                222,
+                313
+              ],
+              "selectedFacadeHeightM": 18.722000007629394
+            },
+            "reason": "Continuous pale top strip across five observed groups; dimensions inferred."
+          }
+        }
+      ],
+      "sourceWallSelection": {
+        "surfaceIndices": [
+          3,
+          25,
+          58,
+          60,
+          26,
+          39
+        ],
+        "depthRange": [
+          -0.003,
+          0.379
+        ],
+        "geometryRevision": "a6894daad4aa3de37825094f939fcc775aa6b0ab96cb1b92e87d48c599c31331",
+        "provenance": {
+          "basis": "inferred/source-supported",
+          "note": "Photo-authored composite front replacement including same-owner shallow recess; original source surfaces retained in audit.",
+          "status": "inferred",
+          "source": "3DBAG same-owner composite front and wider dated photograph",
+          "reason": "Replace explicitly selected main-front wall patches including shallow recess; maintain all other owner surfaces and exact footprint. No global plane tolerance expansion."
+        }
+      }
+    }
+  ],
+  "materials": {
+    "wall": "brownbrick",
+    "wallColour": "#675346",
+    "roof": "slate",
+    "frame": "ivorytimber"
+  },
+  "details": {},
+  "placement": {
+    "anchor": [
+      4.881419760638602,
+      52.37143004842073
+    ],
+    "xAxisBearingDegrees": 246.81667614719845,
+    "frontageLocal": [
+      [
+        612.55016634067,
+        -234.91927653441493
+      ],
+      [
+        593.269,
+        -226.662
+      ]
+    ],
+    "inputFrameDeterminant": -0.9999999999999998,
+    "axes": "glTF x=along frontage,y=up,z=towards street",
+    "anchorTransform": {
+      "implementation": "src/canalRecall/facade/rdNew.ts rdToLngLat",
+      "auditPath": "artifacts/building-library/placement-audit.json",
+      "anchorRD": {
+        "x": 120555.09933636645,
+        "y": 487181.5413239898
+      },
+      "previousAnchorWGS": [
+        4.881378312406546,
+        52.371419110574095
+      ],
+      "previousAnchorRD": {
+        "x": 120552.26797300534,
+        "y": 487180.34429998056
+      },
+      "previousSelectedOriginRD": {
+        "x": 120549.40817002577,
+        "y": 487179.1040474554
+      },
+      "previousAnchorToSelectedOriginErrorM": 3.112,
+      "normalizedOriginTranslationM": 6.1910977396891385,
+      "note": "Previous placement used nearest footprint vertex rather than exact frontage origin. Composite anchor is recomputed from exact source endpoints; plan translation alone did not preserve old placement. Actual game transform remains unverified."
+    },
+    "sourceRDFrame": {
+      "anchorRD": [
+        120555.09933636645,
+        487181.5413239898
+      ],
+      "xAxisRD": [
+        -0.9192499585631945,
+        -0.39367437519041726
+      ],
+      "yAxisRD": [
+        0.39367437519041715,
+        -0.9192499585631942
+      ],
+      "geometryRevision": "a6894daad4aa3de37825094f939fcc775aa6b0ab96cb1b92e87d48c599c31331",
+      "buildingId": "0363100012169605",
+      "source": "Frozen 3DBAG coordinateFrame.originRD and ordered physical frontage; normalized source vertices checked within 1 mm."
+    }
+  },
+  "sourceShell": {
+    "surfaces": [
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              11.592858064627954,
+              15.483781366059015,
+              18.82200000762939
+            ],
+            [
+              11.592858064627954,
+              15.483781366059015,
+              0.0020000076293945623
+            ],
+            [
+              11.548336333743062,
+              10.096266371603855,
+              0.0020000076293945623
+            ],
+            [
+              11.548336333743062,
+              10.096266371603855,
+              18.782000007629392
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              12.588164289078529,
+              15.470915925137838,
+              18.82200000762939
+            ],
+            [
+              12.588164289078529,
+              15.470915925137838,
+              0.0020000076293945623
+            ],
+            [
+              11.592858064627954,
+              15.483781366059015,
+              0.0020000076293945623
+            ],
+            [
+              11.592858064627954,
+              15.483781366059015,
+              18.82200000762939
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              8.630701901242851,
+              10.116497987689694,
+              21.462000007629392
+            ],
+            [
+              8.630701901242851,
+              10.116497987689694,
+              18.782000007629392
+            ],
+            [
+              8.630701901242851,
+              10.116497987689694,
+              0.0020000076293945623
+            ],
+            [
+              5.891641412128063,
+              10.147281700430101,
+              0.0020000076293945623
+            ],
+            [
+              5.891641412128063,
+              10.147281700430101,
+              21.48200000762939
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              6.1910977396891385,
+              0.0,
+              18.702000007629394
+            ],
+            [
+              6.1910977396891385,
+              0.0,
+              1.7620000076293945
+            ],
+            [
+              6.1910977396891385,
+              0.0,
+              0.0020000076293945623
+            ],
+            [
+              20.974889540171205,
+              0.0,
+              0.0020000076293945623
+            ],
+            [
+              20.974889540171205,
+              0.0,
+              18.722000007629394
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              19.807908820147908,
+              38.17178350560914,
+              3.7220000076293944
+            ],
+            [
+              19.807908820147908,
+              38.17178350560914,
+              0.0020000076293945623
+            ],
+            [
+              19.050268280348515,
+              38.18077308025909,
+              0.0020000076293945623
+            ],
+            [
+              19.050268280348515,
+              38.18077308025909,
+              3.5320000076293945
+            ],
+            [
+              19.050268280348515,
+              38.18077308025909,
+              5.402000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              19.050268280348515,
+              38.18077308025909,
+              5.402000007629395
+            ],
+            [
+              19.050268280348515,
+              38.18077308025909,
+              3.5320000076293945
+            ],
+            [
+              19.076770276946387,
+              37.277391851664916,
+              5.392000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              34.97766384826509,
+              23.679594837677975,
+              3.652000007629395
+            ],
+            [
+              34.97766384826509,
+              23.679594837677975,
+              0.0020000076293945623
+            ],
+            [
+              36.17122773486049,
+              23.72324399133953,
+              0.0020000076293945623
+            ],
+            [
+              36.17122773486049,
+              23.72324399133953,
+              3.6420000076293944
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              35.008082296121316,
+              22.861563837024548,
+              3.652000007629395
+            ],
+            [
+              35.008082296121316,
+              22.861563837024548,
+              0.0020000076293945623
+            ],
+            [
+              34.97766384826509,
+              23.679594837677975,
+              0.0020000076293945623
+            ],
+            [
+              34.97766384826509,
+              23.679594837677975,
+              3.652000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              35.43773526240519,
+              7.02349582578773,
+              14.912000007629395
+            ],
+            [
+              35.43773526240519,
+              7.02349582578773,
+              0.0020000076293945623
+            ],
+            [
+              35.39924040210952,
+              8.584719110821219,
+              0.0020000076293945623
+            ],
+            [
+              35.39924040210952,
+              8.584719110821219,
+              8.562000007629395
+            ],
+            [
+              35.39924040210952,
+              8.584719110821219,
+              15.102000007629394
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              36.17122773486049,
+              23.72324399133953,
+              3.6420000076293944
+            ],
+            [
+              36.17122773486049,
+              23.72324399133953,
+              0.0020000076293945623
+            ],
+            [
+              36.0271713230318,
+              27.222522166936773,
+              0.0020000076293945623
+            ],
+            [
+              36.0271713230318,
+              27.222522166936773,
+              3.6320000076293946
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              38.06723657875435,
+              33.78970068989421,
+              3.612000007629395
+            ],
+            [
+              38.06723657875435,
+              33.78970068989421,
+              0.0020000076293945623
+            ],
+            [
+              36.83822170589828,
+              33.73947676831711,
+              0.0020000076293945623
+            ],
+            [
+              36.83822170589828,
+              33.73947676831711,
+              3.622000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              38.328948868281785,
+              27.313736925518235,
+              3.622000007629395
+            ],
+            [
+              38.328948868281785,
+              27.313736925518235,
+              0.0020000076293945623
+            ],
+            [
+              38.06723657875435,
+              33.78970068989421,
+              0.0020000076293945623
+            ],
+            [
+              38.06723657875435,
+              33.78970068989421,
+              3.612000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              36.83822170589828,
+              33.73947676831711,
+              3.622000007629395
+            ],
+            [
+              36.83822170589828,
+              33.73947676831711,
+              0.0020000076293945623
+            ],
+            [
+              36.665065858295264,
+              38.03446420164454,
+              0.0020000076293945623
+            ],
+            [
+              36.665065858295264,
+              38.03446420164454,
+              3.612000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              19.050268280348515,
+              38.18077308025909,
+              3.5320000076293945
+            ],
+            [
+              19.050268280348515,
+              38.18077308025909,
+              0.0020000076293945623
+            ],
+            [
+              12.775119032306744,
+              38.235562812888716,
+              0.0020000076293945623
+            ],
+            [
+              12.775119032306744,
+              38.235562812888716,
+              3.5420000076293943
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              5.434025389709527,
+              7.73243438102752,
+              21.422000007629393
+            ],
+            [
+              5.434025389709527,
+              7.73243438102752,
+              18.762000007629393
+            ],
+            [
+              8.397622320137858,
+              7.692519046182177,
+              18.762000007629393
+            ],
+            [
+              8.397622320137858,
+              7.692519046182177,
+              21.39200000762939
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              12.775119032306744,
+              38.235562812888716,
+              3.5420000076293943
+            ],
+            [
+              12.775119032306744,
+              38.235562812888716,
+              0.0020000076293945623
+            ],
+            [
+              12.764993078017117,
+              36.814824460816176,
+              0.0020000076293945623
+            ],
+            [
+              12.764993078017117,
+              36.814824460816176,
+              6.472000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              36.665065858295264,
+              38.03446420164454,
+              3.612000007629395
+            ],
+            [
+              36.665065858295264,
+              38.03446420164454,
+              0.0020000076293945623
+            ],
+            [
+              19.807908820147908,
+              38.17178350560914,
+              0.0020000076293945623
+            ],
+            [
+              19.807908820147908,
+              38.17178350560914,
+              3.7220000076293944
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              20.75873389870068,
+              12.907365212879824,
+              6.402000007629395
+            ],
+            [
+              20.75873389870068,
+              12.907365212879824,
+              3.1920000076293946
+            ],
+            [
+              20.72555567171937,
+              14.226986069510428,
+              3.1920000076293946
+            ],
+            [
+              20.72555567171937,
+              14.226986069510428,
+              6.412000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              5.880318200717971,
+              8.291918721149921,
+              21.432000007629394
+            ],
+            [
+              5.880318200717971,
+              8.291918721149921,
+              0.0020000076293945623
+            ],
+            [
+              5.373472588907067,
+              8.302288185362423,
+              0.0020000076293945623
+            ],
+            [
+              5.373472588907067,
+              8.302288185362423,
+              18.762000007629393
+            ],
+            [
+              5.373472588907067,
+              8.302288185362423,
+              21.432000007629394
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              5.891641412128063,
+              10.147281700430101,
+              21.48200000762939
+            ],
+            [
+              5.891641412128063,
+              10.147281700430101,
+              0.0020000076293945623
+            ],
+            [
+              5.880318200717971,
+              8.291918721149921,
+              0.0020000076293945623
+            ],
+            [
+              5.880318200717971,
+              8.291918721149921,
+              21.432000007629394
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              0.005154293365908558,
+              0.3646966943774017,
+              18.702000007629394
+            ],
+            [
+              0.005154293365908558,
+              0.3646966943774017,
+              0.0020000076293945623
+            ],
+            [
+              0.0,
+              -0.0029627040607405064,
+              0.0020000076293945623
+            ],
+            [
+              0.0,
+              -0.0029627040607405064,
+              18.702000007629394
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              -0.25483313420830545,
+              0.3672535485667914,
+              18.702000007629394
+            ],
+            [
+              -0.25483313420830545,
+              0.3672535485667914,
+              0.0020000076293945623
+            ],
+            [
+              0.005154293365908558,
+              0.3646966943774017,
+              0.0020000076293945623
+            ],
+            [
+              0.005154293365908558,
+              0.3646966943774017,
+              18.702000007629394
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              5.373472588907067,
+              8.302288185362423,
+              21.432000007629394
+            ],
+            [
+              5.373472588907067,
+              8.302288185362423,
+              18.762000007629393
+            ],
+            [
+              5.434025389709527,
+              7.73243438102752,
+              18.762000007629393
+            ],
+            [
+              5.434025389709527,
+              7.73243438102752,
+              21.422000007629393
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              5.373472588907067,
+              8.302288185362423,
+              18.762000007629393
+            ],
+            [
+              5.373472588907067,
+              8.302288185362423,
+              0.0020000076293945623
+            ],
+            [
+              -0.18867960518151605,
+              8.34545031917839,
+              0.0020000076293945623
+            ],
+            [
+              -0.18867960518151605,
+              8.34545031917839,
+              18.762000007629393
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              -0.18867960518151605,
+              8.34545031917839,
+              18.762000007629393
+            ],
+            [
+              -0.18867960518151605,
+              8.34545031917839,
+              0.0020000076293945623
+            ],
+            [
+              -0.25483313420830545,
+              0.3672535485667914,
+              0.0020000076293945623
+            ],
+            [
+              -0.25483313420830545,
+              0.3672535485667914,
+              18.702000007629394
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              0.0,
+              -0.0029627040607405064,
+              18.702000007629394
+            ],
+            [
+              0.0,
+              -0.0029627040607405064,
+              0.0020000076293945623
+            ],
+            [
+              4.994895828930213,
+              0.0009943321847230568,
+              0.0020000076293945623
+            ],
+            [
+              4.994895828930213,
+              0.0009943321847230568,
+              1.7520000076293947
+            ],
+            [
+              4.994895828930213,
+              0.0009943321847230568,
+              18.702000007629394
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              4.994895828930213,
+              0.0009943321847230568,
+              18.702000007629394
+            ],
+            [
+              4.994895828930213,
+              0.0009943321847230568,
+              1.7520000076293947
+            ],
+            [
+              4.959343380201611,
+              0.3752082060448627,
+              1.9020000076293946
+            ],
+            [
+              4.959343380201611,
+              0.3752082060448627,
+              18.712000007629392
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              20.847615020521985,
+              9.507865228149171,
+              18.792000007629394
+            ],
+            [
+              20.847615020521985,
+              9.507865228149171,
+              15.322000007629395
+            ],
+            [
+              20.847615020521985,
+              9.507865228149171,
+              7.422000007629395
+            ],
+            [
+              20.77204577448029,
+              12.227201413517331,
+              7.472000007629395
+            ],
+            [
+              20.77204577448029,
+              12.227201413517331,
+              18.812000007629393
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              20.77204577448029,
+              12.227201413517331,
+              18.812000007629393
+            ],
+            [
+              20.77204577448029,
+              12.227201413517331,
+              7.472000007629395
+            ],
+            [
+              20.77204577448029,
+              12.227201413517331,
+              6.402000007629395
+            ],
+            [
+              18.27686047304783,
+              13.5894973841183,
+              6.412000007629395
+            ],
+            [
+              18.27686047304783,
+              13.5894973841183,
+              18.812000007629393
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              35.39924040210952,
+              8.584719110821219,
+              15.102000007629394
+            ],
+            [
+              35.39924040210952,
+              8.584719110821219,
+              8.562000007629395
+            ],
+            [
+              31.0348526407846,
+              7.690672429267626,
+              13.232000007629395
+            ],
+            [
+              31.0348526407846,
+              7.690672429267626,
+              15.022000007629394
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              7.071731082995262,
+              6.552425880134583,
+              18.752000007629395
+            ],
+            [
+              7.071731082995262,
+              6.552425880134583,
+              20.282000007629392
+            ],
+            [
+              9.058427080637927,
+              6.4413447703514795,
+              18.752000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              7.071731082995262,
+              6.552425880134583,
+              20.282000007629392
+            ],
+            [
+              7.071731082995262,
+              6.552425880134583,
+              18.752000007629395
+            ],
+            [
+              6.685808440347298,
+              6.1085072908734475,
+              18.752000007629395
+            ],
+            [
+              6.685808440347298,
+              6.1085072908734475,
+              20.582000007629393
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              27.366477116297588,
+              36.03350258102461,
+              11.562000007629395
+            ],
+            [
+              27.366477116297588,
+              36.03350258102461,
+              3.6820000076293944
+            ],
+            [
+              25.426961166197042,
+              36.483366870900696,
+              3.692000007629395
+            ],
+            [
+              25.426961166197042,
+              36.483366870900696,
+              10.462000007629396
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              25.426961166197042,
+              36.483366870900696,
+              10.462000007629396
+            ],
+            [
+              25.426961166197042,
+              36.483366870900696,
+              3.692000007629395
+            ],
+            [
+              25.36788971742494,
+              36.421637105471355,
+              3.692000007629395
+            ],
+            [
+              25.36788971742494,
+              36.421637105471355,
+              10.502000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              21.03209407953519,
+              7.0682407741018825,
+              15.022000007629394
+            ],
+            [
+              21.03209407953519,
+              7.0682407741018825,
+              0.0020000076293945623
+            ],
+            [
+              35.43773526240519,
+              7.02349582578773,
+              0.0020000076293945623
+            ],
+            [
+              35.43773526240519,
+              7.02349582578773,
+              14.912000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              34.62506148005333,
+              31.238812493621687,
+              8.422000007629395
+            ],
+            [
+              34.62506148005333,
+              31.238812493621687,
+              3.6420000076293944
+            ],
+            [
+              32.350881726053856,
+              31.059629775429336,
+              3.652000007629395
+            ],
+            [
+              32.350881726053856,
+              31.059629775429336,
+              10.842000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              34.871615276886494,
+              22.517504608604288,
+              8.542000007629396
+            ],
+            [
+              34.871615276886494,
+              22.517504608604288,
+              3.652000007629395
+            ],
+            [
+              34.62506148005333,
+              31.238812493621687,
+              3.6420000076293944
+            ],
+            [
+              34.62506148005333,
+              31.238812493621687,
+              8.422000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              31.581917974844313,
+              34.1411869709598,
+              11.542000007629396
+            ],
+            [
+              31.581917974844313,
+              34.1411869709598,
+              3.652000007629395
+            ],
+            [
+              31.460995005681372,
+              34.59547502443345,
+              3.652000007629395
+            ],
+            [
+              31.460995005681372,
+              34.59547502443345,
+              11.272000007629394
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              35.39924040210952,
+              8.584719110821219,
+              8.562000007629395
+            ],
+            [
+              35.39924040210952,
+              8.584719110821219,
+              0.0020000076293945623
+            ],
+            [
+              35.112527760508165,
+              20.184253405832656,
+              0.0020000076293945623
+            ],
+            [
+              35.112527760508165,
+              20.184253405832656,
+              8.382000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              6.146352791375029,
+              0.3781506176120216,
+              18.712000007629392
+            ],
+            [
+              6.146352791375029,
+              0.3781506176120216,
+              1.9020000076293946
+            ],
+            [
+              6.1910977396891385,
+              0.0,
+              1.7620000076293945
+            ],
+            [
+              6.1910977396891385,
+              0.0,
+              18.702000007629394
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              20.282550244668798,
+              30.897533336819976,
+              3.732000007629395
+            ],
+            [
+              20.282550244668798,
+              30.897533336819976,
+              3.1420000076293944
+            ],
+            [
+              21.201678448270542,
+              30.960805331760415,
+              3.1020000076293943
+            ],
+            [
+              21.201678448270542,
+              30.960805331760415,
+              3.732000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              31.460995005681372,
+              34.59547502443345,
+              11.272000007629394
+            ],
+            [
+              31.460995005681372,
+              34.59547502443345,
+              3.652000007629395
+            ],
+            [
+              30.544504826243266,
+              34.48755954364668,
+              3.662000007629395
+            ],
+            [
+              30.544504826243266,
+              34.48755954364668,
+              11.992000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              30.544504826243266,
+              34.48755954364668,
+              11.992000007629395
+            ],
+            [
+              30.544504826243266,
+              34.48755954364668,
+              3.662000007629395
+            ],
+            [
+              29.1153247968471,
+              36.61171689270893,
+              3.662000007629395
+            ],
+            [
+              29.1153247968471,
+              36.61171689270893,
+              11.372000007629396
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              29.1153247968471,
+              36.61171689270893,
+              11.372000007629396
+            ],
+            [
+              29.1153247968471,
+              36.61171689270893,
+              3.662000007629395
+            ],
+            [
+              28.886871904275203,
+              36.53549828687312,
+              3.662000007629395
+            ],
+            [
+              28.886871904275203,
+              36.53549828687312,
+              11.542000007629396
+            ],
+            [
+              28.886871904275203,
+              36.53549828687312,
+              11.592000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              21.005450035482383,
+              3.5767955010213246,
+              14.602000007629394
+            ],
+            [
+              21.005450035482383,
+              3.5767955010213246,
+              0.0020000076293945623
+            ],
+            [
+              21.03209407953519,
+              7.0682407741018825,
+              0.0020000076293945623
+            ],
+            [
+              21.03209407953519,
+              7.0682407741018825,
+              15.022000007629394
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              28.721122816823893,
+              8.104984270415219,
+              15.662000007629395
+            ],
+            [
+              28.721122816823893,
+              8.104984270415219,
+              15.092000007629395
+            ],
+            [
+              29.277887962808467,
+              8.007965858673673,
+              15.082000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              31.0348526407846,
+              7.690672429267626,
+              15.022000007629394
+            ],
+            [
+              31.0348526407846,
+              7.690672429267626,
+              13.232000007629395
+            ],
+            [
+              29.277887962808467,
+              8.007965858673673,
+              15.082000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              20.847615020521985,
+              9.507865228149171,
+              7.422000007629395
+            ],
+            [
+              20.847615020521985,
+              9.507865228149171,
+              15.322000007629395
+            ],
+            [
+              28.195871913348196,
+              8.199384950486643,
+              15.112000007629394
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              28.721122816823893,
+              8.104984270415219,
+              15.092000007629395
+            ],
+            [
+              28.721122816823893,
+              8.104984270415219,
+              15.662000007629395
+            ],
+            [
+              28.195871913348196,
+              8.199384950486643,
+              15.112000007629394
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              23.60978865980903,
+              31.147902122443707,
+              11.302000007629395
+            ],
+            [
+              23.60978865980903,
+              31.147902122443707,
+              3.7120000076293946
+            ],
+            [
+              21.201678448270542,
+              30.960805331760415,
+              3.732000007629395
+            ],
+            [
+              21.201678448270542,
+              30.960805331760415,
+              8.752000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              21.201678448270542,
+              30.960805331760415,
+              8.752000007629395
+            ],
+            [
+              21.201678448270542,
+              30.960805331760415,
+              3.732000007629395
+            ],
+            [
+              21.201678448270542,
+              30.960805331760415,
+              3.1020000076293943
+            ],
+            [
+              21.92987457990501,
+              13.330483996235266,
+              3.1520000076293946
+            ],
+            [
+              21.92987457990501,
+              13.330483996235266,
+              8.732000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              27.833508855730965,
+              32.67874754460811,
+              15.572000007629395
+            ],
+            [
+              27.833508855730965,
+              32.67874754460811,
+              15.802000007629395
+            ],
+            [
+              27.732492822756818,
+              32.34126308410339,
+              15.692000007629392
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              27.833508855730965,
+              32.67874754460811,
+              15.802000007629395
+            ],
+            [
+              27.833508855730965,
+              32.67874754460811,
+              15.572000007629395
+            ],
+            [
+              27.833508855730965,
+              32.67874754460811,
+              15.252000007629395
+            ],
+            [
+              26.256376255741237,
+              33.212744512811014,
+              14.172000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              21.005450035482383,
+              3.5767955010213246,
+              18.752000007629395
+            ],
+            [
+              21.005450035482383,
+              3.5767955010213246,
+              14.602000007629394
+            ],
+            [
+              20.847615020521985,
+              9.507865228149171,
+              15.322000007629395
+            ],
+            [
+              20.847615020521985,
+              9.507865228149171,
+              18.792000007629394
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              12.590518218332159,
+              16.49248063626344,
+              18.832000007629393
+            ],
+            [
+              12.590518218332159,
+              16.49248063626344,
+              6.442000007629395
+            ],
+            [
+              12.590518218332159,
+              16.49248063626344,
+              0.0020000076293945623
+            ],
+            [
+              12.588164289078529,
+              15.470915925137838,
+              0.0020000076293945623
+            ],
+            [
+              12.588164289078529,
+              15.470915925137838,
+              18.82200000762939
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              16.31396757035878,
+              13.07031393621894,
+              18.812000007629393
+            ],
+            [
+              16.31396757035878,
+              13.07031393621894,
+              6.422000007629395
+            ],
+            [
+              15.118658529316665,
+              14.64829882093839,
+              6.432000007629395
+            ],
+            [
+              15.118658529316665,
+              14.64829882093839,
+              18.82200000762939
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              11.548336333743062,
+              10.096266371603855,
+              18.782000007629392
+            ],
+            [
+              11.548336333743062,
+              10.096266371603855,
+              0.0020000076293945623
+            ],
+            [
+              8.630701901242851,
+              10.116497987689694,
+              0.0020000076293945623
+            ],
+            [
+              8.630701901242851,
+              10.116497987689694,
+              18.782000007629392
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              8.397622320137858,
+              7.692519046182177,
+              21.39200000762939
+            ],
+            [
+              8.397622320137858,
+              7.692519046182177,
+              18.762000007629393
+            ],
+            [
+              8.630701901242851,
+              10.116497987689694,
+              18.782000007629392
+            ],
+            [
+              8.630701901242851,
+              10.116497987689694,
+              21.462000007629392
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              4.994895828930213,
+              0.0009943321847230568,
+              1.7520000076293947
+            ],
+            [
+              4.994895828930213,
+              0.0009943321847230568,
+              0.0020000076293945623
+            ],
+            [
+              6.1910977396891385,
+              0.0,
+              0.0020000076293945623
+            ],
+            [
+              6.1910977396891385,
+              0.0,
+              1.7620000076293945
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              20.282550244668798,
+              30.897533336819976,
+              3.1420000076293944
+            ],
+            [
+              20.282550244668798,
+              30.897533336819976,
+              3.732000007629395
+            ],
+            [
+              20.010752585838873,
+              30.872512692252467,
+              3.732000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              4.959343380201611,
+              0.3752082060448627,
+              18.712000007629392
+            ],
+            [
+              4.959343380201611,
+              0.3752082060448627,
+              1.9020000076293946
+            ],
+            [
+              6.146352791375029,
+              0.3781506176120216,
+              1.9020000076293946
+            ],
+            [
+              6.146352791375029,
+              0.3781506176120216,
+              18.712000007629392
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              27.833508855730965,
+              32.67874754460811,
+              15.252000007629395
+            ],
+            [
+              27.833508855730965,
+              32.67874754460811,
+              15.572000007629395
+            ],
+            [
+              28.354843307948297,
+              32.49899663659592,
+              15.032000007629394
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              24.185486702291144,
+              33.91468215777035,
+              12.022000007629394
+            ],
+            [
+              24.185486702291144,
+              33.91468215777035,
+              3.702000007629395
+            ],
+            [
+              23.815168987195797,
+              34.04063766533771,
+              3.702000007629395
+            ],
+            [
+              23.815168987195797,
+              34.04063766533771,
+              11.642000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              24.424329351569025,
+              34.421588647061945,
+              12.292000007629396
+            ],
+            [
+              24.424329351569025,
+              34.421588647061945,
+              3.702000007629395
+            ],
+            [
+              24.185486702291144,
+              33.91468215777035,
+              3.702000007629395
+            ],
+            [
+              24.185486702291144,
+              33.91468215777035,
+              12.022000007629394
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              23.815168987195797,
+              34.04063766533771,
+              11.642000007629395
+            ],
+            [
+              23.815168987195797,
+              34.04063766533771,
+              3.702000007629395
+            ],
+            [
+              23.60978865980903,
+              31.147902122443707,
+              3.7120000076293946
+            ],
+            [
+              23.60978865980903,
+              31.147902122443707,
+              11.302000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              25.36788971742494,
+              36.421637105471355,
+              10.502000007629395
+            ],
+            [
+              25.36788971742494,
+              36.421637105471355,
+              3.692000007629395
+            ],
+            [
+              24.424329351569025,
+              34.421588647061945,
+              3.702000007629395
+            ],
+            [
+              24.424329351569025,
+              34.421588647061945,
+              12.292000007629396
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              28.886871904275203,
+              36.53549828687312,
+              11.592000007629395
+            ],
+            [
+              28.886871904275203,
+              36.53549828687312,
+              11.542000007629396
+            ],
+            [
+              28.835755112981175,
+              36.18752260719448,
+              11.892000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              28.886871904275203,
+              36.53549828687312,
+              11.542000007629396
+            ],
+            [
+              28.886871904275203,
+              36.53549828687312,
+              3.662000007629395
+            ],
+            [
+              27.366477116297588,
+              36.03350258102461,
+              3.6820000076293944
+            ],
+            [
+              27.366477116297588,
+              36.03350258102461,
+              11.562000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              6.685808440347298,
+              6.1085072908734475,
+              20.582000007629393
+            ],
+            [
+              6.685808440347298,
+              6.1085072908734475,
+              18.752000007629395
+            ],
+            [
+              6.818216960868823,
+              1.9723897896782387,
+              18.722000007629394
+            ],
+            [
+              6.818216960868823,
+              1.9723897896782387,
+              20.48200000762939
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              6.818216960868823,
+              1.9723897896782387,
+              20.48200000762939
+            ],
+            [
+              6.818216960868823,
+              1.9723897896782387,
+              18.722000007629394
+            ],
+            [
+              8.47540344797835,
+              1.5999210702648503,
+              18.722000007629394
+            ],
+            [
+              8.47540344797835,
+              1.5999210702648503,
+              19.212000007629392
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              8.47540344797835,
+              1.5999210702648503,
+              19.212000007629392
+            ],
+            [
+              8.47540344797835,
+              1.5999210702648503,
+              18.722000007629394
+            ],
+            [
+              9.11479962776572,
+              1.8482606065318663,
+              18.722000007629394
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              32.350881726053856,
+              31.059629775429336,
+              10.842000007629395
+            ],
+            [
+              32.350881726053856,
+              31.059629775429336,
+              3.652000007629395
+            ],
+            [
+              31.581917974844313,
+              34.1411869709598,
+              3.652000007629395
+            ],
+            [
+              31.581917974844313,
+              34.1411869709598,
+              11.542000007629396
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              36.0271713230318,
+              27.222522166936773,
+              3.6320000076293946
+            ],
+            [
+              36.0271713230318,
+              27.222522166936773,
+              0.0020000076293945623
+            ],
+            [
+              38.328948868281785,
+              27.313736925518235,
+              0.0020000076293945623
+            ],
+            [
+              38.328948868281785,
+              27.313736925518235,
+              3.622000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              20.974889540171205,
+              0.0,
+              18.722000007629394
+            ],
+            [
+              20.974889540171205,
+              0.0,
+              0.0020000076293945623
+            ],
+            [
+              21.005450035482383,
+              3.5767955010213246,
+              0.0020000076293945623
+            ],
+            [
+              21.005450035482383,
+              3.5767955010213246,
+              14.602000007629394
+            ],
+            [
+              21.005450035482383,
+              3.5767955010213246,
+              18.752000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              21.92987457990501,
+              13.330483996235266,
+              8.732000007629395
+            ],
+            [
+              21.92987457990501,
+              13.330483996235266,
+              3.1520000076293946
+            ],
+            [
+              20.75873389870068,
+              12.907365212879824,
+              3.1920000076293946
+            ],
+            [
+              20.75873389870068,
+              12.907365212879824,
+              6.402000007629395
+            ],
+            [
+              20.75873389870068,
+              12.907365212879824,
+              7.482000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              20.75873389870068,
+              12.907365212879824,
+              7.482000007629395
+            ],
+            [
+              20.75873389870068,
+              12.907365212879824,
+              6.402000007629395
+            ],
+            [
+              20.77204577448029,
+              12.227201413517331,
+              6.402000007629395
+            ],
+            [
+              20.77204577448029,
+              12.227201413517331,
+              7.472000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              15.118658529316665,
+              14.64829882093839,
+              18.82200000762939
+            ],
+            [
+              15.118658529316665,
+              14.64829882093839,
+              6.432000007629395
+            ],
+            [
+              15.437250678310914,
+              16.459099484346527,
+              6.432000007629395
+            ],
+            [
+              15.437250678310914,
+              16.459099484346527,
+              18.832000007629393
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              18.27686047304783,
+              13.5894973841183,
+              18.812000007629393
+            ],
+            [
+              18.27686047304783,
+              13.5894973841183,
+              6.412000007629395
+            ],
+            [
+              16.31396757035878,
+              13.07031393621894,
+              6.422000007629395
+            ],
+            [
+              16.31396757035878,
+              13.07031393621894,
+              18.812000007629393
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              14.15963528336308,
+              16.473202767375227,
+              18.832000007629393
+            ],
+            [
+              14.15963528336308,
+              16.473202767375227,
+              6.432000007629395
+            ],
+            [
+              13.903645477021492,
+              16.256478936084815,
+              6.432000007629395
+            ],
+            [
+              13.903645477021492,
+              16.256478936084815,
+              18.832000007629393
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              13.903645477021492,
+              16.256478936084815,
+              18.832000007629393
+            ],
+            [
+              13.903645477021492,
+              16.256478936084815,
+              6.432000007629395
+            ],
+            [
+              13.728947399907359,
+              16.483592524081278,
+              6.432000007629395
+            ],
+            [
+              13.728947399907359,
+              16.483592524081278,
+              18.832000007629393
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              35.112527760508165,
+              20.184253405832656,
+              8.382000007629395
+            ],
+            [
+              35.112527760508165,
+              20.184253405832656,
+              0.0020000076293945623
+            ],
+            [
+              35.008082296121316,
+              22.861563837024548,
+              0.0020000076293945623
+            ],
+            [
+              35.008082296121316,
+              22.861563837024548,
+              3.652000007629395
+            ],
+            [
+              35.008082296121316,
+              22.861563837024548,
+              8.382000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              35.008082296121316,
+              22.861563837024548,
+              8.382000007629395
+            ],
+            [
+              35.008082296121316,
+              22.861563837024548,
+              3.652000007629395
+            ],
+            [
+              34.871615276886494,
+              22.517504608604288,
+              3.652000007629395
+            ],
+            [
+              34.871615276886494,
+              22.517504608604288,
+              8.542000007629396
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              20.72555567171937,
+              14.226986069510428,
+              6.412000007629395
+            ],
+            [
+              20.72555567171937,
+              14.226986069510428,
+              3.1920000076293946
+            ],
+            [
+              19.811723808938424,
+              13.9982693745222,
+              5.202000007629395
+            ],
+            [
+              19.811723808938424,
+              13.9982693745222,
+              6.412000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              13.728947399907359,
+              16.483592524081278,
+              18.832000007629393
+            ],
+            [
+              13.728947399907359,
+              16.483592524081278,
+              6.432000007629395
+            ],
+            [
+              12.590518218332159,
+              16.49248063626344,
+              6.442000007629395
+            ],
+            [
+              12.590518218332159,
+              16.49248063626344,
+              18.832000007629393
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              15.437250678310914,
+              16.459099484346527,
+              18.832000007629393
+            ],
+            [
+              15.437250678310914,
+              16.459099484346527,
+              6.432000007629395
+            ],
+            [
+              14.15963528336308,
+              16.473202767375227,
+              6.432000007629395
+            ],
+            [
+              14.15963528336308,
+              16.473202767375227,
+              18.832000007629393
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              19.811723808938424,
+              13.9982693745222,
+              6.412000007629395
+            ],
+            [
+              19.811723808938424,
+              13.9982693745222,
+              5.202000007629395
+            ],
+            [
+              19.17470185089832,
+              34.40705922166834,
+              5.372000007629395
+            ],
+            [
+              19.17470185089832,
+              34.40705922166834,
+              6.452000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              12.764993078017117,
+              36.814824460816176,
+              6.472000007629395
+            ],
+            [
+              12.764993078017117,
+              36.814824460816176,
+              0.0020000076293945623
+            ],
+            [
+              12.590518218332159,
+              16.49248063626344,
+              0.0020000076293945623
+            ],
+            [
+              12.590518218332159,
+              16.49248063626344,
+              6.442000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              19.17470185089832,
+              34.40705922166834,
+              6.452000007629395
+            ],
+            [
+              19.17470185089832,
+              34.40705922166834,
+              5.372000007629395
+            ],
+            [
+              18.6624584357988,
+              34.9636620277043,
+              6.452000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              18.60945444260306,
+              36.77042448489264,
+              6.452000007629395
+            ],
+            [
+              19.076770276946387,
+              37.277391851664916,
+              5.392000007629395
+            ],
+            [
+              19.050268280348515,
+              38.18077308025909,
+              3.5320000076293945
+            ],
+            [
+              12.775119032306744,
+              38.235562812888716,
+              3.5420000076293943
+            ],
+            [
+              12.764993078017117,
+              36.814824460816176,
+              6.472000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              20.847615020521985,
+              9.507865228149171,
+              15.322000007629395
+            ],
+            [
+              21.005450035482383,
+              3.5767955010213246,
+              14.602000007629394
+            ],
+            [
+              21.03209407953519,
+              7.0682407741018825,
+              15.022000007629394
+            ],
+            [
+              35.43773526240519,
+              7.02349582578773,
+              14.912000007629395
+            ],
+            [
+              35.39924040210952,
+              8.584719110821219,
+              15.102000007629394
+            ],
+            [
+              31.0348526407846,
+              7.690672429267626,
+              15.022000007629394
+            ],
+            [
+              29.277887962808467,
+              8.007965858673673,
+              15.082000007629395
+            ],
+            [
+              28.721122816823893,
+              8.104984270415219,
+              15.092000007629395
+            ],
+            [
+              28.195871913348196,
+              8.199384950486643,
+              15.112000007629394
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              8.397622320137858,
+              7.692519046182177,
+              21.39200000762939
+            ],
+            [
+              8.630701901242851,
+              10.116497987689694,
+              21.462000007629392
+            ],
+            [
+              5.891641412128063,
+              10.147281700430101,
+              21.48200000762939
+            ],
+            [
+              5.880318200717971,
+              8.291918721149921,
+              21.432000007629394
+            ],
+            [
+              5.373472588907067,
+              8.302288185362423,
+              21.432000007629394
+            ],
+            [
+              5.434025389709527,
+              7.73243438102752,
+              21.422000007629393
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              6.146352791375029,
+              0.3781506176120216,
+              1.9020000076293946
+            ],
+            [
+              4.959343380201611,
+              0.3752082060448627,
+              1.9020000076293946
+            ],
+            [
+              4.994895828930213,
+              0.0009943321847230568,
+              1.7520000076293947
+            ],
+            [
+              6.1910977396891385,
+              0.0,
+              1.7620000076293945
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              28.886871904275203,
+              36.53549828687312,
+              11.542000007629396
+            ],
+            [
+              27.366477116297588,
+              36.03350258102461,
+              11.562000007629395
+            ],
+            [
+              25.426961166197042,
+              36.483366870900696,
+              10.462000007629396
+            ],
+            [
+              25.36788971742494,
+              36.421637105471355,
+              10.502000007629395
+            ],
+            [
+              24.424329351569025,
+              34.421588647061945,
+              12.292000007629396
+            ],
+            [
+              26.256376255741237,
+              33.212744512811014,
+              14.172000007629395
+            ],
+            [
+              27.833508855730965,
+              32.67874754460811,
+              15.252000007629395
+            ],
+            [
+              28.835755112981175,
+              36.18752260719448,
+              11.892000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              8.47540344797835,
+              1.5999210702648503,
+              19.212000007629392
+            ],
+            [
+              9.11479962776572,
+              1.8482606065318663,
+              18.722000007629394
+            ],
+            [
+              9.058427080637927,
+              6.4413447703514795,
+              18.752000007629395
+            ],
+            [
+              7.071731082995262,
+              6.552425880134583,
+              20.282000007629392
+            ],
+            [
+              6.685808440347298,
+              6.1085072908734475,
+              20.582000007629393
+            ],
+            [
+              6.818216960868823,
+              1.9723897896782387,
+              20.48200000762939
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              28.354843307948297,
+              32.49899663659592,
+              15.032000007629394
+            ],
+            [
+              31.581917974844313,
+              34.1411869709598,
+              11.542000007629396
+            ],
+            [
+              31.460995005681372,
+              34.59547502443345,
+              11.272000007629394
+            ],
+            [
+              30.544504826243266,
+              34.48755954364668,
+              11.992000007629395
+            ],
+            [
+              29.1153247968471,
+              36.61171689270893,
+              11.372000007629396
+            ],
+            [
+              28.886871904275203,
+              36.53549828687312,
+              11.592000007629395
+            ],
+            [
+              28.835755112981175,
+              36.18752260719448,
+              11.892000007629395
+            ],
+            [
+              27.833508855730965,
+              32.67874754460811,
+              15.252000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              20.75873389870068,
+              12.907365212879824,
+              3.1920000076293946
+            ],
+            [
+              21.92987457990501,
+              13.330483996235266,
+              3.1520000076293946
+            ],
+            [
+              21.201678448270542,
+              30.960805331760415,
+              3.1020000076293943
+            ],
+            [
+              20.282550244668798,
+              30.897533336819976,
+              3.1420000076293944
+            ],
+            [
+              20.72555567171937,
+              14.226986069510428,
+              3.1920000076293946
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              20.75873389870068,
+              12.907365212879824,
+              7.482000007629395
+            ],
+            [
+              20.77204577448029,
+              12.227201413517331,
+              7.472000007629395
+            ],
+            [
+              20.847615020521985,
+              9.507865228149171,
+              7.422000007629395
+            ],
+            [
+              28.195871913348196,
+              8.199384950486643,
+              15.112000007629394
+            ],
+            [
+              28.721122816823893,
+              8.104984270415219,
+              15.662000007629395
+            ],
+            [
+              27.732492822756818,
+              32.34126308410339,
+              15.692000007629392
+            ],
+            [
+              27.833508855730965,
+              32.67874754460811,
+              15.802000007629395
+            ],
+            [
+              26.256376255741237,
+              33.212744512811014,
+              14.172000007629395
+            ],
+            [
+              24.424329351569025,
+              34.421588647061945,
+              12.292000007629396
+            ],
+            [
+              24.185486702291144,
+              33.91468215777035,
+              12.022000007629394
+            ],
+            [
+              23.815168987195797,
+              34.04063766533771,
+              11.642000007629395
+            ],
+            [
+              23.60978865980903,
+              31.147902122443707,
+              11.302000007629395
+            ],
+            [
+              21.201678448270542,
+              30.960805331760415,
+              8.752000007629395
+            ],
+            [
+              21.92987457990501,
+              13.330483996235266,
+              8.732000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              35.008082296121316,
+              22.861563837024548,
+              8.382000007629395
+            ],
+            [
+              34.871615276886494,
+              22.517504608604288,
+              8.542000007629396
+            ],
+            [
+              34.62506148005333,
+              31.238812493621687,
+              8.422000007629395
+            ],
+            [
+              32.350881726053856,
+              31.059629775429336,
+              10.842000007629395
+            ],
+            [
+              31.581917974844313,
+              34.1411869709598,
+              11.542000007629396
+            ],
+            [
+              28.354843307948297,
+              32.49899663659592,
+              15.032000007629394
+            ],
+            [
+              27.833508855730965,
+              32.67874754460811,
+              15.572000007629395
+            ],
+            [
+              27.732492822756818,
+              32.34126308410339,
+              15.692000007629392
+            ],
+            [
+              28.721122816823893,
+              8.104984270415219,
+              15.662000007629395
+            ],
+            [
+              29.277887962808467,
+              8.007965858673673,
+              15.082000007629395
+            ],
+            [
+              31.0348526407846,
+              7.690672429267626,
+              13.232000007629395
+            ],
+            [
+              35.39924040210952,
+              8.584719110821219,
+              8.562000007629395
+            ],
+            [
+              35.112527760508165,
+              20.184253405832656,
+              8.382000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              34.871615276886494,
+              22.517504608604288,
+              3.652000007629395
+            ],
+            [
+              35.008082296121316,
+              22.861563837024548,
+              3.652000007629395
+            ],
+            [
+              34.97766384826509,
+              23.679594837677975,
+              3.652000007629395
+            ],
+            [
+              36.17122773486049,
+              23.72324399133953,
+              3.6420000076293944
+            ],
+            [
+              36.0271713230318,
+              27.222522166936773,
+              3.6320000076293946
+            ],
+            [
+              38.328948868281785,
+              27.313736925518235,
+              3.622000007629395
+            ],
+            [
+              38.06723657875435,
+              33.78970068989421,
+              3.612000007629395
+            ],
+            [
+              36.83822170589828,
+              33.73947676831711,
+              3.622000007629395
+            ],
+            [
+              36.665065858295264,
+              38.03446420164454,
+              3.612000007629395
+            ],
+            [
+              19.807908820147908,
+              38.17178350560914,
+              3.7220000076293944
+            ],
+            [
+              20.010752585838873,
+              30.872512692252467,
+              3.732000007629395
+            ],
+            [
+              20.282550244668798,
+              30.897533336819976,
+              3.732000007629395
+            ],
+            [
+              21.201678448270542,
+              30.960805331760415,
+              3.732000007629395
+            ],
+            [
+              23.60978865980903,
+              31.147902122443707,
+              3.7120000076293946
+            ],
+            [
+              23.815168987195797,
+              34.04063766533771,
+              3.702000007629395
+            ],
+            [
+              24.185486702291144,
+              33.91468215777035,
+              3.702000007629395
+            ],
+            [
+              24.424329351569025,
+              34.421588647061945,
+              3.702000007629395
+            ],
+            [
+              25.36788971742494,
+              36.421637105471355,
+              3.692000007629395
+            ],
+            [
+              25.426961166197042,
+              36.483366870900696,
+              3.692000007629395
+            ],
+            [
+              27.366477116297588,
+              36.03350258102461,
+              3.6820000076293944
+            ],
+            [
+              28.886871904275203,
+              36.53549828687312,
+              3.662000007629395
+            ],
+            [
+              29.1153247968471,
+              36.61171689270893,
+              3.662000007629395
+            ],
+            [
+              30.544504826243266,
+              34.48755954364668,
+              3.662000007629395
+            ],
+            [
+              31.460995005681372,
+              34.59547502443345,
+              3.652000007629395
+            ],
+            [
+              31.581917974844313,
+              34.1411869709598,
+              3.652000007629395
+            ],
+            [
+              32.350881726053856,
+              31.059629775429336,
+              3.652000007629395
+            ],
+            [
+              34.62506148005333,
+              31.238812493621687,
+              3.6420000076293944
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              15.437250678310914,
+              16.459099484346527,
+              18.832000007629393
+            ],
+            [
+              14.15963528336308,
+              16.473202767375227,
+              18.832000007629393
+            ],
+            [
+              13.903645477021492,
+              16.256478936084815,
+              18.832000007629393
+            ],
+            [
+              13.728947399907359,
+              16.483592524081278,
+              18.832000007629393
+            ],
+            [
+              12.590518218332159,
+              16.49248063626344,
+              18.832000007629393
+            ],
+            [
+              12.588164289078529,
+              15.470915925137838,
+              18.82200000762939
+            ],
+            [
+              11.592858064627954,
+              15.483781366059015,
+              18.82200000762939
+            ],
+            [
+              11.548336333743062,
+              10.096266371603855,
+              18.782000007629392
+            ],
+            [
+              8.630701901242851,
+              10.116497987689694,
+              18.782000007629392
+            ],
+            [
+              8.397622320137858,
+              7.692519046182177,
+              18.762000007629393
+            ],
+            [
+              5.434025389709527,
+              7.73243438102752,
+              18.762000007629393
+            ],
+            [
+              5.373472588907067,
+              8.302288185362423,
+              18.762000007629393
+            ],
+            [
+              -0.18867960518151605,
+              8.34545031917839,
+              18.762000007629393
+            ],
+            [
+              -0.25483313420830545,
+              0.3672535485667914,
+              18.702000007629394
+            ],
+            [
+              0.005154293365908558,
+              0.3646966943774017,
+              18.702000007629394
+            ],
+            [
+              0.0,
+              -0.0029627040607405064,
+              18.702000007629394
+            ],
+            [
+              4.994895828930213,
+              0.0009943321847230568,
+              18.702000007629394
+            ],
+            [
+              4.959343380201611,
+              0.3752082060448627,
+              18.712000007629392
+            ],
+            [
+              6.146352791375029,
+              0.3781506176120216,
+              18.712000007629392
+            ],
+            [
+              6.1910977396891385,
+              0.0,
+              18.702000007629394
+            ],
+            [
+              20.974889540171205,
+              0.0,
+              18.722000007629394
+            ],
+            [
+              21.005450035482383,
+              3.5767955010213246,
+              18.752000007629395
+            ],
+            [
+              20.847615020521985,
+              9.507865228149171,
+              18.792000007629394
+            ],
+            [
+              20.77204577448029,
+              12.227201413517331,
+              18.812000007629393
+            ],
+            [
+              18.27686047304783,
+              13.5894973841183,
+              18.812000007629393
+            ],
+            [
+              16.31396757035878,
+              13.07031393621894,
+              18.812000007629393
+            ],
+            [
+              15.118658529316665,
+              14.64829882093839,
+              18.82200000762939
+            ]
+          ],
+          [
+            [
+              9.11479962776572,
+              1.8482606065318663,
+              18.722000007629394
+            ],
+            [
+              8.47540344797835,
+              1.5999210702648503,
+              18.722000007629394
+            ],
+            [
+              6.818216960868823,
+              1.9723897896782387,
+              18.722000007629394
+            ],
+            [
+              6.685808440347298,
+              6.1085072908734475,
+              18.752000007629395
+            ],
+            [
+              7.071731082995262,
+              6.552425880134583,
+              18.752000007629395
+            ],
+            [
+              9.058427080637927,
+              6.4413447703514795,
+              18.752000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              19.17470185089832,
+              34.40705922166834,
+              6.452000007629395
+            ],
+            [
+              18.6624584357988,
+              34.9636620277043,
+              6.452000007629395
+            ],
+            [
+              18.60945444260306,
+              36.77042448489264,
+              6.452000007629395
+            ],
+            [
+              12.764993078017117,
+              36.814824460816176,
+              6.472000007629395
+            ],
+            [
+              12.590518218332159,
+              16.49248063626344,
+              6.442000007629395
+            ],
+            [
+              13.728947399907359,
+              16.483592524081278,
+              6.432000007629395
+            ],
+            [
+              13.903645477021492,
+              16.256478936084815,
+              6.432000007629395
+            ],
+            [
+              14.15963528336308,
+              16.473202767375227,
+              6.432000007629395
+            ],
+            [
+              15.437250678310914,
+              16.459099484346527,
+              6.432000007629395
+            ],
+            [
+              15.118658529316665,
+              14.64829882093839,
+              6.432000007629395
+            ],
+            [
+              16.31396757035878,
+              13.07031393621894,
+              6.422000007629395
+            ],
+            [
+              18.27686047304783,
+              13.5894973841183,
+              6.412000007629395
+            ],
+            [
+              20.77204577448029,
+              12.227201413517331,
+              6.402000007629395
+            ],
+            [
+              20.75873389870068,
+              12.907365212879824,
+              6.402000007629395
+            ],
+            [
+              20.72555567171937,
+              14.226986069510428,
+              6.412000007629395
+            ],
+            [
+              19.811723808938424,
+              13.9982693745222,
+              6.412000007629395
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              18.6624584357988,
+              34.9636620277043,
+              6.452000007629395
+            ],
+            [
+              19.17470185089832,
+              34.40705922166834,
+              5.372000007629395
+            ],
+            [
+              19.811723808938424,
+              13.9982693745222,
+              5.202000007629395
+            ],
+            [
+              20.72555567171937,
+              14.226986069510428,
+              3.1920000076293946
+            ],
+            [
+              20.282550244668798,
+              30.897533336819976,
+              3.1420000076293944
+            ],
+            [
+              20.010752585838873,
+              30.872512692252467,
+              3.732000007629395
+            ],
+            [
+              19.807908820147908,
+              38.17178350560914,
+              3.7220000076293944
+            ],
+            [
+              19.050268280348515,
+              38.18077308025909,
+              5.402000007629395
+            ],
+            [
+              19.076770276946387,
+              37.277391851664916,
+              5.392000007629395
+            ],
+            [
+              18.60945444260306,
+              36.77042448489264,
+              6.452000007629395
+            ]
+          ]
+        ]
+      }
+    ],
+    "groundNAP": 0.40799999237060547,
+    "sourceOffsetNAP": 0.65,
+    "source": "3DBAG LoD2.2",
+    "pointCloudYear": 2023
+  },
+  "heightEvidence": [
+    {
+      "source": "3DBAG LoD2.2",
+      "year": 2023,
+      "datum": "NAP",
+      "groundNAP": 0.40799999237060547,
+      "roofStatisticRelativeM": 15.11,
+      "frontWallTopCandidates": [
+        {
+          "index": 3,
+          "width": 14.783791800482065,
+          "tops": [
+            18.702000007629394,
+            18.722000007629394
+          ]
+        },
+        {
+          "index": 25,
+          "width": 4.994895828930213,
+          "tops": [
+            18.702000007629394,
+            18.702000007629394
+          ]
+        }
+      ],
+      "diagnosticNearFrontWalls": [],
+      "lineage": "AHN-derived3DBAG; not independent height evidence"
+    }
+  ],
+  "heightChoice": {
+    "value": 18.722000007629394,
+    "eavesM": 18.722000007629394,
+    "roofPeakM": 18.872000007629392,
+    "reportedRoofStatisticM": 15.11,
+    "reason": "Dominant selected-front 3DBAG wall top. Roof statistic retained separately; roof shape inferred."
+  },
+  "targetAppearanceDate": "2024-12-16T10:48:39Z",
+  "authoringStatus": "primary-front-stylized-reviewed",
+  "visualObservations": [
+    "Full-owner wider photograph shows five complete grouped bays on each upper row, four grouped ground windows and right entrance.",
+    "Highest row is narrower with a continuous pale connecting band; rows below have broader grouped sash assemblies.",
+    "Same-owner source walls include left full-height wing and shallow connecting recess previously mistaken for excluded owner scope."
+  ],
+  "assumptions": [
+    "Stylized full-owner front correction; independent image-to-wall anchor registration remains unresolved.",
+    "Exact footprint and complete semantic source shell retained under a translated normalized frame, with source-derived massing for rear/roof geometry.",
+    "Explicit selected wall patches are replaced by a photo-authored common front plane; shallow recess flattened as recorded source-supported simplification.",
+    "Source-derived rear/roof geometry is retained, but photographic detail and roof railings remain incomplete.",
+    "Original padded full-photo plane is retained; its crop width is not equated with physical facade width."
+  ],
+  "style": "simple",
+  "planReframe": {
+    "previousNormalizedOrigin": [
+      -6.1910977396891385,
+      0
+    ],
+    "status": "retained plan/source shell translated; local facade components unchanged; caller must recompute placement and reauthor roof/gable for new frontage scope"
+  },
+  "massing": {
+    "mode": "source-derived"
+  },
+  "storeyDatumInference": {
+    "sourceHash": "7fdc9dabc043bf30260a23901fea36fe4c2a768be50762f8f00c1eb18fd39c23",
+    "reason": "Floor separations inferred from midpoints of visible row gutters in original wider photo; facade source height unchanged.",
+    "pixelSeparations": [
+      985,
+      803,
+      636.5,
+      491,
+      343,
+      158
+    ]
+  }
+}

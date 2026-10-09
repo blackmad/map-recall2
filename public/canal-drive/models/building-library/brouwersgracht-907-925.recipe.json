@@ -1,0 +1,3827 @@
+{
+  "schemaVersion": 1,
+  "id": "brouwersgracht-907-925",
+  "name": "Brouwersgracht 907\u2013925",
+  "address": "Brouwersgracht 907\u2013925",
+  "buildingId": "0363100012176879",
+  "synthetic": false,
+  "geometryRevision": "7d132f154903b2530cdfcca36d30a3d77e22bd33b87eeba7aa30ca02b146bc0a",
+  "sourceBundle": "brouwersgracht-907-925.json",
+  "footprint": [
+    [
+      0.004792810494427258,
+      13.037953200354607
+    ],
+    [
+      0.0016263467459157385,
+      0.001987951340277506
+    ],
+    [
+      13.31987115094159,
+      -0.0054508333996450276
+    ],
+    [
+      13.320990396372693,
+      17.10841777505037
+    ],
+    [
+      0.0027455921770176417,
+      17.115856559790295
+    ]
+  ],
+  "height": 19.33100000143051,
+  "storeys": [
+    {
+      "id": "ground",
+      "bottom": 0,
+      "top": 4.4
+    },
+    {
+      "id": "upper_1",
+      "bottom": 4.4,
+      "top": 7.2700000000000005
+    },
+    {
+      "id": "upper_2",
+      "bottom": 7.2700000000000005,
+      "top": 10.14
+    },
+    {
+      "id": "upper_3",
+      "bottom": 10.14,
+      "top": 13.01
+    },
+    {
+      "id": "upper_4",
+      "bottom": 13.01,
+      "top": 15.88
+    }
+  ],
+  "roof": {
+    "kind": "flat",
+    "eaves": 15.891000001430513,
+    "top": 19.33100000143051,
+    "setback": 0.24,
+    "status": "inferred"
+  },
+  "gable": {
+    "family": "straight",
+    "profile": [
+      [
+        0,
+        15.891000001430513
+      ],
+      [
+        8.170457229641123,
+        15.871000001430511
+      ],
+      [
+        10.122120209999828,
+        19.24100000143051
+      ],
+      [
+        12.077539770987407,
+        15.821000001430512
+      ],
+      [
+        13.320624722408997,
+        16.031000001430513
+      ]
+    ],
+    "status": "source-derived"
+  },
+  "frontages": [
+    {
+      "id": "street",
+      "origin": [
+        0,
+        0
+      ],
+      "rotation": 0,
+      "width": 13.320624722408997,
+      "openings": [
+        {
+          "id": "ground-rounded-0",
+          "x": 2.65,
+          "z": 1.66,
+          "width": 2.35,
+          "height": 3.08,
+          "kind": "door",
+          "head": "rounded",
+          "storey": "ground",
+          "frameColour": "#645e52",
+          "glassColour": "#3c4841",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          },
+          "archRise": 1.175,
+          "warehouse": {
+            "shutters": {
+              "angle": 125,
+              "style": "plank",
+              "plankWidth": 0.22,
+              "colour": "#8e3030"
+            },
+            "provenance": {
+              "status": "inferred",
+              "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+            }
+          }
+        },
+        {
+          "id": "oculus-0",
+          "x": 2.65,
+          "z": 3.95,
+          "width": 0.84,
+          "height": 0.84,
+          "kind": "window",
+          "head": "circular",
+          "storey": "ground",
+          "frameColour": "#3e443c",
+          "glassColour": "#3c4841",
+          "mullions": [
+            0.5
+          ],
+          "transom": 0.5,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "ground-rounded-1",
+          "x": 5.7,
+          "z": 1.66,
+          "width": 1.1,
+          "height": 3.08,
+          "kind": "door",
+          "head": "rounded",
+          "storey": "ground",
+          "frameColour": "#645e52",
+          "glassColour": "#3c4841",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          },
+          "archRise": 0.55,
+          "warehouse": {
+            "shutters": {
+              "angle": 90,
+              "style": "plank",
+              "plankWidth": 0.22,
+              "colour": "#8e3030"
+            },
+            "provenance": {
+              "status": "inferred",
+              "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+            }
+          }
+        },
+        {
+          "id": "oculus-1",
+          "x": 5.7,
+          "z": 3.95,
+          "width": 0.84,
+          "height": 0.84,
+          "kind": "window",
+          "head": "circular",
+          "storey": "ground",
+          "frameColour": "#3e443c",
+          "glassColour": "#3c4841",
+          "mullions": [
+            0.5
+          ],
+          "transom": 0.5,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "ground-rounded-2",
+          "x": 8.0,
+          "z": 1.66,
+          "width": 1.1,
+          "height": 3.08,
+          "kind": "door",
+          "head": "rounded",
+          "storey": "ground",
+          "frameColour": "#645e52",
+          "glassColour": "#3c4841",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          },
+          "archRise": 0.55,
+          "warehouse": {
+            "shutters": {
+              "angle": 90,
+              "style": "plank",
+              "plankWidth": 0.22,
+              "colour": "#8e3030"
+            },
+            "provenance": {
+              "status": "inferred",
+              "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+            }
+          }
+        },
+        {
+          "id": "oculus-2",
+          "x": 8.0,
+          "z": 3.95,
+          "width": 0.84,
+          "height": 0.84,
+          "kind": "window",
+          "head": "circular",
+          "storey": "ground",
+          "frameColour": "#3e443c",
+          "glassColour": "#3c4841",
+          "mullions": [
+            0.5
+          ],
+          "transom": 0.5,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "ground-rounded-3",
+          "x": 10.55,
+          "z": 1.66,
+          "width": 2.35,
+          "height": 3.08,
+          "kind": "door",
+          "head": "rounded",
+          "storey": "ground",
+          "frameColour": "#645e52",
+          "glassColour": "#3c4841",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          },
+          "archRise": 1.175,
+          "warehouse": {
+            "shutters": {
+              "angle": 125,
+              "style": "plank",
+              "plankWidth": 0.22,
+              "colour": "#8e3030"
+            },
+            "provenance": {
+              "status": "inferred",
+              "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+            }
+          }
+        },
+        {
+          "id": "oculus-3",
+          "x": 10.55,
+          "z": 3.95,
+          "width": 0.84,
+          "height": 0.84,
+          "kind": "window",
+          "head": "circular",
+          "storey": "ground",
+          "frameColour": "#3e443c",
+          "glassColour": "#3c4841",
+          "mullions": [
+            0.5
+          ],
+          "transom": 0.5,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "loading-left-0",
+          "x": 2.65,
+          "z": 5.84,
+          "width": 1.65,
+          "height": 2.14,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_1",
+          "frameColour": "#c1bda6",
+          "glassColour": "#3c4841",
+          "mullions": [
+            0.5
+          ],
+          "transom": 0.25,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "side-light-left-left-0",
+          "x": 1.0299999999999998,
+          "z": 5.8999999999999995,
+          "width": 0.8,
+          "height": 1.46,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_1",
+          "frameColour": "#aaa58e",
+          "glassColour": "#3c4841",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "side-light-left-right-0",
+          "x": 4.27,
+          "z": 5.8999999999999995,
+          "width": 0.8,
+          "height": 1.46,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_1",
+          "frameColour": "#aaa58e",
+          "glassColour": "#3c4841",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "loading-right-0",
+          "x": 10.13,
+          "z": 5.84,
+          "width": 1.65,
+          "height": 2.14,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_1",
+          "frameColour": "#c1bda6",
+          "glassColour": "#3c4841",
+          "mullions": [
+            0.5
+          ],
+          "transom": 0.25,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "side-light-right-left-0",
+          "x": 8.510000000000002,
+          "z": 5.8999999999999995,
+          "width": 0.8,
+          "height": 1.46,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_1",
+          "frameColour": "#aaa58e",
+          "glassColour": "#3c4841",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "side-light-right-right-0",
+          "x": 11.75,
+          "z": 5.8999999999999995,
+          "width": 0.8,
+          "height": 1.46,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_1",
+          "frameColour": "#aaa58e",
+          "glassColour": "#3c4841",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "small-mid-0",
+          "x": 6.6,
+          "z": 5.8999999999999995,
+          "width": 0.65,
+          "height": 1.25,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_1",
+          "frameColour": "#aaa58e",
+          "glassColour": "#3c4841",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "loading-left-1",
+          "x": 2.65,
+          "z": 8.71,
+          "width": 1.65,
+          "height": 2.14,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_2",
+          "frameColour": "#c1bda6",
+          "glassColour": "#3c4841",
+          "mullions": [
+            0.5
+          ],
+          "transom": 0.25,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "side-light-left-left-1",
+          "x": 1.0299999999999998,
+          "z": 8.770000000000001,
+          "width": 0.8,
+          "height": 1.46,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_2",
+          "frameColour": "#aaa58e",
+          "glassColour": "#3c4841",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "side-light-left-right-1",
+          "x": 4.27,
+          "z": 8.770000000000001,
+          "width": 0.8,
+          "height": 1.46,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_2",
+          "frameColour": "#aaa58e",
+          "glassColour": "#3c4841",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "loading-right-1",
+          "x": 10.13,
+          "z": 8.71,
+          "width": 1.65,
+          "height": 2.14,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_2",
+          "frameColour": "#c1bda6",
+          "glassColour": "#3c4841",
+          "mullions": [
+            0.5
+          ],
+          "transom": 0.25,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "side-light-right-left-1",
+          "x": 8.510000000000002,
+          "z": 8.770000000000001,
+          "width": 0.8,
+          "height": 1.46,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_2",
+          "frameColour": "#aaa58e",
+          "glassColour": "#3c4841",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "side-light-right-right-1",
+          "x": 11.75,
+          "z": 8.770000000000001,
+          "width": 0.8,
+          "height": 1.46,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_2",
+          "frameColour": "#aaa58e",
+          "glassColour": "#3c4841",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "small-mid-1",
+          "x": 6.6,
+          "z": 8.770000000000001,
+          "width": 0.65,
+          "height": 1.25,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_2",
+          "frameColour": "#aaa58e",
+          "glassColour": "#3c4841",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "loading-left-2",
+          "x": 2.65,
+          "z": 11.58,
+          "width": 1.65,
+          "height": 2.14,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_3",
+          "frameColour": "#c1bda6",
+          "glassColour": "#3c4841",
+          "mullions": [
+            0.5
+          ],
+          "transom": 0.25,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "side-light-left-left-2",
+          "x": 1.0299999999999998,
+          "z": 11.64,
+          "width": 0.8,
+          "height": 1.46,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_3",
+          "frameColour": "#aaa58e",
+          "glassColour": "#3c4841",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "side-light-left-right-2",
+          "x": 4.27,
+          "z": 11.64,
+          "width": 0.8,
+          "height": 1.46,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_3",
+          "frameColour": "#aaa58e",
+          "glassColour": "#3c4841",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "loading-right-2",
+          "x": 10.13,
+          "z": 11.58,
+          "width": 1.65,
+          "height": 2.14,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_3",
+          "frameColour": "#c1bda6",
+          "glassColour": "#3c4841",
+          "mullions": [
+            0.5
+          ],
+          "transom": 0.25,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "side-light-right-left-2",
+          "x": 8.510000000000002,
+          "z": 11.64,
+          "width": 0.8,
+          "height": 1.46,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_3",
+          "frameColour": "#aaa58e",
+          "glassColour": "#3c4841",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "side-light-right-right-2",
+          "x": 11.75,
+          "z": 11.64,
+          "width": 0.8,
+          "height": 1.46,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_3",
+          "frameColour": "#aaa58e",
+          "glassColour": "#3c4841",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "small-mid-2",
+          "x": 6.6,
+          "z": 11.64,
+          "width": 0.65,
+          "height": 1.25,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_3",
+          "frameColour": "#aaa58e",
+          "glassColour": "#3c4841",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "loading-left-3",
+          "x": 2.65,
+          "z": 14.45,
+          "width": 1.65,
+          "height": 2.14,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_4",
+          "frameColour": "#c1bda6",
+          "glassColour": "#3c4841",
+          "mullions": [
+            0.5
+          ],
+          "transom": 0.25,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "side-light-left-left-3",
+          "x": 1.0299999999999998,
+          "z": 14.51,
+          "width": 0.8,
+          "height": 1.46,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_4",
+          "frameColour": "#aaa58e",
+          "glassColour": "#3c4841",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "side-light-left-right-3",
+          "x": 4.27,
+          "z": 14.51,
+          "width": 0.8,
+          "height": 1.46,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_4",
+          "frameColour": "#aaa58e",
+          "glassColour": "#3c4841",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "loading-right-3",
+          "x": 10.13,
+          "z": 14.45,
+          "width": 1.65,
+          "height": 2.14,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_4",
+          "frameColour": "#c1bda6",
+          "glassColour": "#3c4841",
+          "mullions": [
+            0.5
+          ],
+          "transom": 0.25,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "side-light-right-left-3",
+          "x": 8.510000000000002,
+          "z": 14.51,
+          "width": 0.8,
+          "height": 1.46,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_4",
+          "frameColour": "#aaa58e",
+          "glassColour": "#3c4841",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "side-light-right-right-3",
+          "x": 11.75,
+          "z": 14.51,
+          "width": 0.8,
+          "height": 1.46,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_4",
+          "frameColour": "#aaa58e",
+          "glassColour": "#3c4841",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "small-mid-3",
+          "x": 6.6,
+          "z": 14.51,
+          "width": 0.65,
+          "height": 1.25,
+          "kind": "window",
+          "head": "rectangular",
+          "storey": "upper_4",
+          "frameColour": "#aaa58e",
+          "glassColour": "#3c4841",
+          "mullions": [],
+          "transom": null,
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        }
+      ],
+      "storefront": {
+        "height": 4.4,
+        "anchor": 6.6603123612044985,
+        "finishColour": "#795b49",
+        "signs": [],
+        "awnings": [],
+        "cornice": false
+      },
+      "profile": [
+        [
+          0,
+          15.891000001430513
+        ],
+        [
+          8.170457229641123,
+          15.871000001430511
+        ],
+        [
+          10.122120209999828,
+          19.24100000143051
+        ],
+        [
+          12.077539770987407,
+          15.821000001430512
+        ],
+        [
+          13.320624722408997,
+          16.031000001430513
+        ]
+      ],
+      "eavesCornice": false,
+      "sourceWallSelection": {
+        "geometryRevision": "7d132f154903b2530cdfcca36d30a3d77e22bd33b87eeba7aa30ca02b146bc0a",
+        "surfaceIndices": [
+          51,
+          2,
+          14,
+          15
+        ],
+        "depthRange": [
+          -0.006,
+          0.006
+        ],
+        "provenance": {
+          "basis": "Complete coplanar owner street surfaces51/2/14/15",
+          "note": "Front extent0..13.32m equals bound physicalfront; preserve actual source asymmetric gable knots and rear roofs. Repeated gables farther down context street belong to other owners."
+        }
+      },
+      "components": [
+        {
+          "id": "portal-keystone-0",
+          "kind": "stringcourse",
+          "x": 2.65,
+          "z": 3.27,
+          "width": 0.42,
+          "height": 0.29,
+          "projection": 0.1,
+          "material": "limestone",
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "portal-spring-0--1",
+          "kind": "stringcourse",
+          "x": 1.3449999999999998,
+          "z": 2.055,
+          "width": 0.38,
+          "height": 0.3,
+          "projection": 0.1,
+          "material": "limestone",
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "portal-spring-0-1",
+          "kind": "stringcourse",
+          "x": 3.955,
+          "z": 2.055,
+          "width": 0.38,
+          "height": 0.3,
+          "projection": 0.1,
+          "material": "limestone",
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "portal-keystone-3",
+          "kind": "stringcourse",
+          "x": 10.55,
+          "z": 3.27,
+          "width": 0.42,
+          "height": 0.29,
+          "projection": 0.1,
+          "material": "limestone",
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "portal-spring-3--1",
+          "kind": "stringcourse",
+          "x": 9.245000000000001,
+          "z": 2.055,
+          "width": 0.38,
+          "height": 0.3,
+          "projection": 0.1,
+          "material": "limestone",
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "portal-spring-3-1",
+          "kind": "stringcourse",
+          "x": 11.855,
+          "z": 2.055,
+          "width": 0.38,
+          "height": 0.3,
+          "projection": 0.1,
+          "material": "limestone",
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "balcony-left-0",
+          "kind": "balcony",
+          "x": 2.65,
+          "z": 4.77,
+          "width": 1.85,
+          "depth": 0.26,
+          "height": 0.64,
+          "slabThickness": 0.13,
+          "balusterSpacing": 0.4,
+          "railThickness": 0.025,
+          "material": "limestone",
+          "frameMaterial": "iron",
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "balcony-right-0",
+          "kind": "balcony",
+          "x": 10.13,
+          "z": 4.77,
+          "width": 1.85,
+          "depth": 0.26,
+          "height": 0.64,
+          "slabThickness": 0.13,
+          "balusterSpacing": 0.4,
+          "railThickness": 0.025,
+          "material": "limestone",
+          "frameMaterial": "iron",
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "balcony-left-1",
+          "kind": "balcony",
+          "x": 2.65,
+          "z": 7.640000000000001,
+          "width": 1.85,
+          "depth": 0.26,
+          "height": 0.64,
+          "slabThickness": 0.13,
+          "balusterSpacing": 0.4,
+          "railThickness": 0.025,
+          "material": "limestone",
+          "frameMaterial": "iron",
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "balcony-right-1",
+          "kind": "balcony",
+          "x": 10.13,
+          "z": 7.640000000000001,
+          "width": 1.85,
+          "depth": 0.26,
+          "height": 0.64,
+          "slabThickness": 0.13,
+          "balusterSpacing": 0.4,
+          "railThickness": 0.025,
+          "material": "limestone",
+          "frameMaterial": "iron",
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "balcony-left-2",
+          "kind": "balcony",
+          "x": 2.65,
+          "z": 10.51,
+          "width": 1.85,
+          "depth": 0.26,
+          "height": 0.64,
+          "slabThickness": 0.13,
+          "balusterSpacing": 0.4,
+          "railThickness": 0.025,
+          "material": "limestone",
+          "frameMaterial": "iron",
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "balcony-right-2",
+          "kind": "balcony",
+          "x": 10.13,
+          "z": 10.51,
+          "width": 1.85,
+          "depth": 0.26,
+          "height": 0.64,
+          "slabThickness": 0.13,
+          "balusterSpacing": 0.4,
+          "railThickness": 0.025,
+          "material": "limestone",
+          "frameMaterial": "iron",
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "balcony-left-3",
+          "kind": "balcony",
+          "x": 2.65,
+          "z": 13.379999999999999,
+          "width": 1.85,
+          "depth": 0.26,
+          "height": 0.64,
+          "slabThickness": 0.13,
+          "balusterSpacing": 0.4,
+          "railThickness": 0.025,
+          "material": "limestone",
+          "frameMaterial": "iron",
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        },
+        {
+          "id": "balcony-right-3",
+          "kind": "balcony",
+          "x": 10.13,
+          "z": 13.379999999999999,
+          "width": 1.85,
+          "depth": 0.26,
+          "height": 0.64,
+          "slabThickness": 0.13,
+          "balusterSpacing": 0.4,
+          "railThickness": 0.025,
+          "material": "limestone",
+          "frameMaterial": "iron",
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        }
+      ],
+      "warehouseHoists": [
+        {
+          "id": "right-gable-hoist",
+          "x": 10.13,
+          "z": 18.4,
+          "projection": 1.1,
+          "width": 0.14,
+          "height": 0.18,
+          "colour": "#706a54",
+          "provenance": {
+            "status": "inferred",
+            "basis": "Strongly oblique2022full and2023ground source; openings and shutters are visual proportions, no metric feature registration. Owner and measured roof knots retained."
+          }
+        }
+      ]
+    }
+  ],
+  "materials": {
+    "wall": "creamrender",
+    "wallColour": "#795b49",
+    "roof": "slate",
+    "frame": "ivorytimber",
+    "glassColour": "#505b54"
+  },
+  "details": {},
+  "placement": {
+    "frontageLocal": [
+      [
+        713.557768599785,
+        -1527.8342540203594
+      ],
+      [
+        708.5537685201125,
+        -1515.4892539718421
+      ]
+    ],
+    "inputFrameDeterminant": -1.0,
+    "xAxisBearingDegrees": 202.0649909762531,
+    "axes": "glTF x=along frontage,y=up,z=towards street",
+    "sourceRDFrame": {
+      "anchorRD": [
+        120656.10693862555,
+        488474.45630147576
+      ],
+      "xAxisRD": [
+        -0.3756580628875784,
+        -0.9267583394755896
+      ],
+      "yAxisRD": [
+        0.9267583394755896,
+        -0.3756580628875784
+      ],
+      "buildingId": "0363100012176879",
+      "geometryRevision": "7d132f154903b2530cdfcca36d30a3d77e22bd33b87eeba7aa30ca02b146bc0a",
+      "source": "Frozen seed originRD/order; exact owner frame, no geometry shift."
+    },
+    "anchor": [
+      4.8827707432172165,
+      52.38305615235195
+    ],
+    "anchorTransform": {
+      "implementation": "src/canalRecall/facade/rdNew.ts rdToLngLat",
+      "anchorRD": [
+        120656.10693862555,
+        488474.45630147576
+      ],
+      "note": "Repository projection of exact physicalfront origin; no nearest-owner-vertex substitute."
+    }
+  },
+  "sourceShell": {
+    "surfaces": [
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              13.316114570312719,
+              0.0038167499951020645,
+              16.031000001430513
+            ],
+            [
+              13.316114570312719,
+              0.0038167499951020645,
+              0.001000001430511488
+            ],
+            [
+              13.320990396372693,
+              17.10841777505037,
+              0.001000001430511488
+            ],
+            [
+              13.320990396372693,
+              17.10841777505037,
+              16.091000001430512
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              -0.0039905188041287065,
+              2.837559930821972,
+              16.38100000143051
+            ],
+            [
+              -0.0039905188041287065,
+              2.837559930821972,
+              15.921000001430512
+            ],
+            [
+              1.3580762362170868,
+              3.044379066459167,
+              15.911000001430512
+            ],
+            [
+              1.3580762362170868,
+              3.044379066459167,
+              16.43100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              8.170457229641123,
+              0.0005713852093065519,
+              15.871000001430511
+            ],
+            [
+              8.170457229641123,
+              0.0005713852093065519,
+              0.001000001430511488
+            ],
+            [
+              10.122120209999828,
+              0.003978891218605618,
+              0.001000001430511488
+            ],
+            [
+              10.122120209999828,
+              0.003978891218605618,
+              19.24100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              8.22542755330375,
+              17.114687730014086,
+              16.18100000143051
+            ],
+            [
+              8.22542755330375,
+              17.114687730014086,
+              16.031000001430513
+            ],
+            [
+              8.212716453113341,
+              13.419252920964961,
+              15.991000001430512
+            ],
+            [
+              8.212716453113341,
+              13.419252920964961,
+              16.02100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              13.320990396372693,
+              17.10841777505037,
+              16.091000001430512
+            ],
+            [
+              13.320990396372693,
+              17.10841777505037,
+              0.001000001430511488
+            ],
+            [
+              12.015540354792277,
+              17.107983105299436,
+              0.001000001430511488
+            ],
+            [
+              12.015540354792277,
+              17.107983105299436,
+              15.871000001430511
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              1.0519644066233873,
+              17.10954154500104,
+              15.921000001430512
+            ],
+            [
+              1.0519644066233873,
+              17.10954154500104,
+              0.001000001430511488
+            ],
+            [
+              -0.0065219912177303385,
+              17.11209997916142,
+              0.001000001430511488
+            ],
+            [
+              -0.0065219912177303385,
+              17.11209997916142,
+              15.871000001430511
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              2.7251044124296815,
+              17.107953788607155,
+              18.90100000143051
+            ],
+            [
+              2.7251044124296815,
+              17.107953788607155,
+              0.001000001430511488
+            ],
+            [
+              1.0519644066233873,
+              17.10954154500104,
+              0.001000001430511488
+            ],
+            [
+              1.0519644066233873,
+              17.10954154500104,
+              15.921000001430512
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              10.082412541223068,
+              17.11208876054788,
+              19.33100000143051
+            ],
+            [
+              10.082412541223068,
+              17.11208876054788,
+              19.24100000143051
+            ],
+            [
+              10.082412541223068,
+              17.11208876054788,
+              0.001000001430511488
+            ],
+            [
+              8.22542755330375,
+              17.114687730014086,
+              0.001000001430511488
+            ],
+            [
+              8.22542755330375,
+              17.114687730014086,
+              16.031000001430513
+            ],
+            [
+              8.22542755330375,
+              17.114687730014086,
+              16.18100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              8.22542755330375,
+              17.114687730014086,
+              16.031000001430513
+            ],
+            [
+              8.22542755330375,
+              17.114687730014086,
+              0.001000001430511488
+            ],
+            [
+              4.829053044088297,
+              17.108347923052264,
+              0.001000001430511488
+            ],
+            [
+              4.829053044088297,
+              17.108347923052264,
+              16.04100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              11.377921642342153,
+              8.778382732080207,
+              18.66100000143051
+            ],
+            [
+              11.377921642342153,
+              8.778382732080207,
+              17.01100000143051
+            ],
+            [
+              12.045207914417409,
+              9.448105832398332,
+              15.851000001430512
+            ],
+            [
+              12.045207914417409,
+              9.448105832398332,
+              18.71100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              10.101017560010625,
+              8.627664569521336,
+              18.56100000143051
+            ],
+            [
+              10.101017560010625,
+              8.627664569521336,
+              19.24100000143051
+            ],
+            [
+              10.472216368510512,
+              8.670225638213246,
+              18.59100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              11.377921642342153,
+              8.778382732080207,
+              17.01100000143051
+            ],
+            [
+              11.377921642342153,
+              8.778382732080207,
+              18.66100000143051
+            ],
+            [
+              10.472216368510512,
+              8.670225638213246,
+              18.59100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              2.7215753005028693,
+              16.66412099873136,
+              18.89100000143051
+            ],
+            [
+              2.7215753005028693,
+              16.66412099873136,
+              0.001000001430511488
+            ],
+            [
+              2.7251044124296815,
+              17.107953788607155,
+              0.001000001430511488
+            ],
+            [
+              2.7251044124296815,
+              17.107953788607155,
+              18.90100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              2.9610257829844224,
+              16.685649269432172,
+              19.32100000143051
+            ],
+            [
+              2.9610257829844224,
+              16.685649269432172,
+              0.001000001430511488
+            ],
+            [
+              2.7215753005028693,
+              16.66412099873136,
+              0.001000001430511488
+            ],
+            [
+              2.7215753005028693,
+              16.66412099873136,
+              18.89100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              10.122120209999828,
+              0.003978891218605618,
+              19.24100000143051
+            ],
+            [
+              10.122120209999828,
+              0.003978891218605618,
+              0.001000001430511488
+            ],
+            [
+              12.077539770987407,
+              -0.001881186166842852,
+              0.001000001430511488
+            ],
+            [
+              12.077539770987407,
+              -0.001881186166842852,
+              15.821000001430512
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              12.077539770987407,
+              -0.001881186166842852,
+              15.821000001430512
+            ],
+            [
+              12.077539770987407,
+              -0.001881186166842852,
+              0.001000001430511488
+            ],
+            [
+              13.316114570312719,
+              0.0038167499951020645,
+              0.001000001430511488
+            ],
+            [
+              13.316114570312719,
+              0.0038167499951020645,
+              16.031000001430513
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              10.082412541223068,
+              17.11208876054788,
+              19.24100000143051
+            ],
+            [
+              10.082412541223068,
+              17.11208876054788,
+              19.33100000143051
+            ],
+            [
+              10.088545147135905,
+              14.56806391964226,
+              19.24100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              12.015540354792277,
+              17.107983105299436,
+              15.871000001430511
+            ],
+            [
+              12.015540354792277,
+              17.107983105299436,
+              0.001000001430511488
+            ],
+            [
+              10.082412541223068,
+              17.11208876054788,
+              0.001000001430511488
+            ],
+            [
+              10.082412541223068,
+              17.11208876054788,
+              19.24100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              1.3200307003518867,
+              8.488848970609629,
+              16.24100000143051
+            ],
+            [
+              1.3200307003518867,
+              8.488848970609629,
+              16.24100000143051
+            ],
+            [
+              1.0519644066233873,
+              17.10954154500104,
+              15.921000001430512
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              4.829053044088297,
+              17.108347923052264,
+              16.04100000143051
+            ],
+            [
+              4.829053044088297,
+              17.108347923052264,
+              0.001000001430511488
+            ],
+            [
+              4.826287408878977,
+              16.902211193520873,
+              0.001000001430511488
+            ],
+            [
+              4.826287408878977,
+              16.902211193520873,
+              16.031000001430513
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              3.771960775151025,
+              5.101868175226364,
+              18.43100000143051
+            ],
+            [
+              3.771960775151025,
+              5.101868175226364,
+              15.931000001430512
+            ],
+            [
+              4.745532236657322,
+              4.989357689756177,
+              15.931000001430512
+            ],
+            [
+              4.745532236657322,
+              4.989357689756177,
+              18.28100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              1.3200307003518867,
+              8.488848970609629,
+              18.29100000143051
+            ],
+            [
+              1.3200307003518867,
+              8.488848970609629,
+              16.24100000143051
+            ],
+            [
+              1.3200307003518867,
+              8.488848970609629,
+              16.24100000143051
+            ],
+            [
+              1.341664833837185,
+              5.400802344622891,
+              16.35100000143051
+            ],
+            [
+              1.341664833837185,
+              5.400802344622891,
+              18.31100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              12.045207914417409,
+              9.448105832398332,
+              18.71100000143051
+            ],
+            [
+              12.045207914417409,
+              9.448105832398332,
+              15.851000001430512
+            ],
+            [
+              12.028589310988421,
+              12.656878778871842,
+              15.861000001430511
+            ],
+            [
+              12.028589310988421,
+              12.656878778871842,
+              18.70100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              12.028589310988421,
+              12.656878778871842,
+              18.70100000143051
+            ],
+            [
+              12.028589310988421,
+              12.656878778871842,
+              15.861000001430511
+            ],
+            [
+              10.478445788168507,
+              12.96728989120403,
+              18.57100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              10.102994926329972,
+              13.041698562369938,
+              19.21100000143051
+            ],
+            [
+              10.102994926329972,
+              13.041698562369938,
+              18.53100000143051
+            ],
+            [
+              10.478445788168507,
+              12.96728989120403,
+              18.57100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              10.102994926329972,
+              13.041698562369938,
+              18.53100000143051
+            ],
+            [
+              10.102994926329972,
+              13.041698562369938,
+              19.21100000143051
+            ],
+            [
+              9.67920398902562,
+              13.128883661204512,
+              18.50100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              8.212716453113341,
+              13.419252920964961,
+              16.02100000143051
+            ],
+            [
+              8.212716453113341,
+              13.419252920964961,
+              18.38100000143051
+            ],
+            [
+              9.67920398902562,
+              13.128883661204512,
+              18.50100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              8.212716453113341,
+              13.419252920964961,
+              18.38100000143051
+            ],
+            [
+              8.212716453113341,
+              13.419252920964961,
+              16.02100000143051
+            ],
+            [
+              8.212716453113341,
+              13.419252920964961,
+              15.991000001430512
+            ],
+            [
+              8.194929019907995,
+              8.405343906311806,
+              15.951000001430511
+            ],
+            [
+              8.194929019907995,
+              8.405343906311806,
+              18.40100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              3.0061948701818015,
+              8.481750211449866,
+              18.60100000143051
+            ],
+            [
+              3.0061948701818015,
+              8.481750211449866,
+              19.23100000143051
+            ],
+            [
+              2.6069455751428063,
+              8.48177047910282,
+              18.53100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              1.3200307003518867,
+              8.488848970609629,
+              16.24100000143051
+            ],
+            [
+              1.3200307003518867,
+              8.488848970609629,
+              18.29100000143051
+            ],
+            [
+              2.6069455751428063,
+              8.48177047910282,
+              18.53100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              8.194929019907995,
+              8.405343906311806,
+              18.40100000143051
+            ],
+            [
+              8.194929019907995,
+              8.405343906311806,
+              15.951000001430511
+            ],
+            [
+              9.688991837302666,
+              8.579344761708597,
+              18.52100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              10.101017560010625,
+              8.627664569521336,
+              19.24100000143051
+            ],
+            [
+              10.101017560010625,
+              8.627664569521336,
+              18.56100000143051
+            ],
+            [
+              9.688991837302666,
+              8.579344761708597,
+              18.52100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              5.070494466448134,
+              7.009382330499271,
+              18.24100000143051
+            ],
+            [
+              5.070494466448134,
+              7.009382330499271,
+              16.60100000143051
+            ],
+            [
+              4.865616686343927,
+              7.142141869590132,
+              16.60100000143051
+            ],
+            [
+              4.865616686343927,
+              7.142141869590132,
+              18.27100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              4.909643905512297,
+              6.048587296661832,
+              18.26100000143051
+            ],
+            [
+              4.909643905512297,
+              6.048587296661832,
+              16.641000001430513
+            ],
+            [
+              5.070494466448134,
+              7.009382330499271,
+              16.60100000143051
+            ],
+            [
+              5.070494466448134,
+              7.009382330499271,
+              18.24100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              5.297745064582356,
+              8.47186554942781,
+              16.54100000143051
+            ],
+            [
+              5.297745064582356,
+              8.47186554942781,
+              15.961000001430511
+            ],
+            [
+              4.86317985810112,
+              8.479151241983661,
+              15.961000001430511
+            ],
+            [
+              4.86317985810112,
+              8.479151241983661,
+              16.55100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              4.865616686343927,
+              7.142141869590132,
+              18.27100000143051
+            ],
+            [
+              4.865616686343927,
+              7.142141869590132,
+              16.60100000143051
+            ],
+            [
+              4.86317985810112,
+              8.479151241983661,
+              16.55100000143051
+            ],
+            [
+              4.86317985810112,
+              8.479151241983661,
+              18.27100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              6.188651484600359,
+              8.163992603603134,
+              16.54100000143051
+            ],
+            [
+              6.188651484600359,
+              8.163992603603134,
+              15.951000001430511
+            ],
+            [
+              5.317539180799077,
+              8.609372614566992,
+              15.961000001430511
+            ],
+            [
+              5.317539180799077,
+              8.609372614566992,
+              16.54100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              7.185278170242473,
+              8.28742375634045,
+              16.52100000143051
+            ],
+            [
+              7.185278170242473,
+              8.28742375634045,
+              15.951000001430511
+            ],
+            [
+              6.188651484600359,
+              8.163992603603134,
+              15.951000001430511
+            ],
+            [
+              6.188651484600359,
+              8.163992603603134,
+              16.54100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              4.745532236657322,
+              4.989357689756177,
+              18.28100000143051
+            ],
+            [
+              4.745532236657322,
+              4.989357689756177,
+              15.931000001430512
+            ],
+            [
+              4.767328511365913,
+              5.095305424082243,
+              15.931000001430512
+            ],
+            [
+              4.767328511365913,
+              5.095305424082243,
+              18.28100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              4.767328511365913,
+              5.095305424082243,
+              18.28100000143051
+            ],
+            [
+              4.767328511365913,
+              5.095305424082243,
+              15.931000001430512
+            ],
+            [
+              4.87503066782892,
+              5.0958008967918715,
+              15.931000001430512
+            ],
+            [
+              4.87503066782892,
+              5.0958008967918715,
+              18.26100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              3.0244665574832967,
+              3.299022537199366,
+              19.33100000143051
+            ],
+            [
+              3.0244665574832967,
+              3.299022537199366,
+              19.18100000143051
+            ],
+            [
+              3.0142890992806857,
+              5.107667449652929,
+              19.20100000143051
+            ],
+            [
+              3.0142890992806857,
+              5.107667449652929,
+              19.28100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              1.3411490934743913,
+              5.109255206046817,
+              18.31100000143051
+            ],
+            [
+              1.3411490934743913,
+              5.109255206046817,
+              16.36100000143051
+            ],
+            [
+              1.3411490934743913,
+              5.109255206046817,
+              16.341000001430512
+            ],
+            [
+              2.596504637452196,
+              5.100174556048139,
+              18.55100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              3.0142890992806857,
+              5.107667449652929,
+              19.28100000143051
+            ],
+            [
+              3.0142890992806857,
+              5.107667449652929,
+              19.20100000143051
+            ],
+            [
+              3.0142890992806857,
+              5.107667449652929,
+              18.62100000143051
+            ],
+            [
+              2.596504637452196,
+              5.100174556048139,
+              18.55100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              1.3411490934743913,
+              5.109255206046817,
+              16.341000001430512
+            ],
+            [
+              1.3411490934743913,
+              5.109255206046817,
+              16.36100000143051
+            ],
+            [
+              1.3580762362170868,
+              3.044379066459167,
+              16.43100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              5.317539180799077,
+              8.609372614566992,
+              16.54100000143051
+            ],
+            [
+              5.317539180799077,
+              8.609372614566992,
+              15.961000001430511
+            ],
+            [
+              5.297745064582356,
+              8.47186554942781,
+              15.961000001430511
+            ],
+            [
+              5.297745064582356,
+              8.47186554942781,
+              16.54100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              4.87503066782892,
+              5.0958008967918715,
+              18.26100000143051
+            ],
+            [
+              4.87503066782892,
+              5.0958008967918715,
+              15.931000001430512
+            ],
+            [
+              4.870055673078644,
+              5.773573166383384,
+              15.931000001430512
+            ],
+            [
+              4.870055673078644,
+              5.773573166383384,
+              18.26100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              3.0061948701818015,
+              8.481750211449866,
+              19.23100000143051
+            ],
+            [
+              3.0061948701818015,
+              8.481750211449866,
+              18.60100000143051
+            ],
+            [
+              2.997175023141921,
+              8.424142552589512,
+              18.60100000143051
+            ],
+            [
+              2.997175023141921,
+              8.424142552589512,
+              19.23100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              3.410687163978999,
+              8.149355891012956,
+              18.68100000143051
+            ],
+            [
+              3.410687163978999,
+              8.149355891012956,
+              18.50100000143051
+            ],
+            [
+              3.3212724379506198,
+              8.210224657792555,
+              18.67100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              2.997175023141921,
+              8.424142552589512,
+              19.23100000143051
+            ],
+            [
+              2.997175023141921,
+              8.424142552589512,
+              18.60100000143051
+            ],
+            [
+              3.3212724379506198,
+              8.210224657792555,
+              18.67100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              4.657043128569729,
+              8.48191687719298,
+              18.30100000143051
+            ],
+            [
+              4.657043128569729,
+              8.48191687719298,
+              16.321000001430512
+            ],
+            [
+              3.419954747373746,
+              8.153112471641828,
+              18.49100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              3.410687163978999,
+              8.149355891012956,
+              18.50100000143051
+            ],
+            [
+              3.410687163978999,
+              8.149355891012956,
+              18.49100000143051
+            ],
+            [
+              3.419954747373746,
+              8.153112471641828,
+              18.49100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              -0.007641236648831728,
+              -0.0017686292885948614,
+              15.891000001430513
+            ],
+            [
+              -0.007641236648831728,
+              -0.0017686292885948614,
+              0.001000001430511488
+            ],
+            [
+              8.170457229641123,
+              0.0005713852093065519,
+              0.001000001430511488
+            ],
+            [
+              8.170457229641123,
+              0.0005713852093065519,
+              15.871000001430511
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              3.0244665574832967,
+              3.299022537199366,
+              19.18100000143051
+            ],
+            [
+              3.0244665574832967,
+              3.299022537199366,
+              15.911000001430512
+            ],
+            [
+              3.4327356995621727,
+              3.3566099284067654,
+              15.911000001430512
+            ],
+            [
+              3.4327356995621727,
+              3.3566099284067654,
+              18.47100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              3.4327356995621727,
+              3.3566099284067654,
+              18.47100000143051
+            ],
+            [
+              3.4327356995621727,
+              3.3566099284067654,
+              15.911000001430512
+            ],
+            [
+              3.426769759392598,
+              4.249786510924396,
+              15.921000001430512
+            ],
+            [
+              3.426769759392598,
+              4.249786510924396,
+              18.47100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              1.3580762362170868,
+              3.044379066459167,
+              16.43100000143051
+            ],
+            [
+              1.3580762362170868,
+              3.044379066459167,
+              15.911000001430512
+            ],
+            [
+              3.0244665574832967,
+              3.299022537199366,
+              15.911000001430512
+            ],
+            [
+              3.0244665574832967,
+              3.299022537199366,
+              19.18100000143051
+            ],
+            [
+              3.0244665574832967,
+              3.299022537199366,
+              19.33100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              1.341664833837185,
+              5.400802344622891,
+              18.31100000143051
+            ],
+            [
+              1.341664833837185,
+              5.400802344622891,
+              16.35100000143051
+            ],
+            [
+              1.3411490934743913,
+              5.109255206046817,
+              16.36100000143051
+            ],
+            [
+              1.3411490934743913,
+              5.109255206046817,
+              18.31100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              -0.0065219912177303385,
+              17.11209997916142,
+              15.871000001430511
+            ],
+            [
+              -0.0065219912177303385,
+              17.11209997916142,
+              0.001000001430511488
+            ],
+            [
+              -0.0039905188041287065,
+              2.837559930821972,
+              0.001000001430511488
+            ],
+            [
+              -0.0039905188041287065,
+              2.837559930821972,
+              15.921000001430512
+            ],
+            [
+              -0.0039905188041287065,
+              2.837559930821972,
+              16.38100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              -0.0039905188041287065,
+              2.837559930821972,
+              15.921000001430512
+            ],
+            [
+              -0.0039905188041287065,
+              2.837559930821972,
+              0.001000001430511488
+            ],
+            [
+              -0.007641236648831728,
+              -0.0017686292885948614,
+              0.001000001430511488
+            ],
+            [
+              -0.007641236648831728,
+              -0.0017686292885948614,
+              15.891000001430513
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              7.385307086033382,
+              6.3830896383748446,
+              16.58100000143051
+            ],
+            [
+              7.385307086033382,
+              6.3830896383748446,
+              15.931000001430512
+            ],
+            [
+              7.185278170242473,
+              8.28742375634045,
+              15.951000001430511
+            ],
+            [
+              7.185278170242473,
+              8.28742375634045,
+              16.52100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              3.578848209643253,
+              5.099122807669808,
+              18.21100000143051
+            ],
+            [
+              3.578848209643253,
+              5.099122807669808,
+              18.45100000143051
+            ],
+            [
+              3.4265625583435115,
+              5.102136179234185,
+              18.48100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              4.909643905512297,
+              6.048587296661832,
+              16.641000001430513
+            ],
+            [
+              4.909643905512297,
+              6.048587296661832,
+              15.931000001430512
+            ],
+            [
+              7.385307086033382,
+              6.3830896383748446,
+              15.931000001430512
+            ],
+            [
+              7.385307086033382,
+              6.3830896383748446,
+              16.58100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              4.870055673078644,
+              5.773573166383384,
+              18.26100000143051
+            ],
+            [
+              4.870055673078644,
+              5.773573166383384,
+              15.931000001430512
+            ],
+            [
+              4.909643905512297,
+              6.048587296661832,
+              15.931000001430512
+            ],
+            [
+              4.909643905512297,
+              6.048587296661832,
+              16.641000001430513
+            ],
+            [
+              4.909643905512297,
+              6.048587296661832,
+              18.26100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              3.4265625583435115,
+              5.102136179234185,
+              18.48100000143051
+            ],
+            [
+              3.4265625583435115,
+              5.102136179234185,
+              18.70100000143051
+            ],
+            [
+              3.318860401880336,
+              5.101640706524366,
+              18.68100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              3.0142890992806857,
+              5.107667449652929,
+              18.62100000143051
+            ],
+            [
+              3.0142890992806857,
+              5.107667449652929,
+              19.20100000143051
+            ],
+            [
+              3.318860401880336,
+              5.101640706524366,
+              18.68100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              3.426769759392598,
+              4.249786510924396,
+              18.47100000143051
+            ],
+            [
+              3.426769759392598,
+              4.249786510924396,
+              15.921000001430512
+            ],
+            [
+              3.578848209643253,
+              5.099122807669808,
+              15.931000001430512
+            ],
+            [
+              3.578848209643253,
+              5.099122807669808,
+              18.21100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              3.578848209643253,
+              5.099122807669808,
+              18.45100000143051
+            ],
+            [
+              3.578848209643253,
+              5.099122807669808,
+              18.21100000143051
+            ],
+            [
+              3.578848209643253,
+              5.099122807669808,
+              15.931000001430512
+            ],
+            [
+              3.771960775151025,
+              5.101868175226364,
+              15.931000001430512
+            ],
+            [
+              3.771960775151025,
+              5.101868175226364,
+              18.43100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              3.4265625583435115,
+              5.102136179234185,
+              18.70100000143051
+            ],
+            [
+              3.4265625583435115,
+              5.102136179234185,
+              18.48100000143051
+            ],
+            [
+              3.410687163978999,
+              8.149355891012956,
+              18.49100000143051
+            ],
+            [
+              3.410687163978999,
+              8.149355891012956,
+              18.50100000143051
+            ],
+            [
+              3.410687163978999,
+              8.149355891012956,
+              18.68100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              4.86317985810112,
+              8.479151241983661,
+              18.27100000143051
+            ],
+            [
+              4.86317985810112,
+              8.479151241983661,
+              16.55100000143051
+            ],
+            [
+              4.86317985810112,
+              8.479151241983661,
+              15.961000001430511
+            ],
+            [
+              4.657043128569729,
+              8.48191687719298,
+              16.321000001430512
+            ],
+            [
+              4.657043128569729,
+              8.48191687719298,
+              18.30100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              4.826287408878977,
+              16.902211193520873,
+              16.031000001430513
+            ],
+            [
+              4.826287408878977,
+              16.902211193520873,
+              0.001000001430511488
+            ],
+            [
+              2.9610257829844224,
+              16.685649269432172,
+              0.001000001430511488
+            ],
+            [
+              2.9610257829844224,
+              16.685649269432172,
+              19.32100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              12.077539770987407,
+              -0.001881186166842852,
+              15.821000001430512
+            ],
+            [
+              12.045207914417409,
+              9.448105832398332,
+              15.851000001430512
+            ],
+            [
+              11.377921642342153,
+              8.778382732080207,
+              17.01100000143051
+            ],
+            [
+              10.472216368510512,
+              8.670225638213246,
+              18.59100000143051
+            ],
+            [
+              10.101017560010625,
+              8.627664569521336,
+              19.24100000143051
+            ],
+            [
+              10.122120209999828,
+              0.003978891218605618,
+              19.24100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              10.102994926329972,
+              13.041698562369938,
+              19.21100000143051
+            ],
+            [
+              10.478445788168507,
+              12.96728989120403,
+              18.57100000143051
+            ],
+            [
+              12.028589310988421,
+              12.656878778871842,
+              15.861000001430511
+            ],
+            [
+              12.015540354792277,
+              17.107983105299436,
+              15.871000001430511
+            ],
+            [
+              10.082412541223068,
+              17.11208876054788,
+              19.24100000143051
+            ],
+            [
+              10.088545147135905,
+              14.56806391964226,
+              19.24100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              12.045207914417409,
+              9.448105832398332,
+              15.851000001430512
+            ],
+            [
+              12.077539770987407,
+              -0.001881186166842852,
+              15.821000001430512
+            ],
+            [
+              13.316114570312719,
+              0.0038167499951020645,
+              16.031000001430513
+            ],
+            [
+              13.320990396372693,
+              17.10841777505037,
+              16.091000001430512
+            ],
+            [
+              12.015540354792277,
+              17.107983105299436,
+              15.871000001430511
+            ],
+            [
+              12.028589310988421,
+              12.656878778871842,
+              15.861000001430511
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              8.212716453113341,
+              13.419252920964961,
+              16.02100000143051
+            ],
+            [
+              9.67920398902562,
+              13.128883661204512,
+              18.50100000143051
+            ],
+            [
+              10.102994926329972,
+              13.041698562369938,
+              19.21100000143051
+            ],
+            [
+              10.088545147135905,
+              14.56806391964226,
+              19.24100000143051
+            ],
+            [
+              10.082412541223068,
+              17.11208876054788,
+              19.33100000143051
+            ],
+            [
+              8.22542755330375,
+              17.114687730014086,
+              16.18100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              8.194929019907995,
+              8.405343906311806,
+              18.40100000143051
+            ],
+            [
+              9.688991837302666,
+              8.579344761708597,
+              18.52100000143051
+            ],
+            [
+              10.101017560010625,
+              8.627664569521336,
+              18.56100000143051
+            ],
+            [
+              10.472216368510512,
+              8.670225638213246,
+              18.59100000143051
+            ],
+            [
+              11.377921642342153,
+              8.778382732080207,
+              18.66100000143051
+            ],
+            [
+              12.045207914417409,
+              9.448105832398332,
+              18.71100000143051
+            ],
+            [
+              12.028589310988421,
+              12.656878778871842,
+              18.70100000143051
+            ],
+            [
+              10.478445788168507,
+              12.96728989120403,
+              18.57100000143051
+            ],
+            [
+              10.102994926329972,
+              13.041698562369938,
+              18.53100000143051
+            ],
+            [
+              9.67920398902562,
+              13.128883661204512,
+              18.50100000143051
+            ],
+            [
+              8.212716453113341,
+              13.419252920964961,
+              18.38100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              1.3200307003518867,
+              8.488848970609629,
+              16.24100000143051
+            ],
+            [
+              2.6069455751428063,
+              8.48177047910282,
+              18.53100000143051
+            ],
+            [
+              3.0061948701818015,
+              8.481750211449866,
+              19.23100000143051
+            ],
+            [
+              2.9610257829844224,
+              16.685649269432172,
+              19.32100000143051
+            ],
+            [
+              2.7215753005028693,
+              16.66412099873136,
+              18.89100000143051
+            ],
+            [
+              2.7251044124296815,
+              17.107953788607155,
+              18.90100000143051
+            ],
+            [
+              1.0519644066233873,
+              17.10954154500104,
+              15.921000001430512
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              10.101017560010625,
+              8.627664569521336,
+              19.24100000143051
+            ],
+            [
+              9.688991837302666,
+              8.579344761708597,
+              18.52100000143051
+            ],
+            [
+              8.194929019907995,
+              8.405343906311806,
+              15.951000001430511
+            ],
+            [
+              8.170457229641123,
+              0.0005713852093065519,
+              15.871000001430511
+            ],
+            [
+              10.122120209999828,
+              0.003978891218605618,
+              19.24100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              1.3580762362170868,
+              3.044379066459167,
+              16.43100000143051
+            ],
+            [
+              3.0244665574832967,
+              3.299022537199366,
+              19.33100000143051
+            ],
+            [
+              3.0142890992806857,
+              5.107667449652929,
+              19.28100000143051
+            ],
+            [
+              2.596504637452196,
+              5.100174556048139,
+              18.55100000143051
+            ],
+            [
+              1.3411490934743913,
+              5.109255206046817,
+              16.341000001430512
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              -0.0065219912177303385,
+              17.11209997916142,
+              15.871000001430511
+            ],
+            [
+              -0.0039905188041287065,
+              2.837559930821972,
+              16.38100000143051
+            ],
+            [
+              1.3580762362170868,
+              3.044379066459167,
+              16.43100000143051
+            ],
+            [
+              1.3411490934743913,
+              5.109255206046817,
+              16.36100000143051
+            ],
+            [
+              1.341664833837185,
+              5.400802344622891,
+              16.35100000143051
+            ],
+            [
+              1.3200307003518867,
+              8.488848970609629,
+              16.24100000143051
+            ],
+            [
+              1.0519644066233873,
+              17.10954154500104,
+              15.921000001430512
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              4.909643905512297,
+              6.048587296661832,
+              16.641000001430513
+            ],
+            [
+              7.385307086033382,
+              6.3830896383748446,
+              16.58100000143051
+            ],
+            [
+              7.185278170242473,
+              8.28742375634045,
+              16.52100000143051
+            ],
+            [
+              6.188651484600359,
+              8.163992603603134,
+              16.54100000143051
+            ],
+            [
+              5.317539180799077,
+              8.609372614566992,
+              16.54100000143051
+            ],
+            [
+              5.297745064582356,
+              8.47186554942781,
+              16.54100000143051
+            ],
+            [
+              4.86317985810112,
+              8.479151241983661,
+              16.55100000143051
+            ],
+            [
+              4.865616686343927,
+              7.142141869590132,
+              16.60100000143051
+            ],
+            [
+              5.070494466448134,
+              7.009382330499271,
+              16.60100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              3.426769759392598,
+              4.249786510924396,
+              18.47100000143051
+            ],
+            [
+              3.578848209643253,
+              5.099122807669808,
+              18.21100000143051
+            ],
+            [
+              3.4265625583435115,
+              5.102136179234185,
+              18.48100000143051
+            ],
+            [
+              3.318860401880336,
+              5.101640706524366,
+              18.68100000143051
+            ],
+            [
+              3.0142890992806857,
+              5.107667449652929,
+              19.20100000143051
+            ],
+            [
+              3.0244665574832967,
+              3.299022537199366,
+              19.18100000143051
+            ],
+            [
+              3.4327356995621727,
+              3.3566099284067654,
+              18.47100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              3.4265625583435115,
+              5.102136179234185,
+              18.70100000143051
+            ],
+            [
+              3.410687163978999,
+              8.149355891012956,
+              18.68100000143051
+            ],
+            [
+              3.3212724379506198,
+              8.210224657792555,
+              18.67100000143051
+            ],
+            [
+              2.997175023141921,
+              8.424142552589512,
+              18.60100000143051
+            ],
+            [
+              3.0061948701818015,
+              8.481750211449866,
+              18.60100000143051
+            ],
+            [
+              2.6069455751428063,
+              8.48177047910282,
+              18.53100000143051
+            ],
+            [
+              1.3200307003518867,
+              8.488848970609629,
+              18.29100000143051
+            ],
+            [
+              1.341664833837185,
+              5.400802344622891,
+              18.31100000143051
+            ],
+            [
+              1.3411490934743913,
+              5.109255206046817,
+              18.31100000143051
+            ],
+            [
+              2.596504637452196,
+              5.100174556048139,
+              18.55100000143051
+            ],
+            [
+              3.0142890992806857,
+              5.107667449652929,
+              18.62100000143051
+            ],
+            [
+              3.318860401880336,
+              5.101640706524366,
+              18.68100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              4.86317985810112,
+              8.479151241983661,
+              18.27100000143051
+            ],
+            [
+              4.657043128569729,
+              8.48191687719298,
+              18.30100000143051
+            ],
+            [
+              3.419954747373746,
+              8.153112471641828,
+              18.49100000143051
+            ],
+            [
+              3.410687163978999,
+              8.149355891012956,
+              18.49100000143051
+            ],
+            [
+              3.4265625583435115,
+              5.102136179234185,
+              18.48100000143051
+            ],
+            [
+              3.578848209643253,
+              5.099122807669808,
+              18.45100000143051
+            ],
+            [
+              3.771960775151025,
+              5.101868175226364,
+              18.43100000143051
+            ],
+            [
+              4.745532236657322,
+              4.989357689756177,
+              18.28100000143051
+            ],
+            [
+              4.767328511365913,
+              5.095305424082243,
+              18.28100000143051
+            ],
+            [
+              4.87503066782892,
+              5.0958008967918715,
+              18.26100000143051
+            ],
+            [
+              4.870055673078644,
+              5.773573166383384,
+              18.26100000143051
+            ],
+            [
+              4.909643905512297,
+              6.048587296661832,
+              18.26100000143051
+            ],
+            [
+              5.070494466448134,
+              7.009382330499271,
+              18.24100000143051
+            ],
+            [
+              4.865616686343927,
+              7.142141869590132,
+              18.27100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              4.826287408878977,
+              16.902211193520873,
+              16.031000001430513
+            ],
+            [
+              4.86317985810112,
+              8.479151241983661,
+              15.961000001430511
+            ],
+            [
+              5.297745064582356,
+              8.47186554942781,
+              15.961000001430511
+            ],
+            [
+              5.317539180799077,
+              8.609372614566992,
+              15.961000001430511
+            ],
+            [
+              6.188651484600359,
+              8.163992603603134,
+              15.951000001430511
+            ],
+            [
+              7.185278170242473,
+              8.28742375634045,
+              15.951000001430511
+            ],
+            [
+              7.385307086033382,
+              6.3830896383748446,
+              15.931000001430512
+            ],
+            [
+              4.909643905512297,
+              6.048587296661832,
+              15.931000001430512
+            ],
+            [
+              4.870055673078644,
+              5.773573166383384,
+              15.931000001430512
+            ],
+            [
+              4.87503066782892,
+              5.0958008967918715,
+              15.931000001430512
+            ],
+            [
+              4.767328511365913,
+              5.095305424082243,
+              15.931000001430512
+            ],
+            [
+              4.745532236657322,
+              4.989357689756177,
+              15.931000001430512
+            ],
+            [
+              3.771960775151025,
+              5.101868175226364,
+              15.931000001430512
+            ],
+            [
+              3.578848209643253,
+              5.099122807669808,
+              15.931000001430512
+            ],
+            [
+              3.426769759392598,
+              4.249786510924396,
+              15.921000001430512
+            ],
+            [
+              3.4327356995621727,
+              3.3566099284067654,
+              15.911000001430512
+            ],
+            [
+              3.0244665574832967,
+              3.299022537199366,
+              15.911000001430512
+            ],
+            [
+              1.3580762362170868,
+              3.044379066459167,
+              15.911000001430512
+            ],
+            [
+              -0.0039905188041287065,
+              2.837559930821972,
+              15.921000001430512
+            ],
+            [
+              -0.007641236648831728,
+              -0.0017686292885948614,
+              15.891000001430513
+            ],
+            [
+              8.170457229641123,
+              0.0005713852093065519,
+              15.871000001430511
+            ],
+            [
+              8.194929019907995,
+              8.405343906311806,
+              15.951000001430511
+            ],
+            [
+              8.212716453113341,
+              13.419252920964961,
+              15.991000001430512
+            ],
+            [
+              8.22542755330375,
+              17.114687730014086,
+              16.031000001430513
+            ],
+            [
+              4.829053044088297,
+              17.108347923052264,
+              16.04100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              4.826287408878977,
+              16.902211193520873,
+              16.031000001430513
+            ],
+            [
+              2.9610257829844224,
+              16.685649269432172,
+              19.32100000143051
+            ],
+            [
+              3.0061948701818015,
+              8.481750211449866,
+              19.23100000143051
+            ],
+            [
+              2.997175023141921,
+              8.424142552589512,
+              19.23100000143051
+            ],
+            [
+              3.3212724379506198,
+              8.210224657792555,
+              18.67100000143051
+            ],
+            [
+              3.410687163978999,
+              8.149355891012956,
+              18.50100000143051
+            ],
+            [
+              3.419954747373746,
+              8.153112471641828,
+              18.49100000143051
+            ],
+            [
+              4.657043128569729,
+              8.48191687719298,
+              16.321000001430512
+            ],
+            [
+              4.86317985810112,
+              8.479151241983661,
+              15.961000001430511
+            ]
+          ]
+        ]
+      }
+    ],
+    "groundNAP": -0.11100000143051147,
+    "sourceOffsetNAP": 0.65,
+    "source": "3DBAG LoD2.2",
+    "pointCloudYear": 2023
+  },
+  "heightEvidence": [
+    {
+      "source": "3DBAG LoD2.2",
+      "year": 2023,
+      "groundNAP": -0.11100000143051147,
+      "selectedWallHeightRaw": {
+        "surfaceIndex": 51,
+        "planeErrorM": 0.001768629295821779,
+        "overlapM": 8.170457229651777,
+        "bottom": -0.76,
+        "top": 15.13,
+        "heightM": 15.89,
+        "status": "selected-coplanar-source-wall; feature registration unresolved"
+      },
+      "selectedWallTopRelativeM": 15.891000001430513,
+      "roofStatisticRelativeM": 18.05,
+      "lineage": "AHN-derived3DBAG; not independent height evidence"
+    }
+  ],
+  "heightChoice": {
+    "value": 15.891000001430513,
+    "eavesM": 15.891000001430513,
+    "roofPeakM": 19.33100000143051,
+    "reportedRoofStatisticM": 18.05,
+    "reason": "Selected wall top normalized by source offsetNAP-groundNAP; rear roof percentile is not substituted for frontage eaves."
+  },
+  "targetAppearanceDate": "2023-02-13T10:02:16.473730Z",
+  "authoringStatus": "reviewed simplified candidate; metric registration and rear appearance unresolved",
+  "assumptions": [
+    "The complete 13.32 m selected owner frontage is retained. Ten apartment addresses do not imply ten separate warehouse gables; context gables farther down the street belong to neighboring owners.",
+    "The original source shell is immutable. Exact duplicate normalization excludes only revision-bound zero-area surface 18; repair proof is retained in artifacts/jordaan-building-library/brouwers-normalization/audit.json.",
+    "The street profile retains native full-precision top coordinates from source surfaces 51, 2, 14 and 15. The left flat frontage, high rear roof and asymmetric right gable follow the source.",
+    "Oblique upper evidence from 2022 and clearer ground evidence from 2023 support proportional interpretation of circular oculi and red shutter portals. Apartment loading windows and balconies are simplified. Ground shutters use inferred 125 and 90 degree angles.",
+    "Hidden sides, rear materials and photographic feature registration remain unresolved."
+  ],
+  "massing": {
+    "mode": "source-derived",
+    "frontageTolerance": 0.04,
+    "maxPlanarityDeviation": 0.03,
+    "sourceNormalization": {
+      "geometryRevision": "7d132f154903b2530cdfcca36d30a3d77e22bd33b87eeba7aa30ca02b146bc0a",
+      "surfaceIndices": [
+        18
+      ],
+      "provenance": {
+        "basis": "Exact cached-source duplicate audit",
+        "note": "Surface18 is [A,A,B], zero area; omit only this explicitly bound degenerate face."
+      }
+    }
+  },
+  "sourceBundlePath": "artifacts/jordaan-building-library/authored-evidence/brouwersgracht-907-925.json"
+}

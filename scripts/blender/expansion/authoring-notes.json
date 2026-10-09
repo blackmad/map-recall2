@@ -1,0 +1,182 @@
+{
+  "version": 1,
+  "reviewDate": "2026-09-30",
+  "policy": "Visual observations are separate from metric inference. These drafts are review candidates; no feature is marked registered.",
+  "entries": {
+    "lauriergracht-67-69": {
+      "groundHeightM": 3.1,
+      "upperRows": 3,
+      "roofKind": "pitched",
+      "eavesChoice": "dominant-front-wall-top",
+      "groundColour": "#2d3134",
+      "frameColour": "#dfdfcf",
+      "observed": [
+        "Three upper rows; broad outer grouped windows and two narrower middle windows.",
+        "Dark grey plinth; recessed central residential entrance with a short stoop.",
+        "Hip-like roof silhouette and dormer visible behind bare branches; hidden roof portions unresolved."
+      ],
+      "diversity": "1939 wide residential facade, grouped timber lights, dark plinth, setback entrance; supports a future grouped-window and stoop assembly.",
+      "limitations": [
+        "Original crop is approximately0.73m wider than selected 3DBAG wall; no exact pixel-to-metre transfer.",
+        "2025 greenery obscures some ground glazing and the door recess.",
+        "The current compiler lacks hip roof and true entrance recess; draft pitched volume is a labelled placeholder."
+      ],
+      "readiness": "draft-photos-reviewed-metric-unregistered",
+      "inspectionDate": "2026-10-01"
+    },
+    "rozengracht-251": {
+      "groundHeightM": 4.7,
+      "upperRows": 3,
+      "roofKind": "flat",
+      "eavesChoice": "dominant-front-wall-top",
+      "groundColour": "#354146",
+      "frameColour": "#e2e1d5",
+      "observed": [
+        "Three upper rows and three bays; pale horizontal masonry bands and straight cornice.",
+        "Projecting balcony at upper_2, covering the middle and right bay region.",
+        "Moeders dark painted storefront, left separate entrance, middle white door and broad right display; two sign fascias."
+      ],
+      "diversity": "Historic three-bay corner-facing restaurant front, projecting balcony, painted commercial ground floor, stone banding.",
+      "limitations": [
+        "Balcony extent and brackets require an assembly that spans two bays; current per-opening balcony is undersized.",
+        "2022 storefront and2025 upper facade are structural reference dates; latest dated ground crop must select coherent business appearance.",
+        "Flat 3DBAG roof does not establish unseen rear roof shape."
+      ],
+      "readiness": "draft-photos-reviewed-metric-unregistered",
+      "inspectionDate": "2026-10-01"
+    },
+    "rozengracht-228": {
+      "groundHeightM": 3.0,
+      "upperRows": 4,
+      "roofKind": "pitched",
+      "eavesChoice": "near-front-shell-shoulder-held",
+      "groundColour": "#c4c5b4",
+      "frameColour": "#dddec8",
+      "gableRatios": [
+        [
+          0,
+          0
+        ],
+        [
+          0.18,
+          0
+        ],
+        [
+          0.44,
+          1
+        ],
+        [
+          0.6,
+          1
+        ],
+        [
+          0.86,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "observed": [
+        "Four two-bay upper rows and a centered tall attic window in a truncated triangular gable.",
+        "Segmental arches and pale timber joinery.",
+        "Light painted ground with a left door and two right glazing bays; temporary construction fence in2022."
+      ],
+      "diversity": "Tall narrow historic house with four upper storeys, independent attic, shaped gable, pale ground treatment.",
+      "limitations": [
+        "Selected BAG frontage has no coplanar 3DBAG wall within0.15m. Broken source front extends0.05\u20131.34m behind selected plane; hold metric facade acceptance.",
+        "Near-front-shell shoulder is a diagnostic candidate, not a registered eaves measurement.",
+        "Temporary construction fencing is excluded from permanent architecture observations."
+      ],
+      "readiness": "held-source-shell-frontage-disagreement",
+      "inspectionDate": "2026-10-01"
+    },
+    "rozengracht-114": {
+      "groundHeightM": 3.25,
+      "upperRows": 3,
+      "roofKind": "flat",
+      "eavesChoice": "dominant-front-wall-top",
+      "groundColour": "#53514b",
+      "frameColour": "#423e35",
+      "observed": [
+        "Three rows of three rectangular windows below a straight stepped cornice.",
+        "Dark brick, dark timber joinery and a pale blank ground fascia.",
+        "Ground entrance assembly contains a left residential door, a central glazed door and a right door."
+      ],
+      "diversity": "Plain dark three-bay cornice facade, residential entrance assembly and unusual long irregular rear owner footprint.",
+      "limitations": [
+        "Ground source is2025; source upper facade is2022 until new dated primary-plane rectifications are reviewed.",
+        "Owner has119 semantic surfaces and rear volumes; single-volume shell must remain unaccepted.",
+        "Blank fascia must not be assigned invented business text."
+      ],
+      "readiness": "draft-photos-reviewed-metric-unregistered",
+      "inspectionDate": "2026-10-01"
+    },
+    "lauriergracht-37": {
+      "groundHeightM": 3.4,
+      "upperRows": 4,
+      "roofKind": "flat",
+      "eavesChoice": "dominant-front-wall-top",
+      "groundColour": "#5c4d42",
+      "frameColour": "#e5e3d1",
+      "observed": [
+        "New shell-plane2022/2024 views show three complete grouped-window bays plus a clipped left bay, four upper rows and ground.",
+        "Top row windows are narrower than grouped rows below; upper sash lights, pale painted joining and a horizontal pale top strip repeat across dates.",
+        "Ground has two complete grouped windows and a right entrance inside the selected plane; the left partial window and lower wall are cropped/hedge-obscured."
+      ],
+      "diversity": "1923 broad repetitive apartment facade with horizontal grouped windows, small top lights and straight parapet.",
+      "limitations": [
+        "Original21.16m photo-plane layout is rejected; draft uses newly projected14.78m shell-plane visual annotations. Independent metric registration still unresolved.",
+        "Clipped left bay is omitted rather than invented beyond the shell. Source owner footprint does not cover the full wider facade visible in the original photo.",
+        "Cached roof percentile15.11m disagrees with selected-front wall18.70\u201318.72m; raw semantic wall is retained, statistic does not resize it."
+      ],
+      "readiness": "draft-source-scope-clipped-frontage",
+      "newPlaneLayout": {
+        "sourceHash": "84a6c091492fafcf407848c2e7b46560a33686dd4cafb2c172c922a2466ece4a",
+        "sourcePath": "artifacts/building-library/expansion/evidence/lauriergracht-37-2022-01-27-full-84a6c091.jpg",
+        "confirmingPath": "artifacts/building-library/expansion/evidence/lauriergracht-37-2024-12-16-full-b77f1f50.jpg",
+        "bayCentres": [
+          0.3,
+          0.565,
+          0.825
+        ],
+        "upperRowWidthFractions": [
+          0.12,
+          0.18,
+          0.18,
+          0.195
+        ],
+        "groundWindows": [
+          0.3,
+          0.565
+        ],
+        "groundDoor": 0.825,
+        "partialLeftBay": "omitted; clipped by selected source wall",
+        "status": "visual proportions observed; conversion to metric is inferred"
+      },
+      "inspectionDate": "2026-10-01"
+    },
+    "rozengracht-249": {
+      "groundHeightM": 3.9,
+      "upperRows": 3,
+      "roofKind": "flat",
+      "eavesChoice": "dominant-front-wall-top",
+      "groundColour": "#745546",
+      "frameColour": "#ece7d6",
+      "observed": [
+        "Three rows of three windows, pale stone bands and projecting balcony at upper_2.",
+        "Left narrow entrance and broad right arched display at street level.",
+        "Dark red brick with ivory joinery and a straight cornice."
+      ],
+      "diversity": "Reserve terrace recipe exercising segmental ground display, entrance asymmetry and wider balcony assembly; same family as251.",
+      "limitations": [
+        "Reserve adds less architectural diversity than the held apartment/gable candidates.",
+        "2022 ground source and2025 full require dated review before combining appearance.",
+        "Arched broad ground display and balcony dimensions need dedicated evidence-backed assembly."
+      ],
+      "readiness": "reserve-photos-reviewed-metric-unregistered",
+      "inspectionDate": "2026-10-01"
+    }
+  }
+}

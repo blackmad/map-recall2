@@ -1,0 +1,2638 @@
+{
+  "schemaVersion": 1,
+  "id": "lauriergracht-67-69",
+  "name": "Lauriergracht residential pair",
+  "address": "Lauriergracht 67 / Lauriergracht 69",
+  "caseId": "case-05",
+  "synthetic": false,
+  "buildingId": "0363100012168980",
+  "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+  "sourceBundle": "lauriergracht-67-69.json",
+  "sourceBundlePath": "artifacts/building-library/expansion/evidence/lauriergracht-67-69.json",
+  "footprint": [
+    [
+      -0.003879182578369965,
+      -0.009216937806207063
+    ],
+    [
+      10.192319473721653,
+      -0.014958128022191097
+    ],
+    [
+      10.356331313135286,
+      9.268360250474377
+    ],
+    [
+      5.017645081474558,
+      9.215168898959702
+    ],
+    [
+      5.0245655431943534,
+      11.577466955346672
+    ],
+    [
+      1.9676455375935293,
+      11.583797781314566
+    ],
+    [
+      1.3630826911191618,
+      12.673661885073773
+    ],
+    [
+      1.3025674428965317,
+      15.107740335890952
+    ],
+    [
+      5.031796339520426,
+      15.100540573025492
+    ],
+    [
+      5.032789410260493,
+      18.17055669901092
+    ],
+    [
+      -0.3500264024118058,
+      18.038292089818672
+    ],
+    [
+      -0.24637464391762176,
+      12.613270770693617
+    ]
+  ],
+  "height": 18.57100000143051,
+  "storeys": [
+    {
+      "id": "ground",
+      "bottom": 0,
+      "top": 3.1
+    },
+    {
+      "id": "upper_1",
+      "bottom": 3.1,
+      "top": 6.673666667143504
+    },
+    {
+      "id": "upper_2",
+      "bottom": 6.673666667143504,
+      "top": 10.247333334287008
+    },
+    {
+      "id": "upper_3",
+      "bottom": 10.247333334287008,
+      "top": 13.821000001430512
+    }
+  ],
+  "roof": {
+    "kind": "pitched",
+    "eaves": 13.821000001430512,
+    "top": 15.221000001430513,
+    "status": "inferred",
+    "setback": 0.24,
+    "sourcePeakM": 18.57100000143051,
+    "coveringSource": "source-derived semantic surfaces; kind/top descriptor is not an analytic reconstructed roof claim"
+  },
+  "gable": {
+    "profile": [
+      [
+        0.0,
+        13.821000001430512
+      ],
+      [
+        9.666985052228044,
+        13.821000001430512
+      ]
+    ],
+    "status": "inferred"
+  },
+  "frontages": [
+    {
+      "id": "street",
+      "origin": [
+        0,
+        0
+      ],
+      "rotation": 0,
+      "width": 9.666985052228044,
+      "openings": [
+        {
+          "id": "full:window-r1-b4",
+          "x": 7.85,
+          "z": 12.03416666785876,
+          "width": 2.416746263057011,
+          "height": 2.147597000153064,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.28,
+          "storey": "upper_3",
+          "frameColour": "#dfdfcf",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "9f518a1ebd8a637fbd7e8183ce638210d480d3296644ea26d45e7df922b5f1a4",
+            "reason": "Front grouped lights and continuous projecting bay observed across2022/2023/2024/2025; x/width/depth retain unregistered author proportions within selected metric frontage.",
+            "sources": [
+              "lauriergracht-67-69-2022-01-27-full-bc12f9f9.jpg",
+              "lauriergracht-67-69-2023-02-27-full-72f77557.jpg",
+              "lauriergracht-67-69-2024-12-16-full-326caf57.jpg",
+              "lauriergracht-67-69-2025-07-03-full-a1cbebf8.jpg"
+            ]
+          },
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "upperLights": [
+            0.16666666666666666,
+            0.5,
+            0.8333333333333334
+          ],
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full:window-r1-b1",
+          "x": 2.1557376666468535,
+          "z": 12.03416666785876,
+          "width": 2.6100859641015717,
+          "height": 2.067313000147343,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.28,
+          "storey": "upper_3",
+          "frameColour": "#dfdfcf",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "9f518a1ebd8a637fbd7e8183ce638210d480d3296644ea26d45e7df922b5f1a4",
+            "reason": "Front grouped lights and continuous projecting bay observed across2022/2023/2024/2025; x/width/depth retain unregistered author proportions within selected metric frontage.",
+            "sources": [
+              "lauriergracht-67-69-2022-01-27-full-bc12f9f9.jpg",
+              "lauriergracht-67-69-2023-02-27-full-72f77557.jpg",
+              "lauriergracht-67-69-2024-12-16-full-326caf57.jpg",
+              "lauriergracht-67-69-2025-07-03-full-a1cbebf8.jpg"
+            ]
+          },
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "upperLights": [
+            0.16666666666666666,
+            0.5,
+            0.8333333333333334
+          ],
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full:window-r1-b2",
+          "x": 4.2631404080325686,
+          "z": 12.03416666785876,
+          "width": 1.0633683557450848,
+          "height": 1.6658930001187326,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.28,
+          "storey": "upper_3",
+          "frameColour": "#dfdfcf",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "9f518a1ebd8a637fbd7e8183ce638210d480d3296644ea26d45e7df922b5f1a4",
+            "reason": "Visually checked bay/row hypothesis; original crop registration unresolved; metric dimensions are not observed."
+          },
+          "mullions": [
+            0.5
+          ],
+          "upperLights": [
+            0.25,
+            0.5,
+            0.75
+          ],
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full:window-r1-b3",
+          "x": 5.848525956597967,
+          "z": 12.03416666785876,
+          "width": 1.024700415536173,
+          "height": 1.6658930001187326,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.28,
+          "storey": "upper_3",
+          "frameColour": "#dfdfcf",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "9f518a1ebd8a637fbd7e8183ce638210d480d3296644ea26d45e7df922b5f1a4",
+            "reason": "Visually checked bay/row hypothesis; original crop registration unresolved; metric dimensions are not observed."
+          },
+          "mullions": [
+            0.5
+          ],
+          "upperLights": [
+            0.25,
+            0.5,
+            0.75
+          ],
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full:window-r2-b1",
+          "x": 2.1557376666468535,
+          "z": 8.460500000715257,
+          "width": 2.6100859641015717,
+          "height": 2.067313000147343,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.28,
+          "storey": "upper_2",
+          "frameColour": "#dfdfcf",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "9f518a1ebd8a637fbd7e8183ce638210d480d3296644ea26d45e7df922b5f1a4",
+            "reason": "Front grouped lights and continuous projecting bay observed across2022/2023/2024/2025; x/width/depth retain unregistered author proportions within selected metric frontage.",
+            "sources": [
+              "lauriergracht-67-69-2022-01-27-full-bc12f9f9.jpg",
+              "lauriergracht-67-69-2023-02-27-full-72f77557.jpg",
+              "lauriergracht-67-69-2024-12-16-full-326caf57.jpg",
+              "lauriergracht-67-69-2025-07-03-full-a1cbebf8.jpg"
+            ]
+          },
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "upperLights": [
+            0.16666666666666666,
+            0.5,
+            0.8333333333333334
+          ],
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full:window-r2-b4",
+          "x": 7.85,
+          "z": 8.460500000715257,
+          "width": 2.416746263057011,
+          "height": 2.067313000147343,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.28,
+          "storey": "upper_2",
+          "frameColour": "#dfdfcf",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "9f518a1ebd8a637fbd7e8183ce638210d480d3296644ea26d45e7df922b5f1a4",
+            "reason": "Front grouped lights and continuous projecting bay observed across2022/2023/2024/2025; x/width/depth retain unregistered author proportions within selected metric frontage.",
+            "sources": [
+              "lauriergracht-67-69-2022-01-27-full-bc12f9f9.jpg",
+              "lauriergracht-67-69-2023-02-27-full-72f77557.jpg",
+              "lauriergracht-67-69-2024-12-16-full-326caf57.jpg",
+              "lauriergracht-67-69-2025-07-03-full-a1cbebf8.jpg"
+            ]
+          },
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "upperLights": [
+            0.16666666666666666,
+            0.5,
+            0.8333333333333334
+          ],
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full:window-r2-b2",
+          "x": 4.2631404080325686,
+          "z": 8.460500000715257,
+          "width": 1.0633683557450848,
+          "height": 1.6658930001187326,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.28,
+          "storey": "upper_2",
+          "frameColour": "#dfdfcf",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "9f518a1ebd8a637fbd7e8183ce638210d480d3296644ea26d45e7df922b5f1a4",
+            "reason": "Visually checked bay/row hypothesis; original crop registration unresolved; metric dimensions are not observed."
+          },
+          "mullions": [
+            0.5
+          ],
+          "upperLights": [
+            0.25,
+            0.5,
+            0.75
+          ],
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full:window-r2-b3",
+          "x": 5.848525956597967,
+          "z": 8.460500000715257,
+          "width": 1.024700415536173,
+          "height": 1.6658930001187326,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.28,
+          "storey": "upper_2",
+          "frameColour": "#dfdfcf",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "9f518a1ebd8a637fbd7e8183ce638210d480d3296644ea26d45e7df922b5f1a4",
+            "reason": "Visually checked bay/row hypothesis; original crop registration unresolved; metric dimensions are not observed."
+          },
+          "mullions": [
+            0.5
+          ],
+          "upperLights": [
+            0.25,
+            0.5,
+            0.75
+          ],
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full:window-r3-b1",
+          "x": 2.1557376666468535,
+          "z": 4.886833333571753,
+          "width": 2.6100859641015717,
+          "height": 2.047242000145914,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.28,
+          "storey": "upper_1",
+          "frameColour": "#dfdfcf",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "9f518a1ebd8a637fbd7e8183ce638210d480d3296644ea26d45e7df922b5f1a4",
+            "reason": "Front grouped lights and continuous projecting bay observed across2022/2023/2024/2025; x/width/depth retain unregistered author proportions within selected metric frontage.",
+            "sources": [
+              "lauriergracht-67-69-2022-01-27-full-bc12f9f9.jpg",
+              "lauriergracht-67-69-2023-02-27-full-72f77557.jpg",
+              "lauriergracht-67-69-2024-12-16-full-326caf57.jpg",
+              "lauriergracht-67-69-2025-07-03-full-a1cbebf8.jpg"
+            ]
+          },
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "upperLights": [
+            0.16666666666666666,
+            0.5,
+            0.8333333333333334
+          ],
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full:window-r3-b4",
+          "x": 7.85,
+          "z": 4.886833333571753,
+          "width": 2.416746263057011,
+          "height": 2.047242000145914,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.28,
+          "storey": "upper_1",
+          "frameColour": "#dfdfcf",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "9f518a1ebd8a637fbd7e8183ce638210d480d3296644ea26d45e7df922b5f1a4",
+            "reason": "Front grouped lights and continuous projecting bay observed across2022/2023/2024/2025; x/width/depth retain unregistered author proportions within selected metric frontage.",
+            "sources": [
+              "lauriergracht-67-69-2022-01-27-full-bc12f9f9.jpg",
+              "lauriergracht-67-69-2023-02-27-full-72f77557.jpg",
+              "lauriergracht-67-69-2024-12-16-full-326caf57.jpg",
+              "lauriergracht-67-69-2025-07-03-full-a1cbebf8.jpg"
+            ]
+          },
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "upperLights": [
+            0.16666666666666666,
+            0.5,
+            0.8333333333333334
+          ],
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full:window-r3-b2",
+          "x": 4.2631404080325686,
+          "z": 4.886833333571753,
+          "width": 1.0633683557450848,
+          "height": 1.665893000118731,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.28,
+          "storey": "upper_1",
+          "frameColour": "#dfdfcf",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "9f518a1ebd8a637fbd7e8183ce638210d480d3296644ea26d45e7df922b5f1a4",
+            "reason": "Visually checked bay/row hypothesis; original crop registration unresolved; metric dimensions are not observed."
+          },
+          "mullions": [
+            0.5
+          ],
+          "upperLights": [
+            0.25,
+            0.5,
+            0.75
+          ],
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "full:window-r3-b3",
+          "x": 5.848525956597967,
+          "z": 4.886833333571753,
+          "width": 1.024700415536173,
+          "height": 1.665893000118731,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.28,
+          "storey": "upper_1",
+          "frameColour": "#dfdfcf",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "9f518a1ebd8a637fbd7e8183ce638210d480d3296644ea26d45e7df922b5f1a4",
+            "reason": "Visually checked bay/row hypothesis; original crop registration unresolved; metric dimensions are not observed."
+          },
+          "mullions": [
+            0.5
+          ],
+          "upperLights": [
+            0.25,
+            0.5,
+            0.75
+          ],
+          "upperLightBars": [
+            0.5
+          ]
+        },
+        {
+          "id": "ground:left-triplet",
+          "x": 2.03,
+          "z": 1.72,
+          "width": 2.72,
+          "height": 2.16,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.3,
+          "storey": "ground",
+          "frameColour": "#dddccc",
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "upperLights": [
+            0.16666666666666666,
+            0.5,
+            0.8333333333333334
+          ],
+          "upperLightBars": [
+            0.5
+          ],
+          "provenance": {
+            "status": "inferred",
+            "sources": [
+              "2022-01-27",
+              "2023-02-27",
+              "2024-12-16",
+              "2025-07-03"
+            ],
+            "basis": "Repeated ground evidence supports left triplet, ivy-covered central paired entry, separate narrow right light, right triplet. Heights and hidden portal inferred; original selected frontage and crop edge retained; no metric registration."
+          }
+        },
+        {
+          "id": "ground:right-single",
+          "x": 5.7,
+          "z": 1.72,
+          "width": 1.05,
+          "height": 2.16,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.3,
+          "storey": "ground",
+          "frameColour": "#dddccc",
+          "mullions": [],
+          "upperLights": [
+            0.25,
+            0.5,
+            0.75
+          ],
+          "upperLightBars": [
+            0.5
+          ],
+          "provenance": {
+            "status": "inferred",
+            "sources": [
+              "2022-01-27",
+              "2023-02-27",
+              "2024-12-16",
+              "2025-07-03"
+            ],
+            "basis": "Repeated ground evidence supports left triplet, ivy-covered central paired entry, separate narrow right light, right triplet. Heights and hidden portal inferred; original selected frontage and crop edge retained; no metric registration."
+          }
+        },
+        {
+          "id": "ground:right-triplet",
+          "x": 7.9,
+          "z": 1.72,
+          "width": 2.83,
+          "height": 2.16,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.3,
+          "storey": "ground",
+          "frameColour": "#dddccc",
+          "mullions": [
+            0.3333333333333333,
+            0.6666666666666666
+          ],
+          "upperLights": [
+            0.16666666666666666,
+            0.5,
+            0.8333333333333334
+          ],
+          "upperLightBars": [
+            0.5
+          ],
+          "provenance": {
+            "status": "inferred",
+            "sources": [
+              "2022-01-27",
+              "2023-02-27",
+              "2024-12-16",
+              "2025-07-03"
+            ],
+            "basis": "Repeated ground evidence supports left triplet, ivy-covered central paired entry, separate narrow right light, right triplet. Heights and hidden portal inferred; original selected frontage and crop edge retained; no metric registration."
+          }
+        },
+        {
+          "id": "ground:paired-entry",
+          "x": 4.39,
+          "z": 1.405,
+          "width": 1.18,
+          "height": 2.57,
+          "kind": "door",
+          "head": "rectangular",
+          "storey": "ground",
+          "transom": 0.2,
+          "mullions": [
+            0.5
+          ],
+          "frameColour": "#373b32",
+          "glassColour": "#29322d",
+          "handleFractions": [
+            0.42,
+            0.58
+          ],
+          "lowerPanel": {
+            "height": 0.55,
+            "divisions": [
+              0.5
+            ],
+            "colour": "#373b32"
+          },
+          "provenance": {
+            "status": "inferred",
+            "sources": [
+              "2022-01-27",
+              "2023-02-27",
+              "2024-12-16",
+              "2025-07-03"
+            ],
+            "basis": "Repeated ground evidence supports left triplet, ivy-covered central paired entry, separate narrow right light, right triplet. Heights and hidden portal inferred; original selected frontage and crop edge retained; no metric registration."
+          }
+        }
+      ],
+      "storefront": {
+        "anchor": 4.833492526114022,
+        "height": 3.1,
+        "finishColour": "#5c4d45",
+        "signs": [],
+        "awnings": [],
+        "cornice": false
+      },
+      "groupedBays": [
+        {
+          "id": "left-projecting-stack",
+          "x": 2.1557376666468535,
+          "width": 3.06,
+          "projection": 0.55,
+          "returnInset": 0.12,
+          "bottom": 3.1,
+          "top": 13.821000001430512,
+          "openingIds": [
+            "full:window-r1-b1",
+            "full:window-r2-b1",
+            "full:window-r3-b1"
+          ],
+          "sideWindows": true,
+          "frameColour": "#dfdfcf",
+          "sillDepth": 0.22,
+          "sillProjection": 0.12,
+          "provenance": {
+            "status": "inferred",
+            "sources": [
+              "lauriergracht-67-69-2022-01-27-full-bc12f9f9.jpg",
+              "lauriergracht-67-69-2023-02-27-full-72f77557.jpg",
+              "lauriergracht-67-69-2024-12-16-full-326caf57.jpg",
+              "lauriergracht-67-69-2025-07-03-full-a1cbebf8.jpg"
+            ],
+            "basis": "Continuous masonry spandrels and glazed side returns observed on3upperrows across4datedcaptures; projection and returninset dimensions unregistered and authored."
+          }
+        },
+        {
+          "id": "right-projecting-stack",
+          "x": 7.85,
+          "width": 2.9,
+          "projection": 0.55,
+          "returnInset": 0.12,
+          "bottom": 3.1,
+          "top": 13.821000001430512,
+          "openingIds": [
+            "full:window-r1-b4",
+            "full:window-r2-b4",
+            "full:window-r3-b4"
+          ],
+          "sideWindows": true,
+          "frameColour": "#dfdfcf",
+          "sillDepth": 0.22,
+          "sillProjection": 0.12,
+          "provenance": {
+            "status": "inferred",
+            "sources": [
+              "lauriergracht-67-69-2022-01-27-full-bc12f9f9.jpg",
+              "lauriergracht-67-69-2023-02-27-full-72f77557.jpg",
+              "lauriergracht-67-69-2024-12-16-full-326caf57.jpg",
+              "lauriergracht-67-69-2025-07-03-full-a1cbebf8.jpg"
+            ],
+            "basis": "Continuous masonry spandrels and glazed side returns observed on3upperrows across4datedcaptures; projection and returninset dimensions unregistered and authored."
+          }
+        }
+      ],
+      "materialZones": [
+        {
+          "id": "ground-dark-base",
+          "x": 4.833492526114022,
+          "z": 0.35,
+          "width": 9.666985052228044,
+          "height": 0.7,
+          "material": "whiterender",
+          "colour": "#343735",
+          "frontDepth": -0.11,
+          "thickness": 0.025,
+          "provenance": {
+            "status": "inferred",
+            "sources": [
+              "2022-01-27",
+              "2023-02-27",
+              "2024-12-16",
+              "2025-07-03"
+            ],
+            "basis": "Repeated ground evidence supports left triplet, ivy-covered central paired entry, separate narrow right light, right triplet. Heights and hidden portal inferred; original selected frontage and crop edge retained; no metric registration."
+          }
+        }
+      ]
+    }
+  ],
+  "materials": {
+    "wall": "brownbrick",
+    "wallColour": "#5c4d45",
+    "roof": "slate",
+    "frame": "ivorytimber"
+  },
+  "details": {
+    "sourceDormers": [
+      {
+        "id": "front-dormer-1",
+        "sourceSurfaceIndices": [
+          51
+        ],
+        "x": 3.55,
+        "y": 0.6,
+        "width": 1.65,
+        "height": 1.45,
+        "depth": 0.65,
+        "provenance": {
+          "status": "inferred",
+          "sources": [
+            "2022-01-27",
+            "2023-02-27",
+            "2024-12-16",
+            "2025-07-03"
+          ],
+          "basis": "Two flat-capped front dormers observed above roofcornice; exact dimensions/setback inferred from unregistered crops, bases query selected measured source roof51. No stock pitched replacement of actual roof."
+        }
+      },
+      {
+        "id": "front-dormer-2",
+        "sourceSurfaceIndices": [
+          51
+        ],
+        "x": 6.1,
+        "y": 0.6,
+        "width": 1.65,
+        "height": 1.45,
+        "depth": 0.65,
+        "provenance": {
+          "status": "inferred",
+          "sources": [
+            "2022-01-27",
+            "2023-02-27",
+            "2024-12-16",
+            "2025-07-03"
+          ],
+          "basis": "Two flat-capped front dormers observed above roofcornice; exact dimensions/setback inferred from unregistered crops, bases query selected measured source roof51. No stock pitched replacement of actual roof."
+        }
+      }
+    ]
+  },
+  "placement": {
+    "anchor": [
+      4.879875801850073,
+      52.37102459247667
+    ],
+    "xAxisBearingDegrees": 247.1749708076433,
+    "frontageLocal": [
+      [
+        507.089,
+        -190.532
+      ],
+      [
+        498.179,
+        -186.782
+      ]
+    ],
+    "inputFrameDeterminant": -1.0,
+    "axes": "glTF x=along frontage,y=up,z=towards street",
+    "sourceRDFrame": {
+      "anchorRD": [
+        120449.63817002578,
+        487137.1540474554
+      ],
+      "xAxisRD": [
+        -0.9216937806215445,
+        -0.3879182578373493
+      ],
+      "yAxisRD": [
+        0.3879182578373493,
+        -0.9216937806215445
+      ],
+      "geometryRevision": "a1f568787b7252f06c9be2aab3df69fde04e560b1bd220e8e71a5a26b9ed4b76",
+      "buildingId": "0363100012168980",
+      "source": "Frozen 3DBAG coordinateFrame.originRD and ordered physical frontage; normalized source vertices checked within 1 mm."
+    }
+  },
+  "sourceShell": {
+    "surfaces": [
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              2.034926080232846,
+              2.8758087293817294,
+              17.63100000143051
+            ],
+            [
+              2.034926080232846,
+              2.8758087293817294,
+              16.32100000143051
+            ],
+            [
+              1.9201643428342683,
+              7.990867843764407,
+              16.25100000143051
+            ],
+            [
+              1.9201643428342683,
+              7.990867843764407,
+              17.60100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              1.9715247201719106,
+              11.593014719120799,
+              17.81100000143051
+            ],
+            [
+              1.9715247201719106,
+              11.593014719120799,
+              16.20100000143051
+            ],
+            [
+              1.9715247201719106,
+              11.593014719120799,
+              0.001000001430511488
+            ],
+            [
+              1.879820844019184,
+              11.761805711470982,
+              0.001000001430511488
+            ],
+            [
+              1.879820844019184,
+              11.761805711470982,
+              3.921000001430512
+            ],
+            [
+              1.879820844019184,
+              11.761805711470982,
+              17.65100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              1.879820844019184,
+              11.761805711470982,
+              17.65100000143051
+            ],
+            [
+              1.879820844019184,
+              11.761805711470982,
+              3.921000001430512
+            ],
+            [
+              0.7103559137517395,
+              11.483683837331917,
+              3.921000001430512
+            ],
+            [
+              0.7103559137517395,
+              11.483683837331917,
+              15.60100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              0.0,
+              0.0,
+              13.641000001430513
+            ],
+            [
+              0.0,
+              0.0,
+              0.001000001430511488
+            ],
+            [
+              9.666985052228044,
+              0.0,
+              0.001000001430511488
+            ],
+            [
+              9.666985052228044,
+              0.0,
+              13.821000001430512
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              5.218462605191805,
+              9.228296052804918,
+              16.15100000143051
+            ],
+            [
+              5.218462605191805,
+              9.228296052804918,
+              13.841000001430512
+            ],
+            [
+              5.218462605191805,
+              9.228296052804918,
+              0.001000001430511488
+            ],
+            [
+              5.025403446631309,
+              9.233602774572143,
+              0.001000001430511488
+            ],
+            [
+              5.025403446631309,
+              9.233602774572143,
+              16.16100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              5.025403446631309,
+              9.233602774572143,
+              16.16100000143051
+            ],
+            [
+              5.025403446631309,
+              9.233602774572143,
+              0.001000001430511488
+            ],
+            [
+              5.028444725772735,
+              11.586683893152905,
+              0.001000001430511488
+            ],
+            [
+              5.028444725772735,
+              11.586683893152905,
+              16.13100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              1.3708410562759128,
+              12.692095760686213,
+              3.9310000014305118
+            ],
+            [
+              1.3708410562759128,
+              12.692095760686213,
+              0.001000001430511488
+            ],
+            [
+              1.3064466254749023,
+              15.116957273697158,
+              0.001000001430511488
+            ],
+            [
+              1.3064466254749023,
+              15.116957273697158,
+              3.9510000014305113
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              1.3064466254749023,
+              15.116957273697158,
+              3.9510000014305113
+            ],
+            [
+              1.3064466254749023,
+              15.116957273697158,
+              0.001000001430511488
+            ],
+            [
+              5.035675522098806,
+              15.109757510831725,
+              0.001000001430511488
+            ],
+            [
+              5.035675522098806,
+              15.109757510831725,
+              3.9410000014305115
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              5.028444725772735,
+              11.586683893152905,
+              16.13100000143051
+            ],
+            [
+              5.028444725772735,
+              11.586683893152905,
+              0.001000001430511488
+            ],
+            [
+              1.9715247201719106,
+              11.593014719120799,
+              0.001000001430511488
+            ],
+            [
+              1.9715247201719106,
+              11.593014719120799,
+              16.20100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              -0.34226803725505484,
+              18.056725965431113,
+              3.9810000014305116
+            ],
+            [
+              -0.34226803725505484,
+              18.056725965431113,
+              0.001000001430511488
+            ],
+            [
+              -0.2136964098774401,
+              11.42776154128208,
+              0.001000001430511488
+            ],
+            [
+              -0.2136964098774401,
+              11.42776154128208,
+              3.921000001430512
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              5.035675522098806,
+              15.109757510831725,
+              3.9410000014305115
+            ],
+            [
+              5.035675522098806,
+              15.109757510831725,
+              0.001000001430511488
+            ],
+            [
+              5.036668592838863,
+              18.179773636817128,
+              0.001000001430511488
+            ],
+            [
+              5.036668592838863,
+              18.179773636817128,
+              3.961000001430512
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              5.036668592838863,
+              18.179773636817128,
+              3.961000001430512
+            ],
+            [
+              5.036668592838863,
+              18.179773636817128,
+              0.001000001430511488
+            ],
+            [
+              -0.34226803725505484,
+              18.056725965431113,
+              0.001000001430511488
+            ],
+            [
+              -0.34226803725505484,
+              18.056725965431113,
+              3.9810000014305116
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              1.9201643428342683,
+              7.990867843764407,
+              17.60100000143051
+            ],
+            [
+              1.9201643428342683,
+              7.990867843764407,
+              16.25100000143051
+            ],
+            [
+              1.9715247201719106,
+              11.593014719120799,
+              16.20100000143051
+            ],
+            [
+              1.9715247201719106,
+              11.593014719120799,
+              17.81100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              1.879820844019184,
+              11.761805711470982,
+              3.921000001430512
+            ],
+            [
+              1.879820844019184,
+              11.761805711470982,
+              0.001000001430511488
+            ],
+            [
+              1.3708410562759128,
+              12.692095760686213,
+              0.001000001430511488
+            ],
+            [
+              1.3708410562759128,
+              12.692095760686213,
+              3.9310000014305118
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              1.9743797985496179,
+              2.2937141084013324,
+              17.63100000143051
+            ],
+            [
+              1.9743797985496179,
+              2.2937141084013324,
+              17.50100000143051
+            ],
+            [
+              1.892885930943158,
+              2.306313693415874,
+              17.37100000143051
+            ],
+            [
+              1.892885930943158,
+              2.306313693415874,
+              17.64100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              1.1829024187189225,
+              1.2380799117137038,
+              16.08100000143051
+            ],
+            [
+              1.1829024187189225,
+              1.2380799117137038,
+              15.791000001430511
+            ],
+            [
+              1.5417733574094101,
+              1.7814137403709958,
+              16.73100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              1.892885930943158,
+              2.306313693415874,
+              17.64100000143051
+            ],
+            [
+              1.892885930943158,
+              2.306313693415874,
+              17.37100000143051
+            ],
+            [
+              1.5417733574094101,
+              1.7814137403709958,
+              16.73100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              0.41752417927548835,
+              0.8115870623169905,
+              15.051000001430511
+            ],
+            [
+              0.41752417927548835,
+              0.8115870623169905,
+              14.731000001430512
+            ],
+            [
+              -0.013220254227083061,
+              0.8192833605524774,
+              13.971000001430513
+            ],
+            [
+              -0.013220254227083061,
+              0.8192833605524774,
+              15.051000001430511
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              0.41752417927548835,
+              0.8115870623169905,
+              14.731000001430512
+            ],
+            [
+              0.41752417927548835,
+              0.8115870623169905,
+              15.051000001430511
+            ],
+            [
+              0.8283451310555761,
+              1.040117466374127,
+              15.44100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              1.1829024187189225,
+              1.2380799117137038,
+              15.791000001430511
+            ],
+            [
+              1.1829024187189225,
+              1.2380799117137038,
+              16.08100000143051
+            ],
+            [
+              0.8283451310555761,
+              1.040117466374127,
+              15.44100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              8.032949216374574,
+              2.0981722729906878,
+              17.49100000143051
+            ],
+            [
+              8.032949216374574,
+              2.0981722729906878,
+              17.44100000143051
+            ],
+            [
+              8.17638587139255,
+              6.279993159398557,
+              17.35100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              1.970966117880633,
+              2.414496337161561,
+              17.50100000143051
+            ],
+            [
+              1.970966117880633,
+              2.414496337161561,
+              17.08100000143051
+            ],
+            [
+              2.0398293670119005,
+              2.5265581634856176,
+              16.90100000143051
+            ],
+            [
+              2.0398293670119005,
+              2.5265581634856176,
+              17.63100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              2.0398293670119005,
+              2.5265581634856176,
+              17.63100000143051
+            ],
+            [
+              2.0398293670119005,
+              2.5265581634856176,
+              16.90100000143051
+            ],
+            [
+              2.034926080232846,
+              2.8758087293817294,
+              16.32100000143051
+            ],
+            [
+              2.034926080232846,
+              2.8758087293817294,
+              17.63100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              10.200077838878403,
+              0.0034757475902491564,
+              13.611000001430511
+            ],
+            [
+              10.200077838878403,
+              0.0034757475902491564,
+              0.001000001430511488
+            ],
+            [
+              10.34916258373044,
+              8.555304425648083,
+              0.001000001430511488
+            ],
+            [
+              10.34916258373044,
+              8.555304425648083,
+              13.701000001430511
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              10.34916258373044,
+              8.555304425648083,
+              14.971000001430513
+            ],
+            [
+              10.34916258373044,
+              8.555304425648083,
+              13.701000001430511
+            ],
+            [
+              10.34916258373044,
+              8.555304425648083,
+              0.001000001430511488
+            ],
+            [
+              10.360210495713668,
+              9.27757718828061,
+              0.001000001430511488
+            ],
+            [
+              10.360210495713668,
+              9.27757718828061,
+              13.641000001430513
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              10.34916258373044,
+              8.555304425648083,
+              13.701000001430511
+            ],
+            [
+              10.34916258373044,
+              8.555304425648083,
+              14.971000001430513
+            ],
+            [
+              9.613793700713376,
+              8.561014582403427,
+              14.971000001430513
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              7.2029903453664215,
+              2.111144259532759,
+              17.41100000143051
+            ],
+            [
+              7.2029903453664215,
+              2.111144259532759,
+              16.20100000143051
+            ],
+            [
+              7.234892742890969,
+              2.857188653005537,
+              16.19100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              0.7103559137517395,
+              11.483683837331917,
+              15.60100000143051
+            ],
+            [
+              0.7103559137517395,
+              11.483683837331917,
+              3.921000001430512
+            ],
+            [
+              -0.2136964098774401,
+              11.42776154128208,
+              3.921000001430512
+            ],
+            [
+              -0.2136964098774401,
+              11.42776154128208,
+              13.971000001430513
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              -0.013220254227083061,
+              0.8192833605524774,
+              15.051000001430511
+            ],
+            [
+              -0.013220254227083061,
+              0.8192833605524774,
+              13.971000001430513
+            ],
+            [
+              -0.013220254227083061,
+              0.8192833605524774,
+              0.001000001430511488
+            ],
+            [
+              0.0,
+              0.0,
+              0.001000001430511488
+            ],
+            [
+              0.0,
+              0.0,
+              13.641000001430513
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              -0.2136964098774401,
+              11.42776154128208,
+              13.971000001430513
+            ],
+            [
+              -0.2136964098774401,
+              11.42776154128208,
+              3.921000001430512
+            ],
+            [
+              -0.2136964098774401,
+              11.42776154128208,
+              0.001000001430511488
+            ],
+            [
+              -0.013220254227083061,
+              0.8192833605524774,
+              0.001000001430511488
+            ],
+            [
+              -0.013220254227083061,
+              0.8192833605524774,
+              13.971000001430513
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              10.360210495713668,
+              9.27757718828061,
+              13.641000001430513
+            ],
+            [
+              10.360210495713668,
+              9.27757718828061,
+              0.001000001430511488
+            ],
+            [
+              5.218462605191805,
+              9.228296052804918,
+              0.001000001430511488
+            ],
+            [
+              5.218462605191805,
+              9.228296052804918,
+              13.841000001430512
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              8.032949216374574,
+              2.0981722729906878,
+              17.44100000143051
+            ],
+            [
+              8.032949216374574,
+              2.0981722729906878,
+              17.41100000143051
+            ],
+            [
+              9.253091787845873,
+              0.8468721070498941,
+              15.271000001430512
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              8.032949216374574,
+              2.0981722729906878,
+              17.41100000143051
+            ],
+            [
+              8.032949216374574,
+              2.0981722729906878,
+              17.44100000143051
+            ],
+            [
+              8.032949216374574,
+              2.0981722729906878,
+              17.49100000143051
+            ],
+            [
+              7.969889224380528,
+              2.1030134928484894,
+              17.41100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              7.2029903453664215,
+              2.111144259532759,
+              16.20100000143051
+            ],
+            [
+              7.2029903453664215,
+              2.111144259532759,
+              17.41100000143051
+            ],
+            [
+              7.969889224380528,
+              2.1030134928484894,
+              17.41100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              7.268005445379981,
+              5.230162219848186,
+              16.16100000143051
+            ],
+            [
+              7.268005445379981,
+              5.230162219848186,
+              16.03100000143051
+            ],
+            [
+              7.227537812722394,
+              6.603392852592402,
+              15.841000001430512
+            ],
+            [
+              7.227537812722394,
+              6.603392852592402,
+              16.14100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              7.191973466843861,
+              7.62737291944051,
+              16.73100000143051
+            ],
+            [
+              7.191973466843861,
+              7.62737291944051,
+              16.13100000143051
+            ],
+            [
+              7.227537812722394,
+              6.603392852592402,
+              16.14100000143051
+            ],
+            [
+              7.227537812722394,
+              6.603392852592402,
+              18.57100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              5.357958010710088,
+              7.368553857811424,
+              17.22100000143051
+            ],
+            [
+              5.357958010710088,
+              7.368553857811424,
+              16.18100000143051
+            ],
+            [
+              7.191973466843861,
+              7.62737291944051,
+              16.13100000143051
+            ],
+            [
+              7.191973466843861,
+              7.62737291944051,
+              16.73100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              5.493605267110663,
+              8.5157677968093,
+              15.131000001430511
+            ],
+            [
+              5.493605267110663,
+              8.5157677968093,
+              16.16100000143051
+            ],
+            [
+              5.4277212301995865,
+              7.9467692962134535,
+              16.17100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              5.357958010710088,
+              7.368553857811424,
+              16.18100000143051
+            ],
+            [
+              5.357958010710088,
+              7.368553857811424,
+              17.22100000143051
+            ],
+            [
+              5.4277212301995865,
+              7.9467692962134535,
+              16.17100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              5.493605267110663,
+              8.5157677968093,
+              16.16100000143051
+            ],
+            [
+              5.493605267110663,
+              8.5157677968093,
+              15.131000001430511
+            ],
+            [
+              5.218462605191805,
+              9.228296052804918,
+              13.841000001430512
+            ],
+            [
+              5.218462605191805,
+              9.228296052804918,
+              16.15100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              9.666985052228044,
+              0.0,
+              13.821000001430512
+            ],
+            [
+              9.666985052228044,
+              0.0,
+              14.531000001430511
+            ],
+            [
+              9.253091787845873,
+              0.8468721070498941,
+              15.271000001430512
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              7.268005445379981,
+              5.230162219848186,
+              16.03100000143051
+            ],
+            [
+              7.268005445379981,
+              5.230162219848186,
+              16.16100000143051
+            ],
+            [
+              7.338389334081985,
+              4.907600430091264,
+              16.16100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              7.227537812722394,
+              6.603392852592402,
+              18.57100000143051
+            ],
+            [
+              7.227537812722394,
+              6.603392852592402,
+              16.14100000143051
+            ],
+            [
+              7.227537812722394,
+              6.603392852592402,
+              15.841000001430512
+            ],
+            [
+              8.182561530057287,
+              7.145361208982144,
+              17.29100000143051
+            ],
+            [
+              8.182561530057287,
+              7.145361208982144,
+              17.38100000143051
+            ],
+            [
+              8.182561530057287,
+              7.145361208982144,
+              17.57100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              8.182561530057287,
+              7.145361208982144,
+              17.57100000143051
+            ],
+            [
+              8.182561530057287,
+              7.145361208982144,
+              17.38100000143051
+            ],
+            [
+              8.180606422037823,
+              7.243830379551564,
+              17.39100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              1.9743797985496179,
+              2.2937141084013324,
+              17.27100000143051
+            ],
+            [
+              1.9743797985496179,
+              2.2937141084013324,
+              17.50100000143051
+            ],
+            [
+              1.9743797985496179,
+              2.2937141084013324,
+              17.63100000143051
+            ],
+            [
+              3.2554720866923255,
+              2.1668182878975686,
+              17.44100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              1.9743797985496179,
+              2.2937141084013324,
+              17.50100000143051
+            ],
+            [
+              1.9743797985496179,
+              2.2937141084013324,
+              17.27100000143051
+            ],
+            [
+              1.970966117880633,
+              2.414496337161561,
+              17.08100000143051
+            ],
+            [
+              1.970966117880633,
+              2.414496337161561,
+              17.50100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              8.182561530057287,
+              7.145361208982144,
+              17.38100000143051
+            ],
+            [
+              8.182561530057287,
+              7.145361208982144,
+              17.29100000143051
+            ],
+            [
+              8.17638587139255,
+              6.279993159398557,
+              17.35100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              9.666985052228044,
+              0.0,
+              14.531000001430511
+            ],
+            [
+              9.666985052228044,
+              0.0,
+              13.821000001430512
+            ],
+            [
+              9.666985052228044,
+              0.0,
+              0.001000001430511488
+            ],
+            [
+              10.200077838878403,
+              0.0034757475902491564,
+              0.001000001430511488
+            ],
+            [
+              10.200077838878403,
+              0.0034757475902491564,
+              13.611000001430511
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              -0.2136964098774401,
+              11.42776154128208,
+              3.921000001430512
+            ],
+            [
+              0.7103559137517395,
+              11.483683837331917,
+              3.921000001430512
+            ],
+            [
+              1.879820844019184,
+              11.761805711470982,
+              3.921000001430512
+            ],
+            [
+              1.3708410562759128,
+              12.692095760686213,
+              3.9310000014305118
+            ],
+            [
+              1.3064466254749023,
+              15.116957273697158,
+              3.9510000014305113
+            ],
+            [
+              5.035675522098806,
+              15.109757510831725,
+              3.9410000014305115
+            ],
+            [
+              5.036668592838863,
+              18.179773636817128,
+              3.961000001430512
+            ],
+            [
+              -0.34226803725505484,
+              18.056725965431113,
+              3.9810000014305116
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              2.034926080232846,
+              2.8758087293817294,
+              16.32100000143051
+            ],
+            [
+              7.234892742890969,
+              2.857188653005537,
+              16.19100000143051
+            ],
+            [
+              7.338389334081985,
+              4.907600430091264,
+              16.16100000143051
+            ],
+            [
+              7.268005445379981,
+              5.230162219848186,
+              16.16100000143051
+            ],
+            [
+              7.227537812722394,
+              6.603392852592402,
+              16.14100000143051
+            ],
+            [
+              7.191973466843861,
+              7.62737291944051,
+              16.13100000143051
+            ],
+            [
+              5.357958010710088,
+              7.368553857811424,
+              16.18100000143051
+            ],
+            [
+              5.4277212301995865,
+              7.9467692962134535,
+              16.17100000143051
+            ],
+            [
+              5.493605267110663,
+              8.5157677968093,
+              16.16100000143051
+            ],
+            [
+              5.218462605191805,
+              9.228296052804918,
+              16.15100000143051
+            ],
+            [
+              5.025403446631309,
+              9.233602774572143,
+              16.16100000143051
+            ],
+            [
+              5.028444725772735,
+              11.586683893152905,
+              16.13100000143051
+            ],
+            [
+              1.9715247201719106,
+              11.593014719120799,
+              16.20100000143051
+            ],
+            [
+              1.9201643428342683,
+              7.990867843764407,
+              16.25100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              8.182561530057287,
+              7.145361208982144,
+              17.57100000143051
+            ],
+            [
+              8.180606422037823,
+              7.243830379551564,
+              17.39100000143051
+            ],
+            [
+              9.613793700713376,
+              8.561014582403427,
+              14.971000001430513
+            ],
+            [
+              10.34916258373044,
+              8.555304425648083,
+              14.971000001430513
+            ],
+            [
+              10.360210495713668,
+              9.27757718828061,
+              13.641000001430513
+            ],
+            [
+              5.218462605191805,
+              9.228296052804918,
+              13.841000001430512
+            ],
+            [
+              5.493605267110663,
+              8.5157677968093,
+              15.131000001430511
+            ],
+            [
+              5.4277212301995865,
+              7.9467692962134535,
+              16.17100000143051
+            ],
+            [
+              5.357958010710088,
+              7.368553857811424,
+              17.22100000143051
+            ],
+            [
+              7.191973466843861,
+              7.62737291944051,
+              16.73100000143051
+            ],
+            [
+              7.227537812722394,
+              6.603392852592402,
+              18.57100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              3.2554720866923255,
+              2.1668182878975686,
+              17.44100000143051
+            ],
+            [
+              1.9743797985496179,
+              2.2937141084013324,
+              17.63100000143051
+            ],
+            [
+              1.892885930943158,
+              2.306313693415874,
+              17.64100000143051
+            ],
+            [
+              1.5417733574094101,
+              1.7814137403709958,
+              16.73100000143051
+            ],
+            [
+              1.1829024187189225,
+              1.2380799117137038,
+              15.791000001430511
+            ],
+            [
+              0.8283451310555761,
+              1.040117466374127,
+              15.44100000143051
+            ],
+            [
+              0.41752417927548835,
+              0.8115870623169905,
+              15.051000001430511
+            ],
+            [
+              -0.013220254227083061,
+              0.8192833605524774,
+              15.051000001430511
+            ],
+            [
+              0.0,
+              0.0,
+              13.641000001430513
+            ],
+            [
+              9.666985052228044,
+              0.0,
+              13.821000001430512
+            ],
+            [
+              9.253091787845873,
+              0.8468721070498941,
+              15.271000001430512
+            ],
+            [
+              8.032949216374574,
+              2.0981722729906878,
+              17.41100000143051
+            ],
+            [
+              7.969889224380528,
+              2.1030134928484894,
+              17.41100000143051
+            ],
+            [
+              7.2029903453664215,
+              2.111144259532759,
+              17.41100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              1.9743797985496179,
+              2.2937141084013324,
+              17.50100000143051
+            ],
+            [
+              1.970966117880633,
+              2.414496337161561,
+              17.50100000143051
+            ],
+            [
+              2.0398293670119005,
+              2.5265581634856176,
+              17.63100000143051
+            ],
+            [
+              2.034926080232846,
+              2.8758087293817294,
+              17.63100000143051
+            ],
+            [
+              1.9201643428342683,
+              7.990867843764407,
+              17.60100000143051
+            ],
+            [
+              1.9715247201719106,
+              11.593014719120799,
+              17.81100000143051
+            ],
+            [
+              1.879820844019184,
+              11.761805711470982,
+              17.65100000143051
+            ],
+            [
+              0.7103559137517395,
+              11.483683837331917,
+              15.60100000143051
+            ],
+            [
+              -0.2136964098774401,
+              11.42776154128208,
+              13.971000001430513
+            ],
+            [
+              -0.013220254227083061,
+              0.8192833605524774,
+              13.971000001430513
+            ],
+            [
+              0.41752417927548835,
+              0.8115870623169905,
+              14.731000001430512
+            ],
+            [
+              0.8283451310555761,
+              1.040117466374127,
+              15.44100000143051
+            ],
+            [
+              1.1829024187189225,
+              1.2380799117137038,
+              16.08100000143051
+            ],
+            [
+              1.5417733574094101,
+              1.7814137403709958,
+              16.73100000143051
+            ],
+            [
+              1.892885930943158,
+              2.306313693415874,
+              17.37100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              8.17638587139255,
+              6.279993159398557,
+              17.35100000143051
+            ],
+            [
+              8.182561530057287,
+              7.145361208982144,
+              17.29100000143051
+            ],
+            [
+              7.227537812722394,
+              6.603392852592402,
+              15.841000001430512
+            ],
+            [
+              7.268005445379981,
+              5.230162219848186,
+              16.03100000143051
+            ],
+            [
+              7.338389334081985,
+              4.907600430091264,
+              16.16100000143051
+            ],
+            [
+              7.234892742890969,
+              2.857188653005537,
+              16.19100000143051
+            ],
+            [
+              7.2029903453664215,
+              2.111144259532759,
+              16.20100000143051
+            ],
+            [
+              7.969889224380528,
+              2.1030134928484894,
+              17.41100000143051
+            ],
+            [
+              8.032949216374574,
+              2.0981722729906878,
+              17.49100000143051
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              9.666985052228044,
+              0.0,
+              14.531000001430511
+            ],
+            [
+              10.200077838878403,
+              0.0034757475902491564,
+              13.611000001430511
+            ],
+            [
+              10.34916258373044,
+              8.555304425648083,
+              13.701000001430511
+            ],
+            [
+              9.613793700713376,
+              8.561014582403427,
+              14.971000001430513
+            ],
+            [
+              8.180606422037823,
+              7.243830379551564,
+              17.39100000143051
+            ],
+            [
+              8.182561530057287,
+              7.145361208982144,
+              17.38100000143051
+            ],
+            [
+              8.17638587139255,
+              6.279993159398557,
+              17.35100000143051
+            ],
+            [
+              8.032949216374574,
+              2.0981722729906878,
+              17.44100000143051
+            ],
+            [
+              9.253091787845873,
+              0.8468721070498941,
+              15.271000001430512
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              7.234892742890969,
+              2.857188653005537,
+              16.19100000143051
+            ],
+            [
+              2.034926080232846,
+              2.8758087293817294,
+              16.32100000143051
+            ],
+            [
+              2.0398293670119005,
+              2.5265581634856176,
+              16.90100000143051
+            ],
+            [
+              1.970966117880633,
+              2.414496337161561,
+              17.08100000143051
+            ],
+            [
+              1.9743797985496179,
+              2.2937141084013324,
+              17.27100000143051
+            ],
+            [
+              3.2554720866923255,
+              2.1668182878975686,
+              17.44100000143051
+            ],
+            [
+              7.2029903453664215,
+              2.111144259532759,
+              17.41100000143051
+            ]
+          ]
+        ]
+      }
+    ],
+    "groundNAP": 0.6389999985694885,
+    "sourceOffsetNAP": 0.65,
+    "source": "3DBAG LoD2.2",
+    "pointCloudYear": 2014
+  },
+  "heightEvidence": [
+    {
+      "source": "3DBAG LoD2.2",
+      "year": 2014,
+      "datum": "NAP",
+      "groundNAP": 0.6389999985694885,
+      "roofStatisticRelativeM": 16.19,
+      "frontWallTopCandidates": [
+        {
+          "index": 3,
+          "width": 9.666985052228044,
+          "tops": [
+            13.641000001430513,
+            13.821000001430512
+          ]
+        },
+        {
+          "index": 47,
+          "width": 0.533092786650359,
+          "tops": [
+            14.531000001430511,
+            13.821000001430512,
+            13.611000001430511
+          ]
+        }
+      ],
+      "diagnosticNearFrontWalls": [],
+      "lineage": "AHN-derived3DBAG; not independent height evidence"
+    }
+  ],
+  "heightChoice": {
+    "value": 13.821000001430512,
+    "eavesM": 13.821000001430512,
+    "roofPeakM": 15.221000001430513,
+    "reportedRoofStatisticM": 16.19,
+    "reason": "Dominant selected-front 3DBAG wall top. Roof statistic retained separately; roof shape inferred.",
+    "sourceShellPeakM": 18.57100000143051,
+    "massCompiler": "source-derived semantic roof/wall surfaces; analytic roof covering is bypassed"
+  },
+  "targetAppearanceDate": "2025-07-03T09:49:09Z",
+  "authoringStatus": "draft-source-derived-massing-authored-facade-unregistered",
+  "visualObservations": [
+    "Three upper rows; broad outer grouped windows and two narrower middle windows.",
+    "Dark grey plinth; recessed central residential entrance with a short stoop.",
+    "Hip-like roof silhouette and dormer visible behind bare branches; hidden roof portions unresolved."
+  ],
+  "assumptions": [
+    "Draft staged for review; no independently registered image features.",
+    "Exact owner footprint and semantic source shell retained. Generated side/rear shell currently uses one eaves extrusion; complex rear volumes require reconstruction.",
+    "Roof volume is a hypothesis; no hidden-side openings or invented businesses added.",
+    "Original crop is approximately 0.73 m wider than selected 3DBAG wall; no exact pixel-to-metre transfer.",
+    "2025 greenery obscures some ground glazing and the door recess.",
+    "Projecting upper bay shell and glazed returns use reusable common component; 0.55 m projection and 0.12 m return inset are inferred dimensions, not registered evidence. Source footprint, frontage binding and selected wall eaves are unchanged.",
+    "Common compiler uses strict source-derived semantic walls/roof including rear heights; selected-source frontage eaves alone set facade/storey datums. Hidden-side openings omitted and photographic feature registration remains unresolved.",
+    "Selected 9.666985 m frontal binding retained; same-owner nearly coplanar 0.533 m right edge strip is preserved as semantic source wall. Right bay x/width remain inferred and crop-edge truncated; no crop stretching or full front registration asserted.",
+    "Ground frontage corrected from repeated dated photos: tall grouped apertures, narrow fourth group, ivy-hidden paired portal and dark low base; precise hidden door leaf arrangement remains inferred."
+  ],
+  "massing": {
+    "mode": "source-derived",
+    "frontageTolerance": 0.04,
+    "maxPlanarityDeviation": 0.03
+  }
+}

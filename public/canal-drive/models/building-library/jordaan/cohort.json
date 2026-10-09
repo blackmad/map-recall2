@@ -1,0 +1,334 @@
+{
+  "entries": [
+    {
+      "ownerId": "0363100012168848",
+      "addresses": [
+        "Anjeliersstraat 135",
+        "Anjeliersstraat 133"
+      ],
+      "street": "Anjeliersstraat",
+      "cachedMassingFamily": "later-infill",
+      "years": [
+        "2024",
+        "2025"
+      ],
+      "captures": 2,
+      "status": "Public simplified candidate; four-view critique and placement checks pass; metric registration unresolved"
+    },
+    {
+      "ownerId": "0363100012168702",
+      "addresses": [
+        "Bloemgracht 51"
+      ],
+      "street": "Bloemgracht",
+      "cachedMassingFamily": "later-infill",
+      "years": [
+        "2023",
+        "2024"
+      ],
+      "captures": 2,
+      "status": "Public simplified candidate; four-view critique and placement checks pass; metric registration unresolved"
+    },
+    {
+      "ownerId": "0363100012164995",
+      "addresses": [
+        "Bloemstraat 3",
+        "Bloemstraat 5",
+        "Bloemstraat 7"
+      ],
+      "street": "Bloemstraat",
+      "cachedMassingFamily": "later-infill",
+      "years": [
+        "2022",
+        "2023"
+      ],
+      "captures": 2,
+      "status": "Public simplified candidate; visual critique, export, browser and placement checks pass; metric registration unresolved"
+    },
+    {
+      "ownerId": "0363100012169371",
+      "addresses": [
+        "Boomstraat 48",
+        "Eerste Boomdwarsstraat 7",
+        "Boomstraat 50"
+      ],
+      "street": "Boomstraat",
+      "cachedMassingFamily": "later-infill",
+      "years": [
+        "2022",
+        "2023"
+      ],
+      "captures": 2,
+      "status": "Public simplified candidate; visual critique, export, browser and placement checks pass; metric registration unresolved"
+    },
+    {
+      "ownerId": "0363100012176879",
+      "addresses": [
+        "Brouwersgracht 907",
+        "Brouwersgracht 909",
+        "Brouwersgracht 913",
+        "Brouwersgracht 915",
+        "Brouwersgracht 917",
+        "Brouwersgracht 919",
+        "Brouwersgracht 921",
+        "Brouwersgracht 923",
+        "Brouwersgracht 925",
+        "Brouwersgracht 911"
+      ],
+      "street": "Brouwersgracht",
+      "cachedMassingFamily": "later-infill",
+      "years": [
+        "2022",
+        "2023"
+      ],
+      "captures": 2,
+      "status": "Source topology repair verified; circular opening component and isolated authoring underway"
+    },
+    {
+      "ownerId": "0363100012168293",
+      "addresses": [
+        "Derde Egelantiersdwarsstraat 1",
+        "Derde Egelantiersdwarsstraat 3",
+        "Derde Egelantiersdwarsstraat 5",
+        "Egelantiersstraat 178",
+        "Tuinstraat 183"
+      ],
+      "street": "Derde Egelantiersdwarsstraat",
+      "cachedMassingFamily": "later-infill",
+      "years": [
+        "2022",
+        "2023"
+      ],
+      "captures": 2,
+      "status": "Held: source party-wall roof height remains unresolved; corrected draft preserved"
+    },
+    {
+      "ownerId": "0363100012168615",
+      "addresses": [
+        "Derde Goudsbloemdwarsstraat 31",
+        "Derde Goudsbloemdwarsstraat 33",
+        "Derde Goudsbloemdwarsstraat 35",
+        "Derde Goudsbloemdwarsstraat 37",
+        "Derde Goudsbloemdwarsstraat 39"
+      ],
+      "street": "Derde Goudsbloemdwarsstraat",
+      "cachedMassingFamily": "later-infill",
+      "years": [
+        "2022",
+        "2025"
+      ],
+      "captures": 2,
+      "status": "Isolated projecting-bay candidate in visual critique"
+    },
+    {
+      "ownerId": "0363100012174425",
+      "addresses": [
+        "Derde Leliedwarsstraat 27",
+        "Derde Leliedwarsstraat 29",
+        "Derde Leliedwarsstraat 23",
+        "Derde Leliedwarsstraat 25"
+      ],
+      "street": "Derde Leliedwarsstraat",
+      "cachedMassingFamily": "later-infill",
+      "years": [
+        "2024",
+        "2025"
+      ],
+      "captures": 2,
+      "status": "Isolated source facade/roof patch design; photographic inference requires review"
+    },
+    {
+      "ownerId": "0363100012167471",
+      "addresses": [
+        "Derde Looiersdwarsstraat 61",
+        "Derde Looiersdwarsstraat 65",
+        "Derde Looiersdwarsstraat 69",
+        "Derde Looiersdwarsstraat 73",
+        "Derde Looiersdwarsstraat 67",
+        "Derde Looiersdwarsstraat 71",
+        "Derde Looiersdwarsstraat 63"
+      ],
+      "street": "Derde Looiersdwarsstraat",
+      "cachedMassingFamily": "later-infill",
+      "years": [
+        "2024",
+        "2025"
+      ],
+      "captures": 2,
+      "status": "identity/registration review pending"
+    },
+    {
+      "ownerId": "0363100012174317",
+      "addresses": [
+        "Eerste Anjeliersdwarsstraat 17",
+        "Eerste Anjeliersdwarsstraat 23",
+        "Eerste Anjeliersdwarsstraat 19",
+        "Eerste Anjeliersdwarsstraat 21"
+      ],
+      "street": "Eerste Anjeliersdwarsstraat",
+      "cachedMassingFamily": "later-infill",
+      "years": [
+        "2022",
+        "2024"
+      ],
+      "captures": 2,
+      "status": "identity/registration review pending"
+    },
+    {
+      "ownerId": "0363100012174014",
+      "addresses": [
+        "Eerste Bloemdwarsstraat 18"
+      ],
+      "street": "Eerste Bloemdwarsstraat",
+      "cachedMassingFamily": "later-infill",
+      "years": [
+        "2022",
+        "2023"
+      ],
+      "captures": 2,
+      "status": "identity/registration review pending"
+    },
+    {
+      "ownerId": "0363100012172105",
+      "addresses": [
+        "Eerste Boomdwarsstraat 41",
+        "Eerste Boomdwarsstraat 43",
+        "Eerste Boomdwarsstraat 45",
+        "Eerste Boomdwarsstraat 47",
+        "Eerste Boomdwarsstraat 49",
+        "Eerste Boomdwarsstraat 51",
+        "Eerste Boomdwarsstraat 53",
+        "Eerste Boomdwarsstraat 55",
+        "Eerste Boomdwarsstraat 57",
+        "Eerste Boomdwarsstraat 59",
+        "Eerste Boomdwarsstraat 61",
+        "Eerste Boomdwarsstraat 63",
+        "Westerstraat 48"
+      ],
+      "street": "Eerste Boomdwarsstraat",
+      "cachedMassingFamily": "later-infill",
+      "years": [
+        "2022",
+        "2023"
+      ],
+      "captures": 2,
+      "status": "identity/registration review pending"
+    },
+    {
+      "ownerId": "0363100012174639",
+      "addresses": [
+        "Akoleienstraat 2"
+      ],
+      "street": "Akoleienstraat",
+      "cachedMassingFamily": "quay-row",
+      "years": [
+        "2023",
+        "2025"
+      ],
+      "captures": 2,
+      "status": "identity/registration review pending"
+    },
+    {
+      "ownerId": "0363100012165031",
+      "addresses": [
+        "Anjeliersstraat 71",
+        "Anjeliersstraat 69"
+      ],
+      "street": "Anjeliersstraat",
+      "cachedMassingFamily": "quay-row",
+      "years": [
+        "2023",
+        "2025"
+      ],
+      "captures": 2,
+      "status": "identity/registration review pending"
+    },
+    {
+      "ownerId": "0363100012167951",
+      "addresses": [
+        "Bloemgracht 123"
+      ],
+      "street": "Bloemgracht",
+      "cachedMassingFamily": "quay-row",
+      "years": [
+        "2023",
+        "2025"
+      ],
+      "captures": 2,
+      "status": "identity/registration review pending"
+    },
+    {
+      "ownerId": "0363100012167881",
+      "addresses": [
+        "Bloemstraat 150"
+      ],
+      "street": "Bloemstraat",
+      "cachedMassingFamily": "quay-row",
+      "years": [
+        "2024",
+        "2025"
+      ],
+      "captures": 2,
+      "status": "identity/registration review pending"
+    },
+    {
+      "ownerId": "0363100012169233",
+      "addresses": [
+        "Boomstraat 23"
+      ],
+      "street": "Boomstraat",
+      "cachedMassingFamily": "quay-row",
+      "years": [
+        "2022",
+        "2025"
+      ],
+      "captures": 2,
+      "status": "identity/registration review pending"
+    },
+    {
+      "ownerId": "0363100012167753",
+      "addresses": [
+        "Brouwersgracht 119",
+        "Goudsbloemstraat 1"
+      ],
+      "street": "Brouwersgracht",
+      "cachedMassingFamily": "quay-row",
+      "years": [
+        "2022",
+        "2023"
+      ],
+      "captures": 2,
+      "status": "identity/registration review pending"
+    },
+    {
+      "ownerId": "0363100012168292",
+      "addresses": [
+        "Derde Egelantiersdwarsstraat 2"
+      ],
+      "street": "Derde Egelantiersdwarsstraat",
+      "cachedMassingFamily": "quay-row",
+      "years": [
+        "2022",
+        "2025"
+      ],
+      "captures": 2,
+      "status": "identity/registration review pending"
+    },
+    {
+      "ownerId": "0363100012168616",
+      "addresses": [
+        "Derde Goudsbloemdwarsstraat 10",
+        "Lindengracht 252",
+        "Derde Goudsbloemdwarsstraat 12"
+      ],
+      "street": "Derde Goudsbloemdwarsstraat",
+      "cachedMassingFamily": "quay-row",
+      "years": [
+        "2022",
+        "2024"
+      ],
+      "captures": 2,
+      "status": "identity/registration review pending"
+    }
+  ]
+}

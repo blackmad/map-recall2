@@ -1,0 +1,1036 @@
+{
+  "schemaVersion": 1,
+  "id": "lauriergracht-50",
+  "name": "De Fietsenmaker",
+  "address": "Lauriergracht 50",
+  "caseId": "case-21",
+  "synthetic": false,
+  "buildingId": "0363100012173919",
+  "geometryRevision": "dfd18f9c8f4c0a146aaef25b9812035cc388cb16c2fd671cda7019949afcc28e",
+  "sourceBundle": "lauriergracht-50.json",
+  "footprint": [
+    [
+      5.140260174109186,
+      16.842607438946818
+    ],
+    [
+      4.369759091820454,
+      18.07160218352131
+    ],
+    [
+      -0.14896905994851029,
+      18.03849794797718
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      5.679031607589398,
+      4.440892098500626e-16
+    ],
+    [
+      5.544131847747152,
+      16.208661328277437
+    ]
+  ],
+  "height": 17.699000008106232,
+  "storeys": [
+    {
+      "id": "ground",
+      "bottom": 0,
+      "top": 4.3
+    },
+    {
+      "id": "upper_1",
+      "bottom": 4.3,
+      "top": 6.933000002702077
+    },
+    {
+      "id": "upper_2",
+      "bottom": 6.933000002702077,
+      "top": 9.566000005404154
+    },
+    {
+      "id": "upper_3",
+      "bottom": 9.566000005404154,
+      "top": 12.199000008106232
+    }
+  ],
+  "roof": {
+    "kind": "pitched",
+    "eaves": 12.199000008106232,
+    "top": 17.249000008106233,
+    "status": "inferred",
+    "setback": 0.24
+  },
+  "gable": {
+    "profile": [
+      [
+        0.0,
+        12.199000008106232
+      ],
+      [
+        0.2839515803794699,
+        13.344833341439566
+      ],
+      [
+        1.1358063215178795,
+        13.344833341439566
+      ],
+      [
+        1.4197579018973494,
+        14.032333341439564
+      ],
+      [
+        1.6469191662009253,
+        16.094833341439568
+      ],
+      [
+        1.4765482179732434,
+        16.438583341439564
+      ],
+      [
+        1.987661062656289,
+        17.011500008106232
+      ],
+      [
+        2.498773907339335,
+        17.469833341439564
+      ],
+      [
+        3.180257700250063,
+        17.469833341439564
+      ],
+      [
+        3.6913705449331085,
+        17.011500008106232
+      ],
+      [
+        4.202483389616154,
+        16.438583341439564
+      ],
+      [
+        4.032112441388472,
+        16.094833341439568
+      ],
+      [
+        4.259273705692048,
+        14.032333341439564
+      ],
+      [
+        4.543225286071518,
+        13.344833341439566
+      ],
+      [
+        5.395080027209928,
+        13.344833341439566
+      ],
+      [
+        5.679031607589398,
+        12.199000008106232
+      ]
+    ],
+    "status": "inferred"
+  },
+  "frontages": [
+    {
+      "id": "street",
+      "origin": [
+        0,
+        0
+      ],
+      "rotation": 0,
+      "width": 5.679031607589398,
+      "openings": [
+        {
+          "id": "Upper full:window_attic",
+          "x": 2.839515803794699,
+          "z": 14.870389006574154,
+          "width": 1.1755595427710053,
+          "height": 1.766308000745773,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.23,
+          "storey": "attic",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "dbe58c60985bce1f18b3d3680c2434ead2f5cc0d115e0238a1fc27fae0d7b9c5",
+            "reason": "Prototype photo feature; metric registration unresolved"
+          },
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Upper full:window_r3_b1",
+          "x": 0.9654353732901977,
+          "z": 10.882500006755194,
+          "width": 1.3061772697455616,
+          "height": 1.8957600019454954,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.5,
+          "storey": "upper_3",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "dbe58c60985bce1f18b3d3680c2434ead2f5cc0d115e0238a1fc27fae0d7b9c5",
+            "reason": "Prototype photo feature; metric registration unresolved; 2025 visual review confirms horizontal sash and no central vertical mullion",
+            "appearanceSource": "lauriergracht-50-2025-07-03-full-922d3abf.jpg"
+          },
+          "mullions": [],
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Upper full:window_r3_b2",
+          "x": 2.839515803794699,
+          "z": 10.882500006755194,
+          "width": 1.3061772697455616,
+          "height": 1.8957600019454954,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.5,
+          "storey": "upper_3",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "dbe58c60985bce1f18b3d3680c2434ead2f5cc0d115e0238a1fc27fae0d7b9c5",
+            "reason": "Prototype photo feature; metric registration unresolved; 2025 visual review confirms horizontal sash and no central vertical mullion",
+            "appearanceSource": "lauriergracht-50-2025-07-03-full-922d3abf.jpg"
+          },
+          "mullions": [],
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Upper full:window_r3_b3",
+          "x": 4.7135962342992,
+          "z": 10.882500006755194,
+          "width": 1.3061772697455616,
+          "height": 1.8957600019454954,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.5,
+          "storey": "upper_3",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "dbe58c60985bce1f18b3d3680c2434ead2f5cc0d115e0238a1fc27fae0d7b9c5",
+            "reason": "Prototype photo feature; metric registration unresolved; 2025 visual review confirms horizontal sash and no central vertical mullion",
+            "appearanceSource": "lauriergracht-50-2025-07-03-full-922d3abf.jpg"
+          },
+          "mullions": [],
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Upper full:window_r2_b1",
+          "x": 0.9654353732901977,
+          "z": 8.249500004053115,
+          "width": 1.3061772697455616,
+          "height": 1.8957600019454954,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.5,
+          "storey": "upper_2",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "dbe58c60985bce1f18b3d3680c2434ead2f5cc0d115e0238a1fc27fae0d7b9c5",
+            "reason": "Prototype photo feature; metric registration unresolved; 2025 visual review confirms horizontal sash and no central vertical mullion",
+            "appearanceSource": "lauriergracht-50-2025-07-03-full-922d3abf.jpg"
+          },
+          "mullions": [],
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Upper full:window_r2_b2",
+          "x": 2.839515803794699,
+          "z": 8.249500004053115,
+          "width": 1.3061772697455616,
+          "height": 1.8957600019454954,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.5,
+          "storey": "upper_2",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "dbe58c60985bce1f18b3d3680c2434ead2f5cc0d115e0238a1fc27fae0d7b9c5",
+            "reason": "Prototype photo feature; metric registration unresolved; 2025 visual review confirms horizontal sash and no central vertical mullion",
+            "appearanceSource": "lauriergracht-50-2025-07-03-full-922d3abf.jpg"
+          },
+          "mullions": [],
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Upper full:window_r2_b3",
+          "x": 4.7135962342992,
+          "z": 8.249500004053115,
+          "width": 1.3061772697455616,
+          "height": 1.8957600019454954,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.5,
+          "storey": "upper_2",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "dbe58c60985bce1f18b3d3680c2434ead2f5cc0d115e0238a1fc27fae0d7b9c5",
+            "reason": "Prototype photo feature; metric registration unresolved; 2025 visual review confirms horizontal sash and no central vertical mullion",
+            "appearanceSource": "lauriergracht-50-2025-07-03-full-922d3abf.jpg"
+          },
+          "mullions": [],
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Upper full:window_r1_b1",
+          "x": 0.9654353732901977,
+          "z": 5.616500001351039,
+          "width": 1.3061772697455616,
+          "height": 1.8957600019454954,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.5,
+          "storey": "upper_1",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "dbe58c60985bce1f18b3d3680c2434ead2f5cc0d115e0238a1fc27fae0d7b9c5",
+            "reason": "Prototype photo feature; metric registration unresolved; 2025 visual review confirms horizontal sash and no central vertical mullion",
+            "appearanceSource": "lauriergracht-50-2025-07-03-full-922d3abf.jpg"
+          },
+          "mullions": [],
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Upper full:door_r1_b2",
+          "x": 2.839515803794699,
+          "z": 5.616500001351039,
+          "width": 1.3061772697455616,
+          "height": 1.8957600019454954,
+          "kind": "door",
+          "head": "rectangular",
+          "transom": 0.5,
+          "storey": "upper_1",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "dbe58c60985bce1f18b3d3680c2434ead2f5cc0d115e0238a1fc27fae0d7b9c5",
+            "reason": "Prototype photo feature; metric registration unresolved; 2025 visual review confirms horizontal sash and no central vertical mullion",
+            "appearanceSource": "lauriergracht-50-2025-07-03-full-922d3abf.jpg"
+          },
+          "mullions": [],
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Upper full:window_r1_b3",
+          "x": 4.7135962342992,
+          "z": 5.616500001351039,
+          "width": 1.3061772697455616,
+          "height": 1.8957600019454954,
+          "kind": "window",
+          "head": "rectangular",
+          "transom": 0.5,
+          "storey": "upper_1",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "dbe58c60985bce1f18b3d3680c2434ead2f5cc0d115e0238a1fc27fae0d7b9c5",
+            "reason": "Prototype photo feature; metric registration unresolved; 2025 visual review confirms horizontal sash and no central vertical mullion",
+            "appearanceSource": "lauriergracht-50-2025-07-03-full-922d3abf.jpg"
+          },
+          "mullions": [],
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Shop ground:door-left",
+          "x": 1.0534603632078332,
+          "z": 1.4748500000000004,
+          "width": 0.44864349699956235,
+          "height": 2.7096999999999998,
+          "kind": "door",
+          "head": "rectangular",
+          "transom": 0.2,
+          "storey": "ground",
+          "frameColour": "#004d40",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "9658823697aedc0a7554101ef617d14a3330481b10250a8b4035fb23f3b16ab9",
+            "reason": "Cropped feature interpreted; threshold set to street datum"
+          },
+          "glazingDepth": 0.1
+        },
+        {
+          "id": "Shop ground:door-main",
+          "x": 2.546827251711245,
+          "z": 1.542545454545455,
+          "width": 1.144543293221863,
+          "height": 2.3181818181818183,
+          "kind": "door",
+          "head": "rectangular",
+          "transom": 0.25,
+          "storey": "ground",
+          "frameColour": "#24453d",
+          "provenance": {
+            "status": "inferred",
+            "sourceHash": "9658823697aedc0a7554101ef617d14a3330481b10250a8b4035fb23f3b16ab9",
+            "reason": "Cropped feature interpreted; threshold set to street datum"
+          },
+          "glazingDepth": 0.1
+        }
+      ],
+      "storefront": {
+        "anchor": 2.839515803794699,
+        "finishColour": "#78766c",
+        "height": 4.3,
+        "signs": [
+          {
+            "id": "ground:fascia-sign",
+            "x": 2.839515803794699,
+            "z": 2.969818181818182,
+            "width": 1.2493869536696676,
+            "height": 0.2818181818181818,
+            "colour": "#d2c8a5",
+            "text": "DE FIETSENMAKER",
+            "anchor": "storefront"
+          },
+          {
+            "id": "ground:retail:open-sign",
+            "x": 2.839515803794699,
+            "z": 2.247090909090909,
+            "width": 0.5941140758708908,
+            "height": 0.21818181818181814,
+            "colour": "#b9a054",
+            "text": "OPEN",
+            "anchor": "storefront"
+          }
+        ],
+        "awnings": [],
+        "recessedAssemblies": [
+          {
+            "id": "Shop / angled recessed display",
+            "x": 4.057668083622625,
+            "width": 1.5503756288719055,
+            "sill": 0.8305000000000002,
+            "head": 2.8836,
+            "recess": 0.45,
+            "sideReturn": 0.2,
+            "provenance": {
+              "status": "inferred",
+              "source": "lauriergracht-50 alternate-year visual review",
+              "reason": "Observed angled display returns; recess and joined display dimensions illustrative within existing proposal datums",
+              "replacesFeatures": [
+                "Shop ground:window-display-left",
+                "Shop ground:window-display-right"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "materials": {
+    "wall": "greybrick",
+    "wallColour": "#827d76",
+    "roof": "slate",
+    "frame": "ivorytimber"
+  },
+  "details": {
+    "chimney": {
+      "x": 4.372854337843837,
+      "y": 13.192269593970556,
+      "status": "inferred"
+    },
+    "bicycleSign": true
+  },
+  "placement": {
+    "anchor": [
+      4.8816148666858155,
+      52.37175455389139
+    ],
+    "xAxisBearingDegrees": 65.55604521958361,
+    "frontageLocal": [
+      [
+        626.089,
+        -270.932
+      ],
+      [
+        631.259,
+        -273.282
+      ]
+    ],
+    "inputFrameDeterminant": -1.0,
+    "axes": "glTF x=along frontage,y=up,z=towards street",
+    "sourceRDFrame": {
+      "anchorRD": [
+        120568.63817002578,
+        487217.55404745537
+      ],
+      "xAxisRD": [
+        0.9103664774626058,
+        0.4138029443011817
+      ],
+      "yAxisRD": [
+        -0.4138029443011817,
+        0.9103664774626058
+      ],
+      "geometryRevision": "dfd18f9c8f4c0a146aaef25b9812035cc388cb16c2fd671cda7019949afcc28e",
+      "buildingId": "0363100012173919",
+      "source": "Frozen 3DBAG coordinateFrame.originRD and ordered physical frontage; normalized source vertices checked within 1 mm."
+    }
+  },
+  "sourceShell": {
+    "surfaces": [
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              5.670755548703381,
+              -0.018207329549235318,
+              12.599000008106232
+            ],
+            [
+              5.670755548703381,
+              -0.018207329549235318,
+              -0.000999991893768315
+            ],
+            [
+              5.569787630293887,
+              12.495193706118581,
+              -0.000999991893768315
+            ],
+            [
+              5.569787630293887,
+              12.495193706118581,
+              11.469000008106232
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              2.9363456927611513,
+              -0.016552117772029806,
+              17.699000008106232
+            ],
+            [
+              2.9363456927611513,
+              -0.016552117772029806,
+              -0.000999991893768315
+            ],
+            [
+              5.670755548703381,
+              -0.018207329549235318,
+              -0.000999991893768315
+            ],
+            [
+              5.670755548703381,
+              -0.018207329549235318,
+              12.599000008106232
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              -0.11917524795879686,
+              13.004998933497582,
+              13.189000008106232
+            ],
+            [
+              -0.11917524795879686,
+              13.004998933497582,
+              3.5990000081062314
+            ],
+            [
+              -0.11917524795879686,
+              13.004998933497582,
+              -0.000999991893768315
+            ],
+            [
+              -0.0041380294430080535,
+              -0.009103664774617779,
+              -0.000999991893768315
+            ],
+            [
+              -0.0041380294430080535,
+              -0.009103664774617779,
+              12.199000008106232
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              -0.15724511883452585,
+              18.020290618427946,
+              4.049000008106232
+            ],
+            [
+              -0.15724511883452585,
+              18.020290618427946,
+              -0.000999991893768315
+            ],
+            [
+              -0.11917524795879686,
+              13.004998933497582,
+              -0.000999991893768315
+            ],
+            [
+              -0.11917524795879686,
+              13.004998933497582,
+              3.5990000081062314
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              2.2560536523300083,
+              12.793131826015399,
+              17.60900000810623
+            ],
+            [
+              2.2560536523300083,
+              12.793131826015399,
+              3.5690000081062316
+            ],
+            [
+              -0.11917524795879686,
+              13.004998933497582,
+              3.5990000081062314
+            ],
+            [
+              -0.11917524795879686,
+              13.004998933497582,
+              13.189000008106232
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              4.365621062377446,
+              18.062498518746693,
+              4.029000008106232
+            ],
+            [
+              4.365621062377446,
+              18.062498518746693,
+              -0.000999991893768315
+            ],
+            [
+              -0.15724511883452585,
+              18.020290618427946,
+              -0.000999991893768315
+            ],
+            [
+              -0.15724511883452585,
+              18.020290618427946,
+              4.049000008106232
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              5.569787630293887,
+              12.495193706118581,
+              12.809000008106231
+            ],
+            [
+              5.569787630293887,
+              12.495193706118581,
+              11.469000008106232
+            ],
+            [
+              5.569787630293887,
+              12.495193706118581,
+              -0.000999991893768315
+            ],
+            [
+              5.55489072429894,
+              14.34737568481067,
+              -0.000999991893768315
+            ],
+            [
+              5.55489072429894,
+              14.34737568481067,
+              3.699000008106232
+            ],
+            [
+              5.55489072429894,
+              14.34737568481067,
+              12.789000008106232
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              5.55489072429894,
+              14.34737568481067,
+              12.789000008106232
+            ],
+            [
+              5.55489072429894,
+              14.34737568481067,
+              3.699000008106232
+            ],
+            [
+              2.350400723630592,
+              12.78320055535218,
+              3.5690000081062316
+            ],
+            [
+              2.350400723630592,
+              12.78320055535218,
+              12.819000008106231
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              5.55489072429894,
+              14.34737568481067,
+              3.699000008106232
+            ],
+            [
+              5.55489072429894,
+              14.34737568481067,
+              -0.000999991893768315
+            ],
+            [
+              5.53999381830412,
+              16.199557663502766,
+              -0.000999991893768315
+            ],
+            [
+              5.53999381830412,
+              16.199557663502766,
+              3.859000008106232
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              5.53999381830412,
+              16.199557663502766,
+              3.859000008106232
+            ],
+            [
+              5.53999381830412,
+              16.199557663502766,
+              -0.000999991893768315
+            ],
+            [
+              4.365621062377446,
+              18.062498518746693,
+              -0.000999991893768315
+            ],
+            [
+              4.365621062377446,
+              18.062498518746693,
+              4.029000008106232
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              -0.0041380294430080535,
+              -0.009103664774617779,
+              12.199000008106232
+            ],
+            [
+              -0.0041380294430080535,
+              -0.009103664774617779,
+              -0.000999991893768315
+            ],
+            [
+              2.9363456927611513,
+              -0.016552117772029806,
+              -0.000999991893768315
+            ],
+            [
+              2.9363456927611513,
+              -0.016552117772029806,
+              17.699000008106232
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              2.350400723630592,
+              12.78320055535218,
+              17.42900000810623
+            ],
+            [
+              2.350400723630592,
+              12.78320055535218,
+              12.819000008106231
+            ],
+            [
+              2.350400723630592,
+              12.78320055535218,
+              3.5690000081062316
+            ],
+            [
+              2.2560536523300083,
+              12.793131826015399,
+              3.5690000081062316
+            ],
+            [
+              2.2560536523300083,
+              12.793131826015399,
+              17.60900000810623
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              5.569787630293887,
+              12.495193706118581,
+              11.469000008106232
+            ],
+            [
+              5.569787630293887,
+              12.495193706118581,
+              12.809000008106231
+            ],
+            [
+              4.842322054212352,
+              12.562229783095384,
+              12.809000008106231
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "wall",
+        "rings": [
+          [
+            [
+              2.350400723630592,
+              12.78320055535218,
+              12.819000008106231
+            ],
+            [
+              2.350400723630592,
+              12.78320055535218,
+              17.42900000810623
+            ],
+            [
+              4.842322054212352,
+              12.562229783095384,
+              12.809000008106231
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              2.9363456927611513,
+              -0.016552117772029806,
+              17.699000008106232
+            ],
+            [
+              2.2560536523300083,
+              12.793131826015399,
+              17.60900000810623
+            ],
+            [
+              -0.11917524795879686,
+              13.004998933497582,
+              13.189000008106232
+            ],
+            [
+              -0.0041380294430080535,
+              -0.009103664774617779,
+              12.199000008106232
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              2.2560536523300083,
+              12.793131826015399,
+              3.5690000081062316
+            ],
+            [
+              2.350400723630592,
+              12.78320055535218,
+              3.5690000081062316
+            ],
+            [
+              5.55489072429894,
+              14.34737568481067,
+              3.699000008106232
+            ],
+            [
+              5.53999381830412,
+              16.199557663502766,
+              3.859000008106232
+            ],
+            [
+              4.365621062377446,
+              18.062498518746693,
+              4.029000008106232
+            ],
+            [
+              -0.15724511883452585,
+              18.020290618427946,
+              4.049000008106232
+            ],
+            [
+              -0.11917524795879686,
+              13.004998933497582,
+              3.5990000081062314
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              5.569787630293887,
+              12.495193706118581,
+              11.469000008106232
+            ],
+            [
+              4.842322054212352,
+              12.562229783095384,
+              12.809000008106231
+            ],
+            [
+              2.350400723630592,
+              12.78320055535218,
+              17.42900000810623
+            ],
+            [
+              2.2560536523300083,
+              12.793131826015399,
+              17.60900000810623
+            ],
+            [
+              2.9363456927611513,
+              -0.016552117772029806,
+              17.699000008106232
+            ],
+            [
+              5.670755548703381,
+              -0.018207329549235318,
+              12.599000008106232
+            ]
+          ]
+        ]
+      },
+      {
+        "type": "roof",
+        "rings": [
+          [
+            [
+              2.350400723630592,
+              12.78320055535218,
+              12.819000008106231
+            ],
+            [
+              4.842322054212352,
+              12.562229783095384,
+              12.809000008106231
+            ],
+            [
+              5.569787630293887,
+              12.495193706118581,
+              12.809000008106231
+            ],
+            [
+              5.55489072429894,
+              14.34737568481067,
+              12.789000008106232
+            ]
+          ]
+        ]
+      }
+    ],
+    "groundNAP": 0.3709999918937683,
+    "sourceOffsetNAP": 0.65,
+    "source": "3DBAG LoD2.2",
+    "pointCloudYear": 2023
+  },
+  "heightEvidence": [
+    {
+      "source": "3DBAG LoD2.2",
+      "year": 2023,
+      "datum": "NAP",
+      "groundNAP": 0.3709999918937683,
+      "roofStatisticRelativeM": 15.48,
+      "rawSurfaceExtentM": 17.700000000000003,
+      "frontWallTopRelativeM": 17.699000008106232,
+      "eavesChoiceM": 12.199000008106232,
+      "uncertainty": "frontwall binding <=0.08m; source roof shape uncertain; ground datum from cached model",
+      "lineage": "AHN-derived 3DBAG, not independent AHN evidence"
+    }
+  ],
+  "heightChoice": {
+    "value": 17.699000008106232,
+    "reportedRoofStatisticM": 15.48,
+    "surfaceRange": 17.700000000000003,
+    "frontWallTopM": 17.699000008106232,
+    "eavesM": 12.199000008106232,
+    "reason": "Front wall anchors dimensions. Shaped front-wall minimum top anchors shoulders; flat uncertain 3DBAG roofs use explicit photo-inferred eaves fractions. Key Color roof peak remains inferred from roof statistic, not trusted eaves; no maximum-surface stretching."
+  },
+  "targetAppearanceDate": "2025-07-03T09:50:55Z",
+  "assumptions": [
+    "Metric crop registration unresolved; opening dimensions remain illustrative; geometry uses through-wall apertures, not verified photographic measurements.",
+    "Unseen side/rear windows not asserted; roof volume and chimney inferred.",
+    "Source years must be reviewed per region before authoring geometry.",
+    "2025 grey/brown masonry and horizontal sash observed; angled storefront uses authored recess dimensions; photographic registration remains unresolved.",
+    "Source footprint is exact; generated side/rear walls currently use one eaves extrusion. Exact 3DBAG semantic walls are retained in SOURCE overlay; multiple rear roof/body volumes need reconstruction before acceptance."
+  ],
+  "visualReview": "artifacts/jordaan-pois/alternate-year-visual-review.json",
+  "construction": {
+    "apertures": "through-wall",
+    "glazing": "recessed opaque fallback",
+    "dimensions": "authored within source storey datums; photographic registration unresolved"
+  }
+}

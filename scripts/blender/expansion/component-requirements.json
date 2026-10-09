@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "reviewDate": "2026-10-01",
+  "policy": "Visual observations propose reusable components. No dimensions or ratios in this file are registered metric measurements. Components must pass geometry and image review before a staged building is promoted.",
+  "requirements": [
+    {
+      "component": "projecting-grouped-window-bay",
+      "building": "lauriergracht-67-69",
+      "observed": "Outer window groups project ahead of the central masonry plane on all three upper rows. Their side returns remain visible in oblique photographs.",
+      "sourcePaths": [
+        "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2025-07-03-full-a1cbebf8.jpg",
+        "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2024-12-16-full-326caf57.jpg"
+      ],
+      "parametersNeeded": ["anchor", "width", "projectionDepth", "sideReturnAngles", "openingDivisions", "upperSashLights", "storeyBottom", "storeyTop"],
+      "acceptance": ["Grouped joinery survives recipe compilation.", "Bay side returns join wall and floor boundaries without coplanar tearing.", "Projection depth remains inferred until anchor registration."]
+    },
+    {
+      "component": "hip-roof-with-two-dormers",
+      "building": "lauriergracht-67-69",
+      "observed": "Farther 2022 and 2023 photos show sloping end shoulders and two dormers. Close 2024 and 2025 cameras see their tops while the cornice hides the main roof.",
+      "sourcePaths": [
+        "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2022-01-27-full-bc12f9f9.jpg",
+        "artifacts/building-library/expansion/evidence/lauriergracht-67-69-2023-02-27-full-72f77557.jpg"
+      ],
+      "parametersNeeded": ["sourceRoofPlanes", "hipBoundary", "eavesDatum", "ridgeDatum", "dormerAnchors", "dormerWidths", "dormerRoofProfiles"],
+      "acceptance": ["No silhouette claim based only on close-camera roof occlusion.", "Dormer bases intersect and close against the roof planes.", "The reported owner roof percentile never replaces the selected wall top.", "Unsupported hip topology fails before scene generation."]
+    },
+    {
+      "component": "spanning-balcony",
+      "buildings": ["rozengracht-251", "rozengracht-249"],
+      "observed": "251 balcony spans the middle and right bays; 249 balcony covers the central bay only. Both have projecting slabs, railing side returns, and visible supports.",
+      "sourcePaths": [
+        "artifacts/building-library/expansion/evidence/rozengracht-251-2022-12-15-full-7f988e07.jpg",
+        "artifacts/building-library/expansion/evidence/rozengracht-249-2022-12-15-full-e7728dd9.jpg"
+      ],
+      "parametersNeeded": ["independentAnchor", "spanWidth", "projectionDepth", "slabTopDatum", "railingHeight", "sideReturns", "bracketAnchors"],
+      "acceptance": ["One balcony is an independent frontage assembly, never generated separately for each window.", "251 retains its two-bay span and 249 its one-bay span.", "Rails, slab and supports share one parent frontage transform.", "Bracket tops contact the slab and their wall ends reach the facade."]
+    },
+    {
+      "component": "horizontal-masonry-band",
+      "buildings": ["rozengracht-251", "rozengracht-249"],
+      "observed": "Pale masonry bands alternate with brick across the upper facade; pale keystones and window heads are separate details.",
+      "parametersNeeded": ["datum", "bandHeight", "frontageExtent", "finish", "apertureMasks", "returnPolicy"],
+      "acceptance": ["Band layers share actual opening masks.", "Bands retain their datum across adjacent bays.", "Pale bands do not overwrite the entire upper-wall brick material."]
+    },
+    {
+      "component": "date-coherent-painted-storefront",
+      "buildings": ["rozengracht-251", "rozengracht-114", "rozengracht-249"],
+      "observed": "251 has a separate left entrance, middle white door, broad right display and two named fascias. 114 has a blank pale fascia with dark timber door assemblies. 249 retains a left entrance and wider right arched display; temporary site fencing obscures its 2025 ground.",
+      "parametersNeeded": ["targetAppearanceDate", "assemblyAnchor", "independentResidentialDoor", "displayExtent", "headProfile", "fasciaExtent", "thresholdDatum", "paintFinish"],
+      "acceptance": ["Business text is supported by the selected appearance date.", "114 fascia remains blank unless a dated source supports text.", "Temporary fencing and advertisements remain source occluders.", "Door sill meets an explicit threshold datum; pavement pixels do not establish the rise."]
+    },
+    {
+      "component": "clipped-grouped-window-frontage",
+      "building": "lauriergracht-37",
+      "observed": "The selected source plane includes three complete groups and a clipped left group. The rejected wider original crop includes more bays outside the owner geometry.",
+      "sourcePaths": [
+        "artifacts/building-library/expansion/evidence/lauriergracht-37-2022-01-27-full-84a6c091.jpg",
+        "artifacts/building-library/expansion/evidence/lauriergracht-37-2024-12-16-full-b77f1f50.jpg"
+      ],
+      "parametersNeeded": ["ownerFrontageExtent", "bayAnchors", "partialBayMask", "upperLights", "rowWidthPolicy", "groundOcclusion"],
+      "acceptance": ["No stretching of the wider crop to the shorter source wall.", "Partial groups are authored only when their clipped scope is explicit.", "The raw selected wall top and conflicting owner roof percentile both remain visible.", "Rear volumes remain unresolved until semantic source-shell review."]
+    }
+  ]
+}

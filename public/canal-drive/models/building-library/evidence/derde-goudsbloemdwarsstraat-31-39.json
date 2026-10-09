@@ -1,0 +1,1191 @@
+{
+  "schemaVersion": 1,
+  "id": "derde-goudsbloemdwarsstraat-31-39",
+  "ownerId": "0363100012168615",
+  "geometryRevision": "b9ac59246ebcb44e0d5ddbd43039d87f35ca9885de8d39a70ca676eda8efb377",
+  "physicalFacade": {
+    "frontage": [
+      [
+        694.4807605743117,
+        -1205.3572534083505
+      ],
+      [
+        697.2607600905467,
+        -1193.3772534064483
+      ]
+    ],
+    "orderedFrontageRD": [
+      {
+        "x": 120637.02993060008,
+        "y": 488151.97930086375
+      },
+      {
+        "x": 120639.80993011632,
+        "y": 488139.99930086185
+      }
+    ],
+    "elevationId": "0363100012168615:e:0bqwrot",
+    "identityStatus": "visually plausible; metric registration unresolved",
+    "plane": {
+      "start": {
+        "x": 120637.02993060008,
+        "y": 488151.97930086375
+      },
+      "end": {
+        "x": 120639.80993011632,
+        "y": 488139.99930086185
+      }
+    }
+  },
+  "targetAppearanceDate": "2022-04-29T07:26:49.661430Z",
+  "derived": [
+    {
+      "tier": "ground",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-ground.jpg",
+      "sha256": "39d42cfe9bd3331a75a3f2d48fe6d32496ffec31d51b3913e422003b18257f2f",
+      "captureDate": "2022-04-29T07:26:49.661430Z",
+      "panoramaId": "TMX7316010203-002549_pano_0000_002120",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120636.97433060975,
+          "y": 488152.2189008638
+        },
+        "end": {
+          "x": 120639.86553010665,
+          "y": 488139.7597008618
+        },
+        "baseZ": 0.05199999809265138,
+        "topZ": 4.951999998092651
+      },
+      "datum": "published-minus-43.5m; track-unsolved",
+      "heightInferred": false,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/manifest.json",
+      "derivationKey": "d4d83ecc9042a96d8ab3527f0c9183f7fc42f5c6a4e9edf22da65887b4d0294b",
+      "metricEligible": false,
+      "captureKey": "TMX7316010203-002549_pano_0000_002120|2022-04-29T07:26:49.661430Z",
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "registration": {
+        "status": "unregistered",
+        "metricEligible": false
+      },
+      "selectedReason": "Cached selected-facade evidence; separate full/roof crops are not independent captures.",
+      "width": 1407,
+      "height": 539,
+      "url": "./models/building-library/evidence/derde-goudsbloemdwarsstraat-31-39-ground-20220429-39d42cfe9bd3331a75a3f2d4.jpg",
+      "sourceUrlBeforePreview": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-ground.jpg"
+    },
+    {
+      "tier": "full",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-full.jpg",
+      "sha256": "fd82df6e164a83d4a54386c8852240a68153eb6120bea950bbd4fa9e4c570984",
+      "captureDate": "2025-07-03T07:07:29Z",
+      "panoramaId": "recording_2025-07-03_06-23-16_01252",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120636.97433060975,
+          "y": 488152.2189008638
+        },
+        "end": {
+          "x": 120639.86553010665,
+          "y": 488139.7597008618
+        },
+        "baseZ": 0.05199999809265138,
+        "topZ": 16.92
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "heightInferred": true,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0.3333333333333333,
+        "rayBlockers": [
+          [
+            "0363100012168616"
+          ],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/manifest.json",
+      "derivationKey": "d4d83ecc9042a96d8ab3527f0c9183f7fc42f5c6a4e9edf22da65887b4d0294b",
+      "metricEligible": false,
+      "captureKey": "recording_2025-07-03_06-23-16_01252|2025-07-03T07:07:29Z",
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "registration": {
+        "status": "unregistered",
+        "metricEligible": false
+      },
+      "selectedReason": "Cached selected-facade evidence; separate full/roof crops are not independent captures.",
+      "width": 576,
+      "height": 759,
+      "url": "./models/building-library/evidence/derde-goudsbloemdwarsstraat-31-39-full-20250703-fd82df6e164a83d4a54386c8.jpg",
+      "sourceUrlBeforePreview": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-full.jpg"
+    },
+    {
+      "tier": "roof",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-roof.jpg",
+      "sha256": "a006f4d5aeb052c5b9ac4a451419ac364acdb93a91489aa55157eef996d57fc9",
+      "captureDate": "2025-07-03T07:07:29Z",
+      "panoramaId": "recording_2025-07-03_06-23-16_01252",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120636.97433060975,
+          "y": 488152.2189008638
+        },
+        "end": {
+          "x": 120639.86553010665,
+          "y": 488139.7597008618
+        },
+        "baseZ": 8.72,
+        "topZ": 16.92
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "heightInferred": true,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0.3333333333333333,
+        "rayBlockers": [
+          [
+            "0363100012168616"
+          ],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/manifest.json",
+      "derivationKey": "d4d83ecc9042a96d8ab3527f0c9183f7fc42f5c6a4e9edf22da65887b4d0294b",
+      "metricEligible": false,
+      "captureKey": "recording_2025-07-03_06-23-16_01252|2025-07-03T07:07:29Z",
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "registration": {
+        "status": "unregistered",
+        "metricEligible": false
+      },
+      "selectedReason": "Cached selected-facade evidence; separate full/roof crops are not independent captures.",
+      "width": 576,
+      "height": 369,
+      "url": "./models/building-library/evidence/derde-goudsbloemdwarsstraat-31-39-roof-20250703-a006f4d5aeb052c5b9ac4a45.jpg",
+      "sourceUrlBeforePreview": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-roof.jpg"
+    },
+    {
+      "tier": "full",
+      "path": "artifacts/jordaan-building-library/derde-goudsbloemdwarsstraat-31-39/long-2022.jpg",
+      "sha256": "d2d624e9fa700ea989d169741fa9afacc29c3340525e91ada4d937691d0fc759",
+      "captureDate": "2022-04-29T07:26:49.661430Z",
+      "panoramaId": "TMX7316010203-002549_pano_0000_002120",
+      "plane": {
+        "start": {
+          "x": 120637.02993060008,
+          "y": 488151.97930086375
+        },
+        "end": {
+          "x": 120639.80993011632,
+          "y": 488139.99930086185
+        },
+        "baseZ": 0.05199999809265138,
+        "topZ": 24
+      },
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "registration": {
+        "status": "unregistered",
+        "metricEligible": false
+      },
+      "captureKey": "TMX7316010203-002549_pano_0000_002120|2022-04-29T07:26:49.661430Z",
+      "width": 984,
+      "height": 1916,
+      "url": "./models/building-library/evidence/derde-goudsbloemdwarsstraat-31-39-full-20220429-d2d624e9fa700ea989d16974.jpg",
+      "sourceUrlBeforePreview": "artifacts/jordaan-building-library/derde-goudsbloemdwarsstraat-31-39/long-2022.jpg"
+    },
+    {
+      "tier": "full",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0uq1e3g-full.jpg",
+      "sha256": "078905abce7467b95147836323f0be0d518c3226a6bc0996eb16768813ad1815",
+      "captureDate": "2024-12-16T12:04:53Z",
+      "panoramaId": "b_20241216_0911_Track44_Sphere_00017",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120641.27261000997,
+          "y": 488138.97888087115
+        },
+        "end": {
+          "x": 120645.86524979536,
+          "y": 488140.0407208984
+        },
+        "baseZ": 0.05199999809265138,
+        "topZ": 16.92
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "heightInferred": true,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/manifest.json",
+      "derivationKey": "5daaeeaa73ff85a2c1e1f786cf71f5c6dcc62591d95dc173e9b440e1c8e2242c",
+      "metricEligible": false,
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "registration": {
+        "status": "unregistered",
+        "metricEligible": false
+      },
+      "captureKey": "b_20241216_0911_Track44_Sphere_00017|2024-12-16T12:04:53Z",
+      "width": 212,
+      "height": 759,
+      "url": "./models/building-library/evidence/derde-goudsbloemdwarsstraat-31-39-full-20241216-078905abce7467b951478363.jpg",
+      "sourceUrlBeforePreview": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0uq1e3g-full.jpg"
+    },
+    {
+      "tier": "roof",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0uq1e3g-roof.jpg",
+      "sha256": "eead379516b75ac99e611afa99860151ff8f22b3597872b96330bf3a7716295d",
+      "captureDate": "2024-12-16T12:04:53Z",
+      "panoramaId": "b_20241216_0911_Track44_Sphere_00017",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120641.27261000997,
+          "y": 488138.97888087115
+        },
+        "end": {
+          "x": 120645.86524979536,
+          "y": 488140.0407208984
+        },
+        "baseZ": 8.72,
+        "topZ": 16.92
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "heightInferred": true,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/manifest.json",
+      "derivationKey": "5daaeeaa73ff85a2c1e1f786cf71f5c6dcc62591d95dc173e9b440e1c8e2242c",
+      "metricEligible": false,
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "registration": {
+        "status": "unregistered",
+        "metricEligible": false
+      },
+      "captureKey": "b_20241216_0911_Track44_Sphere_00017|2024-12-16T12:04:53Z",
+      "width": 212,
+      "height": 369,
+      "url": "./models/building-library/evidence/derde-goudsbloemdwarsstraat-31-39-roof-20241216-eead379516b75ac99e611afa.jpg",
+      "sourceUrlBeforePreview": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0uq1e3g-roof.jpg"
+    },
+    {
+      "tier": "ground",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0uq1e3g-ground.jpg",
+      "sha256": "b236b7aa7a9cf04f94b3f2c551c5dca49d8224ab68091ef9701e48029039bff7",
+      "captureDate": "2025-07-03T07:07:24Z",
+      "panoramaId": "recording_2025-07-03_06-23-16_01249",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120641.27261000997,
+          "y": 488138.97888087115
+        },
+        "end": {
+          "x": 120645.86524979536,
+          "y": 488140.0407208984
+        },
+        "baseZ": 0.05199999809265138,
+        "topZ": 4.951999998092651
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "heightInferred": true,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/manifest.json",
+      "derivationKey": "5daaeeaa73ff85a2c1e1f786cf71f5c6dcc62591d95dc173e9b440e1c8e2242c",
+      "metricEligible": false,
+      "sourceDimensions": [
+        4000,
+        2000
+      ],
+      "registration": {
+        "status": "unregistered",
+        "metricEligible": false
+      },
+      "captureKey": "recording_2025-07-03_06-23-16_01249|2025-07-03T07:07:24Z",
+      "width": 519,
+      "height": 539,
+      "url": "./models/building-library/evidence/derde-goudsbloemdwarsstraat-31-39-ground-20250703-b236b7aa7a9cf04f94b3f2c5.jpg",
+      "sourceUrlBeforePreview": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0uq1e3g-ground.jpg"
+    }
+  ],
+  "candidates": [
+    {
+      "tier": "ground",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-ground.jpg",
+      "sha256": "39d42cfe9bd3331a75a3f2d48fe6d32496ffec31d51b3913e422003b18257f2f",
+      "captureDate": "2022-04-29T07:26:49.661430Z",
+      "panoramaId": "TMX7316010203-002549_pano_0000_002120",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120636.97433060975,
+          "y": 488152.2189008638
+        },
+        "end": {
+          "x": 120639.86553010665,
+          "y": 488139.7597008618
+        },
+        "baseZ": 0.05199999809265138,
+        "topZ": 4.951999998092651
+      },
+      "datum": "published-minus-43.5m; track-unsolved",
+      "heightInferred": false,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/manifest.json",
+      "derivationKey": "d4d83ecc9042a96d8ab3527f0c9183f7fc42f5c6a4e9edf22da65887b4d0294b",
+      "metricEligible": false
+    },
+    {
+      "tier": "context",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-context.jpg",
+      "sha256": "44f5fb7d837907712f3956cb78a8c004d96c6b186ff698d5d1b9d4f68a3e798d",
+      "captureDate": "2025-07-03T07:07:29Z",
+      "panoramaId": "recording_2025-07-03_06-23-16_01252",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120635.08393093872,
+          "y": 488160.3653008651
+        },
+        "end": {
+          "x": 120641.75592977768,
+          "y": 488131.6133008605
+        },
+        "baseZ": 0.05199999809265138,
+        "topZ": 16.92
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "heightInferred": true,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0.3333333333333333,
+        "rayBlockers": [
+          [
+            "0363100012168616"
+          ],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/manifest.json",
+      "derivationKey": "d4d83ecc9042a96d8ab3527f0c9183f7fc42f5c6a4e9edf22da65887b4d0294b",
+      "metricEligible": false
+    },
+    {
+      "tier": "full",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-full.jpg",
+      "sha256": "fd82df6e164a83d4a54386c8852240a68153eb6120bea950bbd4fa9e4c570984",
+      "captureDate": "2025-07-03T07:07:29Z",
+      "panoramaId": "recording_2025-07-03_06-23-16_01252",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120636.97433060975,
+          "y": 488152.2189008638
+        },
+        "end": {
+          "x": 120639.86553010665,
+          "y": 488139.7597008618
+        },
+        "baseZ": 0.05199999809265138,
+        "topZ": 16.92
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "heightInferred": true,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0.3333333333333333,
+        "rayBlockers": [
+          [
+            "0363100012168616"
+          ],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/manifest.json",
+      "derivationKey": "d4d83ecc9042a96d8ab3527f0c9183f7fc42f5c6a4e9edf22da65887b4d0294b",
+      "metricEligible": false
+    },
+    {
+      "tier": "roof",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-roof.jpg",
+      "sha256": "a006f4d5aeb052c5b9ac4a451419ac364acdb93a91489aa55157eef996d57fc9",
+      "captureDate": "2025-07-03T07:07:29Z",
+      "panoramaId": "recording_2025-07-03_06-23-16_01252",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120636.97433060975,
+          "y": 488152.2189008638
+        },
+        "end": {
+          "x": 120639.86553010665,
+          "y": 488139.7597008618
+        },
+        "baseZ": 8.72,
+        "topZ": 16.92
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "heightInferred": true,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0.3333333333333333,
+        "rayBlockers": [
+          [
+            "0363100012168616"
+          ],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/manifest.json",
+      "derivationKey": "d4d83ecc9042a96d8ab3527f0c9183f7fc42f5c6a4e9edf22da65887b4d0294b",
+      "metricEligible": false
+    },
+    {
+      "tier": "context",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0uq1e3g-context.jpg",
+      "sha256": "668b04fda6ccc2e24ac93ad04c3c6bcdd2f3a832f85d9a050cf1d89a2faa7519",
+      "captureDate": "2024-12-16T12:04:53Z",
+      "panoramaId": "b_20241216_0911_Track44_Sphere_00017",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120638.26973015029,
+          "y": 488138.28460085334
+        },
+        "end": {
+          "x": 120648.86812965502,
+          "y": 488140.73500091623
+        },
+        "baseZ": 0.05199999809265138,
+        "topZ": 16.92
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "heightInferred": true,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/manifest.json",
+      "derivationKey": "5daaeeaa73ff85a2c1e1f786cf71f5c6dcc62591d95dc173e9b440e1c8e2242c",
+      "metricEligible": false
+    },
+    {
+      "tier": "full",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0uq1e3g-full.jpg",
+      "sha256": "078905abce7467b95147836323f0be0d518c3226a6bc0996eb16768813ad1815",
+      "captureDate": "2024-12-16T12:04:53Z",
+      "panoramaId": "b_20241216_0911_Track44_Sphere_00017",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120641.27261000997,
+          "y": 488138.97888087115
+        },
+        "end": {
+          "x": 120645.86524979536,
+          "y": 488140.0407208984
+        },
+        "baseZ": 0.05199999809265138,
+        "topZ": 16.92
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "heightInferred": true,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/manifest.json",
+      "derivationKey": "5daaeeaa73ff85a2c1e1f786cf71f5c6dcc62591d95dc173e9b440e1c8e2242c",
+      "metricEligible": false
+    },
+    {
+      "tier": "roof",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0uq1e3g-roof.jpg",
+      "sha256": "eead379516b75ac99e611afa99860151ff8f22b3597872b96330bf3a7716295d",
+      "captureDate": "2024-12-16T12:04:53Z",
+      "panoramaId": "b_20241216_0911_Track44_Sphere_00017",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120641.27261000997,
+          "y": 488138.97888087115
+        },
+        "end": {
+          "x": 120645.86524979536,
+          "y": 488140.0407208984
+        },
+        "baseZ": 8.72,
+        "topZ": 16.92
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "heightInferred": true,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/manifest.json",
+      "derivationKey": "5daaeeaa73ff85a2c1e1f786cf71f5c6dcc62591d95dc173e9b440e1c8e2242c",
+      "metricEligible": false
+    },
+    {
+      "tier": "ground",
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0uq1e3g-ground.jpg",
+      "sha256": "b236b7aa7a9cf04f94b3f2c551c5dca49d8224ab68091ef9701e48029039bff7",
+      "captureDate": "2025-07-03T07:07:24Z",
+      "panoramaId": "recording_2025-07-03_06-23-16_01249",
+      "nativeDimensions": [
+        4000,
+        2000
+      ],
+      "plane": {
+        "start": {
+          "x": 120641.27261000997,
+          "y": 488138.97888087115
+        },
+        "end": {
+          "x": 120645.86524979536,
+          "y": 488140.0407208984
+        },
+        "baseZ": 0.05199999809265138,
+        "topZ": 4.951999998092651
+      },
+      "datum": "ground-plus-2.44m; approximate",
+      "heightInferred": true,
+      "visibility": {
+        "version": "footprint-interior-traversal/v1",
+        "hiddenFraction": 0,
+        "rayBlockers": [
+          [],
+          [],
+          []
+        ]
+      },
+      "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/manifest.json",
+      "derivationKey": "5daaeeaa73ff85a2c1e1f786cf71f5c6dcc62591d95dc173e9b440e1c8e2242c",
+      "metricEligible": false
+    }
+  ],
+  "coverage": [
+    {
+      "year": "2022",
+      "ground": {
+        "captures": [
+          "TMX7316010203-002549_pano_0000_002120|2022-04-29T07:26:49.661430Z"
+        ],
+        "crops": 1,
+        "registered": 0,
+        "visible": "Separate physical fronts; occlusion and registration unresolved"
+      },
+      "upper": {
+        "captures": [
+          "TMX7316010203-002549_pano_0000_002120|2022-04-29T07:26:49.661430Z"
+        ],
+        "crops": 1,
+        "registered": 0,
+        "visible": "Separate physical fronts; occlusion and registration unresolved"
+      },
+      "roof": {
+        "captures": [],
+        "crops": 0,
+        "registered": 0,
+        "visible": "Separate physical fronts; occlusion and registration unresolved"
+      }
+    },
+    {
+      "year": "2024",
+      "ground": {
+        "captures": [],
+        "crops": 0,
+        "registered": 0,
+        "visible": "Separate physical fronts; occlusion and registration unresolved"
+      },
+      "upper": {
+        "captures": [
+          "b_20241216_0911_Track44_Sphere_00017|2024-12-16T12:04:53Z"
+        ],
+        "crops": 1,
+        "registered": 0,
+        "visible": "Separate physical fronts; occlusion and registration unresolved"
+      },
+      "roof": {
+        "captures": [
+          "b_20241216_0911_Track44_Sphere_00017|2024-12-16T12:04:53Z"
+        ],
+        "crops": 1,
+        "registered": 0,
+        "visible": "Separate physical fronts; occlusion and registration unresolved"
+      }
+    },
+    {
+      "year": "2025",
+      "ground": {
+        "captures": [
+          "recording_2025-07-03_06-23-16_01249|2025-07-03T07:07:24Z"
+        ],
+        "crops": 1,
+        "registered": 0,
+        "visible": "Separate physical fronts; occlusion and registration unresolved"
+      },
+      "upper": {
+        "captures": [
+          "recording_2025-07-03_06-23-16_01252|2025-07-03T07:07:29Z"
+        ],
+        "crops": 1,
+        "registered": 0,
+        "visible": "Separate physical fronts; occlusion and registration unresolved"
+      },
+      "roof": {
+        "captures": [
+          "recording_2025-07-03_06-23-16_01252|2025-07-03T07:07:29Z"
+        ],
+        "crops": 1,
+        "registered": 0,
+        "visible": "Separate physical fronts; occlusion and registration unresolved"
+      }
+    }
+  ],
+  "policy": "Original cached images retained; source fingerprint is a cache geometry digest, not externally certified revision.",
+  "gaps": [
+    "No independent feature registration.",
+    "Recovered primary evidence from 2022 and separate frontage evidence from 2024 and 2025 support visual interpretation. Tier crops from one capture are not independent observations.",
+    "Hedge-occluded lower entrances and hidden rear appearance remain unresolved."
+  ],
+  "physicalFacades": [
+    {
+      "elevationId": "0363100012168615:e:0bqwrot",
+      "recordId": "0363100012168615_e_0bqwrot",
+      "orderedFrontageRD": [
+        {
+          "x": 120637.02993060008,
+          "y": 488151.97930086375
+        },
+        {
+          "x": 120639.80993011632,
+          "y": 488139.99930086185
+        }
+      ],
+      "orderedFrontageLocal": [
+        [
+          694.4807605743117,
+          -1205.3572534083505
+        ],
+        [
+          697.2607600905467,
+          -1193.3772534064483
+        ]
+      ],
+      "wallWidthM": 12.29832498171373,
+      "selectedWallHeight": {
+        "surfaceIndex": 11,
+        "planeErrorM": 0.0016188902360041446,
+        "overlapM": 4.764030839455671,
+        "bottom": -0.3,
+        "top": 15.06,
+        "heightM": 15.360000000000001,
+        "status": "selected-coplanar-source-wall; feature registration unresolved"
+      },
+      "independentCaptures": 2,
+      "years": [
+        "2022",
+        "2025"
+      ],
+      "tiers": [
+        "context",
+        "full",
+        "ground",
+        "roof"
+      ],
+      "identityStatus": "not-visually-reviewed",
+      "registrationStatus": "unregistered",
+      "images": [
+        {
+          "tier": "ground",
+          "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-ground.jpg",
+          "sha256": "39d42cfe9bd3331a75a3f2d48fe6d32496ffec31d51b3913e422003b18257f2f",
+          "captureDate": "2022-04-29T07:26:49.661430Z",
+          "panoramaId": "TMX7316010203-002549_pano_0000_002120",
+          "nativeDimensions": [
+            4000,
+            2000
+          ],
+          "plane": {
+            "start": {
+              "x": 120636.97433060975,
+              "y": 488152.2189008638
+            },
+            "end": {
+              "x": 120639.86553010665,
+              "y": 488139.7597008618
+            },
+            "baseZ": 0.05199999809265138,
+            "topZ": 4.951999998092651
+          },
+          "datum": "published-minus-43.5m; track-unsolved",
+          "heightInferred": false,
+          "visibility": {
+            "version": "footprint-interior-traversal/v1",
+            "hiddenFraction": 0,
+            "rayBlockers": [
+              [],
+              [],
+              []
+            ]
+          },
+          "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/manifest.json",
+          "derivationKey": "d4d83ecc9042a96d8ab3527f0c9183f7fc42f5c6a4e9edf22da65887b4d0294b",
+          "metricEligible": false
+        },
+        {
+          "tier": "context",
+          "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-context.jpg",
+          "sha256": "44f5fb7d837907712f3956cb78a8c004d96c6b186ff698d5d1b9d4f68a3e798d",
+          "captureDate": "2025-07-03T07:07:29Z",
+          "panoramaId": "recording_2025-07-03_06-23-16_01252",
+          "nativeDimensions": [
+            4000,
+            2000
+          ],
+          "plane": {
+            "start": {
+              "x": 120635.08393093872,
+              "y": 488160.3653008651
+            },
+            "end": {
+              "x": 120641.75592977768,
+              "y": 488131.6133008605
+            },
+            "baseZ": 0.05199999809265138,
+            "topZ": 16.92
+          },
+          "datum": "ground-plus-2.44m; approximate",
+          "heightInferred": true,
+          "visibility": {
+            "version": "footprint-interior-traversal/v1",
+            "hiddenFraction": 0.3333333333333333,
+            "rayBlockers": [
+              [
+                "0363100012168616"
+              ],
+              [],
+              []
+            ]
+          },
+          "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/manifest.json",
+          "derivationKey": "d4d83ecc9042a96d8ab3527f0c9183f7fc42f5c6a4e9edf22da65887b4d0294b",
+          "metricEligible": false
+        },
+        {
+          "tier": "full",
+          "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-full.jpg",
+          "sha256": "fd82df6e164a83d4a54386c8852240a68153eb6120bea950bbd4fa9e4c570984",
+          "captureDate": "2025-07-03T07:07:29Z",
+          "panoramaId": "recording_2025-07-03_06-23-16_01252",
+          "nativeDimensions": [
+            4000,
+            2000
+          ],
+          "plane": {
+            "start": {
+              "x": 120636.97433060975,
+              "y": 488152.2189008638
+            },
+            "end": {
+              "x": 120639.86553010665,
+              "y": 488139.7597008618
+            },
+            "baseZ": 0.05199999809265138,
+            "topZ": 16.92
+          },
+          "datum": "ground-plus-2.44m; approximate",
+          "heightInferred": true,
+          "visibility": {
+            "version": "footprint-interior-traversal/v1",
+            "hiddenFraction": 0.3333333333333333,
+            "rayBlockers": [
+              [
+                "0363100012168616"
+              ],
+              [],
+              []
+            ]
+          },
+          "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/manifest.json",
+          "derivationKey": "d4d83ecc9042a96d8ab3527f0c9183f7fc42f5c6a4e9edf22da65887b4d0294b",
+          "metricEligible": false
+        },
+        {
+          "tier": "roof",
+          "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0bqwrot-roof.jpg",
+          "sha256": "a006f4d5aeb052c5b9ac4a451419ac364acdb93a91489aa55157eef996d57fc9",
+          "captureDate": "2025-07-03T07:07:29Z",
+          "panoramaId": "recording_2025-07-03_06-23-16_01252",
+          "nativeDimensions": [
+            4000,
+            2000
+          ],
+          "plane": {
+            "start": {
+              "x": 120636.97433060975,
+              "y": 488152.2189008638
+            },
+            "end": {
+              "x": 120639.86553010665,
+              "y": 488139.7597008618
+            },
+            "baseZ": 8.72,
+            "topZ": 16.92
+          },
+          "datum": "ground-plus-2.44m; approximate",
+          "heightInferred": true,
+          "visibility": {
+            "version": "footprint-interior-traversal/v1",
+            "hiddenFraction": 0.3333333333333333,
+            "rayBlockers": [
+              [
+                "0363100012168616"
+              ],
+              [],
+              []
+            ]
+          },
+          "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/manifest.json",
+          "derivationKey": "d4d83ecc9042a96d8ab3527f0c9183f7fc42f5c6a4e9edf22da65887b4d0294b",
+          "metricEligible": false
+        }
+      ]
+    },
+    {
+      "elevationId": "0363100012168615:e:0uq1e3g",
+      "recordId": "0363100012168615_e_0uq1e3g",
+      "orderedFrontageRD": [
+        {
+          "x": 120641.36093000585,
+          "y": 488138.9993008717
+        },
+        {
+          "x": 120645.77692979948,
+          "y": 488140.0203008979
+        }
+      ],
+      "orderedFrontageLocal": [
+        [
+          698.8117599800753,
+          -1192.3772534162854
+        ],
+        [
+          703.227759773712,
+          -1193.3982534424867
+        ]
+      ],
+      "wallWidthM": 4.53249326871015,
+      "selectedWallHeight": {
+        "surfaceIndex": 4,
+        "planeErrorM": 0.014989288745819,
+        "overlapM": 4.531860462280847,
+        "bottom": -0.3,
+        "top": 15.06,
+        "heightM": 15.360000000000001,
+        "status": "selected-coplanar-source-wall; feature registration unresolved"
+      },
+      "independentCaptures": 2,
+      "years": [
+        "2024",
+        "2025"
+      ],
+      "tiers": [
+        "context",
+        "full",
+        "ground",
+        "roof"
+      ],
+      "identityStatus": "not-visually-reviewed",
+      "registrationStatus": "unregistered",
+      "images": [
+        {
+          "tier": "context",
+          "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0uq1e3g-context.jpg",
+          "sha256": "668b04fda6ccc2e24ac93ad04c3c6bcdd2f3a832f85d9a050cf1d89a2faa7519",
+          "captureDate": "2024-12-16T12:04:53Z",
+          "panoramaId": "b_20241216_0911_Track44_Sphere_00017",
+          "nativeDimensions": [
+            4000,
+            2000
+          ],
+          "plane": {
+            "start": {
+              "x": 120638.26973015029,
+              "y": 488138.28460085334
+            },
+            "end": {
+              "x": 120648.86812965502,
+              "y": 488140.73500091623
+            },
+            "baseZ": 0.05199999809265138,
+            "topZ": 16.92
+          },
+          "datum": "ground-plus-2.44m; approximate",
+          "heightInferred": true,
+          "visibility": {
+            "version": "footprint-interior-traversal/v1",
+            "hiddenFraction": 0,
+            "rayBlockers": [
+              [],
+              [],
+              []
+            ]
+          },
+          "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/manifest.json",
+          "derivationKey": "5daaeeaa73ff85a2c1e1f786cf71f5c6dcc62591d95dc173e9b440e1c8e2242c",
+          "metricEligible": false
+        },
+        {
+          "tier": "full",
+          "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0uq1e3g-full.jpg",
+          "sha256": "078905abce7467b95147836323f0be0d518c3226a6bc0996eb16768813ad1815",
+          "captureDate": "2024-12-16T12:04:53Z",
+          "panoramaId": "b_20241216_0911_Track44_Sphere_00017",
+          "nativeDimensions": [
+            4000,
+            2000
+          ],
+          "plane": {
+            "start": {
+              "x": 120641.27261000997,
+              "y": 488138.97888087115
+            },
+            "end": {
+              "x": 120645.86524979536,
+              "y": 488140.0407208984
+            },
+            "baseZ": 0.05199999809265138,
+            "topZ": 16.92
+          },
+          "datum": "ground-plus-2.44m; approximate",
+          "heightInferred": true,
+          "visibility": {
+            "version": "footprint-interior-traversal/v1",
+            "hiddenFraction": 0,
+            "rayBlockers": [
+              [],
+              [],
+              []
+            ]
+          },
+          "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/manifest.json",
+          "derivationKey": "5daaeeaa73ff85a2c1e1f786cf71f5c6dcc62591d95dc173e9b440e1c8e2242c",
+          "metricEligible": false
+        },
+        {
+          "tier": "roof",
+          "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0uq1e3g-roof.jpg",
+          "sha256": "eead379516b75ac99e611afa99860151ff8f22b3597872b96330bf3a7716295d",
+          "captureDate": "2024-12-16T12:04:53Z",
+          "panoramaId": "b_20241216_0911_Track44_Sphere_00017",
+          "nativeDimensions": [
+            4000,
+            2000
+          ],
+          "plane": {
+            "start": {
+              "x": 120641.27261000997,
+              "y": 488138.97888087115
+            },
+            "end": {
+              "x": 120645.86524979536,
+              "y": 488140.0407208984
+            },
+            "baseZ": 8.72,
+            "topZ": 16.92
+          },
+          "datum": "ground-plus-2.44m; approximate",
+          "heightInferred": true,
+          "visibility": {
+            "version": "footprint-interior-traversal/v1",
+            "hiddenFraction": 0,
+            "rayBlockers": [
+              [],
+              [],
+              []
+            ]
+          },
+          "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/manifest.json",
+          "derivationKey": "5daaeeaa73ff85a2c1e1f786cf71f5c6dcc62591d95dc173e9b440e1c8e2242c",
+          "metricEligible": false
+        },
+        {
+          "tier": "ground",
+          "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/images/0363100012168615_e_0uq1e3g-ground.jpg",
+          "sha256": "b236b7aa7a9cf04f94b3f2c551c5dca49d8224ab68091ef9701e48029039bff7",
+          "captureDate": "2025-07-03T07:07:24Z",
+          "panoramaId": "recording_2025-07-03_06-23-16_01249",
+          "nativeDimensions": [
+            4000,
+            2000
+          ],
+          "plane": {
+            "start": {
+              "x": 120641.27261000997,
+              "y": 488138.97888087115
+            },
+            "end": {
+              "x": 120645.86524979536,
+              "y": 488140.0407208984
+            },
+            "baseZ": 0.05199999809265138,
+            "topZ": 4.951999998092651
+          },
+          "datum": "ground-plus-2.44m; approximate",
+          "heightInferred": true,
+          "visibility": {
+            "version": "footprint-interior-traversal/v1",
+            "hiddenFraction": 0,
+            "rayBlockers": [
+              [],
+              [],
+              []
+            ]
+          },
+          "manifestPath": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/4aef7f361d0cd1ca32594af534f8c4c938f7bd997497c9512ad71eac47ea1d88/evidence/manifest.json",
+          "derivationKey": "5daaeeaa73ff85a2c1e1f786cf71f5c6dcc62591d95dc173e9b440e1c8e2242c",
+          "metricEligible": false
+        }
+      ]
+    }
+  ],
+  "scope": {
+    "ownerId": "0363100012168615",
+    "authoredSurfaceIndices": [
+      5,
+      6,
+      18,
+      11,
+      4,
+      7
+    ],
+    "unresolvedStreetVisibleSurfaceIndices": [],
+    "note": "Recovered2022 supports left bay on wall6; visible central/right fronts and short side plus bevel authored. Hedge still obscures ground entrances and datums remain unresolved."
+  },
+  "previewSourceBundle": "artifacts/jordaan-building-library/authored-evidence/derde-goudsbloemdwarsstraat-31-39.json"
+}
