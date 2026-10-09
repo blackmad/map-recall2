@@ -1,5 +1,21 @@
 # Canal Recall — what is built
 
+## What's new page, and trees stop rebuilding every frame (2026-10-09)
+
+`whats-new.html` is the landing page for finished buildings: hero counts, a
+day-grouped feed with lazy 3D turntables (one shared renderer, at most three
+GLB loads, disposed off-screen), an "In progress" strip from the work queue,
+and links into each gallery and the game. "New" means first installed:
+`scripts/build-model-first-added.ts` writes `models/model-first-added.json`
+from git history, because `model-dates.json` changes on every re-export.
+Rerun it (`npm run build:model-first-added`) after installing models.
+
+The game calls `jumpTo` each frame, so `moveend` fires each frame. Inventory
+trees rebuilt every instance on each one. They now build for a padded area
+(`src/canalRecall/viewResidency.ts`) and rebuild only when the view leaves it.
+Ride perf (iphone, 4x CPU): moveend handlers 4.5 → 0.7 ms median, frame p99
+33.4 → 16.8 ms, JS heap 532 → 398 MB (`tests/e2e/ride-perf.spec.ts`).
+
 ## Root worktree landed and branches integrated (2026-10-09)
 
 Earlier agent sessions left 44 modified and ~420 untracked files in root.
