@@ -10698,5 +10698,52 @@
       ]
     ]
   }
+},
+{
+  "id": "posthoornkerk",
+  "name": "Posthoornkerk",
+  "landmarkId": "extract_landmarks_213091641",
+  "modelUrl": "./models/posthoornkerk.glb",
+  "suppressOsmIds": [
+    "w43040630",
+    "NL.IMBAG.Pand.0363100012167529"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.89063,
+      52.381275
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 55,
+    "widthMetres": 55
+  },
+  "surveyed": {
+    "anchor": [
+      4.89063,
+      52.381275
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Native current BAG parent and 3DBAG roof semantics; east/south geometry baked by builder"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#88705f",
+    "greyBrick": "#75665b",
+    "stone": "#c7b994",
+    "slate": "#535b65",
+    "glass": "#869a9e",
+    "dark": "#333b3c",
+    "ochre": "#a87c42"
+  },
+  "attribution": {
+    "title": "Posthoornkerk",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1289",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native church reconstruction from BAG/3DBAG and operator/register references, cross-checked against dated 2025 municipal panoramas. Adjacent presbytery, school and street buildings retained; no name lettering."
+  }
 }
 ]

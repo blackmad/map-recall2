@@ -1,3 +1,4 @@
+import {buildPosthoornkerk} from './posthoornkerk-builder';
 import {buildHannekesBoom} from './hannekes-boom-builder';
 import {buildFireStationAnton} from './fire-station-anton-builder';
 import {buildFireStationWeesp} from './fire-station-weesp-builder';
@@ -311,6 +312,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
     if(id==='hannekes-boom')
       buildHannekesBoom(w,d,helpers);
+    else if(id==='posthoornkerk')buildPosthoornkerk(w,d,helpers);
     else if(id==='fire-station-nico')buildFireStationNico(w,d,helpers);
     else if(id==='fire-station-osdorp')buildFireStationOsdorp(w,d,helpers);
     else if(id==='fire-station-teunis')buildFireStationTeunis(w,d,helpers);
