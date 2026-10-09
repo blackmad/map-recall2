@@ -1,0 +1,52 @@
+{
+  "id": "huize-frankendael",
+  "name": "Huize Frankendael",
+  "landmarkId": "extract_landmarks_746892406",
+  "modelUrl": "./models/huize-frankendael.glb",
+  "suppressOsmIds": [
+    "w44980011",
+    "NL.IMBAG.Pand.0363100012162192",
+    "w1562613213",
+    "w1562613214",
+    "w1562613215",
+    "w1562613216"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.9335095,
+      52.351162
+    ],
+    "headingDegrees": 316.086,
+    "lengthMetres": 32.46,
+    "widthMetres": 12.91
+  },
+  "surveyed": {
+    "anchor": [
+      4.9335095,
+      52.351162
+    ],
+    "northOffsetDegrees": 226.086,
+    "source": "Current BAG0363100012162192 / OSM w44980011 and four exact mapped parts. Native original reconstruction; AHN5 2023 roof semantics and RCE422420."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 90,
+  "materialOverrides": {
+    "brick": "#766a65",
+    "stone": "#d8d1b8",
+    "white": "#eee7d5",
+    "slate": "#4a555b",
+    "glass": "#465d62",
+    "frame": "#292d28",
+    "dark": "#23392c",
+    "concrete": "#888980"
+  },
+  "attribution": {
+    "title": "Huize Frankendael",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/422420",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native BAG brick pavilion, coach-house wings, truncated grey hip roofs, rear polygonal projection, pale rococo surrounds, balustrade, dormers and entrance steps. No imported meshes or photo pixels."
+  }
+}
