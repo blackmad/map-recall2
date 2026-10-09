@@ -221,8 +221,9 @@
       center: { lat: 52.372851, lng: 4.8936 },
       extractPath: "../data/extracts/amsterdam",
       geocodeSuffix: ", Amsterdam",
-      // Preserves the historical Amsterdam home search window.
-      geocodeViewbox: [4.72, 52.43, 5.02, 52.27],
+      // Includes Weesp, whose installed administrative outline reaches 5.1077°E.
+      // The same window bounds live GPS origins and home-address searches.
+      geocodeViewbox: [4.72, 52.43, 5.12, 52.27],
       provinceCaption: "Noord-Holland",
       playable: true,
       curatedPois: AMSTERDAM_POIS

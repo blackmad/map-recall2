@@ -17,7 +17,7 @@ const { SIGNATURE_MODELS, placementFor, basemapBuildingFilter } = window.CanalRe
 const assetUrl = (path, id) => {
   const url = new URL(path, window.location.href);
   const version = window.CanalRecallSignatureLandmarks.MODEL_ASSET_VERSIONS?.[id];
-  if (version) url.searchParams.set('asset', version);
+  if (version && !url.searchParams.has('asset')) url.searchParams.set('asset', version);
   return url.href;
 };
 
