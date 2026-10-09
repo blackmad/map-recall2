@@ -2,6 +2,8 @@ import crypto from 'node:crypto';
 import * as T from 'three';
 import {Document, NodeIO} from '@gltf-transform/core';
 import {dedup, prune, weld} from '@gltf-transform/functions';
+import {ALL_EXTENSIONS, EXTMeshoptCompression} from '@gltf-transform/extensions';
+import {MeshoptEncoder,MeshoptDecoder} from 'meshoptimizer';
 
 export interface OrdinaryGeometryPart {g:T.BufferGeometry;c:string}
 export interface OrdinaryMaterialGroup {name:string;colours?:string[];roughness:number}
@@ -11,6 +13,8 @@ export interface OrdinaryExportOptions {
  palette:Record<string,string>;
  suppress:string[];
  groups?:OrdinaryMaterialGroup[];
+ /** Existing runtime supports meshopt; opt-in preserves prior asset bytes. */
+ meshopt?:boolean;
 }
 /** Shared original flat-colour export only. Callers own researched geometry,
  * source provenance, registration and actual visual/game acceptance. */
@@ -52,7 +56,9 @@ export async function exportOrdinaryGeometry(options:OrdinaryExportOptions){
  }
  if(!parts.length||assigned.size!==new Set(parts).size)throw Error('Every original geometry part must belong to a material group');
  await doc.transform(weld(),dedup(),prune());
- const bytes=await new NodeIO().writeBinary(doc),sha256=crypto.createHash('sha256').update(bytes).digest('hex');
+ const io=new NodeIO();
+ if(options.meshopt){await MeshoptEncoder.ready;doc.createExtension(EXTMeshoptCompression).setRequired(true).setEncoderOptions({method:EXTMeshoptCompression.EncoderMethod.QUANTIZE});io.registerExtensions(ALL_EXTENSIONS).registerDependencies({'meshopt.encoder':MeshoptEncoder,'meshopt.decoder':MeshoptDecoder});}
+ const bytes=await io.writeBinary(doc),sha256=crypto.createHash('sha256').update(bytes).digest('hex');
  if(bytes.length>=500000||doc.getRoot().listMaterials().length>3)throw Error(`Strict ordinary geometry budget: ${bytes.length} bytes`);
  const min=[Infinity,Infinity,Infinity],max=[-Infinity,-Infinity,-Infinity];let triangles=0;
  for(const primitive of mesh.listPrimitives()){

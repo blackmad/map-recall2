@@ -2,7 +2,7 @@
   "id": "NL.IMBAG.Pand.0363100012185424",
   "canonicalModelId": "ordinary-0363100012185424",
   "at": "2026-10-08T21:07:34.020701+00:00",
-  "state": "Full architecture/source scope research in progress; not author ready or standard approved",
+  "state": "verified-hosted-scoped",
   "physicalScope": {
     "nativeAreaMetres2": 1793.7770665825576,
     "officialAreaMetres2": 1793.9276754996388,
@@ -13,8 +13,8 @@
       "Prinsengracht763",
       "Prinsengracht765",
       "Prinsengracht767",
-      "Prinsengracht769A\u2013E",
-      "Kerkstraat126A\u2013E"
+      "Prinsengracht769A–E",
+      "Kerkstraat126A–E"
     ],
     "exactSuppression": [
       "NL.IMBAG.Pand.0363100012185424"
@@ -69,7 +69,7 @@
     "groundNAPMetres": 0.7149999737739563,
     "roofRelativeMinMetres": 1.6520005450248716,
     "roofRelativeMaxMetres": 19.844000545024873,
-    "lowPatches": "Seven low roof patches exist; retain supported major59.1m\u00b2/33.6m\u00b2 volumes rather than giving whole complex maxheight",
+    "lowPatches": "Seven low roof patches exist; retain supported major59.1m²/33.6m² volumes rather than giving whole complex maxheight",
     "rawSource": "existing raw/3dbag.json and processed roof-surfaces; do not treat equipment crest as wholebuilding height"
   },
   "accessState": {
@@ -78,13 +78,34 @@
     "AmsterdamRegister": "Webtool parsed page readable but directoriginalretrieval failed three TLS hostname checks. No original claimed cached.",
     "Kerkstraat2025": "Scaffolding and parkedtruck occlude facade; preserved as failure/current evidence;2024leaf-off and earlier source crosschecked"
   },
-  "nextAction": [
-    "Map both photographed native frontage chains against all adjacent actual BAG parents",
-    "Reconcile 17 Prinsengracht axes/three Kerkstraat volumes and all current door/window groups",
-    "Acquire wider Prinsengracht end/crown views and aerial roof ownership",
-    "Keep source pack synced/pushed, then author original texture-free critical assemblies and native roof/open-space geometry; independent/GPU/native/performance gates pending"
-  ],
-  "sourceCommit": "8867f24a00b43616b130abaf9ea9863951c25541",
+  "nextAction": "Continue ordinary queue; preserve unobserved rear/source and startup limits.",
+  "sourceCommit": "2a8102e5dfcb1eddd9f5cd6b0ae4e78fc1d31c22",
   "sourceBranch": "ordinary/source35-20261008",
-  "rawSourcePolicy": "Original sources in private companion repository; no downloaded photo pixels in model or public research record."
+  "rawSourcePolicy": "Original sources in private companion repository; no downloaded photo pixels in model or public research record.",
+  "sourcePacks": [
+    "experiments/canal-belt-continuation-20261007/next-large-box-source-26/0363100012185424",
+    "experiments/canal-belt-continuation-20261007/next-source35-prinsen767/0363100012185424",
+    "experiments/canal-belt-continuation-20261007/prinsen767-front-source36",
+    "experiments/canal-belt-continuation-20261007/prinsen767-native-source36",
+    "experiments/canal-belt-continuation-20261007/prinsen767-native-review40"
+  ],
+  "modelHash": "a680a2ac3c81fe9e4b5018ce088a1154dee3b00178a0fc9148fa0bf6c2d9fa5d",
+  "reviewEvidence": "../../public/canal-drive/ordinary-buildings-data/prinsen767-review-20261009.json",
+  "sourceCorrections": [
+    "White same-parent wing6axes supersedes stale4axis prose.",
+    "Kerk tuit surveyedwidth4.22m/ridgeu2.01; uppercornice tiedto12.2m roofedge.",
+    "363 is pavedcourtyardground, not elevatedroof; onlymeasured lowerlevel supportsadjacentwalls.",
+    "Every nativefringe vertex bounded; heights followobservedrim without slopeextrapolation.",
+    "Native envelope visibilityoffset does not extrapolate its roofheight."
+  ],
+  "hostedVerification": {
+    "publicModelCommit": "417684907ec5c961d09c1aeb46c5efe05c00673c",
+    "firebaseRun": "37891331087",
+    "verifiedAtUTC": "2026-10-09T06:08:52.188284+00:00",
+    "models": 35,
+    "allAssetHashesExact": true,
+    "manualDesktopTouchLoaded": 35,
+    "evidenceSourceCommit": "14f0cba144b311e1c961cb4997a262527873bc22",
+    "evidenceSourcePack": "experiments/canal-belt-continuation-20261007/hosted35-20261009"
+  }
 }
