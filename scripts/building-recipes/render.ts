@@ -80,7 +80,10 @@ export async function houseContactSheet(id: string, existing?: {file: string; an
     const local = rdToRecipeLocal(mid, report.anchorRD), views = frontViews(local, normal, ff.widthM, height);
     const [front, three] = await renderModels([{file: path.join(ARTIFACTS, id, 'model.glb')}], [views.front, views.threeQuarter], textures);
     const photos = JSON.parse(await fs.readFile(path.join(HOUSES, id, 'photos.json'), 'utf8').catch(() => '[]'));
-    const photo = photos.find((p: any) => p.image.includes(`photo-`) && facts.fronts.indexOf(ff) === photos.indexOf(p)) ?? photos[i];
+    // Prefer the photo the intent author cited for this front; fall back to the facts-step panorama crop.
+    const intent = JSON.parse(await fs.readFile(path.join(HOUSES, id, 'intent.json'), 'utf8'));
+    const cited = intent.sources?.filter((s: any) => s.image && !s.image.includes('/photo-'))[i];
+    const photo = cited ? {image: cited.image, timestamp: cited.capturedAt} : photos[i];
     const panels = [{image: photo ? await fs.readFile(photo.image) : await sharp({create: {width: 4, height: 5, channels: 3, background: '#dddddd'}}).png().toBuffer(), text: photo ? `reference ${photo.timestamp.slice(0, 10)} (panorama)` : 'no reference photo'},
       {image: front, text: `recipe front · ${report.triangles} tris`}, {image: three, text: 'recipe 3/4'}];
     if (existing) {
