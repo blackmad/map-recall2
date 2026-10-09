@@ -1,0 +1,28 @@
+{
+  "id": "n2840294077",
+  "name": "Kazerne Willem",
+  "center": [
+    52.348947095579625,
+    4.914877307883409
+  ],
+  "type": "fire station",
+  "cityId": "amsterdam",
+  "website": "https://www.brandweer.nl/kazerne/amsterdam-willem/",
+  "description": "The Ringdijk fire station has seven glazed vehicle bays under tall black charred-wood panels, pale brick piers and rows of office windows.",
+  "funFact": "Willem preserves the W of Weesper: the station began at Weesperplein in 1873, moved to Nieuwe Achtergracht in 1909, and has operated from Ringdijk since 1984. The renovated panels above the fire-engine doors use charred Marugame wood selected by ENZO architects for its durability.",
+  "sources": [
+    {
+      "title": "Official station address",
+      "url": "https://www.brandweer.nl/kazerne/amsterdam-willem/"
+    },
+    {
+      "title": "Official150year station history",
+      "url": "https://www.brandweer.nl/wp-content/uploads/2024/03/SITRAP-150-jaar-BAA.pdf"
+    },
+    {
+      "title": "Zwarthout renovation architecture and material",
+      "url": "https://www.zwarthout.org/nl/project/63/brandweerkazerne-willem-in-amsterdam"
+    }
+  ],
+  "sourceIdentity": "Genuine current OSM node2840294077 amenity=fire_station,2026-01-10; public-side entrance pin in front of red eastern lobby, differs from internal originalPOInode."
+}

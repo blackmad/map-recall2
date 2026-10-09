@@ -26,9 +26,5 @@
     "Rear plain approximation remains unverified",
     "Performance review remains root pending"
   ],
-  "evidencePath": "artifacts/firestations-review/final-hendrik/fire-station-hendrik/",
-  "rootFollowup": {
-    "performance": "passed desktop/touch 90-frame on/off/on plus fixed rider physical pans",
-    "evidence": "local-acceptance.json"
-  }
+  "evidencePath": "artifacts/firestations-review/final-hendrik/fire-station-hendrik/"
 }

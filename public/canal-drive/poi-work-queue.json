@@ -2426,7 +2426,7 @@
       "requested": true,
       "requestedOn": "2026-10-09",
       "requestGroup": "amsterdam-firestations",
-      "nextAction": "Local scoped acceptance complete; prepare isolated fire-station release commit. Remaining requested stations stay queued/active.",
+      "nextAction": "Accepted in firestations-native-20261009; final combined release evidence recorded. No deployment performed.",
       "address": "Marnixstraat 170",
       "sourceUrls": [
         "https://www.brandweer.nl/kazerne/amsterdam-hendrik/"
@@ -2453,7 +2453,7 @@
       "requested": true,
       "requestedOn": "2026-10-09",
       "requestGroup": "amsterdam-firestations",
-      "nextAction": "Prepare isolated release commit; remaining requested fire stations preserved.",
+      "nextAction": "Accepted in firestations-native-20261009; final combined release evidence recorded. No deployment performed.",
       "address": "Honthorststraat 27",
       "sourceUrls": [
         "https://www.brandweer.nl/kazerne/amsterdam-dirk/"
@@ -2476,7 +2476,7 @@
       "id": "fire-station-anton",
       "task": "Kazerne Anton \u2014 native fire-station model",
       "priority": "normal",
-      "status": "in-progress",
+      "status": "verified-scoped-local",
       "requested": true,
       "requestedOn": "2026-10-09",
       "requestGroup": "amsterdam-firestations",
@@ -2484,7 +2484,7 @@
       "sourceUrls": [
         "https://www.brandweer.nl/kazerne/amsterdam-anton/"
       ],
-      "nextAction": "Source-derived original model and independent review underway; native scene and destination/pin/card acceptance pending.",
+      "nextAction": "Accepted in firestations-native-20261009; final combined release evidence recorded. No deployment performed.",
       "officialVBO": "0363010012090209",
       "surveyedParents": [
         "NL.IMBAG.Pand.0363100012244404"
@@ -2492,13 +2492,18 @@
       "inventorySourceArchive": {
         "commit": "69186d12d",
         "path": "firestations-inventory/"
-      }
+      },
+      "sourceArchive": {
+        "commit": "6815ce3a8b7712c41bab39470fe2f23b5ce8348a",
+        "path": "models/fire-station-anton/"
+      },
+      "validation": "Root and independent source/gallery/native recognition pass with prior failure evidence retained. Exact loaded asset, route/pin/sourced card, scale1, exact masks, resident neighbors and disabled/load-failure fallback pass. Desktop/touch fixed-GPS stationary-rider pan and90-frame on/off/on performance pass; see local-acceptance.json for exact hash/timings."
     },
     {
       "id": "fire-station-ijsbrand",
       "task": "Kazerne IJsbrand \u2014 native fire-station model",
       "priority": "normal",
-      "status": "queued",
+      "status": "verified-scoped-local",
       "requested": true,
       "requestedOn": "2026-10-09",
       "requestGroup": "amsterdam-firestations",
@@ -2506,7 +2511,7 @@
       "sourceUrls": [
         "https://www.brandweer.nl/kazerne/amsterdam-ijsbrand/"
       ],
-      "nextAction": "Resolve exact current building footprint and public entrance, research facade/roof; model and verify destination/pin/card, source archive and gallery/live-game evidence.",
+      "nextAction": "Accepted in firestations-native-20261009; final combined release evidence recorded. No deployment performed.",
       "officialVBO": "0363010001035955",
       "surveyedParents": [
         "NL.IMBAG.Pand.0363100012115117"
@@ -2514,7 +2519,12 @@
       "inventorySourceArchive": {
         "commit": "69186d12d",
         "path": "firestations-inventory/"
-      }
+      },
+      "sourceArchive": {
+        "commit": "6d6fef5644ea0d4373e756e008e759754aa1cd45",
+        "path": "models/fire-station-ijsbrand/"
+      },
+      "validation": "Root and independent source/gallery/native recognition pass with prior failure evidence retained. Exact loaded asset, route/pin/sourced card, scale1, exact masks, resident neighbors and disabled/load-failure fallback pass. Desktop/touch fixed-GPS stationary-rider pan and90-frame on/off/on performance pass; see local-acceptance.json for exact hash/timings."
     },
     {
       "id": "fire-station-nico",
@@ -2528,7 +2538,7 @@
       "sourceUrls": [
         "https://www.brandweer.nl/kazerne/amsterdam-nico/"
       ],
-      "nextAction": "Accepted local visual/gameplay checkpoint; push isolatedfirestationsbranch then continue remaining stations.",
+      "nextAction": "Accepted in firestations-native-20261009; final combined release evidence recorded. No deployment performed.",
       "officialVBO": "0363010010914232",
       "surveyedParents": [
         "NL.IMBAG.Pand.0363100012165618"
@@ -2555,7 +2565,7 @@
       "sourceUrls": [
         "https://www.brandweer.nl/kazerne/amsterdam-osdorp/"
       ],
-      "nextAction": "Accepted local visual/gameplay checkpoint; push isolatedfirestationsbranch then continue remaining stations.",
+      "nextAction": "Accepted in firestations-native-20261009; final combined release evidence recorded. No deployment performed.",
       "officialVBO": "0363010001035641",
       "surveyedParents": [
         "NL.IMBAG.Pand.0363100012096223"
@@ -2574,7 +2584,7 @@
       "id": "fire-station-pieter",
       "task": "Kazerne Pieter \u2014 native fire-station model",
       "priority": "normal",
-      "status": "queued",
+      "status": "verified-scoped-local",
       "requested": true,
       "requestedOn": "2026-10-09",
       "requestGroup": "amsterdam-firestations",
@@ -2582,7 +2592,7 @@
       "sourceUrls": [
         "https://www.brandweer.nl/kazerne/amsterdam-pieter/"
       ],
-      "nextAction": "Resolve exact current building footprint and public entrance, research facade/roof; model and verify destination/pin/card, source archive and gallery/live-game evidence.",
+      "nextAction": "Accepted in firestations-native-20261009; final combined release evidence recorded. No deployment performed.",
       "officialVBO": "0363010000778676",
       "surveyedParents": [
         "NL.IMBAG.Pand.0363100012088589"
@@ -2590,13 +2600,18 @@
       "inventorySourceArchive": {
         "commit": "69186d12d",
         "path": "firestations-inventory/"
-      }
+      },
+      "sourceArchive": {
+        "commit": "6d6fef5644ea0d4373e756e008e759754aa1cd45",
+        "path": "models/fire-station-pieter/"
+      },
+      "validation": "Root and independent source/gallery/native recognition pass with prior failure evidence retained. Exact loaded asset, route/pin/sourced card, scale1, exact masks, resident neighbors and disabled/load-failure fallback pass. Desktop/touch fixed-GPS stationary-rider pan and90-frame on/off/on performance pass; see local-acceptance.json for exact hash/timings."
     },
     {
       "id": "fire-station-teunis",
       "task": "Kazerne Teunis \u2014 native fire-station model",
       "priority": "normal",
-      "status": "queued",
+      "status": "verified-scoped-local",
       "requested": true,
       "requestedOn": "2026-10-09",
       "requestGroup": "amsterdam-firestations",
@@ -2604,7 +2619,7 @@
       "sourceUrls": [
         "https://www.brandweer.nl/kazerne/amsterdam-teunis/"
       ],
-      "nextAction": "Resolve exact current building footprint and public entrance, research facade/roof; model and verify destination/pin/card, source archive and gallery/live-game evidence.",
+      "nextAction": "Accepted in firestations-native-20261009; final combined release evidence recorded. No deployment performed.",
       "officialVBO": "0363010001994715",
       "surveyedParents": [
         "NL.IMBAG.Pand.0363100012241010"
@@ -2612,13 +2627,18 @@
       "inventorySourceArchive": {
         "commit": "69186d12d",
         "path": "firestations-inventory/"
-      }
+      },
+      "sourceArchive": {
+        "commit": "2a64da08c7bb126572c59ac270af4d64ea156d99",
+        "path": "models/fire-station-teunis/"
+      },
+      "validation": "Root and independent source/gallery/native recognition pass with prior failure evidence retained. Exact loaded asset, route/pin/sourced card, scale1, exact masks, resident neighbors and disabled/load-failure fallback pass. Desktop/touch fixed-GPS stationary-rider pan and90-frame on/off/on performance pass; see local-acceptance.json for exact hash/timings."
     },
     {
       "id": "fire-station-victor",
       "task": "Kazerne Victor \u2014 native fire-station model",
       "priority": "normal",
-      "status": "queued",
+      "status": "verified-scoped-local",
       "requested": true,
       "requestedOn": "2026-10-09",
       "requestGroup": "amsterdam-firestations",
@@ -2626,7 +2646,7 @@
       "sourceUrls": [
         "https://www.brandweer.nl/kazerne/amsterdam-victor/"
       ],
-      "nextAction": "Resolve exact current building footprint and public entrance, research facade/roof; model and verify destination/pin/card, source archive and gallery/live-game evidence.",
+      "nextAction": "Accepted in firestations-native-20261009; final combined release evidence recorded. No deployment performed.",
       "officialVBO": "0363010000615767",
       "surveyedParents": [
         "NL.IMBAG.Pand.0363100012103300"
@@ -2634,13 +2654,18 @@
       "inventorySourceArchive": {
         "commit": "69186d12d",
         "path": "firestations-inventory/"
-      }
+      },
+      "sourceArchive": {
+        "commit": "6d6fef5644ea0d4373e756e008e759754aa1cd45",
+        "path": "models/fire-station-victor/"
+      },
+      "validation": "Root and independent source/gallery/native recognition pass with prior failure evidence retained. Exact loaded asset, route/pin/sourced card, scale1, exact masks, resident neighbors and disabled/load-failure fallback pass. Desktop/touch fixed-GPS stationary-rider pan and90-frame on/off/on performance pass; see local-acceptance.json for exact hash/timings."
     },
     {
       "id": "fire-station-willem",
       "task": "Kazerne Willem \u2014 native fire-station model",
       "priority": "normal",
-      "status": "queued",
+      "status": "verified-scoped-local",
       "requested": true,
       "requestedOn": "2026-10-09",
       "requestGroup": "amsterdam-firestations",
@@ -2648,7 +2673,7 @@
       "sourceUrls": [
         "https://www.brandweer.nl/kazerne/amsterdam-willem/"
       ],
-      "nextAction": "Resolve exact current building footprint and public entrance, research facade/roof; model and verify destination/pin/card, source archive and gallery/live-game evidence.",
+      "nextAction": "Accepted in firestations-native-20261009; final combined release evidence recorded. No deployment performed.",
       "officialVBO": "0363010000793612",
       "surveyedParents": [
         "NL.IMBAG.Pand.0363100012143776"
@@ -2656,13 +2681,18 @@
       "inventorySourceArchive": {
         "commit": "69186d12d",
         "path": "firestations-inventory/"
-      }
+      },
+      "sourceArchive": {
+        "commit": "6d6fef5644ea0d4373e756e008e759754aa1cd45",
+        "path": "models/fire-station-willem/"
+      },
+      "validation": "Root and independent source/gallery/native recognition pass with prior failure evidence retained. Exact loaded asset, route/pin/sourced card, scale1, exact masks, resident neighbors and disabled/load-failure fallback pass. Desktop/touch fixed-GPS stationary-rider pan and90-frame on/off/on performance pass; see local-acceptance.json for exact hash/timings."
     },
     {
       "id": "fire-station-zebra",
       "task": "Kazerne Zebra \u2014 native fire-station model",
       "priority": "normal",
-      "status": "queued",
+      "status": "verified-scoped-local",
       "requested": true,
       "requestedOn": "2026-10-09",
       "requestGroup": "amsterdam-firestations",
@@ -2670,7 +2700,7 @@
       "sourceUrls": [
         "https://www.brandweer.nl/kazerne/amsterdam-zebra/"
       ],
-      "nextAction": "Resolve exact current building footprint and public entrance, research facade/roof; model and verify destination/pin/card, source archive and gallery/live-game evidence.",
+      "nextAction": "Accepted in firestations-native-20261009; final combined release evidence recorded. No deployment performed.",
       "officialVBO": "0363010000676132",
       "surveyedParents": [
         "NL.IMBAG.Pand.0363100012109022"
@@ -2678,13 +2708,18 @@
       "inventorySourceArchive": {
         "commit": "69186d12d",
         "path": "firestations-inventory/"
-      }
+      },
+      "sourceArchive": {
+        "commit": "b1cf02299a6713051fb6475003b27af07cb87033",
+        "path": "models/fire-station-zebra/"
+      },
+      "validation": "Root and independent source/gallery/native recognition pass with prior failure evidence retained. Exact loaded asset, route/pin/sourced card, scale1, exact masks, resident neighbors and disabled/load-failure fallback pass. Desktop/touch fixed-GPS stationary-rider pan and90-frame on/off/on performance pass; see local-acceptance.json for exact hash/timings."
     },
     {
       "id": "fire-station-driemond",
       "task": "Kazerne Driemond \u2014 native fire-station model",
       "priority": "normal",
-      "status": "queued",
+      "status": "verified-scoped-local",
       "requested": true,
       "requestedOn": "2026-10-09",
       "requestGroup": "amsterdam-firestations",
@@ -2692,7 +2727,7 @@
       "sourceUrls": [
         "https://www.brandweer.nl/kazerne/driemond/"
       ],
-      "nextAction": "Resolve exact current building footprint and public entrance, research facade/roof; model and verify destination/pin/card, source archive and gallery/live-game evidence.",
+      "nextAction": "Accepted in firestations-native-20261009; final combined release evidence recorded. No deployment performed.",
       "officialVBO": "0363010000887484",
       "surveyedParents": [
         "NL.IMBAG.Pand.0363100012070690"
@@ -2700,13 +2735,18 @@
       "inventorySourceArchive": {
         "commit": "69186d12d",
         "path": "firestations-inventory/"
-      }
+      },
+      "sourceArchive": {
+        "commit": "88011e7ed8077cb10765450f4e1c7a0d654d91e2",
+        "path": "models/fire-station-driemond/"
+      },
+      "validation": "Root and independent source/gallery/native recognition pass with prior failure evidence retained. Exact loaded asset, route/pin/sourced card, scale1, exact masks, resident neighbors and disabled/load-failure fallback pass. Desktop/touch fixed-GPS stationary-rider pan and90-frame on/off/on performance pass; see local-acceptance.json for exact hash/timings."
     },
     {
       "id": "fire-station-weesp",
       "task": "Kazerne Weesp \u2014 native fire-station model",
       "priority": "normal",
-      "status": "queued",
+      "status": "verified-scoped-local",
       "requested": true,
       "requestedOn": "2026-10-09",
       "requestGroup": "amsterdam-firestations",
@@ -2714,7 +2754,7 @@
       "sourceUrls": [
         "https://www.brandweer.nl/kazerne/weesp/"
       ],
-      "nextAction": "Resolve exact current building footprint and public entrance, research facade/roof; model and verify destination/pin/card, source archive and gallery/live-game evidence.",
+      "nextAction": "Accepted in firestations-native-20261009; final combined release evidence recorded. No deployment performed.",
       "officialVBO": "0457010000059357",
       "surveyedParents": [
         "NL.IMBAG.Pand.0457100000062823"
@@ -2722,7 +2762,12 @@
       "inventorySourceArchive": {
         "commit": "69186d12d",
         "path": "firestations-inventory/"
-      }
+      },
+      "sourceArchive": {
+        "commit": "88011e7ed8077cb10765450f4e1c7a0d654d91e2",
+        "path": "models/fire-station-weesp/"
+      },
+      "validation": "Root and independent source/gallery/native recognition pass with prior failure evidence retained. Exact loaded asset, route/pin/sourced card, scale1, exact masks, resident neighbors and disabled/load-failure fallback pass. Desktop/touch fixed-GPS stationary-rider pan and90-frame on/off/on performance pass; see local-acceptance.json for exact hash/timings."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

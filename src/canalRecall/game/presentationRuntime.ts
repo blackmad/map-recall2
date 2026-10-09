@@ -443,7 +443,7 @@ export class GamePresentationRuntime {
       extractPath: `../data/extracts/${id}`,
       center: { lat: 52.372851, lng: 4.8936 },
       geocodeSuffix: `, ${id}`,
-      geocodeViewbox: [4.72, 52.43, 5.02, 52.27] as [number, number, number, number],
+      geocodeViewbox: [4.72, 52.43, 5.12, 52.27] as [number, number, number, number],
       provinceCaption: '',
       curatedPois: [],
     };

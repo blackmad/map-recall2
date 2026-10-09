@@ -1,0 +1,353 @@
+{
+  "modelId": "fire-station-zebra",
+  "reviewedOn": "2026-10-09T10:01:05.195290+00:00",
+  "reviewer": "independent zebra_driemond_weesp_review worker",
+  "scope": "Failure-seeking archived-source and exact public compressed GLB CPU review; no browser/GPU/game/performance acceptance",
+  "sourceArchiveCommit": "b1cf022",
+  "sourceArchivePath": "models/fire-station-zebra/",
+  "result": "conditional-source-cpu-pass",
+  "acceptance": false,
+  "meshHashes": [
+    {
+      "path": "public/canal-drive/models/fire-station-zebra.glb",
+      "sha256": "7aa607aea03ace00ff85195fe4348775f2d513f59003291bce12c74ccbde6421"
+    },
+    {
+      "path": "artifacts/landmark-next-batch/fire-station-zebra.glb",
+      "sha256": "76bb835804c96cee35efb56effb3eb966d99de980f163cb0b016e8bf8fa9df3b"
+    }
+  ],
+  "meshEquivalence": "Fresh CPU renders decode the exact current public GLB. Worker draft hashes differ; geometry equivalence is suggested by matching triangle count and builder, not established by byte equality. This review applies to the public hash only.",
+  "cpuViews": {
+    "directory": "/tmp/firestation-independent-review",
+    "freshInputs": "public/canal-drive/models",
+    "anglesRadians": [
+      [
+        0.6,
+        "southeast"
+      ],
+      [
+        3.74,
+        "northwest"
+      ],
+      [
+        -1.45,
+        "west"
+      ],
+      [
+        0,
+        "south-low"
+      ],
+      [
+        -1.46,
+        "west-low"
+      ]
+    ],
+    "elevation": {
+      "high": 0.65,
+      "low": 0.12
+    },
+    "triangleCount": 8718
+  },
+  "exactSuppression": [
+    "w44892676",
+    "NL.IMBAG.Pand.0363100012109022"
+  ],
+  "spatialSuppression": false,
+  "nativeGroundNAP": -0.2919999957084656,
+  "pending": [
+    "Root must inspect source/render comparisons and independently evaluate corrections",
+    "Gallery high and four low rotations including facade/roof attachment",
+    "Live game correct bearing, exact suppression including ordinary pyramidal roofs, retained neighbors after local residency",
+    "Explicit route destination and finish, visible geographic pin/label, physical mesh click selecting genuine useful sourced card",
+    "Actual desktop/touch gameplay camera pan and performance evidence"
+  ],
+  "failures": [],
+  "limitations": [
+    "CPU two-sided shading cannot validate winding/backface visibility, city neighbors, route/card interactions or GPU performance",
+    "Reference facade dimensions and hidden apertures remain bounded approximations; successful geometry checks are not visual acceptance"
+  ],
+  "referencesInspected": [
+    "raw/current-front.jpg (2022 publication; original photo)",
+    "processed/recording_2024-09-10_06-50-03_01543.jpg (2024-09-10 southwest)",
+    "processed/recording_2025-09-24_07-43-16_00119.jpg (2025-09-24 closefront)",
+    "processed/recording_2024-08-29_10-32-21_00274.jpg (2024-08-29 rear)"
+  ],
+  "observations": [
+    "Three red garage doors retained; grey projecting office bay visibly separates lower left glazing from brick and wraps west corner",
+    "Upper ribbon/parapet continues around front and exposed returns; flat main roof, separate taller tower and low connection remain distinct",
+    "Ground datum applies to entire station; tower height 17.4m does not become main body height. Office bay apron remains above pavement; southwest personnel entrance stays at ground",
+    "Current 2025 blur prevents a new full door count; 2022 unblurred original and 2024 partial door views jointly support three. Retracted/absent awning is reasonable current state",
+    "No courtyard holes; native rear tower/neck notches remain unfilled in CPU. Gray roof/parapet and brick composition recognizable. No invented name words"
+  ],
+  "rootTargets": {
+    "frontCameraLonLat": [
+      4.954767139435234,
+      52.39601950128198
+    ],
+    "entranceClick": "Southwest side personnel door, not nearby tower/ordinary building; useful card n2848174313",
+    "bearingNote": "Facade local +Z rotates +0.418 rad about Y: outward east/south components approximately [.406,.914]. Native datum/spec offset must preserve this southeast bearing.",
+    "retainedNeighborExamples": [
+      {
+        "osmId": "w280766529",
+        "bagId": "0363100012237813",
+        "localRing": [
+          [
+            9.72236737302877,
+            77.68670099925313
+          ],
+          [
+            9.856785679192704,
+            109.83044561571512
+          ],
+          [
+            0.20266663629796966,
+            109.87865867910196
+          ],
+          [
+            0.2506035776724005,
+            120.22920900145294
+          ],
+          [
+            5.386412252070052,
+            120.19607263804981
+          ],
+          [
+            5.3929022417778185,
+            121.05160633943542
+          ],
+          [
+            5.942662130948662,
+            121.05218182112579
+          ],
+          [
+            5.955141890463324,
+            127.68404141268418
+          ],
+          [
+            5.417797754390243,
+            127.68898070842646
+          ],
+          [
+            5.421502269832622,
+            128.43365061210204
+          ],
+          [
+            1.1379947609520755,
+            128.455575236745
+          ],
+          [
+            -11.284688157290027,
+            128.52867419358242
+          ],
+          [
+            -11.344742737051781,
+            120.68197161019249
+          ],
+          [
+            -10.334963056303486,
+            120.6676236488513
+          ],
+          [
+            -10.496191312933068,
+            77.43968836043166
+          ],
+          [
+            -11.50428196815069,
+            77.46696727401239
+          ],
+          [
+            -11.555980125271962,
+            69.95285608454887
+          ],
+          [
+            -17.621414310324504,
+            69.98722004086864
+          ],
+          [
+            -17.75187938041733,
+            54.88607073177684
+          ],
+          [
+            -17.6584260717317,
+            47.095371912438054
+          ],
+          [
+            -17.01440723400443,
+            47.10127275530259
+          ],
+          [
+            -17.059127530810176,
+            38.969043802299616
+          ],
+          [
+            -9.582046364211894,
+            38.95266288350224
+          ],
+          [
+            -9.579039130359103,
+            38.393685105872066
+          ],
+          [
+            -1.2806961808778148,
+            38.35230550478194
+          ],
+          [
+            -1.277124720973168,
+            39.498880353237716
+          ],
+          [
+            12.495126413922709,
+            39.41619054615916
+          ],
+          [
+            12.540350583153678,
+            47.731354237214106
+          ],
+          [
+            9.601892439532488,
+            47.75386157583754
+          ],
+          [
+            9.594233298857812,
+            48.72491786251851
+          ],
+          [
+            9.59135912091898,
+            48.88199069467011
+          ],
+          [
+            9.629145908952406,
+            57.498369097016855
+          ],
+          [
+            9.681617703272789,
+            69.49533205887064
+          ],
+          [
+            9.792811256266244,
+            69.49599863323134
+          ],
+          [
+            9.83356092634331,
+            77.68736757289096
+          ],
+          [
+            9.72236737302877,
+            77.68670099925313
+          ]
+        ]
+      },
+      {
+        "osmId": "w280766556",
+        "bagId": "0363100012238019",
+        "localRing": [
+          [
+            39.454509886741036,
+            69.33311036271903
+          ],
+          [
+            39.48779382536294,
+            79.61624853233792
+          ],
+          [
+            34.35819302719308,
+            79.65214228518025
+          ],
+          [
+            34.32322006341672,
+            69.35607316262342
+          ],
+          [
+            39.454509886741036,
+            69.33311036271903
+          ]
+        ]
+      }
+    ]
+  },
+  "finalVisualReview": {
+    "reviewedOn": "2026-10-09T10:23:29.092010+00:00",
+    "result": "source-gallery-live-visual-pass-with-scoped-limitations",
+    "wholeTaskAcceptance": false,
+    "reasonWholeTaskPending": "Root performance/gameplay pan and source publication updates remain pending; independent reviewer did not operate browser or assert successful route completion solely from routeArrival coordinates.",
+    "publicAssetSha256": "7aa607aea03ace00ff85195fe4348775f2d513f59003291bce12c74ccbde6421",
+    "receivedNative": {
+      "expectedSha256": "7aa607aea03ace00ff85195fe4348775f2d513f59003291bce12c74ccbde6421",
+      "evidence": [
+        {
+          "modelId": "fire-station-zebra",
+          "phase": "native",
+          "url": "http://127.0.0.1:5346/canal-drive/models/fire-station-zebra.glb?asset=7aa607aea03ace00",
+          "status": 200,
+          "bytes": 135812,
+          "sha256": "7aa607aea03ace00ff85195fe4348775f2d513f59003291bce12c74ccbde6421"
+        }
+      ]
+    },
+    "visualEvidenceDirectory": "artifacts/firestations-review/gpu-next/main-native/fire-station-zebra",
+    "imagesInspected": [
+      "gallery.png",
+      "gallery-angle-0.png",
+      "gallery-angle-1.png",
+      "gallery-angle-2.png",
+      "gallery-angle-3.png",
+      "neutral-front.png",
+      "live-rear.png"
+    ],
+    "placementEvidenceInspected": {
+      "nativeScale": 1,
+      "exactAliasHidden": [
+        {
+          "id": "w44892676",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012109022",
+          "hidden": true
+        }
+      ],
+      "retainedResidentDrawableNeighbors": [
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012251404"
+          ],
+          "signatureId": null,
+          "signatureDrawable": false,
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        },
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012104948"
+          ],
+          "signatureId": null,
+          "signatureDrawable": false,
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        }
+      ],
+      "chosenDestination": true,
+      "pin": true,
+      "physicalPointerCard": {
+        "notice": "n2848174313",
+        "source": "https://www.brandweer.nl/kazerne/amsterdam-zebra/",
+        "alpha": 1,
+        "drawn": true,
+        "active": "n2848174313"
+      }
+    },
+    "remainingChecks": [
+      "Root performance and actual gameplay camera pan away from stationary rider on desktop/touch",
+      "Root confirm source publication matches corrected current geometry and metadata",
+      "Root verify route completion and map label behavior from full harness results"
+    ],
+    "observations": [
+      "Four gallery rotations and live front/rear retain three red apparatus doors, projecting gray office bay, continuous upper ribbon, separate hose tower and native external notches. No new source/render recognition defect found.",
+      "Live front geometry sits on native terrain facing southeast street; tall residential neighbor and surrounding ordinary shells remain drawn. Roof surfaces appear supported in inspected gallery rotations.",
+      "Pointer proof selects genuine n2848174313 and operator source card. Destination pin/frontage approach shown; ordinary facade identity persists in surrounding screenshot context."
+    ]
+  }
+}

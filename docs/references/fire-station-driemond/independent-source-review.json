@@ -1,0 +1,192 @@
+{
+  "modelId": "fire-station-driemond",
+  "reviewedOn": "2026-10-09T10:01:05.196960+00:00",
+  "reviewer": "independent zebra_driemond_weesp_review worker",
+  "scope": "Failure-seeking archived-source and exact public compressed GLB CPU review; no browser/GPU/game/performance acceptance",
+  "sourceArchiveCommit": "b1cf022",
+  "sourceArchivePath": "models/fire-station-driemond/",
+  "result": "conditional-source-cpu-pass",
+  "acceptance": false,
+  "meshHashes": [
+    {
+      "path": "public/canal-drive/models/fire-station-driemond.glb",
+      "sha256": "d6470dc788512bc5794025219ba5790bf5b9550666f4546ec7d0930f1651187a"
+    },
+    {
+      "path": "artifacts/fire-station-driemond-draft/fire-station-driemond.glb",
+      "sha256": "8c77299497a6bf6b0a8984f69b27f5695e9ddf528cc06c784a0b283e90eeb410"
+    }
+  ],
+  "meshEquivalence": "Fresh CPU renders decode the exact current public GLB. Worker draft hashes differ; geometry equivalence is suggested by matching triangle count and builder, not established by byte equality. This review applies to the public hash only.",
+  "cpuViews": {
+    "directory": "/tmp/firestation-independent-review",
+    "freshInputs": "public/canal-drive/models",
+    "anglesRadians": [
+      [
+        0.6,
+        "southeast"
+      ],
+      [
+        3.74,
+        "northwest"
+      ],
+      [
+        -1.45,
+        "west"
+      ],
+      [
+        0,
+        "south-low"
+      ],
+      [
+        -1.46,
+        "west-low"
+      ]
+    ],
+    "elevation": {
+      "high": 0.65,
+      "low": 0.12
+    },
+    "triangleCount": 2200
+  },
+  "exactSuppression": [
+    "w57853130",
+    "NL.IMBAG.Pand.0363100012070690"
+  ],
+  "spatialSuppression": false,
+  "nativeGroundNAP": -1.573,
+  "pending": [
+    "Root must inspect source/render comparisons and independently evaluate corrections",
+    "Gallery high and four low rotations including facade/roof attachment",
+    "Live game correct bearing, exact suppression including ordinary pyramidal roofs, retained neighbors after local residency",
+    "Explicit route destination and finish, visible geographic pin/label, physical mesh click selecting genuine useful sourced card",
+    "Actual desktop/touch gameplay camera pan and performance evidence"
+  ],
+  "failures": [
+    {
+      "severity": "metadata-correction-required",
+      "finding": "POI description, spec modifications, README/builder comments call office lower; footprints heightNotes assigns garage max7.14m and lower wing5.8\u20136.3m, reversing native surveyed part roles. Geometry is correct: southern garage roof17 lower, north office roof18 taller.",
+      "requiredAction": "Correct architectural labels/height notes and useful card description before completion; retain native geometry."
+    }
+  ],
+  "limitations": [
+    "CPU two-sided shading cannot validate winding/backface visibility, city neighbors, route/card interactions or GPU performance",
+    "Reference facade dimensions and hidden apertures remain bounded approximations; successful geometry checks are not visual acceptance"
+  ],
+  "referencesInspected": [
+    "raw/brandbase-photo.jpg (2022 publication, original capture date unknown)",
+    "processed/TMX7316010203-002169_pano_0000_005530.jpg (2021-06-11 western front)",
+    "processed/TMX7316010203-002811_pano_0004_000063.jpg (2022-09-22 east canal-bank rear)"
+  ],
+  "observations": [
+    "Two red five-tier/three-column glazed apparatus doors on southern WEST frontage; cream/white metal surround and dark base distinguish garage from office",
+    "Northern WEST office is correctly recessed at L notch; tall south-end glazing, northern high strip and shallow cornice remain visible",
+    "Native roof17 southern front garage 5.79\u20136.29m; northern office roof18 6.97\u20137.14m. Model height order matches survey despite contradictory prose metadata",
+    "East canal facade ribs and horizontal garage clerestory/northern tall glazing recognizable in source and CPU. Notch is not parcel-filled; exact identities only",
+    "No painted building-name words; simplified source-supported shield"
+  ],
+  "rootTargets": {
+    "frontCameraLonLat": [
+      5.01922839443354,
+      52.3069604878461
+    ],
+    "entranceClick": "Northern office west entry; canonical n2862198151; alias Maxima must share identity",
+    "bearingNote": "Lentestraat WEST-facing native normal[-.994,.111] (east-X/south-Z); garage is south/right in west source photograph, office north/left. Avoid gallery front presets that show canal rear.",
+    "retainedNeighborExamples": [
+      {
+        "osmId": "w282283278",
+        "bagId": "0363100012148382"
+      },
+      {
+        "osmId": "w282283347",
+        "bagId": "0363100012217626"
+      }
+    ]
+  },
+  "finalVisualReview": {
+    "reviewedOn": "2026-10-09T10:23:29.094007+00:00",
+    "result": "source-gallery-live-visual-pass-with-scoped-limitations",
+    "wholeTaskAcceptance": false,
+    "reasonWholeTaskPending": "Root performance/gameplay pan and source publication updates remain pending; independent reviewer did not operate browser or assert successful route completion solely from routeArrival coordinates.",
+    "publicAssetSha256": "d6470dc788512bc5794025219ba5790bf5b9550666f4546ec7d0930f1651187a",
+    "receivedNative": {
+      "expectedSha256": "d6470dc788512bc5794025219ba5790bf5b9550666f4546ec7d0930f1651187a",
+      "evidence": [
+        {
+          "modelId": "fire-station-driemond",
+          "phase": "native",
+          "url": "http://127.0.0.1:5346/canal-drive/models/fire-station-driemond.glb?asset=d6470dc788512bc5",
+          "status": 200,
+          "bytes": 45644,
+          "sha256": "d6470dc788512bc5794025219ba5790bf5b9550666f4546ec7d0930f1651187a"
+        }
+      ]
+    },
+    "visualEvidenceDirectory": "artifacts/firestations-review/gpu-next/main-native-recovery/fire-station-driemond",
+    "imagesInspected": [
+      "gallery.png",
+      "gallery-angle-0.png",
+      "gallery-angle-1.png",
+      "gallery-angle-2.png",
+      "gallery-angle-3.png",
+      "neutral-front.png",
+      "live-rear.png"
+    ],
+    "placementEvidenceInspected": {
+      "nativeScale": 1,
+      "exactAliasHidden": [
+        {
+          "id": "w57853130",
+          "hidden": true
+        },
+        {
+          "id": "NL.IMBAG.Pand.0363100012070690",
+          "hidden": true
+        }
+      ],
+      "retainedResidentDrawableNeighbors": [
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012133813"
+          ],
+          "signatureId": null,
+          "signatureDrawable": false,
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        },
+        {
+          "ids": [
+            "NL.IMBAG.Pand.0363100012190922"
+          ],
+          "signatureId": null,
+          "signatureDrawable": false,
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        }
+      ],
+      "chosenDestination": true,
+      "pin": true,
+      "physicalPointerCard": {
+        "notice": "n2862198151",
+        "source": "https://www.brandweer.nl/kazerne/driemond/",
+        "alpha": 1,
+        "drawn": true,
+        "active": "n2862198151"
+      }
+    },
+    "remainingChecks": [
+      "Root performance and actual gameplay camera pan away from stationary rider on desktop/touch",
+      "Root confirm source publication matches corrected current geometry and metadata",
+      "Root verify route completion and map label behavior from full harness results",
+      "Correct remaining lower-office wording in spec attribution modifications."
+    ],
+    "observations": [
+      "Four gallery rotations and both live sides show southern WEST apparatus pair and taller recessed northern office, with attached cornice/glazing and east canal-side ribs/window return. Native wing contacts/roof heights remain credible.",
+      "Source/card height reversal resolved in POI description and footprints heightNotes; spec attribution modifications still says lower office at time of review and should be corrected.",
+      "Tiny ordinary structure projects over right apparatus door in high live front screenshot. Source native neighbor BAG0363100012190922 has x\u22127.82..\u22124.46,z16.44..18.64; \u22655m south of garage endpointz11.34. Projection overlap does not establish blocked doorway. Keep exact neighbor; no geometry failure inferred from that image.",
+      "Pointer proof selects genuine n2862198151 with corrected taller-office card. Resident neighbor IDs0363100012133813/0363100012190922 are drawn without padded suppression."
+    ]
+  }
+}

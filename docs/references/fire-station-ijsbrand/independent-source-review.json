@@ -1,0 +1,128 @@
+{
+  "reviewedOn": "2026-10-09",
+  "reviewer": "independent source/CPU failure-seeking worker",
+  "sourceCommit": "2a64da08c7bb126572c59ac270af4d64ea156d99",
+  "acceptance": "Conditional scoped visual pass after correction; do not mark complete before root performance/publication gates",
+  "method": "Read recipe, builder, spec, footprints, POI and review plan; inspect archived original panorama and derived crops against isolated CPU images. No GPU/browser used. Geometry test passes are not visual acceptance.",
+  "requiredPending": [
+    "Root desktop/touch camera-pan performance and ordinary facade retention acceptance",
+    "Root source-correction archive publication and final release checks"
+  ],
+  "id": "fire-station-ijsbrand",
+  "meshEvidence": {
+    "publicGlb": "public/canal-drive/models/fire-station-ijsbrand.glb",
+    "publicSha256": "83c0594676ad7ebc2e4822f66a7f1e7452dd9686f3b6b3b63cd279160f7d2ea0",
+    "cpuDraftGlb": "artifacts/landmark-next-batch/fire-station-ijsbrand.glb",
+    "draftSha256": "8a14df1be1e4b67a5160daea9effb21da376992fb1599b27ba901c482c305105",
+    "limitation": "CPU images decode draft export; public export has different bytes. Root reports same native geometry with generator material ordering/compression; exact public visual check remains pending."
+  },
+  "state": "Repaired visual/source scope passes saved GPU review; final completion pending root performance/publication",
+  "sourcesInspected": [
+    "raw/recording_2025-09-22_07-53-54_01127.jpg",
+    "processed/recording_2025-09-22_07-53-54_01127.jpg",
+    "processed/recording_2024-10-23_06-38-00_00867.jpg",
+    "processed/recording_2024-10-23_07-33-22_00293.jpg",
+    "processed/TMX7316010203-000311_pano_0000_004543.jpg",
+    "processed/TMX7316010203-000894_pano_0001_001235.jpg"
+  ],
+  "rendersInspected": [
+    "artifacts/landmark-offline-preview/fire-station-ijsbrand-cpu-front.png",
+    "artifacts/landmark-offline-preview/fire-station-ijsbrand-cpu-opposite.png"
+  ],
+  "recognition": [
+    "Three vehicle bays: two large glazed and one small unglazed",
+    "Tall gray stair tower with long vertical glazed slit",
+    "Red folded upper band, close horizontal louvers and gray lower window frontage",
+    "Surveyed stepped massing and rear notch retained"
+  ],
+  "findings": [
+    {
+      "severity": "blocking visible failure",
+      "feature": "Red upper-volume lower extent",
+      "evidence": "CPU front shows red main volume end/return extending to pavement beside gray stair tower. Builder extrudes roof-part62 red prism from0 to roof mean. Archived2017/2018 southwest views show red upper cantilever/soffit above gray lower masonry/recess. Current2024 east view supports upper red projection rather than full-height red end.",
+      "recommendation": "Separate red upper shell from gray lower support; retain source-visible underside/recess. Recheck lower east/southwest game views after correction."
+    },
+    {
+      "severity": "explicit bounded omission",
+      "feature": "Thin handwritten Cornelia Frida Katz script",
+      "evidence": "Source-supported real script visible on gray band; intentionally absent.",
+      "recommendation": "Do not introduce generic name lettering. Keep omission recorded until credible thin lettering geometry is available."
+    },
+    {
+      "severity": "uncertain",
+      "feature": "Vehicle-door color and glazing rows",
+      "evidence": "2024 east view has red doors and three glazed rows;2025 overexposed view shows warm light doors/two visible rows.",
+      "recommendation": "Treat dated differences and overexposure explicitly; current two-row interpretation plausible, avoid claiming calibrated color/alteration proof."
+    }
+  ],
+  "frontOrientation": {
+    "localSouthwestFront": "z17.5 before rotation",
+    "rotationRadians": -0.6598499627678042,
+    "southwestCamera": [
+      4.889342729,
+      52.406187157
+    ],
+    "eastCamera": [
+      4.889967192,
+      52.40634733
+    ]
+  },
+  "neighborParents": {
+    "fromArchivedOSM": [
+      "0363100012074724",
+      "0363100012106455",
+      "0363100012084845"
+    ],
+    "limitation": "These are nearby east/rear/west parent identities derived from source centroids; exact installed retention and abutting relationships require root game/context review."
+  },
+  "limitations": [
+    "Rear window rhythm approximate",
+    "Garage shallow slope flattened to mean",
+    "Trees and oblique photos obscure some upper openings",
+    "Beeldbank archived JavaScript shell is an access gap, not an inspected image"
+  ],
+  "finalVisualReview": {
+    "reviewedOn": "2026-10-09",
+    "state": "Scoped source/gallery/live visual review passes after correction; root performance and final publication gates remain pending",
+    "publicSha256": "62db72acfe611233f517497579b9dc9e5c0a6bbf13561c851487085370e044c1",
+    "publicBytes": 129656,
+    "receivedAssetMatchesPublic": true,
+    "gpuEvidenceOwner": "Root GPU worker; independent reviewer only inspected saved screenshots/proofs, launched no browser",
+    "screenshotsInspected": [
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-ijsbrand/gallery.png",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-ijsbrand/gallery-angle-0.png",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-ijsbrand/gallery-angle-1.png",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-ijsbrand/gallery-angle-2.png",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-ijsbrand/gallery-angle-3.png",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-ijsbrand/live-front.png",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-ijsbrand/neutral-front.png",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-ijsbrand/live-rear.png",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-ijsbrand/disabled-fallback.png",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-ijsbrand/failed-load-fallback.png"
+    ],
+    "proofsInspected": [
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-ijsbrand/received-asset-native.json",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-ijsbrand/received-asset-gallery.json",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-ijsbrand/placement-proof.json",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-ijsbrand/opposite-placement-proof.json",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-ijsbrand/physical-card-proof.json",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-ijsbrand/disabled-fallback-proof.json",
+      "artifacts/firestations-review/gpu-next/main-native/fire-station-ijsbrand/failed-load-fallback-proof.json"
+    ],
+    "findings": [
+      "Previous blocking full-height red return corrected: four GPU rotations show red upper band above gray support, not red masonry to ground. Updated builder separates9.2m upper shell, inset support and underside/recess. Red/glazed/louver frontage, gray stair tower and three vehicle bays retain source recognition.",
+      "Neutral live front preserves gray lower facade and red upper band; opposite view shows stepped roof/native notch with retained context. No new visible geometry failure found in saved views.",
+      "Native and opposite masks hide only exact BAG0363100012115117 and OSMw44825777; two recorded resident neighboring BAG parents remain drawable. Disabled/failed-load images restore ordinary target shell.",
+      "Recorded physical click selected genuine n2847025649 sourced useful card; geographic entrance pin visible and route arrival coordinates match pin."
+    ],
+    "pending": [
+      "Root desktop/touch camera-pan performance and ordinary facade retention acceptance",
+      "Root source-correction archive publication and final release checks"
+    ],
+    "limitations": [
+      "Saved live cameras are elevated map views rather than a ground-level source-camera replica; trees and selection highlight obscure parts of facade, neutral view inspected separately.",
+      "Approximate rear opening rhythm and deliberately omitted fine details remain explicitly bounded.",
+      "Cantilever underside is shallow in elevated screenshots; source-supported open recess checked from repair structure/probes and oblique rotations, not independently ground-camera inspected."
+    ]
+  }
+}

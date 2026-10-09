@@ -4,6 +4,7 @@
 // looks wrong.
 
 import assert from 'node:assert/strict';
+import { CANAL_CITIES } from '../src/canalRecall/game/cities.ts';
 
 import {
   advanceLiveRoute,
@@ -264,7 +265,7 @@ check('routeAhead trims passed vertices and never returns a stub', () => {
   assert.deepEqual(routeAhead([], 0, FINISH), [FINISH]);
 });
 
-const AMSTERDAM_BOX = [4.72, 52.43, 5.02, 52.27] as const;
+const AMSTERDAM_BOX = CANAL_CITIES.amsterdam.geocodeViewbox;
 
 check('GPS origin stays inside the city viewbox', () => {
   assert.equal(pointInGeocodeViewbox(52.373, 4.892, AMSTERDAM_BOX), true);
@@ -280,6 +281,14 @@ assert.equal(gpsOrigin.id, GPS_ORIGIN_ID);
 assert.equal(gpsOrigin.name, 'Here');
 assert.equal(gpsOrigin.lat, 52.373);
 checks.push('resolveGpsOrigin uses a live fix as Here, not a geocoded home');
+
+const weespOrigin = await resolveGpsOrigin({
+  cityName: 'Amsterdam',
+  viewbox: AMSTERDAM_BOX,
+  readFix: async () => ({ lat: 52.299583, lng: 5.044159 }),
+});
+assert.deepEqual(weespOrigin, { id: GPS_ORIGIN_ID, name: 'Here', lat: 52.299583, lng: 5.044159 });
+checks.push('Amsterdam admits a fixed Weesp GPS origin without moving it');
 
 await assert.rejects(
   () => resolveGpsOrigin({

@@ -1,0 +1,53 @@
+{
+  "id": "fire-station-anton",
+  "name": "Kazerne Anton",
+  "landmarkId": "w819163075",
+  "modelUrl": "./models/fire-station-anton.glb",
+  "suppressOsmIds": [
+    "w416229378",
+    "w1381820314",
+    "NL.IMBAG.Pand.0363100012244404"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.973280003106436,
+      52.307333056443284
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 55,
+    "widthMetres": 38
+  },
+  "surveyed": {
+    "anchor": [
+      4.973280003106436,
+      52.307333056443284
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG exact elbow; AHN5 levels and original architect photographs"
+  },
+  "groundAltitudeMetres": -4.4,
+  "facingOffsetDegrees": 90,
+  "materialOverrides": {
+    "brick": "#525255",
+    "dark": "#303035",
+    "greyBrick": "#878787",
+    "white": "#deddd6",
+    "stone": "#a3a2a0",
+    "slate": "#56585b",
+    "glass": "#4d6672",
+    "frame": "#272b2e",
+    "red": "#c43336",
+    "bronze": "#af9273",
+    "concrete": "#545658",
+    "green": "#788665"
+  },
+  "attribution": {
+    "title": "Kazerne Anton",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.me-2.nl/project/kazerne-anton-amsterdam-amstelland/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free BAG reconstruction; source-guided gray bands, timber terrace, red/white bays and entrance overhang. No reference pixels or third-party mesh imported."
+  }
+}

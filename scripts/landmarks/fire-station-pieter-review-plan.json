@@ -1,0 +1,36 @@
+{
+  "id": "fire-station-pieter",
+  "state": "draft CPU checked; root independent/gallery/live-game acceptance pending",
+  "nativeCameras": {
+    "eastFront": [
+      4.84385467033181,
+      52.34883957263572
+    ],
+    "southEnd": [
+      4.843591995918549,
+      52.348568139793
+    ]
+  },
+  "sources": [
+    "../map-recall2-source-data/models/fire-station-pieter/processed/recording_2025-08-01_09-43-20_00197.jpg",
+    "../map-recall2-source-data/models/fire-station-pieter/raw/recording_2025-08-01_09-43-20_00197.jpg"
+  ],
+  "cpuViews": {
+    "env": {
+      "LANDMARK_CPU_INPUT_DIR": "artifacts/fire-station-pieter",
+      "LANDMARK_CPU_OUTPUT_DIR": "artifacts/fire-station-pieter",
+      "LANDMARK_CPU_VIEWS": "[[1.1,\"southeast\"],[4.1,\"northwest\"]]"
+    }
+  },
+  "reviewCriteria": [
+    "Five red sectional vehicle doors with4 glazed rows; pale balcony panel band and narrow slots; source-supported real boldsans BRANDWEER operator sign.",
+    "Survey flatroof hierarchy8.4/11.6/14.4m and setbacktopglazing; no southbalcony added because source southend belongs abuttingReddingsbrigade.",
+    "Exact BAG0363100012088589 suppression only; retain abuttingReddingsbrigade BAG0363100012088592/w276218420 including itstwoapparatusdoors andsouthbalcony, plus neighbour0363100012227555. Restorefallback onmissing model.",
+    "Destination genuine n8334401440, label/pin at eastpublicentrance, meaningful physicalclickcard, chosenroute/fixedfinish no substitution."
+  ],
+  "knownUncertainty": [
+    "West/rear window counts approximate; limited opposite facade evidence.",
+    "No calibrated facade measurements; opening proportions from municipality reference photos."
+  ],
+  "scopeCorrection": "Original panorama proves sevenapparatusdoors across twoindependentBAGparents: Pieterfive plusReddingsbrigadetwo. Initial claimsevenPieter superseded; southbalconymisattribution removed."
+}

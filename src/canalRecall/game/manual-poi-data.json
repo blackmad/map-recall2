@@ -1569,5 +1569,123 @@
     ],
     "note": "Main external pedestrian entrance under source-visible balcony, mapped on exact native southern facade, route pin1.85m outward into open forecourt. Station interiors not publicly accessible; preserve destination on route failure."
   }
+},
+{
+  "modelId": "fire-station-teunis",
+  "name": "Kazerne Teunis",
+  "description": "Teunis began as the first professional fire station in Amsterdam-West, temporarily housed in the GVB garage on Jan Tooropstraat from 1959 to 1965. After several moves, the fire service records its arrival at Vredenhofweg in 2011; the present building has a BAG construction year of 2013. Its three vehicle bays sit beneath a red canopy and an open upper terrace.",
+  "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-teunis/",
+  "center": [
+    52.3846258,
+    4.863427
+  ],
+  "routeDestination": {
+    "center": [
+      52.384554,
+      4.863296
+    ],
+    "note": "Source-visible pedestrian entrance immediately south of three vehicle bays; destination2m outside native west wall on Vredenhofweg pavement. Building interior is operational fire-service space."
+  }
+},
+{
+  "modelId": "fire-station-victor",
+  "name": "Brandweerkazerne Victor",
+  "description": "Victor was Amsterdam\u2019s first fire station without horse stables: its early electrically powered fire engines had a large charging station here. The V name dates from its former Pieter Vlamingstraat station. The original building combined fire station and living quarters; the whole building now serves the fire brigade.",
+  "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-victor/",
+  "center": [
+    52.360452,
+    4.929157
+  ],
+  "routeDestination": {
+    "center": [
+      52.360452,
+      4.929157
+    ],
+    "note": "Current Dapperstraat public pavement at twin apparatus portals; source footprint and photographs."
+  }
+},
+{
+  "modelId": "fire-station-willem",
+  "name": "Kazerne Willem",
+  "description": "Willem preserves the W of Weesper: the station began at Weesperplein in 1873, moved to Nieuwe Achtergracht in 1909, and has operated from Ringdijk since 1984. The renovated panels above the fire-engine doors use charred Marugame wood selected by ENZO architects for its durability.",
+  "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-willem/",
+  "center": [
+    52.348947095579625,
+    4.914877307883409
+  ]
+},
+{
+  "modelId": "fire-station-ijsbrand",
+  "name": "Brandweerkazerne IJsbrand",
+  "description": "Built in 2001 on Displaystraat, IJsbrand is one of Amsterdam-Noord\u2019s two professional fire stations. It houses the crews of a fire engine and an aerial ladder: eight firefighters in total. The IJsbrand name reaches back to a 1916 fire post in a wooden emergency village near Grasweg. The current station, named for Cornelia Frida Katz, replaced both the Berberisstraat and Molenwijk stations in 2001.",
+  "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-ijsbrand/",
+  "center": [
+    52.406279,
+    4.889718
+  ]
+},
+{
+  "modelId": "fire-station-pieter",
+  "name": "Kazerne Pieter",
+  "description": "A beige concrete-and-brick fire station on Poeldijkstraat, with five red glazed fire-engine doors, a projecting glazed watchroom and a setback upper room. It opened on 10 May 1972 to replace the fire stations in Sloten and Oud Osdorp. Pieter gets its name from the code letter P for Poeldijkstraat. The station formerly housed a hose workshop, shoemaker and clothing depot; its current specialist role is responding to incidents involving hazardous substances.",
+  "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-pieter/",
+  "center": [
+    52.348825,
+    4.84376
+  ]
+},
+{
+  "modelId": "fire-station-zebra",
+  "name": "Kazerne Zebra",
+  "description": "Kazerne Zebra opened on IJdoornlaan in 1973 as Amsterdam-Noord grew. Its brick station has three red vehicle doors, ribbon windows and a separate tall hose tower. The Z came from the old fire post on Zamenhofstraat. The service chose Zebra from the English telephone alphabet because Zaandam could cause confusion in Amsterdam-Noord and Zulu was also unsuitable. The former Zamenhofstraat post now houses Noordje\u2019s art and language projects for young people.",
+  "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-zebra/",
+  "center": [
+    52.39614497764802,
+    4.954761362465582
+  ]
+},
+{
+  "modelId": "fire-station-weesp",
+  "name": "Kazerne Weesp",
+  "description": "Weesp\u2019s volunteer fire station moved from the Achtergracht to the Aetsveldselaan in 2011. Its history began in 1888 in a former telegraph and post office with five hand pumps. The present station combines a curved four-bay appliance hall with a timber-faced upper volume and distinctive trapezoidal glazing. ",
+  "sourceUrl": "https://www.brandweer.nl/kazerne/weesp/",
+  "center": [
+    52.3025707,
+    5.0449773
+  ],
+  "routeDestination": {
+    "center": [
+      52.302535,
+      5.044978
+    ],
+    "note": "Source-supported public pedestrian entrance approach on southern frontage."
+  }
+},
+{
+  "modelId": "fire-station-driemond",
+  "name": "Kazerne Driemond",
+  "description": "Driemond\u2019s fire station is also known as Kazerne Maxima. Its two red glazed apparatus doors stand beside a taller brick and glass office wing at Lentestraat 30. The station hosts local safety days with the emergency services. ",
+  "sourceUrl": "https://www.brandweer.nl/kazerne/driemond/",
+  "center": [
+    52.307008,
+    5.01935
+  ]
+},
+{
+  "modelId": "fire-station-anton",
+  "name": "Kazerne Anton",
+  "description": "ME-2 architects designed this 2016 station as an elbow around a private rear yard. Four gray brick shades echo the layers of stone and surrounding traffic. Three response vehicles leave from the raised ground floor; sports rooms occupy the lower level and recreation space sits above. A deliberate clean/dirty route keeps soot from equipment out of the living rooms.",
+  "sourceUrl": "https://www.brandweer.nl/kazerne/amsterdam-anton/",
+  "center": [
+    52.307150805532515,
+    4.973277542354208
+  ],
+  "routeDestination": {
+    "center": [
+      52.306919,
+      4.97352
+    ],
+    "note": "Public Langbroekdreef approach beside the station driveway,27.6m from the former isolated apron point. Current mapped road coordinates cross-checked against sourced station plot; actual chosen destination remains Anton."
+  }
 }
 ]

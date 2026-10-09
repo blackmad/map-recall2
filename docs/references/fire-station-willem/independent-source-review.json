@@ -1,0 +1,147 @@
+{
+  "id": "fire-station-willem",
+  "reviewedAt": "2026-10-09T09:38:27.793049+00:00",
+  "reviewer": "independent failure-seeking source/CPU reviewer",
+  "scope": "Cached original source photographs, exact native source/build code/specification and isolated CPU render only. No browser/GPU or live acceptance.",
+  "status": "independent-source-render-review-passed-root-performance-pending",
+  "meshReviewed": {
+    "path": "artifacts/landmark-next-batch/fire-station-willem.glb",
+    "sha256": "41ea6fefaaa23761697b7c68d83293f6b6295338996e1087560b15211a95d0f6",
+    "views": [
+      "artifacts/landmark-offline-preview/fire-station-willem-cpu-front.png",
+      "artifacts/landmark-offline-preview/fire-station-willem-cpu-rear.png"
+    ]
+  },
+  "sourcesInspected": [
+    "models/fire-station-willem/processed/recording_2025-06-20_12-01-53_01387.jpg",
+    "models/fire-station-willem/processed/recording_2025-06-20_12-01-53_01377.jpg",
+    "models/fire-station-willem/processed/recording_2024-10-02_13-17-06_02037.jpg",
+    "models/fire-station-willem/raw/large_386_347866.jpg",
+    "models/fire-station-willem/raw/large_387_137802.jpg",
+    "models/fire-station-willem/raw/aerial2.png",
+    "models/fire-station-willem/raw/osm-map.xml"
+  ],
+  "criticalRecognition": {
+    "sevenBays": "Source supports seven pale-pier-separated glazed truck bays; 3 columns/5 tiers with dark lower skirt. CPU count and broad rhythm recognizable.",
+    "charredPanels": "Tall near-black vertical panels above bays; source-supported flat-color narrow slats are appropriate. Inspect current corrected palette in gallery.",
+    "lobbyAndOffice": "Red recessed eastern lobby, tall western curtain-wall groups, broad middle office windows and narrow top lights all present in CPU. Tiny joins remain subordinate to broad recognition.",
+    "frontage": "Native edge [-47.8582,32.1899] to [4.3277,-5.5094], outward normal [-0.5856,-0.8106] matches Ringdijk canal frontage; archived camera geographic points are on street side. Rear HQ faces railway.",
+    "court": "Aerial confirms open inward notch between front block and HQ above low glazed atrium. CPU high view is partially obscured; actual overhead gallery and open-space live review remain required.",
+    "heights": "17.89m principal roof and only local apparatus up to22.29m consistent with semantic source; equipment does not become whole-building height.",
+    "area": "Native ring independently computes6591.99m2, consistent with approximate6600m2 complex; do not claim exact6601 from this ring."
+  },
+  "failures": [
+    {
+      "id": "wrong-spec-footprint",
+      "severity": "blocking",
+      "state": "corrected-by-root-after-review",
+      "evidence": "Original spec footprint started [4.909096,52.370019], far from Willem anchor. Re-read now starts [4.914923,52.347905], matching native source. Catalogue correction reported by root."
+    },
+    {
+      "id": "unsupported-station-solar-field",
+      "severity": "blocking",
+      "state": "resolved-in-followup-1",
+      "evidence": "CPU views show station-roof solar shelf extending beyond edge. Independent point-in-polygon against roof563: 3/16 centers of grid [8,3,4,4] outside roof: [10.9,3], [12.35,3], [12.35,4.6]. Rotated complete panel corners need containment checks too. Aerial supports inset roof fields, no floating shelf.",
+      "requiredFix": "Clip/reposition field to supported native roof, check all rotated corners and re-render.",
+      "resolution": "Corrected current mesh and actual full-front/CPU images inspected; historical failure evidence retained."
+    },
+    {
+      "id": "potential-clipped-brandweer-sign",
+      "severity": "blocking-until-inspected",
+      "state": "resolved-in-followup-1",
+      "evidence": "CPU front only clearly reads BRANDW; remaining letters may intersect angled/inset parent wall. Pane first-hit tests do not establish letter visibility.",
+      "requiredFix": "Inspect actual full sign at native scale with wall-plane attachment and first-hit rays or clear lower gallery comparison; move entire sign onto actual source-supported wall plane if buried.",
+      "resolution": "Corrected current mesh and actual full-front/CPU images inspected; historical failure evidence retained."
+    },
+    {
+      "id": "incomplete-neighbor-review-plan",
+      "severity": "acceptance-gap",
+      "state": "resolved-in-followup-1",
+      "evidence": "Side neighbors are listed, but opposite canal row omitted. Cached OSM identifies w278086614/BAG0363100012067283 and w278086574/BAG0363100012099970 among opposite row peers. Railway rear is open corridor.",
+      "requiredFix": "Review both side parents plus opposite canal row and rear rail corridor in live context; retain all ordinary geometry.",
+      "resolution": "Root-provided live images now include retained opposite canal row; root reports native contracts passed."
+    }
+  ],
+  "pendingAcceptance": [
+    "Root actual rider camera/performance evidence and final release/contract checkpoint"
+  ],
+  "decision": "Independent current primary-source, CPU and actual gallery/native live comparison passes; prior errors/failures preserved. Root performance/release acceptance remains pending.",
+  "followupReviews": [
+    {
+      "reviewedAt": "2026-10-09T09:51:48.449733+00:00",
+      "meshSha256": "1f47758c32c57dd0643f10fa27237942e7c4adbb849afc391fe61f4a21cb471c",
+      "scope": "Independent inspection of root-provided actual gallery/live images; no own GPU browser session. Performance remains root-owned.",
+      "imagesInspected": [
+        "artifacts/landmark-offline-preview/fire-station-willem-cpu-front.png",
+        "artifacts/firestations-review/supplement/fire-station-willem-full-front.png",
+        "artifacts/firestations-review/supplement/fire-station-willem-court.png",
+        "artifacts/firestations-review/final-teunis-victor-willem/fire-station-willem/gallery-angle-2.png",
+        "artifacts/firestations-review/final-teunis-victor-willem/fire-station-willem/live-front.png",
+        "artifacts/firestations-review/final-teunis-victor-willem/fire-station-willem/live-rear.png"
+      ],
+      "resolved": [
+        "Full BRANDWEER legible and attached after continuous upper office wall correction.",
+        "No unsupported station-roof solar shelf visible after four-corner native containment clipping.",
+        "Actual live images retain opposite canal row, side low neighbor and rear rail corridor; root reports complete contract checks."
+      ],
+      "newFailure": {
+        "id": "central-hq-solar-buried",
+        "severity": "blocking-source-render-mismatch",
+        "evidence": "Source aerial has dominant large central white-framed dark solar array. Actual gallery and live roof views show broad grey equipment/sloped-part plates with almost none of that array visible. Independent polygon scan:101/104 centers of central grid[-3,68,8,13] lie beneath source roof-part caps higher than18.18m, while solar boxes top at18.18m.",
+        "requiredFix": "Expose source-supported central solar panels above appropriate local support or correctly interpret those fitted source roof surfaces. Recheck roof support and source/render appearance."
+      },
+      "courtEvidence": "Live rear shows genuine inward notch and inner facade. Supplement court image is viewed from rear and cannot show the void; obtain a clear side/overhead gallery view of low atrium and open space.",
+      "decision": "Front recognition and earlier fixes pass visual re-review, but new central roof solar occlusion prevents acceptance."
+    },
+    {
+      "reviewedAt": "2026-10-09T10:22:12.514760+00:00",
+      "meshSha256": "e694632ea4eb905c63272244d5413cc3bea180df5c7bbd67ca485c11f87ba252",
+      "scope": "Independent original contractor-photo/HTML and corrected exact CPU view inspection. Updated actual GPU gallery/live still queued; no own browser session.",
+      "newPrimarySources": [
+        "models/fire-station-willem/raw/sampre-solar.html",
+        "models/fire-station-willem/raw/sampre-solar-2.jpg",
+        "models/fire-station-willem/raw/sampre-solar-3.jpg"
+      ],
+      "sourceUrl": "https://sampre.io/kennisbank/kazerne-willem",
+      "imagesInspected": [
+        "artifacts/fire-station-willem-roof-fix/fire-station-willem-cpu-roof.png",
+        "artifacts/fire-station-willem-roof-fix/fire-station-willem-cpu-front.png"
+      ],
+      "classificationCorrection": {
+        "previousReviewerError": "I incorrectly classified the rear HQ white-framed grid as PV from aerial alone. Preserve the previous failure record as history, not current source truth.",
+        "currentInterpretation": "New primary contractor photographs locate actual PV arrays on the long front station wing around rooftop plant and roof opening. Rear white-framed sloping grid is interpreted as rooflighting from aerial appearance and AHN roof topology. The latter remains medium-high confidence because no direct contractor description of rear glazing was obtained.",
+        "consequence": "Raising the originally invented rear PV would have introduced incorrect geometry. Removing it and exposing source-shaped white-framed glass solves the actual source/render mismatch."
+      },
+      "findings": [
+        "Corrected CPU rear roof now displays exposed central white-framed glass rhythm, replacing opaque average-height caps.",
+        "Front PV lies within observed front-wing roof area; module coordinates remain approximate.",
+        "High CPU view shows inward notch and low atrium separate from principal17.89m roof.",
+        "Full facade/sign improvements preserved; no newly identified source-level blocker from these CPU views."
+      ],
+      "decision": "Source/CPU correction provisionally passes; new actual gallery/live image review and root performance remain pending."
+    },
+    {
+      "reviewedAt": "2026-10-09T10:24:23.201933+00:00",
+      "scope": "Independent review of updated actual GPU evidence produced by exclusive root review worker; no own browser session.",
+      "meshSha256": "e694632ea4eb905c63272244d5413cc3bea180df5c7bbd67ca485c11f87ba252",
+      "receivedAssetEvidence": "artifacts/firestations-review/gpu-next/main-native-recovery/fire-station-willem/received-asset-gallery.json",
+      "imagesInspected": [
+        "artifacts/firestations-review/gpu-next/main-native-recovery/fire-station-willem/gallery-angle-0.png",
+        "artifacts/firestations-review/gpu-next/main-native-recovery/fire-station-willem/gallery-angle-1.png",
+        "artifacts/firestations-review/gpu-next/main-native-recovery/fire-station-willem/gallery-angle-2.png",
+        "artifacts/firestations-review/gpu-next/main-native-recovery/fire-station-willem/gallery-angle-3.png",
+        "artifacts/firestations-review/gpu-next/main-native-recovery/fire-station-willem/neutral-front.png",
+        "artifacts/firestations-review/gpu-next/main-native-recovery/fire-station-willem/live-rear.png"
+      ],
+      "findings": [
+        "Rear white-framed rooflighting remains visible in actual gallery rotations and native game context, replacing incorrect grey opaque plate composition.",
+        "Front-wing PV remains inset/supported and matches contractor-photo location. Module arrangement is appropriately recorded as approximate.",
+        "Gallery angle1 and native game views show the genuine inward notch and retained inner facades rather than a filled parcel. Low atrium remains separate from principal roof.",
+        "Seven-bay dark panel rhythm, red lobby and real BRANDWEER lettering improvements are retained.",
+        "Native game views retain low side neighbor and opposite canal row; placement proof records exact two replacement aliases hidden and neighboring resident meshes drawable.",
+        "Rooflight glazing is dark in some rotations and fine white framing dense at this scale; no source/render blocking defect observed. Medium-high confidence rooflight classification remains explicit."
+      ],
+      "decision": "Independent source/render visual re-review passes for current SHA. This does not close root rider/performance or release evidence."
+    }
+  ]
+}
