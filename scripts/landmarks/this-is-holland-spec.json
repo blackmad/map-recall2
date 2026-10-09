@@ -37,7 +37,7 @@
     "modifications": "Original native surveyed faceted metal drum, sawtooth glass foyer, mushroom columns, roof solar field and source-visible smooth sans-serif signs; no imported meshes or image textures. Approximate Arial Bold/Arial Regular source signage match."
   },
   "materialOverrides": {
-    "concrete": "#bec2c2",
+    "concrete": "#8c9091",
     "frame": "#929c9c",
     "glass": "#52777b",
     "blue": "#334e68",
@@ -49,6 +49,6 @@
     "phi": 1.2
   },
   "materialOpacity": {
-    "glass": 0.18
+    "glass": 0.3
   }
 }

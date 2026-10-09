@@ -10594,5 +10594,157 @@
     "licenceUrl": "./LICENSE",
     "modifications": "Original texture-free BAG reconstruction; source-guided gray bands, timber terrace, red/white bays and entrance overhang. No reference pixels or third-party mesh imported."
   }
+},
+{
+  "id": "this-is-holland",
+  "name": "This is Holland",
+  "landmarkId": "extract_landmarks_1851417932",
+  "modelUrl": "./models/this-is-holland.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012246118",
+    "w490967874",
+    "w1206726843"
+  ],
+  "spatialSuppression": false,
+  "groundAltitudeMetres": 0,
+  "footprint": {
+    "centre": [
+      4.902355,
+      52.384213
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 29,
+    "widthMetres": 29
+  },
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.902355,
+      52.384213
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current in-use BAG0363100012246118 and OSM metal/glass pavilion outlines. Native X east/Z south at scale1; six-metre sawtooth foyer,approximately25.2m metal drum from broad AHN5 2023 roof115 (older OSM24m approximate), near-flat roof with separately modeled solar equipment. Public entrance OSMnode11182027586 southeast, not destination centre."
+  },
+  "attribution": {
+    "title": "This is Holland pavilion",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.damastarchitects.nl/this-is-holland-amsterdam",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original native surveyed faceted metal drum, sawtooth glass foyer, mushroom columns, roof solar field and source-visible smooth sans-serif signs; no imported meshes or image textures. Approximate Arial Bold/Arial Regular source signage match."
+  },
+  "materialOverrides": {
+    "concrete": "#8c9091",
+    "frame": "#929c9c",
+    "glass": "#52777b",
+    "blue": "#334e68",
+    "slate": "#606969",
+    "white": "#efefea"
+  },
+  "galleryView": {
+    "theta": 0.8,
+    "phi": 1.2
+  },
+  "materialOpacity": {
+    "glass": 0.3
+  }
+},
+{
+  "id": "luther-museum",
+  "name": "Luther Museum Amsterdam",
+  "landmarkId": "extract_landmarks_218084814",
+  "modelUrl": "./models/luther-museum.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012164939",
+    "r3604195",
+    "w269000350"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.9091,
+      52.3654
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 108.9,
+    "widthMetres": 64.7
+  },
+  "surveyed": {
+    "anchor": [
+      4.9091,
+      52.3654
+    ],
+    "northOffsetDegrees": 0
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 151,
+  "materialOverrides": {
+    "brick": "#806455",
+    "stone": "#b7b1a1",
+    "slate": "#655f57",
+    "white": "#eae7dc",
+    "copper": "#7da599",
+    "glass": "#63838c"
+  },
+  "attribution": {
+    "title": "Wittenberg / Luther Museum Amsterdam",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/525060",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native BAG parent with two courtyards and later wing; surveyed supported roof domains, photo-guided original apertures and stone entrances. Scale1. Window dimensions and trim depths approximate; no imported mesh or photo textures."
+  }
+},
+{
+  "id": "huize-frankendael",
+  "name": "Huize Frankendael",
+  "landmarkId": "extract_landmarks_746892406",
+  "modelUrl": "./models/huize-frankendael.glb",
+  "suppressOsmIds": [
+    "w44980011",
+    "NL.IMBAG.Pand.0363100012162192",
+    "w1562613213",
+    "w1562613214",
+    "w1562613215",
+    "w1562613216"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.9335095,
+      52.351162
+    ],
+    "headingDegrees": 316.086,
+    "lengthMetres": 32.46,
+    "widthMetres": 12.91
+  },
+  "surveyed": {
+    "anchor": [
+      4.9335095,
+      52.351162
+    ],
+    "northOffsetDegrees": 226.086,
+    "source": "Current BAG0363100012162192 / OSM w44980011 and four exact mapped parts. Native original reconstruction; AHN5 2023 roof semantics and RCE422420."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 90,
+  "materialOverrides": {
+    "brick": "#766a65",
+    "stone": "#d8d1b8",
+    "white": "#eee7d5",
+    "slate": "#4a555b",
+    "glass": "#465d62",
+    "frame": "#292d28",
+    "dark": "#23392c",
+    "concrete": "#888980"
+  },
+  "attribution": {
+    "title": "Huize Frankendael",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/422420",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native BAG brick pavilion, coach-house wings, truncated grey hip roofs, rear polygonal projection, pale rococo surrounds, balustrade, dormers and entrance steps. No imported meshes or photo pixels."
+  }
 }
 ]
