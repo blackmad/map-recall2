@@ -12060,5 +12060,337 @@
       ]
     ]
   }
-}
+},
+  {
+    "id": "museum-amsterdam-noord",
+    "name": "Museum Amsterdam Noord",
+    "landmarkId": "extract_landmarks_2034905768",
+    "modelUrl": "./models/museum-amsterdam-noord.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012158267"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.9260085,
+        52.3881895
+      ],
+      "headingDegrees": 77.26611841345363,
+      "lengthMetres": 10.097759873305435,
+      "widthMetres": 9.874652274437953
+    },
+    "surveyed": {
+      "anchor": [
+        4.9260085,
+        52.3881895
+      ],
+      "northOffsetDegrees": 0,
+      "source": "BAG pand 0363100012158267 (Zamenhofstraat, Vogeldorp) exact ring in local east/south metres; 3DBAG LoD2.2 hipped roof, ridge about 6.7 m, chimney top about 9.4 m above ground. Anchor is the ring bounding-box centre."
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "materialOverrides": {
+      "brick": "#cdb985",
+      "greyBrick": "#8d7f62",
+      "slate": "#4b4a50",
+      "white": "#f1efe8",
+      "green": "#3f5f49",
+      "glass": "#7f97a0",
+      "dark": "#2e3a35",
+      "stone": "#bdb6a3"
+    },
+    "attribution": {
+      "title": "Museum Amsterdam Noord",
+      "author": "Map Recall",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Museum_Amsterdam_Noord",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native-scale hipped-roof bath house on the exact BAG footprint; buff brick, pantile hip with white fascia and dormers, chimney. Openings simplified from one 2025 municipal panorama; no imported mesh or photograph pixels."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.926064,
+            52.388243
+          ],
+          [
+            4.92592,
+            52.388223
+          ],
+          [
+            4.925953,
+            52.388136
+          ],
+          [
+            4.926097,
+            52.388156
+          ],
+          [
+            4.926064,
+            52.388243
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "id": "levend-paardenmuseum",
+    "name": "Levend Paardenmuseum",
+    "landmarkId": "extract_landmarks_82936853",
+    "modelUrl": "./models/levend-paardenmuseum.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012074454"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.8718745,
+        52.3612855
+      ],
+      "headingDegrees": 157.84905435812124,
+      "lengthMetres": 76.50001127828995,
+      "widthMetres": 50.5914940932001
+    },
+    "surveyed": {
+      "anchor": [
+        4.8718745,
+        52.3612855
+      ],
+      "northOffsetDegrees": 0,
+      "source": "BAG pand 0363100012074454 (Hollandsche Manege, Vondelstraat 140): exact ring and 3DBAG LoD2.2 roof/wall solid (ridge about 17 m above ground) in local east/south metres. Anchor is the ring bounding-box centre. Vondelstraat 140 gateway on the edge nearest the BAG address point."
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "materialOverrides": {
+      "brick": "#b98f77",
+      "slate": "#5b6168",
+      "white": "#ece6d6",
+      "stone": "#a9a496",
+      "dark": "#3c342d",
+      "ochre": "#8a5a34",
+      "glass": "#7f97a0"
+    },
+    "attribution": {
+      "title": "Levend Paardenmuseum",
+      "author": "Map Recall",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Hollandsche_Manege",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native-scale massing from the exact BAG footprint and 3DBAG LoD2.2 walls and roofs, plus an authored Vondelstraat 140 stucco gateway with arched timber doors from one 2025 municipal panorama. The Levend Paardenmuseum POI is placed on the manege because the museum is a tenant of that building. No imported mesh or photograph pixels."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.872213,
+            52.361257
+          ],
+          [
+            4.872169,
+            52.361246
+          ],
+          [
+            4.871923,
+            52.361621
+          ],
+          [
+            4.871658,
+            52.361555
+          ],
+          [
+            4.871698,
+            52.361495
+          ],
+          [
+            4.871569,
+            52.361463
+          ],
+          [
+            4.871687,
+            52.361285
+          ],
+          [
+            4.871434,
+            52.36122
+          ],
+          [
+            4.871526,
+            52.361081
+          ],
+          [
+            4.871739,
+            52.361135
+          ],
+          [
+            4.871773,
+            52.361081
+          ],
+          [
+            4.872076,
+            52.361158
+          ],
+          [
+            4.872226,
+            52.36095
+          ],
+          [
+            4.872315,
+            52.360974
+          ],
+          [
+            4.872244,
+            52.361073
+          ],
+          [
+            4.872243,
+            52.361073
+          ],
+          [
+            4.872165,
+            52.361182
+          ],
+          [
+            4.872249,
+            52.361202
+          ],
+          [
+            4.872213,
+            52.361257
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "id": "oudemanhuispoort",
+    "name": "Oudemanhuispoort",
+    "landmarkId": "extract_landmarks_1122909064",
+    "modelUrl": "./models/oudemanhuispoort.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012180206"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.8952165,
+        52.36937
+      ],
+      "headingDegrees": 102.15765033332445,
+      "lengthMetres": 10.498461315831001,
+      "widthMetres": 6.853699493229458
+    },
+    "surveyed": {
+      "anchor": [
+        4.8952165,
+        52.36937
+      ],
+      "northOffsetDegrees": 0,
+      "source": "BAG pand 0363100012180206 (gate-house at the Oudezijds Achterburgwal end of the Oudemanhuispoort passage): exact ring and 3DBAG LoD2.2 solid (about 17 m above ground) in local east/south metres. Anchor is the ring bounding-box centre."
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "materialOverrides": {
+      "brick": "#a2705b",
+      "slate": "#585b61",
+      "white": "#e9e6dc",
+      "stone": "#a7a59d",
+      "dark": "#2e2a28",
+      "ochre": "#4a3a2b",
+      "glass": "#6f858f"
+    },
+    "attribution": {
+      "title": "Oudemanhuispoort",
+      "author": "Map Recall",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Oudemanhuispoort",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native-scale model of the gate-house on the exact BAG footprint and 3DBAG LoD2.2 solid, with a sandstone portal from one 2025 municipal panorama. The surrounding university complex is not modelled. No imported mesh or photograph pixels."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.89518,
+            52.369408
+          ],
+          [
+            4.895178,
+            52.369407
+          ],
+          [
+            4.895175,
+            52.369408
+          ],
+          [
+            4.895171,
+            52.369403
+          ],
+          [
+            4.895174,
+            52.369402
+          ],
+          [
+            4.895132,
+            52.369352
+          ],
+          [
+            4.895283,
+            52.369332
+          ],
+          [
+            4.895301,
+            52.369385
+          ],
+          [
+            4.895194,
+            52.369398
+          ],
+          [
+            4.895195,
+            52.3694
+          ],
+          [
+            4.895191,
+            52.369401
+          ],
+          [
+            4.895192,
+            52.369403
+          ],
+          [
+            4.895191,
+            52.369403
+          ],
+          [
+            4.895191,
+            52.369405
+          ],
+          [
+            4.895191,
+            52.369406
+          ],
+          [
+            4.895192,
+            52.369407
+          ],
+          [
+            4.895188,
+            52.369408
+          ],
+          [
+            4.895181,
+            52.369407
+          ],
+          [
+            4.89518,
+            52.369408
+          ]
+        ]
+      ]
+    }
+  }
 ]

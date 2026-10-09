@@ -1130,6 +1130,21 @@
       "updatedAt": "2026-10-04T13:28:28+02:00",
       "version": "5978f719de17ff3e",
       "dateSource": "git-history"
+    },
+    "levend-paardenmuseum": {
+      "updatedAt": "2026-10-09T18:10:45.787Z",
+      "version": "a80ef13d5b245978",
+      "dateSource": "asset-update"
+    },
+    "museum-amsterdam-noord": {
+      "updatedAt": "2026-10-09T18:05:31.444Z",
+      "version": "e88894aaab904dc3",
+      "dateSource": "asset-update"
+    },
+    "oudemanhuispoort": {
+      "updatedAt": "2026-10-09T18:13:07.286Z",
+      "version": "764350d7441638ae",
+      "dateSource": "asset-update"
     }
   }
 }
