@@ -15,6 +15,34 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ---
 
+## Takeover board (2026-10-09) — active
+
+Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
+
+- **Landmark drafts not installed** (source committed under
+  `scripts/landmarks/`): Uilenburger synagoge, This is Holland, UvA
+  Roeterseiland, Luther Museum, Huize Frankendael, Hannekes Boom,
+  Posthoornkerk, Nieuwendammerkerk, Meerpadkerk, Haparandaweg 57. Finish,
+  install, contact-sheet review, one batch deploy.
+- **Perf cycle**: landmark layer renders one `THREE.Scene` per model with a
+  `getBounds()` per entry per frame, no frustum cull, no eviction
+  (`signature-landmarks-source.js`). Re-baseline against
+  `docs/performance/2026-10-06/` first.
+- **One building pipeline** (landmarks + ordinary houses): typed intent
+  recipe → deterministic fit from BAG/3DBAG → library components → automated
+  gates + contact sheet; batch deploys. Starts from the unmerged library on
+  `wip/canalhouse-recipes-20261008`.
+- **Docs compaction**: ~135 markdown files across root, `docs/` and here.
+- `scripts/check-cinema-facade-surfaces.ts` fails on main (32 front pane
+  triangles, expects 24); not in `check:canal`.
+- Street-appearance fingerprints (`public/data/street-appearance/*.json`)
+  hash an older `signature-landmarks.json`; re-bake rather than hand-edit.
+- `/private/tmp/canal-heren208-author40` holds an uncommitted Herengracht 208
+  ordinary draft; ~100 other worktrees are live but mostly merged — prune
+  with the user's say-so.
+
+---
+
 ## P0 — Red, or actively teaching something false
 
 *Anything that makes the game teach something false, or traps the rider,
