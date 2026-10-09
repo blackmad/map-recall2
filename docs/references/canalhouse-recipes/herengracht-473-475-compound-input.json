@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "herengracht-473-475",
+  "name": "Herengracht473\u2013475",
+  "facades": [
+    "docs/references/canalhouse-recipes/herengracht-473-recipe-input.json",
+    "docs/references/canalhouse-recipes/herengracht-475-recipe-input.json"
+  ],
+  "sourceArchive": {
+    "path": "models/herengracht-473-475/manifest.json",
+    "commit": null,
+    "localCommit": "c017e7f3458f90575f0eabceecca4f4a1be93eb1",
+    "syncStatus": "local-source-commit; remote-push-pending after prior git DNS failures"
+  }
+}

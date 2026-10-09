@@ -1,0 +1,378 @@
+{
+  "schemaVersion": 1,
+  "id": "bloemgracht-104",
+  "admissionFile": "docs/references/canalhouse-recipes/bloemgracht-104-source-admission.json",
+  "surveyFile": "docs/references/canalhouse-recipes/bloemgracht-104-survey.json",
+  "sourceBodyWallId": "NL.IMBAG.Pand.0363100012168162-0:lod22:wall:19",
+  "lowerReferenceTier": "full",
+  "frontagePlan": {
+    "maxInsetM": 0.25,
+    "maxOutsetM": 0.1
+  },
+  "frameSets": {
+    "paired": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.055,
+        "frameDepthM": 0.11,
+        "frameSurface": "trim",
+        "barSurface": "trim",
+        "verticalBars": [
+          0.5
+        ],
+        "mullionWidthM": 0.032
+      }
+    },
+    "shaft": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.055,
+        "frameDepthM": 0.11,
+        "frameSurface": "trim",
+        "barSurface": "trim",
+        "verticalBars": [],
+        "mullionWidthM": 0.032
+      }
+    },
+    "entry": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.08,
+        "frameDepthM": 0.13,
+        "frameSurface": "door",
+        "barSurface": "door",
+        "paneSurface": "door",
+        "recessM": 0.25
+      }
+    },
+    "glazed": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.07,
+        "frameDepthM": 0.11,
+        "frameSurface": "trim",
+        "paneSurface": "glass",
+        "verticalBars": [
+          0.15
+        ]
+      }
+    },
+    "lowerPanel": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.055,
+        "frameDepthM": 0.09,
+        "frameSurface": "trim",
+        "paneSurface": "trim"
+      }
+    }
+  },
+  "baySets": {
+    "pair": {
+      "template": "regular",
+      "ids": [
+        "left",
+        "right"
+      ],
+      "left": 0.08,
+      "width": 0.33,
+      "step": 0.51
+    }
+  },
+  "windowGroups": [
+    {
+      "id": "upperPair",
+      "baySet": "pair",
+      "tiers": [
+        {
+          "id": "second",
+          "bottom": 0.5542081268326623,
+          "height": 0.1942585186836136
+        },
+        {
+          "id": "third",
+          "bottom": 0.7884610464217257,
+          "height": 0.18283154699634221
+        }
+      ],
+      "frame": {
+        "use": "paired"
+      }
+    },
+    {
+      "id": "centralShaft",
+      "bays": [
+        {
+          "id": "shaft",
+          "left": 0.465,
+          "width": 0.075
+        }
+      ],
+      "tiers": [
+        {
+          "id": "lower",
+          "bottom": 0.41708446658540566,
+          "height": 0.15997760362179944
+        },
+        {
+          "id": "middle",
+          "bottom": 0.6284834427999264,
+          "height": 0.1714045753090708
+        },
+        {
+          "id": "upper",
+          "bottom": 0.8398824190144469,
+          "height": 0.15679807891086417
+        }
+      ],
+      "frame": {
+        "use": "shaft"
+      }
+    }
+  ],
+  "openingGroups": [],
+  "openings": [
+    {
+      "id": "leftRaisedWindow",
+      "kind": "window",
+      "left": 0.08,
+      "width": 0.33,
+      "bottom": 0.21711246205815637,
+      "height": 0.279960806338149,
+      "frame": {
+        "use": "paired"
+      }
+    },
+    {
+      "id": "rightRaisedWindow",
+      "kind": "window",
+      "left": 0.59,
+      "width": 0.33,
+      "bottom": 0.2742473204945133,
+      "height": 0.23425291958906344,
+      "frame": {
+        "use": "paired"
+      }
+    },
+    {
+      "id": "centralEntry",
+      "kind": "door",
+      "left": 0.425,
+      "width": 0.17,
+      "bottom": 0.14855063193452805,
+      "height": 0.22282594790179208,
+      "frame": {
+        "use": "entry"
+      }
+    },
+    {
+      "id": "leftLowerPanel",
+      "kind": "door",
+      "left": 0.08,
+      "width": 0.33,
+      "bottom": 0.011426971687271388,
+      "height": 0.19997200452724928,
+      "frame": {
+        "use": "lowerPanel"
+      }
+    },
+    {
+      "id": "rightBasement",
+      "kind": "window",
+      "left": 0.59,
+      "width": 0.33,
+      "bottom": 0.011426971687271388,
+      "height": 0.13712366024725664,
+      "frame": {
+        "use": "glazed"
+      }
+    }
+  ],
+  "palette": {
+    "wall": "#665b50",
+    "trim": "#d0d1c1",
+    "door": "#404947",
+    "glass": "#344341",
+    "stone": "#75817d",
+    "roof": "#4e4b48"
+  },
+  "crown": {
+    "depthM": 0.05,
+    "trimWidthM": 0,
+    "shape": {
+      "family": "lijst",
+      "top": 1,
+      "neckWidth": 1,
+      "shoulder": 1
+    }
+  },
+  "bands": [
+    {
+      "id": "leftLintel",
+      "left": 0.025,
+      "width": 0.405,
+      "bottom": 0.5085002400835767,
+      "height": 0.022853943374542777,
+      "depthM": 0.12,
+      "surface": "trim"
+    },
+    {
+      "id": "rightLintel",
+      "left": 0.575,
+      "width": 0.405,
+      "bottom": 0.5085002400835767,
+      "height": 0.022853943374542777,
+      "depthM": 0.12,
+      "surface": "trim"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "shaftFacing",
+      "left": 0.44,
+      "width": 0.125,
+      "bottom": 0.354236122305413,
+      "height": 0.645763877694587,
+      "depthM": 0.05,
+      "surface": "stone"
+    },
+    {
+      "id": "rightBasementPanel",
+      "left": 0.57,
+      "width": 0.37,
+      "bottom": 0.14855063193452805,
+      "height": 0.11426971687271388,
+      "depthM": 0.045,
+      "surface": "stone"
+    },
+    {
+      "id": "entranceLeftSupport",
+      "left": 0.405,
+      "width": 0.02,
+      "bottom": 0,
+      "height": 0.3713765798363201,
+      "depthM": 0.48,
+      "surface": "wall"
+    },
+    {
+      "id": "entranceRightSupport",
+      "left": 0.595,
+      "width": 0.02,
+      "bottom": 0.14855063193452805,
+      "height": 0.22282594790179208,
+      "depthM": 0.48,
+      "surface": "wall"
+    },
+    {
+      "id": "entranceCanopy",
+      "left": 0.395,
+      "width": 0.23,
+      "bottom": 0.3713765798363201,
+      "height": 0.020568549037088497,
+      "depthM": 0.65,
+      "surface": "wall"
+    }
+  ],
+  "ornaments": [],
+  "landing": {
+    "left": 0.425,
+    "width": 0.17,
+    "top": 0.14855063193452805,
+    "depthM": 0.3,
+    "thicknessM": 0.09
+  },
+  "entrance": {
+    "left": 0.425,
+    "width": 0.16,
+    "rise": 0.14855063193452805,
+    "runM": 2.05,
+    "approximateRiserM": 0.22,
+    "attachToLanding": true,
+    "surface": "stone",
+    "cheeks": {
+      "heightM": 1.0,
+      "streetHeightM": 0.6,
+      "thicknessM": 0.025,
+      "sides": [
+        "left",
+        "right"
+      ],
+      "surface": "door",
+      "coverLanding": true
+    }
+  },
+  "approaches": [],
+  "simplifications": [
+    "104activeVBO belongs reciprocally to both Pand8158 and8162; this candidate selects only built8162. Neighboring1028158 keeps its separate footprint and mesh. No new POI inferred.",
+    "Two wide ordinary upper axes across two tiers, two separate projecting atticfronts, and a recessed narrow central attic slot. Original flat third-tier attempt is preserved as failed evidence.",
+    "Wall19 supplies an attic/high-front envelope near13.77m, not ordinaryeaves. Explicit12.05m drawing body break and43/46/50front-slope run4.8m are provisional source-facing interpretations; roof50was nearflat in native data. Other native roofs, including high49/51andrearfin geometry, unchanged and held.",
+    "Attic dimensions/setback/depth and central-slot proportions are drawing estimates; actual roof/head correspondence unaccepted. Upper central shaft trimmed about0.11m to fit explicit drawing body; no support guard weakened.",
+    "Central frontal flight/landing/recess reuse existing assemblies; run/rise/recess and treadspacing are estimates. Existing facade blocks add portal supports/canopy but do not reconstruct full source stair-side cheeks along the run.",
+    "Left lower panel uses opaque trim material through shared opening16; right basement receives observed narrow side division. Exact joinery/masonry/guards simplified.",
+    "Full2023crop supplies lower reference; obstructed opposite-side groundcrop excluded. Empty register extract supplies no architectural assertions. No inferred hoist or roof material.",
+    "Shared entrance9solid side panels extend to pavement along flight/landing. Heights1.0m above landing and0.6m atstreet, thickness0.025m and linear top are drawing estimates; exact dark metal enclosure not measured."
+  ],
+  "bodyDatum": {
+    "heightM": 12.05,
+    "sourceReview": "bloemgracht-104-render-row-review-20261007.json: distinct paired attic fronts;12.05m break is drawing inference from estimated attic-window lower edge, not measured eaves"
+  },
+  "dormers": [
+    {
+      "id": "leftAttic",
+      "left": 0.08,
+      "width": 0.33,
+      "bottom": 1,
+      "height": 0.13692946058091285,
+      "depthM": 1.1,
+      "roofRiseM": 0.04,
+      "trimWidthM": 0.055,
+      "verticalBars": [
+        0.5
+      ],
+      "wallSurface": "wall",
+      "roofSurface": "trim",
+      "setbackM": 0.25
+    },
+    {
+      "id": "rightAttic",
+      "left": 0.59,
+      "width": 0.33,
+      "bottom": 1,
+      "height": 0.13692946058091285,
+      "depthM": 1.1,
+      "roofRiseM": 0.04,
+      "trimWidthM": 0.055,
+      "verticalBars": [
+        0.5
+      ],
+      "wallSurface": "wall",
+      "roofSurface": "trim",
+      "setbackM": 0.25
+    },
+    {
+      "id": "centralAtticSlot",
+      "left": 0.465,
+      "width": 0.075,
+      "bottom": 1,
+      "height": 0.12448132780082986,
+      "depthM": 0.8,
+      "setbackM": 0.6,
+      "roofRiseM": 0,
+      "trimWidthM": 0.035,
+      "wallSurface": "stone",
+      "roofSurface": "roof"
+    }
+  ],
+  "roofAssembly": {
+    "template": "front-slope",
+    "fit": "native-envelope",
+    "surfaceIds": [
+      "NL.IMBAG.Pand.0363100012168162-0:lod22:roof:43",
+      "NL.IMBAG.Pand.0363100012168162-0:lod22:roof:46",
+      "NL.IMBAG.Pand.0363100012168162-0:lod22:roof:50"
+    ],
+    "eavesM": 12.05,
+    "ridgeM": 13.77,
+    "frontRunM": 4.8
+  }
+}

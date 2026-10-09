@@ -1,0 +1,1589 @@
+{
+  "schemaVersion": 1,
+  "id": "herengracht-429-source-admission",
+  "observedOn": "2026-10-06",
+  "status": "bounded-source-admission-candidate-requires-root-review-no-model-or-transfer-acceptance",
+  "sampling": {
+    "representative": "herengracht-429",
+    "sourceExposedChallenge": "herengracht-433",
+    "retainedContext": "Herengracht 431 church and forecourt",
+    "heldoutCorrection": "Root inspected 433 lower photos as a capability example for opposing flights. It is no longer a blind source challenge. No 433 recipe was authored here; freeze a new independent challenge before any transfer acceptance."
+  },
+  "officialIdentity": {
+    "status": "confirmed-current-official-direct-join",
+    "address": "Herengracht 429",
+    "addressId": "0363200012107559",
+    "vboId": "0363010012105917",
+    "pandId": "0363100012177600",
+    "addressSearch": {
+      "url": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=straatnaam%3AHerengracht%20AND%20huisnummer%3A429&fq=woonplaatsnaam%3AAmsterdam&rows=100&fl=*",
+      "status": 200,
+      "accessed": "2026-10-06T05:45:40.799535+00:00",
+      "sha256": "c47993255e93a4ab8a04399bfc5dedf61274e9b6e0277b1120a3e441ee0b4cf5",
+      "bytes": 1746,
+      "rawPath": "curl-direct-pdok429-v2.bin",
+      "accessState": "downloaded-original-http-body-before-extraction",
+      "transport": "direct-curl-or-inline-node",
+      "timestampLimit": "Metadata finalized after acquisition in same2026-10-06session; exact earlier time absent for direct command captures"
+    },
+    "vboSource": {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?identificatie=0363010012105917&f=json",
+      "status": 200,
+      "accessed": "2026-10-06T05:45:40.799535+00:00",
+      "sha256": "9069df349da3ef91b07b8a8c832e30856148d453d746fa9730e116cd303bc02e",
+      "bytes": 1860,
+      "rawPath": "curl-direct-vbo429.bin",
+      "accessState": "downloaded-original-http-body-before-extraction",
+      "transport": "direct-curl-or-inline-node",
+      "timestampLimit": "Metadata finalized after acquisition in same2026-10-06session; exact earlier time absent for direct command captures"
+    },
+    "pandSource": {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/863c9a72-8ff1-536f-8326-ef478254e9a5?f=json",
+      "status": 200,
+      "accessed": "2026-10-06T05:45:40.799535+00:00",
+      "sha256": "df34525cf4aa125e18cbe213407f106199814480295514862943758a7858684d",
+      "bytes": 1812,
+      "rawPath": "curl-direct-pand429.bin",
+      "accessState": "downloaded-original-http-body-before-extraction",
+      "transport": "direct-curl-or-inline-node",
+      "timestampLimit": "Metadata finalized after acquisition in same2026-10-06session; exact earlier time absent for direct command captures"
+    }
+  },
+  "sourceProvenance": {
+    "raw3DBag": {
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012177600",
+      "status": 200,
+      "accessed": "2026-10-06T05:45:40.799535+00:00",
+      "sha256": "4027d14431b798d5c8b928f0b10a134d487b8451b3aead1654ef3b5d655cdeae",
+      "bytes": 8457,
+      "rawPath": "node-3dbag429.bin",
+      "accessState": "downloaded-original-http-body-before-extraction",
+      "transport": "direct-curl-or-inline-node",
+      "timestampLimit": "Metadata finalized after acquisition in same2026-10-06session; exact earlier time absent for direct command captures"
+    },
+    "rawBag": {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/863c9a72-8ff1-536f-8326-ef478254e9a5?f=json",
+      "status": 200,
+      "accessed": "2026-10-06T05:45:40.799535+00:00",
+      "sha256": "df34525cf4aa125e18cbe213407f106199814480295514862943758a7858684d",
+      "bytes": 1812,
+      "rawPath": "curl-direct-pand429.bin",
+      "accessState": "downloaded-original-http-body-before-extraction",
+      "transport": "direct-curl-or-inline-node",
+      "timestampLimit": "Metadata finalized after acquisition in same2026-10-06session; exact earlier time absent for direct command captures"
+    },
+    "privateLocalPack": "/tmp/canalhouse-recipes-next-source-pack",
+    "sourceCommit": null,
+    "archiveSync": "pending-before-any-modelcommit",
+    "processedSurvey": {
+      "path": "processed/herengracht-429-survey.json",
+      "sha256": "4e5b9647884383dfe8e23513d14ed66e0869125e4261691b8332edadd4d82f43"
+    },
+    "frontAnalysis": {
+      "path": "processed/429-front-height-analysis.json",
+      "sha256": "d7a9f1227c1f6e2b3b528fcadfee43ba638bdf9fcad9eec3f51f1382fd2d572c"
+    },
+    "privateOriginals": "Existing27successfulsourcepackoriginals/metadata; thisstepfetchesnone.",
+    "reproducibleProcessedSurvey": {
+      "path": "docs/references/canalhouse-recipes/herengracht-429-survey.json",
+      "sha256": "4e5b9647884383dfe8e23513d14ed66e0869125e4261691b8332edadd4d82f43",
+      "role": "Processed native survey copy for reproducible authoring; original API body remains in pending private source pack."
+    }
+  },
+  "native": {
+    "coordinateSystem": "RD EPSG28992 horizontal,NAPmetresvertical",
+    "bagGeometryWgs84": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.888050737851381,
+            52.367442788199476
+          ],
+          [
+            4.888034216665602,
+            52.36745872567712
+          ],
+          [
+            4.887999203901391,
+            52.367473893131425
+          ],
+          [
+            4.887959456874905,
+            52.36743874532411
+          ],
+          [
+            4.8879944053345845,
+            52.36742407193503
+          ],
+          [
+            4.88796449794271,
+            52.36739786346096
+          ],
+          [
+            4.887930032078293,
+            52.36741270964311
+          ],
+          [
+            4.887816374256856,
+            52.367312187966206
+          ],
+          [
+            4.887835081715721,
+            52.36730159844635
+          ],
+          [
+            4.887851898948727,
+            52.36729197162518
+          ],
+          [
+            4.887870472432105,
+            52.3672815433137
+          ],
+          [
+            4.888050737851381,
+            52.367442788199476
+          ]
+        ]
+      ]
+    },
+    "bagRingsRD": [
+      [
+        [
+          121003.62087134374,
+          486734.77630055684
+        ],
+        [
+          121002.50787145295,
+          486736.5573005538
+        ],
+        [
+          121000.13487162674,
+          486738.2613005401
+        ],
+        [
+          120997.40087166271,
+          486734.36930051766
+        ],
+        [
+          120999.7698714906,
+          486732.7203005311
+        ],
+        [
+          120997.71287151836,
+          486729.81830051186
+        ],
+        [
+          120995.37687168932,
+          486731.4863005044
+        ],
+        [
+          120987.5588717919,
+          486720.3553004391
+        ],
+        [
+          120988.82487169125,
+          486719.16830044176
+        ],
+        [
+          120989.96287160051,
+          486718.08930044406
+        ],
+        [
+          120991.21987150097,
+          486716.9203004507
+        ],
+        [
+          121003.62087134374,
+          486734.77630055684
+        ]
+      ]
+    ],
+    "surveyFootprintPolygonsRD": [
+      [
+        [
+          [
+            120994.8991875,
+            486722.42799999996
+          ],
+          [
+            120994.91118750001,
+            486722.22099999996
+          ],
+          [
+            120991.2181875,
+            486716.904
+          ],
+          [
+            120989.32418750001,
+            486718.682
+          ],
+          [
+            120988.35418750001,
+            486719.592
+          ],
+          [
+            120988.3471875,
+            486719.74
+          ],
+          [
+            120987.6121875,
+            486720.41699999996
+          ],
+          [
+            120995.3761875,
+            486731.47099999996
+          ],
+          [
+            120997.1811875,
+            486730.181
+          ],
+          [
+            120997.7121875,
+            486729.80299999996
+          ],
+          [
+            120999.5221875,
+            486732.35699999996
+          ],
+          [
+            120999.7681875,
+            486732.70399999997
+          ],
+          [
+            120997.3991875,
+            486734.353
+          ],
+          [
+            120999.1501875,
+            486736.845
+          ],
+          [
+            121000.1341875,
+            486738.245
+          ],
+          [
+            121002.5071875,
+            486736.54199999996
+          ],
+          [
+            121003.61918750001,
+            486734.76
+          ],
+          [
+            121003.1121875,
+            486734.029
+          ],
+          [
+            121001.1551875,
+            486731.21099999995
+          ],
+          [
+            120999.3331875,
+            486728.588
+          ],
+          [
+            120996.7471875,
+            486724.864
+          ],
+          [
+            120996.58518750001,
+            486724.881
+          ]
+        ]
+      ]
+    ],
+    "holeCount": 0,
+    "policy": "Exactgroundouter/interiorringpreserved; no hull/paddedrectangle. Footprintpartsareactualsurveypolygons. Tinyfrontsnapconnectorretained."
+  },
+  "principalFront": {
+    "polygonIndex": 0,
+    "outerRingEdgeIndices": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "startVertexIndex": 2,
+    "endVertexIndex": 6,
+    "frontEndpointsRD": [
+      [
+        120991.2181875,
+        486716.904
+      ],
+      [
+        120987.6121875,
+        486720.41699999996
+      ]
+    ],
+    "orientedLeftToRightAsSeenFromCanal": [
+      [
+        120987.6121875,
+        486720.41699999996
+      ],
+      [
+        120991.2181875,
+        486716.904
+      ]
+    ],
+    "chainLengthM": 5.075271149541892,
+    "straightFrontSpanM": 5.034322695242927,
+    "connectorEdgeIndex": 4,
+    "connectorLengthM": 0.14816544805107404,
+    "bagCorrespondingEdges": [
+      7,
+      8,
+      9
+    ],
+    "bagFrontChainLengthM": 5.020212019539854,
+    "selectionEvidence": "Survey edges 2\u20135 form the southwest-facing street frontage. Edge 4 is a 0.148 m snap connector, preserved in the footprint. Registered current photo number 429, the right entrance adjoining the church fence, and the narrow front width agree. A single minimum-score edge is only a roof-intersection fragment.",
+    "facadePlaneToleranceM": 0.15,
+    "sourceGroundGeometryTolerance": "BAG/3DBAGfrontpolygonsdiffercentimetres; preserveexact surveyedrings, donotinflatetoleranceintoarea-suppression."
+  },
+  "heights": {
+    "groundNapM": 0.9739999771118164,
+    "semanticGroundSurfaceNapM": 0.9735016326904297,
+    "frontShoulderNapM": [
+      14.59950163269043,
+      14.37250163269043
+    ],
+    "bodyEavesRangeM": [
+      13.398501655578613,
+      13.625501655578613
+    ],
+    "bodyEavesNominalM": 13.512001655578613,
+    "bodyEavesAdmission": "The two outer front roof/wall corners give 14.3725 and 14.5995 m NAP. Subtract the 0.974 m ground datum for a 13.3985\u201313.6255 m body/eaves range. The 13.5120 m nominal averages those ends for a bounded facade drawing; keep the surveyed sloping roof separate.",
+    "frontRidgeNapM": 18.98950163269043,
+    "frontRidgeAboveGroundM": 18.015501655578614,
+    "mainRoofRearRidgeNapM": 19.00650163269043,
+    "relativeFrontRidgeRatio": 1.333296288351228,
+    "frontWallSurfaceIds": [
+      "NL.IMBAG.Pand.0363100012177600-0:lod22:wall:12",
+      "NL.IMBAG.Pand.0363100012177600-0:lod22:wall:13",
+      "NL.IMBAG.Pand.0363100012177600-0:lod22:wall:16",
+      "NL.IMBAG.Pand.0363100012177600-0:lod22:wall:17"
+    ],
+    "frontWallsRD": [
+      {
+        "buildingId": "bag:0363100012177600",
+        "surfaceId": "NL.IMBAG.Pand.0363100012177600-0:lod22:wall:12",
+        "exterior": true,
+        "vertices": [
+          [
+            120989.32418750001,
+            486718.682,
+            18.98950163269043
+          ],
+          [
+            120989.32418750001,
+            486718.682,
+            0.9735016326904297
+          ],
+          [
+            120991.2181875,
+            486716.904,
+            0.9735016326904297
+          ],
+          [
+            120991.2181875,
+            486716.904,
+            14.37250163269043
+          ]
+        ],
+        "normal": [
+          -0.6844275567343848,
+          -0.7290808731427539,
+          0
+        ],
+        "areaSquareMetres": 40.804807937975696
+      },
+      {
+        "buildingId": "bag:0363100012177600",
+        "surfaceId": "NL.IMBAG.Pand.0363100012177600-0:lod22:wall:13",
+        "exterior": true,
+        "vertices": [
+          [
+            120988.35418750001,
+            486719.592,
+            16.57850163269043
+          ],
+          [
+            120988.35418750001,
+            486719.592,
+            0.9735016326904297
+          ],
+          [
+            120989.32418750001,
+            486718.682,
+            0.9735016326904297
+          ],
+          [
+            120989.32418750001,
+            486718.682,
+            18.98950163269043
+          ]
+        ],
+        "normal": [
+          -0.6841911871409484,
+          -0.7293026939746348,
+          0
+        ],
+        "areaSquareMetres": 22.35859696518989
+      },
+      {
+        "buildingId": "bag:0363100012177600",
+        "surfaceId": "NL.IMBAG.Pand.0363100012177600-0:lod22:wall:16",
+        "exterior": true,
+        "vertices": [
+          [
+            120988.3471875,
+            486719.74,
+            16.41450163269043
+          ],
+          [
+            120988.3471875,
+            486719.74,
+            0.9735016326904297
+          ],
+          [
+            120988.35418750001,
+            486719.592,
+            0.9735016326904297
+          ],
+          [
+            120988.35418750001,
+            486719.592,
+            16.57850163269043
+          ]
+        ],
+        "normal": [
+          -0.9988833559591072,
+          -0.04724448314747305,
+          0
+        ],
+        "areaSquareMetres": 2.2999722503796747
+      },
+      {
+        "buildingId": "bag:0363100012177600",
+        "surfaceId": "NL.IMBAG.Pand.0363100012177600-0:lod22:wall:17",
+        "exterior": true,
+        "vertices": [
+          [
+            120987.6121875,
+            486720.41699999996,
+            14.59950163269043
+          ],
+          [
+            120987.6121875,
+            486720.41699999996,
+            0.9735016326904297
+          ],
+          [
+            120988.3471875,
+            486719.74,
+            0.9735016326904297
+          ],
+          [
+            120988.3471875,
+            486719.74,
+            16.41450163269043
+          ]
+        ],
+        "normal": [
+          -0.6774900024577826,
+          -0.7355319820169302,
+          0
+        ],
+        "areaSquareMetres": 14.522988478237357
+      }
+    ],
+    "mainFrontRoofSurfaceIds": [
+      "NL.IMBAG.Pand.0363100012177600-0:lod22:roof:26",
+      "NL.IMBAG.Pand.0363100012177600-0:lod22:roof:28"
+    ],
+    "mainFrontRoofsRD": [
+      {
+        "buildingId": "bag:0363100012177600",
+        "surfaceId": "NL.IMBAG.Pand.0363100012177600-0:lod22:roof:26",
+        "vertices": [
+          [
+            120987.6121875,
+            486720.41699999996,
+            14.59950163269043
+          ],
+          [
+            120988.3471875,
+            486719.74,
+            16.41450163269043
+          ],
+          [
+            120988.35418750001,
+            486719.592,
+            16.57850163269043
+          ],
+          [
+            120989.32418750001,
+            486718.682,
+            18.98950163269043
+          ],
+          [
+            120997.0811875,
+            486730.035,
+            19.00650163269043
+          ],
+          [
+            120997.1811875,
+            486730.181,
+            19.00650163269043
+          ],
+          [
+            120995.3761875,
+            486731.47099999996,
+            14.93650163269043
+          ]
+        ],
+        "normal": [
+          -0.7253495709670462,
+          0.4949067613943498,
+          0.47847183555991846
+        ],
+        "areaSquareMetres": 66.15271812621761,
+        "slopeDegrees": 61.42124557495117,
+        "azimuthDegrees": 304.3040771484375
+      },
+      {
+        "buildingId": "bag:0363100012177600",
+        "surfaceId": "NL.IMBAG.Pand.0363100012177600-0:lod22:roof:28",
+        "vertices": [
+          [
+            120999.3331875,
+            486728.588,
+            14.19450163269043
+          ],
+          [
+            120997.0811875,
+            486730.035,
+            19.00650163269043
+          ],
+          [
+            120989.32418750001,
+            486718.682,
+            18.98950163269043
+          ],
+          [
+            120991.2181875,
+            486716.904,
+            14.37250163269043
+          ],
+          [
+            120994.91118750001,
+            486722.22099999996,
+            14.29150163269043
+          ],
+          [
+            120994.8991875,
+            486722.42799999996,
+            14.51950163269043
+          ],
+          [
+            120996.58518750001,
+            486724.881,
+            14.50850163269043
+          ],
+          [
+            120996.7471875,
+            486724.864,
+            14.25150163269043
+          ]
+        ],
+        "normal": [
+          0.7212734341349949,
+          -0.4935443126670626,
+          0.48598214436860543
+        ],
+        "areaSquareMetres": 74.60717193228774,
+        "slopeDegrees": 60.93354415893555,
+        "azimuthDegrees": 124.38151550292969
+      }
+    ],
+    "otherParts": [
+      {
+        "surfaceId": "NL.IMBAG.Pand.0363100012177600-0:lod22:roof:25",
+        "role": "rearannex-or-connectingflat-roof-not-frontbody",
+        "heightRangeNapM": [
+          12.47750163269043,
+          14.84750163269043
+        ]
+      },
+      {
+        "surfaceId": "NL.IMBAG.Pand.0363100012177600-0:lod22:roof:27",
+        "role": "rearannex-or-connectingflat-roof-not-frontbody",
+        "heightRangeNapM": [
+          10.10850163269043,
+          14.84750163269043
+        ]
+      },
+      {
+        "surfaceId": "NL.IMBAG.Pand.0363100012177600-0:lod22:roof:29",
+        "role": "rearannex-or-connectingflat-roof-not-frontbody",
+        "heightRangeNapM": [
+          10.078501632690429,
+          10.13650163269043
+        ]
+      }
+    ],
+    "excludedFalseFrontWallIds": [
+      "NL.IMBAG.Pand.0363100012177600-0:lod22:wall:9",
+      "NL.IMBAG.Pand.0363100012177600-0:lod22:wall:11"
+    ],
+    "exclusionReason": "Walls 9 and 11 run along the sides. A two-near-vertices heuristic falsely admitted them through one endpoint. All vertices of true front walls 12/13/16/17 lie within 0.15 m of the selected frontage line; 16 is the tiny snap connector.",
+    "roofLimits": "Front body/eaves and main roof crest are separate. The rear roofs at 10.08\u201314.85 m NAP must not truncate the front body. Roof parts own their tops; avoid wall caps or unsupported returns. AHN-derived planes and the 0.266 m reconstruction RMSE do not measure facade stone ornament."
+  },
+  "normalization": {
+    "x": "Fraction of the principal facade width, left to right as seen from the canal.",
+    "y": "Height fraction of the candidate front body/eaves (13.512 m); crown values may exceed 1.",
+    "precision": "Approximate visual ratios from unrectified current views, typically \u00b10.04\u20130.06 facade fraction. Lower/crown/depth uncertainty can be larger. These are not photogrammetric measurements.",
+    "sourcePixelCoordinates": "Pixel rectangles are withheld; private full and near projections retain reproducible source evidence."
+  },
+  "houses": [
+    {
+      "id": "herengracht-429",
+      "pandId": "0363100012177600",
+      "sampleRole": "representative",
+      "status": "observed-current-approximate-source-admission-candidate",
+      "sources": {
+        "principalImage": "/tmp/canalhouse-recipes-next-source-pack/processed/herengracht-429-full-admission.jpg",
+        "principalImageHouseId": "herengracht-429",
+        "captureDate": "2024-12-03T09:21:45Z",
+        "projection": {
+          "camera": {
+            "_links": {
+              "self": {
+                "href": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241203_0939_Track01_Sphere_00855/"
+              },
+              "equirectangular_full": {
+                "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241203_0939_Track01_Sphere_00855/equirectangular/panorama_8000.jpg"
+              },
+              "equirectangular_medium": {
+                "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241203_0939_Track01_Sphere_00855/equirectangular/panorama_4000.jpg"
+              },
+              "equirectangular_small": {
+                "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241203_0939_Track01_Sphere_00855/equirectangular/panorama_2000.jpg"
+              },
+              "cubic_img_preview": {
+                "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241203_0939_Track01_Sphere_00855/cubic/preview.jpg"
+              },
+              "thumbnail": {
+                "href": "https://api.data.amsterdam.nl/panorama/thumbnail/b_20241203_0939_Track01_Sphere_00855/"
+              },
+              "adjacencies": {
+                "href": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241203_0939_Track01_Sphere_00855/adjacencies/"
+              }
+            },
+            "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241203_0939_Track01_Sphere_00855/cubic/",
+            "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241203_0939_Track01_Sphere_00855/cubic/{z}/{f}/{y}/{x}.jpg",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.887366209619372,
+                52.367049716294915,
+                0
+              ]
+            },
+            "pano_id": "b_20241203_0939_Track01_Sphere_00855",
+            "timestamp": "2024-12-03T09:21:45Z",
+            "filename": "Job_20241203_0939_Track01_Sphere_00855.jpg",
+            "surface_type": "L",
+            "mission_distance": 5,
+            "mission_type": "bi",
+            "mission_year": "2024",
+            "tags": [
+              "mission-bi",
+              "mission-2024",
+              "mission-distance-5",
+              "surface-land"
+            ],
+            "roll": 0.47132393425235364,
+            "pitch": 0.16214938424005926,
+            "heading": 132.47054849030906
+          },
+          "target": [
+            4.887843797223237,
+            52.36729707346823
+          ],
+          "headingDeg": 49.694355763464046,
+          "width": 1500,
+          "height": 1900,
+          "fovDeg": 32,
+          "pitchDeg": 10
+        },
+        "nearLowerImage": "/tmp/canalhouse-recipes-next-source-pack/processed/herengracht-429-near-lower.jpg",
+        "nearCaptureDate": "2025-06-16T06:58:25Z",
+        "nearCamera": {
+          "_links": {
+            "self": {
+              "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_06-42-40_00540/"
+            },
+            "equirectangular_full": {
+              "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00540/equirectangular/panorama_8000.jpg"
+            },
+            "equirectangular_medium": {
+              "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00540/equirectangular/panorama_4000.jpg"
+            },
+            "equirectangular_small": {
+              "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00540/equirectangular/panorama_2000.jpg"
+            },
+            "cubic_img_preview": {
+              "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00540/cubic/preview.jpg"
+            },
+            "thumbnail": {
+              "href": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_06-42-40_00540/"
+            },
+            "adjacencies": {
+              "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_06-42-40_00540/adjacencies/"
+            }
+          },
+          "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00540/cubic/",
+          "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00540/cubic/{z}/{f}/{y}/{x}.jpg",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              4.887777650548069,
+              52.36728267971364,
+              0
+            ]
+          },
+          "pano_id": "recording_2025-06-16_06-42-40_00540",
+          "timestamp": "2025-06-16T06:58:25Z",
+          "filename": "recording_2025-06-16_06-42-40_00540.jpg",
+          "surface_type": "L",
+          "mission_distance": 5,
+          "mission_type": "bi",
+          "mission_year": "2025",
+          "tags": [
+            "mission-bi",
+            "mission-2025",
+            "mission-distance-5",
+            "surface-land"
+          ],
+          "roll": 0,
+          "pitch": 0,
+          "heading": 0
+        },
+        "rights": "Gemeente Amsterdam panorama, CC BY 4.0",
+        "registerUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1639",
+        "registerDescription": [
+          "Pand met halsgevel (XVIIIa). Versierde stoep."
+        ]
+      },
+      "facadeScreenQuad": {
+        "xLeft": null,
+        "xRight": null,
+        "yGround": null,
+        "yEaves": null,
+        "yCrown": null,
+        "sourceImageWidth": 1500,
+        "sourceImageHeight": 1900,
+        "status": "Unrectified oblique view. No measured pixel quad is asserted. Normalized opening ratios were visually estimated on the registered 429 front and checked against the near view; the survey controls physical heights."
+      },
+      "floors": [
+        {
+          "id": "bel-etage",
+          "bayCenters": [
+            0.35
+          ],
+          "windowWidths": [
+            0.52
+          ],
+          "bottom": 0.145,
+          "height": 0.265,
+          "windows": [
+            {
+              "id": "bel-etage-1",
+              "kind": "window",
+              "left": 0.09,
+              "bottom": 0.145,
+              "width": 0.52,
+              "height": 0.265,
+              "center": 0.35,
+              "vertical": [
+                0.25,
+                0.5,
+                0.75
+              ],
+              "horizontal": [
+                0.25,
+                0.5,
+                0.75
+              ],
+              "sourcePixelRect": null,
+              "admission": "approximate-current-visual-relationship;not-pixel-measurement"
+            }
+          ],
+          "paneBarsApproximate": {
+            "note": "Multiplefine sash divisions visiblypresent; barcount depends opening. Nearviewbel-etage broadopening isonepairedgroup; historical1961fewerbarsmustnotreplacecurrent. Exactupperbarcounts remainapproximate."
+          }
+        },
+        {
+          "id": "first",
+          "bayCenters": [
+            0.25,
+            0.7100000000000001
+          ],
+          "windowWidths": [
+            0.32,
+            0.32
+          ],
+          "bottom": 0.47,
+          "height": 0.17,
+          "windows": [
+            {
+              "id": "first-1",
+              "kind": "window",
+              "left": 0.09,
+              "bottom": 0.47,
+              "width": 0.32,
+              "height": 0.17,
+              "center": 0.25,
+              "vertical": [
+                0.25,
+                0.5,
+                0.75
+              ],
+              "horizontal": [
+                0.25,
+                0.5,
+                0.75
+              ],
+              "sourcePixelRect": null,
+              "admission": "approximate-current-visual-relationship;not-pixel-measurement"
+            },
+            {
+              "id": "first-2",
+              "kind": "window",
+              "left": 0.55,
+              "bottom": 0.47,
+              "width": 0.32,
+              "height": 0.17,
+              "center": 0.7100000000000001,
+              "vertical": [
+                0.25,
+                0.5,
+                0.75
+              ],
+              "horizontal": [
+                0.25,
+                0.5,
+                0.75
+              ],
+              "sourcePixelRect": null,
+              "admission": "approximate-current-visual-relationship;not-pixel-measurement"
+            }
+          ],
+          "paneBarsApproximate": {
+            "note": "Multiplefine sash divisions visiblypresent; barcount depends opening. Nearviewbel-etage broadopening isonepairedgroup; historical1961fewerbarsmustnotreplacecurrent. Exactupperbarcounts remainapproximate."
+          }
+        },
+        {
+          "id": "second",
+          "bayCenters": [
+            0.25,
+            0.7100000000000001
+          ],
+          "windowWidths": [
+            0.32,
+            0.32
+          ],
+          "bottom": 0.68,
+          "height": 0.13,
+          "windows": [
+            {
+              "id": "second-1",
+              "kind": "window",
+              "left": 0.09,
+              "bottom": 0.68,
+              "width": 0.32,
+              "height": 0.13,
+              "center": 0.25,
+              "vertical": [
+                0.25,
+                0.5,
+                0.75
+              ],
+              "horizontal": [
+                0.33,
+                0.67
+              ],
+              "sourcePixelRect": null,
+              "admission": "approximate-current-visual-relationship;not-pixel-measurement"
+            },
+            {
+              "id": "second-2",
+              "kind": "window",
+              "left": 0.55,
+              "bottom": 0.68,
+              "width": 0.32,
+              "height": 0.13,
+              "center": 0.7100000000000001,
+              "vertical": [
+                0.25,
+                0.5,
+                0.75
+              ],
+              "horizontal": [
+                0.33,
+                0.67
+              ],
+              "sourcePixelRect": null,
+              "admission": "approximate-current-visual-relationship;not-pixel-measurement"
+            }
+          ],
+          "paneBarsApproximate": {
+            "note": "Multiplefine sash divisions visiblypresent; barcount depends opening. Nearviewbel-etage broadopening isonepairedgroup; historical1961fewerbarsmustnotreplacecurrent. Exactupperbarcounts remainapproximate."
+          }
+        },
+        {
+          "id": "attic-body",
+          "bayCenters": [
+            0.165,
+            0.5,
+            0.835
+          ],
+          "windowWidths": [
+            0.14,
+            0.24,
+            0.13
+          ],
+          "bottom": 0.86,
+          "height": 0.115,
+          "windows": [
+            {
+              "id": "attic-body-1",
+              "kind": "window",
+              "left": 0.095,
+              "bottom": 0.86,
+              "width": 0.14,
+              "height": 0.115,
+              "center": 0.165,
+              "vertical": [],
+              "horizontal": [
+                0.33,
+                0.67
+              ],
+              "sourcePixelRect": null,
+              "admission": "approximate-current-visual-relationship;not-pixel-measurement"
+            },
+            {
+              "id": "attic-body-2",
+              "kind": "window",
+              "left": 0.38,
+              "bottom": 0.86,
+              "width": 0.24,
+              "height": 0.115,
+              "center": 0.5,
+              "vertical": [
+                0.5
+              ],
+              "horizontal": [
+                0.33,
+                0.67
+              ],
+              "sourcePixelRect": null,
+              "admission": "approximate-current-visual-relationship;not-pixel-measurement"
+            },
+            {
+              "id": "attic-body-3",
+              "kind": "window",
+              "left": 0.77,
+              "bottom": 0.86,
+              "width": 0.13,
+              "height": 0.115,
+              "center": 0.835,
+              "vertical": [],
+              "horizontal": [
+                0.33,
+                0.67
+              ],
+              "sourcePixelRect": null,
+              "admission": "approximate-current-visual-relationship;not-pixel-measurement"
+            }
+          ],
+          "paneBarsApproximate": {
+            "note": "Multiplefine sash divisions visiblypresent; barcount depends opening. Nearviewbel-etage broadopening isonepairedgroup; historical1961fewerbarsmustnotreplacecurrent. Exactupperbarcounts remainapproximate."
+          }
+        }
+      ],
+      "openings": [
+        {
+          "id": "bel-etage-1",
+          "kind": "window",
+          "left": 0.09,
+          "bottom": 0.145,
+          "width": 0.52,
+          "height": 0.265,
+          "center": 0.35,
+          "vertical": [
+            0.25,
+            0.5,
+            0.75
+          ],
+          "horizontal": [
+            0.25,
+            0.5,
+            0.75
+          ],
+          "sourcePixelRect": null,
+          "admission": "approximate-current-visual-relationship;not-pixel-measurement"
+        },
+        {
+          "id": "first-1",
+          "kind": "window",
+          "left": 0.09,
+          "bottom": 0.47,
+          "width": 0.32,
+          "height": 0.17,
+          "center": 0.25,
+          "vertical": [
+            0.25,
+            0.5,
+            0.75
+          ],
+          "horizontal": [
+            0.25,
+            0.5,
+            0.75
+          ],
+          "sourcePixelRect": null,
+          "admission": "approximate-current-visual-relationship;not-pixel-measurement"
+        },
+        {
+          "id": "first-2",
+          "kind": "window",
+          "left": 0.55,
+          "bottom": 0.47,
+          "width": 0.32,
+          "height": 0.17,
+          "center": 0.7100000000000001,
+          "vertical": [
+            0.25,
+            0.5,
+            0.75
+          ],
+          "horizontal": [
+            0.25,
+            0.5,
+            0.75
+          ],
+          "sourcePixelRect": null,
+          "admission": "approximate-current-visual-relationship;not-pixel-measurement"
+        },
+        {
+          "id": "second-1",
+          "kind": "window",
+          "left": 0.09,
+          "bottom": 0.68,
+          "width": 0.32,
+          "height": 0.13,
+          "center": 0.25,
+          "vertical": [
+            0.25,
+            0.5,
+            0.75
+          ],
+          "horizontal": [
+            0.33,
+            0.67
+          ],
+          "sourcePixelRect": null,
+          "admission": "approximate-current-visual-relationship;not-pixel-measurement"
+        },
+        {
+          "id": "second-2",
+          "kind": "window",
+          "left": 0.55,
+          "bottom": 0.68,
+          "width": 0.32,
+          "height": 0.13,
+          "center": 0.7100000000000001,
+          "vertical": [
+            0.25,
+            0.5,
+            0.75
+          ],
+          "horizontal": [
+            0.33,
+            0.67
+          ],
+          "sourcePixelRect": null,
+          "admission": "approximate-current-visual-relationship;not-pixel-measurement"
+        },
+        {
+          "id": "attic-body-1",
+          "kind": "window",
+          "left": 0.095,
+          "bottom": 0.86,
+          "width": 0.14,
+          "height": 0.115,
+          "center": 0.165,
+          "vertical": [],
+          "horizontal": [
+            0.33,
+            0.67
+          ],
+          "sourcePixelRect": null,
+          "admission": "approximate-current-visual-relationship;not-pixel-measurement"
+        },
+        {
+          "id": "attic-body-2",
+          "kind": "window",
+          "left": 0.38,
+          "bottom": 0.86,
+          "width": 0.24,
+          "height": 0.115,
+          "center": 0.5,
+          "vertical": [
+            0.5
+          ],
+          "horizontal": [
+            0.33,
+            0.67
+          ],
+          "sourcePixelRect": null,
+          "admission": "approximate-current-visual-relationship;not-pixel-measurement"
+        },
+        {
+          "id": "attic-body-3",
+          "kind": "window",
+          "left": 0.77,
+          "bottom": 0.86,
+          "width": 0.13,
+          "height": 0.115,
+          "center": 0.835,
+          "vertical": [],
+          "horizontal": [
+            0.33,
+            0.67
+          ],
+          "sourcePixelRect": null,
+          "admission": "approximate-current-visual-relationship;not-pixel-measurement"
+        },
+        {
+          "id": "door-1",
+          "kind": "door",
+          "left": 0.735,
+          "bottom": 0.14,
+          "width": 0.175,
+          "height": 0.17,
+          "center": 0.8225,
+          "vertical": [],
+          "horizontal": [],
+          "sourcePixelRect": null,
+          "admission": "approximate-current-visual-relationship;not-pixel-measurement"
+        },
+        {
+          "id": "door-transom",
+          "kind": "window",
+          "left": 0.735,
+          "bottom": 0.315,
+          "width": 0.175,
+          "height": 0.1,
+          "center": 0.8225,
+          "vertical": [],
+          "horizontal": [],
+          "sourcePixelRect": null,
+          "admission": "approximate-current-visual-relationship;not-pixel-measurement",
+          "diagonals": [
+            [
+              [
+                0.5,
+                0
+              ],
+              [
+                1,
+                0.5
+              ]
+            ],
+            [
+              [
+                1,
+                0.5
+              ],
+              [
+                0.5,
+                1
+              ]
+            ],
+            [
+              [
+                0.5,
+                1
+              ],
+              [
+                0,
+                0.5
+              ]
+            ],
+            [
+              [
+                0,
+                0.5
+              ],
+              [
+                0.5,
+                0
+              ]
+            ]
+          ],
+          "limits": "Straightsegments encode diamondrelationship; actualsourcecurvededges ornamental fidelitysecondary."
+        },
+        {
+          "id": "crown-1",
+          "kind": "window",
+          "left": 0.405,
+          "bottom": 1.035,
+          "width": 0.23,
+          "height": 0.115,
+          "center": 0.52,
+          "vertical": [],
+          "horizontal": [],
+          "sourcePixelRect": null,
+          "admission": "approximate-current-visual-relationship;not-pixel-measurement"
+        },
+        {
+          "id": "souterrain-1",
+          "kind": "door",
+          "left": 0.07,
+          "bottom": 0.015,
+          "width": 0.235,
+          "height": 0.12,
+          "center": 0.1875,
+          "vertical": [],
+          "horizontal": [],
+          "sourcePixelRect": null,
+          "admission": "approximate-current-visual-relationship;not-pixel-measurement",
+          "source": "2025near-lower registered429",
+          "limits": "Fullheightdarkleaf/grillegroups beneathstonebase. Widthsapproximate; rightaperture partlyscreenedbyflight, do noteraseit. Diamondfinegrille approximate optionaldetail."
+        },
+        {
+          "id": "souterrain-2",
+          "kind": "door",
+          "left": 0.33,
+          "bottom": 0.015,
+          "width": 0.245,
+          "height": 0.12,
+          "center": 0.4525,
+          "vertical": [],
+          "horizontal": [],
+          "sourcePixelRect": null,
+          "admission": "approximate-current-visual-relationship;not-pixel-measurement",
+          "source": "2025near-lower registered429",
+          "limits": "Fullheightdarkleaf/grillegroups beneathstonebase. Widthsapproximate; rightaperture partlyscreenedbyflight, do noteraseit. Diamondfinegrille approximate optionaldetail."
+        },
+        {
+          "id": "souterrain-3",
+          "kind": "window",
+          "left": 0.605,
+          "bottom": 0.015,
+          "width": 0.13,
+          "height": 0.12,
+          "center": 0.6699999999999999,
+          "vertical": [],
+          "horizontal": [],
+          "sourcePixelRect": null,
+          "admission": "approximate-current-visual-relationship;not-pixel-measurement",
+          "source": "2025near-lower registered429",
+          "limits": "Fullheightdarkleaf/grillegroups beneathstonebase. Widthsapproximate; rightaperture partlyscreenedbyflight, do noteraseit. Diamondfinegrille approximate optionaldetail."
+        }
+      ],
+      "door": {
+        "id": "door-1",
+        "kind": "door",
+        "left": 0.735,
+        "bottom": 0.14,
+        "width": 0.175,
+        "height": 0.17,
+        "center": 0.8225,
+        "vertical": [],
+        "horizontal": [],
+        "sourcePixelRect": null,
+        "admission": "approximate-current-visual-relationship;not-pixel-measurement"
+      },
+      "paletteApproximate": {
+        "wall": "#6b5141",
+        "trim": "#dedfcd",
+        "glass": "#364344",
+        "door": "#28322d",
+        "stone": "#b5b6a4",
+        "notes": "Currentbrown/darkmasonry,paletrim,greenblackdoor andweatheredlightstonebase. Flatcolorinterpretationnotreflectancemeasurement."
+      },
+      "crown": {
+        "label": "hals",
+        "profileNormalized": [
+          [
+            0,
+            1
+          ],
+          [
+            0.2,
+            1
+          ],
+          [
+            0.26,
+            1.04
+          ],
+          [
+            0.34,
+            1.13
+          ],
+          [
+            0.34,
+            1.245
+          ],
+          [
+            0.42,
+            1.31
+          ],
+          [
+            0.5,
+            1.3333
+          ],
+          [
+            0.58,
+            1.31
+          ],
+          [
+            0.66,
+            1.245
+          ],
+          [
+            0.66,
+            1.13
+          ],
+          [
+            0.74,
+            1.04
+          ],
+          [
+            0.8,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "openingGroups": [
+          {
+            "id": "crown-1",
+            "kind": "window",
+            "left": 0.405,
+            "bottom": 1.035,
+            "width": 0.23,
+            "height": 0.115,
+            "center": 0.52,
+            "vertical": [],
+            "horizontal": [],
+            "sourcePixelRect": null,
+            "admission": "approximate-current-visual-relationship;not-pixel-measurement"
+          }
+        ],
+        "notes": "Sourceobservesrelatedneckfrontbeside427, centralneckopening andpaleornamentedcap. Sparseprofile isboundedassemblyapproximation; top ratio anchoredtosurveyFRONTridge18.9895NAP/body13.512m, notglobalmax. Fullsourceboundaries partlybranches; matchroof/crownclosureinreview."
+      },
+      "horizontalBands": [
+        {
+          "bottom": 0,
+          "height": 0.14,
+          "label": "pale stone basement/plinth with full dark lower openings"
+        },
+        {
+          "bottom": 0.985,
+          "height": 0.018,
+          "label": "pale gable shoulder cap"
+        }
+      ],
+      "cornice": {
+        "visibleBracketCount": null,
+        "countState": "not-anonymous-evenly-spaced-bracket-assembly",
+        "notes": "No straightcornice/bracket family inferred; neckshouldercap only."
+      },
+      "entrance": {
+        "visibleStepCount": null,
+        "countState": "connected-flight-observed;exact-count-unmeasured",
+        "sourceImage": "/tmp/canalhouse-recipes-next-source-pack/processed/herengracht-429-near-lower.jpg",
+        "doorCenterNormalized": 0.8225,
+        "thresholdApproximateBodyFraction": 0.14,
+        "landing": {
+          "xRangeApproximate": [
+            0.7,
+            0.99
+          ],
+          "projectionDepthM": null,
+          "relation": "Frontprojectingrectangularstone landingdirectlyconnectedtorightdoor; rightboundaryadjacentchurchfence."
+        },
+        "flight": {
+          "direction": "climbsfromleftpavementtorightlanding",
+          "xRangeApproximate": [
+            0.48,
+            0.78
+          ],
+          "topContourAdmission": "connectedflightwithvisiblecoarsetreadcontour; exactcountunasserted",
+          "rails": "slenderopenblackdiagonalrail,landinghorizontalrail andstanchions"
+        },
+        "limits": "Depth/rise notsurveyed; useexistingstoepapproach input withbounded drawingassumptions, preservebasementaperturebehindflight andreviewfirst-hitvisibledepth."
+      },
+      "criticalTraits": [
+        "One broad paired glazing group at ground level, with a narrow right entrance and diamond transom; exclude the neighboring 427 window.",
+        "Two broad subdivided bays on the first and second levels; the attic/body tier has small outer openings and a larger central opening.",
+        "A neck gable with one central opening and a pale ornamented cap; retain the adjoining church forecourt.",
+        "Full-height dark basement openings and the raised right threshold connect to a single stone flight and landing with open rails."
+      ],
+      "uncertainties": [
+        "Unrectifiedfarviewpartlymaskedbylamppost/tree/vehicles; nearviewproves429number/entrance butisoblique.",
+        "Normalizedopeningrectanglesandbarfractions approximate; sourcePixelRectleftnull toavoidpretendingapixelmeasurement.",
+        "Currentwindowtransomdiamondhascurvedornamentalstrokes; straightdiamondrelationshipboundedapproximation.",
+        "Exactstone landingdepth,verticaldatum/treadcountsandcrownornamentcounts notmeasured.",
+        "2018VBOusablearea429m2not97.57m2footprint; nofootprintinferencefromusablearea."
+      ],
+      "conflicts": [],
+      "capabilityGaps": []
+    }
+  ],
+  "capabilityAudit": {
+    "componentVersions": {
+      "shell": "2",
+      "roof": "3",
+      "frontage": "2",
+      "opening": "9",
+      "facadeDetail": "3",
+      "ornament": "1",
+      "dormer": "1",
+      "cornice": "3",
+      "crown": "1",
+      "entrance": "5"
+    },
+    "supported": [
+      {
+        "trait": "native shell/semanticroofpartscope",
+        "components": [
+          "openTopPrism",
+          "upwardRoofPlane"
+        ],
+        "limits": "Exactrings/roofpartsmustbeused; compiler ownsroofsurfacewithoutwallcaps."
+      },
+      {
+        "trait": "pairedgroundgroups/two-bayupper/threeattic/openneckwindow",
+        "components": [
+          "CanalhouseOpening",
+          "verticalBars",
+          "horizontalBars",
+          "crown opening support"
+        ],
+        "limits": "Inputgroupaxesandrowsources, no stockuniformbaygeneration."
+      },
+      {
+        "trait": "rightdoor/diamondtransom/panelledleaf",
+        "components": [
+          "CanalhouseOpening.diagonalBars",
+          "CanalhouseDoorPanel"
+        ],
+        "limits": "Boundedstraightdiamondanddoorpaneldrawing; noinventedname/signage."
+      },
+      {
+        "trait": "connectedlanding/singlelateralflight/openrails",
+        "components": [
+          "mapStoepProfile",
+          "CanalhouseApproach",
+          "entrance.landing",
+          "entrance.approaches"
+        ],
+        "limits": "Usecurrentnear429contour, nothistoricalpilotapproach; noexactcount/depthclaim."
+      },
+      {
+        "trait": "neckoutline/palecap",
+        "components": [
+          "crown.profile",
+          "CanalhouseOrnament"
+        ],
+        "limits": "Boundedcrownshape/cap hierarchy; exactsculpturesecondary."
+      },
+      {
+        "trait": "Explicit repeated upper window groups",
+        "components": [
+          "canalhouseWindowGroup"
+        ],
+        "proposal": {
+          "baysNormalized": [
+            {
+              "id": "left",
+              "left": 0.09,
+              "width": 0.32
+            },
+            {
+              "id": "right",
+              "left": 0.55,
+              "width": 0.32
+            }
+          ],
+          "tiersNormalized": [
+            {
+              "id": "first",
+              "bottom": 0.47,
+              "height": 0.17
+            },
+            {
+              "id": "second",
+              "bottom": 0.68,
+              "height": 0.13
+            }
+          ],
+          "framesByTier": {
+            "first": {
+              "verticalBars": [
+                0.25,
+                0.5,
+                0.75
+              ],
+              "horizontalBars": [
+                0.25,
+                0.5,
+                0.75
+              ]
+            },
+            "second": {
+              "verticalBars": [
+                0.25,
+                0.5,
+                0.75
+              ],
+              "horizontalBars": [
+                0.33,
+                0.67
+              ]
+            }
+          },
+          "implementation": "Use separate source-selected calls for tiers with differing pane patterns; the helper provides no default bay/tier count. Ground paired group and three attic positions remain explicit separate groups."
+        },
+        "limits": "Normalize to the actual 5.0343 m front width and 13.5120 m candidate body height only after root review. Pane fractions are visual approximations, not measured construction spacing."
+      }
+    ],
+    "genuineMissingCriticalAssemblies": [],
+    "secondaryLimits": [
+      "Curveddiamondtransomstrokes areapproximated byexistingstraightsegments.",
+      "Exactcarvedpedimentrelief/treadcount/stoepdepth notmeasured; no newbespokegeometryrequiredforblockrhythm."
+    ],
+    "gate": "Noidentifiedcriticalassemblymissinginexistingvocabulary. Authoringstillmustshowfirst-hitopening/approachvisibility,nativecrownroofclosureandneighborcontext; technicalsupportisnotvisualacceptance."
+  },
+  "acceptance": {
+    "sourceIdentityJoin": "confirmed",
+    "frontEdgeAndFrontHeightInterpretation": "bounded-derived-candidate-for-root-review",
+    "nearLowerIdentityAndRelationship": "personallyinspected-current2025source",
+    "currentFullFrontage": "personallyinspected2024farviewpairedwith2025near",
+    "newSourceAcquisitionsThisStep": 0,
+    "newModelStarted": true,
+    "transferAccepted": false,
+    "productionComplete": false,
+    "nextAction": "Steepflight/cap uncertainty andactualgame/readability remain;privatearchivesyncbeforemodelcommit;freezeanewindependenttransferchallenge.",
+    "candidateStatus": "gallery-only-bounded-lower-joinery-repair",
+    "independentReview": "herengracht-429-independent-review.json"
+  }
+}

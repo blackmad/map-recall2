@@ -1,0 +1,558 @@
+{
+  "schemaVersion": 1,
+  "id": "herengracht-505-source-admission",
+  "observedOn": "2026-10-06",
+  "status": "oval-clock-correction-compiled-awaiting-independent-review",
+  "officialIdentity": {
+    "address": "Herengracht505",
+    "pandId": "0363100012175171",
+    "vboId": "0363010000665119",
+    "vboSource": {
+      "rawPath": "/tmp/canalhouse-rough-batch-501-505-20261006/505-vbo.json",
+      "url": "https://api.data.amsterdam.nl/v1/bag/verblijfsobjecten/0363010000665119?_format=json&volgnummer=1",
+      "sha256": "2174f6a9a562464d9333e9ead8f842db7781a2b1c65e59ae5c00bf81446f5d04",
+      "bytes": 2515,
+      "status": 200,
+      "rawSavedBeforeExtraction": true,
+      "accessed": "2026-10-06; exactrootHTTPtimeunavailable",
+      "localFileSavedAt": "2026-10-06T13:07:56.524786+00:00"
+    },
+    "pandSource": {
+      "rawPath": "/tmp/canalhouse-rough-batch-501-505-20261006/505-pand.json",
+      "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012175171?_format=json&volgnummer=4",
+      "sha256": "724f16eb493d6ebd292a4c3591dbe55111ae956b36cca9af0db72bbfe25064e0",
+      "bytes": 2932,
+      "status": 200,
+      "rawSavedBeforeExtraction": true,
+      "accessed": "2026-10-06; exactrootHTTPtimeunavailable",
+      "localFileSavedAt": "2026-10-06T13:08:43.499418+00:00"
+    },
+    "addressSuffixPolicy": "OnephysicalPand;501A/Hchecked sameparent, aliases excluded as duplicate shells."
+  },
+  "sourceProvenance": {
+    "raw3DBag": {
+      "rawPath": "/tmp/canalhouse-rough-batch-501-505-20261006/505-3dbag.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012175171",
+      "sha256": "f0b777a25c5013ba8cbb35ffdae943c316bce983277f6117316a6e07b6d53fc1",
+      "bytes": 9865,
+      "status": 200,
+      "rawSavedBeforeExtraction": true,
+      "accessed": "2026-10-06; exactrootHTTPtimeunavailable",
+      "localFileSavedAt": "2026-10-06T13:08:43.007270+00:00"
+    },
+    "rawBag": {
+      "rawPath": "/tmp/canalhouse-rough-batch-501-505-20261006/505-pand.json",
+      "url": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012175171?_format=json&volgnummer=4",
+      "sha256": "724f16eb493d6ebd292a4c3591dbe55111ae956b36cca9af0db72bbfe25064e0",
+      "bytes": 2932,
+      "status": 200,
+      "rawSavedBeforeExtraction": true,
+      "accessed": "2026-10-06; exactrootHTTPtimeunavailable",
+      "localFileSavedAt": "2026-10-06T13:08:43.499418+00:00"
+    },
+    "privateLocalPack": "/tmp/canalhouse-rough-batch-501-505-20261006",
+    "sourceCommit": null,
+    "archiveSync": "local-commit-remote-push-pending",
+    "beeldbankSearch": {
+      "raw": {
+        "rawPath": "/tmp/canalhouse-rough-batch-501-505-20261006/505-beeldbank-search.html",
+        "url": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=herengracht%20505&rows=1&page=1",
+        "sha256": "2c58f828ae2064223924ea0091b054f9491af3a922ebc52697104024f3ba5f04",
+        "bytes": 12357,
+        "status": 200,
+        "rawSavedBeforeExtraction": true,
+        "accessed": "2026-10-06; exactrootHTTPtimeunavailable",
+        "localFileSavedAt": "2026-10-06T13:07:07.393390+00:00"
+      },
+      "status": "boundedHTTP200viewer shell; originalarchivephotosnotinspected"
+    },
+    "currentPhoto": {
+      "rawPath": "/tmp/canalhouse-rough-batch-501-505-20261006/505-current.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00466/equirectangular/panorama_4000.jpg",
+      "sha256": "9372c29590f35bdf0d9bbf7a707df1e29bca908818ff8039060629783c6b9f84",
+      "bytes": 1278661,
+      "status": 200,
+      "rawSavedBeforeExtraction": true,
+      "accessed": "2026-10-06; exactrootHTTPtimeunavailable",
+      "localFileSavedAt": "2026-10-06T13:08:43.274329+00:00"
+    },
+    "registerCache": {
+      "path": "/tmp/canalhouse-rough-batch-501-505-20261006/505-early-register-cache.json",
+      "cachedGeneration": "datasets/amsterdam-monument-register/2026-10-05T06-10-55-572Z-83107"
+    },
+    "olderMunicipalPhoto": {
+      "rawPath": "/tmp/canalhouse-rough-batch-501-505-20261006/505-older-current.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241203_0939_Track01_Sphere_00147/equirectangular/panorama_4000.jpg",
+      "sha256": "b8cab7ddd2dad653fe65c3977f4ec28236b084506d08350cf7c3723aac241452",
+      "bytes": 907641,
+      "status": 200,
+      "rawSavedBeforeExtraction": true,
+      "accessed": "2026-10-06; rootexactHTTPtimeunavailable",
+      "capturedAt": "2024-12-03T08:59:27Z",
+      "rights": "GemeenteAmsterdam CC BY4.0"
+    },
+    "archiveModelManifestPath": "models/herengracht-505/manifest.json",
+    "localArchiveCommit": "cc22f3a560a60b288107a31f0b09d333c9a0c3fb",
+    "processedCorrectionPath": "models/herengracht-505/processed/corrections/20261006-shared-crown/revision-manifest.json"
+  },
+  "native": {
+    "coordinateSystem": "EPSG28992/NAP",
+    "municipalBagGeometryRD": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            121288.921,
+            486540.629
+          ],
+          [
+            121289.112,
+            486541.455
+          ],
+          [
+            121281.908,
+            486543.063
+          ],
+          [
+            121279.645,
+            486533.287
+          ],
+          [
+            121284.036,
+            486532.307
+          ],
+          [
+            121283.307,
+            486529.157
+          ],
+          [
+            121278.915,
+            486530.137
+          ],
+          [
+            121275.471,
+            486515.267
+          ],
+          [
+            121280.345,
+            486514.153
+          ],
+          [
+            121282.197,
+            486513.73
+          ],
+          [
+            121282.698,
+            486513.614
+          ],
+          [
+            121288.921,
+            486540.629
+          ]
+        ]
+      ]
+    },
+    "surveyFootprintPolygonsRD": [
+      [
+        [
+          [
+            121281.90987500001,
+            486543.0685
+          ],
+          [
+            121284.612875,
+            486542.4655
+          ],
+          [
+            121286.42087500001,
+            486542.0625
+          ],
+          [
+            121289.112875,
+            486541.46150000003
+          ],
+          [
+            121288.41787500001,
+            486538.44450000004
+          ],
+          [
+            121288.081875,
+            486536.98250000004
+          ],
+          [
+            121286.05387500001,
+            486528.1795
+          ],
+          [
+            121282.698875,
+            486513.6205
+          ],
+          [
+            121281.47787500001,
+            486513.8995
+          ],
+          [
+            121279.063875,
+            486514.4515
+          ],
+          [
+            121276.880875,
+            486514.95050000004
+          ],
+          [
+            121275.472875,
+            486515.2735
+          ],
+          [
+            121278.91687500001,
+            486530.1425
+          ],
+          [
+            121280.172875,
+            486529.86250000005
+          ],
+          [
+            121282.434875,
+            486529.35750000004
+          ],
+          [
+            121283.263875,
+            486529.17250000004
+          ],
+          [
+            121283.979875,
+            486532.0665
+          ],
+          [
+            121284.03787500001,
+            486532.3125
+          ],
+          [
+            121283.758875,
+            486532.3755
+          ],
+          [
+            121279.646875,
+            486533.2935
+          ],
+          [
+            121280.258875,
+            486535.93950000004
+          ],
+          [
+            121281.21187500001,
+            486540.0575
+          ]
+        ]
+      ]
+    ],
+    "policy": "Exactoriginalgroundrings/roofsurfaces; noaddedvertices"
+  },
+  "principalFront": {
+    "orientedLeftToRightAsSeenFromCanal": [
+      [
+        121275.472875,
+        486515.2735
+      ],
+      [
+        121282.698875,
+        486513.6205
+      ]
+    ],
+    "straightFrontSpanM": 7.412657080959573,
+    "facadePlaneToleranceM": 0.3,
+    "selectionEvidence": "Fulloriginal southernfront endpoints, including503shortleftreturn and505twooutershortshoulders; verifiedcurrentnearbanksequence501/503.505obscuredbyfullscaffold."
+  },
+  "heights": {
+    "groundNapM": 0.8209999799728394,
+    "bodyEavesNominalM": 16.188501118659975,
+    "bodyEavesRangeM": [
+      16.088501118659973,
+      16.188501118659975
+    ],
+    "bodyEavesAdmission": "NL.IMBAG.Pand.0363100012175171-0:lod22:wall:27 front 17.009501098632814NAP;501narrowroofcrestexcluded;505outerclockshoulderbody excludes20.6905NAPgablecrest",
+    "nativeRoofMaximumNapM": 20.690501098632815
+  },
+  "houses": [
+    {
+      "id": "herengracht-505",
+      "pandId": "0363100012175171",
+      "sampleRole": "rough-batch-frozen-library-candidate",
+      "sources": {
+        "principalImage": "/tmp/canalhouse-rough-batch-501-505-20261006/505-older-front.jpg",
+        "wideImage": "/tmp/canalhouse-rough-batch-501-505-20261006/505-wide.jpg",
+        "captureDate": "2024-12-03T08:59:27Z",
+        "projection": {
+          "headingDeg": 29.086606965938245,
+          "pitchDeg": 35,
+          "fovDeg": 100,
+          "width": 1100,
+          "height": 1500,
+          "camera": {
+            "_links": {
+              "self": {
+                "href": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241203_0939_Track01_Sphere_00147/"
+              },
+              "equirectangular_full": {
+                "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241203_0939_Track01_Sphere_00147/equirectangular/panorama_8000.jpg"
+              },
+              "equirectangular_medium": {
+                "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241203_0939_Track01_Sphere_00147/equirectangular/panorama_4000.jpg"
+              },
+              "equirectangular_small": {
+                "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241203_0939_Track01_Sphere_00147/equirectangular/panorama_2000.jpg"
+              },
+              "cubic_img_preview": {
+                "href": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241203_0939_Track01_Sphere_00147/cubic/preview.jpg"
+              },
+              "thumbnail": {
+                "href": "https://api.data.amsterdam.nl/panorama/thumbnail/b_20241203_0939_Track01_Sphere_00147/"
+              },
+              "adjacencies": {
+                "href": "https://api.data.amsterdam.nl/panorama/panoramas/b_20241203_0939_Track01_Sphere_00147/adjacencies/"
+              }
+            },
+            "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241203_0939_Track01_Sphere_00147/cubic/",
+            "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2024/kempkes/Job_20241203_0939_Track01_Sphere_00147/cubic/{z}/{f}/{y}/{x}.jpg",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.892083228849075,
+                52.36544159058727,
+                0.0
+              ]
+            },
+            "pano_id": "b_20241203_0939_Track01_Sphere_00147",
+            "timestamp": "2024-12-03T08:59:27Z",
+            "filename": "Job_20241203_0939_Track01_Sphere_00147.jpg",
+            "surface_type": "L",
+            "mission_distance": 5,
+            "mission_type": "bi",
+            "mission_year": "2024",
+            "tags": [
+              "mission-bi",
+              "mission-2024",
+              "mission-distance-5",
+              "surface-land"
+            ],
+            "roll": 0.7570423125625183,
+            "pitch": -2.600072907199061,
+            "heading": -77.0353764151545
+          }
+        },
+        "nearCaptureDate": "2025-06-16T06:56:27Z",
+        "nearCamera": {
+          "_links": {
+            "self": {
+              "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_06-42-40_00466/"
+            },
+            "equirectangular_full": {
+              "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00466/equirectangular/panorama_8000.jpg"
+            },
+            "equirectangular_medium": {
+              "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00466/equirectangular/panorama_4000.jpg"
+            },
+            "equirectangular_small": {
+              "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00466/equirectangular/panorama_2000.jpg"
+            },
+            "cubic_img_preview": {
+              "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00466/cubic/preview.jpg"
+            },
+            "thumbnail": {
+              "href": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-06-16_06-42-40_00466/"
+            },
+            "adjacencies": {
+              "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-06-16_06-42-40_00466/adjacencies/"
+            }
+          },
+          "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00466/cubic/",
+          "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-16_06-42-40_00466/cubic/{z}/{f}/{y}/{x}.jpg",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              4.892115419163039,
+              52.36543567646645,
+              0
+            ]
+          },
+          "pano_id": "recording_2025-06-16_06-42-40_00466",
+          "timestamp": "2025-06-16T06:56:27Z",
+          "filename": "recording_2025-06-16_06-42-40_00466.jpg",
+          "surface_type": "L",
+          "mission_distance": 5,
+          "mission_type": "bi",
+          "mission_year": "2025",
+          "tags": [
+            "mission-bi",
+            "mission-2025",
+            "mission-distance-5",
+            "surface-land"
+          ],
+          "roll": 0,
+          "pitch": 0,
+          "heading": 0
+        },
+        "rights": "GemeenteAmsterdam CC BY4.0",
+        "registerUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1666",
+        "registerDescription": [
+          "Pand met klokgevel (1683) met festoen. Inwendig: Louis XVI betimmering in de zaal."
+        ],
+        "currentPhotoAccess": "Raworiginalpreservedbeforecrop",
+        "rootInspection": "Rootreviewpendingolder2024source/recipecomparison",
+        "registerIdentityMatch": "501/503exacthousenumbermetadata +locatedrecord;505exactcurrentVBOcachedmatch",
+        "currentScaffoldImage": "/tmp/canalhouse-rough-batch-501-505-20261006/505-wide.jpg"
+      },
+      "crown": {
+        "label": "klok",
+        "profileNormalized": [
+          [
+            0,
+            1
+          ],
+          [
+            0.1,
+            1
+          ],
+          [
+            0.16,
+            1.008
+          ],
+          [
+            0.21,
+            1.026
+          ],
+          [
+            0.25,
+            1.057
+          ],
+          [
+            0.29,
+            1.1
+          ],
+          [
+            0.32,
+            1.14
+          ],
+          [
+            0.32,
+            1.228
+          ],
+          [
+            0.68,
+            1.228
+          ],
+          [
+            0.68,
+            1.14
+          ],
+          [
+            0.71,
+            1.1
+          ],
+          [
+            0.75,
+            1.057
+          ],
+          [
+            0.79,
+            1.026
+          ],
+          [
+            0.84,
+            1.008
+          ],
+          [
+            0.9,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "criticalTraits": [
+        "DARKbrickTHREEaxes/THREEbodyrows, clockneckcentralatticwindow",
+        "Pale frames/darkpanegrids, curvingclockshoulders +straightnarrownecktop",
+        "StonebaseTWOwindowsLEFT/CENTER andlowRIGHTdoor"
+      ],
+      "uncertainties": [
+        "Clear2024-12-03sourceguides historicfront.2025-06currentfrontiscaffold-hidden; alterationsafter2024unverified.",
+        "Clockshoulder/crest useexactnativeheight, normalizedcurve is coarseexistingprofilefamily approximation.",
+        "Finecarving, stripeawnings andsmallupperovalwindowomitted; currentvisualacceptancepending."
+      ],
+      "registerAssertions": [
+        {
+          "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1666",
+          "passage": "Pand met klokgevel (1683) met festoen. Inwendig: Louis XVI betimmering in de zaal.",
+          "part": "principalfacade",
+          "date": "registerdescriptiondateunspecified; cached2026-10-05",
+          "confidence": "highnamedfeatures, currentdimensionsnotregister-derived"
+        }
+      ]
+    }
+  ],
+  "clockCrownCorrection": {
+    "source": "models/herengracht-505/raw/505-older-current.jpg",
+    "referenceCrop": "/tmp/canalhouse-rough-batch-501-505-20261006/505-older-front.jpg",
+    "date": "2024-12-03",
+    "assertions": [
+      "Curved low shoulders rise into a vertical central neck",
+      "One central attic sash with a separate small horizontal oval above",
+      "Broad pale top cap; fine carved edges omitted"
+    ],
+    "confidence": 0.65,
+    "placementLimit": "Source-selected coarse normalized proportions from oblique photograph, not a measured elevation drawing",
+    "previousFailedProfileNormalized": [
+      [
+        0,
+        1
+      ],
+      [
+        0.1,
+        1.04
+      ],
+      [
+        0.2,
+        1.09
+      ],
+      [
+        0.3,
+        1.15
+      ],
+      [
+        0.38,
+        1.21
+      ],
+      [
+        0.4,
+        1.228
+      ],
+      [
+        0.6,
+        1.228
+      ],
+      [
+        0.62,
+        1.21
+      ],
+      [
+        0.7,
+        1.15
+      ],
+      [
+        0.8,
+        1.09
+      ],
+      [
+        0.9,
+        1.04
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "current2025State": "Scaffold-obscured; unchanged current visual hold"
+  }
+}

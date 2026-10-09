@@ -1,0 +1,331 @@
+{
+  "schemaVersion": 1,
+  "id": "bloemgracht-170",
+  "admissionFile": "docs/references/canalhouse-recipes/bloemgracht-170-source-admission.json",
+  "surveyFile": "docs/references/canalhouse-recipes/bloemgracht-170-survey.json",
+  "roofAssembly": {
+    "template": "symmetric-front-hip",
+    "surfaceIds": [
+      "NL.IMBAG.Pand.0363100012174836-0:lod22:roof:24",
+      "NL.IMBAG.Pand.0363100012174836-0:lod22:roof:26"
+    ],
+    "eavesM": 10.381501643180847,
+    "ridgeM": 12.364501643180848,
+    "hipDepthM": 1.4
+  },
+  "roofMaterial": {
+    "preset": "grey-ceramic"
+  },
+  "frameSets": {
+    "pairedSash": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.075,
+        "frameDepthM": 0.14,
+        "verticalBars": [
+          0.5
+        ],
+        "horizontalBars": [
+          0.7
+        ],
+        "mullionWidthM": 0.035,
+        "horizontalBarWidthsM": [
+          0.065
+        ],
+        "barSurface": "door"
+      }
+    },
+    "entry": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.08,
+        "frameDepthM": 0.15,
+        "horizontalBars": [
+          0.3,
+          0.6,
+          0.85
+        ],
+        "horizontalBarWidthsM": [
+          0.035,
+          0.035,
+          0.035
+        ],
+        "barSurface": "door",
+        "verticalBars": [
+          0.33,
+          0.67
+        ],
+        "paneSurface": "glass"
+      }
+    },
+    "transom": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.075,
+        "frameDepthM": 0.15,
+        "verticalBars": [
+          0.5
+        ],
+        "horizontalBars": [],
+        "barSurface": "door"
+      }
+    },
+    "solidEntry": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.065,
+        "frameDepthM": 0.15,
+        "verticalBars": [],
+        "horizontalBars": []
+      }
+    }
+  },
+  "baySets": {
+    "pairedAxes": [
+      {
+        "id": "left",
+        "left": 0.13,
+        "width": 0.31
+      },
+      {
+        "id": "right",
+        "left": 0.59,
+        "width": 0.31
+      }
+    ]
+  },
+  "windowGroups": [
+    {
+      "id": "upperPaired",
+      "baySet": "pairedAxes",
+      "tiers": [
+        {
+          "id": "first",
+          "bottom": 0.36,
+          "height": 0.275
+        },
+        {
+          "id": "second",
+          "bottom": 0.745,
+          "height": 0.185
+        }
+      ],
+      "frame": {
+        "use": "pairedSash"
+      }
+    }
+  ],
+  "openings": [
+    {
+      "id": "leftGlazedEntry",
+      "kind": "door",
+      "left": 0.075,
+      "width": 0.38,
+      "bottom": 0.003,
+      "height": 0.258,
+      "frame": {
+        "use": "entry"
+      },
+      "transom": {
+        "id": "leftEntryTransom",
+        "bottom": 0.261,
+        "height": 0.052,
+        "frame": {
+          "use": "transom"
+        }
+      }
+    },
+    {
+      "id": "rightPaneledEntry",
+      "kind": "door",
+      "left": 0.55,
+      "width": 0.38,
+      "bottom": 0.003,
+      "height": 0.258,
+      "frame": {
+        "use": "solidEntry"
+      },
+      "panels": [
+        {
+          "rect": [
+            0.12,
+            0.08,
+            0.76,
+            0.25
+          ],
+          "frameWidthM": 0.035,
+          "reliefM": 0.018,
+          "fieldReliefM": 0.004,
+          "frameSurface": "door"
+        },
+        {
+          "rect": [
+            0.12,
+            0.39,
+            0.76,
+            0.29
+          ],
+          "frameWidthM": 0.035,
+          "reliefM": 0.018,
+          "fieldReliefM": 0.004,
+          "frameSurface": "door"
+        },
+        {
+          "rect": [
+            0.12,
+            0.75,
+            0.76,
+            0.13
+          ],
+          "frameWidthM": 0.035,
+          "reliefM": 0.018,
+          "fieldReliefM": 0.004,
+          "frameSurface": "door"
+        }
+      ],
+      "transom": {
+        "id": "rightEntryTransom",
+        "bottom": 0.261,
+        "height": 0.052,
+        "frame": {
+          "use": "transom"
+        }
+      }
+    }
+  ],
+  "palette": {
+    "wall": "#946d56",
+    "roof": "#504d48",
+    "trim": "#deded1",
+    "stone": "#aaa797",
+    "glass": "#304044",
+    "door": "#292f2b"
+  },
+  "crown": {
+    "depthM": 0.1,
+    "trimWidthM": 0.055,
+    "surface": "trim",
+    "shape": {
+      "family": "lijst",
+      "top": 1,
+      "neckWidth": 1,
+      "shoulder": 1,
+      "cap": "flat"
+    }
+  },
+  "cornice": {
+    "bottom": 0.966,
+    "height": 0.034,
+    "depthM": 0.25,
+    "brackets": 0,
+    "assembly": {
+      "template": "lip-frieze-cap"
+    }
+  },
+  "dormers": [
+    {
+      "id": "attic",
+      "left": 0.32,
+      "width": 0.36,
+      "bottom": 1.088,
+      "height": 0.08,
+      "depthM": 0.75,
+      "roofRiseM": 0.23,
+      "wallSurface": "trim",
+      "roofSurface": "trim",
+      "trimWidthM": 0.12,
+      "setbackM": 0.05,
+      "verticalBars": [
+        0.5
+      ],
+      "frontOverhangM": 0.22
+    }
+  ],
+  "detailGroups": [
+    {
+      "id": "pairedSills",
+      "target": "bands",
+      "columns": [
+        {
+          "id": "left",
+          "left": 0.12,
+          "width": 0.33
+        },
+        {
+          "id": "right",
+          "left": 0.58,
+          "width": 0.33
+        }
+      ],
+      "rows": [
+        {
+          "id": "first",
+          "bottom": 0.35,
+          "height": 0.01
+        },
+        {
+          "id": "second",
+          "bottom": 0.735,
+          "height": 0.01
+        }
+      ],
+      "depthM": 0.16,
+      "surface": "trim"
+    },
+    {
+      "id": "groundPiers",
+      "target": "blocks",
+      "columns": [
+        {
+          "id": "left",
+          "left": 0.015,
+          "width": 0.06
+        },
+        {
+          "id": "center",
+          "left": 0.465,
+          "width": 0.065
+        },
+        {
+          "id": "right",
+          "left": 0.93,
+          "width": 0.055
+        }
+      ],
+      "rows": [
+        {
+          "id": "ground",
+          "bottom": 0,
+          "height": 0.325
+        }
+      ],
+      "depthM": 0.14,
+      "surface": "trim"
+    }
+  ],
+  "bands": [
+    {
+      "id": "groundCornice",
+      "left": 0.015,
+      "width": 0.97,
+      "bottom": 0.313,
+      "height": 0.024,
+      "depthM": 0.15,
+      "surface": "trim"
+    }
+  ],
+  "ornaments": [],
+  "simplifications": [
+    "Exact Pand0363100012174836 and3reciprocalVBOs; explicitnative3.768216mfront retains0.498407moffsetfrom168, no adjacencythreshold relaxation.",
+    "Root re-inspected closefull/roof after independent challenge: TWO separate axes on TWO bodytiers, not initial3. Failed firstinput/render preserved. One small dormer above straightcornice. Two distinct groundentries: leftglazed/rightpaneled, eachtransom and separatingpalepier. Exact panels/pane divisions/threshold approximate; no guessedstairs/souterrain.",
+    "Lower source explicitly full; oppositebank groundcontext does not establish current lower facade. No cached registerdescription; no historical architectural assertions invented.",
+    "Main24/26 roof regularized withexisting symmetric-front-hip,eaves10.3815/ridge12.3645; precise topology and asymmetricnativeendpoint heights held. Lower25/23/27 preserved.",
+    "Existing frame/groups/pier/cornice/dormer/roof only. Dormerprofile and facadepositions approximate, hoistbeam omitted assecondary. Roofside/rear/gallery/game/GPU/performance acceptance outstanding.",
+    "Dormer crest approximately aligns native main ridge12.3645; initial lowerplacement failed source-angle palehead/frame visibility. Existing bottom/height/setback controls moved crest within source native envelope; exact metric registration remains approximate."
+  ],
+  "lowerReferenceTier": "full",
+  "frontagePlan": {
+    "maxInsetM": 0.8,
+    "maxOutsetM": 0.2
+  }
+}

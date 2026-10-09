@@ -1,0 +1,317 @@
+{
+  "schemaVersion": 1,
+  "id": "herengracht-491",
+  "admissionFile": "docs/references/canalhouse-recipes/herengracht-491-source-admission.json",
+  "surveyFile": "docs/references/canalhouse-recipes/herengracht-491-survey.json",
+  "baySets": {
+    "principal": [
+      {
+        "id": "axis0",
+        "left": 0.09,
+        "width": 0.19
+      },
+      {
+        "id": "axis1",
+        "left": 0.405,
+        "width": 0.19
+      },
+      {
+        "id": "axis2",
+        "left": 0.72,
+        "width": 0.19
+      }
+    ]
+  },
+  "windowGroups": [
+    {
+      "id": "upper-tiers",
+      "baySet": "principal",
+      "tiers": [
+        {
+          "id": "middle",
+          "bottom": 0.44,
+          "height": 0.17
+        },
+        {
+          "id": "upper",
+          "bottom": 0.65,
+          "height": 0.12
+        },
+        {
+          "id": "top",
+          "bottom": 0.81,
+          "height": 0.085
+        }
+      ],
+      "frame": {
+        "use": "frame1"
+      }
+    }
+  ],
+  "openings": [
+    {
+      "id": "raised-axis0",
+      "kind": "door",
+      "left": 0.09,
+      "width": 0.19,
+      "bottom": 0.18,
+      "height": 0.22,
+      "frame": {
+        "use": "frame1"
+      }
+    },
+    {
+      "id": "raised-axis1",
+      "kind": "window",
+      "left": 0.405,
+      "width": 0.19,
+      "bottom": 0.18,
+      "height": 0.22,
+      "frame": {
+        "use": "frame1"
+      }
+    },
+    {
+      "id": "raised-axis2",
+      "kind": "window",
+      "left": 0.72,
+      "width": 0.19,
+      "bottom": 0.18,
+      "height": 0.22,
+      "frame": {
+        "use": "frame1"
+      }
+    },
+    {
+      "id": "cellar-axis1",
+      "kind": "window",
+      "left": 0.405,
+      "width": 0.19,
+      "bottom": 0.005,
+      "height": 0.135,
+      "frame": {
+        "use": "frame2"
+      }
+    },
+    {
+      "id": "cellar-axis2",
+      "kind": "window",
+      "left": 0.72,
+      "width": 0.19,
+      "bottom": 0.005,
+      "height": 0.135,
+      "frame": {
+        "use": "frame2"
+      }
+    }
+  ],
+  "palette": {
+    "wall": "#a6a491",
+    "trim": "#d7d7c9",
+    "glass": "#384749",
+    "door": "#29322f",
+    "stone": "#9a9c91",
+    "roof": "#484943"
+  },
+  "crown": {
+    "depthM": 0.1,
+    "trimWidthM": 0.055
+  },
+  "cornice": {
+    "bottom": 0.94,
+    "height": 0.06,
+    "depthM": 0.3,
+    "brackets": 0,
+    "assembly": {
+      "template": "lip-frieze-cap"
+    }
+  },
+  "bands": [
+    {
+      "id": "basecap",
+      "left": 0,
+      "width": 1,
+      "bottom": 0.155,
+      "height": 0.02,
+      "depthM": 0.12,
+      "surface": "stone"
+    },
+    {
+      "id": "doorcaseleft",
+      "left": 0.06,
+      "width": 0.025,
+      "bottom": 0.18,
+      "height": 0.3,
+      "depthM": 0.12,
+      "surface": "trim"
+    },
+    {
+      "id": "doorcaseright",
+      "left": 0.285,
+      "width": 0.025,
+      "bottom": 0.18,
+      "height": 0.3,
+      "depthM": 0.12,
+      "surface": "trim"
+    },
+    {
+      "id": "doorhead",
+      "left": 0.06,
+      "width": 0.25,
+      "bottom": 0.45,
+      "height": 0.025,
+      "depthM": 0.15,
+      "surface": "trim"
+    }
+  ],
+  "ornaments": [],
+  "simplifications": [
+    "Roughbatch existingcomponents; zero custombuilders.",
+    "Originalnativestreetfront endpoints/shell/semantic roofplanes retained acrossstreetbend.",
+    "Finecarving/awnings/exacttreadcounts omitted; source-selected apertures andcoarse approach only.",
+    "Privatearchive-sync, row/gallery/heldout/game/performance acceptancepending."
+  ],
+  "groundFront": {
+    "id": "stonebase",
+    "left": 0,
+    "bottom": 0,
+    "width": 1,
+    "height": 0.175,
+    "depthM": 0.085,
+    "surface": "stone",
+    "openingIds": [
+      "cellar-axis1",
+      "cellar-axis2"
+    ]
+  },
+  "landing": {
+    "left": 0.06,
+    "width": 0.25,
+    "top": 0.18,
+    "depthM": 1.15,
+    "thicknessM": 0.07,
+    "supportToGround": true
+  },
+  "approaches": [
+    {
+      "id": "coarse-right-flight",
+      "input": {
+        "id": "herengracht-491-source-right",
+        "topProfile": {
+          "from": [
+            0.31,
+            0.0
+          ],
+          "to": [
+            0.53,
+            -1.0
+          ],
+          "segments": 30,
+          "roundDigits": 6
+        },
+        "railProfile": [],
+        "posts": [],
+        "projectionDepthM": 1.15,
+        "exactCurrentTreadCount": null
+      },
+      "railWidthM": 0.035,
+      "postWidthM": 0.045,
+      "occludedOpeningIds": [
+        "cellar-axis1"
+      ]
+    }
+  ],
+  "balconies": [
+    {
+      "id": "sill-middle-axis0",
+      "openingId": "upper-tiers/middle/axis0",
+      "heightM": 0.6,
+      "depthM": 0.18,
+      "barWidthM": 0.025,
+      "posts": 4
+    },
+    {
+      "id": "sill-middle-axis1",
+      "openingId": "upper-tiers/middle/axis1",
+      "heightM": 0.6,
+      "depthM": 0.18,
+      "barWidthM": 0.025,
+      "posts": 4
+    },
+    {
+      "id": "sill-middle-axis2",
+      "openingId": "upper-tiers/middle/axis2",
+      "heightM": 0.6,
+      "depthM": 0.18,
+      "barWidthM": 0.025,
+      "posts": 4
+    },
+    {
+      "id": "sill-upper-axis0",
+      "openingId": "upper-tiers/upper/axis0",
+      "heightM": 0.6,
+      "depthM": 0.18,
+      "barWidthM": 0.025,
+      "posts": 4
+    },
+    {
+      "id": "sill-upper-axis1",
+      "openingId": "upper-tiers/upper/axis1",
+      "heightM": 0.6,
+      "depthM": 0.18,
+      "barWidthM": 0.025,
+      "posts": 4
+    },
+    {
+      "id": "sill-upper-axis2",
+      "openingId": "upper-tiers/upper/axis2",
+      "heightM": 0.6,
+      "depthM": 0.18,
+      "barWidthM": 0.025,
+      "posts": 4
+    }
+  ],
+  "detailGroups": [
+    {
+      "id": "lisenes",
+      "target": "bands",
+      "columns": [
+        {
+          "id": "left",
+          "left": 0,
+          "width": 0.035
+        },
+        {
+          "id": "right",
+          "left": 0.965,
+          "width": 0.035
+        }
+      ],
+      "rows": [
+        {
+          "id": "body",
+          "bottom": 0.175,
+          "height": 0.755
+        }
+      ],
+      "depthM": 0.07,
+      "surface": "trim"
+    }
+  ],
+  "frameSets": {
+    "frame1": {
+      "template": "broad-dark-paired-sash"
+    },
+    "frame2": {
+      "template": "dark-cellar-frame",
+      "overrides": {
+        "verticalBars": [
+          0.5
+        ],
+        "horizontalBars": [
+          0.65
+        ]
+      }
+    }
+  }
+}

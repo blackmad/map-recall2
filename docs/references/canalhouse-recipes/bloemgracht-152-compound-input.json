@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "bloemgracht-152",
+  "name": "Bloemgracht152/154 \u00b7 complete four-axis frontage",
+  "facades": [
+    "docs/references/canalhouse-recipes/bloemgracht-152-main-recipe-input.json",
+    "docs/references/canalhouse-recipes/bloemgracht-152-jog-recipe-input.json"
+  ]
+}

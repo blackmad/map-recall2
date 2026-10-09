@@ -1,0 +1,622 @@
+{
+  "schemaVersion": 1,
+  "id": "bloemgracht-86-source-admission",
+  "observedOn": "2026-10-07",
+  "status": "human-source-screened;candidate-only",
+  "officialIdentity": {
+    "address": "Bloemgracht 86",
+    "pandId": "0363100012169905",
+    "vboId": "0363010000588640",
+    "vboSource": {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?bbox=4.876173334224242%2C52.365491736213876%2C4.888430726182581%2C52.38365058073888&cursor=KoE3%7CKrKMzA&f=json&limit=1000",
+      "rawPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/raw/addresses-1.json",
+      "sha256": "1fd646faaad295897fdd85543267f44e99dcca5649566ea1bc3b9ff9cfef01e5"
+    },
+    "pandSource": {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?bbox=4.876173334224242%2C52.365491736213876%2C4.888430726182581%2C52.38365058073888&f=json&limit=1000",
+      "rawPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/raw/bag-0.json",
+      "sha256": "9d973ec882741f6f3a5ca1366d414b28312d2af1f703b8a3a1062d833544eb32"
+    },
+    "joinEvidence": {
+      "method": "Exact official Pand verblijfsobject.href joins reciprocal VBO pand.href UUID",
+      "pandFeatureId": "5ef5f167-0199-5706-a999-740347f07339",
+      "vboFeatureIds": [
+        "6268d62b-971d-52b1-a89e-b863e24d055c"
+      ]
+    }
+  },
+  "sourceProvenance": {
+    "raw3DBag": {
+      "path": ".worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/raw/3dbag-35.json",
+      "sha256": "995aed263f0af79b08438b121bfada70c3159ebe50b0c19e0548ee99101e8136",
+      "featureIds": [
+        "NL.IMBAG.Pand.0363100012169905"
+      ],
+      "state": "Cached exact owner feature; no new request",
+      "rawPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/raw/3dbag-35.json",
+      "url": "https://api.3dbag.nl/collections/pand/items?bbox=120193.15258458864,486517.5184435108,121041.91233257853,488543.7417092414&offset=3501&limit=100"
+    },
+    "sourceCommit": "0de24822db8f38fbd477ae13f79c32e7480d11ad",
+    "archiveSync": "remote-verified",
+    "archiveModelManifestPath": "models/bloemgracht-86/manifest.json",
+    "registerGeneration": "datasets/amsterdam-monument-register/2026-10-05T06-10-55-572Z-83107",
+    "registerMatches": [
+      {
+        "source": "amsterdam",
+        "sourceId": "6946edee-b28a-47f6-8eaa-c03a7e119649",
+        "monumentNumber": "563",
+        "recordUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/6946edee-b28a-47f6-8eaa-c03a7e119649?_format=json",
+        "status": "Rijksmonument",
+        "withdrawnAt": null,
+        "bagPandIds": [
+          "0363100012169905"
+        ],
+        "descriptions": [],
+        "metadata": {
+          "_links": {
+            "schema": "https://schemas.data.amsterdam.nl/datasets/monumenten/monumenten/v2",
+            "self": {
+              "href": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/6946edee-b28a-47f6-8eaa-c03a7e119649?_format=json",
+              "title": "Bloemgracht 86",
+              "identificatie": "6946edee-b28a-47f6-8eaa-c03a7e119649"
+            },
+            "betreftBagPand": [
+              {
+                "href": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012169905?_format=json&volgnummer=4",
+                "title": "0363100012169905",
+                "identificatie": "0363100012169905",
+                "volgnummer": 4,
+                "beginGeldigheid": "2023-09-28T02:00:00"
+              }
+            ],
+            "heeftMonumentenSitueringen": [
+              {
+                "href": "https://api.data.amsterdam.nl/v1/monumenten/situeringen/6946edee-b28a-47f6-8eaa-c03a7e119649.0363200000051068?_format=json",
+                "identificatie": "6946edee-b28a-47f6-8eaa-c03a7e119649.0363200000051068",
+                "title": "6946edee-b28a-47f6-8eaa-c03a7e119649.0363200000051068"
+              }
+            ]
+          },
+          "identificatie": "6946edee-b28a-47f6-8eaa-c03a7e119649",
+          "monumentnummer": 563,
+          "weergavenaam": "Bloemgracht 86",
+          "adressering": "Bloemgracht 86",
+          "naam": null,
+          "type": "Pand",
+          "status": "Rijksmonument",
+          "datumAanwijzing": null,
+          "datumAfvoeren": null,
+          "inOnderzoek": "N",
+          "architectOntwerp": null,
+          "opdrachtgeverBouw": null,
+          "jaarBeginVan": null,
+          "jaarBeginTot": null,
+          "oorspronkelijkeFunctie": "wonen",
+          "puntCoordinaten": {
+            "type": "Point",
+            "coordinates": [
+              120508,
+              487561
+            ]
+          },
+          "geometrie": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  120503.274,
+                  487581.324
+                ],
+                [
+                  120503.199,
+                  487581.297
+                ],
+                [
+                  120502.735,
+                  487582.59
+                ],
+                [
+                  120497.491,
+                  487580.738
+                ],
+                [
+                  120498.751,
+                  487577.26
+                ],
+                [
+                  120501.403,
+                  487569.937
+                ],
+                [
+                  120505.596,
+                  487558.361
+                ],
+                [
+                  120505.63,
+                  487558.27
+                ],
+                [
+                  120507.448,
+                  487558.901
+                ],
+                [
+                  120509.15,
+                  487559.491
+                ],
+                [
+                  120509.525,
+                  487558.414
+                ],
+                [
+                  120511.271,
+                  487559.019
+                ],
+                [
+                  120510.897,
+                  487560.096
+                ],
+                [
+                  120510.946,
+                  487560.143
+                ],
+                [
+                  120503.274,
+                  487581.324
+                ]
+              ]
+            ]
+          },
+          "contour": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    120503.274,
+                    487581.324
+                  ],
+                  [
+                    120503.199,
+                    487581.297
+                  ],
+                  [
+                    120502.735,
+                    487582.59
+                  ],
+                  [
+                    120497.491,
+                    487580.738
+                  ],
+                  [
+                    120498.751,
+                    487577.26
+                  ],
+                  [
+                    120501.403,
+                    487569.937
+                  ],
+                  [
+                    120505.596,
+                    487558.361
+                  ],
+                  [
+                    120505.63,
+                    487558.27
+                  ],
+                  [
+                    120507.448,
+                    487558.901
+                  ],
+                  [
+                    120509.15,
+                    487559.491
+                  ],
+                  [
+                    120509.525,
+                    487558.414
+                  ],
+                  [
+                    120511.271,
+                    487559.019
+                  ],
+                  [
+                    120510.897,
+                    487560.096
+                  ],
+                  [
+                    120510.946,
+                    487560.143
+                  ],
+                  [
+                    120503.274,
+                    487581.324
+                  ]
+                ]
+              ]
+            ]
+          },
+          "redengevendeOmschrijvingPubliek": null,
+          "beschrijvingPubliek": null,
+          "ligtInMonumentenComplexId": null,
+          "datumActueelTot": null
+        }
+      }
+    ],
+    "processedReferences": [
+      {
+        "tier": "context",
+        "path": "/private/tmp/canalhouse-bloemgracht-86-batch-20261007/86-context-neighbor-perspective.jpg",
+        "sha256": "0508e7f23d3e04c2e9b053b0f7094e86049dc39f1aaf178c4877999c554f9e78",
+        "captureDate": "2023-02-27T11:37:08.054920Z",
+        "panoramaId": "TMX7316010203-002985_pano_0016_000133",
+        "nativeDimensions": [
+          4000,
+          2000
+        ],
+        "manifestPath": "/private/tmp/canalhouse-bloemgracht-86-batch-20261007/86-neighbor-camera-manifest.json",
+        "originalPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/15cc14e544469be45acfb4adaee0017f74456d8c0d1da5a35037e2b8b7a5379d/evidence/panoramas/TMX7316010203-002985_pano_0016_000133.jpg",
+        "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2023/02/27/TMX7316010203-002985/pano_0016_000133/equirectangular/panorama_4000.jpg",
+        "metricEligible": false,
+        "derivationKey": "76f8292cb3f13b6bf4a6134b390baca8f2b7c758bae313f022ad73690dd204f3"
+      },
+      {
+        "tier": "full",
+        "path": "/private/tmp/canalhouse-bloemgracht-86-batch-20261007/86-full-neighbor-perspective.jpg",
+        "sha256": "6f4faf3a30c9bc2548fbaa44db41b253c3c922183683bddba259fb5c8be14b88",
+        "captureDate": "2023-02-27T11:37:08.054920Z",
+        "panoramaId": "TMX7316010203-002985_pano_0016_000133",
+        "nativeDimensions": [
+          4000,
+          2000
+        ],
+        "manifestPath": "/private/tmp/canalhouse-bloemgracht-86-batch-20261007/86-neighbor-camera-manifest.json",
+        "originalPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/15cc14e544469be45acfb4adaee0017f74456d8c0d1da5a35037e2b8b7a5379d/evidence/panoramas/TMX7316010203-002985_pano_0016_000133.jpg",
+        "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2023/02/27/TMX7316010203-002985/pano_0016_000133/equirectangular/panorama_4000.jpg",
+        "metricEligible": false,
+        "derivationKey": "76f8292cb3f13b6bf4a6134b390baca8f2b7c758bae313f022ad73690dd204f3"
+      },
+      {
+        "tier": "ground",
+        "path": "/private/tmp/canalhouse-bloemgracht-86-batch-20261007/86-ground-neighbor-perspective.jpg",
+        "sha256": "bfa3259a01fb4a5fb4d51098f91fbbf0b9eea5680ade562a3729a9cfbeca7b0a",
+        "captureDate": "2025-07-03T09:12:20Z",
+        "panoramaId": "recording_2025-07-03_08-35-58_00680",
+        "nativeDimensions": [
+          4000,
+          2000
+        ],
+        "manifestPath": "/private/tmp/canalhouse-bloemgracht-86-batch-20261007/86-neighbor-camera-manifest.json",
+        "originalPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/15cc14e544469be45acfb4adaee0017f74456d8c0d1da5a35037e2b8b7a5379d/evidence/panoramas/recording_2025-07-03_08-35-58_00680.jpg",
+        "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-03_08-35-58_00680/equirectangular/panorama_4000.jpg",
+        "metricEligible": false,
+        "derivationKey": "76f8292cb3f13b6bf4a6134b390baca8f2b7c758bae313f022ad73690dd204f3"
+      },
+      {
+        "tier": "roof",
+        "path": "/private/tmp/canalhouse-bloemgracht-86-batch-20261007/86-roof-neighbor-perspective.jpg",
+        "sha256": "4ca130e02ca4ea99148a4b8790423646fd2eef828697af07479a10ca05f70c1d",
+        "captureDate": "2023-02-27T11:37:08.054920Z",
+        "panoramaId": "TMX7316010203-002985_pano_0016_000133",
+        "nativeDimensions": [
+          4000,
+          2000
+        ],
+        "manifestPath": "/private/tmp/canalhouse-bloemgracht-86-batch-20261007/86-neighbor-camera-manifest.json",
+        "originalPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/15cc14e544469be45acfb4adaee0017f74456d8c0d1da5a35037e2b8b7a5379d/evidence/panoramas/TMX7316010203-002985_pano_0016_000133.jpg",
+        "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2023/02/27/TMX7316010203-002985/pano_0016_000133/equirectangular/panorama_4000.jpg",
+        "metricEligible": false,
+        "derivationKey": "76f8292cb3f13b6bf4a6134b390baca8f2b7c758bae313f022ad73690dd204f3"
+      }
+    ],
+    "privateLocalPack": "/tmp/canalhouse-bloemgracht-86-batch-20261007",
+    "beeldbankAccess": "No new fetch; municipal-first ordinary-house trial. Targeted archive questions deferred."
+  },
+  "native": {
+    "surveyFootprintPolygonsRD": [
+      [
+        [
+          [
+            120503.76800000001,
+            487563.4115
+          ],
+          [
+            120501.61,
+            487569.3665
+          ],
+          [
+            120498.448,
+            487578.0945
+          ],
+          [
+            120497.494,
+            487580.72849999997
+          ],
+          [
+            120502.739,
+            487582.5805
+          ],
+          [
+            120503.202,
+            487581.2875
+          ],
+          [
+            120503.278,
+            487581.3135
+          ],
+          [
+            120503.907,
+            487579.5755
+          ],
+          [
+            120505.701,
+            487574.6235
+          ],
+          [
+            120506.782,
+            487571.6385
+          ],
+          [
+            120509.02900000001,
+            487565.43649999995
+          ],
+          [
+            120510.95,
+            487560.1335
+          ],
+          [
+            120510.905,
+            487560.0745
+          ],
+          [
+            120508.789,
+            487559.39749999996
+          ],
+          [
+            120508.581,
+            487559.2825
+          ],
+          [
+            120508.238,
+            487559.16349999997
+          ],
+          [
+            120507.50600000001,
+            487558.90949999995
+          ],
+          [
+            120507.485,
+            487558.9805
+          ],
+          [
+            120505.592,
+            487558.37549999997
+          ]
+        ]
+      ]
+    ],
+    "municipalBagGeometryWGS84": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.880617774973697,
+            52.37501975310881
+          ],
+          [
+            4.880616676406882,
+            52.375019505740674
+          ],
+          [
+            4.88060973006548,
+            52.37503109713375
+          ],
+          [
+            4.880532914607266,
+            52.375014123225085
+          ],
+          [
+            4.880551774151169,
+            52.3749829446605
+          ],
+          [
+            4.880591469184654,
+            52.37491729748568
+          ],
+          [
+            4.880654229382173,
+            52.37481352423064
+          ],
+          [
+            4.880654737993622,
+            52.37481270852464
+          ],
+          [
+            4.880681369547669,
+            52.37481849369669
+          ],
+          [
+            4.880706301920715,
+            52.37482390309823
+          ],
+          [
+            4.880711919120756,
+            52.374814247359645
+          ],
+          [
+            4.8807374960713945,
+            52.3748197943275
+          ],
+          [
+            4.880731893560661,
+            52.37482945013008
+          ],
+          [
+            4.880732608275234,
+            52.37482987560959
+          ],
+          [
+            4.880617774973697,
+            52.37501975310881
+          ]
+        ]
+      ]
+    }
+  },
+  "principalFront": {
+    "orientedLeftToRightAsSeenFromCanal": [
+      [
+        120505.592,
+        487558.37549999997
+      ],
+      [
+        120510.95,
+        487560.1335
+      ]
+    ],
+    "facadePlaneToleranceM": 0.1,
+    "endpointSelection": {
+      "method": "ground polygon0 canal-normal max within0.3m, then min/max along(.938,.346)",
+      "nativeRawFeatureId": "NL.IMBAG.Pand.0363100012169905",
+      "groundPolygonIndex": 0,
+      "intermediateNativeFrontJogsRetained": true
+    }
+  },
+  "heights": {
+    "groundNapM": 0.48100000619888306,
+    "bodyEavesNominalM": 10.877500787258148,
+    "bodyEavesAdmission": "Corner roof ends10.8775/10.9025m are source eaves; high front wall15/20 are gable crest envelope, not body.",
+    "sourceBodyWallId": null,
+    "endpointHeightCandidatesM": [
+      [
+        10.902500787258148
+      ],
+      [
+        10.877500787258148
+      ]
+    ]
+  },
+  "houses": [
+    {
+      "id": "bloemgracht-86",
+      "pandId": "0363100012169905",
+      "address": "Bloemgracht 86",
+      "crown": {
+        "label": "hals",
+        "profileNormalized": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "criticalTraits": [
+        "Three upper axes over two regular tiers; tall first and shorter second tier",
+        "Narrow hals gable with two central attic windows and pale curved shoulder trim",
+        "Raised right paired entrance/transom and two tall ground windows",
+        "Pale full-width basement facing with left cellar door, middle basement window and right cellar panel",
+        "Sideways left-to-right stoep rises to right door with dark rail and landing"
+      ],
+      "uncertainties": [
+        "Coarse photo proportions, source/native height registration uncalibrated",
+        "Current versus historical alterations not fully resolved"
+      ],
+      "sources": {
+        "captureDate": "2023-02-27T11:37:08.054920Z",
+        "nearCaptureDate": "2023-02-27T11:37:08.054920Z",
+        "projection": {
+          "camera": {
+            "pano_id": "TMX7316010203-002985_pano_0016_000133",
+            "timestamp": "2023-02-27T11:37:08.054920Z",
+            "_links": {
+              "equirectangular_medium": {
+                "href": "https://t1.data.amsterdam.nl/panorama/2023/02/27/TMX7316010203-002985/pano_0016_000133/equirectangular/panorama_4000.jpg"
+              }
+            },
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                4.880740908969826,
+                52.374788048470855,
+                0
+              ]
+            },
+            "poseFromCache": {
+              "x": 120511.4798412607,
+              "y": 487555.485277385,
+              "z": 3.803098674863598,
+              "headingDeg": 67.6709837301409,
+              "pitchDeg": -1.35764409138736,
+              "rollDeg": 3.93407074658812
+            }
+          },
+          "headingDeg": -40.4086503453853,
+          "pitchDeg": 22,
+          "fovDeg": 95,
+          "type": "perspective"
+        },
+        "nearCamera": {
+          "pano_id": "TMX7316010203-002985_pano_0016_000133",
+          "timestamp": "2023-02-27T11:37:08.054920Z",
+          "_links": {
+            "equirectangular_medium": {
+              "href": "https://t1.data.amsterdam.nl/panorama/2023/02/27/TMX7316010203-002985/pano_0016_000133/equirectangular/panorama_4000.jpg"
+            }
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              4.880740908969826,
+              52.374788048470855,
+              0
+            ]
+          },
+          "poseFromCache": {
+            "x": 120511.4798412607,
+            "y": 487555.485277385,
+            "z": 3.803098674863598,
+            "headingDeg": 67.6709837301409,
+            "pitchDeg": -1.35764409138736,
+            "rollDeg": 3.93407074658812
+          }
+        },
+        "principalImage": "/private/tmp/canalhouse-bloemgracht-86-batch-20261007/86-full-neighbor-perspective.jpg",
+        "nearImage": "/private/tmp/canalhouse-bloemgracht-86-batch-20261007/86-full-neighbor-perspective.jpg",
+        "lowerReferenceTier": "full",
+        "registerUrl": null,
+        "registerDescription": [],
+        "nearWholeRootCrop": "/tmp/canalhouse-bloemgracht-86-batch-20261007/86-near-perspective.jpg",
+        "rootInspection": {
+          "inspectedOn": "2026-10-07",
+          "images": [
+            "full",
+            "roof",
+            "context"
+          ],
+          "geometry": "Exact ground polygon0 endpoints chosen by canal normal maximum and along-front extrema; native short intermediate jogs retained",
+          "limits": "Pixel proportions approximate; sculpted gable ornaments, exact treads/panes and roof crest relationship held"
+        },
+        "rights": "Gemeente Amsterdam \u00b7 CC BY 4.0"
+      },
+      "observedWindowGroups": [
+        {
+          "groupId": "firstThree",
+          "axes": 3,
+          "tiers": 1,
+          "openings": 3,
+          "sourceReview": "2023 full/roof source: tall first tier three axes"
+        },
+        {
+          "groupId": "secondThree",
+          "axes": 3,
+          "tiers": 1,
+          "openings": 3,
+          "sourceReview": "2023 full/roof source: shorter second tier three axes"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,221 @@
+{
+  "schemaVersion": 1,
+  "id": "herengracht-505",
+  "admissionFile": "docs/references/canalhouse-recipes/herengracht-505-source-admission.json",
+  "surveyFile": "docs/references/canalhouse-recipes/herengracht-505-survey.json",
+  "frameSets": {
+    "sash": {
+      "template": "broad-sash-frame",
+      "overrides": {
+        "verticalBars": [
+          0.25,
+          0.5,
+          0.75
+        ],
+        "horizontalBars": [
+          0.25,
+          0.5,
+          0.75
+        ],
+        "barSurface": "door",
+        "mullionWidthM": 0.025
+      }
+    },
+    "base": {
+      "template": "broad-sash-frame",
+      "overrides": {
+        "verticalBars": [
+          0.5
+        ],
+        "horizontalBars": [
+          0.3,
+          0.65
+        ],
+        "barSurface": "trim"
+      }
+    },
+    "door": {
+      "template": "plain-frame",
+      "overrides": {
+        "frameSurface": "door"
+      }
+    },
+    "oval": {
+      "template": "oval-attic-frame"
+    }
+  },
+  "baySets": {
+    "principal": [
+      {
+        "id": "axis0",
+        "left": 0.09,
+        "width": 0.19
+      },
+      {
+        "id": "axis1",
+        "left": 0.405,
+        "width": 0.19
+      },
+      {
+        "id": "axis2",
+        "left": 0.72,
+        "width": 0.19
+      }
+    ]
+  },
+  "windowGroups": [
+    {
+      "id": "body-tiers",
+      "baySet": "principal",
+      "tiers": [
+        {
+          "id": "raised",
+          "bottom": 0.205,
+          "height": 0.285
+        },
+        {
+          "id": "middle",
+          "bottom": 0.545,
+          "height": 0.155
+        },
+        {
+          "id": "upper",
+          "bottom": 0.745,
+          "height": 0.095
+        }
+      ],
+      "frame": {
+        "use": "sash"
+      }
+    }
+  ],
+  "openings": [
+    {
+      "id": "base-leftwindow",
+      "kind": "window",
+      "left": 0.045,
+      "width": 0.285,
+      "bottom": 0.005,
+      "height": 0.155,
+      "frame": {
+        "use": "sash"
+      }
+    },
+    {
+      "id": "base-centerwindow",
+      "kind": "window",
+      "left": 0.405,
+      "width": 0.285,
+      "bottom": 0.005,
+      "height": 0.155,
+      "frame": {
+        "use": "sash"
+      }
+    },
+    {
+      "id": "base-rightdoor",
+      "kind": "door",
+      "left": 0.78,
+      "width": 0.18,
+      "bottom": 0.005,
+      "height": 0.155,
+      "frame": {
+        "use": "door"
+      }
+    },
+    {
+      "id": "clock-neck-attic",
+      "kind": "window",
+      "left": 0.405,
+      "width": 0.19,
+      "bottom": 1.025,
+      "height": 0.095,
+      "frame": {
+        "use": "sash"
+      }
+    },
+    {
+      "id": "clock-oval-attic",
+      "kind": "window",
+      "left": 0.445,
+      "width": 0.11,
+      "bottom": 1.153,
+      "height": 0.026,
+      "frame": {
+        "use": "oval"
+      }
+    }
+  ],
+  "palette": {
+    "wall": "#655541",
+    "trim": "#d8d0be",
+    "glass": "#384749",
+    "door": "#29322f",
+    "stone": "#90968b",
+    "roof": "#484943"
+  },
+  "crown": {
+    "depthM": 0.1,
+    "trimWidthM": 0.07,
+    "shape": {
+      "family": "klok",
+      "top": 1.228,
+      "neckWidth": 0.36,
+      "shoulder": 1.14,
+      "crestWidth": 0.36,
+      "cap": "flat",
+      "shoulderCurve": 2.4
+    }
+  },
+  "cornice": {
+    "bottom": 0.975,
+    "height": 0.025,
+    "depthM": 0.2,
+    "brackets": 0,
+    "assembly": {
+      "template": "lip-frieze-cap"
+    }
+  },
+  "bands": [
+    {
+      "id": "basecap",
+      "left": 0,
+      "width": 1,
+      "bottom": 0.175,
+      "height": 0.024,
+      "depthM": 0.12,
+      "surface": "stone"
+    },
+    {
+      "id": "clock-neck-cap",
+      "left": 0.32,
+      "width": 0.36,
+      "bottom": 1.208,
+      "height": 0.02,
+      "depthM": 0.18,
+      "surface": "trim"
+    }
+  ],
+  "ornaments": [],
+  "simplifications": [
+    "Frozencompactsourcecomponents, zero custombuilders; originals/sourcechecksums retained.",
+    "Nativegroundrings/roofsurfaces untouched; explicitfullsouthernfront originalvertices.",
+    "Finecarving/doorpainting/treadcounts omitted; gallery-onlycandidate; privatearchive/review/gameacceptancepending.",
+    "505clear2024historicsource supportsTHREEbodyrows/THREEaxes +centralneckattic, rightstreetentry andclockfamily.2025currentobscured; no acceptance claim.",
+    "Shared oval-attic-frame and source-selected vertical clock neck/top cap; coarse curve and proportions, individual carving omitted.2025scaffold hold retained."
+  ],
+  "groundFront": {
+    "id": "stonebase",
+    "left": 0,
+    "width": 1,
+    "bottom": 0,
+    "height": 0.19,
+    "depthM": 0.07,
+    "surface": "stone",
+    "openingIds": [
+      "base-leftwindow",
+      "base-centerwindow",
+      "base-rightdoor"
+    ]
+  }
+}

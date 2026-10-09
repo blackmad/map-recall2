@@ -1,0 +1,378 @@
+{
+  "schemaVersion": 1,
+  "id": "bloemgracht-86",
+  "admissionFile": "docs/references/canalhouse-recipes/bloemgracht-86-source-admission.json",
+  "surveyFile": "docs/references/canalhouse-recipes/bloemgracht-86-survey.json",
+  "lowerReferenceTier": "full",
+  "bodyDatum": {
+    "heightM": 10.89,
+    "sourceReview": "Native corner roof heights10.8775/10.9025m are side eaves; front wall15 crest14.6165m is separate hals envelope. Photo-scaled facade drawing uses10.89m body, not whole high wall."
+  },
+  "frameSets": {
+    "sash": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.065,
+        "frameDepthM": 0.12,
+        "frameSurface": "trim",
+        "barSurface": "door",
+        "verticalBars": [
+          0.5
+        ],
+        "horizontalBars": [
+          0.5,
+          0.76
+        ],
+        "mullionWidthM": 0.035
+      }
+    },
+    "upper": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.06,
+        "frameSurface": "trim",
+        "barSurface": "door",
+        "verticalBars": [
+          0.5
+        ],
+        "horizontalBars": [
+          0.5
+        ],
+        "mullionWidthM": 0.035
+      }
+    },
+    "door": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.07,
+        "frameSurface": "trim",
+        "paneSurface": "door",
+        "barSurface": "door",
+        "verticalBars": [
+          0.5
+        ]
+      }
+    },
+    "transom": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.055,
+        "frameSurface": "trim",
+        "barSurface": "door"
+      }
+    },
+    "cellar": {
+      "template": "plain-frame",
+      "overrides": {
+        "trimWidthM": 0.055,
+        "frameSurface": "trim",
+        "paneSurface": "door",
+        "verticalBars": [
+          0.5
+        ]
+      }
+    }
+  },
+  "baySets": {
+    "three": {
+      "template": "regular",
+      "ids": [
+        "left",
+        "middle",
+        "right"
+      ],
+      "left": 0.075,
+      "width": 0.235,
+      "step": 0.31
+    }
+  },
+  "windowGroups": [
+    {
+      "id": "firstThree",
+      "baySet": "three",
+      "tiers": [
+        {
+          "id": "first",
+          "bottom": 0.51,
+          "height": 0.205
+        }
+      ],
+      "frame": {
+        "use": "sash"
+      }
+    },
+    {
+      "id": "secondThree",
+      "baySet": "three",
+      "tiers": [
+        {
+          "id": "second",
+          "bottom": 0.765,
+          "height": 0.155
+        }
+      ],
+      "frame": {
+        "use": "upper"
+      }
+    }
+  ],
+  "openings": [
+    {
+      "id": "ground-left",
+      "kind": "window",
+      "left": 0.075,
+      "bottom": 0.19,
+      "width": 0.235,
+      "height": 0.27,
+      "frame": {
+        "use": "sash"
+      }
+    },
+    {
+      "id": "ground-middle",
+      "kind": "window",
+      "left": 0.385,
+      "bottom": 0.19,
+      "width": 0.235,
+      "height": 0.27,
+      "frame": {
+        "use": "sash"
+      }
+    },
+    {
+      "id": "raised-entry",
+      "kind": "door",
+      "left": 0.695,
+      "bottom": 0.19,
+      "width": 0.235,
+      "height": 0.215,
+      "frame": {
+        "use": "door"
+      },
+      "transom": {
+        "bottom": 0.414,
+        "height": 0.062,
+        "frame": {
+          "use": "transom"
+        }
+      }
+    },
+    {
+      "id": "cellar-left",
+      "kind": "door",
+      "left": 0.075,
+      "bottom": 0.012,
+      "width": 0.235,
+      "height": 0.135,
+      "frame": {
+        "use": "door",
+        "overrides": {
+          "verticalBars": [],
+          "horizontalBars": [],
+          "paneSurface": "door"
+        }
+      }
+    },
+    {
+      "id": "basement-middle",
+      "kind": "window",
+      "left": 0.385,
+      "bottom": 0.015,
+      "width": 0.22,
+      "height": 0.085,
+      "frame": {
+        "use": "upper"
+      }
+    },
+    {
+      "id": "cellar-right",
+      "kind": "door",
+      "left": 0.695,
+      "bottom": 0.01,
+      "width": 0.235,
+      "height": 0.135,
+      "frame": {
+        "use": "cellar"
+      }
+    },
+    {
+      "id": "attic-lower",
+      "kind": "window",
+      "left": 0.365,
+      "bottom": 1.015,
+      "width": 0.27,
+      "height": 0.11,
+      "frame": {
+        "use": "upper"
+      }
+    },
+    {
+      "id": "attic-upper",
+      "kind": "window",
+      "left": 0.4,
+      "bottom": 1.17,
+      "width": 0.2,
+      "height": 0.065,
+      "frame": {
+        "use": "transom"
+      }
+    }
+  ],
+  "palette": {
+    "wall": "#78513d",
+    "trim": "#dedaca",
+    "door": "#273b34",
+    "glass": "#31464a",
+    "stone": "#b3afa0",
+    "roof": "#514d47"
+  },
+  "crown": {
+    "depthM": 0.1,
+    "trimWidthM": 0.09,
+    "shape": {
+      "family": "hals",
+      "top": 1.34,
+      "neckWidth": 0.32,
+      "shoulder": 1.075,
+      "crestWidth": 0.3,
+      "cap": "rounded",
+      "capRise": 0.022,
+      "shoulderCurve": 2.4
+    }
+  },
+  "bands": [
+    {
+      "id": "basement-cap",
+      "left": 0.015,
+      "bottom": 0.178,
+      "width": 0.97,
+      "height": 0.014,
+      "depthM": 0.15,
+      "surface": "stone"
+    }
+  ],
+  "ornaments": [],
+  "hoists": [
+    {
+      "id": "source-hoist",
+      "center": 0.5,
+      "height": 1.29,
+      "beamHeightM": 0.17,
+      "surface": "trim",
+      "widthM": 0.14,
+      "projectionM": 1.2
+    }
+  ],
+  "landing": {
+    "left": 0.665,
+    "width": 0.305,
+    "top": 0.19,
+    "depthM": 1.0,
+    "thicknessM": 0.1
+  },
+  "approaches": [
+    {
+      "id": "sideways-stoep",
+      "input": {
+        "id": "bloemgracht-86-sideways-stoep",
+        "topProfile": {
+          "from": [
+            0.34,
+            -1
+          ],
+          "to": [
+            0.665,
+            0
+          ],
+          "segments": 7,
+          "roundDigits": 6,
+          "mode": "steps"
+        },
+        "railProfile": [
+          [
+            0.34,
+            -0.53
+          ],
+          [
+            0.665,
+            0.47
+          ],
+          [
+            0.97,
+            0.47
+          ]
+        ],
+        "posts": [
+          {
+            "x": 0.34,
+            "bottom": -1,
+            "top": -0.53
+          },
+          {
+            "x": 0.665,
+            "bottom": 0,
+            "top": 0.47
+          },
+          {
+            "x": 0.97,
+            "bottom": 0,
+            "top": 0.47
+          }
+        ],
+        "projectionDepthM": 1,
+        "exactCurrentTreadCount": null
+      },
+      "railWidthM": 0.035,
+      "postWidthM": 0.045,
+      "occludedOpeningIds": [
+        "basement-middle"
+      ]
+    }
+  ],
+  "simplifications": [
+    "Source full/roof/context inspected2026-10-07; source photos not metric. Body10.89m derives native corner eaves, gable top14.59m drawing approximates wall15 crest14.6165m. Native roof planes retained; taller native ridge15.69m not treated as facade body.",
+    "Coarse original existing-component reuse only; fine sculpted gable ornaments, plaques, door panels, masonry and exact pane/tread counts omitted. No painted name.",
+    "Source right entrance raised; sideways flight/landing dimensions and dark railing clearance drawing estimates. Basement-middle occlusion is photo-supported; short surveyed frontage jogs remain exact.",
+    "Private sourceCommit pending central batch archive; no individual/gallery/game acceptance.",
+    "One bounded coarse repair: first linear stoep contour rendered ramp; existing stepped contour uses7 drawing divisions, not measured current tread count. Failed native roof/gable backing remains held.",
+    "PROVISIONAL authorized symmetry inference: front roofs40/41 use existing symmetric-front-hip with10.89m sideeaves,14.62m sourcecrest-envelope ridge and2.75m drawinghiprun. These are unmeasured roof-profile assumptions; rear roofs43/45 and all other native parts retained. Basalleft opening explicitly retained as cellar door per independent source review.",
+    "Shared connected-volume selector fits main roof as a whole, retaining annex coverage and footprint. This replaces failed front-only partition treatment; source-hidden roof remains inferred."
+  ],
+  "groundFront": {
+    "id": "basement-facing",
+    "left": 0.015,
+    "bottom": 0,
+    "width": 0.97,
+    "height": 0.18,
+    "depthM": 0.055,
+    "surface": "stone",
+    "openingIds": [
+      "cellar-left",
+      "basement-middle",
+      "cellar-right"
+    ]
+  },
+  "roofAssembly": {
+    "template": "symmetric-front-hip",
+    "fit": "native-envelope",
+    "surfaceIds": [
+      "NL.IMBAG.Pand.0363100012169905-0:lod22:roof:40",
+      "NL.IMBAG.Pand.0363100012169905-0:lod22:roof:41"
+    ],
+    "eavesM": 10.89,
+    "ridgeM": 14.62,
+    "hipDepthM": 2.75
+  },
+  "roofVolume": {
+    "seedSurfaceIds": [
+      "NL.IMBAG.Pand.0363100012169905-0:lod22:roof:40",
+      "NL.IMBAG.Pand.0363100012169905-0:lod22:roof:41"
+    ],
+    "depthM": [
+      -0.2,
+      12.3
+    ],
+    "minHeightM": 10.65,
+    "sourceReview": "Authorised symmetry inference for one continuous main roof using native side-eaves and reference crown height. Survey40/41front and43/45rear are connected partitions of that volume; lower annexes39/42/44/46 retained. Profile/ridge inferred rather than photographically measured."
+  }
+}

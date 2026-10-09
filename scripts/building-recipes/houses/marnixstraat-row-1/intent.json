@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "kind": "canal-house",
+  "id": "marnixstraat-row-1",
+  "pandId": "0363100012174914",
+  "address": "Marnixstraat 124-138 row, southern parent",
+  "sources": [{"id": "pano-2022-04-29", "kind": "street-panorama", "capturedAt": "2022-04-29", "image": "artifacts/building-recipes/marnixstraat-row-1/photo-front0.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}],
+  "fronts": [{
+    "id": "front0", "street": "Marnixstraat",
+    "gable": "cornice", "crownCap": "pediment",
+    "storeys": 4, "bays": 3,
+    "doorBay": 1,
+    "basement": "none", "cornice": "simple", "windows": "sash", "hoist": false
+  }],
+  "roof": {"material": "slate"},
+  "palette": {"brick": "red-brown", "frame": "white", "door": "dark-green", "stone": "sandstone"},
+  "notes": ["1876-78 municipal monument row by B. de Greef: three paired-sash axes, central door, narrow raised stepped crown over the middle axis (approximated by a pediment cap)."]
+}

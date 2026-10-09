@@ -1,0 +1,2465 @@
+{
+  "schemaVersion": 1,
+  "id": "canalhouse-reference-candidates",
+  "title": "Source-authored reusable canalhouse candidates",
+  "sourceArchive": {
+    "path": "models/bloemgracht-174/manifest.json",
+    "commit": null
+  },
+  "sourceArchives": [
+    {
+      "path": "models/bloemgracht-174/manifest.json",
+      "commit": null
+    }
+  ],
+  "acceptance": {
+    "individual": false,
+    "row": false,
+    "heldouts": false,
+    "independent": false,
+    "game": false,
+    "performance": false
+  },
+  "entries": [
+    {
+      "roofMaterial": {
+        "preset": "grey-ceramic"
+      },
+      "name": "Bloemgracht 174",
+      "anchorRD": [
+        120294.37991666666,
+        487490.75125
+      ],
+      "anchor": [
+        4.877559605237291,
+        52.3741925875732
+      ],
+      "frontNormal": [
+        0.33731305023574465,
+        0.9413925356304129
+      ],
+      "frontTarget": [
+        3.605083333350194,
+        7.030922021207807,
+        7.677749999973457
+      ],
+      "frontWidthM": 5.188058981936639,
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012174824"
+      ],
+      "sourceUrl": null,
+      "sourceArchive": {
+        "path": "models/bloemgracht-174/manifest.json",
+        "commit": null
+      },
+      "assemblyInput": {
+        "schemaVersion": 1,
+        "id": "bloemgracht-174",
+        "roofMaterial": {
+          "preset": "grey-ceramic"
+        },
+        "frameSets": {
+          "bodySash": {
+            "template": "broad-dark-paired-sash",
+            "overrides": {
+              "trimWidthM": 0.075,
+              "frameDepthM": 0.14,
+              "horizontalBars": [
+                0.5,
+                0.75
+              ],
+              "mullionWidthM": 0.03
+            }
+          },
+          "groundBroadSash": {
+            "template": "plain-frame",
+            "overrides": {
+              "trimWidthM": 0.07,
+              "frameDepthM": 0.14,
+              "verticalBars": [
+                0.3333,
+                0.6667
+              ],
+              "horizontalBars": [
+                0.25,
+                0.5,
+                0.75
+              ],
+              "mullionWidthM": 0.028,
+              "barSurface": "door"
+            }
+          },
+          "groundNarrowSash": {
+            "template": "plain-frame",
+            "overrides": {
+              "trimWidthM": 0.07,
+              "frameDepthM": 0.14,
+              "verticalBars": [
+                0.5
+              ],
+              "horizontalBars": [
+                0.25,
+                0.5,
+                0.75
+              ],
+              "mullionWidthM": 0.028,
+              "barSurface": "door"
+            }
+          },
+          "entry": {
+            "template": "plain-frame",
+            "overrides": {
+              "trimWidthM": 0.075,
+              "frameDepthM": 0.15
+            }
+          },
+          "entryTransom": {
+            "template": "diamond-transom",
+            "overrides": {
+              "trimWidthM": 0.065,
+              "frameDepthM": 0.15,
+              "verticalBars": [],
+              "horizontalBars": []
+            }
+          },
+          "crown": {
+            "template": "plain-frame",
+            "overrides": {
+              "trimWidthM": 0.075,
+              "frameDepthM": 0.14
+            }
+          },
+          "upperSash": {
+            "template": "plain-frame",
+            "overrides": {
+              "trimWidthM": 0.055,
+              "frameDepthM": 0.14,
+              "verticalBars": [
+                0.5
+              ],
+              "horizontalBars": [
+                0.38,
+                0.72
+              ],
+              "horizontalBarWidthsM": [
+                0.035,
+                0.065
+              ],
+              "barSurface": "door"
+            }
+          },
+          "glazedEntry": {
+            "template": "plain-frame",
+            "overrides": {
+              "trimWidthM": 0.065,
+              "frameDepthM": 0.15,
+              "paneSurface": "glass",
+              "verticalBars": [
+                0.5
+              ],
+              "horizontalBars": [
+                0.52
+              ],
+              "barSurface": "door"
+            }
+          },
+          "groundTransom": {
+            "template": "plain-frame",
+            "overrides": {
+              "trimWidthM": 0.065,
+              "frameDepthM": 0.15,
+              "verticalBars": [
+                0.5
+              ],
+              "horizontalBars": [
+                0.5
+              ],
+              "barSurface": "trim"
+            }
+          },
+          "solidEntry": {
+            "template": "plain-frame",
+            "overrides": {
+              "trimWidthM": 0.075,
+              "frameDepthM": 0.15,
+              "verticalBars": [
+                0.5
+              ],
+              "horizontalBars": []
+            }
+          },
+          "basementSash": {
+            "template": "dark-cellar-frame",
+            "overrides": {
+              "trimWidthM": 0.065,
+              "frameDepthM": 0.12,
+              "verticalBars": [
+                0.5
+              ],
+              "horizontalBars": [
+                0.5
+              ],
+              "barSurface": "door",
+              "paneOffsetM": 0.03
+            }
+          }
+        },
+        "baySets": {
+          "threeAxes": [
+            {
+              "id": "left",
+              "left": 0.075,
+              "width": 0.235
+            },
+            {
+              "id": "center",
+              "left": 0.385,
+              "width": 0.235
+            },
+            {
+              "id": "right",
+              "left": 0.695,
+              "width": 0.235
+            }
+          ],
+          "belEtageAxes": [
+            {
+              "id": "middle",
+              "left": 0.385,
+              "width": 0.235
+            },
+            {
+              "id": "right",
+              "left": 0.695,
+              "width": 0.235
+            }
+          ]
+        },
+        "windowGroups": [
+          {
+            "id": "upperThree",
+            "baySet": "threeAxes",
+            "tiers": [
+              {
+                "id": "first",
+                "bottom": 0.395,
+                "height": 0.18
+              },
+              {
+                "id": "second",
+                "bottom": 0.635,
+                "height": 0.155
+              },
+              {
+                "id": "third",
+                "bottom": 0.835,
+                "height": 0.125
+              }
+            ],
+            "frame": {
+              "use": "upperSash"
+            }
+          },
+          {
+            "id": "belEtage",
+            "baySet": "belEtageAxes",
+            "tiers": [
+              {
+                "id": "raised",
+                "bottom": 0.145,
+                "height": 0.2
+              }
+            ],
+            "frame": {
+              "use": "upperSash"
+            }
+          }
+        ],
+        "openings": [
+          {
+            "id": "raisedEntry",
+            "kind": "door",
+            "left": 0.075,
+            "width": 0.235,
+            "bottom": 0.095,
+            "height": 0.17,
+            "frame": {
+              "use": "solidEntry"
+            },
+            "panels": [
+              {
+                "rect": [
+                  0.08,
+                  0.07,
+                  0.36,
+                  0.2
+                ],
+                "frameWidthM": 0.035,
+                "reliefM": 0.018,
+                "fieldReliefM": 0.004,
+                "frameSurface": "door"
+              },
+              {
+                "rect": [
+                  0.08,
+                  0.37,
+                  0.36,
+                  0.3
+                ],
+                "frameWidthM": 0.035,
+                "reliefM": 0.018,
+                "fieldReliefM": 0.004,
+                "frameSurface": "door"
+              },
+              {
+                "rect": [
+                  0.08,
+                  0.77,
+                  0.36,
+                  0.13
+                ],
+                "frameWidthM": 0.035,
+                "reliefM": 0.018,
+                "fieldReliefM": 0.004,
+                "frameSurface": "door"
+              },
+              {
+                "rect": [
+                  0.56,
+                  0.07,
+                  0.36,
+                  0.2
+                ],
+                "frameWidthM": 0.035,
+                "reliefM": 0.018,
+                "fieldReliefM": 0.004,
+                "frameSurface": "door"
+              },
+              {
+                "rect": [
+                  0.56,
+                  0.37,
+                  0.36,
+                  0.3
+                ],
+                "frameWidthM": 0.035,
+                "reliefM": 0.018,
+                "fieldReliefM": 0.004,
+                "frameSurface": "door"
+              },
+              {
+                "rect": [
+                  0.56,
+                  0.77,
+                  0.36,
+                  0.13
+                ],
+                "frameWidthM": 0.035,
+                "reliefM": 0.018,
+                "fieldReliefM": 0.004,
+                "frameSurface": "door"
+              }
+            ],
+            "transom": {
+              "id": "raisedEntryTransom",
+              "bottom": 0.27,
+              "height": 0.07,
+              "frame": {
+                "use": "entryTransom"
+              }
+            }
+          },
+          {
+            "id": "middleBasementWindow",
+            "kind": "window",
+            "left": 0.385,
+            "width": 0.235,
+            "bottom": 0.014,
+            "height": 0.071,
+            "frame": {
+              "use": "basementSash"
+            }
+          },
+          {
+            "id": "rightBasementEntry",
+            "kind": "door",
+            "left": 0.695,
+            "width": 0.235,
+            "bottom": 0.003,
+            "height": 0.086,
+            "frame": {
+              "use": "solidEntry"
+            },
+            "panels": [
+              {
+                "rect": [
+                  0.08,
+                  0.07,
+                  0.36,
+                  0.85
+                ],
+                "frameWidthM": 0.025,
+                "reliefM": 0.015,
+                "fieldReliefM": 0.003,
+                "frameSurface": "door"
+              },
+              {
+                "rect": [
+                  0.56,
+                  0.07,
+                  0.36,
+                  0.85
+                ],
+                "frameWidthM": 0.025,
+                "reliefM": 0.015,
+                "fieldReliefM": 0.003,
+                "frameSurface": "door"
+              }
+            ]
+          }
+        ],
+        "palette": {
+          "wall": "#946d56",
+          "roof": "#55534c",
+          "trim": "#e4e1cf",
+          "stone": "#b9b5a3",
+          "glass": "#46504d",
+          "door": "#293c32"
+        },
+        "crown": {
+          "depthM": 0.08,
+          "trimWidthM": 0.055,
+          "surface": "trim",
+          "shape": {
+            "family": "lijst",
+            "top": 1,
+            "neckWidth": 1,
+            "shoulder": 1,
+            "cap": "flat"
+          }
+        },
+        "cornice": {
+          "bottom": 0.962,
+          "height": 0.038,
+          "depthM": 0.28,
+          "brackets": 0,
+          "assembly": {
+            "template": "lip-frieze-cap"
+          }
+        },
+        "bands": [],
+        "detailGroups": [
+          {
+            "id": "upperSills",
+            "target": "bands",
+            "columns": [
+              {
+                "id": "left",
+                "left": 0.06899999999999999,
+                "width": 0.247
+              },
+              {
+                "id": "center",
+                "left": 0.379,
+                "width": 0.247
+              },
+              {
+                "id": "right",
+                "left": 0.689,
+                "width": 0.247
+              }
+            ],
+            "rows": [
+              {
+                "id": "first",
+                "bottom": 0.385,
+                "height": 0.01
+              },
+              {
+                "id": "second",
+                "bottom": 0.625,
+                "height": 0.01
+              },
+              {
+                "id": "third",
+                "bottom": 0.825,
+                "height": 0.01
+              }
+            ],
+            "depthM": 0.13,
+            "surface": "trim"
+          },
+          {
+            "id": "belEtageSills",
+            "target": "bands",
+            "columns": [
+              {
+                "id": "middle",
+                "left": 0.379,
+                "width": 0.247
+              },
+              {
+                "id": "right",
+                "left": 0.689,
+                "width": 0.247
+              }
+            ],
+            "rows": [
+              {
+                "id": "raised",
+                "bottom": 0.135,
+                "height": 0.01
+              }
+            ],
+            "depthM": 0.13,
+            "surface": "trim"
+          }
+        ],
+        "ornaments": [],
+        "simplifications": [
+          "Exact Pand0363100012174824, native5.188059mfront and0.125969m172seam retained afterautomaticrefusal; explicitsource-nativepoints, tolerance unchanged.",
+          "Root/independent source count:3axes x3UPPERtiers=9sashes, separate raisedbelEtageleftdoublepaneleddoor/decorativetransom+2tallwindows. Straightpalelijst, centralhoistomitted; no source dormer.",
+          "Actualfull2023view supports leftlanding andRIGHTdescendinglateralstoep withrail; neighborleftstairnotborrowed. Seven drawing divisions represent approximate steps, NOT current photographed tread count. Rise/railheight/depth normalizeddrawing estimates, not calibrateddimensions.",
+          "Middlebasementwindow partlyhiddenbyactualflight/bikes; explicit occludedOpeningIds marks onlythis aperture. Rightdoublebasemententry clear; palegroundbase carriesfullsize sourceopenings, no arbitrarytinyholes. Exactpane/stonepaneldetails held. LowerReferenceTierfull, oppositebankgroundcontextnot loweradmission.",
+          "Shallowfront21roofdepth0-3.49 retained separately from main22/24setback~3.45/ridge15.907; lower23~10.1retained. Nativecandidate roofgeometryunchanged; precise rearroofsymmetry/topology unverified and not accepted from photo. Wall14eaves13.521 not whole ridgeheight.",
+          "Existing opening/groups/doorpanels/groundFront/landing/rail components; newcompact steps-mode contour reusesexisting approach extrusion without custommesh. Carving/ovaltracery/hoist/stonepanels approximate or omitted. Municipal585description empty, no inventedhistoricassertion.",
+          "Candidate source-angle/front/stoep androwreview required; actualgame/GPU/performance and oldfailedheldouts remainheld."
+        ],
+        "frontagePlan": {
+          "maxInsetM": 0.15,
+          "maxOutsetM": 0.11
+        },
+        "lowerReferenceTier": "full",
+        "openingGroups": [],
+        "blocks": [],
+        "sourceBodyWallId": "NL.IMBAG.Pand.0363100012174824-0:lod22:wall:14",
+        "groundFront": {
+          "id": "souterrainBase",
+          "left": 0,
+          "width": 1,
+          "bottom": 0,
+          "height": 0.095,
+          "depthM": 0.065,
+          "surface": "stone",
+          "openingIds": [
+            "middleBasementWindow",
+            "rightBasementEntry"
+          ]
+        },
+        "landing": {
+          "left": 0.045,
+          "width": 0.285,
+          "top": 0.095,
+          "depthM": 0.95,
+          "thicknessM": 0.06,
+          "supportToGround": false
+        },
+        "approaches": [
+          {
+            "id": "rightFlight",
+            "input": {
+              "id": "rightDescentDrawing",
+              "topProfile": {
+                "from": [
+                  0.33,
+                  0
+                ],
+                "to": [
+                  0.69,
+                  -1
+                ],
+                "segments": 7,
+                "mode": "steps"
+              },
+              "railProfile": [
+                [
+                  0.33,
+                  0.8
+                ],
+                [
+                  0.69,
+                  -0.2
+                ]
+              ],
+              "posts": [
+                {
+                  "x": 0.69,
+                  "bottom": -1,
+                  "top": -0.2
+                }
+              ],
+              "projectionDepthM": 0.95,
+              "exactCurrentTreadCount": null
+            },
+            "railWidthM": 0.035,
+            "postWidthM": 0.055,
+            "occludedOpeningIds": [
+              "middleBasementWindow"
+            ]
+          },
+          {
+            "id": "landingRail",
+            "input": {
+              "id": "horizontalLandingRail",
+              "topProfile": null,
+              "railProfile": [
+                [
+                  0.065,
+                  0.8
+                ],
+                [
+                  0.33,
+                  0.8
+                ]
+              ],
+              "posts": [
+                {
+                  "x": 0.065,
+                  "bottom": 0,
+                  "top": 0.8
+                },
+                {
+                  "x": 0.33,
+                  "bottom": 0,
+                  "top": 0.8
+                }
+              ],
+              "projectionDepthM": 0.95,
+              "exactCurrentTreadCount": null
+            },
+            "railWidthM": 0.035,
+            "postWidthM": 0.055,
+            "occludedOpeningIds": []
+          }
+        ],
+        "openingTemplateDefinitions": {
+          "dark-cellar-frame": {
+            "trimWidthM": 0.045,
+            "frameDepthM": 0.08,
+            "mullionWidthM": 0.035,
+            "verticalBars": [],
+            "horizontalBars": [],
+            "paneOffsetM": 0.03,
+            "frameSurface": "door",
+            "barSurface": "door"
+          },
+          "diamond-transom": {
+            "trimWidthM": 0.075,
+            "frameDepthM": 0.12,
+            "mullionWidthM": 0.035,
+            "verticalBars": [],
+            "horizontalBars": [],
+            "diagonalBars": [
+              [
+                [
+                  0.5,
+                  0.09
+                ],
+                [
+                  0.91,
+                  0.5
+                ]
+              ],
+              [
+                [
+                  0.91,
+                  0.5
+                ],
+                [
+                  0.5,
+                  0.91
+                ]
+              ],
+              [
+                [
+                  0.5,
+                  0.91
+                ],
+                [
+                  0.09,
+                  0.5
+                ]
+              ],
+              [
+                [
+                  0.09,
+                  0.5
+                ],
+                [
+                  0.5,
+                  0.09
+                ]
+              ]
+            ]
+          },
+          "plain-frame": {
+            "trimWidthM": 0.075,
+            "frameDepthM": 0.12,
+            "mullionWidthM": 0.035,
+            "verticalBars": [],
+            "horizontalBars": []
+          }
+        },
+        "sourceIdentity": {
+          "pandId": "0363100012174824",
+          "sourceAdmission": "docs/references/canalhouse-recipes/bloemgracht-174-source-admission.json",
+          "registryUrl": null,
+          "surveyUrl": "https://api.3dbag.nl/collections/pand/items?bbox=120193.15258458864,486517.5184435108,121041.91233257853,488543.7417092414&offset=9001&limit=100"
+        },
+        "normalization": {
+          "x": "fraction of principal frontage width",
+          "y": "fraction of body/eaves height",
+          "frontWidthM": 5.188058981936639,
+          "bodyEavesM": 13.521003886938091
+        }
+      },
+      "panorama": {
+        "cameraRD": [
+          120298.06036085857,
+          487477.4969605656
+        ],
+        "cameraHeightM": 2.5,
+        "cameraHeightNote": "Drawing approximation; recorded GPS altitude is not a pavement eye height",
+        "url": "https://t1.data.amsterdam.nl/panorama/2023/02/27/TMX7316010203-002985/pano_0016_000179/equirectangular/panorama_4000.jpg",
+        "headingDeg": -0.7762570365695148,
+        "pitchDeg": 22,
+        "fovDeg": 95,
+        "capturedAt": "2023-02-27T11:37:39.914660Z",
+        "rights": "Gemeente Amsterdam \u00b7 CC BY 4.0"
+      },
+      "basementPanorama": {
+        "url": "https://t1.data.amsterdam.nl/panorama/2023/02/27/TMX7316010203-002985/pano_0016_000179/equirectangular/panorama_4000.jpg",
+        "headingDeg": 359.22575705520563,
+        "pitchDeg": -10,
+        "fovDeg": 95,
+        "capturedAt": "2023-02-27T11:37:39.914660Z",
+        "rights": "Gemeente Amsterdam \u00b7 CC BY 4.0"
+      },
+      "references": [
+        {
+          "label": "Current full facade",
+          "url": "https://t1.data.amsterdam.nl/panorama/2023/02/27/TMX7316010203-002985/pano_0016_000179/equirectangular/panorama_4000.jpg"
+        },
+        {
+          "label": "Current near lower facade",
+          "url": "https://t1.data.amsterdam.nl/panorama/2023/02/27/TMX7316010203-002985/pano_0016_000179/equirectangular/panorama_4000.jpg"
+        }
+      ],
+      "nativeConversion": {
+        "omittedRoofFragments": [],
+        "omittedRoofAreaM2": 0
+      },
+      "lowerFacadeObservation": {
+        "source": "docs/references/canalhouse-recipes/bloemgracht-174-source-admission.json",
+        "recipeInputPath": "docs/references/canalhouse-recipes/bloemgracht-174-recipe-input.json",
+        "uncertainties": [
+          "Exact Pand0363100012174824, native5.188059mfront and0.125969m172seam retained afterautomaticrefusal; explicitsource-nativepoints, tolerance unchanged.",
+          "Root/independent source count:3axes x3UPPERtiers=9sashes, separate raisedbelEtageleftdoublepaneleddoor/decorativetransom+2tallwindows. Straightpalelijst, centralhoistomitted; no source dormer.",
+          "Actualfull2023view supports leftlanding andRIGHTdescendinglateralstoep withrail; neighborleftstairnotborrowed. Seven drawing divisions represent approximate steps, NOT current photographed tread count. Rise/railheight/depth normalizeddrawing estimates, not calibrateddimensions.",
+          "Middlebasementwindow partlyhiddenbyactualflight/bikes; explicit occludedOpeningIds marks onlythis aperture. Rightdoublebasemententry clear; palegroundbase carriesfullsize sourceopenings, no arbitrarytinyholes. Exactpane/stonepaneldetails held. LowerReferenceTierfull, oppositebankgroundcontextnot loweradmission.",
+          "Shallowfront21roofdepth0-3.49 retained separately from main22/24setback~3.45/ridge15.907; lower23~10.1retained. Nativecandidate roofgeometryunchanged; precise rearroofsymmetry/topology unverified and not accepted from photo. Wall14eaves13.521 not whole ridgeheight.",
+          "Existing opening/groups/doorpanels/groundFront/landing/rail components; newcompact steps-mode contour reusesexisting approach extrusion without custommesh. Carving/ovaltracery/hoist/stonepanels approximate or omitted. Municipal585description empty, no inventedhistoricassertion.",
+          "Candidate source-angle/front/stoep androwreview required; actualgame/GPU/performance and oldfailedheldouts remainheld."
+        ],
+        "exactCurrentTreadCount": null,
+        "drawingApproximation": true
+      },
+      "recipe": {
+        "schemaVersion": 1,
+        "id": "bloemgracht-174",
+        "house": {
+          "pandId": "0363100012174824",
+          "plotWidthM": {
+            "value": 5.188058981936639,
+            "source": "bag",
+            "confidence": 0.95,
+            "observationId": "bloemgracht-174-bag",
+            "measuredAt": "2026-10-07"
+          },
+          "depthM": {
+            "value": 0,
+            "source": "default",
+            "confidence": 0,
+            "observationId": null,
+            "measuredAt": null
+          },
+          "eavesHeightM": {
+            "value": 13.521003886938091,
+            "source": "reviewed",
+            "confidence": 0.55,
+            "observationId": "bloemgracht-174-photo",
+            "measuredAt": "2023-02-27"
+          },
+          "ridgeHeightM": {
+            "value": 0,
+            "source": "default",
+            "confidence": 0,
+            "observationId": null,
+            "measuredAt": null
+          },
+          "storeys": {
+            "value": 0,
+            "source": "default",
+            "confidence": 0,
+            "observationId": null,
+            "measuredAt": null
+          },
+          "hasSouterrain": {
+            "value": false,
+            "source": "default",
+            "confidence": 0,
+            "observationId": null,
+            "measuredAt": null
+          },
+          "hasBelEtage": {
+            "value": false,
+            "source": "default",
+            "confidence": 0,
+            "observationId": null,
+            "measuredAt": null
+          },
+          "gable": {
+            "value": "lijst",
+            "source": "reviewed",
+            "confidence": 0.55,
+            "observationId": "bloemgracht-174-photo",
+            "measuredAt": "2023-02-27"
+          },
+          "gableOrnament": {
+            "value": {
+              "clawPieces": false,
+              "vases": 0,
+              "pediment": "none",
+              "festoons": false,
+              "gableStone": false
+            },
+            "source": "default",
+            "confidence": 0,
+            "observationId": null,
+            "measuredAt": null
+          },
+          "bays": {
+            "value": 0,
+            "source": "default",
+            "confidence": 0,
+            "observationId": null,
+            "measuredAt": null
+          },
+          "bayOffsetsM": {
+            "value": [],
+            "source": "default",
+            "confidence": 0,
+            "observationId": null,
+            "measuredAt": null
+          },
+          "windowType": {
+            "value": "later",
+            "source": "default",
+            "confidence": 0,
+            "observationId": null,
+            "measuredAt": null
+          },
+          "storeyHeights": {
+            "value": [],
+            "source": "default",
+            "confidence": 0,
+            "observationId": null,
+            "measuredAt": null
+          },
+          "doorPositionM": {
+            "value": 0,
+            "source": "default",
+            "confidence": 0,
+            "observationId": null,
+            "measuredAt": null
+          },
+          "hoistBeam": {
+            "value": false,
+            "source": "default",
+            "confidence": 0,
+            "observationId": null,
+            "measuredAt": null
+          },
+          "hoistBeamOffsetM": {
+            "value": null,
+            "source": "default",
+            "confidence": 0,
+            "observationId": null,
+            "measuredAt": null
+          },
+          "corniceType": {
+            "value": {
+              "kind": "none",
+              "depthM": 0,
+              "brackets": 0
+            },
+            "source": "default",
+            "confidence": 0,
+            "observationId": null,
+            "measuredAt": null
+          },
+          "brick": {
+            "value": {
+              "bond": "unknown",
+              "colourHex": "#000000",
+              "painted": false,
+              "pointing": "unknown"
+            },
+            "source": "default",
+            "confidence": 0,
+            "observationId": null,
+            "measuredAt": null
+          },
+          "dressings": {
+            "value": "none",
+            "source": "default",
+            "confidence": 0,
+            "observationId": null,
+            "measuredAt": null
+          },
+          "leanDeg": {
+            "value": 0,
+            "source": "default",
+            "confidence": 0,
+            "observationId": null,
+            "measuredAt": null
+          },
+          "ridgeSagM": {
+            "value": 0,
+            "source": "default",
+            "confidence": 0,
+            "observationId": null,
+            "measuredAt": null
+          },
+          "puiType": {
+            "value": {
+              "kind": "none",
+              "heightM": 0,
+              "bays": 0,
+              "frame": "unknown",
+              "hasBordes": false,
+              "hasSouterrainEntrance": false
+            },
+            "source": "default",
+            "confidence": 0,
+            "observationId": null,
+            "measuredAt": null
+          }
+        },
+        "observations": [
+          {
+            "id": "bloemgracht-174-bag",
+            "pandId": "0363100012174824",
+            "kind": "registry-record",
+            "elevation": "front",
+            "capturedAt": "2026-10-07",
+            "sourceUrl": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?bbox=4.876173334224242%2C52.365491736213876%2C4.888430726182581%2C52.38365058073888&cursor=KoE3%7CKrKMzA&f=json&limit=1000",
+            "license": "CC0-1.0"
+          },
+          {
+            "id": "bloemgracht-174-photo",
+            "pandId": "0363100012174824",
+            "kind": "human-review",
+            "elevation": "front",
+            "capturedAt": "2023-02-27",
+            "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2023/02/27/TMX7316010203-002985/pano_0016_000179/equirectangular/panorama_4000.jpg",
+            "license": "CC BY 4.0"
+          },
+          {
+            "id": "bloemgracht-174-lower",
+            "pandId": "0363100012174824",
+            "kind": "human-review",
+            "elevation": "front",
+            "capturedAt": "2023-02-27",
+            "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2023/02/27/TMX7316010203-002985/pano_0016_000179/equirectangular/panorama_4000.jpg",
+            "license": "CC BY 4.0"
+          },
+          {
+            "id": "bloemgracht-174-survey",
+            "pandId": "0363100012174824",
+            "kind": "oblique-aerial",
+            "elevation": "roof",
+            "capturedAt": "2014-01-01",
+            "sourceUrl": "https://api.3dbag.nl/collections/pand/items?bbox=120193.15258458864,486517.5184435108,121041.91233257853,488543.7417092414&offset=9001&limit=100",
+            "license": "CC BY 4.0"
+          }
+        ],
+        "shellTopM": {
+          "value": 10.074003886938092,
+          "source": "3dbag",
+          "confidence": 0.85,
+          "observationId": "bloemgracht-174-survey",
+          "measuredAt": "2014-01-01"
+        },
+        "footprint": {
+          "value": [
+            {
+              "outer": [
+                [
+                  2.5230833333480405,
+                  -3.0882500000298023
+                ],
+                [
+                  -0.06091666665452067,
+                  -2.163250000041444
+                ],
+                [
+                  -0.3199166666454403,
+                  -2.071250000037253
+                ],
+                [
+                  -0.8639166666544043,
+                  -3.5982500000391155
+                ],
+                [
+                  -4.070916666649282,
+                  -4.449250000005122
+                ],
+                [
+                  -3.8629166666505625,
+                  -3.90525000001071
+                ],
+                [
+                  -3.3069166666537058,
+                  -4.102250000054482
+                ],
+                [
+                  -2.1389166666485835,
+                  -0.7942500000353903
+                ],
+                [
+                  0.015083333346410654,
+                  5.300749999994878
+                ],
+                [
+                  1.1630833333474584,
+                  8.552749999973457
+                ],
+                [
+                  6.04708333335293,
+                  6.802749999973457
+                ],
+                [
+                  4.876083333350834,
+                  3.5157499999622814
+                ]
+              ],
+              "holes": []
+            }
+          ],
+          "source": "3dbag",
+          "confidence": 0.85,
+          "observationId": "bloemgracht-174-survey",
+          "measuredAt": "2014-01-01"
+        },
+        "roof": {
+          "value": [
+            {
+              "polygon": {
+                "outer": [
+                  [
+                    1.1630833333474584,
+                    8.552749999973457
+                  ],
+                  [
+                    6.04708333335293,
+                    6.802749999973457
+                  ],
+                  [
+                    4.876083333350834,
+                    3.5157499999622814
+                  ]
+                ],
+                "holes": []
+              },
+              "plane": {
+                "heightM": 13.392370848763223,
+                "slopeX": 0.009797293900786055,
+                "slopeZ": 0.010199990520853342
+              }
+            },
+            {
+              "polygon": {
+                "outer": [
+                  [
+                    1.0200833333510673,
+                    4.931749999988824
+                  ],
+                  [
+                    0.015083333346410654,
+                    5.300749999994878
+                  ],
+                  [
+                    1.1630833333474584,
+                    8.552749999973457
+                  ]
+                ],
+                "holes": []
+              },
+              "plane": {
+                "heightM": 13.390812477945225,
+                "slopeX": 0.009782841875376367,
+                "slopeZ": 0.010384162831266922
+              }
+            },
+            {
+              "polygon": {
+                "outer": [
+                  [
+                    1.1630833333474584,
+                    8.552749999973457
+                  ],
+                  [
+                    4.876083333350834,
+                    3.5157499999622814
+                  ],
+                  [
+                    3.7440833333530463,
+                    3.931749999988824
+                  ]
+                ],
+                "holes": []
+              },
+              "plane": {
+                "heightM": 13.390989595005165,
+                "slopeX": 0.009982257613268326,
+                "slopeZ": 0.010336335620008744
+              }
+            },
+            {
+              "polygon": {
+                "outer": [
+                  [
+                    2.3690833333530463,
+                    4.436749999993481
+                  ],
+                  [
+                    1.0200833333510673,
+                    4.931749999988824
+                  ],
+                  [
+                    1.1630833333474584,
+                    8.552749999973457
+                  ]
+                ],
+                "holes": []
+              },
+              "plane": {
+                "heightM": 13.390846787997095,
+                "slopeX": 0.009741270027661198,
+                "slopeZ": 0.010385804580569093
+              }
+            },
+            {
+              "polygon": {
+                "outer": [
+                  [
+                    1.1630833333474584,
+                    8.552749999973457
+                  ],
+                  [
+                    3.7440833333530463,
+                    3.931749999988824
+                  ],
+                  [
+                    2.3690833333530463,
+                    4.436749999993481
+                  ]
+                ],
+                "holes": []
+              },
+              "plane": {
+                "heightM": 13.388303376720875,
+                "slopeX": 0.010434474415319993,
+                "slopeZ": 0.010588915487159093
+              }
+            },
+            {
+              "polygon": {
+                "outer": [
+                  [
+                    3.7440833333530463,
+                    3.931749999988824
+                  ],
+                  [
+                    4.876083333350834,
+                    3.5157499999622814
+                  ],
+                  [
+                    2.5230833333480405,
+                    -3.0882500000298023
+                  ]
+                ],
+                "holes": []
+              },
+              "plane": {
+                "heightM": 17.04066992595596,
+                "slopeX": -1.5501820552467038,
+                "slopeZ": 0.5677738304064687
+              }
+            },
+            {
+              "polygon": {
+                "outer": [
+                  [
+                    0.02608333334501367,
+                    -1.9282500000554137
+                  ],
+                  [
+                    2.3690833333530463,
+                    4.436749999993481
+                  ],
+                  [
+                    3.7440833333530463,
+                    3.931749999988824
+                  ]
+                ],
+                "holes": []
+              },
+              "plane": {
+                "heightM": 17.043136072330814,
+                "slopeX": -1.5513085437566136,
+                "slopeZ": 0.5682193115485348
+              }
+            },
+            {
+              "polygon": {
+                "outer": [
+                  [
+                    2.5230833333480405,
+                    -3.0882500000298023
+                  ],
+                  [
+                    -0.06091666665452067,
+                    -2.163250000041444
+                  ],
+                  [
+                    0.02608333334501367,
+                    -1.9282500000554137
+                  ]
+                ],
+                "holes": []
+              },
+              "plane": {
+                "heightM": 17.05265798406294,
+                "slopeX": -1.5482939880530397,
+                "slopeZ": 0.5731981998634085
+              }
+            },
+            {
+              "polygon": {
+                "outer": [
+                  [
+                    0.02608333334501367,
+                    -1.9282500000554137
+                  ],
+                  [
+                    3.7440833333530463,
+                    3.931749999988824
+                  ],
+                  [
+                    2.5230833333480405,
+                    -3.0882500000298023
+                  ]
+                ],
+                "holes": []
+              },
+              "plane": {
+                "heightM": 17.042459013624793,
+                "slopeX": -1.5507666809220448,
+                "slopeZ": 0.5678755152995729
+              }
+            },
+            {
+              "polygon": {
+                "outer": [
+                  [
+                    -2.1389166666485835,
+                    -0.7942500000353903
+                  ],
+                  [
+                    -0.3859166666516103,
+                    -1.5192500000121072
+                  ],
+                  [
+                    -0.43391666664683726,
+                    -1.9732500000391155
+                  ]
+                ],
+                "holes": []
+              },
+              "plane": {
+                "heightM": 10.115364416651168,
+                "slopeX": -0.001648083095586973,
+                "slopeZ": 0.011187462529244843
+              }
+            },
+            {
+              "polygon": {
+                "outer": [
+                  [
+                    -4.070916666649282,
+                    -4.449250000005122
+                  ],
+                  [
+                    -3.8629166666505625,
+                    -3.90525000001071
+                  ],
+                  [
+                    -3.3069166666537058,
+                    -4.102250000054482
+                  ]
+                ],
+                "holes": []
+              },
+              "plane": {
+                "heightM": 10.111433434799194,
+                "slopeX": -0.0018838807353745363,
+                "slopeZ": 0.009911483810679928
+              }
+            },
+            {
+              "polygon": {
+                "outer": [
+                  [
+                    0.02608333334501367,
+                    -1.9282500000554137
+                  ],
+                  [
+                    -0.06091666665452067,
+                    -2.163250000041444
+                  ],
+                  [
+                    -0.3199166666454403,
+                    -2.071250000037253
+                  ]
+                ],
+                "holes": []
+              },
+              "plane": {
+                "heightM": 10.110962482243526,
+                "slopeX": -0.0007405363803957936,
+                "slopeZ": 0.00878479432007438
+              }
+            },
+            {
+              "polygon": {
+                "outer": [
+                  [
+                    -3.3069166666537058,
+                    -4.102250000054482
+                  ],
+                  [
+                    -2.1389166666485835,
+                    -0.7942500000353903
+                  ],
+                  [
+                    -0.43391666664683726,
+                    -1.9732500000391155
+                  ]
+                ],
+                "holes": []
+              },
+              "plane": {
+                "heightM": 10.114213773951494,
+                "slopeX": -0.0019980869895456724,
+                "slopeZ": 0.010681307618983343
+              }
+            },
+            {
+              "polygon": {
+                "outer": [
+                  [
+                    -0.8639166666544043,
+                    -3.5982500000391155
+                  ],
+                  [
+                    -4.070916666649282,
+                    -4.449250000005122
+                  ],
+                  [
+                    -3.3069166666537058,
+                    -4.102250000054482
+                  ]
+                ],
+                "holes": []
+              },
+              "plane": {
+                "heightM": 10.108827350107878,
+                "slopeX": -0.001428679498698464,
+                "slopeZ": 0.008909253998380287
+              }
+            },
+            {
+              "polygon": {
+                "outer": [
+                  [
+                    -0.43391666664683726,
+                    -1.9732500000391155
+                  ],
+                  [
+                    0.02608333334501367,
+                    -1.9282500000554137
+                  ],
+                  [
+                    -0.3199166666454403,
+                    -2.071250000037253
+                  ]
+                ],
+                "holes": []
+              },
+              "plane": {
+                "heightM": 10.111692967799913,
+                "slopeX": -0.0008962358093377687,
+                "slopeZ": 0.009161521609719685
+              }
+            },
+            {
+              "polygon": {
+                "outer": [
+                  [
+                    -0.8639166666544043,
+                    -3.5982500000391155
+                  ],
+                  [
+                    -3.3069166666537058,
+                    -4.102250000054482
+                  ],
+                  [
+                    -0.43391666664683726,
+                    -1.9732500000391155
+                  ]
+                ],
+                "holes": []
+              },
+              "plane": {
+                "heightM": 10.113584189133192,
+                "slopeX": -0.0017156232557045247,
+                "slopeZ": 0.010300134153825195
+              }
+            },
+            {
+              "polygon": {
+                "outer": [
+                  [
+                    -0.43391666664683726,
+                    -1.9732500000391155
+                  ],
+                  [
+                    -0.3199166666454403,
+                    -2.071250000037253
+                  ],
+                  [
+                    -0.8639166666544043,
+                    -3.5982500000391155
+                  ]
+                ],
+                "holes": []
+              },
+              "plane": {
+                "heightM": 10.113454928101259,
+                "slopeX": -0.0002506706540799261,
+                "slopeZ": 0.009912485157696172
+              }
+            },
+            {
+              "polygon": {
+                "outer": [
+                  [
+                    -0.3859166666516103,
+                    -1.5192500000121072
+                  ],
+                  [
+                    -2.1389166666485835,
+                    -0.7942500000353903
+                  ],
+                  [
+                    0.015083333346410654,
+                    5.300749999994878
+                  ]
+                ],
+                "holes": []
+              },
+              "plane": {
+                "heightM": 14.731539104600712,
+                "slopeX": 1.5900364072673683,
+                "slopeZ": -0.5885050732121637
+              }
+            },
+            {
+              "polygon": {
+                "outer": [
+                  [
+                    0.02608333334501367,
+                    -1.9282500000554137
+                  ],
+                  [
+                    -0.43391666664683726,
+                    -1.9732500000391155
+                  ],
+                  [
+                    -0.3859166666516103,
+                    -1.5192500000121072
+                  ]
+                ],
+                "holes": []
+              },
+              "plane": {
+                "heightM": 14.734405982012124,
+                "slopeX": 1.5899941939253353,
+                "slopeZ": -0.5866073156056899
+              }
+            },
+            {
+              "polygon": {
+                "outer": [
+                  [
+                    1.0200833333510673,
+                    4.931749999988824
+                  ],
+                  [
+                    2.3690833333530463,
+                    4.436749999993481
+                  ],
+                  [
+                    0.02608333334501367,
+                    -1.9282500000554137
+                  ]
+                ],
+                "holes": []
+              },
+              "plane": {
+                "heightM": 14.731026201280834,
+                "slopeX": 1.5906345774807253,
+                "slopeZ": -0.5883514241981698
+              }
+            },
+            {
+              "polygon": {
+                "outer": [
+                  [
+                    -0.3859166666516103,
+                    -1.5192500000121072
+                  ],
+                  [
+                    0.015083333346410654,
+                    5.300749999994878
+                  ],
+                  [
+                    1.0200833333510673,
+                    4.931749999988824
+                  ]
+                ],
+                "holes": []
+              },
+              "plane": {
+                "heightM": 14.731786105085181,
+                "slopeX": 1.5908692130751427,
+                "slopeZ": -0.588554040239864
+              }
+            },
+            {
+              "polygon": {
+                "outer": [
+                  [
+                    1.0200833333510673,
+                    4.931749999988824
+                  ],
+                  [
+                    0.02608333334501367,
+                    -1.9282500000554137
+                  ],
+                  [
+                    -0.3859166666516103,
+                    -1.5192500000121072
+                  ]
+                ],
+                "holes": []
+              },
+              "plane": {
+                "heightM": 14.731659629027716,
+                "slopeX": 1.5885610476489918,
+                "slopeZ": -0.5880509739572453
+              }
+            }
+          ],
+          "source": "3dbag",
+          "confidence": 0.85,
+          "observationId": "bloemgracht-174-survey",
+          "measuredAt": "2014-01-01"
+        },
+        "palette": {
+          "value": {
+            "wall": "#946d56",
+            "roof": "#55534c",
+            "trim": "#e4e1cf",
+            "stone": "#b9b5a3",
+            "glass": "#46504d",
+            "door": "#293c32"
+          },
+          "source": "reviewed",
+          "confidence": 0.55,
+          "observationId": "bloemgracht-174-photo",
+          "measuredAt": "2023-02-27"
+        },
+        "elevations": [
+          {
+            "id": "principal",
+            "polygonIndex": 0,
+            "edgeIndex": 9,
+            "endEdgeIndex": 10,
+            "frontageToleranceM": {
+              "value": 0.1,
+              "source": "reviewed",
+              "confidence": 0.55,
+              "observationId": "bloemgracht-174-photo",
+              "measuredAt": "2023-02-27"
+            },
+            "frontagePlan": {
+              "value": {
+                "maxInsetM": 0.15,
+                "maxOutsetM": 0.11
+              },
+              "source": "reviewed",
+              "confidence": 0.55,
+              "observationId": "bloemgracht-174-photo",
+              "measuredAt": "2023-02-27"
+            },
+            "openings": {
+              "value": [
+                {
+                  "trimWidthM": 0.055,
+                  "frameDepthM": 0.14,
+                  "mullionWidthM": 0.035,
+                  "verticalBars": [
+                    0.5
+                  ],
+                  "horizontalBars": [
+                    0.38,
+                    0.72
+                  ],
+                  "horizontalBarWidthsM": [
+                    0.035,
+                    0.065
+                  ],
+                  "barSurface": "door",
+                  "id": "upperThree/first/left",
+                  "kind": "window",
+                  "leftM": 0.38910442364524794,
+                  "widthM": 1.2191938607551103,
+                  "bottomM": 5.340796535340546,
+                  "heightM": 2.4337806996488562
+                },
+                {
+                  "trimWidthM": 0.055,
+                  "frameDepthM": 0.14,
+                  "mullionWidthM": 0.035,
+                  "verticalBars": [
+                    0.5
+                  ],
+                  "horizontalBars": [
+                    0.38,
+                    0.72
+                  ],
+                  "horizontalBarWidthsM": [
+                    0.035,
+                    0.065
+                  ],
+                  "barSurface": "door",
+                  "id": "upperThree/first/center",
+                  "kind": "window",
+                  "leftM": 1.9974027080456063,
+                  "widthM": 1.2191938607551103,
+                  "bottomM": 5.340796535340546,
+                  "heightM": 2.4337806996488562
+                },
+                {
+                  "trimWidthM": 0.055,
+                  "frameDepthM": 0.14,
+                  "mullionWidthM": 0.035,
+                  "verticalBars": [
+                    0.5
+                  ],
+                  "horizontalBars": [
+                    0.38,
+                    0.72
+                  ],
+                  "horizontalBarWidthsM": [
+                    0.035,
+                    0.065
+                  ],
+                  "barSurface": "door",
+                  "id": "upperThree/first/right",
+                  "kind": "window",
+                  "leftM": 3.605700992445964,
+                  "widthM": 1.2191938607551103,
+                  "bottomM": 5.340796535340546,
+                  "heightM": 2.4337806996488562
+                },
+                {
+                  "trimWidthM": 0.055,
+                  "frameDepthM": 0.14,
+                  "mullionWidthM": 0.035,
+                  "verticalBars": [
+                    0.5
+                  ],
+                  "horizontalBars": [
+                    0.38,
+                    0.72
+                  ],
+                  "horizontalBarWidthsM": [
+                    0.035,
+                    0.065
+                  ],
+                  "barSurface": "door",
+                  "id": "upperThree/second/left",
+                  "kind": "window",
+                  "leftM": 0.38910442364524794,
+                  "widthM": 1.2191938607551103,
+                  "bottomM": 8.585837468205687,
+                  "heightM": 2.0957556024754043
+                },
+                {
+                  "trimWidthM": 0.055,
+                  "frameDepthM": 0.14,
+                  "mullionWidthM": 0.035,
+                  "verticalBars": [
+                    0.5
+                  ],
+                  "horizontalBars": [
+                    0.38,
+                    0.72
+                  ],
+                  "horizontalBarWidthsM": [
+                    0.035,
+                    0.065
+                  ],
+                  "barSurface": "door",
+                  "id": "upperThree/second/center",
+                  "kind": "window",
+                  "leftM": 1.9974027080456063,
+                  "widthM": 1.2191938607551103,
+                  "bottomM": 8.585837468205687,
+                  "heightM": 2.0957556024754043
+                },
+                {
+                  "trimWidthM": 0.055,
+                  "frameDepthM": 0.14,
+                  "mullionWidthM": 0.035,
+                  "verticalBars": [
+                    0.5
+                  ],
+                  "horizontalBars": [
+                    0.38,
+                    0.72
+                  ],
+                  "horizontalBarWidthsM": [
+                    0.035,
+                    0.065
+                  ],
+                  "barSurface": "door",
+                  "id": "upperThree/second/right",
+                  "kind": "window",
+                  "leftM": 3.605700992445964,
+                  "widthM": 1.2191938607551103,
+                  "bottomM": 8.585837468205687,
+                  "heightM": 2.0957556024754043
+                },
+                {
+                  "trimWidthM": 0.055,
+                  "frameDepthM": 0.14,
+                  "mullionWidthM": 0.035,
+                  "verticalBars": [
+                    0.5
+                  ],
+                  "horizontalBars": [
+                    0.38,
+                    0.72
+                  ],
+                  "horizontalBarWidthsM": [
+                    0.035,
+                    0.065
+                  ],
+                  "barSurface": "door",
+                  "id": "upperThree/third/left",
+                  "kind": "window",
+                  "leftM": 0.38910442364524794,
+                  "widthM": 1.2191938607551103,
+                  "bottomM": 11.290038245593307,
+                  "heightM": 1.6901254858672614
+                },
+                {
+                  "trimWidthM": 0.055,
+                  "frameDepthM": 0.14,
+                  "mullionWidthM": 0.035,
+                  "verticalBars": [
+                    0.5
+                  ],
+                  "horizontalBars": [
+                    0.38,
+                    0.72
+                  ],
+                  "horizontalBarWidthsM": [
+                    0.035,
+                    0.065
+                  ],
+                  "barSurface": "door",
+                  "id": "upperThree/third/center",
+                  "kind": "window",
+                  "leftM": 1.9974027080456063,
+                  "widthM": 1.2191938607551103,
+                  "bottomM": 11.290038245593307,
+                  "heightM": 1.6901254858672614
+                },
+                {
+                  "trimWidthM": 0.055,
+                  "frameDepthM": 0.14,
+                  "mullionWidthM": 0.035,
+                  "verticalBars": [
+                    0.5
+                  ],
+                  "horizontalBars": [
+                    0.38,
+                    0.72
+                  ],
+                  "horizontalBarWidthsM": [
+                    0.035,
+                    0.065
+                  ],
+                  "barSurface": "door",
+                  "id": "upperThree/third/right",
+                  "kind": "window",
+                  "leftM": 3.605700992445964,
+                  "widthM": 1.2191938607551103,
+                  "bottomM": 11.290038245593307,
+                  "heightM": 1.6901254858672614
+                },
+                {
+                  "trimWidthM": 0.055,
+                  "frameDepthM": 0.14,
+                  "mullionWidthM": 0.035,
+                  "verticalBars": [
+                    0.5
+                  ],
+                  "horizontalBars": [
+                    0.38,
+                    0.72
+                  ],
+                  "horizontalBarWidthsM": [
+                    0.035,
+                    0.065
+                  ],
+                  "barSurface": "door",
+                  "id": "belEtage/raised/middle",
+                  "kind": "window",
+                  "leftM": 1.9974027080456063,
+                  "widthM": 1.2191938607551103,
+                  "bottomM": 1.9605455636060232,
+                  "heightM": 2.7042007773876184
+                },
+                {
+                  "trimWidthM": 0.055,
+                  "frameDepthM": 0.14,
+                  "mullionWidthM": 0.035,
+                  "verticalBars": [
+                    0.5
+                  ],
+                  "horizontalBars": [
+                    0.38,
+                    0.72
+                  ],
+                  "horizontalBarWidthsM": [
+                    0.035,
+                    0.065
+                  ],
+                  "barSurface": "door",
+                  "id": "belEtage/raised/right",
+                  "kind": "window",
+                  "leftM": 3.605700992445964,
+                  "widthM": 1.2191938607551103,
+                  "bottomM": 1.9605455636060232,
+                  "heightM": 2.7042007773876184
+                },
+                {
+                  "trimWidthM": 0.075,
+                  "frameDepthM": 0.15,
+                  "mullionWidthM": 0.035,
+                  "verticalBars": [
+                    0.5
+                  ],
+                  "horizontalBars": [],
+                  "id": "raisedEntry",
+                  "kind": "door",
+                  "leftM": 0.38910442364524794,
+                  "bottomM": 1.2844953692591188,
+                  "widthM": 1.2191938607551103,
+                  "heightM": 2.298570660779476,
+                  "panels": [
+                    {
+                      "rect": [
+                        0.08,
+                        0.07,
+                        0.36,
+                        0.2
+                      ],
+                      "frameWidthM": 0.035,
+                      "reliefM": 0.018,
+                      "fieldReliefM": 0.004,
+                      "frameSurface": "door"
+                    },
+                    {
+                      "rect": [
+                        0.08,
+                        0.37,
+                        0.36,
+                        0.3
+                      ],
+                      "frameWidthM": 0.035,
+                      "reliefM": 0.018,
+                      "fieldReliefM": 0.004,
+                      "frameSurface": "door"
+                    },
+                    {
+                      "rect": [
+                        0.08,
+                        0.77,
+                        0.36,
+                        0.13
+                      ],
+                      "frameWidthM": 0.035,
+                      "reliefM": 0.018,
+                      "fieldReliefM": 0.004,
+                      "frameSurface": "door"
+                    },
+                    {
+                      "rect": [
+                        0.56,
+                        0.07,
+                        0.36,
+                        0.2
+                      ],
+                      "frameWidthM": 0.035,
+                      "reliefM": 0.018,
+                      "fieldReliefM": 0.004,
+                      "frameSurface": "door"
+                    },
+                    {
+                      "rect": [
+                        0.56,
+                        0.37,
+                        0.36,
+                        0.3
+                      ],
+                      "frameWidthM": 0.035,
+                      "reliefM": 0.018,
+                      "fieldReliefM": 0.004,
+                      "frameSurface": "door"
+                    },
+                    {
+                      "rect": [
+                        0.56,
+                        0.77,
+                        0.36,
+                        0.13
+                      ],
+                      "frameWidthM": 0.035,
+                      "reliefM": 0.018,
+                      "fieldReliefM": 0.004,
+                      "frameSurface": "door"
+                    }
+                  ]
+                },
+                {
+                  "trimWidthM": 0.065,
+                  "frameDepthM": 0.15,
+                  "mullionWidthM": 0.035,
+                  "verticalBars": [],
+                  "horizontalBars": [],
+                  "diagonalBars": [
+                    [
+                      [
+                        0.5,
+                        0.09
+                      ],
+                      [
+                        0.91,
+                        0.5
+                      ]
+                    ],
+                    [
+                      [
+                        0.91,
+                        0.5
+                      ],
+                      [
+                        0.5,
+                        0.91
+                      ]
+                    ],
+                    [
+                      [
+                        0.5,
+                        0.91
+                      ],
+                      [
+                        0.09,
+                        0.5
+                      ]
+                    ],
+                    [
+                      [
+                        0.09,
+                        0.5
+                      ],
+                      [
+                        0.5,
+                        0.09
+                      ]
+                    ]
+                  ],
+                  "id": "raisedEntryTransom",
+                  "kind": "window",
+                  "leftM": 0.38910442364524794,
+                  "bottomM": 3.650671049473285,
+                  "widthM": 1.2191938607551103,
+                  "heightM": 0.9464702720856665
+                },
+                {
+                  "trimWidthM": 0.065,
+                  "frameDepthM": 0.12,
+                  "mullionWidthM": 0.035,
+                  "verticalBars": [
+                    0.5
+                  ],
+                  "horizontalBars": [
+                    0.5
+                  ],
+                  "paneOffsetM": 0.03,
+                  "frameSurface": "door",
+                  "barSurface": "door",
+                  "id": "middleBasementWindow",
+                  "kind": "window",
+                  "leftM": 1.9974027080456063,
+                  "bottomM": 0.1892940544171333,
+                  "widthM": 1.2191938607551103,
+                  "heightM": 0.9599912759726044
+                },
+                {
+                  "trimWidthM": 0.075,
+                  "frameDepthM": 0.15,
+                  "mullionWidthM": 0.035,
+                  "verticalBars": [
+                    0.5
+                  ],
+                  "horizontalBars": [],
+                  "id": "rightBasementEntry",
+                  "kind": "door",
+                  "leftM": 3.605700992445964,
+                  "bottomM": 0.040563011660814274,
+                  "widthM": 1.2191938607551103,
+                  "heightM": 1.1628063342766757,
+                  "panels": [
+                    {
+                      "rect": [
+                        0.08,
+                        0.07,
+                        0.36,
+                        0.85
+                      ],
+                      "frameWidthM": 0.025,
+                      "reliefM": 0.015,
+                      "fieldReliefM": 0.003,
+                      "frameSurface": "door"
+                    },
+                    {
+                      "rect": [
+                        0.56,
+                        0.07,
+                        0.36,
+                        0.85
+                      ],
+                      "frameWidthM": 0.025,
+                      "reliefM": 0.015,
+                      "fieldReliefM": 0.003,
+                      "frameSurface": "door"
+                    }
+                  ]
+                }
+              ],
+              "source": "reviewed",
+              "confidence": 0.55,
+              "observationId": "bloemgracht-174-photo",
+              "measuredAt": "2023-02-27"
+            },
+            "crown": {
+              "value": {
+                "depthM": 0.08,
+                "trimWidthM": 0.055,
+                "surface": "trim",
+                "profile": [
+                  [
+                    0,
+                    13.521003886938091
+                  ],
+                  [
+                    5.188058981936639,
+                    13.521003886938091
+                  ]
+                ]
+              },
+              "source": "reviewed",
+              "confidence": 0.55,
+              "observationId": "bloemgracht-174-photo",
+              "measuredAt": "2023-02-27"
+            },
+            "blocks": {
+              "value": [
+                {
+                  "id": "observed-front-body",
+                  "leftM": 0,
+                  "bottomM": 10.074003886938092,
+                  "widthM": 5.188058981936639,
+                  "heightM": 3.446999999999999,
+                  "depthM": 0.025,
+                  "surface": "wall"
+                },
+                {
+                  "id": "souterrainBase/field",
+                  "leftM": 0,
+                  "bottomM": 0,
+                  "widthM": 5.188058981936639,
+                  "heightM": 1.2844953692591188,
+                  "depthM": 0.065,
+                  "surface": "stone"
+                }
+              ],
+              "source": "reviewed",
+              "confidence": 0.55,
+              "observationId": "bloemgracht-174-photo",
+              "measuredAt": "2023-02-27"
+            },
+            "bands": {
+              "value": [
+                {
+                  "id": "upperSills/first/left",
+                  "leftM": 0.35797606975362806,
+                  "widthM": 1.28145056853835,
+                  "bottomM": 5.205586496471165,
+                  "heightM": 0.1352100388693809,
+                  "depthM": 0.13,
+                  "surface": "trim"
+                },
+                {
+                  "id": "upperSills/first/center",
+                  "leftM": 1.9662743541539864,
+                  "widthM": 1.28145056853835,
+                  "bottomM": 5.205586496471165,
+                  "heightM": 0.1352100388693809,
+                  "depthM": 0.13,
+                  "surface": "trim"
+                },
+                {
+                  "id": "upperSills/first/right",
+                  "leftM": 3.5745726385543444,
+                  "widthM": 1.28145056853835,
+                  "bottomM": 5.205586496471165,
+                  "heightM": 0.1352100388693809,
+                  "depthM": 0.13,
+                  "surface": "trim"
+                },
+                {
+                  "id": "upperSills/second/left",
+                  "leftM": 0.35797606975362806,
+                  "widthM": 1.28145056853835,
+                  "bottomM": 8.450627429336308,
+                  "heightM": 0.1352100388693809,
+                  "depthM": 0.13,
+                  "surface": "trim"
+                },
+                {
+                  "id": "upperSills/second/center",
+                  "leftM": 1.9662743541539864,
+                  "widthM": 1.28145056853835,
+                  "bottomM": 8.450627429336308,
+                  "heightM": 0.1352100388693809,
+                  "depthM": 0.13,
+                  "surface": "trim"
+                },
+                {
+                  "id": "upperSills/second/right",
+                  "leftM": 3.5745726385543444,
+                  "widthM": 1.28145056853835,
+                  "bottomM": 8.450627429336308,
+                  "heightM": 0.1352100388693809,
+                  "depthM": 0.13,
+                  "surface": "trim"
+                },
+                {
+                  "id": "upperSills/third/left",
+                  "leftM": 0.35797606975362806,
+                  "widthM": 1.28145056853835,
+                  "bottomM": 11.154828206723925,
+                  "heightM": 0.1352100388693809,
+                  "depthM": 0.13,
+                  "surface": "trim"
+                },
+                {
+                  "id": "upperSills/third/center",
+                  "leftM": 1.9662743541539864,
+                  "widthM": 1.28145056853835,
+                  "bottomM": 11.154828206723925,
+                  "heightM": 0.1352100388693809,
+                  "depthM": 0.13,
+                  "surface": "trim"
+                },
+                {
+                  "id": "upperSills/third/right",
+                  "leftM": 3.5745726385543444,
+                  "widthM": 1.28145056853835,
+                  "bottomM": 11.154828206723925,
+                  "heightM": 0.1352100388693809,
+                  "depthM": 0.13,
+                  "surface": "trim"
+                },
+                {
+                  "id": "belEtageSills/raised/middle",
+                  "leftM": 1.9662743541539864,
+                  "widthM": 1.28145056853835,
+                  "bottomM": 1.8253355247366425,
+                  "heightM": 0.1352100388693809,
+                  "depthM": 0.13,
+                  "surface": "trim"
+                },
+                {
+                  "id": "belEtageSills/raised/right",
+                  "leftM": 3.5745726385543444,
+                  "widthM": 1.28145056853835,
+                  "bottomM": 1.8253355247366425,
+                  "heightM": 0.1352100388693809,
+                  "depthM": 0.13,
+                  "surface": "trim"
+                }
+              ],
+              "source": "reviewed",
+              "confidence": 0.55,
+              "observationId": "bloemgracht-174-photo",
+              "measuredAt": "2023-02-27"
+            },
+            "cornice": {
+              "value": {
+                "bottomM": 13.007205739234443,
+                "heightM": 0.5137981477036475,
+                "depthM": 0.28,
+                "brackets": 0,
+                "layers": [
+                  {
+                    "bottomM": 13.007205739234443,
+                    "heightM": 0.07706972215554712,
+                    "depthM": 0.15
+                  },
+                  {
+                    "bottomM": 13.084275461389991,
+                    "heightM": 0.32369283305329793,
+                    "depthM": 0.07
+                  },
+                  {
+                    "bottomM": 13.407968294443288,
+                    "heightM": 0.11303559249480244,
+                    "depthM": 0.28,
+                    "underside": {
+                      "riseM": 0.05,
+                      "insetM": 0.1
+                    }
+                  }
+                ]
+              },
+              "source": "reviewed",
+              "confidence": 0.55,
+              "observationId": "bloemgracht-174-photo",
+              "measuredAt": "2023-02-27"
+            },
+            "ornaments": {
+              "value": [],
+              "source": "reviewed",
+              "confidence": 0.55,
+              "observationId": "bloemgracht-174-photo",
+              "measuredAt": "2023-02-27"
+            },
+            "landing": {
+              "value": {
+                "leftM": 0.23346265418714876,
+                "widthM": 1.4785968098519422,
+                "topM": 1.2844953692591188,
+                "depthM": 0.95,
+                "thicknessM": 0.06
+              },
+              "source": "reviewed",
+              "confidence": 0.4,
+              "observationId": "bloemgracht-174-lower",
+              "measuredAt": "2023-02-27"
+            },
+            "approaches": [
+              {
+                "id": "rightFlight",
+                "assembly": {
+                  "value": {
+                    "topProfile": [
+                      [
+                        1.7120594640390912,
+                        1.2844953692591188
+                      ],
+                      [
+                        1.9788739259672612,
+                        1.2844953692591188
+                      ],
+                      [
+                        1.9788739259672612,
+                        1.1009960307935305
+                      ],
+                      [
+                        2.245688387895431,
+                        1.1009960307935305
+                      ],
+                      [
+                        2.245688387895431,
+                        0.917496692327942
+                      ],
+                      [
+                        2.5125028498236013,
+                        0.917496692327942
+                      ],
+                      [
+                        2.5125028498236013,
+                        0.7339973538623537
+                      ],
+                      [
+                        2.779317311751771,
+                        0.7339973538623537
+                      ],
+                      [
+                        2.779317311751771,
+                        0.5504980153967652
+                      ],
+                      [
+                        3.046131773679941,
+                        0.5504980153967652
+                      ],
+                      [
+                        3.046131773679941,
+                        0.3669986769311768
+                      ],
+                      [
+                        3.312946235608111,
+                        0.3669986769311768
+                      ],
+                      [
+                        3.312946235608111,
+                        0.18349933846558852
+                      ],
+                      [
+                        3.579760697536281,
+                        0.18349933846558852
+                      ],
+                      [
+                        3.579760697536281,
+                        0
+                      ]
+                    ],
+                    "groundM": 0,
+                    "backM": 0,
+                    "depthM": 0.95,
+                    "railProfile": [
+                      [
+                        1.7120594640390912,
+                        2.312091664666414
+                      ],
+                      [
+                        3.579760697536281,
+                        1.027596295407295
+                      ]
+                    ],
+                    "posts": [
+                      {
+                        "xM": 3.579760697536281,
+                        "bottomM": 0,
+                        "topM": 1.027596295407295
+                      }
+                    ],
+                    "railWidthM": 0.035,
+                    "postWidthM": 0.055,
+                    "occludedOpeningIds": [
+                      "middleBasementWindow"
+                    ]
+                  },
+                  "source": "reviewed",
+                  "confidence": 0.4,
+                  "observationId": "bloemgracht-174-lower",
+                  "measuredAt": "2023-02-27"
+                }
+              },
+              {
+                "id": "landingRail",
+                "assembly": {
+                  "value": {
+                    "topProfile": null,
+                    "groundM": 0,
+                    "backM": 0,
+                    "depthM": 0.95,
+                    "railProfile": [
+                      [
+                        0.33722383382588156,
+                        2.312091664666414
+                      ],
+                      [
+                        1.7120594640390912,
+                        2.312091664666414
+                      ]
+                    ],
+                    "posts": [
+                      {
+                        "xM": 0.33722383382588156,
+                        "bottomM": 1.2844953692591188,
+                        "topM": 2.312091664666414
+                      },
+                      {
+                        "xM": 1.7120594640390912,
+                        "bottomM": 1.2844953692591188,
+                        "topM": 2.312091664666414
+                      }
+                    ],
+                    "railWidthM": 0.035,
+                    "postWidthM": 0.055,
+                    "occludedOpeningIds": []
+                  },
+                  "source": "reviewed",
+                  "confidence": 0.4,
+                  "observationId": "bloemgracht-174-lower",
+                  "measuredAt": "2023-02-27"
+                }
+              }
+            ]
+          }
+        ],
+        "simplifications": [
+          "Exact Pand0363100012174824, native5.188059mfront and0.125969m172seam retained afterautomaticrefusal; explicitsource-nativepoints, tolerance unchanged.",
+          "Root/independent source count:3axes x3UPPERtiers=9sashes, separate raisedbelEtageleftdoublepaneleddoor/decorativetransom+2tallwindows. Straightpalelijst, centralhoistomitted; no source dormer.",
+          "Actualfull2023view supports leftlanding andRIGHTdescendinglateralstoep withrail; neighborleftstairnotborrowed. Seven drawing divisions represent approximate steps, NOT current photographed tread count. Rise/railheight/depth normalizeddrawing estimates, not calibrateddimensions.",
+          "Middlebasementwindow partlyhiddenbyactualflight/bikes; explicit occludedOpeningIds marks onlythis aperture. Rightdoublebasemententry clear; palegroundbase carriesfullsize sourceopenings, no arbitrarytinyholes. Exactpane/stonepaneldetails held. LowerReferenceTierfull, oppositebankgroundcontextnot loweradmission.",
+          "Shallowfront21roofdepth0-3.49 retained separately from main22/24setback~3.45/ridge15.907; lower23~10.1retained. Nativecandidate roofgeometryunchanged; precise rearroofsymmetry/topology unverified and not accepted from photo. Wall14eaves13.521 not whole ridgeheight.",
+          "Existing opening/groups/doorpanels/groundFront/landing/rail components; newcompact steps-mode contour reusesexisting approach extrusion without custommesh. Carving/ovaltracery/hoist/stonepanels approximate or omitted. Municipal585description empty, no inventedhistoricassertion.",
+          "Candidate source-angle/front/stoep androwreview required; actualgame/GPU/performance and oldfailedheldouts remainheld."
+        ]
+      }
+    }
+  ],
+  "reviewRows": [
+    {
+      "id": "row-bloemgracht-174-source",
+      "houseIds": [
+        "bloemgracht-174"
+      ],
+      "referenceHouseId": "bloemgracht-174",
+      "panoramaFovDeg": 95
+    }
+  ]
+}
