@@ -1,0 +1,16 @@
+{
+  "id": "de-beurs-van-berlage",
+  "countedBy": "pending blind count",
+  "facades": [
+    {
+      "name": "Damrak front",
+      "bearing": 307.5,
+      "photo": "artifacts/landmark-lanes/de-beurs-van-berlage/ref-a.jpg"
+    },
+    {
+      "name": "water side",
+      "bearing": 37.5,
+      "photo": "artifacts/landmark-lanes/de-beurs-van-berlage/ref-c.jpg"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "artis-library",
+  "countedBy": "pending blind count",
+  "facades": [
+    {
+      "name": "north",
+      "bearing": 2.5,
+      "photo": "artifacts/landmark-lanes/artis-library/ref-n.jpg"
+    },
+    {
+      "name": "south",
+      "bearing": 182.5,
+      "photo": "artifacts/landmark-lanes/artis-library/ref-s.jpg"
+    }
+  ]
+}
