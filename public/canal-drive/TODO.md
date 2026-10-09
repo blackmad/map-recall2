@@ -47,10 +47,12 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   `getBounds()` per entry per frame, no frustum cull, no eviction
   (`signature-landmarks-source.js`). Re-baseline against
   `docs/performance/2026-10-06/` first.
-- **One building pipeline** (landmarks + ordinary houses): typed intent
-  recipe → deterministic fit from BAG/3DBAG → library components → automated
-  gates + contact sheet; batch deploys. Starts from the unmerged library on
-  `wip/canalhouse-recipes-20261008`.
+- **Recipe pipeline next steps** (pipeline on main, see HISTORY 2026-10-09):
+  runtime instancing in the ordinary layer from `instances.json`; install a
+  first recipe street; components for stepped/neck crowns, brick banding,
+  pilasters, ribbon windows, shutters; stoops on every repeated module;
+  Haiku/Sonnet drafting from the pand-reference feed (all recipes so far were
+  written by the lane agent); `kind: "large"` tier.
   Tiers (user, 2026-10-09; landmarks will reach ~1,000): base (every
   building: 3DBAG LoD2.2 + era facade grammar) → house recipe (row/canal
   houses, ≤15 min, ≤3k tris) → **large building** (schools, blocks,

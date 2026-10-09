@@ -1,5 +1,26 @@
 # Canal Recall — what is built
 
+## Recipe pipeline for ordinary houses lands; Marnixstraat at ~8 s a house (2026-10-09)
+
+Codex's unmerged canal-house component library (`wip/canalhouse-recipes-20261008`)
+is on main with a new typed intent recipe (`src/canalRecall/buildingRecipe/`,
+`scripts/building-recipes/`, `docs/buildings-pipeline.md`). An LLM writes ~30–80
+lines (gable, storeys, bays, door, cornice, roof, palette; no coordinates);
+facts come from one 3DBAG call per building; gates check the decoded GLB
+(≤3k tris, BAG footprint overlap ≥0.9, eave/roof within 0.3 m of 3DBAG, no
+floating parts). The held roof problem is fixed by using the 3DBAG LoD2.2
+planes directly (Bloemgracht 78–90 regression). Reuse: `sameAs` + overrides,
+shared meshes for same-design houses within ±0.3 m, `repeat` along a front;
+GLBs carry metre UVs and material slots for a future shared texture set.
+
+Measured: Marnixstraat 124–138 (5 parents) in 39 s total, one drafted recipe
+and four `sameAs`, four sharing one mesh. Bloemgracht reads convincingly as
+canal houses; Marnixstraat is plausible but generic (crowns should be stepped
+gables, no brick banding); Keizersgracht 569–575 at 8.5k tris is far plainer
+than its hand-built model, so distinctive buildings stay in the large/icon
+tiers. Nothing installed in the game yet: the ordinary layer needs instancing
+from `instances.json` and the material-slot texture set.
+
 ## Nine landmark drafts installed in one afternoon (2026-10-09)
 
 Three Sonnet lanes finished the drafts earlier sessions left uncommitted:
