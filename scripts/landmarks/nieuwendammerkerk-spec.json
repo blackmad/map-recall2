@@ -1,0 +1,51 @@
+{
+  "id": "nieuwendammerkerk",
+  "name": "Nieuwendammerkerk",
+  "landmarkId": "extract_landmarks_767085118",
+  "modelUrl": "./models/nieuwendammerkerk.glb",
+  "suppressOsmIds": [
+    "w280804509",
+    "NL.IMBAG.Pand.0363100012144206"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.940649007575467,
+      52.391768552805786
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 25.0,
+    "widthMetres": 12.7
+  },
+  "surveyed": {
+    "anchor": [
+      4.940649007575467,
+      52.391768552805786
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG 0363100012144206 polygon; geometry baked east/south in native metres. AHN5 2023 + 2025 Amsterdam panoramas; adjacent Kosterij retained."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#835744",
+    "ochre": "#b4a376",
+    "stone": "#b8b7a4",
+    "red": "#6b665c",
+    "slate": "#41494c",
+    "white": "#e9e4cd",
+    "green": "#284d43",
+    "frame": "#444c47",
+    "glass": "#6c8d96",
+    "dark": "#263438",
+    "gold": "#c3aa59"
+  },
+  "attribution": {
+    "title": "Nieuwendammerkerk",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/508536",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native-scale hall church, red tiled gable roof, paired iron-divided arched windows, peaked tower cornices, octagonal slate needle. No copied photo pixels or imported geometry."
+  }
+}

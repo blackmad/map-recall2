@@ -1,0 +1,639 @@
+{
+  "modelId": "nieuwendammerkerk",
+  "status": "builder and isolated CPU preflight ready; full acceptance pending",
+  "retrievedAt": "2026-10-08T19:37:38.551719+00:00",
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "path": "models/nieuwendammerkerk",
+    "commit": "PENDING ROOT SOURCE PUBLICATION; worker does not stage/commit/push"
+  },
+  "rawReferences": [
+    {
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012144206",
+      "retrievedAt": "2026-10-08T19:22:52Z",
+      "status": 200,
+      "sha256": "538fd2d2f12343f2b9f7a7bae45056ec75e9447dd8e01f04d7305675f28e0db3",
+      "rights": "Not established; private research only",
+      "privatePath": "models/nieuwendammerkerk/raw/3dbag.json"
+    },
+    {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?bbox=4.9402,52.3914,4.9412,52.3921&limit=100&f=json",
+      "retrievedAt": "2026-10-08T19:22:11Z",
+      "status": 200,
+      "sha256": "ff7d332c7fb12c7134ab285f61bc0275c18d01d6da680052024b7e8f97b73382",
+      "rights": "Not established; private research only",
+      "privatePath": "models/nieuwendammerkerk/raw/bag-nearby.json"
+    },
+    {
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=Brede%20Kerkepad%208",
+      "retrievedAt": "2026-10-08T19:22:11Z",
+      "status": 200,
+      "sha256": "a3a9cab666f2b112b5b20f34758b266b9dcd126d19ef631eb6a8d8910de85fea",
+      "rights": "Not established; private research only",
+      "privatePath": "models/nieuwendammerkerk/raw/beeldbank-search.html"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Brede_Kerkepad_8.JPG",
+      "retrievedAt": "2026-10-08T19:22:57Z",
+      "status": 200,
+      "sha256": "a45b306a1798ecfb7f2bde4d4d9cd98bec515bbc5760aa60c9d7aab7c503894d",
+      "rights": "Not established; private research only",
+      "privatePath": "models/nieuwendammerkerk/raw/commons-Brede_Kerkepad_8.JPG.html"
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Brede_Kerkepad_8.JPG?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "retrievedAt": "2026-10-08T19:22:59Z",
+      "status": 200,
+      "sha256": "c3db328c4bd2322a9540fcc36daca2e5a531ad8a2361ce1cb5396a0a3fccb69a",
+      "rights": "Marion Golsteijn, CC BY-SA 3.0 NL",
+      "privatePath": "models/nieuwendammerkerk/raw/commons-Brede_Kerkepad_8.JPG",
+      "captureDate": "2010-09-05"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Jacobus_van_Eck,_Afb_A01634000708.jpg",
+      "retrievedAt": "2026-10-08T19:22:57Z",
+      "status": 200,
+      "sha256": "3eb1a2db19a2ad053b37e37c48bbe5ddb9821e035ec46edba225eeab6a2c9cd9",
+      "rights": "Not established; private research only",
+      "privatePath": "models/nieuwendammerkerk/raw/commons-Jacobus_van_Eck,_Afb_A01634000708.jpg.html"
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/26/Jacobus_van_Eck%2C_Afb_A01634000708.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+      "retrievedAt": "2026-10-08T19:22:58Z",
+      "status": 200,
+      "sha256": "5d83b1cb5c0c9fec20f0c93c2a8dedfa138362872839732dcd7ed9ad7527c6d8",
+      "rights": "Jacobus van Eck; Commons records public domain; Amsterdam catalogue A01634000708",
+      "privatePath": "models/nieuwendammerkerk/raw/commons-Jacobus_van_Eck,_Afb_A01634000708.jpg",
+      "captureDate": "1922",
+      "originalCatalogueUrl": "http://beeldbank.amsterdam.nl/afbeelding/A01634000708"
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Kerk_met_rondbogen_in_rode_en_gele_baksteen_en_toren_van_twee_geledingen_met_naaldspits_-_Amsterdam_-_20409474_-_RCE.jpg/960px-Kerk_met_rondbogen_in_rode_en_gele_baksteen_en_toren_van_twee_geledingen_met_naaldspits_-_Amsterdam_-_20409474_-_RCE.jpg",
+      "retrievedAt": "2026-10-08T19:34:26Z",
+      "status": 200,
+      "sha256": "e0918a55a6b04bfe15eab91df31630307dc984a78d0906eda7a40c9298f1478f",
+      "rights": "Serg\u00e9 Technau / RCE, CC BY-SA 4.0; derivative thumbnail; original acquisition failed",
+      "privatePath": "models/nieuwendammerkerk/raw/commons-Kerk_met_rondbogen_in_rode_en_gele_baksteen_en_toren_van_twee_geledingen_met_naaldspits_-_Amsterdam_-_20409474_-_RCE.jpg.960.jpg",
+      "captureDate": "2005-06"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Kerk_met_rondbogen_in_rode_en_gele_baksteen_en_toren_van_twee_geledingen_met_naaldspits_-_Amsterdam_-_20409474_-_RCE.jpg",
+      "retrievedAt": "2026-10-08T19:22:57Z",
+      "status": 200,
+      "sha256": "e53d350f8f80c8ec0854ff98e3ddd107555ab7914443ad1b5dc1fcd951a9bafd",
+      "rights": "Not established; private research only",
+      "privatePath": "models/nieuwendammerkerk/raw/commons-Kerk_met_rondbogen_in_rode_en_gele_baksteen_en_toren_van_twee_geledingen_met_naaldspits_-_Amsterdam_-_20409474_-_RCE.jpg.html"
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Nieuwendammerkerk.JPG/960px-Nieuwendammerkerk.JPG",
+      "retrievedAt": "2026-10-08T19:32:25Z",
+      "status": 200,
+      "sha256": "8261528027f3c22c69a12a5ebd15138a14d649cb1e029ec24ede8c8573c43579",
+      "rights": "Marion Golsteijn, CC BY-SA 3.0 NL; derivative thumbnail; original acquisition failed",
+      "privatePath": "models/nieuwendammerkerk/raw/commons-Nieuwendammerkerk.JPG.960.jpg",
+      "captureDate": "2010-09-05"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Nieuwendammerkerk.JPG",
+      "retrievedAt": "2026-10-08T19:22:57Z",
+      "status": 200,
+      "sha256": "5a6c6ef45d561c6f2f3683515774659177d7ca7ad145e31c452d15b1d96a60a7",
+      "rights": "Not established; private research only",
+      "privatePath": "models/nieuwendammerkerk/raw/commons-Nieuwendammerkerk.JPG.html"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Toren_van_de_Nieuwendammerkerk.jpg",
+      "retrievedAt": "2026-10-08T19:22:57Z",
+      "status": 200,
+      "sha256": "7ea6bdc76f86f6913d2658b3798725f9ccd66a01fb326c16955cb689f8a39fab",
+      "rights": "Not established; private research only",
+      "privatePath": "models/nieuwendammerkerk/raw/commons-Toren_van_de_Nieuwendammerkerk.jpg.html"
+    },
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Van_achteren_-_Nieuwendam_-_20164232_-_RCE.jpg/960px-Van_achteren_-_Nieuwendam_-_20164232_-_RCE.jpg",
+      "retrievedAt": "2026-10-08T19:32:26Z",
+      "status": 200,
+      "sha256": "b29e114e89b1fcabab80452c4ac25f42ac08118c0106a4f06ba81e7c60ce782f",
+      "rights": "Gerard Dukker / RCE, CC BY-SA 4.0; derivative thumbnail; original acquisition failed",
+      "privatePath": "models/nieuwendammerkerk/raw/commons-Van_achteren_-_Nieuwendam_-_20164232_-_RCE.jpg.960.jpg",
+      "captureDate": "1965"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Van_achteren_-_Nieuwendam_-_20164232_-_RCE.jpg",
+      "retrievedAt": "2026-10-08T19:22:57Z",
+      "status": 200,
+      "sha256": "85aba24d6a593447e5e63bf3de73b82e11c9f17d17c8d278a94da3d8b584af8d",
+      "rights": "Not established; private research only",
+      "privatePath": "models/nieuwendammerkerk/raw/commons-Van_achteren_-_Nieuwendam_-_20164232_-_RCE.jpg.html"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/Category:Nieuwendammerkerk",
+      "retrievedAt": "2026-10-08T19:22:12Z",
+      "status": 200,
+      "sha256": "d9d5e5bf776c608b847fec5a65d79910a6e935933391b09d9a5733305d0930b4",
+      "rights": "Not established; private research only",
+      "privatePath": "models/nieuwendammerkerk/raw/commons-category.html"
+    },
+    {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/54d8598f-419d-57c6-908f-324b42a1451c",
+      "retrievedAt": "2026-10-08T19:32:44Z",
+      "status": 200,
+      "sha256": "5dbf17c5100e81edeb344d2803668eb0868342c2545b089c77ed198966c45bbc",
+      "rights": "Not established; private research only",
+      "privatePath": "models/nieuwendammerkerk/raw/kosterij-pand.json"
+    },
+    {
+      "url": "https://data.amsterdam.nl/adressen/0363200000057778",
+      "retrievedAt": "2026-10-08T19:22:12Z",
+      "status": 200,
+      "sha256": "b6ed2e8b4bd1a42469816a866efef3d847193311a4f872e24c13a1a779728be7",
+      "rights": "Not established; private research only",
+      "privatePath": "models/nieuwendammerkerk/raw/municipal-address.html"
+    },
+    {
+      "url": "https://amsterdamopdekaart.nl/1850-1940/Brede_Kerkepad/Nieuwendammerkerk",
+      "retrievedAt": "2026-10-08T19:22:11Z",
+      "status": 200,
+      "sha256": "86dc75c9682d9639481e57c62a755eb5020cf953796181ec2f16a81162ab6bfb",
+      "rights": "Not established; private research only",
+      "privatePath": "models/nieuwendammerkerk/raw/municipal-history.html"
+    },
+    {
+      "url": "https://www.nieuwendammerkerk.nl/wp-content/uploads/2019/09/IMG_0213-1.jpg",
+      "retrievedAt": "2026-10-08T19:22:53Z",
+      "status": 200,
+      "sha256": "23dc0edc8d070382a1a3fd4aca9e1df0159a30b9513c217bffe9213174271502",
+      "rights": "Not established; private research only",
+      "privatePath": "models/nieuwendammerkerk/raw/operator-2019-side.jpg"
+    },
+    {
+      "url": "https://nieuwendammerkerk.nl/gebouwen-nieuwendammerkerk/",
+      "retrievedAt": "2026-10-08T19:22:13Z",
+      "status": 200,
+      "sha256": "e35fba1650fcd0e69726a0f719e05140f92094e3e602676486637c75a948af54",
+      "rights": "Not established; private research only",
+      "privatePath": "models/nieuwendammerkerk/raw/operator-building.html"
+    },
+    {
+      "url": "https://overpass-api.de/api/interpreter?data=[out:json];way[building](52.3914,4.9402,52.3921,4.9412);out%20geom;",
+      "retrievedAt": "2026-10-08T19:22:21Z",
+      "status": 200,
+      "sha256": "f132359ffdc5ea0d8de7ad7ceb9cd7fdf5a819b0f0f3910740e7cdb5d146baab",
+      "rights": "Not established; private research only",
+      "privatePath": "models/nieuwendammerkerk/raw/osm-nearby.json"
+    },
+    {
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?bbox=4.9400,52.3914,4.9413,52.3920&page_size=100&timestamp_after=2023-01-01",
+      "retrievedAt": "2026-10-08T19:22:59Z",
+      "status": 200,
+      "sha256": "fb7d7881d96e94f032f7fd02648a4b6766b6ded721a4ff8342ad680ccee8a198",
+      "rights": "Not established; private research only",
+      "privatePath": "models/nieuwendammerkerk/raw/panoramas.json"
+    },
+    {
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00169/equirectangular/panorama_8000.jpg",
+      "retrievedAt": "2026-10-08T19:23:29.557Z",
+      "sha256": "3b1b0ab1c76666925cc58d19db59e8d60e0d23fa6cffa0fe74c6f25bcec47db3",
+      "rights": "Gemeente Amsterdam CC BY 4.0",
+      "camera": {
+        "_links": {
+          "self": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-24_14-41-27_00169/"
+          },
+          "equirectangular_full": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00169/equirectangular/panorama_8000.jpg"
+          },
+          "equirectangular_medium": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00169/equirectangular/panorama_4000.jpg"
+          },
+          "equirectangular_small": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00169/equirectangular/panorama_2000.jpg"
+          },
+          "cubic_img_preview": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00169/cubic/preview.jpg"
+          },
+          "thumbnail": {
+            "href": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-24_14-41-27_00169/"
+          },
+          "adjacencies": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-24_14-41-27_00169/adjacencies/"
+          }
+        },
+        "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00169/cubic/",
+        "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00169/cubic/{z}/{f}/{y}/{x}.jpg",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            4.940633359326398,
+            52.391854860606976,
+            0
+          ]
+        },
+        "pano_id": "recording_2025-09-24_14-41-27_00169",
+        "timestamp": "2025-09-24T14:46:32Z",
+        "filename": "recording_2025-09-24_14-41-27_00169.jpg",
+        "surface_type": "L",
+        "mission_distance": 5,
+        "mission_type": "bi",
+        "mission_year": "2025",
+        "tags": [
+          "mission-bi",
+          "mission-2025",
+          "mission-distance-5",
+          "surface-land"
+        ],
+        "roll": 0,
+        "pitch": 0,
+        "heading": 0
+      },
+      "privatePath": "models/nieuwendammerkerk/raw/recording_2025-09-24_14-41-27_00169.jpg"
+    },
+    {
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00171/equirectangular/panorama_8000.jpg",
+      "retrievedAt": "2026-10-08T19:23:25.124Z",
+      "sha256": "3844a883639b65e02972dd539a64e0bff021e4c0c32bc3b0ef7617b1b7e7b577",
+      "rights": "Gemeente Amsterdam CC BY 4.0",
+      "camera": {
+        "_links": {
+          "self": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-24_14-41-27_00171/"
+          },
+          "equirectangular_full": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00171/equirectangular/panorama_8000.jpg"
+          },
+          "equirectangular_medium": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00171/equirectangular/panorama_4000.jpg"
+          },
+          "equirectangular_small": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00171/equirectangular/panorama_2000.jpg"
+          },
+          "cubic_img_preview": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00171/cubic/preview.jpg"
+          },
+          "thumbnail": {
+            "href": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-24_14-41-27_00171/"
+          },
+          "adjacencies": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-24_14-41-27_00171/adjacencies/"
+          }
+        },
+        "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00171/cubic/",
+        "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00171/cubic/{z}/{f}/{y}/{x}.jpg",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            4.940573585756052,
+            52.39177289258431,
+            0
+          ]
+        },
+        "pano_id": "recording_2025-09-24_14-41-27_00171",
+        "timestamp": "2025-09-24T14:46:35Z",
+        "filename": "recording_2025-09-24_14-41-27_00171.jpg",
+        "surface_type": "L",
+        "mission_distance": 5,
+        "mission_type": "bi",
+        "mission_year": "2025",
+        "tags": [
+          "mission-bi",
+          "mission-2025",
+          "mission-distance-5",
+          "surface-land"
+        ],
+        "roll": 0,
+        "pitch": 0,
+        "heading": 0
+      },
+      "privatePath": "models/nieuwendammerkerk/raw/recording_2025-09-24_14-41-27_00171.jpg"
+    },
+    {
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00172/equirectangular/panorama_8000.jpg",
+      "retrievedAt": "2026-10-08T19:23:27.226Z",
+      "sha256": "b3c1a6ddcdf670ceb38d28e19631182ec4c49a69df672d88d33c70508443d20d",
+      "rights": "Gemeente Amsterdam CC BY 4.0",
+      "camera": {
+        "_links": {
+          "self": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-24_14-41-27_00172/"
+          },
+          "equirectangular_full": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00172/equirectangular/panorama_8000.jpg"
+          },
+          "equirectangular_medium": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00172/equirectangular/panorama_4000.jpg"
+          },
+          "equirectangular_small": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00172/equirectangular/panorama_2000.jpg"
+          },
+          "cubic_img_preview": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00172/cubic/preview.jpg"
+          },
+          "thumbnail": {
+            "href": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-24_14-41-27_00172/"
+          },
+          "adjacencies": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-24_14-41-27_00172/adjacencies/"
+          }
+        },
+        "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00172/cubic/",
+        "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00172/cubic/{z}/{f}/{y}/{x}.jpg",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            4.940543190839906,
+            52.39173204595329,
+            0
+          ]
+        },
+        "pano_id": "recording_2025-09-24_14-41-27_00172",
+        "timestamp": "2025-09-24T14:46:36Z",
+        "filename": "recording_2025-09-24_14-41-27_00172.jpg",
+        "surface_type": "L",
+        "mission_distance": 5,
+        "mission_type": "bi",
+        "mission_year": "2025",
+        "tags": [
+          "mission-bi",
+          "mission-2025",
+          "mission-distance-5",
+          "surface-land"
+        ],
+        "roll": 0,
+        "pitch": 0,
+        "heading": 0
+      },
+      "privatePath": "models/nieuwendammerkerk/raw/recording_2025-09-24_14-41-27_00172.jpg"
+    },
+    {
+      "url": "https://www.monumenten.nl/monument/508536",
+      "retrievedAt": "2026-10-08T19:22:13Z",
+      "status": 200,
+      "sha256": "947a8ef2a3a954968851324bff5f08ed3b5679350a1d1630ca54c9ff10bf44f6",
+      "rights": "Not established; private research only",
+      "privatePath": "models/nieuwendammerkerk/raw/register-mirror.html"
+    },
+    {
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/508536",
+      "retrievedAt": "2026-10-08T19:22:11Z",
+      "status": 200,
+      "sha256": "51cb7cf7931b26e7f2372787c594da6d48c0e59b75bdd0ad5e793534d4087ec4",
+      "rights": "Not established; private research only",
+      "privatePath": "models/nieuwendammerkerk/raw/register.html"
+    },
+    {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?bbox=4.9403,52.3915,4.9410,52.3919&limit=100&f=json",
+      "retrievedAt": "2026-10-08T19:32:37Z",
+      "status": 200,
+      "sha256": "e8fb1b689d153b209ec6a7a151049b3caa0c4100164dfd3c6f3e7d68c738062e",
+      "rights": "Not established; private research only",
+      "privatePath": "models/nieuwendammerkerk/raw/vbo-nearby.json"
+    },
+    {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/6f71af61-905a-5c49-91a2-76b5a0993b6d",
+      "retrievedAt": "2026-10-08T19:22:52Z",
+      "status": 200,
+      "sha256": "2f05c53a5a44f0323ede7d5b32cb26ea99e25fd6765789bdb9ee2673d2cb60e5",
+      "rights": "Not established; private research only",
+      "privatePath": "models/nieuwendammerkerk/raw/vbo.json"
+    },
+    {
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00166/equirectangular/panorama_8000.jpg",
+      "retrievedAt": "2026-10-08T19:40:15.226Z",
+      "sha256": "4f32112995cdac2c9b1289f1db1b6cf38cada6f5b1933020ad5c2d1ab7442aa6",
+      "rights": "Gemeente Amsterdam CC BY 4.0",
+      "camera": {
+        "_links": {
+          "self": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-24_14-41-27_00166/"
+          },
+          "equirectangular_full": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00166/equirectangular/panorama_8000.jpg"
+          },
+          "equirectangular_medium": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00166/equirectangular/panorama_4000.jpg"
+          },
+          "equirectangular_small": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00166/equirectangular/panorama_2000.jpg"
+          },
+          "cubic_img_preview": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00166/cubic/preview.jpg"
+          },
+          "thumbnail": {
+            "href": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-24_14-41-27_00166/"
+          },
+          "adjacencies": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-24_14-41-27_00166/adjacencies/"
+          }
+        },
+        "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00166/cubic/",
+        "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00166/cubic/{z}/{f}/{y}/{x}.jpg",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            4.94073419409068,
+            52.3919747314944,
+            0
+          ]
+        },
+        "pano_id": "recording_2025-09-24_14-41-27_00166",
+        "timestamp": "2025-09-24T14:46:29Z",
+        "filename": "recording_2025-09-24_14-41-27_00166.jpg",
+        "surface_type": "L",
+        "mission_distance": 5,
+        "mission_type": "bi",
+        "mission_year": "2025",
+        "tags": [
+          "mission-bi",
+          "mission-2025",
+          "mission-distance-5",
+          "surface-land"
+        ],
+        "roll": 0,
+        "pitch": 0,
+        "heading": 0
+      },
+      "privatePath": "models/nieuwendammerkerk/raw/recording_2025-09-24_14-41-27_00166.jpg"
+    },
+    {
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00315/equirectangular/panorama_8000.jpg",
+      "retrievedAt": "2026-10-08T19:40:17.758Z",
+      "sha256": "08e3c6fccee608b49fc3c2891d7958b4046c580443f35721ba3e2c30286141be",
+      "rights": "Gemeente Amsterdam CC BY 4.0",
+      "camera": {
+        "_links": {
+          "self": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-24_14-41-27_00315/"
+          },
+          "equirectangular_full": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00315/equirectangular/panorama_8000.jpg"
+          },
+          "equirectangular_medium": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00315/equirectangular/panorama_4000.jpg"
+          },
+          "equirectangular_small": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00315/equirectangular/panorama_2000.jpg"
+          },
+          "cubic_img_preview": {
+            "href": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00315/cubic/preview.jpg"
+          },
+          "thumbnail": {
+            "href": "https://api.data.amsterdam.nl/panorama/thumbnail/recording_2025-09-24_14-41-27_00315/"
+          },
+          "adjacencies": {
+            "href": "https://api.data.amsterdam.nl/panorama/panoramas/recording_2025-09-24_14-41-27_00315/adjacencies/"
+          }
+        },
+        "cubic_img_baseurl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00315/cubic/",
+        "cubic_img_pattern": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-09-24_14-41-27_00315/cubic/{z}/{f}/{y}/{x}.jpg",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            4.941161939365046,
+            52.39198997730292,
+            0
+          ]
+        },
+        "pano_id": "recording_2025-09-24_14-41-27_00315",
+        "timestamp": "2025-09-24T14:49:51Z",
+        "filename": "recording_2025-09-24_14-41-27_00315.jpg",
+        "surface_type": "L",
+        "mission_distance": 5,
+        "mission_type": "bi",
+        "mission_year": "2025",
+        "tags": [
+          "mission-bi",
+          "mission-2025",
+          "mission-distance-5",
+          "surface-land"
+        ],
+        "roll": 0,
+        "pitch": 0,
+        "heading": 0
+      },
+      "privatePath": "models/nieuwendammerkerk/raw/recording_2025-09-24_14-41-27_00315.jpg"
+    }
+  ],
+  "assertions": [
+    {
+      "part": "scope",
+      "assertion": "Brede Kerkepad 8 resolves via official VBO 0363010000595427 to BAG 0363100012144206, matching OSM w280804509. Separate address6 Kosterij resolves to BAG0363100012163507 despite 1997 BAG year.",
+      "source": "vbo.json, vbo-nearby.json, kosterij-pand.json, bag-nearby.json, osm-nearby.json",
+      "date": "current retrieval 2026-10-08",
+      "confidence": "high"
+    },
+    {
+      "part": "nave",
+      "assertion": "Three-bay yellow IJssel/red-brick hall church with stone plinth, iron-divided round-headed windows and red brick cordon courses; pale yellow nave bay pilasters. Register describes red tiled gable, but current2025 and2010 north roof reads weathered gray-brown; render current appearance.",
+      "source": "register.html + 2025 panorama00169 + 2010 Brede_Kerkepad_8 + 1922 photo + 2025 panorama00166",
+      "date": "register read 2026-10-08; views1922/2010/2025",
+      "confidence": "high"
+    },
+    {
+      "part": "tower",
+      "assertion": "Broad lower square tower, narrower upper clock stage; four peaked cornices and octagonal slate needle, no flat equipment-height nave slab. Paired round-head first-floor windows, louvred second floor, stone-arched clocks.",
+      "source": "register.html + municipal2025 + RCE2005 + Commons2010",
+      "date": "2005/2010/2025",
+      "confidence": "high"
+    },
+    {
+      "part": "heights",
+      "assertion": "AHN5 2023 native nave roof ~8.1m eaves/~11.85m ridge relative ground; lower cornice~13.55\u201314.5m; upper~17.55\u201318.6m; observed needle to surveymax26.65m and approximate ironfinial27.54m. Horizontalized 3DBAG tower surfaces explicitly not copied.",
+      "source": "3dbag.json and current/historical photos",
+      "date": "AHN5 2023; photos2005\u20132025",
+      "confidence": "survey nave high; reconstructed tower eaves medium \u00b10.5m; finial low"
+    },
+    {
+      "part": "main entrance",
+      "assertion": "West-facing tall green double panel door with round transom and three shallow visible stone steps, faces Brede Kerkepad.",
+      "source": "municipal2025 00171/00172 + RCE2005",
+      "date": "2025-09-24 /2005",
+      "confidence": "high; tread dimensions photo-derived"
+    },
+    {
+      "part": "side entrance",
+      "assertion": "Register establishes second entrance in south wall. Current physical placement remains occluded by Kosterij/trees; builder has bounded approximate placement x15.16m between side bays, not claimed surveyed.",
+      "source": "register.html; municipal2025 occlusion",
+      "date": "2025/2026",
+      "confidence": "existence high; placement low / coordinator review needed"
+    },
+    {
+      "part": "rear",
+      "assertion": "Survey east central projection is retained with same bounded roof slope. No invented rear window count;1965 and1922 rear/context views show mostly occluded plain rear gable.",
+      "source": "BAG polygon + 3dbag roof + RCE1965 + Amsterdam1922",
+      "date": "1922/1965/current survey",
+      "confidence": "scope high; rear openings unresolved"
+    },
+    {
+      "part": "neighbors",
+      "assertion": "Kosterij and churchyard/cemetery are separate; retain BAG0363100012163507/w280805911; opposite houses BAG0363100012113004/w280804532 and BAG0363100012167321/w280805926.",
+      "source": "official address6 VBO/Pand chain, BAG/OSM;2025 and2019 context",
+      "date": "current",
+      "confidence": "high"
+    }
+  ],
+  "accessGaps": [
+    {
+      "source": "Amsterdam Beeldbank",
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=Brede%20Kerkepad%208",
+      "state": "HTTP200 JavaScript shell, not inspected search results",
+      "boundedSearch": "one address query; historical original image and catalogue evidence obtained through Commons A01634000708;18 address matches referenced by municipal-history page"
+    },
+    {
+      "source": "Bouwdossiers1905\u20132010",
+      "url": "https://data.amsterdam.nl/adressen/0363200000057778",
+      "state": "Address page archived; no individual dossier sheets retrieved. Second south entrance location unresolved, root should obtain a relevant elevation/plan if exact placement needed."
+    },
+    {
+      "source": "current northeast panorama00315",
+      "state": "acquired original; inspected crop is fully foliage-occluded; cannot establish current rear facade"
+    }
+  ],
+  "historicalComparison": "1922 Amsterdam and1965 RCE photos retain same nave-gable/stepped tower/spire families as2005/2010 and2025 references. Neighbor alterations do not authorize replacing Kosterij. 2025 panoramas overexposed sunlight; color uses balanced2005/2010 views, not washed-out exposure. Current 00166 inspection rejected initial terracotta roof and red nave pilasters. Corrected to weathered gray-brown roof and pale yellow nave pilasters; preserve failed draft/views under artifacts/nieuwendammerkerk-cpu/before-colour. 00315 northeast view fully foliage-occluded and establishes no rear openings.",
+  "nativeCameras": {
+    "westNorth": [
+      4.9406333593,
+      52.3918548606
+    ],
+    "westSouth": [
+      4.9405431908,
+      52.391732046
+    ],
+    "galleryLocal": {
+      "westSouth": [
+        -1.1,
+        0.3
+      ],
+      "westNorth": [
+        -2.1,
+        0.3
+      ]
+    },
+    "liveBearings": [
+      60,
+      125,
+      275
+    ]
+  },
+  "sourceImagesRemainPrivate": true,
+  "recognitionRepair20261008": {
+    "sourceImages": [
+      "models/nieuwendammerkerk/processed/00166.jpg",
+      "models/nieuwendammerkerk/raw/commons-Brede_Kerkepad_8.JPG"
+    ],
+    "sourceDates": [
+      "2025-09-24 municipal capture",
+      "2010-09-05 Commons photograph"
+    ],
+    "assertion": "Three upright nave iron divisions form four narrow lower pane columns beneath an inner semicircular arch; distinct outer head divisions remain. Narrow paired tower windows retain their original separate assembly.",
+    "confidence": "high observed layout; exact iron width/curve dimensions photo-guided approximations",
+    "failure": "Reviewed10441tri draft had one central nave bar, two broad columns and simple spokes; east projection/shoulder winding pointed inward despite DoubleSide appearance.",
+    "preservedBefore": "artifacts/nieuwendammerkerk-repair/before/nieuwendammerkerk-10441.glb",
+    "beforeSha256": "3be96658fe1806e3813cdaa5eb0cc93013fed713218efca096a29d5ec564ae9d",
+    "correction": "Nave-specific three bars, inner curved iron arch and outer arch subdivisions. Reverse only east gable and east projection faces; west gable preserved. No facade palette/scope changes.",
+    "checks": "Authored and exact compressed24four-column pane hits,18upright bar hits,24inner-arch hits,3outward single-sided gable hits pass. Existing68source/34decoded glazing samples and upward roofs remain passing.",
+    "afterSha256": "7dd13c274c3f51e29abd6c983bf69da2b6edad48b6a3cb5181fefb686294c295",
+    "afterTriangles": 12289,
+    "afterBytes": 158008,
+    "acceptance": "CPU/source recognition reviewed by builder worker; root independent/gallery/live/route/map/card/neighbor/performance acceptance pending."
+  }
+}
