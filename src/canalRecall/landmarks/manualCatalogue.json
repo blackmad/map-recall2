@@ -11479,5 +11479,134 @@
         ]
       ]
     }
+  },
+  {
+    "id": "oudemanhuispoort",
+    "name": "Oudemanhuispoort",
+    "landmarkId": "extract_landmarks_1122909064",
+    "modelUrl": "./models/oudemanhuispoort.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012180206"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.8952165,
+        52.36937
+      ],
+      "headingDegrees": 102.15765033332445,
+      "lengthMetres": 10.498461315831001,
+      "widthMetres": 6.853699493229458
+    },
+    "surveyed": {
+      "anchor": [
+        4.8952165,
+        52.36937
+      ],
+      "northOffsetDegrees": 0,
+      "source": "BAG pand 0363100012180206 (gate-house at the Oudezijds Achterburgwal end of the Oudemanhuispoort passage): exact ring and 3DBAG LoD2.2 solid (about 17 m above ground) in local east/south metres. Anchor is the ring bounding-box centre."
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "materialOverrides": {
+      "brick": "#a2705b",
+      "slate": "#585b61",
+      "white": "#e9e6dc",
+      "stone": "#a7a59d",
+      "dark": "#2e2a28",
+      "ochre": "#4a3a2b",
+      "glass": "#6f858f"
+    },
+    "attribution": {
+      "title": "Oudemanhuispoort",
+      "author": "Map Recall",
+      "sourceUrl": "https://nl.wikipedia.org/wiki/Oudemanhuispoort",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free native-scale model of the gate-house on the exact BAG footprint and 3DBAG LoD2.2 solid, with a sandstone portal from one 2025 municipal panorama. The surrounding university complex is not modelled. No imported mesh or photograph pixels."
+    },
+    "buildingFootprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.89518,
+            52.369408
+          ],
+          [
+            4.895178,
+            52.369407
+          ],
+          [
+            4.895175,
+            52.369408
+          ],
+          [
+            4.895171,
+            52.369403
+          ],
+          [
+            4.895174,
+            52.369402
+          ],
+          [
+            4.895132,
+            52.369352
+          ],
+          [
+            4.895283,
+            52.369332
+          ],
+          [
+            4.895301,
+            52.369385
+          ],
+          [
+            4.895194,
+            52.369398
+          ],
+          [
+            4.895195,
+            52.3694
+          ],
+          [
+            4.895191,
+            52.369401
+          ],
+          [
+            4.895192,
+            52.369403
+          ],
+          [
+            4.895191,
+            52.369403
+          ],
+          [
+            4.895191,
+            52.369405
+          ],
+          [
+            4.895191,
+            52.369406
+          ],
+          [
+            4.895192,
+            52.369407
+          ],
+          [
+            4.895188,
+            52.369408
+          ],
+          [
+            4.895181,
+            52.369407
+          ],
+          [
+            4.89518,
+            52.369408
+          ]
+        ]
+      ]
+    }
   }
 ]

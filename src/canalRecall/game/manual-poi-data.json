@@ -1828,5 +1828,13 @@
     "additionalSources": [
       "https://nl.wikipedia.org/wiki/Hollandsche_Manege"
     ]
+  },
+  {
+    "modelId": "oudemanhuispoort",
+    "landmarkId": "extract_landmarks_1122909064",
+    "name": "Oudemanhuispoort",
+    "description": "The Oudemanhuispoort is a 17th-century complex between the Oudezijds Achterburgwal and the Kloveniersburgwal, built in a square plan as the Old Men's and Women's Hospital. It is now a main site of the University of Amsterdam's humanities faculty and a national monument. A covered passage through one wing links the two canals.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Oudemanhuispoort",
+    "additionalSources": []
   }
 ]
