@@ -654,7 +654,40 @@
       "reviewerDecision": "Root and independent reviewer accept restoration of the376 mapped source houses across both parks and railway transition. Four looks plus eight desktop/touch captures and same-version performance evidence pass scoped gates. Unmapped plots and exact photographed architecture excluded.",
       "nextAction": "Scoped mapped restoration complete; do not expand this prior to other parks without source inventory/review.",
       "productionEvidence": "artifacts/sloterdijkermeer-review/game/report.json",
-      "independentReview": "artifacts/sloterdijkermeer-review/independent-visual-review.json"
+      "independentReview": "artifacts/sloterdijkermeer-review/independent-visual-review.json",
+      "gardenPlantingCycle": {
+        "id": "garden-planting-v1",
+        "status": "accepted-scoped-approximate-planting",
+        "source": "review-data/allotment-houses/garden-obstacles.geojson",
+        "referenceSources": [
+          "https://detuinenvanwesterpark.nl/tuinpark-sloterdijkermeer-keurmerk-natuurlijk-tuinieren/",
+          "https://sloterdijkermeer.nl/natuurlijk-tuinieren-wat-is-dat-eigenlijk-2/"
+        ],
+        "criticalTraits": [
+          "Low hedges, shrubs and flower borders mixed with some vegetable beds",
+          "Retain mapped paths, ditches, water, houses and communal lawns",
+          "Plants and house openings remain visible at near and coarse LOD"
+        ],
+        "inventory": {
+          "houses": 376,
+          "gardensWithClearGround": 372,
+          "groundPatches": 3855,
+          "decoratedPatches": 2488,
+          "renderTriangles": 89488
+        },
+        "placement": "Approximate 4m patches in screened clear ground near mapped houses, not surveyed plot boundaries. All patch corners inside park; complete patch bounding circles clear mapped obstacles. Nearest-house ownership avoids overlapping gardens.",
+        "samples": "Same fixed wide, south-heldout, Nut-heldout and railway-transition cameras on desktop and touch as mapped-house restoration.",
+        "failedEvidence": "artifacts/sloterdijkermeer-review/gardens/failed-ownership",
+        "failureAndRepair": "Independent reviewer found unsuppressed gardens drawn in both coarse and detail meshes. Separate internal non-pickable garden ranges now own LOD visibility; all eight runtime captures have zero wrong vertex hiding flags.",
+        "visualDecision": "artifacts/sloterdijkermeer-review/gardens/independent-review.md",
+        "gameEvidence": "artifacts/sloterdijkermeer-review/gardens/game/report.json",
+        "performance": "Headless desktop/touch-emulated Chrome median frame 16.7ms in all eight views. With/without houses and gardens GPU comparison archived; does not isolate planting-only cost. Physical phone untested.",
+        "limits": [
+          "Approximate square planting grid remains visible",
+          "Four houses lack conservatively screened garden space",
+          "Only mapped house groups in these two parks; no surveyed cadastral plots or individually photographed garden fidelity"
+        ]
+      }
     },
     {
       "id": "oudezijds-next-south-compound-frontage",
@@ -675,6 +708,77 @@
         ]
       },
       "completion": "not-accepted"
+    },
+    {
+      "id": "oudezijds-facade-refinement",
+      "status": "complete-scoped",
+      "scope": "Existing observed 100m/18 fronts; no expansion",
+      "userEvidence": "2026-10-05 screenshot: oversized roofline trim, muted brick, missing one rounded-head window style. User clarification: preserve flat heads, rounded is one selectable style.",
+      "criticalTraits": [
+        "Flat and shallow segmental window heads remain distinct selectable styles",
+        "Lighter cornice band with connected closure and unchanged roof envelope",
+        "Readable running-bond masonry at block/game scale without new wall geometry"
+      ],
+      "fixedSamples": [
+        "cornice-upper",
+        "upper-unmatched",
+        "neck-middle",
+        "bell-lower"
+      ],
+      "baseline": "artifacts/street-appearance/rows/oudezijds-39-71/final",
+      "nextAction": "Continue shared wider compound-frontage capability gap and queued archive-led inventory; no district-wide promotion.",
+      "criticalTraitDecisions": [
+        "pass: distinct selectable flat/segmental heads",
+        "pass: lighter closed cornice",
+        "pass: readable quiet mortar"
+      ],
+      "productionEvidence": "scripts/street-appearance/reviews/oudezijds-39-71/facade-refinement-production.json",
+      "independentReview": "scripts/street-appearance/reviews/oudezijds-39-71/facade-refinement-review.json",
+      "demo": "http://127.0.0.1:5197/rows/oudezijds-39-71/refinement.html",
+      "sourceArchiveCommit": "a6c4f10"
+    },
+    {
+      "id": "pre1905-canalhouse-archive-recipes",
+      "status": "queued-source-inventory",
+      "scope": "Amsterdam canal-house frontage inventory; pre-1905 BAG year is a discovery filter, not visual proof. Observed street-side groups remain the publication unit.",
+      "requestedBy": "User recurring 2026-10-05 archive-led reusable-component proposal",
+      "objective": "Use cached monument descriptions and bounded address-based Beeldbank facade drawings/photos to build reusable facade recipes that improve whole streets, avoiding bespoke per-building meshes.",
+      "sourceArchive": "blackmad/map-recall2-source-data/streets/ and canonical building source packs; original files plus provenance before extraction",
+      "steps": [
+        {
+          "id": "inventory",
+          "status": "pending",
+          "action": "Identify canal-side native BAG fronts and group by physical building and contiguous street side; carry exact source identities, year reliability and archive lookup state."
+        },
+        {
+          "id": "source-sample",
+          "status": "pending",
+          "action": "Use existing cached register descriptions first; acquire representative Beeldbank elevations by address for a bounded street group, note date/alterations and rights. Use current municipal views only where historical drawings leave present appearance uncertain."
+        },
+        {
+          "id": "recipe-family",
+          "status": "pending",
+          "action": "Extract repeated bay groups, flat/segmental heads, cornice/gable families, ground entrances, material/trim relationships. Map to existing components; add a shared component only for a recorded capability gap."
+        },
+        {
+          "id": "block-review",
+          "status": "pending",
+          "action": "Freeze representative/transition samples and fresh independent adjacent challenge before implementation. Compare recognizable whole-row composition and actual game views; retain failed evidence."
+        },
+        {
+          "id": "expand",
+          "status": "pending",
+          "action": "Publish only accepted observed groups; keep inventory coverage, unknown sources and failed transfers explicit. Repeat across next groups without treating modeled examples as city completion."
+        }
+      ],
+      "nextAction": "Start a bounded archive-led frontage inventory and recurring facade-pattern source sample after current refinement; coordinate with the existing wider compound-frontage capability gap.",
+      "coverage": {
+        "accepted": [],
+        "withheld": [
+          "Archive-led citywide expansion until inventory and bounded group review"
+        ],
+        "failed": []
+      }
     }
   ],
   "coverageInventory": [

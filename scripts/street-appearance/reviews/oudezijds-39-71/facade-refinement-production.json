@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "decision": "pass-scoped-refinement",
+  "scope": "Existing observed 100m/18 fronts; two segmental, sixteen flat; no coverage expansion",
+  "sourceArchiveCommit": "a6c4f10",
+  "sourceArchivePath": "streets/oudezijds-voorburgwal-east-39-71-discovery/user-refinement",
+  "catalogRevision": "2b8597da5262de54",
+  "visualReview": "scripts/street-appearance/reviews/oudezijds-39-71/facade-refinement-review.json",
+  "preservedFailure": "refinement/ images had conflicting optional flat 3D headers above curved paint; repaired in refinement-final/",
+  "desktopReport": "artifacts/street-appearance/rows/oudezijds-39-71/refinement-final/game-production/report.json",
+  "touchReport": "artifacts/street-appearance/rows/oudezijds-39-71/refinement-final/phone-production/report.json",
+  "immutableBundles": {
+    "three-buildings.bundle.js": "371d20627fd0464c0b1a4d09681880ecb931bc3fd393bfa933fb9c73516a3ad9",
+    "three-buildings-worker.bundle.js": "25c79ac24f2e88f426483c80cd69725e79fa0329ececeecbd22d2e11bbedb7db",
+    "vector-map.js": "1a1b9343b8bdb493a00ba7e9292163aac38e8bc3b2a236762e7497f136754122",
+    "game-route.js": "4a61b7a7e4111176f9d9a0ec6ee4f47f0a961c2a88dd692771ca22a14660accf"
+  },
+  "runtime": {
+    "desktopModes": 4,
+    "touchModes": 4,
+    "desktopErrors": [],
+    "touchErrors": [],
+    "desktopCoarseOwnershipUnchanged": true,
+    "touchCoarseOwnershipUnchanged": true,
+    "mismatches": 0
+  },
+  "gpu": {
+    "rounds": 3,
+    "framesPerRound": 90,
+    "profilesOnMedianMs": [
+      2.567208,
+      3.849958,
+      4.654875
+    ],
+    "profilesOffMedianMs": [
+      3.637125,
+      4.249083,
+      4.156791
+    ],
+    "medianRatio": 0.9261851269404692,
+    "limit": "Headless M4Pro Chrome; timing varies, no speedup claim. Touch is emulated, not physical-phone performance."
+  },
+  "validation": "88 street-appearance tests and TypeScript pass in isolated source with all committed renderer/garden changes. Root inspected corrected block and actual desktop/touch scenes.",
+  "demo": "http://127.0.0.1:5197/rows/oudezijds-39-71/refinement.html"
+}
