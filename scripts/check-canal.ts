@@ -65,6 +65,8 @@ const CHECKS = [
   'test:cycle-tracks',
   'test:own-pois',
   'test:building-facts',
+  'test:building-recipes',
+  'test:canalhouse-recipes',
   'test:bridge-register',
   'test:photoreal-gate',
   'test:canal-preferences',
