@@ -237,6 +237,10 @@ export interface RecallHost extends GameCoreHost {
   quizCurrentName: string;
   quizCandidateName: string;
   quizCandidateTimer: number;
+  /** Metres along the settling candidate; undefined reads as 0. */
+  quizCandidateMetres?: number;
+  /** Heading on the last frame spent on the settled corridor. */
+  _quizCorridorHeading?: number | null;
   quizPromptKind: QuizPromptKind;
   quizPromptSegmentIndex: number;
   quizPromptPointIndex: number;
