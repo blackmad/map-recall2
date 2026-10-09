@@ -1,0 +1,74 @@
+{
+  "id": "museum-amsterdam-noord",
+  "name": "Museum Amsterdam Noord",
+  "landmarkId": "extract_landmarks_2034905768",
+  "modelUrl": "./models/museum-amsterdam-noord.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012158267"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.9260085,
+      52.3881895
+    ],
+    "headingDegrees": 77.26611841345363,
+    "lengthMetres": 10.097759873305435,
+    "widthMetres": 9.874652274437953
+  },
+  "surveyed": {
+    "anchor": [
+      4.9260085,
+      52.3881895
+    ],
+    "northOffsetDegrees": 0,
+    "source": "BAG pand 0363100012158267 (Zamenhofstraat, Vogeldorp) exact ring in local east/south metres; 3DBAG LoD2.2 hipped roof, ridge about 6.7 m, chimney top about 9.4 m above ground. Anchor is the ring bounding-box centre."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#cdb985",
+    "greyBrick": "#8d7f62",
+    "slate": "#4b4a50",
+    "white": "#f1efe8",
+    "green": "#3f5f49",
+    "glass": "#7f97a0",
+    "dark": "#2e3a35",
+    "stone": "#bdb6a3"
+  },
+  "attribution": {
+    "title": "Museum Amsterdam Noord",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Museum_Amsterdam_Noord",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native-scale hipped-roof bath house on the exact BAG footprint; buff brick, pantile hip with white fascia and dormers, chimney. Openings simplified from one 2025 municipal panorama; no imported mesh or photograph pixels."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.926064,
+          52.388243
+        ],
+        [
+          4.92592,
+          52.388223
+        ],
+        [
+          4.925953,
+          52.388136
+        ],
+        [
+          4.926097,
+          52.388156
+        ],
+        [
+          4.926064,
+          52.388243
+        ]
+      ]
+    ]
+  }
+}

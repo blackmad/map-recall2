@@ -49,6 +49,7 @@ import {buildJeruzalemkerk} from './jeruzalemkerk-builder';
 import {buildGrootMelkhuis} from './groot-melkhuis-builder';
 import {buildBlauweTheehuis} from './blauwe-theehuis-builder';
 import {buildBeestHetLab} from './beest-het-lab-builder';
+import {buildMuseumAmsterdamNoord} from './museum-amsterdam-noord-builder';
 /** Original, texture-free landmark meshes. Run: npx tsx scripts/landmarks/build-manual-landmarks.ts
  * Flat palette shared with landmarkKits.ts; metres, glTF Y-up, facade toward +Z.
  * Reference photographs guide silhouette only; no downloaded meshes or pixels.
@@ -325,6 +326,7 @@ for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || select
     else if(id==='uilenburger-synagoge')buildUilenburgerSynagoge(w,d,helpers);
     else if(id==='nieuwendammerkerk')buildNieuwendammerkerk(w,d,helpers);
     else if(id==='meerpadkerk')buildMeerpadkerk(w,d,helpers);
+    else if(id==='museum-amsterdam-noord')buildMuseumAmsterdamNoord(w,d,helpers);
     else if(id==='hannekes-boom')
       buildHannekesBoom(w,d,helpers);
     else if(id==='posthoornkerk')buildPosthoornkerk(w,d,helpers);
