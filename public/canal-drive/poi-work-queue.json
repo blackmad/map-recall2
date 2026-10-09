@@ -2194,7 +2194,7 @@
       ],
       "evidence": "ordinary-buildings-data/prinsen767-review-20261009.json",
       "handoff": "docs/performance/2026-10-06/canal-belt-continuation-handoff.md",
-      "nextAction": "Hospital35 hosted verified. Review corrected Keizers569\u201357536 actual GPU roof intersections/rear seams and native game; next substantial ordinary source screen active.",
+      "nextAction": "Correct Keizers36 failed v03 GPU roof junctions/corner4, then native-game acceptance. Fresh Brouwersgracht1\u20135/Singel16,22\u201326 ordinary37 author is active from pushed source42; independent roof/source reviewer active. Continuous queue remains open.",
       "sourceCommit": "9fc691744e03b91f70899896033acdb6cbbd1a18",
       "notes": "Ordinary assets/full architecture review for defining Rokin roof assemblies; no invented POI routes. Existing Nacarat basic inside-footprint click card retained. Both strict500k/three-material budgets pass.",
       "localModelCount": 35,
@@ -2210,7 +2210,8 @@
       },
       "publicationSourceCommit": "695ec2b222e9ad4eb41add25711dd8e5ae3ebfe5",
       "pendingModels": [
-        "NL.IMBAG.Pand.0363100012176752"
+        "NL.IMBAG.Pand.0363100012176752",
+        "NL.IMBAG.Pand.0363100012171101"
       ],
       "reviewEvidencePack": "experiments/canal-belt-continuation-20261007/native34-resume-20261008",
       "reviewPreparationCommit": "396603d052c1dc892425ff4ed6da0d449144d61f",
@@ -2439,16 +2440,34 @@
       "id": "keizers575-ordinary-treatment",
       "task": "Source and model native Keizersgracht575 parent0363100012176752",
       "priority": "high",
-      "status": "corrected-draft-gpu-review",
+      "status": "held-gpu-roof-support-failure",
       "buildingIds": [
         "NL.IMBAG.Pand.0363100012176752"
       ],
       "scope": "One official parent includes distinct Venetian569\u2013571 and classical573\u2013575 fronts; one VBO main575/secondary569. Full architecture, no invented POI or standard approval.",
       "sourcePack": "experiments/canal-belt-continuation-20261007/keizers575-next-source37",
-      "nextAction": "v02 CPU source corrections pass; root GPU shows roof intersection gaps/rear seam for independent failure classification. Native/game/performance acceptance pending.",
+      "nextAction": "V04 fixes street-visible roof holes and rear corner4; actual GPU still fails residual measured walls172/41 and central glazed roof/grid identity. V05 source-supported wall/glazing/canopy repair active; preserve all failures and garden gap, then full visual/native/performance review.",
       "sourceCommit": "4ec0a0d69e202f87d573b5543650c9446f20102f",
-      "draftHash": "d4dc293c07343516bcdd7b7e724389c9135c6b5c3b027819a7bd1ef6c2e69e96",
-      "supplementarySourceCommit": "24ce200c61425e6ecc2d4f85a82a2c512cb18c55"
+      "draftHash": "75271b4bff6096d053bac1b9e1b262660635e2daf6dc7df49cb63ff9fc984c32",
+      "supplementarySourceCommit": "24ce200c61425e6ecc2d4f85a82a2c512cb18c55",
+      "gpuFailureEvidence": {
+        "sourceCommit": "a91eeb67bd38ee6340b73d8548c827383de57f88",
+        "sourcePack": "experiments/canal-belt-continuation-20261007/keizers575-v03-failed-review46",
+        "failedHash": "65d9adba08ba9796e9c9b27a0c9278447ce2cf4e74321051bb28cb51243ef4d6"
+      }
+    },
+    {
+      "id": "brouwers1-singel26-ordinary-treatment",
+      "task": "Model joined native Brouwersgracht1\u20135 / Singel16,22\u201326 parent",
+      "priority": "high",
+      "status": "held-first-draft-source-scope-correction",
+      "buildingIds": [
+        "NL.IMBAG.Pand.0363100012171101"
+      ],
+      "scope": "One902m\u00b2 native parent with white doublewarehouse, hipped corner house and distinct cornice/ship-attic/neckgable fronts. Full architectural loop required; no invented POI. Preserve open C-shaped rear notch, low source roofs and exact neighbors.",
+      "sourceCommit": "62af8c1d3642f1a50cda830ce7921c27006aac5d",
+      "sourcePack": "experiments/canal-belt-continuation-20261007/next-ordinary37-source42",
+      "nextAction": "First draft34dc951c decoded structure passes but independent current photo proves white warehouse is13.21m2\u21923, not19.85m2\u21924; separate6.64m brick/window-band frontage missing. V02 correction active. Garden/fringe exclusion passes; root actual gallery/native/performance acceptance pending."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"
