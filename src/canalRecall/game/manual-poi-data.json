@@ -1818,5 +1818,13 @@
     "description": "The Torture Museum stands on the Singel near the Bloemenmarkt, in a narrow brick canal house with a dark glass shopfront. It exhibits historical instruments of torture, though like many such museums it also shows devices that were seldom or never used in real history, such as the iron maiden, a literary invention of the 19th century.",
     "funFact": "The Daily Telegraph called it one of the world's most unusual museums. It is not connected with the separate Museum of Medieval Torture Instruments elsewhere in Amsterdam.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Torture_Museum,_Amsterdam"
+  },
+  {
+    "modelId": "theo-thijssen-museum",
+    "landmarkId": "extract_landmarks_1824871810",
+    "name": "Theo Thijssen Museum",
+    "description": "The Theo Thijssen Museum is devoted to the writer, teacher and politician Theo Thijssen. It is run by the Stichting Theo Thijssen and occupies the ground floor of Thijssen's birthplace at Eerste Leliedwarsstraat 16, a brick corner house with a bowed shop window.",
+    "funFact": "A plaque on the facade records that Theo Thijssen, author of Kees de Jongen, was born in this house.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Theo_Thijssen_Museum"
   }
 ]

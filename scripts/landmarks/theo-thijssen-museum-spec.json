@@ -1,0 +1,85 @@
+{
+  "id": "theo-thijssen-museum",
+  "name": "Theo Thijssen Museum",
+  "landmarkId": "extract_landmarks_1824871810",
+  "modelUrl": "./models/theo-thijssen-museum.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012168755"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.8826878,
+      52.3755212
+    ],
+    "headingDegrees": 69.5,
+    "lengthMetres": 12.26,
+    "widthMetres": 5.04
+  },
+  "surveyed": {
+    "anchor": [
+      4.8826878,
+      52.3755212
+    ],
+    "northOffsetDegrees": 0,
+    "source": "BAG pand 0363100012168755 with 3DBAG LoD2.2 roofs; native east/south metres, scale 1."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "materialOverrides": {
+    "brick": "#7a5b4d",
+    "stone": "#cfc6ae",
+    "slate": "#5d5a58",
+    "white": "#ebe8dc",
+    "glass": "#5c717a",
+    "dark": "#1f2326",
+    "frame": "#e8e2cf"
+  },
+  "attribution": {
+    "title": "Theo Thijssen Museum",
+    "author": "Map Recall",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Theo_Thijssen_Museum",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free model on the BAG footprint (3DBAG LoD2.2 roof faces): brick corner house with bowed ground-floor shop window, cream cornice, white-framed upper windows and the birth plaque. Dimensions approximate, measured from a 2025 street-level panorama. No imported mesh or photo textures."
+  },
+  "buildingFootprint": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.882761,
+          52.37556
+        ],
+        [
+          4.882643,
+          52.375533
+        ],
+        [
+          4.882593,
+          52.375522
+        ],
+        [
+          4.882606,
+          52.375499
+        ],
+        [
+          4.882657,
+          52.375511
+        ],
+        [
+          4.882669,
+          52.375491
+        ],
+        [
+          4.882787,
+          52.375518
+        ],
+        [
+          4.882761,
+          52.37556
+        ]
+      ]
+    ]
+  }
+}
