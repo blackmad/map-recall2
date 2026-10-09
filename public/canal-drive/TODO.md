@@ -155,8 +155,14 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   650–706 (paired casements, stone bands), 708–744, 788–868 (glass bays);
   retry 940–950 with another photo source; 582–648 after scaffolding. The
   street sheet framing was poor (bike drawn over a roof) — reshoot.
-- **Recipe houses next**: stone window surrounds/quoins and awnings (the
-  procedural layer's remaining edge), shop-sign lettering, patterned banding,
+- **Re-review the 19 Bilderdijkstraat recipe houses** under the new
+  acceptance checklist: bilder-156287 has 4 upper storeys and small 4-pane
+  windows where the photo shows 3 storeys + gable, large 1-over-1 windows,
+  middle-bay balconies, brick relieving arches and a 3-window gable. They
+  were accepted on overall resemblance. Run facade-compare on each.
+  Surround/awning evidence still open: Toko Persama (bilder-157154) awning
+  ambiguous; quoins, full-frame and dutch awnings have no house yet.
+- **Recipe houses next**: shop-sign lettering, patterned banding,
   per-house brick variation; fix `check-host-opening-availability` mock
   (needs `SharedAssetCache`); then pilot street chunks (one mesh per block
   face, party walls omitted) on Bilderdijkstraat.
