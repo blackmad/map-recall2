@@ -29,6 +29,7 @@
       "crownCap": "pediment",
       "crownCapSpan": "wide",
       "crownCapRise": "normal",
+      "crownRise": 0.6,
       "storeys": 5,
       "bays": [
        4,
@@ -67,11 +68,10 @@
        "displayWindows": 2,
        "entrance": "right",
        "stallriser": "low",
-       "residentialDoor": {
-        "side": "right",
-        "colour": "natural-wood"
-       },
-       "shopShare": 0.65,
+       "bays": [
+        0,
+        2
+       ],
        "evidence": "pano 2024-11-29 + OSM node 11368129470"
       }
      }
@@ -143,6 +143,7 @@
       "crownCap": "pediment",
       "crownCapSpan": "wide",
       "crownCapRise": "normal",
+      "crownRise": 0.6,
       "storeys": 5,
       "bays": [
        4,
@@ -181,11 +182,10 @@
        "name": "Cortazu",
        "displayWindows": 2,
        "stallriser": "none",
-       "residentialDoor": {
-        "side": "left",
-        "colour": "natural-wood"
-       },
-       "shopShare": 0.9,
+       "bays": [
+        1,
+        3
+       ],
        "evidence": "pano 2024-11-29 + OSM node 14201214801"
       }
      }
@@ -254,6 +254,7 @@
       "crownCap": "pediment",
       "crownCapSpan": "wide",
       "crownCapRise": "normal",
+      "crownRise": 0.6,
       "storeys": 5,
       "bays": [
        4,
@@ -291,11 +292,10 @@
        "fascia": true,
        "displayWindows": 2,
        "stallriser": "none",
-       "residentialDoor": {
-        "side": "right",
-        "colour": "natural-wood"
-       },
-       "shopShare": 0.75,
+       "bays": [
+        0,
+        2
+       ],
        "evidence": "pano 2024-11-29 + OSM node 11395804125 (vacant)"
       }
      }
@@ -344,8 +344,7 @@
     "photoGables": 1,
     "schemaLimits": [
      "top-storey arched windows off the lower axes",
-     "leaves hide parts of the right bay",
-     "photo crown is a taller rounded gable peak (~1.2 m above the parapet); modelled as a wide rounded cap of normal rise"
+     "leaves hide parts of the right bay"
     ]
    }
   }
