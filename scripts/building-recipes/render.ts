@@ -15,7 +15,7 @@ import type {BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts'
 
 const ARTIFACTS = 'artifacts/building-recipes', HOUSES = 'scripts/building-recipes/houses';
 export interface RenderModel { file: string; position?: number[]; rotationY?: number; scale?: number[] }
-export interface RenderView { eye: number[]; target: number[]; fov: number; width: number; height: number }
+export interface RenderView { eye: number[]; target: number[]; fov: number; width: number; height: number; ortho?: [number, number, number, number]; background?: string; noGround?: boolean }
 
 let browser: Browser | null = null, page: Page | null = null;
 async function getPage(): Promise<Page> {

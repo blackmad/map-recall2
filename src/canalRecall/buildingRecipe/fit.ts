@@ -14,7 +14,7 @@ import {surveyRecipe} from '../../../scripts/canalhouse-recipes/survey-recipe.ts
 import {unobservedHouse, type GableType} from '../facade/houseRecord.ts';
 import {measured, type Observation} from '../facade/evidence.ts';
 import type {BuildingFacts, FrontFacts} from './facts.ts';
-import {swatch, type CanalHouseIntent, type FrontIntent, type GableIntent} from './intent.ts';
+import {swatch, type CanalHouseIntent, type FrontIntent, type GableIntent, type ShopSign} from './intent.ts';
 import {cleanRoof, type RoofCleanupReport} from './roofCleanup.ts';
 
 export const ROOF_COLOURS: Record<CanalHouseIntent['roof']['material'], {steep: string; low: string; flat: string}> = {
@@ -37,11 +37,16 @@ const WINDOW_BARS: Record<FrontIntent['windows'], Pick<CanalhouseOpening, 'verti
   shop: {},
 };
 
-/** The shop fascia in viewer metres (leftM, measured from the viewer's left) plus where it sits in the elevation frame (frontLeftM). */
-export interface FasciaRect { leftM: number; widthM: number; bottomM: number; heightM: number; depthM: number; frontLeftM: number; mirrored: boolean; sign?: NonNullable<FrontIntent['shopfront']>['sign'] }
+/**
+ * A rectangle on the shop front in viewer metres (leftM, measured from the viewer's left) plus where it sits in the
+ * elevation frame (frontLeftM); `depthM` is its face's distance in front of the wall plane.
+ */
+export interface FasciaRect { leftM: number; widthM: number; bottomM: number; heightM: number; depthM: number; frontLeftM: number; mirrored: boolean; sign?: ShopSign | null }
+/** Where the sign's lettering goes (signage.ts): the fascia board, the wall band above the glass, or the head of the largest pane. */
+export interface SignBand extends FasciaRect { mount: NonNullable<ShopSign['mount']>; sign: ShopSign }
 
 export interface FitReport {
-  fronts: {id: string; widthM: number; eavesM: number; crownTopM: number; storeyHeightsM: number[]; mirrored: boolean; edge: [number, number]; frontageDeviationM: number; frontageOutsetM: number; polygonIndex: number; fascia?: FasciaRect}[];
+  fronts: {id: string; widthM: number; eavesM: number; crownTopM: number; storeyHeightsM: number[]; mirrored: boolean; edge: [number, number]; frontageDeviationM: number; frontageOutsetM: number; polygonIndex: number; fascia?: FasciaRect; signBand?: SignBand}[];
   warnings: string[];
   /** Height the model may exceed the LoD2.2 roof max by: 3DBAG LoD2.2 has no dormers, so declared dormers stand above it. */
   roofAllowanceM?: number;
@@ -177,13 +182,17 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
     }
     const riserH = {none: 0.12, low: 0.3, medium: SHOP.glassBottomM, high: 0.9}[sf.stallriser ?? 'medium'];
     riserTopM = riserH;
-    const bottom = basement + riserH, top = basement + h - (sf.fascia ? SHOP.fasciaM + SHOP.fasciaGapM + 0.04 : 0.3);
+    // A sign on the wall above the glass (no fascia board) needs a band of wall: lower the glass head.
+    const bottom = basement + riserH, top = basement + h - (sf.fascia ? SHOP.fasciaM + SHOP.fasciaGapM + 0.04 : sf.sign?.mount === 'wall' ? 0.75 : 0.3);
     shopGlass = [bottom, top];
     if (!door) shopSpans.push([left, right]);
     else { if (door[0] - left > 0.6) shopSpans.push([left, door[0]]); if (right - door[1] > 0.6) shopSpans.push([door[1], right]); }
     const glazing = sf.glazing ?? 'split';
+    // `displayWindows` fixes the pane count across the shop glass (shared between spans by width); else split by width.
+    const totalGlass = shopSpans.reduce((t, [a, b]) => t + b - a, 0);
     shopSpans.forEach(([a, b], i) => {
-      const w = b - a, mullions = glazing === 'split' ? Math.max(0, Math.round(w / 1.6) - 1) : 0, glassH = top - bottom;
+      const w = b - a, panes = sf.displayWindows ? Math.max(1, Math.round(sf.displayWindows * w / totalGlass)) : glazing === 'split' ? Math.round(w / 1.6) : 1;
+      const mullions = Math.max(0, panes - 1), glassH = top - bottom;
       openings.push({id: `shop-${i}`, kind: 'window', leftM: a, bottomM: bottom, widthM: w, heightM: glassH, trimWidthM: 0.08,
         verticalBars: Array.from({length: mullions}, (_, k) => round((k + 1) / (mullions + 1), 4)), horizontalBars: glazing === 'single' ? [] : glazing === 'transom' ? [0.8] : glassH > 1.9 ? [0.8] : [], frameSurface: 'shop', barSurface: 'shop'} as CanalhouseOpening);
     });
@@ -305,7 +314,7 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     const layout = layoutFront(front, mw, eaves - (gabled ? 0.2 : corniceH + 0.15));
     const moduleOpenings = Array.from({length: count}, (_, k) => layout.openings.map(o => ({...o, id: count > 1 ? `${o.id}-m${k}` : o.id, leftM: place(k, o.leftM, o.widthM)}))).flat();
     let lintelBands: NonNullable<CanalhouseElevation['bands']>['value'] = [];
-    let fasciaRect: FitReport['fronts'][number]['fascia'];
+    let fasciaRect: FasciaRect | undefined, signBand: SignBand | undefined;
     warnings.push(...layout.warnings);
     const flipX = (x: number, w: number) => mirrored ? width - x - w : x;
     const flip = (o: CanalhouseOpening): CanalhouseOpening => ({...o, leftM: flipX(o.leftM, o.widthM)});
@@ -393,8 +402,20 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       elevation.bands.value.push({id: 'shop-riser', leftM: at(zone[0], zw), bottomM: round(plinth), widthM: zw, heightM: round(Math.max(0.05, layout.shopGlass[0] - plinth - 0.01)), depthM: 0.05, surface: 'shop'});
       if (front.shopfront.fascia) {
         elevation.bands.value.push({id: 'fascia', leftM: at(zone[0], zw), bottomM: round(top - SHOP.fasciaM - SHOP.fasciaGapM), widthM: zw, heightM: SHOP.fasciaM, depthM: 0.12, surface: 'shop'});
-        // The sign is real lettering (signage.ts) when the intent carries a name; otherwise the fascia stays plain (no invented text).
         fasciaRect = {leftM: zone[0], widthM: zw, bottomM: round(top - SHOP.fasciaM - SHOP.fasciaGapM), heightM: SHOP.fasciaM, depthM: 0.12, frontLeftM: at(zone[0], zw), mirrored, sign};
+      }
+      // The sign is real lettering (signage.ts) only when the intent carries one; otherwise nothing is drawn (no invented text).
+      if (sign) {
+        const mount = sign.mount ?? 'fascia', glassTop = layout.shopGlass[1];
+        if (mount === 'fascia' && fasciaRect) signBand = {...fasciaRect, mount, sign};
+        else if (mount === 'wall') {
+          const l = zone[0] + SHOP.pierM + 0.05, w = round(zone[1] - zone[0] - 2 * SHOP.pierM - 0.1);
+          signBand = {mount, sign, leftM: round(l), widthM: w, bottomM: round(glassTop + 0.06), heightM: round(top - glassTop - 0.14), depthM: 0.03, frontLeftM: at(l, w), mirrored};
+        } else if (mount === 'glazing' && layout.shopSpans.length) {
+          // On the glass: lettering across the head of the widest pane, standing just proud of the shop frames.
+          const [a, b] = layout.shopSpans.reduce((p, q) => (q[1] - q[0] > p[1] - p[0] ? q : p)), w = round(b - a - 0.16);
+          signBand = {mount, sign, leftM: round(a + 0.08), widthM: w, bottomM: round(glassTop - 0.55), heightM: 0.45, depthM: 0.07, frontLeftM: at(a + 0.08, w), mirrored};
+        }
       }
     }
     // Stone dressings (window surrounds, quoins) and the shop awning: attached slabs/canopies, see CanalhouseDressing.
@@ -438,7 +459,7 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     mainEaves = Math.min(mainEaves, eaves);
     elevation.bodyEavesM = surveyed(round(eaves));
     elevations.push(elevation);
-    reports.push({id: front.id, widthM: round(width), eavesM: round(eaves), crownTopM: round(crownTop), storeyHeightsM: layout.storeyHeights, mirrored, edge: [edgeIndex, endIndex], frontageDeviationM: round(deviation), frontageOutsetM: round(maxOut, 4), polygonIndex, ...(fasciaRect ? {fascia: fasciaRect} : {})});
+    reports.push({id: front.id, widthM: round(width), eavesM: round(eaves), crownTopM: round(crownTop), storeyHeightsM: layout.storeyHeights, mirrored, edge: [edgeIndex, endIndex], frontageDeviationM: round(deviation), frontageOutsetM: round(maxOut, 4), polygonIndex, ...(fasciaRect ? {fascia: fasciaRect} : {}), ...(signBand ? {signBand} : {})});
   }
   house.eavesHeightM = surveyed(round(Math.max(mainEaves, survey.shellTopM)));
   house.gable = seen(GABLE_TYPE[intent.fronts[0].gable]);

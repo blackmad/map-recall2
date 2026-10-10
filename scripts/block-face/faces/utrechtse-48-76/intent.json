@@ -1,0 +1,128 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "utrechtse-48-76",
+ "street": "Utrechtsestraat",
+ "sources": [
+  {"id": "strip-2025-01-20", "kind": "street-panorama", "capturedAt": "2025-01-20", "image": "staging/block-face/utrechtse-48-76/strip.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0"},
+  {"id": "strip-2025-06-19-spans", "kind": "street-panorama", "capturedAt": "2025-06-19", "image": "staging/block-face/utrechtse-48-76/strip.jpg", "license": "Gemeente Amsterdam panorama, CC BY 4.0"}
+ ],
+ "authoring": {"author": "claude-opus-5.5 (block-face lane), from strip-labelled.png + 2 halves + 2 ground-floor zooms", "passes": 1, "note": "Utrechtsestraat 48-76 (even), between Prinsengracht and Keizersgracht: 10 pands, 13 fronts. 178705/178707/169207 from 2025-06-19 (scaffolding sheeting and a parked van on 2025-01-20)."},
+ "houses": [
+  {
+   "pandId": "0363100012178784", "slug": "uface-178784", "address": "Utrechtsestraat 76",
+   "design": {"fronts": [{"id": "front0", "street": "Utrechtsestraat", "gable": "point", "storeys": 4, "bays": 2, "atticWindows": 1, "doorBay": null, "basement": "none", "cornice": "simple", "windows": "sash-small-panes", "hoist": false, "bands": "storey",
+      "shopfront": {"colour": "#5a3a24", "fascia": false, "sign": {"text": "KROM", "textColour": "#d8b45a", "mount": "glazing"}, "displayWindows": 2, "stallriser": "medium"}}],
+    "roof": {"material": "black-tile"}, "palette": {"brick": "yellow-brick", "frame": "white", "door": "#5a3a24", "stone": "grey-painted"}},
+   "groundFloor": {"use": "bar", "name": "Krom", "category": "amenity=pub", "osm": {"type": "node", "id": 513521940, "name": "Krom", "tags": "amenity=pub; check_date=2024-08-18"}, "bag": ["bijeenkomstfunctie"], "photoDate": "2025-01-20", "agreement": "osm-and-photo",
+    "note": "Brown wooden café front, two windows with gilt script on the glass (the name reads '…Krom'), café-brand plaques on the left pier."},
+   "rhythm": {"bays": "2", "windowsPerStorey": "ground: café front, 2 windows | 1-3: 2 multi-pane windows with transoms | gable: 1", "symmetry": "none: the pointed gable stands over the left two-thirds, the right bay ends at a lower cornice", "groundFloor": "wooden café front, two glazed bays between piers", "signage": "gilt script on the glass", "roofline": "steep pointed brick gable with a finial", "citation": "strip.jpg pand 1 (x 0-256 px)", "photoRows": [2, 2, 2, 2, 1], "photoGables": 1,
+    "schemaLimits": ["the gable is centred in the model; on the photo it covers the left two-thirds"]}
+  },
+  {
+   "pandId": "0363100012178704", "slug": "uface-178704", "address": "Utrechtsestraat 74A-74B",
+   "design": {"fronts": [{"id": "front0", "street": "Utrechtsestraat", "gable": "cornice", "crownCap": "rounded", "crownCapSpan": "wide", "storeys": 3, "bays": [1, 1, 2], "doorBay": 0, "basement": "none", "cornice": "simple", "windows": "plain", "hoist": false,
+      "bayWindows": {"bay": 0, "storeys": [1]},
+      "shopfront": {"colour": "black", "fascia": true, "displayWindows": 1, "stallriser": "low"}}],
+    "roof": {"material": "slate"}, "palette": {"brick": "#8a3e2e", "frame": "cream-painted", "door": "black", "stone": "cream"}},
+   "groundFloor": {"use": "shop", "category": "fashion boutique (mannequins in the window)", "bag": ["winkelfunctie", "woonfunctie"], "photoDate": "2025-01-20", "agreement": "photo-only",
+    "note": "Black fascia with dark lettering that is not legible at strip resolution; no OSM business on no. 74. Sign not modelled."},
+   "rhythm": {"bays": "1 wide bay below, 2 windows on the top storey", "windowsPerStorey": "ground: shop | 1: glazed bay window with an iron balcony rail | 2: 2 | parapet", "symmetry": "symmetric", "groundFloor": "black shopfront, door left", "signage": "black fascia, lettering illegible", "roofline": "curved (segmental) brick parapet", "citation": "strip.jpg pand 2 (x 256-425 px)", "photoRows": [1, 1, 2]}
+  },
+  {
+   "pandId": "0363100012178705", "slug": "uface-178705", "address": "Utrechtsestraat 70-72",
+   "design": {"fronts": [{"id": "front0", "street": "Utrechtsestraat", "gable": "cornice", "storeys": 3, "bays": 4, "dormers": 2, "doorBay": 3, "basement": "none", "cornice": "bracketed", "windows": "arched", "hoist": false,
+      "balconies": {"storeys": [1, 2], "bays": [0, 1, 2, 3]},
+      "shopfront": {"colour": "grey-painted", "fascia": false, "sign": {"text": "BELLAROSE", "textColour": "white", "mount": "glazing"}, "displayWindows": 3, "stallriser": "medium"}}],
+    "roof": {"material": "slate"}, "palette": {"brick": "white-painted", "frame": "black-painted", "door": "black", "stone": "grey-painted"}},
+   "groundFloor": {"use": "shop", "name": "Bellarose", "category": "shop=clothes", "osm": {"type": "node", "id": 2737809165, "name": "Bellarose", "tags": "shop=clothes; check_date=2023-04-11"}, "bag": ["winkelfunctie", "woonfunctie"], "photoDate": "2025-06-19", "agreement": "osm-and-photo",
+    "note": "Grey stone shopfront, three display panes with script lettering on the glass, narrow house door at the right. 2025-06-19 span (a van blocked it on 2025-01-20)."},
+   "rhythm": {"bays": "4 identical bays", "identicalBays": "all", "windowsPerStorey": "ground: shop + door | 1: 4 French windows with X-pattern rails | 2: 4 with rails | roof: 2 dormers", "symmetry": "mirror-symmetric upper storeys", "groundFloor": "stone shopfront, house door right", "signage": "script on the glass", "roofline": "heavy bracketed cornice, mansard with 2 dormers", "citation": "strip.jpg pand 3 (x 425-758 px, 2025-06-19)", "photoRows": [1, 4, 4, 2], "photoGables": 0}
+  },
+  {
+   "pandId": "0363100012178707", "slug": "uface-178707", "address": "Utrechtsestraat 68",
+   "design": {"fronts": [{"id": "front0", "street": "Utrechtsestraat", "gable": "bell", "crownCap": "rounded", "storeys": 3, "bays": 2, "atticWindows": 1, "doorBay": 1, "basement": "none", "cornice": "none", "windows": "sash", "hoist": true,
+      "shopfront": {"colour": "black-painted", "fascia": false, "displayWindows": 1, "stallriser": "medium"}}],
+    "roof": {"material": "black-tile"}, "palette": {"brick": "black-painted", "frame": "white", "door": "black", "stone": "white-painted"}},
+   "groundFloor": {"use": "shop", "name": "We Are Labels", "category": "shop=clothes", "osm": {"type": "node", "id": 2737809038, "name": "We Are Labels", "tags": "shop=clothes"}, "bag": ["winkelfunctie"], "photoDate": "2025-06-19", "agreement": "osm-and-photo",
+    "note": "Black wooden front with a display window left and doors; lettering on the glass not legible, so no sign modelled. Under scaffolding sheeting on 2025-01-20."},
+   "rhythm": {"bays": "2", "identicalBays": "twin of 169207 (same bell gable, same window grid)", "windowsPerStorey": "ground: shop | 1: 2 | 2: 2 | gable: 1 hoist door", "symmetry": "symmetric", "groundFloor": "black timber shopfront", "signage": "illegible lettering on the glass", "roofline": "black bell gable with a white rounded cap", "citation": "strip.jpg pand 4 (x 759-913 px, 2025-06-19)", "photoRows": [1, 2, 2, 1], "photoGables": 1}
+  },
+  {
+   "pandId": "0363100012169207", "slug": "uface-169207", "address": "Utrechtsestraat 66",
+   "sameAs": "0363100012178707",
+   "overrides": {"fronts": [{"doorBay": 0, "balconies": {"storeys": [1], "bays": [1]}, "shopfront": {"colour": "black-painted", "fascia": true, "sign": {"text": "HOUTMAN", "textColour": "#d9d4c4", "mount": "fascia"}, "displayWindows": 1}}]},
+   "groundFloor": {"use": "services", "name": "Houtman", "category": "shop=hairdresser", "osm": {"type": "node", "id": 2737808928, "name": "Houtman", "tags": "shop=hairdresser; check_date=2023-04-11"}, "bag": ["winkelfunctie"], "photoDate": "2025-06-19", "agreement": "osm-and-photo",
+    "note": "'HOUTMAN' in pale capitals on the black board over the window; doors to the left."},
+   "rhythm": {"bays": "2", "identicalBays": "twin of 178707; an iron rail on the right first-floor window", "windowsPerStorey": "ground: doors + shop | 1: 2 (rail right) | 2: 2 | gable: 1", "symmetry": "symmetric", "groundFloor": "black timber front, doors left, window right", "signage": "HOUTMAN, pale on black", "roofline": "black bell gable, white cap", "citation": "strip.jpg pand 5 (x 913-1089 px, 2025-06-19)", "photoRows": [1, 2, 2, 1], "photoGables": 1}
+  },
+  {
+   "pandId": "0363100012169208", "slug": "uface-169208", "address": "Utrechtsestraat 62",
+   "design": {"fronts": [{"id": "front0", "street": "Utrechtsestraat", "gable": "cornice", "storeys": 4, "bays": [3, 2, 5, 5], "doorBay": 1, "basement": "none", "cornice": "simple", "windows": "sash", "hoist": false, "tallGround": true,
+      "bayWindows": {"bay": 0, "storeys": [1]},
+      "shopfront": {"colour": "cream-painted", "fascia": false, "sign": {"text": "MOBILIA", "textColour": "#3a3a3a", "mount": "glazing"}, "displayWindows": 2, "stallriser": "low"}}],
+    "roof": {"material": "bitumen"}, "palette": {"brick": "cream-painted", "frame": "white", "door": "white", "stone": "cream-painted"}},
+   "groundFloor": {"use": "shop", "name": "Mobilia", "category": "shop=furniture", "osm": {"type": "node", "id": 2737808871, "name": "Mobilia", "tags": "shop=furniture"}, "bag": ["winkelfunctie"], "photoDate": "2025-01-20", "agreement": "osm-and-photo",
+    "note": "Two-storey cream shopfront: ground display windows with a central door and 'MOBILIA' on the glass; first floor one curved glazed bay (left) and one huge window (right)."},
+   "rhythm": {"bays": "5 bays on storeys 2-3; 2 glazed bays on storey 1; 2 display windows + door on the ground", "windowsPerStorey": "ground: 2 + door | 1: 2 (curved bay left, wide window right) | 2: 5 | 3: 5", "symmetry": "near-symmetric", "groundFloor": "cream shopfront, door centre", "signage": "MOBILIA on the glass", "roofline": "flat cornice", "citation": "strip.jpg pand 6 (x 1089-1514 px)", "photoRows": [2, 2, 5, 5], "photoGables": 0,
+    "schemaLimits": ["the first-floor shop glazing is two ordinary windows plus one glazed bay in the model"]}
+  },
+  {
+   "pandId": "0363100012178875", "slug": "uface-178875", "address": "Utrechtsestraat 54-60",
+   "design": {"fronts": [
+      {"id": "a", "street": "Utrechtsestraat", "share": 0.216, "gable": "neck", "storeys": 3, "bays": 2, "atticWindows": 1, "doorBay": null, "basement": "none", "cornice": "none", "windows": "sash", "hoist": false, "bands": "storey", "palette": {"brick": "#5a3a2e", "stone": "cream"},
+       "shopfront": {"colour": "dark-red", "fascia": true, "displayWindows": 1}},
+      {"id": "b", "street": "Utrechtsestraat", "share": 0.301, "gable": "step", "storeys": 4, "bays": 3, "atticWindows": 1, "doorBay": 0, "basement": "none", "cornice": "simple", "windows": "sash", "hoist": false, "palette": {"brick": "#6a4a3a"},
+       "shopfront": {"colour": "dark-red", "fascia": true, "displayWindows": 1}},
+      {"id": "c", "street": "Utrechtsestraat", "share": 0.242, "gable": "cornice", "storeys": 4, "bays": 3, "doorBay": 2, "basement": "none", "cornice": "heavy", "windows": "sash", "hoist": false, "palette": {"brick": "#3e2a24"},
+       "shopfront": {"colour": "dark-red", "fascia": true, "displayWindows": 1}},
+      {"id": "d", "street": "Utrechtsestraat", "share": 0.241, "gable": "cornice", "storeys": 3, "bays": 3, "dormers": 1, "doorBay": 0, "basement": "none", "cornice": "heavy", "windows": "sash", "hoist": false, "palette": {"brick": "#5e4033"},
+       "shopfront": {"colour": "dark-red", "fascia": true, "displayWindows": 1}}],
+    "roof": {"material": "black-tile"}, "palette": {"brick": "#5e4033", "frame": "white", "door": "dark-red", "stone": "cream"}},
+   "groundFloor": {"use": "shop", "name": "Concerto", "category": "shop=music (records), with Concerto Koffie", "osm": {"type": "node", "id": 2649956400, "name": "Concerto", "tags": "shop=music; also node 10766312969 Concerto Koffie amenity=cafe"}, "bag": ["winkelfunctie", "woonfunctie"], "photoDate": "2025-01-20", "agreement": "osm-and-photo",
+    "note": "One BAG pand with four historic fronts; one record shop runs behind all of them: dark-red timber shopfronts with record covers in the windows. No legible name board on the strip, so no sign is modelled."},
+   "rhythm": {"bays": "4 fronts: a 2 bays, b 3, c 3, d 3", "windowsPerStorey": "a: shop | 2 | 2 | gable 1. b: shop | 3 (red frames, part of the shopfront) | 3 | 3 | gable 1. c: shop | 3 | 3 | 3 under a heavy white cornice. d: shop | 3 | 3 | dormer", "symmetry": "each front symmetric", "groundFloor": "continuous dark-red shopfronts", "signage": "none legible", "roofline": "a: ornamented brick neck gable; b: stepped gable; c: heavy white cornice; d: white cornice with a bell-topped dormer", "citation": "strip.jpg pand 7 (x 1514-2357 px)", "photoRows": [4, 11, 11, 6, 2], "photoGables": 2,
+    "schemaLimits": ["b's red two-storey shopfront is a one-storey shopfront in the model", "a's brick ornament and d's bell dormer are approximated"]}
+  },
+  {
+   "pandId": "0363100012178876", "slug": "uface-178876", "address": "Utrechtsestraat 52",
+   "design": {"fronts": [{"id": "front0", "street": "Utrechtsestraat", "gable": "cornice", "storeys": 4, "bays": 3, "doorBay": 2, "basement": "none", "cornice": "heavy", "windows": "sash", "hoist": false,
+      "shopfront": {"colour": "dark-red", "fascia": false, "sign": {"text": "KOFFIE", "textColour": "white", "mount": "glazing"}, "displayWindows": 1}}],
+    "roof": {"material": "black-tile"}, "palette": {"brick": "#6a4636", "frame": "white", "door": "dark-red", "stone": "cream"}},
+   "groundFloor": {"use": "cafe", "name": "Concerto Koffie", "category": "amenity=cafe", "osm": {"type": "node", "id": 10766312969, "name": "Concerto Koffie", "tags": "amenity=cafe (node mapped on the neighbouring pand 178875)"}, "bag": ["woonfunctie", "winkelfunctie"], "photoDate": "2025-01-20", "agreement": "conflict",
+    "note": "The photo shows 'KOFFIE' lettering on this pand's red shop window; the OSM cafe node sits on the neighbouring Concerto pand. Modelled from the photo."},
+   "rhythm": {"bays": "3", "identicalBays": "storeys 1-3 identical", "windowsPerStorey": "ground: shop + door | 1-3: 3", "symmetry": "symmetric", "groundFloor": "red shopfront, door right", "signage": "KOFFIE on the glass", "roofline": "ornate white cornice", "citation": "strip.jpg pand 8 (x 2357-2559 px)", "photoRows": [1, 3, 3, 3], "photoGables": 0}
+  },
+  {
+   "pandId": "0363100012178874", "slug": "uface-178874", "address": "Utrechtsestraat 50",
+   "design": {"fronts": [{"id": "front0", "street": "Utrechtsestraat", "gable": "cornice", "storeys": 4, "bays": 3, "doorBay": 2, "basement": "none", "cornice": "bracketed", "windows": "sash", "hoist": false, "bands": "storey", "windowSurround": "full-frame",
+      "balconies": {"storeys": [2, 3], "bays": [1]},
+      "shopfront": {"colour": "#3c4246", "fascia": true, "sign": {"text": "WIJNHANDEL", "textColour": "white", "mount": "fascia"}, "displayWindows": 2}}],
+    "roof": {"material": "slate"}, "palette": {"brick": "#5a3a30", "frame": "white", "door": "black", "stone": "cream-painted"}},
+   "groundFloor": {"use": "shop", "name": "Wijnhandel Neleman", "category": "shop=wine", "osm": {"type": "node", "id": 10162428242, "name": "Neleman", "tags": "shop=wine"}, "bag": ["winkelfunctie"], "photoDate": "2025-01-20", "agreement": "osm-and-photo",
+    "note": "Grey shopfront, fascia reads 'WIJNHANDEL …' (the second word is not legible at strip resolution; OSM: Neleman). Only the legible word is modelled."},
+   "rhythm": {"bays": "3", "identicalBays": "storeys 1-3 identical", "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 (rail middle) | 3: 3 (rail middle)", "symmetry": "symmetric", "groundFloor": "grey shopfront with fascia", "signage": "WIJNHANDEL …, white on grey", "roofline": "bracketed white cornice with a roof ornament", "citation": "strip.jpg pand 9 (x 2560-2769 px)", "photoRows": [1, 3, 3, 3], "photoGables": 0}
+  },
+  {
+   "pandId": "0363100012178865", "slug": "uface-178865", "address": "Utrechtsestraat 48",
+   "design": {"fronts": [{"id": "front0", "street": "Utrechtsestraat", "gable": "flat", "storeys": 4, "bays": 2, "dormers": 1, "doorBay": 0, "basement": "none", "cornice": "simple", "windows": "cross", "hoist": false,
+      "bayWindows": {"bay": 0, "storeys": [1, 2]},
+      "shopfront": {"colour": "white", "fascia": false, "sign": {"text": "TUI", "textColour": "#e2231a", "mount": "wall"}, "displayWindows": 1}}],
+    "roof": {"material": "red-tile"}, "palette": {"brick": "#5e3a2c", "frame": "white", "door": "white", "stone": "cream"}},
+   "groundFloor": {"use": "services", "name": "TUI", "category": "shop=travel_agency", "osm": {"type": "node", "id": 2737808042, "name": "TUI", "tags": "shop=travel_agency; check_date=2023-04-11"}, "bag": ["winkelfunctie"], "photoDate": "2025-01-20", "agreement": "osm-and-photo",
+    "note": "1928 Amsterdam School corner: red TUI logo on the wall above the display window, door left in a stone surround."},
+   "rhythm": {"bays": "2", "windowsPerStorey": "ground: door + display window | 1: white glazed bay (left) + window | 2: bay + window | 3: band of 2 windows | roof: dormer", "symmetry": "none", "groundFloor": "stone-framed door left, display window right", "signage": "TUI logo, red", "roofline": "eaves under a red tile hipped roof with a dormer", "citation": "strip.jpg pand 10 (x 2772-2998 px)", "photoRows": [2, 2, 2, 2, 1], "photoGables": 0,
+    "schemaLimits": ["the corner return onto Prinsengracht is a second street front not modelled here"]}
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [
+   {"pands": ["0363100012178707", "0363100012169207"], "evidence": "strip (2025-06-19): both bell gables' shoulders at y ~440 px (10.2 m) and the same top; 3DBAG eaves of 169207 (8.46 m) samples a lower rear roof", "trust": "photo", "reference": "0363100012178707"}
+  ],
+  "identical": [
+   {"pands": ["0363100012178707", "0363100012169207"], "evidence": "strip: twin black bell gables, 2 windows per storey, same cap; only the ground floors and one rail differ"}
+  ],
+  "notes": ["No other shared cornice lines: every front of this 17th-20th c. face has its own eaves height (3DBAG 8.5-16.4 m, matching the strip)."]
+ }
+}

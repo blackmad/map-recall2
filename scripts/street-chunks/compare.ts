@@ -2,7 +2,7 @@
  * Review renders: the control (same houses, nothing changed) vs the chunk, from
  * identical street-level cameras, side by side plus a pixel-difference panel.
  *
- *   node --import tsx scripts/street-chunks/compare.ts --chunk=bilder-081118-x7 [--dir=artifacts/street-chunks]
+ *   node --import tsx scripts/street-chunks/compare.ts --chunk=bilder-080336-x4 [--dir=artifacts/street-chunks]
  *
  * Models live in the chunk frame (x along the street, z outward); the renderer's
  * scene is recipe-local (x east, z south), so the models are rotated by the frame
