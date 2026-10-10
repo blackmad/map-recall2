@@ -32,7 +32,7 @@ export async function compileFace(faceId: string) {
   const facts = new Map<string, BuildingFacts>();
   for (const h of face.houses) facts.set(h.pandId, JSON.parse(await fs.readFile(path.join(dir, 'pands', h.pandId, 'facts.json'), 'utf8')));
   const name = `face-${faceId}`;
-  const result = await compileBlockFace(face, facts, name);
+  const result = await compileBlockFace(face, facts, name, {inferRears: !process.argv.includes('--no-rears')});
   const out = path.join(STAGING, faceId);
   await fs.mkdir(out, {recursive: true});
   const glbPath = path.join(out, 'chunk.glb');
@@ -58,7 +58,7 @@ export async function compileFace(faceId: string) {
   const report = {face: faceId, name, passed: result.passed && audit.passWithPartyExemption, seconds: +((performance.now() - t0) / 1000).toFixed(1),
     triangles: r.triangles, primitives: r.primitives, bytes: r.bytes, gzipBytes: r.gzipBytes,
     ground: {sharedNapM: result.ground.sharedNapM, shiftsM: result.ground.shiftsM, eavesBefore: result.ground.eavesBefore, eavesAfter: result.ground.eavesAfter, groups: result.ground.groups},
-    instancing: result.instancing, slitsClosed: result.slitsClosed, perPand: result.perPand, gates: result.gates, interference: result.interference, partyWalls: r.partyWalls, joints: r.joints, warnings: r.warnings, audit,
+    instancing: result.instancing, slitsClosed: result.slitsClosed, frontSnaps: result.frontSnaps, rears: result.rears, perPand: result.perPand, gates: result.gates, interference: result.interference, partyWalls: r.partyWalls, joints: r.joints, warnings: r.warnings, audit,
     order: result.chunk.order, frame: result.chunk.frame, pands: result.chunk.pands.map(p => ({pandId: p.pandId, recipeId: p.recipeId, frontage: p.frontage, triangles: p.triangles, eavesM: p.eavesM}))};
   await fs.writeFile(path.join(out, 'report.json'), JSON.stringify(report, null, 1) + '\n');
   await fs.writeFile(path.join(out, 'manifest-entry.json'), JSON.stringify(entry, null, 1) + '\n');
@@ -69,6 +69,8 @@ export async function compileFace(faceId: string) {
   console.log(`  instancing plan: ${inst.groups.length} groups (${inst.groups.map(g => g.members.length + 'x ' + g.master.slice(-6)).join(', ') || 'none'}); ${inst.savedTriangles} of ${inst.totalTriangles} tris (${inst.savedPercent} %) would be shared; chunk GLB is NOT instanced (loader contract, see blockFace/instancing.ts)`);
   for (const i of result.interference) console.log(`  ${i.left.slice(-6)}|${i.right.slice(-6)}: gap ${i.frontGapM} m, depth step ${i.frontDepthStepM} m, penetration ${i.penetrationM2.leftIntoRight}/${i.penetrationM2.rightIntoLeft} m2, overhang ${i.detailOverhangM.left}/${i.detailOverhangM.right} m, z-fight ${i.zFightM2} m2 (roof ${i.roofZFightM2}), eaves step ${i.eavesStepM} m (${i.corniceVerdict}) ${i.pass ? 'ok' : 'FAIL'}`);
   console.log(`  cornice groups: ${result.ground.groups.map(g => `${g.pands.map(p => p.slice(-6)).join('+')} spread ${g.spreadM} m ${g.snapped ? 'snapped' : 'NOT snapped'}`).join(' | ')}`);
+  console.log(`  rear facades (INFERRED, no photo): ${result.rears.map(r => `${r.pandId.slice(-6)} ${r.windows} windows/${r.triangles} tris`).join(', ')}`);
+  if (result.frontSnaps.length) console.log(`  front planes snapped: ${result.frontSnaps.map(c => `${c.left.slice(-6)}|${c.right.slice(-6)} ${c.stepBeforeM} -> ${c.stepAfterM} m`).join(', ')}`);
   if (result.slitsClosed.length) console.log(`  front slits closed: ${result.slitsClosed.map(c => `${c.left.slice(-6)}|${c.right.slice(-6)} ${c.gapM} m`).join(', ')}`);
   console.log(`  glb audit: exit ${audit.exit}; holes ${audit.holes.loops} loops, ${audit.holes.onPartyPlanes} on party planes, ${audit.holes.elsewhere} elsewhere (largest ${audit.holes.largestElsewhereM.toFixed(2)} m) -> ${audit.holes.verdict}`);
   return {report, entry, glbPath, bad};
