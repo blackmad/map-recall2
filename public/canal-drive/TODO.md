@@ -26,11 +26,20 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   surveys = repetitive canal-house / block-face work aiming at reusable
   geometry (faces, per-house recipes, street chunks). Galleries today show
   stale per-house Bilderdijkstraat models the game no longer draws.
-- **Reuse Sol's canal-house work**: ~10 unmerged `agent/sol-*` / backup
-  branches (Blender building library, component/head-on facade geometry,
-  silhouette roof repair); main's photo gable identifier (`facade/gable.ts`,
-  `gableFit.ts`, `scripts/roofline-eval`) is not used by recipes or faces.
-  Salvage inventory and gable-from-photo lanes running.
+- **Street-survey house types (pilot running)**: design in
+  `docs/research/sol-canalhouse-salvage-20261010.md`. Author a type once
+  (upper body + crown variants + per-house ground floor/shop), place it N
+  times with mirror/variant params; resolves to today's intent so gates are
+  unchanged. Stage 1 generator reuse; Stage 2 instancing only pays at district
+  scale (block scale adds draws). Pilot: Nassaukade 318–300 (by eye 4 types
+  cover 16/20; mirrored pairs share a straddling dormer) and De Clercqstraat
+  22–2 north (2 upper types cover 10/12; every shop differs). Detector needs
+  visual party walls (BAG widths ≠ houses at 304–301) and the roofline
+  classifier for crowns. Sol's code: none ported as-is; reuse the VLM ID-only
+  classifier contract, streaming/budget modules (district instancing), ground
+  and gable presets, wall-colour gold crops, `openingLattice.ts`.
+  `facadeBands.ts` (11/46) not usable; `facade/blockFaces.ts` duplicates
+  `blockFace/discover.ts`.
 - **UvA Roeterseiland held**: builder simplified 37.2k → 21.9k tris but not
   installed — its spec says `do-not-suppress` (composite BAG parent not
   partitioned; bridge underside height estimated). Needs a suppression
