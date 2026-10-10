@@ -15,6 +15,7 @@ type Col = string;
 /** Depth every solid sinks behind its wall plane (hidden inside the building) so uneven 3DBAG walls still catch it. */
 let SINK = 0;
 export const setSink = (v: number) => { SINK = v; };
+export const getSink = () => SINK;
 
 export function put(b: BuildingTools, f: Frame, g: T.BufferGeometry, t: number, y: number, out: number, colour: Col) {
   g.rotateY(Math.atan2(f.n[0], f.n[1]));
