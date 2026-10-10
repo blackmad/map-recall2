@@ -184,6 +184,14 @@
   "Bellevue": {
    "kind": "duplicate",
    "note": "Covered by installed model delamar (BAG pand 0363100012169852 is inside OSM way w267565782, which delamar suppresses). Fix Bellevue lettering on delamar."
+  },
+  "Garage Noord": {
+   "kind": "skip",
+   "note": "Plain 1917 brick shed (pand 0363100012079768): no distinctive architecture (2016 panorama)."
+  },
+  "RADION": {
+   "kind": "skip",
+   "note": "Low 1971 concrete box (pand 0363100012188556, ownership unconfirmed); no distinctive architecture."
   }
  }
 }
