@@ -63,17 +63,24 @@ export function buildWillemDeZwijgerkerk(_w: number, _d: number, b: BuildingTool
 
   // --- South gable (walls 15 + 84 form one plane; apex 20.8 m at t=6.6): tall narrow window and apex slit ---
   const sg = wallBetween([0.96, 19.74], [11.7, 15.13], 21, [0.394, 0.919]);
-  win(b, sg, 6.6, 4.7, 1.0, 3.4, 2, 0.14, true); // tall window above the entrance wing's roof
-  // Low brick entrance wing in front of the gable foot: flat pale canopy, double doors, slim side window
-  onWall(b, sg, 3.9, 0, 5.0, 3.0, 2.0, 'brick', 0);
-  onWall(b, sg, 3.9, 3.0, 5.6, 0.3, 2.7, 'stone', 0); // pale concrete roof slab, overhanging the front and sides
-  onWall(b, sg, 3.9, 2.55, 3.0, 0.4, 0.5, 'stone', 1.95); // flat canopy fascia over the doors
-  onWall(b, sg, 3.2, 0, 1.7, 2.45, 0.06, 'dark', 2.0, 'pane'); // double doors
-  for (const t of [2.2, 4.2]) onWall(b, sg, t, 0, 0.14, 2.6, 0.1, 'stone', 2.0); // door surround
-  onWall(b, sg, 5.2, 0.9, 0.6, 1.7, 0.05, 'glass', 2.04, 'pane'); // slim side window
-  onWall(b, sg, 5.2, 0.8, 0.8, 1.9, 0.05, 'frame', 2.0);
-  onWall(b, sg, 6.6, 17.4, 0.4, 1.7, 0.06, 'dark', 0.01);
-  onWall(b, sg, 6.6, 15.6, 0.7, 1.3, 0.05, 'stone', 0.01);
+  // Reviewed 2026-10-10 against the 2024 panorama (head-on, 22 m): a round-arched entrance sits on the gable axis (no
+  // projecting wing or canopy), "KERK" lettering over it, a wide three-light window group high in the gable, small slit
+  // windows either side of the entrance and a slit at the apex. There is no tall window between entrance and group.
+  const ax = 6.6;
+  archWindow(b, sg, ax, 0, 3.0, 3.7, {trim: 'stone', glass: 'dark', mullions: 1}); // round-arched entrance, double doors
+  onWall(b, sg, ax, 5.9, 3.2, 0.8, 0.08, 'greyBrick', 0.02); // lettering plate "WILLEM DE ZWIJGER KERK"
+  onWall(b, sg, ax, 6.1, 2.2, 0.3, 0.1, 'stone', 0.1);
+  onWall(b, sg, ax, 9.3, 4.9, 4.1, 0.08, 'white', 0); // pale frame of the three-light group
+  for (const dx of [-1.6, 0, 1.6]) {
+    onWall(b, sg, ax + dx, 9.5, 1.3, 3.7, 0.06, 'glass', 0.08, 'pane');
+    for (const dy of [1.2, 2.4]) onWall(b, sg, ax + dx, 9.5 + dy, 1.3, 0.06, 0.1, 'frame', 0.1);
+    onWall(b, sg, ax + dx, 9.5, 0.06, 3.7, 0.1, 'frame', 0.1);
+  }
+  for (const dx of [-5.5, 4.1]) { // small slit windows beside the entrance
+    onWall(b, sg, ax + dx, 1.4, 0.8, 1.4, 0.07, 'frame', 0);
+    onWall(b, sg, ax + dx, 1.5, 0.5, 1.2, 0.06, 'glass', 0.05, 'pane');
+  }
+  onWall(b, sg, ax, 17.4, 0.4, 1.7, 0.06, 'dark', 0.01); // apex slit
 
   for (const [t, y, wd] of [[0.5, 10.9, 1.5], [11.1, 12.9, 0.9]] as [number, number, number][]) onWall(b, sg, t, y, wd, 0.16, 0.9, 'white', 0); // corner eave canopies
 
@@ -81,17 +88,23 @@ export function buildWillemDeZwijgerkerk(_w: number, _d: number, b: BuildingTool
   const ng = wallBetween([-2.83, -15.59], [-10.23, -12.38], 15.5, [-0.399, -0.917]);
   const c = ng.length / 2;
   onWall(b, ng, c, 0, ng.length, 2.0, 0.05, 'greyBrick', 0.0);
-  for (let k = 0; k < 6; k++) win(b, ng, c + (k - 2.5) * 1.12, 2.2, 0.72, 2.5, 2, 0.1, true);
+  for (let k = 0; k < 6; k++) win(b, ng, c + (k - 2.5) * 1.3, 2.2, 0.72, 2.5, 2, 0.1, true);
   onWall(b, ng, c, 6.9, 4.6, 0.16, 0.3, 'stone', 0);
+  for (const dx of [-0.25, 0.25]) onWall(b, ng, c + dx, 13.1, 0.2, 1.1, 0.06, 'dark', 0.02); // twin apex slits
   for (const dt of [-1.55, 0, 1.55]) win(b, ng, c + dt, 7.2, dt === 0 ? 1.2 : 0.7, 1.6, dt === 0 ? 3 : 2, 0.08);
 
   // --- East side: six wide low windows in the aisle wall (48), nine clerestory windows (18 + 43 plane), dark plinth ---
   const ea = wall(48);
   onWall(b, ea, ea.length / 2, 0, ea.length, 1.7, 0.05, 'greyBrick', 0.0);
-  for (let k = 0; k < 6; k++) win(b, ea, 1.9 + k * 2.55, 1.9, 1.6, 1.05, 1, 0.2);
+  for (let k = 0; k < 7; k++) win(b, ea, 1.7 + k * 1.96, 1.9, 1.2, 0.8, 1, 0.1); // seven small paned windows (photo: front.jpg rectified)
+  onWall(b, ea, 15.4, 1.9, 0.2, 0.8, 0.06, 'dark', 0.02); // slim slit at the south end
   const ec = wallBetween([3.06, -10.43], [10.46, 6.78], 10.6, [0.92, -0.39]);
   ec.origin = [ec.origin[0] - ec.n[0] * 0.09, ec.origin[1] - ec.n[1] * 0.09]; // the shell's two clerestory walls sit 9 cm behind the chord between their ends
   for (let k = 0; k < 9; k++) win(b, ec, 1.2 + k * 2.0, 8.85, 1.0, 1.35, 1, 0.08);
+  // --- North entrance wing (walls 28 + 26, east face; photo 2016 pano 8 m, 6.4 m wall): arched brown door on the south half,
+  // row of four small square windows right of the gable axis.
+  archWindow(b, wall(28), 1.0, 0, 1.1, 2.4, {trim: 'stone', glass: 'dark', mullions: 0});
+  for (let k = 0; k < 4; k++) win(b, wall(26), 0.35 + k * 0.45, 1.7, 0.3, 0.35, 0, 0.04);
   // --- West side (hidden behind the housing block; mirrored from the east evidence): clerestory + aisle windows ---
   const wc = wallBetween([-3.36, 11.43], [-10.14, -4.31], 10.5, [-0.918, 0.396]);
   for (let k = 0; k < 8; k++) win(b, wc, 1.2 + k * 2.0, 8.85, 1.0, 1.35, 1, 0.08);
