@@ -1,0 +1,1219 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "nassau-162289",
+ "street": "Nassaukade",
+ "sources": [
+  {
+   "id": "strip-2024-11-29",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-29",
+   "image": "staging/block-face/nassau-162289/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude-opus-5.5 (house-types pilot lane)",
+  "passes": 2,
+  "note": "Nassaukade 318-300, west side (Elandsgracht end), 1891-97 speculative rows. Authored with house types: 4 types (B stucco-cornice pair, C banded door-left, A banded mirrored, D stucco attic) cover 17 of 20 pands; 314, 304A and the corner 300 keep their own design. Rows are strip.jpg pixel rows (ground = row 922, 40 px/m) read on 1x/2x crops of the roofline band."
+ },
+ "types": [
+  {
+   "schemaVersion": 1,
+   "kind": "house-type",
+   "id": "nassau-b-stucco-cornice",
+   "description": "1897 row 318-315: dark red brick, 3 axes over a souterrain and a bel-etage, centre balcony stack on consoles, white stucco top storey under a heavy dentil cornice, slate mansard; mirrored pairs share one wide dormer over their party wall",
+   "fit": {
+    "widthM": [
+     5.9,
+     6.2
+    ],
+    "storeys": [
+     4
+    ]
+   },
+   "body": {
+    "storeys": 4,
+    "bays": 3,
+    "cornice": "heavy",
+    "windows": "cross",
+    "windowProportion": "tall",
+    "archedStoreys": [
+     0
+    ],
+    "balconies": {
+     "storeys": [
+      1,
+      2,
+      3
+     ],
+     "bays": [
+      1
+     ],
+     "projecting": true
+    },
+    "windowSurround": "full-frame",
+    "surroundStoreys": [
+     3
+    ]
+   },
+   "crowns": {
+    "pair-dormer": {
+     "gable": "cornice",
+     "roofFront": "mansard",
+     "dormers": 1,
+     "dormerAt": [
+      {
+       "from": 0.6,
+       "to": 0.96
+      }
+     ],
+     "pair": true,
+     "note": "one wide white dormer (two two-light windows round a pair of arched lights, pediment on top) straddles the party wall of each mirrored pair; each half is authored as a dormer against the party wall"
+    }
+   },
+   "grounds": {
+    "stoop-door-right": {
+     "doorBay": 2,
+     "basement": "stoop-and-windows",
+     "tallGround": false,
+     "note": "arched door portal with a stoop on the right axis, two round-arched bel-etage windows, two souterrain windows in a granite plinth",
+     "souterrain": true
+    }
+   },
+   "palettes": {
+    "dark-red-brick": {
+     "brick": "#6e4a40",
+     "frame": "white",
+     "door": "black",
+     "stone": "#d8d6cf",
+     "cornice": "white"
+    }
+   },
+   "roof": {
+    "material": "slate"
+   },
+   "rhythm": {
+    "bays": "3 window axes; door axis at the party wall shared with the mirrored twin",
+    "identicalBays": "upper storeys: 3 identical axes, centre axis a French window with a console balcony on storeys 1-3",
+    "windowsPerStorey": "souterrain: 2 | bel-etage: 2 arched + door portal | 1: 3 | 2: 3 | 3: 3 | dormer half: 1-2",
+    "symmetry": "each house asymmetric (door at one end); pairs 318|317 and 316|315 mirror about their party wall",
+    "groundFloor": "residential: stoop to an arched door portal, two round-arched bel-etage windows, souterrain windows in a granite plinth",
+    "signage": "none",
+    "roofline": "heavy white dentil cornice over a white stucco top storey; slate mansard; one wide pedimented dormer per pair, straddling the party wall",
+    "photoRows": [
+     2,
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGroundRows": 2,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the pair dormer's pediment and arched centre lights are not modelled (two plain half dormers meet at the party wall)",
+     "ochre tile tympana over the storey-1/2 windows and the stucco top-storey entablature are not modelled",
+     "the granite souterrain plinth uses the stone colour of the stucco surrounds"
+    ]
+   },
+   "evidence": [
+    {
+     "face": "nassau-162289",
+     "pands": [
+      "165898",
+      "154241",
+      "162368",
+      "164663"
+     ],
+     "citation": "strip.jpg pands 1-4 (2024-11-29): identical bodies, doors 318 right / 317 left / 316 right / 315 left, dormers centred on the 318|317 and 316|315 party walls"
+    }
+   ],
+   "notes": [
+    "detect-house-types.ts (salvage lane) linked the four bodies at NCC >= 0.6, two of them mirrored"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "kind": "house-type",
+   "id": "nassau-c-banded-door-left",
+   "description": "1896-97 houses 313-311: brown brick with white stone bands and keystone blocks, 3 axes, centre console balcony stack, door left over a stoop, souterrain",
+   "fit": {
+    "widthM": [
+     5.7,
+     6.2
+    ],
+    "storeys": [
+     4
+    ]
+   },
+   "body": {
+    "storeys": 4,
+    "bays": 3,
+    "cornice": "simple",
+    "windows": "cross",
+    "windowProportion": "tall",
+    "bands": "both",
+    "windowSurround": "keystone",
+    "balconies": {
+     "storeys": [
+      1,
+      2,
+      3
+     ],
+     "bays": [
+      1
+     ],
+     "projecting": true
+    }
+   },
+   "crowns": {
+    "dormer": {
+     "gable": "cornice",
+     "cornice": "heavy",
+     "roofFront": "mansard",
+     "dormers": 1,
+     "dormerStyle": "pediment",
+     "note": "white cornice band, slate mansard, one centred dormer (313: flat top; 311: rounded top)"
+    },
+    "step-gable": {
+     "gable": "step",
+     "cornice": "simple",
+     "crownBays": {
+      "from": 1,
+      "to": 2
+     },
+     "crownSteps": 2,
+     "crownRise": 0.75,
+     "atticWindows": 1,
+     "note": "312: photo reader abstains on the type (rise 1.77 m above its eaves, span 0.44-0.93, 1 step/side + shoulders); the gable stands over the two right axes (strip feet at columns 1530/1670 = 0.38-0.99); top at strip row 183 = 2.2 m over the measured eaves -> crownRise 0.75"
+    }
+   },
+   "grounds": {
+    "stoop-door-left": {
+     "doorBay": 0,
+     "basement": "stoop-and-windows",
+     "tallGround": false,
+     "note": "flat-headed door on the left axis over a stoop, two bel-etage windows, souterrain",
+     "souterrain": true
+    }
+   },
+   "palettes": {
+    "brown-brick": {
+     "brick": "#6a4c40",
+     "frame": "white",
+     "door": "black",
+     "stone": "white",
+     "cornice": "white"
+    }
+   },
+   "roof": {
+    "material": "slate"
+   },
+   "rhythm": {
+    "bays": "3 window axes, door on the left axis",
+    "identicalBays": "upper storeys: 3 axes, centre axis a French window with a console balcony on storeys 1-3",
+    "windowsPerStorey": "souterrain: 2 | bel-etage: 2 + door | 1: 3 | 2: 3 | 3: 3",
+    "symmetry": "upper storeys symmetric about the centre axis; door left on all three houses",
+    "groundFloor": "residential: door left over a stoop, two windows, souterrain",
+    "signage": "none",
+    "roofline": "white cornice band with a mansard and one centred dormer (313, 311); stepped gable (312)",
+    "photoRows": [
+     2,
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGroundRows": 2,
+    "photoGables": 0,
+    "schemaLimits": [
+     "white stone keystone blocks are modelled as keystones; the band rhythm (two white courses per storey) is approximated by storey + lintel bands"
+    ]
+   },
+   "evidence": [
+    {
+     "face": "nassau-162289",
+     "pands": [
+      "157238",
+      "162083",
+      "161701"
+     ],
+     "citation": "strip.jpg pands 6-8: same banded body and left door; 313 and 311 dormers, 312 stepped gable"
+    }
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "kind": "house-type",
+   "id": "nassau-a-banded-mirrored",
+   "description": "1897 row 310-305: red brick with dense white stone banding and keystone blocks, 3 axes, centre French-balcony stack, souterrain and bel-etage with an arched door portal; mirrored pairs (doors adjacent); crown either a pointed spire dormer behind a heavy white cornice or a Neo-Renaissance curved gable",
+   "fit": {
+    "widthM": [
+     6.2,
+     6.45
+    ],
+    "storeys": [
+     4
+    ]
+   },
+   "body": {
+    "storeys": 4,
+    "bays": 3,
+    "cornice": "heavy",
+    "windows": "cross",
+    "windowProportion": "tall",
+    "archedStoreys": [
+     0
+    ],
+    "bands": "both",
+    "windowSurround": "keystone",
+    "balconies": {
+     "storeys": [
+      1,
+      2,
+      3
+     ],
+     "bays": [
+      1
+     ]
+    }
+   },
+   "crowns": {
+    "spire-dormer": {
+     "gable": "cornice",
+     "roofFront": "mansard",
+     "dormers": 1,
+     "dormerStyle": "pointed",
+     "note": "white entablature cornice, slate mansard, one centred dormer with a tall slate spire"
+    },
+    "neo-ren-gable": {
+     "gable": "bell",
+     "cornice": "simple",
+     "crownAt": {
+      "from": 0.12,
+      "to": 0.9
+     },
+     "crownRise": 1.15,
+     "atticWindows": 1,
+     "note": "photo gable reader (gables.json 2026-10-10): 306 klokgevel 0.95, rise 2.82-3.02 m, span 0.194-0.903; 309 (mirrored) halsgevel 0.40, span 0-0.889 (= 0.111-1 unmirrored), suggested crownRise 0.93/0.95; baked: bell, span 0.12-0.90 (strip feet at 0.13/0.94 on 309), rise 0.95 storeys; pass 2 (strip sheet): gable top sat ~0.8 m low against the photo (top at strip row ~90 = 3.4 m over the eaves) -> 1.15"
+    }
+   },
+   "grounds": {
+    "stoop-door-right": {
+     "doorBay": 2,
+     "basement": "stoop-and-windows",
+     "tallGround": false,
+     "note": "arched door portal over a stoop on the right axis, two bel-etage windows, souterrain",
+     "souterrain": true
+    }
+   },
+   "palettes": {
+    "red-brick-white-bands": {
+     "brick": "#94503c",
+     "frame": "white",
+     "door": "black",
+     "stone": "white",
+     "cornice": "white"
+    }
+   },
+   "roof": {
+    "material": "slate"
+   },
+   "rhythm": {
+    "bays": "3 window axes; door axis at the party wall shared with the mirrored twin",
+    "identicalBays": "upper storeys: 3 identical axes, centre axis a French window with a railing on storeys 1-3",
+    "windowsPerStorey": "souterrain: 2 | bel-etage: 2 + door portal | 1: 3 | 2: 3 | 3: 3",
+    "symmetry": "pairs 310|309, 308|307 and 306|305 mirror about their party wall (doors adjacent)",
+    "groundFloor": "residential: arched door portal over a stoop, two bel-etage windows (round-arched on the dormer houses, square on the gable houses), souterrain",
+    "signage": "none",
+    "roofline": "heavy white cornice + mansard + spire dormer (310, 308, 307, 305); Neo-Renaissance gable (309, 306); one cornice line",
+    "photoRows": [
+     2,
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGroundRows": 2,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the white brick banding is denser (alternating courses) than storey + lintel bands",
+     "decorated tympana over some window heads are not modelled"
+    ]
+   },
+   "evidence": [
+    {
+     "face": "nassau-162289",
+     "pands": [
+      "156556",
+      "156555",
+      "162089",
+      "162090",
+      "166290",
+      "159934"
+     ],
+     "citation": "strip.jpg pands 9-14: one banded body; doors right/left alternating; spire dormers on 9, 11, 12, 14 and gables on 10, 13"
+    }
+   ],
+   "notes": [
+    "detect-house-types.ts linked all six bodies (three mirrored) and split the crowns [310 308 307 305] vs [309 306]"
+   ]
+  },
+  {
+   "schemaVersion": 1,
+   "kind": "house-type",
+   "id": "nassau-d-stucco-attic",
+   "description": "1891 row 304-301: buff-brown brick between brick pilaster strips, 2 axes x 4 upper storeys, white stone bands and keystones, white stucco frieze with consoles under a bracketed cornice, slate mansard with one ornate dormer; ground storey door + one wide window, pairs mirrored (doors adjacent)",
+   "fit": {
+    "widthM": [
+     4.3,
+     5.9
+    ],
+    "storeys": [
+     5
+    ]
+   },
+   "body": {
+    "storeys": 5,
+    "bays": 2,
+    "cornice": "bracketed",
+    "windows": "cross",
+    "windowProportion": "tall",
+    "bands": "both",
+    "windowSurround": "keystone"
+   },
+   "crowns": {
+    "dormer": {
+     "gable": "cornice",
+     "roofFront": "mansard",
+     "dormers": 1,
+     "dormerStyle": "pediment",
+     "note": "one dormer with a scrolled pediment, centred on the visual house"
+    }
+   },
+   "grounds": {
+    "door-right": {
+     "doorBay": 1,
+     "basement": "none",
+     "tallGround": true,
+     "note": "door with a fanlight on the right axis, one wide two-light window on the left; no souterrain"
+    }
+   },
+   "palettes": {
+    "buff-brick": {
+     "brick": "#8a6e58",
+     "frame": "white",
+     "door": "dark-brown",
+     "stone": "white",
+     "cornice": "white"
+    }
+   },
+   "roof": {
+    "material": "slate"
+   },
+   "rhythm": {
+    "bays": "2 window axes between brick pilaster strips; the pilasters stand 0.5-0.7 m right of the BAG party walls",
+    "identicalBays": "upper storeys: 2 identical axes on all four houses",
+    "windowsPerStorey": "ground: 1 + door fanlight | 1: 2 | 2: 2 | 3: 2 | 4: 2 | dormer: 1",
+    "symmetry": "pairs 304|303 and 302|301 mirror about their party wall (doors adjacent)",
+    "groundFloor": "residential: door with fanlight + one wide window",
+    "signage": "none",
+    "roofline": "bracketed white cornice over a white stucco frieze; slate mansard with one dormer per house",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "brick pilaster strips at the visual party walls are not modelled",
+     "dormers are centred on the BAG front, up to 0.5 m off the visual house centre",
+     "the white stucco frieze of the top storey is not modelled"
+    ]
+   },
+   "evidence": [
+    {
+     "face": "nassau-162289",
+     "pands": [
+      "166694",
+      "157568",
+      "162289",
+      "162529"
+     ],
+     "citation": "strip.jpg pands 16-19: identical 2-axis bodies between pilasters at strip columns 3794, 3987, 4179 (BAG party walls 3775, 3965, 4152); visual houses 192-206 px = 4.8-5.2 m though BAG widths are 4.3-5.8 m"
+    }
+   ]
+  }
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012165898",
+   "slug": "nassau-165898",
+   "address": "Nassaukade 318",
+   "type": {
+    "type": "nassau-b-stucco-cornice",
+    "crown": "pair-dormer",
+    "pair": "left"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "photo-only",
+    "note": "stoop + door portal right"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 1"
+   }
+  },
+  {
+   "pandId": "0363100012154241",
+   "slug": "nassau-154241",
+   "address": "Nassaukade 317",
+   "type": {
+    "type": "nassau-b-stucco-cornice",
+    "crown": "pair-dormer",
+    "pair": "right",
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "photo-only",
+    "note": "stoop + door portal left"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 2"
+   }
+  },
+  {
+   "pandId": "0363100012162368",
+   "slug": "nassau-162368",
+   "address": "Nassaukade 316",
+   "type": {
+    "type": "nassau-b-stucco-cornice",
+    "crown": "pair-dormer",
+    "pair": "left"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "photo-only",
+    "note": "stoop + door portal right"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 3"
+   }
+  },
+  {
+   "pandId": "0363100012164663",
+   "slug": "nassau-164663",
+   "address": "Nassaukade 315",
+   "type": {
+    "type": "nassau-b-stucco-cornice",
+    "crown": "pair-dormer",
+    "pair": "right",
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "photo-only",
+    "note": "stoop + door portal left"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 4"
+   }
+  },
+  {
+   "pandId": "0363100012156130",
+   "slug": "nassau-156130",
+   "address": "Nassaukade 314",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Nassaukade",
+      "gable": "neck",
+      "atticWindows": 1,
+      "storeys": 4,
+      "bays": 3,
+      "doorBay": 0,
+      "tallGround": true,
+      "basement": "stoop-and-windows",
+      "cornice": "simple",
+      "windows": "cross",
+      "windowProportion": "tall",
+      "hoist": false,
+      "balconies": {
+       "storeys": [
+        1,
+        2,
+        3
+       ],
+       "bays": [
+        1
+       ],
+       "projecting": true
+      },
+      "crownAt": {
+       "from": 0.08,
+       "to": 0.34
+      },
+      "crownRise": 0.8
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#5e4038",
+     "frame": "white",
+     "door": "black",
+     "stone": "#d8d6cf"
+    },
+    "notes": [
+     "one-off: plain dark brick, narrow neck gable over the left axis, projecting centre balconies on consoles",
+     "crown from photo (gables.json): tuitgevel over 0.10-0.33 of the front, 1.6 m above the reader's eaves; top at strip row 172 = 2.4 m over the measured eaves -> crownRise 0.8, crownAt 0.08-0.34"
+    ]
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "photo-only",
+    "note": "arched door left over a stoop"
+   },
+   "rhythm": {
+    "bays": "3 window axes, door left",
+    "windowsPerStorey": "souterrain: 2 | bel-etage: 2 + door | 1: 3 | 2: 3 | 3: 3 | gable: 1",
+    "symmetry": "none: gable over the left axis, small dormer on the right",
+    "groundFloor": "residential: arched door left, two windows, souterrain",
+    "signage": "none",
+    "roofline": "narrow neck gable with an arched attic window over the left axis; cornice and a small dormer to its right",
+    "citation": "strip.jpg pand 5",
+    "photoRows": [
+     2,
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGroundRows": 2,
+    "photoGables": 1,
+    "schemaLimits": [
+     "the small dormer right of the gable and the tiled frieze are not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012157238",
+   "slug": "nassau-157238",
+   "address": "Nassaukade 313",
+   "type": {
+    "type": "nassau-c-banded-door-left",
+    "crown": "dormer"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2024-11-29",
+    "agreement": "photo-only",
+    "note": "BAG lists no ground-floor unit; photo shows a door left and two windows over a souterrain"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 6"
+   }
+  },
+  {
+   "pandId": "0363100012162083",
+   "slug": "nassau-162083",
+   "address": "Nassaukade 312",
+   "type": {
+    "type": "nassau-c-banded-door-left",
+    "crown": "step-gable"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "photo-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 7",
+    "roofline": "stepped neck gable with one attic window over the middle",
+    "photoRows": [
+     2,
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1
+   }
+  },
+  {
+   "pandId": "0363100012161701",
+   "slug": "nassau-161701",
+   "address": "Nassaukade 311",
+   "type": {
+    "type": "nassau-c-banded-door-left",
+    "crown": "dormer"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "photo-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 8"
+   }
+  },
+  {
+   "pandId": "0363100012156556",
+   "slug": "nassau-156556",
+   "address": "Nassaukade 310",
+   "type": {
+    "type": "nassau-a-banded-mirrored",
+    "crown": "spire-dormer"
+   },
+   "groundFloor": {
+    "use": "office",
+    "bag": [
+     "kantoorfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "bag-only",
+    "note": "BAG kantoorfunctie; the photo shows a residential front (door portal, no sign)"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 9"
+   }
+  },
+  {
+   "pandId": "0363100012156555",
+   "slug": "nassau-156555",
+   "address": "Nassaukade 309",
+   "type": {
+    "type": "nassau-a-banded-mirrored",
+    "crown": "neo-ren-gable",
+    "mirror": true,
+    "overrides": {
+     "archedStoreys": []
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "photo-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 10",
+    "roofline": "Neo-Renaissance gable",
+    "photoRows": [
+     2,
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1
+   }
+  },
+  {
+   "pandId": "0363100012162089",
+   "slug": "nassau-162089",
+   "address": "Nassaukade 308",
+   "type": {
+    "type": "nassau-a-banded-mirrored",
+    "crown": "spire-dormer"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "photo-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 11"
+   }
+  },
+  {
+   "pandId": "0363100012162090",
+   "slug": "nassau-162090",
+   "address": "Nassaukade 307",
+   "type": {
+    "type": "nassau-a-banded-mirrored",
+    "crown": "spire-dormer",
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "photo-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 12"
+   }
+  },
+  {
+   "pandId": "0363100012166290",
+   "slug": "nassau-166290",
+   "address": "Nassaukade 306",
+   "type": {
+    "type": "nassau-a-banded-mirrored",
+    "crown": "neo-ren-gable",
+    "overrides": {
+     "archedStoreys": []
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "photo-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 13",
+    "roofline": "Neo-Renaissance gable",
+    "photoRows": [
+     2,
+     2,
+     3,
+     3,
+     3,
+     1
+    ],
+    "photoGables": 1
+   }
+  },
+  {
+   "pandId": "0363100012159934",
+   "slug": "nassau-159934",
+   "address": "Nassaukade 305",
+   "type": {
+    "type": "nassau-a-banded-mirrored",
+    "crown": "spire-dormer",
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "photo-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 14"
+   }
+  },
+  {
+   "pandId": "0363100012157131",
+   "slug": "nassau-157131",
+   "address": "Nassaukade 304A",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Nassaukade",
+      "gable": "bell",
+      "atticWindows": 1,
+      "storeys": 4,
+      "bays": 2,
+      "doorBay": null,
+      "tallGround": true,
+      "basement": "none",
+      "cornice": "none",
+      "windows": "cross",
+      "windowProportion": "tall",
+      "hoist": false,
+      "bands": "both",
+      "windowSurround": "keystone",
+      "groundFront": {
+       "kind": "pui",
+       "bays": [
+        "glazed-door",
+        "window"
+       ],
+       "colour": "white"
+      },
+      "crownAt": {
+       "from": 0.195,
+       "to": 0.878
+      },
+      "crownRise": 0.8
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#8a4436",
+     "frame": "white",
+     "door": "dark-brown",
+     "stone": "white"
+    },
+    "notes": [
+     "one-off 4.2 m house: red banded brick, 2 axes x 3 upper storeys, neck gable with an arched attic light and a chimney block, white pui (glazed door + big window) on the ground floor",
+     "crown from photo (gables.json): klokgevel 0.94, rise 2.4 m, span 0.195-0.878; eaves measured at the gable foot (reader eavesUp 17.45 m = strip row 224)"
+    ]
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "photo-only",
+    "note": "white-framed pui: glazed door left, one big window"
+   },
+   "rhythm": {
+    "bays": "2 window axes",
+    "windowsPerStorey": "ground: glazed door + 1 | 1: 2 | 2: 2 | 3: 2 | gable: 1",
+    "symmetry": "upper storeys symmetric; ground door left",
+    "groundFloor": "white stone/timber pui with a glazed door and a big window",
+    "signage": "none",
+    "roofline": "neck gable with scrolls and a square top block",
+    "citation": "strip.jpg pand 15",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     1
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 1,
+    "schemaLimits": [
+     "tympana and gable scrolls are not modelled"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012166694",
+   "slug": "nassau-166694",
+   "address": "Nassaukade 304",
+   "type": {
+    "type": "nassau-d-stucco-attic",
+    "crown": "dormer",
+    "visualSpan": {
+     "from": 0,
+     "to": 1.11,
+     "evidence": "strip columns 3602 (BAG party wall with 304A) to the pilaster at 3794; BAG pand 3602-3775"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "photo-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 16"
+   }
+  },
+  {
+   "pandId": "0363100012157568",
+   "slug": "nassau-157568",
+   "address": "Nassaukade 303",
+   "type": {
+    "type": "nassau-d-stucco-attic",
+    "crown": "dormer",
+    "mirror": true,
+    "visualSpan": {
+     "from": 0.105,
+     "to": 1.115,
+     "evidence": "pilasters at strip columns 3794 and 3987; BAG pand 3774-3965"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "photo-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 17"
+   }
+  },
+  {
+   "pandId": "0363100012162289",
+   "slug": "nassau-162289",
+   "address": "Nassaukade 302",
+   "type": {
+    "type": "nassau-d-stucco-attic",
+    "crown": "dormer",
+    "visualSpan": {
+     "from": 0.118,
+     "to": 1.144,
+     "evidence": "pilasters at strip columns 3987 and 4179; BAG pand 3965-4152 (the right window ends at the BAG party wall)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "photo-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 18"
+   }
+  },
+  {
+   "pandId": "0363100012162529",
+   "slug": "nassau-162529",
+   "address": "Nassaukade 301",
+   "type": {
+    "type": "nassau-d-stucco-attic",
+    "crown": "dormer",
+    "mirror": true,
+    "visualSpan": {
+     "from": 0.116,
+     "to": 1,
+     "evidence": "pilaster at strip column 4179 to the corner house at 4385; BAG pand 4152-4385"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "photo-only"
+   },
+   "rhythm": {
+    "citation": "strip.jpg pand 19"
+   }
+  },
+  {
+   "pandId": "0363100012162530",
+   "slug": "nassau-162530",
+   "address": "Nassaukade 300",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Nassaukade",
+      "gable": "flat",
+      "storeys": 5,
+      "bays": 2,
+      "doorBay": null,
+      "basement": "none",
+      "cornice": "simple",
+      "windows": "cross",
+      "windowProportion": "tall",
+      "hoist": false,
+      "bands": "storey",
+      "windowSurround": "keystone",
+      "shopfront": {
+       "colour": "white",
+       "fascia": false,
+       "residentialDoor": {
+        "side": "left",
+        "colour": "black"
+       },
+       "glazing": "transom",
+       "stallriser": "low",
+       "evidence": "strip.jpg 2024-11-29: white-framed shop window with orange lettering on the glass (illegible), house door left; BAG winkelfunctie 300-H"
+      }
+     }
+    ],
+    "roof": {
+     "material": "bitumen"
+    },
+    "palette": {
+     "brick": "#9a6a58",
+     "frame": "white",
+     "door": "black",
+     "stone": "white"
+    },
+    "notes": [
+     "corner house at the Elandsgracht end: light red brick, 2 axes x 4 upper storeys, dark flat attic storey set back"
+    ]
+   },
+   "groundFloor": {
+    "use": "shop",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2024-11-29",
+    "agreement": "photo-only",
+    "note": "shop window with illegible orange lettering on the glass; no OSM node"
+   },
+   "rhythm": {
+    "bays": "2 window axes",
+    "windowsPerStorey": "ground: shop window + door | 1: 2 | 2: 2 | 3: 2 | 4: 2",
+    "symmetry": "upper storeys symmetric",
+    "groundFloor": "white-framed shop window, house door left",
+    "signage": "orange lettering on the glass, illegible on the strip",
+    "roofline": "cornice, dark set-back attic storey",
+    "citation": "strip.jpg pand 20",
+    "photoRows": [
+     2,
+     2,
+     2,
+     2,
+     2
+    ],
+    "photoGroundRows": 1,
+    "photoGables": 0,
+    "schemaLimits": [
+     "the set-back attic storey is not modelled",
+     "the corner's side front is not on this face"
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "measuredEaves": [
+   {
+    "pand": "0363100012165898",
+    "stripRow": 263,
+    "evidence": "top of the white dentil cornice (roofline band crop)"
+   },
+   {
+    "pand": "0363100012154241",
+    "stripRow": 263,
+    "evidence": "same cornice line as 318"
+   },
+   {
+    "pand": "0363100012162368",
+    "stripRow": 263,
+    "evidence": "same cornice line"
+   },
+   {
+    "pand": "0363100012164663",
+    "stripRow": 263,
+    "evidence": "same cornice line"
+   },
+   {
+    "pand": "0363100012156130",
+    "stripRow": 268,
+    "evidence": "cornice right of the neck gable"
+   },
+   {
+    "pand": "0363100012157238",
+    "stripRow": 273,
+    "evidence": "top of the white cornice band"
+   },
+   {
+    "pand": "0363100012162083",
+    "stripRow": 273,
+    "evidence": "gable foot on the neighbours' cornice line"
+   },
+   {
+    "pand": "0363100012161701",
+    "stripRow": 274,
+    "evidence": "top of the white cornice band"
+   },
+   {
+    "pand": "0363100012156556",
+    "stripRow": 224,
+    "evidence": "top of the white entablature cornice"
+   },
+   {
+    "pand": "0363100012156555",
+    "stripRow": 226,
+    "evidence": "gable foot on the 310|308 cornice line"
+   },
+   {
+    "pand": "0363100012162089",
+    "stripRow": 227,
+    "evidence": "top of the white entablature cornice"
+   },
+   {
+    "pand": "0363100012162090",
+    "stripRow": 227,
+    "evidence": "top of the white entablature cornice"
+   },
+   {
+    "pand": "0363100012166290",
+    "stripRow": 227,
+    "evidence": "gable foot on the cornice line"
+   },
+   {
+    "pand": "0363100012159934",
+    "stripRow": 227,
+    "evidence": "top of the white entablature cornice"
+   },
+   {
+    "pand": "0363100012166694",
+    "stripRow": 252,
+    "evidence": "top of the bracketed cornice"
+   },
+   {
+    "pand": "0363100012157568",
+    "stripRow": 252,
+    "evidence": "same cornice line"
+   },
+   {
+    "pand": "0363100012162289",
+    "stripRow": 252,
+    "evidence": "same cornice line"
+   },
+   {
+    "pand": "0363100012162529",
+    "stripRow": 252,
+    "evidence": "same cornice line"
+   },
+   {
+    "pand": "0363100012162530",
+    "stripRow": 270,
+    "evidence": "top of the cornice under the dark attic storey"
+   },
+   {
+    "pand": "0363100012157131",
+    "stripRow": 224,
+    "evidence": "bell gable foot (photo gable reader eavesUp 17.45 m)"
+   }
+  ],
+  "partyClip": true
+ }
+}
