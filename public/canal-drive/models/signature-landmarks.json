@@ -25674,8 +25674,7 @@
       },
       "triangles": 11201,
       "bytes": 163052,
-      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
-      "held": true
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "sea-palace": {
       "id": "sea-palace",

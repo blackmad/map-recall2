@@ -19160,9 +19160,7 @@ Map source: ${osmUrl(places[i][0])}`);
             ]
           ]
         ]
-      },
-      status: "held",
-      heldReason: "Integrator 2026-10-10: blue curtain-wall banding and set-backs missing; terminal podium renders as long flat slabs"
+      }
     },
     {
       id: "sea-palace",
