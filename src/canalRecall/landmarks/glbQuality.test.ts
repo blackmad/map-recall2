@@ -285,3 +285,24 @@ test('a declared corridor does not exempt a missing wall elsewhere on the model,
   const wrongAxis = analyseSoup(soup(...tunnelBlock()), {throughPassages: [{axisBearing: 90, corridor}]});
   assert.ok(wrongAxis.seeThrough.rays > 0, JSON.stringify(wrongAxis.seeThrough));
 });
+
+test('a single 140 m slab is not a site: an open side is see-through checked; a closed slab has no see-through', () => {
+  const closed = analyseSoup(soup(boxQuads(0, 0, 0, 140, 12, 24)));
+  assert.ok(!closed.findings.some(f => f.kind === 'site-model'), JSON.stringify(closed.findings));
+  assert.ok(closed.seeThrough.tested > 0, 'long slab must get see-through rays');
+  assert.ok(!closed.findings.some(f => f.kind === 'see-through'), JSON.stringify(closed.findings));
+  const open = analyseSoup(soup(boxQuads(0, 0, 0, 140, 12, 24, ['south'])));
+  assert.ok(!open.findings.some(f => f.kind === 'site-model'));
+  assert.ok(open.findings.some(f => f.kind === 'see-through' && f.severity === 'fail'), JSON.stringify(open.findings));
+});
+
+test('a genuine multi-volume site (several grounded buildings, diagonal > 150 m) still skips see-through and far-outside', () => {
+  const site = soup(boxQuads(0, 0, 0, 40, 15, 30), boxQuads(60, 0, 0, 100, 15, 30), boxQuads(120, 0, 0, 160, 15, 30, ['south']));
+  const r = analyseSoup(site);
+  assert.ok(r.findings.some(f => f.kind === 'site-model' && f.severity === 'warn'), JSON.stringify(r.findings));
+  assert.equal(r.seeThrough.rays, 0);
+  assert.ok(!r.findings.some(f => f.kind === 'far-outside'));
+  // An explicit declaration overrides in both directions.
+  assert.ok(analyseSoup(soup(boxQuads(0, 0, 0, 140, 12, 24)), {siteModel: true}).findings.some(f => f.kind === 'site-model'));
+  assert.ok(analyseSoup(site, {siteModel: false}).seeThrough.tested > 0);
+});
