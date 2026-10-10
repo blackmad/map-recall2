@@ -75,6 +75,17 @@ export interface Thresholds {
    * `axisBearing` (either sense). Nothing is inferred from the geometry: a roofed box missing two walls is still a failure.
    */
   throughPassages: ThroughPassage[];
+  /**
+   * Declared, evidenced free-standing structures that really stand apart from the main body (a car-park entrance pavilion on the
+   * pavement, a kiosk, a vent stack). A part is exempt from the far-outside check ONLY when its whole XZ extent lies inside a declared
+   * `box` ([minX, minZ, maxX, maxZ], model-local metres). Nothing is inferred; undeclared detached geometry still fails.
+   */
+  detachedStructures: DetachedStructure[];
+}
+
+export interface DetachedStructure {
+  box: [number, number, number, number];
+  evidence?: string;
 }
 
 export interface ThroughPassage {
@@ -121,6 +132,7 @@ export const DEFAULT_THRESHOLDS: Thresholds = {
   blankWallFailArea: 600,
   blankWallExemptBearings: [],
   throughPassages: [],
+  detachedStructures: [],
 };
 
 export interface DetachedPart {
@@ -781,10 +793,11 @@ export function analyseSoup(soup: TriSoup, overrides: Partial<Thresholds> = {}):
     if (compOfTri[t] < 0 || inMain(t)) continue;
     const cl = clusterOf[compOfTri[t]];
     const separateVolume = cArea[cl] >= th.separateVolumeMinArea && cMin[cl][1] <= 0.3 && cMax[cl][1] - cMin[cl][1] >= 4 && cMax[cl][0] - cMin[cl][0] >= 8 && cMax[cl][2] - cMin[cl][2] >= 8;
+    const declaredStructure = th.detachedStructures.some(ds => cMin[cl][0] >= ds.box[0] && cMin[cl][2] >= ds.box[1] && cMax[cl][0] <= ds.box[2] && cMax[cl][2] <= ds.box[3]);
     for (let k = 0; k < 3; k++) {
       const i = soup.indices[t * 3 + k] * 3;
       const d = distToHull([soup.positions[i], soup.positions[i + 2]], hull);
-      if (d > th.farOutside && !site && !separateVolume) farN++;
+      if (d > th.farOutside && !site && !separateVolume && !declaredStructure) farN++;
       if (d > farMax) farMax = d;
     }
   }
