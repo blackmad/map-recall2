@@ -24,8 +24,8 @@ export function windowGrid(b: BuildingTools, wall: RawWall, g: Grid) {
     const t = g.t0 + c * g.pitch, top = topOf(wall, t);
     for (const y of g.sills) {
       if (!(y + g.h <= (Number.isFinite(top) ? top : wall.top) - 0.25) || y < wall.base + 0.2) continue;
-      quad(b, wall.f, t, y - ring, g.w + 2 * ring, g.h + 2 * ring, frame, 0.03);
-      quad(b, wall.f, t, y, g.w, g.h, glass, 0.06);
+      quad(b, wall.f, t, y - ring, g.w + 2 * ring, g.h + 2 * ring, frame, 0.02);
+      quad(b, wall.f, t, y, g.w, g.h, glass, 0.04);
     }
   }
 }

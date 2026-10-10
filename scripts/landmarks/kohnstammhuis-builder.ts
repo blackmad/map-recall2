@@ -46,9 +46,9 @@ export function buildKohnstammhuis(_w: number, _d: number, b: BuildingTools & {m
     }
     for (let k = 0; k < N; k++) {
       const t = T0 + (k + 0.5) * P;
-      quad(b, f, t, 2.05, 1.12, 9.4, 'frame', 0.03);
-      quad(b, f, t, 2.15, 0.96, 9.2, 'glass', 0.06);
-      for (let m = 1; m <= 5; m++) quad(b, f, t, 2.15 + m * 9.2 / 6 - 0.03, 1.0, 0.06, 'frame', 0.08);
+      quad(b, f, t, 2.05, 1.12, 9.4, 'frame', 0.02);
+      quad(b, f, t, 2.15, 0.96, 9.2, 'glass', 0.04);
+      for (let m = 1; m <= 5; m++) quad(b, f, t, 2.15 + m * 9.2 / 6 - 0.03, 1.0, 0.06, 'frame', 0.045);
       archSlab(b, f, t, 0.55, 0.9, 0.7, 0.06, 'dark', 0.15);
     }
     // end pavilions: door at the head of a stair, coat of arms, tall window, leaded window

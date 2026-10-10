@@ -1,0 +1,19 @@
+{
+  "name": "Kohnstammhuis",
+  "landmarkId": "kohnstammhuis",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Kohnstammhuis",
+  "suppressOsmIds": ["NL.IMBAG.Pand.0363100012125963"],
+  "pandId": "0363100012125963",
+  "materialOverrides": {
+    "brick": "#b3a27f",
+    "concrete": "#aaa698",
+    "glass": "#7f95a6",
+    "frame": "#dcdad0",
+    "dark": "#2f2c2a",
+    "white": "#ecebe5",
+    "gold": "#d1a93a",
+    "red": "#b03a2e"
+  },
+  "surveySource": "BAG 0363100012125963 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean.",
+  "modifications": "Original texture-free geometry on the 3DBAG LoD2.2 massing; the Wibautstraat colonnade, entrance pavilions and window grids counted by eye from municipal panoramas, no pixels or meshes imported."
+}

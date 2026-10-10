@@ -1,7 +1,7 @@
 {
   "id": "kohnstammhuis",
   "name": "Kohnstammhuis",
-  "category": "ordinary",
+  "landmarkId": "kohnstammhuis",
   "modelUrl": "./models/kohnstammhuis.glb",
   "suppressOsmIds": [
     "NL.IMBAG.Pand.0363100012125963"
@@ -27,10 +27,10 @@
     "source": "PDOK BAG 0363100012125963 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint vertex mean."
   },
   "materialOverrides": {
-    "brick": "#a8987a",
-    "concrete": "#a39f94",
-    "glass": "#6f8597",
-    "frame": "#d9d7cd",
+    "brick": "#b3a27f",
+    "concrete": "#aaa698",
+    "glass": "#7f95a6",
+    "frame": "#dcdad0",
     "dark": "#2f2c2a",
     "white": "#ecebe5",
     "gold": "#d1a93a",
