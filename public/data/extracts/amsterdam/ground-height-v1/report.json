@@ -1,241 +1,4158 @@
 {
   "summary": {
-    "tiles": 25,
+    "tiles": 413,
     "stepM": 2,
     "samplesPerTile": 250000,
-    "measuredFraction": 0.544,
-    "waterPixelsBlanked": 2508138,
-    "rawBytes": 12500000,
-    "gzBytes": 3534017,
-    "gzBytesPerKm2": 141361,
-    "buildMs": 112900,
+    "measuredFraction": 0.667,
+    "waterPixelsBlanked": 117798959,
+    "rawBytes": 71125000,
+    "gzBytes": 20563901,
+    "predictor": "planar",
+    "core": {
+      "km": 4,
+      "stepM": 2,
+      "tiles": 52,
+      "gzBytes": 5834209
+    },
+    "outer": {
+      "stepM": 4,
+      "tiles": 361,
+      "gzBytes": 14729692
+    },
+    "gzBytesPerKm2": 49792,
+    "buildMs": 3477220,
     "note": "gzBytes is what the browser downloads (tiles are served as gzip; DecompressionStream inflates them)."
   },
   "tiles": [
     {
+      "tile": "124_475",
+      "stepM": 4,
+      "measured": 0.926,
+      "filled": 0.074,
+      "minNAP": -3.3,
+      "maxNAP": 1.22,
+      "meanNAP": -2.42,
+      "gzBytes": 43299
+    },
+    {
+      "tile": "125_475",
+      "stepM": 4,
+      "measured": 0.934,
+      "filled": 0.066,
+      "minNAP": -3.28,
+      "maxNAP": 5.99,
+      "meanNAP": -2.05,
+      "gzBytes": 47303
+    },
+    {
+      "tile": "126_475",
+      "stepM": 4,
+      "measured": 0.862,
+      "filled": 0.138,
+      "minNAP": -2.95,
+      "maxNAP": 6.9,
+      "meanNAP": -1.1,
+      "gzBytes": 51275
+    },
+    {
+      "tile": "127_475",
+      "stepM": 4,
+      "measured": 0.9,
+      "filled": 0.1,
+      "minNAP": -2.86,
+      "maxNAP": 11.43,
+      "meanNAP": -1.44,
+      "gzBytes": 50036
+    },
+    {
+      "tile": "129_475",
+      "stepM": 4,
+      "measured": 0.849,
+      "filled": 0.151,
+      "minNAP": -2.37,
+      "maxNAP": 4.81,
+      "meanNAP": -1.37,
+      "gzBytes": 37201
+    },
+    {
+      "tile": "130_475",
+      "stepM": 4,
+      "measured": 0.882,
+      "filled": 0.118,
+      "minNAP": -2.15,
+      "maxNAP": 1.55,
+      "meanNAP": -1.19,
+      "gzBytes": 40500
+    },
+    {
+      "tile": "132_475",
+      "stepM": 4,
+      "measured": 0.071,
+      "filled": 0.929,
+      "minNAP": -2.17,
+      "maxNAP": -0.51,
+      "meanNAP": -1.4,
+      "gzBytes": 12365
+    },
+    {
+      "tile": "133_475",
+      "stepM": 4,
+      "measured": 0.445,
+      "filled": 0.555,
+      "minNAP": -1.74,
+      "maxNAP": -0.32,
+      "meanNAP": -1.2,
+      "gzBytes": 34320
+    },
+    {
+      "tile": "134_475",
+      "stepM": 4,
+      "measured": 0.439,
+      "filled": 0.561,
+      "minNAP": -1.45,
+      "maxNAP": -0.48,
+      "meanNAP": -1.16,
+      "gzBytes": 34417
+    },
+    {
+      "tile": "135_475",
+      "stepM": 4,
+      "measured": 0.829,
+      "filled": 0.171,
+      "minNAP": -1.8,
+      "maxNAP": 1.45,
+      "meanNAP": -0.93,
+      "gzBytes": 46528
+    },
+    {
+      "tile": "124_476",
+      "stepM": 4,
+      "measured": 0.908,
+      "filled": 0.092,
+      "minNAP": -3.79,
+      "maxNAP": 0.54,
+      "meanNAP": -2.62,
+      "gzBytes": 38884
+    },
+    {
+      "tile": "125_476",
+      "stepM": 4,
+      "measured": 0.813,
+      "filled": 0.187,
+      "minNAP": -4.09,
+      "maxNAP": 5.54,
+      "meanNAP": -1.86,
+      "gzBytes": 44368
+    },
+    {
+      "tile": "126_476",
+      "stepM": 4,
+      "measured": 0.624,
+      "filled": 0.376,
+      "minNAP": -2.9,
+      "maxNAP": 2.59,
+      "meanNAP": -1.15,
+      "gzBytes": 43565
+    },
+    {
+      "tile": "127_476",
+      "stepM": 4,
+      "measured": 0.892,
+      "filled": 0.108,
+      "minNAP": -8.29,
+      "maxNAP": 2.17,
+      "meanNAP": -1.11,
+      "gzBytes": 51172
+    },
+    {
+      "tile": "128_476",
+      "stepM": 4,
+      "measured": 0.882,
+      "filled": 0.118,
+      "minNAP": -2.42,
+      "maxNAP": 1.83,
+      "meanNAP": -1.29,
+      "gzBytes": 44642
+    },
+    {
+      "tile": "129_476",
+      "stepM": 4,
+      "measured": 0.807,
+      "filled": 0.193,
+      "minNAP": -2.32,
+      "maxNAP": 5.71,
+      "meanNAP": -0.99,
+      "gzBytes": 44457
+    },
+    {
+      "tile": "130_476",
+      "stepM": 4,
+      "measured": 0.729,
+      "filled": 0.271,
+      "minNAP": -1.88,
+      "maxNAP": 1.79,
+      "meanNAP": -0.43,
+      "gzBytes": 46003
+    },
+    {
+      "tile": "131_476",
+      "stepM": 4,
+      "measured": 0.759,
+      "filled": 0.241,
+      "minNAP": -1.95,
+      "maxNAP": 1.19,
+      "meanNAP": -0.93,
+      "gzBytes": 43179
+    },
+    {
+      "tile": "132_476",
+      "stepM": 4,
+      "measured": 0.481,
+      "filled": 0.519,
+      "minNAP": -1.7,
+      "maxNAP": 1.58,
+      "meanNAP": -1.22,
+      "gzBytes": 31694
+    },
+    {
+      "tile": "133_476",
+      "stepM": 4,
+      "measured": 0.603,
+      "filled": 0.397,
+      "minNAP": -1.72,
+      "maxNAP": 1.51,
+      "meanNAP": -1.07,
+      "gzBytes": 36983
+    },
+    {
+      "tile": "134_476",
+      "stepM": 4,
+      "measured": 0.295,
+      "filled": 0.705,
+      "minNAP": -1.65,
+      "maxNAP": 1.96,
+      "meanNAP": -1,
+      "gzBytes": 29011
+    },
+    {
+      "tile": "135_476",
+      "stepM": 4,
+      "measured": 0.662,
+      "filled": 0.338,
+      "minNAP": -1.66,
+      "maxNAP": 2.96,
+      "meanNAP": -0.83,
+      "gzBytes": 44204
+    },
+    {
+      "tile": "123_477",
+      "stepM": 4,
+      "measured": 0.705,
+      "filled": 0.295,
+      "minNAP": -4.57,
+      "maxNAP": 6.19,
+      "meanNAP": -2.33,
+      "gzBytes": 41580
+    },
+    {
+      "tile": "124_477",
+      "stepM": 4,
+      "measured": 0.749,
+      "filled": 0.251,
+      "minNAP": -4.56,
+      "maxNAP": 6.1,
+      "meanNAP": -3.05,
+      "gzBytes": 44536
+    },
+    {
+      "tile": "125_477",
+      "stepM": 4,
+      "measured": 0.823,
+      "filled": 0.177,
+      "minNAP": -4.53,
+      "maxNAP": 4.63,
+      "meanNAP": -3.03,
+      "gzBytes": 49830
+    },
+    {
+      "tile": "126_477",
+      "stepM": 4,
+      "measured": 0.811,
+      "filled": 0.189,
+      "minNAP": -4.32,
+      "maxNAP": 5.08,
+      "meanNAP": -1.89,
+      "gzBytes": 49324
+    },
+    {
+      "tile": "127_477",
+      "stepM": 4,
+      "measured": 0.91,
+      "filled": 0.09,
+      "minNAP": -2.57,
+      "maxNAP": 2.43,
+      "meanNAP": -1.97,
+      "gzBytes": 40264
+    },
+    {
+      "tile": "128_477",
+      "stepM": 4,
+      "measured": 0.899,
+      "filled": 0.101,
+      "minNAP": -2.42,
+      "maxNAP": 1.79,
+      "meanNAP": -1.43,
+      "gzBytes": 41390
+    },
+    {
+      "tile": "129_477",
+      "stepM": 4,
+      "measured": 0.937,
+      "filled": 0.063,
+      "minNAP": -2.11,
+      "maxNAP": 5.78,
+      "meanNAP": -1.34,
+      "gzBytes": 43395
+    },
+    {
+      "tile": "130_477",
+      "stepM": 4,
+      "measured": 0.851,
+      "filled": 0.149,
+      "minNAP": -2.25,
+      "maxNAP": 1.84,
+      "meanNAP": -1.23,
+      "gzBytes": 42623
+    },
+    {
+      "tile": "131_477",
+      "stepM": 4,
+      "measured": 0.926,
+      "filled": 0.074,
+      "minNAP": -1.89,
+      "maxNAP": 1.15,
+      "meanNAP": -1.28,
+      "gzBytes": 45201
+    },
+    {
+      "tile": "132_477",
+      "stepM": 4,
+      "measured": 0.785,
+      "filled": 0.215,
+      "minNAP": -1.82,
+      "maxNAP": 9.06,
+      "meanNAP": -0.66,
+      "gzBytes": 45526
+    },
+    {
+      "tile": "133_477",
+      "stepM": 4,
+      "measured": 0.773,
+      "filled": 0.227,
+      "minNAP": -1.83,
+      "maxNAP": 1.8,
+      "meanNAP": -0.72,
+      "gzBytes": 46114
+    },
+    {
+      "tile": "134_477",
+      "stepM": 4,
+      "measured": 0.942,
+      "filled": 0.058,
+      "minNAP": -2.83,
+      "maxNAP": 0.92,
+      "meanNAP": -1.37,
+      "gzBytes": 46638
+    },
+    {
+      "tile": "135_477",
+      "stepM": 4,
+      "measured": 0.919,
+      "filled": 0.081,
+      "minNAP": -1.92,
+      "maxNAP": 3.22,
+      "meanNAP": -0.98,
+      "gzBytes": 46676
+    },
+    {
+      "tile": "123_478",
+      "stepM": 4,
+      "measured": 0.549,
+      "filled": 0.451,
+      "minNAP": -5.03,
+      "maxNAP": 0.45,
+      "meanNAP": -2.85,
+      "gzBytes": 39399
+    },
+    {
+      "tile": "124_478",
+      "stepM": 4,
+      "measured": 0.627,
+      "filled": 0.373,
+      "minNAP": -6.26,
+      "maxNAP": 5.68,
+      "meanNAP": -3.21,
+      "gzBytes": 45591
+    },
+    {
+      "tile": "125_478",
+      "stepM": 4,
+      "measured": 0.776,
+      "filled": 0.224,
+      "minNAP": -4.66,
+      "maxNAP": 5.43,
+      "meanNAP": -2.74,
+      "gzBytes": 51046
+    },
+    {
+      "tile": "126_478",
+      "stepM": 4,
+      "measured": 0.781,
+      "filled": 0.219,
+      "minNAP": -4.49,
+      "maxNAP": 5.08,
+      "meanNAP": -1.04,
+      "gzBytes": 51582
+    },
+    {
+      "tile": "127_478",
+      "stepM": 4,
+      "measured": 0.778,
+      "filled": 0.222,
+      "minNAP": -2.6,
+      "maxNAP": 3.94,
+      "meanNAP": -1.11,
+      "gzBytes": 41857
+    },
+    {
+      "tile": "128_478",
+      "stepM": 4,
+      "measured": 0.829,
+      "filled": 0.171,
+      "minNAP": -2.62,
+      "maxNAP": 4.35,
+      "meanNAP": -1.26,
+      "gzBytes": 47092
+    },
+    {
+      "tile": "129_478",
+      "stepM": 4,
+      "measured": 0.9,
+      "filled": 0.1,
+      "minNAP": -3.13,
+      "maxNAP": 1.51,
+      "meanNAP": -1.4,
+      "gzBytes": 45597
+    },
+    {
+      "tile": "130_478",
+      "stepM": 4,
+      "measured": 0.825,
+      "filled": 0.175,
+      "minNAP": -2.24,
+      "maxNAP": 1.81,
+      "meanNAP": -1.21,
+      "gzBytes": 38162
+    },
+    {
+      "tile": "131_478",
+      "stepM": 4,
+      "measured": 0.893,
+      "filled": 0.107,
+      "minNAP": -2,
+      "maxNAP": 1.05,
+      "meanNAP": -1.32,
+      "gzBytes": 41556
+    },
+    {
+      "tile": "132_478",
+      "stepM": 4,
+      "measured": 0.885,
+      "filled": 0.115,
+      "minNAP": -2.06,
+      "maxNAP": 1.96,
+      "meanNAP": -1.27,
+      "gzBytes": 47680
+    },
+    {
+      "tile": "133_478",
+      "stepM": 4,
+      "measured": 0.753,
+      "filled": 0.247,
+      "minNAP": -2,
+      "maxNAP": 4.7,
+      "meanNAP": -0.55,
+      "gzBytes": 46349
+    },
+    {
+      "tile": "134_478",
+      "stepM": 4,
+      "measured": 0.797,
+      "filled": 0.203,
+      "minNAP": -1.94,
+      "maxNAP": 5.76,
+      "meanNAP": -0.77,
+      "gzBytes": 47363
+    },
+    {
+      "tile": "135_478",
+      "stepM": 4,
+      "measured": 0.81,
+      "filled": 0.19,
+      "minNAP": -1.45,
+      "maxNAP": 3.2,
+      "meanNAP": -0.92,
+      "gzBytes": 40140
+    },
+    {
+      "tile": "111_479",
+      "stepM": 4,
+      "measured": 0.765,
+      "filled": 0.235,
+      "minNAP": -9.82,
+      "maxNAP": 1.19,
+      "meanNAP": -3.81,
+      "gzBytes": 44771
+    },
+    {
+      "tile": "112_479",
+      "stepM": 4,
+      "measured": 0.923,
+      "filled": 0.077,
+      "minNAP": -5.44,
+      "maxNAP": -2.65,
+      "meanNAP": -3.83,
+      "gzBytes": 34548
+    },
+    {
+      "tile": "117_479",
+      "stepM": 4,
+      "measured": 0.576,
+      "filled": 0.424,
+      "minNAP": -5.4,
+      "maxNAP": 1.77,
+      "meanNAP": -1.9,
+      "gzBytes": 39543
+    },
+    {
+      "tile": "118_479",
+      "stepM": 4,
+      "measured": 0.751,
+      "filled": 0.249,
+      "minNAP": -6.61,
+      "maxNAP": 1.98,
+      "meanNAP": -2.57,
+      "gzBytes": 48959
+    },
+    {
+      "tile": "119_479",
+      "stepM": 4,
+      "measured": 0.733,
+      "filled": 0.267,
+      "minNAP": -7.42,
+      "maxNAP": 3.06,
+      "meanNAP": -3.41,
+      "gzBytes": 47525
+    },
+    {
+      "tile": "121_479",
+      "stepM": 4,
+      "measured": 0.776,
+      "filled": 0.224,
+      "minNAP": -5.65,
+      "maxNAP": 3.07,
+      "meanNAP": -2.76,
+      "gzBytes": 43599
+    },
+    {
+      "tile": "122_479",
+      "stepM": 4,
+      "measured": 0.837,
+      "filled": 0.163,
+      "minNAP": -3.48,
+      "maxNAP": 0.88,
+      "meanNAP": -1.66,
+      "gzBytes": 43199
+    },
+    {
+      "tile": "123_479",
+      "stepM": 4,
+      "measured": 0.85,
+      "filled": 0.15,
+      "minNAP": -5.38,
+      "maxNAP": 0.93,
+      "meanNAP": -3.86,
+      "gzBytes": 49185
+    },
+    {
+      "tile": "124_479",
+      "stepM": 4,
+      "measured": 0.703,
+      "filled": 0.297,
+      "minNAP": -5.02,
+      "maxNAP": 4.65,
+      "meanNAP": -2.99,
+      "gzBytes": 47282
+    },
+    {
+      "tile": "125_479",
+      "stepM": 4,
+      "measured": 0.758,
+      "filled": 0.242,
+      "minNAP": -6.5,
+      "maxNAP": 6.9,
+      "meanNAP": -1.43,
+      "gzBytes": 57337
+    },
+    {
+      "tile": "126_479",
+      "stepM": 4,
+      "measured": 0.802,
+      "filled": 0.198,
+      "minNAP": -3.98,
+      "maxNAP": 13.43,
+      "meanNAP": -0.79,
+      "gzBytes": 55134
+    },
+    {
+      "tile": "127_479",
+      "stepM": 4,
+      "measured": 0.632,
+      "filled": 0.368,
+      "minNAP": -2.64,
+      "maxNAP": 4.75,
+      "meanNAP": -1.17,
+      "gzBytes": 42136
+    },
+    {
+      "tile": "128_479",
+      "stepM": 4,
+      "measured": 0.617,
+      "filled": 0.383,
+      "minNAP": -2.65,
+      "maxNAP": 4,
+      "meanNAP": -1.2,
+      "gzBytes": 39343
+    },
+    {
+      "tile": "129_479",
+      "stepM": 4,
+      "measured": 0.816,
+      "filled": 0.184,
+      "minNAP": -2.31,
+      "maxNAP": 9.55,
+      "meanNAP": -0.98,
+      "gzBytes": 46309
+    },
+    {
+      "tile": "130_479",
+      "stepM": 4,
+      "measured": 0.74,
+      "filled": 0.26,
+      "minNAP": -2.15,
+      "maxNAP": 9.58,
+      "meanNAP": -0.68,
+      "gzBytes": 44054
+    },
+    {
+      "tile": "131_479",
+      "stepM": 4,
+      "measured": 0.69,
+      "filled": 0.31,
+      "minNAP": -3.83,
+      "maxNAP": 8.17,
+      "meanNAP": -0.33,
+      "gzBytes": 48367
+    },
+    {
+      "tile": "132_479",
+      "stepM": 4,
+      "measured": 0.85,
+      "filled": 0.15,
+      "minNAP": -6.27,
+      "maxNAP": 1.67,
+      "meanNAP": -1,
+      "gzBytes": 50610
+    },
+    {
+      "tile": "133_479",
+      "stepM": 4,
+      "measured": 0.922,
+      "filled": 0.078,
+      "minNAP": -7.03,
+      "maxNAP": 2.1,
+      "meanNAP": -1.32,
+      "gzBytes": 49794
+    },
+    {
+      "tile": "134_479",
+      "stepM": 4,
+      "measured": 0.904,
+      "filled": 0.096,
+      "minNAP": -2.02,
+      "maxNAP": 0.38,
+      "meanNAP": -1.43,
+      "gzBytes": 43640
+    },
+    {
+      "tile": "135_479",
+      "stepM": 4,
+      "measured": 0.688,
+      "filled": 0.312,
+      "minNAP": -1.67,
+      "maxNAP": 0.19,
+      "meanNAP": -0.83,
+      "gzBytes": 35223
+    },
+    {
+      "tile": "111_480",
+      "stepM": 4,
+      "measured": 0.866,
+      "filled": 0.134,
+      "minNAP": -9.51,
+      "maxNAP": 3.77,
+      "meanNAP": -3.08,
+      "gzBytes": 39655
+    },
+    {
+      "tile": "112_480",
+      "stepM": 4,
+      "measured": 0.679,
+      "filled": 0.321,
+      "minNAP": -9.64,
+      "maxNAP": -1.39,
+      "meanNAP": -3.77,
+      "gzBytes": 30362
+    },
+    {
+      "tile": "115_480",
+      "stepM": 4,
+      "measured": 0.866,
+      "filled": 0.134,
+      "minNAP": -5.39,
+      "maxNAP": 7.85,
+      "meanNAP": -3.15,
+      "gzBytes": 44465
+    },
+    {
+      "tile": "116_480",
+      "stepM": 4,
+      "measured": 0.868,
+      "filled": 0.132,
+      "minNAP": -5.48,
+      "maxNAP": 7.34,
+      "meanNAP": -3.11,
+      "gzBytes": 47466
+    },
+    {
+      "tile": "117_480",
+      "stepM": 4,
+      "measured": 0.787,
+      "filled": 0.213,
+      "minNAP": -5.46,
+      "maxNAP": 0.86,
+      "meanNAP": -3.19,
+      "gzBytes": 43767
+    },
+    {
+      "tile": "118_480",
+      "stepM": 4,
+      "measured": 0.73,
+      "filled": 0.27,
+      "minNAP": -4.4,
+      "maxNAP": 1.06,
+      "meanNAP": -2.18,
+      "gzBytes": 44332
+    },
+    {
+      "tile": "119_480",
+      "stepM": 4,
+      "measured": 0.763,
+      "filled": 0.237,
+      "minNAP": -8.8,
+      "maxNAP": -0.44,
+      "meanNAP": -3.91,
+      "gzBytes": 43173
+    },
+    {
+      "tile": "120_480",
+      "stepM": 4,
+      "measured": 0.727,
+      "filled": 0.273,
+      "minNAP": -5.88,
+      "maxNAP": 1.74,
+      "meanNAP": -3.95,
+      "gzBytes": 40697
+    },
+    {
+      "tile": "121_480",
+      "stepM": 4,
+      "measured": 0.763,
+      "filled": 0.237,
+      "minNAP": -6.16,
+      "maxNAP": -0.39,
+      "meanNAP": -3.14,
+      "gzBytes": 36187
+    },
+    {
+      "tile": "122_480",
+      "stepM": 4,
+      "measured": 0.81,
+      "filled": 0.19,
+      "minNAP": -5.24,
+      "maxNAP": 1.75,
+      "meanNAP": -1.81,
+      "gzBytes": 39198
+    },
+    {
+      "tile": "123_480",
+      "stepM": 4,
+      "measured": 0.859,
+      "filled": 0.141,
+      "minNAP": -5.35,
+      "maxNAP": 3.25,
+      "meanNAP": -3.3,
+      "gzBytes": 48621
+    },
+    {
+      "tile": "124_480",
+      "stepM": 4,
+      "measured": 0.64,
+      "filled": 0.36,
+      "minNAP": -6.76,
+      "maxNAP": 8.69,
+      "meanNAP": -2.54,
+      "gzBytes": 49407
+    },
+    {
+      "tile": "125_480",
+      "stepM": 4,
+      "measured": 0.725,
+      "filled": 0.275,
+      "minNAP": -4.81,
+      "maxNAP": 5.59,
+      "meanNAP": -1.57,
+      "gzBytes": 55577
+    },
+    {
+      "tile": "126_480",
+      "stepM": 4,
+      "measured": 0.805,
+      "filled": 0.195,
+      "minNAP": -4.14,
+      "maxNAP": 11.54,
+      "meanNAP": -1.31,
+      "gzBytes": 56702
+    },
+    {
+      "tile": "127_480",
+      "stepM": 4,
+      "measured": 0.807,
+      "filled": 0.193,
+      "minNAP": -4.03,
+      "maxNAP": 8.55,
+      "meanNAP": -0.93,
+      "gzBytes": 55741
+    },
+    {
+      "tile": "128_480",
+      "stepM": 4,
+      "measured": 0.699,
+      "filled": 0.301,
+      "minNAP": -4.07,
+      "maxNAP": 7.46,
+      "meanNAP": -1.44,
+      "gzBytes": 45563
+    },
+    {
+      "tile": "129_480",
+      "stepM": 4,
+      "measured": 0.716,
+      "filled": 0.284,
+      "minNAP": -2.46,
+      "maxNAP": 1.79,
+      "meanNAP": -1.42,
+      "gzBytes": 42103
+    },
+    {
+      "tile": "130_480",
+      "stepM": 4,
+      "measured": 0.607,
+      "filled": 0.393,
+      "minNAP": -2.06,
+      "maxNAP": 1.79,
+      "meanNAP": -0.72,
+      "gzBytes": 37291
+    },
+    {
+      "tile": "131_480",
+      "stepM": 4,
+      "measured": 0.695,
+      "filled": 0.305,
+      "minNAP": -3.23,
+      "maxNAP": 4.68,
+      "meanNAP": -0.19,
+      "gzBytes": 51563
+    },
+    {
+      "tile": "132_480",
+      "stepM": 4,
+      "measured": 0.774,
+      "filled": 0.226,
+      "minNAP": -1.88,
+      "maxNAP": 3.3,
+      "meanNAP": -0.84,
+      "gzBytes": 43980
+    },
+    {
+      "tile": "133_480",
+      "stepM": 4,
+      "measured": 0.959,
+      "filled": 0.041,
+      "minNAP": -5.07,
+      "maxNAP": 0.67,
+      "meanNAP": -1.47,
+      "gzBytes": 39374
+    },
+    {
+      "tile": "134_480",
+      "stepM": 4,
+      "measured": 0.897,
+      "filled": 0.103,
+      "minNAP": -1.96,
+      "maxNAP": 6.61,
+      "meanNAP": -1.24,
+      "gzBytes": 44412
+    },
+    {
+      "tile": "135_480",
+      "stepM": 4,
+      "measured": 0.839,
+      "filled": 0.161,
+      "minNAP": -1.74,
+      "maxNAP": 9.74,
+      "meanNAP": -0.59,
+      "gzBytes": 46573
+    },
+    {
+      "tile": "111_481",
+      "stepM": 4,
+      "measured": 0.906,
+      "filled": 0.094,
+      "minNAP": -7.71,
+      "maxNAP": 4.1,
+      "meanNAP": -3.77,
+      "gzBytes": 39449
+    },
+    {
+      "tile": "112_481",
+      "stepM": 4,
+      "measured": 0.917,
+      "filled": 0.083,
+      "minNAP": -5.7,
+      "maxNAP": 3.62,
+      "meanNAP": -3.72,
+      "gzBytes": 39255
+    },
+    {
+      "tile": "114_481",
+      "stepM": 4,
+      "measured": 0.922,
+      "filled": 0.078,
+      "minNAP": -5.87,
+      "maxNAP": 0.59,
+      "meanNAP": -3.88,
+      "gzBytes": 38728
+    },
+    {
+      "tile": "115_481",
+      "stepM": 4,
+      "measured": 0.91,
+      "filled": 0.09,
+      "minNAP": -6.14,
+      "maxNAP": 3.85,
+      "meanNAP": -2.84,
+      "gzBytes": 59531
+    },
+    {
+      "tile": "116_481",
+      "stepM": 4,
+      "measured": 0.761,
+      "filled": 0.239,
+      "minNAP": -5.46,
+      "maxNAP": 3.22,
+      "meanNAP": -3.47,
+      "gzBytes": 45987
+    },
+    {
+      "tile": "117_481",
+      "stepM": 4,
+      "measured": 0.86,
+      "filled": 0.14,
+      "minNAP": -5.5,
+      "maxNAP": 11.52,
+      "meanNAP": -3.31,
+      "gzBytes": 46016
+    },
+    {
+      "tile": "118_481",
+      "stepM": 4,
+      "measured": 0.85,
+      "filled": 0.15,
+      "minNAP": -5.42,
+      "maxNAP": 1.02,
+      "meanNAP": -3.1,
+      "gzBytes": 43046
+    },
+    {
+      "tile": "119_481",
+      "stepM": 4,
+      "measured": 0.709,
+      "filled": 0.291,
+      "minNAP": -8.8,
+      "maxNAP": 0.86,
+      "meanNAP": -2.62,
+      "gzBytes": 42994
+    },
+    {
+      "tile": "120_481",
+      "stepM": 4,
+      "measured": 0.731,
+      "filled": 0.269,
+      "minNAP": -5.78,
+      "maxNAP": 1,
+      "meanNAP": -3.15,
+      "gzBytes": 40619
+    },
+    {
+      "tile": "121_481",
+      "stepM": 4,
+      "measured": 0.765,
+      "filled": 0.235,
+      "minNAP": -5.51,
+      "maxNAP": 1.79,
+      "meanNAP": -2.26,
+      "gzBytes": 41659
+    },
+    {
+      "tile": "122_481",
+      "stepM": 4,
+      "measured": 0.797,
+      "filled": 0.203,
+      "minNAP": -2.69,
+      "maxNAP": 5.69,
+      "meanNAP": -1.62,
+      "gzBytes": 42806
+    },
+    {
+      "tile": "123_481",
+      "stepM": 4,
+      "measured": 0.775,
+      "filled": 0.225,
+      "minNAP": -4.98,
+      "maxNAP": 12.49,
+      "meanNAP": -1.16,
+      "gzBytes": 52501
+    },
+    {
+      "tile": "124_481",
+      "stepM": 4,
+      "measured": 0.803,
+      "filled": 0.197,
+      "minNAP": -3.22,
+      "maxNAP": 10.93,
+      "meanNAP": -0.31,
+      "gzBytes": 57447
+    },
+    {
+      "tile": "125_481",
+      "stepM": 4,
+      "measured": 0.756,
+      "filled": 0.244,
+      "minNAP": -3.93,
+      "maxNAP": 6.18,
+      "meanNAP": -1.26,
+      "gzBytes": 53071
+    },
+    {
+      "tile": "126_481",
+      "stepM": 4,
+      "measured": 0.748,
+      "filled": 0.252,
+      "minNAP": -4.1,
+      "maxNAP": 9.25,
+      "meanNAP": -2.48,
+      "gzBytes": 49598
+    },
+    {
+      "tile": "127_481",
+      "stepM": 4,
+      "measured": 0.749,
+      "filled": 0.251,
+      "minNAP": -4.15,
+      "maxNAP": 0.8,
+      "meanNAP": -2.75,
+      "gzBytes": 47863
+    },
+    {
+      "tile": "128_481",
+      "stepM": 4,
+      "measured": 0.824,
+      "filled": 0.176,
+      "minNAP": -4.14,
+      "maxNAP": 8.94,
+      "meanNAP": -1.38,
+      "gzBytes": 50170
+    },
+    {
+      "tile": "129_481",
+      "stepM": 4,
+      "measured": 0.752,
+      "filled": 0.248,
+      "minNAP": -4.01,
+      "maxNAP": 10.24,
+      "meanNAP": -1.38,
+      "gzBytes": 44207
+    },
+    {
+      "tile": "130_481",
+      "stepM": 4,
+      "measured": 0.801,
+      "filled": 0.199,
+      "minNAP": -2.07,
+      "maxNAP": 9.53,
+      "meanNAP": -0.95,
+      "gzBytes": 48497
+    },
+    {
+      "tile": "131_481",
+      "stepM": 4,
+      "measured": 0.796,
+      "filled": 0.204,
+      "minNAP": -2.11,
+      "maxNAP": 4.2,
+      "meanNAP": -0.93,
+      "gzBytes": 42975
+    },
+    {
+      "tile": "132_481",
+      "stepM": 4,
+      "measured": 0.811,
+      "filled": 0.189,
+      "minNAP": -9.36,
+      "maxNAP": 5.02,
+      "meanNAP": -0.87,
+      "gzBytes": 46721
+    },
+    {
+      "tile": "133_481",
+      "stepM": 4,
+      "measured": 0.847,
+      "filled": 0.153,
+      "minNAP": -8.94,
+      "maxNAP": 3.79,
+      "meanNAP": -0.9,
+      "gzBytes": 46809
+    },
+    {
+      "tile": "134_481",
+      "stepM": 4,
+      "measured": 0.874,
+      "filled": 0.126,
+      "minNAP": -1.77,
+      "maxNAP": 7.53,
+      "meanNAP": -0.83,
+      "gzBytes": 46042
+    },
+    {
+      "tile": "135_481",
+      "stepM": 4,
+      "measured": 0.916,
+      "filled": 0.084,
+      "minNAP": -1.67,
+      "maxNAP": 8.8,
+      "meanNAP": -0.36,
+      "gzBytes": 51628
+    },
+    {
+      "tile": "113_482",
+      "stepM": 4,
+      "measured": 0.934,
+      "filled": 0.066,
+      "minNAP": -9.32,
+      "maxNAP": 8.9,
+      "meanNAP": -3.42,
+      "gzBytes": 46239
+    },
+    {
+      "tile": "114_482",
+      "stepM": 4,
+      "measured": 0.843,
+      "filled": 0.157,
+      "minNAP": -9.08,
+      "maxNAP": 8.96,
+      "meanNAP": -2.32,
+      "gzBytes": 53136
+    },
+    {
+      "tile": "115_482",
+      "stepM": 4,
+      "measured": 0.754,
+      "filled": 0.246,
+      "minNAP": -5.74,
+      "maxNAP": 8.52,
+      "meanNAP": -1.49,
+      "gzBytes": 56403
+    },
+    {
+      "tile": "116_482",
+      "stepM": 4,
+      "measured": 0.379,
+      "filled": 0.621,
+      "minNAP": -4.71,
+      "maxNAP": 1.7,
+      "meanNAP": -0.82,
+      "gzBytes": 27124
+    },
+    {
+      "tile": "117_482",
+      "stepM": 4,
+      "measured": 0.432,
+      "filled": 0.568,
+      "minNAP": -5.44,
+      "maxNAP": 1.87,
+      "meanNAP": -1.37,
+      "gzBytes": 34425
+    },
+    {
+      "tile": "118_482",
+      "stepM": 4,
+      "measured": 0.668,
+      "filled": 0.332,
+      "minNAP": -5.43,
+      "maxNAP": 2.51,
+      "meanNAP": -1.51,
+      "gzBytes": 43568
+    },
+    {
+      "tile": "119_482",
+      "stepM": 4,
+      "measured": 0.736,
+      "filled": 0.264,
+      "minNAP": -7.13,
+      "maxNAP": 2.72,
+      "meanNAP": -0.7,
+      "gzBytes": 39785
+    },
+    {
+      "tile": "120_482",
+      "stepM": 4,
+      "measured": 0.714,
+      "filled": 0.286,
+      "minNAP": -3.8,
+      "maxNAP": 0.78,
+      "meanNAP": -0.74,
+      "gzBytes": 37691
+    },
+    {
+      "tile": "121_482",
+      "stepM": 4,
+      "measured": 0.742,
+      "filled": 0.258,
+      "minNAP": -2.56,
+      "maxNAP": 9.78,
+      "meanNAP": -0.37,
+      "gzBytes": 45582
+    },
+    {
+      "tile": "122_482",
+      "stepM": 4,
+      "measured": 0.775,
+      "filled": 0.225,
+      "minNAP": -2.65,
+      "maxNAP": 10.11,
+      "meanNAP": -0.08,
+      "gzBytes": 51642
+    },
+    {
+      "tile": "123_482",
+      "stepM": 4,
+      "measured": 0.652,
+      "filled": 0.348,
+      "minNAP": -2.7,
+      "maxNAP": 10.87,
+      "meanNAP": 0.74,
+      "gzBytes": 49476
+    },
+    {
+      "tile": "124_482",
+      "stepM": 4,
+      "measured": 0.763,
+      "filled": 0.237,
+      "minNAP": -2.53,
+      "maxNAP": 8.96,
+      "meanNAP": -0.71,
+      "gzBytes": 50857
+    },
+    {
+      "tile": "125_482",
+      "stepM": 4,
+      "measured": 0.796,
+      "filled": 0.204,
+      "minNAP": -4.91,
+      "maxNAP": 7.5,
+      "meanNAP": 0.2,
+      "gzBytes": 55558
+    },
+    {
+      "tile": "126_482",
+      "stepM": 4,
+      "measured": 0.693,
+      "filled": 0.307,
+      "minNAP": -3.77,
+      "maxNAP": 7.99,
+      "meanNAP": -0.84,
+      "gzBytes": 51544
+    },
+    {
+      "tile": "127_482",
+      "stepM": 4,
+      "measured": 0.741,
+      "filled": 0.259,
+      "minNAP": -4.01,
+      "maxNAP": 4.18,
+      "meanNAP": -1.55,
+      "gzBytes": 46645
+    },
+    {
+      "tile": "128_482",
+      "stepM": 4,
+      "measured": 0.852,
+      "filled": 0.148,
+      "minNAP": -2.46,
+      "maxNAP": 8.14,
+      "meanNAP": -0.87,
+      "gzBytes": 51337
+    },
+    {
+      "tile": "129_482",
+      "stepM": 4,
+      "measured": 0.719,
+      "filled": 0.281,
+      "minNAP": -2.17,
+      "maxNAP": 17.06,
+      "meanNAP": 1.17,
+      "gzBytes": 51397
+    },
+    {
+      "tile": "130_482",
+      "stepM": 4,
+      "measured": 0.826,
+      "filled": 0.174,
+      "minNAP": -2.09,
+      "maxNAP": 15.61,
+      "meanNAP": -0.15,
+      "gzBytes": 42663
+    },
+    {
+      "tile": "131_482",
+      "stepM": 4,
+      "measured": 0.817,
+      "filled": 0.183,
+      "minNAP": -2.1,
+      "maxNAP": 6.8,
+      "meanNAP": -0.64,
+      "gzBytes": 44666
+    },
+    {
+      "tile": "132_482",
+      "stepM": 4,
+      "measured": 0.793,
+      "filled": 0.207,
+      "minNAP": -2.11,
+      "maxNAP": 5.66,
+      "meanNAP": -0.38,
+      "gzBytes": 51858
+    },
+    {
+      "tile": "133_482",
+      "stepM": 4,
+      "measured": 0.71,
+      "filled": 0.29,
+      "minNAP": -1.55,
+      "maxNAP": 9.11,
+      "meanNAP": 0.19,
+      "gzBytes": 50587
+    },
+    {
+      "tile": "111_483",
+      "stepM": 4,
+      "measured": 0.941,
+      "filled": 0.059,
+      "minNAP": -5.78,
+      "maxNAP": 1.36,
+      "meanNAP": -4.34,
+      "gzBytes": 39096
+    },
+    {
+      "tile": "112_483",
+      "stepM": 4,
+      "measured": 0.879,
+      "filled": 0.121,
+      "minNAP": -5.77,
+      "maxNAP": 2.12,
+      "meanNAP": -3.93,
+      "gzBytes": 50675
+    },
+    {
+      "tile": "113_483",
+      "stepM": 4,
+      "measured": 0.773,
+      "filled": 0.227,
+      "minNAP": -5.54,
+      "maxNAP": -0.68,
+      "meanNAP": -3.92,
+      "gzBytes": 49452
+    },
+    {
+      "tile": "114_483",
+      "stepM": 4,
+      "measured": 0.715,
+      "filled": 0.285,
+      "minNAP": -5.06,
+      "maxNAP": 2.08,
+      "meanNAP": -2.22,
+      "gzBytes": 47550
+    },
+    {
+      "tile": "115_483",
+      "stepM": 4,
+      "measured": 0.806,
+      "filled": 0.194,
+      "minNAP": -2.8,
+      "maxNAP": 8.45,
+      "meanNAP": -0.1,
+      "gzBytes": 50509
+    },
+    {
+      "tile": "116_483",
+      "stepM": 4,
+      "measured": 0.654,
+      "filled": 0.346,
+      "minNAP": -3.52,
+      "maxNAP": 8.04,
+      "meanNAP": 0.09,
+      "gzBytes": 42489
+    },
+    {
+      "tile": "117_483",
+      "stepM": 4,
+      "measured": 0.793,
+      "filled": 0.207,
+      "minNAP": -4.17,
+      "maxNAP": 11.08,
+      "meanNAP": 0.74,
+      "gzBytes": 50437
+    },
+    {
+      "tile": "118_483",
+      "stepM": 4,
+      "measured": 0.591,
+      "filled": 0.409,
+      "minNAP": -3.82,
+      "maxNAP": 9.35,
+      "meanNAP": 1.18,
+      "gzBytes": 39741
+    },
+    {
+      "tile": "119_483",
+      "stepM": 4,
+      "measured": 0.719,
+      "filled": 0.281,
+      "minNAP": -5.46,
+      "maxNAP": 7.66,
+      "meanNAP": 0.91,
+      "gzBytes": 42911
+    },
+    {
+      "tile": "120_483",
+      "stepM": 2,
+      "measured": 0.728,
+      "filled": 0.272,
+      "minNAP": -6.42,
+      "maxNAP": 10,
+      "meanNAP": 0.96,
+      "gzBytes": 111560
+    },
+    {
+      "tile": "121_483",
+      "stepM": 2,
+      "measured": 0.755,
+      "filled": 0.245,
+      "minNAP": -5.15,
+      "maxNAP": 12.45,
+      "meanNAP": 1.1,
+      "gzBytes": 125491
+    },
+    {
+      "tile": "122_483",
+      "stepM": 2,
+      "measured": 0.608,
+      "filled": 0.392,
+      "minNAP": -2.41,
+      "maxNAP": 5.91,
+      "meanNAP": 0.42,
+      "gzBytes": 111177
+    },
+    {
+      "tile": "123_483",
+      "stepM": 2,
+      "measured": 0.692,
+      "filled": 0.308,
+      "minNAP": -5.63,
+      "maxNAP": 9.7,
+      "meanNAP": -0.43,
+      "gzBytes": 132401
+    },
+    {
+      "tile": "124_483",
+      "stepM": 4,
+      "measured": 0.773,
+      "filled": 0.227,
+      "minNAP": -5.71,
+      "maxNAP": 10.97,
+      "meanNAP": -1.38,
+      "gzBytes": 51933
+    },
+    {
+      "tile": "125_483",
+      "stepM": 4,
+      "measured": 0.717,
+      "filled": 0.283,
+      "minNAP": -5.2,
+      "maxNAP": 6.82,
+      "meanNAP": -1.2,
+      "gzBytes": 49563
+    },
+    {
+      "tile": "126_483",
+      "stepM": 4,
+      "measured": 0.706,
+      "filled": 0.294,
+      "minNAP": -2.65,
+      "maxNAP": 6.49,
+      "meanNAP": -0.5,
+      "gzBytes": 49268
+    },
+    {
+      "tile": "127_483",
+      "stepM": 4,
+      "measured": 0.707,
+      "filled": 0.293,
+      "minNAP": -4.04,
+      "maxNAP": 7.41,
+      "meanNAP": -0.6,
+      "gzBytes": 48890
+    },
+    {
+      "tile": "128_483",
+      "stepM": 4,
+      "measured": 0.62,
+      "filled": 0.38,
+      "minNAP": -1.96,
+      "maxNAP": 7.37,
+      "meanNAP": -0.39,
+      "gzBytes": 42503
+    },
+    {
+      "tile": "129_483",
+      "stepM": 4,
+      "measured": 0.673,
+      "filled": 0.327,
+      "minNAP": -1.91,
+      "maxNAP": 9.48,
+      "meanNAP": 0.04,
+      "gzBytes": 50680
+    },
+    {
+      "tile": "130_483",
+      "stepM": 4,
+      "measured": 0.574,
+      "filled": 0.426,
+      "minNAP": -1.48,
+      "maxNAP": 3.83,
+      "meanNAP": 0.48,
+      "gzBytes": 40843
+    },
+    {
+      "tile": "131_483",
+      "stepM": 4,
+      "measured": 0.14,
+      "filled": 0.86,
+      "minNAP": -1.38,
+      "maxNAP": 3.77,
+      "meanNAP": 0.16,
+      "gzBytes": 16132
+    },
+    {
+      "tile": "132_483",
+      "stepM": 4,
+      "measured": 0.249,
+      "filled": 0.751,
+      "minNAP": -1.34,
+      "maxNAP": 3.9,
+      "meanNAP": 0.09,
+      "gzBytes": 23929
+    },
+    {
+      "tile": "111_484",
+      "stepM": 4,
+      "measured": 0.909,
+      "filled": 0.091,
+      "minNAP": -7.3,
+      "maxNAP": 3.86,
+      "meanNAP": -4.09,
+      "gzBytes": 46058
+    },
+    {
+      "tile": "112_484",
+      "stepM": 4,
+      "measured": 0.742,
+      "filled": 0.258,
+      "minNAP": -6.36,
+      "maxNAP": 6.35,
+      "meanNAP": -3.79,
+      "gzBytes": 54317
+    },
+    {
+      "tile": "113_484",
+      "stepM": 4,
+      "measured": 0.663,
+      "filled": 0.337,
+      "minNAP": -5.66,
+      "maxNAP": 1.24,
+      "meanNAP": -2.84,
+      "gzBytes": 52880
+    },
+    {
+      "tile": "114_484",
+      "stepM": 4,
+      "measured": 0.676,
+      "filled": 0.324,
+      "minNAP": -4.36,
+      "maxNAP": 1.03,
+      "meanNAP": -1.88,
+      "gzBytes": 50298
+    },
+    {
+      "tile": "115_484",
+      "stepM": 4,
+      "measured": 0.711,
+      "filled": 0.289,
+      "minNAP": -3.26,
+      "maxNAP": 1.75,
+      "meanNAP": -1.17,
+      "gzBytes": 42636
+    },
+    {
+      "tile": "116_484",
+      "stepM": 4,
+      "measured": 0.69,
+      "filled": 0.31,
+      "minNAP": -2.88,
+      "maxNAP": 3.19,
+      "meanNAP": -0.82,
+      "gzBytes": 40660
+    },
+    {
+      "tile": "117_484",
+      "stepM": 4,
+      "measured": 0.733,
+      "filled": 0.267,
+      "minNAP": -4.25,
+      "maxNAP": 8.15,
+      "meanNAP": 0.33,
+      "gzBytes": 43077
+    },
+    {
+      "tile": "118_484",
+      "stepM": 4,
+      "measured": 0.596,
+      "filled": 0.404,
+      "minNAP": -1.52,
+      "maxNAP": 5.89,
+      "meanNAP": 0.66,
+      "gzBytes": 42019
+    },
+    {
+      "tile": "119_484",
+      "stepM": 2,
+      "measured": 0.668,
+      "filled": 0.332,
+      "minNAP": -2.64,
+      "maxNAP": 2.66,
+      "meanNAP": 0.72,
+      "gzBytes": 106239
+    },
+    {
+      "tile": "120_484",
+      "stepM": 2,
+      "measured": 0.643,
+      "filled": 0.357,
+      "minNAP": -2.9,
+      "maxNAP": 3.21,
+      "meanNAP": 0.81,
+      "gzBytes": 112456
+    },
+    {
+      "tile": "121_484",
+      "stepM": 2,
+      "measured": 0.617,
+      "filled": 0.383,
+      "minNAP": -6.28,
+      "maxNAP": 2.93,
+      "meanNAP": 0.64,
+      "gzBytes": 104837
+    },
+    {
+      "tile": "122_484",
+      "stepM": 2,
+      "measured": 0.564,
+      "filled": 0.436,
+      "minNAP": -2.86,
+      "maxNAP": 6.76,
+      "meanNAP": 0.84,
+      "gzBytes": 115181
+    },
+    {
+      "tile": "123_484",
+      "stepM": 2,
+      "measured": 0.753,
+      "filled": 0.247,
+      "minNAP": -5.66,
+      "maxNAP": 6.74,
+      "meanNAP": -2.95,
+      "gzBytes": 137427
+    },
+    {
+      "tile": "124_484",
+      "stepM": 2,
+      "measured": 0.789,
+      "filled": 0.211,
+      "minNAP": -6.56,
+      "maxNAP": 0.49,
+      "meanNAP": -3.47,
+      "gzBytes": 125246
+    },
+    {
+      "tile": "125_484",
+      "stepM": 4,
+      "measured": 0.778,
+      "filled": 0.222,
+      "minNAP": -5.62,
+      "maxNAP": 3.71,
+      "meanNAP": -3.42,
+      "gzBytes": 51258
+    },
+    {
+      "tile": "126_484",
+      "stepM": 4,
+      "measured": 0.797,
+      "filled": 0.203,
+      "minNAP": -5.27,
+      "maxNAP": 6.26,
+      "meanNAP": -0.58,
+      "gzBytes": 53621
+    },
+    {
+      "tile": "127_484",
+      "stepM": 4,
+      "measured": 0.694,
+      "filled": 0.306,
+      "minNAP": -1.87,
+      "maxNAP": 8.89,
+      "meanNAP": 0.07,
+      "gzBytes": 49635
+    },
+    {
+      "tile": "128_484",
+      "stepM": 4,
+      "measured": 0.533,
+      "filled": 0.467,
+      "minNAP": -1.85,
+      "maxNAP": 9.69,
+      "meanNAP": 1.35,
+      "gzBytes": 47823
+    },
+    {
+      "tile": "129_484",
+      "stepM": 4,
+      "measured": 0.56,
+      "filled": 0.44,
+      "minNAP": -0.23,
+      "maxNAP": 7.98,
+      "meanNAP": 1.63,
+      "gzBytes": 47527
+    },
+    {
+      "tile": "130_484",
+      "stepM": 4,
+      "measured": 0.487,
+      "filled": 0.513,
+      "minNAP": -0.19,
+      "maxNAP": 8.27,
+      "meanNAP": 0.56,
+      "gzBytes": 34554
+    },
+    {
+      "tile": "131_484",
+      "stepM": 4,
+      "measured": 0,
+      "filled": 1,
+      "minNAP": -0.04,
+      "maxNAP": 0.66,
+      "meanNAP": 0.34,
+      "gzBytes": 4847
+    },
+    {
+      "tile": "111_485",
+      "stepM": 4,
+      "measured": 0.88,
+      "filled": 0.12,
+      "minNAP": -5.76,
+      "maxNAP": 4.49,
+      "meanNAP": -3.76,
+      "gzBytes": 48818
+    },
+    {
+      "tile": "112_485",
+      "stepM": 4,
+      "measured": 0.764,
+      "filled": 0.236,
+      "minNAP": -5.78,
+      "maxNAP": 4.14,
+      "meanNAP": -3.35,
+      "gzBytes": 54044
+    },
+    {
+      "tile": "113_485",
+      "stepM": 4,
+      "measured": 0.755,
+      "filled": 0.245,
+      "minNAP": -5.65,
+      "maxNAP": 1.07,
+      "meanNAP": -2.67,
+      "gzBytes": 51703
+    },
+    {
+      "tile": "114_485",
+      "stepM": 4,
+      "measured": 0.729,
+      "filled": 0.271,
+      "minNAP": -4.55,
+      "maxNAP": 0.95,
+      "meanNAP": -1.42,
+      "gzBytes": 45103
+    },
+    {
+      "tile": "115_485",
+      "stepM": 4,
+      "measured": 0.649,
+      "filled": 0.351,
+      "minNAP": -2.08,
+      "maxNAP": 4.09,
+      "meanNAP": -0.72,
+      "gzBytes": 41152
+    },
+    {
+      "tile": "116_485",
+      "stepM": 4,
+      "measured": 0.77,
+      "filled": 0.23,
+      "minNAP": -2.2,
+      "maxNAP": 4.66,
+      "meanNAP": -0.62,
+      "gzBytes": 42790
+    },
+    {
+      "tile": "117_485",
+      "stepM": 4,
+      "measured": 0.718,
+      "filled": 0.282,
+      "minNAP": -3.02,
+      "maxNAP": 7.03,
+      "meanNAP": -0.1,
+      "gzBytes": 41967
+    },
+    {
       "tile": "118_485",
+      "stepM": 2,
       "measured": 0.607,
       "filled": 0.393,
       "minNAP": -2.47,
       "maxNAP": 5.29,
-      "meanNAP": 0.37,
-      "gzBytes": 149119
+      "meanNAP": 0.36,
+      "gzBytes": 107980
     },
     {
       "tile": "119_485",
+      "stepM": 2,
       "measured": 0.67,
       "filled": 0.33,
       "minNAP": -2.73,
       "maxNAP": 2.53,
       "meanNAP": -0.59,
-      "gzBytes": 148963
+      "gzBytes": 121681
     },
     {
       "tile": "120_485",
+      "stepM": 2,
       "measured": 0.609,
       "filled": 0.391,
       "minNAP": -6.97,
       "maxNAP": 2.72,
       "meanNAP": 0.32,
-      "gzBytes": 150390
+      "gzBytes": 120416
     },
     {
       "tile": "121_485",
+      "stepM": 2,
       "measured": 0.538,
       "filled": 0.462,
       "minNAP": -5.17,
       "maxNAP": 3.16,
       "meanNAP": 0.56,
-      "gzBytes": 135629
+      "gzBytes": 108752
     },
     {
       "tile": "122_485",
+      "stepM": 2,
       "measured": 0.552,
       "filled": 0.448,
       "minNAP": -4.71,
       "maxNAP": 5.8,
       "meanNAP": 0.64,
-      "gzBytes": 148022
+      "gzBytes": 117197
+    },
+    {
+      "tile": "123_485",
+      "stepM": 2,
+      "measured": 0.647,
+      "filled": 0.353,
+      "minNAP": -5.77,
+      "maxNAP": 6.5,
+      "meanNAP": -0.29,
+      "gzBytes": 127047
+    },
+    {
+      "tile": "124_485",
+      "stepM": 2,
+      "measured": 0.712,
+      "filled": 0.288,
+      "minNAP": -6.08,
+      "maxNAP": 6.17,
+      "meanNAP": -1.23,
+      "gzBytes": 133935
+    },
+    {
+      "tile": "125_485",
+      "stepM": 2,
+      "measured": 0.634,
+      "filled": 0.366,
+      "minNAP": -5.42,
+      "maxNAP": 7.12,
+      "meanNAP": -1.97,
+      "gzBytes": 120087
+    },
+    {
+      "tile": "126_485",
+      "stepM": 4,
+      "measured": 0.436,
+      "filled": 0.564,
+      "minNAP": -5.65,
+      "maxNAP": 12.49,
+      "meanNAP": 0.04,
+      "gzBytes": 41769
+    },
+    {
+      "tile": "127_485",
+      "stepM": 4,
+      "measured": 0.572,
+      "filled": 0.428,
+      "minNAP": -1.47,
+      "maxNAP": 9.42,
+      "meanNAP": 1.99,
+      "gzBytes": 43713
+    },
+    {
+      "tile": "128_485",
+      "stepM": 4,
+      "measured": 0.42,
+      "filled": 0.58,
+      "minNAP": -1.77,
+      "maxNAP": 4.96,
+      "meanNAP": 1.48,
+      "gzBytes": 44789
+    },
+    {
+      "tile": "129_485",
+      "stepM": 4,
+      "measured": 0.539,
+      "filled": 0.461,
+      "minNAP": -0.22,
+      "maxNAP": 7.47,
+      "meanNAP": 1.7,
+      "gzBytes": 35054
+    },
+    {
+      "tile": "130_485",
+      "stepM": 4,
+      "measured": 0.495,
+      "filled": 0.505,
+      "minNAP": -0.24,
+      "maxNAP": 5.97,
+      "meanNAP": 1.58,
+      "gzBytes": 29248
+    },
+    {
+      "tile": "131_485",
+      "stepM": 4,
+      "measured": 0,
+      "filled": 1,
+      "minNAP": 0.78,
+      "maxNAP": 1.39,
+      "meanNAP": 1.29,
+      "gzBytes": 3456
+    },
+    {
+      "tile": "111_486",
+      "stepM": 4,
+      "measured": 0.93,
+      "filled": 0.07,
+      "minNAP": -6.28,
+      "maxNAP": 6.37,
+      "meanNAP": -4.11,
+      "gzBytes": 45363
+    },
+    {
+      "tile": "112_486",
+      "stepM": 4,
+      "measured": 0.81,
+      "filled": 0.19,
+      "minNAP": -5.84,
+      "maxNAP": 7.17,
+      "meanNAP": -3.85,
+      "gzBytes": 47551
+    },
+    {
+      "tile": "113_486",
+      "stepM": 4,
+      "measured": 0.839,
+      "filled": 0.161,
+      "minNAP": -5.61,
+      "maxNAP": 0.39,
+      "meanNAP": -3.45,
+      "gzBytes": 49712
+    },
+    {
+      "tile": "114_486",
+      "stepM": 4,
+      "measured": 0.787,
+      "filled": 0.213,
+      "minNAP": -4.67,
+      "maxNAP": 2.31,
+      "meanNAP": -1.27,
+      "gzBytes": 41452
+    },
+    {
+      "tile": "115_486",
+      "stepM": 4,
+      "measured": 0.707,
+      "filled": 0.293,
+      "minNAP": -2.15,
+      "maxNAP": 5.44,
+      "meanNAP": -0.6,
+      "gzBytes": 44164
+    },
+    {
+      "tile": "116_486",
+      "stepM": 4,
+      "measured": 0.454,
+      "filled": 0.546,
+      "minNAP": -2.19,
+      "maxNAP": 1.17,
+      "meanNAP": -1.06,
+      "gzBytes": 32205
+    },
+    {
+      "tile": "117_486",
+      "stepM": 4,
+      "measured": 0.727,
+      "filled": 0.273,
+      "minNAP": -3.07,
+      "maxNAP": 8.07,
+      "meanNAP": -0.17,
+      "gzBytes": 40562
     },
     {
       "tile": "118_486",
+      "stepM": 2,
       "measured": 0.685,
       "filled": 0.315,
       "minNAP": -2.76,
       "maxNAP": 3.06,
       "meanNAP": 0.09,
-      "gzBytes": 155212
+      "gzBytes": 111154
     },
     {
       "tile": "119_486",
+      "stepM": 2,
       "measured": 0.522,
       "filled": 0.478,
       "minNAP": -1.67,
       "maxNAP": 3.06,
       "meanNAP": 0.61,
-      "gzBytes": 143235
+      "gzBytes": 113399
     },
     {
       "tile": "120_486",
+      "stepM": 2,
       "measured": 0.454,
       "filled": 0.546,
       "minNAP": -2.1,
       "maxNAP": 2.68,
       "meanNAP": 0.73,
-      "gzBytes": 147741
+      "gzBytes": 116722
     },
     {
       "tile": "121_486",
+      "stepM": 2,
       "measured": 0.387,
       "filled": 0.613,
       "minNAP": -4.57,
       "maxNAP": 4.48,
-      "meanNAP": 0.99,
-      "gzBytes": 141333
+      "meanNAP": 1,
+      "gzBytes": 110541
     },
     {
       "tile": "122_486",
+      "stepM": 2,
       "measured": 0.534,
       "filled": 0.466,
       "minNAP": -3.93,
       "maxNAP": 4.67,
-      "meanNAP": 1.04,
-      "gzBytes": 147692
+      "meanNAP": 1.05,
+      "gzBytes": 120693
+    },
+    {
+      "tile": "123_486",
+      "stepM": 2,
+      "measured": 0.599,
+      "filled": 0.401,
+      "minNAP": -4.4,
+      "maxNAP": 6.54,
+      "meanNAP": 1.11,
+      "gzBytes": 126038
+    },
+    {
+      "tile": "124_486",
+      "stepM": 2,
+      "measured": 0.572,
+      "filled": 0.428,
+      "minNAP": -4.44,
+      "maxNAP": 6.89,
+      "meanNAP": 0.94,
+      "gzBytes": 103613
+    },
+    {
+      "tile": "125_486",
+      "stepM": 2,
+      "measured": 0.462,
+      "filled": 0.538,
+      "minNAP": -2.08,
+      "maxNAP": 9.07,
+      "meanNAP": 0.58,
+      "gzBytes": 106810
+    },
+    {
+      "tile": "126_486",
+      "stepM": 4,
+      "measured": 0.345,
+      "filled": 0.655,
+      "minNAP": -0.51,
+      "maxNAP": 7.81,
+      "meanNAP": 1.01,
+      "gzBytes": 34459
+    },
+    {
+      "tile": "127_486",
+      "stepM": 4,
+      "measured": 0.207,
+      "filled": 0.793,
+      "minNAP": -4.32,
+      "maxNAP": 5.18,
+      "meanNAP": 1.16,
+      "gzBytes": 28441
+    },
+    {
+      "tile": "128_486",
+      "stepM": 4,
+      "measured": 0.018,
+      "filled": 0.982,
+      "minNAP": -0.19,
+      "maxNAP": 2.45,
+      "meanNAP": 0.75,
+      "gzBytes": 9281
+    },
+    {
+      "tile": "129_486",
+      "stepM": 4,
+      "measured": 0.088,
+      "filled": 0.912,
+      "minNAP": -0.18,
+      "maxNAP": 2.74,
+      "meanNAP": 0.61,
+      "gzBytes": 13964
+    },
+    {
+      "tile": "130_486",
+      "stepM": 4,
+      "measured": 0.048,
+      "filled": 0.952,
+      "minNAP": -0.17,
+      "maxNAP": 3.93,
+      "meanNAP": 0.81,
+      "gzBytes": 8619
+    },
+    {
+      "tile": "131_486",
+      "stepM": 4,
+      "measured": 0,
+      "filled": 1,
+      "minNAP": 0.63,
+      "maxNAP": 0.82,
+      "meanNAP": 0.8,
+      "gzBytes": 988
+    },
+    {
+      "tile": "110_487",
+      "stepM": 4,
+      "measured": 0.971,
+      "filled": 0.029,
+      "minNAP": -5.86,
+      "maxNAP": -3.43,
+      "meanNAP": -4.61,
+      "gzBytes": 35554
+    },
+    {
+      "tile": "111_487",
+      "stepM": 4,
+      "measured": 0.831,
+      "filled": 0.169,
+      "minNAP": -5.9,
+      "maxNAP": 0.43,
+      "meanNAP": -4.11,
+      "gzBytes": 47123
+    },
+    {
+      "tile": "112_487",
+      "stepM": 4,
+      "measured": 0.73,
+      "filled": 0.27,
+      "minNAP": -5,
+      "maxNAP": 7.95,
+      "meanNAP": -2.98,
+      "gzBytes": 50693
+    },
+    {
+      "tile": "113_487",
+      "stepM": 4,
+      "measured": 0.777,
+      "filled": 0.223,
+      "minNAP": -5,
+      "maxNAP": -0.47,
+      "meanNAP": -3.43,
+      "gzBytes": 49703
+    },
+    {
+      "tile": "114_487",
+      "stepM": 4,
+      "measured": 0.792,
+      "filled": 0.208,
+      "minNAP": -4.49,
+      "maxNAP": 3.54,
+      "meanNAP": -1.6,
+      "gzBytes": 40137
+    },
+    {
+      "tile": "115_487",
+      "stepM": 4,
+      "measured": 0.806,
+      "filled": 0.194,
+      "minNAP": -2.16,
+      "maxNAP": 5.86,
+      "meanNAP": -0.56,
+      "gzBytes": 43973
+    },
+    {
+      "tile": "116_487",
+      "stepM": 4,
+      "measured": 0.667,
+      "filled": 0.333,
+      "minNAP": -2.09,
+      "maxNAP": 4.2,
+      "meanNAP": -0.34,
+      "gzBytes": 43168
+    },
+    {
+      "tile": "117_487",
+      "stepM": 4,
+      "measured": 0.714,
+      "filled": 0.286,
+      "minNAP": -2.3,
+      "maxNAP": 7.72,
+      "meanNAP": 0.73,
+      "gzBytes": 48498
     },
     {
       "tile": "118_487",
+      "stepM": 2,
       "measured": 0.663,
       "filled": 0.337,
       "minNAP": -2.46,
       "maxNAP": 5.36,
       "meanNAP": 0.52,
-      "gzBytes": 154675
+      "gzBytes": 115463
     },
     {
       "tile": "119_487",
+      "stepM": 2,
       "measured": 0.583,
       "filled": 0.417,
       "minNAP": -1.75,
       "maxNAP": 4.69,
       "meanNAP": 0.74,
-      "gzBytes": 148976
+      "gzBytes": 111862
     },
     {
       "tile": "120_487",
+      "stepM": 2,
       "measured": 0.426,
       "filled": 0.574,
       "minNAP": -0.41,
       "maxNAP": 3.13,
       "meanNAP": 0.86,
-      "gzBytes": 146446
+      "gzBytes": 111680
     },
     {
       "tile": "121_487",
+      "stepM": 2,
       "measured": 0.361,
       "filled": 0.639,
       "minNAP": -5.91,
       "maxNAP": 6.66,
-      "meanNAP": 1.36,
-      "gzBytes": 138400
+      "meanNAP": 1.37,
+      "gzBytes": 107246
     },
     {
       "tile": "122_487",
+      "stepM": 2,
       "measured": 0.389,
       "filled": 0.611,
       "minNAP": -4.72,
       "maxNAP": 6.82,
       "meanNAP": 1.71,
-      "gzBytes": 123994
+      "gzBytes": 107093
+    },
+    {
+      "tile": "123_487",
+      "stepM": 2,
+      "measured": 0.483,
+      "filled": 0.517,
+      "minNAP": -5.25,
+      "maxNAP": 6.87,
+      "meanNAP": 1.74,
+      "gzBytes": 112719
+    },
+    {
+      "tile": "124_487",
+      "stepM": 2,
+      "measured": 0.404,
+      "filled": 0.596,
+      "minNAP": -4.38,
+      "maxNAP": 7.4,
+      "meanNAP": 1.77,
+      "gzBytes": 95815
+    },
+    {
+      "tile": "125_487",
+      "stepM": 2,
+      "measured": 0.366,
+      "filled": 0.634,
+      "minNAP": -8.3,
+      "maxNAP": 5.94,
+      "meanNAP": 1.48,
+      "gzBytes": 91756
+    },
+    {
+      "tile": "126_487",
+      "stepM": 4,
+      "measured": 0.442,
+      "filled": 0.558,
+      "minNAP": -6.19,
+      "maxNAP": 6.97,
+      "meanNAP": 0.88,
+      "gzBytes": 40931
+    },
+    {
+      "tile": "127_487",
+      "stepM": 4,
+      "measured": 0.351,
+      "filled": 0.649,
+      "minNAP": -1.88,
+      "maxNAP": 3.05,
+      "meanNAP": -0.13,
+      "gzBytes": 28876
+    },
+    {
+      "tile": "128_487",
+      "stepM": 4,
+      "measured": 0.21,
+      "filled": 0.79,
+      "minNAP": -2.29,
+      "maxNAP": 2.33,
+      "meanNAP": 0.03,
+      "gzBytes": 16978
+    },
+    {
+      "tile": "129_487",
+      "stepM": 4,
+      "measured": 0.295,
+      "filled": 0.705,
+      "minNAP": -0.77,
+      "maxNAP": 6.18,
+      "meanNAP": 0.13,
+      "gzBytes": 23324
+    },
+    {
+      "tile": "130_487",
+      "stepM": 4,
+      "measured": 0,
+      "filled": 1,
+      "minNAP": -0.02,
+      "maxNAP": 0.38,
+      "meanNAP": 0.08,
+      "gzBytes": 2340
+    },
+    {
+      "tile": "131_487",
+      "stepM": 4,
+      "measured": 0,
+      "filled": 1,
+      "minNAP": 0.04,
+      "maxNAP": 0.05,
+      "meanNAP": 0.05,
+      "gzBytes": 263
+    },
+    {
+      "tile": "110_488",
+      "stepM": 4,
+      "measured": 0.723,
+      "filled": 0.277,
+      "minNAP": -5.72,
+      "maxNAP": 4.03,
+      "meanNAP": -2.92,
+      "gzBytes": 48080
+    },
+    {
+      "tile": "111_488",
+      "stepM": 4,
+      "measured": 0.663,
+      "filled": 0.337,
+      "minNAP": -4.97,
+      "maxNAP": 6.5,
+      "meanNAP": -1.39,
+      "gzBytes": 49516
+    },
+    {
+      "tile": "112_488",
+      "stepM": 4,
+      "measured": 0.611,
+      "filled": 0.389,
+      "minNAP": -4.93,
+      "maxNAP": 9.15,
+      "meanNAP": -1.56,
+      "gzBytes": 46664
+    },
+    {
+      "tile": "113_488",
+      "stepM": 4,
+      "measured": 0.849,
+      "filled": 0.151,
+      "minNAP": -4.92,
+      "maxNAP": 6.6,
+      "meanNAP": -2.1,
+      "gzBytes": 43062
+    },
+    {
+      "tile": "114_488",
+      "stepM": 4,
+      "measured": 0.802,
+      "filled": 0.198,
+      "minNAP": -4.4,
+      "maxNAP": 4.01,
+      "meanNAP": -1.24,
+      "gzBytes": 42597
+    },
+    {
+      "tile": "115_488",
+      "stepM": 4,
+      "measured": 0.757,
+      "filled": 0.243,
+      "minNAP": -2.12,
+      "maxNAP": 7.95,
+      "meanNAP": -0.39,
+      "gzBytes": 45780
+    },
+    {
+      "tile": "116_488",
+      "stepM": 4,
+      "measured": 0.789,
+      "filled": 0.211,
+      "minNAP": -2.13,
+      "maxNAP": 2.67,
+      "meanNAP": -0.33,
+      "gzBytes": 40033
+    },
+    {
+      "tile": "117_488",
+      "stepM": 4,
+      "measured": 0.741,
+      "filled": 0.259,
+      "minNAP": -2.02,
+      "maxNAP": 8.12,
+      "meanNAP": 0.44,
+      "gzBytes": 44413
     },
     {
       "tile": "118_488",
+      "stepM": 2,
       "measured": 0.718,
       "filled": 0.282,
       "minNAP": -2.51,
       "maxNAP": 7.97,
       "meanNAP": 0.6,
-      "gzBytes": 150852
+      "gzBytes": 112650
     },
     {
       "tile": "119_488",
+      "stepM": 2,
       "measured": 0.644,
       "filled": 0.356,
       "minNAP": -2.64,
       "maxNAP": 2.97,
       "meanNAP": 0.37,
-      "gzBytes": 141234
+      "gzBytes": 110820
     },
     {
       "tile": "120_488",
+      "stepM": 2,
       "measured": 0.537,
       "filled": 0.463,
       "minNAP": -0.96,
       "maxNAP": 6.17,
       "meanNAP": 0.98,
-      "gzBytes": 144867
+      "gzBytes": 115929
     },
     {
       "tile": "121_488",
+      "stepM": 2,
       "measured": 0.338,
       "filled": 0.662,
       "minNAP": -2.75,
       "maxNAP": 6.68,
-      "meanNAP": 2,
-      "gzBytes": 129392
+      "meanNAP": 1.97,
+      "gzBytes": 103438
     },
     {
       "tile": "122_488",
+      "stepM": 2,
       "measured": 0.501,
       "filled": 0.499,
       "minNAP": -6.42,
       "maxNAP": 5.41,
-      "meanNAP": 0.97,
-      "gzBytes": 128717
+      "meanNAP": 0.96,
+      "gzBytes": 110405
+    },
+    {
+      "tile": "123_488",
+      "stepM": 2,
+      "measured": 0.406,
+      "filled": 0.594,
+      "minNAP": -2.54,
+      "maxNAP": 4.78,
+      "meanNAP": 1.25,
+      "gzBytes": 85068
+    },
+    {
+      "tile": "124_488",
+      "stepM": 2,
+      "measured": 0.324,
+      "filled": 0.676,
+      "minNAP": -0.57,
+      "maxNAP": 4.83,
+      "meanNAP": 0.94,
+      "gzBytes": 68873
+    },
+    {
+      "tile": "125_488",
+      "stepM": 2,
+      "measured": 0.381,
+      "filled": 0.619,
+      "minNAP": -1.52,
+      "maxNAP": 3.78,
+      "meanNAP": 0.65,
+      "gzBytes": 86086
+    },
+    {
+      "tile": "126_488",
+      "stepM": 4,
+      "measured": 0.636,
+      "filled": 0.364,
+      "minNAP": -1.78,
+      "maxNAP": 6.05,
+      "meanNAP": -0.3,
+      "gzBytes": 46804
+    },
+    {
+      "tile": "127_488",
+      "stepM": 4,
+      "measured": 0.876,
+      "filled": 0.124,
+      "minNAP": -3.62,
+      "maxNAP": 0.75,
+      "meanNAP": -1.75,
+      "gzBytes": 40728
+    },
+    {
+      "tile": "128_488",
+      "stepM": 4,
+      "measured": 0.839,
+      "filled": 0.161,
+      "minNAP": -3.68,
+      "maxNAP": 3.25,
+      "meanNAP": -1.63,
+      "gzBytes": 40035
+    },
+    {
+      "tile": "129_488",
+      "stepM": 4,
+      "measured": 0.435,
+      "filled": 0.565,
+      "minNAP": -1.89,
+      "maxNAP": 2.93,
+      "meanNAP": -0.49,
+      "gzBytes": 31720
+    },
+    {
+      "tile": "130_488",
+      "stepM": 4,
+      "measured": 0.028,
+      "filled": 0.972,
+      "minNAP": -1.55,
+      "maxNAP": 3.08,
+      "meanNAP": 0.07,
+      "gzBytes": 7614
+    },
+    {
+      "tile": "131_488",
+      "stepM": 4,
+      "measured": 0,
+      "filled": 1,
+      "minNAP": 0.07,
+      "maxNAP": 0.08,
+      "meanNAP": 0.07,
+      "gzBytes": 271
+    },
+    {
+      "tile": "109_489",
+      "stepM": 4,
+      "measured": 0.887,
+      "filled": 0.113,
+      "minNAP": -2.39,
+      "maxNAP": 2.68,
+      "meanNAP": -1.92,
+      "gzBytes": 42041
+    },
+    {
+      "tile": "110_489",
+      "stepM": 4,
+      "measured": 0.88,
+      "filled": 0.12,
+      "minNAP": -3.97,
+      "maxNAP": 2.8,
+      "meanNAP": -1.97,
+      "gzBytes": 48921
+    },
+    {
+      "tile": "111_489",
+      "stepM": 4,
+      "measured": 0.795,
+      "filled": 0.205,
+      "minNAP": -4.11,
+      "maxNAP": 2.66,
+      "meanNAP": -2.44,
+      "gzBytes": 47153
+    },
+    {
+      "tile": "112_489",
+      "stepM": 4,
+      "measured": 0.735,
+      "filled": 0.265,
+      "minNAP": -3.84,
+      "maxNAP": 8.11,
+      "meanNAP": -1.39,
+      "gzBytes": 48963
+    },
+    {
+      "tile": "113_489",
+      "stepM": 4,
+      "measured": 0.753,
+      "filled": 0.247,
+      "minNAP": -2.71,
+      "maxNAP": 8.36,
+      "meanNAP": 1.29,
+      "gzBytes": 45991
+    },
+    {
+      "tile": "114_489",
+      "stepM": 4,
+      "measured": 0.723,
+      "filled": 0.277,
+      "minNAP": -1,
+      "maxNAP": 8.02,
+      "meanNAP": 1.29,
+      "gzBytes": 38175
+    },
+    {
+      "tile": "115_489",
+      "stepM": 4,
+      "measured": 0.755,
+      "filled": 0.245,
+      "minNAP": -1.06,
+      "maxNAP": 9.83,
+      "meanNAP": 1.12,
+      "gzBytes": 47052
+    },
+    {
+      "tile": "116_489",
+      "stepM": 4,
+      "measured": 0.589,
+      "filled": 0.411,
+      "minNAP": -1.06,
+      "maxNAP": 8.11,
+      "meanNAP": 1.32,
+      "gzBytes": 33982
+    },
+    {
+      "tile": "117_489",
+      "stepM": 4,
+      "measured": 0.727,
+      "filled": 0.273,
+      "minNAP": -2.14,
+      "maxNAP": 9.03,
+      "meanNAP": 1.49,
+      "gzBytes": 43057
     },
     {
       "tile": "118_489",
+      "stepM": 4,
       "measured": 0.729,
       "filled": 0.271,
       "minNAP": -2.62,
       "maxNAP": 9.12,
       "meanNAP": 1.27,
-      "gzBytes": 139521
+      "gzBytes": 40251
     },
     {
       "tile": "119_489",
+      "stepM": 2,
       "measured": 0.771,
       "filled": 0.229,
       "minNAP": -2.41,
       "maxNAP": 7.75,
       "meanNAP": 0.85,
-      "gzBytes": 152611
+      "gzBytes": 126913
     },
     {
       "tile": "120_489",
+      "stepM": 2,
       "measured": 0.491,
       "filled": 0.509,
       "minNAP": -4.68,
       "maxNAP": 7.64,
       "meanNAP": 1.17,
-      "gzBytes": 131302
+      "gzBytes": 110551
     },
     {
       "tile": "121_489",
+      "stepM": 2,
       "measured": 0.246,
       "filled": 0.754,
       "minNAP": -0.77,
       "maxNAP": 5.61,
-      "meanNAP": 1.08,
-      "gzBytes": 92701
+      "meanNAP": 1.09,
+      "gzBytes": 79497
     },
     {
       "tile": "122_489",
+      "stepM": 2,
       "measured": 0.636,
       "filled": 0.364,
       "minNAP": -4.61,
       "maxNAP": 5.9,
       "meanNAP": 1.09,
-      "gzBytes": 142993
+      "gzBytes": 116392
+    },
+    {
+      "tile": "123_489",
+      "stepM": 2,
+      "measured": 0.8,
+      "filled": 0.2,
+      "minNAP": -4.56,
+      "maxNAP": 5.64,
+      "meanNAP": 0.3,
+      "gzBytes": 140828
+    },
+    {
+      "tile": "124_489",
+      "stepM": 2,
+      "measured": 0.74,
+      "filled": 0.26,
+      "minNAP": -4.55,
+      "maxNAP": 2.49,
+      "meanNAP": -0.78,
+      "gzBytes": 128618
+    },
+    {
+      "tile": "125_489",
+      "stepM": 4,
+      "measured": 0.752,
+      "filled": 0.248,
+      "minNAP": -1.48,
+      "maxNAP": 4.4,
+      "meanNAP": -0.27,
+      "gzBytes": 45411
+    },
+    {
+      "tile": "126_489",
+      "stepM": 4,
+      "measured": 0.812,
+      "filled": 0.188,
+      "minNAP": -1.97,
+      "maxNAP": 5.98,
+      "meanNAP": -0.71,
+      "gzBytes": 47222
+    },
+    {
+      "tile": "127_489",
+      "stepM": 4,
+      "measured": 0.847,
+      "filled": 0.153,
+      "minNAP": -1.92,
+      "maxNAP": 1.45,
+      "meanNAP": -1.47,
+      "gzBytes": 37076
+    },
+    {
+      "tile": "128_489",
+      "stepM": 4,
+      "measured": 0.831,
+      "filled": 0.169,
+      "minNAP": -1.93,
+      "maxNAP": 1.18,
+      "meanNAP": -1.4,
+      "gzBytes": 36498
+    },
+    {
+      "tile": "129_489",
+      "stepM": 4,
+      "measured": 0.399,
+      "filled": 0.601,
+      "minNAP": -1.87,
+      "maxNAP": 0.1,
+      "meanNAP": -1.27,
+      "gzBytes": 23978
+    },
+    {
+      "tile": "130_489",
+      "stepM": 4,
+      "measured": 0.063,
+      "filled": 0.937,
+      "minNAP": -1.53,
+      "maxNAP": 3.3,
+      "meanNAP": -0.29,
+      "gzBytes": 16680
+    },
+    {
+      "tile": "131_489",
+      "stepM": 4,
+      "measured": 0,
+      "filled": 1,
+      "minNAP": -0.85,
+      "maxNAP": -0.25,
+      "meanNAP": -0.7,
+      "gzBytes": 3009
+    },
+    {
+      "tile": "132_489",
+      "stepM": 4,
+      "measured": 0,
+      "filled": 1,
+      "minNAP": -0.87,
+      "maxNAP": -0.85,
+      "meanNAP": -0.86,
+      "gzBytes": 166
+    },
+    {
+      "tile": "109_490",
+      "stepM": 4,
+      "measured": 0.884,
+      "filled": 0.116,
+      "minNAP": -3.96,
+      "maxNAP": 2.91,
+      "meanNAP": -1.6,
+      "gzBytes": 47335
+    },
+    {
+      "tile": "110_490",
+      "stepM": 4,
+      "measured": 0.821,
+      "filled": 0.179,
+      "minNAP": -4.12,
+      "maxNAP": 3.34,
+      "meanNAP": -2.28,
+      "gzBytes": 51282
+    },
+    {
+      "tile": "111_490",
+      "stepM": 4,
+      "measured": 0.711,
+      "filled": 0.289,
+      "minNAP": -4.06,
+      "maxNAP": 4.22,
+      "meanNAP": -0.92,
+      "gzBytes": 47791
+    },
+    {
+      "tile": "112_490",
+      "stepM": 4,
+      "measured": 0.785,
+      "filled": 0.215,
+      "minNAP": -3.34,
+      "maxNAP": 5.66,
+      "meanNAP": 0.19,
+      "gzBytes": 52458
+    },
+    {
+      "tile": "113_490",
+      "stepM": 4,
+      "measured": 0.55,
+      "filled": 0.45,
+      "minNAP": -2.05,
+      "maxNAP": 23.6,
+      "meanNAP": 1.58,
+      "gzBytes": 39681
+    },
+    {
+      "tile": "114_490",
+      "stepM": 4,
+      "measured": 0.728,
+      "filled": 0.272,
+      "minNAP": -0.06,
+      "maxNAP": 19.6,
+      "meanNAP": 1.72,
+      "gzBytes": 40402
+    },
+    {
+      "tile": "115_490",
+      "stepM": 4,
+      "measured": 0.719,
+      "filled": 0.281,
+      "minNAP": -0.29,
+      "maxNAP": 12.33,
+      "meanNAP": 1.25,
+      "gzBytes": 39283
+    },
+    {
+      "tile": "116_490",
+      "stepM": 4,
+      "measured": 0.319,
+      "filled": 0.681,
+      "minNAP": -1.01,
+      "maxNAP": 18.51,
+      "meanNAP": 1.19,
+      "gzBytes": 27874
+    },
+    {
+      "tile": "117_490",
+      "stepM": 4,
+      "measured": 0.6,
+      "filled": 0.4,
+      "minNAP": -0.19,
+      "maxNAP": 12.61,
+      "meanNAP": 1.21,
+      "gzBytes": 39586
+    },
+    {
+      "tile": "118_490",
+      "stepM": 4,
+      "measured": 0.717,
+      "filled": 0.283,
+      "minNAP": -0.43,
+      "maxNAP": 12.91,
+      "meanNAP": 1.78,
+      "gzBytes": 48146
+    },
+    {
+      "tile": "119_490",
+      "stepM": 4,
+      "measured": 0.358,
+      "filled": 0.642,
+      "minNAP": -1.04,
+      "maxNAP": 20.05,
+      "meanNAP": 1.3,
+      "gzBytes": 33617
+    },
+    {
+      "tile": "120_490",
+      "stepM": 2,
+      "measured": 0.107,
+      "filled": 0.893,
+      "minNAP": -2.21,
+      "maxNAP": 3.65,
+      "meanNAP": 0.74,
+      "gzBytes": 63231
+    },
+    {
+      "tile": "121_490",
+      "stepM": 2,
+      "measured": 0.491,
+      "filled": 0.509,
+      "minNAP": -7.94,
+      "maxNAP": 7.52,
+      "meanNAP": 1.32,
+      "gzBytes": 105091
+    },
+    {
+      "tile": "122_490",
+      "stepM": 2,
+      "measured": 0.744,
+      "filled": 0.256,
+      "minNAP": -1.54,
+      "maxNAP": 4.62,
+      "meanNAP": 0.71,
+      "gzBytes": 124181
+    },
+    {
+      "tile": "123_490",
+      "stepM": 2,
+      "measured": 0.759,
+      "filled": 0.241,
+      "minNAP": -5.52,
+      "maxNAP": 6.15,
+      "meanNAP": -1.05,
+      "gzBytes": 143924
+    },
+    {
+      "tile": "124_490",
+      "stepM": 4,
+      "measured": 0.739,
+      "filled": 0.261,
+      "minNAP": -4.79,
+      "maxNAP": 5.94,
+      "meanNAP": -2.66,
+      "gzBytes": 53256
+    },
+    {
+      "tile": "125_490",
+      "stepM": 4,
+      "measured": 0.79,
+      "filled": 0.21,
+      "minNAP": -4.75,
+      "maxNAP": 5.3,
+      "meanNAP": -1.72,
+      "gzBytes": 54466
+    },
+    {
+      "tile": "126_490",
+      "stepM": 4,
+      "measured": 0.866,
+      "filled": 0.134,
+      "minNAP": -2.24,
+      "maxNAP": 1.45,
+      "meanNAP": -1.69,
+      "gzBytes": 41467
+    },
+    {
+      "tile": "127_490",
+      "stepM": 4,
+      "measured": 0.829,
+      "filled": 0.171,
+      "minNAP": -2.37,
+      "maxNAP": 1.1,
+      "meanNAP": -1.7,
+      "gzBytes": 38902
+    },
+    {
+      "tile": "128_490",
+      "stepM": 4,
+      "measured": 0.76,
+      "filled": 0.24,
+      "minNAP": -2.28,
+      "maxNAP": 0.65,
+      "meanNAP": -1.62,
+      "gzBytes": 32664
+    },
+    {
+      "tile": "129_490",
+      "stepM": 4,
+      "measured": 0.787,
+      "filled": 0.213,
+      "minNAP": -2.03,
+      "maxNAP": 0.18,
+      "meanNAP": -1.56,
+      "gzBytes": 30968
+    },
+    {
+      "tile": "130_490",
+      "stepM": 4,
+      "measured": 0.729,
+      "filled": 0.271,
+      "minNAP": -4.34,
+      "maxNAP": 3.14,
+      "meanNAP": -2.05,
+      "gzBytes": 38908
+    },
+    {
+      "tile": "131_490",
+      "stepM": 4,
+      "measured": 0.107,
+      "filled": 0.893,
+      "minNAP": -4.04,
+      "maxNAP": 3.03,
+      "meanNAP": -0.57,
+      "gzBytes": 16443
+    },
+    {
+      "tile": "132_490",
+      "stepM": 4,
+      "measured": 0,
+      "filled": 1,
+      "minNAP": -0.96,
+      "maxNAP": -0.19,
+      "meanNAP": -0.81,
+      "gzBytes": 2788
+    },
+    {
+      "tile": "133_490",
+      "stepM": 4,
+      "measured": 0,
+      "filled": 1,
+      "minNAP": -1.2,
+      "maxNAP": -0.96,
+      "meanNAP": -1.09,
+      "gzBytes": 182
+    },
+    {
+      "tile": "134_490",
+      "stepM": 4,
+      "measured": 0,
+      "filled": 1,
+      "minNAP": -1.31,
+      "maxNAP": -1.2,
+      "meanNAP": -1.26,
+      "gzBytes": 184
+    },
+    {
+      "tile": "109_491",
+      "stepM": 4,
+      "measured": 0.845,
+      "filled": 0.155,
+      "minNAP": -3.97,
+      "maxNAP": 1.48,
+      "meanNAP": -1.84,
+      "gzBytes": 39098
+    },
+    {
+      "tile": "110_491",
+      "stepM": 4,
+      "measured": 0.784,
+      "filled": 0.216,
+      "minNAP": -4.29,
+      "maxNAP": 3.41,
+      "meanNAP": -1.38,
+      "gzBytes": 43756
+    },
+    {
+      "tile": "111_491",
+      "stepM": 4,
+      "measured": 0.724,
+      "filled": 0.276,
+      "minNAP": -2.98,
+      "maxNAP": 5,
+      "meanNAP": 0.41,
+      "gzBytes": 46367
+    },
+    {
+      "tile": "112_491",
+      "stepM": 4,
+      "measured": 0.697,
+      "filled": 0.303,
+      "minNAP": -1.22,
+      "maxNAP": 4.59,
+      "meanNAP": 1.19,
+      "gzBytes": 43603
+    },
+    {
+      "tile": "113_491",
+      "stepM": 4,
+      "measured": 0.368,
+      "filled": 0.632,
+      "minNAP": -1.24,
+      "maxNAP": 27.72,
+      "meanNAP": 1.83,
+      "gzBytes": 36318
+    },
+    {
+      "tile": "114_491",
+      "stepM": 4,
+      "measured": 0.703,
+      "filled": 0.297,
+      "minNAP": -3.59,
+      "maxNAP": 14.4,
+      "meanNAP": 1.51,
+      "gzBytes": 41325
+    },
+    {
+      "tile": "115_491",
+      "stepM": 4,
+      "measured": 0.811,
+      "filled": 0.189,
+      "minNAP": -6.33,
+      "maxNAP": 10.71,
+      "meanNAP": 1.15,
+      "gzBytes": 38334
+    },
+    {
+      "tile": "116_491",
+      "stepM": 4,
+      "measured": 0.545,
+      "filled": 0.455,
+      "minNAP": 0.01,
+      "maxNAP": 30.71,
+      "meanNAP": 2.7,
+      "gzBytes": 45927
+    },
+    {
+      "tile": "117_491",
+      "stepM": 4,
+      "measured": 0.56,
+      "filled": 0.44,
+      "minNAP": -0.58,
+      "maxNAP": 4.74,
+      "meanNAP": 0.98,
+      "gzBytes": 47050
+    },
+    {
+      "tile": "118_491",
+      "stepM": 4,
+      "measured": 0.608,
+      "filled": 0.392,
+      "minNAP": -2.78,
+      "maxNAP": 7.63,
+      "meanNAP": 1.3,
+      "gzBytes": 47379
+    },
+    {
+      "tile": "119_491",
+      "stepM": 4,
+      "measured": 0.276,
+      "filled": 0.724,
+      "minNAP": -9.65,
+      "maxNAP": 5.61,
+      "meanNAP": 1.21,
+      "gzBytes": 32126
+    },
+    {
+      "tile": "120_491",
+      "stepM": 4,
+      "measured": 0.542,
+      "filled": 0.458,
+      "minNAP": -3.42,
+      "maxNAP": 6.27,
+      "meanNAP": 0.66,
+      "gzBytes": 41713
+    },
+    {
+      "tile": "121_491",
+      "stepM": 4,
+      "measured": 0.75,
+      "filled": 0.25,
+      "minNAP": -3.71,
+      "maxNAP": 3.41,
+      "meanNAP": 0.44,
+      "gzBytes": 48103
+    },
+    {
+      "tile": "122_491",
+      "stepM": 4,
+      "measured": 0.706,
+      "filled": 0.294,
+      "minNAP": -3.82,
+      "maxNAP": 4.28,
+      "meanNAP": -0.27,
+      "gzBytes": 49640
+    },
+    {
+      "tile": "123_491",
+      "stepM": 4,
+      "measured": 0.731,
+      "filled": 0.269,
+      "minNAP": -4.49,
+      "maxNAP": 8.08,
+      "meanNAP": -0.37,
+      "gzBytes": 52569
+    },
+    {
+      "tile": "124_491",
+      "stepM": 4,
+      "measured": 0.802,
+      "filled": 0.198,
+      "minNAP": -4.73,
+      "maxNAP": 7.63,
+      "meanNAP": -1.75,
+      "gzBytes": 53394
+    },
+    {
+      "tile": "125_491",
+      "stepM": 4,
+      "measured": 0.865,
+      "filled": 0.135,
+      "minNAP": -4.68,
+      "maxNAP": 2.05,
+      "meanNAP": -2,
+      "gzBytes": 40685
+    },
+    {
+      "tile": "126_491",
+      "stepM": 4,
+      "measured": 0.853,
+      "filled": 0.147,
+      "minNAP": -2.39,
+      "maxNAP": 1.73,
+      "meanNAP": -1.77,
+      "gzBytes": 33742
+    },
+    {
+      "tile": "127_491",
+      "stepM": 4,
+      "measured": 0.862,
+      "filled": 0.138,
+      "minNAP": -4.68,
+      "maxNAP": 3.64,
+      "meanNAP": -1.87,
+      "gzBytes": 40743
+    },
+    {
+      "tile": "128_491",
+      "stepM": 4,
+      "measured": 0.838,
+      "filled": 0.162,
+      "minNAP": -2.48,
+      "maxNAP": 1.71,
+      "meanNAP": -1.58,
+      "gzBytes": 44837
+    },
+    {
+      "tile": "129_491",
+      "stepM": 4,
+      "measured": 0.698,
+      "filled": 0.302,
+      "minNAP": -2.12,
+      "maxNAP": -0.59,
+      "meanNAP": -1.42,
+      "gzBytes": 28513
+    },
+    {
+      "tile": "130_491",
+      "stepM": 4,
+      "measured": 0.743,
+      "filled": 0.257,
+      "minNAP": -4.36,
+      "maxNAP": 0.16,
+      "meanNAP": -1.62,
+      "gzBytes": 36032
+    },
+    {
+      "tile": "131_491",
+      "stepM": 4,
+      "measured": 0.701,
+      "filled": 0.299,
+      "minNAP": -4,
+      "maxNAP": 3.08,
+      "meanNAP": -1.33,
+      "gzBytes": 38089
+    },
+    {
+      "tile": "132_491",
+      "stepM": 4,
+      "measured": 0.107,
+      "filled": 0.893,
+      "minNAP": -1.7,
+      "maxNAP": 3.23,
+      "meanNAP": -0.43,
+      "gzBytes": 17336
+    },
+    {
+      "tile": "133_491",
+      "stepM": 4,
+      "measured": 0.049,
+      "filled": 0.951,
+      "minNAP": -1.52,
+      "maxNAP": 3.28,
+      "meanNAP": -0.36,
+      "gzBytes": 8824
+    },
+    {
+      "tile": "134_491",
+      "stepM": 4,
+      "measured": 0,
+      "filled": 1,
+      "minNAP": -0.35,
+      "maxNAP": -0.21,
+      "meanNAP": -0.27,
+      "gzBytes": 1256
+    },
+    {
+      "tile": "108_492",
+      "stepM": 4,
+      "measured": 0.801,
+      "filled": 0.199,
+      "minNAP": -4.08,
+      "maxNAP": 4.78,
+      "meanNAP": -2.05,
+      "gzBytes": 45482
+    },
+    {
+      "tile": "109_492",
+      "stepM": 4,
+      "measured": 0.857,
+      "filled": 0.143,
+      "minNAP": -3.7,
+      "maxNAP": 0.42,
+      "meanNAP": -1.79,
+      "gzBytes": 36782
+    },
+    {
+      "tile": "110_492",
+      "stepM": 4,
+      "measured": 0.894,
+      "filled": 0.106,
+      "minNAP": -4.17,
+      "maxNAP": 24.02,
+      "meanNAP": -0.89,
+      "gzBytes": 50814
+    },
+    {
+      "tile": "111_492",
+      "stepM": 4,
+      "measured": 0.521,
+      "filled": 0.479,
+      "minNAP": -0.4,
+      "maxNAP": 23.74,
+      "meanNAP": 1.64,
+      "gzBytes": 41172
+    },
+    {
+      "tile": "112_492",
+      "stepM": 4,
+      "measured": 0.705,
+      "filled": 0.295,
+      "minNAP": -0.51,
+      "maxNAP": 6.21,
+      "meanNAP": 1.19,
+      "gzBytes": 30329
+    },
+    {
+      "tile": "113_492",
+      "stepM": 4,
+      "measured": 0.564,
+      "filled": 0.436,
+      "minNAP": -0.22,
+      "maxNAP": 11.92,
+      "meanNAP": 1.38,
+      "gzBytes": 39337
+    },
+    {
+      "tile": "114_492",
+      "stepM": 4,
+      "measured": 0.791,
+      "filled": 0.209,
+      "minNAP": -0.46,
+      "maxNAP": 10.19,
+      "meanNAP": 1.31,
+      "gzBytes": 43958
+    },
+    {
+      "tile": "115_492",
+      "stepM": 4,
+      "measured": 0.254,
+      "filled": 0.746,
+      "minNAP": -7.48,
+      "maxNAP": 7.39,
+      "meanNAP": 0.95,
+      "gzBytes": 26419
+    },
+    {
+      "tile": "116_492",
+      "stepM": 4,
+      "measured": 0.524,
+      "filled": 0.476,
+      "minNAP": -2.3,
+      "maxNAP": 21.63,
+      "meanNAP": 1.78,
+      "gzBytes": 46420
+    },
+    {
+      "tile": "117_492",
+      "stepM": 4,
+      "measured": 0.395,
+      "filled": 0.605,
+      "minNAP": -1.15,
+      "maxNAP": 16.91,
+      "meanNAP": 1.05,
+      "gzBytes": 35239
+    },
+    {
+      "tile": "118_492",
+      "stepM": 4,
+      "measured": 0.338,
+      "filled": 0.662,
+      "minNAP": -0.28,
+      "maxNAP": 7.56,
+      "meanNAP": 0.91,
+      "gzBytes": 31806
+    },
+    {
+      "tile": "119_492",
+      "stepM": 4,
+      "measured": 0.541,
+      "filled": 0.459,
+      "minNAP": -9.84,
+      "maxNAP": 8.99,
+      "meanNAP": 0.75,
+      "gzBytes": 48593
+    },
+    {
+      "tile": "120_492",
+      "stepM": 4,
+      "measured": 0.803,
+      "filled": 0.197,
+      "minNAP": -3.43,
+      "maxNAP": 11.59,
+      "meanNAP": -0.32,
+      "gzBytes": 54370
+    },
+    {
+      "tile": "121_492",
+      "stepM": 4,
+      "measured": 0.698,
+      "filled": 0.302,
+      "minNAP": -3.79,
+      "maxNAP": 5.41,
+      "meanNAP": -0.38,
+      "gzBytes": 49353
+    },
+    {
+      "tile": "122_492",
+      "stepM": 4,
+      "measured": 0.743,
+      "filled": 0.257,
+      "minNAP": -3.85,
+      "maxNAP": 6.33,
+      "meanNAP": -0.6,
+      "gzBytes": 48716
+    },
+    {
+      "tile": "123_492",
+      "stepM": 4,
+      "measured": 0.806,
+      "filled": 0.194,
+      "minNAP": -2.42,
+      "maxNAP": 4.84,
+      "meanNAP": -1.57,
+      "gzBytes": 39100
+    },
+    {
+      "tile": "124_492",
+      "stepM": 4,
+      "measured": 0.864,
+      "filled": 0.136,
+      "minNAP": -2.45,
+      "maxNAP": 2.51,
+      "meanNAP": -1.78,
+      "gzBytes": 40265
+    },
+    {
+      "tile": "125_492",
+      "stepM": 4,
+      "measured": 0.883,
+      "filled": 0.117,
+      "minNAP": -6.03,
+      "maxNAP": 3.75,
+      "meanNAP": -2.64,
+      "gzBytes": 40931
+    },
+    {
+      "tile": "126_492",
+      "stepM": 4,
+      "measured": 0.934,
+      "filled": 0.066,
+      "minNAP": -5.7,
+      "maxNAP": -1.06,
+      "meanNAP": -4.44,
+      "gzBytes": 35607
+    },
+    {
+      "tile": "127_492",
+      "stepM": 4,
+      "measured": 0.832,
+      "filled": 0.168,
+      "minNAP": -5.64,
+      "maxNAP": -0.85,
+      "meanNAP": -3.85,
+      "gzBytes": 43418
+    },
+    {
+      "tile": "128_492",
+      "stepM": 4,
+      "measured": 0.738,
+      "filled": 0.262,
+      "minNAP": -5.18,
+      "maxNAP": 2.66,
+      "meanNAP": -0.84,
+      "gzBytes": 49440
+    },
+    {
+      "tile": "129_492",
+      "stepM": 4,
+      "measured": 0.841,
+      "filled": 0.159,
+      "minNAP": -5.61,
+      "maxNAP": -0.73,
+      "meanNAP": -3.88,
+      "gzBytes": 42668
+    },
+    {
+      "tile": "130_492",
+      "stepM": 4,
+      "measured": 0.75,
+      "filled": 0.25,
+      "minNAP": -4.82,
+      "maxNAP": 0.6,
+      "meanNAP": -1.46,
+      "gzBytes": 35246
+    },
+    {
+      "tile": "131_492",
+      "stepM": 4,
+      "measured": 0.724,
+      "filled": 0.276,
+      "minNAP": -1.85,
+      "maxNAP": 1.96,
+      "meanNAP": -1.48,
+      "gzBytes": 31544
+    },
+    {
+      "tile": "132_492",
+      "stepM": 4,
+      "measured": 0.662,
+      "filled": 0.338,
+      "minNAP": -1.9,
+      "maxNAP": -0.03,
+      "meanNAP": -1.45,
+      "gzBytes": 30430
+    },
+    {
+      "tile": "133_492",
+      "stepM": 4,
+      "measured": 0.312,
+      "filled": 0.688,
+      "minNAP": -1.59,
+      "maxNAP": 3.33,
+      "meanNAP": -0.47,
+      "gzBytes": 24943
+    },
+    {
+      "tile": "134_492",
+      "stepM": 4,
+      "measured": 0,
+      "filled": 1,
+      "minNAP": -0.7,
+      "maxNAP": 0.3,
+      "meanNAP": -0.5,
+      "gzBytes": 2903
+    },
+    {
+      "tile": "108_493",
+      "stepM": 4,
+      "measured": 0.794,
+      "filled": 0.206,
+      "minNAP": -3.75,
+      "maxNAP": 1.55,
+      "meanNAP": -1.36,
+      "gzBytes": 49278
+    },
+    {
+      "tile": "109_493",
+      "stepM": 4,
+      "measured": 0.828,
+      "filled": 0.172,
+      "minNAP": -4.14,
+      "maxNAP": 7.23,
+      "meanNAP": -2.08,
+      "gzBytes": 42884
+    },
+    {
+      "tile": "110_493",
+      "stepM": 4,
+      "measured": 0.802,
+      "filled": 0.198,
+      "minNAP": -4.14,
+      "maxNAP": 28.92,
+      "meanNAP": 0.21,
+      "gzBytes": 45345
+    },
+    {
+      "tile": "111_493",
+      "stepM": 4,
+      "measured": 0.365,
+      "filled": 0.635,
+      "minNAP": -2.61,
+      "maxNAP": 19.9,
+      "meanNAP": 1.42,
+      "gzBytes": 34148
+    },
+    {
+      "tile": "112_493",
+      "stepM": 4,
+      "measured": 0.523,
+      "filled": 0.477,
+      "minNAP": -3.41,
+      "maxNAP": 6.95,
+      "meanNAP": 0.95,
+      "gzBytes": 28357
+    },
+    {
+      "tile": "113_493",
+      "stepM": 4,
+      "measured": 0.486,
+      "filled": 0.514,
+      "minNAP": -3.58,
+      "maxNAP": 8.39,
+      "meanNAP": -0.48,
+      "gzBytes": 37202
+    },
+    {
+      "tile": "114_493",
+      "stepM": 4,
+      "measured": 0.503,
+      "filled": 0.497,
+      "minNAP": -4.23,
+      "maxNAP": 7.5,
+      "meanNAP": -0.87,
+      "gzBytes": 40333
+    },
+    {
+      "tile": "115_493",
+      "stepM": 4,
+      "measured": 0.589,
+      "filled": 0.411,
+      "minNAP": -3.41,
+      "maxNAP": 4.17,
+      "meanNAP": -0.03,
+      "gzBytes": 40477
+    },
+    {
+      "tile": "116_493",
+      "stepM": 4,
+      "measured": 0.617,
+      "filled": 0.383,
+      "minNAP": -7.48,
+      "maxNAP": 6.24,
+      "meanNAP": 0.72,
+      "gzBytes": 42448
+    },
+    {
+      "tile": "117_493",
+      "stepM": 4,
+      "measured": 0.639,
+      "filled": 0.361,
+      "minNAP": -1.48,
+      "maxNAP": 7.23,
+      "meanNAP": 0.53,
+      "gzBytes": 46390
+    },
+    {
+      "tile": "118_493",
+      "stepM": 4,
+      "measured": 0.639,
+      "filled": 0.361,
+      "minNAP": -1.62,
+      "maxNAP": 4.21,
+      "meanNAP": -0.06,
+      "gzBytes": 38086
+    },
+    {
+      "tile": "119_493",
+      "stepM": 4,
+      "measured": 0.505,
+      "filled": 0.495,
+      "minNAP": -1.54,
+      "maxNAP": 9.75,
+      "meanNAP": 0.78,
+      "gzBytes": 44348
+    },
+    {
+      "tile": "120_493",
+      "stepM": 4,
+      "measured": 0.732,
+      "filled": 0.268,
+      "minNAP": -3.25,
+      "maxNAP": 10.99,
+      "meanNAP": 0.19,
+      "gzBytes": 47671
+    },
+    {
+      "tile": "121_493",
+      "stepM": 4,
+      "measured": 0.681,
+      "filled": 0.319,
+      "minNAP": -1.75,
+      "maxNAP": 5.51,
+      "meanNAP": -0.83,
+      "gzBytes": 39137
+    },
+    {
+      "tile": "122_493",
+      "stepM": 4,
+      "measured": 0.681,
+      "filled": 0.319,
+      "minNAP": -2.09,
+      "maxNAP": 1.53,
+      "meanNAP": -0.85,
+      "gzBytes": 42447
+    },
+    {
+      "tile": "123_493",
+      "stepM": 4,
+      "measured": 0.754,
+      "filled": 0.246,
+      "minNAP": -2.3,
+      "maxNAP": 1.6,
+      "meanNAP": -1.27,
+      "gzBytes": 37852
+    },
+    {
+      "tile": "124_493",
+      "stepM": 4,
+      "measured": 0.812,
+      "filled": 0.188,
+      "minNAP": -2.3,
+      "maxNAP": 1.81,
+      "meanNAP": -1.53,
+      "gzBytes": 35562
+    },
+    {
+      "tile": "125_493",
+      "stepM": 4,
+      "measured": 0.794,
+      "filled": 0.206,
+      "minNAP": -5.98,
+      "maxNAP": 3.37,
+      "meanNAP": -1.61,
+      "gzBytes": 34954
+    },
+    {
+      "tile": "126_493",
+      "stepM": 4,
+      "measured": 0.874,
+      "filled": 0.126,
+      "minNAP": -5.98,
+      "maxNAP": 0.39,
+      "meanNAP": -3.03,
+      "gzBytes": 37350
+    },
+    {
+      "tile": "127_493",
+      "stepM": 4,
+      "measured": 0.902,
+      "filled": 0.098,
+      "minNAP": -5.66,
+      "maxNAP": 0.03,
+      "meanNAP": -4.1,
+      "gzBytes": 48843
+    },
+    {
+      "tile": "128_493",
+      "stepM": 4,
+      "measured": 0.823,
+      "filled": 0.177,
+      "minNAP": -5.38,
+      "maxNAP": 2.1,
+      "meanNAP": -2.28,
+      "gzBytes": 45566
+    },
+    {
+      "tile": "129_493",
+      "stepM": 4,
+      "measured": 0.763,
+      "filled": 0.237,
+      "minNAP": -5.7,
+      "maxNAP": -0.54,
+      "meanNAP": -2.51,
+      "gzBytes": 41822
+    },
+    {
+      "tile": "130_493",
+      "stepM": 4,
+      "measured": 0.69,
+      "filled": 0.31,
+      "minNAP": -2.23,
+      "maxNAP": 0.82,
+      "meanNAP": -1.49,
+      "gzBytes": 35312
+    },
+    {
+      "tile": "131_493",
+      "stepM": 4,
+      "measured": 0.809,
+      "filled": 0.191,
+      "minNAP": -1.89,
+      "maxNAP": 0.13,
+      "meanNAP": -1.49,
+      "gzBytes": 39248
+    },
+    {
+      "tile": "132_493",
+      "stepM": 4,
+      "measured": 0.787,
+      "filled": 0.213,
+      "minNAP": -1.8,
+      "maxNAP": -0.11,
+      "meanNAP": -1.44,
+      "gzBytes": 37132
+    },
+    {
+      "tile": "133_493",
+      "stepM": 4,
+      "measured": 0.668,
+      "filled": 0.332,
+      "minNAP": -1.79,
+      "maxNAP": 3.28,
+      "meanNAP": -0.76,
+      "gzBytes": 40045
+    },
+    {
+      "tile": "134_493",
+      "stepM": 4,
+      "measured": 0.089,
+      "filled": 0.911,
+      "minNAP": -1.54,
+      "maxNAP": 2.45,
+      "meanNAP": 0.01,
+      "gzBytes": 12593
+    },
+    {
+      "tile": "108_494",
+      "stepM": 4,
+      "measured": 0.691,
+      "filled": 0.309,
+      "minNAP": -3.69,
+      "maxNAP": 2.21,
+      "meanNAP": -1.27,
+      "gzBytes": 47523
+    },
+    {
+      "tile": "109_494",
+      "stepM": 4,
+      "measured": 0.549,
+      "filled": 0.451,
+      "minNAP": -2.12,
+      "maxNAP": 7.09,
+      "meanNAP": -0.27,
+      "gzBytes": 38307
+    },
+    {
+      "tile": "110_494",
+      "stepM": 4,
+      "measured": 0.672,
+      "filled": 0.328,
+      "minNAP": -3.1,
+      "maxNAP": 23.86,
+      "meanNAP": 1.17,
+      "gzBytes": 48616
+    },
+    {
+      "tile": "111_494",
+      "stepM": 4,
+      "measured": 0.816,
+      "filled": 0.184,
+      "minNAP": -3.6,
+      "maxNAP": 39.99,
+      "meanNAP": 8.58,
+      "gzBytes": 56549
+    },
+    {
+      "tile": "112_494",
+      "stepM": 4,
+      "measured": 0.843,
+      "filled": 0.157,
+      "minNAP": -3.64,
+      "maxNAP": 2.57,
+      "meanNAP": -1.76,
+      "gzBytes": 41701
+    },
+    {
+      "tile": "113_494",
+      "stepM": 4,
+      "measured": 0.791,
+      "filled": 0.209,
+      "minNAP": -3.63,
+      "maxNAP": 3.89,
+      "meanNAP": -1.5,
+      "gzBytes": 41563
+    },
+    {
+      "tile": "114_494",
+      "stepM": 4,
+      "measured": 0.856,
+      "filled": 0.144,
+      "minNAP": -2.11,
+      "maxNAP": 4.27,
+      "meanNAP": -1.67,
+      "gzBytes": 35572
+    },
+    {
+      "tile": "118_494",
+      "stepM": 4,
+      "measured": 0.764,
+      "filled": 0.236,
+      "minNAP": -1.44,
+      "maxNAP": 1.78,
+      "meanNAP": -0.46,
+      "gzBytes": 40224
+    },
+    {
+      "tile": "119_494",
+      "stepM": 4,
+      "measured": 0.736,
+      "filled": 0.264,
+      "minNAP": -1.9,
+      "maxNAP": 6.46,
+      "meanNAP": -0.44,
+      "gzBytes": 45248
+    },
+    {
+      "tile": "120_494",
+      "stepM": 4,
+      "measured": 0.709,
+      "filled": 0.291,
+      "minNAP": -2.76,
+      "maxNAP": 2.15,
+      "meanNAP": -0.89,
+      "gzBytes": 45640
+    },
+    {
+      "tile": "121_494",
+      "stepM": 4,
+      "measured": 0.567,
+      "filled": 0.433,
+      "minNAP": -2.79,
+      "maxNAP": 3.32,
+      "meanNAP": -1.83,
+      "gzBytes": 40943
+    },
+    {
+      "tile": "122_494",
+      "stepM": 4,
+      "measured": 0.601,
+      "filled": 0.399,
+      "minNAP": -2.8,
+      "maxNAP": 4.35,
+      "meanNAP": -1.29,
+      "gzBytes": 39558
+    },
+    {
+      "tile": "124_494",
+      "stepM": 4,
+      "measured": 0.734,
+      "filled": 0.266,
+      "minNAP": -2.22,
+      "maxNAP": 1.75,
+      "meanNAP": -1.42,
+      "gzBytes": 32652
+    },
+    {
+      "tile": "125_494",
+      "stepM": 4,
+      "measured": 0.749,
+      "filled": 0.251,
+      "minNAP": -2.6,
+      "maxNAP": 1,
+      "meanNAP": -1.32,
+      "gzBytes": 31923
+    },
+    {
+      "tile": "126_494",
+      "stepM": 4,
+      "measured": 0.796,
+      "filled": 0.204,
+      "minNAP": -5.21,
+      "maxNAP": -0.89,
+      "meanNAP": -1.77,
+      "gzBytes": 27445
+    },
+    {
+      "tile": "127_494",
+      "stepM": 4,
+      "measured": 0.872,
+      "filled": 0.128,
+      "minNAP": -5.36,
+      "maxNAP": -0.87,
+      "meanNAP": -2.37,
+      "gzBytes": 29416
+    },
+    {
+      "tile": "128_494",
+      "stepM": 4,
+      "measured": 0.806,
+      "filled": 0.194,
+      "minNAP": -4.91,
+      "maxNAP": 0.81,
+      "meanNAP": -1.4,
+      "gzBytes": 44770
+    },
+    {
+      "tile": "129_494",
+      "stepM": 4,
+      "measured": 0.881,
+      "filled": 0.119,
+      "minNAP": -2.12,
+      "maxNAP": 2.11,
+      "meanNAP": -1.51,
+      "gzBytes": 46317
     }
   ]
 }

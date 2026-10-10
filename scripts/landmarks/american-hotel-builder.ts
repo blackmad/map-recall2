@@ -2,7 +2,7 @@ import * as T from 'three';
 import type {BuildingTools} from './cultural-builders';
 import {addShell} from './worship-shell';
 import type {Surface} from './worship-shell';
-import {poly, put, ringFrame, setSink, slab} from './nearbar-kit';
+import {poly, put, ringFrame, setSink, slab, wallProbe} from './nearbar-kit';
 import type {Frame} from './nearbar-kit';
 import source from './american-hotel-footprints.json';
 
@@ -51,7 +51,7 @@ const archWindows = (b: BuildingTools, f: Frame, ts: number[], o: {y: number; w:
  *    and the two stepped roof gables; the slender corner tower with its arched window columns;
  *  - street side (NE, ring edges 12-25): the staircase tower, the canted oriel, four tall double-height
  *    windows under stone arches, five fan-tracery windows, the stone cornice with cross studs, the top-storey
- *    windows and three recessed arches on corbelled piers;
+ *    windows (two storeys on seven axes) and three narrow tall arched windows on corbelled piers;
  *  - canal side (SW, ring edges 31-38, curved): rusticated stone plinth, eight round-headed ground windows,
  *    the arcade of twelve narrow arched windows between carved pilasters, a brick band, six canted bays of
  *    three-window oriels on three floors and the hooded attic windows.
@@ -65,8 +65,11 @@ export function buildAmericanHotel(_w: number, _d: number, b: BuildingTools & {m
   };
   // The tower's peaked cap (roof planes 488, 496, 511) is pale stone like its shaft, not tile (2016 summer panorama).
   const towerCap = (_s: Surface, i: number) => (i === 488 || i === 496 || i === 511 ? 'stone' : 'slate');
-  addShell(b, source as never, {wall: 'sandstone', roof: 'slate', roofFor: towerCap, skip: (s) => s.type === 'WallSurface' && brown(s)});
-  addShell(b, source as never, {wall: 'greyBrick', roof: 'slate', skip: (s) => s.type !== 'WallSurface' || !brown(s)});
+  const shellGeoms: T.BufferGeometry[] = [];
+  const bs = {...b, add: (g: T.BufferGeometry, c: never, x?: number, y?: number, z?: number, a?: number) => { b.add(g, c, x, y, z, a); shellGeoms.push(g.clone()); }} as BuildingTools;
+  addShell(bs, source as never, {wall: 'sandstone', roof: 'slate', roofFor: towerCap, skip: (s) => s.type === 'WallSurface' && brown(s)});
+  addShell(bs, source as never, {wall: 'greyBrick', roof: 'slate', skip: (s) => s.type !== 'WallSurface' || !brown(s)});
+  const probe = wallProbe(shellGeoms);
   b.mark?.('shell');
   setSink(0.5);
   const ring = (source.nativeRing as number[][]).slice(0, -1);
@@ -141,11 +144,16 @@ export function buildAmericanHotel(_w: number, _d: number, b: BuildingTools & {m
     slab(b, f, 25.9, 14.15, 22.0, 0.12, 0.2, 'stone', 0.3);
     // gable windows
     const fUp = ringFrame(ring, 58, -1.2).f;   // the 3DBAG upper storeys of this front stand 1.2 m behind the ring line
-    // counted from the 2020/2022 winter panoramas: two storeys of round-headed windows over the eaves balustrade,
-    // four axes (two under each stepped gable)
-    for (const t of [19.2, 22.4, 28.9, 32.0]) {
-      for (const y of [14.0, 16.6]) arched(fUp, t, y, 0.9, 1.5);
+    // Two storeys of round-headed windows over the eaves balustrade on an even 3.35 m pitch: two per cafe bay
+    // (bay centre +- 1.675) plus one over the entrance oriel. Recounted on 2026-10-10 from the leaf-off panorama
+    // b_20241217_0841_Track38_Sphere_00011 (33 m out); the earlier four-axis count left a blank band between the
+    // gables and broke the rhythm of the storeys below.
+    // Each window snaps onto the 3DBAG wall where it really stands (the upper storeys step back 0.5-2 m behind the ring).
+    for (const t of [14.2, 17.5, 20.9, 24.2, 27.6, 30.9, 34.3]) {
+      for (const y of [14.0, 16.6]) { const off = probe.offset(fUp, t, y + 0.8); if (off !== null) arched(probe.snap(fUp, t, y + 0.8), t, y, 0.9, 1.5); }
     }
+    // left wing (t 3-10): its two lower storeys continue upward on the same three axes
+    for (const t of [4.2, 6.6, 9.0]) for (const y of [13.6, 16.2]) { const off = probe.offset(f, t, y + 0.9); if (off !== null) archWindows(b, probe.snap(f, t, y + 0.9), [t], {y, w: 1.1, h: 1.8, bars: 1, rows: 1, sill: 'stone'}); }
     for (const t of [20.8, 30.5]) poly(b, f, t, 13.4, [[-2.4, 0], [2.4, 0], [2.4, 0.5], [0, 0.5]], 0.4, 'stone', 0.2);
   }
 
@@ -183,9 +191,16 @@ export function buildAmericanHotel(_w: number, _d: number, b: BuildingTools & {m
       slab(b, f, t, 0.45, 0.9, 0.55, 0.1, 'dark');
       // storey-2 fan window
       arched(f, t, 10.1, 2.2, 4.8, {fan: true, bars: 1, rows: 3});
-      // top-storey window
-      slab(b, f, t, 15.7, 1.7, 2.2, 0.1, 'glass'); slab(b, f, t, 15.7, 0.06, 2.2, 0.14, 'frame'); slab(b, f, t, 16.8, 1.7, 0.06, 0.14, 'frame');
-      slab(b, f, t, 15.55, 2.1, 0.12, 0.25, 'stone');
+    }
+    // Two storeys over the stone cornice on seven even axes (t 0.8-13.9). Recounted on 2026-10-10 from panorama
+    // TMX7316010203-002985_pano_0003_000472 (2023-02-27, 13 m out): the earlier single row of four top windows left a blank
+    // storey over the fan windows and broke the rhythm of the street side.
+    for (let k = 0; k < 7; k++) {
+      const t = 0.8 + 13.1 * k / 6;
+      for (const [y, h] of [[15.35, 1.35], [17.05, 1.2]] as const) {
+        slab(b, f, t, y - 0.06, 1.45, h + 0.12, 0.08, 'white'); slab(b, f, t, y, 1.2, h, 0.1, 'glass');
+        slab(b, f, t, y, 0.05, h, 0.14, 'white'); slab(b, f, t, y + h * 0.62, 1.2, 0.05, 0.14, 'white'); sill(f, t, y, 1.5);
+      }
     }
     for (const t of [3.1, 6.2, 9.3, 12.0]) slab(b, f, t, 9.0, 0.3, 0.3, 0.18, 'dark');   // cross studs
     band(f, -0.5, L + 5.8, 8.3, 0.5, 0.35);                               // stone cornice
@@ -193,10 +208,11 @@ export function buildAmericanHotel(_w: number, _d: number, b: BuildingTools & {m
     band(f, -0.5, L + 5.8, 18.6, 0.5, 0.45);                              // eaves
     // fifth bay over the recess zone and the three recessed arches on corbelled piers
     arched(f, 13.95, 10.1, 2.2, 4.8, {fan: true, bars: 1, rows: 3});
+    // three narrow tall arched windows over white panels (the panorama shows glazing, not dark recesses), the door under the middle
     for (const t of [14.2, 16.7, 19.2]) {
-      archSlab(b, f, t, 1.5, 1.8, 5.2, 0.1, 'dark');
       archBand(b, f, t, 1.5, 2.2, 5.5, 0.3, 0.2, 'stone');
-      archWindows(b, f, [t], {y: 3.5, w: 1.2, h: 2.4, bars: 1, rows: 1, sill: 'stone'});
+      slab(b, f, t, 1.5, 1.6, 1.6, 0.1, t === 16.7 ? 'dark' : 'white');
+      archWindows(b, f, [t], {y: 3.2, w: 1.4, h: 3.6, bars: 1, rows: 2, sill: 'stone'});
     }
     for (const t of [12.9, 15.45, 17.95, 20.4]) slab(b, f, t, 1.5, 0.45, 5.4, 0.25, 'stone');
     // staircase tower (edge 16) with arched windows and the canted oriel
@@ -260,6 +276,50 @@ export function buildAmericanHotel(_w: number, _d: number, b: BuildingTools & {m
       for (const dx of [-0.23, 0.23]) slab(b, f, t + dx, 19.45, 0.05, 0.85, 0.14, 'frame');
       segBand(b, f, t, 20.2, 1.9, 0.45, 0.18, 0.2, 'stone');
     }
+  }
+
+  // =============================== Leidsekade gable front (SW, ring edge 39, 6.7 m) ===============================
+  // Until 2026-10-10 this buff Jugendstil gable front between the brown 1920s canal block and the tower had no detail at all:
+  // a blank sandstone wall in the middle of the canal elevation. Spec from panorama TMX7316010203-001968_pano_0000_000120
+  // (2021-01-18, 28 m out, square-on): four window axes, mirror-free; from the ground: the arched entrance with its canopy on the
+  // left axis and three stone-framed windows; a storey of four rectangular windows; a balustrade; the four-arch tracery arcade
+  // with ring tracery (~8.9-12.5 m); two storeys of four round-headed windows; a five-light arcaded gallery under the pointed gable.
+  {
+    const {f, len} = fr(39);
+    const ax = [0, 1, 2, 3].map(k => len * (k + 0.5) / 4);
+    band(f, 0, len, 0, 1.0, 0.2);                                     // plinth
+    // ground storey
+    archBand(b, f, ax[0], 0.9, 2.1, 3.6, 0.3, 0.2, 'stone');
+    archSlab(b, f, ax[0], 0.9, 1.6, 3.4, 0.12, 'dark');
+    slab(b, f, ax[0], 3.6, 2.3, 0.15, 1.3, 'dark');                   // canopy
+    for (const t of ax.slice(1)) { slab(b, f, t, 1.15, 1.6, 2.1, 0.14, 'stone'); slab(b, f, t, 1.3, 1.25, 1.8, 0.1, 'glass', 0.14); slab(b, f, t, 1.3, 0.05, 1.8, 0.14, 'frame', 0.2); }
+    band(f, 0, len, 4.25, 0.25, 0.3);
+    // storey 2: rectangular windows
+    for (const t of ax) { slab(b, f, t, 4.7, 1.2, 1.8, 0.1, 'glass'); slab(b, f, t, 4.7, 0.05, 1.8, 0.14, 'frame'); slab(b, f, t, 5.6, 1.2, 0.05, 0.14, 'frame'); sill(f, t, 4.7, 1.4); }
+    // balustrade
+    band(f, 0, len, 8.0, 0.25, 0.45);
+    for (let t = 0.3; t < len - 0.2; t += 0.4) slab(b, f, t, 8.25, 0.12, 0.55, 0.16, 'stone', 0.25);
+    band(f, 0, len, 8.8, 0.12, 0.42);
+    // tracery arcade: four arches with a ring in each head
+    for (const t of ax) {
+      archBand(b, f, t, 9.0, 1.6, 3.5, 0.18, 0.18, 'stone');
+      archSlab(b, f, t, 9.0, 1.4, 3.4, 0.1, 'glass');
+      for (const dx of [-0.35, 0.35]) slab(b, f, t + dx, 9.0, 0.06, 2.6, 0.14, 'frame');
+      put(b, f, new T.TorusGeometry(0.45, 0.06, 4, 12), t, 11.6, 0.14, 'stone');
+    }
+    band(f, 0, len, 12.6, 0.3, 0.3);
+    // two storeys of round-headed windows
+    for (const y of [13.2, 15.4]) for (const t of ax) arched(f, t, y, 0.9, 1.6, {bars: 1, rows: 1});
+    band(f, 0, len, 17.4, 0.25, 0.3);
+    // arcaded gallery under the gable
+    for (let k = 0; k < 5; k++) archWindows(b, f, [len * (k + 0.5) / 5], {y: 17.8, w: 0.6, h: 1.2, bars: 0, rows: 1, frame: 'white', sill: 'stone'});
+    for (let k = 0; k <= 5; k++) slab(b, f, Math.min(len - 0.1, Math.max(0.1, len * k / 5)), 17.7, 0.2, 1.4, 0.18, 'stone');
+    // the narrow bay between the gable front and the tower (edge 43, t ~1.3): a door, then one window per storey
+    const g = fr(43).f, tb = 1.3;
+    archSlab(b, g, tb, 0.9, 1.2, 2.8, 0.12, 'dark'); archBand(b, g, tb, 0.9, 1.6, 3.0, 0.2, 0.18, 'stone');
+    slab(b, g, tb, 4.7, 1.0, 1.8, 0.1, 'glass'); slab(b, g, tb, 4.7, 0.05, 1.8, 0.14, 'frame'); sill(g, tb, 4.7, 1.2);
+    arched(g, tb, 9.0, 1.0, 3.4, {bars: 1, rows: 2});
+    for (const y of [13.2, 15.4]) arched(g, tb, y, 0.9, 1.6, {bars: 1, rows: 1});
   }
 
   // =============================== Roofline (Kromhout's ornate skyline) ===============================
