@@ -1,0 +1,112 @@
+{
+ "street": "Bilderdijkstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-10T07:26:55.350Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012233645",
+   "addresses": [
+    "Bilderdijkstraat 140"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 140-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 116,
+     "bagId": "0363010001170391"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11368129470,
+     "lngLat": [
+      4.8714378,
+      52.3678239
+     ],
+     "tags": {
+      "addr:housenumber": "140",
+      "addr:postcode": "1053LA",
+      "addr:street": "Bilderdijkstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-09-20",
+      "check_date:opening_hours": "2026-09-20",
+      "cuisine": "asian",
+      "name": "SILK Amsterdam",
+      "opening_hours": "We-Th 18:00-23:00; Fr-Sa 18:00-00:00; Su 17:00-23:00",
+      "website": "http://silk-amsterdam.nl"
+     },
+     "fetchedAt": "2026-10-10T07:26:55.350Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236881",
+   "addresses": [
+    "Bilderdijkstraat 138"
+   ],
+   "groundUnits": [],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 14201214801,
+     "lngLat": [
+      4.8714234,
+      52.3678811
+     ],
+     "tags": {
+      "addr:housenumber": "136",
+      "addr:postcode": "1053LA",
+      "addr:street": "Bilderdijkstraat",
+      "check_date": "2026-09-20",
+      "check_date:opening_hours": "2026-09-20",
+      "name": "Cortazu",
+      "opening_hours": "Tu-Fr 10:00-18:00; Mo, Sa 12:00-18:00; Su 12:00-17:00",
+      "shop": "clothes",
+      "website": "http://cortazu.com"
+     },
+     "fetchedAt": "2026-10-10T07:26:55.350Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236975",
+   "addresses": [
+    "Bilderdijkstraat 136"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 136-H",
+     "use": "winkelfunctie",
+     "areaM2": 271,
+     "bagId": "0363010000586170"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11395804125,
+     "lngLat": [
+      4.87139,
+      52.3679236
+     ],
+     "tags": {
+      "shop": "vacant"
+     },
+     "fetchedAt": "2026-10-10T07:26:55.350Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

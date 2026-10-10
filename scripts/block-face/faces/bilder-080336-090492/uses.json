@@ -1,0 +1,114 @@
+{
+ "street": "Bilderdijkstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-10T07:26:08.077Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012080336",
+   "addresses": [
+    "Bilderdijkstraat 154",
+    "Bilderdijkstraat 154A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 154A",
+     "use": "kantoorfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000586229"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11395751151,
+     "lngLat": [
+      4.8716132,
+      52.3676204
+     ],
+     "tags": {
+      "healthcare": "midwife",
+      "name": "Bilderdijk Verloskundigen"
+     },
+     "fetchedAt": "2026-10-10T07:26:08.077Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012092394",
+   "addresses": [
+    "Bilderdijkstraat 150",
+    "Bilderdijkstraat 152"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 150",
+     "use": "winkelfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000586214"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012092395",
+   "addresses": [
+    "Bilderdijkstraat 146",
+    "Bilderdijkstraat 148"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 148",
+     "use": "winkelfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000586209"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11159266380,
+     "lngLat": [
+      4.8715749,
+      52.3677239
+     ],
+     "tags": {
+      "amenity": "pharmacy",
+      "brand": "Benu",
+      "brand:wikidata": "Q62562792",
+      "healthcare": "pharmacy",
+      "name": "Benu",
+      "opening_hours": "Mo-Fr 08:30-17:30",
+      "website": "https://www.benu.nl/"
+     },
+     "fetchedAt": "2026-10-10T07:26:08.077Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012090492",
+   "addresses": [
+    "Bilderdijkstraat 142",
+    "Bilderdijkstraat 144"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bilderdijkstraat 142",
+     "use": "winkelfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000586190"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}
