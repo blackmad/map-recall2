@@ -19,6 +19,11 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 
+- **Discard 3DBAG roof geometry on faces (user, 2026-10-10)**: on
+  street-surveys.html (bilder-081118-155417) dark 3DBAG roof masses stand
+  above and beside the gables where the photo shows none. Generate roofs
+  from the recipe (pitched behind cornice/gable, real dormers) and use 3DBAG
+  only as a height clue. Not started — next lane.
 - **Rosarium follow-ups**: low box hedges around each bed; check Noord
   "Rozentuin" (a36994921, ~1,500 bushes on 1,380 m², maybe over-planted) and
   a288299874 in game; park-landscape draws the paved centre hex green;
