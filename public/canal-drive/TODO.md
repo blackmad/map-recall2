@@ -134,10 +134,14 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   corten tower is rounded; Asterweg 23 has only its east gable photographed;
   Céramiquelaan 437 brick is one flat grey. Haarlemmerweg 333's red storeys
   should overhang the grey base. Audit site path now needs 2+ grounded
-  volumes (not just a > 150 m diagonal); 21 models newly checked. New FAILs
-  to fix: ij-toren (see-through 46/416 rays, far-outside, 2 blank walls),
-  asterweg-23 (blank wall on an unphotographed side), krasnapolsky (held);
-  new see-through FAILs on already-failing rijksmuseum 9, stadhuis 28,
+  volumes (not just a > 150 m diagonal); 21 models newly checked. ij-toren
+  now passes after rework (recessed brick wall behind the quay colonnade,
+  glass-block wall, arcades declared as throughPassages, pavilion and vent
+  pipes declared as `detachedStructures`; recess 3.7 m and column pitch
+  11.4 m are photo estimates, +-1 m). asterweg-23's 95 m rear wall is
+  declared blank on partial evidence (hedges hide the bottom 3-5 m; corrugated
+  cladding above has no openings): revisit if a ground-level photo appears.
+  Krasnapolsky (held) still fails blank-wall. New see-through FAILs on already-failing rijksmuseum 9, stadhuis 28,
   eye-filmmuseum 33, straat-museum 49, mountain-network 17,
   ndsm-warehouse-complex 17. A real campus whose volumes weld can declare
   `siteModel: true` in its spec. Wibautstraat 3B/3C

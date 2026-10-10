@@ -26929,11 +26929,12 @@
           ]
         ]
       },
+      "buildingCategory": "landmark",
       "bounds": {
         "min": [
-          -118.1989974975586,
-          0,
-          -62.42499923706055
+          -105.21570587158203,
+          -9.536743306171047e-8,
+          -59.957000732421875
         ],
         "max": [
           176.552001953125,
@@ -26952,19 +26953,19 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 294.7509994506836,
-        "heightMetres": 95.0999984741211,
-        "depthMetres": 95.37799835205078,
-        "depthCoverage": 0.8750275078169797
+        "widthMetres": 281.76770782470703,
+        "heightMetres": 95.09999856948852,
+        "depthMetres": 92.90999984741211,
+        "depthCoverage": 0.8523853197010285
       },
-      "triangles": 11201,
-      "bytes": 163052,
+      "triangles": 16729,
+      "bytes": 229588,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts",
       "lod1": {
-        "sourceHash": "e46a0583238c5374",
+        "sourceHash": "771c12276402143c",
         "buildVersion": 2,
-        "bytes": 42212,
-        "triangles": 1912
+        "bytes": 54744,
+        "triangles": 2693
       }
     },
     "sea-palace": {
