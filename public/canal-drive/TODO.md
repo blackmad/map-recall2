@@ -57,12 +57,13 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   lower brick building need photo counts and the dark glass bays.
   Chassékerk held (2026-10-10): towers must be tall and slender, well above
   the gable (they are stubby belfries); SE wing is a flat box.
-  Pakhuis de Zwijger held (2026-10-10): colour is tan where the building is
-  dark weathered concrete, and see-through FAILs 19/61 because the
-  Piet Heinkade roadway really passes under it. A lane proposed inferring
-  "passages" from any 15 m roofed run; rejected (a roofed box missing two
-  opposite walls looks identical). Add an explicit per-spec declared
-  through-passage (corridor polygon + axis, with photo evidence) instead.
+  Pakhuis de Zwijger held (2026-10-10): colour fixed (dark weathered brick,
+  rust strips). Specs can now declare `throughPassages` (corridor + axis +
+  evidence); its Piet Heinkade roadway is declared. Still FAILs see-through
+  10/61: 4 oblique pier-edge rays inside the corridor (bearings 17–40° off
+  axis) and 6 at the east pilotis, where the glazed ground floor sits ~7 m
+  behind the pier line, beyond the 7 m reach. Needs a tested rule for a deep
+  recess under a LOW soffit, not wider tolerances.
   World Trade Center Amsterdam held (2026-10-10): towers A–G are ONE BAG
   pand (0363100012096613, ~200 x 95 m); a recognizable model needs a photo
   of each tower face (Commons has only atrium/logo/tower H). Footprints and
