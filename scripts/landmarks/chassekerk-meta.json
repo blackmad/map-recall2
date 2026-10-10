@@ -1,0 +1,23 @@
+{
+  "name": "Chassékerk",
+  "landmarkId": "requested-chassekerk",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Chass%C3%A9kerk",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012117919"
+  ],
+  "pandId": "0363100012117919",
+  "materialOverrides": {
+    "brick": "#6d4538",
+    "greyBrick": "#68413a",
+    "stone": "#bdb29a",
+    "slate": "#4a4f57",
+    "glass": "#566672",
+    "frame": "#d9d3c2",
+    "dark": "#22262a",
+    "white": "#e8e2d2",
+    "red": "#a8503c",
+    "concrete": "#8f908c"
+  },
+  "surveySource": "Current BAG 0363100012117919 footprint and 3DBAG LoD2.2 surfaces, native east/south metres from the footprint centroid.",
+  "modifications": "Original texture-free geometry on the BAG footprint and 3DBAG LoD2.2 massing; the twin-tower front, porch arches, porthole windows, stepped gable and rose window measured by eye from the 2025 municipal panoramas, no pixels or meshes imported."
+}

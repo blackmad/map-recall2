@@ -2329,5 +2329,29 @@
       "https://en.wikipedia.org/wiki/Grand_Hotel_Krasnapolsky"
     ],
     "preferDescription": true
-  }
+  },
+{
+  "modelId": "fatih-moskee",
+  "landmarkId": "extract_landmarks_1997051448",
+  "name": "Fatih Mosque",
+  "description": "The Fatih Mosque on the Rozengracht occupies the former Sint-Ignatiuskerk, a Jesuit church designed by H.W. Valk and opened in 1929 with a double-tower front 40 metres high and room for 600 worshippers. Its brick front keeps three pointed door arches under a gable with a star-patterned rose window, flanked by the two towers. Since 1981 it has been a mosque of the Islamic Foundation of the Netherlands, named after the Ottoman sultan Mehmed II.",
+  "funFact": "The congregation now prays towards the old main entrance, where the mihrab stands, so people enter through a small side door, and shops fill the three pointed doorways on the Rozengracht; the most visible change outside is that crescents replaced the crosses on the towers.",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Fatih-moskee_(Amsterdam)",
+  "additionalSources": [
+    "https://www.wikidata.org/wiki/Q674125"
+  ],
+  "preferDescription": true
+},
+{
+  "modelId": "chassekerk",
+  "landmarkId": "requested-chassekerk",
+  "name": "Chassékerk",
+  "description": "The Chassékerk, Karel Petrus Tholens's former Roman Catholic Church of Our Lady of Perpetual Help, was built in 1924-26 on Chasséstraat in a style influenced by the Amsterdam School: large plain brick surfaces, a broad column-free nave with narrow aisles under one great roof, and two slender towers flanking a porch of round arches. Closed in 1998 and nearly demolished, it was saved by neighbourhood opposition and now houses Chassé Dance Studios, a ballet school and a hotel in the old rectory.",
+  "funFact": "Squatters occupied the church in 2004, and after the housing corporation's demolition plans were dropped, its crypt was dug out in the 2010s to make one of the largest cellars in an existing Amsterdam building.",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Chass%C3%A9kerk",
+  "additionalSources": [
+    "https://www.wikidata.org/wiki/Q2189632"
+  ],
+  "preferDescription": true
+}
 ]
