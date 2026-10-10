@@ -19,6 +19,19 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 
+- **Landmark geometry audit offenders** (`audit:glb` geometry checks, baseline
+  `scripts/landmarks/geometry-audit-baseline.json`, pins
+  `geometry-audit-pins.json`): 200 of 281 GLBs have ≥0.25 m² visible coplanar
+  overlap; mixed-material ones are visible (brick/stone 43, stone/white 16,
+  frame/glass 18) — trim placed flush on wall/roof planes. Open pins: Oude
+  Lutherse Kerk east windows (axis-aligned boxes on a skewed wall), H'ART
+  portico top (32 m² at y 10.4), Rijksmuseum tower pilaster, Hotel de l'Europe
+  missing window column + mansard cut, American Hotel bay rhythm (the
+  landmark-fixes lane is on these). After a fix: flip the pin to `fixed` and
+  lower the baseline with `--only-geometry --write-baseline`; never raise it.
+  Overhang over-flags glass curtain walls; "buried" over-flags curved drums.
+  Confirm the in-game depth-bias fix by a close drive past the Rijksmuseum
+  entrance.
 - **Landmark filler audit offenders (measured, unconfirmed in game)**:
   `npm run audit:landmark-filler` lists models that hide buildings they do not
   cover (hotel-jakarta BAG …247056 1,640 m², sint-agneskerk, national-holocaust-

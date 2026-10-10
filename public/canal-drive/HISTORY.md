@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+## Landmark z-fighting: constant depth bias; geometry audit in the GLB gate (2026-10-10)
+
+The user saw texture fighting on H'ART's roof and the Rijksmuseum entrance and
+asked whether it was systemic. Two causes. (1) Every landmark: `_applySuppression`
+in `signature-landmarks-source.js` set `polygonOffsetFactor = -32`, a slope-scaled
+offset that reorders a model's own faces at grazing angles, so hidden slab tops
+striped through walls. Now factor 0 with the constant −4096 units kept, which
+still beats the basemap (emulated render: striped with the factor, clean
+without). (2) Real flush trim in the GLBs. `landmarks/geometryAudit.ts` now checks
+detached openings (floating/overhang/buried), window rhythm per facade, and
+visible coplanar overlap; `audit:glb` fails a model only when it gets worse than
+its baseline entry, so new models must be clean.
+
 ## Own ground city-wide (2026-10-10)
 
 Relief (`ground-height-v1`, 413 tiles: 2 m within 4 km of the Dam, 4 m beyond,
