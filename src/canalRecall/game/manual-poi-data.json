@@ -2183,5 +2183,17 @@
     "https://commons.wikimedia.org/wiki/Category:West-Indisch_Pakhuis"
   ],
   "preferDescription": true
+},
+{
+  "modelId": "christ-church-groenburgwal",
+  "landmarkId": "extract_landmarks_369277545",
+  "name": "Church of England (Christ Church)",
+  "description": "Christ Church, the Anglican church at Groenburgwal 42, hides a much older building: a cloth hall of 1626 from the Staalhof, which the Episcopal congregation took over in 1771. Its pointed-arch brick front of 1829, with a tall four-lancet window in the central gable, two-lancet and three-lancet side windows, stone-capped piers and copper pinnacles, is among the first neo-Gothic facades in the Netherlands.",
+  "funFact": "Rembrandt's 'Staalmeesters' was painted for the Staalhof, the cloth-sampling hall this building was once part of; the Anglican congregation later used the room where the sampling officials met.",
+  "sourceUrl": "https://nl.wikipedia.org/wiki/Christ_Church_(Amsterdam)",
+  "additionalSources": [
+    "https://monumentenregister.cultureelerfgoed.nl/monumenten/1269"
+  ],
+  "preferDescription": true
 }
 ]
